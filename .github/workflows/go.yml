@@ -34,4 +34,4 @@ jobs:
     - name: Coverage
       uses: gwatts/go-coverage-action@v1.1.2
       with:
-        coverage-threshold: 90
+        coverage-threshold: 85

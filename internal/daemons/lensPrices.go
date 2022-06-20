@@ -1,6 +1,7 @@
 package daemons
 
 import (
+	"math"
 	"math/big"
 	"sync"
 	"time"
@@ -56,22 +57,16 @@ func FetchLens(chainID uint64) {
 	}
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
+	maxBatch := math.MaxInt
 	if chainID == 250 {
-		response := caller.ExecuteByBatch(calls, 5)
-		if store.TokenPrices[chainID] == nil {
-			store.TokenPrices[chainID] = make(map[common.Address]uint64)
-		}
-		for key, value := range response {
-			store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
-		}
-	} else {
-		response := caller.Execute(calls)
-		if store.TokenPrices[chainID] == nil {
-			store.TokenPrices[chainID] = make(map[common.Address]uint64)
-		}
-		for key, value := range response {
-			store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
-		}
+		maxBatch = 5
+	}
+	response := caller.ExecuteByBatch(calls, maxBatch)
+	if store.TokenPrices[chainID] == nil {
+		store.TokenPrices[chainID] = make(map[common.Address]uint64)
+	}
+	for key, value := range response {
+		store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
 	}
 }
 

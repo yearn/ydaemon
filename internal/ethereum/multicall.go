@@ -67,26 +67,13 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 }
 
-// Execute will take a group of calls and execute them in a single transaction via
-// the multicall3 contract.
-func (caller *TEthMultiCaller) Execute(calls []Call) map[string]CallResponse {
-	var responses []CallResponse
-	// Create mapping for results. Be aware that we sometimes get two empty results initially, unsure why
-	results := make(map[string]CallResponse)
-
-	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
-
-	// Add calls to multicall structure for the contract
-	for _, call := range calls {
-		multiCalls = append(multiCalls, call.GetMultiCall())
-	}
-
+func (caller *TEthMultiCaller) execute(multiCallGroup []contracts.Multicall2Call) ([]byte, error) {
 	// Prepare calldata for multicall
 	abi, _ := contracts.Multicall3MetaData.GetAbi()
-	callData, err := abi.Pack("tryAggregate", true, multiCalls)
+	callData, err := abi.Pack("tryAggregate", true, multiCallGroup)
 	if err != nil {
 		logs.Error("Failed to pack tryAggregate")
-		return results
+		return []byte{}, err
 	}
 
 	// Perform multicall
@@ -102,42 +89,21 @@ func (caller *TEthMultiCaller) Execute(calls []Call) map[string]CallResponse {
 	)
 	if err != nil {
 		logs.Error("Failed to perform multicall: " + err.Error())
-		return results
+		return []byte{}, err
 	}
-
-	// Unpack results
-	unpackedResp, _ := caller.Abi.Unpack("tryAggregate", resp)
-	a, err := json.Marshal(unpackedResp[0])
-	if err != nil {
-		logs.Error("Failed to unmarshal response: " + err.Error())
-		return results
-	}
-
-	// Unpack results
-	if err := json.Unmarshal(a, &responses); err != nil {
-		logs.Error("Failed to unmarshal response: " + err.Error())
-		return results
-	}
-
-	for i, response := range responses {
-		results[calls[i].Name] = response
-	}
-
-	return results
+	return resp, nil
 }
 
 // ExecuteByBatch will take a group of calls, split them in fixed-size group to
 // avoid the gasLimit error, and execute as many transactions as required to get
 // the results.
-// Note: should be used on Fantom for example.
 func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[string]CallResponse {
 	var responses []CallResponse
 	// Create mapping for results. Be aware that we sometimes get two empty results initially, unsure why
 	results := make(map[string]CallResponse)
 
-	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
-
 	// Add calls to multicall structure for the contract
+	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
 	for _, call := range calls {
 		multiCalls = append(multiCalls, call.GetMultiCall())
 	}
@@ -152,31 +118,11 @@ func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[s
 			group = multiCalls[i : i+batchSize]
 		}
 
-		// Prepare calldata for multicall
-		abi, _ := contracts.Multicall3MetaData.GetAbi()
-		callData, err := abi.Pack("tryAggregate", true, group)
+		tempResp, err := caller.execute(group)
 		if err != nil {
-			logs.Error("Failed to pack tryAggregate")
 			return results
 		}
-
-		// Perform multicall
-		tempresp, err := caller.Client.CallContract(
-			context.Background(),
-			ethereum.CallMsg{
-				To:   &caller.ContractAddress,
-				Data: callData,
-				Gas:  0,
-				From: caller.Signer.From,
-			},
-			nil,
-		)
-		if err != nil {
-			logs.Error("Failed to perform multicall: " + err.Error())
-			return results
-		}
-		// append tempresp to resp
-		resp = append(resp, tempresp...)
+		resp = append(resp, tempResp...)
 	}
 
 	// Unpack results

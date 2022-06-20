@@ -22,16 +22,19 @@ jobs:
       run: go install honnef.co/go/tools/cmd/staticcheck@latest
 
     - name: Staticcheck
-      run: staticcheck ./internal/...
+      run: |
+        go install honnef.co/go/tools/cmd/staticcheck@latest
+        staticcheck ./internal/...
 
     - name: Build
-      run: go build -v cmd
+      run: go build cmd
 
     - name: Test
-      run: go test -v ./...
+      run: |
+        go install github.com/rakyll/gotest
+        gotest ./...
 
     - name: Coverage
       uses: gwatts/go-coverage-action@v1.1.2
       with:
-        working-directory: ./internal/...
         coverage-threshold: 90

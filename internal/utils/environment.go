@@ -42,5 +42,5 @@ func SetEnv(path string) {
 }
 
 func init() {
-	SetEnv(`../../cmd/.env`)
+	SetEnv(`.env`)
 }

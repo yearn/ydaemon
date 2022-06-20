@@ -6,7 +6,6 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
@@ -31,12 +30,6 @@ func prepareVaultSchema(
 	activation, err := strconv.ParseUint(vaultFromGraph.Activation, 10, 64)
 	if err != nil {
 		activation = 0
-	}
-
-	// 0xcB550A6D4C8e3517A939BC79d0c7093eb7cF56B5
-	if common.HexToAddress(`0xcB550A6D4C8e3517A939BC79d0c7093eb7cF56B5`) == common.HexToAddress(vaultFromGraph.Id) {
-		logs.Debug("Found 0xcB550A6D4C8e3517A939BC79d0c7093eb7cF56B5")
-		logs.Pretty(vaultFromGraph, vaultFromMeta, vaultFromMeta.MigrationAvailable)
 	}
 
 	// Get the displayName for this vault. If the data is not set, add a fallback to the vault Name.

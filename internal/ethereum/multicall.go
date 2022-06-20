@@ -40,7 +40,6 @@ func (call Call) GetMultiCall() contracts.Multicall2Call {
 // will later use to perform multiple ethereum calls batched in the same transaction.
 // For performance reason, this should be initialized once and then reused.
 func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCaller {
-	logs.Pretty(rpcURI)
 	if rpcURI == "" {
 		logs.Error("No rpcURI provided.")
 		return TEthMultiCaller{}

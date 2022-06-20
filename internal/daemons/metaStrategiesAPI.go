@@ -69,6 +69,6 @@ func RunMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
 			logs.Info("Meta strategies API is ready")
 			wg.Done()
 		}
-		time.Sleep(15 * time.Second)
+		time.Sleep(1 * time.Minute)
 	}
 }

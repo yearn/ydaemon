@@ -1,51 +1,46 @@
 package utils
 
 import (
-	"log"
 	"os"
-	"strconv"
+
+	"github.com/joho/godotenv"
+
+	"github.com/majorfi/ydaemon/internal/logs"
 )
 
 var (
-	// EthNodeURI : Uri of the ethereum node
-	EthNodeURI string
-	// EthPrivateKey : PrivateKey used for this demonstration
-	EthPrivateKey string
-	// EthChainID : chain on which we will work
-	EthChainID int64
-	// StartBlock : block from which we should start working
-	StartBlock uint64
-	// DSN : id to connect to the database
-	DSN string
+	// RPCURIFor1 : RPC we should use for the chain #1
+	RPCURIFor1 string
+	// RPCURIFor250 : RPC we should use for the chain #250
+	RPCURIFor250 string
+	// RPCURIFor42161 : RPC we should use for the chain #42161
+	RPCURIFor42161 string
 )
 
-func initEthCore() {
+// SetEnv will init the environment variables based on the .env file
+func SetEnv(path string) {
 	var exists bool
-	var err error
+	_ = godotenv.Load(path)
 
-	EthNodeURI, exists = os.LookupEnv("ETH_NODE_URI")
+	RPCURIFor1, exists = os.LookupEnv("RPC_URI_FOR_1")
 	if !exists {
-		log.Fatal("ETH_NODE_URI environment variable not set")
+		RPCURIFor1 = "https://eth.public-rpc.com"
+		logs.Warning("RPC_URI_FOR_1 not set, using default value: [https://eth.public-rpc.com]")
 	}
-	EthChainIDString, exists := os.LookupEnv("ETH_CHAIN_ID")
+
+	RPCURIFor250, exists = os.LookupEnv("RPC_URI_FOR_250")
 	if !exists {
-		log.Fatal("ETH_CHAIN_ID environment variable not set")
+		RPCURIFor250 = "https://rpc.ftm.tools"
+		logs.Warning("RPC_URI_FOR_250 not set, using default value: [https://rpc.ftm.tools]")
 	}
-	EthChainID, err = strconv.ParseInt(EthChainIDString, 10, 64)
-	if err != nil {
-		log.Fatal("ETH_CHAIN_ID environment variable not set")
-	}
-	StartBlockString, exists := os.LookupEnv("START_BLOCK")
+
+	RPCURIFor42161, exists = os.LookupEnv("RPC_URI_FOR_42161")
 	if !exists {
-		log.Fatal("START_BLOCK environment variable not set")
-	}
-	StartBlock, err = strconv.ParseUint(StartBlockString, 10, 64)
-	if err != nil {
-		log.Fatal("START_BLOCK environment variable not set")
+		RPCURIFor42161 = "https://arbitrum.public-rpc.com"
+		logs.Warning("RPC_URI_FOR_42161 not set, using default value: [https://arbitrum.public-rpc.com]")
 	}
 }
 
-// InitEnvironment initializes variables from environment
-func InitEnvironment() {
-	initEthCore()
+func init() {
+	SetEnv(`../../cmd/.env`)
 }

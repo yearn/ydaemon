@@ -19,7 +19,7 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: cd cmd && go build -v ./...
+      run: go build -v cmd
 
     - name: Staticcheck
       uses: dominikh/staticcheck-action@v1.2.0

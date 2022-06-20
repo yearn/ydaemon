@@ -25,7 +25,7 @@ jobs:
       uses: dominikh/staticcheck-action@v1.2.0
       with:
         install-go: false
-        working-directory: ./internal
+        working-directory: ./internal/...
 
     - name: Test
       run: go test -v ./...
@@ -33,5 +33,5 @@ jobs:
     - name: Coverage
       uses: gwatts/go-coverage-action@v1.1.2
       with:
-        working-directory: ./internal
+        working-directory: ./internal/...
         coverage-threshold: 90

@@ -24,8 +24,7 @@ jobs:
     - name: Staticcheck
       uses: dominikh/staticcheck-action@v1.2.0
       with:
-        install-go: false
-        working-directory: ./internal/...
+        working-directory: internal/...
 
     - name: Test
       run: go test -v ./...

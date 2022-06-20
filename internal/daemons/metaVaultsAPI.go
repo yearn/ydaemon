@@ -64,7 +64,6 @@ func RunMetaVaults(chainID uint64, wg *sync.WaitGroup) {
 		FetchVaultsFromMeta(chainID)
 		if !isDone {
 			isDone = true
-			logs.Info("Meta Vaults API is ready")
 			wg.Done()
 		}
 		time.Sleep(1 * time.Minute)

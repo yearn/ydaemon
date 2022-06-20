@@ -64,7 +64,6 @@ func RunMetaTokens(chainID uint64, wg *sync.WaitGroup) {
 		FetchTokensFromMeta(chainID)
 		if !isDone {
 			isDone = true
-			logs.Info("Meta Tokens API is ready")
 			wg.Done()
 		}
 		time.Sleep(1 * time.Minute)

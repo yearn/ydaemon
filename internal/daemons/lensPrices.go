@@ -88,7 +88,6 @@ func RunLens(chainID uint64, wg *sync.WaitGroup) {
 		FetchLens(chainID)
 		if !isDone {
 			isDone = true
-			logs.Info("Lens prices oracle is ready")
 			wg.Done()
 		}
 		time.Sleep(30 * time.Second)

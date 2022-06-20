@@ -2,14 +2,12 @@ package daemons
 
 import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/logs"
 )
 
 var multicallClientForChainID = make(map[uint64]ethereum.TEthMultiCaller)
 
 // init is fired directly on app start and prepare the multicall clients
 func init() {
-	logs.Info("Initializing lens Oracle")
 	multicallClientForChainID[1] = ethereum.NewMulticall(
 		ethereum.GetRPCURI(1),
 		ethereum.GetMulticallAddress(1),
@@ -22,5 +20,4 @@ func init() {
 		ethereum.GetRPCURI(42161),
 		ethereum.GetMulticallAddress(42161),
 	)
-	logs.Success("Lens Oracle initialized!")
 }

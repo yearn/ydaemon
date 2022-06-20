@@ -64,7 +64,6 @@ func RunAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
 		FetchVaultsFromV1(chainID)
 		if !isDone {
 			isDone = true
-			logs.Info("APY from V1 ready")
 			wg.Done()
 		}
 		time.Sleep(10 * time.Minute)

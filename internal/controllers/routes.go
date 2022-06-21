@@ -109,7 +109,6 @@ func (y controller) TriggerMetaRefreshWebhook(c *gin.Context) {
 	isVercelBot := data.Sender.Login == "vercel[bot]"
 	isBot := data.Sender.Type == "Bot"
 
-	logs.Pretty(isSuccess, isProduction, isVercelBot, isBot)
 	if isSuccess && isProduction && isVercelBot && isBot {
 		logs.Info("Triggering meta refresh in 1 minute")
 		go func() {

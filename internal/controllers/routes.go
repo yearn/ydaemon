@@ -109,7 +109,9 @@ func (y controller) TriggerMetaRefreshWebhook(c *gin.Context) {
 	isVercelBot := data.Sender.Login == "vercel[bot]"
 	isBot := data.Sender.Type == "Bot"
 
+	logs.Pretty(isSuccess, isProduction, isVercelBot, isBot)
 	if isSuccess && isProduction && isVercelBot && isBot {
+		logs.Info("Triggering meta refresh in 1 minute")
 		go func() {
 			//Let's wait one minute just to be sure
 			time.Sleep(time.Minute)
@@ -129,5 +131,5 @@ func (y controller) TriggerMetaRefreshWebhook(c *gin.Context) {
 			go daemons.FetchVaultsFromMeta(42161)
 		}()
 	}
-	c.JSON(http.StatusOK, nil)
+	c.JSON(http.StatusAccepted, nil)
 }

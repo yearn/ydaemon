@@ -4,11 +4,13 @@ import (
 	"context"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/webhooks/v6/github"
 	"github.com/machinebox/graphql"
+	"github.com/majorfi/ydaemon/internal/daemons"
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
@@ -90,18 +92,42 @@ func (y controller) GetAllVaults(c *gin.Context) {
 	c.JSON(http.StatusOK, data)
 }
 
-//TriggerWebhook will do trigger a webhook from github
-func (y controller) TriggerWebhook(c *gin.Context) {
+//TriggerMetaRefreshWebhook will do trigger a webhook from github
+func (y controller) TriggerMetaRefreshWebhook(c *gin.Context) {
+	//Check if the webhook has correct data and secret
 	hook, _ := github.New(github.Options.Secret(utils.WebhookSecret))
-
-	payload, err := hook.Parse(c.Request, github.DeploymentEvent, github.DeploymentStatusEvent)
+	payload, err := hook.Parse(c.Request, github.DeploymentStatusEvent)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"error": err.Error(),
-		})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	logs.Pretty(payload)
+	data := payload.(github.DeploymentStatusPayload)
 
-	c.JSON(http.StatusOK, "OK")
+	//Perform some extra checks
+	isSuccess := data.DeploymentStatus.State == "success"
+	isProduction := data.Deployment.Environment == "production"
+	isVercelBot := data.Sender.Login == "vercel[bot]"
+	isBot := data.Sender.Type == "Bot"
+
+	if isSuccess && isProduction && isVercelBot && isBot {
+		go func() {
+			//Let's wait one minute just to be sure
+			time.Sleep(time.Minute)
+			//Update meta information
+			go daemons.FetchStrategiesFromMeta(1)
+			go daemons.FetchStrategiesFromMeta(250)
+			go daemons.FetchStrategiesFromMeta(42161)
+
+			//Update Strategies information
+			go daemons.FetchTokensFromMeta(1)
+			go daemons.FetchTokensFromMeta(250)
+			go daemons.FetchTokensFromMeta(42161)
+
+			//Update Vaults information
+			go daemons.FetchVaultsFromMeta(1)
+			go daemons.FetchVaultsFromMeta(250)
+			go daemons.FetchVaultsFromMeta(42161)
+		}()
+	}
+	c.JSON(http.StatusOK, nil)
 }

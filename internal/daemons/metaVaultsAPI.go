@@ -57,7 +57,8 @@ func FetchVaultsFromMeta(chainID uint64) {
 }
 
 // RunMetaVaults is a goroutine that periodically fetches the meta information from the
-// Yearn Meta API. It runs forever, every 15 seconds, for the desired chain.
+// Yearn Meta API.
+// The data is updated every _at least_ 24 hours.
 func RunMetaVaults(chainID uint64, wg *sync.WaitGroup) {
 	isDone := false
 	for {
@@ -66,6 +67,6 @@ func RunMetaVaults(chainID uint64, wg *sync.WaitGroup) {
 			isDone = true
 			wg.Done()
 		}
-		time.Sleep(1 * time.Minute)
+		time.Sleep(24 * time.Hour)
 	}
 }

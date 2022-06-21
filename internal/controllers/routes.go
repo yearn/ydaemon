@@ -16,8 +16,8 @@ import (
 
 type controller struct{}
 
-//DoSomething will do something
-func (y controller) DoSomething(c *gin.Context) {
+//GetAllVaults will, for a given chainID, return a list of all vaults
+func (y controller) GetAllVaults(c *gin.Context) {
 	// get the chainID from the URI
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
@@ -86,4 +86,12 @@ func (y controller) DoSomething(c *gin.Context) {
 		))
 	}
 	c.JSON(http.StatusOK, data)
+}
+
+//TriggerWebhook will do trigger a webhook from github
+func (y controller) TriggerWebhook(c *gin.Context) {
+	logs.Pretty(c.Params)
+	logs.Pretty(c.GetRawData())
+
+	c.JSON(http.StatusOK, "OK")
 }

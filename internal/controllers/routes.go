@@ -105,7 +105,7 @@ func (y controller) TriggerMetaRefreshWebhook(c *gin.Context) {
 
 	//Perform some extra checks
 	isSuccess := data.DeploymentStatus.State == "success"
-	isProduction := data.Deployment.Environment == "production"
+	isProduction := data.Deployment.Environment == "Production"
 	isVercelBot := data.Sender.Login == "vercel[bot]"
 	isBot := data.Sender.Type == "Bot"
 

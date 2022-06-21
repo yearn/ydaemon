@@ -36,7 +36,7 @@ func NewRouter() *gin.Engine {
 	{
 		c := controller{}
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
-		router.GET(`webhook/trigger`, c.GetAllVaults)
+		router.POST(`webhook/trigger`, c.GetAllVaults)
 	}
 
 	return router

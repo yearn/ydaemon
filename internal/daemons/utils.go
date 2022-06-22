@@ -10,21 +10,6 @@ import (
 	"github.com/majorfi/ydaemon/internal/models"
 )
 
-// uniqueArrayAddress is used to find and remove duplicate from an array of
-// ethereum addresses. No such utility function exists with go, so we have to
-// implement it ourselves.
-func uniqueArrayAddress(arr []common.Address) []common.Address {
-	occurred := map[common.Address]bool{}
-	result := []common.Address{}
-	for i := range arr {
-		if !occurred[arr[i]] {
-			occurred[arr[i]] = true
-			result = append(result, arr[i])
-		}
-	}
-	return result
-}
-
 // fetchTokenList is an utility function that will query the subgraph in order to
 // extract the list of tokens (yvTokens, aka share tokens, and underlying tokens)
 // used by the Yearn system in order to be able to play with them (e.g. get the

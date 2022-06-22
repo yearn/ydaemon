@@ -1,23 +1,10 @@
 package controllers
 
 import (
-	"time"
-
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
-
-func Logger(log *logrus.Logger) gin.HandlerFunc {
-	return func(c *gin.Context) {
-		log.WithFields(logrus.Fields{
-			"path":   c.Request.RequestURI,
-			"method": c.Request.Method,
-			"status": c.Writer.Status(),
-		}).Info(time.Now().Format(time.RFC3339))
-
-	}
-}
 
 // NewRouter create the routes and setup the server
 func NewRouter() *gin.Engine {
@@ -25,7 +12,7 @@ func NewRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 	router.Use(gin.Recovery())
-	router.Use(Logger(logrus.New()))
+	router.Use(logger(logrus.New()))
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
 		AllowMethods:    []string{"GET", "HEAD"},
@@ -35,7 +22,15 @@ func NewRouter() *gin.Engine {
 
 	{
 		c := controller{}
+		// Retrieve the vaults for a specific chainID
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
+		router.GET(`:chainID/vaults/:address`, c.GetVault)
+
+		// Get some information about the API
+		router.GET(`info/chains`, c.GetSupportedChains)
+		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
+
+		// Automatic webhook connected to github to trigger some actions
 		router.POST(`webhook/meta/trigger`, c.TriggerMetaRefreshWebhook)
 	}
 

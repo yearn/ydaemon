@@ -18,7 +18,7 @@ func TestEnvironment(t *testing.T) {
 	daemons.SummonDaemons(42161, 0)
 
 	//Testing a valid request for ChainID == 1
-	resp, err := http.Get(`http://localhost:8080/1/vaults/all`)
+	resp, err := http.Get(`http://localhost:8080/1/vaults/all?skip=1&limit=300&orderBy=id&order=asc`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
@@ -41,4 +41,19 @@ func TestEnvironment(t *testing.T) {
 	resp, err = http.Get(`http://localhost:8080/2/vaults/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+
+	//Testing with one specific vault
+	resp, err = http.Get(`http://localhost:8080/1/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
+
+	//Testing the info/chains route
+	resp, err = http.Get(`http://localhost:8080/info/chains`)
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
+
+	//Testing the info/vaults/blacklisted route
+	resp, err = http.Get(`http://localhost:8080/info/vaults/blacklisted`)
+	assert.NoError(t, err)
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 }

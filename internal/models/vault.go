@@ -72,8 +72,11 @@ type TVault struct {
 	Inception          uint64      `json:"inception"`
 	Address            string      `json:"address"`
 	Symbol             string      `json:"symbol"`
+	DisplaySymbol      string      `json:"display_symbol"`
+	FormatedSymbol     string      `json:"formated_symbol"`
 	Name               string      `json:"name"`
 	DisplayName        string      `json:"display_name"`
+	FormatedName       string      `json:"formated_name"`
 	Icon               string      `json:"icon"`
 	Token              TToken      `json:"token"`
 	TVL                TTVL        `json:"tvl"`

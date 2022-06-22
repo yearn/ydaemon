@@ -18,18 +18,6 @@ import (
 
 var lensABI, _ = contracts.OracleMetaData.GetAbi()
 
-func uniqueArrayAddress(arr []common.Address) []common.Address {
-	occurred := map[common.Address]bool{}
-	result := []common.Address{}
-	for i := range arr {
-		if !occurred[arr[i]] {
-			occurred[arr[i]] = true
-			result = append(result, arr[i])
-		}
-	}
-	return result
-}
-
 func fetchTokenList(chainID uint64) []common.Address {
 	tokenList := []common.Address{}
 	client := graphql.NewClient(GetGraphURI(chainID))
@@ -90,7 +78,7 @@ func testFetchLens(chainID uint64) {
 	}
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
-	maxBatch := math.MaxInt
+	maxBatch := math.MaxInt64
 	if chainID == 250 {
 		maxBatch = 5
 	}
@@ -110,28 +98,28 @@ func TestMulticall(t *testing.T) {
 
 	//Testing for chainID == 1
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[1] = uniqueArrayAddress(fetchTokenList(1))
+		store.TokenList[1] = utils.UniqueArrayAddress(fetchTokenList(1))
 		testFetchLens(1)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 4
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[4] = uniqueArrayAddress(fetchTokenList(4))
+		store.TokenList[4] = utils.UniqueArrayAddress(fetchTokenList(4))
 		testFetchLens(4)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 250
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[250] = uniqueArrayAddress(fetchTokenList(250))
+		store.TokenList[250] = utils.UniqueArrayAddress(fetchTokenList(250))
 		testFetchLens(250)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 42161
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[42161] = uniqueArrayAddress(fetchTokenList(42161))
+		store.TokenList[42161] = utils.UniqueArrayAddress(fetchTokenList(42161))
 		testFetchLens(42161)
 		wg.Done()
 	}(&wg)

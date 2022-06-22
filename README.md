@@ -22,9 +22,33 @@ curl http://localhost:8080/1/vaults/all
 ```
 
 ## Endpoints
-| ✅   `[BASE_URL]/[chainID]/vaults/all`   |
-|:------------------------------------------|
-This endpoint returns all the vaults of the specified chainID. Supported chains are `1`, `250` and `42161`.
+`GET` `[BASE_URL]/[chainID]/vaults/all`  
+> This endpoint returns all the vaults of the specified chainID. Supported chains are `1`, `250` and `42161`.  
+>  
+> **Query**  
+> `?skip=N` will skip N vault from the graphQL query. Default is `0`  
+> `?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`  
+> `?orderBy=S` will order the result by S on the graphQL query. Default is `activation`  
+> `?orderDirection=asc|desc` will order the result by ascending or descending on the graphQL query. Default is `desc`  
+> `?strategiesCondition=debtLimit|inQueue` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
+
+-------
+
+`GET` `[BASE_URL]/[chainID]/vaults/[address]`  
+> This endpoint returns the vault matching the specified address, for the specified chainID. Supported chains are `1`, `250` and `42161`.  
+>  
+> **Query**  
+> `?strategiesCondition=debtLimit|inQueue` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
+
+-------
+
+`GET` `[BASE_URL]/info/chains`  
+> This endpoint returns the supported chains for this API.  
+
+-------
+
+`GET` `[BASE_URL]/info/vaults/blacklisted`  
+> This endpoint returns the blacklisted vaults for all chains. A blacklisted vault is a vault that will be ignored by the API.  
 
 
 ## Data Sources

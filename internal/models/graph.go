@@ -13,6 +13,7 @@ type TVaultFromGraphStrategy struct {
 	Address   string
 	Name      string
 	DebtLimit string
+	InQueue   bool
 }
 
 //TVaultFromGraphVaultDayData holds the daily information about the vault status
@@ -42,4 +43,9 @@ type TVaultFromGraph struct {
 //TGraphQueryResponseForVaults is the response from the graphql query when we ask for the vaults
 type TGraphQueryResponseForVaults struct {
 	Vaults []TVaultFromGraph
+}
+
+//TGraphQueryResponseForVault is the response from the graphql query when we ask for one specific vault
+type TGraphQueryResponseForVault struct {
+	Vault TVaultFromGraph
 }

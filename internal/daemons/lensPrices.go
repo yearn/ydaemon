@@ -11,6 +11,7 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/store"
+	"github.com/majorfi/ydaemon/internal/utils"
 )
 
 // lensABI takes the ABI of the lens contract and prepare it for the multicall
@@ -57,7 +58,7 @@ func FetchLens(chainID uint64) {
 	}
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
-	maxBatch := math.MaxInt
+	maxBatch := math.MaxInt64
 	if chainID == 250 {
 		maxBatch = 5
 	}
@@ -75,7 +76,7 @@ func FetchLens(chainID uint64) {
 // corresponding subgraph.
 func RunLens(chainID uint64, wg *sync.WaitGroup) {
 	// First, we fetch the initial tokenList for this chain
-	store.TokenList[chainID] = uniqueArrayAddress(fetchTokenList(chainID))
+	store.TokenList[chainID] = utils.UniqueArrayAddress(fetchTokenList(chainID))
 
 	// Then, we fetch the prices of the tokens, in loop.
 	isDone := false

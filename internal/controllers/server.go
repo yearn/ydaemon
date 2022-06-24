@@ -30,6 +30,9 @@ func NewRouter() *gin.Engine {
 		router.GET(`info/chains`, c.GetSupportedChains)
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
+		// Proxy subgraph
+		router.POST(`:chainID/graph`, c.GetGraph)
+
 		// Automatic webhook connected to github to trigger some actions
 		router.POST(`webhook/meta/trigger`, c.TriggerMetaRefreshWebhook)
 	}

@@ -26,10 +26,10 @@ curl http://localhost:8080/1/vaults/all
 > This endpoint returns all the vaults of the specified chainID. Supported chains are `1`, `250` and `42161`.  
 >  
 > **Query**  
-> `?skip=N` will skip N vault from the graphQL query. Default is `0`  
-> `?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`  
-> `?orderBy=S` will order the result by S on the graphQL query. Default is `activation`  
-> `?orderDirection=asc|desc` will order the result by ascending or descending on the graphQL query. Default is `desc`  
+`?skip=N` will skip N vault from the graphQL query. Default is `0`  
+`?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`  
+`?orderBy=S` will order the result by S on the graphQL query. Default is `activation`  
+`?orderDirection=asc|desc` will order the result by ascending or descending on the graphQL query. Default is `desc`  
 > `?strategiesCondition=debtLimit|inQueue` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
 
 -------

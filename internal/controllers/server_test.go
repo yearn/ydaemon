@@ -5,10 +5,14 @@ import (
 	"testing"
 
 	"github.com/majorfi/ydaemon/internal/daemons"
+	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestEnvironment(t *testing.T) {
+	store.OpenDB()
+	defer store.CloseDB()
+
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
 

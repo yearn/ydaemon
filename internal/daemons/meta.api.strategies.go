@@ -79,6 +79,10 @@ func LoadMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
 	temp := make(map[string]models.TStrategyFromMeta)
 	err := store.LoadFromDBForChainID(`StrategiesFromMeta`, chainID, &temp)
 	if err != nil {
+		if err.Error() == "Key not found" {
+			logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
+			return
+		}
 		logs.Error(err)
 		return
 	}

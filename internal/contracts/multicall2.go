@@ -562,4 +562,3 @@ func (_Multicall2 *Multicall2Session) TryBlockAndAggregate(requireSuccess bool, 
 func (_Multicall2 *Multicall2TransactorSession) TryBlockAndAggregate(requireSuccess bool, calls []Multicall2Call) (*types.Transaction, error) {
 	return _Multicall2.Contract.TryBlockAndAggregate(&_Multicall2.TransactOpts, requireSuccess, calls)
 }
-

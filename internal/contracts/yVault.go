@@ -5422,4 +5422,3 @@ func (_YearnVault *YearnVaultFilterer) ParseUpdateWithdrawalQueue(log types.Log)
 	event.Raw = log
 	return event, nil
 }
-

@@ -2317,4 +2317,3 @@ func (_IERC20Metadata *IERC20MetadataFilterer) ParseTransfer(log types.Log) (*IE
 	event.Raw = log
 	return event, nil
 }
-

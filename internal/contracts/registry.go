@@ -1580,4 +1580,3 @@ func (_Registry *RegistryFilterer) ParseVaultTagged(log types.Log) (*RegistryVau
 	event.Raw = log
 	return event, nil
 }
-

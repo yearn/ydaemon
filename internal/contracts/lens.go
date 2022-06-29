@@ -1235,4 +1235,3 @@ func (_Oracle *OracleFilterer) ParseTokenAliasRemoved(log types.Log) (*OracleTok
 	event.Raw = log
 	return event, nil
 }
-

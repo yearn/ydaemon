@@ -54,6 +54,7 @@ func FetchVaultsFromV1(chainID uint64) {
 		// chacksummed hex string
 		store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address).String()] = vault
 	}
+	store.SaveInDBForChainID(`VaultsFromAPIV1`, chainID, store.VaultsFromAPIV1[chainID])
 }
 
 // RunAPIV1Vaults is a goroutine that periodically fetches the meta information from the
@@ -67,5 +68,22 @@ func RunAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
 			wg.Done()
 		}
 		time.Sleep(10 * time.Minute)
+	}
+}
+
+// LoadAPIV1Vaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
+func LoadAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
+	temp := make(map[string]models.TAPIV1Vault)
+	err := store.LoadFromDBForChainID(`VaultsFromAPIV1`, chainID, &temp)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if temp != nil && (len(temp) > 0) {
+		store.VaultsFromAPIV1[chainID] = temp
+		logs.Success("Data loaded for the APIv1 Vaults data store for chainID: " + strconv.FormatUint(chainID, 10))
+	} else {
+		logs.Warning("No APIv1 Vaults data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

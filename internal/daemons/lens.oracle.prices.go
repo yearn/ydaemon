@@ -3,6 +3,7 @@ package daemons
 import (
 	"math"
 	"math/big"
+	"strconv"
 	"sync"
 	"time"
 
@@ -60,7 +61,7 @@ func FetchLens(chainID uint64) {
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
 	if chainID == 250 {
-		maxBatch = 5
+		maxBatch = 3
 	}
 	response := caller.ExecuteByBatch(calls, maxBatch)
 	if store.TokenPrices[chainID] == nil {
@@ -69,6 +70,7 @@ func FetchLens(chainID uint64) {
 	for key, value := range response {
 		store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
 	}
+	store.SaveInDBForChainID(`TokenPrices`, chainID, store.TokenPrices[chainID])
 }
 
 // RunLens is a goroutine that periodically execute a multicall on the given chainID
@@ -87,5 +89,22 @@ func RunLens(chainID uint64, wg *sync.WaitGroup) {
 			wg.Done()
 		}
 		time.Sleep(30 * time.Second)
+	}
+}
+
+// LoadLens will reload the lens data store from the last state of the local Badger Database
+func LoadLens(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
+	temp := make(map[common.Address]uint64)
+	err := store.LoadFromDBForChainID(`TokenPrices`, chainID, &temp)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if temp != nil && (len(temp) > 0) {
+		store.TokenPrices[chainID] = temp
+		logs.Success("Data loaded for the lens data store for chainID: " + strconv.FormatUint(chainID, 10))
+	} else {
+		logs.Warning("No lens data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

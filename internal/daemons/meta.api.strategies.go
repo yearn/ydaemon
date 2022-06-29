@@ -51,11 +51,11 @@ func FetchStrategiesFromMeta(chainID uint64) {
 	}
 	for _, strategy := range strategies {
 		for _, strategyAddress := range strategy.Addresses {
-			// common.HexToAddress(strategyAddress).String() asserts that the address is a valid
-			// chacksummed hex string
+			// The address is checksummed
 			store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress).String()] = strategy
 		}
 	}
+	store.SaveInDBForChainID(`StrategiesFromMeta`, chainID, store.StrategiesFromMeta[chainID])
 }
 
 // RunMetaStrategies is a goroutine that periodically fetches the strategies information from the
@@ -70,5 +70,22 @@ func RunMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
 			wg.Done()
 		}
 		time.Sleep(24 * time.Hour)
+	}
+}
+
+// LoadMetaStrategies will reload the meta strategies data store from the last state of the local Badger Database
+func LoadMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
+	temp := make(map[string]models.TStrategyFromMeta)
+	err := store.LoadFromDBForChainID(`StrategiesFromMeta`, chainID, &temp)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if temp != nil && (len(temp) > 0) {
+		store.StrategiesFromMeta[chainID] = temp
+		logs.Success("Data loaded for the metaStrategies data store for chainID: " + strconv.FormatUint(chainID, 10))
+	} else {
+		logs.Warning("No metaStrategies data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

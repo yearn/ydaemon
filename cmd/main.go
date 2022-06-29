@@ -8,24 +8,48 @@ import (
 	"github.com/majorfi/ydaemon/internal/controllers"
 	"github.com/majorfi/ydaemon/internal/daemons"
 	"github.com/majorfi/ydaemon/internal/logs"
+	"github.com/majorfi/ydaemon/internal/store"
 )
+
+var chains = []uint64{1, 250, 42161}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
 	daemons.SummonDaemons(chainID, delay)
-	chainIDAsString := strconv.Itoa(int(chainID))
-	logs.Success(`Daemons for chainID ` + chainIDAsString + ` summoned successfully!`)
+	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
 	wg.Done()
 }
 
-func main() {
+func summonDaemonsForAllChains() {
 	var wg sync.WaitGroup
-	wg.Add(2)
-	logs.Info(`Starting the server...`)
-	go waitGroupSummonDaemons(&wg, 1, 0)
-	go waitGroupSummonDaemons(&wg, 250, 0)
-	// go waitGroupSummonDaemons(&wg, 42161, 0)
+	for index, chainID := range chains {
+		wg.Add(1)
+		go waitGroupSummonDaemons(&wg, chainID, time.Duration(index))
+	}
 	wg.Wait()
-	logs.Success(`Server ready!`)
+}
 
+func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
+	daemons.LoadDaemons(chainID)
+	logs.Success(`Store data loaded in yDaemon memory for chainUD ` + strconv.Itoa(int(chainID)) + `!`)
+	wg.Done()
+}
+func loadDaemonsForAllChains() {
+	var wg sync.WaitGroup
+	for _, chainID := range chains {
+		wg.Add(1)
+		go waitGroupLoadDaemons(&wg, chainID)
+	}
+	wg.Wait()
+}
+
+func main() {
+	store.OpenDB()
+	defer store.CloseDB()
+
+	logs.Info(`Loading store data to yDaemon memory...`)
+	loadDaemonsForAllChains()
+	logs.Info(`Summoning yDaemon...`)
+	summonDaemonsForAllChains()
+	logs.Success(`Server ready!`)
 	controllers.NewRouter().Run()
 }

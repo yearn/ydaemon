@@ -50,10 +50,10 @@ func FetchTokensFromMeta(chainID uint64) {
 		store.TokensFromMeta[chainID] = make(map[string]models.TTokenFromMeta)
 	}
 	for _, token := range tokens {
-		// common.HexToAddress(token.Address).String() asserts that the address is a valid
-		// chacksummed hex string
+		// The address is checksummed
 		store.TokensFromMeta[chainID][common.HexToAddress(token.Address).String()] = token
 	}
+	store.SaveInDBForChainID(`TokensFromMeta`, chainID, store.TokensFromMeta[chainID])
 }
 
 // RunMetaTokens is a goroutine that periodically fetches the tokens information from the
@@ -68,5 +68,22 @@ func RunMetaTokens(chainID uint64, wg *sync.WaitGroup) {
 			wg.Done()
 		}
 		time.Sleep(24 * time.Hour)
+	}
+}
+
+// LoadMetaTokens will reload the meta tokens data store from the last state of the local Badger Database
+func LoadMetaTokens(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
+	temp := make(map[string]models.TTokenFromMeta)
+	err := store.LoadFromDBForChainID(`TokensFromMeta`, chainID, &temp)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if temp != nil && (len(temp) > 0) {
+		store.TokensFromMeta[chainID] = temp
+		logs.Success("Data loaded for the metaTokens data store for chainID: " + strconv.FormatUint(chainID, 10))
+	} else {
+		logs.Warning("No metaTokens data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

@@ -22,7 +22,7 @@ func Error(err ...interface{}) {
 	pc, _, line, _ := runtime.Caller(1)
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[ERROR]`
+	str1 := `[ KO ]`
 	str2 := `(` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `)`
 	t := time.Now().Format("2006/01/02 15:04:05")
 
@@ -43,7 +43,7 @@ func Error(err ...interface{}) {
 //Success function logs a success message
 func Success(success interface{}) {
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[SUCCESS]`
+	str1 := `[ OK ]`
 	t := time.Now().Format("2006/01/02 15:04:05")
 
 	spew.Printf("%s %s %s %s\n", t, colorMagenta(str0), colorGreen(str1), colorCyan(success))
@@ -54,7 +54,7 @@ func Warning(warning interface{}) {
 	pc, _, line, _ := runtime.Caller(1)
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[WARNING]`
+	str1 := `[WARN]`
 	str2 := `(` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `)`
 	t := time.Now().Format("2006/01/02 15:04:05")
 

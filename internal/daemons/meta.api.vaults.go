@@ -50,10 +50,10 @@ func FetchVaultsFromMeta(chainID uint64) {
 		store.VaultsFromMeta[chainID] = make(map[string]models.TVaultFromMeta)
 	}
 	for _, vault := range vaults {
-		// common.HexToAddress(vault.Address).String() asserts that the address is a valid
-		// chacksummed hex string
+		// The address is checksummed
 		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address).String()] = vault
 	}
+	store.SaveInDBForChainID(`VaultsFromMeta`, chainID, store.VaultsFromMeta[chainID])
 }
 
 // RunMetaVaults is a goroutine that periodically fetches the meta information from the
@@ -68,5 +68,22 @@ func RunMetaVaults(chainID uint64, wg *sync.WaitGroup) {
 			wg.Done()
 		}
 		time.Sleep(24 * time.Hour)
+	}
+}
+
+// LoadMetaVaults will reload the meta vaults data store from the last state of the local Badger Database
+func LoadMetaVaults(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
+	temp := make(map[string]models.TVaultFromMeta)
+	err := store.LoadFromDBForChainID(`VaultsFromMeta`, chainID, &temp)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if temp != nil && (len(temp) > 0) {
+		store.VaultsFromMeta[chainID] = temp
+		logs.Success("Data loaded for the metaVaults data store for chainID: " + strconv.FormatUint(chainID, 10))
+	} else {
+		logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

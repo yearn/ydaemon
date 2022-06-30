@@ -29,6 +29,8 @@ jobs:
     - name: Test
       run: |
         go install github.com/rakyll/gotest@latest
+        go mod vendor
+        go mod tidy
         gotest ./...
 
     - name: Coverage

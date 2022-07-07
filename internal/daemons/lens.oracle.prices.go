@@ -12,7 +12,6 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
 )
 
 // lensABI takes the ABI of the lens contract and prepare it for the multicall
@@ -77,10 +76,6 @@ func FetchLens(chainID uint64) {
 // to retreive the prices of the yvTokens and the tokens that are listed in the
 // corresponding subgraph.
 func RunLens(chainID uint64, wg *sync.WaitGroup) {
-	// First, we fetch the initial tokenList for this chain
-	store.TokenList[chainID] = utils.UniqueArrayAddress(fetchTokenList(chainID))
-
-	// Then, we fetch the prices of the tokens, in loop.
 	isDone := false
 	for {
 		FetchLens(chainID)
@@ -99,7 +94,7 @@ func LoadLens(chainID uint64, wg *sync.WaitGroup) {
 	err := store.LoadFromDBForChainID(`TokenPrices`, chainID, &temp)
 	if err != nil {
 		if err.Error() == "Key not found" {
-			logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
+			logs.Warning("No tokenPrices data found for chainID: " + strconv.FormatUint(chainID, 10))
 			return
 		}
 		logs.Error(err)

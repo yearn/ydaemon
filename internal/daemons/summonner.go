@@ -7,8 +7,12 @@ import (
 
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64, delay time.Duration) {
-	var wg sync.WaitGroup
+	var wgPrimary sync.WaitGroup
+	go RunTokenList(chainID, &wgPrimary)
+	wgPrimary.Add(1)
+	wgPrimary.Wait()
 
+	var wg sync.WaitGroup
 	time.Sleep(delay)
 	go RunMetaVaults(chainID, &wg)
 	go RunMetaTokens(chainID, &wg)
@@ -21,8 +25,12 @@ func SummonDaemons(chainID uint64, delay time.Duration) {
 
 // LoadDaemons is a function that loads the previous store state for a given chainID
 func LoadDaemons(chainID uint64) {
-	var wg sync.WaitGroup
+	var wgPrimary sync.WaitGroup
+	go LoadTokenList(chainID, &wgPrimary)
+	wgPrimary.Add(1)
+	wgPrimary.Wait()
 
+	var wg sync.WaitGroup
 	go LoadMetaVaults(chainID, &wg)
 	go LoadMetaTokens(chainID, &wg)
 	go LoadMetaStrategies(chainID, &wg)

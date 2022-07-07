@@ -1,23 +1,60 @@
 package daemons
 
 import (
+	"context"
 	"strconv"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/machinebox/graphql"
+	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
+	"github.com/majorfi/ydaemon/internal/models"
 	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
+
+// fetchTokenList is an utility function that will query the subgraph in order to
+// extract the list of tokens (yvTokens, aka share tokens, and underlying tokens)
+// used by the Yearn system in order to be able to play with them (e.g. get the
+// price though the lens contract).
+func fetchTokenList(chainID uint64) ([]common.Address, error) {
+	tokenList := []common.Address{}
+	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	request := graphql.NewRequest(`
+        {
+			vaults(first: 1000) {
+				shareToken {id}
+				token {id}
+			}
+        }
+    `)
+	var response models.TGraphQueryResponseForVaults
+	if err := client.Run(context.Background(), request, &response); err != nil {
+		logs.Error(`Error fetching token list from the graph: `, err)
+		return tokenList, err
+	}
+
+	for _, vault := range response.Vaults {
+		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
+		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
+	}
+	return tokenList, nil
+}
 
 // RunTokenList is a goroutine that periodically execute a graph request for a
 // given chain to retreive the list of tokens used in Yearn's ecosystem.
 func RunTokenList(chainID uint64, wg *sync.WaitGroup) {
 	isDone := false
 	for {
-		store.TokenList[chainID] = utils.UniqueArrayAddress(fetchTokenList(chainID))
-		store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
+		list, err := fetchTokenList(chainID)
+		if err != nil {
+			logs.Error(`Error fetching token list from the graph: `, err)
+		} else {
+			store.TokenList[chainID] = utils.UniqueArrayAddress(list)
+			store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
+		}
 		if !isDone {
 			isDone = true
 			wg.Done()

@@ -1,5 +1,9 @@
 # yDaemon
+![](./.github/og.jpeg)
+
 yDaemon is the next-gen API for Yearn. Based on the one from the [exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
+
+See documentation here: https://ydaemon.ycorpo.com/
 
 ## Install
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:

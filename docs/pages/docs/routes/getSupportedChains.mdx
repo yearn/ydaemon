@@ -1,0 +1,23 @@
+# GetSupportedChains
+REST API endpoint to list the supported chains.
+
+```bash
+GET info/chains
+```
+
+## What's going on?
+Actually not much, this is just sending back to the client the list of supported chains.
+
+## Arguments
+*N/A*
+
+## Return Value
+
+```go
+[]uint64{}
+```
+
+### Example
+```json
+[1,250,42161]
+```

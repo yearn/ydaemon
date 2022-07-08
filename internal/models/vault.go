@@ -69,24 +69,25 @@ type TMigration struct {
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Inception          uint64      `json:"inception"`
-	Address            string      `json:"address"`
-	Symbol             string      `json:"symbol"`
-	DisplaySymbol      string      `json:"display_symbol"`
-	FormatedSymbol     string      `json:"formated_symbol"`
-	Name               string      `json:"name"`
-	DisplayName        string      `json:"display_name"`
-	FormatedName       string      `json:"formated_name"`
-	Icon               string      `json:"icon"`
-	Token              TToken      `json:"token"`
-	TVL                TTVL        `json:"tvl"`
-	APY                TAPY        `json:"apy"`
-	Strategies         []TStrategy `json:"strategies"`
-	Endorsed           bool        `json:"endorsed"`
-	Version            string      `json:"version"`
-	Decimals           uint64      `json:"decimals"`
-	Type               string      `json:"type"`
-	Emergency_shutdown bool        `json:"emergency_shutdown"`
-	Updated            uint64      `json:"updated"`
-	Migration          TMigration  `json:"migration"`
+	Address            string `json:"address"`
+	Symbol             string `json:"symbol"`
+	DisplaySymbol      string `json:"display_symbol"`
+	FormatedSymbol     string `json:"formated_symbol"`
+	Name               string `json:"name"`
+	DisplayName        string `json:"display_name"`
+	FormatedName       string `json:"formated_name"`
+	Icon               string `json:"icon"`
+	Version            string `json:"version"`
+	Type               string `json:"type"`
+	Inception          uint64 `json:"inception"`
+	Decimals           uint64 `json:"decimals"`
+	Updated            uint64 `json:"updated"`
+	Endorsed           bool   `json:"endorsed"`
+	Emergency_shutdown bool   `json:"emergency_shutdown"`
+
+	Token      TToken      `json:"token"`
+	TVL        TTVL        `json:"tvl"`
+	APY        TAPY        `json:"apy"`
+	Strategies []TStrategy `json:"strategies"`
+	Migration  TMigration  `json:"migration"`
 }

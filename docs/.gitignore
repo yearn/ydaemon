@@ -1,0 +1,50 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+cmd/cmd
+cmd/api
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+.idea
+.DS_Store
+/env*.list
+coverage.html
+assert.sh
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# delve binary
+__debug_bin
+
+# Docker windows err
+hs_err*
+.vscode/
+
+coverage.txt
+docs/validated-postman.json
+docs/validated-swagger.yaml.env
+
+.env
+*/.env.env
+*/node_modules
+*/build
+
+vendor
+ystore
+
+# build
+yDaemon
+.next
+.swc
+.turbo

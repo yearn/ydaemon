@@ -1,0 +1,35 @@
+---
+title: 'Introduction'
+---
+
+import Callout from 'nextra-theme-docs/callout'
+
+# Introduction
+> Demons are often described as troublesome and mischievous more than seriously threatening or dangerous, and as lesser beings rather than more important supernatural beings.
+
+The yDaemon API is a REST API that provides access to the Yearn data sources. It should provide all the data that the Yearn team needs to build the Yearn ecosystem, based on a system of Daemons, little subprocess (_Goroutines_) that are responsible for fetching, handling, and storing data from the various sources in order to make them available to the rest of the system.
+
+<Callout type="warning" emoji="⚠️">
+	The lib is far from complete and is being actively developed. Some part heavily depends on some other libs and APIs. Please, use it with caution and be aware of the fact that it is not guaranteed to be stable.  
+	Feel free to contribute to the daemon and report any issues you might encounter.
+</Callout>
+
+## What is happening on startup?
+TODO
+
+## Folder and structure
+The project is organised following the [Go Standards](https://github.com/golang-standards/project-layout) folder structure with some tweaks. In a nutshell, the project is divided as follow:
+- `cmd`: contains the `main.go` entry point for this API. It's role is _only_ to init the project.
+- `contracts`: contains the `.sol` and `.vy` files used to generate the contract `.go` files with `abigen`
+- `internal`: contains the actual code of the API. It's divided in subpackages, each one representing a different part of the API, keeping the code clean and easy to maintain.
+
+The `internal` folder is the _private application and library code_. This is the code we don't want others importing in their applications or libraries. This layout pattern is enforced by the Go compiler itself. Inside of it, we have the following subpackages:
+- `contracts`: contains the `abigen` generated contract `.go` files. Theses files should not be altered.
+- `controllers`: contains the logic around the `REST` API: routes, server, actions by route, etc. This is where the entry-point and the wrapper around the logic for a specific `REST` endpoint is.
+- `daemons`: contains all our background processes. They will run forever in the background to update the data we may need in our application.
+- `ethereum`: contains all the logic aroung the Blockchain calls. It's the place where we call the RPC, connect to the client, call the methods, etc.
+- `logs`: helper package used to display nice logs.
+- `models`: contains all the cross-package types we need.
+- `store`: contains all the cross-package global variables.
+- `utils`: contains all the cross-package utility functions.
+Now, let's get started with how to setup the [logical part](/docs/install/setup-contexts-hooks).

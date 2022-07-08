@@ -1,0 +1,32 @@
+# GetBlacklistedVaults
+REST API endpoint to list the blacklisted vaults. A vault can be blacklisted for various reason, but mostly because of failed deployment or tests only setup.
+
+```bash
+GET info/vaults/blacklisted
+```
+
+## What's going on?
+The blacklisted vaults are available in the `internal/utils/constants.go` file, as a mapping for each network. The key is the network ID, and the value is the list of blacklisted vaults.  
+A blacklisted vault will be ignored by the daemon, and will not be considered as a valid vault for any query.
+
+## Arguments
+#### Params
+*N/A*
+
+#### Query
+- `?chainID`: The chainID of the chain you want to get the Vaults for. If not provided, all chains are used.
+
+## Return Value
+
+```go
+map[uint64][]common.Address
+```
+
+### Example
+```json
+{
+	"1": ["0x662fbf2c1e4b04342eeba6371ec1c7420042b86f", "0x9c13e225ae007731caa49fd17a41379ab1a489f4"],
+	"250": ["0x03b82e4070ca32ff63a03f2ecfc16c0165689a9d"],
+	"42161": ["0x0000000000000000000000000000000000000000"]
+}
+```

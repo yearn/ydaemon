@@ -1,0 +1,46 @@
+---
+title: 'Yearn Web Lib'
+---
+
+import {Header}	from	'../components/Header.tsx';
+
+<Header />
+
+**yDaemon** is the next-gen API for Yearn. Based on the one from the [exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
+
+<div className="text-center" style={{marginTop: 40, marginBottom: 40}}>
+[Get Started](/docs/intro) · [Examples](/docs/6-components/card) ·
+[GitHub Repository](https://github.com/Majorfi/yDaemon)
+</div>
+
+## Quick Start
+Ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
+```sh
+RPC_URI_FOR_1=
+RPC_URI_FOR_250=
+RPC_URI_FOR_42161=
+```
+
+Then, install, build and run the API:
+```bash
+go mod vendor
+go build -o yDaemon ./cmd
+./yDaemon
+```
+
+After a few seconds, you should see the API running. You can test it by running the following command:
+```bash
+curl http://localhost:8080/1/vaults/all
+```
+
+## Data Sources
+In order to build this API, data are fetched from a number of Yearn data sources:
+- [Yearn Subgraph](https://thegraph.com/explorer/subgraph?id=5xMSe3wTNLgFQqsAc5SCVVwT4MiRb5AogJCuSN9PjzXF) as the base data source.
+- [Yearn Meta](https://github.com/yearn/yearn-meta) for some basic data and information updated by the Yearn team.
+- [Yearn API](https://api.yearn.finance/) for the APY computation.
+- [Yearn Lens Oracle](https://etherscan.io/address/0xca11bde05977b3631167028862be2a173976ca11) for tokens and vault prices.
+
+In order to provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.
+- Prices from the oracle are updated every 30 seconds for every tokens and vaults, as the price may change at every block.
+- APY information is updated every 10 minutes, as the underlying API is updated every 30 minutes
+- Meta data are updated every minutes. This will be moved to every 30 minutes in the future, and trust a webhook from the github deployement system to update the data.

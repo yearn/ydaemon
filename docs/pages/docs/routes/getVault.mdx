@@ -1,0 +1,174 @@
+# GetVaults
+REST API endpoint to get one specific vault for a given chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains.
+
+```bash
+GET :chainID/vaults/:address
+```
+
+## What's going on?
+When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about this specific vault from the official Yearn's subgraph.  
+If the address is invalid or the vault does not exists, the `400` error code is returned. Otherwise, the data is merged with:
+- The information about the `vaults` from the Yearn Meta API.
+- The information about the `tokens` from the Yearn Meta API.
+- The information about the `strategies` from the Yearn Meta API.
+- The information about the `price` from the Yearn Lens Oracle API.
+- The information about the `apy` from the Yearn API.
+
+All of theses are correctly associated and merged based on the arguments passed to the endpoint, and then returned to the client as a JSON object with the `200` success code.
+
+## Arguments
+#### Params
+- `chainID`: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+- `address`: The address of the vault you want to get. Must be provided in the URL.
+
+#### Query
+- `?strategiesCondition=debtLimit|inQueue`: The strategy condition to use when selecting the active strategies. The `debtLimit` strategy will set all strategies with some debt as `active`, whereas the `inQueue` strategy will set as `active` the strategies currently in the vault withdrawal queue. Default is `debtLimit`.
+
+## Return Value
+
+```go
+type TVault struct {
+	Address             string      `json:"address"` // Address of the vault on the chain.
+	Symbol              string      `json:"symbol"` // Symbol representing the vault.
+	DisplaySymbol       string      `json:"display_symbol"` // Human set alias for the symbol.
+	FormatedSymbol      string      `json:"formated_symbol"` // Following format: `yv{underlyingTokenSymbol}`
+	Name                string      `json:"name"` // Name of the vault.
+	DisplayName         string      `json:"display_name"` // Human set alias for the name of the vault.
+	FormatedName        string      `json:"formated_name"` // Following format: `{underlyingTokenName} yVault`.
+	Icon                string      `json:"icon"` // URI of the 128x128 png icon of the vault.
+	Version             string      `json:"version"` // Version of the vault.
+	Type                string      `json:"type"` // Type of the vault (only V2 for now).
+	Inception           uint64      `json:"inception"` // Date when the vault was created.
+	Decimals            uint64      `json:"decimals"` // Number of decimals of the vault token.
+	Updated             uint64      `json:"updated"` //When the vault was last updated.
+	Endorsed            bool        `json:"endorsed"` //Indicates if the vault is endorsed by Yearn or not
+	Emergency_shutdown  bool        `json:"emergency_shutdown"` //Indicates if the vault is currently in emergency shutdown mode.
+
+	//Token contains the relevant information about the underlying token.
+	Token               struct {
+		Address         string      `json:"address"` // Address of the underlying token.
+		Name            string      `json:"name"` // Name of the underlying token.
+		DisplayName     string      `json:"display_name"` // Human set alias for the name of the underlying token.
+		Symbol          string      `json:"symbol"` // Symbol of the underlying token.
+		Description     string      `json:"description"` // Meta-description for this token, based on Yearn-Meta.
+		Decimals        uint64      `json:"decimals"` // Number of decimals of the underlying token.
+		Icon            string      `json:"icon"` // URI of the 128x128 png icon of the underlying token.
+	}                               `json:"token"`
+
+	//TVL holds the info about the value locked in a vault
+	TVL                 struct {
+		TotalAssets     string      `json:"total_assets"` // Total amount of assets in the vault (ex: 120 wETH)
+		TVL             float64     `json:"tvl"` // Total value in USD of assets in the vault (ex: 12000$)
+		Price           float64     `json:"price"` // Value in USD of 1 unit of asset in the vault (ex: 100$)
+	}                               `json:"tvl"`
+
+	//APY contains all the information useful about the APY, APR, fees and breakdown.
+	APY                 struct {
+		Type            string      `json:"type"`
+		GrossAPR        float64     `json:"gross_apr"`
+		NetAPY          float64     `json:"net_apy"`
+		Fees            struct {
+			Performance float64     `json:"performance"`
+			Withdrawal  float64     `json:"withdrawal"`
+			Management  float64     `json:"management"`
+			KeepCRV     float64     `json:"keep_crv"`
+			CvxKeepCRV  float64     `json:"cvx_keep_crv"`
+		}                           `json:"fees"`
+		Points          struct {
+			WeekAgo     float64     `json:"week_ago"`
+			MonthAgo    float64     `json:"month_ago"`
+			Inception   float64     `json:"inception"`
+		}                           `json:"points"`
+		Composite       struct {
+			Boost       float64      `json:"boost"`
+			PoolAPY     float64      `json:"pool_apy"`
+			BoostedAPR  float64      `json:"boosted_apr"`
+			BaseAPR     float64      `json:"base_apr"`
+			CvxAPR      float64      `json:"cvx_apr"`
+			RewardsAPR  float64      `json:"rewards_apr"`
+		}                            `json:"composite"`
+	}                                `json:"apy"`
+
+	//Strategies contains all the information useful about the strategies currently active in this vault.
+	Strategies          []struct {
+		Address         string       `json:"address"` // Address of the strategy.
+		Name            string       `json:"name"` // Name of the strategy.
+		Description     string       `json:"description"` // Meta-description for this strategy, based on Yearn-Meta.
+	}                                `json:"strategies"`
+	
+	//Migration helps us to know if a vault is in the process of being migrated.
+	Migration           struct {
+		Available       bool        `json:"available"` // Indicates if the vault has an available migration.
+		Address         string      `json:"address"` //Address of the new version of this vault.
+	}                               `json:"migration"`
+}
+```
+
+### Example
+```json
+{
+	"inception": 1656957238,
+	"address": "0xc3Ca90f164d43E2053cCa591aC6e63FCAAD80782",
+	"symbol": "yvWFTM",
+	"display_symbol": "",
+	"formated_symbol": "yvWFTM",
+	"name": "WFTM yVault",
+	"display_name": "",
+	"formated_name": "Wrapped Fantom yVault",
+	"icon": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/250/0xc3Ca90f164d43E2053cCa591aC6e63FCAAD80782/logo-128.png",
+	"token": {
+		"address": "0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83",
+		"name": "Wrapped Fantom",
+		"display_name": "Wrapped Fantom",
+		"symbol": "WFTM",
+		"description": "Fantom is a smart contract platform that intends to solve the scalability issues of existing public distributed ledger technologies. The Fantom platform adopts a new protocol known as the Lachesis Protocol to maintain consensus, which will be integrated into the current Fantom Opera Chain. The aim is to allow applications built on top of the Fantom Opera Chain to enjoy instant transactions and near zero transaction costs for all users. To convert your FTM to WFTM, you can easily swap at [Sushi](https://app.sushi.com/swap).",
+		"decimals": 18,
+		"icon": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/250/0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83/logo-128.png"
+	},
+	"tvl": {
+		"total_assets": "4830894576209241175634",
+		"tvl": 0,
+		"price": 0
+	},
+	"apy": {
+		"type": "",
+		"gross_apr": 0,
+		"net_apy": 0,
+		"fees": {
+			"performance": 0.2,
+			"withdrawal": 0,
+			"management": 0,
+			"keep_crv": 0,
+			"cvx_keep_crv": 0
+		},
+		"points": {
+			"week_ago": 0,
+			"month_ago": 0,
+			"inception": 0
+		},
+		"composite": {
+			"boost": 0,
+			"pool_apy": 0,
+			"boosted_apr": 0,
+			"base_apr": 0,
+			"cvx_apr": 0,
+			"rewards_apr": 0
+		}
+	},
+	"strategies": [{
+		"address": "0xae6a4f5fC5C7e9C9AF50A0349E560C1b2e2fA9b9",
+		"name": "StrategyTarotWFTM",
+		"description": ""
+	}],
+	"endorsed": false,
+	"version": "0.4.3",
+	"decimals": 18,
+	"type": "v2",
+	"emergency_shutdown": false,
+	"updated": 1656975237,
+	"migration": {
+		"available": false,
+		"address": "0xc3Ca90f164d43E2053cCa591aC6e63FCAAD80782"
+	}
+}
+```

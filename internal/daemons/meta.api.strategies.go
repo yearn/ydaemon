@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/majorfi/ydaemon/internal/logs"
@@ -56,21 +55,6 @@ func FetchStrategiesFromMeta(chainID uint64) {
 		}
 	}
 	store.SaveInDBForChainID(`StrategiesFromMeta`, chainID, store.StrategiesFromMeta[chainID])
-}
-
-// RunMetaStrategies is a goroutine that periodically fetches the strategies information from the
-// Yearn Meta API.
-// The data is updated every _at least_ 24 hours.
-func RunMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		FetchStrategiesFromMeta(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(24 * time.Hour)
-	}
 }
 
 // LoadMetaStrategies will reload the meta strategies data store from the last state of the local Badger Database

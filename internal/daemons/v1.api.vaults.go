@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/majorfi/ydaemon/internal/logs"
@@ -55,20 +54,6 @@ func FetchVaultsFromV1(chainID uint64) {
 		store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address).String()] = vault
 	}
 	store.SaveInDBForChainID(`VaultsFromAPIV1`, chainID, store.VaultsFromAPIV1[chainID])
-}
-
-// RunAPIV1Vaults is a goroutine that periodically fetches the meta information from the
-// Yearn Meta API. It runs forever, every 15 minutes, for the desired chain.
-func RunAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		FetchVaultsFromV1(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(10 * time.Minute)
-	}
 }
 
 // LoadAPIV1Vaults will reload the vaults from the v1 API data store from the last state of the local Badger Database

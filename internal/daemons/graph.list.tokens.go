@@ -4,7 +4,6 @@ import (
 	"context"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
@@ -15,11 +14,11 @@ import (
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
-// fetchTokenList is an utility function that will query the subgraph in order to
+// FetchTokenList is an utility function that will query the subgraph in order to
 // extract the list of tokens (yvTokens, aka share tokens, and underlying tokens)
 // used by the Yearn system in order to be able to play with them (e.g. get the
 // price though the lens contract).
-func fetchTokenList(chainID uint64) ([]common.Address, error) {
+func FetchTokenList(chainID uint64) {
 	tokenList := []common.Address{}
 	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
 	request := graphql.NewRequest(`
@@ -33,34 +32,15 @@ func fetchTokenList(chainID uint64) ([]common.Address, error) {
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(`Error fetching token list from the graph: `, err)
-		return tokenList, err
+		return
 	}
 
 	for _, vault := range response.Vaults {
 		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
 		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
 	}
-	return tokenList, nil
-}
-
-// RunTokenList is a goroutine that periodically execute a graph request for a
-// given chain to retreive the list of tokens used in Yearn's ecosystem.
-func RunTokenList(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		list, err := fetchTokenList(chainID)
-		if err != nil {
-			logs.Error(`Error fetching token list from the graph: `, err)
-		} else {
-			store.TokenList[chainID] = utils.UniqueArrayAddress(list)
-			store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
-		}
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(1 * time.Hour)
-	}
+	store.TokenList[chainID] = utils.UniqueArrayAddress(tokenList)
+	store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
 }
 
 // LoadTokenList will reload the tokenList data store from the last state of the local Badger Database

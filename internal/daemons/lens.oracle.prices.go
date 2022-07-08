@@ -5,7 +5,6 @@ import (
 	"math/big"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/majorfi/ydaemon/internal/contracts"
@@ -70,21 +69,6 @@ func FetchLens(chainID uint64) {
 		store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
 	}
 	store.SaveInDBForChainID(`TokenPrices`, chainID, store.TokenPrices[chainID])
-}
-
-// RunLens is a goroutine that periodically execute a multicall on the given chainID
-// to retreive the prices of the yvTokens and the tokens that are listed in the
-// corresponding subgraph.
-func RunLens(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		FetchLens(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(30 * time.Second)
-	}
 }
 
 // LoadLens will reload the lens data store from the last state of the local Badger Database

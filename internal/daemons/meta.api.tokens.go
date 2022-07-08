@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/majorfi/ydaemon/internal/logs"
@@ -54,21 +53,6 @@ func FetchTokensFromMeta(chainID uint64) {
 		store.TokensFromMeta[chainID][common.HexToAddress(token.Address).String()] = token
 	}
 	store.SaveInDBForChainID(`TokensFromMeta`, chainID, store.TokensFromMeta[chainID])
-}
-
-// RunMetaTokens is a goroutine that periodically fetches the tokens information from the
-// Yearn Meta API.
-// The data is updated every _at least_ 24 hours.
-func RunMetaTokens(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		FetchTokensFromMeta(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(24 * time.Hour)
-	}
 }
 
 // LoadMetaTokens will reload the meta tokens data store from the last state of the local Badger Database

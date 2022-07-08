@@ -23,15 +23,15 @@ The arguments are always the same:
 
 #### Process
 ```go
-func RunDaemon(chainID uint64, wg *sync.WaitGroup) {
+func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performAction func(chainID uint64)) {
 	isDone := false
 	for {
-		performTask(chainID)
+		performAction(chainID)
 		if !isDone {
 			isDone = true
 			wg.Done()
 		}
-		time.Sleep(24 * time.Hour)
+		time.Sleep(delay)
 	}
 }
 ```

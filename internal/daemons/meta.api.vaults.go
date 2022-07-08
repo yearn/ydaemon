@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/majorfi/ydaemon/internal/logs"
@@ -54,21 +53,6 @@ func FetchVaultsFromMeta(chainID uint64) {
 		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address).String()] = vault
 	}
 	store.SaveInDBForChainID(`VaultsFromMeta`, chainID, store.VaultsFromMeta[chainID])
-}
-
-// RunMetaVaults is a goroutine that periodically fetches the meta information from the
-// Yearn Meta API.
-// The data is updated every _at least_ 24 hours.
-func RunMetaVaults(chainID uint64, wg *sync.WaitGroup) {
-	isDone := false
-	for {
-		FetchVaultsFromMeta(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		time.Sleep(24 * time.Hour)
-	}
 }
 
 // LoadMetaVaults will reload the meta vaults data store from the last state of the local Badger Database

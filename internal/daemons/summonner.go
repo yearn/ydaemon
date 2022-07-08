@@ -5,20 +5,33 @@ import (
 	"time"
 )
 
+// runDaemon is a function that contains the standard flow to run a daemon
+func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performAction func(chainID uint64)) {
+	isDone := false
+	for {
+		performAction(chainID)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		time.Sleep(delay)
+	}
+}
+
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64, delay time.Duration) {
 	var wgPrimary sync.WaitGroup
-	go RunTokenList(chainID, &wgPrimary)
+	go runDaemon(chainID, &wgPrimary, time.Hour, FetchTokenList)
 	wgPrimary.Add(1)
 	wgPrimary.Wait()
 
 	var wg sync.WaitGroup
 	time.Sleep(delay)
-	go RunMetaVaults(chainID, &wg)
-	go RunMetaTokens(chainID, &wg)
-	go RunMetaStrategies(chainID, &wg)
-	go RunLens(chainID, &wg)
-	go RunAPIV1Vaults(chainID, &wg)
+	go runDaemon(chainID, &wg, 24*time.Hour, FetchVaultsFromMeta)
+	go runDaemon(chainID, &wg, 24*time.Hour, FetchTokensFromMeta)
+	go runDaemon(chainID, &wg, 24*time.Hour, FetchStrategiesFromMeta)
+	go runDaemon(chainID, &wg, time.Minute, FetchLens)
+	go runDaemon(chainID, &wg, 10*time.Minute, FetchVaultsFromV1)
 	wg.Add(5)
 	wg.Wait()
 }

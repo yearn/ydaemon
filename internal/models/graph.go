@@ -9,7 +9,7 @@ type TVaultFromGraphToken struct {
 }
 
 //TVaultFromGraphStrategyReportsResult holds the results for a given report
-type TVaultFromGraphStrategyReportsResult struct {
+type TVaultFromGraphStrategyReportsResults struct {
 	APR        string `json:"apr,omitempty"`
 	Duration   string `json:"duration,omitempty"`
 	DurationPr string `json:"durationPr,omitempty"`
@@ -17,32 +17,32 @@ type TVaultFromGraphStrategyReportsResult struct {
 
 //TVaultFromGraphStrategyReports holds the reports for a given strategy
 type TVaultFromGraphStrategyReports struct {
-	Id        string `json:"id,omitempty"`
-	TotalDebt string `json:"totalDebt,omitempty"`
-	TotalLoss string `json:"totalLoss,omitempty"`
-	TotalGain string `json:"totalGain,omitempty"`
-	DebtLimit string `json:"debtLimit,omitempty"`
-	DebtPaid  string `json:"debtPaid,omitempty"`
-	DebtAdded string `json:"debtAdded,omitempty"`
-	Loss      string `json:"loss,omitempty"`
-	Gain      string `json:"gain,omitempty"`
-	Timestamp string `json:"timestamp,omitempty"`
+	Id        string                                  `json:"id,omitempty"`
+	TotalDebt string                                  `json:"totalDebt,omitempty"`
+	TotalLoss string                                  `json:"totalLoss,omitempty"`
+	TotalGain string                                  `json:"totalGain,omitempty"`
+	DebtPaid  string                                  `json:"debtPaid,omitempty"`
+	DebtAdded string                                  `json:"debtAdded,omitempty"`
+	Loss      string                                  `json:"loss,omitempty"`
+	Gain      string                                  `json:"gain,omitempty"`
+	Timestamp string                                  `json:"timestamp,omitempty"`
+	Results   []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
 }
 
 //TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
-	Address       string                         `json:"address"`
-	Name          string                         `json:"name"`
-	DebtLimit     string                         `json:"debtLimit"`
-	ApiVersion    string                         `json:"apiVersion,omitempty"`
-	Keeper        string                         `json:"keeper,omitempty"`
-	Strategist    string                         `json:"strategist,omitempty"`
-	Rewards       string                         `json:"rewards,omitempty"`
-	HealthCheck   string                         `json:"healthCheck"`
-	DoHealthCheck bool                           `json:"doHealthCheck,omitempty"`
-	InQueue       bool                           `json:"inQueue"`
-	EmergencyExit bool                           `json:"emergencyExit,omitempty"`
-	Reports       TVaultFromGraphStrategyReports `json:"reports,omitempty"`
+	Address       string                           `json:"address"`
+	Name          string                           `json:"name"`
+	DebtLimit     string                           `json:"debtLimit"`
+	ApiVersion    string                           `json:"apiVersion,omitempty"`
+	Keeper        string                           `json:"keeper,omitempty"`
+	Strategist    string                           `json:"strategist,omitempty"`
+	Rewards       string                           `json:"rewards,omitempty"`
+	HealthCheck   string                           `json:"healthCheck"`
+	DoHealthCheck bool                             `json:"doHealthCheck,omitempty"`
+	InQueue       bool                             `json:"inQueue"`
+	EmergencyExit bool                             `json:"emergencyExit,omitempty"`
+	Reports       []TVaultFromGraphStrategyReports `json:"reports,omitempty"`
 }
 
 //TVaultFromGraphVaultDayData holds the daily information about the vault status

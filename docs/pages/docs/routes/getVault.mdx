@@ -23,84 +23,102 @@ All of theses are correctly associated and merged based on the arguments passed 
 
 #### Query
 - `?strategiesCondition=debtLimit|inQueue`: The strategy condition to use when selecting the active strategies. The `debtLimit` strategy will set all strategies with some debt as `active`, whereas the `inQueue` strategy will set as `active` the strategies currently in the vault withdrawal queue. Default is `debtLimit`.
+- `?strategiesCondition=withDetails|noDetails`: Indicate if we should also query and serve the details about the strategies. If `noDetails` is set, the `Details` field will be ignored. Default is `noDetails`.
+
 
 ## Return Value
 
 ```go
 type TVault struct {
-	Address             string      `json:"address"` // Address of the vault on the chain.
-	Symbol              string      `json:"symbol"` // Symbol representing the vault.
-	DisplaySymbol       string      `json:"display_symbol"` // Human set alias for the symbol.
-	FormatedSymbol      string      `json:"formated_symbol"` // Following format: `yv{underlyingTokenSymbol}`
-	Name                string      `json:"name"` // Name of the vault.
-	DisplayName         string      `json:"display_name"` // Human set alias for the name of the vault.
-	FormatedName        string      `json:"formated_name"` // Following format: `{underlyingTokenName} yVault`.
-	Icon                string      `json:"icon"` // URI of the 128x128 png icon of the vault.
-	Version             string      `json:"version"` // Version of the vault.
-	Type                string      `json:"type"` // Type of the vault (only V2 for now).
-	Inception           uint64      `json:"inception"` // Date when the vault was created.
-	Decimals            uint64      `json:"decimals"` // Number of decimals of the vault token.
-	Updated             uint64      `json:"updated"` //When the vault was last updated.
-	Endorsed            bool        `json:"endorsed"` //Indicates if the vault is endorsed by Yearn or not
-	Emergency_shutdown  bool        `json:"emergency_shutdown"` //Indicates if the vault is currently in emergency shutdown mode.
+	Address               string      `json:"address"` // Address of the vault on the chain.
+	Symbol                string      `json:"symbol"` // Symbol representing the vault.
+	DisplaySymbol         string      `json:"display_symbol"` // Human set alias for the symbol.
+	FormatedSymbol        string      `json:"formated_symbol"` // Following format: `yv{underlyingTokenSymbol}`
+	Name                  string      `json:"name"` // Name of the vault.
+	DisplayName           string      `json:"display_name"` // Human set alias for the name of the vault.
+	FormatedName          string      `json:"formated_name"` // Following format: `{underlyingTokenName} yVault`.
+	Icon                  string      `json:"icon"` // URI of the 128x128 png icon of the vault.
+	Version               string      `json:"version"` // Version of the vault.
+	Type                  string      `json:"type"` // Type of the vault (only V2 for now).
+	Inception             uint64      `json:"inception"` // Date when the vault was created.
+	Decimals              uint64      `json:"decimals"` // Number of decimals of the vault token.
+	Updated               uint64      `json:"updated"` //When the vault was last updated.
+	Endorsed              bool        `json:"endorsed"` //Indicates if the vault is endorsed by Yearn or not
+	Emergency_shutdown    bool        `json:"emergency_shutdown"` //Indicates if the vault is currently in emergency shutdown mode.
 
 	//Token contains the relevant information about the underlying token.
-	Token               struct {
-		Address         string      `json:"address"` // Address of the underlying token.
-		Name            string      `json:"name"` // Name of the underlying token.
-		DisplayName     string      `json:"display_name"` // Human set alias for the name of the underlying token.
-		Symbol          string      `json:"symbol"` // Symbol of the underlying token.
-		Description     string      `json:"description"` // Meta-description for this token, based on Yearn-Meta.
-		Decimals        uint64      `json:"decimals"` // Number of decimals of the underlying token.
-		Icon            string      `json:"icon"` // URI of the 128x128 png icon of the underlying token.
-	}                               `json:"token"`
+	Token                 struct {
+		Address           string      `json:"address"` // Address of the underlying token.
+		Name              string      `json:"name"` // Name of the underlying token.
+		DisplayName       string      `json:"display_name"` // Human set alias for the name of the underlying token.
+		Symbol            string      `json:"symbol"` // Symbol of the underlying token.
+		Description       string      `json:"description"` // Meta-description for this token, based on Yearn-Meta.
+		Decimals          uint64      `json:"decimals"` // Number of decimals of the underlying token.
+		Icon              string      `json:"icon"` // URI of the 128x128 png icon of the underlying token.
+	}                                 `json:"token"`
 
 	//TVL holds the info about the value locked in a vault
-	TVL                 struct {
-		TotalAssets     string      `json:"total_assets"` // Total amount of assets in the vault (ex: 120 wETH)
-		TVL             float64     `json:"tvl"` // Total value in USD of assets in the vault (ex: 12000$)
-		Price           float64     `json:"price"` // Value in USD of 1 unit of asset in the vault (ex: 100$)
-	}                               `json:"tvl"`
+	TVL                   struct {
+		TotalAssets       string      `json:"total_assets"` // Total amount of assets in the vault (ex: 120 wETH)
+		TVL               float64     `json:"tvl"` // Total value in USD of assets in the vault (ex: 12000$)
+		Price             float64     `json:"price"` // Value in USD of 1 unit of asset in the vault (ex: 100$)
+	}                                 `json:"tvl"`
 
 	//APY contains all the information useful about the APY, APR, fees and breakdown.
-	APY                 struct {
-		Type            string      `json:"type"`
-		GrossAPR        float64     `json:"gross_apr"`
-		NetAPY          float64     `json:"net_apy"`
-		Fees            struct {
-			Performance float64     `json:"performance"`
-			Withdrawal  float64     `json:"withdrawal"`
-			Management  float64     `json:"management"`
-			KeepCRV     float64     `json:"keep_crv"`
-			CvxKeepCRV  float64     `json:"cvx_keep_crv"`
-		}                           `json:"fees"`
-		Points          struct {
-			WeekAgo     float64     `json:"week_ago"`
-			MonthAgo    float64     `json:"month_ago"`
-			Inception   float64     `json:"inception"`
-		}                           `json:"points"`
-		Composite       struct {
-			Boost       float64      `json:"boost"`
-			PoolAPY     float64      `json:"pool_apy"`
-			BoostedAPR  float64      `json:"boosted_apr"`
-			BaseAPR     float64      `json:"base_apr"`
-			CvxAPR      float64      `json:"cvx_apr"`
-			RewardsAPR  float64      `json:"rewards_apr"`
-		}                            `json:"composite"`
-	}                                `json:"apy"`
+	APY                   struct {
+		Type              string      `json:"type"`
+		GrossAPR          float64     `json:"gross_apr"`
+		NetAPY            float64     `json:"net_apy"`
+		Fees              struct {
+			Performance   float64     `json:"performance"`
+			Withdrawal    float64     `json:"withdrawal"`
+			Management    float64     `json:"management"`
+			KeepCRV       float64     `json:"keep_crv"`
+			CvxKeepCRV    float64     `json:"cvx_keep_crv"`
+		  }                           `json:"fees"`
+		Points            struct {
+			WeekAgo       float64     `json:"week_ago"`
+			MonthAgo      float64     `json:"month_ago"`
+			Inception     float64     `json:"inception"`
+		  }                           `json:"points"`
+		Composite         struct {
+			Boost         float64      `json:"boost"`
+			PoolAPY       float64      `json:"pool_apy"`
+			BoostedAPR    float64      `json:"boosted_apr"`
+			BaseAPR       float64      `json:"base_apr"`
+			CvxAPR        float64      `json:"cvx_apr"`
+			RewardsAPR    float64      `json:"rewards_apr"`
+		}                              `json:"composite"`
+	}                                  `json:"apy"`
 
 	//Strategies contains all the information useful about the strategies currently active in this vault.
-	Strategies          []struct {
-		Address         string       `json:"address"` // Address of the strategy.
-		Name            string       `json:"name"` // Name of the strategy.
-		Description     string       `json:"description"` // Meta-description for this strategy, based on Yearn-Meta.
+	Strategies            []struct {
+		Address           string       `json:"address"` // Address of the strategy.
+		Name              string       `json:"name"` // Name of the strategy.
+		Description       string       `json:"description"` // Meta-description for this strategy, based on Yearn-Meta.
+		Details           struct {
+			Version       string     `json:"version"`
+			Keeper        string     `json:"keeper"`
+			Strategist    string     `json:"strategist"`
+			Rewards       string     `json:"rewards"`
+			HealthCheck   string     `json:"healthCheck"`
+			TotalDebt     string     `json:"totalDebt"`
+			TotalLoss     string     `json:"totalLoss"`
+			TotalGain     string     `json:"totalGain"`
+			LastReport    string     `json:"lastReport"`
+			APR           float64    `json:"apr"`
+			DebtLimit     uint64     `json:"debtLimit"`
+			DoHealthCheck bool       `json:"doHealthCheck"`
+			InQueue       bool       `json:"inQueue"`
+			EmergencyExit bool       `json:"emergencyExit"`
+		}                            `json:"details"`
 	}                                `json:"strategies"`
 	
 	//Migration helps us to know if a vault is in the process of being migrated.
-	Migration           struct {
-		Available       bool        `json:"available"` // Indicates if the vault has an available migration.
-		Address         string      `json:"address"` //Address of the new version of this vault.
-	}                               `json:"migration"`
+	Migration             struct {
+		Available         bool        `json:"available"` // Indicates if the vault has an available migration.
+		Address           string      `json:"address"` //Address of the new version of this vault.
+	}                                 `json:"migration"`
 }
 ```
 

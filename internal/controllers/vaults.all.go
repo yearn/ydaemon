@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
@@ -78,30 +79,62 @@ func getVaultSymbol(
 }
 
 func prepareStrategies(
+	withStrategiesDetails bool,
 	strategiesCondition string,
 	vaultFromGraph models.TVaultFromGraph,
 	strategiesFromMeta map[string]models.TStrategyFromMeta,
 ) []models.TStrategy {
 	strategies := []models.TStrategy{}
 	for _, strategy := range vaultFromGraph.Strategies {
-		if strategiesCondition == `inQueue` {
-			if strategy.InQueue {
-				strategies = append(strategies, models.TStrategy{
-					Address:     common.HexToAddress(strategy.Address).String(),
-					Name:        strategy.Name,
-					Description: strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Description,
-				})
+		debtLimit, _ := strconv.ParseUint(strategy.DebtLimit, 10, 64)
+		currentStrategy := models.TStrategy{
+			Address:     common.HexToAddress(strategy.Address).String(),
+			Name:        strategy.Name,
+			Description: strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Description,
+		}
+		if withStrategiesDetails {
+			currentStrategy.Details = &models.TStrategyDetails{}
+			currentStrategy.Details.Keeper = common.HexToAddress(strategy.Keeper).String()
+			currentStrategy.Details.Strategist = common.HexToAddress(strategy.Strategist).String()
+			currentStrategy.Details.Rewards = common.HexToAddress(strategy.Rewards).String()
+			currentStrategy.Details.HealthCheck = common.HexToAddress(strategy.HealthCheck).String()
+			currentStrategy.Details.Version = strategy.ApiVersion
+			currentStrategy.Details.InQueue = strategy.InQueue
+			currentStrategy.Details.DoHealthCheck = strategy.DoHealthCheck
+			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
+			currentStrategy.Details.DebtLimit = debtLimit
+			currentStrategy.Details.LastReport = `0`
+			currentStrategy.Details.TotalDebt = `0`
+			currentStrategy.Details.TotalLoss = `0`
+			currentStrategy.Details.TotalGain = `0`
+			currentStrategy.Details.APR = 0.0
+
+			if len(strategy.Reports) > 0 {
+				var totalAPR float64
+				for _, report := range strategy.Reports {
+					if len(report.Results) > 0 {
+						floatAPR, err := strconv.ParseFloat(report.Results[0].APR, 64)
+						if err != nil {
+							logs.Warning(err)
+							floatAPR = 0
+						}
+						totalAPR += floatAPR
+					}
+				}
+				currentStrategy.Details.LastReport = strategy.Reports[0].Timestamp
+				currentStrategy.Details.TotalDebt = strategy.Reports[0].TotalDebt
+				currentStrategy.Details.TotalLoss = strategy.Reports[0].TotalLoss
+				currentStrategy.Details.TotalGain = strategy.Reports[0].TotalGain
+				floatTotalAPR := (totalAPR / float64(len(strategy.Reports))) * 100
+				currentStrategy.Details.APR = floatTotalAPR
 			}
 		}
-		if strategiesCondition == `debtLimit` {
-			debtLimit, err := strconv.ParseUint(strategy.DebtLimit, 10, 64)
-			if debtLimit > 0 && err == nil {
-				strategies = append(strategies, models.TStrategy{
-					Address:     common.HexToAddress(strategy.Address).String(),
-					Name:        strategy.Name,
-					Description: strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Description,
-				})
-			}
+
+		if strategiesCondition == `inQueue` && strategy.InQueue {
+			strategies = append(strategies, currentStrategy)
+		}
+		if strategiesCondition == `debtLimit` && debtLimit > 0 {
+			strategies = append(strategies, currentStrategy)
 		}
 	}
 	return strategies
@@ -110,6 +143,7 @@ func prepareStrategies(
 func prepareVaultSchema(
 	chainID uint64,
 	strategiesCondition string,
+	withStrategiesDetails bool,
 	vaultFromGraph models.TVaultFromGraph,
 	vaultFromMeta models.TVaultFromMeta,
 	shareTokenFromMeta models.TTokenFromMeta,
@@ -176,7 +210,12 @@ func prepareVaultSchema(
 	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(humanizedTVL, humanizedPrice).Float64()
 
 	// We can now extract the strategies from the graph based on the selected filter condition.
-	strategies := prepareStrategies(strategiesCondition, vaultFromGraph, strategiesFromMeta)
+	strategies := prepareStrategies(
+		withStrategiesDetails,
+		strategiesCondition,
+		vaultFromGraph,
+		strategiesFromMeta,
+	)
 
 	vault := &models.TVault{
 		Inception:      activation,

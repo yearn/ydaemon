@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/majorfi/ydaemon/internal/ethereum"
+	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
 	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
@@ -19,37 +20,12 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 	first := queryWithFallback(c.Query("first"), "1000")
 	orderDirection := queryWithFallback(c.Query("orderDirection"), "desc")
 	orderBy := queryWithFallback(c.Query("orderBy"), "activation")
+	withDetails := queryWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
 
 	return graphql.NewRequest(`{
 		vaults(skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
-			id
-			activation
-			apiVersion
-			classification
-			managementFeeBps
-			performanceFeeBps
-			balanceTokens
-			latestUpdate {
-				timestamp
-			}
-			shareToken {
-				name
-				symbol
-				id
-				decimals
-			}
-			token {
-				name
-				symbol
-				id
-				decimals
-			}
-			strategies(first: 40) {
-				address
-				name
-				inQueue
-				debtLimit
-			}
+			` + utils.GetGraphRequestVault() + `
+			` + utils.GetGraphRequestStrategies(40, withDetails) + `
 		}
     }`)
 }
@@ -67,7 +43,8 @@ func (y controller) GetAllVaults(c *gin.Context) {
 	request := graphQLRequestForAllVaults(c)
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+		logs.Error(err)
+		c.String(http.StatusBadRequest, "invalid graphQL response")
 		return
 	}
 
@@ -79,6 +56,7 @@ func (y controller) GetAllVaults(c *gin.Context) {
 		}
 
 		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
+		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 		vaultFromMeta := store.VaultsFromMeta[chainID][vaultAddress.String()]
 		tokenFromMeta := store.TokensFromMeta[chainID][common.HexToAddress(vaultFromGraph.Token.Id).String()]
 		shareTokenFromMeta := store.TokensFromMeta[chainID][vaultAddress.String()]
@@ -89,6 +67,7 @@ func (y controller) GetAllVaults(c *gin.Context) {
 		data = append(data, prepareVaultSchema(
 			chainID,
 			strategiesCondition,
+			withStrategiesDetails,
 			vaultFromGraph,
 			vaultFromMeta,
 			shareTokenFromMeta,

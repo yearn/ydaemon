@@ -54,11 +54,30 @@ type TAPY struct {
 	Composite TAPYComposite `json:"composite"`
 }
 
+// TStrategyDetails contains the details about a strategy.
+type TStrategyDetails struct {
+	Version       string  `json:"version"`
+	Keeper        string  `json:"keeper"`
+	Strategist    string  `json:"strategist"`
+	Rewards       string  `json:"rewards"`
+	HealthCheck   string  `json:"healthCheck"`
+	TotalDebt     string  `json:"totalDebt"`
+	TotalLoss     string  `json:"totalLoss"`
+	TotalGain     string  `json:"totalGain"`
+	LastReport    string  `json:"lastReport"`
+	APR           float64 `json:"apr"`
+	DebtLimit     uint64  `json:"debtLimit"`
+	DoHealthCheck bool    `json:"doHealthCheck"`
+	InQueue       bool    `json:"inQueue"`
+	EmergencyExit bool    `json:"emergencyExit"`
+}
+
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     string `json:"address"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	Address     string            `json:"address"`
+	Name        string            `json:"name"`
+	Description string            `json:"description"`
+	Details     *TStrategyDetails `json:"details,omitempty"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.

@@ -16,37 +16,13 @@ import (
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
-func graphQLRequestForOneVault(vaultAddress string) *graphql.Request {
+func graphQLRequestForOneVault(vaultAddress string, c *gin.Context) *graphql.Request {
+	withDetails := queryWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+
 	return graphql.NewRequest(`{
 		vault(id: "` + strings.ToLower(vaultAddress) + `") {
-			id
-			activation
-			apiVersion
-			classification
-			managementFeeBps
-			performanceFeeBps
-			balanceTokens
-			latestUpdate {
-				timestamp
-			}
-			shareToken {
-				name
-				symbol
-				id
-				decimals
-			}
-			token {
-				name
-				symbol
-				id
-				decimals
-			}
-			strategies(first: 40) {
-				address
-				name
-				inQueue
-				debtLimit
-			}
+			` + utils.GetGraphRequestVault() + `
+			` + utils.GetGraphRequestStrategies(40, withDetails) + `
 		}
 	}`)
 }
@@ -70,7 +46,7 @@ func (y controller) GetVault(c *gin.Context) {
 	}
 
 	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
-	request := graphQLRequestForOneVault(vaultAddress)
+	request := graphQLRequestForOneVault(vaultAddress, c)
 	var response models.TGraphQueryResponseForVault
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)
@@ -79,6 +55,7 @@ func (y controller) GetVault(c *gin.Context) {
 	}
 
 	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
+	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	vaultFromGraph := response.Vault
 	vaultFromMeta := store.VaultsFromMeta[chainID][common.HexToAddress(vaultFromGraph.Id).String()]
 	shareTokenFromMeta := store.TokensFromMeta[chainID][common.HexToAddress(vaultFromGraph.ShareToken.Id).String()]
@@ -90,6 +67,7 @@ func (y controller) GetVault(c *gin.Context) {
 	c.JSON(http.StatusOK, prepareVaultSchema(
 		chainID,
 		strategiesCondition,
+		withStrategiesDetails,
 		vaultFromGraph,
 		vaultFromMeta,
 		shareTokenFromMeta,

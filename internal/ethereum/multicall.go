@@ -145,12 +145,16 @@ func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[s
 	}
 
 	for i, response := range responses {
-		unpacked, err := calls[i].Abi.Unpack(calls[i].Method, response.ReturnData)
-		if err != nil {
-			// logs.Warning("Failed to unpack method " + calls[i].Method + " for " + calls[i].Name + " : " + err.Error())
-			results[calls[i].Name+calls[i].Method] = nil
+		if response.ReturnData != nil {
+			unpacked, err := calls[i].Abi.Unpack(calls[i].Method, response.ReturnData)
+			if err != nil {
+				// logs.Warning("Failed to unpack method " + calls[i].Method + " for " + calls[i].Name + " : " + err.Error())
+				results[calls[i].Name+calls[i].Method] = nil
+			} else {
+				results[calls[i].Name+calls[i].Method] = unpacked
+			}
 		} else {
-			results[calls[i].Name+calls[i].Method] = unpacked
+			results[calls[i].Name+calls[i].Method] = nil
 		}
 	}
 

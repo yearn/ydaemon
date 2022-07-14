@@ -56,20 +56,32 @@ type TAPY struct {
 
 // TStrategyDetails contains the details about a strategy.
 type TStrategyDetails struct {
-	Version       string  `json:"version"`
-	Keeper        string  `json:"keeper"`
-	Strategist    string  `json:"strategist"`
-	Rewards       string  `json:"rewards"`
-	HealthCheck   string  `json:"healthCheck"`
-	TotalDebt     string  `json:"totalDebt"`
-	TotalLoss     string  `json:"totalLoss"`
-	TotalGain     string  `json:"totalGain"`
-	LastReport    string  `json:"lastReport"`
-	APR           float64 `json:"apr"`
-	DebtLimit     uint64  `json:"debtLimit"`
-	DoHealthCheck bool    `json:"doHealthCheck"`
-	InQueue       bool    `json:"inQueue"`
-	EmergencyExit bool    `json:"emergencyExit"`
+	Version              string  `json:"version"`
+	Keeper               string  `json:"keeper"`
+	Strategist           string  `json:"strategist"`
+	Rewards              string  `json:"rewards"`
+	HealthCheck          string  `json:"healthCheck"`
+	TotalDebt            string  `json:"totalDebt"`
+	TotalLoss            string  `json:"totalLoss"`
+	TotalGain            string  `json:"totalGain"`
+	RateLimit            string  `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest    string  `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest    string  `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	EstimatedTotalAssets string  `json:"estimatedTotalAssets"`
+	CreditAvailable      string  `json:"creditAvailable"`
+	DebtOutstanding      string  `json:"debtOutstanding"`
+	ExpectedReturn       string  `json:"expectedReturn"`
+	APR                  float64 `json:"apr"`
+	PerformanceFee       uint64  `json:"performanceFee"`
+	LastReport           uint64  `json:"lastReport"`
+	Activation           uint64  `json:"activation"`
+	KeepCRV              uint64  `json:"keepCRV"`
+	DebtRatio            uint64  `json:"debtRatio,omitempty"` // Only > 0.2.2
+	DebtLimit            uint64  `json:"debtLimit"`
+	DoHealthCheck        bool    `json:"doHealthCheck"`
+	InQueue              bool    `json:"inQueue"`
+	EmergencyExit        bool    `json:"emergencyExit"`
+	IsActive             bool    `json:"isActive"`
 }
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
@@ -88,25 +100,24 @@ type TMigration struct {
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address            string `json:"address"`
-	Symbol             string `json:"symbol"`
-	DisplaySymbol      string `json:"display_symbol"`
-	FormatedSymbol     string `json:"formated_symbol"`
-	Name               string `json:"name"`
-	DisplayName        string `json:"display_name"`
-	FormatedName       string `json:"formated_name"`
-	Icon               string `json:"icon"`
-	Version            string `json:"version"`
-	Type               string `json:"type"`
-	Inception          uint64 `json:"inception"`
-	Decimals           uint64 `json:"decimals"`
-	Updated            uint64 `json:"updated"`
-	Endorsed           bool   `json:"endorsed"`
-	Emergency_shutdown bool   `json:"emergency_shutdown"`
-
-	Token      TToken      `json:"token"`
-	TVL        TTVL        `json:"tvl"`
-	APY        TAPY        `json:"apy"`
-	Strategies []TStrategy `json:"strategies"`
-	Migration  TMigration  `json:"migration"`
+	Address            string      `json:"address"`
+	Symbol             string      `json:"symbol"`
+	DisplaySymbol      string      `json:"display_symbol"`
+	FormatedSymbol     string      `json:"formated_symbol"`
+	Name               string      `json:"name"`
+	DisplayName        string      `json:"display_name"`
+	FormatedName       string      `json:"formated_name"`
+	Icon               string      `json:"icon"`
+	Version            string      `json:"version"`
+	Type               string      `json:"type"`
+	Inception          uint64      `json:"inception"`
+	Decimals           uint64      `json:"decimals"`
+	Updated            uint64      `json:"updated"`
+	Endorsed           bool        `json:"endorsed"`
+	Emergency_shutdown bool        `json:"emergency_shutdown"`
+	Token              TToken      `json:"token"`
+	TVL                TTVL        `json:"tvl"`
+	APY                TAPY        `json:"apy"`
+	Strategies         []TStrategy `json:"strategies"`
+	Migration          TMigration  `json:"migration"`
 }

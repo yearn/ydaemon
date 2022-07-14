@@ -11,16 +11,15 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
 func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
-	skip := queryWithFallback(c.Query("skip"), "0")
-	first := queryWithFallback(c.Query("first"), "1000")
-	orderDirection := queryWithFallback(c.Query("orderDirection"), "desc")
-	orderBy := queryWithFallback(c.Query("orderBy"), "activation")
-	withDetails := queryWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	skip := valueWithFallback(c.Query("skip"), "0")
+	first := valueWithFallback(c.Query("first"), "1000")
+	orderDirection := valueWithFallback(c.Query("orderDirection"), "desc")
+	orderBy := valueWithFallback(c.Query("orderBy"), "activation")
+	withDetails := valueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
 
 	return graphql.NewRequest(`{
 		vaults(skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
@@ -57,24 +56,12 @@ func (y controller) GetAllVaults(c *gin.Context) {
 
 		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-		vaultFromMeta := store.VaultsFromMeta[chainID][vaultAddress.String()]
-		tokenFromMeta := store.TokensFromMeta[chainID][common.HexToAddress(vaultFromGraph.Token.Id).String()]
-		shareTokenFromMeta := store.TokensFromMeta[chainID][vaultAddress.String()]
-		apyFromAPIV1 := store.VaultsFromAPIV1[chainID][vaultAddress.String()]
-		strategiesFromMeta := store.StrategiesFromMeta[chainID]
-		pricesForChainID := store.TokenPrices[chainID]
 
 		data = append(data, prepareVaultSchema(
 			chainID,
 			strategiesCondition,
 			withStrategiesDetails,
 			vaultFromGraph,
-			vaultFromMeta,
-			shareTokenFromMeta,
-			tokenFromMeta,
-			strategiesFromMeta,
-			apyFromAPIV1,
-			pricesForChainID,
 		))
 	}
 	c.JSON(http.StatusOK, data)

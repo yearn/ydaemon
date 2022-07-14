@@ -12,12 +12,11 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
 func graphQLRequestForOneVault(vaultAddress string, c *gin.Context) *graphql.Request {
-	withDetails := queryWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	withDetails := valueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
 
 	return graphql.NewRequest(`{
 		vault(id: "` + strings.ToLower(vaultAddress) + `") {
@@ -57,23 +56,12 @@ func (y controller) GetVault(c *gin.Context) {
 	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	vaultFromGraph := response.Vault
-	vaultFromMeta := store.VaultsFromMeta[chainID][common.HexToAddress(vaultFromGraph.Id).String()]
-	shareTokenFromMeta := store.TokensFromMeta[chainID][common.HexToAddress(vaultFromGraph.ShareToken.Id).String()]
-	tokenFromMeta := store.TokensFromMeta[chainID][common.HexToAddress(vaultFromGraph.Token.Id).String()]
-	apyFromAPIV1 := store.VaultsFromAPIV1[chainID][common.HexToAddress(vaultFromGraph.Id).String()]
-	strategiesFromMeta := store.StrategiesFromMeta[chainID]
-	pricesForChainID := store.TokenPrices[chainID]
 
-	c.JSON(http.StatusOK, prepareVaultSchema(
+	data := prepareVaultSchema(
 		chainID,
 		strategiesCondition,
 		withStrategiesDetails,
 		vaultFromGraph,
-		vaultFromMeta,
-		shareTokenFromMeta,
-		tokenFromMeta,
-		strategiesFromMeta,
-		apyFromAPIV1,
-		pricesForChainID,
-	))
+	)
+	c.JSON(http.StatusOK, data)
 }

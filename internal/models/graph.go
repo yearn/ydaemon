@@ -17,23 +17,14 @@ type TVaultFromGraphStrategyReportsResults struct {
 
 //TVaultFromGraphStrategyReports holds the reports for a given strategy
 type TVaultFromGraphStrategyReports struct {
-	Id        string                                  `json:"id,omitempty"`
-	TotalDebt string                                  `json:"totalDebt,omitempty"`
-	TotalLoss string                                  `json:"totalLoss,omitempty"`
-	TotalGain string                                  `json:"totalGain,omitempty"`
-	DebtPaid  string                                  `json:"debtPaid,omitempty"`
-	DebtAdded string                                  `json:"debtAdded,omitempty"`
-	Loss      string                                  `json:"loss,omitempty"`
-	Gain      string                                  `json:"gain,omitempty"`
-	Timestamp string                                  `json:"timestamp,omitempty"`
-	Results   []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
+	Id      string                                  `json:"id,omitempty"`
+	Results []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
 }
 
 //TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
 	Address       string                           `json:"address"`
 	Name          string                           `json:"name"`
-	DebtLimit     string                           `json:"debtLimit"`
 	ApiVersion    string                           `json:"apiVersion,omitempty"`
 	Keeper        string                           `json:"keeper,omitempty"`
 	Strategist    string                           `json:"strategist,omitempty"`

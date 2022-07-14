@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"math/big"
+	"strconv"
 	"strings"
 	"time"
 
@@ -11,11 +13,35 @@ import (
 
 type controller struct{}
 
-func queryWithFallback(s string, defaultValue string) string {
-	if s == "" {
+func valueWithFallback(s string, defaultValue string) string {
+	if s == "" || s == "\"\"" {
 		return defaultValue
 	}
 	return s
+}
+
+func bValueWithFallbackUint64(s *big.Int, defaultValue uint64) uint64 {
+	if s == nil {
+		return defaultValue
+	}
+	return s.Uint64()
+}
+func bValueWithFallbackString(s *big.Int, defaultValue string) string {
+	if s == nil {
+		return defaultValue
+	}
+	return s.String()
+}
+
+func strToUint(s string, defaultValue uint64) uint64 {
+	if s == "" {
+		return defaultValue
+	}
+	value, err := strconv.ParseUint(s, 10, 64)
+	if err != nil {
+		return defaultValue
+	}
+	return value
 }
 
 func logger(log *logrus.Logger) gin.HandlerFunc {

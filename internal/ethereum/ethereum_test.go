@@ -84,10 +84,10 @@ func testFetchLens(chainID uint64) {
 	}
 	response := caller.ExecuteByBatch(calls, maxBatch)
 	if store.TokenPrices[chainID] == nil {
-		store.TokenPrices[chainID] = make(map[common.Address]uint64)
+		store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}
 	for key, value := range response {
-		store.TokenPrices[chainID][common.HexToAddress(key)] = new(big.Int).SetBytes(value.ReturnData).Uint64()
+		store.TokenPrices[chainID][common.HexToAddress(key)] = value[0].(*big.Int)
 	}
 }
 

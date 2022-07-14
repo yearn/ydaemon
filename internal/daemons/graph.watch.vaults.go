@@ -55,9 +55,6 @@ func graphQLRequestForAllVaults() *graphql.Request {
 					totalDebt
 					totalLoss
 					totalGain
-					debtLimit
-					debtPaid
-					debtAdded
 					loss
 					gain
 					timestamp

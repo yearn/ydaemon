@@ -56,11 +56,11 @@ func GetLensAddress(chainID uint64) common.Address {
 func GetMulticallAddress(chainID uint64) common.Address {
 	switch chainID {
 	case 1:
-		return common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`)
+		return common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`)
 	case 250:
-		return common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`)
+		return common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`)
 	case 42161:
-		return common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`)
+		return common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`)
 	}
 	return common.HexToAddress(`0`)
 }

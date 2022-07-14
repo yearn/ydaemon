@@ -19,7 +19,7 @@ func (y controller) GetSupportedChains(c *gin.Context) {
 
 //GetBlacklistedVaults returns a list of blacklisted vaults by the API
 func (y controller) GetBlacklistedVaults(c *gin.Context) {
-	chainID := queryWithFallback(c.Query("chainID"), "0")
+	chainID := valueWithFallback(c.Query("chainID"), "0")
 	if chainID == "0" {
 		c.JSON(http.StatusOK, utils.BLACKLISTED_VAULTS)
 	} else {

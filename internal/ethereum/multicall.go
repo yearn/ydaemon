@@ -16,6 +16,9 @@ import (
 
 type Call struct {
 	Name     string         `json:"name"`
+	Method   string         `json:"method"`
+	Version  string         `json:"version"`
+	Abi      *abi.ABI       `json:"abi"`
 	Target   common.Address `json:"target"`
 	CallData []byte         `json:"call_data"`
 }
@@ -69,8 +72,8 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 
 func (caller *TEthMultiCaller) execute(multiCallGroup []contracts.Multicall2Call) ([]byte, error) {
 	// Prepare calldata for multicall
-	abi, _ := contracts.Multicall3MetaData.GetAbi()
-	callData, err := abi.Pack("tryAggregate", true, multiCallGroup)
+	abi, _ := contracts.Multicall2MetaData.GetAbi()
+	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
 	if err != nil {
 		logs.Error("Failed to pack tryAggregate")
 		return []byte{}, err
@@ -97,10 +100,10 @@ func (caller *TEthMultiCaller) execute(multiCallGroup []contracts.Multicall2Call
 // ExecuteByBatch will take a group of calls, split them in fixed-size group to
 // avoid the gasLimit error, and execute as many transactions as required to get
 // the results.
-func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[string]CallResponse {
+func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[string][]interface{} {
 	var responses []CallResponse
 	// Create mapping for results. Be aware that we sometimes get two empty results initially, unsure why
-	results := make(map[string]CallResponse)
+	results := make(map[string][]interface{})
 
 	// Add calls to multicall structure for the contract
 	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
@@ -108,7 +111,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[s
 		multiCalls = append(multiCalls, call.GetMultiCall())
 	}
 
-	var resp []byte
 	for i := 0; i < len(multiCalls); i += batchSize {
 		var group []contracts.Multicall2Call
 
@@ -118,29 +120,38 @@ func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int) map[s
 			group = multiCalls[i : i+batchSize]
 		}
 
-		tempResp, err := caller.execute(group)
+		tempPackedResp, err := caller.execute(group)
 		if err != nil {
-			return results
+			logs.Error(err)
+			continue
 		}
-		resp = append(resp, tempResp...)
-	}
 
-	// Unpack results
-	unpackedResp, _ := caller.Abi.Unpack("tryAggregate", resp)
-	a, err := json.Marshal(unpackedResp[0])
-	if err != nil {
-		logs.Error("Failed to unmarshal response: " + err.Error())
-		return results
-	}
+		// Unpack results
+		unpackedResp, _ := caller.Abi.Unpack("tryAggregate", tempPackedResp)
+		a, err := json.Marshal(unpackedResp[0])
+		if err != nil {
+			logs.Error("Failed to unmarshal response: " + err.Error())
+			continue
+		}
 
-	// Unpack results
-	if err := json.Unmarshal(a, &responses); err != nil {
-		logs.Error("Failed to unmarshal response: " + err.Error())
-		return results
+		// Unpack results
+		var tempResp []CallResponse
+		if err := json.Unmarshal(a, &tempResp); err != nil {
+			logs.Error("Failed to unmarshal response: " + err.Error())
+			continue
+		}
+
+		responses = append(responses, tempResp...)
 	}
 
 	for i, response := range responses {
-		results[calls[i].Name] = response
+		unpacked, err := calls[i].Abi.Unpack(calls[i].Method, response.ReturnData)
+		if err != nil {
+			// logs.Warning("Failed to unpack method " + calls[i].Method + " for " + calls[i].Name + " : " + err.Error())
+			results[calls[i].Name+calls[i].Method] = nil
+		} else {
+			results[calls[i].Name+calls[i].Method] = unpacked
+		}
 	}
 
 	return results

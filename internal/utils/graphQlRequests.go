@@ -46,14 +46,6 @@ func GetGraphRequestStrategies(num int64, withDetails bool) string {
 			rewards
 			reports(first: 10, orderBy: timestamp, orderDirection: desc) {
 				id
-				totalDebt
-				totalLoss
-				totalGain
-				debtPaid
-				debtAdded
-				loss
-				gain
-				timestamp
 				results {
 					apr
 					duration
@@ -69,7 +61,6 @@ func GetGraphRequestStrategies(num int64, withDetails bool) string {
 			address
 			name
 			inQueue
-			debtLimit
 			` + details + `
 		}
 	`)

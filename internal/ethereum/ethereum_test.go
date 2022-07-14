@@ -43,16 +43,11 @@ func fetchTokenList(chainID uint64) []common.Address {
 }
 
 func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) Call {
-	parsedData, err := lensABI.Pack("getPriceUsdcRecommended", tokenAddress)
-	if err != nil {
-		return Call{
-			Target:   contractAddress,
-			CallData: nil,
-			Name:     name,
-		}
-	}
+	parsedData, _ := lensABI.Pack("getPriceUsdcRecommended", tokenAddress)
 	return Call{
 		Target:   contractAddress,
+		Abi:      lensABI,
+		Method:   `getPriceUsdcRecommended`,
 		CallData: parsedData,
 		Name:     name,
 	}

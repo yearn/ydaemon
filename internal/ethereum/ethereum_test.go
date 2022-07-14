@@ -80,7 +80,7 @@ func testFetchLens(chainID uint64) {
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
 	if chainID == 250 {
-		maxBatch = 5
+		maxBatch = 3
 	}
 	response := caller.ExecuteByBatch(calls, maxBatch)
 	if store.TokenPrices[chainID] == nil {

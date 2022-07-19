@@ -14,6 +14,11 @@ func GetGraphRequestVault() string {
 		managementFeeBps
 		performanceFeeBps
 		balanceTokens
+		management
+		governance
+		guardian
+		rewards
+		depositLimit
 		latestUpdate {
 			timestamp
 		}
@@ -64,4 +69,25 @@ func GetGraphRequestStrategies(num int64, withDetails bool) string {
 			` + details + `
 		}
 	`)
+}
+
+// GetStrategyReports construct the basic graphQL request to get the reports
+func GetStrategyReports() string {
+	return (`reports(first: 10, orderBy: timestamp, orderDirection: desc) {
+		id
+		totalDebt
+		totalLoss
+		totalGain
+		debtLimit
+		debtPaid
+		debtAdded
+		loss
+		gain
+		timestamp
+		results {
+			apr
+			duration
+			durationPr
+		}
+	}`)
 }

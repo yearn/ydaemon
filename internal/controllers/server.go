@@ -26,6 +26,9 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
 		router.GET(`:chainID/vaults/:address`, c.GetVault)
 
+		// Retrieve the reports for a specific strategy
+		router.GET(`:chainID/reports/:address`, c.GetReports)
+
 		// Get some information about the API
 		router.GET(`info/chains`, c.GetSupportedChains)
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)

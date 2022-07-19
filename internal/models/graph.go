@@ -75,6 +75,29 @@ type TMetaFromGraph struct {
 	} `json:"block,omitempty"`
 }
 
+//TReportsFromGraph holds the reports data for a graphql request
+type TReportsFromGraph struct {
+	Strategy struct {
+		Reports []struct {
+			ID        string `json:"id"`
+			Timestamp string `json:"timestamp"`
+			DebtAdded string `json:"debtAdded"`
+			DebtLimit string `json:"debtLimit"`
+			TotalDebt string `json:"totalDebt"`
+			Gain      string `json:"gain"`
+			TotalGain string `json:"totalGain"`
+			Loss      string `json:"loss"`
+			TotalLoss string `json:"totalLoss"`
+			DebtPaid  string `json:"debtPaid"`
+			Results   []struct {
+				Duration   string `json:"duration"`
+				DurationPr string `json:"durationPR"`
+				Apr        string `json:"APR"`
+			} `json:"results"`
+		} `json:"reports"`
+	} `json:"strategy"`
+}
+
 //TGraphQueryResponseForVaults is the response from the graphql query when we ask for the vaults
 type TGraphQueryResponseForVaults struct {
 	Vaults []TVaultFromGraph

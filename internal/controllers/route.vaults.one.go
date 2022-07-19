@@ -26,7 +26,7 @@ func graphQLRequestForOneVault(vaultAddress string, c *gin.Context) *graphql.Req
 	}`)
 }
 
-//GetAllVaults will, for a given chainID, return a list of all vaults
+//GetVault will, for a given chainID, return a list of all vaults
 func (y controller) GetVault(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {

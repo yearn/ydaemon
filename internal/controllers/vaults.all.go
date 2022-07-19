@@ -192,6 +192,7 @@ func buildStrategies(
 
 		if withStrategiesDetails {
 			currentStrategy.Details = &models.TStrategyDetails{}
+			currentStrategy.Details.Protocols = strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Protocols
 			currentStrategy.Details.Keeper = common.HexToAddress(strategy.Keeper).String()
 			currentStrategy.Details.Strategist = common.HexToAddress(strategy.Strategist).String()
 			currentStrategy.Details.Rewards = common.HexToAddress(strategy.Rewards).String()
@@ -313,6 +314,16 @@ func prepareVaultSchema(
 			TotalAssets: vaultFromGraph.BalanceTokens,
 			TVL:         fHumanizedTVLPrice,
 			Price:       fHumanizedPrice,
+		},
+		Details: &models.TVaultDetails{
+			Management:            vaultFromGraph.Management,
+			Governance:            vaultFromGraph.Governance,
+			Guardian:              vaultFromGraph.Guardian,
+			Rewards:               vaultFromGraph.Rewards,
+			DepositLimit:          vaultFromGraph.DepositLimit,
+			AvailableDepositLimit: vaultFromGraph.AvailableDepositLimit,
+			PerformanceFee:        vaultFromGraph.PerformanceFeeBps,
+			ManagementFee:         vaultFromGraph.ManagementFeeBps,
 		},
 		APY:        buildAPY(chainID, vaultAddress, vaultFromGraph.PerformanceFeeBps, vaultFromGraph.ManagementFeeBps),
 		Strategies: strategies,

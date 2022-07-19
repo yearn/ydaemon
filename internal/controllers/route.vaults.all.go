@@ -20,7 +20,16 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 	orderDirection := valueWithFallback(c.Query("orderDirection"), "desc")
 	orderBy := valueWithFallback(c.Query("orderBy"), "activation")
 	withDetails := valueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	onlyEndorsed := valueWithFallback(c.Query("classification"), "endorsed") == "endorsed"
 
+	if onlyEndorsed {
+		return graphql.NewRequest(`{
+			vaults(where: {classification: Endorsed}, skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
+				` + utils.GetGraphRequestVault() + `
+				` + utils.GetGraphRequestStrategies(40, withDetails) + `
+			}
+		}`)
+	}
 	return graphql.NewRequest(`{
 		vaults(skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
 			` + utils.GetGraphRequestVault() + `

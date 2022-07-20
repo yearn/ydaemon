@@ -11,8 +11,9 @@ import (
 	"github.com/majorfi/ydaemon/internal/store"
 )
 
-// var chains = []uint64{1, 250, 42161}
-var chains = []uint64{1}
+var chains = []uint64{1, 250, 42161}
+
+// var chains = []uint64{1}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
 	daemons.SummonDaemons(chainID, delay)

@@ -65,11 +65,13 @@ func (y controller) GetAllVaults(c *gin.Context) {
 
 		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
+		withStrategiesRisk := c.Query("strategiesRisk") == "withRisks"
 
 		data = append(data, prepareVaultSchema(
 			chainID,
 			strategiesCondition,
 			withStrategiesDetails,
+			withStrategiesRisk,
 			vaultFromGraph,
 		))
 	}

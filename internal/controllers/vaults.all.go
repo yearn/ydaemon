@@ -170,6 +170,7 @@ func buildMigration(chainID uint64, vaultAddress common.Address) models.TMigrati
 func buildStrategies(
 	chainID uint64,
 	withStrategiesDetails bool,
+	withStrategiesRisk bool,
 	strategiesCondition string,
 	vaultFromGraph models.TVaultFromGraph,
 ) []models.TStrategy {
@@ -244,7 +245,7 @@ func buildStrategies(
 		}
 
 		//Compute the risk data
-		if withStrategiesDetails {
+		if withStrategiesRisk {
 			currentStrategy.Risk = &models.TStrategyRisk{}
 			currentStrategy.Risk.TVLImpact = int(riskData.RiskScores.TVLImpact)
 			currentStrategy.Risk.AuditScore = int(riskData.RiskScores.AuditScore)
@@ -270,6 +271,7 @@ func prepareVaultSchema(
 	chainID uint64,
 	strategiesCondition string,
 	withStrategiesDetails bool,
+	withStrategiesRisk bool,
 	vaultFromGraph models.TVaultFromGraph,
 ) *models.TVault {
 	chainIDAsString := strconv.FormatUint(chainID, 10)
@@ -306,6 +308,7 @@ func prepareVaultSchema(
 	strategies := buildStrategies(
 		chainID,
 		withStrategiesDetails,
+		withStrategiesRisk,
 		strategiesCondition,
 		vaultFromGraph,
 	)

@@ -21,7 +21,7 @@ func buildVaultName(
 ) (name string, displayName string, formatedName string) {
 	name = strings.Replace(vaultName, "\"", "", -1)
 	formatedName = tokenName
-	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress.String()]
+	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
 	if ok {
 		displayName = strings.Replace(vaultFromMeta.DisplayName, "\"", "", -1)
 	}
@@ -54,7 +54,7 @@ func buildVaultSymbol(
 ) (symbol string, displaySymbol string, formatedSymbol string) {
 	symbol = strings.Replace(vaultSymbol, "\"", "", -1)
 	formatedSymbol = tokenSymbol
-	shareTokenFromMeta, ok := store.TokensFromMeta[chainID][tokenAddress.String()]
+	shareTokenFromMeta, ok := store.TokensFromMeta[chainID][tokenAddress]
 	if ok {
 		displaySymbol = strings.Replace(shareTokenFromMeta.Symbol, "\"", "", -1)
 	}
@@ -112,7 +112,7 @@ func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) floa
 // breakdown of the vault.
 func buildAPY(chainID uint64, vaultAddress common.Address, perfFee, manaFee uint64) models.TAPY {
 	apy := models.TAPY{}
-	apyFromAPIV1, ok := store.VaultsFromAPIV1[chainID][vaultAddress.String()]
+	apyFromAPIV1, ok := store.VaultsFromAPIV1[chainID][vaultAddress]
 
 	if ok {
 		apy = models.TAPY{
@@ -149,7 +149,7 @@ func buildAPY(chainID uint64, vaultAddress common.Address, perfFee, manaFee uint
 // one to MigrationTargetVault.
 func buildMigration(chainID uint64, vaultAddress common.Address) models.TMigration {
 	migration := models.TMigration{}
-	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress.String()]
+	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
 
 	if ok {
 		migrationAddress := vaultAddress.String()
@@ -176,23 +176,29 @@ func buildStrategies(
 	strategies := []models.TStrategy{}
 	strategiesFromMeta := store.StrategiesFromMeta[chainID]
 	strategiesFromMulticall := store.StrategyMultiCallData[chainID]
+	strategiesFromRisk := store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
 		multicallData, ok := strategiesFromMulticall[common.HexToAddress(strategy.Address)]
 		if !ok {
 			multicallData = models.TStrategyMultiCallData{}
 		}
+		riskData, ok := strategiesFromRisk[common.HexToAddress(strategy.Address)]
+		if !ok {
+			riskData = models.TStrategyFromRisk{}
+		}
 
 		currentStrategy := models.TStrategy{
 			Address:     common.HexToAddress(strategy.Address).String(),
 			Name:        strategy.Name,
-			Description: strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Description,
+			Description: strategiesFromMeta[common.HexToAddress(strategy.Address)].Description,
 		}
 		debtLimit := bValueWithFallbackUint64(multicallData.DebtLimit, 0)
 
+		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &models.TStrategyDetails{}
-			currentStrategy.Details.Protocols = strategiesFromMeta[common.HexToAddress(strategy.Address).String()].Protocols
+			currentStrategy.Details.Protocols = strategiesFromMeta[common.HexToAddress(strategy.Address)].Protocols
 			currentStrategy.Details.Keeper = common.HexToAddress(strategy.Keeper).String()
 			currentStrategy.Details.Strategist = common.HexToAddress(strategy.Strategist).String()
 			currentStrategy.Details.Rewards = common.HexToAddress(strategy.Rewards).String()
@@ -237,6 +243,19 @@ func buildStrategies(
 			}
 		}
 
+		//Compute the risk data
+		if withStrategiesDetails {
+			currentStrategy.Risk = &models.TStrategyRisk{}
+			currentStrategy.Risk.TVLImpact = int(riskData.RiskScores.TVLImpact)
+			currentStrategy.Risk.AuditScore = int(riskData.RiskScores.AuditScore)
+			currentStrategy.Risk.CodeReviewScore = int(riskData.RiskScores.CodeReviewScore)
+			currentStrategy.Risk.ComplexityScore = int(riskData.RiskScores.ComplexityScore)
+			currentStrategy.Risk.LongevityImpact = int(riskData.RiskScores.LongevityImpact)
+			currentStrategy.Risk.ProtocolSafetyScore = int(riskData.RiskScores.ProtocolSafetyScore)
+			currentStrategy.Risk.TeamKnowledgeScore = int(riskData.RiskScores.TeamKnowledgeScore)
+			currentStrategy.Risk.TestingScore = int(riskData.RiskScores.TestingScore)
+		}
+
 		if strategiesCondition == `inQueue` && strategy.InQueue {
 			strategies = append(strategies, currentStrategy)
 		}
@@ -256,7 +275,7 @@ func prepareVaultSchema(
 	chainIDAsString := strconv.FormatUint(chainID, 10)
 	vaultAddress := common.HexToAddress(vaultFromGraph.Id)
 	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
-	tokenFromMeta := store.TokensFromMeta[chainID][tokenAddress.String()]
+	tokenFromMeta := store.TokensFromMeta[chainID][tokenAddress]
 	updated := strToUint(vaultFromGraph.LatestUpdate.Timestamp, 0)
 	activation := strToUint(vaultFromGraph.Activation, 0)
 	tokenDisplayName := valueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)

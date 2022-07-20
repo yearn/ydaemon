@@ -46,12 +46,12 @@ func FetchStrategiesFromMeta(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TStrategyFromMeta} if we were working with JS/TS
 	if store.StrategiesFromMeta[chainID] == nil {
-		store.StrategiesFromMeta[chainID] = make(map[string]models.TStrategyFromMeta)
+		store.StrategiesFromMeta[chainID] = make(map[common.Address]models.TStrategyFromMeta)
 	}
 	for _, strategy := range strategies {
 		for _, strategyAddress := range strategy.Addresses {
 			// The address is checksummed
-			store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress).String()] = strategy
+			store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)] = strategy
 		}
 	}
 	store.SaveInDBForChainID(`StrategiesFromMeta`, chainID, store.StrategiesFromMeta[chainID])
@@ -60,7 +60,7 @@ func FetchStrategiesFromMeta(chainID uint64) {
 // LoadMetaStrategies will reload the meta strategies data store from the last state of the local Badger Database
 func LoadMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[string]models.TStrategyFromMeta)
+	temp := make(map[common.Address]models.TStrategyFromMeta)
 	err := store.LoadFromDBForChainID(`StrategiesFromMeta`, chainID, &temp)
 	if err != nil {
 		if err.Error() == "Key not found" {

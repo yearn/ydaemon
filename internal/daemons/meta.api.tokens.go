@@ -46,11 +46,11 @@ func FetchTokensFromMeta(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TTokenFromMeta} if we were working with JS/TS
 	if store.TokensFromMeta[chainID] == nil {
-		store.TokensFromMeta[chainID] = make(map[string]models.TTokenFromMeta)
+		store.TokensFromMeta[chainID] = make(map[common.Address]models.TTokenFromMeta)
 	}
 	for _, token := range tokens {
 		// The address is checksummed
-		store.TokensFromMeta[chainID][common.HexToAddress(token.Address).String()] = token
+		store.TokensFromMeta[chainID][common.HexToAddress(token.Address)] = token
 	}
 	store.SaveInDBForChainID(`TokensFromMeta`, chainID, store.TokensFromMeta[chainID])
 }
@@ -58,7 +58,7 @@ func FetchTokensFromMeta(chainID uint64) {
 // LoadMetaTokens will reload the meta tokens data store from the last state of the local Badger Database
 func LoadMetaTokens(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[string]models.TTokenFromMeta)
+	temp := make(map[common.Address]models.TTokenFromMeta)
 	err := store.LoadFromDBForChainID(`TokensFromMeta`, chainID, &temp)
 	if err != nil {
 		if err.Error() == "Key not found" {

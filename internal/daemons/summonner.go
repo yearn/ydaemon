@@ -34,7 +34,8 @@ func SummonDaemons(chainID uint64, delay time.Duration) {
 	go runDaemon(chainID, &wg, time.Minute, FetchLens)
 	go runDaemon(chainID, &wg, 10*time.Minute, FetchVaultsFromV1)
 	go runDaemon(chainID, &wg, 10*time.Minute, FetchStrategiesMulticallData)
-	wg.Add(6)
+	go runDaemon(chainID, &wg, time.Hour, FetchStrategiesFromRisk)
+	wg.Add(7)
 	wg.Wait()
 }
 
@@ -53,6 +54,7 @@ func LoadDaemons(chainID uint64) {
 	go LoadLens(chainID, &wg)
 	go LoadAPIV1Vaults(chainID, &wg)
 	go LoadStrategyMulticallData(chainID, &wg)
-	wg.Add(6)
+	go LoadRiskStrategies(chainID, &wg)
+	wg.Add(7)
 	wg.Wait()
 }

@@ -46,11 +46,11 @@ func FetchVaultsFromMeta(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TVaultFromMeta} if we were working with JS/TS
 	if store.VaultsFromMeta[chainID] == nil {
-		store.VaultsFromMeta[chainID] = make(map[string]models.TVaultFromMeta)
+		store.VaultsFromMeta[chainID] = make(map[common.Address]models.TVaultFromMeta)
 	}
 	for _, vault := range vaults {
 		// The address is checksummed
-		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address).String()] = vault
+		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
 	}
 	store.SaveInDBForChainID(`VaultsFromMeta`, chainID, store.VaultsFromMeta[chainID])
 }
@@ -58,7 +58,7 @@ func FetchVaultsFromMeta(chainID uint64) {
 // LoadMetaVaults will reload the meta vaults data store from the last state of the local Badger Database
 func LoadMetaVaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[string]models.TVaultFromMeta)
+	temp := make(map[common.Address]models.TVaultFromMeta)
 	err := store.LoadFromDBForChainID(`VaultsFromMeta`, chainID, &temp)
 	if err != nil {
 		if err.Error() == "Key not found" {

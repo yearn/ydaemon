@@ -11,6 +11,9 @@ var META_BASE_URL = `https://meta.yearn.finance/api/`
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 
+// RISK_BASE_URL is the base URL to access the risk framework
+var RISK_BASE_URL = `https://d3971bp2359cnv.cloudfront.net/api/strategies/`
+
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	1: {

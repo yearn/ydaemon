@@ -1,0 +1,19 @@
+version: "3.7"
+
+volumes:
+  ystore: {}
+
+services:
+  ydaemon:
+    build: .
+    image: ydaemon
+    ports:
+      - 127.0.0.1:8080:8080
+    volumes:
+      - ystore:/app/ystore
+    environment:
+      - RPC_URI_FOR_1
+      - RPC_URI_FOR_250
+      - RPC_URI_FOR_42161
+      - WEBHOOK_SECRET
+    restart: always

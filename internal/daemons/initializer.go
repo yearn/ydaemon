@@ -12,6 +12,10 @@ func init() {
 		ethereum.GetRPCURI(1),
 		ethereum.GetMulticallAddress(1),
 	)
+	multicallClientForChainID[10] = ethereum.NewMulticall(
+		ethereum.GetRPCURI(10),
+		ethereum.GetMulticallAddress(10),
+	)
 	multicallClientForChainID[250] = ethereum.NewMulticall(
 		ethereum.GetRPCURI(250),
 		ethereum.GetMulticallAddress(250),

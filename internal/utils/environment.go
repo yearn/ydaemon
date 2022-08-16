@@ -9,11 +9,13 @@ import (
 )
 
 var (
-	// RPCURIFor1 : RPC we should use for the chain #1
+	// RPCURIFor1 : RPC we should use for the chain #1 (Ethereum)
 	RPCURIFor1 string
-	// RPCURIFor250 : RPC we should use for the chain #250
+	// RPCURIFor10 : RPC we should use for the chain #10 (Optimism)
+	RPCURIFor10 string
+	// RPCURIFor250 : RPC we should use for the chain #250 (Fantom)
 	RPCURIFor250 string
-	// RPCURIFor42161 : RPC we should use for the chain #42161
+	// RPCURIFor42161 : RPC we should use for the chain #42161 (Arbitrum)
 	RPCURIFor42161 string
 	// WebhookSecret: is a shared secret between Github Webook system and the Daemon to trigger some data refresh
 	WebhookSecret string
@@ -28,6 +30,12 @@ func SetEnv(path string) {
 	if !exists {
 		RPCURIFor1 = "https://eth.public-rpc.com"
 		logs.Warning("RPC_URI_FOR_1 not set, using default value: [https://eth.public-rpc.com]")
+	}
+
+	RPCURIFor10, exists = os.LookupEnv("RPC_URI_FOR_10")
+	if !exists {
+		RPCURIFor10 = "https://mainnet.optimism.io"
+		logs.Warning("RPC_URI_FOR_10 not set, using default value: [https://mainnet.optimism.io]")
 	}
 
 	RPCURIFor250, exists = os.LookupEnv("RPC_URI_FOR_250")

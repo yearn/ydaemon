@@ -14,7 +14,7 @@ import (
 
 //GetSupportedChains returns a list of supported chains by the API
 func (y controller) GetSupportedChains(c *gin.Context) {
-	c.JSON(http.StatusOK, []uint64{1, 250, 42161})
+	c.JSON(http.StatusOK, []uint64{1, 10, 250, 42161})
 }
 
 //GetBlacklistedVaults returns a list of blacklisted vaults by the API

@@ -13,8 +13,8 @@ import (
 func TestLogs(t *testing.T) {
 	assert.IsType(t, TokenList, map[uint64][]common.Address{})
 	assert.IsType(t, TokenPrices, map[uint64]map[common.Address]*big.Int{})
-	assert.IsType(t, VaultsFromMeta, map[uint64]map[string]models.TVaultFromMeta{})
-	assert.IsType(t, TokensFromMeta, map[uint64]map[string]models.TTokenFromMeta{})
-	assert.IsType(t, StrategiesFromMeta, map[uint64]map[string]models.TStrategyFromMeta{})
-	assert.IsType(t, VaultsFromAPIV1, map[uint64]map[string]models.TAPIV1Vault{})
+	assert.IsType(t, VaultsFromMeta, map[uint64]map[common.Address]models.TVaultFromMeta{})
+	assert.IsType(t, TokensFromMeta, map[uint64]map[common.Address]models.TTokenFromMeta{})
+	assert.IsType(t, StrategiesFromMeta, map[uint64]map[common.Address]models.TStrategyFromMeta{})
+	assert.IsType(t, VaultsFromAPIV1, map[uint64]map[common.Address]models.TAPIV1Vault{})
 }

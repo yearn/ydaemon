@@ -20,6 +20,9 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"),
 		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"),
 	},
+	10: {
+		common.HexToAddress("0x0000000000000000000000000000000000000000"),
+	},
 	250: {
 		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"),
 	},

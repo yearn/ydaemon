@@ -63,6 +63,9 @@ func FetchLens(chainID uint64) {
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
+	if chainID == 1 {
+		maxBatch = 50
+	}
 	if chainID == 250 {
 		maxBatch = 3
 	}

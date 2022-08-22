@@ -22,7 +22,7 @@ All of theses are correctly associated and merged based on the arguments passed 
 
 #### Query
 - `?strategiesCondition=debtLimit|inQueue`: The strategy condition to use when selecting the active strategies. The `debtLimit` strategy will set all strategies with some debt as `active`, whereas the `inQueue` strategy will set as `active` the strategies currently in the vault withdrawal queue. Default is `debtLimit`.
-- `?strategiesCondition=withDetails|noDetails`: Indicate if we should also query and serve the details about the strategies. If `noDetails` is set, the `Details` field will be ignored. Default is `noDetails`.
+- `?strategiesDetails=withDetails|noDetails`: Indicate if we should also query and serve the details about the strategies. If `noDetails` is set, the `Details` field will be ignored. Default is `noDetails`.
 - `?skip=N` will skip N vault from the graphQL query. Default is `0`.  
 - `?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`.  
 - `?orderBy=S` will order the result by S on the graphQL query. Default is `activation`.  

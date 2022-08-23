@@ -20,11 +20,13 @@ func NewRouter() *gin.Engine {
 	}
 	router.Use(cors.New(corsConf))
 
+	// General section
 	{
 		c := controller{}
 		// Retrieve the vaults for a specific chainID
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
 		router.GET(`:chainID/vaults/:address`, c.GetVault)
+		router.GET(`:chainID/vault/:address`, c.GetVault)
 
 		// Retrieve the reports for a specific strategy
 		router.GET(`:chainID/reports/:address`, c.GetReports)
@@ -38,6 +40,32 @@ func NewRouter() *gin.Engine {
 
 		// Automatic webhook connected to github to trigger some actions
 		router.POST(`webhook/meta/trigger`, c.TriggerMetaRefreshWebhook)
+	}
+
+	// Meta API section
+	{
+		meta := controller{}
+
+		// Proxy meta strategies
+		router.GET(`api/:chainID/strategies/all`, meta.GetMetaStrategiesLegacy)
+		router.GET(`:chainID/meta/strategies`, meta.GetMetaStrategies)
+		router.GET(`api/:chainID/strategies/:address`, meta.GetMetaStrategy)
+		router.GET(`:chainID/meta/strategies/:address`, meta.GetMetaStrategy)
+		router.GET(`:chainID/meta/strategy/:address`, meta.GetMetaStrategy)
+
+		// Proxy meta tokens
+		router.GET(`api/:chainID/tokens/all`, meta.GetMetaTokensLegacy)
+		router.GET(`:chainID/meta/tokens`, meta.GetMetaTokens)
+		router.GET(`api/:chainID/tokens/:address`, meta.GetMetaToken)
+		router.GET(`:chainID/meta/tokens/:address`, meta.GetMetaToken)
+		router.GET(`:chainID/meta/token/:address`, meta.GetMetaToken)
+
+		// Proxy meta vaults
+		router.GET(`api/:chainID/vaults/all`, meta.GetMetaVaultsLegacy)
+		router.GET(`:chainID/meta/vaults`, meta.GetMetaVaults)
+		router.GET(`api/:chainID/vaults/:address`, meta.GetMetaVault)
+		router.GET(`:chainID/meta/vaults/:address`, meta.GetMetaVault)
+		router.GET(`:chainID/meta/vault/:address`, meta.GetMetaVault)
 	}
 
 	return router

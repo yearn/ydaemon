@@ -42,3 +42,12 @@ var VaultsFromAPIV1 = make(map[uint64]map[common.Address]models.TAPIV1Vault)
 // StrategyMultiCallData holds the details about the strategies based on a multicall
 // The data is updated every 10 minutes
 var StrategyMultiCallData = make(map[uint64]map[common.Address]models.TStrategyMultiCallData)
+
+// RawMetaStrategies contains the raw response from the meta endpoint for the strategies
+var RawMetaStrategies = make(map[uint64][]models.TStrategyFromMeta)
+
+// RawMetaTokens contains the raw response from the meta endpoint for the tokens
+var RawMetaTokens = make(map[uint64][]models.TTokenFromMeta)
+
+// RawMetaVaults contains the raw response from the meta endpoint for the vaults
+var RawMetaVaults = make(map[uint64][]models.TVaultFromMeta)

@@ -32,7 +32,7 @@ func summonDaemonsForAllChains() {
 
 func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
 	daemons.LoadDaemons(chainID)
-	logs.Success(`Store data loaded in yDaemon memory for chainUD ` + strconv.Itoa(int(chainID)) + `!`)
+	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
 	wg.Done()
 }
 func loadDaemonsForAllChains() {

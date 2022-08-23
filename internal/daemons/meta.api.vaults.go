@@ -50,7 +50,10 @@ func FetchVaultsFromMeta(chainID uint64) {
 	}
 	for _, vault := range vaults {
 		// The address is checksummed
+		vault.MigrationContract = common.HexToAddress(vault.MigrationContract).Hex()
+		vault.MigrationTargetVault = common.HexToAddress(vault.MigrationTargetVault).Hex()
 		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
+		store.RawMetaVaults[chainID] = append(store.RawMetaVaults[chainID], vault)
 	}
 	store.SaveInDBForChainID(`VaultsFromMeta`, chainID, store.VaultsFromMeta[chainID])
 }

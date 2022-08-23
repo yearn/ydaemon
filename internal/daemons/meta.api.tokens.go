@@ -42,6 +42,7 @@ func FetchTokensFromMeta(chainID uint64) {
 		logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
 		return
 	}
+	store.RawMetaTokens[chainID] = tokens
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TTokenFromMeta} if we were working with JS/TS

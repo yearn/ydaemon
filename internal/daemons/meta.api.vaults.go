@@ -2,8 +2,6 @@ package daemons
 
 import (
 	"encoding/json"
-	"io/ioutil"
-	"net/http"
 	"strconv"
 	"sync"
 
@@ -17,30 +15,20 @@ import (
 // FetchVaultsFromMeta fetches the meta information from the Yearn Meta API for a given chainID
 // and store the result to the global variable VaultsFromMeta for later use.
 func FetchVaultsFromMeta(chainID uint64) {
-	// Get the meta information from the Yearn Meta API
+	vaults := []models.TVaultFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(utils.META_BASE_URL + chainIDStr + `/vaults/all`)
+	content, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Error("Error fetching meta information from the Yearn Meta API", err)
 		return
 	}
-
-	// Defer the closing of the response body to avoid memory leaks
-	defer resp.Body.Close()
-
-	// Read the response body and store it in the body variable
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error("Error reading response body from the Yearn Meta API", err)
-		return
-	}
-
-	// Unmarshal the response body into the variable VaultsFromMeta. Body is a byte array,
-	// with this manipulation we are putting it in the correct TVaultFromMeta struct format
-	vaults := []models.TVaultFromMeta{}
-	if err := json.Unmarshal(body, &vaults); err != nil {
-		logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
-		return
+	for _, content := range content {
+		vault := models.TVaultFromMeta{}
+		if err := json.Unmarshal(content, &vault); err != nil {
+			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+			continue
+		}
+		vaults = append(vaults, vault)
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
@@ -49,7 +37,6 @@ func FetchVaultsFromMeta(chainID uint64) {
 		store.VaultsFromMeta[chainID] = make(map[common.Address]models.TVaultFromMeta)
 	}
 	for _, vault := range vaults {
-		// The address is checksummed
 		vault.MigrationContract = common.HexToAddress(vault.MigrationContract).Hex()
 		vault.MigrationTargetVault = common.HexToAddress(vault.MigrationTargetVault).Hex()
 		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault

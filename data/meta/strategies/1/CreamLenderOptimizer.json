@@ -1,0 +1,73 @@
+{
+  "$schema": "strategy",
+  "name": "C.R.E.A.M. Lender Optimizer",
+  "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest.",
+  "addresses": [
+    "0x328C39cD6cFD7DA6E64a5efdEF23CD63892f76A0",
+    "0x6a97FC93e39b3f792f1fD6e01565ff412B002D20",
+    "0x86eD4F77d40182b8686a25e125FB3f5a04203CaA",
+    "0xdBA8F9D95c0856637eA9722CA2C47841B5e56C38",
+    "0x79Be3edA1d7FE92c18B9539bce2611bf8dc9BFc5",
+    "0xA875a88dc765BA2B598F858b1D95111D519fd43E",
+    "0x660F73c3C45ca124084a676D3635e5b015E99941",
+    "0xd159E138e8ae4CEEa7a6f2C65a0b7C0bc99799c7",
+    "0x9908540786ACC0b2cb5a3fB76c1aa8bF2aa3B5Bc",
+    "0x1a930F92c780ff359466472D667738bcF6B294BA",
+    "0x0cF55d57d241161E0ec68E72cBB175dbFe84173a"
+  ],
+  "protocols": ["CreamFinance"],
+  "localization": {
+    "en": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "fr": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Fournit {{token}} à [C.R.E.A.M.](https://app.cream.finance) pour générer des intérêts."
+    },
+    "es": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Suministra {{token}} a [C.R.E.A.M.](https://app.cream.finance) para generar intereses."
+    },
+    "de": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "pt": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "el": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "tr": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Kar elde etmek için [C.R.E.A.M.](https://app.cream.finance)'e {{token}} sağlar."
+    },
+    "vi": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "zh": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "将 {{token}} 存入 [C.R.E.A.M.](https://app.cream.finance) 赚取利息。"
+    },
+    "hi": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "ब्याज पैदा करने के लिए {{token}} से [C.R.E.A.M.](https://app.cream.finance) की आपूर्ति करता है।"
+    },
+    "ja": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "id": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    },
+    "ru": {
+      "name": "C.R.E.A.M. Lender Optimizer",
+      "description": "Supplies {{token}} to [C.R.E.A.M.](https://app.cream.finance) to generate interest."
+    }
+  }
+}

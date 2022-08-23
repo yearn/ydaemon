@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Hegic Staking Reinvest",
+  "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy.",
+  "addresses": [
+    "0x41d638024C525C70A53b883608048e705e061F2c",
+    "0x0Ce77bc655aFaAc83947c2e859819185966Ca825"
+  ],
+  "protocols": ["Hegic"],
+  "localization": {
+    "en": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "es": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "de": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "el": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "id": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Hegic Staking Reinvest",
+      "description": "Stakes {{token}} on [Hegic](https://www.hegic.co/app.html#/mainnet/staking/stake) to collect staking rewards. Rewards are harvested and deposited back into the strategy."
+    }
+  }
+}

@@ -43,6 +43,5 @@ func TestDaemons(t *testing.T) {
 
 	//Edge case testing with values overwrite
 	utils.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
-	utils.META_BASE_URL = `https://thisisanotherurithatshouldnotbeset.yearn.finance/`
 	SummonDaemons(1, 0)
 }

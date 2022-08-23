@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Spookyswap Reinvest",
+  "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xf8c08cE855D1ABA492202ecf47eaa3d2a7DE2eC5"],
+  "protocols": ["SpookySwap"],
+  "localization": {
+    "en": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Spookyswap Reinvest",
+      "description": "Fournit du {{token}} sur [SpookySwap](https://spookyswap.finance/farms) pour gagner des BOO. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Spookyswap Reinvest",
+      "description": "Suministra {{token}} a [SpookySwap](https://spookyswap.finance/farms) para ganar BOO. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Spookyswap Reinvest",
+      "description": "BOO kazanmak için [SpookySwap](https://spookyswap.finance/farms)'a {{token}} sağlar. Kazanılan jetonlar toplanır, daha fazla {{token}} karşılığında satılır ve ardından stratejiye geri yatırılır."
+    },
+    "vi": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Spookyswap Reinvest",
+      "description": "将 {{token}} 存入 [SpookySwap](https://spookyswap.finance/farms) 以赚取 BOO。收获到的奖励会被卖掉，换为更多 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Spookyswap Reinvest",
+      "description": "BOO कमाने के लिए {{token}} को [SpookySwap](https://spookyswap.finance/farms) पर सप्लाई करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Spookyswap Reinvest",
+      "description": "Supplies {{token}} to [SpookySwap](https://spookyswap.finance/farms) to earn BOO. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

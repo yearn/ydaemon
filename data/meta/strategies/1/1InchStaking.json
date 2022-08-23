@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "1inch Staking Reinvest",
+  "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy.",
+  "addresses": ["0xB12F6A5776EDd2e923fD1Ce93041B2000A22dDc7"],
+  "protocols": ["1inch"],
+  "localization": {
+    "en": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stake du {{token}} sur [1inch DAO](https://app.1inch.io/#/1/dao/governance) pour collecter les récompenses issues de la gouvernance. Les récompenses sont récoltées et redéposées dans la stratégie."
+    },
+    "es": {
+      "name": "1inch Staking Reinvest",
+      "description": "Hace staking de {{token}} en [1inch DAO](https://app.1inch.io/#/1/dao/governance) para cobrar recompensas de gobernanza. Las recompensas se cosechan y se vuelven a depositar en la estrategia."
+    },
+    "de": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "el": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "1inch Staking Reinvest",
+      "description": "{{token}} [1inch DAO](https://app.1inch.io/#/1/dao/governance) adresine yönetim ödüllerini toplamak için stake edilir. Ödüller toplanır ve stratejiye geri yatırılır."
+    },
+    "vi": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "1inch Staking Reinvest",
+      "description": "将 {{token}} 存入 [1inch DAO](https://app.1inch.io/#/1/dao/governance) 以领取治理奖励。收获奖励后再进行复投。"
+    },
+    "hi": {
+      "name": "1inch Staking Reinvest",
+      "description": "गवर्नेंस इनाम पाने के लिए {{token}} को [1inch DAO](https://app.1inch.io/#/1/dao/governance) पर दांव पर लगाता है। पुरस्कारों को काटा जाता है और रणनीति में वापस जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "id": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "1inch Staking Reinvest",
+      "description": "Stakes {{token}} on [1inch DAO](https://app.1inch.io/#/1/dao/governance) to collect governance rewards. Rewards are harvested and deposited back into the strategy."
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "strategy",
+  "name": "0xDAO Reinvest",
+  "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x585D4024C6aB31b67Dfd1624F2cA01Eb1dBe8D22",
+    "0x76e32c811Cad5b835B780461efd202D561723D14",
+    "0x177E745771494F1FF8Ed3FCDcdfF02213A1AD761",
+    "0x44E0403e7Ee547F522BbBA5f49fd04a432d2ad82",
+    "0xcF37B4a55f06dDA65591B1AF56812c5bb7E6d336",
+    "0x71304d618bd2F1334d25F3aC836a2BA94A0622Ae",
+    "0xA36c91E38bf24E9F2df358E47D4134a8894C6a4c"
+  ],
+  "protocols": ["0xDAO"],
+  "localization": {
+    "en": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "0xDAO Reinvest",
+      "description": "Fournit du {{token}} sur [0xDAO](https://www.oxdao.fi) pour gagner des OXD. Les jetons gagnés sont récoltés, vendus pour plus de {{token}}, qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "0xDAO Reinvest",
+      "description": "Suministra {{token}} a [0xDAO](https://www.oxdao.fi) para ganar OXD. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "0xDAO Reinvest",
+      "description": "OXD kazanmak için [0xDAO](https://www.oxdao.fi)'ya {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "0xDAO Reinvest",
+      "description": "将 {{token}} 存入 [0xDAO](https://www.oxdao.fi) 以赚取 OXD。收获的 OXD 将被卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "0xDAO Reinvest",
+      "description": "OXD कमाने के लिए {{token}} से [0xDAO](https://www.oxdao.fi) की आपूर्ति करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "0xDAO Reinvest",
+      "description": "Supplies {{token}} to [0xDAO](https://www.oxdao.fi) to earn OXD. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

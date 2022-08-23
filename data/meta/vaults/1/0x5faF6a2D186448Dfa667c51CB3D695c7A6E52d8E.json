@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve stETH-WETH Pool yVault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 36,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve stETH-WETH"
+}

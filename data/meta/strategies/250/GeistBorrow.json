@@ -1,0 +1,66 @@
+{
+  "$schema": "strategy",
+  "name": "Geist Borrow",
+  "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x2195810c2A937259053C25AFc8D221ae2369cBAC",
+    "0xa09cC3C8b05eDC7eA9615fA8bb8e904814C73a15",
+    "0xcCd1938Ea67BFf58f859512F7C8E5b70928020E2",
+    "0x0e207674E05dC6Ff7fE949eB57409bF3B980FF41"
+  ],
+  "protocols": ["GeistFinance"],
+  "localization": {
+    "en": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Geist Borrow",
+      "description": "Fournit du {{token}} sur [Geist Finance](https://geist.finance/deposit) pour générer des intérêts et gagner des GEIST. Cette stratégie emprunte également des jetons contre le {{token}}. Les jetons empruntés sont ensuite déposés dans le yVault correspondant pour générer du rendement. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Geist Borrow",
+      "description": "Suministra {{token}} a [Geist Finance](https://geist.finance/deposit) para generar intereses y ganar GEIST. Esta estrategia también toma prestados tokens contra {{token}}. Los tokens prestados luego se depositan en el yVault correspondiente para generar rendimiento. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Geist Borrow",
+      "description": "Faiz ve GEIST kazanmak için [Geist Finance](https://geist.finance/deposit)'e {{token}} sağlar. Bu strateji ayrıca {{token}} karşılığında token ödünç alır. Ödünç alınan token'ler daha sonra verim elde etmek için ilgili yVault'a yatırılır. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Geist Borrow",
+      "description": "将 {{token}} 存入 [Geist Finance](https://geist.finance/deposit) 以赚取利息和 GEIST 奖励。此策略也用 {{token}} 作为抵押品借出其他代币。借到的代币会被存入对应的 yVault 以产生收益。收获赚取到的代币会卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Geist Borrow",
+      "description": "ब्याज उत्पन्न करने और GEIST अर्जित करने के लिए {{token}} [Geist Finance](https://geist.finance/deposit) को आपूर्ति करता है। यह रणनीति {{token}} के बदले टोकन भी लेती है। उधार लिए गए टोकन को उपज उत्पन्न करने के लिए संबंधित yVault में जमा किया जाता है। अर्जित टोकन काटा जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Geist Borrow",
+      "description": "Supplies {{token}} to [Geist Finance](https://geist.finance/deposit) to generate interest and earn GEIST. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into the corresponding yVault to generate yield. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve ibAUD-USDC Pool yVault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 90,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve ibAUD-USDC"
+}

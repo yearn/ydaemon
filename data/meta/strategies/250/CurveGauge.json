@@ -1,0 +1,69 @@
+{
+  "$schema": "strategy",
+  "name": "Curve Gauge",
+  "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x65fCDb59D9dc496Fd957525B74ed427fAC110E85",
+    "0x98B058b2CBacF5E99bC7012DF757ea7CFEbd35BC",
+    "0x309Bac9cC01912decf6EC286c1F17Db99926c44F",
+    "0x7ff6fe5bDa1b26fa46880dF8AF844326DAd50d13",
+    "0xcF3b91D83cD5FE15269E6461098fDa7d69138570",
+    "0xA9a904B5567b5AFfb6bB334bea2f90F700EB221a",
+    "0x688BeA3cbcE2F6D20d380d6D9FaF239F3C3d184e"
+  ],
+  "protocols": ["CurveFinance"],
+  "localization": {
+    "en": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Curve Gauge",
+      "description": "Fournit du {{token}} sur [Curve Finance](https://ftm.curve.fi) et le stake dans la jauge pour collecter tous les jetons disponibles et gagner des récompenses CRV. Les jetons gagnés sont récoltés, vendus pour plus de {{token} } qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Curve Gauge",
+      "description": "Suministra {{token}} a [Curve Finance](https://ftm.curve.fi) y lo coloca en el indicador para recolectar los tokens disponibles y ganar recompensas en CRV. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Curve Gauge",
+      "description": "[Curve Finance](https://ftm.curve.fi)'ye {{token}} tedarik eder ve mevcut jetonları toplamak ve CRV ödülleri kazanmak için bunu ölçülü olarak stake eder. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Curve Gauge",
+      "description": "将 {{token}} 存入 [Curve Finance](https://ftm.curve.fi) 再放入 gauge 以赚取包括 CRV 在内的所有收益。收获到的代币会被卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Curve Gauge",
+      "description": "{{token}} को [Curve Finance](https://ftm.curve.fi) को सप्लाई करता है और किसी भी उपलब्ध टोकन को इकट्ठा करने और CRV पुरस्कार अर्जित करने के लिए इसे गेज में दांव पर लगाता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Curve Gauge",
+      "description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

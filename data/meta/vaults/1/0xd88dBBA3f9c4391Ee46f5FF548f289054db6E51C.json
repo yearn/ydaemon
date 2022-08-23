@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "DOLA is a stablecoin token that tracks the price of $1. DOLA can be minted by using other assets on Anchor as collateral and can also be used itself as collateral to borrow other assets on Anchor.",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 10.5,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve DOLA"
+}

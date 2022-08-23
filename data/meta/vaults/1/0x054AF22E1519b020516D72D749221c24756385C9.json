@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve HUSD, this vault is tiny",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 31,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve HUSD"
+}

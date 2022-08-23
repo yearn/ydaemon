@@ -1,0 +1,67 @@
+{
+  "$schema": "strategy",
+  "name": "Vesper Finance Reinvest",
+  "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x8198815871a45A5a883d083B7B105927eb9919D8",
+    "0x416647Ddee169156878DC46CD565dee99413c262",
+    "0x60A3D5bEeEED797ccFf709ee78A42E2cF67235B7",
+    "0x6598d4366D5A45De4Bf2D2468D877E0b6436Ae76",
+    "0x4a1CfE8da44753067AE462A06Ce5E13d0D561325"
+  ],
+  "protocols": ["VesperFinance"],
+  "localization": {
+    "en": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Fournit du {{token}} sur [Vesper Finance](https://vesper.finance) pour gagner du VSP. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Suministra {{token}} a [Vesper Finance](https://vesper.finance) para ganar VSP. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Vesper Finance Reinvest",
+      "description": "VSP kazanmak için [Vesper Finance](https://vesper.finance)'a {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Vesper Finance Reinvest",
+      "description": "将 {{token}} 存入 [Vesper Finance](https://vesper.finance) 赚取 VSP。收获代币后，卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Vesper Finance Reinvest",
+      "description": "VSP कमाने के लिए {{token}} को [Vesper Finance](https://vesper.finance) को सप्लाई करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Vesper Finance Reinvest",
+      "description": "Supplies {{token}} to [Vesper Finance](https://vesper.finance) to earn VSP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

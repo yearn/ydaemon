@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Ester Reinvest",
+  "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0x0Edd8F5786f2AFeBa9fa56a65487bA3F6264AAA9"],
+  "protocols": ["EsterFinance"],
+  "localization": {
+    "en": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Ester Reinvest",
+      "description": "Fournit du {{token}} sur [Ester.Finance](https://ester.finance) pour gagner des EST. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Ester Reinvest",
+      "description": "Suministra {{token}} a [Ester.Finance](https://ester.finance) para ganar EST. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Ester Reinvest",
+      "description": "BOO kazanmak için [Ester.Finance](https://ester.finance)'e {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Ester Reinvest",
+      "description": "将 {{token}} 存入 [Ester.Finance](https://ester.finance) 以赚取 EST。收获到的代币会被卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Ester Reinvest",
+      "description": "EST कमाने के लिए {{token}} को [Ester.Finance](https://ester.finance) को सप्लाई करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Ester Reinvest",
+      "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "$schema": "strategy",
+  "name": "Curve Boost",
+  "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x24345144c80BC994C12d85fb276bB4c5520579Ea",
+    "0x9C1117cf2ED3A0F4A9F069001F517c1D511c8B53",
+    "0xbf811462955DEeD9aaD62EFE771E34e8B5811857",
+    "0x0E94D346D8A53FEF83484b178a581695E0001E55",
+    "0x9d7c11D1268C8FD831f1b92A304aCcb2aBEbfDe1",
+    "0xdD498eB680B0CE6Cac17F7dab0C35Beb6E481a6d",
+    "0xD670439D889f9Eb16497d8D6EA9a5E549ae5bFF5",
+    "0x6d45c5a8C1cF1f77Ab89cAF8D44917730298bab7",
+    "0x5ED527A2cfC5411EB63b12E46e270b07b6813824",
+    "0x106838c85Ab33F41567F7AbCfF787d7269E824AF",
+    "0x9eCC1abbA680C5cAACA37AD56E446ED741d86731",
+    "0xF088aC5ebf8423b894903312AaC8Ac42c3Ab3A02",
+    "0x4C547b6202247E7B7c45A95d7747A85704530ab3",
+    "0xEeabc022EA72AFC585809214a43e1dDF3b34FBB6",
+    "0xE13C452b5F10686366C2183964341A01A24d9984",
+    "0x4ce03bCFC3122eB0F724b94913629c6062949947",
+    "0xdDAAc8B5Dd65d079b6572e43890BDD8d95bD5cc3",
+    "0xe9Fd1BEfdd412C8966689A64dE74a783AfA6AD57",
+    "0x060E04305C07DdE40A9f57bB4fFAcd662D51Ab96",
+    "0xf9fF7f463A7e6f43d4E65c230D3743355fC954e4",
+    "0xB3E1a513a2fE74EcF397dF9C0E6BCe5B57A961C8",
+    "0x5148C3124B42e73CA4e15EEd1B304DB59E0F2AF7",
+    "0x53cE22d5b4F667eC73710d428E828Cd96E9a37C9",
+    "0x94fA3A90E680f6b866545C904D1dc9DEe6416de9",
+    "0x23a09D84e50fF3fDFa270308851443734b0a4b6D",
+    "0x74b3E5408B1c29E571BbFCd94B09D516A4d81f36",
+    "0x95eA1643699F8DE347975F31CA8d03eCC507616c",
+    "0xda988eBb26F505246C59Ba26514340B634F9a7a2",
+    "0x37770F958447fFa1571fc9624BFB3d673161f37F",
+    "0x2886971eCAF2610236b4869f58cD42c115DFb47A",
+    "0x096E2F730c6AB7a048de7d27507E5E4e864c6824",
+    "0x60A335509E75175E0fF785091f1Baf979148A290",
+    "0x57D2E2eD281650A5d987E6ef87BC1BeD4fD0E959",
+    "0x5Fa22A8527Ae20f4ed8Ed3E0a6A5359Ad5EA3A4e",
+    "0xC5e385f7Dad49F230AbD53e21b06aA0fE8dA782D",
+    "0xB11FC91DF59ADc604485f1B25ABa1F96A685473f",
+    "0x32EF165F2ABbdbE7dcC25B86EdB14a2C0dc52571",
+    "0x9730F52AB5BcEc960bE41b0fE4913a09c0B57066",
+    "0xb622F17e1ba8C51b9BD760Fb37994a55b1e5CD85",
+    "0x24579b82E06aBe25C8ffC4Ee6C2dB676e57F1a32",
+    "0x04a6E58aAd4Ed8053Ba436B00C02A8a000639e93",
+    "0x16468a3999d931Dd6b6ffA0086Cf195D6C5BDAFA",
+    "0xebfC9451d19E8dbf36AAf547855b4dC789CA793C",
+    "0xbA9052141cEf06FD55733D23231c37Fc856CE6F4",
+    "0x91cBf0014a966615e1050c90A1aBf1d1d5d8cffd",
+    "0x31CD90D60516ED18750bA49b2C9d1053190F40d9",
+    "0x6D892A5585F45f3C45A238C717AA0a228aE69e2C",
+    "0xd61216954cC49d164Fa3d3cE27823310A61FF46F",
+    "0xB431A88a6cFFfa66dBCf96Ebc89aE72Ff7Fcc34f",
+    "0xDCecD8DC5F3dDD480d2A06C56063DBf9c2a07E09",
+    "0xD47626A99B6BE937879c5D588852DF76d50A11D2",
+    "0x2c9740Fc1E03457bF7FDe9dA08e04476D91c038c",
+    "0x1bbB89ade777A36DF013DC098bEF9c9bA478d7fA",
+    "0x10Ae24bce6F06b1BFfdA701736BEB2069eCd5a49",
+    "0x2063FcF4883E688FEc10e984d43bDa3ed9C00fd6",
+    "0x26AB2029083909FeEFF8Cb0fA04c1CfF52499DE7",
+    "0x9E1FF8638a2F1aD4B924A4B9677aD9d9b74361Cf",
+    "0x81329ecb1AB448DacF6b9ae696A097f790898899",
+    "0x3f4a63F3Ee9bA49004953f6879c7516D85969F5F",
+    "0x7847b7027cab6Fc4ea08cA0fF3b7464727712f91",
+    "0xbb241fD9A2A3742ef9E10ccfd8a6C4E0EbEb03f2",
+    "0x399690732F48d605D99379Ff3E245f2e9957cB40",
+    "0xEFaAbe670236dC5083A1eb3A09Fc7De9Bb95a397",
+    "0x307Dd52c310e8a5253CBF1FfE5149487d18866eE",
+    "0x3028201f026077D29Ca3c42bBD4e0871EC989193",
+    "0x67990306AEaE58dD70b7071d4f5f42F0828407c7",
+    "0xC7861a5438E99C3d7C5bBcabfc3FB5516ec70019",
+    "0x99636ECcC231945FBB33AbDdE14F174D9C6bCa4D",
+    "0xCfB83Ead756d83a04F5AC68e2A7Ea46e62fE61BD",
+    "0x1033927C70E278dd9A985B10F3B7502fb390108C",
+    "0xf35b8ee147a5Fb4c88C39419c843343814fEC64a",
+    "0x33631575B027Ad75aEBbc9c829FbD0e18Fec91D2",
+    "0x8423590CD0343c4E18d35aA780DF50a5751bebae",
+    "0xf726472B7BE7461001df396C55CAdB1870c78dAE",
+    "0x126e4fDfa9DCEA94F8f4157EF8ad533140C60fC7",
+    "0xfE17a13958Fe2f7a0b9A0759de0E9747f5658D61",
+    "0x979843B8eEa56E0bEA971445200e0eC3398cdB87",
+    "0xdB45E3a0DAE3ced82Cd1ea92F3bF9E21fbCFD8d6",
+    "0xb9267f1427Ddb937003b9cA0Ca7716DDa4026D19",
+    "0x3bd9847c8c5C11448DBd6EE119F663FC177b614E",
+    "0xE7C32D413341bfc84BB58492BEA8a69e8D06E0b4",
+    "0x92D03B12E5f67b0df3B50c7c01c141Bf4BD98eA6",
+    "0xABCBB67Ef2757bCCff074014658d9BD13f559632",
+    "0x21e5a745d77430568C074569C06e6c765922626a",
+    "0x3a700f6c8dC7989Dbbde64C183d964bC20123e2C",
+    "0x687C424F6CB4Be24587af6c7E85CA33d5015938d",
+    "0xEA3fA970005911421C49Be5D64CD56b9397cCad5",
+    "0xE73817de3418bB44A4FeCeBa53Aa835333C550e7",
+    "0x2A94A56fBEE72ACEC39ea0269c1356a8DFbC4765",
+    "0xdD92491B9F55620C043d55D25620a7B126451ddD",
+    "0x5c0309fa022Bc1B73fE45A2D73EddeD58a820ff8",
+    "0xB5F6747147990c4ddCeBbd0d4ef25461a967D079",
+    "0xfeB97E1F6a64B5b75c5cF33e231f1908E447F96D"
+  ],
+  "protocols": ["CurveFinance"],
+  "localization": {
+    "en": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Curve Boost",
+      "description": "Fournit du {{token}} sur [Curve Finance](https://curve.fi) et le stake dans la jauge pour collecter tous les jetons disponibles et gagner des récompenses CRV améliorées grâce au [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Curve Boost",
+      "description": "Suministra {{token}} a [Curve Finance](https://curve.fi) y lo mete en staking en el gauge para recolectar cualquier token disponible y ganar recompensas de CRV mejoradas gracias a [impulso de CRV bloqueado](https://resources.curve.fi/guides/boosting-your-crv-rewards). Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Curve Boost",
+      "description": "[Curve Finance](https://curve.fi)'ye {{token}} sağlar ve [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards) sayesinde mevcut jetonları toplamak ve gelişmiş CRV ödülleri kazanmak için bunu ölçülü olarak kullanır. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Curve Boost",
+      "description": "将 {{token}} 存入 [Curve Finance](https://curve.fi) 再质押到 gauge，通过在[锁仓的 CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards) 的作用下，赚取提升的 CRV 和其他代币奖励。收获奖励后，卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Curve Boost",
+      "description": "{{token}} को [Curve Finance](https://curve.fi) पर सप्लाई कर के गेज पर स्टेक करता है, किसी भी उपलब्ध टोकन को इकट्ठा करने और [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards) की बदौलत बेहतर CRV रिवॉर्ड अर्जित करने के लिए। अर्जित टोकन वसूल किया जाता है और अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in gauge to collect any available tokens and earn enhanced CRV rewards thanks to [locked CRV boost](https://resources.curve.fi/guides/boosting-your-crv-rewards). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

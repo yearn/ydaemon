@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "Geist Curve",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "apyOverride": 0.026,
+  "order": 6,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "Curve Geist"
+}

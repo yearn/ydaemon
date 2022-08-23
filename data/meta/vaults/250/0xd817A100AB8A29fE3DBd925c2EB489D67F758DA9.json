@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Fantom Wrapped Bitcoin",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 6,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "WBTC"
+}

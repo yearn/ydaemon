@@ -1,0 +1,15 @@
+{
+  "$schema": "vault",
+  "comment": "WFTM prod vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 0,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "zapInWith": "ftmApeZap",
+  "zapOutWith": "ftmApeZap",
+  "retired": false,
+  "displayName": "WFTM"
+}

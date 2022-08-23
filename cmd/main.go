@@ -13,7 +13,7 @@ import (
 
 var chains = []uint64{1, 10, 250, 42161}
 
-// var chains = []uint64{10}
+// var chains = []uint64{250}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
 	daemons.SummonDaemons(chainID, delay)

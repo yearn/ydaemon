@@ -1,0 +1,59 @@
+{
+  "$schema": "protocol",
+  "name": "C.R.E.A.M. Finance",
+  "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account.",
+  "localization": {
+    "en": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    },
+    "fr": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance est un protocole de prêt décentralisé pour les particuliers, les institutions et les protocoles afin d'accèder aux services financiers. Faisant partie de l'écosystème yearn.finance, il s'agit d'un protocole agnostique sans autorisation, open source et blockchain qui aide les utilisateurs sur Ethereum, Binance Smart Chain et Fantom. Les utilisateurs peuvent déposer leurs avoirs sur C.R.E.A.M. pour générer du rendement, de la même façon qu' un compte d'épargne traditionnel."
+    },
+    "es": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance es un protocolo de préstamos descentralizado para individuos, instituciones y protocolos para acceder a servicios financieros. Es parte del ecosistema de yearn.finance, es un protocolo agnóstico a cualquier blockchain, de código abierto y no requiere de ninguna autorización para poder ser utilizado que opera en Ethereum, Binance Smart Chain y Fantom. Los usuarios pueden depositar sus activos en C.R.E.A.M. para obtener rendimiento, similar a una cuenta de ahorro tradicional."
+    },
+    "de": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance ist ein dezentralisiertes Kreditprotokoll, das Privatpersonen, Institutionen und Protokollen den Zugang zu Finanzdienstleistungen ermöglicht. Als Teil des yearn.finance-Ökosystems ist es ein erlaubnisfreies, quelloffenes und blockchain-agnostisches Protokoll, das Nutzern auf Ethereum, Binance Smart Chain und Fantom zur Verfügung steht. Nutzer können ihr Vermögen auf C.R.E.A.M. hinterlegen, um eine Rendite zu erzielen, ähnlich wie bei einem traditionellen Sparkonto."
+    },
+    "pt": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance é um protocolo de empréstimo para que indivíduos, instituições e protocolos acessem serviços financeiros. Parte do ecossistema yearn.finance, é um protocolo sem permissão, de código aberto, e blockchain agnóstico, servindo usuários no Ethereum, Binance Smart Chain e Fantom. Usuários podem depositar seus ativos em C.R.E.A.M. para receber rendimentos, similar a uma conta poupança tradicional."
+    },
+    "el": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    },
+    "tr": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance, bireyler, kurumlar ve protokollerin finansal hizmetlere erişmesi için merkezi olmayan bir borç verme protokolüdür. yearn.finance ekosisteminin bir parçası olarak, Ethereum, Binance Smart Chain ve Fantom'da kullanıcılara hizmet veren izinsiz, açık kaynaklı ve blockchain agnostik bir protokoldür. Kullanıcılar, geleneksel bir tasarruf hesabına benzer şekilde, getiri elde etmek için varlıklarını C.R.E.A.M.'ya yatırabilirler."
+    },
+    "vi": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    },
+    "zh": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    },
+    "hi": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance वित्तीय सेवाओं तक पहुँचने के लिए व्यक्तियों, संस्थानों और प्रोटोकॉल के लिए एक विकेन्द्रीकृत ऋण प्रोटोकॉल है। yearn.finance पारिस्थितिकी तंत्र का हिस्सा, यह एक अनुमति रहित, खुला स्रोत और ब्लॉकचेन अज्ञेयवादी प्रोटोकॉल है जो एथेरियम, Binance Smart Chain और Fantom पर उपयोगकर्ताओं की सेवा करता है। उपयोगकर्ता C.R.E.A.M पर अपनी संपत्ति जमा कर सकते हैं। एक पारंपरिक बचत खाते के समान, उपज अर्जित करने के लिए।"
+    },
+    "ja": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Financeは個人、機関、プロトコルが金融サービスを利用するための分散型レンディングプロトコルです。Yearn Financeエコシステムの一部であり、パーミッションレス、オープンソース、ブロックチェーンに依存しないプロトコルとして、イーサリアム、バイナンススマートチェーン、ファントム上のユーザーにサービスを提供しています。ユーザーはC.R.E.A.M.に資産を預けて、従来の普通預金口座と同様に利回りを得ることができます。"
+    },
+    "id": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    },
+    "ru": {
+      "name": "C.R.E.A.M. Finance",
+      "description": "C.R.E.A.M. Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Part of the yearn.finance ecosystem, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum, Binance Smart Chain and Fantom. Users can deposit their assets on C.R.E.A.M. to earn yield, similar to a traditional savings account."
+    }
+  }
+}

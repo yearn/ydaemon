@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Iron Bank Lender Optimizer",
+  "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xC06ed8E16F1E66acC03F7af1b0bA96fFF589E495"],
+  "protocols": ["Iron Bank"],
+  "localization": {
+    "en": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Fournit du {{token}} sur [Iron Bank](https://beta.yearn.finance/#/ironbank) pour générer des intérêts. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Suministra {{token}} a [Iron Bank](https://beta.yearn.finance/#/ironbank) para generar intereses. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Faiz elde etmek için [Iron Bank](https://beta.yearn.finance/#/ironbank)'a {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "将 {{token}} 存入 [Iron Bank](https://beta.yearn.finance/#/ironbank) 赚取利息。收获奖励卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "ब्याज उत्पन्न करने के लिए {{token}} [Iron Bank](https://beta.yearn.finance/#/ironbank) को आपूर्ति करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Iron Bank Lender Optimizer",
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

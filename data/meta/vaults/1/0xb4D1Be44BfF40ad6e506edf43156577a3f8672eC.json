@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve sAave",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 35,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve sAave"
+}

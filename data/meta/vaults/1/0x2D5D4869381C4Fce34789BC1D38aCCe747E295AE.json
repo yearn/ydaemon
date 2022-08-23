@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "Curve RAI Vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 21.5,
+  "apyTypeOverride": "new",
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve RAI"
+}

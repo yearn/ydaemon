@@ -1,0 +1,49 @@
+{
+  "$schema": "token",
+  "name": "Curve sBTC Pool",
+  "symbol": "crvSBTC",
+  "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform.",
+  "categories": ["Curve LP Tokens"],
+  "website": "https://www.curve.fi/sbtc/",
+  "localization": {
+    "en": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "fr": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "es": {
+      "description": "Este token representa un grupo de liquidez de Curve. Los titulares obtienen tarifas de los usuarios que comercian en el grupo y también pueden depositar el LP en los gauges de Curve para obtener emisiones de CRV. Este grupo contiene WBTC, renBTC y sBTC, y es la base para todos los metagrupos de BTC de Curve. sBTC es BTC sintético acuñado en la plataforma Synthetix."
+    },
+    "de": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "pt": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "el": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "tr": {
+      "description": "Bu jeton, bir Curve likidite havuzunu temsil eder. Sahipler, havuzda işlem yapan kullanıcılardan ücret alır ve ayrıca CRV emisyonları kazanmak için LP'yi Curve'un göstergelerine yatırabilir. Bu havuz WBTC, renBTC ve sBTC'yi içerir ve Curve'in tüm BTC meta havuzlarının temelidir. sBTC, Synthetix platformunda basılan sentetik BTC'dir"
+    },
+    "vi": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "zh": {
+      "description": "此代幣是 Curve 的流动性池代币。代币持有者可以赚取交易费，也可以将代币存入 Curve gauge 以获得 CRV 奖励。其中包含 WBTC，renBTC 和 sBTC，是 Curve 所有 BTC 流动性池的元池。sBTC 是由 Synthetix 发行的 BTC 的合成资产。"
+    },
+    "hi": {
+      "description": "यह टोकन Curve लिक्विडिटी पूल का प्रतिनिधित्व करता है। धारक पूल में व्यापार करने वाले उपयोगकर्ताओं से शुल्क कमाते हैं, और CRV उत्सर्जन अर्जित करने के लिए LP को Curve के गेज में भी जमा कर सकते हैं। इस पूल में WBTC, renBTC और sBTC शामिल हैं, और यह Curve के सभी BTC मेटापूल का आधार है। sBTC सिंथेटिक BTC है जिसे Synthetix प्लेटफॉर्म पर ढाला गया है।"
+    },
+    "ja": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "id": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    },
+    "ru": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform."
+    }
+  }
+}

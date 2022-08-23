@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "sUSD",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 1,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "apyTypeOverride": "new",
+  "displayName": "sUSD"
+}

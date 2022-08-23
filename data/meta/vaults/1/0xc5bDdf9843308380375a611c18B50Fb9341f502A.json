@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "yveCRV",
+  "hideAlways": false,
+  "useVaultDataAsDefault": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 100,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "yveCRV"
+}

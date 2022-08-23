@@ -66,6 +66,13 @@ func NewRouter() *gin.Engine {
 		router.GET(`api/:chainID/vaults/:address`, meta.GetMetaVault)
 		router.GET(`:chainID/meta/vaults/:address`, meta.GetMetaVault)
 		router.GET(`:chainID/meta/vault/:address`, meta.GetMetaVault)
+
+		// Proxy meta protocols
+		router.GET(`api/:chainID/protocols/all`, meta.GetMetaProtocolsLegacy)
+		router.GET(`:chainID/meta/protocols`, meta.GetMetaProtocols)
+		router.GET(`api/:chainID/protocols/:name`, meta.GetMetaProtocol)
+		router.GET(`:chainID/meta/protocols/:name`, meta.GetMetaProtocol)
+		router.GET(`:chainID/meta/protocol/:name`, meta.GetMetaProtocol)
 	}
 
 	return router

@@ -1,0 +1,65 @@
+{
+  "$schema": "strategy",
+  "name": "BAG Reinvest",
+  "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0xFc403fd9E7A916eC38437807704e92236cA1f7A5",
+    "0x063303D9584Ac9A67855086e16Ca7212C109b7b4",
+    "0x6107add73f80AC6015E85103D2f016C6373E4bDc"
+  ],
+  "protocols": ["Blockchain Adventurers Guild"],
+  "localization": {
+    "en": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "BAG Reinvest",
+      "description": "Supplies {{token}} to [Blockchain Adventurers Guild](https://app.thisistheway.finance/pools) to earn BAG tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "token",
+  "name": "Curve renBTC Pool",
+  "symbol": "crvRENBTC",
+  "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes.",
+  "categories": ["Curve LP Tokens"],
+  "website": "https://www.curve.fi/ren/",
+  "localization": {
+    "en": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "fr": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "es": {
+      "description": "Este token representa un grupo de liquidez de Curve. Los titulares obtienen tarifas de los usuarios que comercian en el grupo y también pueden depositar el LP en los gauges de Curve para obtener emisiones de CRV. Este grupo contiene WBTC y renBTC, un ERC-20 respaldado por BTC nativo a través de Darknodes descentralizados de Ren."
+    },
+    "de": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "pt": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "el": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "tr": {
+      "description": "Bu jeton, bir Curve likidite havuzunu temsil eder. Sahipler, havuzda işlem yapan kullanıcılardan ücret alır ve ayrıca CRV emisyonları kazanmak için LP'yi Curve'un göstergelerine yatırabilir. Bu havuz, Ren'in merkezi olmayan Darknode'ları aracılığıyla yerel BTC tarafından desteklenen bir ERC-20 olan WBTC ve renBTC'yi içerir."
+    },
+    "vi": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "zh": {
+      "description": "此代币是 Curve 的流动性池代币。代币持有者可以赚取交易费，也可以将代币存入 Curve gauge 以获得 CRV 奖励。其中包含 WBTC 和 renBTC，renBTC 是由 Ren 通过其去中心化的 Darknodes 发行的以 BTC 为支持的 ERC20 代币。"
+    },
+    "hi": {
+      "description": "यह टोकन Curve लिक्विडिटी पूल का प्रतिनिधित्व करता है। धारक पूल में व्यापार करने वाले उपयोगकर्ताओं से शुल्क कमाते हैं, और CRV उत्सर्जन अर्जित करने के लिए LP को Curve के गेज में भी जमा कर सकते हैं। इस पूल में WBTC और renBTC शामिल हैं, एक ERC-20 जो Ren के विकेन्द्रीकृत Darknodes के माध्यम से देशी BTC द्वारा समर्थित है।"
+    },
+    "ja": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "id": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    },
+    "ru": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes."
+    }
+  }
+}

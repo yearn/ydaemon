@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve oBTC",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 51,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve oBTC"
+}

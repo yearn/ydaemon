@@ -1,0 +1,80 @@
+{
+  "$schema": "strategy",
+  "name": "Spooky Joint Provider Hedged",
+  "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x9b536FD704944110d5F742840a206C45f6858920",
+    "0x84A92b621897Bf7e4a95e80d91b3ab7491e9Db39",
+    "0x32d1BC9133f46E4442b9666Bbc361bB90CE49a1A",
+    "0x60fa432fc8494FE0b7A7654295e178F6F2f22405",
+    "0x15faeCDDAD6f3073954b29761b94b0b28321586f",
+    "0x4183e99e7C3874F85d195698AFb7ee1289DA0AFe",
+    "0x4bd6976358e419Ce96103c70B776C273A9f4a8AD",
+    "0x61D5ed97b899347c1F286a9a67622d337D0e61fE",
+    "0x098B187d4df62de7ff9f3366b1B280F06cE86A73",
+    "0x939dC1C32D89Ba771c1Eeee8f1a12bA9b766C532",
+    "0xD58003b2Bac011b67C108b24e5deb1B22c70Fd1f",
+    "0x99781f4324CF60D96195276822D2518fC85C11Fa",
+    "0x84f9E6d5D28Edf0AE873A4d84903716684f473D5",
+    "0xc7a336925674EFeef22cEB56364e3658B8a0D467",
+    "0x8Ee822d31c6F92063AA7EA723B94AC94D0cC9D64",
+    "0xA4F10BC80F6c5cf6A34F828cb53c243eB1976Da8",
+    "0x7114cAD096731F4d0B8E0De6e7CeDc189A462dce",
+    "0xFA01ca21239166701B6760d162257b449ba6D011"
+  ],
+  "protocols": ["SpookySwap"],
+  "localization": {
+    "en": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Fournit du {{token}} sur le coté d'une pool [SpookySwap](https://spookyswap.finance/farms). Cette stratégie limite également les pertes impermanentes via Hedgil dans une plage protégée tout en gagnant des jetons BOO et des frais. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Suministra {{token}} como la mitad de un proveedor de liquidez conjunto para un grupo en [SpookySwap](https://spookyswap.finance/farms) y también esta estrategia limita la pérdida impermanente a través de Hedgil en un rango protegido mientras gana BOO y tarifas. Los tokens ganados se cosechan, se dividen entre los tokens, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "[SpookySwap](https://spookyswap.finance/farms) üzerindeki bir havuz için ortak bir likidite sağlayıcısının yarısı olarak {{token}} sağlar ayrıca bu strateji, BOO ve ücretler kazanırken Hedgil aracılığıyla Korumalı bir aralıkta Geçici Zararı sınırlar. Kazanılan jetonlar hasat edilir, jetonlar arasında bölünür, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "将 {{token}} 作为流动性的一半放入 [SpookySwap](https://spookyswap.finance/farms) 赚取 BOO 和交易手续费。此策略也同时应用 Hedgil 做对冲以将无偿损失控制在可控范围。收获到的奖励会分配给交易对的两个代币，卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "[SpookySwap](https://spookyswap.finance/farms) पर एक पूल के लिए एक संयुक्त तरलता प्रदाता के आधे के रूप में आपूर्ति {{token}}, यह रणनीति BOO और शुल्क अर्जित करते हुए एक संरक्षित सीमा में Hedgil के माध्यम से अस्थायी नुकसान को सीमित करती है। अर्जित टोकन वसूल किया जाता है, टोकन के बीच विभाजित किया जाता है, और अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Spooky Joint Provider Hedged",
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a pool on [SpookySwap](https://spookyswap.finance/farms) also this strategy limits Impermanent Loss via Hedgil in a protected range while earning BOO and fees. Earned tokens are harvested, divided between the tokens, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

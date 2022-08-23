@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve Gov Token",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 6,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "CRV"
+}

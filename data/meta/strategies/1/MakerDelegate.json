@@ -1,0 +1,76 @@
+{
+  "$schema": "strategy",
+  "name": "Maker Delegate",
+  "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield.",
+  "addresses": [
+    "0x04A508664B053E0A08d5386303E649925CBF763c",
+    "0x9Ae0B9a67cF5D603847980D95Ad4D45b57Ff7783",
+    "0x136fe75bfDf142a917C954F58577DB04ef6F294B",
+    "0x1A5890d45090701A35D995Be3b63948A67460341",
+    "0x0E5397B8547C128Ee20958286436b7BC3f9faAa4",
+    "0x4730D10703155Ef4a448B17b0eaf3468fD4fb02d",
+    "0x7A5D88510cD49E878ADe26E0f08bF374b5eCAF49",
+    "0xd33535e9F2E09485aC9cE8b27F865251161065E0",
+    "0xbC27C4873D0ddE214387cE5a838DC78857633Ea2",
+    "0xb698f815918e0A11cf802184f36f02cD4602EBD4",
+    "0x19b2c8b3C601E9690ee524B02d4aCA058Db8B0D7",
+    "0xd7c172cBB4BeE22511611e92377b0fB375bbFd43",
+    "0xcCA83Ea686F42d45B9DE5b5cA668962Cd4a30C2E",
+    "0x946a03264BBa08d1F90dF1ce0bbD3394c3AB1cfa"
+  ],
+  "protocols": ["MakerDAO"],
+  "localization": {
+    "en": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "fr": {
+      "name": "Maker Delegate",
+      "description": "Stake du {{token}} dans le vault [MakerDAO](https://oasis.app/borrow) et mint du DAI. Ce DAI est ensuite déposé dans le DAI yVault pour générer du rendement."
+    },
+    "es": {
+      "name": "Maker Delegate",
+      "description": "Hace staking de {{token}} en la vault de [MakerDAO](https://oasis.app/borrow) y acuña DAI. Este DAI recién acuñado se deposita luego en la yVault  DAI para generar rendimiento."
+    },
+    "de": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "pt": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "el": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "tr": {
+      "name": "Maker Delegate",
+      "description": "[MakerDAO](https://oasis.app/borrow) vault'unda {{token}} stake eder ve DAI'yi mint eder. yeni basılan DAI, daha sonra verim elde etmek için DAI yVault'a yatırılır."
+    },
+    "vi": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "zh": {
+      "name": "Maker Delegate",
+      "description": "将 {{token}} 存入 [MakerDAO](https://oasis.app/borrow) 来铸造 DAI。再把铸造出来的 DAI 放入 DAI yVault 赚取收益。"
+    },
+    "hi": {
+      "name": "Maker Delegate",
+      "description": "[MakerDAO](https://oasis.app/borrow) वॉल्ट और टकसाल DAI में {{token}} दांव लगाता है। इस नवनिर्मित DAI को फिर उपज उत्पन्न करने के लिए DAI yVault में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "id": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    },
+    "ru": {
+      "name": "Maker Delegate",
+      "description": "Stakes {{token}} in [MakerDAO](https://oasis.app/borrow) vault and mints DAI. This newly minted DAI is then deposited into the DAI yVault to generate yield."
+    }
+  }
+}

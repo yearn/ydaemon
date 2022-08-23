@@ -36,15 +36,16 @@ func UniqueArrayAddress(arr []common.Address) []common.Address {
 
 // ReadAllFilesInDir is used to grab the content of all the files in a specific directory,
 // matching the suffix condition
-func ReadAllFilesInDir(directory string, suffix string) ([][]byte, error) {
+func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, error) {
+	filenames := []string{}
 	dest := [][]byte{}
 	outputDirRead, err := os.Open(directory)
 	if err != nil {
-		return dest, err
+		return dest, filenames, err
 	}
 	outputDirFiles, err := outputDirRead.Readdir(0)
 	if err != nil {
-		return dest, err
+		return dest, filenames, err
 	}
 	for outputIndex := range outputDirFiles {
 		outputFileHere := outputDirFiles[outputIndex]
@@ -55,8 +56,9 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, error) {
 				logs.Error(err)
 				continue
 			}
+			filenames = append(filenames, outputFileName)
 			dest = append(dest, content)
 		}
 	}
-	return dest, nil
+	return dest, filenames, nil
 }

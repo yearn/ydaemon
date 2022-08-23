@@ -3,6 +3,7 @@ package daemons
 import (
 	"encoding/json"
 	"strconv"
+	"strings"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -17,17 +18,18 @@ import (
 func FetchVaultsFromMeta(chainID uint64) {
 	vaults := []models.TVaultFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/vaults/`+chainIDStr+`/`, `.json`)
+	content, filenames, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Error("Error fetching meta information from the Yearn Meta API", err)
 		return
 	}
-	for _, content := range content {
+	for index, content := range content {
 		vault := models.TVaultFromMeta{}
 		if err := json.Unmarshal(content, &vault); err != nil {
 			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
 			continue
 		}
+		vault.Address = strings.TrimSuffix(filenames[index], `.json`)
 		vaults = append(vaults, vault)
 	}
 

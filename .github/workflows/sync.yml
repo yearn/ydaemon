@@ -1,0 +1,51 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  sync:
+    name: Verify and sync data to IPFS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install deps (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Verify data
+        run: node ./data/meta/_config/scripts/verify.mjs
+
+      - name: Generate build artifact
+        run: node ./data/meta/_config/scripts/build.mjs
+
+      - name: Upload to IPFS
+        uses: aquiladev/ipfs-action@v0.3.0-alpha.1
+        id: ipfs
+        with:
+          path: './build/'
+          host: ${{ secrets.IPFS_HOST }}
+          port: ${{ secrets.IPFS_PORT }}
+          protocol: http
+
+      - name: Get Timestamp Action
+        uses: nanzm/get-time-action@v1.1
+        id: time
+        with:
+          format: 'YYYYMMDDHHmmss'
+
+      - name: Create Release
+        uses: Hs1r1us/Release-AIO@v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "${{ steps.time.outputs.time }}/${{ steps.ipfs.outputs.hash }}"
+          release_name: ${{ steps.ipfs.outputs.hash }}
+          body: '[ipfs://${{ steps.ipfs.outputs.hash }}](ipfs://${{ steps.ipfs.outputs.hash }}) - [ipfs.io](https://ipfs.io/ipfs/${{ steps.ipfs.outputs.hash }})'

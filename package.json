@@ -1,0 +1,26 @@
+{
+  "name": "yearn-meta",
+  "main": "index.js",
+  "author": "nymmrx",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@ethersproject/address": "^5.0.9",
+    "abort-controller": "^3.0.0",
+    "ajv": "^7.0.3",
+    "ajv-formats": "^1.5.1",
+    "cids": "^1.1.5",
+    "cloudflare": "^2.7.0",
+    "codeowners": "^4.2.1",
+    "ethers": "^5.4.3",
+    "fs-extra": "^9.1.0",
+    "node-fetch": "^2.6.1"
+  },
+  "scripts": {
+    "format": "prettier --write . --verbose",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}

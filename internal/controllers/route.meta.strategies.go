@@ -21,7 +21,7 @@ func (y controller) GetMetaStrategiesLegacy(c *gin.Context) {
 	localization := valueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := store.RawMetaStrategies[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
@@ -52,7 +52,7 @@ func (y controller) GetMetaStrategies(c *gin.Context) {
 	localization := valueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := store.StrategiesFromMeta[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
@@ -87,7 +87,7 @@ func (y controller) GetMetaStrategy(c *gin.Context) {
 	}
 	strategyFromMeta, ok := store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 

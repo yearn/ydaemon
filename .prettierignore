@@ -1,0 +1,14 @@
+# General
+.DS_STORE
+.prettierignore
+.gitignore
+.gitattributes
+.env
+.env.example
+
+# JS
+node_modules
+yarn.lock
+api/*
+*.go
+*.sol

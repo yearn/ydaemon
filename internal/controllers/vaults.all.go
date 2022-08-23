@@ -270,8 +270,8 @@ func buildStrategies(
 func prepareVaultSchema(
 	chainID uint64,
 	strategiesCondition string,
-	withStrategiesDetails bool,
 	withStrategiesRisk bool,
+	withStrategiesDetails bool,
 	vaultFromGraph models.TVaultFromGraph,
 ) *models.TVault {
 	chainIDAsString := strconv.FormatUint(chainID, 10)

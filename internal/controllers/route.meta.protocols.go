@@ -20,7 +20,7 @@ func (y controller) GetMetaProtocolsLegacy(c *gin.Context) {
 	localization := valueWithFallback(c.Query("loc"), "en")
 	protocolsFromMeta, ok := store.RawMetaProtocols[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
@@ -51,7 +51,7 @@ func (y controller) GetMetaProtocols(c *gin.Context) {
 	localization := valueWithFallback(c.Query("loc"), "en")
 	protocolsFromMeta, ok := store.ProtocolsFromMeta[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 	if localization == "all" {
@@ -85,7 +85,7 @@ func (y controller) GetMetaProtocol(c *gin.Context) {
 	}
 	protocolFromMeta, ok := store.ProtocolsFromMeta[chainID][protocolName]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 

@@ -17,28 +17,39 @@ func TestDaemons(t *testing.T) {
 
 	//Testing for chainID == 1
 	go func(wg *sync.WaitGroup) {
+		LoadDaemons(1)
 		SummonDaemons(1, 0)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 4
 	go func(wg *sync.WaitGroup) {
+		LoadDaemons(4)
 		SummonDaemons(4, 0)
+		wg.Done()
+	}(&wg)
+
+	//Testing for chainID == 10
+	go func(wg *sync.WaitGroup) {
+		LoadDaemons(10)
+		SummonDaemons(10, 0)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 250
 	go func(wg *sync.WaitGroup) {
+		LoadDaemons(250)
 		SummonDaemons(250, 0)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 42161
 	go func(wg *sync.WaitGroup) {
+		LoadDaemons(42161)
 		SummonDaemons(42161, 0)
 		wg.Done()
 	}(&wg)
-	wg.Add(4)
+	wg.Add(5)
 	wg.Wait()
 
 	//Edge case testing with values overwrite

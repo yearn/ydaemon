@@ -16,7 +16,7 @@ import (
 func FetchProtocolsFromMeta(chainID uint64) {
 	protocols := []models.TProtocolsFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/protocols/`+chainIDStr+`/`, `.json`)
+	content, _, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/protocols/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Error("Error fetching meta information from the Yearn Meta API", err)
 		return

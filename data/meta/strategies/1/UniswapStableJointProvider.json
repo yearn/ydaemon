@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Uniswap Stable Joint Provider",
-  "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, and deposited back into the strategy.",
+  "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, and deposited back into the strategy.",
   "addresses": [
     "0xdb67Dd2f3074bA25da2A487B1C61D3b3aF9aafA8",
     "0xD94f90E8df35c649573b6d2F909EDd8C8a791422",
@@ -15,7 +15,7 @@
   "localization": {
     "en": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "fr": {
       "name": "Uniswap Stable Joint Provider",
@@ -27,15 +27,15 @@
     },
     "de": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "pt": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "el": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "tr": {
       "name": "Uniswap Stable Joint Provider",
@@ -43,7 +43,7 @@
     },
     "vi": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "zh": {
       "name": "Uniswap Stable Joint Provider",
@@ -55,15 +55,15 @@
     },
     "ja": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "id": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     },
     "ru": {
       "name": "Uniswap Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a stable pool on [Uniswap v3](https://app.uniswap.org/#/pool). Rewards are harvested, split between the pair, sold for more {{token}}, and deposited back into the strategy."
     }
   }
 }

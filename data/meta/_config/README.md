@@ -1,7 +1,6 @@
 # Yearn metadata storage
 
 [![Validation](https://github.com/yearn/ydaemon/workflows/Validation/badge.svg)](https://github.com/yearn/ydaemon/actions?query=workflow%3AValidation)
-[![Deployment](https://github.com/yearn/ydaemon/workflows/Deployment/badge.svg)](https://github.com/yearn/ydaemon/actions?query=workflow%3ADeployment)
 [![Styled With Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
 
 ## What?

@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve Factory YFI-ETH",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 69,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve YFI-ETH"
+}

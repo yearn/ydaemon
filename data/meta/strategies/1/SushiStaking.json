@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Sushi Staking",
+  "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy.",
+  "addresses": [
+    "0xb6abbD5594B344F17aF8D9a83869C3660eA9a6bd",
+    "0x0ef566227A2Cc876120B749C8AF0600d2E12143b"
+  ],
+  "protocols": ["Sushi"],
+  "localization": {
+    "en": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "es": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "de": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "el": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "id": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Sushi Staking",
+      "description": "Stakes {{token}} on [Sushi](https://app.sushi.com/bar) to collect crosschain and protocol-wide swap fees. Rewards are harvested and deposited back into the strategy."
+    }
+  }
+}

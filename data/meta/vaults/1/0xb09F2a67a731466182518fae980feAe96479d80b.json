@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve KP3R-ETH Pool yVault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 96,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve KP3R-ETH"
+}

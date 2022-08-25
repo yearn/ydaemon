@@ -1,6 +1,13 @@
 package utils
 
-import "github.com/ethereum/go-ethereum/common"
+import (
+	"io/ioutil"
+	"os"
+	"strings"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/majorfi/ydaemon/internal/logs"
+)
 
 //ContainsAddress returns true if address exists in addresses
 func ContainsAddress(addresses []common.Address, address common.Address) bool {
@@ -25,4 +32,33 @@ func UniqueArrayAddress(arr []common.Address) []common.Address {
 		}
 	}
 	return result
+}
+
+// ReadAllFilesInDir is used to grab the content of all the files in a specific directory,
+// matching the suffix condition
+func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, error) {
+	filenames := []string{}
+	dest := [][]byte{}
+	outputDirRead, err := os.Open(directory)
+	if err != nil {
+		return dest, filenames, err
+	}
+	outputDirFiles, err := outputDirRead.Readdir(0)
+	if err != nil {
+		return dest, filenames, err
+	}
+	for outputIndex := range outputDirFiles {
+		outputFileHere := outputDirFiles[outputIndex]
+		outputFileName := outputFileHere.Name()
+		if strings.HasSuffix(outputFileName, suffix) {
+			content, err := ioutil.ReadFile(directory + outputFileName)
+			if err != nil {
+				logs.Error(err)
+				continue
+			}
+			filenames = append(filenames, outputFileName)
+			dest = append(dest, content)
+		}
+	}
+	return dest, filenames, nil
 }

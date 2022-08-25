@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "Curve Tricrypto",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "apyOverride": 0.0458,
+  "order": 7.5,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "Curve Tricrypto"
+}

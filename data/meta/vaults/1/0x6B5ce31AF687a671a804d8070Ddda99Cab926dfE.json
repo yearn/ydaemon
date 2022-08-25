@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve ibGBP-USDC Pool yVault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 91,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve ibGBP-USDC"
+}

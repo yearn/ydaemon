@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve alETH Vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 29.5,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve alETH"
+}

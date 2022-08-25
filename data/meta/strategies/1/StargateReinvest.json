@@ -1,0 +1,66 @@
+{
+  "$schema": "strategy",
+  "name": "Stargate Reinvest",
+  "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x7C85c0a8E2a45EefF98A10b6037f70daf714B7cf",
+    "0x2b982BE433093A80e1801A0Dd894994a170a5025",
+    "0x784b645977e141fF3c5EBA4788DE256FD1da6bCD",
+    "0xeAD650E673F497CdBE365F7a855273BbB468e454"
+  ],
+  "protocols": ["StargateFinance"],
+  "localization": {
+    "en": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Stargate Reinvest",
+      "description": "Fournit du {{token}} sur [Stargate Finance](https://stargate.finance/stake) pour gagner du STG. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Stargate Reinvest",
+      "description": "Suministra {{token}} a [Stargate Finance](https://stargate.finance/stake) para ganar STG. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Stargate Reinvest",
+      "description": "STG kazanmak için [Stargate Finance](https://stargate.finance/stake)'a {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Stargate Reinvest",
+      "description": "将 {{token}} 存入 [Stargate Finance](https://stargate.finance/stake) 赚取 VSP。收获代币后，卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Stargate Reinvest",
+      "description": "STG कमाने के लिए {{token}} को [Stargate Finance](https://stargate.finance/stake) को सप्लाई करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Stargate Reinvest",
+      "description": "Supplies {{token}} to [Stargate Finance](https://stargate.finance/stake) to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

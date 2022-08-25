@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "TUSD",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "apyOverride": 0.01,
+  "order": 7,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "TUSD"
+}

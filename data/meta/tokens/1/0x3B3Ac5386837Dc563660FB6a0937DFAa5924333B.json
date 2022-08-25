@@ -1,0 +1,49 @@
+{
+  "$schema": "token",
+  "name": "Curve yBUSD Pool",
+  "symbol": "crvYBUSD",
+  "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum.",
+  "categories": ["Curve LP Tokens"],
+  "website": "https://curve.fi/busd",
+  "localization": {
+    "en": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "fr": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "es": {
+      "description": "Este token representa un grupo de liquidez de Curve. Los titulares obtienen tarifas de los usuarios que comercian en el grupo y también pueden depositar el LP en los gauges de Curve para obtener emisiones de CRV. Este grupo contiene DAI, USDC, USDT y BUSD que se prestan a varios mercados monetarios descentralizados en Ethereum."
+    },
+    "de": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "pt": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "el": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "tr": {
+      "description": "Bu jeton, bir Curve likidite havuzunu temsil eder. Sahipler, havuzda işlem yapan kullanıcılardan ücret alır ve ayrıca CRV emisyonları kazanmak için LP'yi Curve'un göstergelerine yatırabilir. Bu havuz, Ethereum'daki çeşitli merkezi olmayan para piyasalarına ödünç verilen DAI, USDC, USDT ve BUSD'yi içeri"
+    },
+    "vi": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "zh": {
+      "description": "此代币是 Curve 的流动性池代币。代币持有者可以赚取交易费，也可以将代币存入 Curve gauge 以获得 CRV 奖励。其中包含 DAI、USDC、USDT 和 BUSD，这些代币会存入以太坊上的各种去中心化货币市场以赚取收益。"
+    },
+    "hi": {
+      "description": "यह टोकन Curve लिक्विडिटी पूल का प्रतिनिधित्व करता है। धारक पूल में व्यापार करने वाले उपयोगकर्ताओं से शुल्क कमाते हैं, और CRV उत्सर्जन अर्जित करने के लिए LP को Curve के गेज में भी जमा कर सकते हैं। इस पूल में DAI, USDC, USDT और BUSD शामिल हैं जो एथेरियम पर विभिन्न विकेन्द्रीकृत मुद्रा बाजारों को उधार दिए गए हैं।"
+    },
+    "ja": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "id": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    },
+    "ru": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and BUSD that are lent out to various decentralized money markets on Ethereum."
+    }
+  }
+}

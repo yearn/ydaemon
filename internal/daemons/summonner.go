@@ -14,6 +14,9 @@ func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performA
 			isDone = true
 			wg.Done()
 		}
+		if delay == 0 {
+			return
+		}
 		time.Sleep(delay)
 	}
 }
@@ -28,14 +31,15 @@ func SummonDaemons(chainID uint64, delay time.Duration) {
 
 	var wg sync.WaitGroup
 	time.Sleep(delay)
-	go runDaemon(chainID, &wg, 24*time.Hour, FetchVaultsFromMeta)
-	go runDaemon(chainID, &wg, 24*time.Hour, FetchTokensFromMeta)
-	go runDaemon(chainID, &wg, 24*time.Hour, FetchStrategiesFromMeta)
+	go runDaemon(chainID, &wg, 0, FetchVaultsFromMeta)
+	go runDaemon(chainID, &wg, 0, FetchTokensFromMeta)
+	go runDaemon(chainID, &wg, 0, FetchStrategiesFromMeta)
+	go runDaemon(chainID, &wg, 0, FetchProtocolsFromMeta)
 	go runDaemon(chainID, &wg, time.Minute, FetchLens)
 	go runDaemon(chainID, &wg, 10*time.Minute, FetchVaultsFromV1)
 	go runDaemon(chainID, &wg, 10*time.Minute, FetchStrategiesMulticallData)
 	go runDaemon(chainID, &wg, time.Hour, FetchStrategiesFromRisk)
-	wg.Add(7)
+	wg.Add(8)
 	wg.Wait()
 }
 
@@ -51,10 +55,11 @@ func LoadDaemons(chainID uint64) {
 	go LoadMetaVaults(chainID, &wg)
 	go LoadMetaTokens(chainID, &wg)
 	go LoadMetaStrategies(chainID, &wg)
+	go LoadMetaProtocols(chainID, &wg)
 	go LoadLens(chainID, &wg)
 	go LoadAPIV1Vaults(chainID, &wg)
 	go LoadStrategyMulticallData(chainID, &wg)
 	go LoadRiskStrategies(chainID, &wg)
-	wg.Add(7)
+	wg.Add(8)
 	wg.Wait()
 }

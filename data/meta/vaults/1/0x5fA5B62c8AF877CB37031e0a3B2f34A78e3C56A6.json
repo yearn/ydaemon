@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve LUSD",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 32,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve LUSD"
+}

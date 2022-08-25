@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Solidex Volatile Yield Seeker",
+  "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0xADE3BaC94177295329474aAd6A253Bae979BFA68",
+    "0x768F43717899FD0f1B45Ea7f23b66e191348073E"
+  ],
+  "protocols": ["SolidexFinance"],
+  "localization": {
+    "en": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Fournit du {{token}} sur une Volatile Pool de [Solidex Finance](https://solidexfinance.com/#/pools) pour gagner des SOLID et SEX. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Suministra {{token}} a un grupo volátil de [Solidex Finance](https://solidexfinance.com/#/pools) para obtener SOLID y SEX. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "SOLID ve SEX kazanmak için bir [Solidex Finance](https://solidexfinance.com/#/pools) Değişken Havuza {{token}} sağlar. Kazanılan jetonlar toplanır, daha fazla {{token}} karşılığında satılır ve ardından stratejiye geri yatırılır."
+    },
+    "vi": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "将 {{token}} 存入 [Solidex Finance](https://solidexfinance.com/#/pools) 的波动池以赚取 SOLID 和 SEX 奖励。收获到的代币会被卖掉，换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "SOLID और SEX अर्जित करने के लिए {{token}} को [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool की आपूर्ति करता है। अर्जित टोकन वसूल किया है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Solidex Volatile Yield Seeker",
+      "description": "Supplies {{token}} to a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool to earn SOLID and SEX. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

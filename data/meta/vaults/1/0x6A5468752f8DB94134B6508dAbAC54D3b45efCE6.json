@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve CRV-ETH Vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 22.5,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve CRV-ETH"
+}

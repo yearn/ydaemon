@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "Curve OUSD",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 51,
+  "apyTypeOverride": "new",
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve OUSD"
+}

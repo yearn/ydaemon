@@ -1,0 +1,15 @@
+{
+  "$schema": "vault",
+  "comment": "USDT",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 6,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0x3B27F92C0e212C671EA351827EDF93DB27cc0c65",
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "USDT"
+}

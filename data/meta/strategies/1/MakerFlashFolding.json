@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Maker Flashmint Folding",
+  "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x9E3aeF1fb3dE09b8c46247fa707277b7331406B5",
+    "0xAa0Bae32a068C8685160eF8d8003A81b2E13ab2f"
+  ],
+  "protocols": ["Uniswap v3", "MakerDAO", "ArrakisFinance"],
+  "localization": {
+    "en": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Maker Flashmint Folding",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to [Arrakis Finance's Univ3daiusdc Vault](https://beta.arrakis.finance/#/vaults/0xAbDDAfB225e10B90D798bB8A886238Fb835e2053), which autocompounds a Uniswap v3 DAI-USDC position. Afterwords, it uses this Vault token as collateral at [Maker DAO](https://oasis.app/asset/dai#earn). Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

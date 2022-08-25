@@ -6,6 +6,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/majorfi/ydaemon/internal/models"
 	"github.com/majorfi/ydaemon/internal/store"
 )
 
@@ -17,13 +18,26 @@ func (y controller) GetMetaStrategiesLegacy(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
+	localization := valueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := store.RawMetaStrategies[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
-	c.JSON(http.StatusOK, strategiesFromMeta)
+	if localization == "all" {
+		c.JSON(http.StatusOK, strategiesFromMeta)
+		return
+	}
+	localizedStrategiesFromMeta := []models.TStrategyFromMeta{}
+	for _, strategy := range strategiesFromMeta {
+		local := selectLocalizationFromString(localization, *strategy.Localization)
+		strategy.Name = local.Name
+		strategy.Description = local.Description
+		strategy.Localization = nil
+		localizedStrategiesFromMeta = append(localizedStrategiesFromMeta, strategy)
+	}
+	c.JSON(http.StatusOK, localizedStrategiesFromMeta)
 }
 
 // GetMetaStrategies will, for a given chainID, return all the meta informations for the strategies.
@@ -35,13 +49,26 @@ func (y controller) GetMetaStrategies(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
+	localization := valueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := store.StrategiesFromMeta[chainID]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
-	c.JSON(http.StatusOK, strategiesFromMeta)
+	if localization == "all" {
+		c.JSON(http.StatusOK, strategiesFromMeta)
+		return
+	}
+	localizedStrategiesFromMeta := []models.TStrategyFromMeta{}
+	for _, strategy := range strategiesFromMeta {
+		local := selectLocalizationFromString(localization, *strategy.Localization)
+		strategy.Name = local.Name
+		strategy.Description = local.Description
+		strategy.Localization = nil
+		localizedStrategiesFromMeta = append(localizedStrategiesFromMeta, strategy)
+	}
+	c.JSON(http.StatusOK, localizedStrategiesFromMeta)
 }
 
 // GetMetaStrategy will, for a given address on given chainID, return the meta informations for the strategy.
@@ -52,6 +79,7 @@ func (y controller) GetMetaStrategy(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
+	localization := valueWithFallback(c.Query("loc"), "en")
 	strategyAddress := c.Param("address")
 	if strategyAddress == `` {
 		c.String(http.StatusBadRequest, "invalid address")
@@ -59,9 +87,17 @@ func (y controller) GetMetaStrategy(c *gin.Context) {
 	}
 	strategyFromMeta, ok := store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)]
 	if !ok {
-		c.String(http.StatusNoContent, "no data available")
+		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
 
+	if localization == "all" {
+		c.JSON(http.StatusOK, strategyFromMeta)
+		return
+	}
+	local := selectLocalizationFromString(localization, *strategyFromMeta.Localization)
+	strategyFromMeta.Name = local.Name
+	strategyFromMeta.Description = local.Description
+	strategyFromMeta.Localization = nil
 	c.JSON(http.StatusOK, strategyFromMeta)
 }

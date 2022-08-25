@@ -1,0 +1,66 @@
+{
+  "$schema": "strategy",
+  "name": "Kashi Lender",
+  "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0xC8f17f8E15900b6D6079680b15Da3cE5263f62AA",
+    "0x564bf2844654f149821697cC56572eE4384c05f7",
+    "0xd2CF8B07fc913e6219E5031B147827c4D0e58A08",
+    "0xEAFB3Ee25B5a9a1b35F193A4662E3bDba7A95BEb"
+  ],
+  "protocols": ["Sushi"],
+  "localization": {
+    "en": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Kashi Lender",
+      "description": "Fournit du {{token}} sur Sushi via [Kashi](https://app.sushi.com/lend) pour générer des intérêts et gagner des jetons SUSHI. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Kashi Lender",
+      "description": "Suministra {{token}} a Sushi a través de [Kashi](https://app.sushi.com/lend) para generar interés y ganar tokens SUSHI. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Kashi Lender",
+      "description": "Faiz elde etmek için ve SUSHI jetonları kazanmak için [Kashi](https://app.sushi.com/lend) aracılığıyla Sushi'ye {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Kashi Lender",
+      "description": "将 {{token}} 通过 [Kashi](https://app.sushi.com/lend) 存入 Sushi 赚取利息和 SUSHI 代币。收获代币后，卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Kashi Lender",
+      "description": "ब्याज उत्पन्न करने और SUSHI टोकन अर्जित करने के लिए [Kashi](https://app.sushi.com/lend) के माध्यम से SUSHI को {{token}} आपूर्ति करते हैं। अर्जित टोकन काटा जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Kashi Lender",
+      "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

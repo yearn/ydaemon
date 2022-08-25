@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Boo Reinvest",
+  "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0x76821Cdcad8Cae7aff53680e215E63EB54d6e6ca"],
+  "protocols": ["SpookySwap", "HectorFinance"],
+  "localization": {
+    "en": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Boo Reinvest",
+      "description": "Stake du {{token}} sur [SpookySwap](https://spookyswap.finance/pools) pour recevoir des jetons xBOO qui sont stakés pour gagner des jetons HEC. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Boo Reinvest",
+      "description": "Hace staking de {{token}} en [SpookySwap](https://spookyswap.finance/pools) para recibir xBOO con el cual se hace staking para ganar HEC. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Boo Reinvest",
+      "description": "HEC kazanmak için stake edilen xBOO'yu almak için [SpookySwap](https://spookyswap.finance/pools)'da {{token}} stake yapın. Kazanılan jetonlar toplanır, daha fazla {{token}} karşılığında satılır ve ardından stratejiye geri yatırılır."
+    },
+    "vi": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Boo Reinvest",
+      "description": "将 {{token}} 质押到 [SpookySwap](https://spookyswap.finance/pools) 以获取 xBOO，再质押 xBOO 以赚取 HEC。收获到的奖励会卖掉，换为更多的 {{token}} 再进行复投。"
+    },
+    "hi": {
+      "name": "Boo Reinvest",
+      "description": "{{token}} को [SpookySwap](https://spookyswap.finance/pools) में xBOO प्राप्त करने के लिए दांव पर लगाता है जिसे HEC कमाने के लिए दांव पर लगाया जाता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Boo Reinvest",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

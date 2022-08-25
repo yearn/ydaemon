@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "LUSD",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 7.5,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "LUSD"
+}

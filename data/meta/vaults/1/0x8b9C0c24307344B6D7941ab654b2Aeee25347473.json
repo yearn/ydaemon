@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve EURN Pool",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 37,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "Curve EURN"
+}

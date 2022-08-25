@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Iron Bank Enhanced Compound Finance Lending",
+  "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x77b7CD137Dd9d94e7056f78308D7F65D2Ce68910",
+    "0xE68A8565B4F837BDa10e2e917BFAaa562e1cD143"
+  ],
+  "protocols": ["CompoundFinance", "IronBank"],
+  "localization": {
+    "en": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Fournit du {{token}} sur [Compound](https://app.compound.finance) et ouvre une dette à long terme (long-term debt) sur [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) pour recevoir des {{token}} supplémentaires et gagner des COMP. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Suministra {{token}} a [Compound](https://app.compound.finance) y abre una deuda a largo plazo en [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) por una cantidad adicional de {{token}} para ganar COMP. Los tokens ganados se cosechan, se venden por más {{token}} que se deposita nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "[Compound](https://app.compound.finance)'a {{token}} sağlar ve COMP kazanmak için ek {{token}} miktarı için [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank)'ta uzun vadeli bir kredi açar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "将 {{token}} 存入 [Compound](https://app.compound.finance) 并在 [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) 长期借出更多的 {{token}} ，然后存入 Compound 以赚取 COMP。收获的代币奖励会被卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "{{token}} को [Compound](https://app.compound.finance) को सप्लाई करता है और [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) पर एक लंबी अवधि का कर्ज खोलता है COMP अर्जित करने के लिए {{token}} की अतिरिक्त राशि के लिए। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Iron Bank Enhanced Compound Finance Lending",
+      "description": "Supplies {{token}} to [Compound](https://app.compound.finance) and opens a long-term debt on [Iron Bank](https://docs.cream.finance/iron-bank/iron-bank) for an additional amount of {{token}} to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

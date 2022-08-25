@@ -1,0 +1,49 @@
+{
+  "$schema": "token",
+  "name": "Curve USDP Pool",
+  "symbol": "crvUSDP",
+  "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets.",
+  "categories": ["Curve LP Tokens"],
+  "website": "https://curve.fi/usdp/",
+  "localization": {
+    "en": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "fr": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "es": {
+      "description": "Este token representa un grupo de liquidez de Curve. Los titulares obtienen tarifas de los usuarios que comercian en el grupo y también pueden depositar el LP en los gauges de Curve para obtener emisiones de CRV. Este metapool contiene 3Crv (DAI, USDC y USDT) y USDP, una moneda estable sintética acuñada en Unit Protocol mediante la sobregarantía de una variedad de activos."
+    },
+    "de": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "pt": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "el": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "tr": {
+      "description": "Bu jeton, bir Curve likidite havuzunu temsil eder. Sahipler, havuzda işlem yapan kullanıcılardan ücret alır ve ayrıca CRV emisyonları kazanmak için LP'yi Curve'un göstergelerine yatırabilir. Bu meta havuz, 3Crv (DAI, USDC ve USDT) ve çeşitli varlıkların aşırı teminatlandırılmasıyla Birim Protokolünde basılan sentetik bir sabit para olan USDP'yi içerir."
+    },
+    "vi": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "zh": {
+      "description": "此代币是 Curve 的流动性池代币。代币持有者可以赚取交易费，也可以将代币存入 Curve gauge 以获得 CRV 奖励。其中包含 3Crv (DAI, USDC, USDT) 和 USDP，USDP 是个通过超额抵押来铸造的合成稳定币，由 Unit Protocol 发行。"
+    },
+    "hi": {
+      "description": "यह टोकन Curve लिक्विडिटी पूल का प्रतिनिधित्व करता है। धारक पूल में व्यापार करने वाले उपयोगकर्ताओं से शुल्क कमाते हैं, और CRV उत्सर्जन अर्जित करने के लिए LP को Curve के गेज में भी जमा कर सकते हैं। इस मेटापूल में 3Crv (DAI, USDC, और USDT) और USDP शामिल हैं, जो विभिन्न प्रकार की संपत्तियों के ओवरकोलेटरलाइज़ेशन द्वारा यूनिट प्रोटोकॉल पर ढाला गया एक सिंथेटिक स्थिर मुद्रा है।"
+    },
+    "ja": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "id": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    },
+    "ru": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and USDP, a synthetic stablecoin minted on Unit Protocol by overcollateralization of a variety of assets."
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "strategy",
+  "name": "Yearn Delegate",
+  "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x3D6532c589A11117a4494d9725bb8518C731f1Be",
+    "0x36822d0b11F4594380181cE6e76bd4986d46c389",
+    "0xE5f7f2E59B259E11EcF2Ff76fDf5dC7438363A3f",
+    "0x0A5157244e4F82F100A461CA65C7b05C8dACf835",
+    "0x3306Afe9bA7287d80D827a5dEAb7C831baAE1777",
+    "0x4a4A5549F4B2eF519ca9abA38f4e2d13c23e32B7",
+    "0x86fd69EDDcc0d185fC2678aA02Aeae67f614b76e",
+    "0xc5cb7C7591a2484c47566d0A4A06d245DF48b35d",
+    "0xB0eb24077563DB8b88384949011dc46410C0A31D",
+    "0xCd9C7752EEDAFA57b32EDa58Deb1889D66484396"
+  ],
+  "protocols": ["Yearn"],
+  "localization": {
+    "en": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Yearn Delegate",
+      "description": "Deposits {{token}} in a newer version [Yearn](https://yearn.finance/#/vaults) Vault. If this strategy is active it is recommended users migrate to the newer vault. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

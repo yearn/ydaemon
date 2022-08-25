@@ -1,0 +1,14 @@
+{
+  "$schema": "vault",
+  "comment": "HEGIC vault, this one doesn't earn enough to keep open and has been closed for a while.",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 98,
+  "apyTypeOverride": "n/a",
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "HEGIC"
+}

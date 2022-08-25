@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Boo Lender Optimizer",
+  "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool.",
+  "addresses": ["0x4CE40A36A018457F8E0AA7C4a12Cc7ebf228B20F"],
+  "protocols": ["SpookySwap"],
+  "localization": {
+    "en": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "fr": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "es": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "de": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "pt": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "el": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "tr": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "vi": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "zh": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "hi": {
+      "name": "Boo Lender Optimizer",
+      "description": "xBOO प्राप्त करने के लिए {{token}} को [SpookySwap](https://spookyswap.finance/pools) में दांव पर लगाता है जो टोकन अर्जित करने के लिए दांव पर लगाया जाता है। अर्जित वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है। रणनीति स्वचालित रूप से सबसे अधिक लाभदायक xBOO स्टेकिंग पूल में बदल जाती है।"
+    },
+    "ja": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "id": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    },
+    "ru": {
+      "name": "Boo Lender Optimizer",
+      "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool."
+    }
+  }
+}

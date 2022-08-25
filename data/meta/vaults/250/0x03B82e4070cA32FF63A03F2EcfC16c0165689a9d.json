@@ -1,0 +1,16 @@
+{
+  "$schema": "vault",
+  "comment": "Avax vault, only used for testing migrations",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "apyTypeOverride": "new",
+  "order": 6,
+  "migrationTargetVault": "0x148c05caf1Bb09B5670f00D511718f733C54bC4c",
+  "migrationContract": "0x09480e53fb713F7C26412436b84e379C0d73F61c",
+  "migrationAvailable": true,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "TEST_ONLY"
+}

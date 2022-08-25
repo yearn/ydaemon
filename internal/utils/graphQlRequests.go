@@ -58,17 +58,14 @@ func GetGraphRequestStrategies(num int64, withDetails bool) string {
 				}
 			}
 			doHealthCheck
-			healthCheck
-		`
+			healthCheck`
 	}
 	return (`
 		strategies(first: ` + numStr + `) {
 			address
 			name
-			inQueue
-			` + details + `
-		}
-	`)
+			inQueue` + details + `
+		}`)
 }
 
 // GetStrategyReports construct the basic graphQL request to get the reports

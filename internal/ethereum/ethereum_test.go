@@ -105,6 +105,13 @@ func TestMulticall(t *testing.T) {
 		wg.Done()
 	}(&wg)
 
+	//Testing for chainID == 10
+	go func(wg *sync.WaitGroup) {
+		store.TokenList[10] = utils.UniqueArrayAddress(fetchTokenList(10))
+		testFetchLens(10)
+		wg.Done()
+	}(&wg)
+
 	//Testing for chainID == 250
 	go func(wg *sync.WaitGroup) {
 		store.TokenList[250] = utils.UniqueArrayAddress(fetchTokenList(250))
@@ -119,6 +126,6 @@ func TestMulticall(t *testing.T) {
 		wg.Done()
 	}(&wg)
 
-	wg.Add(4)
+	wg.Add(5)
 	wg.Wait()
 }

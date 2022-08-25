@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Curve MIM-UST Pool Vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 33.5,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve MIM-UST"
+}

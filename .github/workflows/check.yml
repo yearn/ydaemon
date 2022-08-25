@@ -1,0 +1,33 @@
+name: Check Files
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out github repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('**/data/meta/_config/requirements.txt') }}
+          restore-keys: |
+            pip-
+      - name: Install test dependencies
+        run: pip install -r data/meta/_config/tests/requirements.txt
+
+      - name: Check address checksum
+        run: python data/meta/_config/tests/check_checksum.py

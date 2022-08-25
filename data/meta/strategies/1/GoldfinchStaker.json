@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Goldfinch Staker",
+  "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0x358eb2Ecfa2057Ac52dD435427cB8D094B33AbE0"],
+  "protocols": ["CurveFinance", "GoldfinchFinance"],
+  "localization": {
+    "en": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Goldfinch Staker",
+      "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

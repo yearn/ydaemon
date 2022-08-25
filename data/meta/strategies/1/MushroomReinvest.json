@@ -1,0 +1,66 @@
+{
+  "$schema": "strategy",
+  "name": "Mushroom Finance Reinvest",
+  "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": [
+    "0x53a65c8e238915c79a1e5C366Bc133162DBeE34f",
+    "0x036099f243E135cf2ADF449C2dD5497Da20FB82D",
+    "0xA93cb639ae732559AB9315b3A1615e624c32Cc59",
+    "0xE5dc99Cbf841A6721781E592214674A87a1A70BC"
+  ],
+  "protocols": ["MushroomFinance"],
+  "localization": {
+    "en": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Fournit du {{token}} sur le [Mushroom Finance](https://mushrooms.finance) {{token}} Vault pour gagner du MM. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+    },
+    "es": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Suministra {{token}} a la vault de {{token}} en [Mushroom Finance](https://mushrooms.finance) para ganar MM. Los tokens ganados se cosechan, se venden por más {{token}} que se depositan nuevamente en la estrategia."
+    },
+    "de": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "MM kazanmak için [Mushroom Finance](https://mushrooms.finance) {{token}} Vault'una {{token}} sağlar. Kazanılan jetonlar toplanır, stratejiye geri yatırılan daha fazla {{token}} karşılığında satılır."
+    },
+    "vi": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "将 {{token}} 存入 [Mushroom Finance](https://mushrooms.finance) 的 {{token}} 机枪池赚取 MM。收获代币后，卖掉换为更多的 {{token}} 并进行复投。"
+    },
+    "hi": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "MM कमाने के लिए {{token}} को [Mushroom Finance](https://mushrooms.finance) {{token}} को सप्लाई करता है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Mushroom Finance Reinvest",
+      "description": "Supplies {{token}} to [Mushroom Finance](https://mushrooms.finance) {{token}} Vault to earn MM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

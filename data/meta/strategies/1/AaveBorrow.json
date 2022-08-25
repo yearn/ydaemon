@@ -1,0 +1,68 @@
+{
+  "$schema": "strategy",
+  "name": "Aave Borrow",
+  "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield.",
+  "addresses": [
+    "0x906f0a6f23e7160eB0927B0903ab80b5E3f3950D",
+    "0xd28b508EA08f14A473a5F332631eA1972cFd7cC0",
+    "0xAE159E657712CC68C8A28B6749eC044a7fEABe21",
+    "0xC9db3AF6603329dF6C85E168D41B74832452ef08",
+    "0x3aD22Fd9e2cc898d6F77AC12eAc603A77a464c45",
+    "0x26B294f9451a10E9358F71B65C391806C2689173"
+  ],
+  "protocols": ["Aave"],
+  "localization": {
+    "en": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "fr": {
+      "name": "Aave Borrow",
+      "description": "Fournit du {{token}} sur [AAVE](https://app.aave.com/home) pour générer des intérêts et gagner des jetons AAVE sous sa forme stakée. Une fois déverrouillés, les jetons gagnés sont récoltés, vendus pour plus de {{token}}, qui sont ensuite déposés dans la stratégie. Cette stratégie emprunte également des jetons contre le {{token}} déposé. Les jetons empruntés sont ensuite déposés dans le yVault correspondant pour générer un rendement supplémentaire."
+    },
+    "es": {
+      "name": "Aave Borrow",
+      "description": "Suministra {{token}} a [AAVE](https://app.aave.com/home) para generar interés y ganar tokens AAVE apostados. Una vez desbloqueados, los tokens ganados se cosechan y se venden por más {{token}} que se depositan nuevamente en la estrategia. Esta estrategia también toma prestados tokens contra {{token}}. Los tokens prestados luego se depositan en el yVault correspondiente para generar rendimiento."
+    },
+    "de": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "pt": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "el": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "tr": {
+      "name": "Aave Borrow",
+      "description": "[AAVE](https://app.aave.com/home)'a faiz oluşturmak ve bahisli AAVE belirteçleri kazanmak için {{token}} yatırır. Vade bozulduktan sonra, kazanılan jetonlar hasat edilir, daha fazla {{token}} karşılığında stratejiye geri yatırılması için satılır. Bu strateji ayrıca {{token}} karşılığında jeton ödünç alır. Ödünç alınan jetonlar daha sonra verim elde etmek için ilgili yVault'a yatırılır."
+    },
+    "vi": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "zh": {
+      "name": "Aave Borrow",
+      "description": "将 {{token}} 存入 [AAVE](https://app.aave.com/home) 赚取利息和 stkAAVE 奖励。stAAVE 解锁后，卖掉换为更多的 {{token}} 并进行复投。此策略同时以存款资产作为抵押品，借出其它资产放入对应的 yVault 产生收益。"
+    },
+    "hi": {
+      "name": "Aave Borrow",
+      "description": "{{token}} से [AAVE](https://app.aave.com/home) की आपूर्ति ब्याज उत्पन्न करने और AAVE टोकन अर्जित करने के लिए। एक बार अनलॉक होने के बाद, अर्जित टोकन काटा जाता है, और अधिक {{token}} में बेचा जाता है जिसे वापस रणनीति में जमा किया जाता है। यह रणनीति {{token}} के बदले टोकन भी लेती है। उधार लिए गए टोकन को उपज उत्पन्न करने के लिए संबंधित yVault में जमा किया जाता है।"
+    },
+    "ja": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "id": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    },
+    "ru": {
+      "name": "Aave Borrow",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. This strategy also borrows tokens against {{token}}. Borrowed tokens are then deposited into corresponding yVault to generate yield."
+    }
+  }
+}

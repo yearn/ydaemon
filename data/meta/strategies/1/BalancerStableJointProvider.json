@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Rebalancer Stable Joint Provider",
-  "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy.",
+  "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy.",
   "addresses": [
     "0xc31763c0c3025b9DF3Fb7Cb7f4AC041866F64F2E",
     "0x520BF095FA58cB3f68C18D01746041733A1f7b85",
@@ -14,7 +14,7 @@
   "localization": {
     "en": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "fr": {
       "name": "Rebalancer Stable Joint Provider",
@@ -26,15 +26,15 @@
     },
     "de": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "pt": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "el": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "tr": {
       "name": "Rebalancer Stable Joint Provider",
@@ -42,7 +42,7 @@
     },
     "vi": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "zh": {
       "name": "Rebalancer Stable Joint Provider",
@@ -54,15 +54,15 @@
     },
     "ja": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "id": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     },
     "ru": {
       "name": "Rebalancer Stable Joint Provider",
-      "description": "Supplies {{token}} as half of a join liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
+      "description": "Supplies {{token}} as half of a joint liquidity provider for a Stable Pool on [Balancer](https://app.balancer.fi). Rewards are harvested, split between the pairs, sold for more {{token}}, and deposited back into the strategy."
     }
   }
 }

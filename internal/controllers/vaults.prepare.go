@@ -176,6 +176,7 @@ func buildStrategies(
 ) []models.TStrategy {
 	strategies := []models.TStrategy{}
 	strategiesFromMeta := store.StrategiesFromMeta[chainID]
+	protocolsFromMeta := store.ProtocolsFromMeta[chainID]
 	strategiesFromMulticall := store.StrategyMultiCallData[chainID]
 	strategiesFromRisk := store.StrategiesFromRisk[chainID]
 

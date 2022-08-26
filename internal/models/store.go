@@ -31,24 +31,3 @@ type TStrategyMultiCallData struct {
 	KeepCRV              *big.Int `json:"keepCRV"`
 	IsActive             bool     `json:"isActive"`
 }
-
-type TStrategyFromRiskRiskScores struct {
-	TVLImpact           float64 `json:"TVLImpact"`
-	AuditScore          float64 `json:"auditScore"`
-	CodeReviewScore     float64 `json:"codeReviewScore"`
-	ComplexityScore     float64 `json:"complexityScore"`
-	LongevityImpact     float64 `json:"longevityImpact"`
-	ProtocolSafetyScore float64 `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
-	TestingScore        float64 `json:"testingScore"`
-}
-type TStrategyFromRiskRiskProfile struct {
-	High   float64 `json:"high"`
-	Low    float64 `json:"low"`
-	Median float64 `json:"median"`
-}
-type TStrategyFromRisk struct {
-	RiskScores  TStrategyFromRiskRiskScores  `json:"riskScores"`
-	RiskProfile TStrategyFromRiskRiskProfile `json:"riskProfile"`
-	Tokens      []string                     `json:"tokens"`
-}

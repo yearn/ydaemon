@@ -35,5 +35,4 @@ jobs:
     - name: Coverage
       uses: gwatts/go-coverage-action@v1.1.2
       with:
-        token: ${{ secrets.GH_TOKEN }}
         coverage-threshold: 85

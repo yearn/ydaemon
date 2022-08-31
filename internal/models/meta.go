@@ -7,6 +7,7 @@ type TVaultFromMeta struct {
 	MigrationContract    string  `json:"migrationContract"`
 	Address              string  `json:"address"`
 	Comment              string  `json:"comment"`
+	APYTypeOverride      string  `json:"apyTypeOverride"`
 	Order                float32 `json:"order"`
 	HideAlways           bool    `json:"hideAlways"`
 	DepositsDisabled     bool    `json:"depositsDisabled"`

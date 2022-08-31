@@ -108,6 +108,7 @@ type TStrategy struct {
 	Name            string            `json:"name"`
 	Description     string            `json:"description"`
 	DelegatedAssets string            `json:"-"`
+	DelegatedValue  string            `json:"-"`
 	Details         *TStrategyDetails `json:"details,omitempty"`
 	Risk            *TStrategyRisk    `json:"risk,omitempty"`
 }

@@ -221,7 +221,13 @@ func buildStrategies(
 
 		//Non exported fields, used for internal purposes
 		currentStrategy.DelegatedAssets = bValueWithFallbackString(multicallData.DelegatedAssets, `0`)
-
+		currentStrategy.DelegatedValue = strconv.FormatFloat(
+			buildDelegated(
+				currentStrategy.DelegatedAssets,
+				int(vaultFromGraph.Token.Decimals),
+				humanizedTokenPrice,
+			), 'f', -1, 64,
+		)
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &models.TStrategyDetails{}
@@ -246,6 +252,7 @@ func buildStrategies(
 			currentStrategy.Details.MaxDebtPerHarvest = bValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
 			currentStrategy.Details.EstimatedTotalAssets = bValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
 			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
+			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
 			currentStrategy.Details.KeepCRV = bValueWithFallbackUint64(multicallData.KeepCRV, 0)
 			currentStrategy.Details.LastReport = bValueWithFallbackUint64(multicallData.LastReport, 0)
 			currentStrategy.Details.TotalDebt = bValueWithFallbackString(multicallData.TotalDebt, `0`)
@@ -253,13 +260,6 @@ func buildStrategies(
 			currentStrategy.Details.TotalLoss = bValueWithFallbackString(multicallData.TotalLoss, `0`)
 			currentStrategy.Details.APR = 0.0
 			currentStrategy.Details.IsActive = multicallData.IsActive
-			currentStrategy.Details.DelegatedValue = strconv.FormatFloat(
-				buildDelegated(
-					currentStrategy.Details.DelegatedAssets,
-					int(vaultFromGraph.Token.Decimals),
-					humanizedTokenPrice,
-				), 'f', -1, 64,
-			)
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64
@@ -370,9 +370,9 @@ func prepareVaultSchema(
 	// TotalDelegatedAssets
 
 	for _, strat := range strategies {
-		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.Details.DelegatedValue, 64)
+		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
 		if err == nil {
-			stratDelegatedTokenAsBN, ok := big.NewInt(0).SetString(strat.Details.DelegatedAssets, 10)
+			stratDelegatedTokenAsBN, ok := big.NewInt(0).SetString(strat.DelegatedAssets, 10)
 			if ok {
 				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, stratDelegatedTokenAsBN)
 				fDelegatedValue += stratDelegatedValueAsFloat

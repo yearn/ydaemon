@@ -113,6 +113,14 @@ func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) floa
 	return fHumanizedTVLPrice
 }
 
+func buildDelegated(delegatedBalanceToken string, decimals int, humanizedPrice *big.Float) float64 {
+	fDelegatedBalance := new(big.Float)
+	fDelegatedBalance.SetString(delegatedBalanceToken)
+	delegatedTVL := new(big.Float).Quo(fDelegatedBalance, big.NewFloat(math.Pow10(decimals)))
+	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
+	return fHumanizedTVLPrice
+}
+
 // From the legacy API, build the schema for the APY, models.TAPY, used to get the details and the
 // breakdown of the vault.
 func buildAPY(
@@ -186,6 +194,7 @@ func buildStrategies(
 	withStrategiesDetails bool,
 	withStrategiesRisk bool,
 	strategiesCondition string,
+	humanizedTokenPrice *big.Float,
 	vaultFromGraph models.TVaultFromGraph,
 ) []models.TStrategy {
 	strategies := []models.TStrategy{}
@@ -210,6 +219,15 @@ func buildStrategies(
 		}
 		debtLimit := bValueWithFallbackUint64(multicallData.DebtLimit, 0)
 
+		//Non exported fields, used for internal purposes
+		currentStrategy.DelegatedAssets = bValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		currentStrategy.DelegatedValue = strconv.FormatFloat(
+			buildDelegated(
+				currentStrategy.DelegatedAssets,
+				int(vaultFromGraph.Token.Decimals),
+				humanizedTokenPrice,
+			), 'f', -1, 64,
+		)
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &models.TStrategyDetails{}
@@ -233,6 +251,8 @@ func buildStrategies(
 			currentStrategy.Details.MinDebtPerHarvest = bValueWithFallbackString(multicallData.MinDebtPerHarvest, `0`)
 			currentStrategy.Details.MaxDebtPerHarvest = bValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
 			currentStrategy.Details.EstimatedTotalAssets = bValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
+			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
+			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
 			currentStrategy.Details.KeepCRV = bValueWithFallbackUint64(multicallData.KeepCRV, 0)
 			currentStrategy.Details.LastReport = bValueWithFallbackUint64(multicallData.LastReport, 0)
 			currentStrategy.Details.TotalDebt = bValueWithFallbackString(multicallData.TotalDebt, `0`)
@@ -277,6 +297,7 @@ func buildStrategies(
 		if strategiesCondition == `debtLimit` && debtLimit == 0 {
 			strategies = append(strategies, currentStrategy)
 		}
+
 	}
 	return strategies
 }
@@ -328,19 +349,49 @@ func prepareVaultSchema(
 		chainID,
 		tokenAddress,
 	)
-	fHumanizedTVLPrice := buildTVL(
-		vaultFromGraph.BalanceTokens,
-		int(vaultFromGraph.Token.Decimals),
-		humanizedPrice,
-	)
 
 	strategies := buildStrategies(
 		chainID,
 		withStrategiesDetails,
 		withStrategiesRisk,
 		strategiesCondition,
+		humanizedPrice,
 		vaultFromGraph,
 	)
+
+	fHumanizedTVLPrice := buildTVL(
+		vaultFromGraph.BalanceTokens,
+		int(vaultFromGraph.Token.Decimals),
+		humanizedPrice,
+	)
+	// balanceTokensAsBN, _ := new(big.Int).SetString(vaultFromGraph.BalanceTokens, 10)
+	delegatedTokenAsBN := big.NewInt(0)
+	fDelegatedValue := 0.0
+	// TotalDelegatedAssets
+
+	for _, strat := range strategies {
+		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
+		if err == nil {
+			stratDelegatedTokenAsBN, ok := big.NewInt(0).SetString(strat.DelegatedAssets, 10)
+			if ok {
+				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, stratDelegatedTokenAsBN)
+				fDelegatedValue += stratDelegatedValueAsFloat
+			}
+		}
+	}
+
+	// 	totalDelegatedAssetsString := strconv.FormatFloat(totalDelegatedAssets, 'f', -1, 64)
+
+	// 	if totalDelegatedAssets > 0 {
+	// 		logs.Pretty(strat.Name, strat.Address, totalDelegatedAssetsString)
+	// 	}
+
+	// }
+	// if totalDelegatedAssets > 0 {
+	// 	//convert totalDelegatedAssets to string
+	// 	totalDelegatedAssetsString := strconv.FormatFloat(totalDelegatedAssets, 'f', -1, 64)
+	// 	logs.Pretty(vaultAddress.String(), totalDelegatedAssetsString)
+	// }
 
 	vault := &models.TVault{
 		Inception:      activation,
@@ -362,9 +413,12 @@ func prepareVaultSchema(
 			Icon:        utils.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + common.HexToAddress(vaultFromGraph.Token.Id).String() + `/logo-128.png`,
 		},
 		TVL: models.TTVL{
-			TotalAssets: vaultFromGraph.BalanceTokens,
-			TVL:         fHumanizedTVLPrice,
-			Price:       fHumanizedPrice,
+			TotalAssets:          vaultFromGraph.BalanceTokens,
+			TotalDelegatedAssets: delegatedTokenAsBN.String(),
+			TVL:                  fHumanizedTVLPrice - fDelegatedValue,
+			TVLDeposited:         fHumanizedTVLPrice,
+			TVLDelegated:         fDelegatedValue,
+			Price:                fHumanizedPrice,
 		},
 		Details: &models.TVaultDetails{
 			Management:            vaultFromGraph.Management,

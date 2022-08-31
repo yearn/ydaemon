@@ -13,9 +13,12 @@ type TToken struct {
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets string  `json:"total_assets"`
-	TVL         float64 `json:"tvl"`
-	Price       float64 `json:"price"`
+	TotalAssets          string  `json:"total_assets"`
+	TotalDelegatedAssets string  `json:"total_delegated_assets"`
+	TVLDeposited         float64 `json:"tvl_deposited"`
+	TVLDelegated         float64 `json:"tvl_delegated"`
+	TVL                  float64 `json:"tvl"`
+	Price                float64 `json:"price"`
 }
 
 // TAPYFees holds the fees information about this vault.
@@ -72,6 +75,8 @@ type TStrategyDetails struct {
 	CreditAvailable      string   `json:"creditAvailable"`
 	DebtOutstanding      string   `json:"debtOutstanding"`
 	ExpectedReturn       string   `json:"expectedReturn"`
+	DelegatedAssets      string   `json:"delegatedAssets"`
+	DelegatedValue       string   `json:"delegatedValue"`
 	APR                  float64  `json:"apr"`
 	PerformanceFee       uint64   `json:"performanceFee"`
 	LastReport           uint64   `json:"lastReport"`
@@ -99,11 +104,13 @@ type TStrategyRisk struct {
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     string            `json:"address"`
-	Name        string            `json:"name"`
-	Description string            `json:"description"`
-	Details     *TStrategyDetails `json:"details,omitempty"`
-	Risk        *TStrategyRisk    `json:"risk,omitempty"`
+	Address         string            `json:"address"`
+	Name            string            `json:"name"`
+	Description     string            `json:"description"`
+	DelegatedAssets string            `json:"-"`
+	DelegatedValue  string            `json:"-"`
+	Details         *TStrategyDetails `json:"details,omitempty"`
+	Risk            *TStrategyRisk    `json:"risk,omitempty"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.

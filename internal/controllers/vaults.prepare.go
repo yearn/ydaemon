@@ -17,13 +17,18 @@ func buildVaultName(
 	chainID uint64,
 	vaultAddress common.Address,
 	vaultName string,
+	metaVaultName string,
 	tokenName string,
 ) (name string, displayName string, formatedName string) {
 	name = strings.Replace(vaultName, "\"", "", -1)
 	formatedName = tokenName
-	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
-	if ok {
-		displayName = strings.Replace(vaultFromMeta.DisplayName, "\"", "", -1)
+	if metaVaultName != "" {
+		displayName = metaVaultName
+	} else {
+		vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
+		if ok {
+			displayName = strings.Replace(vaultFromMeta.DisplayName, "\"", "", -1)
+		}
 	}
 
 	//If the formated name is missing yVault suffix, add it
@@ -282,11 +287,16 @@ func prepareVaultSchema(
 	activation := strToUint(vaultFromGraph.Activation, 0)
 	tokenDisplayName := valueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)
 	tokenDisplaySymbol := valueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
+	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
+	if !ok {
+		vaultFromMeta = models.TVaultFromMeta{}
+	}
 
 	vaultName, vaultDisplayName, vaultFormatedName := buildVaultName(
 		chainID,
 		vaultAddress,
 		vaultFromGraph.ShareToken.Name,
+		vaultFromMeta.DisplayName,
 		vaultFromGraph.Token.Name,
 	)
 	vaultSymbol, vaultDisplaySymbol, vaultFormatedSymbol := buildVaultSymbol(

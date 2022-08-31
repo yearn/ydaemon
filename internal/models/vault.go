@@ -104,13 +104,20 @@ type TStrategyRisk struct {
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address         string            `json:"address"`
-	Name            string            `json:"name"`
-	Description     string            `json:"description"`
-	DelegatedAssets string            `json:"-"`
-	DelegatedValue  string            `json:"-"`
-	Details         *TStrategyDetails `json:"details,omitempty"`
-	Risk            *TStrategyRisk    `json:"risk,omitempty"`
+	Address     string `json:"address"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+
+	//The following fields are used for internal computation
+	DelegatedAssets string `json:"-"`
+	DelegatedValue  string `json:"-"`
+	TotalDebt       string `json:"-"`
+	InQueue         bool   `json:"-"`
+	IsActive        bool   `json:"-"`
+	//End of internal computation fields
+
+	Details *TStrategyDetails `json:"details,omitempty"`
+	Risk    *TStrategyRisk    `json:"risk,omitempty"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.

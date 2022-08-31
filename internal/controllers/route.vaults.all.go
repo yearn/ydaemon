@@ -11,6 +11,7 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
+	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
@@ -60,6 +61,10 @@ func (y controller) GetAllVaults(c *gin.Context) {
 	for _, vaultFromGraph := range response.Vaults {
 		vaultAddress := common.HexToAddress(vaultFromGraph.Id)
 		if utils.ContainsAddress(utils.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+			continue
+		}
+		vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
+		if ok && vaultFromMeta.HideAlways {
 			continue
 		}
 

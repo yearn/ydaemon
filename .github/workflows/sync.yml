@@ -1,8 +1,9 @@
 name: Deployment
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+#   push: #uncomment to enable
+    # branches: ["main"] #uncomment to enable
+
 jobs:
   sync:
     name: Verify and sync data to IPFS

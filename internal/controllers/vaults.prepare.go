@@ -115,7 +115,13 @@ func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) floa
 
 // From the legacy API, build the schema for the APY, models.TAPY, used to get the details and the
 // breakdown of the vault.
-func buildAPY(chainID uint64, vaultAddress common.Address, perfFee, manaFee uint64) models.TAPY {
+func buildAPY(
+	chainID uint64,
+	vaultAddress common.Address,
+	perfFee,
+	manaFee uint64,
+	override string,
+) models.TAPY {
 	apy := models.TAPY{}
 	apyFromAPIV1, ok := store.VaultsFromAPIV1[chainID][vaultAddress]
 
@@ -145,6 +151,9 @@ func buildAPY(chainID uint64, vaultAddress common.Address, perfFee, manaFee uint
 				CvxKeepCRV:  apyFromAPIV1.APY.Fees.CvxKeepCRV,
 			},
 		}
+	}
+	if override != "" {
+		apy.Type = override
 	}
 	return apy
 }
@@ -374,7 +383,13 @@ func prepareVaultSchema(
 			AllowZapOut:           vaultFromMeta.AllowZapOut,
 			Retired:               vaultFromMeta.Retired,
 		},
-		APY:        buildAPY(chainID, vaultAddress, vaultFromGraph.PerformanceFeeBps, vaultFromGraph.ManagementFeeBps),
+		APY: buildAPY(
+			chainID,
+			vaultAddress,
+			vaultFromGraph.PerformanceFeeBps,
+			vaultFromGraph.ManagementFeeBps,
+			vaultFromMeta.APYTypeOverride,
+		),
 		Strategies: strategies,
 		Endorsed:   vaultFromGraph.Classification == "Endorsed",
 		Version:    vaultFromGraph.ApiVersion,

@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"net/http"
+	"sort"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -80,5 +81,10 @@ func (y controller) GetAllVaults(c *gin.Context) {
 			vaultFromGraph,
 		))
 	}
+
+	sort.Slice(data, func(i, j int) bool {
+		return data[i].Details.Order < data[j].Details.Order
+	})
+
 	c.JSON(http.StatusOK, data)
 }

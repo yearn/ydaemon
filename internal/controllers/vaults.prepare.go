@@ -291,6 +291,7 @@ func prepareVaultSchema(
 	if !ok {
 		// If the vault file is missing, we set the default values for its fields
 		vaultFromMeta = models.TVaultFromMeta{
+			Order:               1000000000,
 			HideAlways:          false,
 			DepositsDisabled:    false,
 			WithdrawalsDisabled: false,
@@ -364,6 +365,7 @@ func prepareVaultSchema(
 			DepositLimit:          vaultFromGraph.DepositLimit,
 			Comment:               vaultFromMeta.Comment,
 			AvailableDepositLimit: vaultFromGraph.AvailableDepositLimit,
+			Order:                 vaultFromMeta.Order,
 			PerformanceFee:        vaultFromGraph.PerformanceFeeBps,
 			ManagementFee:         vaultFromGraph.ManagementFeeBps,
 			DepositsDisabled:      vaultFromMeta.DepositsDisabled,

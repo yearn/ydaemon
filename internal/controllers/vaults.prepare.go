@@ -289,7 +289,16 @@ func prepareVaultSchema(
 	tokenDisplaySymbol := valueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
 	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
 	if !ok {
-		vaultFromMeta = models.TVaultFromMeta{}
+		// If the vault file is missing, we set the default values for its fields
+		vaultFromMeta = models.TVaultFromMeta{
+			HideAlways:          false,
+			DepositsDisabled:    false,
+			WithdrawalsDisabled: false,
+			MigrationAvailable:  false,
+			AllowZapIn:          true,
+			AllowZapOut:         true,
+			Retired:             false,
+		}
 	}
 
 	vaultName, vaultDisplayName, vaultFormatedName := buildVaultName(
@@ -353,9 +362,15 @@ func prepareVaultSchema(
 			Guardian:              vaultFromGraph.Guardian,
 			Rewards:               vaultFromGraph.Rewards,
 			DepositLimit:          vaultFromGraph.DepositLimit,
+			Comment:               vaultFromMeta.Comment,
 			AvailableDepositLimit: vaultFromGraph.AvailableDepositLimit,
 			PerformanceFee:        vaultFromGraph.PerformanceFeeBps,
 			ManagementFee:         vaultFromGraph.ManagementFeeBps,
+			DepositsDisabled:      vaultFromMeta.DepositsDisabled,
+			WithdrawalsDisabled:   vaultFromMeta.WithdrawalsDisabled,
+			AllowZapIn:            vaultFromMeta.AllowZapIn,
+			AllowZapOut:           vaultFromMeta.AllowZapOut,
+			Retired:               vaultFromMeta.Retired,
 		},
 		APY:        buildAPY(chainID, vaultAddress, vaultFromGraph.PerformanceFeeBps, vaultFromGraph.ManagementFeeBps),
 		Strategies: strategies,

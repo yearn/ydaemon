@@ -119,9 +119,15 @@ type TVaultDetails struct {
 	Guardian              string `json:"guardian"`
 	Rewards               string `json:"rewards"`
 	DepositLimit          string `json:"depositLimit"`
+	Comment               string `json:"comment"`
 	AvailableDepositLimit string `json:"availableDepositLimit,omitempty"`
 	PerformanceFee        uint64 `json:"performanceFee"`
 	ManagementFee         uint64 `json:"managementFee"`
+	DepositsDisabled      bool   `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool   `json:"withdrawalsDisabled"`
+	AllowZapIn            bool   `json:"allowZapIn"`
+	AllowZapOut           bool   `json:"allowZapOut"`
+	Retired               bool   `json:"retired"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

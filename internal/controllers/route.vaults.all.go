@@ -3,6 +3,7 @@ package controllers
 import (
 	"context"
 	"net/http"
+	"sort"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -11,6 +12,7 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
+	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
@@ -62,6 +64,10 @@ func (y controller) GetAllVaults(c *gin.Context) {
 		if utils.ContainsAddress(utils.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
+		vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
+		if ok && vaultFromMeta.HideAlways {
+			continue
+		}
 
 		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
@@ -75,5 +81,10 @@ func (y controller) GetAllVaults(c *gin.Context) {
 			vaultFromGraph,
 		))
 	}
+
+	sort.Slice(data, func(i, j int) bool {
+		return data[i].Details.Order < data[j].Details.Order
+	})
+
 	c.JSON(http.StatusOK, data)
 }

@@ -13,9 +13,12 @@ type TToken struct {
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets string  `json:"total_assets"`
-	TVL         float64 `json:"tvl"`
-	Price       float64 `json:"price"`
+	TotalAssets          string  `json:"total_assets"`
+	TotalDelegatedAssets string  `json:"total_delegated_assets"`
+	TVLDeposited         float64 `json:"tvl_deposited"`
+	TVLDelegated         float64 `json:"tvl_delegated"`
+	TVL                  float64 `json:"tvl"`
+	Price                float64 `json:"price"`
 }
 
 // TAPYFees holds the fees information about this vault.
@@ -72,6 +75,8 @@ type TStrategyDetails struct {
 	CreditAvailable      string   `json:"creditAvailable"`
 	DebtOutstanding      string   `json:"debtOutstanding"`
 	ExpectedReturn       string   `json:"expectedReturn"`
+	DelegatedAssets      string   `json:"delegatedAssets"`
+	DelegatedValue       string   `json:"delegatedValue"`
 	APR                  float64  `json:"apr"`
 	PerformanceFee       uint64   `json:"performanceFee"`
 	LastReport           uint64   `json:"lastReport"`
@@ -99,11 +104,20 @@ type TStrategyRisk struct {
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     string            `json:"address"`
-	Name        string            `json:"name"`
-	Description string            `json:"description"`
-	Details     *TStrategyDetails `json:"details,omitempty"`
-	Risk        *TStrategyRisk    `json:"risk,omitempty"`
+	Address     string `json:"address"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+
+	//The following fields are used for internal computation
+	DelegatedAssets string `json:"-"`
+	DelegatedValue  string `json:"-"`
+	TotalDebt       string `json:"-"`
+	InQueue         bool   `json:"-"`
+	IsActive        bool   `json:"-"`
+	//End of internal computation fields
+
+	Details *TStrategyDetails `json:"details,omitempty"`
+	Risk    *TStrategyRisk    `json:"risk,omitempty"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.
@@ -114,14 +128,21 @@ type TMigration struct {
 
 //TVault details holds some extra information about the vault.
 type TVaultDetails struct {
-	Management            string `json:"management"`
-	Governance            string `json:"governance"`
-	Guardian              string `json:"guardian"`
-	Rewards               string `json:"rewards"`
-	DepositLimit          string `json:"depositLimit"`
-	AvailableDepositLimit string `json:"availableDepositLimit,omitempty"`
-	PerformanceFee        uint64 `json:"performanceFee"`
-	ManagementFee         uint64 `json:"managementFee"`
+	Management            string  `json:"management"`
+	Governance            string  `json:"governance"`
+	Guardian              string  `json:"guardian"`
+	Rewards               string  `json:"rewards"`
+	DepositLimit          string  `json:"depositLimit"`
+	Comment               string  `json:"comment"`
+	AvailableDepositLimit string  `json:"availableDepositLimit,omitempty"`
+	Order                 float32 `json:"-"`
+	PerformanceFee        uint64  `json:"performanceFee"`
+	ManagementFee         uint64  `json:"managementFee"`
+	DepositsDisabled      bool    `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool    `json:"withdrawalsDisabled"`
+	AllowZapIn            bool    `json:"allowZapIn"`
+	AllowZapOut           bool    `json:"allowZapOut"`
+	Retired               bool    `json:"retired"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

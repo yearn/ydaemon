@@ -45,6 +45,7 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 
 // STRATEGIES_CONDITIONS contains the possible conditions to determine which strategies should
 // be used in the return value.
+// If the strategy is `absolute`, an active strategy will be isActive, inQueue and with a debt > 0
 // If the strategy is `inQueue`, we will check if the vault has the strategy in it's withdrawal queue
 // If the strategy is `debtLimit`, we will check if the vault has allocated a debtLimit to the strategy
-var STRATEGIES_CONDITIONS = []string{`inQueue`, `debtLimit`}
+var STRATEGIES_CONDITIONS = []string{`inQueue`, `debtLimit`, `absolute`}

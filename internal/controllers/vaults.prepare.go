@@ -220,7 +220,10 @@ func buildStrategies(
 		debtLimit := bValueWithFallbackUint64(multicallData.DebtLimit, 0)
 
 		//Non exported fields, used for internal purposes
+		currentStrategy.TotalDebt = bValueWithFallbackString(multicallData.TotalDebt, `0`)
 		currentStrategy.DelegatedAssets = bValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		currentStrategy.IsActive = multicallData.IsActive
+		currentStrategy.InQueue = strategy.InQueue
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
 			buildDelegated(
 				currentStrategy.DelegatedAssets,
@@ -228,6 +231,7 @@ func buildStrategies(
 				humanizedTokenPrice,
 			), 'f', -1, 64,
 		)
+
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &models.TStrategyDetails{}
@@ -241,6 +245,7 @@ func buildStrategies(
 			currentStrategy.Details.DoHealthCheck = strategy.DoHealthCheck
 			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
 			currentStrategy.Details.DebtLimit = debtLimit
+			currentStrategy.Details.IsActive = multicallData.IsActive
 			currentStrategy.Details.CreditAvailable = bValueWithFallbackString(multicallData.CreditAvailable, `0`)
 			currentStrategy.Details.DebtOutstanding = bValueWithFallbackString(multicallData.DebtOutstanding, `0`)
 			currentStrategy.Details.ExpectedReturn = bValueWithFallbackString(multicallData.ExpectedReturn, `0`)
@@ -255,11 +260,10 @@ func buildStrategies(
 			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
 			currentStrategy.Details.KeepCRV = bValueWithFallbackUint64(multicallData.KeepCRV, 0)
 			currentStrategy.Details.LastReport = bValueWithFallbackUint64(multicallData.LastReport, 0)
-			currentStrategy.Details.TotalDebt = bValueWithFallbackString(multicallData.TotalDebt, `0`)
+			currentStrategy.Details.TotalDebt = currentStrategy.TotalDebt
 			currentStrategy.Details.TotalGain = bValueWithFallbackString(multicallData.TotalGain, `0`)
 			currentStrategy.Details.TotalLoss = bValueWithFallbackString(multicallData.TotalLoss, `0`)
 			currentStrategy.Details.APR = 0.0
-			currentStrategy.Details.IsActive = multicallData.IsActive
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64
@@ -291,10 +295,14 @@ func buildStrategies(
 			currentStrategy.Risk.TestingScore = int(riskData.RiskScores.TestingScore)
 		}
 
-		if strategiesCondition == `inQueue` && strategy.InQueue {
+		if strategiesCondition == `absolute` &&
+			currentStrategy.InQueue &&
+			currentStrategy.IsActive &&
+			currentStrategy.TotalDebt != `0` {
 			strategies = append(strategies, currentStrategy)
-		}
-		if strategiesCondition == `debtLimit` && debtLimit == 0 {
+		} else if strategiesCondition == `inQueue` && currentStrategy.InQueue {
+			strategies = append(strategies, currentStrategy)
+		} else if strategiesCondition == `debtLimit` && debtLimit == 0 {
 			strategies = append(strategies, currentStrategy)
 		}
 

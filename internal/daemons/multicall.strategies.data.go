@@ -48,10 +48,11 @@ func getDebtOutstanding(name string, contractAddress common.Address, strategyAdd
 func getStrategies(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
 	abiToUse := yearnVaultABI
 
-	if version == `0.2.2` {
+	switch version {
+	case `0.2.2`:
 		_abi, _ := abi.JSON(strings.NewReader(utils.YEARN_VAULT_V022_ABI))
 		abiToUse = &_abi
-	} else if version == `0.3.0` || version == `0.3.1` {
+	case `0.3.0`, `0.3.1`:
 		_abi, _ := abi.JSON(strings.NewReader(utils.YEARN_VAULT_V030_ABI))
 		abiToUse = &_abi
 	}
@@ -115,6 +116,18 @@ func getStategyKeepCRV(name string, contractAddress common.Address, version stri
 	}
 }
 
+func getStategyDelegatedAssets(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := yearnStrategyABI.Pack("delegatedAssets")
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      yearnStrategyABI,
+		Method:   `delegatedAssets`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
 // FetchStrategiesMulticallData will perform a multicall to get some specific data from on-chain for a specific list of strategies
 func FetchStrategiesMulticallData(chainID uint64) {
 	// First we connect to the multicall client, stored in memory via the initializer.
@@ -130,6 +143,7 @@ func FetchStrategiesMulticallData(chainID uint64) {
 		calls = append(calls, getStategyEstimatedTotalAsset(strat.Strategy.String(), strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getStategyIsActive(strat.Strategy.String(), strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getStategyKeepCRV(strat.Strategy.String(), strat.Strategy, strat.VaultVersion))
+		calls = append(calls, getStategyDelegatedAssets(strat.Strategy.String(), strat.Strategy, strat.VaultVersion))
 	}
 
 	if len(calls) == 0 {
@@ -155,12 +169,15 @@ func FetchStrategiesMulticallData(chainID uint64) {
 		estimatedTotalAssets := response[strat.Strategy.String()+`estimatedTotalAssets`]
 		isActive := response[strat.Strategy.String()+`isActive`]
 		keepCRV := response[strat.Strategy.String()+`keepCRV`]
+		delegatedAssets := response[strat.Strategy.String()+`delegatedAssets`]
+
 		data := models.TStrategyMultiCallData{
 			CreditAvailable:      big.NewInt(0),
 			DebtOutstanding:      big.NewInt(0),
 			ExpectedReturn:       big.NewInt(0),
 			EstimatedTotalAssets: big.NewInt(0),
 			KeepCRV:              big.NewInt(0),
+			DelegatedAssets:      big.NewInt(0),
 			IsActive:             false,
 		}
 		if len(creditAvailable0) == 1 {
@@ -177,6 +194,9 @@ func FetchStrategiesMulticallData(chainID uint64) {
 		}
 		if len(keepCRV) == 1 {
 			data.KeepCRV = keepCRV[0].(*big.Int)
+		}
+		if len(delegatedAssets) == 1 {
+			data.DelegatedAssets = delegatedAssets[0].(*big.Int)
 		}
 		if len(isActive) == 1 {
 			data.IsActive = isActive[0].(bool)

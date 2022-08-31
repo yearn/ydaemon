@@ -12,6 +12,7 @@ import (
 	"github.com/majorfi/ydaemon/internal/ethereum"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/models"
+	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/majorfi/ydaemon/internal/utils"
 )
 
@@ -40,7 +41,12 @@ func (y controller) GetVault(c *gin.Context) {
 	}
 
 	if utils.ContainsAddress(utils.BLACKLISTED_VAULTS[chainID], common.HexToAddress(vaultAddress)) {
-		c.String(http.StatusBadRequest, "invalid address")
+		c.String(http.StatusBadRequest, "ignored address")
+		return
+	}
+	vaultFromMeta, ok := store.VaultsFromMeta[chainID][common.HexToAddress(vaultAddress)]
+	if ok && vaultFromMeta.HideAlways {
+		c.String(http.StatusBadRequest, "ignored address")
 		return
 	}
 

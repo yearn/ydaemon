@@ -16,6 +16,10 @@ Then to run, type:
 ```
 make depoly
 ```
+To stop, type:
+```
+make down
+```
 
 ## Manual Install
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:

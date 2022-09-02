@@ -4,11 +4,28 @@
 yDaemon is the next-gen API for Yearn. Based on the one from the [exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
 
 See documentation here: https://ydaemon.ycorpo.com/
+## Use with Docker
+First, ensure [Docker](https://docs.docker.com/get-started/overview/) is installed on your system then, clone the repo and create the '.env' file:
+```
+RPC_URI_FOR_1=
+RPC_URI_FOR_10=
+RPC_URI_FOR_250=
+RPC_URI_FOR_42161=
+```
+Then to run, type:
+```
+make depoly
+```
+To stop, type:
+```
+make down
+```
 
-## Install
+## Manual Install
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
 ```
 RPC_URI_FOR_1=
+RPC_URI_FOR_10=
 RPC_URI_FOR_250=
 RPC_URI_FOR_42161=
 ```

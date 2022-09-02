@@ -30,6 +30,7 @@ func FetchVaultsFromMeta(chainID uint64) {
 			continue
 		}
 		vault.Address = strings.TrimSuffix(filenames[index], `.json`)
+		vault.Address = common.HexToAddress(vault.Address).String()
 		vaults = append(vaults, vault)
 	}
 

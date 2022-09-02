@@ -31,6 +31,7 @@ func FetchTokensFromMeta(chainID uint64) {
 			continue
 		}
 		token.Address = strings.TrimSuffix(filenames[index], `.json`)
+		token.Address = common.HexToAddress(token.Address).String()
 		tokens = append(tokens, token)
 	}
 	store.RawMetaTokens[chainID] = tokens

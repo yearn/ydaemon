@@ -9,6 +9,7 @@ See documentation here: https://ydaemon.ycorpo.com/
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
 ```
 RPC_URI_FOR_1=
+RPC_URI_FOR_10=
 RPC_URI_FOR_250=
 RPC_URI_FOR_42161=
 ```

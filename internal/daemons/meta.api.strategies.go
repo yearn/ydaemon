@@ -28,6 +28,12 @@ func FetchStrategiesFromMeta(chainID uint64) {
 			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
 			continue
 		}
+		//Ensure address checksum
+		allAddresses := []string{}
+		for _, address := range strategy.Addresses {
+			allAddresses = append(allAddresses, common.HexToAddress(address).String())
+		}
+		strategy.Addresses = allAddresses
 		strategies = append(strategies, strategy)
 	}
 	store.RawMetaStrategies[chainID] = strategies

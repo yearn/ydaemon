@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "partners.json",
+  "title": "Partners",
+  "description": "A Yearn Partner",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "treasury": {
+      "type": "string",
+      "format": "address"
+    },
+    "start_block": {
+      "type": "number"
+    },
+    "wrappers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "vault": {
+            "type": "string",
+            "format": "address"
+          },
+          "wrapper": {
+            "type": "string",
+            "format": "address"
+          },
+          "type": {
+            "type": "string",
+            "oneOf": [
+              {"const": "default"},
+              {"const": "wildcard"},
+              {"const": "gearbox"},
+              {"const": "element"},
+              {"const": "bentobox"},
+              {"const": "begenbox"},
+              {"const": "yapeswapFactory"}
+            ]
+          }
+        },
+        "required": ["name", "vault", "wrapper", "type"]
+      }
+    }
+  },
+  "required": ["name", "treasury", "start_block", "wrappers"]
+}

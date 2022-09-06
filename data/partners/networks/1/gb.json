@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "gb",
+	"start_block": 0,
+	"treasury": "0x6965292e29514e527df092659FB4638dc39e7248",
+	"wrappers": [{
+		"name": "gb1",
+		"vault": "0x0000000000000000000000000000000000000000",
+		"wrapper": "0x6965292e29514e527df092659FB4638dc39e7248",
+		"type": "wildcard"
+	}]
+}
+  

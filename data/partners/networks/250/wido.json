@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "wido",
+	"start_block": 0,
+	"treasury": "0x5EF7F250f74d4F11A68054AE4e150705474a6D4a",
+	"wrappers": [{
+		"name": "Router",
+		"vault": "0x0000000000000000000000000000000000000000",
+		"wrapper": "0x7Bbd6348db83C2fb3633Eebb70367E1AEc258764",
+		"type": "wildcard"
+	}]
+}
+  

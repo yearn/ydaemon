@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "akropolis",
+	"start_block": 0,
+	"treasury": "0xC5aF91F7D10dDe118992ecf536Ed227f276EC60D",
+	"wrappers": [{
+		"name": "vaults-savings-v2",
+		"vault": "0x0000000000000000000000000000000000000000",
+		"wrapper": "0x6511D8686EB43Eac9D4852458435c1beC4D67bc6",
+		"type": "wildcard"
+	}]
+}
+  

@@ -113,6 +113,6 @@ ok      github.com/yearn/ydaemon/internal/daemons     31.366s coverage: 94.7% of
 ok      github.com/yearn/ydaemon/internal/ethereum    30.505s coverage: 78.3% of statements
 ok      github.com/yearn/ydaemon/internal/logs        0.674s  coverage: 100.0% of statements
 ok      github.com/yearn/ydaemon/internal/models      0.521s  coverage: [no statements]
-ok      github.com/yearn/ydaemon/internal/store       0.213s  coverage: [no statements]
+ok      github.com/yearn/ydaemon/internal/utils/store       0.213s  coverage: [no statements]
 ok      github.com/yearn/ydaemon/internal/utils       0.406s  coverage: 100.0% of statements
 ```

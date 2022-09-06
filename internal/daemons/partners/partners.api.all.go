@@ -6,34 +6,33 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/partners"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 // FetchPartnersFromFiles fetches the partners information from the Yearn Meta API for a given chainID
 // and store the result to the global variable Partners for later use.
 func FetchPartnersFromFiles(chainID uint64) {
-	partners := []models.TPartners{}
+	allPartners := []partners.TPartners{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := utils.ReadAllFilesInDir(utils.PARTNERS_BASE_PATH+`/networks/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/partners/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Error("Error fetching meta information from the Yearn Meta API", err)
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 	for _, content := range content {
-		partner := models.TPartners{}
-		partnerFromFile := models.TPartnersFromFile{}
+		partner := partners.TPartners{}
+		partnerFromFile := partners.TPartnersFromFile{}
 		if err := json.Unmarshal(content, &partnerFromFile); err != nil {
-			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
 		}
 
 		partner.Name = partnerFromFile.Name
 		partner.StartBlock = partnerFromFile.StartBlock
 		partner.Treasury = common.HexToAddress(partnerFromFile.Treasury)
-		partner.Wrappers = make([]models.TPartnersWrapper, len(partnerFromFile.Wrappers))
+		partner.Wrappers = make([]partners.TPartnersWrapper, len(partnerFromFile.Wrappers))
 		for i, v := range partnerFromFile.Wrappers {
 			if v.Vault != `` {
 				partner.Wrappers[i].Vault = common.HexToAddress(v.Vault)
@@ -42,18 +41,18 @@ func FetchPartnersFromFiles(chainID uint64) {
 			partner.Wrappers[i].Name = v.Name
 			partner.Wrappers[i].Type = v.Type
 		}
-		partners = append(partners, partner)
+		allPartners = append(allPartners, partner)
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TPartners} if we were working with JS/TS
-	if store.PartnersByAddress[chainID] == nil {
-		store.PartnersByAddress[chainID] = make(map[common.Address]models.TPartners)
-		store.PartnersByName[chainID] = make(map[string]models.TPartners)
+	if partners.Store.PartnersByAddress[chainID] == nil {
+		partners.Store.PartnersByAddress[chainID] = make(map[common.Address]partners.TPartners)
+		partners.Store.PartnersByName[chainID] = make(map[string]partners.TPartners)
 	}
-	for _, partner := range partners {
-		store.PartnersByAddress[chainID][partner.Treasury] = partner
-		store.PartnersByName[chainID][partner.Name] = partner
+	for _, partner := range allPartners {
+		partners.Store.PartnersByAddress[chainID][partner.Treasury] = partner
+		partners.Store.PartnersByName[chainID][partner.Name] = partner
 	}
 }
 

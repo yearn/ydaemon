@@ -10,8 +10,8 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/yearn/ydaemon/internal/contracts"
-	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 type Call struct {

@@ -9,21 +9,21 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/ethereum"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
 func graphQLRequestForReports(strategyAddress string, c *gin.Context) *graphql.Request {
 	return graphql.NewRequest(`{
 		strategy(id: "` + strings.ToLower(strategyAddress) + `") {
-			` + utils.GetStrategyReports() + `
+			` + helpers.GetStrategyReports() + `
 		}
 	}`)
 }
 
 //GetReports will, for a given strategy on a given chainID, return a list of reports
-func (y controller) GetReports(c *gin.Context) {
+func (y Controller) GetReports(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
 		c.String(http.StatusBadRequest, "invalid chainID")

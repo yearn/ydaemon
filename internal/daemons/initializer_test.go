@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	utils "github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
 // init is fired directly on app start and prepare the multicall clients

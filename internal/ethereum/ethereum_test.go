@@ -9,11 +9,11 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/contracts"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 var lensABI, _ = contracts.OracleMetaData.GetAbi()
@@ -89,39 +89,39 @@ func testFetchLens(chainID uint64) {
 func TestMulticall(t *testing.T) {
 	var wg sync.WaitGroup
 
-	utils.SetEnv(`../../cmd/.env`)
+	helpers.SetEnv(`../../cmd/.env`)
 
 	//Testing for chainID == 1
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[1] = utils.UniqueArrayAddress(fetchTokenList(1))
+		store.TokenList[1] = helpers.UniqueArrayAddress(fetchTokenList(1))
 		testFetchLens(1)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 4
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[4] = utils.UniqueArrayAddress(fetchTokenList(4))
+		store.TokenList[4] = helpers.UniqueArrayAddress(fetchTokenList(4))
 		testFetchLens(4)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 10
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[10] = utils.UniqueArrayAddress(fetchTokenList(10))
+		store.TokenList[10] = helpers.UniqueArrayAddress(fetchTokenList(10))
 		testFetchLens(10)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 250
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[250] = utils.UniqueArrayAddress(fetchTokenList(250))
+		store.TokenList[250] = helpers.UniqueArrayAddress(fetchTokenList(250))
 		testFetchLens(250)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 42161
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[42161] = utils.UniqueArrayAddress(fetchTokenList(42161))
+		store.TokenList[42161] = helpers.UniqueArrayAddress(fetchTokenList(42161))
 		testFetchLens(42161)
 		wg.Done()
 	}(&wg)

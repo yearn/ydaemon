@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/contracts"
 	"github.com/yearn/ydaemon/internal/ethereum"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // lensABI takes the ABI of the lens contract and prepare it for the multicall

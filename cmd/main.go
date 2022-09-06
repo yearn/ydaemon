@@ -5,14 +5,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yearn/ydaemon/internal/controllers"
 	"github.com/yearn/ydaemon/internal/daemons"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-var chains = utils.SUPPORTED_CHAIN_IDS
+var chains = helpers.SUPPORTED_CHAIN_IDS
 
 // var chains = []uint64{250}
 
@@ -54,5 +53,5 @@ func main() {
 	logs.Info(`Summoning yDaemon...`)
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
-	controllers.NewRouter().Run()
+	NewRouter().Run()
 }

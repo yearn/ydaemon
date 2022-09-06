@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID
@@ -19,7 +19,7 @@ import (
 func FetchStrategiesFromRisk(chainID uint64) {
 	// Get the information from the Risk Framework
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(utils.RISK_BASE_URL + chainIDStr)
+	resp, err := http.Get(helpers.RISK_BASE_URL + chainIDStr)
 	if err != nil {
 		logs.Error("Error fetching information from the Risk Framework", err)
 		return

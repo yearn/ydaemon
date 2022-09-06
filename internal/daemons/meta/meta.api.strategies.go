@@ -6,26 +6,25 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 // FetchStrategiesFromMeta fetches the strategies information from the data/meta folder for a given chainID
 // and store the result to the global variable StrategiesFromMeta for later use.
 func FetchStrategiesFromMeta(chainID uint64) {
-	strategies := []models.TStrategyFromMeta{}
+	strategies := []meta.TStrategyFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/strategies/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/strategies/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Error("Error fetching meta information from the Yearn Meta API", err)
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 	for _, content := range content {
-		strategy := models.TStrategyFromMeta{}
+		strategy := meta.TStrategyFromMeta{}
 		if err := json.Unmarshal(content, &strategy); err != nil {
-			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
 		}
 		//Ensure address checksum
@@ -36,16 +35,16 @@ func FetchStrategiesFromMeta(chainID uint64) {
 		strategy.Addresses = allAddresses
 		strategies = append(strategies, strategy)
 	}
-	store.RawMetaStrategies[chainID] = strategies
+	meta.Store.RawMetaStrategies[chainID] = strategies
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TStrategyFromMeta} if we were working with JS/TS
-	if store.StrategiesFromMeta[chainID] == nil {
-		store.StrategiesFromMeta[chainID] = make(map[common.Address]models.TStrategyFromMeta)
+	if meta.Store.StrategiesFromMeta[chainID] == nil {
+		meta.Store.StrategiesFromMeta[chainID] = make(map[common.Address]meta.TStrategyFromMeta)
 	}
 	for _, strategy := range strategies {
 		for _, strategyAddress := range strategy.Addresses {
-			store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)] = strategy
+			meta.Store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)] = strategy
 		}
 	}
 }

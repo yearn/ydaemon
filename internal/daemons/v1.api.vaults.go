@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
@@ -19,9 +19,9 @@ import (
 func FetchVaultsFromV1(chainID uint64) {
 	// Get the meta information from the Yearn Meta API
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(utils.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
+	resp, err := http.Get(helpers.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
 	if err != nil {
-		logs.Error("Error fetching meta information from the Yearn Meta API", err)
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 
@@ -31,7 +31,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	// Read the response body and store it in the body variable
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logs.Error("Error reading response body from the Yearn Meta API", err)
+		logs.Warning("Error reading response body from the Yearn Meta API")
 		return
 	}
 
@@ -39,7 +39,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	// with this manipulation we are putting it in the correct TAPIV1Vault struct format
 	vaults := []models.TAPIV1Vault{}
 	if err := json.Unmarshal(body, &vaults); err != nil {
-		logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
 	}
 

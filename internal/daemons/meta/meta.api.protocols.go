@@ -5,37 +5,36 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 // FetchProtocolsFromMeta fetches the protocols information from the data/meta folder for a given chainID
 // and store the result to the global variable ProtocolsFromMeta for later use.
 func FetchProtocolsFromMeta(chainID uint64) {
-	protocols := []models.TProtocolsFromMeta{}
+	protocols := []meta.TProtocolsFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/protocols/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/protocols/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Error("Error fetching meta information from the Yearn Meta API", err)
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 	for _, content := range content {
-		protocol := models.TProtocolsFromMeta{}
+		protocol := meta.TProtocolsFromMeta{}
 		if err := json.Unmarshal(content, &protocol); err != nil {
-			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
 		}
 		protocols = append(protocols, protocol)
 	}
-	store.RawMetaProtocols[chainID] = protocols
+	meta.Store.RawMetaProtocols[chainID] = protocols
 
-	if store.ProtocolsFromMeta[chainID] == nil {
-		store.ProtocolsFromMeta[chainID] = make(map[string]models.TProtocolsFromMeta)
+	if meta.Store.ProtocolsFromMeta[chainID] == nil {
+		meta.Store.ProtocolsFromMeta[chainID] = make(map[string]meta.TProtocolsFromMeta)
 	}
 	for _, protocol := range protocols {
-		store.ProtocolsFromMeta[chainID][protocol.Name] = protocol
+		meta.Store.ProtocolsFromMeta[chainID][protocol.Name] = protocol
 	}
 }
 

@@ -9,21 +9,21 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 // GetRPCURI returns the URI to use to connect to the node for a specific chainID
 func GetRPCURI(chainID uint64) string {
 	switch chainID {
 	case 1:
-		return utils.RPCURIFor1
+		return helpers.RPCURIFor1
 	case 10:
-		return utils.RPCURIFor10
+		return helpers.RPCURIFor10
 	case 250:
-		return utils.RPCURIFor250
+		return helpers.RPCURIFor250
 	case 42161:
-		return utils.RPCURIFor42161
+		return helpers.RPCURIFor42161
 	}
 	return ``
 }

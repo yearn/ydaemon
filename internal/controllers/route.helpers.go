@@ -9,27 +9,27 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/ethereum"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
 //GetSupportedChains returns a list of supported chains by the API
-func (y controller) GetSupportedChains(c *gin.Context) {
-	c.JSON(http.StatusOK, utils.SUPPORTED_CHAIN_IDS)
+func (y Controller) GetSupportedChains(c *gin.Context) {
+	c.JSON(http.StatusOK, helpers.SUPPORTED_CHAIN_IDS)
 }
 
 //GetBlacklistedVaults returns a list of blacklisted vaults by the API
-func (y controller) GetBlacklistedVaults(c *gin.Context) {
-	chainID := utils.ValueWithFallback(c.Query("chainID"), "0")
+func (y Controller) GetBlacklistedVaults(c *gin.Context) {
+	chainID := helpers.ValueWithFallback(c.Query("chainID"), "0")
 	if chainID == "0" {
-		c.JSON(http.StatusOK, utils.BLACKLISTED_VAULTS)
+		c.JSON(http.StatusOK, helpers.BLACKLISTED_VAULTS)
 	} else {
 		chainIDAsUint, _ := strconv.ParseUint(chainID, 10, 64)
-		c.JSON(http.StatusOK, utils.BLACKLISTED_VAULTS[chainIDAsUint])
+		c.JSON(http.StatusOK, helpers.BLACKLISTED_VAULTS[chainIDAsUint])
 	}
 }
 
 //GetGraph returns a list of blacklisted vaults by the API
-func (y controller) GetGraph(c *gin.Context) {
+func (y Controller) GetGraph(c *gin.Context) {
 	// Get the chainID from the URI
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {

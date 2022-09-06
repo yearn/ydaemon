@@ -7,26 +7,25 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 // FetchVaultsFromMeta fetches the meta information from the Yearn Meta API for a given chainID
 // and store the result to the global variable VaultsFromMeta for later use.
 func FetchVaultsFromMeta(chainID uint64) {
-	vaults := []models.TVaultFromMeta{}
+	vaults := []meta.TVaultFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, filenames, err := utils.ReadAllFilesInDir(utils.META_BASE_PATH+`/vaults/`+chainIDStr+`/`, `.json`)
+	content, filenames, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Error("Error fetching meta information from the Yearn Meta API", err)
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 	for index, content := range content {
-		vault := models.TVaultFromMeta{}
+		vault := meta.TVaultFromMeta{}
 		if err := json.Unmarshal(content, &vault); err != nil {
-			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
 		}
 		vault.Address = strings.TrimSuffix(filenames[index], `.json`)
@@ -36,14 +35,14 @@ func FetchVaultsFromMeta(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TVaultFromMeta} if we were working with JS/TS
-	if store.VaultsFromMeta[chainID] == nil {
-		store.VaultsFromMeta[chainID] = make(map[common.Address]models.TVaultFromMeta)
+	if meta.Store.VaultsFromMeta[chainID] == nil {
+		meta.Store.VaultsFromMeta[chainID] = make(map[common.Address]meta.TVaultFromMeta)
 	}
 	for _, vault := range vaults {
 		vault.MigrationContract = common.HexToAddress(vault.MigrationContract).Hex()
 		vault.MigrationTargetVault = common.HexToAddress(vault.MigrationTargetVault).Hex()
-		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
-		store.RawMetaVaults[chainID] = append(store.RawMetaVaults[chainID], vault)
+		meta.Store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
+		meta.Store.RawMetaVaults[chainID] = append(meta.Store.RawMetaVaults[chainID], vault)
 	}
 }
 

@@ -9,12 +9,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/contracts"
 	"github.com/yearn/ydaemon/internal/ethereum"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // yearnVaultABI takes the ABI of the standard Yearn Vault contract and prepare it for the multicall
@@ -50,10 +50,10 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 
 	switch version {
 	case `0.2.2`:
-		_abi, _ := abi.JSON(strings.NewReader(utils.YEARN_VAULT_V022_ABI))
+		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V022_ABI))
 		abiToUse = &_abi
 	case `0.3.0`, `0.3.1`:
-		_abi, _ := abi.JSON(strings.NewReader(utils.YEARN_VAULT_V030_ABI))
+		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V030_ABI))
 		abiToUse = &_abi
 	}
 

@@ -8,10 +8,10 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/ethereum"
-	"github.com/yearn/ydaemon/internal/logs"
-	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/store"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // FetchTokenList is an utility function that will query the subgraph in order to
@@ -65,7 +65,7 @@ func FetchTokenList(chainID uint64) {
 		}
 	}
 	store.Tokens[chainID] = tokenData
-	store.TokenList[chainID] = utils.UniqueArrayAddress(tokenList)
+	store.TokenList[chainID] = helpers.UniqueArrayAddress(tokenList)
 	store.SaveInDBForChainID(`TokenData`, chainID, store.Tokens[chainID])
 	store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
 }

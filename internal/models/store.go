@@ -54,16 +54,10 @@ type TStrategyFromRisk struct {
 	Tokens      []string                     `json:"tokens"`
 }
 
-type TPartnersWrapper struct {
-	Name    string `json:"name"`
-	Vault   string `json:"vault,omitempty"`
-	Wrapper string `json:"wrapper"`
-	Type    string `json:"type"`
-}
-
-type TPartners struct {
-	Name       string             `json:"name"`
-	StartBlock uint64             `json:"start_block"`
-	Treasury   string             `json:"treasury"`
-	Wrappers   []TPartnersWrapper `json:"wrappers"`
+//TERC20Token contains the basic information of an ERC20 token
+type TERC20Token struct {
+	Address  common.Address `json:"address"`
+	Name     string         `json:"name"`
+	Symbol   string         `json:"symbol"`
+	Decimals uint64         `json:"decimals"`
 }

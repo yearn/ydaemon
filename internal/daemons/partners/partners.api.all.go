@@ -24,16 +24,23 @@ func FetchPartnersFromFiles(chainID uint64) {
 	}
 	for _, content := range content {
 		partner := models.TPartners{}
-		if err := json.Unmarshal(content, &partner); err != nil {
+		partnerFromFile := models.TPartnersFromFile{}
+		if err := json.Unmarshal(content, &partnerFromFile); err != nil {
 			logs.Error("Error unmarshalling response body from the Yearn Meta API", err)
 			continue
 		}
-		partner.Treasury = common.HexToAddress(partner.Treasury).String()
-		for i, v := range partner.Wrappers {
+
+		partner.Name = partnerFromFile.Name
+		partner.StartBlock = partnerFromFile.StartBlock
+		partner.Treasury = common.HexToAddress(partnerFromFile.Treasury)
+		partner.Wrappers = make([]models.TPartnersWrapper, len(partnerFromFile.Wrappers))
+		for i, v := range partnerFromFile.Wrappers {
 			if v.Vault != `` {
-				partner.Wrappers[i].Vault = common.HexToAddress(v.Vault).String()
+				partner.Wrappers[i].Vault = common.HexToAddress(v.Vault)
 			}
-			partner.Wrappers[i].Wrapper = common.HexToAddress(v.Wrapper).String()
+			partner.Wrappers[i].Wrapper = common.HexToAddress(v.Wrapper)
+			partner.Wrappers[i].Name = v.Name
+			partner.Wrappers[i].Type = v.Type
 		}
 		partners = append(partners, partner)
 	}
@@ -45,7 +52,7 @@ func FetchPartnersFromFiles(chainID uint64) {
 		store.PartnersByName[chainID] = make(map[string]models.TPartners)
 	}
 	for _, partner := range partners {
-		store.PartnersByAddress[chainID][common.HexToAddress(partner.Treasury)] = partner
+		store.PartnersByAddress[chainID][partner.Treasury] = partner
 		store.PartnersByName[chainID][partner.Name] = partner
 	}
 }

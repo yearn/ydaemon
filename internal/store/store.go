@@ -11,6 +11,10 @@ import (
 // List is accessible through TokenList[chainID]
 var TokenList = make(map[uint64][]common.Address)
 
+// Tokens contains the list of address for a specific chain and some minimal information about the token
+// List is accessible through Tokens[chainID]
+var Tokens = make(map[uint64]map[common.Address]models.TERC20Token)
+
 // StrategyList contains the list of strategies we will need to multicall more info.
 // List is accessible through StrategyList[chainID]
 var StrategyList = make(map[uint64]map[common.Address]models.TStrategyList)

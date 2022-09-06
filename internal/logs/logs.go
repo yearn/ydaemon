@@ -62,7 +62,7 @@ func Warning(warning interface{}) {
 }
 
 //Info function logs an info message
-func Info(info interface{}) {
+func Info(info ...interface{}) {
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
 	str1 := `[INFO]`
 	t := time.Now().Format("2006/01/02 15:04:05")

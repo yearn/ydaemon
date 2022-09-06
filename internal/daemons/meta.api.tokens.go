@@ -44,26 +44,11 @@ func FetchTokensFromMeta(chainID uint64) {
 	for _, token := range tokens {
 		store.TokensFromMeta[chainID][common.HexToAddress(token.Address)] = token
 	}
-	store.SaveInDBForChainID(`TokensFromMeta`, chainID, store.TokensFromMeta[chainID])
 }
 
-// LoadMetaTokens will reload the meta tokens data store from the last state of the local Badger Database
+// LoadMetaTokens is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
 func LoadMetaTokens(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TTokenFromMeta)
-	err := store.LoadFromDBForChainID(`TokensFromMeta`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No metaTokens data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		store.TokensFromMeta[chainID] = temp
-		logs.Success("Data loaded for the metaTokens data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No metaTokens data found for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	_ = chainID
+	wg.Done()
 }

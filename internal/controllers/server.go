@@ -76,5 +76,15 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/protocol/:name`, meta.GetMetaProtocol)
 	}
 
+	// Partners API section
+	{
+		meta := controller{}
+		// Proxy meta strategies
+		router.GET(`partners/count`, meta.CountAllPartners)
+		router.GET(`partners/all`, meta.GetAllPartners)
+		router.GET(`:chainID/partners/all`, meta.GetPartners)
+		router.GET(`:chainID/partners/:addressOrName`, meta.GetPartner)
+	}
+
 	return router
 }

@@ -1,0 +1,29 @@
+# getBlacklistedVaults
+REST API endpoint to list Total Value Locked for the listed chainID.
+
+```bash
+GET :chainID/vaults/tvl
+```
+
+## What's going on?
+This sums TVL from all vaults on this chainID and outputs the results. Does not include delegated deposits from one vault to another. 
+
+## Arguments
+#### Params
+*N/A*
+
+#### Query
+- `?chainID`: The chainID of the chain you want to get the Vaults for. If not provided, all chains are used.
+
+## Return Value
+
+```go
+[]uint64{}
+```
+
+### Example
+```json
+{
+	429373452.8429227
+}
+```

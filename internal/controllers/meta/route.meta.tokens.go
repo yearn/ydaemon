@@ -1,4 +1,4 @@
-package controllers
+package metaController
 
 import (
 	"net/http"
@@ -6,19 +6,20 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 // GetMetaTokensLegacy will, for a given chainID, return all the meta informations for the tokens.
 // The data will be resolved as-is, aka as an unorganized array of tokens metadata.
-func (y controller) GetMetaTokensLegacy(c *gin.Context) {
+func (y Controller) GetMetaTokensLegacy(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	localization := valueWithFallback(c.Query("loc"), "en")
+	localization := utils.ValueWithFallback(c.Query("loc"), "en")
 	tokensFromMeta, ok := store.RawMetaTokens[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -43,13 +44,13 @@ func (y controller) GetMetaTokensLegacy(c *gin.Context) {
 // GetMetaTokens will, for a given chainID, return all the meta informations for the tokens.
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the token metadata.
-func (y controller) GetMetaTokens(c *gin.Context) {
+func (y Controller) GetMetaTokens(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	localization := valueWithFallback(c.Query("loc"), "en")
+	localization := utils.ValueWithFallback(c.Query("loc"), "en")
 	tokensFromMeta, ok := store.TokensFromMeta[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -73,13 +74,13 @@ func (y controller) GetMetaTokens(c *gin.Context) {
 
 // GetMetaToken will, for a given address on given chainID, return the meta informations for the token.
 // The data will be resolved as an object corresponding to the token models.
-func (y controller) GetMetaToken(c *gin.Context) {
+func (y Controller) GetMetaToken(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	localization := valueWithFallback(c.Query("loc"), "en")
+	localization := utils.ValueWithFallback(c.Query("loc"), "en")
 	tokenAddress := c.Param("address")
 	if tokenAddress == `` {
 		c.String(http.StatusBadRequest, "invalid address")

@@ -1,7 +1,7 @@
-package daemons
+package multicallDaemons
 
 import (
-	"github.com/majorfi/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/ethereum"
 )
 
 var multicallClientForChainID = make(map[uint64]ethereum.TEthMultiCaller)

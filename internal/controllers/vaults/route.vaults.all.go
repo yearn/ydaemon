@@ -1,4 +1,4 @@
-package controllers
+package vaultsController
 
 import (
 	"context"
@@ -9,20 +9,20 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
-	skip := valueWithFallback(c.Query("skip"), "0")
-	first := valueWithFallback(c.Query("first"), "1000")
-	orderDirection := valueWithFallback(c.Query("orderDirection"), "desc")
-	orderBy := valueWithFallback(c.Query("orderBy"), "activation")
-	withDetails := valueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
-	onlyEndorsed := valueWithFallback(c.Query("classification"), "endorsed") == "endorsed"
+	skip := utils.ValueWithFallback(c.Query("skip"), "0")
+	first := utils.ValueWithFallback(c.Query("first"), "1000")
+	orderDirection := utils.ValueWithFallback(c.Query("orderDirection"), "desc")
+	orderBy := utils.ValueWithFallback(c.Query("orderBy"), "activation")
+	withDetails := utils.ValueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	onlyEndorsed := utils.ValueWithFallback(c.Query("classification"), "endorsed") == "endorsed"
 
 	if onlyEndorsed {
 		return graphql.NewRequest(`{
@@ -41,7 +41,7 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 }
 
 //GetAllVaults will, for a given chainID, return a list of all vaults
-func (y controller) GetAllVaults(c *gin.Context) {
+func (y Controller) GetAllVaults(c *gin.Context) {
 	// get the chainID from the URI
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {

@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID

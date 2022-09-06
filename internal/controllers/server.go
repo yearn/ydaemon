@@ -1,10 +1,27 @@
 package controllers
 
 import (
+	"time"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	metaController "github.com/yearn/ydaemon/internal/controllers/meta"
+	partnersController "github.com/yearn/ydaemon/internal/controllers/partners"
+	vaultsController "github.com/yearn/ydaemon/internal/controllers/vaults"
 )
+
+type controller struct{}
+
+func logger(log *logrus.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		log.WithFields(logrus.Fields{
+			"path":   c.Request.RequestURI,
+			"method": c.Request.Method,
+			"status": c.Writer.Status(),
+		}).Info(time.Now().Format(time.RFC3339))
+	}
+}
 
 // NewRouter create the routes and setup the server
 func NewRouter() *gin.Engine {
@@ -20,15 +37,19 @@ func NewRouter() *gin.Engine {
 	}
 	router.Use(cors.New(corsConf))
 
-	// General section
+	// Vaults section
 	{
-		c := controller{}
+		c := vaultsController.Controller{}
 		// Retrieve the vaults for a specific chainID
 		router.GET(`:chainID/vaults/tvl`, c.GetAllVaultsTVL)
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
 		router.GET(`:chainID/vaults/:address`, c.GetVault)
 		router.GET(`:chainID/vault/:address`, c.GetVault)
+	}
 
+	// General section
+	{
+		c := controller{}
 		// Retrieve the reports for a specific strategy
 		router.GET(`:chainID/reports/:address`, c.GetReports)
 
@@ -38,14 +59,11 @@ func NewRouter() *gin.Engine {
 
 		// Proxy subgraph
 		router.POST(`:chainID/graph`, c.GetGraph)
-
-		// Automatic webhook connected to github to trigger some actions
-		router.POST(`webhook/meta/trigger`, c.TriggerMetaRefreshWebhook)
 	}
 
 	// Meta API section
 	{
-		meta := controller{}
+		meta := metaController.Controller{}
 
 		// Proxy meta strategies
 		router.GET(`api/:chainID/strategies/all`, meta.GetMetaStrategiesLegacy)
@@ -78,8 +96,7 @@ func NewRouter() *gin.Engine {
 
 	// Partners API section
 	{
-		meta := controller{}
-		// Proxy meta strategies
+		meta := partnersController.Controller{}
 		router.GET(`partners/count`, meta.CountAllPartners)
 		router.GET(`partners/all`, meta.GetAllPartners)
 		router.GET(`:chainID/partners/all`, meta.GetPartners)

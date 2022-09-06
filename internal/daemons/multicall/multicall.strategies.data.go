@@ -1,4 +1,4 @@
-package daemons
+package multicallDaemons
 
 import (
 	"math"
@@ -9,12 +9,12 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/contracts"
-	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/contracts"
+	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 // yearnVaultABI takes the ABI of the standard Yearn Vault contract and prepare it for the multicall

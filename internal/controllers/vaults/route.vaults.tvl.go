@@ -1,4 +1,4 @@
-package controllers
+package vaultsController
 
 import (
 	"context"
@@ -8,15 +8,15 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 //GetAllVaultsTVL will, for a given chainID, return the current TVL
-func (y controller) GetAllVaultsTVL(c *gin.Context) {
+func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
 	if err != nil {
 		c.String(http.StatusBadRequest, "invalid chainID")

@@ -5,7 +5,7 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/majorfi/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/logs"
 )
 
 var (
@@ -17,8 +17,6 @@ var (
 	RPCURIFor250 string
 	// RPCURIFor42161 : RPC we should use for the chain #42161 (Arbitrum)
 	RPCURIFor42161 string
-	// WebhookSecret: is a shared secret between Github Webook system and the Daemon to trigger some data refresh
-	WebhookSecret string
 )
 
 // SetEnv will init the environment variables based on the .env file
@@ -48,11 +46,6 @@ func SetEnv(path string) {
 	if !exists {
 		RPCURIFor42161 = "https://arbitrum.public-rpc.com"
 		logs.Warning("RPC_URI_FOR_42161 not set, using default value: [https://arbitrum.public-rpc.com]")
-	}
-
-	WebhookSecret, exists = os.LookupEnv("WEBHOOK_SECRET")
-	if !exists {
-		logs.Warning("WEBHOOK_SECRET not set")
 	}
 }
 

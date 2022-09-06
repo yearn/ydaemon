@@ -4,7 +4,7 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // TokenList contains the list of tokens we will need to fetch prices for.

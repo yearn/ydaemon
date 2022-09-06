@@ -45,26 +45,11 @@ func FetchVaultsFromMeta(chainID uint64) {
 		store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
 		store.RawMetaVaults[chainID] = append(store.RawMetaVaults[chainID], vault)
 	}
-	store.SaveInDBForChainID(`VaultsFromMeta`, chainID, store.VaultsFromMeta[chainID])
 }
 
-// LoadMetaVaults will reload the meta vaults data store from the last state of the local Badger Database
+// LoadMetaVaults is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
 func LoadMetaVaults(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TVaultFromMeta)
-	err := store.LoadFromDBForChainID(`VaultsFromMeta`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		store.VaultsFromMeta[chainID] = temp
-		logs.Success("Data loaded for the metaVaults data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	_ = chainID
+	wg.Done()
 }

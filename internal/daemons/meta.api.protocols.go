@@ -37,26 +37,11 @@ func FetchProtocolsFromMeta(chainID uint64) {
 	for _, protocol := range protocols {
 		store.ProtocolsFromMeta[chainID][protocol.Name] = protocol
 	}
-	store.SaveInDBForChainID(`ProtocolsFromMeta`, chainID, store.ProtocolsFromMeta[chainID])
 }
 
-// LoadMetaProtocols will reload the meta protocols data store from the last state of the local Badger Database
+// LoadMetaProtocols is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
 func LoadMetaProtocols(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[string]models.TProtocolsFromMeta)
-	err := store.LoadFromDBForChainID(`ProtocolsFromMeta`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No metaProtocols data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		store.ProtocolsFromMeta[chainID] = temp
-		logs.Success("Data loaded for the metaProtocols data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No metaProtocols data found for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	_ = chainID
+	wg.Done()
 }

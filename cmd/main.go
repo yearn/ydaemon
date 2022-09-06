@@ -9,9 +9,10 @@ import (
 	"github.com/majorfi/ydaemon/internal/daemons"
 	"github.com/majorfi/ydaemon/internal/logs"
 	"github.com/majorfi/ydaemon/internal/store"
+	"github.com/majorfi/ydaemon/internal/utils"
 )
 
-var chains = []uint64{1, 10, 250, 42161}
+var chains = utils.SUPPORTED_CHAIN_IDS
 
 // var chains = []uint64{250}
 

@@ -48,26 +48,11 @@ func FetchStrategiesFromMeta(chainID uint64) {
 			store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)] = strategy
 		}
 	}
-	store.SaveInDBForChainID(`StrategiesFromMeta`, chainID, store.StrategiesFromMeta[chainID])
 }
 
-// LoadMetaStrategies will reload the meta strategies data store from the last state of the local Badger Database
+// LoadMetaStrategies is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
 func LoadMetaStrategies(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TStrategyFromMeta)
-	err := store.LoadFromDBForChainID(`StrategiesFromMeta`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No metaStrategies data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		store.StrategiesFromMeta[chainID] = temp
-		logs.Success("Data loaded for the metaStrategies data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No metaStrategies data found for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	_ = chainID
+	wg.Done()
 }

@@ -20,11 +20,17 @@ var GITHUB_ICON_BASE_URL = `https://raw.githubusercontent.com/yearn/yearn-assets
 // META_BASE_PATH is the base path to access the meta informations
 var META_BASE_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/meta`)
 
+// PARTNERS_BASE_PATH is the base path to access the partners informations
+var PARTNERS_BASE_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/partners`)
+
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 
 // RISK_BASE_URL is the base URL to access the risk framework
 var RISK_BASE_URL = `https://d3971bp2359cnv.cloudfront.net/api/strategies/`
+
+// SUPPORTED_CHAIN_IDS is the list of supported chain IDs
+var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{

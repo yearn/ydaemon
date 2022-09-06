@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Aave / Ironbank Lender Optimizer",
+  "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xD1c8dC4e30194e3a9DC65c65a150eaF5Ab037008"],
+  "protocols": ["Aave", "IronBank"],
+  "localization": {
+    "en": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Aave / Ironbank Lender Optimizer",
+      "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

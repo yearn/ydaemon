@@ -1,14 +1,31 @@
 # yDaemon
 ![](./.github/og.jpeg)
 
-yDaemon is the next-gen API for Yearn. Based on the one from the [exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
+yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
 
 See documentation here: https://ydaemon.ycorpo.com/
+## Use with Docker
+First, ensure [Docker](https://docs.docker.com/get-started/overview/) is installed on your system then, clone the repo and create the '.env' file:
+```
+RPC_URI_FOR_1=
+RPC_URI_FOR_10=
+RPC_URI_FOR_250=
+RPC_URI_FOR_42161=
+```
+Then to run, type:
+```
+make depoly
+```
+To stop, type:
+```
+make down
+```
 
-## Install
+## Manual Install
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
 ```
 RPC_URI_FOR_1=
+RPC_URI_FOR_10=
 RPC_URI_FOR_250=
 RPC_URI_FOR_42161=
 ```
@@ -56,16 +73,16 @@ curl http://localhost:8080/1/vaults/all
 
 
 ## Data Sources
-In order to build this API, data are fetched from a number of Yearn data sources:
+To build this API data is fetched from several Yearn data sources:
 - [Yearn Subgraph](https://thegraph.com/explorer/subgraph?id=5xMSe3wTNLgFQqsAc5SCVVwT4MiRb5AogJCuSN9PjzXF) as the base data source.
 - [Yearn Meta](https://github.com/yearn/yearn-meta) for some basic data and information updated by the Yearn team.
 - [Yearn API](https://api.yearn.finance/) for the APY computation.
 - [Yearn Lens Oracle](https://etherscan.io/address/0xca11bde05977b3631167028862be2a173976ca11) for tokens and vault prices.
 
-In order to provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.
+To provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.
 - Prices from the oracle are updated every 30 seconds for every tokens and vaults, as the price may change at every block.
 - APY information is updated every 10 minutes, as the underlying API is updated every 30 minutes
-- Meta data are updated every minutes. This will be moved to every 30 minutes in the future, and trust a webhook from the github deployement system to update the data.
+- Meta data is updated every minute. This will be moved to every 30 minutes in the future, and trust a webhook from the github deployement system to update the data.
 
 ## Folder and structure
 The project is divided as follow:

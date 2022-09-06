@@ -52,7 +52,7 @@ func (y controller) GetAllVaultsTVL(c *gin.Context) {
 			withStrategiesDetails,
 			vaultFromGraph,
 		)
-		tvl += currentVault.TVL.TVLDeposited
+		tvl += currentVault.TVL.TVL
 	}
 
 	c.JSON(http.StatusOK, tvl)

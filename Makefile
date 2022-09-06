@@ -14,3 +14,6 @@ build: vet
 deploy:
 	git pull --rebase && docker-compose down && docker-compose up --build --detach
 .PHONY:deploy
+down:
+	docker-compose down
+.PHONY:down

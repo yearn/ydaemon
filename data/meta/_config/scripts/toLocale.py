@@ -65,6 +65,6 @@ for folder in folders:
 							else:
 								data['localization'][locale] = {"description": data["description"]}
 			
-				with open(filePath, 'w') as f:
-					json.dump(data, f, indent=2)
+				with open(filePath, 'w', encoding='utf-8') as f:
+					json.dump(data, f, indent=2, ensure_ascii=False)
 print("The localization has been updated")

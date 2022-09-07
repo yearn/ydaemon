@@ -32,20 +32,23 @@ var VaultsFromAPIV1 = make(map[uint64]map[common.Address]models.TAPIV1Vault)
 var StrategyMultiCallData = make(map[uint64]map[common.Address]models.TStrategyMultiCallData)
 
 // VaultsFromMeta holds the data for the vaults from the Yearn Meta API for each chain.
-// The data is updated every 24 hours.
 var VaultsFromMeta = make(map[uint64]map[common.Address]models.TVaultFromMeta)
 
 // TokensFromMeta holds the data for the tokens from the Yearn Meta API for each chain.
-// The data is updated every 24 hours.
 var TokensFromMeta = make(map[uint64]map[common.Address]models.TTokenFromMeta)
 
 // StrategiesFromMeta holds the data for the strategies from the Yearn Meta API for each chain.
-// The data is updated every 24 hours.
 var StrategiesFromMeta = make(map[uint64]map[common.Address]models.TStrategyFromMeta)
 
 // ProtocolsFromMeta holds the data for the protocols from the Yearn Meta API for each chain.
 // The data is updated every 24 hours.
 var ProtocolsFromMeta = make(map[uint64]map[string]models.TProtocolsFromMeta)
+
+// PartnersByAddress holds the data for the partners from the Yearn Meta API for each chain. Data are ordered by address.
+var PartnersByAddress = make(map[uint64]map[common.Address]models.TPartners)
+
+// PartnersByAddress holds the data for the partners from the Yearn Meta API for each chain. Data are ordered by name.
+var PartnersByName = make(map[uint64]map[string]models.TPartners)
 
 // RawMetaStrategies contains the raw response from the meta endpoint for the strategies
 var RawMetaStrategies = make(map[uint64][]models.TStrategyFromMeta)

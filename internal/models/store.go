@@ -53,3 +53,17 @@ type TStrategyFromRisk struct {
 	RiskProfile TStrategyFromRiskRiskProfile `json:"riskProfile"`
 	Tokens      []string                     `json:"tokens"`
 }
+
+type TPartnersWrapper struct {
+	Name    string `json:"name"`
+	Vault   string `json:"vault,omitempty"`
+	Wrapper string `json:"wrapper"`
+	Type    string `json:"type"`
+}
+
+type TPartners struct {
+	Name       string             `json:"name"`
+	StartBlock uint64             `json:"start_block"`
+	Treasury   string             `json:"treasury"`
+	Wrappers   []TPartnersWrapper `json:"wrappers"`
+}

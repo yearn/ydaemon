@@ -1,0 +1,18 @@
+{
+	"$schema": "partners",
+	"name": "tempus",
+	"start_block": 0,
+	"treasury": "0xab40a7e3cef4afb323ce23b6565012ac7c76bfef",
+	"wrappers": [{
+		"name": "btr",
+		"vault": "0xa354F35829Ae975e850e23e9615b11Da1B3dC4DE",
+		"wrapper": "0x443297DE16C074fDeE19d2C9eCF40fdE2f5F62C2",
+		"type": "default"
+	}, {
+		"name": "yvDAI Tempus Pool",
+		"vault": "0xdA816459F1AB5631232FE5e97a05BBBb94970c95",
+		"wrapper": "0x7e0fc07280f47bac3D55815954e0f904c86f642E",
+		"type": "default"
+	}]
+}
+  

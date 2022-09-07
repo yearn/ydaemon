@@ -26,7 +26,7 @@ def test(addr_str):
     return checksum_encoded == addr_str, addr_str, checksum_encoded
 
 
-BASE = "data"
+BASE = "data/meta"
 FOLDERS = [
     "vaults",  # check filenames
     "tokens",  # check filenames

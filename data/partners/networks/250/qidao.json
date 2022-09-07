@@ -1,0 +1,18 @@
+{
+	"$schema": "partners",
+	"name": "qidao",
+	"start_block": 0,
+	"treasury": "0x679016B3F8E98673f85c6F72567f22b58Aa15A54",
+	"wrappers": [{
+		"name": "fantom",
+		"vault": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
+		"wrapper": "0x7efb260662a6fa95c1ce1092c53ca23733202798",
+		"type": "default"
+	}, {
+		"name": "dai",
+		"vault": "0x637ec617c86d24e421328e6caea1d92114892439",
+		"wrapper": "0x682e473fca490b0adfa7efe94083c1e63f28f034",
+		"type": "default"
+	}]
+}
+  

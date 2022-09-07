@@ -114,3 +114,13 @@ func FormatAmount(balanceToken string, decimals int) (float64, *big.Float) {
 	fhumanizedBalance, _ := humanizedBalance.Float64()
 	return fhumanizedBalance, humanizedBalance
 }
+
+//ContainsUint64 returns true if value exists in arr
+func ContainsUint64(arr []uint64, value uint64) bool {
+	for _, v := range arr {
+		if v == value {
+			return true
+		}
+	}
+	return false
+}

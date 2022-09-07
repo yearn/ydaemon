@@ -68,6 +68,10 @@ func (y Controller) GetVaultsTVL(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
+	if !helpers.ContainsUint64(helpers.SUPPORTED_CHAIN_IDS, chainID) {
+		c.String(http.StatusBadRequest, "unsupported chainID")
+		return
+	}
 
 	c.JSON(http.StatusOK, computeChainTVL(chainID, c))
 }

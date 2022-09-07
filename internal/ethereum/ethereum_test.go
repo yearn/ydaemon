@@ -90,6 +90,7 @@ func TestMulticall(t *testing.T) {
 	var wg sync.WaitGroup
 
 	helpers.SetEnv(`../../cmd/.env`)
+	wg.Add(5)
 
 	//Testing for chainID == 1
 	go func(wg *sync.WaitGroup) {
@@ -126,6 +127,5 @@ func TestMulticall(t *testing.T) {
 		wg.Done()
 	}(&wg)
 
-	wg.Add(5)
 	wg.Wait()
 }

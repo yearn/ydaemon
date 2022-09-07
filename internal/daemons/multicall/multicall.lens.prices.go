@@ -1,4 +1,4 @@
-package daemons
+package multicallDaemons
 
 import (
 	"math"
@@ -8,10 +8,10 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/contracts"
-	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/contracts"
+	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/store"
 )
 
 // lensABI takes the ABI of the lens contract and prepare it for the multicall

@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/dgraph-io/badger/v3"
-	"github.com/majorfi/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/logs"
 )
 
 // DB is the badger database

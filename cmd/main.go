@@ -5,11 +5,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/majorfi/ydaemon/internal/controllers"
-	"github.com/majorfi/ydaemon/internal/daemons"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/controllers"
+	"github.com/yearn/ydaemon/internal/daemons"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 var chains = utils.SUPPORTED_CHAIN_IDS

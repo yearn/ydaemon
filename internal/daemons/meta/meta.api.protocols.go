@@ -1,14 +1,14 @@
-package daemons
+package metaDaemons
 
 import (
 	"encoding/json"
 	"strconv"
 	"sync"
 
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 // FetchProtocolsFromMeta fetches the protocols information from the data/meta folder for a given chainID

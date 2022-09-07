@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/majorfi/ydaemon/internal/daemons"
-	"github.com/majorfi/ydaemon/internal/store"
 	"github.com/stretchr/testify/assert"
+	"github.com/yearn/ydaemon/internal/daemons"
+	"github.com/yearn/ydaemon/internal/store"
 )
 
 func TestEnvironment(t *testing.T) {

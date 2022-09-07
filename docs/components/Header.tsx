@@ -17,24 +17,24 @@ export function Header(): ReactElement {
 			</h1>
 
 			<div className={'flex flex-wrap gap-2 justify-center max-w-[28rem] min-h-[3rem]'}>
-				<a aria-label={'Version'} href={'https://www.npmjs.com/package/Majorfi/ydaemon'} className={'h-5'}>
+				<a aria-label={'Version'} href={'https://www.npmjs.com/package/yearn/ydaemon'} className={'h-5'}>
 					<img
 						alt={''}
-						src={'https://img.shields.io/github/workflow/status/Majorfi/ydaemon/Go?colorA=2B323B&colorB=1e2329&style=flat&label=Build'}
+						src={'https://img.shields.io/github/workflow/status/yearn/ydaemon/Go?colorA=2B323B&colorB=1e2329&style=flat&label=Build'}
 					/>
 				</a>
 
-				<a aria-label={'Downloads'} href={'https://www.npmjs.com/package/Majorfi/ydaemon'} className={'h-5'}>
+				<a aria-label={'Downloads'} href={'https://www.npmjs.com/package/yearn/ydaemon'} className={'h-5'}>
 					<img
 						alt={''}
-						src={'https://img.shields.io/github/go-mod/go-version/Majorfi/ydaemon?colorA=2B323B&colorB=1e2329&style=flat&label=Version'}
+						src={'https://img.shields.io/github/go-mod/go-version/yearn/ydaemon?colorA=2B323B&colorB=1e2329&style=flat&label=Version'}
 					/>
 				</a>
 
-				<a aria-label={'Stars'} href={'https://github.com/Majorfi/ydaemon'} className={'h-5'}>
+				<a aria-label={'Stars'} href={'https://github.com/yearn/ydaemon'} className={'h-5'}>
 					<img
 						alt={''}
-						src={'https://img.shields.io/github/stars/Majorfi/ydaemon?colorA=2B323B&colorB=1e2329&style=flat&label=Stars'}
+						src={'https://img.shields.io/github/stars/yearn/ydaemon?colorA=2B323B&colorB=1e2329&style=flat&label=Stars'}
 					/>
 				</a>
 			</div>

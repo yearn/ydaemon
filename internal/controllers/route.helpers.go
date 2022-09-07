@@ -8,8 +8,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/majorfi/ydaemon/internal/ethereum"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 //GetSupportedChains returns a list of supported chains by the API
@@ -19,7 +19,7 @@ func (y controller) GetSupportedChains(c *gin.Context) {
 
 //GetBlacklistedVaults returns a list of blacklisted vaults by the API
 func (y controller) GetBlacklistedVaults(c *gin.Context) {
-	chainID := valueWithFallback(c.Query("chainID"), "0")
+	chainID := utils.ValueWithFallback(c.Query("chainID"), "0")
 	if chainID == "0" {
 		c.JSON(http.StatusOK, utils.BLACKLISTED_VAULTS)
 	} else {

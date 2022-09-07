@@ -1,4 +1,4 @@
-package controllers
+package vaultsController
 
 import (
 	"math"
@@ -7,10 +7,10 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/models"
-	"github.com/majorfi/ydaemon/internal/store"
-	"github.com/majorfi/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/logs"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils"
 )
 
 func buildVaultName(
@@ -217,11 +217,11 @@ func buildStrategies(
 			Name:        strategy.Name,
 			Description: strategiesFromMeta[common.HexToAddress(strategy.Address)].Description,
 		}
-		debtLimit := bValueWithFallbackUint64(multicallData.DebtLimit, 0)
+		debtLimit := utils.BValueWithFallbackUint64(multicallData.DebtLimit, 0)
 
 		//Non exported fields, used for internal purposes
-		currentStrategy.TotalDebt = bValueWithFallbackString(multicallData.TotalDebt, `0`)
-		currentStrategy.DelegatedAssets = bValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		currentStrategy.TotalDebt = utils.BValueWithFallbackString(multicallData.TotalDebt, `0`)
+		currentStrategy.DelegatedAssets = utils.BValueWithFallbackString(multicallData.DelegatedAssets, `0`)
 		currentStrategy.IsActive = multicallData.IsActive
 		currentStrategy.InQueue = strategy.InQueue
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
@@ -246,23 +246,23 @@ func buildStrategies(
 			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
 			currentStrategy.Details.DebtLimit = debtLimit
 			currentStrategy.Details.IsActive = multicallData.IsActive
-			currentStrategy.Details.CreditAvailable = bValueWithFallbackString(multicallData.CreditAvailable, `0`)
-			currentStrategy.Details.DebtOutstanding = bValueWithFallbackString(multicallData.DebtOutstanding, `0`)
-			currentStrategy.Details.ExpectedReturn = bValueWithFallbackString(multicallData.ExpectedReturn, `0`)
-			currentStrategy.Details.PerformanceFee = bValueWithFallbackUint64(multicallData.PerformanceFee, 0)
-			currentStrategy.Details.Activation = bValueWithFallbackUint64(multicallData.Activation, 0)
-			currentStrategy.Details.DebtRatio = bValueWithFallbackUint64(multicallData.DebtRatio, 0)
-			currentStrategy.Details.RateLimit = bValueWithFallbackString(multicallData.RateLimit, `0`)
-			currentStrategy.Details.MinDebtPerHarvest = bValueWithFallbackString(multicallData.MinDebtPerHarvest, `0`)
-			currentStrategy.Details.MaxDebtPerHarvest = bValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
-			currentStrategy.Details.EstimatedTotalAssets = bValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
+			currentStrategy.Details.CreditAvailable = utils.BValueWithFallbackString(multicallData.CreditAvailable, `0`)
+			currentStrategy.Details.DebtOutstanding = utils.BValueWithFallbackString(multicallData.DebtOutstanding, `0`)
+			currentStrategy.Details.ExpectedReturn = utils.BValueWithFallbackString(multicallData.ExpectedReturn, `0`)
+			currentStrategy.Details.PerformanceFee = utils.BValueWithFallbackUint64(multicallData.PerformanceFee, 0)
+			currentStrategy.Details.Activation = utils.BValueWithFallbackUint64(multicallData.Activation, 0)
+			currentStrategy.Details.DebtRatio = utils.BValueWithFallbackUint64(multicallData.DebtRatio, 0)
+			currentStrategy.Details.RateLimit = utils.BValueWithFallbackString(multicallData.RateLimit, `0`)
+			currentStrategy.Details.MinDebtPerHarvest = utils.BValueWithFallbackString(multicallData.MinDebtPerHarvest, `0`)
+			currentStrategy.Details.MaxDebtPerHarvest = utils.BValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
+			currentStrategy.Details.EstimatedTotalAssets = utils.BValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
 			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
 			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
-			currentStrategy.Details.KeepCRV = bValueWithFallbackUint64(multicallData.KeepCRV, 0)
-			currentStrategy.Details.LastReport = bValueWithFallbackUint64(multicallData.LastReport, 0)
+			currentStrategy.Details.KeepCRV = utils.BValueWithFallbackUint64(multicallData.KeepCRV, 0)
+			currentStrategy.Details.LastReport = utils.BValueWithFallbackUint64(multicallData.LastReport, 0)
 			currentStrategy.Details.TotalDebt = currentStrategy.TotalDebt
-			currentStrategy.Details.TotalGain = bValueWithFallbackString(multicallData.TotalGain, `0`)
-			currentStrategy.Details.TotalLoss = bValueWithFallbackString(multicallData.TotalLoss, `0`)
+			currentStrategy.Details.TotalGain = utils.BValueWithFallbackString(multicallData.TotalGain, `0`)
+			currentStrategy.Details.TotalLoss = utils.BValueWithFallbackString(multicallData.TotalLoss, `0`)
 			currentStrategy.Details.APR = 0.0
 
 			if len(strategy.Reports) > 0 {
@@ -321,10 +321,10 @@ func prepareVaultSchema(
 	vaultAddress := common.HexToAddress(vaultFromGraph.Id)
 	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
 	tokenFromMeta := store.TokensFromMeta[chainID][tokenAddress]
-	updated := strToUint(vaultFromGraph.LatestUpdate.Timestamp, 0)
-	activation := strToUint(vaultFromGraph.Activation, 0)
-	tokenDisplayName := valueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)
-	tokenDisplaySymbol := valueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
+	updated := utils.StrToUint(vaultFromGraph.LatestUpdate.Timestamp, 0)
+	activation := utils.StrToUint(vaultFromGraph.Activation, 0)
+	tokenDisplayName := utils.ValueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)
+	tokenDisplaySymbol := utils.ValueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
 	vaultFromMeta, ok := store.VaultsFromMeta[chainID][vaultAddress]
 	if !ok {
 		// If the vault file is missing, we set the default values for its fields

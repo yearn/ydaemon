@@ -388,19 +388,6 @@ func prepareVaultSchema(
 		}
 	}
 
-	// 	totalDelegatedAssetsString := strconv.FormatFloat(totalDelegatedAssets, 'f', -1, 64)
-
-	// 	if totalDelegatedAssets > 0 {
-	// 		logs.Pretty(strat.Name, strat.Address, totalDelegatedAssetsString)
-	// 	}
-
-	// }
-	// if totalDelegatedAssets > 0 {
-	// 	//convert totalDelegatedAssets to string
-	// 	totalDelegatedAssetsString := strconv.FormatFloat(totalDelegatedAssets, 'f', -1, 64)
-	// 	logs.Pretty(vaultAddress.String(), totalDelegatedAssetsString)
-	// }
-
 	vault := &models.TVault{
 		Inception:      activation,
 		Address:        vaultAddress.String(),

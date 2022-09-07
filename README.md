@@ -71,6 +71,9 @@ curl http://localhost:8080/1/vaults/all
 `GET` `[BASE_URL]/info/vaults/blacklisted`  
 > This endpoint returns the blacklisted vaults for all chains. A blacklisted vault is a vault that will be ignored by the API.  
 
+-------
+`GET` `[BASE_URL]/[chainID]/vaults/tvl`  
+> This endpoint returns the Total Value Locked for the specified chainID. Does not subtract delegated deposits from one vault to another.  
 
 ## Data Sources
 To build this API data is fetched from several Yearn data sources:

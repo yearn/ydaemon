@@ -43,6 +43,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 
 //GetAllVaultsTVL will, for a all supported chains, return the current TVL
 func (y Controller) GetAllVaultsTVL(c *gin.Context) {
+	total := 0.0
 	var wg sync.WaitGroup
 	var tvl = make(map[uint64]float64)
 	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
@@ -50,10 +51,14 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 		go func(chainID uint64) {
 			defer wg.Done()
 			tvl[chainID] = computeChainTVL(chainID, c)
+			total += tvl[chainID]
 		}(uint64(chainID))
 	}
 	wg.Wait()
-	c.JSON(http.StatusOK, tvl)
+	c.JSON(http.StatusOK, gin.H{
+		"total":  total,
+		"chains": tvl,
+	})
 }
 
 //GetVaultsTVL will, for a given chainID, return the current TVL

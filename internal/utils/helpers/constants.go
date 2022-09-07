@@ -46,6 +46,21 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	},
 }
 
+// CURVE_FACTORY_URI contains the the URI of the Curve Factory to use
+var CURVE_FACTORY_URI = map[uint64][]string{
+	1: {
+		`https://api.curve.fi/api/getPools/ethereum/factory`,
+		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
+	},
+	10: {
+		`https://api.curve.fi/api/getPools/optimism/factory`,
+	},
+	250: {
+		`https://api.curve.fi/api/getPools/fantom/factory`,
+	},
+	42161: {},
+}
+
 // STRATEGIES_CONDITIONS contains the possible conditions to determine which strategies should
 // be used in the return value.
 // If the strategy is `absolute`, an active strategy will be isActive, inQueue and with a debt > 0

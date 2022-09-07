@@ -13,7 +13,7 @@ var TokenList = make(map[uint64][]common.Address)
 
 // Tokens contains the list of address for a specific chain and some minimal information about the token
 // List is accessible through Tokens[chainID]
-var Tokens = make(map[uint64]map[common.Address]models.TERC20Token)
+var Tokens = make(map[uint64]map[common.Address]*models.TERC20Token)
 
 // StrategyList contains the list of strategies we will need to multicall more info.
 // List is accessible through StrategyList[chainID]
@@ -34,3 +34,7 @@ var VaultsFromAPIV1 = make(map[uint64]map[common.Address]models.TAPIV1Vault)
 // StrategyMultiCallData holds the details about the strategies based on a multicall
 // The data is updated every 10 minutes
 var StrategyMultiCallData = make(map[uint64]map[common.Address]models.TStrategyMultiCallData)
+
+// VaultPricePerShare holds the details about the price for one share of a vault, based on a multicall
+// The data is updated every 10 minutes
+var VaultPricePerShare = make(map[uint64]map[common.Address]*big.Int)

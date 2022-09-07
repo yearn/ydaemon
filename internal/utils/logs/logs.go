@@ -41,7 +41,7 @@ func Error(err ...interface{}) {
 }
 
 //Success function logs a success message
-func Success(success interface{}) {
+func Success(success ...interface{}) {
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
 	str1 := `[ OK ]`
 	t := time.Now().Format("2006/01/02 15:04:05")
@@ -50,7 +50,7 @@ func Success(success interface{}) {
 }
 
 //Warning function logs a warning message
-func Warning(warning interface{}) {
+func Warning(warning ...interface{}) {
 	pc, _, line, _ := runtime.Caller(1)
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`

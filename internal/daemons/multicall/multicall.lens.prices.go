@@ -1,8 +1,11 @@
 package multicallDaemons
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"math"
 	"math/big"
+	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -10,6 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
@@ -36,6 +40,106 @@ func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, to
 		Method:   `getPriceUsdcRecommended`,
 		CallData: parsedData,
 		Name:     name,
+	}
+}
+
+type TCurveFactoriesPoolData struct {
+	Name        string  `json:"name"`
+	Address     string  `json:"address"`
+	LPAddress   string  `json:"lpTokenAddress"`
+	TotalSupply string  `json:"totalSupply"`
+	USDTotal    float64 `json:"usdTotal"`
+}
+type TCurveFactories struct {
+	Data struct {
+		PoolData []TCurveFactoriesPoolData `json:"poolData"`
+	} `json:"data"`
+}
+
+func fetchCurve(url string) []TCurveFactoriesPoolData {
+	resp, err := http.Get(url)
+	if err != nil {
+		logs.Error(err)
+		return []TCurveFactoriesPoolData{}
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return []TCurveFactoriesPoolData{}
+	}
+	var factories TCurveFactories
+	if err := json.Unmarshal(body, &factories); err != nil {
+		return []TCurveFactoriesPoolData{}
+	}
+	return factories.Data.PoolData
+}
+
+// setCurveFactoriesPrices is used after setting the prices from the multicall, aka the lens contract.
+// Some missing prices may be for Curve LP tokens or Curve tokens.
+// The Curve API provides the total supply and the total USD value of the LP tokens. Based on that
+// we can calculate the price per token, and assign it to the token if the Store price is 0
+func setCurveFactoriesPrices(chainID uint64) {
+	curveFactoryPoolData := []TCurveFactoriesPoolData{}
+
+	// Running a sync group to execute all fetch at the same time
+	wg := sync.WaitGroup{}
+	for _, url := range helpers.CURVE_FACTORY_URI[chainID] {
+		wg.Add(1)
+		go func(url string) {
+			defer wg.Done()
+			curveFactoryPoolData = append(curveFactoryPoolData, fetchCurve(url)...)
+		}(url)
+	}
+	wg.Wait()
+
+	// For each pool, we calculate the price per token and assign it to the token
+	// if the Store price is 0
+	for _, fact := range curveFactoryPoolData {
+		pricePerToken := 0.0
+		formatedTotalSupply, _ := helpers.FormatAmount(fact.TotalSupply, 18)
+		if formatedTotalSupply == 0 || fact.USDTotal == 0 {
+			continue
+		}
+		pricePerToken = fact.USDTotal / formatedTotalSupply
+		pricePerTokenBigFloat := big.NewFloat(0).SetFloat64(pricePerToken)
+		pricePerTokenBigFloat = pricePerTokenBigFloat.Mul(pricePerTokenBigFloat, big.NewFloat(1e6))
+		pricePerTokenBigInt, _ := pricePerTokenBigFloat.Int(nil)
+		addressToUse := fact.LPAddress
+		if addressToUse == `` {
+			addressToUse = fact.Address
+		}
+		if store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
+			if store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
+				store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+			}
+		}
+	}
+}
+
+// setMissingYearnVaultPrices is used after setting the prices to assign the price of yvToken when
+// it's missing. It's done by taking the PricePerShare from each vault and multiplying it by the
+// price of the underlying token. If the underlying token price is 0, we skip it.
+func setMissingYearnVaultPrices(chainID uint64) {
+	allVaultsData := store.Tokens[chainID]
+
+	for key, value := range store.TokenPrices[chainID] {
+		if value.Cmp(big.NewInt(0)) == 0 {
+			if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
+				pricePerShare := store.VaultPricePerShare[chainID][key]
+
+				//pricePerShare is ^18, we need to convert to ^6
+				pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
+
+				underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
+				underlyingTokenPrice := store.TokenPrices[chainID][underlyingTokenAddress]
+				vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
+				if vaultValue.Cmp(big.NewInt(0)) == 0 {
+					// logs.Info(chainID, key.String()+`: `+value.String())
+					continue
+				}
+				store.TokenPrices[chainID][key] = vaultValue
+			}
+		}
 	}
 }
 
@@ -75,12 +179,23 @@ func FetchLens(chainID uint64) {
 		store.TokenPrices[chainID][common.HexToAddress(address)] = value[0].(*big.Int)
 	}
 
+	if chainID == 1 {
+		setCurveFactoriesPrices(chainID)
+	}
+
+	setMissingYearnVaultPrices(chainID)
+
 	//TODO: debug, list prices 0
+	// isZero := 0
 	// for key, value := range store.TokenPrices[chainID] {
 	// 	if value.Cmp(big.NewInt(0)) == 0 {
-	// 		logs.Info(key.String() + `: ` + value.String())
+	// 		logs.Info(chainID, key.String()+`: `+value.String())
+	// 		isZero++
+	// 		continue
 	// 	}
 	// }
+	// logs.Pretty(isZero)
+
 	store.SaveInDBForChainID(`TokenPrices`, chainID, store.TokenPrices[chainID])
 }
 

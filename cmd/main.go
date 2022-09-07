@@ -13,7 +13,7 @@ import (
 
 var chains = helpers.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{250}
+// var chains = []uint64{1}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
 	daemons.SummonDaemons(chainID, delay)

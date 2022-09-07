@@ -20,7 +20,7 @@ import (
 // price though the lens contract).
 func FetchTokenList(chainID uint64) {
 	tokenList := []common.Address{}
-	tokenData := make(map[common.Address]models.TERC20Token)
+	tokenData := make(map[common.Address]*models.TERC20Token)
 
 	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
 	request := graphql.NewRequest(`
@@ -51,17 +51,20 @@ func FetchTokenList(chainID uint64) {
 		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
 		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
 
-		tokenData[common.HexToAddress(vault.ShareToken.Id)] = models.TERC20Token{
-			Address:  common.HexToAddress(vault.ShareToken.Id),
-			Decimals: vault.ShareToken.Decimals,
-			Name:     vault.ShareToken.Name,
-			Symbol:   vault.ShareToken.Symbol,
+		tokenData[common.HexToAddress(vault.ShareToken.Id)] = &models.TERC20Token{
+			Address:                common.HexToAddress(vault.ShareToken.Id),
+			UnderlyingTokenAddress: common.HexToAddress(vault.Token.Id),
+			Decimals:               vault.ShareToken.Decimals,
+			Name:                   vault.ShareToken.Name,
+			Symbol:                 vault.ShareToken.Symbol,
+			IsVault:                true,
 		}
-		tokenData[common.HexToAddress(vault.Token.Id)] = models.TERC20Token{
+		tokenData[common.HexToAddress(vault.Token.Id)] = &models.TERC20Token{
 			Address:  common.HexToAddress(vault.Token.Id),
 			Decimals: vault.Token.Decimals,
 			Name:     vault.Token.Name,
 			Symbol:   vault.Token.Symbol,
+			IsVault:  false,
 		}
 	}
 	store.Tokens[chainID] = tokenData
@@ -93,7 +96,7 @@ func LoadTokenList(chainID uint64, wg *sync.WaitGroup) {
 	}
 
 	{
-		temp := make(map[common.Address]models.TERC20Token)
+		temp := make(map[common.Address]*models.TERC20Token)
 		err := store.LoadFromDBForChainID(`TokenData`, chainID, &temp)
 		if err != nil {
 			if err.Error() == "Key not found" {

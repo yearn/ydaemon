@@ -41,11 +41,16 @@ func NewRouter() *gin.Engine {
 	// Vaults section
 	{
 		c := vaults.Controller{}
+		// Retrieve the vaults for all chains
+		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
+
 		// Retrieve the vaults for a specific chainID
-		router.GET(`:chainID/vaults/tvl`, c.GetAllVaultsTVL)
+		router.GET(`:chainID/vaults/tvl`, c.GetVaultsTVL)
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
 		router.GET(`:chainID/vaults/:address`, c.GetVault)
 		router.GET(`:chainID/vault/:address`, c.GetVault)
+
+		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 	}
 
 	// General section
@@ -56,7 +61,6 @@ func NewRouter() *gin.Engine {
 
 		// Get some information about the API
 		router.GET(`info/chains`, c.GetSupportedChains)
-		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
 		// Proxy subgraph
 		router.POST(`:chainID/graph`, c.GetGraph)

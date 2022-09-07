@@ -373,10 +373,8 @@ func prepareVaultSchema(
 		int(vaultFromGraph.Token.Decimals),
 		humanizedPrice,
 	)
-	// balanceTokensAsBN, _ := new(big.Int).SetString(vaultFromGraph.BalanceTokens, 10)
 	delegatedTokenAsBN := big.NewInt(0)
 	fDelegatedValue := 0.0
-	// TotalDelegatedAssets
 
 	for _, strat := range strategies {
 		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)

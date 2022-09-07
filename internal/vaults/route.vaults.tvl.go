@@ -4,6 +4,7 @@ import (
 	"context"
 	"net/http"
 	"strconv"
+	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
@@ -15,21 +16,13 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-//GetAllVaultsTVL will, for a given chainID, return the current TVL
-func (y Controller) GetAllVaultsTVL(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-
+func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
 	request := graphQLRequestForAllVaults(c)
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)
-		c.String(http.StatusBadRequest, "invalid graphQL response")
-		return
+		return 0.0
 	}
 
 	tvl := 0.0
@@ -42,18 +35,34 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 		if ok && vaultFromMeta.HideAlways {
 			continue
 		}
-		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-		withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
-		currentVault := prepareVaultSchema(
-			chainID,
-			strategiesCondition,
-			withStrategiesRisk,
-			withStrategiesDetails,
-			vaultFromGraph,
-		)
-		tvl += currentVault.TVL.TVL
+		vaultTVL := prepareTVL(chainID, vaultFromGraph)
+		tvl += vaultTVL
+	}
+	return tvl
+}
+
+//GetAllVaultsTVL will, for a all supported chains, return the current TVL
+func (y Controller) GetAllVaultsTVL(c *gin.Context) {
+	var wg sync.WaitGroup
+	var tvl = make(map[uint64]float64)
+	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+		wg.Add(1)
+		go func(chainID uint64) {
+			defer wg.Done()
+			tvl[chainID] = computeChainTVL(chainID, c)
+		}(uint64(chainID))
+	}
+	wg.Wait()
+	c.JSON(http.StatusOK, tvl)
+}
+
+//GetVaultsTVL will, for a given chainID, return the current TVL
+func (y Controller) GetVaultsTVL(c *gin.Context) {
+	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
+	if err != nil {
+		c.String(http.StatusBadRequest, "invalid chainID")
+		return
 	}
 
-	c.JSON(http.StatusOK, tvl)
+	c.JSON(http.StatusOK, computeChainTVL(chainID, c))
 }

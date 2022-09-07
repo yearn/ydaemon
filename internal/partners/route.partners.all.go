@@ -4,17 +4,21 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
 // GetAllPartners will return all the partners informations, no matter the chainID.
 func (y Controller) GetAllPartners(c *gin.Context) {
-	allPartners := make(map[uint64][]TPartners)
+	allPartners := make(map[uint64]map[common.Address]TPartners)
 	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
 		partners := Store.PartnersByAddress[chainID]
 		for _, partner := range partners {
-			allPartners[chainID] = append(allPartners[chainID], partner)
+			if _, ok := allPartners[chainID]; !ok {
+				allPartners[chainID] = make(map[common.Address]TPartners)
+			}
+			allPartners[chainID][partner.Treasury] = partner
 		}
 	}
 	c.JSON(http.StatusOK, allPartners)

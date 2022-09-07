@@ -4,8 +4,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yearn/ydaemon/internal/store"
-	utils "github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 // init is fired directly on app start and prepare the multicall clients
@@ -53,6 +53,6 @@ func TestDaemons(t *testing.T) {
 	wg.Wait()
 
 	//Edge case testing with values overwrite
-	utils.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
+	helpers.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
 	SummonDaemons(1, 0)
 }

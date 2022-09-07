@@ -1,6 +1,10 @@
 package partners
 
-import "github.com/ethereum/go-ethereum/common"
+import (
+	"math/big"
+
+	"github.com/ethereum/go-ethereum/common"
+)
 
 type TPartnersFromFile struct {
 	Name       string `json:"name"`
@@ -15,10 +19,11 @@ type TPartnersFromFile struct {
 }
 
 type TPartnersWrapper struct {
-	Vault   common.Address `json:"vault,omitempty"`
-	Wrapper common.Address `json:"wrapper"`
-	Name    string         `json:"name"`
-	Type    string         `json:"type"`
+	Vault     common.Address `json:"vault,omitempty"`
+	Wrapper   common.Address `json:"wrapper"`
+	Name      string         `json:"name"`
+	Type      string         `json:"type"`
+	BalanceOf *big.Int       `json:"balanceOf,omitempty"`
 }
 
 type TPartners struct {

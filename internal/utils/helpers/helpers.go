@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"io/ioutil"
+	"math"
 	"math/big"
 	"os"
 	"strconv"
@@ -103,4 +104,13 @@ func StrToUint(s string, defaultValue uint64) uint64 {
 		return defaultValue
 	}
 	return value
+}
+
+// FormatAmount is used to convert a uint256 string to a float64, based on the provided decimal
+func FormatAmount(balanceToken string, decimals int) (float64, *big.Float) {
+	fTotalAssets := new(big.Float)
+	fTotalAssets.SetString(balanceToken)
+	humanizedBalance := new(big.Float).Quo(fTotalAssets, big.NewFloat(math.Pow10(decimals)))
+	fhumanizedBalance, _ := humanizedBalance.Float64()
+	return fhumanizedBalance, humanizedBalance
 }

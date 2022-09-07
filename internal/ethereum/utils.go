@@ -9,9 +9,17 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
+
+var RPC = map[uint64]*ethclient.Client{}
+
+// GetRPC returns the current connection for a specific chain
+func GetRPC(chainID uint64) *ethclient.Client {
+	return RPC[chainID]
+}
 
 // GetRPCURI returns the URI to use to connect to the node for a specific chainID
 func GetRPCURI(chainID uint64) string {
@@ -73,8 +81,9 @@ func GetMulticallAddress(chainID uint64) common.Address {
 	return common.HexToAddress(`0`)
 }
 
-// randomSigner will generate a fake signer for the ethereum client. We don't need to
-// sign anything, but we need to provide a signer to the ethereum client.
+// randomSigner will generate a fake signer for the ethereum client.
+// We don't need to sign anything, but we need to provide a signer
+// to the ethereum client.
 func randomSigner() *bind.TransactOpts {
 	privateKey, err := crypto.GenerateKey()
 	if err != nil { // Should never happen
@@ -91,4 +100,15 @@ func randomSigner() *bind.TransactOpts {
 	signer.GasTipCap = big.NewInt(0)
 	signer.GasPrice = big.NewInt(0)
 	return signer
+}
+
+func init() {
+	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+		client, err := ethclient.Dial(GetRPCURI(chainID))
+		if err != nil {
+			logs.Error("Failed to connect to Ethereum node")
+			continue
+		}
+		RPC[chainID] = client
+	}
 }

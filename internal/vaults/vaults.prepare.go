@@ -107,17 +107,13 @@ func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*big.Float, f
 // we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
 // in the vault thanks to the above humanizedPrice value.
 func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	fTotalAssets := new(big.Float)
-	fTotalAssets.SetString(balanceToken)
-	humanizedTVL := new(big.Float).Quo(fTotalAssets, big.NewFloat(math.Pow10(decimals)))
+	_, humanizedTVL := helpers.FormatAmount(balanceToken, decimals)
 	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
 func buildDelegated(delegatedBalanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	fDelegatedBalance := new(big.Float)
-	fDelegatedBalance.SetString(delegatedBalanceToken)
-	delegatedTVL := new(big.Float).Quo(fDelegatedBalance, big.NewFloat(math.Pow10(decimals)))
+	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken, decimals)
 	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }

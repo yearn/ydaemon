@@ -14,7 +14,7 @@ import (
 // FetchPartnersFromFiles fetches the partners information from the Yearn Meta API for a given chainID
 // and store the result to the global variable Partners for later use.
 func FetchPartnersFromFiles(chainID uint64) {
-	allPartners := []partners.TPartners{}
+	allPartners := []*partners.TPartners{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/partners/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
@@ -22,7 +22,7 @@ func FetchPartnersFromFiles(chainID uint64) {
 		return
 	}
 	for _, content := range content {
-		partner := partners.TPartners{}
+		partner := &partners.TPartners{}
 		partnerFromFile := partners.TPartnersFromFile{}
 		if err := json.Unmarshal(content, &partnerFromFile); err != nil {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
@@ -47,8 +47,8 @@ func FetchPartnersFromFiles(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TPartners} if we were working with JS/TS
 	if partners.Store.PartnersByAddress[chainID] == nil {
-		partners.Store.PartnersByAddress[chainID] = make(map[common.Address]partners.TPartners)
-		partners.Store.PartnersByName[chainID] = make(map[string]partners.TPartners)
+		partners.Store.PartnersByAddress[chainID] = make(map[common.Address]*partners.TPartners)
+		partners.Store.PartnersByName[chainID] = make(map[string]*partners.TPartners)
 	}
 	for _, partner := range allPartners {
 		partners.Store.PartnersByAddress[chainID][partner.Treasury] = partner

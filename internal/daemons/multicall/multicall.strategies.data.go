@@ -153,10 +153,6 @@ func FetchStrategiesMulticallData(chainID uint64) {
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
-	if chainID == 1 {
-		maxBatch = 50
-	}
-
 	response := caller.ExecuteByBatch(calls, maxBatch)
 	if store.StrategyMultiCallData[chainID] == nil {
 		store.StrategyMultiCallData[chainID] = make(map[common.Address]models.TStrategyMultiCallData)

@@ -5,10 +5,16 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
-	"github.com/yearn/ydaemon/internal/utils/store"
 )
+
+func buildDelegated(delegatedBalanceToken string, decimals int, humanizedPrice *big.Float) float64 {
+	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken, decimals)
+	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
+	return fHumanizedTVLPrice
+}
 
 func prepareTVL(
 	chainID uint64,
@@ -25,7 +31,7 @@ func prepareTVL(
 		humanizedPrice,
 	)
 
-	strategiesFromMulticall := store.StrategyMultiCallData[chainID]
+	strategiesFromMulticall := strategies.Store.StrategyMultiCallData[chainID]
 	for _, strat := range vaultFromGraph.Strategies {
 		multicallData, ok := strategiesFromMulticall[common.HexToAddress(strat.Address)]
 		if !ok {

@@ -1,4 +1,4 @@
-package ethereum
+package prices
 
 import (
 	"context"
@@ -9,18 +9,16 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
-	"github.com/yearn/ydaemon/internal/utils/store"
 )
-
-var lensABI, _ = contracts.OracleMetaData.GetAbi()
 
 func fetchTokenList(chainID uint64) []common.Address {
 	tokenList := []common.Address{}
-	client := graphql.NewClient(GetGraphURI(chainID))
+	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
 	request := graphql.NewRequest(`
         {
 			vaults(first: 1000) {
@@ -42,28 +40,17 @@ func fetchTokenList(chainID uint64) []common.Address {
 	return tokenList
 }
 
-func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) Call {
-	parsedData, _ := lensABI.Pack("getPriceUsdcRecommended", tokenAddress)
-	return Call{
-		Target:   contractAddress,
-		Abi:      lensABI,
-		Method:   `getPriceUsdcRecommended`,
-		CallData: parsedData,
-		Name:     name,
-	}
-}
-
 func testFetchLens(chainID uint64) {
 	// First we connect to the multicall client, stored in memory via the initializer.
-	caller := NewMulticall(GetRPCURI(chainID), GetMulticallAddress(chainID))
+	caller := ethereum.NewMulticall(ethereum.GetRPCURI(chainID), ethereum.GetMulticallAddress(chainID))
 
 	// Then, for the given chainID, we need to select the correct lens contract address,
 	// aka the endpoint we will use to perform the read transaction.
-	lensAddress := GetLensAddress(chainID)
+	lensAddress := ethereum.GetLensAddress(chainID)
 
 	// Then, for each token listed for our current chainID, we prepare the calls
-	var calls = make([]Call, 0)
-	for _, token := range store.TokenList[chainID] {
+	var calls = make([]ethereum.Call, 0)
+	for _, token := range tokens.Store.TokenList[chainID] {
 		calls = append(calls, getPriceUsdcRecommendedCall(token.String(), lensAddress, token))
 	}
 
@@ -78,11 +65,11 @@ func testFetchLens(chainID uint64) {
 		maxBatch = 3
 	}
 	response := caller.ExecuteByBatch(calls, maxBatch)
-	if store.TokenPrices[chainID] == nil {
-		store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
+	if Store.TokenPrices[chainID] == nil {
+		Store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}
 	for key, value := range response {
-		store.TokenPrices[chainID][common.HexToAddress(key)] = value[0].(*big.Int)
+		Store.TokenPrices[chainID][common.HexToAddress(key)] = value[0].(*big.Int)
 	}
 }
 
@@ -94,35 +81,35 @@ func TestMulticall(t *testing.T) {
 
 	//Testing for chainID == 1
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[1] = helpers.UniqueArrayAddress(fetchTokenList(1))
+		tokens.Store.TokenList[1] = helpers.UniqueArrayAddress(fetchTokenList(1))
 		testFetchLens(1)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 4
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[4] = helpers.UniqueArrayAddress(fetchTokenList(4))
+		tokens.Store.TokenList[4] = helpers.UniqueArrayAddress(fetchTokenList(4))
 		testFetchLens(4)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 10
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[10] = helpers.UniqueArrayAddress(fetchTokenList(10))
+		tokens.Store.TokenList[10] = helpers.UniqueArrayAddress(fetchTokenList(10))
 		testFetchLens(10)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 250
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[250] = helpers.UniqueArrayAddress(fetchTokenList(250))
+		tokens.Store.TokenList[250] = helpers.UniqueArrayAddress(fetchTokenList(250))
 		testFetchLens(250)
 		wg.Done()
 	}(&wg)
 
 	//Testing for chainID == 42161
 	go func(wg *sync.WaitGroup) {
-		store.TokenList[42161] = helpers.UniqueArrayAddress(fetchTokenList(42161))
+		tokens.Store.TokenList[42161] = helpers.UniqueArrayAddress(fetchTokenList(42161))
 		testFetchLens(42161)
 		wg.Done()
 	}(&wg)

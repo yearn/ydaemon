@@ -1,28 +1,25 @@
-package controllers
+package utils
 
 import (
 	"bytes"
 	"context"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
 //GetSupportedChains returns a list of supported chains by the API
-func (y Controller) GetSupportedChains(c *gin.Context) {
+func GetSupportedChains(c *gin.Context) {
 	c.JSON(http.StatusOK, helpers.SUPPORTED_CHAIN_IDS)
 }
 
 //GetGraph returns a list of blacklisted vaults by the API
-func (y Controller) GetGraph(c *gin.Context) {
-	// Get the chainID from the URI
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{`error`: `invalid chainID`})
+func GetGraph(c *gin.Context) {
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
 

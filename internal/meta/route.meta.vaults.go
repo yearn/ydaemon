@@ -2,20 +2,19 @@ package meta
 
 import (
 	"net/http"
-	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
 // GetMetaVaultsLegacy will, for a given chainID, return all the meta informations for the vaults.
 // The data will be resolved as-is, aka as an unorganized array of vaults metadata.
 func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	vaultsFromMeta, ok := Store.RawMetaVaults[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -29,11 +28,11 @@ func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the vault metadata.
 func (y Controller) GetMetaVaults(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	vaultsFromMeta, ok := Store.VaultsFromMeta[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -46,17 +45,15 @@ func (y Controller) GetMetaVaults(c *gin.Context) {
 // GetMetaVault will, for a given address on given chainID, return the meta informations for the vault.
 // The data will be resolved as an object corresponding to the vault models.
 func (y Controller) GetMetaVault(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
-	vaultAddress := c.Param("address")
-	if vaultAddress == `` {
-		c.String(http.StatusBadRequest, "invalid address")
+	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	if !ok {
 		return
 	}
-	vaultFromMeta, ok := Store.VaultsFromMeta[chainID][common.HexToAddress(vaultAddress)]
+	vaultFromMeta, ok := Store.VaultsFromMeta[chainID][address]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
 		return

@@ -1,4 +1,4 @@
-package daemons
+package main
 
 import (
 	"sync"

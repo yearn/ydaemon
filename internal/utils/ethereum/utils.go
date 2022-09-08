@@ -81,6 +81,9 @@ func GetMulticallAddress(chainID uint64) common.Address {
 	return common.HexToAddress(`0`)
 }
 
+// MulticallClientForChainID holds the multicall client for a specific chainID
+var MulticallClientForChainID = make(map[uint64]TEthMultiCaller)
+
 // randomSigner will generate a fake signer for the ethereum client.
 // We don't need to sign anything, but we need to provide a signer
 // to the ethereum client.
@@ -111,4 +114,21 @@ func init() {
 		}
 		RPC[chainID] = client
 	}
+
+	MulticallClientForChainID[1] = NewMulticall(
+		GetRPCURI(1),
+		GetMulticallAddress(1),
+	)
+	MulticallClientForChainID[10] = NewMulticall(
+		GetRPCURI(10),
+		GetMulticallAddress(10),
+	)
+	MulticallClientForChainID[250] = NewMulticall(
+		GetRPCURI(250),
+		GetMulticallAddress(250),
+	)
+	MulticallClientForChainID[42161] = NewMulticall(
+		GetRPCURI(42161),
+		GetMulticallAddress(42161),
+	)
 }

@@ -1,4 +1,4 @@
-package multicallDaemons
+package prices
 
 import (
 	"encoding/json"
@@ -11,8 +11,9 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
@@ -108,9 +109,9 @@ func setCurveFactoriesPrices(chainID uint64) {
 		if addressToUse == `` {
 			addressToUse = fact.Address
 		}
-		if store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
-			if store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
-				store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+		if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
+			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
+				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
 			}
 		}
 	}
@@ -120,24 +121,24 @@ func setCurveFactoriesPrices(chainID uint64) {
 // it's missing. It's done by taking the PricePerShare from each vault and multiplying it by the
 // price of the underlying token. If the underlying token price is 0, we skip it.
 func setMissingYearnVaultPrices(chainID uint64) {
-	allVaultsData := store.Tokens[chainID]
+	allVaultsData := tokens.Store.Tokens[chainID]
 
-	for key, value := range store.TokenPrices[chainID] {
+	for key, value := range Store.TokenPrices[chainID] {
 		if value.Cmp(big.NewInt(0)) == 0 {
 			if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
-				pricePerShare := store.VaultPricePerShare[chainID][key]
+				pricePerShare := Store.VaultPricePerShare[chainID][key]
 
 				//pricePerShare is ^18, we need to convert to ^6
 				pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
 
 				underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
-				underlyingTokenPrice := store.TokenPrices[chainID][underlyingTokenAddress]
+				underlyingTokenPrice := Store.TokenPrices[chainID][underlyingTokenAddress]
 				vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
 				if vaultValue.Cmp(big.NewInt(0)) == 0 {
 					// logs.Info(chainID, key.String()+`: `+value.String())
 					continue
 				}
-				store.TokenPrices[chainID][key] = vaultValue
+				Store.TokenPrices[chainID][key] = vaultValue
 			}
 		}
 	}
@@ -148,7 +149,7 @@ func setMissingYearnVaultPrices(chainID uint64) {
 // and will store the prices in the TokenPrices map.
 func FetchLens(chainID uint64) {
 	// First we connect to the multicall client, stored in memory via the initializer.
-	caller := multicallClientForChainID[chainID]
+	caller := ethereum.MulticallClientForChainID[chainID]
 
 	// Then, for the given chainID, we need to select the correct lens contract address,
 	// aka the endpoint we will use to perform the read transaction.
@@ -156,7 +157,7 @@ func FetchLens(chainID uint64) {
 
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
-	for _, token := range store.TokenList[chainID] {
+	for _, token := range tokens.Store.TokenList[chainID] {
 		calls = append(calls, getPriceUsdcRecommendedCall(token.String(), lensAddress, token))
 	}
 
@@ -171,12 +172,12 @@ func FetchLens(chainID uint64) {
 		maxBatch = 3
 	}
 	response := caller.ExecuteByBatch(calls, maxBatch)
-	if store.TokenPrices[chainID] == nil {
-		store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
+	if Store.TokenPrices[chainID] == nil {
+		Store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}
 	for key, value := range response {
 		address := strings.TrimSuffix(key, "getPriceUsdcRecommended")
-		store.TokenPrices[chainID][common.HexToAddress(address)] = value[0].(*big.Int)
+		Store.TokenPrices[chainID][common.HexToAddress(address)] = value[0].(*big.Int)
 	}
 
 	if chainID == 1 {
@@ -187,7 +188,7 @@ func FetchLens(chainID uint64) {
 
 	//TODO: debug, list prices 0
 	// isZero := 0
-	// for key, value := range store.TokenPrices[chainID] {
+	// for key, value := range Store.TokenPrices[chainID] {
 	// 	if value.Cmp(big.NewInt(0)) == 0 {
 	// 		logs.Info(chainID, key.String()+`: `+value.String())
 	// 		isZero++
@@ -196,26 +197,18 @@ func FetchLens(chainID uint64) {
 	// }
 	// logs.Pretty(isZero)
 
-	store.SaveInDBForChainID(`TokenPrices`, chainID, store.TokenPrices[chainID])
+	store.SaveInDBForChainID(`TokenPrices`, chainID, Store.TokenPrices[chainID])
 }
 
 // LoadLens will reload the lens data store from the last state of the local Badger Database
 func LoadLens(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*big.Int)
-	err := store.LoadFromDBForChainID(`TokenPrices`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No tokenPrices data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
+	if err := store.LoadFromDBForChainID(`TokenPrices`, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {
-		store.TokenPrices[chainID] = temp
+		Store.TokenPrices[chainID] = temp
 		logs.Success("Data loaded for the lens data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No lens data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

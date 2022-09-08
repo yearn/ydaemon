@@ -1,4 +1,4 @@
-package subgraphDaemons
+package strategies
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 	"github.com/yearn/ydaemon/internal/utils/store"
@@ -43,27 +43,19 @@ func FetchStrategiesList(chainID uint64) {
 			}
 		}
 	}
-	store.StrategyList[chainID] = strategyList
-	store.SaveInDBForChainID(`StrategyList`, chainID, store.StrategyList[chainID])
+	Store.StrategyList[chainID] = strategyList
+	store.SaveInDBForChainID(`StrategyList`, chainID, Store.StrategyList[chainID])
 }
 
 // LoadStrategyList will reload the strategyList data store from the last state of the local Badger Database
 func LoadStrategyList(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TStrategyList)
-	err := store.LoadFromDBForChainID(`StrategyList`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No StrategyList data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
+	if err := store.LoadFromDBForChainID(`StrategyList`, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {
-		store.StrategyList[chainID] = temp
+		Store.StrategyList[chainID] = temp
 		logs.Success("Data loaded for the strategyList store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No strategyList data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

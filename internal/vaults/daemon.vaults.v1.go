@@ -1,4 +1,4 @@
-package daemons
+package vaults
 
 import (
 	"encoding/json"
@@ -20,7 +20,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	// Get the meta information from the Yearn Meta API
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	resp, err := http.Get(helpers.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
-	if err != nil {
+	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
@@ -45,34 +45,26 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TAPIV1Vault} if we were working with JS/TS
-	if store.VaultsFromAPIV1[chainID] == nil {
-		store.VaultsFromAPIV1[chainID] = make(map[common.Address]models.TAPIV1Vault)
+	if Store.VaultsFromAPIV1[chainID] == nil {
+		Store.VaultsFromAPIV1[chainID] = make(map[common.Address]models.TAPIV1Vault)
 	}
 	for _, vault := range vaults {
 		// common.HexToAddress(vault.Address).String() asserts that the address is a valid
 		// chacksummed hex string
-		store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address)] = vault
+		Store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address)] = vault
 	}
-	store.SaveInDBForChainID(`VaultsFromAPIV1`, chainID, store.VaultsFromAPIV1[chainID])
+	store.SaveInDBForChainID(`VaultsFromAPIV1`, chainID, Store.VaultsFromAPIV1[chainID])
 }
 
 // LoadAPIV1Vaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
 func LoadAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TAPIV1Vault)
-	err := store.LoadFromDBForChainID(`VaultsFromAPIV1`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No metaVaults data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
+	if err := store.LoadFromDBForChainID(`VaultsFromAPIV1`, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {
-		store.VaultsFromAPIV1[chainID] = temp
+		Store.VaultsFromAPIV1[chainID] = temp
 		logs.Success("Data loaded for the APIv1 Vaults data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No APIv1 Vaults data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

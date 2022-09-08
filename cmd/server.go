@@ -6,9 +6,10 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"github.com/yearn/ydaemon/internal/controllers"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
+	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -53,17 +54,20 @@ func NewRouter() *gin.Engine {
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 	}
 
-	// General section
+	// Strategies section
 	{
-		c := controllers.Controller{}
+		c := strategies.Controller{}
 		// Retrieve the reports for a specific strategy
 		router.GET(`:chainID/reports/:address`, c.GetReports)
+	}
 
+	// General section
+	{
 		// Get some information about the API
-		router.GET(`info/chains`, c.GetSupportedChains)
+		router.GET(`info/chains`, utils.GetSupportedChains)
 
 		// Proxy subgraph
-		router.POST(`:chainID/graph`, c.GetGraph)
+		router.POST(`:chainID/graph`, utils.GetGraph)
 	}
 
 	// Meta API section

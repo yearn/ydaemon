@@ -1,4 +1,4 @@
-package daemons
+package strategies
 
 import (
 	"encoding/json"
@@ -45,32 +45,24 @@ func FetchStrategiesFromRisk(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TStrategyFromRisk} if we were working with JS/TS
-	if store.StrategiesFromRisk[chainID] == nil {
-		store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
+	if Store.StrategiesFromRisk[chainID] == nil {
+		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
 	for address, strategy := range strategies {
-		store.StrategiesFromRisk[chainID][address] = strategy
+		Store.StrategiesFromRisk[chainID][address] = strategy
 	}
-	store.SaveInDBForChainID(`StrategiesFromRisk`, chainID, store.StrategiesFromRisk[chainID])
+	store.SaveInDBForChainID(`StrategiesFromRisk`, chainID, Store.StrategiesFromRisk[chainID])
 }
 
 // LoadRiskStrategies will reload the risk strategies data store from the last state of the local Badger Database
 func LoadRiskStrategies(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TStrategyFromRisk)
-	err := store.LoadFromDBForChainID(`StrategiesFromRisk`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No risk data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
+	if err := store.LoadFromDBForChainID(`StrategiesFromRisk`, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {
-		store.StrategiesFromRisk[chainID] = temp
+		Store.StrategiesFromRisk[chainID] = temp
 		logs.Success("Data loaded for the risk data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No risk data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

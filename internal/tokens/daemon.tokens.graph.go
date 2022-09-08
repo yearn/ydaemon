@@ -1,4 +1,4 @@
-package subgraphDaemons
+package tokens
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -67,10 +67,10 @@ func FetchTokenList(chainID uint64) {
 			IsVault:  false,
 		}
 	}
-	store.Tokens[chainID] = tokenData
-	store.TokenList[chainID] = helpers.UniqueArrayAddress(tokenList)
-	store.SaveInDBForChainID(`TokenData`, chainID, store.Tokens[chainID])
-	store.SaveInDBForChainID(`TokenList`, chainID, store.TokenList[chainID])
+	Store.Tokens[chainID] = tokenData
+	Store.TokenList[chainID] = helpers.UniqueArrayAddress(tokenList)
+	store.SaveInDBForChainID(`TokenData`, chainID, Store.Tokens[chainID])
+	store.SaveInDBForChainID(`TokenList`, chainID, Store.TokenList[chainID])
 }
 
 // LoadTokenList will reload the tokenList data store from the last state of the local Badger Database
@@ -78,17 +78,11 @@ func LoadTokenList(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	{
 		temp := []common.Address{}
-		err := store.LoadFromDBForChainID(`TokenList`, chainID, &temp)
-		if err != nil {
-			if err.Error() == "Key not found" {
-				logs.Warning("No TokenList data found for chainID: " + strconv.FormatUint(chainID, 10))
-				return
-			}
-			logs.Error(err)
+		if err := store.LoadFromDBForChainID(`TokenList`, chainID, &temp); err != nil {
 			return
 		}
 		if temp != nil && (len(temp) > 0) {
-			store.TokenList[chainID] = temp
+			Store.TokenList[chainID] = temp
 			logs.Success("Data loaded for the tokenList store for chainID: " + strconv.FormatUint(chainID, 10))
 		} else {
 			logs.Warning("No tokenList data found for chainID: " + strconv.FormatUint(chainID, 10))
@@ -97,17 +91,11 @@ func LoadTokenList(chainID uint64, wg *sync.WaitGroup) {
 
 	{
 		temp := make(map[common.Address]*models.TERC20Token)
-		err := store.LoadFromDBForChainID(`TokenData`, chainID, &temp)
-		if err != nil {
-			if err.Error() == "Key not found" {
-				logs.Warning("No TokenData data found for chainID: " + strconv.FormatUint(chainID, 10))
-				return
-			}
-			logs.Error(err)
+		if err := store.LoadFromDBForChainID(`TokenData`, chainID, &temp); err != nil {
 			return
 		}
 		if temp != nil && (len(temp) > 0) {
-			store.Tokens[chainID] = temp
+			Store.Tokens[chainID] = temp
 			logs.Success("Data loaded for the TokenData store for chainID: " + strconv.FormatUint(chainID, 10))
 		} else {
 			logs.Warning("No TokenData data found for chainID: " + strconv.FormatUint(chainID, 10))

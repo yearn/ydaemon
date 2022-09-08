@@ -2,7 +2,6 @@ package partners
 
 import (
 	"net/http"
-	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
@@ -26,11 +25,11 @@ func (y Controller) GetAllPartners(c *gin.Context) {
 
 // GetPartners will, for a given chainID, return all the partners informations.
 func (y Controller) GetPartners(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	partners, ok := Store.PartnersByAddress[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")

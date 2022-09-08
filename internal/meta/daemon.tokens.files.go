@@ -1,4 +1,4 @@
-package metaDaemons
+package meta
 
 import (
 	"encoding/json"
@@ -7,7 +7,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
@@ -15,7 +14,7 @@ import (
 // FetchTokensFromMeta fetches the tokens information from the Yearn Meta API for a given chainID
 // and store the result to the global variable TokensFromMeta for later use.
 func FetchTokensFromMeta(chainID uint64) {
-	tokens := []meta.TTokenFromMeta{}
+	tokens := []TTokenFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, filenames, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/tokens/`+chainIDStr+`/`, `.json`)
 	if err != nil {
@@ -24,7 +23,7 @@ func FetchTokensFromMeta(chainID uint64) {
 	}
 
 	for index, content := range content {
-		token := meta.TTokenFromMeta{}
+		token := TTokenFromMeta{}
 		if err := json.Unmarshal(content, &token); err != nil {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
@@ -33,15 +32,15 @@ func FetchTokensFromMeta(chainID uint64) {
 		token.Address = common.HexToAddress(token.Address).String()
 		tokens = append(tokens, token)
 	}
-	meta.Store.RawMetaTokens[chainID] = tokens
+	Store.RawMetaTokens[chainID] = tokens
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TTokenFromMeta} if we were working with JS/TS
-	if meta.Store.TokensFromMeta[chainID] == nil {
-		meta.Store.TokensFromMeta[chainID] = make(map[common.Address]meta.TTokenFromMeta)
+	if Store.TokensFromMeta[chainID] == nil {
+		Store.TokensFromMeta[chainID] = make(map[common.Address]TTokenFromMeta)
 	}
 	for _, token := range tokens {
-		meta.Store.TokensFromMeta[chainID][common.HexToAddress(token.Address)] = token
+		Store.TokensFromMeta[chainID][common.HexToAddress(token.Address)] = token
 	}
 }
 

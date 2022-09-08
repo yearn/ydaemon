@@ -2,9 +2,7 @@ package meta
 
 import (
 	"net/http"
-	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
@@ -12,11 +10,11 @@ import (
 // GetMetaTokensLegacy will, for a given chainID, return all the meta informations for the tokens.
 // The data will be resolved as-is, aka as an unorganized array of tokens metadata.
 func (y Controller) GetMetaTokensLegacy(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
 	tokensFromMeta, ok := Store.RawMetaTokens[chainID]
 	if !ok {
@@ -43,11 +41,11 @@ func (y Controller) GetMetaTokensLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the token metadata.
 func (y Controller) GetMetaTokens(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
 	tokensFromMeta, ok := Store.TokensFromMeta[chainID]
 	if !ok {
@@ -73,18 +71,17 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 // GetMetaToken will, for a given address on given chainID, return the meta informations for the token.
 // The data will be resolved as an object corresponding to the token models.
 func (y Controller) GetMetaToken(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	if !ok {
+		return
+	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
-	tokenAddress := c.Param("address")
-	if tokenAddress == `` {
-		c.String(http.StatusBadRequest, "invalid address")
-		return
-	}
-	tokenFromMeta, ok := Store.TokensFromMeta[chainID][common.HexToAddress(tokenAddress)]
+	tokenFromMeta, ok := Store.TokensFromMeta[chainID][address]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
 		return

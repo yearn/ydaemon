@@ -4,13 +4,12 @@ import (
 	"context"
 	"net/http"
 	"sort"
-	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/ethereum"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -42,10 +41,8 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 
 //GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
-	// get the chainID from the URI
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
 

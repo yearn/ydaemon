@@ -3,14 +3,13 @@ package vaults
 import (
 	"context"
 	"net/http"
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/ethereum"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -63,13 +62,8 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 
 //GetVaultsTVL will, for a given chainID, return the current TVL
 func (y Controller) GetVaultsTVL(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-	if !helpers.ContainsUint64(helpers.SUPPORTED_CHAIN_IDS, chainID) {
-		c.String(http.StatusBadRequest, "unsupported chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
 

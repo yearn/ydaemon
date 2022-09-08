@@ -1,3 +1,3 @@
-package controllers
+package strategies
 
 type Controller struct{}

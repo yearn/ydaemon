@@ -70,6 +70,11 @@ func LoadFromDB(key string, dest interface{}) error {
 func LoadFromDBForChainID(key string, chainID uint64, dest interface{}) error {
 	err := LoadFromDB(key+strconv.FormatUint(chainID, 10), &dest)
 	if err != nil {
+		if err.Error() == "Key not found" {
+			logs.Warning(key + " not found for chainID: " + strconv.FormatUint(chainID, 10))
+			return err
+		}
+		logs.Error(err)
 		return err
 	}
 	return nil

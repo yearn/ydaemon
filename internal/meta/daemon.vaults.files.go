@@ -1,4 +1,4 @@
-package metaDaemons
+package meta
 
 import (
 	"encoding/json"
@@ -7,7 +7,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
@@ -15,7 +14,7 @@ import (
 // FetchVaultsFromMeta fetches the meta information from the Yearn Meta API for a given chainID
 // and store the result to the global variable VaultsFromMeta for later use.
 func FetchVaultsFromMeta(chainID uint64) {
-	vaults := []meta.TVaultFromMeta{}
+	vaults := []TVaultFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, filenames, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
@@ -23,7 +22,7 @@ func FetchVaultsFromMeta(chainID uint64) {
 		return
 	}
 	for index, content := range content {
-		vault := meta.TVaultFromMeta{}
+		vault := TVaultFromMeta{}
 		if err := json.Unmarshal(content, &vault); err != nil {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 			continue
@@ -35,14 +34,14 @@ func FetchVaultsFromMeta(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TVaultFromMeta} if we were working with JS/TS
-	if meta.Store.VaultsFromMeta[chainID] == nil {
-		meta.Store.VaultsFromMeta[chainID] = make(map[common.Address]meta.TVaultFromMeta)
+	if Store.VaultsFromMeta[chainID] == nil {
+		Store.VaultsFromMeta[chainID] = make(map[common.Address]TVaultFromMeta)
 	}
 	for _, vault := range vaults {
 		vault.MigrationContract = common.HexToAddress(vault.MigrationContract).Hex()
 		vault.MigrationTargetVault = common.HexToAddress(vault.MigrationTargetVault).Hex()
-		meta.Store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
-		meta.Store.RawMetaVaults[chainID] = append(meta.Store.RawMetaVaults[chainID], vault)
+		Store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
+		Store.RawMetaVaults[chainID] = append(Store.RawMetaVaults[chainID], vault)
 	}
 }
 

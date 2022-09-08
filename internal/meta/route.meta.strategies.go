@@ -2,9 +2,7 @@ package meta
 
 import (
 	"net/http"
-	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
@@ -12,11 +10,11 @@ import (
 // GetMetaStrategiesLegacy will, for a given chainID, return all the meta informations for the strategies.
 // The data will be resolved as-is, aka as an unorganized array of strategies metadata.
 func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := Store.RawMetaStrategies[chainID]
 	if !ok {
@@ -43,11 +41,11 @@ func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the strategy metadata.
 func (y Controller) GetMetaStrategies(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
 	strategiesFromMeta, ok := Store.StrategiesFromMeta[chainID]
 	if !ok {
@@ -73,18 +71,17 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 // GetMetaStrategy will, for a given address on given chainID, return the meta informations for the strategy.
 // The data will be resolved as an object corresponding to the strategy models.
 func (y Controller) GetMetaStrategy(c *gin.Context) {
-	chainID, err := strconv.ParseUint(c.Param("chainID"), 10, 64)
-	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
+	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	if !ok {
 		return
 	}
+	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	if !ok {
+		return
+	}
+
 	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
-	strategyAddress := c.Param("address")
-	if strategyAddress == `` {
-		c.String(http.StatusBadRequest, "invalid address")
-		return
-	}
-	strategyFromMeta, ok := Store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)]
+	strategyFromMeta, ok := Store.StrategiesFromMeta[chainID][address]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
 		return

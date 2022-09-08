@@ -1,4 +1,4 @@
-package multicallDaemons
+package strategies
 
 import (
 	"math"
@@ -9,8 +9,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -131,11 +131,11 @@ func getStategyDelegatedAssets(name string, contractAddress common.Address, vers
 // FetchStrategiesMulticallData will perform a multicall to get some specific data from on-chain for a specific list of strategies
 func FetchStrategiesMulticallData(chainID uint64) {
 	// First we connect to the multicall client, stored in memory via the initializer.
-	caller := multicallClientForChainID[chainID]
+	caller := ethereum.MulticallClientForChainID[chainID]
 
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
-	for _, strat := range store.StrategyList[chainID] {
+	for _, strat := range Store.StrategyList[chainID] {
 		calls = append(calls, getCreditAvailable(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getDebtOutstanding(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getExpectedReturn(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
@@ -154,10 +154,10 @@ func FetchStrategiesMulticallData(chainID uint64) {
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
 	response := caller.ExecuteByBatch(calls, maxBatch)
-	if store.StrategyMultiCallData[chainID] == nil {
-		store.StrategyMultiCallData[chainID] = make(map[common.Address]models.TStrategyMultiCallData)
+	if Store.StrategyMultiCallData[chainID] == nil {
+		Store.StrategyMultiCallData[chainID] = make(map[common.Address]models.TStrategyMultiCallData)
 	}
-	for _, strat := range store.StrategyList[chainID] {
+	for _, strat := range Store.StrategyList[chainID] {
 		creditAvailable0 := response[strat.Strategy.String()+`creditAvailable0`]
 		debtOutstanding0 := response[strat.Strategy.String()+`debtOutstanding0`]
 		expectedReturn := response[strat.Strategy.String()+`expectedReturn0`]
@@ -226,28 +226,20 @@ func FetchStrategiesMulticallData(chainID uint64) {
 			data.TotalGain = strategies[7].(*big.Int)
 			data.TotalLoss = strategies[8].(*big.Int)
 		}
-		store.StrategyMultiCallData[chainID][common.HexToAddress(strat.Strategy.String())] = data
+		Store.StrategyMultiCallData[chainID][common.HexToAddress(strat.Strategy.String())] = data
 	}
-	store.SaveInDBForChainID(`StrategiesMultiCallData`, chainID, store.StrategyMultiCallData[chainID])
+	store.SaveInDBForChainID(`StrategiesMultiCallData`, chainID, Store.StrategyMultiCallData[chainID])
 }
 
 // LoadStrategyMulticallData will reload the multicall data store from the last state of the local Badger Database
 func LoadStrategyMulticallData(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TStrategyMultiCallData)
-	err := store.LoadFromDBForChainID(`StrategiesMultiCallData`, chainID, &temp)
-	if err != nil {
-		if err.Error() == "Key not found" {
-			logs.Warning("No strategy multicall data found for chainID: " + strconv.FormatUint(chainID, 10))
-			return
-		}
-		logs.Error(err)
+	if err := store.LoadFromDBForChainID(`StrategiesMultiCallData`, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {
-		store.StrategyMultiCallData[chainID] = temp
+		Store.StrategyMultiCallData[chainID] = temp
 		logs.Success("Data loaded for the strategy multicall data store for chainID: " + strconv.FormatUint(chainID, 10))
-	} else {
-		logs.Warning("No strategy multicall data found for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

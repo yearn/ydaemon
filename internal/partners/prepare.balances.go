@@ -4,11 +4,11 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/ethereum"
+	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
+	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
-	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
 func (c *TPartners) BalanceOf() *TPartners {
@@ -58,7 +58,7 @@ func computeDefaultBalance(
 		return nil, nil, err
 	}
 
-	decimals := store.Tokens[chainID][vaultAddress].Decimals
+	decimals := tokens.Store.Tokens[chainID][vaultAddress].Decimals
 	_, fBalance := helpers.FormatAmount(balance.String(), int(decimals))
 
 	return balance, fBalance, err

@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"sync"
 	"testing"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -41,6 +42,7 @@ func TestPartners(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go newRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}

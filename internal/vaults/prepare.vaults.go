@@ -73,14 +73,9 @@ func buildVaultSymbol(
 	if displaySymbol != "" && !strings.HasPrefix(displaySymbol, "yv") {
 		formatedSymbol = "yv" + displaySymbol
 	}
-	// If the symbol is empty, use the displaySymbol instead
-	if symbol == "" {
-		symbol = displaySymbol
-	}
-	// If the symbol is still empty, use the formated symbol instead
-	if symbol == "" {
-		symbol = displaySymbol
-	}
+	symbol = helpers.ValueWithFallback(symbol, displaySymbol)
+	symbol = helpers.ValueWithFallback(symbol, formatedSymbol)
+	displaySymbol = helpers.ValueWithFallback(displaySymbol, symbol)
 
 	return symbol, displaySymbol, formatedSymbol
 }

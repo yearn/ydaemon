@@ -4,13 +4,11 @@ import (
 	"io/ioutil"
 	"math"
 	"math/big"
-	"net/http"
 	"os"
 	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
@@ -127,27 +125,23 @@ func ContainsUint64(arr []uint64, value uint64) bool {
 	return false
 }
 
-func AssertChainID(c *gin.Context, chainIDStr string) (uint64, bool) {
+func AssertChainID(chainIDStr string) (uint64, bool) {
 	chainID, err := strconv.ParseUint(chainIDStr, 10, 64)
 	if err != nil {
-		c.String(http.StatusBadRequest, "invalid chainID")
 		return 0, false
 	}
 	if !ContainsUint64(SUPPORTED_CHAIN_IDS, chainID) {
-		c.String(http.StatusBadRequest, "unsupported chainID")
 		return 0, false
 	}
 	return chainID, true
 }
 
-func AssertAddress(c *gin.Context, addressStr string, chainID uint64) (common.Address, bool) {
+func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 	if !common.IsHexAddress(addressStr) {
-		c.String(http.StatusBadRequest, "invalid address")
 		return common.Address{}, false
 	}
 	address := common.HexToAddress(addressStr)
 	if chainID > 0 && ContainsAddress(BLACKLISTED_VAULTS[chainID], address) {
-		c.String(http.StatusBadRequest, "ignored address")
 		return common.Address{}, false
 	}
 	return address, true

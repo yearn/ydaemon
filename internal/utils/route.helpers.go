@@ -18,8 +18,9 @@ func GetSupportedChains(c *gin.Context) {
 
 //GetGraph returns a list of blacklisted vaults by the API
 func GetGraph(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 

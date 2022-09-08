@@ -10,8 +10,9 @@ import (
 // GetMetaProtocolsLegacy will, for a given chainID, return all the meta informations for the protocols.
 // The data will be resolved as-is, aka as an unorganized array of protocols metadata.
 func (y Controller) GetMetaProtocolsLegacy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -41,8 +42,9 @@ func (y Controller) GetMetaProtocolsLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the protocol metadata.
 func (y Controller) GetMetaProtocols(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -70,8 +72,9 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 // GetMetaProtocol will, for a given address on given chainID, return the meta informations for the protocol.
 // The data will be resolved as an object corresponding to the protocol models.
 func (y Controller) GetMetaProtocol(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 

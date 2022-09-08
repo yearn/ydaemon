@@ -25,8 +25,9 @@ func (y Controller) GetAllPartners(c *gin.Context) {
 
 // GetPartners will, for a given chainID, return all the partners informations.
 func (y Controller) GetPartners(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 

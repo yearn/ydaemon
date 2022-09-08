@@ -41,8 +41,9 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 
 //GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 

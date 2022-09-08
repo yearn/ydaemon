@@ -72,44 +72,44 @@ func NewRouter() *gin.Engine {
 
 	// Meta API section
 	{
-		meta := meta.Controller{}
+		c := meta.Controller{}
 
 		// Proxy meta strategies
-		router.GET(`api/:chainID/strategies/all`, meta.GetMetaStrategiesLegacy)
-		router.GET(`:chainID/meta/strategies`, meta.GetMetaStrategies)
-		router.GET(`api/:chainID/strategies/:address`, meta.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategies/:address`, meta.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategy/:address`, meta.GetMetaStrategy)
+		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategiesLegacy)
+		router.GET(`:chainID/meta/strategies`, c.GetMetaStrategies)
+		router.GET(`api/:chainID/strategies/:address`, c.GetMetaStrategy)
+		router.GET(`:chainID/meta/strategies/:address`, c.GetMetaStrategy)
+		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/:chainID/tokens/all`, meta.GetMetaTokensLegacy)
-		router.GET(`:chainID/meta/tokens`, meta.GetMetaTokens)
-		router.GET(`api/:chainID/tokens/:address`, meta.GetMetaToken)
-		router.GET(`:chainID/meta/tokens/:address`, meta.GetMetaToken)
-		router.GET(`:chainID/meta/token/:address`, meta.GetMetaToken)
+		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokensLegacy)
+		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
+		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
+		router.GET(`:chainID/meta/tokens/:address`, c.GetMetaToken)
+		router.GET(`:chainID/meta/token/:address`, c.GetMetaToken)
 
 		// Proxy meta vaults
-		router.GET(`api/:chainID/vaults/all`, meta.GetMetaVaultsLegacy)
-		router.GET(`:chainID/meta/vaults`, meta.GetMetaVaults)
-		router.GET(`api/:chainID/vaults/:address`, meta.GetMetaVault)
-		router.GET(`:chainID/meta/vaults/:address`, meta.GetMetaVault)
-		router.GET(`:chainID/meta/vault/:address`, meta.GetMetaVault)
+		router.GET(`api/:chainID/vaults/all`, c.GetMetaVaultsLegacy)
+		router.GET(`:chainID/meta/vaults`, c.GetMetaVaults)
+		router.GET(`api/:chainID/vaults/:address`, c.GetMetaVault)
+		router.GET(`:chainID/meta/vaults/:address`, c.GetMetaVault)
+		router.GET(`:chainID/meta/vault/:address`, c.GetMetaVault)
 
 		// Proxy meta protocols
-		router.GET(`api/:chainID/protocols/all`, meta.GetMetaProtocolsLegacy)
-		router.GET(`:chainID/meta/protocols`, meta.GetMetaProtocols)
-		router.GET(`api/:chainID/protocols/:name`, meta.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocols/:name`, meta.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocol/:name`, meta.GetMetaProtocol)
+		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocolsLegacy)
+		router.GET(`:chainID/meta/protocols`, c.GetMetaProtocols)
+		router.GET(`api/:chainID/protocols/:name`, c.GetMetaProtocol)
+		router.GET(`:chainID/meta/protocols/:name`, c.GetMetaProtocol)
+		router.GET(`:chainID/meta/protocol/:name`, c.GetMetaProtocol)
 	}
 
 	// Partners API section
 	{
-		meta := partners.Controller{}
-		router.GET(`partners/count`, meta.CountAllPartners)
-		router.GET(`partners/all`, meta.GetAllPartners)
-		router.GET(`:chainID/partners/all`, meta.GetPartners)
-		router.GET(`:chainID/partners/:addressOrName`, meta.GetPartner)
+		c := partners.Controller{}
+		router.GET(`partners/count`, c.CountAllPartners)
+		router.GET(`partners/all`, c.GetAllPartners)
+		router.GET(`:chainID/partners/all`, c.GetPartners)
+		router.GET(`:chainID/partners/:addressOrName`, c.GetPartner)
 	}
 
 	return router

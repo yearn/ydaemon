@@ -10,8 +10,9 @@ import (
 
 // GetPartner will, for a given address on given chainID, return the meta informations for the partner.
 func (y Controller) GetPartner(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -25,7 +26,7 @@ func (y Controller) GetPartner(c *gin.Context) {
 		}
 	}
 
-	partner = partner.BalanceOf()
+	// partner = partner.BalanceOf() //WORK IN PROGRESS
 
 	c.JSON(http.StatusOK, partner)
 }

@@ -23,12 +23,14 @@ func graphQLRequestForReports(strategyAddress string, c *gin.Context) *graphql.R
 
 //GetReports will, for a given strategy on a given chainID, return a list of reports
 func (y Controller) GetReports(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 

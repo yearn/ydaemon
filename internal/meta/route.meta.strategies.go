@@ -10,8 +10,9 @@ import (
 // GetMetaStrategiesLegacy will, for a given chainID, return all the meta informations for the strategies.
 // The data will be resolved as-is, aka as an unorganized array of strategies metadata.
 func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -41,8 +42,9 @@ func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the strategy metadata.
 func (y Controller) GetMetaStrategies(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -71,12 +73,14 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 // GetMetaStrategy will, for a given address on given chainID, return the meta informations for the strategy.
 // The data will be resolved as an object corresponding to the strategy models.
 func (y Controller) GetMetaStrategy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 

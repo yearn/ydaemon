@@ -62,8 +62,9 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 
 //GetVaultsTVL will, for a given chainID, return the current TVL
 func (y Controller) GetVaultsTVL(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 

@@ -10,8 +10,9 @@ import (
 // GetMetaVaultsLegacy will, for a given chainID, return all the meta informations for the vaults.
 // The data will be resolved as-is, aka as an unorganized array of vaults metadata.
 func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -28,8 +29,9 @@ func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the vault metadata.
 func (y Controller) GetMetaVaults(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 
@@ -45,12 +47,14 @@ func (y Controller) GetMetaVaults(c *gin.Context) {
 // GetMetaVault will, for a given address on given chainID, return the meta informations for the vault.
 // The data will be resolved as an object corresponding to the vault models.
 func (y Controller) GetMetaVault(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 	vaultFromMeta, ok := Store.VaultsFromMeta[chainID][address]

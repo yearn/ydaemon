@@ -27,12 +27,14 @@ func graphQLRequestForOneVault(vaultAddress string, c *gin.Context) *graphql.Req
 
 //GetVault will, for a given chainID, return a list of all vaults
 func (y Controller) GetVault(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c, c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c, c.Param("address"), chainID)
+	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
+		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 

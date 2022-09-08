@@ -110,9 +110,9 @@ The `internal` folder is the _private application and library code_. This is the
 ?       github.com/yearn/ydaemon/internal/contracts   [no test files]
 ok      github.com/yearn/ydaemon/internal/controllers 34.167s coverage: 98.6% of statements
 ok      github.com/yearn/ydaemon/internal/daemons     31.366s coverage: 94.7% of statements
-ok      github.com/yearn/ydaemon/internal/ethereum    30.505s coverage: 78.3% of statements
+ok      github.com/yearn/ydaemon/internal/utils/ethereum    30.505s coverage: 78.3% of statements
 ok      github.com/yearn/ydaemon/internal/logs        0.674s  coverage: 100.0% of statements
 ok      github.com/yearn/ydaemon/internal/models      0.521s  coverage: [no statements]
-ok      github.com/yearn/ydaemon/internal/store       0.213s  coverage: [no statements]
+ok      github.com/yearn/ydaemon/internal/utils/store       0.213s  coverage: [no statements]
 ok      github.com/yearn/ydaemon/internal/utils       0.406s  coverage: 100.0% of statements
 ```

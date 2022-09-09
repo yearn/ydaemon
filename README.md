@@ -51,8 +51,8 @@ curl http://localhost:8080/1/vaults/all
 `?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`  
 `?orderBy=S` will order the result by S on the graphQL query. Default is `activation`  
 `?orderDirection=asc|desc` will order the result by ascending or descending on the graphQL query. Default is `desc`  
-> `?strategiesCondition=debtLimit|inQueue|absolute` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
-
+>`?strategiesCondition=debtLimit|inQueue|absolute` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
+>`?strategiesDetails=withDetails|noDetails` indicates if we should also query and serve the details about the strategies. If noDetails is set, the Details field will be ignored. Default is noDetails.
 -------
 
 `GET` `[BASE_URL]/[chainID]/vaults/[address]`  

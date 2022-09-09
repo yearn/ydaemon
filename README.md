@@ -1,6 +1,6 @@
 # yDaemon
 
-![image](https://user-images.githubusercontent.com/7863230/189402010-ef7244f2-f6fa-4cf3-9e95-8de61c688d92.png)
+![](./.github/banner.png)
 
 yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
 

@@ -43,15 +43,8 @@ type TStrategyFromRiskRiskScores struct {
 	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
 	TestingScore        float64 `json:"testingScore"`
 }
-type TStrategyFromRiskRiskProfile struct {
-	High   float64 `json:"high"`
-	Low    float64 `json:"low"`
-	Median float64 `json:"median"`
-}
 type TStrategyFromRisk struct {
-	RiskScores  TStrategyFromRiskRiskScores  `json:"riskScores"`
-	RiskProfile TStrategyFromRiskRiskProfile `json:"riskProfile"`
-	Tokens      []string                     `json:"tokens"`
+	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
 }
 
 // TERC20Token contains the basic information of an ERC20 token

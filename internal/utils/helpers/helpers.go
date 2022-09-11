@@ -12,8 +12,8 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
-//ContainsAddress returns true if address exists in addresses
-func ContainsAddress(addresses []common.Address, address common.Address) bool {
+// ContainsAddress returns true if address exists in addresses
+func ContainsAddress[T comparable](addresses []T, address T) bool {
 	for _, _address := range addresses {
 		if _address == address {
 			return true
@@ -115,7 +115,7 @@ func FormatAmount(balanceToken string, decimals int) (float64, *big.Float) {
 	return fhumanizedBalance, humanizedBalance
 }
 
-//ContainsUint64 returns true if value exists in arr
+// ContainsUint64 returns true if value exists in arr
 func ContainsUint64(arr []uint64, value uint64) bool {
 	for _, v := range arr {
 		if v == value {

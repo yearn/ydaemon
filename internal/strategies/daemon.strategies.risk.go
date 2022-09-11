@@ -17,7 +17,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-func excludeStrategy(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+func excludeNameLike(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
@@ -28,7 +28,7 @@ func excludeStrategy(strat meta.TStrategyFromMeta, group models.TStrategyGroupFr
 	return false
 }
 
-func includeStrategy(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+func includeAddress(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Strategies) > 0 {
 		for _, stratInclude := range group.Criteria.Strategies {
 			if helpers.ContainsAddress(strat.Addresses, stratInclude) {
@@ -116,10 +116,10 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	for _, strat := range strategies {
 		var stratGroup models.TStrategyGroupFromRisk
 		for _, group := range groups {
-			if excludeStrategy(strat, group) {
+			if excludeNameLike(strat, group) {
 				continue
 			}
-			if includeStrategy(strat, group) || includeNameLike(strat, group) {
+			if includeAddress(strat, group) || includeNameLike(strat, group) {
 				stratGroup = group
 				break
 			}

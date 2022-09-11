@@ -74,7 +74,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	}
 	strategies, ok := meta.Store.StrategiesFromMeta[chainID]
 	if !ok {
-		logs.Warning("Error fetching meta information from the Yearn Meta API")
+		logs.Warning("Error reading meta information from the Yearn Meta Files")
 		return
 	}
 	for _, strat := range strategies {

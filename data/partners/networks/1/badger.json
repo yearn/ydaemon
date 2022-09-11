@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "badger",
+	"start_block": 0,
+	"treasury": "0xD0A7A8B98957b9CD3cFB9c0425AbE44551158e9e",
+	"wrappers": [{
+		"name": "wbtc",
+		"vault": "0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E",
+		"wrapper": "0x4b92d19c11435614CD49Af1b589001b7c08cD4D5",
+		"type": "default"
+	}]
+}
+  

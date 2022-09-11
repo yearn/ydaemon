@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "donutapp",
+	"start_block": 0,
+	"treasury": "0x9eaCFF404BAC19195CbD131a4BeA880Abd09B35e",
+	"wrappers": [{
+		"name": "yvDAI",
+		"vault": "0x19D3364A399d251E894aC732651be8B0E4e85001",
+		"wrapper": "0x9eaCFF404BAC19195CbD131a4BeA880Abd09B35e",
+		"type": "default"
+	}]
+}
+  

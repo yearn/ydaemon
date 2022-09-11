@@ -1,0 +1,18 @@
+{
+	"$schema": "partners",
+	"name": "basketdao",
+	"start_block": 0,
+	"treasury": "0x7301C46be73bB04847576b6Af107172bF5e8388e",
+	"wrappers": [{
+		"name": "bdi",
+		"vault": "",
+		"wrapper": "0x0309c98B1bffA350bcb3F9fB9780970CA32a5060",
+		"type": "wildcard"
+	}, {
+		"name": "bmi",
+		"vault": "",
+		"wrapper": "0x0aC00355F80E289f53BF368C9Bdb70f5c114C44B",
+		"type": "wildcard"
+	}]
+}
+  

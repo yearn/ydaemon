@@ -5,18 +5,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/majorfi/ydaemon/internal/controllers"
-	"github.com/majorfi/ydaemon/internal/daemons"
-	"github.com/majorfi/ydaemon/internal/logs"
-	"github.com/majorfi/ydaemon/internal/store"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-var chains = []uint64{1, 10, 250, 42161}
+var chains = helpers.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{250}
+// var chains = []uint64{1}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
-	daemons.SummonDaemons(chainID, delay)
+	SummonDaemons(chainID, delay)
 	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
 	wg.Done()
 }
@@ -31,7 +30,7 @@ func summonDaemonsForAllChains() {
 }
 
 func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
-	daemons.LoadDaemons(chainID)
+	LoadDaemons(chainID)
 	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
 	wg.Done()
 }
@@ -53,5 +52,5 @@ func main() {
 	logs.Info(`Summoning yDaemon...`)
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
-	controllers.NewRouter().Run()
+	NewRouter().Run()
 }

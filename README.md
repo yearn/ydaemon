@@ -1,11 +1,28 @@
 # yDaemon
-![](./.github/og.jpeg)
 
-yDaemon is the next-gen API for Yearn. Based on the one from the [exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
+![](./.github/banner.png)
+
+yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
 
 See documentation here: https://ydaemon.ycorpo.com/
+## Use with Docker
+First, ensure [Docker](https://docs.docker.com/get-started/overview/) is installed on your system then, clone the repo and create the '.env' file:
+```
+RPC_URI_FOR_1=
+RPC_URI_FOR_10=
+RPC_URI_FOR_250=
+RPC_URI_FOR_42161=
+```
+Then to run, type:
+```
+make depoly
+```
+To stop, type:
+```
+make down
+```
 
-## Install
+## Manual Install
 First, ensure [Go](https://go.dev/) is installed on your system. then, clone the repo and create the `.env` file:
 ```
 RPC_URI_FOR_1=
@@ -35,8 +52,8 @@ curl http://localhost:8080/1/vaults/all
 `?first=N` will limit the result to N vaults on the graphQL query. Default is `1000`  
 `?orderBy=S` will order the result by S on the graphQL query. Default is `activation`  
 `?orderDirection=asc|desc` will order the result by ascending or descending on the graphQL query. Default is `desc`  
-> `?strategiesCondition=debtLimit|inQueue|absolute` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
-
+>`?strategiesCondition=debtLimit|inQueue|absolute` will select the "active" strategies based on the specified strategy. Default is `debtLimit`
+>`?strategiesDetails=withDetails|noDetails` indicates if we should also query and serve the details about the strategies. If noDetails is set, the Details field will be ignored. Default is noDetails.
 -------
 
 `GET` `[BASE_URL]/[chainID]/vaults/[address]`  
@@ -55,18 +72,21 @@ curl http://localhost:8080/1/vaults/all
 `GET` `[BASE_URL]/info/vaults/blacklisted`  
 > This endpoint returns the blacklisted vaults for all chains. A blacklisted vault is a vault that will be ignored by the API.  
 
+-------
+`GET` `[BASE_URL]/[chainID]/vaults/tvl`  
+> This endpoint returns the Total Value Locked for the specified chainID. Does not subtract delegated deposits from one vault to another.  
 
 ## Data Sources
-In order to build this API, data are fetched from a number of Yearn data sources:
+To build this API data is fetched from several Yearn data sources:
 - [Yearn Subgraph](https://thegraph.com/explorer/subgraph?id=5xMSe3wTNLgFQqsAc5SCVVwT4MiRb5AogJCuSN9PjzXF) as the base data source.
 - [Yearn Meta](https://github.com/yearn/yearn-meta) for some basic data and information updated by the Yearn team.
 - [Yearn API](https://api.yearn.finance/) for the APY computation.
 - [Yearn Lens Oracle](https://etherscan.io/address/0xca11bde05977b3631167028862be2a173976ca11) for tokens and vault prices.
 
-In order to provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.
+To provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.
 - Prices from the oracle are updated every 30 seconds for every tokens and vaults, as the price may change at every block.
 - APY information is updated every 10 minutes, as the underlying API is updated every 30 minutes
-- Meta data are updated every minutes. This will be moved to every 30 minutes in the future, and trust a webhook from the github deployement system to update the data.
+- Meta data is updated every minute. This will be moved to every 30 minutes in the future, and trust a webhook from the github deployement system to update the data.
 
 ## Folder and structure
 The project is divided as follow:
@@ -87,13 +107,13 @@ The `internal` folder is the _private application and library code_. This is the
 
 ## Go Test and Coverage
 ```
-?       github.com/majorfi/ydaemon/cmd  [no test files]
-?       github.com/majorfi/ydaemon/internal/contracts   [no test files]
-ok      github.com/majorfi/ydaemon/internal/controllers 34.167s coverage: 98.6% of statements
-ok      github.com/majorfi/ydaemon/internal/daemons     31.366s coverage: 94.7% of statements
-ok      github.com/majorfi/ydaemon/internal/ethereum    30.505s coverage: 78.3% of statements
-ok      github.com/majorfi/ydaemon/internal/logs        0.674s  coverage: 100.0% of statements
-ok      github.com/majorfi/ydaemon/internal/models      0.521s  coverage: [no statements]
-ok      github.com/majorfi/ydaemon/internal/store       0.213s  coverage: [no statements]
-ok      github.com/majorfi/ydaemon/internal/utils       0.406s  coverage: 100.0% of statements
+?       github.com/yearn/ydaemon/cmd  [no test files]
+?       github.com/yearn/ydaemon/internal/contracts   [no test files]
+ok      github.com/yearn/ydaemon/internal/controllers 34.167s coverage: 98.6% of statements
+ok      github.com/yearn/ydaemon/internal/daemons     31.366s coverage: 94.7% of statements
+ok      github.com/yearn/ydaemon/internal/utils/ethereum    30.505s coverage: 78.3% of statements
+ok      github.com/yearn/ydaemon/internal/logs        0.674s  coverage: 100.0% of statements
+ok      github.com/yearn/ydaemon/internal/models      0.521s  coverage: [no statements]
+ok      github.com/yearn/ydaemon/internal/utils/store       0.213s  coverage: [no statements]
+ok      github.com/yearn/ydaemon/internal/utils       0.406s  coverage: 100.0% of statements
 ```

@@ -3,7 +3,7 @@
   "name": "Iron Bank Lender Optimizer",
   "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0xC06ed8E16F1E66acC03F7af1b0bA96fFF589E495"],
-  "protocols": ["Iron Bank"],
+  "protocols": ["IronBank"],
   "localization": {
     "en": {
       "name": "Iron Bank Lender Optimizer",

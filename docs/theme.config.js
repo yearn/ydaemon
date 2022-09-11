@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
-const GITHUB_URI = 'https://github.com/Majorfi/ydaemon';
+const GITHUB_URI = 'https://github.com/yearn/ydaemon';
 
 export default {
 	docsRepositoryBase: GITHUB_URI,

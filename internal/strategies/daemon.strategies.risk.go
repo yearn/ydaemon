@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"math/big"
-	"net/http"
 	"strconv"
 	"strings"
 	"sync"
@@ -57,27 +56,15 @@ func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID
 // and store the result to the global variable StrategiesFromRisk for later use.
 func FetchStrategiesFromRisk(chainID uint64) {
-	// Get the information from the Risk Framework
-	resp, err := http.Get(helpers.RISK_BASE_URL)
+	// Read data from the risk framework json file
+	content, err := ioutil.ReadFile(helpers.BASE_DATA_PATH + "/risks.json")
 	if err != nil {
-		logs.Error("Error fetching information from the Risk Framework", err)
+		logs.Warning("Error fetching information from the Risk Framework")
 		return
 	}
-
-	// Defer the closing of the response body to avoid memory leaks
-	defer resp.Body.Close()
-
-	// Read the response body and store it in the body variable
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error("Error reading response body from the Risk Framework", err)
-		return
-	}
-
-	// Unmarshal the response body into the variable StrategyGroupsFromRisk. Body is a byte array,
 	groups := []models.TStrategyGroupFromRisk{}
-	if err := json.Unmarshal(body, &groups); err != nil {
-		logs.Error("Error unmarshalling response body from the Risk Framework", err)
+	if err := json.Unmarshal(content, &groups); err != nil {
+		logs.Warning("Error unmarshalling response body from the Risk Framework")
 		return
 	}
 
@@ -87,7 +74,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	}
 	strategies, ok := meta.Store.StrategiesFromMeta[chainID]
 	if !ok {
-		logs.Error("Error fetching strategies from meta")
+		logs.Warning("Error fetching meta information from the Yearn Meta API")
 		return
 	}
 	for _, strat := range strategies {

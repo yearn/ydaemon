@@ -73,7 +73,7 @@ func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
 		return 5
 	}
 	activation := time.Unix(strategyData.Activation.Int64(), 0)
-	longevity := time.Now().Sub(activation)
+	longevity := time.Since(activation)
 	days := time.Hour * 24
 	switch {
 	case longevity > 240*days:

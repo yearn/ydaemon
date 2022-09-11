@@ -17,40 +17,76 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-func getTVLImpact(strategyData models.TStrategyMultiCallData) float64 {
-	if strategyData.EstimatedTotalAssets.Cmp(big.NewInt(0)) == 0 {
-		return 0
-	} else if strategyData.EstimatedTotalAssets.Cmp(big.NewInt(1_000_000)) < 0 {
-		return 1
-	} else if strategyData.EstimatedTotalAssets.Cmp(big.NewInt(10_000_000)) < 0 {
-		return 2
-	} else if strategyData.EstimatedTotalAssets.Cmp(big.NewInt(50_000_000)) < 0 {
-		return 3
-	} else if strategyData.EstimatedTotalAssets.Cmp(big.NewInt(100_000_000)) < 0 {
-		return 4
+func excludeStrategy(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+	if len(group.Criteria.Exclude) > 0 {
+		for _, stratExclude := range group.Criteria.Exclude {
+			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
+				return true
+			}
+		}
 	}
-	return 5
+	return false
+}
+
+func includeStrategy(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+	if len(group.Criteria.Strategies) > 0 {
+		for _, stratInclude := range group.Criteria.Strategies {
+			if helpers.ContainsAddress(strat.Addresses, stratInclude) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func includeNameLike(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+	if len(group.Criteria.NameLike) > 0 {
+		for _, nameLike := range group.Criteria.NameLike {
+			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func getTVLImpact(strategyData models.TStrategyMultiCallData) float64 {
+	tvl := strategyData.EstimatedTotalAssets.Int64()
+	switch {
+	case tvl == 0:
+		return 0
+	case tvl < 1_000_000:
+		return 1
+	case tvl < 10_000_000:
+		return 2
+	case tvl < 50_000_000:
+		return 3
+	case tvl < 100_000_000:
+		return 4
+	default:
+		return 5
+	}
 }
 
 func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
-	if strategyData.Activation == nil {
+	if strategyData.Activation == nil || strategyData.Activation == big.NewInt(0) {
 		return 5
 	}
-	var longevity big.Int
-	now := big.NewInt(time.Now().Unix())
-	longevity.Sub(now, strategyData.Activation)
-
-	var days int64 = 60 * 60 * 24
-	if longevity.Cmp(big.NewInt(240*days)) > 0 {
+	activation := time.Unix(strategyData.Activation.Int64(), 0)
+	longevity := time.Now().Sub(activation)
+	days := time.Hour * 24
+	switch {
+	case longevity > 240*days:
 		return 1
-	} else if longevity.Cmp(big.NewInt(120*days)) > 0 {
+	case longevity > 120*days:
 		return 2
-	} else if longevity.Cmp(big.NewInt(30*days)) > 0 {
+	case longevity > 30*days:
 		return 3
-	} else if longevity.Cmp(big.NewInt(7*days)) > 0 {
+	case longevity > 7*days:
 		return 4
+	default:
+		return 5
 	}
-	return 5
 }
 
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID
@@ -79,35 +115,13 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	}
 	for _, strat := range strategies {
 		var stratGroup models.TStrategyGroupFromRisk
-
-	groupLoop:
 		for _, group := range groups {
-			// Exclude strategies
-			if len(group.Criteria.Exclude) > 0 {
-				for _, stratExclude := range group.Criteria.Exclude {
-					if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
-						continue groupLoop
-					}
-				}
+			if excludeStrategy(strat, group) {
+				continue
 			}
-			// Include strategies
-			if len(group.Criteria.Strategies) > 0 {
-				for _, stratInclude := range group.Criteria.Strategies {
-					if helpers.ContainsAddress(strat.Addresses, stratInclude) {
-						stratGroup = group
-						break groupLoop
-					}
-				}
-			}
-
-			// Include nameLikes
-			if len(group.Criteria.NameLike) > 0 {
-				for _, nameLike := range group.Criteria.NameLike {
-					if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
-						stratGroup = group
-						break groupLoop
-					}
-				}
+			if includeStrategy(strat, group) || includeNameLike(strat, group) {
+				stratGroup = group
+				break
 			}
 		}
 		// Skip if no group was found

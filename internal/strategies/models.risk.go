@@ -1,4 +1,4 @@
-package models
+package strategies
 
 // TStrategyGroupCriteria is a helper type for parsing the risk framework json
 type TStrategyGroupCritieria struct {

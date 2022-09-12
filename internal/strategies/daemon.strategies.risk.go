@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"math/big"
-	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -14,10 +13,9 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
-	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-func excludeNameLike(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+func excludeNameLike(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
@@ -28,7 +26,7 @@ func excludeNameLike(strat meta.TStrategyFromMeta, group models.TStrategyGroupFr
 	return false
 }
 
-func includeAddress(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+func includeAddress(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Strategies) > 0 {
 		for _, stratInclude := range group.Criteria.Strategies {
 			if helpers.ContainsAddress(strat.Addresses, stratInclude) {
@@ -39,7 +37,7 @@ func includeAddress(strat meta.TStrategyFromMeta, group models.TStrategyGroupFro
 	return false
 }
 
-func includeNameLike(strat meta.TStrategyFromMeta, group models.TStrategyGroupFromRisk) bool {
+func includeNameLike(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.NameLike) > 0 {
 		for _, nameLike := range group.Criteria.NameLike {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
@@ -98,7 +96,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		logs.Warning("Error fetching information from the Risk Framework")
 		return
 	}
-	groups := []models.TStrategyGroupFromRisk{}
+	groups := []TStrategyGroupFromRisk{}
 	if err := json.Unmarshal(content, &groups); err != nil {
 		logs.Warning("Error unmarshalling response body from the Risk Framework")
 		return
@@ -114,7 +112,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		return
 	}
 	for _, strat := range strategies {
-		var stratGroup models.TStrategyGroupFromRisk
+		var stratGroup TStrategyGroupFromRisk
 		for _, group := range groups {
 			if excludeNameLike(strat, group) {
 				continue
@@ -155,18 +153,11 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			Store.StrategiesFromRisk[chainID][addressHex] = strategy
 		}
 	}
-	store.SaveInDBForChainID(`StrategiesFromRisk`, chainID, Store.StrategiesFromRisk[chainID])
 }
 
-// LoadRiskStrategies will reload the risk strategies data store from the last state of the local Badger Database
+// LoadRiskStrategies is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
 func LoadRiskStrategies(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TStrategyFromRisk)
-	if err := store.LoadFromDBForChainID(`StrategiesFromRisk`, chainID, &temp); err != nil {
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		Store.StrategiesFromRisk[chainID] = temp
-		logs.Success("Data loaded for the risk data store for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	_ = chainID
+	wg.Done()
 }

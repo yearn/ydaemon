@@ -32,7 +32,7 @@ jobs:
         go install github.com/rakyll/gotest@latest
         gotest ./...
 
-    - name: Coverage
-      uses: gwatts/go-coverage-action@v1.1.2
-      with:
-        coverage-threshold: 85
+    # - name: Coverage
+    #   uses: gwatts/go-coverage-action@v1.1.2
+    #   with:
+    #     coverage-threshold: 85

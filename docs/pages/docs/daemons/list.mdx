@@ -88,7 +88,7 @@ The Graph is an indexing protocol for querying networks like Ethereum and IPFS. 
 
 ### Prices from Lens
 - **Endpoint**: Lens contract endpoints depends on the selected chain. Address for Mainnet is `0x83d95e0D5f402511dB06817Aff3f9eA88224B030`.   
-- **Description**: Call the `getPriceUsdcRecommended` function withing a multicall for each token supported by the Yearn ecosystem in order to get the USD price of each of them.    
+- **Description**: Call the `getPriceUsdcRecommended` function within a multicall for each token supported by the Yearn ecosystem to get the USD price of each of them.    
 - **Trigger**: The Daemon will refresh the data every **1 minute** to assert the data is up-to-date.  
 - **Automation**: No other automated is performed.  
 
@@ -99,6 +99,6 @@ The Yearn V1 API is built based on the [Yearn Exporter](https://github.com/yearn
 
 ### APY from V1
 - **Endpoint**: `https://api.yearn.finance/v1/chains/:chainID/vaults/all`.   
-- **Description**: The API v1 is called in order to retrieve the APY information for all supported vaults.    
-- **Trigger**: The Daemon will refresh the data every **10 minute** to assert the data is up-to-date. Note that the endpoint is actually updated every 30 minutes.  
+- **Description**: The API v1 is called to retrieve the APY information for all supported vaults.    
+- **Trigger**: The Daemon will refresh the data every **10 minute** to assert the data is up-to-date. Note that the endpoint is updated every 30 minutes.  
 - **Automation**: No other automated is performed.  

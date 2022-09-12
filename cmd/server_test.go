@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"net/http"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/internal/utils/store"
@@ -15,6 +16,7 @@ func TestEnvironment(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	SummonDaemons(1, 0)

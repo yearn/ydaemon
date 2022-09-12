@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"sync"
 	"testing"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -66,6 +67,7 @@ func TestTokens(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}
@@ -133,6 +135,7 @@ func TestStrategies(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}
@@ -200,6 +203,7 @@ func TestVaults(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}
@@ -260,6 +264,7 @@ func TestEnvironment(t *testing.T) {
 
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
+	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}

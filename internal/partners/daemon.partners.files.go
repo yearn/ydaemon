@@ -17,14 +17,14 @@ func FetchPartnersFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/partners/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching meta information from the Yearn Meta API")
+		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
 		return
 	}
 	for _, content := range content {
 		partner := &TPartners{}
 		partnerFromFile := TPartnersFromFile{}
 		if err := json.Unmarshal(content, &partnerFromFile); err != nil {
-			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
 			continue
 		}
 

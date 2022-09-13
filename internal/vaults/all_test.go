@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/store"
@@ -75,6 +76,19 @@ func loadTokensDaemons() {
 	tokens.FetchTokenList(42161)
 	tokens.FetchTokenList(42)
 }
+func loadStrategiesDaemons() {
+	strategies.FetchWithdrawalQueueMulticallData(1)
+	strategies.FetchWithdrawalQueueMulticallData(10)
+	strategies.FetchWithdrawalQueueMulticallData(250)
+	strategies.FetchWithdrawalQueueMulticallData(42161)
+	strategies.FetchWithdrawalQueueMulticallData(42)
+
+	strategies.FetchStrategiesMulticallData(1)
+	strategies.FetchStrategiesMulticallData(10)
+	strategies.FetchStrategiesMulticallData(250)
+	strategies.FetchStrategiesMulticallData(42161)
+	strategies.FetchStrategiesMulticallData(42)
+}
 func loadVaultDaemons() {
 	FetchVaultMulticallData(1)
 	FetchVaultMulticallData(10)
@@ -124,77 +138,78 @@ func TestEnvironment(t *testing.T) {
 	defer store.CloseDB()
 	loadMetaDaemons()
 	loadTokensDaemons()
+	loadStrategiesDaemons()
 
 	//Init the server as non-blocking mode
-	go newRouter().Run()
+	go newRouter().Run(":8082")
 	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	loadVaultDaemons()
 
 	//Testing a valid request for ChainID == 1
-	resp, err := http.Get(`http://localhost:8080/1/vaults/all?skip=1&limit=300&orderBy=id&order=asc`)
+	resp, err := http.Get(`http://localhost:8082/1/vaults/all?skip=1&limit=300&orderBy=id&order=asc`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/vaults/all?strategiesDetails=withDetails&strategiesRisk=withRisk`)
+	resp, err = http.Get(`http://localhost:8082/1/vaults/all?strategiesDetails=withDetails&strategiesRisk=withRisk`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	//Testing a valid request for ChainID == 10
-	resp, err = http.Get(`http://localhost:8080/10/vaults/all`)
+	resp, err = http.Get(`http://localhost:8082/10/vaults/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	//Testing a valid request for ChainID == 250
-	resp, err = http.Get(`http://localhost:8080/250/vaults/all?classification=all&strategiesCondition=invalid`)
+	resp, err = http.Get(`http://localhost:8082/250/vaults/all?classification=all&strategiesCondition=invalid`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	//Testing a valid request for ChainID == 42161
-	resp, err = http.Get(`http://localhost:8080/42161/vaults/all?strategiesCondition=inQueue`)
+	resp, err = http.Get(`http://localhost:8082/42161/vaults/all?strategiesCondition=inQueue`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	//Testing with an invalid chainID
-	resp, err = http.Get(`http://localhost:8080/hello/vaults/all`)
+	resp, err = http.Get(`http://localhost:8082/hello/vaults/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 	//Testing with an not supported chainID
-	resp, err = http.Get(`http://localhost:8080/2/vaults/all`)
+	resp, err = http.Get(`http://localhost:8082/2/vaults/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 	//Testing with one specific vault
-	resp, err = http.Get(`http://localhost:8080/1/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
+	resp, err = http.Get(`http://localhost:8082/1/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/hello/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
+	resp, err = http.Get(`http://localhost:8082/hello/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/vaults/0x3D27705c64213A5DcD9D26880c1BcFa72d5b6B0E`)
+	resp, err = http.Get(`http://localhost:8082/1/vaults/0x3D27705c64213A5DcD9D26880c1BcFa72d5b6B0E`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode) //hideAlways
-	resp, err = http.Get(`http://localhost:8080/1/vaults/0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F`)
+	resp, err = http.Get(`http://localhost:8082/1/vaults/0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 	//Testing the info/vaults/blacklisted route
-	resp, err = http.Get(`http://localhost:8080/info/vaults/blacklisted`)
+	resp, err = http.Get(`http://localhost:8082/info/vaults/blacklisted`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/info/vaults/blacklisted?chainID=10`)
+	resp, err = http.Get(`http://localhost:8082/info/vaults/blacklisted?chainID=10`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	//Testing vaults TVL
-	resp, err = http.Get(`http://localhost:8080/vaults/tvl`)
+	resp, err = http.Get(`http://localhost:8082/vaults/tvl`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/vaults/tvl`)
+	resp, err = http.Get(`http://localhost:8082/1/vaults/tvl`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/100/vaults/tvl`)
+	resp, err = http.Get(`http://localhost:8082/100/vaults/tvl`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 }

@@ -45,7 +45,7 @@ sudo apt install golang #go
 
 ### Nginx configuration
 First, be sure to point your domain name to the API on your DNS configuration.  
-Then, we will setup Nginx. First, navigate to the enable websites with `cd /etc/nginx/sites-enabled`, remove the default configuration with `rm -rf default` and create the one for our API with `nano yearn.server.conf`.  
+Then, we will set up Nginx. First, navigate to the enable websites with `cd /etc/nginx/sites-enabled`, remove the default configuration with `rm -rf default` and create the one for our API with `nano yearn.server.conf`.  
 Add this in your nginx configuration file (`yearn.server.conf`). Be sure to replace `ydaemon.yearn.finance` by your own domain.
 ```perl
 upstream golang {

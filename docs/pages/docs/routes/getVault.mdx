@@ -7,14 +7,14 @@ GET :chainID/vaults/:address
 
 ## What's going on?
 When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about this specific vault from the official Yearn's subgraph.  
-If the address is invalid or the vault does not exists, the `400` error code is returned. Otherwise, the data is merged with:
+If the address is invalid or the vault does not exist, the `400` error code is returned. Otherwise, the data is merged with:
 - The information about the `vaults` from the Yearn Meta API.
 - The information about the `tokens` from the Yearn Meta API.
 - The information about the `strategies` from the Yearn Meta API.
 - The information about the `price` from the Yearn Lens Oracle API.
 - The information about the `apy` from the Yearn API.
 
-All of theses are correctly associated and merged based on the arguments passed to the endpoint, and then returned to the client as a JSON object with the `200` success code.
+All of these are correctly associated and merged based on the arguments passed to the endpoint, and then returned to the client as a JSON object with the `200` success code.
 
 ## Arguments
 #### Params

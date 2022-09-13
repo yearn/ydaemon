@@ -5,7 +5,7 @@ import { execSync } from "child_process";
 const IndexName = "index";
 const DataDirectory = "data/risks/";
 const SchemaDirectory = "data/risks/_config/schema/";
-const OutDirectory = "build";
+const OutDirectory = "build/risks";
 
 const CustomBuildScript = "_build.mjs";
 

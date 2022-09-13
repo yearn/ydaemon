@@ -2,8 +2,8 @@ package strategies
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"math/big"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -91,21 +91,27 @@ func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
 // and store the result to the global variable StrategiesFromRisk for later use.
 func FetchStrategiesFromRisk(chainID uint64) {
 	// Read data from the risk framework json file
-	content, err := ioutil.ReadFile(helpers.BASE_DATA_PATH + "/risks.json")
+	groups := []*TStrategyGroupFromRisk{}
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Warning("Error fetching information from the Risk Framework")
 		return
 	}
-	groups := []TStrategyGroupFromRisk{}
-	if err := json.Unmarshal(content, &groups); err != nil {
-		logs.Warning("Error unmarshalling response body from the Risk Framework")
-		return
+	for _, content := range content {
+		group := &TStrategyGroupFromRisk{}
+		if err := json.Unmarshal(content, group); err != nil {
+			logs.Warning("Error unmarshalling response body from the Risk Framework")
+			return
+		}
+		groups = append(groups, group)
 	}
 
 	// For each strategy in the meta, parse the strategy group scores
 	if Store.StrategiesFromRisk[chainID] == nil {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
+
 	strategies, ok := meta.Store.StrategiesFromMeta[chainID]
 	if !ok {
 		logs.Warning("Error reading meta information from the Yearn Meta Files")
@@ -114,19 +120,18 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	for _, strat := range strategies {
 		var stratGroup TStrategyGroupFromRisk
 		for _, group := range groups {
-			if excludeNameLike(strat, group) {
+			if excludeNameLike(strat, *group) {
 				continue
 			}
-			if includeAddress(strat, group) || includeNameLike(strat, group) {
-				stratGroup = group
+			if includeAddress(strat, *group) || includeNameLike(strat, *group) {
+				stratGroup = *group
 				break
 			}
 		}
 		// Skip if no group was found
-		if stratGroup.GroupID == "" {
+		if stratGroup.Label == "" {
 			break
 		}
-
 		// Loop over addresses
 		for _, address := range strat.Addresses {
 			// Fetch activation and tvl from multicall

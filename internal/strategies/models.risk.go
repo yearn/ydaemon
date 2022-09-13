@@ -8,8 +8,7 @@ type TStrategyGroupCritieria struct {
 }
 
 type TStrategyGroupFromRisk struct {
-	GroupID             string                  `json:"id"`
-	ChainID             uint64                  `json:"network"`
+	Label               string                  `json:"label"`
 	AuditScore          float64                 `json:"auditScore"`
 	CodeReviewScore     float64                 `json:"codeReviewScore"`
 	ComplexityScore     float64                 `json:"complexityScore"`

@@ -82,6 +82,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
+		router.GET(`api/tokens/list`, c.GetTokenList)
 		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokensLegacy)
 		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
 		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)

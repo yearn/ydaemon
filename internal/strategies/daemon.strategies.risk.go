@@ -107,7 +107,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		groups = append(groups, group)
 	}
 
-	// For each strategy in the meta, parse the strategy group scores
+	// Init the store if empty
 	if Store.StrategiesFromRisk[chainID] == nil {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
@@ -117,6 +117,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		logs.Warning("Error reading meta information from the Yearn Meta Files")
 		return
 	}
+
 	for _, strat := range strategies {
 		var stratGroup TStrategyGroupFromRisk
 		for _, group := range groups {

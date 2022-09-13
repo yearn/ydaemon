@@ -30,6 +30,7 @@ type TStrategyMultiCallData struct {
 	EstimatedTotalAssets *big.Int `json:"estimatedTotalAssets"`
 	KeepCRV              *big.Int `json:"keepCRV"`
 	DelegatedAssets      *big.Int `json:"delegatedAssets"`
+	WithdrawalQueueOrder *big.Int `json:"withdrawalQueueOrder"`
 	IsActive             bool     `json:"isActive"`
 }
 

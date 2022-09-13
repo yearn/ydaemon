@@ -133,6 +133,9 @@ func FetchStrategiesMulticallData(chainID uint64) {
 	// First we connect to the multicall client, stored in memory via the initializer.
 	caller := ethereum.MulticallClientForChainID[chainID]
 
+	// As the withdrawal queue is missing in the subgraph, we need, for each strategy, to determine that
+	withdrawQueueForStrategies := Store.WithdrawalQueueMultiCallData[chainID]
+
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
 	for _, strat := range Store.StrategyList[chainID] {
@@ -166,6 +169,10 @@ func FetchStrategiesMulticallData(chainID uint64) {
 		isActive := response[strat.Strategy.String()+`isActive`]
 		keepCRV := response[strat.Strategy.String()+`keepCRV`]
 		delegatedAssets := response[strat.Strategy.String()+`delegatedAssets`]
+		withdrawalQueueOrder, ok := withdrawQueueForStrategies[strat.Strategy]
+		if !ok {
+			withdrawalQueueOrder = -1
+		}
 
 		data := models.TStrategyMultiCallData{
 			CreditAvailable:      big.NewInt(0),
@@ -175,6 +182,7 @@ func FetchStrategiesMulticallData(chainID uint64) {
 			KeepCRV:              big.NewInt(0),
 			DelegatedAssets:      big.NewInt(0),
 			IsActive:             false,
+			WithdrawalQueueOrder: big.NewInt(withdrawalQueueOrder),
 		}
 		if len(creditAvailable0) == 1 {
 			data.CreditAvailable = creditAvailable0[0].(*big.Int)

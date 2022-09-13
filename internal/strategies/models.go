@@ -27,6 +27,7 @@ type TStrategyDetails struct {
 	KeepCRV              uint64   `json:"keepCRV"`
 	DebtRatio            uint64   `json:"debtRatio,omitempty"` // Only > 0.2.2
 	DebtLimit            uint64   `json:"debtLimit"`
+	WithdrawalQueueOrder int64    `json:"withdrawalQueueOrder"`
 	DoHealthCheck        bool     `json:"doHealthCheck"`
 	InQueue              bool     `json:"inQueue"`
 	EmergencyExit        bool     `json:"emergencyExit"`

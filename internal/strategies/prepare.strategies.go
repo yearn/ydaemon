@@ -93,6 +93,7 @@ func BuildStrategies(
 			currentStrategy.Details.TotalGain = helpers.BValueWithFallbackString(multicallData.TotalGain, `0`)
 			currentStrategy.Details.TotalLoss = helpers.BValueWithFallbackString(multicallData.TotalLoss, `0`)
 			currentStrategy.Details.APR = 0.0
+			currentStrategy.Details.WithdrawalQueueOrder = multicallData.WithdrawalQueueOrder.Int64()
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64

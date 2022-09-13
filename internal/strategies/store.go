@@ -14,6 +14,9 @@ type TStore struct {
 
 	// StrategyMultiCallData holds the details about the strategies based on a multicall
 	StrategyMultiCallData map[uint64]map[common.Address]models.TStrategyMultiCallData
+
+	// WithdrawalQueueMultiCallData holds the details about the withdrawalQueue order based on a multicall
+	WithdrawalQueueMultiCallData map[uint64]map[common.Address]int64
 }
 
 // Store holds the data for the partners for each chain.
@@ -23,4 +26,5 @@ func init() {
 	Store.StrategyList = make(map[uint64]map[common.Address]models.TStrategyList)
 	Store.StrategiesFromRisk = make(map[uint64]map[common.Address]models.TStrategyFromRisk)
 	Store.StrategyMultiCallData = make(map[uint64]map[common.Address]models.TStrategyMultiCallData)
+	Store.WithdrawalQueueMultiCallData = make(map[uint64]map[common.Address]int64)
 }

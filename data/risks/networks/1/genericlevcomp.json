@@ -1,0 +1,18 @@
+{
+	"$schema": "risks",
+	"label": "Generic Lev Comp",
+	"codeReviewScore": 2,
+	"testingScore": 2,
+	"auditScore": 4,
+	"protocolSafetyScore": 1,
+	"complexityScore": 5,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": [
+			"genericlevcomp",
+			"genlevcomp"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

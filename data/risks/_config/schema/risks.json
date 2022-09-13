@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "risks.json",
+  "title": "Risk Framework",
+  "description": "Risk framework scores for Yearn strategies",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string"
+    },
+    "codeReviewScore": {
+      "type": "number"
+    },
+    "testingScore": {
+      "type": "number"
+    },
+    "auditScore": {
+      "type": "number"
+    },
+    "protocolSafetyScore": {
+      "type": "number"
+    },
+    "complexityScore": {
+      "type": "number"
+    },
+    "teamKnowledgeScore": {
+      "type": "number"
+    },
+    "criteria": {
+      "type": "object",
+      "required": ["nameLike", "strategies", "exclude"],
+      "properties": {
+        "nameLike": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "strategies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "address"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": ["label", "criteria"]
+}

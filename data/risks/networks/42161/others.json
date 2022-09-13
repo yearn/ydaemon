@@ -1,0 +1,20 @@
+{
+	"$schema": "risks",
+	"label": "Others",
+	"codeReviewScore": 5,
+	"testingScore": 5,
+	"auditScore": 5,
+	"protocolSafetyScore": 5,
+	"complexityScore": 5,
+	"teamKnowledgeScore": 5,
+	"criteria": {
+		"nameLike": [],
+		"strategies": [],
+		"exclude": [
+			"crv",
+			"curve",
+			"curvestakerspell",
+			"stargate"
+		]
+	}
+}

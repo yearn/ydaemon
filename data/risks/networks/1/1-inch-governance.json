@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "1 Inch Governance",
+	"codeReviewScore": 4,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 2,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 5,
+	"criteria": {
+		"nameLike": [
+			"1INCHGovernance"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

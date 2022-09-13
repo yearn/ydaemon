@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Mushroom",
+	"codeReviewScore": 1,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 3,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 5,
+	"criteria": {
+		"nameLike": [
+			"stratmm"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

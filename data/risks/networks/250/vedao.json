@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "ve DAO",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 4,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"vedao"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

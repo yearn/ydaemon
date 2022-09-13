@@ -1,0 +1,19 @@
+{
+	"$schema": "risks",
+	"label": "Single Sided Boosted Pool Balancer",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 4,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": [
+			"SingleSidedBoostedBalancer"
+		],
+		"strategies": [
+			""
+		],
+		"exclude": []
+	}
+}

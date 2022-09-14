@@ -41,8 +41,8 @@ func TestPartners(t *testing.T) {
 	defer store.CloseDB()
 
 	//Init the server as non-blocking mode
-	go newRouter().Run()
-	time.Sleep(3 * time.Second)
+	go newRouter().Run(":8081")
+	time.Sleep(10 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
 	wg := sync.WaitGroup{}
@@ -61,31 +61,31 @@ func TestPartners(t *testing.T) {
 	FetchPartnersFromFiles(42)
 
 	//Testing the a meta paths - Legacy
-	resp, err := http.Get(`http://localhost:8080/partners/count`)
+	resp, err := http.Get(`http://localhost:8081/partners/count`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/partners/all`)
+	resp, err = http.Get(`http://localhost:8081/partners/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/partners/all`)
+	resp, err = http.Get(`http://localhost:8081/1/partners/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/250/partners/all`)
+	resp, err = http.Get(`http://localhost:8081/250/partners/all`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/partners/inverse`)
+	resp, err = http.Get(`http://localhost:8081/1/partners/inverse`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/partners/0x926dF14a23BE491164dCF93f4c468A50ef659D5B`)
+	resp, err = http.Get(`http://localhost:8081/1/partners/0x926dF14a23BE491164dCF93f4c468A50ef659D5B`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/partners/0x926dF14a23BE491164dCF93f4c468A50ef659D5A`)
+	resp, err = http.Get(`http://localhost:8081/1/partners/0x926dF14a23BE491164dCF93f4c468A50ef659D5A`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/1/partners/major`)
+	resp, err = http.Get(`http://localhost:8081/1/partners/major`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8080/250/partners/inverse`)
+	resp, err = http.Get(`http://localhost:8081/250/partners/inverse`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 }

@@ -30,27 +30,29 @@ func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performA
 
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64, delay time.Duration) {
-	var wgPrimary sync.WaitGroup
-	wgPrimary.Add(2)
-	go runDaemon(chainID, &wgPrimary, time.Hour, tokens.FetchTokenList)
-	go runDaemon(chainID, &wgPrimary, time.Hour, strategies.FetchStrategiesList)
-	wgPrimary.Wait()
-
-	var wgSecondary sync.WaitGroup
-	time.Sleep(delay)
-	wgSecondary.Add(9)
-	go runDaemon(chainID, &wgSecondary, 0, meta.FetchVaultsFromMeta)
-	go runDaemon(chainID, &wgSecondary, 0, meta.FetchTokensFromMeta)
-	go runDaemon(chainID, &wgSecondary, 0, meta.FetchStrategiesFromMeta)
-	go runDaemon(chainID, &wgSecondary, 0, meta.FetchProtocolsFromMeta)
-	go runDaemon(chainID, &wgSecondary, 0, partners.FetchPartnersFromFiles)
-	go runDaemon(chainID, &wgSecondary, 10*time.Minute, vaults.FetchVaultMulticallData)
-	go runDaemon(chainID, &wgSecondary, 10*time.Minute, strategies.FetchStrategiesMulticallData)
-	go runDaemon(chainID, &wgSecondary, 10*time.Minute, vaults.FetchVaultsFromV1)
-	go runDaemon(chainID, &wgSecondary, time.Hour, strategies.FetchStrategiesFromRisk)
-	wgSecondary.Wait()
-
 	var wg sync.WaitGroup
+	wg.Add(2)
+	go runDaemon(chainID, &wg, time.Hour, tokens.FetchTokenList)
+	go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
+	wg.Wait()
+
+	wg.Add(1)
+	go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+	wg.Wait()
+
+	time.Sleep(delay)
+	wg.Add(9)
+	go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
+	go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
+	go runDaemon(chainID, &wg, 0, meta.FetchStrategiesFromMeta)
+	go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
+	go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
+	go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultMulticallData)
+	go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
+	go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
+	go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
+	wg.Wait()
+
 	time.Sleep(delay)
 	wg.Add(1)
 	go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
@@ -59,21 +61,23 @@ func SummonDaemons(chainID uint64, delay time.Duration) {
 
 // LoadDaemons is a function that loads the previous store state for a given chainID
 func LoadDaemons(chainID uint64) {
-	var wgPrimary sync.WaitGroup
-	wgPrimary.Add(2)
-	go tokens.LoadTokenList(chainID, &wgPrimary)
-	go strategies.LoadStrategyList(chainID, &wgPrimary)
-	wgPrimary.Wait()
-
-	var wgSecondary sync.WaitGroup
-	wgSecondary.Add(4)
-	go strategies.LoadStrategyMulticallData(chainID, &wgSecondary)
-	go strategies.LoadRiskStrategies(chainID, &wgSecondary)
-	go vaults.LoadVaultMulticallData(chainID, &wgSecondary)
-	go vaults.LoadAPIV1Vaults(chainID, &wgSecondary)
-	wgSecondary.Wait()
-
 	var wg sync.WaitGroup
+	wg.Add(2)
+	go tokens.LoadTokenList(chainID, &wg)
+	go strategies.LoadStrategyList(chainID, &wg)
+	wg.Wait()
+
+	wg.Add(1)
+	go strategies.LoadWithdrawalQueueMulticallData(chainID, &wg)
+	wg.Wait()
+
+	wg.Add(4)
+	go strategies.LoadStrategyMulticallData(chainID, &wg)
+	go strategies.LoadRiskStrategies(chainID, &wg)
+	go vaults.LoadVaultMulticallData(chainID, &wg)
+	go vaults.LoadAPIV1Vaults(chainID, &wg)
+	wg.Wait()
+
 	wg.Add(1)
 	go prices.LoadLens(chainID, &wg)
 	wg.Wait()

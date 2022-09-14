@@ -21,7 +21,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	resp, err := http.Get(helpers.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
 	if err != nil || resp.StatusCode != 200 {
-		logs.Warning("Error fetching meta information from the Yearn Meta API")
+		logs.Warning("Error fetching vaults from V1 for chain", chainID)
 		return
 	}
 
@@ -31,7 +31,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	// Read the response body and store it in the body variable
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logs.Warning("Error reading response body from the Yearn Meta API")
+		logs.Warning("Error unmarshalling response body from the vaults from V1 for chain", chainID)
 		return
 	}
 

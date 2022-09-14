@@ -169,20 +169,20 @@ func FetchStrategiesMulticallData(chainID uint64) {
 		isActive := response[strat.Strategy.String()+`isActive`]
 		keepCRV := response[strat.Strategy.String()+`keepCRV`]
 		delegatedAssets := response[strat.Strategy.String()+`delegatedAssets`]
-		withdrawalQueueOrder, ok := withdrawQueueForStrategies[strat.Strategy]
+		withdrawalQueuePosition, ok := withdrawQueueForStrategies[strat.Strategy]
 		if !ok {
-			withdrawalQueueOrder = -1
+			withdrawalQueuePosition = -1
 		}
 
 		data := models.TStrategyMultiCallData{
-			CreditAvailable:      big.NewInt(0),
-			DebtOutstanding:      big.NewInt(0),
-			ExpectedReturn:       big.NewInt(0),
-			EstimatedTotalAssets: big.NewInt(0),
-			KeepCRV:              big.NewInt(0),
-			DelegatedAssets:      big.NewInt(0),
-			IsActive:             false,
-			WithdrawalQueueOrder: big.NewInt(withdrawalQueueOrder),
+			CreditAvailable:         big.NewInt(0),
+			DebtOutstanding:         big.NewInt(0),
+			ExpectedReturn:          big.NewInt(0),
+			EstimatedTotalAssets:    big.NewInt(0),
+			KeepCRV:                 big.NewInt(0),
+			DelegatedAssets:         big.NewInt(0),
+			IsActive:                false,
+			WithdrawalQueuePosition: big.NewInt(withdrawalQueuePosition),
 		}
 		if len(creditAvailable0) == 1 {
 			data.CreditAvailable = creditAvailable0[0].(*big.Int)

@@ -10,6 +10,7 @@ type TStrategyList struct {
 	Strategy     common.Address
 	Vault        common.Address
 	VaultVersion string
+	Name         string
 }
 
 type TStrategyMultiCallData struct {

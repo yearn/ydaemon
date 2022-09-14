@@ -84,6 +84,15 @@ func BValueWithFallbackUint64(s *big.Int, defaultValue uint64) uint64 {
 	return s.Uint64()
 }
 
+// BValueWithFallbackInt64 is used to return the first value as uint64 if it is
+// not empty, otherwise it returns the second value
+func BValueWithFallbackInt64(s *big.Int, defaultValue int64) int64 {
+	if s == nil {
+		return defaultValue
+	}
+	return s.Int64()
+}
+
 // BValueWithFallbackString is used to return the first value as string if it is
 // not empty, otherwise it returns the second value
 func BValueWithFallbackString(s *big.Int, defaultValue string) string {

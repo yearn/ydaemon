@@ -46,13 +46,17 @@ func SummonDaemons(chainID uint64) {
 	}
 	wg.Wait()
 
-	// This second work group may need the data from the first work group.
-	// They are summoned all at the same time, but once the first work group is done.
+	wg.Add(1)
+	{
+    go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+  }  
+	wg.Wait()
+
 	wg.Add(2)
 	{
 		//Require tokens.FetchTokenList to be done
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultMulticallData)
-		//Require strategies.FetchS to be done
+		//Require strategies.FetchWithdrawalQueueMulticallData to be done
 		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
 	}
 	wg.Wait()
@@ -64,6 +68,7 @@ func SummonDaemons(chainID uint64) {
 		//Require vaults.FetchVaultMulticallData to be done
 		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
 	}
+
 	wg.Wait()
 }
 
@@ -73,6 +78,10 @@ func LoadDaemons(chainID uint64) {
 	wg.Add(2)
 	go tokens.LoadTokenList(chainID, &wg)
 	go strategies.LoadStrategyList(chainID, &wg)
+	wg.Wait()
+
+	wg.Add(1)
+	go strategies.LoadWithdrawalQueueMulticallData(chainID, &wg)
 	wg.Wait()
 
 	wg.Add(3)

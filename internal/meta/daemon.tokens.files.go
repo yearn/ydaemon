@@ -18,14 +18,14 @@ func FetchTokensFromMeta(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, filenames, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/tokens/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching meta information from the Yearn Meta API")
+		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
 		return
 	}
 
 	for index, content := range content {
 		token := TTokenFromMeta{}
 		if err := json.Unmarshal(content, &token); err != nil {
-			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
+			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
 			continue
 		}
 		token.Address = strings.TrimSuffix(filenames[index], `.json`)

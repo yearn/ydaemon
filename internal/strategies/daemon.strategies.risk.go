@@ -9,13 +9,12 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func excludeNameLike(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
+func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
@@ -26,18 +25,11 @@ func excludeNameLike(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk)
 	return false
 }
 
-func includeAddress(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.Strategies) > 0 {
-		for _, stratInclude := range group.Criteria.Strategies {
-			if helpers.ContainsAddress(strat.Addresses, stratInclude) {
-				return true
-			}
-		}
-	}
-	return false
+func includeAddress(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy.String())
 }
 
-func includeNameLike(strat meta.TStrategyFromMeta, group TStrategyGroupFromRisk) bool {
+func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.NameLike) > 0 {
 		for _, nameLike := range group.Criteria.NameLike {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
@@ -112,12 +104,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
 
-	strategies, ok := meta.Store.StrategiesFromMeta[chainID]
-	if !ok {
-		logs.Warning("Error reading meta information from the Yearn Meta Files")
-		return
-	}
-
+	strategies := Store.StrategyList[chainID]
 	for _, strat := range strategies {
 		var stratGroup TStrategyGroupFromRisk
 		for _, group := range groups {
@@ -133,31 +120,28 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		if stratGroup.Label == "" {
 			break
 		}
-		// Loop over addresses
-		for _, address := range strat.Addresses {
-			// Fetch activation and tvl from multicall
-			addressHex := common.HexToAddress(address)
-			data, ok := Store.StrategyMultiCallData[chainID][addressHex]
-			if !ok {
-				logs.Error("Error fetching strategy data from multicall")
-				return
-			}
 
-			// Store strategy to DB
-			strategy := models.TStrategyFromRisk{
-				RiskScores: models.TStrategyFromRiskRiskScores{
-					TVLImpact:           getTVLImpact(data),
-					AuditScore:          stratGroup.AuditScore,
-					CodeReviewScore:     stratGroup.CodeReviewScore,
-					ComplexityScore:     stratGroup.ComplexityScore,
-					LongevityImpact:     getLongevityImpact(data),
-					ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
-					TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
-					TestingScore:        stratGroup.TestingScore,
-				},
-			}
-			Store.StrategiesFromRisk[chainID][addressHex] = strategy
+		// Fetch activation and tvl from multicall
+		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
+		if !ok {
+			logs.Error("Error fetching strategy data from multicall")
+			return
 		}
+
+		// Store strategy to DB
+		strategy := models.TStrategyFromRisk{
+			RiskScores: models.TStrategyFromRiskRiskScores{
+				TVLImpact:           getTVLImpact(data),
+				AuditScore:          stratGroup.AuditScore,
+				CodeReviewScore:     stratGroup.CodeReviewScore,
+				ComplexityScore:     stratGroup.ComplexityScore,
+				LongevityImpact:     getLongevityImpact(data),
+				ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
+				TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
+				TestingScore:        stratGroup.TestingScore,
+			},
+		}
+		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 	}
 }
 

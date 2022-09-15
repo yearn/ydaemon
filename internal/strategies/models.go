@@ -36,7 +36,7 @@ type TStrategyDetails struct {
 
 // TStrategyRisk contains the details on the risk about a strategy.
 type TStrategyRisk struct {
-	RiskGroup           string `json:"RiskGroup"`
+	RiskGroup           string `json:"riskGroup"`
 	TVLImpact           int    `json:"TVLImpact"`
 	AuditScore          int    `json:"auditScore"`
 	CodeReviewScore     int    `json:"codeReviewScore"`

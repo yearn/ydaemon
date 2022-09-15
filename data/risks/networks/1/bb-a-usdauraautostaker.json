@@ -1,15 +1,15 @@
 {
 	"$schema": "risks",
-    "label": "BB-A-USD Aura Auto Staker",
-    "codeReviewScore": 3,
-    "testingScore": 3,
-    "auditScore": 4,
-    "protocolSafetyScore": 4,
-    "complexityScore": 3,
-    "teamKnowledgeScore": 3,
+	"label": "BB-A-USD Aura Auto Staker",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 4,
+	"protocolSafetyScore": 4,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 3,
 	"criteria": {
 		"nameLike": [
-            "bb-a-usd aura auto staker"
+			"bb-a-usd aura auto staker"
 		],
 		"strategies": [],
 		"exclude": []

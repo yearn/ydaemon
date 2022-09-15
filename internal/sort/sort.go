@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
-func SortBy(jsonField string, sortOrder string, arr []interface{}) {
+func SortBy(arr []interface{}, jsonField string, sortOrder string) {
 	valueType := reflect.TypeOf(arr[0])
 	jsonFields := strings.Split(jsonField, ".")
 	jsonFieldsLen := len(jsonFields)

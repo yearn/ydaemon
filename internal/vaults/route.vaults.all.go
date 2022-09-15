@@ -83,7 +83,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	}
 	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "details.order")
 	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "asc")
-	sort.SortBy(orderBy, orderDirection, sortedData) //Sort by details.order by default
+	sort.SortBy(sortedData, orderBy, orderDirection) //Sort by details.order by default
 
 	c.JSON(http.StatusOK, sortedData)
 }

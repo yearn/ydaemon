@@ -24,7 +24,10 @@ func FetchStrategiesList(chainID uint64) {
 			vaults(first: 1000) {
 				id
 				apiVersion
-				strategies(first: 40) {address}
+				strategies(first: 40) {
+					address
+					name
+				}
 			}
         }
     `)
@@ -40,6 +43,7 @@ func FetchStrategiesList(chainID uint64) {
 				Strategy:     common.HexToAddress(strat.Address),
 				Vault:        common.HexToAddress(vault.Id),
 				VaultVersion: vault.ApiVersion,
+				Name:         strat.Name,
 			}
 		}
 	}

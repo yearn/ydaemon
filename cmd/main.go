@@ -3,7 +3,6 @@ package main
 import (
 	"strconv"
 	"sync"
-	"time"
 
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
@@ -14,17 +13,17 @@ var chains = helpers.SUPPORTED_CHAIN_IDS
 
 // var chains = []uint64{1}
 
-func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64, delay time.Duration) {
-	SummonDaemons(chainID, delay)
+func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
+	SummonDaemons(chainID)
 	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
 	wg.Done()
 }
 
 func summonDaemonsForAllChains() {
 	var wg sync.WaitGroup
-	for index, chainID := range chains {
+	for _, chainID := range chains {
 		wg.Add(1)
-		go waitGroupSummonDaemons(&wg, chainID, time.Duration(index))
+		go waitGroupSummonDaemons(&wg, chainID)
 	}
 	wg.Wait()
 }

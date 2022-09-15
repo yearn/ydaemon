@@ -29,33 +29,46 @@ func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performA
 }
 
 // SummonDaemons is a function that summons the daemons for a given chainID.
-func SummonDaemons(chainID uint64, delay time.Duration) {
+func SummonDaemons(chainID uint64) {
 	var wg sync.WaitGroup
+	// This first work group does not need any other data to be able to work.
+	// They can all be summoned at the same time, with no dependencies.
+	wg.Add(8)
+	{
+		go runDaemon(chainID, &wg, time.Hour, tokens.FetchTokenList)
+		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
+		go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
+		go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
+		go runDaemon(chainID, &wg, 0, meta.FetchStrategiesFromMeta)
+		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
+		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
+		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
+	}
+	wg.Wait()
+
+	wg.Add(1)
+	{
+    go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+  }  
+	wg.Wait()
+
 	wg.Add(2)
-	go runDaemon(chainID, &wg, time.Hour, tokens.FetchTokenList)
-	go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
+	{
+		//Require tokens.FetchTokenList to be done
+		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultMulticallData)
+		//Require strategies.FetchWithdrawalQueueMulticallData to be done
+		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
+	}
 	wg.Wait()
 
-	wg.Add(1)
-	go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
-	wg.Wait()
+	wg.Add(2)
+	{
+		//Require strategies.FetchStrategiesMulticallData to be done
+		go runDaemon(chainID, &wg, 0, strategies.FetchStrategiesFromRisk)
+		//Require vaults.FetchVaultMulticallData to be done
+		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
+	}
 
-	time.Sleep(delay)
-	wg.Add(9)
-	go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
-	go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
-	go runDaemon(chainID, &wg, 0, meta.FetchStrategiesFromMeta)
-	go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
-	go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
-	go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultMulticallData)
-	go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
-	go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
-	go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
-	wg.Wait()
-
-	time.Sleep(delay)
-	wg.Add(1)
-	go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
 	wg.Wait()
 }
 
@@ -71,9 +84,8 @@ func LoadDaemons(chainID uint64) {
 	go strategies.LoadWithdrawalQueueMulticallData(chainID, &wg)
 	wg.Wait()
 
-	wg.Add(4)
+	wg.Add(3)
 	go strategies.LoadStrategyMulticallData(chainID, &wg)
-	go strategies.LoadRiskStrategies(chainID, &wg)
 	go vaults.LoadVaultMulticallData(chainID, &wg)
 	go vaults.LoadAPIV1Vaults(chainID, &wg)
 	wg.Wait()

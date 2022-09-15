@@ -2,67 +2,170 @@ package strategies
 
 import (
 	"encoding/json"
-	"io/ioutil"
-	"net/http"
+	"math/big"
 	"strconv"
+	"strings"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
-	"github.com/yearn/ydaemon/internal/utils/store"
 )
+
+func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+	if len(group.Criteria.Exclude) > 0 {
+		for _, stratExclude := range group.Criteria.Exclude {
+			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func includeAddress(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy.String())
+}
+
+func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+	if len(group.Criteria.NameLike) > 0 {
+		for _, nameLike := range group.Criteria.NameLike {
+			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func getTVLImpact(strategyData models.TStrategyMultiCallData) float64 {
+	tvl := strategyData.EstimatedTotalAssets.Int64()
+	switch {
+	case tvl == 0:
+		return 0
+	case tvl < 1_000_000:
+		return 1
+	case tvl < 10_000_000:
+		return 2
+	case tvl < 50_000_000:
+		return 3
+	case tvl < 100_000_000:
+		return 4
+	default:
+		return 5
+	}
+}
+
+func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
+	if strategyData.Activation == nil || strategyData.Activation == big.NewInt(0) {
+		return 5
+	}
+	activation := time.Unix(strategyData.Activation.Int64(), 0)
+	longevity := time.Since(activation)
+	days := time.Hour * 24
+	switch {
+	case longevity > 240*days:
+		return 1
+	case longevity > 120*days:
+		return 2
+	case longevity > 30*days:
+		return 3
+	case longevity > 7*days:
+		return 4
+	default:
+		return 5
+	}
+}
 
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID
 // and store the result to the global variable StrategiesFromRisk for later use.
 func FetchStrategiesFromRisk(chainID uint64) {
-	// Get the information from the Risk Framework
+	// Read data from the risk framework json file
+	groups := []*TStrategyGroupFromRisk{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(helpers.RISK_BASE_URL + chainIDStr)
+	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Error("Error fetching information from the Risk Framework", err)
+		logs.Warning("Error fetching information from the Risk Framework")
 		return
 	}
-
-	// Defer the closing of the response body to avoid memory leaks
-	defer resp.Body.Close()
-
-	// Read the response body and store it in the body variable
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error("Error reading response body from the Risk Framework", err)
-		return
+	for _, content := range content {
+		group := &TStrategyGroupFromRisk{}
+		if err := json.Unmarshal(content, group); err != nil {
+			logs.Warning("Error unmarshalling response body from the Risk Framework")
+			return
+		}
+		groups = append(groups, group)
 	}
 
-	// Unmarshal the response body into the variable StrategiesFromRisk. Body is a byte array,
-	// with this manipulation we are putting it in the correct TStrategyFromRisk struct format
-	strategies := make(map[common.Address]models.TStrategyFromRisk)
-	if err := json.Unmarshal(body, &strategies); err != nil {
-		logs.Error("Error unmarshalling response body from the Risk Framework", err)
-		return
-	}
-
-	// To provide faster access to the data, we index the mapping by the vault address, aka
-	// {[vaultAddress]: TStrategyFromRisk} if we were working with JS/TS
+	// Init the store if empty
 	if Store.StrategiesFromRisk[chainID] == nil {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
-	for address, strategy := range strategies {
-		Store.StrategiesFromRisk[chainID][address] = strategy
-	}
-	store.SaveInDBForChainID(`StrategiesFromRisk`, chainID, Store.StrategiesFromRisk[chainID])
-}
 
-// LoadRiskStrategies will reload the risk strategies data store from the last state of the local Badger Database
-func LoadRiskStrategies(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TStrategyFromRisk)
-	if err := store.LoadFromDBForChainID(`StrategiesFromRisk`, chainID, &temp); err != nil {
+	strategies, ok := Store.StrategyList[chainID]
+	if !ok {
+		logs.Warning("Error reading strategyList information")
 		return
 	}
-	if temp != nil && (len(temp) > 0) {
-		Store.StrategiesFromRisk[chainID] = temp
-		logs.Success("Data loaded for the risk data store for chainID: " + strconv.FormatUint(chainID, 10))
+	for _, strat := range strategies {
+		var stratGroup TStrategyGroupFromRisk
+		for _, group := range groups {
+			if excludeNameLike(strat, *group) {
+				continue
+			}
+			if includeAddress(strat, *group) || includeNameLike(strat, *group) {
+				stratGroup = *group
+				break
+			}
+		}
+
+		// Fetch activation and tvl from multicall
+		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
+		if !ok {
+			logs.Error("Error fetching strategy data from multicall")
+			return
+		}
+
+		// Send to Others group if no group was found
+		var strategy models.TStrategyFromRisk
+		if stratGroup.Label == "" {
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: "Others",
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           getTVLImpact(data),
+					AuditScore:          5,
+					CodeReviewScore:     5,
+					ComplexityScore:     5,
+					LongevityImpact:     getLongevityImpact(data),
+					ProtocolSafetyScore: 5,
+					TeamKnowledgeScore:  5,
+					TestingScore:        5,
+				},
+			}
+		} else {
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: stratGroup.Label,
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           getTVLImpact(data),
+					AuditScore:          stratGroup.AuditScore,
+					CodeReviewScore:     stratGroup.CodeReviewScore,
+					ComplexityScore:     stratGroup.ComplexityScore,
+					LongevityImpact:     getLongevityImpact(data),
+					ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
+					TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
+					TestingScore:        stratGroup.TestingScore,
+				},
+			}
+		}
+		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 	}
+}
+
+// LoadRiskStrategies is kept in order to have the same behavior everywhere, but as the data
+// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
+func LoadRiskStrategies(chainID uint64, wg *sync.WaitGroup) {
+	_ = chainID
+	wg.Done()
 }

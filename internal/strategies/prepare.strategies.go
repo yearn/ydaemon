@@ -36,10 +36,6 @@ func BuildStrategies(
 		if !ok {
 			multicallData = models.TStrategyMultiCallData{}
 		}
-		riskData, ok := strategiesFromRisk[common.HexToAddress(strategy.Address)]
-		if !ok {
-			riskData = models.TStrategyFromRisk{}
-		}
 
 		currentStrategy := TStrategy{
 			Address:     common.HexToAddress(strategy.Address).String(),
@@ -114,7 +110,13 @@ func BuildStrategies(
 
 		//Compute the risk data
 		if withStrategiesRisk {
+			riskData, ok := strategiesFromRisk[common.HexToAddress(strategy.Address)]
+			if !ok {
+				riskData = models.TStrategyFromRisk{}
+			}
+
 			currentStrategy.Risk = &TStrategyRisk{}
+			currentStrategy.Risk.RiskGroup = riskData.RiskGroup
 			currentStrategy.Risk.TVLImpact = int(riskData.RiskScores.TVLImpact)
 			currentStrategy.Risk.AuditScore = int(riskData.RiskScores.AuditScore)
 			currentStrategy.Risk.CodeReviewScore = int(riskData.RiskScores.CodeReviewScore)

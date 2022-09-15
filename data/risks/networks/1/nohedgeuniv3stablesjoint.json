@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "NoHedgeUniV3StablesJoint",
+	"codeReviewScore": 2,
+	"testingScore": 3,
+	"auditScore": 5,
+	"protocolSafetyScore": 1,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 4,
+	"criteria": {
+		"nameLike": [
+			"NoHedgeUniV3StablesJoint"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

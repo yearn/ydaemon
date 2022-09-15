@@ -1,0 +1,20 @@
+{
+	"$schema": "risks",
+	"label": "AAVE Lender Borrower",
+	"codeReviewScore": 1,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 1,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": [
+			"aave",
+			"borrower"
+		],
+		"strategies": [],
+		"exclude": [
+			"Levered-AAVE-wBTC"
+		]
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "risks",
+	"label": "Curve",
+	"codeReviewScore": 4,
+	"testingScore": 3,
+	"auditScore": 2,
+	"protocolSafetyScore": 1,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 1,
+	"criteria": {
+		"nameLike": [
+			"crv",
+			"curve"
+		],
+		"strategies": [],
+		"exclude": [
+			"geist"
+		]
+	}
+}

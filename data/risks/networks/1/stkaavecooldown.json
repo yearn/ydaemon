@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "StkAave Cooldown",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 5,
+	"protocolSafetyScore": 1,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": [
+			"StkAaveCooldown"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

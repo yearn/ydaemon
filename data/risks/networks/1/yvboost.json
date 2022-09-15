@@ -1,0 +1,19 @@
+{
+	"$schema": "risks",
+	"label": "yvBoost",
+	"codeReviewScore": 4,
+	"testingScore": 3,
+	"auditScore": 2,
+	"protocolSafetyScore": 1,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 1,
+	"criteria": {
+		"nameLike": [
+			"StrategyYearnVECRV"
+		],
+		"strategies": [
+			"0x2923a58c1831205C854DBEa001809B194FDb3Fa5"
+		],
+		"exclude": []
+	}
+}

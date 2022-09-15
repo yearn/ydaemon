@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "PoolTogether",
+	"codeReviewScore": 2,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 3,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 5,
+	"criteria": {
+		"nameLike": [
+			"pooltogether"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

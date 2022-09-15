@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Single Asset Solidex LP",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 5,
+	"protocolSafetyScore": 3,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"veLp_Solidex"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

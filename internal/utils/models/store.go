@@ -10,6 +10,7 @@ type TStrategyList struct {
 	Strategy     common.Address
 	Vault        common.Address
 	VaultVersion string
+	Name         string
 }
 
 type TStrategyMultiCallData struct {
@@ -44,18 +45,12 @@ type TStrategyFromRiskRiskScores struct {
 	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
 	TestingScore        float64 `json:"testingScore"`
 }
-type TStrategyFromRiskRiskProfile struct {
-	High   float64 `json:"high"`
-	Low    float64 `json:"low"`
-	Median float64 `json:"median"`
-}
 type TStrategyFromRisk struct {
-	RiskScores  TStrategyFromRiskRiskScores  `json:"riskScores"`
-	RiskProfile TStrategyFromRiskRiskProfile `json:"riskProfile"`
-	Tokens      []string                     `json:"tokens"`
+	RiskGroup  string                      `json:"riskGroup"`
+	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
 }
 
-//TERC20Token contains the basic information of an ERC20 token
+// TERC20Token contains the basic information of an ERC20 token
 type TERC20Token struct {
 	Address                common.Address `json:"address"`
 	UnderlyingTokenAddress common.Address `json:"underlyingTokenAddress,omitempty"`

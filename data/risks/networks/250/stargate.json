@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Stargate",
+	"codeReviewScore": 2,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 4,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"stargate"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

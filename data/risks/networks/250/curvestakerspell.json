@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Curve Staker Spell",
+	"codeReviewScore": 3,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 4,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"curvestakerspell"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

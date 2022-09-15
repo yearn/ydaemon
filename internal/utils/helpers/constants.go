@@ -23,9 +23,6 @@ var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../../data/`)
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 
-// RISK_BASE_URL is the base URL to access the risk framework
-var RISK_BASE_URL = `https://d3971bp2359cnv.cloudfront.net/api/strategies/`
-
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 

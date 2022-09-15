@@ -1,0 +1,18 @@
+{
+	"$schema": "risks",
+	"label": "Idle",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 2,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 4,
+	"criteria": {
+		"nameLike": [
+			"StrategyIdleV2",
+			"idle"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

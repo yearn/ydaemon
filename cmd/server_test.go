@@ -19,10 +19,10 @@ func TestEnvironment(t *testing.T) {
 	time.Sleep(3 * time.Second)
 
 	//Init the daemons as blocking mode: we want to wait for them to complete before we continue
-	SummonDaemons(1, 0)
-	SummonDaemons(10, 0)
-	SummonDaemons(250, 0)
-	SummonDaemons(42161, 0)
+	SummonDaemons(1)
+	SummonDaemons(10)
+	SummonDaemons(250)
+	SummonDaemons(42161)
 
 	//Testing the reports endpoint
 	resp, err := http.Get(`http://localhost:8080/250/reports/0xb99d6662127d9A3c68Bc949679f364E1739E2CA1`)

@@ -3,12 +3,12 @@ package vaults
 import (
 	"context"
 	"net/http"
-	"sort"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/sort"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
@@ -16,23 +16,19 @@ import (
 )
 
 func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
-	skip := helpers.ValueWithFallback(c.Query("skip"), "0")
-	first := helpers.ValueWithFallback(c.Query("first"), "1000")
-	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "desc")
-	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "activation")
 	withDetails := helpers.ValueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
 	onlyEndorsed := helpers.ValueWithFallback(c.Query("classification"), "endorsed") == "endorsed"
 
 	if onlyEndorsed {
 		return graphql.NewRequest(`{
-			vaults(where: {classification: Endorsed}, skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
+			vaults(where: {classification: Endorsed}, first: 1000) {
 				` + helpers.GetGraphRequestVault() + `
 				` + helpers.GetGraphRequestStrategies(40, withDetails) + `
 			}
 		}`)
 	}
 	return graphql.NewRequest(`{
-		vaults(skip: ` + skip + `, first: ` + first + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `) {
+		vaults(first: 1000) {
 			` + helpers.GetGraphRequestVault() + `
 			` + helpers.GetGraphRequestStrategies(40, withDetails) + `
 		}
@@ -56,7 +52,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 
-	data := []*TVault{}
+	data := []TVault{}
 	for _, vaultFromGraph := range response.Vaults {
 		vaultAddress := common.HexToAddress(vaultFromGraph.Id)
 		if helpers.ContainsAddress(helpers.BLACKLISTED_VAULTS[chainID], vaultAddress) {
@@ -71,7 +67,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 		withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 
-		data = append(data, prepareVaultSchema(
+		data = append(data, *prepareVaultSchema(
 			chainID,
 			strategiesCondition,
 			withStrategiesRisk,
@@ -80,9 +76,14 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		))
 	}
 
-	sort.Slice(data, func(i, j int) bool {
-		return data[i].Details.Order < data[j].Details.Order
-	})
+	// Preparing the sort. This specifics steps are needed to avoid a panic
+	var sortedData []interface{} = make([]interface{}, len(data))
+	for i, d := range data {
+		sortedData[i] = d
+	}
+	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "details.order")
+	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "asc")
+	sort.SortBy(orderBy, orderDirection, sortedData) //Sort by details.order by default
 
-	c.JSON(http.StatusOK, data)
+	c.JSON(http.StatusOK, sortedData)
 }

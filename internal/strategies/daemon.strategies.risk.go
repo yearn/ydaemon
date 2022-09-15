@@ -104,7 +104,11 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
 	}
 
-	strategies := Store.StrategyList[chainID]
+	strategies, ok := Store.StrategyList[chainID]
+	if !ok {
+		logs.Warning("Error reading strategyList information")
+		return
+	}
 	for _, strat := range strategies {
 		var stratGroup TStrategyGroupFromRisk
 		for _, group := range groups {

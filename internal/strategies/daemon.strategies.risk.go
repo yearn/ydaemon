@@ -116,10 +116,6 @@ func FetchStrategiesFromRisk(chainID uint64) {
 				break
 			}
 		}
-		// Skip if no group was found
-		if stratGroup.Label == "" {
-			break
-		}
 
 		// Fetch activation and tvl from multicall
 		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
@@ -128,18 +124,36 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			return
 		}
 
-		// Store strategy to DB
-		strategy := models.TStrategyFromRisk{
-			RiskScores: models.TStrategyFromRiskRiskScores{
-				TVLImpact:           getTVLImpact(data),
-				AuditScore:          stratGroup.AuditScore,
-				CodeReviewScore:     stratGroup.CodeReviewScore,
-				ComplexityScore:     stratGroup.ComplexityScore,
-				LongevityImpact:     getLongevityImpact(data),
-				ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
-				TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
-				TestingScore:        stratGroup.TestingScore,
-			},
+		// Send to Others group if no group was found
+		var strategy models.TStrategyFromRisk
+		if stratGroup.Label == "" {
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: "Others",
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           getTVLImpact(data),
+					AuditScore:          5,
+					CodeReviewScore:     5,
+					ComplexityScore:     5,
+					LongevityImpact:     getLongevityImpact(data),
+					ProtocolSafetyScore: 5,
+					TeamKnowledgeScore:  5,
+					TestingScore:        5,
+				},
+			}
+		} else {
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: stratGroup.Label,
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           getTVLImpact(data),
+					AuditScore:          stratGroup.AuditScore,
+					CodeReviewScore:     stratGroup.CodeReviewScore,
+					ComplexityScore:     stratGroup.ComplexityScore,
+					LongevityImpact:     getLongevityImpact(data),
+					ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
+					TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
+					TestingScore:        stratGroup.TestingScore,
+				},
+			}
 		}
 		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 	}

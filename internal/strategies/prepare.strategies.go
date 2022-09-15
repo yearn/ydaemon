@@ -116,6 +116,7 @@ func BuildStrategies(
 			}
 
 			currentStrategy.Risk = &TStrategyRisk{}
+			currentStrategy.Risk.RiskGroup = riskData.RiskGroup
 			currentStrategy.Risk.TVLImpact = int(riskData.RiskScores.TVLImpact)
 			currentStrategy.Risk.AuditScore = int(riskData.RiskScores.AuditScore)
 			currentStrategy.Risk.CodeReviewScore = int(riskData.RiskScores.CodeReviewScore)

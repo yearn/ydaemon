@@ -46,6 +46,7 @@ type TStrategyFromRiskRiskScores struct {
 	TestingScore        float64 `json:"testingScore"`
 }
 type TStrategyFromRisk struct {
+	RiskGroup  string                      `json:"riskGroup"`
 	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
 }
 

@@ -36,14 +36,15 @@ type TStrategyDetails struct {
 
 // TStrategyRisk contains the details on the risk about a strategy.
 type TStrategyRisk struct {
-	TVLImpact           int `json:"TVLImpact"`
-	AuditScore          int `json:"auditScore"`
-	CodeReviewScore     int `json:"codeReviewScore"`
-	ComplexityScore     int `json:"complexityScore"`
-	LongevityImpact     int `json:"longevityImpact"`
-	ProtocolSafetyScore int `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
-	TestingScore        int `json:"testingScore"`
+	RiskGroup           string `json:"RiskGroup"`
+	TVLImpact           int    `json:"TVLImpact"`
+	AuditScore          int    `json:"auditScore"`
+	CodeReviewScore     int    `json:"codeReviewScore"`
+	ComplexityScore     int    `json:"complexityScore"`
+	LongevityImpact     int    `json:"longevityImpact"`
+	ProtocolSafetyScore int    `json:"protocolSafetyScore"`
+	TeamKnowledgeScore  int    `json:"teamKnowledgeScore"`
+	TestingScore        int    `json:"testingScore"`
 }
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.

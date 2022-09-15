@@ -106,5 +106,5 @@ type TVault struct {
 	APY                TAPY                   `json:"apy"`
 	Strategies         []strategies.TStrategy `json:"strategies"`
 	Migration          TMigration             `json:"migration"`
-	Details            *TVaultDetails         `json:"details,omitempty"`
+	Details            *TVaultDetails         `json:"details"`
 }

@@ -4,6 +4,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/yearn/ydaemon/internal/allocation"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
 	"github.com/yearn/ydaemon/internal/prices"
@@ -43,6 +44,7 @@ func SummonDaemons(chainID uint64) {
 		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
+		go runDaemon(chainID, &wg, 0, allocation.FetchAllocations)
 	}
 	wg.Wait()
 

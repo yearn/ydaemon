@@ -1,8 +1,10 @@
 package meta
 
+import "github.com/yearn/ydaemon/internal/utils/models"
+
 type Controller struct{}
 
-func selectLocalizationFromString(s string, loc TLocalization) TLocalizationDetails {
+func selectLocalizationFromString(s string, loc models.TLocalization) models.TLocalizationDetails {
 	switch s {
 	case `en`:
 		return loc.En

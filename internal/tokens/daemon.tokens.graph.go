@@ -51,6 +51,13 @@ func FetchTokenList(chainID uint64) {
 		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
 		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
 
+		token := &TERC20Token{
+			Address:  common.HexToAddress(vault.Token.Id),
+			Decimals: vault.Token.Decimals,
+			Name:     vault.Token.Name,
+			Symbol:   vault.Token.Symbol,
+			IsVault:  false,
+		}
 		if helpers.AddressIsValid(common.HexToAddress(vault.ShareToken.Id), chainID) {
 			tokenData[common.HexToAddress(vault.ShareToken.Id)] = &TERC20Token{
 				Address:                common.HexToAddress(vault.ShareToken.Id),
@@ -62,15 +69,13 @@ func FetchTokenList(chainID uint64) {
 			}
 		}
 		if helpers.AddressIsValid(common.HexToAddress(vault.Token.Id), chainID) {
-			tokenData[common.HexToAddress(vault.Token.Id)] = &TERC20Token{
-				Address:  common.HexToAddress(vault.Token.Id),
-				Decimals: vault.Token.Decimals,
-				Name:     vault.Token.Name,
-				Symbol:   vault.Token.Symbol,
-				IsVault:  false,
-			}
+			tokenData[common.HexToAddress(vault.Token.Id)] = token
 		}
+
+		tokenData[common.HexToAddress(vault.Token.Id)] = token
+		Store.VaultToToken[chainID][common.HexToAddress(vault.Id)] = token
 	}
+
 	Store.Tokens[chainID] = tokenData
 	Store.TokenList[chainID] = helpers.UniqueArrayAddress(tokenList)
 	store.SaveInDBForChainID(`TokenData`, chainID, Store.Tokens[chainID])

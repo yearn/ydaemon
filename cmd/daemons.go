@@ -4,6 +4,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/yearn/ydaemon/internal/allocation"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
 	"github.com/yearn/ydaemon/internal/prices"
@@ -43,13 +44,14 @@ func SummonDaemons(chainID uint64) {
 		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
+		go runDaemon(chainID, &wg, 0, allocation.FetchAllocations)
 	}
 	wg.Wait()
 
 	wg.Add(1)
 	{
-    go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
-  }  
+		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+	}
 	wg.Wait()
 
 	wg.Add(2)
@@ -67,6 +69,11 @@ func SummonDaemons(chainID uint64) {
 		go runDaemon(chainID, &wg, 0, strategies.FetchStrategiesFromRisk)
 		//Require vaults.FetchVaultMulticallData to be done
 		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
+	}
+	wg.Add(1)
+	{
+		//Require strategies.FetchStrategiesFromRisk to be done
+		go runDaemon(chainID, &wg, 10*time.Minute, allocation.FetchAllocations)
 	}
 
 	wg.Wait()

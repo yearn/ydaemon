@@ -83,7 +83,6 @@ func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
 // and store the result to the global variable StrategiesFromRisk for later use.
 func FetchStrategiesFromRisk(chainID uint64) {
 	// Read data from the risk framework json file
-	groups := []*TStrategyGroupFromRisk{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
@@ -96,8 +95,9 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			logs.Warning("Error unmarshalling response body from the Risk Framework")
 			return
 		}
-		groups = append(groups, group)
+		Store.StrategyGroupFromRisk[chainID] = append(Store.StrategyGroupFromRisk[chainID], group)
 	}
+	groups := Store.StrategyGroupFromRisk[chainID]
 
 	// Init the store if empty
 	if Store.StrategiesFromRisk[chainID] == nil {
@@ -110,17 +110,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		return
 	}
 	for _, strat := range strategies {
-		var stratGroup TStrategyGroupFromRisk
-		for _, group := range groups {
-			if excludeNameLike(strat, *group) {
-				continue
-			}
-			if includeAddress(strat, *group) || includeNameLike(strat, *group) {
-				stratGroup = *group
-				break
-			}
-		}
-
+		var stratGroup = GetStrategyGroupsFromStrategy(strat, groups)[0]
 		// Fetch activation and tvl from multicall
 		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
 		if !ok {

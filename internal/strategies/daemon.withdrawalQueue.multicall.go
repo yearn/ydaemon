@@ -56,7 +56,7 @@ func FetchWithdrawalQueueMulticallData(chainID uint64) {
 			result := response[vault.String()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
 			if len(result) == 1 {
 				strategyAddress := result[0].(common.Address)
-				if (strategyAddress != common.Address{}) {
+				if helpers.AddressIsValid(strategyAddress, chainID) {
 					withdrawQueueForStrategies[strategyAddress] = int64(i)
 				}
 			}

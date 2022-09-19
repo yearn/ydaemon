@@ -8,7 +8,9 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
+	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -111,6 +113,20 @@ func NewRouter() *gin.Engine {
 		router.GET(`partners/all`, c.GetAllPartners)
 		router.GET(`:chainID/partners/all`, c.GetPartners)
 		router.GET(`:chainID/partners/:addressOrName`, c.GetPartner)
+	}
+
+	// Tokens API section
+	{
+		c := tokens.Controller{}
+		router.GET(`tokens/all`, c.GetAllTokens)
+		router.GET(`:chainID/tokens/all`, c.GetTokens)
+	}
+
+	// Prices API section
+	{
+		c := prices.Controller{}
+		router.GET(`prices/all`, c.GetAllPrices)
+		router.GET(`:chainID/prices/all`, c.GetPrices)
 	}
 
 	return router

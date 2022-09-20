@@ -1,4 +1,4 @@
-package meta
+package tokens
 
 import "github.com/yearn/ydaemon/internal/utils/models"
 

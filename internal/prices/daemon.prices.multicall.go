@@ -112,6 +112,10 @@ func setCurveFactoriesPrices(chainID uint64) {
 		if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
 			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
 				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+
+				//Store the price in the token struct
+				humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
+				tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
 			}
 		}
 	}
@@ -124,21 +128,29 @@ func setMissingYearnVaultPrices(chainID uint64) {
 	allVaultsData := tokens.Store.Tokens[chainID]
 
 	for key, value := range Store.TokenPrices[chainID] {
-		if value.Cmp(big.NewInt(0)) == 0 {
-			if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
-				pricePerShare := Store.VaultPricePerShare[chainID][key]
+		if helpers.AddressIsValid(key, chainID) {
+			if value.Cmp(big.NewInt(0)) == 0 {
+				if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
+					pricePerShare := Store.VaultPricePerShare[chainID][key]
 
-				//pricePerShare is ^18, we need to convert to ^6
-				pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
+					//pricePerShare is ^18, we need to convert to ^6
+					pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
 
-				underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
-				underlyingTokenPrice := Store.TokenPrices[chainID][underlyingTokenAddress]
-				vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
-				if vaultValue.Cmp(big.NewInt(0)) == 0 {
-					// logs.Info(chainID, key.String()+`: `+value.String())
-					continue
+					underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
+					underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
+					if ok && underlyingTokenPrice.Cmp(big.NewInt(0)) != 0 {
+						vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
+						vaultValue = vaultValue.Div(vaultValue, big.NewInt(1e6))
+						if vaultValue.Cmp(big.NewInt(0)) == 0 {
+							// logs.Info(chainID, key.String()+`: `+value.String())
+							continue
+						}
+						Store.TokenPrices[chainID][key] = vaultValue
+						//Store the price in the token struct
+						humanizedPrice, _ := helpers.FormatAmount(vaultValue.String(), 6)
+						tokens.Store.Tokens[chainID][key].Price = humanizedPrice
+					}
 				}
-				Store.TokenPrices[chainID][key] = vaultValue
 			}
 		}
 	}
@@ -177,7 +189,16 @@ func FetchLens(chainID uint64) {
 	}
 	for key, value := range response {
 		address := strings.TrimSuffix(key, "getPriceUsdcRecommended")
-		Store.TokenPrices[chainID][common.HexToAddress(address)] = value[0].(*big.Int)
+		if !helpers.AddressIsValid(common.HexToAddress(address), chainID) {
+			continue
+		}
+
+		price := value[0].(*big.Int)
+		Store.TokenPrices[chainID][common.HexToAddress(address)] = price
+
+		//Store the price in the token struct
+		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
+		tokens.Store.Tokens[chainID][common.HexToAddress(address)].Price = humanizedPrice
 	}
 
 	if chainID == 1 {

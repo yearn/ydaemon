@@ -140,12 +140,12 @@ func setMissingYearnVaultPrices(chainID uint64) {
 					underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
 					if ok && underlyingTokenPrice.Cmp(big.NewInt(0)) != 0 {
 						vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
+						vaultValue = vaultValue.Div(vaultValue, big.NewInt(1e6))
 						if vaultValue.Cmp(big.NewInt(0)) == 0 {
 							// logs.Info(chainID, key.String()+`: `+value.String())
 							continue
 						}
 						Store.TokenPrices[chainID][key] = vaultValue
-
 						//Store the price in the token struct
 						humanizedPrice, _ := helpers.FormatAmount(vaultValue.String(), 6)
 						tokens.Store.Tokens[chainID][key].Price = humanizedPrice

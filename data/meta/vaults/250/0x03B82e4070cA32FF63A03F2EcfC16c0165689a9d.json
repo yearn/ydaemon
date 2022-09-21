@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Avax vault, only used for testing migrations",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "apyTypeOverride": "new",

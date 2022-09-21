@@ -37,6 +37,12 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 
 //GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
+	hideAlways := helpers.StringToBool(helpers.ValueWithFallback(c.Query("hideAlways"), "false"))
+	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "details.order")
+	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "asc")
+	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
+	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
+	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
@@ -59,13 +65,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			continue
 		}
 		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-		if ok && vaultFromMeta.HideAlways {
+		if ok && vaultFromMeta.HideAlways && hideAlways {
 			continue
 		}
-
-		strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-		withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-		withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 
 		data = append(data, *prepareVaultSchema(
 			chainID,
@@ -81,8 +83,6 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	for i, d := range data {
 		sortedData[i] = d
 	}
-	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "details.order")
-	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "asc")
 	sort.SortBy(sortedData, orderBy, orderDirection) //Sort by details.order by default
 
 	c.JSON(http.StatusOK, sortedData)

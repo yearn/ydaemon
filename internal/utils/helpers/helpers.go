@@ -165,3 +165,7 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 	}
 	return true
 }
+
+func StringToBool(str string) bool {
+	return str == "true"
+}

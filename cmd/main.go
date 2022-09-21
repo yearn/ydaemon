@@ -11,7 +11,7 @@ import (
 
 var chains = helpers.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{1}
+// var chains = []uint64{250}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)

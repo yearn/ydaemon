@@ -61,7 +61,9 @@ var CURVE_FACTORY_URI = map[uint64][]string{
 	250: {
 		`https://api.curve.fi/api/getPools/fantom/factory`,
 	},
-	42161: {},
+	42161: {
+		`https://api.curve.fi/api/getPools/arbitrum/factory`,
+	},
 }
 
 // STRATEGIES_CONDITIONS contains the possible conditions to determine which strategies should

@@ -138,8 +138,13 @@ func setMissingYearnVaultPrices(chainID uint64) {
 		if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
 			pricePerShare := big.NewInt(0).Set(Store.VaultPricePerShare[chainID][key])
 
-			//pricePerShare is ^18, we need to convert to ^6
-			pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
+			//PricePerShare is in 10^decimals, we need to convert it to 10^6
+			decimals := allVaultsData[key].Decimals
+			if decimals > 0 {
+				pricePerShare = pricePerShare.Mul(pricePerShare, big.NewInt(0).Exp(big.NewInt(10), big.NewInt(6), nil))
+				pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(0).Exp(big.NewInt(10), big.NewInt(int64(decimals)), nil))
+			}
+
 			underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
 			underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
 
@@ -206,10 +211,7 @@ func FetchLens(chainID uint64) {
 		tokens.Store.Tokens[chainID][common.HexToAddress(address)].Price = humanizedPrice
 	}
 
-	if chainID == 1 {
-		setCurveFactoriesPrices(chainID)
-	}
-
+	setCurveFactoriesPrices(chainID)
 	setMissingYearnVaultPrices(chainID)
 
 	//TODO: debug, list prices 0

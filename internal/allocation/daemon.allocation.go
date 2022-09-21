@@ -58,7 +58,6 @@ func FetchAllocations(chainID uint64) {
 
 			token := tokens.Store.VaultToToken[chainID][strat.Vault]
 			total_assets := big.NewInt(0)
-			// big.NewInt(int64(token.Decimals)) might incur data loss
 			total_assets.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
 			total_assets.Mul(total_assets, prices.Store.TokenPrices[chainID][token.Address])
 			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], total_assets)
@@ -81,22 +80,20 @@ func FetchAllocations(chainID uint64) {
 				continue
 			}
 
-			// big.NewInt(int64(token.Decimals)) might incur data loss
 			token := tokens.Store.VaultToToken[chainID][strat.Vault]
 			strategy_tvl.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
 			strategy_tvl.Mul(strategy_tvl, prices.Store.TokenPrices[chainID][token.Address])
 			allocation, exist := allocations[strat.Strategy]
 
+			strategyAllocation := &TStrategyAllocation{
+				&strat, group, big.NewInt(0).Div(strategy_tvl, token_price), big.NewInt(0).Div(available_tvl, token_price), strategy_tvl, available_tvl,
+			}
 			if exist {
 				if available_tvl.Cmp(allocation.AvailableTVL) == -1 {
-					allocations[strat.Strategy] = &TStrategyAllocation{
-						&strat, group, big.NewInt(0).Div(strategy_tvl, token_price), big.NewInt(0).Div(available_tvl, token_price), strategy_tvl, available_tvl,
-					}
+					allocations[strat.Strategy] = strategyAllocation
 				}
 			} else {
-				allocations[strat.Strategy] = &TStrategyAllocation{
-					&strat, group, big.NewInt(0).Div(strategy_tvl, token_price), big.NewInt(0).Div(available_tvl, token_price), strategy_tvl, available_tvl,
-				}
+				allocations[strat.Strategy] = strategyAllocation
 			}
 
 		}

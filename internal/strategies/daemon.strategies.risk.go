@@ -110,7 +110,17 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		return
 	}
 	for _, strat := range strategies {
-		var stratGroup = GetStrategyGroupsFromStrategy(strat, groups)[0]
+		var stratGroup TStrategyGroupFromRisk
+		for _, group := range groups {
+			if excludeNameLike(strat, *group) {
+				continue
+			}
+			if includeAddress(strat, *group) || includeNameLike(strat, *group) {
+				stratGroup = *group
+				break
+			}
+		}
+
 		// Fetch activation and tvl from multicall
 		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
 		if !ok {

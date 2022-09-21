@@ -1,8 +1,10 @@
 package allocation
 
 import (
+	"math"
 	"math/big"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -42,31 +44,49 @@ func FetchAllocations(chainID uint64) {
 		return
 	}
 	groups := strategies.Store.StrategyGroupFromRisk[chainID]
-	strategyGroupAllocation := make(map[string]*big.Int)
+	strategyGroupEstimateTotalAssets := make(map[string]*big.Int)
+	if Store.StrategyGroupAllocation[chainID] == nil {
+		Store.StrategyGroupAllocation[chainID] = make(map[common.Address]*TStrategyAllocation)
+	}
 	allocations := Store.StrategyGroupAllocation[chainID]
 	for _, strat := range strats {
 		strategyGroups := strategies.GetStrategyGroupsFromStrategy(strat, groups)
 		for _, group := range strategyGroups {
-			if strategyGroupAllocation[group.Label] == nil {
-				strategyGroupAllocation[group.Label] = big.NewInt(0)
+			if strategyGroupEstimateTotalAssets[group.Label] == nil {
+				strategyGroupEstimateTotalAssets[group.Label] = big.NewInt(0)
 			}
-			strategyGroupAllocation[group.Label].Add(strategyGroupAllocation[group.Label], strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets)
+
+			token := tokens.Store.VaultToToken[chainID][strat.Vault]
+			total_assets := big.NewInt(0)
+			// big.NewInt(int64(token.Decimals)) might incur data loss
+			total_assets.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
+			total_assets.Mul(total_assets, prices.Store.TokenPrices[chainID][token.Address])
+			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], total_assets)
 		}
 
+	}
+	for _, strat := range strats {
+		strategyGroups := strategies.GetStrategyGroupsFromStrategy(strat, groups)
 		for _, group := range strategyGroups {
 			max_tvl := median_to_tvl(*group)
-			max_tvl.Sub(max_tvl, strategyGroupAllocation[group.Label])
+			max_tvl.Sub(max_tvl, strategyGroupEstimateTotalAssets[group.Label])
 			available_tvl := big.NewInt(0)
 			if max_tvl.Cmp(big.NewInt(0)) > 0 {
 				available_tvl = max_tvl
 			}
-			// available_tvl = math.Max(0.0, big.NewInt(max_tvl)-strategyGroupAllocation[group.Label])
 			token_address := tokens.Store.VaultToToken[chainID][strat.Vault].Address
 			token_price := prices.Store.TokenPrices[chainID][token_address]
 			strategy_tvl := big.NewInt(0)
-			strategy_tvl.Mul(token_price, strategyGroupAllocation[group.Label])
+			if token_price.Cmp(big.NewInt(0)) == 0 {
+				continue
+			}
 
+			// big.NewInt(int64(token.Decimals)) might incur data loss
+			token := tokens.Store.VaultToToken[chainID][strat.Vault]
+			strategy_tvl.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
+			strategy_tvl.Mul(strategy_tvl, prices.Store.TokenPrices[chainID][token.Address])
 			allocation, exist := allocations[strat.Strategy]
+
 			if exist {
 				if available_tvl.Cmp(allocation.AvailableTVL) == -1 {
 					allocations[strat.Strategy] = &TStrategyAllocation{
@@ -80,7 +100,6 @@ func FetchAllocations(chainID uint64) {
 			}
 
 		}
-
 	}
 
 }

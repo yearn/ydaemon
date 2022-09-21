@@ -8,12 +8,12 @@ import (
 )
 
 func (y Controller) GetMedianScore(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chain_id"))
+	chainID, ok := helpers.AssertChainID(c.Query("chain_id"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
+	address, ok := helpers.AssertAddress(c.Query("address"), chainID)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid address")
 		return

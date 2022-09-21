@@ -44,7 +44,6 @@ func SummonDaemons(chainID uint64) {
 		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
-		go runDaemon(chainID, &wg, 0, allocation.FetchAllocations)
 	}
 	wg.Wait()
 
@@ -70,6 +69,7 @@ func SummonDaemons(chainID uint64) {
 		//Require vaults.FetchVaultMulticallData to be done
 		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
 	}
+	wg.Wait()
 	wg.Add(1)
 	{
 		//Require strategies.FetchStrategiesFromRisk to be done

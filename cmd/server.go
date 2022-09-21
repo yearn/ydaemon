@@ -19,10 +19,15 @@ type controller struct{}
 
 func logger(log *logrus.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		forwarded, ok := c.Request.Header[`X-Forwarded-For`]
+		from := c.ClientIP()
+		if ok {
+			from = forwarded[0]
+		}
 		log.WithFields(logrus.Fields{
 			"path":   c.Request.RequestURI,
 			"method": c.Request.Method,
-			"from":   c.Request.RemoteAddr,
+			"from":   from,
 			"status": c.Writer.Status(),
 		}).Info(time.Now().Format(time.RFC3339))
 	}

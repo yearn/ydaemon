@@ -131,7 +131,7 @@ func setMissingYearnVaultPrices(chainID uint64) {
 		if !helpers.AddressIsValid(key, chainID) {
 			continue
 		}
-		if value.Cmp(big.NewInt(0)) == 0 {
+		if value.Cmp(big.NewInt(0)) > 0 {
 			continue
 		}
 

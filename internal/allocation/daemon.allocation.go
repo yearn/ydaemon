@@ -1,6 +1,7 @@
 package allocation
 
 import (
+	"fmt"
 	"math"
 	"math/big"
 
@@ -69,24 +70,28 @@ func FetchAllocations(chainID uint64) {
 		for _, group := range strategyGroups {
 			max_tvl := median_to_tvl(*group)
 			max_tvl.Sub(max_tvl, strategyGroupEstimateTotalAssets[group.Label])
-			available_tvl := big.NewInt(0)
+			available_tvl := big.NewFloat(0)
 			if max_tvl.Cmp(big.NewInt(0)) > 0 {
-				available_tvl = max_tvl
+				available_tvl = new(big.Float).SetInt(max_tvl)
 			}
 			token_address := tokens.Store.VaultToToken[chainID][strat.Vault].Address
-			token_price := prices.Store.TokenPrices[chainID][token_address]
-			strategy_tvl := big.NewInt(0)
-			if token_price.Cmp(big.NewInt(0)) == 0 {
+			token_price := big.NewFloat(tokens.Store.Tokens[chainID][token_address].Price) // humanized price
+			if token_price.Cmp(big.NewFloat(0)) == 0 {
+				logs.Warning(fmt.Sprintf("Failed to fetch the USDC price for token {%s}", token_address))
 				continue
 			}
 
 			token := tokens.Store.VaultToToken[chainID][strat.Vault]
-			strategy_tvl.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
-			strategy_tvl.Mul(strategy_tvl, prices.Store.TokenPrices[chainID][token.Address])
+			estimatedAssets := new(big.Float).SetInt(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets)
+
+			// compute num tokens
+			strategy_tvl := new(big.Float).Quo(estimatedAssets, big.NewFloat(math.Pow(10, float64(token.Decimals))))
+			// get total value in USD by num_tokens * price
+			strategy_tvl.Mul(strategy_tvl, token_price)
 			allocation, exist := allocations[strat.Strategy]
 
 			strategyAllocation := &TStrategyAllocation{
-				&strat, group, big.NewInt(0).Div(strategy_tvl, token_price), big.NewInt(0).Div(available_tvl, token_price), strategy_tvl, available_tvl,
+				&strat, group, new(big.Float).Quo(strategy_tvl, token_price), new(big.Float).Quo(available_tvl, token_price), strategy_tvl, available_tvl,
 			}
 			if exist {
 				if available_tvl.Cmp(allocation.AvailableTVL) == -1 {

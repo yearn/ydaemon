@@ -75,7 +75,7 @@ func FetchTokenList(chainID uint64) {
 
 		tokenData[common.HexToAddress(vault.Token.Id)] = token
 		if Store.VaultToToken[chainID] == nil {
-			Store.VaultToToken[chainID] = make(map[common.Address]*models.TERC20Token)
+			Store.VaultToToken[chainID] = make(map[common.Address]*TERC20Token)
 		}
 
 		Store.VaultToToken[chainID][common.HexToAddress(vault.Id)] = token

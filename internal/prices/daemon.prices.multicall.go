@@ -100,6 +100,23 @@ func setCurveFactoriesPrices(chainID uint64) {
 	// For each pool, we calculate the price per token and assign it to the token
 	// if the Store price is 0
 	for _, fact := range curveFactoryPoolData {
+		//First add the underlying tokens
+		for _, coin := range fact.Coins {
+			if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] != nil {
+				if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)].Cmp(big.NewInt(0)) == 0 {
+					coinPrice := big.NewFloat(0).SetFloat64(coin.USDPrice)
+					coinPrice = coinPrice.Mul(coinPrice, big.NewFloat(1e6))
+					coinPriceBigInt, _ := coinPrice.Int(nil)
+
+					Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] = coinPriceBigInt
+
+					//Store the price in the token struct
+					humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
+					tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
+				}
+			}
+		}
+
 		pricePerToken := 0.0
 		formatedTotalSupply, _ := helpers.FormatAmount(fact.TotalSupply, 18)
 		if formatedTotalSupply > 0 && fact.USDTotal > 0 {
@@ -118,23 +135,6 @@ func setCurveFactoriesPrices(chainID uint64) {
 					//Store the price in the token struct
 					humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
 					tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
-				}
-			}
-		}
-
-		//Also take care of the coins if they are not in the store
-		for _, coin := range fact.Coins {
-			if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] != nil {
-				if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)].Cmp(big.NewInt(0)) == 0 {
-					coinPrice := big.NewFloat(0).SetFloat64(coin.USDPrice)
-					coinPrice = coinPrice.Mul(coinPrice, big.NewFloat(1e6))
-					coinPriceBigInt, _ := coinPrice.Int(nil)
-
-					Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] = coinPriceBigInt
-
-					//Store the price in the token struct
-					humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
-					tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
 				}
 			}
 		}

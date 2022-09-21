@@ -128,29 +128,34 @@ func setMissingYearnVaultPrices(chainID uint64) {
 	allVaultsData := tokens.Store.Tokens[chainID]
 
 	for key, value := range Store.TokenPrices[chainID] {
-		if helpers.AddressIsValid(key, chainID) {
-			if value.Cmp(big.NewInt(0)) == 0 {
-				if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
-					pricePerShare := Store.VaultPricePerShare[chainID][key]
+		if !helpers.AddressIsValid(key, chainID) {
+			continue
+		}
+		if value.Cmp(big.NewInt(0)) == 0 {
+			continue
+		}
 
-					//pricePerShare is ^18, we need to convert to ^6
-					pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
+		if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
+			pricePerShare := big.NewInt(0).Set(Store.VaultPricePerShare[chainID][key])
 
-					underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
-					underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
-					if ok && underlyingTokenPrice.Cmp(big.NewInt(0)) != 0 {
-						vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
-						vaultValue = vaultValue.Div(vaultValue, big.NewInt(1e6))
-						if vaultValue.Cmp(big.NewInt(0)) == 0 {
-							// logs.Info(chainID, key.String()+`: `+value.String())
-							continue
-						}
-						Store.TokenPrices[chainID][key] = vaultValue
-						//Store the price in the token struct
-						humanizedPrice, _ := helpers.FormatAmount(vaultValue.String(), 6)
-						tokens.Store.Tokens[chainID][key].Price = humanizedPrice
-					}
+			//pricePerShare is ^18, we need to convert to ^6
+			pricePerShare = pricePerShare.Div(pricePerShare, big.NewInt(1e12))
+			underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
+			underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
+
+			if ok && underlyingTokenPrice.Cmp(big.NewInt(0)) != 0 {
+				underlyingTokenPrice = big.NewInt(0).Set(underlyingTokenPrice)
+				vaultValue := big.NewInt(0).Mul(pricePerShare, underlyingTokenPrice)
+				vaultValue = vaultValue.Div(vaultValue, big.NewInt(1e6))
+
+				if vaultValue.Cmp(big.NewInt(0)) == 0 {
+					// logs.Info(chainID, key.String()+`: `+value.String())
+					continue
 				}
+
+				Store.TokenPrices[chainID][key] = vaultValue
+				humanizedPrice, _ := helpers.FormatAmount(vaultValue.String(), 6)
+				tokens.Store.Tokens[chainID][key].Price = humanizedPrice
 			}
 		}
 	}

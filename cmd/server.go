@@ -22,6 +22,7 @@ func logger(log *logrus.Logger) gin.HandlerFunc {
 		log.WithFields(logrus.Fields{
 			"path":   c.Request.RequestURI,
 			"method": c.Request.Method,
+			"from":   c.Request.RemoteAddr,
 			"status": c.Writer.Status(),
 		}).Info(time.Now().Format(time.RFC3339))
 	}

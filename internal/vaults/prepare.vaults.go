@@ -293,6 +293,7 @@ func prepareVaultSchema(
 			AllowZapIn:            vaultFromMeta.AllowZapIn,
 			AllowZapOut:           vaultFromMeta.AllowZapOut,
 			Retired:               vaultFromMeta.Retired,
+			APYTypeOverride:       vaultFromMeta.APYTypeOverride,
 		},
 		APY: buildAPY(
 			chainID,

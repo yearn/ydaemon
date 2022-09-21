@@ -74,6 +74,7 @@ type TVaultDetails struct {
 	DepositLimit          string  `json:"depositLimit"`
 	Comment               string  `json:"comment"`
 	AvailableDepositLimit string  `json:"availableDepositLimit,omitempty"`
+	APYTypeOverride       string  `json:"apyTypeOverride"`
 	Order                 float32 `json:"-"`
 	PerformanceFee        uint64  `json:"performanceFee"`
 	ManagementFee         uint64  `json:"managementFee"`

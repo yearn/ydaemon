@@ -50,6 +50,10 @@ type TCurveFactoriesPoolData struct {
 	LPAddress   string  `json:"lpTokenAddress"`
 	TotalSupply string  `json:"totalSupply"`
 	USDTotal    float64 `json:"usdTotal"`
+	Coins       []struct {
+		Address  string  `json:"address"`
+		USDPrice float64 `json:"usdPrice"`
+	} `json:"coins"`
 }
 type TCurveFactories struct {
 	Data struct {
@@ -98,24 +102,40 @@ func setCurveFactoriesPrices(chainID uint64) {
 	for _, fact := range curveFactoryPoolData {
 		pricePerToken := 0.0
 		formatedTotalSupply, _ := helpers.FormatAmount(fact.TotalSupply, 18)
-		if formatedTotalSupply == 0 || fact.USDTotal == 0 {
-			continue
-		}
-		pricePerToken = fact.USDTotal / formatedTotalSupply
-		pricePerTokenBigFloat := big.NewFloat(0).SetFloat64(pricePerToken)
-		pricePerTokenBigFloat = pricePerTokenBigFloat.Mul(pricePerTokenBigFloat, big.NewFloat(1e6))
-		pricePerTokenBigInt, _ := pricePerTokenBigFloat.Int(nil)
-		addressToUse := fact.LPAddress
-		if addressToUse == `` {
-			addressToUse = fact.Address
-		}
-		if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
-			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
-				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+		if formatedTotalSupply > 0 && fact.USDTotal > 0 {
+			pricePerToken = fact.USDTotal / formatedTotalSupply
+			pricePerTokenBigFloat := big.NewFloat(0).SetFloat64(pricePerToken)
+			pricePerTokenBigFloat = pricePerTokenBigFloat.Mul(pricePerTokenBigFloat, big.NewFloat(1e6))
+			pricePerTokenBigInt, _ := pricePerTokenBigFloat.Int(nil)
+			addressToUse := fact.LPAddress
+			if addressToUse == `` {
+				addressToUse = fact.Address
+			}
+			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
+				if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
+					Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
 
-				//Store the price in the token struct
-				humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
-				tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
+					//Store the price in the token struct
+					humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
+					tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
+				}
+			}
+		}
+
+		//Also take care of the coins if they are not in the store
+		for _, coin := range fact.Coins {
+			if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] != nil {
+				if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)].Cmp(big.NewInt(0)) == 0 {
+					coinPrice := big.NewFloat(0).SetFloat64(coin.USDPrice)
+					coinPrice = coinPrice.Mul(coinPrice, big.NewFloat(1e6))
+					coinPriceBigInt, _ := coinPrice.Int(nil)
+
+					Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] = coinPriceBigInt
+
+					//Store the price in the token struct
+					humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
+					tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
+				}
 			}
 		}
 	}

@@ -57,9 +57,6 @@ func TestReadAllFilesInDir(t *testing.T) {
 	_, _, err := ReadAllFilesInDir(BASE_DATA_PATH+`/meta/strategies/2500/`, `.json`)
 	assert.Error(t, err)
 
-	_, _, err = ReadAllFilesInDir(BASE_DATA_PATH+`/meta/protocols/42161/`, `.json`)
-	assert.Error(t, err)
-
 	_, _, err = ReadAllFilesInDir(BASE_DATA_PATH+`/meta/protocols/250/0xDAO.json`, `.json`)
 	assert.Error(t, err)
 

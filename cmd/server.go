@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -12,24 +13,23 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 type controller struct{}
 
-func logger(log *logrus.Logger) gin.HandlerFunc {
+func middleware(log *logrus.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		forwarded, ok := c.Request.Header[`X-Forwarded-For`]
-		from := c.ClientIP()
-		if ok {
-			from = forwarded[0]
+		if strings.HasPrefix(c.Request.RequestURI, "/api/tokens/list") {
+			c.Header("Cache-Control", "max-age=86400")
+		} else {
+			log.WithFields(logrus.Fields{
+				"path":   c.Request.RequestURI,
+				"method": c.Request.Method,
+				"status": c.Writer.Status(),
+			}).Info(time.Now().Format(time.RFC3339))
 		}
-		log.WithFields(logrus.Fields{
-			"path":   c.Request.RequestURI,
-			"method": c.Request.Method,
-			"from":   from,
-			"status": c.Writer.Status(),
-		}).Info(time.Now().Format(time.RFC3339))
 	}
 }
 
@@ -39,7 +39,7 @@ func NewRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	router := gin.New()
 	router.Use(gin.Recovery())
-	router.Use(logger(logrus.New()))
+	router.Use(middleware(logrus.New()))
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
 		AllowMethods:    []string{"GET", "HEAD"},
@@ -81,7 +81,6 @@ func NewRouter() *gin.Engine {
 	// Meta API section
 	{
 		c := meta.Controller{}
-
 		// Proxy meta strategies
 		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategiesLegacy)
 		router.GET(`:chainID/meta/strategies`, c.GetMetaStrategies)
@@ -90,7 +89,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/tokens/list`, c.GetTokenList)
 		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokensLegacy)
 		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
 		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
@@ -133,6 +131,10 @@ func NewRouter() *gin.Engine {
 		c := prices.Controller{}
 		router.GET(`prices/all`, c.GetAllPrices)
 		router.GET(`:chainID/prices/all`, c.GetPrices)
+	}
+
+	{
+		router.StaticFile("api/tokens/list", helpers.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
 	}
 
 	return router

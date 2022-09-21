@@ -143,7 +143,7 @@ func NewRouter() *gin.Engine {
 	// Allocation API section
 	{
 		c := allocation.Controller{}
-		router.GET(`/api/allocation/median-score`, c.GetMedianScore)
+		router.GET(`api/allocation/median-score`, c.GetMedianScore)
 	}
 
 	return router

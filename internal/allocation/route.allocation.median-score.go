@@ -1,11 +1,19 @@
 package allocation
 
 import (
+	"math/big"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
+
+// BigFloatNumberJSON exists so the output in JSON is pretty and not using exponent notation
+type BigFloatNumberJSON struct{ *big.Float }
+
+func (bfn BigFloatNumberJSON) MarshalJSON() ([]byte, error) {
+	return []byte(bfn.String()), nil
+}
 
 func (y Controller) GetMedianScore(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Query("chain_id"))
@@ -25,9 +33,9 @@ func (y Controller) GetMedianScore(c *gin.Context) {
 		"address":       address,
 		"name":          allocation.Strategy.Name,
 		"riskGroup":     allocation.RiskGroup.Label,
-		"currentTVL":    allocation.CurrentTVL,
-		"availableTVL":  allocation.AvailableTVL,
-		"currentUSDC":   allocation.CurrentUSDC,
-		"availableUSDC": allocation.AvailableUSDC,
+		"currentTVL":    BigFloatNumberJSON{allocation.CurrentTVL},
+		"availableTVL":  BigFloatNumberJSON{allocation.AvailableTVL},
+		"currentUSDC":   BigFloatNumberJSON{allocation.CurrentUSDC},
+		"availableUSDC": BigFloatNumberJSON{allocation.AvailableUSDC},
 	})
 }

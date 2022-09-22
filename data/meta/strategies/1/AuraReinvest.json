@@ -1,0 +1,61 @@
+{
+  "$schema": "strategy",
+  "name": "Aura Reinvest",
+  "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xC7eF34BFEf71c54C23f072BD1a57D74d02fD125D"],
+  "protocols": ["AuraFinance", "Balancer"],
+  "localization": {
+    "en": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Aura Reinvest",
+      "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

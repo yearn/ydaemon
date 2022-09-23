@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "USDC",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 2,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "USDC"
+}

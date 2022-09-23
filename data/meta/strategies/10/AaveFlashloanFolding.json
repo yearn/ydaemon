@@ -1,0 +1,67 @@
+{
+  "$schema": "strategy",
+  "name": "Aave Flashloan Folding",
+  "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY.",
+  "addresses": [
+    "0x8DeA764B81CeCE709c57ba3182782F1636AD6067",
+    "0x33D54628051fCFAabb898aF9b1b375F1A991A927",
+    "0x6F8Aee1E8a5D5038f8814e10E7D18a91B0F82068",
+    "0xe857A3CD7fd943dfB9F77B7519d22845E02f5976",
+    "0xf1a2DAB4C02563137ff1Ba34a8C9f92C2F8eeE49"
+  ],
+  "protocols": ["Aave v3"],
+  "localization": {
+    "en": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "fr": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "es": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "de": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "pt": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "el": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "tr": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "vi": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "zh": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "hi": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "ja": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "id": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    },
+    "ru": {
+      "name": "Aave Flashloan Folding",
+      "description": "Supplies and borrows {{token}} on [Aave v3](https://app.aave.com/markets) simultaneously to earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Flashloans are used to obtain additional {{token}} from Aave v3 to boost the APY."
+    }
+  }
+}

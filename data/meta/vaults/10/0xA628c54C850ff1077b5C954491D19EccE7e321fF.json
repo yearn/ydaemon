@@ -1,13 +1,13 @@
 {
   "$schema": "vault",
-  "comment": "sUSD",
-  "hideAlways": true,
-  "depositsDisabled": true,
+  "comment": "WETH",
+  "hideAlways": false,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 50,
+  "order": 1,
   "migrationAvailable": false,
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
-  "displayName": "sUSD"
+  "displayName": "WETH"
 }

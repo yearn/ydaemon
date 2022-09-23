@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "DAI",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 5,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": false,
+  "displayName": "DAI"
+}

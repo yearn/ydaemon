@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"unicode/utf8"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/tokens"
@@ -46,13 +47,16 @@ func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, to
 
 type TCurveFactoriesPoolData struct {
 	Name        string  `json:"name"`
+	Symbol      string  `json:"symbol"`
 	Address     string  `json:"address"`
 	LPAddress   string  `json:"lpTokenAddress"`
 	TotalSupply string  `json:"totalSupply"`
 	USDTotal    float64 `json:"usdTotal"`
 	Coins       []struct {
-		Address  string  `json:"address"`
-		USDPrice float64 `json:"usdPrice"`
+		Address  string          `json:"address"`
+		Decimals json.RawMessage `json:"decimals,string"`
+		Symbol   string          `json:"symbol"`
+		USDPrice float64         `json:"usdPrice"`
 	} `json:"coins"`
 }
 type TCurveFactories struct {
@@ -70,10 +74,12 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
+		logs.Error(err)
 		return []TCurveFactoriesPoolData{}
 	}
 	var factories TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
+		logs.Error(err)
 		return []TCurveFactoriesPoolData{}
 	}
 	return factories.Data.PoolData
@@ -102,18 +108,40 @@ func setCurveFactoriesPrices(chainID uint64) {
 	for _, fact := range curveFactoryPoolData {
 		//First add the underlying tokens
 		for _, coin := range fact.Coins {
-			if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] != nil {
-				if Store.TokenPrices[chainID][common.HexToAddress(coin.Address)].Cmp(big.NewInt(0)) == 0 {
-					coinPrice := big.NewFloat(0).SetFloat64(coin.USDPrice)
-					coinPrice = coinPrice.Mul(coinPrice, big.NewFloat(1e6))
-					coinPriceBigInt, _ := coinPrice.Int(nil)
+			coinAddress := common.HexToAddress(coin.Address)
+			if Store.TokenPrices[chainID][coinAddress] == nil {
+				Store.TokenPrices[chainID][coinAddress] = big.NewInt(0)
+			}
 
-					Store.TokenPrices[chainID][common.HexToAddress(coin.Address)] = coinPriceBigInt
+			if Store.TokenPrices[chainID][coinAddress].Cmp(big.NewInt(0)) == 0 {
 
-					//Store the price in the token struct
-					humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
-					tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
+				coinPrice := big.NewFloat(0).SetFloat64(coin.USDPrice)
+				coinPrice = coinPrice.Mul(coinPrice, big.NewFloat(1e6))
+				coinPriceBigInt, _ := coinPrice.Int(nil)
+				Store.TokenPrices[chainID][coinAddress] = coinPriceBigInt
+
+				//Store the price in the token struct
+				if tokens.Store.Tokens[chainID][coinAddress] == nil {
+					//Hack because decimals can be string or uint
+					decimals := uint64(18)
+					if utf8.Valid(coin.Decimals) {
+						if i, err := strconv.Atoi(string(coin.Decimals)); err != nil {
+							decimals = uint64(i)
+						} else {
+							decimals, _ = strconv.ParseUint(string(coin.Decimals), 10, 64)
+						}
+					}
+					tokens.Store.Tokens[chainID][coinAddress] = &tokens.TERC20Token{
+						Address:  common.HexToAddress(coin.Address),
+						Name:     coin.Symbol,
+						Symbol:   coin.Symbol,
+						Decimals: decimals,
+						IsVault:  false,
+					}
 				}
+
+				humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
+				tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
 			}
 		}
 
@@ -128,14 +156,25 @@ func setCurveFactoriesPrices(chainID uint64) {
 			if addressToUse == `` {
 				addressToUse = fact.Address
 			}
-			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] != nil {
-				if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
-					Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] == nil {
+				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = big.NewInt(0)
+			}
+			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].Cmp(big.NewInt(0)) == 0 {
+				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
 
-					//Store the price in the token struct
-					humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
-					tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
+				if tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)] == nil {
+					tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)] = &tokens.TERC20Token{
+						Address:  common.HexToAddress(addressToUse),
+						Name:     fact.Name,
+						Symbol:   fact.Symbol,
+						Decimals: 18,
+						IsVault:  false,
+					}
 				}
+
+				//Store the price in the token struct
+				humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
+				tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
 			}
 		}
 	}

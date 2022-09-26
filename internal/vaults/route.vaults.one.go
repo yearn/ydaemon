@@ -7,7 +7,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
@@ -35,12 +34,6 @@ func (y Controller) GetVault(c *gin.Context) {
 	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid address")
-		return
-	}
-
-	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][address]
-	if ok && vaultFromMeta.HideAlways {
-		c.String(http.StatusBadRequest, "ignored address")
 		return
 	}
 

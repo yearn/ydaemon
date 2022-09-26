@@ -2,8 +2,15 @@
   "$schema": "strategy",
   "name": "Aave / Ironbank Lender Optimizer",
   "description": "Supplies {{token}} to [AAVE v3](https://app.aave.com/home) and [Ironbank](https://app.ib.xyz) to generate interest and earn OP tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-  "addresses": ["0xD1c8dC4e30194e3a9DC65c65a150eaF5Ab037008"],
-  "protocols": ["Aave", "IronBank"],
+  "addresses": [
+    "0xD1c8dC4e30194e3a9DC65c65a150eaF5Ab037008",
+    "0xAfccb36CAEEB089611c1085BCA783214A1a47691",
+    "0x20D27AC263A8B0f15D20614b0D63a4381997407c",
+    "0x390978489417b984CeFDfde102F78e67F64B1091",
+    "0xb448dae03108dDd66374bAabCaA6d95E7dfEfD1D",
+    "0x18128146C33d821A484F3D43fF2b986BEBd0c8F3"
+  ],
+  "protocols": ["Aave v3", "IronBank"],
   "localization": {
     "en": {
       "name": "Aave / Ironbank Lender Optimizer",

@@ -1,10 +1,10 @@
 {
   "$schema": "vault",
   "comment": "sUSD",
-  "hideAlways": true,
-  "depositsDisabled": true,
+  "hideAlways": false,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 50,
+  "order": 4,
   "migrationAvailable": false,
   "allowZapIn": false,
   "allowZapOut": false,

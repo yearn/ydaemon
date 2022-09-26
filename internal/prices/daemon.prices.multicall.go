@@ -54,7 +54,7 @@ type TCurveFactoriesPoolData struct {
 	USDTotal    float64 `json:"usdTotal"`
 	Coins       []struct {
 		Address  string          `json:"address"`
-		Decimals json.RawMessage `json:"decimals,string"`
+		Decimals json.RawMessage `json:"decimals"`
 		Symbol   string          `json:"symbol"`
 		USDPrice float64         `json:"usdPrice"`
 	} `json:"coins"`

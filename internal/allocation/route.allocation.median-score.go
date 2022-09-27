@@ -3,6 +3,7 @@ package allocation
 import (
 	"math/big"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -28,6 +29,14 @@ func (y Controller) GetMedianScore(c *gin.Context) {
 	}
 
 	allocation := Store.StrategyGroupAllocation[chainID][address]
+	if c.Query("debtToAdd") != "" {
+		debtToAdd, debtToAddErr := strconv.ParseFloat(c.Query("debtToAdd"), 64)
+
+		if debtToAddErr == nil {
+			c.String(http.StatusOK, strconv.FormatBool(big.NewFloat(debtToAdd).Cmp(allocation.AvailableTVL) < 0))
+			return
+		}
+	}
 	c.JSON(http.StatusOK, gin.H{
 		"network":       chainID,
 		"address":       address,

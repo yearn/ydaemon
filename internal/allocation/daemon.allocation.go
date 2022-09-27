@@ -58,8 +58,7 @@ func FetchAllocations(chainID uint64) {
 			}
 
 			token := tokens.Store.VaultToToken[chainID][strat.Vault]
-			total_assets := big.NewInt(0)
-			total_assets.Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
+			total_assets := new(big.Int).Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
 			total_assets.Mul(total_assets, prices.Store.TokenPrices[chainID][token.Address])
 			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], total_assets)
 		}

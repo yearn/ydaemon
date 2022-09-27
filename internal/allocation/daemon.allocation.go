@@ -11,9 +11,10 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func median_to_tvl(group strategies.TStrategyGroupFromRisk) *big.Int {
+func median_to_tvl(group strategies.TStrategyGroupFromRisk) *big.Float {
 	scores := []float64{
 		group.AuditScore,
 		group.CodeReviewScore,
@@ -25,17 +26,31 @@ func median_to_tvl(group strategies.TStrategyGroupFromRisk) *big.Int {
 
 	median, _ := stats.Median(scores)
 	if median > 4 {
-		return big.NewInt(0)
+		return big.NewFloat(0)
 	} else if median > 3 {
-		return big.NewInt(1_000_000)
+		return big.NewFloat(1_000_000)
 	} else if median > 2 {
-		return big.NewInt(10_000_000)
+		return big.NewFloat(10_000_000)
 	} else if median > 1 {
-		return big.NewInt(50_000_000)
+		return big.NewFloat(50_000_000)
 	} else {
-		return big.NewInt(100_000_000)
+		return big.NewFloat(100_000_000)
 	}
 
+}
+
+func calculateTotalAssets(chainID uint64, strat models.TStrategyList) *big.Float {
+	total_assets := big.NewFloat(0)
+	token := tokens.Store.VaultToToken[chainID][strat.Vault]
+	estimatedAssets := new(big.Float).SetInt(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets)
+	num_tokens := new(big.Float).Quo(estimatedAssets, big.NewFloat(math.Pow(10, float64(token.Decimals))))
+
+	if prices.Store.TokenPrices[chainID][token.Address] != nil {
+		token_address := tokens.Store.VaultToToken[chainID][strat.Vault].Address
+		token_price := big.NewFloat(tokens.Store.Tokens[chainID][token_address].Price) // humanized price
+		total_assets.Mul(num_tokens, token_price)
+	}
+	return total_assets
 }
 
 func FetchAllocations(chainID uint64) {
@@ -45,7 +60,7 @@ func FetchAllocations(chainID uint64) {
 		return
 	}
 	groups := strategies.Store.StrategyGroupFromRisk[chainID]
-	strategyGroupEstimateTotalAssets := make(map[string]*big.Int)
+	strategyGroupEstimateTotalAssets := make(map[string]*big.Float)
 	if Store.StrategyGroupAllocation[chainID] == nil {
 		Store.StrategyGroupAllocation[chainID] = make(map[common.Address]*TStrategyAllocation)
 	}
@@ -54,13 +69,9 @@ func FetchAllocations(chainID uint64) {
 		strategyGroups := strategies.GetStrategyGroupsFromStrategy(strat, groups)
 		for _, group := range strategyGroups {
 			if strategyGroupEstimateTotalAssets[group.Label] == nil {
-				strategyGroupEstimateTotalAssets[group.Label] = big.NewInt(0)
+				strategyGroupEstimateTotalAssets[group.Label] = big.NewFloat(0)
 			}
-
-			token := tokens.Store.VaultToToken[chainID][strat.Vault]
-			total_assets := new(big.Int).Div(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets, big.NewInt(int64(math.Pow(10, float64(token.Decimals)))))
-			total_assets.Mul(total_assets, prices.Store.TokenPrices[chainID][token.Address])
-			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], total_assets)
+			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], calculateTotalAssets(chainID, strat))
 		}
 
 	}
@@ -70,8 +81,8 @@ func FetchAllocations(chainID uint64) {
 			max_tvl := median_to_tvl(*group)
 			max_tvl.Sub(max_tvl, strategyGroupEstimateTotalAssets[group.Label])
 			available_tvl := big.NewFloat(0)
-			if max_tvl.Cmp(big.NewInt(0)) > 0 {
-				available_tvl = new(big.Float).SetInt(max_tvl)
+			if max_tvl.Cmp(big.NewFloat(0)) > 0 {
+				available_tvl = max_tvl
 			}
 			token_address := tokens.Store.VaultToToken[chainID][strat.Vault].Address
 			token_price := big.NewFloat(tokens.Store.Tokens[chainID][token_address].Price) // humanized price

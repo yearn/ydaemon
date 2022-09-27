@@ -39,7 +39,7 @@ func median_to_tvl(group strategies.TStrategyGroupFromRisk) *big.Float {
 
 }
 
-func calculateTotalAssets(chainID uint64, strat models.TStrategyList) *big.Float {
+func calculateTvlUsd(chainID uint64, strat models.TStrategyList) *big.Float {
 	total_assets := big.NewFloat(0)
 	token := tokens.Store.VaultToToken[chainID][strat.Vault]
 	estimatedAssets := new(big.Float).SetInt(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets)
@@ -71,7 +71,7 @@ func FetchAllocations(chainID uint64) {
 			if strategyGroupEstimateTotalAssets[group.Label] == nil {
 				strategyGroupEstimateTotalAssets[group.Label] = big.NewFloat(0)
 			}
-			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], calculateTotalAssets(chainID, strat))
+			strategyGroupEstimateTotalAssets[group.Label].Add(strategyGroupEstimateTotalAssets[group.Label], calculateTvlUsd(chainID, strat))
 		}
 
 	}
@@ -91,15 +91,8 @@ func FetchAllocations(chainID uint64) {
 				continue
 			}
 
-			token := tokens.Store.VaultToToken[chainID][strat.Vault]
-			estimatedAssets := new(big.Float).SetInt(strategies.Store.StrategyMultiCallData[chainID][strat.Strategy].EstimatedTotalAssets)
-
-			// compute num tokens
-			strategy_tvl := new(big.Float).Quo(estimatedAssets, big.NewFloat(math.Pow(10, float64(token.Decimals))))
-			// get total value in USD by num_tokens * price
-			strategy_tvl.Mul(strategy_tvl, token_price)
+			strategy_tvl := calculateTvlUsd(chainID, strat)
 			allocation, exist := allocations[strat.Strategy]
-
 			strategyAllocation := &TStrategyAllocation{
 				&strat, group, new(big.Float).Quo(strategy_tvl, token_price), new(big.Float).Quo(available_tvl, token_price), strategy_tvl, available_tvl,
 			}

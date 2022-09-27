@@ -7,9 +7,8 @@
   "withdrawalsDisabled": false,
   "order": 111,
   "migrationAvailable": false,
-  "allowZapIn": true,
-  "allowZapOut": true,
+  "allowZapIn": false,
+  "allowZapOut": false,
   "retired": false,
-  "zapAddress": "0x01D7f32B6E463c96c00575fA97B8224326C6A6B9",
   "displayName": "Liquidity Provider yCRV"
 }

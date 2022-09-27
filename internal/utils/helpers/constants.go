@@ -24,7 +24,7 @@ var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../../data/`)
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
-var SUPPORTED_CHAIN_IDS = []uint64{1}
+var SUPPORTED_CHAIN_IDS = []uint64{250}
 
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{

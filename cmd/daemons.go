@@ -4,7 +4,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yearn/ydaemon/internal/allocation"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
 	"github.com/yearn/ydaemon/internal/prices"

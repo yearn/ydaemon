@@ -10,6 +10,10 @@
     "0xd4E94061183b2DBF24473F28A3559cf4dE4459Db"
   ],
   "protocols": ["Aave", "MakerDAO"],
+  "protocolVersion": [{
+    "Aave": "2",
+    "MakerDAO": "1"
+  }],
   "localization": {
     "en": {
       "name": "Aave Flashmint Folding",

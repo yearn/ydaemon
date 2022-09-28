@@ -3,7 +3,11 @@
   "name": "Aura Reinvest",
   "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0xC7eF34BFEf71c54C23f072BD1a57D74d02fD125D"],
-  "protocols": ["AuraFinance", "Balancer"],
+  "protocols": ["Aura Finance", "Balancer"],
+  "protocolVersion": [{
+    "Aura Finance": "1",
+    "Balancer": "1"
+  }],
   "localization": {
     "en": {
       "name": "Aura Reinvest",

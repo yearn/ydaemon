@@ -9,7 +9,11 @@
     "0x69aa82cb8906906F8AC06A8b83A798E7043a6501",
     "0xcdE892be1dD7aB55F68Ca13bC0c35928819A6eE6"
   ],
-  "protocols": ["Aave", "dydx"],
+  "protocols": ["Aave", "dYdX"],
+  "protocolVersion": [{
+    "Aave": "2",
+    "dYdX": "1"
+  }],
   "localization": {
     "en": {
       "name": "Aave Flashloan Folding",

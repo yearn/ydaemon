@@ -11,6 +11,9 @@
     "0x26B294f9451a10E9358F71B65C391806C2689173"
   ],
   "protocols": ["Aave"],
+  "protocolVersion": [{
+    "Aave": "2"
+  }],
   "localization": {
     "en": {
       "name": "Aave Borrow",

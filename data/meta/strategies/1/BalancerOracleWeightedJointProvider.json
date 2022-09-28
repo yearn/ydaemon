@@ -12,6 +12,9 @@
     "0x579E5d43bA85c26c6e5A8c20b52a01E3318831aE"
   ],
   "protocols": ["Balancer"],
+  "protocolVersion": [{
+    "Balancer": "2"
+  }],
   "localization": {
     "en": {
       "name": "Rebalancer Oracle Weighted Joint Provider",

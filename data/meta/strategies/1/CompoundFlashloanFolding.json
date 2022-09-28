@@ -22,7 +22,11 @@
     "0xF2E9e8eae24deA1a5d40F3a105677AF1797A47D3",
     "0x5784429A040daF68e76b45a3E9818931198d8398"
   ],
-  "protocols": ["CompoundFinance", "dydx"],
+  "protocols": ["Compound Finance", "dYdX"],
+  "protocolVersion": [{
+    "Compound Finance": "2",
+    "dYdX": "1"
+  }],
   "localization": {
     "en": {
       "name": "Compound Finance Flashloan Folding",

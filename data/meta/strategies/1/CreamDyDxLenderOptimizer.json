@@ -3,7 +3,11 @@
   "name": "dYdX / C.R.E.A.M. Lender Optimizer",
   "description": "Supplies {{token}} to [dYdX](https://margin.dydx.exchange/markets/overview) and [C.R.E.A.M.](https://app.cream.finance) to generate interest. The proportions are adjusted each time the strategy calls harvest.",
   "addresses": ["0x32b8C26d0439e1959CEa6262CBabC12320b384c4"],
-  "protocols": ["CreamFinance", "dydx"],
+  "protocols": ["Cream Finance", "dYdX"],
+  "protocolVersion": [{
+    "Cream Finance": "1",
+    "dYdX": "1"
+  }],
   "localization": {
     "en": {
       "name": "dYdX / C.R.E.A.M. Lender Optimizer",

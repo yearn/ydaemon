@@ -17,6 +17,9 @@
     "0xb8cB98701153C16df52f33e7E084c816bE60D8D9"
   ],
   "protocols": ["Aave"],
+  "protocolVersion": [{
+    "Aave": "2"
+  }],
   "localization": {
     "en": {
       "name": "Aave Lender Optimizer",

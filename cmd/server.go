@@ -7,7 +7,6 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"github.com/yearn/ydaemon/internal/allocation"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/partners"
 	"github.com/yearn/ydaemon/internal/prices"
@@ -138,12 +137,6 @@ func NewRouter() *gin.Engine {
 
 	{
 		router.StaticFile("api/tokens/list", helpers.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
-	}
-
-	// Allocation API section
-	{
-		c := allocation.Controller{}
-		router.GET(`api/allocation/median-score`, c.GetMedianScore)
 	}
 
 	return router

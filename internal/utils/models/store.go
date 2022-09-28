@@ -45,7 +45,16 @@ type TStrategyFromRiskRiskScores struct {
 	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
 	TestingScore        float64 `json:"testingScore"`
 }
+
+type TStrategyFromRiskAllocation struct {
+	CurrentTVL    *big.Float `json:"currentTVL"` // value in WANT
+	AvailableTVL  *big.Float `json:"availableTVL"`
+	CurrentUSDC   *big.Float `json:"currentUSDC"` // value in USDC
+	AvailableUSDC *big.Float `json:"availableUSDC"`
+}
+
 type TStrategyFromRisk struct {
 	RiskGroup  string                      `json:"riskGroup"`
 	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
+	Allocation TStrategyFromRiskAllocation `json:"allocation"`
 }

@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Iron Bank",
+  "protocolVersion": "1",
   "description": "Iron Bank is a decentralized lending protocol for individuals, institutions and protocols to access financial services. Built by C.R.E.A.M. Finance in collaboration with Yearn Finance, it is a permissionless, open source and blockchain agnostic protocol serving users on Ethereum and Fantom. Users can deposit their assets on Iron Bank to earn yield, similar to a traditional savings account. The difference between Iron Bank and C.R.E.A.M. v1 is that in Iron Bank, trusted protocols can take out a zero collateral loan when whitelisted.",
   "localization": {
     "en": {

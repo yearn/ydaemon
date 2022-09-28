@@ -149,6 +149,13 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		logs.Warning("Error reading strategyList information")
 		return
 	}
+
+	// Refresh the tvl of groups
+	groups := Store.StrategyGroupFromRisk[chainID]
+	for _, group := range groups {
+		group.Allocation = TStrategyAllocation{}
+	}
+
 	for _, strat := range strategies {
 		// Fetch activation and tvl from multicall
 		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]

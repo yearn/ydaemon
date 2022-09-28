@@ -1,59 +1,60 @@
 {
   "$schema": "protocol",
-  "name": "Aave v3",
-  "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets.",
+  "name": "Aave",
+  "protocolVersion": "3",
+  "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets.",
   "localization": {
     "en": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     },
     "fr": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave est un marché monétaire décentralisé (decentralized money market) fonctionnant sur la blockchain Ethereum. Il permet aux utilisateurs de prêter et  emprunter une gamme d'actifs cryptographiques."
     },
     "es": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave es un mercado monetario descentralizado que se ejecuta en la blockchain de Ethereum. Ayuda a los usuarios a prestar y pedir prestado una variedad de criptoactivos."
     },
     "de": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave ist ein dezentraler Geldmarkt, der auf der Ethereum-Blockchain läuft. Er hilft Nutzern, eine Reihe von Krypto-Vermögenswerten zu leihen und zu verleihen."
     },
     "pt": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave é um mercado monetário descentralizado rodando no blockchain Ethereum. Ele auxilia usuários a emprestar e tomar emprestado um leque de criptoativos."
     },
     "el": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     },
     "tr": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave, Ethereum blok zincirinde çalışan merkezi olmayan bir para piyasasıdır. Kullanıcıların çeşitli kripto varlıklarını ödünç vermesine ve ödünç almasına yardımcı olur."
     },
     "vi": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     },
     "zh": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     },
     "hi": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave एथेरियम ब्लॉकचेन पर चलने वाला एक विकेन्द्रीकृत मुद्रा बाजार है। यह उपयोगकर्ताओं को क्रिप्टोकरेंसी परिसंपत्तियों की एक श्रृंखला को उधार देने और उधार लेने में मदद करता है।"
     },
     "ja": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aaveは、イーサリアムブロックチェーン上で動作する分散型マネーマーケットです。ユーザーがさまざまな暗号資産を貸し借りできるよう支援します。"
     },
     "id": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     },
     "ru": {
-      "name": "Aave v3",
-      "description": "Aave v3 is version 3 of Aave's decentralized money market protocol running on the Optimism blockchain. It helps users to lend and borrow a range of crypto assets."
+      "name": "Aave",
+      "description": "Aave is a decentralized money market running on the Ethereum blockchain. It helps users to lend and borrow a range of crypto assets."
     }
   }
 }

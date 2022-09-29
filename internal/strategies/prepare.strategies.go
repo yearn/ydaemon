@@ -128,8 +128,8 @@ func BuildStrategies(
 
 			currentStrategy.Risk.Allocation.CurrentTVL = riskData.Allocation.CurrentTVL
 			currentStrategy.Risk.Allocation.AvailableTVL = riskData.Allocation.AvailableTVL
-			currentStrategy.Risk.Allocation.CurrentUSDC = riskData.Allocation.CurrentUSDC
-			currentStrategy.Risk.Allocation.AvailableUSDC = riskData.Allocation.AvailableUSDC
+			currentStrategy.Risk.Allocation.CurrentAmount = riskData.Allocation.CurrentAmount
+			currentStrategy.Risk.Allocation.AvailableAmount = riskData.Allocation.AvailableAmount
 		}
 
 		if strategiesCondition == `absolute` &&

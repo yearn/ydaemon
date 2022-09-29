@@ -175,8 +175,8 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			logs.Error("Error fetching token data for token")
 			continue
 		}
-		_, tvl := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
-		tvlUSDC := big.NewFloat(0).Mul(tvl, big.NewFloat(tokenData.Price))
+		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
+		tvl := big.NewFloat(0).Mul(big.NewFloat(0).Set(amount), big.NewFloat(tokenData.Price))
 
 		// Fetch risk group
 		stratGroup := getStrategyGroup(chainID, strat)
@@ -187,7 +187,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			strategy = models.TStrategyFromRisk{
 				RiskGroup: "Others",
 				RiskScores: models.TStrategyFromRiskRiskScores{
-					TVLImpact:           getTVLImpact(tvlUSDC),
+					TVLImpact:           getTVLImpact(tvl),
 					AuditScore:          5,
 					CodeReviewScore:     5,
 					ComplexityScore:     5,
@@ -205,17 +205,17 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		if stratGroup.Allocation.CurrentTVL == nil {
 			stratGroup.Allocation.CurrentTVL = big.NewFloat(0)
 		}
-		if stratGroup.Allocation.CurrentUSDC == nil {
-			stratGroup.Allocation.CurrentUSDC = big.NewFloat(0)
+		if stratGroup.Allocation.CurrentAmount == nil {
+			stratGroup.Allocation.CurrentAmount = big.NewFloat(0)
 		}
 		stratGroup.Allocation.CurrentTVL.Add(stratGroup.Allocation.CurrentTVL, tvl)
-		stratGroup.Allocation.CurrentUSDC.Add(stratGroup.Allocation.CurrentUSDC, tvlUSDC)
+		stratGroup.Allocation.CurrentAmount.Add(stratGroup.Allocation.CurrentAmount, amount)
 
 		// Add strategy risk info
 		strategy = models.TStrategyFromRisk{
 			RiskGroup: stratGroup.Label,
 			RiskScores: models.TStrategyFromRiskRiskScores{
-				TVLImpact:           getTVLImpact(tvlUSDC),
+				TVLImpact:           getTVLImpact(tvl),
 				AuditScore:          stratGroup.AuditScore,
 				CodeReviewScore:     stratGroup.CodeReviewScore,
 				ComplexityScore:     stratGroup.ComplexityScore,
@@ -236,15 +236,15 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		if stratGroup.Allocation.CurrentTVL == nil {
 			stratGroup.Allocation.CurrentTVL = big.NewFloat(0)
 		}
-		if stratGroup.Allocation.CurrentUSDC == nil {
-			stratGroup.Allocation.CurrentUSDC = big.NewFloat(0)
+		if stratGroup.Allocation.CurrentAmount == nil {
+			stratGroup.Allocation.CurrentAmount = big.NewFloat(0)
 		}
 
 		// Fetch median score allocation
-		medianUSDC := getMedianAllocation(*stratGroup)
-		availableUSDC := big.NewFloat(0).Sub(medianUSDC, stratGroup.Allocation.CurrentUSDC)
-		if availableUSDC.Sign() < 0 {
-			availableUSDC = big.NewFloat(0)
+		medianTVL := getMedianAllocation(*stratGroup)
+		availableTVL := big.NewFloat(0).Sub(medianTVL, stratGroup.Allocation.CurrentTVL)
+		if availableTVL.Sign() < 0 {
+			availableTVL = big.NewFloat(0)
 		}
 
 		tokenAddress, ok := tokens.Store.VaultToToken[chainID][strat.Vault]
@@ -258,9 +258,9 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			continue
 		}
 
-		var availableTVL *big.Float
+		var availableAmount *big.Float
 		if tokenData.Price > 0 {
-			availableTVL = big.NewFloat(0).Quo(availableUSDC, big.NewFloat(tokenData.Price))
+			availableAmount = big.NewFloat(0).Quo(availableTVL, big.NewFloat(tokenData.Price))
 		}
 
 		// Assign values from risk group
@@ -268,8 +268,8 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
 			stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL.String()
 			stratRisk.Allocation.AvailableTVL = availableTVL.String()
-			stratRisk.Allocation.CurrentUSDC = stratGroup.Allocation.CurrentUSDC.String()
-			stratRisk.Allocation.AvailableUSDC = availableUSDC.String()
+			stratRisk.Allocation.CurrentAmount = stratGroup.Allocation.CurrentAmount.String()
+			stratRisk.Allocation.AvailableAmount = availableAmount.String()
 			Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
 		}
 	}

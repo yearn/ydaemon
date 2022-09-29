@@ -64,7 +64,7 @@ func testFetchLens(chainID uint64) {
 	if chainID == 250 {
 		maxBatch = 3
 	}
-	response := caller.ExecuteByBatch(calls, maxBatch)
+	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	if Store.TokenPrices[chainID] == nil {
 		Store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}

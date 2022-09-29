@@ -17,6 +17,8 @@ var (
 	RPCURIFor250 string
 	// RPCURIFor42161 : RPC we should use for the chain #42161 (Arbitrum)
 	RPCURIFor42161 string
+	// GraphAPIURI : GraphQL API key
+	GraphAPIURI string
 )
 
 // SetEnv will init the environment variables based on the .env file
@@ -46,6 +48,12 @@ func SetEnv(path string) {
 	if !exists {
 		RPCURIFor42161 = "https://arbitrum.public-rpc.com"
 		logs.Warning("RPC_URI_FOR_42161 not set, using default value: [https://arbitrum.public-rpc.com]")
+	}
+
+	GraphAPIURI, exists = os.LookupEnv("GRAPH_API_URI")
+	if !exists {
+		GraphAPIURI = "https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet"
+		logs.Warning("GRAPH_API_URI not set, using default value: [https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet]")
 	}
 }
 

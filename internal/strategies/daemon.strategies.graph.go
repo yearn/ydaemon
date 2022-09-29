@@ -48,14 +48,14 @@ func FetchStrategiesList(chainID uint64) {
 		}
 	}
 	Store.StrategyList[chainID] = strategyList
-	store.SaveInDBForChainID(`StrategyList`, chainID, Store.StrategyList[chainID])
+	store.SaveInDBForChainID(store.KEYS.StrategyList, chainID, Store.StrategyList[chainID])
 }
 
 // LoadStrategyList will reload the strategyList data store from the last state of the local Badger Database
 func LoadStrategyList(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TStrategyList)
-	if err := store.LoadFromDBForChainID(`StrategyList`, chainID, &temp); err != nil {
+	if err := store.LoadFromDBForChainID(store.KEYS.StrategyList, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {

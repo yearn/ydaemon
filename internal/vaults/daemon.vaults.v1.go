@@ -43,24 +43,21 @@ func FetchVaultsFromV1(chainID uint64) {
 		return
 	}
 
-	// To provide faster access to the data, we index the mapping by the vault address, aka
-	// {[vaultAddress]: TAPIV1Vault} if we were working with JS/TS
+	// To provide faster access to the data, we index the mapping by the vault address
 	if Store.VaultsFromAPIV1[chainID] == nil {
 		Store.VaultsFromAPIV1[chainID] = make(map[common.Address]models.TAPIV1Vault)
 	}
 	for _, vault := range vaults {
-		// common.HexToAddress(vault.Address).String() asserts that the address is a valid
-		// chacksummed hex string
 		Store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address)] = vault
 	}
-	store.SaveInDBForChainID(`VaultsFromAPIV1`, chainID, Store.VaultsFromAPIV1[chainID])
+	store.SaveInDBForChainID(store.KEYS.VaultsFromAPIV1, chainID, Store.VaultsFromAPIV1[chainID])
 }
 
 // LoadAPIV1Vaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
 func LoadAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]models.TAPIV1Vault)
-	if err := store.LoadFromDBForChainID(`VaultsFromAPIV1`, chainID, &temp); err != nil {
+	if err := store.LoadFromDBForChainID(store.KEYS.VaultsFromAPIV1, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {

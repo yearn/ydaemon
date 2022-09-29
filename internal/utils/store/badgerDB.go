@@ -79,3 +79,26 @@ func LoadFromDBForChainID(key string, chainID uint64, dest interface{}) error {
 	}
 	return nil
 }
+
+// Listing the keys used in the database
+type TKeys = struct {
+	TokenPrices                  string
+	TokenData                    string
+	TokenList                    string
+	StrategyList                 string
+	StrategiesMultiCallData      string
+	WithdrawalQueueMultiCallData string
+	VaultMultiCallData           string
+	VaultsFromAPIV1              string
+}
+
+var KEYS = TKeys{
+	TokenPrices:                  "TokenPrices",
+	TokenData:                    "TokenData",
+	TokenList:                    "TokenList",
+	StrategyList:                 "StrategyList",
+	StrategiesMultiCallData:      "StrategiesMultiCallData",
+	WithdrawalQueueMultiCallData: "WithdrawalQueueMultiCallData",
+	VaultMultiCallData:           "VaultMultiCallData",
+	VaultsFromAPIV1:              "VaultsFromAPIV1",
+}

@@ -187,9 +187,6 @@ func TestEnvironment(t *testing.T) {
 	resp, err = http.Get(`http://localhost:8082/hello/vaults/0x6A5468752f8DB94134B6508dAbAC54D3b45efCE6`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8082/1/vaults/0x3D27705c64213A5DcD9D26880c1BcFa72d5b6B0E`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode) //hideAlways
 	resp, err = http.Get(`http://localhost:8082/1/vaults/0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)

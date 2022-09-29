@@ -40,7 +40,7 @@ func GetRPCURI(chainID uint64) string {
 func GetGraphURI(chainID uint64) string {
 	switch chainID {
 	case 1:
-		return `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`
+		return helpers.GraphAPIURI
 	case 10:
 		return `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`
 	case 250:

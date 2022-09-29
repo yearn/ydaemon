@@ -43,7 +43,7 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 		common.HexToAddress("0xed5D83bB6Af23bcb05C144DC816f45A389d622a0"), // Test deployment - Nothing
 	},
 	250: {
-		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"), // AVAX yVault - Not Yearn - Fake
+		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"), // Test deployment - AVAX
 	},
 	42161: {
 		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing

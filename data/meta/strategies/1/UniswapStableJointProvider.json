@@ -11,7 +11,10 @@
     "0x6059eF666807f69D535E2C19ba509e88c7e11F96",
     "0x6e1B0f553D038f0f2de0366A268F1180d5657b7d"
   ],
-  "protocols": ["Uniswap v3"],
+  "protocols": ["Uniswap"],
+  "protocolVersion": [{
+    "Uniswap": "3"
+  }],
   "localization": {
     "en": {
       "name": "Uniswap Stable Joint Provider",

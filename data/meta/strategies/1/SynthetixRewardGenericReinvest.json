@@ -4,6 +4,7 @@
   "description": "Supplies {{token}} to a generic synthetix reward pool to earn protocol tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0xe2a130825Ffb7773B8a13157c6A13f482097AA99"],
   "protocols": [],
+  "protocolVersion": [],
   "localization": {
     "en": {
       "name": "Synthetix Generic Reinvest",

@@ -9,7 +9,10 @@
     "0x6598d4366D5A45De4Bf2D2468D877E0b6436Ae76",
     "0x4a1CfE8da44753067AE462A06Ce5E13d0D561325"
   ],
-  "protocols": ["VesperFinance"],
+  "protocols": ["Vesper Finance"],
+  "protocolVersion": [{
+    "Vesper Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Vesper Finance Reinvest",

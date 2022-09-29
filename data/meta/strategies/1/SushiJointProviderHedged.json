@@ -10,6 +10,10 @@
     "0xdfe0d37fACBA9D2678651152BabE873456E36a1b"
   ],
   "protocols": ["Sushi", "Hegic"],
+  "protocolVersion": [{
+    "Sushi": "1",
+    "Hegic": "1"
+  }],
   "localization": {
     "en": {
       "name": "SushiSwap Hedged Joint Provider",

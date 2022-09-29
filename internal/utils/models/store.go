@@ -47,10 +47,10 @@ type TStrategyFromRiskRiskScores struct {
 }
 
 type TStrategyFromRiskAllocation struct {
-	CurrentTVL    *big.Float `json:"currentTVL"` // value in WANT
-	AvailableTVL  *big.Float `json:"availableTVL"`
-	CurrentUSDC   *big.Float `json:"currentUSDC"` // value in USDC
-	AvailableUSDC *big.Float `json:"availableUSDC"`
+	CurrentTVL    string `json:"currentTVL"` // value in WANT
+	AvailableTVL  string `json:"availableTVL"`
+	CurrentUSDC   string `json:"currentUSDC"` // value in USDC
+	AvailableUSDC string `json:"availableUSDC"`
 }
 
 type TStrategyFromRisk struct {

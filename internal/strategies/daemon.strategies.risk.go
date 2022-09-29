@@ -153,7 +153,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	// Refresh the tvl of groups
 	groups := Store.StrategyGroupFromRisk[chainID]
 	for _, group := range groups {
-		group.Allocation = TStrategyAllocation{}
+		group.Allocation = TStrategyGroupAllocation{}
 	}
 
 	for _, strat := range strategies {
@@ -266,10 +266,10 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		// Assign values from risk group
 		if availableTVL != nil {
 			stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
-			stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL
-			stratRisk.Allocation.AvailableTVL = availableTVL
-			stratRisk.Allocation.CurrentUSDC = stratGroup.Allocation.CurrentUSDC
-			stratRisk.Allocation.AvailableUSDC = availableUSDC
+			stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL.String()
+			stratRisk.Allocation.AvailableTVL = availableTVL.String()
+			stratRisk.Allocation.CurrentUSDC = stratGroup.Allocation.CurrentUSDC.String()
+			stratRisk.Allocation.AvailableUSDC = availableUSDC.String()
 			Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
 		}
 	}

@@ -125,6 +125,11 @@ func BuildStrategies(
 			currentStrategy.Risk.ProtocolSafetyScore = int(riskData.RiskScores.ProtocolSafetyScore)
 			currentStrategy.Risk.TeamKnowledgeScore = int(riskData.RiskScores.TeamKnowledgeScore)
 			currentStrategy.Risk.TestingScore = int(riskData.RiskScores.TestingScore)
+
+			currentStrategy.Risk.Allocation.CurrentTVL = riskData.Allocation.CurrentTVL
+			currentStrategy.Risk.Allocation.AvailableTVL = riskData.Allocation.AvailableTVL
+			currentStrategy.Risk.Allocation.CurrentAmount = riskData.Allocation.CurrentAmount
+			currentStrategy.Risk.Allocation.AvailableAmount = riskData.Allocation.AvailableAmount
 		}
 
 		if strategiesCondition == `absolute` &&

@@ -74,6 +74,15 @@ func ValueWithFallback(s string, defaultValue string) string {
 	}
 	return s
 }
+func SafeBigFloat(s *big.Float, defaultValue ...*big.Float) *big.Float {
+	if s == nil {
+		if len(defaultValue) == 0 || defaultValue[0] == nil {
+			return big.NewFloat(0)
+		}
+		return defaultValue[0]
+	}
+	return s
+}
 
 // BValueWithFallbackUint64 is used to return the first value as uint64 if it is
 // not empty, otherwise it returns the second value

@@ -16,4 +16,5 @@ services:
       - RPC_URI_FOR_250
       - RPC_URI_FOR_42161
       - WEBHOOK_SECRET
+      - GRAPH_API_URI
     restart: always

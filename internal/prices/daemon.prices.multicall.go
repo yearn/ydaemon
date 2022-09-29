@@ -252,7 +252,7 @@ func FetchLens(chainID uint64) {
 	if chainID == 250 {
 		maxBatch = 3
 	}
-	response := caller.ExecuteByBatch(calls, maxBatch)
+	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	if Store.TokenPrices[chainID] == nil {
 		Store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}
@@ -284,14 +284,14 @@ func FetchLens(chainID uint64) {
 	// }
 	// logs.Pretty(isZero)
 
-	store.SaveInDBForChainID(`TokenPrices`, chainID, Store.TokenPrices[chainID])
+	store.SaveInDBForChainID(store.KEYS.TokenPrices, chainID, Store.TokenPrices[chainID])
 }
 
 // LoadLens will reload the lens data store from the last state of the local Badger Database
 func LoadLens(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*big.Int)
-	if err := store.LoadFromDBForChainID(`TokenPrices`, chainID, &temp); err != nil {
+	if err := store.LoadFromDBForChainID(store.KEYS.TokenPrices, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {

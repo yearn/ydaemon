@@ -49,7 +49,7 @@ func FetchWithdrawalQueueMulticallData(chainID uint64) {
 	}
 
 	maxBatch := math.MaxInt64
-	response := caller.ExecuteByBatch(calls, maxBatch)
+	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	withdrawQueueForStrategies := make(map[common.Address]int64)
 	for _, vault := range vaultList {
 		for i := 0; i < maxStrategiesPerVault; i++ {
@@ -64,14 +64,14 @@ func FetchWithdrawalQueueMulticallData(chainID uint64) {
 	}
 
 	Store.WithdrawalQueueMultiCallData[chainID] = withdrawQueueForStrategies
-	store.SaveInDBForChainID(`WithdrawalQueueMultiCallData`, chainID, Store.WithdrawalQueueMultiCallData[chainID])
+	store.SaveInDBForChainID(store.KEYS.WithdrawalQueueMultiCallData, chainID, Store.WithdrawalQueueMultiCallData[chainID])
 }
 
 // LoadWithdrawalQueueMulticallData will reload the multicall withdrawal queue data store from the last state of the local Badger Database
 func LoadWithdrawalQueueMulticallData(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]int64)
-	if err := store.LoadFromDBForChainID(`WithdrawalQueueMultiCallData`, chainID, &temp); err != nil {
+	if err := store.LoadFromDBForChainID(store.KEYS.WithdrawalQueueMultiCallData, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {

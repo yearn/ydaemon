@@ -50,7 +50,7 @@ func FetchVaultMulticallData(chainID uint64) {
 
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
-	response := caller.ExecuteByBatch(calls, maxBatch)
+	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	if prices.Store.VaultPricePerShare[chainID] == nil {
 		prices.Store.VaultPricePerShare[chainID] = make(map[common.Address]*big.Int)
 	}
@@ -65,14 +65,14 @@ func FetchVaultMulticallData(chainID uint64) {
 		}
 		prices.Store.VaultPricePerShare[chainID][vault.Address] = pricePerShare
 	}
-	store.SaveInDBForChainID(`VaultMultiCallData`, chainID, prices.Store.VaultPricePerShare[chainID])
+	store.SaveInDBForChainID(store.KEYS.VaultMultiCallData, chainID, prices.Store.VaultPricePerShare[chainID])
 }
 
 // LoadVaultMulticallData will reload the multicall data store from the last state of the local Badger Database
 func LoadVaultMulticallData(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*big.Int)
-	if err := store.LoadFromDBForChainID(`VaultMultiCallData`, chainID, &temp); err != nil {
+	if err := store.LoadFromDBForChainID(store.KEYS.VaultMultiCallData, chainID, &temp); err != nil {
 		return
 	}
 	if temp != nil && (len(temp) > 0) {

@@ -170,6 +170,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	groups := Store.StrategyGroupFromRisk[chainID]
 	for _, group := range groups {
 		group.Allocation = TStrategyGroupAllocation{}
+		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 	}
 
 	for _, strat := range strategies {
@@ -199,7 +200,8 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		}
 
 		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
-		tvl := big.NewFloat(0).Mul(big.NewFloat(0).Set(amount), big.NewFloat(tokenData.Price))
+		tokenPrice := big.NewFloat(tokenData.Price)
+		tvl := big.NewFloat(0).Mul(big.NewFloat(0).Set(amount), tokenPrice)
 		strategy.RiskScores.TVLImpact = getTVLImpact(tvl)
 
 		// Send to Others group if no group was found
@@ -212,6 +214,14 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		// Update tvl of group
 		stratGroup.Allocation.CurrentTVL = big.NewFloat(0).Add(helpers.SafeBigFloat(stratGroup.Allocation.CurrentTVL), tvl)
 		stratGroup.Allocation.CurrentAmount = big.NewFloat(0).Add(helpers.SafeBigFloat(stratGroup.Allocation.CurrentAmount), amount)
+		if tokenPrice.Sign() <= 0 {
+			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
+			stratGroup.Allocation.AvailableTVL = big.NewFloat(0)
+			stratGroup.Allocation.AvailableAmount = big.NewFloat(0)
+		} else {
+			stratGroup.Allocation.AvailableTVL = big.NewFloat(0).Sub(helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL), tvl)
+			stratGroup.Allocation.AvailableAmount = big.NewFloat(0).Quo(helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL), tokenPrice)
+		}
 
 		// Updating the default schema
 		strategy.RiskGroup = stratGroup.Label
@@ -229,42 +239,12 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		if stratGroup == nil {
 			continue
 		}
-
-		stratGroup.Allocation.CurrentTVL = helpers.SafeBigFloat(stratGroup.Allocation.CurrentTVL)
-		stratGroup.Allocation.CurrentAmount = helpers.SafeBigFloat(stratGroup.Allocation.CurrentAmount)
-
-		// Fetch median score allocation
-		medianTVL := getMedianAllocation(*stratGroup)
-		availableTVL := big.NewFloat(0).Sub(medianTVL, stratGroup.Allocation.CurrentTVL)
-		if availableTVL.Sign() < 0 {
-			availableTVL = big.NewFloat(0)
-		}
-
-		var tokenData *tokens.TERC20Token
-		if tokenAddress, ok := tokens.Store.VaultToToken[chainID][strat.Vault]; ok {
-			if tokenData, ok = tokens.Store.Tokens[chainID][tokenAddress]; !ok {
-				logs.Warning("Impossible to find tokenData for token ", tokenAddress.String())
-				continue
-			}
-		} else {
-			logs.Warning("Impossible to find token for vault ", strat.Vault.String())
-			continue
-		}
-
-		availableAmount := big.NewFloat(0)
-		if tokenData.Price > 0 {
-			availableAmount = big.NewFloat(0).Quo(availableTVL, big.NewFloat(tokenData.Price))
-		}
-
-		// Assign values from risk group
-		if availableAmount != nil {
-			stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
-			stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL.String()
-			stratRisk.Allocation.AvailableTVL = availableTVL.String()
-			stratRisk.Allocation.CurrentAmount = stratGroup.Allocation.CurrentAmount.String()
-			stratRisk.Allocation.AvailableAmount = availableAmount.String()
-			Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
-		}
+		stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
+		stratRisk.Allocation.CurrentTVL = helpers.SafeBigFloat(stratGroup.Allocation.CurrentTVL).String()
+		stratRisk.Allocation.CurrentAmount = helpers.SafeBigFloat(stratGroup.Allocation.CurrentAmount).String()
+		stratRisk.Allocation.AvailableTVL = helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL).String()
+		stratRisk.Allocation.AvailableAmount = helpers.SafeBigFloat(stratGroup.Allocation.AvailableAmount).String()
+		Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
 	}
 }
 

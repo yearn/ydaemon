@@ -18,7 +18,10 @@
     "0xec51FFfE35f5B2B841103cFC5d4F5Eb22C8Fa33e",
     "0xb851D31fF1c2dD4fa2f4b584e833202F500c90a7"
   ],
-  "protocols": ["GeistFinance"],
+  "protocols": ["Geist Finance"],
+  "protocolVersion": [{
+    "Geist Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Geist Folding",

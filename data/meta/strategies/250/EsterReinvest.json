@@ -3,7 +3,10 @@
   "name": "Ester Reinvest",
   "description": "Supplies {{token}} to [Ester.Finance](https://ester.finance) to earn EST. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0x0Edd8F5786f2AFeBa9fa56a65487bA3F6264AAA9"],
-  "protocols": ["EsterFinance"],
+  "protocols": ["Ester Finance"],
+  "protocolVersion": [{
+    "Ester Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Ester Reinvest",

@@ -3,7 +3,11 @@
   "name": "Boo Reinvest",
   "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn HEC. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0x76821Cdcad8Cae7aff53680e215E63EB54d6e6ca"],
-  "protocols": ["SpookySwap", "HectorFinance"],
+  "protocols": ["SpookySwap", "Hector Finance"],
+  "protocolVersion": [{
+    "Hector Finance": "1",
+    "SpookySwap": "1"
+  }],
   "localization": {
     "en": {
       "name": "Boo Reinvest",

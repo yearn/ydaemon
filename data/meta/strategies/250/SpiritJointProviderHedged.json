@@ -9,6 +9,9 @@
     "0x84A92b621897Bf7e4a95e80d91b3ab7491e9Db39"
   ],
   "protocols": ["SpiritSwap"],
+  "protocolVersion": [{
+    "SpiritSwap": "1"
+  }],
   "localization": {
     "en": {
       "name": "Spirit Joint Provider Hedged",

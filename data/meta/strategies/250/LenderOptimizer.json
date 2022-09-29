@@ -23,7 +23,11 @@
     "0x975a333121285771b87B5A8C322af218D538d4F7",
     "0x754133e0f67CB51263d6d5F41f2dF1a58a9D36b7"
   ],
-  "protocols": ["Scream", "IronBank"],
+  "protocols": ["Scream", "Iron Bank"],
+  "protocolVersion": [{
+    "Scream": "1",
+    "Iron Bank": "1"
+  }],
   "localization": {
     "en": {
       "name": "Lender Optimizer",

@@ -4,6 +4,9 @@
   "description": "Supplies {{token}} to [Abracadabra](https://abracadabra.money/farm-stand) to earn SPELL. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0x26F698491Daf32771217ABc1356dae48c7230C75"],
   "protocols": ["Abracadabra"],
+  "protocolVersion": [{
+    "Abracadabra": "1"
+  }],
   "localization": {
     "en": {
       "name": "Curve MIM 3Pool Staker",

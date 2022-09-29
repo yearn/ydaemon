@@ -8,7 +8,10 @@
     "0x33e7c1718569d9f37B7a154B30Ae4f3C9f619A23",
     "0x997a498E72d4225F0D78540B6ffAbb6cA869edc9"
   ],
-  "protocols": ["CurveFinance"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": [{
+    "Curve Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Curve Boost",

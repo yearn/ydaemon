@@ -3,7 +3,11 @@
   "name": "Goldfinch Staker",
   "description": "Swaps {{token}} to FIDU Stablecoin, which represents a share of the senior tranche, and stakes in [Goldfinch Finance](https://app.goldfinch.finance/stake) to earn GFI staking rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0x358eb2Ecfa2057Ac52dD435427cB8D094B33AbE0"],
-  "protocols": ["CurveFinance", "GoldfinchFinance"],
+  "protocols": ["Curve Finance", "Goldfinch Finance"],
+  "protocolVersion": [{
+    "Curve Finance": "1",
+    "Goldfinch Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Goldfinch Staker",

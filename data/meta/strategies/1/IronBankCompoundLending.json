@@ -6,7 +6,11 @@
     "0x77b7CD137Dd9d94e7056f78308D7F65D2Ce68910",
     "0xE68A8565B4F837BDa10e2e917BFAaa562e1cD143"
   ],
-  "protocols": ["CompoundFinance", "IronBank"],
+  "protocols": ["Compound Finance", "Iron Bank"],
+  "protocolVersion": [{
+    "Compound Finance": "1",
+    "Iron Bank": "1"
+  }],
   "localization": {
     "en": {
       "name": "Iron Bank Enhanced Compound Finance Lending",

@@ -70,7 +70,7 @@ func SummonDaemons(chainID uint64) {
 	wg.Add(1)
 	{
 		//Require strategies.FetchLens to be done
-		go runDaemon(chainID, &wg, time.Minute, strategies.FetchStrategiesFromRisk)
+		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
 	}
 
 	wg.Wait()

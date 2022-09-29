@@ -29,23 +29,26 @@ var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	1: {
-		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"),
-		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"),
-		common.HexToAddress("0xBF7AA989192b020a8d3e1C65a558e123834325cA"),
-		common.HexToAddress("0x4Fdd1B06eF986238446be0F3EA163C1b6Fe28cC1"),
+		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing
+		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"), // Test deployment - Nothing
+		common.HexToAddress("0xBF7AA989192b020a8d3e1C65a558e123834325cA"), // HBTC yVault - Not Yearn - PPS 0
+		common.HexToAddress("0x4Fdd1B06eF986238446be0F3EA163C1b6Fe28cC1"), // GUSD yVault - Not Yearn - PPS 100
+		common.HexToAddress("0x8a0889d47f9Aa0Fac1cC718ba34E26b867437880"), // Old st-yCRV
+		common.HexToAddress("0x61f46C65E403429266e8b569F23f70dD75d9BeE7"), // Old lp-yCRV
+
 	},
 	10: {
-		common.HexToAddress("0x6884bd538Db61A626Da0a05E10807BFC5Aea2b32"),
-		common.HexToAddress("0xDB8bBF2b0e28721F9BAc603e687E39bcF52201f8"),
-		common.HexToAddress("0xed5D83bB6Af23bcb05C144DC816f45A389d622a0"),
+		common.HexToAddress("0x6884bd538Db61A626Da0a05E10807BFC5Aea2b32"), // Test deployment - Nothing
+		common.HexToAddress("0xDB8bBF2b0e28721F9BAc603e687E39bcF52201f8"), // Test deployment - Nothing
+		common.HexToAddress("0xed5D83bB6Af23bcb05C144DC816f45A389d622a0"), // Test deployment - Nothing
 	},
 	250: {
-		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"),
+		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"), // Test deployment - AVAX
 	},
 	42161: {
-		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"),
-		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"),
-		common.HexToAddress("0xFa247d0D55a324ca19985577a2cDcFC383D87953"),
+		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
+		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
+		common.HexToAddress("0xFa247d0D55a324ca19985577a2cDcFC383D87953"), // Test deployment - PHP
 	},
 }
 

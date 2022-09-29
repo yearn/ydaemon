@@ -264,7 +264,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		}
 
 		// Assign values from risk group
-		if availableTVL != nil {
+		if availableAmount != nil {
 			stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
 			stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL.String()
 			stratRisk.Allocation.AvailableTVL = availableTVL.String()

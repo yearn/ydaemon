@@ -165,14 +165,43 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		}
 
 		// Fetch tvl of strategy
+		var strategy models.TStrategyFromRisk
 		tokenAddress, ok := tokens.Store.VaultToToken[chainID][strat.Vault]
 		if !ok {
 			logs.Error("Error fetching token address from vault")
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: "Others",
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           5,
+					AuditScore:          5,
+					CodeReviewScore:     5,
+					ComplexityScore:     5,
+					LongevityImpact:     getLongevityImpact(data.Activation),
+					ProtocolSafetyScore: 5,
+					TeamKnowledgeScore:  5,
+					TestingScore:        5,
+				},
+			}
+			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 			continue
 		}
 		tokenData, ok := tokens.Store.Tokens[chainID][tokenAddress]
 		if !ok {
 			logs.Error("Error fetching token data for token")
+			strategy = models.TStrategyFromRisk{
+				RiskGroup: "Others",
+				RiskScores: models.TStrategyFromRiskRiskScores{
+					TVLImpact:           5,
+					AuditScore:          5,
+					CodeReviewScore:     5,
+					ComplexityScore:     5,
+					LongevityImpact:     getLongevityImpact(data.Activation),
+					ProtocolSafetyScore: 5,
+					TeamKnowledgeScore:  5,
+					TestingScore:        5,
+				},
+			}
+			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 			continue
 		}
 		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
@@ -182,7 +211,6 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		stratGroup := getStrategyGroup(chainID, strat)
 
 		// Send to Others group if no group was found
-		var strategy models.TStrategyFromRisk
 		if stratGroup == nil {
 			strategy = models.TStrategyFromRisk{
 				RiskGroup: "Others",

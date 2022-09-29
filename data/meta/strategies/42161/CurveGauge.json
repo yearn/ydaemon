@@ -7,7 +7,10 @@
     "0xcDD989d84f9B63D2f0B1906A2d9B22355316dE31",
     "0xF992FCEF771dF908f9B09Bb2619092f70AB21957"
   ],
-  "protocols": ["CurveFinance"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": [{
+    "Curve Finance": "1"
+  }],
   "localization": {
     "en": {
       "name": "Curve Gauge",

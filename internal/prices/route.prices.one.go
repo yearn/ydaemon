@@ -20,14 +20,14 @@ func (y Controller) GetPrice(c *gin.Context) {
 		return
 	}
 
-	humanized := helpers.ValueWithFallback(c.Query("humanized"), "false")
+	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
 	price, ok := Store.TokenPrices[chainID][address]
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 
-	if humanized == "true" {
+	if humanized {
 		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
 		c.JSON(http.StatusOK, humanizedPrice)
 	} else {

@@ -10,7 +10,7 @@ import (
 
 //GetBlacklistedVaults returns a list of blacklisted vaults by the API
 func (y Controller) GetBlacklistedVaults(c *gin.Context) {
-	chainID := helpers.ValueWithFallback(c.Query("chainID"), "0")
+	chainID := helpers.SafeString(c.Query("chainID"), "0")
 	if chainID == "0" {
 		c.JSON(http.StatusOK, helpers.BLACKLISTED_VAULTS)
 	} else {

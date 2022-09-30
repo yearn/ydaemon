@@ -1,9 +1,8 @@
 package partners
 
 import (
-	"math/big"
-
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 )
 
 type TPartnersFromFile struct {
@@ -21,9 +20,9 @@ type TPartnersFromFile struct {
 type TPartnersWrapper struct {
 	Vault     common.Address `json:"vault,omitempty"`
 	Wrapper   common.Address `json:"wrapper"`
+	BalanceOf *bigNumber.Int `json:"balanceOf,omitempty"`
 	Name      string         `json:"name"`
 	Type      string         `json:"type"`
-	BalanceOf *big.Int       `json:"balanceOf,omitempty"`
 }
 
 type TPartners struct {

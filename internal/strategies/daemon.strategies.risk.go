@@ -2,13 +2,15 @@ package strategies
 
 import (
 	"encoding/json"
-	"math/big"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/montanaflynn/stats"
+	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -26,7 +28,7 @@ func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 }
 
 func includeAddress(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
-	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy.String())
+	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy)
 }
 
 func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
@@ -40,8 +42,8 @@ func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 	return false
 }
 
-func getTVLImpact(strategyData models.TStrategyMultiCallData) float64 {
-	tvl := strategyData.EstimatedTotalAssets.Int64()
+func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
+	tvl, _ := tvlUSDC.Float32()
 	switch {
 	case tvl == 0:
 		return 0
@@ -58,12 +60,12 @@ func getTVLImpact(strategyData models.TStrategyMultiCallData) float64 {
 	}
 }
 
-func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
-	if strategyData.Activation == nil || strategyData.Activation == big.NewInt(0) {
+func getLongevityImpact(activation *bigNumber.Int) float64 {
+	if activation == nil || activation.IsZero() {
 		return 5
 	}
-	activation := time.Unix(strategyData.Activation.Int64(), 0)
-	longevity := time.Since(activation)
+	activationUnix := time.Unix(activation.Int64(), 0)
+	longevity := time.Since(activationUnix)
 	days := time.Hour * 24
 	switch {
 	case longevity > 240*days:
@@ -79,11 +81,71 @@ func getLongevityImpact(strategyData models.TStrategyMultiCallData) float64 {
 	}
 }
 
+func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
+	scores := []float64{
+		group.AuditScore,
+		group.CodeReviewScore,
+		group.ComplexityScore,
+		group.ProtocolSafetyScore,
+		group.TeamKnowledgeScore,
+		group.TestingScore,
+	}
+	median, _ := stats.Median(scores)
+	switch {
+	case median <= 1:
+		return bigNumber.NewFloat(100_000_000)
+	case median <= 2:
+		return bigNumber.NewFloat(50_000_000)
+	case median <= 3:
+		return bigNumber.NewFloat(10_000_000)
+	case median <= 4:
+		return bigNumber.NewFloat(1_000_000)
+	default:
+		return bigNumber.NewFloat(0)
+	}
+}
+
+func getStrategyGroup(chainID uint64, strategy models.TStrategyList) *TStrategyGroupFromRisk {
+	groups := Store.StrategyGroupFromRisk[chainID]
+	var stratGroup *TStrategyGroupFromRisk
+	for _, group := range groups {
+		if excludeNameLike(strategy, *group) {
+			continue
+		}
+		if includeAddress(strategy, *group) || includeNameLike(strategy, *group) {
+			stratGroup = group
+			break
+		}
+	}
+	return stratGroup
+}
+
+func getDefaultRiskGroup() TStrategyFromRisk {
+	return TStrategyFromRisk{
+		RiskGroup: "Others",
+		RiskScores: TStrategyFromRiskRiskScores{
+			TVLImpact:           5,
+			AuditScore:          5,
+			CodeReviewScore:     5,
+			ComplexityScore:     5,
+			LongevityImpact:     5,
+			ProtocolSafetyScore: 5,
+			TeamKnowledgeScore:  5,
+			TestingScore:        5,
+		},
+		Allocation: &TStrategyAllocation{
+			CurrentTVL:      bigNumber.NewFloat(0),
+			AvailableTVL:    bigNumber.NewFloat(0),
+			CurrentAmount:   bigNumber.NewFloat(0),
+			AvailableAmount: bigNumber.NewFloat(0),
+		},
+	}
+}
+
 // FetchStrategiesFromRisk fetches the strategies information from the Risk Framework for a given chainID
 // and store the result to the global variable StrategiesFromRisk for later use.
 func FetchStrategiesFromRisk(chainID uint64) {
 	// Read data from the risk framework json file
-	groups := []*TStrategyGroupFromRisk{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
@@ -96,12 +158,12 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			logs.Warning("Error unmarshalling response body from the Risk Framework")
 			return
 		}
-		groups = append(groups, group)
+		Store.StrategyGroupFromRisk[chainID] = append(Store.StrategyGroupFromRisk[chainID], group)
 	}
 
 	// Init the store if empty
 	if Store.StrategiesFromRisk[chainID] == nil {
-		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
+		Store.StrategiesFromRisk[chainID] = make(map[common.Address]TStrategyFromRisk)
 	}
 
 	strategies, ok := Store.StrategyList[chainID]
@@ -109,56 +171,73 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		logs.Warning("Error reading strategyList information")
 		return
 	}
+
+	// Refresh the tvl of groups
+	groups := Store.StrategyGroupFromRisk[chainID]
+	for _, group := range groups {
+		group.Allocation = &TStrategyAllocation{}
+		group.Allocation.AvailableTVL = getMedianAllocation(*group)
+	}
+
 	for _, strat := range strategies {
-		var stratGroup TStrategyGroupFromRisk
-		for _, group := range groups {
-			if excludeNameLike(strat, *group) {
-				continue
-			}
-			if includeAddress(strat, *group) || includeNameLike(strat, *group) {
-				stratGroup = *group
-				break
-			}
-		}
+		stratGroup := getStrategyGroup(chainID, strat)
+		strategy := getDefaultRiskGroup()
 
 		// Fetch activation and tvl from multicall
 		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
 		if !ok {
-			logs.Error("Error fetching strategy data from multicall")
-			return
+			logs.Warning("Error fetching strategy data from multicall")
+			continue
 		}
+		strategy.RiskScores.LongevityImpact = getLongevityImpact(data.Activation)
 
-		// Send to Others group if no group was found
-		var strategy models.TStrategyFromRisk
-		if stratGroup.Label == "" {
-			strategy = models.TStrategyFromRisk{
-				RiskGroup: "Others",
-				RiskScores: models.TStrategyFromRiskRiskScores{
-					TVLImpact:           getTVLImpact(data),
-					AuditScore:          5,
-					CodeReviewScore:     5,
-					ComplexityScore:     5,
-					LongevityImpact:     getLongevityImpact(data),
-					ProtocolSafetyScore: 5,
-					TeamKnowledgeScore:  5,
-					TestingScore:        5,
-				},
+		// Fetch tvl of strategy
+		var tokenData *tokens.TERC20Token
+		if tokenAddress, ok := tokens.Store.VaultToToken[chainID][strat.Vault]; ok {
+			if tokenData, ok = tokens.Store.Tokens[chainID][tokenAddress]; !ok {
+				logs.Warning("Impossible to find tokenData for token ", tokenAddress.String())
+				Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+				continue
 			}
 		} else {
-			strategy = models.TStrategyFromRisk{
-				RiskGroup: stratGroup.Label,
-				RiskScores: models.TStrategyFromRiskRiskScores{
-					TVLImpact:           getTVLImpact(data),
-					AuditScore:          stratGroup.AuditScore,
-					CodeReviewScore:     stratGroup.CodeReviewScore,
-					ComplexityScore:     stratGroup.ComplexityScore,
-					LongevityImpact:     getLongevityImpact(data),
-					ProtocolSafetyScore: stratGroup.ProtocolSafetyScore,
-					TeamKnowledgeScore:  stratGroup.TeamKnowledgeScore,
-					TestingScore:        stratGroup.TestingScore,
-				},
-			}
+			logs.Warning("Impossible to find token for vault ", strat.Vault.String())
+			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+			continue
 		}
+
+		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
+		tokenPrice := bigNumber.NewFloat(tokenData.Price)
+		tvl := bigNumber.NewFloat(0).Mul(amount, tokenPrice)
+		strategy.RiskScores.TVLImpact = getTVLImpact(tvl)
+
+		// Send to Others group if no group was found
+		if stratGroup == nil {
+			logs.Warning("Impossible to find stratGroup for group ", strat.Name)
+			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+			continue
+		}
+
+		// Update tvl of group
+		stratGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentTVL, tvl)
+		stratGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentAmount, amount)
+		if tokenPrice.Sign() <= 0 {
+			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
+			stratGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0)
+			stratGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0)
+		} else {
+			stratGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0).Sub(stratGroup.Allocation.AvailableTVL, tvl)
+			stratGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0).Quo(stratGroup.Allocation.AvailableTVL, tokenPrice)
+		}
+
+		// Updating the default schema
+		strategy.RiskGroup = stratGroup.Label
+		strategy.RiskScores.AuditScore = stratGroup.AuditScore
+		strategy.RiskScores.CodeReviewScore = stratGroup.CodeReviewScore
+		strategy.RiskScores.ComplexityScore = stratGroup.ComplexityScore
+		strategy.RiskScores.ProtocolSafetyScore = stratGroup.ProtocolSafetyScore
+		strategy.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
+		strategy.RiskScores.TestingScore = stratGroup.TestingScore
+		strategy.Allocation = stratGroup.Allocation
 		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 	}
 }

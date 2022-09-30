@@ -1,26 +1,30 @@
 package vaults
 
-import "github.com/yearn/ydaemon/internal/strategies"
+import (
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+)
 
 // TToken holds the info about the underlying (or want) token of a vault
 type TToken struct {
-	Address     string `json:"address"`
-	Name        string `json:"name"`
-	DisplayName string `json:"display_name"`
-	Symbol      string `json:"symbol"`
-	Description string `json:"description"`
-	Decimals    uint64 `json:"decimals"`
-	Icon        string `json:"icon"`
+	Address     common.Address `json:"address"`
+	Name        string         `json:"name"`
+	DisplayName string         `json:"display_name"`
+	Symbol      string         `json:"symbol"`
+	Description string         `json:"description"`
+	Decimals    uint64         `json:"decimals"`
+	Icon        string         `json:"icon"`
 }
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets          string  `json:"total_assets"`
-	TotalDelegatedAssets string  `json:"total_delegated_assets"`
-	TVLDeposited         float64 `json:"tvl_deposited"`
-	TVLDelegated         float64 `json:"tvl_delegated"`
-	TVL                  float64 `json:"tvl"`
-	Price                float64 `json:"price"`
+	TotalAssets          *bigNumber.Int `json:"total_assets"`
+	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
+	TVLDeposited         float64        `json:"tvl_deposited"`
+	TVLDelegated         float64        `json:"tvl_delegated"`
+	TVL                  float64        `json:"tvl"`
+	Price                float64        `json:"price"`
 }
 
 // TAPYFees holds the fees information about this vault.
@@ -61,33 +65,33 @@ type TAPY struct {
 
 // TMigration helps us to know if a vault is in the process of being migrated.
 type TMigration struct {
-	Available bool   `json:"available"`
-	Address   string `json:"address"`
+	Available bool           `json:"available"`
+	Address   common.Address `json:"address"`
 }
 
 //TVault details holds some extra information about the vault.
 type TVaultDetails struct {
-	Management            string  `json:"management"`
-	Governance            string  `json:"governance"`
-	Guardian              string  `json:"guardian"`
-	Rewards               string  `json:"rewards"`
-	DepositLimit          string  `json:"depositLimit"`
-	Comment               string  `json:"comment"`
-	AvailableDepositLimit string  `json:"availableDepositLimit,omitempty"`
-	APYTypeOverride       string  `json:"apyTypeOverride"`
-	Order                 float32 `json:"-"`
-	PerformanceFee        uint64  `json:"performanceFee"`
-	ManagementFee         uint64  `json:"managementFee"`
-	DepositsDisabled      bool    `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool    `json:"withdrawalsDisabled"`
-	AllowZapIn            bool    `json:"allowZapIn"`
-	AllowZapOut           bool    `json:"allowZapOut"`
-	Retired               bool    `json:"retired"`
+	Management            common.Address `json:"management"`
+	Governance            common.Address `json:"governance"`
+	Guardian              common.Address `json:"guardian"`
+	Rewards               common.Address `json:"rewards"`
+	DepositLimit          *bigNumber.Int `json:"depositLimit"`
+	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
+	Comment               string         `json:"comment"`
+	APYTypeOverride       string         `json:"apyTypeOverride"`
+	PerformanceFee        uint64         `json:"performanceFee"`
+	ManagementFee         uint64         `json:"managementFee"`
+	DepositsDisabled      bool           `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool           `json:"withdrawalsDisabled"`
+	AllowZapIn            bool           `json:"allowZapIn"`
+	AllowZapOut           bool           `json:"allowZapOut"`
+	Retired               bool           `json:"retired"`
+	Order                 float32        `json:"-"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address            string                 `json:"address"`
+	Address            common.Address         `json:"address"`
 	Symbol             string                 `json:"symbol"`
 	DisplaySymbol      string                 `json:"display_symbol"`
 	FormatedSymbol     string                 `json:"formated_symbol"`

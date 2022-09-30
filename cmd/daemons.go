@@ -48,8 +48,8 @@ func SummonDaemons(chainID uint64) {
 
 	wg.Add(1)
 	{
-    go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
-  }  
+		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+	}
 	wg.Wait()
 
 	wg.Add(2)
@@ -61,12 +61,16 @@ func SummonDaemons(chainID uint64) {
 	}
 	wg.Wait()
 
-	wg.Add(2)
+	wg.Add(1)
 	{
-		//Require strategies.FetchStrategiesMulticallData to be done
-		go runDaemon(chainID, &wg, 0, strategies.FetchStrategiesFromRisk)
 		//Require vaults.FetchVaultMulticallData to be done
 		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
+	}
+	wg.Wait()
+	wg.Add(1)
+	{
+		//Require prices.FetchLens to be done
+		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
 	}
 
 	wg.Wait()

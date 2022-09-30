@@ -39,9 +39,9 @@ func FetchStrategiesList(chainID uint64) {
 
 	for _, vault := range response.Vaults {
 		for _, strat := range vault.Strategies {
-			strategyList[common.HexToAddress(strat.Address)] = models.TStrategyList{
-				Strategy:     common.HexToAddress(strat.Address),
-				Vault:        common.HexToAddress(vault.Id),
+			strategyList[strat.Address] = models.TStrategyList{
+				Strategy:     strat.Address,
+				Vault:        vault.Id,
 				VaultVersion: vault.ApiVersion,
 				Name:         strat.Name,
 			}

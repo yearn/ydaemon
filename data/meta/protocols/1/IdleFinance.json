@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Idle Finance",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Idle Finance is a decentralized rebalancing protocol. It helps users to automatically and algorithmically manage their digital asset allocation among different third-party DeFi protocols. Users can choose to maximize interest rate returns through MaxYield strategy or minimize their risk exposure through RiskAdjusted allocation strategy.",
   "localization": {
     "en": {

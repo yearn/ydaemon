@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Curve Finance",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Curve Finance is an automated market maker protocol designed for token swaps with low fees and slippage. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees.",
   "localization": {
     "en": {

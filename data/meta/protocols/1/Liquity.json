@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Liquity",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Liquity is a decentralized borrowing protocol built on Ethereum that allows you to draw interest-free loans against Ether via its LUSD stablecoin.",
   "localization": {
     "en": {

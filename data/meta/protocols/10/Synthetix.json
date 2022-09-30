@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Synthetix",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Synthetix is the backbone for derivatives trading in DeFi. It helps users to gain on-chain exposure to a vast range of assets.",
   "localization": {
     "en": {

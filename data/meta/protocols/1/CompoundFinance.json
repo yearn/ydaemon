@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Compound Finance",
-  "protocolVersion": "1.2.3",
+  "protocolVersion": ["1", "2", "3"],
   "description": "Compound is an algorithmic, autonomous interest rate protocol that allows you to lend and borrow crypto. Users can have a say in protocol governance with its native COMP token.",
   "localization": {
     "en": {

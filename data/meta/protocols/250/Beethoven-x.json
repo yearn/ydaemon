@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Beethoven-X",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Beethoven-X is an automated market maker protocol on the Fantom network. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees.",
   "localization": {
     "en": {

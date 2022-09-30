@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Vesper Finance",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "Vesper Finance is a yield aggregator. It helps users to earn interest where strategies optimize the returns.",
   "localization": {
     "en": {

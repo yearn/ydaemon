@@ -1,7 +1,7 @@
 {
   "$schema": "protocol",
   "name": "MakerDAO",
-  "protocolVersion": "1",
+  "protocolVersion": ["1"],
   "description": "MakerDAO is a decentralized organization built on Ethereum to allow borrowing of stablecoins without the need for a middle man.",
   "localization": {
     "en": {

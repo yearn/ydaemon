@@ -262,7 +262,7 @@ func FetchLens(chainID uint64) {
 			continue
 		}
 
-		price := value[0].(*big.Int)
+		price := helpers.SafeBigInt(value[0].(*big.Int))
 		Store.TokenPrices[chainID][common.HexToAddress(address)] = price
 
 		//Store the price in the token struct

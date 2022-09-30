@@ -38,7 +38,7 @@ func prepareTVL(
 			multicallData = models.TStrategyMultiCallData{}
 		}
 
-		delegatedAssets := helpers.BValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		delegatedAssets := helpers.SafeBigInt(multicallData.DelegatedAssets).String()
 		delegatedValue := strconv.FormatFloat(
 			buildDelegated(
 				delegatedAssets,

@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"math/big"
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -64,28 +63,18 @@ func TestReadAllFilesInDir(t *testing.T) {
 	assert.Nil(t, err)
 }
 
-func TestValueWithFallback(t *testing.T) {
-	assert.Equal(t, ValueWithFallback("0", "1"), "0")
-	assert.Equal(t, ValueWithFallback("", "1"), "1")
-	assert.Equal(t, ValueWithFallback("\"\"", "1"), "1")
+func TestSafeString(t *testing.T) {
+	assert.Equal(t, SafeString("0", "1"), "0")
+	assert.Equal(t, SafeString("", "1"), "1")
+	assert.Equal(t, SafeString("\"\"", "1"), "1")
 }
 
-func TestBValueWithFallbackUint64(t *testing.T) {
-	assert.Equal(t, BValueWithFallbackUint64(big.NewInt(0), 1), uint64(0))
-	assert.Equal(t, BValueWithFallbackUint64(nil, 1), uint64(1))
-}
-
-func TestBValueWithFallbackString(t *testing.T) {
-	assert.Equal(t, BValueWithFallbackString(big.NewInt(0), "1"), "0")
-	assert.Equal(t, BValueWithFallbackString(nil, "1"), "1")
-}
-
-func TestStrToUint(t *testing.T) {
-	assert.Equal(t, StrToUint("0", uint64(0)), uint64(0))
-	assert.Equal(t, StrToUint("1", uint64(0)), uint64(1))
-	assert.Equal(t, StrToUint("0x0", uint64(1)), uint64(1))
-	assert.Equal(t, StrToUint("a", uint64(1)), uint64(1))
-	assert.Equal(t, StrToUint("", uint64(1)), uint64(1))
+func TestFormatUint64(t *testing.T) {
+	assert.Equal(t, FormatUint64("0", uint64(0)), uint64(0))
+	assert.Equal(t, FormatUint64("1", uint64(0)), uint64(1))
+	assert.Equal(t, FormatUint64("0x0", uint64(1)), uint64(1))
+	assert.Equal(t, FormatUint64("a", uint64(1)), uint64(1))
+	assert.Equal(t, FormatUint64("", uint64(1)), uint64(1))
 }
 
 func TestFormatAmount(t *testing.T) {

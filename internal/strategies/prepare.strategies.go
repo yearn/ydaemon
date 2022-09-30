@@ -42,11 +42,11 @@ func BuildStrategies(
 			Name:        strategy.Name,
 			Description: strategiesFromMeta[common.HexToAddress(strategy.Address)].Description,
 		}
-		debtLimit := helpers.BValueWithFallbackUint64(multicallData.DebtLimit, 0)
+		debtLimit := helpers.SafeBigInt(multicallData.DebtLimit).Uint64()
 
 		//Non exported fields, used for internal purposes
-		currentStrategy.TotalDebt = helpers.BValueWithFallbackString(multicallData.TotalDebt, `0`)
-		currentStrategy.DelegatedAssets = helpers.BValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		currentStrategy.TotalDebt = helpers.SafeBigInt(multicallData.TotalDebt).String()
+		currentStrategy.DelegatedAssets = helpers.SafeBigInt(multicallData.DelegatedAssets).String()
 		currentStrategy.IsActive = multicallData.IsActive
 		currentStrategy.InQueue = strategy.InQueue
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
@@ -71,25 +71,25 @@ func BuildStrategies(
 			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
 			currentStrategy.Details.DebtLimit = debtLimit
 			currentStrategy.Details.IsActive = multicallData.IsActive
-			currentStrategy.Details.CreditAvailable = helpers.BValueWithFallbackString(multicallData.CreditAvailable, `0`)
-			currentStrategy.Details.DebtOutstanding = helpers.BValueWithFallbackString(multicallData.DebtOutstanding, `0`)
-			currentStrategy.Details.ExpectedReturn = helpers.BValueWithFallbackString(multicallData.ExpectedReturn, `0`)
-			currentStrategy.Details.PerformanceFee = helpers.BValueWithFallbackUint64(multicallData.PerformanceFee, 0)
-			currentStrategy.Details.Activation = helpers.BValueWithFallbackUint64(multicallData.Activation, 0)
-			currentStrategy.Details.DebtRatio = helpers.BValueWithFallbackUint64(multicallData.DebtRatio, 0)
-			currentStrategy.Details.RateLimit = helpers.BValueWithFallbackString(multicallData.RateLimit, `0`)
-			currentStrategy.Details.MinDebtPerHarvest = helpers.BValueWithFallbackString(multicallData.MinDebtPerHarvest, `0`)
-			currentStrategy.Details.MaxDebtPerHarvest = helpers.BValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
-			currentStrategy.Details.EstimatedTotalAssets = helpers.BValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
-			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
-			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
-			currentStrategy.Details.KeepCRV = helpers.BValueWithFallbackUint64(multicallData.KeepCRV, 0)
-			currentStrategy.Details.LastReport = helpers.BValueWithFallbackUint64(multicallData.LastReport, 0)
+			currentStrategy.Details.CreditAvailable = helpers.SafeBigInt(multicallData.CreditAvailable).String()
+			currentStrategy.Details.DebtOutstanding = helpers.SafeBigInt(multicallData.DebtOutstanding).String()
+			currentStrategy.Details.ExpectedReturn = helpers.SafeBigInt(multicallData.ExpectedReturn).String()
+			currentStrategy.Details.PerformanceFee = helpers.SafeBigInt(multicallData.PerformanceFee).Uint64()
+			currentStrategy.Details.Activation = helpers.SafeBigInt(multicallData.Activation).Uint64()
+			currentStrategy.Details.DebtRatio = helpers.SafeBigInt(multicallData.DebtRatio).Uint64()
+			currentStrategy.Details.RateLimit = helpers.SafeBigInt(multicallData.RateLimit).String()
+			currentStrategy.Details.MinDebtPerHarvest = helpers.SafeBigInt(multicallData.MinDebtPerHarvest).String()
+			currentStrategy.Details.MaxDebtPerHarvest = helpers.SafeBigInt(multicallData.MaxDebtPerHarvest).String()
+			currentStrategy.Details.EstimatedTotalAssets = helpers.SafeBigInt(multicallData.EstimatedTotalAssets).String()
+			currentStrategy.Details.DelegatedAssets = helpers.SafeString(currentStrategy.DelegatedAssets, ``)
+			currentStrategy.Details.DelegatedValue = helpers.SafeString(currentStrategy.DelegatedValue, ``)
+			currentStrategy.Details.KeepCRV = helpers.SafeBigInt(multicallData.KeepCRV).Uint64()
+			currentStrategy.Details.LastReport = helpers.SafeBigInt(multicallData.LastReport).Uint64()
 			currentStrategy.Details.TotalDebt = currentStrategy.TotalDebt
-			currentStrategy.Details.TotalGain = helpers.BValueWithFallbackString(multicallData.TotalGain, `0`)
-			currentStrategy.Details.TotalLoss = helpers.BValueWithFallbackString(multicallData.TotalLoss, `0`)
+			currentStrategy.Details.TotalGain = helpers.SafeBigInt(multicallData.TotalGain).String()
+			currentStrategy.Details.TotalLoss = helpers.SafeBigInt(multicallData.TotalLoss).String()
 			currentStrategy.Details.APR = 0.0
-			currentStrategy.Details.WithdrawalQueuePosition = helpers.BValueWithFallbackInt64(multicallData.WithdrawalQueuePosition, -1)
+			currentStrategy.Details.WithdrawalQueuePosition = helpers.SafeBigInt(multicallData.WithdrawalQueuePosition, big.NewInt(-1)).Int64()
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64

@@ -16,8 +16,8 @@ import (
 )
 
 func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
-	withDetails := helpers.ValueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
-	onlyEndorsed := helpers.ValueWithFallback(c.Query("classification"), "endorsed") == "endorsed"
+	withDetails := helpers.SafeString(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	onlyEndorsed := helpers.SafeString(c.Query("classification"), "endorsed") == "endorsed"
 
 	if onlyEndorsed {
 		return graphql.NewRequest(`{
@@ -37,9 +37,9 @@ func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
 
 //GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
-	hideAlways := helpers.StringToBool(helpers.ValueWithFallback(c.Query("hideAlways"), "false"))
-	orderBy := helpers.ValueWithFallback(c.Query("orderBy"), "details.order")
-	orderDirection := helpers.ValueWithFallback(c.Query("orderDirection"), "asc")
+	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query("hideAlways"), "false"))
+	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
+	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
 	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"

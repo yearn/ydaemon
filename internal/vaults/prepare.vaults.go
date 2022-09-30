@@ -73,9 +73,9 @@ func buildVaultSymbol(
 	if displaySymbol != "" && !strings.HasPrefix(displaySymbol, "yv") {
 		formatedSymbol = "yv" + displaySymbol
 	}
-	symbol = helpers.ValueWithFallback(symbol, displaySymbol)
-	symbol = helpers.ValueWithFallback(symbol, formatedSymbol)
-	displaySymbol = helpers.ValueWithFallback(displaySymbol, symbol)
+	symbol = helpers.SafeString(symbol, displaySymbol)
+	symbol = helpers.SafeString(symbol, formatedSymbol)
+	displaySymbol = helpers.SafeString(displaySymbol, symbol)
 
 	return symbol, displaySymbol, formatedSymbol
 }
@@ -185,10 +185,10 @@ func prepareVaultSchema(
 	vaultAddress := common.HexToAddress(vaultFromGraph.Id)
 	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
 	tokenFromMeta := meta.Store.TokensFromMeta[chainID][tokenAddress]
-	updated := helpers.StrToUint(vaultFromGraph.LatestUpdate.Timestamp, 0)
-	activation := helpers.StrToUint(vaultFromGraph.Activation, 0)
-	tokenDisplayName := helpers.ValueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)
-	tokenDisplaySymbol := helpers.ValueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
+	updated := helpers.FormatUint64(vaultFromGraph.LatestUpdate.Timestamp, 0)
+	activation := helpers.FormatUint64(vaultFromGraph.Activation, 0)
+	tokenDisplayName := helpers.SafeString(tokenFromMeta.Name, vaultFromGraph.Token.Name)
+	tokenDisplaySymbol := helpers.SafeString(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
 	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
 	if !ok {
 		// If the vault file is missing, we set the default values for its fields

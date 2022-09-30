@@ -16,7 +16,7 @@ func (y Controller) GetMetaTokensLegacy(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
+	localization := helpers.SafeString(c.Query("loc"), "en")
 	tokensFromMeta, ok := Store.RawMetaTokens[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -48,7 +48,7 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
+	localization := helpers.SafeString(c.Query("loc"), "en")
 	tokensFromMeta, ok := Store.TokensFromMeta[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
@@ -84,7 +84,7 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
+	localization := helpers.SafeString(c.Query("loc"), "en")
 	tokenFromMeta, ok := Store.TokensFromMeta[chainID][address]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")

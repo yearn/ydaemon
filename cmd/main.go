@@ -11,8 +11,6 @@ import (
 
 var chains = helpers.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{1}
-
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)
 	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)

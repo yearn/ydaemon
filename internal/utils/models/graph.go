@@ -1,8 +1,13 @@
 package models
 
+import (
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+)
+
 //TVaultFromGraphToken holds the info about a specific token or shareToken
 type TVaultFromGraphToken struct {
-	Id       string
+	Id       common.Address
 	Name     string
 	Symbol   string
 	Decimals uint64
@@ -23,13 +28,13 @@ type TVaultFromGraphStrategyReports struct {
 
 //TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
-	Address       string                           `json:"address"`
+	Address       common.Address                   `json:"address"`
+	Keeper        common.Address                   `json:"keeper,omitempty"`
+	Strategist    common.Address                   `json:"strategist,omitempty"`
+	Rewards       common.Address                   `json:"rewards,omitempty"`
+	HealthCheck   string                           `json:"healthCheck"`
 	Name          string                           `json:"name"`
 	ApiVersion    string                           `json:"apiVersion,omitempty"`
-	Keeper        string                           `json:"keeper,omitempty"`
-	Strategist    string                           `json:"strategist,omitempty"`
-	Rewards       string                           `json:"rewards,omitempty"`
-	HealthCheck   string                           `json:"healthCheck"`
 	DoHealthCheck bool                             `json:"doHealthCheck,omitempty"`
 	InQueue       bool                             `json:"inQueue"`
 	EmergencyExit bool                             `json:"emergencyExit,omitempty"`
@@ -44,18 +49,18 @@ type TVaultFromGraphVaultDayData struct {
 
 //TVaultFromGraph holds the response data for a graphql request for the vaults
 type TVaultFromGraph struct {
-	Id                    string                        `json:"id"`
+	Id                    common.Address                `json:"id"`
+	Guardian              common.Address                `json:"guardian,omitempty"`
+	Management            common.Address                `json:"management,omitempty"`
+	Governance            common.Address                `json:"governance,omitempty"`
+	Rewards               common.Address                `json:"rewards,omitempty"`
+	BalanceTokens         *bigNumber.Int                `json:"balanceTokens"`
+	AvailableDepositLimit *bigNumber.Int                `json:"availableDepositLimit,omitempty"`
+	DepositLimit          *bigNumber.Int                `json:"depositLimit,omitempty"`
+	BalanceTokensIdle     *bigNumber.Int                `json:"balanceTokensIdle,omitempty"`
 	Activation            string                        `json:"activation"`
 	Classification        string                        `json:"classification"`
 	ApiVersion            string                        `json:"apiVersion"`
-	BalanceTokens         string                        `json:"balanceTokens"`
-	Guardian              string                        `json:"guardian,omitempty"`
-	Management            string                        `json:"management,omitempty"`
-	Governance            string                        `json:"governance,omitempty"`
-	Rewards               string                        `json:"rewards,omitempty"`
-	AvailableDepositLimit string                        `json:"availableDepositLimit,omitempty"`
-	DepositLimit          string                        `json:"depositLimit,omitempty"`
-	BalanceTokensIdle     string                        `json:"balanceTokensIdle,omitempty"`
 	ManagementFeeBps      uint64                        `json:"managementFeeBps"`
 	PerformanceFeeBps     uint64                        `json:"performanceFeeBps"`
 	ShareToken            TVaultFromGraphToken          `json:"shareToken"`
@@ -79,16 +84,16 @@ type TMetaFromGraph struct {
 type TReportsFromGraph struct {
 	Strategy struct {
 		Reports []struct {
-			ID        string `json:"id"`
-			Timestamp string `json:"timestamp"`
-			DebtAdded string `json:"debtAdded"`
-			DebtLimit string `json:"debtLimit"`
-			TotalDebt string `json:"totalDebt"`
-			Gain      string `json:"gain"`
-			TotalGain string `json:"totalGain"`
-			Loss      string `json:"loss"`
-			TotalLoss string `json:"totalLoss"`
-			DebtPaid  string `json:"debtPaid"`
+			ID        string         `json:"id"`
+			DebtAdded *bigNumber.Int `json:"debtAdded"`
+			DebtLimit *bigNumber.Int `json:"debtLimit"`
+			TotalDebt *bigNumber.Int `json:"totalDebt"`
+			Gain      *bigNumber.Int `json:"gain"`
+			TotalGain *bigNumber.Int `json:"totalGain"`
+			Loss      *bigNumber.Int `json:"loss"`
+			TotalLoss *bigNumber.Int `json:"totalLoss"`
+			DebtPaid  *bigNumber.Int `json:"debtPaid"`
+			Timestamp string         `json:"timestamp"`
 			Results   []struct {
 				Duration   string `json:"duration"`
 				DurationPr string `json:"durationPR"`

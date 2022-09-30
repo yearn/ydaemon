@@ -34,8 +34,8 @@ func fetchTokenList(chainID uint64) []common.Address {
 	}
 
 	for _, vault := range response.Vaults {
-		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
-		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
+		tokenList = append(tokenList, vault.ShareToken.Id)
+		tokenList = append(tokenList, vault.Token.Id)
 	}
 	return tokenList
 }
@@ -69,7 +69,7 @@ func testFetchLens(chainID uint64) {
 		Store.TokenPrices[chainID] = make(map[common.Address]*big.Int)
 	}
 	for key, value := range response {
-		Store.TokenPrices[chainID][common.HexToAddress(key)] = value[0].(*big.Int)
+		Store.TokenPrices[chainID][common.HexToAddress(key)] = helpers.SafeBigInt(value[0].(*big.Int))
 	}
 }
 

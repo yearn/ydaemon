@@ -5,6 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -29,13 +30,13 @@ func (c *TPartners) BalanceOf() *TPartners {
 		default:
 			bBalance, _, err := computeDefaultBalance(1, wrapper.Vault, wrapper.Wrapper)
 			if err != nil {
-				c.Wrappers[index].BalanceOf = big.NewInt(0)
+				c.Wrappers[index].BalanceOf = bigNumber.NewInt()
 				continue
 			}
 			// decimals := store.Tokens[1][wrapper.Vault].Decimals
 			// _, balance := helpers.FormatAmount(bBalance.String(), int(decimals))
 			// logs.Info(wrapper.Name, ` : `, balance.String())
-			c.Wrappers[index].BalanceOf = bBalance
+			c.Wrappers[index].BalanceOf = bigNumber.FromInt(bBalance)
 		}
 	}
 
@@ -46,7 +47,7 @@ func computeDefaultBalance(
 	chainID uint64,
 	vaultAddress common.Address,
 	userAddress common.Address,
-) (*big.Int, *big.Float, error) {
+) (*big.Int, *bigNumber.Float, error) {
 	yearnVault, err := contracts.NewYearnVault(vaultAddress, ethereum.GetRPC(chainID))
 	if err != nil {
 		logs.Error("Failed to create YearnVault contract", err)

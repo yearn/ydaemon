@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -26,7 +25,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 
 	tvl := 0.0
 	for _, vaultFromGraph := range response.Vaults {
-		vaultAddress := common.HexToAddress(vaultFromGraph.Id)
+		vaultAddress := vaultFromGraph.Id
 		if helpers.ContainsAddress(helpers.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}

@@ -11,7 +11,7 @@ import (
 
 // GetAllPrices will return all the prices informations, no matter the chainID.
 func (y Controller) GetAllPrices(c *gin.Context) {
-	humanized := helpers.ValueWithFallback(c.Query("humanized"), "false")
+	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
 
 	allPrices := make(map[uint64]map[common.Address]*big.Int)
 	allPricesHumanized := make(map[uint64]map[common.Address]float64)
@@ -23,7 +23,7 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 				allPricesHumanized[chainID] = make(map[common.Address]float64)
 			}
 
-			if humanized == "true" {
+			if humanized {
 				humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
 				allPricesHumanized[chainID][key] = humanizedPrice
 			} else {
@@ -31,7 +31,7 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 			}
 		}
 	}
-	if humanized == "true" {
+	if humanized {
 		c.JSON(http.StatusOK, allPricesHumanized)
 	} else {
 		c.JSON(http.StatusOK, allPrices)
@@ -46,8 +46,8 @@ func (y Controller) GetPrices(c *gin.Context) {
 		return
 	}
 
-	humanized := helpers.ValueWithFallback(c.Query("humanized"), "false")
-	if humanized == "true" {
+	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+	if humanized {
 		allPricesHumanized := make(map[common.Address]float64)
 		prices := Store.TokenPrices[chainID]
 		for key, price := range prices {

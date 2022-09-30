@@ -14,7 +14,7 @@ import (
 )
 
 func graphQLRequestForOneVault(vaultAddress string, c *gin.Context) *graphql.Request {
-	withDetails := helpers.ValueWithFallback(c.Query("strategiesDetails"), "noDetails") == "withDetails"
+	withDetails := helpers.SafeString(c.Query("strategiesDetails"), "noDetails") == "withDetails"
 
 	return graphql.NewRequest(`{
 		vault(id: "` + strings.ToLower(vaultAddress) + `") {

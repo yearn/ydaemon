@@ -47,7 +47,10 @@
     "0xBbE7AcEd643e79721833457Ec7F183aECB7092Bb",
     "0x308518f220D5c6FBeF497ac7744D3D1194c7AFF9"
   ],
-  "protocols": ["CurveFinance"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": {
+    "Curve Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Curve Yield Seeker",

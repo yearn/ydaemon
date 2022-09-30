@@ -4,6 +4,9 @@
   "description": "Supplies {{token}} to Sushi via [Kashi](https://app.sushi.com/lend) to generate interest and earn SUSHI tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0x24BC86a808D45f0AAd8008bd3ac2D9356007e833"],
   "protocols": ["Sushi"],
+  "protocolVersion": {
+    "Sushi": "Kashi"
+  },
   "localization": {
     "en": {
       "name": "Kashi Lender",

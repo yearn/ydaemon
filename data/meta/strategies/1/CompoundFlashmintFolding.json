@@ -8,7 +8,11 @@
     "0x8C818613A97900CC1EDA5893F04701b62e7c1138",
     "0x342491C093A640c7c2347c4FFA7D8b9cBC84D1EB"
   ],
-  "protocols": ["CompoundFinance", "MakerDAO"],
+  "protocols": ["Compound Finance", "MakerDAO"],
+  "protocolVersion": {
+    "Compound Finance": "2",
+    "MakerDAO": "1"
+  },
   "localization": {
     "en": {
       "name": "Compound Finance Flashmint Folding",

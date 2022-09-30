@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Sushi",
+  "protocolVersion": ["1", "Kashi"],
   "description": "Sushi is an automated market making protocol designed for token swaps. It is a decentralized liquidity aggregator where users add their assets to different liquidity pools and earn fees.",
   "localization": {
     "en": {

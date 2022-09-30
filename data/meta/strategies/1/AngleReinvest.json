@@ -8,7 +8,10 @@
     "0x2CB390212b0e5091a3c0D0331669c1419165CF80",
     "0x7C2b9DB2Ae5aCC6fAC2Fd6cE9b01A5EB4bDD1309"
   ],
-  "protocols": ["AngleProtocol"],
+  "protocols": ["Angle"],
+  "protocolVersion": {
+    "Angle": "1"
+  },
   "localization": {
     "en": {
       "name": "Angle Reinvest",

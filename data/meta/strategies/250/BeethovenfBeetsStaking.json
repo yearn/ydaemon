@@ -4,6 +4,9 @@
   "description": "Supplies fBEETS to [Beethoven-X](https://beets.fi) for BEETS rewards. Rewards are harvested and staked into BEETS-WFTM pool for more fBEETS for the strategy. In addition, the deposited fBEETS are periodically used for gauge voting to boost all Beethoven-X stable pools that Yearn invests in.",
   "addresses": ["0x5Df3E97e96FC04ae1F75A9D07A141348E4B07E45"],
   "protocols": ["Beethoven-X"],
+  "protocolVersion": {
+    "Beethoven-X": "1"
+  },
   "localization": {
     "en": {
       "name": "Beethoven fBEETS Staking",

@@ -14,6 +14,68 @@
     "description": {
       "type": "string"
     },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO"]
+      }
+    },
+    "protocolVersion": {
+      "type": "object",
+      "properties": {
+        "0xDAO": {"type": "string", "enum": ["1"]},
+        "1inch": {"type": "string", "enum": ["1"]},
+        "88 MPH": {"type": "string", "enum": ["1"]},
+        "Aave": {"type": "string", "enum": ["1", "2", "3"]},
+        "Abracadabra": {"type": "string", "enum": ["1"]},
+        "Alpha Homora": {"type": "string", "enum": ["1"]},
+        "Angle": {"type": "string", "enum": ["1"]},
+        "Arrakis Finance": {"type": "string", "enum": ["1"]},
+        "Aura Finance": {"type": "string", "enum": ["1"]},
+        "Balancer": {"type": "string", "enum": ["1", "2"]},
+        "Beethoven-X": {"type": "string", "enum": ["1"]},
+        "Blockchain Adventurers Guild": {"type": "string", "enum": ["1"]},
+        "C.R.E.A.M. Finance": {"type": "string", "enum": ["1"]},
+        "Compound Finance": {"type": "string", "enum": ["1", "2"]},
+        "Convex Finance": {"type": "string", "enum": ["1"]},
+        "Cream Finance": {"type": "string", "enum": ["1"]},
+        "Curve Finance": {"type": "string", "enum": ["1"]},
+        "Ester Finance": {"type": "string", "enum": ["1"]},
+        "Fiat DAO": {"type": "string", "enum": ["1"]},
+        "Geist Finance": {"type": "string", "enum": ["1"]},
+        "Goldfinch Finance": {"type": "string", "enum": ["1"]},
+        "Hector Finance": {"type": "string", "enum": ["1"]},
+        "Hegic": {"type": "string", "enum": ["1"]},
+        "Idle Finance": {"type": "string", "enum": ["1"]},
+        "Inverse Finance": {"type": "string", "enum": ["1"]},
+        "Iron Bank": {"type": "string", "enum": ["1"]},
+        "KeeperDAO": {"type": "string", "enum": ["1"]},
+        "League DAO": {"type": "string", "enum": ["1"]},
+        "Lido Finance": {"type": "string", "enum": ["1"]},
+        "Liquity": {"type": "string", "enum": ["1"]},
+        "MakerDAO": {"type": "string", "enum": ["1"]},
+        "Mushroom Finance": {"type": "string", "enum": ["1"]},
+        "Notional Finance": {"type": "string", "enum": ["1"]},
+        "Pool Together": {"type": "string", "enum": ["1"]},
+        "Scream": {"type": "string", "enum": ["1"]},
+        "Solidex Finance": {"type": "string", "enum": ["1"]},
+        "SpiritSwap": {"type": "string", "enum": ["1"]},
+        "SpookySwap": {"type": "string", "enum": ["1"]},
+        "Stargate Finance": {"type": "string", "enum": ["1"]},
+        "Sushi": {"type": "string", "enum": ["1", "Kashi"]},
+        "Synthetix": {"type": "string", "enum": ["1"]},
+        "Tarot": {"type": "string", "enum": ["1"]},
+        "Tokemak": {"type": "string", "enum": ["1"]},
+        "Uniswap": {"type": "string", "enum": ["2", "3", "2,3"]},
+        "Universe": {"type": "string", "enum": ["1"]},
+        "Vesper Finance": {"type": "string", "enum": ["1"]},
+        "Yearn": {"type": "string", "enum": ["2"]},
+        "dYdX": {"type": "string", "enum": ["1"]},
+        "veDAO": {"type": "string", "enum": ["1"]}
+      },
+      "additionalProperties": false
+    },
     "localization": {
       "type": "object",
       "properties": {
@@ -166,5 +228,5 @@
       "format": "uri"
     }
   },
-  "required": ["name", "description", "addresses"]
+  "required": ["name", "description", "addresses", "protocols", "protocolVersion"]
 }

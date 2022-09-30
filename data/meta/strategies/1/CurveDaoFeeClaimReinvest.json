@@ -11,7 +11,10 @@
     "0x91C3424A608439FBf3A91B6d954aF0577C1B9B8A",
     "0xBfdD0b4f6Ab0D24896CAf8C892838C26C8b0F7be"
   ],
-  "protocols": ["CurveFinance"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": {
+    "Curve Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Curve DAO Fee Claim and Reinvest (yvBoost)",

@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Balancer",
+  "protocolVersion": ["1", "2"],
   "description": "Balancer is a community-driven protocol, automated portfolio manager, liquidity provider, and price sensor that empowers decentralized exchange and the automated portfolio management of tokens on Ethereum. Users can have a say in protocol governance with its native BAL token.",
   "localization": {
     "en": {

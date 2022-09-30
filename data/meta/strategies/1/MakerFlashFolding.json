@@ -6,7 +6,12 @@
     "0x9E3aeF1fb3dE09b8c46247fa707277b7331406B5",
     "0xAa0Bae32a068C8685160eF8d8003A81b2E13ab2f"
   ],
-  "protocols": ["Uniswap v3", "MakerDAO", "ArrakisFinance"],
+  "protocols": ["Uniswap", "MakerDAO", "Arrakis Finance"],
+  "protocolVersion": {
+    "Uniswap": "3",
+    "MakerDAO": "1",
+    "Arrakis Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Maker Flashmint Folding",

@@ -27,7 +27,10 @@
     "0x1de1401c71362C05C680c5Fd073888719d8f4196",
     "0x66f7b6E7EB858075d6F2c5615F22659a1A20f6D6"
   ],
-  "protocols": ["IdleFinance"],
+  "protocols": ["Idle Finance"],
+  "protocolVersion": {
+    "Idle Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Idle Finance Reinvest",

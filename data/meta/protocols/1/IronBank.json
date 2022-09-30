@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Iron Bank",
+  "protocolVersion": ["1"],
   "description": "Iron Bank is a protocol-to-protocol lending platform and liquidity backstop for the entire DeFi ecosystem. It offers whitelisted protocols access to uncollateralized loans.",
   "localization": {
     "en": {

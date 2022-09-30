@@ -4,6 +4,9 @@
   "description": "Tailor-made strategy to return share price to normal after an accounting error on the vault.",
   "addresses": ["0x9499e73E8985F920F544e324b4612Ed80BE209fe"],
   "protocols": ["Yearn"],
+  "protocolVersion": {
+    "Yearn": "2"
+  },
   "localization": {
     "en": {
       "name": "Generic Recover",

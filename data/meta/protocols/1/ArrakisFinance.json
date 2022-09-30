@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Arrakis Finance",
+  "protocolVersion": ["1"],
   "description": "Arrakis Finance, spun out from Gelato Finance, is a decentralized market-making platform enabling projects to create deep liquidity for their tokens on decentralized exchanges. One such application is their Vaults which automate liquidity provision to Uniswap v3.",
   "localization": {
     "en": {

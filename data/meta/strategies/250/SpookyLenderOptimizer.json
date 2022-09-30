@@ -4,6 +4,9 @@
   "description": "Stakes {{token}} in [SpookySwap](https://spookyswap.finance/pools) to receive xBOO which is staked to earn tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy. Strategy automatically switches to the most profitable xBOO staking pool.",
   "addresses": ["0x4CE40A36A018457F8E0AA7C4a12Cc7ebf228B20F"],
   "protocols": ["SpookySwap"],
+  "protocolVersion": {
+    "SpookySwap": "1"
+  },
   "localization": {
     "en": {
       "name": "Boo Lender Optimizer",

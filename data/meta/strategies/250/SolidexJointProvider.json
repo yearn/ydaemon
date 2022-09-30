@@ -6,7 +6,10 @@
     "0x8a08ABB97B88DF8bd0d26EE0Ee7d831ff6640aFA",
     "0x80332Ecdc7CcdB187b95C97d4b33A8E918F8dd70"
   ],
-  "protocols": ["SolidexFinance"],
+  "protocols": ["Solidex Finance"],
+  "protocolVersion": {
+    "Solidex Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Solidex Joint Provider",

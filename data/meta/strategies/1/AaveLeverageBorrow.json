@@ -4,6 +4,9 @@
   "description": "Supplies and borrows {{token}} repeatedly on [AAVE](https://app.aave.com/home) to generate interest and earn staked AAVE tokens. Once unlocked, earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": ["0xDD387F2fe0D9B1E5768fc941e7E48AA8BfAf5e41"],
   "protocols": ["Aave"],
+  "protocolVersion": {
+    "Aave": "2"
+  },
   "localization": {
     "en": {
       "name": "Aave Folding",

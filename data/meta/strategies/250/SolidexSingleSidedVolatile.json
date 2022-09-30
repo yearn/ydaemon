@@ -6,7 +6,10 @@
     "0xADE3BaC94177295329474aAd6A253Bae979BFA68",
     "0x768F43717899FD0f1B45Ea7f23b66e191348073E"
   ],
-  "protocols": ["SolidexFinance"],
+  "protocols": ["Solidex Finance"],
+  "protocolVersion": {
+    "Solidex Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Solidex Volatile Yield Seeker",

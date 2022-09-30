@@ -22,6 +22,9 @@
     "0xb8A245f9a066AD49fEAF15443E7704b83e2A9bF0"
   ],
   "protocols": ["Balancer"],
+  "protocolVersion": {
+    "Balancer": "2"
+  },
   "localization": {
     "en": {
       "name": "Single Sided Balancer",

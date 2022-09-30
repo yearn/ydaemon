@@ -7,6 +7,9 @@
     "0xFB5F4E0656ebfF31743e674d324554fd185e1c4b"
   ],
   "protocols": ["Synthetix"],
+  "protocolVersion": {
+    "Synthetix": "1"
+  },
   "localization": {
     "en": {
       "name": "Synthetix Minter Reinvest",

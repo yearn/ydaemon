@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Tarot",
+  "protocolVersion": ["1"],
   "description": "Tarot is a decentralized lending protocol on the Fantom network. It's a decentralized lending protocol where users can lend or borrow in isolated pools which enables borrowers to leverage their LP tokens for leveraged yield farming.",
   "localization": {
     "en": {

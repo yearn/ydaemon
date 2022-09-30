@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Goldfinch Finance",
+  "protocolVersion": ["1"],
   "description": "Goldfinch Finance is a decentralized credit protocol based on Ethereum. The protocol makes crypto loans without requiring crypto collateral but accepts fully collateralized off-chain assets. Borrowers (currently off-chain lending businesses) who are vetted and kyc'd propose deal terms for credit lines, called Borrower Pools, to the protocol of which there is a junior and senior tranche. To determine how to allocate capital the protocol relies on the principle of 'trust through consensus'. The protocol has two native tokens GFI, its native governance token, and FIDU, a token that represents a Liquidity Provider's deposit to the senior tranche redeemable for usdc.",
   "localization": {
     "en": {

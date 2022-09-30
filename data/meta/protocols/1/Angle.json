@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "Angle",
+  "protocolVersion": ["1"],
   "description": "Angle is a decentralized protocol built on Ethereum which allows borrowing of stablecoins, called agTokens, which are pegged to specific value. Angle has core two modules: the Angle Core module and the Angle Borrowing module. Angle is governed by its staked governance token ANGLE in the form of veANGLE.",
   "localization": {
     "en": {

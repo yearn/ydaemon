@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "KeeperDAO",
+  "protocolVersion": ["1"],
   "description": "KeeperDAO is an on-chain liquidity underwriter for DeFi. KeeperDAO incentivizes game theory optimal strategy for cooperation among on-chain arbitrageurs and provides an efficient mechanism for large scale arbitrage and liquidation trades on all DeFi protocols.",
   "localization": {
     "en": {

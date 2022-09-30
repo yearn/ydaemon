@@ -1,6 +1,7 @@
 {
   "$schema": "protocol",
   "name": "1inch",
+  "protocolVersion": ["1"],
   "description": "1inch exchange is a decentralized exchange (DEX) aggregator. It helps users discover the best trade prices for tokens. Instead of swapping tokens from a single DEX liquidity pool, 1inch aggregates swaps across different pools and suggests the most efficient trade.",
   "localization": {
     "en": {

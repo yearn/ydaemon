@@ -15,7 +15,10 @@
     "0x1a930F92c780ff359466472D667738bcF6B294BA",
     "0x0cF55d57d241161E0ec68E72cBB175dbFe84173a"
   ],
-  "protocols": ["CreamFinance"],
+  "protocols": ["Cream Finance"],
+  "protocolVersion": {
+    "Cream Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "C.R.E.A.M. Lender Optimizer",

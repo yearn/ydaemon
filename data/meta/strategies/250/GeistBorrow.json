@@ -8,7 +8,10 @@
     "0xcCd1938Ea67BFf58f859512F7C8E5b70928020E2",
     "0x0e207674E05dC6Ff7fE949eB57409bF3B980FF41"
   ],
-  "protocols": ["GeistFinance"],
+  "protocols": ["Geist Finance"],
+  "protocolVersion": {
+    "Geist Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Geist Borrow",

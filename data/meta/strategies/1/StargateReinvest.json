@@ -8,7 +8,10 @@
     "0x784b645977e141fF3c5EBA4788DE256FD1da6bCD",
     "0xeAD650E673F497CdBE365F7a855273BbB468e454"
   ],
-  "protocols": ["StargateFinance"],
+  "protocols": ["Stargate Finance"],
+  "protocolVersion": {
+    "Stargate Finance": "1"
+  },
   "localization": {
     "en": {
       "name": "Stargate Reinvest",

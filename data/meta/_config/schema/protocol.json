@@ -9,7 +9,8 @@
       "type": "string"
     },
     "name": {
-      "type": "string"
+      "type": "string",
+      "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO"]
     },
     "protocolVersion": {
       "type": "array",

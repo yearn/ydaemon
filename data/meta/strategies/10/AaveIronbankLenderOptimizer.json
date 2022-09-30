@@ -11,10 +11,10 @@
     "0x18128146C33d821A484F3D43fF2b986BEBd0c8F3"
   ],
   "protocols": ["Aave", "Iron Bank"],
-  "protocolVersion": [{
+  "protocolVersion": {
     "Aave": "3",
     "Iron Bank": "1"
-  }],
+  },
   "localization": {
     "en": {
       "name": "Aave / Ironbank Lender Optimizer",

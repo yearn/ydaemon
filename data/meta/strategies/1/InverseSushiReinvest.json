@@ -7,10 +7,10 @@
     "0x50b5501a4A1B1f89504dB0a75deF5f1060A98eA6"
   ],
   "protocols": ["Sushi", "Inverse Finance"],
-  "protocolVersion": [{
+  "protocolVersion": {
     "Sushi": "1",
     "Inverse Finance": "1"
-  }],
+  },
   "localization": {
     "en": {
       "name": "Inverse Sushibar reinvest",

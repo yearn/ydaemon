@@ -4,9 +4,9 @@
   "description": "Supplies {{token}} as half of a joint liquidity provider for a [0xDAO](https://oxdao.fi) Volatile Pool which consists of pegged tokens to earn SOLID and OXD. Earned tokens are harvested, divided between the pair which is deposited back into the strategy. Checks before depositing, if the pool is off-peg. If so, it deposits to fix the balance and profit.",
   "addresses": ["0xb99d6662127d9A3c68Bc949679f364E1739E2CA1"],
   "protocols": ["0xDAO"],
-  "protocolVersion": [{
+  "protocolVersion": {
     "0xDAO": "1"
-  }],
+  },
   "localization": {
     "en": {
       "name": "0xDAO Joint Provider Arbitrager",

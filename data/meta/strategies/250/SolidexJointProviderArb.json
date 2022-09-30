@@ -4,9 +4,9 @@
   "description": "Supplies {{token}} as half of a joint liquidity provider for a [Solidex Finance](https://solidexfinance.com/#/pools) Volatile Pool which consists of pegged tokens to earn SOLID and SEX. Earned tokens are harvested, divided between the pair which is deposited back into the strategy. Checks before depositing, if the pool is off-peg. If so, it deposits to fix the balance and profit.",
   "addresses": ["0x526f9FcD4db76878B62a450F1BD79cF38f036cc1"],
   "protocols": ["Solidex Finance"],
-  "protocolVersion": [{
+  "protocolVersion": {
     "Solidex Finance": "1"
-  }],
+  },
   "localization": {
     "en": {
       "name": "Solidex Joint Provider Arbitrager",

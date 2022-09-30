@@ -13,10 +13,10 @@
     "0xFf1a6Dc6026A7CC0C2510c77B7132aD58c2d1000"
   ],
   "protocols": ["Aave", "C.R.E.A.M. Finance"],
-  "protocolVersion": [{
+  "protocolVersion": {
     "Aave": "2",
     "C.R.E.A.M. Finance": "1"
-  }],
+  },
   "localization": {
     "en": {
       "name": "Aave / C.R.E.A.M. Lender Optimizer",

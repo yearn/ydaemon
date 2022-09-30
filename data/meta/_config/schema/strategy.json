@@ -228,5 +228,5 @@
       "format": "uri"
     }
   },
-  "required": ["name", "description", "addresses"]
+  "required": ["name", "description", "addresses", "protocols", "protocolVersion"]
 }

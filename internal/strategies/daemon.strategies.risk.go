@@ -231,20 +231,8 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		strategy.RiskScores.ProtocolSafetyScore = stratGroup.ProtocolSafetyScore
 		strategy.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
 		strategy.RiskScores.TestingScore = stratGroup.TestingScore
+		strategy.Allocation = &stratGroup.Allocation
 		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
-	}
-
-	for _, strat := range strategies {
-		stratGroup := getStrategyGroup(chainID, strat)
-		if stratGroup == nil {
-			continue
-		}
-		stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
-		stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL
-		stratRisk.Allocation.CurrentAmount = stratGroup.Allocation.CurrentAmount
-		stratRisk.Allocation.AvailableTVL = stratGroup.Allocation.AvailableTVL
-		stratRisk.Allocation.AvailableAmount = stratGroup.Allocation.AvailableAmount
-		Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
 	}
 }
 

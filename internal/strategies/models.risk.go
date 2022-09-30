@@ -13,10 +13,10 @@ type TStrategyGroupCritieria struct {
 }
 
 type TStrategyAllocation struct {
-	CurrentTVL      *bigNumber.BigFloat `json:"currentTVL"` // value in USDC
-	AvailableTVL    *bigNumber.BigFloat `json:"availableTVL"`
-	CurrentAmount   *bigNumber.BigFloat `json:"currentAmount"` // value in WANT
-	AvailableAmount *bigNumber.BigFloat `json:"availableAmount"`
+	CurrentTVL      *bigNumber.Float `json:"currentTVL"` // value in USDC
+	AvailableTVL    *bigNumber.Float `json:"availableTVL"`
+	CurrentAmount   *bigNumber.Float `json:"currentAmount"` // value in WANT
+	AvailableAmount *bigNumber.Float `json:"availableAmount"`
 }
 
 type TStrategyGroupFromRisk struct {

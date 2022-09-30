@@ -18,11 +18,11 @@ type TPartnersFromFile struct {
 }
 
 type TPartnersWrapper struct {
-	Vault     common.Address    `json:"vault,omitempty"`
-	Wrapper   common.Address    `json:"wrapper"`
-	BalanceOf *bigNumber.BigInt `json:"balanceOf,omitempty"`
-	Name      string            `json:"name"`
-	Type      string            `json:"type"`
+	Vault     common.Address `json:"vault,omitempty"`
+	Wrapper   common.Address `json:"wrapper"`
+	BalanceOf *bigNumber.Int `json:"balanceOf,omitempty"`
+	Name      string         `json:"name"`
+	Type      string         `json:"type"`
 }
 
 type TPartners struct {

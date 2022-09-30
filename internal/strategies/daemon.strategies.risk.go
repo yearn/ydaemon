@@ -42,7 +42,7 @@ func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 	return false
 }
 
-func getTVLImpact(tvlUSDC *bigNumber.BigFloat) float64 {
+func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
 	tvl, _ := tvlUSDC.Float32()
 	switch {
 	case tvl == 0:
@@ -60,7 +60,7 @@ func getTVLImpact(tvlUSDC *bigNumber.BigFloat) float64 {
 	}
 }
 
-func getLongevityImpact(activation *bigNumber.BigInt) float64 {
+func getLongevityImpact(activation *bigNumber.Int) float64 {
 	if activation == nil || activation.IsZero() {
 		return 5
 	}
@@ -81,7 +81,7 @@ func getLongevityImpact(activation *bigNumber.BigInt) float64 {
 	}
 }
 
-func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.BigFloat {
+func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 	scores := []float64{
 		group.AuditScore,
 		group.CodeReviewScore,

@@ -7,34 +7,34 @@ import (
 	"strings"
 )
 
-type BigInt struct{ big.Int }
+type Int struct{ big.Int }
 
-func FromBigInt(b *big.Int) *BigInt {
-	return &BigInt{*b}
+func FromInt(b *big.Int) *Int {
+	return &Int{*b}
 }
-func ToBigInt(b *BigInt) *big.Int {
+func ToInt(b *Int) *big.Int {
 	if b == nil {
 		return big.NewInt(0)
 	}
 	return &b.Int
 }
-func NewInt(defaultValue ...int64) *BigInt {
+func NewInt(defaultValue ...int64) *Int {
 	if len(defaultValue) == 0 {
-		return &BigInt{*big.NewInt(0)}
+		return &Int{*big.NewInt(0)}
 	}
-	return &BigInt{*big.NewInt(defaultValue[0])}
+	return &Int{*big.NewInt(defaultValue[0])}
 }
-func SetInt(defaultValue ...*big.Int) *BigInt {
+func SetInt(defaultValue ...*big.Int) *Int {
 	if len(defaultValue) == 0 {
-		return &BigInt{*big.NewInt(0)}
+		return &Int{*big.NewInt(0)}
 	}
-	return &BigInt{*safeBigInt(defaultValue[0])}
+	return &Int{*safeInt(defaultValue[0])}
 }
-func (b *BigInt) Set(s *big.Int) *BigInt {
-	b.Int.Set(safeBigInt(s))
+func (b *Int) Set(s *big.Int) *Int {
+	b.Int.Set(safeInt(s))
 	return b
 }
-func (b *BigInt) SetString(s string) *BigInt {
+func (b *Int) SetString(s string) *Int {
 	if s == "" || s == "\"\"" {
 		b.SetInt64(0)
 		return b
@@ -42,42 +42,42 @@ func (b *BigInt) SetString(s string) *BigInt {
 	b.Int.SetString(s, 10)
 	return b
 }
-func (b *BigInt) Add(x *BigInt, y *BigInt) *BigInt {
-	xAsBigInt := ToBigInt(x)
-	yAsBigInt := ToBigInt(y)
-	b.Int.Add(xAsBigInt, yAsBigInt)
+func (b *Int) Add(x *Int, y *Int) *Int {
+	xAsInt := ToInt(x)
+	yAsInt := ToInt(y)
+	b.Int.Add(xAsInt, yAsInt)
 	return b
 }
-func (b *BigInt) Sub(x *BigInt, y *BigInt) *BigInt {
-	xAsBigInt := ToBigInt(x)
-	yAsBigInt := ToBigInt(y)
-	b.Int.Sub(xAsBigInt, yAsBigInt)
+func (b *Int) Sub(x *Int, y *Int) *Int {
+	xAsInt := ToInt(x)
+	yAsInt := ToInt(y)
+	b.Int.Sub(xAsInt, yAsInt)
 	return b
 }
-func (b *BigInt) Mul(x *BigInt, y *BigInt) *BigInt {
-	xAsBigInt := ToBigInt(x)
-	yAsBigInt := ToBigInt(y)
-	b.Int.Mul(xAsBigInt, yAsBigInt)
+func (b *Int) Mul(x *Int, y *Int) *Int {
+	xAsInt := ToInt(x)
+	yAsInt := ToInt(y)
+	b.Int.Mul(xAsInt, yAsInt)
 	return b
 }
-func (b *BigInt) Div(x *BigInt, y *BigInt) *BigInt {
-	xAsBigInt := ToBigInt(x)
-	yAsBigInt := ToBigInt(y)
+func (b *Int) Div(x *Int, y *Int) *Int {
+	xAsInt := ToInt(x)
+	yAsInt := ToInt(y)
 	if y.IsZero() {
 		b.SetUint64(0)
 		return b
 	}
-	b.Int.Div(xAsBigInt, yAsBigInt)
+	b.Int.Div(xAsInt, yAsInt)
 	return b
 }
-func (b *BigInt) Uint64() uint64 {
-	return ToBigInt(b).Uint64()
+func (b *Int) Uint64() uint64 {
+	return ToInt(b).Uint64()
 }
 
-func (b *BigInt) IsZero() bool {
+func (b *Int) IsZero() bool {
 	return b.Int.Cmp(big.NewInt(0)) == 0
 }
-func (b *BigInt) Safe(s *BigInt, defaultValue ...*BigInt) *BigInt {
+func (b *Int) Safe(s *Int, defaultValue ...*Int) *Int {
 	if s == nil {
 		if len(defaultValue) == 0 || defaultValue[0] == nil {
 			return NewInt(0)
@@ -87,11 +87,11 @@ func (b *BigInt) Safe(s *BigInt, defaultValue ...*BigInt) *BigInt {
 	return s
 }
 
-func (b BigInt) MarshalJSON() ([]byte, error) {
+func (b Int) MarshalJSON() ([]byte, error) {
 	return json.Marshal(b.String())
 }
 
-func (b *BigInt) UnmarshalJSON(p []byte) error {
+func (b *Int) UnmarshalJSON(p []byte) error {
 	s := strings.Trim(string(p), "\"")
 	if s == "null" {
 		return nil
@@ -105,7 +105,7 @@ func (b *BigInt) UnmarshalJSON(p []byte) error {
 	return nil
 }
 
-func safeBigInt(s *big.Int, defaultValue ...*big.Int) *big.Int {
+func safeInt(s *big.Int, defaultValue ...*big.Int) *big.Int {
 	if s == nil {
 		if len(defaultValue) == 0 || defaultValue[0] == nil {
 			return big.NewInt(0)

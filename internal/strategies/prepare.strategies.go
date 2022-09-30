@@ -11,7 +11,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func buildDelegated(delegatedBalanceToken *bigNumber.BigInt, decimals int, humanizedPrice *bigNumber.BigFloat) float64 {
+func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
 	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken.String(), decimals)
 	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(delegatedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
@@ -23,7 +23,7 @@ func BuildStrategies(
 	withStrategiesDetails bool,
 	withStrategiesRisk bool,
 	strategiesCondition string,
-	humanizedTokenPrice *bigNumber.BigFloat,
+	humanizedTokenPrice *bigNumber.Float,
 	vaultFromGraph models.TVaultFromGraph,
 ) []TStrategy {
 	strategies := []TStrategy{}

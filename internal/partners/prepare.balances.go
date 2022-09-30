@@ -36,7 +36,7 @@ func (c *TPartners) BalanceOf() *TPartners {
 			// decimals := store.Tokens[1][wrapper.Vault].Decimals
 			// _, balance := helpers.FormatAmount(bBalance.String(), int(decimals))
 			// logs.Info(wrapper.Name, ` : `, balance.String())
-			c.Wrappers[index].BalanceOf = bigNumber.FromBigInt(bBalance)
+			c.Wrappers[index].BalanceOf = bigNumber.FromInt(bBalance)
 		}
 	}
 
@@ -47,7 +47,7 @@ func computeDefaultBalance(
 	chainID uint64,
 	vaultAddress common.Address,
 	userAddress common.Address,
-) (*big.Int, *bigNumber.BigFloat, error) {
+) (*big.Int, *bigNumber.Float, error) {
 	yearnVault, err := contracts.NewYearnVault(vaultAddress, ethereum.GetRPC(chainID))
 	if err != nil {
 		logs.Error("Failed to create YearnVault contract", err)

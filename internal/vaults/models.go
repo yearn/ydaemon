@@ -19,12 +19,12 @@ type TToken struct {
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets          *bigNumber.BigInt `json:"total_assets"`
-	TotalDelegatedAssets *bigNumber.BigInt `json:"total_delegated_assets"`
-	TVLDeposited         float64           `json:"tvl_deposited"`
-	TVLDelegated         float64           `json:"tvl_delegated"`
-	TVL                  float64           `json:"tvl"`
-	Price                float64           `json:"price"`
+	TotalAssets          *bigNumber.Int `json:"total_assets"`
+	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
+	TVLDeposited         float64        `json:"tvl_deposited"`
+	TVLDelegated         float64        `json:"tvl_delegated"`
+	TVL                  float64        `json:"tvl"`
+	Price                float64        `json:"price"`
 }
 
 // TAPYFees holds the fees information about this vault.
@@ -71,22 +71,22 @@ type TMigration struct {
 
 //TVault details holds some extra information about the vault.
 type TVaultDetails struct {
-	Management            common.Address    `json:"management"`
-	Governance            common.Address    `json:"governance"`
-	Guardian              common.Address    `json:"guardian"`
-	Rewards               common.Address    `json:"rewards"`
-	DepositLimit          *bigNumber.BigInt `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.BigInt `json:"availableDepositLimit,omitempty"`
-	Comment               string            `json:"comment"`
-	APYTypeOverride       string            `json:"apyTypeOverride"`
-	PerformanceFee        uint64            `json:"performanceFee"`
-	ManagementFee         uint64            `json:"managementFee"`
-	DepositsDisabled      bool              `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool              `json:"withdrawalsDisabled"`
-	AllowZapIn            bool              `json:"allowZapIn"`
-	AllowZapOut           bool              `json:"allowZapOut"`
-	Retired               bool              `json:"retired"`
-	Order                 float32           `json:"-"`
+	Management            common.Address `json:"management"`
+	Governance            common.Address `json:"governance"`
+	Guardian              common.Address `json:"guardian"`
+	Rewards               common.Address `json:"rewards"`
+	DepositLimit          *bigNumber.Int `json:"depositLimit"`
+	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
+	Comment               string         `json:"comment"`
+	APYTypeOverride       string         `json:"apyTypeOverride"`
+	PerformanceFee        uint64         `json:"performanceFee"`
+	ManagementFee         uint64         `json:"managementFee"`
+	DepositsDisabled      bool           `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool           `json:"withdrawalsDisabled"`
+	AllowZapIn            bool           `json:"allowZapIn"`
+	AllowZapOut           bool           `json:"allowZapOut"`
+	Retired               bool           `json:"retired"`
+	Order                 float32        `json:"-"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

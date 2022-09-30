@@ -9,7 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func buildDelegated(delegatedBalanceToken *bigNumber.BigInt, decimals int, humanizedPrice *bigNumber.BigFloat) float64 {
+func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
 	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken.String(), decimals)
 	fHumanizedTVLPrice, _ := bigNumber.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice

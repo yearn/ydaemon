@@ -13,23 +13,23 @@ type TStrategyList struct {
 }
 
 type TStrategyMultiCallData struct {
-	CreditAvailable         *bigNumber.BigInt `json:"creditAvailable"`
-	DebtOutstanding         *bigNumber.BigInt `json:"debtOutstanding"`
-	ExpectedReturn          *bigNumber.BigInt `json:"expectedReturn"`
-	PerformanceFee          *bigNumber.BigInt `json:"performanceFee"`
-	Activation              *bigNumber.BigInt `json:"activation"`
-	DebtRatio               *bigNumber.BigInt `json:"debtRatio,omitempty"`         // Only > 0.2.2
-	DebtLimit               *bigNumber.BigInt `json:"debtLimit,omitempty"`         // Only = 0.2.2
-	RateLimit               *bigNumber.BigInt `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *bigNumber.BigInt `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *bigNumber.BigInt `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	LastReport              *bigNumber.BigInt `json:"lastReport"`
-	TotalDebt               *bigNumber.BigInt `json:"totalDebt"`
-	TotalGain               *bigNumber.BigInt `json:"totalGain"`
-	TotalLoss               *bigNumber.BigInt `json:"totalLoss"`
-	EstimatedTotalAssets    *bigNumber.BigInt `json:"estimatedTotalAssets"`
-	KeepCRV                 *bigNumber.BigInt `json:"keepCRV"`
-	DelegatedAssets         *bigNumber.BigInt `json:"delegatedAssets"`
-	WithdrawalQueuePosition *bigNumber.BigInt `json:"withdrawalQueuePosition"`
-	IsActive                bool              `json:"isActive"`
+	CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
+	DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
+	ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
+	PerformanceFee          *bigNumber.Int `json:"performanceFee"`
+	Activation              *bigNumber.Int `json:"activation"`
+	DebtRatio               *bigNumber.Int `json:"debtRatio,omitempty"`         // Only > 0.2.2
+	DebtLimit               *bigNumber.Int `json:"debtLimit,omitempty"`         // Only = 0.2.2
+	RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	LastReport              *bigNumber.Int `json:"lastReport"`
+	TotalDebt               *bigNumber.Int `json:"totalDebt"`
+	TotalGain               *bigNumber.Int `json:"totalGain"`
+	TotalLoss               *bigNumber.Int `json:"totalLoss"`
+	EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
+	KeepCRV                 *bigNumber.Int `json:"keepCRV"`
+	DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
+	WithdrawalQueuePosition *bigNumber.Int `json:"withdrawalQueuePosition"`
+	IsActive                bool           `json:"isActive"`
 }

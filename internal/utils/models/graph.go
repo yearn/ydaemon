@@ -54,10 +54,10 @@ type TVaultFromGraph struct {
 	Management            common.Address                `json:"management,omitempty"`
 	Governance            common.Address                `json:"governance,omitempty"`
 	Rewards               common.Address                `json:"rewards,omitempty"`
-	BalanceTokens         *bigNumber.BigInt             `json:"balanceTokens"`
-	AvailableDepositLimit *bigNumber.BigInt             `json:"availableDepositLimit,omitempty"`
-	DepositLimit          *bigNumber.BigInt             `json:"depositLimit,omitempty"`
-	BalanceTokensIdle     *bigNumber.BigInt             `json:"balanceTokensIdle,omitempty"`
+	BalanceTokens         *bigNumber.Int                `json:"balanceTokens"`
+	AvailableDepositLimit *bigNumber.Int                `json:"availableDepositLimit,omitempty"`
+	DepositLimit          *bigNumber.Int                `json:"depositLimit,omitempty"`
+	BalanceTokensIdle     *bigNumber.Int                `json:"balanceTokensIdle,omitempty"`
 	Activation            string                        `json:"activation"`
 	Classification        string                        `json:"classification"`
 	ApiVersion            string                        `json:"apiVersion"`
@@ -84,16 +84,16 @@ type TMetaFromGraph struct {
 type TReportsFromGraph struct {
 	Strategy struct {
 		Reports []struct {
-			ID        string            `json:"id"`
-			DebtAdded *bigNumber.BigInt `json:"debtAdded"`
-			DebtLimit *bigNumber.BigInt `json:"debtLimit"`
-			TotalDebt *bigNumber.BigInt `json:"totalDebt"`
-			Gain      *bigNumber.BigInt `json:"gain"`
-			TotalGain *bigNumber.BigInt `json:"totalGain"`
-			Loss      *bigNumber.BigInt `json:"loss"`
-			TotalLoss *bigNumber.BigInt `json:"totalLoss"`
-			DebtPaid  *bigNumber.BigInt `json:"debtPaid"`
-			Timestamp string            `json:"timestamp"`
+			ID        string         `json:"id"`
+			DebtAdded *bigNumber.Int `json:"debtAdded"`
+			DebtLimit *bigNumber.Int `json:"debtLimit"`
+			TotalDebt *bigNumber.Int `json:"totalDebt"`
+			Gain      *bigNumber.Int `json:"gain"`
+			TotalGain *bigNumber.Int `json:"totalGain"`
+			Loss      *bigNumber.Int `json:"loss"`
+			TotalLoss *bigNumber.Int `json:"totalLoss"`
+			DebtPaid  *bigNumber.Int `json:"debtPaid"`
+			Timestamp string         `json:"timestamp"`
 			Results   []struct {
 				Duration   string `json:"duration"`
 				DurationPr string `json:"durationPR"`

@@ -28,8 +28,7 @@ func FetchTokensFromMeta(chainID uint64) {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
 			continue
 		}
-		token.Address = strings.TrimSuffix(filenames[index], `.json`)
-		token.Address = common.HexToAddress(token.Address).String()
+		token.Address = common.HexToAddress(strings.TrimSuffix(filenames[index], `.json`))
 		tokens = append(tokens, token)
 	}
 	Store.RawMetaTokens[chainID] = tokens
@@ -40,7 +39,7 @@ func FetchTokensFromMeta(chainID uint64) {
 		Store.TokensFromMeta[chainID] = make(map[common.Address]TTokenFromMeta)
 	}
 	for _, token := range tokens {
-		Store.TokensFromMeta[chainID][common.HexToAddress(token.Address)] = token
+		Store.TokensFromMeta[chainID][token.Address] = token
 	}
 }
 

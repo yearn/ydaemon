@@ -4,7 +4,6 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
@@ -32,15 +31,15 @@ func BuildStrategies(
 	strategiesFromRisk := Store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesFromMulticall[common.HexToAddress(strategy.Address)]
+		multicallData, ok := strategiesFromMulticall[strategy.Address]
 		if !ok {
 			multicallData = models.TStrategyMultiCallData{}
 		}
 
 		currentStrategy := TStrategy{
-			Address:     common.HexToAddress(strategy.Address).String(),
+			Address:     strategy.Address,
 			Name:        strategy.Name,
-			Description: strategiesFromMeta[common.HexToAddress(strategy.Address)].Description,
+			Description: strategiesFromMeta[strategy.Address].Description,
 		}
 		debtLimit := helpers.SafeBigInt(multicallData.DebtLimit).Uint64()
 
@@ -60,11 +59,11 @@ func BuildStrategies(
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &TStrategyDetails{}
-			currentStrategy.Details.Protocols = strategiesFromMeta[common.HexToAddress(strategy.Address)].Protocols
-			currentStrategy.Details.Keeper = common.HexToAddress(strategy.Keeper).String()
-			currentStrategy.Details.Strategist = common.HexToAddress(strategy.Strategist).String()
-			currentStrategy.Details.Rewards = common.HexToAddress(strategy.Rewards).String()
-			currentStrategy.Details.HealthCheck = common.HexToAddress(strategy.HealthCheck).String()
+			currentStrategy.Details.Protocols = strategiesFromMeta[strategy.Address].Protocols
+			currentStrategy.Details.Keeper = strategy.Keeper
+			currentStrategy.Details.Strategist = strategy.Strategist
+			currentStrategy.Details.Rewards = strategy.Rewards
+			currentStrategy.Details.HealthCheck = strategy.HealthCheck
 			currentStrategy.Details.Version = strategy.ApiVersion
 			currentStrategy.Details.InQueue = strategy.InQueue
 			currentStrategy.Details.DoHealthCheck = strategy.DoHealthCheck
@@ -110,7 +109,7 @@ func BuildStrategies(
 
 		//Compute the risk data
 		if withStrategiesRisk {
-			riskData, ok := strategiesFromRisk[common.HexToAddress(strategy.Address)]
+			riskData, ok := strategiesFromRisk[strategy.Address]
 			if !ok {
 				riskData = models.TStrategyFromRisk{}
 			}

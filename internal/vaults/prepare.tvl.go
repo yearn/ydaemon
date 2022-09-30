@@ -4,7 +4,6 @@ import (
 	"math/big"
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -20,7 +19,7 @@ func prepareTVL(
 	chainID uint64,
 	vaultFromGraph models.TVaultFromGraph,
 ) float64 {
-	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
+	tokenAddress := vaultFromGraph.Token.Id
 	delegatedTokenAsBN := big.NewInt(0)
 	fDelegatedValue := 0.0
 
@@ -33,7 +32,7 @@ func prepareTVL(
 
 	strategiesFromMulticall := strategies.Store.StrategyMultiCallData[chainID]
 	for _, strat := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesFromMulticall[common.HexToAddress(strat.Address)]
+		multicallData, ok := strategiesFromMulticall[strat.Address]
 		if !ok {
 			multicallData = models.TStrategyMultiCallData{}
 		}

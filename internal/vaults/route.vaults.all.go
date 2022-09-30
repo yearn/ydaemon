@@ -4,7 +4,6 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -60,7 +59,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 
 	data := []TVault{}
 	for _, vaultFromGraph := range response.Vaults {
-		vaultAddress := common.HexToAddress(vaultFromGraph.Id)
+		vaultAddress := vaultFromGraph.Id
 		if helpers.ContainsAddress(helpers.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}

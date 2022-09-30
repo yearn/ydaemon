@@ -10,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
@@ -101,8 +102,8 @@ func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*big.Float, f
 // is a string which will be formated as a float64 and scaled with the underlying token decimals. With that
 // we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
 // in the vault thanks to the above humanizedPrice value.
-func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	_, humanizedTVL := helpers.FormatAmount(balanceToken, decimals)
+func buildTVL(balanceToken bigNumber.BigInt, decimals int, humanizedPrice *big.Float) float64 {
+	_, humanizedTVL := helpers.FormatAmount(balanceToken.String(), decimals)
 	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
@@ -160,10 +161,10 @@ func buildMigration(chainID uint64, vaultAddress common.Address) TMigration {
 	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
 
 	if ok {
-		migrationAddress := vaultAddress.String()
+		migrationAddress := vaultAddress
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
-			migrationAddress = common.HexToAddress(vaultFromMeta.MigrationTargetVault).String()
+			migrationAddress = vaultFromMeta.MigrationTargetVault
 		}
 
 		migration = TMigration{
@@ -182,8 +183,8 @@ func prepareVaultSchema(
 	vaultFromGraph models.TVaultFromGraph,
 ) *TVault {
 	chainIDAsString := strconv.FormatUint(chainID, 10)
-	vaultAddress := common.HexToAddress(vaultFromGraph.Id)
-	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
+	vaultAddress := vaultFromGraph.Id
+	tokenAddress := vaultFromGraph.Token.Id
 	tokenFromMeta := meta.Store.TokensFromMeta[chainID][tokenAddress]
 	updated := helpers.FormatUint64(vaultFromGraph.LatestUpdate.Timestamp, 0)
 	activation := helpers.FormatUint64(vaultFromGraph.Activation, 0)
@@ -213,7 +214,7 @@ func prepareVaultSchema(
 	)
 	vaultSymbol, vaultDisplaySymbol, vaultFormatedSymbol := buildVaultSymbol(
 		chainID,
-		common.HexToAddress(vaultFromGraph.ShareToken.Id),
+		vaultFromGraph.ShareToken.Id,
 		vaultFromGraph.ShareToken.Symbol,
 		vaultFromGraph.Token.Symbol,
 	)
@@ -252,7 +253,7 @@ func prepareVaultSchema(
 
 	vault := &TVault{
 		Inception:      activation,
-		Address:        vaultAddress.String(),
+		Address:        vaultAddress,
 		Symbol:         vaultSymbol,
 		DisplaySymbol:  vaultDisplaySymbol,
 		FormatedSymbol: vaultFormatedSymbol,
@@ -261,17 +262,17 @@ func prepareVaultSchema(
 		FormatedName:   vaultFormatedName,
 		Icon:           helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultAddress.String() + `/logo-128.png`,
 		Token: TToken{
-			Address:     common.HexToAddress(vaultFromGraph.Token.Id).String(),
+			Address:     vaultFromGraph.Token.Id,
 			Name:        vaultFromGraph.Token.Name,
 			DisplayName: tokenDisplayName,
 			Symbol:      tokenDisplaySymbol,
 			Description: tokenFromMeta.Description,
 			Decimals:    vaultFromGraph.Token.Decimals,
-			Icon:        helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + common.HexToAddress(vaultFromGraph.Token.Id).String() + `/logo-128.png`,
+			Icon:        helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultFromGraph.Token.Id.String() + `/logo-128.png`,
 		},
 		TVL: TTVL{
 			TotalAssets:          vaultFromGraph.BalanceTokens,
-			TotalDelegatedAssets: delegatedTokenAsBN.String(),
+			TotalDelegatedAssets: bigNumber.FromBigInt(delegatedTokenAsBN),
 			TVL:                  fHumanizedTVLPrice - fDelegatedValue,
 			TVLDeposited:         fHumanizedTVLPrice,
 			TVLDelegated:         fDelegatedValue,

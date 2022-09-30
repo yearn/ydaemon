@@ -34,8 +34,8 @@ func fetchTokenList(chainID uint64) []common.Address {
 	}
 
 	for _, vault := range response.Vaults {
-		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
-		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
+		tokenList = append(tokenList, vault.ShareToken.Id)
+		tokenList = append(tokenList, vault.Token.Id)
 	}
 	return tokenList
 }

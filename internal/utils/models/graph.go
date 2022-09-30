@@ -1,8 +1,13 @@
 package models
 
+import (
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+)
+
 //TVaultFromGraphToken holds the info about a specific token or shareToken
 type TVaultFromGraphToken struct {
-	Id       string
+	Id       common.Address
 	Name     string
 	Symbol   string
 	Decimals uint64
@@ -17,19 +22,19 @@ type TVaultFromGraphStrategyReportsResults struct {
 
 //TVaultFromGraphStrategyReports holds the reports for a given strategy
 type TVaultFromGraphStrategyReports struct {
-	Id      string                                  `json:"id,omitempty"`
+	Id      common.Address                          `json:"id,omitempty"`
 	Results []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
 }
 
 //TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
-	Address       string                           `json:"address"`
 	Name          string                           `json:"name"`
 	ApiVersion    string                           `json:"apiVersion,omitempty"`
-	Keeper        string                           `json:"keeper,omitempty"`
-	Strategist    string                           `json:"strategist,omitempty"`
-	Rewards       string                           `json:"rewards,omitempty"`
-	HealthCheck   string                           `json:"healthCheck"`
+	Address       common.Address                   `json:"address"`
+	Keeper        common.Address                   `json:"keeper,omitempty"`
+	Strategist    common.Address                   `json:"strategist,omitempty"`
+	Rewards       common.Address                   `json:"rewards,omitempty"`
+	HealthCheck   common.Address                   `json:"healthCheck"`
 	DoHealthCheck bool                             `json:"doHealthCheck,omitempty"`
 	InQueue       bool                             `json:"inQueue"`
 	EmergencyExit bool                             `json:"emergencyExit,omitempty"`
@@ -44,18 +49,18 @@ type TVaultFromGraphVaultDayData struct {
 
 //TVaultFromGraph holds the response data for a graphql request for the vaults
 type TVaultFromGraph struct {
-	Id                    string                        `json:"id"`
+	Id                    common.Address                `json:"id"`
+	Guardian              common.Address                `json:"guardian,omitempty"`
+	Management            common.Address                `json:"management,omitempty"`
+	Governance            common.Address                `json:"governance,omitempty"`
+	Rewards               common.Address                `json:"rewards,omitempty"`
 	Activation            string                        `json:"activation"`
 	Classification        string                        `json:"classification"`
 	ApiVersion            string                        `json:"apiVersion"`
-	BalanceTokens         string                        `json:"balanceTokens"`
-	Guardian              string                        `json:"guardian,omitempty"`
-	Management            string                        `json:"management,omitempty"`
-	Governance            string                        `json:"governance,omitempty"`
-	Rewards               string                        `json:"rewards,omitempty"`
-	AvailableDepositLimit string                        `json:"availableDepositLimit,omitempty"`
-	DepositLimit          string                        `json:"depositLimit,omitempty"`
-	BalanceTokensIdle     string                        `json:"balanceTokensIdle,omitempty"`
+	BalanceTokens         bigNumber.BigInt              `json:"balanceTokens"`
+	AvailableDepositLimit bigNumber.BigInt              `json:"availableDepositLimit,omitempty"`
+	DepositLimit          bigNumber.BigInt              `json:"depositLimit,omitempty"`
+	BalanceTokensIdle     bigNumber.BigInt              `json:"balanceTokensIdle,omitempty"`
 	ManagementFeeBps      uint64                        `json:"managementFeeBps"`
 	PerformanceFeeBps     uint64                        `json:"performanceFeeBps"`
 	ShareToken            TVaultFromGraphToken          `json:"shareToken"`

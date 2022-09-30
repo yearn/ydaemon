@@ -27,11 +27,7 @@ func FetchStrategiesFromMeta(chainID uint64) {
 			continue
 		}
 		//Ensure address checksum
-		allAddresses := []string{}
-		for _, address := range strategy.Addresses {
-			allAddresses = append(allAddresses, common.HexToAddress(address).String())
-		}
-		strategy.Addresses = allAddresses
+		strategy.Addresses = append([]common.Address{}, strategy.Addresses...)
 		strategies = append(strategies, strategy)
 	}
 	Store.RawMetaStrategies[chainID] = strategies
@@ -43,7 +39,7 @@ func FetchStrategiesFromMeta(chainID uint64) {
 	}
 	for _, strategy := range strategies {
 		for _, strategyAddress := range strategy.Addresses {
-			Store.StrategiesFromMeta[chainID][common.HexToAddress(strategyAddress)] = strategy
+			Store.StrategiesFromMeta[chainID][strategyAddress] = strategy
 		}
 	}
 }

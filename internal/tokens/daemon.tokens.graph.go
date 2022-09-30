@@ -49,36 +49,36 @@ func FetchTokenList(chainID uint64) {
 	}
 
 	for _, vault := range response.Vaults {
-		tokenList = append(tokenList, common.HexToAddress(vault.ShareToken.Id))
-		tokenList = append(tokenList, common.HexToAddress(vault.Token.Id))
+		tokenList = append(tokenList, vault.ShareToken.Id)
+		tokenList = append(tokenList, vault.Token.Id)
 
 		token := &TERC20Token{
-			Address:  common.HexToAddress(vault.Token.Id),
+			Address:  vault.Token.Id,
 			Decimals: vault.Token.Decimals,
 			Name:     vault.Token.Name,
 			Symbol:   vault.Token.Symbol,
 			IsVault:  false,
 		}
-		if helpers.AddressIsValid(common.HexToAddress(vault.ShareToken.Id), chainID) {
-			tokenData[common.HexToAddress(vault.ShareToken.Id)] = &TERC20Token{
-				Address:                common.HexToAddress(vault.ShareToken.Id),
-				UnderlyingTokenAddress: common.HexToAddress(vault.Token.Id),
+		if helpers.AddressIsValid(vault.ShareToken.Id, chainID) {
+			tokenData[vault.ShareToken.Id] = &TERC20Token{
+				Address:                vault.ShareToken.Id,
+				UnderlyingTokenAddress: vault.Token.Id,
 				Decimals:               vault.ShareToken.Decimals,
 				Name:                   vault.ShareToken.Name,
 				Symbol:                 vault.ShareToken.Symbol,
 				IsVault:                true,
 			}
 		}
-		if helpers.AddressIsValid(common.HexToAddress(vault.Token.Id), chainID) {
-			tokenData[common.HexToAddress(vault.Token.Id)] = token
+		if helpers.AddressIsValid(vault.Token.Id, chainID) {
+			tokenData[vault.Token.Id] = token
 		}
 
-		tokenData[common.HexToAddress(vault.Token.Id)] = token
+		tokenData[vault.Token.Id] = token
 		if Store.VaultToToken[chainID] == nil {
 			Store.VaultToToken[chainID] = make(map[common.Address]common.Address)
 		}
 
-		Store.VaultToToken[chainID][common.HexToAddress(vault.Id)] = common.HexToAddress(vault.Token.Id)
+		Store.VaultToToken[chainID][vault.Id] = vault.Token.Id
 	}
 
 	Store.Tokens[chainID] = tokenData

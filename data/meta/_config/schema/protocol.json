@@ -11,6 +11,12 @@
     "name": {
       "type": "string"
     },
+    "protocolVersion": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "description": {
       "type": "string"
     },
@@ -139,5 +145,5 @@
       ]
     }
   },
-  "required": ["name", "description"]
+  "required": ["name", "description", "protocolVersion"]
 }

@@ -133,6 +133,7 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 			TeamKnowledgeScore:  5,
 			TestingScore:        5,
 		},
+		Allocation: &TStrategyAllocation{},
 	}
 }
 

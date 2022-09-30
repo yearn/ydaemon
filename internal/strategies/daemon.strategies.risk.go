@@ -169,7 +169,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	// Refresh the tvl of groups
 	groups := Store.StrategyGroupFromRisk[chainID]
 	for _, group := range groups {
-		group.Allocation = TStrategyAllocation{}
+		group.Allocation = &TStrategyAllocation{}
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 	}
 
@@ -231,7 +231,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		strategy.RiskScores.ProtocolSafetyScore = stratGroup.ProtocolSafetyScore
 		strategy.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
 		strategy.RiskScores.TestingScore = stratGroup.TestingScore
-		strategy.Allocation = &stratGroup.Allocation
+		strategy.Allocation = stratGroup.Allocation
 		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 	}
 }

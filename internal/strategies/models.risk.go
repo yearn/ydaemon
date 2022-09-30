@@ -28,7 +28,7 @@ type TStrategyGroupFromRisk struct {
 	TeamKnowledgeScore  float64                 `json:"teamKnowledgeScore"`
 	TestingScore        float64                 `json:"testingScore"`
 	Criteria            TStrategyGroupCritieria `json:"criteria"`
-	Allocation          TStrategyAllocation     `json:"allocation"`
+	Allocation          *TStrategyAllocation    `json:"allocation"`
 }
 
 // TStrategyRisk contains the details on the risk about a strategy.

@@ -5,7 +5,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 )
 
-// TStrategyGroupCriteria is a helper type for parsing the risk framework json
+// TStrategyGroupCritieria is a helper type for parsing the risk framework json
 type TStrategyGroupCritieria struct {
 	Strategies []common.Address `json:"strategies"`
 	Exclude    []string         `json:"exclude"`

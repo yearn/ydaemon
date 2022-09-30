@@ -27,20 +27,16 @@ func FetchVaultsFromMeta(chainID uint64) {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
 			continue
 		}
-		vault.Address = strings.TrimSuffix(filenames[index], `.json`)
-		vault.Address = common.HexToAddress(vault.Address).String()
+		vault.Address = common.HexToAddress(strings.TrimSuffix(filenames[index], `.json`))
 		vaults = append(vaults, vault)
 	}
 
-	// To provide faster access to the data, we index the mapping by the vault address, aka
-	// {[vaultAddress]: TVaultFromMeta} if we were working with JS/TS
+	// To provide faster access to the data, we index the mapping by the vault address
 	if Store.VaultsFromMeta[chainID] == nil {
 		Store.VaultsFromMeta[chainID] = make(map[common.Address]TVaultFromMeta)
 	}
 	for _, vault := range vaults {
-		vault.MigrationContract = common.HexToAddress(vault.MigrationContract).Hex()
-		vault.MigrationTargetVault = common.HexToAddress(vault.MigrationTargetVault).Hex()
-		Store.VaultsFromMeta[chainID][common.HexToAddress(vault.Address)] = vault
+		Store.VaultsFromMeta[chainID][vault.Address] = vault
 		Store.RawMetaVaults[chainID] = append(Store.RawMetaVaults[chainID], vault)
 	}
 }

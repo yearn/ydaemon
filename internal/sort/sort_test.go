@@ -58,7 +58,7 @@ func PrepareTStruct() []TStruct {
 func TestSortBy(t *testing.T) {
 	{
 		tStruct := PrepareTStruct()
-		var sortedData []interface{} = make([]interface{}, len(tStruct))
+		var sortedData = make([]interface{}, len(tStruct))
 		for i, d := range tStruct {
 			sortedData[i] = d
 		}
@@ -98,7 +98,7 @@ func TestSortBy(t *testing.T) {
 
 	{
 		tStruct := PrepareTStruct()
-		var sortedData []interface{} = make([]interface{}, len(tStruct))
+		var sortedData = make([]interface{}, len(tStruct))
 		for i, d := range tStruct {
 			sortedData[i] = d
 		}
@@ -133,7 +133,7 @@ func TestSortBy(t *testing.T) {
 
 	{
 		tStruct := PrepareTStruct()
-		var sortedData []interface{} = make([]interface{}, len(tStruct))
+		var sortedData = make([]interface{}, len(tStruct))
 		for i, d := range tStruct {
 			sortedData[i] = d
 		}

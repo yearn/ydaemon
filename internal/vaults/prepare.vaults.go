@@ -2,7 +2,6 @@ package vaults
 
 import (
 	"math"
-	"math/big"
 	"strconv"
 	"strings"
 
@@ -10,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
@@ -73,37 +73,37 @@ func buildVaultSymbol(
 	if displaySymbol != "" && !strings.HasPrefix(displaySymbol, "yv") {
 		formatedSymbol = "yv" + displaySymbol
 	}
-	symbol = helpers.ValueWithFallback(symbol, displaySymbol)
-	symbol = helpers.ValueWithFallback(symbol, formatedSymbol)
-	displaySymbol = helpers.ValueWithFallback(displaySymbol, symbol)
+	symbol = helpers.SafeString(symbol, displaySymbol)
+	symbol = helpers.SafeString(symbol, formatedSymbol)
+	displaySymbol = helpers.SafeString(displaySymbol, symbol)
 
 	return symbol, displaySymbol, formatedSymbol
 }
 
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
-// decimals. We first need to parse the BigInt Price to a float64, then divide by 10^6 to get the price
+// decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
-func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*big.Float, float64) {
+func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
 	prices := prices.Store.TokenPrices[chainID]
-	fPrice := new(big.Float)
+	fPrice := new(bigNumber.Float)
 	price, ok := prices[tokenAddress]
 	if ok {
 		fPrice.SetInt(price)
-		humanizedPrice := new(big.Float).Quo(fPrice, big.NewFloat(math.Pow10(int(6))))
+		humanizedPrice := new(bigNumber.Float).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))
 		fHumanizedPrice, _ := humanizedPrice.Float64()
 		return humanizedPrice, fHumanizedPrice
 	}
-	return big.NewFloat(0), 0.0
+	return bigNumber.NewFloat(), 0.0
 }
 
 // Get the total assets locked in this vault. This is tricky because of the decimals. The total asset value
 // is a string which will be formated as a float64 and scaled with the underlying token decimals. With that
 // we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
 // in the vault thanks to the above humanizedPrice value.
-func buildTVL(balanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	_, humanizedTVL := helpers.FormatAmount(balanceToken, decimals)
-	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(humanizedTVL, humanizedPrice).Float64()
+func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
+	_, humanizedTVL := helpers.FormatAmount(balanceToken.String(), decimals)
+	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
@@ -160,10 +160,10 @@ func buildMigration(chainID uint64, vaultAddress common.Address) TMigration {
 	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
 
 	if ok {
-		migrationAddress := vaultAddress.String()
+		migrationAddress := vaultAddress
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
-			migrationAddress = common.HexToAddress(vaultFromMeta.MigrationTargetVault).String()
+			migrationAddress = vaultFromMeta.MigrationTargetVault
 		}
 
 		migration = TMigration{
@@ -182,13 +182,13 @@ func prepareVaultSchema(
 	vaultFromGraph models.TVaultFromGraph,
 ) *TVault {
 	chainIDAsString := strconv.FormatUint(chainID, 10)
-	vaultAddress := common.HexToAddress(vaultFromGraph.Id)
-	tokenAddress := common.HexToAddress(vaultFromGraph.Token.Id)
+	vaultAddress := vaultFromGraph.Id
+	tokenAddress := vaultFromGraph.Token.Id
 	tokenFromMeta := meta.Store.TokensFromMeta[chainID][tokenAddress]
-	updated := helpers.StrToUint(vaultFromGraph.LatestUpdate.Timestamp, 0)
-	activation := helpers.StrToUint(vaultFromGraph.Activation, 0)
-	tokenDisplayName := helpers.ValueWithFallback(tokenFromMeta.Name, vaultFromGraph.Token.Name)
-	tokenDisplaySymbol := helpers.ValueWithFallback(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
+	updated := helpers.FormatUint64(vaultFromGraph.LatestUpdate.Timestamp, 0)
+	activation := helpers.FormatUint64(vaultFromGraph.Activation, 0)
+	tokenDisplayName := helpers.SafeString(tokenFromMeta.Name, vaultFromGraph.Token.Name)
+	tokenDisplaySymbol := helpers.SafeString(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
 	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
 	if !ok {
 		// If the vault file is missing, we set the default values for its fields
@@ -213,7 +213,7 @@ func prepareVaultSchema(
 	)
 	vaultSymbol, vaultDisplaySymbol, vaultFormatedSymbol := buildVaultSymbol(
 		chainID,
-		common.HexToAddress(vaultFromGraph.ShareToken.Id),
+		vaultFromGraph.ShareToken.Id,
 		vaultFromGraph.ShareToken.Symbol,
 		vaultFromGraph.Token.Symbol,
 	)
@@ -236,23 +236,20 @@ func prepareVaultSchema(
 		int(vaultFromGraph.Token.Decimals),
 		humanizedPrice,
 	)
-	delegatedTokenAsBN := big.NewInt(0)
+	delegatedTokenAsBN := bigNumber.NewInt(0)
 	fDelegatedValue := 0.0
 
 	for _, strat := range strategies {
 		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
 		if err == nil {
-			stratDelegatedTokenAsBN, ok := big.NewInt(0).SetString(strat.DelegatedAssets, 10)
-			if ok {
-				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, stratDelegatedTokenAsBN)
-				fDelegatedValue += stratDelegatedValueAsFloat
-			}
+			delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
+			fDelegatedValue += stratDelegatedValueAsFloat
 		}
 	}
 
 	vault := &TVault{
 		Inception:      activation,
-		Address:        vaultAddress.String(),
+		Address:        vaultAddress,
 		Symbol:         vaultSymbol,
 		DisplaySymbol:  vaultDisplaySymbol,
 		FormatedSymbol: vaultFormatedSymbol,
@@ -261,17 +258,17 @@ func prepareVaultSchema(
 		FormatedName:   vaultFormatedName,
 		Icon:           helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultAddress.String() + `/logo-128.png`,
 		Token: TToken{
-			Address:     common.HexToAddress(vaultFromGraph.Token.Id).String(),
+			Address:     vaultFromGraph.Token.Id,
 			Name:        vaultFromGraph.Token.Name,
 			DisplayName: tokenDisplayName,
 			Symbol:      tokenDisplaySymbol,
 			Description: tokenFromMeta.Description,
 			Decimals:    vaultFromGraph.Token.Decimals,
-			Icon:        helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + common.HexToAddress(vaultFromGraph.Token.Id).String() + `/logo-128.png`,
+			Icon:        helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultFromGraph.Token.Id.String() + `/logo-128.png`,
 		},
 		TVL: TTVL{
 			TotalAssets:          vaultFromGraph.BalanceTokens,
-			TotalDelegatedAssets: delegatedTokenAsBN.String(),
+			TotalDelegatedAssets: delegatedTokenAsBN,
 			TVL:                  fHumanizedTVLPrice - fDelegatedValue,
 			TVLDeposited:         fHumanizedTVLPrice,
 			TVLDelegated:         fDelegatedValue,

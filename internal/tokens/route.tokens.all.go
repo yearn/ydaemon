@@ -27,7 +27,7 @@ type TAllTokens struct {
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
 func (y Controller) GetAllTokens(c *gin.Context) {
-	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
+	localization := helpers.SafeString(c.Query("loc"), "en")
 	allTokens := make(map[uint64]map[common.Address]TAllTokens)
 	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
 		tokenList := Store.Tokens[chainID]
@@ -72,7 +72,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	localization := helpers.ValueWithFallback(c.Query("loc"), "en")
+	localization := helpers.SafeString(c.Query("loc"), "en")
 
 	allTokens := make(map[common.Address]TAllTokens)
 	tokenList := Store.Tokens[chainID]

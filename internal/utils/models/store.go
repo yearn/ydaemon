@@ -1,9 +1,8 @@
 package models
 
 import (
-	"math/big"
-
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 )
 
 type TStrategyList struct {
@@ -14,47 +13,23 @@ type TStrategyList struct {
 }
 
 type TStrategyMultiCallData struct {
-	CreditAvailable         *big.Int `json:"creditAvailable"`
-	DebtOutstanding         *big.Int `json:"debtOutstanding"`
-	ExpectedReturn          *big.Int `json:"expectedReturn"`
-	PerformanceFee          *big.Int `json:"performanceFee"`
-	Activation              *big.Int `json:"activation"`
-	DebtRatio               *big.Int `json:"debtRatio,omitempty"`         // Only > 0.2.2
-	DebtLimit               *big.Int `json:"debtLimit,omitempty"`         // Only = 0.2.2
-	RateLimit               *big.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *big.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *big.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	LastReport              *big.Int `json:"lastReport"`
-	TotalDebt               *big.Int `json:"totalDebt"`
-	TotalGain               *big.Int `json:"totalGain"`
-	TotalLoss               *big.Int `json:"totalLoss"`
-	EstimatedTotalAssets    *big.Int `json:"estimatedTotalAssets"`
-	KeepCRV                 *big.Int `json:"keepCRV"`
-	DelegatedAssets         *big.Int `json:"delegatedAssets"`
-	WithdrawalQueuePosition *big.Int `json:"withdrawalQueuePosition"`
-	IsActive                bool     `json:"isActive"`
-}
-
-type TStrategyFromRiskRiskScores struct {
-	TVLImpact           float64 `json:"TVLImpact"`
-	AuditScore          float64 `json:"auditScore"`
-	CodeReviewScore     float64 `json:"codeReviewScore"`
-	ComplexityScore     float64 `json:"complexityScore"`
-	LongevityImpact     float64 `json:"longevityImpact"`
-	ProtocolSafetyScore float64 `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
-	TestingScore        float64 `json:"testingScore"`
-}
-
-type TStrategyFromRiskAllocation struct {
-	CurrentTVL      string `json:"currentTVL"` // value in USDC
-	AvailableTVL    string `json:"availableTVL"`
-	CurrentAmount   string `json:"currentAmount"` // value in WANT
-	AvailableAmount string `json:"availableAmount"`
-}
-
-type TStrategyFromRisk struct {
-	RiskGroup  string                      `json:"riskGroup"`
-	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
-	Allocation TStrategyFromRiskAllocation `json:"allocation"`
+	CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
+	DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
+	ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
+	PerformanceFee          *bigNumber.Int `json:"performanceFee"`
+	Activation              *bigNumber.Int `json:"activation"`
+	DebtRatio               *bigNumber.Int `json:"debtRatio,omitempty"`         // Only > 0.2.2
+	DebtLimit               *bigNumber.Int `json:"debtLimit,omitempty"`         // Only = 0.2.2
+	RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	LastReport              *bigNumber.Int `json:"lastReport"`
+	TotalDebt               *bigNumber.Int `json:"totalDebt"`
+	TotalGain               *bigNumber.Int `json:"totalGain"`
+	TotalLoss               *bigNumber.Int `json:"totalLoss"`
+	EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
+	KeepCRV                 *bigNumber.Int `json:"keepCRV"`
+	DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
+	WithdrawalQueuePosition *bigNumber.Int `json:"withdrawalQueuePosition"`
+	IsActive                bool           `json:"isActive"`
 }

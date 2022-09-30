@@ -1,19 +1,19 @@
 package strategies
 
 import (
-	"math/big"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func buildDelegated(delegatedBalanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken, decimals)
-	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
+func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
+	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken.String(), decimals)
+	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(delegatedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
@@ -23,7 +23,7 @@ func BuildStrategies(
 	withStrategiesDetails bool,
 	withStrategiesRisk bool,
 	strategiesCondition string,
-	humanizedTokenPrice *big.Float,
+	humanizedTokenPrice *bigNumber.Float,
 	vaultFromGraph models.TVaultFromGraph,
 ) []TStrategy {
 	strategies := []TStrategy{}
@@ -32,21 +32,21 @@ func BuildStrategies(
 	strategiesFromRisk := Store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesFromMulticall[common.HexToAddress(strategy.Address)]
+		multicallData, ok := strategiesFromMulticall[strategy.Address]
 		if !ok {
 			multicallData = models.TStrategyMultiCallData{}
 		}
 
 		currentStrategy := TStrategy{
-			Address:     common.HexToAddress(strategy.Address).String(),
+			Address:     strategy.Address,
 			Name:        strategy.Name,
-			Description: strategiesFromMeta[common.HexToAddress(strategy.Address)].Description,
+			Description: strategiesFromMeta[strategy.Address].Description,
 		}
-		debtLimit := helpers.BValueWithFallbackUint64(multicallData.DebtLimit, 0)
+		debtLimit := multicallData.DebtLimit.Uint64()
 
 		//Non exported fields, used for internal purposes
-		currentStrategy.TotalDebt = helpers.BValueWithFallbackString(multicallData.TotalDebt, `0`)
-		currentStrategy.DelegatedAssets = helpers.BValueWithFallbackString(multicallData.DelegatedAssets, `0`)
+		currentStrategy.TotalDebt = multicallData.TotalDebt
+		currentStrategy.DelegatedAssets = multicallData.DelegatedAssets
 		currentStrategy.IsActive = multicallData.IsActive
 		currentStrategy.InQueue = strategy.InQueue
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
@@ -60,36 +60,39 @@ func BuildStrategies(
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &TStrategyDetails{}
-			currentStrategy.Details.Protocols = strategiesFromMeta[common.HexToAddress(strategy.Address)].Protocols
-			currentStrategy.Details.Keeper = common.HexToAddress(strategy.Keeper).String()
-			currentStrategy.Details.Strategist = common.HexToAddress(strategy.Strategist).String()
-			currentStrategy.Details.Rewards = common.HexToAddress(strategy.Rewards).String()
-			currentStrategy.Details.HealthCheck = common.HexToAddress(strategy.HealthCheck).String()
+			currentStrategy.Details.Protocols = strategiesFromMeta[strategy.Address].Protocols
+			currentStrategy.Details.Keeper = strategy.Keeper
+			currentStrategy.Details.Strategist = strategy.Strategist
+			currentStrategy.Details.Rewards = strategy.Rewards
+			currentStrategy.Details.HealthCheck = common.HexToAddress(strategy.HealthCheck)
 			currentStrategy.Details.Version = strategy.ApiVersion
 			currentStrategy.Details.InQueue = strategy.InQueue
 			currentStrategy.Details.DoHealthCheck = strategy.DoHealthCheck
 			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
 			currentStrategy.Details.DebtLimit = debtLimit
 			currentStrategy.Details.IsActive = multicallData.IsActive
-			currentStrategy.Details.CreditAvailable = helpers.BValueWithFallbackString(multicallData.CreditAvailable, `0`)
-			currentStrategy.Details.DebtOutstanding = helpers.BValueWithFallbackString(multicallData.DebtOutstanding, `0`)
-			currentStrategy.Details.ExpectedReturn = helpers.BValueWithFallbackString(multicallData.ExpectedReturn, `0`)
-			currentStrategy.Details.PerformanceFee = helpers.BValueWithFallbackUint64(multicallData.PerformanceFee, 0)
-			currentStrategy.Details.Activation = helpers.BValueWithFallbackUint64(multicallData.Activation, 0)
-			currentStrategy.Details.DebtRatio = helpers.BValueWithFallbackUint64(multicallData.DebtRatio, 0)
-			currentStrategy.Details.RateLimit = helpers.BValueWithFallbackString(multicallData.RateLimit, `0`)
-			currentStrategy.Details.MinDebtPerHarvest = helpers.BValueWithFallbackString(multicallData.MinDebtPerHarvest, `0`)
-			currentStrategy.Details.MaxDebtPerHarvest = helpers.BValueWithFallbackString(multicallData.MaxDebtPerHarvest, `0`)
-			currentStrategy.Details.EstimatedTotalAssets = helpers.BValueWithFallbackString(multicallData.EstimatedTotalAssets, `0`)
-			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
-			currentStrategy.Details.DelegatedValue = currentStrategy.DelegatedValue
-			currentStrategy.Details.KeepCRV = helpers.BValueWithFallbackUint64(multicallData.KeepCRV, 0)
-			currentStrategy.Details.LastReport = helpers.BValueWithFallbackUint64(multicallData.LastReport, 0)
+
+			currentStrategy.Details.CreditAvailable = multicallData.CreditAvailable
+			currentStrategy.Details.DebtOutstanding = multicallData.DebtOutstanding
+			currentStrategy.Details.ExpectedReturn = multicallData.ExpectedReturn
+			currentStrategy.Details.RateLimit = multicallData.RateLimit
+			currentStrategy.Details.MinDebtPerHarvest = multicallData.MinDebtPerHarvest
+			currentStrategy.Details.MaxDebtPerHarvest = multicallData.MaxDebtPerHarvest
+			currentStrategy.Details.EstimatedTotalAssets = multicallData.EstimatedTotalAssets
+			currentStrategy.Details.TotalGain = multicallData.TotalGain
+			currentStrategy.Details.TotalLoss = multicallData.TotalLoss
 			currentStrategy.Details.TotalDebt = currentStrategy.TotalDebt
-			currentStrategy.Details.TotalGain = helpers.BValueWithFallbackString(multicallData.TotalGain, `0`)
-			currentStrategy.Details.TotalLoss = helpers.BValueWithFallbackString(multicallData.TotalLoss, `0`)
+			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
+			currentStrategy.Details.DelegatedValue = bigNumber.NewInt().SetString(currentStrategy.DelegatedValue)
+
+			currentStrategy.Details.PerformanceFee = (multicallData.PerformanceFee).Uint64()
+			currentStrategy.Details.Activation = (multicallData.Activation).Uint64()
+			currentStrategy.Details.DebtRatio = (multicallData.DebtRatio).Uint64()
+			currentStrategy.Details.KeepCRV = (multicallData.KeepCRV).Uint64()
+			currentStrategy.Details.LastReport = (multicallData.LastReport).Uint64()
+
 			currentStrategy.Details.APR = 0.0
-			currentStrategy.Details.WithdrawalQueuePosition = helpers.BValueWithFallbackInt64(multicallData.WithdrawalQueuePosition, -1)
+			currentStrategy.Details.WithdrawalQueuePosition = bigNumber.NewInt().Safe(multicallData.WithdrawalQueuePosition, bigNumber.NewInt(-1)).Int64()
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64
@@ -110,9 +113,9 @@ func BuildStrategies(
 
 		//Compute the risk data
 		if withStrategiesRisk {
-			riskData, ok := strategiesFromRisk[common.HexToAddress(strategy.Address)]
+			riskData, ok := strategiesFromRisk[strategy.Address]
 			if !ok {
-				riskData = models.TStrategyFromRisk{}
+				riskData = TStrategyFromRisk{}
 			}
 
 			currentStrategy.Risk = &TStrategyRisk{}
@@ -135,7 +138,7 @@ func BuildStrategies(
 		if strategiesCondition == `absolute` &&
 			currentStrategy.InQueue &&
 			currentStrategy.IsActive &&
-			currentStrategy.TotalDebt != `0` {
+			!currentStrategy.TotalDebt.IsZero() {
 			strategies = append(strategies, currentStrategy)
 		} else if strategiesCondition == `inQueue` && currentStrategy.InQueue {
 			strategies = append(strategies, currentStrategy)

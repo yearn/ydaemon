@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
@@ -61,7 +62,7 @@ func FetchVaultMulticallData(chainID uint64) {
 		pricePerShareRaw := response[vault.Address.String()+`pricePerShare`]
 		pricePerShare := new(big.Int)
 		if len(pricePerShareRaw) == 1 {
-			pricePerShare = pricePerShareRaw[0].(*big.Int)
+			pricePerShare = helpers.SafeBigInt(pricePerShareRaw[0].(*big.Int))
 		}
 		prices.Store.VaultPricePerShare[chainID][vault.Address] = pricePerShare
 	}

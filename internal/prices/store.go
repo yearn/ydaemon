@@ -3,7 +3,7 @@ package prices
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/types/common"
 )
 
 type TStore struct {

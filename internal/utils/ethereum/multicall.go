@@ -9,19 +9,20 @@ import (
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
+	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
 type Call struct {
-	Name     string         `json:"name"`
-	Method   string         `json:"method"`
-	Version  string         `json:"version"`
-	Abi      *abi.ABI       `json:"abi"`
-	Target   common.Address `json:"target"`
-	CallData []byte         `json:"call_data"`
+	Name     string            `json:"name"`
+	Method   string            `json:"method"`
+	Version  string            `json:"version"`
+	Abi      *abi.ABI          `json:"abi"`
+	Target   ethcommon.Address `json:"target"`
+	CallData []byte            `json:"call_data"`
 }
 
 type CallResponse struct {
@@ -33,11 +34,14 @@ type TEthMultiCaller struct {
 	Signer          *bind.TransactOpts
 	Client          *ethclient.Client
 	Abi             *abi.ABI
-	ContractAddress common.Address
+	ContractAddress ethcommon.Address
 }
 
 func (call Call) GetMultiCall() contracts.Multicall2Call {
-	return contracts.Multicall2Call{Target: call.Target, CallData: call.CallData}
+	return contracts.Multicall2Call{
+		Target:   call.Target,
+		CallData: call.CallData,
+	}
 }
 
 // NewMulticall creates a new instance of a TEthMultiCaller. This is the instance we
@@ -67,7 +71,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 		Signer:          randomSigner(),
 		Client:          client,
 		Abi:             mcAbi,
-		ContractAddress: multicallAddress,
+		ContractAddress: multicallAddress.Address,
 	}
 }
 
@@ -128,7 +132,12 @@ func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int, block
 		}
 
 		// Unpack results
-		unpackedResp, _ := caller.Abi.Unpack("tryAggregate", tempPackedResp)
+		unpackedResp, err := caller.Abi.Unpack("tryAggregate", tempPackedResp)
+		if err != nil {
+			logs.Error("Failed to unpack response: " + err.Error())
+			continue
+		}
+
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
 			logs.Error("Failed to unmarshal response: " + err.Error())

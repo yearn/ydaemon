@@ -3,9 +3,9 @@ package strategies
 import (
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"

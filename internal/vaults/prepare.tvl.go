@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )

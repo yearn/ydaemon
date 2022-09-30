@@ -11,8 +11,8 @@ import (
 	"sync"
 	"unicode/utf8"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -26,10 +26,10 @@ var lensABI, _ = contracts.OracleMetaData.GetAbi()
 // getPriceUsdcRecommendedCall will pack the transaction with it's argument and return the
 // ethereum.Call object that can be used to execute the transaction.
 func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
-	parsedData, err := lensABI.Pack("getPriceUsdcRecommended", tokenAddress)
+	parsedData, err := lensABI.Pack("getPriceUsdcRecommended", tokenAddress.Address)
 	if err != nil {
 		return ethereum.Call{
-			Target:   contractAddress,
+			Target:   contractAddress.Address,
 			Abi:      lensABI,
 			Method:   `getPriceUsdcRecommended`,
 			CallData: nil,
@@ -37,7 +37,7 @@ func getPriceUsdcRecommendedCall(name string, contractAddress common.Address, to
 		}
 	}
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      lensABI,
 		Method:   `getPriceUsdcRecommended`,
 		CallData: parsedData,

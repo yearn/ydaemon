@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/types/common"
 )
 
 func getCurrentPath() string {

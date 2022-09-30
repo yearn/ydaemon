@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -23,9 +23,9 @@ var yearnVaultABI, _ = contracts.YearnVaultMetaData.GetAbi()
 var yearnStrategyABI, _ = contracts.StrategyBaseMetaData.GetAbi()
 
 func getCreditAvailable(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := yearnVaultABI.Pack("creditAvailable0", strategyAddress)
+	parsedData, _ := yearnVaultABI.Pack("creditAvailable0", strategyAddress.Address)
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnVaultABI,
 		Method:   `creditAvailable0`,
 		CallData: parsedData,
@@ -35,9 +35,9 @@ func getCreditAvailable(name string, contractAddress common.Address, strategyAdd
 }
 
 func getDebtOutstanding(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := yearnVaultABI.Pack("debtOutstanding0", strategyAddress)
+	parsedData, _ := yearnVaultABI.Pack("debtOutstanding0", strategyAddress.Address)
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnVaultABI,
 		Method:   `debtOutstanding0`,
 		CallData: parsedData,
@@ -58,10 +58,10 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 		abiToUse = &_abi
 	}
 
-	parsedData, _ := abiToUse.Pack("strategies", strategyAddress)
+	parsedData, _ := abiToUse.Pack("strategies", strategyAddress.Address)
 	return ethereum.Call{
 		Name:     name,
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      abiToUse,
 		Method:   `strategies`,
 		CallData: parsedData,
@@ -70,9 +70,9 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 }
 
 func getExpectedReturn(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := yearnVaultABI.Pack("expectedReturn0", strategyAddress)
+	parsedData, _ := yearnVaultABI.Pack("expectedReturn0", strategyAddress.Address)
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnVaultABI,
 		Method:   `expectedReturn0`,
 		CallData: parsedData,
@@ -84,7 +84,7 @@ func getExpectedReturn(name string, contractAddress common.Address, strategyAddr
 func getStategyEstimatedTotalAsset(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := yearnStrategyABI.Pack("estimatedTotalAssets")
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnStrategyABI,
 		Method:   `estimatedTotalAssets`,
 		CallData: parsedData,
@@ -96,7 +96,7 @@ func getStategyEstimatedTotalAsset(name string, contractAddress common.Address, 
 func getStategyIsActive(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := yearnStrategyABI.Pack("isActive")
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnStrategyABI,
 		Method:   `isActive`,
 		CallData: parsedData,
@@ -108,7 +108,7 @@ func getStategyIsActive(name string, contractAddress common.Address, version str
 func getStategyKeepCRV(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := yearnStrategyABI.Pack("keepCRV")
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnStrategyABI,
 		Method:   `keepCRV`,
 		CallData: parsedData,
@@ -120,7 +120,7 @@ func getStategyKeepCRV(name string, contractAddress common.Address, version stri
 func getStategyDelegatedAssets(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := yearnStrategyABI.Pack("delegatedAssets")
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnStrategyABI,
 		Method:   `delegatedAssets`,
 		CallData: parsedData,

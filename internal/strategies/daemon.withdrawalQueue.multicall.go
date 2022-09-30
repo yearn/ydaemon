@@ -6,7 +6,8 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
+	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
@@ -16,7 +17,7 @@ import (
 func getVaultWithdrawalQueue(name string, index int64, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := yearnVaultABI.Pack("withdrawalQueue", big.NewInt(index))
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnVaultABI,
 		Method:   `withdrawalQueue`,
 		CallData: parsedData,
@@ -55,7 +56,7 @@ func FetchWithdrawalQueueMulticallData(chainID uint64) {
 		for i := 0; i < maxStrategiesPerVault; i++ {
 			result := response[vault.String()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
 			if len(result) == 1 {
-				strategyAddress := result[0].(common.Address)
+				strategyAddress := common.FromAddress(result[0].(ethcommon.Address))
 				if helpers.AddressIsValid(strategyAddress, chainID) {
 					withdrawQueueForStrategies[strategyAddress] = int64(i)
 				}

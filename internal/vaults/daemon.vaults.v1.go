@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"

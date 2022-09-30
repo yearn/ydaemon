@@ -1,8 +1,8 @@
 package partners
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/common"
 )
 
 type TPartnersFromFile struct {

@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -22,7 +22,7 @@ var yearnVaultABI, _ = contracts.YearnVaultMetaData.GetAbi()
 func getPricePerShare(contractAddress common.Address) ethereum.Call {
 	parsedData, _ := yearnVaultABI.Pack("pricePerShare")
 	return ethereum.Call{
-		Target:   contractAddress,
+		Target:   contractAddress.Address,
 		Abi:      yearnVaultABI,
 		Method:   `pricePerShare`,
 		CallData: parsedData,

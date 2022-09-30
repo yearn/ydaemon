@@ -3,9 +3,9 @@ package partners
 import (
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
@@ -48,12 +48,15 @@ func computeDefaultBalance(
 	vaultAddress common.Address,
 	userAddress common.Address,
 ) (*big.Int, *bigNumber.Float, error) {
-	yearnVault, err := contracts.NewYearnVault(vaultAddress, ethereum.GetRPC(chainID))
+	yearnVault, err := contracts.NewYearnVault(
+		vaultAddress.Address,
+		ethereum.GetRPC(chainID),
+	)
 	if err != nil {
 		logs.Error("Failed to create YearnVault contract", err)
 		return nil, nil, err
 	}
-	balance, err := yearnVault.BalanceOf(nil, userAddress)
+	balance, err := yearnVault.BalanceOf(nil, userAddress.Address)
 	if err != nil {
 		logs.Error(`Error getting balance`, err)
 		return nil, nil, err

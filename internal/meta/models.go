@@ -1,7 +1,7 @@
 package meta
 
 import (
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 

@@ -19,20 +19,6 @@ type TStrategyAllocation struct {
 	AvailableAmount *bigNumber.Float `json:"availableAmount"`
 }
 
-type TStrategyGroupAllocation struct {
-	CurrentTVL      *big.Float // value in USDC
-	AvailableTVL    *big.Float
-	CurrentAmount   *big.Float // value in WANT
-	AvailableAmount *big.Float
-}
-
-type TStrategyAllocation struct {
-	CurrentTVL      string `json:"currentTVL"` // value in USDC
-	AvailableTVL    string `json:"availableTVL"`
-	CurrentAmount   string `json:"currentAmount"` // value in WANT
-	AvailableAmount string `json:"availableAmount"`
-}
-
 type TStrategyGroupFromRisk struct {
 	Label               string                  `json:"label"`
 	AuditScore          float64                 `json:"auditScore"`

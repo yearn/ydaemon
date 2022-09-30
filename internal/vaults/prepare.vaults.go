@@ -2,7 +2,6 @@ package vaults
 
 import (
 	"math"
-	"math/big"
 	"strconv"
 	"strings"
 
@@ -85,26 +84,26 @@ func buildVaultSymbol(
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
 // decimals. We first need to parse the BigInt Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
-func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*big.Float, float64) {
+func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.BigFloat, float64) {
 	prices := prices.Store.TokenPrices[chainID]
-	fPrice := new(big.Float)
+	fPrice := new(bigNumber.BigFloat)
 	price, ok := prices[tokenAddress]
 	if ok {
 		fPrice.SetInt(price)
-		humanizedPrice := new(big.Float).Quo(fPrice, big.NewFloat(math.Pow10(int(6))))
+		humanizedPrice := new(bigNumber.BigFloat).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))
 		fHumanizedPrice, _ := humanizedPrice.Float64()
 		return humanizedPrice, fHumanizedPrice
 	}
-	return big.NewFloat(0), 0.0
+	return bigNumber.NewFloat(), 0.0
 }
 
 // Get the total assets locked in this vault. This is tricky because of the decimals. The total asset value
 // is a string which will be formated as a float64 and scaled with the underlying token decimals. With that
 // we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
 // in the vault thanks to the above humanizedPrice value.
-func buildTVL(balanceToken bigNumber.BigInt, decimals int, humanizedPrice *big.Float) float64 {
+func buildTVL(balanceToken *bigNumber.BigInt, decimals int, humanizedPrice *bigNumber.BigFloat) float64 {
 	_, humanizedTVL := helpers.FormatAmount(balanceToken.String(), decimals)
-	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(humanizedTVL, humanizedPrice).Float64()
+	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
@@ -237,17 +236,14 @@ func prepareVaultSchema(
 		int(vaultFromGraph.Token.Decimals),
 		humanizedPrice,
 	)
-	delegatedTokenAsBN := big.NewInt(0)
+	delegatedTokenAsBN := bigNumber.NewInt(0)
 	fDelegatedValue := 0.0
 
 	for _, strat := range strategies {
 		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
 		if err == nil {
-			stratDelegatedTokenAsBN, ok := big.NewInt(0).SetString(strat.DelegatedAssets, 10)
-			if ok {
-				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, stratDelegatedTokenAsBN)
-				fDelegatedValue += stratDelegatedValueAsFloat
-			}
+			delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
+			fDelegatedValue += stratDelegatedValueAsFloat
 		}
 	}
 
@@ -272,7 +268,7 @@ func prepareVaultSchema(
 		},
 		TVL: TTVL{
 			TotalAssets:          vaultFromGraph.BalanceTokens,
-			TotalDelegatedAssets: bigNumber.FromBigInt(delegatedTokenAsBN),
+			TotalDelegatedAssets: delegatedTokenAsBN,
 			TVL:                  fHumanizedTVLPrice - fDelegatedValue,
 			TVLDeposited:         fHumanizedTVLPrice,
 			TVLDelegated:         fDelegatedValue,

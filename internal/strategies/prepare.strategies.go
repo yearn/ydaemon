@@ -1,18 +1,19 @@
 package strategies
 
 import (
-	"math/big"
 	"strconv"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
-func buildDelegated(delegatedBalanceToken string, decimals int, humanizedPrice *big.Float) float64 {
-	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken, decimals)
-	fHumanizedTVLPrice, _ := big.NewFloat(0).Mul(delegatedTVL, humanizedPrice).Float64()
+func buildDelegated(delegatedBalanceToken *bigNumber.BigInt, decimals int, humanizedPrice *bigNumber.BigFloat) float64 {
+	_, delegatedTVL := helpers.FormatAmount(delegatedBalanceToken.String(), decimals)
+	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(delegatedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
@@ -22,7 +23,7 @@ func BuildStrategies(
 	withStrategiesDetails bool,
 	withStrategiesRisk bool,
 	strategiesCondition string,
-	humanizedTokenPrice *big.Float,
+	humanizedTokenPrice *bigNumber.BigFloat,
 	vaultFromGraph models.TVaultFromGraph,
 ) []TStrategy {
 	strategies := []TStrategy{}
@@ -41,11 +42,11 @@ func BuildStrategies(
 			Name:        strategy.Name,
 			Description: strategiesFromMeta[strategy.Address].Description,
 		}
-		debtLimit := helpers.SafeBigInt(multicallData.DebtLimit).Uint64()
+		debtLimit := multicallData.DebtLimit.Uint64()
 
 		//Non exported fields, used for internal purposes
-		currentStrategy.TotalDebt = helpers.SafeBigInt(multicallData.TotalDebt).String()
-		currentStrategy.DelegatedAssets = helpers.SafeBigInt(multicallData.DelegatedAssets).String()
+		currentStrategy.TotalDebt = multicallData.TotalDebt
+		currentStrategy.DelegatedAssets = multicallData.DelegatedAssets
 		currentStrategy.IsActive = multicallData.IsActive
 		currentStrategy.InQueue = strategy.InQueue
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
@@ -63,32 +64,35 @@ func BuildStrategies(
 			currentStrategy.Details.Keeper = strategy.Keeper
 			currentStrategy.Details.Strategist = strategy.Strategist
 			currentStrategy.Details.Rewards = strategy.Rewards
-			currentStrategy.Details.HealthCheck = strategy.HealthCheck
+			currentStrategy.Details.HealthCheck = common.HexToAddress(strategy.HealthCheck)
 			currentStrategy.Details.Version = strategy.ApiVersion
 			currentStrategy.Details.InQueue = strategy.InQueue
 			currentStrategy.Details.DoHealthCheck = strategy.DoHealthCheck
 			currentStrategy.Details.EmergencyExit = strategy.EmergencyExit
 			currentStrategy.Details.DebtLimit = debtLimit
 			currentStrategy.Details.IsActive = multicallData.IsActive
-			currentStrategy.Details.CreditAvailable = helpers.SafeBigInt(multicallData.CreditAvailable).String()
-			currentStrategy.Details.DebtOutstanding = helpers.SafeBigInt(multicallData.DebtOutstanding).String()
-			currentStrategy.Details.ExpectedReturn = helpers.SafeBigInt(multicallData.ExpectedReturn).String()
-			currentStrategy.Details.PerformanceFee = helpers.SafeBigInt(multicallData.PerformanceFee).Uint64()
-			currentStrategy.Details.Activation = helpers.SafeBigInt(multicallData.Activation).Uint64()
-			currentStrategy.Details.DebtRatio = helpers.SafeBigInt(multicallData.DebtRatio).Uint64()
-			currentStrategy.Details.RateLimit = helpers.SafeBigInt(multicallData.RateLimit).String()
-			currentStrategy.Details.MinDebtPerHarvest = helpers.SafeBigInt(multicallData.MinDebtPerHarvest).String()
-			currentStrategy.Details.MaxDebtPerHarvest = helpers.SafeBigInt(multicallData.MaxDebtPerHarvest).String()
-			currentStrategy.Details.EstimatedTotalAssets = helpers.SafeBigInt(multicallData.EstimatedTotalAssets).String()
-			currentStrategy.Details.DelegatedAssets = helpers.SafeString(currentStrategy.DelegatedAssets, ``)
-			currentStrategy.Details.DelegatedValue = helpers.SafeString(currentStrategy.DelegatedValue, ``)
-			currentStrategy.Details.KeepCRV = helpers.SafeBigInt(multicallData.KeepCRV).Uint64()
-			currentStrategy.Details.LastReport = helpers.SafeBigInt(multicallData.LastReport).Uint64()
+
+			currentStrategy.Details.CreditAvailable = multicallData.CreditAvailable
+			currentStrategy.Details.DebtOutstanding = multicallData.DebtOutstanding
+			currentStrategy.Details.ExpectedReturn = multicallData.ExpectedReturn
+			currentStrategy.Details.RateLimit = multicallData.RateLimit
+			currentStrategy.Details.MinDebtPerHarvest = multicallData.MinDebtPerHarvest
+			currentStrategy.Details.MaxDebtPerHarvest = multicallData.MaxDebtPerHarvest
+			currentStrategy.Details.EstimatedTotalAssets = multicallData.EstimatedTotalAssets
+			currentStrategy.Details.TotalGain = multicallData.TotalGain
+			currentStrategy.Details.TotalLoss = multicallData.TotalLoss
 			currentStrategy.Details.TotalDebt = currentStrategy.TotalDebt
-			currentStrategy.Details.TotalGain = helpers.SafeBigInt(multicallData.TotalGain).String()
-			currentStrategy.Details.TotalLoss = helpers.SafeBigInt(multicallData.TotalLoss).String()
+			currentStrategy.Details.DelegatedAssets = currentStrategy.DelegatedAssets
+			currentStrategy.Details.DelegatedValue = bigNumber.NewInt().SetString(currentStrategy.DelegatedValue)
+
+			currentStrategy.Details.PerformanceFee = (multicallData.PerformanceFee).Uint64()
+			currentStrategy.Details.Activation = (multicallData.Activation).Uint64()
+			currentStrategy.Details.DebtRatio = (multicallData.DebtRatio).Uint64()
+			currentStrategy.Details.KeepCRV = (multicallData.KeepCRV).Uint64()
+			currentStrategy.Details.LastReport = (multicallData.LastReport).Uint64()
+
 			currentStrategy.Details.APR = 0.0
-			currentStrategy.Details.WithdrawalQueuePosition = helpers.SafeBigInt(multicallData.WithdrawalQueuePosition, big.NewInt(-1)).Int64()
+			currentStrategy.Details.WithdrawalQueuePosition = bigNumber.NewInt().Safe(multicallData.WithdrawalQueuePosition, bigNumber.NewInt(-1)).Int64()
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64
@@ -111,7 +115,7 @@ func BuildStrategies(
 		if withStrategiesRisk {
 			riskData, ok := strategiesFromRisk[strategy.Address]
 			if !ok {
-				riskData = models.TStrategyFromRisk{}
+				riskData = TStrategyFromRisk{}
 			}
 
 			currentStrategy.Risk = &TStrategyRisk{}
@@ -134,7 +138,7 @@ func BuildStrategies(
 		if strategiesCondition == `absolute` &&
 			currentStrategy.InQueue &&
 			currentStrategy.IsActive &&
-			currentStrategy.TotalDebt != `0` {
+			!currentStrategy.TotalDebt.IsZero() {
 			strategies = append(strategies, currentStrategy)
 		} else if strategiesCondition == `inQueue` && currentStrategy.InQueue {
 			strategies = append(strategies, currentStrategy)

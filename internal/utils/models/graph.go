@@ -22,19 +22,19 @@ type TVaultFromGraphStrategyReportsResults struct {
 
 //TVaultFromGraphStrategyReports holds the reports for a given strategy
 type TVaultFromGraphStrategyReports struct {
-	Id      common.Address                          `json:"id,omitempty"`
+	Id      string                                  `json:"id,omitempty"`
 	Results []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
 }
 
 //TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
-	Name          string                           `json:"name"`
-	ApiVersion    string                           `json:"apiVersion,omitempty"`
 	Address       common.Address                   `json:"address"`
 	Keeper        common.Address                   `json:"keeper,omitempty"`
 	Strategist    common.Address                   `json:"strategist,omitempty"`
 	Rewards       common.Address                   `json:"rewards,omitempty"`
-	HealthCheck   common.Address                   `json:"healthCheck"`
+	HealthCheck   string                           `json:"healthCheck"`
+	Name          string                           `json:"name"`
+	ApiVersion    string                           `json:"apiVersion,omitempty"`
 	DoHealthCheck bool                             `json:"doHealthCheck,omitempty"`
 	InQueue       bool                             `json:"inQueue"`
 	EmergencyExit bool                             `json:"emergencyExit,omitempty"`
@@ -54,13 +54,13 @@ type TVaultFromGraph struct {
 	Management            common.Address                `json:"management,omitempty"`
 	Governance            common.Address                `json:"governance,omitempty"`
 	Rewards               common.Address                `json:"rewards,omitempty"`
+	BalanceTokens         *bigNumber.BigInt             `json:"balanceTokens"`
+	AvailableDepositLimit *bigNumber.BigInt             `json:"availableDepositLimit,omitempty"`
+	DepositLimit          *bigNumber.BigInt             `json:"depositLimit,omitempty"`
+	BalanceTokensIdle     *bigNumber.BigInt             `json:"balanceTokensIdle,omitempty"`
 	Activation            string                        `json:"activation"`
 	Classification        string                        `json:"classification"`
 	ApiVersion            string                        `json:"apiVersion"`
-	BalanceTokens         bigNumber.BigInt              `json:"balanceTokens"`
-	AvailableDepositLimit bigNumber.BigInt              `json:"availableDepositLimit,omitempty"`
-	DepositLimit          bigNumber.BigInt              `json:"depositLimit,omitempty"`
-	BalanceTokensIdle     bigNumber.BigInt              `json:"balanceTokensIdle,omitempty"`
 	ManagementFeeBps      uint64                        `json:"managementFeeBps"`
 	PerformanceFeeBps     uint64                        `json:"performanceFeeBps"`
 	ShareToken            TVaultFromGraphToken          `json:"shareToken"`
@@ -84,16 +84,16 @@ type TMetaFromGraph struct {
 type TReportsFromGraph struct {
 	Strategy struct {
 		Reports []struct {
-			ID        string `json:"id"`
-			Timestamp string `json:"timestamp"`
-			DebtAdded string `json:"debtAdded"`
-			DebtLimit string `json:"debtLimit"`
-			TotalDebt string `json:"totalDebt"`
-			Gain      string `json:"gain"`
-			TotalGain string `json:"totalGain"`
-			Loss      string `json:"loss"`
-			TotalLoss string `json:"totalLoss"`
-			DebtPaid  string `json:"debtPaid"`
+			ID        string            `json:"id"`
+			DebtAdded *bigNumber.BigInt `json:"debtAdded"`
+			DebtLimit *bigNumber.BigInt `json:"debtLimit"`
+			TotalDebt *bigNumber.BigInt `json:"totalDebt"`
+			Gain      *bigNumber.BigInt `json:"gain"`
+			TotalGain *bigNumber.BigInt `json:"totalGain"`
+			Loss      *bigNumber.BigInt `json:"loss"`
+			TotalLoss *bigNumber.BigInt `json:"totalLoss"`
+			DebtPaid  *bigNumber.BigInt `json:"debtPaid"`
+			Timestamp string            `json:"timestamp"`
 			Results   []struct {
 				Duration   string `json:"duration"`
 				DurationPr string `json:"durationPR"`

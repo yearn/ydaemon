@@ -2,7 +2,6 @@ package strategies
 
 import (
 	"encoding/json"
-	"math/big"
 	"strconv"
 	"strings"
 	"sync"
@@ -11,6 +10,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -28,7 +28,7 @@ func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 }
 
 func includeAddress(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
-	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy.String())
+	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy)
 }
 
 func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
@@ -42,7 +42,7 @@ func includeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 	return false
 }
 
-func getTVLImpact(tvlUSDC *big.Float) float64 {
+func getTVLImpact(tvlUSDC *bigNumber.BigFloat) float64 {
 	tvl, _ := tvlUSDC.Float32()
 	switch {
 	case tvl == 0:
@@ -60,8 +60,8 @@ func getTVLImpact(tvlUSDC *big.Float) float64 {
 	}
 }
 
-func getLongevityImpact(activation *big.Int) float64 {
-	if activation == nil || activation == big.NewInt(0) {
+func getLongevityImpact(activation *bigNumber.BigInt) float64 {
+	if activation == nil || activation.IsZero() {
 		return 5
 	}
 	activationUnix := time.Unix(activation.Int64(), 0)
@@ -81,7 +81,7 @@ func getLongevityImpact(activation *big.Int) float64 {
 	}
 }
 
-func getMedianAllocation(group TStrategyGroupFromRisk) *big.Float {
+func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.BigFloat {
 	scores := []float64{
 		group.AuditScore,
 		group.CodeReviewScore,
@@ -93,15 +93,15 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *big.Float {
 	median, _ := stats.Median(scores)
 	switch {
 	case median <= 1:
-		return big.NewFloat(100_000_000)
+		return bigNumber.NewFloat(100_000_000)
 	case median <= 2:
-		return big.NewFloat(50_000_000)
+		return bigNumber.NewFloat(50_000_000)
 	case median <= 3:
-		return big.NewFloat(10_000_000)
+		return bigNumber.NewFloat(10_000_000)
 	case median <= 4:
-		return big.NewFloat(1_000_000)
+		return bigNumber.NewFloat(1_000_000)
 	default:
-		return big.NewFloat(0)
+		return bigNumber.NewFloat(0)
 	}
 }
 
@@ -120,10 +120,10 @@ func getStrategyGroup(chainID uint64, strategy models.TStrategyList) *TStrategyG
 	return stratGroup
 }
 
-func getDefaultRiskGroup() models.TStrategyFromRisk {
-	return models.TStrategyFromRisk{
+func getDefaultRiskGroup() TStrategyFromRisk {
+	return TStrategyFromRisk{
 		RiskGroup: "Others",
-		RiskScores: models.TStrategyFromRiskRiskScores{
+		RiskScores: TStrategyFromRiskRiskScores{
 			TVLImpact:           5,
 			AuditScore:          5,
 			CodeReviewScore:     5,
@@ -157,7 +157,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 
 	// Init the store if empty
 	if Store.StrategiesFromRisk[chainID] == nil {
-		Store.StrategiesFromRisk[chainID] = make(map[common.Address]models.TStrategyFromRisk)
+		Store.StrategiesFromRisk[chainID] = make(map[common.Address]TStrategyFromRisk)
 	}
 
 	strategies, ok := Store.StrategyList[chainID]
@@ -169,7 +169,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 	// Refresh the tvl of groups
 	groups := Store.StrategyGroupFromRisk[chainID]
 	for _, group := range groups {
-		group.Allocation = TStrategyGroupAllocation{}
+		group.Allocation = TStrategyAllocation{}
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 	}
 
@@ -200,8 +200,8 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		}
 
 		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
-		tokenPrice := big.NewFloat(tokenData.Price)
-		tvl := big.NewFloat(0).Mul(big.NewFloat(0).Set(amount), tokenPrice)
+		tokenPrice := bigNumber.NewFloat(tokenData.Price)
+		tvl := bigNumber.NewFloat(0).Mul(amount, tokenPrice)
 		strategy.RiskScores.TVLImpact = getTVLImpact(tvl)
 
 		// Send to Others group if no group was found
@@ -212,15 +212,15 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		}
 
 		// Update tvl of group
-		stratGroup.Allocation.CurrentTVL = big.NewFloat(0).Add(helpers.SafeBigFloat(stratGroup.Allocation.CurrentTVL), tvl)
-		stratGroup.Allocation.CurrentAmount = big.NewFloat(0).Add(helpers.SafeBigFloat(stratGroup.Allocation.CurrentAmount), amount)
+		stratGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentTVL, tvl)
+		stratGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentAmount, amount)
 		if tokenPrice.Sign() <= 0 {
 			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
-			stratGroup.Allocation.AvailableTVL = big.NewFloat(0)
-			stratGroup.Allocation.AvailableAmount = big.NewFloat(0)
+			stratGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0)
+			stratGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0)
 		} else {
-			stratGroup.Allocation.AvailableTVL = big.NewFloat(0).Sub(helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL), tvl)
-			stratGroup.Allocation.AvailableAmount = big.NewFloat(0).Quo(helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL), tokenPrice)
+			stratGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0).Sub(stratGroup.Allocation.AvailableTVL, tvl)
+			stratGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0).Quo(stratGroup.Allocation.AvailableTVL, tokenPrice)
 		}
 
 		// Updating the default schema
@@ -240,10 +240,10 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			continue
 		}
 		stratRisk := Store.StrategiesFromRisk[chainID][strat.Strategy]
-		stratRisk.Allocation.CurrentTVL = helpers.SafeBigFloat(stratGroup.Allocation.CurrentTVL).String()
-		stratRisk.Allocation.CurrentAmount = helpers.SafeBigFloat(stratGroup.Allocation.CurrentAmount).String()
-		stratRisk.Allocation.AvailableTVL = helpers.SafeBigFloat(stratGroup.Allocation.AvailableTVL).String()
-		stratRisk.Allocation.AvailableAmount = helpers.SafeBigFloat(stratGroup.Allocation.AvailableAmount).String()
+		stratRisk.Allocation.CurrentTVL = stratGroup.Allocation.CurrentTVL
+		stratRisk.Allocation.CurrentAmount = stratGroup.Allocation.CurrentAmount
+		stratRisk.Allocation.AvailableTVL = stratGroup.Allocation.AvailableTVL
+		stratRisk.Allocation.AvailableAmount = stratGroup.Allocation.AvailableAmount
 		Store.StrategiesFromRisk[chainID][strat.Strategy] = stratRisk
 	}
 }

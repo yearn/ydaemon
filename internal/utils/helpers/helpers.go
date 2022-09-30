@@ -3,12 +3,12 @@ package helpers
 import (
 	"io/ioutil"
 	"math"
-	"math/big"
 	"os"
 	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils/bigNumber"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
@@ -80,10 +80,10 @@ func FormatUint64(s string, defaultValue uint64) uint64 {
 }
 
 // FormatAmount is used to convert a uint256 string to a float64, based on the provided decimal
-func FormatAmount(balanceToken string, decimals int) (float64, *big.Float) {
-	fTotalAssets := new(big.Float)
-	fTotalAssets.SetString(balanceToken)
-	humanizedBalance := new(big.Float).Quo(fTotalAssets, big.NewFloat(math.Pow10(decimals)))
+func FormatAmount(balanceToken string, decimals int) (float64, *bigNumber.BigFloat) {
+	fTotalAssets := bigNumber.NewFloat().SetString(balanceToken)
+	fDecimals := bigNumber.NewFloat(math.Pow10(decimals))
+	humanizedBalance := bigNumber.NewFloat().Quo(fTotalAssets, fDecimals)
 	fhumanizedBalance, _ := humanizedBalance.Float64()
 	return fhumanizedBalance, humanizedBalance
 }

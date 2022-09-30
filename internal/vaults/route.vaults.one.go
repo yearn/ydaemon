@@ -65,6 +65,5 @@ func (y Controller) GetVault(c *gin.Context) {
 		withStrategiesDetails,
 		vaultFromGraph,
 	)
-	logs.Pretty(data)
 	c.JSON(http.StatusOK, data)
 }

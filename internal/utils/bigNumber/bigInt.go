@@ -73,6 +73,9 @@ func (b *Int) Div(x *Int, y *Int) *Int {
 func (b *Int) Uint64() uint64 {
 	return ToInt(b).Uint64()
 }
+func (b *Int) String() string {
+	return ToInt(b).String()
+}
 
 func (b *Int) IsZero() bool {
 	return b.Int.Cmp(big.NewInt(0)) == 0

@@ -133,7 +133,12 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 			TeamKnowledgeScore:  5,
 			TestingScore:        5,
 		},
-		Allocation: &TStrategyAllocation{},
+		Allocation: &TStrategyAllocation{
+			CurrentTVL:      bigNumber.NewFloat(0),
+			AvailableTVL:    bigNumber.NewFloat(0),
+			CurrentAmount:   bigNumber.NewFloat(0),
+			AvailableAmount: bigNumber.NewFloat(0),
+		},
 	}
 }
 

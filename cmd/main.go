@@ -4,12 +4,14 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
-// var chains = helpers.SUPPORTED_CHAIN_IDS
-var chains = []uint64{1}
+var chains = env.SUPPORTED_CHAIN_IDS
+
+// var chains = []uint64{1}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)

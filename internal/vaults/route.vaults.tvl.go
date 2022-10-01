@@ -15,7 +15,7 @@ import (
 )
 
 func computeChainTVL(chainID uint64, c *gin.Context) float64 {
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
 		return 0.0

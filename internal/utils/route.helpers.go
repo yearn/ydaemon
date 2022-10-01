@@ -29,7 +29,7 @@ func GetGraph(c *gin.Context) {
 	buf.ReadFrom(c.Request.Body)
 
 	// Proxy the request to the subgraph
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
 		return

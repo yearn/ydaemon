@@ -37,7 +37,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		return
 	}
 
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
 		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")

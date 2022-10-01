@@ -78,24 +78,24 @@ var RPC_ENDPOINTS = map[uint64]string{
 	42161: `https://arbitrum.public-rpc.com`,
 }
 
-// GRAPH_URI contains the URI of the GraphQL provider to use
-var GRAPH_URI = map[uint64]string{
+// THEGRAPH_ENDPOINTS contains the URI of the GraphQL provider to use
+var THEGRAPH_ENDPOINTS = map[uint64]string{
 	1:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
 	10:    `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
 	250:   `https://api.thegraph.com/subgraphs/name/bsamuels453/yearn-fantom-validation-grafted`,
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
 }
 
-// LENS_ADDRESS contains the address of the Lens oracle for a specific chainID
-var LENS_ADDRESS = map[uint64]common.Address{
+// LENS_ADDRESSES contains the address of the Lens oracle for a specific chainID
+var LENS_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
 	10:    common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
 	250:   common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
 	42161: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 }
 
-// MULTICALL_ADDRESS contains the address of the multicall2 contract for a specific chainID
-var MULTICALL_ADDRESS = map[uint64]common.Address{
+// MULTICALL_ADDRESSES contains the address of the multicall2 contract for a specific chainID
+var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`),
 	10:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	250:   common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),

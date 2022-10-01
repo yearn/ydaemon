@@ -21,7 +21,7 @@ import (
 func FetchTokenList(chainID uint64) {
 	tokenList := []common.Address{}
 	tokenData := make(map[common.Address]*TERC20Token)
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
 		return

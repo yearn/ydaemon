@@ -236,7 +236,7 @@ func setMissingYearnVaultPrices(chainID uint64) {
 // and will store the prices in the TokenPrices map.
 func FetchLens(chainID uint64) {
 	caller := ethereum.MulticallClientForChainID[chainID]
-	lensAddress, ok := env.LENS_ADDRESS[chainID]
+	lensAddress, ok := env.LENS_ADDRESSES[chainID]
 	if !ok {
 		logs.Error(`Lens address not found for chainID: `, chainID)
 		return

@@ -43,7 +43,7 @@ func SetEnv(path string) {
 	if !exists {
 		logs.Warning("GRAPH_API_URI not set, using default value: [https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet]")
 	} else {
-		GRAPH_URI[1] = GraphAPIURI
+		THEGRAPH_ENDPOINTS[1] = GraphAPIURI
 	}
 }
 

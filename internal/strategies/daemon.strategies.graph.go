@@ -18,7 +18,7 @@ import (
 // complementary information about the strategies, directly from the contracts
 func FetchStrategiesList(chainID uint64) {
 	strategyList := make(map[common.Address]models.TStrategyList)
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
 		return

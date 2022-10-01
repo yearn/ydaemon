@@ -71,18 +71,18 @@ func init() {
 
 	MulticallClientForChainID[1] = NewMulticall(
 		GetRPCURI(1),
-		env.MULTICALL_ADDRESS[1],
+		env.MULTICALL_ADDRESSES[1],
 	)
 	MulticallClientForChainID[10] = NewMulticall(
 		GetRPCURI(10),
-		env.MULTICALL_ADDRESS[10],
+		env.MULTICALL_ADDRESSES[10],
 	)
 	MulticallClientForChainID[250] = NewMulticall(
 		GetRPCURI(250),
-		env.MULTICALL_ADDRESS[250],
+		env.MULTICALL_ADDRESSES[250],
 	)
 	MulticallClientForChainID[42161] = NewMulticall(
 		GetRPCURI(42161),
-		env.MULTICALL_ADDRESS[42161],
+		env.MULTICALL_ADDRESSES[42161],
 	)
 }

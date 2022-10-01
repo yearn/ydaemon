@@ -20,7 +20,7 @@ import (
 
 func fetchTokenList(chainID uint64) []common.Address {
 	tokenList := []common.Address{}
-	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
 		return tokenList
@@ -49,14 +49,14 @@ func fetchTokenList(chainID uint64) []common.Address {
 }
 
 func testFetchLens(chainID uint64) {
-	multiCall, ok := env.MULTICALL_ADDRESS[chainID]
+	multiCall, ok := env.MULTICALL_ADDRESSES[chainID]
 	if !ok {
 		logs.Error(`Multicall address not found for chainID: `, chainID)
 		return
 	}
 
 	caller := ethereum.NewMulticall(ethereum.GetRPCURI(chainID), multiCall)
-	lensAddress, ok := env.LENS_ADDRESS[chainID]
+	lensAddress, ok := env.LENS_ADDRESSES[chainID]
 	if !ok {
 		logs.Error(`Lens address not found for chainID: `, chainID)
 		return

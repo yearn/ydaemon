@@ -9,9 +9,6 @@ import (
 
 type Int struct{ big.Int }
 
-func FromInt(b *big.Int) *Int {
-	return &Int{*b}
-}
 func ToInt(b *Int) *big.Int {
 	if b == nil {
 		return big.NewInt(0)

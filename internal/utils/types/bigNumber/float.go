@@ -8,16 +8,12 @@ import (
 
 type Float struct{ big.Float }
 
-func FromFloat(b *big.Float) *Float {
-	return &Float{*b}
-}
 func ToFloat(b *Float) *big.Float {
 	if b == nil {
 		return big.NewFloat(0)
 	}
 	return &b.Float
 }
-
 func NewFloat(defaultValue ...float64) *Float {
 	if len(defaultValue) == 0 {
 		return &Float{*big.NewFloat(0)}
@@ -83,7 +79,7 @@ func (b *Float) Quo(x *Float, y *Float) *Float {
 }
 func (b *Float) Int() *Int {
 	i, _ := b.Float.Int(nil)
-	return FromInt(i)
+	return SetInt(i)
 }
 
 func (b *Float) IsZero() bool {

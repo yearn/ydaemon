@@ -63,5 +63,5 @@ func computeDefaultBalance(
 	decimals := tokens.Store.Tokens[chainID][vaultAddress].Decimals
 	_, fBalance := helpers.FormatAmount(balance.String(), int(decimals))
 
-	return bigNumber.FromInt(balance), fBalance, err
+	return bigNumber.SetInt(balance), fBalance, err
 }

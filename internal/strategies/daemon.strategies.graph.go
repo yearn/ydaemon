@@ -6,11 +6,11 @@ import (
 	"sync"
 
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/types/common"
-	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchStrategiesList is an utility function that will query the subgraph in order to
@@ -18,7 +18,12 @@ import (
 // complementary information about the strategies, directly from the contracts
 func FetchStrategiesList(chainID uint64) {
 	strategyList := make(map[common.Address]models.TStrategyList)
-	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	if !ok {
+		logs.Error("No graph endpoint for chainID", chainID)
+		return
+	}
+	client := graphql.NewClient(graphQLEndpoint)
 	request := graphql.NewRequest(`
         {
 			vaults(first: 1000) {

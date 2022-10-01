@@ -8,14 +8,14 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // yearnVaultABI takes the ABI of the standard Yearn Vault contract and prepare it for the multicall
@@ -186,54 +186,54 @@ func FetchStrategiesMulticallData(chainID uint64) {
 			WithdrawalQueuePosition: bigNumber.NewInt(withdrawalQueuePosition),
 		}
 		if len(creditAvailable0) == 1 {
-			data.CreditAvailable = bigNumber.FromInt(creditAvailable0[0].(*big.Int))
+			data.CreditAvailable = bigNumber.SetInt(creditAvailable0[0].(*big.Int))
 		}
 		if len(debtOutstanding0) == 1 {
-			data.DebtOutstanding = bigNumber.FromInt(debtOutstanding0[0].(*big.Int))
+			data.DebtOutstanding = bigNumber.SetInt(debtOutstanding0[0].(*big.Int))
 		}
 		if len(expectedReturn) == 1 {
-			data.ExpectedReturn = bigNumber.FromInt(expectedReturn[0].(*big.Int))
+			data.ExpectedReturn = bigNumber.SetInt(expectedReturn[0].(*big.Int))
 		}
 		if len(estimatedTotalAssets) == 1 {
-			data.EstimatedTotalAssets = bigNumber.FromInt(estimatedTotalAssets[0].(*big.Int))
+			data.EstimatedTotalAssets = bigNumber.SetInt(estimatedTotalAssets[0].(*big.Int))
 		}
 		if len(keepCRV) == 1 {
-			data.KeepCRV = bigNumber.FromInt(keepCRV[0].(*big.Int))
+			data.KeepCRV = bigNumber.SetInt(keepCRV[0].(*big.Int))
 		}
 		if len(delegatedAssets) == 1 {
-			data.DelegatedAssets = bigNumber.FromInt(delegatedAssets[0].(*big.Int))
+			data.DelegatedAssets = bigNumber.SetInt(delegatedAssets[0].(*big.Int))
 		}
 		if len(isActive) == 1 {
 			data.IsActive = isActive[0].(bool)
 		}
 		if strat.VaultVersion == `0.2.2` && len(strategies) == 8 {
-			data.PerformanceFee = bigNumber.FromInt(strategies[0].(*big.Int))
-			data.Activation = bigNumber.FromInt(strategies[1].(*big.Int))
-			data.DebtLimit = bigNumber.FromInt(strategies[2].(*big.Int))
-			data.RateLimit = bigNumber.FromInt(strategies[3].(*big.Int))
-			data.LastReport = bigNumber.FromInt(strategies[4].(*big.Int))
-			data.TotalDebt = bigNumber.FromInt(strategies[5].(*big.Int))
-			data.TotalGain = bigNumber.FromInt(strategies[6].(*big.Int))
-			data.TotalLoss = bigNumber.FromInt(strategies[7].(*big.Int))
+			data.PerformanceFee = bigNumber.SetInt(strategies[0].(*big.Int))
+			data.Activation = bigNumber.SetInt(strategies[1].(*big.Int))
+			data.DebtLimit = bigNumber.SetInt(strategies[2].(*big.Int))
+			data.RateLimit = bigNumber.SetInt(strategies[3].(*big.Int))
+			data.LastReport = bigNumber.SetInt(strategies[4].(*big.Int))
+			data.TotalDebt = bigNumber.SetInt(strategies[5].(*big.Int))
+			data.TotalGain = bigNumber.SetInt(strategies[6].(*big.Int))
+			data.TotalLoss = bigNumber.SetInt(strategies[7].(*big.Int))
 		} else if (strat.VaultVersion == `0.3.0` || strat.VaultVersion == `0.3.1`) && len(strategies) == 8 {
-			data.PerformanceFee = bigNumber.FromInt(strategies[0].(*big.Int))
-			data.Activation = bigNumber.FromInt(strategies[1].(*big.Int))
-			data.DebtRatio = bigNumber.FromInt(strategies[2].(*big.Int))
-			data.RateLimit = bigNumber.FromInt(strategies[3].(*big.Int))
-			data.LastReport = bigNumber.FromInt(strategies[4].(*big.Int))
-			data.TotalDebt = bigNumber.FromInt(strategies[5].(*big.Int))
-			data.TotalGain = bigNumber.FromInt(strategies[6].(*big.Int))
-			data.TotalLoss = bigNumber.FromInt(strategies[7].(*big.Int))
+			data.PerformanceFee = bigNumber.SetInt(strategies[0].(*big.Int))
+			data.Activation = bigNumber.SetInt(strategies[1].(*big.Int))
+			data.DebtRatio = bigNumber.SetInt(strategies[2].(*big.Int))
+			data.RateLimit = bigNumber.SetInt(strategies[3].(*big.Int))
+			data.LastReport = bigNumber.SetInt(strategies[4].(*big.Int))
+			data.TotalDebt = bigNumber.SetInt(strategies[5].(*big.Int))
+			data.TotalGain = bigNumber.SetInt(strategies[6].(*big.Int))
+			data.TotalLoss = bigNumber.SetInt(strategies[7].(*big.Int))
 		} else if len(strategies) == 9 {
-			data.PerformanceFee = bigNumber.FromInt(strategies[0].(*big.Int))
-			data.Activation = bigNumber.FromInt(strategies[1].(*big.Int))
-			data.DebtRatio = bigNumber.FromInt(strategies[2].(*big.Int))
-			data.MinDebtPerHarvest = bigNumber.FromInt(strategies[3].(*big.Int))
-			data.MaxDebtPerHarvest = bigNumber.FromInt(strategies[4].(*big.Int))
-			data.LastReport = bigNumber.FromInt(strategies[5].(*big.Int))
-			data.TotalDebt = bigNumber.FromInt(strategies[6].(*big.Int))
-			data.TotalGain = bigNumber.FromInt(strategies[7].(*big.Int))
-			data.TotalLoss = bigNumber.FromInt(strategies[8].(*big.Int))
+			data.PerformanceFee = bigNumber.SetInt(strategies[0].(*big.Int))
+			data.Activation = bigNumber.SetInt(strategies[1].(*big.Int))
+			data.DebtRatio = bigNumber.SetInt(strategies[2].(*big.Int))
+			data.MinDebtPerHarvest = bigNumber.SetInt(strategies[3].(*big.Int))
+			data.MaxDebtPerHarvest = bigNumber.SetInt(strategies[4].(*big.Int))
+			data.LastReport = bigNumber.SetInt(strategies[5].(*big.Int))
+			data.TotalDebt = bigNumber.SetInt(strategies[6].(*big.Int))
+			data.TotalGain = bigNumber.SetInt(strategies[7].(*big.Int))
+			data.TotalLoss = bigNumber.SetInt(strategies[8].(*big.Int))
 		}
 		Store.StrategyMultiCallData[chainID][common.HexToAddress(strat.Strategy.String())] = data
 	}

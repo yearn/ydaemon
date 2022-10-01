@@ -7,11 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/sort"
-	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/sort"
 )
 
 func graphQLRequestForAllVaults(c *gin.Context) *graphql.Request {
@@ -48,7 +48,14 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 
-	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	if !ok {
+		logs.Error("No graph endpoint for chainID", chainID)
+		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
+		return
+	}
+
+	client := graphql.NewClient(graphQLEndpoint)
 	request := graphQLRequestForAllVaults(c)
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
@@ -60,7 +67,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	data := []TVault{}
 	for _, vaultFromGraph := range response.Vaults {
 		vaultAddress := vaultFromGraph.Id
-		if helpers.ContainsAddress(helpers.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
 		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]

@@ -8,14 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 )
 
 func computeChainTVL(chainID uint64, c *gin.Context) float64 {
-	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	if !ok {
+		logs.Error("No graph endpoint for chainID", chainID)
+		return 0.0
+	}
+
+	client := graphql.NewClient(graphQLEndpoint)
 	request := graphQLRequestForAllVaults(c)
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
@@ -26,7 +32,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
 	for _, vaultFromGraph := range response.Vaults {
 		vaultAddress := vaultFromGraph.Id
-		if helpers.ContainsAddress(helpers.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
 		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
@@ -44,7 +50,7 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	total := 0.0
 	var wg sync.WaitGroup
 	var tvl = make(map[uint64]float64)
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		wg.Add(1)
 		go func(chainID uint64) {
 			defer wg.Done()

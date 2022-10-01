@@ -4,14 +4,15 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // GetAllPartners will return all the partners informations, no matter the chainID.
 func (y Controller) GetAllPartners(c *gin.Context) {
 	allPartners := make(map[uint64]map[common.Address]*TPartners)
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		partners := Store.PartnersByAddress[chainID]
 		for _, partner := range partners {
 			if _, ok := allPartners[chainID]; !ok {

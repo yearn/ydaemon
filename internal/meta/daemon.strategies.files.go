@@ -5,9 +5,10 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchStrategiesFromMeta fetches the strategies information from the data/meta folder for a given chainID
@@ -15,7 +16,7 @@ import (
 func FetchStrategiesFromMeta(chainID uint64) {
 	strategies := []TStrategyFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/strategies/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/strategies/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
 		return

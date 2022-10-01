@@ -1,25 +1,26 @@
 package prices
 
 import (
-	"math/big"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // GetAllPrices will return all the prices informations, no matter the chainID.
 func (y Controller) GetAllPrices(c *gin.Context) {
 	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
 
-	allPrices := make(map[uint64]map[common.Address]*big.Int)
+	allPrices := make(map[uint64]map[common.Address]*bigNumber.Int)
 	allPricesHumanized := make(map[uint64]map[common.Address]float64)
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		prices := Store.TokenPrices[chainID]
 		for key, price := range prices {
 			if _, ok := allPrices[chainID]; !ok {
-				allPrices[chainID] = make(map[common.Address]*big.Int)
+				allPrices[chainID] = make(map[common.Address]*bigNumber.Int)
 				allPricesHumanized[chainID] = make(map[common.Address]float64)
 			}
 

@@ -1,6 +1,6 @@
 package tokens
 
-import "github.com/yearn/ydaemon/internal/types/common"
+import "github.com/yearn/ydaemon/internal/utils/types/common"
 
 type TStore struct {
 	// TokenList contains the list of tokens we will need to fetch prices for.

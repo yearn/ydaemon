@@ -8,10 +8,11 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 func buildVaultName(
@@ -256,7 +257,7 @@ func prepareVaultSchema(
 		Name:           vaultName,
 		DisplayName:    vaultDisplayName,
 		FormatedName:   vaultFormatedName,
-		Icon:           helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultAddress.String() + `/logo-128.png`,
+		Icon:           env.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultAddress.String() + `/logo-128.png`,
 		Token: TToken{
 			Address:     vaultFromGraph.Token.Id,
 			Name:        vaultFromGraph.Token.Name,
@@ -264,7 +265,7 @@ func prepareVaultSchema(
 			Symbol:      tokenDisplaySymbol,
 			Description: tokenFromMeta.Description,
 			Decimals:    vaultFromGraph.Token.Decimals,
-			Icon:        helpers.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultFromGraph.Token.Id.String() + `/logo-128.png`,
+			Icon:        env.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultFromGraph.Token.Id.String() + `/logo-128.png`,
 		},
 		TVL: TTVL{
 			TotalAssets:          vaultFromGraph.BalanceTokens,

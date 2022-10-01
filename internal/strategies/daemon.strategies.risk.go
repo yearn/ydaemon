@@ -9,11 +9,12 @@ import (
 
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
@@ -147,7 +148,7 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 func FetchStrategiesFromRisk(chainID uint64) {
 	// Read data from the risk framework json file
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Warning("Error fetching information from the Risk Framework")
 		return

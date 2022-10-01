@@ -12,7 +12,7 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
@@ -26,7 +26,7 @@ func newRouter() *gin.Engine {
 		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))
-	helpers.SUPPORTED_CHAIN_IDS = append(helpers.SUPPORTED_CHAIN_IDS, 4545456)
+	env.SUPPORTED_CHAIN_IDS = append(env.SUPPORTED_CHAIN_IDS, 4545456)
 
 	{
 		c := Controller{}

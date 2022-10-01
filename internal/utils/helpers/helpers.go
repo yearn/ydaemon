@@ -7,9 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // ContainsAddress returns true if address exists in addresses
@@ -103,7 +104,7 @@ func AssertChainID(chainIDStr string) (uint64, bool) {
 	if err != nil {
 		return 0, false
 	}
-	if !ContainsUint64(SUPPORTED_CHAIN_IDS, chainID) {
+	if !ContainsUint64(env.SUPPORTED_CHAIN_IDS, chainID) {
 		return 0, false
 	}
 	return chainID, true
@@ -114,7 +115,7 @@ func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 		return common.Address{}, false
 	}
 	address := common.HexToAddress(addressStr)
-	if chainID > 0 && ContainsAddress(BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && ContainsAddress(env.BLACKLISTED_VAULTS[chainID], address) {
 		return common.Address{}, false
 	}
 	return address, true
@@ -124,7 +125,7 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 	if (address == common.Address{} || address == common.HexToAddress("0x0000000000000000000000000000000000000000")) {
 		return false
 	}
-	if chainID > 0 && ContainsAddress(BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && ContainsAddress(env.BLACKLISTED_VAULTS[chainID], address) {
 		return false
 	}
 	return true

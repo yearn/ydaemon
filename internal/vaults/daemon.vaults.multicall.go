@@ -8,12 +8,12 @@ import (
 
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // yearnVaultABI takes the ABI of the standard Yearn Vault contract and prepare it for the multicall
@@ -53,16 +53,16 @@ func FetchVaultMulticallData(chainID uint64) {
 	maxBatch := math.MaxInt64
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	if prices.Store.VaultPricePerShare[chainID] == nil {
-		prices.Store.VaultPricePerShare[chainID] = make(map[common.Address]*big.Int)
+		prices.Store.VaultPricePerShare[chainID] = make(map[common.Address]*bigNumber.Int)
 	}
 	for _, vault := range tokens.Store.Tokens[chainID] {
 		if !vault.IsVault {
 			continue
 		}
 		pricePerShareRaw := response[vault.Address.String()+`pricePerShare`]
-		pricePerShare := new(big.Int)
+		pricePerShare := bigNumber.NewInt()
 		if len(pricePerShareRaw) == 1 {
-			pricePerShare = helpers.SafeBigInt(pricePerShareRaw[0].(*big.Int))
+			pricePerShare = bigNumber.SetInt(pricePerShareRaw[0].(*big.Int))
 		}
 		prices.Store.VaultPricePerShare[chainID][vault.Address] = pricePerShare
 	}
@@ -72,7 +72,7 @@ func FetchVaultMulticallData(chainID uint64) {
 // LoadVaultMulticallData will reload the multicall data store from the last state of the local Badger Database
 func LoadVaultMulticallData(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[common.Address]*big.Int)
+	temp := make(map[common.Address]*bigNumber.Int)
 	if err := store.LoadFromDBForChainID(store.KEYS.VaultMultiCallData, chainID, &temp); err != nil {
 		return
 	}

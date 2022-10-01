@@ -5,9 +5,10 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchPartnersFromFiles fetches the partners information from the Yearn Meta API for a given chainID
@@ -15,7 +16,7 @@ import (
 func FetchPartnersFromFiles(chainID uint64) {
 	allPartners := []*TPartners{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, _, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/partners/networks/`+chainIDStr+`/`, `.json`)
+	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/partners/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
 		return

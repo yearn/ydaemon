@@ -1,15 +1,13 @@
 package partners
 
 import (
-	"math/big"
-
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 func (c *TPartners) BalanceOf() *TPartners {
@@ -36,7 +34,7 @@ func (c *TPartners) BalanceOf() *TPartners {
 			// decimals := store.Tokens[1][wrapper.Vault].Decimals
 			// _, balance := helpers.FormatAmount(bBalance.String(), int(decimals))
 			// logs.Info(wrapper.Name, ` : `, balance.String())
-			c.Wrappers[index].BalanceOf = bigNumber.FromInt(bBalance)
+			c.Wrappers[index].BalanceOf = bBalance
 		}
 	}
 
@@ -47,7 +45,7 @@ func computeDefaultBalance(
 	chainID uint64,
 	vaultAddress common.Address,
 	userAddress common.Address,
-) (*big.Int, *bigNumber.Float, error) {
+) (*bigNumber.Int, *bigNumber.Float, error) {
 	yearnVault, err := contracts.NewYearnVault(
 		vaultAddress.Address,
 		ethereum.GetRPC(chainID),
@@ -65,5 +63,5 @@ func computeDefaultBalance(
 	decimals := tokens.Store.Tokens[chainID][vaultAddress].Decimals
 	_, fBalance := helpers.FormatAmount(balance.String(), int(decimals))
 
-	return balance, fBalance, err
+	return bigNumber.FromInt(balance), fBalance, err
 }

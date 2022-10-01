@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
@@ -37,7 +37,14 @@ func (y Controller) GetVault(c *gin.Context) {
 		return
 	}
 
-	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	graphQLEndpoint, ok := env.GRAPH_URI[chainID]
+	if !ok {
+		logs.Error("No graph endpoint for chainID", chainID)
+		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
+		return
+	}
+
+	client := graphql.NewClient(graphQLEndpoint)
 	request := graphQLRequestForOneVault(address.String(), c)
 	var response models.TGraphQueryResponseForVault
 	if err := client.Run(context.Background(), request, &response); err != nil {

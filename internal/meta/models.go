@@ -1,8 +1,8 @@
 package meta
 
 import (
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // TVaultFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/vaults/all

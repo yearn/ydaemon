@@ -4,7 +4,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/store"
 )
 
@@ -53,6 +53,6 @@ func TestDaemons(t *testing.T) {
 	wg.Wait()
 
 	//Edge case testing with values overwrite
-	helpers.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
+	env.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
 	SummonDaemons(1)
 }

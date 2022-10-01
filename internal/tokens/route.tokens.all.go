@@ -5,9 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 type TAllTokens struct {
@@ -29,7 +30,7 @@ type TAllTokens struct {
 func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	allTokens := make(map[uint64]map[common.Address]TAllTokens)
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		tokenList := Store.Tokens[chainID]
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {

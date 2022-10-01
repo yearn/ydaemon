@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 var chains = env.SUPPORTED_CHAIN_IDS
@@ -51,5 +52,6 @@ func main() {
 	logs.Info(`Summoning yDaemon...`)
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
-	NewRouter().Run()
+	// NewRouter().Run()
+	vaults.Filter()
 }

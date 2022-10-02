@@ -13,7 +13,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -136,7 +136,7 @@ func NewRouter() *gin.Engine {
 	}
 
 	{
-		router.StaticFile("api/tokens/list", helpers.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
+		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
 	}
 
 	return router

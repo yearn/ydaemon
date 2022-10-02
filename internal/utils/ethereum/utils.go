@@ -9,8 +9,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/yearn/ydaemon/internal/types/common"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 )
 
@@ -25,60 +24,15 @@ func GetRPC(chainID uint64) *ethclient.Client {
 func GetRPCURI(chainID uint64) string {
 	switch chainID {
 	case 1:
-		return helpers.RPCURIFor1
+		return env.RPC_ENDPOINTS[1]
 	case 10:
-		return helpers.RPCURIFor10
+		return env.RPC_ENDPOINTS[10]
 	case 250:
-		return helpers.RPCURIFor250
+		return env.RPC_ENDPOINTS[250]
 	case 42161:
-		return helpers.RPCURIFor42161
+		return env.RPC_ENDPOINTS[42161]
 	}
 	return ``
-}
-
-// GetGraphURI returns the URI to use to connect to the graph provider for a specific chainID
-func GetGraphURI(chainID uint64) string {
-	switch chainID {
-	case 1:
-		return helpers.GraphAPIURI
-	case 10:
-		return `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`
-	case 250:
-		return `https://api.thegraph.com/subgraphs/name/bsamuels453/yearn-fantom-validation-grafted`
-	case 42161:
-		return `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`
-	}
-	return ``
-}
-
-// GetLensAddress returns the address of the Lens oracle for a specific chainID
-func GetLensAddress(chainID uint64) common.Address {
-	switch chainID {
-	case 1:
-		return common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`)
-	case 10:
-		return common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`)
-	case 250:
-		return common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`)
-	case 42161:
-		return common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`)
-	}
-	return common.HexToAddress(`0`)
-}
-
-// GetMulticallAddress returns the address of the multicall2 contract for a specific chainID
-func GetMulticallAddress(chainID uint64) common.Address {
-	switch chainID {
-	case 1:
-		return common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`)
-	case 10:
-		return common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`)
-	case 250:
-		return common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`)
-	case 42161:
-		return common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`)
-	}
-	return common.HexToAddress(`0`)
 }
 
 // MulticallClientForChainID holds the multicall client for a specific chainID
@@ -106,7 +60,7 @@ func randomSigner() *bind.TransactOpts {
 }
 
 func init() {
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		client, err := ethclient.Dial(GetRPCURI(chainID))
 		if err != nil {
 			logs.Error("Failed to connect to Ethereum node")
@@ -117,18 +71,18 @@ func init() {
 
 	MulticallClientForChainID[1] = NewMulticall(
 		GetRPCURI(1),
-		GetMulticallAddress(1),
+		env.MULTICALL_ADDRESSES[1],
 	)
 	MulticallClientForChainID[10] = NewMulticall(
 		GetRPCURI(10),
-		GetMulticallAddress(10),
+		env.MULTICALL_ADDRESSES[10],
 	)
 	MulticallClientForChainID[250] = NewMulticall(
 		GetRPCURI(250),
-		GetMulticallAddress(250),
+		env.MULTICALL_ADDRESSES[250],
 	)
 	MulticallClientForChainID[42161] = NewMulticall(
 		GetRPCURI(42161),
-		GetMulticallAddress(42161),
+		env.MULTICALL_ADDRESSES[42161],
 	)
 }

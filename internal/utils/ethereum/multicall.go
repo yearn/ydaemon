@@ -11,9 +11,9 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/contracts"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 type Call struct {
@@ -75,7 +75,10 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 }
 
-func (caller *TEthMultiCaller) execute(multiCallGroup []contracts.Multicall2Call, blockNumber *big.Int) ([]byte, error) {
+func (caller *TEthMultiCaller) execute(
+	multiCallGroup []contracts.Multicall2Call,
+	blockNumber *big.Int,
+) ([]byte, error) {
 	// Prepare calldata for multicall
 	abi, _ := contracts.Multicall2MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
@@ -105,7 +108,11 @@ func (caller *TEthMultiCaller) execute(multiCallGroup []contracts.Multicall2Call
 // ExecuteByBatch will take a group of calls, split them in fixed-size group to
 // avoid the gasLimit error, and execute as many transactions as required to get
 // the results.
-func (caller *TEthMultiCaller) ExecuteByBatch(calls []Call, batchSize int, blockNumber *big.Int) map[string][]interface{} {
+func (caller *TEthMultiCaller) ExecuteByBatch(
+	calls []Call,
+	batchSize int,
+	blockNumber *big.Int,
+) map[string][]interface{} {
 	var responses []CallResponse
 	// Create mapping for results. Be aware that we sometimes get two empty results initially, unsure why
 	results := make(map[string][]interface{})

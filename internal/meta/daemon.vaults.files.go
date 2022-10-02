@@ -6,9 +6,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchVaultsFromMeta fetches the meta information from the Yearn Meta API for a given chainID
@@ -16,7 +17,7 @@ import (
 func FetchVaultsFromMeta(chainID uint64) {
 	vaults := []TVaultFromMeta{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	content, filenames, err := helpers.ReadAllFilesInDir(helpers.BASE_DATA_PATH+`/meta/vaults/`+chainIDStr+`/`, `.json`)
+	content, filenames, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
 		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
 		return

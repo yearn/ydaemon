@@ -7,11 +7,11 @@ import (
 	"sync"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/ethereum"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 func getVaultWithdrawalQueue(name string, index int64, contractAddress common.Address) ethereum.Call {

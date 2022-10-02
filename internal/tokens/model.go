@@ -1,6 +1,6 @@
 package tokens
 
-import "github.com/yearn/ydaemon/internal/types/common"
+import "github.com/yearn/ydaemon/internal/utils/types/common"
 
 // TERC20Token contains the basic information of an ERC20 token
 type TERC20Token struct {

@@ -1,6 +1,6 @@
 package meta
 
-import "github.com/yearn/ydaemon/internal/types/common"
+import "github.com/yearn/ydaemon/internal/utils/types/common"
 
 type TStore struct {
 	// VaultsFromMeta holds the data for the vaults from the Yearn Meta API for each chain.

@@ -4,14 +4,14 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 )
 
 // CountAllPartners will return the length of the partners per chainID
 func (y Controller) CountAllPartners(c *gin.Context) {
 	total := uint64(0)
 	allPartnersCount := make(map[uint64]uint64)
-	for _, chainID := range helpers.SUPPORTED_CHAIN_IDS {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		allPartnersCount[chainID] = uint64(len(Store.PartnersByAddress[chainID]))
 		total += allPartnersCount[chainID]
 	}

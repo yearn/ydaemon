@@ -1,8 +1,8 @@
 package vaults
 
 import (
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/models"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 type TStore struct {

@@ -9,9 +9,6 @@ import (
 
 type Int struct{ big.Int }
 
-func FromInt(b *big.Int) *Int {
-	return &Int{*b}
-}
 func ToInt(b *Int) *big.Int {
 	if b == nil {
 		return big.NewInt(0)
@@ -29,6 +26,13 @@ func SetInt(defaultValue ...*big.Int) *Int {
 		return &Int{*big.NewInt(0)}
 	}
 	return &Int{*safeInt(defaultValue[0])}
+}
+func (b *Int) Clone(s *Int) *Int {
+	if s == nil {
+		return b
+	}
+	b.Int.Set(&s.Int)
+	return b
 }
 func (b *Int) Set(s *big.Int) *Int {
 	b.Int.Set(safeInt(s))
@@ -70,6 +74,13 @@ func (b *Int) Div(x *Int, y *Int) *Int {
 	b.Int.Div(xAsInt, yAsInt)
 	return b
 }
+func (b *Int) Exp(x *Int, y *Int, z *Int) *Int {
+	xAsInt := ToInt(x)
+	yAsInt := ToInt(y)
+	zAsInt := ToInt(z)
+	b.Int.Exp(xAsInt, yAsInt, zAsInt)
+	return b
+}
 func (b *Int) Uint64() uint64 {
 	return ToInt(b).Uint64()
 }
@@ -78,7 +89,7 @@ func (b *Int) String() string {
 }
 
 func (b *Int) IsZero() bool {
-	return b.Int.Cmp(big.NewInt(0)) == 0
+	return b.Cmp(big.NewInt(0)) == 0
 }
 func (b *Int) Safe(s *Int, defaultValue ...*Int) *Int {
 	if s == nil {

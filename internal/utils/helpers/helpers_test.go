@@ -4,7 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/env"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 func TestContainAddress(t *testing.T) {
@@ -53,13 +54,13 @@ func TestUniqueArrayAddress(t *testing.T) {
 }
 
 func TestReadAllFilesInDir(t *testing.T) {
-	_, _, err := ReadAllFilesInDir(BASE_DATA_PATH+`/meta/strategies/2500/`, `.json`)
+	_, _, err := ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/strategies/2500/`, `.json`)
 	assert.Error(t, err)
 
-	_, _, err = ReadAllFilesInDir(BASE_DATA_PATH+`/meta/protocols/250/0xDAO.json`, `.json`)
+	_, _, err = ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/protocols/250/0xDAO.json`, `.json`)
 	assert.Error(t, err)
 
-	_, _, err = ReadAllFilesInDir(BASE_DATA_PATH+`/meta/protocols/250/`, `.json`)
+	_, _, err = ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/protocols/250/`, `.json`)
 	assert.Nil(t, err)
 }
 

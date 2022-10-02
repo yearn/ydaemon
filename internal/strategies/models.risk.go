@@ -1,8 +1,8 @@
 package strategies
 
 import (
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // TStrategyGroupCritieria is a helper type for parsing the risk framework json

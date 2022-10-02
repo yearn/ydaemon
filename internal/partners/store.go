@@ -1,6 +1,6 @@
 package partners
 
-import "github.com/yearn/ydaemon/internal/types/common"
+import "github.com/yearn/ydaemon/internal/utils/types/common"
 
 type TStore struct {
 	// PartnersByAddress holds the data ordered by address.

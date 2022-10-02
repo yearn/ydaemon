@@ -1,8 +1,8 @@
 package partners
 
 import (
-	"github.com/yearn/ydaemon/internal/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/types/common"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 type TPartnersFromFile struct {

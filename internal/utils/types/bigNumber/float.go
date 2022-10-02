@@ -8,16 +8,12 @@ import (
 
 type Float struct{ big.Float }
 
-func FromFloat(b *big.Float) *Float {
-	return &Float{*b}
-}
 func ToFloat(b *Float) *big.Float {
 	if b == nil {
 		return big.NewFloat(0)
 	}
 	return &b.Float
 }
-
 func NewFloat(defaultValue ...float64) *Float {
 	if len(defaultValue) == 0 {
 		return &Float{*big.NewFloat(0)}
@@ -30,6 +26,13 @@ func SetFloat(defaultValue ...*big.Float) *Float {
 	}
 	return &Float{*safeFloat(defaultValue[0])}
 }
+func (b *Float) Clone(s *Float) *Float {
+	if s == nil {
+		return b
+	}
+	b.Float.Set(&s.Float)
+	return b
+}
 func (b *Float) Set(s *big.Float) *Float {
 	b.Float.Set(safeFloat(s))
 	return b
@@ -40,6 +43,10 @@ func (b *Float) SetString(s string) *Float {
 		return b
 	}
 	b.Float.SetString(s)
+	return b
+}
+func (b *Float) SetInt(s *Int) *Float {
+	b.Float.SetInt(ToInt(s))
 	return b
 }
 func (b *Float) Add(x *Float, y *Float) *Float {
@@ -69,6 +76,10 @@ func (b *Float) Quo(x *Float, y *Float) *Float {
 	}
 	b.Float.Quo(xAsFloat, yAsFloat)
 	return b
+}
+func (b *Float) Int() *Int {
+	i, _ := b.Float.Int(nil)
+	return SetInt(i)
 }
 
 func (b *Float) IsZero() bool {

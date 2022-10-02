@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/types/common"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
@@ -19,7 +19,7 @@ import (
 func FetchVaultsFromV1(chainID uint64) {
 	// Get the meta information from the Yearn Meta API
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(helpers.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
+	resp, err := http.Get(env.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching vaults from V1 for chain", chainID)
 		return

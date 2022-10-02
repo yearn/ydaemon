@@ -1,13 +1,13 @@
 package prices
 
 import (
-	"math/big"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/internal/types/common"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
+	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 //GetSomePrices will, for a list of tokens on a given chainID, return the price for them
@@ -18,7 +18,7 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 		return
 	}
 	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
-	rawPrices := make(map[common.Address]*big.Int)
+	rawPrices := make(map[common.Address]*bigNumber.Int)
 	humanizedPrices := make(map[common.Address]float64)
 	addressesStr := strings.Split(c.Param("addresses"), ",")
 	for _, addressStr := range addressesStr {
@@ -28,7 +28,7 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 		}
 
 		humanizedPrices[address] = 0
-		rawPrices[address] = big.NewInt(0)
+		rawPrices[address] = bigNumber.NewInt()
 		price, ok := Store.TokenPrices[chainID][address]
 		if !ok {
 			continue

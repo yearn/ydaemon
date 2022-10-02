@@ -6,12 +6,12 @@ import (
 	"sync"
 
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/types/common"
-	"github.com/yearn/ydaemon/internal/utils/ethereum"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 	"github.com/yearn/ydaemon/internal/utils/logs"
 	"github.com/yearn/ydaemon/internal/utils/models"
 	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/internal/utils/types/common"
 )
 
 // FetchTokenList is an utility function that will query the subgraph in order to
@@ -21,8 +21,13 @@ import (
 func FetchTokenList(chainID uint64) {
 	tokenList := []common.Address{}
 	tokenData := make(map[common.Address]*TERC20Token)
+	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
+	if !ok {
+		logs.Error("No graph endpoint for chainID", chainID)
+		return
+	}
 
-	client := graphql.NewClient(ethereum.GetGraphURI(chainID))
+	client := graphql.NewClient(graphQLEndpoint)
 	request := graphql.NewRequest(`
         {
 			vaults(first: 1000) {

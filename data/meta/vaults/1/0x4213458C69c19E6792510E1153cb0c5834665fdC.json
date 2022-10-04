@@ -1,14 +1,14 @@
 {
   "$schema": "vault",
-  "comment": "Balancer Boosted Aave USD Pool",
-  "hideAlways": false,
-  "depositsDisabled": false,
+  "comment": "Old Balancer Boosted Aave USD Pool, replaced with 0xc5f3d11580c41cd07104e9af154fc6428bb93c73",
+  "hideAlways": true,
+  "depositsDisabled": true,
   "withdrawalsDisabled": false,
   "order": 18.4,
   "migrationAvailable": false,
   "allowZapIn": false,
   "allowZapOut": false,
-  "retired": false,
+  "retired": true,
   "apyTypeOverride": "new",
   "displayName": "Balancer Boosted AAVE USD"
 }

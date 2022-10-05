@@ -1,9 +1,12 @@
 package meta
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
@@ -100,4 +103,22 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 	tokenFromMeta.Description = local.Description
 	tokenFromMeta.Localization = nil
 	c.JSON(http.StatusOK, tokenFromMeta)
+}
+
+// GetTokenList is used to retrieve Yearn's Token List
+func (y Controller) GetTokenList(c *gin.Context) {
+	content, err := ioutil.ReadFile(env.BASE_DATA_PATH + `/meta/tokens/tokenList.json`)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{})
+		return
+	}
+
+	var marshalDest map[string]interface{}
+	if err := json.Unmarshal(content, &marshalDest); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{})
+	}
+
+	delete(marshalDest, "$schema")
+
+	c.JSON(http.StatusOK, marshalDest)
 }

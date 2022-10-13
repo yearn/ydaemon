@@ -18,7 +18,7 @@ func getCurrentPath() string {
 var GITHUB_ICON_BASE_URL = `https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/`
 
 // BASE_DATA_PATH is the base path to access the data informations
-var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../../data/`)
+var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/`)
 
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`

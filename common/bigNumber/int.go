@@ -184,7 +184,7 @@ func (b *Int) Uint64() uint64 {
 	return ToInt(b).Uint64()
 }
 func (b *Int) String() string {
-	return b.Text(10)
+	return ToInt(b).String()
 }
 
 /**************************************************************************************************

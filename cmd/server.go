@@ -17,8 +17,6 @@ import (
 	"github.com/yearn/ydaemon/external/vaults"
 )
 
-type controller struct{}
-
 func middleware(log *logrus.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if strings.HasPrefix(c.Request.RequestURI, "/api/tokens/list") {

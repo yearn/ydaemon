@@ -10,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 type TRegistry struct {
@@ -185,5 +186,5 @@ func RetrieveAllVaults(
 	}
 
 	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(uniqueVaultsList), `vaults`)
-	return uniqueVaultsList
+	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
 }

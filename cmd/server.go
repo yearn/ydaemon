@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/utils/env"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -88,7 +89,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/tokens/list`, c.GetTokenList)
 		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokensLegacy)
 		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
 		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
@@ -133,6 +133,10 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/prices/all`, c.GetPrices)
 		router.GET(`:chainID/prices/:address`, c.GetPrice)
 		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePrices)
+	}
+
+	{
+		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
 	}
 
 	return router

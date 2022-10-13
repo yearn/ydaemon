@@ -56,7 +56,7 @@ func main() {
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
 
-	internal.Initialize(1) //For later
+	internal.Initialize(1)
 
 	NewRouter().Run()
 }

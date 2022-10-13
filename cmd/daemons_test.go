@@ -4,8 +4,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/store"
 )
 
 // init is fired directly on app start and prepare the multicall clients

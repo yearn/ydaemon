@@ -92,7 +92,7 @@ func LoadFromDBForChainID(key string, chainID uint64, dest interface{}) error {
 	return nil
 }
 
-// Listing the keys used in the database
+// TKeys lists the keys used in the database
 type TKeys = struct {
 	TokenPrices                  string
 	TokenData                    string

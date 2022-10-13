@@ -13,7 +13,7 @@ type TVaultFromGraphToken struct {
 	Decimals uint64
 }
 
-//TVaultFromGraphStrategyReportsResult holds the results for a given report
+//TVaultFromGraphStrategyReportsResults holds the results for a given report
 type TVaultFromGraphStrategyReportsResults struct {
 	APR        string `json:"apr,omitempty"`
 	Duration   string `json:"duration,omitempty"`

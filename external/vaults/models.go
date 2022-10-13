@@ -69,7 +69,7 @@ type TMigration struct {
 	Address   common.Address `json:"address"`
 }
 
-//TVault details holds some extra information about the vault.
+//TVaultDetails holds some extra information about the vault.
 type TVaultDetails struct {
 	Management            common.Address `json:"management"`
 	Governance            common.Address `json:"governance"`

@@ -7,14 +7,14 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/partners"
-	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/external/partners"
+	"github.com/yearn/ydaemon/external/prices"
+	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/external/utils"
+	"github.com/yearn/ydaemon/external/vaults"
 )
 
 type controller struct{}
@@ -140,6 +140,11 @@ func NewRouter() *gin.Engine {
 
 	{
 		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
+	}
+
+	{
+		//TEST
+		router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
 	}
 
 	return router

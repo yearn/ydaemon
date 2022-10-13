@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/common/store"
 )
 
 func TestEnvironment(t *testing.T) {

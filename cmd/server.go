@@ -145,7 +145,7 @@ func NewRouter() *gin.Engine {
 
 	{
 		//TEST
-		router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
+		// router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
 	}
 
 	return router

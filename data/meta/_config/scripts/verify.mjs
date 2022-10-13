@@ -46,13 +46,18 @@ function validate(directory, validators) {
       let data;
       try {
         data = JSON.parse(fs.readFileSync(file, "utf-8"));
-        const schema = data[SchemaField];
+        let schema = data[SchemaField];
+
         if (!schema) {
-          console.error(
-            `Error: "${file}" is not a valid JSON file ("${SchemaField}" is not a present).`
-          );
-          allValid = false;
-          continue;
+          if (file.includes("tokenList.json")) {
+            schema = "tokenList";
+          } else {
+            console.error(
+              `Error: "${file}" is not a valid JSON file ("${SchemaField}" is not a present).`
+            );
+            allValid = false;
+            continue;
+          }
         }
         const validator = validators[schema];
         if (!validator) {

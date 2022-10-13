@@ -4,9 +4,9 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/utils/logs"
-	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 )
 
 var chains = env.SUPPORTED_CHAIN_IDS
@@ -42,8 +42,11 @@ func loadDaemonsForAllChains() {
 	wg.Wait()
 }
 
-func main() {
+func init() {
 	store.OpenDB()
+}
+
+func main() {
 	defer store.CloseDB()
 
 	logs.Info(`Loading store data to yDaemon memory...`)
@@ -51,5 +54,8 @@ func main() {
 	logs.Info(`Summoning yDaemon...`)
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
+
+	// internal.Initialize(1) //For later
+
 	NewRouter().Run()
 }

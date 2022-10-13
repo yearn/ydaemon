@@ -21,7 +21,7 @@ jobs:
     - name: Staticcheck
       run: |
         go install honnef.co/go/tools/cmd/staticcheck@latest
-        staticcheck ./internal/...
+        staticcheck ./...
 
     - name: Build
       run: go build cmd

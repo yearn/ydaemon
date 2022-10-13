@@ -58,6 +58,7 @@ type TAPY struct {
 	Type      string        `json:"type"`
 	GrossAPR  float64       `json:"gross_apr"`
 	NetAPY    float64       `json:"net_apy"`
+	Override  string        `json:"override_apy,omitempty"`
 	Fees      TAPYFees      `json:"fees"`
 	Points    TAPYPoints    `json:"points"`
 	Composite TAPYComposite `json:"composite"`

@@ -85,7 +85,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	}
 
 	// Preparing the sort. This specifics steps are needed to avoid a panic
-	var sortedData []interface{} = make([]interface{}, len(data))
+	var sortedData = make([]interface{}, len(data))
 	for i, d := range data {
 		sortedData[i] = d
 	}

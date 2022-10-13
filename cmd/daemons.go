@@ -4,12 +4,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/partners"
-	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/external/partners"
+	"github.com/yearn/ydaemon/external/prices"
+	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/external/vaults"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon

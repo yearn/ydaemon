@@ -79,6 +79,7 @@ type TVaultDetails struct {
 	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
 	Comment               string         `json:"comment"`
 	APYTypeOverride       string         `json:"apyTypeOverride"`
+	APYOverride           string         `json:"apyOverride"`
 	PerformanceFee        uint64         `json:"performanceFee"`
 	ManagementFee         uint64         `json:"managementFee"`
 	DepositsDisabled      bool           `json:"depositsDisabled"`

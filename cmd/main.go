@@ -7,7 +7,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal"
 )
 
 var chains = env.SUPPORTED_CHAIN_IDS
@@ -56,7 +55,7 @@ func main() {
 	summonDaemonsForAllChains()
 	logs.Success(`Server ready!`)
 
-	internal.Initialize(1) //For later
+	// internal.Initialize(1) //For later
 
 	NewRouter().Run()
 }

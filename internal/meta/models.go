@@ -13,7 +13,7 @@ type TVaultFromMeta struct {
 	DisplayName          string         `json:"displayName"`
 	Comment              string         `json:"comment"`
 	APYTypeOverride      string         `json:"apyTypeOverride"`
-	APYOverride          string         `json:"apyOverride"`
+	APYOverride          float64        `json:"apyOverride"`
 	Order                float32        `json:"order"`
 	HideAlways           bool           `json:"hideAlways"`
 	DepositsDisabled     bool           `json:"depositsDisabled"`

@@ -116,7 +116,6 @@ func buildAPY(
 	PerformanceFeeBps uint64,
 	ManagementFeeBps uint64,
 	APYTypeOverride string,
-	APYOverride string,
 ) TAPY {
 	apy := TAPY{}
 	apyFromAPIV1, ok := Store.VaultsFromAPIV1[chainID][vaultAddress]
@@ -150,9 +149,6 @@ func buildAPY(
 	}
 	if APYTypeOverride != "" {
 		apy.Type = APYTypeOverride
-	}
-	if APYOverride != "" {
-		apy.Override = APYOverride
 	}
 	return apy
 }
@@ -304,7 +300,6 @@ func prepareVaultSchema(
 			vaultFromGraph.PerformanceFeeBps,
 			vaultFromGraph.ManagementFeeBps,
 			vaultFromMeta.APYTypeOverride,
-			vaultFromMeta.APYOverride,
 		),
 		Strategies: strategies,
 		Endorsed:   vaultFromGraph.Classification == "Endorsed",

@@ -58,7 +58,6 @@ type TAPY struct {
 	Type      string        `json:"type"`
 	GrossAPR  float64       `json:"gross_apr"`
 	NetAPY    float64       `json:"net_apy"`
-	Override  string        `json:"override_apy,omitempty"`
 	Fees      TAPYFees      `json:"fees"`
 	Points    TAPYPoints    `json:"points"`
 	Composite TAPYComposite `json:"composite"`
@@ -80,7 +79,8 @@ type TVaultDetails struct {
 	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
 	Comment               string         `json:"comment"`
 	APYTypeOverride       string         `json:"apyTypeOverride"`
-	APYOverride           string         `json:"apyOverride"`
+	APYOverride           float64        `json:"apyOverride"`
+	Order                 float32        `json:"-"`
 	PerformanceFee        uint64         `json:"performanceFee"`
 	ManagementFee         uint64         `json:"managementFee"`
 	DepositsDisabled      bool           `json:"depositsDisabled"`
@@ -88,7 +88,6 @@ type TVaultDetails struct {
 	AllowZapIn            bool           `json:"allowZapIn"`
 	AllowZapOut           bool           `json:"allowZapOut"`
 	Retired               bool           `json:"retired"`
-	Order                 float32        `json:"-"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

@@ -7,37 +7,6 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
-// GetMetaProtocolsLegacy will, for a given chainID, return all the meta informations for the protocols.
-// The data will be resolved as-is, aka as an unorganized array of protocols metadata.
-func (y Controller) GetMetaProtocolsLegacy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-
-	localization := helpers.SafeString(c.Query("loc"), "en")
-	protocolsFromMeta, ok := Store.RawMetaProtocols[chainID]
-	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
-		return
-	}
-
-	if localization == "all" {
-		c.JSON(http.StatusOK, protocolsFromMeta)
-		return
-	}
-	localizedProtocolsFromMeta := []TProtocolsFromMeta{}
-	for _, protocol := range protocolsFromMeta {
-		local := selectLocalizationFromString(localization, *protocol.Localization)
-		protocol.Name = local.Name
-		protocol.Description = local.Description
-		protocol.Localization = nil
-		localizedProtocolsFromMeta = append(localizedProtocolsFromMeta, protocol)
-	}
-	c.JSON(http.StatusOK, localizedProtocolsFromMeta)
-}
-
 // GetMetaProtocols will, for a given chainID, return all the meta informations for the protocols.
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the protocol metadata.

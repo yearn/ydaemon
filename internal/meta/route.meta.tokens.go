@@ -7,37 +7,6 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
-// GetMetaTokensLegacy will, for a given chainID, return all the meta informations for the tokens.
-// The data will be resolved as-is, aka as an unorganized array of tokens metadata.
-func (y Controller) GetMetaTokensLegacy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-
-	localization := helpers.SafeString(c.Query("loc"), "en")
-	tokensFromMeta, ok := Store.RawMetaTokens[chainID]
-	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
-		return
-	}
-
-	if localization == "all" {
-		c.JSON(http.StatusOK, tokensFromMeta)
-		return
-	}
-	localizedTokensFromMeta := []TTokenFromMeta{}
-	for _, token := range tokensFromMeta {
-		local := selectLocalizationFromString(localization, *token.Localization)
-		token.Name = local.Name
-		token.Description = local.Description
-		token.Localization = nil
-		localizedTokensFromMeta = append(localizedTokensFromMeta, token)
-	}
-	c.JSON(http.StatusOK, localizedTokensFromMeta)
-}
-
 // GetMetaTokens will, for a given chainID, return all the meta informations for the tokens.
 // The data will be resolved as an object where the key is the checksummed address
 // and the value the token metadata.

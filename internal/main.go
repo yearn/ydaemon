@@ -95,8 +95,8 @@ func Initialize(chainID uint64) {
 
 	logs.Success("Initialization done in", time.Since(timeBefore))
 
+	timeBefore = time.Now()
 	syncGroup := &sync.WaitGroup{}
-	logs.Info(`Task: Fetch all Harvest for vaults >= 0.3.1`)
 	harvests := []vaults.THarvest{}
 	for _, vault := range vaultsList {
 		switch vault.APIVersion {
@@ -127,5 +127,5 @@ func Initialize(chainID uint64) {
 		count++
 	}
 
-	logs.Success(`Total harvests:`, count)
+	logs.Success(`It took`, time.Since(timeBefore), `to process`, count, `harvests`)
 }

@@ -1,0 +1,216 @@
+import Callout from 'nextra-theme-docs/callout'
+import Dropdown from '../../../components/Dropdown.tsx'
+import GET from '../../../components/GET.tsx'
+import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
+
+# Vaults Meta API
+The Meta API provides information about various entities in the Yearn ecosystem. This includes information about the strategies, vaults, tokens and protocols. As all theses elements are difficult to put on-chain, they are stored in `meta-files` which are updated by the yTeam. This API provides a way to access this information.  
+Here are the paths for the vaults meta API:
+```
+[GET - `{chainID}/meta/vaults`]:              List the meta for the vaults for a specific chain.
+[GET - `{chainID}/meta/vaults/{address}`]:    Get a specific meta for a vault for a specific chain.
+[GET - `{chainID}/meta/vault/{address}`]:     Get a specific meta for a vault for a specific chain. Alias for `{chainID}/meta/vaults/{address}`.  
+[GET - `api/{chainID}/vaults/all`]:           List the meta for the vaults for a specific chain, as it was on the legacy Meta Repository/API.
+[GET - `api/{chainID}/vaults/{address}`]:     Get a specific meta for a vault for a specific chain, as it was on the legacy Meta Repository/API.
+```
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/vaults'} /> <p>Get All Vaults</p>
+**Get all Vaults**: REST API endpoint to get all the vaults meta for a specific chain.
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	N/A
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	map[common.Address] struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/250/meta/vaults
+   {
+		"0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC": {
+			"address": "0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC",
+			"migrationTargetVault": "0x0000000000000000000000000000000000000000",
+			"migrationContract": "0x0000000000000000000000000000000000000000",
+			"displayName": "Curve MIM 3Pool",
+			"comment": "Curve MIM 3Pool",
+			"apyTypeOverride": "",
+			"apyOverride": 0,
+			"order": 8,
+			"hideAlways": false,
+			"depositsDisabled": false,
+			"withdrawalsDisabled": false,
+			"migrationAvailable": false,
+			"allowZapIn": true,
+			"allowZapOut": true,
+			"retired": false
+		},
+		...
+   }
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/vaults/:address'} /> <p>Get One Token</p>
+**Get One Token**: REST API endpoint to get the metadata about one specific vault for a specific chain.
+
+This route has 2 aliases:
+- <GET path={':chainID/meta/vault/:address'} />
+- <GET path={'api/:chainID/vaults/:address'} />
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the vault for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **address**: The address of the vault you want to get the information for.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	N/A
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TVaultFromMeta struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/250/meta/vaults/0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC
+   {
+		"address": "0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC",
+		"migrationTargetVault": "0x0000000000000000000000000000000000000000",
+		"migrationContract": "0x0000000000000000000000000000000000000000",
+		"displayName": "Curve MIM 3Pool",
+		"comment": "Curve MIM 3Pool",
+		"apyTypeOverride": "",
+		"apyOverride": 0,
+		"order": 8,
+		"hideAlways": false,
+		"depositsDisabled": false,
+		"withdrawalsDisabled": false,
+		"migrationAvailable": false,
+		"allowZapIn": true,
+		"allowZapOut": true,
+		"retired": false
+   }
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={'api/:chainID/vaults/all'} /> <p>Get All Vaults (deprecated)</p>
+
+<Callout type={'warning'} emoji={'⚠️'}>
+	This route has been created to match the legacy Meta Repository/API. It is deprecated and will be removed in the future.  
+	Please use the new standard structure instead.
+</Callout>
+
+**Get all Vaults**: REST API endpoint to get all the vaults meta for a specific chain.
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	N/A
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TVaultFromMeta struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}[]
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/api/250/vaults/all
+   [
+		{
+			"address": "0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC",
+			"migrationTargetVault": "0x0000000000000000000000000000000000000000",
+			"migrationContract": "0x0000000000000000000000000000000000000000",
+			"displayName": "Curve MIM 3Pool",
+			"comment": "Curve MIM 3Pool",
+			"apyTypeOverride": "",
+			"apyOverride": 0,
+			"order": 8,
+			"hideAlways": false,
+			"depositsDisabled": false,
+			"withdrawalsDisabled": false,
+			"migrationAvailable": false,
+			"allowZapIn": true,
+			"allowZapOut": true,
+			"retired": false
+		},
+		...
+   ]
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>

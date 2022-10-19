@@ -1,50 +1,65 @@
 {
 	"compilerOptions": {
-		"target": "esnext",
-		"module": "esnext",
-		"lib": [
-		  "es6",
-		  "es7",
-		  "esnext",
-		  "dom"
-		],
-		"allowJs": true,
-		"jsx": "preserve",
-		"removeComments": false,
-		"strict": true,
-		"noImplicitAny": true,
-		"strictNullChecks": true,
-		"strictFunctionTypes": true,
-		"strictPropertyInitialization": true,
-		"noImplicitThis": true,
-		"alwaysStrict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"inlineSourceMap": true,
-		"inlineSources": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"incremental": true,
-		"isolatedModules": true,
-
-		"rootDirs": ["."],
-		"baseUrl": ".",
-		"paths": {
-			"@yearn-finance/web-lib/components": ["./node_modules/@yearn-finance/web-lib/dist/components"],
-			"@yearn-finance/web-lib/layouts": ["./node_modules/@yearn-finance/web-lib/dist/layouts"],
-			"@yearn-finance/web-lib/contexts": ["./node_modules/@yearn-finance/web-lib/dist/contexts"],
-			"@yearn-finance/web-lib/hooks": ["./node_modules/@yearn-finance/web-lib/dist/hooks"],
-			"@yearn-finance/web-lib/icons": ["./node_modules/@yearn-finance/web-lib/dist/icons"],
-			"@yearn-finance/web-lib/utils": ["./node_modules/@yearn-finance/web-lib/dist/utils"],
-		}
+	  "rootDirs": ["."],
+	  "baseUrl": ".",
+	  "paths": {
+		  "@yearn-finance/web-lib/components": ["./node_modules/@yearn-finance/web-lib/dist/components"],
+		  "@yearn-finance/web-lib/layouts": ["./node_modules/@yearn-finance/web-lib/dist/layouts"],
+		  "@yearn-finance/web-lib/contexts": ["./node_modules/@yearn-finance/web-lib/dist/contexts"],
+		  "@yearn-finance/web-lib/hooks": ["./node_modules/@yearn-finance/web-lib/dist/hooks"],
+		  "@yearn-finance/web-lib/icons": ["./node_modules/@yearn-finance/web-lib/dist/icons"],
+		  "@yearn-finance/web-lib/utils": ["./node_modules/@yearn-finance/web-lib/dist/utils"],
+	  },
+	  /* Basic Options */
+	  "target": "esnext",
+	  "module": "esnext",
+	  "lib": [
+		"es6",
+		"es7",
+		"esnext",
+		"dom"
+	  ],
+	  "allowJs": true,
+	  "jsx": "preserve",
+	  "removeComments": false,
+	  "strict": true,
+	  "noImplicitAny": true,
+	  "strictNullChecks": true,
+	  "strictFunctionTypes": true,
+	  "strictPropertyInitialization": true,
+	  "noImplicitThis": true,
+	  "alwaysStrict": true,
+	  "noUnusedLocals": true,
+	  "noUnusedParameters": true,
+	  "noImplicitReturns": true,
+	  "noFallthroughCasesInSwitch": true,
+	  "moduleResolution": "node",
+	  "allowSyntheticDefaultImports": true,
+	  "esModuleInterop": true,
+	  "inlineSourceMap": true,
+	  "inlineSources": true,
+	  "resolveJsonModule": true,
+	  "skipLibCheck": true,
+	  "forceConsistentCasingInFileNames": true,
+	  "noEmit": true,
+	  "incremental": true,
+	  "isolatedModules": true
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.tsx", "**/*.js"],
-	"exclude": ["node_modules"]
-}
+	"exclude": [
+	  "node_modules"
+	],
+	"include": [
+		"**/*.css",
+		"**/*.ts",
+		"**/*.mdx",
+		"**/*.tsx",
+		"**/*.d.tsx",
+		"public",
+		"postcss.config.js",
+		"tailwind.config.js",
+		"next.config.js",
+		"theme.config.js",
+		".eslintrc.js"
+	]
+  }
+  

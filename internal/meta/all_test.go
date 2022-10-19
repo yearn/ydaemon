@@ -30,14 +30,12 @@ func NewRouter() *gin.Engine {
 		meta := Controller{}
 
 		// Proxy meta strategies
-		router.GET(`api/:chainID/strategies/all`, meta.GetMetaStrategiesLegacy)
 		router.GET(`:chainID/meta/strategies`, meta.GetMetaStrategies)
 		router.GET(`api/:chainID/strategies/:address`, meta.GetMetaStrategy)
 		router.GET(`:chainID/meta/strategies/:address`, meta.GetMetaStrategy)
 		router.GET(`:chainID/meta/strategy/:address`, meta.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/:chainID/tokens/all`, meta.GetMetaTokensLegacy)
 		router.GET(`:chainID/meta/tokens`, meta.GetMetaTokens)
 		router.GET(`api/:chainID/tokens/:address`, meta.GetMetaToken)
 		router.GET(`:chainID/meta/tokens/:address`, meta.GetMetaToken)
@@ -51,7 +49,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/vault/:address`, meta.GetMetaVault)
 
 		// Proxy meta protocols
-		router.GET(`api/:chainID/protocols/all`, meta.GetMetaProtocolsLegacy)
 		router.GET(`:chainID/meta/protocols`, meta.GetMetaProtocols)
 		router.GET(`api/:chainID/protocols/:name`, meta.GetMetaProtocol)
 		router.GET(`:chainID/meta/protocols/:name`, meta.GetMetaProtocol)
@@ -85,21 +82,7 @@ func TestTokens(t *testing.T) {
 	FetchTokensFromMeta(42161)
 	FetchTokensFromMeta(42)
 
-	//Testing the a meta paths - Legacy
-	resp, err := http.Get(`http://localhost:8083/api/1/tokens/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8083/api/250/tokens/all?loc=all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8083/api/hello/tokens/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8083/api/4545456/tokens/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-
-	resp, err = http.Get(`http://localhost:8083/1/meta/tokens`)
+	resp, err := http.Get(`http://localhost:8083/1/meta/tokens`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8083/250/meta/tokens?loc=all`)
@@ -110,7 +93,7 @@ func TestTokens(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8083/4545456/meta/tokens`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 
 	resp, err = http.Get(`http://localhost:8083/1/meta/tokens/0x0000000000085d4780B73119b644AE5ecd22b376`)
 	assert.NoError(t, err)
@@ -123,7 +106,7 @@ func TestTokens(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8083/4545456/meta/tokens/0x0000000000085d4780B73119b644AE5ecd22b376`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8083/1/meta/tokens/hello`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -154,20 +137,7 @@ func TestStrategies(t *testing.T) {
 	FetchStrategiesFromMeta(42)
 
 	//Testing the a meta paths - Legacy
-	resp, err := http.Get(`http://localhost:8079/api/1/strategies/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8079/api/250/strategies/all?loc=all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8079/api/hello/strategies/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8079/api/4545456/strategies/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-
-	resp, err = http.Get(`http://localhost:8079/1/meta/strategies`)
+	resp, err := http.Get(`http://localhost:8079/1/meta/strategies`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8079/250/meta/strategies?loc=all`)
@@ -178,7 +148,7 @@ func TestStrategies(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8079/4545456/meta/strategies`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 
 	resp, err = http.Get(`http://localhost:8079/250/meta/strategies/0xb99d6662127d9A3c68Bc949679f364E1739E2CA1`)
 	assert.NoError(t, err)
@@ -191,7 +161,7 @@ func TestStrategies(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8079/4545456/meta/strategies/0xb99d6662127d9A3c68Bc949679f364E1739E2CA1`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8079/1/meta/strategies/hello`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -229,7 +199,7 @@ func TestVaults(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8085/api/4545456/vaults/all`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 
 	resp, err = http.Get(`http://localhost:8085/1/meta/vaults`)
 	assert.NoError(t, err)
@@ -252,7 +222,7 @@ func TestVaults(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8085/4545456/meta/vaults/0x04d73c87b20d372cB3240C72eEFB9d79bA5e4959`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8085/1/meta/vaults/hello`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
@@ -282,20 +252,7 @@ func TestEnvironment(t *testing.T) {
 	FetchProtocolsFromMeta(42161)
 	FetchProtocolsFromMeta(42)
 
-	resp, err := http.Get(`http://localhost:8086/api/1/protocols/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8086/api/250/protocols/all?loc=all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8086/api/hello/protocols/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-	resp, err = http.Get(`http://localhost:8086/api/4545456/protocols/all`)
-	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-
-	resp, err = http.Get(`http://localhost:8086/1/meta/protocols`)
+	resp, err := http.Get(`http://localhost:8086/1/meta/protocols`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8086/250/meta/protocols?loc=all`)
@@ -306,7 +263,7 @@ func TestEnvironment(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8086/4545456/meta/protocols`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 
 	resp, err = http.Get(`http://localhost:8086/1/meta/protocols/1inch`)
 	assert.NoError(t, err)
@@ -319,7 +276,7 @@ func TestEnvironment(t *testing.T) {
 	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 	resp, err = http.Get(`http://localhost:8086/4545456/meta/protocols/1inch`)
 	assert.NoError(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
+	assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 
 	resp, err = http.Get(`http://localhost:8086/1/meta/protocols/1inch?loc=fr`)
 	assert.NoError(t, err)

@@ -85,3 +85,7 @@ code * {
 		@apply mt-0;
 	}
 }
+
+.getTag ~ p {
+	display: none;
+}

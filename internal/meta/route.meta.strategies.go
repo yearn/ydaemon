@@ -7,9 +7,9 @@ import (
 	"github.com/yearn/ydaemon/internal/utils/helpers"
 )
 
-// GetMetaStrategiesLegacy will, for a given chainID, return all the meta informations for the strategies.
+// GetMetaStrategies will, for a given chainID, return all the meta informations for the strategies.
 // The data will be resolved as-is, aka as an unorganized array of strategies metadata.
-func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
+func (y Controller) GetMetaStrategies(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
@@ -19,39 +19,7 @@ func (y Controller) GetMetaStrategiesLegacy(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	strategiesFromMeta, ok := Store.RawMetaStrategies[chainID]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
-		return
-	}
-
-	if localization == "all" {
-		c.JSON(http.StatusOK, strategiesFromMeta)
-		return
-	}
-	localizedStrategiesFromMeta := []TStrategyFromMeta{}
-	for _, strategy := range strategiesFromMeta {
-		local := selectLocalizationFromString(localization, *strategy.Localization)
-		strategy.Name = local.Name
-		strategy.Description = local.Description
-		strategy.Localization = nil
-		localizedStrategiesFromMeta = append(localizedStrategiesFromMeta, strategy)
-	}
-	c.JSON(http.StatusOK, localizedStrategiesFromMeta)
-}
-
-// GetMetaStrategies will, for a given chainID, return all the meta informations for the strategies.
-// The data will be resolved as an object where the key is the checksummed address
-// and the value the strategy metadata.
-func (y Controller) GetMetaStrategies(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-
-	localization := helpers.SafeString(c.Query("loc"), "en")
-	strategiesFromMeta, ok := Store.StrategiesFromMeta[chainID]
-	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 
@@ -87,7 +55,7 @@ func (y Controller) GetMetaStrategy(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	strategyFromMeta, ok := Store.StrategiesFromMeta[chainID][address]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 

@@ -20,7 +20,7 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	protocolsFromMeta, ok := Store.ProtocolsFromMeta[chainID]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 	if localization == "all" {
@@ -51,7 +51,7 @@ func (y Controller) GetMetaProtocol(c *gin.Context) {
 	protocolName := c.Param("name")
 	protocolFromMeta, ok := Store.ProtocolsFromMeta[chainID][protocolName]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 

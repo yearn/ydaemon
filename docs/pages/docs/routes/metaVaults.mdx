@@ -1,4 +1,5 @@
 import Callout from 'nextra-theme-docs/callout'
+import Dropdown from '../../../components/Dropdown.tsx'
 import GET from '../../../components/GET.tsx'
 import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 
@@ -19,37 +20,33 @@ Here are the paths for the vaults meta API:
 **Get all Vaults**: REST API endpoint to get all the vaults meta for a specific chain.
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
-</details>
-
-<details>
-	<summary>Query arguments</summary>
+</Dropdown>
+<Dropdown title={'Query arguments'}>
 	N/A
-</details>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		map[common.Address] struct {
-			Address              common.Address `json:"address"`
-			MigrationTargetVault common.Address `json:"migrationTargetVault"`
-			MigrationContract    common.Address `json:"migrationContract"`
-			DisplayName          string         `json:"displayName"`
-			Comment              string         `json:"comment"`
-			APYTypeOverride      string         `json:"apyTypeOverride"`
-			APYOverride          float64        `json:"apyOverride"`
-			Order                float32        `json:"order"`
-			HideAlways           bool           `json:"hideAlways"`
-			DepositsDisabled     bool           `json:"depositsDisabled"`
-			WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
-			MigrationAvailable   bool           `json:"migrationAvailable"`
-			AllowZapIn           bool           `json:"allowZapIn"`
-			AllowZapOut          bool           `json:"allowZapOut"`
-			Retired              bool           `json:"retired"`
-		}
+	map[common.Address] struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}
 	```
 
 	```json
@@ -75,7 +72,11 @@ Here are the paths for the vaults meta API:
 		...
    }
 	```
-</details>
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
 
 ---------------------------------------------------------------------------------------------------
 
@@ -87,38 +88,34 @@ This route has 2 aliases:
 - <GET path={'api/:chainID/vaults/:address'} />
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the vault for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
 	- **address**: The address of the vault you want to get the information for.
-</details>
-
-<details>
-	<summary>Query arguments</summary>
+</Dropdown>
+<Dropdown title={'Query arguments'}>
 	N/A
-</details>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TVaultFromMeta struct {
-			Address              common.Address `json:"address"`
-			MigrationTargetVault common.Address `json:"migrationTargetVault"`
-			MigrationContract    common.Address `json:"migrationContract"`
-			DisplayName          string         `json:"displayName"`
-			Comment              string         `json:"comment"`
-			APYTypeOverride      string         `json:"apyTypeOverride"`
-			APYOverride          float64        `json:"apyOverride"`
-			Order                float32        `json:"order"`
-			HideAlways           bool           `json:"hideAlways"`
-			DepositsDisabled     bool           `json:"depositsDisabled"`
-			WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
-			MigrationAvailable   bool           `json:"migrationAvailable"`
-			AllowZapIn           bool           `json:"allowZapIn"`
-			AllowZapOut          bool           `json:"allowZapOut"`
-			Retired              bool           `json:"retired"`
-		}
+	type TVaultFromMeta struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}
 	```
 
 	```json
@@ -141,13 +138,18 @@ This route has 2 aliases:
 		"retired": false
    }
 	```
-</details>
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
 
 ---------------------------------------------------------------------------------------------------
 
-
 ### <GET path={'api/:chainID/vaults/all'} /> <p>Get All Vaults (deprecated)</p>
-<Callout type="warning" emoji="⚠️">
+
+<Callout type={'warning'} emoji={'⚠️'}>
 	This route has been created to match the legacy Meta Repository/API. It is deprecated and will be removed in the future.  
 	Please use the new standard structure instead.
 </Callout>
@@ -155,37 +157,33 @@ This route has 2 aliases:
 **Get all Vaults**: REST API endpoint to get all the vaults meta for a specific chain.
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
-</details>
-
-<details>
-	<summary>Query arguments</summary>
+</Dropdown>
+<Dropdown title={'Query arguments'}>
 	N/A
-</details>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TVaultFromMeta struct {
-			Address              common.Address `json:"address"`
-			MigrationTargetVault common.Address `json:"migrationTargetVault"`
-			MigrationContract    common.Address `json:"migrationContract"`
-			DisplayName          string         `json:"displayName"`
-			Comment              string         `json:"comment"`
-			APYTypeOverride      string         `json:"apyTypeOverride"`
-			APYOverride          float64        `json:"apyOverride"`
-			Order                float32        `json:"order"`
-			HideAlways           bool           `json:"hideAlways"`
-			DepositsDisabled     bool           `json:"depositsDisabled"`
-			WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
-			MigrationAvailable   bool           `json:"migrationAvailable"`
-			AllowZapIn           bool           `json:"allowZapIn"`
-			AllowZapOut          bool           `json:"allowZapOut"`
-			Retired              bool           `json:"retired"`
-		}[]
+	type TVaultFromMeta struct {
+		Address              common.Address `json:"address"`
+		MigrationTargetVault common.Address `json:"migrationTargetVault"`
+		MigrationContract    common.Address `json:"migrationContract"`
+		DisplayName          string         `json:"displayName"`
+		Comment              string         `json:"comment"`
+		APYTypeOverride      string         `json:"apyTypeOverride"`
+		APYOverride          float64        `json:"apyOverride"`
+		Order                float32        `json:"order"`
+		HideAlways           bool           `json:"hideAlways"`
+		DepositsDisabled     bool           `json:"depositsDisabled"`
+		WithdrawalsDisabled  bool           `json:"withdrawalsDisabled"`
+		MigrationAvailable   bool           `json:"migrationAvailable"`
+		AllowZapIn           bool           `json:"allowZapIn"`
+		AllowZapOut          bool           `json:"allowZapOut"`
+		Retired              bool           `json:"retired"`
+	}[]
 	```
 
 	```json
@@ -211,4 +209,8 @@ This route has 2 aliases:
 		...
    ]
 	```
-</details>
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>

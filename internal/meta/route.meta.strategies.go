@@ -19,7 +19,7 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	strategiesFromMeta, ok := Store.RawMetaStrategies[chainID]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 
@@ -55,7 +55,7 @@ func (y Controller) GetMetaStrategy(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	strategyFromMeta, ok := Store.StrategiesFromMeta[chainID][address]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 

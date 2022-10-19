@@ -1,4 +1,5 @@
 import GET from '../../../components/GET.tsx'
+import Dropdown from '../../../components/Dropdown.tsx'
 import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 
 # Strategies Meta API
@@ -21,49 +22,44 @@ This route has 1 alias:
 - <GET path={'api/:chainID/strategies/all'} />
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the strategies for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
-</details>
+</Dropdown>
 
-<details>
-	<summary>Query arguments</summary>
-	<div>
-		<QueryArgumentBox
-			title={'loc'}
-			description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
-			```sh
-			?loc=en # default
-			```
-		</QueryArgumentBox>
-	</div>
-</details>
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TStrategyFromMeta struct {
-			Name         string                `json:"name"`
-			Description  string                `json:"description"`
-			Addresses    []common.Address      `json:"addresses"`
-			Protocols    []string              `json:"protocols"`
-			Localization struct {
-				En TLocalizationDetails        `json:"en"`
-				Fr TLocalizationDetails        `json:"fr"`
-				Es TLocalizationDetails        `json:"es"`
-				De TLocalizationDetails        `json:"de"`
-				Pt TLocalizationDetails        `json:"pt"`
-				El TLocalizationDetails        `json:"el"`
-				Tr TLocalizationDetails        `json:"tr"`
-				Vi TLocalizationDetails        `json:"vi"`
-				Zh TLocalizationDetails        `json:"zh"`
-				Hi TLocalizationDetails        `json:"hi"`
-				Ja TLocalizationDetails        `json:"ja"`
-				Id TLocalizationDetails        `json:"id"`
-				Ru TLocalizationDetails        `json:"ru"`
-			} `json:"localization,omitempty"`
-		}[]
+	type TStrategyFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Addresses    []common.Address      `json:"addresses"`
+		Protocols    []string              `json:"protocols"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}[]
 	```
 
 	```json
@@ -90,8 +86,11 @@ This route has 1 alias:
         ]
     }]
 	```
-</details>
-
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/meta/strategies/:address'} /> <p>Get One Strategy</p>
@@ -102,14 +101,12 @@ This route has 2 aliases:
 - <GET path={'api/:chainID/strategies/:address'} />
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the strategy for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
 	- **address**: The address of the strategy you want to get the information for.
-</details>
+</Dropdown>
 
-<details>
-	<summary>Query arguments</summary>
+<Dropdown title={'Query arguments'}>
 	<div>
 		<QueryArgumentBox
 			title={'loc'}
@@ -119,33 +116,32 @@ This route has 2 aliases:
 			```
 		</QueryArgumentBox>
 	</div>
-</details>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TStrategyFromMeta struct {
-			Name         string                `json:"name"`
-			Description  string                `json:"description"`
-			Addresses    []common.Address      `json:"addresses"`
-			Protocols    []string              `json:"protocols"`
-			Localization struct {
-				En TLocalizationDetails        `json:"en"`
-				Fr TLocalizationDetails        `json:"fr"`
-				Es TLocalizationDetails        `json:"es"`
-				De TLocalizationDetails        `json:"de"`
-				Pt TLocalizationDetails        `json:"pt"`
-				El TLocalizationDetails        `json:"el"`
-				Tr TLocalizationDetails        `json:"tr"`
-				Vi TLocalizationDetails        `json:"vi"`
-				Zh TLocalizationDetails        `json:"zh"`
-				Hi TLocalizationDetails        `json:"hi"`
-				Ja TLocalizationDetails        `json:"ja"`
-				Id TLocalizationDetails        `json:"id"`
-				Ru TLocalizationDetails        `json:"ru"`
-			} `json:"localization,omitempty"`
-		}
+	type TStrategyFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Addresses    []common.Address      `json:"addresses"`
+		Protocols    []string              `json:"protocols"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}
 	```
 
 	```json
@@ -172,4 +168,9 @@ This route has 2 aliases:
         ]
     }
 	```
-</details>
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>

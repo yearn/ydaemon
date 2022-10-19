@@ -18,7 +18,7 @@ func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
 
 	vaultsFromMeta, ok := Store.RawMetaVaults[chainID]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 
@@ -59,7 +59,7 @@ func (y Controller) GetMetaVault(c *gin.Context) {
 	}
 	vaultFromMeta, ok := Store.VaultsFromMeta[chainID][address]
 	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
+		c.String(http.StatusNotFound, "no data available")
 		return
 	}
 

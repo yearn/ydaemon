@@ -5,7 +5,10 @@ export default function GET({path}: {path: string}): ReactElement {
 		<div className={'getTag inline-flex flex-row items-center'}>
 			<div
 				className={'rounded-md px-2 font-bold'}
-				style={{backgroundColor: '#0675F9', color: '#FFFFFF'}}>
+				style={{
+					backgroundImage: 'linear-gradient(to bottom right, #0675F9, #00B4FF)',
+					color: '#FFFFFF'
+				}}>
 				{'GET'}
 			</div>
 			<b className={'pl-2'}>

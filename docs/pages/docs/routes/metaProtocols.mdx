@@ -1,4 +1,5 @@
 import GET from '../../../components/GET.tsx'
+import Dropdown from '../../../components/Dropdown.tsx'
 import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 
 # Protocols Meta API
@@ -21,47 +22,42 @@ This route has 1 alias:
 - <GET path={'api/:chainID/protocols/all'} />
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the protocols for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
-</details>
+</Dropdown>
 
-<details>
-	<summary>Query arguments</summary>
-	<div>
-		<QueryArgumentBox
-			title={'loc'}
-			description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
-			```sh
-			?loc=en # default
-			```
-		</QueryArgumentBox>
-	</div>
-</details>
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TProtocolsFromMeta struct {
-			Name         string                `json:"name"`
-			Description  string                `json:"description"`
-			Localization struct {
-				En TLocalizationDetails        `json:"en"`
-				Fr TLocalizationDetails        `json:"fr"`
-				Es TLocalizationDetails        `json:"es"`
-				De TLocalizationDetails        `json:"de"`
-				Pt TLocalizationDetails        `json:"pt"`
-				El TLocalizationDetails        `json:"el"`
-				Tr TLocalizationDetails        `json:"tr"`
-				Vi TLocalizationDetails        `json:"vi"`
-				Zh TLocalizationDetails        `json:"zh"`
-				Hi TLocalizationDetails        `json:"hi"`
-				Ja TLocalizationDetails        `json:"ja"`
-				Id TLocalizationDetails        `json:"id"`
-				Ru TLocalizationDetails        `json:"ru"`
-			} `json:"localization,omitempty"`
-		}[]
+	type TProtocolsFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}[]
 	```
 
 	```json
@@ -71,8 +67,11 @@ This route has 1 alias:
         "description": "SpiritSwap is an automated market maker protocol on the Fantom network. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees."
     }]
 	```
-</details>
-
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/meta/protocols/:name'} /> <p>Get One Protocol</p>
@@ -83,48 +82,43 @@ This route has 2 aliases:
 - <GET path={'api/:chainID/protocols/:name'} />
 
 #### Request
-<details>
-	<summary>Params</summary>
+<Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the protocol for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
 	- **name**: The name of the protocol you want to get the information for.
-</details>
+</Dropdown>
 
-<details>
-	<summary>Query arguments</summary>
-	<div>
-		<QueryArgumentBox
-			title={'loc'}
-			description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
-			```sh
-			?loc=en # default
-			```
-		</QueryArgumentBox>
-	</div>
-</details>
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
 
-#### Return Value
-<details>
-	<summary>Return value</summary>
+#### Response
+<Dropdown title={'Valid request'}>
 	```go
-		type TProtocolsFromMeta struct {
-			Name         string                `json:"name"`
-			Description  string                `json:"description"`
-			Localization struct {
-				En TLocalizationDetails        `json:"en"`
-				Fr TLocalizationDetails        `json:"fr"`
-				Es TLocalizationDetails        `json:"es"`
-				De TLocalizationDetails        `json:"de"`
-				Pt TLocalizationDetails        `json:"pt"`
-				El TLocalizationDetails        `json:"el"`
-				Tr TLocalizationDetails        `json:"tr"`
-				Vi TLocalizationDetails        `json:"vi"`
-				Zh TLocalizationDetails        `json:"zh"`
-				Hi TLocalizationDetails        `json:"hi"`
-				Ja TLocalizationDetails        `json:"ja"`
-				Id TLocalizationDetails        `json:"id"`
-				Ru TLocalizationDetails        `json:"ru"`
-			} `json:"localization,omitempty"`
-		}
+	type TProtocolsFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}
 	```
 
 	```json
@@ -134,4 +128,8 @@ This route has 2 aliases:
         "description": "SpiritSwap is an automated market maker protocol on the Fantom network. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees."
     }
 	```
-</details>
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID/name
+</Dropdown>

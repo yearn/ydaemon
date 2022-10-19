@@ -1,0 +1,135 @@
+import GET from '../../../components/GET.tsx'
+import Dropdown from '../../../components/Dropdown.tsx'
+import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
+
+# Protocols Meta API
+The Meta API provides information about various entities in the Yearn ecosystem. This includes information about the strategies, vaults, tokens and protocols. As all theses elements are difficult to put on-chain, they are stored in `meta-files` which are updated by the yTeam. This API provides a way to access this information.  
+Here are the paths for the protocols meta API:
+```
+[GET - `{chainID}/meta/protocols`]:           List the meta for the protocols for a specific chain.
+[GET - `{chainID}/meta/protocols/{name}`]:    Get a specific meta for a protocol for a specific chain.
+[GET - `{chainID}/meta/protocol/{name}`]:     Get a specific meta for a protocol for a specific chain. Alias for `{chainID}/meta/protocols/{address}`.  
+[GET - `api/{chainID}/protocols/all`]:        List the meta for the protocols for a specific chain, as it was on the legacy Meta Repository/API.
+[GET - `api/{chainID}/protocols/{name}`]:     Get a specific meta for a protocol for a specific chain, as it was on the legacy Meta Repository/API.
+```
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/protocols'} /> <p>Get All Protocols</p>
+**Get all Protocols**: REST API endpoint to get all the protocols meta for a specific chain.
+
+This route has 1 alias:
+- <GET path={'api/:chainID/protocols/all'} />
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the protocols for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TProtocolsFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}[]
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/api/250/protocols/all?loc=en
+    [{
+        "name": "SpiritSwap",
+        "description": "SpiritSwap is an automated market maker protocol on the Fantom network. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees."
+    }]
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/protocols/:name'} /> <p>Get One Protocol</p>
+**Get One Protocol**: REST API endpoint to get the metadata about one specific protocol for a specific chain.
+
+This route has 2 aliases:
+- <GET path={':chainID/meta/protocol/:name'} />
+- <GET path={'api/:chainID/protocols/:name'} />
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the protocol for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **name**: The name of the protocol you want to get the information for.
+</Dropdown>
+
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TProtocolsFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/250/meta/protocol/SpiritSwap
+    {
+        "name": "SpiritSwap",
+        "description": "SpiritSwap is an automated market maker protocol on the Fantom network. It's a decentralized liquidity aggregator where users can add their assets to several different liquidity pools and earn fees."
+    }
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID/name
+</Dropdown>

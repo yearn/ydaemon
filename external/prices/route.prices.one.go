@@ -23,7 +23,7 @@ func (y Controller) GetPrice(c *gin.Context) {
 	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
 	price, ok := Store.TokenPrices[chainID][address]
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid address")
+		c.String(http.StatusNotFound, "token not found")
 		return
 	}
 

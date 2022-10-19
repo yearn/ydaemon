@@ -80,14 +80,14 @@ func NewRouter() *gin.Engine {
 	{
 		c := meta.Controller{}
 		// Proxy meta strategies
-		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategiesLegacy)
+		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategies)
 		router.GET(`:chainID/meta/strategies`, c.GetMetaStrategies)
 		router.GET(`api/:chainID/strategies/:address`, c.GetMetaStrategy)
 		router.GET(`:chainID/meta/strategies/:address`, c.GetMetaStrategy)
 		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokensLegacy)
+		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokens)
 		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
 		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
 		router.GET(`:chainID/meta/tokens/:address`, c.GetMetaToken)
@@ -101,7 +101,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/meta/vault/:address`, c.GetMetaVault)
 
 		// Proxy meta protocols
-		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocolsLegacy)
+		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocols)
 		router.GET(`:chainID/meta/protocols`, c.GetMetaProtocols)
 		router.GET(`api/:chainID/protocols/:name`, c.GetMetaProtocol)
 		router.GET(`:chainID/meta/protocols/:name`, c.GetMetaProtocol)

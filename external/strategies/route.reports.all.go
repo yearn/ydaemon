@@ -37,7 +37,7 @@ func (y Controller) GetReports(c *gin.Context) {
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
-		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
+		c.String(http.StatusInternalServerError, "impossible to fetch subgraph")
 		return
 	}
 	client := graphql.NewClient(graphQLEndpoint)
@@ -45,7 +45,7 @@ func (y Controller) GetReports(c *gin.Context) {
 	var response models.TReportsFromGraph
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)
-		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
+		c.String(http.StatusInternalServerError, "invalid graphQL response")
 		return
 	}
 

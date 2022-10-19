@@ -1,0 +1,176 @@
+import GET from '../../../components/GET.tsx'
+import Dropdown from '../../../components/Dropdown.tsx'
+import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
+
+# Strategies Meta API
+The Meta API provides information about various entities in the Yearn ecosystem. This includes information about the strategies, vaults, tokens and protocols. As all theses elements are difficult to put on-chain, they are stored in `meta-files` which are updated by the yTeam. This API provides a way to access this information.  
+Here are the paths for the strategies meta API:
+```
+[GET - `{chainID}/meta/strategies`]:           List the meta for the strategies for a specific chain.
+[GET - `{chainID}/meta/strategies/{address}`]: Get a specific meta for a strategy for a specific chain.
+[GET - `{chainID}/meta/strategy/{address}`]:   Get a specific meta for a strategy for a specific chain. Alias for `{chainID}/meta/strategies/{address}`.  
+[GET - `api/{chainID}/strategies/all`]:        List the meta for the strategies for a specific chain, as it was on the legacy Meta Repository/API.
+[GET - `api/{chainID}/strategies/{address}`]:  Get a specific meta for a strategy for a specific chain, as it was on the legacy Meta Repository/API.
+```
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/strategies'} /> <p>Get All Strategies</p>
+**Get all Strategies**: REST API endpoint to get all the strategies meta for a specific chain.
+
+This route has 1 alias:
+- <GET path={'api/:chainID/strategies/all'} />
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the strategies for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'loc'}
+		description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+		```sh
+		?loc=en # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TStrategyFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Addresses    []common.Address      `json:"addresses"`
+		Protocols    []string              `json:"protocols"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}[]
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/api/250/strategies/all?loc=en
+    [{
+        "name": "Masterchef Generic Reinvest",
+        "description": "Supplies {{token}} to a generic masterchef genesis pool to earn protocol tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+        "addresses": [
+            "0x2327585bc4E6E505459C61CBF9a358a3558D6600",
+            "0x6F1563CAA81004E87a7F3c476E19B355A11fc4eD",
+            "0xfeb61a9E0B4A55f65875486c61Bf313B32C48A46",
+            "0x28F2fB6730d5dbeFc4FF9eB375Bbf33BcB36e774",
+            "0xf84DD489ad9f55e95593eB266d9D4C1490ece915",
+            "0xE635905E321e404027bC369fF7FD5Ad63C26975f",
+            "0x4cF620a388d36Fb527ddc03a515b8677c14A967a",
+            "0x82CbD2AF730D3dC3715873eA030851D7f3206Bcd",
+            "0x67ac0F693C80a37c5a9C2e943e05668615B4Dbeb",
+            "0x32aC76a38027C95662d727aee9D9Bb3028197ba7",
+            "0xEc28a9708c94605AF291f6De29f291dF74877198",
+            "0xeDC42841C4F98e2b1700970041888452D47f8832"
+        ],
+        "protocols": [
+            
+        ]
+    }]
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/meta/strategies/:address'} /> <p>Get One Strategy</p>
+**Get One Strategy**: REST API endpoint to get the metadata about one specific strategy for a specific chain.
+
+This route has 2 aliases:
+- <GET path={':chainID/meta/strategy/:address'} />
+- <GET path={'api/:chainID/strategies/:address'} />
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the strategy for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **address**: The address of the strategy you want to get the information for.
+</Dropdown>
+
+<Dropdown title={'Query arguments'}>
+	<div>
+		<QueryArgumentBox
+			title={'loc'}
+			description={'Indicate the localization system to use (aka the language). If a supported language is provided, the values will be returned respecting the language. If the specific `all` key is used, all the localization will be returned.'}>
+			```sh
+			?loc=en # default
+			```
+		</QueryArgumentBox>
+	</div>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TStrategyFromMeta struct {
+		Name         string                `json:"name"`
+		Description  string                `json:"description"`
+		Addresses    []common.Address      `json:"addresses"`
+		Protocols    []string              `json:"protocols"`
+		Localization struct {
+			En TLocalizationDetails        `json:"en"`
+			Fr TLocalizationDetails        `json:"fr"`
+			Es TLocalizationDetails        `json:"es"`
+			De TLocalizationDetails        `json:"de"`
+			Pt TLocalizationDetails        `json:"pt"`
+			El TLocalizationDetails        `json:"el"`
+			Tr TLocalizationDetails        `json:"tr"`
+			Vi TLocalizationDetails        `json:"vi"`
+			Zh TLocalizationDetails        `json:"zh"`
+			Hi TLocalizationDetails        `json:"hi"`
+			Ja TLocalizationDetails        `json:"ja"`
+			Id TLocalizationDetails        `json:"id"`
+			Ru TLocalizationDetails        `json:"ru"`
+		} `json:"localization,omitempty"`
+	}
+	```
+
+	```json
+	// https://ydaemon.yearn.finance/api/250/strategies/0x6F1563CAA81004E87a7F3c476E19B355A11fc4eD
+    {
+        "name": "Masterchef Generic Reinvest",
+        "description": "Supplies {{token}} to a generic masterchef genesis pool to earn protocol tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+        "addresses": [
+            "0x2327585bc4E6E505459C61CBF9a358a3558D6600",
+            "0x6F1563CAA81004E87a7F3c476E19B355A11fc4eD",
+            "0xfeb61a9E0B4A55f65875486c61Bf313B32C48A46",
+            "0x28F2fB6730d5dbeFc4FF9eB375Bbf33BcB36e774",
+            "0xf84DD489ad9f55e95593eB266d9D4C1490ece915",
+            "0xE635905E321e404027bC369fF7FD5Ad63C26975f",
+            "0x4cF620a388d36Fb527ddc03a515b8677c14A967a",
+            "0x82CbD2AF730D3dC3715873eA030851D7f3206Bcd",
+            "0x67ac0F693C80a37c5a9C2e943e05668615B4Dbeb",
+            "0x32aC76a38027C95662d727aee9D9Bb3028197ba7",
+            "0xEc28a9708c94605AF291f6De29f291dF74877198",
+            "0xeDC42841C4F98e2b1700970041888452D47f8832"
+        ],
+        "protocols": [
+            
+        ]
+    }
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `404 - no data available`: no data is available for the provided chainID.
+</Dropdown>

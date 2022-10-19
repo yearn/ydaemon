@@ -1,0 +1,72 @@
+import GET from '../../../components/GET.tsx'
+import Dropdown from '../../../components/Dropdown.tsx'
+import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
+
+# Strategies API
+The Strategies API allows you to query the strategies that are currently active on the Yearn's ecosystem. The API is available at https://ydaemon.yearn.finance/.
+
+```
+[GET - `{chainID}/reports/{address}`]:         Get the report for a specific strategy for a specific chain.
+```
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/reports/:address'} /> <p>Get Reports for Strategy</p>
+**Reports for Strategy**: REST API endpoint to get the reports for a specific strategy on a given chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains.
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	N/A
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```json
+	// https://ydaemon.yearn.finance/1/reports/0xBec29b45033fC6e98abF3DD7Ad20B8255978e1F1
+	[
+		{
+			"id": "0xc3907925e4258489c584f304c787e4d90e6ebed585b474e9886c32ac4e7be9d0-339",
+			"debtAdded": "202429630522854712767528",
+			"debtLimit": "5000",
+			"totalDebt": "683275560336464892653151",
+			"gain": "397421930127572576655",
+			"totalGain": "397421930127572576655",
+			"loss": "0",
+			"totalLoss": "0",
+			"debtPaid": "0",
+			"timestamp": "1666189115000",
+			"results": [
+				{
+					"duration": "167088000",
+					"durationPR": "0.0008265057588854393264328008055694074",
+					"APR": "0.1559937614443360061667193706575986"
+				}
+			]
+		},
+		{
+			"id": "0x4eddee4bcda754289727b1b221f87e0c3989ae9133a086fe5c98e0ce7cb8194e-385",
+			"debtAdded": "480845929813610179885623",
+			"debtLimit": "5000",
+			"totalDebt": "480845929813610179885623",
+			"gain": "0",
+			"totalGain": "0",
+			"loss": "0",
+			"totalLoss": "0",
+			"debtPaid": "0",
+			"timestamp": "1666022027000",
+			"results": [
+				
+			]
+		}
+	]
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `500 - impossible to fetch subgraph`: yDaemon was unable to connect to the subgraph.
+	- `500 - invalid graphQL response`: yDaemon was unable to parse the response from the subgraph.
+</Dropdown>

@@ -18,9 +18,8 @@ import (
 
 func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *graphql.Request {
 	return graphql.NewRequest(`{
-		harvests(where: {vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]}) {
-			` + helpers.GetHarvestsForVaults() + `
-		}
+		harvests(where: {vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]})
+		` + helpers.GetHarvestsForVaults() + `
     }`)
 }
 

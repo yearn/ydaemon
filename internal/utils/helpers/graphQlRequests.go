@@ -100,7 +100,9 @@ func GetHarvestsForVaults() string {
 				decimals
 			}
 		}
-		transaction {hash}
+		transaction {
+			hash
+		}
 		timestamp
 		profit
 		loss

@@ -104,7 +104,13 @@ The `internal` folder is the _private application and library code_. This is the
 - `store`: contains all the cross-package global variables.
 - `utils`: contains all the cross-package utility functions.
 
-
+## Docs
+To run docs locally use the follow:
+```bash
+cd docs
+yarn
+yarn dev
+```
 ## Go Test and Coverage
 ```
 ?       github.com/yearn/ydaemon/cmd  [no test files]

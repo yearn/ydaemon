@@ -6,82 +6,164 @@ import Callout from 'nextra-theme-docs/callout'
 
 
 # Introduction
-You can access the API at the following URL: `https://ydaemon.yearn.finance`. Some routes are exposed to get the underlying data from the Yearn ecosystem. The API is currently in beta, and the endpoints are subject to change. If you have any questions or suggestions, please join the Yearn Discord or open an issue on the [GitHub repository](https://github.com/yearn/ydaemon).
+You can access the API at the following URL
+`https://ydaemon.yearn.finance`. Some routes are exposed to get the underlying data from the Yearn ecosystem. The API is currently in beta, and the endpoints are subject to change. If you have any questions or suggestions, please join the Yearn Discord or open an issue on the GitHub repository(https://github.com/yearn/ydaemon).
 
 ## List of endpoints
+
 The endpoints are grouped by category, and are listed below.
 
 ### For the Vaults
-```
-[GET - `vaults/tvl`]:                          Get the total value locked in the Yearn ecosystem across all vaults for all chains.
-[GET - `{chainID}/vaults/tvl`]:                Get the total value locked in the Yearn ecosystem across all vaults for a specific chain.
-[GET - `{chainID}/vaults/all`]:                List the vaults for a specific chain.
-[GET - `{chainID}/vaults/{address}`]:          Get a specific vault for a specific chain.
-[GET - `{chainID}/vault/{address}`]:           Get a specific vault for a specific chain. Alias for `{chainID}/vaults/{address}`.
-[GET - `info/vaults/blacklisted`]:             Get the list of blacklisted vaults (aka ignored vaults).
-```
+
+
+- GET - `vaults/tvl`  
+Get the total value locked in the Yearn ecosystem across all vaults for all chains.
+
+- GET - `{chainID}/vaults/tvl`  
+Get the total value locked in the Yearn ecosystem across all vaults for a specific chain.
+
+- GET - `{chainID}/vaults/all`  
+List the vaults for a specific chain.
+
+- GET - `{chainID}/vaults/{address}`  
+Get a specific vault for a specific chain.
+
+- GET - `{chainID}/vault/{address}`  
+Get a specific vault for a specific chain. Alias for `{chainID}/vaults/{address}`.
+
+- GET - `info/vaults/blacklisted`  
+Get the list of blacklisted vaults (aka ignored vaults).
+
 
 ### For the Strategies
-```
-[GET - `{chainID}/reports/{address}`]:         Get the report for a specific strategy for a specific chain.
-```
+
+
+- GET - `{chainID}/reports/{address}`  
+Get the report for a specific strategy for a specific chain.
+
 
 ### For the Meta
-```
-[GET - `api/{chainID}/strategies/all`]:        List the meta for the strategies for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `api/{chainID}/strategies/{address}`]:  Get a specific meta for a strategy for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `{chainID}/meta/strategies`]:           List the meta for the strategies for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/strategies/{address}`]: Get a specific meta for a strategy for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/strategy/{address}`]:   Get a specific meta for a strategy for a specific chain, using a new standard structure. Alias for `{chainID}/meta/strategies/{address}`.  
 
-[GET - `api/{chainID}/tokens/all`]:            List the meta for the tokens for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `api/{chainID}/tokens/{address}`]:      Get a specific meta for a token for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `{chainID}/meta/tokens`]:               List the meta for the tokens for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/tokens/{address}`]:     Get a specific meta for a token for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/token/{address}`]:      Get a specific meta for a token for a specific chain, using a new standard structure. Alias for `{chainID}/meta/tokens/{address}`.  
 
-[GET - `api/{chainID}/vaults/all`]:            List the meta for the vaults for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `api/{chainID}/vaults/{address}`]:      Get a specific meta for a vault for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `{chainID}/meta/vaults`]:               List the meta for the vaults for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/vaults/{address}`]:     Get a specific meta for a vault for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/vault/{address}`]:      Get a specific meta for a vault for a specific chain, using a new standard structure. Alias for `{chainID}/meta/vaults/{address}`.  
+- GET - `api/{chainID}/strategies/all`  
+List the meta for the strategies for a specific chain, as it was on the legacy Meta Repository/API.
 
-[GET - `api/{chainID}/protocols/all`]:         List the meta for the protocols for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `api/{chainID}/protocols/{name}`]:      Get a specific meta for a protocol for a specific chain, as it was on the legacy Meta Repository/API.
-[GET - `{chainID}/meta/protocols`]:            List the meta for the protocols for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/protocols/{name}`]:     Get a specific meta for a protocol for a specific chain, using a new standard structure.
-[GET - `{chainID}/meta/protocol/{name}`]:      Get a specific meta for a protocol for a specific chain, using a new standard structure. Alias for `{chainID}/meta/protocols/{address}`.
-```
+- GET - `api/{chainID}/strategies/{address}`  
+Get a specific meta for a strategy for a specific chain, as it was on the legacy Meta Repository/API.
 
-### For the Parners
+- GET - `{chainID}/meta/strategies`  
+List the meta for the strategies for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/strategies/{address}`  
+Get a specific meta for a strategy for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/strategy/{address}`  
+Get a specific meta for a strategy for a specific chain, using a new standard structure. Alias for `{chainID}/meta/strategies/{address}`. 
+
+
+- GET - `api/{chainID}/tokens/all`  
+List the meta for the tokens for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `api/{chainID}/tokens/{address}`  
+Get a specific meta for a token for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `{chainID}/meta/tokens`  
+List the meta for the tokens for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/tokens/{address}`  
+Get a specific meta for a token for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/token/{address}`  
+Get a specific meta for a token for a specific chain, using a new standard structure. Alias for `{chainID}/meta/tokens/{address}`. 
+
+
+- GET - `api/{chainID}/vaults/all`  
+List the meta for the vaults for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `api/{chainID}/vaults/{address}`  
+Get a specific meta for a vault for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `{chainID}/meta/vaults`  
+List the meta for the vaults for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/vaults/{address}`  
+Get a specific meta for a vault for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/vault/{address}`  
+Get a specific meta for a vault for a specific chain, using a new standard structure. Alias for `{chainID}/meta/vaults/{address}`. 
+
+
+- GET - `api/{chainID}/protocols/all`  
+List the meta for the protocols for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `api/{chainID}/protocols/{name}`  
+Get a specific meta for a protocol for a specific chain, as it was on the legacy Meta Repository/API.
+
+- GET - `{chainID}/meta/protocols`  
+List the meta for the protocols for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/protocols/{name}`  
+Get a specific meta for a protocol for a specific chain, using a new standard structure.
+
+- GET - `{chainID}/meta/protocol/{name}`  
+Get a specific meta for a protocol for a specific chain, using a new standard structure. Alias for `{chainID}/meta/protocols/{address}`.
+
+
+### For the Partners
 <Callout type="warning" emoji="⚠️">
 	This is a work in progress, and the endpoints may be deleted.
 </Callout>
-```
-[GET - `partners/count`]:                      Returns the number of partners.
-[GET - `partners/all`]:                        List all the parners for all chains.
-[GET - `{chainID}/partners/all`]:              List all the parners for a specific chain.
-[GET - `{chainID}/partners/{addressOrName}`]:  Get a specific partner for a specific chain based on the address or name.
-```
+
+
+- GET - `partners/count`  
+Returns the number of partners.
+
+- GET - `partners/all`  
+List all the parners for all chains.
+
+- GET - `{chainID}/partners/all`  
+List all the parners for a specific chain.
+
+- GET - `{chainID}/partners/{addressOrName}`  
+Get a specific partner for a specific chain based on the address or name.
+
 
 ### For the Tokens
-```
-[GET - `tokens/all`]:                          List all the tokens for all chains.
-[GET - `{chainID}/tokens/all`]:                List all the tokens for a specific chain.
-[GET - `api/tokens/list`]:                     Access the Yearn's Token List for mainnet.
-```
+
+
+- GET - `tokens/all`  
+List all the tokens for all chains.
+
+- GET - `{chainID}/tokens/all`  
+List all the tokens for a specific chain.
+
+- GET - `api/tokens/list`  
+Access the Yearn's Token List for mainnet.
+
 
 ### For the Prices
-```
-[GET - `prices/all`]:                          List all the prices for all chains.
-[GET - `{chainID}/prices/all`]:                List all the prices for a specific chain.
-[GET - `{chainID}/prices/{address}`]:          Get a specific price for a specific chain.
-[GET - `{chainID}/prices/some/{addresses}`]:   List the prices for a list of addresses for a specific chain.
-```
+
+
+- GET - `prices/all`  
+List all the prices for all chains.
+
+- GET - `{chainID}/prices/all`  
+List all the prices for a specific chain.
+
+- GET - `{chainID}/prices/{address}`  
+Get a specific price for a specific chain.
+
+- GET - `{chainID}/prices/some/{addresses}`  
+List the prices for a list of addresses for a specific chain.
+
 
 ### For the rest
-```
-[GET - `info/chains`]:                         List of supported chains.
-[GET - `{chainID}/graph`]:                     Proxy a request to the subgraph for a specific chain.
-```
+
+
+- GET - `info/chains`  
+List of supported chains.
+
+- GET - `{chainID}/graph`  
+Proxy a request to the subgraph for a specific chain.
+
 

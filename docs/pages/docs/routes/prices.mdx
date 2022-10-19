@@ -108,11 +108,11 @@ The Prices API allows you to query the current price of a token in USD. Prices a
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/price/all'} /> <p>Get All Prices For ChainID</p>
-**Get All Prices For ChainID**: REST API endpoint to get all the Prices in the system for one specific chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains. 
+**Get All Prices For ChainID**: REST API endpoint to get all the Prices in the system for one specific chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains. 
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Prices for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Prices for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
 
 <Dropdown title={'Query arguments'}>
@@ -159,11 +159,11 @@ The Prices API allows you to query the current price of a token in USD. Prices a
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/price/:address'} /> <p>Get Price For Token</p>
-**Get Price For Token**: REST API endpoint to get all the Price of one specific token for one specific chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains. 
+**Get Price For Token**: REST API endpoint to get all the Price of one specific token for one specific chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains. 
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Price for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Price for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 	- **address**: The address of the token you want to get the information for.
 </Dropdown>
 
@@ -201,11 +201,11 @@ The Prices API allows you to query the current price of a token in USD. Prices a
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/price/some/:addresses'} /> <p>Get Prices For Some Tokens</p>
-**Get Price For Token**: REST API endpoint to get all the Price of some specific tokens for one specific chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains. 
+**Get Price For Token**: REST API endpoint to get all the Price of some specific tokens for one specific chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains. 
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Price for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Price for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 	- **addresses**: A list of addresses, separated by a comma, of the tokens you want to get the information for.
 </Dropdown>
 

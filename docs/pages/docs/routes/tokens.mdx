@@ -89,11 +89,11 @@ The Tokens API allows you to access information about the tokens from Yearn's ec
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/tokens/all'} /> <p>Get All Tokens For ChainID</p>
-**Get All Tokens**: REST API endpoint to get all the Tokens in the system for one specific chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains. 
+**Get All Tokens For Chain**: REST API endpoint to get all the Tokens in the system for one specific chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains. 
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Prices for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Prices for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
 <Dropdown title={'Query arguments'}>
 	<QueryArgumentBox

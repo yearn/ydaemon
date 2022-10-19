@@ -31,7 +31,7 @@ func GetGraph(c *gin.Context) {
 	// Proxy the request to the subgraph
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
-		c.String(http.StatusInternalServerError, "Impossible to fetch subgraph")
+		c.String(http.StatusInternalServerError, "impossible to fetch subgraph")
 		return
 	}
 
@@ -39,7 +39,7 @@ func GetGraph(c *gin.Context) {
 	request := graphql.NewRequest(buf.String())
 	var response interface{}
 	if err := client.Run(context.Background(), request, &response); err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{`error`: `bad request`})
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{`error`: `invalid graphQL response`})
 		return
 	}
 	c.JSON(http.StatusOK, response)

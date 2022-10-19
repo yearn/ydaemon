@@ -16,14 +16,14 @@ The Vaults API allows you to query the vaults that are currently active on the Y
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/vaults/all'} /> <p>Get All Vaults</p>
-**Get All Vaults**: REST API endpoint to get all the Vaults in the system for a given chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains.
+**Get All Vaults**: REST API endpoint to get all the Vaults in the system for a given chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains.
 
 When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about all the Vaults from the official Yearn's subgraph.  
 The blacklisted vaults are ignored from the query and a comprehensive list of all the Vaults is returned.
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
 
 <Dropdown title={'Query arguments'}>
@@ -206,14 +206,14 @@ The blacklisted vaults are ignored from the query and a comprehensive list of al
 ---------------------------------------------------------------------------------------------------
 
 ### <GET path={':chainID/vaults/:address'} /> <p>Get One Vault</p>
-**Get One Vault**: REST API endpoint to get one specific vault for a given chainID. You can check the [getSupportedChains](/docs/routes/getSupportedChains) endpoint to get the list of supported chains.
+**Get One Vault**: REST API endpoint to get one specific vault for a given chainID. You can check the [getSupportedChains](/docs/routes/misc#-get-supported-chains) endpoint to get the list of supported chains.
 
 When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about this specific vault from the official Yearn's subgraph.  
 If the address is invalid or the vault does not exist, the `400` error code is returned.  
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 	- **address**: The address of the vault you want to get the information for.
 </Dropdown>
 
@@ -424,7 +424,7 @@ The returned TVL is in USD and does not include the delegated value (they are re
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the TVL for. Must be provided in the URL, and must be one of the [supported](/docs/routes/getSupportedChains) chains.
+	- **chainID**: The chainID of the chain you want to get the TVL for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
 
 <Dropdown title={'Query arguments'}>

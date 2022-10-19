@@ -88,3 +88,21 @@ func GetStrategyReports() string {
 		}
 	}`)
 }
+
+// GetHarvestsForVaults construct the basic graphQL request to get the harvests for a vault with
+// all the minimal elements to format the data
+func GetHarvestsForVaults() string {
+	return (`{
+		vault {
+			id
+			token {
+				id
+				decimals
+			}
+		}
+		transaction {hash}
+		timestamp
+		profit
+		loss
+	}`)
+}

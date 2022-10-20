@@ -100,6 +100,9 @@ func GetHarvestsForVaults() string {
 				decimals
 			}
 		}
+		strategy {
+			id
+		}
 		transaction {
 			hash
 		}

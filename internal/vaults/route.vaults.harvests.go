@@ -25,17 +25,19 @@ func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *
 
 //GetHarvestForVault will, for a given chainID, return a list of all vaults
 func (y Controller) GetHarvestForVault(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
+		c.String(http.StatusBadRequest, `invalid chainID`)
 		return
 	}
-	addressesStr := strings.Split(strings.ToLower(c.Param("addresses")), ",")
+	addressesStr := strings.Split(strings.ToLower(c.Param(`addresses`)), `,`)
+	orderBy := helpers.SafeString(c.Query(`orderBy`), `timestamp`)
+	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `desc`)
 
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
-		logs.Error("No graph endpoint for chainID", chainID)
-		c.String(http.StatusInternalServerError, "impossible to fetch subgraph")
+		logs.Error(`No graph endpoint for chainID`, chainID)
+		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
 		return
 	}
 
@@ -44,7 +46,7 @@ func (y Controller) GetHarvestForVault(c *gin.Context) {
 	var response models.TGraphQLHarvestRequestForOneVault
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)
-		c.String(http.StatusInternalServerError, "invalid graphQL response")
+		c.String(http.StatusInternalServerError, `invalid graphQL response`)
 		return
 	}
 
@@ -58,13 +60,14 @@ func (y Controller) GetHarvestForVault(c *gin.Context) {
 			continue
 		}
 		harvests = append(harvests, TVaultHarvest{
-			VaultAddress: harvest.Vault.Id,
-			TxHash:       harvest.Transaction.Hash,
-			Timestamp:    harvest.Timestamp,
-			Profit:       harvest.Profit,
-			ProfitValue:  buildTVL(bigNumber.NewInt().SetString(harvest.Profit), decimals, tokenPriceBigFloat),
-			Loss:         harvest.Loss,
-			LossValue:    buildTVL(bigNumber.NewInt().SetString(harvest.Loss), decimals, tokenPriceBigFloat),
+			VaultAddress:    harvest.Vault.Id,
+			StrategyAddress: harvest.Strategy.Id,
+			TxHash:          harvest.Transaction.Hash,
+			Timestamp:       harvest.Timestamp,
+			Profit:          harvest.Profit,
+			ProfitValue:     buildTVL(bigNumber.NewInt().SetString(harvest.Profit), decimals, tokenPriceBigFloat),
+			Loss:            harvest.Loss,
+			LossValue:       buildTVL(bigNumber.NewInt().SetString(harvest.Loss), decimals, tokenPriceBigFloat),
 		})
 	}
 
@@ -73,7 +76,7 @@ func (y Controller) GetHarvestForVault(c *gin.Context) {
 	for i, d := range harvests {
 		sortedData[i] = d
 	}
-	sort.SortBy(sortedData, `Timestamp`, `desc`)
+	sort.SortBy(sortedData, orderBy, orderDirection)
 
 	c.JSON(http.StatusOK, sortedData)
 }

@@ -132,6 +132,9 @@ type TGraphQLHarvestRequestForOneVault struct {
 				Decimals int    `json:"decimals"`
 			}
 		}
+		Strategy struct {
+			Id string `json:"id"`
+		}
 		Timestamp string `json:"timestamp"`
 		Profit    string `json:"profit"`
 		Loss      string `json:"loss"`

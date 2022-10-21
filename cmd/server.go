@@ -58,6 +58,9 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/vault/:address`, c.GetVault)
 
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
+
+		router.GET(`:chainID/vaults/harvest/:addresses`, c.GetHarvestForVault)
+
 	}
 
 	// Strategies section

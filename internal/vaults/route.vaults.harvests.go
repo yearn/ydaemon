@@ -23,8 +23,8 @@ func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *
     }`)
 }
 
-//GetHarvestForVault will, for a given chainID, return a list of all vaults
-func (y Controller) GetHarvestForVault(c *gin.Context) {
+//GetHarvestsForVault will, for a given chainID, return a list of all vaults
+func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
 		c.String(http.StatusBadRequest, `invalid chainID`)

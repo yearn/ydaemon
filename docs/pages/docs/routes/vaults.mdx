@@ -5,12 +5,13 @@ import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 # Vaults API
 The Vaults API allows you to query the vaults that are currently active on the Yearn's ecosystem. The API is available at https://ydaemon.yearn.finance/.
 ```
-[GET - `vaults/tvl`]:                          Get the total value locked in the Yearn ecosystem across all vaults for all chains.
-[GET - `{chainID}/vaults/tvl`]:                Get the total value locked in the Yearn ecosystem across all vaults for a specific chain.
-[GET - `{chainID}/vaults/all`]:                List the vaults for a specific chain.
-[GET - `{chainID}/vaults/{address}`]:          Get a specific vault for a specific chain.
-[GET - `{chainID}/vault/{address}`]:           Get a specific vault for a specific chain. Alias for `{chainID}/vaults/{address}`.
-[GET - `info/vaults/blacklisted`]:             Get the list of blacklisted vaults (aka ignored vaults).
+[GET - `vaults/tvl`]:                              Get the total value locked in the Yearn ecosystem across all vaults for all chains.
+[GET - `{chainID}/vaults/tvl`]:                    Get the total value locked in the Yearn ecosystem across all vaults for a specific chain.
+[GET - `{chainID}/vaults/all`]:                    List the vaults for a specific chain.
+[GET - `{chainID}/vaults/{address}`]:              Get a specific vault for a specific chain.
+[GET - `{chainID}/vault/{address}`]:               Get a specific vault for a specific chain. Alias for `{chainID}/vaults/{address}`.
+[GET - `info/vaults/blacklisted`]:                 List the blacklisted vaults (aka ignored vaults).
+[GET - `{chainID}/vaults/harvests/{addresses}`]:   List the harvests for a group of vault addresses.
 ```
 
 ---------------------------------------------------------------------------------------------------
@@ -25,7 +26,6 @@ The blacklisted vaults are ignored from the query and a comprehensive list of al
 <Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
-
 <Dropdown title={'Query arguments'}>
 	<QueryArgumentBox
 		title={'hideAlways'}
@@ -216,7 +216,6 @@ If the address is invalid or the vault does not exist, the `400` error code is r
 	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 	- **address**: The address of the vault you want to get the information for.
 </Dropdown>
-
 <Dropdown title={'Query arguments'}>
 	<QueryArgumentBox
 		title={'strategiesCondition'}
@@ -386,7 +385,6 @@ The returned TVL is in USD and does not include the delegated value (they are re
 <Dropdown title={'Params'}>
 	N/A
 </Dropdown>
-
 <Dropdown title={'Query arguments'}>
 	N/A
 </Dropdown>
@@ -426,7 +424,6 @@ The returned TVL is in USD and does not include the delegated value (they are re
 <Dropdown title={'Params'}>
 	- **chainID**: The chainID of the chain you want to get the TVL for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 </Dropdown>
-
 <Dropdown title={'Query arguments'}>
 	N/A
 </Dropdown>
@@ -455,7 +452,6 @@ Blacklisted vaults are vaults that are ignored by the API.
 <Dropdown title={'Params'}>
 	N/A
 </Dropdown>
-
 <Dropdown title={'Query arguments'}>
 	<QueryArgumentBox
 		title={'chainID'}
@@ -500,4 +496,77 @@ Blacklisted vaults are vaults that are ignored by the API.
 </Dropdown>
 <Dropdown title={'Invalid request'}>
 	N/A
+</Dropdown>
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/vaults/harvest/:addresses'} /> <p>Get All Vaults</p>
+**Get All Vaults**: REST API endpoint to the harvests for a list of selected vaults for a specific chainID.
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **addresses**: A list of addresses, separated by a comma, of the vaults you want to get the information for.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'orderBy'}
+		description={'The vaults are ordered by the `timestamp` property by default, but you can change this by setting this argument to another property of the harvests. Any property of the harvests can be used, separated by a `.` if it\'s a nested property.'}>
+		```sh
+		?orderBy=timestamp # default
+		```
+	</QueryArgumentBox>
+	<QueryArgumentBox
+		title={'orderDirection'}
+		description={'The harvests are ordered in descending order by default, but you can change this by setting this argument to `asc` to get the vaults in ascending order.'}>
+		```sh
+		?orderDirection=desc # default
+		```
+	</QueryArgumentBox>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TVaultHarvest struct {
+		VaultAddress    string  `json:"vaultAddress,omitempty"`
+		StrategyAddress string  `json:"strategyAddress"`
+		TxHash          string  `json:"txHash"`
+		Timestamp       string  `json:"timestamp"`
+		Profit          string  `json:"profit"`
+		ProfitValue     float64 `json:"profitValue"`
+		Loss            string  `json:"loss"`
+		LossValue       float64 `json:"lossValue"`
+	}[]
+	```
+	```json
+	// https://ydaemon.yearn.finance/1/vaults/harvest/0xc97232527B62eFb0D8ed38CF3EA103A6CcA4037e
+	[
+		{
+			"vaultAddress": "0xc97232527b62efb0d8ed38cf3ea103a6cca4037e",
+			"strategyAddress": "0xbec29b45033fc6e98abf3dd7ad20b8255978e1f1",
+			"txHash": "0xc3907925e4258489c584f304c787e4d90e6ebed585b474e9886c32ac4e7be9d0",
+			"timestamp": "1666189115",
+			"profit": "397421930127572576655",
+			"profitValue": 342.1357705836657,
+			"loss": "0",
+			"lossValue": 0
+		},
+		{
+			"vaultAddress": "0xc97232527b62efb0d8ed38cf3ea103a6cca4037e",
+			"strategyAddress": "0xf81ad33a29c7a85cd9fbe4f3e96dfde50c7565ff",
+			"txHash": "0x7bdde6580cc769a5ce6830e9456f2c9241ce13dcf2a1f881eab8df394da66e93",
+			"timestamp": "1666182035",
+			"profit": "520978848627387975930",
+			"profitValue": 448.5044390371348,
+			"loss": "0",
+			"lossValue": 0
+		}
+	]
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `500 - impossible to fetch subgraph`: yDaemon was unable to connect to the subgraph.
+	- `500 - invalid graphQL response`: yDaemon was unable to parse the response from the subgraph.
 </Dropdown>

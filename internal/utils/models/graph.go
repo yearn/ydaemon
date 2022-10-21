@@ -118,3 +118,25 @@ type TGraphQueryResponseForWatchVaults struct {
 	Meta   TMetaFromGraph `json:"_meta,omitempty"`
 	Vaults []TVaultFromGraph
 }
+
+//TGraphQLHarvestRequestForOneVault is the request for the graphql query when we ask for the harvests for one specific vault
+type TGraphQLHarvestRequestForOneVault struct {
+	Harvests []struct {
+		Transaction struct {
+			Hash string `json:"hash"`
+		}
+		Vault struct {
+			Id    string `json:"id"`
+			Token struct {
+				Id       string `json:"id"`
+				Decimals int    `json:"decimals"`
+			}
+		}
+		Strategy struct {
+			Id string `json:"id"`
+		}
+		Timestamp string `json:"timestamp"`
+		Profit    string `json:"profit"`
+		Loss      string `json:"loss"`
+	} `json:"harvests"`
+}

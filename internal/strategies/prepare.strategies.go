@@ -45,10 +45,11 @@ func BuildStrategies(
 		debtLimit := multicallData.DebtLimit.Uint64()
 
 		//Non exported fields, used for internal purposes
+		withdrawalQueuePosition := bigNumber.NewInt().Safe(multicallData.WithdrawalQueuePosition, bigNumber.NewInt(-1)).Int64()
 		currentStrategy.TotalDebt = multicallData.TotalDebt
 		currentStrategy.DelegatedAssets = multicallData.DelegatedAssets
 		currentStrategy.IsActive = multicallData.IsActive
-		currentStrategy.InQueue = strategy.InQueue
+		currentStrategy.InQueue = withdrawalQueuePosition > -1
 		currentStrategy.DelegatedValue = strconv.FormatFloat(
 			buildDelegated(
 				currentStrategy.DelegatedAssets,
@@ -92,7 +93,7 @@ func BuildStrategies(
 			currentStrategy.Details.LastReport = (multicallData.LastReport).Uint64()
 
 			currentStrategy.Details.APR = 0.0
-			currentStrategy.Details.WithdrawalQueuePosition = bigNumber.NewInt().Safe(multicallData.WithdrawalQueuePosition, bigNumber.NewInt(-1)).Int64()
+			currentStrategy.Details.WithdrawalQueuePosition = withdrawalQueuePosition
 
 			if len(strategy.Reports) > 0 {
 				var totalAPR float64

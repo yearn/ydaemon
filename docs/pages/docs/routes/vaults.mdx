@@ -500,12 +500,12 @@ Blacklisted vaults are vaults that are ignored by the API.
 
 ---------------------------------------------------------------------------------------------------
 
-### <GET path={':chainID/vaults/harvest/:addresses'} /> <p>Get All Vaults</p>
-**Get All Vaults**: REST API endpoint to the harvests for a list of selected vaults for a specific chainID.
+### <GET path={':chainID/vaults/harvests/:addresses'} /> <p>Get All Harvests</p>
+**Get All Harvests**: REST API endpoint to the harvests for a list of selected vaults for a specific chainID.
 
 #### Request
 <Dropdown title={'Params'}>
-	- **chainID**: The chainID of the chain you want to get the Vaults for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **chainID**: The chainID of the chain you want to get the Harvests for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
 	- **addresses**: A list of addresses, separated by a comma, of the vaults you want to get the information for.
 </Dropdown>
 <Dropdown title={'Query arguments'}>
@@ -540,7 +540,7 @@ Blacklisted vaults are vaults that are ignored by the API.
 	}[]
 	```
 	```json
-	// https://ydaemon.yearn.finance/1/vaults/harvest/0xc97232527B62eFb0D8ed38CF3EA103A6CcA4037e
+	// https://ydaemon.yearn.finance/1/vaults/harvests/0xc97232527B62eFb0D8ed38CF3EA103A6CcA4037e
 	[
 		{
 			"vaultAddress": "0xc97232527b62efb0d8ed38cf3ea103a6cca4037e",

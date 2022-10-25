@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Curve DAO Fee and Bribes Reinvest",
+  "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient.",
+  "addresses": ["0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": {
+    "Curve Finance": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "fr": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "es": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "de": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "pt": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "el": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "tr": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "vi": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "zh": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "hi": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "ja": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "id": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    },
+    "ru": {
+      "name": "Curve DAO Fee and Bribes Reinvest",
+      "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient."
+    }
+  }
+}

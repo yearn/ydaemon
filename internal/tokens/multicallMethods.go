@@ -93,25 +93,6 @@ func getPoolFromLpToken(name string, contractAddress common.Address, tokenAddres
 		Name:     name,
 	}
 }
-func getCurvePoolCoins(name string, contractAddress common.Address, poolAddress common.Address) ethereum.Call {
-	parsedData, err := CurvePoolRegistryABI.Pack("get_coins", poolAddress)
-	if err != nil {
-		return ethereum.Call{
-			Target:   contractAddress,
-			Abi:      CurvePoolRegistryABI,
-			Method:   `get_coins`,
-			CallData: nil,
-			Name:     name,
-		}
-	}
-	return ethereum.Call{
-		Target:   contractAddress,
-		Abi:      CurvePoolRegistryABI,
-		Method:   `get_coins`,
-		CallData: parsedData,
-		Name:     name,
-	}
-}
 func getCompoundUnderlying(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := CTokenABI.Pack("underlying")
 	if err != nil {

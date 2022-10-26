@@ -81,17 +81,13 @@ func LoadDaemons(chainID uint64) {
 	var wg sync.WaitGroup
 	wg.Add(2)
 	go tokens.LoadTokenList(chainID, &wg)
-	go strategies.LoadStrategyList(chainID, &wg)
+	go strategies.LoadAggregatedStrategies(chainID, &wg)
 	wg.Wait()
 
 	wg.Add(1)
-	go strategies.LoadWithdrawalQueueMulticallData(chainID, &wg)
-	wg.Wait()
-
-	wg.Add(3)
-	go strategies.LoadStrategyMulticallData(chainID, &wg)
-	go vaults.LoadVaultMulticallData(chainID, &wg)
-	go vaults.LoadAPIV1Vaults(chainID, &wg)
+	// go strategies.LoadStrategyMulticallData(chainID, &wg)
+	// go vaults.LoadVaultMulticallData(chainID, &wg)
+	go vaults.LoadAggregatedVaults(chainID, &wg)
 	wg.Wait()
 
 	wg.Add(1)

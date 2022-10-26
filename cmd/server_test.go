@@ -7,13 +7,9 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/yearn/ydaemon/common/store"
 )
 
 func TestEnvironment(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go NewRouter().Run()
 	time.Sleep(3 * time.Second)

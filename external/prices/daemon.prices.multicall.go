@@ -197,7 +197,8 @@ func setMissingYearnVaultPrices(chainID uint64) {
 		}
 
 		if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
-			pricePerShare := bigNumber.NewInt().Clone(Store.VaultPricePerShare[chainID][key])
+			// pricePerShare := bigNumber.NewInt().Clone(&vaults.Store.AggregatedVault[chainID][key].PricePerShare)
+			pricePerShare := bigNumber.NewInt()
 
 			//PricePerShare is in 10^decimals, we need to convert it to 10^6
 			decimals := allVaultsData[key].Decimals
@@ -270,6 +271,7 @@ func FetchLens(chainID uint64) {
 
 		price := bigNumber.SetInt(value[0].(*big.Int))
 		Store.TokenPrices[chainID][common.HexToAddress(address)] = price
+		go store.SaveInDB(chainID, store.TABLES.PRICES, address, price)
 
 		//Store the price in the token struct
 		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
@@ -288,17 +290,13 @@ func FetchLens(chainID uint64) {
 	// 		continue
 	// 	}
 	// }
-
-	store.SaveInDBForChainID(store.KEYS.TokenPrices, chainID, Store.TokenPrices[chainID])
 }
 
 // LoadLens will reload the lens data store from the last state of the local Badger Database
 func LoadLens(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*bigNumber.Int)
-	if err := store.LoadFromDBForChainID(store.KEYS.TokenPrices, chainID, &temp); err != nil {
-		return
-	}
+	store.Interate(chainID, store.TABLES.PRICES, &temp)
 	if temp != nil && (len(temp) > 0) {
 		Store.TokenPrices[chainID] = temp
 		logs.Success("Data loaded for the lens data store for chainID: " + strconv.FormatUint(chainID, 10))

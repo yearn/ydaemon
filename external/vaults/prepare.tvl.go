@@ -30,11 +30,11 @@ func prepareTVL(
 		humanizedPrice,
 	)
 
-	strategiesFromMulticall := strategies.Store.StrategyMultiCallData[chainID]
+	strategiesFromMulticall := strategies.Store.AggregatedStrategies[chainID]
 	for _, strat := range vaultFromGraph.Strategies {
 		multicallData, ok := strategiesFromMulticall[strat.Address]
 		if !ok {
-			multicallData = models.TStrategyMultiCallData{}
+			multicallData = &strategies.TAggregatedStrategy{}
 		}
 
 		delegatedAssets := multicallData.DelegatedAssets

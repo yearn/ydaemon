@@ -17,7 +17,6 @@ import (
 // extract the list of strategies used by the Yearn system in order to be able to get
 // complementary information about the strategies, directly from the contracts
 func FetchStrategiesList(chainID uint64) {
-	strategyList := make(map[common.Address]models.TStrategyList)
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
 		logs.Error("No graph endpoint for chainID", chainID)
@@ -42,29 +41,35 @@ func FetchStrategiesList(chainID uint64) {
 		return
 	}
 
+	if Store.AggregatedStrategies[chainID] == nil {
+		Store.AggregatedStrategies[chainID] = make(map[common.Address]*TAggregatedStrategy)
+	}
+
 	for _, vault := range response.Vaults {
 		for _, strat := range vault.Strategies {
-			strategyList[strat.Address] = models.TStrategyList{
+			Store.AggregatedStrategies[chainID][strat.Address] = &TAggregatedStrategy{
 				Strategy:     strat.Address,
 				Vault:        vault.Id,
 				VaultVersion: vault.ApiVersion,
 				Name:         strat.Name,
 			}
+			go store.SaveInDB(
+				chainID,
+				store.TABLES.STRATEGIES,
+				strat.Address.String(),
+				Store.AggregatedStrategies[chainID][strat.Address],
+			)
 		}
 	}
-	Store.StrategyList[chainID] = strategyList
-	store.SaveInDBForChainID(store.KEYS.StrategyList, chainID, Store.StrategyList[chainID])
 }
 
-// LoadStrategyList will reload the strategyList data store from the last state of the local Badger Database
-func LoadStrategyList(chainID uint64, wg *sync.WaitGroup) {
+// LoadAggregatedStrategies will reload the all the aggregatedStrategies from the DB for a given chainID
+func LoadAggregatedStrategies(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[common.Address]models.TStrategyList)
-	if err := store.LoadFromDBForChainID(store.KEYS.StrategyList, chainID, &temp); err != nil {
-		return
-	}
+	temp := make(map[common.Address]*TAggregatedStrategy)
+	store.Interate(chainID, store.TABLES.STRATEGIES, &temp)
 	if temp != nil && (len(temp) > 0) {
-		Store.StrategyList[chainID] = temp
-		logs.Success("Data loaded for the strategyList store for chainID: " + strconv.FormatUint(chainID, 10))
+		Store.AggregatedStrategies[chainID] = temp
+		logs.Success("Data loaded for the AggregatedStrategies store for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

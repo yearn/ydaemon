@@ -3,9 +3,7 @@ package strategies
 import (
 	"math"
 	"math/big"
-	"strconv"
 	"strings"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -139,7 +137,7 @@ func FetchStrategiesMulticallData(chainID uint64) {
 
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
-	for _, strat := range Store.StrategyList[chainID] {
+	for _, strat := range Store.AggregatedStrategies[chainID] {
 		calls = append(calls, getCreditAvailable(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getDebtOutstanding(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
 		calls = append(calls, getExpectedReturn(strat.Strategy.String(), strat.Vault, strat.Strategy, strat.VaultVersion))
@@ -158,10 +156,10 @@ func FetchStrategiesMulticallData(chainID uint64) {
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
-	if Store.StrategyMultiCallData[chainID] == nil {
-		Store.StrategyMultiCallData[chainID] = make(map[common.Address]models.TStrategyMultiCallData)
+	if Store.AggregatedStrategies[chainID] == nil {
+		Store.AggregatedStrategies[chainID] = make(map[common.Address]*TAggregatedStrategy)
 	}
-	for _, strat := range Store.StrategyList[chainID] {
+	for _, strat := range Store.AggregatedStrategies[chainID] {
 		creditAvailable0 := response[strat.Strategy.String()+`creditAvailable0`]
 		debtOutstanding0 := response[strat.Strategy.String()+`debtOutstanding0`]
 		expectedReturn := response[strat.Strategy.String()+`expectedReturn0`]
@@ -235,20 +233,15 @@ func FetchStrategiesMulticallData(chainID uint64) {
 			data.TotalGain = bigNumber.SetInt(strategies[7].(*big.Int))
 			data.TotalLoss = bigNumber.SetInt(strategies[8].(*big.Int))
 		}
-		Store.StrategyMultiCallData[chainID][common.HexToAddress(strat.Strategy.String())] = data
-	}
-	store.SaveInDBForChainID(store.KEYS.StrategiesMultiCallData, chainID, Store.StrategyMultiCallData[chainID])
-}
-
-// LoadStrategyMulticallData will reload the multicall data store from the last state of the local Badger Database
-func LoadStrategyMulticallData(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]models.TStrategyMultiCallData)
-	if err := store.LoadFromDBForChainID(store.KEYS.StrategiesMultiCallData, chainID, &temp); err != nil {
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		Store.StrategyMultiCallData[chainID] = temp
-		logs.Success("Data loaded for the strategy multicall data store for chainID: " + strconv.FormatUint(chainID, 10))
+		if Store.AggregatedStrategies[chainID][strat.Strategy] == nil {
+			Store.AggregatedStrategies[chainID][strat.Strategy] = &TAggregatedStrategy{}
+		}
+		Store.AggregatedStrategies[chainID][strat.Strategy].SetMulticallData(data)
+		go store.SaveInDB(
+			chainID,
+			store.TABLES.STRATEGIES,
+			strat.Strategy.String(),
+			Store.AggregatedStrategies[chainID][strat.Strategy],
+		)
 	}
 }

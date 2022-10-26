@@ -44,10 +44,8 @@ func _assertMap() {
 				DBMutex[chainID][TABLES.TOKENS] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.TOKENS_LEGACY] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.VAULTS] = &sync.Mutex{}
-
 			}
 		}
-
 		_isLoaded = true
 	}
 }

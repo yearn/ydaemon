@@ -4,6 +4,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
@@ -30,6 +32,10 @@ func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performA
 
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64) {
+	if !helpers.ContainsUint64(env.SUPPORTED_CHAIN_IDS, chainID) {
+		return
+	}
+
 	var wg sync.WaitGroup
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
@@ -78,6 +84,10 @@ func SummonDaemons(chainID uint64) {
 
 // LoadDaemons is a function that loads the previous store state for a given chainID
 func LoadDaemons(chainID uint64) {
+	if !helpers.ContainsUint64(env.SUPPORTED_CHAIN_IDS, chainID) {
+		return
+	}
+
 	var wg sync.WaitGroup
 	wg.Add(2)
 	go tokens.LoadTokenList(chainID, &wg)

@@ -57,7 +57,7 @@ func TestEnvironment(t *testing.T) {
 	client = &http.Client{}
 	resp, err = client.Do(req)
 	assert.Nil(t, err)
-	assert.Equal(t, http.StatusInternalServerError, resp.StatusCode)
+	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 
 	req, err = http.NewRequest("POST", `http://localhost:8080/hello/graph`, bytes.NewBuffer(jsonInvalidStr))
 	req.Header.Set("Content-Type", "application/json")

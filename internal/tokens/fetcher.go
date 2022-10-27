@@ -15,7 +15,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
-// This should be in a map of chainID -> []TRegistry, and probably in a separate file
+// CURVE_REGISTRY_ADDRESS should be in a map of chainID -> []TRegistry, and probably in a separate file
 var CURVE_REGISTRY_ADDRESS = common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`)
 
 /**************************************************************************************************

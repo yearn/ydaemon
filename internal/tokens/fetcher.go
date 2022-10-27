@@ -97,9 +97,9 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		}
 
 		/******************************************************************************************
-		** Checking if the token is a Curve LP token. We can determined that if we got a valid
-		** response from the `get_pool_from_lp_token` RPC call.
-		** If so, we set the token type to `Curve LP`, we fetch the Coins from the pool and we
+		** Checking if the token is a Yearn Vault. We can determined that if we got a valid
+		** response from the `token` RPC call.
+		** If so, we set the token type to `Yeearn Vault`, we fetch the Coins from the pool and we
 		** add the coins to the newToken UnderlyingTokensAddresses.
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.

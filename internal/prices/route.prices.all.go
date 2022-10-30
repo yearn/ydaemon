@@ -49,14 +49,19 @@ func (y Controller) GetPrices(c *gin.Context) {
 
 	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
 	if humanized {
-		allPricesHumanized := make(map[common.Address]float64)
+		allPricesHumanized := make(map[string]float64)
 		prices := Store.TokenPrices[chainID]
 		for key, price := range prices {
 			humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-			allPricesHumanized[key] = humanizedPrice
+			allPricesHumanized[key.String()] = humanizedPrice
 		}
 		c.JSON(http.StatusOK, allPricesHumanized)
 	} else {
-		c.JSON(http.StatusOK, Store.TokenPrices[chainID])
+		allPrices := make(map[string]*bigNumber.Int)
+		prices := Store.TokenPrices[chainID]
+		for key, price := range prices {
+			allPrices[key.String()] = price
+		}
+		c.JSON(http.StatusOK, allPrices)
 	}
 }

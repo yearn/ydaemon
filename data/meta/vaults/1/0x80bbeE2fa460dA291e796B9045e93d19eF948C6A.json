@@ -1,5 +1,6 @@
 {
   "$schema": "vault",
   "comment": "Curve PAX pool, no deposits and not good yield so hiding it.",
-  "hideAlways": true
+  "hideAlways": true,
+  "type": "Curve"
 }

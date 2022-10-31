@@ -1,5 +1,6 @@
 {
   "$schema": "vault",
   "comment": "USDK Curve vault. No funds, tiny pool, poor yield, so hiding it from UI for now.",
-  "hideAlways": true
+  "hideAlways": true,
+  "type": "Curve"
 }

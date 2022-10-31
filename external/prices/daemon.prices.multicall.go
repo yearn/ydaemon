@@ -296,7 +296,7 @@ func FetchLens(chainID uint64) {
 func LoadLens(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*bigNumber.Int)
-	store.Interate(chainID, store.TABLES.PRICES, &temp)
+	store.Iterate(chainID, store.TABLES.PRICES, &temp)
 	if temp != nil && (len(temp) > 0) {
 		Store.TokenPrices[chainID] = temp
 		logs.Success("Data loaded for the lens data store for chainID: " + strconv.FormatUint(chainID, 10))

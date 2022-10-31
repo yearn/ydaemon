@@ -123,10 +123,10 @@ func LoadFromDB(chainID uint64, dbKey string, dataKey string, dest interface{}) 
 }
 
 /**************************************************************************************************
-** Interact tries to load the data from the DB for a specific table Key to the provided dest
+** Iterate tries to load the data from the DB for a specific table Key to the provided dest
 ** pointer.
 **************************************************************************************************/
-func Interate(chainID uint64, dbKey string, dest interface{}) error {
+func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 	currentStore := OpenDB(chainID, dbKey) //Safely open the DB if it's not already open
 
 	return currentStore.View(func(txn *badger.Txn) error {

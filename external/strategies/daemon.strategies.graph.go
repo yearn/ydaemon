@@ -67,7 +67,7 @@ func FetchStrategiesList(chainID uint64) {
 func LoadAggregatedStrategies(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*TAggregatedStrategy)
-	store.Interate(chainID, store.TABLES.STRATEGIES, &temp)
+	store.Iterate(chainID, store.TABLES.STRATEGIES, &temp)
 	if temp != nil && (len(temp) > 0) {
 		Store.AggregatedStrategies[chainID] = temp
 		logs.Success("Data loaded for the AggregatedStrategies store for chainID: " + strconv.FormatUint(chainID, 10))

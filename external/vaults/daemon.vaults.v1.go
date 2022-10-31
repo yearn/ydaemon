@@ -64,7 +64,7 @@ func FetchVaultsFromV1(chainID uint64) {
 func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[common.Address]*TAggregatedVault)
-	store.Interate(chainID, store.TABLES.VAULTS, &temp)
+	store.Iterate(chainID, store.TABLES.VAULTS, &temp)
 
 	if temp != nil && (len(temp) > 0) {
 		Store.AggregatedVault[chainID] = temp

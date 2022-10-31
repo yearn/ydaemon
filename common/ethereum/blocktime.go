@@ -19,7 +19,7 @@ var blockTimeSyncMap = make(map[uint64]*sync.Map)
 func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	temp := make(map[uint64]uint64)
-	store.Interate(chainID, store.TABLES.BLOCK_TIME, &temp)
+	store.Iterate(chainID, store.TABLES.BLOCK_TIME, &temp)
 	if temp != nil && (len(temp) > 0) {
 		blockTimeSyncMap[chainID] = &sync.Map{}
 		for k, v := range temp {

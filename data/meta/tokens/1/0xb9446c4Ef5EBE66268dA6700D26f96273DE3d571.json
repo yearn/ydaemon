@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains agEUR, EURT, and EURS. agEUR is a synthetic Euro issued by [Angle Protocol](https://angle.money), while EURS and EURT are both centralized, hard-pegged Euro tokens issued by Stasis and Tether, respectively.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/factory/66/",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains agEUR, EURT, and EURS. agEUR is a synthetic Euro issued by [Angle Protocol](https://angle.money), while EURS and EURT are both centralized, hard-pegged Euro tokens issued by Stasis and Tether, respectively."

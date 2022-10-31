@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and DOLA, a synthetic USD stablecoin that can be minted by using other assets on Inverse Finance (https://www.inverse.finance) as collateral.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/factory/27/",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and DOLA, a synthetic USD stablecoin that can be minted by using other assets on Inverse Finance (https://www.inverse.finance) as collateral."

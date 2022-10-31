@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform.",
   "categories": ["Curve LP Tokens"],
   "website": "https://www.curve.fi/steth/",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."

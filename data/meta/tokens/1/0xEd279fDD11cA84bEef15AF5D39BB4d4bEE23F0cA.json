@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This factory metapool contains 3Crv (DAI, USDC, and USDT) and Liquity USD, a synthetic USD stablecoin collateralized with Ether.",
   "categories": ["Curve LP Tokens"],
   "website": "https://www.curve.fi/lusd/",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This factory metapool contains 3Crv (DAI, USDC, and USDT) and Liquity USD, a synthetic USD stablecoin collateralized with Ether."

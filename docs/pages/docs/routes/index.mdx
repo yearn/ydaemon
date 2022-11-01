@@ -1,17 +1,21 @@
 ---
-title: 'Introduction'
+title: 'API Introduction'
 ---
 
 import Callout from 'nextra-theme-docs/callout'
 
 
-# Introduction
-You can access the API at the following URL: `https://ydaemon.yearn.finance`. Some routes are exposed to get the underlying data from the Yearn ecosystem. The API is currently in beta, and the endpoints are subject to change. If you have any questions or suggestions, please join the Yearn Discord or open an issue on the [GitHub repository](https://github.com/yearn/ydaemon).
+# API Introduction
+You can access the live API at the following URL:
+
+-  **https://ydaemon.yearn.finance/**
+
+Some routes are exposed to get the underlying data from the Yearn ecosystem. The API is currently in beta, and the endpoints are subject to change. If you have any questions or suggestions, please join the Yearn Discord or open an issue on the [GitHub repository](https://github.com/yearn/ydaemon).
 
 ## List of endpoints
-The endpoints are grouped by category, and are listed below.
 
-### For the Vaults
+### Vaults
+List vaults that are currently active on the Yearn's ecosystem.
 ```
 [GET  -  `vaults/tvl`]:                          Get the total value locked in the Yearn ecosystem across all vaults for all chains.
 [GET  -  `{chainID}/vaults/tvl`]:                Get the total value locked in the Yearn ecosystem across all vaults for a specific chain.
@@ -21,12 +25,15 @@ The endpoints are grouped by category, and are listed below.
 [GET  -  `info/vaults/blacklisted`]:             Get the list of blacklisted vaults (aka ignored vaults).
 ```
 
-### For the Strategies
+### Strategies
+List strategies that are currently active on the Yearn's ecosystem.
 ```
 [GET  -  `{chainID}/reports/{address}`]:         Get the report for a specific strategy for a specific chain.
 ```
 
-### For the Meta
+### Meta
+Metadata files are difficult to put on-chain, so they are stored in `meta-files` which are updated by the yTeam. This APIs provides a way to access this information.  
+
 ```
 [GET  -  `api/{chainID}/strategies/all`]:        List the meta for the strategies for a specific chain, as it was on the legacy Meta Repository/API.
 [GET  -  `api/{chainID}/strategies/{address}`]:  Get a specific meta for a strategy for a specific chain, as it was on the legacy Meta Repository/API.
@@ -53,7 +60,32 @@ The endpoints are grouped by category, and are listed below.
 [GET  -  `{chainID}/meta/protocol/{name}`]:      Get a specific meta for a protocol for a specific chain, using a new standard structure. Alias for `{chainID}/meta/protocols/{address}`.
 ```
 
-### For the Parners
+### Tokens
+Information about the tokens from Yearn's ecosystem.
+```
+[GET  -  `tokens/all`]:                          List all the tokens for all chains.
+[GET  -  `{chainID}/tokens/all`]:                List all the tokens for a specific chain.
+[GET  -  `api/tokens/list`]:                     Access the Yearn's Token List for mainnet.
+```
+
+### Prices
+List prices of tokens in USD.
+```
+[GET  -  `prices/all`]:                          List all the prices for all chains.
+[GET  -  `{chainID}/prices/all`]:                List all the prices for a specific chain.
+[GET  -  `{chainID}/prices/{address}`]:          Get a specific price for a specific chain.
+[GET  -  `{chainID}/prices/some/{addresses}`]:   List the prices for a list of addresses for a specific chain.
+```
+
+### Misc
+Uncategorized API endpoints.
+```
+[GET  -  `info/chains`]:                         List of supported chains.
+[POST -  `{chainID}/graph`]:                     Proxy a request to the subgraph for a specific chain.
+```
+
+### Parners
+List information about Yearn Partners.
 <Callout type="warning" emoji="⚠️">
 	This is a work in progress, and the endpoints may be deleted.
 </Callout>
@@ -63,25 +95,3 @@ The endpoints are grouped by category, and are listed below.
 [GET  -  `{chainID}/partners/all`]:              List all the parners for a specific chain.
 [GET  -  `{chainID}/partners/{addressOrName}`]:  Get a specific partner for a specific chain based on the address or name.
 ```
-
-### For the Tokens
-```
-[GET  -  `tokens/all`]:                          List all the tokens for all chains.
-[GET  -  `{chainID}/tokens/all`]:                List all the tokens for a specific chain.
-[GET  -  `api/tokens/list`]:                     Access the Yearn's Token List for mainnet.
-```
-
-### For the Prices
-```
-[GET  -  `prices/all`]:                          List all the prices for all chains.
-[GET  -  `{chainID}/prices/all`]:                List all the prices for a specific chain.
-[GET  -  `{chainID}/prices/{address}`]:          Get a specific price for a specific chain.
-[GET  -  `{chainID}/prices/some/{addresses}`]:   List the prices for a list of addresses for a specific chain.
-```
-
-### For the rest
-```
-[GET  -  `info/chains`]:                         List of supported chains.
-[POST -  `{chainID}/graph`]:                     Proxy a request to the subgraph for a specific chain.
-```
-

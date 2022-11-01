@@ -5,9 +5,16 @@ title: 'Introduction'
 import Callout from 'nextra-theme-docs/callout'
 
 # Introduction
+<br/>
+<img src="https://i.imgur.com/HULLGIV.png" alt="yDaemon: one API to unify all yearn data" width="100%"></img>
+
 > Demons are often described as troublesome and mischievous more than seriously threatening or dangerous, and as lesser beings rather than more important supernatural beings.
 
-The yDaemon API is a REST API that provides access to the Yearn data sources. It should provide all the data that the Yearn team needs to build the Yearn ecosystem, based on a system of Daemons, little subprocess (_Goroutines_) that are responsible for fetching, handling, and storing data from the various sources to make them available to the rest of the system.
+The yDaemon API is a REST API that provides access to the Yearn data sources. It should provide all the data that the Yearn team needs to build the Yearn ecosystem, based on a system of Daemons, little subprocesses (_Goroutines_) that are responsible for fetching, handling, and storing data from the various sources to make them available to the rest of the system.
+
+You can access the live API at the following URL:
+
+-  **https://ydaemon.yearn.finance/**
 
 <Callout type="warning" emoji="⚠️">
 	The lib is far from complete and is being actively developed. Some part heavily depends on some other libs and APIs. Please, use it with caution and be aware of the fact that it is not guaranteed to be stable.  
@@ -16,7 +23,7 @@ The yDaemon API is a REST API that provides access to the Yearn data sources. It
 
 ## What is happening on startup?
 
-On [`cmd/main.go`](https://github.com/yearn/ydaemon/blob/main/cmd/main.go)
+If you want to learn more about the startup routine check [`cmd/main.go`](https://github.com/yearn/ydaemon/blob/main/cmd/main.go)
 
 ## Folder and structure
 The project is organized following the [Go Standards](https://github.com/golang-standards/project-layout) folder structure with some tweaks. In a nutshell, the project is divided as follows:
@@ -33,4 +40,3 @@ The `internal` folder is the _private application and library code_. This is the
 - `models`: contains all the cross-package types we need.
 - `store`: contains all the cross-package global variables.
 - `utils`: contains all the cross-package utility functions.
-Now, let's get started with how to setup the [logical part](/docs/install/setup-contexts-hooks).

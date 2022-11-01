@@ -283,14 +283,16 @@ func RetrieveAllTokens(
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraVaults := []string{
-		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, //yvWBTC
+	extraTokens := []string{
+		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV
+		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell
 	}
-	for _, vaultAddress := range extraVaults {
-		vaultAddress := common.HexToAddress(vaultAddress)
-		if _, ok := tokenMap[vaultAddress]; !ok {
-			updatedTokenMap[vaultAddress] = &TERC20Token{
-				Address: vaultAddress,
+	for _, tokenAddress := range extraTokens {
+		tokenAddress := common.HexToAddress(tokenAddress)
+		if _, ok := tokenMap[tokenAddress]; !ok {
+			updatedTokenMap[tokenAddress] = &TERC20Token{
+				Address: tokenAddress,
 			}
 		}
 	}

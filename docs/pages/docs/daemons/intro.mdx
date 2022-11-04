@@ -1,12 +1,17 @@
 ---
-title: 'Introduction'
+title: 'Daemons Introduction'
 ---
 
 import Callout from 'nextra-theme-docs/callout'
 
-# Introduction
-The Daemons (or _Imps_, as you want) are GoRoutines that are responsible for fetching, handling, and storing data from various sources to make them available to the rest of the system.  
-When working with APIs, we usually have to deal with a Database, with external endpoint etc. Querying all of these, especially the Blockchain environment can be really slow, which is not compatible with a proper API.  
+# Daemons Introduction
+
+![](https://i.imgur.com/LdIgFAf.png)
+
+The Daemons (or _Imps_, as you want) are GoRoutines responsible for fetching, handling, and storing data from various sources to make them available to the rest of the system.  
+
+When working with APIs, we usually have to deal with a Database, with external endpoints etc. Querying all of these, especially the Blockchain environment can be really slow, which is not compatible with a proper API.  
+
 To reduce the loading time and ensure we always have the most recent data, we need to have a way to fetch the data from the Blockchain, store it in a local shared database, and then expose it to our application: **this is the role of the Daemons**.
 
 <Callout type="info">
@@ -59,7 +64,9 @@ myTokenList = TokenList[myChainID]
 
 ### Database
 The Daemon will use a local database to store the data it fetches. This database will be stored in the `ystore` folder. We are using the [Badger](https://github.com/dgraph-io/badger) system for that, which is a basic Key-Value Store.  
+
 In a nutshell, it's fast and easy to use. It will create some files in the `ystore` directory to save the data in it. This system ensure we always have the latest **valid** data available in all circumstances, avoiding data loss or endpoints being down because one of the data sources is down. In this situation data may obviously be outdated, but the latest valid one will be served.  
+
 Key to the database is the `chainID` of the chain we are working with, appended to some specific key. We have, for instance, `VaultsFromMeta1` for the `VaultsFromMeta` data on chain `1`. The value is an `interface`, aka an abstract object we are required to correctly decode to be accessed.
 
 #### Save the data

@@ -4,7 +4,10 @@ import GET from '../../../components/GET.tsx'
 import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 
 # Vaults Meta API
-The Meta API provides information about various entities in the Yearn ecosystem. This includes information about the strategies, vaults, tokens and protocols. As all theses elements are difficult to put on-chain, they are stored in `meta-files` which are updated by the yTeam. This API provides a way to access this information.  
+The Meta API provides information about various entities in the Yearn ecosystem, including information about the strategies, vaults, tokens and protocols.
+
+Because metadata files are difficult to put on-chain, they are stored in `meta-files` which are updated by the yTeam. This API provides a way to access this information.  
+
 Here are the paths for the vaults meta API:
 ```
 [GET - `{chainID}/meta/vaults`]:              List the meta for the vaults for a specific chain.

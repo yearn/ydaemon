@@ -50,17 +50,17 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	}
 
 	allUpdates := response.AccountVaultPositions[0].Updates
-	pricePerShare := bigNumber.NewInt(0).SetString(response.Vault.LatestUpdate.PricePerShare)
-	// Based on the deposits, withdrawals, shares burned and shares minted, we can compute the amount of token he has earned
-	// earned := bigNumber.NewInt(0)
+	pricePerShare := bigNumber.NewInt(0).SetString(response.AccountVaultPositions[0].Vault.LatestUpdate.PricePerShare)
+	decimals := bigNumber.NewInt(response.AccountVaultPositions[0].Vault.ShareToken.Decimals)
+	decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
+	logs.Pretty(decimals)
+	decimalsFloat := bigNumber.NewFloat(0).SetInt(decimals)
 	sumOfDeposits := bigNumber.NewInt(0)
 	sumOfWithdrawals := bigNumber.NewInt(0)
 	sumOfSharesBurned := bigNumber.NewInt(0)
 	sumOfSharesMinted := bigNumber.NewInt(0)
 	allDepositsPricePerShare := []*bigNumber.Float{}
 	allWithdrawalsPricePerShare := []*bigNumber.Float{}
-	allDeposits := []*bigNumber.Int{}
-	allWithdrawals := []*bigNumber.Int{}
 	allShareMinted := []*bigNumber.Int{}
 	allShareBurned := []*bigNumber.Int{}
 
@@ -71,17 +71,15 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 		sharesMinted := bigNumber.NewInt().SetString(update.SharesMinted)
 
 		if deposit != nil && !deposit.IsZero() {
-			pricePerShareAtThisTime := bigNumber.NewFloat(0).Quo(bigNumber.NewFloat().SetInt(deposit), bigNumber.NewFloat().SetInt(sharesMinted))
+			pricePerShareAtThisTime := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(deposit), bigNumber.NewFloat().SetInt(sharesMinted))
 			logs.Info(`user deposited`, deposit, `shares minted`, sharesMinted, `price per share`, pricePerShareAtThisTime)
 			allDepositsPricePerShare = append(allDepositsPricePerShare, pricePerShareAtThisTime)
-			allDeposits = append(allDeposits, deposit)
 			allShareMinted = append(allShareMinted, sharesMinted)
 		}
 		if withdrawal != nil && !withdrawal.IsZero() {
-			pricePerShareAtThisTime := bigNumber.NewFloat(0).Quo(bigNumber.NewFloat().SetInt(withdrawal), bigNumber.NewFloat().SetInt(sharesBurnt))
+			pricePerShareAtThisTime := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(withdrawal), bigNumber.NewFloat().SetInt(sharesBurnt))
 			logs.Info(`user withdrew`, withdrawal, `shares burnt`, sharesBurnt, `price per share`, pricePerShareAtThisTime)
 			allWithdrawalsPricePerShare = append(allWithdrawalsPricePerShare, pricePerShareAtThisTime)
-			allWithdrawals = append(allWithdrawals, withdrawal)
 			allShareBurned = append(allShareBurned, sharesBurnt)
 		}
 
@@ -91,79 +89,103 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 		sumOfSharesMinted.Add(sumOfSharesMinted, sharesMinted)
 	}
 
-	earnedForFifoStep := []*bigNumber.Float{}
+	// exclude shares sent and received?
+
+	fifoRealizedGains := []*bigNumber.Float{}
 	latestMintIndex := 0
 	for index := 0; index < len(allShareBurned); {
 		currentShareBurned := allShareBurned[index]
 		latestSharesMinted := allShareMinted[latestMintIndex]
+
+		// Take the PPS for the share minted & the share burned
+		latestSharesMintedPPS := allDepositsPricePerShare[latestMintIndex]
+		currentShareBurnedPPS := allWithdrawalsPricePerShare[index]
+
 		if currentShareBurned.Eq(latestSharesMinted) {
-			latestSharesMintedPPS := allDepositsPricePerShare[latestMintIndex]
-			currentShareBurnedPPS := allWithdrawalsPricePerShare[index]
-
-			latestSharesMintedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), latestSharesMintedPPS)
+			// Calculate the value of the deposit when it was minted
 			currentShareBurnedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(currentShareBurned), currentShareBurnedPPS)
-			latestSharesMintedValue = bigNumber.NewFloat(0).Quo(latestSharesMintedValue, bigNumber.NewFloat(1e18))
-			currentShareBurnedValue = bigNumber.NewFloat(0).Quo(currentShareBurnedValue, bigNumber.NewFloat(1e18))
+			currentShareBurnedValue = bigNumber.NewFloat(0).Div(currentShareBurnedValue, decimalsFloat)
 
-			earnedForFifoStep = append(earnedForFifoStep, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
-			logs.Success(`currentShareBurnedPPS`, currentShareBurnedPPS)
-			logs.Success(`latestSharesMintedPPS`, latestSharesMintedPPS)
-			logs.Success(`latestSharesMintedValue`, latestSharesMintedValue)
-			logs.Success(`currentShareBurnedValue`, currentShareBurnedValue)
-			logs.Success(`earnedForFifoStep`, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
+			// Calculate the value of the deposit with the PPS when the share was burned
+			mintedShareValueForThisAmountOfBurnedShares := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(currentShareBurned), latestSharesMintedPPS)
+			mintedShareValueForThisAmountOfBurnedShares = bigNumber.NewFloat(0).Div(mintedShareValueForThisAmountOfBurnedShares, decimalsFloat)
+
+			// Do a valueWhenBurned - valueWhenMinted
+			gainOrLoss := bigNumber.NewFloat(0).Sub(currentShareBurnedValue, mintedShareValueForThisAmountOfBurnedShares)
+
+			// This is the realized gain or loss for this withdrawal
+			fifoRealizedGains = append(fifoRealizedGains, gainOrLoss)
+			allShareMinted[latestMintIndex] = bigNumber.NewInt(0)
 			index++
+			latestMintIndex++
 		}
 
-		for currentShareBurned.Gt(latestSharesMinted) {
-			latestSharesMinted := allShareMinted[latestMintIndex]
-
-			latestSharesMintedPPS := allDepositsPricePerShare[latestMintIndex]
-			currentShareBurnedPPS := allWithdrawalsPricePerShare[index]
-
-			latestSharesMintedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), latestSharesMintedPPS)
+		if currentShareBurned.Gt(latestSharesMinted) {
+			// Calculate the value of the deposit when it was minted
 			currentShareBurnedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(currentShareBurned), currentShareBurnedPPS)
-			latestSharesMintedValue = bigNumber.NewFloat(0).Quo(latestSharesMintedValue, bigNumber.NewFloat(1e18))
-			currentShareBurnedValue = bigNumber.NewFloat(0).Quo(currentShareBurnedValue, bigNumber.NewFloat(1e18))
+			currentShareBurnedValue = bigNumber.NewFloat(0).Div(currentShareBurnedValue, decimalsFloat)
 
-			earnedForFifoStep = append(earnedForFifoStep, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
-			logs.Success(`currentShareBurnedPPS`, currentShareBurnedPPS)
-			logs.Success(`latestSharesMintedPPS`, latestSharesMintedPPS)
-			logs.Success(`latestSharesMintedValue`, latestSharesMintedValue)
-			logs.Success(`currentShareBurnedValue`, currentShareBurnedValue)
-			logs.Success(`earnedForFifoStep`, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
+			// Calculate the value of the deposit with the PPS when the share was burned
+			mintedShareValueForRemainingAmountOfShares := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), latestSharesMintedPPS)
+			mintedShareValueForRemainingAmountOfShares = bigNumber.NewFloat(0).Div(mintedShareValueForRemainingAmountOfShares, decimalsFloat)
+
+			// Do a valueWhenBurned - valueWhenMinted
+			gainOrLoss := bigNumber.NewFloat(0).Sub(currentShareBurnedValue, mintedShareValueForRemainingAmountOfShares)
+
+			// This is the realized gain or loss for this withdrawal
+			fifoRealizedGains = append(fifoRealizedGains, gainOrLoss)
+
+			allShareMinted[latestMintIndex] = bigNumber.NewInt(0).Sub(allShareMinted[latestMintIndex], latestSharesMinted)
 			latestMintIndex++
 		}
 
 		if currentShareBurned.Lt(latestSharesMinted) {
-			latestSharesMintedPPS := allDepositsPricePerShare[latestMintIndex]
-			currentShareBurnedPPS := allWithdrawalsPricePerShare[index]
-
-			latestSharesMintedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), latestSharesMintedPPS)
+			// Calculate the value of the deposit when it was minted
 			currentShareBurnedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(currentShareBurned), currentShareBurnedPPS)
-			latestSharesMintedValue = bigNumber.NewFloat(0).Quo(latestSharesMintedValue, bigNumber.NewFloat(1e18))
-			currentShareBurnedValue = bigNumber.NewFloat(0).Quo(currentShareBurnedValue, bigNumber.NewFloat(1e18))
+			currentShareBurnedValue = bigNumber.NewFloat(0).Div(currentShareBurnedValue, decimalsFloat)
 
-			earnedForFifoStep = append(earnedForFifoStep, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
-			logs.Success(`currentShareBurnedPPS`, currentShareBurnedPPS)
-			logs.Success(`latestSharesMintedPPS`, latestSharesMintedPPS)
-			logs.Success(`latestSharesMintedValue`, latestSharesMintedValue)
-			logs.Success(`currentShareBurnedValue`, currentShareBurnedValue)
-			logs.Success(`earnedForFifoStep`, bigNumber.NewFloat(0).Sub(currentShareBurnedValue, latestSharesMintedValue))
+			// Calculate the value of the deposit with the PPS when the share was burned
+			mintedShareValueForThisAmountOfBurnedShares := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(currentShareBurned), latestSharesMintedPPS)
+			mintedShareValueForThisAmountOfBurnedShares = bigNumber.NewFloat(0).Div(mintedShareValueForThisAmountOfBurnedShares, decimalsFloat)
+
+			// Do a valueWhenBurned - valueWhenMinted
+			gainOrLoss := bigNumber.NewFloat(0).Sub(currentShareBurnedValue, mintedShareValueForThisAmountOfBurnedShares)
+
+			// This is the realized gain or loss for this withdrawal
+			fifoRealizedGains = append(fifoRealizedGains, gainOrLoss)
+
 			allShareMinted[latestMintIndex] = bigNumber.NewInt(0).Sub(allShareMinted[latestMintIndex], currentShareBurned)
 			index++
 		}
-
+	}
+	realizedGains := bigNumber.NewFloat(0)
+	for _, gain := range fifoRealizedGains {
+		realizedGains.Add(realizedGains, gain)
 	}
 
-	realizedGains := bigNumber.NewInt(0).Sub(sumOfWithdrawals, sumOfDeposits)
-	remainingShares := bigNumber.NewInt(0).Sub(sumOfSharesMinted, sumOfSharesBurned)
+	// Calculate unrealizedGains
+	fifoUnRealizedGains := []*bigNumber.Float{}
+	currentPPS := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(pricePerShare), decimalsFloat)
+	for index := range allShareMinted {
+		latestSharesMinted := allShareMinted[index]
+		latestSharesMintedPPS := allDepositsPricePerShare[index]
 
-	_ = pricePerShare
-	// The unrealized gains are the remaining shares multiplied by the price per share. The pricePerShare used for the unrealized gains is the latest pricePerShare
-	// unrealizedGains := bigNumber.NewInt(0).Mul(remainingShares, pricePerShare)
+		mintedValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), latestSharesMintedPPS)
+		mintedValue = bigNumber.NewFloat(0).Div(mintedValue, decimalsFloat)
 
-	logs.Info(`sum of deposits`, sumOfDeposits, `sum of withdrawals`, sumOfWithdrawals, `sum of shares minted`, sumOfSharesMinted, `sum of shares burnt`, sumOfSharesBurned)
-	logs.Info(`deposits minus withdrawals`, realizedGains, `remaining shares`, remainingShares)
+		scaledValue := bigNumber.NewFloat(0).Mul(bigNumber.NewFloat().SetInt(latestSharesMinted), currentPPS)
+		scaledValue = bigNumber.NewFloat(0).Div(scaledValue, decimalsFloat)
 
-	c.JSON(http.StatusOK, earnedForFifoStep)
+		fifoUnRealizedGains = append(fifoUnRealizedGains, bigNumber.NewFloat(0).Sub(scaledValue, mintedValue))
+	}
+
+	unrealizedGains := bigNumber.NewFloat(0)
+	for _, gain := range fifoUnRealizedGains {
+		unrealizedGains.Add(unrealizedGains, gain)
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"realizedGains":   realizedGains,
+		"unrealizedGains": unrealizedGains,
+	})
 }

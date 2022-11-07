@@ -152,11 +152,14 @@ type TFIFOForUserForVault struct {
 			SharesMinted   string
 			SharesSent     string
 			SharesReceived string
-		}
-	}
-	Vault struct {
-		LatestUpdate struct {
-			PricePerShare string
-		}
+		} `json:"updates"`
+		Vault struct {
+			ShareToken struct {
+				Decimals int64 `json:"decimals"`
+			} `json:"shareToken"`
+			LatestUpdate struct {
+				PricePerShare string `json:"pricePerShare"`
+			} `json:"latestUpdate"`
+		} `json:"vault"`
 	}
 }

@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"unicode/utf8"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
@@ -19,7 +18,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 // lensABI takes the ABI of the lens contract and prepare it for the multicall
@@ -116,34 +115,10 @@ func setCurveFactoriesPrices(chainID uint64) {
 			}
 
 			if Store.TokenPrices[chainID][coinAddress].Cmp(big.NewInt(0)) == 0 {
-
 				coinPrice := bigNumber.NewFloat(coin.USDPrice)
 				coinPrice = coinPrice.Mul(coinPrice, bigNumber.NewFloat(1e6))
 				coinPriceBigInt := coinPrice.Int()
 				Store.TokenPrices[chainID][coinAddress] = coinPriceBigInt
-
-				//Store the price in the token struct
-				if tokens.Store.Tokens[chainID][coinAddress] == nil {
-					//Hack because decimals can be string or uint
-					decimals := uint64(18)
-					if utf8.Valid(coin.Decimals) {
-						if i, err := strconv.Atoi(string(coin.Decimals)); err != nil {
-							decimals = uint64(i)
-						} else {
-							decimals, _ = strconv.ParseUint(string(coin.Decimals), 10, 64)
-						}
-					}
-					tokens.Store.Tokens[chainID][coinAddress] = &tokens.TERC20Token{
-						Address:  common.HexToAddress(coin.Address),
-						Name:     coin.Symbol,
-						Symbol:   coin.Symbol,
-						Decimals: decimals,
-						IsVault:  false,
-					}
-				}
-
-				humanizedPrice, _ := helpers.FormatAmount(coinPriceBigInt.String(), 6)
-				tokens.Store.Tokens[chainID][common.HexToAddress(coin.Address)].Price = humanizedPrice
 			}
 		}
 
@@ -163,20 +138,6 @@ func setCurveFactoriesPrices(chainID uint64) {
 			}
 			if Store.TokenPrices[chainID][common.HexToAddress(addressToUse)].IsZero() {
 				Store.TokenPrices[chainID][common.HexToAddress(addressToUse)] = pricePerTokenBigInt
-
-				if tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)] == nil {
-					tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)] = &tokens.TERC20Token{
-						Address:  common.HexToAddress(addressToUse),
-						Name:     fact.Name,
-						Symbol:   fact.Symbol,
-						Decimals: 18,
-						IsVault:  false,
-					}
-				}
-
-				//Store the price in the token struct
-				humanizedPrice, _ := helpers.FormatAmount(pricePerTokenBigInt.String(), 6)
-				tokens.Store.Tokens[chainID][common.HexToAddress(addressToUse)].Price = humanizedPrice
 			}
 		}
 	}
@@ -186,7 +147,7 @@ func setCurveFactoriesPrices(chainID uint64) {
 // it's missing. It's done by taking the PricePerShare from each vault and multiplying it by the
 // price of the underlying token. If the underlying token price is 0, we skip it.
 func setMissingYearnVaultPrices(chainID uint64) {
-	allVaultsData := tokens.Store.Tokens[chainID]
+	allVaultsData := tokens.MapVaults(chainID)
 
 	for key, value := range Store.TokenPrices[chainID] {
 		if !helpers.AddressIsValid(key, chainID) {
@@ -196,8 +157,7 @@ func setMissingYearnVaultPrices(chainID uint64) {
 			continue
 		}
 
-		if allVaultsData[key] != nil && allVaultsData[key].IsVault { // Is this address a vault?
-			// pricePerShare := bigNumber.NewInt().Clone(&vaults.Store.AggregatedVault[chainID][key].PricePerShare)
+		if allVaultsData[key] != nil {
 			pricePerShare := bigNumber.NewInt()
 
 			//PricePerShare is in 10^decimals, we need to convert it to 10^6
@@ -211,7 +171,7 @@ func setMissingYearnVaultPrices(chainID uint64) {
 				))
 			}
 
-			underlyingTokenAddress := allVaultsData[key].UnderlyingTokenAddress
+			underlyingTokenAddress := allVaultsData[key].VaultUnderlying()
 			underlyingTokenPrice, ok := Store.TokenPrices[chainID][underlyingTokenAddress]
 
 			if ok && !underlyingTokenPrice.IsZero() {
@@ -220,13 +180,10 @@ func setMissingYearnVaultPrices(chainID uint64) {
 				vaultValue = vaultValue.Div(vaultValue, bigNumber.NewInt(1e6))
 
 				if vaultValue.IsZero() {
-					// logs.Info(chainID, key.String()+`: `+value.String())
 					continue
 				}
 
 				Store.TokenPrices[chainID][key] = vaultValue
-				humanizedPrice, _ := helpers.FormatAmount(vaultValue.String(), 6)
-				tokens.Store.Tokens[chainID][key].Price = humanizedPrice
 			}
 		}
 	}
@@ -245,7 +202,7 @@ func FetchLens(chainID uint64) {
 
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
-	for _, token := range tokens.Store.TokenList[chainID] {
+	for _, token := range tokens.ListTokensAddresses(chainID) {
 		calls = append(calls, getPriceUsdcRecommendedCall(token.String(), lensAddress, token))
 	}
 
@@ -272,10 +229,6 @@ func FetchLens(chainID uint64) {
 		price := bigNumber.SetInt(value[0].(*big.Int))
 		Store.TokenPrices[chainID][common.HexToAddress(address)] = price
 		go store.SaveInDB(chainID, store.TABLES.PRICES, address, price)
-
-		//Store the price in the token struct
-		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-		tokens.Store.Tokens[chainID][common.HexToAddress(address)].Price = humanizedPrice
 	}
 
 	setCurveFactoriesPrices(chainID)

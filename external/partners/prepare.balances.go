@@ -7,7 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 func (c *TPartners) BalanceOf() *TPartners {
@@ -60,7 +60,11 @@ func computeDefaultBalance(
 		return nil, nil, err
 	}
 
-	decimals := tokens.Store.Tokens[chainID][vaultAddress].Decimals
+	decimals := 18
+	if token, ok := tokens.FindToken(chainID, vaultAddress); ok {
+		decimals = int(token.Decimals)
+	}
+
 	_, fBalance := helpers.FormatAmount(balance.String(), int(decimals))
 
 	return bigNumber.SetInt(balance), fBalance, err

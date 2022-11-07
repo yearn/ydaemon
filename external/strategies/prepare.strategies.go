@@ -28,13 +28,13 @@ func BuildStrategies(
 ) []TStrategy {
 	strategies := []TStrategy{}
 	strategiesFromMeta := meta.Store.StrategiesFromMeta[chainID]
-	strategiesFromMulticall := Store.StrategyMultiCallData[chainID]
+	strategiesAggregated := Store.AggregatedStrategies[chainID]
 	strategiesFromRisk := Store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesFromMulticall[strategy.Address]
+		multicallData, ok := strategiesAggregated[strategy.Address]
 		if !ok {
-			multicallData = models.TStrategyMultiCallData{}
+			multicallData = &TAggregatedStrategy{}
 		}
 
 		currentStrategy := TStrategy{

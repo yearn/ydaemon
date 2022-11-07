@@ -63,7 +63,7 @@ func NewRouter() *gin.Engine {
 
 		router.GET(`:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
 
-		router.GET(`:chainID/earned`, c.GetEarnedPerVaultPerUser)
+		router.GET(`:chainID/earned/:address/:addresses`, c.GetEarnedPerVaultPerUser)
 
 	}
 

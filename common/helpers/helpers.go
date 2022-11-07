@@ -26,9 +26,9 @@ func ContainsAddress[T comparable](addresses []T, address T) bool {
 // UniqueArrayAddress is used to find and remove duplicate from an array of
 // ethereum addresses. No such utility function exists with go, so we have to
 // implement it ourselves.
-func UniqueArrayAddress(arr []common.Address) []common.Address {
-	occurred := map[common.Address]bool{}
-	result := []common.Address{}
+func UniqueArrayAddress[T comparable](arr []T) []T {
+	occurred := map[T]bool{}
+	result := []T{}
 	for i := range arr {
 		if !occurred[arr[i]] {
 			occurred[arr[i]] = true

@@ -2,7 +2,6 @@ package vaults
 
 import (
 	"net/http"
-	"sync"
 	"testing"
 	"time"
 
@@ -10,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
@@ -103,21 +101,21 @@ func loadVaultDaemons() {
 	FetchVaultsFromV1(42)
 	FetchVaultsFromV1(4545456)
 
-	wg := sync.WaitGroup{}
-	wg.Add(12)
-	go LoadVaultMulticallData(1, &wg)
-	go LoadVaultMulticallData(10, &wg)
-	go LoadVaultMulticallData(250, &wg)
-	go LoadVaultMulticallData(42161, &wg)
-	go LoadVaultMulticallData(42, &wg)
-	go LoadVaultMulticallData(4545456, &wg)
-	go LoadAPIV1Vaults(1, &wg)
-	go LoadAPIV1Vaults(10, &wg)
-	go LoadAPIV1Vaults(250, &wg)
-	go LoadAPIV1Vaults(42161, &wg)
-	go LoadAPIV1Vaults(42, &wg)
-	go LoadAPIV1Vaults(4545456, &wg)
-	wg.Wait()
+	// wg := sync.WaitGroup{}
+	// wg.Add(12)
+	// go LoadVaultMulticallData(1, &wg)
+	// go LoadVaultMulticallData(10, &wg)
+	// go LoadVaultMulticallData(250, &wg)
+	// go LoadVaultMulticallData(42161, &wg)
+	// go LoadVaultMulticallData(42, &wg)
+	// go LoadVaultMulticallData(4545456, &wg)
+	// go LoadAPIV1Vaults(1, &wg)
+	// go LoadAPIV1Vaults(10, &wg)
+	// go LoadAPIV1Vaults(250, &wg)
+	// go LoadAPIV1Vaults(42161, &wg)
+	// go LoadAPIV1Vaults(42, &wg)
+	// go LoadAPIV1Vaults(4545456, &wg)
+	// wg.Wait()
 
 	FetchVaultMulticallData(1)
 	FetchVaultMulticallData(10)
@@ -134,8 +132,6 @@ func loadVaultDaemons() {
 }
 
 func TestEnvironment(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
 	loadMetaDaemons()
 	loadTokensDaemons()
 	loadStrategiesDaemons()

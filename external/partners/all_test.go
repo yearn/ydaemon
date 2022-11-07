@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/store"
 )
 
 func newRouter() *gin.Engine {
@@ -37,9 +36,6 @@ func newRouter() *gin.Engine {
 }
 
 func TestPartners(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go newRouter().Run(":8081")
 	time.Sleep(10 * time.Second)

@@ -3,8 +3,6 @@ package vaults
 import (
 	"math"
 	"math/big"
-	"strconv"
-	"sync"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
@@ -12,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/tokens"
 )
 
@@ -52,9 +49,10 @@ func FetchVaultMulticallData(chainID uint64) {
 	// Then, we execute the multicall and store the prices in the TokenPrices map
 	maxBatch := math.MaxInt64
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
-	if prices.Store.VaultPricePerShare[chainID] == nil {
-		prices.Store.VaultPricePerShare[chainID] = make(map[common.Address]*bigNumber.Int)
+	if Store.AggregatedVault[chainID] == nil {
+		Store.AggregatedVault[chainID] = make(map[common.Address]*TAggregatedVault)
 	}
+
 	for _, vault := range tokens.Store.Tokens[chainID] {
 		if !vault.IsVault {
 			continue
@@ -64,20 +62,18 @@ func FetchVaultMulticallData(chainID uint64) {
 		if len(pricePerShareRaw) == 1 {
 			pricePerShare = bigNumber.SetInt(pricePerShareRaw[0].(*big.Int))
 		}
-		prices.Store.VaultPricePerShare[chainID][vault.Address] = pricePerShare
-	}
-	store.SaveInDBForChainID(store.KEYS.VaultMultiCallData, chainID, prices.Store.VaultPricePerShare[chainID])
-}
-
-// LoadVaultMulticallData will reload the multicall data store from the last state of the local Badger Database
-func LoadVaultMulticallData(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]*bigNumber.Int)
-	if err := store.LoadFromDBForChainID(store.KEYS.VaultMultiCallData, chainID, &temp); err != nil {
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		prices.Store.VaultPricePerShare[chainID] = temp
-		logs.Success("Data loaded for the vault multicall data store for chainID: " + strconv.FormatUint(chainID, 10))
+		if Store.AggregatedVault[chainID][vault.Address] == nil {
+			Store.AggregatedVault[chainID][vault.Address] = &TAggregatedVault{
+				Address:   vault.Address,
+				LegacyAPY: TLegacyAPIAPY{},
+			}
+		}
+		Store.AggregatedVault[chainID][vault.Address].SetPricePerShare(bigNumber.NewInt().Clone(pricePerShare))
+		go store.SaveInDB(
+			chainID,
+			store.TABLES.VAULTS,
+			vault.Address.String(),
+			Store.AggregatedVault[chainID][vault.Address],
+		)
 	}
 }

@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/store"
 )
 
 // NewRouter create the routes and setup the server
@@ -59,9 +58,6 @@ func NewRouter() *gin.Engine {
 }
 
 func TestTokens(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go NewRouter().Run(":8083")
 	time.Sleep(3 * time.Second)
@@ -113,9 +109,6 @@ func TestTokens(t *testing.T) {
 }
 
 func TestStrategies(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go NewRouter().Run(":8079")
 	time.Sleep(3 * time.Second)
@@ -168,9 +161,6 @@ func TestStrategies(t *testing.T) {
 }
 
 func TestVaults(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go NewRouter().Run(":8085")
 	time.Sleep(3 * time.Second)
@@ -229,9 +219,6 @@ func TestVaults(t *testing.T) {
 }
 
 func TestEnvironment(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	//Init the server as non-blocking mode
 	go NewRouter().Run(":8086")
 	time.Sleep(3 * time.Second)

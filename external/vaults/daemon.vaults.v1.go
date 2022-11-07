@@ -9,13 +9,12 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
-// and store the result to the global variable VaultsFromAPIV1 for later use.
+// and store the result to the global variable AggregatedVault for later use.
 func FetchVaultsFromV1(chainID uint64) {
 	// Get the meta information from the Yearn Meta API
 	chainIDStr := strconv.FormatUint(chainID, 10)
@@ -35,33 +34,40 @@ func FetchVaultsFromV1(chainID uint64) {
 		return
 	}
 
-	// Unmarshal the response body into the variable VaultsFromAPIV1. Body is a byte array,
-	// with this manipulation we are putting it in the correct TAPIV1Vault struct format
-	vaults := []models.TAPIV1Vault{}
+	// Unmarshal the response body into the variable AggregatedVault. Body is a byte array,
+	// with this manipulation we are putting it in the correct TLegacyAPI struct format
+	vaults := []TLegacyAPI{}
 	if err := json.Unmarshal(body, &vaults); err != nil {
 		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address
-	if Store.VaultsFromAPIV1[chainID] == nil {
-		Store.VaultsFromAPIV1[chainID] = make(map[common.Address]models.TAPIV1Vault)
+	if Store.AggregatedVault[chainID] == nil {
+		Store.AggregatedVault[chainID] = make(map[common.Address]*TAggregatedVault)
 	}
 	for _, vault := range vaults {
-		Store.VaultsFromAPIV1[chainID][common.HexToAddress(vault.Address)] = vault
+		Store.AggregatedVault[chainID][vault.Address] = &TAggregatedVault{
+			Address:   vault.Address,
+			LegacyAPY: vault.APY,
+		}
+		go store.SaveInDB(
+			chainID,
+			store.TABLES.VAULTS,
+			vault.Address.String(),
+			Store.AggregatedVault[chainID][vault.Address],
+		)
 	}
-	store.SaveInDBForChainID(store.KEYS.VaultsFromAPIV1, chainID, Store.VaultsFromAPIV1[chainID])
 }
 
-// LoadAPIV1Vaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
-func LoadAPIV1Vaults(chainID uint64, wg *sync.WaitGroup) {
+// LoadAggregatedVaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
+func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[common.Address]models.TAPIV1Vault)
-	if err := store.LoadFromDBForChainID(store.KEYS.VaultsFromAPIV1, chainID, &temp); err != nil {
-		return
-	}
+	temp := make(map[common.Address]*TAggregatedVault)
+	store.Iterate(chainID, store.TABLES.VAULTS, &temp)
+
 	if temp != nil && (len(temp) > 0) {
-		Store.VaultsFromAPIV1[chainID] = temp
-		logs.Success("Data loaded for the APIv1 Vaults data store for chainID: " + strconv.FormatUint(chainID, 10))
+		Store.AggregatedVault[chainID] = temp
+		logs.Success("Data loaded for the AggregatedVault store for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

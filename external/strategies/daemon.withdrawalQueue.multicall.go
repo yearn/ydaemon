@@ -4,13 +4,10 @@ import (
 	"math"
 	"math/big"
 	"strconv"
-	"sync"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -27,7 +24,7 @@ func getVaultWithdrawalQueue(name string, index int64, contractAddress common.Ad
 
 func getAllUniqueVaults(chainID uint64) []common.Address {
 	var vaults []common.Address
-	for _, strat := range Store.StrategyList[chainID] {
+	for _, strat := range Store.AggregatedStrategies[chainID] {
 		vaults = append(vaults, strat.Vault)
 	}
 	return helpers.UniqueArrayAddress(vaults)
@@ -65,18 +62,5 @@ func FetchWithdrawalQueueMulticallData(chainID uint64) {
 	}
 
 	Store.WithdrawalQueueMultiCallData[chainID] = withdrawQueueForStrategies
-	store.SaveInDBForChainID(store.KEYS.WithdrawalQueueMultiCallData, chainID, Store.WithdrawalQueueMultiCallData[chainID])
-}
-
-// LoadWithdrawalQueueMulticallData will reload the multicall withdrawal queue data store from the last state of the local Badger Database
-func LoadWithdrawalQueueMulticallData(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[common.Address]int64)
-	if err := store.LoadFromDBForChainID(store.KEYS.WithdrawalQueueMultiCallData, chainID, &temp); err != nil {
-		return
-	}
-	if temp != nil && (len(temp) > 0) {
-		Store.WithdrawalQueueMultiCallData[chainID] = temp
-		logs.Success("Data loaded for the WithdrawalQueue data store for chainID: " + strconv.FormatUint(chainID, 10))
-	}
+	//No store in DB as it will be save via the AggregatedStrategies
 }

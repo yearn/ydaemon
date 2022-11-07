@@ -56,19 +56,17 @@ func OpenDB(chainID uint64, dbKey string) *badger.DB {
 	if DB[chainID][dbKey] == nil {
 		DBMutex[chainID][dbKey].Lock()
 		defer DBMutex[chainID][dbKey].Unlock()
-		if DB[chainID][dbKey] == nil {
-			chainStr := strconv.FormatUint(chainID, 10)
-			opts := badger.DefaultOptions(`./data/store/` + chainStr + `/` + dbKey)
-			opts = opts.WithMetricsEnabled(false)
-			opts = opts.WithLogger(nil)
-			opts = opts.WithNumGoroutines(16)
-			opts = opts.WithValueLogFileSize((1 << 20) * 10)
-			db, err := badger.Open(opts)
-			if err != nil {
-				log.Fatal(err)
-			}
-			DB[chainID][dbKey] = db
+		chainStr := strconv.FormatUint(chainID, 10)
+		opts := badger.DefaultOptions(`./data/store/` + chainStr + `/` + dbKey)
+		opts = opts.WithMetricsEnabled(false)
+		opts = opts.WithLogger(nil)
+		opts = opts.WithNumGoroutines(16)
+		opts = opts.WithValueLogFileSize((1 << 20) * 10)
+		db, err := badger.Open(opts)
+		if err != nil {
+			log.Fatal(err)
 		}
+		DB[chainID][dbKey] = db
 	}
 	return DB[chainID][dbKey]
 }

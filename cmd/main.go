@@ -4,15 +4,13 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal"
 )
 
-var chains = env.SUPPORTED_CHAIN_IDS
+// var chains = env.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{1}
+var chains = []uint64{1}
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)
@@ -43,20 +41,13 @@ func loadDaemonsForAllChains() {
 	wg.Wait()
 }
 
-func init() {
-	store.OpenDB()
-}
-
 func main() {
-	defer store.CloseDB()
-
+	go internal.Initialize(1)
 	logs.Info(`Loading store data to yDaemon memory...`)
 	loadDaemonsForAllChains()
 	logs.Info(`Summoning yDaemon...`)
 	summonDaemonsForAllChains()
+
 	logs.Success(`Server ready!`)
-
-	internal.Initialize(1)
-
 	NewRouter().Run()
 }

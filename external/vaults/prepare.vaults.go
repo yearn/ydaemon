@@ -124,32 +124,32 @@ func buildAPY(
 	APYTypeOverride string,
 ) TAPY {
 	apy := TAPY{}
-	apyFromAPIV1, ok := Store.VaultsFromAPIV1[chainID][vaultAddress]
+	aggregatedVault, ok := Store.AggregatedVault[chainID][vaultAddress]
 
 	if ok {
 		apy = TAPY{
-			Type:     apyFromAPIV1.APY.Type,
-			GrossAPR: apyFromAPIV1.APY.GrossAPR,
-			NetAPY:   apyFromAPIV1.APY.NetAPY,
+			Type:     aggregatedVault.LegacyAPY.Type,
+			GrossAPR: aggregatedVault.LegacyAPY.GrossAPR,
+			NetAPY:   aggregatedVault.LegacyAPY.NetAPY,
 			Points: TAPYPoints{
-				WeekAgo:   apyFromAPIV1.APY.Points.WeekAgo,
-				MonthAgo:  apyFromAPIV1.APY.Points.MonthAgo,
-				Inception: apyFromAPIV1.APY.Points.Inception,
+				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
+				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
+				Inception: aggregatedVault.LegacyAPY.Points.Inception,
 			},
 			Composite: TAPYComposite{
-				Boost:      apyFromAPIV1.APY.Composite.Boost,
-				PoolAPY:    apyFromAPIV1.APY.Composite.PoolAPY,
-				BoostedAPR: apyFromAPIV1.APY.Composite.BoostedAPR,
-				BaseAPR:    apyFromAPIV1.APY.Composite.BaseAPR,
-				CvxAPR:     apyFromAPIV1.APY.Composite.CvxAPR,
-				RewardsAPR: apyFromAPIV1.APY.Composite.RewardsAPR,
+				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
+				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
+				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
+				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
+				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
+				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
 			},
 			Fees: TAPYFees{
 				Performance: float64(PerformanceFeeBps) / 10000,
 				Management:  float64(ManagementFeeBps) / 10000,
-				Withdrawal:  apyFromAPIV1.APY.Fees.Withdrawal,
-				KeepCRV:     apyFromAPIV1.APY.Fees.KeepCRV,
-				CvxKeepCRV:  apyFromAPIV1.APY.Fees.CvxKeepCRV,
+				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
+				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
+				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
 			},
 		}
 	}

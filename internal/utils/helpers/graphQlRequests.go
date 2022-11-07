@@ -111,3 +111,23 @@ func GetHarvestsForVaults() string {
 		loss
 	}`)
 }
+
+// GetFIFOForUser construct the basic graphQL request to get all the deposits and withdrawals for a user
+// for a given vault
+func GetFIFOForUser() string {
+	return (`id,
+		updates {
+			deposits
+			withdrawals
+			sharesBurnt
+			sharesMinted
+			sharesSent
+			sharesReceived
+		},
+		vault {
+			latestUpdate {
+				pricePerShare
+			}
+		}
+	`)
+}

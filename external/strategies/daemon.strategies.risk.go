@@ -12,12 +12,11 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/tokens"
 )
 
-func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+func excludeNameLike(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
 			// temporary fix to handle substring inclusion
@@ -34,7 +33,7 @@ func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) b
 	return false
 }
 
-func includeAddress(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
+func includeAddress(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
 	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy)
 }
 
@@ -110,7 +109,7 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 	}
 }
 
-func getStrategyGroup(chainID uint64, strategy models.TStrategyList) *TStrategyGroupFromRisk {
+func getStrategyGroup(chainID uint64, strategy *TAggregatedStrategy) *TStrategyGroupFromRisk {
 	groups := Store.StrategyGroupFromRisk[chainID]
 	var stratGroup *TStrategyGroupFromRisk
 	for _, group := range groups {
@@ -171,7 +170,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]TStrategyFromRisk)
 	}
 
-	strategies, ok := Store.StrategyList[chainID]
+	strategies, ok := Store.AggregatedStrategies[chainID]
 	if !ok {
 		logs.Warning("Error reading strategyList information")
 		return
@@ -189,7 +188,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		strategy := getDefaultRiskGroup()
 
 		// Fetch activation and tvl from multicall
-		data, ok := Store.StrategyMultiCallData[chainID][strat.Strategy]
+		data, ok := Store.AggregatedStrategies[chainID][strat.Strategy]
 		if !ok {
 			logs.Warning("Error fetching strategy data from multicall")
 			continue

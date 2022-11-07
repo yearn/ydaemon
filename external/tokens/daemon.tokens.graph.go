@@ -88,8 +88,19 @@ func FetchTokenList(chainID uint64) {
 
 	Store.Tokens[chainID] = tokenData
 	Store.TokenList[chainID] = helpers.UniqueArrayAddress(tokenList)
-	store.SaveInDBForChainID(store.KEYS.TokenData, chainID, Store.Tokens[chainID])
-	store.SaveInDBForChainID(store.KEYS.TokenList, chainID, Store.TokenList[chainID])
+	store.SaveInDB(
+		chainID,
+		store.TABLES.TOKENS_LEGACY,
+		store.KEYS.TOKENS_SUBGRAPH_DATA,
+		Store.Tokens[chainID],
+	)
+	store.SaveInDB(
+		chainID,
+		store.TABLES.TOKENS_LEGACY,
+		store.KEYS.TOKENS_SUBGRAPH_LIST,
+		Store.TokenList[chainID],
+	)
+
 }
 
 // LoadTokenList will reload the tokenList data store from the last state of the local Badger Database
@@ -97,7 +108,12 @@ func LoadTokenList(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	{
 		temp := []common.Address{}
-		if err := store.LoadFromDBForChainID(store.KEYS.TokenList, chainID, &temp); err != nil {
+		if err := store.LoadFromDB(
+			chainID,
+			store.TABLES.TOKENS_LEGACY,
+			store.KEYS.TOKENS_SUBGRAPH_LIST,
+			&temp,
+		); err != nil {
 			return
 		}
 		if temp != nil && (len(temp) > 0) {
@@ -110,7 +126,12 @@ func LoadTokenList(chainID uint64, wg *sync.WaitGroup) {
 
 	{
 		temp := make(map[common.Address]*TERC20Token)
-		if err := store.LoadFromDBForChainID(store.KEYS.TokenData, chainID, &temp); err != nil {
+		if err := store.LoadFromDB(
+			chainID,
+			store.TABLES.TOKENS_LEGACY,
+			store.KEYS.TOKENS_SUBGRAPH_DATA,
+			&temp,
+		); err != nil {
 			return
 		}
 		if temp != nil && (len(temp) > 0) {

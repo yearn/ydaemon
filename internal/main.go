@@ -8,6 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fees"
 	"github.com/yearn/ydaemon/internal/registries"
+	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -32,6 +33,16 @@ func Initialize(chainID uint64) {
 	performanceFees := map[common.Address]map[uint64][]utils.TEventBlock{}
 	strategiesPerformanceFees := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
 	allHarvests := map[common.Address]map[common.Address]map[uint64]uint64{}
+
+	/**********************************************************************************************
+	** Retrieve all tokens used by Yearn, along with the underlying tokens. The tokens are only
+	** retrieved for the new vaults, as the old vaults should have been already registered in the
+	** database.
+	** The function returns a map of token address to token data.
+	** The function store the tokens in a table [chainID] [token address] [token data], in the
+	** data/store/[chainID]/tokens folder.
+	**********************************************************************************************/
+	tokens.RetrieveAllTokens(chainID, vaultsList)
 
 	/**********************************************************************************************
 	** Fetching all the strategiesList and relevant transfers to proceed

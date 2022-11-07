@@ -255,7 +255,7 @@ func RetrieveAllTokens(
 	** from the upcoming calls
 	**********************************************************************************************/
 	tokenMap := make(map[common.Address]*TERC20Token)
-	store.Interate(chainID, store.TABLES.TOKENS, &tokenMap)
+	store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -326,7 +326,7 @@ func RetrieveAllTokens(
 			}(token)
 		}
 		wg.Wait()
-		store.Interate(chainID, store.TABLES.TOKENS, &tokenMap)
+		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
 	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)

@@ -1,0 +1,17 @@
+{
+    "$schema": "risks",
+    "label": "Maker V3",
+    "codeReviewScore": 3,
+    "testingScore": 2,
+    "auditScore": 5,
+    "protocolSafetyScore": 1,
+    "complexityScore": 4,
+    "teamKnowledgeScore": 2,
+    "criteria": {
+        "nameLike": [
+            "makerv3"
+        ],
+        "strategies": [],
+        "exclude": []
+    }
+}

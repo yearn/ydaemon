@@ -20,6 +20,10 @@ func IsHexAddress(a string) bool {
 	return common.IsHexAddress(a)
 }
 
+func (a Address) ToAddress() common.Address {
+	return a.Address
+}
+
 func (a Address) MarshalJSON() ([]byte, error) {
 	return json.Marshal(a.Hex())
 }

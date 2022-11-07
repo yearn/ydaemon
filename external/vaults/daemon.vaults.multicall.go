@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 // yearnVaultABI takes the ABI of the standard Yearn Vault contract and prepare it for the multicall
@@ -34,11 +34,8 @@ func FetchVaultMulticallData(chainID uint64) {
 
 	// Then, for each token listed for our current chainID, we prepare the calls
 	var calls = make([]ethereum.Call, 0)
-	for _, vault := range tokens.Store.Tokens[chainID] {
-		if !vault.IsVault {
-			continue
-		}
-		calls = append(calls, getPricePerShare(vault.Address))
+	for _, vault := range tokens.ListVaults(chainID) {
+		calls = append(calls, getPricePerShare(common.FromAddress(vault.Address)))
 	}
 
 	if len(calls) == 0 {
@@ -53,27 +50,25 @@ func FetchVaultMulticallData(chainID uint64) {
 		Store.AggregatedVault[chainID] = make(map[common.Address]*TAggregatedVault)
 	}
 
-	for _, vault := range tokens.Store.Tokens[chainID] {
-		if !vault.IsVault {
-			continue
-		}
+	for _, vault := range tokens.ListVaults(chainID) {
+		tokenAddress := common.FromAddress(vault.Address)
 		pricePerShareRaw := response[vault.Address.String()+`pricePerShare`]
 		pricePerShare := bigNumber.NewInt()
 		if len(pricePerShareRaw) == 1 {
 			pricePerShare = bigNumber.SetInt(pricePerShareRaw[0].(*big.Int))
 		}
-		if Store.AggregatedVault[chainID][vault.Address] == nil {
-			Store.AggregatedVault[chainID][vault.Address] = &TAggregatedVault{
-				Address:   vault.Address,
+		if Store.AggregatedVault[chainID][tokenAddress] == nil {
+			Store.AggregatedVault[chainID][tokenAddress] = &TAggregatedVault{
+				Address:   tokenAddress,
 				LegacyAPY: TLegacyAPIAPY{},
 			}
 		}
-		Store.AggregatedVault[chainID][vault.Address].SetPricePerShare(bigNumber.NewInt().Clone(pricePerShare))
+		Store.AggregatedVault[chainID][tokenAddress].SetPricePerShare(bigNumber.NewInt().Clone(pricePerShare))
 		go store.SaveInDB(
 			chainID,
 			store.TABLES.VAULTS,
-			vault.Address.String(),
-			Store.AggregatedVault[chainID][vault.Address],
+			tokenAddress.String(),
+			Store.AggregatedVault[chainID][tokenAddress],
 		)
 	}
 }

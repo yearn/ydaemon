@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TAllTokens struct {
@@ -31,19 +32,19 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	allTokens := make(map[uint64]map[common.Address]TAllTokens)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		tokenList := Store.Tokens[chainID]
+		tokenList := tokens.ListTokens(chainID)
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {
 				allTokens[chainID] = make(map[common.Address]TAllTokens)
 			}
-			metaToken, ok := meta.Store.TokensFromMeta[chainID][token.Address]
+			metaToken, ok := meta.Store.TokensFromMeta[chainID][common.FromAddress(token.Address)]
 			tokenDetails := TAllTokens{
-				Address:  token.Address,
+				Address:  common.FromAddress(token.Address),
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Price:    token.Price,
 				Decimals: token.Decimals,
-				IsVault:  token.IsVault,
+				IsVault:  token.IsVault(),
 			}
 			if ok {
 				tokenDetails.DisplaySymbol = metaToken.Symbol
@@ -60,7 +61,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 					tokenDetails.Description = local.Description
 				}
 			}
-			allTokens[chainID][token.Address] = tokenDetails
+			allTokens[chainID][common.FromAddress(token.Address)] = tokenDetails
 		}
 	}
 	c.JSON(http.StatusOK, allTokens)
@@ -76,16 +77,16 @@ func (y Controller) GetTokens(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
 
 	allTokens := make(map[common.Address]TAllTokens)
-	tokenList := Store.Tokens[chainID]
+	tokenList := tokens.ListTokens(chainID)
 	for _, token := range tokenList {
-		metaToken, ok := meta.Store.TokensFromMeta[chainID][token.Address]
+		metaToken, ok := meta.Store.TokensFromMeta[chainID][common.FromAddress(token.Address)]
 		tokenDetails := TAllTokens{
-			Address:  token.Address,
+			Address:  common.FromAddress(token.Address),
 			Name:     token.Name,
 			Symbol:   token.Symbol,
 			Price:    token.Price,
 			Decimals: token.Decimals,
-			IsVault:  token.IsVault,
+			IsVault:  token.IsVault(),
 		}
 		if ok {
 			tokenDetails.DisplaySymbol = metaToken.Symbol
@@ -102,7 +103,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 				tokenDetails.Description = local.Description
 			}
 		}
-		allTokens[token.Address] = tokenDetails
+		allTokens[common.FromAddress(token.Address)] = tokenDetails
 	}
 
 	c.JSON(http.StatusOK, allTokens)

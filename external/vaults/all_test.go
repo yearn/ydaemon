@@ -11,7 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/strategies"
-	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/internal"
 )
 
 func newRouter() *gin.Engine {
@@ -67,12 +67,12 @@ func loadMetaDaemons() {
 	meta.FetchProtocolsFromMeta(42161)
 	meta.FetchProtocolsFromMeta(42)
 }
-func loadTokensDaemons() {
-	tokens.FetchTokenList(1)
-	tokens.FetchTokenList(10)
-	tokens.FetchTokenList(250)
-	tokens.FetchTokenList(42161)
-	tokens.FetchTokenList(42)
+func initializeInternal() {
+	internal.Initialize(1)
+	internal.Initialize(10)
+	internal.Initialize(250)
+	internal.Initialize(42161)
+	internal.Initialize(42)
 }
 func loadStrategiesDaemons() {
 	strategies.FetchWithdrawalQueueMulticallData(1)
@@ -132,8 +132,8 @@ func loadVaultDaemons() {
 }
 
 func TestEnvironment(t *testing.T) {
+	initializeInternal()
 	loadMetaDaemons()
-	loadTokensDaemons()
 	loadStrategiesDaemons()
 
 	//Init the server as non-blocking mode

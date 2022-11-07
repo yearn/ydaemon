@@ -13,7 +13,8 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/external/prices"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 func excludeNameLike(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
@@ -192,21 +193,21 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		strategy.RiskScores.LongevityImpact = getLongevityImpact(data.Activation)
 
 		// Fetch tvl of strategy
-		var tokenData *tokens.TERC20Token
-		if tokenAddress, ok := tokens.Store.VaultToToken[chainID][strat.Vault]; ok {
-			if tokenData, ok = tokens.Store.Tokens[chainID][tokenAddress]; !ok {
-				logs.Warning("Impossible to find tokenData for token ", tokenAddress.String())
-				Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
-				continue
-			}
-		} else {
+		tokenData, ok := tokens.FindUnderlyingForVault(chainID, strat.Vault)
+		if !ok {
 			logs.Warning("Impossible to find token for vault ", strat.Vault.String())
 			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
 			continue
 		}
 
+		_tokenPrice, ok := prices.Store.TokenPrices[chainID][common.FromAddress(tokenData.Address)]
+		if !ok {
+			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
+		}
+		humanizedPrice, _ := helpers.FormatAmount(_tokenPrice.String(), 6)
+		tokenPrice := bigNumber.NewFloat(humanizedPrice)
+
 		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
-		tokenPrice := bigNumber.NewFloat(tokenData.Price)
 		tvl := bigNumber.NewFloat(0).Mul(amount, tokenPrice)
 		strategy.RiskScores.TVLImpact = getTVLImpact(tvl)
 
@@ -221,7 +222,6 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		stratGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentTVL, tvl)
 		stratGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(stratGroup.Allocation.CurrentAmount, amount)
 		if tokenPrice.Sign() <= 0 {
-			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
 			stratGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0)
 			stratGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0)
 		} else {

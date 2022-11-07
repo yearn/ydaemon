@@ -44,6 +44,8 @@ func Initialize(chainID uint64) {
 	**********************************************************************************************/
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 
+	return //No need to continue for now
+
 	/**********************************************************************************************
 	** Fetching all the strategiesList and relevant transfers to proceed
 	**********************************************************************************************/

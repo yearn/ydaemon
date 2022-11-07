@@ -42,7 +42,8 @@ func loadDaemonsForAllChains() {
 }
 
 func main() {
-	go internal.Initialize(1)
+	internal.Initialize(1)
+
 	logs.Info(`Loading store data to yDaemon memory...`)
 	loadDaemonsForAllChains()
 	logs.Info(`Summoning yDaemon...`)

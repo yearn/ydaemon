@@ -12,6 +12,7 @@ import (
 **************************************************************************************************/
 
 var ERC20ABI, _ = contracts.ERC20MetaData.GetAbi()
+var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
 var CurvePoolRegistryABI, _ = contracts.CurvePoolRegistryMetaData.GetAbi()
 var CTokenABI, _ = contracts.CTokenMetaData.GetAbi()
 var ATokenV1ABI, _ = contracts.ATokenV1MetaData.GetAbi()
@@ -70,6 +71,25 @@ func getDecimals(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      ERC20ABI,
 		Method:   `decimals`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func getToken(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnVaultABI.Pack("token")
+	if err != nil {
+		return ethereum.Call{
+			Target:   contractAddress,
+			Abi:      YearnVaultABI,
+			Method:   `token`,
+			CallData: nil,
+			Name:     name,
+		}
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultABI,
+		Method:   `token`,
 		CallData: parsedData,
 		Name:     name,
 	}

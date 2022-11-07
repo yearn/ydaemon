@@ -135,7 +135,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 			// This is the realized gain or loss for this withdrawal
 			fifoRealizedGains = append(fifoRealizedGains, gainOrLoss)
 
-			allShareMinted[latestMintIndex] = bigNumber.NewInt(0).Sub(allShareMinted[latestMintIndex], latestSharesMinted)
+			allShareMinted[latestMintIndex] = bigNumber.NewInt(0)
 			latestMintIndex++
 		}
 

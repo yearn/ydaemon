@@ -15,18 +15,8 @@ import (
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
+// CURVE_REGISTRY_ADDRESS should be in a map of chainID -> []TRegistry, and probably in a separate file
 var CURVE_REGISTRY_ADDRESS = common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`)
-
-// TERC20Token contains the basic information of an ERC20 token
-type TERC20Token struct {
-	Address                   common.Address   `json:"address"`
-	UnderlyingTokensAddresses []common.Address `json:"underlyingTokensAddresses,omitempty"`
-	Name                      string           `json:"name"`
-	Symbol                    string           `json:"symbol"`
-	Price                     float64          `json:"price"`
-	Decimals                  uint64           `json:"decimals"`
-	Type                      string           `json:"type"`
-}
 
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
@@ -53,6 +43,7 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		calls = append(calls, getName(token.String(), token))
 		calls = append(calls, getSymbol(token.String(), token))
 		calls = append(calls, getDecimals(token.String(), token))
+		calls = append(calls, getToken(token.String(), token))
 		calls = append(calls, getPoolFromLpToken(token.String(), CURVE_REGISTRY_ADDRESS, token))
 		calls = append(calls, getCompoundUnderlying(token.String(), token))
 		calls = append(calls, getAaveV1Underlying(token.String(), token))
@@ -89,6 +80,7 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		rawName := response[token.String()+`name`]
 		rawSymbol := response[token.String()+`symbol`]
 		rawDecimals := response[token.String()+`decimals`]
+		rawYearnVaultToken := response[token.String()+`token`]
 		rawPoolFromLpToken := response[token.String()+`get_pool_from_lp_token`]
 		rawCUnderlying := response[token.String()+`underlying`]
 		rawAV1Underlying := response[token.String()+`underlyingAssetAddress`]
@@ -102,6 +94,24 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 			Name:     rawName[0].(string),
 			Symbol:   rawSymbol[0].(string),
 			Decimals: uint64(rawDecimals[0].(uint8)),
+		}
+
+		/******************************************************************************************
+		** Checking if the token is a Yearn Vault. We can determined that if we got a valid
+		** response from the `token` RPC call.
+		** If so, we set the token type to `Yeearn Vault`, we fetch the Coins from the pool and we
+		** add the coins to the newToken UnderlyingTokensAddresses.
+		** We can also add the coins to the relatedTokensList, so we can fetch their information
+		** later.
+		******************************************************************************************/
+		isYearnVault := rawYearnVaultToken != nil && rawYearnVaultToken[0].(common.Address) != common.Address{}
+		if isYearnVault {
+			newToken.Type = `Yearn Vault`
+			coin := rawYearnVaultToken[0].(common.Address)
+			if (coin != common.Address{}) {
+				relatedTokensList = append(relatedTokensList, coin)
+				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+			}
 		}
 
 		/******************************************************************************************
@@ -214,9 +224,6 @@ func findAllTokens(
 
 	newtokenMap := fetchBasicInformations(chainID, tokenMapAddresses)
 	for _, token := range newtokenMap {
-		if tokenMap[token.Address].Type == `Yearn Vault` {
-			token.Type = `Yearn Vault`
-		}
 		newMap[token.Address] = token
 	}
 
@@ -248,7 +255,7 @@ func RetrieveAllTokens(
 	** from the upcoming calls
 	**********************************************************************************************/
 	tokenMap := make(map[common.Address]*TERC20Token)
-	store.Interate(chainID, store.TABLES.TOKENS, &tokenMap)
+	store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -261,15 +268,31 @@ func RetrieveAllTokens(
 	for _, currentVault := range vaults {
 		if _, ok := tokenMap[currentVault.VaultsAddress]; !ok {
 			updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
-				Address:                   currentVault.VaultsAddress,
-				UnderlyingTokensAddresses: []common.Address{currentVault.TokenAddress},
-				Type:                      `Yearn Vault`,
+				Address: currentVault.VaultsAddress,
 			}
 		}
 
 		if _, ok := tokenMap[currentVault.TokenAddress]; !ok {
 			updatedTokenMap[currentVault.TokenAddress] = &TERC20Token{
 				Address: currentVault.TokenAddress,
+			}
+		}
+	}
+
+	/**********************************************************************************************
+	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
+	** We will add them manually here.
+	**********************************************************************************************/
+	extraTokens := []string{
+		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV
+		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell
+	}
+	for _, tokenAddress := range extraTokens {
+		tokenAddress := common.HexToAddress(tokenAddress)
+		if _, ok := tokenMap[tokenAddress]; !ok {
+			updatedTokenMap[tokenAddress] = &TERC20Token{
+				Address: tokenAddress,
 			}
 		}
 	}
@@ -303,9 +326,10 @@ func RetrieveAllTokens(
 			}(token)
 		}
 		wg.Wait()
-		store.Interate(chainID, store.TABLES.TOKENS, &tokenMap)
+		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
 	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
+	_tokenMap[chainID] = tokenMap
 	return tokenMap
 }

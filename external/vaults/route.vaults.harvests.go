@@ -72,7 +72,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	}
 
 	// Sorting the data by timestamp
-	var sortedData []interface{} = make([]interface{}, len(harvests))
+	var sortedData = make([]interface{}, len(harvests))
 	for i, d := range harvests {
 		sortedData[i] = d
 	}

@@ -250,7 +250,7 @@ func RetrieveAllStrategies(
 		store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(strategyMap), `strategies`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(strategyMap), `strategies`)
 	_strategyMap[chainID] = strategyMap
 	return strategyMap
 }

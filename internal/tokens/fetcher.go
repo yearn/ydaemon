@@ -349,7 +349,7 @@ func RetrieveAllTokens(
 		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
 	_tokenMap[chainID] = tokenMap
 	return tokenMap
 }

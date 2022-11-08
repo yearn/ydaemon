@@ -276,6 +276,6 @@ func RetrieveAllStrategiesAdded(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(allStrategiesList), `strategies from vaults events`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(allStrategiesList), `strategies from vaults events`)
 	return allStrategiesList
 }

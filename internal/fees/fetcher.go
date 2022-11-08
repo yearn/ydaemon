@@ -327,6 +327,6 @@ func RetrieveAllFeesBPS(
 		}
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve the fees BPS updates`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve the fees BPS updates`)
 	return managementFeeForVaults, performanceFeeForVaults, performanceFeeForStrategies
 }

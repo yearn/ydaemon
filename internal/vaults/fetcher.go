@@ -286,7 +286,7 @@ func RetrieveAllVaults(
 		store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults informations`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults informations`)
 	_vaultMap[chainID] = vaultMap
 	return vaultMap
 }

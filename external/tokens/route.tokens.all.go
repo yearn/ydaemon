@@ -16,7 +16,6 @@ type TAllTokens struct {
 	Address       common.Address        `json:"address"`
 	Name          string                `json:"name"`
 	Symbol        string                `json:"symbol"`
-	Price         float64               `json:"price"`
 	Decimals      uint64                `json:"decimals"`
 	IsVault       bool                  `json:"isVault"`
 	DisplayName   string                `json:"display_name,omitempty"`
@@ -42,7 +41,6 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 				Address:  common.FromAddress(token.Address),
 				Name:     token.Name,
 				Symbol:   token.Symbol,
-				Price:    token.Price,
 				Decimals: token.Decimals,
 				IsVault:  token.IsVault(),
 			}
@@ -84,7 +82,6 @@ func (y Controller) GetTokens(c *gin.Context) {
 			Address:  common.FromAddress(token.Address),
 			Name:     token.Name,
 			Symbol:   token.Symbol,
-			Price:    token.Price,
 			Decimals: token.Decimals,
 			IsVault:  token.IsVault(),
 		}

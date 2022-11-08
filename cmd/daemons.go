@@ -37,14 +37,13 @@ func SummonDaemons(chainID uint64) {
 	}
 
 	var wg sync.WaitGroup
+
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
 	wg.Add(8)
 	{
-		go runDaemon(chainID, &wg, 1*time.Minute, internal.LoadTokens)
-
 		//TODO: REPLACE WITH INTERNAL RELOADING
-		// go runDaemon(chainID, &wg, time.Hour, tokens.FetchTokenList)
+		go runDaemon(chainID, &wg, 1*time.Minute, internal.LoadTokens)
 		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
 		go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
 		go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
@@ -55,23 +54,17 @@ func SummonDaemons(chainID uint64) {
 	}
 	wg.Wait()
 
-	wg.Add(1)
+	wg.Add(2)
 	{
+		go runDaemon(chainID, &wg, 1*time.Minute, internal.LoadVaults)
 		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
 	}
 	wg.Wait()
 
 	wg.Add(2)
 	{
-		//Require tokens.FetchTokenList to be done
-		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultMulticallData)
 		//Require strategies.FetchWithdrawalQueueMulticallData to be done
 		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
-	}
-	wg.Wait()
-
-	wg.Add(1)
-	{
 		//Require vaults.FetchVaultMulticallData to be done
 		go runDaemon(chainID, &wg, time.Minute, prices.FetchLens)
 	}

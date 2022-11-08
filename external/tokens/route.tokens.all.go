@@ -76,7 +76,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 	}
 	localization := helpers.SafeString(c.Query("loc"), "en")
 
-	allTokens := make(map[common.Address]TAllTokens)
+	allTokens := make(map[string]TAllTokens)
 	tokenList := tokens.ListTokens(chainID)
 	for _, token := range tokenList {
 		metaToken, ok := meta.Store.TokensFromMeta[chainID][common.FromAddress(token.Address)]
@@ -103,7 +103,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 				tokenDetails.Description = local.Description
 			}
 		}
-		allTokens[common.FromAddress(token.Address)] = tokenDetails
+		allTokens[common.FromAddress(token.Address).Hex()] = tokenDetails
 	}
 
 	c.JSON(http.StatusOK, allTokens)

@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/vaults"
+	"github.com/yearn/ydaemon/internal"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon
@@ -38,8 +39,10 @@ func SummonDaemons(chainID uint64) {
 	var wg sync.WaitGroup
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(7)
+	wg.Add(8)
 	{
+		go runDaemon(chainID, &wg, 1*time.Minute, internal.LoadTokens)
+
 		//TODO: REPLACE WITH INTERNAL RELOADING
 		// go runDaemon(chainID, &wg, time.Hour, tokens.FetchTokenList)
 		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)

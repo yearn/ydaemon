@@ -97,6 +97,6 @@ func RetrieveActivationForAllVaults(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `activation events`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `activation events`)
 	return vaultListWithActivation
 }

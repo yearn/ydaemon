@@ -178,7 +178,7 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 		store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(priceMap), `prices`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(priceMap), `prices`)
 	_priceMap[chainID] = priceMap
 	return priceMap
 }

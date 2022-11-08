@@ -153,5 +153,5 @@ func Initialize(chainID uint64) {
 		count++
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to process`, count, `harvests`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to process`, count, `harvests`)
 }

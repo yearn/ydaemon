@@ -157,7 +157,7 @@ func RetrieveAllTransferFromVaultsToStrategies(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `transfers from vaults to strategies`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `transfers from vaults to strategies`)
 	return asyncMapTransfers
 }
 
@@ -236,6 +236,6 @@ func RetrieveAllTransferFromVaultsToTreasury(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `transfers from vaults to treasury`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `transfers from vaults to treasury`)
 	return transfersFromVaultsToStrategies
 }

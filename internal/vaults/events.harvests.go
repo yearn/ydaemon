@@ -117,6 +117,6 @@ func RetrieveHarvests(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `reports`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `reports`)
 	return lastReportForStrategy
 }

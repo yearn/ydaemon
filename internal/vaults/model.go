@@ -65,51 +65,35 @@ type TMigration struct {
 	Address   common.Address `json:"address"`
 }
 
-//TVaultDetails holds some extra information about the vault.
-type TVaultDetails struct {
-	Management            common.Address   `json:"management"`
-	Governance            common.Address   `json:"governance"`
-	Guardian              common.Address   `json:"guardian"`
-	Rewards               common.Address   `json:"rewards"`
-	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`
-	Comment               string           `json:"comment"`
-	APYTypeOverride       string           `json:"apyTypeOverride"`
-	APYOverride           float64          `json:"apyOverride"`
-	Order                 float32          `json:"-"`
-	PerformanceFee        uint64           `json:"performanceFee"`
-	ManagementFee         uint64           `json:"managementFee"`
-	DepositsDisabled      bool             `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool             `json:"withdrawalsDisabled"`
-	AllowZapIn            bool             `json:"allowZapIn"`
-	AllowZapOut           bool             `json:"allowZapOut"`
-	Retired               bool             `json:"retired"`
-	WithdrawalQueue       []common.Address `json:"-"` //Ignored from json
-}
-
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address            ethcommon.Address       `json:"address"`
-	Symbol             string                  `json:"symbol"`
-	DisplaySymbol      string                  `json:"display_symbol"`
-	FormatedSymbol     string                  `json:"formated_symbol"`
-	Name               string                  `json:"name"`
-	DisplayName        string                  `json:"display_name"`
-	FormatedName       string                  `json:"formated_name"`
-	Icon               string                  `json:"icon"`
-	Version            string                  `json:"version"`
-	Type               string                  `json:"type"`
-	Inception          uint64                  `json:"inception"`
-	Decimals           uint64                  `json:"decimals"`
-	Endorsed           bool                    `json:"endorsed"`
-	Emergency_shutdown bool                    `json:"emergency_shutdown"`
-	PricePerShare      bigNumber.Int           `json:"pricePerShare"`
-	Token              tokens.TERC20Token      `json:"token"`
-	TVL                TTVL                    `json:"tvl"`
-	APY                TAPY                    `json:"apy"`
-	Strategies         []*strategies.TStrategy `json:"strategies"`
-	Migration          TMigration              `json:"migration"`
-	Details            *TVaultDetails          `json:"details"`
+	Address               ethcommon.Address  `json:"address"`
+	Management            common.Address     `json:"management"`
+	Governance            common.Address     `json:"governance"`
+	Guardian              common.Address     `json:"guardian"`
+	Rewards               common.Address     `json:"rewards"`
+	WithdrawalQueue       []common.Address   `json:"withdrawalQueue"` //Ignored from json
+	PricePerShare         *bigNumber.Int     `json:"pricePerShare"`
+	DepositLimit          *bigNumber.Int     `json:"depositLimit"`
+	AvailableDepositLimit *bigNumber.Int     `json:"availableDepositLimit,omitempty"`
+	TotalAssets           *bigNumber.Int     `json:"total_assets"`
+	Symbol                string             `json:"symbol"`
+	DisplaySymbol         string             `json:"display_symbol"`
+	FormatedSymbol        string             `json:"formated_symbol"`
+	Name                  string             `json:"name"`
+	DisplayName           string             `json:"display_name"`
+	FormatedName          string             `json:"formated_name"`
+	Icon                  string             `json:"icon"`
+	Version               string             `json:"version"`
+	Type                  string             `json:"type"`
+	ChainID               uint64             `json:"chainID"`
+	Inception             uint64             `json:"inception"`
+	Decimals              uint64             `json:"decimals"`
+	PerformanceFee        uint64             `json:"performanceFee"`
+	ManagementFee         uint64             `json:"managementFee"`
+	Endorsed              bool               `json:"endorsed"`
+	EmergencyShutdown     bool               `json:"emergency_shutdown"`
+	Token                 tokens.TERC20Token `json:"token"`
 }
 
 func (t *TVault) BuildNames(metaVaultName string) {
@@ -165,11 +149,13 @@ func (t *TVault) BuildSymbol(metaVaultSymbol string) {
 	t.FormatedSymbol = formatedSymbol
 }
 
-func (t *TVault) BuildMigration(chainID uint64) {
-	migration := TMigration{}
-	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][common.FromAddress(t.Address)]
+func (t *TVault) BuildMigration() TMigration {
+	migration := TMigration{
+		Available: false,
+		Address:   common.FromAddress(t.Address),
+	}
 
-	if ok {
+	if vaultFromMeta, ok := meta.Store.VaultsFromMeta[t.ChainID][common.FromAddress(t.Address)]; ok {
 		migrationAddress := common.FromAddress(t.Address)
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
@@ -180,14 +166,15 @@ func (t *TVault) BuildMigration(chainID uint64) {
 			Address:   migrationAddress,
 		}
 	}
-	t.Migration = migration
+	return migration
 }
 
-func (t *TVault) BuildAPY(chainID uint64) {
+func (t *TVault) BuildAPY() TAPY {
 	apy := TAPY{}
-	aggregatedVault, ok := store.Store.AggregatedVault[chainID][common.FromAddress(t.Address)]
+	aggregatedVault, okLegacyAPI := store.Store.AggregatedVault[t.ChainID][common.FromAddress(t.Address)]
+	vaultFromMeta, okMeta := meta.Store.VaultsFromMeta[t.ChainID][common.FromAddress(t.Address)]
 
-	if ok {
+	if okLegacyAPI {
 		apy = TAPY{
 			Type:     aggregatedVault.LegacyAPY.Type,
 			GrossAPR: aggregatedVault.LegacyAPY.GrossAPR,
@@ -213,8 +200,35 @@ func (t *TVault) BuildAPY(chainID uint64) {
 				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
 			},
 		}
+		if okMeta && vaultFromMeta.APYTypeOverride != `` {
+			apy.Type = vaultFromMeta.APYTypeOverride
+		}
 	}
-	t.APY = apy
+	return apy
+}
+
+func (t *TVault) BuildTVL() TTVL {
+	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, common.FromAddress(t.Token.Address))
+	fHumanizedTVLPrice := getHumanizedValue(t.TotalAssets, int(t.Decimals), humanizedPrice)
+	strategiesList := strategies.ListStrategiesForVault(t.ChainID, common.FromAddress(t.Address))
+	delegatedTokenAsBN := bigNumber.NewInt(0)
+	fDelegatedValue := 0.0
+
+	for _, strat := range strategiesList {
+		delegatedValue := getHumanizedValue(strat.DelegatedAssets, int(t.Decimals), humanizedPrice)
+		delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
+		fDelegatedValue += delegatedValue
+	}
+
+	tvl := TTVL{
+		TotalAssets:          t.TotalAssets,
+		TotalDelegatedAssets: delegatedTokenAsBN,
+		TVL:                  fHumanizedTVLPrice - fDelegatedValue,
+		TVLDeposited:         fHumanizedTVLPrice,
+		TVLDelegated:         fDelegatedValue,
+		Price:                fHumanizedPrice,
+	}
+	return tvl
 }
 
 /**********************************************************************************************
@@ -223,6 +237,19 @@ func (t *TVault) BuildAPY(chainID uint64) {
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
 var _vaultMap = make(map[uint64]map[ethcommon.Address]*TVault)
+
+/**********************************************************************************************
+** GetVault will, for a given chainID, try to retrieve the vault from the _vaultMap variable.
+** It will return the vault if found, and a boolean indicating if the vault was found or not.
+**********************************************************************************************/
+func GetVault(chainID uint64, vaultAddress common.Address) (*TVault, bool) {
+	if vaultsForChain, ok := _vaultMap[chainID]; ok {
+		if vault, ok := vaultsForChain[vaultAddress.ToAddress()]; ok {
+			return vault, true
+		}
+	}
+	return nil, false
+}
 
 /**********************************************************************************************
 ** ListVaults will, for a given chainID, return the list of all the vaults stored in _vaultMap.

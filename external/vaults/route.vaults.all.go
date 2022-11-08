@@ -27,7 +27,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 
-	data := []vaults.TVault{}
+	data := []TExternalVault{}
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := common.FromAddress(currentVault.Address)
@@ -38,9 +38,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		if ok && vaultFromMeta.HideAlways && hideAlways {
 			continue
 		}
-		currentVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
-
-		data = append(data, *currentVault)
+		newVault := NewVault().AssignTVault(currentVault)
+		newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
+		data = append(data, *newVault)
 	}
 
 	// Preparing the sort. This specifics steps are needed to avoid a panic

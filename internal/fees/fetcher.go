@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -186,7 +187,7 @@ func filterUpdateStrategyPerformanceFee(
 func RetrieveAllFeesBPS(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
-	strategiesLists ...map[common.Address]map[common.Address]utils.TStrategyAdded,
+	strategiesLists ...map[common.Address]map[common.Address]strategies.TStrategyAdded,
 ) (
 	map[common.Address]map[uint64][]utils.TEventBlock,
 	map[common.Address]map[uint64][]utils.TEventBlock,

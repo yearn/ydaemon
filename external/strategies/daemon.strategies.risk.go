@@ -14,10 +14,11 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
-func excludeNameLike(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
+func excludeNameLike(strat *strategies.TStrategy, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
@@ -28,11 +29,11 @@ func excludeNameLike(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) b
 	return false
 }
 
-func includeAddress(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
-	return helpers.ContainsAddress(group.Criteria.Strategies, strat.Strategy)
+func includeAddress(strat *strategies.TStrategy, group TStrategyGroupFromRisk) bool {
+	return helpers.ContainsAddress(group.Criteria.Strategies, common.FromAddress(strat.Address))
 }
 
-func includeNameLike(strat *TAggregatedStrategy, group TStrategyGroupFromRisk) bool {
+func includeNameLike(strat *strategies.TStrategy, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.NameLike) > 0 {
 		for _, nameLike := range group.Criteria.NameLike {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
@@ -106,7 +107,7 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 	}
 }
 
-func getStrategyGroup(chainID uint64, strategy *TAggregatedStrategy) *TStrategyGroupFromRisk {
+func getStrategyGroup(chainID uint64, strategy *strategies.TStrategy) *TStrategyGroupFromRisk {
 	groups := Store.StrategyGroupFromRisk[chainID]
 	var stratGroup *TStrategyGroupFromRisk
 	for _, group := range groups {
@@ -167,11 +168,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		Store.StrategiesFromRisk[chainID] = make(map[common.Address]TStrategyFromRisk)
 	}
 
-	strategies, ok := Store.AggregatedStrategies[chainID]
-	if !ok {
-		logs.Warning("Error reading strategyList information")
-		return
-	}
+	strategiesList := strategies.ListStrategies(chainID)
 
 	// Refresh the tvl of groups
 	groups := Store.StrategyGroupFromRisk[chainID]
@@ -180,23 +177,20 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 	}
 
-	for _, strat := range strategies {
+	for _, strat := range strategiesList {
+		strategyAddress := common.FromAddress(strat.Address)
+		vaultAddress := common.FromAddress(strat.VaultAddress)
 		stratGroup := getStrategyGroup(chainID, strat)
 		strategy := getDefaultRiskGroup()
 
 		// Fetch activation and tvl from multicall
-		data, ok := Store.AggregatedStrategies[chainID][strat.Strategy]
-		if !ok {
-			logs.Warning("Error fetching strategy data from multicall")
-			continue
-		}
-		strategy.RiskScores.LongevityImpact = getLongevityImpact(data.Activation)
+		strategy.RiskScores.LongevityImpact = getLongevityImpact(strat.Activation)
 
 		// Fetch tvl of strategy
-		tokenData, ok := tokens.FindUnderlyingForVault(chainID, strat.Vault)
+		tokenData, ok := tokens.FindUnderlyingForVault(chainID, vaultAddress)
 		if !ok {
-			logs.Warning("Impossible to find token for vault ", strat.Vault.String())
-			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+			logs.Warning("Impossible to find token for vault ", strat.VaultAddress.String())
+			Store.StrategiesFromRisk[chainID][strategyAddress] = strategy
 			continue
 		}
 
@@ -207,14 +201,14 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		humanizedPrice, _ := helpers.FormatAmount(_tokenPrice.String(), 6)
 		tokenPrice := bigNumber.NewFloat(humanizedPrice)
 
-		_, amount := helpers.FormatAmount(data.EstimatedTotalAssets.String(), int(tokenData.Decimals))
+		_, amount := helpers.FormatAmount(strat.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 		tvl := bigNumber.NewFloat(0).Mul(amount, tokenPrice)
 		strategy.RiskScores.TVLImpact = getTVLImpact(tvl)
 
 		// Send to Others group if no group was found
 		if stratGroup == nil {
 			logs.Warning("Impossible to find stratGroup for group ", strat.Name)
-			Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+			Store.StrategiesFromRisk[chainID][strategyAddress] = strategy
 			continue
 		}
 
@@ -238,7 +232,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 		strategy.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
 		strategy.RiskScores.TestingScore = stratGroup.TestingScore
 		strategy.Allocation = stratGroup.Allocation
-		Store.StrategiesFromRisk[chainID][strat.Strategy] = strategy
+		Store.StrategiesFromRisk[chainID][strategyAddress] = strategy
 	}
 }
 

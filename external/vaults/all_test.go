@@ -10,7 +10,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/internal"
 )
 
@@ -74,19 +73,7 @@ func initializeInternal() {
 	internal.Initialize(42161)
 	internal.Initialize(42)
 }
-func loadStrategiesDaemons() {
-	strategies.FetchWithdrawalQueueMulticallData(1)
-	strategies.FetchWithdrawalQueueMulticallData(10)
-	strategies.FetchWithdrawalQueueMulticallData(250)
-	strategies.FetchWithdrawalQueueMulticallData(42161)
-	strategies.FetchWithdrawalQueueMulticallData(42)
 
-	strategies.FetchStrategiesMulticallData(1)
-	strategies.FetchStrategiesMulticallData(10)
-	strategies.FetchStrategiesMulticallData(250)
-	strategies.FetchStrategiesMulticallData(42161)
-	strategies.FetchStrategiesMulticallData(42)
-}
 func loadVaultDaemons() {
 	FetchVaultsFromV1(1)
 	FetchVaultsFromV1(10)
@@ -122,7 +109,6 @@ func loadVaultDaemons() {
 func TestEnvironment(t *testing.T) {
 	initializeInternal()
 	loadMetaDaemons()
-	loadStrategiesDaemons()
 
 	//Init the server as non-blocking mode
 	go newRouter().Run(":8082")

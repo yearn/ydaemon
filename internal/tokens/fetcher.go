@@ -329,7 +329,8 @@ func RetrieveAllTokens(
 
 		/**********************************************************************************************
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of tokenAddress -> TTokens. All tokens will be retrievable from the store.Interate() func.
+		** of tokenAddress -> TERC20Token. All tokens will be retrievable from the store.Interate()
+		** func.
 		**********************************************************************************************/
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedTokenMap))

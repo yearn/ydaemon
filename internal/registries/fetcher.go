@@ -185,6 +185,6 @@ func RetrieveAllVaults(
 		uniqueVaultsList = filteredVaultsList
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(uniqueVaultsList), `vaults`)
+	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(uniqueVaultsList), `vaults from registry`)
 	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
 }

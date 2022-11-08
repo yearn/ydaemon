@@ -11,11 +11,12 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -40,6 +41,7 @@ func fetchBasicInformations(
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
 	** multicall and will later be accessible via a concatened string `vaultAddress + methodName`.
 	**********************************************************************************************/
+	maxStrategiesPerVault := 20
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, vault := range vaults {
@@ -57,6 +59,9 @@ func fetchBasicInformations(
 		calls = append(calls, getTotalAssets(vault.String(), common.FromAddress(vault)))
 		calls = append(calls, getDepositLimit(vault.String(), common.FromAddress(vault)))
 		calls = append(calls, getAvailableDepositLimit(vault.String(), common.FromAddress(vault)))
+		for i := 0; i < maxStrategiesPerVault; i++ {
+			calls = append(calls, getVaultWithdrawalQueue(vault.String(), int64(i), common.FromAddress(vault)))
+		}
 	}
 
 	/**********************************************************************************************
@@ -133,13 +138,14 @@ func fetchBasicInformations(
 		delegatedTokenAsBN := bigNumber.NewInt(0)
 		fDelegatedValue := 0.0
 
-		strategies := []strategies.TStrategy{}
-		for _, strat := range strategies {
-			stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
-			if err == nil {
-				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
-				fDelegatedValue += stratDelegatedValueAsFloat
-			}
+		strategiesList := []*strategies.TStrategy{}
+		for _, strat := range strategiesList {
+			_ = strat
+			// stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
+			// if err == nil {
+			// 	delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
+			// 	fDelegatedValue += stratDelegatedValueAsFloat
+			// }
 		}
 		/******************************************************************************************
 		** ! THIS PART MUST BE CLEANED
@@ -160,7 +166,7 @@ func fetchBasicInformations(
 			Version:            rawApiVersion[0].(string),
 			PricePerShare:      *bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
 			Emergency_shutdown: rawEmergencyShutdown[0].(bool),
-			Strategies:         strategies,
+			Strategies:         strategiesList,
 			Token: tokens.TERC20Token{
 				Address:       underlyingTokenData.Address,
 				Name:          underlyingTokenData.Name,
@@ -206,10 +212,25 @@ func fetchBasicInformations(
 		newVault.BuildAPY(chainID)
 		newVault.APY.Fees.Performance = float64(uint64(rawPerformanceFee[0].(*big.Int).Uint64()) / 10000)
 		newVault.APY.Fees.Management = float64(uint64(rawManagementFee[0].(*big.Int).Uint64()) / 10000)
-
 		if vaultFromMeta.APYTypeOverride != `` {
 			newVault.APY.Type = vaultFromMeta.APYTypeOverride
 		}
+
+		/******************************************************************************************
+		** Adding the withdrawal queue stuffs
+		******************************************************************************************/
+		withdrawQueueForStrategies := []common.Address{}
+		for i := 0; i < maxStrategiesPerVault; i++ {
+			result := response[vault.String()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
+			if len(result) == 1 {
+				strategyAddress := common.FromAddress(result[0].(ethcommon.Address))
+				if helpers.AddressIsValid(strategyAddress, chainID) {
+					withdrawQueueForStrategies = append(withdrawQueueForStrategies, strategyAddress)
+				}
+			}
+		}
+		newVault.Details.WithdrawalQueue = withdrawQueueForStrategies
+		strategies.SetInStrategiesWithdrawalQueue(chainID, vault, withdrawQueueForStrategies)
 		vaultList = append(vaultList, newVault)
 	}
 
@@ -335,7 +356,7 @@ func RetrieveAllVaults(
 		store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults`)
+	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults informations`)
 	_vaultMap[chainID] = vaultMap
 	return vaultMap
 }

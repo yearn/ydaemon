@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
 )
 
 func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
@@ -26,15 +27,14 @@ func BuildStrategies(
 	humanizedTokenPrice *bigNumber.Float,
 	vaultFromGraph models.TVaultFromGraph,
 ) []TStrategy {
-	strategies := []TStrategy{}
+	strategiesList := []TStrategy{}
 	strategiesFromMeta := meta.Store.StrategiesFromMeta[chainID]
-	strategiesAggregated := Store.AggregatedStrategies[chainID]
 	strategiesFromRisk := Store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesAggregated[strategy.Address]
+		multicallData, ok := strategies.FindStrategy(chainID, strategy.Address.ToAddress())
 		if !ok {
-			multicallData = &TAggregatedStrategy{}
+			multicallData = &strategies.TStrategy{}
 		}
 
 		currentStrategy := TStrategy{
@@ -135,13 +135,13 @@ func BuildStrategies(
 			currentStrategy.InQueue &&
 			currentStrategy.IsActive &&
 			!currentStrategy.TotalDebt.IsZero() {
-			strategies = append(strategies, currentStrategy)
+			strategiesList = append(strategiesList, currentStrategy)
 		} else if strategiesCondition == `inQueue` && currentStrategy.InQueue {
-			strategies = append(strategies, currentStrategy)
+			strategiesList = append(strategiesList, currentStrategy)
 		} else if strategiesCondition == `debtLimit` && debtLimit == 0 {
-			strategies = append(strategies, currentStrategy)
+			strategiesList = append(strategiesList, currentStrategy)
 		}
 
 	}
-	return strategies
+	return strategiesList
 }

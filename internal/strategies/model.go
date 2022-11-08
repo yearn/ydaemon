@@ -64,7 +64,7 @@ type TStrategy struct {
 	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
 	WithdrawalQueuePosition *bigNumber.Int          `json:"withdrawalQueuePosition"`
 	IsActive                bool                    `json:"isActive"`
-	Initialization          TStrategyInitialization `json:"initialization"`
+	Initialization          TStrategyInitialization `json:"-"`
 }
 
 /**********************************************************************************************

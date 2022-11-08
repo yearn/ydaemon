@@ -15,6 +15,11 @@ import (
 
 var AllHarvests = make(map[common.Address][]vaults.THarvest)
 
+func LoadTokens(chainID uint64) {
+	vaultsList := registries.RetrieveAllVaults(chainID)
+	tokens.RetrieveAllTokens(chainID, vaultsList)
+}
+
 func Initialize(chainID uint64) {
 	timeBefore := time.Now()
 	/**********************************************************************************************

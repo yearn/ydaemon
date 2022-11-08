@@ -30,15 +30,15 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 		}
 		addressStr := address.String()
 
-		humanizedPrices[addressStr] = 0
-		rawPrices[addressStr] = bigNumber.NewInt()
+		humanizedPrices[address.Hex()] = 0
+		rawPrices[address.Hex()] = bigNumber.NewInt()
 		price, ok := Store.TokenPrices[chainID][address]
 		if !ok {
 			continue
 		}
 		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-		humanizedPrices[addressStr] = humanizedPrice
-		rawPrices[addressStr] = price
+		humanizedPrices[address.Hex()] = humanizedPrice
+		rawPrices[address.Hex()] = price
 	}
 	if humanized {
 		c.JSON(http.StatusOK, humanizedPrices)

@@ -89,7 +89,6 @@ type TVaultDetails struct {
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	Address            ethcommon.Address      `json:"address"`
-	Registry           ethcommon.Address      `json:"registry"`
 	Symbol             string                 `json:"symbol"`
 	DisplaySymbol      string                 `json:"display_symbol"`
 	FormatedSymbol     string                 `json:"formated_symbol"`

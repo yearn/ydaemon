@@ -6,7 +6,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/prices"
+	"github.com/yearn/ydaemon/internal/prices"
 )
 
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
@@ -14,9 +14,8 @@ import (
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
 func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
-	prices := prices.Store.TokenPrices[chainID]
 	fPrice := new(bigNumber.Float)
-	price, ok := prices[tokenAddress]
+	price, ok := prices.FindPrice(chainID, tokenAddress)
 	if ok {
 		fPrice.SetInt(price)
 		humanizedPrice := new(bigNumber.Float).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))

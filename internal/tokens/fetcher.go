@@ -285,8 +285,9 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	extraTokens := []string{
 		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
-		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV
-		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell
+		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
+		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
+		`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
 	}
 	for _, tokenAddress := range extraTokens {
 		tokenAddress := common.HexToAddress(tokenAddress)

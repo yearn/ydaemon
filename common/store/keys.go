@@ -2,23 +2,21 @@ package store
 
 // TTables lists the keys used in the database
 type TTables = struct {
-	BLOCK_TIME        string
-	PRICES            string
-	STRATEGIES        string
-	STRATEGIES_LEGACY string
-	TOKENS            string
-	VAULTS            string
-	VAULTS_LEGACY     string
+	BLOCK_TIME    string
+	PRICES        string
+	STRATEGIES    string
+	TOKENS        string
+	VAULTS        string
+	VAULTS_LEGACY string
 }
 
 var TABLES = TTables{
-	BLOCK_TIME:        "blocktime",
-	PRICES:            "prices",
-	STRATEGIES:        "strategies",
-	STRATEGIES_LEGACY: "strategies_legacy",
-	TOKENS:            "tokens",
-	VAULTS:            "vaults",
-	VAULTS_LEGACY:     "legacy_vaults",
+	BLOCK_TIME:    "blocktime",
+	PRICES:        "prices",
+	STRATEGIES:    "strategies",
+	TOKENS:        "tokens",
+	VAULTS:        "vaults",
+	VAULTS_LEGACY: "legacy_vaults",
 }
 
 // TKeys lists the keys used in the database

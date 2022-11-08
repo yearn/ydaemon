@@ -2,7 +2,10 @@
   "$schema": "strategy",
   "name": "Aura Reinvest",
   "description": "Supplies {{token}} to [Aura Finance](https://app.aura.finance) to earn AURA and BAL (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-  "addresses": ["0xC7eF34BFEf71c54C23f072BD1a57D74d02fD125D"],
+  "addresses": [
+    "0xC7eF34BFEf71c54C23f072BD1a57D74d02fD125D",
+    "0x33e1086881F3664406Bba42Dcae038C5CD26F184"
+  ],
   "protocols": ["Aura Finance", "Balancer"],
   "protocolVersion": {
     "Aura Finance": "1",

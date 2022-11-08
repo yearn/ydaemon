@@ -6,7 +6,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/models"
-	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/internal/strategies"
 )
 
 func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
@@ -30,11 +30,10 @@ func prepareTVL(
 		humanizedPrice,
 	)
 
-	strategiesFromMulticall := strategies.Store.AggregatedStrategies[chainID]
 	for _, strat := range vaultFromGraph.Strategies {
-		multicallData, ok := strategiesFromMulticall[strat.Address]
+		multicallData, ok := strategies.FindStrategy(chainID, strat.Address.ToAddress())
 		if !ok {
-			multicallData = &strategies.TAggregatedStrategy{}
+			multicallData = &strategies.TStrategy{}
 		}
 
 		delegatedAssets := multicallData.DelegatedAssets

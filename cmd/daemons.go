@@ -50,26 +50,13 @@ func SummonDaemons(chainID uint64) {
 	}
 	wg.Wait()
 
-	wg.Add(2)
+	wg.Add(1)
 	{
 		//TODO: REPLACE WITH INTERNAL RELOADING
 		go runDaemon(chainID, &wg, 1*time.Minute, internal.InitializeV2)
-		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
 	}
 	wg.Wait()
 
-	wg.Add(1)
-	{
-		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
-	}
-	wg.Wait()
-
-	wg.Add(1)
-	{
-		//Require strategies.FetchWithdrawalQueueMulticallData to be done
-		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
-	}
-	wg.Wait()
 	wg.Add(1)
 	{
 		//Require prices.FetchLens to be done
@@ -86,9 +73,6 @@ func LoadDaemons(chainID uint64) {
 	}
 
 	var wg sync.WaitGroup
-	wg.Add(1)
-	go strategies.LoadAggregatedStrategies(chainID, &wg)
-	wg.Wait()
 
 	wg.Add(1)
 	go vaults.LoadAggregatedVaults(chainID, &wg)

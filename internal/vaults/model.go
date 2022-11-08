@@ -9,7 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -67,48 +67,49 @@ type TMigration struct {
 
 //TVaultDetails holds some extra information about the vault.
 type TVaultDetails struct {
-	Management            common.Address `json:"management"`
-	Governance            common.Address `json:"governance"`
-	Guardian              common.Address `json:"guardian"`
-	Rewards               common.Address `json:"rewards"`
-	DepositLimit          *bigNumber.Int `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
-	Comment               string         `json:"comment"`
-	APYTypeOverride       string         `json:"apyTypeOverride"`
-	APYOverride           float64        `json:"apyOverride"`
-	Order                 float32        `json:"-"`
-	PerformanceFee        uint64         `json:"performanceFee"`
-	ManagementFee         uint64         `json:"managementFee"`
-	DepositsDisabled      bool           `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool           `json:"withdrawalsDisabled"`
-	AllowZapIn            bool           `json:"allowZapIn"`
-	AllowZapOut           bool           `json:"allowZapOut"`
-	Retired               bool           `json:"retired"`
+	Management            common.Address   `json:"management"`
+	Governance            common.Address   `json:"governance"`
+	Guardian              common.Address   `json:"guardian"`
+	Rewards               common.Address   `json:"rewards"`
+	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
+	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`
+	Comment               string           `json:"comment"`
+	APYTypeOverride       string           `json:"apyTypeOverride"`
+	APYOverride           float64          `json:"apyOverride"`
+	Order                 float32          `json:"-"`
+	PerformanceFee        uint64           `json:"performanceFee"`
+	ManagementFee         uint64           `json:"managementFee"`
+	DepositsDisabled      bool             `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool             `json:"withdrawalsDisabled"`
+	AllowZapIn            bool             `json:"allowZapIn"`
+	AllowZapOut           bool             `json:"allowZapOut"`
+	Retired               bool             `json:"retired"`
+	WithdrawalQueue       []common.Address `json:"-"` //Ignored from json
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address            ethcommon.Address      `json:"address"`
-	Symbol             string                 `json:"symbol"`
-	DisplaySymbol      string                 `json:"display_symbol"`
-	FormatedSymbol     string                 `json:"formated_symbol"`
-	Name               string                 `json:"name"`
-	DisplayName        string                 `json:"display_name"`
-	FormatedName       string                 `json:"formated_name"`
-	Icon               string                 `json:"icon"`
-	Version            string                 `json:"version"`
-	Type               string                 `json:"type"`
-	Inception          uint64                 `json:"inception"`
-	Decimals           uint64                 `json:"decimals"`
-	Endorsed           bool                   `json:"endorsed"`
-	Emergency_shutdown bool                   `json:"emergency_shutdown"`
-	PricePerShare      bigNumber.Int          `json:"pricePerShare"`
-	Token              tokens.TERC20Token     `json:"token"`
-	TVL                TTVL                   `json:"tvl"`
-	APY                TAPY                   `json:"apy"`
-	Strategies         []strategies.TStrategy `json:"strategies"`
-	Migration          TMigration             `json:"migration"`
-	Details            *TVaultDetails         `json:"details"`
+	Address            ethcommon.Address       `json:"address"`
+	Symbol             string                  `json:"symbol"`
+	DisplaySymbol      string                  `json:"display_symbol"`
+	FormatedSymbol     string                  `json:"formated_symbol"`
+	Name               string                  `json:"name"`
+	DisplayName        string                  `json:"display_name"`
+	FormatedName       string                  `json:"formated_name"`
+	Icon               string                  `json:"icon"`
+	Version            string                  `json:"version"`
+	Type               string                  `json:"type"`
+	Inception          uint64                  `json:"inception"`
+	Decimals           uint64                  `json:"decimals"`
+	Endorsed           bool                    `json:"endorsed"`
+	Emergency_shutdown bool                    `json:"emergency_shutdown"`
+	PricePerShare      bigNumber.Int           `json:"pricePerShare"`
+	Token              tokens.TERC20Token      `json:"token"`
+	TVL                TTVL                    `json:"tvl"`
+	APY                TAPY                    `json:"apy"`
+	Strategies         []*strategies.TStrategy `json:"strategies"`
+	Migration          TMigration              `json:"migration"`
+	Details            *TVaultDetails          `json:"details"`
 }
 
 func (t *TVault) BuildNames(metaVaultName string) {

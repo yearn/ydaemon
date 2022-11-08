@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -37,6 +38,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		if ok && vaultFromMeta.HideAlways && hideAlways {
 			continue
 		}
+		currentVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
 
 		data = append(data, *currentVault)
 	}

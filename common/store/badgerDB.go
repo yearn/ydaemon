@@ -41,6 +41,7 @@ func _assertMap() {
 				DBMutex[chainID][TABLES.BLOCK_TIME] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.PRICES] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.STRATEGIES] = &sync.Mutex{}
+				DBMutex[chainID][TABLES.STRATEGIES_LEGACY] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.TOKENS] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.VAULTS] = &sync.Mutex{}
 				DBMutex[chainID][TABLES.VAULTS_LEGACY] = &sync.Mutex{}

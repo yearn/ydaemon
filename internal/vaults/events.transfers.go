@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -91,7 +92,7 @@ func filterTransfers(
 **********************************************************************************************/
 func RetrieveAllTransferFromVaultsToStrategies(
 	chainID uint64,
-	strategies map[common.Address]map[common.Address]utils.TStrategyAdded,
+	strategies map[common.Address]map[common.Address]strategies.TStrategyAdded,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 

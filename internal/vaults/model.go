@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
@@ -155,7 +155,7 @@ func (t *TVault) BuildMigration() TMigration {
 		Address:   common.FromAddress(t.Address),
 	}
 
-	if vaultFromMeta, ok := meta.Store.VaultsFromMeta[t.ChainID][common.FromAddress(t.Address)]; ok {
+	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address)); ok {
 		migrationAddress := common.FromAddress(t.Address)
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
@@ -172,7 +172,7 @@ func (t *TVault) BuildMigration() TMigration {
 func (t *TVault) BuildAPY() TAPY {
 	apy := TAPY{}
 	aggregatedVault, okLegacyAPI := store.Store.AggregatedVault[t.ChainID][common.FromAddress(t.Address)]
-	vaultFromMeta, okMeta := meta.Store.VaultsFromMeta[t.ChainID][common.FromAddress(t.Address)]
+	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address))
 
 	if okLegacyAPI {
 		apy = TAPY{

@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 // GetMetaStrategies will, for a given chainID, return all the meta informations for the strategies.
@@ -17,17 +18,12 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 	}
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	strategiesFromMeta, ok := Store.RawMetaStrategies[chainID]
-	if !ok {
-		c.String(http.StatusNotFound, "no data available")
-		return
-	}
-
+	strategiesFromMeta := meta.ListMetaStrategies(chainID)
 	if localization == "all" {
 		c.JSON(http.StatusOK, strategiesFromMeta)
 		return
 	}
-	localizedStrategiesFromMeta := []TStrategyFromMeta{}
+	localizedStrategiesFromMeta := []*meta.TStrategyFromMeta{}
 	for _, strategy := range strategiesFromMeta {
 		local := selectLocalizationFromString(localization, *strategy.Localization)
 		strategy.Name = local.Name
@@ -53,7 +49,7 @@ func (y Controller) GetMetaStrategy(c *gin.Context) {
 	}
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	strategyFromMeta, ok := Store.StrategiesFromMeta[chainID][address]
+	strategyFromMeta, ok := meta.GetMetaStrategy(chainID, address)
 	if !ok {
 		c.String(http.StatusNotFound, "no data available")
 		return

@@ -3,7 +3,7 @@ package vaults
 import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -86,6 +86,7 @@ type TExternalVaultDetails struct {
 	AllowZapIn            bool           `json:"allowZapIn"`
 	AllowZapOut           bool           `json:"allowZapOut"`
 	Retired               bool           `json:"retired"`
+	HideAlways            bool           `json:"hideAlways"`
 }
 
 // TExternalVault is the struct containing the information about a vault.
@@ -116,9 +117,9 @@ func NewVault() *TExternalVault {
 	return &TExternalVault{}
 }
 func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVault {
-	vaultFromMeta, ok := meta.Store.VaultsFromMeta[internalVault.ChainID][common.FromAddress(internalVault.Address)]
+	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, common.FromAddress(internalVault.Address))
 	if !ok {
-		vaultFromMeta = meta.TVaultFromMeta{
+		vaultFromMeta = &meta.TVaultFromMeta{
 			Order:               1000000000,
 			HideAlways:          false,
 			DepositsDisabled:    false,
@@ -176,6 +177,7 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 		Retired:               vaultFromMeta.Retired,
 		APYTypeOverride:       vaultFromMeta.APYTypeOverride,
 		APYOverride:           vaultFromMeta.APYOverride,
+		HideAlways:            vaultFromMeta.HideAlways,
 	}
 
 	return v

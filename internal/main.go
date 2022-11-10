@@ -6,6 +6,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/bribes"
 	"github.com/yearn/ydaemon/internal/fees"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
@@ -20,12 +21,18 @@ var AllHarvests = make(map[common.Address][]vaults.THarvest)
 var STRATLIST = []strategies.TStrategy{}
 
 func InitializeV2(chainID uint64) {
+	go InitializeBribes(chainID)
+
 	vaultsList := registries.RetrieveAllVaults(chainID)
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
 	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+}
+
+func InitializeBribes(chainID uint64) {
+	bribes.RetrieveAllRewardsAdded(chainID)
 }
 
 func Initialize(chainID uint64) {

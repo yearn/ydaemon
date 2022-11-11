@@ -6,8 +6,8 @@ type TTables = struct {
 	PRICES        string
 	STRATEGIES    string
 	TOKENS        string
-	TOKENS_LEGACY string
 	VAULTS        string
+	VAULTS_LEGACY string
 }
 
 var TABLES = TTables{
@@ -15,8 +15,8 @@ var TABLES = TTables{
 	PRICES:        "prices",
 	STRATEGIES:    "strategies",
 	TOKENS:        "tokens",
-	TOKENS_LEGACY: "tokens_legacy",
 	VAULTS:        "vaults",
+	VAULTS_LEGACY: "legacy_vaults",
 }
 
 // TKeys lists the keys used in the database

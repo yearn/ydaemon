@@ -9,6 +9,7 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 )
@@ -36,26 +37,26 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// Unmarshal the response body into the variable AggregatedVault. Body is a byte array,
 	// with this manipulation we are putting it in the correct TLegacyAPI struct format
-	vaults := []TLegacyAPI{}
+	vaults := []models.TLegacyAPI{}
 	if err := json.Unmarshal(body, &vaults); err != nil {
 		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address
-	if Store.AggregatedVault[chainID] == nil {
-		Store.AggregatedVault[chainID] = make(map[common.Address]*TAggregatedVault)
+	if store.Store.AggregatedVault[chainID] == nil {
+		store.Store.AggregatedVault[chainID] = make(map[common.Address]*models.TAggregatedVault)
 	}
 	for _, vault := range vaults {
-		Store.AggregatedVault[chainID][vault.Address] = &TAggregatedVault{
+		store.Store.AggregatedVault[chainID][vault.Address] = &models.TAggregatedVault{
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
 		go store.SaveInDB(
 			chainID,
-			store.TABLES.VAULTS,
+			store.TABLES.VAULTS_LEGACY,
 			vault.Address.String(),
-			Store.AggregatedVault[chainID][vault.Address],
+			store.Store.AggregatedVault[chainID][vault.Address],
 		)
 	}
 }
@@ -63,11 +64,11 @@ func FetchVaultsFromV1(chainID uint64) {
 // LoadAggregatedVaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
 func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
-	temp := make(map[common.Address]*TAggregatedVault)
-	store.Iterate(chainID, store.TABLES.VAULTS, &temp)
+	temp := make(map[common.Address]*models.TAggregatedVault)
+	store.Iterate(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 
 	if temp != nil && (len(temp) > 0) {
-		Store.AggregatedVault[chainID] = temp
+		store.Store.AggregatedVault[chainID] = temp
 		logs.Success("Data loaded for the AggregatedVault store for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

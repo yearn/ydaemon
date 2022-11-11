@@ -88,12 +88,6 @@ func loadStrategiesDaemons() {
 	strategies.FetchStrategiesMulticallData(42)
 }
 func loadVaultDaemons() {
-	FetchVaultMulticallData(1)
-	FetchVaultMulticallData(10)
-	FetchVaultMulticallData(250)
-	FetchVaultMulticallData(42161)
-	FetchVaultMulticallData(42)
-	FetchVaultMulticallData(4545456)
 	FetchVaultsFromV1(1)
 	FetchVaultsFromV1(10)
 	FetchVaultsFromV1(250)
@@ -117,12 +111,6 @@ func loadVaultDaemons() {
 	// go LoadAPIV1Vaults(4545456, &wg)
 	// wg.Wait()
 
-	FetchVaultMulticallData(1)
-	FetchVaultMulticallData(10)
-	FetchVaultMulticallData(250)
-	FetchVaultMulticallData(42161)
-	FetchVaultMulticallData(42)
-	FetchVaultMulticallData(4545456)
 	FetchVaultsFromV1(1)
 	FetchVaultsFromV1(10)
 	FetchVaultsFromV1(250)

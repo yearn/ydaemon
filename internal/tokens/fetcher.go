@@ -2,16 +2,21 @@ package tokens
 
 import (
 	"math"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	commonOverride "github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -94,7 +99,20 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 			Name:     rawName[0].(string),
 			Symbol:   rawSymbol[0].(string),
 			Decimals: uint64(rawDecimals[0].(uint8)),
+			Icon:     env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + token.Hex() + `/logo-128.png`,
 		}
+
+		metaTokenName := newToken.Name
+		metaTokenSymbol := newToken.Symbol
+		metaTokenDescription := ``
+		if tokenDataFromMeta, ok := meta.Store.TokensFromMeta[chainID][commonOverride.FromAddress(token)]; ok {
+			metaTokenName = strings.Replace(tokenDataFromMeta.Name, "\"", "", -1)
+			metaTokenSymbol = strings.Replace(tokenDataFromMeta.Symbol, "\"", "", -1)
+			metaTokenDescription = tokenDataFromMeta.Description
+		}
+		newToken.DisplayName = metaTokenName
+		newToken.DisplaySymbol = metaTokenSymbol
+		newToken.Description = metaTokenDescription
 
 		/******************************************************************************************
 		** Checking if the token is a Yearn Vault. We can determined that if we got a valid

@@ -11,9 +11,12 @@ type TERC20Token struct {
 	UnderlyingTokensAddresses []ethcommon.Address `json:"underlyingTokensAddresses,omitempty"`
 	Name                      string              `json:"name"`
 	Symbol                    string              `json:"symbol"`
-	Price                     float64             `json:"price"`
-	Decimals                  uint64              `json:"decimals"`
 	Type                      string              `json:"type"`
+	DisplayName               string              `json:"display_name"`
+	DisplaySymbol             string              `json:"display_symbol"`
+	Description               string              `json:"description"`
+	Icon                      string              `json:"icon"`
+	Decimals                  uint64              `json:"decimals"`
 }
 
 // IsVault will return true if the token is a Yearn Vault token.

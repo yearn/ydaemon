@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
@@ -28,7 +28,6 @@ func BuildStrategies(
 	vaultFromGraph models.TVaultFromGraph,
 ) []TStrategy {
 	strategiesList := []TStrategy{}
-	strategiesFromMeta := meta.Store.StrategiesFromMeta[chainID]
 	strategiesFromRisk := Store.StrategiesFromRisk[chainID]
 
 	for _, strategy := range vaultFromGraph.Strategies {
@@ -36,11 +35,15 @@ func BuildStrategies(
 		if !ok {
 			multicallData = &strategies.TStrategy{}
 		}
+		strategyFromMeta, ok := meta.GetMetaStrategy(chainID, strategy.Address)
+		if !ok {
+			strategyFromMeta = &meta.TStrategyFromMeta{}
+		}
 
 		currentStrategy := TStrategy{
 			Address:     strategy.Address,
 			Name:        strategy.Name,
-			Description: strategiesFromMeta[strategy.Address].Description,
+			Description: strategyFromMeta.Description,
 		}
 		debtLimit := multicallData.DebtLimit.Uint64()
 
@@ -60,7 +63,7 @@ func BuildStrategies(
 		//Compute the details about the strategy
 		if withStrategiesDetails {
 			currentStrategy.Details = &TStrategyDetails{}
-			currentStrategy.Details.Protocols = strategiesFromMeta[strategy.Address].Protocols
+			currentStrategy.Details.Protocols = strategyFromMeta.Protocols
 			currentStrategy.Details.Keeper = strategy.Keeper
 			currentStrategy.Details.Strategist = strategy.Strategist
 			currentStrategy.Details.Rewards = strategy.Rewards

@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -34,12 +33,11 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
-		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-		if ok && vaultFromMeta.HideAlways && hideAlways {
-			continue
-		}
 		newVault := NewVault().AssignTVault(currentVault)
 		newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
+		if newVault.Details.HideAlways && hideAlways {
+			continue
+		}
 		data = append(data, *newVault)
 	}
 

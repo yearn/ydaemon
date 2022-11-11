@@ -2,19 +2,14 @@ package vaults
 
 import (
 	"math"
-	"strconv"
-	"strings"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/prices"
-	"github.com/yearn/ydaemon/external/strategies"
 )
 
+<<<<<<< HEAD
 func buildVaultName(
 	chainID uint64,
 	vaultAddress common.Address,
@@ -87,6 +82,8 @@ func buildVaultSymbol(
 	return symbol, displaySymbol, formatedSymbol
 }
 
+=======
+>>>>>>> 5b887d9 (feat: move vault logic out (#120))
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
@@ -114,208 +111,78 @@ func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumb
 	return fHumanizedTVLPrice
 }
 
-// From the legacy API, build the schema for the APY, models.TAPY, used to get the details and the
-// breakdown of the vault.
-func buildAPY(
-	vaultAddress common.Address,
-	chainID uint64,
-	PerformanceFeeBps uint64,
-	ManagementFeeBps uint64,
-	APYTypeOverride string,
-) TAPY {
-	apy := TAPY{}
-	aggregatedVault, ok := Store.AggregatedVault[chainID][vaultAddress]
+// func prepareVaultSchema(
+// 	chainID uint64,
+// 	strategiesCondition string,
+// 	withStrategiesRisk bool,
+// 	withStrategiesDetails bool,
+// 	currentVault *vaults.TVault,
+// ) *vaults.TVault {
+// 	chainIDAsString := strconv.FormatUint(chainID, 10)
+// 	vaultAddress := common.FromAddress(currentVault.Address)
+// 	tokenAddress := common.FromAddress(currentVault.Token.Address)
+// 	tokenFromMeta := meta.Store.TokensFromMeta[chainID][tokenAddress]
+// 	updated := 0    //helpers.FormatUint64(vaultFromGraph.LatestUpdate.Timestamp, 0)
+// 	activation := 0 //helpers.FormatUint64(vaultFromGraph.Activation, 0)
+// 	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
+// 	if !ok {
+// 		// If the vault file is missing, we set the default values for its fields
+// 		vaultFromMeta = meta.TVaultFromMeta{
+// 			Order:               1000000000,
+// 			HideAlways:          false,
+// 			DepositsDisabled:    false,
+// 			WithdrawalsDisabled: false,
+// 			MigrationAvailable:  false,
+// 			AllowZapIn:          true,
+// 			AllowZapOut:         true,
+// 			Retired:             false,
+// 		}
+// 	}
 
-	if ok {
-		apy = TAPY{
-			Type:     aggregatedVault.LegacyAPY.Type,
-			GrossAPR: aggregatedVault.LegacyAPY.GrossAPR,
-			NetAPY:   aggregatedVault.LegacyAPY.NetAPY,
-			Points: TAPYPoints{
-				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
-				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
-				Inception: aggregatedVault.LegacyAPY.Points.Inception,
-			},
-			Composite: TAPYComposite{
-				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
-				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
-				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
-				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
-				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
-				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
-			},
-			Fees: TAPYFees{
-				Performance: float64(PerformanceFeeBps) / 10000,
-				Management:  float64(ManagementFeeBps) / 10000,
-				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
-				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
-				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
-			},
-		}
-	}
-	if APYTypeOverride != "" {
-		apy.Type = APYTypeOverride
-	}
-	return apy
-}
+// 	humanizedPrice, fHumanizedPrice := buildTokenPrice(
+// 		chainID,
+// 		tokenAddress,
+// 	)
 
-// Get the migration informations for this vault. By default, migrationAvailable is false and
-// the migrationAddress matches the vault address. If a migration is available, point this last
-// one to MigrationTargetVault.
-func buildMigration(chainID uint64, vaultAddress common.Address) TMigration {
-	migration := TMigration{}
-	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
+// 	strategies := strategies.BuildStrategies(
+// 		chainID,
+// 		withStrategiesDetails,
+// 		withStrategiesRisk,
+// 		strategiesCondition,
+// 		humanizedPrice,
+// 		vaultFromGraph,
+// 	)
 
-	if ok {
-		migrationAddress := vaultAddress
-		migrationAvailable := vaultFromMeta.MigrationAvailable
-		if vaultFromMeta.MigrationAvailable {
-			migrationAddress = vaultFromMeta.MigrationTargetVault
-		}
+// 	fHumanizedTVLPrice := buildTVL(
+// 		vaultFromGraph.BalanceTokens,
+// 		int(vaultFromGraph.Token.Decimals),
+// 		humanizedPrice,
+// 	)
+// 	delegatedTokenAsBN := bigNumber.NewInt(0)
+// 	fDelegatedValue := 0.0
 
-		migration = TMigration{
-			Available: migrationAvailable,
-			Address:   migrationAddress,
-		}
-	}
-	return migration
-}
+// 	for _, strat := range strategies {
+// 		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
+// 		if err == nil {
+// 			delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
+// 			fDelegatedValue += stratDelegatedValueAsFloat
+// 		}
+// 	}
 
-func prepareVaultSchema(
-	chainID uint64,
-	strategiesCondition string,
-	withStrategiesRisk bool,
-	withStrategiesDetails bool,
-	vaultFromGraph models.TVaultFromGraph,
-) *TVault {
-	chainIDAsString := strconv.FormatUint(chainID, 10)
-	vaultAddress := vaultFromGraph.Id
-	tokenAddress := vaultFromGraph.Token.Id
-	tokenFromMeta := meta.Store.TokensFromMeta[chainID][tokenAddress]
-	updated := helpers.FormatUint64(vaultFromGraph.LatestUpdate.Timestamp, 0)
-	activation := helpers.FormatUint64(vaultFromGraph.Activation, 0)
-	tokenDisplayName := helpers.SafeString(tokenFromMeta.Name, vaultFromGraph.Token.Name)
-	tokenDisplaySymbol := helpers.SafeString(tokenFromMeta.Symbol, vaultFromGraph.Token.Symbol)
-	vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-	if !ok {
-		// If the vault file is missing, we set the default values for its fields
-		vaultFromMeta = meta.TVaultFromMeta{
-			Order:               1000000000,
-			HideAlways:          false,
-			DepositsDisabled:    false,
-			WithdrawalsDisabled: false,
-			MigrationAvailable:  false,
-			AllowZapIn:          true,
-			AllowZapOut:         true,
-			Retired:             false,
-		}
-	}
+// 	return currentVault
 
-	vaultName, vaultDisplayName, vaultFormatedName := buildVaultName(
-		chainID,
-		vaultAddress,
-		vaultFromGraph.ShareToken.Name,
-		vaultFromMeta.DisplayName,
-		vaultFromGraph.Token.Name,
-	)
-	vaultSymbol, vaultDisplaySymbol, vaultFormatedSymbol := buildVaultSymbol(
-		chainID,
-		vaultFromGraph.ShareToken.Id,
-		vaultFromGraph.ShareToken.Symbol,
-		vaultFromGraph.Token.Symbol,
-	)
-	humanizedPrice, fHumanizedPrice := buildTokenPrice(
-		chainID,
-		tokenAddress,
-	)
+// vault := &TVault{
+// 	Inception:      activation,
+// 	TVL: TTVL{
+// 		TotalAssets:          vaultFromGraph.BalanceTokens,
+// 		TotalDelegatedAssets: delegatedTokenAsBN,
+// 		TVL:                  fHumanizedTVLPrice - fDelegatedValue,
+// 		TVLDeposited:         fHumanizedTVLPrice,
+// 		TVLDelegated:         fDelegatedValue,
+// 		Price:                fHumanizedPrice,
+// 	},
+// 	Strategies: strategies,
+// }
 
-	strategies := strategies.BuildStrategies(
-		chainID,
-		withStrategiesDetails,
-		withStrategiesRisk,
-		strategiesCondition,
-		humanizedPrice,
-		vaultFromGraph,
-	)
-
-	fHumanizedTVLPrice := buildTVL(
-		vaultFromGraph.BalanceTokens,
-		int(vaultFromGraph.Token.Decimals),
-		humanizedPrice,
-	)
-	delegatedTokenAsBN := bigNumber.NewInt(0)
-	fDelegatedValue := 0.0
-
-	for _, strat := range strategies {
-		stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
-		if err == nil {
-			delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
-			fDelegatedValue += stratDelegatedValueAsFloat
-		}
-	}
-
-	vault := &TVault{
-		Inception:      activation,
-		Address:        vaultAddress,
-		Symbol:         vaultSymbol,
-		DisplaySymbol:  vaultDisplaySymbol,
-		FormatedSymbol: vaultFormatedSymbol,
-		Name:           vaultName,
-		DisplayName:    vaultDisplayName,
-		FormatedName:   vaultFormatedName,
-		Icon:           env.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultAddress.String() + `/logo-128.png`,
-		Token: TToken{
-			Address:     vaultFromGraph.Token.Id,
-			Name:        vaultFromGraph.Token.Name,
-			DisplayName: tokenDisplayName,
-			Symbol:      tokenDisplaySymbol,
-			Description: tokenFromMeta.Description,
-			Decimals:    vaultFromGraph.Token.Decimals,
-			Icon:        env.GITHUB_ICON_BASE_URL + chainIDAsString + `/` + vaultFromGraph.Token.Id.String() + `/logo-128.png`,
-		},
-		TVL: TTVL{
-			TotalAssets:          vaultFromGraph.BalanceTokens,
-			TotalDelegatedAssets: delegatedTokenAsBN,
-			TVL:                  fHumanizedTVLPrice - fDelegatedValue,
-			TVLDeposited:         fHumanizedTVLPrice,
-			TVLDelegated:         fDelegatedValue,
-			Price:                fHumanizedPrice,
-		},
-		Details: &TVaultDetails{
-			Management:            vaultFromGraph.Management,
-			Governance:            vaultFromGraph.Governance,
-			Guardian:              vaultFromGraph.Guardian,
-			Rewards:               vaultFromGraph.Rewards,
-			DepositLimit:          vaultFromGraph.DepositLimit,
-			Comment:               vaultFromMeta.Comment,
-			AvailableDepositLimit: vaultFromGraph.AvailableDepositLimit,
-			Order:                 vaultFromMeta.Order,
-			PerformanceFee:        vaultFromGraph.PerformanceFeeBps,
-			ManagementFee:         vaultFromGraph.ManagementFeeBps,
-			DepositsDisabled:      vaultFromMeta.DepositsDisabled,
-			WithdrawalsDisabled:   vaultFromMeta.WithdrawalsDisabled,
-			AllowZapIn:            vaultFromMeta.AllowZapIn,
-			AllowZapOut:           vaultFromMeta.AllowZapOut,
-			Retired:               vaultFromMeta.Retired,
-			APYTypeOverride:       vaultFromMeta.APYTypeOverride,
-			APYOverride:           vaultFromMeta.APYOverride,
-		},
-		APY: buildAPY(
-			vaultAddress,
-			chainID,
-			vaultFromGraph.PerformanceFeeBps,
-			vaultFromGraph.ManagementFeeBps,
-			vaultFromMeta.APYTypeOverride,
-		),
-		Strategies: strategies,
-		Endorsed:   vaultFromGraph.Classification == "Endorsed",
-		Version:    vaultFromGraph.ApiVersion,
-		Decimals:   vaultFromGraph.ShareToken.Decimals,
-		Type:       "v2", //No v1 in the subgraph
-		// Emergency_shutdown: ,
-		Updated:   updated / 1000,
-		Migration: buildMigration(chainID, vaultAddress),
-	}
-
-	return vault
-}
+// return vault
+// }

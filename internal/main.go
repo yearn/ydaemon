@@ -20,6 +20,11 @@ func LoadTokens(chainID uint64) {
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 }
 
+func LoadVaults(chainID uint64) {
+	vaultsList := registries.RetrieveAllVaults(chainID)
+	vaults.RetrieveAllVaults(chainID, vaultsList)
+}
+
 func Initialize(chainID uint64) {
 	timeBefore := time.Now()
 	/**********************************************************************************************
@@ -48,6 +53,7 @@ func Initialize(chainID uint64) {
 	** data/store/[chainID]/tokens folder.
 	**********************************************************************************************/
 	tokens.RetrieveAllTokens(chainID, vaultsList)
+	vaults.RetrieveAllVaults(chainID, vaultsList)
 
 	return //No need to continue for now
 

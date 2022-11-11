@@ -12,7 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 /**************************************************************************************************
@@ -162,7 +162,7 @@ func fetchBasicInformations(
 			newStrategy.TotalLoss = bigNumber.SetInt(strategies[8].(*big.Int))
 		}
 
-		if strategyFromMeta, ok := meta.Store.StrategiesFromMeta[chainID][common.FromAddress(strat.StrategyAddress)]; ok {
+		if strategyFromMeta, ok := meta.GetMetaStrategy(chainID, common.FromAddress(stratAddress)); ok {
 			newStrategy.Name = strategyFromMeta.Name
 			newStrategy.Description = strategyFromMeta.Description
 		}
@@ -250,7 +250,7 @@ func RetrieveAllStrategies(
 		store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(strategyMap), `strategies`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(strategyMap), `strategies`)
 	_strategyMap[chainID] = strategyMap
 	return strategyMap
 }

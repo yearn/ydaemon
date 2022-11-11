@@ -5,6 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -29,5 +31,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid vault")
 		return
 	}
-	c.JSON(http.StatusOK, currentVault)
+	newVault := NewVault().AssignTVault(currentVault)
+	newVault.Strategies = strategies.ListStrategiesForVault(chainID, common.FromAddress(currentVault.Address))
+	c.JSON(http.StatusOK, newVault)
 }

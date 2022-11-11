@@ -15,7 +15,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
@@ -107,66 +106,31 @@ func fetchBasicInformations(
 			logs.Warning(`NO UNDERLYING TOKEN FOUND FOR VAULT`, vault.String())
 		}
 
-		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][common.FromAddress(vault)]
-		if !ok {
-			// logs.Warning(`No meta file found for vault`, vault.String())
-			// If the vault file is missing, we set the default values for its fields
-			vaultFromMeta = meta.TVaultFromMeta{
-				Order:               1000000000,
-				HideAlways:          false,
-				DepositsDisabled:    false,
-				WithdrawalsDisabled: false,
-				MigrationAvailable:  false,
-				AllowZapIn:          true,
-				AllowZapOut:         true,
-				Retired:             false,
-			}
-		}
-
-		/******************************************************************************************
-		** THIS PART MUST BE CLEANED
-		******************************************************************************************/
-		humanizedPrice, fHumanizedPrice := buildTokenPrice(
-			chainID,
-			common.FromAddress(rawUnderlying[0].(ethcommon.Address)),
-		)
-		fHumanizedTVLPrice := buildTVL(
-			bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
-			int(shareTokenData.Decimals),
-			humanizedPrice,
-		)
-		delegatedTokenAsBN := bigNumber.NewInt(0)
-		fDelegatedValue := 0.0
-
-		strategiesList := []*strategies.TStrategy{}
-		for _, strat := range strategiesList {
-			_ = strat
-			// stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
-			// if err == nil {
-			// 	delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
-			// 	fDelegatedValue += stratDelegatedValueAsFloat
-			// }
-		}
-		/******************************************************************************************
-		** ! THIS PART MUST BE CLEANED
-		******************************************************************************************/
-
 		/******************************************************************************************
 		** Preparing our new TVault object
 		******************************************************************************************/
 		newVault := &TVault{
-			Address:            vault,
-			Name:               shareTokenData.Name,
-			Symbol:             shareTokenData.Symbol,
-			Decimals:           shareTokenData.Decimals,
-			Icon:               env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
-			Type:               `v2`,  //Always v2 for now
-			Endorsed:           false, //Default to false, will be updated later
-			Inception:          rawActivation[0].(*big.Int).Uint64(),
-			Version:            rawApiVersion[0].(string),
-			PricePerShare:      *bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
-			Emergency_shutdown: rawEmergencyShutdown[0].(bool),
-			Strategies:         strategiesList,
+			ChainID:               chainID,
+			Address:               vault,
+			Name:                  shareTokenData.Name,
+			Symbol:                shareTokenData.Symbol,
+			Decimals:              shareTokenData.Decimals,
+			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
+			Type:                  `v2`,  //Always v2 for now
+			Endorsed:              false, //Default to false, will be updated later
+			Inception:             rawActivation[0].(*big.Int).Uint64(),
+			Version:               rawApiVersion[0].(string),
+			PricePerShare:         bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
+			Management:            common.FromAddress(rawManagement[0].(ethcommon.Address)),
+			Governance:            common.FromAddress(rawGovernance[0].(ethcommon.Address)),
+			Guardian:              common.FromAddress(rawGuardian[0].(ethcommon.Address)),
+			Rewards:               common.FromAddress(rawRewards[0].(ethcommon.Address)),
+			TotalAssets:           bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
+			DepositLimit:          bigNumber.SetInt(rawDepositLimit[0].(*big.Int)),
+			AvailableDepositLimit: bigNumber.SetInt(rawAvailableDepositLimit[0].(*big.Int)),
+			PerformanceFee:        uint64(rawPerformanceFee[0].(*big.Int).Uint64()),
+			ManagementFee:         uint64(rawManagementFee[0].(*big.Int).Uint64()),
+			EmergencyShutdown:     bool(rawEmergencyShutdown[0].(bool)),
 			Token: tokens.TERC20Token{
 				Address:       underlyingTokenData.Address,
 				Name:          underlyingTokenData.Name,
@@ -177,44 +141,10 @@ func fetchBasicInformations(
 				Decimals:      underlyingTokenData.Decimals,
 				Icon:          underlyingTokenData.Icon,
 			},
-			TVL: TTVL{
-				TotalAssets:          bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
-				TotalDelegatedAssets: delegatedTokenAsBN,
-				TVL:                  fHumanizedTVLPrice - fDelegatedValue,
-				TVLDeposited:         fHumanizedTVLPrice,
-				TVLDelegated:         fDelegatedValue,
-				Price:                fHumanizedPrice,
-			},
-			Details: &TVaultDetails{
-				Management:            common.FromAddress(rawManagement[0].(ethcommon.Address)),
-				Governance:            common.FromAddress(rawGovernance[0].(ethcommon.Address)),
-				Guardian:              common.FromAddress(rawGuardian[0].(ethcommon.Address)),
-				Rewards:               common.FromAddress(rawRewards[0].(ethcommon.Address)),
-				DepositLimit:          bigNumber.SetInt(rawDepositLimit[0].(*big.Int)),
-				AvailableDepositLimit: bigNumber.SetInt(rawAvailableDepositLimit[0].(*big.Int)),
-				PerformanceFee:        uint64(rawPerformanceFee[0].(*big.Int).Uint64()),
-				ManagementFee:         uint64(rawManagementFee[0].(*big.Int).Uint64()),
-				Comment:               vaultFromMeta.Comment,
-				Order:                 vaultFromMeta.Order,
-				DepositsDisabled:      vaultFromMeta.DepositsDisabled,
-				WithdrawalsDisabled:   vaultFromMeta.WithdrawalsDisabled,
-				AllowZapIn:            vaultFromMeta.AllowZapIn,
-				AllowZapOut:           vaultFromMeta.AllowZapOut,
-				Retired:               vaultFromMeta.Retired,
-				APYTypeOverride:       vaultFromMeta.APYTypeOverride,
-				APYOverride:           vaultFromMeta.APYOverride,
-			},
 		}
 
 		newVault.BuildNames(shareTokenData.DisplayName)
 		newVault.BuildSymbol(shareTokenData.DisplaySymbol)
-		newVault.BuildMigration(chainID)
-		newVault.BuildAPY(chainID)
-		newVault.APY.Fees.Performance = float64(uint64(rawPerformanceFee[0].(*big.Int).Uint64()) / 10000)
-		newVault.APY.Fees.Management = float64(uint64(rawManagementFee[0].(*big.Int).Uint64()) / 10000)
-		if vaultFromMeta.APYTypeOverride != `` {
-			newVault.APY.Type = vaultFromMeta.APYTypeOverride
-		}
 
 		/******************************************************************************************
 		** Adding the withdrawal queue stuffs
@@ -229,7 +159,7 @@ func fetchBasicInformations(
 				}
 			}
 		}
-		newVault.Details.WithdrawalQueue = withdrawQueueForStrategies
+		newVault.WithdrawalQueue = withdrawQueueForStrategies
 		strategies.SetInStrategiesWithdrawalQueue(chainID, vault, withdrawQueueForStrategies)
 		vaultList = append(vaultList, newVault)
 	}
@@ -356,7 +286,7 @@ func RetrieveAllVaults(
 		store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults informations`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults informations`)
 	_vaultMap[chainID] = vaultMap
 	return vaultMap
 }

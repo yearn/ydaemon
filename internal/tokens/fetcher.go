@@ -8,20 +8,20 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
+	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	commonOverride "github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
 // CURVE_REGISTRY_ADDRESS should be in a map of chainID -> []TRegistry, and probably in a separate file
-var CURVE_REGISTRY_ADDRESS = common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`)
+var CURVE_REGISTRY_ADDRESS = ethcommon.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`)
 
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
@@ -36,7 +36,7 @@ var CURVE_REGISTRY_ADDRESS = common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C
 ** Returns:
 ** - a list of TERC20Token containing the basic information for the tokens
 **************************************************************************************************/
-func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList []*TERC20Token) {
+func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenList []*TERC20Token) {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -70,10 +70,10 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 	** which token to fetch then (ex: for aDAI, we also need to fetch the DAI token).
 	** Nb: A special case is for Ethereum coin, which is defaulted as address 0xEeeee....EEeE.
 	**********************************************************************************************/
-	relatedTokensList := []common.Address{}
+	relatedTokensList := []ethcommon.Address{}
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, token := range tokens {
-		if token == common.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
+		if token == ethcommon.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
 			tokenList = append(tokenList, &TERC20Token{
 				Address:  token,
 				Name:     `Ethereum`,
@@ -105,10 +105,10 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		metaTokenName := newToken.Name
 		metaTokenSymbol := newToken.Symbol
 		metaTokenDescription := ``
-		if tokenDataFromMeta, ok := meta.Store.TokensFromMeta[chainID][commonOverride.FromAddress(token)]; ok {
-			metaTokenName = strings.Replace(tokenDataFromMeta.Name, "\"", "", -1)
-			metaTokenSymbol = strings.Replace(tokenDataFromMeta.Symbol, "\"", "", -1)
-			metaTokenDescription = tokenDataFromMeta.Description
+		if tokenFromMeta, ok := meta.GetMetaToken(chainID, common.FromAddress(token)); ok {
+			metaTokenName = strings.Replace(tokenFromMeta.Name, "\"", "", -1)
+			metaTokenSymbol = strings.Replace(tokenFromMeta.Symbol, "\"", "", -1)
+			metaTokenDescription = tokenFromMeta.Description
 		}
 		newToken.DisplayName = metaTokenName
 		newToken.DisplaySymbol = metaTokenSymbol
@@ -122,11 +122,11 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isYearnVault := rawYearnVaultToken != nil && rawYearnVaultToken[0].(common.Address) != common.Address{}
+		isYearnVault := rawYearnVaultToken != nil && rawYearnVaultToken[0].(ethcommon.Address) != ethcommon.Address{}
 		if isYearnVault {
 			newToken.Type = `Yearn Vault`
-			coin := rawYearnVaultToken[0].(common.Address)
-			if (coin != common.Address{}) {
+			coin := rawYearnVaultToken[0].(ethcommon.Address)
+			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 			}
@@ -140,13 +140,13 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isCurveLpToken := rawPoolFromLpToken != nil && rawPoolFromLpToken[0].(common.Address) != common.Address{}
+		isCurveLpToken := rawPoolFromLpToken != nil && rawPoolFromLpToken[0].(ethcommon.Address) != ethcommon.Address{}
 		if isCurveLpToken {
 			newToken.Type = `Curve LP`
 			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(CURVE_REGISTRY_ADDRESS, caller.Client)
-			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, rawPoolFromLpToken[0].(common.Address))
+			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, rawPoolFromLpToken[0].(ethcommon.Address))
 			for _, coin := range poolCoins {
-				if (coin != common.Address{}) {
+				if (coin != ethcommon.Address{}) {
 					relatedTokensList = append(relatedTokensList, coin)
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
@@ -161,11 +161,11 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isCToken := rawCUnderlying != nil && rawCUnderlying[0].(common.Address) != common.Address{}
+		isCToken := rawCUnderlying != nil && rawCUnderlying[0].(ethcommon.Address) != ethcommon.Address{}
 		if isCToken {
 			newToken.Type = `Compound`
-			coin := rawCUnderlying[0].(common.Address)
-			if (coin != common.Address{}) {
+			coin := rawCUnderlying[0].(ethcommon.Address)
+			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 			}
@@ -179,11 +179,11 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isAV1Token := rawAV1Underlying != nil && rawAV1Underlying[0].(common.Address) != common.Address{}
+		isAV1Token := rawAV1Underlying != nil && rawAV1Underlying[0].(ethcommon.Address) != ethcommon.Address{}
 		if isAV1Token {
 			newToken.Type = `AAVE V1`
-			coin := rawAV1Underlying[0].(common.Address)
-			if (coin != common.Address{}) {
+			coin := rawAV1Underlying[0].(ethcommon.Address)
+			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 			}
@@ -197,11 +197,11 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isAV2Token := rawAV2Underlying != nil && rawAV2Underlying[0].(common.Address) != common.Address{}
+		isAV2Token := rawAV2Underlying != nil && rawAV2Underlying[0].(ethcommon.Address) != ethcommon.Address{}
 		if isAV2Token {
 			newToken.Type = `AAVE V2`
-			coin := rawAV2Underlying[0].(common.Address)
-			if (coin != common.Address{}) {
+			coin := rawAV2Underlying[0].(ethcommon.Address)
+			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 			}
@@ -232,10 +232,10 @@ func fetchBasicInformations(chainID uint64, tokens []common.Address) (tokenList 
 **************************************************************************************************/
 func findAllTokens(
 	chainID uint64,
-	tokenMap map[common.Address]*TERC20Token,
-) map[common.Address]*TERC20Token {
-	newMap := make(map[common.Address]*TERC20Token)
-	tokenMapAddresses := []common.Address{}
+	tokenMap map[ethcommon.Address]*TERC20Token,
+) map[ethcommon.Address]*TERC20Token {
+	newMap := make(map[ethcommon.Address]*TERC20Token)
+	tokenMapAddresses := []ethcommon.Address{}
 	for tokenAddress := range tokenMap {
 		tokenMapAddresses = append(tokenMapAddresses, tokenAddress)
 	}
@@ -264,15 +264,15 @@ func findAllTokens(
 **************************************************************************************************/
 func RetrieveAllTokens(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
-) map[common.Address]*TERC20Token {
+	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
+) map[ethcommon.Address]*TERC20Token {
 	timeBefore := time.Now()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of tokens from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	tokenMap := make(map[common.Address]*TERC20Token)
+	tokenMap := make(map[ethcommon.Address]*TERC20Token)
 	store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 
 	/**********************************************************************************************
@@ -282,7 +282,7 @@ func RetrieveAllTokens(
 	** per chainID as the token information are not expected to change and will be retrieve on
 	** subsequent reboots.
 	**********************************************************************************************/
-	updatedTokenMap := make(map[common.Address]*TERC20Token)
+	updatedTokenMap := make(map[ethcommon.Address]*TERC20Token)
 	for _, currentVault := range vaults {
 		if _, ok := tokenMap[currentVault.VaultsAddress]; !ok {
 			updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
@@ -308,7 +308,7 @@ func RetrieveAllTokens(
 		`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
 	}
 	for _, tokenAddress := range extraTokens {
-		tokenAddress := common.HexToAddress(tokenAddress)
+		tokenAddress := ethcommon.HexToAddress(tokenAddress)
 		if _, ok := tokenMap[tokenAddress]; !ok {
 			updatedTokenMap[tokenAddress] = &TERC20Token{
 				Address: tokenAddress,
@@ -349,7 +349,7 @@ func RetrieveAllTokens(
 		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
 	_tokenMap[chainID] = tokenMap
 	return tokenMap
 }

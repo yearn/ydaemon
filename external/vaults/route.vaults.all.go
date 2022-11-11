@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -27,20 +26,19 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 
-	data := []vaults.TVault{}
+	data := []TExternalVault{}
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := common.FromAddress(currentVault.Address)
 		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
-		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-		if ok && vaultFromMeta.HideAlways && hideAlways {
+		newVault := NewVault().AssignTVault(currentVault)
+		newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
+		if newVault.Details.HideAlways && hideAlways {
 			continue
 		}
-		currentVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
-
-		data = append(data, *currentVault)
+		data = append(data, *newVault)
 	}
 
 	// Preparing the sort. This specifics steps are needed to avoid a panic

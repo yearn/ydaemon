@@ -6,11 +6,11 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon
@@ -41,10 +41,10 @@ func SummonDaemons(chainID uint64) {
 	// They can all be summoned at the same time, with no dependencies.
 	wg.Add(6)
 	{
-		go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchStrategiesFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllVaultsFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllTokensFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllStrategiesFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}

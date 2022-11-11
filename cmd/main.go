@@ -5,7 +5,6 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal"
 )
 
 // var chains = env.SUPPORTED_CHAIN_IDS
@@ -42,7 +41,8 @@ func loadDaemonsForAllChains() {
 }
 
 func main() {
-	internal.Initialize(1)
+	// internal.Initialize(1)
+
 	logs.Info(`Loading store data to yDaemon memory...`)
 	loadDaemonsForAllChains()
 	logs.Info(`Summoning yDaemon...`)

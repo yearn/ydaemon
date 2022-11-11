@@ -22,7 +22,10 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	}
 
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLRequestForAllVaults(c)
+
+	var request *graphql.Request
+	// request := graphQLRequestForAllVaults(c)
+
 	var response models.TGraphQueryResponseForVaults
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)

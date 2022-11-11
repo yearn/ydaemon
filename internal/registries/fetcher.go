@@ -143,12 +143,13 @@ func RetrieveAllVaults(
 	timeBefore := time.Now()
 
 	vaultsList := []utils.TVaultsFromRegistry{}
+	vaultsListExperimental := []utils.TVaultsFromRegistry{}
 
 	wg := &sync.WaitGroup{}
 	for _, registry := range REGISTRIES[chainID] {
 		wg.Add(2)
 		go filterNewVaults(chainID, registry.Address, registry.Activation, &vaultsList, wg)
-		go filterNewExperimentalVault(chainID, registry.Address, registry.Activation, &vaultsList, wg)
+		go filterNewExperimentalVault(chainID, registry.Address, registry.Activation, &vaultsListExperimental, wg)
 	}
 	wg.Wait()
 
@@ -159,12 +160,11 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
 	for _, v := range vaultsList {
-		for _, nv := range vaultsList {
-			if v.VaultsAddress == nv.VaultsAddress && //If the vaults address is the same
-				v.Type == "Standard" && nv.Type == "Experimental" && //If v is standard and nv is experimental
-				v.BlockNumber > nv.BlockNumber { //If v is deployed after nv
-				continue
-			}
+		uniqueVaultsList[v.VaultsAddress] = v
+	}
+
+	for _, v := range vaultsListExperimental {
+		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
 			uniqueVaultsList[v.VaultsAddress] = v
 		}
 	}

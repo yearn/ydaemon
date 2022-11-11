@@ -2,18 +2,13 @@
   "$schema": "vault",
   "comment": "USDC",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 48,
+  "order": 2,
   "migrationAvailable": true,
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
   "displayName": "USDC",
-  "classification": {
-    "isAutomated": false,
-    "isPool": false,
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
-  }
+  "apyTypeOverride": "new"
 }

@@ -1,22 +1,9 @@
-package vaults
+package models
 
 import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
 )
-
-type TStore struct {
-	// AggregatedVault holds the raw data, aka pure unmodified from the queries, about a vault.
-	AggregatedVault map[uint64]map[common.Address]*TAggregatedVault
-}
-
-// Store holds the data for the partners for each chain.
-var Store = TStore{}
-
-func init() {
-	// Store.VaultsFromAPIV1 = make(map[uint64]map[common.Address]TLegacyAPI)
-	Store.AggregatedVault = make(map[uint64]map[common.Address]*TAggregatedVault)
-}
 
 // TLegacyAPIAPY contains all the information useful about the APY, APR, fees and breakdown.
 type TLegacyAPIAPY struct {

@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -23,6 +24,18 @@ import (
 )
 
 func middleware(log *logrus.Logger) gin.HandlerFunc {
+	LEVEL, exists := os.LookupEnv("LOG_LEVEL")
+	if exists {
+		levels := map[string]logrus.Level{
+			"DEBUG":   logrus.DebugLevel,
+			"INFO":    logrus.InfoLevel,
+			"WARNING": logrus.WarnLevel,
+			"SUCCESS": logrus.WarnLevel,
+			"ERROR":   logrus.ErrorLevel,
+		}
+		log.SetLevel(levels[LEVEL])
+	}
+
 	return func(c *gin.Context) {
 		if strings.HasPrefix(c.Request.RequestURI, "/api/tokens/list") {
 			c.Header("Cache-Control", "max-age=86400")

@@ -19,4 +19,5 @@ services:
       - GRAPH_API_URI
       - SENTRY_DSN
       - SENTRY_SAMPLE_RATE
+      - LOG_LEVEL
     restart: always

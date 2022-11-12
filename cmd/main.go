@@ -53,6 +53,11 @@ func setupSentry() {
 			// of transactions for performance monitoring.
 			// We recommend adjusting this value in production,
 			TracesSampleRate: 1.0,
+			// As it's not uncommon to panic with a string, it's
+			// recommended to use the AttachStacktrace option
+			// during SDK initialization, which will try to
+			// provide a useful stack trace for messages as well.
+			AttachStacktrace: true,
 		})
 		if err != nil {
 			log.Fatalf("sentry.Init: %s", err)

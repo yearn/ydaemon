@@ -1,9 +1,12 @@
 package main
 
 import (
+	"log"
+	"os"
 	"strconv"
 	"sync"
 
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/logs"
 )
 
@@ -31,6 +34,7 @@ func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
 	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
 	wg.Done()
 }
+
 func loadDaemonsForAllChains() {
 	var wg sync.WaitGroup
 	for _, chainID := range chains {
@@ -40,7 +44,29 @@ func loadDaemonsForAllChains() {
 	wg.Wait()
 }
 
+func setupSentry() {
+	SENTRY_DSN, exists := os.LookupEnv("SENTRY_DSN")
+	if exists {
+		err := sentry.Init(sentry.ClientOptions{
+			Dsn: SENTRY_DSN,
+			// Set TracesSampleRate to 1.0 to capture 100%
+			// of transactions for performance monitoring.
+			// We recommend adjusting this value in production,
+			TracesSampleRate: 1.0,
+		})
+		if err != nil {
+			log.Fatalf("sentry.Init: %s", err)
+		} else {
+			logs.Info("Sentry initialized")
+		}
+	} else {
+		logs.Warning("SENTRY_DSN not set, Sentry not initialized")
+	}
+}
+
 func main() {
+	setupSentry()
+
 	logs.Info(`Loading store data to yDaemon memory...`)
 	loadDaemonsForAllChains()
 	logs.Info(`Summoning yDaemon...`)

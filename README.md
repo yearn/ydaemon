@@ -29,6 +29,11 @@ RPC_URI_FOR_1=
 RPC_URI_FOR_10=
 RPC_URI_FOR_250=
 RPC_URI_FOR_42161=
+
+# Optional
+WEBHOOK_SECRET=
+GRAPH_API_URI=
+SENTRY_DSN=
 ```
 
 Then, install, build and run the API:

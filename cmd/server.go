@@ -64,7 +64,7 @@ func NewRouter() *gin.Engine {
 	}))
 	router.Use(func(ctx *gin.Context) {
 		if hub := sentrygin.GetHubFromContext(ctx); hub != nil {
-			hub.Scope().SetTag("origin", "gin")
+			hub.Scope().SetTag("subsystem", "gin")
 		}
 		ctx.Next()
 	})

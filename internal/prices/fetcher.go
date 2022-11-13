@@ -1,12 +1,14 @@
 package prices
 
 import (
+	"context"
 	"math"
 	"math/big"
 	"sync"
 	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -120,6 +122,11 @@ func findAllPrices(
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
 func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Prices"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

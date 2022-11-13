@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"context"
 	"strconv"
 	"strings"
 	"sync"
@@ -8,6 +9,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
@@ -70,6 +72,11 @@ func RetrieveHarvests(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]map[common.Address]map[uint64]uint64 {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Harvets Reports"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

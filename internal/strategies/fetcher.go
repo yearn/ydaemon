@@ -1,12 +1,14 @@
 package strategies
 
 import (
+	"context"
 	"math"
 	"math/big"
 	"sync"
 	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
@@ -213,6 +215,11 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategyAddedList []TStrategyAdded,
 ) map[ethcommon.Address]*TStrategy {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Strategies"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

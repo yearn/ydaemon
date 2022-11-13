@@ -1,12 +1,14 @@
 package strategies
 
 import (
+	"context"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -173,6 +175,11 @@ func RetrieveAllStrategiesAdded(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) []TStrategyAdded {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Strategy Management Events"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

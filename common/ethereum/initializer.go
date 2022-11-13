@@ -5,7 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/helpers"
 )
 
 /**************************************************************************************************
@@ -21,7 +21,7 @@ func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		client, err := ethclient.Dial(GetRPCURI(chainID))
 		if err != nil {
-			logs.Error("Failed to connect to Ethereum node")
+			helpers.LogAndCaptureError(err, "Failed to connect to Ethereum node")
 			continue
 		}
 		RPC[chainID] = client

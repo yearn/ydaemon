@@ -11,6 +11,7 @@ import (
 	"github.com/dgraph-io/badger/v3"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
 )
@@ -88,7 +89,7 @@ func SaveInDB(chainID uint64, dbKey string, dataKey string, value interface{}) {
 		return txn.Set([]byte(dataKey), vaultsBytes)
 	})
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 	}
 }
 
@@ -146,7 +147,7 @@ func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 				k := item.Key()
 				v, err := item.ValueCopy(nil)
 				if err != nil {
-					logs.Error(`impossible to get value for key: ` + string(k))
+					helpers.LogAndCaptureError(err, `impossible to get value for key: `+string(k))
 					continue
 				}
 

@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -35,13 +36,13 @@ func filterUpdateManagementOneTime(
 
 	currentVault, err := contracts.NewYvault043(vaultAddress, client)
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return
 	}
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
-				logs.Error(log.Error())
+				helpers.LogAndCaptureError(log.Error(), log.Error())
 				asyncActivationMap.Store(vaultAddress, 0)
 				return
 			}

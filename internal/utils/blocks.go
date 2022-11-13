@@ -6,7 +6,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/helpers"
 )
 
 type TEventBlock struct {
@@ -106,7 +106,7 @@ func analyzeBlocks(m map[uint64][]TEventBlock, lookingForBlock uint64, lookingFo
 		blocks := m[uint64(blockNumbers[0])]
 		block, err := findInBlock(blocks, ^uint(0), ^uint(0))
 		if err != nil {
-			logs.Error(`NOT FOUND`)
+			helpers.LogAndCaptureError(err, `NOT FOUND`)
 			return TEventBlock{}
 		}
 		return block

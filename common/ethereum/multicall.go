@@ -12,6 +12,7 @@ import (
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
 )
@@ -54,7 +55,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 	client, err := ethclient.Dial(rpcURI)
 	if err != nil {
-		logs.Error("Failed to connect to Ethereum node")
+		helpers.LogAndCaptureError(err, "Failed to connect to Ethereum node")
 		time.Sleep(time.Second)
 		return NewMulticall(rpcURI, multicallAddress)
 	}
@@ -62,7 +63,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	// Load Multicall abi for later use
 	mcAbi, err := contracts.Multicall2MetaData.GetAbi()
 	if err != nil {
-		logs.Error("Failed to decode Multicall ABI")
+		helpers.LogAndCaptureError(err, "Failed to decode Multicall ABI")
 		time.Sleep(time.Second)
 		return NewMulticall(rpcURI, multicallAddress)
 	}
@@ -83,7 +84,7 @@ func (caller *TEthMultiCaller) execute(
 	abi, _ := contracts.Multicall2MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
 	if err != nil {
-		logs.Error("Failed to pack tryAggregate")
+		helpers.LogAndCaptureError(err, "Failed to pack tryAggregate")
 		return []byte{}, err
 	}
 
@@ -99,7 +100,7 @@ func (caller *TEthMultiCaller) execute(
 		blockNumber,
 	)
 	if err != nil {
-		logs.Error("Failed to perform multicall: " + err.Error())
+		helpers.LogAndCaptureError(err, "Failed to perform multicall: "+err.Error())
 		return []byte{}, err
 	}
 	return resp, nil
@@ -134,27 +135,27 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
-			logs.Error(err)
+			helpers.LogAndCaptureError(err)
 			continue
 		}
 
 		// Unpack results
 		unpackedResp, err := caller.Abi.Unpack("tryAggregate", tempPackedResp)
 		if err != nil {
-			logs.Error("Failed to unpack response: " + err.Error())
+			helpers.LogAndCaptureError(err, "Failed to unpack response: "+err.Error())
 			continue
 		}
 
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
-			logs.Error("Failed to unmarshal response: " + err.Error())
+			helpers.LogAndCaptureError(err, "Failed to unmarshal response: "+err.Error())
 			continue
 		}
 
 		// Unpack results
 		var tempResp []CallResponse
 		if err := json.Unmarshal(a, &tempResp); err != nil {
-			logs.Error("Failed to unmarshal response: " + err.Error())
+			helpers.LogAndCaptureError(err, "Failed to unmarshal response: "+err.Error())
 			continue
 		}
 

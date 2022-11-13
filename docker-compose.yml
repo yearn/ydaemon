@@ -18,4 +18,5 @@ services:
       - WEBHOOK_SECRET
       - GRAPH_API_URI
       - SENTRY_DSN
+      - SENTRY_SAMPLE_RATE
     restart: always

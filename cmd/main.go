@@ -62,15 +62,31 @@ func loadDaemonsForAllChains(ctx context.Context) {
 	wg.Wait()
 }
 
+func getSampleRate() float64 {
+	SAMPLE_RATE, exists := os.LookupEnv("SENTRY_SAMPLE_RATE")
+	if !exists {
+		return 1.0
+	}
+	parsed, error := strconv.ParseFloat(SAMPLE_RATE, 64)
+	if error == nil {
+		return parsed
+	} else {
+		log.Fatalf("Sample rate is not a float32: %s", SAMPLE_RATE)
+		return 0
+	}
+}
+
 func setupSentry() {
 	SENTRY_DSN, exists := os.LookupEnv("SENTRY_DSN")
 	if exists {
+		sampleRate := getSampleRate()
+		logs.Info(`Sentry TracesSampleRate set to ` + strconv.FormatFloat(sampleRate, 'f', 2, 64))
 		err := sentry.Init(sentry.ClientOptions{
 			Dsn: SENTRY_DSN,
 			// Set TracesSampleRate to 1.0 to capture 100%
 			// of transactions for performance monitoring.
 			// We recommend adjusting this value in production,
-			TracesSampleRate: 1.0,
+			TracesSampleRate: sampleRate,
 			// As it's not uncommon to panic with a string, it's
 			// recommended to use the AttachStacktrace option
 			// during SDK initialization, which will try to

@@ -34,6 +34,7 @@ RPC_URI_FOR_42161=
 WEBHOOK_SECRET=
 GRAPH_API_URI=
 SENTRY_DSN=
+SENTRY_SAMPLE_RATE=
 ```
 
 Then, install, build and run the API:

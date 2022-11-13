@@ -1,6 +1,7 @@
 package tokens
 
 import (
+	"context"
 	"math"
 	"strconv"
 	"strings"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -266,6 +268,11 @@ func RetrieveAllTokens(
 	chainID uint64,
 	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
 ) map[ethcommon.Address]*TERC20Token {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Tokens"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

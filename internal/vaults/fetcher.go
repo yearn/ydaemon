@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"context"
 	"math"
 	"math/big"
 	"strconv"
@@ -8,6 +9,7 @@ import (
 	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -214,6 +216,11 @@ func RetrieveAllVaults(
 	chainID uint64,
 	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
 ) map[ethcommon.Address]*TVault {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Vaults"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

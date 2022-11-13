@@ -1,11 +1,13 @@
 package registries
 
 import (
+	"context"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -141,6 +143,11 @@ func filterNewVaults(
 func RetrieveAllVaults(
 	chainID uint64,
 ) map[common.Address]utils.TVaultsFromRegistry {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Vaults"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	vaultsList := []utils.TVaultsFromRegistry{}

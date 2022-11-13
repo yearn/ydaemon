@@ -1,10 +1,12 @@
 package bribes
 
 import (
+	"context"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
@@ -61,6 +63,11 @@ func filterRewardAdded(
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
 func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch RewardAdded Events"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

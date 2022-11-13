@@ -1,11 +1,13 @@
 package vaults
 
 import (
+	"context"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -63,6 +65,11 @@ func RetrieveActivationForAllVaults(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]utils.TVaultsFromRegistry {
+	span := sentry.StartSpan(context.Background(), "app.fetch",
+		sentry.TransactionName("Fetch Vault Activation Events"))
+	span.SetTag("subsystem", "daemon")
+	defer span.Finish()
+
 	timeBefore := time.Now()
 
 	/**********************************************************************************************

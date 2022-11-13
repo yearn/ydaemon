@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 	"strconv"
@@ -14,32 +15,49 @@ import (
 
 var chains = []uint64{1}
 
-func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
+func waitGroupSummonDaemons(ctx context.Context, wg *sync.WaitGroup, chainID uint64) {
+	span := sentry.StartSpan(ctx, "app.bootstrap.summon.daemon")
+	span.SetTag("chainId", strconv.Itoa(int(chainID)))
+
 	SummonDaemons(chainID)
-	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
+
 	wg.Done()
+	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
+	span.Finish()
 }
 
-func summonDaemonsForAllChains() {
+func summonDaemonsForAllChains(ctx context.Context) {
+	span := sentry.StartSpan(ctx, "app.bootstrap.summon.all")
+	defer span.Finish()
+
 	var wg sync.WaitGroup
 	for _, chainID := range chains {
 		wg.Add(1)
-		go waitGroupSummonDaemons(&wg, chainID)
+		go waitGroupSummonDaemons(span.Context(), &wg, chainID)
 	}
+
 	wg.Wait()
 }
 
-func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
+func waitGroupLoadDaemons(ctx context.Context, wg *sync.WaitGroup, chainID uint64) {
+	span := sentry.StartSpan(ctx, "app.bootstrap.load_state.daemon")
+	span.SetTag("chainId", strconv.Itoa(int(chainID)))
+	defer span.Finish()
+
 	LoadDaemons(chainID)
-	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
+
 	wg.Done()
+	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
 }
 
-func loadDaemonsForAllChains() {
+func loadDaemonsForAllChains(ctx context.Context) {
+	span := sentry.StartSpan(ctx, "app.bootstrap.load_state.all")
+	defer span.Finish()
+
 	var wg sync.WaitGroup
 	for _, chainID := range chains {
 		wg.Add(1)
-		go waitGroupLoadDaemons(&wg, chainID)
+		go waitGroupLoadDaemons(span.Context(), &wg, chainID)
 	}
 	wg.Wait()
 }
@@ -72,11 +90,17 @@ func setupSentry() {
 func main() {
 	setupSentry()
 
-	logs.Info(`Loading store data to yDaemon memory...`)
-	loadDaemonsForAllChains()
-	logs.Info(`Summoning yDaemon...`)
-	summonDaemonsForAllChains()
+	ctx := context.Background()
+	span := sentry.StartSpan(ctx, "app.bootstrap",
+		sentry.TransactionName("Start Daemons"))
+	span.SetTag("subsystem", "main")
 
+	logs.Info(`Loading store data to yDaemon memory...`)
+	loadDaemonsForAllChains(span.Context())
+	logs.Info(`Summoning yDaemon...`)
+	summonDaemonsForAllChains(span.Context())
+
+	span.Finish()
 	logs.Success(`Server ready!`)
 	NewRouter().Run()
 }

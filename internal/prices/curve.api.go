@@ -9,25 +9,24 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
 func fetchCurve(url string) []TCurveFactoriesPoolData {
 	resp, err := http.Get(url)
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return []TCurveFactoriesPoolData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return []TCurveFactoriesPoolData{}
 	}
 	var factories TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return []TCurveFactoriesPoolData{}
 	}
 	return factories.Data.PoolData

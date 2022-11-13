@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -50,7 +51,7 @@ func filterNewExperimentalVault(
 
 	currentVault, err := contracts.NewYregistryv2(vaultAddress, client) //V1 and V2 share the same ABI
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return
 	}
 
@@ -100,7 +101,7 @@ func filterNewVaults(
 
 	currentVault, err := contracts.NewYregistryv2(vaultAddress, client) //V1 and V2 share the same ABI
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return
 	}
 

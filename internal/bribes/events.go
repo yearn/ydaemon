@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
 )
@@ -31,7 +32,7 @@ func filterRewardAdded(
 
 	currentVault, err := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
 	if err != nil {
-		logs.Error(err)
+		helpers.LogAndCaptureError(err)
 		return
 	}
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {

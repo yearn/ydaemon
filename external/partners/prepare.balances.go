@@ -51,12 +51,12 @@ func computeDefaultBalance(
 		ethereum.GetRPC(chainID),
 	)
 	if err != nil {
-		logs.Error("Failed to create YearnVault contract", err)
+		helpers.LogAndCaptureError(err, "Failed to create YearnVault contract", err)
 		return nil, nil, err
 	}
 	balance, err := yearnVault.BalanceOf(nil, userAddress.Address)
 	if err != nil {
-		logs.Error(`Error getting balance`, err)
+		helpers.LogAndCaptureError(err, `Error getting balance`, err)
 		return nil, nil, err
 	}
 

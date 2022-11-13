@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 )
@@ -46,7 +47,7 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64) {
 		client := RPC[chainID]
 		block, err := client.HeaderByNumber(context.Background(), big.NewInt(int64(blockNumber)))
 		if err != nil {
-			logs.Error(`impossible to get block time: ` + err.Error())
+			helpers.LogAndCaptureError(err, `impossible to get block time: `+err.Error())
 			return 0
 		}
 		syncMap.Store(blockNumber, block.Time)

@@ -72,6 +72,7 @@ func RetrieveHarvests(
 	trace := traces.Init(
 		`app.indexer.vaults.harvest_events`,
 		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
+		traces.TTags{Name: "entity", Value: "vaults"},
 		traces.TTags{Name: "subsystem", Value: "daemon"},
 	)
 	defer trace.Finish()

@@ -217,6 +217,7 @@ func RetrieveAllVaults(
 	trace := traces.Init(
 		`app.indexer.vaults.multicall_data`,
 		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
+		traces.TTags{Name: "entity", Value: "vaults"},
 		traces.TTags{Name: "subsystem", Value: "daemon"},
 	)
 	defer trace.Finish()

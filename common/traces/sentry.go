@@ -2,7 +2,6 @@ package traces
 
 import (
 	"context"
-	"errors"
 	"log"
 	"os"
 	"strconv"
@@ -112,10 +111,6 @@ func (s TTrace) Child(key string, tags ...TTags) *TTrace {
 	}
 }
 
-func (s TTrace) Capture(msg string) {
-	sentry.CurrentHub().CaptureException(errors.New(msg))
-}
-
 func (s TTrace) Finish() {
 	startedAt := s.span.StartTime
 	endedAt := time.Now()
@@ -123,4 +118,74 @@ func (s TTrace) Finish() {
 
 	logs.Trace(s.key, 0, duration.String())
 	s.span.Finish()
+}
+
+var captureLevel = map[string]sentry.Level{
+	`debug`: sentry.LevelDebug,
+	`info`:  sentry.LevelInfo,
+	`warn`:  sentry.LevelWarning,
+	`error`: sentry.LevelError,
+}
+
+type TCapturedEvent struct {
+	Message string
+	Level   sentry.Level
+	Tags    map[string]string
+	Event   *sentry.Event
+}
+
+func Capture(level string, msg string, tags ...TTags) *TCapturedEvent {
+	event := sentry.NewEvent()
+	event.Level = captureLevel[level]
+	event.Message = msg
+	if len(tags) > 0 {
+		for _, tag := range tags {
+			event.Tags[tag.Name] = tag.Value
+		}
+	}
+
+	return &TCapturedEvent{
+		Message: msg,
+		Level:   event.Level,
+		Tags:    event.Tags,
+		Event:   event,
+	}
+}
+
+func (c *TCapturedEvent) SetEntity(value string) *TCapturedEvent {
+	c.Event.Type = value
+	return c
+}
+func (c *TCapturedEvent) SetTag(key string, value string) *TCapturedEvent {
+	c.Event.Tags[key] = value
+	return c
+}
+func (c *TCapturedEvent) SetTags(tags ...TTags) *TCapturedEvent {
+	if len(tags) > 0 {
+		for _, tag := range tags {
+			c.Event.Tags[tag.Name] = tag.Value
+		}
+	}
+	return c
+}
+func (c *TCapturedEvent) SetExtra(key string, value interface{}) *TCapturedEvent {
+	c.Event.Extra[key] = value
+	return c
+}
+
+func (c *TCapturedEvent) Send() *TCapturedEvent {
+	sentry.CurrentHub().Clone().CaptureEvent(c.Event)
+	switch c.Level {
+	case sentry.LevelError:
+		logs.Error(c.Message)
+	case sentry.LevelInfo:
+		logs.Info(c.Message)
+	case sentry.LevelDebug:
+		logs.Debug(c.Message)
+	case sentry.LevelWarning:
+		logs.Warning(c.Message)
+	default:
+		logs.Info(c.Message)
+	}
+	return c
 }

@@ -8,7 +8,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -36,13 +35,18 @@ func filterUpdateManagementOneTime(
 
 	currentVault, err := contracts.NewYvault043(vaultAddress, client)
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YBribre V3 at address `+vaultAddress.Hex()).
+			SetEntity(`bribes`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 		return
 	}
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
-				helpers.LogAndCaptureError(log.Error(), log.Error())
 				asyncActivationMap.Store(vaultAddress, 0)
 				return
 			}

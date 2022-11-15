@@ -13,7 +13,10 @@ import (
 var chains = []uint64{1}
 
 func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(`app.bootstrap.summon.daemon`, traces.TTags{Name: `chainId`, Value: strconv.Itoa(int(chainID))})
+	trace = trace.Child(
+		`app.bootstrap.summon.daemon`,
+		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
+	)
 	defer trace.Finish()
 
 	SummonDaemons(chainID)
@@ -35,7 +38,10 @@ func summonDaemonsForAllChains(trace *traces.TTrace) {
 }
 
 func waitGroupLoadDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(`app.bootstrap.load_state.daemon`, traces.TTags{Name: `chainId`, Value: strconv.Itoa(int(chainID))})
+	trace = trace.Child(
+		`app.bootstrap.load_state.daemon`,
+		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
+	)
 	defer trace.Finish()
 
 	LoadDaemons(chainID)
@@ -68,7 +74,6 @@ func initialize() {
 }
 
 func main() {
-	go logs.Ui()
 	initialize()
 
 	logs.Success(`Server ready!`)

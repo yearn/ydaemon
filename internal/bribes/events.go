@@ -9,8 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
@@ -33,14 +31,19 @@ func filterRewardAdded(
 
 	currentVault, err := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YBribre V3 at address `+contractAddress.Hex()).
+			SetEntity(`bribes`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`bribeAddress`, contractAddress.Hex()).
+			Send()
 		return
 	}
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
-				logs.Error(log.Error())
-				return
+				continue
 			}
 			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
 				Amount:      bigNumber.SetInt(log.Event.Amount),

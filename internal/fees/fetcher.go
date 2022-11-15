@@ -1,7 +1,6 @@
 package fees
 
 import (
-	"context"
 	"strconv"
 	"strings"
 	"sync"
@@ -9,7 +8,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -195,11 +193,6 @@ func RetrieveAllFeesBPS(
 	map[common.Address]map[uint64][]utils.TEventBlock,
 	map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock,
 ) {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Fees"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
 	timeBefore := time.Now()
 
 	asyncManagementFeeUpdate := sync.Map{}

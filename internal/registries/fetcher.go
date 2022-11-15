@@ -1,17 +1,15 @@
 package registries
 
 import (
-	"context"
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -143,12 +141,13 @@ func filterNewVaults(
 func RetrieveAllVaults(
 	chainID uint64,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Vaults"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(
+		`app.indexer.registry.new_vaults_events`,
+		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
+		traces.TTags{Name: "entity", Value: "registries"},
+		traces.TTags{Name: "subsystem", Value: "daemon"},
+	)
+	defer trace.Finish()
 
 	vaultsList := []utils.TVaultsFromRegistry{}
 	vaultsListExperimental := []utils.TVaultsFromRegistry{}
@@ -193,6 +192,5 @@ func RetrieveAllVaults(
 		uniqueVaultsList = filteredVaultsList
 	}
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(uniqueVaultsList), `vaults from registry`)
 	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
 }

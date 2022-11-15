@@ -1,17 +1,15 @@
 package vaults
 
 import (
-	"context"
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -65,12 +63,13 @@ func RetrieveActivationForAllVaults(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Vault Activation Events"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(
+		`app.indexer.vaults.activation_events`,
+		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
+		traces.TTags{Name: "entity", Value: "vaults"},
+		traces.TTags{Name: "subsystem", Value: "daemon"},
+	)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
@@ -105,6 +104,5 @@ func RetrieveActivationForAllVaults(
 		return true
 	})
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `activation events`)
 	return vaultListWithActivation
 }

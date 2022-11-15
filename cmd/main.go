@@ -12,7 +12,6 @@ import (
 )
 
 // var chains = env.SUPPORTED_CHAIN_IDS
-
 var chains = []uint64{1}
 
 func waitGroupSummonDaemons(ctx context.Context, wg *sync.WaitGroup, chainID uint64) {

@@ -55,8 +55,8 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 // CURVE_FACTORY_URI contains the URI of the Curve Factory to use
 var CURVE_FACTORY_URI = map[uint64][]string{
 	1: {
-		`hettps://api.curve.fi/api/getPools/ethereum/factory`,
-		`hettps://api.curve.fi/api/getPools/ethereum/factory-crypto`,
+		`https://api.curve.fi/api/getPools/ethereum/factory`,
+		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
 	},
 	10: {
 		`https://api.curve.fi/api/getPools/optimism/factory`,

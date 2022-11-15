@@ -27,6 +27,14 @@ func isLogLevelAtLeast(minimum string) bool {
 	return true
 }
 
+func shouldUseUI() bool {
+	WITH_UI, exists := os.LookupEnv("WITH_UI")
+	if !exists {
+		return false
+	}
+	return WITH_UI == "true"
+}
+
 var colorGreen = color.New(color.FgGreen).Add(color.Bold).SprintFunc()
 var colorRed = color.New(color.FgRed).Add(color.Bold).SprintFunc()
 var colorYellow = color.New(color.FgYellow).Add(color.Bold).SprintFunc()
@@ -37,10 +45,17 @@ var colorGrey = color.New(color.Faint).SprintFunc()
 
 // ErrorCrash function logs an error
 func Error(err ...interface{}) {
+	if shouldUseUI() {
+		InfoLogs = append(InfoLogs, TLogs{
+			level: "ERROR",
+			data:  err,
+		})
+		return
+	}
 	pc, _, line, _ := runtime.Caller(1)
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[ KO ]`
+	str1 := `[ ERROR ]`
 	str2 := `(` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `)`
 	t := time.Now().Format("2006/01/02 15:04:05")
 
@@ -65,7 +80,7 @@ func Success(success ...interface{}) {
 	}
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[ OK ]`
+	str1 := `[ OK ] `
 	t := time.Now().Format("2006/01/02 15:04:05")
 
 	spew.Printf("%s %-17s %s %s\n", t, colorMagenta(str0), colorGreen(str1), colorCyan(success))
@@ -80,7 +95,7 @@ func Warning(warning ...interface{}) {
 	pc, _, line, _ := runtime.Caller(1)
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[WARN]`
+	str1 := `[WARN] `
 	str2 := `(` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `)`
 	t := time.Now().Format("2006/01/02 15:04:05")
 
@@ -94,7 +109,7 @@ func Info(info ...interface{}) {
 	}
 
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
-	str1 := `[INFO]`
+	str1 := `[INFO] `
 	t := time.Now().Format("2006/01/02 15:04:05")
 
 	spew.Printf("%s %-17s %s %s\n", t, colorMagenta(str0), colorBlue(str1), colorBlue(info))
@@ -135,6 +150,9 @@ func Trace(key string, status int, message string) {
 
 // Pretty function disasemble a variable and display it's struct and values
 func Pretty(variable ...interface{}) {
+	if shouldUseUI() {
+		return
+	}
 	spew.Config.Indent = "    "
 	fmt.Printf("%s", colorYellow("----------------------------------\n"))
 	for _, each := range variable {

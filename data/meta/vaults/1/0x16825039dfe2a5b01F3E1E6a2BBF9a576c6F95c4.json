@@ -2,11 +2,11 @@
   "$schema": "vault",
   "comment": "Curve d3pool",
   "hideAlways": false,
-  "depositsDisabled": false,
+  "depositsDisabled": true,
   "withdrawalsDisabled": false,
   "order": 51,
   "migrationAvailable": false,
-  "allowZapIn": true,
+  "allowZapIn": false,
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve d3pool"

@@ -41,7 +41,7 @@ func filterNewExperimentalVault(
 		return //No newExperimentalVault events in registry v3
 	}
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
 
 	if log, err := currentVault.FilterNewExperimentalVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {

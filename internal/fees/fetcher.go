@@ -36,7 +36,7 @@ func filterUpdateManagementFee(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := currentVault.FilterUpdateManagementFee(&bind.FilterOpts{Start: vaultActivation}); err == nil {
@@ -85,7 +85,7 @@ func filterUpdatePerformanceFee(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := currentVault.FilterUpdatePerformanceFee(&bind.FilterOpts{Start: vaultActivation}); err == nil {
@@ -135,7 +135,7 @@ func filterUpdateStrategyPerformanceFee(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := currentVault.FilterStrategyUpdatePerformanceFee(&bind.FilterOpts{Start: vaultActivation}, nil); err == nil {

@@ -35,7 +35,7 @@ func filterStrategyReported(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := currentVault.FilterStrategyReported(&bind.FilterOpts{Start: activation}, nil); err == nil {
 		for log.Next() {

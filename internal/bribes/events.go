@@ -26,7 +26,7 @@ func filterRewardAdded(
 	chainID uint64,
 	asyncRewardAdded *sync.Map,
 ) {
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
 	currentVault, _ := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
 

@@ -31,7 +31,7 @@ func filterUpdateManagementOneTime(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {

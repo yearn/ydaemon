@@ -37,7 +37,7 @@ func getStrategiesMigrated(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := vault.FilterStrategyMigrated(&bind.FilterOpts{Start: vaultActivation}, nil, nil); err == nil {
 		for log.Next() {
@@ -96,7 +96,7 @@ func getStrategiesAdded(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	switch vaultVersion {
 	case `0.2.2`:
 		vault, _ := contracts.NewYvault022(vaultAddress, client)

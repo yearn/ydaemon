@@ -55,16 +55,15 @@ func SetupSentry() {
 
 		sampleRate := getSampleRate()
 		logs.Info(`Sentry TracesSampleRate set to ` + strconv.FormatFloat(sampleRate, 'f', 2, 64))
-		err := sentry.Init(sentry.ClientOptions{
+		if err := sentry.Init(sentry.ClientOptions{
 			ServerName:       SERVER_NAME,
 			Dsn:              SENTRY_DSN,
 			TracesSampleRate: sampleRate,
 			AttachStacktrace: true,
-		})
-		if err != nil {
-			log.Fatalf("sentry.Init: %s", err)
+		}); err != nil {
+			logs.Error(err)
 		} else {
-			logs.Info("Sentry initialized")
+			logs.Success("Sentry initialized")
 		}
 	} else {
 		logs.Warning("SENTRY_DSN not set, Sentry not initialized")

@@ -48,6 +48,15 @@ func filterStrategyReported(
 				strconv.FormatUint(log.Event.Raw.BlockNumber, 10))
 			asyncMapLastReports.LoadOrStore(eventKey, blockTimestamp)
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyReported for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`vault`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -71,6 +80,7 @@ func RetrieveHarvests(
 ) map[common.Address]map[common.Address]map[uint64]uint64 {
 	trace := traces.Init(`app.indexer.vaults.harvest_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `vaults`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()

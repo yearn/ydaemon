@@ -5,6 +5,7 @@ import (
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -86,10 +87,21 @@ type TStrategy struct {
 func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	strategyAddress := common.FromAddress(t.Address)
 	vaultAddress := common.FromAddress(t.VaultAddress)
-	stratGroup := getStrategyGroup(t.ChainID, t)
+	strategyGroup := getStrategyGroup(t.ChainID, t)
 	strategyRiskScore := getDefaultRiskGroup()
 	strategyRiskScore.Address = strategyAddress
 	strategyRiskScore.ChainID = t.ChainID
+	if strategyGroup == nil {
+		traces.
+			Capture(`warn`, `impossible to find strategyGroup for group `+t.Name).
+			SetEntity(`strategy`).
+			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).
+			SetTag(`strategyAddress`, t.Address.Hex()).
+			SetTag(`strategyName`, t.Name).
+			Send()
+		return &strategyRiskScore
+	}
 
 	// Fetch activation and tvl from multicall
 	strategyRiskScore.RiskScores.LongevityImpact = getLongevityImpact(t.Activation)
@@ -101,6 +113,7 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 			Capture(`warn`, `impossible to find token for vault `+t.VaultAddress.Hex()).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).
 			SetTag(`strategyAddress`, strategyAddress.Hex()).
 			SetTag(`strategyName`, t.Name).
 			Send()
@@ -113,6 +126,7 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 			Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).
 			SetTag(`strategyAddress`, strategyAddress.Hex()).
 			SetTag(`strategyName`, t.Name).
 			Send()
@@ -122,15 +136,15 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	tvl := bigNumber.NewFloat(0).Mul(amount, price)
 
 	// Updating the default schema
-	strategyRiskScore.RiskGroup = stratGroup.Label
-	strategyRiskScore.RiskScores.AuditScore = stratGroup.AuditScore
-	strategyRiskScore.RiskScores.CodeReviewScore = stratGroup.CodeReviewScore
-	strategyRiskScore.RiskScores.ComplexityScore = stratGroup.ComplexityScore
-	strategyRiskScore.RiskScores.ProtocolSafetyScore = stratGroup.ProtocolSafetyScore
-	strategyRiskScore.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
-	strategyRiskScore.RiskScores.TestingScore = stratGroup.TestingScore
+	strategyRiskScore.RiskGroup = strategyGroup.Label
+	strategyRiskScore.RiskScores.AuditScore = strategyGroup.AuditScore
+	strategyRiskScore.RiskScores.CodeReviewScore = strategyGroup.CodeReviewScore
+	strategyRiskScore.RiskScores.ComplexityScore = strategyGroup.ComplexityScore
+	strategyRiskScore.RiskScores.ProtocolSafetyScore = strategyGroup.ProtocolSafetyScore
+	strategyRiskScore.RiskScores.TeamKnowledgeScore = strategyGroup.TeamKnowledgeScore
+	strategyRiskScore.RiskScores.TestingScore = strategyGroup.TestingScore
 	strategyRiskScore.RiskScores.TVLImpact = getTVLImpact(tvl)
-	strategyRiskScore.Allocation = stratGroup.Allocation
+	strategyRiskScore.Allocation = strategyGroup.Allocation
 	return &strategyRiskScore
 }
 

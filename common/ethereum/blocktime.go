@@ -52,6 +52,7 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64) {
 				SetEntity(`block`).
 				SetExtra(`error`, err.Error()).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, GetRPCURI(chainID)).
 				SetTag(`blockNumber`, strconv.FormatUint(blockNumber, 10)).
 				Send()
 			return 0

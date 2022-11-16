@@ -5,26 +5,15 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
+	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
-
-type TRegistry struct {
-	Address    common.Address
-	ChainID    uint64
-	Activation uint64
-}
-
-var REGISTRIES = map[uint64][]TRegistry{
-	1: {
-		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), ChainID: 1, Activation: 11563389},
-		{Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"), ChainID: 1, Activation: 12045555},
-	},
-}
 
 /**************************************************************************************************
 ** Filter all newExperimentalVault events and store them in an array of TVaultsFromRegistry
@@ -32,6 +21,7 @@ var REGISTRIES = map[uint64][]TRegistry{
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
 ** - registryAddress: the address of the vault we are working on
+** - registryVersion: the version of the registry we are working on
 ** - registryActivation: the block number at which the registry was activated
 ** - vaultsList: the ptr to the array of TVaultsFromRegistry
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
@@ -41,24 +31,18 @@ var REGISTRIES = map[uint64][]TRegistry{
 func filterNewExperimentalVault(
 	chainID uint64,
 	registryAddress common.Address,
+	registryVersion uint64,
 	registryActivation uint64,
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
-
-	currentVault, err := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
-	if err != nil {
-		traces.
-			Capture(`error`, `impossible to connect to YRegistry V2 at address `+registryAddress.Hex()).
-			SetEntity(`registry`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`registryAddress`, registryAddress.Hex()).
-			Send()
-		return
+	if registryVersion == 3 {
+		return //No newExperimentalVault events in registry v3
 	}
+
+	client := ethereum.RPC[chainID]
+	currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
 
 	if log, err := currentVault.FilterNewExperimentalVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
 		for log.Next() {
@@ -66,7 +50,7 @@ func filterNewExperimentalVault(
 				continue
 			}
 			*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-				RegistryAddress: registryAddress,
+				RegistryAddress: registryAddress.ToAddress(),
 				VaultsAddress:   log.Event.Vault,
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
@@ -79,6 +63,15 @@ func filterNewExperimentalVault(
 				Type:            "Experimental",
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterNewExperimentalVault for YRegistryV2 `+registryAddress.Hex()).
+			SetEntity(`registry`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`registryAddress`, registryAddress.Hex()).
+			Send()
 	}
 }
 
@@ -88,6 +81,7 @@ func filterNewExperimentalVault(
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
 ** - registryAddress: the address of the vault we are working on
+** - registryVersion: the version of the registry we are working on
 ** - registryActivation: the block number at which the registry was activated
 ** - vaultsList: the ptr to the array of TVaultsFromRegistry
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
@@ -97,43 +91,76 @@ func filterNewExperimentalVault(
 func filterNewVaults(
 	chainID uint64,
 	registryAddress common.Address,
+	registryVersion uint64,
 	registryActivation uint64,
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 
-	currentVault, err := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
-	if err != nil {
-		traces.
-			Capture(`error`, `impossible to connect to YRegistry V2 at address `+registryAddress.Hex()).
-			SetEntity(`registry`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`registryAddress`, registryAddress.Hex()).
-			Send()
-		return
-	}
-
-	if log, err := currentVault.FilterNewVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				continue
+	if registryVersion == 1 || registryVersion == 2 {
+		currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
+		if log, err := currentVault.FilterNewVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					continue
+				}
+				*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
+					RegistryAddress: registryAddress.ToAddress(),
+					VaultsAddress:   log.Event.Vault,
+					TokenAddress:    log.Event.Token,
+					APIVersion:      log.Event.ApiVersion,
+					BlockNumber:     log.Event.Raw.BlockNumber,
+					Activation:      registryActivation,
+					ManagementFee:   200,
+					BlockHash:       log.Event.Raw.BlockHash,
+					TxIndex:         log.Event.Raw.TxIndex,
+					LogIndex:        log.Event.Raw.Index,
+					Type:            "Standard",
+				})
 			}
-			*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-				RegistryAddress: registryAddress,
-				VaultsAddress:   log.Event.Vault,
-				TokenAddress:    log.Event.Token,
-				APIVersion:      log.Event.ApiVersion,
-				BlockNumber:     log.Event.Raw.BlockNumber,
-				Activation:      registryActivation,
-				ManagementFee:   200,
-				BlockHash:       log.Event.Raw.BlockHash,
-				TxIndex:         log.Event.Raw.TxIndex,
-				LogIndex:        log.Event.Raw.Index,
-				Type:            "Standard",
-			})
+		} else {
+			traces.
+				Capture(`error`, `impossible to FilterNewVault for YRegistryV2 `+registryAddress.Hex()).
+				SetEntity(`registry`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+				SetTag(`registryAddress`, registryAddress.Hex()).
+				Send()
+		}
+	} else if registryVersion == 3 {
+		currentVault, _ := contracts.NewYRegistryV3(registryAddress.ToAddress(), client) //V3 is not the same
+
+		if log, err := currentVault.FilterNewVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					continue
+				}
+				*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
+					RegistryAddress: registryAddress.ToAddress(),
+					VaultsAddress:   log.Event.Vault,
+					TokenAddress:    log.Event.Token,
+					APIVersion:      log.Event.ApiVersion,
+					BlockNumber:     log.Event.Raw.BlockNumber,
+					Activation:      registryActivation,
+					ManagementFee:   200,
+					BlockHash:       log.Event.Raw.BlockHash,
+					TxIndex:         log.Event.Raw.TxIndex,
+					LogIndex:        log.Event.Raw.Index,
+					Type:            "Standard",
+				})
+			}
+		} else {
+			traces.
+				Capture(`error`, `impossible to FilterNewVault for YRegistryV3 `+registryAddress.Hex()).
+				SetEntity(`registry`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+				SetTag(`registryAddress`, registryAddress.Hex()).
+				Send()
 		}
 	}
 }
@@ -151,9 +178,10 @@ func filterNewVaults(
 **************************************************************************************************/
 func RetrieveAllVaults(
 	chainID uint64,
-) map[common.Address]utils.TVaultsFromRegistry {
+) map[ethcommon.Address]utils.TVaultsFromRegistry {
 	trace := traces.Init(`app.indexer.registry.new_vaults_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `registries`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
@@ -162,10 +190,10 @@ func RetrieveAllVaults(
 	vaultsListExperimental := []utils.TVaultsFromRegistry{}
 
 	wg := &sync.WaitGroup{}
-	for _, registry := range REGISTRIES[chainID] {
+	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		wg.Add(2)
-		go filterNewVaults(chainID, registry.Address, registry.Activation, &vaultsList, wg)
-		go filterNewExperimentalVault(chainID, registry.Address, registry.Activation, &vaultsListExperimental, wg)
+		go filterNewVaults(chainID, registry.Address, registry.Version, registry.Activation, &vaultsList, wg)
+		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, registry.Activation, &vaultsListExperimental, wg)
 	}
 	wg.Wait()
 
@@ -174,7 +202,7 @@ func RetrieveAllVaults(
 	** were deployed first as experimental vaults and then as standard vaults. In that case, we
 	** keep the standard vault.
 	**********************************************************************************************/
-	uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
+	uniqueVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
 	for _, v := range vaultsList {
 		uniqueVaultsList[v.VaultsAddress] = v
 	}
@@ -194,9 +222,9 @@ func RetrieveAllVaults(
 		// `0x19d3364a399d251e894ac732651be8b0e4e85001`, //yvDAI v0.3.0
 	}
 	if len(vaultsToFilter) > 0 {
-		filteredVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
+		filteredVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
 		for _, v := range vaultsToFilter {
-			filteredVaultsList[common.HexToAddress(v)] = uniqueVaultsList[common.HexToAddress(v)]
+			filteredVaultsList[ethcommon.HexToAddress(v)] = uniqueVaultsList[ethcommon.HexToAddress(v)]
 		}
 		uniqueVaultsList = filteredVaultsList
 	}

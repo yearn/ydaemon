@@ -58,6 +58,15 @@ func getStrategiesMigrated(
 				LogIndex:           log.Event.Raw.Index,
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`strategy`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -175,6 +184,7 @@ func RetrieveAllStrategiesAdded(
 ) []TStrategyAdded {
 	trace := traces.Init(`app.indexer.strategies.activation_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `strategies`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()

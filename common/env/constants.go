@@ -52,6 +52,30 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	},
 }
 
+type TRegistry struct {
+	Address    common.Address
+	Version    uint64
+	Activation uint64
+}
+
+//YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block
+var YEARN_REGISTRIES = map[uint64][]TRegistry{
+	1: {
+		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), Version: 1, Activation: 11563389},
+		{Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"), Version: 2, Activation: 12045555},
+	},
+	10: {
+		{Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"), Version: 3, Activation: 22450349},
+		{Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"), Version: 3, Activation: 22451152},
+	},
+	250: {
+		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Activation: 18455565},
+	},
+	42161: {
+		{Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"), Version: 2, Activation: 4841854},
+	},
+}
+
 // CURVE_FACTORY_URI contains the URI of the Curve Factory to use
 var CURVE_FACTORY_URI = map[uint64][]string{
 	1: {
@@ -108,6 +132,14 @@ var YBRIBE_V3_ADDRESSES = map[uint64]common.Address{
 	10:    {},
 	250:   {},
 	42161: {},
+}
+
+// CURVE_REGISTRY_ADDRESSES contains the address of the Curve Registry contract
+var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
+	1:     common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
+	10:    common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+	250:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 }
 
 // STRATEGIES_CONDITIONS contains the possible conditions to determine which strategies should

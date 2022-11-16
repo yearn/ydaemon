@@ -67,12 +67,10 @@ func RetrieveActivationForAllVaults(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	trace := traces.Init(
-		`app.indexer.vaults.activation_events`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "vaults"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.vaults.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `vaults`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	/**********************************************************************************************

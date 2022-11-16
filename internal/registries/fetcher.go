@@ -152,12 +152,10 @@ func filterNewVaults(
 func RetrieveAllVaults(
 	chainID uint64,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	trace := traces.Init(
-		`app.indexer.registry.new_vaults_events`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "registries"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.registry.new_vaults_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `registries`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	vaultsList := []utils.TVaultsFromRegistry{}

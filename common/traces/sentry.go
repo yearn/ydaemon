@@ -95,8 +95,12 @@ func Init(key string, tags ...TTags) *TTrace {
 		span: span,
 	}
 }
+func (s *TTrace) SetTag(key string, value string) *TTrace {
+	s.span.SetTag(key, value)
+	return s
+}
 
-func (s TTrace) Child(key string, tags ...TTags) *TTrace {
+func (s *TTrace) Child(key string, tags ...TTags) *TTrace {
 	logs.Trace(key, 1, ``)
 	span := s.span.StartChild(key, sentry.TransactionName(SPANS[key]))
 	if len(tags) > 0 {

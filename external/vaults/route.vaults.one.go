@@ -24,14 +24,26 @@ func (y Controller) GetVault(c *gin.Context) {
 	}
 
 	// strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-	// withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
+	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	// withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	currentVault, ok := vaults.FindVault(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid vault")
 		return
 	}
+	vaultAddress := common.FromAddress(currentVault.Address)
 	newVault := NewVault().AssignTVault(currentVault)
-	newVault.Strategies = strategies.ListStrategiesForVault(chainID, common.FromAddress(currentVault.Address))
+	if withStrategiesDetails {
+		newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
+	} else {
+		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+		for _, strategy := range vaultStrategies {
+			newVault.Strategies = append(newVault.Strategies, &strategies.TStrategy{
+				Address:     strategy.Address,
+				Name:        strategy.Name,
+				Description: strategy.Description,
+			})
+		}
+	}
 	c.JSON(http.StatusOK, newVault)
 }

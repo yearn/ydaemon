@@ -18,7 +18,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
 	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
 	// strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-	// withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
+	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	// withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -34,10 +34,23 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			continue
 		}
 		newVault := NewVault().AssignTVault(currentVault)
-		newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
 		if newVault.Details.HideAlways && hideAlways {
 			continue
 		}
+
+		if withStrategiesDetails {
+			newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
+		} else {
+			vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+			for _, strategy := range vaultStrategies {
+				newVault.Strategies = append(newVault.Strategies, &strategies.TStrategy{
+					Address:     strategy.Address,
+					Name:        strategy.Name,
+					Description: strategy.Description,
+				})
+			}
+		}
+
 		data = append(data, *newVault)
 	}
 

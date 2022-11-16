@@ -121,12 +121,10 @@ func findAllPrices(
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
 func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
-	trace := traces.Init(
-		`app.indexer.prices`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "prices"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.prices`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `prices`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	/**********************************************************************************************

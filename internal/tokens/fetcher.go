@@ -265,12 +265,10 @@ func RetrieveAllTokens(
 	chainID uint64,
 	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
 ) map[ethcommon.Address]*TERC20Token {
-	trace := traces.Init(
-		`app.indexer.tokens.multicall_data`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "tokens"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.tokens.multicall_data`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `tokens`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	/**********************************************************************************************

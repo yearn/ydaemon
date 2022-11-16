@@ -63,7 +63,7 @@ func loadDaemonsForAllChains(trace *traces.TTrace) {
 
 func initialize() {
 	traces.SetupSentry()
-	trace := traces.Init(`app.bootstrap`, traces.TTags{Name: `subsystem`, Value: `main`})
+	trace := traces.Init(`app.bootstrap`).SetTag(`subsystem`, `main`)
 	defer trace.Finish()
 
 	logs.Info(`Loading store data to yDaemon memory...`)

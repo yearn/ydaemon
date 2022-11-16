@@ -65,12 +65,10 @@ func filterRewardAdded(
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
 func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
-	trace := traces.Init(
-		`app.indexer.bribes.reward_added`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "bribes"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.bribes.reward_added`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `bribes`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	/**********************************************************************************************

@@ -213,12 +213,10 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategyAddedList []TStrategyAdded,
 ) map[ethcommon.Address]*TStrategy {
-	trace := traces.Init(
-		`app.indexer.strategies.multicall_data`,
-		traces.TTags{Name: "chainID", Value: strconv.FormatUint(chainID, 10)},
-		traces.TTags{Name: "entity", Value: "strategies"},
-		traces.TTags{Name: "subsystem", Value: "daemon"},
-	)
+	trace := traces.Init(`app.indexer.strategies.multicall_data`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `strategies`).
+		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
 	/**********************************************************************************************

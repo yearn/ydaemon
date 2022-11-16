@@ -7,10 +7,10 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/partners"
-	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon
@@ -39,13 +39,14 @@ func SummonDaemons(chainID uint64) {
 
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(6)
+	wg.Add(7)
 	{
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllVaultsFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllTokensFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllStrategiesFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
+		go runDaemon(chainID, &wg, 0, strategies.RetrieveAllRisksGroupsFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}
 	wg.Wait()
@@ -59,10 +60,9 @@ func SummonDaemons(chainID uint64) {
 
 	wg.Add(1)
 	{
-		//Require prices.FetchLens to be done
-		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
+		//This can only be run after the internal daemons have been initialized
+		go runDaemon(chainID, &wg, 0, strategies.ComputeRiskGroupAllocation)
 	}
-
 	wg.Wait()
 }
 

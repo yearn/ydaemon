@@ -19,7 +19,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
 	// strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-	// withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
+	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
@@ -38,17 +38,22 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			continue
 		}
 
-		if withStrategiesDetails {
-			newVault.Strategies = strategies.ListStrategiesForVault(chainID, vaultAddress)
-		} else {
-			vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
-			for _, strategy := range vaultStrategies {
-				newVault.Strategies = append(newVault.Strategies, &strategies.TStrategy{
-					Address:     strategy.Address,
+		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+		for _, strategy := range vaultStrategies {
+			var externalStrategy *TStrategy
+			if withStrategiesDetails {
+				externalStrategy = NewStrategy().AssignTStrategy(strategy)
+			} else {
+				externalStrategy = &TStrategy{
+					Address:     common.FromAddress(strategy.Address),
 					Name:        strategy.Name,
 					Description: strategy.Description,
-				})
+				}
 			}
+			if withStrategiesRisk {
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+			}
+			newVault.Strategies = append(newVault.Strategies, externalStrategy)
 		}
 
 		data = append(data, *newVault)

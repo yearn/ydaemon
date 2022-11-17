@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 // GetMetaTokens will, for a given chainID, return all the meta informations for the tokens.
@@ -18,17 +19,12 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 	}
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	tokensFromMeta, ok := Store.TokensFromMeta[chainID]
-	if !ok {
-		c.String(http.StatusNotFound, "no data available")
-		return
-	}
-
+	tokensFromMeta := meta.ListMetaTokens(chainID)
 	if localization == "all" {
 		c.JSON(http.StatusOK, tokensFromMeta)
 		return
 	}
-	localizedTokensFromMeta := []TTokenFromMeta{}
+	localizedTokensFromMeta := []*meta.TTokenFromMeta{}
 	for _, token := range tokensFromMeta {
 		local := selectLocalizationFromString(localization, *token.Localization)
 		token.Name = local.Name
@@ -54,7 +50,7 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 	}
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	tokenFromMeta, ok := Store.TokensFromMeta[chainID][address]
+	tokenFromMeta, ok := meta.GetMetaToken(chainID, address)
 	if !ok {
 		c.String(http.StatusNotFound, "no data available")
 		return

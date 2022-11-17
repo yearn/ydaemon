@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 // GetMetaProtocols will, for a given chainID, return all the meta informations for the protocols.
@@ -18,16 +19,12 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 	}
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	protocolsFromMeta, ok := Store.ProtocolsFromMeta[chainID]
-	if !ok {
-		c.String(http.StatusNotFound, "no data available")
-		return
-	}
+	protocolsFromMeta := meta.ListMetaProtocol(chainID)
 	if localization == "all" {
 		c.JSON(http.StatusOK, protocolsFromMeta)
 		return
 	}
-	localizedProtocolsFromMeta := []TProtocolsFromMeta{}
+	localizedProtocolsFromMeta := []*meta.TProtocolsFromMeta{}
 	for _, protocol := range protocolsFromMeta {
 		local := selectLocalizationFromString(localization, *protocol.Localization)
 		protocol.Name = local.Name
@@ -49,7 +46,7 @@ func (y Controller) GetMetaProtocol(c *gin.Context) {
 
 	localization := helpers.SafeString(c.Query("loc"), "en")
 	protocolName := c.Param("name")
-	protocolFromMeta, ok := Store.ProtocolsFromMeta[chainID][protocolName]
+	protocolFromMeta, ok := meta.GetMetaProtocol(chainID, protocolName)
 	if !ok {
 		c.String(http.StatusNotFound, "no data available")
 		return

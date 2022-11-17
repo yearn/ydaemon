@@ -4,13 +4,12 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -36,7 +35,7 @@ func filterStrategyReported(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := currentVault.FilterStrategyReported(&bind.FilterOpts{Start: activation}, nil); err == nil {
 		for log.Next() {
@@ -49,6 +48,15 @@ func filterStrategyReported(
 				strconv.FormatUint(log.Event.Raw.BlockNumber, 10))
 			asyncMapLastReports.LoadOrStore(eventKey, blockTimestamp)
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyReported for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`vault`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -70,7 +78,12 @@ func RetrieveHarvests(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]map[common.Address]map[uint64]uint64 {
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.vaults.harvest_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `vaults`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all strategyReported from vaults to strategies, waiting for the end
@@ -117,6 +130,5 @@ func RetrieveHarvests(
 		return true
 	})
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `reports`)
 	return lastReportForStrategy
 }

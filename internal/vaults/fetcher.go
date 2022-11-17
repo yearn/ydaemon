@@ -5,17 +5,17 @@ import (
 	"math/big"
 	"strconv"
 	"sync"
-	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/strategies"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -40,6 +40,7 @@ func fetchBasicInformations(
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
 	** multicall and will later be accessible via a concatened string `vaultAddress + methodName`.
 	**********************************************************************************************/
+	maxStrategiesPerVault := 20
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, vault := range vaults {
@@ -57,6 +58,9 @@ func fetchBasicInformations(
 		calls = append(calls, getTotalAssets(vault.String(), common.FromAddress(vault)))
 		calls = append(calls, getDepositLimit(vault.String(), common.FromAddress(vault)))
 		calls = append(calls, getAvailableDepositLimit(vault.String(), common.FromAddress(vault)))
+		for i := 0; i < maxStrategiesPerVault; i++ {
+			calls = append(calls, getVaultWithdrawalQueue(vault.String(), int64(i), common.FromAddress(vault)))
+		}
 	}
 
 	/**********************************************************************************************
@@ -102,65 +106,31 @@ func fetchBasicInformations(
 			logs.Warning(`NO UNDERLYING TOKEN FOUND FOR VAULT`, vault.String())
 		}
 
-		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][common.FromAddress(vault)]
-		if !ok {
-			// logs.Warning(`No meta file found for vault`, vault.String())
-			// If the vault file is missing, we set the default values for its fields
-			vaultFromMeta = meta.TVaultFromMeta{
-				Order:               1000000000,
-				HideAlways:          false,
-				DepositsDisabled:    false,
-				WithdrawalsDisabled: false,
-				MigrationAvailable:  false,
-				AllowZapIn:          true,
-				AllowZapOut:         true,
-				Retired:             false,
-			}
-		}
-
-		/******************************************************************************************
-		** THIS PART MUST BE CLEANED
-		******************************************************************************************/
-		humanizedPrice, fHumanizedPrice := buildTokenPrice(
-			chainID,
-			common.FromAddress(rawUnderlying[0].(ethcommon.Address)),
-		)
-		fHumanizedTVLPrice := buildTVL(
-			bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
-			int(shareTokenData.Decimals),
-			humanizedPrice,
-		)
-		delegatedTokenAsBN := bigNumber.NewInt(0)
-		fDelegatedValue := 0.0
-
-		strategies := []strategies.TStrategy{}
-		for _, strat := range strategies {
-			stratDelegatedValueAsFloat, err := strconv.ParseFloat(strat.DelegatedValue, 64)
-			if err == nil {
-				delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
-				fDelegatedValue += stratDelegatedValueAsFloat
-			}
-		}
-		/******************************************************************************************
-		** ! THIS PART MUST BE CLEANED
-		******************************************************************************************/
-
 		/******************************************************************************************
 		** Preparing our new TVault object
 		******************************************************************************************/
 		newVault := &TVault{
-			Address:            vault,
-			Name:               shareTokenData.Name,
-			Symbol:             shareTokenData.Symbol,
-			Decimals:           shareTokenData.Decimals,
-			Icon:               env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
-			Type:               `v2`,  //Always v2 for now
-			Endorsed:           false, //Default to false, will be updated later
-			Inception:          rawActivation[0].(*big.Int).Uint64(),
-			Version:            rawApiVersion[0].(string),
-			PricePerShare:      *bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
-			Emergency_shutdown: rawEmergencyShutdown[0].(bool),
-			Strategies:         strategies,
+			ChainID:               chainID,
+			Address:               vault,
+			Name:                  shareTokenData.Name,
+			Symbol:                shareTokenData.Symbol,
+			Decimals:              shareTokenData.Decimals,
+			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
+			Type:                  `v2`,  //Always v2 for now
+			Endorsed:              false, //Default to false, will be updated later
+			Inception:             rawActivation[0].(*big.Int).Uint64(),
+			Version:               rawApiVersion[0].(string),
+			PricePerShare:         bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
+			Management:            common.FromAddress(rawManagement[0].(ethcommon.Address)),
+			Governance:            common.FromAddress(rawGovernance[0].(ethcommon.Address)),
+			Guardian:              common.FromAddress(rawGuardian[0].(ethcommon.Address)),
+			Rewards:               common.FromAddress(rawRewards[0].(ethcommon.Address)),
+			TotalAssets:           bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
+			DepositLimit:          bigNumber.SetInt(rawDepositLimit[0].(*big.Int)),
+			AvailableDepositLimit: bigNumber.SetInt(rawAvailableDepositLimit[0].(*big.Int)),
+			PerformanceFee:        uint64(rawPerformanceFee[0].(*big.Int).Uint64()),
+			ManagementFee:         uint64(rawManagementFee[0].(*big.Int).Uint64()),
+			EmergencyShutdown:     bool(rawEmergencyShutdown[0].(bool)),
 			Token: tokens.TERC20Token{
 				Address:       underlyingTokenData.Address,
 				Name:          underlyingTokenData.Name,
@@ -171,45 +141,26 @@ func fetchBasicInformations(
 				Decimals:      underlyingTokenData.Decimals,
 				Icon:          underlyingTokenData.Icon,
 			},
-			TVL: TTVL{
-				TotalAssets:          bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
-				TotalDelegatedAssets: delegatedTokenAsBN,
-				TVL:                  fHumanizedTVLPrice - fDelegatedValue,
-				TVLDeposited:         fHumanizedTVLPrice,
-				TVLDelegated:         fDelegatedValue,
-				Price:                fHumanizedPrice,
-			},
-			Details: &TVaultDetails{
-				Management:            common.FromAddress(rawManagement[0].(ethcommon.Address)),
-				Governance:            common.FromAddress(rawGovernance[0].(ethcommon.Address)),
-				Guardian:              common.FromAddress(rawGuardian[0].(ethcommon.Address)),
-				Rewards:               common.FromAddress(rawRewards[0].(ethcommon.Address)),
-				DepositLimit:          bigNumber.SetInt(rawDepositLimit[0].(*big.Int)),
-				AvailableDepositLimit: bigNumber.SetInt(rawAvailableDepositLimit[0].(*big.Int)),
-				PerformanceFee:        uint64(rawPerformanceFee[0].(*big.Int).Uint64()),
-				ManagementFee:         uint64(rawManagementFee[0].(*big.Int).Uint64()),
-				Comment:               vaultFromMeta.Comment,
-				Order:                 vaultFromMeta.Order,
-				DepositsDisabled:      vaultFromMeta.DepositsDisabled,
-				WithdrawalsDisabled:   vaultFromMeta.WithdrawalsDisabled,
-				AllowZapIn:            vaultFromMeta.AllowZapIn,
-				AllowZapOut:           vaultFromMeta.AllowZapOut,
-				Retired:               vaultFromMeta.Retired,
-				APYTypeOverride:       vaultFromMeta.APYTypeOverride,
-				APYOverride:           vaultFromMeta.APYOverride,
-			},
 		}
 
 		newVault.BuildNames(shareTokenData.DisplayName)
 		newVault.BuildSymbol(shareTokenData.DisplaySymbol)
-		newVault.BuildMigration(chainID)
-		newVault.BuildAPY(chainID)
-		newVault.APY.Fees.Performance = float64(uint64(rawPerformanceFee[0].(*big.Int).Uint64()) / 10000)
-		newVault.APY.Fees.Management = float64(uint64(rawManagementFee[0].(*big.Int).Uint64()) / 10000)
 
-		if vaultFromMeta.APYTypeOverride != `` {
-			newVault.APY.Type = vaultFromMeta.APYTypeOverride
+		/******************************************************************************************
+		** Adding the withdrawal queue stuffs
+		******************************************************************************************/
+		withdrawQueueForStrategies := []common.Address{}
+		for i := 0; i < maxStrategiesPerVault; i++ {
+			result := response[vault.String()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
+			if len(result) == 1 {
+				strategyAddress := common.FromAddress(result[0].(ethcommon.Address))
+				if helpers.AddressIsValid(strategyAddress, chainID) {
+					withdrawQueueForStrategies = append(withdrawQueueForStrategies, strategyAddress)
+				}
+			}
 		}
+		newVault.WithdrawalQueue = withdrawQueueForStrategies
+		strategies.SetInStrategiesWithdrawalQueue(chainID, vault, withdrawQueueForStrategies)
 		vaultList = append(vaultList, newVault)
 	}
 
@@ -263,7 +214,12 @@ func RetrieveAllVaults(
 	chainID uint64,
 	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
 ) map[ethcommon.Address]*TVault {
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.vaults.multicall_data`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `vaults`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database to exclude the one existing
@@ -291,10 +247,13 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraVaults := []string{
-		// `0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+	extraVaults := map[uint64][]string{
+		1:     {},
+		10:    {},
+		250:   {},
+		42161: {},
 	}
-	for _, vaultAddress := range extraVaults {
+	for _, vaultAddress := range extraVaults[chainID] {
 		vaultAddress := ethcommon.HexToAddress(vaultAddress)
 		if _, ok := vaultMap[vaultAddress]; !ok {
 			updatedVaultMap[vaultAddress] = &TVault{
@@ -335,7 +294,6 @@ func RetrieveAllVaults(
 		store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(vaultMap), `vaults`)
 	_vaultMap[chainID] = vaultMap
 	return vaultMap
 }

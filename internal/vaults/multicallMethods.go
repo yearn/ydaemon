@@ -1,6 +1,9 @@
 package vaults
 
 import (
+	"math/big"
+	"strconv"
+
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -145,21 +148,22 @@ func getAvailableDepositLimit(name string, contractAddress common.Address) ether
 	}
 }
 func getToken(name string, contractAddress common.Address) ethereum.Call {
-	parsedData, err := YearnVaultABI.Pack("token")
-	if err != nil {
-		return ethereum.Call{
-			Target:   contractAddress.Address,
-			Abi:      YearnVaultABI,
-			Method:   `token`,
-			CallData: nil,
-			Name:     name,
-		}
-	}
+	parsedData, _ := YearnVaultABI.Pack("token")
 	return ethereum.Call{
 		Target:   contractAddress.Address,
 		Abi:      YearnVaultABI,
 		Method:   `token`,
 		CallData: parsedData,
 		Name:     name,
+	}
+}
+func getVaultWithdrawalQueue(name string, index int64, contractAddress common.Address) ethereum.Call {
+	parsedData, _ := YearnVaultABI.Pack("withdrawalQueue", big.NewInt(index))
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnVaultABI,
+		Method:   `withdrawalQueue`,
+		CallData: parsedData,
+		Name:     name + strconv.FormatInt(int64(index), 10),
 	}
 }

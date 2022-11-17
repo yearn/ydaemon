@@ -6,11 +6,11 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
-	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal"
+	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon
@@ -39,43 +39,30 @@ func SummonDaemons(chainID uint64) {
 
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(6)
+	wg.Add(7)
 	{
-		go runDaemon(chainID, &wg, 0, meta.FetchVaultsFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchTokensFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchStrategiesFromMeta)
-		go runDaemon(chainID, &wg, 0, meta.FetchProtocolsFromMeta)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllVaultsFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllTokensFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllStrategiesFromFiles)
+		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
+		go runDaemon(chainID, &wg, 0, strategies.RetrieveAllRisksGroupsFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}
 	wg.Wait()
 
-	wg.Add(2)
+	wg.Add(1)
 	{
 		//TODO: REPLACE WITH INTERNAL RELOADING
 		go runDaemon(chainID, &wg, 1*time.Minute, internal.InitializeV2)
-		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesList)
 	}
 	wg.Wait()
 
 	wg.Add(1)
 	{
-		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchWithdrawalQueueMulticallData)
+		//This can only be run after the internal daemons have been initialized
+		go runDaemon(chainID, &wg, 0, strategies.ComputeRiskGroupAllocation)
 	}
-	wg.Wait()
-
-	wg.Add(1)
-	{
-		//Require strategies.FetchWithdrawalQueueMulticallData to be done
-		go runDaemon(chainID, &wg, 10*time.Minute, strategies.FetchStrategiesMulticallData)
-	}
-	wg.Wait()
-	wg.Add(1)
-	{
-		//Require prices.FetchLens to be done
-		go runDaemon(chainID, &wg, time.Hour, strategies.FetchStrategiesFromRisk)
-	}
-
 	wg.Wait()
 }
 
@@ -86,9 +73,6 @@ func LoadDaemons(chainID uint64) {
 	}
 
 	var wg sync.WaitGroup
-	wg.Add(1)
-	go strategies.LoadAggregatedStrategies(chainID, &wg)
-	wg.Wait()
 
 	wg.Add(1)
 	go vaults.LoadAggregatedVaults(chainID, &wg)

@@ -3,10 +3,11 @@ package utils
 import (
 	"errors"
 	"sort"
+	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 )
 
 type TEventBlock struct {
@@ -106,7 +107,14 @@ func analyzeBlocks(m map[uint64][]TEventBlock, lookingForBlock uint64, lookingFo
 		blocks := m[uint64(blockNumbers[0])]
 		block, err := findInBlock(blocks, ^uint(0), ^uint(0))
 		if err != nil {
-			logs.Error(`NOT FOUND`)
+			traces.
+				Capture(`error`, `missing previous event`).
+				SetEntity(`blocks`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`lookingForBlock`, strconv.Itoa(int(lookingForBlock))).
+				SetTag(`lookingForTxIndex`, strconv.Itoa(int(lookingForTxIndex))).
+				SetTag(`lookingForLogIndex`, strconv.Itoa(int(lookingForLogIndex))).
+				Send()
 			return TEventBlock{}
 		}
 		return block

@@ -20,7 +20,7 @@ git checkout $BRANCH
 
 source $ENV_FILE
 docker pull "ghcr.io/mariuspod/ydaemon:$TAG"
-make down
+docker-compose -f docker-compose.dev.yml stop
 docker-compose -f docker-compose.dev.yml up -d
 
 echo "[*] Finished!"

@@ -136,3 +136,87 @@ func getName(name string, contractAddress common.Address, version string) ethere
 		Version:  version,
 	}
 }
+
+func getKeeper(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("keeper")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `keeper`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getStrategist(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("strategist")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `strategist`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getRewards(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("rewards")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `rewards`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getHealthCheck(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("healthCheck")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `healthCheck`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getAPIVersion(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("apiVersion")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `apiVersion`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getDoHealthCheck(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("doHealthCheck")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `doHealthCheck`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func getEmergencyExit(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, _ := YearnStrategyABI.Pack("emergencyExit")
+	return ethereum.Call{
+		Target:   contractAddress.Address,
+		Abi:      YearnStrategyABI,
+		Method:   `emergencyExit`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}

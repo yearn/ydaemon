@@ -4,7 +4,7 @@ networks:
   ydaemon-dev:
 
 volumes:
-  ystore: {}
+  ystore-dev: {}
 
 services:
   ydaemon-dev:
@@ -12,7 +12,7 @@ services:
     ports:
       - 127.0.0.1:8081:8080
     volumes:
-      - ystore:/app/ystore
+      - ystore-dev:/app/ystore
     environment:
       - RPC_URI_FOR_1
       - RPC_URI_FOR_10

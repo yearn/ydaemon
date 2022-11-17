@@ -1,22 +1,19 @@
 package tokens
 
 import (
-	"context"
 	"math"
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/utils"
@@ -268,12 +265,11 @@ func RetrieveAllTokens(
 	chainID uint64,
 	vaults map[ethcommon.Address]utils.TVaultsFromRegistry,
 ) map[ethcommon.Address]*TERC20Token {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Tokens"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.tokens.multicall_data`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `tokens`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of tokens from the database to exclude the one existing
@@ -356,7 +352,6 @@ func RetrieveAllTokens(
 		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(tokenMap), `tokens, including `, len(updatedTokenMap), `new ones`)
 	_tokenMap[chainID] = tokenMap
 	return tokenMap
 }

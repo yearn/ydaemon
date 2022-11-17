@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -207,7 +208,13 @@ func FetchStrategiesFromRisk(chainID uint64) {
 
 		// Send to Others group if no group was found
 		if stratGroup == nil {
-			logs.Warning("Impossible to find stratGroup for group ", strat.Name)
+			traces.
+				Capture(`warn`, `impossible to find stratGroup for group `+strat.Name).
+				SetEntity(`strategy`).
+				SetTag(`chainID`, chainIDStr).
+				SetTag(`strategyAddress`, strategyAddress.Hex()).
+				SetTag(`strategyName`, strat.Name).
+				Send()
 			Store.StrategiesFromRisk[chainID][strategyAddress] = strategy
 			continue
 		}

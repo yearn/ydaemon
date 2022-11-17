@@ -11,8 +11,8 @@ import (
 	"github.com/dgraph-io/badger/v3"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -89,7 +89,15 @@ func SaveInDB(chainID uint64, dbKey string, dataKey string, value interface{}) {
 		return txn.Set([]byte(dataKey), vaultsBytes)
 	})
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to save in DB`).
+			SetEntity(`database`).
+			SetExtra(`error`, err.Error()).
+			SetExtra(`value`, value).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`dbKey`, dbKey).
+			SetTag(`dataKey`, dataKey).
+			Send()
 	}
 }
 
@@ -147,7 +155,13 @@ func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 				k := item.Key()
 				v, err := item.ValueCopy(nil)
 				if err != nil {
-					helpers.LogAndCaptureError(err, `impossible to get value for key: `+string(k))
+					traces.
+						Capture(`error`, `impossible to get value for key: `+string(k)).
+						SetEntity(`database`).
+						SetExtra(`error`, err.Error()).
+						SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+						SetTag(`dbKey`, dbKey).
+						Send()
 					continue
 				}
 

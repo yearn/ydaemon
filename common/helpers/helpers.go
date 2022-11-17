@@ -7,10 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -58,7 +57,13 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, err
 		if strings.HasSuffix(outputFileName, suffix) {
 			content, err := ioutil.ReadFile(directory + outputFileName)
 			if err != nil {
-				LogAndCaptureError(err, err)
+				traces.
+					Capture(`error`, `impossible to read files in `+directory).
+					SetEntity(`files`).
+					SetExtra(`error`, err.Error()).
+					SetTag(`directory`, directory).
+					SetTag(`file`, outputFileName).
+					Send()
 				continue
 			}
 			filenames = append(filenames, outputFileName)
@@ -134,13 +139,4 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 
 func StringToBool(str string) bool {
 	return str == "true"
-}
-
-func LogAndCaptureError(ex error, message ...interface{}) {
-	sentry.CurrentHub().CaptureException(ex)
-	if message != nil {
-		logs.Error(message)
-	} else {
-		logs.Error(ex)
-	}
 }

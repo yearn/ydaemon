@@ -1,18 +1,15 @@
 package bribes
 
 import (
-	"context"
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -34,14 +31,19 @@ func filterRewardAdded(
 
 	currentVault, err := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YBribre V3 at address `+contractAddress.Hex()).
+			SetEntity(`bribes`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`bribeAddress`, contractAddress.Hex()).
+			Send()
 		return
 	}
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
-				logs.Error(log.Error())
-				return
+				continue
 			}
 			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
 				Amount:      bigNumber.SetInt(log.Event.Amount),
@@ -63,12 +65,11 @@ func filterRewardAdded(
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
 func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch RewardAdded Events"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.bribes.reward_added`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `bribes`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
@@ -95,7 +96,5 @@ func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
 		count++
 		return true
 	})
-
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `new RewardAdded to bribe events`)
 	return rewardAddedMap
 }

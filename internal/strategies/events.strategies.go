@@ -1,18 +1,16 @@
 package strategies
 
 import (
-	"context"
+	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -175,12 +173,11 @@ func RetrieveAllStrategiesAdded(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) []TStrategyAdded {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Strategy Management Events"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.strategies.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `strategies`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** We will then listen to all events related to the strategies added or migrated to the vaults.
@@ -282,7 +279,5 @@ func RetrieveAllStrategiesAdded(
 		count++
 		return true
 	})
-
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(allStrategiesList), `strategies from vaults events`)
 	return allStrategiesList
 }

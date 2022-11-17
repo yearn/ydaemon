@@ -1,20 +1,19 @@
 package prices
 
 import (
-	"context"
 	"math"
 	"math/big"
+	"strconv"
 	"sync"
-	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
@@ -122,12 +121,11 @@ func findAllPrices(
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
 func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Prices"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.prices`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `prices`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of prices from the database to exclude the one existing
@@ -184,8 +182,6 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 		wg.Wait()
 		store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
 	}
-
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(priceMap), `prices`)
 	_priceMap[chainID] = priceMap
 	return priceMap
 }

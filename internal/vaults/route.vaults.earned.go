@@ -16,11 +16,6 @@ import (
 )
 
 func graphQLRequestForUser(userAddress string, vaultAddresses []string) *graphql.Request {
-	logs.Debug(`{
-		accountVaultPositions(where:{account: "` + strings.ToLower(userAddress) + `", vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]}) {
-			` + helpers.GetFIFOForUser() + `
-		}
-	}`)
 	return graphql.NewRequest(`{
 		accountVaultPositions(where:{account: "` + strings.ToLower(userAddress) + `", vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]}) {
 			` + helpers.GetFIFOForUser() + `

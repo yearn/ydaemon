@@ -8,7 +8,7 @@ import (
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -88,13 +88,24 @@ func RetrieveAllVaultsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, filenames, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/vaults/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
+		traces.
+			Capture(`warn`, `impossible to read meta files for vaults on chain `+chainIDStr).
+			SetEntity(`meta`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			Send()
 		return
 	}
 	for index, content := range content {
 		vault := TVaultFromMeta{}
 		if err := json.Unmarshal(content, &vault); err != nil {
-			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
+			traces.
+				Capture(`warn`, `impossible to unmarshall meta files for vaults response body `+chainIDStr).
+				SetEntity(`meta`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetExtra(`content`, string(content)).
+				Send()
 			continue
 		}
 		vault.Address = common.HexToAddress(strings.TrimSuffix(filenames[index], `.json`))

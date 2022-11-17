@@ -1,13 +1,20 @@
 package main
 
 import (
+	"net/http"
+	"os"
+	"strconv"
 	"strings"
 	"time"
 
+	"github.com/getsentry/sentry-go"
+	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
@@ -18,6 +25,18 @@ import (
 )
 
 func middleware(log *logrus.Logger) gin.HandlerFunc {
+	LEVEL, exists := os.LookupEnv("LOG_LEVEL")
+	if exists {
+		levels := map[string]logrus.Level{
+			"DEBUG":   logrus.DebugLevel,
+			"INFO":    logrus.InfoLevel,
+			"WARNING": logrus.WarnLevel,
+			"SUCCESS": logrus.WarnLevel,
+			"ERROR":   logrus.ErrorLevel,
+		}
+		log.SetLevel(levels[LEVEL])
+	}
+
 	return func(c *gin.Context) {
 		if strings.HasPrefix(c.Request.RequestURI, "/api/tokens/list") {
 			c.Header("Cache-Control", "max-age=86400")
@@ -31,12 +50,35 @@ func middleware(log *logrus.Logger) gin.HandlerFunc {
 	}
 }
 
+func GET(router *gin.Engine, path string, handler gin.HandlerFunc) {
+	router.GET(path, func(c *gin.Context) {
+		trace := traces.Init(`http.get`).
+			SetTag(`subsystem`, `gin`).
+			SetTag(path, path)
+
+		if chainID, ok := helpers.AssertChainID(c.Param("chainID")); ok {
+			trace.SetTag(`chainID`, strconv.Itoa(int(chainID)))
+		}
+		defer trace.Finish()
+
+		handler(c)
+	})
+}
+
 // NewRouter create the routes and setup the server
 func NewRouter() *gin.Engine {
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
+
 	router := gin.New()
 	router.Use(gin.Recovery())
+	router.Use(sentrygin.New(sentrygin.Options{Repanic: true}))
+	router.Use(func(ctx *gin.Context) {
+		if hub := sentrygin.GetHubFromContext(ctx); hub != nil {
+			hub.Scope().SetTag("subsystem", "gin")
+		}
+		ctx.Next()
+	})
 	router.Use(middleware(logrus.New()))
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
@@ -49,30 +91,30 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
+		GET(router, `vaults/tvl`, c.GetAllVaultsTVL)
 
 		// Retrieve the vaults for a specific chainID
-		router.GET(`:chainID/vaults/tvl`, c.GetVaultsTVL)
-		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
-		router.GET(`:chainID/vaults/:address`, c.GetVault)
-		router.GET(`:chainID/vault/:address`, c.GetVault)
+		GET(router, `:chainID/vaults/tvl`, c.GetVaultsTVL)
+		GET(router, `:chainID/vaults/all`, c.GetAllVaults)
+		GET(router, `:chainID/vaults/:address`, c.GetVault)
+		GET(router, `:chainID/vault/:address`, c.GetVault)
 
-		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
+		GET(router, `info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
-		router.GET(`:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
+		GET(router, `:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
 	}
 
 	// Strategies section
 	{
 		c := strategies.Controller{}
 		// Retrieve the reports for a specific strategy
-		router.GET(`:chainID/reports/:address`, c.GetReports)
+		GET(router, `:chainID/reports/:address`, c.GetReports)
 	}
 
 	// General section
 	{
 		// Get some information about the API
-		router.GET(`info/chains`, utils.GetSupportedChains)
+		GET(router, `info/chains`, utils.GetSupportedChains)
 
 		// Proxy subgraph
 		router.POST(`:chainID/graph`, utils.GetGraph)
@@ -82,62 +124,62 @@ func NewRouter() *gin.Engine {
 	{
 		c := meta.Controller{}
 		// Proxy meta strategies
-		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategies)
-		router.GET(`:chainID/meta/strategies`, c.GetMetaStrategies)
-		router.GET(`api/:chainID/strategies/:address`, c.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategies/:address`, c.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
+		GET(router, `api/:chainID/strategies/all`, c.GetMetaStrategies)
+		GET(router, `:chainID/meta/strategies`, c.GetMetaStrategies)
+		GET(router, `api/:chainID/strategies/:address`, c.GetMetaStrategy)
+		GET(router, `:chainID/meta/strategies/:address`, c.GetMetaStrategy)
+		GET(router, `:chainID/meta/strategy/:address`, c.GetMetaStrategy)
 
 		// Proxy meta tokens
-		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokens)
-		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
-		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
-		router.GET(`:chainID/meta/tokens/:address`, c.GetMetaToken)
-		router.GET(`:chainID/meta/token/:address`, c.GetMetaToken)
+		GET(router, `api/:chainID/tokens/all`, c.GetMetaTokens)
+		GET(router, `:chainID/meta/tokens`, c.GetMetaTokens)
+		GET(router, `api/:chainID/tokens/:address`, c.GetMetaToken)
+		GET(router, `:chainID/meta/tokens/:address`, c.GetMetaToken)
+		GET(router, `:chainID/meta/token/:address`, c.GetMetaToken)
 
 		// Proxy meta vaults
-		router.GET(`api/:chainID/vaults/all`, c.GetMetaVaultsLegacy)
-		router.GET(`:chainID/meta/vaults`, c.GetMetaVaults)
-		router.GET(`api/:chainID/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vault/:address`, c.GetMetaVault)
+		GET(router, `api/:chainID/vaults/all`, c.GetMetaVaultsLegacy)
+		GET(router, `:chainID/meta/vaults`, c.GetMetaVaults)
+		GET(router, `api/:chainID/vaults/:address`, c.GetMetaVault)
+		GET(router, `:chainID/meta/vaults/:address`, c.GetMetaVault)
+		GET(router, `:chainID/meta/vault/:address`, c.GetMetaVault)
 
 		// Proxy meta protocols
-		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocols)
-		router.GET(`:chainID/meta/protocols`, c.GetMetaProtocols)
-		router.GET(`api/:chainID/protocols/:name`, c.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocols/:name`, c.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocol/:name`, c.GetMetaProtocol)
+		GET(router, `api/:chainID/protocols/all`, c.GetMetaProtocols)
+		GET(router, `:chainID/meta/protocols`, c.GetMetaProtocols)
+		GET(router, `api/:chainID/protocols/:name`, c.GetMetaProtocol)
+		GET(router, `:chainID/meta/protocols/:name`, c.GetMetaProtocol)
+		GET(router, `:chainID/meta/protocol/:name`, c.GetMetaProtocol)
 	}
 
 	// Partners API section
 	{
 		c := partners.Controller{}
-		router.GET(`partners/count`, c.CountAllPartners)
-		router.GET(`partners/all`, c.GetAllPartners)
-		router.GET(`:chainID/partners/all`, c.GetPartners)
-		router.GET(`:chainID/partners/:addressOrName`, c.GetPartner)
+		GET(router, `partners/count`, c.CountAllPartners)
+		GET(router, `partners/all`, c.GetAllPartners)
+		GET(router, `:chainID/partners/all`, c.GetPartners)
+		GET(router, `:chainID/partners/:addressOrName`, c.GetPartner)
 	}
 
 	// Tokens API section
 	{
 		c := tokens.Controller{}
-		router.GET(`tokens/all`, c.GetAllTokens)
-		router.GET(`:chainID/tokens/all`, c.GetTokens)
+		GET(router, `tokens/all`, c.GetAllTokens)
+		GET(router, `:chainID/tokens/all`, c.GetTokens)
 	}
 
 	// Prices API section
 	{
 		c := prices.Controller{}
-		router.GET(`prices/all`, c.GetAllPrices)
-		router.GET(`:chainID/prices/all`, c.GetPrices)
-		router.GET(`:chainID/prices/:address`, c.GetPrice)
-		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePrices)
+		GET(router, `prices/all`, c.GetAllPrices)
+		GET(router, `:chainID/prices/all`, c.GetPrices)
+		GET(router, `:chainID/prices/:address`, c.GetPrice)
+		GET(router, `:chainID/prices/some/:addresses`, c.GetSomePrices)
 	}
 
 	// yBribe API section
 	{
-		router.GET(`:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
+		GET(router, `:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
 	}
 
 	{
@@ -146,7 +188,23 @@ func NewRouter() *gin.Engine {
 
 	{
 		//TEST
-		router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
+		GET(router, `core/harvests/:chainID/:address`, utils.GetHarvests)
+	}
+
+	// Make sure Sentry is working
+	{
+		router.GET("sentry-message-test", func(ctx *gin.Context) {
+			if hub := sentrygin.GetHubFromContext(ctx); hub != nil {
+				hub.WithScope(func(scope *sentry.Scope) {
+					hub.CaptureMessage("sentry-message-test")
+				})
+			}
+			ctx.Status(http.StatusOK)
+		})
+
+		router.GET("/sentry-panic-test", func(ctx *gin.Context) {
+			panic("sentry-panic-test")
+		})
 	}
 
 	return router

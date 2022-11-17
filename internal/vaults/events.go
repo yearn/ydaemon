@@ -1,14 +1,14 @@
 package vaults
 
 import (
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -31,22 +31,26 @@ func filterUpdateManagementOneTime(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
+	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 
-	currentVault, err := contracts.NewYvault043(vaultAddress, client)
-	if err != nil {
-		logs.Error(err)
-		return
-	}
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
-				logs.Error(log.Error())
 				asyncActivationMap.Store(vaultAddress, 0)
 				return
 			}
 			asyncActivationMap.Store(vaultAddress, log.Event.Raw.BlockNumber)
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterUpdateManagement for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`vault`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -62,7 +66,12 @@ func RetrieveActivationForAllVaults(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.vaults.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `vaults`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
@@ -97,6 +106,5 @@ func RetrieveActivationForAllVaults(
 		return true
 	})
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `activation events`)
 	return vaultListWithActivation
 }

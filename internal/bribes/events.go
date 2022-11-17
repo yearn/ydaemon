@@ -1,15 +1,15 @@
 package bribes
 
 import (
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -26,19 +26,14 @@ func filterRewardAdded(
 	chainID uint64,
 	asyncRewardAdded *sync.Map,
 ) {
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
+	currentVault, _ := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
 
-	currentVault, err := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
-	if err != nil {
-		logs.Error(err)
-		return
-	}
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
-				logs.Error(log.Error())
-				return
+				continue
 			}
 			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
 				Amount:      bigNumber.SetInt(log.Event.Amount),
@@ -52,6 +47,15 @@ func filterRewardAdded(
 				LogIndex:    log.Event.Raw.Index,
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterRewardAdded for YBribeV3 `+contractAddress.Hex()).
+			SetEntity(`bribes`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`bribeAddress`, contractAddress.Hex()).
+			Send()
 	}
 }
 
@@ -60,7 +64,15 @@ func filterRewardAdded(
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
 func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
-	timeBefore := time.Now()
+	if chainID != 1 {
+		return make(map[uint64]TEventAdded)
+	}
+	trace := traces.Init(`app.indexer.bribes.reward_added`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `bribes`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
@@ -87,7 +99,5 @@ func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
 		count++
 		return true
 	})
-
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `new RewardAdded to bribe events`)
 	return rewardAddedMap
 }

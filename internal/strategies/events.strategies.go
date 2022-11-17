@@ -1,16 +1,16 @@
 package strategies
 
 import (
+	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -37,7 +37,7 @@ func getStrategiesMigrated(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := vault.FilterStrategyMigrated(&bind.FilterOpts{Start: vaultActivation}, nil, nil); err == nil {
 		for log.Next() {
@@ -58,6 +58,15 @@ func getStrategiesMigrated(
 				LogIndex:           log.Event.Raw.Index,
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`strategy`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -87,7 +96,7 @@ func getStrategiesAdded(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	switch vaultVersion {
 	case `0.2.2`:
 		vault, _ := contracts.NewYvault022(vaultAddress, client)
@@ -173,7 +182,12 @@ func RetrieveAllStrategiesAdded(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) []TStrategyAdded {
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.strategies.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `strategies`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** We will then listen to all events related to the strategies added or migrated to the vaults.
@@ -275,7 +289,5 @@ func RetrieveAllStrategiesAdded(
 		count++
 		return true
 	})
-
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(allStrategiesList), `strategies from vaults events`)
 	return allStrategiesList
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fees"
+	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
@@ -20,8 +21,19 @@ func LoadTokens(chainID uint64) {
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 }
 
+func LoadPrices(chainID uint64) {
+	prices.RetrieveAllPrices(chainID)
+}
+
 func LoadVaults(chainID uint64) {
 	vaultsList := registries.RetrieveAllVaults(chainID)
+	vaults.RetrieveAllVaults(chainID, vaultsList)
+}
+
+func InitializeV2(chainID uint64) {
+	vaultsList := registries.RetrieveAllVaults(chainID)
+	tokens.RetrieveAllTokens(chainID, vaultsList)
+	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
 }
 

@@ -186,6 +186,7 @@ func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 				valueType := reflect.New(elemValue)
 				value := valueType.Interface()
 				if err := json.Unmarshal(v, &value); err != nil {
+					logs.Pretty(value, valueType, elemValue)
 					logs.Error(`impossible to unmarshal value for key: ` + string(k))
 					continue
 				}

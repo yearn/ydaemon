@@ -40,7 +40,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
-	addressesStr := strings.Split(strings.ToLower(c.Param(`addresses`)), `,`)
+	vaultsAddressesStr := strings.Split(strings.ToLower(c.Param(`vaults`)), `,`)
 
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {
@@ -50,7 +50,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	}
 
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLRequestForUser(userAddress.String(), addressesStr)
+	request := graphQLRequestForUser(userAddress.String(), vaultsAddressesStr)
 	var response models.TFIFOForUserForVault
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)

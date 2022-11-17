@@ -1,16 +1,16 @@
-package vaults
+package strategies
 
 import (
+	"strconv"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -37,7 +37,7 @@ func getStrategiesMigrated(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := vault.FilterStrategyMigrated(&bind.FilterOpts{Start: vaultActivation}, nil, nil); err == nil {
 		for log.Next() {
@@ -48,7 +48,7 @@ func getStrategiesMigrated(
 			newAddress := log.Event.NewVersion
 
 			eventKey := vaultAddress.String() + `-` + oldAddress.String() + `-` + newAddress.String()
-			asyncStrategiesMigration.Store(eventKey, utils.TStrategyMigrated{
+			asyncStrategiesMigration.Store(eventKey, TStrategyMigrated{
 				VaultAddress:       vaultAddress,
 				OldStrategyAddress: oldAddress,
 				NewStrategyAddress: newAddress,
@@ -58,6 +58,15 @@ func getStrategiesMigrated(
 				LogIndex:           log.Event.Raw.Index,
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`strategy`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -87,7 +96,7 @@ func getStrategiesAdded(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	switch vaultVersion {
 	case `0.2.2`:
 		vault, _ := contracts.NewYvault022(vaultAddress, client)
@@ -97,7 +106,7 @@ func getStrategiesAdded(
 					continue
 				}
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, utils.TStrategyAdded{
+				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
 					VaultAddress:    vaultAddress,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
@@ -118,7 +127,7 @@ func getStrategiesAdded(
 					continue
 				}
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, utils.TStrategyAdded{
+				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
 					VaultAddress:    vaultAddress,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
@@ -140,7 +149,7 @@ func getStrategiesAdded(
 				}
 
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, utils.TStrategyAdded{
+				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
 					VaultAddress:      vaultAddress,
 					StrategyAddress:   log.Event.Strategy,
 					TxHash:            log.Event.Raw.TxHash,
@@ -169,12 +178,21 @@ func getStrategiesAdded(
 ** StrategyUpdateMaxDebtPerHarvest | StrategyMigrated | StrategyRevoked |
 ** StrategyUpdatePerformanceFee | StrategyRemovedFromQueue | StrategyAddedToQueue
 **********************************************************************************************/
-func RetrieveAllStrategies(
+func RetrieveAllStrategiesAdded(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
-) map[common.Address]map[common.Address]utils.TStrategyAdded {
-	timeBefore := time.Now()
+) []TStrategyAdded {
+	trace := traces.Init(`app.indexer.strategies.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `strategies`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
+	/**********************************************************************************************
+	** We will then listen to all events related to the strategies added or migrated to the vaults.
+	** We will use a sync.Map to store the events and a WaitGroup to wait for all the goroutines.
+	**********************************************************************************************/
 	asyncStrategiesForVaults := &sync.Map{}
 	asyncStrategiesMigrated := &sync.Map{}
 
@@ -211,16 +229,20 @@ func RetrieveAllStrategies(
 	** - vaultAddress -> strategyAddress -> []TEventBlock
 	**********************************************************************************************/
 	count := 0
-	strategies := make(map[common.Address]map[common.Address]utils.TStrategyAdded)
+	allStrategiesList := []TStrategyAdded{}
+	strategies := make(map[common.Address]map[common.Address]TStrategyAdded)
 	asyncStrategiesForVaults.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		vaultAddressParsed := common.HexToAddress(eventKey[0])
 		strategyAddressParsed := common.HexToAddress(eventKey[1])
 
 		if _, ok := strategies[vaultAddressParsed]; !ok {
-			strategies[vaultAddressParsed] = make(map[common.Address]utils.TStrategyAdded)
+			strategies[vaultAddressParsed] = make(map[common.Address]TStrategyAdded)
 		}
-		strategies[vaultAddressParsed][strategyAddressParsed] = value.(utils.TStrategyAdded)
+		valueParsed := value.(TStrategyAdded)
+		valueParsed.VaultVersion = vaults[vaultAddressParsed].APIVersion
+		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
+		allStrategiesList = append(allStrategiesList, valueParsed)
 		count++
 		return true
 	})
@@ -244,28 +266,28 @@ func RetrieveAllStrategies(
 		newStrategyAddressParsed := common.HexToAddress(eventKey[2])
 
 		if _, ok := strategies[vaultAddressParsed]; !ok {
-			strategies[vaultAddressParsed] = make(map[common.Address]utils.TStrategyAdded)
+			strategies[vaultAddressParsed] = make(map[common.Address]TStrategyAdded)
 		}
 		oldStrategy := strategies[vaultAddressParsed][oldStrategyAddressParsed]
-		newStrategy := utils.TStrategyAdded{
+		newStrategy := TStrategyAdded{
 			VaultAddress:      vaultAddressParsed,
 			StrategyAddress:   newStrategyAddressParsed,
-			TxHash:            value.(utils.TStrategyMigrated).TxHash,
+			TxHash:            value.(TStrategyMigrated).TxHash,
 			DebtRatio:         oldStrategy.DebtRatio,
 			MaxDebtPerHarvest: oldStrategy.MaxDebtPerHarvest,
 			MinDebtPerHarvest: oldStrategy.MinDebtPerHarvest,
 			PerformanceFee:    oldStrategy.PerformanceFee,
 			DebtLimit:         oldStrategy.DebtLimit,
 			RateLimit:         oldStrategy.RateLimit,
-			BlockNumber:       value.(utils.TStrategyMigrated).BlockNumber,
-			TxIndex:           value.(utils.TStrategyMigrated).TxIndex,
-			LogIndex:          value.(utils.TStrategyMigrated).LogIndex,
+			BlockNumber:       value.(TStrategyMigrated).BlockNumber,
+			TxIndex:           value.(TStrategyMigrated).TxIndex,
+			LogIndex:          value.(TStrategyMigrated).LogIndex,
 		}
+		newStrategy.VaultVersion = vaults[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy
+		allStrategiesList = append(allStrategiesList, newStrategy)
 		count++
 		return true
 	})
-
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, count, `strategies`)
-	return strategies
+	return allStrategiesList
 }

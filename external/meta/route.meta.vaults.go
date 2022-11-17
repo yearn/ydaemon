@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/meta"
 )
 
 // GetMetaVaultsLegacy will, for a given chainID, return all the meta informations for the vaults.
@@ -16,12 +17,7 @@ func (y Controller) GetMetaVaultsLegacy(c *gin.Context) {
 		return
 	}
 
-	vaultsFromMeta, ok := Store.RawMetaVaults[chainID]
-	if !ok {
-		c.String(http.StatusNotFound, "no data available")
-		return
-	}
-
+	vaultsFromMeta := meta.ListMetaVaults(chainID)
 	c.JSON(http.StatusOK, vaultsFromMeta)
 }
 
@@ -35,12 +31,7 @@ func (y Controller) GetMetaVaults(c *gin.Context) {
 		return
 	}
 
-	vaultsFromMeta, ok := Store.VaultsFromMeta[chainID]
-	if !ok {
-		c.String(http.StatusBadRequest, "no data available")
-		return
-	}
-
+	vaultsFromMeta := meta.ListMetaVaults(chainID)
 	c.JSON(http.StatusOK, vaultsFromMeta)
 }
 
@@ -57,7 +48,7 @@ func (y Controller) GetMetaVault(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
-	vaultFromMeta, ok := Store.VaultsFromMeta[chainID][address]
+	vaultFromMeta, ok := meta.GetMetaVault(chainID, address)
 	if !ok {
 		c.String(http.StatusNotFound, "no data available")
 		return

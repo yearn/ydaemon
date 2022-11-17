@@ -9,7 +9,6 @@ import (
 )
 
 // var chains = env.SUPPORTED_CHAIN_IDS
-
 var chains = []uint64{1}
 
 func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {

@@ -21,7 +21,7 @@ func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		client, err := ethclient.Dial(GetRPCURI(chainID))
 		if err != nil {
-			logs.Error("Failed to connect to Ethereum node")
+			logs.Error(err, "Failed to connect to node")
 			continue
 		}
 		RPC[chainID] = client

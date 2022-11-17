@@ -9,8 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/internal"
 )
 
@@ -42,31 +40,6 @@ func newRouter() *gin.Engine {
 
 	return router
 }
-func loadMetaDaemons() {
-	meta.FetchTokensFromMeta(1)
-	meta.FetchTokensFromMeta(10)
-	meta.FetchTokensFromMeta(250)
-	meta.FetchTokensFromMeta(42161)
-	meta.FetchTokensFromMeta(42)
-
-	meta.FetchStrategiesFromMeta(1)
-	meta.FetchStrategiesFromMeta(10)
-	meta.FetchStrategiesFromMeta(250)
-	meta.FetchStrategiesFromMeta(42161)
-	meta.FetchStrategiesFromMeta(42)
-
-	meta.FetchVaultsFromMeta(1)
-	meta.FetchVaultsFromMeta(10)
-	meta.FetchVaultsFromMeta(250)
-	meta.FetchVaultsFromMeta(42161)
-	meta.FetchVaultsFromMeta(42)
-
-	meta.FetchProtocolsFromMeta(1)
-	meta.FetchProtocolsFromMeta(10)
-	meta.FetchProtocolsFromMeta(250)
-	meta.FetchProtocolsFromMeta(42161)
-	meta.FetchProtocolsFromMeta(42)
-}
 func initializeInternal() {
 	internal.Initialize(1)
 	internal.Initialize(10)
@@ -74,19 +47,7 @@ func initializeInternal() {
 	internal.Initialize(42161)
 	internal.Initialize(42)
 }
-func loadStrategiesDaemons() {
-	strategies.FetchWithdrawalQueueMulticallData(1)
-	strategies.FetchWithdrawalQueueMulticallData(10)
-	strategies.FetchWithdrawalQueueMulticallData(250)
-	strategies.FetchWithdrawalQueueMulticallData(42161)
-	strategies.FetchWithdrawalQueueMulticallData(42)
 
-	strategies.FetchStrategiesMulticallData(1)
-	strategies.FetchStrategiesMulticallData(10)
-	strategies.FetchStrategiesMulticallData(250)
-	strategies.FetchStrategiesMulticallData(42161)
-	strategies.FetchStrategiesMulticallData(42)
-}
 func loadVaultDaemons() {
 	FetchVaultsFromV1(1)
 	FetchVaultsFromV1(10)
@@ -121,8 +82,6 @@ func loadVaultDaemons() {
 
 func TestEnvironment(t *testing.T) {
 	initializeInternal()
-	loadMetaDaemons()
-	loadStrategiesDaemons()
 
 	//Init the server as non-blocking mode
 	go newRouter().Run(":8082")

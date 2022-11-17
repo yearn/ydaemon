@@ -9,7 +9,7 @@ import (
 
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -57,7 +57,13 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, err
 		if strings.HasSuffix(outputFileName, suffix) {
 			content, err := ioutil.ReadFile(directory + outputFileName)
 			if err != nil {
-				logs.Error(err)
+				traces.
+					Capture(`error`, `impossible to read files in `+directory).
+					SetEntity(`files`).
+					SetExtra(`error`, err.Error()).
+					SetTag(`directory`, directory).
+					SetTag(`file`, outputFileName).
+					Send()
 				continue
 			}
 			filenames = append(filenames, outputFileName)
@@ -81,8 +87,8 @@ func FormatUint64(s string, defaultValue uint64) uint64 {
 }
 
 // FormatAmount is used to convert a uint256 string to a float64, based on the provided decimal
-func FormatAmount(balanceToken string, decimals int) (float64, *bigNumber.Float) {
-	fTotalAssets := bigNumber.NewFloat().SetString(balanceToken)
+func FormatAmount(amount string, decimals int) (float64, *bigNumber.Float) {
+	fTotalAssets := bigNumber.NewFloat().SetString(amount)
 	fDecimals := bigNumber.NewFloat(math.Pow10(decimals))
 	humanizedBalance := bigNumber.NewFloat().Quo(fTotalAssets, fDecimals)
 	fhumanizedBalance, _ := humanizedBalance.Float64()

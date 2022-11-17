@@ -6,24 +6,23 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TAllTokens struct {
-	Address       common.Address        `json:"address"`
-	Name          string                `json:"name"`
-	Symbol        string                `json:"symbol"`
-	Decimals      uint64                `json:"decimals"`
-	IsVault       bool                  `json:"isVault"`
-	DisplayName   string                `json:"display_name,omitempty"`
-	DisplaySymbol string                `json:"display_symbol,omitempty"`
-	Description   string                `json:"description,omitempty"`
-	Website       string                `json:"website,omitempty"`
-	Categories    []string              `json:"categories,omitempty"`
-	Localization  *models.TLocalization `json:"localization,omitempty"`
+	Address       common.Address      `json:"address"`
+	Name          string              `json:"name"`
+	Symbol        string              `json:"symbol"`
+	Decimals      uint64              `json:"decimals"`
+	IsVault       bool                `json:"isVault"`
+	DisplayName   string              `json:"display_name,omitempty"`
+	DisplaySymbol string              `json:"display_symbol,omitempty"`
+	Description   string              `json:"description,omitempty"`
+	Website       string              `json:"website,omitempty"`
+	Categories    []string            `json:"categories,omitempty"`
+	Localization  *meta.TLocalization `json:"localization,omitempty"`
 }
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
@@ -36,7 +35,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 			if _, ok := allTokens[chainID]; !ok {
 				allTokens[chainID] = make(map[common.Address]TAllTokens)
 			}
-			metaToken, ok := meta.Store.TokensFromMeta[chainID][common.FromAddress(token.Address)]
+			metaToken, ok := meta.GetMetaToken(chainID, common.FromAddress(token.Address))
 			tokenDetails := TAllTokens{
 				Address:  common.FromAddress(token.Address),
 				Name:     token.Name,
@@ -77,7 +76,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 	allTokens := make(map[string]TAllTokens)
 	tokenList := tokens.ListTokens(chainID)
 	for _, token := range tokenList {
-		metaToken, ok := meta.Store.TokensFromMeta[chainID][common.FromAddress(token.Address)]
+		metaToken, ok := meta.GetMetaToken(chainID, common.FromAddress(token.Address))
 		tokenDetails := TAllTokens{
 			Address:  common.FromAddress(token.Address),
 			Name:     token.Name,

@@ -49,6 +49,13 @@ func fetchBasicInformations(
 		calls = append(calls, getStategyKeepCRV(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
 		calls = append(calls, getStategyDelegatedAssets(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
 		calls = append(calls, getName(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getKeeper(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getStrategist(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getRewards(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getHealthCheck(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getAPIVersion(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getDoHealthCheck(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getEmergencyExit(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
 	}
 
 	/**********************************************************************************************
@@ -78,12 +85,21 @@ func fetchBasicInformations(
 		keepCRV := response[stratAddress.String()+`keepCRV`]
 		delegatedAssets := response[stratAddress.String()+`delegatedAssets`]
 		name := response[stratAddress.String()+`name`]
+		keeper := response[stratAddress.String()+`keeper`]
+		strategist := response[stratAddress.String()+`strategist`]
+		rewards := response[stratAddress.String()+`rewards`]
+		healthCheck := response[stratAddress.String()+`healthCheck`]
+		apiVersion := response[stratAddress.String()+`apiVersion`]
+		doHealthCheck := response[stratAddress.String()+`doHealthCheck`]
+		emergencyExit := response[stratAddress.String()+`emergencyExit`]
 
 		withdrawalQueuePosition := int64(-1)
+		isInQueue := false
 		if withdrawalQueue, ok := FindWithdrawalQueueForVault(chainID, vaultAddress); ok {
 			for i, stratInQueue := range withdrawalQueue {
 				if stratInQueue.Hex() == stratAddress.Hex() {
 					withdrawalQueuePosition = int64(i)
+					isInQueue = true
 					break
 				}
 			}
@@ -92,6 +108,7 @@ func fetchBasicInformations(
 		newStrategy := &TStrategy{
 			Address:                 strat.StrategyAddress,
 			VaultAddress:            strat.VaultAddress,
+			ChainID:                 chainID,
 			VaultVersion:            strat.VaultVersion,
 			CreditAvailable:         bigNumber.NewInt(0),
 			DebtOutstanding:         bigNumber.NewInt(0),
@@ -100,6 +117,7 @@ func fetchBasicInformations(
 			KeepCRV:                 bigNumber.NewInt(0),
 			DelegatedAssets:         bigNumber.NewInt(0),
 			IsActive:                false,
+			IsInQueue:               isInQueue,
 			WithdrawalQueuePosition: bigNumber.NewInt(withdrawalQueuePosition),
 			Initialization: TStrategyInitialization{
 				TxHash:      strat.TxHash,
@@ -132,6 +150,28 @@ func fetchBasicInformations(
 		if len(name) == 1 {
 			newStrategy.Name = name[0].(string)
 		}
+		if len(keeper) == 1 {
+			newStrategy.KeeperAddress = keeper[0].(ethcommon.Address)
+		}
+		if len(strategist) == 1 {
+			newStrategy.StrategistAddress = strategist[0].(ethcommon.Address)
+		}
+		if len(rewards) == 1 {
+			newStrategy.RewardsAddress = rewards[0].(ethcommon.Address)
+		}
+		if len(healthCheck) == 1 {
+			newStrategy.HealthCheckAddress = healthCheck[0].(ethcommon.Address)
+		}
+		if len(apiVersion) == 1 {
+			newStrategy.APIVersion = apiVersion[0].(string)
+		}
+		if len(doHealthCheck) == 1 {
+			newStrategy.DoHealthCheck = doHealthCheck[0].(bool)
+		}
+		if len(emergencyExit) == 1 {
+			newStrategy.EmergencyExit = emergencyExit[0].(bool)
+		}
+
 		if strat.VaultVersion == `0.2.2` && len(strategies) == 8 {
 			newStrategy.PerformanceFee = bigNumber.SetInt(strategies[0].(*big.Int))
 			newStrategy.Activation = bigNumber.SetInt(strategies[1].(*big.Int))
@@ -165,6 +205,7 @@ func fetchBasicInformations(
 		if strategyFromMeta, ok := meta.GetMetaStrategy(chainID, common.FromAddress(stratAddress)); ok {
 			newStrategy.Name = strategyFromMeta.Name
 			newStrategy.Description = strategyFromMeta.Description
+			newStrategy.Protocols = strategyFromMeta.Protocols
 		}
 
 		strategyList = append(strategyList, newStrategy)
@@ -240,13 +281,13 @@ func RetrieveAllStrategies(
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedStrategiesMap))
 		for _, token := range updatedStrategiesMap {
-			go func(_token *TStrategy) {
+			go func(_strategy *TStrategy) {
 				defer wg.Done()
 				store.SaveInDB(
 					chainID,
 					store.TABLES.STRATEGIES,
-					_token.Address.String(),
-					_token,
+					_strategy.Address.String(),
+					_strategy,
 				)
 			}(token)
 		}

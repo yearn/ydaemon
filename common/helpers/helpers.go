@@ -87,8 +87,8 @@ func FormatUint64(s string, defaultValue uint64) uint64 {
 }
 
 // FormatAmount is used to convert a uint256 string to a float64, based on the provided decimal
-func FormatAmount(balanceToken string, decimals int) (float64, *bigNumber.Float) {
-	fTotalAssets := bigNumber.NewFloat().SetString(balanceToken)
+func FormatAmount(amount string, decimals int) (float64, *bigNumber.Float) {
+	fTotalAssets := bigNumber.NewFloat().SetString(amount)
 	fDecimals := bigNumber.NewFloat(math.Pow10(decimals))
 	humanizedBalance := bigNumber.NewFloat().Quo(fTotalAssets, fDecimals)
 	fhumanizedBalance, _ := humanizedBalance.Float64()

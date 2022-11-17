@@ -1,9 +1,15 @@
 package strategies
 
 import (
+	"strconv"
+
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TStrategyAdded struct {
@@ -42,9 +48,15 @@ type TStrategyInitialization struct {
 type TStrategy struct {
 	Address                 ethcommon.Address       `json:"address"`
 	VaultAddress            ethcommon.Address       `json:"vaultAddress"`
+	KeeperAddress           ethcommon.Address       `json:"keeperAddress"`
+	StrategistAddress       ethcommon.Address       `json:"strategistAddress"`
+	RewardsAddress          ethcommon.Address       `json:"rewardsAddress"`
+	HealthCheckAddress      ethcommon.Address       `json:"healthCheckAddress"`
 	VaultVersion            string                  `json:"vaultVersion"`
 	Name                    string                  `json:"name"`
 	Description             string                  `json:"description"`
+	APIVersion              string                  `json:"apiVersion"`
+	Protocols               []string                `json:"protocols"`
 	CreditAvailable         *bigNumber.Int          `json:"creditAvailable"`
 	DebtOutstanding         *bigNumber.Int          `json:"debtOutstanding"`
 	ExpectedReturn          *bigNumber.Int          `json:"expectedReturn"`
@@ -63,8 +75,63 @@ type TStrategy struct {
 	KeepCRV                 *bigNumber.Int          `json:"keepCRV"`
 	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
 	WithdrawalQueuePosition *bigNumber.Int          `json:"withdrawalQueuePosition"`
+	ChainID                 uint64                  `json:"chainID"`
+	DoHealthCheck           bool                    `json:"doHealthCheck"`
+	EmergencyExit           bool                    `json:"emergencyExit"`
 	IsActive                bool                    `json:"isActive"`
+	IsInQueue               bool                    `json:"isInQueue"`
 	Initialization          TStrategyInitialization `json:"-"`
+}
+
+func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
+	strategyAddress := common.FromAddress(t.Address)
+	vaultAddress := common.FromAddress(t.VaultAddress)
+	stratGroup := getStrategyGroup(t.ChainID, t)
+	strategyRiskScore := getDefaultRiskGroup()
+	strategyRiskScore.Address = strategyAddress
+	strategyRiskScore.ChainID = t.ChainID
+
+	// Fetch activation and tvl from multicall
+	strategyRiskScore.RiskScores.LongevityImpact = getLongevityImpact(t.Activation)
+
+	// Fetch tvl of strategy
+	tokenData, ok := tokens.FindUnderlyingForVault(t.ChainID, vaultAddress)
+	if !ok {
+		traces.
+			Capture(`warn`, `impossible to find token for vault `+t.VaultAddress.Hex()).
+			SetEntity(`strategy`).
+			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
+			SetTag(`strategyAddress`, strategyAddress.Hex()).
+			SetTag(`strategyName`, t.Name).
+			Send()
+		return &strategyRiskScore
+	}
+
+	_tokenPrice, ok := prices.FindPrice(t.ChainID, common.FromAddress(tokenData.Address))
+	if !ok {
+		traces.
+			Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
+			SetEntity(`strategy`).
+			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
+			SetTag(`strategyAddress`, strategyAddress.Hex()).
+			SetTag(`strategyName`, t.Name).
+			Send()
+	}
+	_, price := helpers.FormatAmount(_tokenPrice.String(), 6)
+	_, amount := helpers.FormatAmount(t.EstimatedTotalAssets.String(), int(tokenData.Decimals))
+	tvl := bigNumber.NewFloat(0).Mul(amount, price)
+
+	// Updating the default schema
+	strategyRiskScore.RiskGroup = stratGroup.Label
+	strategyRiskScore.RiskScores.AuditScore = stratGroup.AuditScore
+	strategyRiskScore.RiskScores.CodeReviewScore = stratGroup.CodeReviewScore
+	strategyRiskScore.RiskScores.ComplexityScore = stratGroup.ComplexityScore
+	strategyRiskScore.RiskScores.ProtocolSafetyScore = stratGroup.ProtocolSafetyScore
+	strategyRiskScore.RiskScores.TeamKnowledgeScore = stratGroup.TeamKnowledgeScore
+	strategyRiskScore.RiskScores.TestingScore = stratGroup.TestingScore
+	strategyRiskScore.RiskScores.TVLImpact = getTVLImpact(tvl)
+	strategyRiskScore.Allocation = stratGroup.Allocation
+	return &strategyRiskScore
 }
 
 /**********************************************************************************************

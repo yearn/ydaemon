@@ -4,7 +4,6 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -109,7 +108,7 @@ type TExternalVault struct {
 	TVL               TExternalVaultTVL       `json:"tvl"`
 	APY               TExternalVaultAPY       `json:"apy"`
 	Details           *TExternalVaultDetails  `json:"details"`
-	Strategies        []*strategies.TStrategy `json:"strategies"`
+	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 }
 

@@ -27,22 +27,9 @@ type TStrategyGroupFromRisk struct {
 	ProtocolSafetyScore float64                 `json:"protocolSafetyScore"`
 	TeamKnowledgeScore  float64                 `json:"teamKnowledgeScore"`
 	TestingScore        float64                 `json:"testingScore"`
+	ChainID             uint64                  `json:"chainID"`
 	Criteria            TStrategyGroupCritieria `json:"criteria"`
 	Allocation          *TStrategyAllocation    `json:"allocation"`
-}
-
-// TStrategyRisk contains the details on the risk about a strategy.
-type TStrategyRisk struct {
-	RiskGroup           string               `json:"riskGroup"`
-	TVLImpact           int                  `json:"TVLImpact"`
-	AuditScore          int                  `json:"auditScore"`
-	CodeReviewScore     int                  `json:"codeReviewScore"`
-	ComplexityScore     int                  `json:"complexityScore"`
-	LongevityImpact     int                  `json:"longevityImpact"`
-	ProtocolSafetyScore int                  `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int                  `json:"teamKnowledgeScore"`
-	TestingScore        int                  `json:"testingScore"`
-	Allocation          *TStrategyAllocation `json:"allocation"`
 }
 
 type TStrategyFromRiskRiskScores struct {
@@ -57,7 +44,38 @@ type TStrategyFromRiskRiskScores struct {
 }
 
 type TStrategyFromRisk struct {
+	Address    common.Address              `json:"address"`
+	ChainID    uint64                      `json:"chainID"`
 	RiskGroup  string                      `json:"riskGroup"`
 	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
 	Allocation *TStrategyAllocation        `json:"allocation"`
+}
+
+/**********************************************************************************************
+** Set of functions to store and retrieve the strategies from the cache and/or database and
+** being able to access them from the rest of the application.
+** The _strategyMap variable is not exported and is only used internally by the functions below.
+**********************************************************************************************/
+var _strategyRiskGroupMap = make(map[uint64]map[string]*TStrategyGroupFromRisk)
+
+/**********************************************************************************************
+** ListStrategiesRiskGroups will, for a given chainID, return the list of all the strategies
+** groups stored in the _strategyRiskGroupMap.
+**********************************************************************************************/
+func ListStrategiesRiskGroups(chainID uint64) []*TStrategyGroupFromRisk {
+	var groups []*TStrategyGroupFromRisk
+	for _, group := range _strategyRiskGroupMap[chainID] {
+		groups = append(groups, group)
+	}
+	return groups
+}
+
+/**********************************************************************************************
+** setRiskGroupInMap will put a TStrategyGroupFromRisk in the _strategyRiskGroupMap variable.
+**********************************************************************************************/
+func setRiskGroupInMap(chainID uint64, riskGroup *TStrategyGroupFromRisk) {
+	if _, ok := _strategyRiskGroupMap[chainID]; !ok {
+		_strategyRiskGroupMap[chainID] = make(map[string]*TStrategyGroupFromRisk)
+	}
+	_strategyRiskGroupMap[chainID][riskGroup.Label] = riskGroup
 }

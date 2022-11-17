@@ -1,5 +1,8 @@
 version: "3.7"
 
+networks:
+  ydaemon-dev:
+
 volumes:
   ystore: {}
 
@@ -22,4 +25,6 @@ services:
       - SENTRY_DSN
       - SENTRY_SAMPLE_RATE
       - LOG_LEVEL
+    networks:
+      - ydaemon-dev
     restart: always

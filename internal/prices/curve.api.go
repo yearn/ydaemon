@@ -9,25 +9,40 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
 func fetchCurve(url string) []TCurveFactoriesPoolData {
 	resp, err := http.Get(url)
 	if err != nil {
-		logs.Error(err)
+		traces.
+			Capture(`error`, `impossible to get curve URL`).
+			SetEntity(`prices`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`url`, url).
+			Send()
 		return []TCurveFactoriesPoolData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logs.Error(err)
+		traces.
+			Capture(`error`, `impossible to read curve Get body`).
+			SetEntity(`prices`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`url`, url).
+			Send()
 		return []TCurveFactoriesPoolData{}
 	}
 	var factories TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
-		logs.Error(err)
+		traces.
+			Capture(`error`, `impossible to unmarshal curve Get body`).
+			SetEntity(`prices`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`url`, url).
+			Send()
 		return []TCurveFactoriesPoolData{}
 	}
 	return factories.Data.PoolData

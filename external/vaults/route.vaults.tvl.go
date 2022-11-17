@@ -1,49 +1,26 @@
 package vaults
 
 import (
-	"context"
 	"net/http"
 	"sync"
 
 	"github.com/gin-gonic/gin"
-	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
-	"github.com/yearn/ydaemon/external/meta"
+	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 func computeChainTVL(chainID uint64, c *gin.Context) float64 {
-	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
-	if !ok {
-		logs.Error("No graph endpoint for chainID", chainID)
-		return 0.0
-	}
-
-	client := graphql.NewClient(graphQLEndpoint)
-
-	var request *graphql.Request
-	// request := graphQLRequestForAllVaults(c)
-
-	var response models.TGraphQueryResponseForVaults
-	if err := client.Run(context.Background(), request, &response); err != nil {
-		logs.Error(err)
-		return 0.0
-	}
-
 	tvl := 0.0
-	for _, vaultFromGraph := range response.Vaults {
-		vaultAddress := vaultFromGraph.Id
+	vaultsList := vaults.ListVaults(chainID)
+	for _, currentVault := range vaultsList {
+		vaultAddress := common.FromAddress(currentVault.Address)
 		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
-		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-		if ok && vaultFromMeta.HideAlways {
-			continue
-		}
-		vaultTVL := prepareTVL(chainID, vaultFromGraph)
-		tvl += vaultTVL
+		vaultTVL := currentVault.BuildTVL()
+		tvl += vaultTVL.TVL
 	}
 	return tvl
 }
@@ -75,6 +52,5 @@ func (y Controller) GetVaultsTVL(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-
 	c.JSON(http.StatusOK, computeChainTVL(chainID, c))
 }

@@ -3,16 +3,16 @@ package prices
 import (
 	"math"
 	"math/big"
+	"strconv"
 	"sync"
-	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
@@ -39,7 +39,11 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	caller := ethereum.MulticallClientForChainID[chainID]
 	lensAddress, ok := env.LENS_ADDRESSES[chainID]
 	if !ok {
-		logs.Error(`Lens address not found for chainID: `, chainID)
+		traces.
+			Capture(`error`, `missing a valid Lens Address for chain `+strconv.FormatUint(chainID, 10)).
+			SetEntity(`prices`).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			Send()
 		return newPriceMap
 	}
 
@@ -84,6 +88,19 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 		}
 	}
 
+	/**********************************************************************************************
+	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
+	**********************************************************************************************/
+	for _, token := range tokenList {
+		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+			traces.
+				Capture(`error`, `missing a valid price for token `+token.String()).
+				SetEntity(`prices`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				Send()
+		}
+	}
+
 	return newPriceMap
 }
 
@@ -120,7 +137,12 @@ func findAllPrices(
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
 func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.prices`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+		SetTag(`entity`, `prices`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of prices from the database to exclude the one existing
@@ -139,13 +161,18 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 	** Somehow, some vaults are not in the registries, but we still need the price data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraTokens := []string{
-		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
-		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
-		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
-		`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
+	extraTokens := map[uint64][]string{
+		1: {
+			`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+			`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
+			`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
+			`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
+		},
+		10:    {},
+		250:   {},
+		42161: {},
 	}
-	for _, tokenAddress := range extraTokens {
+	for _, tokenAddress := range extraTokens[chainID] {
 		allTokens = append(allTokens, common.HexToAddress(tokenAddress))
 	}
 	allTokens = helpers.UniqueArrayAddress(allTokens)
@@ -177,8 +204,6 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 		wg.Wait()
 		store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
 	}
-
-	logs.Success(`It took`, time.Since(timeBefore), `to retrieve`, len(priceMap), `prices`)
 	_priceMap[chainID] = priceMap
 	return priceMap
 }

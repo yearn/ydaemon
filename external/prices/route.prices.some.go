@@ -7,9 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
-	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
+	"github.com/yearn/ydaemon/internal/prices"
 )
 
 //GetSomePrices will, for a list of tokens on a given chainID, return the price for them
@@ -28,7 +26,6 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 		if !ok {
 			continue
 		}
-		addressStr := address.String()
 
 		humanizedPrices[address.Hex()] = 0
 		rawPrices[address.Hex()] = bigNumber.NewInt()

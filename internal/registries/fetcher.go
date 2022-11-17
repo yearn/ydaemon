@@ -1,17 +1,14 @@
 package registries
 
 import (
-	"context"
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -34,7 +31,7 @@ var REGISTRIES = map[uint64][]TRegistry{
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - vaultAddress: the address of the vault we are working on
+** - registryAddress: the address of the vault we are working on
 ** - registryActivation: the block number at which the registry was activated
 ** - vaultsList: the ptr to the array of TVaultsFromRegistry
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
@@ -43,7 +40,7 @@ var REGISTRIES = map[uint64][]TRegistry{
 **************************************************************************************************/
 func filterNewExperimentalVault(
 	chainID uint64,
-	vaultAddress common.Address,
+	registryAddress common.Address,
 	registryActivation uint64,
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
@@ -51,9 +48,15 @@ func filterNewExperimentalVault(
 	defer wg.Done()
 	client := ethereum.RPC[chainID]
 
-	currentVault, err := contracts.NewYregistryv2(vaultAddress, client) //V1 and V2 share the same ABI
+	currentVault, err := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YRegistry V2 at address `+registryAddress.Hex()).
+			SetEntity(`registry`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`registryAddress`, registryAddress.Hex()).
+			Send()
 		return
 	}
 
@@ -63,7 +66,7 @@ func filterNewExperimentalVault(
 				continue
 			}
 			*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-				RegistryAddress: vaultAddress,
+				RegistryAddress: registryAddress,
 				VaultsAddress:   log.Event.Vault,
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
@@ -84,7 +87,7 @@ func filterNewExperimentalVault(
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - vaultAddress: the address of the vault we are working on
+** - registryAddress: the address of the vault we are working on
 ** - registryActivation: the block number at which the registry was activated
 ** - vaultsList: the ptr to the array of TVaultsFromRegistry
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
@@ -93,7 +96,7 @@ func filterNewExperimentalVault(
 **************************************************************************************************/
 func filterNewVaults(
 	chainID uint64,
-	vaultAddress common.Address,
+	registryAddress common.Address,
 	registryActivation uint64,
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
@@ -101,9 +104,15 @@ func filterNewVaults(
 	defer wg.Done()
 	client := ethereum.RPC[chainID]
 
-	currentVault, err := contracts.NewYregistryv2(vaultAddress, client) //V1 and V2 share the same ABI
+	currentVault, err := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YRegistry V2 at address `+registryAddress.Hex()).
+			SetEntity(`registry`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`registryAddress`, registryAddress.Hex()).
+			Send()
 		return
 	}
 
@@ -113,7 +122,7 @@ func filterNewVaults(
 				continue
 			}
 			*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-				RegistryAddress: vaultAddress,
+				RegistryAddress: registryAddress,
 				VaultsAddress:   log.Event.Vault,
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
@@ -138,17 +147,16 @@ func filterNewVaults(
 ** - chainID: the chain ID of the network we are working on
 **
 ** Returns:
-** - a map of vaultAddress -> TVaultsFromRegistry
+** - a map of registryAddress -> TVaultsFromRegistry
 **************************************************************************************************/
 func RetrieveAllVaults(
 	chainID uint64,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Vaults"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.registry.new_vaults_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `registries`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	vaultsList := []utils.TVaultsFromRegistry{}
 	vaultsListExperimental := []utils.TVaultsFromRegistry{}
@@ -193,6 +201,5 @@ func RetrieveAllVaults(
 		uniqueVaultsList = filteredVaultsList
 	}
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(uniqueVaultsList), `vaults from registry`)
 	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
 }

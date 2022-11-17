@@ -1,18 +1,16 @@
 package strategies
 
 import (
-	"context"
 	"math"
 	"math/big"
+	"strconv"
 	"sync"
-	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
 )
@@ -215,12 +213,11 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategyAddedList []TStrategyAdded,
 ) map[ethcommon.Address]*TStrategy {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Strategies"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.strategies.multicall_data`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `strategies`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of strategies from the database to exclude the one existing
@@ -257,7 +254,6 @@ func RetrieveAllStrategies(
 		store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, len(strategyMap), `strategies`)
 	_strategyMap[chainID] = strategyMap
 	return strategyMap
 }

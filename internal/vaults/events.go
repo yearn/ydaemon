@@ -1,17 +1,14 @@
 package vaults
 
 import (
-	"context"
+	"strconv"
 	"sync"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/getsentry/sentry-go"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -38,13 +35,18 @@ func filterUpdateManagementOneTime(
 
 	currentVault, err := contracts.NewYvault043(vaultAddress, client)
 	if err != nil {
-		helpers.LogAndCaptureError(err)
+		traces.
+			Capture(`error`, `impossible to connect to YBribre V3 at address `+vaultAddress.Hex()).
+			SetEntity(`bribes`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 		return
 	}
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
-				helpers.LogAndCaptureError(log.Error(), log.Error())
 				asyncActivationMap.Store(vaultAddress, 0)
 				return
 			}
@@ -65,12 +67,11 @@ func RetrieveActivationForAllVaults(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
 ) map[common.Address]utils.TVaultsFromRegistry {
-	span := sentry.StartSpan(context.Background(), "app.fetch",
-		sentry.TransactionName("Fetch Vault Activation Events"))
-	span.SetTag("subsystem", "daemon")
-	defer span.Finish()
-
-	timeBefore := time.Now()
+	trace := traces.Init(`app.indexer.vaults.activation_events`).
+		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`entity`, `vaults`).
+		SetTag(`subsystem`, `daemon`)
+	defer trace.Finish()
 
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
@@ -105,6 +106,5 @@ func RetrieveActivationForAllVaults(
 		return true
 	})
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `activation events`)
 	return vaultListWithActivation
 }

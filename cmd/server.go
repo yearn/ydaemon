@@ -14,6 +14,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
@@ -51,14 +52,15 @@ func middleware(log *logrus.Logger) gin.HandlerFunc {
 
 func GET(router *gin.Engine, path string, handler gin.HandlerFunc) {
 	router.GET(path, func(c *gin.Context) {
-		span := sentry.StartSpan(c, "http.get",
-			sentry.TransactionName(`GET `+path))
-		span.SetTag("subsystem", "gin")
+		trace := traces.Init(`http.get`).
+			SetTag(`subsystem`, `gin`).
+			SetTag(path, path)
+
 		chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 		if ok {
-			span.SetTag("chainId", strconv.Itoa(int(chainID)))
+			trace.SetTag(`chainID`, strconv.Itoa(int(chainID)))
 		}
-		defer span.Finish()
+		defer trace.Finish()
 
 		handler(c)
 	})
@@ -68,13 +70,10 @@ func GET(router *gin.Engine, path string, handler gin.HandlerFunc) {
 func NewRouter() *gin.Engine {
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
+
 	router := gin.New()
 	router.Use(gin.Recovery())
-	router.Use(sentrygin.New(sentrygin.Options{
-		// Whether Sentry should repanic after recovery, in most cases it should be set to true,
-		// as gin.Default includes its own Recovery middleware that handles http responses.
-		Repanic: true,
-	}))
+	router.Use(sentrygin.New(sentrygin.Options{Repanic: true}))
 	router.Use(func(ctx *gin.Context) {
 		if hub := sentrygin.GetHubFromContext(ctx); hub != nil {
 			hub.Scope().SetTag("subsystem", "gin")

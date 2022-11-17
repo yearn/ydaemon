@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -42,13 +43,9 @@ func filterTransfers(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterTransfer(
-		&bind.FilterOpts{Start: activation},
-		fromAddresses,
-		toAddresses,
-	); err == nil {
+	if log, err := currentVault.FilterTransfer(&bind.FilterOpts{Start: activation}, fromAddresses, toAddresses); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -73,6 +70,15 @@ func filterTransfers(
 				asyncMapTransfers.Store(eventKey, []utils.TEventBlock{blockData})
 			}
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterTransfer for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`vault`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 

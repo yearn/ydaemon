@@ -37,7 +37,7 @@ func getStrategiesMigrated(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
 	if log, err := vault.FilterStrategyMigrated(&bind.FilterOpts{Start: vaultActivation}, nil, nil); err == nil {
 		for log.Next() {
@@ -58,6 +58,15 @@ func getStrategiesMigrated(
 				LogIndex:           log.Event.Raw.Index,
 			})
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`strategy`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -87,7 +96,7 @@ func getStrategiesAdded(
 ) {
 	defer wg.Done()
 
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
 	switch vaultVersion {
 	case `0.2.2`:
 		vault, _ := contracts.NewYvault022(vaultAddress, client)
@@ -175,6 +184,7 @@ func RetrieveAllStrategiesAdded(
 ) []TStrategyAdded {
 	trace := traces.Init(`app.indexer.strategies.activation_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `strategies`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()

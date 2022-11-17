@@ -9,8 +9,8 @@ import (
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
@@ -156,13 +156,24 @@ func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching information from the Risk Framework")
+		traces.
+			Capture(`warn`, `impossible to read risks files on chain `+chainIDStr).
+			SetEntity(`strategy`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			Send()
 		return
 	}
 	for _, content := range content {
 		riskGroup := TStrategyGroupFromRisk{}
 		if err := json.Unmarshal(content, &riskGroup); err != nil {
-			logs.Warning("Error unmarshalling response body from the Risk Framework")
+			traces.
+				Capture(`warn`, `impossible to unmarshall risks files response body `+chainIDStr).
+				SetEntity(`strategy`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetExtra(`content`, string(content)).
+				Send()
 			return
 		}
 		riskGroup.ChainID = chainID
@@ -180,7 +191,6 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 	}
 
 	strategies := ListStrategies(chainID)
-	logs.Pretty(len(strategies))
 	for _, strategy := range strategies {
 		strategyGroup := getStrategyGroup(chainID, strategy)
 		if strategyGroup == nil {
@@ -188,6 +198,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 				Capture(`warn`, `impossible to find stratGroup for group `+strategy.Name).
 				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 				SetTag(`strategyAddress`, strategy.Address.Hex()).
 				SetTag(`strategyName`, strategy.Name).
 				Send()
@@ -200,6 +211,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 				Capture(`warn`, `impossible to find token for vault `+strategy.VaultAddress.Hex()).
 				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 				SetTag(`strategyAddress`, strategy.Address.Hex()).
 				SetTag(`strategyName`, strategy.Name).
 				Send()
@@ -212,6 +224,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
 				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 				SetTag(`strategyAddress`, strategy.Address.Hex()).
 				SetTag(`strategyName`, strategy.Name).
 				Send()
@@ -219,8 +232,6 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 		_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 		_, amount := helpers.FormatAmount(strategy.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 		tvl := bigNumber.NewFloat(0).Mul(amount, price)
-
-		logs.Pretty(strategyGroup.Label, price, amount)
 
 		strategyGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentTVL, tvl)
 		strategyGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentAmount, amount)

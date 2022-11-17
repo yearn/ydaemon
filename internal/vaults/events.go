@@ -31,19 +31,9 @@ func filterUpdateManagementOneTime(
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
-	client := ethereum.RPC[chainID]
+	client := ethereum.GetRPC(chainID)
+	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 
-	currentVault, err := contracts.NewYvault043(vaultAddress, client)
-	if err != nil {
-		traces.
-			Capture(`error`, `impossible to connect to YBribre V3 at address `+vaultAddress.Hex()).
-			SetEntity(`bribes`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`vaultAddress`, vaultAddress.Hex()).
-			Send()
-		return
-	}
 	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
@@ -52,6 +42,15 @@ func filterUpdateManagementOneTime(
 			}
 			asyncActivationMap.Store(vaultAddress, log.Event.Raw.BlockNumber)
 		}
+	} else {
+		traces.
+			Capture(`error`, `impossible to FilterUpdateManagement for Yvault043 `+vaultAddress.Hex()).
+			SetEntity(`vault`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+			SetTag(`vaultAddress`, vaultAddress.Hex()).
+			Send()
 	}
 }
 
@@ -69,6 +68,7 @@ func RetrieveActivationForAllVaults(
 ) map[common.Address]utils.TVaultsFromRegistry {
 	trace := traces.Init(`app.indexer.vaults.activation_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `vaults`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()

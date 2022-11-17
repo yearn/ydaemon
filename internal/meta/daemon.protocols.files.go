@@ -6,7 +6,7 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 )
 
 // TProtocolsFromMeta is the structure of data for the protocols metadata stored in data/meta/protocols
@@ -74,13 +74,24 @@ func RetrieveAllProtocolsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/protocols/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
+		traces.
+			Capture(`warn`, `impossible to read meta files for protocols on chain `+chainIDStr).
+			SetEntity(`meta`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			Send()
 		return
 	}
 	for _, content := range content {
 		protocol := TProtocolsFromMeta{}
 		if err := json.Unmarshal(content, &protocol); err != nil {
-			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
+			traces.
+				Capture(`warn`, `impossible to unmarshall meta files for protocols response body `+chainIDStr).
+				SetEntity(`meta`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetExtra(`content`, string(content)).
+				Send()
 			continue
 		}
 		protocol.ChainID = chainID

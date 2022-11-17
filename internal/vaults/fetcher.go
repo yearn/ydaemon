@@ -216,6 +216,7 @@ func RetrieveAllVaults(
 ) map[ethcommon.Address]*TVault {
 	trace := traces.Init(`app.indexer.vaults.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `vaults`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
@@ -246,10 +247,13 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraVaults := []string{
-		// `0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+	extraVaults := map[uint64][]string{
+		1:     {},
+		10:    {},
+		250:   {},
+		42161: {},
 	}
-	for _, vaultAddress := range extraVaults {
+	for _, vaultAddress := range extraVaults[chainID] {
 		vaultAddress := ethcommon.HexToAddress(vaultAddress)
 		if _, ok := vaultMap[vaultAddress]; !ok {
 			updatedVaultMap[vaultAddress] = &TVault{

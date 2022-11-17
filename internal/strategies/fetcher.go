@@ -256,6 +256,7 @@ func RetrieveAllStrategies(
 ) map[ethcommon.Address]*TStrategy {
 	trace := traces.Init(`app.indexer.strategies.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `strategies`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()

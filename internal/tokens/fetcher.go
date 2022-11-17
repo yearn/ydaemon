@@ -19,9 +19,6 @@ import (
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
-// CURVE_REGISTRY_ADDRESS should be in a map of chainID -> []TRegistry, and probably in a separate file
-var CURVE_REGISTRY_ADDRESS = ethcommon.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`)
-
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
 ** for the related token. This includes the name, the symbol, the decimals and the details about
@@ -48,7 +45,7 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		calls = append(calls, getSymbol(token.String(), token))
 		calls = append(calls, getDecimals(token.String(), token))
 		calls = append(calls, getToken(token.String(), token))
-		calls = append(calls, getPoolFromLpToken(token.String(), CURVE_REGISTRY_ADDRESS, token))
+		calls = append(calls, getPoolFromLpToken(token.String(), env.CURVE_REGISTRY_ADDRESSES[chainID].ToAddress(), token))
 		calls = append(calls, getCompoundUnderlying(token.String(), token))
 		calls = append(calls, getAaveV1Underlying(token.String(), token))
 		calls = append(calls, getAaveV2Underlying(token.String(), token))
@@ -142,7 +139,7 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		isCurveLpToken := rawPoolFromLpToken != nil && rawPoolFromLpToken[0].(ethcommon.Address) != ethcommon.Address{}
 		if isCurveLpToken {
 			newToken.Type = `Curve LP`
-			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(CURVE_REGISTRY_ADDRESS, caller.Client)
+			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(env.CURVE_REGISTRY_ADDRESSES[chainID].ToAddress(), caller.Client)
 			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, rawPoolFromLpToken[0].(ethcommon.Address))
 			for _, coin := range poolCoins {
 				if (coin != ethcommon.Address{}) {
@@ -267,6 +264,7 @@ func RetrieveAllTokens(
 ) map[ethcommon.Address]*TERC20Token {
 	trace := traces.Init(`app.indexer.tokens.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
 		SetTag(`entity`, `tokens`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
@@ -304,13 +302,18 @@ func RetrieveAllTokens(
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraTokens := []string{
-		`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
-		`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
-		`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
-		`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
+	extraTokens := map[uint64][]string{
+		1: {
+			`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
+			`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
+			`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
+			`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
+		},
+		10:    {},
+		250:   {},
+		42161: {},
 	}
-	for _, tokenAddress := range extraTokens {
+	for _, tokenAddress := range extraTokens[chainID] {
 		tokenAddress := ethcommon.HexToAddress(tokenAddress)
 		if _, ok := tokenMap[tokenAddress]; !ok {
 			updatedTokenMap[tokenAddress] = &TERC20Token{

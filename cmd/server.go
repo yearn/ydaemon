@@ -56,8 +56,7 @@ func GET(router *gin.Engine, path string, handler gin.HandlerFunc) {
 			SetTag(`subsystem`, `gin`).
 			SetTag(path, path)
 
-		chainID, ok := helpers.AssertChainID(c.Param("chainID"))
-		if ok {
+		if chainID, ok := helpers.AssertChainID(c.Param("chainID")); ok {
 			trace.SetTag(`chainID`, strconv.Itoa(int(chainID)))
 		}
 		defer trace.Finish()

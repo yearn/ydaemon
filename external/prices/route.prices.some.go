@@ -32,7 +32,7 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 
 		humanizedPrices[address.Hex()] = 0
 		rawPrices[address.Hex()] = bigNumber.NewInt()
-		price, ok := Store.TokenPrices[chainID][address]
+		price, ok := prices.FindPrice(chainID, address)
 		if !ok {
 			continue
 		}

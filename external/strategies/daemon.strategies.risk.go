@@ -13,7 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/external/prices"
+	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -200,7 +200,7 @@ func FetchStrategiesFromRisk(chainID uint64) {
 			continue
 		}
 
-		_tokenPrice, ok := prices.Store.TokenPrices[chainID][common.FromAddress(tokenData.Address)]
+		_tokenPrice, ok := prices.FindPrice(chainID, common.FromAddress(tokenData.Address))
 		if !ok {
 			logs.Warning("Impossible to find tokenPrice for token ", tokenData.Address.String())
 		}

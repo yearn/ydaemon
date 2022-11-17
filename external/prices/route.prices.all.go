@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/prices"
 )
 
 // GetAllPrices will return all the prices informations, no matter the chainID.
@@ -16,8 +17,8 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 	allPrices := make(map[uint64]map[string]*bigNumber.Int)
 	allPricesHumanized := make(map[uint64]map[string]float64)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		prices := Store.TokenPrices[chainID]
-		for key, price := range prices {
+		allChainPrices := prices.MapPrices(chainID)
+		for key, price := range allChainPrices {
 			if _, ok := allPrices[chainID]; !ok {
 				allPrices[chainID] = make(map[string]*bigNumber.Int)
 				allPricesHumanized[chainID] = make(map[string]float64)
@@ -45,22 +46,21 @@ func (y Controller) GetPrices(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-
 	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+
+	allPrices := prices.MapPrices(chainID)
 	if humanized {
-		allPricesHumanized := make(map[string]float64)
-		prices := Store.TokenPrices[chainID]
-		for key, price := range prices {
+		humanizedPrices := make(map[string]float64)
+		for key, price := range allPrices {
 			humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-			allPricesHumanized[key.Hex()] = humanizedPrice
+			humanizedPrices[key.Hex()] = humanizedPrice
 		}
-		c.JSON(http.StatusOK, allPricesHumanized)
+		c.JSON(http.StatusOK, humanizedPrices)
 	} else {
-		allPrices := make(map[string]*bigNumber.Int)
-		prices := Store.TokenPrices[chainID]
-		for key, price := range prices {
-			allPrices[key.String()] = price
+		prices := make(map[string]*bigNumber.Int)
+		for key, price := range allPrices {
+			prices[key.Hex()] = price
 		}
-		c.JSON(http.StatusOK, allPrices)
+		c.JSON(http.StatusOK, prices)
 	}
 }

@@ -2,7 +2,10 @@
   "$schema": "strategy",
   "name": "Lido Eth 2.0 Staking",
   "description": "Stakes {{token}} on [Lido.fi](https://stake.lido.fi) to mint stETH which accumulates ETH 2.0 staking rewards. This strategy will buy stETH off the market if it is cheaper than staking.",
-  "addresses": ["0x0967aFe627C732d152e3dFCAdd6f9DBfecDE18c3"],
+  "addresses": [
+    "0x0967aFe627C732d152e3dFCAdd6f9DBfecDE18c3",
+    "0x120FA5738751b275aed7F7b46B98beB38679e093"
+  ],
   "protocols": ["Lido Finance"],
   "protocolVersion": {
     "Lido Finance": "1"

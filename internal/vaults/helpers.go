@@ -13,7 +13,7 @@ import (
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
-func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
+func getHumanizedTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
 	fPrice := new(bigNumber.Float)
 	price, ok := prices.FindPrice(chainID, tokenAddress)
 	if ok {
@@ -29,8 +29,8 @@ func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Fl
 // is a string which will be formated as a float64 and scaled with the underlying token decimals. With that
 // we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
 // in the vault thanks to the above humanizedPrice value.
-func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
-	_, humanizedTVL := helpers.FormatAmount(balanceToken.String(), decimals)
-	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(humanizedTVL, humanizedPrice).Float64()
-	return fHumanizedTVLPrice
+func getHumanizedValue(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
+	_, humanizedValue := helpers.FormatAmount(balanceToken.String(), decimals)
+	fHumanizedValue, _ := bigNumber.NewFloat().Mul(humanizedValue, humanizedPrice).Float64()
+	return fHumanizedValue
 }

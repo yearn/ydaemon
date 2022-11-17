@@ -6,9 +6,11 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/bribes"
 	"github.com/yearn/ydaemon/internal/fees"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
+	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -16,25 +18,21 @@ import (
 
 var AllHarvests = make(map[common.Address][]vaults.THarvest)
 
-func LoadTokens(chainID uint64) {
-	vaultsList := registries.RetrieveAllVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, vaultsList)
-}
-
-func LoadPrices(chainID uint64) {
-	prices.RetrieveAllPrices(chainID)
-}
-
-func LoadVaults(chainID uint64) {
-	vaultsList := registries.RetrieveAllVaults(chainID)
-	vaults.RetrieveAllVaults(chainID, vaultsList)
-}
+var STRATLIST = []strategies.TStrategy{}
 
 func InitializeV2(chainID uint64) {
+	go InitializeBribes(chainID)
+
 	vaultsList := registries.RetrieveAllVaults(chainID)
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
+	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
+	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+}
+
+func InitializeBribes(chainID uint64) {
+	bribes.RetrieveAllRewardsAdded(chainID)
 }
 
 func Initialize(chainID uint64) {
@@ -48,7 +46,7 @@ func Initialize(chainID uint64) {
 	**********************************************************************************************/
 	vaultsList := registries.RetrieveAllVaults(chainID)
 
-	strategiesList := map[common.Address]map[common.Address]utils.TStrategyAdded{}
+	strategiesMap := map[common.Address]map[common.Address]strategies.TStrategyAdded{}
 	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]utils.TEventBlock{}
 	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
 	managementFees := map[common.Address]map[uint64][]utils.TEventBlock{}
@@ -67,8 +65,6 @@ func Initialize(chainID uint64) {
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
 
-	return //No need to continue for now
-
 	/**********************************************************************************************
 	** Fetching all the strategiesList and relevant transfers to proceed
 	**********************************************************************************************/
@@ -83,7 +79,8 @@ func Initialize(chainID uint64) {
 		** With this process, we are retrieving the standard blockEvents elements and all the arguments
 		** from the `StrategyAdded` event.
 		**********************************************************************************************/
-		strategiesList = vaults.RetrieveAllStrategies(chainID, vaultsList)
+		strategiesList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
+		strategiesMap = strategies.SlipStrategiesAddedPerVault(strategiesList)
 
 		/**********************************************************************************************
 		** Retrieve all transfers from vaults to strategies. This can only happen in one situation: the
@@ -92,7 +89,7 @@ func Initialize(chainID uint64) {
 		** offchain calculation wrong.
 		** Thanks to this number, from offchain totalFees calculation, we can deduct the treasury fees
 		**********************************************************************************************/
-		transfersFromVaultsToStrategies = vaults.RetrieveAllTransferFromVaultsToStrategies(chainID, strategiesList)
+		transfersFromVaultsToStrategies = vaults.RetrieveAllTransferFromVaultsToStrategies(chainID, strategiesMap)
 
 		/**********************************************************************************************
 		** For each vault we need to know the fee per block, which is the percentage of gains after each
@@ -104,7 +101,7 @@ func Initialize(chainID uint64) {
 		managementFees, performanceFees, strategiesPerformanceFees = fees.RetrieveAllFeesBPS(
 			chainID,
 			vaultsList,
-			strategiesList,
+			strategiesMap,
 		)
 	}()
 
@@ -163,5 +160,5 @@ func Initialize(chainID uint64) {
 		count++
 	}
 
-	logs.Success(`It took`, time.Since(timeBefore), `to process`, count, `harvests`)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to process`, count, `harvests`)
 }

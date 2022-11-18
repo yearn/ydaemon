@@ -122,6 +122,13 @@ func (t *TVault) BuildNames(metaVaultName string) {
 		name = formatedName
 	}
 
+	if displayName == "" && strings.HasSuffix(name, " Auto-Compounding yVault") {
+		displayName = strings.Replace(name, " Auto-Compounding yVault", "", -1)
+	}
+	if strings.HasSuffix(displayName, " Auto-Compounding") {
+		displayName = strings.Replace(displayName, " Auto-Compounding", "", -1)
+	}
+
 	t.Name = name
 	t.DisplayName = displayName
 	t.FormatedName = formatedName

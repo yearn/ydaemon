@@ -228,6 +228,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 				SetTag(`strategyAddress`, strategy.Address.Hex()).
 				SetTag(`strategyName`, strategy.Name).
 				Send()
+			tokenPrice = bigNumber.NewInt(0)
 		}
 		_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 		_, amount := helpers.FormatAmount(strategy.EstimatedTotalAssets.String(), int(tokenData.Decimals))

@@ -10,5 +10,9 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "YFI",
-  "type": "DeFi"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

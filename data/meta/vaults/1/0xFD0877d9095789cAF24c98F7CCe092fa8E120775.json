@@ -11,5 +11,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "TUSD",
-  "type": "Stablecoin"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

@@ -14,6 +14,7 @@
     "isAutomated": false,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Volatile"
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
   }
 }

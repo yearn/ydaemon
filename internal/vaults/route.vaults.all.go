@@ -71,7 +71,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			continue
 		}
 		vaultFromMeta, ok := meta.Store.VaultsFromMeta[chainID][vaultAddress]
-		if ok && vaultFromMeta.HideAlways && hideAlways {
+		if ok && (vaultFromMeta.HideAlways || vaultFromMeta.Retired) && hideAlways {
 			continue
 		}
 

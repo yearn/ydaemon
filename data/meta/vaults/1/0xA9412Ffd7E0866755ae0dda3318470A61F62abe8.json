@@ -1,0 +1,13 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer FUD Auto-Compounding",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 18.5,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer FUD Auto-Compounding"
+}

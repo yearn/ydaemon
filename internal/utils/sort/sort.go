@@ -9,6 +9,9 @@ import (
 )
 
 func SortBy(arr []interface{}, jsonField string, sortOrder string) {
+	if len(arr) == 0 {
+		return
+	}
 	valueType := reflect.TypeOf(arr[0])
 	jsonFields := strings.Split(jsonField, ".")
 	jsonFieldsLen := len(jsonFields)

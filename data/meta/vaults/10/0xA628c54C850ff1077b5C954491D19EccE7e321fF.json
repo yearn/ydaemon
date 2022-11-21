@@ -10,5 +10,10 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "WETH",
-  "type": "Smart Contract Platform"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
 }

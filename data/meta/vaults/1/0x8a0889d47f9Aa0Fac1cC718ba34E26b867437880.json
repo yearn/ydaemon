@@ -11,5 +11,11 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "Staked yCRV",
-  "type": "Special"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "CRV"
+  }
 }

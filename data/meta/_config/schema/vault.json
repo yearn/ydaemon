@@ -1,78 +1,101 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "vault.json",
-  "title": "Vault",
-  "description": "A Yearn vault",
-  "type": "object",
-  "properties": {
-    "comment": {
-      "type": "string"
-    },
-    "hideAlways": {
-      "type": "boolean"
-    },
-    "useVaultDataAsDefault": {
-      "type": "boolean"
-    },
-    "depositsDisabled": {
-      "type": "boolean"
-    },
-    "withdrawalsDisabled": {
-      "type": "boolean"
-    },
-    "apyOverride": {
-      "type": "number"
-    },
-    "apyTypeOverride": {
-      "type": "string"
-    },
-    "order": {
-      "type": "number"
-    },
-    "migrationAvailable": {
-      "type": "boolean"
-    },
-    "allowZapIn": {
-      "type": "boolean"
-    },
-    "allowZapOut": {
-      "type": "boolean"
-    },
-    "zapInWith": {
-      "type": "string"
-    },
-    "zapOutWith": {
-      "type": "string"
-    },
-    "migrationContract": {
-      "type": "string",
-      "format": "address"
-    },
-    "migrationTargetVault": {
-      "type": "string",
-      "format": "address"
-    },
-    "retired": {
-      "type": "boolean"
-    },
-    "displayName": {
-      "type": "string"
-    },
-    "vaultIconOverride": {
-      "type": "string"
-    },
-    "vaultSymbolOverride": {
-      "type": "string"
-    },
-    "vaultNameOverride": {
-      "type": "string"
-    },
-    "vaultDetailPageAssets": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    }
-  },
-  "required": []
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "vault.json",
+	"title": "Vault",
+	"description": "A Yearn vault",
+	"type": "object",
+	"properties": {
+		"comment": {
+			"type": "string"
+		},
+		"hideAlways": {
+			"type": "boolean"
+		},
+		"useVaultDataAsDefault": {
+			"type": "boolean"
+		},
+		"depositsDisabled": {
+			"type": "boolean"
+		},
+		"withdrawalsDisabled": {
+			"type": "boolean"
+		},
+		"apyOverride": {
+			"type": "number"
+		},
+		"apyTypeOverride": {
+			"type": "string"
+		},
+		"order": {
+			"type": "number"
+		},
+		"migrationAvailable": {
+			"type": "boolean"
+		},
+		"allowZapIn": {
+			"type": "boolean"
+		},
+		"allowZapOut": {
+			"type": "boolean"
+		},
+		"zapInWith": {
+			"type": "string"
+		},
+		"zapOutWith": {
+			"type": "string"
+		},
+		"migrationContract": {
+			"type": "string",
+			"format": "address"
+		},
+		"migrationTargetVault": {
+			"type": "string",
+			"format": "address"
+		},
+		"retired": {
+			"type": "boolean"
+		},
+		"displayName": {
+			"type": "string"
+		},
+		"vaultIconOverride": {
+			"type": "string"
+		},
+		"vaultSymbolOverride": {
+			"type": "string"
+		},
+		"vaultNameOverride": {
+			"type": "string"
+		},
+		"vaultDetailPageAssets": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			}
+		},
+		"classification": {
+			"type": "object",
+			"properties": {
+				"isPool": {"type": "boolean"},
+				"poolProvider": {"type": "string", "enum": ["Curve", "Balancer"]},
+				"stability": {"type": "string", "enum": ["Stable", "Unstable", "Volatile"]},
+				"stableBaseAsset": {"type": "string", "enum": [
+					"USD",
+					"EUR",
+					"Ether",
+					"Bitcoin"
+				]},
+				"isAutomated": {"type": "boolean"}
+			},
+			"required": ["isPool", "stability", "isAutomated"],
+			"allOf": [{
+				"if": {"properties": {"isPool": {"const": true}}},
+				"then": {"required": ["poolProvider"]}
+			}, {
+				"if": {"properties": {"stability": {"const": "Stable"}}},
+				"then": {"required": ["stableBaseAsset"]}
+			}]
+		}
+	},
+	"required": []
 }

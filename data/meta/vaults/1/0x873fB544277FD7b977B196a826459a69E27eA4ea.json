@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "RAI",
-  "type": "Stablecoin"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

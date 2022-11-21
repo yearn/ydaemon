@@ -10,5 +10,10 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "USDC",
-  "type": "Stablecoin"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

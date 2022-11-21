@@ -11,5 +11,12 @@
   "retired": false,
   "apyTypeOverride": "new",
   "displayName": "Curve 2Pool",
-  "type": "Curve"
+  "type": "Curve",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

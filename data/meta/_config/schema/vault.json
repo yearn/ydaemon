@@ -82,6 +82,11 @@
 				"stableBaseAsset": {"type": "string", "enum": [
 					"USD",
 					"EUR",
+					"AUD",
+					"CHF",
+					"KRW",
+					"GBP",
+					"JPY",
 					"Ether",
 					"Bitcoin"
 				]},
@@ -93,6 +98,9 @@
 				"then": {"required": ["poolProvider"]}
 			}, {
 				"if": {"properties": {"stability": {"const": "Stable"}}},
+				"then": {"required": ["stableBaseAsset"]}
+			}, {
+				"if": {"properties": {"stability": {"const": "Unstable"}}},
 				"then": {"required": ["stableBaseAsset"]}
 			}]
 		}

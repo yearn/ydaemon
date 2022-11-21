@@ -9,5 +9,12 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Balancer FUD Auto-Compounding"
+  "displayName": "Balancer FUD Auto-Compounding",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

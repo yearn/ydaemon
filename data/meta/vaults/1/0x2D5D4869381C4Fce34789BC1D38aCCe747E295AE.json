@@ -11,5 +11,11 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve RAI",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Unstable",
+    "stableBaseAsset": "USD"
+  }
 }

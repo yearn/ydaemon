@@ -11,5 +11,11 @@
   "allowZapOut": true,
   "retired": true,
   "displayName": "Curve USDM",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

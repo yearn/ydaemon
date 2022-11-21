@@ -78,7 +78,7 @@
 			"properties": {
 				"isPool": {"type": "boolean"},
 				"poolProvider": {"type": "string", "enum": ["Curve", "Balancer"]},
-				"stability": {"type": "string", "enum": ["Stable", "Unstable", "Volatile"]},
+				"stability": {"type": "string", "enum": ["Stable", "Unstable", "Correlated", "Volatile"]},
 				"stableBaseAsset": {"type": "string", "enum": [
 					"USD",
 					"EUR",
@@ -87,8 +87,13 @@
 					"KRW",
 					"GBP",
 					"JPY",
+					"CRV",
 					"Ether",
-					"Bitcoin"
+					"Bitcoin",
+					"Eth 2.0",
+					"Aave",
+					"Comp",
+					"Link"
 				]},
 				"isAutomated": {"type": "boolean"}
 			},
@@ -100,7 +105,7 @@
 				"if": {"properties": {"stability": {"const": "Stable"}}},
 				"then": {"required": ["stableBaseAsset"]}
 			}, {
-				"if": {"properties": {"stability": {"const": "Unstable"}}},
+				"if": {"properties": {"stability": {"const": "Correlated"}}},
 				"then": {"required": ["stableBaseAsset"]}
 			}]
 		}

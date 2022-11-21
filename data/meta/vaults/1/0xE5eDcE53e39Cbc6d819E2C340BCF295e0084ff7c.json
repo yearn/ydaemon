@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve ibEUR-USDC",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

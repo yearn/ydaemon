@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve EURT-USD",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

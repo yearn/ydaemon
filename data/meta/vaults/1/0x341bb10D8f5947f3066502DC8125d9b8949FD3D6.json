@@ -11,7 +11,7 @@
   "retired": false,
   "displayName": "Curve STG-USDC",
   "classification": {
-    "isAutomated": true,
+    "isAutomated": no,
     "isPool": true,
     "poolProvider": "Curve",
     "stability": "Volatile"

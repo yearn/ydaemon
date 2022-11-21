@@ -107,9 +107,6 @@
 			}, {
 				"if": {"properties": {"stability": {"const": "Correlated"}}},
 				"then": {"required": ["stableBaseAsset"]}
-			}, {
-				"if": {"properties": {"stability": {"const": "Correlated"}}},
-				"then": {"required": ["stableBaseAsset"]}
 			}]
 		}
 	},

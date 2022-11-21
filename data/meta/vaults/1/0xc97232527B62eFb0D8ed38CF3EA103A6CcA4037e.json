@@ -10,5 +10,11 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "Liquidity Provider yCRV",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "CRV"
+  }
 }

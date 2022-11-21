@@ -90,6 +90,7 @@
 					"CRV",
 					"Ether",
 					"Bitcoin",
+					"Eth 2.0",
 					"Aave",
 					"Comp",
 					"Link"
@@ -104,7 +105,7 @@
 				"if": {"properties": {"stability": {"const": "Stable"}}},
 				"then": {"required": ["stableBaseAsset"]}
 			}, {
-				"if": {"properties": {"stability": {"const": "Unstable"}}},
+				"if": {"properties": {"stability": {"const": "Correlated"}}},
 				"then": {"required": ["stableBaseAsset"]}
 			}, {
 				"if": {"properties": {"stability": {"const": "Correlated"}}},

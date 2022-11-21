@@ -11,5 +11,10 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "yveCRV",
-  "type": "Special"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Correlated",
+    "stableBaseAsset": "CRV"
+  }
 }

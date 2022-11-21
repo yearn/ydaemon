@@ -13,5 +13,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "ETH",
-  "type": "Smart Contract Platform"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
 }

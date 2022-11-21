@@ -10,5 +10,9 @@
   "allowZapOut": true,
   "retired": true,
   "displayName": "1INCH",
-  "type": "DeFi"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

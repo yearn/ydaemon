@@ -13,5 +13,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "WBTC",
-  "type": "Currency"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
 }

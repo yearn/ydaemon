@@ -20,6 +20,7 @@ type TVaultHarvest struct {
 	LossValue       float64 `json:"lossValue"`
 }
 
+//TExternalVaultTVL is the struct containing the information about the TVL of a vault.
 type TExternalVaultTVL struct {
 	TotalAssets          *bigNumber.Int `json:"total_assets"`
 	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
@@ -29,7 +30,7 @@ type TExternalVaultTVL struct {
 	Price                float64        `json:"price"`
 }
 
-// TAPYFees holds the fees information about this vault.
+// TExternalAPYFees holds the fees information about this vault.
 type TExternalAPYFees struct {
 	Performance float64 `json:"performance"`
 	Withdrawal  float64 `json:"withdrawal"`
@@ -38,14 +39,14 @@ type TExternalAPYFees struct {
 	CvxKeepCRV  float64 `json:"cvx_keep_crv"`
 }
 
-// TAPYPoints holds the points information about this vault.
+// TExternalAPYPoints holds the points information about this vault.
 type TExternalAPYPoints struct {
 	WeekAgo   float64 `json:"week_ago"`
 	MonthAgo  float64 `json:"month_ago"`
 	Inception float64 `json:"inception"`
 }
 
-// TAPYComposite holds the points information about this vault.
+// TExternalAPYComposite holds the points information about this vault.
 type TExternalAPYComposite struct {
 	Boost      float64 `json:"boost"`
 	PoolAPY    float64 `json:"pool_apy"`
@@ -55,6 +56,7 @@ type TExternalAPYComposite struct {
 	RewardsAPR float64 `json:"rewards_apr"`
 }
 
+// TExternalVaultAPY holds the APY information about this vault.
 type TExternalVaultAPY struct {
 	Type      string                `json:"type"`
 	GrossAPR  float64               `json:"gross_apr"`
@@ -63,10 +65,14 @@ type TExternalVaultAPY struct {
 	Points    TExternalAPYPoints    `json:"points"`
 	Composite TExternalAPYComposite `json:"composite"`
 }
+
+// TExternalVaultMigration is the struct containing the information about the migration of a vault.
 type TExternalVaultMigration struct {
 	Available bool           `json:"available"`
 	Address   common.Address `json:"address"`
 }
+
+// TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
 	Management            common.Address `json:"management"`
 	Governance            common.Address `json:"governance"`

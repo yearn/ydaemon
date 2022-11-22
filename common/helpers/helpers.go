@@ -13,10 +13,10 @@ import (
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
-// ContainsAddress returns true if address exists in addresses
-func ContainsAddress[T comparable](addresses []T, address T) bool {
-	for _, _address := range addresses {
-		if _address == address {
+// Intersects returns true if both arrays have at least one element in common
+func Intersects(arr1 []string, arr2 []string) bool {
+	for _, v := range arr1 {
+		if ContainsSubString(arr2, v) {
 			return true
 		}
 	}
@@ -95,10 +95,20 @@ func FormatAmount(amount string, decimals int) (float64, *bigNumber.Float) {
 	return fhumanizedBalance, humanizedBalance
 }
 
-// ContainsUint64 returns true if value exists in arr
-func ContainsUint64(arr []uint64, value uint64) bool {
+// Contains returns true if value exists in arr
+func Contains[T comparable](arr []T, value T) bool {
 	for _, v := range arr {
 		if v == value {
+			return true
+		}
+	}
+	return false
+}
+
+// ContainsSubString returns true if value exists in arr
+func ContainsSubString(arr []string, value string) bool {
+	for _, v := range arr {
+		if strings.Contains(v, value) {
 			return true
 		}
 	}
@@ -110,7 +120,7 @@ func AssertChainID(chainIDStr string) (uint64, bool) {
 	if err != nil {
 		return 0, false
 	}
-	if !ContainsUint64(env.SUPPORTED_CHAIN_IDS, chainID) {
+	if !Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
 		return 0, false
 	}
 	return chainID, true
@@ -121,7 +131,7 @@ func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 		return common.Address{}, false
 	}
 	address := common.HexToAddress(addressStr)
-	if chainID > 0 && ContainsAddress(env.BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && Contains(env.BLACKLISTED_VAULTS[chainID], address) {
 		return common.Address{}, false
 	}
 	return address, true
@@ -131,7 +141,7 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 	if (address == common.Address{} || address == common.HexToAddress("0x0000000000000000000000000000000000000000")) {
 		return false
 	}
-	if chainID > 0 && ContainsAddress(env.BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && Contains(env.BLACKLISTED_VAULTS[chainID], address) {
 		return false
 	}
 	return true

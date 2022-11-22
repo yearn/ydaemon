@@ -100,6 +100,7 @@ type TExternalVault struct {
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
 	Type              string                  `json:"type"`
+	Category          string                  `json:"category"`
 	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
 	Endorsed          bool                    `json:"endorsed"`
@@ -147,6 +148,7 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	v.Token = internalVault.Token
 	v.TVL = TExternalVaultTVL(internalVault.BuildTVL())
 	v.Migration = TExternalVaultMigration(internalVault.BuildMigration())
+	v.Category = internalVault.BuildCategory()
 
 	internalAPY := internalVault.BuildAPY()
 	v.APY = TExternalVaultAPY{

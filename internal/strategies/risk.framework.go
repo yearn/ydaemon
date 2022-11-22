@@ -29,7 +29,7 @@ func excludeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
 }
 
 func includeAddress(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	return helpers.ContainsAddress(group.Criteria.Strategies, common.FromAddress(strat.Address))
+	return helpers.Contains(group.Criteria.Strategies, common.FromAddress(strat.Address))
 }
 
 func includeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {

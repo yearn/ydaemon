@@ -88,11 +88,11 @@
 					"GBP",
 					"JPY",
 					"CRV",
+					"FTM",
+					"Avax",
 					"Ether",
 					"Bitcoin",
-					"Eth 2.0",
 					"Aave",
-					"Comp",
 					"Link"
 				]},
 				"isAutomated": {"type": "boolean"}
@@ -110,5 +110,5 @@
 			}]
 		}
 	},
-	"required": []
+	"required": ["classification"]
 }

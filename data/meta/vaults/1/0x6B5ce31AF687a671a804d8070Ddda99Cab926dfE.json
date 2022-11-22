@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve ibGBP-USDC",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

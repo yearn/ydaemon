@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve KP3R-ETH",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

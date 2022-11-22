@@ -9,5 +9,11 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve CVX-ETH"
+  "displayName": "Curve CVX-ETH",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

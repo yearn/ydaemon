@@ -10,5 +10,10 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "HEGIC"
+  "displayName": "HEGIC",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

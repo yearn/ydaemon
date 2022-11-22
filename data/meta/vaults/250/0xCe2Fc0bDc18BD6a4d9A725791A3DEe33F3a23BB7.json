@@ -9,5 +9,11 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "WETH"
+  "displayName": "WETH",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
 }

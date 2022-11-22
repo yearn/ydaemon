@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and RAI. Please be aware that as RAI is not pegged to $1, this pool may be subject to impermanent loss.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/rai",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and RAI. Please be aware that as RAI is not pegged to $1, this pool may be subject to impermanent loss."

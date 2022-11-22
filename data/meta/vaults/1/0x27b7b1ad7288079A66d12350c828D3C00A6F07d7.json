@@ -9,5 +9,12 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve Iron Bank"
+  "displayName": "Curve Iron Bank",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
 }

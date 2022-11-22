@@ -11,5 +11,10 @@
   "retired": false,
   "displayName": "YFI",
   "migrationTargetVault": "0xdb25cA703181E7484a155DD612b06f57E12Be5F0",
-  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90"
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

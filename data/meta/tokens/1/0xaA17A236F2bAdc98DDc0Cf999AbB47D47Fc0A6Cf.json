@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and aETHc, a token that represents staked ether in Ankr StakeFi, an ETH 2.0 staking platform.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/ankreth/",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and aETHc, a token that represents staked ether in Ankr StakeFi, an ETH 2.0 staking platform."

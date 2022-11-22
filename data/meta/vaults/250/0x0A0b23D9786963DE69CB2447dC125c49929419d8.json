@@ -9,5 +9,11 @@
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
-  "displayName": "MIM"
+  "displayName": "MIM",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

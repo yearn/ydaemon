@@ -9,5 +9,11 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "USDC"
+  "displayName": "USDC",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

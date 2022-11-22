@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "CRV"
+  "displayName": "CRV",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

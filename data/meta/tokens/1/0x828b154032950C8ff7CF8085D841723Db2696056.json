@@ -5,6 +5,7 @@
   "description": "This token represents a curve liquidity. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This curve pool contains stETH and WETH.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/factory/117",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This curve pool contains stETH and WETH."

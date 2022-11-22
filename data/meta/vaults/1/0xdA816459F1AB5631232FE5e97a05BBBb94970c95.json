@@ -9,5 +9,11 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "DAI"
+  "displayName": "DAI",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

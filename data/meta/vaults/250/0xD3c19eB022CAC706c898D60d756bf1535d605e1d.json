@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "SPELL"
+  "displayName": "SPELL",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "AAVE"
+  "displayName": "AAVE",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

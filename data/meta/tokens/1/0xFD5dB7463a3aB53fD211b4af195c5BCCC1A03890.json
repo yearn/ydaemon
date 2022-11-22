@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains EURT, a centralized euro stablecoin issued by Tether, and synthetic euro (sEUR) minted on the Synthetix platform.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/eurt",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains EURT, a centralized euro stablecoin issued by Tether, and synthetic euro (sEUR) minted on the Synthetix platform."

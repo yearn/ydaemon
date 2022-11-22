@@ -12,5 +12,11 @@
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
-  "displayName": "TEST_ONLY"
+  "displayName": "TEST_ONLY",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Avax"
+  }
 }

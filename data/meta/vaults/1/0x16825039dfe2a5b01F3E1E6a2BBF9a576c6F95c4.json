@@ -9,5 +9,12 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "Curve d3pool"
+  "displayName": "Curve d3pool",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

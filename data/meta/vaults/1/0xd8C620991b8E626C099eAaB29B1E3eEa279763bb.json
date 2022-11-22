@@ -9,5 +9,12 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "Curve MIM-UST"
+  "displayName": "Curve MIM-UST",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

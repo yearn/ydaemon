@@ -238,6 +238,63 @@ func (t *TVault) BuildTVL() TTVL {
 	return tvl
 }
 
+func (t *TVault) BuildCategory() string {
+	category := `Volatile`
+	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
+	baseForCurve := []string{`curve`, `crv`}
+	baseForBalancer := []string{`balancer`, `bal`}
+	allNames := []string{
+		strings.ToLower(t.FormatedName),
+		strings.ToLower(t.Name),
+		strings.ToLower(t.DisplayName),
+	}
+
+	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address)); ok {
+		//Using meta classification to set the category
+		if vaultFromMeta.Classification.Stability == `Volatile` {
+			category = `Volatile`
+		} else {
+			if helpers.Contains(baseForStableCurrencies, vaultFromMeta.Classification.StableBaseAsset) {
+				category = `Stablecoin`
+			} else {
+				category = `Volatile`
+			}
+		}
+		if helpers.Intersects(baseForCurve, allNames) {
+			category = `Curve`
+		}
+		if helpers.Intersects(baseForBalancer, allNames) {
+			category = `Balancer`
+		}
+	} else {
+		//No meta, back to custom classification
+		baseForBitcoin := []string{`btc`, `bitcoin`}
+		baseForEth := []string{`eth`, `ethereum`}
+		baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
+
+		for _, stable := range baseForStableCurrencies {
+			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
+		}
+
+		if helpers.Intersects(baseForBitcoin, allNames) {
+			category = `Volatile`
+		}
+		if helpers.Intersects(baseForEth, allNames) {
+			category = `Volatile`
+		}
+		if helpers.Intersects(baseForStableCoins, allNames) {
+			category = `Stablecoin`
+		}
+		if helpers.Intersects(baseForCurve, allNames) {
+			category = `Curve`
+		}
+		if helpers.Intersects(baseForBalancer, allNames) {
+			category = `Balancer`
+		}
+	}
+	return category
+}
+
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.

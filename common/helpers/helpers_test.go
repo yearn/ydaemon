@@ -18,14 +18,14 @@ func TestContainAddress(t *testing.T) {
 		common.HexToAddress("0x5"),
 	}
 
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x0")))
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x1")))
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x2")))
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x3")))
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x4")))
-	assert.True(t, ContainsAddress(listOfAddress, common.HexToAddress("0x5")))
-	assert.False(t, ContainsAddress(listOfAddress, common.HexToAddress("0x6")))
-	assert.False(t, ContainsAddress(listOfAddress, common.HexToAddress("0x554")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x0")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x1")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x2")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x3")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x4")))
+	assert.True(t, Contains(listOfAddress, common.HexToAddress("0x5")))
+	assert.False(t, Contains(listOfAddress, common.HexToAddress("0x6")))
+	assert.False(t, Contains(listOfAddress, common.HexToAddress("0x554")))
 }
 
 func TestUniqueArrayAddress(t *testing.T) {
@@ -127,11 +127,11 @@ func TestFormatAmount(t *testing.T) {
 	}
 }
 
-func TestContainsUint64(t *testing.T) {
-	assert.True(t, ContainsUint64([]uint64{1, 2, 3, 4, 5}, 1))
-	assert.True(t, ContainsUint64([]uint64{1, 2, 3, 4, 5}, 3))
-	assert.True(t, ContainsUint64([]uint64{1, 2, 3, 4, 5}, 5))
-	assert.False(t, ContainsUint64([]uint64{1, 2, 3, 4, 5}, 6))
+func TestContains(t *testing.T) {
+	assert.True(t, Contains([]uint64{1, 2, 3, 4, 5}, 1))
+	assert.True(t, Contains([]uint64{1, 2, 3, 4, 5}, 3))
+	assert.True(t, Contains([]uint64{1, 2, 3, 4, 5}, 5))
+	assert.False(t, Contains([]uint64{1, 2, 3, 4, 5}, 6))
 }
 
 func TestAssertChainID(t *testing.T) {

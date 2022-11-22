@@ -11,10 +11,10 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
@@ -97,13 +97,33 @@ func fetchBasicInformations(
 		shareTokenData, ok := tokens.FindToken(chainID, common.FromAddress(vault))
 		if !ok {
 			shareTokenData = &tokens.TERC20Token{}
-			logs.Warning(`NO SHARE TOKEN FOUND FOR VAULT`, vault.String())
+			traces.
+				Capture(`warn`, `impossible to retrieve share token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+				SetEntity(`meta`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`vaultAddress`, vault.Hex()).
+				Send()
 		}
 
 		underlyingTokenData, ok := tokens.FindToken(chainID, common.FromAddress(rawUnderlying[0].(ethcommon.Address)))
 		if !ok {
 			underlyingTokenData = &tokens.TERC20Token{}
-			logs.Warning(`NO UNDERLYING TOKEN FOUND FOR VAULT`, vault.String())
+			traces.
+				Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+				SetEntity(`meta`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`vaultAddress`, vault.Hex()).
+				SetTag(`underlyingAddress`, common.FromAddress(rawUnderlying[0].(ethcommon.Address)).Hex()).
+				Send()
+		}
+
+		if _, ok := meta.GetMetaVault(chainID, common.FromAddress(vault)); !ok {
+			traces.
+				Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+				SetEntity(`meta`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`vaultAddress`, vault.Hex()).
+				Send()
 		}
 
 		/******************************************************************************************

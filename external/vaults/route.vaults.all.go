@@ -30,7 +30,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := common.FromAddress(currentVault.Address)
-		if helpers.ContainsAddress(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
 

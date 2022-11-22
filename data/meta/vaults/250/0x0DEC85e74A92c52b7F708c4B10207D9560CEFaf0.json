@@ -10,5 +10,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "WFTM",
-  "type": "Smart Contract Platform"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "FTM"
+  }
 }

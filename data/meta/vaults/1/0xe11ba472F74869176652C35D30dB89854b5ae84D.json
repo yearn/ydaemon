@@ -11,5 +11,9 @@
   "allowZapOut": true,
   "retired": true,
   "displayName": "HEGIC",
-  "type": "DeFi"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

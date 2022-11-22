@@ -10,5 +10,11 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve sAave",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
 }

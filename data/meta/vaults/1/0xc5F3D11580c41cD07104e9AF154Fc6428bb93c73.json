@@ -11,5 +11,11 @@
   "retired": false,
   "apyTypeOverride": "new",
   "displayName": "Balancer Boosted AAVE USD",
-  "type": "Balancer"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
 }

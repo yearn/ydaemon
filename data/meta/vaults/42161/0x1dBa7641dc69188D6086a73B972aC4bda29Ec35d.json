@@ -10,5 +10,11 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "Curve MIM 3Pool",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

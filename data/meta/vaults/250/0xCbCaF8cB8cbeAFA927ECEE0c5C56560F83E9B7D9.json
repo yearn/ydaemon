@@ -11,5 +11,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve Tricrypto",
-  "type": "Curve"
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
 }

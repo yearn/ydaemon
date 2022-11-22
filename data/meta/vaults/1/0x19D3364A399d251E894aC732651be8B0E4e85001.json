@@ -13,5 +13,10 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "DAI",
-  "type": "Stablecoin"
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

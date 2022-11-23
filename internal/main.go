@@ -36,16 +36,82 @@ func postProcessStrategies(chainID uint64) {
 	}
 }
 
-func InitializeV2(chainID uint64) {
+func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duration) {
+	isDone := false
+	for {
+		prices.RetrieveAllPrices(chainID)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		if delay == 0 {
+			return
+		}
+		time.Sleep(delay)
+	}
+}
+func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
+	isDone := false
+	for {
+		vaults.RetrieveAllVaults(chainID, vaultsMap)
+		logs.Debug(`DONE`)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		if delay == 0 {
+			return
+		}
+		time.Sleep(delay)
+	}
+}
+func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
+	isDone := false
+	for {
+		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		if delay == 0 {
+			return
+		}
+		time.Sleep(delay)
+	}
+}
+
+func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
+	defer wg.Done()
 	go InitializeBribes(chainID)
 
-	vaultsList := registries.RetrieveAllVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, vaultsList)
-	prices.RetrieveAllPrices(chainID)
-	vaults.RetrieveAllVaults(chainID, vaultsList)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
-	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+	var internalWG sync.WaitGroup
+	//From the events in the registries, retrieve all the vaults -> Should only be done on init or when a new vault is added
+	vaultsMap := registries.RetrieveAllVaults(chainID, 0)
+
+	// From our list of vaults, retrieve the ERC20 data for each shareToken, underlyingToken and the underlying of those tokens
+	// -> Data store will not change unless extreme event, so this should only be done on init or when a new vault is added
+	tokens.RetrieveAllTokens(chainID, vaultsMap)
+
+	// From our list of tokens, retieve the price for each one of them -> Should be done every 1(?) minute for all tokens
+	internalWG.Add(1)
+	go runRetrieveAllPrices(chainID, &internalWG, 1*time.Minute)
+	internalWG.Wait()
+
+	//From our list of vault, perform a multicall to get all vaults data -> Should be done every 5(?) minutes for all vaults
+	internalWG.Add(1)
+	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
+	internalWG.Wait()
+
+	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
+
+	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
+	internalWG.Add(1)
+	go runRetrieveAllStrategies(chainID, strategiesAddedList, &internalWG, 5*time.Minute)
+	internalWG.Wait()
+
 	postProcessStrategies(chainID)
+
+	go registries.IndexNewVaults(chainID)
 }
 
 func InitializeBribes(chainID uint64) {
@@ -61,7 +127,7 @@ func Initialize(chainID uint64) {
 	** added to the registry, and we remove the duplicates only to keep the latest version of a
 	** same vault. Duplicate can happen when a vault is moved from Experimental to Standard.
 	**********************************************************************************************/
-	vaultsList := registries.RetrieveAllVaults(chainID)
+	vaultsList := registries.RetrieveAllVaults(chainID, 0)
 
 	strategiesMap := map[ethcommon.Address]map[ethcommon.Address]strategies.TStrategyAdded{}
 	transfersFromVaultsToTreasury := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}

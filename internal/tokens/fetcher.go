@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -69,6 +70,8 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 	relatedTokensList := []ethcommon.Address{}
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, token := range tokens {
+		logs.Info(token)
+		logs.Pretty(response)
 		if token == ethcommon.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
 			tokenList = append(tokenList, &TERC20Token{
 				Address:  token,
@@ -92,9 +95,9 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		******************************************************************************************/
 		newToken := &TERC20Token{
 			Address:  token,
-			Name:     rawName[0].(string),
-			Symbol:   rawSymbol[0].(string),
-			Decimals: uint64(rawDecimals[0].(uint8)),
+			Name:     helpers.DecodeString(rawName),
+			Symbol:   helpers.DecodeString(rawSymbol),
+			Decimals: helpers.DecodeUint64(rawDecimals),
 			Icon:     env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + token.Hex() + `/logo-128.png`,
 		}
 
@@ -118,10 +121,10 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isYearnVault := rawYearnVaultToken != nil && rawYearnVaultToken[0].(ethcommon.Address) != ethcommon.Address{}
+		isYearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != ethcommon.Address{}
 		if isYearnVault {
 			newToken.Type = `Yearn Vault`
-			coin := rawYearnVaultToken[0].(ethcommon.Address)
+			coin := helpers.DecodeAddress(rawYearnVaultToken)
 			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
@@ -136,11 +139,11 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isCurveLpToken := rawPoolFromLpToken != nil && rawPoolFromLpToken[0].(ethcommon.Address) != ethcommon.Address{}
+		isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != ethcommon.Address{}
 		if isCurveLpToken {
 			newToken.Type = `Curve LP`
 			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(env.CURVE_REGISTRY_ADDRESSES[chainID].ToAddress(), caller.Client)
-			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, rawPoolFromLpToken[0].(ethcommon.Address))
+			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
 			for _, coin := range poolCoins {
 				if (coin != ethcommon.Address{}) {
 					relatedTokensList = append(relatedTokensList, coin)
@@ -157,10 +160,10 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isCToken := rawCUnderlying != nil && rawCUnderlying[0].(ethcommon.Address) != ethcommon.Address{}
+		isCToken := rawCUnderlying != nil && helpers.DecodeAddress(rawCUnderlying) != ethcommon.Address{}
 		if isCToken {
 			newToken.Type = `Compound`
-			coin := rawCUnderlying[0].(ethcommon.Address)
+			coin := helpers.DecodeAddress(rawCUnderlying)
 			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
@@ -175,10 +178,10 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isAV1Token := rawAV1Underlying != nil && rawAV1Underlying[0].(ethcommon.Address) != ethcommon.Address{}
+		isAV1Token := rawAV1Underlying != nil && helpers.DecodeAddress(rawAV1Underlying) != ethcommon.Address{}
 		if isAV1Token {
 			newToken.Type = `AAVE V1`
-			coin := rawAV1Underlying[0].(ethcommon.Address)
+			coin := helpers.DecodeAddress(rawAV1Underlying)
 			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
@@ -193,10 +196,11 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-		isAV2Token := rawAV2Underlying != nil && rawAV2Underlying[0].(ethcommon.Address) != ethcommon.Address{}
+
+		isAV2Token := rawAV2Underlying != nil && helpers.DecodeAddress(rawAV2Underlying) != ethcommon.Address{}
 		if isAV2Token {
 			newToken.Type = `AAVE V2`
-			coin := rawAV2Underlying[0].(ethcommon.Address)
+			coin := helpers.DecodeAddress(rawAV2Underlying)
 			if (coin != ethcommon.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)

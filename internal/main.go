@@ -95,6 +95,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 	go registries.IndexNewVaults(chainID)
 	go registries.IndexNewExperimentalVaults(chainID)
+	go strategies.IndexStrategyAdded(chainID, vaultsMap)
 }
 
 func InitializeBribes(chainID uint64) {

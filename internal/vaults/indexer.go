@@ -1,4 +1,4 @@
-package indexer
+package vaults
 
 import (
 	"github.com/ethereum/go-ethereum/common"
@@ -6,13 +6,13 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-func ProcessNewVault(chainID uint64, vaultsList map[common.Address]utils.TVaultsFromRegistry) {
-	tokens.RetrieveAllTokens(chainID, vaultsList)
+func ProcessNewVault(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry) {
+	tokens.RetrieveAllTokens(chainID, vaultsMap)
 	prices.RetrieveAllPrices(chainID)
-	vaults.RetrieveAllVaults(chainID, vaultsList)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
+	RetrieveAllVaults(chainID, vaultsMap)
+	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+	go strategies.IndexStrategyAdded(chainID, vaultsMap)
 }

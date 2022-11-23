@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
-	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -114,7 +113,7 @@ func indexNewExperimentalVaults(
 				newVault.VaultsAddress: newVault,
 			}
 			vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
-			indexer.ProcessNewVault(chainID, newVaultList)
+			vaults.ProcessNewVault(chainID, newVaultList)
 		case err := <-watcher.Err():
 			return lastSyncedBlock, true, err
 		}

@@ -197,12 +197,11 @@ func RetrieveAllVaults(
 	wg := &sync.WaitGroup{}
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		wg.Add(2)
-		startBlock := fromBlock
 		if fromBlock == 0 {
-			startBlock = registry.Activation
+			fromBlock = registry.Activation
 		}
-		go filterNewVaults(chainID, registry.Address, registry.Version, startBlock, &vaultsList, wg)
-		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, startBlock, &vaultsListExperimental, wg)
+		go filterNewVaults(chainID, registry.Address, registry.Version, fromBlock, &vaultsList, wg)
+		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, fromBlock, &vaultsListExperimental, wg)
 	}
 	wg.Wait()
 

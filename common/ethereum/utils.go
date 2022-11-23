@@ -4,6 +4,7 @@ import (
 	"context"
 	"math"
 	"math/big"
+	"net/url"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -63,12 +64,16 @@ func randomSigner() *bind.TransactOpts {
 // GetWSClient returns the current ws connection for a specific chain
 func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	if WS[chainID] == nil {
-		uri := GetRPCURI(chainID)
-		uri = `http://localhost:8545`
-		if uri[:4] == `http` {
-			uri = `ws` + uri[4:]
+		// uriString := GetRPCURI(chainID)
+		uriString := `http://localhost:8545`
+		uri, _ := url.Parse(uriString)
+		if uri.Scheme == `https` {
+			uri.Scheme = `wss`
+		} else {
+			uri.Scheme = `ws`
 		}
-		client, err := ethclient.Dial(uri)
+
+		client, err := ethclient.Dial(uri.String())
 		if err != nil {
 			return nil, err
 		}

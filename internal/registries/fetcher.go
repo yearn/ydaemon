@@ -36,7 +36,9 @@ func filterNewExperimentalVault(
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 	if registryVersion == 3 {
 		return //No newExperimentalVault events in registry v3
 	}
@@ -96,7 +98,9 @@ func filterNewVaults(
 	vaultsList *[]utils.TVaultsFromRegistry,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 	client := ethereum.GetRPC(chainID)
 
 	if registryVersion == 1 || registryVersion == 2 {
@@ -178,6 +182,7 @@ func filterNewVaults(
 **************************************************************************************************/
 func RetrieveAllVaults(
 	chainID uint64,
+	fromBlock uint64,
 ) map[ethcommon.Address]utils.TVaultsFromRegistry {
 	trace := traces.Init(`app.indexer.registry.new_vaults_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
@@ -192,8 +197,12 @@ func RetrieveAllVaults(
 	wg := &sync.WaitGroup{}
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		wg.Add(2)
-		go filterNewVaults(chainID, registry.Address, registry.Version, registry.Activation, &vaultsList, wg)
-		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, registry.Activation, &vaultsListExperimental, wg)
+		startBlock := fromBlock
+		if fromBlock == 0 {
+			startBlock = registry.Activation
+		}
+		go filterNewVaults(chainID, registry.Address, registry.Version, startBlock, &vaultsList, wg)
+		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, startBlock, &vaultsListExperimental, wg)
 	}
 	wg.Wait()
 

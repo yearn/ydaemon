@@ -14,6 +14,7 @@ import (
 )
 
 var RPC = map[uint64]*ethclient.Client{}
+var WS = map[uint64]*ethclient.Client{}
 
 // GetRPC returns the current connection for a specific chain
 func GetRPC(chainID uint64) *ethclient.Client {
@@ -57,4 +58,21 @@ func randomSigner() *bind.TransactOpts {
 	signer.GasTipCap = big.NewInt(0)
 	signer.GasPrice = big.NewInt(0)
 	return signer
+}
+
+// GetWSClient returns the current ws connection for a specific chain
+func GetWSClient(chainID uint64) (*ethclient.Client, error) {
+	if WS[chainID] == nil {
+		uri := GetRPCURI(chainID)
+		uri = `http://localhost:8545`
+		if uri[:4] == `http` {
+			uri = `ws` + uri[4:]
+		}
+		client, err := ethclient.Dial(uri)
+		if err != nil {
+			return nil, err
+		}
+		WS[chainID] = client
+	}
+	return WS[chainID], nil
 }

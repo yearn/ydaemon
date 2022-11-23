@@ -94,6 +94,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	internalWG.Wait()
 
 	go registries.IndexNewVaults(chainID)
+	go registries.IndexNewExperimentalVaults(chainID)
 }
 
 func InitializeBribes(chainID uint64) {

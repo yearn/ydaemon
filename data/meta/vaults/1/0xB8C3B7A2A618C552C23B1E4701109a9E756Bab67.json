@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "1INCH"
+  "displayName": "1INCH",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

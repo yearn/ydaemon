@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains rETH and wstETH. rETH is a token that represents staked ether in Rocket Pool, while wstETH is a wrapped token that represents staked ether in Lido. Both are decentralized ETH 2.0 staking platforms.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/factory/89",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains rETH and wstETH. rETH is a token that represents staked ether in Rocket Pool, while wstETH is a wrapped token that represents staked ether in Lido. Both are decentralized ETH 2.0 staking platforms."

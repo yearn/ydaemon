@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "UNI"
+  "displayName": "UNI",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
 }

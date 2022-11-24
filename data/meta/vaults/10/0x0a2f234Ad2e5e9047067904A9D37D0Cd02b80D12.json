@@ -9,5 +9,11 @@
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
-  "displayName": "WBTC"
+  "displayName": "WBTC",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
 }

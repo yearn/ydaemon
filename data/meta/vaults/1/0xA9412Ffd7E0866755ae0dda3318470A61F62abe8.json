@@ -1,20 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve ibJPY",
+  "comment": "Balancer FUD Auto-Compounding",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 21.62,
+  "order": 18.5,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve ibJPY",
+  "displayName": "Balancer FUD Auto-Compounding",
   "classification": {
-    "isAutomated": false,
+    "isAutomated": true,
     "isPool": true,
-    "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "JPY"
+    "poolProvider": "Balancer",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
   }
 }

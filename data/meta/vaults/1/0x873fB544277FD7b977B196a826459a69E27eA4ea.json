@@ -9,5 +9,10 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "RAI"
+  "displayName": "RAI",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Unstable"
+  }
 }

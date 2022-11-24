@@ -49,6 +49,12 @@ func buildVaultName(
 	if name == "" {
 		name = formatedName
 	}
+	if displayName == "" && strings.HasSuffix(name, " Auto-Compounding yVault") {
+		displayName = strings.Replace(name, " Auto-Compounding yVault", "", -1)
+	}
+	if strings.HasSuffix(displayName, " Auto-Compounding") {
+		displayName = strings.Replace(displayName, " Auto-Compounding", "", -1)
+	}
 
 	return name, displayName, formatedName
 }

@@ -5,6 +5,7 @@
   "description": "This token represents a Curve liquidity pool. The curve gauge for this pool has been [killed](https://gov.curve.fi/t/the-curve-emergency-dao-has-killed-the-usdm-gauge/2307) by the Curve Emergeny DAO, thus this curve pool will not get any CRV rewards. This metapool contains 3Crv (DAI, USDC, and USDT) and USDM (USD Mochi).",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/factory/23",
+  "type": "Curve",
   "localization": {
     "en": {
       "description": "This token represents a Curve liquidity pool. The curve gauge for this pool has been [killed](https://gov.curve.fi/t/the-curve-emergency-dao-has-killed-the-usdm-gauge/2307) by the Curve Emergeny DAO, thus this curve pool will not get any CRV rewards. This metapool contains 3Crv (DAI, USDC, and USDT) and USDM (USD Mochi)."

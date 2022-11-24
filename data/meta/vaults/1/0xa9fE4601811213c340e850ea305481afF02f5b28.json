@@ -12,5 +12,11 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "ETH"
+  "displayName": "ETH",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
 }

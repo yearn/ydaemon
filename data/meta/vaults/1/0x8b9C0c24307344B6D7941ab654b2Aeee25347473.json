@@ -9,5 +9,12 @@
   "allowZapIn": false,
   "allowZapOut": false,
   "retired": false,
-  "displayName": "Curve EURN"
+  "displayName": "Curve EURN",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "EUR"
+  }
 }

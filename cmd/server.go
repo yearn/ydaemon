@@ -102,6 +102,7 @@ func NewRouter() *gin.Engine {
 		GET(router, `info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
 		GET(router, `:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
+		GET(router, `:chainID/vaults/apy/:address`, c.GetVaultsVisionAPY)
 		GET(router, `:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
 	}
 

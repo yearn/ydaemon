@@ -45,8 +45,16 @@ func (b *Float) SetString(s string) *Float {
 	b.Float.SetString(s)
 	return b
 }
+func (b *Float) SetInt64(s int64) *Float {
+	b.Float.SetInt64(s)
+	return b
+}
 func (b *Float) SetInt(s *Int) *Float {
 	b.Float.SetInt(ToInt(s))
+	return b
+}
+func (b *Float) SetUint64(s uint64) *Float {
+	b.Float.SetUint64(s)
 	return b
 }
 func (b *Float) Add(x *Float, y *Float) *Float {
@@ -77,6 +85,9 @@ func (b *Float) Quo(x *Float, y *Float) *Float {
 	b.Float.Quo(xAsFloat, yAsFloat)
 	return b
 }
+func (b *Float) Div(x *Float, y *Float) *Float {
+	return b.Quo(x, y)
+}
 func (b *Float) Int() *Int {
 	i, _ := b.Float.Int(nil)
 	return SetInt(i)
@@ -93,6 +104,12 @@ func (b *Float) Safe(s *Float, defaultValue ...*Float) *Float {
 		return defaultValue[0]
 	}
 	return s
+}
+func (b *Float) String() string {
+	if b == nil {
+		return `0`
+	}
+	return b.Text('f', -1)
 }
 
 func (b Float) MarshalJSON() ([]byte, error) {

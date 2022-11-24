@@ -140,3 +140,28 @@ type TGraphQLHarvestRequestForOneVault struct {
 		Loss      string `json:"loss"`
 	} `json:"harvests"`
 }
+
+//TFIFOForUserForVault is the request for the graphql query when we ask for the earnings for one specific vault
+type TFIFOForUserForVault struct {
+	AccountVaultPositions []struct {
+		Updates []struct {
+			Deposits       string
+			Withdrawals    string
+			SharesBurnt    string
+			SharesMinted   string
+			SharesSent     string
+			SharesReceived string
+			TokensSent     string
+			TokensReceived string
+		} `json:"updates"`
+		Vault struct {
+			Id         string `json:"id"`
+			ShareToken struct {
+				Decimals int64 `json:"decimals"`
+			} `json:"shareToken"`
+			LatestUpdate struct {
+				PricePerShare string `json:"pricePerShare"`
+			} `json:"latestUpdate"`
+		} `json:"vault"`
+	}
+}

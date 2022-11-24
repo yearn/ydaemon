@@ -7,12 +7,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
-	"github.com/yearn/ydaemon/internal/utils/logs"
-	"github.com/yearn/ydaemon/internal/utils/models"
-	"github.com/yearn/ydaemon/internal/utils/types/bigNumber"
-	"github.com/yearn/ydaemon/internal/utils/types/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/models"
+	"github.com/yearn/ydaemon/common/types/common"
 )
 
 func graphQLRequestForUser(userAddress string, vaultAddresses []string) *graphql.Request {

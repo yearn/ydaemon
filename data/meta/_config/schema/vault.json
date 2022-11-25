@@ -29,9 +29,6 @@
 		"order": {
 			"type": "number"
 		},
-		"migrationAvailable": {
-			"type": "boolean"
-		},
 		"allowZapIn": {
 			"type": "boolean"
 		},
@@ -43,6 +40,9 @@
 		},
 		"zapOutWith": {
 			"type": "string"
+		},
+		"migrationAvailable": {
+			"type": "boolean"
 		},
 		"migrationContract": {
 			"type": "string",
@@ -110,5 +110,9 @@
 			}]
 		}
 	},
-	"required": ["classification"]
+	"required": ["classification", "migrationAvailable"],
+	"allOf": [{
+		"if": {"properties": {"migrationAvailable": {"const": true}}},
+		"then": {"required": ["migrationContract", "migrationTargetVault"]}
+	}]
 }

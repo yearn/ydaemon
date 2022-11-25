@@ -2,6 +2,7 @@
   "$schema": "vault",
   "comment": "Curve PAX pool, no deposits and not good yield so hiding it.",
   "hideAlways": true,
+  "migrationAvailable": false,
   "classification": {
     "isAutomated": false,
     "isPool": true,

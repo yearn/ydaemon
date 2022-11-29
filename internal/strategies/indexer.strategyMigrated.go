@@ -1,34 +1,36 @@
-package registries
+package strategies
 
 import (
 	"context"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
+var alreadyRunningIndexersStrategiesMigrated = make(map[uint64]map[ethcommon.Address]bool)
+
 /**************************************************************************************************
-** Watch for new vaults added to the registry. This function is called by the infinite loop in
-** indexNewVaultsWrapper. It uses the WS connection to listen to the events.
-** It will catch the new vaults and start all the subsequent processes to add them correctly in
-** yDaemon.
-** On errror, it will return the lastSyncedBlock, a boolean to indicate if we should retry and the
+** Watch for the StrategiesMigrated events in each vaults. This function is called by the infinite
+** loop in indexStrategyMigratedWrapper. It uses the WS connection to listen to the events.
+** It will catch the strategies added and start all the subsequent processes to add them correctly
+** in yDaemon. One process should be open for each vault.
+** On error, it will return the lastSyncedBlock, a boolean to indicate if we should retry and the
 ** error.
 **
+** This function is splitted in multiple functions to be able to handle the different versions of
+** the vaults, which have different events.
 ** Arguments:
 ** - chainID: the chain ID of the network we are listening to
-** - registryAddress: the address of the registry we are listening to
-** - registryVersion: the version of the registry we are listening to
+** - vaultAddress: the address of the vault we are listening to
+** - vaultVersion: the version of the vault we are listening to
 ** - lastSyncedBlock: the last block we have synced
 **
 ** Returns:
@@ -36,10 +38,10 @@ import (
 ** - shouldRetry: a boolean to indicate if we should retry
 ** - err: the error if any
 **************************************************************************************************/
-func indexNewVaults(
+func indexStrategyMigrated(
 	chainID uint64,
-	registryAddress ethcommon.Address,
-	registryVersion uint64,
+	vaultAddress ethcommon.Address,
+	vaultVersion string,
 	lastSyncedBlock uint64,
 ) (uint64, bool, error) {
 	/**********************************************************************************************
@@ -71,9 +73,9 @@ func indexNewVaults(
 	** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
 	** No error should happen here, but if it does, we just return.
 	**********************************************************************************************/
-	currentVault, _ := contracts.NewYregistryv2(registryAddress, client)
-	channel := make(chan *contracts.Yregistryv2NewVault)
-	watcher, err := currentVault.WatchNewVault(
+	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
+	channel := make(chan *contracts.Yvault043StrategyMigrated)
+	watcher, err := currentVault.WatchStrategyMigrated(
 		&bind.WatchOpts{Start: &currentBlock},
 		channel,
 		nil,
@@ -93,27 +95,33 @@ func indexNewVaults(
 		select {
 		case log := <-channel:
 			lastSyncedBlock = log.Raw.BlockNumber
-			newVault := utils.TVaultsFromRegistry{
-				RegistryAddress: registryAddress,
-				VaultsAddress:   log.Vault,
-				TokenAddress:    log.Token,
-				APIVersion:      log.ApiVersion,
-				BlockNumber:     log.Raw.BlockNumber,
-				Activation:      log.Raw.BlockNumber,
-				ManagementFee:   200,
-				BlockHash:       log.Raw.BlockHash,
-				TxIndex:         log.Raw.TxIndex,
-				LogIndex:        log.Raw.Index,
-				Type:            "Standard",
-			}
-			logs.Info(`New Vault detected by indexer!`)
-			logs.Pretty(newVault)
+			oldAddress := log.OldVersion
+			newAddress := log.NewVersion
 
-			newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
-				newVault.VaultsAddress: newVault,
+			oldStrategy, ok := FindStrategy(chainID, oldAddress)
+			if !ok {
+				oldStrategy = &TStrategy{}
 			}
-			vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
-			vaults.ProcessNewVault(chainID, newVaultList)
+			newStrategy := TStrategyAdded{
+				VaultAddress:      vaultAddress,
+				VaultVersion:      vaultVersion,
+				StrategyAddress:   newAddress,
+				TxHash:            log.Raw.TxHash,
+				DebtRatio:         oldStrategy.DebtRatio,
+				MaxDebtPerHarvest: oldStrategy.MaxDebtPerHarvest,
+				MinDebtPerHarvest: oldStrategy.MinDebtPerHarvest,
+				PerformanceFee:    oldStrategy.PerformanceFee,
+				DebtLimit:         oldStrategy.DebtLimit,
+				RateLimit:         oldStrategy.RateLimit,
+				BlockNumber:       log.Raw.BlockNumber,
+				TxIndex:           log.Raw.TxIndex,
+				LogIndex:          log.Raw.Index,
+			}
+
+			logs.Info(`New Strategy Migrated >= V0.3.2 detected by indexer!`)
+			logs.Pretty(newStrategy)
+
+			processNewStrategies(chainID, []TStrategyAdded{newStrategy})
 		case err := <-watcher.Err():
 			return lastSyncedBlock, true, err
 		}
@@ -123,23 +131,23 @@ func indexNewVaults(
 /**************************************************************************************************
 ** As WS connections can be lost, can be instable or can just not be supported by the node, we need
 ** to have a fallback to the regular RPC connection.
-** This function is called by the infinite loop and will try to index the new vaults using the WS
-** but will also provide a way to catch the new vaults via the RPC connection.
+** This function is called by the infinite loop and will try to index the strategies added using the
+** WS but will also provide a way to catch the strategies added via the RPC connection.
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are listening to
-** - registryAddress: the address of the registry we are listening to
-** - registryVersion: the version of the registry we are listening to
-** - registryActivation: the activation block of the registry
+** - vaultAddress: the address of the vault we are listening to
+** - vaultActivation: the activation block of the vault (start block to listen to events)
+** - vaultVersion: the version of the vault we are listening to
 ** - delay: the delay between two standard RPC retries
 **
 ** Returns nothing
 **************************************************************************************************/
-func indexNewVaultsWrapper(
+func indexStrategyMigratedWrapper(
 	chainID uint64,
-	registryAddress ethcommon.Address,
-	registryVersion uint64,
-	registryActivation uint64,
+	vaultAddress ethcommon.Address,
+	vaultActivation uint64,
+	vaultVersion string,
 	delay time.Duration,
 ) {
 	retrySleepInBetween := []time.Duration{
@@ -158,22 +166,22 @@ func indexNewVaultsWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	currentRetryIndex := 0
-	lastSyncedBlock := registryActivation
+	lastSyncedBlock := vaultActivation
 	shouldRetry := true
 	err := error(nil)
 	for {
-		lastSyncedBlock, shouldRetry, err = indexNewVaults(
+		lastSyncedBlock, shouldRetry, err = indexStrategyMigrated(
 			chainID,
-			registryAddress,
-			registryVersion,
+			vaultAddress,
+			vaultVersion,
 			lastSyncedBlock,
 		)
 		if err != nil {
 			traces.
-				Capture(`error`, `error while indexing NewVault from registry `+registryAddress.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`registry`).
+				Capture(`error`, `error while indexing StrategiesMigrated from registry `+vaultAddress.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`registryAddress`, registryAddress.Hex()).
+				SetTag(`vaultAddress`, vaultAddress.Hex()).
 				Send()
 		}
 		if !shouldRetry {
@@ -194,18 +202,19 @@ func indexNewVaultsWrapper(
 	**********************************************************************************************/
 	if delay > 0 {
 		for {
-			vaultsList := []utils.TVaultsFromRegistry{}
-			filterNewVaults(chainID, common.FromAddress(registryAddress), registryVersion, lastSyncedBlock, &vaultsList, nil)
-			uniqueVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
-			for _, v := range vaultsList {
-				uniqueVaultsList[v.VaultsAddress] = v
-				if v.BlockNumber > lastSyncedBlock {
-					lastSyncedBlock = v.BlockNumber
-				}
-			}
-			vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
+			asyncStrategiesForVaults := &sync.Map{}
+			strategiesAdded := getStrategiesAdded(
+				chainID,
+				vaultAddress,
+				lastSyncedBlock,
+				vaultVersion,
+				asyncStrategiesForVaults,
+				nil,
+			)
+			processNewStrategies(chainID, strategiesAdded)
+
 			if shouldRetry {
-				indexNewVaultsWrapper(chainID, registryAddress, registryVersion, lastSyncedBlock, 0)
+				indexStrategyMigratedWrapper(chainID, vaultAddress, lastSyncedBlock, vaultVersion, 0)
 				if delay > 60 {
 					time.Sleep(delay - 1*time.Minute)
 				}
@@ -216,10 +225,19 @@ func indexNewVaultsWrapper(
 	}
 }
 
-func IndexNewVaults(chainID uint64) {
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
-		go indexNewVaultsWrapper(chainID, registry.Address.ToAddress(), registry.Version, registry.Activation, 1*time.Minute)
+func IndexStrategyMigrated(chainID uint64, vaultsMap map[ethcommon.Address]utils.TVaultsFromRegistry) {
+	if alreadyRunningIndexersStrategiesMigrated[chainID] == nil {
+		alreadyRunningIndexersStrategiesMigrated[chainID] = make(map[ethcommon.Address]bool)
 	}
 
-	logs.Success(`Indexer Daemon has started. Let's wait for the first vaults to be indexed.`)
+	for vaultAddress, vault := range vaultsMap {
+		if alreadyRunningIndexersStrategiesMigrated[chainID][vaultAddress] {
+			continue
+		}
+		alreadyRunningIndexersStrategiesMigrated[chainID][vaultAddress] = true
+		go indexStrategyMigratedWrapper(chainID, vaultAddress, vault.Activation, vault.APIVersion, 1*time.Minute)
+
+	}
+
+	logs.Success(`StrategiesMigrated Indexer Daemon has started. Let's wait for the first vaults to be indexed.`)
 }

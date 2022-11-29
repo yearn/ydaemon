@@ -93,8 +93,10 @@ func getStrategiesAdded(
 	vaultVersion string,
 	asyncStrategiesForVaults *sync.Map,
 	wg *sync.WaitGroup,
-) {
-	defer wg.Done()
+) (strategiesAdded []TStrategyAdded) {
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.GetRPC(chainID)
 	switch vaultVersion {
@@ -106,8 +108,9 @@ func getStrategiesAdded(
 					continue
 				}
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				newStrategyAdded := TStrategyAdded{
 					VaultAddress:    vaultAddress,
+					VaultVersion:    vaultVersion,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
 					BlockNumber:     log.Event.Raw.BlockNumber,
@@ -116,7 +119,9 @@ func getStrategiesAdded(
 					DebtLimit:       bigNumber.SetInt(log.Event.DebtLimit),
 					RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
 					PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
-				})
+				}
+				strategiesAdded = append(strategiesAdded, newStrategyAdded)
+				asyncStrategiesForVaults.Store(eventKey, newStrategyAdded)
 			}
 		}
 	case `0.3.0`, `0.3.1`:
@@ -127,8 +132,9 @@ func getStrategiesAdded(
 					continue
 				}
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				newStrategyAdded := TStrategyAdded{
 					VaultAddress:    vaultAddress,
+					VaultVersion:    vaultVersion,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
 					BlockNumber:     log.Event.Raw.BlockNumber,
@@ -137,10 +143,12 @@ func getStrategiesAdded(
 					DebtRatio:       bigNumber.SetInt(log.Event.DebtRatio),
 					RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
 					PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
-				})
+				}
+				strategiesAdded = append(strategiesAdded, newStrategyAdded)
+				asyncStrategiesForVaults.Store(eventKey, newStrategyAdded)
 			}
 		}
-	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+	default: //case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
 		vault, _ := contracts.NewYvault043(vaultAddress, client)
 		if log, err := vault.FilterStrategyAdded(&bind.FilterOpts{Start: vaultActivation}, nil); err == nil {
 			for log.Next() {
@@ -149,8 +157,9 @@ func getStrategiesAdded(
 				}
 
 				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				newStrategyAdded := TStrategyAdded{
 					VaultAddress:      vaultAddress,
+					VaultVersion:      vaultVersion,
 					StrategyAddress:   log.Event.Strategy,
 					TxHash:            log.Event.Raw.TxHash,
 					BlockNumber:       log.Event.Raw.BlockNumber,
@@ -160,10 +169,14 @@ func getStrategiesAdded(
 					MaxDebtPerHarvest: bigNumber.SetInt(log.Event.MaxDebtPerHarvest),
 					MinDebtPerHarvest: bigNumber.SetInt(log.Event.MinDebtPerHarvest),
 					PerformanceFee:    bigNumber.SetInt(log.Event.PerformanceFee),
-				})
+				}
+				strategiesAdded = append(strategiesAdded, newStrategyAdded)
+				asyncStrategiesForVaults.Store(eventKey, newStrategyAdded)
+
 			}
 		}
 	}
+	return strategiesAdded
 }
 
 /**********************************************************************************************
@@ -240,7 +253,6 @@ func RetrieveAllStrategiesAdded(
 			strategies[vaultAddressParsed] = make(map[common.Address]TStrategyAdded)
 		}
 		valueParsed := value.(TStrategyAdded)
-		valueParsed.VaultVersion = vaults[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
 		allStrategiesList = append(allStrategiesList, valueParsed)
 		count++
@@ -271,6 +283,7 @@ func RetrieveAllStrategiesAdded(
 		oldStrategy := strategies[vaultAddressParsed][oldStrategyAddressParsed]
 		newStrategy := TStrategyAdded{
 			VaultAddress:      vaultAddressParsed,
+			VaultVersion:      oldStrategy.VaultVersion,
 			StrategyAddress:   newStrategyAddressParsed,
 			TxHash:            value.(TStrategyMigrated).TxHash,
 			DebtRatio:         oldStrategy.DebtRatio,
@@ -283,7 +296,6 @@ func RetrieveAllStrategiesAdded(
 			TxIndex:           value.(TStrategyMigrated).TxIndex,
 			LogIndex:          value.(TStrategyMigrated).LogIndex,
 		}
-		newStrategy.VaultVersion = vaults[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy
 		allStrategiesList = append(allStrategiesList, newStrategy)
 		count++

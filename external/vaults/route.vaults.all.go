@@ -17,7 +17,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query("hideAlways"), "false"))
 	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
 	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
-	// strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
+	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
@@ -54,7 +54,17 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			if withStrategiesRisk {
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 			}
-			newVault.Strategies = append(newVault.Strategies, externalStrategy)
+
+			if strategiesCondition == `absolute` &&
+				externalStrategy.Details.InQueue &&
+				externalStrategy.Details.IsActive &&
+				!externalStrategy.Details.TotalDebt.IsZero() {
+				newVault.Strategies = append(newVault.Strategies, externalStrategy)
+			} else if strategiesCondition == `inQueue` && externalStrategy.Details.InQueue {
+				newVault.Strategies = append(newVault.Strategies, externalStrategy)
+			} else if strategiesCondition == `debtLimit` && externalStrategy.Details.DebtLimit == 0 {
+				newVault.Strategies = append(newVault.Strategies, externalStrategy)
+			}
 		}
 
 		data = append(data, *newVault)

@@ -116,3 +116,18 @@ func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 	}
 	return v
 }
+func (v *TStrategy) ShouldBeIncluded(condition string) bool {
+	if condition == `absolute` &&
+		v.Details.InQueue &&
+		v.Details.IsActive &&
+		v.Details.TotalDebt.Gt(bigNumber.Zero) {
+		return true
+	} else if condition == `inQueue` && v.Details.InQueue {
+		return true
+	} else if condition == `debtLimit` && v.Details.DebtLimit > 0 {
+		return true
+	} else if condition == `debtRatio` && (v.Details.DebtRatio > 0 || v.Details.DebtLimit > 0) {
+		return true
+	}
+	return false
+}

@@ -55,14 +55,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 			}
 
-			if strategiesCondition == `absolute` &&
-				externalStrategy.Details.InQueue &&
-				externalStrategy.Details.IsActive &&
-				!externalStrategy.Details.TotalDebt.IsZero() {
-				newVault.Strategies = append(newVault.Strategies, externalStrategy)
-			} else if strategiesCondition == `inQueue` && externalStrategy.Details.InQueue {
-				newVault.Strategies = append(newVault.Strategies, externalStrategy)
-			} else if strategiesCondition == `debtLimit` && externalStrategy.Details.DebtLimit == 0 {
+			if externalStrategy.ShouldBeIncluded(strategiesCondition) {
 				newVault.Strategies = append(newVault.Strategies, externalStrategy)
 			}
 		}

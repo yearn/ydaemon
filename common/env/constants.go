@@ -147,4 +147,5 @@ var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
 // If the strategy is `absolute`, an active strategy will be isActive, inQueue and with a debt > 0
 // If the strategy is `inQueue`, we will check if the vault has the strategy in it's withdrawal queue
 // If the strategy is `debtLimit`, we will check if the vault has allocated a debtLimit to the strategy
-var STRATEGIES_CONDITIONS = []string{`inQueue`, `debtLimit`, `absolute`}
+// If the strategy is `debtRatio`, we will check if the vault has allocated a debtRatio to the strategy
+var STRATEGIES_CONDITIONS = []string{`inQueue`, `debtLimit`, `debtRatio`, `absolute`}

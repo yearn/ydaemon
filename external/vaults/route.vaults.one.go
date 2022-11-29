@@ -37,8 +37,13 @@ func (y Controller) GetVault(c *gin.Context) {
 	vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
 	for _, strategy := range vaultStrategies {
 		var externalStrategy *TStrategy
+		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
+		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
+			continue
+		}
+
 		if withStrategiesDetails {
-			externalStrategy = NewStrategy().AssignTStrategy(strategy)
+			externalStrategy = strategyWithDetails
 		} else {
 			externalStrategy = &TStrategy{
 				Address:     common.FromAddress(strategy.Address),
@@ -49,10 +54,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		if withStrategiesRisk {
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 		}
-
-		if externalStrategy.ShouldBeIncluded(strategiesCondition) {
-			newVault.Strategies = append(newVault.Strategies, externalStrategy)
-		}
+		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}
 
 	c.JSON(http.StatusOK, newVault)

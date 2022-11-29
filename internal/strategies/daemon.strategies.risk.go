@@ -20,6 +20,14 @@ import (
 func excludeNameLike(strat models.TStrategyList, group TStrategyGroupFromRisk) bool {
 	if len(group.Criteria.Exclude) > 0 {
 		for _, stratExclude := range group.Criteria.Exclude {
+			// temporary fix to handle substring inclusion
+			if len(group.Criteria.NameLike) > 0 {
+				for _, nameLike := range group.Criteria.NameLike {
+					if strings.Contains(strings.ToLower(nameLike), strings.ToLower(stratExclude)) && includeNameLike(strat, group) {
+						return false
+					}
+				}
+			}
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
 				return true
 			}

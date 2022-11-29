@@ -15,4 +15,5 @@ func ProcessNewVault(chainID uint64, vaultsMap map[common.Address]utils.TVaultsF
 	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 	go strategies.IndexStrategyAdded(chainID, vaultsMap)
+	go strategies.IndexStrategyMigrated(chainID, vaultsMap)
 }

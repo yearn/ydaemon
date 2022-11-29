@@ -16,7 +16,7 @@ import (
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
-var alreadyRunningIndexers = make(map[uint64]map[ethcommon.Address]bool)
+var alreadyRunningIndexersStrategiesAdded = make(map[uint64]map[ethcommon.Address]bool)
 
 /**************************************************************************************************
 ** Watch for the StrategyAdded events in each vaults. This function is called by the infinite loop
@@ -386,15 +386,15 @@ func indexStrategyAddedWrapper(
 }
 
 func IndexStrategyAdded(chainID uint64, vaultsMap map[ethcommon.Address]utils.TVaultsFromRegistry) {
-	if alreadyRunningIndexers[chainID] == nil {
-		alreadyRunningIndexers[chainID] = make(map[ethcommon.Address]bool)
+	if alreadyRunningIndexersStrategiesAdded[chainID] == nil {
+		alreadyRunningIndexersStrategiesAdded[chainID] = make(map[ethcommon.Address]bool)
 	}
 
 	for vaultAddress, vault := range vaultsMap {
-		if alreadyRunningIndexers[chainID][vaultAddress] {
+		if alreadyRunningIndexersStrategiesAdded[chainID][vaultAddress] {
 			continue
 		}
-		alreadyRunningIndexers[chainID][vaultAddress] = true
+		alreadyRunningIndexersStrategiesAdded[chainID][vaultAddress] = true
 		go indexStrategyAddedWrapper(chainID, vaultAddress, vault.Activation, vault.APIVersion, 1*time.Minute)
 
 	}

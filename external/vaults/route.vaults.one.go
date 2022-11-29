@@ -23,7 +23,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		return
 	}
 
-	// strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
+	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	currentVault, ok := vaults.FindVault(chainID, address)
@@ -49,7 +49,17 @@ func (y Controller) GetVault(c *gin.Context) {
 		if withStrategiesRisk {
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 		}
-		newVault.Strategies = append(newVault.Strategies, externalStrategy)
+
+		if strategiesCondition == `absolute` &&
+			externalStrategy.Details.InQueue &&
+			externalStrategy.Details.IsActive &&
+			!externalStrategy.Details.TotalDebt.IsZero() {
+			newVault.Strategies = append(newVault.Strategies, externalStrategy)
+		} else if strategiesCondition == `inQueue` && externalStrategy.Details.InQueue {
+			newVault.Strategies = append(newVault.Strategies, externalStrategy)
+		} else if strategiesCondition == `debtLimit` && externalStrategy.Details.DebtLimit == 0 {
+			newVault.Strategies = append(newVault.Strategies, externalStrategy)
+		}
 	}
 
 	c.JSON(http.StatusOK, newVault)

@@ -150,3 +150,14 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 func StringToBool(str string) bool {
 	return str == "true"
 }
+
+func GetHumanizedValue(
+	amount *bigNumber.Int,
+	decimals int,
+	price *bigNumber.Int,
+) float64 {
+	_, humanizedValue := FormatAmount(amount.String(), decimals)
+	_, humanizedPrice := FormatAmount(price.String(), 6)
+	fHumanizedValue, _ := bigNumber.NewFloat().Mul(humanizedValue, humanizedPrice).Float64()
+	return fHumanizedValue
+}

@@ -71,6 +71,8 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 
 	earnedMap := make(map[string]*TEarned)
 	listOfVaults := response.AccountVaultPositions
+	totalRealizedGainsUSD := 0.0
+	totalUnrealizedGainsUSD := 0.0
 	for _, currentVault := range listOfVaults {
 		vaultAddress := common.HexToAddress(currentVault.Vault.Id)
 		pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
@@ -223,13 +225,26 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 			unrealizedGains.Add(unrealizedGains, gain)
 		}
 
+		token, _ := tokens.FindUnderlyingForVault(chainID, vaultAddress)
+		tokenPrice, _ := prices.FindPrice(chainID, vaultAddress)
+		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)
+		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice)
+
 		earnedMap[vaultAddress.Hex()] = &TEarned{
-			RealizedGains:   realizedGains.String(),
-			UnrealizedGains: unrealizedGains.String(),
+			RealizedGains:      realizedGains.String(),
+			RealizedGainsUSD:   realizedGainsUSD,
+			UnrealizedGains:    unrealizedGains.String(),
+			UnrealizedGainsUSD: unrealizedGainsUSD,
 		}
+		totalRealizedGainsUSD += realizedGainsUSD
+		totalUnrealizedGainsUSD += unrealizedGainsUSD
 	}
 
-	c.JSON(http.StatusOK, earnedMap)
+	c.JSON(http.StatusOK, gin.H{
+		`totalRealizedGainsUSD`:   totalRealizedGainsUSD,
+		`totalUnrealizedGainsUSD`: totalUnrealizedGainsUSD,
+		`earned`:                  earnedMap,
+	})
 }
 
 //GetEarnedPerUser will, for a given chainID, return the amount earned by an user in all vaults

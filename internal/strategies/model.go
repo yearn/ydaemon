@@ -55,6 +55,7 @@ type TStrategy struct {
 	HealthCheckAddress      ethcommon.Address       `json:"healthCheckAddress"`
 	VaultVersion            string                  `json:"vaultVersion"`
 	Name                    string                  `json:"name"`
+	DisplayName             string                  `json:"displayName"`
 	Description             string                  `json:"description"`
 	APIVersion              string                  `json:"apiVersion"`
 	Protocols               []string                `json:"protocols"`

@@ -109,6 +109,7 @@ type TExternalVault struct {
 	Category          string                  `json:"category"`
 	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
+	SafetyScore       float64                 `json:"safetyScore"`
 	Endorsed          bool                    `json:"endorsed"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             tokens.TERC20Token      `json:"token"`
@@ -188,4 +189,33 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	}
 
 	return v
+}
+
+func (v *TExternalVault) ComputeRiskScore() float64 {
+	totalRiskScore := bigNumber.NewFloat(0)
+	for _, strat := range v.Strategies {
+		strategyScore := (strat.Risk.AuditScore +
+			strat.Risk.CodeReviewScore +
+			strat.Risk.ComplexityScore +
+			strat.Risk.LongevityImpact +
+			strat.Risk.ProtocolSafetyScore +
+			strat.Risk.TVLImpact +
+			strat.Risk.TeamKnowledgeScore +
+			strat.Risk.TestingScore)
+
+		totalRiskScore = bigNumber.NewFloat(0).Add(
+			totalRiskScore,
+			bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(float64(strategyScore/8)),
+				strat.Risk.Allocation.CurrentTVL,
+			),
+		)
+	}
+
+	vaultRiskScore, _ := bigNumber.NewFloat(0).Div(
+		totalRiskScore,
+		bigNumber.NewFloat(v.TVL.TVL),
+	).Float64()
+
+	return vaultRiskScore
 }

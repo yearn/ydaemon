@@ -12,14 +12,13 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-//GetAllVaults will, for a given chainID, return a list of all vaults
+// GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
 	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query("hideAlways"), "false"))
 	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
 	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
 	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
 	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-	withStrategiesRisk := c.Query("strategiesRisk") == "withRisk"
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
@@ -49,6 +48,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 
 			if withStrategiesDetails {
 				externalStrategy = strategyWithDetails
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 			} else {
 				externalStrategy = &TStrategy{
 					Address:     common.FromAddress(strategy.Address),
@@ -56,13 +56,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 					Description: strategy.Description,
 				}
 			}
-			if withStrategiesRisk {
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
-			}
-
 			newVault.Strategies = append(newVault.Strategies, externalStrategy)
 		}
-		if withStrategiesRisk {
+		if withStrategiesDetails {
 			newVault.SafetyScore = newVault.ComputeRiskScore()
 		}
 

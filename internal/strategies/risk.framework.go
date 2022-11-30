@@ -3,7 +3,6 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -16,40 +15,6 @@ import (
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
-
-func excludeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.Exclude) > 0 {
-		for _, stratExclude := range group.Criteria.Exclude {
-			// temporary fix to handle substring inclusion
-			for _, nameLike := range group.Criteria.NameLike {
-				if strings.Contains(strings.ToLower(nameLike), strings.ToLower(stratExclude)) && includeNameLike(strat, group) {
-					return false
-				}
-			}
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func includeAddress(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	return helpers.Contains(group.Criteria.Strategies, common.FromAddress(strat.Address))
-}
-
-func includeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.NameLike) > 0 {
-		for _, nameLike := range group.Criteria.NameLike {
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
-				return true
-			} else if strings.Contains(strings.ToLower(strat.DisplayName), strings.ToLower(nameLike)) {
-				return true
-			}
-		}
-	}
-	return false
-}
 
 func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
 	tvl, _ := tvlUSDC.Float32()
@@ -116,17 +81,31 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 
 func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRisk {
 	groups := ListStrategiesRiskGroups(chainID)
-	var stratGroup *TStrategyGroupFromRisk
 	for _, group := range groups {
-		if excludeNameLike(strategy, *group) {
+		// check if nameLike and exclude intersect
+		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
+			for _, nameLike := range group.Criteria.NameLike {
+				// if the nameLike is more specific
+				if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) &&
+					helpers.ContainsSubString(group.Criteria.Exclude, nameLike) {
+					return group
+				}
+			}
+		}
+		// check address
+		if helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
+			return group
+		}
+		// check exclude
+		if helpers.ContainsSubString(group.Criteria.Exclude, strategy.Name) {
 			continue
 		}
-		if includeAddress(strategy, *group) || includeNameLike(strategy, *group) {
-			stratGroup = group
-			break
+		// check nameLike
+		if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) {
+			return group
 		}
 	}
-	return stratGroup
+	return nil
 }
 
 func getDefaultRiskGroup() TStrategyFromRisk {

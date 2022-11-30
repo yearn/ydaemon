@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -20,7 +21,7 @@ type TVaultHarvest struct {
 	LossValue       float64 `json:"lossValue"`
 }
 
-//TExternalVaultTVL is the struct containing the information about the TVL of a vault.
+// TExternalVaultTVL is the struct containing the information about the TVL of a vault.
 type TExternalVaultTVL struct {
 	TotalAssets          *bigNumber.Int `json:"total_assets"`
 	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
@@ -194,19 +195,19 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 func (v *TExternalVault) ComputeRiskScore() float64 {
 	totalRiskScore := bigNumber.NewFloat(0)
 	for _, strat := range v.Strategies {
-		strategyScore := (strat.Risk.AuditScore +
-			strat.Risk.CodeReviewScore +
-			strat.Risk.ComplexityScore +
-			strat.Risk.LongevityImpact +
-			strat.Risk.ProtocolSafetyScore +
-			strat.Risk.TVLImpact +
-			strat.Risk.TeamKnowledgeScore +
-			strat.Risk.TestingScore)
-
+		scores := stats.LoadRawData([]int{
+			strat.Risk.AuditScore,
+			strat.Risk.CodeReviewScore,
+			strat.Risk.ComplexityScore,
+			strat.Risk.ProtocolSafetyScore,
+			strat.Risk.TeamKnowledgeScore,
+			strat.Risk.TestingScore,
+		})
+		strategyScore, _ := stats.Median(scores)
 		totalRiskScore = bigNumber.NewFloat(0).Add(
 			totalRiskScore,
 			bigNumber.NewFloat(0).Mul(
-				bigNumber.NewFloat(float64(strategyScore/8)),
+				bigNumber.NewFloat(strategyScore),
 				bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt),
 			),
 		)

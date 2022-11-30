@@ -117,7 +117,9 @@ func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 	return v
 }
 func (v *TStrategy) ShouldBeIncluded(condition string) bool {
-	if condition == `absolute` &&
+	if condition == `all` {
+		return true
+	} else if condition == `absolute` &&
 		v.Details.InQueue &&
 		v.Details.IsActive &&
 		v.Details.TotalDebt.Gt(bigNumber.Zero) {

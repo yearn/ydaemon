@@ -3,7 +3,6 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -16,40 +15,6 @@ import (
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
-
-func excludeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.Exclude) > 0 {
-		for _, stratExclude := range group.Criteria.Exclude {
-			// temporary fix to handle substring inclusion
-			for _, nameLike := range group.Criteria.NameLike {
-				if strings.Contains(strings.ToLower(nameLike), strings.ToLower(stratExclude)) && includeNameLike(strat, group) {
-					return false
-				}
-			}
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func includeAddress(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	return helpers.Contains(group.Criteria.Strategies, common.FromAddress(strat.Address))
-}
-
-func includeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.NameLike) > 0 {
-		for _, nameLike := range group.Criteria.NameLike {
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
-				return true
-			} else if strings.Contains(strings.ToLower(strat.DisplayName), strings.ToLower(nameLike)) {
-				return true
-			}
-		}
-	}
-	return false
-}
 
 func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
 	tvl, _ := tvlUSDC.Float32()
@@ -118,12 +83,24 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 	groups := ListStrategiesRiskGroups(chainID)
 	var stratGroup *TStrategyGroupFromRisk
 	for _, group := range groups {
-		if excludeNameLike(strategy, *group) {
-			continue
-		}
-		if includeAddress(strategy, *group) || includeNameLike(strategy, *group) {
-			stratGroup = group
-			break
+		// check if nameLike and exclude intersects
+		// in this case the nameLike should be more specific than the exclude
+		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
+			if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) {
+				stratGroup = group
+				break
+			}
+		} else {
+			// check exclude
+			if helpers.ContainsSubString(group.Criteria.Exclude, strategy.Name) {
+				continue
+			}
+			// check nameLike and addresses
+			if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) ||
+				helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
+				stratGroup = group
+				break
+			}
 		}
 	}
 	return stratGroup

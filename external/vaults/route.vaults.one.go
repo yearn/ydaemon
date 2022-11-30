@@ -57,5 +57,9 @@ func (y Controller) GetVault(c *gin.Context) {
 		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}
 
+	if withStrategiesRisk {
+		newVault.SafetyScore = newVault.ComputeRiskScore()
+	}
+
 	c.JSON(http.StatusOK, newVault)
 }

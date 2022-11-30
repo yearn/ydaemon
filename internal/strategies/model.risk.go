@@ -61,11 +61,16 @@ var _strategyRiskGroupMap = make(map[uint64]map[string]*TStrategyGroupFromRisk)
 /**********************************************************************************************
 ** ListStrategiesRiskGroups will, for a given chainID, return the list of all the strategies
 ** groups stored in the _strategyRiskGroupMap.
+** The Inactive group will always be fetched first.
 **********************************************************************************************/
 func ListStrategiesRiskGroups(chainID uint64) []*TStrategyGroupFromRisk {
 	var groups []*TStrategyGroupFromRisk
 	for _, group := range _strategyRiskGroupMap[chainID] {
-		groups = append(groups, group)
+		if group.Label == `Inactive` {
+			groups = append([]*TStrategyGroupFromRisk{group}, groups...)
+		} else {
+			groups = append(groups, group)
+		}
 	}
 	return groups
 }

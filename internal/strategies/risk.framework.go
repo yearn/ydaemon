@@ -81,29 +81,31 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 
 func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRisk {
 	groups := ListStrategiesRiskGroups(chainID)
-	var stratGroup *TStrategyGroupFromRisk
 	for _, group := range groups {
-		// check if nameLike and exclude intersects
-		// in this case the nameLike should be more specific than the exclude
+		// check if nameLike and exclude intersect
 		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
-			if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) {
-				stratGroup = group
-				break
-			}
-		} else {
-			// check exclude
-			if helpers.ContainsSubString(group.Criteria.Exclude, strategy.Name) {
-				continue
-			}
-			// check nameLike and addresses
-			if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) ||
-				helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
-				stratGroup = group
-				break
+			for _, nameLike := range group.Criteria.NameLike {
+				// if the nameLike is more specific
+				if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) &&
+					helpers.ContainsSubString(group.Criteria.Exclude, nameLike) {
+					return group
+				}
 			}
 		}
+		// check address
+		if helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
+			return group
+		}
+		// check exclude
+		if helpers.ContainsSubString(group.Criteria.Exclude, strategy.Name) {
+			continue
+		}
+		// check nameLike
+		if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) {
+			return group
+		}
 	}
-	return stratGroup
+	return nil
 }
 
 func getDefaultRiskGroup() TStrategyFromRisk {

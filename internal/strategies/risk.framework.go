@@ -43,6 +43,8 @@ func includeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
 		for _, nameLike := range group.Criteria.NameLike {
 			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
 				return true
+			} else if strings.Contains(strings.ToLower(strat.DisplayName), strings.ToLower(nameLike)) {
+				return true
 			}
 		}
 	}

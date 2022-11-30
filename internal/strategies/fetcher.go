@@ -203,7 +203,7 @@ func fetchBasicInformations(
 		}
 
 		if strategyFromMeta, ok := meta.GetMetaStrategy(chainID, common.FromAddress(stratAddress)); ok {
-			newStrategy.Name = strategyFromMeta.Name
+			newStrategy.DisplayName = strategyFromMeta.Name
 			newStrategy.Description = strategyFromMeta.Description
 			newStrategy.Protocols = strategyFromMeta.Protocols
 		}

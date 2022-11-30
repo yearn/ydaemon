@@ -1,15 +1,15 @@
 {
 	"$schema": "risks",
-	"label": "88mph deposit",
+	"label": "tripod",
 	"codeReviewScore": 3,
-	"testingScore": 3,
+	"testingScore": 2,
 	"auditScore": 5,
 	"protocolSafetyScore": 2,
-	"complexityScore": 2,
+	"complexityScore": 4,
 	"teamKnowledgeScore": 3,
 	"criteria": {
 		"nameLike": [
-			"MPH"
+			"tripod"
 		],
 		"strategies": [],
 		"exclude": []

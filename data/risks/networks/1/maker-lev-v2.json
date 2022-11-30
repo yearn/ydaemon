@@ -1,19 +1,19 @@
 {
 	"$schema": "risks",
-	"label": "Maker-lev",
-	"codeReviewScore": 2,
+	"label": "Maker-lev-v2",
+	"codeReviewScore": 3,
 	"testingScore": 2,
-	"auditScore": 4,
+	"auditScore": 5,
 	"protocolSafetyScore": 1,
 	"complexityScore": 4,
 	"teamKnowledgeScore": 2,
 	"criteria": {
 		"nameLike": [
-			"maker-lev"
+			"maker-lev-v2"
 		],
 		"strategies": [],
 		"exclude": [
-            "maker-lev-v2"
+			"maker-lev"
 		]
 	}
 }

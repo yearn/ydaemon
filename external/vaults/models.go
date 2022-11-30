@@ -207,14 +207,14 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 			totalRiskScore,
 			bigNumber.NewFloat(0).Mul(
 				bigNumber.NewFloat(float64(strategyScore/8)),
-				strat.Risk.Allocation.CurrentTVL,
+				bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt),
 			),
 		)
 	}
 
 	vaultRiskScore, _ := bigNumber.NewFloat(0).Div(
 		totalRiskScore,
-		bigNumber.NewFloat(v.TVL.TVL),
+		bigNumber.NewFloat().SetInt(v.TVL.TotalAssets),
 	).Float64()
 
 	return vaultRiskScore

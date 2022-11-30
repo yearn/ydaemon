@@ -1,19 +1,17 @@
 {
 	"$schema": "risks",
-	"label": "Maker-lev-v2",
+	"label": "tripod",
 	"codeReviewScore": 3,
 	"testingScore": 2,
 	"auditScore": 5,
-	"protocolSafetyScore": 1,
+	"protocolSafetyScore": 2,
 	"complexityScore": 4,
-	"teamKnowledgeScore": 2,
+	"teamKnowledgeScore": 3,
 	"criteria": {
 		"nameLike": [
-			"maker-lev-v2"
+			"tripod"
 		],
 		"strategies": [],
-		"exclude": [
-			"maker-lev"
-		]
+		"exclude": []
 	}
 }

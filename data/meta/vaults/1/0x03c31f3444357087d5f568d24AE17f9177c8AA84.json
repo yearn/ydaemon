@@ -1,0 +1,18 @@
+{
+  "$schema": "vault",
+  "comment": "Link 3.2 yVault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 205,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": true,
+  "displayName": "Link",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
+}

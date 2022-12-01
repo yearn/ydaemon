@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "3.0 Curve eCrv Vault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 200,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve eCrv",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

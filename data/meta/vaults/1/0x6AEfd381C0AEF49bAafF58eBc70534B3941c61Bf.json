@@ -1,0 +1,18 @@
+{
+  "$schema": "vault",
+  "comment": "Curve YFI-ETH Pool yVault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": true,
+  "order": 201,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": true,
+  "displayName": "Curve YFI-ETH Pool yVault",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "stability": "Volatile"
+  }
+}

@@ -13,6 +13,7 @@ type TStrategyGroupCritieria struct {
 }
 
 type TStrategyAllocation struct {
+	Status          string           `json:"status"`
 	CurrentTVL      *bigNumber.Float `json:"currentTVL"` // value in USDC
 	AvailableTVL    *bigNumber.Float `json:"availableTVL"`
 	CurrentAmount   *bigNumber.Float `json:"currentAmount"` // value in WANT
@@ -21,34 +22,35 @@ type TStrategyAllocation struct {
 
 type TStrategyGroupFromRisk struct {
 	Label               string                  `json:"label"`
-	AuditScore          float64                 `json:"auditScore"`
-	CodeReviewScore     float64                 `json:"codeReviewScore"`
-	ComplexityScore     float64                 `json:"complexityScore"`
-	ProtocolSafetyScore float64                 `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  float64                 `json:"teamKnowledgeScore"`
-	TestingScore        float64                 `json:"testingScore"`
+	AuditScore          int                     `json:"auditScore"`
+	CodeReviewScore     int                     `json:"codeReviewScore"`
+	ComplexityScore     int                     `json:"complexityScore"`
+	ProtocolSafetyScore int                     `json:"protocolSafetyScore"`
+	TeamKnowledgeScore  int                     `json:"teamKnowledgeScore"`
+	TestingScore        int                     `json:"testingScore"`
 	ChainID             uint64                  `json:"chainID"`
 	Criteria            TStrategyGroupCritieria `json:"criteria"`
 	Allocation          *TStrategyAllocation    `json:"allocation"`
 }
 
-type TStrategyFromRiskRiskScores struct {
-	TVLImpact           float64 `json:"TVLImpact"`
-	AuditScore          float64 `json:"auditScore"`
-	CodeReviewScore     float64 `json:"codeReviewScore"`
-	ComplexityScore     float64 `json:"complexityScore"`
-	LongevityImpact     float64 `json:"longevityImpact"`
-	ProtocolSafetyScore float64 `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  float64 `json:"teamKnowledgeScore"`
-	TestingScore        float64 `json:"testingScore"`
+type TStrategyFromRiskRiskDetails struct {
+	TVLImpact           int `json:"TVLImpact"`
+	AuditScore          int `json:"auditScore"`
+	CodeReviewScore     int `json:"codeReviewScore"`
+	ComplexityScore     int `json:"complexityScore"`
+	LongevityImpact     int `json:"longevityImpact"`
+	ProtocolSafetyScore int `json:"protocolSafetyScore"`
+	TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
+	TestingScore        int `json:"testingScore"`
 }
 
 type TStrategyFromRisk struct {
-	Address    common.Address              `json:"address"`
-	ChainID    uint64                      `json:"chainID"`
-	RiskGroup  string                      `json:"riskGroup"`
-	RiskScores TStrategyFromRiskRiskScores `json:"riskScores"`
-	Allocation *TStrategyAllocation        `json:"allocation"`
+	Address     common.Address               `json:"address"`
+	ChainID     uint64                       `json:"chainID"`
+	RiskGroup   string                       `json:"riskGroup"`
+	RiskScore   float64                      `json:"riskScore"`
+	RiskDetails TStrategyFromRiskRiskDetails `json:"riskDetails"`
+	Allocation  *TStrategyAllocation         `json:"allocation"`
 }
 
 /**********************************************************************************************

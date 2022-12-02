@@ -4,32 +4,38 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
+type TExternalStrategyRiskDetails struct {
+	TVLImpact           int `json:"TVLImpact"`
+	AuditScore          int `json:"auditScore"`
+	CodeReviewScore     int `json:"codeReviewScore"`
+	ComplexityScore     int `json:"complexityScore"`
+	LongevityImpact     int `json:"longevityImpact"`
+	ProtocolSafetyScore int `json:"protocolSafetyScore"`
+	TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
+	TestingScore        int `json:"testingScore"`
+}
+
 type TExternalStrategyRiskScore struct {
-	RiskGroup           string                          `json:"riskGroup"`
-	TVLImpact           int                             `json:"TVLImpact"`
-	AuditScore          int                             `json:"auditScore"`
-	CodeReviewScore     int                             `json:"codeReviewScore"`
-	ComplexityScore     int                             `json:"complexityScore"`
-	LongevityImpact     int                             `json:"longevityImpact"`
-	ProtocolSafetyScore int                             `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int                             `json:"teamKnowledgeScore"`
-	TestingScore        int                             `json:"testingScore"`
-	Allocation          *strategies.TStrategyAllocation `json:"allocation"`
+	RiskScore   float64                         `json:"riskScore"`
+	RiskGroup   string                          `json:"riskGroup"`
+	RiskDetails TExternalStrategyRiskDetails    `json:"riskDetails"`
+	Allocation  *strategies.TStrategyAllocation `json:"allocation"`
 }
 
 func NewRiskScore() *TExternalStrategyRiskScore {
 	return &TExternalStrategyRiskScore{}
 }
 func (v *TExternalStrategyRiskScore) AssignTStrategyFromRisk(internalStrategyRiskScore *strategies.TStrategyFromRisk) *TExternalStrategyRiskScore {
+	v.RiskScore = internalStrategyRiskScore.RiskScore
 	v.RiskGroup = internalStrategyRiskScore.RiskGroup
-	v.TVLImpact = int(internalStrategyRiskScore.RiskScores.TVLImpact)
-	v.AuditScore = int(internalStrategyRiskScore.RiskScores.AuditScore)
-	v.CodeReviewScore = int(internalStrategyRiskScore.RiskScores.CodeReviewScore)
-	v.ComplexityScore = int(internalStrategyRiskScore.RiskScores.ComplexityScore)
-	v.LongevityImpact = int(internalStrategyRiskScore.RiskScores.LongevityImpact)
-	v.ProtocolSafetyScore = int(internalStrategyRiskScore.RiskScores.ProtocolSafetyScore)
-	v.TeamKnowledgeScore = int(internalStrategyRiskScore.RiskScores.TeamKnowledgeScore)
-	v.TestingScore = int(internalStrategyRiskScore.RiskScores.TestingScore)
+	v.RiskDetails.TVLImpact = internalStrategyRiskScore.RiskDetails.TVLImpact
+	v.RiskDetails.AuditScore = internalStrategyRiskScore.RiskDetails.AuditScore
+	v.RiskDetails.CodeReviewScore = internalStrategyRiskScore.RiskDetails.CodeReviewScore
+	v.RiskDetails.ComplexityScore = internalStrategyRiskScore.RiskDetails.ComplexityScore
+	v.RiskDetails.LongevityImpact = internalStrategyRiskScore.RiskDetails.LongevityImpact
+	v.RiskDetails.ProtocolSafetyScore = internalStrategyRiskScore.RiskDetails.ProtocolSafetyScore
+	v.RiskDetails.TeamKnowledgeScore = internalStrategyRiskScore.RiskDetails.TeamKnowledgeScore
+	v.RiskDetails.TestingScore = internalStrategyRiskScore.RiskDetails.TestingScore
 	v.Allocation = internalStrategyRiskScore.Allocation
 	return v
 }

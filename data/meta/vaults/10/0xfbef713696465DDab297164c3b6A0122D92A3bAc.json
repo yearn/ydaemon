@@ -6,9 +6,11 @@
   "withdrawalsDisabled": false,
   "order": 46,
   "migrationAvailable": true,
+  "migrationContract": "0xC53f28C40de7FdD184ebecC94de2d3DB5E3234eB",
+  "migrationTargetVault": "0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc",
   "allowZapIn": false,
-  "allowZapOut": false,
-  "retired": false,
+  "allowZapOut": true,
+  "retired": true,
   "displayName": "DAI",
   "classification": {
     "isAutomated": false,

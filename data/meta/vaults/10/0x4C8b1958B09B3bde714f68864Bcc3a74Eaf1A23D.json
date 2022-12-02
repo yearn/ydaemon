@@ -6,9 +6,11 @@
   "withdrawalsDisabled": false,
   "order": 48,
   "migrationAvailable": true,
+  "migrationContract": "0xC53f28C40de7FdD184ebecC94de2d3DB5E3234eB",
+  "migrationTargetVault": "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2",
   "allowZapIn": false,
-  "allowZapOut": false,
-  "retired": false,
+  "allowZapOut": true,
+  "retired": true,
   "displayName": "USDC",
   "classification": {
     "isAutomated": false,

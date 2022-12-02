@@ -202,6 +202,7 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 			strat.Risk.ProtocolSafetyScore,
 			strat.Risk.TeamKnowledgeScore,
 			strat.Risk.TestingScore,
+			strat.Risk.LongevityImpact,
 		})
 		strategyScore, _ := stats.Median(scores)
 		totalRiskScore = bigNumber.NewFloat(0).Add(

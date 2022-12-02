@@ -10,5 +10,10 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "sUSD",
-  "apyTypeOverride": "new"
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
 }

@@ -6,9 +6,11 @@
   "withdrawalsDisabled": false,
   "order": 45,
   "migrationAvailable": true,
+  "migrationContract": "0xC53f28C40de7FdD184ebecC94de2d3DB5E3234eB",
+  "migrationTargetVault": "0x2a90F479002DAae9934c3a70EBB6e8DbeB46292b",
   "allowZapIn": false,
-  "allowZapOut": false,
-  "retired": false,
+  "allowZapOut": true,
+  "retired": true,
   "displayName": "sUSD",
   "classification": {
     "isAutomated": false,

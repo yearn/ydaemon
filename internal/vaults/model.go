@@ -260,10 +260,10 @@ func (t *TVault) BuildCategory() string {
 				category = `Volatile`
 			}
 		}
-		if helpers.Intersects(baseForCurve, allNames) {
+		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
 		}
-		if helpers.Intersects(baseForBalancer, allNames) {
+		if helpers.Intersects(allNames, baseForBalancer) {
 			category = `Balancer`
 		}
 	} else {
@@ -276,19 +276,19 @@ func (t *TVault) BuildCategory() string {
 			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
 		}
 
-		if helpers.Intersects(baseForBitcoin, allNames) {
+		if helpers.Intersects(allNames, baseForBitcoin) {
 			category = `Volatile`
 		}
-		if helpers.Intersects(baseForEth, allNames) {
+		if helpers.Intersects(allNames, baseForEth) {
 			category = `Volatile`
 		}
-		if helpers.Intersects(baseForStableCoins, allNames) {
+		if helpers.Intersects(allNames, baseForStableCoins) {
 			category = `Stablecoin`
 		}
-		if helpers.Intersects(baseForCurve, allNames) {
+		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
 		}
-		if helpers.Intersects(baseForBalancer, allNames) {
+		if helpers.Intersects(allNames, baseForBalancer) {
 			category = `Balancer`
 		}
 	}

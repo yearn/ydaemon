@@ -7,9 +7,9 @@ import (
 
 // TStrategyGroupCritieria is a helper type for parsing the risk framework json
 type TStrategyGroupCritieria struct {
-	Strategies []string `json:"strategies"`
-	Exclude    []string `json:"exclude"`
-	NameLike   []string `json:"nameLike"`
+	Strategies []common.Address `json:"strategies"`
+	Exclude    []string         `json:"exclude"`
+	NameLike   []string         `json:"nameLike"`
 }
 
 type TStrategyAllocation struct {

@@ -133,7 +133,7 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 			}
 		}
 		// check address
-		if helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
+		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.String()) {
 			return group
 		}
 

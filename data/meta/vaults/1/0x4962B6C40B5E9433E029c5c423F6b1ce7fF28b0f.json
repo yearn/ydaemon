@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Ape 4.2 sUSD vault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 212,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "sUSD",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

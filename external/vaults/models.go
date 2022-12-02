@@ -110,7 +110,7 @@ type TExternalVault struct {
 	Category          string                  `json:"category"`
 	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
-	SafetyScore       float64                 `json:"safetyScore"`
+	RiskScore         float64                 `json:"riskScore"`
 	Endorsed          bool                    `json:"endorsed"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             tokens.TERC20Token      `json:"token"`

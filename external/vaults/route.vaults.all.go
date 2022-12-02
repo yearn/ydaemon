@@ -59,7 +59,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			newVault.Strategies = append(newVault.Strategies, externalStrategy)
 		}
 		if withStrategiesDetails {
-			newVault.SafetyScore = newVault.ComputeRiskScore()
+			newVault.RiskScore = newVault.ComputeRiskScore()
 		}
 
 		data = append(data, *newVault)

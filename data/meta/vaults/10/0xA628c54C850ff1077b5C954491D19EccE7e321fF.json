@@ -6,9 +6,11 @@
   "withdrawalsDisabled": false,
   "order": 47,
   "migrationAvailable": true,
+  "migrationContract": "0xC53f28C40de7FdD184ebecC94de2d3DB5E3234eB",
+  "migrationTargetVault": "0x5B977577Eb8a480f63e11FC615D6753adB8652Ae",
   "allowZapIn": false,
-  "allowZapOut": false,
-  "retired": false,
+  "allowZapOut": true,
+  "retired": true,
   "displayName": "WETH",
   "classification": {
     "isAutomated": false,

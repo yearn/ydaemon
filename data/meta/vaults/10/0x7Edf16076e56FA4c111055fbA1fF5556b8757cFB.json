@@ -1,19 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "sUSD",
-  "hideAlways": true,
-  "depositsDisabled": true,
+  "comment": "WBTC",
+  "hideAlways": false,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 50,
+  "order": 3,
   "migrationAvailable": false,
-  "allowZapIn": false,
+  "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "sUSD",
+  "displayName": "WBTC",
+  "apyTypeOverride": "new",
   "classification": {
     "isAutomated": false,
     "isPool": false,
     "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stableBaseAsset": "Bitcoin"
   }
 }

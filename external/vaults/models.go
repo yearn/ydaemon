@@ -212,7 +212,6 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 			),
 		)
 	}
-
 	vaultRiskScore, _ := bigNumber.NewFloat(0).Div(
 		totalRiskScore,
 		bigNumber.NewFloat().SetInt(v.TVL.TotalAssets),

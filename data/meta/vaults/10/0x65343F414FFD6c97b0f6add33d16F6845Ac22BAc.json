@@ -10,5 +10,11 @@
   "allowZapOut": false,
   "retired": false,
   "displayName": "DAI",
-  "apyTypeOverride": "new"
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
 }

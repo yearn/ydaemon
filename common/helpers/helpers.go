@@ -162,3 +162,10 @@ func GetHumanizedValue(
 	fHumanizedValue, _ := bigNumber.NewFloat().Mul(humanizedValue, humanizedPrice).Float64()
 	return fHumanizedValue
 }
+
+func ToLower(arr []string) []string {
+	for i, v := range arr {
+		arr[i] = strings.ToLower(v)
+	}
+	return arr
+}

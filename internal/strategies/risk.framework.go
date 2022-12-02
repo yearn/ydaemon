@@ -3,7 +3,6 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -85,15 +84,8 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 	for _, group := range groups {
 		// check if nameLike and exclude intersect
 		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
-			toLowerNameLike := []string{}
-			for _, name := range group.Criteria.NameLike {
-				toLowerNameLike = append(toLowerNameLike, strings.ToLower(name))
-			}
-			toLowerExclude := []string{}
-			for _, exclude := range group.Criteria.Exclude {
-				toLowerExclude = append(toLowerExclude, strings.ToLower(exclude))
-			}
-
+			toLowerNameLike := helpers.ToLower(group.Criteria.NameLike)
+			toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
 			for _, nameLike := range toLowerNameLike {
 				// if the nameLike is more specific
 				if helpers.ContainsSubString(toLowerNameLike, strategy.Name) &&
@@ -107,20 +99,14 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 			return group
 		}
 
-		toLowerExclude := []string{}
-		for _, exclude := range group.Criteria.Exclude {
-			toLowerExclude = append(toLowerExclude, strings.ToLower(exclude))
-		}
 		// check exclude
+		toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
 		if helpers.ContainsSubString(toLowerExclude, strategy.Name) {
 			continue
 		}
 
-		toLowerNameLike := []string{}
-		for _, name := range group.Criteria.NameLike {
-			toLowerNameLike = append(toLowerNameLike, strings.ToLower(name))
-		}
 		// check nameLike
+		toLowerNameLike := helpers.ToLower(group.Criteria.NameLike)
 		if helpers.ContainsSubString(toLowerNameLike, strategy.Name) {
 			return group
 		}

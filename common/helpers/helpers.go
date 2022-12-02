@@ -109,7 +109,7 @@ func Contains[T comparable](arr []T, value T) bool {
 // arr are assumed to contain the substrings of value
 func ContainsSubString(arr []string, value string) bool {
 	for _, v := range arr {
-		if strings.Contains(strings.ToLower(value), strings.ToLower(v)) {
+		if strings.Contains(value, v) {
 			return true
 		}
 	}

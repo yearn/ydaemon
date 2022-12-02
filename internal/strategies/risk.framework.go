@@ -3,6 +3,7 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -84,10 +85,19 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 	for _, group := range groups {
 		// check if nameLike and exclude intersect
 		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
-			for _, nameLike := range group.Criteria.NameLike {
+			toLowerNameLike := []string{}
+			for _, name := range group.Criteria.NameLike {
+				toLowerNameLike = append(toLowerNameLike, strings.ToLower(name))
+			}
+			toLowerExclude := []string{}
+			for _, exclude := range group.Criteria.Exclude {
+				toLowerExclude = append(toLowerExclude, strings.ToLower(exclude))
+			}
+
+			for _, nameLike := range toLowerNameLike {
 				// if the nameLike is more specific
-				if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) &&
-					helpers.ContainsSubString(group.Criteria.Exclude, nameLike) {
+				if helpers.ContainsSubString(toLowerNameLike, strategy.Name) &&
+					helpers.ContainsSubString(toLowerExclude, nameLike) {
 					return group
 				}
 			}
@@ -96,12 +106,22 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 		if helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
 			return group
 		}
+
+		toLowerExclude := []string{}
+		for _, exclude := range group.Criteria.Exclude {
+			toLowerExclude = append(toLowerExclude, strings.ToLower(exclude))
+		}
 		// check exclude
-		if helpers.ContainsSubString(group.Criteria.Exclude, strategy.Name) {
+		if helpers.ContainsSubString(toLowerExclude, strategy.Name) {
 			continue
 		}
+
+		toLowerNameLike := []string{}
+		for _, name := range group.Criteria.NameLike {
+			toLowerNameLike = append(toLowerNameLike, strings.ToLower(name))
+		}
 		// check nameLike
-		if helpers.ContainsSubString(group.Criteria.NameLike, strategy.Name) {
+		if helpers.ContainsSubString(toLowerNameLike, strategy.Name) {
 			return group
 		}
 	}

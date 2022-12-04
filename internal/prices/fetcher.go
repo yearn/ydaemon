@@ -70,6 +70,9 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, token := range tokenList {
 		rawTokenPrice := response[token.String()+`getPriceUsdcRecommended`]
+		if len(rawTokenPrice) == 0 {
+			continue
+		}
 		tokenPrice := bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
 		if tokenPrice.IsZero() {
 			continue

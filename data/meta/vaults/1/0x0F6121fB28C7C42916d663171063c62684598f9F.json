@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "4.2 hbtc migrationTargetVault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 240,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "hBTC",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
+}

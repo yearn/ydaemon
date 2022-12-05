@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "3.1 weth vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 226,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0xa258C4606Ca8206D8aA700cE2143D7db854D168c",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Weth",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
+}

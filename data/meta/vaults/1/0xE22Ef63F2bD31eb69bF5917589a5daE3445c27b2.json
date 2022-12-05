@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "4.3 Balancer Boosted Aave USD Pool",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 221,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Balancer Boosted Aave USD Pool",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

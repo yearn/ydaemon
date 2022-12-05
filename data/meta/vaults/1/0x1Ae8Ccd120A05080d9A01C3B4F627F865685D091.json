@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "3.2 wbtc vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 229,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Wbtc",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile",
+    "stableBaseAsset": "Bitcoin"
+  }
+}

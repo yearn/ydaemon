@@ -57,6 +57,14 @@ func (b *Float) SetUint64(s uint64) *Float {
 	b.Float.SetUint64(s)
 	return b
 }
+func (b *Float) SetInf(sign ...bool) *Float {
+	if len(sign) == 0 {
+		b.Float.SetInf(false)
+		return b
+	}
+	b.Float.SetInf(sign[0])
+	return b
+}
 func (b *Float) Add(x *Float, y *Float) *Float {
 	xAsFloat := ToFloat(x)
 	yAsFloat := ToFloat(y)

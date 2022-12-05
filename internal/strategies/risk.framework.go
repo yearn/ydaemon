@@ -98,15 +98,15 @@ func getAllocationStatus(group TStrategyGroupFromRisk) string {
 	diffAllowed := bigNumber.NewFloat(0)
 	switch {
 	case median <= 1:
-		diffAllowed = bigNumber.NewFloat(100_000_000)
+		diffAllowed = diffAllowed.SetInf()
 	case median <= 2:
-		diffAllowed = bigNumber.NewFloat(50_000_000)
+		diffAllowed = diffAllowed.SetInf()
 	case median <= 3:
-		diffAllowed = bigNumber.NewFloat(40_000_000)
+		diffAllowed = bigNumber.NewFloat(90_000_000)
 	case median <= 4:
-		diffAllowed = bigNumber.NewFloat(9_000_000)
+		diffAllowed = bigNumber.NewFloat(49_000_000)
 	case median <= 5:
-		diffAllowed = bigNumber.NewFloat(1_000_000)
+		diffAllowed = bigNumber.NewFloat(10_000_000)
 	}
 	// over allocated but within allowed range - Yellow
 	if diff.Sub(diffAllowed, diff).Sign() > 0 {

@@ -28,6 +28,7 @@ type TStrategyGroupFromRisk struct {
 	ProtocolSafetyScore int                     `json:"protocolSafetyScore"`
 	TeamKnowledgeScore  int                     `json:"teamKnowledgeScore"`
 	TestingScore        int                     `json:"testingScore"`
+	LongevityImpact     int                     `json:"longevityImpact"`
 	ChainID             uint64                  `json:"chainID"`
 	Criteria            TStrategyGroupCritieria `json:"criteria"`
 	Allocation          *TStrategyAllocation    `json:"allocation"`

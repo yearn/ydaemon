@@ -77,7 +77,7 @@
 			"type": "object",
 			"properties": {
 				"isPool": {"type": "boolean"},
-				"poolProvider": {"type": "string", "enum": ["Curve", "Balancer"]},
+				"poolProvider": {"type": "string", "enum": ["Curve", "Balancer", "Yearn"]},
 				"stability": {"type": "string", "enum": ["Stable", "Unstable", "Correlated", "Volatile"]},
 				"stableBaseAsset": {"type": "string", "enum": [
 					"USD",

@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -105,7 +106,7 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	}
 
 	// Fetch activation and tvl from multicall
-	strategyRiskScore.RiskScores.LongevityImpact = getLongevityImpact(t.Activation)
+	strategyRiskScore.RiskDetails.LongevityImpact = getLongevityImpact(t.Activation)
 
 	// Fetch tvl of strategy
 	tokenData, ok := tokens.FindUnderlyingForVault(t.ChainID, vaultAddress)
@@ -138,14 +139,27 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 
 	// Updating the default schema
 	strategyRiskScore.RiskGroup = strategyGroup.Label
-	strategyRiskScore.RiskScores.AuditScore = strategyGroup.AuditScore
-	strategyRiskScore.RiskScores.CodeReviewScore = strategyGroup.CodeReviewScore
-	strategyRiskScore.RiskScores.ComplexityScore = strategyGroup.ComplexityScore
-	strategyRiskScore.RiskScores.ProtocolSafetyScore = strategyGroup.ProtocolSafetyScore
-	strategyRiskScore.RiskScores.TeamKnowledgeScore = strategyGroup.TeamKnowledgeScore
-	strategyRiskScore.RiskScores.TestingScore = strategyGroup.TestingScore
-	strategyRiskScore.RiskScores.TVLImpact = getTVLImpact(tvl)
+	strategyRiskScore.RiskDetails.AuditScore = strategyGroup.AuditScore
+	strategyRiskScore.RiskDetails.CodeReviewScore = strategyGroup.CodeReviewScore
+	strategyRiskScore.RiskDetails.ComplexityScore = strategyGroup.ComplexityScore
+	strategyRiskScore.RiskDetails.ProtocolSafetyScore = strategyGroup.ProtocolSafetyScore
+	strategyRiskScore.RiskDetails.TeamKnowledgeScore = strategyGroup.TeamKnowledgeScore
+	strategyRiskScore.RiskDetails.TestingScore = strategyGroup.TestingScore
+	strategyRiskScore.RiskDetails.TVLImpact = getTVLImpact(tvl)
 	strategyRiskScore.Allocation = strategyGroup.Allocation
+
+	// Calculate median score for strategy
+	scores := stats.LoadRawData([]int{
+		strategyGroup.AuditScore,
+		strategyGroup.CodeReviewScore,
+		strategyGroup.ComplexityScore,
+		strategyGroup.ProtocolSafetyScore,
+		strategyGroup.TeamKnowledgeScore,
+		strategyGroup.TestingScore,
+		strategyRiskScore.RiskDetails.LongevityImpact, // Add LongevityImpact
+	})
+	strategyRiskScore.RiskScore, _ = stats.Median(scores)
+
 	return &strategyRiskScore
 }
 

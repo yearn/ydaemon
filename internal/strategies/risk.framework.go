@@ -3,6 +3,7 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/montanaflynn/stats"
@@ -16,7 +17,7 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
-func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
+func getTVLImpact(tvlUSDC *bigNumber.Float) int {
 	tvl, _ := tvlUSDC.Float32()
 	switch {
 	case tvl == 0:
@@ -34,7 +35,7 @@ func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
 	}
 }
 
-func getLongevityImpact(activation *bigNumber.Int) float64 {
+func getLongevityImpact(activation *bigNumber.Int) int {
 	if activation == nil || activation.IsZero() {
 		return 5
 	}
@@ -55,16 +56,21 @@ func getLongevityImpact(activation *bigNumber.Int) float64 {
 	}
 }
 
-func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
-	scores := []float64{
+func getMedianScore(group TStrategyGroupFromRisk) int {
+	scores := stats.LoadRawData([]int{
 		group.AuditScore,
 		group.CodeReviewScore,
 		group.ComplexityScore,
 		group.ProtocolSafetyScore,
 		group.TeamKnowledgeScore,
 		group.TestingScore,
-	}
+	})
 	median, _ := stats.Median(scores)
+	return int(median)
+}
+
+func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
+	median := getMedianScore(group)
 	switch {
 	case median <= 1:
 		return bigNumber.NewFloat(100_000_000)
@@ -79,7 +85,39 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 	}
 }
 
+func getAllocationStatus(group TStrategyGroupFromRisk) string {
+	median := getMedianScore(group)
+	medianAllocation := getMedianAllocation(group)
+	tvl := group.Allocation.CurrentTVL
+	diff := bigNumber.NewFloat(0).Sub(medianAllocation, tvl)
+
+	// under allocated - Green
+	if diff.Sign() > 0 {
+		return "Green"
+	}
+	diffAllowed := bigNumber.NewFloat(0)
+	switch {
+	case median <= 1:
+		diffAllowed = bigNumber.NewFloat(100_000_000)
+	case median <= 2:
+		diffAllowed = bigNumber.NewFloat(50_000_000)
+	case median <= 3:
+		diffAllowed = bigNumber.NewFloat(40_000_000)
+	case median <= 4:
+		diffAllowed = bigNumber.NewFloat(9_000_000)
+	case median <= 5:
+		diffAllowed = bigNumber.NewFloat(1_000_000)
+	}
+	// over allocated but within allowed range - Yellow
+	if diff.Sub(diffAllowed, diff).Sign() > 0 {
+		return "Yellow"
+	}
+	// over allocated and out of range - Red
+	return "Red"
+}
+
 func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRisk {
+	toLowerName := strings.ToLower(strategy.Name)
 	groups := ListStrategiesRiskGroups(chainID)
 	for _, group := range groups {
 		// check if nameLike and exclude intersect
@@ -88,26 +126,26 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 			toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
 			for _, nameLike := range toLowerNameLike {
 				// if the nameLike is more specific
-				if helpers.ContainsSubString(toLowerNameLike, strategy.Name) &&
+				if strings.Contains(toLowerName, nameLike) &&
 					helpers.ContainsSubString(toLowerExclude, nameLike) {
 					return group
 				}
 			}
 		}
 		// check address
-		if helpers.Contains(group.Criteria.Strategies, strategy.Address.String()) {
+		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.String()) {
 			return group
 		}
 
 		// check exclude
 		toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
-		if helpers.ContainsSubString(toLowerExclude, strategy.Name) {
+		if helpers.ContainsSubString(toLowerExclude, toLowerName) {
 			continue
 		}
 
 		// check nameLike
 		toLowerNameLike := helpers.ToLower(group.Criteria.NameLike)
-		if helpers.ContainsSubString(toLowerNameLike, strategy.Name) {
+		if helpers.ContainsSubString(toLowerNameLike, toLowerName) {
 			return group
 		}
 	}
@@ -117,7 +155,8 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 func getDefaultRiskGroup() TStrategyFromRisk {
 	return TStrategyFromRisk{
 		RiskGroup: "Others",
-		RiskScores: TStrategyFromRiskRiskScores{
+		RiskScore: 5,
+		RiskDetails: TStrategyFromRiskRiskDetails{
 			TVLImpact:           5,
 			AuditScore:          5,
 			CodeReviewScore:     5,
@@ -128,6 +167,7 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 			TestingScore:        5,
 		},
 		Allocation: &TStrategyAllocation{
+			Status:          "Green",
 			CurrentTVL:      bigNumber.NewFloat(0),
 			AvailableTVL:    bigNumber.NewFloat(0),
 			CurrentAmount:   bigNumber.NewFloat(0),
@@ -236,7 +276,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 			strategyGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0).Sub(strategyGroup.Allocation.AvailableTVL, tvl)
 			strategyGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0).Quo(strategyGroup.Allocation.AvailableTVL, price)
 		}
-
+		strategyGroup.Allocation.Status = getAllocationStatus(*strategyGroup)
 		setRiskGroupInMap(chainID, strategyGroup)
 	}
 }

@@ -169,3 +169,11 @@ func ToLower(arr []string) []string {
 	}
 	return arr
 }
+
+func AddressToString(arr []common.Address) []string {
+	arrStr := make([]string, len(arr))
+	for i, v := range arr {
+		arrStr[i] = v.String()
+	}
+	return arrStr
+}

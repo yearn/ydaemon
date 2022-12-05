@@ -194,11 +194,17 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 func (v *TExternalVault) ComputeRiskScore() float64 {
 	totalRiskScore := bigNumber.NewFloat(0)
 	for _, strat := range v.Strategies {
+		totalDebt := bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt)
+		//Specific overwrite for st-yCRV strategy
+		if strat.Address == common.HexToAddress(`0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d`) {
+			totalDebt = bigNumber.NewFloat(0)
+		}
+
 		totalRiskScore = bigNumber.NewFloat(0).Add(
 			totalRiskScore,
 			bigNumber.NewFloat(0).Mul(
 				bigNumber.NewFloat(strat.Risk.RiskScore),
-				bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt),
+				totalDebt,
 			),
 		)
 	}

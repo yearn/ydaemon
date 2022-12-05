@@ -55,7 +55,7 @@ func (y Controller) GetVault(c *gin.Context) {
 	}
 
 	if withStrategiesDetails {
-		newVault.SafetyScore = newVault.ComputeRiskScore()
+		newVault.RiskScore = newVault.ComputeRiskScore()
 	}
 
 	c.JSON(http.StatusOK, newVault)

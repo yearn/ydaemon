@@ -1,7 +1,6 @@
 package vaults
 
 import (
-	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -110,7 +109,7 @@ type TExternalVault struct {
 	Category          string                  `json:"category"`
 	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
-	SafetyScore       float64                 `json:"safetyScore"`
+	RiskScore         float64                 `json:"riskScore"`
 	Endorsed          bool                    `json:"endorsed"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             tokens.TERC20Token      `json:"token"`
@@ -195,19 +194,10 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 func (v *TExternalVault) ComputeRiskScore() float64 {
 	totalRiskScore := bigNumber.NewFloat(0)
 	for _, strat := range v.Strategies {
-		scores := stats.LoadRawData([]int{
-			strat.Risk.AuditScore,
-			strat.Risk.CodeReviewScore,
-			strat.Risk.ComplexityScore,
-			strat.Risk.ProtocolSafetyScore,
-			strat.Risk.TeamKnowledgeScore,
-			strat.Risk.TestingScore,
-		})
-		strategyScore, _ := stats.Median(scores)
 		totalRiskScore = bigNumber.NewFloat(0).Add(
 			totalRiskScore,
 			bigNumber.NewFloat(0).Mul(
-				bigNumber.NewFloat(strategyScore),
+				bigNumber.NewFloat(strat.Risk.RiskScore),
 				bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt),
 			),
 		)

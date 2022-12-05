@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "3.5 Link Vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 241,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0x671a912C10bba0CFA74Cfc2d6Fba9BA1ed9530B2",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Link",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
+}

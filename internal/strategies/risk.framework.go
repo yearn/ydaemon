@@ -64,6 +64,7 @@ func getMedianScore(group TStrategyGroupFromRisk) int {
 		group.ProtocolSafetyScore,
 		group.TeamKnowledgeScore,
 		group.TestingScore,
+		group.LongevityImpact,
 	})
 	median, _ := stats.Median(scores)
 	return int(median)
@@ -215,15 +216,41 @@ func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 }
 
 func ComputeRiskGroupAllocation(chainID uint64) {
-	//This will ensure we are working with clean data
+	// This will ensure we are working with clean data
 	groups := ListStrategiesRiskGroups(chainID)
+	strategies := ListStrategies(chainID)
+
+	// Update the longevity score
+	for _, group := range groups {
+		group.LongevityImpact = 5
+		setRiskGroupInMap(chainID, group)
+	}
+	for _, strategy := range strategies {
+		strategyGroup := getStrategyGroup(chainID, strategy)
+		if strategyGroup == nil {
+			traces.
+				Capture(`warn`, `impossible to find stratGroup for group `+strategy.Name).
+				SetEntity(`strategy`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+				SetTag(`strategyAddress`, strategy.Address.Hex()).
+				SetTag(`strategyName`, strategy.Name).
+				Send()
+			continue
+		}
+		longevityImpact := getLongevityImpact(strategy.Activation)
+		if longevityImpact < strategyGroup.LongevityImpact {
+			strategyGroup.LongevityImpact = longevityImpact
+			setRiskGroupInMap(chainID, strategyGroup)
+		}
+	}
+
+	// Update the TVL allocation
 	for _, group := range groups {
 		group.Allocation = &TStrategyAllocation{}
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 		setRiskGroupInMap(chainID, group)
 	}
-
-	strategies := ListStrategies(chainID)
 	for _, strategy := range strategies {
 		strategyGroup := getStrategyGroup(chainID, strategy)
 		if strategyGroup == nil {

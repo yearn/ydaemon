@@ -1,0 +1,22 @@
+{
+  "$schema": "vault",
+  "comment": "Curve cDAI-cUSDC Vault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 260,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0xd9788f3931Ede4D5018184E198699dC6d66C1915",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve Compound Stables",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

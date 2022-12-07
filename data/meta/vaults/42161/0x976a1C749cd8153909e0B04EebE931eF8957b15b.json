@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "PHP test Vault",
+  "hideAlways": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 100,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": true,
+  "displayName": "PHP",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "PHP"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "sUSD-heding 4.2 yVault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 202,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": true,
+  "displayName": "sUSD-hedging",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "3.2 usdt vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 200,
+  "migrationAvailable": true,
+  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationTargetVault": "0x3B27F92C0e212C671EA351827EDF93DB27cc0c65",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "USDT",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

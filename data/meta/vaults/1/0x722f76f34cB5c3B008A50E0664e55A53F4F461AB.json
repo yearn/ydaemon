@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "3.5 usdt metavault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 265,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "USDT Meta",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Yearn",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "4.3 dai ubi vault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 240,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "DAI UBI",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Yearn",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

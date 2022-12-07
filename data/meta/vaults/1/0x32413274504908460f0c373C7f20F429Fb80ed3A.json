@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "3.3 saCRV yVault",
+  "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 204,
+  "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": false,
+  "retired": true,
+  "displayName": "Curve saCRV",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

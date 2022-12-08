@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "4.3 wFTM Vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 11,
+  "migrationAvailable": true,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "wFTM",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "FTM"
+  }
+}

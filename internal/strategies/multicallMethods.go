@@ -52,6 +52,9 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 	case `0.3.0`, `0.3.1`:
 		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V030_ABI))
 		abiToUse = &_abi
+	default:
+		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V030_ABI))
+		abiToUse = &_abi
 	}
 
 	parsedData, _ := abiToUse.Pack("strategies", strategyAddress.Address)

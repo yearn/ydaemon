@@ -140,7 +140,7 @@ func getStrategiesAdded(
 				})
 			}
 		}
-	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+	default: // case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
 		vault, _ := contracts.NewYvault043(vaultAddress, client)
 		if log, err := vault.FilterStrategyAdded(&bind.FilterOpts{Start: vaultActivation}, nil); err == nil {
 			for log.Next() {

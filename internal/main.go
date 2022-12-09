@@ -153,7 +153,7 @@ func Initialize(chainID uint64) {
 		case `0.2.2`:
 		case `0.3.0`:
 			continue //SKIP
-		case `0.3.1`, `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+		default: //case `0.3.1`, `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
 			syncGroup.Add(1)
 			go vaults.HandleEvenStrategyReportedFor031To043(
 				chainID,

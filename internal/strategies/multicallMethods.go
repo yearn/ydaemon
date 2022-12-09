@@ -43,7 +43,7 @@ func getDebtOutstanding(name string, contractAddress common.Address, strategyAdd
 }
 
 func getStrategies(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	abiToUse := YearnVaultABI
+	var abiToUse *abi.ABI
 
 	switch version {
 	case `0.2.2`:
@@ -53,11 +53,11 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V030_ABI))
 		abiToUse = &_abi
 	default:
-		_abi, _ := abi.JSON(strings.NewReader(helpers.YEARN_VAULT_V030_ABI))
-		abiToUse = &_abi
+		abiToUse = YearnVaultABI
 	}
 
 	parsedData, _ := abiToUse.Pack("strategies", strategyAddress.Address)
+
 	return ethereum.Call{
 		Name:     name,
 		Target:   contractAddress.Address,

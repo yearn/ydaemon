@@ -14,19 +14,19 @@ import (
 
 // GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
-	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query("hideAlways"), "false"))
-	migrable := helpers.StringToBool(helpers.SafeString(c.Query("migrable"), "false"))
-	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
-	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
-	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query(`hideAlways`), `false`))
+	orderBy := helpers.SafeString(c.Query(`orderBy`), `details.order`)
+	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
+	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
+	withStrategiesDetails := c.Query(`strategiesDetails`) == `withDetails`
+	migrable := selectMigrableCondition(c.Query(`migrable`))
+	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
+		c.String(http.StatusBadRequest, `invalid chainID`)
 		return
 	}
-	if migrable && hideAlways {
-		c.String(http.StatusBadRequest, "migrable and hideAlways cannot be true at the same time")
+	if migrable != `none` && hideAlways {
+		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
 		return
 	}
 
@@ -39,10 +39,11 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		}
 
 		newVault := NewVault().AssignTVault(currentVault)
-		if !migrable && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+		if migrable != `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
 			continue
-		}
-		if migrable && !newVault.Migration.Available {
+		} else if migrable == `nodust` && (newVault.TVL.TVL > 100 || !newVault.Migration.Available) {
+			continue
+		} else if migrable == `all` && !newVault.Migration.Available {
 			continue
 		}
 

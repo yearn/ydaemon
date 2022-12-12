@@ -63,6 +63,7 @@ type TAPY struct {
 type TMigration struct {
 	Available bool           `json:"available"`
 	Address   common.Address `json:"address"`
+	Contract  common.Address `json:"contract"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
@@ -164,13 +165,16 @@ func (t *TVault) BuildMigration() TMigration {
 
 	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address)); ok {
 		migrationAddress := common.FromAddress(t.Address)
+		migrationContract := common.Address{}
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
 			migrationAddress = vaultFromMeta.MigrationTargetVault
+			migrationContract = vaultFromMeta.MigrationContract
 		}
 		migration = TMigration{
 			Available: migrationAvailable,
 			Address:   migrationAddress,
+			Contract:  migrationContract,
 		}
 	}
 	return migration

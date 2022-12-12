@@ -70,6 +70,7 @@ type TExternalVaultAPY struct {
 type TExternalVaultMigration struct {
 	Available bool           `json:"available"`
 	Address   common.Address `json:"address"`
+	Contract  common.Address `json:"contract"`
 }
 
 // TExternalVaultDetails is the struct containing the information about a vault.

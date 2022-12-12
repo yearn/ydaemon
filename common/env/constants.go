@@ -58,7 +58,7 @@ type TRegistry struct {
 	Activation uint64
 }
 
-//YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block
+// YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block
 var YEARN_REGISTRIES = map[uint64][]TRegistry{
 	1: {
 		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), Version: 1, Activation: 11563389},
@@ -141,11 +141,3 @@ var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
 	250:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 }
-
-// STRATEGIES_CONDITIONS contains the possible conditions to determine which strategies should
-// be used in the return value.
-// If the strategy is `absolute`, an active strategy will be isActive, inQueue and with a debt > 0
-// If the strategy is `inQueue`, we will check if the vault has the strategy in it's withdrawal queue
-// If the strategy is `debtLimit`, we will check if the vault has allocated a debtLimit to the strategy
-// If the strategy is `debtRatio`, we will check if the vault has allocated a debtRatio to the strategy
-var STRATEGIES_CONDITIONS = []string{`inQueue`, `debtLimit`, `debtRatio`, `absolute`, `all`}

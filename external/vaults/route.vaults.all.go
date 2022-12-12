@@ -15,6 +15,7 @@ import (
 // GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
 	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query("hideAlways"), "false"))
+	migrable := helpers.StringToBool(helpers.SafeString(c.Query("migrable"), "false"))
 	orderBy := helpers.SafeString(c.Query("orderBy"), "details.order")
 	orderDirection := helpers.SafeString(c.Query("orderDirection"), "asc")
 	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
@@ -22,6 +23,10 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
+		return
+	}
+	if migrable && hideAlways {
+		c.String(http.StatusBadRequest, "migrable and hideAlways cannot be true at the same time")
 		return
 	}
 
@@ -34,7 +39,10 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		}
 
 		newVault := NewVault().AssignTVault(currentVault)
-		if (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+		if !migrable && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+			continue
+		}
+		if migrable && !newVault.Migration.Available {
 			continue
 		}
 

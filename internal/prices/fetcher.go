@@ -166,8 +166,7 @@ func fetchPriceFromLlama(chainID uint64, token common.Address) *bigNumber.Int {
 **************************************************************************************************/
 func fetchPriceFromGecko(chainID uint64, token common.Address) *bigNumber.Int {
 	// Fetch the token identifier in Coingecko
-	// resp, err := http.Get(env.GECKO_PRICE_URL + env.GECKO_CHAIN_NAMES[chainID] + `/contract/` + token.String())
-	resp, err := http.Get(env.GECKO_PRICE_URL + env.GECKO_CHAIN_NAMES[chainID] + `/contract/` + `0xb9ef770b6a5e12e45983c5d80545258aa38f3b78`)
+	resp, err := http.Get(env.GECKO_PRICE_URL + env.GECKO_CHAIN_NAMES[chainID] + `/contract/` + token.String())
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 	}

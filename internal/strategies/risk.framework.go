@@ -17,6 +17,8 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
+var stratGroupErrorAlreadySent = make(map[uint64]map[string]bool)
+
 func getTVLImpact(tvlUSDC *bigNumber.Float) int {
 	tvl, _ := tvlUSDC.Float32()
 	switch {
@@ -215,6 +217,9 @@ func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 }
 
 func ComputeRiskGroupAllocation(chainID uint64) {
+	if stratGroupErrorAlreadySent[chainID] == nil {
+		stratGroupErrorAlreadySent[chainID] = map[string]bool{}
+	}
 	//This will ensure we are working with clean data
 	groups := ListStrategiesRiskGroups(chainID)
 	for _, group := range groups {
@@ -227,14 +232,17 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 	for _, strategy := range strategies {
 		strategyGroup := getStrategyGroup(chainID, strategy)
 		if strategyGroup == nil {
-			traces.
-				Capture(`warn`, `impossible to find stratGroup for group `+strategy.Name).
-				SetEntity(`strategy`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-				SetTag(`strategyAddress`, strategy.Address.Hex()).
-				SetTag(`strategyName`, strategy.Name).
-				Send()
+			if !stratGroupErrorAlreadySent[chainID][strategy.Name] {
+				traces.
+					Capture(`warn`, `impossible to find stratGroup for group `+strategy.Name).
+					SetEntity(`strategy`).
+					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+					SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+					SetTag(`strategyAddress`, strategy.Address.Hex()).
+					SetTag(`strategyName`, strategy.Name).
+					Send()
+				stratGroupErrorAlreadySent[chainID][strategy.Name] = true
+			}
 			continue
 		}
 

@@ -2,12 +2,10 @@ package vaults
 
 import (
 	"math"
-	"math/big"
 	"strconv"
 	"sync"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -19,6 +17,9 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 )
+
+var metaVaultFileErrorAlreadySent = make(map[uint64]map[common.Address]bool)
+var metaVaultTokenErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
@@ -35,6 +36,11 @@ func fetchBasicInformations(
 	chainID uint64,
 	vaults []ethcommon.Address,
 ) (vaultList []*TVault) {
+	if metaVaultFileErrorAlreadySent[chainID] == nil {
+		metaVaultFileErrorAlreadySent[chainID] = make(map[common.Address]bool)
+		metaVaultTokenErrorAlreadySent[chainID] = make(map[common.Address]bool)
+	}
+
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
@@ -105,25 +111,32 @@ func fetchBasicInformations(
 				Send()
 		}
 
-		underlyingTokenData, ok := tokens.FindToken(chainID, common.FromAddress(rawUnderlying[0].(ethcommon.Address)))
+		underlyingTokenData, ok := tokens.FindToken(chainID, common.FromAddress(helpers.DecodeAddress(rawUnderlying)))
 		if !ok {
-			underlyingTokenData = &tokens.TERC20Token{}
-			traces.
-				Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`meta`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`vaultAddress`, vault.Hex()).
-				SetTag(`underlyingAddress`, common.FromAddress(rawUnderlying[0].(ethcommon.Address)).Hex()).
-				Send()
+			token := common.FromAddress(helpers.DecodeAddress(rawUnderlying))
+			if !metaVaultTokenErrorAlreadySent[chainID][token] {
+				underlyingTokenData = &tokens.TERC20Token{}
+				traces.
+					Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+					SetEntity(`meta`).
+					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+					SetTag(`vaultAddress`, vault.Hex()).
+					SetTag(`underlyingAddress`, helpers.DecodeAddress(rawUnderlying).Hex()).
+					Send()
+				metaVaultTokenErrorAlreadySent[chainID][token] = true
+			}
 		}
 
 		if _, ok := meta.GetMetaVault(chainID, common.FromAddress(vault)); !ok {
-			traces.
-				Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`meta`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`vaultAddress`, vault.Hex()).
-				Send()
+			if !metaVaultFileErrorAlreadySent[chainID][common.FromAddress(vault)] {
+				traces.
+					Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
+					SetEntity(`meta`).
+					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+					SetTag(`vaultAddress`, vault.Hex()).
+					Send()
+				metaVaultFileErrorAlreadySent[chainID][common.FromAddress(vault)] = true
+			}
 		}
 
 		/******************************************************************************************
@@ -138,19 +151,19 @@ func fetchBasicInformations(
 			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
 			Type:                  `v2`,  //Always v2 for now
 			Endorsed:              false, //Default to false, will be updated later
-			Inception:             rawActivation[0].(*big.Int).Uint64(),
-			Version:               rawApiVersion[0].(string),
-			PricePerShare:         bigNumber.SetInt(rawPricePerShare[0].(*big.Int)),
-			Management:            common.FromAddress(rawManagement[0].(ethcommon.Address)),
-			Governance:            common.FromAddress(rawGovernance[0].(ethcommon.Address)),
-			Guardian:              common.FromAddress(rawGuardian[0].(ethcommon.Address)),
-			Rewards:               common.FromAddress(rawRewards[0].(ethcommon.Address)),
-			TotalAssets:           bigNumber.SetInt(rawTotalAssets[0].(*big.Int)),
-			DepositLimit:          bigNumber.SetInt(rawDepositLimit[0].(*big.Int)),
-			AvailableDepositLimit: bigNumber.SetInt(rawAvailableDepositLimit[0].(*big.Int)),
-			PerformanceFee:        uint64(rawPerformanceFee[0].(*big.Int).Uint64()),
-			ManagementFee:         uint64(rawManagementFee[0].(*big.Int).Uint64()),
-			EmergencyShutdown:     bool(rawEmergencyShutdown[0].(bool)),
+			Inception:             helpers.DecodeBigInt(rawActivation).Uint64(),
+			Version:               helpers.DecodeString(rawApiVersion),
+			PricePerShare:         helpers.DecodeBigInt(rawPricePerShare),
+			Management:            common.FromAddress(helpers.DecodeAddress(rawManagement)),
+			Governance:            common.FromAddress(helpers.DecodeAddress(rawGovernance)),
+			Guardian:              common.FromAddress(helpers.DecodeAddress(rawGuardian)),
+			Rewards:               common.FromAddress(helpers.DecodeAddress(rawRewards)),
+			TotalAssets:           helpers.DecodeBigInt(rawTotalAssets),
+			DepositLimit:          helpers.DecodeBigInt(rawDepositLimit),
+			AvailableDepositLimit: helpers.DecodeBigInt(rawAvailableDepositLimit),
+			PerformanceFee:        helpers.DecodeBigInt(rawPerformanceFee).Uint64(),
+			ManagementFee:         helpers.DecodeBigInt(rawManagementFee).Uint64(),
+			EmergencyShutdown:     helpers.DecodeBool(rawEmergencyShutdown),
 			Token: tokens.TERC20Token{
 				Address:       underlyingTokenData.Address,
 				Name:          underlyingTokenData.Name,
@@ -173,7 +186,7 @@ func fetchBasicInformations(
 		for i := 0; i < maxStrategiesPerVault; i++ {
 			result := response[vault.String()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
 			if len(result) == 1 {
-				strategyAddress := common.FromAddress(result[0].(ethcommon.Address))
+				strategyAddress := common.FromAddress(helpers.DecodeAddress(result))
 				if helpers.AddressIsValid(strategyAddress, chainID) {
 					withdrawQueueForStrategies = append(withdrawQueueForStrategies, strategyAddress)
 				}
@@ -283,12 +296,7 @@ func RetrieveAllVaults(
 	}
 
 	/**********************************************************************************************
-	** Once we got out basic list, we will fetch theses basics informations. This includes:
-	** - the name
-	** - the symbol
-	** - the decimals
-	** Based on the type of token (aave, compound, curve, etc), we will also fetch the underlyings
-	** vaults.
+	** Once we got out basic list, we will fetch theses basics informations.
 	**********************************************************************************************/
 	if len(updatedVaultMap) > 0 {
 		updatedVaultMap = findAllVaults(chainID, updatedVaultMap)

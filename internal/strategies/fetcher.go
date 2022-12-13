@@ -9,6 +9,7 @@ import (
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -126,51 +127,21 @@ func fetchBasicInformations(
 				LogIndex:    strat.LogIndex,
 			},
 		}
-		if len(creditAvailable0) == 1 {
-			newStrategy.CreditAvailable = bigNumber.SetInt(creditAvailable0[0].(*big.Int))
-		}
-		if len(debtOutstanding0) == 1 {
-			newStrategy.DebtOutstanding = bigNumber.SetInt(debtOutstanding0[0].(*big.Int))
-		}
-		if len(expectedReturn) == 1 {
-			newStrategy.ExpectedReturn = bigNumber.SetInt(expectedReturn[0].(*big.Int))
-		}
-		if len(estimatedTotalAssets) == 1 {
-			newStrategy.EstimatedTotalAssets = bigNumber.SetInt(estimatedTotalAssets[0].(*big.Int))
-		}
-		if len(keepCRV) == 1 {
-			newStrategy.KeepCRV = bigNumber.SetInt(keepCRV[0].(*big.Int))
-		}
-		if len(delegatedAssets) == 1 {
-			newStrategy.DelegatedAssets = bigNumber.SetInt(delegatedAssets[0].(*big.Int))
-		}
-		if len(isActive) == 1 {
-			newStrategy.IsActive = isActive[0].(bool)
-		}
-		if len(name) == 1 {
-			newStrategy.Name = name[0].(string)
-		}
-		if len(keeper) == 1 {
-			newStrategy.KeeperAddress = keeper[0].(ethcommon.Address)
-		}
-		if len(strategist) == 1 {
-			newStrategy.StrategistAddress = strategist[0].(ethcommon.Address)
-		}
-		if len(rewards) == 1 {
-			newStrategy.RewardsAddress = rewards[0].(ethcommon.Address)
-		}
-		if len(healthCheck) == 1 {
-			newStrategy.HealthCheckAddress = healthCheck[0].(ethcommon.Address)
-		}
-		if len(apiVersion) == 1 {
-			newStrategy.APIVersion = apiVersion[0].(string)
-		}
-		if len(doHealthCheck) == 1 {
-			newStrategy.DoHealthCheck = doHealthCheck[0].(bool)
-		}
-		if len(emergencyExit) == 1 {
-			newStrategy.EmergencyExit = emergencyExit[0].(bool)
-		}
+		newStrategy.CreditAvailable = helpers.DecodeBigInt(creditAvailable0)
+		newStrategy.DebtOutstanding = helpers.DecodeBigInt(debtOutstanding0)
+		newStrategy.ExpectedReturn = helpers.DecodeBigInt(expectedReturn)
+		newStrategy.EstimatedTotalAssets = helpers.DecodeBigInt(estimatedTotalAssets)
+		newStrategy.KeepCRV = helpers.DecodeBigInt(keepCRV)
+		newStrategy.DelegatedAssets = helpers.DecodeBigInt(delegatedAssets)
+		newStrategy.IsActive = helpers.DecodeBool(isActive)
+		newStrategy.Name = helpers.DecodeString(name)
+		newStrategy.KeeperAddress = helpers.DecodeAddress(keeper)
+		newStrategy.StrategistAddress = helpers.DecodeAddress(strategist)
+		newStrategy.RewardsAddress = helpers.DecodeAddress(rewards)
+		newStrategy.HealthCheckAddress = helpers.DecodeAddress(healthCheck)
+		newStrategy.APIVersion = helpers.DecodeString(apiVersion)
+		newStrategy.DoHealthCheck = helpers.DecodeBool(doHealthCheck)
+		newStrategy.EmergencyExit = helpers.DecodeBool(emergencyExit)
 
 		if strat.VaultVersion == `0.2.2` && len(strategies) == 8 {
 			newStrategy.PerformanceFee = bigNumber.SetInt(strategies[0].(*big.Int))

@@ -107,8 +107,18 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 			queryList = append(queryList, token)
 		}
 	}
-	pricesLlama := fetchPricesFromLlama(chainID, queryList)
-	pricesGecko := fetchPricesFromGecko(chainID, queryList)
+	// call the two API endpoints async
+	chanLlama := make(chan []*bigNumber.Int)
+	go func() {
+		chanLlama <- fetchPricesFromLlama(chainID, queryList)
+	}()
+	chanGecko := make(chan []*bigNumber.Int)
+	go func() {
+		chanGecko <- fetchPricesFromGecko(chainID, queryList)
+	}()
+	pricesLlama := <-chanLlama
+	pricesGecko := <-chanGecko
+
 	for index, token := range queryList {
 		priceLlama := pricesLlama[index]
 		if priceLlama != nil && !priceLlama.IsZero() {

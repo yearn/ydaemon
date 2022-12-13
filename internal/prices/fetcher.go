@@ -138,6 +138,7 @@ func fetchPriceFromLlama(chainID uint64, token common.Address) *bigNumber.Int {
 	resp, err := http.Get(env.LLAMA_PRICE_URL + tokenString)
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+		return bigNumber.NewInt(0)
 	}
 	// Defer the closing of the response body to avoid memory leaks
 	defer resp.Body.Close()
@@ -146,12 +147,12 @@ func fetchPriceFromLlama(chainID uint64, token common.Address) *bigNumber.Int {
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
-		return nil
+		return bigNumber.NewInt(0)
 	}
 	priceData := TLlamaPrice{}
 	if err := json.Unmarshal(body, &priceData); err != nil {
 		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
-		return nil
+		return bigNumber.NewInt(0)
 	}
 	// Convert price into USDC decimals
 	price := bigNumber.NewFloat(priceData.Coins[tokenString].Price)
@@ -169,6 +170,7 @@ func fetchPriceFromGecko(chainID uint64, token common.Address) *bigNumber.Int {
 	resp, err := http.Get(env.GECKO_PRICE_URL + env.GECKO_CHAIN_NAMES[chainID] + `/contract/` + token.String())
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
+		return bigNumber.NewInt(0)
 	}
 	// Defer the closing of the response body to avoid memory leaks
 	defer resp.Body.Close()
@@ -177,12 +179,12 @@ func fetchPriceFromGecko(chainID uint64, token common.Address) *bigNumber.Int {
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
-		return nil
+		return bigNumber.NewInt(0)
 	}
 	priceData := TGeckoPrice{}
 	if err := json.Unmarshal(body, &priceData); err != nil {
 		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
-		return nil
+		return bigNumber.NewInt(0)
 	}
 	// Convert price into USDC decimals
 	price := bigNumber.NewFloat(priceData.MarketData.CurrentPrice.USDPrice)

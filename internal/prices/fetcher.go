@@ -22,6 +22,8 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
+var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
+
 /**************************************************************************************************
 ** fetchPrices will, for a list of addresses, try to fetch all the prices from the lens price
 ** oracle. If the price is not available, it will try to fetch it from some external API.
@@ -82,7 +84,7 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 		if tokenPrice.IsZero() {
 			continue
 		}
-		newPriceMap[token] = bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
+		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
 	}
 
 	/**********************************************************************************************
@@ -122,13 +124,18 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
+	if priceErrorAlreadySent[chainID] == nil {
+		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
+	}
+
 	for _, token := range tokenList {
-		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			traces.
 				Capture(`error`, `missing a valid price for token `+token.String()).
 				SetEntity(`prices`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				Send()
+			priceErrorAlreadySent[chainID][token] = true
 		}
 	}
 

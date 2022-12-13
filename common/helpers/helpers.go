@@ -3,10 +3,12 @@ package helpers
 import (
 	"io/ioutil"
 	"math"
+	"math/big"
 	"os"
 	"strconv"
 	"strings"
 
+	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/traces"
@@ -176,4 +178,35 @@ func AddressToString(arr []common.Address) []string {
 		arrStr[i] = v.String()
 	}
 	return arrStr
+}
+
+func DecodeString(something []interface{}) string {
+	if len(something) == 0 {
+		return ""
+	}
+	return something[0].(string)
+}
+func DecodeUint64(something []interface{}) uint64 {
+	if len(something) == 0 {
+		return 0
+	}
+	return uint64(something[0].(uint8))
+}
+func DecodeBigInt(something []interface{}) *bigNumber.Int {
+	if len(something) == 0 {
+		return bigNumber.NewInt(0)
+	}
+	return bigNumber.SetInt(something[0].(*big.Int))
+}
+func DecodeBool(something []interface{}) bool {
+	if len(something) == 0 {
+		return false
+	}
+	return something[0].(bool)
+}
+func DecodeAddress(something []interface{}) ethcommon.Address {
+	if len(something) == 0 {
+		return ethcommon.Address{}
+	}
+	return something[0].(ethcommon.Address)
 }

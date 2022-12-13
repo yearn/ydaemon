@@ -4,6 +4,7 @@ import (
 	"context"
 	"math"
 	"math/big"
+	"net/url"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -14,6 +15,7 @@ import (
 )
 
 var RPC = map[uint64]*ethclient.Client{}
+var WS = map[uint64]*ethclient.Client{}
 
 // GetRPC returns the current connection for a specific chain
 func GetRPC(chainID uint64) *ethclient.Client {
@@ -57,4 +59,25 @@ func randomSigner() *bind.TransactOpts {
 	signer.GasTipCap = big.NewInt(0)
 	signer.GasPrice = big.NewInt(0)
 	return signer
+}
+
+// GetWSClient returns the current ws connection for a specific chain
+func GetWSClient(chainID uint64) (*ethclient.Client, error) {
+	if WS[chainID] == nil {
+		// uriString := GetRPCURI(chainID)
+		uriString := `http://localhost:8545`
+		uri, _ := url.Parse(uriString)
+		if uri.Scheme == `https` {
+			uri.Scheme = `wss`
+		} else {
+			uri.Scheme = `ws`
+		}
+
+		client, err := ethclient.Dial(uri.String())
+		if err != nil {
+			return nil, err
+		}
+		WS[chainID] = client
+	}
+	return WS[chainID], nil
 }

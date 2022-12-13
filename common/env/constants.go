@@ -162,4 +162,4 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 }
 
 // GECKO_PRICE_URL contains the URL for the CoinGecko API
-var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/coins/`
+var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`

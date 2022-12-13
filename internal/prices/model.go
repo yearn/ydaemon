@@ -39,15 +39,8 @@ type TLlamaPrice struct {
 	Coins map[string]TLlamaPriceData `json:"coins"`
 }
 
-type TGeckoPrice struct {
-	TokenId    string `json:"id"`
-	Symbol     string `json:"symbol"`
-	Name       string `json:"name"`
-	MarketData struct {
-		CurrentPrice struct {
-			USDPrice float64 `json:"usd"`
-		} `json:"current_price"`
-	} `json:"market_data"`
+type TGeckoPrice map[string]struct {
+	USDPrice float64 `json:"usd"`
 }
 
 /**********************************************************************************************

@@ -29,6 +29,20 @@ type TCurveFactories struct {
 	} `json:"data"`
 }
 
+type TLlamaPriceData struct {
+	Decimals int     `json:"decimals"`
+	Price    float64 `json:"price"`
+	Symbol   string  `json:"symbol"`
+}
+
+type TLlamaPrice struct {
+	Coins map[string]TLlamaPriceData `json:"coins"`
+}
+
+type TGeckoPrice map[string]struct {
+	USDPrice float64 `json:"usd"`
+}
+
 /**********************************************************************************************
 ** Set of functions to store and retrieve the prices from the cache and/or database and being
 ** able to access them from the rest of the application.

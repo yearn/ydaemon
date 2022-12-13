@@ -1,9 +1,13 @@
 package prices
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"math"
 	"math/big"
+	"net/http"
 	"strconv"
+	"strings"
 	"sync"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
@@ -11,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -94,13 +99,48 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	}
 
 	/**********************************************************************************************
+	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
+	**********************************************************************************************/
+	queryList := []common.Address{}
+	for _, token := range tokenList {
+		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+			queryList = append(queryList, token)
+		}
+	}
+	// Call the two API endpoints async if we are missing prices
+	if len(queryList) > 0 {
+		chanLlama := make(chan []*bigNumber.Int)
+		go func() {
+			chanLlama <- fetchPricesFromLlama(chainID, queryList)
+		}()
+		chanGecko := make(chan []*bigNumber.Int)
+		go func() {
+			chanGecko <- fetchPricesFromGecko(chainID, queryList)
+		}()
+		pricesLlama := <-chanLlama
+		pricesGecko := <-chanGecko
+
+		for index, token := range queryList {
+			priceLlama := pricesLlama[index]
+			if priceLlama != nil && !priceLlama.IsZero() {
+				newPriceMap[token] = priceLlama
+				continue
+			}
+			priceGecko := pricesGecko[index]
+			if priceGecko != nil && !priceGecko.IsZero() {
+				newPriceMap[token] = priceGecko
+			}
+		}
+	}
+
+	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
 	if priceErrorAlreadySent[chainID] == nil {
 		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
 	}
 
-	for _, token := range tokenList {
+	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			traces.
 				Capture(`error`, `missing a valid price for token `+token.String()).
@@ -112,6 +152,105 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	}
 
 	return newPriceMap
+}
+
+/**************************************************************************************************
+** fetchPriceFromLlama tries to fetch the price for a given token from
+** the DeFiLlama pricing API, returns nil if there is no data returned
+**************************************************************************************************/
+func fetchPricesFromLlama(chainID uint64, tokens []common.Address) []*bigNumber.Int {
+	// Return nil pointers as default
+	prices := make([]*bigNumber.Int, len(tokens))
+
+	var tokenString []string
+	for _, token := range tokens {
+		tokenString = append(tokenString, env.LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
+	}
+	resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
+	if err != nil || resp.StatusCode != 200 {
+		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+		return prices
+	}
+	// Defer the closing of the response body to avoid memory leaks
+	defer resp.Body.Close()
+
+	// Read the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
+		return prices
+	}
+	priceData := TLlamaPrice{}
+	if err := json.Unmarshal(body, &priceData); err != nil {
+		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
+		return prices
+	}
+
+	// Parse response
+	decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
+	for index, tokenStr := range tokenString {
+		data, ok := priceData.Coins[tokenStr]
+		// Convert price into USDC decimals
+		if ok {
+			price := bigNumber.NewFloat(data.Price)
+			prices[index] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
+		}
+	}
+	return prices
+}
+
+/**************************************************************************************************
+** fetchPriceFromGecko tries to fetch the price for a given token from
+** the CoinGecko API, returns nil if there is no data returned
+**************************************************************************************************/
+func fetchPricesFromGecko(chainID uint64, tokens []common.Address) []*bigNumber.Int {
+	// Return nil pointers as default
+	prices := make([]*bigNumber.Int, len(tokens))
+
+	var tokenString []string
+	for _, token := range tokens {
+		tokenString = append(tokenString, strings.ToLower(token.String()))
+	}
+	req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+env.GECKO_CHAIN_NAMES[chainID], nil)
+	if err != nil {
+		logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
+		return prices
+	}
+	q := req.URL.Query()
+	q.Add("contract_addresses", strings.Join(tokenString, ","))
+	q.Add("vs_currencies", "usd")
+	req.URL.RawQuery = q.Encode()
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil || resp.StatusCode != 200 {
+		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+		return prices
+	}
+	// Defer the closing of the response body to avoid memory leaks
+	defer resp.Body.Close()
+
+	// Read the response body
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
+		return prices
+	}
+	priceData := TGeckoPrice{}
+	if err := json.Unmarshal(body, &priceData); err != nil {
+		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
+		return prices
+	}
+
+	// Parse response
+	decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
+	for index, tokenStr := range tokenString {
+		data, ok := priceData[tokenStr]
+		// Convert price into USDC decimals
+		if ok {
+			price := bigNumber.NewFloat(data.USDPrice)
+			prices[index] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
+		}
+	}
+	return prices
 }
 
 /**************************************************************************************************

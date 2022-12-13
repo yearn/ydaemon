@@ -140,7 +140,7 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
 	}
 
-	for _, token := range tokenList {
+	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			traces.
 				Capture(`error`, `missing a valid price for token `+token.String()).

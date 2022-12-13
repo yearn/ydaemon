@@ -108,7 +108,6 @@ func indexNewVaults(
 				Type:            "Standard",
 			}
 			logs.Info(`New Vault detected by indexer!`)
-			logs.Pretty(newVault)
 
 			newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
 				newVault.VaultsAddress: newVault,

@@ -261,7 +261,6 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	vaultMap := make(map[ethcommon.Address]*TVault)
 	store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
-	logs.Pretty(`BEFORE`, len(vaultMap))
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of vaults. In order to proceed, we will

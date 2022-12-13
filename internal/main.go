@@ -50,7 +50,7 @@ func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duratio
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllVaults(chainID uint64, vaultsMap map[ethcommon.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)

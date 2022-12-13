@@ -19,33 +19,7 @@ import (
 
 var stratGroupErrorAlreadySent = make(map[uint64]map[string]bool)
 
-func excludeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.Exclude) > 0 {
-		for _, stratExclude := range group.Criteria.Exclude {
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(stratExclude)) {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func includeAddress(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	return helpers.Contains(group.Criteria.Strategies, common.FromAddress(strat.Address))
-}
-
-func includeNameLike(strat *TStrategy, group TStrategyGroupFromRisk) bool {
-	if len(group.Criteria.NameLike) > 0 {
-		for _, nameLike := range group.Criteria.NameLike {
-			if strings.Contains(strings.ToLower(strat.Name), strings.ToLower(nameLike)) {
-				return true
-			}
-		}
-	}
-	return false
-}
-
-func getTVLImpact(tvlUSDC *bigNumber.Float) float64 {
+func getTVLImpact(tvlUSDC *bigNumber.Float) int {
 	tvl, _ := tvlUSDC.Float32()
 	switch {
 	case tvl == 0:

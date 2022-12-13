@@ -9,7 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"

@@ -154,8 +154,13 @@ func fetchPriceFromLlama(chainID uint64, token common.Address) *bigNumber.Int {
 		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 		return bigNumber.NewInt(0)
 	}
+	data, ok := priceData.Coins[tokenString]
+	if !ok {
+		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+		return bigNumber.NewInt(0)
+	}
 	// Convert price into USDC decimals
-	price := bigNumber.NewFloat(priceData.Coins[tokenString].Price)
+	price := bigNumber.NewFloat(data.Price)
 	decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
 	priceUSDC := bigNumber.NewFloat().Mul(price, decimalsUSDC)
 	return priceUSDC.Int()

@@ -40,6 +40,17 @@ func UniqueArrayAddress[T comparable](arr []T) []T {
 	return result
 }
 
+// RemoveFromArray is used to find and remove an element from an array
+func RemoveFromArray[T comparable](arr []T, element T) []T {
+	result := []T{}
+	for i := range arr {
+		if arr[i] != element {
+			result = append(result, arr[i])
+		}
+	}
+	return result
+}
+
 // ReadAllFilesInDir is used to grab the content of all the files in a specific directory,
 // matching the suffix condition
 func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, error) {

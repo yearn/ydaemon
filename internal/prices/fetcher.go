@@ -143,7 +143,7 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			traces.
-				Capture(`error`, `missing a valid price for token `+token.String()).
+				Capture(`error`, `missing a valid price for token `+token.String()+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`prices`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				Send()
@@ -323,6 +323,34 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 	}
 	for _, tokenAddress := range extraTokens[chainID] {
 		allTokens = append(allTokens, common.HexToAddress(tokenAddress))
+	}
+
+	/**********************************************************************************************
+	** Some tokens are just useless, errors or not wanted. We will remove them from the list.
+	**********************************************************************************************/
+	ignoredTokens := map[uint64][]string{
+		1: {
+			`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`, // nothing
+			`0x61f46C65E403429266e8b569F23f70dD75d9BeE7`, // Old lp-yCRV
+			`0x8a0889d47f9Aa0Fac1cC718ba34E26b867437880`, // Old st-yCRV
+			`0x4c1317326fD8EFDeBdBE5e1cd052010D97723bd6`, // Another old st-yCRV
+			`0x2E919d27D515868f3D5Bc9110fa738f9449FC6ad`, // Old yvCurve-yveCRV pool
+			`0x7E46fd8a30869aa9ed55af031067Df666EfE87da`, // Old yvecrv-f
+			`0x5904BAcE7a9cCab585242e9d22f67C9f2F1BF7E2`, // nothing
+			`0x0309A528bBa0394dC4A2Ce59123C52E317A54604`, // Old yCRV-f
+			`0xBF7AA989192b020a8d3e1C65a558e123834325cA`, // Irrelevant HBTC yVault
+			`0xe92AE2cF5b373c1713eB5855D4D3aF81D8a8aCAE`, // Curve Stax Frax/Temple xLP + LP yVault - Unlisted
+			`0x3883f5e181fccaF8410FA61e12b59BAd963fb645`, // Theta: Old Token
+		},
+		10:  {},
+		250: {},
+		42161: {
+			`0x976a1C749cd8153909e0B04EebE931eF8957b15b`, // PHPTest
+			`0xFa247d0D55a324ca19985577a2cDcFC383D87953`, // Philippine Peso (PHP)
+		},
+	}
+	for _, tokenAddress := range ignoredTokens[chainID] {
+		allTokens = helpers.RemoveFromArray(allTokens, common.HexToAddress(tokenAddress))
 	}
 	allTokens = helpers.UniqueArrayAddress(allTokens)
 

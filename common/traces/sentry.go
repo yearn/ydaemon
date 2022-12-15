@@ -141,6 +141,7 @@ func Capture(level string, msg string, tags ...TTags) *TCapturedEvent {
 	event := sentry.NewEvent()
 	event.Level = captureLevel[level]
 	event.Message = msg
+	event.Fingerprint = []string{msg}
 	if len(tags) > 0 {
 		for _, tag := range tags {
 			event.Tags[tag.Name] = tag.Value

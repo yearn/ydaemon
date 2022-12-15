@@ -5,6 +5,7 @@ import (
 	"math"
 	"math/big"
 	"net/url"
+	"strconv"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -12,6 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 )
 
 var RPC = map[uint64]*ethclient.Client{}
@@ -75,6 +77,14 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 
 		client, err := ethclient.Dial(uri.String())
 		if err != nil {
+			traces.
+				Capture(`error`, `error while openning ws client for chain `+strconv.FormatUint(chainID, 10)).
+				SetEntity(`websocket`).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`baseURI`, uriString).
+				SetTag(`wsURI`, uri.String()).
+				SetExtra(`error`, err.Error()).
+				Send()
 			return nil, err
 		}
 		WS[chainID] = client

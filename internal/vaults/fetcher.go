@@ -149,7 +149,7 @@ func fetchBasicInformations(
 			Symbol:                shareTokenData.Symbol,
 			Decimals:              shareTokenData.Decimals,
 			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
-			Type:                  `v2`,  //Always v2 for now
+			Type:                  `v2`,  //Always v2
 			Endorsed:              false, //Default to false, will be updated later
 			Inception:             helpers.DecodeBigInt(rawActivation).Uint64(),
 			Version:               helpers.DecodeString(rawApiVersion),

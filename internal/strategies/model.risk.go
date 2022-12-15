@@ -2,6 +2,7 @@ package strategies
 
 import (
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/types/common"
 )
 
@@ -60,6 +61,14 @@ type TStrategyFromRisk struct {
 **********************************************************************************************/
 var _strategyRiskGroupMap = make(map[uint64]map[string]*TStrategyGroupFromRisk)
 
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _strategyRiskGroupMap[chainID]; !ok {
+			_strategyRiskGroupMap[chainID] = make(map[string]*TStrategyGroupFromRisk)
+		}
+	}
+}
+
 /**********************************************************************************************
 ** ListStrategiesRiskGroups will, for a given chainID, return the list of all the strategies
 ** groups stored in the _strategyRiskGroupMap.
@@ -81,8 +90,5 @@ func ListStrategiesRiskGroups(chainID uint64) []*TStrategyGroupFromRisk {
 ** setRiskGroupInMap will put a TStrategyGroupFromRisk in the _strategyRiskGroupMap variable.
 **********************************************************************************************/
 func setRiskGroupInMap(chainID uint64, riskGroup *TStrategyGroupFromRisk) {
-	if _, ok := _strategyRiskGroupMap[chainID]; !ok {
-		_strategyRiskGroupMap[chainID] = make(map[string]*TStrategyGroupFromRisk)
-	}
 	_strategyRiskGroupMap[chainID][riskGroup.Label] = riskGroup
 }

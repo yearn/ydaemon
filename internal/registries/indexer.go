@@ -174,6 +174,7 @@ func indexNewVaultsWrapper(
 				SetEntity(`registry`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				SetTag(`registryAddress`, registryAddress.Hex()).
+				SetExtra(`error`, err.Error()).
 				Send()
 		}
 		if !shouldRetry {

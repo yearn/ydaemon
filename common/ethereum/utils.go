@@ -64,8 +64,8 @@ func randomSigner() *bind.TransactOpts {
 // GetWSClient returns the current ws connection for a specific chain
 func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	if WS[chainID] == nil {
-		// uriString := GetRPCURI(chainID)
-		uriString := `http://localhost:8545`
+		uriString := GetRPCURI(chainID)
+		// uriString := `http://localhost:8545`
 		uri, _ := url.Parse(uriString)
 		if uri.Scheme == `https` {
 			uri.Scheme = `wss`

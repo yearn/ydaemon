@@ -272,7 +272,7 @@ func RetrieveAllVaults(
 	for _, currentVault := range vaults {
 		updatedVaultMap[currentVault.VaultsAddress] = &TVault{
 			Address:  currentVault.TokenAddress,
-			Endorsed: currentVault.Type == `Standard`,
+			Endorsed: currentVault.Type == `Standard` && currentVault.TokenAddress != ethcommon.Address{},
 		}
 	}
 

@@ -114,8 +114,8 @@ func fetchBasicInformations(
 		underlyingTokenData, ok := tokens.FindToken(chainID, common.FromAddress(helpers.DecodeAddress(rawUnderlying)))
 		if !ok {
 			token := common.FromAddress(helpers.DecodeAddress(rawUnderlying))
+			underlyingTokenData = &tokens.TERC20Token{}
 			if !metaVaultTokenErrorAlreadySent[chainID][token] {
-				underlyingTokenData = &tokens.TERC20Token{}
 				traces.
 					Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
 					SetEntity(`meta`).

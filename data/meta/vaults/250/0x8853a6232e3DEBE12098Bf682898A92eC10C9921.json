@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "4.3 wFTM Vault",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 13,
+  "migrationAvailable": true,
+  "migrationContract": "0x28FDD4EEFCDF08de57D3BC848090CC46060c3eD4",
+  "migrationTargetVault": "0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "wFTM",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "FTM"
+  }
+}

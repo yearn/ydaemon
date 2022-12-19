@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Single Sided Balancer",
-  "description": "Supplies {{token}} to a Stable Pool on [Balancer](https://app.balancer.fi) to earn BAL and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+  "description": "Supplies {{token}} to a liquidity pool on [Balancer](https://app.balancer.fi) to earn BAL and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
   "addresses": [
     "0xc31763c0c3025b9DF3Fb7Cb7f4AC041866F64F2E",
     "0x520BF095FA58cB3f68C18D01746041733A1f7b85",
@@ -19,7 +19,9 @@
     "0xB0F8b341951233BF08A5F15a838A1a85B016aEf9",
     "0x034d775615d50D870D742caA1e539fC8d97955c2",
     "0x960818b3F08dADca90b840298721FE7B419fBE12",
-    "0xb8A245f9a066AD49fEAF15443E7704b83e2A9bF0"
+    "0xb8A245f9a066AD49fEAF15443E7704b83e2A9bF0",
+    "0x99b8598bc993341B4576F299BCeA2Ecee95D94f0",
+    "0xd4485545e8D00fAa454ff95b4a016D1045eDf907"
   ],
   "protocols": ["Balancer"],
   "protocolVersion": {

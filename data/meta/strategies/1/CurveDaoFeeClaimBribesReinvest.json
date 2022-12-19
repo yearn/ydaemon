@@ -2,7 +2,10 @@
   "$schema": "strategy",
   "name": "Curve DAO Fee and Bribes Reinvest",
   "description": "Accepts {{token}} to earn a continuous share of [Curve Finance](https://curve.fi) fees and Curve DAO voting bribes. Earned [3Crv](https://curve.fi/3pool) (Curve's 3pool LP token) fees and rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Swap happens either via market-buy or mint, depending which is more capital efficient.",
-  "addresses": ["0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d"],
+  "addresses": [
+    "0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d",
+    "0xAf73A48E1d7e8300C91fFB74b8f5e721fBFC5873"
+  ],
   "protocols": ["Curve Finance"],
   "protocolVersion": {
     "Curve Finance": "1"

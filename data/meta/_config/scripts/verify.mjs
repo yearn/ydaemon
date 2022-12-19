@@ -1,11 +1,8 @@
 import fs from "fs-extra";
 import path from "path";
-
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
-
-import { getAddress, isAddress } from "@ethersproject/address";
-
+import ethers from "ethers";
 const SchemasDirectory = "./data/meta/_config/schema/";
 const DataDirectory = "./data/meta/";
 const IndexName = "index.json";
@@ -15,7 +12,13 @@ const StandardExtensions = [".json"];
 function loadValidators(schemaDir) {
 	const ajv = new Ajv.default();
 	addFormats(ajv);
-	ajv.addFormat("address", (value) => isAddress(value));
+	ajv.addFormat("address", (value) => {
+		if (ethers.utils.getAddress(value) === value) {
+			return true;
+		}
+		console.error(`Error: "${value}" is not a valid address. Should be ${ethers.utils.getAddress(value)}.`);
+		return false
+	});
 	const validators = {};
 	for (let name of fs.readdirSync(schemaDir)) {
 		const file = path.join(schemaDir, name);
@@ -27,6 +30,7 @@ function loadValidators(schemaDir) {
 			const schema = JSON.parse(fs.readFileSync(file, "utf-8"));
 			validators[type] = ajv.compile(schema);
 		} catch (error) {
+			console.error(error)
 			console.error(`Error: "${file}" is not a valid schema.`);
 			process.exit(1);
 		}
@@ -66,6 +70,20 @@ function validate(directory, validators) {
 					allValid = false;
 					continue;
 				}
+
+				if (name.startsWith("0x") && name.endsWith(".json") && name.length === (42 + 5)) {
+					const	rawAddress = name.replace(`.json`, ``)
+					try {
+						if (ethers.utils.getAddress(rawAddress) !== rawAddress) {
+							console.error(`Error: "${name}" is not checksummed. ("${file}")`);
+							allValid = false;
+						}
+					} catch {
+						console.error(`Error: "${name}" is not a valid address. ("${file}")`);
+						allValid = false;
+					}
+				}
+
 				const valid = validator(data);
 				if (!valid) {
 					console.error(`Error: "${file}" does not follow "${schema}" schema:`);
@@ -78,15 +96,15 @@ function validate(directory, validators) {
 					}
 					allValid = false;
 				}
-			} catch {
-				console.error(`Error: "${file}" is not a valid JSON file.`);
+			} catch (error) {
+				console.error(`Error: "${file}" is not a valid JSON file: [${error.argument}: ${error.reason} for value ${error.value}]`);
 				allValid = false;
 				continue;
 			}
 		} else if (stat.isDirectory()) {
 			if (name.startsWith("0x")) {
 				try {
-					if (getAddress(name) !== name) {
+					if (ethers.utils.getAddress(name) !== name) {
 						console.error(`Error: "${name}" is not checksummed. ("${file}")`);
 						allValid = false;
 					}

@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "tripod",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 2,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"tripod"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

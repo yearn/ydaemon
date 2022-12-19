@@ -3,44 +3,98 @@ package meta
 import (
 	"encoding/json"
 	"strconv"
-	"sync"
 
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/utils/helpers"
-	"github.com/yearn/ydaemon/internal/utils/logs"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/traces"
 )
 
-// FetchProtocolsFromMeta fetches the protocols information from the data/meta folder for a given chainID
-// and store the result to the global variable ProtocolsFromMeta for later use.
-func FetchProtocolsFromMeta(chainID uint64) {
-	protocols := []TProtocolsFromMeta{}
+// TProtocolsFromMeta is the structure of data for the protocols metadata stored in data/meta/protocols
+type TProtocolsFromMeta struct {
+	Name         string         `json:"name"`
+	Description  string         `json:"description"`
+	ChainID      uint64         `json:"chainID"`
+	Localization *TLocalization `json:"localization,omitempty"`
+}
+
+/**********************************************************************************************
+** Set of functions to store and retrieve the tokens from the cache and/or database and being
+** able to access them from the rest of the application.
+** The _vaultMap variable is not exported and is only used internally by the functions below.
+**********************************************************************************************/
+var _metaProtocolMap = make(map[uint64]map[string]*TProtocolsFromMeta)
+
+/**********************************************************************************************
+** setProtocolInMap will put a TProtocolsFromMeta in the _metaProtocolMap variable.
+**********************************************************************************************/
+func setProtocolInMap(chainID uint64, protocol *TProtocolsFromMeta) {
+	if _, ok := _metaProtocolMap[chainID]; !ok {
+		_metaProtocolMap[chainID] = make(map[string]*TProtocolsFromMeta)
+	}
+	_metaProtocolMap[chainID][protocol.Name] = protocol
+}
+
+/**********************************************************************************************
+** GetMetaProtocol will, for a given chainID, try to retrieve the protocol from the
+** _metaProtocolMap variable.
+** It will return the protocol if found, and a boolean indicating if the protocol was found or
+** not.
+**********************************************************************************************/
+func GetMetaProtocol(chainID uint64, protocolName string) (*TProtocolsFromMeta, bool) {
+	if protocolsForChain, ok := _metaProtocolMap[chainID]; ok {
+		if protocol, ok := protocolsForChain[protocolName]; ok {
+			return protocol, true
+		}
+	}
+	return nil, false
+}
+
+/**********************************************************************************************
+** ListMetaProtocol will, for a given chainID, list all the protocols from the _metaProtocolMap
+** variable.
+**********************************************************************************************/
+func ListMetaProtocol(chainID uint64) []*TProtocolsFromMeta {
+	var protocols []*TProtocolsFromMeta
+	for _, protocol := range _metaProtocolMap[chainID] {
+		protocols = append(protocols, protocol)
+	}
+	return protocols
+}
+
+/**************************************************************************************************
+** RetrieveAllProtocolsFromFiles will read all files in the /meta/protocols directory for a given
+** chainID and store them in the _metaProtocolMap global variable.
+** The goal of this function is to get a list of all protocols information about the vaults for a
+** given chainID.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+**************************************************************************************************/
+func RetrieveAllProtocolsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/protocols/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		logs.Warning("Error fetching meta information from the Yearn Meta API for chain", chainID)
+		traces.
+			Capture(`warn`, `impossible to read meta files for protocols on chain `+chainIDStr).
+			SetEntity(`meta`).
+			SetExtra(`error`, err.Error()).
+			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+			Send()
 		return
 	}
 	for _, content := range content {
 		protocol := TProtocolsFromMeta{}
 		if err := json.Unmarshal(content, &protocol); err != nil {
-			logs.Warning("Error unmarshalling response body from the Yearn Meta API")
+			traces.
+				Capture(`warn`, `impossible to unmarshall meta files for protocols response body `+chainIDStr).
+				SetEntity(`meta`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetExtra(`content`, string(content)).
+				Send()
 			continue
 		}
-		protocols = append(protocols, protocol)
+		protocol.ChainID = chainID
+		setProtocolInMap(chainID, &protocol)
 	}
-	Store.RawMetaProtocols[chainID] = protocols
-
-	if Store.ProtocolsFromMeta[chainID] == nil {
-		Store.ProtocolsFromMeta[chainID] = make(map[string]TProtocolsFromMeta)
-	}
-	for _, protocol := range protocols {
-		Store.ProtocolsFromMeta[chainID][protocol.Name] = protocol
-	}
-}
-
-// LoadMetaProtocols is kept in order to have the same behavior everywhere, but as the data
-// exists in the same directory as yDaemon, saving the data in the DB is not necessary.
-func LoadMetaProtocols(chainID uint64, wg *sync.WaitGroup) {
-	_ = chainID
-	wg.Done()
 }

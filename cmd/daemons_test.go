@@ -4,15 +4,11 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yearn/ydaemon/internal/utils/env"
-	"github.com/yearn/ydaemon/internal/utils/store"
+	"github.com/yearn/ydaemon/common/env"
 )
 
 // init is fired directly on app start and prepare the multicall clients
 func TestDaemons(t *testing.T) {
-	store.OpenDB()
-	defer store.CloseDB()
-
 	var wg sync.WaitGroup
 
 	//Testing for chainID == 1

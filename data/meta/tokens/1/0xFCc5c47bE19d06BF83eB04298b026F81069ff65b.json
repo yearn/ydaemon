@@ -1,0 +1,50 @@
+{
+  "$schema": "token",
+  "name": "Yearn CRV",
+  "symbol": "yCRV",
+  "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights.",
+  "categories": ["Governance Tokens"],
+  "website": "https://y.finance",
+  "type": "DeFi",
+  "localization": {
+    "en": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "fr": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "es": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "de": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "pt": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "el": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "tr": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "vi": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "zh": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "hi": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "ja": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "id": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    },
+    "ru": {
+      "description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of three `activated` positons to earn yield or voting power: st-yCRV, lp-yCRV, and vl-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees. vl-yCRV yVault is for voting power on Curve.fi gauge weights."
+    }
+  }
+}

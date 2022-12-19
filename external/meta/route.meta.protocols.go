@@ -26,6 +26,11 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 	}
 	localizedProtocolsFromMeta := []*meta.TProtocolsFromMeta{}
 	for _, protocol := range protocolsFromMeta {
+		if protocol.Localization == nil {
+			protocol.Localization = nil
+			localizedProtocolsFromMeta = append(localizedProtocolsFromMeta, protocol)
+			continue
+		}
 		local := selectLocalizationFromString(localization, *protocol.Localization)
 		protocol.Name = local.Name
 		protocol.Description = local.Description
@@ -53,6 +58,11 @@ func (y Controller) GetMetaProtocol(c *gin.Context) {
 	}
 
 	if localization == "all" {
+		c.JSON(http.StatusOK, protocolFromMeta)
+		return
+	}
+	if protocolFromMeta.Localization == nil {
+		protocolFromMeta.Localization = nil
 		c.JSON(http.StatusOK, protocolFromMeta)
 		return
 	}

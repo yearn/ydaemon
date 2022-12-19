@@ -48,6 +48,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		}
 
 		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+		newVault.Strategies = []*TStrategy{}
 		for _, strategy := range vaultStrategies {
 			var externalStrategy *TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)

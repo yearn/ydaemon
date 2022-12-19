@@ -68,56 +68,110 @@ func indexNewVaults(
 		currentBlock = lastSyncedBlock
 	}
 
-	/**********************************************************************************************
-	** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
-	** No error should happen here, but if it does, we just return.
-	**********************************************************************************************/
-	currentVault, _ := contracts.NewYregistryv2(registryAddress, client)
-	channel := make(chan *contracts.Yregistryv2NewVault)
-	watcher, err := currentVault.WatchNewVault(
-		&bind.WatchOpts{Start: &currentBlock},
-		channel,
-		nil,
-		nil,
-	)
-	if err != nil {
-		return currentBlock, false, err
-	}
+	if registryVersion == 1 || registryVersion == 2 {
+		/**********************************************************************************************
+		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
+		** No error should happen here, but if it does, we just return.
+		**********************************************************************************************/
+		currentVault, _ := contracts.NewYregistryv2(registryAddress, client)
+		channel := make(chan *contracts.Yregistryv2NewVault)
+		watcher, err := currentVault.WatchNewVault(
+			&bind.WatchOpts{Start: &currentBlock},
+			channel,
+			nil,
+			nil,
+		)
+		if err != nil {
+			return currentBlock, false, err
+		}
 
-	/**********************************************************************************************
-	** Listen to the channel forever, and handle the new events as they are emitted. Once an event
-	** is received, we also update the lastSyncedBlock to be able to filter the next events from
-	** that block.
-	** On error, fallback to the default setup
-	**********************************************************************************************/
-	for {
-		select {
-		case log := <-channel:
-			lastSyncedBlock = log.Raw.BlockNumber
-			newVault := utils.TVaultsFromRegistry{
-				RegistryAddress: registryAddress,
-				VaultsAddress:   log.Vault,
-				TokenAddress:    log.Token,
-				APIVersion:      log.ApiVersion,
-				BlockNumber:     log.Raw.BlockNumber,
-				Activation:      log.Raw.BlockNumber,
-				ManagementFee:   200,
-				BlockHash:       log.Raw.BlockHash,
-				TxIndex:         log.Raw.TxIndex,
-				LogIndex:        log.Raw.Index,
-				Type:            "Standard",
-			}
-			logs.Info(`New Vault detected by indexer!`)
+		/**********************************************************************************************
+		** Listen to the channel forever, and handle the new events as they are emitted. Once an event
+		** is received, we also update the lastSyncedBlock to be able to filter the next events from
+		** that block.
+		** On error, fallback to the default setup
+		**********************************************************************************************/
+		for {
+			select {
+			case log := <-channel:
+				lastSyncedBlock = log.Raw.BlockNumber
+				newVault := utils.TVaultsFromRegistry{
+					RegistryAddress: registryAddress,
+					VaultsAddress:   log.Vault,
+					TokenAddress:    log.Token,
+					APIVersion:      log.ApiVersion,
+					BlockNumber:     log.Raw.BlockNumber,
+					Activation:      log.Raw.BlockNumber,
+					ManagementFee:   200,
+					BlockHash:       log.Raw.BlockHash,
+					TxIndex:         log.Raw.TxIndex,
+					LogIndex:        log.Raw.Index,
+					Type:            "Standard",
+				}
+				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
-			newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
-				newVault.VaultsAddress: newVault,
+				newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
+					newVault.VaultsAddress: newVault,
+				}
+				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
+				indexer.ProcessNewVault(chainID, newVaultList)
+			case err := <-watcher.Err():
+				return lastSyncedBlock, true, err
 			}
-			vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
-			indexer.ProcessNewVault(chainID, newVaultList)
-		case err := <-watcher.Err():
-			return lastSyncedBlock, true, err
+		}
+	} else if registryVersion == 3 {
+		/**********************************************************************************************
+		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
+		** No error should happen here, but if it does, we just return.
+		**********************************************************************************************/
+		currentVault, _ := contracts.NewYRegistryV3(registryAddress, client)
+		channel := make(chan *contracts.YRegistryV3NewVault)
+		watcher, err := currentVault.WatchNewVault(
+			&bind.WatchOpts{Start: &currentBlock},
+			channel,
+			nil,
+			nil,
+		)
+		if err != nil {
+			return currentBlock, false, err
+		}
+
+		/**********************************************************************************************
+		** Listen to the channel forever, and handle the new events as they are emitted. Once an event
+		** is received, we also update the lastSyncedBlock to be able to filter the next events from
+		** that block.
+		** On error, fallback to the default setup
+		**********************************************************************************************/
+		for {
+			select {
+			case log := <-channel:
+				lastSyncedBlock = log.Raw.BlockNumber
+				newVault := utils.TVaultsFromRegistry{
+					RegistryAddress: registryAddress,
+					VaultsAddress:   log.Vault,
+					TokenAddress:    log.Token,
+					APIVersion:      log.ApiVersion,
+					BlockNumber:     log.Raw.BlockNumber,
+					Activation:      log.Raw.BlockNumber,
+					ManagementFee:   200,
+					BlockHash:       log.Raw.BlockHash,
+					TxIndex:         log.Raw.TxIndex,
+					LogIndex:        log.Raw.Index,
+					Type:            "Standard",
+				}
+				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+
+				newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
+					newVault.VaultsAddress: newVault,
+				}
+				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
+				indexer.ProcessNewVault(chainID, newVaultList)
+			case err := <-watcher.Err():
+				return lastSyncedBlock, true, err
+			}
 		}
 	}
+	return lastSyncedBlock, true, err
 }
 
 /**************************************************************************************************
@@ -162,6 +216,7 @@ func indexNewVaultsWrapper(
 	shouldRetry := true
 	err := error(nil)
 	for {
+
 		lastSyncedBlock, shouldRetry, err = indexNewVaults(
 			chainID,
 			registryAddress,

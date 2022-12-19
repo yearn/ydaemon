@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/utils"
@@ -155,6 +156,7 @@ func filterNewVaults(
 					LogIndex:        log.Event.Raw.Index,
 					Type:            "Standard",
 				})
+				logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 			}
 		} else {
 			traces.

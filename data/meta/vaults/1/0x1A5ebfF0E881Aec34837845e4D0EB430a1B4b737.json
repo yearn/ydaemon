@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve FraxBP-f",
+  "hideAlways": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 265,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve FRAXBP Factory",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

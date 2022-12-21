@@ -1,15 +1,15 @@
 {
   "$schema": "vault",
-  "comment": "Curve cbETH-f",
+  "comment": "Curve stETH-f",
   "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 264,
+  "order": 266,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve cbETH Factory",
+  "displayName": "Curve stETH Factory",
   "classification": {
     "isAutomated": true,
     "isPool": true,

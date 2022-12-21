@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve CVX-ETH Vault",
+  "comment": "Curve CVX-ETH Vault-f",
   "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve CVX-ETH Factory yVault",
+  "displayName": "Curve CVX-ETH Factory",
   "classification": {
     "isAutomated": true,
     "isPool": true,

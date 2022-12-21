@@ -1,19 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve 3Crypto-f",
+  "comment": "Curve cbETH-f",
   "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 261,
+  "order": 264,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve 3Crypto Factory",
+  "displayName": "Curve cbETH Factory",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Volatile"
+    "stability": "Correlated",
+    "stableBaseAsset": "ETH"
   }
 }

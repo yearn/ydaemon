@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Convex Reinvest",
-  "description": "Supplies {{token}} to [Convex Finance](https://www.convexfinance.com/stake) to earn CRV and CVX (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "description": "Supplies {{token}} to [Convex Finance](https://www.convexfinance.com/stake) boosted by Convex's veCRV to earn CRV and CVX (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": [
     "0x864F408B422B7d33416AC678b1a1A7E6fbcF5C8c",
     "0xfb0702469A1a0440E87C06605461E8660FD0F43d",
@@ -133,7 +133,16 @@
     "0xeB110c8A37fC23252da78a235Dc59ED5C386bCa7",
     "0x6C28899A71eCDcf1f94f2FCaa8845735460f7034",
     "0xc34229096524FeB4834c0cEf82774010fE0a931a",
-    "0xf8126EF025651E1B313a6893Fcf4034F4F4bD2aA"
+    "0xf8126EF025651E1B313a6893Fcf4034F4F4bD2aA",
+    "0x398c51c68989C5C0C193F17C387acD6a5E8e3a80",
+    "0xf6E8c7574636c9ef3f35355dA475D7E340A4eD62",
+    "0xF4B4464d03C1F3226C23Fe58407B558489510DaB",
+    "0xc9c5b887e984BB4914574755D12c997e4aE2D88F",
+    "0x092B34A37EF6eAAA95D67580DCF9B461c1e4971E",
+    "0x3E55bf8882d7f908b4aDA67055BE14A0AB14622B",
+    "0x89234C954cC17994999cBDA920e35306DCE232c2",
+    "0x03614B1DE305971f6642a01274af712b022ac904",
+    "0x890Dff8D79D0E9814d04b04a7433994D56C58b63"
   ],
   "protocols": ["Convex Finance", "Curve Finance"],
   "protocolVersion": {

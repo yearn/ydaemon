@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve cbETH-f",
+  "hideAlways": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 264,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve cbETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

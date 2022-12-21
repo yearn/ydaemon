@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Curve 3Crypto-f",
+  "hideAlways": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 261,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve 3Crypto",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
+}

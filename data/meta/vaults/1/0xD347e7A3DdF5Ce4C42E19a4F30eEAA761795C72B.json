@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve ibEUR-f",
+  "hideAlways": true,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 268,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve ibEUR",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "EUR"
+  }
+}

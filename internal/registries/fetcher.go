@@ -123,7 +123,7 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            "Standard",
+					Type:            utils.VaultTypeStandard,
 				})
 			}
 		} else {

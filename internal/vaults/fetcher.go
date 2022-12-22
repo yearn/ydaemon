@@ -271,14 +271,10 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	updatedVaultMap := make(map[ethcommon.Address]*TVault)
 	for _, currentVault := range vaults {
-		vaultType := VaultTypeVersion2
-		if currentVault.Type == utils.VaultTypeAutomated {
-			vaultType = VaultTypeVersion3
-		}
 		updatedVaultMap[currentVault.VaultsAddress] = &TVault{
 			Address:  currentVault.TokenAddress,
 			Endorsed: (currentVault.Type == utils.VaultTypeStandard || currentVault.Type == utils.VaultTypeAutomated) && currentVault.TokenAddress != ethcommon.Address{},
-			Type:     vaultType,
+			Type:     currentVault.Type,
 		}
 	}
 

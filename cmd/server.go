@@ -21,6 +21,7 @@ import (
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
+	"github.com/yearn/ydaemon/external/tokensList"
 	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
 )
@@ -171,6 +172,7 @@ func NewRouter() *gin.Engine {
 		c := tokens.Controller{}
 		GET(router, `tokens/all`, c.GetAllTokens)
 		GET(router, `:chainID/tokens/all`, c.GetTokens)
+		GET(router, `:chainID/tokenlistbalances/:address`, tokensList.GetTokenList)
 	}
 
 	// Prices API section

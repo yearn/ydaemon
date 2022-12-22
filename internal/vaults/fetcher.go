@@ -226,6 +226,7 @@ func findAllVaults(
 	newVaultMap := fetchBasicInformations(chainID, vaultListAddresses)
 	for _, vault := range newVaultMap {
 		vault.Endorsed = vaultMap[vault.Address].Endorsed
+		vault.Type = vaultMap[vault.Address].Type
 		newMap[vault.Address] = vault
 	}
 
@@ -270,9 +271,14 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	updatedVaultMap := make(map[ethcommon.Address]*TVault)
 	for _, currentVault := range vaults {
+		vaultType := VaultTypeVersion2
+		if currentVault.Type == utils.VaultTypeAutomated {
+			vaultType = VaultTypeVersion3
+		}
 		updatedVaultMap[currentVault.VaultsAddress] = &TVault{
 			Address:  currentVault.TokenAddress,
-			Endorsed: currentVault.Type == `Standard` && currentVault.TokenAddress != ethcommon.Address{},
+			Endorsed: (currentVault.Type == utils.VaultTypeStandard || currentVault.Type == utils.VaultTypeAutomated) && currentVault.TokenAddress != ethcommon.Address{},
+			Type:     vaultType,
 		}
 	}
 

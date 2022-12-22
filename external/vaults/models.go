@@ -97,28 +97,28 @@ type TExternalVaultDetails struct {
 
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
-	Address           common.Address          `json:"address"`
-	Symbol            string                  `json:"symbol"`
-	DisplaySymbol     string                  `json:"display_symbol"`
-	FormatedSymbol    string                  `json:"formated_symbol"`
-	Name              string                  `json:"name"`
-	DisplayName       string                  `json:"display_name"`
-	FormatedName      string                  `json:"formated_name"`
-	Icon              string                  `json:"icon"`
-	Version           string                  `json:"version"`
-	Type              string                  `json:"type"`
-	Category          string                  `json:"category"`
-	Inception         uint64                  `json:"inception"`
-	Decimals          uint64                  `json:"decimals"`
-	RiskScore         float64                 `json:"riskScore"`
-	Endorsed          bool                    `json:"endorsed"`
-	EmergencyShutdown bool                    `json:"emergency_shutdown"`
-	Token             tokens.TERC20Token      `json:"token"`
-	TVL               TExternalVaultTVL       `json:"tvl"`
-	APY               TExternalVaultAPY       `json:"apy"`
-	Details           *TExternalVaultDetails  `json:"details"`
-	Strategies        []*TStrategy            `json:"strategies"`
-	Migration         TExternalVaultMigration `json:"migration"`
+	Address           common.Address           `json:"address"`
+	Type              vaults.TVaultTypeVersion `json:"type"`
+	Symbol            string                   `json:"symbol"`
+	DisplaySymbol     string                   `json:"display_symbol"`
+	FormatedSymbol    string                   `json:"formated_symbol"`
+	Name              string                   `json:"name"`
+	DisplayName       string                   `json:"display_name"`
+	FormatedName      string                   `json:"formated_name"`
+	Icon              string                   `json:"icon"`
+	Version           string                   `json:"version"`
+	Category          string                   `json:"category"`
+	Inception         uint64                   `json:"inception"`
+	Decimals          uint64                   `json:"decimals"`
+	RiskScore         float64                  `json:"riskScore"`
+	Endorsed          bool                     `json:"endorsed"`
+	EmergencyShutdown bool                     `json:"emergency_shutdown"`
+	Token             tokens.TERC20Token       `json:"token"`
+	TVL               TExternalVaultTVL        `json:"tvl"`
+	APY               TExternalVaultAPY        `json:"apy"`
+	Details           *TExternalVaultDetails   `json:"details"`
+	Strategies        []*TStrategy             `json:"strategies"`
+	Migration         TExternalVaultMigration  `json:"migration"`
 }
 
 func NewVault() *TExternalVault {

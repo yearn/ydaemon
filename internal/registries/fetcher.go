@@ -63,8 +63,9 @@ func filterNewExperimentalVault(
 				BlockHash:       log.Event.Raw.BlockHash,
 				TxIndex:         log.Event.Raw.TxIndex,
 				LogIndex:        log.Event.Raw.Index,
-				Type:            "Experimental",
+				Type:            utils.VaultTypeExperimental,
 			})
+			logs.Info(`Got new experimental vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 		}
 	} else {
 		traces.
@@ -143,7 +144,7 @@ func filterNewVaults(
 				if log.Error() != nil {
 					continue
 				}
-				*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
+				newVault := utils.TVaultsFromRegistry{
 					RegistryAddress: registryAddress.ToAddress(),
 					VaultsAddress:   log.Event.Vault,
 					TokenAddress:    log.Event.Token,
@@ -154,9 +155,14 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            "Standard",
-				})
-				logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+					Type:            utils.VaultTypeStandard,
+				}
+				if log.Event.VaultType.Uint64() == 2 {
+					newVault.Type = utils.VaultTypeAutomated
+					newVault.ManagementFee = 0
+				}
+				*vaultsList = append(*vaultsList, newVault)
+				logs.Info(`Got new ` + string(newVault.Type) + ` vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 			}
 		} else {
 			traces.

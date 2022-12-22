@@ -122,7 +122,7 @@ func Initialize(chainID uint64) {
 	timeBefore := time.Now()
 	/**********************************************************************************************
 	** All vaults from Yearn are registered in the registries contracts. A vault can be either
-	** Standard or Experimental.
+	** Standard, Experimental or Automated.
 	** From the registries, we are fetching all vaults along with the block in which they were
 	** added to the registry, and we remove the duplicates only to keep the latest version of a
 	** same vault. Duplicate can happen when a vault is moved from Experimental to Standard.

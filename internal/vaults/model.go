@@ -13,6 +13,13 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
+type TVaultTypeVersion string
+
+const (
+	VaultTypeVersion2 TVaultTypeVersion = "v2"
+	VaultTypeVersion3 TVaultTypeVersion = "v3"
+)
+
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
 	TotalAssets          *bigNumber.Int `json:"total_assets"`
@@ -78,6 +85,7 @@ type TVault struct {
 	DepositLimit          *bigNumber.Int     `json:"depositLimit"`
 	AvailableDepositLimit *bigNumber.Int     `json:"availableDepositLimit,omitempty"`
 	TotalAssets           *bigNumber.Int     `json:"total_assets"`
+	Type                  TVaultTypeVersion  `json:"type"`
 	Symbol                string             `json:"symbol"`
 	DisplaySymbol         string             `json:"display_symbol"`
 	FormatedSymbol        string             `json:"formated_symbol"`
@@ -86,7 +94,6 @@ type TVault struct {
 	FormatedName          string             `json:"formated_name"`
 	Icon                  string             `json:"icon"`
 	Version               string             `json:"version"`
-	Type                  string             `json:"type"`
 	ChainID               uint64             `json:"chainID"`
 	Inception             uint64             `json:"inception"`
 	Decimals              uint64             `json:"decimals"`

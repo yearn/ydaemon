@@ -26,6 +26,11 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 	}
 	localizedTokensFromMeta := []*meta.TTokenFromMeta{}
 	for _, token := range tokensFromMeta {
+		if token.Localization == nil {
+			token.Localization = nil
+			localizedTokensFromMeta = append(localizedTokensFromMeta, token)
+			continue
+		}
 		local := selectLocalizationFromString(localization, *token.Localization)
 		token.Name = local.Name
 		token.Description = local.Description
@@ -57,6 +62,11 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 	}
 
 	if localization == "all" {
+		c.JSON(http.StatusOK, tokenFromMeta)
+		return
+	}
+	if tokenFromMeta.Localization == nil {
+		tokenFromMeta.Localization = nil
 		c.JSON(http.StatusOK, tokenFromMeta)
 		return
 	}

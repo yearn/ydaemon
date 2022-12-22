@@ -25,6 +25,11 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 	}
 	localizedStrategiesFromMeta := []*meta.TStrategyFromMeta{}
 	for _, strategy := range strategiesFromMeta {
+		if strategy.Localization == nil {
+			strategy.Localization = nil
+			localizedStrategiesFromMeta = append(localizedStrategiesFromMeta, strategy)
+			continue
+		}
 		local := selectLocalizationFromString(localization, *strategy.Localization)
 		strategy.Name = local.Name
 		strategy.Description = local.Description
@@ -56,6 +61,11 @@ func (y Controller) GetMetaStrategy(c *gin.Context) {
 	}
 
 	if localization == "all" {
+		c.JSON(http.StatusOK, strategyFromMeta)
+		return
+	}
+	if strategyFromMeta.Localization == nil {
+		strategyFromMeta.Localization = nil
 		c.JSON(http.StatusOK, strategyFromMeta)
 		return
 	}

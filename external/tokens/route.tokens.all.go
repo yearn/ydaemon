@@ -53,9 +53,11 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 					tokenDetails.Description = metaToken.Description
 					tokenDetails.Localization = metaToken.Localization
 				} else {
-					local := selectLocalizationFromString(localization, *metaToken.Localization)
-					tokenDetails.DisplayName = local.Name
-					tokenDetails.Description = local.Description
+					if metaToken.Localization != nil {
+						local := selectLocalizationFromString(localization, *metaToken.Localization)
+						tokenDetails.DisplayName = local.Name
+						tokenDetails.Description = local.Description
+					}
 				}
 			}
 			allTokens[chainID][common.FromAddress(token.Address)] = tokenDetails
@@ -64,7 +66,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 	c.JSON(http.StatusOK, allTokens)
 }
 
-//GetTokens will, for a given chainID, return a tokens list with the associated metadata
+// GetTokens will, for a given chainID, return a tokens list with the associated metadata
 func (y Controller) GetTokens(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -94,9 +96,11 @@ func (y Controller) GetTokens(c *gin.Context) {
 				tokenDetails.Description = metaToken.Description
 				tokenDetails.Localization = metaToken.Localization
 			} else {
-				local := selectLocalizationFromString(localization, *metaToken.Localization)
-				tokenDetails.DisplayName = local.Name
-				tokenDetails.Description = local.Description
+				if metaToken.Localization != nil {
+					local := selectLocalizationFromString(localization, *metaToken.Localization)
+					tokenDetails.DisplayName = local.Name
+					tokenDetails.Description = local.Description
+				}
 			}
 		}
 		allTokens[common.FromAddress(token.Address).Hex()] = tokenDetails

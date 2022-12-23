@@ -5,12 +5,11 @@
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 266,
-  "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve stETH",
-  "automatedForVault": "0xdCD90C7f6324cfa40d7169ef80b12031770B4325",
+  "migrationAvailable": false,
   "classification": {
     "isAutomated": true,
     "isPool": true,

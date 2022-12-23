@@ -73,10 +73,6 @@
 				"type": "string"
 			}
 		},
-		"automatedForVault": {
-			"type": "string",
-			"format": "address"
-		},
 		"classification": {
 			"type": "object",
 			"properties": {

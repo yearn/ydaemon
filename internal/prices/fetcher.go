@@ -67,6 +67,7 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	maxBatch := math.MaxInt64
 	if chainID == 250 {
 		maxBatch = 3
+		caller = ethereum.NewMulticall(`https://rpc2.fantom.network`, env.MULTICALL_ADDRESSES[chainID])
 	}
 
 	/**********************************************************************************************

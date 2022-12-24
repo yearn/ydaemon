@@ -47,7 +47,8 @@ func filterNewExperimentalVault(
 	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
 
-	if log, err := currentVault.FilterNewExperimentalVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
+	options := bind.FilterOpts{Start: registryActivation, End: nil}
+	if log, err := currentVault.FilterNewExperimentalVault(&options, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -107,7 +108,9 @@ func filterNewVaults(
 
 	if registryVersion == 1 || registryVersion == 2 {
 		currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
-		if log, err := currentVault.FilterNewVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
+		options := bind.FilterOpts{Start: registryActivation, End: nil}
+
+		if log, err := currentVault.FilterNewVault(&options, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
 					continue
@@ -127,6 +130,7 @@ func filterNewVaults(
 				})
 			}
 		} else {
+			logs.Error(err)
 			traces.
 				Capture(`error`, `impossible to FilterNewVault for YRegistryV2 `+registryAddress.Hex()).
 				SetEntity(`registry`).

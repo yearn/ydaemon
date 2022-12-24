@@ -4,14 +4,13 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 )
 
-var chains = env.SUPPORTED_CHAIN_IDS
+// var chains = env.SUPPORTED_CHAIN_IDS
 
-// var chains = []uint64{1}
+var chains = []uint64{250}
 
 func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
 	trace = trace.Child(

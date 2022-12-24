@@ -27,6 +27,7 @@ import (
 func filterUpdateManagementOneTime(
 	chainID uint64,
 	vaultAddress common.Address,
+	vaultActivation uint64,
 	asyncActivationMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -34,15 +35,17 @@ func filterUpdateManagementOneTime(
 	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
 
-	if log, err := currentVault.FilterUpdateManagement(&bind.FilterOpts{}); err == nil {
+	options := bind.FilterOpts{Start: vaultActivation, End: nil}
+	if log, err := currentVault.FilterUpdateManagement(&options); err == nil {
 		if log.Next() {
 			if log.Error() != nil {
-				asyncActivationMap.Store(vaultAddress, 0)
+				asyncActivationMap.Store(vaultAddress, vaultActivation)
 				return
 			}
 			asyncActivationMap.Store(vaultAddress, log.Event.Raw.BlockNumber)
 		}
 	} else {
+		asyncActivationMap.Store(vaultAddress, vaultActivation)
 		traces.
 			Capture(`error`, `impossible to FilterUpdateManagement for Yvault043 `+vaultAddress.Hex()).
 			SetEntity(`vault`).
@@ -81,7 +84,7 @@ func RetrieveActivationForAllVaults(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go filterUpdateManagementOneTime(chainID, v.VaultsAddress, &asyncActivationMap, wg)
+		go filterUpdateManagementOneTime(chainID, v.VaultsAddress, v.Activation, &asyncActivationMap, wg)
 	}
 	wg.Wait()
 

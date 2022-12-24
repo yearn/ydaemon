@@ -39,7 +39,8 @@ func filterUpdateManagementFee(
 	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterUpdateManagementFee(&bind.FilterOpts{Start: vaultActivation}); err == nil {
+	options := bind.FilterOpts{Start: vaultActivation, End: nil}
+	if log, err := currentVault.FilterUpdateManagementFee(&options); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue

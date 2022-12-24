@@ -58,7 +58,7 @@ func OpenDB(chainID uint64, dbKey string) *badger.DB {
 		DBMutex[chainID][dbKey].Lock()
 		defer DBMutex[chainID][dbKey].Unlock()
 		chainStr := strconv.FormatUint(chainID, 10)
-		opts := badger.DefaultOptions(`./data/store/` + chainStr + `/` + dbKey)
+		opts := badger.DefaultOptions(`./data/store/v2/` + chainStr + `/` + dbKey)
 		opts = opts.WithMetricsEnabled(false)
 		opts = opts.WithLogger(nil)
 		opts = opts.WithNumGoroutines(16)

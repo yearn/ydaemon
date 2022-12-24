@@ -434,11 +434,12 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 
 		token, _ := tokens.FindUnderlyingForVault(chainID, vaultAddress)
 		tokenPrice, _ := prices.FindPrice(chainID, vaultAddress)
-		if (token == nil) {
+		if token == nil {
 			token = &tokens.TERC20Token{
 				Decimals: 18,
 			}
-		if (tokenPrice == nil) {
+		}
+		if tokenPrice == nil {
 			tokenPrice = bigNumber.NewInt(0)
 		}
 		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)

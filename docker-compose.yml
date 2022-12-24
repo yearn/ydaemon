@@ -2,6 +2,7 @@ version: "3.7"
 
 volumes:
   ystore: {}
+  data/store: {}
 
 services:
   ydaemon:

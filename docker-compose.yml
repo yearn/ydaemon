@@ -1,10 +1,7 @@
 version: "3.7"
 
-# volumes:
-#   ystore: {}
-#   data: {
-#     store: {}
-#   }
+volumes:
+  ystore: {}
 
 services:
   ydaemon:
@@ -13,8 +10,8 @@ services:
     ports:
       - 127.0.0.1:8080:8080
     volumes:
-      - ystore:/app/ystore
-      - data/store:/app/store
+      # - ystore:/app/ystore
+      - ystore:/app/data/store
     environment:
       - RPC_URI_FOR_1
       - RPC_URI_FOR_10

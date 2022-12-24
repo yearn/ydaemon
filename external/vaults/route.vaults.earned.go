@@ -39,7 +39,7 @@ type TEarned struct {
 	UnrealizedGainsUSD float64 `json:"unrealizedGainsUSD"`
 }
 
-//GetEarnedPerVaultPerUser will, for a given chainID, return the amount earned by an user in a vault from a FIFO perspective
+// GetEarnedPerVaultPerUser will, for a given chainID, return the amount earned by an user in a vault from a FIFO perspective
 func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -247,7 +247,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	})
 }
 
-//GetEarnedPerUser will, for a given chainID, return the amount earned by an user in all vaults
+// GetEarnedPerUser will, for a given chainID, return the amount earned by an user in all vaults
 func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -434,6 +434,13 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 
 		token, _ := tokens.FindUnderlyingForVault(chainID, vaultAddress)
 		tokenPrice, _ := prices.FindPrice(chainID, vaultAddress)
+		if (token == nil) {
+			token = &tokens.TERC20Token{
+				Decimals: 18,
+			}
+		if (tokenPrice == nil) {
+			tokenPrice = bigNumber.NewInt(0)
+		}
 		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)
 		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice)
 

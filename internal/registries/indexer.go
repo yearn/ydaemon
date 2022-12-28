@@ -8,7 +8,6 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
@@ -273,7 +272,7 @@ func indexNewVaultsWrapper(
 }
 
 func IndexNewVaults(chainID uint64) {
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+	for _, registry := range YEARN_REGISTRIES[chainID] {
 		go indexNewVaultsWrapper(chainID, registry.Address.ToAddress(), registry.Version, registry.Activation, 1*time.Minute)
 	}
 

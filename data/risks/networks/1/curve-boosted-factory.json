@@ -1,6 +1,6 @@
 {
 	"$schema": "risks",
-	"label": "Convex",
+	"label": "Curve Boosted Factory",
 	"codeReviewScore": 2,
 	"testingScore": 3,
 	"auditScore": 5,
@@ -9,13 +9,11 @@
 	"teamKnowledgeScore": 1,
 	"criteria": {
 		"nameLike": [
-			"convex"
+            "strategycurveboostedfactory"
 		],
 		"strategies": [],
 		"exclude": [
-			"convextempledao-u",
-			"strategyconvexfactory",
-            "strategyconvexfraxfactory"
+            "curve"
 		]
 	}
 }

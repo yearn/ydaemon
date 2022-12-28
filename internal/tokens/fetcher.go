@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -66,7 +65,6 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 	**********************************************************************************************/
 	relatedTokensList := []ethcommon.Address{}
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
-	logs.Pretty(len(tokens))
 	for _, token := range tokens {
 		if token == ethcommon.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
 			tokenList = append(tokenList, &TERC20Token{

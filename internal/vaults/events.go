@@ -43,6 +43,8 @@ func filterUpdateManagementOneTime(
 				return
 			}
 			asyncActivationMap.Store(vaultAddress, log.Event.Raw.BlockNumber)
+		} else {
+			asyncActivationMap.Store(vaultAddress, vaultActivation)
 		}
 	} else {
 		asyncActivationMap.Store(vaultAddress, vaultActivation)

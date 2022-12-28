@@ -242,21 +242,5 @@ func RetrieveAllVaults(
 		}
 	}
 
-	/**********************************************************************************************
-	** For some debugging reason, we may want to only work with a subset of the vaults. This is
-	** why we have the following code. It will only keep the vaults that are in the list below.
-	**********************************************************************************************/
-	vaultsToFilter := []string{
-		// `0xa354F35829Ae975e850e23e9615b11Da1B3dC4DE`, //yvUSDC v0.4.3
-		// `0x19d3364a399d251e894ac732651be8b0e4e85001`, //yvDAI v0.3.0
-	}
-	if len(vaultsToFilter) > 0 {
-		filteredVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
-		for _, v := range vaultsToFilter {
-			filteredVaultsList[ethcommon.HexToAddress(v)] = uniqueVaultsList[ethcommon.HexToAddress(v)]
-		}
-		uniqueVaultsList = filteredVaultsList
-	}
-
 	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
 }

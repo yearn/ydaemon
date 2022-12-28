@@ -222,6 +222,9 @@ func RetrieveAllVaults(
 	** keep the standard vault.
 	**********************************************************************************************/
 	uniqueVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
+	for _, v := range EXTRA_VAULTS[chainID] {
+		uniqueVaultsList[v.VaultsAddress] = v
+	}
 	for _, v := range vaultsList {
 		uniqueVaultsList[v.VaultsAddress] = v
 	}
@@ -230,13 +233,6 @@ func RetrieveAllVaults(
 		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
 			uniqueVaultsList[v.VaultsAddress] = v
 		}
-	}
-
-	for _, v := range EXTRA_VAULTS[chainID] {
-		if (uniqueVaultsList[v.VaultsAddress] == utils.TVaultsFromRegistry{}) {
-			uniqueVaultsList[v.VaultsAddress] = v
-		}
-
 	}
 
 	/**********************************************************************************************

@@ -75,10 +75,6 @@ func fetchBasicInformations(
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
 	maxBatch := math.MaxInt64
-	if chainID == 250 {
-		maxBatch = 3
-		caller = ethereum.NewMulticall(`https://rpc2.fantom.network`, env.MULTICALL_ADDRESSES[chainID])
-	}
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. Some date will already be available from the list of

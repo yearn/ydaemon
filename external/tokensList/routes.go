@@ -69,9 +69,6 @@ func GetTokenList(c *gin.Context) {
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
 	maxBatch := math.MaxInt64
-	if chainID == 250 {
-		maxBatch = 3
-	}
 
 	/**********************************************************************************************
 	** The following code will execute the multicall and then map the results to the tokens in the

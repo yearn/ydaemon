@@ -58,10 +58,6 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
 	maxBatch := math.MaxInt64
-	if chainID == 250 {
-		maxBatch = 3
-		caller = ethereum.NewMulticall(`https://rpc2.fantom.network`, env.MULTICALL_ADDRESSES[chainID])
-	}
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. We will create a new relatedTokensList to be able to know

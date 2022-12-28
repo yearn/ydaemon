@@ -65,10 +65,6 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
 	maxBatch := math.MaxInt64
-	if chainID == 250 {
-		maxBatch = 3
-		caller = ethereum.NewMulticall(`https://rpc2.fantom.network`, env.MULTICALL_ADDRESSES[chainID])
-	}
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. We loop over the responses and check if the price is

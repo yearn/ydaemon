@@ -65,9 +65,6 @@ func fetchBasicInformations(
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
 	maxBatch := math.MaxInt64
-	if chainID == 250 {
-		maxBatch = 3
-	}
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. Some date will already be available from the list of

@@ -160,6 +160,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
+			logs.Error(err)
 			continue
 		}
 

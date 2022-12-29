@@ -233,12 +233,8 @@ func RetrieveAllVaults(
 	}
 
 	for _, v := range EXTRA_VAULTS[chainID] {
-		logs.Pretty(`CHECKING VAULT `, v.VaultsAddress.Hex())
 		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
-			logs.Pretty(`ADDING VAULT `, v.VaultsAddress.Hex())
 			uniqueVaultsList[v.VaultsAddress] = v
-		} else {
-			logs.Pretty(`VAULT ALREADY EXISTS `, v.VaultsAddress.Hex())
 		}
 	}
 

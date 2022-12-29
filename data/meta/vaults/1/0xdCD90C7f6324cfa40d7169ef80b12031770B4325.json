@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve stETH",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 42,

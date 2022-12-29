@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve LUSD",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 32,

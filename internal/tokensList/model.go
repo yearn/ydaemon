@@ -4,17 +4,13 @@ import "github.com/yearn/ydaemon/common/bigNumber"
 
 // DefaultTokenListToken is the token struct used in the default token list
 type DefaultTokenListToken struct {
-	ChainID    int    `json:"chainId"`
-	Address    string `json:"address"`
-	Name       string `json:"name"`
-	Symbol     string `json:"symbol"`
-	Decimals   int    `json:"decimals"`
-	LogoURI    string `json:"logoURI"`
-	Extensions struct {
-		BridgeInfo map[string]struct {
-			TokenAddress string `json:"tokenAddress"`
-		} `json:"bridgeInfo"`
-	} `json:"extensions"`
+	ChainID  int    `json:"chainId"`
+	Decimals int    `json:"decimals"`
+	Count    int    `json:"count"`
+	Address  string `json:"address"`
+	Name     string `json:"name"`
+	Symbol   string `json:"symbol"`
+	LogoURI  string `json:"logoURI"`
 }
 
 // DefaultTokenListData is the token list struct used in the default token list
@@ -30,6 +26,21 @@ type DefaultTokenListData struct {
 	LogoURI  string                  `json:"logoURI"`
 	Keywords []string                `json:"keywords"`
 	Tokens   []DefaultTokenListToken `json:"tokens"`
+}
+
+type PortalsTokenListData struct {
+	TotalItems int `json:"totalItems"`
+	Tokens     []struct {
+		Name      string  `json:"name"`
+		Decimals  int     `json:"decimals"`
+		Symbol    string  `json:"symbol"`
+		Price     float64 `json:"price"`
+		Address   string  `json:"address"`
+		Platform  string  `json:"platform"`
+		Network   string  `json:"network"`
+		Liquidity float64 `json:"liquidity"`
+		Image     string  `json:"image"`
+	} `json:"tokens"`
 }
 
 /* 🔵 - Yearn Finance **************************************************

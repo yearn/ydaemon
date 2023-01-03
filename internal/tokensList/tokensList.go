@@ -132,6 +132,5 @@ func BuildTokenList(chainID uint64) {
 	if chainID == 1 {
 		setSupportedByCowSwap(chainID)
 	}
-	// _tokenListMap[chainID] = YTokenMap
-	saveTokensListToJSON(chainID, MapTokenList(chainID))
+	// saveTokensListToJSON(chainID, MapTokenList(chainID))
 }

@@ -1,6 +1,17 @@
 package tokensList
 
-import "github.com/yearn/ydaemon/common/bigNumber"
+import (
+	"encoding/json"
+	"io/ioutil"
+	"strconv"
+	"sync"
+	"time"
+
+	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
+)
 
 // DefaultTokenListToken is the token struct used in the default token list
 type DefaultTokenListToken struct {
@@ -56,7 +67,7 @@ const (
 	Cowswap SupportedZap = "Cowswap"
 )
 
-type YTokenList struct {
+type YTokenFromList struct {
 	ChainID       uint64         `json:"chainID"`
 	Address       string         `json:"address"`
 	Name          string         `json:"name"`
@@ -65,4 +76,101 @@ type YTokenList struct {
 	Decimals      int            `json:"decimals"`
 	Balance       *bigNumber.Int `json:"balance"`
 	SupportedZaps []SupportedZap `json:"supportedZaps"`
+}
+
+/**********************************************************************************************
+** Set of functions to store and retrieve the tokensList from the cache and/or database and
+** being able to access them from the rest of the application.
+** The _tokenListMap variable is not exported and is only used internally by the functions
+** below.
+**********************************************************************************************/
+var _tokenListMap = make(map[uint64]map[ethcommon.Address]*YTokenFromList)
+
+/**********************************************************************************************
+** MapTokenList will, for a given chainID, return the tokenList stored in _tokenListMap.
+**********************************************************************************************/
+func MapTokenList(chainID uint64) map[ethcommon.Address]*YTokenFromList {
+	if _, ok := _tokenListMap[chainID]; !ok {
+		_tokenListMap[chainID] = make(map[ethcommon.Address]*YTokenFromList)
+	}
+	return _tokenListMap[chainID]
+}
+
+/**********************************************************************************************
+** GetTokenFromList will, for a given chainID, return the desired token stored in _tokenListMap.
+**********************************************************************************************/
+func GetTokenFromList(chainID uint64, tokenAddress ethcommon.Address) (*YTokenFromList, bool) {
+	if value, exist := MapTokenList(chainID)[tokenAddress]; exist {
+		return value, true
+	}
+	return nil, false
+}
+
+/**********************************************************************************************
+** setTokenFromList will, for a given chainID, update or set a token stored in _tokenListMap.
+**********************************************************************************************/
+func setTokenFromList(chainID uint64, newTokenValue *YTokenFromList) {
+	if _, ok := _tokenListMap[chainID]; !ok {
+		_tokenListMap[chainID] = make(map[ethcommon.Address]*YTokenFromList)
+	}
+	_tokenListMap[chainID][ethcommon.HexToAddress(newTokenValue.Address)] = newTokenValue
+}
+
+/**********************************************************************************************
+** init will, on startup, fetch the token list and update it every 24 hours. This will fetch the
+** tokens for our supported zap solvers (Wido and Portals), but also the aggregated list of
+** tokens from the top 10 token lists, with a forced threshold of 3 appearances in the top 10
+** lists.
+**********************************************************************************************/
+func loadTokensListFromJSON(chainID uint64) map[ethcommon.Address]*YTokenFromList {
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	file, err := ioutil.ReadFile(env.BASE_DATA_PATH + `/tokensList/` + chainIDStr + `.json`)
+	if err != nil {
+		return make(map[ethcommon.Address]*YTokenFromList)
+	}
+
+	var tokenList map[ethcommon.Address]*YTokenFromList
+	if err := json.Unmarshal(file, &tokenList); err != nil {
+		return make(map[ethcommon.Address]*YTokenFromList)
+	}
+
+	return tokenList
+}
+
+func saveTokensListToJSON(chainID uint64, YTokenMap map[ethcommon.Address]*YTokenFromList) {
+	jsonData, err := json.MarshalIndent(YTokenMap, "", "  ")
+	if err != nil {
+		return
+	}
+
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	err = ioutil.WriteFile(env.BASE_DATA_PATH+`/tokensList/`+chainIDStr+`.json`, jsonData, 0644)
+	if err != nil {
+		return
+	}
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		yTokenMap := loadTokensListFromJSON(chainID)
+		_tokenListMap[chainID] = yTokenMap
+		logs.Pretty(len(yTokenMap), "tokens loaded for chainID", chainID)
+	}
+	wg := sync.WaitGroup{}
+	isDone := false
+
+	wg.Add(1)
+	go func() {
+		for {
+			AggregatedTokenList = fetchTokenLists()
+			WidoTokenList = fetchDefaultTokenList(`https://api.joinwido.com/tokens`)
+			PortalsTokenList = fetchDefaultTokenList(`https://api.portals.fi/v1/tokens/format/uniswap`)
+			if !isDone {
+				wg.Done()
+				isDone = true
+			}
+			time.Sleep(24 * time.Hour)
+		}
+	}()
+	wg.Wait()
 }

@@ -80,6 +80,20 @@ func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.T
 		time.Sleep(delay)
 	}
 }
+func runBuildTokenList(chainID uint64, strategiesAddedList []strategies.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
+	isDone := false
+	for {
+		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		if delay == 0 {
+			return
+		}
+		time.Sleep(delay)
+	}
+}
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
@@ -103,7 +117,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
 	internalWG.Wait()
 
-	tokensList.BuildTokenList(chainID)
+	go tokensList.BuildTokenList(chainID)
 	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies

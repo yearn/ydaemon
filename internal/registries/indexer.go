@@ -67,7 +67,8 @@ func indexNewVaults(
 		currentBlock = lastSyncedBlock
 	}
 
-	if registryVersion == 1 || registryVersion == 2 {
+	switch registryVersion {
+	case 1, 2:
 		/**********************************************************************************************
 		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
 		** No error should happen here, but if it does, we just return.
@@ -118,7 +119,7 @@ func indexNewVaults(
 				return lastSyncedBlock, true, err
 			}
 		}
-	} else if registryVersion == 3 {
+	case 3:
 		/**********************************************************************************************
 		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
 		** No error should happen here, but if it does, we just return.

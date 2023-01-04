@@ -2,6 +2,7 @@ package registries
 
 import (
 	"context"
+	"math/big"
 	"strconv"
 	"time"
 
@@ -106,7 +107,7 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            "Standard",
+					Type:            utils.VaultTypeStandard,
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -157,7 +158,10 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            "Standard",
+					Type:            utils.VaultTypeStandard,
+				}
+				if log.VaultType.Cmp(big.NewInt(2)) == 0 {
+					newVault.Type = utils.VaultTypeAutomated
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -216,7 +220,6 @@ func indexNewVaultsWrapper(
 	shouldRetry := true
 	err := error(nil)
 	for {
-
 		lastSyncedBlock, shouldRetry, err = indexNewVaults(
 			chainID,
 			registryAddress,

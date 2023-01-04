@@ -4,10 +4,10 @@ import (
 	"strconv"
 	"time"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/types/common"
 )
 
 func setSupportedByCowSwap(chainID uint64) {
@@ -26,7 +26,8 @@ func setSupportedByCowSwap(chainID uint64) {
 		if err == nil || (err == nil && errReason == `NoLiquidity`) {
 			if value, ok := tokenMap[address]; ok {
 				if !helpers.Contains(tokenMap[address].SupportedZaps, Cowswap) {
-					tokenMap[address].SupportedZaps = append(value.SupportedZaps, Cowswap)
+					value.SupportedZaps = append(value.SupportedZaps, Cowswap)
+					setTokenFromList(chainID, value)
 				}
 			}
 		}
@@ -52,7 +53,7 @@ func BuildTokenList(chainID uint64) {
 
 	if len(WidoTokenList.Tokens) > 0 {
 		for _, token := range WidoTokenList.Tokens {
-			tokenAddress := ethcommon.HexToAddress(token.Address)
+			tokenAddress := common.HexToAddress(token.Address)
 			if _, exists := supportedTokenMap[tokenAddress.Hex()]; !exists {
 				continue
 			}
@@ -67,7 +68,7 @@ func BuildTokenList(chainID uint64) {
 				setTokenFromList(chainID, value)
 				continue
 			}
-			setTokenFromList(chainID, &YTokenFromList{
+			setTokenFromList(chainID, YTokenFromList{
 				ChainID:       uint64(token.ChainID),
 				Address:       tokenAddress.Hex(),
 				Name:          token.Name,
@@ -82,7 +83,7 @@ func BuildTokenList(chainID uint64) {
 
 	if len(PortalsTokenList.Tokens) > 0 {
 		for _, token := range PortalsTokenList.Tokens {
-			tokenAddress := ethcommon.HexToAddress(token.Address)
+			tokenAddress := common.HexToAddress(token.Address)
 			if _, exists := supportedTokenMap[tokenAddress.Hex()]; !exists {
 				continue
 			}
@@ -97,7 +98,7 @@ func BuildTokenList(chainID uint64) {
 				setTokenFromList(chainID, value)
 				continue
 			}
-			setTokenFromList(chainID, &YTokenFromList{
+			setTokenFromList(chainID, YTokenFromList{
 				ChainID:       uint64(token.ChainID),
 				Address:       tokenAddress.Hex(),
 				Name:          token.Name,
@@ -112,7 +113,7 @@ func BuildTokenList(chainID uint64) {
 
 	if len(AggregatedTokenList.Tokens) > 0 {
 		for _, token := range AggregatedTokenList.Tokens {
-			tokenAddress := ethcommon.HexToAddress(token.Address)
+			tokenAddress := common.HexToAddress(token.Address)
 			if token.Count < minCountToInclude {
 				continue
 			}
@@ -122,7 +123,7 @@ func BuildTokenList(chainID uint64) {
 			if uint64(token.ChainID) != chainID {
 				continue
 			}
-			setTokenFromList(chainID, &YTokenFromList{
+			setTokenFromList(chainID, YTokenFromList{
 				ChainID:       uint64(token.ChainID),
 				Address:       tokenAddress.Hex(),
 				Name:          token.Name,

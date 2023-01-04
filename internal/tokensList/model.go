@@ -7,9 +7,9 @@ import (
 	"sync"
 	"time"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // DefaultTokenListToken is the token struct used in the default token list
@@ -94,15 +94,15 @@ type YTokenList struct {
 ** The _tokenListMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _tokenListMap = make(map[uint64]map[ethcommon.Address]*YTokenFromList)
+var _tokenListMap = make(map[uint64]map[common.Address]YTokenFromList)
 var _tokenListUpdateMap = make(map[uint64]time.Time)
 
 /**********************************************************************************************
 ** MapTokenList will, for a given chainID, return the tokenList stored in _tokenListMap.
 **********************************************************************************************/
-func MapTokenList(chainID uint64) map[ethcommon.Address]*YTokenFromList {
+func MapTokenList(chainID uint64) map[common.Address]YTokenFromList {
 	if _, ok := _tokenListMap[chainID]; !ok {
-		_tokenListMap[chainID] = make(map[ethcommon.Address]*YTokenFromList)
+		_tokenListMap[chainID] = make(map[common.Address]YTokenFromList)
 	}
 	return _tokenListMap[chainID]
 }
@@ -110,11 +110,11 @@ func MapTokenList(chainID uint64) map[ethcommon.Address]*YTokenFromList {
 /**********************************************************************************************
 ** GetTokenFromList will, for a given chainID, return the desired token stored in _tokenListMap.
 **********************************************************************************************/
-func GetTokenFromList(chainID uint64, tokenAddress ethcommon.Address) (*YTokenFromList, bool) {
+func GetTokenFromList(chainID uint64, tokenAddress common.Address) (YTokenFromList, bool) {
 	if value, exist := MapTokenList(chainID)[tokenAddress]; exist {
 		return value, true
 	}
-	return nil, false
+	return YTokenFromList{}, false
 }
 
 /**********************************************************************************************
@@ -131,11 +131,11 @@ func GetLastUpdate(chainID uint64) time.Time {
 /**********************************************************************************************
 ** setTokenFromList will, for a given chainID, update or set a token stored in _tokenListMap.
 **********************************************************************************************/
-func setTokenFromList(chainID uint64, newTokenValue *YTokenFromList) {
+func setTokenFromList(chainID uint64, newTokenValue YTokenFromList) {
 	if _, ok := _tokenListMap[chainID]; !ok {
-		_tokenListMap[chainID] = make(map[ethcommon.Address]*YTokenFromList)
+		_tokenListMap[chainID] = make(map[common.Address]YTokenFromList)
 	}
-	_tokenListMap[chainID][ethcommon.HexToAddress(newTokenValue.Address)] = newTokenValue
+	_tokenListMap[chainID][common.HexToAddress(newTokenValue.Address)] = newTokenValue
 }
 
 /**********************************************************************************************
@@ -144,27 +144,27 @@ func setTokenFromList(chainID uint64, newTokenValue *YTokenFromList) {
 ** tokens from the top 10 token lists, with a forced threshold of 3 appearances in the top 10
 ** lists.
 **********************************************************************************************/
-func loadTokensListFromJSON(chainID uint64) (map[ethcommon.Address]*YTokenFromList, time.Time) {
+func loadTokensListFromJSON(chainID uint64) (map[common.Address]YTokenFromList, time.Time) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	file, err := ioutil.ReadFile(env.BASE_DATA_PATH + `/tokensList/` + chainIDStr + `.json`)
 	var lastUpdate time.Time
 	if err != nil {
-		return make(map[ethcommon.Address]*YTokenFromList), lastUpdate
+		return make(map[common.Address]YTokenFromList), lastUpdate
 	}
 
 	var tokenList YTokenList
 	if err := json.Unmarshal(file, &tokenList); err != nil {
-		return make(map[ethcommon.Address]*YTokenFromList), lastUpdate
+		return make(map[common.Address]YTokenFromList), lastUpdate
 	}
 
-	tokenListMap := make(map[ethcommon.Address]*YTokenFromList)
+	tokenListMap := make(map[common.Address]YTokenFromList)
 	for _, token := range tokenList.Tokens {
-		tokenListMap[ethcommon.HexToAddress(token.Address)] = &token
+		tokenListMap[common.HexToAddress(token.Address)] = token
 	}
 	return tokenListMap, tokenList.Timestamp
 }
 
-func saveTokensListToJSON(chainID uint64, YTokenMap map[ethcommon.Address]*YTokenFromList) {
+func saveTokensListToJSON(chainID uint64, YTokenMap map[common.Address]YTokenFromList) {
 	tokenList := YTokenList{
 		Name:      "Yearn Token List",
 		LogoURI:   "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
@@ -175,7 +175,7 @@ func saveTokensListToJSON(chainID uint64, YTokenMap map[ethcommon.Address]*YToke
 	tokenList.Version.Patch = 0
 	tokenList.Tokens = make([]YTokenFromList, 0)
 	for _, token := range YTokenMap {
-		tokenList.Tokens = append(tokenList.Tokens, *token)
+		tokenList.Tokens = append(tokenList.Tokens, token)
 	}
 
 	jsonData, err := json.MarshalIndent(tokenList, "", "  ")

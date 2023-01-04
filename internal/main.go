@@ -80,20 +80,6 @@ func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.T
 		time.Sleep(delay)
 	}
 }
-func runBuildTokenList(chainID uint64, strategiesAddedList []strategies.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()

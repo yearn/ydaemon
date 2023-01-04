@@ -35,6 +35,8 @@ type DefaultTokenListData struct {
 /* 🔵 - Yearn Finance **************************************************
 ** Yearn's own token list, aka what is kept and returned
 **********************************************************************/
+
+// SupportedZap is the type of zap supported by the token (Wido, Portals, Cowswap)
 type SupportedZap string
 
 const (

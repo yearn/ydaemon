@@ -54,7 +54,6 @@ func SummonDaemons(chainID uint64) {
 	wg.Add(1)
 	{
 		//TODO: REPLACE WITH INTERNAL RELOADING
-		// go runDaemon(chainID, &wg, 1*time.Minute, internal.InitializeV2)
 		go internal.InitializeV2(chainID, &wg)
 	}
 	wg.Wait()
@@ -73,9 +72,5 @@ func LoadDaemons(chainID uint64) {
 		return
 	}
 
-	var wg sync.WaitGroup
-
-	wg.Add(1)
-	go vaults.LoadAggregatedVaults(chainID, &wg)
-	wg.Wait()
+	vaults.LoadAggregatedVaults(chainID, nil)
 }

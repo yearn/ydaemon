@@ -63,7 +63,9 @@ func FetchVaultsFromV1(chainID uint64) {
 
 // LoadAggregatedVaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
 func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 	temp := make(map[common.Address]*models.TAggregatedVault)
 	store.Iterate(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 

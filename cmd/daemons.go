@@ -72,9 +72,5 @@ func LoadDaemons(chainID uint64) {
 		return
 	}
 
-	var wg sync.WaitGroup
-
-	wg.Add(1)
-	go vaults.LoadAggregatedVaults(chainID, &wg)
-	wg.Wait()
+	vaults.LoadAggregatedVaults(chainID, nil)
 }

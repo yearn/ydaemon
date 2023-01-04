@@ -18,7 +18,7 @@ func setSupportedByCowSwap(chainID uint64) {
 			index++
 			continue
 		}
-		logs.Success(`Testing token: ` + token.Symbol + ` (` + strconv.Itoa(index+1) + `/` + strconv.Itoa(len(tokenMap)) + `)`)
+		logs.Info(`Testing token: ` + token.Symbol + ` (` + strconv.Itoa(index+1) + `/` + strconv.Itoa(len(tokenMap)) + `)`)
 		index++
 
 		time.Sleep(400)
@@ -34,12 +34,18 @@ func setSupportedByCowSwap(chainID uint64) {
 }
 
 func BuildTokenList(chainID uint64) {
+	lastUpdate := GetLastUpdate(chainID)
+	if !lastUpdate.IsZero() && lastUpdate.After(time.Now().Add(-time.Hour*24)) {
+		return
+	}
+	logs.Info(`Reloading tokenLists...`)
+
 	supportedTokenMap := make(map[string]DefaultTokenListToken)
 	for _, token := range AggregatedTokenList.Tokens {
 		supportedTokenMap[token.Address] = token
 	}
 
-	minCountToInclude := 2
+	minCountToInclude := 1
 	if chainID == 1 {
 		minCountToInclude = 3
 	}
@@ -132,5 +138,9 @@ func BuildTokenList(chainID uint64) {
 	if chainID == 1 {
 		setSupportedByCowSwap(chainID)
 	}
-	// saveTokensListToJSON(chainID, MapTokenList(chainID))
+
+	if lastUpdate.After(time.Now().Add(-time.Hour * 24 * 7)) {
+		logs.Warning(`Please update the tokenList json files`)
+	}
+	saveTokensListToJSON(chainID, MapTokenList(chainID))
 }

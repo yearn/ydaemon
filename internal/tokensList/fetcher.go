@@ -71,7 +71,7 @@ func fetchTokenLists() DefaultTokenListData {
 	wg := sync.WaitGroup{}
 	wg.Add(10)
 	go fetchList(`https://tokens.coingecko.com/uniswap/all.json`, &tokenList, &wg)
-	go fetchList(`https://tokens.coingecko.com/uniswap/all.json`, &tokenList, &wg)
+	go fetchList(`https://static.optimism.io/optimism.tokenlist.json`, &tokenList, &wg)
 	go fetchList(`https://defi.cmc.eth.link`, &tokenList, &wg)
 	go fetchList(`https://stablecoin.cmc.eth.link`, &tokenList, &wg)
 	go fetchList(`https://erc20.cmc.eth.link`, &tokenList, &wg)

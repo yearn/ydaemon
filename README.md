@@ -15,7 +15,7 @@ RPC_URI_FOR_42161=
 ```
 Then to run, type:
 ```
-make depoly
+make deploy
 ```
 To stop, type:
 ```

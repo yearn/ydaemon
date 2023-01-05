@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve stETH",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 42,
@@ -10,7 +10,7 @@
   "retired": false,
   "displayName": "Curve stETH",
   "migrationAvailable": true,
-  "migrationContract": "0x9327e2fdc57c7d70782f29ab46f6385afaf4503c",
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
   "migrationTargetVault": "0x5B8C556B8b2a78696F0B9B830B3d67623122E270",
   "classification": {
     "isAutomated": false,

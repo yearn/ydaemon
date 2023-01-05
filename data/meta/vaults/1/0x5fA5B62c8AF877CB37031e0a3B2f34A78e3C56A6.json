@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve LUSD",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 32,
@@ -10,7 +10,7 @@
   "retired": false,
   "displayName": "Curve LUSD",
   "migrationAvailable": true, 
-  "migrationContract": "0x9327e2fdc57c7d70782f29ab46f6385afaf4503c",
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
   "migrationTargetVault": "0xAd86Df2e8F989c828B25A7Da5EB1Ec363283fA3F",
   "classification": {
     "isAutomated": false,

@@ -1,7 +1,7 @@
 {
   "$schema": "token",
-  "name": "Curve Frax/USDC Pool",
-  "symbol": "crvFRAX",
+  "name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
+  "symbol": "agEUREUROC-f",
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains agEUR, and EUROC. agEUR is a Euro-pegged stablecoin from angle.money and EUROC is Circle's stablecoin.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/#/ethereum/pools/factory-v2-164/deposit",

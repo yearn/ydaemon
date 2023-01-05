@@ -2,6 +2,7 @@ package registries
 
 import (
 	"context"
+	"math/big"
 	"strconv"
 	"time"
 
@@ -67,7 +68,8 @@ func indexNewVaults(
 		currentBlock = lastSyncedBlock
 	}
 
-	if registryVersion == 1 || registryVersion == 2 {
+	switch registryVersion {
+	case 1, 2:
 		/**********************************************************************************************
 		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
 		** No error should happen here, but if it does, we just return.
@@ -105,7 +107,7 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            "Standard",
+					Type:            utils.VaultTypeStandard,
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -118,7 +120,7 @@ func indexNewVaults(
 				return lastSyncedBlock, true, err
 			}
 		}
-	} else if registryVersion == 3 {
+	case 3:
 		/**********************************************************************************************
 		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
 		** No error should happen here, but if it does, we just return.
@@ -156,7 +158,10 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            "Standard",
+					Type:            utils.VaultTypeStandard,
+				}
+				if log.VaultType.Cmp(big.NewInt(2)) == 0 {
+					newVault.Type = utils.VaultTypeAutomated
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -215,7 +220,6 @@ func indexNewVaultsWrapper(
 	shouldRetry := true
 	err := error(nil)
 	for {
-
 		lastSyncedBlock, shouldRetry, err = indexNewVaults(
 			chainID,
 			registryAddress,

@@ -91,3 +91,9 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	}
 	return WS[chainID], nil
 }
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		GetWSClient(chainID)
+	}
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve 3Crypto",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 20,
@@ -9,8 +9,8 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve 3Crypto",
-  "migrationAvailable": false,
-  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationAvailable": true,
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
   "migrationTargetVault": "0x8078198Fc424986ae89Ce4a910Fc109587b6aBF3",
   "classification": {
     "isAutomated": false,

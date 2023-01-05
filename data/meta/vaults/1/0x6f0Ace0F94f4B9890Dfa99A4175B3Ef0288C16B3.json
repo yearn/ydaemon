@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve agEUR-EUROC-f",
+  "comment": "Curve CRV-ETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 267,
-  "migrationAvailable": false,
+  "order": 275,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve agEUR-EUROC",
+  "displayName": "Curve CRV-ETH",
+  "migrationAvailable": false,
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Stable",
-    "stableBaseAsset": "EUR"
+    "stability": "Volatile"
   }
 }

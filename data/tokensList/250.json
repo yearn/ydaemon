@@ -1,0 +1,206 @@
+{
+  "name": "Yearn Token List",
+  "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
+  "timestamp": "2023-01-04T11:27:09.324184+01:00",
+  "tokens": [
+    {
+      "chainID": 250,
+      "address": "0xaD996A45fd2373ed0B10Efa4A8eCB9de445A4302",
+      "name": "AlpacaToken",
+      "symbol": "ALPACA",
+      "logoURI": "https://tokens.1inch.io/0x8f0528ce5ef7b51152a59745befdd91d97091d2f.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xf16e81dce15B08F326220742020379B855B87DF9",
+      "name": "Popsicle Finance",
+      "symbol": "ICE",
+      "logoURI": "https://assets.coingecko.com/coins/images/14586/thumb/ice.png?1617188825",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xD0660cD418a64a1d44E9214ad8e459324D8157f1",
+      "name": "Woofy",
+      "symbol": "WOOFY",
+      "logoURI": "https://assets.coingecko.com/coins/images/15410/thumb/woofy.png?1622566328",
+      "decimals": 12,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x10010078a54396F62c96dF8532dc2B4847d47ED3",
+      "name": "Hundred Finance",
+      "symbol": "HND",
+      "logoURI": "https://assets.coingecko.com/coins/images/18445/thumb/hnd.PNG?1632054703",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x0000000000000000000000000000000000000000",
+      "name": "FTM",
+      "symbol": "FTM",
+      "logoURI": "https://ftmscan.com/images/main/empty-token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xe20B9e246db5a0d21BF9209E4858Bc9A3ff7A034",
+      "name": "Banano",
+      "symbol": "BAN",
+      "logoURI": "https://assets.coingecko.com/coins/images/6226/thumb/banano-transparent.png?1619589798",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x92868A5255C628dA08F550a858A802f5351C5223",
+      "name": "Cross-Chain Bridge",
+      "symbol": "BRIDGE",
+      "logoURI": "https://assets.coingecko.com/coins/images/20223/thumb/0x92868A5255C628dA08F550a858A802f5351C5223.png?1636684446",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x1cd2528522A17B6Be63012fB63AE81f3e3e29D97",
+      "name": "Mind Music",
+      "symbol": "MND",
+      "logoURI": "https://assets.coingecko.com/coins/images/19104/thumb/logo-main_%282%29.png?1634506312",
+      "decimals": 9,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x06ebc9c542357e2129D16717CD02c02FBC835d33",
+      "name": "Coinage Finance",
+      "symbol": "CAGE",
+      "logoURI": "https://assets.coingecko.com/coins/images/22300/thumb/Coinage_v2_200x200_white.png?1653464214",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x65Def5029A0e7591e46B38742bFEdd1Fb7b24436",
+      "name": "Kanpeki",
+      "symbol": "KAE",
+      "logoURI": "https://assets.coingecko.com/coins/images/18833/thumb/kanpeki-logo-square_2.png?1633628384",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xeEeEEb57642040bE42185f49C52F7E9B38f8eeeE",
+      "name": "Elk Finance",
+      "symbol": "ELK",
+      "logoURI": "https://assets.coingecko.com/coins/images/17813/thumb/elk.png?1629336971",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x15b7c0c907e4C6b9AdaAaabC300C08991D6CEA05",
+      "name": "Gelato",
+      "symbol": "GEL",
+      "logoURI": "https://assets.coingecko.com/coins/images/15026/thumb/Gelato_Icon_Logo_1024x1024.png?1619491717",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xDE5ed76E7c05eC5e4572CfC88d1ACEA165109E44",
+      "name": "DEUS Finance",
+      "symbol": "DEUS",
+      "logoURI": "https://assets.coingecko.com/coins/images/18778/thumb/DEUS-logo-200x200.png?1646318385",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xEe9801669C6138E84bD50dEB500827b776777d28",
+      "name": "O3 Swap",
+      "symbol": "O3",
+      "logoURI": "https://assets.coingecko.com/coins/images/15460/thumb/o3.png?1620904316",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0xC17c30e98541188614dF99239cABD40280810cA3",
+      "name": "EverRise",
+      "symbol": "RISE",
+      "logoURI": "https://assets.coingecko.com/coins/images/16367/thumb/Logo_EverRise_Icon_logo.png?1642576670",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 250,
+      "address": "0x9767203e89dcD34851240B3919d4900d3E5069f1",
+      "name": "A4 Finance",
+      "symbol": "A4",
+      "logoURI": "https://assets.coingecko.com/coins/images/21992/thumb/ba384ad07217a4be75cb85314f5760f7.jpg?1640582786",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  }
+}

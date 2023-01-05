@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Curve CVX-ETH Vault",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 23.5,
@@ -9,8 +9,8 @@
   "allowZapOut": true,
   "retired": false,
   "displayName": "Curve CVX-ETH",
-  "migrationAvailable": false,
-  "migrationContract": "0x1824df8D751704FA10FA371d62A37f9B8772ab90",
+  "migrationAvailable": true,
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
   "migrationTargetVault": "0x75A291F0232ADD37d72Dd1Dcff55B715755ECDEe",
   "classification": {
     "isAutomated": false,

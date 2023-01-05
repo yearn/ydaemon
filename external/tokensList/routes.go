@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/tokensList"
 )
 
 // GetTokenList will, for a given chainID, return the Yearn's Token List
@@ -44,12 +45,7 @@ func GetTokenList(c *gin.Context) {
 	** token is added to the tokensFromListMap map using the token's address as the key and the
 	** token struct as the value.
 	**********************************************************************************************/
-	tokensFromListMap := make(map[string]YTokenList)
-	for _, token := range yTokenMap {
-		if uint64(token.ChainID) == chainID {
-			tokensFromListMap[token.Address] = token
-		}
-	}
+	tokensFromListMap := tokensList.MapTokenList(chainID)
 
 	/**********************************************************************************************
 	** Once we have our list of tokens, we can proceed to fetch the balances of the tokens for the
@@ -72,9 +68,9 @@ func GetTokenList(c *gin.Context) {
 
 	/**********************************************************************************************
 	** The following code will execute the multicall and then map the results to the tokens in the
-	** returned tokenBalanceMap map, which is a map of token addresses to YTokenList structs.
+	** returned tokenBalanceMap map, which is a map of token addresses to YTokenFromList structs.
 	**********************************************************************************************/
-	tokenBalanceMap := make(map[string]YTokenList)
+	tokenBalanceMap := make(map[string]tokensList.YTokenFromList)
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, token := range tokensFromListMap {
 		rawBalance := response[token.Address+`balanceOf`]

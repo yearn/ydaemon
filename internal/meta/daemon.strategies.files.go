@@ -29,6 +29,14 @@ type TStrategyFromMeta struct {
 **********************************************************************************************/
 var _metaStrategyMap = make(map[uint64]map[ethcommon.Address]*TStrategyFromMeta)
 
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _metaStrategyMap[chainID]; !ok {
+			_metaStrategyMap[chainID] = make(map[ethcommon.Address]*TStrategyFromMeta)
+		}
+	}
+}
+
 /**********************************************************************************************
 ** setStrategyInMap will put a TStrategyFromMeta in the _metaStrategyMap variable.
 **********************************************************************************************/

@@ -1,20 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve agEUR-EUROC-f",
+  "comment": "Curve Frax-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 267,
-  "migrationAvailable": false,
+  "order": 272,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve agEUR-EUROC",
+  "displayName": "Curve Frax",
+  "migrationAvailable": false,
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
     "stability": "Stable",
-    "stableBaseAsset": "EUR"
+    "stableBaseAsset": "USD"
   }
 }

@@ -36,7 +36,7 @@ func setSupportedByCowSwap(chainID uint64) {
 
 func BuildTokenList(chainID uint64) {
 	lastUpdate := GetLastUpdate(chainID)
-	if !lastUpdate.IsZero() && lastUpdate.After(time.Now().Add(-time.Hour*24)) {
+	if !lastUpdate.IsZero() && lastUpdate.Before(time.Now().Add(-time.Hour*24)) {
 		return
 	}
 	logs.Info(`Reloading tokenLists...`)
@@ -140,7 +140,7 @@ func BuildTokenList(chainID uint64) {
 		setSupportedByCowSwap(chainID)
 	}
 
-	if lastUpdate.After(time.Now().Add(-time.Hour * 24 * 7)) {
+	if lastUpdate.Before(time.Now().Add(-time.Hour * 24 * 7)) {
 		logs.Warning(`Please update the tokenList json files`)
 	}
 	saveTokensListToJSON(chainID, MapTokenList(chainID))

@@ -1,11 +1,13 @@
 package vaults
 
 import (
+	"strconv"
 	"strings"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -215,6 +217,9 @@ func (t *TVault) BuildAPY() TAPY {
 		if okMeta && vaultFromMeta.APYTypeOverride != `` {
 			apy.Type = vaultFromMeta.APYTypeOverride
 		}
+	} else if okMeta && vaultFromMeta.APYTypeOverride != `` {
+		logs.Error(`Missing APY vault data for chainID: ` + strconv.FormatUint(t.ChainID, 10) + ` and address: ` + common.FromAddress(t.Address).Hex())
+		apy.Type = vaultFromMeta.APYTypeOverride
 	}
 	return apy
 }

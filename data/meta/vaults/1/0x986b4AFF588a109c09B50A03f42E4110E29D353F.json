@@ -11,10 +11,14 @@
   "displayName": "Curve sETH",
   "migrationAvailable": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
 =======
   "migrationContract": "0x9327e2fdc57c7d70782f29ab46f6385afaf4503c",
 >>>>>>> ab67277 (feat: update meta for migrations)
+=======
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
+>>>>>>> 56fbea9 (feat: add migration for factory vaults (#180))
   "migrationTargetVault": "0xB5dE7250128775a317B3f775a7AFcEC73571B732",
   "classification": {
     "isAutomated": false,

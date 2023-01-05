@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve sETH-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 274,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve sETH",
+  "migrationAvailable": false,
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "ETH"
+  }
+}

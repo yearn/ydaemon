@@ -1,7 +1,7 @@
 {
   "$schema": "token",
-  "name": "Curve cbETH/ETH Pool",
-  "symbol": "cbETH/ETH",
+  "name": "Curve.fi Factory Crypto Pool: cbETH/ETH",
+  "symbol": "cbETH/ETH-f",
   "description": "This token represents a curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This curve pool contains cbETH and ETH. cbETH is Coinbase's staked ETH token for ETH 2.0 staking yields.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/#/ethereum/pools/factory-crypto-91",

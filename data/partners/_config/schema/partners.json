@@ -12,7 +12,7 @@
       "type": "string",
       "format": "address"
     },
-    "start_block": {
+    "start_date": {
       "type": "number"
     },
     "wrappers": {
@@ -48,5 +48,5 @@
       }
     }
   },
-  "required": ["name", "treasury", "start_block", "wrappers"]
+  "required": ["name", "treasury", "start_date", "wrappers"]
 }

@@ -1,0 +1,13 @@
+{
+	"$schema": "partners",
+	"name": "ledger",
+	"start_block": 0,
+	"start_date": "2022, 11, 24",
+	"treasury": "0x558247e365be655f9144e1a0140d793984372ef3",
+	"wrappers": [{
+		"name": "ledger",
+		"partnerId": "0x558247e365be655f9144e1a0140d793984372ef3",
+		"type": "DelegatedDepositWildcardWrapper"
+	}]
+}
+  

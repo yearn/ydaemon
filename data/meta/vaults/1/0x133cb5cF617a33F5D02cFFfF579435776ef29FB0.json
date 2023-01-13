@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve multiBTC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 281,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve multiBTC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
+}

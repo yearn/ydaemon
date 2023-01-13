@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve sBTCv2-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 279,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve sBTCv2",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
+}

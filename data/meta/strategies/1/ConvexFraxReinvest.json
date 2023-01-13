@@ -3,7 +3,10 @@
   "name": "Convex Frax Reinvest",
   "description": "Supplies {{token}} to [Convex Finance](https://www.convexfinance.com/stake) boosted by Convex's veCRV and veFXS to earn CRV, CVX, and FXS (and any other available tokens). Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses":[
-    "0x14D87ae97c19Ca4A4D7B5EedF45F1016328116c2","0x067D4734452D2Fe16559Fdf055e5e6EFeaE4bDE8"
+    "0x14D87ae97c19Ca4A4D7B5EedF45F1016328116c2",
+    "0x067D4734452D2Fe16559Fdf055e5e6EFeaE4bDE8",
+    "0xA9dc2cb7a3ea474fA824f5baFE694001D70a0246",
+    "0xD441B754114a84D274dA0FDf1A34c06Dbe78DD1a"
   ],
   "protocols": ["Convex Finance", "Curve Finance", "Frax Finance"],
   "protocolVersion": {

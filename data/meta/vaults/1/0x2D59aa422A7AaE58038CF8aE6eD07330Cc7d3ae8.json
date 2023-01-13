@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve bLUSDLUSD3-f",
+  "comment": "Curve bLUSD-LUSD3CRV-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -8,7 +8,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve bLUSD_LUSD3CRV",
+  "displayName": "Curve bLUSD-LUSD3CRV",
   "migrationAvailable": false,
   "classification": {
     "isAutomated": true,

@@ -1,10 +1,10 @@
 {
   "$schema": "token",
-  "name": "Curve sdANGLE-f",
+  "name": "Curve sdANGLE-f Pool",
   "symbol": "sdAGAG-f",
   "description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ANGLE and sdANGLE.",
   "categories": ["Curve LP Tokens"],
-  "website": "https://curve.fi/#/ethereum/pools/factory-v2-101/deposit",
+  "website": "https://curve.fi/#/ethereum/pools/factory-v2-101",
   "type": "Curve",
   "localization": {
     "en": {

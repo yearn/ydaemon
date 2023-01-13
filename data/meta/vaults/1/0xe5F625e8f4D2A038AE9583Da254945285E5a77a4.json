@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve Dola-Frax-f",
+  "comment": "Curve DOLA-FRAXBP-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -8,7 +8,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve Dola-Frax",
+  "displayName": "Curve DOLA-FRAXBP",
   "migrationAvailable": false,
   "classification": {
     "isAutomated": true,

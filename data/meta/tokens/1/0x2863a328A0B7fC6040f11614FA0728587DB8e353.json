@@ -1,6 +1,6 @@
 {
   "$schema": "token",
-  "name": "Curve multiBTC-WBTC-sBTC Pool",
+  "name": "Curve multiBTC Pool",
   "symbol": "multibtc3CRV-f",
   "description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains multiBTC, wBTC, and sBTC.",
   "categories": ["Curve LP Tokens"],

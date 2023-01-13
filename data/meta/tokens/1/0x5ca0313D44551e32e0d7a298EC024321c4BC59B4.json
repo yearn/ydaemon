@@ -2,7 +2,7 @@
   "$schema": "token",
   "name": "Curve bLUSD Pool",
   "symbol": "bLUSDLUSD3-f",
-  "description": "This token represents a v2 Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains bLUSD, LUSD3CRV-f the liquity metapool composed of: LUSD, DAI, USDC, USDT. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
+  "description": "This token represents a v2 Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains bLUSD along with LUSD3CRV-f, the base LUSD pool composed of LUSD, DAI, USDC, and USDT. For more info regarding bLUSD, check [here](https://www.chickenbonds.org/lusd-bonds). Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/#/ethereum/pools/factory-crypto-134",
   "type": "Curve",

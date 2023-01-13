@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve sdCRV-f",
+  "comment": "Curve sdCRV-CRV-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve sdCRV",
+  "displayName": "Curve sdCRV-CRV",
   "classification": {
     "isAutomated": true,
     "isPool": true,

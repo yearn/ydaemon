@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve multibtc3CRV-f",
+  "comment": "Curve multiBTC-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve multiBTC-WBTC-sBTC",
+  "displayName": "Curve multiBTC",
   "classification": {
     "isAutomated": true,
     "isPool": true,

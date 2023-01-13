@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve wBTC-sBTC-f",
+  "comment": "Curve sBTCv2-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve wBTC-sBTC",
+  "displayName": "Curve sBTCv2",
   "classification": {
     "isAutomated": true,
     "isPool": true,

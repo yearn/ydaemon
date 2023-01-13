@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve sdFXS-f",
+  "comment": "Curve sdFXS-FXS-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve sdFXS",
+  "displayName": "Curve sdFXS-FXS",
   "classification": {
     "isAutomated": true,
     "isPool": true,

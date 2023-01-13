@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve apeUSDFRAXBP-f",
+  "comment": "Curve apeUSD-FRAXBP-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve apeUSDFRAXBP Pool",
+  "displayName": "Curve apeUSD-FRAXBP",
   "classification": {
     "isAutomated": true,
     "isPool": true,

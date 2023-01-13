@@ -1,6 +1,6 @@
 {
   "$schema": "token",
-  "name": "Curve wBTC-sBTC Pool",
+  "name": "Curve sBTCv2 Pool",
   "symbol": "crvWSBTC",
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This liquidity pool contains sBTC and wBTC.",
   "categories": ["Curve LP Tokens"],

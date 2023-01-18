@@ -74,6 +74,7 @@ type YTokenFromList struct {
 	LogoURI       string         `json:"logoURI"`
 	Decimals      int            `json:"decimals"`
 	Balance       *bigNumber.Int `json:"balance"`
+	Price         *bigNumber.Int `json:"price,omitempty"`
 	SupportedZaps []SupportedZap `json:"supportedZaps"`
 }
 type YTokenList struct {

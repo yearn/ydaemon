@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokensList"
 )
 
@@ -82,7 +84,10 @@ func GetTokenList(c *gin.Context) {
 			continue
 		}
 		token.Balance = tokenBalance
-		tokenBalanceMap[token.Address] = token
+		if tokenPrice, ok := prices.FindPrice(chainID, common.HexToAddress(token.Address)); ok {
+			token.Price = tokenPrice
+			tokenBalanceMap[token.Address] = token
+		}
 	}
 
 	c.JSON(http.StatusOK, tokenBalanceMap)

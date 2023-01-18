@@ -111,6 +111,7 @@ type TExternalVault struct {
 	Category          string                  `json:"category"`
 	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
+	ChainID           uint64                  `json:"chainID"`
 	RiskScore         float64                 `json:"riskScore"`
 	Endorsed          bool                    `json:"endorsed"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
@@ -155,6 +156,7 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.Token = internalVault.Token
+	v.ChainID = internalVault.ChainID
 	v.TVL = TExternalVaultTVL(internalVault.BuildTVL())
 	v.Migration = TExternalVaultMigration(internalVault.BuildMigration())
 	v.Category = internalVault.BuildCategory()

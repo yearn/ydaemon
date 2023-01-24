@@ -13,7 +13,8 @@
       "format": "address"
     },
     "start_date": {
-      "type": "number"
+      "type": "string",
+      "format": "date"
     },
     "wrappers": {
       "type": "array",
@@ -40,7 +41,8 @@
               {"const": "element"},
               {"const": "bentobox"},
               {"const": "begenbox"},
-              {"const": "yapeswapFactory"}
+              {"const": "yapeswapFactory"},
+              {"const": "delegatedDepositWildcardWrapper"}
             ]
           }
         },

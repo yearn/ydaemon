@@ -1,11 +1,11 @@
 {
 	"$schema": "partners",
 	"name": "element",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x82eF450FB7f06E3294F2f19ed1713b255Af0f541",
 	"wrappers": [{
 		"name": "WrapperRegistry",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x149f615057F905988fFC97994E29c0Cc7DaB5337",
 		"type": "element"
 	}]

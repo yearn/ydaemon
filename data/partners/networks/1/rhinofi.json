@@ -1,11 +1,11 @@
 {
 	"$schema": "partners",
 	"name": "rhino.fi",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x520Cf70a2D0B3dfB7386A2Bc9F800321F62a5c3a",
 	"wrappers": [{
 		"name": "rhino.fi Layer2 StarkEx Bridge",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x5d22045DAcEAB03B158031eCB7D9d06Fad24609b",
 		"type": "wildcard"
 	}]

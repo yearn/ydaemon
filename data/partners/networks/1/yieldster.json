@@ -1,11 +1,11 @@
 {
 	"$schema": "partners",
 	"name": "yieldster",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x2955278aBCE187315D6d72B0d626f1217786DF60",
 	"wrappers": [{
 		"name": "liva-one",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x2747ce11793F7059567758cc35D34F63ceE8Ac00",
 		"type": "wildcard"
 	}]

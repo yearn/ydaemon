@@ -1,16 +1,16 @@
 {
 	"$schema": "partners",
 	"name": "wido",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x5EF7F250f74d4F11A68054AE4e150705474a6D4a",
 	"wrappers": [{
 		"name": "dt",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x7Bbd6348db83C2fb3633Eebb70367E1AEc258764",
 		"type": "wildcard"
 	},{
 		"name": "st",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x926D47CBf3ED22872F8678d050e70b198bAE1559",
 		"type": "wildcard"
 	}]

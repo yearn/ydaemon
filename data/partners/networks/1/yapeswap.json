@@ -1,11 +1,11 @@
 {
 	"$schema": "partners",
 	"name": "yapeswap",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x10DE513EE154BfA97f1c2841Cab91E8C389c7c72",
 	"wrappers": [{
 		"name": "YApeSwapFactoryWrapper",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x46aDc1C052Fafd590F56C42e379d7d16622835a2",
 		"type": "yapeswapFactory"
 	}]

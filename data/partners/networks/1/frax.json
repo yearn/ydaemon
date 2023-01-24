@@ -1,7 +1,7 @@
 {
 	"$schema": "partners",
 	"name": "frax",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0x8d0C5D009b128315715388844196B85b41D9Ea30",
 	"wrappers": [{
 		"name": "usdc",

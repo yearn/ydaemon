@@ -1,11 +1,11 @@
 {
 	"$schema": "partners",
 	"name": "beethovenx",
-	"start_date": 0,
+	"start_date": "1970-01-01",
 	"treasury": "0xa1E849B1d6c2Fd31c63EEf7822e9E0632411ada7",
 	"wrappers": [{
 		"name": "Vault",
-		"vault": "",
+		"vault": "0x0000000000000000000000000000000000000000",
 		"wrapper": "0x20dd72Ed959b6147912C2e529F0a0C651c33c9ce",
 		"type": "wildcard"
 	}]

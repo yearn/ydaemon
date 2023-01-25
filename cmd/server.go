@@ -173,7 +173,7 @@ func NewRouter() *gin.Engine {
 		c := tokens.Controller{}
 		GET(router, `tokens/all`, c.GetAllTokens)
 		GET(router, `:chainID/tokens/all`, c.GetTokens)
-		GET(router, `:chainID/tokenlistbalances/:address`, tokensList.GetTokenList)
+		GET(router, `:chainID/tokenlistbalances/:address`, tokensList.GetYearnTokenList)
 	}
 
 	// Prices API section
@@ -192,6 +192,7 @@ func NewRouter() *gin.Engine {
 
 	{
 		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
+		GET(router, `tokenlist`, tokensList.GetTokenList)
 	}
 
 	{

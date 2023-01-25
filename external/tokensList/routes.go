@@ -3,18 +3,25 @@ package tokensList
 import (
 	"math"
 	"net/http"
+	"strconv"
+	"time"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+<<<<<<< Updated upstream
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
+=======
+	"github.com/yearn/ydaemon/internal/tokens"
+>>>>>>> Stashed changes
 	"github.com/yearn/ydaemon/internal/tokensList"
 )
 
-// GetTokenList will, for a given chainID, return the Yearn's Token List
-func GetTokenList(c *gin.Context) {
+// GetYearnTokenList will, for a given chainID, return the Yearn's Token List
+func GetYearnTokenList(c *gin.Context) {
 	/**********************************************************************************************
 	** The AssertChainID function takes a string as input and returns a uint64 value and a boolean
 	** indicating whether the input is a valid chain ID. If the input is not a valid chain ID, the
@@ -91,4 +98,37 @@ func GetTokenList(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, tokenBalanceMap)
+}
+
+// GetTokenList will return the Yearn's Token List
+func GetTokenList(c *gin.Context) {
+	var tokenList tokensList.DefaultTokenListData
+
+	tokenList.Name = "Yearn Token List"
+	tokenList.Keywords = []string{"yearn", "yfi", "yvault", "ytoken", "ycurve", "yprotocol", "vaults"}
+	tokenList.LogoURI = "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg"
+	tokenList.Timestamp = time.Now().Format(time.RFC3339)
+	tokenList.Version.Major = 1
+	tokenList.Version.Minor = 0
+	tokenList.Version.Patch = 0
+
+	/**********************************************************************************************
+	** Retrieve the MapTokenList for each chainID and return it as a map of chainID to token list.
+	**********************************************************************************************/
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		allTokens := tokens.ListTokens(chainID)
+		// tokens := tokensList.MapTokenList(chainID)
+		for _, token := range allTokens {
+			tokenList.Tokens = append(tokenList.Tokens, tokensList.DefaultTokenListToken{
+				ChainID:  int(chainID),
+				Address:  token.Address.Hex(),
+				Name:     token.Name,
+				Symbol:   token.Symbol,
+				Decimals: int(token.Decimals),
+				LogoURI:  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + token.Address.Hex() + `/logo-128.png`,
+			})
+		}
+	}
+
+	c.JSON(http.StatusOK, tokenList)
 }

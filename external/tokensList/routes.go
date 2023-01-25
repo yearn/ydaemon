@@ -11,12 +11,9 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-<<<<<<< Updated upstream
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
-=======
 	"github.com/yearn/ydaemon/internal/tokens"
->>>>>>> Stashed changes
 	"github.com/yearn/ydaemon/internal/tokensList"
 )
 

@@ -192,7 +192,8 @@ func NewRouter() *gin.Engine {
 
 	{
 		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
-		GET(router, `tokenlist`, tokensList.GetTokenList)
+		router.StaticFile("tokenlist", env.BASE_DATA_PATH+`/tokensList/public/yearn.json`)
+		GET(router, `tokenlist/live`, tokensList.GetTokenList)
 	}
 
 	{

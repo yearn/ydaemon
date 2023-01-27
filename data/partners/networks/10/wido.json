@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "wido",
 	"start_date": "1970-01-01",
+	"full_name": "Wido",
+	"description": "A set of tools and APIs for EVM Wallets and DeFi apps to help them make the DeFi experience shine.",
 	"treasury": "0x5EF7F250f74d4F11A68054AE4e150705474a6D4a",
 	"wrappers": [{
 		"name": "Router",

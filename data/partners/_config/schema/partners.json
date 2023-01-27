@@ -8,6 +8,12 @@
     "name": {
       "type": "string"
     },
+    "full_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
     "treasury": {
       "type": "string",
       "format": "address"
@@ -50,5 +56,5 @@
       }
     }
   },
-  "required": ["name", "treasury", "start_date", "wrappers"]
+  "required": ["name", "full_name", "description", "treasury", "start_date", "wrappers"]
 }

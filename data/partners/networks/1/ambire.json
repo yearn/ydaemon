@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "ambire",
 	"start_date": "1970-01-01",
+	"full_name": "Ambire Wallet",
+	"description": "A self-custodial crypto wallet designed with power and ease of use in mind",
 	"treasury": "0xa07D75aacEFd11b425AF7181958F0F85c312f143",
 	"wrappers": [{
 		"name": "batcher",

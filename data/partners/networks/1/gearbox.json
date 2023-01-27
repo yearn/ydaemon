@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "gearbox",
 	"start_date": "1970-01-01",
+	"full_name": "Gearbox",
+	"description": "Generalized Leverage Protocol: built with composability in mind.",
 	"treasury": "0x7b065Fcb0760dF0CEA8CFd144e08554F3CeA73D1",
 	"wrappers": [{
 		"name": "gearbox usdc v1",

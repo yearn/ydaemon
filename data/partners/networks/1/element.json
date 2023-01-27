@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "element",
 	"start_date": "1970-01-01",
+	"full_name": "Element Finance",
+	"description": "A decentralized finance protocol that enables users to seek high fixed yield income in the DeFi market",
 	"treasury": "0x82eF450FB7f06E3294F2f19ed1713b255Af0f541",
 	"wrappers": [{
 		"name": "WrapperRegistry",

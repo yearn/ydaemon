@@ -1,7 +1,9 @@
 {
 	"$schema": "partners",
 	"name": "abracadabra",
+	"full_name": "Abracadabra.Money",
 	"start_date": "1970-01-01",
+	"description": "A lending platform that uses interest-bearing tokens as collateral to borrow a USD pegged stablecoin, Magic Internet Money, unlocking the potential of locked up capital.",
 	"treasury": "0xb4ad8B57Bd6963912c80FCbb6Baea99988543c1c",
 	"wrappers": [{
 		"name": "yvFTM",

@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "beethovenx",
 	"start_date": "1970-01-01",
+	"full_name": "Beethoven X",
+	"description": "A first next-generation AMM protocol on Fantom Opera and Optimism.",
 	"treasury": "0xa1E849B1d6c2Fd31c63EEf7822e9E0632411ada7",
 	"wrappers": [{
 		"name": "Vault",

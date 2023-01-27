@@ -1,7 +1,9 @@
 {
 	"$schema": "partners",
 	"name": "tempus",
-	"start_block": 0,
+	"start_date": "1970-01-01",
+	"full_name": "Tempus",
+	"description": "We are shaping the future of Decentralized Finance through our liquidity layer on StarkNet alongside our fixed income protocol.",
 	"treasury": "0xab40a7e3cef4afb323ce23b6565012ac7c76bfef",
 	"wrappers": [{
 		"name": "btr",

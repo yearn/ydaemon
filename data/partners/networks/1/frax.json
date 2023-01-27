@@ -1,7 +1,9 @@
 {
 	"$schema": "partners",
 	"name": "frax",
-	"start_block": 0,
+	"start_date": "1970-01-01",
+	"full_name": "Frax Finance",
+	"description": "The world's first fractional stablecoin and crypto native consumer price index.",
 	"treasury": "0x8d0C5D009b128315715388844196B85b41D9Ea30",
 	"wrappers": [{
 		"name": "usdc",

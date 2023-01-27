@@ -8,12 +8,19 @@
     "name": {
       "type": "string"
     },
+    "full_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
     "treasury": {
       "type": "string",
       "format": "address"
     },
-    "start_block": {
-      "type": "number"
+    "start_date": {
+      "type": "string",
+      "format": "date"
     },
     "wrappers": {
       "type": "array",
@@ -40,7 +47,8 @@
               {"const": "element"},
               {"const": "bentobox"},
               {"const": "begenbox"},
-              {"const": "yapeswapFactory"}
+              {"const": "yapeswapFactory"},
+              {"const": "delegatedDepositWildcardWrapper"}
             ]
           }
         },
@@ -48,5 +56,5 @@
       }
     }
   },
-  "required": ["name", "treasury", "start_block", "wrappers"]
+  "required": ["name", "full_name", "description", "treasury", "start_date", "wrappers"]
 }

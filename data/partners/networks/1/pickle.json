@@ -2,6 +2,8 @@
 	"$schema": "partners",
 	"name": "pickle",
 	"start_date": "1970-01-01",
+	"full_name": "Pickle Finance",
+	"description": "A non-custodial Decentralized Finance yield aggregator.",
 	"treasury": "0x066419EaEf5DE53cc5da0d8702b990c5bc7D1AB3",
 	"wrappers": [{
 		"name": "usdc",

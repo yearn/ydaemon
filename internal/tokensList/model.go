@@ -16,7 +16,7 @@ import (
 type DefaultTokenListToken struct {
 	ChainID  int    `json:"chainId"`
 	Decimals int    `json:"decimals"`
-	Count    int    `json:"count"`
+	Count    int    `json:"count,omitempty"`
 	Address  string `json:"address"`
 	Name     string `json:"name"`
 	Symbol   string `json:"symbol"`

@@ -1,7 +1,9 @@
 {
 	"$schema": "partners",
 	"name": "badger",
-	"start_block": 0,
+	"start_date": "1970-01-01",
+	"full_name": "BadgerDAO",
+	"description": "Bringing Bitcoin to DeFi: we make it easy to put your Bitcoin to work in DeFi today.",
 	"treasury": "0xD0A7A8B98957b9CD3cFB9c0425AbE44551158e9e",
 	"wrappers": [{
 		"name": "wbtc",

@@ -1,6 +1,6 @@
 {
 	"$schema": "partners",
-	"name": "tempus",
+	"name": "qidao",
 	"start_date": "1970-01-01",
 	"full_name": "Tempus",
 	"description": "We are shaping the future of Decentralized Finance through our liquidity layer on StarkNet alongside our fixed income protocol.",
@@ -21,15 +21,9 @@
 		"wrapper": "0xE9b557f9766Fb20651E3685374cd1DF6f977d36B",
 		"type": "default"
 	}, {
-		"name": "yvWETH Tempus Pool",
-		"vault": "0xCe2Fc0bDc18BD6a4d9A725791A3DEe33F3a23BB7",
-		"wrapper": "0xA9C549aeFa21ee6e79bEFCe91fa0E16a9C7d585a",
-		"type": "default"
-	}, {
 		"name": "yvYFI Tempus Pool",
 		"vault": "0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db",
 		"wrapper": "0xAE7E5242eb52e8a592605eE408268091cC8794b8",
 		"type": "default"
 	}]
 }
-  

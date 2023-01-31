@@ -1,7 +1,7 @@
 {
   "$schema": "token",
-  "name": "Curve 3Crypto Pool",
-  "symbol": "3Crypto",
+  "name": "Curve TRYB/USD (3crv) Pool",
+  "symbol": "TRYB3POOL-f",
   "description": "This token represents a Curve v2 crypto pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains TRYB, and 3CRV (DAI, USDC, and USDT). Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss. TRYB is a stablecoin pegged to the Turkish Lira.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/#/ethereum/pools/factory-crypto-195",

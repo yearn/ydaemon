@@ -74,6 +74,8 @@ var CURVE_FACTORY_URI = map[uint64][]string{
 var RPC_ENDPOINTS = map[uint64]string{
 	1:     `https://eth.public-rpc.com`,
 	10:    `https://mainnet.optimism.io`,
+	56:    `https://bsc.rpc.blxrbdn.com`,
+	137:   `https://polygon.llamarpc.com`,
 	250:   `https://rpc.ftm.tools`,
 	42161: `https://arbitrum.public-rpc.com`,
 }
@@ -98,6 +100,8 @@ var LENS_ADDRESSES = map[uint64]common.Address{
 var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`),
 	10:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
+	56:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
+	137:   common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	250:   common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),
 	42161: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
 }

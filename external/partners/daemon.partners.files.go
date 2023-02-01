@@ -30,8 +30,11 @@ func FetchPartnersFromFiles(chainID uint64) {
 		}
 
 		partner.Name = partnerFromFile.Name
-		partner.StartBlock = partnerFromFile.StartBlock
+		partner.FullName = partnerFromFile.FullName
+		partner.Description = partnerFromFile.Description
+		partner.StartDate = partnerFromFile.StartDate
 		partner.Treasury = common.HexToAddress(partnerFromFile.Treasury)
+		partner.RetiredTreasury = partnerFromFile.RetiredTreasury
 		partner.Wrappers = make([]TPartnersWrapper, len(partnerFromFile.Wrappers))
 		for i, v := range partnerFromFile.Wrappers {
 			if v.Vault != `` {

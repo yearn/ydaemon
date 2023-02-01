@@ -6,10 +6,13 @@ import (
 )
 
 type TPartnersFromFile struct {
-	Name       string `json:"name"`
-	StartBlock uint64 `json:"start_block"`
-	Treasury   string `json:"treasury"`
-	Wrappers   []struct {
+	Name            string   `json:"name"`
+	FullName        string   `json:"full_name"`
+	Description     string   `json:"description"`
+	StartDate       string   `json:"start_date"`
+	RetiredTreasury []string `json:"retired_treasury"`
+	Treasury        string   `json:"treasury"`
+	Wrappers        []struct {
 		Vault   string `json:"vault,omitempty"`
 		Wrapper string `json:"wrapper"`
 		Name    string `json:"name"`
@@ -26,8 +29,11 @@ type TPartnersWrapper struct {
 }
 
 type TPartners struct {
-	Name       string             `json:"name"`
-	StartBlock uint64             `json:"start_block"`
-	Treasury   common.Address     `json:"treasury"`
-	Wrappers   []TPartnersWrapper `json:"wrappers"`
+	Name            string             `json:"name"`
+	FullName        string             `json:"full_name"`
+	Description     string             `json:"description"`
+	StartDate       string             `json:"start_date"`
+	Treasury        common.Address     `json:"treasury"`
+	RetiredTreasury []string           `json:"retired_treasury"`
+	Wrappers        []TPartnersWrapper `json:"wrappers"`
 }

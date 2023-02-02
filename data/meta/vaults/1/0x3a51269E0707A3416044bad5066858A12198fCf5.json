@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve USDN-f",
+  "comment": "Curve CLEV-ETH-f",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 269,
+  "order": 286,
+  "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve USDN",
-  "migrationAvailable": false,
+  "retired": false,
+  "displayName": "Curve CLEV-ETH",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stability": "Volatile"
   }
 }

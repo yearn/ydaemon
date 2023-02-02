@@ -1,0 +1,65 @@
+{
+  "$schema": "strategy",
+  "name": "Maker Flashmint Folding Uniswap v2",
+  "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xE5b16812686Fc4ae7C5Db0dc752172B2CD479F52"],
+  "protocols": ["Uniswap", "MakerDAO"],
+  "protocolVersion": {
+    "Uniswap": "2",
+    "MakerDAO": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Maker Flashmint Folding Uniswap v2",
+      "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

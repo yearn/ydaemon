@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve USDN-f",
+  "comment": "Curve TRYB-f",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 269,
+  "order": 285,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve USDN",
+  "retired": false,
+  "displayName": "Curve TRYB",
   "migrationAvailable": false,
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stability": "Volatile"
   }
 }

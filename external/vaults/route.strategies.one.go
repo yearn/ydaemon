@@ -9,7 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
-// GetVault will, for a given chainID, return a list of all vaults
+// GetStrategy will, for a given chainID, return the strategy for a given address
 func (y Controller) GetStrategy(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

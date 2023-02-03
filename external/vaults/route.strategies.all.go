@@ -32,18 +32,13 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 		}
 		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}
-
 			// Always show details
-			externalStrategy = strategyWithDetails
-			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
-
-			// Directly append the strategy
-			data = append(data, *externalStrategy)
+			strategyWithDetails.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+			data = append(data, *strategyWithDetails)
 		}
 	}
 

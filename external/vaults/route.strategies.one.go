@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
@@ -22,22 +21,14 @@ func (y Controller) GetStrategy(c *gin.Context) {
 		return
 	}
 
-	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
 	strategy, ok := strategies.FindStrategy(chainID, address.ToAddress())
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid strategy")
 		return
 	}
-	var newStrategy *TStrategy
-	if withStrategiesDetails {
-		newStrategy = NewStrategy().AssignTStrategy(strategy)
-		newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
-	} else {
-		newStrategy = &TStrategy{
-			Address:     common.FromAddress(strategy.Address),
-			Name:        strategy.Name,
-			Description: strategy.Description,
-		}
-	}
+	// Always show details
+	newStrategy := NewStrategy().AssignTStrategy(strategy)
+	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+
 	c.JSON(http.StatusOK, *newStrategy)
 }

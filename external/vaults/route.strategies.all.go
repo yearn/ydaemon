@@ -14,19 +14,12 @@ import (
 
 // GetAllStrategies will, for a given chainID, return a list of all strategies
 func (y Controller) GetAllStrategies(c *gin.Context) {
-	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query(`hideAlways`), `false`))
 	orderBy := helpers.SafeString(c.Query(`orderBy`), `details.order`)
 	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
 	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
-	withStrategiesDetails := c.Query(`strategiesDetails`) == `withDetails`
-	migrable := selectMigrableCondition(c.Query(`migrable`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
 		c.String(http.StatusBadRequest, `invalid chainID`)
-		return
-	}
-	if migrable != `none` && hideAlways {
-		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
 		return
 	}
 
@@ -37,16 +30,6 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
-
-		newVault := NewVault().AssignTVault(currentVault)
-		if migrable == `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
-			continue
-		} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
-			continue
-		} else if migrable == `all` && !newVault.Migration.Available {
-			continue
-		}
-
 		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
 		for _, strategy := range vaultStrategies {
 			var externalStrategy *TStrategy
@@ -55,16 +38,10 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 				continue
 			}
 
-			if withStrategiesDetails {
-				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
-			} else {
-				externalStrategy = &TStrategy{
-					Address:     common.FromAddress(strategy.Address),
-					Name:        strategy.Name,
-					Description: strategy.Description,
-				}
-			}
+			// Always show details
+			externalStrategy = strategyWithDetails
+			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+
 			// Directly append the strategy
 			data = append(data, *externalStrategy)
 		}

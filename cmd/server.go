@@ -109,6 +109,11 @@ func NewRouter() *gin.Engine {
 		GET(router, `:chainID/vaults/apy/:address`, c.GetVaultsVisionAPY)
 		GET(router, `:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
 		GET(router, `:chainID/earned/:address`, c.GetEarnedPerUser)
+
+		// Retrieve the strategies for a specific chainID
+		GET(router, `:chainID/strategies/all`, c.GetAllStrategies)
+		GET(router, `:chainID/strategies/:address`, c.GetStrategy)
+		GET(router, `:chainID/strategy/:address`, c.GetStrategy)
 	}
 
 	// Strategies section

@@ -1,0 +1,17 @@
+{
+    "$schema": "risks",
+    "label": "Gen Lender sturdy",
+    "codeReviewScore": 3,
+    "testingScore": 3,
+    "auditScore": 5,
+    "protocolSafetyScore": 3,
+    "complexityScore": 3,
+    "teamKnowledgeScore": 3,
+    "criteria": {
+        "nameLike": [
+            "sturdy",
+        ],
+        "strategies": ["0x5F84acB4a27D762FC0E5CD6EFc1674827c0934C4"],
+        "exclude": []
+    }
+}

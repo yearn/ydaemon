@@ -36,7 +36,7 @@ func GetRPCURI(chainID uint64) string {
 	case 42161:
 		return env.RPC_ENDPOINTS[42161]
 	}
-	return ``
+	return env.RPC_ENDPOINTS[chainID]
 }
 
 // MulticallClientForChainID holds the multicall client for a specific chainID

@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -143,5 +144,6 @@ func BuildTokenList(chainID uint64) {
 	if lastUpdate.Before(time.Now().Add(-time.Hour * 24 * 7)) {
 		logs.Warning(`Please update the tokenList json files`)
 	}
-	saveTokensListToJSON(chainID, MapTokenList(chainID))
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	saveTokensListToJSON(MapTokenList(chainID), env.BASE_DATA_PATH+`/tokensList/`+chainIDStr+`.json`)
 }

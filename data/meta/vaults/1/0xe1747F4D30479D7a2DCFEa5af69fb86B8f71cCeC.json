@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve stETH-f",
+  "comment": "Curve TRYB-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 266,
+  "order": 285,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve stETH",
+  "displayName": "Curve TRYB",
   "migrationAvailable": false,
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "Ether"
+    "stability": "Volatile"
   }
 }

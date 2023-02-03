@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve oBTC",
+  "comment": "Curve CLEV-ETH-f",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 51,
+  "order": 286,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve oBTC",
+  "retired": false,
+  "displayName": "Curve CLEV-ETH",
   "classification": {
-    "isAutomated": false,
+    "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Stable",
-    "stableBaseAsset": "Bitcoin"
+    "stability": "Volatile"
   }
 }

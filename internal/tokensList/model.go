@@ -165,10 +165,10 @@ func loadTokensListFromJSON(chainID uint64) (map[common.Address]YTokenFromList, 
 	return tokenListMap, tokenList.Timestamp
 }
 
-func saveTokensListToJSON(chainID uint64, YTokenMap map[common.Address]YTokenFromList) {
+func saveTokensListToJSON(YTokenMap map[common.Address]YTokenFromList, path string) {
 	tokenList := YTokenList{
 		Name:      "Yearn Token List",
-		LogoURI:   "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
+		LogoURI:   "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
 		Timestamp: time.Now(),
 	}
 	tokenList.Version.Major = 1
@@ -183,8 +183,7 @@ func saveTokensListToJSON(chainID uint64, YTokenMap map[common.Address]YTokenFro
 	if err != nil {
 		return
 	}
-	chainIDStr := strconv.FormatUint(chainID, 10)
-	err = ioutil.WriteFile(env.BASE_DATA_PATH+`/tokensList/`+chainIDStr+`.json`, jsonData, 0644)
+	err = ioutil.WriteFile(path, jsonData, 0644)
 	if err != nil {
 		return
 	}

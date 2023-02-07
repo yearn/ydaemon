@@ -4,12 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"math/big"
+	"strings"
 	"time"
 
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/logs"
@@ -120,8 +122,9 @@ func (caller *TEthMultiCaller) execute(
 		blockNumber,
 	)
 	if err != nil {
+		chainID, _ := caller.Client.ChainID(context.Background())
 		traces.
-			Capture(`error`, `failed to perform multicall`).
+			Capture(`error`, `failed to perform multicall for `+chainID.String()).
 			SetEntity(`multicall`).
 			SetExtra(`error`, err.Error()).
 			SetTag(`blockNumber`, blockNumber.String()).
@@ -160,8 +163,24 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
-			logs.Error(err)
-			continue
+			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
+			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
+
+			if LIMIT_ERROR {
+				logs.Warning("Multicall gas limit error, retrying with smaller batch size", "batchSize", batchSize)
+			} else if SIZE_ERROR {
+				logs.Warning("Multicall size error, retrying with smaller batch size", "batchSize", batchSize)
+			}
+			//check if error is a request entity too large
+			if LIMIT_ERROR || SIZE_ERROR {
+				if batchSize == math.MaxInt64 {
+					return caller.ExecuteByBatch(calls, 10000, blockNumber)
+				}
+				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
+			} else {
+				logs.Error(err)
+				continue
+			}
 		}
 
 		// Unpack results

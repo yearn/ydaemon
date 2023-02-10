@@ -12,17 +12,18 @@ import (
 )
 
 type TAllTokens struct {
-	Address       common.Address      `json:"address"`
-	Name          string              `json:"name"`
-	Symbol        string              `json:"symbol"`
-	Decimals      uint64              `json:"decimals"`
-	IsVault       bool                `json:"isVault"`
-	DisplayName   string              `json:"display_name,omitempty"`
-	DisplaySymbol string              `json:"display_symbol,omitempty"`
-	Description   string              `json:"description,omitempty"`
-	Website       string              `json:"website,omitempty"`
-	Categories    []string            `json:"categories,omitempty"`
-	Localization  *meta.TLocalization `json:"localization,omitempty"`
+	Address          common.Address      `json:"address"`
+	Name             string              `json:"name"`
+	Symbol           string              `json:"symbol"`
+	Decimals         uint64              `json:"decimals"`
+	IsVault          bool                `json:"isVault"`
+	DisplayName      string              `json:"display_name,omitempty"`
+	DisplaySymbol    string              `json:"display_symbol,omitempty"`
+	Description      string              `json:"description,omitempty"`
+	Website          string              `json:"website,omitempty"`
+	Categories       []string            `json:"categories,omitempty"`
+	UnderlyingTokens []string            `json:"underlyingTokens,omitempty"`
+	Localization     *meta.TLocalization `json:"localization,omitempty"`
 }
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
@@ -42,6 +43,9 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 				Symbol:   token.Symbol,
 				Decimals: token.Decimals,
 				IsVault:  token.IsVault(),
+			}
+			for _, addr := range token.UnderlyingTokensAddresses {
+				tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, common.FromAddress(addr).Hex())
 			}
 			if ok {
 				tokenDetails.DisplaySymbol = metaToken.Symbol
@@ -85,6 +89,9 @@ func (y Controller) GetTokens(c *gin.Context) {
 			Symbol:   token.Symbol,
 			Decimals: token.Decimals,
 			IsVault:  token.IsVault(),
+		}
+		for _, addr := range token.UnderlyingTokensAddresses {
+			tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, common.FromAddress(addr).Hex())
 		}
 		if ok {
 			tokenDetails.DisplaySymbol = metaToken.Symbol

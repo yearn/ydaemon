@@ -7,8 +7,225 @@ import QueryArgumentBox from '../../../components/QueryArgumentBox.tsx'
 List strategies that are currently active on the Yearn's ecosystem.
 
 ```
-[GET - `{chainID}/reports/{address}`]:         Get the report for a specific strategy for a specific chain.
+[GET - `{chainID}/strategies/all`]:             List the strategies for a specific chain.
+[GET - `{chainID}/strategies/{address}`]:       Get a specific strategy for a specific chain.
+[GET - `{chainID}/strategy/{address}`]:         Get a specific strategy for a specific chain.
+[GET - `{chainID}/reports/{address}`]:          Get the report for a specific strategy for a specific chain.
 ```
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/strategies/all'} /> <p>Get All Strategies</p>
+**Get All Strategies**: REST API endpoint to get all the Strategies in the system for a given chainID.
+
+You can check [getSupportedChains](/docs/routes/misc#-get-supported-chains) to get a list of supported chains.
+
+When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about all the Strategies from the official Yearn's subgraph.  
+
+The strategies from blacklisted vaults are ignored from the query and a comprehensive list of all Strategies is returned.
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the Strategies for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	<QueryArgumentBox
+		title={'orderBy'}
+		description={'The vaults are ordered by the `Dropdown.order` property by default, but you can change this by setting this argument to another property of the vaults. Any property of the vaults can be used, separated by a `.` if it\'s a nested property.'}>
+		```sh
+		?orderBy=Dropdown.order # default
+		```
+	</QueryArgumentBox>
+	<QueryArgumentBox
+		title={'orderDirection'}
+		description={'The vaults are ordered in ascending order by default, but you can change this by setting this argument to `desc` to get the vaults in descending order.'}>
+		```sh
+		?orderDirection=asc # default
+		```
+	</QueryArgumentBox>
+	<QueryArgumentBox
+		title={'strategiesCondition'}
+		description={'This property is used to defined which strategies should be returned. We are looking for the "active" strategies but multiple definitions of "active" exist. The possible arguments are:'}>
+		<div>
+			<div style={{marginTop: 16, marginBottom: -16}}>
+			- `debtLimit`: The strategy is active if the `debtLimit` is greater than `0`.
+			- `debtRatio`: The strategy is active if the `debtRatio` is greater than `0`.
+			- `inQueue`: The strategy is active if it is in the vault's `withdrawalQueue`.
+			- `absolute`: The strategy is active if the `debtLimit` is greater than `0` and if it is in the vault's `withdrawalQueue` and if the `totalDebt` is greater than `0`.
+			</div>
+			```sh
+			?strategiesCondition=debtLimit # default
+			```
+		</div>
+	</QueryArgumentBox>
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TStrategy struct {
+		Address     common.Address              `json:"address"`
+		Name        string                      `json:"name"`
+		Description string                      `json:"description"`
+
+		// Details contains the details about a strategy.
+		Details struct {
+			Keeper                  common.Address `json:"keeper"`
+			Strategist              common.Address `json:"strategist"`
+			Rewards                 common.Address `json:"rewards"`
+			HealthCheck             common.Address `json:"healthCheck"`
+			TotalDebt               *bigNumber.Int `json:"totalDebt"`
+			TotalLoss               *bigNumber.Int `json:"totalLoss"`
+			TotalGain               *bigNumber.Int `json:"totalGain"`
+			RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`
+			MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"`
+			MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"`
+			EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
+			CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
+			DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
+			ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
+			DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
+			DelegatedValue          string         `json:"delegatedValue"`
+			Version                 string         `json:"version"`
+			Protocols               []string       `json:"protocols"`
+			APR                     float64        `json:"apr"`
+			PerformanceFee          uint64         `json:"performanceFee"`
+			LastReport              uint64         `json:"lastReport"`
+			Activation              uint64         `json:"activation"`
+			KeepCRV                 uint64         `json:"keepCRV"`
+			DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
+			DebtLimit               uint64         `json:"debtLimit"`
+			WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
+			DoHealthCheck           bool           `json:"doHealthCheck"`
+			InQueue                 bool           `json:"inQueue"`
+			EmergencyExit           bool           `json:"emergencyExit"`
+			IsActive                bool           `json:"isActive"`
+		} `json:"details,omitempty"`
+
+		// Risk contains the scores and allocations from the risk framework.
+		Risk struct {
+			RiskScore   float64                         `json:"riskScore"`
+			RiskGroup   string                          `json:"riskGroup"`
+			RiskDetails struct {
+				TVLImpact           int `json:"TVLImpact"`
+				AuditScore          int `json:"auditScore"`
+				CodeReviewScore     int `json:"codeReviewScore"`
+				ComplexityScore     int `json:"complexityScore"`
+				LongevityImpact     int `json:"longevityImpact"`
+				ProtocolSafetyScore int `json:"protocolSafetyScore"`
+				TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
+				TestingScore        int `json:"testingScore"`
+			} `json:"riskDetails"`
+			Allocation  struct {
+				Status          string           `json:"status"`
+				CurrentTVL      *bigNumber.Float `json:"currentTVL"` // value in USDC
+				AvailableTVL    *bigNumber.Float `json:"availableTVL"`
+				CurrentAmount   *bigNumber.Float `json:"currentAmount"` // value in WANT
+				AvailableAmount *bigNumber.Float `json:"availableAmount"`
+			}    `json:"allocation"`
+		} `json:"risk,omitempty"`
+	}
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `500 - impossible to fetch subgraph`: yDaemon was unable to connect to the subgraph.
+	- `500 - invalid graphQL response`: yDaemon was unable to parse the response from the subgraph.
+</Dropdown>
+
+---------------------------------------------------------------------------------------------------
+
+### <GET path={':chainID/strategies/:address'} /> <p>Get One Strategy</p>
+**Get One Strategy**: REST API endpoint to get one specific strategy for a given chainID.
+
+You can check [getSupportedChains](/docs/routes/misc#-get-supported-chains) to get a list of supported chains.
+
+When performing a `GET` request to this endpoint, a GraphQL query is executed to retrieve the basic information about this specific strategy from the official Yearn's subgraph.
+  
+If the address is invalid or the strategy does not exist, the `400` error code is returned. 
+
+#### Request
+<Dropdown title={'Params'}>
+	- **chainID**: The chainID of the chain you want to get the Strategy for. Must be provided in the URL, and must be one of the [supported](/docs/routes/misc#-get-supported-chains) chains.
+	- **address**: The address of the strategy you want to get the information for.
+</Dropdown>
+<Dropdown title={'Query arguments'}>
+	N/A
+</Dropdown>
+
+#### Response
+<Dropdown title={'Valid request'}>
+	```go
+	type TStrategy struct {
+		Address     common.Address              `json:"address"`
+		Name        string                      `json:"name"`
+		Description string                      `json:"description"`
+
+		// Details contains the details about a strategy.
+		Details struct {
+			Keeper                  common.Address `json:"keeper"`
+			Strategist              common.Address `json:"strategist"`
+			Rewards                 common.Address `json:"rewards"`
+			HealthCheck             common.Address `json:"healthCheck"`
+			TotalDebt               *bigNumber.Int `json:"totalDebt"`
+			TotalLoss               *bigNumber.Int `json:"totalLoss"`
+			TotalGain               *bigNumber.Int `json:"totalGain"`
+			RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`
+			MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"`
+			MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"`
+			EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
+			CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
+			DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
+			ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
+			DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
+			DelegatedValue          string         `json:"delegatedValue"`
+			Version                 string         `json:"version"`
+			Protocols               []string       `json:"protocols"`
+			APR                     float64        `json:"apr"`
+			PerformanceFee          uint64         `json:"performanceFee"`
+			LastReport              uint64         `json:"lastReport"`
+			Activation              uint64         `json:"activation"`
+			KeepCRV                 uint64         `json:"keepCRV"`
+			DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
+			DebtLimit               uint64         `json:"debtLimit"`
+			WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
+			DoHealthCheck           bool           `json:"doHealthCheck"`
+			InQueue                 bool           `json:"inQueue"`
+			EmergencyExit           bool           `json:"emergencyExit"`
+			IsActive                bool           `json:"isActive"`
+		} `json:"details,omitempty"`
+
+		// Risk contains the scores and allocations from the risk framework.
+		Risk struct {
+			RiskScore   float64                         `json:"riskScore"`
+			RiskGroup   string                          `json:"riskGroup"`
+			RiskDetails struct {
+				TVLImpact           int `json:"TVLImpact"`
+				AuditScore          int `json:"auditScore"`
+				CodeReviewScore     int `json:"codeReviewScore"`
+				ComplexityScore     int `json:"complexityScore"`
+				LongevityImpact     int `json:"longevityImpact"`
+				ProtocolSafetyScore int `json:"protocolSafetyScore"`
+				TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
+				TestingScore        int `json:"testingScore"`
+			} `json:"riskDetails"`
+			Allocation  struct {
+				Status          string           `json:"status"`
+				CurrentTVL      *bigNumber.Float `json:"currentTVL"` // value in USDC
+				AvailableTVL    *bigNumber.Float `json:"availableTVL"`
+				CurrentAmount   *bigNumber.Float `json:"currentAmount"` // value in WANT
+				AvailableAmount *bigNumber.Float `json:"availableAmount"`
+			}    `json:"allocation"`
+		} `json:"risk,omitempty"`
+	}
+	```
+</Dropdown>
+<Dropdown title={'Invalid request'}>
+	- `400 - invalid chainID`: The provided chainID is not supported.
+	- `400 - invalid address`: The provided token address is not a valid Ethereum address or is blacklisted for this network.
+	- `500 - impossible to fetch subgraph`: yDaemon was unable to connect to the subgraph.
+	- `500 - invalid graphQL response`: yDaemon was unable to parse the response from the subgraph.
+</Dropdown>
 
 ---------------------------------------------------------------------------------------------------
 

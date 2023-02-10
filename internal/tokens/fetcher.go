@@ -110,7 +110,7 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		/******************************************************************************************
 		** Checking if the token is a Yearn Vault. We can determined that if we got a valid
 		** response from the `token` RPC call.
-		** If so, we set the token type to `Yeearn Vault`, we fetch the Coins from the pool and we
+		** If so, we set the token type to `Yearn Vault`, we fetch the Coins from the pool and we
 		** add the coins to the newToken UnderlyingTokensAddresses.
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.

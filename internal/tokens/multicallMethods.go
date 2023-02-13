@@ -1,6 +1,8 @@
 package tokens
 
 import (
+	"math/big"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -14,6 +16,8 @@ import (
 var ERC20ABI, _ = contracts.ERC20MetaData.GetAbi()
 var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
 var CurvePoolRegistryABI, _ = contracts.CurvePoolRegistryMetaData.GetAbi()
+var CurvePoolFactoryABI, _ = contracts.CurvePoolFactoryMetaData.GetAbi()
+var CurvePoolCoinABI, _ = contracts.CurvePoolCoinMetaData.GetAbi()
 var CTokenABI, _ = contracts.CTokenMetaData.GetAbi()
 var ATokenV1ABI, _ = contracts.ATokenV1MetaData.GetAbi()
 var ATokenV2ABI, _ = contracts.ATokenV2MetaData.GetAbi()
@@ -166,6 +170,37 @@ func getAaveV2Underlying(name string, contractAddress common.Address) ethereum.C
 		Target:   contractAddress,
 		Abi:      ATokenV2ABI,
 		Method:   `UNDERLYING_ASSET_ADDRESS`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func getCurveFactoryPool(name string, contractAddress common.Address, index *big.Int) ethereum.Call {
+	parsedData, _ := CurvePoolFactoryABI.Pack("pool_list", index)
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurvePoolFactoryABI,
+		Method:   `pool_list`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func getCurveFactoryCoin(name string, contractAddress common.Address, poolAddress common.Address) ethereum.Call {
+	parsedData, _ := CurvePoolFactoryABI.Pack("get_coins", poolAddress)
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurvePoolFactoryABI,
+		Method:   `get_coins`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func getCurveMinter(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, _ := CurvePoolCoinABI.Pack("minter")
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurvePoolCoinABI,
+		Method:   `minter`,
 		CallData: parsedData,
 		Name:     name,
 	}

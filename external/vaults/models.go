@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -155,11 +156,20 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	v.Decimals = internalVault.Decimals
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
-	v.Token = internalVault.Token
 	v.ChainID = internalVault.ChainID
 	v.TVL = TExternalVaultTVL(internalVault.BuildTVL())
 	v.Migration = TExternalVaultMigration(internalVault.BuildMigration())
 	v.Category = internalVault.BuildCategory()
+
+	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, common.FromAddress(internalVault.Address))
+	if ok {
+		v.Token = *underlyingToken
+	} else {
+		v.Token = internalVault.Token
+	}
+	if v.Token.UnderlyingTokensAddresses == nil {
+		v.Token.UnderlyingTokensAddresses = []ethcommon.Address{}
+	}
 
 	internalAPY := internalVault.BuildAPY()
 	v.APY = TExternalVaultAPY{

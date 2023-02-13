@@ -8,7 +8,7 @@ import (
 // TERC20Token contains the basic information of an ERC20 token
 type TERC20Token struct {
 	Address                   ethcommon.Address   `json:"address"`
-	UnderlyingTokensAddresses []ethcommon.Address `json:"underlyingTokensAddresses,omitempty"`
+	UnderlyingTokensAddresses []ethcommon.Address `json:"underlyingTokensAddresses"`
 	Name                      string              `json:"name"`
 	Symbol                    string              `json:"symbol"`
 	Type                      string              `json:"type"`

@@ -18,6 +18,7 @@ var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
 var CurvePoolRegistryABI, _ = contracts.CurvePoolRegistryMetaData.GetAbi()
 var CurvePoolFactoryABI, _ = contracts.CurvePoolFactoryMetaData.GetAbi()
 var CurvePoolCoinABI, _ = contracts.CurvePoolCoinMetaData.GetAbi()
+var CurveCoinABI, _ = contracts.ICurveFiMetaData.GetAbi()
 var CTokenABI, _ = contracts.CTokenMetaData.GetAbi()
 var ATokenV1ABI, _ = contracts.ATokenV1MetaData.GetAbi()
 var ATokenV2ABI, _ = contracts.ATokenV2MetaData.GetAbi()
@@ -201,6 +202,16 @@ func getCurveMinter(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      CurvePoolCoinABI,
 		Method:   `minter`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func getCurveCoin(name string, contractAddress common.Address, index *big.Int) ethereum.Call {
+	parsedData, _ := CurveCoinABI.Pack("coins", index)
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurveCoinABI,
+		Method:   `coins`,
 		CallData: parsedData,
 		Name:     name,
 	}

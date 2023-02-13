@@ -56,6 +56,8 @@ func fetchBasicInformations(
 		calls = append(calls, getAaveV1Underlying(token.String(), token))
 		calls = append(calls, getAaveV2Underlying(token.String(), token))
 		calls = append(calls, getCurveMinter(token.String(), token))
+		calls = append(calls, getCurveCoin(token.String()+`_coin0`, token, big.NewInt(0)))
+		calls = append(calls, getCurveCoin(token.String()+`_coin1`, token, big.NewInt(1)))
 	}
 
 	/**********************************************************************************************
@@ -91,6 +93,8 @@ func fetchBasicInformations(
 		rawCUnderlying := response[token.String()+`underlying`]
 		rawAV1Underlying := response[token.String()+`underlyingAssetAddress`]
 		rawAV2Underlying := response[token.String()+`UNDERLYING_ASSET_ADDRESS`]
+		rawCurveCoin0 := response[token.String()+`_coin0coins`]
+		rawCurveCoin1 := response[token.String()+`_coin1coins`]
 
 		/******************************************************************************************
 		** Preparing our new ERC20Token object
@@ -224,6 +228,22 @@ func fetchBasicInformations(
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
 			}
+		}
+
+		/******************************************************************************************
+		** Checking if the token is a Curve LP token. We can determined that if we got a valid
+		** response from the `coin` RPC call.
+		** This is used for some of the Curve LP tokens.
+		******************************************************************************************/
+		isCurveLPCoinFromCoins := (rawCurveCoin0 != nil && helpers.DecodeAddress(rawCurveCoin0) != ethcommon.Address{}) && (rawCurveCoin1 != nil && helpers.DecodeAddress(rawCurveCoin1) != ethcommon.Address{})
+		if isCurveLPCoinFromCoins {
+			newToken.Type = `Curve LP`
+			coin0 := helpers.DecodeAddress(rawCurveCoin0)
+			coin1 := helpers.DecodeAddress(rawCurveCoin1)
+			relatedTokensList = append(relatedTokensList, coin0)
+			relatedTokensList = append(relatedTokensList, coin1)
+			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin0)
+			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin1)
 		}
 
 		tokenList = append(tokenList, newToken)

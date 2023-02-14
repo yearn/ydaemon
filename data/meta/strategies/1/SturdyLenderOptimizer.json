@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Sturdy Finance Lender Optimizer",
+  "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest.",
+  "addresses": ["0x5F84acB4a27D762FC0E5CD6EFc1674827c0934C4"],
+  "protocols": ["Sturdy Finance"],
+  "protocolVersion": {
+    "Sturdy Finance": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "fr": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "es": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "de": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "pt": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "el": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "tr": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "vi": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "zh": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "hi": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "ja": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "id": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    },
+    "ru": {
+      "name": "Sturdy Finance Lender Optimizer",
+      "description": "Supplies {{token}} to [Sturdy Finance](https://app.sturdy.finance) to generate interest."
+    }
+  }
+}

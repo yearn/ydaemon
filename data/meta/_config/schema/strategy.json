@@ -73,7 +73,8 @@
         "Yearn": {"type": "string", "enum": ["2"]},
         "dYdX": {"type": "string", "enum": ["1"]},
         "veDAO": {"type": "string", "enum": ["1"]},
-        "Frax Finance": {"type": "string", "enum": ["1"]}
+        "Frax Finance": {"type": "string", "enum": ["1"]},
+        "Sturdy Finance": {"type": "string", "enum": ["1"]}
       },
       "additionalProperties": false
     },

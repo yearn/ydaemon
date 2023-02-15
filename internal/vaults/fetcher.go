@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -124,7 +125,8 @@ func fetchBasicInformations(
 			}
 		}
 
-		if _, ok := meta.GetMetaVault(chainID, common.FromAddress(vault)); !ok {
+		vaultData, ok := meta.GetMetaVault(chainID, common.FromAddress(vault))
+		if !ok {
 			if !metaVaultFileErrorAlreadySent[chainID][common.FromAddress(vault)] {
 				traces.
 					Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
@@ -173,7 +175,16 @@ func fetchBasicInformations(
 			},
 		}
 
-		newVault.BuildNames(shareTokenData.DisplayName)
+		if common.FromAddress(vault).Hex() == common.HexToAddress(`0x63c5c0604Ec410130C69C958aCab81794f7a622F`).Hex() {
+			logs.Pretty(`newVault`, newVault)
+			logs.Pretty(`tokenData`, shareTokenData)
+		}
+
+		if vaultData != nil && vaultData.DisplayName != `` {
+			newVault.BuildNames(vaultData.DisplayName)
+		} else {
+			newVault.BuildNames(shareTokenData.DisplayName)
+		}
 		newVault.BuildSymbol(shareTokenData.DisplaySymbol)
 
 		/******************************************************************************************

@@ -1,19 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve KP3R-ETH Pool yVault",
+  "comment": "Curve pETH-ETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 96,
+  "order": 293,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve KP3R-ETH",
+  "retired": false,
+  "displayName": "Curve pETH-ETH",
   "classification": {
-    "isAutomated": false,
+    "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Volatile"
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
   }
 }

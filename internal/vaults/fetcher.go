@@ -9,7 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -173,11 +172,6 @@ func fetchBasicInformations(
 				Decimals:      underlyingTokenData.Decimals,
 				Icon:          underlyingTokenData.Icon,
 			},
-		}
-
-		if common.FromAddress(vault).Hex() == common.HexToAddress(`0x63c5c0604Ec410130C69C958aCab81794f7a622F`).Hex() {
-			logs.Pretty(`newVault`, newVault)
-			logs.Pretty(`tokenData`, shareTokenData)
 		}
 
 		if vaultData != nil && vaultData.DisplayName != `` {

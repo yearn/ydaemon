@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "OP",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 7,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "OP",
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
+  }
+}

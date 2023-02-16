@@ -201,9 +201,8 @@ func init() {
 	wg.Add(1)
 	go func() {
 		for {
-			AggregatedTokenList = fetchTokenLists()
-			WidoTokenList = fetchDefaultTokenList(`https://api.joinwido.com/tokens`)
-			PortalsTokenList = fetchDefaultTokenList(`https://api.portals.fi/v1/tokens/format/uniswap`)
+			WidoTokenList = fetchDefaultTokenList(`https://raw.githubusercontent.com/Migratooor/tokenLists/main/lists/wido.json`)
+			PortalsTokenList = fetchDefaultTokenList(`https://raw.githubusercontent.com/Migratooor/tokenLists/main/lists/portals.json`)
 			if !isDone {
 				wg.Done()
 				isDone = true

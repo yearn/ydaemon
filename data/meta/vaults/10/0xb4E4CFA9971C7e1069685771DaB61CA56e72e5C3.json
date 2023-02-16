@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "Curve sETH Pool",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 8,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve sETH Pool",
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
+}

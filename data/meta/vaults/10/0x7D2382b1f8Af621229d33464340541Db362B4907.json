@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve sdYFI-YFI-f",
+  "comment": "OP",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 282,
+  "order": 7,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve sdYFI",
+  "displayName": "OP",
+  "apyTypeOverride": "new",
   "classification": {
-    "isAutomated": true,
-    "isPool": true,
-    "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "YFI"
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Volatile"
   }
 }

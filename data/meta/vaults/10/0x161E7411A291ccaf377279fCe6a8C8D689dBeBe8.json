@@ -1,19 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve Dola-Frax-f",
+  "comment": "Vel USDC-sUSD",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 275,
+  "order": 6,
+  "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve Dola-FraxBP",
-  "migrationAvailable": false,
+  "displayName": "Velodrome USDC-sUSD",
+  "apyTypeOverride": "new",
   "classification": {
-    "isAutomated": true,
+    "isAutomated": false,
     "isPool": true,
-    "poolProvider": "Curve",
+    "poolProvider": "Velodrome",
     "stability": "Stable",
     "stableBaseAsset": "USD"
   }

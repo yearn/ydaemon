@@ -1,20 +1,21 @@
 {
   "$schema": "vault",
-  "comment": "Curve Dola-Frax-f",
+  "comment": "Curve sETH Pool",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 275,
+  "order": 8,
+  "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve Dola-FraxBP",
-  "migrationAvailable": false,
+  "displayName": "Curve sETH Pool",
+  "apyTypeOverride": "new",
   "classification": {
-    "isAutomated": true,
+    "isAutomated": false,
     "isPool": true,
     "poolProvider": "Curve",
     "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stableBaseAsset": "Ether"
   }
 }

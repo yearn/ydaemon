@@ -2,7 +2,7 @@
   "$schema": "strategy",
   "name": "Iron Bank Lender Optimizer",
   "description": "Supplies {{token}} to [Iron Bank](https://app.ib.xyz) to generate interest. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-  "addresses": ["0xC06ed8E16F1E66acC03F7af1b0bA96fFF589E495"],
+  "addresses": ["0xD8cfd133f557cAe59d493c4B5A0E83E88a8FB43b"],
   "protocols": ["Iron Bank"],
   "protocolVersion": {
     "Iron Bank": "1"

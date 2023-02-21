@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Curve Boost",
+  "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0x4E93D2d16De8281E2646F90Db5525bB7ec2a6a75"],
+  "protocols": ["Curve Finance"],
+  "protocolVersion": {
+    "Curve Finance": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Curve Boost",
+      "description": "Supplies {{token}} to [Curve Finance](https://curve.fi) and stakes it in the gauge directly to collect any available tokens. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

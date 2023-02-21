@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Velodrome",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 3,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"velodrome"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

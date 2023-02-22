@@ -219,7 +219,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) []*bigNumber.
 	req.URL.RawQuery = q.Encode()
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil || resp.StatusCode != 200 {
-		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+		logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 		return prices
 	}
 	// Defer the closing of the response body to avoid memory leaks

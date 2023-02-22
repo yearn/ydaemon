@@ -1,18 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "COMP",
+  "comment": "Curve ibEUR-USDC-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 14,
+  "order": 291,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "COMP",
+  "retired": false,
+  "displayName": "Curve ibEUR-USDC",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
     "stability": "Volatile"
   }
 }

@@ -2,6 +2,7 @@ package tokens
 
 import (
 	"math"
+	"math/big"
 	"strconv"
 	"strings"
 	"sync"
@@ -12,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/common/types/common"
@@ -32,7 +34,11 @@ import (
 ** Returns:
 ** - a list of TERC20Token containing the basic information for the tokens
 **************************************************************************************************/
-func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenList []*TERC20Token) {
+func fetchBasicInformations(
+	chainID uint64,
+	tokens []ethcommon.Address,
+	curveFactoryPoolMap map[string][]ethcommon.Address,
+) (tokenList []*TERC20Token) {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -49,6 +55,9 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		calls = append(calls, getCompoundUnderlying(token.String(), token))
 		calls = append(calls, getAaveV1Underlying(token.String(), token))
 		calls = append(calls, getAaveV2Underlying(token.String(), token))
+		calls = append(calls, getCurveMinter(token.String(), token))
+		calls = append(calls, getCurveCoin(token.String()+`_coin0`, token, big.NewInt(0)))
+		calls = append(calls, getCurveCoin(token.String()+`_coin1`, token, big.NewInt(1)))
 	}
 
 	/**********************************************************************************************
@@ -80,9 +89,12 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		rawDecimals := response[token.String()+`decimals`]
 		rawYearnVaultToken := response[token.String()+`token`]
 		rawPoolFromLpToken := response[token.String()+`get_pool_from_lp_token`]
+		rawCurveCoinMinterToken := response[token.String()+`minter`]
 		rawCUnderlying := response[token.String()+`underlying`]
 		rawAV1Underlying := response[token.String()+`underlyingAssetAddress`]
 		rawAV2Underlying := response[token.String()+`UNDERLYING_ASSET_ADDRESS`]
+		rawCurveCoin0 := response[token.String()+`_coin0coins`]
+		rawCurveCoin1 := response[token.String()+`_coin1coins`]
 
 		/******************************************************************************************
 		** Preparing our new ERC20Token object
@@ -190,7 +202,6 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 		** We can also add the coins to the relatedTokensList, so we can fetch it's information
 		** later.
 		******************************************************************************************/
-
 		isAV2Token := rawAV2Underlying != nil && helpers.DecodeAddress(rawAV2Underlying) != ethcommon.Address{}
 		if isAV2Token {
 			newToken.Type = `AAVE V2`
@@ -201,11 +212,45 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 			}
 		}
 
+		/******************************************************************************************
+		** Checking if the token is a Curve LP token. We can determined that if we got a valid
+		** response from the `minter` RPC call.
+		** This is used for some of the Curve LP tokens.
+		******************************************************************************************/
+		isCurveLPCoin := rawCurveCoinMinterToken != nil && helpers.DecodeAddress(rawCurveCoinMinterToken) != ethcommon.Address{}
+		if isCurveLPCoin {
+			newToken.Type = `Curve LP`
+			minter := helpers.DecodeAddress(rawCurveCoinMinterToken)
+			coins, ok := curveFactoryPoolMap[minter.Hex()]
+			if ok {
+				for _, coin := range coins {
+					relatedTokensList = append(relatedTokensList, coin)
+					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+				}
+			}
+		}
+
+		/******************************************************************************************
+		** Checking if the token is a Curve LP token. We can determined that if we got a valid
+		** response from the `coin` RPC call.
+		** This is used for some of the Curve LP tokens.
+		******************************************************************************************/
+		isCurveLPCoinFromCoins := (rawCurveCoin0 != nil && helpers.DecodeAddress(rawCurveCoin0) != ethcommon.Address{}) && (rawCurveCoin1 != nil && helpers.DecodeAddress(rawCurveCoin1) != ethcommon.Address{})
+		if isCurveLPCoinFromCoins {
+			newToken.Type = `Curve LP`
+			coin0 := helpers.DecodeAddress(rawCurveCoin0)
+			coin1 := helpers.DecodeAddress(rawCurveCoin1)
+			relatedTokensList = append(relatedTokensList, coin0)
+			relatedTokensList = append(relatedTokensList, coin1)
+			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin0)
+			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin1)
+		}
+
 		tokenList = append(tokenList, newToken)
 	}
 
 	if len(relatedTokensList) > 0 {
-		tokenList = append(tokenList, fetchBasicInformations(chainID, helpers.UniqueArrayAddress(relatedTokensList))...)
+		tokenList = append(tokenList, fetchBasicInformations(chainID, helpers.UniqueArrayAddress(relatedTokensList), curveFactoryPoolMap)...)
 	}
 
 	return tokenList
@@ -227,6 +272,7 @@ func fetchBasicInformations(chainID uint64, tokens []ethcommon.Address) (tokenLi
 func findAllTokens(
 	chainID uint64,
 	tokenMap map[ethcommon.Address]*TERC20Token,
+	curveFactoryPoolMap map[string][]ethcommon.Address,
 ) map[ethcommon.Address]*TERC20Token {
 	newMap := make(map[ethcommon.Address]*TERC20Token)
 	tokenMapAddresses := []ethcommon.Address{}
@@ -234,12 +280,76 @@ func findAllTokens(
 		tokenMapAddresses = append(tokenMapAddresses, tokenAddress)
 	}
 
-	newtokenMap := fetchBasicInformations(chainID, tokenMapAddresses)
+	newtokenMap := fetchBasicInformations(chainID, tokenMapAddresses, curveFactoryPoolMap)
 	for _, token := range newtokenMap {
 		newMap[token.Address] = token
 	}
 
 	return newMap
+}
+
+func loadCurvePools(
+	chainID uint64,
+) map[string][]ethcommon.Address {
+	coinsForPool := make(map[string][]ethcommon.Address)
+	/**********************************************************************************************
+	** The first step is to prepare the multicall, connecting to the multicall instance and
+	** preparing the array of calls to send. All calls for all tokens will be send in a single
+	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	**********************************************************************************************/
+	client := ethereum.GetRPC(chainID)
+	curvePoolFactory, _ := contracts.NewCurvePoolFactory(env.CURVE_FACTORIES_ADDRESSES[chainID].ToAddress(), client)
+	poolCount, err := curvePoolFactory.PoolCount(&bind.CallOpts{})
+	if err != nil {
+		return coinsForPool
+	}
+
+	/**********************************************************************************************
+	** The first step is to prepare the multicall, connecting to the multicall instance and
+	** preparing the array of calls to send.
+	**********************************************************************************************/
+	caller := ethereum.MulticallClientForChainID[chainID]
+	calls := []ethereum.Call{}
+	for i := 0; i < int(poolCount.Int64()); i++ {
+		calls = append(calls, getCurveFactoryPool(
+			strconv.Itoa(i),
+			env.CURVE_FACTORIES_ADDRESSES[chainID].ToAddress(),
+			big.NewInt(int64(i)),
+		))
+	}
+
+	/**********************************************************************************************
+	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
+	** number. We split the multicall in multiple calls of 3 calls each.
+	** Otherwise, we just send the multicall as is.
+	**********************************************************************************************/
+	maxBatch := math.MaxInt64
+	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	calls = []ethereum.Call{}
+	for i := 0; i < int(poolCount.Int64()); i++ {
+		poolAddress := helpers.DecodeAddress(response[strconv.Itoa(i)+`pool_list`])
+		calls = append(calls, getCurveFactoryCoin(
+			poolAddress.Hex(),
+			env.CURVE_FACTORIES_ADDRESSES[chainID].ToAddress(),
+			poolAddress,
+		))
+	}
+
+	response = caller.ExecuteByBatch(calls, maxBatch, nil)
+	for poolAddressRaw, coinAddressesRaw := range response {
+		if len(coinAddressesRaw) == 0 {
+			continue
+		}
+		poolAddress := common.HexToAddress(strings.TrimRight(poolAddressRaw, `get_coins`))
+		coinAddresses := coinAddressesRaw[0].([2]ethcommon.Address)
+		for _, coinAddress := range coinAddresses {
+			if (coinAddress == ethcommon.Address{}) {
+				continue
+			}
+			coinsForPool[poolAddress.Hex()] = append(coinsForPool[poolAddress.Hex()], coinAddress)
+		}
+	}
+	return coinsForPool
 }
 
 /**************************************************************************************************
@@ -283,6 +393,13 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	updatedTokenMap := make(map[ethcommon.Address]*TERC20Token)
 	for _, currentVault := range vaults {
+		updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
+			Address: currentVault.VaultsAddress,
+		}
+	}
+
+	// RESET ALL DB
+	for _, currentVault := range vaults {
 		if _, ok := tokenMap[currentVault.VaultsAddress]; !ok {
 			updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
 				Address: currentVault.VaultsAddress,
@@ -295,6 +412,7 @@ func RetrieveAllTokens(
 			}
 		}
 	}
+	curveFactoryPools := loadCurvePools(chainID)
 
 	/**********************************************************************************************
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
@@ -329,7 +447,8 @@ func RetrieveAllTokens(
 	** tokens.
 	**********************************************************************************************/
 	if len(updatedTokenMap) > 0 {
-		updatedTokenMap = findAllTokens(chainID, updatedTokenMap)
+		updatedTokenMap = findAllTokens(chainID, updatedTokenMap, curveFactoryPools)
+		logs.Info(`done`)
 
 		/**********************************************************************************************
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map

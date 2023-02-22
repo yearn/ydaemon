@@ -122,6 +122,14 @@ var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
 	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 }
 
+// CURVE_FACTORIES_ADDRESSES contains the address of the Curve Registry contract
+var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
+	1:     common.HexToAddress(`0xF18056Bbd320E96A48e3Fbf8bC061322531aac99`),
+	10:    {},
+	250:   {},
+	42161: {},
+}
+
 // LLAMA_CHAIN_NAMES contains the chain identifiers for the DeFiLlama API
 var LLAMA_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,

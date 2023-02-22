@@ -133,9 +133,9 @@ func (t *TVault) BuildNames(metaVaultName string) {
 		displayName = strings.Replace(displayName, " Auto-Compounding", "", -1)
 	}
 
-	t.Name = name
-	t.DisplayName = displayName
-	t.FormatedName = formatedName
+	t.Name = strings.Replace(name, "-f-f", "-f", -1)
+	t.DisplayName = strings.Replace(displayName, "-f-f", "-f", -1)
+	t.FormatedName = strings.Replace(formatedName, "-f-f", "-f", -1)
 }
 
 func (t *TVault) BuildSymbol(metaVaultSymbol string) {
@@ -155,9 +155,9 @@ func (t *TVault) BuildSymbol(metaVaultSymbol string) {
 	symbol = helpers.SafeString(symbol, formatedSymbol)
 	displaySymbol = helpers.SafeString(displaySymbol, symbol)
 
-	t.Symbol = symbol
-	t.DisplaySymbol = displaySymbol
-	t.FormatedSymbol = formatedSymbol
+	t.Symbol = strings.Replace(symbol, "-f-f", "-f", -1)
+	t.DisplaySymbol = strings.Replace(displaySymbol, "-f-f", "-f", -1)
+	t.FormatedSymbol = strings.Replace(formatedSymbol, "-f-f", "-f", -1)
 }
 
 func (t *TVault) BuildMigration() TMigration {

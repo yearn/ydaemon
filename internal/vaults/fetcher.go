@@ -124,7 +124,8 @@ func fetchBasicInformations(
 			}
 		}
 
-		if _, ok := meta.GetMetaVault(chainID, common.FromAddress(vault)); !ok {
+		vaultData, ok := meta.GetMetaVault(chainID, common.FromAddress(vault))
+		if !ok {
 			if !metaVaultFileErrorAlreadySent[chainID][common.FromAddress(vault)] {
 				traces.
 					Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
@@ -173,7 +174,11 @@ func fetchBasicInformations(
 			},
 		}
 
-		newVault.BuildNames(shareTokenData.DisplayName)
+		if vaultData != nil && vaultData.DisplayName != `` {
+			newVault.BuildNames(vaultData.DisplayName)
+		} else {
+			newVault.BuildNames(shareTokenData.DisplayName)
+		}
 		newVault.BuildSymbol(shareTokenData.DisplaySymbol)
 
 		/******************************************************************************************

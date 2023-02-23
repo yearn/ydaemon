@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 /**************************************************************************************************
@@ -76,7 +75,7 @@ func filterStrategyReported(
 **********************************************************************************************/
 func RetrieveHarvests(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
+	vaults map[common.Address]*TVault,
 ) map[common.Address]map[common.Address]map[uint64]uint64 {
 	trace := traces.Init(`app.indexer.vaults.harvest_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
@@ -95,7 +94,7 @@ func RetrieveHarvests(
 		wg.Add(1)
 		go filterStrategyReported(
 			chainID,
-			v.VaultsAddress,
+			v.Address,
 			v.Activation,
 			&asyncMapLastReports,
 			wg,

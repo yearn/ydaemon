@@ -1,6 +1,8 @@
 package internal
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"sync"
 	"time"
 
@@ -97,6 +99,8 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	internalWG.Wait()
 
 	go registries.IndexNewVaults(chainID)
+
+	Initialize(chainID)
 }
 
 func InitializeBribes(chainID uint64) {
@@ -112,9 +116,9 @@ func Initialize(chainID uint64) {
 	** added to the registry, and we remove the duplicates only to keep the latest version of a
 	** same vault. Duplicate can happen when a vault is moved from Experimental to Standard.
 	**********************************************************************************************/
-	vaultsList := registries.RetrieveAllVaults(chainID, 0)
+	// vaultsList := registries.RetrieveAllVaults(chainID, 0)
 
-	strategiesMap := map[common.Address]map[common.Address]strategies.TStrategyAdded{}
+	// strategiesMap := map[common.Address]map[common.Address]strategies.TStrategyAdded{}
 	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]utils.TEventBlock{}
 	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
 	managementFees := map[common.Address]map[uint64][]utils.TEventBlock{}
@@ -130,12 +134,31 @@ func Initialize(chainID uint64) {
 	** The function store the tokens in a table [chainID] [token address] [token data], in the
 	** data/store/[chainID]/tokens folder.
 	**********************************************************************************************/
-	tokens.RetrieveAllTokens(chainID, vaultsList)
-	vaults.RetrieveAllVaults(chainID, vaultsList)
+	// tokens.RetrieveAllTokens(chainID, vaultsList)
+	// vaults.RetrieveAllVaults(chainID, vaultsList)
 
 	/**********************************************************************************************
 	** Fetching all the strategiesList and relevant transfers to proceed
 	**********************************************************************************************/
+	vaultsMap := vaults.MapVaults(chainID)
+	strategiesList := strategies.ListStrategies(chainID)
+
+	// // only grab for that vault 0xe9dc63083c464d6edccff23444ff3cfc6886f6fb
+	// vaultsMap := map[common.Address]*vaults.TVault{}
+	// for k, v := range oldvaultsMap {
+	// 	if v.Address.Hex() == common.HexToAddress("0xe9dc63083c464d6edccff23444ff3cfc6886f6fb").Hex() {
+	// 		vaultsMap[v.Address] = oldvaultsMap[k]
+	// 	}
+	// }
+
+	// // only grab for that strategy 0x126e4fdfa9dcea94f8f4157ef8ad533140c60fc7
+	// strategiesList := []*strategies.TStrategy{}
+	// for k, s := range oldstrategiesList {
+	// 	if s.Address.Hex() == common.HexToAddress("0x126e4fdfa9dcea94f8f4157ef8ad533140c60fc7").Hex() {
+	// 		strategiesList = append(strategiesList, oldstrategiesList[k])
+	// 	}
+	// }
+
 	wg := sync.WaitGroup{}
 	wg.Add(3)
 	go func() {
@@ -147,8 +170,8 @@ func Initialize(chainID uint64) {
 		** With this process, we are retrieving the standard blockEvents elements and all the arguments
 		** from the `StrategyAdded` event.
 		**********************************************************************************************/
-		strategiesList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
-		strategiesMap = strategies.SlipStrategiesAddedPerVault(strategiesList)
+		// strategiesList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
+		strategiesMap := strategies.SplitStrategiesAddedPerVault(strategiesList)
 
 		/**********************************************************************************************
 		** Retrieve all transfers from vaults to strategies. This can only happen in one situation: the
@@ -168,7 +191,7 @@ func Initialize(chainID uint64) {
 		**********************************************************************************************/
 		managementFees, performanceFees, strategiesPerformanceFees = fees.RetrieveAllFeesBPS(
 			chainID,
-			vaultsList,
+			vaultsMap,
 			strategiesMap,
 		)
 	}()
@@ -181,7 +204,7 @@ func Initialize(chainID uint64) {
 		** We need that to be able to calculate the actual fees as many variable could make the
 		** offchain calculation wrong.
 		**********************************************************************************************/
-		transfersFromVaultsToTreasury = vaults.RetrieveAllTransferFromVaultsToTreasury(chainID, vaultsList)
+		transfersFromVaultsToTreasury = vaults.RetrieveAllTransferFromVaultsToTreasury(chainID, vaultsMap)
 	}()
 
 	go func() {
@@ -190,16 +213,16 @@ func Initialize(chainID uint64) {
 		** Retrieve all harvest events for a vault. This will enable us to know where to look and to
 		** compute the gains, losses and the fees.
 		**********************************************************************************************/
-		allHarvests = vaults.RetrieveHarvests(chainID, vaultsList)
+		allHarvests = vaults.RetrieveHarvests(chainID, vaultsMap)
 	}()
 	wg.Wait()
-
 	logs.Success("Initialization done in", time.Since(timeBefore))
+
 	timeBefore = time.Now()
 	syncGroup := &sync.WaitGroup{}
 	harvests := []vaults.THarvest{}
-	for _, vault := range vaultsList {
-		switch vault.APIVersion {
+	for _, vault := range vaultsMap {
+		switch vault.Version {
 		case `0.2.2`:
 		case `0.3.0`:
 			continue //SKIP
@@ -208,12 +231,12 @@ func Initialize(chainID uint64) {
 			go vaults.HandleEvenStrategyReportedFor031To043(
 				chainID,
 				vault,
-				managementFees[vault.VaultsAddress],
-				performanceFees[vault.VaultsAddress],
-				strategiesPerformanceFees[vault.VaultsAddress],
-				transfersFromVaultsToStrategies[vault.VaultsAddress],
-				transfersFromVaultsToTreasury[vault.VaultsAddress],
-				allHarvests[vault.VaultsAddress],
+				managementFees[vault.Address],
+				performanceFees[vault.Address],
+				strategiesPerformanceFees[vault.Address],
+				transfersFromVaultsToStrategies[vault.Address],
+				transfersFromVaultsToTreasury[vault.Address],
+				allHarvests[vault.Address],
 				syncGroup,
 				&harvests,
 			)
@@ -227,5 +250,18 @@ func Initialize(chainID uint64) {
 		count++
 	}
 
+	// Save managementFees, performanceFees, strategiesPerformanceFees in a json file ./fees.json
+	file, _ := json.MarshalIndent(map[string]interface{}{
+		"managementFees":            managementFees,
+		"performanceFees":           performanceFees,
+		"strategiesPerformanceFees": strategiesPerformanceFees,
+	}, "", " ")
+	_ = ioutil.WriteFile("./fees.json", file, 0644)
+
 	logs.Success(`It tooks`, time.Since(timeBefore), `to process`, count, `harvests`)
+
+	//save AllHarvests in a json file ./AllHarvests.json
+	file, _ = json.MarshalIndent(AllHarvests, "", " ")
+	_ = ioutil.WriteFile("./AllHarvests.json", file, 0644)
+
 }

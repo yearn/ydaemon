@@ -4,7 +4,6 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -17,7 +16,7 @@ import (
 type TStrategyAdded struct {
 	VaultAddress      common.Address
 	StrategyAddress   common.Address
-	TxHash            ethcommon.Hash
+	TxHash            common.Hash
 	DebtRatio         *bigNumber.Int // >= 0.3.0
 	MaxDebtPerHarvest *bigNumber.Int // >= 0.3.2
 	MinDebtPerHarvest *bigNumber.Int // >= 0.3.2
@@ -34,14 +33,14 @@ type TStrategyMigrated struct {
 	VaultAddress       common.Address
 	OldStrategyAddress common.Address
 	NewStrategyAddress common.Address
-	TxHash             ethcommon.Hash
+	TxHash             common.Hash
 	BlockNumber        uint64
 	TxIndex            uint
 	LogIndex           uint
 }
 
 type TStrategyInitialization struct {
-	TxHash      ethcommon.Hash
+	TxHash      common.Hash
 	BlockNumber uint64
 	TxIndex     uint
 	LogIndex    uint
@@ -222,17 +221,17 @@ func FindStrategy(chainID uint64, strategyAddress common.Address) (*TStrategy, b
 }
 
 /**********************************************************************************************
-** SlipStrategiesAddedPerVault will transform a list of TStrategyAdded into a map of
+** SplitStrategiesAddedPerVault will transform a list of TStrategyAdded into a map of
 ** TStrategyAdded per vault address:
 ** - [vaultAddress] - [strategyAddress] - TStrategyAdded
 **********************************************************************************************/
-func SlipStrategiesAddedPerVault(strategiesAddedList []TStrategyAdded) map[common.Address]map[common.Address]TStrategyAdded {
-	strategiesAddedPerVault := make(map[common.Address]map[common.Address]TStrategyAdded)
+func SplitStrategiesAddedPerVault(strategiesAddedList []*TStrategy) map[common.Address]map[common.Address]*TStrategy {
+	strategiesAddedPerVault := make(map[common.Address]map[common.Address]*TStrategy)
 	for _, strategy := range strategiesAddedList {
 		if _, ok := strategiesAddedPerVault[strategy.VaultAddress]; !ok {
-			strategiesAddedPerVault[strategy.VaultAddress] = make(map[common.Address]TStrategyAdded)
+			strategiesAddedPerVault[strategy.VaultAddress] = make(map[common.Address]*TStrategy)
 		}
-		strategiesAddedPerVault[strategy.VaultAddress][strategy.StrategyAddress] = strategy
+		strategiesAddedPerVault[strategy.VaultAddress][strategy.Address] = strategy
 	}
 	return strategiesAddedPerVault
 }

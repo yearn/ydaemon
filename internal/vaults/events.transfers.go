@@ -71,6 +71,7 @@ func filterTransfers(
 			}
 		}
 	} else {
+		logs.Error(err.Error())
 		traces.
 			Capture(`error`, `impossible to FilterTransfer for Yvault043 `+vaultAddress.Hex()).
 			SetEntity(`vault`).
@@ -98,7 +99,7 @@ func filterTransfers(
 **********************************************************************************************/
 func RetrieveAllTransferFromVaultsToStrategies(
 	chainID uint64,
-	strategies map[common.Address]map[common.Address]strategies.TStrategyAdded,
+	strategies map[common.Address]map[common.Address]*strategies.TStrategy,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -115,8 +116,8 @@ func RetrieveAllTransferFromVaultsToStrategies(
 				chainID,
 				strategy.VaultAddress,
 				[]common.Address{strategy.VaultAddress},
-				[]common.Address{strategy.StrategyAddress},
-				strategy.BlockNumber,
+				[]common.Address{strategy.Address},
+				strategy.Initialization.BlockNumber,
 				syncMap,
 				wg,
 			)
@@ -182,7 +183,7 @@ func RetrieveAllTransferFromVaultsToStrategies(
 **********************************************************************************************/
 func RetrieveAllTransferFromVaultsToTreasury(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
+	vaults map[common.Address]*TVault,
 ) map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -199,8 +200,8 @@ func RetrieveAllTransferFromVaultsToTreasury(
 		wg.Add(1)
 		go filterTransfers(
 			chainID,
-			vault.VaultsAddress,
-			[]common.Address{vault.VaultsAddress},
+			vault.Address,
+			[]common.Address{vault.Address},
 			[]common.Address{treasury}, //TODO: add vaults that have a different treasury address
 			vault.Activation,
 			syncMap,

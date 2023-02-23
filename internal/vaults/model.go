@@ -91,7 +91,8 @@ type TVault struct {
 	Icon                  string             `json:"icon"`
 	Version               string             `json:"version"`
 	ChainID               uint64             `json:"chainID"`
-	Inception             uint64             `json:"inception"`
+	Inception             uint64             `json:"inception"`  //Timestamp
+	Activation            uint64             `json:"activation"` //BlockNumber
 	Decimals              uint64             `json:"decimals"`
 	PerformanceFee        uint64             `json:"performanceFee"`
 	ManagementFee         uint64             `json:"managementFee"`
@@ -341,6 +342,18 @@ func ListVaults(chainID uint64) []*TVault {
 	for _, vault := range _vaultMap[chainID] {
 		vaults = append(vaults, vault)
 	}
+	return vaults
+}
+
+/**********************************************************************************************
+** MapVaults will, for a given chainID, return the map of all the vaults stored in _vaultMap.
+**********************************************************************************************/
+func MapVaults(chainID uint64) map[ethcommon.Address]*TVault {
+	var vaults map[ethcommon.Address]*TVault
+	if vaultsForChain, ok := _vaultMap[chainID]; ok {
+		vaults = vaultsForChain
+	}
+
 	return vaults
 }
 

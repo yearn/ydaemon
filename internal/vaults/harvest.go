@@ -36,6 +36,7 @@ type THarvest struct {
 	// Extracted from Yvault043StrategyReported & computed
 	Vault        common.Address
 	Strategy     common.Address
+	VaultName    string
 	VaultVersion string
 	Gain         *bigNumber.Int
 	Loss         *bigNumber.Int
@@ -106,7 +107,7 @@ func durationSinceLastReport(
 
 func HandleEvenStrategyReportedFor031To043(
 	chainID uint64,
-	vault utils.TVaultsFromRegistry,
+	vault *TVault,
 	managementFeeChanges map[uint64][]utils.TEventBlock,
 	performanceFeeChanges map[uint64][]utils.TEventBlock,
 	strategiesPerformanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
@@ -119,7 +120,7 @@ func HandleEvenStrategyReportedFor031To043(
 	defer syncGroup.Done()
 
 	client := ethereum.RPC[1]
-	currentVault, _ := contracts.NewYvault043(vault.VaultsAddress, client)
+	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 	if log, err := currentVault.FilterStrategyReported(&bind.FilterOpts{Start: vault.Activation}, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
@@ -136,8 +137,9 @@ func HandleEvenStrategyReportedFor031To043(
 			harvest := &THarvest{}
 			harvest.New(log.Event.Raw)
 			harvest.Timestamp = ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber)
-			harvest.Vault = vault.VaultsAddress
-			harvest.VaultVersion = vault.APIVersion
+			harvest.Vault = vault.Address
+			harvest.VaultName = vault.Name
+			harvest.VaultVersion = vault.Version
 			harvest.Strategy = log.Event.Strategy
 			harvest.Gain = bigNumber.SetInt(log.Event.Gain)
 			harvest.Loss = bigNumber.SetInt(log.Event.Loss)

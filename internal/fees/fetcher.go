@@ -14,6 +14,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
@@ -187,8 +188,8 @@ func filterUpdateStrategyPerformanceFee(
 **************************************************************************************************/
 func RetrieveAllFeesBPS(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
-	strategiesLists ...map[common.Address]map[common.Address]strategies.TStrategyAdded,
+	vaults map[common.Address]*vaults.TVault,
+	strategiesLists ...map[common.Address]map[common.Address]*strategies.TStrategy,
 ) (
 	map[common.Address]map[uint64][]utils.TEventBlock,
 	map[common.Address]map[uint64][]utils.TEventBlock,
@@ -203,9 +204,9 @@ func RetrieveAllFeesBPS(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(3)
-		go filterUpdateManagementFee(chainID, v.VaultsAddress, v.Activation, &asyncManagementFeeUpdate, wg)
-		go filterUpdatePerformanceFee(chainID, v.VaultsAddress, v.Activation, &asyncPerformanceFeeUpdate, wg)
-		go filterUpdateStrategyPerformanceFee(chainID, v.VaultsAddress, v.Activation, &asyncStrategiesPerformanceFeeUpdate, wg)
+		go filterUpdateManagementFee(chainID, v.Address, v.Activation, &asyncManagementFeeUpdate, wg)
+		go filterUpdatePerformanceFee(chainID, v.Address, v.Activation, &asyncPerformanceFeeUpdate, wg)
+		go filterUpdateStrategyPerformanceFee(chainID, v.Address, v.Activation, &asyncStrategiesPerformanceFeeUpdate, wg)
 	}
 	wg.Wait()
 
@@ -304,10 +305,10 @@ func RetrieveAllFeesBPS(
 			for strategyAddress, strategy := range strategies {
 				deployEvent := utils.TEventBlock{
 					EventType:   `strategyUpdatePerformanceFee`,
-					TxHash:      strategy.TxHash,
-					BlockNumber: strategy.BlockNumber,
-					TxIndex:     strategy.TxIndex,
-					LogIndex:    strategy.LogIndex,
+					TxHash:      strategy.Initialization.TxHash,
+					BlockNumber: strategy.Initialization.BlockNumber,
+					TxIndex:     strategy.Initialization.TxIndex,
+					LogIndex:    strategy.Initialization.LogIndex,
 					Value:       strategy.PerformanceFee,
 				}
 
@@ -317,11 +318,11 @@ func RetrieveAllFeesBPS(
 				if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress]; !ok {
 					performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
 				}
-				if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.BlockNumber]; !ok {
-					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.BlockNumber] = make([]utils.TEventBlock, 0)
+				if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber]; !ok {
+					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = make([]utils.TEventBlock, 0)
 				}
-				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.BlockNumber] = append(
-					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.BlockNumber],
+				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = append(
+					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber],
 					deployEvent,
 				)
 			}

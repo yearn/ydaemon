@@ -6,7 +6,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -274,9 +273,10 @@ func RetrieveAllVaults(
 	updatedVaultMap := make(map[common.Address]*TVault)
 	for _, currentVault := range vaults {
 		updatedVaultMap[currentVault.VaultsAddress] = &TVault{
-			Address:  currentVault.TokenAddress,
-			Endorsed: (currentVault.Type == utils.VaultTypeStandard || currentVault.Type == utils.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
-			Type:     currentVault.Type,
+			Address:    currentVault.TokenAddress,
+			Endorsed:   (currentVault.Type == utils.VaultTypeStandard || currentVault.Type == utils.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
+			Type:       currentVault.Type,
+			Activation: currentVault.Activation,
 		}
 	}
 
@@ -291,7 +291,7 @@ func RetrieveAllVaults(
 		42161: {},
 	}
 	for _, vaultAddress := range extraVaults[chainID] {
-		vaultAddress := ethcommon.HexToAddress(vaultAddress)
+		vaultAddress := common.HexToAddress(vaultAddress)
 		if _, ok := vaultMap[vaultAddress]; !ok {
 			updatedVaultMap[vaultAddress] = &TVault{
 				Address: vaultAddress,

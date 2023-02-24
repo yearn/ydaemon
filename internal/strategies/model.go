@@ -95,7 +95,7 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	strategyRiskScore.ChainID = t.ChainID
 	if strategyGroup == nil {
 		traces.
-			Capture(`warn`, `impossible to find strategyGroup for group `+t.Name).
+			Capture(`warn`, `impossible to find strategyGroup for strategy `+ t.Name).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).

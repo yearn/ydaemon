@@ -237,7 +237,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 		if strategyGroup == nil {
 			if !stratGroupErrorAlreadySent[chainID][strategy.Name] {
 				traces.
-					Capture(`warn`, `impossible to find stratGroup for group `+strategy.Name).
+					Capture(`warn`, `impossible to find stratGroup for strategy ` + strategy.Name).
 					SetEntity(`strategy`).
 					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 					SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).

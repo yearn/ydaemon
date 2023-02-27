@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "USDT",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 9,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "USDT",
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

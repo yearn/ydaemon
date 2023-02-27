@@ -1,0 +1,69 @@
+{
+  "$schema": "strategy",
+  "name": "Hop Single Sided",
+  "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+  "addresses": [
+    "0x3c023B5Fa6D003d72b32C92057c153b1a8e4Fe38",
+    "0x94E747E1AA9a9c3b1B8ED388E207fe5424870d0d",
+    "0x99519771c569bC11cd652A5415672f54476cDbFe",
+    "0xC93CcF5fA33Bb2952bB28e0636974030ba039385"
+  ],
+  "protocols": ["Hop Exchange"],
+  "protocolVersion": {
+    "Hop Exchange": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "es": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "de": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "el": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "id": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Hop Single Sided",
+      "description": "Supplies {{token}} to a liquidity pool on [Hop Exchange](https://app.hop.exchange/#/pools) and stakes it to earn HOP and trading fees. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    }
+  }
+}

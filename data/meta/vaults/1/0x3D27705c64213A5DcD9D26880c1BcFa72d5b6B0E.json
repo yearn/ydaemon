@@ -2,7 +2,13 @@
   "$schema": "vault",
   "comment": "USDK Curve vault. No funds, tiny pool, poor yield, so hiding it from UI for now.",
   "hideAlways": true,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 19.5,
   "migrationAvailable": false,
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
   "classification": {
     "isAutomated": false,
     "isPool": true,

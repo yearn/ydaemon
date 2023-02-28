@@ -4,7 +4,7 @@
 
 yDaemon is the next-gen API for Yearn. Based on the API from [yearn-exporter](https://github.com/yearn/yearn-exporter), it brings a lot of new features and benefits without breaking the existing system.
 
-SEE documentation here:  https://ydaemon.yearn.farm/
+See documentation here: https://ydaemon.yearn.farm/
 ## Use with Docker
 First, ensure [Docker](https://docs.docker.com/get-started/overview/) is installed on your system then, clone the repo and create the '.env' file:
 ```

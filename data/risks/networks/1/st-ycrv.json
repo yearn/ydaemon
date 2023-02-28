@@ -1,0 +1,15 @@
+{
+	"$schema": "risks",
+	"label": "Staked Yearn CRV",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 2,
+	"protocolSafetyScore": 1,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": ["StYCRV"],
+		"strategies": ["0xAf73A48E1d7e8300C91fFB74b8f5e721fBFC5873"],
+		"exclude": []
+	}
+}

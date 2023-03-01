@@ -1,18 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "OP",
+  "comment": "Curve FXS-ETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 7,
+  "order": 296,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "OP",
+  "displayName": "Curve FXS-ETH",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
     "stability": "Volatile"
   }
 }

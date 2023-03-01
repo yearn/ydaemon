@@ -1,18 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "OP",
+  "comment": "Curve ibCHF-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 7,
+  "order": 299,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "OP",
+  "displayName": "Curve ibCHF",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
-    "stability": "Volatile"
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "CHF"
   }
 }

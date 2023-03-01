@@ -1,18 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "OP",
+  "comment": "Curve STG-FRAXBP-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 7,
+  "order": 301,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "OP",
+  "displayName": "Curve STG-FRAXBP",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
     "stability": "Volatile"
   }
 }

@@ -1,18 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "OP",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 7,
+  "order": 300,
+  "apyTypeOverride": "new",
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "OP",
+  "displayName": "wstETH",
   "classification": {
     "isAutomated": false,
     "isPool": false,
-    "stability": "Volatile"
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
   }
 }

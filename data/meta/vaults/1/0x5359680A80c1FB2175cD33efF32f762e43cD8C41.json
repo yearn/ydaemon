@@ -1,18 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "OP",
+  "comment": "Curve ibKRW-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 7,
+  "order": 297,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "OP",
+  "displayName": "Curve ibKRW",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
-    "stability": "Volatile"
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "KRW"
   }
 }

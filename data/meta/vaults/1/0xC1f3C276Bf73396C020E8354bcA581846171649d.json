@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 300,
+  "apyTypeOverride": "new",
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "wstETH",
+  "classification": {
+    "isAutomated": false,
+    "isPool": false,
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

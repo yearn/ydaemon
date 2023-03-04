@@ -18,7 +18,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO", "Frax Finance", "Sturdy Finance", "Hop Exchange"]
+        "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO", "Frax Finance", "Sturdy Finance", "Hop Exchange", "Velodrome Finance"]
       }
     },
     "protocolVersion": {
@@ -71,6 +71,7 @@
         "Uniswap": {"type": "string", "enum": ["2", "3", "2,3"]},
         "Universe": {"type": "string", "enum": ["1"]},
         "Vesper Finance": {"type": "string", "enum": ["1"]},
+        "Velodrome Finance": {"type": "string", "enum": ["1"]},
         "Yearn": {"type": "string", "enum": ["2"]},
         "dYdX": {"type": "string", "enum": ["1"]},
         "veDAO": {"type": "string", "enum": ["1"]},

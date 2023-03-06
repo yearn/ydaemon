@@ -1,18 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "DOLA Stablecoin",
+  "comment": "Vel USDC-DOLA",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 6,
+  "order": 7,
   "migrationAvailable": false,
-  "allowZapIn": false,
+  "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "DOLA",
+  "retired": false,
+  "displayName": "Velodrome USDC-DOLA",
+  "apyTypeOverride": "new",
   "classification": {
     "isAutomated": false,
-    "isPool": false,
+    "isPool": true,
+    "poolProvider": "Velodrome",
     "stability": "Stable",
     "stableBaseAsset": "USD"
   }

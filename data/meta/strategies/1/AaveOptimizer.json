@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Aave Optimizer",
-  "description": "Supplies {{token}} to [AAVE](https://app.aave.com) to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
   "addresses": [
     "0x179e7F502D3b410955d1A7D2047058F70Fb812AF",
     "0x23c7DB62d07425733a0F61B4b2039b27Fd3cD0B1"

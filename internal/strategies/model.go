@@ -57,6 +57,7 @@ type TStrategy struct {
 	VaultVersion            string                  `json:"vaultVersion"`
 	Name                    string                  `json:"name"`
 	DisplayName             string                  `json:"displayName"`
+	GroupName               string                  `json:"groupName"`
 	Description             string                  `json:"description"`
 	APIVersion              string                  `json:"apiVersion"`
 	Protocols               []string                `json:"protocols"`
@@ -95,7 +96,7 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	strategyRiskScore.ChainID = t.ChainID
 	if strategyGroup == nil {
 		traces.
-			Capture(`warn`, `impossible to find strategyGroup for strategy `+ t.Name).
+			Capture(`warn`, `impossible to find strategyGroup for strategy `+t.Name).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).

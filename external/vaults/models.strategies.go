@@ -49,6 +49,7 @@ type TStrategyDetails struct {
 type TStrategy struct {
 	Address     common.Address              `json:"address"`
 	Name        string                      `json:"name"`
+	DisplayName string                      `json:"displayName"`
 	Description string                      `json:"description"`
 	Details     *TStrategyDetails           `json:"details,omitempty"`
 	Risk        *TExternalStrategyRiskScore `json:"risk,omitempty"`
@@ -81,6 +82,7 @@ func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 
 	v.Address = common.FromAddress(strategy.Address)
 	v.Name = strategy.Name
+	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TStrategyDetails{
 		Keeper:               common.FromAddress(strategy.KeeperAddress),      //keeper

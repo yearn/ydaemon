@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve aETHc",
+  "comment": "Curve ankrETH",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve aETHc",
+  "displayName": "Curve ankrETH",
   "classification": {
     "isAutomated": false,
     "isPool": true,

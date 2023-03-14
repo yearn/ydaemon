@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "hop",
+	"codeReviewScore": 3,
+	"testingScore": 2,
+	"auditScore": 5,
+	"protocolSafetyScore": 4,
+	"complexityScore": 2,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"hop"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

@@ -253,6 +253,7 @@ func (t *TVault) BuildCategory() string {
 	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
 	baseForCurve := []string{`curve`, `crv`}
 	baseForBalancer := []string{`balancer`, `bal`}
+	baseForVelodrom := []string{`velodrome`, `velo`}
 	allNames := []string{
 		strings.ToLower(t.FormatedName),
 		strings.ToLower(t.Name),
@@ -275,6 +276,9 @@ func (t *TVault) BuildCategory() string {
 		}
 		if helpers.Intersects(allNames, baseForBalancer) {
 			category = `Balancer`
+		}
+		if helpers.Intersects(allNames, baseForVelodrom) {
+			category = `Velodrome`
 		}
 	} else {
 		//No meta, back to custom classification
@@ -300,6 +304,9 @@ func (t *TVault) BuildCategory() string {
 		}
 		if helpers.Intersects(allNames, baseForBalancer) {
 			category = `Balancer`
+		}
+		if helpers.Intersects(allNames, baseForVelodrom) {
+			category = `Velodrome`
 		}
 	}
 	return category

@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve ankrETH",
+  "comment": "Curve T-ETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 44,
+  "order": 302,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve ankrETH",
+  "displayName": "Curve T-ETH",
   "classification": {
-    "isAutomated": false,
+    "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "Ether"
+    "stability": "Volatile"
   }
 }

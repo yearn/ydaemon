@@ -64,6 +64,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 				externalStrategy = &TStrategy{
 					Address:     common.FromAddress(strategy.Address),
 					Name:        strategy.Name,
+					DisplayName: strategy.DisplayName,
 					Description: strategy.Description,
 				}
 			}

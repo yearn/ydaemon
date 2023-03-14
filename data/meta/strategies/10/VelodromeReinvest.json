@@ -1,0 +1,67 @@
+{
+  "$schema": "strategy",
+  "name": "Velodrome Reinvest",
+  "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+  "addresses": [
+    "0x4809143428Ed49D08978aDF209A4179d52ce5371",
+    "0xb2093fDbeeB5c196a1F930b65bc64D935b778377"
+  ],
+  "protocols": ["Velodrome Finance"],
+  "protocolVersion": {
+    "Velodrome Finance": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "es": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "de": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "el": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "id": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Velodrome Reinvest",
+      "description": "Supplies {{token}} to [Velodrome Finance](https://app.velodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn VELO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    }
+  }
+}

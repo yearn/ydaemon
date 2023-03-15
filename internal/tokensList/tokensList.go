@@ -36,21 +36,13 @@ func setSupportedByCowSwap(chainID uint64) {
 }
 
 func BuildTokenList(chainID uint64) {
-	lastUpdate := GetLastUpdate(chainID)
+	lastUpdate := getLastUpdate(chainID)
 	if !lastUpdate.IsZero() && lastUpdate.Before(time.Now().Add(-time.Hour*24)) {
 		return
 	}
 	logs.Info(`Reloading tokenLists...`)
 
 	supportedTokenMap := make(map[string]DefaultTokenListToken)
-	for _, token := range AggregatedTokenList.Tokens {
-		supportedTokenMap[token.Address] = token
-	}
-
-	minCountToInclude := 1
-	if chainID == 1 {
-		minCountToInclude = 3
-	}
 
 	if len(WidoTokenList.Tokens) > 0 {
 		for _, token := range WidoTokenList.Tokens {
@@ -108,31 +100,6 @@ func BuildTokenList(chainID uint64) {
 				LogoURI:       token.LogoURI,
 				Balance:       bigNumber.NewInt(0),
 				SupportedZaps: []SupportedZap{Portals},
-			})
-		}
-	}
-
-	if len(AggregatedTokenList.Tokens) > 0 {
-		for _, token := range AggregatedTokenList.Tokens {
-			tokenAddress := common.HexToAddress(token.Address)
-			if token.Count < minCountToInclude {
-				continue
-			}
-			if _, exist := GetTokenFromList(chainID, tokenAddress); exist {
-				continue
-			}
-			if uint64(token.ChainID) != chainID {
-				continue
-			}
-			setTokenFromList(chainID, YTokenFromList{
-				ChainID:       uint64(token.ChainID),
-				Address:       tokenAddress.Hex(),
-				Name:          token.Name,
-				Symbol:        token.Symbol,
-				Decimals:      token.Decimals,
-				LogoURI:       token.LogoURI,
-				Balance:       bigNumber.NewInt(0),
-				SupportedZaps: []SupportedZap{},
 			})
 		}
 	}

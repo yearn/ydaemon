@@ -114,7 +114,6 @@ func GetTokenList(c *gin.Context) {
 	**********************************************************************************************/
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		allTokens := tokens.ListTokens(chainID)
-		// tokens := tokensList.MapTokenList(chainID)
 		for _, token := range allTokens {
 			tokenList.Tokens = append(tokenList.Tokens, tokensList.DefaultTokenListToken{
 				ChainID:  int(chainID),

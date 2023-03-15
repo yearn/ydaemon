@@ -119,10 +119,10 @@ func GetTokenFromList(chainID uint64, tokenAddress common.Address) (YTokenFromLi
 }
 
 /**********************************************************************************************
-** GetLastUpdate will, for a given chainID, return the last time the list was updated and
+** getLastUpdate will, for a given chainID, return the last time the list was updated and
 ** stored in _tokenListUpdateMap.
 **********************************************************************************************/
-func GetLastUpdate(chainID uint64) time.Time {
+func getLastUpdate(chainID uint64) time.Time {
 	if _, ok := _tokenListUpdateMap[chainID]; !ok {
 		_tokenListUpdateMap[chainID] = time.Time{}
 	}
@@ -201,9 +201,8 @@ func init() {
 	wg.Add(1)
 	go func() {
 		for {
-			AggregatedTokenList = fetchTokenLists()
-			WidoTokenList = fetchDefaultTokenList(`https://api.joinwido.com/tokens`)
-			PortalsTokenList = fetchDefaultTokenList(`https://api.portals.fi/v1/tokens/format/uniswap`)
+			WidoTokenList = fetchDefaultTokenList(`https://raw.githubusercontent.com/Migratooor/tokenLists/main/lists/wido.json`)
+			PortalsTokenList = fetchDefaultTokenList(`https://raw.githubusercontent.com/Migratooor/tokenLists/main/lists/portals.json`)
 			if !isDone {
 				wg.Done()
 				isDone = true

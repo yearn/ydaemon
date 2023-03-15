@@ -119,10 +119,10 @@ func GetTokenFromList(chainID uint64, tokenAddress common.Address) (YTokenFromLi
 }
 
 /**********************************************************************************************
-** GetLastUpdate will, for a given chainID, return the last time the list was updated and
+** getLastUpdate will, for a given chainID, return the last time the list was updated and
 ** stored in _tokenListUpdateMap.
 **********************************************************************************************/
-func GetLastUpdate(chainID uint64) time.Time {
+func getLastUpdate(chainID uint64) time.Time {
 	if _, ok := _tokenListUpdateMap[chainID]; !ok {
 		_tokenListUpdateMap[chainID] = time.Time{}
 	}

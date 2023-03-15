@@ -36,7 +36,7 @@ func setSupportedByCowSwap(chainID uint64) {
 }
 
 func BuildTokenList(chainID uint64) {
-	lastUpdate := GetLastUpdate(chainID)
+	lastUpdate := getLastUpdate(chainID)
 	if !lastUpdate.IsZero() && lastUpdate.Before(time.Now().Add(-time.Hour*24)) {
 		return
 	}

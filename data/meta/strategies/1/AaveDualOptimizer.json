@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Aave Optimizer",
+  "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0xec2DB4A1Ad431CC3b102059FA91Ba643620F0826"],
+  "protocols": ["Aave"],
+  "protocolVersion": {
+    "Aave": "2 & 3"
+  },
+  "localization": {
+    "en": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Aave Optimizer",
+      "description": "Supplies {{token}} to [AAVE](https://app.aave.com) v3 and v2 to generate interest and earn rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

@@ -1,12 +1,12 @@
 package internal
 
 import (
-	"encoding/json"
-	"io/ioutil"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/bribes"
 	"github.com/yearn/ydaemon/internal/fees"
@@ -244,24 +244,84 @@ func Initialize(chainID uint64) {
 	}
 	syncGroup.Wait()
 
+	allHarvestPerStrategyPerVault := map[common.Address]map[common.Address][]vaults.THarvest{}
 	count := 0
 	for _, v := range harvests {
 		AllHarvests[v.Vault] = append(AllHarvests[v.Vault], v)
+		if allHarvestPerStrategyPerVault[v.Vault] == nil {
+			allHarvestPerStrategyPerVault[v.Vault] = map[common.Address][]vaults.THarvest{}
+		}
+		allHarvestPerStrategyPerVault[v.Vault][v.Strategy] = append(allHarvestPerStrategyPerVault[v.Vault][v.Strategy], v)
 		count++
 	}
 
-	// Save managementFees, performanceFees, strategiesPerformanceFees in a json file ./fees.json
-	file, _ := json.MarshalIndent(map[string]interface{}{
-		"managementFees":            managementFees,
-		"performanceFees":           performanceFees,
-		"strategiesPerformanceFees": strategiesPerformanceFees,
-	}, "", " ")
-	_ = ioutil.WriteFile("./fees.json", file, 0644)
+	// // For each harvest for each vault, compute the APY
+	// type harvestAPY struct {
+	// }
+	// for _, vault := range vaultsMap {
+	// 	allHarvestForThisVault := AllHarvests[vault.Address]
+	// 	lastHarvestTime := vault.Inception
+	// 	for _, harvest := range allHarvestForThisVault {
+	// 		gains := harvest.Gain
+	// 		losses := harvest.Loss
+	// 		totalFees := harvest.Fees.TotalCollectedFee
+	// 		harvestTime := harvest.Timestamp
 
-	logs.Success(`It tooks`, time.Since(timeBefore), `to process`, count, `harvests`)
+	// 		lastHarvestTime = harvestTime
 
-	//save AllHarvests in a json file ./AllHarvests.json
-	file, _ = json.MarshalIndent(AllHarvests, "", " ")
-	_ = ioutil.WriteFile("./AllHarvests.json", file, 0644)
+	// 	}
+	// }
+	curveSTETHVault := common.HexToAddress(`0x5B8C556B8b2a78696F0B9B830B3d67623122E270`)
+	curveSTETHStrategy := common.HexToAddress(`0xaBec96AC9CdC6863446657431DD32F73445E80b1`)
+	allRelevantHarvest := allHarvestPerStrategyPerVault[curveSTETHVault][curveSTETHStrategy]
+
+	strategy, ok := strategies.FindStrategy(1, curveSTETHStrategy)
+	if !ok {
+		logs.Error("Strategy not found")
+		return
+	}
+
+	lastHarvest := ethereum.GetBlockTime(1, strategy.Activation.Uint64())
+	for _, harvest := range allRelevantHarvest {
+		/**********************************************************************************************
+		** For each harvest, retrieve the relevant data: gains, losses, fees and amount allocated. They
+		** are all in WEI notation, so we need to convert them to normalized value with FormatedAmount.
+		** If no gain or loss, skip.
+		**********************************************************************************************/
+		gains, _ := helpers.FormatAmount(harvest.Gain.String(), 18)
+		losses, _ := helpers.FormatAmount(harvest.Loss.String(), 18)
+		totalFees, _ := helpers.FormatAmount(harvest.Fees.TotalCollectedFee.String(), 18)
+		amountAllocated, _ := helpers.FormatAmount(harvest.TotalDebt.String(), 18)
+		gainsMinusLoss := gains - losses
+		if gainsMinusLoss == 0 { //Skip, no gain or loss, no APY
+			lastHarvest = harvest.Timestamp
+			continue
+		}
+
+		/**********************************************************************************************
+		** The result is simply the gains minus the losses minus the fees. We then divide by the amount
+		** allocated to get the ratio.
+		** Here we use both the result with fees and without fees.
+		**********************************************************************************************/
+		resultMinusFees := gainsMinusLoss - totalFees
+		resultRatio := resultMinusFees / amountAllocated
+		resultRatioNoFees := gainsMinusLoss / amountAllocated
+
+		/**********************************************************************************************
+		** We need to compute the time while this amount was allocated, aka result for this amount in
+		** this time. With that we can extrapolate the APY for the year.
+		**********************************************************************************************/
+		lastHarvestTime := time.Unix(int64(lastHarvest), 0)
+		harvestTimeTime := time.Unix(int64(harvest.Timestamp), 0)
+		timeSinceHarvest := harvestTimeTime.Sub(lastHarvestTime)
+		durationSinceHarvest := timeSinceHarvest.Hours()
+		hourPerYear := float64(365 * 24)
+
+		APR := (resultRatio * (hourPerYear / durationSinceHarvest) * 100)
+		APRNoFees := (resultRatioNoFees * (hourPerYear / durationSinceHarvest) * 100)
+		logs.Pretty(APR, APRNoFees)
+
+		lastHarvest = harvest.Timestamp
+	}
 
 }

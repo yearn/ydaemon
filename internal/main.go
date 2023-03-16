@@ -218,7 +218,6 @@ func Initialize(chainID uint64) {
 	wg.Wait()
 	logs.Success("Initialization done in", time.Since(timeBefore))
 
-	timeBefore = time.Now()
 	syncGroup := &sync.WaitGroup{}
 	harvests := []vaults.THarvest{}
 	for _, vault := range vaultsMap {

@@ -106,14 +106,6 @@ var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	42161: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
 }
 
-// YBRIBE_V3_ADDRESSES contains the address of the yBribe contract
-var YBRIBE_V3_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
-	10:    {},
-	250:   {},
-	42161: {},
-}
-
 // CURVE_REGISTRY_ADDRESSES contains the address of the Curve Registry contract
 var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),

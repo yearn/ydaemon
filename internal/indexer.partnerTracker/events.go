@@ -1,4 +1,4 @@
-package bribes
+package partnerTracker
 
 import (
 	"strconv"
@@ -7,9 +7,9 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/types/common"
 )
 
 /**************************************************************************************************
@@ -17,43 +17,49 @@ import (
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - asyncRewardAdded: the async ptr to the map of blockNumber -> TEventAdded
+** - asyncRewardAdded: the async ptr to the map of blockNumber -> TEventReferredBalanceIncreased
 **
 ** Returns nothing as the asyncRewardAdded is updated via a pointer
 **************************************************************************************************/
-func filterRewardAdded(
+func filterReferrerBalanceIncrease(
 	chainID uint64,
 	asyncRewardAdded *sync.Map,
 ) {
 	client := ethereum.GetRPC(chainID)
-	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
-	currentVault, _ := contracts.NewYBribeV3(contractAddress, client)
+	partnerContract := PARTNER_TRACKERS_ADDRESSES[chainID]
+	partnerContractAddress := partnerContract.Address.ToAddress()
+	currentVault, _ := contracts.NewYPartnerTracker(partnerContractAddress, client)
+	opts := &bind.FilterOpts{
+		Start: partnerContract.Block,
+		End:   nil,
+	}
 
-	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
+	if log, err := currentVault.FilterReferredBalanceIncreased(opts, nil, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
 			}
-			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
-				Amount:      bigNumber.SetInt(log.Event.Amount),
-				Briber:      log.Event.Briber,
-				Gauge:       log.Event.Gauge,
-				RewardToken: log.Event.RewardToken,
-				Timestamp:   ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber),
-				TxHash:      log.Event.Raw.TxHash,
-				BlockNumber: log.Event.Raw.BlockNumber,
-				TxIndex:     log.Event.Raw.TxIndex,
-				LogIndex:    log.Event.Raw.Index,
+			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventReferredBalanceIncreased{
+				Amount:         bigNumber.SetInt(log.Event.AmountAdded),
+				TotalDeposited: bigNumber.SetInt(log.Event.TotalDeposited),
+				PartnerID:      common.FromAddress(log.Event.PartnerId),
+				Vault:          common.FromAddress(log.Event.Vault),
+				Depositer:      common.FromAddress(log.Event.Depositer),
+				Timestamp:      ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber),
+				TxHash:         log.Event.Raw.TxHash,
+				BlockNumber:    log.Event.Raw.BlockNumber,
+				TxIndex:        log.Event.Raw.TxIndex,
+				LogIndex:       log.Event.Raw.Index,
 			})
 		}
 	} else {
 		traces.
-			Capture(`error`, `impossible to FilterRewardAdded for YBribeV3 `+contractAddress.Hex()).
+			Capture(`error`, `impossible to FilterReferrerBalanceIncrease for YBribeV3 `+partnerContractAddress.Hex()).
 			SetEntity(`bribes`).
 			SetExtra(`error`, err.Error()).
 			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-			SetTag(`bribeAddress`, contractAddress.Hex()).
+			SetTag(`bribeAddress`, partnerContractAddress.Hex()).
 			Send()
 	}
 }
@@ -62,14 +68,11 @@ func filterRewardAdded(
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
-	if chainID != 1 {
-		return make(map[uint64]TEventAdded)
-	}
-	trace := traces.Init(`app.indexer.bribes.reward_added`).
+func RetrieveAllReffererBalanceIncrease(chainID uint64) map[uint64]TEventReferredBalanceIncreased {
+	trace := traces.Init(`app.indexer.partnertracker.referred_balance_increased`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `bribes`).
+		SetTag(`entity`, `partnerTracker`).
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
@@ -78,23 +81,23 @@ func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
 	** goroutines via the wg before continuing.
 	**********************************************************************************************/
 	asyncRewardAdded := sync.Map{}
-	filterRewardAdded(chainID, &asyncRewardAdded)
+	filterReferrerBalanceIncrease(chainID, &asyncRewardAdded)
 
 	/**********************************************************************************************
 	** Once we got all the reward added blocks, we need to extract them from the sync.Map.
 	**
 	** The syncMap variable is setup as follows:
 	** - key: blockNumber
-	** - value: TEventAdded
+	** - value: TEventReferredBalanceIncreased
 	**
-	** We need to update, for each corresponding event, the activation block to the TEventAdded.
+	** We need to update, for each corresponding event, the activation block to the TEventReferredBalanceIncreased.
 	**********************************************************************************************/
 	count := 0
-	rewardAddedMap := make(map[uint64]TEventAdded)
+	rewardAddedMap := make(map[uint64]TEventReferredBalanceIncreased)
 	asyncRewardAdded.Range(func(key, value interface{}) bool {
-		currentRewardAdded := value.(TEventAdded)
-		rewardAddedMap[key.(uint64)] = currentRewardAdded
-		SetInRewardAddedMap(chainID, currentRewardAdded.BlockNumber, &currentRewardAdded)
+		event := value.(TEventReferredBalanceIncreased)
+		rewardAddedMap[key.(uint64)] = event
+		SetInReferralBalanceIncreaseMap(chainID, event.BlockNumber, &event)
 		count++
 		return true
 	})

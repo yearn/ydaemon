@@ -1,16 +1,21 @@
 package internal
 
 import (
+	"encoding/json"
+	"io/ioutil"
+	"os"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/bribes"
 	"github.com/yearn/ydaemon/internal/fees"
 	"github.com/yearn/ydaemon/internal/indexer"
+	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
+	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -70,8 +75,12 @@ func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.T
 }
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
+	InitializePartnerTracker(chainID)
+	os.Exit(0)
+
 	defer wg.Done()
 	go InitializeBribes(chainID)
+	go InitializePartnerTracker(chainID)
 
 	var internalWG sync.WaitGroup
 	//From the events in the registries, retrieve all the vaults -> Should only be done on init or when a new vault is added
@@ -106,6 +115,84 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 func InitializeBribes(chainID uint64) {
 	bribes.RetrieveAllRewardsAdded(chainID)
+}
+func InitializePartnerTracker(chainID uint64) {
+	/**********************************************************************************************
+	** First we need to catch all the events that happened in the past to be able to calculate the
+	** current state of the partner tracker
+	**********************************************************************************************/
+	logs.Info(`Loading all referral balance increase events`)
+	timeBefore := time.Now()
+	partnerTracker.RetrieveAllReffererBalanceIncrease(chainID)
+	logs.Success(`Loaded all referral balance increase events tooks`, time.Since(timeBefore))
+
+	/**********************************************************************************************
+	** Once we got all the events, we can check how many unique referrer, referee and vaults we
+	** have and start building our relation tree:
+	** [chainID][vault][referrer][referee][amount]
+	**********************************************************************************************/
+	allEvents := partnerTracker.ListReferralBalanceIncrease(chainID)
+	uniqueReferrer := map[common.Address]uint64{}
+	uniqueReferee := map[common.Address]bool{}
+	uniqueVaults := map[common.Address]bool{}
+	for _, event := range allEvents {
+		uniqueReferrer[event.PartnerID.Address]++
+		uniqueReferee[event.Depositer.Address] = true
+		uniqueVaults[event.Vault.Address] = true
+	}
+	logs.Success(`Found`, len(uniqueReferrer), `unique referrer`)
+	logs.Success(`Found`, len(uniqueReferee), `unique referee`)
+	logs.Success(`Found`, len(uniqueVaults), `unique vaults`)
+
+	/**********************************************************************************************
+	** Now that we have all the unique referrer, referee and vaults, we can start building our
+	** relation tree
+	**********************************************************************************************/
+	partnerTrackerTree := map[uint64]map[common.Address]map[common.Address]map[common.Address]*bigNumber.Int{}
+	for _, event := range allEvents {
+		/******************************************************************************************
+		** Ugly go code to avoid crash because of nil pointer
+		******************************************************************************************/
+		if partnerTrackerTree[chainID] == nil {
+			partnerTrackerTree[chainID] = map[common.Address]map[common.Address]map[common.Address]*bigNumber.Int{}
+		}
+		if partnerTrackerTree[chainID][event.Vault.ToAddress()] == nil {
+			partnerTrackerTree[chainID][event.Vault.ToAddress()] = map[common.Address]map[common.Address]*bigNumber.Int{}
+		}
+		if partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()] == nil {
+			partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()] = map[common.Address]*bigNumber.Int{}
+		}
+		if partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] == nil {
+			partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = bigNumber.NewInt(0)
+		}
+
+		/******************************************************************************************
+		** Actual code to add the amount to the tree
+		******************************************************************************************/
+		currentAmount := partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()]
+
+		partnerTrackerTree[chainID][event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = currentAmount.Add(
+			currentAmount,
+			event.Amount,
+		)
+	}
+
+	//save that in a json file name partnerTrackerTree.json
+	jsonData, err := json.Marshal(partnerTrackerTree)
+	if err != nil {
+		logs.Error(err)
+	}
+	err = ioutil.WriteFile("partnerTrackerTree.json", jsonData, 0644)
+	if err != nil {
+		logs.Error(err)
+	}
+
+	// logs.Pretty(
+	// 	len(partnerTracker.ListReferralBalanceIncrease(chainID)),
+	// 	partnerTracker.ListReferralBalanceIncrease(chainID)[0],
+	// 	time.Since(timeBefore),
+	// )
+
 }
 
 func Initialize(chainID uint64) {

@@ -16,6 +16,7 @@ type TEventReferredBalanceIncreased struct {
 	Vault          common.Address `json:"vault"`
 	Depositer      common.Address `json:"depositer"`
 	TxHash         common.Hash    `json:"txHash"`
+	Timestamp      uint64         `json:"timestamp"`
 	BlockNumber    uint64         `json:"blockNumber"`
 	TxIndex        uint           `json:"-"`
 	LogIndex       uint           `json:"-"`

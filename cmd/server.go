@@ -128,9 +128,6 @@ func NewRouter() *gin.Engine {
 	{
 		// Get some information about the API
 		GET(router, `info/chains`, utils.GetSupportedChains)
-
-		// Proxy subgraph
-		router.POST(`:chainID/graph`, utils.GetGraph)
 	}
 
 	// Meta API section

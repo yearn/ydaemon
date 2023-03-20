@@ -64,7 +64,7 @@ func filterNewExperimentalVault(
 				LogIndex:        log.Event.Raw.Index,
 				Type:            utils.VaultTypeExperimental,
 			})
-			logs.Info(`Got new experimental vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+			// logs.Info(`Got new experimental vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 		}
 	} else {
 		traces.
@@ -164,7 +164,7 @@ func filterNewVaults(
 					newVault.ManagementFee = 0
 				}
 				*vaultsList = append(*vaultsList, newVault)
-				logs.Info(`Got new ` + string(newVault.Type) + ` vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+				// logs.Info(`Got new ` + string(newVault.Type) + ` vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 			}
 		} else {
 			traces.

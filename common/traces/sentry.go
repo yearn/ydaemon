@@ -11,6 +11,8 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
+var IsEnabled = true
+
 var SPANS = map[string]string{
 	//app.bootstrap
 	`app.bootstrap`:                   `Bootstrap`,
@@ -32,6 +34,9 @@ var SPANS = map[string]string{
 }
 
 func getSampleRate() float64 {
+	if !IsEnabled {
+		return 0
+	}
 	SAMPLE_RATE, exists := os.LookupEnv("SENTRY_SAMPLE_RATE")
 	if !exists {
 		return 1.0
@@ -46,6 +51,9 @@ func getSampleRate() float64 {
 }
 
 func SetupSentry() {
+	if !IsEnabled {
+		return
+	}
 	SENTRY_DSN, exists := os.LookupEnv("SENTRY_DSN")
 	if exists {
 		SERVER_NAME, exists := os.LookupEnv("SERVER_NAME")
@@ -81,6 +89,9 @@ type TTrace struct {
 }
 
 func Init(key string, tags ...TTags) *TTrace {
+	if !IsEnabled {
+		return nil
+	}
 	logs.Trace(key, 1, ``)
 	span := sentry.StartSpan(context.Background(), key, sentry.TransactionName(SPANS[key]))
 	if len(tags) > 0 {
@@ -95,11 +106,17 @@ func Init(key string, tags ...TTags) *TTrace {
 	}
 }
 func (s *TTrace) SetTag(key string, value string) *TTrace {
+	if !IsEnabled {
+		return &TTrace{}
+	}
 	s.span.SetTag(key, value)
 	return s
 }
 
 func (s *TTrace) Child(key string, tags ...TTags) *TTrace {
+	if !IsEnabled {
+		return &TTrace{}
+	}
 	logs.Trace(key, 1, ``)
 	span := s.span.StartChild(key, sentry.TransactionName(SPANS[key]))
 	if len(tags) > 0 {
@@ -115,6 +132,9 @@ func (s *TTrace) Child(key string, tags ...TTags) *TTrace {
 }
 
 func (s TTrace) Finish() {
+	if !IsEnabled {
+		return
+	}
 	startedAt := s.span.StartTime
 	endedAt := time.Now()
 	duration := endedAt.Sub(startedAt)
@@ -138,6 +158,9 @@ type TCapturedEvent struct {
 }
 
 func Capture(level string, msg string, tags ...TTags) *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	event := sentry.NewEvent()
 	event.Level = captureLevel[level]
 	event.Message = msg
@@ -157,14 +180,23 @@ func Capture(level string, msg string, tags ...TTags) *TCapturedEvent {
 }
 
 func (c *TCapturedEvent) SetEntity(value string) *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	c.Event.Type = value
 	return c
 }
 func (c *TCapturedEvent) SetTag(key string, value string) *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	c.Event.Tags[key] = value
 	return c
 }
 func (c *TCapturedEvent) SetTags(tags ...TTags) *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	if len(tags) > 0 {
 		for _, tag := range tags {
 			c.Event.Tags[tag.Name] = tag.Value
@@ -173,11 +205,17 @@ func (c *TCapturedEvent) SetTags(tags ...TTags) *TCapturedEvent {
 	return c
 }
 func (c *TCapturedEvent) SetExtra(key string, value interface{}) *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	c.Event.Extra[key] = value
 	return c
 }
 
 func (c *TCapturedEvent) Send() *TCapturedEvent {
+	if !IsEnabled {
+		return &TCapturedEvent{}
+	}
 	sentry.CurrentHub().Clone().CaptureEvent(c.Event)
 	switch c.Level {
 	case sentry.LevelError:

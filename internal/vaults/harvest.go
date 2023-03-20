@@ -1,14 +1,10 @@
 package vaults
 
 import (
-	"sync"
-
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -103,74 +99,4 @@ func durationSinceLastReport(
 		return bigNumber.NewInt(0)
 	}
 	return duration
-}
-
-func HandleEvenStrategyReportedFor031To043(
-	chainID uint64,
-	vault *TVault,
-	managementFeeChanges map[uint64][]utils.TEventBlock,
-	performanceFeeChanges map[uint64][]utils.TEventBlock,
-	strategiesPerformanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
-	allLastReport map[common.Address]map[uint64]uint64,
-	syncGroup *sync.WaitGroup,
-	harvests *[]THarvest,
-) {
-	defer syncGroup.Done()
-
-	client := ethereum.RPC[1]
-	currentVault, _ := contracts.NewYvault043(vault.Address, client)
-	if log, err := currentVault.FilterStrategyReported(&bind.FilterOpts{Start: vault.Activation}, nil); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				continue
-			}
-
-			currentBlock := utils.TEventBlock{
-				BlockNumber: log.Event.Raw.BlockNumber,
-				TxIndex:     log.Event.Raw.TxIndex,
-				LogIndex:    log.Event.Raw.Index,
-			}
-			transferToStrategist, transferToTreasury := findRelatedTransfers(log, transfersFromVaultsToStrategies, transfersFromVaultsToTreasury)
-
-			harvest := &THarvest{}
-			harvest.New(log.Event.Raw)
-			harvest.Timestamp = ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber)
-			harvest.Vault = vault.Address
-			harvest.VaultName = vault.Name
-			harvest.VaultVersion = vault.Version
-			harvest.Strategy = log.Event.Strategy
-			harvest.Gain = bigNumber.SetInt(log.Event.Gain)
-			harvest.Loss = bigNumber.SetInt(log.Event.Loss)
-			harvest.TotalGain = bigNumber.SetInt(log.Event.TotalGain)
-			harvest.TotalLoss = bigNumber.SetInt(log.Event.TotalLoss)
-			harvest.TotalDebt = bigNumber.SetInt(log.Event.TotalDebt)
-			harvest.DebtPaid = bigNumber.SetInt(log.Event.DebtPaid)
-			harvest.DebtAdded = bigNumber.SetInt(log.Event.DebtAdded)
-			harvest.DebtRatio = bigNumber.SetInt(log.Event.DebtRatio)
-			harvest.Duration = durationSinceLastReport(log, allLastReport)
-
-			harvest.Fees.ManagementFeeBPS = utils.FindEventBefore(managementFeeChanges, currentBlock)
-			harvest.Fees.PerformanceFeeBPS = utils.FindEventBefore(performanceFeeChanges, currentBlock)
-			harvest.Fees.StrategistFeeBPS = utils.FindEventBefore(strategiesPerformanceFeeChanges[log.Event.Strategy], currentBlock)
-			harvest.Fees.TreasuryCollectedFee = transferToTreasury
-			harvest.Fees.StrategistCollectedFee = transferToStrategist
-			harvest.Fees.TotalCollectedFee = bigNumber.NewInt(0).Add(transferToTreasury, transferToStrategist)
-			harvest.Fees.TreasuryFeeRatio = bigNumber.NewFloat(0).Div(
-				bigNumber.NewFloat(0).SetInt(harvest.Fees.TreasuryCollectedFee),
-				bigNumber.NewFloat(0).SetInt(harvest.Gain),
-			)
-			harvest.Fees.StrategistFeeRatio = bigNumber.NewFloat(0).Div(
-				bigNumber.NewFloat(0).SetInt(harvest.Fees.StrategistCollectedFee),
-				bigNumber.NewFloat(0).SetInt(harvest.Gain),
-			)
-			harvest.Fees.TotalFeeRatio = bigNumber.NewFloat(0).Div(
-				bigNumber.NewFloat(0).SetInt(harvest.Fees.TotalCollectedFee),
-				bigNumber.NewFloat(0).SetInt(harvest.Gain),
-			)
-
-			*harvests = append(*harvests, *harvest)
-		}
-	}
 }

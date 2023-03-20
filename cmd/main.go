@@ -1,82 +1,51 @@
 package main
 
 import (
-	"strconv"
 	"sync"
 
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal"
+	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/processes/partnerFees"
 )
 
-// var chains = env.SUPPORTED_CHAIN_IDS
-
-var chains = []uint64{1}
-
-func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(
-		`app.bootstrap.summon.daemon`,
-		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
-	)
-	defer trace.Finish()
-
-	SummonDaemons(chainID)
-	wg.Done()
-	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
-}
-
-func summonDaemonsForAllChains(trace *traces.TTrace) {
-	trace = trace.Child(`app.bootstrap.summon.all`)
-	defer trace.Finish()
-
-	var wg sync.WaitGroup
-	for _, chainID := range chains {
-		wg.Add(1)
-		go waitGroupSummonDaemons(trace, &wg, chainID)
-	}
-
-	wg.Wait()
-}
-
-func waitGroupLoadDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(
-		`app.bootstrap.load_state.daemon`,
-		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
-	)
-	defer trace.Finish()
-
-	LoadDaemons(chainID)
-	wg.Done()
-	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
-}
-
-func loadDaemonsForAllChains(trace *traces.TTrace) {
-	trace = trace.Child(`app.bootstrap.load_state.all`)
-	defer trace.Finish()
-
-	var wg sync.WaitGroup
-	for _, chainID := range chains {
-		wg.Add(1)
-		go waitGroupLoadDaemons(trace, &wg, chainID)
-	}
-	wg.Wait()
-}
-
-func initialize() {
-	traces.SetupSentry()
-	trace := traces.Init(`app.bootstrap`).SetTag(`subsystem`, `main`)
-	defer trace.Finish()
-
-	logs.Info(`Loading store data to yDaemon memory...`)
-	loadDaemonsForAllChains(trace)
-
-	logs.Info(`Summoning yDaemon...`)
-	summonDaemonsForAllChains(trace)
-}
-
 func main() {
-	initialize()
-	// go initialize()
+	logs.Info(`Loading initial state in memory`)
+	loadDaemonsForAllChains(trace)
+	summonDaemonsForAllChains(trace)
+	var wg sync.WaitGroup
 
-	// logs.Success(`Server ready!`)
-	// NewRouter().Run()
+	switch process {
+	case ProcessServer:
+		logs.Info(`Running yDaemon server process...`)
+
+		for _, chainID := range chains {
+			wg.Add(1)
+			innerWg := sync.WaitGroup{}
+			innerWg.Add(1)
+			go internal.InitializeV2(chainID, &innerWg)
+			innerWg.Wait()
+
+			innerWg.Add(1)
+			go runDaemon(chainID, &innerWg, 0, strategies.ComputeRiskGroupAllocation)
+			innerWg.Wait()
+		}
+		wg.Wait()
+
+		logs.Success(`Server ready!`)
+		NewRouter().Run()
+	case ProcessPartnerFees:
+		logs.Info(`Running yDaemon partner fees process...`)
+
+		for _, chainID := range chains {
+			wg.Add(1)
+			meta.RetrieveAllVaultsFromFiles(chainID)
+			meta.RetrieveAllTokensFromFiles(chainID)
+			meta.RetrieveAllStrategiesFromFiles(chainID)
+			meta.RetrieveAllProtocolsFromFiles(chainID)
+			go runDaemon(chainID, &wg, 0, partnerFees.Run)
+		}
+		wg.Wait()
+	}
 }

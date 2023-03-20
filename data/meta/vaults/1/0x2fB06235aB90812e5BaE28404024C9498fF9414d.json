@@ -1,19 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "USDT",
+  "comment": "Curve JPEG-pETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 9,
+  "order": 305,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "USDT",
+  "displayName": "Curve JPEG-pETH",
   "classification": {
-    "isAutomated": false,
-    "isPool": false,
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
   }
 }

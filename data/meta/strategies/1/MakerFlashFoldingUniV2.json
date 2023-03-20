@@ -2,7 +2,10 @@
   "$schema": "strategy",
   "name": "Maker Flashmint Folding Uniswap v2",
   "description": "Supplies {{token}} to Maker DAO Peg Stability Module to feelessly get the correct USDC-DAI ratio then it deposits to the Uniswap v2 DAI-USDC liquidity pool. Flashmints are used to mint DAI from [MakerDAO](https://oasis.app) to flashlend and fold the position, boosting the APY. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-  "addresses": ["0xE5b16812686Fc4ae7C5Db0dc752172B2CD479F52"],
+  "addresses": [
+    "0xE5b16812686Fc4ae7C5Db0dc752172B2CD479F52",
+    "0xD799d307096B1d1cf204Ea7296046D19235b1Bc2"
+  ],
   "protocols": ["Uniswap", "MakerDAO"],
   "protocolVersion": {
     "Uniswap": "2",

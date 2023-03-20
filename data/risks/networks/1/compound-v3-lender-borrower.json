@@ -8,14 +8,8 @@
     "complexityScore": 4,
     "teamKnowledgeScore": 3,
     "criteria": {
-        "nameLike": [
-            "CompV3",
-            "Lender",
-            "Borrower"
-        ],
+        "nameLike": [],
         "strategies": ["0x9E9a2a86eeff52FFD13fc724801a4259b2B1A949"],
-        "exclude": [
-            "aave"
-        ]
+        "exclude": []
     }
 }

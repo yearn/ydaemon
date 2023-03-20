@@ -191,9 +191,6 @@ func RetrieveAllTransferFromVaultsToTreasury(
 	** Concurrently retrieve all transfers from vaults to strategies, waiting for the end of all
 	** goroutines via the syncGroup before continuing.
 	**********************************************************************************************/
-	treasury := common.HexToAddress(`0x93a62da5a14c80f265dabc077fcee437b1a0efde`)
-	logs.Warning(`using generic treasury address`)
-
 	syncMap := &sync.Map{}
 	wg := &sync.WaitGroup{}
 	for _, vault := range vaults {
@@ -202,7 +199,7 @@ func RetrieveAllTransferFromVaultsToTreasury(
 			chainID,
 			vault.Address,
 			[]common.Address{vault.Address},
-			[]common.Address{treasury}, //TODO: add vaults that have a different treasury address
+			findTreasuriesForVault(chainID, vault.Address),
 			vault.Activation,
 			syncMap,
 			wg,
@@ -223,7 +220,13 @@ func RetrieveAllTransferFromVaultsToTreasury(
 	syncMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		senderAddress := common.HexToAddress(eventKey[0])
+		treasuryAddress := common.HexToAddress(eventKey[1])
 		blockNumber, _ := strconv.ParseUint(eventKey[2], 10, 64)
+
+		//We need to check if treasuryAddress was actually the treasury at this block
+		if !isTreasuryAtBlock(chainID, treasuryAddress, blockNumber) {
+			return true
+		}
 
 		// If the mapping for [senderAddress] doesn't exist, create it
 		if _, ok := transfersFromVaultsToStrategies[senderAddress]; !ok {

@@ -77,14 +77,11 @@ func Warning(warning ...interface{}) {
 		return
 	}
 
-	pc, _, line, _ := runtime.Caller(1)
-
 	str0 := `[` + strconv.Itoa(runtime.NumGoroutine()) + `]`
 	str1 := `[WARN]`
-	str2 := `(` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `)`
 	t := time.Now().Format("2006/01/02 15:04:05")
 
-	spew.Printf("%s %-17s %s %s %s\n", t, colorMagenta(str0), colorYellow(str1), colorCyan(str2), colorYellow(warning))
+	spew.Printf("%s %-17s %s %s\n", t, colorMagenta(str0), colorYellow(str1), colorYellow(warning))
 }
 
 // Info function logs an info message
@@ -117,6 +114,10 @@ func Debug(debug ...interface{}) {
 }
 
 func Trace(key string, status int, message string) {
+	LEVEL, exists := os.LookupEnv("LOG_TRACE")
+	if (!exists) || (LEVEL == "false") {
+		return
+	}
 	if !isLogLevelAtLeast("DEBUG") {
 		return
 	}

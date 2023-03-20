@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -448,7 +447,6 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	if len(updatedTokenMap) > 0 {
 		updatedTokenMap = findAllTokens(chainID, updatedTokenMap, curveFactoryPools)
-		logs.Info(`done`)
 
 		/**********************************************************************************************
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map

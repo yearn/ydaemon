@@ -45,7 +45,6 @@ func filterReferrerBalanceIncrease(
 				PartnerID:      common.FromAddress(log.Event.PartnerId),
 				Vault:          common.FromAddress(log.Event.Vault),
 				Depositer:      common.FromAddress(log.Event.Depositer),
-				Timestamp:      ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber),
 				TxHash:         log.Event.Raw.TxHash,
 				BlockNumber:    log.Event.Raw.BlockNumber,
 				TxIndex:        log.Event.Raw.TxIndex,
@@ -68,7 +67,7 @@ func filterReferrerBalanceIncrease(
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func RetrieveAllReffererBalanceIncrease(chainID uint64) map[uint64]TEventReferredBalanceIncreased {
+func retrieveAllRefererBalanceIncrease(chainID uint64) map[uint64]TEventReferredBalanceIncreased {
 	trace := traces.Init(`app.indexer.partnertracker.referred_balance_increased`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).

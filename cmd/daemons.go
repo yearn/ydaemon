@@ -1,14 +1,16 @@
 package main
 
 import (
+	"strconv"
 	"sync"
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/vaults"
-	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 )
@@ -50,20 +52,6 @@ func SummonDaemons(chainID uint64) {
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}
 	wg.Wait()
-
-	wg.Add(1)
-	{
-		//TODO: REPLACE WITH INTERNAL RELOADING
-		go internal.InitializeV2(chainID, &wg)
-	}
-	wg.Wait()
-
-	wg.Add(1)
-	{
-		//This can only be run after the internal daemons have been initialized
-		go runDaemon(chainID, &wg, 0, strategies.ComputeRiskGroupAllocation)
-	}
-	wg.Wait()
 }
 
 // LoadDaemons is a function that loads the previous store state for a given chainID
@@ -73,4 +61,53 @@ func LoadDaemons(chainID uint64) {
 	}
 
 	vaults.LoadAggregatedVaults(chainID, nil)
+}
+
+func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
+	trace = trace.Child(
+		`app.bootstrap.summon.daemon`,
+		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
+	)
+	defer trace.Finish()
+
+	SummonDaemons(chainID)
+	wg.Done()
+	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
+}
+
+func summonDaemonsForAllChains(trace *traces.TTrace) {
+	trace = trace.Child(`app.bootstrap.summon.all`)
+	defer trace.Finish()
+
+	var wg sync.WaitGroup
+	for _, chainID := range chains {
+		wg.Add(1)
+		go waitGroupSummonDaemons(trace, &wg, chainID)
+	}
+
+	wg.Wait()
+}
+
+func waitGroupLoadDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
+	trace = trace.Child(
+		`app.bootstrap.load_state.daemon`,
+		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
+	)
+	defer trace.Finish()
+
+	LoadDaemons(chainID)
+	wg.Done()
+	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
+}
+
+func loadDaemonsForAllChains(trace *traces.TTrace) {
+	trace = trace.Child(`app.bootstrap.load_state.all`)
+	defer trace.Finish()
+
+	var wg sync.WaitGroup
+	for _, chainID := range chains {
+		wg.Add(1)
+		go waitGroupLoadDaemons(trace, &wg, chainID)
+	}
+	wg.Wait()
 }

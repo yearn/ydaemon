@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Compound Lender Borrower",
+  "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+  "addresses": ["0x9E9a2a86eeff52FFD13fc724801a4259b2B1A949"],
+  "protocols": ["Compound Finance"],
+  "protocolVersion": {
+    "Compound Finance": "3"
+  },
+  "localization": {
+    "en": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "es": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "de": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "el": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "id": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Compound Lender Borrower",
+      "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+    }
+  }
+}

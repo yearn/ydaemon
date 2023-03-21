@@ -45,6 +45,13 @@ func SetEnv(path string) {
 	} else {
 		THEGRAPH_ENDPOINTS[1] = GraphAPIURI
 	}
+
+	ApiV1BaseUrl, exists := os.LookupEnv("API_V1_BASE_URL")
+	if !exists {
+		logs.Warning("API_V1_BASE_URL not set, using default value: [https://api.yearn.finance/v1/chains/]")
+	} else {
+		API_V1_BASE_URL = ApiV1BaseUrl
+	}
 }
 
 func init() {

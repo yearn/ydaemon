@@ -18,6 +18,7 @@ services:
       - RPC_URI_FOR_42161
       - WEBHOOK_SECRET
       - GRAPH_API_URI
+      - API_V1_BASE_URL
       - SENTRY_DSN
       - SERVER_NAME
       - SENTRY_SAMPLE_RATE

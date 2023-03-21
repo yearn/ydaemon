@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -32,7 +31,7 @@ import (
 func filterUpdateManagementFee(
 	chainID uint64,
 	vaultAddress common.Address,
-	vaultActivation uint64,
+	opts *bind.FilterOpts,
 	asyncFeeMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -40,8 +39,7 @@ func filterUpdateManagementFee(
 	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	options := bind.FilterOpts{Start: vaultActivation, End: nil}
-	if log, err := currentVault.FilterUpdateManagementFee(&options); err == nil {
+	if log, err := currentVault.FilterUpdateManagementFee(opts); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -86,7 +84,8 @@ func filterUpdateManagementFee(
 func HandleUpdateManagementFee(
 	chainID uint64,
 	vaults map[common.Address]*vaults.TVault,
-	strategiesLists ...map[common.Address]map[common.Address]*strategies.TStrategy,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 	asyncManagementFeeUpdate := sync.Map{}
@@ -94,7 +93,12 @@ func HandleUpdateManagementFee(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go filterUpdateManagementFee(chainID, v.Address, v.Activation, &asyncManagementFeeUpdate, wg)
+		opts := &bind.FilterOpts{Start: start, End: end}
+		if start == 0 {
+			opts = &bind.FilterOpts{Start: v.Activation, End: end}
+		}
+
+		go filterUpdateManagementFee(chainID, v.Address, opts, &asyncManagementFeeUpdate, wg)
 	}
 	wg.Wait()
 

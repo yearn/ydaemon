@@ -1,4 +1,4 @@
-package vaults
+package events
 
 import (
 	"strconv"
@@ -15,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
@@ -37,7 +38,7 @@ func filterTransfers(
 	vaultAddress common.Address,
 	fromAddresses []common.Address,
 	toAddresses []common.Address,
-	activation uint64,
+	opts *bind.FilterOpts,
 	asyncMapTransfers *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -45,7 +46,7 @@ func filterTransfers(
 
 	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterTransfer(&bind.FilterOpts{Start: activation}, fromAddresses, toAddresses); err == nil {
+	if log, err := currentVault.FilterTransfer(opts, fromAddresses, toAddresses); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -92,14 +93,16 @@ func filterTransfers(
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - strategies: list of all TStrategyAdded to work on
+** - vaultStrategiesMap: list of all TStrategyAdded to work on
 **
 ** Returns:
 ** - a map of vaultAddress -> strategyAddress -> blockNumber -> TEventBlock
 **********************************************************************************************/
-func RetrieveAllTransferFromVaultsToStrategies(
+func HandleTransferFromVaultsToStrategies(
 	chainID uint64,
-	strategies map[common.Address]map[common.Address]*strategies.TStrategy,
+	vaultStrategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -109,15 +112,20 @@ func RetrieveAllTransferFromVaultsToStrategies(
 	**********************************************************************************************/
 	syncMap := &sync.Map{}
 	wg := &sync.WaitGroup{}
-	for _, vault := range strategies {
+	for _, vault := range vaultStrategiesMap {
 		for _, strategy := range vault {
 			wg.Add(1)
+			opts := &bind.FilterOpts{Start: start, End: end}
+			if start == 0 {
+				opts = &bind.FilterOpts{Start: strategy.Initialization.BlockNumber, End: end}
+			}
+
 			go filterTransfers(
 				chainID,
 				strategy.VaultAddress,
 				[]common.Address{strategy.VaultAddress},
 				[]common.Address{strategy.Address},
-				strategy.Initialization.BlockNumber,
+				opts,
 				syncMap,
 				wg,
 			)
@@ -181,9 +189,11 @@ func RetrieveAllTransferFromVaultsToStrategies(
 ** Returns:
 ** - a map of vaultAddress -> blockNumber -> TEventBlock
 **********************************************************************************************/
-func RetrieveAllTransferFromVaultsToTreasury(
+func HandleTransfersFromVaultsToTreasury(
 	chainID uint64,
-	vaults map[common.Address]*TVault,
+	vaultsMap map[common.Address]*vaults.TVault,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -193,14 +203,19 @@ func RetrieveAllTransferFromVaultsToTreasury(
 	**********************************************************************************************/
 	syncMap := &sync.Map{}
 	wg := &sync.WaitGroup{}
-	for _, vault := range vaults {
+	for _, vault := range vaultsMap {
 		wg.Add(1)
+		opts := &bind.FilterOpts{Start: start, End: end}
+		if start == 0 {
+			opts = &bind.FilterOpts{Start: vault.Activation, End: end}
+		}
+
 		go filterTransfers(
 			chainID,
 			vault.Address,
 			[]common.Address{vault.Address},
-			findTreasuriesForVault(chainID, vault.Address),
-			vault.Activation,
+			FindTreasuriesForVault(chainID, vault.Address),
+			opts,
 			syncMap,
 			wg,
 		)
@@ -216,7 +231,7 @@ func RetrieveAllTransferFromVaultsToTreasury(
 	** - value: []TEventBlock
 	**********************************************************************************************/
 	count := 0
-	transfersFromVaultsToStrategies := make(map[common.Address]map[uint64][]utils.TEventBlock)
+	transfersFromVaultsToTreasury := make(map[common.Address]map[uint64][]utils.TEventBlock)
 	syncMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		senderAddress := common.HexToAddress(eventKey[0])
@@ -224,22 +239,22 @@ func RetrieveAllTransferFromVaultsToTreasury(
 		blockNumber, _ := strconv.ParseUint(eventKey[2], 10, 64)
 
 		//We need to check if treasuryAddress was actually the treasury at this block
-		if !isTreasuryAtBlock(chainID, treasuryAddress, blockNumber) {
+		if !IsTreasuryAtBlock(chainID, treasuryAddress, blockNumber) {
 			return true
 		}
 
 		// If the mapping for [senderAddress] doesn't exist, create it
-		if _, ok := transfersFromVaultsToStrategies[senderAddress]; !ok {
-			transfersFromVaultsToStrategies[senderAddress] = make(map[uint64][]utils.TEventBlock)
+		if _, ok := transfersFromVaultsToTreasury[senderAddress]; !ok {
+			transfersFromVaultsToTreasury[senderAddress] = make(map[uint64][]utils.TEventBlock)
 		}
 
 		// If the mapping for [senderAddress][blockNumber] doesn't exist, create it
-		if _, ok := transfersFromVaultsToStrategies[senderAddress][blockNumber]; !ok {
-			transfersFromVaultsToStrategies[senderAddress][blockNumber] = make([]utils.TEventBlock, 0)
+		if _, ok := transfersFromVaultsToTreasury[senderAddress][blockNumber]; !ok {
+			transfersFromVaultsToTreasury[senderAddress][blockNumber] = make([]utils.TEventBlock, 0)
 		}
 
-		transfersFromVaultsToStrategies[senderAddress][blockNumber] = append(
-			transfersFromVaultsToStrategies[senderAddress][blockNumber],
+		transfersFromVaultsToTreasury[senderAddress][blockNumber] = append(
+			transfersFromVaultsToTreasury[senderAddress][blockNumber],
 			value.([]utils.TEventBlock)...,
 		)
 		count++
@@ -247,5 +262,5 @@ func RetrieveAllTransferFromVaultsToTreasury(
 	})
 
 	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve`, count, `transfers from vaults to treasury`)
-	return transfersFromVaultsToStrategies
+	return transfersFromVaultsToTreasury
 }

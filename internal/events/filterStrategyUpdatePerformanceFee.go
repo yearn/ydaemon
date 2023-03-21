@@ -33,7 +33,7 @@ import (
 func filterUpdateStrategyPerformanceFee(
 	chainID uint64,
 	vaultAddress common.Address,
-	vaultActivation uint64,
+	opts *bind.FilterOpts,
 	asyncFeeMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -41,7 +41,7 @@ func filterUpdateStrategyPerformanceFee(
 	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterStrategyUpdatePerformanceFee(&bind.FilterOpts{Start: vaultActivation}, nil); err == nil {
+	if log, err := currentVault.FilterStrategyUpdatePerformanceFee(opts, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -87,7 +87,9 @@ func filterUpdateStrategyPerformanceFee(
 func HandleUpdateStrategyPerformanceFee(
 	chainID uint64,
 	vaults map[common.Address]*vaults.TVault,
-	strategiesLists ...map[common.Address]map[common.Address]*strategies.TStrategy,
+	strategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -96,7 +98,18 @@ func HandleUpdateStrategyPerformanceFee(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go filterUpdateStrategyPerformanceFee(chainID, v.Address, v.Activation, &asyncStrategiesPerformanceFeeUpdate, wg)
+		opts := &bind.FilterOpts{Start: start, End: end}
+		if start == 0 {
+			opts = &bind.FilterOpts{Start: v.Activation, End: end}
+		}
+
+		go filterUpdateStrategyPerformanceFee(
+			chainID,
+			v.Address,
+			opts,
+			&asyncStrategiesPerformanceFeeUpdate,
+			wg,
+		)
 	}
 	wg.Wait()
 
@@ -140,34 +153,30 @@ func HandleUpdateStrategyPerformanceFee(
 	** The initial strategy performanceFee does not trigger a StrategyPerformanceFeeUpdated event.
 	** Therefore we need to add it from the StrategiesList variable
 	**********************************************************************************************/
-	if len(strategiesLists) == 1 {
-		strategiesList := strategiesLists[0]
-
-		for vaultAddress, strategies := range strategiesList {
-			for strategyAddress, strategy := range strategies {
-				deployEvent := utils.TEventBlock{
-					EventType:   `strategyUpdatePerformanceFee`,
-					TxHash:      strategy.Initialization.TxHash,
-					BlockNumber: strategy.Initialization.BlockNumber,
-					TxIndex:     strategy.Initialization.TxIndex,
-					LogIndex:    strategy.Initialization.LogIndex,
-					Value:       strategy.PerformanceFee,
-				}
-
-				if _, ok := performanceFeeForStrategies[vaultAddress]; !ok {
-					performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
-				}
-				if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress]; !ok {
-					performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
-				}
-				if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber]; !ok {
-					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = make([]utils.TEventBlock, 0)
-				}
-				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = append(
-					performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber],
-					deployEvent,
-				)
+	for vaultAddress, strategies := range strategiesMap {
+		for strategyAddress, strategy := range strategies {
+			deployEvent := utils.TEventBlock{
+				EventType:   `strategyUpdatePerformanceFee`,
+				TxHash:      strategy.Initialization.TxHash,
+				BlockNumber: strategy.Initialization.BlockNumber,
+				TxIndex:     strategy.Initialization.TxIndex,
+				LogIndex:    strategy.Initialization.LogIndex,
+				Value:       strategy.PerformanceFee,
 			}
+
+			if _, ok := performanceFeeForStrategies[vaultAddress]; !ok {
+				performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
+			}
+			if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress]; !ok {
+				performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
+			}
+			if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber]; !ok {
+				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = make([]utils.TEventBlock, 0)
+			}
+			performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = append(
+				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber],
+				deployEvent,
+			)
 		}
 	}
 

@@ -225,3 +225,55 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	_priceMap[chainID] = priceMap
 	return priceMap
 }
+
+/*
+*************************************************************************************************
+
+*************************************************************************************************
+ */
+func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
+	newPriceMap := make(map[common.Address]*bigNumber.Int)
+
+	/**********************************************************************************************
+	** The first step is to prepare the multicall, connecting to the multicall instance and
+	** preparing the array of calls to send. All calls for all tokens will be send in a single
+	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	**********************************************************************************************/
+	caller := ethereum.MulticallClientForChainID[chainID]
+	lensAddress, ok := env.LENS_ADDRESSES[chainID]
+	if !ok {
+		return newPriceMap
+	}
+
+	calls := []ethereum.Call{}
+	for _, token := range tokenList {
+		calls = append(calls, getPriceUsdcRecommendedCall(token.String(), lensAddress, token))
+	}
+
+	/**********************************************************************************************
+	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
+	** number. We split the multicall in multiple calls of 3 calls each.
+	** Otherwise, we just send the multicall as is.
+	**********************************************************************************************/
+	maxBatch := math.MaxInt64
+
+	/**********************************************************************************************
+	** Then we can proceed the responses. We loop over the responses and check if the price is
+	** available. If it is, we add it to the map. If it's not, we try to fetch it from an external
+	** API.
+	**********************************************************************************************/
+	response := caller.ExecuteByBatch(calls, maxBatch, big.NewInt(int64(blockNumber)))
+	for _, token := range tokenList {
+		rawTokenPrice := response[token.String()+`getPriceUsdcRecommended`]
+		if len(rawTokenPrice) == 0 {
+			continue
+		}
+		tokenPrice := bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
+		if tokenPrice.IsZero() {
+			continue
+		}
+		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
+	}
+
+	return newPriceMap
+}

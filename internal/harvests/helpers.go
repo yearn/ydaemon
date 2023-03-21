@@ -1,31 +1,45 @@
 package harvests
 
 import (
+	"math/big"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
+type TStrategyReportBase struct {
+	Strategy  common.Address
+	Gain      *big.Int
+	Loss      *big.Int
+	DebtPaid  *big.Int
+	TotalGain *big.Int
+	TotalLoss *big.Int
+	TotalDebt *big.Int
+	DebtAdded *big.Int
+	DebtRatio *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
 func findRelatedTransfers(
-	log *contracts.Yvault043StrategyReportedIterator,
+	log TStrategyReportBase,
 	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
 	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
 ) (*bigNumber.Int, *bigNumber.Int) {
 	currentBlock := utils.TEventBlock{
-		BlockNumber: log.Event.Raw.BlockNumber,
-		TxIndex:     log.Event.Raw.TxIndex,
-		LogIndex:    log.Event.Raw.Index,
+		BlockNumber: log.Raw.BlockNumber,
+		TxIndex:     log.Raw.TxIndex,
+		LogIndex:    log.Raw.Index,
 	}
 
 	transferToStrategist := utils.FindEventBefore(
 		map[uint64][]utils.TEventBlock{
-			currentBlock.BlockNumber: transfersFromVaultsToStrategies[log.Event.Strategy][currentBlock.BlockNumber],
+			currentBlock.BlockNumber: transfersFromVaultsToStrategies[log.Strategy][currentBlock.BlockNumber],
 		},
 		currentBlock,
 	)
@@ -40,12 +54,12 @@ func findRelatedTransfers(
 }
 
 func durationSinceLastReport(
-	log *contracts.Yvault043StrategyReportedIterator,
+	log TStrategyReportBase,
 	allLastReport map[common.Address]map[uint64]uint64,
 ) *bigNumber.Int {
-	previousBlockTimestampUint64 := utils.FindPreviousBlock(allLastReport[log.Event.Strategy], log.Event.Raw.BlockNumber)
+	previousBlockTimestampUint64 := utils.FindPreviousBlock(allLastReport[log.Strategy], log.Raw.BlockNumber)
 	duration := bigNumber.NewInt(0).Sub(
-		bigNumber.NewUint64(allLastReport[log.Event.Strategy][log.Event.Raw.BlockNumber]),
+		bigNumber.NewUint64(allLastReport[log.Strategy][log.Raw.BlockNumber]),
 		bigNumber.NewUint64(previousBlockTimestampUint64),
 	)
 	if previousBlockTimestampUint64 == 0 || duration.IsZero() {
@@ -76,7 +90,9 @@ func durationSinceLastReport(
 func retrieveAllFeesBPS(
 	chainID uint64,
 	vaults map[common.Address]*vaults.TVault,
-	strategiesLists ...map[common.Address]map[common.Address]*strategies.TStrategy,
+	strategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	start uint64,
+	end *uint64,
 ) (
 	managementFeeForVaults map[common.Address]map[uint64][]utils.TEventBlock,
 	performanceFeeForVaults map[common.Address]map[uint64][]utils.TEventBlock,
@@ -86,27 +102,15 @@ func retrieveAllFeesBPS(
 	wg.Add(3)
 	go func() {
 		defer wg.Done()
-		managementFeeForVaults = events.HandleUpdateManagementFee(
-			chainID,
-			vaults,
-			strategiesLists...,
-		)
+		managementFeeForVaults = events.HandleUpdateManagementFee(chainID, vaults, start, end)
 	}()
 	go func() {
 		defer wg.Done()
-		performanceFeeForVaults = events.HandleUpdatePerformanceFee(
-			chainID,
-			vaults,
-			strategiesLists...,
-		)
+		performanceFeeForVaults = events.HandleUpdatePerformanceFee(chainID, vaults, start, end)
 	}()
 	go func() {
 		defer wg.Done()
-		performanceFeeForStrategies = events.HandleUpdateStrategyPerformanceFee(
-			chainID,
-			vaults,
-			strategiesLists...,
-		)
+		performanceFeeForStrategies = events.HandleUpdateStrategyPerformanceFee(chainID, vaults, strategiesMap, start, end)
 	}()
 	wg.Wait()
 	return

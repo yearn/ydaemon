@@ -194,12 +194,11 @@ func retrieveAllTransfersForReferee(
 ** all events for a given vault address and a given upper block limit.
 **********************************************************************************************/
 func FilterReferralBalanceIncreaseEventsForVault(
-	allEvents map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
-	vaultAddress ethcommon.Address,
+	allEvents map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
 	upperBlockLimit uint64,
 ) map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased {
 	events := map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased{}
-	for _, eventsPartnerLevel := range allEvents[vaultAddress] {
+	for _, eventsPartnerLevel := range allEvents {
 		for _, eventDepositorLevel := range eventsPartnerLevel {
 			for _, event := range eventDepositorLevel {
 				if event.BlockNumber < upperBlockLimit {
@@ -225,6 +224,63 @@ func FilterReferralBalanceIncreaseEventsForVault(
 				return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
 			})
 		}
+	}
+	return events
+}
+
+/**********************************************************************************************
+** SortReferralBalanceIncreaseEvents
+**********************************************************************************************/
+func SortReferralBalanceIncreaseEvents(
+	events map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
+) map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased {
+	for _, eventsVaultLevel := range events {
+		for _, eventsPartnerLevel := range eventsVaultLevel {
+			for _, eventDepositorLevel := range eventsPartnerLevel {
+				sort.Slice(eventDepositorLevel, func(i, j int) bool {
+					return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
+				})
+			}
+		}
+	}
+	return events
+}
+
+/**********************************************************************************************
+** SortRefereeTransferEvent
+**********************************************************************************************/
+func SortRefereeTransferEvent(
+	refereeEvents map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent,
+) map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent {
+	for _, eventsPartnerLevel := range refereeEvents {
+		for _, eventDepositorLevel := range eventsPartnerLevel {
+			sort.Slice(eventDepositorLevel, func(i, j int) bool {
+				return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
+			})
+		}
+	}
+	return refereeEvents
+}
+
+/**********************************************************************************************
+** GroupRefereeTransferEventPerVault
+**********************************************************************************************/
+func GroupRefereeTransferEventPerVault(
+	refereeEvents []TRefereeTransferEvent,
+	upperBlockLimit uint64,
+) map[ethcommon.Address][]TRefereeTransferEvent {
+	events := make(map[ethcommon.Address][]TRefereeTransferEvent)
+	for _, event := range refereeEvents {
+		if event.BlockNumber < upperBlockLimit {
+			events[event.Token] = append(events[event.Token], event)
+		}
+	}
+
+	//sort by block number
+	for _, eventDepositorLevel := range events {
+		sort.Slice(eventDepositorLevel, func(i, j int) bool {
+			return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
+		})
 	}
 	return events
 }

@@ -1,4 +1,4 @@
-package vaults
+package events
 
 import (
 	"strconv"
@@ -10,16 +10,19 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
-** Filter all transfer events to retrieve the transfer value and store it in an array of
-** TEventBlock
+** filterStrategyReported will filter all the StrategyReported events and store them in an async
+** map to be decoded later. The key will be the vaultAddress-strategyAddress-blockNumber and
+** the value will be the blockTimestamp.
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
 ** - vaultAddress: the address of the vault we are working on
-** - activation: the block number at which the strategy was activated
+** - opts: the filter options
+** - start: the block number to start the filter from
 ** - asyncMapLastReports: the ptr to the async map to store the blockTimestamp
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
 **
@@ -28,7 +31,7 @@ import (
 func filterStrategyReported(
 	chainID uint64,
 	vaultAddress common.Address,
-	activation uint64,
+	opts *bind.FilterOpts,
 	asyncMapLastReports *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -36,7 +39,7 @@ func filterStrategyReported(
 
 	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterStrategyReported(&bind.FilterOpts{Start: activation}, nil); err == nil {
+	if log, err := currentVault.FilterStrategyReported(opts, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -73,17 +76,12 @@ func filterStrategyReported(
 ** Returns:
 ** - a map of vaultAddress -> strategyAddress -> blockNumber -> TEventBlock
 **********************************************************************************************/
-func RetrieveHarvests(
+func HandleStrategyReported(
 	chainID uint64,
-	vaults map[common.Address]*TVault,
+	vaults map[common.Address]*vaults.TVault,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[common.Address]map[uint64]uint64 {
-	trace := traces.Init(`app.indexer.vaults.harvest_events`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `vaults`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
 	/**********************************************************************************************
 	** Concurrently retrieve all strategyReported from vaults to strategies, waiting for the end
 	** of all goroutines via the wg before continuing.
@@ -92,10 +90,15 @@ func RetrieveHarvests(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
+		opts := &bind.FilterOpts{Start: start, End: end}
+		if start == 0 {
+			opts = &bind.FilterOpts{Start: v.Activation, End: end}
+		}
+
 		go filterStrategyReported(
 			chainID,
 			v.Address,
-			v.Activation,
+			opts,
 			&asyncMapLastReports,
 			wg,
 		)

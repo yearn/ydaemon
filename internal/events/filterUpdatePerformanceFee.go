@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -32,7 +31,7 @@ import (
 func filterUpdatePerformanceFee(
 	chainID uint64,
 	vaultAddress common.Address,
-	vaultActivation uint64,
+	opts *bind.FilterOpts,
 	asyncFeeMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
@@ -40,7 +39,7 @@ func filterUpdatePerformanceFee(
 	client := ethereum.GetRPC(chainID)
 
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterUpdatePerformanceFee(&bind.FilterOpts{Start: vaultActivation}); err == nil {
+	if log, err := currentVault.FilterUpdatePerformanceFee(opts); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -85,7 +84,8 @@ func filterUpdatePerformanceFee(
 func HandleUpdatePerformanceFee(
 	chainID uint64,
 	vaults map[common.Address]*vaults.TVault,
-	strategiesLists ...map[common.Address]map[common.Address]*strategies.TStrategy,
+	start uint64,
+	end *uint64,
 ) map[common.Address]map[uint64][]utils.TEventBlock {
 	timeBefore := time.Now()
 
@@ -94,7 +94,11 @@ func HandleUpdatePerformanceFee(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go filterUpdatePerformanceFee(chainID, v.Address, v.Activation, &asyncPerformanceFeeUpdate, wg)
+		opts := &bind.FilterOpts{Start: start, End: end}
+		if start == 0 {
+			opts = &bind.FilterOpts{Start: v.Activation, End: end}
+		}
+		go filterUpdatePerformanceFee(chainID, v.Address, opts, &asyncPerformanceFeeUpdate, wg)
 	}
 	wg.Wait()
 

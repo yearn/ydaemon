@@ -42,5 +42,4 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 
 	sort.SortBy(orderBy, orderDirection, data)
 	c.JSON(http.StatusOK, data)
-
 }

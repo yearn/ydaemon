@@ -6,13 +6,12 @@ import (
 	"strconv"
 	"sync"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
 )
 
@@ -39,24 +38,22 @@ func fetchBasicInformations(
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, strat := range strategyAddedList {
-		vaultAddress := common.FromAddress(strat.VaultAddress)
-		stratAddress := common.FromAddress(strat.StrategyAddress)
-		calls = append(calls, getCreditAvailable(strat.StrategyAddress.String(), vaultAddress, stratAddress, strat.VaultVersion))
-		calls = append(calls, getDebtOutstanding(strat.StrategyAddress.String(), vaultAddress, stratAddress, strat.VaultVersion))
-		calls = append(calls, getExpectedReturn(strat.StrategyAddress.String(), vaultAddress, stratAddress, strat.VaultVersion))
-		calls = append(calls, getStrategies(strat.StrategyAddress.String(), vaultAddress, stratAddress, strat.VaultVersion))
-		calls = append(calls, getStategyEstimatedTotalAsset(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getStategyIsActive(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getStategyKeepCRV(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getStategyDelegatedAssets(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getName(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getKeeper(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getStrategist(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getRewards(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getHealthCheck(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getAPIVersion(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getDoHealthCheck(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
-		calls = append(calls, getEmergencyExit(strat.StrategyAddress.String(), stratAddress, strat.VaultVersion))
+		calls = append(calls, getCreditAvailable(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getDebtOutstanding(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getExpectedReturn(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStrategies(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStategyEstimatedTotalAsset(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStategyIsActive(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStategyKeepCRV(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStategyDelegatedAssets(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getName(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getKeeper(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getStrategist(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getRewards(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getHealthCheck(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getAPIVersion(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getDoHealthCheck(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, getEmergencyExit(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
 	}
 
 	/**********************************************************************************************
@@ -170,7 +167,7 @@ func fetchBasicInformations(
 			newStrategy.TotalLoss = bigNumber.SetInt(strategies[8].(*big.Int))
 		}
 
-		if strategyFromMeta, ok := meta.GetMetaStrategy(chainID, common.FromAddress(stratAddress)); ok {
+		if strategyFromMeta, ok := meta.GetMetaStrategy(chainID, stratAddress); ok {
 			newStrategy.DisplayName = strategyFromMeta.Name
 			newStrategy.Description = strategyFromMeta.Description
 			newStrategy.Protocols = strategyFromMeta.Protocols
@@ -197,8 +194,8 @@ func fetchBasicInformations(
 func findAllStrategies(
 	chainID uint64,
 	strategyAddedList []TStrategyAdded,
-) map[ethcommon.Address]*TStrategy {
-	newMap := make(map[ethcommon.Address]*TStrategy)
+) map[common.Address]*TStrategy {
+	newMap := make(map[common.Address]*TStrategy)
 	newStrategyList := fetchBasicInformations(chainID, strategyAddedList)
 	for _, strat := range newStrategyList {
 		newMap[strat.Address] = strat
@@ -221,7 +218,7 @@ func findAllStrategies(
 func RetrieveAllStrategies(
 	chainID uint64,
 	strategyAddedList []TStrategyAdded,
-) map[ethcommon.Address]*TStrategy {
+) map[common.Address]*TStrategy {
 	trace := traces.Init(`app.indexer.strategies.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -233,7 +230,7 @@ func RetrieveAllStrategies(
 	** First, try to retrieve the list of strategies from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	strategyMap := make(map[ethcommon.Address]*TStrategy)
+	strategyMap := make(map[common.Address]*TStrategy)
 	store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
 
 	/**********************************************************************************************

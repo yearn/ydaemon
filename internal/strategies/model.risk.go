@@ -1,9 +1,9 @@
 package strategies
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // TStrategyGroupCritieria is a helper type for parsing the risk framework json

@@ -1,12 +1,12 @@
 package partners
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -43,18 +43,18 @@ func (c *TPartners) BalanceOf() *TPartners {
 
 func computeDefaultBalance(
 	chainID uint64,
-	vaultAddress common.Address,
-	userAddress common.Address,
+	vaultAddress common.MixedcaseAddress,
+	userAddress common.MixedcaseAddress,
 ) (*bigNumber.Int, *bigNumber.Float, error) {
-	yearnVault, _ := contracts.NewYearnVault(vaultAddress.Address, ethereum.GetRPC(chainID))
-	balance, err := yearnVault.BalanceOf(nil, userAddress.Address)
+	yearnVault, _ := contracts.NewYearnVault(vaultAddress.Address(), ethereum.GetRPC(chainID))
+	balance, err := yearnVault.BalanceOf(nil, userAddress.Address())
 	if err != nil {
 		logs.Error(err, `Error getting balance`, err)
 		return nil, nil, err
 	}
 
 	decimals := 18
-	if token, ok := tokens.FindToken(chainID, vaultAddress); ok {
+	if token, ok := tokens.FindToken(chainID, vaultAddress.Address()); ok {
 		decimals = int(token.Decimals)
 	}
 

@@ -3,49 +3,49 @@ package tokens
 import (
 	"net/http"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TAllTokens struct {
-	Address          common.Address      `json:"address"`
-	Name             string              `json:"name"`
-	Symbol           string              `json:"symbol"`
-	Decimals         uint64              `json:"decimals"`
-	IsVault          bool                `json:"isVault"`
-	DisplayName      string              `json:"display_name,omitempty"`
-	DisplaySymbol    string              `json:"display_symbol,omitempty"`
-	Description      string              `json:"description,omitempty"`
-	Website          string              `json:"website,omitempty"`
-	Categories       []string            `json:"categories,omitempty"`
-	UnderlyingTokens []string            `json:"underlyingTokens,omitempty"`
-	Localization     *meta.TLocalization `json:"localization,omitempty"`
+	Address          common.MixedcaseAddress `json:"address"`
+	Name             string                  `json:"name"`
+	Symbol           string                  `json:"symbol"`
+	Decimals         uint64                  `json:"decimals"`
+	IsVault          bool                    `json:"isVault"`
+	DisplayName      string                  `json:"display_name,omitempty"`
+	DisplaySymbol    string                  `json:"display_symbol,omitempty"`
+	Description      string                  `json:"description,omitempty"`
+	Website          string                  `json:"website,omitempty"`
+	Categories       []string                `json:"categories,omitempty"`
+	UnderlyingTokens []string                `json:"underlyingTokens,omitempty"`
+	Localization     *meta.TLocalization     `json:"localization,omitempty"`
 }
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
 func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	allTokens := make(map[uint64]map[common.Address]TAllTokens)
+	allTokens := make(map[uint64]map[common.MixedcaseAddress]TAllTokens)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		tokenList := tokens.ListTokens(chainID)
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {
-				allTokens[chainID] = make(map[common.Address]TAllTokens)
+				allTokens[chainID] = make(map[common.MixedcaseAddress]TAllTokens)
 			}
-			metaToken, ok := meta.GetMetaToken(chainID, common.FromAddress(token.Address))
+			metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 			tokenDetails := TAllTokens{
-				Address:  common.FromAddress(token.Address),
+				Address:  common.NewMixedcaseAddress(token.Address),
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Decimals: token.Decimals,
 				IsVault:  token.IsVault(),
 			}
 			for _, addr := range token.UnderlyingTokensAddresses {
-				tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, common.FromAddress(addr).Hex())
+				tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())
 			}
 			if ok {
 				tokenDetails.DisplaySymbol = metaToken.Symbol
@@ -64,7 +64,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 					}
 				}
 			}
-			allTokens[chainID][common.FromAddress(token.Address)] = tokenDetails
+			allTokens[chainID][common.NewMixedcaseAddress(token.Address)] = tokenDetails
 		}
 	}
 	c.JSON(http.StatusOK, allTokens)
@@ -82,16 +82,16 @@ func (y Controller) GetTokens(c *gin.Context) {
 	allTokens := make(map[string]TAllTokens)
 	tokenList := tokens.ListTokens(chainID)
 	for _, token := range tokenList {
-		metaToken, ok := meta.GetMetaToken(chainID, common.FromAddress(token.Address))
+		metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 		tokenDetails := TAllTokens{
-			Address:  common.FromAddress(token.Address),
+			Address:  common.NewMixedcaseAddress(token.Address),
 			Name:     token.Name,
 			Symbol:   token.Symbol,
 			Decimals: token.Decimals,
 			IsVault:  token.IsVault(),
 		}
 		for _, addr := range token.UnderlyingTokensAddresses {
-			tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, common.FromAddress(addr).Hex())
+			tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())
 		}
 		if ok {
 			tokenDetails.DisplaySymbol = metaToken.Symbol
@@ -110,7 +110,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 				}
 			}
 		}
-		allTokens[common.FromAddress(token.Address).Hex()] = tokenDetails
+		allTokens[token.Address.Hex()] = tokenDetails
 	}
 
 	c.JSON(http.StatusOK, allTokens)

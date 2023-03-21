@@ -4,10 +4,10 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/accounts/abi"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 /**************************************************************************************************
@@ -19,9 +19,9 @@ var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
 var YearnStrategyABI, _ = contracts.StrategyBaseMetaData.GetAbi()
 
 func getCreditAvailable(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := YearnVaultABI.Pack("creditAvailable0", strategyAddress.Address)
+	parsedData, _ := YearnVaultABI.Pack("creditAvailable0", strategyAddress)
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `creditAvailable0`,
 		CallData: parsedData,
@@ -31,9 +31,9 @@ func getCreditAvailable(name string, contractAddress common.Address, strategyAdd
 }
 
 func getDebtOutstanding(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := YearnVaultABI.Pack("debtOutstanding0", strategyAddress.Address)
+	parsedData, _ := YearnVaultABI.Pack("debtOutstanding0", strategyAddress)
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `debtOutstanding0`,
 		CallData: parsedData,
@@ -56,11 +56,11 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 		abiToUse = YearnVaultABI
 	}
 
-	parsedData, _ := abiToUse.Pack("strategies", strategyAddress.Address)
+	parsedData, _ := abiToUse.Pack("strategies", strategyAddress)
 
 	return ethereum.Call{
 		Name:     name,
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      abiToUse,
 		Method:   `strategies`,
 		CallData: parsedData,
@@ -69,9 +69,9 @@ func getStrategies(name string, contractAddress common.Address, strategyAddress 
 }
 
 func getExpectedReturn(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
-	parsedData, _ := YearnVaultABI.Pack("expectedReturn0", strategyAddress.Address)
+	parsedData, _ := YearnVaultABI.Pack("expectedReturn0", strategyAddress)
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `expectedReturn0`,
 		CallData: parsedData,
@@ -83,7 +83,7 @@ func getExpectedReturn(name string, contractAddress common.Address, strategyAddr
 func getStategyEstimatedTotalAsset(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("estimatedTotalAssets")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `estimatedTotalAssets`,
 		CallData: parsedData,
@@ -95,7 +95,7 @@ func getStategyEstimatedTotalAsset(name string, contractAddress common.Address, 
 func getStategyIsActive(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("isActive")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `isActive`,
 		CallData: parsedData,
@@ -107,7 +107,7 @@ func getStategyIsActive(name string, contractAddress common.Address, version str
 func getStategyKeepCRV(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("keepCRV")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `keepCRV`,
 		CallData: parsedData,
@@ -119,7 +119,7 @@ func getStategyKeepCRV(name string, contractAddress common.Address, version stri
 func getStategyDelegatedAssets(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("delegatedAssets")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `delegatedAssets`,
 		CallData: parsedData,
@@ -131,7 +131,7 @@ func getStategyDelegatedAssets(name string, contractAddress common.Address, vers
 func getName(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("name")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `name`,
 		CallData: parsedData,
@@ -143,7 +143,7 @@ func getName(name string, contractAddress common.Address, version string) ethere
 func getKeeper(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("keeper")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `keeper`,
 		CallData: parsedData,
@@ -155,7 +155,7 @@ func getKeeper(name string, contractAddress common.Address, version string) ethe
 func getStrategist(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("strategist")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `strategist`,
 		CallData: parsedData,
@@ -167,7 +167,7 @@ func getStrategist(name string, contractAddress common.Address, version string) 
 func getRewards(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("rewards")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `rewards`,
 		CallData: parsedData,
@@ -179,7 +179,7 @@ func getRewards(name string, contractAddress common.Address, version string) eth
 func getHealthCheck(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("healthCheck")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `healthCheck`,
 		CallData: parsedData,
@@ -191,7 +191,7 @@ func getHealthCheck(name string, contractAddress common.Address, version string)
 func getAPIVersion(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("apiVersion")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `apiVersion`,
 		CallData: parsedData,
@@ -203,7 +203,7 @@ func getAPIVersion(name string, contractAddress common.Address, version string) 
 func getDoHealthCheck(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("doHealthCheck")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `doHealthCheck`,
 		CallData: parsedData,
@@ -215,7 +215,7 @@ func getDoHealthCheck(name string, contractAddress common.Address, version strin
 func getEmergencyExit(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, _ := YearnStrategyABI.Pack("emergencyExit")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnStrategyABI,
 		Method:   `emergencyExit`,
 		CallData: parsedData,

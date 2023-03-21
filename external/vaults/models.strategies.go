@@ -3,9 +3,9 @@ package vaults
 import (
 	"strconv"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -13,41 +13,41 @@ import (
 
 // TStrategyDetails contains the details about a strategy.
 type TStrategyDetails struct {
-	Keeper                  common.Address `json:"keeper"`
-	Strategist              common.Address `json:"strategist"`
-	Rewards                 common.Address `json:"rewards"`
-	HealthCheck             common.Address `json:"healthCheck"`
-	TotalDebt               *bigNumber.Int `json:"totalDebt"`
-	TotalLoss               *bigNumber.Int `json:"totalLoss"`
-	TotalGain               *bigNumber.Int `json:"totalGain"`
-	RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
-	CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
-	DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
-	ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
-	DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
-	DelegatedValue          string         `json:"delegatedValue"`
-	Version                 string         `json:"version"`
-	Protocols               []string       `json:"protocols"`
-	APR                     float64        `json:"apr"`
-	PerformanceFee          uint64         `json:"performanceFee"`
-	LastReport              uint64         `json:"lastReport"`
-	Activation              uint64         `json:"activation"`
-	KeepCRV                 uint64         `json:"keepCRV"`
-	DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
-	DebtLimit               uint64         `json:"debtLimit"`
-	WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
-	DoHealthCheck           bool           `json:"doHealthCheck"`
-	InQueue                 bool           `json:"inQueue"`
-	EmergencyExit           bool           `json:"emergencyExit"`
-	IsActive                bool           `json:"isActive"`
+	Keeper                  common.MixedcaseAddress `json:"keeper"`
+	Strategist              common.MixedcaseAddress `json:"strategist"`
+	Rewards                 common.MixedcaseAddress `json:"rewards"`
+	HealthCheck             common.MixedcaseAddress `json:"healthCheck"`
+	TotalDebt               *bigNumber.Int          `json:"totalDebt"`
+	TotalLoss               *bigNumber.Int          `json:"totalLoss"`
+	TotalGain               *bigNumber.Int          `json:"totalGain"`
+	RateLimit               *bigNumber.Int          `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest       *bigNumber.Int          `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest       *bigNumber.Int          `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	EstimatedTotalAssets    *bigNumber.Int          `json:"estimatedTotalAssets"`
+	CreditAvailable         *bigNumber.Int          `json:"creditAvailable"`
+	DebtOutstanding         *bigNumber.Int          `json:"debtOutstanding"`
+	ExpectedReturn          *bigNumber.Int          `json:"expectedReturn"`
+	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
+	DelegatedValue          string                  `json:"delegatedValue"`
+	Version                 string                  `json:"version"`
+	Protocols               []string                `json:"protocols"`
+	APR                     float64                 `json:"apr"`
+	PerformanceFee          uint64                  `json:"performanceFee"`
+	LastReport              uint64                  `json:"lastReport"`
+	Activation              uint64                  `json:"activation"`
+	KeepCRV                 uint64                  `json:"keepCRV"`
+	DebtRatio               uint64                  `json:"debtRatio,omitempty"` // Only > 0.2.2
+	DebtLimit               uint64                  `json:"debtLimit"`
+	WithdrawalQueuePosition int64                   `json:"withdrawalQueuePosition"`
+	DoHealthCheck           bool                    `json:"doHealthCheck"`
+	InQueue                 bool                    `json:"inQueue"`
+	EmergencyExit           bool                    `json:"emergencyExit"`
+	IsActive                bool                    `json:"isActive"`
 }
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     common.Address              `json:"address"`
+	Address     common.MixedcaseAddress     `json:"address"`
 	Name        string                      `json:"name"`
 	DisplayName string                      `json:"displayName"`
 	Description string                      `json:"description"`
@@ -66,8 +66,8 @@ func NewStrategy() *TStrategy {
 }
 func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 	delegatedValue := `0`
-	if vault, ok := vaults.FindVault(strategy.ChainID, common.FromAddress(strategy.VaultAddress)); ok {
-		if tokenPrice, ok := prices.FindPrice(strategy.ChainID, common.FromAddress(vault.Token.Address)); ok {
+	if vault, ok := vaults.FindVault(strategy.ChainID, strategy.VaultAddress); ok {
+		if tokenPrice, ok := prices.FindPrice(strategy.ChainID, vault.Token.Address); ok {
 			// tokenPrice
 			_, humanizedTokenPrice := helpers.FormatAmount(tokenPrice.String(), 6)
 			delegatedValue = strconv.FormatFloat(
@@ -80,15 +80,15 @@ func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 		}
 	}
 
-	v.Address = common.FromAddress(strategy.Address)
+	v.Address = common.NewMixedcaseAddress(strategy.Address)
 	v.Name = strategy.Name
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TStrategyDetails{
-		Keeper:               common.FromAddress(strategy.KeeperAddress),      //keeper
-		Strategist:           common.FromAddress(strategy.StrategistAddress),  //strategist
-		Rewards:              common.FromAddress(strategy.RewardsAddress),     //rewards
-		HealthCheck:          common.FromAddress(strategy.HealthCheckAddress), //healthCheck
+		Keeper:               common.NewMixedcaseAddress(strategy.KeeperAddress),      //keeper
+		Strategist:           common.NewMixedcaseAddress(strategy.StrategistAddress),  //strategist
+		Rewards:              common.NewMixedcaseAddress(strategy.RewardsAddress),     //rewards
+		HealthCheck:          common.NewMixedcaseAddress(strategy.HealthCheckAddress), //healthCheck
 		TotalDebt:            strategy.TotalDebt,
 		TotalLoss:            strategy.TotalLoss,
 		TotalGain:            strategy.TotalGain,

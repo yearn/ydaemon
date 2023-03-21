@@ -3,11 +3,11 @@ package vaults
 import (
 	"net/http"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -30,15 +30,13 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		vaultsForChain := vaults.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
-			vaultAddress := common.FromAddress(currentVault.Address)
-			if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+			if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
 				continue
 			}
 			allVaults = append(allVaults, currentVault)
 		}
 	}
 	for _, currentVault := range allVaults {
-		vaultAddress := common.FromAddress(currentVault.Address)
 		newVault := NewVault().AssignTVault(currentVault)
 		if migrable == `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
 			continue
@@ -48,7 +46,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			continue
 		}
 
-		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, vaultAddress)
+		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, currentVault.Address)
 		newVault.Strategies = []*TStrategy{}
 		for _, strategy := range vaultStrategies {
 			var externalStrategy *TStrategy
@@ -62,7 +60,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 			} else {
 				externalStrategy = &TStrategy{
-					Address:     common.FromAddress(strategy.Address),
+					Address:     common.NewMixedcaseAddress(strategy.Address),
 					Name:        strategy.Name,
 					DisplayName: strategy.DisplayName,
 					Description: strategy.Description,

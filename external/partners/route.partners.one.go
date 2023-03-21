@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // GetPartner will, for a given address on given chainID, return the meta informations for the partner.
@@ -19,7 +19,7 @@ func (y Controller) GetPartner(c *gin.Context) {
 	partnerAddressOrName := c.Param("addressOrName")
 	partner, ok := Store.PartnersByName[chainID][partnerAddressOrName]
 	if !ok {
-		partner, ok = Store.PartnersByAddress[chainID][common.HexToAddress(partnerAddressOrName)]
+		partner, ok = Store.PartnersByAddress[chainID][addresses.ToMixedcase(partnerAddressOrName)]
 		if !ok {
 			c.String(http.StatusBadRequest, "no data available")
 			return

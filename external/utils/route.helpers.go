@@ -12,25 +12,25 @@ import (
 	"github.com/yearn/ydaemon/internal"
 )
 
-//GetSupportedChains returns a list of supported chains by the API
+// GetSupportedChains returns a list of supported chains by the API
 func GetSupportedChains(c *gin.Context) {
 	c.JSON(http.StatusOK, env.SUPPORTED_CHAIN_IDS)
 }
 
-//GetHarvests returns a list of harvests
+// GetHarvests returns a list of harvests
 func GetHarvests(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
+	vaultAddress, ok := helpers.AssertAddress(c.Param("address"), chainID)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 
-	allHarvest := internal.AllHarvests[address.Address]
+	allHarvest := internal.AllHarvests[vaultAddress]
 
 	// sumOfAllGains := bigNumber.NewFloat(0)
 	// sumOfAllFees := bigNumber.NewFloat(0)
@@ -47,7 +47,7 @@ func GetHarvests(c *gin.Context) {
 	c.JSON(http.StatusOK, allHarvest)
 }
 
-//GetGraph returns a list of blacklisted vaults by the API
+// GetGraph returns a list of blacklisted vaults by the API
 func GetGraph(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

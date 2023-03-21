@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/bribes"
 	"github.com/yearn/ydaemon/internal/fees"
@@ -18,7 +18,7 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var AllHarvests = make(map[ethcommon.Address][]vaults.THarvest)
+var AllHarvests = make(map[common.Address][]vaults.THarvest)
 
 var STRATLIST = []strategies.TStrategy{}
 
@@ -36,7 +36,7 @@ func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duratio
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[ethcommon.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
@@ -115,13 +115,13 @@ func Initialize(chainID uint64) {
 	**********************************************************************************************/
 	vaultsList := registries.RetrieveAllVaults(chainID, 0)
 
-	strategiesMap := map[ethcommon.Address]map[ethcommon.Address]strategies.TStrategyAdded{}
-	transfersFromVaultsToTreasury := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	transfersFromVaultsToStrategies := map[ethcommon.Address]map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	managementFees := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	performanceFees := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	strategiesPerformanceFees := map[ethcommon.Address]map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	allHarvests := map[ethcommon.Address]map[ethcommon.Address]map[uint64]uint64{}
+	strategiesMap := map[common.Address]map[common.Address]strategies.TStrategyAdded{}
+	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]utils.TEventBlock{}
+	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
+	managementFees := map[common.Address]map[uint64][]utils.TEventBlock{}
+	performanceFees := map[common.Address]map[uint64][]utils.TEventBlock{}
+	strategiesPerformanceFees := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
+	allHarvests := map[common.Address]map[common.Address]map[uint64]uint64{}
 
 	/**********************************************************************************************
 	** Retrieve all tokens used by Yearn, along with the underlying tokens. The tokens are only

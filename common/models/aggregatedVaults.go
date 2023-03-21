@@ -1,8 +1,8 @@
 package models
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // TLegacyAPIAPY contains all the information useful about the APY, APR, fees and breakdown.

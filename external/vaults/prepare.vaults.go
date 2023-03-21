@@ -3,9 +3,9 @@ package vaults
 import (
 	"math"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 )
 
@@ -13,9 +13,9 @@ import (
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
-func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
+func buildTokenPrice(chainID uint64, tokenAddress common.MixedcaseAddress) (*bigNumber.Float, float64) {
 	fPrice := new(bigNumber.Float)
-	price, ok := prices.FindPrice(chainID, tokenAddress)
+	price, ok := prices.FindPrice(chainID, tokenAddress.Address())
 	if ok {
 		fPrice.SetInt(price)
 		humanizedPrice := new(bigNumber.Float).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))

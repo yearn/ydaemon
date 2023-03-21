@@ -10,7 +10,7 @@ import (
 	"strings"
 	"sync"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -18,7 +18,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -282,7 +281,7 @@ func findAllPrices(
 ** Returns:
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
-func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
+func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	trace := traces.Init(`app.indexer.prices`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -294,7 +293,7 @@ func RetrieveAllPrices(chainID uint64) map[ethcommon.Address]*bigNumber.Int {
 	** First, try to retrieve the list of prices from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	priceMap := make(map[ethcommon.Address]*bigNumber.Int)
+	priceMap := make(map[common.Address]*bigNumber.Int)
 	store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
 
 	/**********************************************************************************************

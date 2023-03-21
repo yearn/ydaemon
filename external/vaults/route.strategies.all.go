@@ -7,7 +7,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -26,11 +25,10 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 	data := []TStrategy{}
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
-		vaultAddress := common.FromAddress(currentVault.Address)
-		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
 			continue
 		}
-		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+		vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)
 		for _, strategy := range vaultStrategies {
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {

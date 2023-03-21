@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 /**************************************************************************************************
@@ -28,7 +27,7 @@ func filterRewardAdded(
 ) {
 	client := ethereum.GetRPC(chainID)
 	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
-	currentVault, _ := contracts.NewYBribeV3(contractAddress.ToAddress(), client)
+	currentVault, _ := contracts.NewYBribeV3(contractAddress, client)
 
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
 		for log.Next() {
@@ -37,9 +36,9 @@ func filterRewardAdded(
 			}
 			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
 				Amount:      bigNumber.SetInt(log.Event.Amount),
-				Briber:      common.FromAddress(log.Event.Briber),
-				Gauge:       common.FromAddress(log.Event.Gauge),
-				RewardToken: common.FromAddress(log.Event.RewardToken),
+				Briber:      log.Event.Briber,
+				Gauge:       log.Event.Gauge,
+				RewardToken: log.Event.RewardToken,
 				Timestamp:   ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber),
 				TxHash:      log.Event.Raw.TxHash,
 				BlockNumber: log.Event.Raw.BlockNumber,

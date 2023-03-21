@@ -6,12 +6,11 @@ import (
 	"strconv"
 	"time"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/tokensList"
@@ -31,7 +30,7 @@ func GetYearnTokenList(c *gin.Context) {
 	}
 
 	/**********************************************************************************************
-	** The AssertAddress function takes a string as input and returns a common.Address value (which
+	** The AssertAddress function takes a string as input and returns a mixedcaseAddress value (which
 	** is a type defined in the Ethereum Go library) and a boolean indicating whether the input is
 	** a valid Ethereum address. If the input is not a valid Ethereum address, the function returns
 	** false.
@@ -62,7 +61,11 @@ func GetYearnTokenList(c *gin.Context) {
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, token := range tokensFromListMap {
-		calls = append(calls, getBalance(token.Address, ethcommon.HexToAddress(token.Address), userAddress))
+		calls = append(calls, getBalance(
+			token.Address,
+			addresses.ToMixedcase(token.Address),
+			addresses.ToMixedcase(userAddress),
+		))
 	}
 
 	/**********************************************************************************************
@@ -88,7 +91,10 @@ func GetYearnTokenList(c *gin.Context) {
 			continue
 		}
 		token.Balance = tokenBalance
-		if tokenPrice, ok := prices.FindPrice(chainID, common.HexToAddress(token.Address)); ok {
+		if tokenPrice, ok := prices.FindPrice(
+			chainID,
+			addresses.ToAddress(token.Address),
+		); ok {
 			token.Price = tokenPrice
 			tokenBalanceMap[token.Address] = token
 		}

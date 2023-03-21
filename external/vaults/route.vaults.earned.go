@@ -7,12 +7,12 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/models"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
@@ -74,7 +74,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	totalRealizedGainsUSD := 0.0
 	totalUnrealizedGainsUSD := 0.0
 	for _, currentVault := range listOfVaults {
-		vaultAddress := common.HexToAddress(currentVault.Vault.Id)
+		vaultAddress := addresses.ToMixedcase(currentVault.Vault.Id)
 		pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
 		decimals := bigNumber.NewInt(currentVault.Vault.ShareToken.Decimals)
 		decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
@@ -225,12 +225,12 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 			unrealizedGains.Add(unrealizedGains, gain)
 		}
 
-		token, _ := tokens.FindUnderlyingForVault(chainID, vaultAddress)
-		tokenPrice, _ := prices.FindPrice(chainID, vaultAddress)
+		token, _ := tokens.FindUnderlyingForVault(chainID, addresses.ToAddress(vaultAddress))
+		tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
 		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)
 		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice)
 
-		earnedMap[vaultAddress.Hex()] = &TEarned{
+		earnedMap[vaultAddress.Address().Hex()] = &TEarned{
 			RealizedGains:      realizedGains.String(),
 			RealizedGainsUSD:   realizedGainsUSD,
 			UnrealizedGains:    unrealizedGains.String(),
@@ -281,7 +281,7 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	totalUnrealizedGainsUSD := 0.0
 	listOfVaults := response.AccountVaultPositions
 	for _, currentVault := range listOfVaults {
-		vaultAddress := common.HexToAddress(currentVault.Vault.Id)
+		vaultAddress := addresses.ToMixedcase(currentVault.Vault.Id)
 		pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
 		decimals := bigNumber.NewInt(currentVault.Vault.ShareToken.Decimals)
 		decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
@@ -432,20 +432,19 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 			unrealizedGains.Add(unrealizedGains, gain)
 		}
 
-		token, _ := tokens.FindUnderlyingForVault(chainID, vaultAddress)
-		tokenPrice, _ := prices.FindPrice(chainID, vaultAddress)
-		if token == nil {
-			token = &tokens.TERC20Token{
-				Decimals: 18,
-			}
+		tokenDecimal := 18
+		token, _ := tokens.FindUnderlyingForVault(chainID, addresses.ToAddress(vaultAddress))
+		tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
+		if token != nil {
+			tokenDecimal = int(token.Decimals)
 		}
 		if tokenPrice == nil {
 			tokenPrice = bigNumber.NewInt(0)
 		}
-		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)
-		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice)
+		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, tokenDecimal, tokenPrice)
+		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, tokenDecimal, tokenPrice)
 
-		earnedMap[vaultAddress.Hex()] = &TEarned{
+		earnedMap[vaultAddress.Address().Hex()] = &TEarned{
 			RealizedGains:      realizedGains.String(),
 			RealizedGainsUSD:   realizedGainsUSD,
 			UnrealizedGains:    unrealizedGains.String(),

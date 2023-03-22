@@ -76,12 +76,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		data = append(data, *newVault)
 	}
 
-	// Preparing the sort. This specifics steps are needed to avoid a panic
-	var sortedData = make([]interface{}, len(data))
-	for i, d := range data {
-		sortedData[i] = d
-	}
-	sort.SortBy(sortedData, orderBy, orderDirection) //Sort by details.order by default
-
-	c.JSON(http.StatusOK, sortedData)
+	//Sort by details.order by default
+	sort.SortBy(orderBy, orderDirection, data)
+	c.JSON(http.StatusOK, data)
 }

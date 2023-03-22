@@ -37,6 +37,9 @@ func (y Controller) GetPartners(c *gin.Context) {
 		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
-
-	c.JSON(http.StatusOK, partners)
+	allPartnersAsHex := make(map[string]*TPartners)
+	for address, partner := range partners {
+		allPartnersAsHex[address.Address().Hex()] = partner
+	}
+	c.JSON(http.StatusOK, allPartnersAsHex)
 }

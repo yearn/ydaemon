@@ -13,7 +13,7 @@ import (
 
 // GetAllStrategies will, for a given chainID, return a list of all strategies
 func (y Controller) GetAllStrategies(c *gin.Context) {
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `details.order`)
+	orderBy := helpers.SafeString(c.Query(`orderBy`), `risk.riskScore`)
 	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
 	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
@@ -40,13 +40,7 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 		}
 	}
 
-	// Preparing the sort. This specifics steps are needed to avoid a panic
-	var sortedData = make([]interface{}, len(data))
-	for i, d := range data {
-		sortedData[i] = d
-	}
-	sort.SortBy(sortedData, orderBy, orderDirection) //Sort by details.order by default
-
-	c.JSON(http.StatusOK, sortedData)
+	sort.SortBy(orderBy, orderDirection, data)
+	c.JSON(http.StatusOK, data)
 
 }

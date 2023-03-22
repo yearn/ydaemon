@@ -11,8 +11,8 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-// TStrategyDetails contains the details about a strategy.
-type TStrategyDetails struct {
+// TExternalStrategyDetails contains the details about a strategy.
+type TExternalStrategyDetails struct {
 	Keeper                  common.MixedcaseAddress `json:"keeper"`
 	Strategist              common.MixedcaseAddress `json:"strategist"`
 	Rewards                 common.MixedcaseAddress `json:"rewards"`
@@ -51,7 +51,7 @@ type TStrategy struct {
 	Name        string                      `json:"name"`
 	DisplayName string                      `json:"displayName"`
 	Description string                      `json:"description"`
-	Details     *TStrategyDetails           `json:"details,omitempty"`
+	Details     *TExternalStrategyDetails   `json:"details,omitempty"`
 	Risk        *TExternalStrategyRiskScore `json:"risk,omitempty"`
 }
 
@@ -84,7 +84,7 @@ func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
 	v.Name = strategy.Name
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
-	v.Details = &TStrategyDetails{
+	v.Details = &TExternalStrategyDetails{
 		Keeper:               common.NewMixedcaseAddress(strategy.KeeperAddress),      //keeper
 		Strategist:           common.NewMixedcaseAddress(strategy.StrategistAddress),  //strategist
 		Rewards:              common.NewMixedcaseAddress(strategy.RewardsAddress),     //rewards

@@ -75,11 +75,6 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	}
 
 	// Sorting the data by timestamp
-	var sortedData = make([]interface{}, len(harvests))
-	for i, d := range harvests {
-		sortedData[i] = d
-	}
-	sort.SortBy(sortedData, orderBy, orderDirection)
-
-	c.JSON(http.StatusOK, sortedData)
+	sort.SortBy(orderBy, orderDirection, harvests)
+	c.JSON(http.StatusOK, harvests)
 }

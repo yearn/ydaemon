@@ -1,8 +1,6 @@
 package bribes
 
-import (
-	"github.com/yearn/ydaemon/common/types/common"
-)
+import "github.com/ethereum/go-ethereum/common"
 
 // YBRIBE_V3_ADDRESSES contains the address of the yBribe contract
 var YBRIBE_V3_ADDRESSES = map[uint64]common.Address{

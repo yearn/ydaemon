@@ -10,7 +10,6 @@ import (
 
 	"github.com/dgraph-io/badger/v3"
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
@@ -183,7 +182,7 @@ func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 					for _, v := range k {
 						addressString += string(v)
 					}
-					key = ethcommon.HexToAddress(addressString)
+					key = common.HexToAddress(addressString)
 				} else if elemKey.Kind() == reflect.Uint64 {
 					var asString string
 					for _, v := range k {

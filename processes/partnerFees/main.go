@@ -10,12 +10,11 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/harvests"
 	"github.com/yearn/ydaemon/internal/indexer"
 	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
@@ -26,9 +25,9 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var AllHarvests = make(map[ethcommon.Address][]vaults.THarvest)
+var AllHarvests = make(map[common.Address][]vaults.THarvest)
 var STRATLIST = []strategies.TStrategy{}
-var LEDGER = common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`).ToAddress()
+var LEDGER = common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`)
 
 func loadVaultAndStrategies(chainID uint64) {
 	vaultsMap := registries.RetrieveAllVaults(chainID, 0)
@@ -42,8 +41,8 @@ func loadVaultAndStrategies(chainID uint64) {
 
 func getVaultsSupplyAtBlock(
 	allVaults []*vaults.TVault,
-	allHarvests map[ethcommon.Address]map[ethcommon.Address][]harvests.THarvest,
-) map[ethcommon.Address]map[uint64]*big.Int {
+	allHarvests map[common.Address]map[common.Address][]harvests.THarvest,
+) map[common.Address]map[uint64]*big.Int {
 	syncMap := sync.Map{}
 	for _, vault := range allVaults {
 		vaultContract, _ := contracts.NewERC20(vault.Address, ethereum.GetRPC(vault.ChainID))
@@ -72,10 +71,10 @@ func getVaultsSupplyAtBlock(
 		innerWg.Wait()
 	}
 
-	vaultsSupplyAtBlock := make(map[ethcommon.Address]map[uint64]*big.Int)
+	vaultsSupplyAtBlock := make(map[common.Address]map[uint64]*big.Int)
 	syncMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
-		vaultAddress := ethcommon.HexToAddress(eventKey[0])
+		vaultAddress := common.HexToAddress(eventKey[0])
 		blockNumber, _ := strconv.ParseUint(eventKey[1], 10, 64)
 
 		if vaultsSupplyAtBlock[vaultAddress] == nil {
@@ -90,13 +89,13 @@ func getVaultsSupplyAtBlock(
 
 func computePartnerVaultTVL(
 	harvest harvests.THarvest,
-	currentVault ethcommon.Address,
+	currentVault common.Address,
 	vaultDecimals uint64,
-	partnersTrackerEvents map[ethcommon.Address]map[ethcommon.Address][]partnerTracker.TEventReferredBalanceIncreased,
-	allRefereesEvents map[ethcommon.Address][]partnerTracker.TRefereeTransferEvent,
-) (map[ethcommon.Address]*bigNumber.Int, map[ethcommon.Address]map[ethcommon.Address]*bigNumber.Int) {
-	delegatedTVL := make(map[ethcommon.Address]map[ethcommon.Address]*bigNumber.Int)
-	partnerTVL := make(map[ethcommon.Address]*bigNumber.Int)
+	partnersTrackerEvents map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased,
+	allRefereesEvents map[common.Address][]partnerTracker.TRefereeTransferEvent,
+) (map[common.Address]*bigNumber.Int, map[common.Address]map[common.Address]*bigNumber.Int) {
+	delegatedTVL := make(map[common.Address]map[common.Address]*bigNumber.Int)
+	partnerTVL := make(map[common.Address]*bigNumber.Int)
 
 	/**********************************************************************************************
 	** We have one harvest. Now, we want to filter the deposits events that happened before the
@@ -119,7 +118,7 @@ func computePartnerVaultTVL(
 	**********************************************************************************************/
 	for partner, eventsDepositorLevel := range relevantPartnerTrackerEvents {
 		if _, ok := delegatedTVL[partner]; !ok {
-			delegatedTVL[partner] = make(map[ethcommon.Address]*bigNumber.Int)
+			delegatedTVL[partner] = make(map[common.Address]*bigNumber.Int)
 			partnerTVL[partner] = bigNumber.NewInt(0)
 		}
 		totalAllocatedForThisPartner := bigNumber.NewInt(0)
@@ -130,7 +129,7 @@ func computePartnerVaultTVL(
 			** partner should receive.
 			******************************************************************************/
 			earliestDepositBlock := uint64(math.MaxUint64)
-			userDepositViaPartnerMap := map[ethcommon.Hash]partnerTracker.TEventReferredBalanceIncreased{}
+			userDepositViaPartnerMap := map[common.Hash]partnerTracker.TEventReferredBalanceIncreased{}
 			for _, event := range events {
 				userDepositViaPartnerMap[event.TxHash] = event
 				if event.BlockNumber < earliestDepositBlock {
@@ -242,11 +241,11 @@ func computePartnerVaultTVL(
 func computePartnerTotalTVL(
 	chainID uint64,
 	blockNumber uint64,
-	partnersTrackerEvents map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]partnerTracker.TEventReferredBalanceIncreased,
-	allRefereesEvents map[ethcommon.Address]map[ethcommon.Address][]partnerTracker.TRefereeTransferEvent,
-) map[ethcommon.Address]map[ethcommon.Address]map[uint64]*bigNumber.Int {
+	partnersTrackerEvents map[common.Address]map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased,
+	allRefereesEvents map[common.Address]map[common.Address][]partnerTracker.TRefereeTransferEvent,
+) map[common.Address]map[common.Address]map[uint64]*bigNumber.Int {
 	// cumulatedPartnerTVL -> map[vaultAddress][partnerAddress][blockNumber][TVLAtThatBlock]
-	cumulatedPartnerTVL := make(map[ethcommon.Address]map[ethcommon.Address]map[uint64]*bigNumber.Int)
+	cumulatedPartnerTVL := make(map[common.Address]map[common.Address]map[uint64]*bigNumber.Int)
 	/**********************************************************************************************
 	** First we sort all the events by block number in order to compute the TVL at each block
 	**********************************************************************************************/
@@ -265,19 +264,19 @@ func computePartnerTotalTVL(
 	** us to quickly check if a transfer event is a deposit or not.
 	** eventsHash -> [vaultAddress][eventHash][event]
 	**********************************************************************************************/
-	partnerVaults := make(map[ethcommon.Address]map[ethcommon.Address][]partnerTracker.TEventReferredBalanceIncreased)
-	eventsHash := make(map[ethcommon.Address]map[ethcommon.Hash]partnerTracker.TEventReferredBalanceIncreased)
+	partnerVaults := make(map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased)
+	eventsHash := make(map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
 	for vaultAddress, eventsForThatVault := range relevantPartnerTrackerEvents {
 		for partnerAddress, eventsForThanPartner := range eventsForThatVault {
 			for _, events := range eventsForThanPartner {
 				if _, ok := partnerVaults[partnerAddress]; !ok {
-					partnerVaults[partnerAddress] = make(map[ethcommon.Address][]partnerTracker.TEventReferredBalanceIncreased)
-					eventsHash[partnerAddress] = make(map[ethcommon.Hash]partnerTracker.TEventReferredBalanceIncreased)
+					partnerVaults[partnerAddress] = make(map[common.Address][]partnerTracker.TEventReferredBalanceIncreased)
+					eventsHash[partnerAddress] = make(map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
 				}
 				partnerVaults[partnerAddress][vaultAddress] = append(partnerVaults[partnerAddress][vaultAddress], events...)
 				for _, event := range events {
 					if _, ok := eventsHash[vaultAddress]; !ok {
-						eventsHash[vaultAddress] = make(map[ethcommon.Hash]partnerTracker.TEventReferredBalanceIncreased)
+						eventsHash[vaultAddress] = make(map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
 					}
 					eventsHash[vaultAddress][event.TxHash] = event
 				}
@@ -301,12 +300,12 @@ func computePartnerTotalTVL(
 	** We will create a map that will contain the delegated balance for each partner in each vault
 	** delegatedVaultPartnerBalance -> map[vaultAddress][partnerAddress][delegatedBalance]
 	**********************************************************************************************/
-	delegatedVaultPartnerBalance := make(map[ethcommon.Address]map[ethcommon.Address]*bigNumber.Int)
+	delegatedVaultPartnerBalance := make(map[common.Address]map[common.Address]*bigNumber.Int)
 	for vaultAddress, eventsForThatVault := range allRefereesEvents {
-		vault, _ := vaults.GetVault(chainID, common.FromAddress(vaultAddress))
+		vault, _ := vaults.GetVault(chainID, vaultAddress)
 
 		for depositorAddress, eventForThisDepositor := range eventsForThatVault {
-			depositorDelegatedBalance := make(map[ethcommon.Address]*bigNumber.Int)
+			depositorDelegatedBalance := make(map[common.Address]*bigNumber.Int)
 			depositorActualBalance := bigNumber.NewInt(0)
 
 			for _, event := range eventForThisDepositor {
@@ -333,14 +332,14 @@ func computePartnerTotalTVL(
 							/**********************************************************************
 							** We have a match, this is a deposit via the partner tracker.
 							**********************************************************************/
-							partnerAddress := partnerTrackerEvent.PartnerID.ToAddress()
+							partnerAddress := partnerTrackerEvent.PartnerID
 							if _, ok := depositorDelegatedBalance[partnerAddress]; !ok {
 								depositorDelegatedBalance[partnerAddress] = bigNumber.NewInt(0)
 							}
 							depositorDelegatedBalance[partnerAddress] = bigNumber.NewInt(0).Add(depositorDelegatedBalance[partnerAddress], event.Value)
 							depositorActualBalance = bigNumber.NewInt(0).Add(depositorActualBalance, event.Value)
 							if partnerAddress.Hex() == LEDGER.Hex() {
-								logs.Success("Ledger: +", formatWithPriceOnBlock(chainID, event.BlockNumber, common.FromAddress(vault.Address), event.Value, vault.Decimals))
+								logs.Success("Ledger: +", formatWithPriceOnBlock(chainID, event.BlockNumber, vault.Address, event.Value, vault.Decimals))
 							}
 
 							continue
@@ -380,7 +379,7 @@ func computePartnerTotalTVL(
 						)
 						expectedNewDelegatedBalance := bigNumber.NewInt(0).Sub(delegatedBalance, delegatedWithdraw.Int())
 						if partnerAddress.Hex() == LEDGER.Hex() {
-							logs.Success("Ledger: -", formatWithPriceOnBlock(chainID, event.BlockNumber, common.FromAddress(vault.Address), delegatedWithdraw.Int(), vault.Decimals))
+							logs.Success("Ledger: -", formatWithPriceOnBlock(chainID, event.BlockNumber, vault.Address, delegatedWithdraw.Int(), vault.Decimals))
 						}
 
 						if expectedNewDelegatedBalance.Lte(bigNumber.NewInt(0)) {
@@ -397,7 +396,7 @@ func computePartnerTotalTVL(
 			}
 			for partnerAddress, delegatedBalance := range depositorDelegatedBalance {
 				if _, ok := delegatedVaultPartnerBalance[vaultAddress]; !ok {
-					delegatedVaultPartnerBalance[vaultAddress] = make(map[ethcommon.Address]*bigNumber.Int)
+					delegatedVaultPartnerBalance[vaultAddress] = make(map[common.Address]*bigNumber.Int)
 				}
 				if _, ok := delegatedVaultPartnerBalance[vaultAddress][partnerAddress]; !ok {
 					delegatedVaultPartnerBalance[vaultAddress][partnerAddress] = bigNumber.NewInt(0)
@@ -415,22 +414,17 @@ func computePartnerTotalTVL(
 	** As we have the delegated balance for each vault, we just need to grab this balance, the
 	** vault token price and sum it up.
 	**********************************************************************************************/
-	partnersTVL := make(map[ethcommon.Address]*bigNumber.Float)
+	partnersTVL := make(map[common.Address]*bigNumber.Float)
 	for vaultAddress, partnersForThatVault := range delegatedVaultPartnerBalance {
 		for partner, delegatedBalance := range partnersForThatVault {
 			if _, ok := partnersTVL[partner]; !ok {
 				partnersTVL[partner] = bigNumber.NewFloat(0)
 			}
-			thisVault, _ := vaults.GetVault(chainID, common.FromAddress(vaultAddress))
+			thisVault, _ := vaults.GetVault(chainID, vaultAddress)
 
 			partnersTVL[partner] = bigNumber.NewFloat(0).Add(
 				partnersTVL[partner],
-				formatWithPrice(
-					chainID,
-					common.FromAddress(vaultAddress),
-					delegatedBalance,
-					thisVault.Decimals,
-				),
+				formatWithPrice(chainID, vaultAddress, delegatedBalance, thisVault.Decimals),
 			)
 		}
 	}
@@ -446,12 +440,12 @@ type TBalanceSheet struct {
 	VaultName      string
 	BlockNumber    uint64
 	VaultDecimals  uint64
-	VaultAddress   ethcommon.Address
-	PartnerAddress ethcommon.Address
+	VaultAddress   common.Address
+	PartnerAddress common.Address
 	VaultTVL       *bigNumber.Int
 	VaultFees      *bigNumber.Int
 	PartnerTVL     *bigNumber.Int
-	DelegatedTVL   map[ethcommon.Address]*bigNumber.Int
+	DelegatedTVL   map[common.Address]*bigNumber.Int
 }
 
 func getPartnerFees(chainID uint64) {
@@ -472,7 +466,7 @@ func getPartnerFees(chainID uint64) {
 	/**************************************************************************************************
 	** This block of code is used to get the TVL for a partner right now
 	**************************************************************************************************/
-	// ledger := common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`).ToAddress() //Ledger
+	// ledger := common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`) //Ledger
 	// allEvents := partnerTracker.ListReferralBalanceIncrease(chainID)
 	// vaultTVL := make(map[common.Address]*bigNumber.Int)
 	// for _, event := range allEvents {
@@ -487,16 +481,16 @@ func getPartnerFees(chainID uint64) {
 	// totalValue := bigNumber.NewFloat(0)
 	// for vault, tvl := range vaultTVL {
 	// 	vault, _ := vaults.GetVault(chainID, vault)
-	// 	totalValue = bigNumber.NewFloat(0).Add(totalValue, formatWithPrice(chainID, common.FromAddress(vault.Address), tvl, vault.Decimals))
+	// 	totalValue = bigNumber.NewFloat(0).Add(totalValue, formatWithPrice(chainID, vault.Address, tvl, vault.Decimals))
 	// }
 	// logs.Success(`Total value for Ledger: $` + totalValue.Text('f', 4))
 	/**************************************************************************************************
 	** END_OF_BLOCK
 	**************************************************************************************************/
 
-	// partnerToTest := common.HexToAddress(`0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52`).ToAddress() //Yearn
+	// partnerToTest := common.HexToAddress(`0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52`) //Yearn
 
-	balanceSheets := make(map[ethcommon.Address][]TBalanceSheet)
+	balanceSheets := make(map[common.Address][]TBalanceSheet)
 	totalDelegatedValue := float64(0)
 	totalFeesCollected := float64(0)
 	for _, vault := range allVaults {
@@ -555,22 +549,22 @@ func getPartnerFees(chainID uint64) {
 			logs.Info(`------------------------------------------------------------------------------------------------`)
 			logs.Info(`Vault `+sheet.VaultAddress.Hex()+` - `+sheet.VaultName+` at block`, sheet.BlockNumber)
 			logs.Info(`Partner ` + sheet.PartnerAddress.Hex())
-			logs.Info(`TVL ` + toNormalizedAmount(sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), sheet.VaultTVL, sheet.VaultDecimals).Text('f', 4) + `)`)
-			logs.Info(`Fees ` + toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), sheet.VaultFees, sheet.VaultDecimals).Text('f', 4) + `)`)
-			logs.Info(`Partner TVL ` + toNormalizedAmount(sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), sheet.PartnerTVL, sheet.VaultDecimals).Text('f', 4) + `) | (` + toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
+			logs.Info(`TVL ` + toNormalizedAmount(sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 4) + `)`)
+			logs.Info(`Fees ` + toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals).Text('f', 4) + `)`)
+			logs.Info(`Partner TVL ` + toNormalizedAmount(sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, sheet.PartnerTVL, sheet.VaultDecimals).Text('f', 4) + `) | (` + toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
 			logs.Info(`Delegated TVL`)
 			for depositor, delegatedBalance := range sheet.DelegatedTVL {
-				logs.Info("- " + depositor.Hex() + `: ` + toNormalizedAmount(delegatedBalance, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), delegatedBalance, sheet.VaultDecimals).Text('f', 4) + `) | (` + toNormalizedRatio(delegatedBalance, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
+				logs.Info("- " + depositor.Hex() + `: ` + toNormalizedAmount(delegatedBalance, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, delegatedBalance, sheet.VaultDecimals).Text('f', 4) + `) | (` + toNormalizedRatio(delegatedBalance, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
 
 				// allEventsBeforeThisBlock := partnerTracker.FilterRefereeTransferEvent(allRefereesEvents, sheet.BlockNumber)
 				allEventsForThisDepositor := partnerTracker.GroupRefereeTransferEventPerVault(allRefereesEvents[sheet.VaultAddress][depositor], sheet.BlockNumber)
 				for vaultAddress, events := range allEventsForThisDepositor {
-					thisVault, _ := vaults.GetVault(chainID, common.FromAddress(vaultAddress))
+					thisVault, _ := vaults.GetVault(chainID, vaultAddress)
 					for _, event := range events {
 						if event.Referee == event.From {
-							logs.Success(`-- ` + thisVault.DisplaySymbol + `: -` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
+							logs.Success(`-- ` + thisVault.DisplaySymbol + `: -` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
 						} else {
-							logs.Success(`-- ` + thisVault.DisplaySymbol + `: ` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, common.FromAddress(sheet.VaultAddress), event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
+							logs.Success(`-- ` + thisVault.DisplaySymbol + `: ` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
 						}
 					}
 				}

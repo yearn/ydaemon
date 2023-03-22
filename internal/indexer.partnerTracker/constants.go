@@ -1,8 +1,6 @@
 package partnerTracker
 
-import (
-	"github.com/yearn/ydaemon/common/types/common"
-)
+import "github.com/ethereum/go-ethereum/common"
 
 type TContractData struct {
 	Address common.Address

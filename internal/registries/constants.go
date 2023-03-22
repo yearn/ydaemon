@@ -2,7 +2,6 @@ package registries
 
 import (
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -38,14 +37,14 @@ var EXTRA_VAULTS = map[uint64][]utils.TVaultsFromRegistry{
 	250: {
 		{
 			//yvMIM, alone in it's own registry, not work registering and listening to it
-			RegistryAddress: ethcommon.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
-			VaultsAddress:   ethcommon.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
-			TokenAddress:    ethcommon.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),
+			RegistryAddress: common.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
+			VaultsAddress:   common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
+			TokenAddress:    common.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),
 			APIVersion:      `0.4.3`,
 			BlockNumber:     18309707,
 			Activation:      18302860,
 			ManagementFee:   200,
-			BlockHash:       ethcommon.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
+			BlockHash:       common.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
 			TxIndex:         0,
 			LogIndex:        0,
 			Type:            utils.VaultTypeStandard,

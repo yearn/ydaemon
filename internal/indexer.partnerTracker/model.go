@@ -1,9 +1,8 @@
 package partnerTracker
 
 import (
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // event ReferredBalanceIncreased(address indexed partnerId, address indexed vault, address indexed depositer, uint amountAdded, uint totalDeposited);
@@ -16,7 +15,7 @@ type TEventReferredBalanceIncreased struct {
 	PartnerID      common.Address `json:"partnerID"`
 	Vault          common.Address `json:"vault"`
 	Depositer      common.Address `json:"depositer"`
-	TxHash         ethcommon.Hash `json:"txHash"`
+	TxHash         common.Hash    `json:"txHash"`
 	BlockNumber    uint64         `json:"blockNumber"`
 	TxIndex        uint           `json:"-"`
 	LogIndex       uint           `json:"-"`

@@ -9,7 +9,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -74,7 +74,7 @@ func fetchBasicInformations(
 	relatedTokensList := []common.Address{}
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, tokenAddress := range tokens {
-		if tokenAddress == ethcommon.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
+		if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
 			tokenList = append(tokenList, &TERC20Token{
 				Address:  tokenAddress,
 				Name:     `Ethereum`,
@@ -429,7 +429,7 @@ func RetrieveAllTokens(
 		42161: {},
 	}
 	for _, tokenAddress := range extraTokens[chainID] {
-		tokenAddress := ethcommon.HexToAddress(tokenAddress)
+		tokenAddress := common.HexToAddress(tokenAddress)
 		if _, ok := tokenMap[tokenAddress]; !ok {
 			updatedTokenMap[tokenAddress] = &TERC20Token{
 				Address: tokenAddress,

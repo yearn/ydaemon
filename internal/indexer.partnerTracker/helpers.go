@@ -8,7 +8,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -16,7 +15,7 @@ import (
 )
 
 type TRefereeVaultBlockData struct {
-	Referee ethcommon.Address
+	Referee common.Address
 	Block   uint64
 }
 type TRefereeTransferEvent struct {
@@ -25,10 +24,10 @@ type TRefereeTransferEvent struct {
 	TxIndex     uint
 	LogIndex    uint
 	Value       *bigNumber.Int
-	Referee     ethcommon.Address
-	From        ethcommon.Address
-	To          ethcommon.Address
-	Token       ethcommon.Address
+	Referee     common.Address
+	From        common.Address
+	To          common.Address
+	Token       common.Address
 }
 
 /**********************************************************************************************
@@ -40,8 +39,8 @@ type TRefereeTransferEvent struct {
 ** at any given time to compute the referral bonus.
 **********************************************************************************************/
 func RetrieveAllPartnerTrackerEvents(chainID uint64) (
-	map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
-	map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent,
+	map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
+	map[common.Address]map[common.Address][]TRefereeTransferEvent,
 ) {
 	/**********************************************************************************************
 	** First we need to catch all the events that happened in the past to be able to calculate the
@@ -60,36 +59,36 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64) (
 	** allow us to calculate the current balance of a referee for a given vault at any given time
 	** to compute the referral bonus.
 	**********************************************************************************************/
-	refereeVaultBlockData := map[ethcommon.Address][]TRefereeVaultBlockData{}
-	partnerTrackerTree := map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased{}
+	refereeVaultBlockData := map[common.Address][]TRefereeVaultBlockData{}
+	partnerTrackerTree := map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
 	for _, event := range allEvents {
 		/******************************************************************************************
 		** Ugly go code to avoid crash because of nil pointer
 		******************************************************************************************/
-		if partnerTrackerTree[event.Vault.ToAddress()] == nil {
-			partnerTrackerTree[event.Vault.ToAddress()] = map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased{}
+		if partnerTrackerTree[event.Vault] == nil {
+			partnerTrackerTree[event.Vault] = map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
 		}
-		if partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()] == nil {
-			partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()] = map[ethcommon.Address][]TEventReferredBalanceIncreased{}
+		if partnerTrackerTree[event.Vault][event.PartnerID] == nil {
+			partnerTrackerTree[event.Vault][event.PartnerID] = map[common.Address][]TEventReferredBalanceIncreased{}
 		}
-		if partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] == nil {
-			partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = []TEventReferredBalanceIncreased{}
+		if partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] == nil {
+			partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] = []TEventReferredBalanceIncreased{}
 		}
-		if refereeVaultBlockData[event.Vault.ToAddress()] == nil {
-			refereeVaultBlockData[event.Vault.ToAddress()] = []TRefereeVaultBlockData{}
+		if refereeVaultBlockData[event.Vault] == nil {
+			refereeVaultBlockData[event.Vault] = []TRefereeVaultBlockData{}
 		}
 
 		/******************************************************************************************
 		** Actual code to add the amount to the tree
 		******************************************************************************************/
-		partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = append(
-			partnerTrackerTree[event.Vault.ToAddress()][event.PartnerID.ToAddress()][event.Depositer.ToAddress()],
+		partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] = append(
+			partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer],
 			event,
 		)
-		refereeVaultBlockData[event.Vault.ToAddress()] = append(
-			refereeVaultBlockData[event.Vault.ToAddress()],
+		refereeVaultBlockData[event.Vault] = append(
+			refereeVaultBlockData[event.Vault],
 			TRefereeVaultBlockData{
-				Referee: event.Depositer.ToAddress(),
+				Referee: event.Depositer,
 				Block:   event.BlockNumber,
 			},
 		)
@@ -106,15 +105,15 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64) (
 **********************************************************************************************/
 func retrieveAllTransfersForReferee(
 	chainID uint64,
-	refereeVaultBlockData map[ethcommon.Address][]TRefereeVaultBlockData,
-) map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent {
+	refereeVaultBlockData map[common.Address][]TRefereeVaultBlockData,
+) map[common.Address]map[common.Address][]TRefereeTransferEvent {
 	client := ethereum.GetRPC(chainID)
 	now := time.Now()
 	transfersEvents := []TRefereeTransferEvent{}
 	wg := sync.WaitGroup{}
 
 	for vaultAddress, refereeBlockData := range refereeVaultBlockData {
-		allRefereesAddresses := []ethcommon.Address{}
+		allRefereesAddresses := []common.Address{}
 		earliestBlock := uint64(math.MaxUint64)
 		for _, refereeBlock := range refereeBlockData {
 			allRefereesAddresses = append(allRefereesAddresses, refereeBlock.Referee)
@@ -126,7 +125,7 @@ func retrieveAllTransfersForReferee(
 
 		vaultTokenContract, _ := contracts.NewERC20(vaultAddress, client)
 		wg.Add(2)
-		go func(_allRefereesAddresses []ethcommon.Address) {
+		go func(_allRefereesAddresses []common.Address) {
 			defer wg.Done()
 			if log, err := vaultTokenContract.FilterTransfer(opts, _allRefereesAddresses, nil); err == nil {
 				for log.Next() {
@@ -147,7 +146,7 @@ func retrieveAllTransfersForReferee(
 				}
 			}
 		}(allRefereesAddresses)
-		go func(_allRefereesAddresses []ethcommon.Address) {
+		go func(_allRefereesAddresses []common.Address) {
 			defer wg.Done()
 			if log, err := vaultTokenContract.FilterTransfer(opts, nil, _allRefereesAddresses); err == nil {
 				for log.Next() {
@@ -172,14 +171,14 @@ func retrieveAllTransfersForReferee(
 	wg.Wait()
 
 	logs.Success(`It tooks`, time.Since(now), `to retrieve all transfers for all user with a delegate deposit:`, len(transfersEvents))
-	allTransfers := map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent{} //[vault][referee][transfer]
+	allTransfers := map[common.Address]map[common.Address][]TRefereeTransferEvent{} //[vault][referee][transfer]
 	sort.Slice(transfersEvents, func(i, j int) bool {
 		return transfersEvents[i].BlockNumber < transfersEvents[j].BlockNumber
 	})
 
 	for _, transfer := range transfersEvents {
 		if allTransfers[transfer.Token] == nil {
-			allTransfers[transfer.Token] = map[ethcommon.Address][]TRefereeTransferEvent{}
+			allTransfers[transfer.Token] = map[common.Address][]TRefereeTransferEvent{}
 		}
 		if allTransfers[transfer.Token][transfer.Referee] == nil {
 			allTransfers[transfer.Token][transfer.Referee] = []TRefereeTransferEvent{}
@@ -194,22 +193,22 @@ func retrieveAllTransfersForReferee(
 ** all events for a given vault address and a given upper block limit.
 **********************************************************************************************/
 func FilterReferralBalanceIncreaseEventsForVault(
-	allEvents map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
+	allEvents map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
 	upperBlockLimit uint64,
-) map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased {
-	events := map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased{}
+) map[common.Address]map[common.Address][]TEventReferredBalanceIncreased {
+	events := map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
 	for _, eventsPartnerLevel := range allEvents {
 		for _, eventDepositorLevel := range eventsPartnerLevel {
 			for _, event := range eventDepositorLevel {
 				if event.BlockNumber < upperBlockLimit {
-					if events[event.PartnerID.ToAddress()] == nil {
-						events[event.PartnerID.ToAddress()] = map[ethcommon.Address][]TEventReferredBalanceIncreased{}
+					if events[event.PartnerID] == nil {
+						events[event.PartnerID] = map[common.Address][]TEventReferredBalanceIncreased{}
 					}
-					if events[event.PartnerID.ToAddress()][event.Depositer.ToAddress()] == nil {
-						events[event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = []TEventReferredBalanceIncreased{}
+					if events[event.PartnerID][event.Depositer] == nil {
+						events[event.PartnerID][event.Depositer] = []TEventReferredBalanceIncreased{}
 					}
-					events[event.PartnerID.ToAddress()][event.Depositer.ToAddress()] = append(
-						events[event.PartnerID.ToAddress()][event.Depositer.ToAddress()],
+					events[event.PartnerID][event.Depositer] = append(
+						events[event.PartnerID][event.Depositer],
 						event,
 					)
 				}
@@ -232,8 +231,8 @@ func FilterReferralBalanceIncreaseEventsForVault(
 ** SortReferralBalanceIncreaseEvents
 **********************************************************************************************/
 func SortReferralBalanceIncreaseEvents(
-	events map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased,
-) map[ethcommon.Address]map[ethcommon.Address]map[ethcommon.Address][]TEventReferredBalanceIncreased {
+	events map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
+) map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased {
 	for _, eventsVaultLevel := range events {
 		for _, eventsPartnerLevel := range eventsVaultLevel {
 			for _, eventDepositorLevel := range eventsPartnerLevel {
@@ -250,8 +249,8 @@ func SortReferralBalanceIncreaseEvents(
 ** SortRefereeTransferEvent
 **********************************************************************************************/
 func SortRefereeTransferEvent(
-	refereeEvents map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent,
-) map[ethcommon.Address]map[ethcommon.Address][]TRefereeTransferEvent {
+	refereeEvents map[common.Address]map[common.Address][]TRefereeTransferEvent,
+) map[common.Address]map[common.Address][]TRefereeTransferEvent {
 	for _, eventsPartnerLevel := range refereeEvents {
 		for _, eventDepositorLevel := range eventsPartnerLevel {
 			sort.Slice(eventDepositorLevel, func(i, j int) bool {
@@ -268,8 +267,8 @@ func SortRefereeTransferEvent(
 func GroupRefereeTransferEventPerVault(
 	refereeEvents []TRefereeTransferEvent,
 	upperBlockLimit uint64,
-) map[ethcommon.Address][]TRefereeTransferEvent {
-	events := make(map[ethcommon.Address][]TRefereeTransferEvent)
+) map[common.Address][]TRefereeTransferEvent {
+	events := make(map[common.Address][]TRefereeTransferEvent)
 	for _, event := range refereeEvents {
 		if event.BlockNumber < upperBlockLimit {
 			events[event.Token] = append(events[event.Token], event)

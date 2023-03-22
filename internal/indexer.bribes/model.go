@@ -2,7 +2,6 @@ package bribes
 
 import (
 	"github.com/ethereum/go-ethereum/common"
-	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
@@ -12,7 +11,7 @@ type TEventAdded struct {
 	Briber      common.Address `json:"briber"`
 	Gauge       common.Address `json:"gauge"`
 	RewardToken common.Address `json:"rewardToken"`
-	TxHash      ethcommon.Hash `json:"txHash"`
+	TxHash      common.Hash    `json:"txHash"`
 	Timestamp   uint64         `json:"timestamp"`
 	BlockNumber uint64         `json:"blockNumber"`
 	TxIndex     uint           `json:"-"`

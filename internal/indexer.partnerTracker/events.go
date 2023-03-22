@@ -9,7 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 /**************************************************************************************************
@@ -27,7 +26,7 @@ func filterReferrerBalanceIncrease(
 ) {
 	client := ethereum.GetRPC(chainID)
 	partnerContract := PARTNER_TRACKERS_ADDRESSES[chainID]
-	partnerContractAddress := partnerContract.Address.ToAddress()
+	partnerContractAddress := partnerContract.Address
 	currentVault, _ := contracts.NewYPartnerTracker(partnerContractAddress, client)
 	opts := &bind.FilterOpts{
 		Start: partnerContract.Block,
@@ -42,9 +41,9 @@ func filterReferrerBalanceIncrease(
 			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventReferredBalanceIncreased{
 				Amount:         bigNumber.SetInt(log.Event.AmountAdded),
 				TotalDeposited: bigNumber.SetInt(log.Event.TotalDeposited),
-				PartnerID:      common.FromAddress(log.Event.PartnerId),
-				Vault:          common.FromAddress(log.Event.Vault),
-				Depositer:      common.FromAddress(log.Event.Depositer),
+				PartnerID:      log.Event.PartnerId,
+				Vault:          log.Event.Vault,
+				Depositer:      log.Event.Depositer,
 				TxHash:         log.Event.Raw.TxHash,
 				BlockNumber:    log.Event.Raw.BlockNumber,
 				TxIndex:        log.Event.Raw.TxIndex,

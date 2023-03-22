@@ -348,8 +348,8 @@ func ListVaults(chainID uint64) []*TVault {
 /**********************************************************************************************
 ** MapVaults will, for a given chainID, return the map of all the vaults stored in _vaultMap.
 **********************************************************************************************/
-func MapVaults(chainID uint64) map[ethcommon.Address]*TVault {
-	var vaults map[ethcommon.Address]*TVault
+func MapVaults(chainID uint64) map[common.Address]*TVault {
+	var vaults map[common.Address]*TVault
 	if vaultsForChain, ok := _vaultMap[chainID]; ok {
 		vaults = vaultsForChain
 	}

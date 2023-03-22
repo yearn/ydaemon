@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/traces"
@@ -154,7 +155,7 @@ func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 }
 
 func AddressIsValid(address common.Address, chainID uint64) bool {
-	if (address == common.Address{} || address == common.HexToAddress("0x0000000000000000000000000000000000000000")) {
+	if (address == common.Address{} || addresses.Equals(address, "0x0000000000000000000000000000000000000000")) {
 		return false
 	}
 	if chainID > 0 && Contains(env.BLACKLISTED_VAULTS[chainID], address) {

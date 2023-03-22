@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -17,13 +17,13 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var AllHarvests = make(map[ethcommon.Address][]THarvest)
+var AllHarvests = make(map[common.Address][]THarvest)
 
 func RetrieveAllHarvestPerStrategyPerVault(
 	chainID uint64,
 	start uint64,
 	end *uint64,
-) map[ethcommon.Address]map[ethcommon.Address][]THarvest {
+) map[common.Address]map[common.Address][]THarvest {
 	timeBefore := time.Now()
 	/**********************************************************************************************
 	** All vaults from Yearn are registered in the registries contracts. A vault can be either
@@ -32,12 +32,12 @@ func RetrieveAllHarvestPerStrategyPerVault(
 	** added to the registry, and we remove the duplicates only to keep the latest version of a
 	** same vault. Duplicate can happen when a vault is moved from Experimental to Standard.
 	**********************************************************************************************/
-	transfersFromVaultsToTreasury := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	transfersFromVaultsToStrategies := map[ethcommon.Address]map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	managementFees := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	performanceFees := map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	strategiesPerformanceFees := map[ethcommon.Address]map[ethcommon.Address]map[uint64][]utils.TEventBlock{}
-	allHarvests := map[ethcommon.Address]map[ethcommon.Address]map[uint64]uint64{}
+	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]utils.TEventBlock{}
+	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
+	managementFees := map[common.Address]map[uint64][]utils.TEventBlock{}
+	performanceFees := map[common.Address]map[uint64][]utils.TEventBlock{}
+	strategiesPerformanceFees := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
+	allHarvests := map[common.Address]map[common.Address]map[uint64]uint64{}
 
 	/**********************************************************************************************
 	** Fetching all the strategiesList and relevant transfers to proceed
@@ -173,12 +173,12 @@ func RetrieveAllHarvestPerStrategyPerVault(
 	}
 	syncGroup.Wait()
 
-	allHarvestPerStrategyPerVault := map[ethcommon.Address]map[ethcommon.Address][]THarvest{}
+	allHarvestPerStrategyPerVault := map[common.Address]map[common.Address][]THarvest{}
 	count := 0
 	for _, v := range harvests {
 		AllHarvests[v.Vault] = append(AllHarvests[v.Vault], v)
 		if allHarvestPerStrategyPerVault[v.Vault] == nil {
-			allHarvestPerStrategyPerVault[v.Vault] = map[ethcommon.Address][]THarvest{}
+			allHarvestPerStrategyPerVault[v.Vault] = map[common.Address][]THarvest{}
 		}
 		allHarvestPerStrategyPerVault[v.Vault][v.Strategy] = append(allHarvestPerStrategyPerVault[v.Vault][v.Strategy], v)
 		count++
@@ -191,10 +191,10 @@ func handleEvenStrategyReportedFor031To043(
 	vault *vaults.TVault,
 	managementFeeChanges map[uint64][]utils.TEventBlock,
 	performanceFeeChanges map[uint64][]utils.TEventBlock,
-	strategiesPerformanceFeeChanges map[ethcommon.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToStrategies map[ethcommon.Address]map[uint64][]utils.TEventBlock,
+	strategiesPerformanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
 	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
-	allLastReport map[ethcommon.Address]map[uint64]uint64,
+	allLastReport map[common.Address]map[uint64]uint64,
 	opts *bind.FilterOpts,
 	syncGroup *sync.WaitGroup,
 	harvests *[]THarvest,
@@ -278,10 +278,10 @@ func handleEvenStrategyReportedFor030(
 	vault *vaults.TVault,
 	managementFeeChanges map[uint64][]utils.TEventBlock,
 	performanceFeeChanges map[uint64][]utils.TEventBlock,
-	strategiesPerformanceFeeChanges map[ethcommon.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToStrategies map[ethcommon.Address]map[uint64][]utils.TEventBlock,
+	strategiesPerformanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
 	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
-	allLastReport map[ethcommon.Address]map[uint64]uint64,
+	allLastReport map[common.Address]map[uint64]uint64,
 	opts *bind.FilterOpts,
 	syncGroup *sync.WaitGroup,
 	harvests *[]THarvest,
@@ -365,10 +365,10 @@ func handleEvenStrategyReportedFor022(
 	vault *vaults.TVault,
 	managementFeeChanges map[uint64][]utils.TEventBlock,
 	performanceFeeChanges map[uint64][]utils.TEventBlock,
-	strategiesPerformanceFeeChanges map[ethcommon.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToStrategies map[ethcommon.Address]map[uint64][]utils.TEventBlock,
+	strategiesPerformanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
 	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
-	allLastReport map[ethcommon.Address]map[uint64]uint64,
+	allLastReport map[common.Address]map[uint64]uint64,
 	opts *bind.FilterOpts,
 	syncGroup *sync.WaitGroup,
 	harvests *[]THarvest,

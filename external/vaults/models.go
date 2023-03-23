@@ -60,12 +60,13 @@ type TExternalAPYComposite struct {
 
 // TExternalVaultAPY holds the APY information about this vault.
 type TExternalVaultAPY struct {
-	Type      string                `json:"type"`
-	GrossAPR  float64               `json:"gross_apr"`
-	NetAPY    float64               `json:"net_apy"`
-	Fees      TExternalAPYFees      `json:"fees"`
-	Points    TExternalAPYPoints    `json:"points"`
-	Composite TExternalAPYComposite `json:"composite"`
+	Type              string                `json:"type"`
+	GrossAPR          float64               `json:"gross_apr"`
+	NetAPY            float64               `json:"net_apy"`
+	StakingRewardsAPR float64               `json:"staking_rewards_apr"`
+	Fees              TExternalAPYFees      `json:"fees"`
+	Points            TExternalAPYPoints    `json:"points"`
+	Composite         TExternalAPYComposite `json:"composite"`
 }
 
 // TExternalVaultMigration is the struct containing the information about the migration of a vault.
@@ -173,12 +174,13 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 
 	internalAPY := internalVault.BuildAPY()
 	v.APY = TExternalVaultAPY{
-		Type:      internalAPY.Type,
-		GrossAPR:  internalAPY.GrossAPR,
-		NetAPY:    internalAPY.NetAPY,
-		Fees:      TExternalAPYFees(internalAPY.Fees),
-		Points:    TExternalAPYPoints(internalAPY.Points),
-		Composite: TExternalAPYComposite(internalAPY.Composite),
+		Type:              internalAPY.Type,
+		GrossAPR:          internalAPY.GrossAPR,
+		NetAPY:            internalAPY.NetAPY,
+		StakingRewardsAPR: internalAPY.StakingRewardsAPR,
+		Fees:              TExternalAPYFees(internalAPY.Fees),
+		Points:            TExternalAPYPoints(internalAPY.Points),
+		Composite:         TExternalAPYComposite(internalAPY.Composite),
 	}
 
 	v.Details = &TExternalVaultDetails{

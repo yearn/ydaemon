@@ -11,7 +11,7 @@ type TLegacyAPIAPY struct {
 	GrossAPR          float64 `json:"gross_apr"`
 	NetAPY            float64 `json:"net_apy"`
 	StakingRewardsAPR float64 `json:"staking_rewards_apr"`
-	Fees struct {
+	Fees              struct {
 		Performance float64 `json:"performance"`
 		Withdrawal  float64 `json:"withdrawal"`
 		Management  float64 `json:"management"`

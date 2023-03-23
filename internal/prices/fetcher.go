@@ -263,8 +263,8 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 	** API.
 	**********************************************************************************************/
 	response := caller.ExecuteByBatch(calls, maxBatch, big.NewInt(int64(blockNumber)))
-	for _, token := range tokenList {
-		rawTokenPrice := response[token.String()+`getPriceUsdcRecommended`]
+	for _, tokenAddress := range tokenList {
+		rawTokenPrice := response[tokenAddress.String()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
 			continue
 		}
@@ -272,7 +272,8 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 		if tokenPrice.IsZero() {
 			continue
 		}
-		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
+		newPriceMap[tokenAddress] = helpers.DecodeBigInt(rawTokenPrice)
+		StorePriceOnBlock(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
 	}
 
 	return newPriceMap

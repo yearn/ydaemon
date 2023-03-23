@@ -7,11 +7,11 @@ import (
 
 // TLegacyAPIAPY contains all the information useful about the APY, APR, fees and breakdown.
 type TLegacyAPIAPY struct {
-	Type             string  `json:"type"`
-	GrossAPR         float64 `json:"gross_apr"`
-	NetAPY           float64 `json:"net_apy"`
-	StakingRewardAPR float64 `json:"staking_reward_apr"`
-	Fees             struct {
+	Type              string  `json:"type"`
+	GrossAPR          float64 `json:"gross_apr"`
+	NetAPY            float64 `json:"net_apy"`
+	StakingRewardsAPR float64 `json:"staking_rewards_apr"`
+	Fees struct {
 		Performance float64 `json:"performance"`
 		Withdrawal  float64 `json:"withdrawal"`
 		Management  float64 `json:"management"`

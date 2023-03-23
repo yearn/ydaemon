@@ -29,12 +29,12 @@ type TAllTokens struct {
 // GetAllTokens will return all the tokens informations, no matter the chainID.
 func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(c.Query("loc"), "en")
-	allTokens := make(map[uint64]map[common.MixedcaseAddress]TAllTokens)
+	allTokens := make(map[uint64]map[string]TAllTokens)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		tokenList := tokens.ListTokens(chainID)
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {
-				allTokens[chainID] = make(map[common.MixedcaseAddress]TAllTokens)
+				allTokens[chainID] = make(map[string]TAllTokens)
 			}
 			metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 			tokenDetails := TAllTokens{
@@ -64,7 +64,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 					}
 				}
 			}
-			allTokens[chainID][common.NewMixedcaseAddress(token.Address)] = tokenDetails
+			allTokens[chainID][token.Address.Hex()] = tokenDetails
 		}
 	}
 	c.JSON(http.StatusOK, allTokens)

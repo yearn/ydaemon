@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/events"
+	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -268,6 +269,10 @@ func handleEvenStrategyReportedFor031To043(
 				bigNumber.NewFloat(0).SetInt(harvest.Gain),
 			)
 
+			if tokenPrice, ok := prices.FindPriceOnBlock(chainID, harvest.BlockNumber, vault.Address); ok {
+				harvest.TokenPrice = tokenPrice
+			}
+
 			*harvests = append(*harvests, *harvest)
 		}
 	}
@@ -355,6 +360,10 @@ func handleEvenStrategyReportedFor030(
 				bigNumber.NewFloat(0).SetInt(harvest.Gain),
 			)
 
+			if tokenPrice, ok := prices.FindPriceOnBlock(chainID, harvest.BlockNumber, vault.Address); ok {
+				harvest.TokenPrice = tokenPrice
+			}
+
 			*harvests = append(*harvests, *harvest)
 		}
 	}
@@ -441,6 +450,10 @@ func handleEvenStrategyReportedFor022(
 				bigNumber.NewFloat(0).SetInt(harvest.Fees.TotalCollectedFee),
 				bigNumber.NewFloat(0).SetInt(harvest.Gain),
 			)
+
+			if tokenPrice, ok := prices.FindPriceOnBlock(chainID, harvest.BlockNumber, vault.Address); ok {
+				harvest.TokenPrice = tokenPrice
+			}
 
 			*harvests = append(*harvests, *harvest)
 		}

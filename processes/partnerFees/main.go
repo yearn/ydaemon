@@ -12,6 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gocarina/gocsv"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -31,21 +32,21 @@ var STRATLIST = []strategies.TStrategy{}
 var LEDGER = common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`)
 
 type TMainCSVExport struct {
-	Block          uint64 `csv:"block"`
-	Timestamp      uint64 `csv:"timestamp"`
-	Balance        string `csv:"balance"`
-	TotalSupply    string `csv:"total_supply"`
-	VaultPrice     string `csv:"vault_price"`
-	BalanceUSD     string `csv:"balance_usd"`
-	Share          string `csv:"share"`
-	PayoutBase     string `csv:"payout_base"`
-	ProtocolFee    string `csv:"protocol_fee"`
-	Wrapper        string `csv:"wrapper"`
-	Vault          string `csv:"vault"`
-	Tier           string `csv:"tier"`
-	Payout         string `csv:"payout"`
-	PayoutUSD      string `csv:"payout_usd"`
-	ProtocolFeeUSD string `csv:"protocol_fee_usd"`
+	Block               uint64 `csv:"block"`
+	Timestamp           uint64 `csv:"timestamp"`
+	Wrapper             string `csv:"partner"`
+	Vault               string `csv:"vault"`
+	Tier                string `csv:"tier"`
+	VaultPrice          string `csv:"vault_price"`
+	Balance             string `csv:"delegated_balance"`
+	BalanceUSD          string `csv:"delegated_balance_usd"`
+	TotalSupply         string `csv:"total_supply"`
+	TotalSupplyUSD      string `csv:"total_supply_usd"`
+	TotalDelegatedValue string `csv:"total_delegated_value"`
+	CollectedFee        string `csv:"collected_fee"`
+	CollectedFeeUSD     string `csv:"collected_fee_usd"`
+	PartnerFeeShare     string `csv:"partner_fee"`
+	PartnerFeeShareUSD  string `csv:"partner_fee_usd"`
 }
 
 type TPartnerBreakdownCSVExport struct {
@@ -56,6 +57,12 @@ type TPartnerBreakdownCSVExport struct {
 	Balance    string `csv:"balance"`
 	BalanceUSD string `csv:"balance_usd"`
 	Share      string `csv:"share"`
+}
+
+type TWithNormalized struct {
+	Raw        *bigNumber.Int
+	Normalized *bigNumber.Float
+	Value      *bigNumber.Float
 }
 
 func loadVaultAndStrategies(chainID uint64) {
@@ -117,7 +124,7 @@ func getVaultsSupplyAtBlock(
 }
 
 func computePartnerVaultTVL(
-	harvest harvests.THarvest,
+	blockNumber uint64,
 	currentVault common.Address,
 	vaultDecimals uint64,
 	partnersTrackerEvents map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased,
@@ -137,7 +144,7 @@ func computePartnerVaultTVL(
 	**********************************************************************************************/
 	relevantPartnerTrackerEvents := partnerTracker.FilterReferralBalanceIncreaseEventsForVault(
 		partnersTrackerEvents,
-		harvest.BlockNumber,
+		blockNumber,
 	)
 
 	/**********************************************************************************************
@@ -182,7 +189,7 @@ func computePartnerVaultTVL(
 			delegatedBalance := bigNumber.NewInt(0)
 			actualBalance := bigNumber.NewInt(0)
 			for _, transfer := range allTransfersForThisReferee {
-				if transfer.BlockNumber > harvest.BlockNumber {
+				if transfer.BlockNumber > blockNumber {
 					continue //transfer happened after the harvest
 				}
 				if transfer.BlockNumber < earliestDepositBlock {
@@ -266,15 +273,26 @@ func computePartnerVaultTVL(
 **   It's a map of: map[vault][partner][depositor][events[]]
 ** - allRefereesEvents: The events that we have collected from the referees tracker.
 **   It's a map of: map[vault][depositor][events[]]
+**
+** Returns:
+** - totalTVL: The total TVL for each partner at the given block.
+** - tierShare: The share of each partner in the total TVL.
+** - delegateValue: The amount each depositor delegated to each partner.
 **************************************************************************************************/
 func computePartnerTotalTVL(
 	chainID uint64,
 	blockNumber uint64,
 	partnersTrackerEvents map[common.Address]map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased,
 	allRefereesEvents map[common.Address]map[common.Address][]partnerTracker.TRefereeTransferEvent,
-) (totalTVL map[common.Address]*bigNumber.Float, tierShare map[common.Address]*bigNumber.Float) {
+) (
+	totalTVL map[common.Address]*bigNumber.Float,
+	tierShare map[common.Address]*bigNumber.Float,
+	delegateValue map[common.Address]map[common.Address]map[common.Address]TWithNormalized,
+) {
 	totalTVL = make(map[common.Address]*bigNumber.Float)
 	tierShare = make(map[common.Address]*bigNumber.Float)
+	delegateValue = make(map[common.Address]map[common.Address]map[common.Address]TWithNormalized)
+
 	/**********************************************************************************************
 	** First we sort all the events by block number in order to compute the TVL at each block
 	**********************************************************************************************/
@@ -327,9 +345,9 @@ func computePartnerTotalTVL(
 	** delegated balance.
 	**
 	** We will create a map that will contain the delegated balance for each partner in each vault
-	** delegatedVaultPartnerBalance -> map[vaultAddress][partnerAddress][delegatedBalance]
+	** delegatedVaultPartnerBalance -> map[vaultAddr][partnerAddr][depositorAddr][delegatedBalance]
 	**********************************************************************************************/
-	delegatedVaultPartnerBalance := make(map[common.Address]map[common.Address]*bigNumber.Int)
+	delegatedVaultPartnerBalance := make(map[common.Address]map[common.Address]map[common.Address]*bigNumber.Int)
 	for vaultAddress, eventsForThatVault := range allRefereesEvents {
 		for depositorAddress, eventForThisDepositor := range eventsForThatVault {
 			depositorDelegatedBalance := make(map[common.Address]*bigNumber.Int)
@@ -415,13 +433,17 @@ func computePartnerTotalTVL(
 			}
 			for partnerAddress, delegatedBalance := range depositorDelegatedBalance {
 				if _, ok := delegatedVaultPartnerBalance[vaultAddress]; !ok {
-					delegatedVaultPartnerBalance[vaultAddress] = make(map[common.Address]*bigNumber.Int)
+					delegatedVaultPartnerBalance[vaultAddress] = make(map[common.Address]map[common.Address]*bigNumber.Int)
 				}
 				if _, ok := delegatedVaultPartnerBalance[vaultAddress][partnerAddress]; !ok {
-					delegatedVaultPartnerBalance[vaultAddress][partnerAddress] = bigNumber.NewInt(0)
+					delegatedVaultPartnerBalance[vaultAddress][partnerAddress] = make(map[common.Address]*bigNumber.Int)
 				}
-				delegatedVaultPartnerBalance[vaultAddress][partnerAddress] = bigNumber.NewInt(0).Add(
-					delegatedVaultPartnerBalance[vaultAddress][partnerAddress],
+				if _, ok := delegatedVaultPartnerBalance[vaultAddress][partnerAddress][depositorAddress]; !ok {
+					delegatedVaultPartnerBalance[vaultAddress][partnerAddress][depositorAddress] = bigNumber.NewInt(0)
+				}
+
+				delegatedVaultPartnerBalance[vaultAddress][partnerAddress][depositorAddress] = bigNumber.NewInt(0).Add(
+					delegatedVaultPartnerBalance[vaultAddress][partnerAddress][depositorAddress],
 					delegatedBalance,
 				)
 			}
@@ -432,19 +454,66 @@ func computePartnerTotalTVL(
 	** Now that we got that, we want to know, for a given partner, how much TVL he has in total.
 	** As we have the delegated balance for each vault, we just need to grab this balance, the
 	** vault token price and sum it up.
+	** This first step if to fetch the vault token prices. We will batch the request for the block
+	** in order to make it faster.
 	**********************************************************************************************/
 	partnersTVL := make(map[common.Address]*bigNumber.Float)
+	vaultsWithTVL := []common.Address{}
+	//First grab the missing prices
 	for vaultAddress, partnersForThatVault := range delegatedVaultPartnerBalance {
-		for partner, delegatedBalance := range partnersForThatVault {
-			if _, ok := partnersTVL[partner]; !ok {
-				partnersTVL[partner] = bigNumber.NewFloat(0)
+		for partner, depositorsForThatPartner := range partnersForThatVault {
+			for _, delegatedBalance := range depositorsForThatPartner {
+				if _, ok := partnersTVL[partner]; !ok {
+					partnersTVL[partner] = bigNumber.NewFloat(0)
+				}
+				if delegatedBalance.Lte(bigNumber.NewInt(0)) {
+					continue
+				}
+				vaultsWithTVL = append(vaultsWithTVL, vaultAddress)
 			}
-			thisVault, _ := vaults.GetVault(chainID, vaultAddress)
+		}
+	}
+	prices.FetchPricesOnBlock(chainID, blockNumber, vaultsWithTVL)
 
-			partnersTVL[partner] = bigNumber.NewFloat(0).Add(
-				partnersTVL[partner],
-				formatWithPriceOnBlock(chainID, blockNumber, vaultAddress, delegatedBalance, thisVault.Decimals),
-			)
+	/**********************************************************************************************
+	** Then, we can just add the TVL for each partner.
+	**********************************************************************************************/
+	for vaultAddress, partnersForThatVault := range delegatedVaultPartnerBalance {
+		for partner, depositorsForThatPartner := range partnersForThatVault {
+			for depositorAddress, delegatedBalance := range depositorsForThatPartner {
+				if _, ok := partnersTVL[partner]; !ok {
+					partnersTVL[partner] = bigNumber.NewFloat(0)
+				}
+				if delegatedBalance.Gt(bigNumber.NewInt(0)) {
+					thisVault, _ := vaults.GetVault(chainID, vaultAddress)
+					if blockNumber == 16680455 && addresses.Equals(partner, LEDGER) {
+						value := bigNumber.NewFloat(0).Add(
+							partnersTVL[partner],
+							formatWithPriceOnBlock(chainID, blockNumber, vaultAddress, delegatedBalance, thisVault.Decimals),
+						)
+						logs.Success(`Adding`, formatWithPriceOnBlock(chainID, blockNumber, vaultAddress, delegatedBalance, thisVault.Decimals).Text('f', 4), `for vault`, vaultAddress.Hex(), `for a total of`, value.Text('f', 4), `for partner`, partner.Hex())
+					}
+					partnersTVL[partner] = bigNumber.NewFloat(0).Add(
+						partnersTVL[partner],
+						formatWithPriceOnBlock(chainID, blockNumber, vaultAddress, delegatedBalance, thisVault.Decimals),
+					)
+					if _, ok := delegateValue[partner]; !ok {
+						delegateValue[partner] = make(map[common.Address]map[common.Address]TWithNormalized)
+					}
+					if _, ok := delegateValue[partner][vaultAddress]; !ok {
+						delegateValue[partner][vaultAddress] = make(map[common.Address]TWithNormalized)
+					}
+					if _, ok := delegateValue[partner][vaultAddress][depositorAddress]; !ok {
+						delegateValue[partner][vaultAddress][depositorAddress] = TWithNormalized{}
+					}
+
+					delegateValue[partner][vaultAddress][depositorAddress] = TWithNormalized{
+						Raw:        delegatedBalance,
+						Normalized: toNormalizedAmount(delegatedBalance, thisVault.Decimals),
+						Value:      formatWithPriceOnBlock(chainID, blockNumber, vaultAddress, delegatedBalance, thisVault.Decimals),
+					}
+				}
+			}
 		}
 	}
 
@@ -452,7 +521,7 @@ func computePartnerTotalTVL(
 		totalTVL[partner] = bigNumber.NewFloat(0).Clone(tvl)
 		tierShare[partner] = bigNumber.NewFloat(0).Clone(partnerTVLTier(tvl))
 	}
-	return totalTVL, tierShare
+	return totalTVL, tierShare, delegateValue
 }
 
 type TBalanceSheet struct {
@@ -469,7 +538,7 @@ type TBalanceSheet struct {
 
 func getPartnerFees(chainID uint64) {
 	fromBlock := uint64(16036123)
-	// toBlock := uint64(16794005)
+	toBlock := uint64(16794005)
 
 	logs.Info(`Retrieving all harvests for chain: ` + strconv.Itoa(int(chainID)))
 	allHarvestPerStrategyPerVault := harvests.RetrieveAllHarvestPerStrategyPerVault(chainID, fromBlock, nil)
@@ -519,7 +588,7 @@ func getPartnerFees(chainID uint64) {
 					continue
 				}
 				partnerTVL, delegatedTVL := computePartnerVaultTVL(
-					harvest,
+					harvest.BlockNumber,
 					vault.Address,
 					vault.Decimals,
 					allPartnerTrackerEvents[vault.Address],
@@ -550,6 +619,9 @@ func getPartnerFees(chainID uint64) {
 	CSVExportBreakdown := []TPartnerBreakdownCSVExport{}
 	for _, sheets := range balanceSheets {
 		for _, sheet := range sheets {
+			if sheet.BlockNumber < fromBlock || sheet.BlockNumber > toBlock {
+				continue //Skip, not in the range
+			}
 			if sheet.PartnerTVL.Cmp(big.NewInt(0)) == 0 {
 				continue //Skip, no balance in the vault
 			}
@@ -557,7 +629,7 @@ func getPartnerFees(chainID uint64) {
 				continue //Skip, not ledger
 			}
 
-			_, tierShare := computePartnerTotalTVL(
+			partnersTvl, tierShare, delegateValue := computePartnerTotalTVL(
 				chainID,
 				sheet.BlockNumber,
 				allPartnerTrackerEvents,
@@ -565,36 +637,48 @@ func getPartnerFees(chainID uint64) {
 			)
 
 			tier := bigNumber.NewFloat(0)
+			partnerTVL := bigNumber.NewFloat(0)
 			if _, ok := tierShare[sheet.PartnerAddress]; ok {
 				tier = tierShare[sheet.PartnerAddress]
+				partnerTVL = partnersTvl[sheet.PartnerAddress]
 			}
 
 			prices := prices.FetchPricesOnBlock(chainID, sheet.BlockNumber, []common.Address{sheet.VaultAddress})
 			price := prices[sheet.VaultAddress]
-			payoutBase := bigNumber.NewFloat(0).Mul(
+			PartnerFeeShareBase := bigNumber.NewFloat(0).Mul(
 				toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals),
 				bigNumber.NewFloat(0).Div(
 					toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals),
 					bigNumber.NewFloat(100),
 				),
 			)
-			payoutTier := bigNumber.NewFloat(0).Mul(tier, payoutBase)
+			PartnerFeeShareTier := bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(0).Mul(tier, PartnerFeeShareBase),
+				bigNumber.NewFloat(0.55), //OPEX
+			)
 			CSVExport = append(CSVExport, TMainCSVExport{
-				Block:          sheet.BlockNumber,
-				Timestamp:      0,
-				Balance:        toNormalizedAmount(sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1),                                                     //Partner delegated balance
-				TotalSupply:    toNormalizedAmount(sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1),                                                       //Vault total supply
-				VaultPrice:     toNormalizedAmount(price, 6).Text('f', -1),                                                                                  //Vault price
-				BalanceUSD:     formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1), //Partner delegated balance in USD
-				Share:          toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1),                                      //Share of the partner in the vault
-				ProtocolFee:    toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals).Text('f', -1),                                                      //Fees collected by Yearn
-				Wrapper:        sheet.PartnerAddress.Hex(),                                                                                                  //Partner address
-				Vault:          sheet.VaultAddress.Hex(),                                                                                                    //Vault address
-				Tier:           tier.Text('f', -1),                                                                                                          //Tier share
-				PayoutBase:     payoutBase.Text('f', -1),                                                                                                    //payoutBase = fees * share
-				Payout:         payoutTier.Text('f', -1),                                                                                                    //payout = fees * share * tier
-				PayoutUSD:      bigNumber.NewFloat(0).Mul(payoutTier, toNormalizedAmount(price, 6)).Text('f', -1),
-				ProtocolFeeUSD: formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals).Text('f', -1),
+				Block:      sheet.BlockNumber,
+				Timestamp:  0,
+				Wrapper:    sheet.PartnerAddress.Hex(),                 //Partner address
+				Vault:      sheet.VaultAddress.Hex(),                   //Vault address
+				Tier:       tier.Text('f', -1),                         //Tier share
+				VaultPrice: toNormalizedAmount(price, 6).Text('f', -1), //Vault price
+
+				//
+				Balance:    toNormalizedAmount(sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1),
+				BalanceUSD: formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1),
+				//
+				TotalSupply:    toNormalizedAmount(sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1),
+				TotalSupplyUSD: formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1),
+				//
+				TotalDelegatedValue: partnerTVL.Text('f', -1),
+				//
+				// Share:               toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals).Text('f', -1),                                      //Share of the partner in the vault
+				// PartnerFeeShareBase: PartnerFeeShareBase.Text('f', -1),                                                                                           //PartnerFeeShareBase = fees * share
+				CollectedFee:       toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals).Text('f', -1), //Fees collected by Yearn
+				CollectedFeeUSD:    formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals).Text('f', -1),
+				PartnerFeeShare:    PartnerFeeShareTier.Text('f', -1), //PartnerFeeShare = fees * share * tier
+				PartnerFeeShareUSD: bigNumber.NewFloat(0).Mul(PartnerFeeShareTier, toNormalizedAmount(price, 6)).Text('f', -1),
 			})
 
 			logs.Info(`------------------------------------------------------------------------------------------------`)
@@ -602,55 +686,40 @@ func getPartnerFees(chainID uint64) {
 			logs.Info(`Partner ` + sheet.PartnerAddress.Hex())
 
 			normalizedTVL := toNormalizedAmount(sheet.VaultTVL, sheet.VaultDecimals)
-			normalizedTVLValue := formatWithPrice(chainID, sheet.VaultAddress, sheet.VaultTVL, sheet.VaultDecimals)
+			normalizedTVLValue := formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultTVL, sheet.VaultDecimals)
 			logs.Info(`TVL ` + normalizedTVL.Text('f', -1) + ` ($` + normalizedTVLValue.Text('f', 4) + `)`)
 
 			normalizedFees := toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals)
-			normalizedFeesValue := formatWithPrice(chainID, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals)
+			normalizedFeesValue := formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals)
 			logs.Info(`Fees ` + normalizedFees.Text('f', -1) + ` ($` + normalizedFeesValue.Text('f', 4) + `)`)
 
 			normalizedPartnerTVL := toNormalizedAmount(sheet.PartnerTVL, sheet.VaultDecimals)
-			normalizedPartnerTVLValue := formatWithPrice(chainID, sheet.VaultAddress, sheet.PartnerTVL, sheet.VaultDecimals)
+			normalizedPartnerTVLValue := formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.PartnerTVL, sheet.VaultDecimals)
 			normalizedPartnerRatio := toNormalizedRatio(sheet.PartnerTVL, sheet.VaultTVL, sheet.VaultDecimals)
 			logs.Info(`Partner TVL ` + normalizedPartnerTVL.Text('f', -1) + ` ($` + normalizedPartnerTVLValue.Text('f', 4) + `) | (` + normalizedPartnerRatio.Text('f', 2) + `%)`)
 
 			normalizedPartnerFees := bigNumber.NewFloat(0).Mul(toNormalizedAmount(sheet.VaultFees, sheet.VaultDecimals), tier)
-			normalizedPartnerFeesValue := bigNumber.NewFloat(0).Mul(formatWithPrice(chainID, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals), tier)
+			normalizedPartnerFeesValue := bigNumber.NewFloat(0).Mul(formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, sheet.VaultFees, sheet.VaultDecimals), tier)
 			logs.Info(`Partner Fees ` + normalizedPartnerFees.Text('f', -1) + ` ($` + normalizedPartnerFeesValue.Text('f', 4) + `)`)
 
 			logs.Info(`Delegated TVL`)
-			for depositor, delegatedBalance := range sheet.DelegatedTVL {
-				logs.Info("- " + depositor.Hex() + `: ` + toNormalizedAmount(delegatedBalance, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, delegatedBalance, sheet.VaultDecimals).Text('f', 4) + `) | (` + toNormalizedRatio(delegatedBalance, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
+			for vault, depositorsForThatVault := range delegateValue[sheet.PartnerAddress] {
+				for depositor, delegatedBalance := range depositorsForThatVault {
+					logs.Info("- " + depositor.Hex() + `: ` + delegatedBalance.Normalized.Text('f', -1) + ` ($` + delegatedBalance.Value.Text('f', 4) + `) | (` + toNormalizedRatio(delegatedBalance.Raw, sheet.VaultTVL, sheet.VaultDecimals).Text('f', 2) + `%)`)
 
-				CSVExportBreakdown = append(CSVExportBreakdown, TPartnerBreakdownCSVExport{
-					Block:      sheet.BlockNumber,
-					Wrapper:    sheet.PartnerAddress.Hex(),
-					Vault:      sheet.VaultAddress.Hex(),
-					Depositor:  depositor.Hex(),
-					Balance:    toNormalizedAmount(delegatedBalance, sheet.VaultDecimals).Text('f', -1),
-					BalanceUSD: formatWithPriceOnBlock(chainID, sheet.BlockNumber, sheet.VaultAddress, delegatedBalance, sheet.VaultDecimals).Text('f', -1),
-					Share:      toNormalizedRatio(delegatedBalance, sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1),
-				})
-
-				// allEventsForThisDepositor := partnerTracker.GroupRefereeTransferEventPerVault(allRefereesEvents[sheet.VaultAddress][depositor], sheet.BlockNumber)
-				// for vaultAddress, events := range allEventsForThisDepositor {
-				// 	thisVault, _ := vaults.GetVault(chainID, vaultAddress)
-				// 	for _, event := range events {
-				// 		if event.Referee == event.From {
-				// 			logs.Success(`-- ` + thisVault.DisplaySymbol + `: -` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
-				// 		} else {
-				// 			logs.Success(`-- ` + thisVault.DisplaySymbol + `: ` + toNormalizedAmount(event.Value, sheet.VaultDecimals).Text('f', -1) + ` ($` + formatWithPrice(chainID, sheet.VaultAddress, event.Value, sheet.VaultDecimals).Text('f', 4) + `)`)
-				// 		}
-				// 	}
-				// }
+					CSVExportBreakdown = append(CSVExportBreakdown, TPartnerBreakdownCSVExport{
+						Block:      sheet.BlockNumber,
+						Wrapper:    sheet.PartnerAddress.Hex(),
+						Vault:      vault.Hex(),
+						Depositor:  depositor.Hex(),
+						Balance:    delegatedBalance.Normalized.Text('f', -1),
+						BalanceUSD: delegatedBalance.Value.Text('f', -1),
+						Share:      toNormalizedRatio(delegatedBalance.Raw, sheet.PartnerTVL, sheet.VaultDecimals).Text('f', -1),
+					})
+				}
 			}
-			// logs.Success(`Total delegated to ` + sheet.PartnerAddress.Hex() + `: $` + totalDelegatedToPartnerAtBlock[sheet.PartnerAddress].Text('f', 4))
-			// for partnerAddress, delegatedBalance := range totalDelegatedToPartnerAtBlock {
-			// 	logs.Info(`Total delegated to ` + partnerAddress.Hex() + `: $` + delegatedBalance.Text('f', 4))
-			// }
 			logs.Info(`------------------------------------------------------------------------------------------------`)
 			fmt.Println()
-			// os.Exit(0)
 		}
 
 		//save in a csv file
@@ -716,18 +785,9 @@ func partnerTVLTier(value *bigNumber.Float) *bigNumber.Float {
 
 }
 
-// UTILS FUNCTION
-func formatWithPrice(chainID uint64, tokenAddress common.Address, amount *bigNumber.Int, decimals uint64) *bigNumber.Float {
-	price, ok := prices.FindPrice(chainID, tokenAddress)
-	if ok {
-		return toNormalizedValue(amount, price, decimals)
-	}
-	return toNormalizedValue(amount, bigNumber.NewInt(0), 1)
-}
 func formatWithPriceOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Address, amount *bigNumber.Int, decimals uint64) *bigNumber.Float {
-	allPrices := prices.FetchPricesOnBlock(chainID, blockNumber, []common.Address{tokenAddress})
-	price := allPrices[tokenAddress]
-	if price == nil || price.IsZero() {
+	price, ok := prices.FindPriceOnBlock(chainID, blockNumber, tokenAddress)
+	if !ok {
 		logs.Warning(`No price found for`, tokenAddress.Hex(), `on block`, blockNumber)
 	}
 	return toNormalizedValue(amount, price, decimals)

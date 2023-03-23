@@ -45,6 +45,9 @@ type THarvest struct {
 	// Computed
 	Duration *bigNumber.Int
 	Fees     THarvestFees
+
+	// Extra
+	TokenPrice *bigNumber.Int
 }
 
 func (harvest *THarvest) New(log types.Log) *THarvest {

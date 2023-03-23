@@ -21,7 +21,7 @@ func graphQLRequestForReports(strategyAddress string, c *gin.Context) *graphql.R
 	}`)
 }
 
-//GetReports will, for a given strategy on a given chainID, return a list of reports
+// GetReports will, for a given strategy on a given chainID, return a list of reports
 func (y Controller) GetReports(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -41,7 +41,7 @@ func (y Controller) GetReports(c *gin.Context) {
 		return
 	}
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLRequestForReports(address.String(), c)
+	request := graphQLRequestForReports(address.Hex(), c)
 	var response models.TReportsFromGraph
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)

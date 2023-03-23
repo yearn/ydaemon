@@ -67,7 +67,7 @@ func fetchFromVision(chainID uint64, vaultAddress string) float64 {
 	return lastValue
 }
 
-//GetVaultsVisionAPY will return the current APY for a given vault
+// GetVaultsVisionAPY will return the current APY for a given vault
 func (y Controller) GetVaultsVisionAPY(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -80,5 +80,5 @@ func (y Controller) GetVaultsVisionAPY(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, fetchFromVision(chainID, address.String()))
+	c.JSON(http.StatusOK, fetchFromVision(chainID, address.Hex()))
 }

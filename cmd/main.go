@@ -15,11 +15,6 @@ import (
 // 	logs.Pretty(n.Text('f', -1))
 // }
 
-// func init() {
-// 	sum()
-// 	os.Exit(0)
-// }
-
 func main() {
 	logs.Info(`Loading initial state in memory`)
 	loadDaemonsForAllChains(trace)

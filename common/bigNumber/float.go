@@ -220,3 +220,8 @@ func (b *Float) UnmarshalJSON(p []byte) error {
 	b.Float = z
 	return nil
 }
+
+// Convert the internal date as CSV string
+func (b Float) MarshalCSV() (string, error) {
+	return b.Text('f', -1), nil
+}

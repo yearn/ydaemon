@@ -1,4 +1,4 @@
-package models
+package vaults
 
 import (
 	"github.com/ethereum/go-ethereum/common"
@@ -33,16 +33,30 @@ type TLegacyAPIAPY struct {
 	} `json:"composite"`
 }
 type TLegacyAPI struct {
-	Address common.Address
+	Address common.MixedcaseAddress
 	APY     TLegacyAPIAPY
 }
 
 type TAggregatedVault struct {
-	Address       common.Address
+	Address       common.MixedcaseAddress
 	LegacyAPY     TLegacyAPIAPY
 	PricePerShare bigNumber.Int
 }
 
 func (v *TAggregatedVault) SetPricePerShare(pricePerShare *bigNumber.Int) {
 	v.PricePerShare = *pricePerShare
+}
+
+var aggregatedVault map[uint64]map[common.MixedcaseAddress]*TAggregatedVault
+
+func init() {
+	aggregatedVault = make(map[uint64]map[common.MixedcaseAddress]*TAggregatedVault)
+}
+
+func GetAggregatedVault(chainID uint64, address common.MixedcaseAddress) (*TAggregatedVault, bool) {
+	if aggregatedVault[chainID] == nil {
+		return nil, false
+	}
+	vault, ok := aggregatedVault[chainID][address]
+	return vault, ok
 }

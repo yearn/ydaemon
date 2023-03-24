@@ -37,3 +37,11 @@ type TPartners struct {
 	RetiredTreasury []string                   `json:"retired_treasury"`
 	Wrappers        []TExternalPartnersWrapper `json:"wrappers"`
 }
+
+var partnersByAddress map[uint64]map[common.MixedcaseAddress]*TPartners
+var partnersByName map[uint64]map[string]*TPartners
+
+func init() {
+	partnersByAddress = make(map[uint64]map[common.MixedcaseAddress]*TPartners)
+	partnersByName = make(map[uint64]map[string]*TPartners)
+}

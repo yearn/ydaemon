@@ -31,6 +31,21 @@ func runDaemon(chainID uint64, wg *sync.WaitGroup, delay time.Duration, performA
 	}
 }
 
+func runDaemonWithBlocks(chainID uint64, startBlock uint64, endBlock *uint64, wg *sync.WaitGroup, delay time.Duration, performAction func(chainID uint64, startBlock uint64, endBlock *uint64)) {
+	isDone := false
+	for {
+		performAction(chainID, startBlock, endBlock)
+		if !isDone {
+			isDone = true
+			wg.Done()
+		}
+		if delay == 0 {
+			return
+		}
+		time.Sleep(delay)
+	}
+}
+
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64) {
 	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {

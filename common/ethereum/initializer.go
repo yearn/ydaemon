@@ -1,8 +1,6 @@
 package ethereum
 
 import (
-	"sync"
-
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
@@ -31,13 +29,4 @@ func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		MulticallClientForChainID[chainID] = NewMulticall(GetRPCURI(chainID), env.MULTICALL_ADDRESSES[chainID])
 	}
-
-	// Init the blockTimeSyncMap for all the chains supported by yDaemon
-	wg := &sync.WaitGroup{}
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(1)
-		go LoadBlockTime(chainID, wg)
-	}
-	wg.Wait()
-
 }

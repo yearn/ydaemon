@@ -5,19 +5,19 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
-var treasuryChangesForChain = make(map[uint64]map[common.Address]map[uint64]common.Address)
-var defaultTreasury = common.HexToAddress(`0x93a62da5a14c80f265dabc077fcee437b1a0efde`)
+var _treasuryChangesForChain = make(map[uint64]map[common.Address]map[uint64]common.Address)
+var _defaultTreasury = common.HexToAddress(`0x93a62da5a14c80f265dabc077fcee437b1a0efde`)
 
 /**********************************************************************************************
-** StoreUpdateRewards is used to store the treasury changes for a given chain in a reusable
+** SetUpdateRewards is used to store the treasury changes for a given chain in a reusable
 ** map
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
 ** - updates: a map of vaultAddress -> blockNumber -> treasuryAddress
 **********************************************************************************************/
-func StoreUpdateRewards(chainID uint64, updates map[common.Address]map[uint64]common.Address) {
-	treasuryChangesForChain[chainID] = updates
+func SetUpdateRewards(chainID uint64, updates map[common.Address]map[uint64]common.Address) {
+	_treasuryChangesForChain[chainID] = updates
 }
 
 /**************************************************************************************************
@@ -37,14 +37,14 @@ func StoreUpdateRewards(chainID uint64, updates map[common.Address]map[uint64]co
 ** returns the updated treasury address.
 **************************************************************************************************/
 func FindTreasuryAtBlock(chainID uint64, vaultAddress common.Address, blockNumber uint64) common.Address {
-	treasury := defaultTreasury
-	if _, ok := treasuryChangesForChain[chainID]; !ok {
+	treasury := _defaultTreasury
+	if _, ok := _treasuryChangesForChain[chainID]; !ok {
 		return treasury
 	}
-	if _, ok := treasuryChangesForChain[chainID][vaultAddress]; !ok {
+	if _, ok := _treasuryChangesForChain[chainID][vaultAddress]; !ok {
 		return treasury
 	}
-	for block, treasuryForBlock := range treasuryChangesForChain[chainID][vaultAddress] {
+	for block, treasuryForBlock := range _treasuryChangesForChain[chainID][vaultAddress] {
 		if block <= blockNumber {
 			treasury = treasuryForBlock
 		}
@@ -68,13 +68,13 @@ func FindTreasuryAtBlock(chainID uint64, vaultAddress common.Address, blockNumbe
 **************************************************************************************************/
 func FindTreasuriesForVault(chainID uint64, vaultAddress common.Address) []common.Address {
 	treasuries := []common.Address{vaultAddress}
-	if _, ok := treasuryChangesForChain[chainID]; !ok {
+	if _, ok := _treasuryChangesForChain[chainID]; !ok {
 		return treasuries
 	}
-	if _, ok := treasuryChangesForChain[chainID][vaultAddress]; !ok {
+	if _, ok := _treasuryChangesForChain[chainID][vaultAddress]; !ok {
 		return treasuries
 	}
-	for _, treasuryForBlock := range treasuryChangesForChain[chainID][vaultAddress] {
+	for _, treasuryForBlock := range _treasuryChangesForChain[chainID][vaultAddress] {
 		if !helpers.Contains(treasuries, treasuryForBlock) {
 			treasuries = append(treasuries, treasuryForBlock)
 		}

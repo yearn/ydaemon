@@ -49,7 +49,7 @@ func main() {
 			meta.RetrieveAllTokensFromFiles(chainID)
 			meta.RetrieveAllStrategiesFromFiles(chainID)
 			meta.RetrieveAllProtocolsFromFiles(chainID)
-			go runDaemon(chainID, &wg, 0, partnerFees.Run)
+			go runDaemonWithBlocks(chainID, *startBlock, endBlock, &wg, 0, partnerFees.Run)
 		}
 		wg.Wait()
 	}

@@ -38,7 +38,7 @@ type TRefereeTransferEvent struct {
 ** referee. This will be used to calculate the current balance of a referee for a given vault
 ** at any given time to compute the referral bonus.
 **********************************************************************************************/
-func RetrieveAllPartnerTrackerEvents(chainID uint64) (
+func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *uint64) (
 	map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
 	map[common.Address]map[common.Address][]TRefereeTransferEvent,
 ) {
@@ -47,8 +47,8 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64) (
 	** current state of the partner tracker
 	**********************************************************************************************/
 	timeBefore := time.Now()
-	allEvents := retrieveAllRefererBalanceIncrease(chainID)
-	logs.Success(`It tooks`, time.Since(timeBefore), `to load`, len(allEvents), ` referral balance increase events`)
+	allEvents := retrieveAllRefererBalanceIncrease(chainID, fromBlock, toBlock)
+	logs.Success(`It tooks`, time.Since(timeBefore), `to load`, len(allEvents), `referral balance increase events`)
 
 	/**********************************************************************************************
 	** Once we got all the events, we can check how many unique referrer, referee and vaults we
@@ -93,7 +93,7 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64) (
 			},
 		)
 	}
-	allTransfersForReferees := retrieveAllTransfersForReferee(chainID, refereeVaultBlockData)
+	allTransfersForReferees := retrieveAllTransfersForReferee(chainID, fromBlock, toBlock, refereeVaultBlockData)
 	return partnerTrackerTree, allTransfersForReferees
 }
 
@@ -105,6 +105,8 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64) (
 **********************************************************************************************/
 func retrieveAllTransfersForReferee(
 	chainID uint64,
+	fromBlock uint64,
+	toBlock *uint64,
 	refereeVaultBlockData map[common.Address][]TRefereeVaultBlockData,
 ) map[common.Address]map[common.Address][]TRefereeTransferEvent {
 	client := ethereum.GetRPC(chainID)
@@ -121,8 +123,8 @@ func retrieveAllTransfersForReferee(
 				earliestBlock = refereeBlock.Block
 			}
 		}
-		opts := &bind.FilterOpts{Start: earliestBlock, End: nil}
 
+		opts := &bind.FilterOpts{Start: earliestBlock, End: toBlock}
 		vaultTokenContract, _ := contracts.NewERC20(vaultAddress, client)
 		wg.Add(2)
 		go func(_allRefereesAddresses []common.Address) {

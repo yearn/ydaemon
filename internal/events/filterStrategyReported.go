@@ -1,136 +1,228 @@
 package events
 
 import (
+	"math/big"
 	"strconv"
-	"strings"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
+type TMimicStrategyReportBase struct {
+	Vault     common.Address
+	Strategy  common.Address
+	Token     common.Address
+	Gain      *big.Int
+	Loss      *big.Int
+	DebtPaid  *big.Int
+	TotalGain *big.Int
+	TotalLoss *big.Int
+	TotalDebt *big.Int
+	DebtAdded *big.Int
+	DebtRatio *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
+
 /**************************************************************************************************
-** filterStrategyReported will filter all the StrategyReported events and store them in an async
-** map to be decoded later. The key will be the vaultAddress-strategyAddress-blockNumber and
-** the value will be the blockTimestamp.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - vaultAddress: the address of the vault we are working on
-** - opts: the filter options
-** - start: the block number to start the filter from
-** - asyncMapLastReports: the ptr to the async map to store the blockTimestamp
-** - wg: the async ptr to the WaitGroup to sync the goroutines
-**
-** Returns nothing as asyncMapLastReports is updated via a pointer
+** filterStrategyReportedFor031To043 will filter all the StrategyReported events for the vaults
+** between 0.3.1 and 0.4.3 and store them in an async map to be decoded later. The key is set but
+** is to be ignored as the value is the event itself.
 **************************************************************************************************/
-func filterStrategyReported(
+func filterStrategyReportedFor031To043(
 	chainID uint64,
-	vaultAddress common.Address,
+	vault *vaults.TVault,
 	opts *bind.FilterOpts,
-	asyncMapLastReports *sync.Map,
+	asyncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
 	defer wg.Done()
 
-	client := ethereum.GetRPC(chainID)
-	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
+	client := ethereum.RPC[1]
+	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 	if log, err := currentVault.FilterStrategyReported(opts, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
 			}
-			blockTimestamp := ethereum.GetBlockTime(chainID, log.Event.Raw.BlockNumber)
-			eventKey := (vaultAddress.String() + `-` +
-				log.Event.Strategy.String() + `-` +
-				strconv.FormatUint(log.Event.Raw.BlockNumber, 10))
-			asyncMapLastReports.LoadOrStore(eventKey, blockTimestamp)
+			formatedLogs := TMimicStrategyReportBase{
+				Vault:     vault.Address,
+				Token:     vault.Token.Address,
+				Strategy:  log.Event.Strategy,
+				Gain:      log.Event.Gain,
+				Loss:      log.Event.Loss,
+				DebtPaid:  log.Event.DebtPaid,
+				TotalGain: log.Event.TotalGain,
+				TotalLoss: log.Event.TotalLoss,
+				TotalDebt: log.Event.TotalDebt,
+				DebtAdded: log.Event.DebtAdded,
+				DebtRatio: log.Event.DebtRatio,
+				Raw:       log.Event.Raw,
+			}
+			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
+			asyncMap.Store(eventKey, formatedLogs)
 		}
-	} else {
-		traces.
-			Capture(`error`, `impossible to FilterStrategyReported for Yvault043 `+vaultAddress.Hex()).
-			SetEntity(`vault`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-			SetTag(`vaultAddress`, vaultAddress.Hex()).
-			Send()
 	}
 }
 
-/**********************************************************************************************
-** Retrieve all transfers from vaults to strategies. This can only happen in one situation: the
-** vault is sending strategist fees to the strategy for them to be taken by the strategist.
-** We need that to be able to calculate the strategist fees as many variable could make the
-** offchain calculation wrong.
-** Thanks to this number, from offchain totalFees calculation, we can deduct the treasury fees.
+/**************************************************************************************************
+** filterStrategyReportedFor030 will filter all the StrategyReported events for the vaults 0.3.0
+** and store them in an async map to be decoded later. The key is set but is to be ignored as the
+** value is the event itself.
+** DebtPaid is set to 0 as it was not present in the event.
+**************************************************************************************************/
+func filterStrategyReportedFor030(
+	chainID uint64,
+	vault *vaults.TVault,
+	opts *bind.FilterOpts,
+	asyncMap *sync.Map,
+	wg *sync.WaitGroup,
+) {
+	defer wg.Done()
+
+	client := ethereum.RPC[1]
+	currentVault, _ := contracts.NewYvault030(vault.Address, client)
+	if log, err := currentVault.FilterStrategyReported(opts, nil); err == nil {
+		for log.Next() {
+			if log.Error() != nil {
+				continue
+			}
+			formatedLogs := TMimicStrategyReportBase{
+				Vault:     vault.Address,
+				Token:     vault.Token.Address,
+				Strategy:  log.Event.Strategy,
+				Gain:      log.Event.Gain,
+				Loss:      log.Event.Loss,
+				DebtPaid:  big.NewInt(0),
+				TotalGain: log.Event.TotalGain,
+				TotalLoss: log.Event.TotalLoss,
+				TotalDebt: log.Event.TotalDebt,
+				DebtAdded: log.Event.DebtAdded,
+				DebtRatio: log.Event.DebtRatio,
+				Raw:       log.Event.Raw,
+			}
+
+			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
+			asyncMap.Store(eventKey, formatedLogs)
+		}
+	}
+}
+
+/**************************************************************************************************
+** filterStrategyReportedFor022 will filter all the StrategyReported events for the vaults 0.2.2
+** and store them in an async map to be decoded later. The key is set but is to be ignored as the
+** value is the event itself.
+** DebtPaid is set to 0 as it was not present in the event.
+** DebtRatio is set to 0 as it was not present in the event.
+**************************************************************************************************/
+func filterStrategyReportedFor022(
+	chainID uint64,
+	vault *vaults.TVault,
+	opts *bind.FilterOpts,
+	asyncMap *sync.Map,
+	wg *sync.WaitGroup,
+) {
+	defer wg.Done()
+
+	client := ethereum.RPC[1]
+	currentVault, _ := contracts.NewYvault022(vault.Address, client)
+	if log, err := currentVault.FilterStrategyReported(opts, nil); err == nil {
+		for log.Next() {
+			if log.Error() != nil {
+				continue
+			}
+			formatedLogs := TMimicStrategyReportBase{
+				Vault:     vault.Address,
+				Token:     vault.Token.Address,
+				Strategy:  log.Event.Strategy,
+				Gain:      log.Event.Gain,
+				Loss:      log.Event.Loss,
+				DebtPaid:  big.NewInt(0),
+				TotalGain: log.Event.TotalGain,
+				TotalLoss: log.Event.TotalLoss,
+				TotalDebt: log.Event.TotalDebt,
+				DebtAdded: log.Event.DebtAdded,
+				DebtRatio: big.NewInt(0),
+				Raw:       log.Event.Raw,
+			}
+
+			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
+			asyncMap.Store(eventKey, formatedLogs)
+		}
+	}
+}
+
+/**************************************************************************************************
+** HandleStrategyReported will loop over a map of vaults and fetch all the strategy reported events
+** from start to end. Based on the version of the vault, the function will call the correct
+** function to fetch the events.
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - strategies: list of all TStrategyAdded to work on
+** - vaultsMap: the map of vaults we want to fetch the fee for
+** - start: the block number to start fetching from
+** - end: the block number to stop fetching from
 **
 ** Returns:
-** - a map of vaultAddress -> strategyAddress -> blockNumber -> TEventBlock
-**********************************************************************************************/
+** - An array of TMimicStrategyReportBase via the T any. This hack is used to avoid import circles.
+**************************************************************************************************/
 func HandleStrategyReported(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
+	vaultsMap map[common.Address]*vaults.TVault,
 	start uint64,
 	end *uint64,
-) map[common.Address]map[common.Address]map[uint64]uint64 {
-	/**********************************************************************************************
-	** Concurrently retrieve all strategyReported from vaults to strategies, waiting for the end
-	** of all goroutines via the wg before continuing.
-	**********************************************************************************************/
-	asyncMapLastReports := sync.Map{}
+) []TMimicStrategyReportBase {
+	timeBefore := time.Now()
+	syncMap := sync.Map{}
+
 	wg := &sync.WaitGroup{}
-	for _, v := range vaults {
+	for _, vault := range vaultsMap {
 		wg.Add(1)
 		opts := &bind.FilterOpts{Start: start, End: end}
 		if start == 0 {
-			opts = &bind.FilterOpts{Start: v.Activation, End: end}
+			opts = &bind.FilterOpts{Start: vault.Activation, End: end}
 		}
 
-		go filterStrategyReported(
-			chainID,
-			v.Address,
-			opts,
-			&asyncMapLastReports,
-			wg,
-		)
+		switch vault.Version {
+		case `0.2.2`:
+			go filterStrategyReportedFor022(
+				chainID,
+				vault,
+				opts,
+				&syncMap,
+				wg,
+			)
+		case `0.3.0`:
+			go filterStrategyReportedFor030(
+				chainID,
+				vault,
+				opts,
+				&syncMap,
+				wg,
+			)
+		default: //case `0.3.1`, `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+			go filterStrategyReportedFor031To043(
+				chainID,
+				vault,
+				opts,
+				&syncMap,
+				wg,
+			)
+		}
 	}
 	wg.Wait()
 
-	/**********************************************************************************************
-	** Once all transfers from vaults to strategies have been retrieved, we need to extract them
-	** from the sync.Map.
-	**
-	** The syncMap variable is setup as follows:
-	** - key: vaultAddress-strategyAddress-blockNumber
-	** - value: []TEventBlock
-	**********************************************************************************************/
-	count := 0
-	lastReportForStrategy := make(map[common.Address]map[common.Address]map[uint64]uint64)
-	asyncMapLastReports.Range(func(key, value interface{}) bool {
-		eventKey := strings.Split(key.(string), `-`)
-		vaultAddressParsed := common.HexToAddress(eventKey[0])
-		strategyAddressParsed := common.HexToAddress(eventKey[1])
-		blockNumber, _ := strconv.ParseUint(eventKey[2], 10, 64)
-
-		if _, ok := lastReportForStrategy[vaultAddressParsed]; !ok {
-			lastReportForStrategy[vaultAddressParsed] = make(map[common.Address]map[uint64]uint64)
-		}
-		if _, ok := lastReportForStrategy[vaultAddressParsed][strategyAddressParsed]; !ok {
-			lastReportForStrategy[vaultAddressParsed][strategyAddressParsed] = make(map[uint64]uint64)
-		}
-		lastReportForStrategy[vaultAddressParsed][strategyAddressParsed][blockNumber] = value.(uint64)
-		count++
+	events := []TMimicStrategyReportBase{}
+	syncMap.Range(func(_, value interface{}) bool {
+		events = append(events, value.(TMimicStrategyReportBase))
 		return true
 	})
-
-	return lastReportForStrategy
+	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve the all the harvest events`)
+	return events
 }

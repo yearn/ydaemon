@@ -11,11 +11,12 @@ type TAPIV1Fees struct {
 
 // TAPIV1APY contains all the information useful about the APY, APR, fees and breakdown.
 type TAPIV1APY struct {
-	Type     string     `json:"type"`
-	GrossAPR float64    `json:"gross_apr"`
-	NetAPY   float64    `json:"net_apy"`
-	Fees     TAPIV1Fees `json:"fees"`
-	Points   struct {
+	Type              string     `json:"type"`
+	GrossAPR          float64    `json:"gross_apr"`
+	NetAPY            float64    `json:"net_apy"`
+	StakingRewardsAPR float64    `json:"staking_rewards_apr"`
+	Fees              TAPIV1Fees `json:"fees"`
+	Points            struct {
 		WeekAgo   float64 `json:"week_ago"`
 		MonthAgo  float64 `json:"month_ago"`
 		Inception float64 `json:"inception"`

@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"path/filepath"
 	"reflect"
+	"runtime"
 	"strconv"
 	"sync"
 
@@ -59,7 +61,9 @@ func OpenDB(chainID uint64, dbKey string) *badger.DB {
 		DBMutex[chainID][dbKey].Lock()
 		defer DBMutex[chainID][dbKey].Unlock()
 		chainStr := strconv.FormatUint(chainID, 10)
-		opts := badger.DefaultOptions(`./data/store/` + chainStr + `/` + dbKey)
+		_, b, _, _ := runtime.Caller(0)
+		basepath := filepath.Dir(b)
+		opts := badger.DefaultOptions(basepath + `../../../data/store/` + chainStr + `/` + dbKey)
 		opts = opts.WithMetricsEnabled(false)
 		opts = opts.WithLogger(nil)
 		opts = opts.WithNumGoroutines(16)

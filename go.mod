@@ -17,6 +17,7 @@ require (
 	github.com/montanaflynn/stats v0.6.6
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.0
+	github.com/zenthangplus/goccm v1.1.3
 )
 
 require (

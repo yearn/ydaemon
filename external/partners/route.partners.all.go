@@ -12,7 +12,7 @@ import (
 func (y Controller) GetAllPartners(c *gin.Context) {
 	allPartners := make(map[uint64]map[string]*TPartners)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		partners := Store.PartnersByAddress[chainID]
+		partners := partnersByAddress[chainID]
 		for _, partner := range partners {
 			if _, ok := allPartners[chainID]; !ok {
 				allPartners[chainID] = make(map[string]*TPartners)
@@ -31,7 +31,7 @@ func (y Controller) GetPartners(c *gin.Context) {
 		return
 	}
 
-	partners, ok := Store.PartnersByAddress[chainID]
+	partners, ok := partnersByAddress[chainID]
 	if !ok {
 		c.String(http.StatusBadRequest, "no data available")
 		return

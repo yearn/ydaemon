@@ -20,18 +20,15 @@ import (
 **
 ** Returns nothing as the asyncRewardAdded is updated via a pointer
 **************************************************************************************************/
-func filterReferrerBalanceIncrease(
-	chainID uint64,
-	asyncRewardAdded *sync.Map,
-) {
+func filterReferrerBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *uint64, asyncRewardAdded *sync.Map) {
 	client := ethereum.GetRPC(chainID)
 	partnerContract := PARTNER_TRACKERS_ADDRESSES[chainID]
 	partnerContractAddress := partnerContract.Address
 	currentVault, _ := contracts.NewYPartnerTracker(partnerContractAddress, client)
-	opts := &bind.FilterOpts{
-		Start: partnerContract.Block,
-		End:   nil,
-	}
+
+	//Note: we don't use fromBlock here because we want the full history previous to the toblock
+	//to ensure the balance is correct
+	opts := &bind.FilterOpts{Start: partnerContract.Block, End: toBlock}
 
 	if log, err := currentVault.FilterReferredBalanceIncreased(opts, nil, nil, nil); err == nil {
 		for log.Next() {
@@ -66,7 +63,7 @@ func filterReferrerBalanceIncrease(
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func retrieveAllRefererBalanceIncrease(chainID uint64) map[uint64]TEventReferredBalanceIncreased {
+func retrieveAllRefererBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *uint64) map[uint64]TEventReferredBalanceIncreased {
 	trace := traces.Init(`app.indexer.partnertracker.referred_balance_increased`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -79,7 +76,7 @@ func retrieveAllRefererBalanceIncrease(chainID uint64) map[uint64]TEventReferred
 	** goroutines via the wg before continuing.
 	**********************************************************************************************/
 	asyncRewardAdded := sync.Map{}
-	filterReferrerBalanceIncrease(chainID, &asyncRewardAdded)
+	filterReferrerBalanceIncrease(chainID, fromBlock, toBlock, &asyncRewardAdded)
 
 	/**********************************************************************************************
 	** Once we got all the reward added blocks, we need to extract them from the sync.Map.

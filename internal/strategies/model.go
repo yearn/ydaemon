@@ -221,11 +221,11 @@ func FindStrategy(chainID uint64, strategyAddress common.Address) (*TStrategy, b
 }
 
 /**********************************************************************************************
-** SplitStrategiesAddedPerVault will transform a list of TStrategyAdded into a map of
+** ToVaultMap will transform a list of TStrategyAdded into a map of
 ** TStrategyAdded per vault address:
 ** - [vaultAddress] - [strategyAddress] - TStrategyAdded
 **********************************************************************************************/
-func SplitStrategiesAddedPerVault(strategiesAddedList []*TStrategy) map[common.Address]map[common.Address]*TStrategy {
+func ToVaultMap(strategiesAddedList []*TStrategy) map[common.Address]map[common.Address]*TStrategy {
 	strategiesAddedPerVault := make(map[common.Address]map[common.Address]*TStrategy)
 	for _, strategy := range strategiesAddedList {
 		if _, ok := strategiesAddedPerVault[strategy.VaultAddress]; !ok {

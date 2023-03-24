@@ -50,13 +50,13 @@ func FetchPartnersFromFiles(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TPartners} if we were working with JS/TS
-	if Store.PartnersByAddress[chainID] == nil {
-		Store.PartnersByAddress[chainID] = make(map[common.MixedcaseAddress]*TPartners)
-		Store.PartnersByName[chainID] = make(map[string]*TPartners)
+	if partnersByAddress[chainID] == nil {
+		partnersByAddress[chainID] = make(map[common.MixedcaseAddress]*TPartners)
+		partnersByName[chainID] = make(map[string]*TPartners)
 	}
 	for _, partner := range allPartners {
-		Store.PartnersByAddress[chainID][partner.Treasury] = partner
-		Store.PartnersByName[chainID][partner.Name] = partner
+		partnersByAddress[chainID][partner.Treasury] = partner
+		partnersByName[chainID][partner.Name] = partner
 	}
 }
 

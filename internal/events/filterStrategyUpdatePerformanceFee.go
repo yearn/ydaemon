@@ -131,7 +131,7 @@ func HandleUpdateStrategyPerformanceFee(
 		strategyAddress := common.HexToAddress(eventKey[1])
 		blockNumber, _ := strconv.ParseUint(eventKey[2], 10, 64)
 
-		// If the mapping for [vaultAddress] doesn't exist, create it
+		// If the mapping for [vaultAddress] doesn't exist, create itg
 		if _, ok := performanceFeeForStrategies[vaultAddress]; !ok {
 			performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
 		}

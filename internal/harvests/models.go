@@ -1,10 +1,27 @@
 package harvests
 
 import (
+	"math/big"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
+
+type TStrategyReportBase struct {
+	Vault     common.Address
+	Strategy  common.Address
+	Token     common.Address
+	Gain      *big.Int
+	Loss      *big.Int
+	DebtPaid  *big.Int
+	TotalGain *big.Int
+	TotalLoss *big.Int
+	TotalDebt *big.Int
+	DebtAdded *big.Int
+	DebtRatio *big.Int
+	Raw       types.Log // Blockchain specific contextual infos
+}
 
 type THarvestFees struct {
 	ManagementFeeBPS       *bigNumber.Int
@@ -58,4 +75,17 @@ func (harvest *THarvest) New(log types.Log) *THarvest {
 	harvest.LogIndex = log.Index
 	harvest.Removed = log.Removed
 	return harvest
+}
+
+var _allHarvests = make(map[common.Address][]THarvest)
+
+func GetAll() map[common.Address][]THarvest {
+	return _allHarvests
+}
+
+func Get(vaultAddress common.Address) []THarvest {
+	if _, ok := _allHarvests[vaultAddress]; !ok {
+		return []THarvest{}
+	}
+	return _allHarvests[vaultAddress]
 }

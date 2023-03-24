@@ -17,16 +17,14 @@ func (y Controller) GetPartner(c *gin.Context) {
 	}
 
 	partnerAddressOrName := c.Param("addressOrName")
-	partner, ok := Store.PartnersByName[chainID][partnerAddressOrName]
+	partner, ok := partnersByName[chainID][partnerAddressOrName]
 	if !ok {
-		partner, ok = Store.PartnersByAddress[chainID][addresses.ToMixedcase(partnerAddressOrName)]
+		partner, ok = partnersByAddress[chainID][addresses.ToMixedcase(partnerAddressOrName)]
 		if !ok {
 			c.String(http.StatusBadRequest, "no data available")
 			return
 		}
 	}
-
-	// partner = partner.BalanceOf() //WORK IN PROGRESS
 
 	c.JSON(http.StatusOK, partner)
 }

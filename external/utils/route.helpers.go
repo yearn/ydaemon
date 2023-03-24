@@ -27,19 +27,6 @@ func GetHarvests(c *gin.Context) {
 		return
 	}
 
-	allHarvest := harvests.AllHarvests[vaultAddress]
-
-	// sumOfAllGains := bigNumber.NewFloat(0)
-	// sumOfAllFees := bigNumber.NewFloat(0)
-	// for _, v := range allHarvest {
-	// 	sumOfAllGains = sumOfAllGains.Add(sumOfAllGains, bigNumber.NewFloat().SetInt(v.Gain))
-	// 	sumOfAllFees = sumOfAllFees.Add(sumOfAllFees, bigNumber.NewFloat().SetInt(v.Fees.TotalCollectedFee))
-	// 	logs.Info(`Harvest fee ratio: `, bigNumber.NewFloat().Mul(v.Fees.TotalFeeRatio, bigNumber.NewFloat(100)).String()+`%`)
-	// }
-
-	// logs.Success(`Total gains: `, sumOfAllGains.String())
-	// logs.Success(`Total fees: `, sumOfAllFees.String())
-	// logs.Success(`Total fee ratio: `, bigNumber.NewFloat().Mul(bigNumber.NewFloat().Div(sumOfAllFees, sumOfAllGains), bigNumber.NewFloat(100)).String()+`%`)
-
+	allHarvest := harvests.Get(vaultAddress)
 	c.JSON(http.StatusOK, allHarvest)
 }

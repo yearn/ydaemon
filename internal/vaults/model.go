@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
@@ -184,36 +183,61 @@ func (t *TVault) BuildMigration() TMigration {
 	return migration
 }
 
-func (t *TVault) BuildAPY() TAPY {
+func (t *TVault) BuildAPY(legacyAPY any, hasLegacyAPY bool) TAPY {
+	type TLegacyAPIAPY struct {
+		Type     string  `json:"type"`
+		GrossAPR float64 `json:"gross_apr"`
+		NetAPY   float64 `json:"net_apy"`
+		Fees     struct {
+			Performance float64 `json:"performance"`
+			Withdrawal  float64 `json:"withdrawal"`
+			Management  float64 `json:"management"`
+			KeepCRV     float64 `json:"keep_crv"`
+			CvxKeepCRV  float64 `json:"cvx_keep_crv"`
+		} `json:"fees"`
+		Points struct {
+			WeekAgo   float64 `json:"week_ago"`
+			MonthAgo  float64 `json:"month_ago"`
+			Inception float64 `json:"inception"`
+		} `json:"points"`
+		Composite struct {
+			Boost      float64 `json:"boost"`
+			PoolAPY    float64 `json:"pool_apy"`
+			BoostedAPR float64 `json:"boosted_apr"`
+			BaseAPR    float64 `json:"base_apr"`
+			CvxAPR     float64 `json:"cvx_apr"`
+			RewardsAPR float64 `json:"rewards_apr"`
+		} `json:"composite"`
+	}
+
 	apy := TAPY{}
-	aggregatedVault, okLegacyAPI := store.Store.AggregatedVault[t.ChainID][common.NewMixedcaseAddress(t.Address)]
 	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
 
-	if okLegacyAPI {
+	if hasLegacyAPY {
 		apy = TAPY{
-			Type:              aggregatedVault.LegacyAPY.Type,
-			GrossAPR:          aggregatedVault.LegacyAPY.GrossAPR,
-			NetAPY:            aggregatedVault.LegacyAPY.NetAPY,
-			StakingRewardsAPR: aggregatedVault.LegacyAPY.StakingRewardsAPR,
+			Type:              legacyAPY.(TLegacyAPIAPY).Type,
+			GrossAPR:          legacyAPY.(TLegacyAPIAPY).GrossAPR,
+			NetAPY:            legacyAPY.(TLegacyAPIAPY).NetAPY,
+			StakingRewardsAPR: legacyAPY.(TLegacyAPIAPY).StakingRewardsAPR,
 			Points: TAPYPoints{
-				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
-				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
-				Inception: aggregatedVault.LegacyAPY.Points.Inception,
+				WeekAgo:   legacyAPY.(TLegacyAPIAPY).Points.WeekAgo,
+				MonthAgo:  legacyAPY.(TLegacyAPIAPY).Points.MonthAgo,
+				Inception: legacyAPY.(TLegacyAPIAPY).Points.Inception,
 			},
 			Composite: TAPYComposite{
-				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
-				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
-				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
-				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
-				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
-				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
+				Boost:      legacyAPY.(TLegacyAPIAPY).Composite.Boost,
+				PoolAPY:    legacyAPY.(TLegacyAPIAPY).Composite.PoolAPY,
+				BoostedAPR: legacyAPY.(TLegacyAPIAPY).Composite.BoostedAPR,
+				BaseAPR:    legacyAPY.(TLegacyAPIAPY).Composite.BaseAPR,
+				CvxAPR:     legacyAPY.(TLegacyAPIAPY).Composite.CvxAPR,
+				RewardsAPR: legacyAPY.(TLegacyAPIAPY).Composite.RewardsAPR,
 			},
 			Fees: TAPYFees{
-				Performance: aggregatedVault.LegacyAPY.Fees.Performance,
-				Management:  aggregatedVault.LegacyAPY.Fees.Management,
-				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
-				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
-				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
+				Performance: legacyAPY.(TLegacyAPIAPY).Fees.Performance,
+				Management:  legacyAPY.(TLegacyAPIAPY).Fees.Management,
+				Withdrawal:  legacyAPY.(TLegacyAPIAPY).Fees.Withdrawal,
+				KeepCRV:     legacyAPY.(TLegacyAPIAPY).Fees.KeepCRV,
+				CvxKeepCRV:  legacyAPY.(TLegacyAPIAPY).Fees.CvxKeepCRV,
 			},
 		}
 		if okMeta && vaultFromMeta.APYTypeOverride != `` {

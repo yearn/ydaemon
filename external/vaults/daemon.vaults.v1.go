@@ -8,9 +8,9 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/store"
 )
 
@@ -37,18 +37,18 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// Unmarshal the response body into the variable AggregatedVault. Body is a byte array,
 	// with this manipulation we are putting it in the correct TLegacyAPI struct format
-	vaults := []models.TLegacyAPI{}
+	vaults := []TLegacyAPI{}
 	if err := json.Unmarshal(body, &vaults); err != nil {
 		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address
-	if store.Store.AggregatedVault[chainID] == nil {
-		store.Store.AggregatedVault[chainID] = make(map[common.MixedcaseAddress]*models.TAggregatedVault)
+	if aggregatedVault[chainID] == nil {
+		aggregatedVault[chainID] = make(map[common.MixedcaseAddress]*TAggregatedVault)
 	}
 	for _, vault := range vaults {
-		store.Store.AggregatedVault[chainID][common.NewMixedcaseAddress(vault.Address)] = &models.TAggregatedVault{
+		aggregatedVault[chainID][addresses.ToMixedcase(vault.Address)] = &TAggregatedVault{
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
@@ -66,11 +66,11 @@ func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	temp := make(map[common.MixedcaseAddress]*models.TAggregatedVault)
+	temp := make(map[common.MixedcaseAddress]*TAggregatedVault)
 	store.Iterate(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 
 	if temp != nil && (len(temp) > 0) {
-		store.Store.AggregatedVault[chainID] = temp
+		aggregatedVault[chainID] = temp
 		logs.Success("Data loaded for the AggregatedVault store for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

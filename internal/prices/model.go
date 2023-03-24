@@ -2,14 +2,10 @@ package prices
 
 import (
 	"encoding/json"
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 )
 
 type TCurveFactoriesPoolData struct {
@@ -61,21 +57,6 @@ var _priceMap = make(map[uint64]map[common.Address]*bigNumber.Int)
 **********************************************************************************************/
 var _historicalPriceMap = sync.Map{}
 
-/**************************************************************************************************
-** LoadHistoricalPrices will retrieve the historical prices values from the local DB and store
-** them in the _historicalPriceMap.
-**************************************************************************************************/
-func LoadHistoricalPrices(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
-	temp := make(map[string]string)
-	store.Iterate(chainID, store.TABLES.HISTORICAL_PRICES, &temp)
-	if temp != nil && (len(temp) > 0) {
-		for key, value := range temp {
-			_historicalPriceMap.Store(key, bigNumber.NewInt(0).SetString(value))
-		}
-	}
-}
-
 /**********************************************************************************************
 ** MapPrices will, for a given chainID, return a map of prices.
 ** The map will be of the form: map[vaultAddress]bigNumber.Int
@@ -99,43 +80,4 @@ func FindPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Int, boo
 		return nil, false
 	}
 	return price, true
-}
-
-/**********************************************************************************************
-** FindPriceOnBlock will, for a given chainID, try to find the price of the provided
-** tokenAddress for the provided blockNumber stored in _historicalPriceMap.
-** It will return the price if found, and a boolean indicating if the token was found or not.
-**********************************************************************************************/
-func FindPriceOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Address) (*bigNumber.Int, bool) {
-	key := strconv.FormatUint(chainID, 10) + "_" + strconv.FormatUint(blockNumber, 10) + "_" + tokenAddress.Hex()
-	price, ok := _historicalPriceMap.Load(key)
-	if !ok {
-		logs.Info(`Fetching historical price for token`, tokenAddress.Hex(), `on block`, blockNumber)
-		newPrice := FetchPricesOnBlock(chainID, blockNumber, []common.Address{tokenAddress})
-		if newPrice == nil {
-			return nil, false
-		}
-		price = newPrice[tokenAddress]
-		_historicalPriceMap.Store(key, price)
-	}
-	return price.(*bigNumber.Int), true
-}
-
-/**********************************************************************************************
-** StorePriceOnBlock will, for a given chainID, store the price of the provided tokenAddress
-** for the provided blockNumber in _historicalPriceMap.
-**********************************************************************************************/
-func StorePriceOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Address, value *bigNumber.Int) {
-	key := strconv.FormatUint(chainID, 10) + "_" + strconv.FormatUint(blockNumber, 10) + "_" + tokenAddress.Hex()
-	_historicalPriceMap.Store(key, value)
-	go store.SaveInDB(chainID, store.TABLES.HISTORICAL_PRICES, key, value.String())
-}
-
-func init() {
-	wg := &sync.WaitGroup{}
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(1)
-		go LoadHistoricalPrices(chainID, wg)
-	}
-	wg.Wait()
 }

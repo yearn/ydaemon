@@ -185,10 +185,11 @@ func (t *TVault) BuildMigration() TMigration {
 
 func (t *TVault) BuildAPY(legacyAPY any, hasLegacyAPY bool) TAPY {
 	type TLegacyAPIAPY struct {
-		Type     string  `json:"type"`
-		GrossAPR float64 `json:"gross_apr"`
-		NetAPY   float64 `json:"net_apy"`
-		Fees     struct {
+		Type              string  `json:"type"`
+		GrossAPR          float64 `json:"gross_apr"`
+		NetAPY            float64 `json:"net_apy"`
+		StakingRewardsAPR float64 `json:"staking_rewards_apr"`
+		Fees              struct {
 			Performance float64 `json:"performance"`
 			Withdrawal  float64 `json:"withdrawal"`
 			Management  float64 `json:"management"`

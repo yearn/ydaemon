@@ -46,6 +46,8 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			continue
 		} else if migrable == `all` && !newVault.Migration.Available {
 			continue
+		} else if migrable == `ignore` && newVault.Migration.Available {
+			continue
 		}
 
 		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, vaultAddress)

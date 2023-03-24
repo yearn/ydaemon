@@ -32,7 +32,7 @@ func selectStrategiesCondition(s string) string {
 // If the strategy is `all`, they will all be included
 // If the strategy is `nodust`, they will be included if they have a TVL > 100$
 // If the strategy is `ignore`, any vault with a migration available will be ignored
-var MIGRABLE_CONDITIONS = []string{`none`, `all`, `nodust`}
+var MIGRABLE_CONDITIONS = []string{`none`, `all`, `nodust`, `ignore`}
 
 func selectMigrableCondition(s string) string {
 	if s == `` {

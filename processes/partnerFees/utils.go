@@ -74,6 +74,7 @@ func partnerTVLTier(value *bigNumber.Float) *bigNumber.Float {
 }
 
 func exportCSV[T any](fileName string, data T) {
+	os.Remove(fileName)
 	outputFile, err := os.OpenFile(fileName, os.O_RDWR|os.O_CREATE, os.ModePerm)
 	if err != nil {
 		logs.Error(err)

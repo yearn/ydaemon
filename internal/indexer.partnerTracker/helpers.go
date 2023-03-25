@@ -2,7 +2,9 @@ package partnerTracker
 
 import (
 	"math"
+	"math/rand"
 	"sort"
+	"strconv"
 	"sync"
 	"time"
 
@@ -111,9 +113,9 @@ func retrieveAllTransfersForReferee(
 ) map[common.Address]map[common.Address][]TRefereeTransferEvent {
 	client := ethereum.GetRPC(chainID)
 	now := time.Now()
-	transfersEvents := []TRefereeTransferEvent{}
-	wg := sync.WaitGroup{}
+	transferEventSyncMap := sync.Map{}
 
+	wg := sync.WaitGroup{}
 	for vaultAddress, refereeBlockData := range refereeVaultBlockData {
 		allRefereesAddresses := []common.Address{}
 		earliestBlock := uint64(math.MaxUint64)
@@ -134,7 +136,10 @@ func retrieveAllTransfersForReferee(
 					if log.Error() != nil {
 						continue
 					}
-					transfersEvents = append(transfersEvents, TRefereeTransferEvent{
+					randomKey := strconv.FormatUint(uint64(rand.Intn(1000000)), 10)
+					eventKey := log.Event.Raw.TxHash.Hex() + "_" + strconv.FormatUint(uint64(log.Event.Raw.Index), 10) + "_" + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + "_" + randomKey
+
+					event := TRefereeTransferEvent{
 						TxHash:      log.Event.Raw.TxHash,
 						BlockNumber: log.Event.Raw.BlockNumber,
 						TxIndex:     log.Event.Raw.TxIndex,
@@ -144,8 +149,11 @@ func retrieveAllTransfersForReferee(
 						From:        log.Event.From,
 						To:          log.Event.To,
 						Token:       log.Event.Raw.Address,
-					})
+					}
+					transferEventSyncMap.Store(eventKey, event)
 				}
+			} else {
+				logs.Error(`Error while retrieving transfer events for referee`, err)
 			}
 		}(allRefereesAddresses)
 		go func(_allRefereesAddresses []common.Address) {
@@ -155,7 +163,10 @@ func retrieveAllTransfersForReferee(
 					if log.Error() != nil {
 						continue
 					}
-					transfersEvents = append(transfersEvents, TRefereeTransferEvent{
+					randomKey := strconv.FormatUint(uint64(rand.Intn(1000000)), 10)
+					eventKey := log.Event.Raw.TxHash.Hex() + "_" + strconv.FormatUint(uint64(log.Event.Raw.Index), 10) + "_" + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + "_" + randomKey
+
+					event := TRefereeTransferEvent{
 						TxHash:      log.Event.Raw.TxHash,
 						BlockNumber: log.Event.Raw.BlockNumber,
 						TxIndex:     log.Event.Raw.TxIndex,
@@ -165,12 +176,21 @@ func retrieveAllTransfersForReferee(
 						From:        log.Event.From,
 						To:          log.Event.To,
 						Token:       log.Event.Raw.Address,
-					})
+					}
+					transferEventSyncMap.Store(eventKey, event)
 				}
+			} else {
+				logs.Error(`Error while retrieving transfer events for referee`, err)
 			}
 		}(allRefereesAddresses)
 	}
 	wg.Wait()
+
+	transfersEvents := []TRefereeTransferEvent{}
+	transferEventSyncMap.Range(func(key, value interface{}) bool {
+		transfersEvents = append(transfersEvents, value.(TRefereeTransferEvent))
+		return true
+	})
 
 	logs.Success(`It tooks`, time.Since(now), `to retrieve all transfers for all user with a delegate deposit:`, len(transfersEvents))
 	allTransfers := map[common.Address]map[common.Address][]TRefereeTransferEvent{} //[vault][referee][transfer]
@@ -224,24 +244,6 @@ func FilterReferralBalanceIncreaseEventsForVault(
 			sort.Slice(eventDepositorLevel, func(i, j int) bool {
 				return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
 			})
-		}
-	}
-	return events
-}
-
-/**********************************************************************************************
-** SortReferralBalanceIncreaseEvents
-**********************************************************************************************/
-func SortReferralBalanceIncreaseEvents(
-	events map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
-) map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased {
-	for _, eventsVaultLevel := range events {
-		for _, eventsPartnerLevel := range eventsVaultLevel {
-			for _, eventDepositorLevel := range eventsPartnerLevel {
-				sort.Slice(eventDepositorLevel, func(i, j int) bool {
-					return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
-				})
-			}
 		}
 	}
 	return events

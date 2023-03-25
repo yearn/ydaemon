@@ -1,6 +1,8 @@
 package partnerFees
 
 import (
+	"sort"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -50,14 +52,7 @@ func computeBlockData(
 	vaultDelegatedAmountForPartner = make(map[common.Address]map[common.Address]*bigNumber.Int)
 
 	// map -> [vaultAddress][eventHash][events]
-	partnerDelegateIncreaseEvent := make(map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
-
-	/**********************************************************************************************
-	** First we sort all the events by block number in order to compute the TVL at each block.
-	** Here, we got ALL the events from the start block to the end block, no matter the vault or
-	** the partner.
-	**********************************************************************************************/
-	partnerTrackerEvents := partnerTracker.SortReferralBalanceIncreaseEvents(partnersTrackerEvents)
+	partnerDelegateIncreaseEvent := make(map[common.Address]map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
 
 	/**********************************************************************************************
 	** We want to know, for every harvest that happened impacting the partner:
@@ -68,18 +63,9 @@ func computeBlockData(
 	** us to quickly check if a transfer event is a deposit or not.
 	** partnerDelegateIncreaseEvent -> [partnerAddress][vaultAddress][eventHash][event]
 	**********************************************************************************************/
-	for vaultAddress, eventsForThatVault := range partnerTrackerEvents {
+	for vaultAddress, eventsForThatVault := range partnersTrackerEvents {
 		for partnerAddress, eventsForThatPartner := range eventsForThatVault {
-			/**************************************************************************************
-			** We need to init the vaultDelegatedAmountForPartner map to avoid nil assignment
-			**************************************************************************************/
-			if _, ok := vaultDelegatedAmountForPartner[vaultAddress]; !ok {
-				vaultDelegatedAmountForPartner[vaultAddress] = make(map[common.Address]*bigNumber.Int)
-			}
-			if _, ok := vaultDelegatedAmountForPartner[vaultAddress][partnerAddress]; !ok {
-				vaultDelegatedAmountForPartner[vaultAddress][partnerAddress] = bigNumber.NewInt(0)
-			}
-
+			_ = partnerAddress
 			/**************************************************************************************
 			** For each of the events, we will assign the event in a map that will allow us to
 			** quickly check if a transfer event is a deposit from the partner contract or not:
@@ -88,20 +74,22 @@ func computeBlockData(
 			** transfer event is a deposit from the partner contract and we can delegate the
 			** amount deposited to the corresponding partner.
 			**************************************************************************************/
-			for _, events := range eventsForThatPartner {
-				/**********************************************************************************
-				** We need to init the partnerDelegateIncreaseEvent map to avoid nil assignment.
-				**********************************************************************************/
-				if _, ok := partnerDelegateIncreaseEvent[vaultAddress]; !ok {
-					partnerDelegateIncreaseEvent[vaultAddress] = make(map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
-				}
-
+			for depositorAddress, events := range eventsForThatPartner {
 				/**********************************************************************************
 				** Process all the events for that partner/vault/depositor and assign them to the
 				** corresponding maps.
 				**********************************************************************************/
 				for _, event := range events {
-					partnerDelegateIncreaseEvent[vaultAddress][event.TxHash] = event
+					/**********************************************************************************
+					** We need to init the partnerDelegateIncreaseEvent map to avoid nil assignment.
+					**********************************************************************************/
+					if _, ok := partnerDelegateIncreaseEvent[vaultAddress]; !ok {
+						partnerDelegateIncreaseEvent[vaultAddress] = make(map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
+					}
+					if _, ok := partnerDelegateIncreaseEvent[vaultAddress][depositorAddress]; !ok {
+						partnerDelegateIncreaseEvent[vaultAddress][depositorAddress] = make(map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
+					}
+					partnerDelegateIncreaseEvent[vaultAddress][depositorAddress][event.TxHash] = event
 				}
 			}
 		}
@@ -138,6 +126,11 @@ func computeBlockData(
 			depositorDelegatedBalance := make(map[common.Address]*bigNumber.Int)
 			depositorActualBalance := bigNumber.NewInt(0)
 
+			//sort eventsForThisDepositor by block number
+			sort.Slice(eventForThisDepositor, func(i, j int) bool {
+				return eventForThisDepositor[i].BlockNumber < eventForThisDepositor[j].BlockNumber
+			})
+
 			/**************************************************************************************
 			** For each transfer event, we check the step by step history to compute the delegated
 			** balances and the actual balance.
@@ -148,6 +141,7 @@ func computeBlockData(
 				}
 				isReceiving := addresses.Equals(transfer.To, depositorAddress)
 				isSending := addresses.Equals(transfer.From, depositorAddress)
+				_ = isSending
 
 				/**********************************************************************************
 				** If the user is receiving fund, this means that he has either:
@@ -162,7 +156,7 @@ func computeBlockData(
 					** All other transfers will be ignored.
 					******************************************************************************/
 					if _, ok := partnerDelegateIncreaseEvent[vaultAddress]; ok {
-						if partnerTrackerEvent, ok := partnerDelegateIncreaseEvent[vaultAddress][transfer.TxHash]; ok {
+						if partnerTrackerEvent, ok := partnerDelegateIncreaseEvent[vaultAddress][depositorAddress][transfer.TxHash]; ok {
 							/**********************************************************************
 							** We have a match, this is a deposit via the partner tracker.
 							**********************************************************************/
@@ -197,19 +191,22 @@ func computeBlockData(
 					depositorActualBalanceBeforeEvent := bigNumber.NewInt(0).Clone(depositorActualBalance)
 					depositorActualBalance = bigNumber.NewInt(0).Sub(depositorActualBalance, transfer.Value)
 					for partnerAddress, delegatedBalance := range depositorDelegatedBalance {
-						delegatedRatio := bigNumber.NewFloat(0).Div(
-							bigNumber.NewFloat().SetInt(delegatedBalance),
-							bigNumber.NewFloat().SetInt(depositorActualBalanceBeforeEvent),
+						_ = partnerAddress
+						if delegatedBalance.Lte(bigNumber.NewInt(0)) {
+							continue
+						}
+						delegatedWithdraw := bigNumber.NewInt(0).Mul(
+							transfer.Value,
+							bigNumber.NewInt(0).Div(delegatedBalance, depositorActualBalanceBeforeEvent),
 						)
-						delegatedWithdraw := bigNumber.NewFloat(0).Mul(
-							delegatedRatio,
-							bigNumber.NewFloat(0).SetInt(transfer.Value),
+						expectedNewDelegatedBalance := bigNumber.NewInt(0).Sub(
+							bigNumber.NewInt(0).Clone(delegatedBalance),
+							delegatedWithdraw,
 						)
-						expectedNewDelegatedBalance := bigNumber.NewInt(0).Sub(delegatedBalance, delegatedWithdraw.Int())
 						if expectedNewDelegatedBalance.Lte(bigNumber.NewInt(0)) {
 							depositorDelegatedBalance[partnerAddress] = bigNumber.NewInt(0)
 						} else {
-							depositorDelegatedBalance[partnerAddress] = bigNumber.NewInt(0).Sub(delegatedBalance, delegatedWithdraw.Int())
+							depositorDelegatedBalance[partnerAddress] = expectedNewDelegatedBalance
 						}
 					}
 				}
@@ -230,6 +227,9 @@ func computeBlockData(
 			** increased by X for this specific depositor.
 			**************************************************************************************/
 			for partnerAddress, delegatedBalance := range depositorDelegatedBalance {
+				if delegatedBalance.Lte(bigNumber.NewInt(0)) {
+					continue
+				}
 				/**********************************************************************************
 				** We need to init the delegatedVaultPartnerBalance maps to avoid nil assignment
 				**********************************************************************************/
@@ -295,11 +295,24 @@ func computeBlockData(
 						tvlForPartner[partnerAddress],
 						formatWithPriceOnBlock(chainID, blockNumber, thisVault.Token.Address, delegatedBalance, thisVault.Decimals),
 					)
+
+					/**************************************************************************************
+					** We need to init the vaultDelegatedAmountForPartner map to avoid nil assignment
+					**************************************************************************************/
+					if _, ok := vaultDelegatedAmountForPartner[vaultAddress]; !ok {
+						vaultDelegatedAmountForPartner[vaultAddress] = make(map[common.Address]*bigNumber.Int)
+					}
+					if _, ok := vaultDelegatedAmountForPartner[vaultAddress][partnerAddress]; !ok {
+						vaultDelegatedAmountForPartner[vaultAddress][partnerAddress] = bigNumber.NewInt(0)
+					}
 					vaultDelegatedAmountForPartner[vaultAddress][partnerAddress] = bigNumber.NewInt(0).Add(
 						vaultDelegatedAmountForPartner[vaultAddress][partnerAddress],
 						delegatedBalance,
 					)
 
+					/**************************************************************************************
+					** We need to init the partnerDelegatedBalanceBreakdown map to avoid nil assignment
+					**************************************************************************************/
 					if _, ok := partnerDelegatedBalanceBreakdown[partnerAddress]; !ok {
 						partnerDelegatedBalanceBreakdown[partnerAddress] = make(map[common.Address]map[common.Address]TBig)
 					}

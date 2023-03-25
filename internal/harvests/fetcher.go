@@ -131,16 +131,14 @@ func RetrieveAllHarvests(chainID uint64, start uint64, end *uint64) map[common.A
 	)
 
 	allHarvestPerStrategyPerVault := map[common.Address]map[common.Address][]THarvest{}
-	count := 0
 	for _, v := range harvests {
 		_allHarvests[v.Vault] = append(_allHarvests[v.Vault], v)
 		if allHarvestPerStrategyPerVault[v.Vault] == nil {
 			allHarvestPerStrategyPerVault[v.Vault] = map[common.Address][]THarvest{}
 		}
 		allHarvestPerStrategyPerVault[v.Vault][v.Strategy] = append(allHarvestPerStrategyPerVault[v.Vault][v.Strategy], v)
-		count++
 	}
-	logs.Success("Harvest initialization done in", time.Since(timeBefore))
+	logs.Success("Harvest initialization done in", time.Since(timeBefore), "for", len(harvests), "harvests")
 
 	return allHarvestPerStrategyPerVault
 }

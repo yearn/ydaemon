@@ -2,6 +2,7 @@ package partnerFees
 
 import (
 	"sort"
+	"strconv"
 	"sync"
 	"time"
 
@@ -63,8 +64,10 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 	**********************************************************************************************/
 	vaultsSupplies := getVaultsSupplyAtBlock(allVaults, allHarvests)
 
-	CSV_EXPORT := []TMainCSVExport{}
-	CSV_BREAKDOWN_EXPORT := []TPartnerBreakdownCSVExport{}
+	CSV_EXPORT_SYNCMAP := sync.Map{}
+	CSV_BREAKDOWN_EXPORT_SYNCMAP := sync.Map{}
+	// CSV_EXPORT := []TMainCSVExport{}
+	// CSV_BREAKDOWN_EXPORT := []TPartnerBreakdownCSVExport{}
 	payoutPerPartner := map[common.Address]map[common.Address]TBig{}
 
 	/**********************************************************************************************
@@ -84,7 +87,6 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 		for _, harvestList := range allHarvestForVault {
 			wg.Add(len(harvestList))
 			for _, harvest := range harvestList {
-
 				go func(harvest harvests.THarvest, vaultAddress common.Address, vaultTokenAddress common.Address, vaultDecimals uint64) {
 					defer wg.Done()
 					if (harvest.BlockNumber < fromBlock) || (toBlock != nil && harvest.BlockNumber > *toBlock) {
@@ -93,6 +95,7 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 					if (harvest.Fees.TreasuryCollectedFee).IsZero() { //Skip, no gain or loss, no fees
 						return
 					}
+
 					totalTVLForPartner, partnerTierRatio, vaultDelegatedAmountForPartner, partnerDelegationBreakdown := computeBlockData(
 						chainID,
 						harvest.BlockNumber,
@@ -158,7 +161,8 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 						/******************************************************************************
 						** Add this item to the CSV export
 						******************************************************************************/
-						CSV_EXPORT = append(CSV_EXPORT, TMainCSVExport{
+						eventKey := strconv.FormatUint(harvest.BlockNumber, 10) + "_" + partnerAddress.Hex() + "_" + vaultAddress.Hex() + "_" + partnerTVL.String() + "_" + partnerDelegatedAmount.String()
+						CSV_EXPORT_SYNCMAP.Store(eventKey, TMainCSVExport{
 							Block:               harvest.BlockNumber,
 							Partner:             partnerAddress.Hex(),                       //Partner address
 							Vault:               vaultAddress.Hex(),                         //Vault address
@@ -182,7 +186,8 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 								if delegatedBalance.Raw.IsZero() {
 									continue // Skip, no TVL for this partner
 								}
-								CSV_BREAKDOWN_EXPORT = append(CSV_BREAKDOWN_EXPORT, TPartnerBreakdownCSVExport{
+								eventKey := strconv.FormatUint(harvest.BlockNumber, 10) + "_" + partnerAddress.Hex() + "_" + vaultAddress.Hex() + "_" + depositorAddress.Hex() + "_" + delegatedBalance.Raw.String()
+								CSV_BREAKDOWN_EXPORT_SYNCMAP.Store(eventKey, TPartnerBreakdownCSVExport{
 									Block:      harvest.BlockNumber,
 									Partner:    partnerAddress.Hex(),
 									Vault:      vaultAddress.Hex(),
@@ -203,12 +208,40 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 	** By default, our map are not sorted by blocknumber as we ran the script in parallel. To ease
 	** things, we will sort them. and export them
 	**********************************************************************************************/
+	CSV_EXPORT := []TMainCSVExport{}
+	CSV_BREAKDOWN_EXPORT := []TPartnerBreakdownCSVExport{}
+	CSV_EXPORT_SYNCMAP.Range(func(key, value interface{}) bool {
+		CSV_EXPORT = append(CSV_EXPORT, value.(TMainCSVExport))
+		return true
+	})
+	CSV_BREAKDOWN_EXPORT_SYNCMAP.Range(func(key, value interface{}) bool {
+		CSV_BREAKDOWN_EXPORT = append(CSV_BREAKDOWN_EXPORT, value.(TPartnerBreakdownCSVExport))
+		return true
+	})
+
 	sort.Slice(CSV_EXPORT, func(i, j int) bool {
 		return CSV_EXPORT[i].Block < CSV_EXPORT[j].Block
 	})
 	sort.Slice(CSV_BREAKDOWN_EXPORT, func(i, j int) bool {
 		return CSV_BREAKDOWN_EXPORT[i].Block < CSV_BREAKDOWN_EXPORT[j].Block
 	})
+
+	//loop over CSV_BREAKDOWN_EXPORT and check if we got some duplicates
+	for i, item := range CSV_BREAKDOWN_EXPORT {
+		if i == 0 {
+			continue
+		}
+		if item.Partner == CSV_BREAKDOWN_EXPORT[i-1].Partner &&
+			item.Vault == CSV_BREAKDOWN_EXPORT[i-1].Vault &&
+			item.Depositor == CSV_BREAKDOWN_EXPORT[i-1].Depositor &&
+			item.Balance == CSV_BREAKDOWN_EXPORT[i-1].Balance &&
+			item.BalanceUSD == CSV_BREAKDOWN_EXPORT[i-1].BalanceUSD &&
+			item.Block == CSV_BREAKDOWN_EXPORT[i-1].Block {
+			logs.Error(`Duplicate found in CSV_BREAKDOWN_EXPORT`, item)
+		}
+	}
+	logs.Success(`NO DUPLICATES FOUND IN CSV_BREAKDOWN_EXPORT`)
+
 	exportCSV(`output.csv`, CSV_EXPORT)
 	exportCSV(`outputBreakdown.csv`, CSV_BREAKDOWN_EXPORT)
 

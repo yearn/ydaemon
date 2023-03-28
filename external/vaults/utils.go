@@ -28,10 +28,11 @@ func selectStrategiesCondition(s string) string {
 
 // MIGRABLE_CONDITIONS contains the possible conditions to determine if the migrable vaults should be
 // included in the return value.
-// If the strategy is `none`, they will not be included
+// If the strategy is `none`, they will not be included if they also are hideAlways or retired
 // If the strategy is `all`, they will all be included
 // If the strategy is `nodust`, they will be included if they have a TVL > 100$
-var MIGRABLE_CONDITIONS = []string{`none`, `all`, `nodust`}
+// If the strategy is `ignore`, any vault with a migration available will be ignored
+var MIGRABLE_CONDITIONS = []string{`none`, `all`, `nodust`, `ignore`}
 
 func selectMigrableCondition(s string) string {
 	if s == `` {

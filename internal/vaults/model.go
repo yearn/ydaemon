@@ -53,12 +53,13 @@ type TAPYComposite struct {
 
 // TAPY contains all the information useful about the APY, APR, fees and breakdown.
 type TAPY struct {
-	Type      string        `json:"type"`
-	GrossAPR  float64       `json:"gross_apr"`
-	NetAPY    float64       `json:"net_apy"`
-	Fees      TAPYFees      `json:"fees"`
-	Points    TAPYPoints    `json:"points"`
-	Composite TAPYComposite `json:"composite"`
+	Type              string        `json:"type"`
+	GrossAPR          float64       `json:"gross_apr"`
+	NetAPY            float64       `json:"net_apy"`
+	StakingRewardsAPR float64       `json:"staking_rewards_apr"`
+	Fees              TAPYFees      `json:"fees"`
+	Points            TAPYPoints    `json:"points"`
+	Composite         TAPYComposite `json:"composite"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.
@@ -189,9 +190,10 @@ func (t *TVault) BuildAPY() TAPY {
 
 	if okLegacyAPI {
 		apy = TAPY{
-			Type:     aggregatedVault.LegacyAPY.Type,
-			GrossAPR: aggregatedVault.LegacyAPY.GrossAPR,
-			NetAPY:   aggregatedVault.LegacyAPY.NetAPY,
+			Type:              aggregatedVault.LegacyAPY.Type,
+			GrossAPR:          aggregatedVault.LegacyAPY.GrossAPR,
+			NetAPY:            aggregatedVault.LegacyAPY.NetAPY,
+			StakingRewardsAPR: aggregatedVault.LegacyAPY.StakingRewardsAPR,
 			Points: TAPYPoints{
 				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
 				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,

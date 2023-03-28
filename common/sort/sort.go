@@ -21,8 +21,11 @@ func SortBy[T any](jsonField string, sortOrder string, arr []T) {
 	for _, jsonField := range jsonFields {
 		if valueType.Kind() == reflect.Struct {
 			for i := 0; i <= valueType.NumField(); i++ {
-				if (i == valueType.NumField()) && (match == 0) {
-					return
+				if i == valueType.NumField() {
+					if match == 0 {
+						return
+					}
+					break
 				}
 				fields[match] = valueType.Field(i)
 

@@ -42,14 +42,9 @@ func BuildTokenList(chainID uint64) {
 	}
 	logs.Info(`Reloading tokenLists...`)
 
-	supportedTokenMap := make(map[string]DefaultTokenListToken)
-
 	if len(WidoTokenList.Tokens) > 0 {
 		for _, token := range WidoTokenList.Tokens {
 			tokenAddress := common.HexToAddress(token.Address)
-			if _, exists := supportedTokenMap[tokenAddress.Hex()]; !exists {
-				continue
-			}
 			if uint64(token.ChainID) != chainID {
 				continue
 			}
@@ -77,9 +72,6 @@ func BuildTokenList(chainID uint64) {
 	if len(PortalsTokenList.Tokens) > 0 {
 		for _, token := range PortalsTokenList.Tokens {
 			tokenAddress := common.HexToAddress(token.Address)
-			if _, exists := supportedTokenMap[tokenAddress.Hex()]; !exists {
-				continue
-			}
 			if uint64(token.ChainID) != chainID {
 				continue
 			}

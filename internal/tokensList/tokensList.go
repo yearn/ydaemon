@@ -40,6 +40,7 @@ func BuildTokenList(chainID uint64) {
 	if !lastUpdate.IsZero() && lastUpdate.Before(time.Now().Add(-time.Hour*24)) {
 		return
 	}
+	return //TODO: TRIGGER MANUALLY FOR NOW
 	logs.Info(`Reloading tokenLists...`)
 
 	if len(WidoTokenList.Tokens) > 0 {

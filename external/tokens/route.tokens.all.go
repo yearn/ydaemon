@@ -3,7 +3,6 @@ package tokens
 import (
 	"net/http"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -12,18 +11,18 @@ import (
 )
 
 type TAllTokens struct {
-	Address          common.MixedcaseAddress `json:"address"`
-	Name             string                  `json:"name"`
-	Symbol           string                  `json:"symbol"`
-	Decimals         uint64                  `json:"decimals"`
-	IsVault          bool                    `json:"isVault"`
-	DisplayName      string                  `json:"display_name,omitempty"`
-	DisplaySymbol    string                  `json:"display_symbol,omitempty"`
-	Description      string                  `json:"description,omitempty"`
-	Website          string                  `json:"website,omitempty"`
-	Categories       []string                `json:"categories,omitempty"`
-	UnderlyingTokens []string                `json:"underlyingTokens,omitempty"`
-	Localization     *meta.TLocalization     `json:"localization,omitempty"`
+	Address          string              `json:"address"`
+	Name             string              `json:"name"`
+	Symbol           string              `json:"symbol"`
+	Decimals         uint64              `json:"decimals"`
+	IsVault          bool                `json:"isVault"`
+	DisplayName      string              `json:"display_name,omitempty"`
+	DisplaySymbol    string              `json:"display_symbol,omitempty"`
+	Description      string              `json:"description,omitempty"`
+	Website          string              `json:"website,omitempty"`
+	Categories       []string            `json:"categories,omitempty"`
+	UnderlyingTokens []string            `json:"underlyingTokens,omitempty"`
+	Localization     *meta.TLocalization `json:"localization,omitempty"`
 }
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
@@ -38,7 +37,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 			}
 			metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 			tokenDetails := TAllTokens{
-				Address:  common.NewMixedcaseAddress(token.Address),
+				Address:  token.Address.Hex(),
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Decimals: token.Decimals,
@@ -84,7 +83,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 	for _, token := range tokenList {
 		metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 		tokenDetails := TAllTokens{
-			Address:  common.NewMixedcaseAddress(token.Address),
+			Address:  token.Address.Hex(),
 			Name:     token.Name,
 			Symbol:   token.Symbol,
 			Decimals: token.Decimals,

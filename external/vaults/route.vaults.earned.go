@@ -61,7 +61,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	}
 
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLRequestForUser(userAddress.String(), vaultsAddressesStr)
+	request := graphQLRequestForUser(userAddress.Hex(), vaultsAddressesStr)
 	var response models.TFIFOForUserForVault
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)
@@ -268,7 +268,7 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	}
 
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLRequestForUser(userAddress.String(), []string{})
+	request := graphQLRequestForUser(userAddress.Hex(), []string{})
 	var response models.TFIFOForUserForVault
 	if err := client.Run(context.Background(), request, &response); err != nil {
 		logs.Error(err)

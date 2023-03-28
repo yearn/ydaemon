@@ -55,7 +55,7 @@ func FetchVaultsFromV1(chainID uint64) {
 		go store.SaveInDB(
 			chainID,
 			store.TABLES.VAULTS_LEGACY,
-			vault.Address.String(),
+			vault.Address.Hex(),
 			store.Store.AggregatedVault[chainID][common.NewMixedcaseAddress(vault.Address)],
 		)
 	}

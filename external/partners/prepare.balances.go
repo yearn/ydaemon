@@ -31,9 +31,6 @@ func (c *TPartners) BalanceOf() *TPartners {
 				c.Wrappers[index].BalanceOf = bigNumber.NewInt()
 				continue
 			}
-			// decimals := store.Tokens[1][wrapper.Vault].Decimals
-			// _, balance := helpers.FormatAmount(bBalance.String(), int(decimals))
-			// logs.Info(wrapper.Name, ` : `, balance.String())
 			c.Wrappers[index].BalanceOf = bBalance
 		}
 	}

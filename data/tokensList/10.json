@@ -1,14 +1,14 @@
 {
   "name": "Yearn Token List",
-  "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
-  "timestamp": "2023-01-04T11:27:01.716679+01:00",
+  "logoURI": "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
+  "timestamp": "2023-03-28T14:21:17.730364+02:00",
   "tokens": [
     {
       "chainID": 10,
-      "address": "0x3e7eF8f50246f725885102E8238CBba33F276747",
-      "name": "BarnBridge",
-      "symbol": "BOND",
-      "logoURI": "https://assets.coingecko.com/coins/images/12811/thumb/barnbridge.jpg?1602728853",
+      "address": "0x061b87122Ed14b9526A813209C8a59a633257bAb",
+      "name": "Curve.fi Factory USD Metapool: sUSD Synthetix",
+      "symbol": "sUSD3CRV-f",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -17,119 +17,11 @@
     },
     {
       "chainID": 10,
-      "address": "0xcfD1D50ce23C46D3Cf6407487B2F8934e96DC8f9",
-      "name": "SPANK",
-      "symbol": "SPANK",
-      "logoURI": "https://ethereum-optimism.github.io/data/SPANK/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xc5Db22719A06418028A40A9B5E9A7c02959D0d08",
-      "name": "Synthetic Chainlink",
-      "symbol": "sLINK",
-      "logoURI": "https://ethereum-optimism.github.io/data/sLINK/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x0000000000000000000000000000000000000000",
-      "name": "ETH",
-      "symbol": "ETH",
-      "logoURI": "https://optimistic.etherscan.io/images/main/empty-token.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x4200000000000000000000000000000000000042",
-      "name": "Optimism",
-      "symbol": "OP",
-      "logoURI": "https://tokens.1inch.io/0x4200000000000000000000000000000000000042.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido",
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xEf6301DA234fC7b0545c6E877D3359FE0B9E50a4",
-      "name": "SUKU",
-      "symbol": "SUKU",
-      "logoURI": "https://ethereum-optimism.github.io/data/SUKU/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2",
-      "name": "Sarcophagus",
-      "symbol": "SARCO",
-      "logoURI": "https://ethereum-optimism.github.io/data/SARCO/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
-      "name": "Rocket Pool ETH",
-      "symbol": "rETH",
-      "logoURI": "https://ethereum-optimism.github.io/data/rETH/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xDb9888b842408B0b8eFa1f5477bD9F351754999E",
-      "name": "BAXagent Coin",
-      "symbol": "BAXA",
-      "logoURI": "https://ethereum-optimism.github.io/data/BAXA/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x764aD60e1B81F6CACfec1a2926393D688D4493E6",
-      "name": "AladdinCRV",
-      "symbol": "aCRV",
-      "logoURI": "https://ethereum-optimism.github.io/data/aCRV/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
-      "name": "Synth sUSD",
-      "symbol": "sUSD",
-      "logoURI": "https://tokens.1inch.io/0x57ab1ec28d129707052df4df418d58a2d46d5f51.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido",
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
-      "name": "Velodrome Finance",
-      "symbol": "VELO",
-      "logoURI": "https://assets.coingecko.com/coins/images/25783/thumb/velo.png?1653817876",
-      "decimals": 18,
+      "address": "0x4645e0952678E9566FB529D9313f5730E4e1C412",
+      "name": "Iron Bank Optimism",
+      "symbol": "iOP",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
       "balance": "0",
       "supportedZaps": [
         "Portals"
@@ -137,43 +29,11 @@
     },
     {
       "chainID": 10,
-      "address": "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000",
-      "name": "Ether",
-      "symbol": "ETH",
-      "logoURI": "https://ethereum-optimism.github.io/data/ETH/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x81aB7E0D570b01411fcC4afd3D50eC8C241cb74b",
-      "name": "Equalizer",
-      "symbol": "EQZ",
-      "logoURI": "https://ethereum-optimism.github.io/data/EQZ/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
-      "name": "Dola USD Stablecoin",
-      "symbol": "DOLA",
-      "logoURI": "https://tokens.1inch.io/0x8ae125e8653821e851f12a49f7765db9a9ce7384.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x7b0bcC23851bBF7601efC9E9FE532Bf5284F65d3",
-      "name": "Erica Social Token",
-      "symbol": "EST",
-      "logoURI": "https://assets.coingecko.com/coins/images/24076/thumb/EST.png?1646632592",
-      "decimals": 18,
+      "address": "0x874C01c2d1767EFA01Fa54b2Ac16be96fAd5a742",
+      "name": "Iron Bank Tether USD",
+      "symbol": "iUSDT",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
       "balance": "0",
       "supportedZaps": [
         "Portals"
@@ -181,246 +41,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x217D47011b23BB961eB6D93cA9945B7501a5BB11",
-      "name": "Thales",
-      "symbol": "THALES",
-      "logoURI": "https://assets.coingecko.com/coins/images/18388/thumb/CLVZJN_C_400x400.png?1631758808",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x0994206dfE8De6Ec6920FF4D779B0d950605Fb53",
-      "name": "Curve DAO",
-      "symbol": "CRV",
-      "logoURI": "https://assets.coingecko.com/coins/images/12124/thumb/Curve.png?1597369484",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xFf733b2A3557a7ed6697007ab5D11B79FdD1b76B",
-      "name": "Across Protocol",
-      "symbol": "ACX",
-      "logoURI": "https://assets.coingecko.com/coins/images/28161/thumb/across-200x200.png?1668168201",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x3bB4445D30AC020a84c1b5A8A2C6248ebC9779D0",
-      "name": "Theranos Coin",
-      "symbol": "LIZ",
-      "logoURI": "https://ethereum-optimism.github.io/data/LIZ/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xbfD291DA8A403DAAF7e5E9DC1ec0aCEaCd4848B9",
-      "name": "dForce USD",
-      "symbol": "USX",
-      "logoURI": "https://ethereum-optimism.github.io/data/USX/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x298B9B95708152ff6968aafd889c6586e9169f1D",
-      "name": "Synthetic Bitcoin",
-      "symbol": "sBTC",
-      "logoURI": "https://ethereum-optimism.github.io/data/sBTC/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
-      "name": "Alchemix ETH",
-      "symbol": "ALETH",
-      "logoURI": "https://assets.coingecko.com/coins/images/16271/thumb/uS04dyYy_400x400.jpeg?1663051098",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xF98dCd95217E15E05d8638da4c91125E59590B07",
-      "name": "Kromatika",
-      "symbol": "KROM",
-      "logoURI": "https://assets.coingecko.com/coins/images/20541/thumb/KROM_Transparent.png?1641398421",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x29FAF5905bfF9Cfcc7CF56a5ed91E0f091F8664B",
-      "name": "Bankless Token",
-      "symbol": "BANK",
-      "logoURI": "https://ethereum-optimism.github.io/data/BANK/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x86bEA60374f220dE9769b2fEf2db725bc1cDd335",
-      "name": "Flashstake",
-      "symbol": "FLASH",
-      "logoURI": "https://ethereum-optimism.github.io/data/FLASH/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xAF9fE3B5cCDAe78188B1F8b9a49Da7ae9510F151",
-      "name": "dHEDGE DAO",
-      "symbol": "DHT",
-      "logoURI": "https://assets.coingecko.com/coins/images/12508/thumb/dht.png?1600752201",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xBB6BBaa0F6D839A00c82B10747aBc3b7E2eEcc82",
-      "name": "Impermax",
-      "symbol": "IBEX",
-      "logoURI": "https://ethereum-optimism.github.io/data/IBEX/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xB548f63D4405466B36C0c0aC3318a22fDcec711a",
-      "name": "Rari Governance Token",
-      "symbol": "RGT",
-      "logoURI": "https://ethereum-optimism.github.io/data/RGT/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xc98B98d17435AA00830c87eA02474C5007E1f272",
-      "name": "BitBTC",
-      "symbol": "BitBTC",
-      "logoURI": "https://ethereum-optimism.github.io/data/BitBTC/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x6F620EC89B8479e97A6985792d0c64F237566746",
-      "name": "WePiggy Coin",
-      "symbol": "WPC",
-      "logoURI": "https://assets.coingecko.com/coins/images/21914/thumb/WPC200.png?1640262945",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x3390108E913824B8eaD638444cc52B9aBdF63798",
-      "name": "Mask Network",
-      "symbol": "MASK",
-      "logoURI": "https://ethereum-optimism.github.io/data/MASK/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xFa956eB0c4b3E692aD5a6B2f08170aDE55999ACa",
-      "name": "PhunToken",
-      "symbol": "PHTK",
-      "logoURI": "https://ethereum-optimism.github.io/data/PHTK/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xBb586Ed34974B15049a876fd5366A4C2d1203115",
-      "name": "Universal Basic Income",
-      "symbol": "UBI",
-      "logoURI": "https://ethereum-optimism.github.io/data/UBI/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x0A9AAa1c7542b42233AC7FfdA364E97adE21f160",
-      "name": "Validator",
-      "symbol": "VALX",
-      "logoURI": "https://ethereum-optimism.github.io/data/VALX/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x374Ad0f47F4ca39c78E5Cc54f1C9e426FF8f231A",
-      "name": "Premia",
-      "symbol": "PREMIA",
-      "logoURI": "https://ethereum-optimism.github.io/data/PREMIA/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x117cFd9060525452db4A34d51c0b3b7599087f05",
-      "name": "Geyser",
-      "symbol": "GYSR",
-      "logoURI": "https://ethereum-optimism.github.io/data/GYSR/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xFdb794692724153d1488CcdBE0C56c252596735F",
-      "name": "Lido DAO",
-      "symbol": "LDO",
-      "logoURI": "https://assets.coingecko.com/coins/images/13573/thumb/Lido_DAO.png?1609873644",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
-      "name": "sETH",
-      "symbol": "SETH",
-      "logoURI": "https://assets.coingecko.com/coins/images/8843/thumb/sETH.png?1616150207",
+      "address": "0xd52f94DF742a6F4B4C8b033369fE13A41782Bf44",
+      "name": "Layer2DAO",
+      "symbol": "L2DAO",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -441,10 +65,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x61BAADcF22d2565B0F471b291C475db5555e0b76",
-      "name": "Aelin",
-      "symbol": "AELIN",
-      "logoURI": "https://assets.coingecko.com/coins/images/22303/thumb/aelien.jpg?1641445323",
+      "address": "0x374Ad0f47F4ca39c78E5Cc54f1C9e426FF8f231A",
+      "name": "Premia",
+      "symbol": "PREMIA",
+      "logoURI": "https://ethereum-optimism.github.io/data/PREMIA/logo.svg",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -453,33 +77,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x65559aA14915a70190438eF90104769e5E890A00",
-      "name": "Ethereum Name Service",
-      "symbol": "ENS",
-      "logoURI": "https://ethereum-optimism.github.io/data/ENS/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
-      "name": "Tether USD",
-      "symbol": "USDT",
-      "logoURI": "https://tokens.1inch.io/0x94b008aa00579c1307b0ef2c499ad98a8ce58e58.png",
-      "decimals": 6,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido",
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xa00E3A3511aAC35cA78530c85007AFCd31753819",
-      "name": "Kyber Network Crystal",
-      "symbol": "KNC",
-      "logoURI": "https://assets.coingecko.com/coins/images/14899/thumb/RwdVsGcw_400x400.jpg?1618923851",
+      "address": "0x3dC09DB8E571Da76Dd04E9176afc7fEEe0b89106",
+      "name": "BeethovenX LP FRAX/USDC/MAI",
+      "symbol": "FRAX/USDC/MAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -488,60 +89,58 @@
     },
     {
       "chainID": 10,
-      "address": "0x5e70AfFE232e2919792f77EB94e566db0320fa88",
-      "name": "Monetum",
-      "symbol": "MOM",
-      "logoURI": "https://ethereum-optimism.github.io/data/MOM/logo.svg",
+      "address": "0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc",
+      "name": "Yearn yvDAI 0.4.5",
+      "symbol": "yvDAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
       "decimals": 18,
       "balance": "0",
-      "supportedZaps": []
+      "supportedZaps": [
+        "Portals"
+      ]
     },
     {
       "chainID": 10,
-      "address": "0xd8f365c2c85648f9B89D9f1BF72C0aE4b1C36cFD",
-      "name": "TheDAO",
-      "symbol": "TheDAO",
-      "logoURI": "https://ethereum-optimism.github.io/data/TheDAO/logo.svg",
-      "decimals": 16,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xAe31207aC34423C41576Ff59BFB4E036150f9cF7",
-      "name": "Saddle DAO",
-      "symbol": "SDL",
-      "logoURI": "https://ethereum-optimism.github.io/data/SDL/logo.svg",
+      "address": "0x7Bc5728BC2b59B45a58d9A576E2Ffc5f0505B35E",
+      "name": "Curve.fi Factory Pool: sETH/ETH",
+      "symbol": "seth-f",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
       "decimals": 18,
       "balance": "0",
-      "supportedZaps": []
+      "supportedZaps": [
+        "Portals"
+      ]
     },
     {
       "chainID": 10,
-      "address": "0x1EBA7a6a72c894026Cd654AC5CDCF83A46445B08",
-      "name": "Gitcoin",
-      "symbol": "GTC",
-      "logoURI": "https://ethereum-optimism.github.io/data/GTC/logo.svg",
+      "address": "0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE",
+      "name": "Aave Optimism DAI",
+      "symbol": "aOptDAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
       "decimals": 18,
       "balance": "0",
-      "supportedZaps": []
+      "supportedZaps": [
+        "Portals"
+      ]
     },
     {
       "chainID": 10,
-      "address": "0xEcF46257ed31c329F204Eb43E254C609dee143B3",
-      "name": "Rigo Token",
-      "symbol": "GRG",
-      "logoURI": "https://ethereum-optimism.github.io/data/GRG/logo.svg",
+      "address": "0xaf8cA653Fa2772d58f4368B0a71980e9E3cEB888",
+      "name": "Tellor",
+      "symbol": "TRB",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
-      "supportedZaps": []
+      "supportedZaps": [
+        "Portals"
+      ]
     },
     {
       "chainID": 10,
-      "address": "0x4200000000000000000000000000000000000006",
-      "name": "Wrapped Ether",
-      "symbol": "WETH",
-      "logoURI": "https://tokens.1inch.io/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png",
+      "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
+      "name": "Synthetix",
+      "symbol": "SNX",
+      "logoURI": "https://ethereum-optimism.github.io/logos/SNX.svg",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -551,10 +150,10 @@
     },
     {
       "chainID": 10,
-      "address": "0xEe9801669C6138E84bD50dEB500827b776777d28",
-      "name": "O3 Swap",
-      "symbol": "O3",
-      "logoURI": "https://assets.coingecko.com/coins/images/15460/thumb/o3.png?1620904316",
+      "address": "0x2a90F479002DAae9934c3a70EBB6e8DbeB46292b",
+      "name": "Yearn yvsUSD 0.4.5",
+      "symbol": "yvsUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -563,78 +162,22 @@
     },
     {
       "chainID": 10,
-      "address": "0xEc6adef5E1006bb305bB1975333e8fc4071295bf",
-      "name": "Cartesi",
-      "symbol": "CTSI",
-      "logoURI": "https://assets.coingecko.com/coins/images/11038/thumb/cartesi.png?1592288021",
+      "address": "0x0000000000000000000000000000000000000000",
+      "name": "ETH",
+      "symbol": "ETH",
+      "logoURI": "https://optimistic.etherscan.io/images/main/empty-token.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
-        "Portals"
+        "Wido"
       ]
     },
     {
       "chainID": 10,
-      "address": "0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
-      "name": "BitANT",
-      "symbol": "BITANT",
-      "logoURI": "https://assets.coingecko.com/coins/images/19055/thumb/BitANT.png?1634264861",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B",
-      "name": "BOB",
-      "symbol": "BOB",
-      "logoURI": "https://assets.coingecko.com/coins/images/27266/thumb/Bob-logo.png?1663073030",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x7FB688CCf682d58f86D7e38e03f9D22e7705448B",
-      "name": "Rai Reflex Index",
-      "symbol": "RAI",
-      "logoURI": "https://assets.coingecko.com/coins/images/14004/thumb/RAI-logo-coin.png?1613592334",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xFEaA9194F9F8c1B65429E31341a103071464907E",
-      "name": "LoopringCoin V2",
-      "symbol": "LRC",
-      "logoURI": "https://ethereum-optimism.github.io/data/LRC/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xab7bAdEF82E9Fe11f6f33f87BC9bC2AA27F2fCB5",
-      "name": "Maker",
-      "symbol": "MKR",
-      "logoURI": "https://ethereum-optimism.github.io/data/MKR/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
-      "name": "Chainlink",
-      "symbol": "LINK",
-      "logoURI": "https://tokens.1inch.io/0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6.png",
+      "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+      "name": "Dai stable coin",
+      "symbol": "DAI",
+      "logoURI": "https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.svg?v=010",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -644,95 +187,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
-      "name": "Perpetual",
-      "symbol": "PERP",
-      "logoURI": "https://tokens.1inch.io/0x9e1028f5f1d5ede59748ffcee5532509976840e0.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": [
-        "Wido",
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0xE7798f023fC62146e8Aa1b36Da45fb70855a77Ea",
-      "name": "UMA Voting Token v1",
-      "symbol": "UMA",
-      "logoURI": "https://ethereum-optimism.github.io/data/UMA/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x7113370218f31764C1B6353BDF6004d86fF6B9cc",
-      "name": "Decentralized USD",
-      "symbol": "USDD",
-      "logoURI": "https://ethereum-optimism.github.io/data/USDD/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xe0BB0D3DE8c10976511e5030cA403dBf4c25165B",
-      "name": "0xBitcoin",
-      "symbol": "0XBTC",
-      "logoURI": "https://assets.coingecko.com/coins/images/4454/thumb/0xbtc.png?1561603765",
-      "decimals": 8,
-      "balance": "0",
-      "supportedZaps": [
-        "Portals"
-      ]
-    },
-    {
-      "chainID": 10,
-      "address": "0x703D57164CA270b0B330A87FD159CfEF1490c0a5",
-      "name": "WardenSwap",
-      "symbol": "WAD",
-      "logoURI": "https://ethereum-optimism.github.io/data/WAD/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0xcB59a0A753fDB7491d5F3D794316F1adE197B21E",
-      "name": "TrueUSD",
-      "symbol": "TUSD",
-      "logoURI": "https://ethereum-optimism.github.io/data/TUSD/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x00F932F0FE257456b32dedA4758922E56A4F4b42",
-      "name": "Paper",
-      "symbol": "PAPER",
-      "logoURI": "https://ethereum-optimism.github.io/data/PAPER/logo.svg",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x0E49ca6EA763190084C846d3Fc18f28BC2aC689a",
-      "name": "Unit protocol",
-      "symbol": "DUCK",
-      "logoURI": "https://ethereum-optimism.github.io/data/DUCK/logo.png",
-      "decimals": 18,
-      "balance": "0",
-      "supportedZaps": []
-    },
-    {
-      "chainID": 10,
-      "address": "0x6fd9d7AD17242c41f7131d257212c54A0e816691",
-      "name": "Uniswap",
-      "symbol": "UNI",
-      "logoURI": "https://assets.coingecko.com/coins/images/12504/thumb/uniswap-uni.png?1600306604",
+      "address": "0x7D2382b1f8Af621229d33464340541Db362B4907",
+      "name": "Yearn yvOP 0.4.5",
+      "symbol": "yvOP",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -741,10 +199,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
-      "name": "Lyra Finance",
-      "symbol": "LYRA",
-      "logoURI": "https://assets.coingecko.com/coins/images/21490/thumb/Add-a-heading-26.png?1639364177",
+      "address": "0x7ED087AfAB0b2653C8137744916eD1abA97E2fa2",
+      "name": "BeethovenX LP OATH/USDC",
+      "symbol": "OATH/USDC",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -763,6 +221,952 @@
     },
     {
       "chainID": 10,
+      "address": "0xE7798f023fC62146e8Aa1b36Da45fb70855a77Ea",
+      "name": "UMA Voting Token v1",
+      "symbol": "UMA",
+      "logoURI": "https://ethereum-optimism.github.io/data/UMA/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x3F16F0301b62015B926c3b559b645a5a0e19d8aA",
+      "name": "BeethovenX LP USDC/USDT/MAI",
+      "symbol": "USDC/USDT/MAI",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x46f21fDa29F1339e0aB543763FF683D399e393eC",
+      "name": "OpenX Locked Velo",
+      "symbol": "OPXVEVELO",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xbd3dbf914f3e9c3133a815b04a4d0E5930957cB9",
+      "name": "Granary WBTC",
+      "symbol": "grainWBTC",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xFEaA9194F9F8c1B65429E31341a103071464907E",
+      "name": "LoopringCoin V2",
+      "symbol": "LRC",
+      "logoURI": "https://ethereum-optimism.github.io/data/LRC/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x39965c9dAb5448482Cf7e002F583c812Ceb53046",
+      "name": "BeethovenX LP WETH/OP/USDC",
+      "symbol": "WETH/OP/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7AABF786Ef456a8AF93D544f030bB556848e9285",
+      "name": "Beefy Moo Beets Optimism Steady Beets",
+      "symbol": "mooBeetsOptimismSteadyBeets",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x9E841f05Dc2b92199F3FCE96bDEfc36A08Dcb9F6",
+      "name": "OptimismPad",
+      "symbol": "OPP",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc86cc7C6b6E0Fd4d6aE24649521296Fe56dF8C28",
+      "name": "Beefy Moo Stargate FRAX",
+      "symbol": "mooStargateFRAX",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xe536F8141D8EB7B1f096934AF3329cB581bFe995",
+      "name": "Beefy Moo Stargate USDC",
+      "symbol": "mooStargateUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x9Bcef72be871e61ED4fBbc7630889beE758eb81D",
+      "name": "Rocket Pool ETH",
+      "symbol": "rETH",
+      "logoURI": "https://ethereum-optimism.github.io/data/rETH/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3533F5e279bDBf550272a199a223dA798D9eff78",
+      "name": "Stargate LUSD Stablecoin-LP",
+      "symbol": "S*LUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x368605D9C6243A80903b9e326f1Cddde088B8924",
+      "name": "Stargate Frax-LP",
+      "symbol": "S*FRAX",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x8A819a4caBD6EfCb4E5504fE8679A1aBD831Dd8f",
+      "name": "BeethovenX LP wstETH/BAL",
+      "symbol": "wstETH/BAL",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xeFb0D9F51EFd52d7589A9083A6d0CA4de416c249",
+      "name": "BeethovenX LP IB/WETH",
+      "symbol": "IB/WETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEcF46257ed31c329F204Eb43E254C609dee143B3",
+      "name": "Rigo Token",
+      "symbol": "GRG",
+      "logoURI": "https://ethereum-optimism.github.io/data/GRG/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x15e770B95Edd73fD96b02EcE0266247D50895E76",
+      "name": "Jarvis Reward",
+      "symbol": "JRT",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3e7eF8f50246f725885102E8238CBba33F276747",
+      "name": "BarnBridge",
+      "symbol": "BOND",
+      "logoURI": "https://assets.coingecko.com/coins/images/12811/thumb/barnbridge.jpg?1602728853",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x67CCEA5bb16181E7b4109c9c2143c24a1c2205Be",
+      "name": "FXS",
+      "symbol": "FXS",
+      "logoURI": "https://ethereum-optimism.github.io/data/FXS/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x8aE125E8653821E851F12A49F7765db9a9ce7384",
+      "name": "Dola USD Stablecoin",
+      "symbol": "DOLA",
+      "logoURI": "https://tokens.1inch.io/0x8ae125e8653821e851f12a49f7765db9a9ce7384.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4D153F47F03c237F6360a6eccd185b4aE09c63D0",
+      "name": "Beefy Moo Aave Op DAI",
+      "symbol": "mooAaveOpDAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7A0FDDBA78FF45D353B1630B77f4D175A00df0c0",
+      "name": "Granary USDC",
+      "symbol": "grainUSDC",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x86bEA60374f220dE9769b2fEf2db725bc1cDd335",
+      "name": "Flashstake",
+      "symbol": "FLASH",
+      "logoURI": "https://ethereum-optimism.github.io/data/FLASH/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x764aD60e1B81F6CACfec1a2926393D688D4493E6",
+      "name": "AladdinCRV",
+      "symbol": "aCRV",
+      "logoURI": "https://ethereum-optimism.github.io/data/aCRV/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x920ABfa9d1c99BE993e5399634C6D5e1bE55A3f4",
+      "name": "Beefy Moo Aave Op USDC",
+      "symbol": "mooAaveOpUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x276cf9e7a43d1B9422dEcd1f1d2608f3D588CAad",
+      "name": "AllianceBlock",
+      "symbol": "ALBT",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7aD4f5536D903aea6F973f36e18f5B4610A7583E",
+      "name": "BeethovenX LP WETH/WBTC/USDC",
+      "symbol": "WETH/WBTC/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x97513e975a7fA9072c72C92d8000B0dB90b163c5",
+      "name": "Beethoven X",
+      "symbol": "BEETS",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1da650C3B2DaA8AA9Ff6F661d4156Ce24d08A062",
+      "name": "Dentacoin",
+      "symbol": "DCN",
+      "logoURI": "https://ethereum-optimism.github.io/data/DCN/logo.svg",
+      "decimals": 0,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x8e2cDf8c6477439B7C989e86B917D80871B92339",
+      "name": "Beefy Moo Aave Op WBTC",
+      "symbol": "mooAaveOpWBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xa73b7C26eF3221BF9eA7E5981840519427f7dCaF",
+      "name": "Granary SNX",
+      "symbol": "grainSNX",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8",
+      "name": "Aave Optimism WETH",
+      "symbol": "aOptWETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xf899e3909B4492859d44260E1de41A9E663e70F5",
+      "name": "RadioShack",
+      "symbol": "RADIO",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x395Ae52bB17aef68C2888d941736A71dC6d4e125",
+      "name": "PoolTogether",
+      "symbol": "POOL",
+      "logoURI": "https://ethereum-optimism.github.io/data/POOL/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xBEa652AA29D38114e9D36F2A2E4167b13DF68e73",
+      "name": "BeethovenX LP WETH/NFTE",
+      "symbol": "WETH/NFTE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xdCC5DC90A803928Dc21556590D4620030966270F",
+      "name": "Beefy Moo Beets Rocket Fuel ",
+      "symbol": "mooBeetsRocketFuel",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x59aba93eb2Fb1D12ae0a292d96655A13469417A0",
+      "name": "BeethovenX LP fBOMB/rETH/NFTE",
+      "symbol": "fBOMB/rETH/NFTE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x785F08fB77ec934c01736E30546f87B4daccBe50",
+      "name": "BeethovenX LP IB/rETH",
+      "symbol": "IB/rETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x373643B17Cd80e37675c8C98eF774efe6ca0b4De",
+      "name": "BeethovenX LP USDC/USDT/DAI",
+      "symbol": "USDC/USDT/DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x8e829cFC629fcb61c1508a54D232aF4612E48cC9",
+      "name": "Beefy Moo Beets Happy Road",
+      "symbol": "mooBeetHappyRoad",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xD9C57025b3da04e5Bd078C22B69222E92dDb62f6",
+      "name": "BeethovenX LP USDC/sUSD/LUSD/DAI",
+      "symbol": "USDC/sUSD/LUSD/DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7b0bcC23851bBF7601efC9E9FE532Bf5284F65d3",
+      "name": "Erica Social Token",
+      "symbol": "EST",
+      "logoURI": "https://assets.coingecko.com/coins/images/24076/thumb/EST.png?1646632592",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x165137624F1f692e69659f944BF69DE02874ee27",
+      "name": "Stargate Dai Stablecoin-LP",
+      "symbol": "S*DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xFdb794692724153d1488CcdBE0C56c252596735F",
+      "name": "Lido DAO",
+      "symbol": "LDO",
+      "logoURI": "https://assets.coingecko.com/coins/images/13573/thumb/Lido_DAO.png?1609873644",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x2F8bC9081c7FCFeC25b9f41a50d97EaA592058ae",
+      "name": "Stargate Synth sUSD-LP",
+      "symbol": "S*sUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5421FA1A48f9FF81e4580557E86C7C0D24C18036",
+      "name": "Stargate Mai Stablecoin-LP",
+      "symbol": "S*MAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x899F737750db562b88c1E412eE1902980D3a4844",
+      "name": "BeethovenX LP wstETH/USDC",
+      "symbol": "wstETH/USDC",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x61BAADcF22d2565B0F471b291C475db5555e0b76",
+      "name": "Aelin",
+      "symbol": "AELIN",
+      "logoURI": "https://assets.coingecko.com/coins/images/22303/thumb/aelien.jpg?1641445323",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0A9AAa1c7542b42233AC7FfdA364E97adE21f160",
+      "name": "Validator",
+      "symbol": "VALX",
+      "logoURI": "https://ethereum-optimism.github.io/data/VALX/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x18D2b18Af9A1f379025f46b8aeB4aF75f6642c9F",
+      "name": "Granary DAI",
+      "symbol": "grainDAI",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x96D17e1301b31556e5e263389583A9331e6749E9",
+      "name": "RillaFi",
+      "symbol": "RILLA",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1EBA7a6a72c894026Cd654AC5CDCF83A46445B08",
+      "name": "Gitcoin",
+      "symbol": "GTC",
+      "logoURI": "https://ethereum-optimism.github.io/data/GTC/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x107Dbf9c9C0EF2Df114159e5C7DC2baf7C444cFF",
+      "name": "Beefy Moo Curve f-sUSD",
+      "symbol": "mooCurveFsUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x29A3d66B30Bc4AD674A4FDAF27578B64f6afbFe7",
+      "name": "Curve.fi Factory Plain Pool: FRAXBP",
+      "symbol": "FRAXBP-f",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4Fd63966879300caFafBB35D157dC5229278Ed23",
+      "name": "BeethovenX LP WETH/rETH",
+      "symbol": "WETH/rETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xB8ECe82fCfB948b1aF937E2819EB2D72Bb3D98d2",
+      "name": "BeethovenX LP QI/WETH",
+      "symbol": "QI/WETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "logoURI": "https://tokens.1inch.io/0x7f5c764cbc14f9669b88837ca1490cca17c31607.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x76FB31fb4af56892A25e32cFC43De717950c9278",
+      "name": "Aave",
+      "symbol": "AAVE",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0495e8d283C08a3Bf6c3163A72763797a06c56d8",
+      "name": "BeethovenX LP QI/BEETS/BAL",
+      "symbol": "QI/BEETS/BAL",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3707e9b80BbF90170851a6A3Fe276F692ED27bb5",
+      "name": "BeethovenX LP wstETH/OATH/WETH/USDC/rETH",
+      "symbol": "wstETH/OATH/WETH/USDC/rETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3F56e0c36d275367b8C502090EDF38289b3dEa0d",
+      "name": "Qi Dao",
+      "symbol": "QI",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD",
+      "name": "Aave Optimism USDC",
+      "symbol": "aOptUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xB0ae108669CEB86E9E98e8fE9e40d98b867855fD",
+      "name": "OneRing",
+      "symbol": "RING",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xCCcEBC4551FF20acA4e0356DAD8875806CE8df10",
+      "name": "Beefy Moo Beets Lennons Long",
+      "symbol": "mooBeetLennonsLong",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6fd9d7AD17242c41f7131d257212c54A0e816691",
+      "name": "Uniswap",
+      "symbol": "UNI",
+      "logoURI": "https://assets.coingecko.com/coins/images/12504/thumb/uniswap-uni.png?1600306604",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xE4F27b04cC7729901876B44f4EAA5102EC150265",
+      "name": "CryptoFranc",
+      "symbol": "XCHF",
+      "logoURI": "https://ethereum-optimism.github.io/data/XCHF/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x0E49ca6EA763190084C846d3Fc18f28BC2aC689a",
+      "name": "Unit protocol",
+      "symbol": "DUCK",
+      "logoURI": "https://ethereum-optimism.github.io/data/DUCK/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xAF9fE3B5cCDAe78188B1F8b9a49Da7ae9510F151",
+      "name": "dHEDGE DAO",
+      "symbol": "DHT",
+      "logoURI": "https://assets.coingecko.com/coins/images/12508/thumb/dht.png?1600752201",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xfbef713696465DDab297164c3b6A0122D92A3bAc",
+      "name": "Yearn yvDAI 0.4.4",
+      "symbol": "yvDAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc96f4F893286137aC17e07Ae7F217fFca5db3AB6",
+      "name": "NFTEarth",
+      "symbol": "NFTE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9",
+      "name": "Synth sUSD",
+      "symbol": "sUSD",
+      "logoURI": "https://tokens.1inch.io/0x57ab1ec28d129707052df4df418d58a2d46d5f51.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7Edf16076e56FA4c111055fbA1fF5556b8757cFB",
+      "name": "Yearn yvWBTC 0.4.5",
+      "symbol": "yvWBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x883feb1B9862e0c8559D26F53bf19264C5E0839F",
+      "name": "Curve.fi aOptDAI/aOptUSDC/aOptUSDT",
+      "symbol": "aOpt3CRV",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0B3e851cf6508A16266BC68A651ea68b31ef673b",
+      "name": "Loopfi",
+      "symbol": "LPF",
+      "logoURI": "https://ethereum-optimism.github.io/data/LPF/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x298B9B95708152ff6968aafd889c6586e9169f1D",
+      "name": "Synthetic Bitcoin",
+      "symbol": "sBTC",
+      "logoURI": "https://ethereum-optimism.github.io/data/sBTC/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x513c7E3a9c69cA3e22550eF58AC1C0088e918FFf",
+      "name": "Aave Optimism OP",
+      "symbol": "aOptOP",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5A5fFf6F753d7C11A56A52FE47a177a87e431655",
+      "name": "Synapse",
+      "symbol": "SYN",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xDb9888b842408B0b8eFa1f5477bD9F351754999E",
+      "name": "BAXagent Coin",
+      "symbol": "BAXA",
+      "logoURI": "https://ethereum-optimism.github.io/data/BAXA/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
+      "name": "Wrapped Bitcoin",
+      "symbol": "WBTC",
+      "logoURI": "https://ethereum-optimism.github.io/logos/WBTC.svg",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0503Dd6b2D3Dd463c9BeF67fB5156870Af63393E",
+      "name": "BeethovenX LP WETH/BAL",
+      "symbol": "WETH/BAL",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7Ef99013E446dDCe2486b8E04735b7019a115e6F",
+      "name": "BeethovenX LP OP/LYRA/USDC/SNX/sUSD/BEETS/PERP/BAL",
+      "symbol": "OP/LYRA/USDC/SNX/sUSD/BEETS/PERP/BAL",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
       "address": "0xFE8B128bA8C78aabC59d4c64cEE7fF28e9379921",
       "name": "Balancer",
       "symbol": "BAL",
@@ -775,10 +1179,22 @@
     },
     {
       "chainID": 10,
-      "address": "0x76FB31fb4af56892A25e32cFC43De717950c9278",
-      "name": "Aave",
-      "symbol": "AAVE",
-      "logoURI": "https://assets.coingecko.com/coins/images/12645/thumb/AAVE.png?1601374110",
+      "address": "0xb12c13e66AdE1F72f71834f2FC5082Db8C091358",
+      "name": "Roobee",
+      "symbol": "ROOBEE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xe0cCa86B254005889aC3a81e737f56a14f4A38F5",
+      "name": "Alta Finance",
+      "symbol": "ALTA",
+      "logoURI": "https://assets.coingecko.com/coins/images/18713/thumb/AFN-token-Altafin-200.png?1633079552",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -799,10 +1215,10 @@
     },
     {
       "chainID": 10,
-      "address": "0x50Bce64397C75488465253c0A034b8097FeA6578",
-      "name": "HanChain",
-      "symbol": "HAN",
-      "logoURI": "https://assets.coingecko.com/coins/images/27374/thumb/logo_200.png?1663732819",
+      "address": "0xc04Fb38f10AD352c5f16Bd4546F7456E7f1A2D9e",
+      "name": "Minato",
+      "symbol": "MNTO",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -811,10 +1227,44 @@
     },
     {
       "chainID": 10,
-      "address": "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
-      "name": "Dai stable coin",
-      "symbol": "DAI",
-      "logoURI": "https://cryptologos.cc/logos/multi-collateral-dai-dai-logo.svg?v=010",
+      "address": "0x8AaA9d29305D331aE67AD65495B9e22cf98f9035",
+      "name": "Granary sUSD",
+      "symbol": "grainsUSD",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xE724FfA5D30782499086682C8362CB3673bF69ae",
+      "name": "Iron Bank Synthetix Network Token",
+      "symbol": "iSNX",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xAe31207aC34423C41576Ff59BFB4E036150f9cF7",
+      "name": "Saddle DAO",
+      "symbol": "SDL",
+      "logoURI": "https://ethereum-optimism.github.io/data/SDL/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97",
+      "name": "StargateToken",
+      "symbol": "STG",
+      "logoURI": "https://tokens.1inch.io/0x296f55f8fb28e498b858d0bcda06d955b2cb3f97.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -824,10 +1274,58 @@
     },
     {
       "chainID": 10,
-      "address": "0x6F0fecBC276de8fC69257065fE47C5a03d986394",
-      "name": "Popcorn",
-      "symbol": "POP",
-      "logoURI": "https://assets.coingecko.com/coins/images/21438/thumb/pop-1_200_x_200.png?1662607611",
+      "address": "0x99184713bad36bdcbC31453670FBB0D2eC3Cfcc4",
+      "name": "BeethovenX LP OATH/WETH",
+      "symbol": "OATH/WETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x9C9e5fD8bbc25984B178FdCE6117Defa39d2db39",
+      "name": "Binance USD",
+      "symbol": "BUSD",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xC7Deff444145093f1B2054DBd3E68B2878D86552",
+      "name": "Beefy Moo Stargate DAI",
+      "symbol": "mooStargateDAI",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xd6E5824b54f64CE6f1161210bc17eeBfFC77E031",
+      "name": "BeethovenX LP OP/BEETS/BAL",
+      "symbol": "OP/BEETS/BAL",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
+      "name": "Frax",
+      "symbol": "FRAX",
+      "logoURI": "https://assets.coingecko.com/coins/images/13422/thumb/ethCanonicalFRAX.png?1669277108",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -849,10 +1347,503 @@
     },
     {
       "chainID": 10,
-      "address": "0xE4F27b04cC7729901876B44f4EAA5102EC150265",
-      "name": "CryptoFranc",
-      "symbol": "XCHF",
-      "logoURI": "https://ethereum-optimism.github.io/data/XCHF/logo.png",
+      "address": "0xe3C332a5DcE0e1d9bC2cC72A68437790570C28a4",
+      "name": "BLOCKv",
+      "symbol": "VEE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x191c10Aa4AF7C30e871E70C95dB0E4eb77237530",
+      "name": "Aave Optimism LINK",
+      "symbol": "aOptLINK",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1a7450AACc67d90afB9e2C056229973354cc8987",
+      "name": "Granary WSTETH",
+      "symbol": "grainWSTETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x92651E1bBfE0f8423119AfC4B0610C747Fa125a1",
+      "name": "Beefy Moo Curve f-sETH",
+      "symbol": "mooCurveFsETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xDc125D09891C5b6b66061e3170E9A1E1c5cF9bE4",
+      "name": "BeethovenX LP IB/rETH",
+      "symbol": "IB/rETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xcdB4bB51801A1F399d4402c61bC098a72c382E65",
+      "name": "OPX Finance",
+      "symbol": "OPX",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+      "name": "ETH",
+      "symbol": "ETH",
+      "logoURI": "https://tokens.1inch.io/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x62BB4fc73094c83B5e952C2180B23fA7054954c4",
+      "name": "PoolTogether aOptUSDC Ticket",
+      "symbol": "PTaOptUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/14003/large/PoolTogether.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1e3c6c53F9f60BF8aAe0D7774C21Fa6b1afddC57",
+      "name": "xShrap",
+      "symbol": "XSHRAP",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x59d9aF011578Ae587749D65D4c4F49a63221e236",
+      "name": "BeethovenX LP QI/USDC",
+      "symbol": "QI/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xf30dB0Ca4605e5115Df91B56BD299564dcA02666",
+      "name": "BeethovenX LP wstETH/BEETS",
+      "symbol": "wstETH/BEETS",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0892a178c363b4739e5Ac89E9155B9c30214C0c0",
+      "name": "Beefy Moo Curve wstETH",
+      "symbol": "mooCurveWSTETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1DB2466d9F5e10D7090E7152B68d62703a2245F0",
+      "name": "Sonne Finance",
+      "symbol": "SONNE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x81aB7E0D570b01411fcC4afd3D50eC8C241cb74b",
+      "name": "Equalizer",
+      "symbol": "EQZ",
+      "logoURI": "https://ethereum-optimism.github.io/data/EQZ/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xfF94cc8E2c4B17e3CC65d7B83c7e8c643030D936",
+      "name": "Granary ETH",
+      "symbol": "grainETH",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5029C236320b8f15eF0a657054B84d90bfBEDED3",
+      "name": "BitANT",
+      "symbol": "BITANT",
+      "logoURI": "https://assets.coingecko.com/coins/images/19055/thumb/BitANT.png?1634264861",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xd652776dE7Ad802be5EC7beBfafdA37600222B48",
+      "name": "SoliMax",
+      "symbol": "SLM",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3E29D3A9316dAB217754d13b28646B76607c5f04",
+      "name": "Alchemix ETH",
+      "symbol": "ALETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/16271/thumb/uS04dyYy_400x400.jpeg?1663051098",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xFA436399d0458Dbe8aB890c3441256E3E09022a8",
+      "name": "ZipSwap",
+      "symbol": "ZIP",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0994206dfE8De6Ec6920FF4D779B0d950605Fb53",
+      "name": "Curve DAO",
+      "symbol": "CRV",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/thumb/Curve.png?1597369484",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x40dBe796EAE37e371Cf0217A6dbB946CDAF9F1b7",
+      "name": "BeethovenX LP QI/WETH/OP/USDC",
+      "symbol": "QI/WETH/OP/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5028497af0c9a54ea8C6D42a054c0341B9fc6168",
+      "name": "BeethovenX LP WETH/WBTC/USDC",
+      "symbol": "WETH/WBTC/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x66e8617d1Df7ab523a316a6c01D16Aa5beD93681",
+      "name": "Shack",
+      "symbol": "SHACK",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xab7bAdEF82E9Fe11f6f33f87BC9bC2AA27F2fCB5",
+      "name": "Maker",
+      "symbol": "MKR",
+      "logoURI": "https://ethereum-optimism.github.io/data/MKR/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x7FB688CCf682d58f86D7e38e03f9D22e7705448B",
+      "name": "Rai Reflex Index",
+      "symbol": "RAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/14004/thumb/RAI-logo-coin.png?1613592334",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7fB37AE8BE7F6177F265E3Ff6d6731672779eb0B",
+      "name": "Granary BAL",
+      "symbol": "grainBAL",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xF0d26842c3935A618e6980C53fDa3A2D10A02eb7",
+      "name": "Beefy Moo Beets Optimistic 8 Track",
+      "symbol": "mooBeetOptimistic8Track",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc931b64E181a4a29416F55E67921BFe16e4Fe789",
+      "name": "BeethovenX LP WETH/rETH",
+      "symbol": "WETH/rETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xf329e36C7bF6E5E86ce2150875a84Ce77f477375",
+      "name": "Aave Optimism AAVE",
+      "symbol": "aOptAAVE",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xcfD1D50ce23C46D3Cf6407487B2F8934e96DC8f9",
+      "name": "SPANK",
+      "symbol": "SPANK",
+      "logoURI": "https://ethereum-optimism.github.io/data/SPANK/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xE405de8F52ba7559f9df3C368500B6E6ae6Cee49",
+      "name": "sETH",
+      "symbol": "SETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/8843/thumb/sETH.png?1616150207",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xBad8de88FEBc2d9364254e108Fe5a547A7b6B4C0",
+      "name": "BeethovenX LP WETH/LDO",
+      "symbol": "WETH/LDO",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x04F0fd3CD03B17a3E5921c0170ca6dD3952841cA",
+      "name": "Iron Bank Synth sUSD",
+      "symbol": "iSUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x0Be27c140f9Bdad3474bEaFf0A413EC7e19e9B93",
+      "name": "Market Neutral Yield ETH",
+      "symbol": "MNYE",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7B50775383d3D6f0215A8F290f2C9e2eEBBEceb2",
+      "name": "BeethovenX LP wstETH/WETH",
+      "symbol": "wstETH/WETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x39FdE572a18448F8139b7788099F0a0740f51205",
+      "name": "Oath",
+      "symbol": "OATH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97",
+      "name": "Aave Optimism SUSD",
+      "symbol": "aOptSUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4200000000000000000000000000000000000042",
+      "name": "Optimism",
+      "symbol": "OP",
+      "logoURI": "https://tokens.1inch.io/0x4200000000000000000000000000000000000042.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x75C6B245515657Fd69f1645C051A2ba13a8D70c6",
+      "name": "BeethovenX LP CRV/WETH/OP/USDC",
+      "symbol": "CRV/WETH/OP/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x117cFd9060525452db4A34d51c0b3b7599087f05",
+      "name": "Geyser",
+      "symbol": "GYSR",
+      "logoURI": "https://ethereum-optimism.github.io/data/GYSR/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000",
+      "name": "Ether",
+      "symbol": "ETH",
+      "logoURI": "https://ethereum-optimism.github.io/data/ETH/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xc5Db22719A06418028A40A9B5E9A7c02959D0d08",
+      "name": "Synthetic Chainlink",
+      "symbol": "sLINK",
+      "logoURI": "https://ethereum-optimism.github.io/data/sLINK/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xBB6BBaa0F6D839A00c82B10747aBc3b7E2eEcc82",
+      "name": "Impermax",
+      "symbol": "IBEX",
+      "logoURI": "https://ethereum-optimism.github.io/data/IBEX/logo.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": []
@@ -869,30 +1860,148 @@
     },
     {
       "chainID": 10,
-      "address": "0x0B3e851cf6508A16266BC68A651ea68b31ef673b",
-      "name": "Loopfi",
-      "symbol": "LPF",
-      "logoURI": "https://ethereum-optimism.github.io/data/LPF/logo.svg",
+      "address": "0xd8f365c2c85648f9B89D9f1BF72C0aE4b1C36cFD",
+      "name": "TheDAO",
+      "symbol": "TheDAO",
+      "logoURI": "https://ethereum-optimism.github.io/data/TheDAO/logo.svg",
+      "decimals": 16,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x34A81e8956BF20b7448b31990A2c06F96830a6e4",
+      "name": "BeethovenX LP USDC/USDT/DAI",
+      "symbol": "USDC/USDT/DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4C8b1958B09B3bde714f68864Bcc3a74Eaf1A23D",
+      "name": "Yearn yvUSDC 0.4.4",
+      "symbol": "yvUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xd3Ac016b1B8C80EeAdDe4D186A9138C9324e4189",
+      "name": "Okcash",
+      "symbol": "OK",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6F0fecBC276de8fC69257065fE47C5a03d986394",
+      "name": "Popcorn",
+      "symbol": "POP",
+      "logoURI": "https://assets.coingecko.com/coins/images/21438/thumb/pop-1_200_x_200.png?1662607611",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xFf733b2A3557a7ed6697007ab5D11B79FdD1b76B",
+      "name": "Across Protocol",
+      "symbol": "ACX",
+      "logoURI": "https://assets.coingecko.com/coins/images/28161/thumb/across-200x200.png?1668168201",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x375488F097176507e39B9653b88FDc52cDE736Bf",
+      "name": "Tarot",
+      "symbol": "TAROT",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc45A479877e1e9Dfe9FcD4056c699575a1045dAA",
+      "name": "Aave Optimism wstETH",
+      "symbol": "aOptwstETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x703D57164CA270b0B330A87FD159CfEF1490c0a5",
+      "name": "WardenSwap",
+      "symbol": "WAD",
+      "logoURI": "https://ethereum-optimism.github.io/data/WAD/logo.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": []
     },
     {
       "chainID": 10,
-      "address": "0x67CCEA5bb16181E7b4109c9c2143c24a1c2205Be",
-      "name": "FXS",
-      "symbol": "FXS",
-      "logoURI": "https://ethereum-optimism.github.io/data/FXS/logo.svg",
+      "address": "0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A",
+      "name": "Wrapped USDR",
+      "symbol": "WUSDR",
+      "logoURI": "",
+      "decimals": 9,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6645237fb81fe7227AA2Fa2A244D23A5AC0DA1cd",
+      "name": "Curve.fi Factory USD Metapool: Mai Stablecoin",
+      "symbol": "MAI+3Pool3CRV-f",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5e70AfFE232e2919792f77EB94e566db0320fa88",
+      "name": "Monetum",
+      "symbol": "MOM",
+      "logoURI": "https://ethereum-optimism.github.io/data/MOM/logo.svg",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": []
     },
     {
       "chainID": 10,
-      "address": "0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4",
-      "name": "Synthetix",
-      "symbol": "SNX",
-      "logoURI": "https://ethereum-optimism.github.io/logos/SNX.svg",
+      "address": "0x1337BedC9D22ecbe766dF105c9623922A27963EC",
+      "name": "Curve.fi DAI/USDC/USDT",
+      "symbol": "3CRV",
+      "logoURI": "https://optimistic.etherscan.io/images/main/empty-token.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -902,14 +2011,141 @@
     },
     {
       "chainID": 10,
-      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
-      "name": "Wrapped Bitcoin",
-      "symbol": "WBTC",
-      "logoURI": "https://ethereum-optimism.github.io/logos/WBTC.svg",
+      "address": "0x0a2f234Ad2e5e9047067904A9D37D0Cd02b80D12",
+      "name": "Yearn yvWBTC 0.4.4",
+      "symbol": "yvWBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
       "decimals": 8,
       "balance": "0",
       "supportedZaps": [
-        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x32F0DC9E2D890BAC95106a65eB82db70Bc58BaDB",
+      "name": "BeethovenX LP OP/BEETS",
+      "symbol": "OP/BEETS",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x8F69Ee043d52161Fd29137AeDf63f5e70cd504D5",
+      "name": "The Doge NFT",
+      "symbol": "DOG",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xC97dEE022137a8c5F65B5138Cc690Fbe87806ED5",
+      "name": "BeethovenX LP QI/USDC",
+      "symbol": "QI/USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xa00E3A3511aAC35cA78530c85007AFCd31753819",
+      "name": "Kyber Network Crystal",
+      "symbol": "KNC",
+      "logoURI": "https://assets.coingecko.com/coins/images/14899/thumb/RwdVsGcw_400x400.jpg?1618923851",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x29FAF5905bfF9Cfcc7CF56a5ed91E0f091F8664B",
+      "name": "Bankless Token",
+      "symbol": "BANK",
+      "logoURI": "https://ethereum-optimism.github.io/data/BANK/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xA628c54C850ff1077b5C954491D19EccE7e321fF",
+      "name": "Yearn yvWETH 0.4.4",
+      "symbol": "yvWETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xDCd803c0Ad8778662C0A53b4dAED81aB9EF06834",
+      "name": "BeethovenX LP WETH/DAI",
+      "symbol": "WETH/DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1f6258a371ac9431b6a84E89fE486c64Ba71b2F7",
+      "name": "BeethovenX LP USDC/DAI",
+      "symbol": "USDC/DAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5557F4cb8e87A24bAa8a5e80d6c7AB9c8B3C4aa5",
+      "name": "Beefy Moo Beets Helter Skelter",
+      "symbol": "mooBalancerHelterSkelter",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEf6301DA234fC7b0545c6E877D3359FE0B9E50a4",
+      "name": "SUKU",
+      "symbol": "SUKU",
+      "logoURI": "https://ethereum-optimism.github.io/data/SUKU/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xbfD291DA8A403DAAF7e5E9DC1ec0aCEaCd4848B9",
+      "name": "dForce USD",
+      "symbol": "USX",
+      "logoURI": "https://ethereum-optimism.github.io/data/USX/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
         "Portals"
       ]
     },
@@ -927,6 +2163,481 @@
     },
     {
       "chainID": 10,
+      "address": "0x00a35FD824c717879BF370E70AC6868b95870Dfb",
+      "name": "Iron Bank",
+      "symbol": "IB",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xDecC0c09c3B5f6e92EF4184125D5648a66E35298",
+      "name": "Stargate USD Coin-LP",
+      "symbol": "S*USDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/24413/large/STG_LOGO.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xE37c8cd79b17c2173870E31586B4823C459f4abf",
+      "name": "BeethovenX LP OATH/WETH/USDC",
+      "symbol": "OATH/WETH/USDC",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x217D47011b23BB961eB6D93cA9945B7501a5BB11",
+      "name": "Thales",
+      "symbol": "THALES",
+      "logoURI": "https://assets.coingecko.com/coins/images/18388/thumb/CLVZJN_C_400x400.png?1631758808",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xF98dCd95217E15E05d8638da4c91125E59590B07",
+      "name": "Kromatika",
+      "symbol": "KROM",
+      "logoURI": "https://assets.coingecko.com/coins/images/20541/thumb/KROM_Transparent.png?1641398421",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x8B21e9b7dAF2c4325bf3D18c1BeB79A347fE902A",
+      "name": "Collab.Land",
+      "symbol": "COLLAB",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xFaee21D0f0Af88EE72BB6d68E54a90E6EC2616de",
+      "name": "Yearn yvUSDT 0.4.5",
+      "symbol": "yvUSDT",
+      "logoURI": "",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x17533a1bDe957979E3977EbbFBC31E6deeb25C7d",
+      "name": "Iron Bank Wrapped Ether",
+      "symbol": "iWETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x54DCFE120d608551f9010d3b66620D230fD5c11B",
+      "name": "Curve.fi Factory USD Metapool: SUSD/FRAXBP",
+      "symbol": "SUSDFRAXP3CRV-f",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+      "name": "Tether USD",
+      "symbol": "USDT",
+      "logoURI": "https://tokens.1inch.io/0x94b008aa00579c1307b0ef2c499ad98a8ce58e58.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3390108E913824B8eaD638444cc52B9aBdF63798",
+      "name": "Mask Network",
+      "symbol": "MASK",
+      "logoURI": "https://ethereum-optimism.github.io/data/MASK/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xBb586Ed34974B15049a876fd5366A4C2d1203115",
+      "name": "Universal Basic Income",
+      "symbol": "UBI",
+      "logoURI": "https://ethereum-optimism.github.io/data/UBI/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xC328D83883F5F90E1108D4Dd7A18FFcA17Ae74d7",
+      "name": "Yearn yvsUSD 0.4.4",
+      "symbol": "yvsUSD",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xcdb9b4db65C913aB000b40204248C8A53185D14D",
+      "name": "Iron Bank Wrapped BTC",
+      "symbol": "iWBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEc6adef5E1006bb305bB1975333e8fc4071295bf",
+      "name": "Cartesi",
+      "symbol": "CTSI",
+      "logoURI": "https://assets.coingecko.com/coins/images/11038/thumb/cartesi.png?1592288021",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xB548f63D4405466B36C0c0aC3318a22fDcec711a",
+      "name": "Rari Governance Token",
+      "symbol": "RGT",
+      "logoURI": "https://ethereum-optimism.github.io/data/RGT/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x00F932F0FE257456b32dedA4758922E56A4F4b42",
+      "name": "Paper",
+      "symbol": "PAPER",
+      "logoURI": "https://ethereum-optimism.github.io/data/PAPER/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+      "name": "Lyra Finance",
+      "symbol": "LYRA",
+      "logoURI": "https://assets.coingecko.com/coins/images/21490/thumb/Add-a-heading-26.png?1639364177",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A",
+      "name": "Alchemix USD",
+      "symbol": "alUSD",
+      "logoURI": "https://tokens.1inch.io/0xcb8fa9a76b8e203d8c3797bf438d8fb81ea3326a.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x2513486f18eeE1498D7b6281f668B955181Dd0D9",
+      "name": "OpenXSwap Gov. Token",
+      "symbol": "XOPENX",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3D02b49f68eFeA6dB586D2eB3002A4AA8d151F3A",
+      "name": "BeethovenX LP STG/WETH/OP/WBTC/SNX",
+      "symbol": "STG/WETH/OP/WBTC/SNX",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6a06E2a5cb13fcd54b28F3f90144e64952a3A0b4",
+      "name": "BeethovenX LP sUSD/USDT",
+      "symbol": "sUSD/USDT",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x9e1028F5F1D5eDE59748FFceE5532509976840E0",
+      "name": "Perpetual",
+      "symbol": "PERP",
+      "logoURI": "https://tokens.1inch.io/0x9e1028f5f1d5ede59748ffcee5532509976840e0.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B",
+      "name": "BOB",
+      "symbol": "BOB",
+      "logoURI": "https://assets.coingecko.com/coins/images/27266/thumb/Bob-logo.png?1663073030",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEfDE221f306152971D8e9f181bFe998447975810",
+      "name": "Curve.fi ETH/wstETH",
+      "symbol": "wstETHCRV",
+      "logoURI": "https://assets.coingecko.com/coins/images/12124/large/Curve.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xb390A4e78442C1DDd5F446E2950533A4294B89D9",
+      "name": "BeethovenX LP STG/QI/WETH/OP/WBTC/SNX/BEETS/DAI",
+      "symbol": "STG/QI/WETH/OP/WBTC/SNX/BEETS/DAI",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4d4c395790AE5F5d9b755952F0dbEf1634563682",
+      "name": "BeethovenX LP WBTC/BPT-USDEAD/DAI",
+      "symbol": "WBTC/BPT-USDEAD/DAI",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4e7849f846f8cdDAF37c72065b65Ec22cecEE109",
+      "name": "Granary USDT",
+      "symbol": "grainUSDT",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5d47bAbA0d66083C52009271faF3F50DCc01023C",
+      "name": "UniDex",
+      "symbol": "UNIDX",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620",
+      "name": "Aave Optimism USDT",
+      "symbol": "aOptUSDT",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xb4E4CFA9971C7e1069685771DaB61CA56e72e5C3",
+      "name": "Yearn yvCurve-sETH 0.4.5",
+      "symbol": "yvCurve-sETH",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x6F620EC89B8479e97A6985792d0c64F237566746",
+      "name": "WePiggy Coin",
+      "symbol": "WPC",
+      "logoURI": "https://assets.coingecko.com/coins/images/21914/thumb/WPC200.png?1640262945",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x04953368a77Af5B65512ee3536Efe152B96Aa453",
+      "name": "BeethovenX LP USDC/BEETS",
+      "symbol": "USDC/BEETS",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc98B98d17435AA00830c87eA02474C5007E1f272",
+      "name": "BitBTC",
+      "symbol": "BitBTC",
+      "logoURI": "https://ethereum-optimism.github.io/data/BitBTC/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x74ccbe53F77b08632ce0CB91D3A545bF6B8E0979",
+      "name": "Fantom Bomb",
+      "symbol": "BOMB",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x078f358208685046a11C85e8ad32895DED33A249",
+      "name": "Aave Optimism WBTC",
+      "symbol": "aOptWBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/12645/large/AAVE.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x5B977577Eb8a480f63e11FC615D6753adB8652Ae",
+      "name": "Yearn yvWETH 0.4.5",
+      "symbol": "yvWETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x920Cf626a271321C151D027030D5d08aF699456b",
+      "name": "Kwenta",
+      "symbol": "KWENTA",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xEe9801669C6138E84bD50dEB500827b776777d28",
+      "name": "O3 Swap",
+      "symbol": "O3",
+      "logoURI": "https://assets.coingecko.com/coins/images/15460/thumb/o3.png?1620904316",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xe0BB0D3DE8c10976511e5030cA403dBf4c25165B",
+      "name": "0xBitcoin",
+      "symbol": "0XBTC",
+      "logoURI": "https://assets.coingecko.com/coins/images/4454/thumb/0xbtc.png?1561603765",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
       "address": "0xeAeAdAC73baaF4cB8B024dE9D65B2eeFa722856C",
       "name": "Respawn Finance Wrapped Staked Ethereum",
       "symbol": "RFWSTETH",
@@ -937,11 +2648,117 @@
     },
     {
       "chainID": 10,
-      "address": "0x7F5c764cBc14f9669B88837ca1490cCa17c31607",
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "logoURI": "https://tokens.1inch.io/0x7f5c764cbc14f9669b88837ca1490cca17c31607.png",
-      "decimals": 6,
+      "address": "0x3c8B650257cFb5f272f799F5e2b4e65093a11a05",
+      "name": "Velodrome Finance",
+      "symbol": "VELO",
+      "logoURI": "https://assets.coingecko.com/coins/images/25783/thumb/velo.png?1653817876",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x1d073cf59Ae0C169cbc58B6fdD518822ae89173a",
+      "name": "Iron Bank USD Coin",
+      "symbol": "iUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x30091e843deb234EBb45c7E1Da4bBC4C33B3f0B4",
+      "name": "Granary OP",
+      "symbol": "grainOP",
+      "logoURI": "https://granary.finance/static/media/GranaryLogo.6842f821.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x63AbEa04cfF561D7d0740627168aa69105D79602",
+      "name": "BeethovenX LP STG/WETH/OP/WBTC/SNX/PERP/LDO/BAL",
+      "symbol": "STG/WETH/OP/WBTC/SNX/PERP/LDO/BAL",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xc77E5645Dbe48d54afC06655e39D3Fe17eB76C1c",
+      "name": "BeethovenX LP wstETH/LDO",
+      "symbol": "wstETH/LDO",
+      "logoURI": "https://assets.coingecko.com/coins/images/19158/large/beets-icon-large.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xdFA46478F9e5EA86d57387849598dbFB2e964b02",
+      "name": "MAI",
+      "symbol": "MIMATIC",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xcB59a0A753fDB7491d5F3D794316F1adE197B21E",
+      "name": "TrueUSD",
+      "symbol": "TUSD",
+      "logoURI": "https://ethereum-optimism.github.io/data/TUSD/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x049E04bEE77cFfB055f733A138a2F204D3750283",
+      "name": "Iron Bank Dai Stablecoin",
+      "symbol": "iDAI",
+      "logoURI": "https://assets.coingecko.com/coins/images/22902/large/ironbank.png",
+      "decimals": 8,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7eE71053102d54Fc843BaEBaf07277C2b6dB64f1",
+      "name": "Beefy Moo Aave Op ETH",
+      "symbol": "mooAaveOpETH",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "logoURI": "https://tokens.1inch.io/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png",
+      "decimals": 18,
       "balance": "0",
       "supportedZaps": [
         "Wido",
@@ -950,10 +2767,30 @@
     },
     {
       "chainID": 10,
-      "address": "0xe0cCa86B254005889aC3a81e737f56a14f4A38F5",
-      "name": "Alta Finance",
-      "symbol": "ALTA",
-      "logoURI": "https://assets.coingecko.com/coins/images/18713/thumb/AFN-token-Altafin-200.png?1633079552",
+      "address": "0xFa956eB0c4b3E692aD5a6B2f08170aDE55999ACa",
+      "name": "PhunToken",
+      "symbol": "PHTK",
+      "logoURI": "https://ethereum-optimism.github.io/data/PHTK/logo.svg",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0x65559aA14915a70190438eF90104769e5E890A00",
+      "name": "Ethereum Name Service",
+      "symbol": "ENS",
+      "logoURI": "https://ethereum-optimism.github.io/data/ENS/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
+    },
+    {
+      "chainID": 10,
+      "address": "0xc3864f98f2a61A7cAeb95b039D031b4E2f55e0e9",
+      "name": "OpenXSwap",
+      "symbol": "OPENX",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -962,30 +2799,103 @@
     },
     {
       "chainID": 10,
-      "address": "0x395Ae52bB17aef68C2888d941736A71dC6d4e125",
-      "name": "PoolTogether",
-      "symbol": "POOL",
-      "logoURI": "https://ethereum-optimism.github.io/data/POOL/logo.svg",
+      "address": "0x2793AF2c7db9f0A06d2727Dd392Ab4Bb1b82a98D",
+      "name": "Beefy Moo Beets Shanghai Shakedown",
+      "symbol": "mooBeetsShanghaiShakedown",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x50Bce64397C75488465253c0A034b8097FeA6578",
+      "name": "HanChain",
+      "symbol": "HAN",
+      "logoURI": "https://assets.coingecko.com/coins/images/27374/thumb/logo_200.png?1663732819",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7c6b91D9Be155A6Db01f749217d76fF02A7227F2",
+      "name": "Sarcophagus",
+      "symbol": "SARCO",
+      "logoURI": "https://ethereum-optimism.github.io/data/SARCO/logo.png",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": []
     },
     {
       "chainID": 10,
-      "address": "0x1da650C3B2DaA8AA9Ff6F661d4156Ce24d08A062",
-      "name": "Dentacoin",
-      "symbol": "DCN",
-      "logoURI": "https://ethereum-optimism.github.io/data/DCN/logo.svg",
-      "decimals": 0,
+      "address": "0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6",
+      "name": "Chainlink",
+      "symbol": "LINK",
+      "logoURI": "https://tokens.1inch.io/0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Wido",
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7Da25Bc4cFAed3F29414C6779676e53B19a356f5",
+      "name": "Kokomo Finance",
+      "symbol": "KOKO",
+      "logoURI": "",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x3bB4445D30AC020a84c1b5A8A2C6248ebC9779D0",
+      "name": "Theranos Coin",
+      "symbol": "LIZ",
+      "logoURI": "https://ethereum-optimism.github.io/data/LIZ/logo.png",
+      "decimals": 18,
       "balance": "0",
       "supportedZaps": []
     },
     {
       "chainID": 10,
-      "address": "0x2E3D870790dC77A83DD1d18184Acc7439A53f475",
-      "name": "Frax",
-      "symbol": "FRAX",
-      "logoURI": "https://assets.coingecko.com/coins/images/13422/thumb/ethCanonicalFRAX.png?1669277108",
+      "address": "0x3DD36E64784FDAEe7BD202c78322a0d8EB1BB32b",
+      "name": "Beefy Moo Beets All You Need Is Love",
+      "symbol": "mooBeetAllYouNeedIsLove",
+      "logoURI": "https://assets.coingecko.com/coins/images/12704/large/token.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2",
+      "name": "Yearn yvUSDC 0.4.5",
+      "symbol": "yvUSDC",
+      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png",
+      "decimals": 6,
+      "balance": "0",
+      "supportedZaps": [
+        "Portals"
+      ]
+    },
+    {
+      "chainID": 10,
+      "address": "0xe4dE4B87345815C71aa843ea4841bCdc682637bb",
+      "name": "BUILD",
+      "symbol": "BUILD",
+      "logoURI": "",
       "decimals": 18,
       "balance": "0",
       "supportedZaps": [
@@ -1003,6 +2913,16 @@
       "supportedZaps": [
         "Portals"
       ]
+    },
+    {
+      "chainID": 10,
+      "address": "0x7113370218f31764C1B6353BDF6004d86fF6B9cc",
+      "name": "Decentralized USD",
+      "symbol": "USDD",
+      "logoURI": "https://ethereum-optimism.github.io/data/USDD/logo.png",
+      "decimals": 18,
+      "balance": "0",
+      "supportedZaps": []
     }
   ],
   "version": {

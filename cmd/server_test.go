@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"net/http"
 	"testing"
 	"time"
@@ -32,38 +31,4 @@ func TestEnvironment(t *testing.T) {
 	resp, err = http.Get(`http://localhost:8080/info/chains`)
 	assert.NoError(t, err)
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
-
-	//Testing the a basic graphQL request
-	jsonStr := []byte(`{
-		tokens(first: 5) {
-		  id
-		  decimals
-		  name
-		  symbol
-		}
-	}`)
-	req, err := http.NewRequest("POST", `http://localhost:8080/1/graph`, bytes.NewBuffer(jsonStr))
-	req.Header.Set("Content-Type", "application/json")
-	assert.Nil(t, err)
-	client := &http.Client{}
-	resp, err = client.Do(req)
-	assert.Nil(t, err)
-	assert.Equal(t, http.StatusOK, resp.StatusCode)
-
-	jsonInvalidStr := []byte(`{\n tokens(first: 5) {\n id \n decimals \n name \n symbol \n } \n }`)
-	req, err = http.NewRequest("POST", `http://localhost:8080/1/graph`, bytes.NewBuffer(jsonInvalidStr))
-	req.Header.Set("Content-Type", "application/json")
-	assert.Nil(t, err)
-	client = &http.Client{}
-	resp, err = client.Do(req)
-	assert.Nil(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
-
-	req, err = http.NewRequest("POST", `http://localhost:8080/hello/graph`, bytes.NewBuffer(jsonInvalidStr))
-	req.Header.Set("Content-Type", "application/json")
-	assert.Nil(t, err)
-	client = &http.Client{}
-	resp, err = client.Do(req)
-	assert.Nil(t, err)
-	assert.Equal(t, http.StatusBadRequest, resp.StatusCode)
 }

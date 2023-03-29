@@ -10,7 +10,7 @@ var startBlock *uint64
 var endBlock *uint64
 var process TProcess
 
-func init() {
+func initFlags() {
 	/**********************************************************************************************
 	** Flag group: Chains
 	** Description: List of chain IDs to run yDaemon for

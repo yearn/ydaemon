@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	initFlags()
 	logs.Info(`Loading initial state in memory`)
 	loadDaemonsForAllChains(trace)
 	summonDaemonsForAllChains(trace)

@@ -8,11 +8,10 @@ import (
 	"strconv"
 	"strings"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // Intersects returns true if both arrays have at least one element in common
@@ -218,9 +217,9 @@ func DecodeBool(something []interface{}) bool {
 	}
 	return something[0].(bool)
 }
-func DecodeAddress(something []interface{}) ethcommon.Address {
+func DecodeAddress(something []interface{}) common.Address {
 	if len(something) == 0 {
-		return ethcommon.Address{}
+		return common.Address{}
 	}
-	return something[0].(ethcommon.Address)
+	return something[0].(common.Address)
 }

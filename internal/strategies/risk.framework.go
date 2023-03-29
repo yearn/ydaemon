@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
@@ -237,7 +236,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 		if strategyGroup == nil {
 			if !stratGroupErrorAlreadySent[chainID][strategy.Name] {
 				traces.
-					Capture(`warn`, `impossible to find stratGroup for strategy ` + strategy.Name).
+					Capture(`warn`, `impossible to find stratGroup for strategy `+strategy.Name).
 					SetEntity(`strategy`).
 					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 					SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -249,7 +248,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 			continue
 		}
 
-		tokenData, ok := tokens.FindUnderlyingForVault(chainID, common.FromAddress(strategy.VaultAddress))
+		tokenData, ok := tokens.FindUnderlyingForVault(chainID, strategy.VaultAddress)
 		if !ok {
 			traces.
 				Capture(`warn`, `impossible to find token for vault `+strategy.VaultAddress.Hex()).
@@ -262,7 +261,7 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 			continue
 		}
 
-		tokenPrice, ok := prices.FindPrice(chainID, common.FromAddress(tokenData.Address))
+		tokenPrice, ok := prices.FindPrice(chainID, tokenData.Address)
 		if !ok {
 			traces.
 				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).

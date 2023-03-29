@@ -4,9 +4,9 @@ import (
 	"math/big"
 	"strconv"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 /**************************************************************************************************
@@ -20,7 +20,7 @@ var YearnVaultRegistryV2, _ = contracts.Yregistryv2MetaData.GetAbi()
 func getPricePerShare(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("pricePerShare")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `pricePerShare`,
 		CallData: parsedData,
@@ -30,7 +30,7 @@ func getPricePerShare(name string, contractAddress common.Address) ethereum.Call
 func getAPIVersion(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("apiVersion")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `apiVersion`,
 		CallData: parsedData,
@@ -40,7 +40,7 @@ func getAPIVersion(name string, contractAddress common.Address) ethereum.Call {
 func getPerformanceFee(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("performanceFee")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `performanceFee`,
 		CallData: parsedData,
@@ -50,7 +50,7 @@ func getPerformanceFee(name string, contractAddress common.Address) ethereum.Cal
 func getManagementFee(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("managementFee")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `managementFee`,
 		CallData: parsedData,
@@ -60,7 +60,7 @@ func getManagementFee(name string, contractAddress common.Address) ethereum.Call
 func getEmergencyShutdown(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("emergencyShutdown")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `emergencyShutdown`,
 		CallData: parsedData,
@@ -70,7 +70,7 @@ func getEmergencyShutdown(name string, contractAddress common.Address) ethereum.
 func getActivation(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("activation")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `activation`,
 		CallData: parsedData,
@@ -80,7 +80,7 @@ func getActivation(name string, contractAddress common.Address) ethereum.Call {
 func getGovernance(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("governance")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `governance`,
 		CallData: parsedData,
@@ -90,7 +90,7 @@ func getGovernance(name string, contractAddress common.Address) ethereum.Call {
 func getGuardian(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("guardian")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `guardian`,
 		CallData: parsedData,
@@ -100,7 +100,7 @@ func getGuardian(name string, contractAddress common.Address) ethereum.Call {
 func getManagement(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("management")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `management`,
 		CallData: parsedData,
@@ -110,7 +110,7 @@ func getManagement(name string, contractAddress common.Address) ethereum.Call {
 func getRewards(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("rewards")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `rewards`,
 		CallData: parsedData,
@@ -120,7 +120,7 @@ func getRewards(name string, contractAddress common.Address) ethereum.Call {
 func getTotalAssets(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("totalAssets")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `totalAssets`,
 		CallData: parsedData,
@@ -130,7 +130,7 @@ func getTotalAssets(name string, contractAddress common.Address) ethereum.Call {
 func getDepositLimit(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("depositLimit")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `depositLimit`,
 		CallData: parsedData,
@@ -140,7 +140,7 @@ func getDepositLimit(name string, contractAddress common.Address) ethereum.Call 
 func getAvailableDepositLimit(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("availableDepositLimit")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `availableDepositLimit`,
 		CallData: parsedData,
@@ -150,7 +150,7 @@ func getAvailableDepositLimit(name string, contractAddress common.Address) ether
 func getToken(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("token")
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `token`,
 		CallData: parsedData,
@@ -160,7 +160,7 @@ func getToken(name string, contractAddress common.Address) ethereum.Call {
 func getVaultWithdrawalQueue(name string, index int64, contractAddress common.Address) ethereum.Call {
 	parsedData, _ := YearnVaultABI.Pack("withdrawalQueue", big.NewInt(index))
 	return ethereum.Call{
-		Target:   contractAddress.Address,
+		Target:   contractAddress,
 		Abi:      YearnVaultABI,
 		Method:   `withdrawalQueue`,
 		CallData: parsedData,

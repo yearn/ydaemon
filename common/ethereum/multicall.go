@@ -10,22 +10,21 @@ import (
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 type Call struct {
-	Name     string            `json:"name"`
-	Method   string            `json:"method"`
-	Version  string            `json:"version"`
-	Abi      *abi.ABI          `json:"abi"`
-	Target   ethcommon.Address `json:"target"`
-	CallData []byte            `json:"call_data"`
+	Name     string         `json:"name"`
+	Method   string         `json:"method"`
+	Version  string         `json:"version"`
+	Abi      *abi.ABI       `json:"abi"`
+	Target   common.Address `json:"target"`
+	CallData []byte         `json:"call_data"`
 }
 
 type CallResponse struct {
@@ -37,7 +36,7 @@ type TEthMultiCaller struct {
 	Signer          *bind.TransactOpts
 	Client          *ethclient.Client
 	Abi             *abi.ABI
-	ContractAddress ethcommon.Address
+	ContractAddress common.Address
 }
 
 func (call Call) GetMultiCall() contracts.Multicall2Call {
@@ -89,7 +88,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 		Signer:          randomSigner(),
 		Client:          client,
 		Abi:             mcAbi,
-		ContractAddress: multicallAddress.Address,
+		ContractAddress: multicallAddress,
 	}
 }
 

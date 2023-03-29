@@ -5,12 +5,11 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -44,7 +43,7 @@ func filterNewExperimentalVault(
 	}
 
 	client := ethereum.GetRPC(chainID)
-	currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
+	currentVault, _ := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
 
 	options := bind.FilterOpts{Start: registryActivation, End: nil}
 	if log, err := currentVault.FilterNewExperimentalVault(&options, nil, nil); err == nil {
@@ -53,7 +52,7 @@ func filterNewExperimentalVault(
 				continue
 			}
 			*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-				RegistryAddress: registryAddress.ToAddress(),
+				RegistryAddress: registryAddress,
 				VaultsAddress:   log.Event.Vault,
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
@@ -106,7 +105,7 @@ func filterNewVaults(
 	client := ethereum.GetRPC(chainID)
 
 	if registryVersion == 1 || registryVersion == 2 {
-		currentVault, _ := contracts.NewYregistryv2(registryAddress.ToAddress(), client) //V1 and V2 share the same ABI
+		currentVault, _ := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
 		options := bind.FilterOpts{Start: registryActivation, End: nil}
 
 		if log, err := currentVault.FilterNewVault(&options, nil, nil); err == nil {
@@ -115,7 +114,7 @@ func filterNewVaults(
 					continue
 				}
 				*vaultsList = append(*vaultsList, utils.TVaultsFromRegistry{
-					RegistryAddress: registryAddress.ToAddress(),
+					RegistryAddress: registryAddress,
 					VaultsAddress:   log.Event.Vault,
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
@@ -140,7 +139,7 @@ func filterNewVaults(
 				Send()
 		}
 	} else if registryVersion == 3 {
-		currentVault, _ := contracts.NewYRegistryV3(registryAddress.ToAddress(), client) //V3 is not the same
+		currentVault, _ := contracts.NewYRegistryV3(registryAddress, client) //V3 is not the same
 
 		if log, err := currentVault.FilterNewVault(&bind.FilterOpts{Start: registryActivation}, nil, nil); err == nil {
 			for log.Next() {
@@ -148,7 +147,7 @@ func filterNewVaults(
 					continue
 				}
 				newVault := utils.TVaultsFromRegistry{
-					RegistryAddress: registryAddress.ToAddress(),
+					RegistryAddress: registryAddress,
 					VaultsAddress:   log.Event.Vault,
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
@@ -194,7 +193,7 @@ func filterNewVaults(
 func RetrieveAllVaults(
 	chainID uint64,
 	fromBlock uint64,
-) map[ethcommon.Address]utils.TVaultsFromRegistry {
+) map[common.Address]utils.TVaultsFromRegistry {
 	trace := traces.Init(`app.indexer.registry.new_vaults_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -221,7 +220,7 @@ func RetrieveAllVaults(
 	** were deployed first as experimental vaults and then as standard vaults. In that case, we
 	** keep the standard vault.
 	**********************************************************************************************/
-	uniqueVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
+	uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
 	for _, v := range vaultsList {
 		uniqueVaultsList[v.VaultsAddress] = v
 	}

@@ -3,11 +3,11 @@ package vaults
 import (
 	"net/http"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -33,7 +33,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	data := []TExternalVault{}
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
-		vaultAddress := common.FromAddress(currentVault.Address)
+		vaultAddress := currentVault.Address
 		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
 			continue
 		}
@@ -63,7 +63,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 			} else {
 				externalStrategy = &TStrategy{
-					Address:     common.FromAddress(strategy.Address),
+					Address:     common.NewMixedcaseAddress(strategy.Address),
 					Name:        strategy.Name,
 					DisplayName: strategy.DisplayName,
 					Description: strategy.Description,
@@ -78,12 +78,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		data = append(data, *newVault)
 	}
 
-	// Preparing the sort. This specifics steps are needed to avoid a panic
-	var sortedData = make([]interface{}, len(data))
-	for i, d := range data {
-		sortedData[i] = d
-	}
-	sort.SortBy(sortedData, orderBy, orderDirection) //Sort by details.order by default
-
-	c.JSON(http.StatusOK, sortedData)
+	//Sort by details.order by default
+	sort.SortBy(orderBy, orderDirection, data)
+	c.JSON(http.StatusOK, data)
 }

@@ -5,11 +5,10 @@ import (
 	"strconv"
 	"strings"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // TTokenFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/tokens/all
@@ -29,16 +28,16 @@ type TTokenFromMeta struct {
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaTokentMap = make(map[uint64]map[ethcommon.Address]*TTokenFromMeta)
+var _metaTokentMap = make(map[uint64]map[common.Address]*TTokenFromMeta)
 
 /**********************************************************************************************
 ** setTokenInMap will put a TTokenFromMeta in the _metaTokentMap variable.
 **********************************************************************************************/
 func setTokenInMap(chainID uint64, token *TTokenFromMeta) {
 	if _, ok := _metaTokentMap[chainID]; !ok {
-		_metaTokentMap[chainID] = make(map[ethcommon.Address]*TTokenFromMeta)
+		_metaTokentMap[chainID] = make(map[common.Address]*TTokenFromMeta)
 	}
-	_metaTokentMap[chainID][token.Address.Address] = token
+	_metaTokentMap[chainID][token.Address] = token
 }
 
 /**********************************************************************************************
@@ -48,7 +47,7 @@ func setTokenInMap(chainID uint64, token *TTokenFromMeta) {
 **********************************************************************************************/
 func GetMetaToken(chainID uint64, tokenAddress common.Address) (*TTokenFromMeta, bool) {
 	if tokensForChain, ok := _metaTokentMap[chainID]; ok {
-		if token, ok := tokensForChain[tokenAddress.ToAddress()]; ok {
+		if token, ok := tokensForChain[tokenAddress]; ok {
 			return token, true
 		}
 	}

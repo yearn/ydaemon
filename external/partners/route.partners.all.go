@@ -6,19 +6,18 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // GetAllPartners will return all the partners informations, no matter the chainID.
 func (y Controller) GetAllPartners(c *gin.Context) {
-	allPartners := make(map[uint64]map[common.Address]*TPartners)
+	allPartners := make(map[uint64]map[string]*TPartners)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		partners := Store.PartnersByAddress[chainID]
 		for _, partner := range partners {
 			if _, ok := allPartners[chainID]; !ok {
-				allPartners[chainID] = make(map[common.Address]*TPartners)
+				allPartners[chainID] = make(map[string]*TPartners)
 			}
-			allPartners[chainID][partner.Treasury] = partner
+			allPartners[chainID][partner.Treasury.Address().Hex()] = partner
 		}
 	}
 	c.JSON(http.StatusOK, allPartners)
@@ -37,6 +36,9 @@ func (y Controller) GetPartners(c *gin.Context) {
 		c.String(http.StatusBadRequest, "no data available")
 		return
 	}
-
-	c.JSON(http.StatusOK, partners)
+	allPartnersAsHex := make(map[string]*TPartners)
+	for address, partner := range partners {
+		allPartnersAsHex[address.Address().Hex()] = partner
+	}
+	c.JSON(http.StatusOK, allPartnersAsHex)
 }

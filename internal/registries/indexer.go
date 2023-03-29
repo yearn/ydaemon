@@ -7,12 +7,11 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -39,7 +38,7 @@ import (
 **************************************************************************************************/
 func indexNewVaults(
 	chainID uint64,
-	registryAddress ethcommon.Address,
+	registryAddress common.Address,
 	registryVersion uint64,
 	lastSyncedBlock uint64,
 ) (uint64, bool, error) {
@@ -111,7 +110,7 @@ func indexNewVaults(
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
-				newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
+				newVaultList := map[common.Address]utils.TVaultsFromRegistry{
 					newVault.VaultsAddress: newVault,
 				}
 				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
@@ -165,7 +164,7 @@ func indexNewVaults(
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
-				newVaultList := map[ethcommon.Address]utils.TVaultsFromRegistry{
+				newVaultList := map[common.Address]utils.TVaultsFromRegistry{
 					newVault.VaultsAddress: newVault,
 				}
 				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
@@ -195,7 +194,7 @@ func indexNewVaults(
 **************************************************************************************************/
 func indexNewVaultsWrapper(
 	chainID uint64,
-	registryAddress ethcommon.Address,
+	registryAddress common.Address,
 	registryVersion uint64,
 	registryActivation uint64,
 	delay time.Duration,
@@ -254,8 +253,8 @@ func indexNewVaultsWrapper(
 	if delay > 0 {
 		for {
 			vaultsList := []utils.TVaultsFromRegistry{}
-			filterNewVaults(chainID, common.FromAddress(registryAddress), registryVersion, lastSyncedBlock, &vaultsList, nil)
-			uniqueVaultsList := make(map[ethcommon.Address]utils.TVaultsFromRegistry)
+			filterNewVaults(chainID, registryAddress, registryVersion, lastSyncedBlock, &vaultsList, nil)
+			uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
 			for _, v := range vaultsList {
 				uniqueVaultsList[v.VaultsAddress] = v
 				if v.BlockNumber > lastSyncedBlock {
@@ -277,7 +276,7 @@ func indexNewVaultsWrapper(
 
 func IndexNewVaults(chainID uint64) {
 	for _, registry := range YEARN_REGISTRIES[chainID] {
-		go indexNewVaultsWrapper(chainID, registry.Address.ToAddress(), registry.Version, registry.Activation, 1*time.Minute)
+		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Activation, 1*time.Minute)
 	}
 
 	logs.Success(`Indexer Daemon has started. Let's wait for the first vaults to be indexed.`)

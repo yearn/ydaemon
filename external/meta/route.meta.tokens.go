@@ -32,7 +32,7 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 			continue
 		}
 		local := selectLocalizationFromString(localization, *token.Localization)
-		token.Name = local.Name
+		token.Name = helpers.SafeString(local.Name, token.Name)
 		token.Description = local.Description
 		token.Localization = nil
 		localizedTokensFromMeta = append(localizedTokensFromMeta, token)
@@ -71,7 +71,7 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 		return
 	}
 	local := selectLocalizationFromString(localization, *tokenFromMeta.Localization)
-	tokenFromMeta.Name = local.Name
+	tokenFromMeta.Name = helpers.SafeString(local.Name, tokenFromMeta.Name)
 	tokenFromMeta.Description = local.Description
 	tokenFromMeta.Localization = nil
 	c.JSON(http.StatusOK, tokenFromMeta)

@@ -5,10 +5,11 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // FetchPartnersFromFiles fetches the partners information from the Yearn Meta API for a given chainID
@@ -23,7 +24,7 @@ func FetchPartnersFromFiles(chainID uint64) {
 	}
 	for _, content := range content {
 		partner := &TPartners{}
-		partnerFromFile := TPartnersFromFile{}
+		partnerFromFile := TExternalPartnersFromFile{}
 		if err := json.Unmarshal(content, &partnerFromFile); err != nil {
 			logs.Warning("Error unmarshalling response body from the Yearn Meta API for chain", chainID)
 			continue
@@ -33,14 +34,14 @@ func FetchPartnersFromFiles(chainID uint64) {
 		partner.FullName = partnerFromFile.FullName
 		partner.Description = partnerFromFile.Description
 		partner.StartDate = partnerFromFile.StartDate
-		partner.Treasury = common.HexToAddress(partnerFromFile.Treasury)
+		partner.Treasury = addresses.ToMixedcase(partnerFromFile.Treasury)
 		partner.RetiredTreasury = partnerFromFile.RetiredTreasury
-		partner.Wrappers = make([]TPartnersWrapper, len(partnerFromFile.Wrappers))
+		partner.Wrappers = make([]TExternalPartnersWrapper, len(partnerFromFile.Wrappers))
 		for i, v := range partnerFromFile.Wrappers {
 			if v.Vault != `` {
-				partner.Wrappers[i].Vault = common.HexToAddress(v.Vault)
+				partner.Wrappers[i].Vault = addresses.ToMixedcase(v.Vault)
 			}
-			partner.Wrappers[i].Wrapper = common.HexToAddress(v.Wrapper)
+			partner.Wrappers[i].Wrapper = addresses.ToMixedcase(v.Wrapper)
 			partner.Wrappers[i].Name = v.Name
 			partner.Wrappers[i].Type = v.Type
 		}
@@ -50,7 +51,7 @@ func FetchPartnersFromFiles(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TPartners} if we were working with JS/TS
 	if Store.PartnersByAddress[chainID] == nil {
-		Store.PartnersByAddress[chainID] = make(map[common.Address]*TPartners)
+		Store.PartnersByAddress[chainID] = make(map[common.MixedcaseAddress]*TPartners)
 		Store.PartnersByName[chainID] = make(map[string]*TPartners)
 	}
 	for _, partner := range allPartners {

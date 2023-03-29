@@ -4,11 +4,10 @@ import (
 	"encoding/json"
 	"strconv"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // TStrategyFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/strategies/all
@@ -27,12 +26,12 @@ type TStrategyFromMeta struct {
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaStrategyMap = make(map[uint64]map[ethcommon.Address]*TStrategyFromMeta)
+var _metaStrategyMap = make(map[uint64]map[common.Address]*TStrategyFromMeta)
 
 func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		if _, ok := _metaStrategyMap[chainID]; !ok {
-			_metaStrategyMap[chainID] = make(map[ethcommon.Address]*TStrategyFromMeta)
+			_metaStrategyMap[chainID] = make(map[common.Address]*TStrategyFromMeta)
 		}
 	}
 }
@@ -42,9 +41,9 @@ func init() {
 **********************************************************************************************/
 func setStrategyInMap(chainID uint64, strategy *TStrategyFromMeta) {
 	if _, ok := _metaStrategyMap[chainID]; !ok {
-		_metaStrategyMap[chainID] = make(map[ethcommon.Address]*TStrategyFromMeta)
+		_metaStrategyMap[chainID] = make(map[common.Address]*TStrategyFromMeta)
 	}
-	_metaStrategyMap[chainID][strategy.Address.Address] = strategy
+	_metaStrategyMap[chainID][strategy.Address] = strategy
 }
 
 /**********************************************************************************************
@@ -55,7 +54,7 @@ func setStrategyInMap(chainID uint64, strategy *TStrategyFromMeta) {
 **********************************************************************************************/
 func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*TStrategyFromMeta, bool) {
 	if strategysForChain, ok := _metaStrategyMap[chainID]; ok {
-		if strategy, ok := strategysForChain[strategyAddress.ToAddress()]; ok {
+		if strategy, ok := strategysForChain[strategyAddress]; ok {
 			return strategy, true
 		}
 	}

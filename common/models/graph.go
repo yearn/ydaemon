@@ -1,11 +1,11 @@
 package models
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
-//TVaultFromGraphToken holds the info about a specific token or shareToken
+// TVaultFromGraphToken holds the info about a specific token or shareToken
 type TVaultFromGraphToken struct {
 	Id       common.Address
 	Name     string
@@ -13,20 +13,20 @@ type TVaultFromGraphToken struct {
 	Decimals uint64
 }
 
-//TVaultFromGraphStrategyReportsResults holds the results for a given report
+// TVaultFromGraphStrategyReportsResults holds the results for a given report
 type TVaultFromGraphStrategyReportsResults struct {
 	APR        string `json:"apr,omitempty"`
 	Duration   string `json:"duration,omitempty"`
 	DurationPr string `json:"durationPr,omitempty"`
 }
 
-//TVaultFromGraphStrategyReports holds the reports for a given strategy
+// TVaultFromGraphStrategyReports holds the reports for a given strategy
 type TVaultFromGraphStrategyReports struct {
 	Id      string                                  `json:"id,omitempty"`
 	Results []TVaultFromGraphStrategyReportsResults `json:"results,omitempty"`
 }
 
-//TVaultFromGraphStrategy holds the info about a specific strategy for this vault
+// TVaultFromGraphStrategy holds the info about a specific strategy for this vault
 type TVaultFromGraphStrategy struct {
 	Address       common.Address                   `json:"address"`
 	Keeper        common.Address                   `json:"keeper,omitempty"`
@@ -41,13 +41,13 @@ type TVaultFromGraphStrategy struct {
 	Reports       []TVaultFromGraphStrategyReports `json:"reports,omitempty"`
 }
 
-//TVaultFromGraphVaultDayData holds the daily information about the vault status
+// TVaultFromGraphVaultDayData holds the daily information about the vault status
 type TVaultFromGraphVaultDayData struct {
 	PricePerShare string
 	Timestamp     string
 }
 
-//TVaultFromGraph holds the response data for a graphql request for the vaults
+// TVaultFromGraph holds the response data for a graphql request for the vaults
 type TVaultFromGraph struct {
 	Id                    common.Address                `json:"id"`
 	Guardian              common.Address                `json:"guardian,omitempty"`
@@ -72,7 +72,7 @@ type TVaultFromGraph struct {
 	} `json:"latestUpdate"`
 }
 
-//TMetaFromGraph holds some meta information, aka on the graph itself, for a graphql request
+// TMetaFromGraph holds some meta information, aka on the graph itself, for a graphql request
 type TMetaFromGraph struct {
 	HasIndexingErrors bool `json:"hasIndexingErrors,omitempty"`
 	Block             struct {
@@ -80,7 +80,7 @@ type TMetaFromGraph struct {
 	} `json:"block,omitempty"`
 }
 
-//TReportsFromGraph holds the reports data for a graphql request
+// TReportsFromGraph holds the reports data for a graphql request
 type TReportsFromGraph struct {
 	Strategy struct {
 		Reports []struct {
@@ -103,23 +103,23 @@ type TReportsFromGraph struct {
 	} `json:"strategy"`
 }
 
-//TGraphQueryResponseForVaults is the response from the graphql query when we ask for the vaults
+// TGraphQueryResponseForVaults is the response from the graphql query when we ask for the vaults
 type TGraphQueryResponseForVaults struct {
 	Vaults []TVaultFromGraph
 }
 
-//TGraphQueryResponseForVault is the response from the graphql query when we ask for one specific vault
+// TGraphQueryResponseForVault is the response from the graphql query when we ask for one specific vault
 type TGraphQueryResponseForVault struct {
 	Vault TVaultFromGraph
 }
 
-//TGraphQueryResponseForWatchVaults is the response from the graphql query when we ask for the vaults for Yearn Watch
+// TGraphQueryResponseForWatchVaults is the response from the graphql query when we ask for the vaults for Yearn Watch
 type TGraphQueryResponseForWatchVaults struct {
 	Meta   TMetaFromGraph `json:"_meta,omitempty"`
 	Vaults []TVaultFromGraph
 }
 
-//TGraphQLHarvestRequestForOneVault is the request for the graphql query when we ask for the harvests for one specific vault
+// TGraphQLHarvestRequestForOneVault is the request for the graphql query when we ask for the harvests for one specific vault
 type TGraphQLHarvestRequestForOneVault struct {
 	Harvests []struct {
 		Transaction struct {
@@ -141,7 +141,7 @@ type TGraphQLHarvestRequestForOneVault struct {
 	} `json:"harvests"`
 }
 
-//TFIFOForUserForVault is the request for the graphql query when we ask for the earnings for one specific vault
+// TFIFOForUserForVault is the request for the graphql query when we ask for the earnings for one specific vault
 type TFIFOForUserForVault struct {
 	AccountVaultPositions []struct {
 		Updates []struct {

@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
@@ -45,18 +45,18 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address
 	if store.Store.AggregatedVault[chainID] == nil {
-		store.Store.AggregatedVault[chainID] = make(map[common.Address]*models.TAggregatedVault)
+		store.Store.AggregatedVault[chainID] = make(map[common.MixedcaseAddress]*models.TAggregatedVault)
 	}
 	for _, vault := range vaults {
-		store.Store.AggregatedVault[chainID][vault.Address] = &models.TAggregatedVault{
+		store.Store.AggregatedVault[chainID][common.NewMixedcaseAddress(vault.Address)] = &models.TAggregatedVault{
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
 		go store.SaveInDB(
 			chainID,
 			store.TABLES.VAULTS_LEGACY,
-			vault.Address.String(),
-			store.Store.AggregatedVault[chainID][vault.Address],
+			vault.Address.Hex(),
+			store.Store.AggregatedVault[chainID][common.NewMixedcaseAddress(vault.Address)],
 		)
 	}
 }
@@ -66,7 +66,7 @@ func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	temp := make(map[common.Address]*models.TAggregatedVault)
+	temp := make(map[common.MixedcaseAddress]*models.TAggregatedVault)
 	store.Iterate(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 
 	if temp != nil && (len(temp) > 0) {

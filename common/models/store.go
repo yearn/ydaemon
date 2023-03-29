@@ -1,8 +1,8 @@
 package models
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 type TStrategyList struct {

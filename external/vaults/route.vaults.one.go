@@ -3,9 +3,9 @@ package vaults
 import (
 	"net/http"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -30,10 +30,9 @@ func (y Controller) GetVault(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid vault")
 		return
 	}
-	vaultAddress := common.FromAddress(currentVault.Address)
 	newVault := NewVault().AssignTVault(currentVault)
 
-	vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+	vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)
 	newVault.Strategies = []*TStrategy{}
 	for _, strategy := range vaultStrategies {
 		var externalStrategy *TStrategy
@@ -47,7 +46,7 @@ func (y Controller) GetVault(c *gin.Context) {
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
 		} else {
 			externalStrategy = &TStrategy{
-				Address:     common.FromAddress(strategy.Address),
+				Address:     common.NewMixedcaseAddress(strategy.Address),
 				Name:        strategy.Name,
 				DisplayName: strategy.DisplayName,
 				Description: strategy.Description,

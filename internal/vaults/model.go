@@ -4,12 +4,11 @@ import (
 	"strconv"
 	"strings"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
@@ -72,7 +71,7 @@ type TMigration struct {
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address               ethcommon.Address  `json:"address"`
+	Address               common.Address     `json:"address"`
 	Management            common.Address     `json:"management"`
 	Governance            common.Address     `json:"governance"`
 	Guardian              common.Address     `json:"guardian"`
@@ -164,11 +163,11 @@ func (t *TVault) BuildSymbol(metaVaultSymbol string) {
 func (t *TVault) BuildMigration() TMigration {
 	migration := TMigration{
 		Available: false,
-		Address:   common.FromAddress(t.Address),
+		Address:   t.Address,
 	}
 
-	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address)); ok {
-		migrationAddress := common.FromAddress(t.Address)
+	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, t.Address); ok {
+		migrationAddress := t.Address
 		migrationContract := common.Address{}
 		migrationAvailable := vaultFromMeta.MigrationAvailable
 		if vaultFromMeta.MigrationAvailable {
@@ -186,8 +185,8 @@ func (t *TVault) BuildMigration() TMigration {
 
 func (t *TVault) BuildAPY() TAPY {
 	apy := TAPY{}
-	aggregatedVault, okLegacyAPI := store.Store.AggregatedVault[t.ChainID][common.FromAddress(t.Address)]
-	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address))
+	aggregatedVault, okLegacyAPI := store.Store.AggregatedVault[t.ChainID][common.NewMixedcaseAddress(t.Address)]
+	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
 
 	if okLegacyAPI {
 		apy = TAPY{
@@ -220,16 +219,16 @@ func (t *TVault) BuildAPY() TAPY {
 			apy.Type = vaultFromMeta.APYTypeOverride
 		}
 	} else if okMeta && vaultFromMeta.APYTypeOverride != `` {
-		logs.Error(`Missing APY vault data for chainID: ` + strconv.FormatUint(t.ChainID, 10) + ` and address: ` + common.FromAddress(t.Address).Hex())
+		logs.Error(`Missing APY vault data for chainID: ` + strconv.FormatUint(t.ChainID, 10) + ` and address: ` + t.Address.Hex())
 		apy.Type = vaultFromMeta.APYTypeOverride
 	}
 	return apy
 }
 
 func (t *TVault) BuildTVL() TTVL {
-	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, common.FromAddress(t.Token.Address))
+	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.Token.Address)
 	fHumanizedTVLPrice := getHumanizedValue(t.TotalAssets, int(t.Decimals), humanizedPrice)
-	strategiesList := strategies.ListStrategiesForVault(t.ChainID, common.FromAddress(t.Address))
+	strategiesList := strategies.ListStrategiesForVault(t.ChainID, t.Address)
 	delegatedTokenAsBN := bigNumber.NewInt(0)
 	fDelegatedValue := 0.0
 
@@ -262,7 +261,7 @@ func (t *TVault) BuildCategory() string {
 		strings.ToLower(t.DisplayName),
 	}
 
-	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, common.FromAddress(t.Address)); ok {
+	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, t.Address); ok {
 		//Using meta classification to set the category
 		if vaultFromMeta.Classification.Stability == `Volatile` {
 			category = `Volatile`
@@ -319,7 +318,7 @@ func (t *TVault) BuildCategory() string {
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _vaultMap = make(map[uint64]map[ethcommon.Address]*TVault)
+var _vaultMap = make(map[uint64]map[common.Address]*TVault)
 
 /**********************************************************************************************
 ** GetVault will, for a given chainID, try to retrieve the vault from the _vaultMap variable.
@@ -327,7 +326,7 @@ var _vaultMap = make(map[uint64]map[ethcommon.Address]*TVault)
 **********************************************************************************************/
 func GetVault(chainID uint64, vaultAddress common.Address) (*TVault, bool) {
 	if vaultsForChain, ok := _vaultMap[chainID]; ok {
-		if vault, ok := vaultsForChain[vaultAddress.ToAddress()]; ok {
+		if vault, ok := vaultsForChain[vaultAddress]; ok {
 			return vault, true
 		}
 	}
@@ -352,7 +351,7 @@ func ListVaults(chainID uint64) []*TVault {
 func ListVaultsAddresses(chainID uint64) []common.Address {
 	var addresses []common.Address
 	for address := range _vaultMap[chainID] {
-		addresses = append(addresses, common.FromAddress(address))
+		addresses = append(addresses, address)
 	}
 	return addresses
 }
@@ -363,7 +362,7 @@ func ListVaultsAddresses(chainID uint64) []common.Address {
 ** found or not.
 **********************************************************************************************/
 func FindVault(chainID uint64, vaultAddress common.Address) (*TVault, bool) {
-	token, ok := _vaultMap[chainID][vaultAddress.ToAddress()]
+	token, ok := _vaultMap[chainID][vaultAddress]
 	if !ok {
 		return nil, false
 	}

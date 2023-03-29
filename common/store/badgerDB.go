@@ -9,11 +9,12 @@ import (
 	"sync"
 
 	"github.com/dgraph-io/badger/v3"
+	"github.com/ethereum/go-ethereum/common"
 	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 // DB is the badger database
@@ -173,6 +174,8 @@ func Iterate(chainID uint64, dbKey string, dest interface{}) error {
 				key := keyType.Interface()
 				if elemKey.Kind() == reflect.String {
 					key = string(k)
+				} else if elemKey.Kind() == reflect.Struct && elemKey.Name() == `MixedcaseAddress` {
+					key = addresses.ToMixedcase(string(k))
 				} else if elemKey.Kind() == reflect.Struct && elemKey.Name() == `Address` {
 					key = common.HexToAddress(string(k))
 				} else if elemKey.Kind() == reflect.Array && elemKey.Name() == `Address` {

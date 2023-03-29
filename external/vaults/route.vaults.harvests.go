@@ -7,13 +7,13 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *graphql.Request {
@@ -23,7 +23,7 @@ func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *
     }`)
 }
 
-//GetHarvestsForVault will, for a given chainID, return a list of all vaults
+// GetHarvestsForVault will, for a given chainID, return a list of all vaults
 func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
@@ -50,16 +50,19 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 		return
 	}
 
-	// For each harvest from the subgraph, compute our TVaultHarvest structure
-	harvests := []TVaultHarvest{}
+	// For each harvest from the subgraph, compute our TExternalVaultHarvest structure
+	harvests := []TExternalVaultHarvest{}
 	harvestsFromSubgraph := response.Harvests
 	for _, harvest := range harvestsFromSubgraph {
-		tokenPriceBigFloat, _ := buildTokenPrice(chainID, common.HexToAddress(harvest.Vault.Token.Id))
+		tokenPriceBigFloat, _ := buildTokenPrice(
+			chainID,
+			addresses.ToMixedcase(harvest.Vault.Token.Id),
+		)
 		decimals := harvest.Vault.Token.Decimals
 		if bigNumber.NewInt().SetString(harvest.Profit).IsZero() && bigNumber.NewInt().SetString(harvest.Loss).IsZero() {
 			continue
 		}
-		harvests = append(harvests, TVaultHarvest{
+		harvests = append(harvests, TExternalVaultHarvest{
 			VaultAddress:    harvest.Vault.Id,
 			StrategyAddress: harvest.Strategy.Id,
 			TxHash:          harvest.Transaction.Hash,
@@ -72,11 +75,6 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	}
 
 	// Sorting the data by timestamp
-	var sortedData = make([]interface{}, len(harvests))
-	for i, d := range harvests {
-		sortedData[i] = d
-	}
-	sort.SortBy(sortedData, orderBy, orderDirection)
-
-	c.JSON(http.StatusOK, sortedData)
+	sort.SortBy(orderBy, orderDirection, harvests)
+	c.JSON(http.StatusOK, harvests)
 }

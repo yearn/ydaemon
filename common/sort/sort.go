@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
-func SortBy(arr []interface{}, jsonField string, sortOrder string) {
+func SortBy[T any](jsonField string, sortOrder string, arr []T) {
 	if len(arr) == 0 {
 		return
 	}
@@ -20,7 +20,13 @@ func SortBy(arr []interface{}, jsonField string, sortOrder string) {
 
 	for _, jsonField := range jsonFields {
 		if valueType.Kind() == reflect.Struct {
-			for i := 0; i < valueType.NumField(); i++ {
+			for i := 0; i <= valueType.NumField(); i++ {
+				if i == valueType.NumField() {
+					if match == 0 {
+						return
+					}
+					break
+				}
 				fields[match] = valueType.Field(i)
 
 				if fields[match].Tag.Get("json") == jsonField || strings.EqualFold(fields[match].Name, jsonField) {
@@ -35,7 +41,6 @@ func SortBy(arr []interface{}, jsonField string, sortOrder string) {
 				}
 			}
 		}
-
 		if match == jsonFieldsLen {
 			break
 		}
@@ -80,7 +85,7 @@ func SortBy(arr []interface{}, jsonField string, sortOrder string) {
 			} else {
 				return v1.Float() > v2.Float()
 			}
-		case "string":
+		case "string", "MixedcaseAddress", "Address":
 			if sortOrder == "asc" {
 				return v1.String() < v2.String()
 			} else {

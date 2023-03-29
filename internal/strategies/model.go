@@ -3,20 +3,20 @@ package strategies
 import (
 	"strconv"
 
+	"github.com/ethereum/go-ethereum/common"
 	ethcommon "github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TStrategyAdded struct {
-	VaultAddress      ethcommon.Address
-	StrategyAddress   ethcommon.Address
+	VaultAddress      common.Address
+	StrategyAddress   common.Address
 	TxHash            ethcommon.Hash
 	DebtRatio         *bigNumber.Int // >= 0.3.0
 	MaxDebtPerHarvest *bigNumber.Int // >= 0.3.2
@@ -31,9 +31,9 @@ type TStrategyAdded struct {
 }
 
 type TStrategyMigrated struct {
-	VaultAddress       ethcommon.Address
-	OldStrategyAddress ethcommon.Address
-	NewStrategyAddress ethcommon.Address
+	VaultAddress       common.Address
+	OldStrategyAddress common.Address
+	NewStrategyAddress common.Address
 	TxHash             ethcommon.Hash
 	BlockNumber        uint64
 	TxIndex            uint
@@ -48,12 +48,12 @@ type TStrategyInitialization struct {
 }
 
 type TStrategy struct {
-	Address                 ethcommon.Address       `json:"address"`
-	VaultAddress            ethcommon.Address       `json:"vaultAddress"`
-	KeeperAddress           ethcommon.Address       `json:"keeperAddress"`
-	StrategistAddress       ethcommon.Address       `json:"strategistAddress"`
-	RewardsAddress          ethcommon.Address       `json:"rewardsAddress"`
-	HealthCheckAddress      ethcommon.Address       `json:"healthCheckAddress"`
+	Address                 common.Address          `json:"address"`
+	VaultAddress            common.Address          `json:"vaultAddress"`
+	KeeperAddress           common.Address          `json:"keeperAddress"`
+	StrategistAddress       common.Address          `json:"strategistAddress"`
+	RewardsAddress          common.Address          `json:"rewardsAddress"`
+	HealthCheckAddress      common.Address          `json:"healthCheckAddress"`
 	VaultVersion            string                  `json:"vaultVersion"`
 	Name                    string                  `json:"name"`
 	DisplayName             string                  `json:"displayName"`
@@ -88,11 +88,9 @@ type TStrategy struct {
 }
 
 func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
-	strategyAddress := common.FromAddress(t.Address)
-	vaultAddress := common.FromAddress(t.VaultAddress)
 	strategyGroup := getStrategyGroup(t.ChainID, t)
 	strategyRiskScore := getDefaultRiskGroup()
-	strategyRiskScore.Address = strategyAddress
+	strategyRiskScore.Address = t.Address
 	strategyRiskScore.ChainID = t.ChainID
 	if strategyGroup == nil {
 		traces.
@@ -110,27 +108,27 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 	strategyRiskScore.RiskDetails.LongevityImpact = getLongevityImpact(t.Activation)
 
 	// Fetch tvl of strategy
-	tokenData, ok := tokens.FindUnderlyingForVault(t.ChainID, vaultAddress)
+	tokenData, ok := tokens.FindUnderlyingForVault(t.ChainID, t.VaultAddress)
 	if !ok {
 		traces.
 			Capture(`warn`, `impossible to find token for vault `+t.VaultAddress.Hex()).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).
-			SetTag(`strategyAddress`, strategyAddress.Hex()).
+			SetTag(`strategyAddress`, t.Address.Hex()).
 			SetTag(`strategyName`, t.Name).
 			Send()
 		return &strategyRiskScore
 	}
 
-	_tokenPrice, ok := prices.FindPrice(t.ChainID, common.FromAddress(tokenData.Address))
+	_tokenPrice, ok := prices.FindPrice(t.ChainID, tokenData.Address)
 	if !ok {
 		traces.
 			Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).
-			SetTag(`strategyAddress`, strategyAddress.Hex()).
+			SetTag(`strategyAddress`, t.Address.Hex()).
 			SetTag(`strategyName`, t.Name).
 			Send()
 	}
@@ -169,8 +167,8 @@ func (t *TStrategy) BuildRiskScore() *TStrategyFromRisk {
 ** being able to access them from the rest of the application.
 ** The _strategyMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _strategyMap = make(map[uint64]map[ethcommon.Address]*TStrategy)
-var _strategyWithdrawalQueueMap = make(map[uint64]map[ethcommon.Address][]common.Address)
+var _strategyMap = make(map[uint64]map[common.Address]*TStrategy)
+var _strategyWithdrawalQueueMap = make(map[uint64]map[common.Address][]common.Address)
 
 /**********************************************************************************************
 ** ListStrategies will, for a given chainID, return the list of all the strategies stored in
@@ -202,8 +200,8 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) []*TStr
 ** ListStrategiesAddresses will, for a given chainID, return the list of addresses of all the
 ** strategies stored in _strategyMap.
 **********************************************************************************************/
-func ListStrategiesAddresses(chainID uint64) []ethcommon.Address {
-	var addresses []ethcommon.Address
+func ListStrategiesAddresses(chainID uint64) []common.Address {
+	var addresses []common.Address
 	for address := range _strategyMap[chainID] {
 		addresses = append(addresses, address)
 	}
@@ -215,7 +213,7 @@ func ListStrategiesAddresses(chainID uint64) []ethcommon.Address {
 ** the _strategyMap. It will return the strategy if found, and a boolean indicating if the
 ** strategy was found or not.
 **********************************************************************************************/
-func FindStrategy(chainID uint64, strategyAddress ethcommon.Address) (*TStrategy, bool) {
+func FindStrategy(chainID uint64, strategyAddress common.Address) (*TStrategy, bool) {
 	strategy, ok := _strategyMap[chainID][strategyAddress]
 	if !ok {
 		return nil, false
@@ -228,11 +226,11 @@ func FindStrategy(chainID uint64, strategyAddress ethcommon.Address) (*TStrategy
 ** TStrategyAdded per vault address:
 ** - [vaultAddress] - [strategyAddress] - TStrategyAdded
 **********************************************************************************************/
-func SlipStrategiesAddedPerVault(strategiesAddedList []TStrategyAdded) map[ethcommon.Address]map[ethcommon.Address]TStrategyAdded {
-	strategiesAddedPerVault := make(map[ethcommon.Address]map[ethcommon.Address]TStrategyAdded)
+func SlipStrategiesAddedPerVault(strategiesAddedList []TStrategyAdded) map[common.Address]map[common.Address]TStrategyAdded {
+	strategiesAddedPerVault := make(map[common.Address]map[common.Address]TStrategyAdded)
 	for _, strategy := range strategiesAddedList {
 		if _, ok := strategiesAddedPerVault[strategy.VaultAddress]; !ok {
-			strategiesAddedPerVault[strategy.VaultAddress] = make(map[ethcommon.Address]TStrategyAdded)
+			strategiesAddedPerVault[strategy.VaultAddress] = make(map[common.Address]TStrategyAdded)
 		}
 		strategiesAddedPerVault[strategy.VaultAddress][strategy.StrategyAddress] = strategy
 	}
@@ -243,9 +241,9 @@ func SlipStrategiesAddedPerVault(strategiesAddedList []TStrategyAdded) map[ethco
 ** SetInStrategiesWithdrawalQueue will mirror a vault withdrawal queue in the strategies
 ** package to avoid import circles.
 **********************************************************************************************/
-func SetInStrategiesWithdrawalQueue(chainID uint64, vaultAddress ethcommon.Address, queue []common.Address) {
+func SetInStrategiesWithdrawalQueue(chainID uint64, vaultAddress common.Address, queue []common.Address) {
 	if _, ok := _strategyWithdrawalQueueMap[chainID]; !ok {
-		_strategyWithdrawalQueueMap[chainID] = make(map[ethcommon.Address][]common.Address)
+		_strategyWithdrawalQueueMap[chainID] = make(map[common.Address][]common.Address)
 	}
 	_strategyWithdrawalQueueMap[chainID][vaultAddress] = queue
 }
@@ -253,7 +251,7 @@ func SetInStrategiesWithdrawalQueue(chainID uint64, vaultAddress ethcommon.Addre
 /**********************************************************************************************
 ** FindWithdrawalQueueForVault will retrieve the withdrawal queue for a given vault address.
 **********************************************************************************************/
-func FindWithdrawalQueueForVault(chainID uint64, vaultAddress ethcommon.Address) ([]common.Address, bool) {
+func FindWithdrawalQueueForVault(chainID uint64, vaultAddress common.Address) ([]common.Address, bool) {
 	if _, ok := _strategyWithdrawalQueueMap[chainID]; !ok {
 		return nil, false
 	}

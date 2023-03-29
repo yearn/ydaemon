@@ -1,10 +1,10 @@
 package partners
 
-import "github.com/yearn/ydaemon/common/types/common"
+import "github.com/ethereum/go-ethereum/common"
 
 type TStore struct {
 	// PartnersByAddress holds the data ordered by address.
-	PartnersByAddress map[uint64]map[common.Address]*TPartners
+	PartnersByAddress map[uint64]map[common.MixedcaseAddress]*TPartners
 	// PartnersByAddress holds the data ordered by name
 	PartnersByName map[uint64]map[string]*TPartners
 }
@@ -13,6 +13,6 @@ type TStore struct {
 var Store = TStore{}
 
 func init() {
-	Store.PartnersByAddress = make(map[uint64]map[common.Address]*TPartners)
+	Store.PartnersByAddress = make(map[uint64]map[common.MixedcaseAddress]*TPartners)
 	Store.PartnersByName = make(map[uint64]map[string]*TPartners)
 }

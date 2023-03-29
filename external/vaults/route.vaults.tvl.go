@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/types/common"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -15,8 +14,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
 	vaultsList := vaults.ListVaults(chainID)
 	for _, currentVault := range vaultsList {
-		vaultAddress := common.FromAddress(currentVault.Address)
-		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
 			continue
 		}
 		vaultTVL := currentVault.BuildTVL()
@@ -25,7 +23,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	return tvl
 }
 
-//GetAllVaultsTVL will, for a all supported chains, return the current TVL
+// GetAllVaultsTVL will, for a all supported chains, return the current TVL
 func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	total := 0.0
 	var wg sync.WaitGroup
@@ -45,7 +43,7 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	})
 }
 
-//GetVaultsTVL will, for a given chainID, return the current TVL
+// GetVaultsTVL will, for a given chainID, return the current TVL
 func (y Controller) GetVaultsTVL(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

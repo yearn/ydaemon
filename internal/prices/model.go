@@ -3,9 +3,8 @@ package prices
 import (
 	"encoding/json"
 
-	ethcommon "github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/types/common"
 )
 
 type TCurveFactoriesPoolData struct {
@@ -48,7 +47,7 @@ type TGeckoPrice map[string]struct {
 ** able to access them from the rest of the application.
 ** The _priceMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _priceMap = make(map[uint64]map[ethcommon.Address]*bigNumber.Int)
+var _priceMap = make(map[uint64]map[common.Address]*bigNumber.Int)
 
 /**********************************************************************************************
 ** MapPrices will, for a given chainID, return a map of prices.
@@ -57,7 +56,7 @@ var _priceMap = make(map[uint64]map[ethcommon.Address]*bigNumber.Int)
 func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	prices := make(map[common.Address]*bigNumber.Int)
 	for key, price := range _priceMap[chainID] {
-		prices[common.FromAddress(key)] = price
+		prices[key] = price
 	}
 	return prices
 }
@@ -68,7 +67,7 @@ func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 ** It will return the price if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
 func FindPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Int, bool) {
-	price, ok := _priceMap[chainID][tokenAddress.ToAddress()]
+	price, ok := _priceMap[chainID][tokenAddress]
 	if !ok {
 		return nil, false
 	}

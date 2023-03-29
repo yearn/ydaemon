@@ -21,7 +21,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 		return
 	}
 
-	strategy, ok := strategies.FindStrategy(chainID, address.ToAddress())
+	strategy, ok := strategies.FindStrategy(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid strategy")
 		return

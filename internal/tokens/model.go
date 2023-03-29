@@ -1,22 +1,21 @@
 package tokens
 
 import (
-	ethcommon "github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/types/common"
+	"github.com/ethereum/go-ethereum/common"
 )
 
 // TERC20Token contains the basic information of an ERC20 token
 type TERC20Token struct {
-	Address                   ethcommon.Address   `json:"address"`
-	UnderlyingTokensAddresses []ethcommon.Address `json:"underlyingTokensAddresses"`
-	Name                      string              `json:"name"`
-	Symbol                    string              `json:"symbol"`
-	Type                      string              `json:"type"`
-	DisplayName               string              `json:"display_name"`
-	DisplaySymbol             string              `json:"display_symbol"`
-	Description               string              `json:"description"`
-	Icon                      string              `json:"icon"`
-	Decimals                  uint64              `json:"decimals"`
+	Address                   common.Address   `json:"address"`
+	UnderlyingTokensAddresses []common.Address `json:"underlyingTokensAddresses"`
+	Name                      string           `json:"name"`
+	Symbol                    string           `json:"symbol"`
+	Type                      string           `json:"type"`
+	DisplayName               string           `json:"display_name"`
+	DisplaySymbol             string           `json:"display_symbol"`
+	Description               string           `json:"description"`
+	Icon                      string           `json:"icon"`
+	Decimals                  uint64           `json:"decimals"`
 }
 
 // IsVault will return true if the token is a Yearn Vault token.
@@ -28,7 +27,7 @@ func (t *TERC20Token) IsVault() bool {
 // will only have one underlying token.
 func (t *TERC20Token) VaultUnderlying() common.Address {
 	if len(t.UnderlyingTokensAddresses) > 0 {
-		return common.FromAddress(t.UnderlyingTokensAddresses[0])
+		return t.UnderlyingTokensAddresses[0]
 	}
 	return common.Address{}
 }
@@ -38,7 +37,7 @@ func (t *TERC20Token) VaultUnderlying() common.Address {
 ** able to access them from the rest of the application.
 ** The _tokenMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _tokenMap = make(map[uint64]map[ethcommon.Address]*TERC20Token)
+var _tokenMap = make(map[uint64]map[common.Address]*TERC20Token)
 
 /**********************************************************************************************
 ** ListTokens will, for a given chainID, return the list of all the tokens stored in _tokenMap.
@@ -58,7 +57,7 @@ func ListTokens(chainID uint64) []*TERC20Token {
 func ListTokensAddresses(chainID uint64) []common.Address {
 	var addresses []common.Address
 	for address := range _tokenMap[chainID] {
-		addresses = append(addresses, common.FromAddress(address))
+		addresses = append(addresses, address)
 	}
 	return addresses
 }
@@ -86,7 +85,7 @@ func MapVaults(chainID uint64) map[common.Address]*TERC20Token {
 	tokens := make(map[common.Address]*TERC20Token)
 	for _, token := range _tokenMap[chainID] {
 		if token.IsVault() {
-			tokens[common.FromAddress(token.Address)] = token
+			tokens[token.Address] = token
 		}
 	}
 	return tokens
@@ -97,7 +96,7 @@ func MapVaults(chainID uint64) map[common.Address]*TERC20Token {
 ** It will return the token if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
 func FindToken(chainID uint64, tokenAddress common.Address) (*TERC20Token, bool) {
-	token, ok := _tokenMap[chainID][tokenAddress.ToAddress()]
+	token, ok := _tokenMap[chainID][tokenAddress]
 	if !ok {
 		return nil, false
 	}
@@ -112,7 +111,7 @@ func FindToken(chainID uint64, tokenAddress common.Address) (*TERC20Token, bool)
 ** It will return the token if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
 func FindUnderlyingForVault(chainID uint64, vaultAddress common.Address) (*TERC20Token, bool) {
-	token, ok := _tokenMap[chainID][vaultAddress.ToAddress()]
+	token, ok := _tokenMap[chainID][vaultAddress]
 	if !ok {
 		return nil, false
 	}

@@ -143,7 +143,7 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 		if helpers.ContainsSubString(toLowerExclude, toLowerName) {
 			continue
 		}
-		if helpers.Contains(group.Criteria.Exclude, strategy.Address.String()) {
+		if helpers.Contains(group.Criteria.Exclude, strings.ToLower(strategy.Address.String())) {
 			continue
 		}
 

@@ -381,7 +381,7 @@ func RetrieveAllTokens(
 	** from the upcoming calls
 	**********************************************************************************************/
 	tokenMap := make(map[common.Address]*TERC20Token)
-	store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
+	store.ListFromBadgerDB(chainID, store.TABLES.TOKENS, &tokenMap)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -458,7 +458,7 @@ func RetrieveAllTokens(
 		for _, token := range updatedTokenMap {
 			go func(_token *TERC20Token) {
 				defer wg.Done()
-				store.SaveInDB(
+				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.TOKENS,
 					_token.Address.String(),
@@ -467,7 +467,7 @@ func RetrieveAllTokens(
 			}(token)
 		}
 		wg.Wait()
-		store.Iterate(chainID, store.TABLES.TOKENS, &tokenMap)
+		store.ListFromBadgerDB(chainID, store.TABLES.TOKENS, &tokenMap)
 	}
 
 	_tokenMap[chainID] = tokenMap

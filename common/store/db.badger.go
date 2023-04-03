@@ -19,47 +19,47 @@ import (
 )
 
 // DB is the badger database
-var _assertMutex sync.Mutex
-var _isLoaded bool
-var DB = make(map[uint64]map[string]*badger.DB)
-var DBMutex = make(map[uint64]map[string]*sync.Mutex)
+var assertBadgerDBMutex sync.Mutex
+var isBadgerDBLoaded bool
+var badgerDB = make(map[uint64]map[string]*badger.DB)
+var badgerDBMutex = make(map[uint64]map[string]*sync.Mutex)
 
 func _assertMap() {
-	if !_isLoaded {
-		_assertMutex.Lock()
-		defer _assertMutex.Unlock()
-		if DB == nil {
-			DB = make(map[uint64]map[string]*badger.DB)
+	if !isBadgerDBLoaded {
+		assertBadgerDBMutex.Lock()
+		defer assertBadgerDBMutex.Unlock()
+		if badgerDB == nil {
+			badgerDB = make(map[uint64]map[string]*badger.DB)
 		}
-		if DBMutex == nil {
-			DBMutex = make(map[uint64]map[string]*sync.Mutex)
+		if badgerDBMutex == nil {
+			badgerDBMutex = make(map[uint64]map[string]*sync.Mutex)
 		}
 
 		for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-			if DB[chainID] == nil {
-				DB[chainID] = make(map[string]*badger.DB)
+			if badgerDB[chainID] == nil {
+				badgerDB[chainID] = make(map[string]*badger.DB)
 			}
-			if DBMutex[chainID] == nil {
-				DBMutex[chainID] = make(map[string]*sync.Mutex)
-				DBMutex[chainID][TABLES.BLOCK_TIME] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.PRICES] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.HISTORICAL_PRICES] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.STRATEGIES] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.TOKENS] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.VAULTS] = &sync.Mutex{}
-				DBMutex[chainID][TABLES.VAULTS_LEGACY] = &sync.Mutex{}
+			if badgerDBMutex[chainID] == nil {
+				badgerDBMutex[chainID] = make(map[string]*sync.Mutex)
+				badgerDBMutex[chainID][TABLES.BLOCK_TIME] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.PRICES] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.HISTORICAL_PRICES] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.STRATEGIES] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.TOKENS] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.VAULTS] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.VAULTS_LEGACY] = &sync.Mutex{}
 			}
 		}
-		_isLoaded = true
+		isBadgerDBLoaded = true
 	}
 }
 
-// OpenDB opens the badger database
-func OpenDB(chainID uint64, dbKey string) *badger.DB {
+// OpenBadgerDB opens the badger database
+func OpenBadgerDB(chainID uint64, dbKey string) *badger.DB {
 	_assertMap()
-	if DB[chainID][dbKey] == nil {
-		DBMutex[chainID][dbKey].Lock()
-		defer DBMutex[chainID][dbKey].Unlock()
+	if badgerDB[chainID][dbKey] == nil {
+		badgerDBMutex[chainID][dbKey].Lock()
+		defer badgerDBMutex[chainID][dbKey].Unlock()
 		chainStr := strconv.FormatUint(chainID, 10)
 		_, b, _, _ := runtime.Caller(0)
 		basepath := filepath.Dir(b)
@@ -72,43 +72,30 @@ func OpenDB(chainID uint64, dbKey string) *badger.DB {
 		if err != nil {
 			log.Fatal(err)
 		}
-		DB[chainID][dbKey] = db
+		badgerDB[chainID][dbKey] = db
 	}
-	return DB[chainID][dbKey]
+	return badgerDB[chainID][dbKey]
 }
 
-// CloseDB closes the badger database
-func CloseDB(chainID uint64, dbKey string) {
-	DB[chainID][dbKey].Close()
+// CloseBadgerDB closes the badger database
+func CloseBadgerDB(chainID uint64, dbKey string) {
+	badgerDB[chainID][dbKey].Close()
 }
 
-// SaveInDB saves a specific data in the badger database
-func SaveInDB(chainID uint64, dbKey string, dataKey string, value interface{}) {
-	currentStore := OpenDB(chainID, dbKey) //Safely open the DB if it's not already open
-
-	err := currentStore.Update(func(txn *badger.Txn) error {
+// SaveInBadgerDB saves a specific data in the badger database
+func SaveInBadgerDB(chainID uint64, dbKey string, dataKey string, value interface{}) {
+	OpenBadgerDB(chainID, dbKey).Update(func(txn *badger.Txn) error {
 		vaultsBytes, err := json.Marshal(value)
 		if err != nil {
 			return err
 		}
 		return txn.Set([]byte(dataKey), vaultsBytes)
 	})
-	if err != nil {
-		traces.
-			Capture(`error`, `impossible to save in DB`).
-			SetEntity(`database`).
-			SetExtra(`error`, err.Error()).
-			SetExtra(`value`, value).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`dbKey`, dbKey).
-			SetTag(`dataKey`, dataKey).
-			Send()
-	}
 }
 
-// LoadFromDB saves a specific data in the badger database
-func LoadFromDB(chainID uint64, dbKey string, dataKey string, dest interface{}) error {
-	currentStore := OpenDB(chainID, dbKey) //Safely open the DB if it's not already open
+// GetFromBadgerDB saves a specific data in the badger database
+func GetFromBadgerDB(chainID uint64, dbKey string, dataKey string, dest interface{}) error {
+	currentStore := OpenBadgerDB(chainID, dbKey) //Safely open the DB if it's not already open
 
 	return currentStore.View(func(txn *badger.Txn) error {
 		marshalizedData := []byte{}
@@ -135,11 +122,11 @@ func LoadFromDB(chainID uint64, dbKey string, dataKey string, dest interface{}) 
 }
 
 /**************************************************************************************************
-** Iterate tries to load the data from the DB for a specific table Key to the provided dest
-** pointer.
+** ListFromBadgerDB tries to load the data from the DB for a specific table Key to the provided
+** dest pointer.
 **************************************************************************************************/
-func Iterate(chainID uint64, dbKey string, dest interface{}) error {
-	currentStore := OpenDB(chainID, dbKey) //Safely open the DB if it's not already open
+func ListFromBadgerDB(chainID uint64, dbKey string, dest interface{}) error {
+	currentStore := OpenBadgerDB(chainID, dbKey) //Safely open the DB if it's not already open
 
 	return currentStore.View(func(txn *badger.Txn) error {
 		it := txn.NewIterator(badger.DefaultIteratorOptions)

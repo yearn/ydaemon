@@ -231,7 +231,7 @@ func RetrieveAllStrategies(
 	** from the upcoming calls
 	**********************************************************************************************/
 	strategyMap := make(map[common.Address]*TStrategy)
-	store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
+	store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
 
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch theses basics informations.
@@ -249,7 +249,7 @@ func RetrieveAllStrategies(
 		for _, token := range updatedStrategiesMap {
 			go func(_strategy *TStrategy) {
 				defer wg.Done()
-				store.SaveInDB(
+				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.STRATEGIES,
 					_strategy.Address.String(),
@@ -258,7 +258,7 @@ func RetrieveAllStrategies(
 			}(token)
 		}
 		wg.Wait()
-		store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
+		store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
 	_strategyMap[chainID] = strategyMap

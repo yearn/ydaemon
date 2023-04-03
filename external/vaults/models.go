@@ -208,8 +208,8 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 		v.Token.UnderlyingTokensAddresses = []common.MixedcaseAddress{}
 	}
 
-	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, v.Address)
-	internalAPY := internalVault.BuildAPY(aggregatedVault.LegacyAPY, okLegacyAPI)
+	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
+	internalAPY := internalVault.BuildAPY(aggregatedVault, okLegacyAPI)
 	v.APY = TExternalVaultAPY{
 		Type:              internalAPY.Type,
 		GrossAPR:          internalAPY.GrossAPR,

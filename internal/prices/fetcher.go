@@ -1,6 +1,7 @@
 package prices
 
 import (
+	"context"
 	"math"
 	"math/big"
 	"strconv"
@@ -31,8 +32,8 @@ var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 ** Returns:
 ** - a map of tokenAddress -> *bigNumber.Int
 **************************************************************************************************/
-func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
-	newPriceMap := fetchPricesFromLens(chainID, nil, tokenList)
+func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
+	newPriceMap := fetchPricesFromLens(chainID, blockNumber, tokenList)
 
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
@@ -70,10 +71,12 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 		for _, token := range queryList {
 			if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
 				newPriceMap[token] = pricesLlama[token]
+				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesLlama[token])
 				continue
 			}
 			if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
 				newPriceMap[token] = pricesGecko[token]
+				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesGecko[token])
 			}
 		}
 	}
@@ -113,9 +116,10 @@ func fetchPrices(chainID uint64, tokenList []common.Address) map[common.Address]
 **************************************************************************************************/
 func findAllPrices(
 	chainID uint64,
+	blockNumber *uint64,
 	tokenList []common.Address,
 ) map[common.Address]*bigNumber.Int {
-	newPriceMap := fetchPrices(chainID, tokenList)
+	newPriceMap := fetchPrices(chainID, blockNumber, tokenList)
 
 	return newPriceMap
 }
@@ -144,7 +148,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** from the upcoming calls
 	**********************************************************************************************/
 	priceMap := make(map[common.Address]*bigNumber.Int)
-	store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
+	store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 
 	/**********************************************************************************************
 	** From the vault registry we could build the list of tokens used by our ecosystem. We will
@@ -204,8 +208,9 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** Once we got out basic list, we will fetch the price for each of theses tokens, using lens
 	** as primary source, and multiple other sources as fallback.
 	**********************************************************************************************/
+	currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
 	if len(allTokens) > 0 {
-		allPrices := findAllPrices(chainID, allTokens)
+		allPrices := findAllPrices(chainID, &currentBlockNumber, allTokens)
 
 		/**********************************************************************************************
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map
@@ -216,7 +221,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		for address, price := range allPrices {
 			go func(address common.Address, price *bigNumber.Int) {
 				defer wg.Done()
-				store.SaveInDB(
+				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.PRICES,
 					address.String(),
@@ -225,7 +230,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			}(address, price)
 		}
 		wg.Wait()
-		store.Iterate(chainID, store.TABLES.PRICES, &priceMap)
+		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 	}
 	_priceMap[chainID] = priceMap
 	return priceMap
@@ -271,7 +276,7 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 			continue
 		}
 		newPriceMap[tokenAddress] = helpers.DecodeBigInt(rawTokenPrice)
-		store.SaveBlockPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
+		store.StoreHistoricalPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
 	}
 
 	return newPriceMap
@@ -290,6 +295,6 @@ func GetPricesOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Ad
 	if err != nil {
 		return bigNumber.NewInt(0), false
 	}
-	store.SaveBlockPrice(chainID, blockNumber, tokenAddress, bigNumber.NewInt(0).Set(tokenPriceFromOracle))
+	store.StoreHistoricalPrice(chainID, blockNumber, tokenAddress, bigNumber.NewInt(0).Set(tokenPriceFromOracle))
 	return bigNumber.NewInt(0).Set(tokenPriceFromOracle), true
 }

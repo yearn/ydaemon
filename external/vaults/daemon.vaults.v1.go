@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
@@ -37,26 +37,26 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// Unmarshal the response body into the variable AggregatedVault. Body is a byte array,
 	// with this manipulation we are putting it in the correct TLegacyAPI struct format
-	vaults := []TLegacyAPI{}
-	if err := json.Unmarshal(body, &vaults); err != nil {
+	vaultLegacyAPI := []vaults.TLegacyAPI{}
+	if err := json.Unmarshal(body, &vaultLegacyAPI); err != nil {
 		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
 	}
 
 	// To provide faster access to the data, we index the mapping by the vault address
 	if aggregatedVault[chainID] == nil {
-		aggregatedVault[chainID] = make(map[common.MixedcaseAddress]*TAggregatedVault)
+		aggregatedVault[chainID] = make(map[string]*vaults.TAggregatedVault)
 	}
-	for _, vault := range vaults {
-		aggregatedVault[chainID][addresses.ToMixedcase(vault.Address)] = &TAggregatedVault{
+	for _, vault := range vaultLegacyAPI {
+		aggregatedVault[chainID][addresses.ToAddress(vault.Address).Hex()] = &vaults.TAggregatedVault{
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
-		go store.SaveInDB(
+		go store.SaveInBadgerDB(
 			chainID,
 			store.TABLES.VAULTS_LEGACY,
 			vault.Address.Address().Hex(),
-			aggregatedVault[chainID][addresses.ToMixedcase(vault.Address)],
+			aggregatedVault[chainID][addresses.ToAddress(vault.Address).Hex()],
 		)
 	}
 }
@@ -66,8 +66,8 @@ func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	temp := make(map[common.MixedcaseAddress]*TAggregatedVault)
-	store.Iterate(chainID, store.TABLES.VAULTS_LEGACY, &temp)
+	temp := make(map[string]*vaults.TAggregatedVault)
+	store.ListFromBadgerDB(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 
 	if temp != nil && (len(temp) > 0) {
 		aggregatedVault[chainID] = temp

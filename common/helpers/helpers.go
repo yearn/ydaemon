@@ -224,3 +224,19 @@ func DecodeAddress(something []interface{}) common.Address {
 	}
 	return something[0].(common.Address)
 }
+
+func ToNormalizedAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Float {
+	return bigNumber.NewFloat(0).Quo(
+		bigNumber.NewFloat(0).SetInt(amount),
+		bigNumber.NewFloat(0).SetInt(
+			bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), bigNumber.NewInt(int64(decimals)), nil),
+		),
+	)
+}
+
+func ToNormalizedValue(amount *bigNumber.Int, price *bigNumber.Int, decimals uint64) *bigNumber.Float {
+	normalizedAmount := ToNormalizedAmount(amount, decimals)
+	normalizedPrice := ToNormalizedAmount(price, 6)
+	normalizedValue := bigNumber.NewFloat(0).Mul(normalizedAmount, normalizedPrice)
+	return normalizedValue
+}

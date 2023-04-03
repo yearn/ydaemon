@@ -1,59 +1,16 @@
 package vaults
 
 import (
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-// TLegacyAPIAPY contains all the information useful about the APY, APR, fees and breakdown.
-type TLegacyAPIAPY struct {
-	Type              string  `json:"type"`
-	GrossAPR          float64 `json:"gross_apr"`
-	NetAPY            float64 `json:"net_apy"`
-	StakingRewardsAPR float64 `json:"staking_rewards_apr"`
-	Fees              struct {
-		Performance float64 `json:"performance"`
-		Withdrawal  float64 `json:"withdrawal"`
-		Management  float64 `json:"management"`
-		KeepCRV     float64 `json:"keep_crv"`
-		CvxKeepCRV  float64 `json:"cvx_keep_crv"`
-	} `json:"fees"`
-	Points struct {
-		WeekAgo   float64 `json:"week_ago"`
-		MonthAgo  float64 `json:"month_ago"`
-		Inception float64 `json:"inception"`
-	} `json:"points"`
-	Composite struct {
-		Boost      float64 `json:"boost"`
-		PoolAPY    float64 `json:"pool_apy"`
-		BoostedAPR float64 `json:"boosted_apr"`
-		BaseAPR    float64 `json:"base_apr"`
-		CvxAPR     float64 `json:"cvx_apr"`
-		RewardsAPR float64 `json:"rewards_apr"`
-	} `json:"composite"`
-}
-type TLegacyAPI struct {
-	Address common.MixedcaseAddress
-	APY     TLegacyAPIAPY
-}
-
-type TAggregatedVault struct {
-	Address       common.MixedcaseAddress
-	LegacyAPY     TLegacyAPIAPY
-	PricePerShare bigNumber.Int
-}
-
-func (v *TAggregatedVault) SetPricePerShare(pricePerShare *bigNumber.Int) {
-	v.PricePerShare = *pricePerShare
-}
-
-var aggregatedVault map[uint64]map[common.MixedcaseAddress]*TAggregatedVault
+var aggregatedVault map[uint64]map[string]*vaults.TAggregatedVault
 
 func init() {
-	aggregatedVault = make(map[uint64]map[common.MixedcaseAddress]*TAggregatedVault)
+	aggregatedVault = make(map[uint64]map[string]*vaults.TAggregatedVault)
 }
 
-func GetAggregatedVault(chainID uint64, address common.MixedcaseAddress) (*TAggregatedVault, bool) {
+func GetAggregatedVault(chainID uint64, address string) (*vaults.TAggregatedVault, bool) {
 	if aggregatedVault[chainID] == nil {
 		return nil, false
 	}

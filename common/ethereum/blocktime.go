@@ -30,7 +30,7 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64) {
 				Send()
 			return 0
 		}
-		store.SaveBlockTime(chainID, blockNumber, block.Time)
+		store.StoreBlockTime(chainID, blockNumber, block.Time)
 		return block.Time
 	}
 	return blockTimeData

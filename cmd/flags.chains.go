@@ -45,5 +45,8 @@ func handleChainsInitialization() []uint64 {
 		chains = append(chains, chainID)
 	}
 
+	if len(chains) == 0 {
+		chains = env.SUPPORTED_CHAIN_IDS
+	}
 	return chains
 }

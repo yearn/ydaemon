@@ -261,7 +261,7 @@ func RetrieveAllVaults(
 	** from the upcoming calls
 	**********************************************************************************************/
 	vaultMap := make(map[common.Address]*TVault)
-	store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
+	store.ListFromBadgerDB(chainID, store.TABLES.VAULTS, &vaultMap)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of vaults. In order to proceed, we will
@@ -314,7 +314,7 @@ func RetrieveAllVaults(
 		for _, token := range updatedVaultMap {
 			go func(_token *TVault) {
 				defer wg.Done()
-				store.SaveInDB(
+				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.VAULTS,
 					_token.Address.String(),
@@ -323,7 +323,7 @@ func RetrieveAllVaults(
 			}(token)
 		}
 		wg.Wait()
-		store.Iterate(chainID, store.TABLES.VAULTS, &vaultMap)
+		store.ListFromBadgerDB(chainID, store.TABLES.VAULTS, &vaultMap)
 	}
 
 	_vaultMap[chainID] = vaultMap

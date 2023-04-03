@@ -100,6 +100,43 @@ type TVault struct {
 	Token                 tokens.TERC20Token `json:"token"`
 }
 
+type TLegacyAPIAPY struct {
+	Type              string  `json:"type"`
+	GrossAPR          float64 `json:"gross_apr"`
+	NetAPY            float64 `json:"net_apy"`
+	StakingRewardsAPR float64 `json:"staking_rewards_apr"`
+	Fees              struct {
+		Performance float64 `json:"performance"`
+		Withdrawal  float64 `json:"withdrawal"`
+		Management  float64 `json:"management"`
+		KeepCRV     float64 `json:"keep_crv"`
+		CvxKeepCRV  float64 `json:"cvx_keep_crv"`
+	} `json:"fees"`
+	Points struct {
+		WeekAgo   float64 `json:"week_ago"`
+		MonthAgo  float64 `json:"month_ago"`
+		Inception float64 `json:"inception"`
+	} `json:"points"`
+	Composite struct {
+		Boost      float64 `json:"boost"`
+		PoolAPY    float64 `json:"pool_apy"`
+		BoostedAPR float64 `json:"boosted_apr"`
+		BaseAPR    float64 `json:"base_apr"`
+		CvxAPR     float64 `json:"cvx_apr"`
+		RewardsAPR float64 `json:"rewards_apr"`
+	} `json:"composite"`
+}
+type TLegacyAPI struct {
+	Address common.MixedcaseAddress
+	APY     TLegacyAPIAPY
+}
+
+type TAggregatedVault struct {
+	Address       common.MixedcaseAddress
+	LegacyAPY     TLegacyAPIAPY
+	PricePerShare bigNumber.Int
+}
+
 func (t *TVault) BuildNames(metaVaultName string) {
 	name := strings.Replace(t.Name, "\"", "", -1)
 	displayName := t.Name
@@ -183,62 +220,35 @@ func (t *TVault) BuildMigration() TMigration {
 	return migration
 }
 
-func (t *TVault) BuildAPY(legacyAPY any, hasLegacyAPY bool) TAPY {
-	type TLegacyAPIAPY struct {
-		Type              string  `json:"type"`
-		GrossAPR          float64 `json:"gross_apr"`
-		NetAPY            float64 `json:"net_apy"`
-		StakingRewardsAPR float64 `json:"staking_rewards_apr"`
-		Fees              struct {
-			Performance float64 `json:"performance"`
-			Withdrawal  float64 `json:"withdrawal"`
-			Management  float64 `json:"management"`
-			KeepCRV     float64 `json:"keep_crv"`
-			CvxKeepCRV  float64 `json:"cvx_keep_crv"`
-		} `json:"fees"`
-		Points struct {
-			WeekAgo   float64 `json:"week_ago"`
-			MonthAgo  float64 `json:"month_ago"`
-			Inception float64 `json:"inception"`
-		} `json:"points"`
-		Composite struct {
-			Boost      float64 `json:"boost"`
-			PoolAPY    float64 `json:"pool_apy"`
-			BoostedAPR float64 `json:"boosted_apr"`
-			BaseAPR    float64 `json:"base_apr"`
-			CvxAPR     float64 `json:"cvx_apr"`
-			RewardsAPR float64 `json:"rewards_apr"`
-		} `json:"composite"`
-	}
-
+func (t *TVault) BuildAPY(aggregatedVault *TAggregatedVault, hasLegacyAPY bool) TAPY {
 	apy := TAPY{}
 	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
 
 	if hasLegacyAPY {
 		apy = TAPY{
-			Type:              legacyAPY.(TLegacyAPIAPY).Type,
-			GrossAPR:          legacyAPY.(TLegacyAPIAPY).GrossAPR,
-			NetAPY:            legacyAPY.(TLegacyAPIAPY).NetAPY,
-			StakingRewardsAPR: legacyAPY.(TLegacyAPIAPY).StakingRewardsAPR,
+			Type:              aggregatedVault.LegacyAPY.Type,
+			GrossAPR:          aggregatedVault.LegacyAPY.GrossAPR,
+			NetAPY:            aggregatedVault.LegacyAPY.NetAPY,
+			StakingRewardsAPR: aggregatedVault.LegacyAPY.StakingRewardsAPR,
 			Points: TAPYPoints{
-				WeekAgo:   legacyAPY.(TLegacyAPIAPY).Points.WeekAgo,
-				MonthAgo:  legacyAPY.(TLegacyAPIAPY).Points.MonthAgo,
-				Inception: legacyAPY.(TLegacyAPIAPY).Points.Inception,
+				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
+				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
+				Inception: aggregatedVault.LegacyAPY.Points.Inception,
 			},
 			Composite: TAPYComposite{
-				Boost:      legacyAPY.(TLegacyAPIAPY).Composite.Boost,
-				PoolAPY:    legacyAPY.(TLegacyAPIAPY).Composite.PoolAPY,
-				BoostedAPR: legacyAPY.(TLegacyAPIAPY).Composite.BoostedAPR,
-				BaseAPR:    legacyAPY.(TLegacyAPIAPY).Composite.BaseAPR,
-				CvxAPR:     legacyAPY.(TLegacyAPIAPY).Composite.CvxAPR,
-				RewardsAPR: legacyAPY.(TLegacyAPIAPY).Composite.RewardsAPR,
+				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
+				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
+				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
+				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
+				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
+				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
 			},
 			Fees: TAPYFees{
-				Performance: legacyAPY.(TLegacyAPIAPY).Fees.Performance,
-				Management:  legacyAPY.(TLegacyAPIAPY).Fees.Management,
-				Withdrawal:  legacyAPY.(TLegacyAPIAPY).Fees.Withdrawal,
-				KeepCRV:     legacyAPY.(TLegacyAPIAPY).Fees.KeepCRV,
-				CvxKeepCRV:  legacyAPY.(TLegacyAPIAPY).Fees.CvxKeepCRV,
+				Performance: aggregatedVault.LegacyAPY.Fees.Performance,
+				Management:  aggregatedVault.LegacyAPY.Fees.Management,
+				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
+				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
+				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
 			},
 		}
 		if okMeta && vaultFromMeta.APYTypeOverride != `` {

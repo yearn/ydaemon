@@ -1,6 +1,7 @@
 package prices
 
 import (
+	"context"
 	"math"
 	"math/big"
 	"strconv"
@@ -10,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 )
 
@@ -57,12 +59,15 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	var blockNumberBigInt *big.Int
 
 	if blockNumber == nil {
+		currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
+		blockNumber = &currentBlockNumber
 		response = caller.ExecuteByBatch(calls, maxBatch, nil)
 	} else {
 		blockNumberBigInt = big.NewInt(int64(*blockNumber))
 		response = caller.ExecuteByBatch(calls, maxBatch, blockNumberBigInt)
 
 	}
+
 	for _, token := range tokens {
 		rawTokenPrice := response[token.String()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
@@ -73,6 +78,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 			continue
 		}
 		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
+		store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
 	}
 	return newPriceMap
 }

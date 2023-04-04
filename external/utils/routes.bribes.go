@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/bribes"
 )
 
-//GetRewardAdded returns the feed of reward added for the yBribeV3 contract
+// GetRewardAdded returns the feed of reward added for the yBribeV3 contract
 func GetRewardAdded(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

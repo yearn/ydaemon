@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/prices"
 )
 
-//GetPrice will, for a given token on a given chainID, return the price of it
+// GetPrice will, for a given token on a given chainID, return the price of it
 func (y Controller) GetPrice(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

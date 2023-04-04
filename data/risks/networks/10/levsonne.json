@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Generic Lev Sonne",
+	"codeReviewScore": 5,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 5,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"GenLevSonne"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

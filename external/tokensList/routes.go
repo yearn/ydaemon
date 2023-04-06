@@ -98,7 +98,6 @@ func GetYearnTokenList(c *gin.Context) {
 		Decimals: int(chainCoin.Decimals),
 		SupportedZaps: []tokensList.SupportedZap{
 			tokensList.Wido,
-			tokensList.Portals,
 		},
 	}
 	if ok {

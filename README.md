@@ -97,22 +97,22 @@ To provide a fast and up-to-date experience, a bunch of daemons are summoned wit
 
 ## Folder and structure
 The project is divided as follow:
-- `cmd`: contains the `main.go` entry point for this API. It's role is _only_ to init the project.
+- `cmd`: contains the `main.go` entry point for this API. Its role is _only_ to init the project.
 - `contracts`: contains the `.sol` and `.vy` files used to generate the contract `.go` files with `abigen`
 - `internal`: contains the actual code of the API. It's divided in subpackages, each one representing a different part of the API, keeping the code clean and easy to maintain.
 
 The `internal` folder is the _private application and library code_. This is the code we don't want others importing in their applications or libraries. This layout pattern is enforced by the Go compiler itself. Inside of it, we have the following subpackages:
-- `contracts`: contains the `abigen` generated contract `.go` files. Theses files should not be altered.
+- `contracts`: contains the `abigen` generated contract `.go` files. These files should not be altered.
 - `controllers`: contains the logic around the `REST` API: routes, server, actions by route, etc. This is where the entry-point and the wrapper around the logic for a specific `REST` endpoint is.
 - `daemons`: contains all our background processes. They will run forever in the background to update the data we may need in our application.
-- `ethereum`: contains all the logic aroung the Blockchain calls. It's the place where we call the RPC, connect to the client, call the methods, etc.
+- `ethereum`: contains all the logic around the Blockchain calls. It's the place where we call the RPC, connect to the client, call the methods, etc.
 - `logs`: helper package used to display nice logs.
 - `models`: contains all the cross-package types we need.
 - `store`: contains all the cross-package global variables.
 - `utils`: contains all the cross-package utility functions.
 
 ## Docs
-To run docs locally use the follow:
+To run docs locally use the following:
 ```bash
 cd docs
 yarn

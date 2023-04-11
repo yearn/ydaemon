@@ -12,8 +12,8 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
@@ -45,7 +45,7 @@ func filterUpdateManagementFee(
 				continue
 			}
 
-			eventKey := vaultAddress.String() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+			eventKey := vaultAddress.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 			blockData := utils.TEventBlock{
 				EventType:   `updateManagementFee`,
 				TxHash:      log.Event.Raw.TxHash,
@@ -83,7 +83,7 @@ func filterUpdateManagementFee(
 **************************************************************************************************/
 func HandleUpdateManagementFee(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
+	vaults map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64][]utils.TEventBlock {

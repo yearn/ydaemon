@@ -21,7 +21,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 
 	var tokenString []string
 	for _, token := range tokens {
-		tokenString = append(tokenString, strings.ToLower(token.String()))
+		tokenString = append(tokenString, strings.ToLower(token.Hex()))
 	}
 	req, err := http.NewRequest("GET", GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 	if err != nil {

@@ -43,7 +43,7 @@ func (y Controller) GetVault(c *gin.Context) {
 
 		if withStrategiesDetails {
 			externalStrategy = strategyWithDetails
-			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
 		} else {
 			externalStrategy = &TStrategy{
 				Address:     common.NewMixedcaseAddress(strategy.Address),

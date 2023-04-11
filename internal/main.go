@@ -7,6 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -16,7 +17,7 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var STRATLIST = []strategies.TStrategy{}
+var STRATLIST = []models.TStrategy{}
 
 func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
@@ -46,7 +47,7 @@ func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVa
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)

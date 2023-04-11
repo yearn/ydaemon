@@ -1,4 +1,4 @@
-package meta
+package models
 
 // TLocalizationDetails contains the localization details for a specific language
 type TLocalizationDetails struct {

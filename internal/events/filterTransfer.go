@@ -13,9 +13,8 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
@@ -51,8 +50,8 @@ func filterTransfers(
 			if log.Error() != nil {
 				continue
 			}
-			eventKey := (log.Event.Sender.String() + `-` +
-				log.Event.Receiver.String() + `-` +
+			eventKey := (log.Event.Sender.Hex() + `-` +
+				log.Event.Receiver.Hex() + `-` +
 				strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10))
 
 			blockData := utils.TEventBlock{
@@ -100,7 +99,7 @@ func filterTransfers(
 **********************************************************************************************/
 func HandleTransferFromVaultsToStrategies(
 	chainID uint64,
-	vaultStrategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	vaultStrategiesMap map[common.Address]map[common.Address]*models.TStrategy,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
@@ -191,7 +190,7 @@ func HandleTransferFromVaultsToStrategies(
 **********************************************************************************************/
 func HandleTransfersFromVaultsToTreasury(
 	chainID uint64,
-	vaultsMap map[common.Address]*vaults.TVault,
+	vaultsMap map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64][]utils.TEventBlock {

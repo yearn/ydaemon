@@ -8,17 +8,18 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // TStrategyFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/strategies/all
 type TStrategyFromMeta struct {
-	Address          common.Address   `json:"address"`
-	Name             string           `json:"name"`
-	Description      string           `json:"description"`
-	RelatedAddresses []common.Address `json:"addresses"`
-	Protocols        []string         `json:"protocols"`
-	ChainID          uint64           `json:"chainID"`
-	Localization     *TLocalization   `json:"localization,omitempty"`
+	Address          common.Address        `json:"address"`
+	Name             string                `json:"name"`
+	Description      string                `json:"description"`
+	RelatedAddresses []common.Address      `json:"addresses"`
+	Protocols        []string              `json:"protocols"`
+	ChainID          uint64                `json:"chainID"`
+	Localization     *models.TLocalization `json:"localization,omitempty"`
 }
 
 /**********************************************************************************************

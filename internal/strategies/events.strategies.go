@@ -14,6 +14,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/utils"
 )
 
@@ -26,7 +27,7 @@ import (
 ** - vaultAddress: the address of the vault we are working on
 ** - vaultActivation: the block number at which the vault was activated
 ** - asyncStrategiesMigration: the async ptr to the map of vaultAddr -> oldStrategyAddr ->
-**   newStrategyAddr -> TStrategyMigrated
+**   newStrategyAddr -> models.TStrategyMigrated
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
@@ -61,8 +62,8 @@ func getStrategiesMigrated(
 				oldAddress := log.Event.OldVersion
 				newAddress := log.Event.NewVersion
 
-				eventKey := vaultAddress.String() + `-` + oldAddress.String() + `-` + newAddress.String()
-				asyncStrategiesMigration.Store(eventKey, TStrategyMigrated{
+				eventKey := vaultAddress.Hex() + `-` + oldAddress.Hex() + `-` + newAddress.Hex()
+				asyncStrategiesMigration.Store(eventKey, models.TStrategyMigrated{
 					VaultAddress:       vaultAddress,
 					OldStrategyAddress: oldAddress,
 					NewStrategyAddress: newAddress,
@@ -121,8 +122,8 @@ func getStrategiesAdded(
 				if log.Error() != nil {
 					continue
 				}
-				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
+				asyncStrategiesForVaults.Store(eventKey, models.TStrategyAdded{
 					VaultAddress:    vaultAddress,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
@@ -142,8 +143,8 @@ func getStrategiesAdded(
 				if log.Error() != nil {
 					continue
 				}
-				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
+				asyncStrategiesForVaults.Store(eventKey, models.TStrategyAdded{
 					VaultAddress:    vaultAddress,
 					StrategyAddress: log.Event.Strategy,
 					TxHash:          log.Event.Raw.TxHash,
@@ -164,8 +165,8 @@ func getStrategiesAdded(
 					continue
 				}
 
-				eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String()
-				asyncStrategiesForVaults.Store(eventKey, TStrategyAdded{
+				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
+				asyncStrategiesForVaults.Store(eventKey, models.TStrategyAdded{
 					VaultAddress:      vaultAddress,
 					StrategyAddress:   log.Event.Strategy,
 					TxHash:            log.Event.Raw.TxHash,
@@ -197,7 +198,7 @@ func getStrategiesAdded(
 func RetrieveAllStrategiesAdded(
 	chainID uint64,
 	vaults map[common.Address]utils.TVaultsFromRegistry,
-) []TStrategyAdded {
+) []models.TStrategyAdded {
 	trace := traces.Init(`app.indexer.strategies.activation_events`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -239,23 +240,23 @@ func RetrieveAllStrategiesAdded(
 	**
 	** The syncMap variable is setup as follows:
 	** - key: vaultAddress-strategyAddress
-	** - value: []TStrategyAdded
+	** - value: []models.TStrategyAdded
 	**
 	** We need to transform it into a map as follows:
 	** - vaultAddress -> strategyAddress -> []TEventBlock
 	**********************************************************************************************/
 	count := 0
-	allStrategiesList := []TStrategyAdded{}
-	strategies := make(map[common.Address]map[common.Address]TStrategyAdded)
+	allStrategiesList := []models.TStrategyAdded{}
+	strategies := make(map[common.Address]map[common.Address]models.TStrategyAdded)
 	asyncStrategiesForVaults.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		vaultAddressParsed := common.HexToAddress(eventKey[0])
 		strategyAddressParsed := common.HexToAddress(eventKey[1])
 
 		if _, ok := strategies[vaultAddressParsed]; !ok {
-			strategies[vaultAddressParsed] = make(map[common.Address]TStrategyAdded)
+			strategies[vaultAddressParsed] = make(map[common.Address]models.TStrategyAdded)
 		}
-		valueParsed := value.(TStrategyAdded)
+		valueParsed := value.(models.TStrategyAdded)
 		valueParsed.VaultVersion = vaults[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
 		allStrategiesList = append(allStrategiesList, valueParsed)
@@ -270,7 +271,7 @@ func RetrieveAllStrategiesAdded(
 	**
 	** The syncMap variable is setup as follows:
 	** - key: vaultAddress-oldStrategyAddress-newStrategyAddress
-	** - value: []TStrategyMigrated
+	** - value: []models.TStrategyMigrated
 	**
 	** We need to transform it into a map as follows:
 	** - vaultAddress -> strategyAddress -> []TEventBlock
@@ -282,22 +283,22 @@ func RetrieveAllStrategiesAdded(
 		newStrategyAddressParsed := common.HexToAddress(eventKey[2])
 
 		if _, ok := strategies[vaultAddressParsed]; !ok {
-			strategies[vaultAddressParsed] = make(map[common.Address]TStrategyAdded)
+			strategies[vaultAddressParsed] = make(map[common.Address]models.TStrategyAdded)
 		}
 		oldStrategy := strategies[vaultAddressParsed][oldStrategyAddressParsed]
-		newStrategy := TStrategyAdded{
+		newStrategy := models.TStrategyAdded{
 			VaultAddress:      vaultAddressParsed,
 			StrategyAddress:   newStrategyAddressParsed,
-			TxHash:            value.(TStrategyMigrated).TxHash,
+			TxHash:            value.(models.TStrategyMigrated).TxHash,
 			DebtRatio:         oldStrategy.DebtRatio,
 			MaxDebtPerHarvest: oldStrategy.MaxDebtPerHarvest,
 			MinDebtPerHarvest: oldStrategy.MinDebtPerHarvest,
 			PerformanceFee:    oldStrategy.PerformanceFee,
 			DebtLimit:         oldStrategy.DebtLimit,
 			RateLimit:         oldStrategy.RateLimit,
-			BlockNumber:       value.(TStrategyMigrated).BlockNumber,
-			TxIndex:           value.(TStrategyMigrated).TxIndex,
-			LogIndex:          value.(TStrategyMigrated).LogIndex,
+			BlockNumber:       value.(models.TStrategyMigrated).BlockNumber,
+			TxIndex:           value.(models.TStrategyMigrated).TxIndex,
+			LogIndex:          value.(models.TStrategyMigrated).LogIndex,
 		}
 		newStrategy.VaultVersion = vaults[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy

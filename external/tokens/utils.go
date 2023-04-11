@@ -1,12 +1,10 @@
 package tokens
 
-import (
-	"github.com/yearn/ydaemon/internal/meta"
-)
+import "github.com/yearn/ydaemon/internal/models"
 
 type Controller struct{}
 
-func selectLocalizationFromString(s string, loc meta.TLocalization) meta.TLocalizationDetails {
+func selectLocalizationFromString(s string, loc models.TLocalization) models.TLocalizationDetails {
 	switch s {
 	case `en`:
 		return loc.En

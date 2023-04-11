@@ -1,8 +1,6 @@
 package vaults
 
-import (
-	"github.com/yearn/ydaemon/internal/strategies"
-)
+import "github.com/yearn/ydaemon/internal/models"
 
 type TExternalStrategyRiskDetails struct {
 	TVLImpact           int `json:"TVLImpact"`
@@ -16,16 +14,16 @@ type TExternalStrategyRiskDetails struct {
 }
 
 type TExternalStrategyRiskScore struct {
-	RiskScore   float64                         `json:"riskScore"`
-	RiskGroup   string                          `json:"riskGroup"`
-	RiskDetails TExternalStrategyRiskDetails    `json:"riskDetails"`
-	Allocation  *strategies.TStrategyAllocation `json:"allocation"`
+	RiskScore   float64                      `json:"riskScore"`
+	RiskGroup   string                       `json:"riskGroup"`
+	RiskDetails TExternalStrategyRiskDetails `json:"riskDetails"`
+	Allocation  *models.TStrategyAllocation  `json:"allocation"`
 }
 
 func NewRiskScore() *TExternalStrategyRiskScore {
 	return &TExternalStrategyRiskScore{}
 }
-func (v *TExternalStrategyRiskScore) AssignTStrategyFromRisk(internalStrategyRiskScore *strategies.TStrategyFromRisk) *TExternalStrategyRiskScore {
+func (v *TExternalStrategyRiskScore) AssignTStrategyFromRisk(internalStrategyRiskScore *models.TStrategyFromRisk) *TExternalStrategyRiskScore {
 	v.RiskScore = internalStrategyRiskScore.RiskScore
 	v.RiskGroup = internalStrategyRiskScore.RiskGroup
 	v.RiskDetails.TVLImpact = internalStrategyRiskScore.RiskDetails.TVLImpact

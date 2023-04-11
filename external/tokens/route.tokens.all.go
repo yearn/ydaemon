@@ -7,22 +7,23 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TAllTokens struct {
-	Address          string              `json:"address"`
-	Name             string              `json:"name"`
-	Symbol           string              `json:"symbol"`
-	Decimals         uint64              `json:"decimals"`
-	IsVault          bool                `json:"isVault"`
-	DisplayName      string              `json:"display_name,omitempty"`
-	DisplaySymbol    string              `json:"display_symbol,omitempty"`
-	Description      string              `json:"description,omitempty"`
-	Website          string              `json:"website,omitempty"`
-	Categories       []string            `json:"categories,omitempty"`
-	UnderlyingTokens []string            `json:"underlyingTokens,omitempty"`
-	Localization     *meta.TLocalization `json:"localization,omitempty"`
+	Address          string                `json:"address"`
+	Name             string                `json:"name"`
+	Symbol           string                `json:"symbol"`
+	Decimals         uint64                `json:"decimals"`
+	IsVault          bool                  `json:"isVault"`
+	DisplayName      string                `json:"display_name,omitempty"`
+	DisplaySymbol    string                `json:"display_symbol,omitempty"`
+	Description      string                `json:"description,omitempty"`
+	Website          string                `json:"website,omitempty"`
+	Categories       []string              `json:"categories,omitempty"`
+	UnderlyingTokens []string              `json:"underlyingTokens,omitempty"`
+	Localization     *models.TLocalization `json:"localization,omitempty"`
 }
 
 // GetAllTokens will return all the tokens informations, no matter the chainID.
@@ -41,7 +42,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Decimals: token.Decimals,
-				IsVault:  token.IsVault(),
+				IsVault:  tokens.IsVault(token),
 			}
 			for _, addr := range token.UnderlyingTokensAddresses {
 				tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())
@@ -87,7 +88,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 			Name:     token.Name,
 			Symbol:   token.Symbol,
 			Decimals: token.Decimals,
-			IsVault:  token.IsVault(),
+			IsVault:  tokens.IsVault(token),
 		}
 		for _, addr := range token.UnderlyingTokensAddresses {
 			tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())

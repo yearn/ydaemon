@@ -12,7 +12,6 @@ import (
 
 func SummonDaemonsw(chainID uint64) {
 	var wg sync.WaitGroup
-
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
 	wg.Add(1)
@@ -25,7 +24,7 @@ func SummonDaemonsw(chainID uint64) {
 	wg.Add(1)
 	{
 		//This can only be run after the internal daemons have been initialized
-		go runDaemon(chainID, &wg, 0, strategies.ComputeRiskGroupAllocation)
+		go runDaemon(chainID, &wg, 0, strategies.InitRiskScore)
 	}
 	wg.Wait()
 }

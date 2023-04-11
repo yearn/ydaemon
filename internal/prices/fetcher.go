@@ -2,7 +2,6 @@ package prices
 
 import (
 	"context"
-	"math"
 	"math/big"
 	"strconv"
 	"sync"
@@ -16,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -91,7 +91,7 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			traces.
-				Capture(`error`, `missing a valid price for token `+token.String()+` on chain `+strconv.FormatUint(chainID, 10)).
+				Capture(`error`, `missing a valid price for token `+token.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`prices`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				Send()
@@ -224,7 +224,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.PRICES,
-					address.String(),
+					address.Hex(),
 					price,
 				)
 			}(address, price)
@@ -249,15 +249,13 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
-	lensAddress := env.LENS_ADDRESSES[chainID]
 	calls := []ethereum.Call{}
 	for _, tokenAddress := range tokenList {
 		if tokenPrice, ok := store.GetBlockPrice(chainID, blockNumber, tokenAddress); ok {
 			newPriceMap[tokenAddress] = tokenPrice
 			continue
 		}
-		calls = append(calls, getPriceUsdcRecommendedCall(tokenAddress.String(), lensAddress, tokenAddress))
+		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(tokenAddress.Hex(), env.LENS_ADDRESSES[chainID], tokenAddress))
 	}
 
 	/**********************************************************************************************
@@ -265,9 +263,9 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 	** available. If it is, we add it to the map. If it's not, we try to fetch it from an external
 	** API.
 	**********************************************************************************************/
-	response := caller.ExecuteByBatch(calls, math.MaxInt64, big.NewInt(int64(blockNumber)))
+	response := multicalls.Perform(chainID, calls, big.NewInt(int64(blockNumber)))
 	for _, tokenAddress := range tokenList {
-		rawTokenPrice := response[tokenAddress.String()+`getPriceUsdcRecommended`]
+		rawTokenPrice := response[tokenAddress.Hex()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
 			continue
 		}

@@ -12,7 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 type TMimicStrategyReportBase struct {
@@ -37,7 +37,7 @@ type TMimicStrategyReportBase struct {
 **************************************************************************************************/
 func filterStrategyReportedFor031To043(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
 	asyncMap *sync.Map,
 	wg *sync.WaitGroup,
@@ -79,7 +79,7 @@ func filterStrategyReportedFor031To043(
 **************************************************************************************************/
 func filterStrategyReportedFor030(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
 	asyncMap *sync.Map,
 	wg *sync.WaitGroup,
@@ -123,7 +123,7 @@ func filterStrategyReportedFor030(
 **************************************************************************************************/
 func filterStrategyReportedFor022(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
 	asyncMap *sync.Map,
 	wg *sync.WaitGroup,
@@ -174,7 +174,7 @@ func filterStrategyReportedFor022(
 **************************************************************************************************/
 func HandleStrategyReported(
 	chainID uint64,
-	vaultsMap map[common.Address]*vaults.TVault,
+	vaultsMap map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
 ) []TMimicStrategyReportBase {

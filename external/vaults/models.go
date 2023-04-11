@@ -5,6 +5,7 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -142,7 +143,7 @@ type TExternalVault struct {
 func NewVault() *TExternalVault {
 	return &TExternalVault{}
 }
-func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVault {
+func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVault {
 	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, internalVault.Address)
 	if !ok {
 		vaultFromMeta = &meta.TInternalVaultFromMeta{
@@ -172,9 +173,9 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.ChainID = internalVault.ChainID
-	v.TVL = TExternalVaultTVL(internalVault.BuildTVL())
-	v.Migration = toTExternalVaultMigration(internalVault.BuildMigration())
-	v.Category = internalVault.BuildCategory()
+	v.TVL = TExternalVaultTVL(vaults.BuildTVL(internalVault))
+	v.Migration = toTExternalVaultMigration(vaults.BuildMigration(internalVault))
+	v.Category = vaults.BuildCategory(internalVault)
 
 	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, internalVault.Address)
 	if ok {
@@ -209,7 +210,7 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	}
 
 	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
-	internalAPY := internalVault.BuildAPY(aggregatedVault, okLegacyAPI)
+	internalAPY := vaults.BuildAPY(internalVault, aggregatedVault, okLegacyAPI)
 	v.APY = TExternalVaultAPY{
 		Type:              internalAPY.Type,
 		GrossAPR:          internalAPY.GrossAPR,
@@ -269,7 +270,7 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 	return vaultRiskScore
 }
 
-func toTExternalVaultMigration(migration vaults.TMigration) TExternalVaultMigration {
+func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigration {
 	return TExternalVaultMigration{
 		Available: migration.Available,
 		Address:   common.NewMixedcaseAddress(migration.Address),

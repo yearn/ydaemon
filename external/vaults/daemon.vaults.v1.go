@@ -11,7 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // FetchVaultsFromV1 fetches the vaults information from the Yearn V1 API for a given chainID
@@ -37,7 +37,7 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// Unmarshal the response body into the variable AggregatedVault. Body is a byte array,
 	// with this manipulation we are putting it in the correct TLegacyAPI struct format
-	vaultLegacyAPI := []vaults.TLegacyAPI{}
+	vaultLegacyAPI := []models.TLegacyAPI{}
 	if err := json.Unmarshal(body, &vaultLegacyAPI); err != nil {
 		logs.Warning("Error unmarshalling response body from the Yearn Meta API")
 		return
@@ -45,10 +45,10 @@ func FetchVaultsFromV1(chainID uint64) {
 
 	// To provide faster access to the data, we index the mapping by the vault address
 	if aggregatedVault[chainID] == nil {
-		aggregatedVault[chainID] = make(map[string]*vaults.TAggregatedVault)
+		aggregatedVault[chainID] = make(map[string]*models.TAggregatedVault)
 	}
 	for _, vault := range vaultLegacyAPI {
-		aggregatedVault[chainID][addresses.ToAddress(vault.Address).Hex()] = &vaults.TAggregatedVault{
+		aggregatedVault[chainID][addresses.ToAddress(vault.Address).Hex()] = &models.TAggregatedVault{
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
@@ -66,7 +66,7 @@ func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	temp := make(map[string]*vaults.TAggregatedVault)
+	temp := make(map[string]*models.TAggregatedVault)
 	store.ListFromBadgerDB(chainID, store.TABLES.VAULTS_LEGACY, &temp)
 
 	if temp != nil && (len(temp) > 0) {

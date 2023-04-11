@@ -7,14 +7,15 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // TProtocolsFromMeta is the structure of data for the protocols metadata stored in data/meta/protocols
 type TProtocolsFromMeta struct {
-	Name         string         `json:"name"`
-	Description  string         `json:"description"`
-	ChainID      uint64         `json:"chainID"`
-	Localization *TLocalization `json:"localization,omitempty"`
+	Name         string                `json:"name"`
+	Description  string                `json:"description"`
+	ChainID      uint64                `json:"chainID"`
+	Localization *models.TLocalization `json:"localization,omitempty"`
 }
 
 /**********************************************************************************************

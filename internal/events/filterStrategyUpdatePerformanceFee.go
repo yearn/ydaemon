@@ -12,9 +12,8 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 /**************************************************************************************************
@@ -56,7 +55,7 @@ func filterUpdateStrategyPerformanceFee(
 				Value:       bigNumber.SetInt(log.Event.PerformanceFee),
 			}
 
-			eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+			eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 			if syncMap, ok := asyncFeeMap.Load(eventKey); ok {
 				currentBlockData := append((syncMap.([]utils.TEventBlock)), blockData)
 				asyncFeeMap.Store(eventKey, currentBlockData)
@@ -86,8 +85,8 @@ func filterUpdateStrategyPerformanceFee(
 **************************************************************************************************/
 func HandleUpdateStrategyPerformanceFee(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
-	strategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	vaults map[common.Address]*models.TVault,
+	strategiesMap map[common.Address]map[common.Address]*models.TStrategy,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {

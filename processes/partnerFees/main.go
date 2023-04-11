@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/internal/harvests"
 	"github.com/yearn/ydaemon/internal/indexer"
 	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -87,7 +88,7 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 		for _, harvestList := range allHarvestForVault {
 			wg.Add(len(harvestList))
 			for _, harvest := range harvestList {
-				go func(harvest harvests.THarvest, vaultAddress common.Address, vaultTokenAddress common.Address, vaultDecimals uint64) {
+				go func(harvest models.THarvest, vaultAddress common.Address, vaultTokenAddress common.Address, vaultDecimals uint64) {
 					defer wg.Done()
 					if (harvest.BlockNumber < fromBlock) || (toBlock != nil && harvest.BlockNumber > *toBlock) {
 						return // Skip, not in the range

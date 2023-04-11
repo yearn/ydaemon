@@ -8,6 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -26,7 +27,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	}
 
 	data := []TExternalVault{}
-	allVaults := []*vaults.TVault{}
+	allVaults := []*models.TVault{}
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		vaultsForChain := vaults.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
@@ -59,7 +60,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 
 			if withStrategiesDetails {
 				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
 			} else {
 				externalStrategy = &TStrategy{
 					Address:     common.NewMixedcaseAddress(strategy.Address),

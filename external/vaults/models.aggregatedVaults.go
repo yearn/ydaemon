@@ -1,16 +1,14 @@
 package vaults
 
-import (
-	"github.com/yearn/ydaemon/internal/vaults"
-)
+import "github.com/yearn/ydaemon/internal/models"
 
-var aggregatedVault map[uint64]map[string]*vaults.TAggregatedVault
+var aggregatedVault map[uint64]map[string]*models.TAggregatedVault
 
 func init() {
-	aggregatedVault = make(map[uint64]map[string]*vaults.TAggregatedVault)
+	aggregatedVault = make(map[uint64]map[string]*models.TAggregatedVault)
 }
 
-func GetAggregatedVault(chainID uint64, address string) (*vaults.TAggregatedVault, bool) {
+func GetAggregatedVault(chainID uint64, address string) (*models.TAggregatedVault, bool) {
 	if aggregatedVault[chainID] == nil {
 		return nil, false
 	}

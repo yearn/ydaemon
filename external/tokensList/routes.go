@@ -1,7 +1,6 @@
 package tokensList
 
 import (
-	"math"
 	"net/http"
 	"strconv"
 	"time"
@@ -11,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/tokensList"
@@ -58,7 +58,6 @@ func GetYearnTokenList(c *gin.Context) {
 	** For each token in the tokensFromListMap map, we add a call to the slice of calls, for the
 	** balanceOf function of the ERC20 token.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, token := range tokensFromListMap {
 		calls = append(calls, getBalance(
@@ -67,13 +66,6 @@ func GetYearnTokenList(c *gin.Context) {
 			addresses.ToMixedcase(userAddress),
 		))
 	}
-
-	/**********************************************************************************************
-	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
-	** number. We split the multicall in multiple calls of 3 calls each.
-	** Otherwise, we just send the multicall as is.
-	**********************************************************************************************/
-	maxBatch := math.MaxInt64
 
 	/**********************************************************************************************
 	** The following code will execute the multicall and then map the results to the tokens in the
@@ -108,7 +100,7 @@ func GetYearnTokenList(c *gin.Context) {
 	/**********************************************************************************************
 	** And we can finally execute the multicall.
 	**********************************************************************************************/
-	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	response := multicalls.Perform(chainID, calls, nil)
 	for _, token := range tokensFromListMap {
 		rawBalance := response[token.Address+`balanceOf`]
 		if len(rawBalance) == 0 {

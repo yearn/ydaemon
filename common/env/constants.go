@@ -121,3 +121,11 @@ var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
 	250:   {},
 	42161: {},
 }
+
+// STACKING_REWARD_ADDRESSES contains the address of the stacking reward contract
+var STACKING_REWARD_ADDRESSES = map[uint64]common.Address{
+	1:     {},
+	10:    common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+	250:   {},
+	42161: {},
+}

@@ -5,7 +5,7 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/common/ethereum"
 )
 
 type THarvestFees struct {
@@ -61,23 +61,23 @@ func (harvest *THarvest) New(log types.Log) *THarvest {
 
 func findRelatedTransfers(
 	log *contracts.Yvault043StrategyReportedIterator,
-	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[uint64][]ethereum.TEventBlock,
+	transfersFromVaultsToTreasury map[uint64][]ethereum.TEventBlock,
 ) (*bigNumber.Int, *bigNumber.Int) {
-	currentBlock := utils.TEventBlock{
+	currentBlock := ethereum.TEventBlock{
 		BlockNumber: log.Event.Raw.BlockNumber,
 		TxIndex:     log.Event.Raw.TxIndex,
 		LogIndex:    log.Event.Raw.Index,
 	}
 
-	transferToStrategist := utils.FindEventBefore(
-		map[uint64][]utils.TEventBlock{
+	transferToStrategist := ethereum.FindEventBefore(
+		map[uint64][]ethereum.TEventBlock{
 			currentBlock.BlockNumber: transfersFromVaultsToStrategies[log.Event.Strategy][currentBlock.BlockNumber],
 		},
 		currentBlock,
 	)
-	transferToTreasury := utils.FindEventBefore(
-		map[uint64][]utils.TEventBlock{
+	transferToTreasury := ethereum.FindEventBefore(
+		map[uint64][]ethereum.TEventBlock{
 			currentBlock.BlockNumber: transfersFromVaultsToTreasury[currentBlock.BlockNumber],
 		},
 		currentBlock,
@@ -90,7 +90,7 @@ func durationSinceLastReport(
 	log *contracts.Yvault043StrategyReportedIterator,
 	allLastReport map[common.Address]map[uint64]uint64,
 ) *bigNumber.Int {
-	previousBlockTimestampUint64 := utils.FindPreviousBlock(allLastReport[log.Event.Strategy], log.Event.Raw.BlockNumber)
+	previousBlockTimestampUint64 := ethereum.FindPreviousBlock(allLastReport[log.Event.Strategy], log.Event.Raw.BlockNumber)
 	duration := bigNumber.NewInt(0).Sub(
 		bigNumber.NewUint64(allLastReport[log.Event.Strategy][log.Event.Raw.BlockNumber]),
 		bigNumber.NewUint64(previousBlockTimestampUint64),

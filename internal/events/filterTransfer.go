@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 /**************************************************************************************************
@@ -54,7 +53,7 @@ func filterTransfers(
 				log.Event.Receiver.Hex() + `-` +
 				strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10))
 
-			blockData := utils.TEventBlock{
+			blockData := ethereum.TEventBlock{
 				EventType:   `transfer`,
 				TxHash:      log.Event.Raw.TxHash,
 				BlockNumber: log.Event.Raw.BlockNumber,
@@ -64,10 +63,10 @@ func filterTransfers(
 			}
 
 			if syncMap, ok := asyncMapTransfers.Load(eventKey); ok {
-				currentBlockData := append((syncMap.([]utils.TEventBlock)), blockData)
+				currentBlockData := append((syncMap.([]ethereum.TEventBlock)), blockData)
 				asyncMapTransfers.Store(eventKey, currentBlockData)
 			} else {
-				asyncMapTransfers.Store(eventKey, []utils.TEventBlock{blockData})
+				asyncMapTransfers.Store(eventKey, []ethereum.TEventBlock{blockData})
 			}
 		}
 	} else {
@@ -102,7 +101,7 @@ func HandleTransferFromVaultsToStrategies(
 	vaultStrategiesMap map[common.Address]map[common.Address]*models.TStrategy,
 	start uint64,
 	end *uint64,
-) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
+) map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock {
 	timeBefore := time.Now()
 
 	/**********************************************************************************************
@@ -141,7 +140,7 @@ func HandleTransferFromVaultsToStrategies(
 	** - value: []TEventBlock
 	**********************************************************************************************/
 	count := 0
-	asyncMapTransfers := make(map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock)
+	asyncMapTransfers := make(map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock)
 	syncMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		vaultAddress := common.HexToAddress(eventKey[0])
@@ -150,22 +149,22 @@ func HandleTransferFromVaultsToStrategies(
 
 		// If the mapping for [vaultAddress] doesn't exist, create it
 		if _, ok := asyncMapTransfers[vaultAddress]; !ok {
-			asyncMapTransfers[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
+			asyncMapTransfers[vaultAddress] = make(map[common.Address]map[uint64][]ethereum.TEventBlock)
 		}
 
 		// If the mapping for [vaultAddress][strategyAddress] doesn't exist, create it
 		if _, ok := asyncMapTransfers[vaultAddress][strategyAddress]; !ok {
-			asyncMapTransfers[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
+			asyncMapTransfers[vaultAddress][strategyAddress] = make(map[uint64][]ethereum.TEventBlock)
 		}
 
 		// If the mapping for [vaultAddress][strategyAddress][blockNumber] doesn't exist, create it
 		if _, ok := asyncMapTransfers[vaultAddress][strategyAddress][blockNumber]; !ok {
-			asyncMapTransfers[vaultAddress][strategyAddress][blockNumber] = make([]utils.TEventBlock, 0)
+			asyncMapTransfers[vaultAddress][strategyAddress][blockNumber] = make([]ethereum.TEventBlock, 0)
 		}
 
 		asyncMapTransfers[vaultAddress][strategyAddress][blockNumber] = append(
 			asyncMapTransfers[vaultAddress][strategyAddress][blockNumber],
-			value.([]utils.TEventBlock)...,
+			value.([]ethereum.TEventBlock)...,
 		)
 		count++
 		return true
@@ -193,7 +192,7 @@ func HandleTransfersFromVaultsToTreasury(
 	vaultsMap map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
-) map[common.Address]map[uint64][]utils.TEventBlock {
+) map[common.Address]map[uint64][]ethereum.TEventBlock {
 	timeBefore := time.Now()
 
 	/**********************************************************************************************
@@ -230,7 +229,7 @@ func HandleTransfersFromVaultsToTreasury(
 	** - value: []TEventBlock
 	**********************************************************************************************/
 	count := 0
-	transfersFromVaultsToTreasury := make(map[common.Address]map[uint64][]utils.TEventBlock)
+	transfersFromVaultsToTreasury := make(map[common.Address]map[uint64][]ethereum.TEventBlock)
 	syncMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		senderAddress := common.HexToAddress(eventKey[0])
@@ -244,17 +243,17 @@ func HandleTransfersFromVaultsToTreasury(
 
 		// If the mapping for [senderAddress] doesn't exist, create it
 		if _, ok := transfersFromVaultsToTreasury[senderAddress]; !ok {
-			transfersFromVaultsToTreasury[senderAddress] = make(map[uint64][]utils.TEventBlock)
+			transfersFromVaultsToTreasury[senderAddress] = make(map[uint64][]ethereum.TEventBlock)
 		}
 
 		// If the mapping for [senderAddress][blockNumber] doesn't exist, create it
 		if _, ok := transfersFromVaultsToTreasury[senderAddress][blockNumber]; !ok {
-			transfersFromVaultsToTreasury[senderAddress][blockNumber] = make([]utils.TEventBlock, 0)
+			transfersFromVaultsToTreasury[senderAddress][blockNumber] = make([]ethereum.TEventBlock, 0)
 		}
 
 		transfersFromVaultsToTreasury[senderAddress][blockNumber] = append(
 			transfersFromVaultsToTreasury[senderAddress][blockNumber],
-			value.([]utils.TEventBlock)...,
+			value.([]ethereum.TEventBlock)...,
 		)
 		count++
 		return true

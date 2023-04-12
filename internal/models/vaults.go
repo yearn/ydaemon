@@ -3,8 +3,29 @@ package models
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/internal/utils"
 )
+
+type TVaultType string
+
+const (
+	VaultTypeExperimental TVaultType = "Experimental"
+	VaultTypeStandard     TVaultType = "Standard"
+	VaultTypeAutomated    TVaultType = "Automated"
+)
+
+type TVaultsFromRegistry struct {
+	RegistryAddress common.Address
+	VaultsAddress   common.Address
+	TokenAddress    common.Address
+	BlockHash       common.Hash
+	Type            TVaultType
+	APIVersion      string
+	BlockNumber     uint64
+	Activation      uint64
+	ManagementFee   uint64
+	TxIndex         uint
+	LogIndex        uint
+}
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
@@ -72,7 +93,7 @@ type TVault struct {
 	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
 	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`
 	TotalAssets           *bigNumber.Int   `json:"total_assets"`
-	Type                  utils.TVaultType `json:"type"`
+	Type                  TVaultType       `json:"type"`
 	Symbol                string           `json:"symbol"`
 	DisplaySymbol         string           `json:"display_symbol"`
 	FormatedSymbol        string           `json:"formated_symbol"`

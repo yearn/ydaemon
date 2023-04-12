@@ -4,15 +4,14 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/events"
-	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 func RegisterAllVaults(
 	chainID uint64,
 	start uint64,
 	end *uint64,
-) map[common.Address]utils.TVaultsFromRegistry {
+) map[common.Address]models.TVaultsFromRegistry {
 	standardVaultList, experimentalVaultList := events.HandleNewVaults(chainID, start, end)
 
 	/**********************************************************************************************
@@ -20,7 +19,7 @@ func RegisterAllVaults(
 	** were deployed first as experimental vaults and then as standard vaults. In that case, we
 	** keep the standard vault.
 	**********************************************************************************************/
-	uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
+	uniqueVaultsList := make(map[common.Address]models.TVaultsFromRegistry)
 	for _, v := range standardVaultList {
 		uniqueVaultsList[v.VaultsAddress] = v
 	}
@@ -37,5 +36,5 @@ func RegisterAllVaults(
 		}
 	}
 
-	return vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
+	return events.HandleUpdateManagementOneTime(chainID, uniqueVaultsList)
 }

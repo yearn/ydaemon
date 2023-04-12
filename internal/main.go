@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/tokensList"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -34,7 +33,7 @@ func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duratio
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]models.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)

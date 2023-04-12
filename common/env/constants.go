@@ -6,7 +6,7 @@ import (
 	"runtime"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 type TContractData struct {
@@ -138,7 +138,7 @@ var YEARN_REGISTRIES = map[uint64][]TContractData{
 }
 
 // EXTRA_VAULTS is a list of vaults that are not registered in the registries, but are still used by Yearn
-var EXTRA_VAULTS = map[uint64][]utils.TVaultsFromRegistry{
+var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 	1:  {},
 	10: {},
 	250: {
@@ -154,7 +154,7 @@ var EXTRA_VAULTS = map[uint64][]utils.TVaultsFromRegistry{
 			BlockHash:       common.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
 			TxIndex:         0,
 			LogIndex:        0,
-			Type:            utils.VaultTypeStandard,
+			Type:            models.VaultTypeStandard,
 		},
 	},
 	42161: {},

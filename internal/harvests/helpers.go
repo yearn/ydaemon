@@ -11,28 +11,27 @@ import (
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 func findRelatedTransfers(
 	log models.TStrategyReportBase,
-	transfersFromVaultsToStrategies map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToTreasury map[uint64][]utils.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[uint64][]ethereum.TEventBlock,
+	transfersFromVaultsToTreasury map[uint64][]ethereum.TEventBlock,
 ) (*bigNumber.Int, *bigNumber.Int) {
-	currentBlock := utils.TEventBlock{
+	currentBlock := ethereum.TEventBlock{
 		BlockNumber: log.Raw.BlockNumber,
 		TxIndex:     log.Raw.TxIndex,
 		LogIndex:    log.Raw.Index,
 	}
 
-	transferToStrategist := utils.FindEventBefore(
-		map[uint64][]utils.TEventBlock{
+	transferToStrategist := ethereum.FindEventBefore(
+		map[uint64][]ethereum.TEventBlock{
 			currentBlock.BlockNumber: transfersFromVaultsToStrategies[log.Strategy][currentBlock.BlockNumber],
 		},
 		currentBlock,
 	)
-	transferToTreasury := utils.FindEventBefore(
-		map[uint64][]utils.TEventBlock{
+	transferToTreasury := ethereum.FindEventBefore(
+		map[uint64][]ethereum.TEventBlock{
 			currentBlock.BlockNumber: transfersFromVaultsToTreasury[currentBlock.BlockNumber],
 		},
 		currentBlock,
@@ -67,9 +66,9 @@ func retrieveAllFeesBPS(
 	start uint64,
 	end *uint64,
 ) (
-	managementFeeForVaults map[common.Address]map[uint64][]utils.TEventBlock,
-	performanceFeeForVaults map[common.Address]map[uint64][]utils.TEventBlock,
-	performanceFeeForStrategies map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock,
+	managementFeeForVaults map[common.Address]map[uint64][]ethereum.TEventBlock,
+	performanceFeeForVaults map[common.Address]map[uint64][]ethereum.TEventBlock,
+	performanceFeeForStrategies map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock,
 ) {
 	wg := &sync.WaitGroup{}
 	wg.Add(3)
@@ -115,7 +114,7 @@ func getLastReportsForStrategy(chainID uint64, allEvents []models.TStrategyRepor
 ** previous one. This is used to calculate the APY for a given harvest.
 **************************************************************************************************/
 func getDurationSinceLastReport(log models.TStrategyReportBase, allLastReport map[common.Address]map[uint64]uint64) *bigNumber.Int {
-	previousBlockTimestampUint64 := utils.FindPreviousBlock(allLastReport[log.Strategy], log.Raw.BlockNumber)
+	previousBlockTimestampUint64 := ethereum.FindPreviousBlock(allLastReport[log.Strategy], log.Raw.BlockNumber)
 	duration := bigNumber.NewInt(0).Sub(
 		bigNumber.NewUint64(allLastReport[log.Strategy][log.Raw.BlockNumber]),
 		bigNumber.NewUint64(previousBlockTimestampUint64),

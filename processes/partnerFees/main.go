@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/harvests"
 	"github.com/yearn/ydaemon/internal/indexer"
-	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
@@ -57,7 +56,7 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 	** transfers in or out of the vault from this user to get, at any block, it's balance in the
 	** vault and the delegated amount he has.
 	**********************************************************************************************/
-	allPartnerTrackerEvents, allRefereesEvents := partnerTracker.RetrieveAllPartnerTrackerEvents(chainID, fromBlock, toBlock)
+	allPartnerTrackerEvents, allRefereesEvents := retrieveAllPartnerTrackerEvents(chainID, fromBlock, toBlock)
 
 	/**********************************************************************************************
 	** We finally need to fetch the supply of all the vaults at all the blocks we are interested

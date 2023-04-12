@@ -15,7 +15,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 /**************************************************************************************************
@@ -235,7 +234,7 @@ func filterStrategiesMigrated(
 **************************************************************************************************/
 func HandleStrategyAdded(
 	chainID uint64,
-	vaultsMap map[common.Address]utils.TVaultsFromRegistry,
+	vaultsMap map[common.Address]models.TVaultsFromRegistry,
 	start uint64,
 	end *uint64,
 ) []models.TStrategyAdded {

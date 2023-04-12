@@ -70,7 +70,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 	var internalWG sync.WaitGroup
 	//From the events in the registries, retrieve all the vaults -> Should only be done on init or when a new vault is added
-	vaultsMap := registries.RetrieveAllVaults(chainID, 0)
+	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 
 	// From our list of vaults, retrieve the ERC20 data for each shareToken, underlyingToken and the underlying of those tokens
 	// -> Data store will not change unless extreme event, so this should only be done on init or when a new vault is added
@@ -87,7 +87,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	internalWG.Wait()
 
 	go tokensList.BuildTokenList(chainID)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
+	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
 	internalWG.Add(1)

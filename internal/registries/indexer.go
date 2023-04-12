@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -253,8 +254,7 @@ func indexNewVaultsWrapper(
 	**********************************************************************************************/
 	if delay > 0 {
 		for {
-			vaultsList := []utils.TVaultsFromRegistry{}
-			filterNewVaults(chainID, registryAddress, registryVersion, lastSyncedBlock, &vaultsList, nil)
+			vaultsList := events.HandleNewStandardVaults(chainID, registryAddress, registryVersion, registryActivation, lastSyncedBlock, nil)
 			uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
 			for _, v := range vaultsList {
 				uniqueVaultsList[v.VaultsAddress] = v

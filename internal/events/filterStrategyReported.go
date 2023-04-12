@@ -39,10 +39,12 @@ func filterStrategyReportedFor031To043(
 	chainID uint64,
 	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
@@ -66,7 +68,7 @@ func filterStrategyReportedFor031To043(
 				Raw:       log.Event.Raw,
 			}
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }
@@ -81,10 +83,12 @@ func filterStrategyReportedFor030(
 	chainID uint64,
 	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault030(vault.Address, client)
@@ -109,7 +113,7 @@ func filterStrategyReportedFor030(
 			}
 
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }
@@ -125,10 +129,12 @@ func filterStrategyReportedFor022(
 	chainID uint64,
 	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault022(vault.Address, client)
@@ -153,7 +159,7 @@ func filterStrategyReportedFor022(
 			}
 
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }

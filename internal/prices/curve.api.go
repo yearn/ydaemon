@@ -11,9 +11,10 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
-func fetchCurve(url string) []TCurveFactoriesPoolData {
+func fetchCurve(url string) []models.TCurveFactoriesPoolData {
 	resp, err := http.Get(url)
 	if err != nil {
 		traces.
@@ -22,7 +23,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 			SetExtra(`error`, err.Error()).
 			SetTag(`url`, url).
 			Send()
-		return []TCurveFactoriesPoolData{}
+		return []models.TCurveFactoriesPoolData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
@@ -33,9 +34,9 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 			SetExtra(`error`, err.Error()).
 			SetTag(`url`, url).
 			Send()
-		return []TCurveFactoriesPoolData{}
+		return []models.TCurveFactoriesPoolData{}
 	}
-	var factories TCurveFactories
+	var factories models.TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
 		traces.
 			Capture(`error`, `impossible to unmarshal curve Get body`).
@@ -43,7 +44,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 			SetExtra(`error`, err.Error()).
 			SetTag(`url`, url).
 			Send()
-		return []TCurveFactoriesPoolData{}
+		return []models.TCurveFactoriesPoolData{}
 	}
 	return factories.Data.PoolData
 }
@@ -54,7 +55,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 // we can calculate the price per token, and assign it to the token if the Store price is 0
 func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]*bigNumber.Int {
 	newPriceMap := make(map[common.Address]*bigNumber.Int)
-	curveFactoryPoolData := []TCurveFactoriesPoolData{}
+	curveFactoryPoolData := []models.TCurveFactoriesPoolData{}
 
 	// Running a sync group to execute all fetch at the same time
 	wg := sync.WaitGroup{}

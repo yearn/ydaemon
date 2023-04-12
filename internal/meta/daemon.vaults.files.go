@@ -9,50 +9,22 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
-
-type TInternalVaultFromMetaClassification struct {
-	IsAutomated     bool   `json:"isAutomated"`
-	IsPool          bool   `json:"isPool"`
-	PoolProvider    string `json:"poolProvider,omitempty"`
-	Stability       string `json:"stability"`
-	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
-}
-
-// TInternalVaultFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/vaults/all
-type TInternalVaultFromMeta struct {
-	Address              common.Address                       `json:"address"`
-	MigrationTargetVault common.Address                       `json:"migrationTargetVault"`
-	MigrationContract    common.Address                       `json:"migrationContract"`
-	DisplayName          string                               `json:"displayName"`
-	Comment              string                               `json:"comment"`
-	APYTypeOverride      string                               `json:"apyTypeOverride"`
-	APYOverride          float64                              `json:"apyOverride"`
-	Order                float32                              `json:"order"`
-	ChainID              uint64                               `json:"chainID"`
-	HideAlways           bool                                 `json:"hideAlways"`
-	DepositsDisabled     bool                                 `json:"depositsDisabled"`
-	WithdrawalsDisabled  bool                                 `json:"withdrawalsDisabled"`
-	MigrationAvailable   bool                                 `json:"migrationAvailable"`
-	AllowZapIn           bool                                 `json:"allowZapIn"`
-	AllowZapOut          bool                                 `json:"allowZapOut"`
-	Retired              bool                                 `json:"retired"`
-	Classification       TInternalVaultFromMetaClassification `json:"classification"`
-}
 
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaVaultMap = make(map[uint64]map[common.Address]*TInternalVaultFromMeta)
+var _metaVaultMap = make(map[uint64]map[common.Address]*models.TInternalVaultFromMeta)
 
 /**********************************************************************************************
 ** setVaultInMap will put a TInternalVaultFromMeta in the _vaultMap variable.
 **********************************************************************************************/
-func setVaultInMap(chainID uint64, vault *TInternalVaultFromMeta) {
+func setVaultInMap(chainID uint64, vault *models.TInternalVaultFromMeta) {
 	if _, ok := _metaVaultMap[chainID]; !ok {
-		_metaVaultMap[chainID] = make(map[common.Address]*TInternalVaultFromMeta)
+		_metaVaultMap[chainID] = make(map[common.Address]*models.TInternalVaultFromMeta)
 	}
 	_metaVaultMap[chainID][vault.Address] = vault
 }
@@ -62,7 +34,7 @@ func setVaultInMap(chainID uint64, vault *TInternalVaultFromMeta) {
 ** variable.
 ** It will return the vault if found, and a boolean indicating if the vault was found or not.
 **********************************************************************************************/
-func GetMetaVault(chainID uint64, vaultAddress common.Address) (*TInternalVaultFromMeta, bool) {
+func GetMetaVault(chainID uint64, vaultAddress common.Address) (*models.TInternalVaultFromMeta, bool) {
 	if vaultsForChain, ok := _metaVaultMap[chainID]; ok {
 		if vault, ok := vaultsForChain[vaultAddress]; ok {
 			return vault, true
@@ -75,8 +47,8 @@ func GetMetaVault(chainID uint64, vaultAddress common.Address) (*TInternalVaultF
 ** ListMetaVaults will, for a given chainID, list all the vaults from the _metaVaultMap
 ** variable.
 **********************************************************************************************/
-func ListMetaVaults(chainID uint64) []*TInternalVaultFromMeta {
-	var vaults []*TInternalVaultFromMeta
+func ListMetaVaults(chainID uint64) []*models.TInternalVaultFromMeta {
+	var vaults []*models.TInternalVaultFromMeta
 	for _, vault := range _metaVaultMap[chainID] {
 		vaults = append(vaults, vault)
 	}
@@ -105,7 +77,7 @@ func RetrieveAllVaultsFromFiles(chainID uint64) {
 		return
 	}
 	for index, content := range content {
-		vault := TInternalVaultFromMeta{}
+		vault := models.TInternalVaultFromMeta{}
 		if err := json.Unmarshal(content, &vault); err != nil {
 			traces.
 				Capture(`warn`, `impossible to unmarshall meta files for vaults response body `+chainIDStr).

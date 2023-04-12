@@ -11,28 +11,17 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-// TStrategyFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/strategies/all
-type TStrategyFromMeta struct {
-	Address          common.Address        `json:"address"`
-	Name             string                `json:"name"`
-	Description      string                `json:"description"`
-	RelatedAddresses []common.Address      `json:"addresses"`
-	Protocols        []string              `json:"protocols"`
-	ChainID          uint64                `json:"chainID"`
-	Localization     *models.TLocalization `json:"localization,omitempty"`
-}
-
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaStrategyMap = make(map[uint64]map[common.Address]*TStrategyFromMeta)
+var _metaStrategyMap = make(map[uint64]map[common.Address]*models.TStrategyFromMeta)
 
 func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		if _, ok := _metaStrategyMap[chainID]; !ok {
-			_metaStrategyMap[chainID] = make(map[common.Address]*TStrategyFromMeta)
+			_metaStrategyMap[chainID] = make(map[common.Address]*models.TStrategyFromMeta)
 		}
 	}
 }
@@ -40,9 +29,9 @@ func init() {
 /**********************************************************************************************
 ** setStrategyInMap will put a TStrategyFromMeta in the _metaStrategyMap variable.
 **********************************************************************************************/
-func setStrategyInMap(chainID uint64, strategy *TStrategyFromMeta) {
+func setStrategyInMap(chainID uint64, strategy *models.TStrategyFromMeta) {
 	if _, ok := _metaStrategyMap[chainID]; !ok {
-		_metaStrategyMap[chainID] = make(map[common.Address]*TStrategyFromMeta)
+		_metaStrategyMap[chainID] = make(map[common.Address]*models.TStrategyFromMeta)
 	}
 	_metaStrategyMap[chainID][strategy.Address] = strategy
 }
@@ -53,7 +42,7 @@ func setStrategyInMap(chainID uint64, strategy *TStrategyFromMeta) {
 ** It will return the strategy if found, and a boolean indicating if the strategy was found or
 ** not.
 **********************************************************************************************/
-func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*TStrategyFromMeta, bool) {
+func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*models.TStrategyFromMeta, bool) {
 	if strategysForChain, ok := _metaStrategyMap[chainID]; ok {
 		if strategy, ok := strategysForChain[strategyAddress]; ok {
 			return strategy, true
@@ -66,8 +55,8 @@ func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*TStrategy
 ** ListMetaStrategies will, for a given chainID, list all the strategies from the
 ** _metaStrategyMap variable.
 **********************************************************************************************/
-func ListMetaStrategies(chainID uint64) []*TStrategyFromMeta {
-	var strategies []*TStrategyFromMeta
+func ListMetaStrategies(chainID uint64) []*models.TStrategyFromMeta {
+	var strategies []*models.TStrategyFromMeta
 	for _, strategy := range _metaStrategyMap[chainID] {
 		strategies = append(strategies, strategy)
 	}
@@ -96,7 +85,7 @@ func RetrieveAllStrategiesFromFiles(chainID uint64) {
 		return
 	}
 	for _, content := range content {
-		strategy := TStrategyFromMeta{}
+		strategy := models.TStrategyFromMeta{}
 		if err := json.Unmarshal(content, &strategy); err != nil {
 			traces.
 				Capture(`warn`, `impossible to unmarshall meta files for strategies response body `+chainIDStr).

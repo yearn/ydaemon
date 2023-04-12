@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -31,7 +32,7 @@ import (
 func computeBlockData(
 	chainID uint64,
 	blockNumber uint64,
-	partnersTrackerEvents map[common.Address]map[common.Address]map[common.Address][]partnerTracker.TEventReferredBalanceIncreased,
+	partnersTrackerEvents map[common.Address]map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
 	allRefereesEvents map[common.Address]map[common.Address][]partnerTracker.TRefereeTransferEvent,
 ) (
 	partnerTotalTVL map[common.Address]*bigNumber.Float,
@@ -52,7 +53,7 @@ func computeBlockData(
 	vaultDelegatedAmountForPartner = make(map[common.Address]map[common.Address]*bigNumber.Int)
 
 	// map -> [vaultAddress][eventHash][events]
-	partnerDelegateIncreaseEvent := make(map[common.Address]map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
+	partnerDelegateIncreaseEvent := make(map[common.Address]map[common.Address]map[common.Hash]models.TEventReferredBalanceIncreased)
 
 	/**********************************************************************************************
 	** We want to know, for every harvest that happened impacting the partner:
@@ -84,10 +85,10 @@ func computeBlockData(
 					** We need to init the partnerDelegateIncreaseEvent map to avoid nil assignment.
 					**********************************************************************************/
 					if _, ok := partnerDelegateIncreaseEvent[vaultAddress]; !ok {
-						partnerDelegateIncreaseEvent[vaultAddress] = make(map[common.Address]map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
+						partnerDelegateIncreaseEvent[vaultAddress] = make(map[common.Address]map[common.Hash]models.TEventReferredBalanceIncreased)
 					}
 					if _, ok := partnerDelegateIncreaseEvent[vaultAddress][depositorAddress]; !ok {
-						partnerDelegateIncreaseEvent[vaultAddress][depositorAddress] = make(map[common.Hash]partnerTracker.TEventReferredBalanceIncreased)
+						partnerDelegateIncreaseEvent[vaultAddress][depositorAddress] = make(map[common.Hash]models.TEventReferredBalanceIncreased)
 					}
 					partnerDelegateIncreaseEvent[vaultAddress][depositorAddress][event.TxHash] = event
 				}

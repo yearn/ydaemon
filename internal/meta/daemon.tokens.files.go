@@ -12,31 +12,19 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-// TTokenFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/tokens/all
-type TTokenFromMeta struct {
-	Address      common.Address        `json:"address"`
-	Name         string                `json:"name"`
-	Symbol       string                `json:"symbol"`
-	Description  string                `json:"description"`
-	Website      string                `json:"website"`
-	Categories   []string              `json:"categories"`
-	ChainID      uint64                `json:"chainID"`
-	Localization *models.TLocalization `json:"localization,omitempty"`
-}
-
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaTokentMap = make(map[uint64]map[common.Address]*TTokenFromMeta)
+var _metaTokentMap = make(map[uint64]map[common.Address]*models.TTokenFromMeta)
 
 /**********************************************************************************************
 ** setTokenInMap will put a TTokenFromMeta in the _metaTokentMap variable.
 **********************************************************************************************/
-func setTokenInMap(chainID uint64, token *TTokenFromMeta) {
+func setTokenInMap(chainID uint64, token *models.TTokenFromMeta) {
 	if _, ok := _metaTokentMap[chainID]; !ok {
-		_metaTokentMap[chainID] = make(map[common.Address]*TTokenFromMeta)
+		_metaTokentMap[chainID] = make(map[common.Address]*models.TTokenFromMeta)
 	}
 	_metaTokentMap[chainID][token.Address] = token
 }
@@ -46,7 +34,7 @@ func setTokenInMap(chainID uint64, token *TTokenFromMeta) {
 ** variable.
 ** It will return the token if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
-func GetMetaToken(chainID uint64, tokenAddress common.Address) (*TTokenFromMeta, bool) {
+func GetMetaToken(chainID uint64, tokenAddress common.Address) (*models.TTokenFromMeta, bool) {
 	if tokensForChain, ok := _metaTokentMap[chainID]; ok {
 		if token, ok := tokensForChain[tokenAddress]; ok {
 			return token, true
@@ -59,8 +47,8 @@ func GetMetaToken(chainID uint64, tokenAddress common.Address) (*TTokenFromMeta,
 ** ListMetaTokens will, for a given chainID, list all the tokens from the _metaTokentMap
 ** variable.
 **********************************************************************************************/
-func ListMetaTokens(chainID uint64) []*TTokenFromMeta {
-	var tokens []*TTokenFromMeta
+func ListMetaTokens(chainID uint64) []*models.TTokenFromMeta {
+	var tokens []*models.TTokenFromMeta
 	for _, token := range _metaTokentMap[chainID] {
 		tokens = append(tokens, token)
 	}
@@ -90,7 +78,7 @@ func RetrieveAllTokensFromFiles(chainID uint64) {
 	}
 
 	for index, content := range content {
-		token := TTokenFromMeta{}
+		token := models.TTokenFromMeta{}
 		if err := json.Unmarshal(content, &token); err != nil {
 			traces.
 				Capture(`warn`, `impossible to unmarshall meta files for tokens response body `+chainIDStr).

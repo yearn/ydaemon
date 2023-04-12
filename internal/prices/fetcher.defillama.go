@@ -9,7 +9,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -21,9 +23,9 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 
 	var tokenString []string
 	for _, token := range tokens {
-		tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
+		tokenString = append(tokenString, env.LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
 	}
-	resp, err := http.Get(LLAMA_PRICE_URL + strings.Join(tokenString, ","))
+	resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
 		return priceMap
@@ -37,7 +39,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 		return priceMap
 	}
-	priceData := TLlamaPrice{}
+	priceData := models.TLlamaPrice{}
 	if err := json.Unmarshal(body, &priceData); err != nil {
 		logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 		return priceMap

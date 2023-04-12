@@ -128,3 +128,32 @@ type TAggregatedVault struct {
 	LegacyAPY     TLegacyAPIAPY
 	PricePerShare bigNumber.Int
 }
+
+type TInternalVaultFromMetaClassification struct {
+	IsAutomated     bool   `json:"isAutomated"`
+	IsPool          bool   `json:"isPool"`
+	PoolProvider    string `json:"poolProvider,omitempty"`
+	Stability       string `json:"stability"`
+	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
+}
+
+// TInternalVaultFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/vaults/all
+type TInternalVaultFromMeta struct {
+	Address              common.Address                       `json:"address"`
+	MigrationTargetVault common.Address                       `json:"migrationTargetVault"`
+	MigrationContract    common.Address                       `json:"migrationContract"`
+	DisplayName          string                               `json:"displayName"`
+	Comment              string                               `json:"comment"`
+	APYTypeOverride      string                               `json:"apyTypeOverride"`
+	APYOverride          float64                              `json:"apyOverride"`
+	Order                float32                              `json:"order"`
+	ChainID              uint64                               `json:"chainID"`
+	HideAlways           bool                                 `json:"hideAlways"`
+	DepositsDisabled     bool                                 `json:"depositsDisabled"`
+	WithdrawalsDisabled  bool                                 `json:"withdrawalsDisabled"`
+	MigrationAvailable   bool                                 `json:"migrationAvailable"`
+	AllowZapIn           bool                                 `json:"allowZapIn"`
+	AllowZapOut          bool                                 `json:"allowZapOut"`
+	Retired              bool                                 `json:"retired"`
+	Classification       TInternalVaultFromMetaClassification `json:"classification"`
+}

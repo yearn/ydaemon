@@ -146,7 +146,7 @@ func NewVault() *TExternalVault {
 func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVault {
 	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, internalVault.Address)
 	if !ok {
-		vaultFromMeta = &meta.TInternalVaultFromMeta{
+		vaultFromMeta = &models.TInternalVaultFromMeta{
 			Order:               1000000000,
 			HideAlways:          false,
 			DepositsDisabled:    false,

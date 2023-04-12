@@ -14,6 +14,8 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/events"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 type TRefereeVaultBlockData struct {
@@ -41,7 +43,7 @@ type TRefereeTransferEvent struct {
 ** at any given time to compute the referral bonus.
 **********************************************************************************************/
 func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *uint64) (
-	map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
+	map[common.Address]map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
 	map[common.Address]map[common.Address][]TRefereeTransferEvent,
 ) {
 	/**********************************************************************************************
@@ -49,7 +51,10 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *
 	** current state of the partner tracker
 	**********************************************************************************************/
 	timeBefore := time.Now()
-	allEvents := retrieveAllRefererBalanceIncrease(chainID, fromBlock, toBlock)
+	allEvents := events.HandleRefererBalanceIncrease(chainID, fromBlock, toBlock)
+	for _, event := range allEvents {
+		SetInReferralBalanceIncreaseMap(chainID, event.BlockNumber, &event)
+	}
 	logs.Success(`It tooks`, time.Since(timeBefore), `to load`, len(allEvents), `referral balance increase events`)
 
 	/**********************************************************************************************
@@ -62,19 +67,19 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *
 	** to compute the referral bonus.
 	**********************************************************************************************/
 	refereeVaultBlockData := map[common.Address][]TRefereeVaultBlockData{}
-	partnerTrackerTree := map[common.Address]map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
+	partnerTrackerTree := map[common.Address]map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased{}
 	for _, event := range allEvents {
 		/******************************************************************************************
 		** Ugly go code to avoid crash because of nil pointer
 		******************************************************************************************/
 		if partnerTrackerTree[event.Vault] == nil {
-			partnerTrackerTree[event.Vault] = map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
+			partnerTrackerTree[event.Vault] = map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased{}
 		}
 		if partnerTrackerTree[event.Vault][event.PartnerID] == nil {
-			partnerTrackerTree[event.Vault][event.PartnerID] = map[common.Address][]TEventReferredBalanceIncreased{}
+			partnerTrackerTree[event.Vault][event.PartnerID] = map[common.Address][]models.TEventReferredBalanceIncreased{}
 		}
 		if partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] == nil {
-			partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] = []TEventReferredBalanceIncreased{}
+			partnerTrackerTree[event.Vault][event.PartnerID][event.Depositer] = []models.TEventReferredBalanceIncreased{}
 		}
 		if refereeVaultBlockData[event.Vault] == nil {
 			refereeVaultBlockData[event.Vault] = []TRefereeVaultBlockData{}
@@ -215,19 +220,19 @@ func retrieveAllTransfersForReferee(
 ** all events for a given vault address and a given upper block limit.
 **********************************************************************************************/
 func FilterReferralBalanceIncreaseEventsForVault(
-	allEvents map[common.Address]map[common.Address][]TEventReferredBalanceIncreased,
+	allEvents map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
 	upperBlockLimit uint64,
-) map[common.Address]map[common.Address][]TEventReferredBalanceIncreased {
-	events := map[common.Address]map[common.Address][]TEventReferredBalanceIncreased{}
+) map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased {
+	events := map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased{}
 	for _, eventsPartnerLevel := range allEvents {
 		for _, eventDepositorLevel := range eventsPartnerLevel {
 			for _, event := range eventDepositorLevel {
 				if event.BlockNumber < upperBlockLimit {
 					if events[event.PartnerID] == nil {
-						events[event.PartnerID] = map[common.Address][]TEventReferredBalanceIncreased{}
+						events[event.PartnerID] = map[common.Address][]models.TEventReferredBalanceIncreased{}
 					}
 					if events[event.PartnerID][event.Depositer] == nil {
-						events[event.PartnerID][event.Depositer] = []TEventReferredBalanceIncreased{}
+						events[event.PartnerID][event.Depositer] = []models.TEventReferredBalanceIncreased{}
 					}
 					events[event.PartnerID][event.Depositer] = append(
 						events[event.PartnerID][event.Depositer],

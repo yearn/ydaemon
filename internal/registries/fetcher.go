@@ -7,6 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
@@ -204,7 +205,7 @@ func RetrieveAllVaults(
 	vaultsListExperimental := []utils.TVaultsFromRegistry{}
 
 	wg := &sync.WaitGroup{}
-	for _, registry := range YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		wg.Add(2)
 		if fromBlock == 0 {
 			fromBlock = registry.Activation
@@ -230,7 +231,7 @@ func RetrieveAllVaults(
 		}
 	}
 
-	for _, v := range EXTRA_VAULTS[chainID] {
+	for _, v := range env.EXTRA_VAULTS[chainID] {
 		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
 			uniqueVaultsList[v.VaultsAddress] = v
 		}

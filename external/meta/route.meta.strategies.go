@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // GetMetaStrategies will, for a given chainID, return all the meta informations for the strategies.
@@ -23,7 +24,7 @@ func (y Controller) GetMetaStrategies(c *gin.Context) {
 		c.JSON(http.StatusOK, strategiesFromMeta)
 		return
 	}
-	localizedStrategiesFromMeta := []*meta.TStrategyFromMeta{}
+	localizedStrategiesFromMeta := []*models.TStrategyFromMeta{}
 	for _, strategy := range strategiesFromMeta {
 		if strategy.Localization == nil {
 			strategy.Localization = nil

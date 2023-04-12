@@ -1,14 +1,14 @@
-package partnerTracker
+package events
 
 import (
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -20,9 +20,9 @@ import (
 **
 ** Returns nothing as the asyncRewardAdded is updated via a pointer
 **************************************************************************************************/
-func filterReferrerBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *uint64, asyncRewardAdded *sync.Map) {
+func filterReferrerBalanceIncreased(chainID uint64, fromBlock uint64, toBlock *uint64, asyncRewardAdded *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-	partnerContract := PARTNER_TRACKERS_ADDRESSES[chainID]
+	partnerContract := env.PARTNER_TRACKERS_ADDRESSES[chainID]
 	partnerContractAddress := partnerContract.Address
 	currentVault, _ := contracts.NewYPartnerTracker(partnerContractAddress, client)
 
@@ -35,7 +35,7 @@ func filterReferrerBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *ui
 			if log.Error() != nil {
 				continue
 			}
-			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventReferredBalanceIncreased{
+			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, models.TEventReferredBalanceIncreased{
 				Amount:         bigNumber.SetInt(log.Event.AmountAdded),
 				TotalDeposited: bigNumber.SetInt(log.Event.TotalDeposited),
 				PartnerID:      log.Event.PartnerId,
@@ -47,36 +47,21 @@ func filterReferrerBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *ui
 				LogIndex:       log.Event.Raw.Index,
 			})
 		}
-	} else {
-		traces.
-			Capture(`error`, `impossible to FilterReferrerBalanceIncrease for YBribeV3 `+partnerContractAddress.Hex()).
-			SetEntity(`bribes`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-			SetTag(`bribeAddress`, partnerContractAddress.Hex()).
-			Send()
 	}
 }
 
 /**********************************************************************************************
+** HandleRefererBalanceIncrease will retrieve all the RewardAdded events for the yBribeV3 contract
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func retrieveAllRefererBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *uint64) map[uint64]TEventReferredBalanceIncreased {
-	trace := traces.Init(`app.indexer.partnertracker.referred_balance_increased`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `partnerTracker`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
+func HandleRefererBalanceIncrease(chainID uint64, fromBlock uint64, toBlock *uint64) map[uint64]models.TEventReferredBalanceIncreased {
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
 	** goroutines via the wg before continuing.
 	**********************************************************************************************/
 	asyncRewardAdded := sync.Map{}
-	filterReferrerBalanceIncrease(chainID, fromBlock, toBlock, &asyncRewardAdded)
+	filterReferrerBalanceIncreased(chainID, fromBlock, toBlock, &asyncRewardAdded)
 
 	/**********************************************************************************************
 	** Once we got all the reward added blocks, we need to extract them from the sync.Map.
@@ -88,11 +73,10 @@ func retrieveAllRefererBalanceIncrease(chainID uint64, fromBlock uint64, toBlock
 	** We need to update, for each corresponding event, the activation block to the TEventReferredBalanceIncreased.
 	**********************************************************************************************/
 	count := 0
-	rewardAddedMap := make(map[uint64]TEventReferredBalanceIncreased)
+	rewardAddedMap := make(map[uint64]models.TEventReferredBalanceIncreased)
 	asyncRewardAdded.Range(func(key, value interface{}) bool {
-		event := value.(TEventReferredBalanceIncreased)
+		event := value.(models.TEventReferredBalanceIncreased)
 		rewardAddedMap[key.(uint64)] = event
-		SetInReferralBalanceIncreaseMap(chainID, event.BlockNumber, &event)
 		count++
 		return true
 	})

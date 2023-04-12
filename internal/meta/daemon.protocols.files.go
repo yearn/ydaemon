@@ -10,27 +10,19 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-// TProtocolsFromMeta is the structure of data for the protocols metadata stored in data/meta/protocols
-type TProtocolsFromMeta struct {
-	Name         string                `json:"name"`
-	Description  string                `json:"description"`
-	ChainID      uint64                `json:"chainID"`
-	Localization *models.TLocalization `json:"localization,omitempty"`
-}
-
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
 ** The _vaultMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _metaProtocolMap = make(map[uint64]map[string]*TProtocolsFromMeta)
+var _metaProtocolMap = make(map[uint64]map[string]*models.TProtocolsFromMeta)
 
 /**********************************************************************************************
 ** setProtocolInMap will put a TProtocolsFromMeta in the _metaProtocolMap variable.
 **********************************************************************************************/
-func setProtocolInMap(chainID uint64, protocol *TProtocolsFromMeta) {
+func setProtocolInMap(chainID uint64, protocol *models.TProtocolsFromMeta) {
 	if _, ok := _metaProtocolMap[chainID]; !ok {
-		_metaProtocolMap[chainID] = make(map[string]*TProtocolsFromMeta)
+		_metaProtocolMap[chainID] = make(map[string]*models.TProtocolsFromMeta)
 	}
 	_metaProtocolMap[chainID][protocol.Name] = protocol
 }
@@ -41,7 +33,7 @@ func setProtocolInMap(chainID uint64, protocol *TProtocolsFromMeta) {
 ** It will return the protocol if found, and a boolean indicating if the protocol was found or
 ** not.
 **********************************************************************************************/
-func GetMetaProtocol(chainID uint64, protocolName string) (*TProtocolsFromMeta, bool) {
+func GetMetaProtocol(chainID uint64, protocolName string) (*models.TProtocolsFromMeta, bool) {
 	if protocolsForChain, ok := _metaProtocolMap[chainID]; ok {
 		if protocol, ok := protocolsForChain[protocolName]; ok {
 			return protocol, true
@@ -54,8 +46,8 @@ func GetMetaProtocol(chainID uint64, protocolName string) (*TProtocolsFromMeta, 
 ** ListMetaProtocol will, for a given chainID, list all the protocols from the _metaProtocolMap
 ** variable.
 **********************************************************************************************/
-func ListMetaProtocol(chainID uint64) []*TProtocolsFromMeta {
-	var protocols []*TProtocolsFromMeta
+func ListMetaProtocol(chainID uint64) []*models.TProtocolsFromMeta {
+	var protocols []*models.TProtocolsFromMeta
 	for _, protocol := range _metaProtocolMap[chainID] {
 		protocols = append(protocols, protocol)
 	}
@@ -84,7 +76,7 @@ func RetrieveAllProtocolsFromFiles(chainID uint64) {
 		return
 	}
 	for _, content := range content {
-		protocol := TProtocolsFromMeta{}
+		protocol := models.TProtocolsFromMeta{}
 		if err := json.Unmarshal(content, &protocol); err != nil {
 			traces.
 				Capture(`warn`, `impossible to unmarshall meta files for protocols response body `+chainIDStr).

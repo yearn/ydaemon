@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
 	"github.com/yearn/ydaemon/internal/models"
@@ -97,5 +98,12 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 }
 
 func InitializeBribes(chainID uint64) {
-	bribes.RetrieveAllRewardsAdded(chainID)
+	allRewardsAdded := events.HandleRewardsAdded(chainID)
+	for _, reward := range allRewardsAdded {
+		bribes.SetInRewardAddedMap(
+			chainID,
+			reward.BlockNumber,
+			&reward,
+		)
+	}
 }

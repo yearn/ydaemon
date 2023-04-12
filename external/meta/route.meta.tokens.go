@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // GetMetaTokens will, for a given chainID, return all the meta informations for the tokens.
@@ -24,7 +25,7 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 		c.JSON(http.StatusOK, tokensFromMeta)
 		return
 	}
-	localizedTokensFromMeta := []*meta.TTokenFromMeta{}
+	localizedTokensFromMeta := []*models.TTokenFromMeta{}
 	for _, token := range tokensFromMeta {
 		if token.Localization == nil {
 			token.Localization = nil

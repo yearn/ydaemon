@@ -1,4 +1,4 @@
-package bribes
+package events
 
 import (
 	"strconv"
@@ -7,8 +7,10 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -16,7 +18,7 @@ import (
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - asyncRewardAdded: the async ptr to the map of blockNumber -> TEventAdded
+** - asyncRewardAdded: the async ptr to the map of blockNumber -> TEventRewardAdded
 **
 ** Returns nothing as the asyncRewardAdded is updated via a pointer
 **************************************************************************************************/
@@ -25,7 +27,7 @@ func filterRewardAdded(
 	asyncRewardAdded *sync.Map,
 ) {
 	client := ethereum.GetRPC(chainID)
-	contractAddress := YBRIBE_V3_ADDRESSES[chainID]
+	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
 	currentVault, _ := contracts.NewYBribeV3(contractAddress, client)
 
 	if log, err := currentVault.FilterRewardAdded(&bind.FilterOpts{}, nil, nil, nil); err == nil {
@@ -33,7 +35,7 @@ func filterRewardAdded(
 			if log.Error() != nil {
 				continue
 			}
-			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, TEventAdded{
+			asyncRewardAdded.Store(log.Event.Raw.BlockNumber, models.TEventRewardAdded{
 				Amount:      bigNumber.SetInt(log.Event.Amount),
 				Briber:      log.Event.Briber,
 				Gauge:       log.Event.Gauge,
@@ -61,17 +63,10 @@ func filterRewardAdded(
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
+func HandleRewardsAdded(chainID uint64) map[uint64]models.TEventRewardAdded {
 	if chainID != 1 {
-		return make(map[uint64]TEventAdded)
+		return make(map[uint64]models.TEventRewardAdded)
 	}
-	trace := traces.Init(`app.indexer.bribes.reward_added`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `bribes`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
 	** goroutines via the wg before continuing.
@@ -84,16 +79,15 @@ func RetrieveAllRewardsAdded(chainID uint64) map[uint64]TEventAdded {
 	**
 	** The syncMap variable is setup as follows:
 	** - key: blockNumber
-	** - value: TEventAdded
+	** - value: TEventRewardAdded
 	**
-	** We need to update, for each corresponding event, the activation block to the TEventAdded.
+	** We need to update, for each corresponding event, the activation block to the TEventRewardAdded.
 	**********************************************************************************************/
 	count := 0
-	rewardAddedMap := make(map[uint64]TEventAdded)
+	rewardAddedMap := make(map[uint64]models.TEventRewardAdded)
 	asyncRewardAdded.Range(func(key, value interface{}) bool {
-		currentRewardAdded := value.(TEventAdded)
+		currentRewardAdded := value.(models.TEventRewardAdded)
 		rewardAddedMap[key.(uint64)] = currentRewardAdded
-		SetInRewardAddedMap(chainID, currentRewardAdded.BlockNumber, &currentRewardAdded)
 		count++
 		return true
 	})

@@ -77,3 +77,14 @@ type TStrategy struct {
 	IsInQueue               bool                    `json:"isInQueue"`
 	Initialization          TStrategyInitialization `json:"-"`
 }
+
+// TStrategyFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/strategies/all
+type TStrategyFromMeta struct {
+	Address          common.Address   `json:"address"`
+	Name             string           `json:"name"`
+	Description      string           `json:"description"`
+	RelatedAddresses []common.Address `json:"addresses"`
+	Protocols        []string         `json:"protocols"`
+	ChainID          uint64           `json:"chainID"`
+	Localization     *TLocalization   `json:"localization,omitempty"`
+}

@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // GetMetaProtocols will, for a given chainID, return all the meta informations for the protocols.
@@ -24,7 +25,7 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 		c.JSON(http.StatusOK, protocolsFromMeta)
 		return
 	}
-	localizedProtocolsFromMeta := []*meta.TProtocolsFromMeta{}
+	localizedProtocolsFromMeta := []*models.TProtocolsFromMeta{}
 	for _, protocol := range protocolsFromMeta {
 		if protocol.Localization == nil {
 			protocol.Localization = nil

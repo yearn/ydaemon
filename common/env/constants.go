@@ -6,7 +6,15 @@ import (
 	"runtime"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/utils"
 )
+
+type TContractData struct {
+	Address    common.Address // Address of the contract
+	Block      uint64         // Block number where the contract was deployed
+	Version    uint64         // Version of the contract. May be empty.
+	Activation uint64         // Timestamp of the contract activation. May be empty.
+}
 
 func getCurrentPath() string {
 	_, filename, _, _ := runtime.Caller(1)
@@ -14,11 +22,17 @@ func getCurrentPath() string {
 	return path.Dir(filename)
 }
 
+// BASE_DATA_PATH is the base path to access the data informations
+var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/`)
+
 // GITHUB_ICON_BASE_URL is the base URL to access the tokens icons from the yearn-assets repo
 var GITHUB_ICON_BASE_URL = `https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/`
 
-// BASE_DATA_PATH is the base path to access the data informations
-var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/`)
+// GECKO_PRICE_URL contains the URL for the CoinGecko API
+var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`
+
+// LLAMA_PRICE_URL contains the URL for the DeFiLlama pricing API
+var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
@@ -88,6 +102,64 @@ var THEGRAPH_ENDPOINTS = map[uint64]string{
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
 }
 
+// LLAMA_CHAIN_NAMES contains the chain identifiers for the DeFiLlama API
+var LLAMA_CHAIN_NAMES = map[uint64]string{
+	1:     `ethereum`,
+	10:    `optimism`,
+	250:   `fantom`,
+	42161: `arbitrum`,
+}
+
+// GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
+var GECKO_CHAIN_NAMES = map[uint64]string{
+	1:     `ethereum`,
+	10:    `optimistic-ethereum`,
+	250:   `fantom`,
+	42161: `arbitrum-one`,
+}
+
+// YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block
+var YEARN_REGISTRIES = map[uint64][]TContractData{
+	1: {
+		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), Version: 1, Activation: 11563389},
+		{Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"), Version: 2, Activation: 12045555},
+		{Address: common.HexToAddress("0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319"), Version: 3, Activation: 16215519},
+	},
+	10: {
+		{Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"), Version: 3, Activation: 22450349},
+		{Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"), Version: 3, Activation: 22451152},
+	},
+	250: {
+		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Activation: 18455565},
+	},
+	42161: {
+		{Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"), Version: 2, Activation: 4841854},
+	},
+}
+
+// EXTRA_VAULTS is a list of vaults that are not registered in the registries, but are still used by Yearn
+var EXTRA_VAULTS = map[uint64][]utils.TVaultsFromRegistry{
+	1:  {},
+	10: {},
+	250: {
+		{
+			//yvMIM, alone in it's own registry, not work registering and listening to it
+			RegistryAddress: common.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
+			VaultsAddress:   common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
+			TokenAddress:    common.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),
+			APIVersion:      `0.4.3`,
+			BlockNumber:     18309707,
+			Activation:      18302860,
+			ManagementFee:   200,
+			BlockHash:       common.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
+			TxIndex:         0,
+			LogIndex:        0,
+			Type:            utils.VaultTypeStandard,
+		},
+	},
+	42161: {},
+}
+
 // LENS_ADDRESSES contains the address of the Lens oracle for a specific chainID
 var LENS_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
@@ -126,6 +198,44 @@ var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
 var STACKING_REWARD_ADDRESSES = map[uint64]common.Address{
 	1:     {},
 	10:    common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+	250:   {},
+	42161: {},
+}
+
+// YBRIBE_V3_ADDRESSES contains the address of the yBribe contract
+var YBRIBE_V3_ADDRESSES = map[uint64]common.Address{
+	1:     common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
+	10:    {},
+	250:   {},
+	42161: {},
+}
+
+// PARTNER_TRACKERS_ADDRESSES contains the address of the yBribe contract
+var PARTNER_TRACKERS_ADDRESSES = map[uint64]TContractData{
+	1: {
+		Address: common.HexToAddress(`0x8ee392a4787397126C163Cb9844d7c447da419D8`),
+		Block:   uint64(14166636),
+	},
+	10: {
+		Address: common.HexToAddress(`0x7E08735690028cdF3D81e7165493F1C34065AbA2`),
+		Block:   uint64(29675215),
+	},
+	250: {
+		Address: common.HexToAddress(`0x086865B2983320b36C42E48086DaDc786c9Ac73B`),
+		Block:   uint64(40499061),
+	},
+	42161: {
+		Address: common.HexToAddress(`0x0e5b46E4b2a05fd53F5a4cD974eb98a9a613bcb7`),
+		Block:   uint64(30385403),
+	},
+}
+
+var KnownRefferers = map[uint64]map[common.Address]string{
+	1: {
+		common.HexToAddress(`0x558247e365be655f9144e1a0140D793984372Ef3`): `Ledger`,
+		common.HexToAddress(`0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52`): `Yearn.finance`,
+	},
+	10:    {},
 	250:   {},
 	42161: {},
 }

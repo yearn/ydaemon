@@ -18,7 +18,6 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 /**************************************************************************************************
@@ -359,7 +358,7 @@ func loadCurvePools(
 **************************************************************************************************/
 func RetrieveAllTokens(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
+	vaults map[common.Address]models.TVaultsFromRegistry,
 ) map[common.Address]*models.TERC20Token {
 	trace := traces.Init(`app.indexer.tokens.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).

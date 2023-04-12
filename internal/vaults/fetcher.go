@@ -15,7 +15,6 @@ import (
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils"
 )
 
 var metaVaultFileErrorAlreadySent = make(map[uint64]map[common.Address]bool)
@@ -139,7 +138,7 @@ func fetchBasicInformations(
 			Symbol:                shareTokenData.Symbol,
 			Decimals:              shareTokenData.Decimals,
 			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
-			Type:                  utils.VaultTypeStandard,
+			Type:                  models.VaultTypeStandard,
 			Endorsed:              false, //Default to false, will be updated later
 			Inception:             helpers.DecodeBigInt(rawActivation).Uint64(),
 			Version:               helpers.DecodeString(rawApiVersion),
@@ -240,7 +239,7 @@ func findAllVaults(
 **************************************************************************************************/
 func RetrieveAllVaults(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
+	vaults map[common.Address]models.TVaultsFromRegistry,
 ) map[common.Address]*models.TVault {
 	trace := traces.Init(`app.indexer.vaults.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
@@ -267,7 +266,7 @@ func RetrieveAllVaults(
 	for _, currentVault := range vaults {
 		updatedVaultMap[currentVault.VaultsAddress] = &models.TVault{
 			Address:    currentVault.TokenAddress,
-			Endorsed:   (currentVault.Type == utils.VaultTypeStandard || currentVault.Type == utils.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
+			Endorsed:   (currentVault.Type == models.VaultTypeStandard || currentVault.Type == models.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
 			Type:       currentVault.Type,
 			Activation: currentVault.Activation,
 		}

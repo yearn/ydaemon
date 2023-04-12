@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -30,11 +29,11 @@ func RetrieveAllHarvests(chainID uint64, start uint64, end *uint64) map[common.A
 	** added to the registry, and we remove the duplicates only to keep the latest version of a
 	** same vault. Duplicate can happen when a vault is moved from Experimental to Standard.
 	**********************************************************************************************/
-	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]utils.TEventBlock{}
-	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
-	managementFees := map[common.Address]map[uint64][]utils.TEventBlock{}
-	performanceFees := map[common.Address]map[uint64][]utils.TEventBlock{}
-	strategiesPerformanceFees := map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock{}
+	transfersFromVaultsToTreasury := map[common.Address]map[uint64][]ethereum.TEventBlock{}
+	transfersFromVaultsToStrategies := map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock{}
+	managementFees := map[common.Address]map[uint64][]ethereum.TEventBlock{}
+	performanceFees := map[common.Address]map[uint64][]ethereum.TEventBlock{}
+	strategiesPerformanceFees := map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock{}
 	strategtReportedEvents := []models.TStrategyReportBase{}
 
 	/**********************************************************************************************
@@ -152,18 +151,18 @@ func RetrieveAllHarvests(chainID uint64, start uint64, end *uint64) map[common.A
 func processHarvestEvent(
 	chainID uint64,
 	allEvents []models.TStrategyReportBase,
-	managementFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
-	performanceFeeChanges map[common.Address]map[uint64][]utils.TEventBlock,
-	strategiesPerformanceFeeChanges map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToStrategies map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock,
-	transfersFromVaultsToTreasury map[common.Address]map[uint64][]utils.TEventBlock,
+	managementFeeChanges map[common.Address]map[uint64][]ethereum.TEventBlock,
+	performanceFeeChanges map[common.Address]map[uint64][]ethereum.TEventBlock,
+	strategiesPerformanceFeeChanges map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock,
+	transfersFromVaultsToStrategies map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock,
+	transfersFromVaultsToTreasury map[common.Address]map[uint64][]ethereum.TEventBlock,
 ) []models.THarvest {
 	harvests := []models.THarvest{}
 	allstrategiesReportedTimestamp := getLastReportsForStrategy(chainID, allEvents)
 
 	for _, formatedLog := range allEvents {
 		currentVault, _ := vaults.GetVault(chainID, formatedLog.Vault)
-		currentBlock := utils.TEventBlock{
+		currentBlock := ethereum.TEventBlock{
 			BlockNumber: formatedLog.Raw.BlockNumber,
 			TxIndex:     formatedLog.Raw.TxIndex,
 			LogIndex:    formatedLog.Raw.Index,
@@ -191,9 +190,9 @@ func processHarvestEvent(
 		harvest.DebtRatio = bigNumber.SetInt(formatedLog.DebtRatio)
 		harvest.Duration = getDurationSinceLastReport(formatedLog, allstrategiesReportedTimestamp[currentVault.Address])
 
-		harvest.Fees.ManagementFeeBPS = utils.FindEventBefore(managementFeeChanges[currentVault.Address], currentBlock)
-		harvest.Fees.PerformanceFeeBPS = utils.FindEventBefore(performanceFeeChanges[currentVault.Address], currentBlock)
-		harvest.Fees.StrategistFeeBPS = utils.FindEventBefore(strategiesPerformanceFeeChanges[currentVault.Address][formatedLog.Strategy], currentBlock)
+		harvest.Fees.ManagementFeeBPS = ethereum.FindEventBefore(managementFeeChanges[currentVault.Address], currentBlock)
+		harvest.Fees.PerformanceFeeBPS = ethereum.FindEventBefore(performanceFeeChanges[currentVault.Address], currentBlock)
+		harvest.Fees.StrategistFeeBPS = ethereum.FindEventBefore(strategiesPerformanceFeeChanges[currentVault.Address][formatedLog.Strategy], currentBlock)
 		harvest.Fees.TreasuryCollectedFee = transferToTreasury
 		harvest.Fees.StrategistCollectedFee = transferToStrategist
 		harvest.Fees.TotalCollectedFee = bigNumber.NewInt(0).Add(transferToTreasury, transferToStrategist)

@@ -7,7 +7,6 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -116,7 +115,7 @@ type TExternalERC20Token struct {
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
 	Address           common.MixedcaseAddress `json:"address"`
-	Type              utils.TVaultType        `json:"type"`
+	Type              models.TVaultType       `json:"type"`
 	Symbol            string                  `json:"symbol"`
 	DisplaySymbol     string                  `json:"display_symbol"`
 	FormatedSymbol    string                  `json:"formated_symbol"`

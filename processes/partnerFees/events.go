@@ -1,4 +1,4 @@
-package partnerTracker
+package partnerFees
 
 import (
 	"math"
@@ -35,14 +35,14 @@ type TRefereeTransferEvent struct {
 }
 
 /**********************************************************************************************
-** RetrieveAllPartnerTrackerEvents will retrieve all the events matchn the
+** retrieveAllPartnerTrackerEvents will retrieve all the events matchn the
 ** ReferrerBalanceIncrease event for a given partnerContract on a given chain. Once all the
 ** events are retrieved, we will build a tree that will allow us to easily retrieve any item.
 ** Then, one important step is to retrieve the transfers related to the vault token for each
 ** referee. This will be used to calculate the current balance of a referee for a given vault
 ** at any given time to compute the referral bonus.
 **********************************************************************************************/
-func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *uint64) (
+func retrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *uint64) (
 	map[common.Address]map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
 	map[common.Address]map[common.Address][]TRefereeTransferEvent,
 ) {
@@ -52,9 +52,6 @@ func RetrieveAllPartnerTrackerEvents(chainID uint64, fromBlock uint64, toBlock *
 	**********************************************************************************************/
 	timeBefore := time.Now()
 	allEvents := events.HandleRefererBalanceIncrease(chainID, fromBlock, toBlock)
-	for _, event := range allEvents {
-		SetInReferralBalanceIncreaseMap(chainID, event.BlockNumber, &event)
-	}
 	logs.Success(`It tooks`, time.Since(timeBefore), `to load`, len(allEvents), `referral balance increase events`)
 
 	/**********************************************************************************************
@@ -213,82 +210,4 @@ func retrieveAllTransfersForReferee(
 		allTransfers[transfer.Token][transfer.Referee] = append(allTransfers[transfer.Token][transfer.Referee], transfer)
 	}
 	return allTransfers
-}
-
-/**********************************************************************************************
-** FilterReferralBalanceIncreaseEventsForVault will, for a given chainID, return the list of
-** all events for a given vault address and a given upper block limit.
-**********************************************************************************************/
-func FilterReferralBalanceIncreaseEventsForVault(
-	allEvents map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
-	upperBlockLimit uint64,
-) map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased {
-	events := map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased{}
-	for _, eventsPartnerLevel := range allEvents {
-		for _, eventDepositorLevel := range eventsPartnerLevel {
-			for _, event := range eventDepositorLevel {
-				if event.BlockNumber < upperBlockLimit {
-					if events[event.PartnerID] == nil {
-						events[event.PartnerID] = map[common.Address][]models.TEventReferredBalanceIncreased{}
-					}
-					if events[event.PartnerID][event.Depositer] == nil {
-						events[event.PartnerID][event.Depositer] = []models.TEventReferredBalanceIncreased{}
-					}
-					events[event.PartnerID][event.Depositer] = append(
-						events[event.PartnerID][event.Depositer],
-						event,
-					)
-				}
-			}
-		}
-	}
-
-	//sort by block number
-	for _, eventsPartnerLevel := range events {
-		for _, eventDepositorLevel := range eventsPartnerLevel {
-			sort.Slice(eventDepositorLevel, func(i, j int) bool {
-				return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
-			})
-		}
-	}
-	return events
-}
-
-/**********************************************************************************************
-** SortRefereeTransferEvent
-**********************************************************************************************/
-func SortRefereeTransferEvent(
-	refereeEvents map[common.Address]map[common.Address][]TRefereeTransferEvent,
-) map[common.Address]map[common.Address][]TRefereeTransferEvent {
-	for _, eventsPartnerLevel := range refereeEvents {
-		for _, eventDepositorLevel := range eventsPartnerLevel {
-			sort.Slice(eventDepositorLevel, func(i, j int) bool {
-				return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
-			})
-		}
-	}
-	return refereeEvents
-}
-
-/**********************************************************************************************
-** GroupRefereeTransferEventPerVault
-**********************************************************************************************/
-func GroupRefereeTransferEventPerVault(
-	refereeEvents []TRefereeTransferEvent,
-	upperBlockLimit uint64,
-) map[common.Address][]TRefereeTransferEvent {
-	events := make(map[common.Address][]TRefereeTransferEvent)
-	for _, event := range refereeEvents {
-		if event.BlockNumber < upperBlockLimit {
-			events[event.Token] = append(events[event.Token], event)
-		}
-	}
-
-	//sort by block number
-	for _, eventDepositorLevel := range events {
-		sort.Slice(eventDepositorLevel, func(i, j int) bool {
-			return eventDepositorLevel[i].BlockNumber < eventDepositorLevel[j].BlockNumber
-		})
-	}
-	return events
 }

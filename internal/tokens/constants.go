@@ -5,13 +5,14 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
-var COIN_PER_CHAIN = map[uint64]TERC20Token{}
+var COIN_PER_CHAIN = map[uint64]models.TERC20Token{}
 
 func init() {
 	defaultCoinAddress := common.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`)
-	COIN_PER_CHAIN[1] = TERC20Token{
+	COIN_PER_CHAIN[1] = models.TERC20Token{
 		Address:                   defaultCoinAddress,
 		UnderlyingTokensAddresses: []common.Address{},
 		Name:                      `Ether`,
@@ -23,7 +24,7 @@ func init() {
 		Icon:                      env.GITHUB_ICON_BASE_URL + strconv.FormatUint(1, 10) + `/` + defaultCoinAddress.Hex() + `/logo-128.png`,
 		Decimals:                  18,
 	}
-	COIN_PER_CHAIN[10] = TERC20Token{
+	COIN_PER_CHAIN[10] = models.TERC20Token{
 		Address:                   defaultCoinAddress,
 		UnderlyingTokensAddresses: []common.Address{},
 		Name:                      `Ether`,
@@ -35,7 +36,7 @@ func init() {
 		Icon:                      env.GITHUB_ICON_BASE_URL + strconv.FormatUint(1, 10) + `/` + defaultCoinAddress.Hex() + `/logo-128.png`,
 		Decimals:                  18,
 	}
-	COIN_PER_CHAIN[250] = TERC20Token{
+	COIN_PER_CHAIN[250] = models.TERC20Token{
 		Address:                   defaultCoinAddress,
 		UnderlyingTokensAddresses: []common.Address{},
 		Name:                      `Fantom`,
@@ -47,7 +48,7 @@ func init() {
 		Icon:                      env.GITHUB_ICON_BASE_URL + strconv.FormatUint(1, 10) + `/` + defaultCoinAddress.Hex() + `/logo-128.png`,
 		Decimals:                  18,
 	}
-	COIN_PER_CHAIN[42161] = TERC20Token{
+	COIN_PER_CHAIN[42161] = models.TERC20Token{
 		Address:                   defaultCoinAddress,
 		UnderlyingTokensAddresses: []common.Address{},
 		Name:                      `Arbitrum`,

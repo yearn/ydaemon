@@ -6,7 +6,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -33,7 +32,7 @@ func computeBlockData(
 	chainID uint64,
 	blockNumber uint64,
 	partnersTrackerEvents map[common.Address]map[common.Address]map[common.Address][]models.TEventReferredBalanceIncreased,
-	allRefereesEvents map[common.Address]map[common.Address][]partnerTracker.TRefereeTransferEvent,
+	allRefereesEvents map[common.Address]map[common.Address][]TRefereeTransferEvent,
 ) (
 	partnerTotalTVL map[common.Address]*bigNumber.Float,
 	partnerTierRatio map[common.Address]*bigNumber.Float,

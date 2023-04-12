@@ -9,10 +9,11 @@
 	"teamKnowledgeScore": 2,
 	"criteria": {
 		"nameLike": ["StYCRV"],
-		"strategies": ["0x23724D764d8b3d26852BA20d3Bc2578093d2B022"],
-		"exclude": [
+		"strategies": [
+			"0x23724D764d8b3d26852BA20d3Bc2578093d2B022",
 			"0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d",
 			"0xAf73A48E1d7e8300C91fFB74b8f5e721fBFC5873"
-		]
+		],
+		"exclude": []
 	}
 }

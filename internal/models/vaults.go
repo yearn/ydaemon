@@ -81,6 +81,14 @@ type TMigration struct {
 	Contract  common.Address `json:"contract"`
 }
 
+// TStaking holds some metadata about the staking contract.
+type TStaking struct {
+	Available bool           `json:"available"`
+	Address   common.Address `json:"address"`
+	Risk      int            `json:"risk"`
+	TVL       float64        `json:"tvl"`
+}
+
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	Address               common.Address   `json:"address"`
@@ -88,7 +96,7 @@ type TVault struct {
 	Governance            common.Address   `json:"governance"`
 	Guardian              common.Address   `json:"guardian"`
 	Rewards               common.Address   `json:"rewards"`
-	WithdrawalQueue       []common.Address `json:"withdrawalQueue"` //Ignored from json
+	WithdrawalQueue       []common.Address `json:"withdrawalQueue"`
 	PricePerShare         *bigNumber.Int   `json:"pricePerShare"`
 	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
 	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`

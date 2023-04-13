@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -225,4 +226,15 @@ func BuildCategory(t *models.TVault) string {
 		}
 	}
 	return category
+}
+
+func BuildStaking(t *models.TVault) models.TStaking {
+	staking := models.TStaking{
+		Available: false,
+	}
+	stakingData := strategies.GetStakingData(t.ChainID, t.Address)
+	if !addresses.Equals(stakingData.Address, common.Address{}) {
+		staking = stakingData
+	}
+	return staking
 }

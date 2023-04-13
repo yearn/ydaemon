@@ -1,4 +1,4 @@
-package tokensList
+package tokenList
 
 import (
 	"encoding/json"
@@ -6,8 +6,11 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"time"
 
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 type QuoteRequest struct {
@@ -25,11 +28,9 @@ type QuoteRequest struct {
 	Kind                string `json:"kind"`
 	SellAmountBeforeFee string `json:"sellAmountBeforeFee"`
 }
-
 type QuotePriceResponse struct {
 	Price float64 `json:"price"`
 }
-
 type QuoteResponse struct {
 	Quote struct {
 		SellToken         string `json:"sellToken"`
@@ -55,7 +56,7 @@ type QuoteResponseError struct {
 	Description string `json:"description"`
 }
 
-func tryQuote(fromToken string) (string, string, error) {
+func testCowSwapSupport(fromToken string) (string, string, error) {
 	resp, err := http.Get(`https://api.cow.fi/mainnet/api/v1/token/` + fromToken + `/native_price`)
 	if err != nil {
 		logs.Error(err)
@@ -82,5 +83,29 @@ func tryQuote(fromToken string) (string, string, error) {
 			return ``, ``, err
 		}
 		return quote.Description, quote.ErrorType, errors.New(quote.Description)
+	}
+}
+
+func setSupportedByCowSwap(chainID uint64) {
+	tokenMap := MapTokenList(chainID)
+	index := 0
+	for address, token := range tokenMap {
+		if helpers.Contains(token.SupportedZaps, models.Cowswap) {
+			index++
+			continue
+		}
+		logs.Info(`Testing token: ` + token.Symbol + ` (` + strconv.Itoa(index+1) + `/` + strconv.Itoa(len(tokenMap)) + `)`)
+		index++
+
+		time.Sleep(400)
+		_, errReason, err := testCowSwapSupport(address.Hex())
+		if err == nil || (err == nil && errReason == `NoLiquidity`) {
+			if value, ok := tokenMap[address]; ok {
+				if !helpers.Contains(tokenMap[address].SupportedZaps, models.Cowswap) {
+					value.SupportedZaps = append(value.SupportedZaps, models.Cowswap)
+					setTokenFromList(chainID, value)
+				}
+			}
+		}
 	}
 }

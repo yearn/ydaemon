@@ -8,6 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/processes/partnerFees"
+	"github.com/yearn/ydaemon/processes/tokenList"
 )
 
 func SummonDaemonsw(chainID uint64) {
@@ -59,6 +60,14 @@ func main() {
 			meta.RetrieveAllStrategiesFromFiles(chainID)
 			meta.RetrieveAllProtocolsFromFiles(chainID)
 			go runDaemonWithBlocks(chainID, *startBlock, endBlock, &wg, 0, partnerFees.Run)
+		}
+		wg.Wait()
+	case ProcessTokenList:
+		logs.Info(`Running yDaemon token list process...`)
+
+		for _, chainID := range chains {
+			wg.Add(1)
+			go tokenList.BuildTokenList(chainID)
 		}
 		wg.Wait()
 	}

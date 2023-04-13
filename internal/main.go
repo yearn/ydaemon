@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/tokensList"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -85,7 +84,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
 	internalWG.Wait()
 
-	go tokensList.BuildTokenList(chainID)
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies

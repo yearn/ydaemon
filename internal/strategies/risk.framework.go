@@ -6,6 +6,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
@@ -21,6 +22,7 @@ import (
 )
 
 var stratGroupErrorAlreadySent = make(map[uint64]map[string]bool)
+var stakingData = make(map[uint64]map[string]models.TStaking)
 
 func getTVLImpact(tvlUSDC *bigNumber.Float) int {
 	tvl, _ := tvlUSDC.Float32()
@@ -184,6 +186,16 @@ func getDefaultRiskGroup() models.TStrategyFromRisk {
 	}
 }
 
+func GetStakingData(chainID uint64, vaultAddress common.Address) models.TStaking {
+	if _, ok := stakingData[chainID]; !ok {
+		return models.TStaking{}
+	}
+	if score, ok := stakingData[chainID][vaultAddress.Hex()]; ok {
+		return score
+	}
+	return models.TStaking{}
+}
+
 /**************************************************************************************************
 ** RetrieveAllRisksGroupsFromFiles will read all files in the /risks/network directory for a given
 ** chainID and store them in the _strategyRiskGroupMap global variable.
@@ -297,8 +309,6 @@ func computeRiskGroupAllocation(chainID uint64) {
 
 func InitRiskScore(chainID uint64) {
 	if chainID == 10 {
-		tvlImpactPerToken := make(map[string]int)
-
 		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 85969070, nil)
 		calls := []ethereum.Call{}
 		for _, pool := range allStackingPoolAdded {
@@ -324,11 +334,19 @@ func InitRiskScore(chainID uint64) {
 			_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 			_, amount := helpers.FormatAmount(totalSupply.String(), int(decimals))
 
-			tvlImpactPerToken[pool.StackingPool.Hex()] = getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price))
-			logs.Info(`[InitRiskScore]`, `tvlImpactPerToken`, pool.StackingPool.Hex(), tvlImpactPerToken[pool.StackingPool.Hex()], bigNumber.NewFloat(0).Mul(amount, price).String())
+			if _, ok := stakingData[chainID]; !ok {
+				stakingData[chainID] = map[string]models.TStaking{}
+			}
+			tvl, _ := bigNumber.NewFloat(0).Mul(amount, price).Float64()
+			stakingData[chainID][pool.Token.Hex()] = models.TStaking{
+				Available: true,
+				Address:   pool.StackingPool,
+				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
+				TVL:       tvl,
+			}
 
+			logs.Info(`[InitRiskScore]`, `tvlImpactPerToken`, pool.Token.Hex(), stakingData[chainID][pool.StackingPool.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String())
 		}
-		logs.Pretty(tvlImpactPerToken)
 	}
 	computeRiskGroupAllocation(chainID)
 }

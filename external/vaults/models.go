@@ -76,6 +76,14 @@ type TExternalVaultMigration struct {
 	Contract  common.MixedcaseAddress `json:"contract"`
 }
 
+// TExternalVaultStaking is the struct containing the information about the staking contract related to that vault.
+type TExternalVaultStaking struct {
+	Available bool                    `json:"available"`
+	Address   common.MixedcaseAddress `json:"address"`
+	TVL       float64                 `json:"tvl"`
+	Risk      int                     `json:"risk"`
+}
+
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
 	Management            common.MixedcaseAddress `json:"management"`
@@ -137,6 +145,7 @@ type TExternalVault struct {
 	Details           *TExternalVaultDetails  `json:"details"`
 	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
+	Staking           TExternalVaultStaking   `json:"staking"`
 }
 
 func NewVault() *TExternalVault {
@@ -174,6 +183,7 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 	v.ChainID = internalVault.ChainID
 	v.TVL = TExternalVaultTVL(vaults.BuildTVL(internalVault))
 	v.Migration = toTExternalVaultMigration(vaults.BuildMigration(internalVault))
+	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
 	v.Category = vaults.BuildCategory(internalVault)
 
 	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, internalVault.Address)
@@ -274,6 +284,14 @@ func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigrat
 		Available: migration.Available,
 		Address:   common.NewMixedcaseAddress(migration.Address),
 		Contract:  common.NewMixedcaseAddress(migration.Contract),
+	}
+}
+func toTExternalVaultStaking(staking models.TStaking) TExternalVaultStaking {
+	return TExternalVaultStaking{
+		Available: staking.Available,
+		Address:   common.NewMixedcaseAddress(staking.Address),
+		Risk:      staking.Risk,
+		TVL:       staking.TVL,
 	}
 }
 func toArrTMixedcaseAddress(addresses []common.Address) []common.MixedcaseAddress {

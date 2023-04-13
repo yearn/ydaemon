@@ -6795,23 +6795,23 @@ type StrategyBaseFilterer struct {
 // StrategyBaseSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
 type StrategyBaseSession struct {
-	Contract     *StrategyBase // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts       // Call options to use throughout this session
-	TransactOpts bind.TransactOpts   // Transaction auth options to use throughout this session
+	Contract     *StrategyBase     // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
 // StrategyBaseCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
 type StrategyBaseCallerSession struct {
 	Contract *StrategyBaseCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts             // Call options to use throughout this session
+	CallOpts bind.CallOpts       // Call options to use throughout this session
 }
 
 // StrategyBaseTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
 type StrategyBaseTransactorSession struct {
 	Contract     *StrategyBaseTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts             // Transaction auth options to use throughout this session
+	TransactOpts bind.TransactOpts       // Transaction auth options to use throughout this session
 }
 
 // StrategyBaseRaw is an auto generated low-level Go binding around an Ethereum contract.
@@ -13139,4 +13139,3 @@ func (_VaultAPI *VaultAPIFilterer) ParseTransfer(log types.Log) (*VaultAPITransf
 	event.Raw = log
 	return event, nil
 }
-

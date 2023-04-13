@@ -9,7 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
-//GetBlacklistedVaults returns a list of blacklisted vaults by the API
+// GetBlacklistedVaults returns a list of blacklisted vaults by the API
 func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	chainID := helpers.SafeString(c.Query("chainID"), "0")
 	if chainID == "0" {

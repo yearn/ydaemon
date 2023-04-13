@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Curve DXDY-ETH-f",
+  "comment": "Curve DYDX-ETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve DXDY-ETH",
+  "displayName": "Curve DYDX-ETH",
   "classification": {
     "isAutomated": true,
     "isPool": true,

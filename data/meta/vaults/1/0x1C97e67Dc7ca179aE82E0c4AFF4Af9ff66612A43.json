@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve 2Pool",
+  "comment": "Curve PAL-ETH Vault-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 2,
+  "order": 310,
   "migrationAvailable": false,
-  "allowZapIn": false,
-  "allowZapOut": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
   "retired": false,
-  "displayName": "Curve 2Pool",
+  "displayName": "Curve PAL-ETH",
   "classification": {
-    "isAutomated": false,
+    "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stability": "Volatile"
   }
 }

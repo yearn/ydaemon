@@ -39,7 +39,7 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 	}
 }
 
-//GetPrices will, for a given chainID, return a tokens list with the associated prices
+// GetPrices will, for a given chainID, return a tokens list with the associated prices
 func (y Controller) GetPrices(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

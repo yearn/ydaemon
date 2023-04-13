@@ -80,6 +80,34 @@ func GetYearnTokenList(c *gin.Context) {
 	** returned tokenBalanceMap map, which is a map of token addresses to YTokenFromList structs.
 	**********************************************************************************************/
 	tokenBalanceMap := make(map[string]tokensList.YTokenFromList)
+
+	/**********************************************************************************************
+	** We first need to load the current chainCoin, which is the native coin of the chain. We then
+	** check if the price of the chainCoin is available in the prices map. If the price is
+	** available, we add the price to the chainToken struct. Then, we add the chainToken struct to
+	** the tokenBalanceMap map using the chainCoin address as the key.
+	**********************************************************************************************/
+	chainCoin := tokens.COIN_PER_CHAIN[chainID]
+	chainCoinPrice, ok := prices.FindPrice(chainID, chainCoin.Address)
+	chainToken := tokensList.YTokenFromList{
+		ChainID:  chainID,
+		Address:  chainCoin.Address.Hex(),
+		Name:     chainCoin.DisplayName,
+		Symbol:   chainCoin.DisplaySymbol,
+		LogoURI:  chainCoin.Icon,
+		Decimals: int(chainCoin.Decimals),
+		SupportedZaps: []tokensList.SupportedZap{
+			tokensList.Wido,
+		},
+	}
+	if ok {
+		chainToken.Price = chainCoinPrice
+	}
+	tokenBalanceMap[chainCoin.Address.Hex()] = chainToken
+
+	/**********************************************************************************************
+	** And we can finally execute the multicall.
+	**********************************************************************************************/
 	response := caller.ExecuteByBatch(calls, maxBatch, nil)
 	for _, token := range tokensFromListMap {
 		rawBalance := response[token.Address+`balanceOf`]

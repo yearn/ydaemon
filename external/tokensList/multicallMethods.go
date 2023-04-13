@@ -10,7 +10,7 @@ import (
 var ERC20ABI, _ = contracts.ERC20MetaData.GetAbi()
 
 func getBalance(name string, contractAddress common.MixedcaseAddress, userAddress common.MixedcaseAddress) ethereum.Call {
-	parsedData, err := ERC20ABI.Pack("balanceOf", userAddress)
+	parsedData, err := ERC20ABI.Pack("balanceOf", userAddress.Address())
 	if err != nil {
 		logs.Error(err)
 	}

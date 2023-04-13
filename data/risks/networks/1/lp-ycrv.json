@@ -1,0 +1,15 @@
+{
+	"$schema": "risks",
+	"label": "Liquidity Provider Yearn CRV",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 2,
+	"protocolSafetyScore": 1,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 2,
+	"criteria": {
+		"nameLike": ["CurveyCRV"],
+		"strategies": ["0xF81Ad33A29c7A85cd9fBE4F3E96dFDe50C7565fF"],
+		"exclude": []
+	}
+}

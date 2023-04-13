@@ -1,4 +1,4 @@
-package tokensList
+package tokenList
 
 import (
 	"encoding/json"
@@ -8,86 +8,9 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/internal/models"
 )
-
-// DefaultTokenListToken is the token struct used in the default token list
-type DefaultTokenListToken struct {
-	ChainID  int    `json:"chainId"`
-	Decimals int    `json:"decimals"`
-	Count    int    `json:"count,omitempty"`
-	Address  string `json:"address"`
-	Name     string `json:"name"`
-	Symbol   string `json:"symbol"`
-	LogoURI  string `json:"logoURI"`
-}
-
-// DefaultTokenListData is the token list struct used in the default token list
-type DefaultTokenListData struct {
-	Name      string `json:"name"`
-	Timestamp string `json:"timestamp"`
-	Version   struct {
-		Major int `json:"major"`
-		Minor int `json:"minor"`
-		Patch int `json:"patch"`
-	} `json:"version"`
-	Tags     map[string]interface{}  `json:"tags"`
-	LogoURI  string                  `json:"logoURI"`
-	Keywords []string                `json:"keywords"`
-	Tokens   []DefaultTokenListToken `json:"tokens"`
-}
-
-type PortalsTokenListData struct {
-	TotalItems int `json:"totalItems"`
-	Tokens     []struct {
-		Name      string  `json:"name"`
-		Decimals  int     `json:"decimals"`
-		Symbol    string  `json:"symbol"`
-		Price     float64 `json:"price"`
-		Address   string  `json:"address"`
-		Platform  string  `json:"platform"`
-		Network   string  `json:"network"`
-		Liquidity float64 `json:"liquidity"`
-		Image     string  `json:"image"`
-	} `json:"tokens"`
-}
-
-/* 🔵 - Yearn Finance **************************************************
-** Yearn's own token list, aka what is kept and returned
-**********************************************************************/
-
-// SupportedZap is the type of zap supported by the token (Wido, Portals, Cowswap)
-type SupportedZap string
-
-const (
-	Wido    SupportedZap = "Wido"
-	Portals SupportedZap = "Portals"
-	Cowswap SupportedZap = "Cowswap"
-)
-
-type YTokenFromList struct {
-	ChainID       uint64         `json:"chainID"`
-	Address       string         `json:"address"`
-	Name          string         `json:"name"`
-	Symbol        string         `json:"symbol"`
-	LogoURI       string         `json:"logoURI"`
-	Decimals      int            `json:"decimals"`
-	Balance       *bigNumber.Int `json:"balance"`
-	Price         *bigNumber.Int `json:"price,omitempty"`
-	SupportedZaps []SupportedZap `json:"supportedZaps"`
-}
-type YTokenList struct {
-	Name      string           `json:"name"`
-	LogoURI   string           `json:"logoURI"`
-	Timestamp time.Time        `json:"timestamp"`
-	Tokens    []YTokenFromList `json:"tokens"`
-	Version   struct {
-		Major int `json:"major"`
-		Minor int `json:"minor"`
-		Patch int `json:"patch"`
-	} `json:"version"`
-}
 
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokensList from the cache and/or database and
@@ -95,15 +18,15 @@ type YTokenList struct {
 ** The _tokenListMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _tokenListMap = make(map[uint64]map[common.Address]YTokenFromList)
+var _tokenListMap = make(map[uint64]map[common.Address]models.TYearnTokenListToken)
 var _tokenListUpdateMap = make(map[uint64]time.Time)
 
 /**********************************************************************************************
 ** MapTokenList will, for a given chainID, return the tokenList stored in _tokenListMap.
 **********************************************************************************************/
-func MapTokenList(chainID uint64) map[common.Address]YTokenFromList {
+func MapTokenList(chainID uint64) map[common.Address]models.TYearnTokenListToken {
 	if _, ok := _tokenListMap[chainID]; !ok {
-		_tokenListMap[chainID] = make(map[common.Address]YTokenFromList)
+		_tokenListMap[chainID] = make(map[common.Address]models.TYearnTokenListToken)
 	}
 	return _tokenListMap[chainID]
 }
@@ -111,11 +34,11 @@ func MapTokenList(chainID uint64) map[common.Address]YTokenFromList {
 /**********************************************************************************************
 ** GetTokenFromList will, for a given chainID, return the desired token stored in _tokenListMap.
 **********************************************************************************************/
-func GetTokenFromList(chainID uint64, tokenAddress common.Address) (YTokenFromList, bool) {
+func GetTokenFromList(chainID uint64, tokenAddress common.Address) (models.TYearnTokenListToken, bool) {
 	if value, exist := MapTokenList(chainID)[tokenAddress]; exist {
 		return value, true
 	}
-	return YTokenFromList{}, false
+	return models.TYearnTokenListToken{}, false
 }
 
 /**********************************************************************************************
@@ -132,9 +55,9 @@ func getLastUpdate(chainID uint64) time.Time {
 /**********************************************************************************************
 ** setTokenFromList will, for a given chainID, update or set a token stored in _tokenListMap.
 **********************************************************************************************/
-func setTokenFromList(chainID uint64, newTokenValue YTokenFromList) {
+func setTokenFromList(chainID uint64, newTokenValue models.TYearnTokenListToken) {
 	if _, ok := _tokenListMap[chainID]; !ok {
-		_tokenListMap[chainID] = make(map[common.Address]YTokenFromList)
+		_tokenListMap[chainID] = make(map[common.Address]models.TYearnTokenListToken)
 	}
 	_tokenListMap[chainID][common.HexToAddress(newTokenValue.Address)] = newTokenValue
 }
@@ -145,28 +68,28 @@ func setTokenFromList(chainID uint64, newTokenValue YTokenFromList) {
 ** tokens from the top 10 token lists, with a forced threshold of 3 appearances in the top 10
 ** lists.
 **********************************************************************************************/
-func loadTokensListFromJSON(chainID uint64) (map[common.Address]YTokenFromList, time.Time) {
+func loadTokensListFromJSON(chainID uint64) (map[common.Address]models.TYearnTokenListToken, time.Time) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	file, err := ioutil.ReadFile(env.BASE_DATA_PATH + `/tokensList/` + chainIDStr + `.json`)
 	var lastUpdate time.Time
 	if err != nil {
-		return make(map[common.Address]YTokenFromList), lastUpdate
+		return make(map[common.Address]models.TYearnTokenListToken), lastUpdate
 	}
 
-	var tokenList YTokenList
+	var tokenList models.YTokenList
 	if err := json.Unmarshal(file, &tokenList); err != nil {
-		return make(map[common.Address]YTokenFromList), lastUpdate
+		return make(map[common.Address]models.TYearnTokenListToken), lastUpdate
 	}
 
-	tokenListMap := make(map[common.Address]YTokenFromList)
+	tokenListMap := make(map[common.Address]models.TYearnTokenListToken)
 	for _, token := range tokenList.Tokens {
 		tokenListMap[common.HexToAddress(token.Address)] = token
 	}
 	return tokenListMap, tokenList.Timestamp
 }
 
-func saveTokensListToJSON(YTokenMap map[common.Address]YTokenFromList, path string) {
-	tokenList := YTokenList{
+func saveTokensListToJSON(YTokenMap map[common.Address]models.TYearnTokenListToken, path string) {
+	tokenList := models.YTokenList{
 		Name:      "Yearn Token List",
 		LogoURI:   "https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg",
 		Timestamp: time.Now(),
@@ -174,7 +97,7 @@ func saveTokensListToJSON(YTokenMap map[common.Address]YTokenFromList, path stri
 	tokenList.Version.Major = 1
 	tokenList.Version.Minor = 0
 	tokenList.Version.Patch = 0
-	tokenList.Tokens = make([]YTokenFromList, 0)
+	tokenList.Tokens = make([]models.TYearnTokenListToken, 0)
 	for _, token := range YTokenMap {
 		tokenList.Tokens = append(tokenList.Tokens, token)
 	}

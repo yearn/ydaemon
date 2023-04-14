@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -47,6 +48,7 @@ func filterUpdateManagementOneTime(
 			asyncActivationMap.Store(vaultAddress, vaultActivation)
 		}
 	} else {
+		logs.Error(err)
 		asyncActivationMap.Store(vaultAddress, vaultActivation)
 		traces.
 			Capture(`error`, `impossible to FilterUpdateManagement for Yvault043 `+vaultAddress.Hex()).

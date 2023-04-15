@@ -40,7 +40,6 @@ func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVa
 	isDone := false
 	for {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
-		logs.Debug(`DONE`)
 		if !isDone {
 			isDone = true
 			wg.Done()

@@ -42,18 +42,15 @@ func getStrategiesMigrated(
 
 	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
-	blockStart := vaultActivation
 	blockEnd, _ := client.BlockNumber(context.Background())
 	maxBlockRange := uint64(math.MaxUint64)
-	if chainID == 10 { //Hotfix for optimism
-		maxBlockRange = 10_000_000
-	}
+	maxBlockRange = 9_000_000
 
-	for blockStart < blockEnd {
+	for blockStart := vaultActivation; blockStart < blockEnd; blockStart += maxBlockRange {
 		end := uint64(blockStart) + maxBlockRange
 		opts := &bind.FilterOpts{Start: blockStart, End: &end}
 		if maxBlockRange == uint64(math.MaxUint64) {
-			opts = &bind.FilterOpts{Start: blockStart, End: nil}
+			opts = &bind.FilterOpts{Start: blockStart}
 		}
 
 		if log, err := vault.FilterStrategyMigrated(opts, nil, nil); err == nil {
@@ -86,7 +83,6 @@ func getStrategiesMigrated(
 				SetTag(`vaultAddress`, vaultAddress.Hex()).
 				Send()
 		}
-		blockStart += uint64(maxBlockRange)
 	}
 }
 

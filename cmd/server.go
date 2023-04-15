@@ -100,6 +100,7 @@ func NewRouter() *gin.Engine {
 		// Retrieve the vaults for a specific chainID
 		GET(router, `:chainID/vaults/tvl`, c.GetVaultsTVL)
 		GET(router, `:chainID/vaults/all`, c.GetAllVaults)
+		GET(router, `:chainID/vaults/retired`, c.GetRetiredVaults)
 		GET(router, `:chainID/vaults/:address`, c.GetVault)
 		GET(router, `:chainID/vault/:address`, c.GetVault)
 

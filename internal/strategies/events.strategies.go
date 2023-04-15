@@ -1,6 +1,8 @@
 package strategies
 
 import (
+	"context"
+	"math"
 	"strconv"
 	"strings"
 	"sync"
@@ -10,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/utils"
 )
@@ -39,34 +42,47 @@ func getStrategiesMigrated(
 
 	client := ethereum.GetRPC(chainID)
 	vault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := vault.FilterStrategyMigrated(&bind.FilterOpts{Start: vaultActivation}, nil, nil); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				continue
-			}
-			oldAddress := log.Event.OldVersion
-			newAddress := log.Event.NewVersion
+	blockEnd, _ := client.BlockNumber(context.Background())
+	maxBlockRange := uint64(math.MaxUint64)
+	maxBlockRange = 9_000_000
 
-			eventKey := vaultAddress.String() + `-` + oldAddress.String() + `-` + newAddress.String()
-			asyncStrategiesMigration.Store(eventKey, TStrategyMigrated{
-				VaultAddress:       vaultAddress,
-				OldStrategyAddress: oldAddress,
-				NewStrategyAddress: newAddress,
-				TxHash:             log.Event.Raw.TxHash,
-				BlockNumber:        log.Event.Raw.BlockNumber,
-				TxIndex:            log.Event.Raw.TxIndex,
-				LogIndex:           log.Event.Raw.Index,
-			})
+	for blockStart := vaultActivation; blockStart < blockEnd; blockStart += maxBlockRange {
+		end := uint64(blockStart) + maxBlockRange
+		opts := &bind.FilterOpts{Start: blockStart, End: &end}
+		if maxBlockRange == uint64(math.MaxUint64) {
+			opts = &bind.FilterOpts{Start: blockStart}
 		}
-	} else {
-		traces.
-			Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
-			SetEntity(`strategy`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-			SetTag(`vaultAddress`, vaultAddress.Hex()).
-			Send()
+
+		if log, err := vault.FilterStrategyMigrated(opts, nil, nil); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					continue
+				}
+				oldAddress := log.Event.OldVersion
+				newAddress := log.Event.NewVersion
+
+				eventKey := vaultAddress.String() + `-` + oldAddress.String() + `-` + newAddress.String()
+				asyncStrategiesMigration.Store(eventKey, TStrategyMigrated{
+					VaultAddress:       vaultAddress,
+					OldStrategyAddress: oldAddress,
+					NewStrategyAddress: newAddress,
+					TxHash:             log.Event.Raw.TxHash,
+					BlockNumber:        log.Event.Raw.BlockNumber,
+					TxIndex:            log.Event.Raw.TxIndex,
+					LogIndex:           log.Event.Raw.Index,
+				})
+			}
+		} else {
+			logs.Error(err)
+			traces.
+				Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
+				SetEntity(`strategy`).
+				SetExtra(`error`, err.Error()).
+				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
+				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
+				SetTag(`vaultAddress`, vaultAddress.Hex()).
+				Send()
+		}
 	}
 }
 

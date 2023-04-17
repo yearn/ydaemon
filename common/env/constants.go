@@ -40,6 +40,9 @@ var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
+// MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
+var MAX_BLOCK_RANGE = uint64(9_000_000)
+
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	1: {
@@ -121,19 +124,19 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 // YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block
 var YEARN_REGISTRIES = map[uint64][]TContractData{
 	1: {
-		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), Version: 1, Activation: 11563389},
-		{Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"), Version: 2, Activation: 12045555},
-		{Address: common.HexToAddress("0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319"), Version: 3, Activation: 16215519},
+		{Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"), Version: 1, Block: 11563389},
+		{Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"), Version: 2, Block: 12045555},
+		{Address: common.HexToAddress("0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319"), Version: 3, Block: 16215519},
 	},
 	10: {
-		{Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"), Version: 3, Activation: 22450349},
-		{Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"), Version: 3, Activation: 22451152},
+		{Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"), Version: 3, Block: 22450349},
+		{Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"), Version: 3, Block: 22451152},
 	},
 	250: {
-		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Activation: 18455565},
+		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Block: 18455565},
 	},
 	42161: {
-		{Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"), Version: 2, Activation: 4841854},
+		{Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"), Version: 2, Block: 4841854},
 	},
 }
 

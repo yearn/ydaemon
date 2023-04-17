@@ -11,7 +11,10 @@ import (
 	"github.com/yearn/ydaemon/processes/tokenList"
 )
 
-func SummonDaemonsw(chainID uint64) {
+func SummonDaemonsw(chainID uint64, parentWg *sync.WaitGroup) {
+	if parentWg != nil {
+		defer parentWg.Done()
+	}
 	var wg sync.WaitGroup
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
@@ -42,9 +45,9 @@ func main() {
 		logs.Info(`Running yDaemon server process...`)
 
 		for _, chainID := range chains {
+			logs.Info(`Summoning daemons for chain %d`, chainID)
 			wg.Add(1)
-			SummonDaemonsw(chainID)
-			wg.Done()
+			go SummonDaemonsw(chainID, &wg)
 		}
 		wg.Wait()
 

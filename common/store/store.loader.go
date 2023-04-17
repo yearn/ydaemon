@@ -11,18 +11,14 @@ import (
 )
 
 /**************************************************************************************************
-** ListBlockTime will retrieve the all the blockTimes from the the configured DB and store them in
+** LoadBlockTime will retrieve the all the blockTimes from the the configured DB and store them in
 ** the _blockTimeSyncMap for fast access during that same execution.
 **************************************************************************************************/
-func ListBlockTime(chainID uint64, wg *sync.WaitGroup) {
+func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
 	syncMap := _blockTimeSyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_blockTimeSyncMap[chainID] = syncMap
-	}
 
 	switch _dbType {
 	case DBBadger:
@@ -49,18 +45,14 @@ func ListBlockTime(chainID uint64, wg *sync.WaitGroup) {
 }
 
 /**************************************************************************************************
-** ListHistoricalPrice will retrieve the all the historical prices from the the configured DB and
+** LoadHistoricalPrice will retrieve the all the historical prices from the configured DB and
 ** store them in the _historicalPriceSyncMap for fast access during that same execution.
 **************************************************************************************************/
-func ListHistoricalPrice(chainID uint64, wg *sync.WaitGroup) {
+func LoadHistoricalPrice(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
 	syncMap := _historicalPriceSyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_historicalPriceSyncMap[chainID] = syncMap
-	}
 
 	switch _dbType {
 	case DBBadger:
@@ -77,10 +69,38 @@ func ListHistoricalPrice(chainID uint64, wg *sync.WaitGroup) {
 		DATABASE.Table(`db_historical_prices`).
 			Where("chain_id = ?", chainID).
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
-				logs.Info(batch*10_000, `historical prices loaded from DB`)
 				for _, v := range temp {
 					key := strconv.FormatUint(v.Block, 10) + "_" + addresses.ToAddress(v.Token).Hex()
 					syncMap.Store(key, bigNumber.NewInt(0).SetString(v.Price))
+				}
+				return nil
+			})
+	}
+}
+
+/**************************************************************************************************
+** LoadNewVaultsFromRegistry will retrieve the all the vaults added to the registries from the
+** configured DB and store them in the _newVaultsFromRegistrySyncMap for fast access during that
+**************************************************************************************************/
+func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+		logs.Warning(`LoadNewVaultsFromRegistry not implemented for DBBadger. Skipping...`)
+	case DBMysql:
+		var temp []DBNewVaultsFromRegistry
+
+		DATABASE.Table(`db_new_vaults_from_registries`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, v := range temp {
+					key := strconv.FormatUint(v.Block, 10) + "_" + addresses.ToAddress(v.RegistryAddress).Hex() + "_" + addresses.ToAddress(v.VaultsAddress).Hex() + "_" + addresses.ToAddress(v.TokenAddress).Hex() + "_" + v.APIVersion
+					syncMap.Store(key, v)
 				}
 				return nil
 			})

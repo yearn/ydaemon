@@ -3,6 +3,7 @@ package registries
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -12,7 +13,12 @@ func RegisterAllVaults(
 	start uint64,
 	end *uint64,
 ) map[common.Address]models.TVaultsFromRegistry {
-	standardVaultList, experimentalVaultList := events.HandleNewVaults(chainID, start, end)
+	/**********************************************************************************************
+	** Our first action is to make sure we ignore the vaults we already have in our local storage,
+	** which we loaded from the database.
+	**********************************************************************************************/
+	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
+	standardVaultList, experimentalVaultList := events.HandleNewVaults(chainID, registriesWithLastEvent, start, end)
 
 	/**********************************************************************************************
 	** Once we got all the vaults, we need to remove the duplicates. This is because some vaults
@@ -36,5 +42,9 @@ func RegisterAllVaults(
 		}
 	}
 
-	return events.HandleUpdateManagementOneTime(chainID, uniqueVaultsList)
+	vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, uniqueVaultsList)
+	for _, vault := range vaultsWithActivation {
+		store.StoreNewVaultsFromRegistry(chainID, vault)
+	}
+	return vaultsWithActivation
 }

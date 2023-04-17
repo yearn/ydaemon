@@ -1,5 +1,7 @@
 package store
 
+import "github.com/yearn/ydaemon/internal/models"
+
 /**************************************************************************************************
 ** DBBaseSchema is the base of all schemas stored in the mySQL database. It will store the UUID,
 ** aka a unique indentifier, the block number and the chainID. Every schema will inherit from this
@@ -30,4 +32,23 @@ type DBHistoricalPrice struct {
 	Token          string  `json:"token"`
 	Price          string  `json:"price"`
 	HumanizedPrice float64 `json:"humanizedPrice"`
+}
+
+/**************************************************************************************************
+** DBNewVaultsFromRegistry corresponds to the db_new_vaults_from_registry mySQL table.
+** It will store the FilterNewVault and FilterNewExperimentalVaults from the registry contract to
+** avoir requerrying all the logs to find them.
+**************************************************************************************************/
+type DBNewVaultsFromRegistry struct {
+	DBBaseSchema
+	RegistryAddress string
+	VaultsAddress   string
+	TokenAddress    string
+	BlockHash       string
+	Type            models.TVaultType
+	APIVersion      string
+	Activation      uint64
+	ManagementFee   uint64
+	TxIndex         uint
+	LogIndex        uint
 }

@@ -288,7 +288,7 @@ func indexNewVaultsWrapper(
 
 func IndexNewVaults(chainID uint64) {
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
-		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Activation, 1*time.Minute)
+		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Block, 1*time.Minute)
 	}
 
 	logs.Success(`Indexer Daemon has started. Let's wait for the first vaults to be indexed.`)

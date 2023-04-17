@@ -1,6 +1,7 @@
 package events
 
 import (
+	"context"
 	"strconv"
 	"sync"
 
@@ -10,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -51,7 +53,7 @@ func filterNewExperimentalVault(
 				continue
 			}
 			eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-			syncMap.Store(eventKey, models.TVaultsFromRegistry{
+			newVault := models.TVaultsFromRegistry{
 				RegistryAddress: registryAddress,
 				VaultsAddress:   log.Event.Vault,
 				TokenAddress:    log.Event.Token,
@@ -63,7 +65,8 @@ func filterNewExperimentalVault(
 				TxIndex:         log.Event.Raw.TxIndex,
 				LogIndex:        log.Event.Raw.Index,
 				Type:            models.VaultTypeExperimental,
-			})
+			}
+			syncMap.Store(eventKey, newVault)
 		}
 	} else {
 		logs.Error(`impossible to FilterNewExperimentalVault for YRegistryV2 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -106,7 +109,7 @@ func filterNewVaults(
 					continue
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-				syncMap.Store(eventKey, models.TVaultsFromRegistry{
+				newVault := models.TVaultsFromRegistry{
 					RegistryAddress: registryAddress,
 					VaultsAddress:   log.Event.Vault,
 					TokenAddress:    log.Event.Token,
@@ -118,7 +121,8 @@ func filterNewVaults(
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
 					Type:            models.VaultTypeStandard,
-				})
+				}
+				syncMap.Store(eventKey, newVault)
 			}
 		} else {
 			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -173,24 +177,66 @@ func filterNewVaults(
 **************************************************************************************************/
 func HandleNewVaults(
 	chainID uint64,
+	registriesWithLastEvent map[string]uint64,
 	start uint64,
 	end *uint64,
 ) (standardVaultList []models.TVaultsFromRegistry, experimentalVaultList []models.TVaultsFromRegistry) {
 	syncMap := sync.Map{}
 	syncMapExperimental := sync.Map{}
 
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		client := ethereum.GetRPC(chainID)
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
+	}
+
 	wg := &sync.WaitGroup{}
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
-		wg.Add(2)
-		opts := &bind.FilterOpts{Start: start, End: end}
+		/******************************************************************************************
+		** Then, we need to know when to start our log fetching. By default, we will fetch from the
+		** registry activation block in order to get all the vaults that were ever deployed since
+		** the registry was deployed.
+		** However, if the external database is used, we may want to only fetch the logs that were
+		** emitted after the last time we fetched the logs. In that case, we will use the last
+		** event block number + 1 as the start block number.
+		** If another start block number is specified, we will use it instead.
+		******************************************************************************************/
 		if start == 0 {
-			opts = &bind.FilterOpts{Start: registry.Activation, End: end}
+			lastEvent := registriesWithLastEvent[registry.Address.Hex()]
+			if lastEvent > 0 {
+				start = lastEvent + 1 //Adding one to get the next event
+			} else {
+				start = registry.Block
+			}
 		}
-		go filterNewVaults(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMap, wg)
-		go filterNewExperimentalVault(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMapExperimental, wg)
+
+		/******************************************************************************************
+		** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+		** avoid hitting some external node providers' rate limits.
+		******************************************************************************************/
+		for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+			wg.Add(2)
+			chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+			if chunkEnd > *end {
+				chunkEnd = *end
+			}
+
+			opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+			go filterNewVaults(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMap, wg)
+			go filterNewExperimentalVault(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMapExperimental, wg)
+		}
 	}
 	wg.Wait()
 
+	/**********************************************************************************************
+	** Once we have all the logs, we will dump them from the sync.Map to the array of
+	** TVaultsFromRegistry to use them in the rest of the process.
+	**********************************************************************************************/
 	syncMap.Range(func(_, value interface{}) bool {
 		standardVaultList = append(standardVaultList, value.(models.TVaultsFromRegistry))
 		return true
@@ -226,12 +272,54 @@ func HandleNewStandardVaults(
 ) (standardVaultList []models.TVaultsFromRegistry) {
 	syncMap := sync.Map{}
 
-	opts := &bind.FilterOpts{Start: start, End: end}
-	if start == 0 {
-		opts = &bind.FilterOpts{Start: registryActivation, End: end}
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		client := ethereum.GetRPC(chainID)
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
 	}
-	filterNewVaults(chainID, registryAddress, registryVersion, registryActivation, opts, &syncMap, nil)
 
+	/**********************************************************************************************
+	** Then, we need to know when to start our log fetching. By default, we will fetch from the
+	** registry activation block in order to get all the vaults that were ever deployed since the
+	** registry was deployed.
+	** However, if the external database is used, we may want to only fetch the logs that were
+	** emitted after the last time we fetched the logs. In that case, we will use the last event
+	** block number + 1 as the start block number.
+	** If another start block number is specified, we will use it instead.
+	**********************************************************************************************/
+	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
+	if start == 0 {
+		lastEvent := registriesWithLastEvent[registryAddress.Hex()]
+		if lastEvent > 0 {
+			start = lastEvent + 1 //Adding one to get the next event
+		} else {
+			start = registryActivation
+		}
+	}
+
+	/**********************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to avoid
+	** hitting some external node providers' rate limits.
+	**********************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
+		}
+
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+		filterNewVaults(chainID, registryAddress, registryVersion, registryActivation, opts, &syncMap, nil)
+	}
+
+	/**********************************************************************************************
+	** Once we have all the logs, we will dump them from the sync.Map to the array of
+	** TVaultsFromRegistry to use them in the rest of the process.
+	**********************************************************************************************/
 	syncMap.Range(func(_, value interface{}) bool {
 		standardVaultList = append(standardVaultList, value.(models.TVaultsFromRegistry))
 		return true

@@ -75,6 +75,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
 	// From our list of tokens, retieve the price for each one of them -> Should be done every 1(?) minute for all tokens
+
 	internalWG.Add(1)
 	go runRetrieveAllPrices(chainID, &internalWG, 1*time.Minute)
 	internalWG.Wait()

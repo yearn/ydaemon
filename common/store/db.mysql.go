@@ -23,6 +23,7 @@ func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
 	}
 
 	db, err := gorm.Open(mysql.Open(DSN), &gorm.Config{
+		SkipDefaultTransaction:                   true,
 		DisableForeignKeyConstraintWhenMigrating: true,
 		QueryFields:                              true,
 		Logger:                                   logger.Default.LogMode(logger.Error),

@@ -112,7 +112,6 @@ func waitGroupLoadDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint
 
 	LoadDaemons(chainID)
 	wg.Done()
-	logs.Success(`Store data loaded in yDaemon memory for chainID ` + strconv.Itoa(int(chainID)) + `!`)
 }
 
 func loadDaemonsForAllChains(trace *traces.TTrace) {

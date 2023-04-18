@@ -35,7 +35,6 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 		DATABASE.Table(`db_block_times`).
 			Where("chain_id = ?", chainID).
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
-				logs.Info(batch*10_000, `block times loaded from DB`)
 				for _, v := range temp {
 					syncMap.Store(v.Block, v.Timestamp)
 				}

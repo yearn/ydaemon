@@ -18,7 +18,6 @@ type TContractData struct {
 
 func getCurrentPath() string {
 	_, filename, _, _ := runtime.Caller(1)
-
 	return path.Dir(filename)
 }
 
@@ -41,7 +40,12 @@ var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
-var MAX_BLOCK_RANGE = uint64(5_000_000)
+var MAX_BLOCK_RANGE = map[uint64]uint64{
+	1:     100_000_000,
+	10:    7_000_000,
+	250:   100_000_000,
+	42161: 100_000_000,
+}
 
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{

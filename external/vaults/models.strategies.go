@@ -3,7 +3,6 @@ package vaults
 import (
 	"strconv"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
@@ -13,41 +12,41 @@ import (
 
 // TExternalStrategyDetails contains the details about a strategy.
 type TExternalStrategyDetails struct {
-	Keeper                  common.MixedcaseAddress `json:"keeper"`
-	Strategist              common.MixedcaseAddress `json:"strategist"`
-	Rewards                 common.MixedcaseAddress `json:"rewards"`
-	HealthCheck             common.MixedcaseAddress `json:"healthCheck"`
-	TotalDebt               *bigNumber.Int          `json:"totalDebt"`
-	TotalLoss               *bigNumber.Int          `json:"totalLoss"`
-	TotalGain               *bigNumber.Int          `json:"totalGain"`
-	RateLimit               *bigNumber.Int          `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *bigNumber.Int          `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *bigNumber.Int          `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	EstimatedTotalAssets    *bigNumber.Int          `json:"estimatedTotalAssets"`
-	CreditAvailable         *bigNumber.Int          `json:"creditAvailable"`
-	DebtOutstanding         *bigNumber.Int          `json:"debtOutstanding"`
-	ExpectedReturn          *bigNumber.Int          `json:"expectedReturn"`
-	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
-	DelegatedValue          string                  `json:"delegatedValue"`
-	Version                 string                  `json:"version"`
-	Protocols               []string                `json:"protocols"`
-	APR                     float64                 `json:"apr"`
-	PerformanceFee          uint64                  `json:"performanceFee"`
-	LastReport              uint64                  `json:"lastReport"`
-	Activation              uint64                  `json:"activation"`
-	KeepCRV                 uint64                  `json:"keepCRV"`
-	DebtRatio               uint64                  `json:"debtRatio,omitempty"` // Only > 0.2.2
-	DebtLimit               uint64                  `json:"debtLimit"`
-	WithdrawalQueuePosition int64                   `json:"withdrawalQueuePosition"`
-	DoHealthCheck           bool                    `json:"doHealthCheck"`
-	InQueue                 bool                    `json:"inQueue"`
-	EmergencyExit           bool                    `json:"emergencyExit"`
-	IsActive                bool                    `json:"isActive"`
+	Keeper                  string         `json:"keeper"`
+	Strategist              string         `json:"strategist"`
+	Rewards                 string         `json:"rewards"`
+	HealthCheck             string         `json:"healthCheck"`
+	TotalDebt               *bigNumber.Int `json:"totalDebt"`
+	TotalLoss               *bigNumber.Int `json:"totalLoss"`
+	TotalGain               *bigNumber.Int `json:"totalGain"`
+	RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
+	CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
+	DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
+	ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
+	DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
+	DelegatedValue          string         `json:"delegatedValue"`
+	Version                 string         `json:"version"`
+	Protocols               []string       `json:"protocols"`
+	APR                     float64        `json:"apr"`
+	PerformanceFee          uint64         `json:"performanceFee"`
+	LastReport              uint64         `json:"lastReport"`
+	Activation              uint64         `json:"activation"`
+	KeepCRV                 uint64         `json:"keepCRV"`
+	DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
+	DebtLimit               uint64         `json:"debtLimit"`
+	WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
+	DoHealthCheck           bool           `json:"doHealthCheck"`
+	InQueue                 bool           `json:"inQueue"`
+	EmergencyExit           bool           `json:"emergencyExit"`
+	IsActive                bool           `json:"isActive"`
 }
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     common.MixedcaseAddress     `json:"address"`
+	Address     string                      `json:"address"`
 	Name        string                      `json:"name"`
 	DisplayName string                      `json:"displayName"`
 	Description string                      `json:"description"`
@@ -80,15 +79,15 @@ func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
 		}
 	}
 
-	v.Address = common.NewMixedcaseAddress(strategy.Address)
+	v.Address = strategy.Address.Hex()
 	v.Name = strategy.Name
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TExternalStrategyDetails{
-		Keeper:               common.NewMixedcaseAddress(strategy.KeeperAddress),      //keeper
-		Strategist:           common.NewMixedcaseAddress(strategy.StrategistAddress),  //strategist
-		Rewards:              common.NewMixedcaseAddress(strategy.RewardsAddress),     //rewards
-		HealthCheck:          common.NewMixedcaseAddress(strategy.HealthCheckAddress), //healthCheck
+		Keeper:               strategy.KeeperAddress.Hex(),      //keeper
+		Strategist:           strategy.StrategistAddress.Hex(),  //strategist
+		Rewards:              strategy.RewardsAddress.Hex(),     //rewards
+		HealthCheck:          strategy.HealthCheckAddress.Hex(), //healthCheck
 		TotalDebt:            strategy.TotalDebt,
 		TotalLoss:            strategy.TotalLoss,
 		TotalGain:            strategy.TotalGain,

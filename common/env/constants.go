@@ -41,7 +41,7 @@ var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
-var MAX_BLOCK_RANGE = uint64(9_000_000)
+var MAX_BLOCK_RANGE = uint64(5_000_000)
 
 // BLACKLISTED_VAULTS contains the vault we should not work with
 var BLACKLISTED_VAULTS = map[uint64][]common.Address{
@@ -147,6 +147,7 @@ var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 	250: {
 		{
 			//yvMIM, alone in it's own registry, not work registering and listening to it
+			ChainID:         250,
 			Address:         common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
 			RegistryAddress: common.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
 			TokenAddress:    common.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),

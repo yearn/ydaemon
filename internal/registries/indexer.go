@@ -302,5 +302,5 @@ func IndexNewVaults(chainID uint64) {
 		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Block, 1*time.Minute)
 	}
 
-	logs.Success(`Indexer Daemon has started. Let's wait for the first vaults to be indexed.`)
+	logs.Success(`Indexer Daemon has started for chain ` + strconv.FormatUint(chainID, 10))
 }

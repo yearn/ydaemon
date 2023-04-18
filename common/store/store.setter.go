@@ -1,6 +1,7 @@
 package store
 
 import (
+	"context"
 	"encoding/json"
 	"strconv"
 	"sync"
@@ -11,7 +12,10 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
+	"golang.org/x/time/rate"
 )
+
+var storeRateLimiter = rate.NewLimiter(2, 4)
 
 /**************************************************************************************************
 ** StoreBlockTime will store the blockTime in the _blockTimeSyncMap for fast access during that
@@ -36,12 +40,15 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 			return txn.Set([]byte(strconv.FormatUint(blockNumber, 10)), dataByte)
 		})
 	case DBMysql:
-		DBbaseSchema := DBBaseSchema{
-			UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + strconv.FormatUint(blockTime, 10)),
-			Block:   blockNumber,
-			ChainID: chainID,
-		}
-		go DATABASE.Table(`db_block_times`).Save(&DBBlockTime{DBbaseSchema, blockTime})
+		go func() {
+			DBbaseSchema := DBBaseSchema{
+				UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + strconv.FormatUint(blockTime, 10)),
+				Block:   blockNumber,
+				ChainID: chainID,
+			}
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table(`db_block_times`).Save(&DBBlockTime{DBbaseSchema, blockTime})
+		}()
 	}
 }
 
@@ -57,7 +64,7 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 
 	switch _dbType {
 	case DBBadger:
-		OpenBadgerDB(chainID, TABLES.HISTORICAL_PRICES).Update(func(txn *badger.Txn) error {
+		go OpenBadgerDB(chainID, TABLES.HISTORICAL_PRICES).Update(func(txn *badger.Txn) error {
 			dataByte, err := json.Marshal(price.String())
 			if err != nil {
 				return err
@@ -65,18 +72,21 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 			return txn.Set([]byte(key), dataByte)
 		})
 	case DBMysql:
-		DBbaseSchema := DBBaseSchema{
-			UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
-			Block:   blockNumber,
-			ChainID: chainID,
-		}
-		humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
-		DATABASE.Table(`db_historical_prices`).Save(&DBHistoricalPrice{
-			DBbaseSchema,
-			tokenAddress.Hex(),
-			price.String(),
-			humanizedPrice,
-		})
+		go func() {
+			DBbaseSchema := DBBaseSchema{
+				UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
+				Block:   blockNumber,
+				ChainID: chainID,
+			}
+			humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table(`db_historical_prices`).Save(&DBHistoricalPrice{
+				DBbaseSchema,
+				tokenAddress.Hex(),
+				price.String(),
+				humanizedPrice,
+			})
+		}()
 	}
 }
 
@@ -93,24 +103,27 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 	case DBBadger:
 		// Not implemented
 	case DBMysql:
-		DBbaseSchema := DBBaseSchema{
-			UUID:    getUUID(key),
-			Block:   vault.BlockNumber,
-			ChainID: chainID,
-		}
-		DATABASE.Table(`db_new_vaults_from_registries`).Save(&DBNewVaultsFromRegistry{
-			DBbaseSchema,
-			vault.RegistryAddress.Hex(),
-			vault.Address.Hex(),
-			vault.TokenAddress.Hex(),
-			vault.BlockHash.Hex(),
-			vault.Type,
-			vault.APIVersion,
-			vault.Activation,
-			vault.ManagementFee,
-			vault.TxIndex,
-			vault.LogIndex,
-		})
+		go func() {
+			DBbaseSchema := DBBaseSchema{
+				UUID:    getUUID(key),
+				Block:   vault.BlockNumber,
+				ChainID: chainID,
+			}
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table(`db_new_vaults_from_registries`).Save(&DBNewVaultsFromRegistry{
+				DBbaseSchema,
+				vault.RegistryAddress.Hex(),
+				vault.Address.Hex(),
+				vault.TokenAddress.Hex(),
+				vault.BlockHash.Hex(),
+				vault.Type,
+				vault.APIVersion,
+				vault.Activation,
+				vault.ManagementFee,
+				vault.TxIndex,
+				vault.LogIndex,
+			})
+		}()
 	}
 }
 
@@ -125,7 +138,7 @@ func StoreVault(chainID uint64, vault *models.TVault) {
 
 	switch _dbType {
 	case DBBadger:
-		OpenBadgerDB(chainID, TABLES.VAULTS).Update(func(txn *badger.Txn) error {
+		go OpenBadgerDB(chainID, TABLES.VAULTS).Update(func(txn *badger.Txn) error {
 			dataByte, err := json.Marshal(vault)
 			if err != nil {
 				return err
@@ -133,30 +146,33 @@ func StoreVault(chainID uint64, vault *models.TVault) {
 			return txn.Set([]byte(key), dataByte)
 		})
 	case DBMysql:
-		newItem := &DBVault{}
-		newItem.UUID = getUUID(key)
-		newItem.Address = vault.Address.Hex()
-		newItem.Management = vault.Management.Hex()
-		newItem.Governance = vault.Governance.Hex()
-		newItem.Guardian = vault.Guardian.Hex()
-		newItem.Rewards = vault.Rewards.Hex()
-		newItem.Token = vault.Token.Address.Hex()
-		newItem.Type = vault.Type
-		newItem.Symbol = vault.Symbol
-		newItem.DisplaySymbol = vault.DisplaySymbol
-		newItem.FormatedSymbol = vault.FormatedSymbol
-		newItem.Name = vault.Name
-		newItem.DisplayName = vault.DisplayName
-		newItem.FormatedName = vault.FormatedName
-		newItem.Icon = vault.Icon
-		newItem.Version = vault.Version
-		newItem.ChainID = vault.ChainID
-		newItem.Inception = vault.Inception
-		newItem.Activation = vault.Activation
-		newItem.Decimals = vault.Decimals
-		newItem.PerformanceFee = vault.PerformanceFee
-		newItem.ManagementFee = vault.ManagementFee
-		newItem.Endorsed = vault.Endorsed
-		DATABASE.Table(`db_vaults`).Save(newItem)
+		go func() {
+			newItem := &DBVault{}
+			newItem.UUID = getUUID(key)
+			newItem.Address = vault.Address.Hex()
+			newItem.Management = vault.Management.Hex()
+			newItem.Governance = vault.Governance.Hex()
+			newItem.Guardian = vault.Guardian.Hex()
+			newItem.Rewards = vault.Rewards.Hex()
+			newItem.Token = vault.Token.Address.Hex()
+			newItem.Type = vault.Type
+			newItem.Symbol = vault.Symbol
+			newItem.DisplaySymbol = vault.DisplaySymbol
+			newItem.FormatedSymbol = vault.FormatedSymbol
+			newItem.Name = vault.Name
+			newItem.DisplayName = vault.DisplayName
+			newItem.FormatedName = vault.FormatedName
+			newItem.Icon = vault.Icon
+			newItem.Version = vault.Version
+			newItem.ChainID = vault.ChainID
+			newItem.Inception = vault.Inception
+			newItem.Activation = vault.Activation
+			newItem.Decimals = vault.Decimals
+			newItem.PerformanceFee = vault.PerformanceFee
+			newItem.ManagementFee = vault.ManagementFee
+			newItem.Endorsed = vault.Endorsed
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table(`db_vaults`).Save(newItem)
+		}()
 	}
 }

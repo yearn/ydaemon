@@ -1,6 +1,7 @@
 package events
 
 import (
+	"context"
 	"strconv"
 	"strings"
 	"sync"
@@ -10,9 +11,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -36,49 +37,77 @@ func filterTransfers(
 	vaultAddress common.Address,
 	fromAddresses []common.Address,
 	toAddresses []common.Address,
-	opts *bind.FilterOpts,
+	startFallback uint64,
+	start uint64,
+	end *uint64,
 	asyncMapTransfers *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.GetRPC(chainID)
 	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterTransfer(opts, fromAddresses, toAddresses); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				continue
-			}
-			eventKey := (log.Event.Sender.Hex() + `-` +
-				log.Event.Receiver.Hex() + `-` +
-				strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10))
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
+	}
 
-			blockData := ethereum.TEventBlock{
-				EventType:   `transfer`,
-				TxHash:      log.Event.Raw.TxHash,
-				BlockNumber: log.Event.Raw.BlockNumber,
-				TxIndex:     log.Event.Raw.TxIndex,
-				LogIndex:    log.Event.Raw.Index,
-				Value:       bigNumber.SetInt(log.Event.Value),
-			}
+	/******************************************************************************************
+	** Then, we need to know when to start our log fetching. By default, we will fetch from the
+	** activation block in order to get all the vaults that were ever deployed since it was
+	** deployed.
+	******************************************************************************************/
+	if start == 0 {
+		start = startFallback
+	}
 
-			if syncMap, ok := asyncMapTransfers.Load(eventKey); ok {
-				currentBlockData := append((syncMap.([]ethereum.TEventBlock)), blockData)
-				asyncMapTransfers.Store(eventKey, currentBlockData)
-			} else {
-				asyncMapTransfers.Store(eventKey, []ethereum.TEventBlock{blockData})
-			}
+	/******************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		wg.Add(2)
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
 		}
-	} else {
-		logs.Error(err.Error())
-		traces.
-			Capture(`error`, `impossible to FilterTransfer for Yvault043 `+vaultAddress.Hex()).
-			SetEntity(`vault`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-			SetTag(`vaultAddress`, vaultAddress.Hex()).
-			Send()
+
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+		if log, err := currentVault.FilterTransfer(opts, fromAddresses, toAddresses); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					continue
+				}
+				eventKey := (log.Event.Sender.Hex() + `-` +
+					log.Event.Receiver.Hex() + `-` +
+					strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10))
+
+				blockData := ethereum.TEventBlock{
+					EventType:   `transfer`,
+					TxHash:      log.Event.Raw.TxHash,
+					BlockNumber: log.Event.Raw.BlockNumber,
+					TxIndex:     log.Event.Raw.TxIndex,
+					LogIndex:    log.Event.Raw.Index,
+					Value:       bigNumber.SetInt(log.Event.Value),
+				}
+
+				if syncMap, ok := asyncMapTransfers.Load(eventKey); ok {
+					currentBlockData := append((syncMap.([]ethereum.TEventBlock)), blockData)
+					asyncMapTransfers.Store(eventKey, currentBlockData)
+				} else {
+					asyncMapTransfers.Store(eventKey, []ethereum.TEventBlock{blockData})
+				}
+			}
+		} else {
+			logs.Error(`impossible to FilterTransfer for ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+		}
 	}
 }
 
@@ -113,17 +142,14 @@ func HandleTransferFromVaultsToStrategies(
 	for _, vault := range vaultStrategiesMap {
 		for _, strategy := range vault {
 			wg.Add(1)
-			opts := &bind.FilterOpts{Start: start, End: end}
-			if start == 0 {
-				opts = &bind.FilterOpts{Start: strategy.Initialization.BlockNumber, End: end}
-			}
-
 			go filterTransfers(
 				chainID,
 				strategy.VaultAddress,
 				[]common.Address{strategy.VaultAddress},
 				[]common.Address{strategy.Address},
-				opts,
+				strategy.Initialization.BlockNumber,
+				start,
+				end,
 				syncMap,
 				wg,
 			)
@@ -203,17 +229,14 @@ func HandleTransfersFromVaultsToTreasury(
 	wg := &sync.WaitGroup{}
 	for _, vault := range vaultsMap {
 		wg.Add(1)
-		opts := &bind.FilterOpts{Start: start, End: end}
-		if start == 0 {
-			opts = &bind.FilterOpts{Start: vault.Activation, End: end}
-		}
-
 		go filterTransfers(
 			chainID,
 			vault.Address,
 			[]common.Address{vault.Address},
 			FindTreasuriesForVault(chainID, vault.Address),
-			opts,
+			vault.Activation,
+			start,
+			end,
 			syncMap,
 			wg,
 		)

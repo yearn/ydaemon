@@ -106,3 +106,30 @@ func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
 			})
 	}
 }
+
+/**************************************************************************************************
+** LoadVaults will retrieve the all the vaults from the configured DB and store them in the
+** _vaultsSyncMap for fast access during that same execution.
+**************************************************************************************************/
+func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _vaultsSyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBMysql:
+		var temp []DBVault
+
+		DATABASE.Table(`db_vaults`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, v := range temp {
+					syncMap.Store(v.Address, v)
+				}
+				return nil
+			})
+	}
+}

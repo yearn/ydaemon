@@ -264,7 +264,7 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	updatedVaultMap := make(map[common.Address]*models.TVault)
 	for _, currentVault := range vaults {
-		updatedVaultMap[currentVault.VaultsAddress] = &models.TVault{
+		updatedVaultMap[currentVault.Address] = &models.TVault{
 			Address:    currentVault.TokenAddress,
 			Endorsed:   (currentVault.Type == models.VaultTypeStandard || currentVault.Type == models.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
 			Type:       currentVault.Type,
@@ -303,16 +303,11 @@ func RetrieveAllVaults(
 		**********************************************************************************************/
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedVaultMap))
-		for _, token := range updatedVaultMap {
-			go func(thisToken *models.TVault) {
+		for _, vault := range updatedVaultMap {
+			go func(thisVault *models.TVault) {
 				defer wg.Done()
-				store.SaveInBadgerDB(
-					chainID,
-					store.TABLES.VAULTS,
-					thisToken.Address.Hex(),
-					thisToken,
-				)
-			}(token)
+				store.StoreVault(chainID, thisVault)
+			}(vault)
 		}
 		wg.Wait()
 		store.ListFromBadgerDB(chainID, store.TABLES.VAULTS, &vaultMap)

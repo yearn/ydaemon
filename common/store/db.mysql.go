@@ -35,6 +35,8 @@ func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
 	db.AutoMigrate(&DBBlockTime{})
 	db.AutoMigrate(&DBHistoricalPrice{})
 	db.AutoMigrate(&DBNewVaultsFromRegistry{})
+	db.AutoMigrate(&DBVault{})
+
 	logs.Success(`DB initialized`)
 	return true
 }

@@ -2,7 +2,6 @@ package events
 
 import (
 	"context"
-	"math"
 	"strconv"
 	"strings"
 	"sync"
@@ -11,9 +10,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -29,94 +28,114 @@ import (
 ** - vaultActivation: the block number at which the vault was activated
 ** - syncMap: the async ptr to the map of vaultAddr -> strategyAddr -> blockNumber
 **   -> TEventBlock
-** - wg: the async ptr to the WaitGroup to sync the goroutines
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
 **************************************************************************************************/
-func filterStrategyAdded(
-	chainID uint64,
-	vaultAddress common.Address,
-	vaultVersion string,
-	opts *bind.FilterOpts,
-	syncMap *sync.Map,
-	wg *sync.WaitGroup,
-) {
-	if wg != nil {
-		defer wg.Done()
+func filterStrategyAdded(vault models.TVaultsFromRegistry, start uint64, end *uint64, syncMap *sync.Map) {
+	client := ethereum.GetRPC(vault.ChainID)
+
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
 	}
 
-	client := ethereum.GetRPC(chainID)
-	switch vaultVersion {
-	case `0.2.2`:
-		vault, _ := contracts.NewYvault022(vaultAddress, client)
-		if log, err := vault.FilterStrategyAdded(opts, nil); err == nil {
-			for log.Next() {
-				if log.Error() != nil {
-					continue
-				}
-				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
-				syncMap.Store(eventKey, models.TStrategyAdded{
-					VaultAddress:    vaultAddress,
-					StrategyAddress: log.Event.Strategy,
-					TxHash:          log.Event.Raw.TxHash,
-					BlockNumber:     log.Event.Raw.BlockNumber,
-					TxIndex:         log.Event.Raw.TxIndex,
-					LogIndex:        log.Event.Raw.Index,
-					DebtLimit:       bigNumber.SetInt(log.Event.DebtLimit),
-					RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
-					PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
-				})
-			}
-		} else {
-			logs.Error(`impossible to FilterStrategyAdded for NewYvault022 ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-		}
-	case `0.3.0`, `0.3.1`:
-		vault, _ := contracts.NewYvault030(vaultAddress, client)
-		if log, err := vault.FilterStrategyAdded(opts, nil); err == nil {
-			for log.Next() {
-				if log.Error() != nil {
-					continue
-				}
-				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
-				syncMap.Store(eventKey, models.TStrategyAdded{
-					VaultAddress:    vaultAddress,
-					StrategyAddress: log.Event.Strategy,
-					TxHash:          log.Event.Raw.TxHash,
-					BlockNumber:     log.Event.Raw.BlockNumber,
-					TxIndex:         log.Event.Raw.TxIndex,
-					LogIndex:        log.Event.Raw.Index,
-					DebtRatio:       bigNumber.SetInt(log.Event.DebtRatio),
-					RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
-					PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
-				})
-			}
-		} else {
-			logs.Error(`impossible to FilterStrategyAdded for NewYvault030 ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-		}
-	default: // case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
-		vault, _ := contracts.NewYvault043(vaultAddress, client)
-		if log, err := vault.FilterStrategyAdded(opts, nil); err == nil {
-			for log.Next() {
-				if log.Error() != nil {
-					continue
-				}
+	/******************************************************************************************
+	** Then, we need to know when to start our log fetching. By default, we will fetch from the
+	** activation block in order to get all the vaults that were ever deployed since it was
+	** deployed.
+	******************************************************************************************/
+	if start == 0 {
+		start = vault.Activation
+	}
 
-				eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex()
-				syncMap.Store(eventKey, models.TStrategyAdded{
-					VaultAddress:      vaultAddress,
-					StrategyAddress:   log.Event.Strategy,
-					TxHash:            log.Event.Raw.TxHash,
-					BlockNumber:       log.Event.Raw.BlockNumber,
-					TxIndex:           log.Event.Raw.TxIndex,
-					LogIndex:          log.Event.Raw.Index,
-					DebtRatio:         bigNumber.SetInt(log.Event.DebtRatio),
-					MaxDebtPerHarvest: bigNumber.SetInt(log.Event.MaxDebtPerHarvest),
-					MinDebtPerHarvest: bigNumber.SetInt(log.Event.MinDebtPerHarvest),
-					PerformanceFee:    bigNumber.SetInt(log.Event.PerformanceFee),
-				})
+	/******************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
+		}
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+
+		switch vault.APIVersion {
+		case `0.2.2`:
+			contract, _ := contracts.NewYvault022(vault.Address, client)
+			if log, err := contract.FilterStrategyAdded(opts, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					eventKey := vault.Address.Hex() + `-` + log.Event.Strategy.Hex()
+					syncMap.Store(eventKey, models.TStrategyAdded{
+						VaultAddress:    vault.Address,
+						StrategyAddress: log.Event.Strategy,
+						TxHash:          log.Event.Raw.TxHash,
+						BlockNumber:     log.Event.Raw.BlockNumber,
+						TxIndex:         log.Event.Raw.TxIndex,
+						LogIndex:        log.Event.Raw.Index,
+						DebtLimit:       bigNumber.SetInt(log.Event.DebtLimit),
+						RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
+						PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
+					})
+				}
+			} else {
+				logs.Error(`impossible to FilterStrategyAdded for NewYvault022 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
 			}
-		} else {
-			logs.Error(`impossible to FilterStrategyAdded for NewYvault043 ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+		case `0.3.0`, `0.3.1`:
+			contract, _ := contracts.NewYvault030(vault.Address, client)
+			if log, err := contract.FilterStrategyAdded(opts, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					eventKey := vault.Address.Hex() + `-` + log.Event.Strategy.Hex()
+					syncMap.Store(eventKey, models.TStrategyAdded{
+						VaultAddress:    vault.Address,
+						StrategyAddress: log.Event.Strategy,
+						TxHash:          log.Event.Raw.TxHash,
+						BlockNumber:     log.Event.Raw.BlockNumber,
+						TxIndex:         log.Event.Raw.TxIndex,
+						LogIndex:        log.Event.Raw.Index,
+						DebtRatio:       bigNumber.SetInt(log.Event.DebtRatio),
+						RateLimit:       bigNumber.SetInt(log.Event.RateLimit),
+						PerformanceFee:  bigNumber.SetInt(log.Event.PerformanceFee),
+					})
+				}
+			} else {
+				logs.Error(`impossible to FilterStrategyAdded for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
+			}
+		default: // case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+			contract, _ := contracts.NewYvault043(vault.Address, client)
+			if log, err := contract.FilterStrategyAdded(opts, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+
+					eventKey := vault.Address.Hex() + `-` + log.Event.Strategy.Hex()
+					syncMap.Store(eventKey, models.TStrategyAdded{
+						VaultAddress:      vault.Address,
+						StrategyAddress:   log.Event.Strategy,
+						TxHash:            log.Event.Raw.TxHash,
+						BlockNumber:       log.Event.Raw.BlockNumber,
+						TxIndex:           log.Event.Raw.TxIndex,
+						LogIndex:          log.Event.Raw.Index,
+						DebtRatio:         bigNumber.SetInt(log.Event.DebtRatio),
+						MaxDebtPerHarvest: bigNumber.SetInt(log.Event.MaxDebtPerHarvest),
+						MinDebtPerHarvest: bigNumber.SetInt(log.Event.MinDebtPerHarvest),
+						PerformanceFee:    bigNumber.SetInt(log.Event.PerformanceFee),
+					})
+				}
+			} else {
+				logs.Error(`impossible to FilterStrategyAdded for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
+			}
 		}
 	}
 }
@@ -129,62 +148,49 @@ func filterStrategyAdded(
 ** - chainID: the chain ID of the network we are working on
 ** - vaultAddress: the address of the vault we are working on
 ** - vaultActivation: the block number at which the vault was activated
-** - asyncStrategiesMigration: the async ptr to the map of vaultAddr -> oldStrategyAddr ->
+** - syncMap: the async ptr to the map of vaultAddr -> oldStrategyAddr ->
 **   newStrategyAddr -> models.TStrategyMigrated
-** - wg: the async ptr to the WaitGroup to sync the goroutines
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
 **************************************************************************************************/
-func filterStrategiesMigrated(
-	chainID uint64,
-	vaultAddress common.Address,
-	vaultActivation uint64,
-	opts *bind.FilterOpts,
-	asyncStrategiesMigration *sync.Map,
-	wg *sync.WaitGroup,
-) {
-	if wg != nil {
-		defer wg.Done()
-	}
-
+func filterStrategiesMigrated(vault models.TVaultsFromRegistry, start uint64, end *uint64, syncMap *sync.Map) {
 	/**************************************************************************************************
 	** First we make sure to connect with our RPC client and get the vault contract.
 	**************************************************************************************************/
-	client := ethereum.GetRPC(chainID)
-	vault, _ := contracts.NewYvault043(vaultAddress, client)
+	client := ethereum.GetRPC(vault.ChainID)
+	contract, _ := contracts.NewYvault043(vault.Address, client)
 
-	/**************************************************************************************************
-	** As some RPC could run in crippled mode, we need to make sure to stay within the block range.
-	** TLDR; querying a lot and a lot of block will probably fail because of communication issues. To
-	** avoid this, we split the query in smaller chunks.
-	** From initial set of tests, we found out that 9M blocks is the max range we can query without
-	** getting any error with our powerful RPCs.
-	**************************************************************************************************/
-	fromBlock := vaultActivation
-	toBlock, _ := client.BlockNumber(context.Background())
-	maxBlockRange := uint64(9_000_000)
-
-	/**************************************************************************************************
-	** If some overrides are provided, we use them instead of the default values. However, we need to
-	** make sure to stay within the block range allowed by the network.
-	**************************************************************************************************/
-	if opts.Start != vaultActivation || opts.End != nil {
-		fromBlock = uint64(opts.Start)
-		toBlock = *opts.End
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
 	}
 
-	/**************************************************************************************************
-	** We then loop through the block range and query the events. We need to make sure to stay within
-	** the block range allowed by the network.
-	**************************************************************************************************/
-	for blockStart := fromBlock; blockStart < toBlock; blockStart += maxBlockRange {
-		end := uint64(blockStart) + maxBlockRange
-		opts := &bind.FilterOpts{Start: blockStart, End: &end}
-		if maxBlockRange == uint64(math.MaxUint64) {
-			opts = &bind.FilterOpts{Start: blockStart}
+	/******************************************************************************************
+	** Then, we need to know when to start our log fetching. By default, we will fetch from the
+	** activation block in order to get all the vaults that were ever deployed since it was
+	** deployed.
+	******************************************************************************************/
+	if start == 0 {
+		start = vault.Activation
+	}
+
+	/******************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
 		}
 
-		if log, err := vault.FilterStrategyMigrated(opts, nil, nil); err == nil {
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+		if log, err := contract.FilterStrategyMigrated(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
 					continue
@@ -192,9 +198,9 @@ func filterStrategiesMigrated(
 				oldAddress := log.Event.OldVersion
 				newAddress := log.Event.NewVersion
 
-				eventKey := vaultAddress.Hex() + `-` + oldAddress.Hex() + `-` + newAddress.Hex()
-				asyncStrategiesMigration.Store(eventKey, models.TStrategyMigrated{
-					VaultAddress:       vaultAddress,
+				eventKey := vault.Address.Hex() + `-` + oldAddress.Hex() + `-` + newAddress.Hex()
+				syncMap.Store(eventKey, models.TStrategyMigrated{
+					VaultAddress:       vault.Address,
 					OldStrategyAddress: oldAddress,
 					NewStrategyAddress: newAddress,
 					TxHash:             log.Event.Raw.TxHash,
@@ -204,15 +210,7 @@ func filterStrategiesMigrated(
 				})
 			}
 		} else {
-			logs.Error(`impossible to FilterStrategyMigrated for NewYvault043 ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-			traces.
-				Capture(`error`, `impossible to FilterStrategyMigrated for Yvault043 `+vaultAddress.Hex()).
-				SetEntity(`strategy`).
-				SetExtra(`error`, err.Error()).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-				SetTag(`vaultAddress`, vaultAddress.Hex()).
-				Send()
+			logs.Error(`impossible to FilterStrategyMigrated for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
 		}
 	}
 }
@@ -248,26 +246,24 @@ func HandleStrategyAdded(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaultsMap {
 		wg.Add(2)
-		opts := &bind.FilterOpts{Start: start, End: end}
-		if start == 0 {
-			opts = &bind.FilterOpts{Start: v.Activation, End: end}
-		}
-		go filterStrategyAdded(
-			chainID,
-			v.VaultsAddress,
-			v.APIVersion,
-			opts,
-			asyncStrategiesForVaults,
-			wg,
-		)
-		go filterStrategiesMigrated(
-			chainID,
-			v.VaultsAddress,
-			v.Activation,
-			opts,
-			asyncStrategiesMigrated,
-			wg,
-		)
+		go func(v models.TVaultsFromRegistry) {
+			defer wg.Done()
+			filterStrategyAdded(
+				v,
+				start,
+				end,
+				asyncStrategiesForVaults,
+			)
+		}(v)
+		go func(v models.TVaultsFromRegistry) {
+			defer wg.Done()
+			filterStrategiesMigrated(
+				v,
+				start,
+				end,
+				asyncStrategiesMigrated,
+			)
+		}(v)
 	}
 	wg.Wait()
 

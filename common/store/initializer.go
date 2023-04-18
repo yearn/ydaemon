@@ -17,6 +17,7 @@ var _dbType TDBType
 var _blockTimeSyncMap = make(map[uint64]*sync.Map)
 var _historicalPriceSyncMap = make(map[uint64]*sync.Map)
 var _newVaultsFromRegistrySyncMap = make(map[uint64]*sync.Map)
+var _vaultsSyncMap = make(map[uint64]*sync.Map)
 
 /**************************************************************************************************
 ** The init function is a special function triggered directly on execution of the package.
@@ -34,14 +35,16 @@ func init() {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_historicalPriceSyncMap[chainID] = &sync.Map{}
 		_newVaultsFromRegistrySyncMap[chainID] = &sync.Map{}
+		_vaultsSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(3)
+		wg.Add(4)
 		go LoadBlockTime(chainID, wg)
 		go LoadHistoricalPrice(chainID, wg)
 		go LoadNewVaultsFromRegistry(chainID, wg)
+		go LoadVaults(chainID, wg)
 	}
 	wg.Wait()
 }

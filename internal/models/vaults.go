@@ -14,12 +14,13 @@ const (
 )
 
 type TVaultsFromRegistry struct {
+	Address         common.Address
 	RegistryAddress common.Address
-	VaultsAddress   common.Address
 	TokenAddress    common.Address
 	BlockHash       common.Hash
 	Type            TVaultType
 	APIVersion      string
+	ChainID         uint64
 	BlockNumber     uint64
 	Activation      uint64
 	ManagementFee   uint64

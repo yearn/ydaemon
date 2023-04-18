@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
@@ -50,6 +50,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	var response map[string][]interface{}
 	var blockNumberBigInt *big.Int
 
+	logs.Pretty(blockNumber)
 	if blockNumber == nil {
 		currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
 		blockNumber = &currentBlockNumber
@@ -57,7 +58,6 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	} else {
 		blockNumberBigInt = big.NewInt(int64(*blockNumber))
 		response = multicalls.Perform(chainID, calls, blockNumberBigInt)
-
 	}
 
 	for _, token := range tokens {
@@ -70,7 +70,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 			continue
 		}
 		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
-		store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
+		// store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
 	}
 	return newPriceMap
 }

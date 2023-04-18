@@ -64,8 +64,8 @@ func filterStrategyReportedFor031To043(vault *models.TVault, start uint64, end *
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 	** avoid hitting some external node providers' rate limits.
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[vault.ChainID] {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[vault.ChainID]
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}
@@ -131,8 +131,8 @@ func filterStrategyReportedFor030(vault *models.TVault, start uint64, end *uint6
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 	** avoid hitting some external node providers' rate limits.
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[vault.ChainID] {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[vault.ChainID]
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}
@@ -200,8 +200,8 @@ func filterStrategyReportedFor022(vault *models.TVault, start uint64, end *uint6
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 	** avoid hitting some external node providers' rate limits.
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[vault.ChainID] {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[vault.ChainID]
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

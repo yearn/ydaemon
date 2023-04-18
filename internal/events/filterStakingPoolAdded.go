@@ -55,8 +55,8 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 	** Note: we don't use start here because we want the full history previous to the end
 	** to ensure the balance is correct
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

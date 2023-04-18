@@ -71,6 +71,5 @@ func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
 
 	if temp != nil && (len(temp) > 0) {
 		aggregatedVault[chainID] = temp
-		logs.Success("Data loaded for the AggregatedVault store for chainID: " + strconv.FormatUint(chainID, 10))
 	}
 }

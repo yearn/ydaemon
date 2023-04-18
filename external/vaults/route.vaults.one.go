@@ -3,7 +3,6 @@ package vaults
 import (
 	"net/http"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -46,7 +45,7 @@ func (y Controller) GetVault(c *gin.Context) {
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
 		} else {
 			externalStrategy = &TStrategy{
-				Address:     common.NewMixedcaseAddress(strategy.Address),
+				Address:     strategy.Address.Hex(),
 				Name:        strategy.Name,
 				DisplayName: strategy.DisplayName,
 				Description: strategy.Description,

@@ -71,58 +71,58 @@ type TExternalVaultAPY struct {
 
 // TExternalVaultMigration is the struct containing the information about the migration of a vault.
 type TExternalVaultMigration struct {
-	Available bool                    `json:"available"`
-	Address   common.MixedcaseAddress `json:"address"`
-	Contract  common.MixedcaseAddress `json:"contract"`
+	Available bool   `json:"available"`
+	Address   string `json:"address"`
+	Contract  string `json:"contract"`
 }
 
 // TExternalVaultStaking is the struct containing the information about the staking contract related to that vault.
 type TExternalVaultStaking struct {
-	Available bool                    `json:"available"`
-	Address   common.MixedcaseAddress `json:"address"`
-	TVL       float64                 `json:"tvl"`
-	Risk      int                     `json:"risk"`
+	Available bool    `json:"available"`
+	Address   string  `json:"address"`
+	TVL       float64 `json:"tvl"`
+	Risk      int     `json:"risk"`
 }
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	Management            common.MixedcaseAddress `json:"management"`
-	Governance            common.MixedcaseAddress `json:"governance"`
-	Guardian              common.MixedcaseAddress `json:"guardian"`
-	Rewards               common.MixedcaseAddress `json:"rewards"`
-	DepositLimit          *bigNumber.Int          `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.Int          `json:"availableDepositLimit,omitempty"`
-	Comment               string                  `json:"comment"`
-	APYTypeOverride       string                  `json:"apyTypeOverride"`
-	APYOverride           float64                 `json:"apyOverride"`
-	Order                 float32                 `json:"order"`
-	PerformanceFee        uint64                  `json:"performanceFee"`
-	ManagementFee         uint64                  `json:"managementFee"`
-	DepositsDisabled      bool                    `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool                    `json:"withdrawalsDisabled"`
-	AllowZapIn            bool                    `json:"allowZapIn"`
-	AllowZapOut           bool                    `json:"allowZapOut"`
-	Retired               bool                    `json:"retired"`
-	HideAlways            bool                    `json:"hideAlways"`
+	Management            string         `json:"management"`
+	Governance            string         `json:"governance"`
+	Guardian              string         `json:"guardian"`
+	Rewards               string         `json:"rewards"`
+	DepositLimit          *bigNumber.Int `json:"depositLimit"`
+	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
+	Comment               string         `json:"comment"`
+	APYTypeOverride       string         `json:"apyTypeOverride"`
+	APYOverride           float64        `json:"apyOverride"`
+	Order                 float32        `json:"order"`
+	PerformanceFee        uint64         `json:"performanceFee"`
+	ManagementFee         uint64         `json:"managementFee"`
+	DepositsDisabled      bool           `json:"depositsDisabled"`
+	WithdrawalsDisabled   bool           `json:"withdrawalsDisabled"`
+	AllowZapIn            bool           `json:"allowZapIn"`
+	AllowZapOut           bool           `json:"allowZapOut"`
+	Retired               bool           `json:"retired"`
+	HideAlways            bool           `json:"hideAlways"`
 }
 
 // TExternalERC20Token contains the basic information of an ERC20 token
 type TExternalERC20Token struct {
-	Address                   common.MixedcaseAddress   `json:"address"`
-	UnderlyingTokensAddresses []common.MixedcaseAddress `json:"underlyingTokensAddresses"`
-	Name                      string                    `json:"name"`
-	Symbol                    string                    `json:"symbol"`
-	Type                      string                    `json:"type"`
-	DisplayName               string                    `json:"display_name"`
-	DisplaySymbol             string                    `json:"display_symbol"`
-	Description               string                    `json:"description"`
-	Icon                      string                    `json:"icon"`
-	Decimals                  uint64                    `json:"decimals"`
+	Address                   string   `json:"address"`
+	UnderlyingTokensAddresses []string `json:"underlyingTokensAddresses"`
+	Name                      string   `json:"name"`
+	Symbol                    string   `json:"symbol"`
+	Type                      string   `json:"type"`
+	DisplayName               string   `json:"display_name"`
+	DisplaySymbol             string   `json:"display_symbol"`
+	Description               string   `json:"description"`
+	Icon                      string   `json:"icon"`
+	Decimals                  uint64   `json:"decimals"`
 }
 
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
-	Address           common.MixedcaseAddress `json:"address"`
+	Address           string                  `json:"address"`
 	Type              models.TVaultType       `json:"type"`
 	Symbol            string                  `json:"symbol"`
 	DisplaySymbol     string                  `json:"display_symbol"`
@@ -166,7 +166,7 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 		}
 	}
 
-	v.Address = common.NewMixedcaseAddress(internalVault.Address)
+	v.Address = internalVault.Address.Hex()
 	v.Symbol = internalVault.Symbol
 	v.DisplaySymbol = internalVault.DisplaySymbol
 	v.FormatedSymbol = internalVault.FormatedSymbol
@@ -189,7 +189,7 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, internalVault.Address)
 	if ok {
 		v.Token = TExternalERC20Token{
-			Address:                   common.NewMixedcaseAddress(underlyingToken.Address),
+			Address:                   underlyingToken.Address.Hex(),
 			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
 			Name:                      underlyingToken.Name,
 			Symbol:                    underlyingToken.Symbol,
@@ -202,7 +202,7 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 		}
 	} else {
 		v.Token = TExternalERC20Token{
-			Address:                   common.NewMixedcaseAddress(internalVault.Token.Address),
+			Address:                   internalVault.Token.Address.Hex(),
 			UnderlyingTokensAddresses: toArrTMixedcaseAddress(internalVault.Token.UnderlyingTokensAddresses),
 			Name:                      internalVault.Token.Name,
 			Symbol:                    internalVault.Token.Symbol,
@@ -215,7 +215,7 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 		}
 	}
 	if v.Token.UnderlyingTokensAddresses == nil {
-		v.Token.UnderlyingTokensAddresses = []common.MixedcaseAddress{}
+		v.Token.UnderlyingTokensAddresses = []string{}
 	}
 
 	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
@@ -231,10 +231,10 @@ func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVa
 	}
 
 	v.Details = &TExternalVaultDetails{
-		Management:            addresses.ToMixedcase(internalVault.Management),
-		Governance:            addresses.ToMixedcase(internalVault.Governance),
-		Guardian:              addresses.ToMixedcase(internalVault.Guardian),
-		Rewards:               addresses.ToMixedcase(internalVault.Rewards),
+		Management:            internalVault.Management.Hex(),
+		Governance:            internalVault.Governance.Hex(),
+		Guardian:              internalVault.Guardian.Hex(),
+		Rewards:               internalVault.Rewards.Hex(),
 		DepositLimit:          internalVault.DepositLimit,
 		AvailableDepositLimit: internalVault.AvailableDepositLimit,
 		PerformanceFee:        internalVault.PerformanceFee,
@@ -282,22 +282,22 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigration {
 	return TExternalVaultMigration{
 		Available: migration.Available,
-		Address:   common.NewMixedcaseAddress(migration.Address),
-		Contract:  common.NewMixedcaseAddress(migration.Contract),
+		Address:   migration.Address.Hex(),
+		Contract:  migration.Contract.Hex(),
 	}
 }
 func toTExternalVaultStaking(staking models.TStaking) TExternalVaultStaking {
 	return TExternalVaultStaking{
 		Available: staking.Available,
-		Address:   common.NewMixedcaseAddress(staking.Address),
+		Address:   staking.Address.Hex(),
 		Risk:      staking.Risk,
 		TVL:       staking.TVL,
 	}
 }
-func toArrTMixedcaseAddress(addresses []common.Address) []common.MixedcaseAddress {
-	arr := make([]common.MixedcaseAddress, len(addresses))
+func toArrTMixedcaseAddress(addresses []common.Address) []string {
+	arr := make([]string, len(addresses))
 	for i, address := range addresses {
-		arr[i] = common.NewMixedcaseAddress(address)
+		arr[i] = address.Hex()
 	}
 	return arr
 }

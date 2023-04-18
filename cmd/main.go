@@ -43,16 +43,17 @@ func main() {
 	switch process {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
+		go NewRouter().Run(`:8080`)
 
 		for _, chainID := range chains {
-			logs.Info(`Summoning daemons for chain %d`, chainID)
 			wg.Add(1)
 			go SummonDaemonsw(chainID, &wg)
 		}
 		wg.Wait()
 
-		logs.Success(`Server ready!`)
-		NewRouter().Run()
+		logs.Success(`Server ready on port 8080 !`)
+		select {}
+
 	case ProcessPartnerFees:
 		logs.Info(`Running yDaemon partner fees process...`)
 

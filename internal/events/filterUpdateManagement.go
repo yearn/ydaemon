@@ -1,12 +1,14 @@
 package events
 
 import (
+	"context"
 	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -19,39 +21,52 @@ import (
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
 ** - vaultAddress: the address of the vault we are working on
-** - asyncActivationMap: the async ptr to the map of vaultAddress -> blockNumber
+** - activationMap: the async ptr to the map of vaultAddress -> blockNumber
 ** - wg: the async ptr to the WaitGroup to sync the goroutines
 **
-** Returns nothing as the asyncActivationMap is updated via a pointer
+** Returns nothing as the activationMap is updated via a pointer
 **************************************************************************************************/
 func filterUpdateManagementOneTime(
-	chainID uint64,
-	vaultAddress common.Address,
-	vaultActivation uint64,
-	asyncActivationMap *sync.Map,
+	vault models.TVaultsFromRegistry,
+	activationMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	if wg != nil {
-		defer wg.Done()
-	}
+	client := ethereum.GetRPC(vault.ChainID)
+	currentVault, _ := contracts.NewYvault043(vault.Address, client)
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	blockEnd, _ := client.BlockNumber(context.Background())
+	end := &blockEnd
+	start := vault.Activation
 
-	client := ethereum.GetRPC(chainID)
-	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	opts := bind.FilterOpts{Start: vaultActivation, End: nil}
-	if log, err := currentVault.FilterUpdateManagement(&opts); err == nil {
-		if log.Next() {
-			if log.Error() != nil {
-				asyncActivationMap.Store(vaultAddress, vaultActivation)
-				return
-			}
-			asyncActivationMap.Store(vaultAddress, log.Event.Raw.BlockNumber)
-		} else {
-			asyncActivationMap.Store(vaultAddress, vaultActivation)
+	/******************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
 		}
-	} else {
-		logs.Error(err)
-		asyncActivationMap.Store(vaultAddress, vaultActivation)
-		logs.Error(`impossible to FilterUpdateManagement for Yvault043 ` + vaultAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+		if log, err := currentVault.FilterUpdateManagement(opts); err == nil {
+			if log.Next() {
+				if log.Error() != nil {
+					activationMap.Store(vault.Address, vault.Activation)
+					return
+				}
+				activationMap.Store(vault.Address, log.Event.Raw.BlockNumber)
+			} else {
+				activationMap.Store(vault.Address, vault.Activation)
+			}
+		} else {
+			activationMap.Store(vault.Address, vault.Activation)
+			logs.Error(`impossible to FilterUpdateManagement for Yvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
+		}
 	}
 }
 
@@ -71,11 +86,14 @@ func HandleUpdateManagementOneTime(
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
 	** goroutines via the wg before continuing.
 	**********************************************************************************************/
-	asyncActivationMap := sync.Map{}
+	activationMap := sync.Map{}
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go filterUpdateManagementOneTime(chainID, v.VaultsAddress, v.Activation, &asyncActivationMap, wg)
+		go func(v models.TVaultsFromRegistry) {
+			defer wg.Done()
+			filterUpdateManagementOneTime(v, &activationMap, wg)
+		}(v)
 	}
 	wg.Wait()
 
@@ -91,7 +109,7 @@ func HandleUpdateManagementOneTime(
 	**********************************************************************************************/
 	count := 0
 	vaultListWithActivation := make(map[common.Address]models.TVaultsFromRegistry)
-	asyncActivationMap.Range(func(key, value interface{}) bool {
+	activationMap.Range(func(key, value interface{}) bool {
 		if currentVault, ok := vaults[key.(common.Address)]; ok {
 			currentVault.Activation = value.(uint64)
 			vaultListWithActivation[key.(common.Address)] = currentVault

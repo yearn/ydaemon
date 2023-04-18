@@ -6,7 +6,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -30,22 +29,16 @@ import (
 **************************************************************************************************/
 func filterNewExperimentalVault(
 	chainID uint64,
-	registryAddress common.Address,
-	registryVersion uint64,
-	registryActivation uint64,
+	registry env.TContractData,
 	opts *bind.FilterOpts,
 	syncMap *sync.Map,
-	wg *sync.WaitGroup,
 ) {
-	if wg != nil {
-		defer wg.Done()
-	}
-	if registryVersion == 3 {
+	if registry.Version == 3 {
 		return //No newExperimentalVault events in registry v3
 	}
 
 	client := ethereum.GetRPC(chainID)
-	currentVault, _ := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
+	currentVault, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
 
 	if log, err := currentVault.FilterNewExperimentalVault(opts, nil, nil); err == nil {
 		for log.Next() {
@@ -54,12 +47,13 @@ func filterNewExperimentalVault(
 			}
 			eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 			newVault := models.TVaultsFromRegistry{
-				RegistryAddress: registryAddress,
-				VaultsAddress:   log.Event.Vault,
+				ChainID:         chainID,
+				RegistryAddress: registry.Address,
+				Address:         log.Event.Vault,
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
 				BlockNumber:     log.Event.Raw.BlockNumber,
-				Activation:      registryActivation,
+				Activation:      registry.Activation,
 				ManagementFee:   200,
 				BlockHash:       log.Event.Raw.BlockHash,
 				TxIndex:         log.Event.Raw.TxIndex,
@@ -69,7 +63,7 @@ func filterNewExperimentalVault(
 			syncMap.Store(eventKey, newVault)
 		}
 	} else {
-		logs.Error(`impossible to FilterNewExperimentalVault for YRegistryV2 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+		logs.Error(`impossible to FilterNewExperimentalVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 	}
 }
 
@@ -88,20 +82,14 @@ func filterNewExperimentalVault(
 **************************************************************************************************/
 func filterNewVaults(
 	chainID uint64,
-	registryAddress common.Address,
-	registryVersion uint64,
-	registryActivation uint64,
+	registry env.TContractData,
 	opts *bind.FilterOpts,
 	syncMap *sync.Map,
-	wg *sync.WaitGroup,
 ) {
-	if wg != nil {
-		defer wg.Done()
-	}
 	client := ethereum.GetRPC(chainID)
 
-	if registryVersion == 1 || registryVersion == 2 {
-		currentVault, _ := contracts.NewYregistryv2(registryAddress, client) //V1 and V2 share the same ABI
+	if registry.Version == 1 || registry.Version == 2 {
+		currentVault, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
 
 		if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
@@ -110,12 +98,13 @@ func filterNewVaults(
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 				newVault := models.TVaultsFromRegistry{
-					RegistryAddress: registryAddress,
-					VaultsAddress:   log.Event.Vault,
+					ChainID:         chainID,
+					RegistryAddress: registry.Address,
+					Address:         log.Event.Vault,
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      registryActivation,
+					Activation:      registry.Activation,
 					ManagementFee:   200,
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
@@ -125,23 +114,24 @@ func filterNewVaults(
 				syncMap.Store(eventKey, newVault)
 			}
 		} else {
-			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 
 		}
-	} else if registryVersion == 3 {
-		currentVault, _ := contracts.NewYRegistryV3(registryAddress, client) //V3 is not the same
+	} else if registry.Version == 3 {
+		currentVault, _ := contracts.NewYRegistryV3(registry.Address, client) //V3 is not the same
 		if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
 					continue
 				}
 				newVault := models.TVaultsFromRegistry{
-					RegistryAddress: registryAddress,
-					VaultsAddress:   log.Event.Vault,
+					ChainID:         chainID,
+					RegistryAddress: registry.Address,
+					Address:         log.Event.Vault,
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      registryActivation,
+					Activation:      registry.Activation,
 					ManagementFee:   200,
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
@@ -156,7 +146,7 @@ func filterNewVaults(
 				syncMap.Store(eventKey, newVault)
 			}
 		} else {
-			logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	}
 }
@@ -199,8 +189,8 @@ func HandleNewVaults(
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		/******************************************************************************************
 		** Then, we need to know when to start our log fetching. By default, we will fetch from the
-		** registry activation block in order to get all the vaults that were ever deployed since
-		** the registry was deployed.
+		** activation block in order to get all the vaults that were ever deployed since it was
+		** deployed.
 		** However, if the external database is used, we may want to only fetch the logs that were
 		** emitted after the last time we fetched the logs. In that case, we will use the last
 		** event block number + 1 as the start block number.
@@ -227,8 +217,15 @@ func HandleNewVaults(
 			}
 
 			opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
-			go filterNewVaults(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMap, wg)
-			go filterNewExperimentalVault(chainID, registry.Address, registry.Version, registry.Activation, opts, &syncMapExperimental, wg)
+			go func() {
+				defer wg.Done()
+				filterNewVaults(chainID, registry, opts, &syncMap)
+			}()
+
+			go func() {
+				defer wg.Done()
+				filterNewExperimentalVault(chainID, registry, opts, &syncMapExperimental)
+			}()
 		}
 	}
 	wg.Wait()
@@ -264,9 +261,7 @@ func HandleNewVaults(
 **************************************************************************************************/
 func HandleNewStandardVaults(
 	chainID uint64,
-	registryAddress common.Address,
-	registryVersion uint64,
-	registryActivation uint64,
+	registry env.TContractData,
 	start uint64,
 	end *uint64,
 ) (standardVaultList []models.TVaultsFromRegistry) {
@@ -294,11 +289,11 @@ func HandleNewStandardVaults(
 	**********************************************************************************************/
 	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
 	if start == 0 {
-		lastEvent := registriesWithLastEvent[registryAddress.Hex()]
+		lastEvent := registriesWithLastEvent[registry.Address.Hex()]
 		if lastEvent > 0 {
 			start = lastEvent + 1 //Adding one to get the next event
 		} else {
-			start = registryActivation
+			start = registry.Activation
 		}
 	}
 
@@ -313,7 +308,7 @@ func HandleNewStandardVaults(
 		}
 
 		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
-		filterNewVaults(chainID, registryAddress, registryVersion, registryActivation, opts, &syncMap, nil)
+		filterNewVaults(chainID, registry, opts, &syncMap)
 	}
 
 	/**********************************************************************************************

@@ -1,6 +1,7 @@
 package events
 
 import (
+	"context"
 	"strconv"
 	"strings"
 	"sync"
@@ -29,36 +30,53 @@ type TStakingPoolAdded struct {
 **
 ** Returns nothing as the asyncMap is updated via a pointer
 **************************************************************************************************/
-func filterStakingPoolAdded(
-	chainID uint64,
-	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
-) {
+func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-
 	stackingRewardAddress, ok := env.STACKING_REWARD_ADDRESSES[chainID]
-	if !ok {
-		logs.Error("No stacking reward address found for chainID", chainID)
-		return
-	}
-	currentVault, err := contracts.NewYOptimismStakingReward(stackingRewardAddress, client)
-	if err != nil {
+	contract, err := contracts.NewYOptimismStakingReward(stackingRewardAddress, client)
+	if err != nil || !ok {
 		logs.Error("Error while fetching StakingPoolAdded event", err)
 		return
 	}
 
-	if log, err := currentVault.FilterStakingPoolAdded(opts, nil, nil); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				logs.Error("Error while fetching StakingPoolAdded event", log.Error())
-				continue
-			}
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
+	}
 
-			eventKey := log.Event.Token.Hex() + `-` + log.Event.StakingPool.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-			asyncMap.Store(eventKey, TStakingPoolAdded{
-				StackingPool: log.Event.StakingPool,
-				Token:        log.Event.Token,
-			})
+	/******************************************************************************************
+	** Then, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	** Note: we don't use start here because we want the full history previous to the end
+	** to ensure the balance is correct
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
+		}
+
+		opts := &bind.FilterOpts{Start: start, End: &chunkEnd}
+		if log, err := contract.FilterStakingPoolAdded(opts, nil, nil); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					logs.Error("Error while fetching StakingPoolAdded event", log.Error())
+					continue
+				}
+
+				eventKey := log.Event.Token.Hex() + `-` + log.Event.StakingPool.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+				asyncMap.Store(eventKey, TStakingPoolAdded{
+					StackingPool: log.Event.StakingPool,
+					Token:        log.Event.Token,
+				})
+			}
+		} else {
+			logs.Error(`impossible to FilterStakingPoolAdded for StakingContract ` + stackingRewardAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	}
 }
@@ -73,17 +91,14 @@ func filterStakingPoolAdded(
 ** Returns:
 ** - a map of vaultAddress -> strategyAddress -> blockNumber -> PerformanceFee
 **************************************************************************************************/
-func HandleStakingPoolAdded(
-	chainID uint64,
-	start uint64,
-	end *uint64,
-) []TStakingPoolAdded {
+func HandleStakingPoolAdded(chainID uint64, start uint64, end *uint64) []TStakingPoolAdded {
 	timeBefore := time.Now()
 	asyncStackingPoolAddedMap := sync.Map{}
 
 	filterStakingPoolAdded(
 		chainID,
-		&bind.FilterOpts{Start: start, End: end},
+		start,
+		end,
 		&asyncStackingPoolAddedMap,
 	)
 

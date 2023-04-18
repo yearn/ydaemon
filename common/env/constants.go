@@ -147,8 +147,8 @@ var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 	250: {
 		{
 			//yvMIM, alone in it's own registry, not work registering and listening to it
+			Address:         common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
 			RegistryAddress: common.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
-			VaultsAddress:   common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
 			TokenAddress:    common.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),
 			APIVersion:      `0.4.3`,
 			BlockNumber:     18309707,

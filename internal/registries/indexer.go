@@ -97,8 +97,9 @@ func indexNewVaults(
 			case log := <-channel:
 				lastSyncedBlock = log.Raw.BlockNumber
 				newVault := models.TVaultsFromRegistry{
+					ChainID:         chainID,
 					RegistryAddress: registryAddress,
-					VaultsAddress:   log.Vault,
+					Address:         log.Vault,
 					TokenAddress:    log.Token,
 					APIVersion:      log.ApiVersion,
 					BlockNumber:     log.Raw.BlockNumber,
@@ -112,11 +113,11 @@ func indexNewVaults(
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
 				newVaultList := map[common.Address]models.TVaultsFromRegistry{
-					newVault.VaultsAddress: newVault,
+					newVault.Address: newVault,
 				}
 				vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
 				if vaultsWithActivation != nil {
-					newVault.Activation = vaultsWithActivation[newVault.VaultsAddress].Activation
+					newVault.Activation = vaultsWithActivation[newVault.Address].Activation
 				}
 
 				indexer.ProcessNewVault(chainID, newVaultList)
@@ -152,8 +153,9 @@ func indexNewVaults(
 			case log := <-channel:
 				lastSyncedBlock = log.Raw.BlockNumber
 				newVault := models.TVaultsFromRegistry{
+					ChainID:         chainID,
 					RegistryAddress: registryAddress,
-					VaultsAddress:   log.Vault,
+					Address:         log.Vault,
 					TokenAddress:    log.Token,
 					APIVersion:      log.ApiVersion,
 					BlockNumber:     log.Raw.BlockNumber,
@@ -170,11 +172,11 @@ func indexNewVaults(
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
 				newVaultList := map[common.Address]models.TVaultsFromRegistry{
-					newVault.VaultsAddress: newVault,
+					newVault.Address: newVault,
 				}
 				vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
 				if vaultsWithActivation != nil {
-					newVault.Activation = vaultsWithActivation[newVault.VaultsAddress].Activation
+					newVault.Activation = vaultsWithActivation[newVault.Address].Activation
 				}
 				indexer.ProcessNewVault(chainID, newVaultList)
 			case err := <-watcher.Err():
@@ -260,10 +262,19 @@ func indexNewVaultsWrapper(
 	**********************************************************************************************/
 	if delay > 0 {
 		for {
-			vaultsList := events.HandleNewStandardVaults(chainID, registryAddress, registryVersion, registryActivation, lastSyncedBlock, nil)
+			vaultsList := events.HandleNewStandardVaults(
+				chainID,
+				env.TContractData{
+					Address:    registryAddress,
+					Version:    registryVersion,
+					Activation: registryActivation,
+				},
+				lastSyncedBlock,
+				nil,
+			)
 			uniqueVaultsList := make(map[common.Address]models.TVaultsFromRegistry)
 			for _, v := range vaultsList {
-				uniqueVaultsList[v.VaultsAddress] = v
+				uniqueVaultsList[v.Address] = v
 				if v.BlockNumber > lastSyncedBlock {
 					lastSyncedBlock = v.BlockNumber
 				}

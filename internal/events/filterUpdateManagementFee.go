@@ -1,6 +1,7 @@
 package events
 
 import (
+	"context"
 	"strconv"
 	"strings"
 	"sync"
@@ -10,6 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -27,39 +29,66 @@ import (
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
 **************************************************************************************************/
-func filterUpdateManagementFee(
-	chainID uint64,
-	vaultAddress common.Address,
-	opts *bind.FilterOpts,
-	asyncFeeMap *sync.Map,
-	wg *sync.WaitGroup,
-) {
-	defer wg.Done()
-	client := ethereum.GetRPC(chainID)
+func filterUpdateManagementFee(vault *models.TVault, start uint64, end *uint64, asyncFeeMap *sync.Map) {
+	client := ethereum.GetRPC(vault.ChainID)
+	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 
-	currentVault, _ := contracts.NewYvault043(vaultAddress, client)
-	if log, err := currentVault.FilterUpdateManagementFee(opts); err == nil {
-		for log.Next() {
-			if log.Error() != nil {
-				continue
-			}
+	/**********************************************************************************************
+	** First, we need to know when to stop our log fetching. By default, we will fetch until the
+	** current block number, aka nil.
+	** As using nil may cause some issues, we will specify the current block number instead.
+	**********************************************************************************************/
+	if end == nil {
+		blockEnd, _ := client.BlockNumber(context.Background())
+		end = &blockEnd
+	}
 
-			eventKey := vaultAddress.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-			blockData := ethereum.TEventBlock{
-				EventType:   `updateManagementFee`,
-				TxHash:      log.Event.Raw.TxHash,
-				BlockNumber: log.Event.Raw.BlockNumber,
-				TxIndex:     log.Event.Raw.TxIndex,
-				LogIndex:    log.Event.Raw.Index,
-				Value:       bigNumber.SetInt(log.Event.ManagementFee),
-			}
+	/******************************************************************************************
+	** Then, we need to know when to start our log fetching. By default, we will fetch from the
+	** activation block in order to get all the vaults that were ever deployed since it was
+	** deployed.
+	******************************************************************************************/
+	if start == 0 {
+		start = vault.Activation
+	}
 
-			if syncMap, ok := asyncFeeMap.Load(eventKey); ok {
-				currentBlockData := append(syncMap.([]ethereum.TEventBlock), blockData)
-				asyncFeeMap.Store(eventKey, currentBlockData)
-			} else {
-				asyncFeeMap.Store(eventKey, []ethereum.TEventBlock{blockData})
+	/******************************************************************************************
+	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
+	** avoid hitting some external node providers' rate limits.
+	******************************************************************************************/
+	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE {
+		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE
+		if chunkEnd > *end {
+			chunkEnd = *end
+		}
+
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+		if log, err := currentVault.FilterUpdateManagementFee(opts); err == nil {
+			for log.Next() {
+				if log.Error() != nil {
+					continue
+				}
+
+				eventKey := vault.Address.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+				blockData := ethereum.TEventBlock{
+					EventType:   `updateManagementFee`,
+					TxHash:      log.Event.Raw.TxHash,
+					BlockNumber: log.Event.Raw.BlockNumber,
+					TxIndex:     log.Event.Raw.TxIndex,
+					LogIndex:    log.Event.Raw.Index,
+					Value:       bigNumber.SetInt(log.Event.ManagementFee),
+				}
+
+				if syncMap, ok := asyncFeeMap.Load(eventKey); ok {
+					currentBlockData := append(syncMap.([]ethereum.TEventBlock), blockData)
+					asyncFeeMap.Store(eventKey, currentBlockData)
+				} else {
+					asyncFeeMap.Store(eventKey, []ethereum.TEventBlock{blockData})
+				}
 			}
+		} else {
+			logs.Error(`impossible to FilterUpdateManagementFee for Yvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
+
 		}
 	}
 }
@@ -92,12 +121,15 @@ func HandleUpdateManagementFee(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		opts := &bind.FilterOpts{Start: start, End: end}
-		if start == 0 {
-			opts = &bind.FilterOpts{Start: v.Activation, End: end}
-		}
-
-		go filterUpdateManagementFee(chainID, v.Address, opts, &asyncManagementFeeUpdate, wg)
+		go func(v *models.TVault) {
+			defer wg.Done()
+			filterUpdateManagementFee(
+				v,
+				start,
+				end,
+				&asyncManagementFeeUpdate,
+			)
+		}(v)
 	}
 	wg.Wait()
 

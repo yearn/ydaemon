@@ -383,16 +383,16 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	updatedTokenMap := make(map[common.Address]*models.TERC20Token)
 	for _, currentVault := range vaults {
-		updatedTokenMap[currentVault.VaultsAddress] = &models.TERC20Token{
-			Address: currentVault.VaultsAddress,
+		updatedTokenMap[currentVault.Address] = &models.TERC20Token{
+			Address: currentVault.Address,
 		}
 	}
 
 	// RESET ALL DB
 	for _, currentVault := range vaults {
-		if _, ok := tokenMap[currentVault.VaultsAddress]; !ok {
-			updatedTokenMap[currentVault.VaultsAddress] = &models.TERC20Token{
-				Address: currentVault.VaultsAddress,
+		if _, ok := tokenMap[currentVault.Address]; !ok {
+			updatedTokenMap[currentVault.Address] = &models.TERC20Token{
+				Address: currentVault.Address,
 			}
 		}
 

@@ -27,18 +27,18 @@ func RegisterAllVaults(
 	**********************************************************************************************/
 	uniqueVaultsList := make(map[common.Address]models.TVaultsFromRegistry)
 	for _, v := range standardVaultList {
-		uniqueVaultsList[v.VaultsAddress] = v
+		uniqueVaultsList[v.Address] = v
 	}
 
 	for _, v := range experimentalVaultList {
-		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
-			uniqueVaultsList[v.VaultsAddress] = v
+		if _, ok := uniqueVaultsList[v.Address]; !ok {
+			uniqueVaultsList[v.Address] = v
 		}
 	}
 
 	for _, v := range env.EXTRA_VAULTS[chainID] {
-		if _, ok := uniqueVaultsList[v.VaultsAddress]; !ok {
-			uniqueVaultsList[v.VaultsAddress] = v
+		if _, ok := uniqueVaultsList[v.Address]; !ok {
+			uniqueVaultsList[v.Address] = v
 		}
 	}
 

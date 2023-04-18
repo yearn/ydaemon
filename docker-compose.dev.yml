@@ -25,6 +25,7 @@ services:
       - SENTRY_DSN
       - SENTRY_SAMPLE_RATE
       - LOG_LEVEL
+      - MYSQL_DSN
     networks:
       - ydaemon-dev
     restart: always

@@ -23,4 +23,5 @@ services:
       - SERVER_NAME
       - SENTRY_SAMPLE_RATE
       - LOG_LEVEL
+      - MYSQL_DSN
     restart: always

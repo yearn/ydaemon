@@ -129,7 +129,7 @@ func (caller *TEthMultiCaller) execute(
 
 // ExecuteByBatch will take a group of calls, split them in fixed-size group to
 // avoid the gasLimit error, and execute as many transactions as required to get
-// the results.
+// the results
 func (caller *TEthMultiCaller) ExecuteByBatch(
 	calls []Call,
 	batchSize int,

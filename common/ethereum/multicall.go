@@ -96,7 +96,6 @@ func (caller *TEthMultiCaller) execute(
 	multiCallGroup []contracts.Multicall2Call,
 	blockNumber *big.Int,
 ) ([]byte, error) {
-	// Prepare calldata for multicall
 	abi, _ := contracts.Multicall2MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
 	if err != nil {

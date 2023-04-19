@@ -179,7 +179,7 @@ var LENS_ADDRESSES = map[uint64]common.Address{
 // MULTICALL_ADDRESSES contains the address of the multicall2 contract for a specific chainID
 var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`),
-	10:    common.HexToAddress(`0x054FfF7ee30953DdB739458e11EAAd51224343a1`),
+	10:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	56:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	137:   common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	250:   common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),

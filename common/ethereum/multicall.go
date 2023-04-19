@@ -146,14 +146,11 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	}
 
 	for i := 0; i < len(multiCalls); i += batchSize {
-		var callGroup []Call
 		var group []contracts.Multicall2Call
 
 		if i+batchSize >= len(multiCalls) {
-			callGroup = calls[i:]
 			group = multiCalls[i:]
 		} else {
-			callGroup = calls[i : i+batchSize]
 			group = multiCalls[i : i+batchSize]
 		}
 

@@ -146,11 +146,14 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	}
 
 	for i := 0; i < len(multiCalls); i += batchSize {
+		var callGroup []Call
 		var group []contracts.Multicall2Call
 
 		if i+batchSize >= len(multiCalls) {
+			callGroup = calls[i:]
 			group = multiCalls[i:]
 		} else {
+			callGroup = calls[i : i+batchSize]
 			group = multiCalls[i : i+batchSize]
 		}
 
@@ -166,6 +169,8 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				logs.Warning("Multicall size error, retrying with smaller batch size", "batchSize", batchSize)
 			} else if OUT_OF_GAS_ERROR {
 				logs.Warning("Multicall out of gas error, retrying with smaller batch size", "batchSize", batchSize)
+			} else {
+				logs.Pretty(`Multicall error for batch`, callGroup)
 			}
 			//check if error is a request entity too large
 			if LIMIT_ERROR || SIZE_ERROR || OUT_OF_GAS_ERROR {

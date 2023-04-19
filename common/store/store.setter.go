@@ -146,6 +146,14 @@ func StoreVault(chainID uint64, vault *models.TVault) {
 			return txn.Set([]byte(key), dataByte)
 		})
 	case DBMysql:
+		//for now
+		go OpenBadgerDB(chainID, TABLES.VAULTS).Update(func(txn *badger.Txn) error {
+			dataByte, err := json.Marshal(vault)
+			if err != nil {
+				return err
+			}
+			return txn.Set([]byte(key), dataByte)
+		})
 		go func() {
 			newItem := &DBVault{}
 			newItem.UUID = getUUID(key)

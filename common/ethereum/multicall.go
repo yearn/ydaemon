@@ -162,6 +162,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")
+			isAssumingOutOfGas := false
 
 			if LIMIT_ERROR {
 				logs.Warning("Multicall gas limit error, retrying with smaller batch size", "batchSize", batchSize)
@@ -170,12 +171,17 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			} else if OUT_OF_GAS_ERROR {
 				logs.Warning("Multicall out of gas error, retrying with smaller batch size", "batchSize", batchSize)
 			} else {
-				logs.Pretty(`Multicall error for batch`, callGroup)
+				//assume it's out of gas for a few tries
+				isAssumingOutOfGas = true
 			}
+
 			//check if error is a request entity too large
-			if LIMIT_ERROR || SIZE_ERROR || OUT_OF_GAS_ERROR {
+			if LIMIT_ERROR || SIZE_ERROR || OUT_OF_GAS_ERROR || isAssumingOutOfGas {
 				if batchSize == math.MaxInt64 {
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
+				}
+				if isAssumingOutOfGas && batchSize <= 100 {
+					return nil
 				}
 				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
 			} else {

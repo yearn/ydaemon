@@ -3,10 +3,11 @@ package indexer
 import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/internal/events"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -24,11 +25,11 @@ func PostProcessStrategies(chainID uint64) {
 	}
 }
 
-func ProcessNewVault(chainID uint64, vaultsList map[common.Address]utils.TVaultsFromRegistry) {
+func ProcessNewVault(chainID uint64, vaultsList map[common.Address]models.TVaultsFromRegistry) {
 	tokens.RetrieveAllTokens(chainID, vaultsList)
 	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsList)
+	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsList, 0, nil)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 	PostProcessStrategies(chainID)
 }

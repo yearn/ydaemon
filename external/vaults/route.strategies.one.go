@@ -28,7 +28,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 	}
 	// Always show details
 	newStrategy := NewStrategy().AssignTStrategy(strategy)
-	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategy.BuildRiskScore())
+	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
 
 	c.JSON(http.StatusOK, *newStrategy)
 }

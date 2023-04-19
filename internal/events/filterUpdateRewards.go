@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -42,7 +42,7 @@ func filterUpdateRewards(
 			if log.Error() != nil {
 				continue
 			}
-			eventKey := (vaultAddress.String() + `-` + strconv.FormatUint(log.Event.Raw.BlockNumber, 10))
+			eventKey := vaultAddress.Hex() + `-` + strconv.FormatUint(log.Event.Raw.BlockNumber, 10)
 			asyncMapLastReports.LoadOrStore(eventKey, log.Event.Rewards.Hex())
 		}
 	} else {
@@ -70,7 +70,7 @@ func filterUpdateRewards(
 **********************************************************************************************/
 func HandleUpdateRewards(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
+	vaults map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64]common.Address {

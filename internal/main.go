@@ -5,18 +5,18 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/tokensList"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var STRATLIST = []strategies.TStrategy{}
+var STRATLIST = []models.TStrategy{}
 
 func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
@@ -32,7 +32,7 @@ func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duratio
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]models.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
@@ -46,7 +46,7 @@ func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]utils.TVa
 		time.Sleep(delay)
 	}
 }
-func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []strategies.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
+func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
@@ -68,7 +68,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 	var internalWG sync.WaitGroup
 	//From the events in the registries, retrieve all the vaults -> Should only be done on init or when a new vault is added
-	vaultsMap := registries.RetrieveAllVaults(chainID, 0)
+	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 
 	// From our list of vaults, retrieve the ERC20 data for each shareToken, underlyingToken and the underlying of those tokens
 	// -> Data store will not change unless extreme event, so this should only be done on init or when a new vault is added
@@ -84,8 +84,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
 	internalWG.Wait()
 
-	go tokensList.BuildTokenList(chainID)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
+	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
 	internalWG.Add(1)
@@ -96,5 +95,12 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 }
 
 func InitializeBribes(chainID uint64) {
-	bribes.RetrieveAllRewardsAdded(chainID)
+	allRewardsAdded := events.HandleRewardsAdded(chainID)
+	for _, reward := range allRewardsAdded {
+		bribes.SetInRewardAddedMap(
+			chainID,
+			reward.BlockNumber,
+			&reward,
+		)
+	}
 }

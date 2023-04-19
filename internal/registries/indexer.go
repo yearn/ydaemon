@@ -9,12 +9,13 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
-	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -95,7 +96,7 @@ func indexNewVaults(
 			select {
 			case log := <-channel:
 				lastSyncedBlock = log.Raw.BlockNumber
-				newVault := utils.TVaultsFromRegistry{
+				newVault := models.TVaultsFromRegistry{
 					RegistryAddress: registryAddress,
 					VaultsAddress:   log.Vault,
 					TokenAddress:    log.Token,
@@ -106,14 +107,18 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            utils.VaultTypeStandard,
+					Type:            models.VaultTypeStandard,
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
-				newVaultList := map[common.Address]utils.TVaultsFromRegistry{
+				newVaultList := map[common.Address]models.TVaultsFromRegistry{
 					newVault.VaultsAddress: newVault,
 				}
-				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
+				vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
+				if vaultsWithActivation != nil {
+					newVault.Activation = vaultsWithActivation[newVault.VaultsAddress].Activation
+				}
+
 				indexer.ProcessNewVault(chainID, newVaultList)
 			case err := <-watcher.Err():
 				return lastSyncedBlock, true, err
@@ -146,7 +151,7 @@ func indexNewVaults(
 			select {
 			case log := <-channel:
 				lastSyncedBlock = log.Raw.BlockNumber
-				newVault := utils.TVaultsFromRegistry{
+				newVault := models.TVaultsFromRegistry{
 					RegistryAddress: registryAddress,
 					VaultsAddress:   log.Vault,
 					TokenAddress:    log.Token,
@@ -157,17 +162,20 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            utils.VaultTypeStandard,
+					Type:            models.VaultTypeStandard,
 				}
 				if log.VaultType.Cmp(big.NewInt(2)) == 0 {
-					newVault.Type = utils.VaultTypeAutomated
+					newVault.Type = models.VaultTypeAutomated
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
-				newVaultList := map[common.Address]utils.TVaultsFromRegistry{
+				newVaultList := map[common.Address]models.TVaultsFromRegistry{
 					newVault.VaultsAddress: newVault,
 				}
-				vaults.RetrieveActivationForAllVaults(chainID, newVaultList)
+				vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
+				if vaultsWithActivation != nil {
+					newVault.Activation = vaultsWithActivation[newVault.VaultsAddress].Activation
+				}
 				indexer.ProcessNewVault(chainID, newVaultList)
 			case err := <-watcher.Err():
 				return lastSyncedBlock, true, err
@@ -252,16 +260,20 @@ func indexNewVaultsWrapper(
 	**********************************************************************************************/
 	if delay > 0 {
 		for {
-			vaultsList := []utils.TVaultsFromRegistry{}
-			filterNewVaults(chainID, registryAddress, registryVersion, lastSyncedBlock, &vaultsList, nil)
-			uniqueVaultsList := make(map[common.Address]utils.TVaultsFromRegistry)
+			vaultsList := events.HandleNewStandardVaults(chainID, registryAddress, registryVersion, registryActivation, lastSyncedBlock, nil)
+			uniqueVaultsList := make(map[common.Address]models.TVaultsFromRegistry)
 			for _, v := range vaultsList {
 				uniqueVaultsList[v.VaultsAddress] = v
 				if v.BlockNumber > lastSyncedBlock {
 					lastSyncedBlock = v.BlockNumber
 				}
 			}
-			vaults.RetrieveActivationForAllVaults(chainID, uniqueVaultsList)
+			vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, uniqueVaultsList)
+			for k, v := range vaultsWithActivation {
+				vault := uniqueVaultsList[k]
+				vault.Activation = v.Activation
+				uniqueVaultsList[k] = vault
+			}
 			if shouldRetry {
 				indexNewVaultsWrapper(chainID, registryAddress, registryVersion, lastSyncedBlock, 0)
 				if delay > 60 {
@@ -275,7 +287,7 @@ func indexNewVaultsWrapper(
 }
 
 func IndexNewVaults(chainID uint64) {
-	for _, registry := range YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.YEARN_REGISTRIES[chainID] {
 		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Activation, 1*time.Minute)
 	}
 

@@ -12,7 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 type TMimicStrategyReportBase struct {
@@ -37,12 +37,14 @@ type TMimicStrategyReportBase struct {
 **************************************************************************************************/
 func filterStrategyReportedFor031To043(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
@@ -66,7 +68,7 @@ func filterStrategyReportedFor031To043(
 				Raw:       log.Event.Raw,
 			}
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }
@@ -79,12 +81,14 @@ func filterStrategyReportedFor031To043(
 **************************************************************************************************/
 func filterStrategyReportedFor030(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault030(vault.Address, client)
@@ -109,7 +113,7 @@ func filterStrategyReportedFor030(
 			}
 
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }
@@ -123,12 +127,14 @@ func filterStrategyReportedFor030(
 **************************************************************************************************/
 func filterStrategyReportedFor022(
 	chainID uint64,
-	vault *vaults.TVault,
+	vault *models.TVault,
 	opts *bind.FilterOpts,
-	asyncMap *sync.Map,
+	syncMap *sync.Map,
 	wg *sync.WaitGroup,
 ) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 
 	client := ethereum.RPC[1]
 	currentVault, _ := contracts.NewYvault022(vault.Address, client)
@@ -153,7 +159,7 @@ func filterStrategyReportedFor022(
 			}
 
 			eventKey := log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.TxIndex), 10) + `-` + strconv.FormatUint(uint64(log.Event.Raw.Index), 10)
-			asyncMap.Store(eventKey, formatedLogs)
+			syncMap.Store(eventKey, formatedLogs)
 		}
 	}
 }
@@ -174,7 +180,7 @@ func filterStrategyReportedFor022(
 **************************************************************************************************/
 func HandleStrategyReported(
 	chainID uint64,
-	vaultsMap map[common.Address]*vaults.TVault,
+	vaultsMap map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
 ) []TMimicStrategyReportBase {

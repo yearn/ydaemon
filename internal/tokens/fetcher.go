@@ -1,7 +1,6 @@
 package tokens
 
 import (
-	"math"
 	"math/big"
 	"strconv"
 	"strings"
@@ -17,7 +16,8 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/utils"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
 /**************************************************************************************************
@@ -37,7 +37,7 @@ func fetchBasicInformations(
 	chainID uint64,
 	tokens []common.Address,
 	curveFactoryPoolMap map[string][]common.Address,
-) (tokenList []*TERC20Token) {
+) (tokenList []*models.TERC20Token) {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -46,25 +46,18 @@ func fetchBasicInformations(
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, token := range tokens {
-		calls = append(calls, getName(token.String(), token))
-		calls = append(calls, getSymbol(token.String(), token))
-		calls = append(calls, getDecimals(token.String(), token))
-		calls = append(calls, getToken(token.String(), token))
-		calls = append(calls, getPoolFromLpToken(token.String(), env.CURVE_REGISTRY_ADDRESSES[chainID], token))
-		calls = append(calls, getCompoundUnderlying(token.String(), token))
-		calls = append(calls, getAaveV1Underlying(token.String(), token))
-		calls = append(calls, getAaveV2Underlying(token.String(), token))
-		calls = append(calls, getCurveMinter(token.String(), token))
-		calls = append(calls, getCurveCoin(token.String()+`_coin0`, token, big.NewInt(0)))
-		calls = append(calls, getCurveCoin(token.String()+`_coin1`, token, big.NewInt(1)))
+		calls = append(calls, multicalls.GetName(token.Hex(), token))
+		calls = append(calls, multicalls.GetSymbol(token.Hex(), token))
+		calls = append(calls, multicalls.GetDecimals(token.Hex(), token))
+		calls = append(calls, multicalls.GetToken(token.Hex(), token))
+		calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex(), env.CURVE_REGISTRY_ADDRESSES[chainID], token))
+		calls = append(calls, multicalls.GetCompoundUnderlying(token.Hex(), token))
+		calls = append(calls, multicalls.GetAaveV1Underlying(token.Hex(), token))
+		calls = append(calls, multicalls.GetAaveV2Underlying(token.Hex(), token))
+		calls = append(calls, multicalls.GetCurveMinter(token.Hex(), token))
+		calls = append(calls, multicalls.GetCurveCoin(token.Hex()+`_coin0`, token, big.NewInt(0)))
+		calls = append(calls, multicalls.GetCurveCoin(token.Hex()+`_coin1`, token, big.NewInt(1)))
 	}
-
-	/**********************************************************************************************
-	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
-	** number. We split the multicall in multiple calls of 3 calls each.
-	** Otherwise, we just send the multicall as is.
-	**********************************************************************************************/
-	maxBatch := math.MaxInt64
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. We will create a new relatedTokensList to be able to know
@@ -72,10 +65,10 @@ func fetchBasicInformations(
 	** Nb: A special case is for Ethereum coin, which is defaulted as address 0xEeeee....EEeE.
 	**********************************************************************************************/
 	relatedTokensList := []common.Address{}
-	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	response := multicalls.Perform(chainID, calls, nil)
 	for _, tokenAddress := range tokens {
 		if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
-			tokenList = append(tokenList, &TERC20Token{
+			tokenList = append(tokenList, &models.TERC20Token{
 				Address:  tokenAddress,
 				Name:     `Ethereum`,
 				Symbol:   `ETH`,
@@ -83,22 +76,22 @@ func fetchBasicInformations(
 			})
 			continue
 		}
-		rawName := response[tokenAddress.String()+`name`]
-		rawSymbol := response[tokenAddress.String()+`symbol`]
-		rawDecimals := response[tokenAddress.String()+`decimals`]
-		rawYearnVaultToken := response[tokenAddress.String()+`token`]
-		rawPoolFromLpToken := response[tokenAddress.String()+`get_pool_from_lp_token`]
-		rawCurveCoinMinterToken := response[tokenAddress.String()+`minter`]
-		rawCUnderlying := response[tokenAddress.String()+`underlying`]
-		rawAV1Underlying := response[tokenAddress.String()+`underlyingAssetAddress`]
-		rawAV2Underlying := response[tokenAddress.String()+`UNDERLYING_ASSET_ADDRESS`]
-		rawCurveCoin0 := response[tokenAddress.String()+`_coin0coins`]
-		rawCurveCoin1 := response[tokenAddress.String()+`_coin1coins`]
+		rawName := response[tokenAddress.Hex()+`name`]
+		rawSymbol := response[tokenAddress.Hex()+`symbol`]
+		rawDecimals := response[tokenAddress.Hex()+`decimals`]
+		rawYearnVaultToken := response[tokenAddress.Hex()+`token`]
+		rawPoolFromLpToken := response[tokenAddress.Hex()+`get_pool_from_lp_token`]
+		rawCurveCoinMinterToken := response[tokenAddress.Hex()+`minter`]
+		rawCUnderlying := response[tokenAddress.Hex()+`underlying`]
+		rawAV1Underlying := response[tokenAddress.Hex()+`underlyingAssetAddress`]
+		rawAV2Underlying := response[tokenAddress.Hex()+`UNDERLYING_ASSET_ADDRESS`]
+		rawCurveCoin0 := response[tokenAddress.Hex()+`_coin0coins`]
+		rawCurveCoin1 := response[tokenAddress.Hex()+`_coin1coins`]
 
 		/******************************************************************************************
 		** Preparing our new ERC20Token object
 		******************************************************************************************/
-		newToken := &TERC20Token{
+		newToken := &models.TERC20Token{
 			Address:  tokenAddress,
 			Name:     helpers.DecodeString(rawName),
 			Symbol:   helpers.DecodeString(rawSymbol),
@@ -270,10 +263,10 @@ func fetchBasicInformations(
 **************************************************************************************************/
 func findAllTokens(
 	chainID uint64,
-	tokenMap map[common.Address]*TERC20Token,
+	tokenMap map[common.Address]*models.TERC20Token,
 	curveFactoryPoolMap map[string][]common.Address,
-) map[common.Address]*TERC20Token {
-	newMap := make(map[common.Address]*TERC20Token)
+) map[common.Address]*models.TERC20Token {
+	newMap := make(map[common.Address]*models.TERC20Token)
 	tokenMapAddresses := []common.Address{}
 	for tokenAddress := range tokenMap {
 		tokenMapAddresses = append(tokenMapAddresses, tokenAddress)
@@ -307,10 +300,9 @@ func loadCurvePools(
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for i := 0; i < int(poolCount.Int64()); i++ {
-		calls = append(calls, getCurveFactoryPool(
+		calls = append(calls, multicalls.GetCurveFactoryPool(
 			strconv.Itoa(i),
 			env.CURVE_FACTORIES_ADDRESSES[chainID],
 			big.NewInt(int64(i)),
@@ -322,19 +314,18 @@ func loadCurvePools(
 	** number. We split the multicall in multiple calls of 3 calls each.
 	** Otherwise, we just send the multicall as is.
 	**********************************************************************************************/
-	maxBatch := math.MaxInt64
-	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	response := multicalls.Perform(chainID, calls, nil)
 	calls = []ethereum.Call{}
 	for i := 0; i < int(poolCount.Int64()); i++ {
 		poolAddress := helpers.DecodeAddress(response[strconv.Itoa(i)+`pool_list`])
-		calls = append(calls, getCurveFactoryCoin(
+		calls = append(calls, multicalls.GetCurveFactoryCoin(
 			poolAddress.Hex(),
 			env.CURVE_FACTORIES_ADDRESSES[chainID],
 			poolAddress,
 		))
 	}
 
-	response = caller.ExecuteByBatch(calls, maxBatch, nil)
+	response = multicalls.Perform(chainID, calls, nil)
 	for poolAddressRaw, coinAddressesRaw := range response {
 		if len(coinAddressesRaw) == 0 {
 			continue
@@ -367,8 +358,8 @@ func loadCurvePools(
 **************************************************************************************************/
 func RetrieveAllTokens(
 	chainID uint64,
-	vaults map[common.Address]utils.TVaultsFromRegistry,
-) map[common.Address]*TERC20Token {
+	vaults map[common.Address]models.TVaultsFromRegistry,
+) map[common.Address]*models.TERC20Token {
 	trace := traces.Init(`app.indexer.tokens.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -380,7 +371,7 @@ func RetrieveAllTokens(
 	** First, try to retrieve the list of tokens from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	tokenMap := make(map[common.Address]*TERC20Token)
+	tokenMap := make(map[common.Address]*models.TERC20Token)
 	store.ListFromBadgerDB(chainID, store.TABLES.TOKENS, &tokenMap)
 
 	/**********************************************************************************************
@@ -390,9 +381,9 @@ func RetrieveAllTokens(
 	** per chainID as the token information are not expected to change and will be retrieve on
 	** subsequent reboots.
 	**********************************************************************************************/
-	updatedTokenMap := make(map[common.Address]*TERC20Token)
+	updatedTokenMap := make(map[common.Address]*models.TERC20Token)
 	for _, currentVault := range vaults {
-		updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
+		updatedTokenMap[currentVault.VaultsAddress] = &models.TERC20Token{
 			Address: currentVault.VaultsAddress,
 		}
 	}
@@ -400,13 +391,13 @@ func RetrieveAllTokens(
 	// RESET ALL DB
 	for _, currentVault := range vaults {
 		if _, ok := tokenMap[currentVault.VaultsAddress]; !ok {
-			updatedTokenMap[currentVault.VaultsAddress] = &TERC20Token{
+			updatedTokenMap[currentVault.VaultsAddress] = &models.TERC20Token{
 				Address: currentVault.VaultsAddress,
 			}
 		}
 
 		if _, ok := tokenMap[currentVault.TokenAddress]; !ok {
-			updatedTokenMap[currentVault.TokenAddress] = &TERC20Token{
+			updatedTokenMap[currentVault.TokenAddress] = &models.TERC20Token{
 				Address: currentVault.TokenAddress,
 			}
 		}
@@ -431,7 +422,7 @@ func RetrieveAllTokens(
 	for _, tokenAddress := range extraTokens[chainID] {
 		tokenAddress := common.HexToAddress(tokenAddress)
 		if _, ok := tokenMap[tokenAddress]; !ok {
-			updatedTokenMap[tokenAddress] = &TERC20Token{
+			updatedTokenMap[tokenAddress] = &models.TERC20Token{
 				Address: tokenAddress,
 			}
 		}
@@ -456,13 +447,13 @@ func RetrieveAllTokens(
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedTokenMap))
 		for _, token := range updatedTokenMap {
-			go func(_token *TERC20Token) {
+			go func(thisToken *models.TERC20Token) {
 				defer wg.Done()
 				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.TOKENS,
-					_token.Address.String(),
-					_token,
+					thisToken.Address.Hex(),
+					thisToken,
 				)
 			}(token)
 		}

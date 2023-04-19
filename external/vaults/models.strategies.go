@@ -6,8 +6,8 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -64,7 +64,7 @@ func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanize
 func NewStrategy() *TStrategy {
 	return &TStrategy{}
 }
-func (v *TStrategy) AssignTStrategy(strategy *strategies.TStrategy) *TStrategy {
+func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
 	delegatedValue := `0`
 	if vault, ok := vaults.FindVault(strategy.ChainID, strategy.VaultAddress); ok {
 		if tokenPrice, ok := prices.FindPrice(strategy.ChainID, vault.Token.Address); ok {

@@ -189,7 +189,7 @@ func ToLower(arr []string) []string {
 func AddressToString(arr []common.Address) []string {
 	arrStr := make([]string, len(arr))
 	for i, v := range arr {
-		arrStr[i] = v.String()
+		arrStr[i] = v.Hex()
 	}
 	return arrStr
 }

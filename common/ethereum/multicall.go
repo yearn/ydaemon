@@ -122,12 +122,7 @@ func (caller *TEthMultiCaller) execute(
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
-		traces.
-			Capture(`error`, `failed to perform multicall for `+chainID.String()).
-			SetEntity(`multicall`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`blockNumber`, blockNumber.String()).
-			Send()
+		logs.Error("Failed to perform multicall for:", chainID.String(), err.Error())
 		return []byte{}, err
 	}
 	return resp, nil

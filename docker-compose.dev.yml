@@ -3,9 +3,6 @@ version: "3.7"
 networks:
   ydaemon-dev:
 
-volumes:
-  ystore-dev: {}
-
 services:
   ydaemon-dev:
     image: ghcr.io/yearn/ydaemon

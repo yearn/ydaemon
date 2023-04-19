@@ -5,8 +5,8 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/utils"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -76,6 +76,14 @@ type TExternalVaultMigration struct {
 	Contract  common.MixedcaseAddress `json:"contract"`
 }
 
+// TExternalVaultStaking is the struct containing the information about the staking contract related to that vault.
+type TExternalVaultStaking struct {
+	Available bool                    `json:"available"`
+	Address   common.MixedcaseAddress `json:"address"`
+	TVL       float64                 `json:"tvl"`
+	Risk      int                     `json:"risk"`
+}
+
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
 	Management            common.MixedcaseAddress `json:"management"`
@@ -115,7 +123,7 @@ type TExternalERC20Token struct {
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
 	Address           common.MixedcaseAddress `json:"address"`
-	Type              utils.TVaultType        `json:"type"`
+	Type              models.TVaultType       `json:"type"`
 	Symbol            string                  `json:"symbol"`
 	DisplaySymbol     string                  `json:"display_symbol"`
 	FormatedSymbol    string                  `json:"formated_symbol"`
@@ -137,15 +145,16 @@ type TExternalVault struct {
 	Details           *TExternalVaultDetails  `json:"details"`
 	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
+	Staking           TExternalVaultStaking   `json:"staking"`
 }
 
 func NewVault() *TExternalVault {
 	return &TExternalVault{}
 }
-func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVault {
+func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVault {
 	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, internalVault.Address)
 	if !ok {
-		vaultFromMeta = &meta.TInternalVaultFromMeta{
+		vaultFromMeta = &models.TInternalVaultFromMeta{
 			Order:               1000000000,
 			HideAlways:          false,
 			DepositsDisabled:    false,
@@ -172,9 +181,10 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.ChainID = internalVault.ChainID
-	v.TVL = TExternalVaultTVL(internalVault.BuildTVL())
-	v.Migration = toTExternalVaultMigration(internalVault.BuildMigration())
-	v.Category = internalVault.BuildCategory()
+	v.TVL = TExternalVaultTVL(vaults.BuildTVL(internalVault))
+	v.Migration = toTExternalVaultMigration(vaults.BuildMigration(internalVault))
+	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
+	v.Category = vaults.BuildCategory(internalVault)
 
 	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, internalVault.Address)
 	if ok {
@@ -208,8 +218,8 @@ func (v *TExternalVault) AssignTVault(internalVault *vaults.TVault) *TExternalVa
 		v.Token.UnderlyingTokensAddresses = []common.MixedcaseAddress{}
 	}
 
-	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, v.Address)
-	internalAPY := internalVault.BuildAPY(aggregatedVault.LegacyAPY, okLegacyAPI)
+	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
+	internalAPY := vaults.BuildAPY(internalVault, aggregatedVault, okLegacyAPI)
 	v.APY = TExternalVaultAPY{
 		Type:              internalAPY.Type,
 		GrossAPR:          internalAPY.GrossAPR,
@@ -269,11 +279,19 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 	return vaultRiskScore
 }
 
-func toTExternalVaultMigration(migration vaults.TMigration) TExternalVaultMigration {
+func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigration {
 	return TExternalVaultMigration{
 		Available: migration.Available,
 		Address:   common.NewMixedcaseAddress(migration.Address),
 		Contract:  common.NewMixedcaseAddress(migration.Contract),
+	}
+}
+func toTExternalVaultStaking(staking models.TStaking) TExternalVaultStaking {
+	return TExternalVaultStaking{
+		Available: staking.Available,
+		Address:   common.NewMixedcaseAddress(staking.Address),
+		Risk:      staking.Risk,
+		TVL:       staking.TVL,
 	}
 }
 func toArrTMixedcaseAddress(addresses []common.Address) []common.MixedcaseAddress {

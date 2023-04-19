@@ -1,19 +1,21 @@
 package tokensList
 
 import (
-	"math"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/addresses"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/tokensList"
+	"github.com/yearn/ydaemon/processes/tokenList"
 )
 
 // GetYearnTokenList will, for a given chainID, return the Yearn's Token List
@@ -50,7 +52,7 @@ func GetYearnTokenList(c *gin.Context) {
 	** token is added to the tokensFromListMap map using the token's address as the key and the
 	** token struct as the value.
 	**********************************************************************************************/
-	tokensFromListMap := tokensList.MapTokenList(chainID)
+	tokensFromListMap := tokenList.MapTokenList(chainID)
 
 	/**********************************************************************************************
 	** Once we have our list of tokens, we can proceed to fetch the balances of the tokens for the
@@ -58,7 +60,6 @@ func GetYearnTokenList(c *gin.Context) {
 	** For each token in the tokensFromListMap map, we add a call to the slice of calls, for the
 	** balanceOf function of the ERC20 token.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, token := range tokensFromListMap {
 		calls = append(calls, getBalance(
@@ -69,17 +70,11 @@ func GetYearnTokenList(c *gin.Context) {
 	}
 
 	/**********************************************************************************************
-	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
-	** number. We split the multicall in multiple calls of 3 calls each.
-	** Otherwise, we just send the multicall as is.
-	**********************************************************************************************/
-	maxBatch := math.MaxInt64
-
-	/**********************************************************************************************
 	** The following code will execute the multicall and then map the results to the tokens in the
-	** returned tokenBalanceMap map, which is a map of token addresses to YTokenFromList structs.
+	** returned tokenBalanceMap map, which is a map of token addresses to TYearnTokenListToken
+	** structs.
 	**********************************************************************************************/
-	tokenBalanceMap := make(map[string]tokensList.YTokenFromList)
+	tokenBalanceMap := make(map[string]models.TYearnTokenListToken)
 
 	/**********************************************************************************************
 	** We first need to load the current chainCoin, which is the native coin of the chain. We then
@@ -89,16 +84,18 @@ func GetYearnTokenList(c *gin.Context) {
 	**********************************************************************************************/
 	chainCoin := tokens.COIN_PER_CHAIN[chainID]
 	chainCoinPrice, ok := prices.FindPrice(chainID, chainCoin.Address)
-	chainToken := tokensList.YTokenFromList{
-		ChainID:  chainID,
-		Address:  chainCoin.Address.Hex(),
-		Name:     chainCoin.DisplayName,
-		Symbol:   chainCoin.DisplaySymbol,
-		LogoURI:  chainCoin.Icon,
-		Decimals: int(chainCoin.Decimals),
-		SupportedZaps: []tokensList.SupportedZap{
-			tokensList.Wido,
+	chainToken := models.TYearnTokenListToken{
+		TTokenListToken: models.TTokenListToken{
+			ChainID:  int(chainID),
+			Address:  chainCoin.Address.Hex(),
+			Name:     chainCoin.DisplayName,
+			Symbol:   chainCoin.DisplaySymbol,
+			LogoURI:  chainCoin.Icon,
+			Decimals: int(chainCoin.Decimals),
 		},
+		Balance:       bigNumber.NewInt(0),
+		Price:         bigNumber.NewInt(0),
+		SupportedZaps: []models.SupportedZap{models.Wido},
 	}
 	if ok {
 		chainToken.Price = chainCoinPrice
@@ -108,7 +105,7 @@ func GetYearnTokenList(c *gin.Context) {
 	/**********************************************************************************************
 	** And we can finally execute the multicall.
 	**********************************************************************************************/
-	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	response := multicalls.Perform(chainID, calls, nil)
 	for _, token := range tokensFromListMap {
 		rawBalance := response[token.Address+`balanceOf`]
 		if len(rawBalance) == 0 {
@@ -133,15 +130,15 @@ func GetYearnTokenList(c *gin.Context) {
 
 // GetTokenList will return the Yearn's Token List
 func GetTokenList(c *gin.Context) {
-	var tokenList tokensList.DefaultTokenListData
+	var list models.TTokenList
 
-	tokenList.Name = "Yearn Token List"
-	tokenList.Keywords = []string{"yearn", "yfi", "yvault", "ytoken", "ycurve", "yprotocol", "vaults"}
-	tokenList.LogoURI = "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg"
-	tokenList.Timestamp = time.Now().Format(time.RFC3339)
-	tokenList.Version.Major = 1
-	tokenList.Version.Minor = 0
-	tokenList.Version.Patch = 0
+	list.Name = "Yearn Token List"
+	list.Keywords = []string{"yearn", "yfi", "yvault", "ytoken", "ycurve", "yprotocol", "vaults"}
+	list.LogoURI = "https://raw.githubusercontent.com/yearn/yearn-assets/3ec995a8b19cd95e56a1a42b18d394d667e0e2cd/icons/multichain-tokens/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.svg"
+	list.Timestamp = time.Now().Format(time.RFC3339)
+	list.Version.Major = 1
+	list.Version.Minor = 0
+	list.Version.Patch = 0
 
 	/**********************************************************************************************
 	** Retrieve the MapTokenList for each chainID and return it as a map of chainID to token list.
@@ -149,7 +146,7 @@ func GetTokenList(c *gin.Context) {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		allTokens := tokens.ListTokens(chainID)
 		for _, token := range allTokens {
-			tokenList.Tokens = append(tokenList.Tokens, tokensList.DefaultTokenListToken{
+			list.Tokens = append(list.Tokens, models.TTokenListToken{
 				ChainID:  int(chainID),
 				Address:  token.Address.Hex(),
 				Name:     token.Name,
@@ -160,5 +157,5 @@ func GetTokenList(c *gin.Context) {
 		}
 	}
 
-	c.JSON(http.StatusOK, tokenList)
+	c.JSON(http.StatusOK, list)
 }

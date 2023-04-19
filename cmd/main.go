@@ -8,7 +8,27 @@ import (
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/processes/partnerFees"
+	"github.com/yearn/ydaemon/processes/tokenList"
 )
+
+func SummonDaemonsw(chainID uint64) {
+	var wg sync.WaitGroup
+	// This first work group does not need any other data to be able to work.
+	// They can all be summoned at the same time, with no dependencies.
+	wg.Add(1)
+	{
+		//TODO: REPLACE WITH INTERNAL RELOADING
+		go internal.InitializeV2(chainID, &wg)
+	}
+	wg.Wait()
+
+	wg.Add(1)
+	{
+		//This can only be run after the internal daemons have been initialized
+		go runDaemon(chainID, &wg, 0, strategies.InitRiskScore)
+	}
+	wg.Wait()
+}
 
 func main() {
 	initFlags()
@@ -23,14 +43,8 @@ func main() {
 
 		for _, chainID := range chains {
 			wg.Add(1)
-			innerWg := sync.WaitGroup{}
-			innerWg.Add(1)
-			go internal.InitializeV2(chainID, &innerWg)
-			innerWg.Wait()
-
-			innerWg.Add(1)
-			go runDaemon(chainID, &innerWg, 0, strategies.ComputeRiskGroupAllocation)
-			innerWg.Wait()
+			SummonDaemonsw(chainID)
+			wg.Done()
 		}
 		wg.Wait()
 
@@ -46,6 +60,14 @@ func main() {
 			meta.RetrieveAllStrategiesFromFiles(chainID)
 			meta.RetrieveAllProtocolsFromFiles(chainID)
 			go runDaemonWithBlocks(chainID, *startBlock, endBlock, &wg, 0, partnerFees.Run)
+		}
+		wg.Wait()
+	case ProcessTokenList:
+		logs.Info(`Running yDaemon token list process...`)
+
+		for _, chainID := range chains {
+			wg.Add(1)
+			go tokenList.BuildTokenList(chainID)
 		}
 		wg.Wait()
 	}

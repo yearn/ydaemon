@@ -12,8 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -45,8 +44,8 @@ func filterUpdatePerformanceFee(
 				continue
 			}
 
-			eventKey := vaultAddress.String() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-			blockData := utils.TEventBlock{
+			eventKey := vaultAddress.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+			blockData := ethereum.TEventBlock{
 				EventType:   `updatePerformanceFee`,
 				TxHash:      log.Event.Raw.TxHash,
 				BlockNumber: log.Event.Raw.BlockNumber,
@@ -56,10 +55,10 @@ func filterUpdatePerformanceFee(
 			}
 
 			if syncMap, ok := asyncFeeMap.Load(eventKey); ok {
-				currentBlockData := append(syncMap.([]utils.TEventBlock), blockData)
+				currentBlockData := append(syncMap.([]ethereum.TEventBlock), blockData)
 				asyncFeeMap.Store(eventKey, currentBlockData)
 			} else {
-				asyncFeeMap.Store(eventKey, []utils.TEventBlock{blockData})
+				asyncFeeMap.Store(eventKey, []ethereum.TEventBlock{blockData})
 			}
 		}
 	}
@@ -83,10 +82,10 @@ func filterUpdatePerformanceFee(
 **************************************************************************************************/
 func HandleUpdatePerformanceFee(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
+	vaults map[common.Address]*models.TVault,
 	start uint64,
 	end *uint64,
-) map[common.Address]map[uint64][]utils.TEventBlock {
+) map[common.Address]map[uint64][]ethereum.TEventBlock {
 	timeBefore := time.Now()
 
 	asyncPerformanceFeeUpdate := sync.Map{}
@@ -113,16 +112,16 @@ func HandleUpdatePerformanceFee(
 	** We need to transform it into a map as follows:
 	** - vaultAddress -> blockNumber -> []TEventBlock
 	**********************************************************************************************/
-	performanceFeeForVaults := make(map[common.Address]map[uint64][]utils.TEventBlock)
+	performanceFeeForVaults := make(map[common.Address]map[uint64][]ethereum.TEventBlock)
 	asyncPerformanceFeeUpdate.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		vaultAddress := common.HexToAddress(eventKey[0])
 		blockNumber, _ := strconv.ParseUint(eventKey[1], 10, 64)
 
 		if _, ok := performanceFeeForVaults[vaultAddress]; !ok {
-			performanceFeeForVaults[vaultAddress] = make(map[uint64][]utils.TEventBlock)
+			performanceFeeForVaults[vaultAddress] = make(map[uint64][]ethereum.TEventBlock)
 		}
-		performanceFeeForVaults[vaultAddress][blockNumber] = value.([]utils.TEventBlock)
+		performanceFeeForVaults[vaultAddress][blockNumber] = value.([]ethereum.TEventBlock)
 		return true
 	})
 

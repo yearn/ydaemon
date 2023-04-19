@@ -9,9 +9,10 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/harvests"
 	"github.com/yearn/ydaemon/internal/indexer"
-	partnerTracker "github.com/yearn/ydaemon/internal/indexer.partnerTracker"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -55,7 +56,7 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 	** transfers in or out of the vault from this user to get, at any block, it's balance in the
 	** vault and the delegated amount he has.
 	**********************************************************************************************/
-	allPartnerTrackerEvents, allRefereesEvents := partnerTracker.RetrieveAllPartnerTrackerEvents(chainID, fromBlock, toBlock)
+	allPartnerTrackerEvents, allRefereesEvents := retrieveAllPartnerTrackerEvents(chainID, fromBlock, toBlock)
 
 	/**********************************************************************************************
 	** We finally need to fetch the supply of all the vaults at all the blocks we are interested
@@ -87,7 +88,7 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 		for _, harvestList := range allHarvestForVault {
 			wg.Add(len(harvestList))
 			for _, harvest := range harvestList {
-				go func(harvest harvests.THarvest, vaultAddress common.Address, vaultTokenAddress common.Address, vaultDecimals uint64) {
+				go func(harvest models.THarvest, vaultAddress common.Address, vaultTokenAddress common.Address, vaultDecimals uint64) {
 					defer wg.Done()
 					if (harvest.BlockNumber < fromBlock) || (toBlock != nil && harvest.BlockNumber > *toBlock) {
 						return // Skip, not in the range
@@ -280,11 +281,11 @@ func Run(chainID uint64, fromBlock uint64, toBlock *uint64) {
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	vaultsMap := registries.RetrieveAllVaults(chainID, 0)
+	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsMap)
-	strategiesAddedList := strategies.RetrieveAllStrategiesAdded(chainID, vaultsMap)
+	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 	indexer.PostProcessStrategies(chainID)
 }

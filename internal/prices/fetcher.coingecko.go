@@ -9,7 +9,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -21,9 +23,9 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 
 	var tokenString []string
 	for _, token := range tokens {
-		tokenString = append(tokenString, strings.ToLower(token.String()))
+		tokenString = append(tokenString, strings.ToLower(token.Hex()))
 	}
-	req, err := http.NewRequest("GET", GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
+	req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+env.GECKO_CHAIN_NAMES[chainID], nil)
 	if err != nil {
 		logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 		return priceMap
@@ -47,7 +49,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 		return priceMap
 	}
-	priceData := TGeckoPrice{}
+	priceData := models.TGeckoPrice{}
 	if err := json.Unmarshal(body, &priceData); err != nil {
 		logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 		return priceMap

@@ -6,17 +6,23 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/events"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 var stratGroupErrorAlreadySent = make(map[uint64]map[string]bool)
+var stakingData = make(map[uint64]map[string]models.TStaking)
 
 func getTVLImpact(tvlUSDC *bigNumber.Float) int {
 	tvl, _ := tvlUSDC.Float32()
@@ -57,7 +63,7 @@ func getLongevityImpact(activation *bigNumber.Int) int {
 	}
 }
 
-func getMedianScore(group TStrategyGroupFromRisk) int {
+func getMedianScore(group models.TStrategyGroupFromRisk) int {
 	scores := stats.LoadRawData([]int{
 		group.AuditScore,
 		group.CodeReviewScore,
@@ -70,7 +76,7 @@ func getMedianScore(group TStrategyGroupFromRisk) int {
 	return int(median)
 }
 
-func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
+func getMedianAllocation(group models.TStrategyGroupFromRisk) *bigNumber.Float {
 	median := getMedianScore(group)
 	switch {
 	case median <= 1:
@@ -86,7 +92,7 @@ func getMedianAllocation(group TStrategyGroupFromRisk) *bigNumber.Float {
 	}
 }
 
-func getAllocationStatus(group TStrategyGroupFromRisk) string {
+func getAllocationStatus(group models.TStrategyGroupFromRisk) string {
 	median := getMedianScore(group)
 	medianAllocation := getMedianAllocation(group)
 	tvl := group.Allocation.CurrentTVL
@@ -117,7 +123,7 @@ func getAllocationStatus(group TStrategyGroupFromRisk) string {
 	return "Red"
 }
 
-func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRisk {
+func getStrategyGroup(chainID uint64, strategy *models.TStrategy) *models.TStrategyGroupFromRisk {
 	toLowerName := strings.ToLower(strategy.Name)
 	groups := ListStrategiesRiskGroups(chainID)
 	for _, group := range groups {
@@ -134,7 +140,7 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 			}
 		}
 		// check address
-		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.String()) {
+		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.Hex()) {
 			return group
 		}
 
@@ -156,11 +162,11 @@ func getStrategyGroup(chainID uint64, strategy *TStrategy) *TStrategyGroupFromRi
 	return nil
 }
 
-func getDefaultRiskGroup() TStrategyFromRisk {
-	return TStrategyFromRisk{
+func getDefaultRiskGroup() models.TStrategyFromRisk {
+	return models.TStrategyFromRisk{
 		RiskGroup: "Others",
 		RiskScore: 5,
-		RiskDetails: TStrategyFromRiskRiskDetails{
+		RiskDetails: models.TStrategyFromRiskRiskDetails{
 			TVLImpact:           5,
 			AuditScore:          5,
 			CodeReviewScore:     5,
@@ -170,7 +176,7 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 			TeamKnowledgeScore:  5,
 			TestingScore:        5,
 		},
-		Allocation: &TStrategyAllocation{
+		Allocation: &models.TStrategyAllocation{
 			Status:          "Green",
 			CurrentTVL:      bigNumber.NewFloat(0),
 			AvailableTVL:    bigNumber.NewFloat(0),
@@ -178,6 +184,16 @@ func getDefaultRiskGroup() TStrategyFromRisk {
 			AvailableAmount: bigNumber.NewFloat(0),
 		},
 	}
+}
+
+func GetStakingData(chainID uint64, vaultAddress common.Address) models.TStaking {
+	if _, ok := stakingData[chainID]; !ok {
+		return models.TStaking{}
+	}
+	if score, ok := stakingData[chainID][vaultAddress.Hex()]; ok {
+		return score
+	}
+	return models.TStaking{}
 }
 
 /**************************************************************************************************
@@ -202,7 +218,7 @@ func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 		return
 	}
 	for _, content := range content {
-		riskGroup := TStrategyGroupFromRisk{}
+		riskGroup := models.TStrategyGroupFromRisk{}
 		if err := json.Unmarshal(content, &riskGroup); err != nil {
 			traces.
 				Capture(`warn`, `impossible to unmarshall risks files response body `+chainIDStr).
@@ -218,14 +234,14 @@ func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 	}
 }
 
-func ComputeRiskGroupAllocation(chainID uint64) {
+func computeRiskGroupAllocation(chainID uint64) {
 	if stratGroupErrorAlreadySent[chainID] == nil {
 		stratGroupErrorAlreadySent[chainID] = map[string]bool{}
 	}
 	//This will ensure we are working with clean data
 	groups := ListStrategiesRiskGroups(chainID)
 	for _, group := range groups {
-		group.Allocation = &TStrategyAllocation{}
+		group.Allocation = &models.TStrategyAllocation{}
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
 		setRiskGroupInMap(chainID, group)
 	}
@@ -289,4 +305,48 @@ func ComputeRiskGroupAllocation(chainID uint64) {
 		strategyGroup.Allocation.Status = getAllocationStatus(*strategyGroup)
 		setRiskGroupInMap(chainID, strategyGroup)
 	}
+}
+
+func InitRiskScore(chainID uint64) {
+	if chainID == 10 {
+		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 85969070, nil)
+		calls := []ethereum.Call{}
+		for _, pool := range allStackingPoolAdded {
+			currentToken, ok := tokens.FindToken(chainID, pool.Token)
+			if !ok {
+				logs.Warning(`[InitRiskScore]`, `impossible to find token for pool address`, pool.StackingPool.Hex())
+				continue
+			}
+			if !tokens.IsVault(currentToken) {
+				logs.Warning(`[InitRiskScore]`, `token is not a vault`, pool.Token.Hex())
+				continue
+			}
+			calls = append(calls, multicalls.GetTotalSupply(pool.StackingPool.Hex(), pool.StackingPool))
+			calls = append(calls, multicalls.GetDecimals(pool.StackingPool.Hex(), pool.Token))
+			calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(pool.StackingPool.Hex(), env.LENS_ADDRESSES[chainID], pool.Token))
+		}
+		response := multicalls.Perform(chainID, calls, nil)
+		for _, pool := range allStackingPoolAdded {
+			totalSupply := helpers.DecodeBigInt(response[pool.StackingPool.Hex()+`totalSupply`])
+			tokenPrice := helpers.DecodeBigInt(response[pool.StackingPool.Hex()+`getPriceUsdcRecommended`])
+			decimals := helpers.DecodeUint64(response[pool.StackingPool.Hex()+`decimals`])
+
+			_, price := helpers.FormatAmount(tokenPrice.String(), 6)
+			_, amount := helpers.FormatAmount(totalSupply.String(), int(decimals))
+
+			if _, ok := stakingData[chainID]; !ok {
+				stakingData[chainID] = map[string]models.TStaking{}
+			}
+			tvl, _ := bigNumber.NewFloat(0).Mul(amount, price).Float64()
+			stakingData[chainID][pool.Token.Hex()] = models.TStaking{
+				Available: true,
+				Address:   pool.StackingPool,
+				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
+				TVL:       tvl,
+			}
+
+			logs.Info(`[InitRiskScore]`, `tvlImpactPerToken`, pool.Token.Hex(), stakingData[chainID][pool.StackingPool.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String())
+		}
+	}
+	computeRiskGroupAllocation(chainID)
 }

@@ -1,7 +1,7 @@
 package prices
 
 import (
-	"math"
+	"context"
 	"math/big"
 	"strconv"
 
@@ -10,7 +10,9 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
 /**************************************************************************************************
@@ -25,7 +27,6 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
 	lensAddress, ok := env.LENS_ADDRESSES[chainID]
 	if !ok {
 		traces.
@@ -38,15 +39,8 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 
 	calls := []ethereum.Call{}
 	for _, token := range tokens {
-		calls = append(calls, getPriceUsdcRecommendedCall(token.String(), lensAddress, token))
+		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(token.Hex(), lensAddress, token))
 	}
-
-	/**********************************************************************************************
-	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
-	** number. We split the multicall in multiple calls of 3 calls each.
-	** Otherwise, we just send the multicall as is.
-	**********************************************************************************************/
-	maxBatch := math.MaxInt64
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. We loop over the responses and check if the price is
@@ -57,14 +51,17 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	var blockNumberBigInt *big.Int
 
 	if blockNumber == nil {
-		response = caller.ExecuteByBatch(calls, maxBatch, nil)
+		currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
+		blockNumber = &currentBlockNumber
+		response = multicalls.Perform(chainID, calls, nil)
 	} else {
 		blockNumberBigInt = big.NewInt(int64(*blockNumber))
-		response = caller.ExecuteByBatch(calls, maxBatch, blockNumberBigInt)
+		response = multicalls.Perform(chainID, calls, blockNumberBigInt)
 
 	}
+
 	for _, token := range tokens {
-		rawTokenPrice := response[token.String()+`getPriceUsdcRecommended`]
+		rawTokenPrice := response[token.Hex()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
 			continue
 		}
@@ -73,6 +70,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 			continue
 		}
 		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
+		store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
 	}
 	return newPriceMap
 }

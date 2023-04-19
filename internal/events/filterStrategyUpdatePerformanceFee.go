@@ -12,9 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/utils"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -47,7 +45,7 @@ func filterUpdateStrategyPerformanceFee(
 				continue
 			}
 
-			blockData := utils.TEventBlock{
+			blockData := ethereum.TEventBlock{
 				EventType:   "strategyUpdatePerformanceFee",
 				TxHash:      log.Event.Raw.TxHash,
 				BlockNumber: log.Event.Raw.BlockNumber,
@@ -56,12 +54,12 @@ func filterUpdateStrategyPerformanceFee(
 				Value:       bigNumber.SetInt(log.Event.PerformanceFee),
 			}
 
-			eventKey := vaultAddress.String() + `-` + log.Event.Strategy.String() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+			eventKey := vaultAddress.Hex() + `-` + log.Event.Strategy.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 			if syncMap, ok := asyncFeeMap.Load(eventKey); ok {
-				currentBlockData := append((syncMap.([]utils.TEventBlock)), blockData)
+				currentBlockData := append((syncMap.([]ethereum.TEventBlock)), blockData)
 				asyncFeeMap.Store(eventKey, currentBlockData)
 			} else {
-				asyncFeeMap.Store(eventKey, []utils.TEventBlock{blockData})
+				asyncFeeMap.Store(eventKey, []ethereum.TEventBlock{blockData})
 			}
 
 		}
@@ -86,11 +84,11 @@ func filterUpdateStrategyPerformanceFee(
 **************************************************************************************************/
 func HandleUpdateStrategyPerformanceFee(
 	chainID uint64,
-	vaults map[common.Address]*vaults.TVault,
-	strategiesMap map[common.Address]map[common.Address]*strategies.TStrategy,
+	vaults map[common.Address]*models.TVault,
+	strategiesMap map[common.Address]map[common.Address]*models.TStrategy,
 	start uint64,
 	end *uint64,
-) map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock {
+) map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock {
 	timeBefore := time.Now()
 
 	asyncStrategiesPerformanceFeeUpdate := sync.Map{}
@@ -124,7 +122,7 @@ func HandleUpdateStrategyPerformanceFee(
 	** We need to transform it into a map as follows:
 	** - vaultAddress -> strategyAddress -> blockNumber -> []TEventBlock
 	**********************************************************************************************/
-	performanceFeeForStrategies := make(map[common.Address]map[common.Address]map[uint64][]utils.TEventBlock)
+	performanceFeeForStrategies := make(map[common.Address]map[common.Address]map[uint64][]ethereum.TEventBlock)
 	asyncStrategiesPerformanceFeeUpdate.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		vaultAddress := common.HexToAddress(eventKey[0])
@@ -133,19 +131,19 @@ func HandleUpdateStrategyPerformanceFee(
 
 		// If the mapping for [vaultAddress] doesn't exist, create itg
 		if _, ok := performanceFeeForStrategies[vaultAddress]; !ok {
-			performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
+			performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]ethereum.TEventBlock)
 		}
 
 		// If the mapping for [vaultAddress][strategyAddress] doesn't exist, create it
 		if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress]; !ok {
-			performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
+			performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]ethereum.TEventBlock)
 		}
 		// If the mapping for [vaultAddress][strategyAddress][blockNumber] doesn't exist, create it
 		if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][blockNumber]; !ok {
-			performanceFeeForStrategies[vaultAddress][strategyAddress][blockNumber] = make([]utils.TEventBlock, 0)
+			performanceFeeForStrategies[vaultAddress][strategyAddress][blockNumber] = make([]ethereum.TEventBlock, 0)
 		}
 
-		performanceFeeForStrategies[vaultAddress][strategyAddress][blockNumber] = value.([]utils.TEventBlock)
+		performanceFeeForStrategies[vaultAddress][strategyAddress][blockNumber] = value.([]ethereum.TEventBlock)
 		return true
 	})
 
@@ -155,7 +153,7 @@ func HandleUpdateStrategyPerformanceFee(
 	**********************************************************************************************/
 	for vaultAddress, strategies := range strategiesMap {
 		for strategyAddress, strategy := range strategies {
-			deployEvent := utils.TEventBlock{
+			deployEvent := ethereum.TEventBlock{
 				EventType:   `strategyUpdatePerformanceFee`,
 				TxHash:      strategy.Initialization.TxHash,
 				BlockNumber: strategy.Initialization.BlockNumber,
@@ -165,13 +163,13 @@ func HandleUpdateStrategyPerformanceFee(
 			}
 
 			if _, ok := performanceFeeForStrategies[vaultAddress]; !ok {
-				performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]utils.TEventBlock)
+				performanceFeeForStrategies[vaultAddress] = make(map[common.Address]map[uint64][]ethereum.TEventBlock)
 			}
 			if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress]; !ok {
-				performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]utils.TEventBlock)
+				performanceFeeForStrategies[vaultAddress][strategyAddress] = make(map[uint64][]ethereum.TEventBlock)
 			}
 			if _, ok := performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber]; !ok {
-				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = make([]utils.TEventBlock, 0)
+				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = make([]ethereum.TEventBlock, 0)
 			}
 			performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber] = append(
 				performanceFeeForStrategies[vaultAddress][strategyAddress][strategy.Initialization.BlockNumber],

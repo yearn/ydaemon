@@ -1,7 +1,6 @@
 package strategies
 
 import (
-	"math"
 	"math/big"
 	"strconv"
 	"sync"
@@ -13,6 +12,8 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
 /**************************************************************************************************
@@ -28,65 +29,57 @@ import (
 **************************************************************************************************/
 func fetchBasicInformations(
 	chainID uint64,
-	strategyAddedList []TStrategyAdded,
-) (strategyList []*TStrategy) {
+	strategyAddedList []models.TStrategyAdded,
+) (strategyList []*models.TStrategy) {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
 	** multicall and will later be accessible via a concatened string `stratAddress + methodName`.
 	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
 	for _, strat := range strategyAddedList {
-		calls = append(calls, getCreditAvailable(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getDebtOutstanding(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getExpectedReturn(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStrategies(strat.StrategyAddress.String(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStategyEstimatedTotalAsset(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStategyIsActive(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStategyKeepCRV(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStategyDelegatedAssets(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getName(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getKeeper(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getStrategist(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getRewards(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getHealthCheck(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getAPIVersion(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getDoHealthCheck(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, getEmergencyExit(strat.StrategyAddress.String(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetCreditAvailable(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDebtOutstanding(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetExpectedReturn(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategies(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyIsActive(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRV(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyName(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetKeeper(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategist(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyRewards(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetHealthCheck(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyAPIVersion(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetEmergencyExit(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 	}
-
-	/**********************************************************************************************
-	** Regular fix for Fantom's RPC, which limit the number of calls in a multicall to a very low
-	** number. We split the multicall in multiple calls of 3 calls each.
-	** Otherwise, we just send the multicall as is.
-	**********************************************************************************************/
-	maxBatch := math.MaxInt64
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. Some date will already be available from the list of
 	** tokens, so we can already play with that.
 	**********************************************************************************************/
-	response := caller.ExecuteByBatch(calls, maxBatch, nil)
+	response := multicalls.Perform(chainID, calls, nil)
 	for _, strat := range strategyAddedList {
 		vaultAddress := strat.VaultAddress
 		stratAddress := strat.StrategyAddress
-		creditAvailable0 := response[stratAddress.String()+`creditAvailable0`]
-		debtOutstanding0 := response[stratAddress.String()+`debtOutstanding0`]
-		expectedReturn := response[stratAddress.String()+`expectedReturn0`]
-		strategies := response[stratAddress.String()+`strategies`]
-		estimatedTotalAssets := response[stratAddress.String()+`estimatedTotalAssets`]
-		isActive := response[stratAddress.String()+`isActive`]
-		keepCRV := response[stratAddress.String()+`keepCRV`]
-		delegatedAssets := response[stratAddress.String()+`delegatedAssets`]
-		name := response[stratAddress.String()+`name`]
-		keeper := response[stratAddress.String()+`keeper`]
-		strategist := response[stratAddress.String()+`strategist`]
-		rewards := response[stratAddress.String()+`rewards`]
-		healthCheck := response[stratAddress.String()+`healthCheck`]
-		apiVersion := response[stratAddress.String()+`apiVersion`]
-		doHealthCheck := response[stratAddress.String()+`doHealthCheck`]
-		emergencyExit := response[stratAddress.String()+`emergencyExit`]
+		creditAvailable0 := response[stratAddress.Hex()+`creditAvailable0`]
+		debtOutstanding0 := response[stratAddress.Hex()+`debtOutstanding0`]
+		expectedReturn := response[stratAddress.Hex()+`expectedReturn0`]
+		strategies := response[stratAddress.Hex()+`strategies`]
+		estimatedTotalAssets := response[stratAddress.Hex()+`estimatedTotalAssets`]
+		isActive := response[stratAddress.Hex()+`isActive`]
+		keepCRV := response[stratAddress.Hex()+`keepCRV`]
+		delegatedAssets := response[stratAddress.Hex()+`delegatedAssets`]
+		name := response[stratAddress.Hex()+`name`]
+		keeper := response[stratAddress.Hex()+`keeper`]
+		strategist := response[stratAddress.Hex()+`strategist`]
+		rewards := response[stratAddress.Hex()+`rewards`]
+		healthCheck := response[stratAddress.Hex()+`healthCheck`]
+		apiVersion := response[stratAddress.Hex()+`apiVersion`]
+		doHealthCheck := response[stratAddress.Hex()+`doHealthCheck`]
+		emergencyExit := response[stratAddress.Hex()+`emergencyExit`]
 
 		withdrawalQueuePosition := int64(-1)
 		isInQueue := false
@@ -100,7 +93,7 @@ func fetchBasicInformations(
 			}
 		}
 
-		newStrategy := &TStrategy{
+		newStrategy := &models.TStrategy{
 			Address:                 strat.StrategyAddress,
 			VaultAddress:            strat.VaultAddress,
 			ChainID:                 chainID,
@@ -114,7 +107,7 @@ func fetchBasicInformations(
 			IsActive:                false,
 			IsInQueue:               isInQueue,
 			WithdrawalQueuePosition: bigNumber.NewInt(withdrawalQueuePosition),
-			Initialization: TStrategyInitialization{
+			Initialization: models.TStrategyInitialization{
 				TxHash:      strat.TxHash,
 				BlockNumber: strat.BlockNumber,
 				TxIndex:     strat.TxIndex,
@@ -193,9 +186,9 @@ func fetchBasicInformations(
 **************************************************************************************************/
 func findAllStrategies(
 	chainID uint64,
-	strategyAddedList []TStrategyAdded,
-) map[common.Address]*TStrategy {
-	newMap := make(map[common.Address]*TStrategy)
+	strategyAddedList []models.TStrategyAdded,
+) map[common.Address]*models.TStrategy {
+	newMap := make(map[common.Address]*models.TStrategy)
 	newStrategyList := fetchBasicInformations(chainID, strategyAddedList)
 	for _, strat := range newStrategyList {
 		newMap[strat.Address] = strat
@@ -217,8 +210,8 @@ func findAllStrategies(
 **************************************************************************************************/
 func RetrieveAllStrategies(
 	chainID uint64,
-	strategyAddedList []TStrategyAdded,
-) map[common.Address]*TStrategy {
+	strategyAddedList []models.TStrategyAdded,
+) map[common.Address]*models.TStrategy {
 	trace := traces.Init(`app.indexer.strategies.multicall_data`).
 		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -230,8 +223,8 @@ func RetrieveAllStrategies(
 	** First, try to retrieve the list of strategies from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	strategyMap := make(map[common.Address]*TStrategy)
-	store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
+	strategyMap := make(map[common.Address]*models.TStrategy)
+	store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
 
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch theses basics informations.
@@ -247,18 +240,18 @@ func RetrieveAllStrategies(
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedStrategiesMap))
 		for _, token := range updatedStrategiesMap {
-			go func(_strategy *TStrategy) {
+			go func(_strategy *models.TStrategy) {
 				defer wg.Done()
-				store.SaveInDB(
+				store.SaveInBadgerDB(
 					chainID,
 					store.TABLES.STRATEGIES,
-					_strategy.Address.String(),
+					_strategy.Address.Hex(),
 					_strategy,
 				)
 			}(token)
 		}
 		wg.Wait()
-		store.Iterate(chainID, store.TABLES.STRATEGIES, &strategyMap)
+		store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
 	_strategyMap[chainID] = strategyMap

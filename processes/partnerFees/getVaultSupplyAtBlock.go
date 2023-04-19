@@ -11,8 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/harvests"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 /**************************************************************************************************
@@ -21,8 +20,8 @@ import (
 ** map -> [vaultAddress][blockNumber] -> totalSupply
 **************************************************************************************************/
 func getVaultsSupplyAtBlock(
-	allVaults []*vaults.TVault,
-	allHarvests map[common.Address]map[common.Address][]harvests.THarvest,
+	allVaults []*models.TVault,
+	allHarvests map[common.Address]map[common.Address][]models.THarvest,
 ) map[common.Address]map[uint64]*big.Int {
 	syncMap := sync.Map{}
 	for _, vault := range allVaults {

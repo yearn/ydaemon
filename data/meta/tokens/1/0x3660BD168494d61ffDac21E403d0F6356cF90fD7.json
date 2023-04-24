@@ -1,7 +1,7 @@
 {
   "$schema": "token",
   "name": "Curve OHM-ETH Pool",
-  "symbol": "OMHETH-f",
+  "symbol": "OHMETH-f",
   "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV. This factory crypto pool contains OHM and ETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
   "categories": ["Curve LP Tokens"],
   "website": "https://curve.fi/#/ethereum/pools/factory-crypto-21",

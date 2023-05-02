@@ -3,6 +3,7 @@ package ethereum
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"math/big"
 	"strings"
 	"time"
@@ -121,8 +122,7 @@ func (caller *TEthMultiCaller) execute(
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
-		logs.Error("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
-		return []byte{}, err
+		return []byte{}, errors.New("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
 	}
 	return resp, nil
 }
@@ -184,7 +184,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
 			} else {
 				logs.Error(err)
-
 				//sleep a few ms and retry
 				time.Sleep(2000 * time.Millisecond)
 				return caller.ExecuteByBatch(calls, batchSize, blockNumber)

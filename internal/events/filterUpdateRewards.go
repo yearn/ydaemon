@@ -28,7 +28,7 @@ import (
 ** - reportMap the sync.Map to store the latest event's Rewards value in
 ** Returns nothing as asyncMapTransfers is updated via a pointer
 *************************************************************************************************/
-func filterUpdateRewards(vault *models.TVault, start uint64, end *uint64, reportMap *sync.Map) {
+func filterUpdateRewards(vault models.TVault, start uint64, end *uint64, reportMap *sync.Map) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 
@@ -89,7 +89,7 @@ func filterUpdateRewards(vault *models.TVault, start uint64, end *uint64, report
 **********************************************************************************************/
 func HandleUpdateRewards(
 	chainID uint64,
-	vaults map[common.Address]*models.TVault,
+	vaults map[common.Address]models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64]common.Address {
@@ -101,7 +101,7 @@ func HandleUpdateRewards(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go func(v *models.TVault) {
+		go func(v models.TVault) {
 			defer wg.Done()
 			filterUpdateRewards(v, start, end, &reportMap)
 		}(v)

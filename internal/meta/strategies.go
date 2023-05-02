@@ -14,7 +14,8 @@ import (
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
-** The _vaultMap variable is not exported and is only used internally by the functions below.
+** The _metaStrategyMap variable is not exported and is only used internally by the functions
+** below.
 **********************************************************************************************/
 var _metaStrategyMap = make(map[uint64]map[common.Address]*models.TStrategyFromMeta)
 

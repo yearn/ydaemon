@@ -14,7 +14,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
-func BuildNames(t *models.TVault, metaVaultName string) *models.TVault {
+func BuildNames(t models.TVault, metaVaultName string) models.TVault {
 	name := strings.Replace(t.Name, "\"", "", -1)
 	displayName := t.Name
 	formatedName := t.Token.Name
@@ -53,7 +53,7 @@ func BuildNames(t *models.TVault, metaVaultName string) *models.TVault {
 	return t
 }
 
-func BuildSymbol(t *models.TVault, metaVaultSymbol string) *models.TVault {
+func BuildSymbol(t models.TVault, metaVaultSymbol string) models.TVault {
 	symbol := strings.Replace(t.Symbol, "\"", "", -1)
 	formatedSymbol := t.Token.Symbol
 	displaySymbol := metaVaultSymbol
@@ -76,7 +76,7 @@ func BuildSymbol(t *models.TVault, metaVaultSymbol string) *models.TVault {
 	return t
 }
 
-func BuildMigration(t *models.TVault) models.TMigration {
+func BuildMigration(t models.TVault) models.TMigration {
 	migration := models.TMigration{
 		Available: false,
 		Address:   t.Address,
@@ -99,7 +99,7 @@ func BuildMigration(t *models.TVault) models.TMigration {
 	return migration
 }
 
-func BuildAPY(t *models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
+func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
 	apy := models.TAPY{}
 	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
 
@@ -140,7 +140,7 @@ func BuildAPY(t *models.TVault, aggregatedVault *models.TAggregatedVault, hasLeg
 	return apy
 }
 
-func BuildTVL(t *models.TVault) models.TTVL {
+func BuildTVL(t models.TVault) models.TTVL {
 	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.Token.Address)
 	fHumanizedTVLPrice := getHumanizedValue(t.TotalAssets, int(t.Decimals), humanizedPrice)
 	strategiesList := strategies.ListStrategiesForVault(t.ChainID, t.Address)
@@ -164,7 +164,7 @@ func BuildTVL(t *models.TVault) models.TTVL {
 	return tvl
 }
 
-func BuildCategory(t *models.TVault) string {
+func BuildCategory(t models.TVault) string {
 	category := `Volatile`
 	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
 	baseForCurve := []string{`curve`, `crv`}
@@ -228,7 +228,7 @@ func BuildCategory(t *models.TVault) string {
 	return category
 }
 
-func BuildStaking(t *models.TVault) models.TStaking {
+func BuildStaking(t models.TVault) models.TStaking {
 	staking := models.TStaking{
 		Available: false,
 	}

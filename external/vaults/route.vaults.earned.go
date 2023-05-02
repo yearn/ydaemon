@@ -433,9 +433,9 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 		}
 
 		tokenDecimal := 18
-		token, _ := tokens.FindUnderlyingForVault(chainID, addresses.ToAddress(vaultAddress))
+		token, ok := tokens.FindUnderlyingForVault(chainID, addresses.ToAddress(vaultAddress))
 		tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
-		if token != nil {
+		if !ok {
 			tokenDecimal = int(token.Decimals)
 		}
 		if tokenPrice == nil {

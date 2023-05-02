@@ -18,6 +18,7 @@ func RegisterAllVaults(
 	** which we loaded from the database.
 	**********************************************************************************************/
 	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
+	alreadyStoredVaultList, _ := store.ListVaultsFromRegistry(chainID)
 	standardVaultList, experimentalVaultList := events.HandleNewVaults(chainID, registriesWithLastEvent, start, end)
 
 	/**********************************************************************************************
@@ -37,6 +38,12 @@ func RegisterAllVaults(
 	}
 
 	for _, v := range env.EXTRA_VAULTS[chainID] {
+		if _, ok := uniqueVaultsList[v.Address]; !ok {
+			uniqueVaultsList[v.Address] = v
+		}
+	}
+
+	for _, v := range alreadyStoredVaultList {
 		if _, ok := uniqueVaultsList[v.Address]; !ok {
 			uniqueVaultsList[v.Address] = v
 		}

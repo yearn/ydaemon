@@ -20,7 +20,7 @@ import (
 ** map -> [vaultAddress][blockNumber] -> totalSupply
 **************************************************************************************************/
 func getVaultsSupplyAtBlock(
-	allVaults []*models.TVault,
+	allVaults []models.TVault,
 	allHarvests map[common.Address]map[common.Address][]models.THarvest,
 ) map[common.Address]map[uint64]*big.Int {
 	syncMap := sync.Map{}

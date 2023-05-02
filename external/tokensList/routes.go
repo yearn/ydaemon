@@ -152,7 +152,7 @@ func GetTokenList(c *gin.Context) {
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Decimals: int(token.Decimals),
-				LogoURI:  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + token.Address.Hex() + `/logo-128.png`,
+				LogoURI:  env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + token.Address.Hex() + `/logo-128.png`,
 			})
 		}
 	}

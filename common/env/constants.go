@@ -24,8 +24,9 @@ func getCurrentPath() string {
 // BASE_DATA_PATH is the base path to access the data informations
 var BASE_DATA_PATH, _ = filepath.Abs(getCurrentPath() + `../../../data/`)
 
-// GITHUB_ICON_BASE_URL is the base URL to access the tokens icons from the yearn-assets repo
-var GITHUB_ICON_BASE_URL = `https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/`
+// var BASE_ASSET_URL = `https://raw.githubusercontent.com/yearn/yearn-assets/master/icons/multichain-tokens/`
+// BASE_ASSET_URL is the base URL to access the tokens icons from the assets repo
+var BASE_ASSET_URL = `https://assets.smold.app/api/token/`
 
 // GECKO_PRICE_URL contains the URL for the CoinGecko API
 var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`

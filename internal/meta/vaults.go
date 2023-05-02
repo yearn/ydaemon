@@ -15,12 +15,13 @@ import (
 /**********************************************************************************************
 ** Set of functions to store and retrieve the tokens from the cache and/or database and being
 ** able to access them from the rest of the application.
-** The _vaultMap variable is not exported and is only used internally by the functions below.
+** The _metaVaultMap variable is not exported and is only used internally by the functions
+** below.
 **********************************************************************************************/
 var _metaVaultMap = make(map[uint64]map[common.Address]*models.TInternalVaultFromMeta)
 
 /**********************************************************************************************
-** setVaultInMap will put a TInternalVaultFromMeta in the _vaultMap variable.
+** setVaultInMap will put a TInternalVaultFromMeta in the _metaVaultMap variable.
 **********************************************************************************************/
 func setVaultInMap(chainID uint64, vault *models.TInternalVaultFromMeta) {
 	if _, ok := _metaVaultMap[chainID]; !ok {

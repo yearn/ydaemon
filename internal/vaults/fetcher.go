@@ -34,7 +34,7 @@ var metaVaultTokenErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 func fetchBasicInformations(
 	chainID uint64,
 	vaults []common.Address,
-) (vaultList []*models.TVault) {
+) (vaultList []models.TVault) {
 	if metaVaultFileErrorAlreadySent[chainID] == nil {
 		metaVaultFileErrorAlreadySent[chainID] = make(map[common.Address]bool)
 		metaVaultTokenErrorAlreadySent[chainID] = make(map[common.Address]bool)
@@ -90,7 +90,7 @@ func fetchBasicInformations(
 
 		shareTokenData, ok := tokens.FindToken(chainID, vault)
 		if !ok {
-			shareTokenData = &models.TERC20Token{}
+			shareTokenData = models.TERC20Token{}
 			traces.
 				Capture(`warn`, `impossible to retrieve share token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`meta`).
@@ -102,7 +102,7 @@ func fetchBasicInformations(
 		underlyingTokenData, ok := tokens.FindToken(chainID, helpers.DecodeAddress(rawUnderlying))
 		if !ok {
 			tokenAddress := helpers.DecodeAddress(rawUnderlying)
-			underlyingTokenData = &models.TERC20Token{}
+			underlyingTokenData = models.TERC20Token{}
 			if !metaVaultTokenErrorAlreadySent[chainID][tokenAddress] {
 				traces.
 					Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
@@ -131,13 +131,13 @@ func fetchBasicInformations(
 		/******************************************************************************************
 		** Preparing our new TVault object
 		******************************************************************************************/
-		newVault := &models.TVault{
+		newVault := models.TVault{
 			ChainID:               chainID,
 			Address:               vault,
 			Name:                  shareTokenData.Name,
 			Symbol:                shareTokenData.Symbol,
 			Decimals:              shareTokenData.Decimals,
-			Icon:                  env.GITHUB_ICON_BASE_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
+			Icon:                  env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
 			Type:                  models.VaultTypeStandard,
 			Endorsed:              false, //Default to false, will be updated later
 			Inception:             helpers.DecodeBigInt(rawActivation).Uint64(),
@@ -162,6 +162,7 @@ func fetchBasicInformations(
 				Description:   underlyingTokenData.Description,
 				Decimals:      underlyingTokenData.Decimals,
 				Icon:          underlyingTokenData.Icon,
+				ChainID:       underlyingTokenData.ChainID,
 			},
 		}
 
@@ -208,9 +209,9 @@ func fetchBasicInformations(
 **************************************************************************************************/
 func findAllVaults(
 	chainID uint64,
-	vaultMap map[common.Address]*models.TVault,
-) map[common.Address]*models.TVault {
-	newMap := make(map[common.Address]*models.TVault)
+	vaultMap map[common.Address]models.TVault,
+) map[common.Address]models.TVault {
+	newMap := make(map[common.Address]models.TVault)
 	vaultListAddresses := []common.Address{}
 	for vaultAddress := range vaultMap {
 		vaultListAddresses = append(vaultListAddresses, vaultAddress)
@@ -240,20 +241,12 @@ func findAllVaults(
 func RetrieveAllVaults(
 	chainID uint64,
 	vaults map[common.Address]models.TVaultsFromRegistry,
-) map[common.Address]*models.TVault {
-	trace := traces.Init(`app.indexer.vaults.multicall_data`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `vaults`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
+) map[common.Address]models.TVault {
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	vaultMap := make(map[common.Address]*models.TVault)
-	store.ListFromBadgerDB(chainID, store.TABLES.VAULTS, &vaultMap)
+	vaultMap, _ := store.ListAllVaults(chainID)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of vaults. In order to proceed, we will
@@ -262,9 +255,9 @@ func RetrieveAllVaults(
 	** TODO: Optimize this part to split possible changes (pricePerShare) from almost impossible
 	** changes (name, symbol)
 	**********************************************************************************************/
-	updatedVaultMap := make(map[common.Address]*models.TVault)
+	updatedVaultMap := make(map[common.Address]models.TVault)
 	for _, currentVault := range vaults {
-		updatedVaultMap[currentVault.Address] = &models.TVault{
+		updatedVaultMap[currentVault.Address] = models.TVault{
 			Address:    currentVault.TokenAddress,
 			Endorsed:   (currentVault.Type == models.VaultTypeStandard || currentVault.Type == models.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
 			Type:       currentVault.Type,
@@ -285,9 +278,7 @@ func RetrieveAllVaults(
 	for _, vaultAddress := range extraVaults[chainID] {
 		vaultAddress := common.HexToAddress(vaultAddress)
 		if _, ok := vaultMap[vaultAddress]; !ok {
-			updatedVaultMap[vaultAddress] = &models.TVault{
-				Address: vaultAddress,
-			}
+			updatedVaultMap[vaultAddress] = models.TVault{Address: vaultAddress}
 		}
 	}
 
@@ -304,13 +295,13 @@ func RetrieveAllVaults(
 		wg := sync.WaitGroup{}
 		wg.Add(len(updatedVaultMap))
 		for _, vault := range updatedVaultMap {
-			go func(thisVault *models.TVault) {
+			go func(thisVault models.TVault) {
 				defer wg.Done()
 				store.StoreVault(chainID, thisVault)
 			}(vault)
 		}
 		wg.Wait()
-		store.ListFromBadgerDB(chainID, store.TABLES.VAULTS, &vaultMap)
+		vaultMap, _ = store.ListAllVaults(chainID)
 	}
 
 	_vaultMap[chainID] = vaultMap

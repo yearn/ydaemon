@@ -37,7 +37,7 @@ type TMimicStrategyReportBase struct {
 ** between 0.3.1 and 0.4.3 and store them in an async map to be decoded later. The key is set but
 ** is to be ignored as the value is the event itself.
 **************************************************************************************************/
-func filterStrategyReportedFor031To043(vault *models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
+func filterStrategyReportedFor031To043(vault models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 
@@ -105,7 +105,7 @@ func filterStrategyReportedFor031To043(vault *models.TVault, start uint64, end *
 ** value is the event itself.
 ** DebtPaid is set to 0 as it was not present in the event.
 **************************************************************************************************/
-func filterStrategyReportedFor030(vault *models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
+func filterStrategyReportedFor030(vault models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault030(vault.Address, client)
 	/**********************************************************************************************
@@ -174,7 +174,7 @@ func filterStrategyReportedFor030(vault *models.TVault, start uint64, end *uint6
 ** DebtPaid is set to 0 as it was not present in the event.
 ** DebtRatio is set to 0 as it was not present in the event.
 **************************************************************************************************/
-func filterStrategyReportedFor022(vault *models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
+func filterStrategyReportedFor022(vault models.TVault, start uint64, end *uint64, syncMap *sync.Map) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault022(vault.Address, client)
 	/**********************************************************************************************
@@ -252,7 +252,7 @@ func filterStrategyReportedFor022(vault *models.TVault, start uint64, end *uint6
 **************************************************************************************************/
 func HandleStrategyReported(
 	chainID uint64,
-	vaultsMap map[common.Address]*models.TVault,
+	vaultsMap map[common.Address]models.TVault,
 	start uint64,
 	end *uint64,
 ) []TMimicStrategyReportBase {
@@ -262,7 +262,7 @@ func HandleStrategyReported(
 	wg := &sync.WaitGroup{}
 	for _, vault := range vaultsMap {
 		wg.Add(1)
-		go func(vault *models.TVault) {
+		go func(vault models.TVault) {
 			defer wg.Done()
 			switch vault.Version {
 			case `0.2.2`:

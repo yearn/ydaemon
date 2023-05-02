@@ -20,14 +20,3 @@ var TABLES = TTables{
 	VAULTS:            "vaults",
 	VAULTS_LEGACY:     "legacy_vaults",
 }
-
-// TKeys lists the keys used in the database
-type TKeys = struct {
-	TOKENS_SUBGRAPH_DATA string
-	TOKENS_SUBGRAPH_LIST string
-}
-
-var KEYS = TKeys{
-	TOKENS_SUBGRAPH_DATA: "tokens_subgraph_data",
-	TOKENS_SUBGRAPH_LIST: "tokens_subgraph_list",
-}

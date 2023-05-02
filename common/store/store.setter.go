@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"strconv"
+	"strings"
 	"sync"
 
 	"github.com/dgraph-io/badger/v3"
@@ -39,7 +40,7 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 			}
 			return txn.Set([]byte(strconv.FormatUint(blockNumber, 10)), dataByte)
 		})
-	case DBMysql:
+	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{
 				UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + strconv.FormatUint(blockTime, 10)),
@@ -71,7 +72,7 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 			}
 			return txn.Set([]byte(key), dataByte)
 		})
-	case DBMysql:
+	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{
 				UUID:    getUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
@@ -102,7 +103,7 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 	switch _dbType {
 	case DBBadger:
 		// Not implemented
-	case DBMysql:
+	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{
 				UUID:    getUUID(key),
@@ -116,13 +117,56 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 				vault.Address.Hex(),
 				vault.TokenAddress.Hex(),
 				vault.BlockHash.Hex(),
-				vault.Type,
 				vault.APIVersion,
 				vault.Activation,
 				vault.ManagementFee,
 				vault.TxIndex,
 				vault.LogIndex,
+				vault.Type,
 			})
+		}()
+	}
+}
+
+/**************************************************************************************************
+** StoreERC20 will store a new erc20 token in the _erc20SyncMap for fast access during that same
+** execution, and will store it in the configured DB for future executions.
+**************************************************************************************************/
+func StoreERC20(chainID uint64, token models.TERC20Token) {
+	syncMap := _erc20SyncMap[chainID]
+	key := token.Address.Hex()
+	syncMap.Store(key, token)
+
+	switch _dbType {
+	case DBBadger:
+		go OpenBadgerDB(chainID, TABLES.TOKENS).Update(func(txn *badger.Txn) error {
+			dataByte, err := json.Marshal(token)
+			if err != nil {
+				return err
+			}
+			return txn.Set([]byte(key), dataByte)
+		})
+	case DBSql:
+		go func() {
+			allUnderlyingAsString := []string{}
+			for _, address := range token.UnderlyingTokensAddresses {
+				allUnderlyingAsString = append(allUnderlyingAsString, address.Hex())
+			}
+			newItem := &DBERC20{
+				UUID:                      getUUID(key),
+				Address:                   token.Address.Hex(),
+				Name:                      token.Name,
+				Symbol:                    token.Symbol,
+				Type:                      token.Type,
+				DisplayName:               token.DisplayName,
+				DisplaySymbol:             token.DisplaySymbol,
+				Description:               token.Description,
+				Decimals:                  token.Decimals,
+				ChainID:                   token.ChainID,
+				UnderlyingTokensAddresses: strings.Join(allUnderlyingAsString, ","),
+			}
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table(`db_erc20`).Save(newItem)
 		}()
 	}
 }
@@ -131,7 +175,7 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 ** StoreVault will store a new vault in the _vaultsSyncMap for fast access during that same
 ** execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
-func StoreVault(chainID uint64, vault *models.TVault) {
+func StoreVault(chainID uint64, vault models.TVault) {
 	syncMap := _vaultsSyncMap[chainID]
 	key := vault.Address.Hex() + "_" + vault.Token.Address.Hex() + "_" + strconv.FormatUint(vault.Activation, 10) + "_" + strconv.FormatUint(vault.ChainID, 10)
 	syncMap.Store(vault.Address, vault)
@@ -145,15 +189,7 @@ func StoreVault(chainID uint64, vault *models.TVault) {
 			}
 			return txn.Set([]byte(key), dataByte)
 		})
-	case DBMysql:
-		//for now
-		go OpenBadgerDB(chainID, TABLES.VAULTS).Update(func(txn *badger.Txn) error {
-			dataByte, err := json.Marshal(vault)
-			if err != nil {
-				return err
-			}
-			return txn.Set([]byte(key), dataByte)
-		})
+	case DBSql:
 		go func() {
 			newItem := &DBVault{}
 			newItem.UUID = getUUID(key)
@@ -170,7 +206,6 @@ func StoreVault(chainID uint64, vault *models.TVault) {
 			newItem.Name = vault.Name
 			newItem.DisplayName = vault.DisplayName
 			newItem.FormatedName = vault.FormatedName
-			newItem.Icon = vault.Icon
 			newItem.Version = vault.Version
 			newItem.ChainID = vault.ChainID
 			newItem.Inception = vault.Inception

@@ -26,7 +26,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	}
 
 	data := []TExternalVault{}
-	allVaults := []*models.TVault{}
+	allVaults := []models.TVault{}
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		vaultsForChain := vaults.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {

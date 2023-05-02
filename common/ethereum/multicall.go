@@ -177,7 +177,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				if batchSize == math.MaxInt64 {
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
 				}
-				if isAssumingOutOfGas && batchSize <= 100 {
+				if isAssumingOutOfGas && batchSize <= 50 {
 					logs.Error(err)
 					return nil
 				}

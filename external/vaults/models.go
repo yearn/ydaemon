@@ -108,16 +108,16 @@ type TExternalVaultDetails struct {
 
 // TExternalERC20Token contains the basic information of an ERC20 token
 type TExternalERC20Token struct {
-	Address                   string   `json:"address"`
-	UnderlyingTokensAddresses []string `json:"underlyingTokensAddresses"`
-	Name                      string   `json:"name"`
-	Symbol                    string   `json:"symbol"`
-	Type                      string   `json:"type"`
-	DisplayName               string   `json:"display_name"`
-	DisplaySymbol             string   `json:"display_symbol"`
-	Description               string   `json:"description"`
-	Icon                      string   `json:"icon"`
-	Decimals                  uint64   `json:"decimals"`
+	Address                   string            `json:"address"`
+	UnderlyingTokensAddresses []string          `json:"underlyingTokensAddresses"`
+	Name                      string            `json:"name"`
+	Symbol                    string            `json:"symbol"`
+	Type                      models.TTokenType `json:"type"`
+	DisplayName               string            `json:"display_name"`
+	DisplaySymbol             string            `json:"display_symbol"`
+	Description               string            `json:"description"`
+	Icon                      string            `json:"icon"`
+	Decimals                  uint64            `json:"decimals"`
 }
 
 // TExternalVault is the struct containing the information about a vault.
@@ -151,7 +151,7 @@ type TExternalVault struct {
 func NewVault() *TExternalVault {
 	return &TExternalVault{}
 }
-func (v *TExternalVault) AssignTVault(internalVault *models.TVault) *TExternalVault {
+func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVault {
 	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, internalVault.Address)
 	if !ok {
 		vaultFromMeta = &models.TInternalVaultFromMeta{

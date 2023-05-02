@@ -61,7 +61,7 @@ func findRelatedTransfers(
 **************************************************************************************************/
 func retrieveAllFeesBPS(
 	chainID uint64,
-	vaults map[common.Address]*models.TVault,
+	vaults map[common.Address]models.TVault,
 	strategiesMap map[common.Address]map[common.Address]*models.TStrategy,
 	start uint64,
 	end *uint64,
@@ -129,7 +129,7 @@ func getDurationSinceLastReport(log models.TStrategyReportBase, allLastReport ma
 ** getTokensPricesAtBlock will fetch the price of all the tokens used in the harvests at a given
 ** block. This is done in parallel to speed up the process.
 **************************************************************************************************/
-func getTokensPricesAtBlock(chainID uint64, allEvents []models.TStrategyReportBase, vaultsMap map[common.Address]*models.TVault) {
+func getTokensPricesAtBlock(chainID uint64, allEvents []models.TStrategyReportBase, vaultsMap map[common.Address]models.TVault) {
 	timeBefore := time.Now()
 	blocks := map[uint64][]common.Address{}
 

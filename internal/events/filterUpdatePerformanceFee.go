@@ -29,7 +29,7 @@ import (
 **
 ** Returns nothing as the feeMap is updated via a pointer
 **************************************************************************************************/
-func filterUpdatePerformanceFee(vault *models.TVault, start uint64, end *uint64, feeMap *sync.Map) {
+func filterUpdatePerformanceFee(vault models.TVault, start uint64, end *uint64, feeMap *sync.Map) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 
@@ -110,7 +110,7 @@ func filterUpdatePerformanceFee(vault *models.TVault, start uint64, end *uint64,
 **************************************************************************************************/
 func HandleUpdatePerformanceFee(
 	chainID uint64,
-	vaults map[common.Address]*models.TVault,
+	vaults map[common.Address]models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64][]ethereum.TEventBlock {
@@ -120,7 +120,7 @@ func HandleUpdatePerformanceFee(
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		wg.Add(1)
-		go func(v *models.TVault) {
+		go func(v models.TVault) {
 			defer wg.Done()
 			filterUpdatePerformanceFee(v, start, end, &syncMap)
 		}(v)

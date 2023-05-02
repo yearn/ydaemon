@@ -38,9 +38,9 @@ func filterNewExperimentalVault(
 	}
 
 	client := ethereum.GetRPC(chainID)
-	currentVault, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
+	currentRegistry, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
 
-	if log, err := currentVault.FilterNewExperimentalVault(opts, nil, nil); err == nil {
+	if log, err := currentRegistry.FilterNewExperimentalVault(opts, nil, nil); err == nil {
 		for log.Next() {
 			if log.Error() != nil {
 				continue
@@ -187,6 +187,8 @@ func HandleNewVaults(
 
 	wg := &sync.WaitGroup{}
 	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+		_start := start
+
 		/******************************************************************************************
 		** Then, we need to know when to start our log fetching. By default, we will fetch from the
 		** activation block in order to get all the vaults that were ever deployed since it was
@@ -196,12 +198,12 @@ func HandleNewVaults(
 		** event block number + 1 as the start block number.
 		** If another start block number is specified, we will use it instead.
 		******************************************************************************************/
-		if start == 0 {
+		if _start == 0 {
 			lastEvent := registriesWithLastEvent[registry.Address.Hex()]
 			if lastEvent > 0 {
-				start = lastEvent + 1 //Adding one to get the next event
+				_start = lastEvent + 1 //Adding one to get the next event
 			} else {
-				start = registry.Block
+				_start = registry.Block
 			}
 		}
 
@@ -209,7 +211,7 @@ func HandleNewVaults(
 		** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 		** avoid hitting some external node providers' rate limits.
 		******************************************************************************************/
-		for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
+		for chunkStart := _start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
 			wg.Add(2)
 			chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
 			if chunkEnd > *end {
@@ -217,15 +219,15 @@ func HandleNewVaults(
 			}
 
 			opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
-			go func() {
+			go func(_registry env.TContractData) {
 				defer wg.Done()
-				filterNewVaults(chainID, registry, opts, &syncMap)
-			}()
+				filterNewVaults(chainID, _registry, opts, &syncMap)
+			}(registry)
 
-			go func() {
+			go func(_registry env.TContractData) {
 				defer wg.Done()
-				filterNewExperimentalVault(chainID, registry, opts, &syncMapExperimental)
-			}()
+				filterNewExperimentalVault(chainID, _registry, opts, &syncMapExperimental)
+			}(registry)
 		}
 	}
 	wg.Wait()

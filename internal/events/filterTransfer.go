@@ -215,7 +215,7 @@ func HandleTransferFromVaultsToStrategies(
 **********************************************************************************************/
 func HandleTransfersFromVaultsToTreasury(
 	chainID uint64,
-	vaultsMap map[common.Address]*models.TVault,
+	vaultsMap map[common.Address]models.TVault,
 	start uint64,
 	end *uint64,
 ) map[common.Address]map[uint64][]ethereum.TEventBlock {

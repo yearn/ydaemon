@@ -11,32 +11,40 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/google/uuid"
 	"github.com/yearn/ydaemon/common/logs"
+	"gorm.io/driver/postgres"
 )
 
 var DATABASE *gorm.DB
 
 func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
-	DSN, exists := os.LookupEnv("MYSQL_DSN")
-	if !exists {
-		logs.Info("DSN not found, skipping database usage")
-		return false
-	}
-
-	db, err := gorm.Open(mysql.Open(DSN), &gorm.Config{
+	var db *gorm.DB
+	var err error
+	config := gorm.Config{
 		SkipDefaultTransaction:                   true,
 		DisableForeignKeyConstraintWhenMigrating: true,
 		QueryFields:                              true,
 		Logger:                                   logger.Default.LogMode(logger.Error),
-	})
-	if err != nil {
-		logs.Error(err)
-		return false
+	}
+	if MYSQL_DSN, existsMy := os.LookupEnv("MYSQL_DSN"); existsMy {
+		db, err = gorm.Open(mysql.Open(MYSQL_DSN), &config)
+		if err != nil {
+			logs.Error(err)
+			return false
+		}
+	}
+	if PGSQL_DSN, existsMy := os.LookupEnv("PGSQL_DSN"); existsMy {
+		db, err = gorm.Open(postgres.Open(PGSQL_DSN), &config)
+		if err != nil {
+			logs.Error(err)
+			return false
+		}
 	}
 	DATABASE = db
 	db.AutoMigrate(&DBBlockTime{})
 	db.AutoMigrate(&DBHistoricalPrice{})
 	db.AutoMigrate(&DBNewVaultsFromRegistry{})
 	db.AutoMigrate(&DBVault{})
+	db.Table(`db_erc20`).AutoMigrate(&DBERC20{})
 
 	logs.Success(`DB initialized`)
 	return true

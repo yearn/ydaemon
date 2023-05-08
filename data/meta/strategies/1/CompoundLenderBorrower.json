@@ -2,7 +2,10 @@
   "$schema": "strategy",
   "name": "Compound Lender Borrower",
   "description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-  "addresses": ["0x9E9a2a86eeff52FFD13fc724801a4259b2B1A949"],
+  "addresses": [
+    "0x9E9a2a86eeff52FFD13fc724801a4259b2B1A949",
+    "0x17304367C7680a62F23B667ce5ef7e80aE296205"
+  ],
   "protocols": ["Compound Finance"],
   "protocolVersion": {
     "Compound Finance": "3"

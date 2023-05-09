@@ -122,6 +122,7 @@ func (caller *TEthMultiCaller) execute(
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
+		logs.Error(`Failed with err:`, err.Error())
 		return []byte{}, errors.New("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
 	}
 	return resp, nil
@@ -141,21 +142,28 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 	// Add calls to multicall structure for the contract
 	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
+	var rawCalls = make([]Call, 0, len(calls))
 	for _, call := range calls {
 		multiCalls = append(multiCalls, call.GetMultiCall())
+		rawCalls = append(rawCalls, call)
 	}
 
 	for i := 0; i < len(multiCalls); i += batchSize {
 		var group []contracts.Multicall2Call
+		var rawCallsGroup []Call
 
 		if i+batchSize >= len(multiCalls) {
 			group = multiCalls[i:]
+			rawCallsGroup = rawCalls[i:]
 		} else {
 			group = multiCalls[i : i+batchSize]
+			rawCallsGroup = rawCalls[i : i+batchSize]
 		}
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
+			//print associated rawCalls
+			logs.Error(rawCallsGroup)
 			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")
@@ -178,6 +186,10 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
 				}
 				if isAssumingOutOfGas && batchSize <= 50 {
+					logs.Error(err)
+					return nil
+				}
+				if batchSize <= 50 {
 					logs.Error(err)
 					return nil
 				}

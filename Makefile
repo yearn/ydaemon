@@ -9,7 +9,7 @@ vet: fmt
 	go vet ./...
 .PHONY:vet
 build: vet
-	go build -o yDaemon cmd/main.go 
+	go build -o yDaemon ./cmd 
 .PHONY:build
 deploy:
 	git pull --rebase && docker-compose down && docker-compose up --build --detach

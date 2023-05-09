@@ -39,15 +39,17 @@ func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
 			return false
 		}
 	}
-	DATABASE = db
-	db.AutoMigrate(&DBBlockTime{})
-	db.AutoMigrate(&DBHistoricalPrice{})
-	db.AutoMigrate(&DBNewVaultsFromRegistry{})
-	db.AutoMigrate(&DBVault{})
-	db.Table(`db_erc20`).AutoMigrate(&DBERC20{})
-
-	logs.Success(`DB initialized`)
-	return true
+	if db != nil {
+		DATABASE = db
+		db.AutoMigrate(&DBBlockTime{})
+		db.AutoMigrate(&DBHistoricalPrice{})
+		db.AutoMigrate(&DBNewVaultsFromRegistry{})
+		db.AutoMigrate(&DBVault{})
+		db.Table(`db_erc20`).AutoMigrate(&DBERC20{})
+		logs.Success(`DB initialized`)
+		return true
+	}
+	return false
 }
 
 func getUUID(str string) string {

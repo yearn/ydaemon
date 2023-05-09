@@ -117,8 +117,8 @@ func retrieveAllTransfersForReferee(
 	now := time.Now()
 	transferEventSyncMap := sync.Map{}
 
-	wg := sync.WaitGroup{}
 	for vaultAddress, refereeBlockData := range refereeVaultBlockData {
+		wg := sync.WaitGroup{}
 		allRefereesAddresses := []common.Address{}
 		earliestBlock := uint64(math.MaxUint64)
 		for _, refereeBlock := range refereeBlockData {
@@ -185,8 +185,8 @@ func retrieveAllTransfersForReferee(
 				logs.Error(`Error while retrieving transfer events for referee`, err)
 			}
 		}(allRefereesAddresses)
+		wg.Wait()
 	}
-	wg.Wait()
 
 	transfersEvents := []TRefereeTransferEvent{}
 	transferEventSyncMap.Range(func(key, value interface{}) bool {

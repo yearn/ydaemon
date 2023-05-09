@@ -159,11 +159,12 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			group = multiCalls[i : i+batchSize]
 			rawCallsGroup = rawCalls[i : i+batchSize]
 		}
+		_ = rawCallsGroup
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
 			//print associated rawCalls
-			logs.Error(rawCallsGroup)
+			// logs.Error(rawCallsGroup)
 			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")

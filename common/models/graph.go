@@ -27,6 +27,30 @@ type TReportsFromGraph struct {
 	} `json:"strategy"`
 }
 
+type TReportResult struct {
+	Duration   uint64  `json:"duration"`
+	DurationPR uint64  `json:"durationPR"`
+	APR        float64 `json:"APR"`
+}
+type TReport struct {
+	ID        string          `json:"id"`
+	DebtAdded *bigNumber.Int  `json:"debtAdded"`
+	DebtLimit *bigNumber.Int  `json:"debtLimit"`
+	TotalDebt *bigNumber.Int  `json:"totalDebt"`
+	Gain      *bigNumber.Int  `json:"gain"`
+	TotalGain *bigNumber.Int  `json:"totalGain"`
+	Loss      *bigNumber.Int  `json:"loss"`
+	TotalLoss *bigNumber.Int  `json:"totalLoss"`
+	DebtPaid  *bigNumber.Int  `json:"debtPaid"`
+	Timestamp uint64          `json:"timestamp"`
+	Results   []TReportResult `json:"results"`
+}
+type TReportsFromGraphToClient struct {
+	Strategy struct {
+		Reports []TReport `json:"reports"`
+	} `json:"strategy"`
+}
+
 // TGraphQLHarvestRequestForOneVault is the request for the graphql query when we ask for the harvests for one specific vault
 type TGraphQLHarvestRequestForOneVault struct {
 	Harvests []struct {

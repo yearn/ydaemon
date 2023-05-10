@@ -98,10 +98,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 func InitializeBribes(chainID uint64) {
 	allRewardsAdded := events.HandleRewardsAdded(chainID, 0, nil)
 	for _, reward := range allRewardsAdded {
-		bribes.SetInRewardAddedMap(
-			chainID,
-			reward.BlockNumber,
-			&reward,
-		)
+		bribes.SetInRewardAddedMap(chainID, reward)
 	}
 }

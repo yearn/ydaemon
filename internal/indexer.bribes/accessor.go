@@ -8,26 +8,24 @@ import "github.com/yearn/ydaemon/internal/models"
 ** The _yBribeRewardAdded variable is not exported and is only used internally by the
 ** functions below.
 **********************************************************************************************/
-var _yBribeRewardAdded = make(map[uint64]map[uint64]*models.TEventRewardAdded)
+var _yBribeRewardAdded = make(map[uint64][]models.TEventRewardAdded)
 
 /**********************************************************************************************
 ** ListRewardAdded will, for a given chainID, return the list of all the events stored in
 ** _yBribeRewardAdded.
 **********************************************************************************************/
-func ListRewardAdded(chainID uint64) []*models.TEventRewardAdded {
-	var events []*models.TEventRewardAdded
-	for _, event := range _yBribeRewardAdded[chainID] {
-		events = append(events, event)
-	}
+func ListRewardAdded(chainID uint64) []models.TEventRewardAdded {
+	var events []models.TEventRewardAdded
+	events = append(events, _yBribeRewardAdded[chainID]...)
 	return events
 }
 
 /**********************************************************************************************
 ** SetInRewardAddedMap will allow us to safely populate the _yBribeRewardAdded variable.
 **********************************************************************************************/
-func SetInRewardAddedMap(chainID uint64, blockNumber uint64, event *models.TEventRewardAdded) {
+func SetInRewardAddedMap(chainID uint64, event models.TEventRewardAdded) {
 	if _, ok := _yBribeRewardAdded[chainID]; !ok {
-		_yBribeRewardAdded[chainID] = make(map[uint64]*models.TEventRewardAdded)
+		_yBribeRewardAdded[chainID] = []models.TEventRewardAdded{}
 	}
-	_yBribeRewardAdded[chainID][blockNumber] = event
+	_yBribeRewardAdded[chainID] = append(_yBribeRewardAdded[chainID], event)
 }

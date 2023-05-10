@@ -77,9 +77,9 @@ func filterRewardAdded(chainID uint64, start uint64, end *uint64, syncMap *sync.
 ** In order to get the list, or a feed, of all the RewardAdded events, we need to filter the
 ** events from the blockchain and store them in a map. This function will do that.
 **********************************************************************************************/
-func HandleRewardsAdded(chainID uint64, start uint64, end *uint64) map[uint64]models.TEventRewardAdded {
+func HandleRewardsAdded(chainID uint64, start uint64, end *uint64) []models.TEventRewardAdded {
 	if chainID != 1 {
-		return make(map[uint64]models.TEventRewardAdded)
+		return []models.TEventRewardAdded{}
 	}
 
 	/**********************************************************************************************
@@ -99,10 +99,10 @@ func HandleRewardsAdded(chainID uint64, start uint64, end *uint64) map[uint64]mo
 	** We need to update, for each corresponding event, the activation block to the TEventRewardAdded.
 	**********************************************************************************************/
 	count := 0
-	rewardAddedMap := make(map[uint64]models.TEventRewardAdded)
+	rewardAddedMap := []models.TEventRewardAdded{}
 	syncMap.Range(func(key, value interface{}) bool {
 		currentRewardAdded := value.(models.TEventRewardAdded)
-		rewardAddedMap[key.(uint64)] = currentRewardAdded
+		rewardAddedMap = append(rewardAddedMap, currentRewardAdded)
 		count++
 		return true
 	})

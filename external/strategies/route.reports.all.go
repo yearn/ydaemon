@@ -3,6 +3,7 @@ package strategies
 import (
 	"context"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -42,11 +43,54 @@ func (y Controller) GetReports(c *gin.Context) {
 	}
 	client := graphql.NewClient(graphQLEndpoint)
 	request := graphQLRequestForReports(address.Hex(), c)
-	var response models.TReportsFromGraph
-	if err := client.Run(context.Background(), request, &response); err != nil {
+	var responseRaw models.TReportsFromGraph
+	if err := client.Run(context.Background(), request, &responseRaw); err != nil {
 		logs.Error(err)
 		c.String(http.StatusInternalServerError, "invalid graphQL response")
 		return
+	}
+
+	var response models.TReportsFromGraphToClient
+	for _, report := range responseRaw.Strategy.Reports {
+		timestamp, err := strconv.ParseUint(report.Timestamp, 10, 64)
+		if err != nil {
+			timestamp = 0
+		}
+		newReport := models.TReport{
+			ID:        report.ID,
+			DebtAdded: report.DebtAdded,
+			DebtLimit: report.DebtLimit,
+			TotalDebt: report.TotalDebt,
+			Gain:      report.Gain,
+			TotalGain: report.TotalGain,
+			Loss:      report.Loss,
+			TotalLoss: report.TotalLoss,
+			DebtPaid:  report.DebtPaid,
+			Timestamp: timestamp,
+		}
+		for _, allResults := range report.Results {
+			duration, err := strconv.ParseUint(allResults.Duration, 10, 64)
+			if err != nil {
+				duration = 0
+			}
+			durationPr, err := strconv.ParseUint(allResults.DurationPr, 10, 64)
+			if err != nil {
+				durationPr = 0
+			}
+			apr, err := strconv.ParseFloat(allResults.Apr, 64)
+			if err != nil {
+				apr = 0
+			}
+
+			newResult := models.TReportResult{
+				Duration:   duration,
+				DurationPR: durationPr,
+				APR:        apr,
+			}
+			newReport.Results = append(newReport.Results, newResult)
+		}
+		response.Strategy.Reports = append(response.Strategy.Reports, newReport)
+
 	}
 
 	c.JSON(http.StatusOK, response.Strategy.Reports)

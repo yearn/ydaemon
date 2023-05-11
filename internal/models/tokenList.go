@@ -18,7 +18,7 @@ const (
 // TTokenListToken is the structure used for the tokens inside a token list.
 // This is a standard and alterations should be avoided.
 type TTokenListToken struct {
-	ChainID  int    `json:"chainId"`  // ChainID indicates on which chain the token is deployed
+	ChainID  int    `json:"chainID"`  // ChainID indicates on which chain the token is deployed
 	Decimals int    `json:"decimals"` // Decimals is the number of decimals the token uses
 	Address  string `json:"address"`  // Address is the address of the token contract
 	Name     string `json:"name"`     // Name is the name of the token

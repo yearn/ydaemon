@@ -27,7 +27,7 @@ type TERC20Token struct {
 	Description               string           `json:"description"`
 	Icon                      string           `json:"icon"`
 	Decimals                  uint64           `json:"decimals"`
-	ChainID                   uint64           `json:"chainId"`
+	ChainID                   uint64           `json:"chainID"`
 }
 
 // TTokenFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/tokens/all

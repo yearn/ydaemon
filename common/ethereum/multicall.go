@@ -122,7 +122,7 @@ func (caller *TEthMultiCaller) execute(
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
-		return []byte{}, errors.New("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
+		return []byte{}, errors.New("Failed to perform multicall for:" + chainID.String() + " | " + err.Error())
 	}
 	return resp, nil
 }
@@ -185,11 +185,11 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				if batchSize == math.MaxInt64 {
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
 				}
-				if isAssumingOutOfGas && batchSize <= 50 {
+				if isAssumingOutOfGas && batchSize <= 20 {
 					logs.Error(`Multicall failed! See error: ` + err.Error())
 					return nil
 				}
-				if batchSize <= 50 {
+				if batchSize <= 20 {
 					logs.Error(`Multicall failed! See error: ` + err.Error())
 					return nil
 				}

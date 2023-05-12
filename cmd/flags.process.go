@@ -5,9 +5,10 @@ import "strings"
 type TProcess string
 
 const (
-	ProcessServer      TProcess = "server"
-	ProcessPartnerFees TProcess = "partnerfees"
-	ProcessTokenList   TProcess = "tokenlist"
+	ProcessServer          TProcess = "server"
+	ProcessPartnerFees     TProcess = "partnerfees"
+	ProcessTokenList       TProcess = "tokenlist"
+	ProcessVaultMigrations TProcess = "vaultmigrations"
 )
 
 func handleProcessInitialization(rawProcess *string) TProcess {
@@ -18,6 +19,8 @@ func handleProcessInitialization(rawProcess *string) TProcess {
 		process = ProcessPartnerFees
 	case string(ProcessTokenList):
 		process = ProcessTokenList
+	case string(ProcessVaultMigrations):
+		process = ProcessVaultMigrations
 	default:
 		process = ProcessServer
 	}

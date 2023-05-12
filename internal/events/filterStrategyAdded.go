@@ -243,8 +243,8 @@ func HandleStrategyAdded(
 	asyncStrategiesForVaults := &sync.Map{}
 	asyncStrategiesMigrated := &sync.Map{}
 
-	wg := &sync.WaitGroup{}
 	for _, v := range vaultsMap {
+		wg := &sync.WaitGroup{}
 		wg.Add(2)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()
@@ -264,8 +264,8 @@ func HandleStrategyAdded(
 				asyncStrategiesMigrated,
 			)
 		}(v)
+		wg.Wait()
 	}
-	wg.Wait()
 
 	/**********************************************************************************************
 	** Once all vaults StrategyAdded updates have been retrieved, we need to extract them from the

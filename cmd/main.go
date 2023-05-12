@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/processes/partnerFees"
 	"github.com/yearn/ydaemon/processes/tokenList"
+	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
 
 func SummonDaemonsw(chainID uint64, parentWg *sync.WaitGroup) {
@@ -66,12 +67,27 @@ func main() {
 			go runDaemonWithBlocks(chainID, *startBlock, endBlock, &wg, 0, partnerFees.Run)
 		}
 		wg.Wait()
+
 	case ProcessTokenList:
 		logs.Info(`Running yDaemon token list process...`)
 
 		for _, chainID := range chains {
 			wg.Add(1)
-			go tokenList.BuildTokenList(chainID)
+			go func(chainID uint64) {
+				tokenList.BuildTokenList(chainID)
+				wg.Done()
+			}(chainID)
+		}
+		wg.Wait()
+
+	case ProcessVaultMigrations:
+		logs.Info(`Running yDaemon vault migrations process...`)
+		for _, chainID := range chains {
+			wg.Add(1)
+			go func(chainID uint64) {
+				vaultsMigrations.Run(chainID)
+				wg.Done()
+			}(chainID)
 		}
 		wg.Wait()
 	}

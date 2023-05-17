@@ -90,7 +90,6 @@ func filterNewVaults(
 
 	if registry.Version == 1 || registry.Version == 2 {
 		currentVault, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
-
 		if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
@@ -115,7 +114,6 @@ func filterNewVaults(
 			}
 		} else {
 			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-
 		}
 	} else if registry.Version == 3 {
 		currentVault, _ := contracts.NewYRegistryV3(registry.Address, client) //V3 is not the same

@@ -18,6 +18,144 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
+func fallbackIndexNewVaults(
+	chainID uint64,
+	registryAddress common.Address,
+	registryVersion uint64,
+	lastSyncedBlock uint64,
+) (uint64, bool, error) {
+	/**********************************************************************************************
+	** As we cannot use the WS connection, we will fallback to the regular RPC connection. This
+	** means that we will need to filter the logs from the lastSyncedBlock to the latest block
+	** every x seconds to check if there are new vaults.
+	**********************************************************************************************/
+	client := ethereum.GetRPC(chainID)
+
+	/**********************************************************************************************
+	** We will need to store the current BlockNumber to be able to filter the events from that
+	** specific block number. It's a security measure to avoid missing events. If the node goes
+	** down or the WS connection is lost, we can just proceed with the regular RPC connection by
+	** filtering logs from that block to the latest block.
+	**********************************************************************************************/
+	currentBlock, err := client.BlockNumber(context.Background())
+	if err != nil {
+		return lastSyncedBlock, true, err
+	}
+
+	if currentBlock > lastSyncedBlock {
+		currentBlock = lastSyncedBlock
+	}
+
+	switch registryVersion {
+	case 1, 2:
+		lastSyncedBlockForV2 := lastSyncedBlock
+		for {
+			currentVault, _ := contracts.NewYregistryv2(registryAddress, client)
+			currentBlock, err := client.BlockNumber(context.Background())
+			if err != nil {
+				time.Sleep(60 * time.Second)
+				continue
+			}
+
+			if currentBlock > lastSyncedBlockForV2 {
+				currentBlock = lastSyncedBlockForV2
+			}
+			opts := &bind.FilterOpts{Start: lastSyncedBlockForV2, End: &currentBlock}
+
+			if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					newVault := models.TVaultsFromRegistry{
+						ChainID:         chainID,
+						RegistryAddress: registryAddress,
+						Address:         log.Event.Vault,
+						TokenAddress:    log.Event.Token,
+						APIVersion:      log.Event.ApiVersion,
+						BlockNumber:     log.Event.Raw.BlockNumber,
+						Activation:      log.Event.Raw.BlockNumber,
+						ManagementFee:   200,
+						BlockHash:       log.Event.Raw.BlockHash,
+						TxIndex:         log.Event.Raw.TxIndex,
+						LogIndex:        log.Event.Raw.Index,
+						Type:            models.VaultTypeStandard,
+					}
+					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+					newVaultList := map[common.Address]models.TVaultsFromRegistry{
+						newVault.Address: newVault,
+					}
+					vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
+					if vaultsWithActivation != nil {
+						newVault.Activation = vaultsWithActivation[newVault.Address].Activation
+					}
+
+					indexer.ProcessNewVault(chainID, newVaultList)
+				}
+			} else {
+				logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
+			lastSyncedBlockForV2 = currentBlock
+			time.Sleep(60 * time.Second)
+		}
+	case 3:
+		lastSyncedBlockForV3 := lastSyncedBlock
+		for {
+			currentVault, _ := contracts.NewYRegistryV3(registryAddress, client)
+			currentBlock, err := client.BlockNumber(context.Background())
+			if err != nil {
+				time.Sleep(60 * time.Second)
+				continue
+			}
+
+			if currentBlock > lastSyncedBlockForV3 {
+				currentBlock = lastSyncedBlockForV3
+			}
+			opts := &bind.FilterOpts{Start: lastSyncedBlockForV3, End: &currentBlock}
+
+			if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					newVault := models.TVaultsFromRegistry{
+						ChainID:         chainID,
+						RegistryAddress: registryAddress,
+						Address:         log.Event.Vault,
+						TokenAddress:    log.Event.Token,
+						APIVersion:      log.Event.ApiVersion,
+						BlockNumber:     log.Event.Raw.BlockNumber,
+						Activation:      log.Event.Raw.BlockNumber,
+						ManagementFee:   200,
+						BlockHash:       log.Event.Raw.BlockHash,
+						TxIndex:         log.Event.Raw.TxIndex,
+						LogIndex:        log.Event.Raw.Index,
+						Type:            models.VaultTypeStandard,
+					}
+					if log.Event.VaultType.Cmp(big.NewInt(2)) == 0 {
+						newVault.Type = models.VaultTypeAutomated
+					}
+					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+
+					newVaultList := map[common.Address]models.TVaultsFromRegistry{
+						newVault.Address: newVault,
+					}
+					vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
+					if vaultsWithActivation != nil {
+						newVault.Activation = vaultsWithActivation[newVault.Address].Activation
+					}
+					indexer.ProcessNewVault(chainID, newVaultList)
+				}
+			} else {
+				logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
+			lastSyncedBlockForV3 = currentBlock
+			time.Sleep(60 * time.Second)
+		}
+	}
+	return lastSyncedBlock, true, err
+}
+
 /**************************************************************************************************
 ** Watch for new vaults added to the registry. This function is called by the infinite loop in
 ** indexNewVaultsWrapper. It uses the WS connection to listen to the events.
@@ -50,7 +188,7 @@ func indexNewVaults(
 	**********************************************************************************************/
 	client, err := ethereum.GetWSClient(chainID)
 	if err != nil {
-		return lastSyncedBlock, true, err
+		return fallbackIndexNewVaults(chainID, registryAddress, registryVersion, lastSyncedBlock)
 	}
 
 	/**********************************************************************************************

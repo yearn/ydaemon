@@ -94,8 +94,8 @@ func HandleUpdateManagementOneTime(
 			defer wg.Done()
 			filterUpdateManagementOneTime(v, &activationMap, wg)
 		}(v)
+		wg.Wait()
 	}
-	wg.Wait()
 
 	/**********************************************************************************************
 	** Once we got all the activation blocks, we need to extract them from the sync.Map.

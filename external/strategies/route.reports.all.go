@@ -51,6 +51,7 @@ func (y Controller) GetReports(c *gin.Context) {
 	}
 
 	var response models.TReportsFromGraphToClient
+	response.Strategy.Reports = []models.TReport{}
 	for _, report := range responseRaw.Strategy.Reports {
 		timestamp, err := strconv.ParseUint(report.Timestamp, 10, 64)
 		if err != nil {
@@ -67,6 +68,7 @@ func (y Controller) GetReports(c *gin.Context) {
 			TotalLoss: report.TotalLoss,
 			DebtPaid:  report.DebtPaid,
 			Timestamp: timestamp,
+			Results:   []models.TReportResult{},
 		}
 		for _, allResults := range report.Results {
 			duration, err := strconv.ParseUint(allResults.Duration, 10, 64)

@@ -244,7 +244,10 @@ func (b *Int) Not(x *Int) bool {
 ** expecting a string.
 ** Theses functions override the default behavior to marshal the big.Int to a string.
 **************************************************************************************************/
-func (b Int) MarshalJSON() ([]byte, error) {
+func (b *Int) MarshalJSON() ([]byte, error) {
+	if b == nil {
+		return json.Marshal(big.NewInt(0).String())
+	}
 	return json.Marshal(b.String())
 }
 func (b *Int) UnmarshalJSON(p []byte) error {

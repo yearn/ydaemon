@@ -206,7 +206,7 @@ func safeFloat(s *big.Float, defaultValue ...*big.Float) *big.Float {
 **************************************************************************************************/
 func (b *Float) MarshalJSON() ([]byte, error) {
 	if b == nil {
-		return json.Marshal(big.NewFloat(0))
+		return json.Marshal(big.NewFloat(0).String())
 	}
 	return json.Marshal(b.String())
 }

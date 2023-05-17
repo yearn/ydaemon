@@ -204,7 +204,10 @@ func safeFloat(s *big.Float, defaultValue ...*big.Float) *big.Float {
 ** expecting a string.
 ** Theses functions override the default behavior to marshal the big.Float to a string.
 **************************************************************************************************/
-func (b Float) MarshalJSON() ([]byte, error) {
+func (b *Float) MarshalJSON() ([]byte, error) {
+	if b == nil {
+		return json.Marshal(big.NewFloat(0))
+	}
 	return json.Marshal(b.String())
 }
 

@@ -101,3 +101,14 @@ type DBERC20 struct {
 	Decimals                  uint64            // Decimals of the token
 	ChainID                   uint64            // ChainID is the chain on which the token is deployed
 }
+
+/**************************************************************************************************
+** DBRegistrySync is a struct used to keep track of the latest block synced for a specific chain
+** for the registry new vaults events.
+**************************************************************************************************/
+type DBRegistrySync struct {
+	UUID     string `gorm:"primaryKey" json:"UUID,omitempty"`
+	Block    uint64 `json:"block"`
+	ChainID  uint64 `json:"chainID"`
+	Registry string `json:"registry"`
+}

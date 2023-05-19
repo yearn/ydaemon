@@ -21,27 +21,29 @@ type TStrategyAllocation struct {
 }
 
 type TStrategyGroupFromRisk struct {
-	Label               string                  `json:"label"`
-	AuditScore          int                     `json:"auditScore"`
-	CodeReviewScore     int                     `json:"codeReviewScore"`
-	ComplexityScore     int                     `json:"complexityScore"`
-	ProtocolSafetyScore int                     `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int                     `json:"teamKnowledgeScore"`
-	TestingScore        int                     `json:"testingScore"`
-	ChainID             uint64                  `json:"chainID"`
-	Criteria            TStrategyGroupCritieria `json:"criteria"`
-	Allocation          *TStrategyAllocation    `json:"allocation"`
+	Label                  string                  `json:"label"`
+	AuditScore             int                     `json:"auditScore"`
+	CodeReviewScore        int                     `json:"codeReviewScore"`
+	ComplexityScore        int                     `json:"complexityScore"`
+	ProtocolSafetyScore    int                     `json:"protocolSafetyScore"`
+	TeamKnowledgeScore     int                     `json:"teamKnowledgeScore"`
+	TestingScore           int                     `json:"testingScore"`
+	StackingRewardTVLScore int                     `json:"stackingRewardTVLScore,omitempty"`
+	ChainID                uint64                  `json:"chainID"`
+	Criteria               TStrategyGroupCritieria `json:"criteria"`
+	Allocation             *TStrategyAllocation    `json:"allocation"`
 }
 
 type TStrategyFromRiskRiskDetails struct {
-	TVLImpact           int `json:"TVLImpact"`
-	AuditScore          int `json:"auditScore"`
-	CodeReviewScore     int `json:"codeReviewScore"`
-	ComplexityScore     int `json:"complexityScore"`
-	LongevityImpact     int `json:"longevityImpact"`
-	ProtocolSafetyScore int `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
-	TestingScore        int `json:"testingScore"`
+	TVLImpact              int `json:"TVLImpact"`
+	AuditScore             int `json:"auditScore"`
+	CodeReviewScore        int `json:"codeReviewScore"`
+	ComplexityScore        int `json:"complexityScore"`
+	LongevityImpact        int `json:"longevityImpact"`
+	ProtocolSafetyScore    int `json:"protocolSafetyScore"`
+	TeamKnowledgeScore     int `json:"teamKnowledgeScore"`
+	TestingScore           int `json:"testingScore"`
+	StackingRewardTVLScore int `json:"stackingRewardTVLScore,omitempty"`
 }
 
 type TStrategyFromRisk struct {

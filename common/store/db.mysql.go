@@ -46,6 +46,7 @@ func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
 		db.AutoMigrate(&DBNewVaultsFromRegistry{})
 		db.AutoMigrate(&DBVault{})
 		db.Table(`db_erc20`).AutoMigrate(&DBERC20{})
+		db.AutoMigrate(&DBRegistrySync{})
 		logs.Success(`DB initialized`)
 		return true
 	}
@@ -57,4 +58,8 @@ func getUUID(str string) string {
 	trimmedHash := hash[:16]
 	finalUUID, _ := uuid.FromBytes(trimmedHash)
 	return finalUUID.String()
+}
+
+func GetUUID(str string) string {
+	return getUUID(str)
 }

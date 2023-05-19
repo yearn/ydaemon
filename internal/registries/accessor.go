@@ -17,7 +17,15 @@ func RegisterAllVaults(
 	** Our first action is to make sure we ignore the vaults we already have in our local storage,
 	** which we loaded from the database.
 	**********************************************************************************************/
-	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
+	var registerSync []store.DBRegistrySync
+	store.DATABASE.Table("db_registry_syncs").
+		Where("db_registry_syncs.chain_id = ?", chainID).
+		Find(&registerSync)
+
+	registriesWithLastEvent := map[string]uint64{}
+	for _, registry := range registerSync {
+		registriesWithLastEvent[registry.Registry] = registry.Block
+	}
 	alreadyStoredVaultList, _ := store.ListVaultsFromRegistry(chainID)
 	standardVaultList, experimentalVaultList := events.HandleNewVaults(chainID, registriesWithLastEvent, start, end)
 

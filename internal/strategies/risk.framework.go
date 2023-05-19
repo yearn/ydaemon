@@ -64,6 +64,19 @@ func getLongevityImpact(activation *bigNumber.Int) int {
 }
 
 func getMedianScore(group models.TStrategyGroupFromRisk) int {
+	if group.StackingRewardTVLScore > 0 {
+		scores := stats.LoadRawData([]int{
+			group.AuditScore,
+			group.CodeReviewScore,
+			group.ComplexityScore,
+			group.ProtocolSafetyScore,
+			group.TeamKnowledgeScore,
+			group.TestingScore,
+			group.StackingRewardTVLScore,
+		})
+		median, _ := stats.Median(scores)
+		return int(median)
+	}
 	scores := stats.LoadRawData([]int{
 		group.AuditScore,
 		group.CodeReviewScore,
@@ -293,6 +306,17 @@ func computeRiskGroupAllocation(chainID uint64) {
 		_, amount := helpers.FormatAmount(strategy.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 		tvl := bigNumber.NewFloat(0).Mul(amount, price)
 
+		if stackingData, hasStackingData := stakingData[chainID][strategy.VaultAddress.Hex()]; hasStackingData {
+			impactedStrategies := []common.Address{
+				common.HexToAddress("0x877D377b289AEa8e0F8aC2470252D226417D9e21"),
+				common.HexToAddress("0xe82DEb62412DB78D00Cae77BE3d1334e26034Cf6"),
+				common.HexToAddress("0x1d3BE43C5621bdA29aB24101c54d434B9b3f29c8"),
+				common.HexToAddress("0xf8aD69d578bd58c7d3Ff643A22355f0BFd5cA12A"),
+			}
+			if helpers.Contains(impactedStrategies, strategy.Address) {
+				strategyGroup.StackingRewardTVLScore = stackingData.Risk
+			}
+		}
 		strategyGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentTVL, tvl)
 		strategyGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentAmount, amount)
 		if tokenPrice.Sign() <= 0 {
@@ -345,7 +369,7 @@ func InitRiskScore(chainID uint64) {
 				TVL:       tvl,
 			}
 
-			logs.Pretty(`[InitRiskScore]`, `tvlImpactPerToken`, pool.Token.Hex(), stakingData[chainID][pool.StackingPool.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
+			logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
 		}
 	}
 	computeRiskGroupAllocation(chainID)

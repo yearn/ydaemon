@@ -89,6 +89,10 @@ func HandleUpdateManagementOneTime(
 	activationMap := sync.Map{}
 	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
+		if v.Activation != 0 {
+			activationMap.Store(v.Address, v.Activation)
+			continue
+		}
 		wg.Add(1)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()

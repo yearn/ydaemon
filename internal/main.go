@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
@@ -75,7 +76,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
 	// From our list of tokens, retieve the price for each one of them -> Should be done every 1(?) minute for all tokens
-
 	internalWG.Add(1)
 	go runRetrieveAllPrices(chainID, &internalWG, 1*time.Minute)
 	internalWG.Wait()
@@ -85,7 +85,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
 	internalWG.Wait()
 
+	now := time.Now()
+	//TODO: THIS IS SLOW. SHOULD STORE THEM IN DB AND ONLY GRAB THE NEW ONES
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
+	logs.Info("HandleStrategyAdded took", time.Since(now))
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
 	internalWG.Add(1)

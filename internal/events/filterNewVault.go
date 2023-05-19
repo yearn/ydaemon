@@ -53,7 +53,7 @@ func filterNewExperimentalVault(
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
 				BlockNumber:     log.Event.Raw.BlockNumber,
-				Activation:      registry.Activation,
+				Activation:      0,
 				ManagementFee:   200,
 				BlockHash:       log.Event.Raw.BlockHash,
 				TxIndex:         log.Event.Raw.TxIndex,
@@ -103,7 +103,7 @@ func filterNewVaults(
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      registry.Activation,
+					Activation:      0,
 					ManagementFee:   200,
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
@@ -129,7 +129,7 @@ func filterNewVaults(
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      registry.Activation,
+					Activation:      0,
 					ManagementFee:   200,
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
@@ -204,7 +204,6 @@ func HandleNewVaults(
 				_start = registry.Block
 			}
 		}
-
 		/******************************************************************************************
 		** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 		** avoid hitting some external node providers' rate limits.
@@ -227,8 +226,22 @@ func HandleNewVaults(
 				filterNewExperimentalVault(chainID, _registry, opts, &syncMapExperimental)
 			}(registry)
 		}
+		wg.Wait()
+
+		/**********************************************************************************************
+		** We are storing in the DB the sync status, indicating we went up to the block number to check
+		** for new vaults.
+		**********************************************************************************************/
+		go store.DATABASE.Table("db_registry_syncs").
+			Where("chain_id = ? AND registry = ?", chainID, registry.Address.Hex()).
+			Where("block <= ?", end).
+			Assign(store.DBRegistrySync{Block: *end}).
+			FirstOrCreate(&store.DBRegistrySync{
+				ChainID:  chainID,
+				Registry: registry.Address.Hex(),
+				UUID:     store.GetUUID(registry.Address.Hex() + strconv.FormatUint(chainID, 10)),
+			})
 	}
-	wg.Wait()
 
 	/**********************************************************************************************
 	** Once we have all the logs, we will dump them from the sync.Map to the array of
@@ -319,6 +332,20 @@ func HandleNewStandardVaults(
 		standardVaultList = append(standardVaultList, value.(models.TVaultsFromRegistry))
 		return true
 	})
+
+	/**********************************************************************************************
+	** We are storing in the DB the sync status, indicating we went up to the block number to check
+	** for new vaults.
+	**********************************************************************************************/
+	go store.DATABASE.Table("db_registry_syncs").
+		Where("chain_id = ? AND registry = ?", chainID, registry.Address.Hex()).
+		Where("block <= ?", end).
+		Assign(store.DBRegistrySync{Block: *end}).
+		FirstOrCreate(&store.DBRegistrySync{
+			ChainID:  chainID,
+			Registry: registry.Address.Hex(),
+			UUID:     store.GetUUID(registry.Address.Hex() + strconv.FormatUint(chainID, 10)),
+		})
 
 	return standardVaultList
 }

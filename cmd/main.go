@@ -2,6 +2,7 @@ package main
 
 import (
 	"sync"
+	"time"
 
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
@@ -29,7 +30,7 @@ func SummonDaemonsw(chainID uint64, parentWg *sync.WaitGroup) {
 	wg.Add(1)
 	{
 		//This can only be run after the internal daemons have been initialized
-		go runDaemon(chainID, &wg, 0, strategies.InitRiskScore)
+		go runDaemon(chainID, &wg, 10*time.Minute, strategies.InitRiskScore)
 	}
 	wg.Wait()
 }

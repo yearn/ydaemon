@@ -3,14 +3,15 @@ package vaults
 import "github.com/yearn/ydaemon/internal/models"
 
 type TExternalStrategyRiskDetails struct {
-	TVLImpact           int `json:"TVLImpact"`
-	AuditScore          int `json:"auditScore"`
-	CodeReviewScore     int `json:"codeReviewScore"`
-	ComplexityScore     int `json:"complexityScore"`
-	LongevityImpact     int `json:"longevityImpact"`
-	ProtocolSafetyScore int `json:"protocolSafetyScore"`
-	TeamKnowledgeScore  int `json:"teamKnowledgeScore"`
-	TestingScore        int `json:"testingScore"`
+	TVLImpact              int `json:"TVLImpact"`
+	AuditScore             int `json:"auditScore"`
+	CodeReviewScore        int `json:"codeReviewScore"`
+	ComplexityScore        int `json:"complexityScore"`
+	LongevityImpact        int `json:"longevityImpact"`
+	ProtocolSafetyScore    int `json:"protocolSafetyScore"`
+	TeamKnowledgeScore     int `json:"teamKnowledgeScore"`
+	TestingScore           int `json:"testingScore"`
+	StackingRewardTVLScore int `json:"stackingRewardTVLScore,omitempty"`
 }
 
 type TExternalStrategyRiskScore struct {
@@ -34,6 +35,7 @@ func (v *TExternalStrategyRiskScore) AssignTStrategyFromRisk(internalStrategyRis
 	v.RiskDetails.ProtocolSafetyScore = internalStrategyRiskScore.RiskDetails.ProtocolSafetyScore
 	v.RiskDetails.TeamKnowledgeScore = internalStrategyRiskScore.RiskDetails.TeamKnowledgeScore
 	v.RiskDetails.TestingScore = internalStrategyRiskScore.RiskDetails.TestingScore
+	v.RiskDetails.StackingRewardTVLScore = internalStrategyRiskScore.RiskDetails.StackingRewardTVLScore
 	v.Allocation = internalStrategyRiskScore.Allocation
 	return v
 }

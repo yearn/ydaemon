@@ -73,20 +73,35 @@ func BuildRiskScore(t *models.TStrategy) *models.TStrategyFromRisk {
 	strategyRiskScore.RiskDetails.ProtocolSafetyScore = strategyGroup.ProtocolSafetyScore
 	strategyRiskScore.RiskDetails.TeamKnowledgeScore = strategyGroup.TeamKnowledgeScore
 	strategyRiskScore.RiskDetails.TestingScore = strategyGroup.TestingScore
+	strategyRiskScore.RiskDetails.StackingRewardTVLScore = strategyGroup.StackingRewardTVLScore
 	strategyRiskScore.RiskDetails.TVLImpact = getTVLImpact(tvl)
 	strategyRiskScore.Allocation = strategyGroup.Allocation
 
 	// Calculate median score for strategy
-	scores := stats.LoadRawData([]int{
-		strategyGroup.AuditScore,
-		strategyGroup.CodeReviewScore,
-		strategyGroup.ComplexityScore,
-		strategyGroup.ProtocolSafetyScore,
-		strategyGroup.TeamKnowledgeScore,
-		strategyGroup.TestingScore,
-		strategyRiskScore.RiskDetails.LongevityImpact, // Add LongevityImpact
-	})
-	strategyRiskScore.RiskScore, _ = stats.Median(scores)
+	if strategyGroup.StackingRewardTVLScore > 0 {
+		scores := stats.LoadRawData([]int{
+			strategyGroup.AuditScore,
+			strategyGroup.CodeReviewScore,
+			strategyGroup.ComplexityScore,
+			strategyGroup.ProtocolSafetyScore,
+			strategyGroup.TeamKnowledgeScore,
+			strategyGroup.TestingScore,
+			strategyGroup.StackingRewardTVLScore,
+			strategyRiskScore.RiskDetails.LongevityImpact, // Add LongevityImpact
+		})
+		strategyRiskScore.RiskScore, _ = stats.Median(scores)
+	} else {
+		scores := stats.LoadRawData([]int{
+			strategyGroup.AuditScore,
+			strategyGroup.CodeReviewScore,
+			strategyGroup.ComplexityScore,
+			strategyGroup.ProtocolSafetyScore,
+			strategyGroup.TeamKnowledgeScore,
+			strategyGroup.TestingScore,
+			strategyRiskScore.RiskDetails.LongevityImpact, // Add LongevityImpact
+		})
+		strategyRiskScore.RiskScore, _ = stats.Median(scores)
+	}
 
 	return &strategyRiskScore
 }

@@ -111,19 +111,21 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 				ChainID: chainID,
 			}
 			storeRateLimiter.Wait(context.Background())
-			DATABASE.Table(`db_new_vaults_from_registries`).Save(&DBNewVaultsFromRegistry{
-				DBbaseSchema,
-				vault.RegistryAddress.Hex(),
-				vault.Address.Hex(),
-				vault.TokenAddress.Hex(),
-				vault.BlockHash.Hex(),
-				vault.APIVersion,
-				vault.Activation,
-				vault.ManagementFee,
-				vault.TxIndex,
-				vault.LogIndex,
-				vault.Type,
-			})
+			DATABASE.
+				Table(`db_new_vaults_from_registries`).
+				FirstOrCreate(&DBNewVaultsFromRegistry{
+					DBbaseSchema,
+					vault.RegistryAddress.Hex(),
+					vault.Address.Hex(),
+					vault.TokenAddress.Hex(),
+					vault.BlockHash.Hex(),
+					vault.APIVersion,
+					vault.Activation,
+					vault.ManagementFee,
+					vault.TxIndex,
+					vault.LogIndex,
+					vault.Type,
+				})
 		}()
 	}
 }

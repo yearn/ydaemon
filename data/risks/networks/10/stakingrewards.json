@@ -1,0 +1,17 @@
+{
+	"$schema": "risks",
+	"label": "Staking OP Rewards",
+	"codeReviewScore": 4,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 3,
+	"complexityScore": 3,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": [
+			"StakingRewards"
+		],
+		"strategies": [],
+		"exclude": []
+	}
+}

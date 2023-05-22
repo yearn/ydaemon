@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "lp-yBAL",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 315,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Liquidity Provider yBAL",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "BAL"
+  }
+}

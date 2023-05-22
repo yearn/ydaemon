@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "st-yBAL",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 314,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Staked yBAL",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "BAL"
+  }
+}

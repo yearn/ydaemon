@@ -168,7 +168,9 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 				UnderlyingTokensAddresses: strings.Join(allUnderlyingAsString, ","),
 			}
 			storeRateLimiter.Wait(context.Background())
-			DATABASE.Table(`db_erc20`).Save(newItem)
+			DATABASE.
+				Table(`db_erc20`).
+				FirstOrCreate(newItem)
 		}()
 	}
 }
@@ -217,7 +219,48 @@ func StoreVault(chainID uint64, vault models.TVault) {
 			newItem.ManagementFee = vault.ManagementFee
 			newItem.Endorsed = vault.Endorsed
 			storeRateLimiter.Wait(context.Background())
-			DATABASE.Table(`db_vaults`).Save(newItem)
+			DATABASE.
+				Table(`db_vaults`).
+				FirstOrCreate(newItem)
+		}()
+	}
+}
+
+/**************************************************************************************************
+** StoreStrategies will store the new strategies in the _strategiesSyncMap for fast access during
+** that same execution, and will store it in the configured DB for future executions.
+**************************************************************************************************/
+func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
+	syncMap := _strategiesSyncMap[chainID]
+
+	key := strat.StrategyAddress.Hex() + "_" + strat.VaultAddress.Hex() + "_" + strat.TxHash.Hex() + "_" + strconv.FormatUint(strat.ChainID, 10)
+	syncMap.Store(strat.StrategyAddress, strat)
+
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			newItem := &DBStrategy{}
+			newItem.UUID = getUUID(key)
+			newItem.VaultAddress = strat.VaultAddress.Hex()
+			newItem.StrategyAddress = strat.StrategyAddress.Hex()
+			newItem.TxHash = strat.TxHash.Hex()
+			newItem.DebtRatio = strat.DebtRatio.String()
+			newItem.MaxDebtPerHarvest = strat.MaxDebtPerHarvest.String()
+			newItem.MinDebtPerHarvest = strat.MinDebtPerHarvest.String()
+			newItem.PerformanceFee = strat.PerformanceFee.String()
+			newItem.DebtLimit = strat.DebtLimit.String()
+			newItem.RateLimit = strat.RateLimit.String()
+			newItem.VaultVersion = strat.VaultVersion
+			newItem.ChainID = strat.ChainID
+			newItem.BlockNumber = strat.BlockNumber
+			newItem.TxIndex = strat.TxIndex
+			newItem.LogIndex = strat.LogIndex
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.
+				Table(`db_strategies`).
+				FirstOrCreate(newItem)
 		}()
 	}
 }

@@ -256,3 +256,45 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 			})
 	}
 }
+
+/**************************************************************************************************
+** LoadStrategies will retrieve the all the strategies from the configured DB and store them in the
+** _strategiesSyncMap for fast access during that same execution.
+**************************************************************************************************/
+func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _strategiesSyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// not implemented
+	case DBSql:
+		var temp []DBStrategy
+		DATABASE.Table(`db_strategies`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, stratFromDB := range temp {
+					strat := models.TStrategyAdded{
+						VaultAddress:      common.HexToAddress(stratFromDB.VaultAddress),
+						StrategyAddress:   common.HexToAddress(stratFromDB.StrategyAddress),
+						TxHash:            common.HexToHash(stratFromDB.TxHash),
+						DebtRatio:         bigNumber.NewInt(0).SetString(stratFromDB.DebtRatio),
+						MaxDebtPerHarvest: bigNumber.NewInt(0).SetString(stratFromDB.MaxDebtPerHarvest),
+						MinDebtPerHarvest: bigNumber.NewInt(0).SetString(stratFromDB.MinDebtPerHarvest),
+						PerformanceFee:    bigNumber.NewInt(0).SetString(stratFromDB.PerformanceFee),
+						DebtLimit:         bigNumber.NewInt(0).SetString(stratFromDB.DebtLimit),
+						RateLimit:         bigNumber.NewInt(0).SetString(stratFromDB.RateLimit),
+						VaultVersion:      stratFromDB.VaultVersion,
+						ChainID:           stratFromDB.ChainID,
+						BlockNumber:       stratFromDB.BlockNumber,
+						TxIndex:           stratFromDB.TxIndex,
+						LogIndex:          stratFromDB.LogIndex,
+					}
+					syncMap.Store(strat.StrategyAddress, strat)
+				}
+				return nil
+			})
+	}
+}

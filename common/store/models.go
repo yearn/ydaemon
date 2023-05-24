@@ -112,3 +112,38 @@ type DBRegistrySync struct {
 	ChainID  uint64 `json:"chainID"`
 	Registry string `json:"registry"`
 }
+
+/**************************************************************************************************
+** DBStrategy corresponds to the db_strategies SQL table. It will store the strategies information
+** from the events added or migrated.
+** Only STATIC informations (or suppposed to be static) will be stored here. Dynamic informations
+** should be fetched directly when needed.
+**************************************************************************************************/
+type DBStrategy struct {
+	UUID              string `gorm:"primaryKey" json:"UUID,omitempty"`
+	VaultAddress      string // VaultAddress is the address of the vault contract for this strategy
+	StrategyAddress   string // StrategyAddress is the address of the strategy contract
+	TxHash            string // TxHash is the hash of the transaction where the strategy has been added
+	DebtRatio         string // DebtRatio is the debt ratio of the strategy (>= 0.3.0)
+	MaxDebtPerHarvest string // MaxDebtPerHarvest is the max debt per harvest of the strategy (>= 0.3.2)
+	MinDebtPerHarvest string // MinDebtPerHarvest is the min debt per harvest of the strategy (>= 0.3.2)
+	PerformanceFee    string // PerformanceFee is the performance fee of the strategy  (>= 0.2.2)
+	DebtLimit         string // DebtLimit is the debt limit of the strategy (== 0.2.2)
+	RateLimit         string // RateLimit is the rate limit of the strategy (== 0.2.2 - 0.3.0)
+	VaultVersion      string // VaultVersion is the version of the vault at the time of the strategy addition
+	ChainID           uint64 // ChainID is the chain on which the strategy is deployed
+	BlockNumber       uint64 // BlockNumber is the block number where the strategy has been added
+	TxIndex           uint   // TxIndex is the index of the transaction in the block
+	LogIndex          uint   // LogIndex is the index of the log in the transaction
+}
+
+/**************************************************************************************************
+** DBStrategyAddedSync is a struct used to keep track of the latest block synced for a specific
+** chain when it comes to the strategy added events.
+**************************************************************************************************/
+type DBStrategyAddedSync struct {
+	UUID    string `gorm:"primaryKey" json:"UUID,omitempty"`
+	Block   uint64 `json:"block"`
+	ChainID uint64 `json:"chainID"`
+	Vault   string `json:"vault"`
+}

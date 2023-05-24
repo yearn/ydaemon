@@ -139,6 +139,14 @@ func getAllocationStatus(group models.TStrategyGroupFromRisk) string {
 func getStrategyGroup(chainID uint64, strategy *models.TStrategy) *models.TStrategyGroupFromRisk {
 	toLowerName := strings.ToLower(strategy.Name)
 	groups := ListStrategiesRiskGroups(chainID)
+
+	//First check if the address is in any group
+	for _, group := range groups {
+		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.Hex()) {
+			return group
+		}
+	}
+
 	for _, group := range groups {
 		// check if nameLike and exclude intersect
 		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
@@ -151,10 +159,6 @@ func getStrategyGroup(chainID uint64, strategy *models.TStrategy) *models.TStrat
 					return group
 				}
 			}
-		}
-		// check address
-		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.Hex()) {
-			return group
 		}
 
 		// check exclude

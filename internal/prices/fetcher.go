@@ -166,6 +166,8 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
 			`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
 			`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
+			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
+			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 		},
 		10:    {},
 		250:   {},

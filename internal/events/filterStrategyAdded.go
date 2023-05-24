@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -31,7 +32,13 @@ import (
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
 **************************************************************************************************/
-func filterStrategyAdded(vault models.TVaultsFromRegistry, start uint64, end *uint64, syncMap *sync.Map) {
+func filterStrategyAdded(
+	vault models.TVaultsFromRegistry,
+	vaultsLastBlockSync map[common.Address]uint64,
+	start uint64,
+	end *uint64,
+	syncMap *sync.Map,
+) {
 	client := ethereum.GetRPC(vault.ChainID)
 
 	/**********************************************************************************************
@@ -48,9 +55,18 @@ func filterStrategyAdded(vault models.TVaultsFromRegistry, start uint64, end *ui
 	** Then, we need to know when to start our log fetching. By default, we will fetch from the
 	** activation block in order to get all the vaults that were ever deployed since it was
 	** deployed.
+	** However, if the external database is used, we may want to only fetch the logs that were
+	** emitted after the last time we fetched the logs. In that case, we will use the last
+	** event block number + 1 as the start block number.
+	** If another start block number is specified, we will use it instead.
 	******************************************************************************************/
 	if start == 0 {
-		start = vault.Activation
+		lastEvent := vaultsLastBlockSync[vault.Address]
+		if lastEvent > 0 {
+			start = lastEvent + 1 //Adding one to get the next event
+		} else {
+			start = vault.Activation
+		}
 	}
 
 	/******************************************************************************************
@@ -138,6 +154,20 @@ func filterStrategyAdded(vault models.TVaultsFromRegistry, start uint64, end *ui
 			}
 		}
 	}
+
+	/**********************************************************************************************
+	** We are storing in the DB the sync status, indicating we went up to the block number to check
+	** for new vaults.
+	**********************************************************************************************/
+	go store.DATABASE.Table("db_strategy_added_syncs").
+		Where("chain_id = ? AND vault = ?", vault.ChainID, vault.Address.Hex()).
+		Where("block <= ?", end).
+		Assign(store.DBStrategyAddedSync{Block: *end}).
+		FirstOrCreate(&store.DBStrategyAddedSync{
+			ChainID: vault.ChainID,
+			Vault:   vault.Address.Hex(),
+			UUID:    store.GetUUID(vault.Address.Hex() + strconv.FormatUint(vault.ChainID, 10)),
+		})
 }
 
 /**************************************************************************************************
@@ -153,7 +183,13 @@ func filterStrategyAdded(vault models.TVaultsFromRegistry, start uint64, end *ui
 **
 ** Returns nothing as the asyncFeeMap is updated via a pointer
 **************************************************************************************************/
-func filterStrategiesMigrated(vault models.TVaultsFromRegistry, start uint64, end *uint64, syncMap *sync.Map) {
+func filterStrategiesMigrated(
+	vault models.TVaultsFromRegistry,
+	vaultsLastBlockSync map[common.Address]uint64,
+	start uint64,
+	end *uint64,
+	syncMap *sync.Map,
+) {
 	/**************************************************************************************************
 	** First we make sure to connect with our RPC client and get the vault contract.
 	**************************************************************************************************/
@@ -176,7 +212,12 @@ func filterStrategiesMigrated(vault models.TVaultsFromRegistry, start uint64, en
 	** deployed.
 	******************************************************************************************/
 	if start == 0 {
-		start = vault.Activation
+		lastEvent := vaultsLastBlockSync[vault.Address]
+		if lastEvent > 0 {
+			start = lastEvent + 1 //Adding one to get the next event
+		} else {
+			start = vault.Activation
+		}
 	}
 
 	/******************************************************************************************
@@ -213,6 +254,20 @@ func filterStrategiesMigrated(vault models.TVaultsFromRegistry, start uint64, en
 			logs.Error(`impossible to FilterStrategyMigrated for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
 		}
 	}
+
+	/**********************************************************************************************
+	** We are storing in the DB the sync status, indicating we went up to the block number to check
+	** for new vaults.
+	**********************************************************************************************/
+	go store.DATABASE.Table("db_strategy_added_syncs").
+		Where("chain_id = ? AND vault = ?", vault.ChainID, vault.Address.Hex()).
+		Where("block <= ?", end).
+		Assign(store.DBStrategyAddedSync{Block: *end}).
+		FirstOrCreate(&store.DBStrategyAddedSync{
+			ChainID: vault.ChainID,
+			Vault:   vault.Address.Hex(),
+			UUID:    store.GetUUID(vault.Address.Hex() + strconv.FormatUint(vault.ChainID, 10)),
+		})
 }
 
 /**************************************************************************************************
@@ -237,6 +292,21 @@ func HandleStrategyAdded(
 	end *uint64,
 ) []models.TStrategyAdded {
 	/**********************************************************************************************
+	** Our first action is to make sure we ignore the strategies we already have in our local
+	** storage, which we loaded from the database.
+	**********************************************************************************************/
+	var strategyAddedSync []store.DBStrategyAddedSync
+	store.DATABASE.Table("db_strategy_added_syncs").
+		Where("chain_id = ?", chainID).
+		Find(&strategyAddedSync)
+
+	vaultsLastBlockSync := map[common.Address]uint64{}
+	for _, syncEvent := range strategyAddedSync {
+		vaultsLastBlockSync[common.HexToAddress(syncEvent.Vault)] = syncEvent.Block
+	}
+	allPreviouslyAddedStrategies, _ := store.ListAllStrategiess(chainID)
+
+	/**********************************************************************************************
 	** We will then listen to all events related to the strategies added or migrated to the vaults.
 	** We will use a sync.Map to store the events and a WaitGroup to wait for all the goroutines.
 	**********************************************************************************************/
@@ -250,6 +320,7 @@ func HandleStrategyAdded(
 			defer wg.Done()
 			filterStrategyAdded(
 				v,
+				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesForVaults,
@@ -259,6 +330,7 @@ func HandleStrategyAdded(
 			defer wg.Done()
 			filterStrategiesMigrated(
 				v,
+				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesMigrated,
@@ -292,7 +364,9 @@ func HandleStrategyAdded(
 		valueParsed := value.(models.TStrategyAdded)
 		valueParsed.VaultVersion = vaultsMap[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
+		valueParsed.ChainID = chainID
 		allStrategiesList = append(allStrategiesList, valueParsed)
+		go store.StoreStrategies(chainID, valueParsed)
 		count++
 		return true
 	})
@@ -329,6 +403,7 @@ func HandleStrategyAdded(
 			PerformanceFee:    oldStrategy.PerformanceFee,
 			DebtLimit:         oldStrategy.DebtLimit,
 			RateLimit:         oldStrategy.RateLimit,
+			ChainID:           chainID,
 			BlockNumber:       value.(models.TStrategyMigrated).BlockNumber,
 			TxIndex:           value.(models.TStrategyMigrated).TxIndex,
 			LogIndex:          value.(models.TStrategyMigrated).LogIndex,
@@ -336,8 +411,14 @@ func HandleStrategyAdded(
 		newStrategy.VaultVersion = vaultsMap[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy
 		allStrategiesList = append(allStrategiesList, newStrategy)
+		go store.StoreStrategies(chainID, newStrategy)
 		count++
 		return true
 	})
+
+	for _, strat := range allPreviouslyAddedStrategies {
+		allStrategiesList = append(allStrategiesList, strat)
+	}
+
 	return allStrategiesList
 }

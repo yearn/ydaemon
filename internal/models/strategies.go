@@ -16,6 +16,7 @@ type TStrategyAdded struct {
 	DebtLimit         *bigNumber.Int // == 0.2.2
 	RateLimit         *bigNumber.Int // == 0.2.2 - 0.3.0
 	VaultVersion      string
+	ChainID           uint64
 	BlockNumber       uint64
 	TxIndex           uint
 	LogIndex          uint

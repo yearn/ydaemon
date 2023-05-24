@@ -62,7 +62,7 @@ func ListAllERC20(chainID uint64) (asMap map[common.Address]models.TERC20Token, 
 	asMap = make(map[common.Address]models.TERC20Token) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadVaults`
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadERC20`
 	** function which take the data from the database/badger and store it in it.
 	**********************************************************************************************/
 	syncMap := _erc20SyncMap[chainID]
@@ -129,7 +129,7 @@ func ListVaultsFromRegistry(chainID uint64) (asMap map[common.Address]models.TVa
 	asMap = make(map[common.Address]models.TVaultsFromRegistry) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadVaults`
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadNewVaultsFromRegistry`
 	** function which take the data from the database/badger and store it in it.
 	**********************************************************************************************/
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]
@@ -178,6 +178,42 @@ func ListAllVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSl
 	syncMap.Range(func(key, value interface{}) bool {
 		vault := value.(models.TVault)
 		asMap[vault.Address] = vault
+		asSlice = append(asSlice, vault)
+		return true
+	})
+
+	return asMap, asSlice
+}
+
+/**************************************************************************************************
+** ListAllStrategies will return a list of all the strategies stored in the caching system for a
+** given chainID. Both a map and a slice are returned.
+** Note: It's for the TStrategyAdded structure.
+**************************************************************************************************/
+func ListAllStrategiess(chainID uint64) (
+	asMap map[common.Address]models.TStrategyAdded,
+	asSlice []models.TStrategyAdded,
+) {
+	asMap = make(map[common.Address]models.TStrategyAdded) // make to avoid nil map
+
+	/**********************************************************************************************
+	** We first retrieve the syncMap. This syncMap should be initialized first via the
+	** `LoadStrategies` function which take the data from the database/badger and store it in it.
+	**********************************************************************************************/
+	syncMap := _strategiesSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_strategiesSyncMap[chainID] = syncMap
+	}
+
+	/**********************************************************************************************
+	** We can just iterate over the syncMap and add the strategies to the map and slice.
+	** As the stored vault data are only a subset of static, we need to use the actual structure
+	** and not the DBVault one.
+	**********************************************************************************************/
+	syncMap.Range(func(key, value interface{}) bool {
+		vault := value.(models.TStrategyAdded)
+		asMap[vault.StrategyAddress] = vault
 		asSlice = append(asSlice, vault)
 		return true
 	})

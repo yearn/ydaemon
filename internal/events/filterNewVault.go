@@ -165,7 +165,7 @@ func filterNewVaults(
 **************************************************************************************************/
 func HandleNewVaults(
 	chainID uint64,
-	registriesWithLastEvent map[string]uint64,
+	registriesLastBlockSync map[string]uint64,
 	start uint64,
 	end *uint64,
 ) (standardVaultList []models.TVaultsFromRegistry, experimentalVaultList []models.TVaultsFromRegistry) {
@@ -197,7 +197,7 @@ func HandleNewVaults(
 		** If another start block number is specified, we will use it instead.
 		******************************************************************************************/
 		if _start == 0 {
-			lastEvent := registriesWithLastEvent[registry.Address.Hex()]
+			lastEvent := registriesLastBlockSync[registry.Address.Hex()]
 			if lastEvent > 0 {
 				_start = lastEvent + 1 //Adding one to get the next event
 			} else {
@@ -300,9 +300,9 @@ func HandleNewStandardVaults(
 	** block number + 1 as the start block number.
 	** If another start block number is specified, we will use it instead.
 	**********************************************************************************************/
-	registriesWithLastEvent := store.ListLastNewVaultEventForRegistries(chainID)
+	registriesLastBlockSync := store.ListLastNewVaultEventForRegistries(chainID)
 	if start == 0 {
-		lastEvent := registriesWithLastEvent[registry.Address.Hex()]
+		lastEvent := registriesLastBlockSync[registry.Address.Hex()]
 		if lastEvent > 0 {
 			start = lastEvent + 1 //Adding one to get the next event
 		} else {

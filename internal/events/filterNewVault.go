@@ -232,15 +232,7 @@ func HandleNewVaults(
 		** We are storing in the DB the sync status, indicating we went up to the block number to check
 		** for new vaults.
 		**********************************************************************************************/
-		go store.DATABASE.Table("db_registry_syncs").
-			Where("chain_id = ? AND registry = ?", chainID, registry.Address.Hex()).
-			Where("block <= ?", end).
-			Assign(store.DBRegistrySync{Block: *end}).
-			FirstOrCreate(&store.DBRegistrySync{
-				ChainID:  chainID,
-				Registry: registry.Address.Hex(),
-				UUID:     store.GetUUID(registry.Address.Hex() + strconv.FormatUint(chainID, 10)),
-			})
+		go store.StoreSyncRegistry(chainID, registry.Address, end)
 	}
 
 	/**********************************************************************************************
@@ -337,15 +329,7 @@ func HandleNewStandardVaults(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.DATABASE.Table("db_registry_syncs").
-		Where("chain_id = ? AND registry = ?", chainID, registry.Address.Hex()).
-		Where("block <= ?", end).
-		Assign(store.DBRegistrySync{Block: *end}).
-		FirstOrCreate(&store.DBRegistrySync{
-			ChainID:  chainID,
-			Registry: registry.Address.Hex(),
-			UUID:     store.GetUUID(registry.Address.Hex() + strconv.FormatUint(chainID, 10)),
-		})
+	go store.StoreSyncRegistry(chainID, registry.Address, end)
 
 	return standardVaultList
 }

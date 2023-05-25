@@ -159,15 +159,7 @@ func filterStrategyAdded(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.DATABASE.Table("db_strategy_added_syncs").
-		Where("chain_id = ? AND vault = ?", vault.ChainID, vault.Address.Hex()).
-		Where("block <= ?", end).
-		Assign(store.DBStrategyAddedSync{Block: *end}).
-		FirstOrCreate(&store.DBStrategyAddedSync{
-			ChainID: vault.ChainID,
-			Vault:   vault.Address.Hex(),
-			UUID:    store.GetUUID(vault.Address.Hex() + strconv.FormatUint(vault.ChainID, 10)),
-		})
+	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
 }
 
 /**************************************************************************************************
@@ -259,15 +251,7 @@ func filterStrategiesMigrated(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.DATABASE.Table("db_strategy_added_syncs").
-		Where("chain_id = ? AND vault = ?", vault.ChainID, vault.Address.Hex()).
-		Where("block <= ?", end).
-		Assign(store.DBStrategyAddedSync{Block: *end}).
-		FirstOrCreate(&store.DBStrategyAddedSync{
-			ChainID: vault.ChainID,
-			Vault:   vault.Address.Hex(),
-			UUID:    store.GetUUID(vault.Address.Hex() + strconv.FormatUint(vault.ChainID, 10)),
-		})
+	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
 }
 
 /**************************************************************************************************

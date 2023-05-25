@@ -264,3 +264,51 @@ func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
 		}()
 	}
 }
+
+/**************************************************************************************************
+** StoreSyncRegistry will store the sync status indicating we went up to the block number to check
+** for new vaults.
+**************************************************************************************************/
+func StoreSyncRegistry(chainID uint64, registryAddess common.Address, end *uint64) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table("db_registry_syncs").
+				Where("chain_id = ? AND registry = ?", chainID, registryAddess.Hex()).
+				Where("block <= ?", end).
+				Assign(DBRegistrySync{Block: *end}).
+				FirstOrCreate(&DBRegistrySync{
+					ChainID:  chainID,
+					Registry: registryAddess.Hex(),
+					UUID:     GetUUID(registryAddess.Hex() + strconv.FormatUint(chainID, 10)),
+				})
+		}()
+	}
+}
+
+/**************************************************************************************************
+** StoreSyncStrategiesAdded will store the sync status indicating we went up to the block number
+** to check for new strategies added.
+**************************************************************************************************/
+func StoreSyncStrategiesAdded(chainID uint64, vaultAddress common.Address, end *uint64) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.Table("db_strategy_added_syncs").
+				Where("chain_id = ? AND vault = ?", chainID, vaultAddress.Hex()).
+				Where("block <= ?", end).
+				Assign(DBStrategyAddedSync{Block: *end}).
+				FirstOrCreate(&DBStrategyAddedSync{
+					ChainID: chainID,
+					Vault:   vaultAddress.Hex(),
+					UUID:    GetUUID(vaultAddress.Hex() + strconv.FormatUint(chainID, 10)),
+				})
+		}()
+	}
+}

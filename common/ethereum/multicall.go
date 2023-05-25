@@ -185,11 +185,11 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				if batchSize == math.MaxInt64 {
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
 				}
-				if isAssumingOutOfGas && batchSize <= 20 {
+				if isAssumingOutOfGas && batchSize <= 1 {
 					logs.Error(`Multicall failed! See error: ` + err.Error())
 					return nil
 				}
-				if batchSize <= 20 {
+				if batchSize <= 1 {
 					logs.Error(`Multicall failed! See error: ` + err.Error())
 					return nil
 				}

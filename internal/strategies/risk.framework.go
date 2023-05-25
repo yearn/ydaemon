@@ -337,7 +337,7 @@ func computeRiskGroupAllocation(chainID uint64) {
 
 func InitRiskScore(chainID uint64) {
 	if chainID == 10 {
-		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 85969070, nil)
+		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 0, nil)
 		calls := []ethereum.Call{}
 		for _, pool := range allStackingPoolAdded {
 			currentToken, ok := tokens.FindToken(chainID, pool.Token)

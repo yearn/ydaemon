@@ -32,11 +32,14 @@ type TStakingPoolAdded struct {
 **************************************************************************************************/
 func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-	stackingRewardAddress, ok := env.STACKING_REWARD_ADDRESSES[chainID]
-	contract, err := contracts.NewYOptimismStakingReward(stackingRewardAddress, client)
+	stackingReward, ok := env.STACKING_REWARD_ADDRESSES[chainID]
+	contract, err := contracts.NewYOptimismStakingReward(stackingReward.Address, client)
 	if err != nil || !ok {
 		logs.Error("Error while fetching StakingPoolAdded event", err)
 		return
+	}
+	if start == 0 || start < stackingReward.Block {
+		start = stackingReward.Block
 	}
 
 	/**********************************************************************************************
@@ -76,7 +79,7 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 				})
 			}
 		} else {
-			logs.Error(`impossible to FilterStakingPoolAdded for StakingContract ` + stackingRewardAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			logs.Error(`impossible to FilterStakingPoolAdded for StakingContract ` + stackingReward.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	}
 }

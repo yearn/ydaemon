@@ -42,7 +42,7 @@ var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
-	1:     100_000_000,
+	1:     1900,
 	10:    5_000_000,
 	250:   100_000_000,
 	42161: 100_000_000,
@@ -204,16 +204,22 @@ var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
 }
 
 // STACKING_REWARD_ADDRESSES contains the address of the stacking reward contract
-var STACKING_REWARD_ADDRESSES = map[uint64]common.Address{
-	1:     {},
-	10:    common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+var STACKING_REWARD_ADDRESSES = map[uint64]TContractData{
+	1: {},
+	10: {
+		Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+		Block:   uint64(85969070),
+	},
 	250:   {},
 	42161: {},
 }
 
 // YBRIBE_V3_ADDRESSES contains the address of the yBribe contract
-var YBRIBE_V3_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
+var YBRIBE_V3_ADDRESSES = map[uint64]TContractData{
+	1: {
+		Address: common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
+		Block:   uint64(15878262),
+	},
 	10:    {},
 	250:   {},
 	42161: {},

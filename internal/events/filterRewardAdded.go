@@ -25,8 +25,11 @@ import (
 **************************************************************************************************/
 func filterRewardAdded(chainID uint64, start uint64, end *uint64, syncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-	contractAddress := env.YBRIBE_V3_ADDRESSES[chainID]
-	currentVault, _ := contracts.NewYBribeV3(contractAddress, client)
+	contract := env.YBRIBE_V3_ADDRESSES[chainID]
+	currentVault, _ := contracts.NewYBribeV3(contract.Address, client)
+	if start == 0 || start < contract.Block {
+		start = contract.Block
+	}
 
 	/**********************************************************************************************
 	** First, we need to know when to stop our log fetching. By default, we will fetch until the
@@ -49,7 +52,7 @@ func filterRewardAdded(chainID uint64, start uint64, end *uint64, syncMap *sync.
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}
-		opts := &bind.FilterOpts{Start: 0, End: &chunkEnd}
+		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
 		if log, err := currentVault.FilterRewardAdded(opts, nil, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
@@ -68,7 +71,7 @@ func filterRewardAdded(chainID uint64, start uint64, end *uint64, syncMap *sync.
 				})
 			}
 		} else {
-			logs.Error(`impossible to FilterRewardAdded for YBribeV3 ` + contractAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			logs.Error(`impossible to FilterRewardAdded for YBribeV3 ` + contract.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	}
 }

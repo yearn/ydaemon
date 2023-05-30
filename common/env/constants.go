@@ -42,7 +42,7 @@ var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
-	1:     1900,
+	1:     100_000_000,
 	10:    5_000_000,
 	250:   100_000_000,
 	42161: 100_000_000,

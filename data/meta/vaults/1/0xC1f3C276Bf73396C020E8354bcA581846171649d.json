@@ -1,14 +1,13 @@
 {
   "$schema": "vault",
   "hideAlways": false,
-  "depositsDisabled": false,
+  "depositsDisabled": true,
   "withdrawalsDisabled": false,
   "order": 300,
-  "apyTypeOverride": "new",
   "migrationAvailable": false,
-  "allowZapIn": true,
+  "allowZapIn": false,
   "allowZapOut": true,
-  "retired": false,
+  "retired": true,
   "displayName": "wstETH",
   "classification": {
     "isAutomated": false,

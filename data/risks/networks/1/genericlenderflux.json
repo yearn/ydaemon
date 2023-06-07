@@ -1,0 +1,15 @@
+{
+	"$schema": "risks",
+	"label": "Generic Lender Flux",
+	"codeReviewScore": 4,
+	"testingScore": 4,
+	"auditScore": 5,
+	"protocolSafetyScore": 5,
+	"complexityScore": 4,
+	"teamKnowledgeScore": 3,
+	"criteria": {
+		"nameLike": ["GenLenderFlux"],
+		"strategies": [],
+		"exclude": []
+	}
+}

@@ -319,6 +319,7 @@ func computeRiskGroupAllocation(chainID uint64) {
 			}
 			if helpers.Contains(impactedStrategies, strategy.Address) {
 				strategyGroup.StackingRewardTVLScore = stackingData.Risk
+				tvl = bigNumber.NewFloat(0).Add(tvl, bigNumber.NewFloat(0).SetFloat64(stackingData.TVL))
 			}
 		}
 		strategyGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentTVL, tvl)

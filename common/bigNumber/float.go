@@ -68,6 +68,10 @@ func (b *Float) SetString(s string) *Float {
 	b.Float.SetString(s)
 	return b
 }
+func (b *Float) SetFloat64(s float64) *Float {
+	b.Float.SetFloat64(s)
+	return b
+}
 func (b *Float) SetInt64(s int64) *Float {
 	b.Float.SetInt64(s)
 	return b

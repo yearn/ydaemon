@@ -13,9 +13,9 @@ import (
 
 // GetAllStrategies will, for a given chainID, return a list of all strategies
 func (y Controller) GetAllStrategies(c *gin.Context) {
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `risk.riskScore`)
-	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
-	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `risk.riskScore`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
 		c.String(http.StatusBadRequest, `invalid chainID`)

@@ -2,6 +2,7 @@ package vaults
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -22,8 +23,8 @@ func (y Controller) GetVault(c *gin.Context) {
 		return
 	}
 
-	strategiesCondition := selectStrategiesCondition(c.Query("strategiesCondition"))
-	withStrategiesDetails := c.Query("strategiesDetails") == "withDetails"
+	strategiesCondition := selectStrategiesCondition(getQuery(c, "strategiesCondition"))
+	withStrategiesDetails := strings.EqualFold(getQuery(c, "strategiesDetails"), "withDetails")
 	currentVault, ok := vaults.FindVault(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid vault")

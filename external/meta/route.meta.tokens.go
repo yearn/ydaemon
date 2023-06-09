@@ -19,7 +19,7 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.SafeString(c.Query("loc"), "en")
+	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	tokensFromMeta := meta.ListMetaTokens(chainID)
 	if localization == "all" {
 		c.JSON(http.StatusOK, tokensFromMeta)
@@ -55,7 +55,7 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.SafeString(c.Query("loc"), "en")
+	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	tokenFromMeta, ok := meta.GetMetaToken(chainID, address)
 	if !ok {
 		c.String(http.StatusNotFound, "no data available")

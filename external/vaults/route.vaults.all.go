@@ -13,12 +13,12 @@ import (
 
 // GetAllVaults will, for a given chainID, return a list of all vaults
 func (y Controller) GetAllVaults(c *gin.Context) {
-	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query(`hideAlways`), `false`))
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `details.order`)
-	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
-	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
-	withStrategiesDetails := c.Query(`strategiesDetails`) == `withDetails`
-	migrable := selectMigrableCondition(c.Query(`migrable`))
+	hideAlways := helpers.StringToBool(helpers.SafeString(getQuery(c, `hideAlways`), `false`))
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `details.order`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
+	withStrategiesDetails := getQuery(c, `strategiesDetails`) == `withDetails`
+	migrable := selectMigrableCondition(getQuery(c, `migrable`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
 		c.String(http.StatusBadRequest, `invalid chainID`)

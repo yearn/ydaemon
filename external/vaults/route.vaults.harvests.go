@@ -31,8 +31,8 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 		return
 	}
 	addressesStr := strings.Split(strings.ToLower(c.Param(`addresses`)), `,`)
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `timestamp`)
-	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `desc`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `timestamp`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `desc`)
 
 	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
 	if !ok {

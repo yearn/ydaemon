@@ -17,7 +17,7 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 	rawPrices := make(map[string]*bigNumber.Int)
 	humanizedPrices := make(map[string]float64)
 	addressesStr := strings.Split(c.Param("addresses"), ",")

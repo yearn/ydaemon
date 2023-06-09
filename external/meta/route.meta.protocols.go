@@ -19,7 +19,7 @@ func (y Controller) GetMetaProtocols(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.SafeString(c.Query("loc"), "en")
+	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	protocolsFromMeta := meta.ListMetaProtocol(chainID)
 	if localization == "all" {
 		c.JSON(http.StatusOK, protocolsFromMeta)
@@ -50,7 +50,7 @@ func (y Controller) GetMetaProtocol(c *gin.Context) {
 		return
 	}
 
-	localization := helpers.SafeString(c.Query("loc"), "en")
+	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	protocolName := c.Param("name")
 	protocolFromMeta, ok := meta.GetMetaProtocol(chainID, protocolName)
 	if !ok {

@@ -12,8 +12,8 @@ import (
 
 // GetRetiredVaults will, for a given chainID, return a list of all retired vaults
 func (y Controller) GetRetiredVaults(c *gin.Context) {
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `details.order`)
-	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `details.order`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
 		c.String(http.StatusBadRequest, `invalid chainID`)

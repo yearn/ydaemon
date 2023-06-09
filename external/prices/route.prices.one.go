@@ -21,7 +21,7 @@ func (y Controller) GetPrice(c *gin.Context) {
 		return
 	}
 
-	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 	price, ok := prices.FindPrice(chainID, address)
 	if !ok {
 		c.String(http.StatusNotFound, "token not found")

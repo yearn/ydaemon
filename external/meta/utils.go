@@ -1,6 +1,11 @@
 package meta
 
-import "github.com/yearn/ydaemon/internal/models"
+import (
+	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/internal/models"
+)
 
 type Controller struct{}
 
@@ -34,4 +39,14 @@ func selectLocalizationFromString(s string, loc models.TLocalization) models.TLo
 		return loc.Ru
 	}
 	return loc.En
+}
+
+func getQuery(c *gin.Context, targetKey string) string {
+	queryParams := c.Request.URL.Query()
+	for key, values := range queryParams {
+		if strings.EqualFold(targetKey, key) {
+			return strings.Join(values, ",")
+		}
+	}
+	return ""
 }

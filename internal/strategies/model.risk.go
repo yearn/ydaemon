@@ -13,7 +13,6 @@ import (
 ** being able to access them from the rest of the application.
 ** The _strategyMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-// var _strategyRiskGroupMap = make(map[uint64]map[string]*models.TStrategyGroupFromRisk)
 var _strategyRiskGroupMap = make(map[uint64]*sync.Map)
 
 func init() {

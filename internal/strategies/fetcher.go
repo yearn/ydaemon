@@ -254,6 +254,6 @@ func RetrieveAllStrategies(
 		store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
 	}
 
-	_strategyMap[chainID] = strategyMap
+	StoreStrategies(chainID, strategyMap)
 	return strategyMap
 }

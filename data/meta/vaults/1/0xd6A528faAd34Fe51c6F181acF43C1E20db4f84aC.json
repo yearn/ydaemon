@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer DOLA-USDC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 319,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer DOLA-USDC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

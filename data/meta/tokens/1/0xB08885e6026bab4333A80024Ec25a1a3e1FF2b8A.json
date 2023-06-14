@@ -1,10 +1,10 @@
 {
   "$schema": "token",
-  "name": "Balancer rETH Stable Pool",
-  "symbol": "B-rETH-STABLE",
-  "description": "This token represents a Balancer Stable liquidity pool. Holders earn fees from users trading in the pools, and can also deposit the LP to Balancer's gauges to earn BAL emissions. This pool contains wETH and rETH. Rocketpool Ether is Rocket Pool's liquid staking derivative for staked Ether.",
+  "name": "Balancer staFiETH-WETH Stable Pool",
+  "symbol": "B-staFiETH-WETH-Stable",
+  "description": "This token represents a Balancer Stable liquidity pool. Holders earn fees from users trading in the pools, and can also deposit the LP to Balancer's gauges to earn BAL emissions. This pool contains wETH and rETH. rEth is StaFi's liquid staking derivative for staked Ether.",
   "categories": ["Balancer LP Tokens"],
-  "website": "https://app.balancer.fi/#/ethereum/pool/0x1e19cf2d73a72ef1332c882f20534b6519be0276000200000000000000000112",
+  "website": "https://app.balancer.fi/#/ethereum/pool/0xb08885e6026bab4333a80024ec25a1a3e1ff2b8a000200000000000000000445",
   "type": "Balancer",
   "localization": {
     "en": {

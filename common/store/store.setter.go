@@ -236,33 +236,37 @@ func StoreVault(chainID uint64, vault models.TVault) {
 		// LEGACY: Deprecated
 		logs.Warning(`BadgerDB is deprecated for StoreVault`)
 	case DBSql:
-		go func() {
-			newItem := &DBVault{}
-			newItem.UUID = getUUID(key)
-			newItem.Address = vault.Address.Hex()
-			newItem.Management = vault.Management.Hex()
-			newItem.Governance = vault.Governance.Hex()
-			newItem.Guardian = vault.Guardian.Hex()
-			newItem.Rewards = vault.Rewards.Hex()
-			newItem.Token = vault.Token.Address.Hex()
-			newItem.Type = vault.Type
-			newItem.Symbol = vault.Symbol
-			newItem.DisplaySymbol = vault.DisplaySymbol
-			newItem.FormatedSymbol = vault.FormatedSymbol
-			newItem.Name = vault.Name
-			newItem.DisplayName = vault.DisplayName
-			newItem.FormatedName = vault.FormatedName
-			newItem.Version = vault.Version
-			newItem.ChainID = vault.ChainID
-			newItem.Inception = vault.Inception
-			newItem.Activation = vault.Activation
-			newItem.Decimals = vault.Decimals
-			newItem.PerformanceFee = vault.PerformanceFee
-			newItem.ManagementFee = vault.ManagementFee
-			newItem.Endorsed = vault.Endorsed
-			storeRateLimiter.Wait(context.Background())
+		syncMap.Store(vault.Address, vault)
+		func() {
+			newItem := &DBVault{
+				UUID:           getUUID(key),
+				Address:        vault.Address.Hex(),
+				Management:     vault.Management.Hex(),
+				Governance:     vault.Governance.Hex(),
+				Guardian:       vault.Guardian.Hex(),
+				Rewards:        vault.Rewards.Hex(),
+				Token:          vault.Token.Address.Hex(),
+				Type:           vault.Type,
+				Symbol:         vault.Symbol,
+				DisplaySymbol:  vault.DisplaySymbol,
+				FormatedSymbol: vault.FormatedSymbol,
+				Name:           vault.Name,
+				DisplayName:    vault.DisplayName,
+				FormatedName:   vault.FormatedName,
+				Version:        vault.Version,
+				ChainID:        vault.ChainID,
+				Inception:      vault.Inception,
+				Activation:     vault.Activation,
+				Decimals:       vault.Decimals,
+				PerformanceFee: vault.PerformanceFee,
+				ManagementFee:  vault.ManagementFee,
+				Endorsed:       vault.Endorsed,
+			}
+			wait(`StoreVault`)
 			DATABASE.
 				Table(`db_vaults`).
+				Where(`address = ? AND chain_id = ?`, newItem.Address, newItem.ChainID).
+				Assign(newItem).
 				FirstOrCreate(newItem)
 		}()
 	}

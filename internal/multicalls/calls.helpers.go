@@ -25,6 +25,8 @@ var LensABI, _ = contracts.OracleMetaData.GetAbi()
 var CurveGaugeABI, _ = contracts.CurveGaugeMetaData.GetAbi()
 var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
 var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
+var CurveGaugeABI, _ = contracts.CurveGaugeMetaData.GetAbi()
+var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)

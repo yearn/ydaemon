@@ -302,4 +302,44 @@ func GetStrategy(chainID uint64, strategyAddress common.Address) (models.TStrate
 	**********************************************************************************************/
 	strategy, ok := syncMap.Load(strategyAddress)
 	return strategy.(models.TStrategyAdded), ok
+
+	/**************************************************************************************************
+** GetPricePerShare will try, for a specific chain, vault and time, to find the price per share.
+**************************************************************************************************/
+func GetPricePerShare(chainID uint64, vaultAddress common.Address, time uint64) (pps string, ok bool) {
+	key := vaultAddress.Hex() + `_` + strconv.FormatUint(time, 10)
+	syncMapResult, ok := _vaultsPricePerShareSyncMap[chainID].Load(key)
+	if !ok {
+		return ``, false
+	}
+	data := syncMapResult.(DBVaultPricePerShare)
+	return data.PricePerShare, true
+}
+
+/**************************************************************************************************
+** ListPricePerShare will try, for a specific chain and vault, to retrieve all the price per share
+** stored in the cache.
+**************************************************************************************************/
+func ListPricePerShare(chainID uint64, vaultAddress common.Address) (
+	withTime map[uint64]*bigNumber.Int,
+	withBlock map[uint64]*bigNumber.Int,
+) {
+	withTime = make(map[uint64]*bigNumber.Int)
+	withBlock = make(map[uint64]*bigNumber.Int)
+	syncMap := _vaultsPricePerShareSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_vaultsPricePerShareSyncMap[chainID] = syncMap
+	}
+	syncMap.Range(func(key, value interface{}) bool {
+		data := value.(DBVaultPricePerShare)
+		if data.Vault != vaultAddress.Hex() {
+			return true
+		}
+		withTime[data.Time] = bigNumber.NewInt(0).SetString(data.PricePerShare)
+		withBlock[data.Block] = bigNumber.NewInt(0).SetString(data.PricePerShare)
+		return true
+	})
+
+	return withTime, withBlock
 }

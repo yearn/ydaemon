@@ -59,6 +59,36 @@ func GetStategyKeepCRV(name string, contractAddress common.Address, version stri
 	}
 }
 
+func GetStategyKeepCRVPercent(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnStrategyABI.Pack("keepCrvPercent")
+	if err != nil {
+		logs.Error("Error packing YearnStrategyABI keepCrvPercent", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnStrategyABI,
+		Method:   `keepCrvPercent`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func GetStategyKeepCVX(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnStrategyABI.Pack("keepCVX")
+	if err != nil {
+		logs.Error("Error packing YearnStrategyABI keepCVX", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnStrategyABI,
+		Method:   `keepCVX`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
 func GetStategyDelegatedAssets(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnStrategyABI.Pack("delegatedAssets")
 	if err != nil {

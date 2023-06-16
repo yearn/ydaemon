@@ -72,6 +72,10 @@ func (b *Float) SetInt64(s int64) *Float {
 	b.Float.SetInt64(s)
 	return b
 }
+func (b *Float) SetFloat64(s float64) *Float {
+	b.Float.SetFloat64(s)
+	return b
+}
 func (b *Float) SetInt(s *Int) *Float {
 	b.Float.SetInt(ToInt(s))
 	return b
@@ -114,6 +118,14 @@ func (b *Float) Quo(x *Float, y *Float) *Float {
 }
 func (b *Float) Div(x *Float, y *Float) *Float {
 	return b.Quo(x, y)
+}
+
+func (b *Float) Pow(x *Float, y uint64) *Float {
+	result := NewFloat(1)
+	for i := uint64(0); i < y; i++ {
+		result.Mul(result, x)
+	}
+	return result
 }
 
 /**************************************************************************************************

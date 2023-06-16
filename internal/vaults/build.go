@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -100,9 +101,53 @@ func BuildMigration(t models.TVault) models.TMigration {
 }
 
 func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
-	apy := models.TAPY{}
 	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
+	newAPY := models.TNewAPY{}
+	ppsPerTime, _ := store.ListPricePerShare(t.ChainID, t.Address)
 
+	ppsInception := bigNumber.NewFloat(1)
+	ppsNow := helpers.GetToday(ppsPerTime, t.Decimals)
+	ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, t.Decimals)
+	ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, t.Decimals)
+	ppsYearAgo := helpers.GetLastYear(ppsPerTime, t.Decimals)
+
+	inceptionAPR := bigNumber.NewFloat(0).Div(
+		bigNumber.NewFloat(0).Sub(ppsNow, ppsInception),
+		bigNumber.NewFloat(1),
+	)
+	weekAgoAPR := bigNumber.NewFloat(0).Mul(
+		bigNumber.NewFloat(0).Sub(ppsNow, ppsWeekAgo),
+		bigNumber.NewFloat(0).SetFloat64(52.1428571429), // 365/7
+	)
+	monthAgoAPR := bigNumber.NewFloat(0).Mul(
+		bigNumber.NewFloat(0).Sub(ppsNow, ppsMonthAgo),
+		bigNumber.NewFloat(0).SetFloat64(12.1666666667), // 365/30
+	)
+	yearAgoAPR := bigNumber.NewFloat(0).Mul(
+		bigNumber.NewFloat(0).Sub(ppsNow, ppsYearAgo),
+		bigNumber.NewFloat(0).SetFloat64(365),
+	)
+	newAPY.PricePerShare = ppsNow
+	newAPY.WeekAPR = weekAgoAPR
+	newAPY.MonthAPR = monthAgoAPR
+	newAPY.YearAPR = yearAgoAPR
+	newAPY.InceptionAPR = inceptionAPR
+
+	newAPY.Points.WeekAgo = bigNumber.NewFloat(0).Sub(ppsNow, ppsWeekAgo)
+	newAPY.Points.MonthAgo = bigNumber.NewFloat(0).Sub(ppsNow, ppsMonthAgo)
+	newAPY.Points.YearAgo = bigNumber.NewFloat(0).Sub(ppsNow, ppsYearAgo)
+
+	newAPY.Fees.PerformanceFee = t.PerformanceFee
+	newAPY.Fees.ManagementFee = t.ManagementFee
+
+	// logs.Pretty(newAPY)
+
+	// "pps": 1038602519758314717
+	// "week_ago": 0.1583208466449797,
+	// "month_ago": 0.046975837400312415,
+	// "inception": 0.020668132598748556
+
+	apy := models.TAPY{}
 	if hasLegacyAPY {
 		apy = models.TAPY{
 			Type:              aggregatedVault.LegacyAPY.Type,

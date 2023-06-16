@@ -91,6 +91,47 @@ var CURVE_FACTORY_URI = map[uint64][]string{
 	},
 }
 
+// CURVE_POOLS_URI contains the URI of the Curve pools to use
+var CURVE_POOLS_URI = map[uint64][]string{
+	1: {
+		`https://api.curve.fi/api/getPools/ethereum/main`,
+		`https://api.curve.fi/api/getPools/ethereum/crypto`,
+		`https://api.curve.fi/api/getPools/ethereum/factory`,
+		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
+	},
+	10: {
+		`https://api.curve.fi/api/getPools/optimism/main`,
+		`https://api.curve.fi/api/getPools/optimism/crypto`,
+		`https://api.curve.fi/api/getPools/optimism/factory`,
+	},
+	250: {
+		`https://api.curve.fi/api/getPools/fantom/main`,
+		`https://api.curve.fi/api/getPools/fantom/crypto`,
+		`https://api.curve.fi/api/getPools/fantom/factory`,
+	},
+	42161: {
+		`https://api.curve.fi/api/getPools/arbitrum/main`,
+		`https://api.curve.fi/api/getPools/arbitrum/crypto`,
+		`https://api.curve.fi/api/getPools/arbitrum/factory`,
+	},
+}
+
+// CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
+var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
+	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,
+	10:    ``,
+	250:   ``,
+	42161: ``,
+}
+
+// CURVE_GAUGES_URI contains the URI of the Curve gauges to use
+var CURVE_GAUGES_URI = map[uint64]string{
+	1:     `https://api.curve.fi/api/getAllGauges?blockchainId=ethereum`,
+	10:    ``,
+	250:   ``,
+	42161: ``,
+}
+
 // RPC_ENDPOINTS contains the node endpoints to connect the blockchains
 // Can be overwritten by env variables
 var RPC_ENDPOINTS = map[uint64]string{

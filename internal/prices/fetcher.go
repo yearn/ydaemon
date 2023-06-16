@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/multicalls"
@@ -62,14 +63,12 @@ func fetchPrices(
 		}
 	}
 
-	/**********************************************************************************************
-	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
-	** be able to calculate the price of some tokens. We will then add them to our map.
-	**********************************************************************************************/
-	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
-	for token, price := range priceMapFromCurveFactoryAPI {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
+	logs.Info(`Looking for prices`)
+
+	tokenToLookFor := common.HexToAddress(`0xdfa46478f9e5ea86d57387849598dbfb2e964b02`)
+	for _, t := range tokenList {
+		if t == tokenToLookFor {
+			logs.Success(`Found token to look for`)
 		}
 	}
 
@@ -103,6 +102,17 @@ func fetchPrices(
 	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
 
 	for token, price := range priceMapLensOracle {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
+	** be able to calculate the price of some tokens. We will then add them to our map.
+	**********************************************************************************************/
+	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
+	for token, price := range priceMapFromCurveFactoryAPI {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
 		}

@@ -3,6 +3,7 @@ package meta
 import (
 	"encoding/json"
 	"strconv"
+	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -16,16 +17,31 @@ import (
 ** The _metaProtocolMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _metaProtocolMap = make(map[uint64]map[string]*models.TProtocolsFromMeta)
+var _metaProtocolMap = make(map[uint64]*sync.Map)
+
+func initOrGetMetaProtocolMap(chainID uint64) *sync.Map {
+	syncMap := _metaProtocolMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_metaProtocolMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _metaProtocolMap[chainID]; !ok {
+			_metaProtocolMap[chainID] = &sync.Map{}
+		}
+	}
+}
 
 /**********************************************************************************************
 ** setProtocolInMap will put a TProtocolsFromMeta in the _metaProtocolMap variable.
 **********************************************************************************************/
 func setProtocolInMap(chainID uint64, protocol *models.TProtocolsFromMeta) {
-	if _, ok := _metaProtocolMap[chainID]; !ok {
-		_metaProtocolMap[chainID] = make(map[string]*models.TProtocolsFromMeta)
-	}
-	_metaProtocolMap[chainID][protocol.Name] = protocol
+	syncMap := initOrGetMetaProtocolMap(chainID)
+	syncMap.Store(protocol.Name, protocol)
 }
 
 /**********************************************************************************************
@@ -35,12 +51,12 @@ func setProtocolInMap(chainID uint64, protocol *models.TProtocolsFromMeta) {
 ** not.
 **********************************************************************************************/
 func GetMetaProtocol(chainID uint64, protocolName string) (*models.TProtocolsFromMeta, bool) {
-	if protocolsForChain, ok := _metaProtocolMap[chainID]; ok {
-		if protocol, ok := protocolsForChain[protocolName]; ok {
-			return protocol, true
-		}
+	syncMap := initOrGetMetaProtocolMap(chainID)
+	data, ok := syncMap.Load(protocolName)
+	if !ok {
+		return nil, false
 	}
-	return nil, false
+	return data.(*models.TProtocolsFromMeta), true
 }
 
 /**********************************************************************************************
@@ -48,11 +64,13 @@ func GetMetaProtocol(chainID uint64, protocolName string) (*models.TProtocolsFro
 ** variable.
 **********************************************************************************************/
 func ListMetaProtocol(chainID uint64) []*models.TProtocolsFromMeta {
-	var protocols []*models.TProtocolsFromMeta
-	for _, protocol := range _metaProtocolMap[chainID] {
-		protocols = append(protocols, protocol)
-	}
-	return protocols
+	syncMap := initOrGetMetaProtocolMap(chainID)
+	var retValue []*models.TProtocolsFromMeta
+	syncMap.Range(func(_, data interface{}) bool {
+		retValue = append(retValue, data.(*models.TProtocolsFromMeta))
+		return true
+	})
+	return retValue
 }
 
 /**************************************************************************************************

@@ -38,7 +38,7 @@ func filterStrategyAdded(
 	start uint64,
 	end *uint64,
 	syncMap *sync.Map,
-) {
+) *uint64 {
 	client := ethereum.GetRPC(vault.ChainID)
 
 	/**********************************************************************************************
@@ -159,7 +159,7 @@ func filterStrategyAdded(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
+	return end
 }
 
 /**************************************************************************************************
@@ -181,7 +181,7 @@ func filterStrategiesMigrated(
 	start uint64,
 	end *uint64,
 	syncMap *sync.Map,
-) {
+) *uint64 {
 	/**************************************************************************************************
 	** First we make sure to connect with our RPC client and get the vault contract.
 	**************************************************************************************************/
@@ -251,7 +251,7 @@ func filterStrategiesMigrated(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
+	return end
 }
 
 /**************************************************************************************************
@@ -296,31 +296,67 @@ func HandleStrategyAdded(
 	**********************************************************************************************/
 	asyncStrategiesForVaults := &sync.Map{}
 	asyncStrategiesMigrated := &sync.Map{}
+	asyncVaultEnd := &sync.Map{}
 
 	for _, v := range vaultsMap {
 		wg := &sync.WaitGroup{}
 		wg.Add(2)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()
-			filterStrategyAdded(
+			end := filterStrategyAdded(
 				v,
 				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesForVaults,
 			)
+
+			endArr, ok := asyncVaultEnd.Load(v.Address)
+			if !ok {
+				endArr = []uint64{}
+			}
+			endArr = append(endArr.([]uint64), *end)
+			asyncVaultEnd.Store(v.Address, endArr)
 		}(v)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()
-			filterStrategiesMigrated(
+			end := filterStrategiesMigrated(
 				v,
 				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesMigrated,
 			)
+			endArr, ok := asyncVaultEnd.Load(v.Address)
+			if !ok {
+				endArr = []uint64{}
+			}
+			endArr = append(endArr.([]uint64), *end)
+			asyncVaultEnd.Store(v.Address, endArr)
 		}(v)
 		wg.Wait()
+	}
+
+	itemsToUpsert := []store.DBStrategyAddedSync{}
+	for _, v := range vaultsMap {
+		endArr, ok := asyncVaultEnd.Load(v.Address)
+		if !ok {
+			endArr = []uint64{}
+		}
+		end := uint64(0)
+		for _, e := range endArr.([]uint64) {
+			if e > end {
+				end = e
+			}
+		}
+		itemsToUpsert = append(itemsToUpsert, store.DBStrategyAddedSync{
+			ChainID: chainID,
+			Vault:   v.Address.Hex(),
+			UUID:    store.GetUUID(v.Address.Hex() + strconv.FormatUint(chainID, 10)),
+			Block:   end,
+		})
+
+		go store.StoreSyncStrategiesAdded(itemsToUpsert)
 	}
 
 	/**********************************************************************************************

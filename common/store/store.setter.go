@@ -14,6 +14,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"golang.org/x/time/rate"
+	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
 
@@ -107,6 +108,34 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 			})
 		}()
 	}
+}
+
+/**************************************************************************************************
+** StoreManyHistoricalPrice is the same as StoreHistoricalPrice but for many prices at once.
+**************************************************************************************************/
+func StoreManyHistoricalPrice(items []DBHistoricalPrice) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			storeRateLimiter.Wait(context.Background())
+			DATABASE.
+				Table(`db_historical_prices`).
+				Clauses(clause.OnConflict{
+					UpdateAll: true,
+				}).Create(items)
+		}()
+	}
+}
+
+/**************************************************************************************************
+** AppendInHistoricalMap is the same as StoreHistoricalPrice but only to store
+**************************************************************************************************/
+func AppendInHistoricalMap(chainID uint64, blockNumber uint64, tokenAddress common.Address, price *bigNumber.Int) {
+	syncMap := _historicalPriceSyncMap[chainID]
+	key := strconv.FormatUint(blockNumber, 10) + "_" + tokenAddress.Hex()
+	syncMap.Store(key, price)
 }
 
 /**************************************************************************************************
@@ -375,24 +404,38 @@ func StoreSyncRegistry(chainID uint64, registryAddess common.Address, end *uint6
 ** StoreSyncStrategiesAdded will store the sync status indicating we went up to the block number
 ** to check for new strategies added.
 **************************************************************************************************/
-func StoreSyncStrategiesAdded(chainID uint64, vaultAddress common.Address, end *uint64) {
-	switch _dbType {
-	case DBBadger:
-		// Not implemented
-	case DBSql:
-		go func() {
-			wait(`StoreSyncStrategiesAdded`)
-			DATABASE.Table("db_strategy_added_syncs").
-				Where("chain_id = ? AND vault = ?", chainID, vaultAddress.Hex()).
-				Where("block <= ?", end).
-				Assign(DBStrategyAddedSync{Block: *end}).
-				FirstOrCreate(&DBStrategyAddedSync{
-					ChainID: chainID,
-					Vault:   vaultAddress.Hex(),
-					UUID:    GetUUID(vaultAddress.Hex() + strconv.FormatUint(chainID, 10)),
-				})
-		}()
-	}
+func StoreSyncStrategiesAdded(itemsToUpsert []DBStrategyAddedSync) {
+	OpenBadgerDB(
+		chainID,
+		TABLES.STRATEGIES_FROM_VAULT_SYNC,
+	).Update(func(txn *badger.Txn) error {
+		if getter, err := txn.Get([]byte(vaultAddress.Hex())); err == nil {
+			if previousValue, err := getter.ValueCopy(nil); err == nil {
+				previousSync := &DBRegistrySync{}
+				if err := json.Unmarshal(previousValue, previousSync); err != nil {
+					logs.Error(`StoreSyncStrategiesAdded: json.Unmarshal(previousValue, previousSync)`, err)
+					return err
+				}
+				if previousSync.Block > end {
+					logs.Info(`StoreSyncStrategiesAdded: previousSync.Block > end`, previousSync.Block, end)
+					return nil
+				}
+			}
+		}
+
+		data := &DBStrategyAddedSync{
+			ChainID: chainID,
+			Block:   end,
+			Vault:   vaultAddress.Hex(),
+			UUID:    GetUUID(vaultAddress.Hex() + strconv.FormatUint(chainID, 10)),
+		}
+		dataByte, err := json.Marshal(data)
+		if err != nil {
+			logs.Error(`StoreSyncStrategiesAdded: json.Marshal(data)`, err)
+			return err
+		}
+		return txn.Set([]byte(data.Vault), dataByte)
+	})
 }
 
 /**************************************************************************************************

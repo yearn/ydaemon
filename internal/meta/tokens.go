@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -18,16 +19,31 @@ import (
 ** The _metaTokentMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _metaTokentMap = make(map[uint64]map[common.Address]*models.TTokenFromMeta)
+var _metaTokentMap = make(map[uint64]*sync.Map)
+
+func initOrGetMetaTokenMap(chainID uint64) *sync.Map {
+	syncMap := _metaProtocolMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_metaProtocolMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _metaProtocolMap[chainID]; !ok {
+			_metaProtocolMap[chainID] = &sync.Map{}
+		}
+	}
+}
 
 /**********************************************************************************************
 ** setTokenInMap will put a TTokenFromMeta in the _metaTokentMap variable.
 **********************************************************************************************/
 func setTokenInMap(chainID uint64, token *models.TTokenFromMeta) {
-	if _, ok := _metaTokentMap[chainID]; !ok {
-		_metaTokentMap[chainID] = make(map[common.Address]*models.TTokenFromMeta)
-	}
-	_metaTokentMap[chainID][token.Address] = token
+	syncMap := initOrGetMetaTokenMap(chainID)
+	syncMap.Store(token.Address, token)
 }
 
 /**********************************************************************************************
@@ -36,12 +52,12 @@ func setTokenInMap(chainID uint64, token *models.TTokenFromMeta) {
 ** It will return the token if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
 func GetMetaToken(chainID uint64, tokenAddress common.Address) (*models.TTokenFromMeta, bool) {
-	if tokensForChain, ok := _metaTokentMap[chainID]; ok {
-		if token, ok := tokensForChain[tokenAddress]; ok {
-			return token, true
-		}
+	syncMap := initOrGetMetaTokenMap(chainID)
+	data, ok := syncMap.Load(tokenAddress)
+	if !ok {
+		return nil, false
 	}
-	return nil, false
+	return data.(*models.TTokenFromMeta), true
 }
 
 /**********************************************************************************************
@@ -49,11 +65,13 @@ func GetMetaToken(chainID uint64, tokenAddress common.Address) (*models.TTokenFr
 ** variable.
 **********************************************************************************************/
 func ListMetaTokens(chainID uint64) []*models.TTokenFromMeta {
-	var tokens []*models.TTokenFromMeta
-	for _, token := range _metaTokentMap[chainID] {
-		tokens = append(tokens, token)
-	}
-	return tokens
+	syncMap := initOrGetMetaTokenMap(chainID)
+	var retValue []*models.TTokenFromMeta
+	syncMap.Range(func(_, data interface{}) bool {
+		retValue = append(retValue, data.(*models.TTokenFromMeta))
+		return true
+	})
+	return retValue
 }
 
 /**************************************************************************************************

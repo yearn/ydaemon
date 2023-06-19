@@ -60,7 +60,7 @@ func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 **********************************************************************************************/
 func FindPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Int, bool) {
 	syncMap := initOrGetPriceMap(chainID)
-	price, ok := syncMap.Load(tokenAddress)
+	price, ok := syncMap.Load(tokenAddress.Hex())
 	if !ok {
 		return nil, false
 	}

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -18,16 +19,31 @@ import (
 ** The _metaVaultMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _metaVaultMap = make(map[uint64]map[common.Address]*models.TInternalVaultFromMeta)
+var _metaVaultMap = make(map[uint64]*sync.Map)
+
+func initOrGetMetaVaultsMap(chainID uint64) *sync.Map {
+	syncMap := _metaVaultMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_metaVaultMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _metaVaultMap[chainID]; !ok {
+			_metaVaultMap[chainID] = &sync.Map{}
+		}
+	}
+}
 
 /**********************************************************************************************
 ** setVaultInMap will put a TInternalVaultFromMeta in the _metaVaultMap variable.
 **********************************************************************************************/
 func setVaultInMap(chainID uint64, vault *models.TInternalVaultFromMeta) {
-	if _, ok := _metaVaultMap[chainID]; !ok {
-		_metaVaultMap[chainID] = make(map[common.Address]*models.TInternalVaultFromMeta)
-	}
-	_metaVaultMap[chainID][vault.Address] = vault
+	syncMap := initOrGetMetaVaultsMap(chainID)
+	syncMap.Store(vault.Address, vault)
 }
 
 /**********************************************************************************************
@@ -36,12 +52,12 @@ func setVaultInMap(chainID uint64, vault *models.TInternalVaultFromMeta) {
 ** It will return the vault if found, and a boolean indicating if the vault was found or not.
 **********************************************************************************************/
 func GetMetaVault(chainID uint64, vaultAddress common.Address) (*models.TInternalVaultFromMeta, bool) {
-	if vaultsForChain, ok := _metaVaultMap[chainID]; ok {
-		if vault, ok := vaultsForChain[vaultAddress]; ok {
-			return vault, true
-		}
+	syncMap := initOrGetMetaVaultsMap(chainID)
+	data, ok := syncMap.Load(vaultAddress)
+	if !ok {
+		return nil, false
 	}
-	return nil, false
+	return data.(*models.TInternalVaultFromMeta), true
 }
 
 /**********************************************************************************************
@@ -49,11 +65,13 @@ func GetMetaVault(chainID uint64, vaultAddress common.Address) (*models.TInterna
 ** variable.
 **********************************************************************************************/
 func ListMetaVaults(chainID uint64) []*models.TInternalVaultFromMeta {
-	var vaults []*models.TInternalVaultFromMeta
-	for _, vault := range _metaVaultMap[chainID] {
-		vaults = append(vaults, vault)
-	}
-	return vaults
+	syncMap := initOrGetMetaVaultsMap(chainID)
+	var retValue []*models.TInternalVaultFromMeta
+	syncMap.Range(func(_, data interface{}) bool {
+		retValue = append(retValue, data.(*models.TInternalVaultFromMeta))
+		return true
+	})
+	return retValue
 }
 
 /**************************************************************************************************

@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/multicalls"
@@ -33,17 +32,12 @@ var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 ** Returns:
 ** - a map of tokenAddress -> *bigNumber.Int
 **************************************************************************************************/
-func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
+func fetchPrices(
+	chainID uint64,
+	blockNumber *uint64,
+	tokenList []common.Address,
+) map[common.Address]*bigNumber.Int {
 	newPriceMap := fetchPricesFromLens(chainID, blockNumber, tokenList)
-
-	logs.Info(`Looking for prices`)
-
-	tokenToLookFor := common.HexToAddress(`0xdfa46478f9e5ea86d57387849598dbfb2e964b02`)
-	for _, t := range tokenList {
-		if t == tokenToLookFor {
-			logs.Success(`Found token to look for`)
-		}
-	}
 
 	/**********************************************************************************************
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
@@ -71,12 +65,10 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 		for _, token := range queryList {
 			if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
 				newPriceMap[token] = pricesLlama[token]
-				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesLlama[token])
 				continue
 			}
 			if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
 				newPriceMap[token] = pricesGecko[token]
-				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesGecko[token])
 			}
 		}
 	}
@@ -110,6 +102,28 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 		}
 	}
 
+	itemsToUpsert := []store.DBHistoricalPrice{}
+	for tokenAddress, price := range newPriceMap {
+		/******************************************************************************************
+		** To save some process, we will batch the saving to the database in one call.
+		** The following code is creating the upsert array.
+		******************************************************************************************/
+		DBbaseSchema := store.DBBaseSchema{
+			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(*blockNumber, 10) + tokenAddress.Hex()),
+			Block:   *blockNumber,
+			ChainID: chainID,
+		}
+		humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
+		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
+			DBBaseSchema:   DBbaseSchema,
+			Token:          tokenAddress.Hex(),
+			Price:          price.String(),
+			HumanizedPrice: humanizedPrice,
+		})
+		store.AppendInHistoricalMap(chainID, *blockNumber, tokenAddress, price)
+	}
+
+	store.StoreManyHistoricalPrice(itemsToUpsert)
 	return newPriceMap
 }
 
@@ -245,7 +259,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		wg.Wait()
 		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 	}
-	_priceMap[chainID] = priceMap
+	StorePrices(chainID, priceMap)
 	return priceMap
 }
 
@@ -277,6 +291,7 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 	** API.
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, big.NewInt(int64(blockNumber)))
+	itemsToUpsert := []store.DBHistoricalPrice{}
 	for _, tokenAddress := range tokenList {
 		rawTokenPrice := response[tokenAddress.Hex()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
@@ -287,9 +302,27 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 			continue
 		}
 		newPriceMap[tokenAddress] = helpers.DecodeBigInt(rawTokenPrice)
-		store.StoreHistoricalPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
+
+		/******************************************************************************************
+		** To save some process, we will batch the saving to the database in one call.
+		** The following code is creating the upsert array.
+		******************************************************************************************/
+		DBbaseSchema := store.DBBaseSchema{
+			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
+			Block:   blockNumber,
+			ChainID: chainID,
+		}
+		humanizedPrice, _ := helpers.ToNormalizedAmount(newPriceMap[tokenAddress], 6).Float64()
+		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
+			DBBaseSchema:   DBbaseSchema,
+			Token:          tokenAddress.Hex(),
+			Price:          newPriceMap[tokenAddress].String(),
+			HumanizedPrice: humanizedPrice,
+		})
+		store.AppendInHistoricalMap(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
 	}
 
+	store.StoreManyHistoricalPrice(itemsToUpsert)
 	return newPriceMap
 }
 

@@ -2,7 +2,6 @@ package vaults
 
 import (
 	"strconv"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -292,15 +291,11 @@ func RetrieveAllVaults(
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map
 		** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
 		**********************************************************************************************/
-		wg := sync.WaitGroup{}
-		wg.Add(len(updatedVaultMap))
 		for _, vault := range updatedVaultMap {
-			go func(thisVault models.TVault) {
-				defer wg.Done()
-				store.StoreVault(chainID, thisVault)
-			}(vault)
+			if _, ok := vaultMap[vault.Address]; !ok {
+				store.StoreVault(chainID, vault)
+			}
 		}
-		wg.Wait()
 		vaultMap, _ = store.ListAllVaults(chainID)
 	}
 

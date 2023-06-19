@@ -220,3 +220,26 @@ func ListAllStrategiess(chainID uint64) (
 
 	return asMap, asSlice
 }
+
+/**************************************************************************************************
+** GetStrategy will return a strategy stored in the caching system for a given chainID and address.
+**************************************************************************************************/
+func GetStrategy(chainID uint64, strategyAddress common.Address) (models.TStrategyAdded, bool) {
+	/**********************************************************************************************
+	** We first retrieve the syncMap. This syncMap should be initialized first via the
+	** `LoadStrategies` function which take the data from the database/badger and store it in it.
+	**********************************************************************************************/
+	syncMap := _strategiesSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_strategiesSyncMap[chainID] = syncMap
+	}
+
+	/**********************************************************************************************
+	** We can just iterate over the syncMap and add the strategies to the map and slice.
+	** As the stored vault data are only a subset of static, we need to use the actual structure
+	** and not the DBVault one.
+	**********************************************************************************************/
+	strategy, ok := syncMap.Load(strategyAddress)
+	return strategy.(models.TStrategyAdded), ok
+}

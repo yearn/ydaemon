@@ -72,12 +72,12 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
-	cron.Every(1).Minute().Do(prices.RetrieveAllPrices(chainID))
-	cron.Every(5).Minute().Do(vaults.RetrieveAllVaults(chainID, vaultsMap))
+	cron.Every(10).Minute().Do(prices.RetrieveAllPrices(chainID))
+	cron.Every(12).Minute().Do(vaults.RetrieveAllVaults(chainID, vaultsMap))
 
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
-	cron.Every(5).Minute().Do(func() {
+	cron.Every(15).Minute().Do(func() {
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
 	})

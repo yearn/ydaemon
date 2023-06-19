@@ -53,7 +53,7 @@ func BuildRiskScore(t *models.TStrategy) *models.TStrategyFromRisk {
 	_tokenPrice, ok := prices.FindPrice(t.ChainID, tokenData.Address)
 	if !ok {
 		traces.
-			Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
+			Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()+` on chain `+strconv.FormatUint(t.ChainID, 10)).
 			SetEntity(`strategy`).
 			SetTag(`chainID`, strconv.FormatUint(t.ChainID, 10)).
 			SetTag(`rpcURI`, ethereum.GetRPCURI(t.ChainID)).

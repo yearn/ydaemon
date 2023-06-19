@@ -297,7 +297,7 @@ func computeRiskGroupAllocation(chainID uint64) {
 		tokenPrice, ok := prices.FindPrice(chainID, tokenData.Address)
 		if !ok {
 			traces.
-				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
+				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).

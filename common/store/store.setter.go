@@ -143,13 +143,8 @@ func AppendInHistoricalMap(chainID uint64, blockNumber uint64, tokenAddress comm
 ** access during that same execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	AppendInNewVaultsFromRegistry(chainID, vault)
 	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
-	if data, exists := syncMap.Load(key); exists {
-		if Compare(Hash(data), Hash(vault)) {
-			return
-		}
-	}
 
 	syncMap.Store(key, vault)
 	switch _dbType {
@@ -184,21 +179,21 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 }
 
 /**************************************************************************************************
+** AppendInNewVaultsFromRegistry will add a new vault in the _vaultsSyncMap
+**************************************************************************************************/
+func AppendInNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
+	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
+	syncMap.Store(key, vault)
+}
+
+/**************************************************************************************************
 ** StoreERC20 will store a new erc20 token in the _erc20SyncMap for fast access during that same
 ** execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreERC20(chainID uint64, token models.TERC20Token) {
-	syncMap := _erc20SyncMap[chainID]
+	AppendInERC20(chainID, token)
 	key := token.Address.Hex()
-	if data, exists := syncMap.Load(key); exists {
-		tokenA := data.(models.TERC20Token)
-		tokenB := token
-		if tokenA.Address == tokenB.Address && tokenA.Decimals == tokenB.Decimals && tokenA.ChainID == tokenB.ChainID {
-			return
-		}
-	}
-
-	syncMap.Store(key, token)
 
 	switch _dbType {
 	case DBBadger:
@@ -239,97 +234,65 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 }
 
 /**************************************************************************************************
+** AppendInERC20 will add a new erc20 token in the _erc20SyncMap
+**************************************************************************************************/
+func AppendInERC20(chainID uint64, token models.TERC20Token) {
+	syncMap := _erc20SyncMap[chainID]
+	key := token.Address.Hex()
+	syncMap.Store(key, token)
+}
+
+/**************************************************************************************************
 ** StoreVault will store a new vault in the _vaultsSyncMap for fast access during that same
 ** execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
-	syncMap := _vaultsSyncMap[chainID]
+	AppendInVaultMap(chainID, vault)
 	key := vault.Address.Hex() + "_" + vault.Token.Address.Hex() + "_" + strconv.FormatUint(vault.Activation, 10) + "_" + strconv.FormatUint(vault.ChainID, 10)
-
-	data, exists := syncMap.Load(vault.Address)
-	if exists {
-		vaultData := data.(models.TVault)
-		newItemFromData := &DBVault{
-			UUID:       getUUID(key),
-			Address:    vaultData.Address.Hex(),
-			Management: vaultData.Management.Hex(),
-			Governance: vaultData.Governance.Hex(),
-			Guardian:   vaultData.Guardian.Hex(),
-			Rewards:    vaultData.Rewards.Hex(),
-			Token:      vaultData.Token.Address.Hex(),
-			Type:       vaultData.Type,
-			Version:    vaultData.Version,
-			ChainID:    vaultData.ChainID,
-			Inception:  vaultData.Inception,
-			Activation: vaultData.Activation,
-			Decimals:   vaultData.Decimals,
-			Endorsed:   vaultData.Endorsed,
-		}
-		itemToCompare := &DBVault{
-			UUID:       getUUID(key),
-			Address:    vault.Address.Hex(),
-			Management: vault.Management.Hex(),
-			Governance: vault.Governance.Hex(),
-			Guardian:   vault.Guardian.Hex(),
-			Rewards:    vault.Rewards.Hex(),
-			Token:      vault.Token.Address.Hex(),
-			Type:       vault.Type,
-			Version:    vault.Version,
-			ChainID:    vault.ChainID,
-			Inception:  vault.Inception,
-			Activation: vault.Activation,
-			Decimals:   vault.Decimals,
-			Endorsed:   vault.Endorsed,
-		}
-		if Compare(Hash(newItemFromData), Hash(itemToCompare)) {
-			return
-		}
-	}
 
 	switch _dbType {
 	case DBBadger:
-		go OpenBadgerDB(chainID, TABLES.VAULTS).Update(func(txn *badger.Txn) error {
-			dataByte, err := json.Marshal(vault)
-			if err != nil {
-				return err
-			}
-			return txn.Set([]byte(key), dataByte)
-		})
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreVault`)
 	case DBSql:
-		syncMap.Store(vault.Address, vault)
-		func() {
-			newItem := &DBVault{
-				UUID:           getUUID(key),
-				Address:        vault.Address.Hex(),
-				Management:     vault.Management.Hex(),
-				Governance:     vault.Governance.Hex(),
-				Guardian:       vault.Guardian.Hex(),
-				Rewards:        vault.Rewards.Hex(),
-				Token:          vault.Token.Address.Hex(),
-				Type:           vault.Type,
-				Symbol:         vault.Symbol,
-				DisplaySymbol:  vault.DisplaySymbol,
-				FormatedSymbol: vault.FormatedSymbol,
-				Name:           vault.Name,
-				DisplayName:    vault.DisplayName,
-				FormatedName:   vault.FormatedName,
-				Version:        vault.Version,
-				ChainID:        vault.ChainID,
-				Inception:      vault.Inception,
-				Activation:     vault.Activation,
-				Decimals:       vault.Decimals,
-				PerformanceFee: vault.PerformanceFee,
-				ManagementFee:  vault.ManagementFee,
-				Endorsed:       vault.Endorsed,
-			}
-			wait(`StoreVault`)
+		go func() {
+			newItem := &DBVault{}
+			newItem.UUID = getUUID(key)
+			newItem.Address = vault.Address.Hex()
+			newItem.Management = vault.Management.Hex()
+			newItem.Governance = vault.Governance.Hex()
+			newItem.Guardian = vault.Guardian.Hex()
+			newItem.Rewards = vault.Rewards.Hex()
+			newItem.Token = vault.Token.Address.Hex()
+			newItem.Type = vault.Type
+			newItem.Symbol = vault.Symbol
+			newItem.DisplaySymbol = vault.DisplaySymbol
+			newItem.FormatedSymbol = vault.FormatedSymbol
+			newItem.Name = vault.Name
+			newItem.DisplayName = vault.DisplayName
+			newItem.FormatedName = vault.FormatedName
+			newItem.Version = vault.Version
+			newItem.ChainID = vault.ChainID
+			newItem.Inception = vault.Inception
+			newItem.Activation = vault.Activation
+			newItem.Decimals = vault.Decimals
+			newItem.PerformanceFee = vault.PerformanceFee
+			newItem.ManagementFee = vault.ManagementFee
+			newItem.Endorsed = vault.Endorsed
+			storeRateLimiter.Wait(context.Background())
 			DATABASE.
 				Table(`db_vaults`).
-				Where(`address = ? AND chain_id = ?`, newItem.Address, newItem.ChainID).
-				Assign(newItem).
 				FirstOrCreate(newItem)
 		}()
 	}
+}
+
+/**************************************************************************************************
+** AppendInVaultMap will add a new vault in the _vaultsSyncMap
+**************************************************************************************************/
+func AppendInVaultMap(chainID uint64, vault models.TVault) {
+	syncMap := _vaultsSyncMap[chainID]
+	syncMap.Store(vault.Address, vault)
 }
 
 /**************************************************************************************************

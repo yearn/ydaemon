@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/multicalls"
@@ -60,15 +59,6 @@ func fetchPrices(
 		}
 		if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
 			newPriceMap[token] = pricesGecko[token]
-		}
-	}
-
-	logs.Info(`Looking for prices`)
-
-	tokenToLookFor := common.HexToAddress(`0xdfa46478f9e5ea86d57387849598dbfb2e964b02`)
-	for _, t := range tokenList {
-		if t == tokenToLookFor {
-			logs.Success(`Found token to look for`)
 		}
 	}
 

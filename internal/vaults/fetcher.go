@@ -291,6 +291,7 @@ func RetrieveAllVaults(
 	** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
 	**********************************************************************************************/
 	for _, vault := range updatedVaultMap {
+		store.AppendInVaultMap(chainID, vault)
 		if _, ok := vaultMap[vault.Address]; !ok {
 			store.StoreVault(chainID, vault)
 		}

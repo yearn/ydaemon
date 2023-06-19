@@ -126,9 +126,8 @@ func AppendInHistoricalMap(chainID uint64, blockNumber uint64, tokenAddress comm
 ** access during that same execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	AppendInNewVaultsFromRegistry(chainID, vault)
 	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
-	syncMap.Store(key, vault)
 
 	switch _dbType {
 	case DBBadger:
@@ -161,13 +160,21 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 }
 
 /**************************************************************************************************
+** AppendInNewVaultsFromRegistry will add a new vault in the _vaultsSyncMap
+**************************************************************************************************/
+func AppendInNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
+	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
+	syncMap.Store(key, vault)
+}
+
+/**************************************************************************************************
 ** StoreERC20 will store a new erc20 token in the _erc20SyncMap for fast access during that same
 ** execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreERC20(chainID uint64, token models.TERC20Token) {
-	syncMap := _erc20SyncMap[chainID]
+	AppendInERC20(chainID, token)
 	key := token.Address.Hex()
-	syncMap.Store(key, token)
 
 	switch _dbType {
 	case DBBadger:
@@ -206,13 +213,21 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 }
 
 /**************************************************************************************************
+** AppendInERC20 will add a new erc20 token in the _erc20SyncMap
+**************************************************************************************************/
+func AppendInERC20(chainID uint64, token models.TERC20Token) {
+	syncMap := _erc20SyncMap[chainID]
+	key := token.Address.Hex()
+	syncMap.Store(key, token)
+}
+
+/**************************************************************************************************
 ** StoreVault will store a new vault in the _vaultsSyncMap for fast access during that same
 ** execution, and will store it in the configured DB for future executions.
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
-	syncMap := _vaultsSyncMap[chainID]
+	AppendInVaultMap(chainID, vault)
 	key := vault.Address.Hex() + "_" + vault.Token.Address.Hex() + "_" + strconv.FormatUint(vault.Activation, 10) + "_" + strconv.FormatUint(vault.ChainID, 10)
-	syncMap.Store(vault.Address, vault)
 
 	switch _dbType {
 	case DBBadger:
@@ -254,6 +269,14 @@ func StoreVault(chainID uint64, vault models.TVault) {
 				FirstOrCreate(newItem)
 		}()
 	}
+}
+
+/**************************************************************************************************
+** AppendInVaultMap will add a new vault in the _vaultsSyncMap
+**************************************************************************************************/
+func AppendInVaultMap(chainID uint64, vault models.TVault) {
+	syncMap := _vaultsSyncMap[chainID]
+	syncMap.Store(vault.Address, vault)
 }
 
 /**************************************************************************************************

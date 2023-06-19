@@ -1,6 +1,7 @@
 package env
 
 import (
+	"math"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -43,9 +44,17 @@ var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
 	1:     100_000_000,
-	10:    5_000_000,
+	10:    100_000_000,
 	250:   100_000_000,
 	42161: 100_000_000,
+}
+
+// MAX_BATCH_SIZE is the maximum size request for a multicall
+var MAX_BATCH_SIZE = map[uint64]int{
+	1:     math.MaxInt64,
+	10:    1_000,
+	250:   math.MaxInt64,
+	42161: math.MaxInt64,
 }
 
 // BLACKLISTED_VAULTS contains the vault we should not work with

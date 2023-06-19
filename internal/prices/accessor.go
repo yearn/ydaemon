@@ -47,7 +47,7 @@ func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	syncMap := initOrGetPriceMap(chainID)
 	prices := make(map[common.Address]*bigNumber.Int)
 	syncMap.Range(func(key, price interface{}) bool {
-		prices[key.(common.Address)] = price.(*bigNumber.Int)
+		prices[common.HexToAddress(key.(string))] = price.(*bigNumber.Int)
 		return true
 	})
 	return prices

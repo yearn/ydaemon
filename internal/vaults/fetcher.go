@@ -284,20 +284,18 @@ func RetrieveAllVaults(
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch theses basics informations.
 	**********************************************************************************************/
-	if len(updatedVaultMap) > 0 {
-		updatedVaultMap = findAllVaults(chainID, updatedVaultMap)
+	updatedVaultMap = findAllVaults(chainID, updatedVaultMap)
 
-		/**********************************************************************************************
-		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
-		**********************************************************************************************/
-		for _, vault := range updatedVaultMap {
-			if _, ok := vaultMap[vault.Address]; !ok {
-				store.StoreVault(chainID, vault)
-			}
+	/**********************************************************************************************
+	** Once everything is setup, we will store each token in the DB. The storage is set as a map
+	** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
+	**********************************************************************************************/
+	for _, vault := range updatedVaultMap {
+		if _, ok := vaultMap[vault.Address]; !ok {
+			store.StoreVault(chainID, vault)
 		}
-		vaultMap, _ = store.ListAllVaults(chainID)
 	}
+	vaultMap, _ = store.ListAllVaults(chainID)
 
 	_vaultMap[chainID] = vaultMap
 	return vaultMap

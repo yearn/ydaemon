@@ -76,19 +76,19 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 
 	// From our list of tokens, retieve the price for each one of them -> Should be done every 1(?) minute for all tokens
 	internalWG.Add(1)
-	go runRetrieveAllPrices(chainID, &internalWG, 1*time.Minute)
+	go runRetrieveAllPrices(chainID, &internalWG, 10*time.Minute)
 	internalWG.Wait()
 
 	//From our list of vault, perform a multicall to get all vaults data -> Should be done every 5(?) minutes for all vaults
 	internalWG.Add(1)
-	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 5*time.Minute)
+	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 12*time.Minute)
 	internalWG.Wait()
 
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
 	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
 	internalWG.Add(1)
-	go runRetrieveAllStrategies(chainID, strategiesAddedList, &internalWG, 5*time.Minute)
+	go runRetrieveAllStrategies(chainID, strategiesAddedList, &internalWG, 15*time.Minute)
 	internalWG.Wait()
 
 	go registries.IndexNewVaults(chainID)

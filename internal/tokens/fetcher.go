@@ -4,7 +4,6 @@ import (
 	"math/big"
 	"strconv"
 	"strings"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -441,15 +440,11 @@ func RetrieveAllTokens(
 		** of tokenAddress -> TERC20Token. All tokens will be retrievable from the store.Interate()
 		** func.
 		**********************************************************************************************/
-		wg := sync.WaitGroup{}
-		wg.Add(len(updatedTokenMap))
 		for _, token := range updatedTokenMap {
-			go func(thisToken models.TERC20Token) {
-				defer wg.Done()
-				store.StoreERC20(chainID, thisToken)
-			}(token)
+			if _, ok := tokenMap[token.Address]; !ok {
+				store.StoreERC20(chainID, token)
+			}
 		}
-		wg.Wait()
 		tokenMap, _ = store.ListAllERC20(chainID)
 	}
 

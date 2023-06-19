@@ -59,7 +59,9 @@ func RegisterAllVaults(
 
 	vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, uniqueVaultsList)
 	for _, vault := range vaultsWithActivation {
-		store.StoreNewVaultsFromRegistry(chainID, vault)
+		if _, ok := alreadyStoredVaultList[vault.Address]; !ok {
+			store.StoreNewVaultsFromRegistry(chainID, vault)
+		}
 	}
 	return vaultsWithActivation
 }

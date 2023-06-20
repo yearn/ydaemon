@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer AuraBAL-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 341,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer AuraBAL",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "B-80BAL-20WETH"
+  }
+}

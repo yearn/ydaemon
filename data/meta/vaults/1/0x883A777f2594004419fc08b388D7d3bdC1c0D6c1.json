@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer bba-USD-v3-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 345,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer Boosted AAVE USD v3",
+  "migrationAvailable": false,
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

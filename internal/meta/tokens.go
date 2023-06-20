@@ -22,18 +22,18 @@ import (
 var _metaTokentMap = make(map[uint64]*sync.Map)
 
 func initOrGetMetaTokenMap(chainID uint64) *sync.Map {
-	syncMap := _metaProtocolMap[chainID]
+	syncMap := _metaTokentMap[chainID]
 	if syncMap == nil {
 		syncMap = &sync.Map{}
-		_metaProtocolMap[chainID] = syncMap
+		_metaTokentMap[chainID] = syncMap
 	}
 	return syncMap
 }
 
 func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		if _, ok := _metaProtocolMap[chainID]; !ok {
-			_metaProtocolMap[chainID] = &sync.Map{}
+		if _, ok := _metaTokentMap[chainID]; !ok {
+			_metaTokentMap[chainID] = &sync.Map{}
 		}
 	}
 }

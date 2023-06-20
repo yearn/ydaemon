@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer rETH-wETH-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 320,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer rETH-wETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
+}

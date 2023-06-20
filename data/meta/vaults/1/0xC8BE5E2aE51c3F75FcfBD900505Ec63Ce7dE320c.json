@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "balancer wstETH-wETH-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 324,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer wstETH-wETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

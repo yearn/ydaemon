@@ -146,7 +146,7 @@ func Run(chainID uint64) {
 	// 0x4aCc1BF7D6a591016641325aA6664A1Cd178F002 -> Broken something
 	// 0x453D92C7d4263201C69aACfaf589Ed14202d83a4 -> THIS??
 
-	TEST_VAULT_TOKEN := common.HexToAddress(`0xdf55670e27bE5cDE7228dD0A6849181891c9ebA1`)
+	TEST_VAULT_TOKEN := common.HexToAddress(`0x849dC56ceCa7Cf55AbF5ec87910DA21c5C7dA581`)
 	// for _, vault := range allVaults {
 	// 	vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
 	// 	if ok {

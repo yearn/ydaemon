@@ -34,11 +34,11 @@ func (y Controller) GetVault(c *gin.Context) {
 
 	vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)
 	newVault.Strategies = []*TStrategy{}
+
 	for _, strategy := range vaultStrategies {
 		var externalStrategy *TStrategy
 		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
-			// logs.Pretty(`SHOULD NOT BE INCLUDED`, strategyWithDetails)
 			continue
 		}
 

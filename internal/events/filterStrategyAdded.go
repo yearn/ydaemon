@@ -386,7 +386,7 @@ func HandleStrategyAdded(
 		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
 		valueParsed.ChainID = chainID
 		allStrategiesList = append(allStrategiesList, valueParsed)
-		go store.StoreStrategies(chainID, valueParsed)
+		store.StoreStrategies(chainID, valueParsed)
 		count++
 		return true
 	})
@@ -431,7 +431,7 @@ func HandleStrategyAdded(
 		newStrategy.VaultVersion = vaultsMap[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy
 		allStrategiesList = append(allStrategiesList, newStrategy)
-		go store.StoreStrategies(chainID, newStrategy)
+		store.StoreStrategies(chainID, newStrategy)
 		count++
 		return true
 	})
@@ -440,5 +440,6 @@ func HandleStrategyAdded(
 		allStrategiesList = append(allStrategiesList, strat)
 	}
 
+	logs.Info(`DONE HERE`)
 	return allStrategiesList
 }

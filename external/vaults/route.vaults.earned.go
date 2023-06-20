@@ -20,7 +20,7 @@ import (
 func graphQLRequestForUser(userAddress string, vaultAddresses []string) *graphql.Request {
 	if len(vaultAddresses) == 0 {
 		return graphql.NewRequest(`{
-			accountVaultPositions(account: "` + strings.ToLower(userAddress) + `") {
+			accountVaultPositions(where:{account: "` + strings.ToLower(userAddress) + `"}) {
 				` + helpers.GetFIFOForUser() + `
 			}
 		}`)

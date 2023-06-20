@@ -39,6 +39,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		var externalStrategy *TStrategy
 		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
+			// logs.Pretty(`SHOULD NOT BE INCLUDED`, strategyWithDetails)
 			continue
 		}
 

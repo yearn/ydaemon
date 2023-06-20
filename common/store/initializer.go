@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
 )
 
 type TDBType string
@@ -43,13 +44,14 @@ func init() {
 	}
 
 	wg := &sync.WaitGroup{}
+	logs.Info(`Loading DB`)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(6)
-		go LoadBlockTime(chainID, wg)
-		go LoadHistoricalPrice(chainID, wg)
+		wg.Add(3)
+		go LoadBlockTime(chainID, nil)
+		go LoadHistoricalPrice(chainID, nil)
 		go LoadNewVaultsFromRegistry(chainID, wg)
 		go LoadStrategies(chainID, wg)
-		LoadERC20(chainID, wg) //This is a blocking function, required for the next function to work
+		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
 		go LoadVaults(chainID, wg)
 	}
 	wg.Wait()

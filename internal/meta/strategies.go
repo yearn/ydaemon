@@ -65,7 +65,7 @@ func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*models.TS
 ** _metaStrategyMap variable.
 **********************************************************************************************/
 func ListMetaStrategies(chainID uint64) []*models.TStrategyFromMeta {
-	syncMap := initOrGetMetaProtocolMap(chainID)
+	syncMap := initOrGetMetaStrategyMap(chainID)
 	var retValue []*models.TStrategyFromMeta
 	syncMap.Range(func(_, data interface{}) bool {
 		retValue = append(retValue, data.(*models.TStrategyFromMeta))

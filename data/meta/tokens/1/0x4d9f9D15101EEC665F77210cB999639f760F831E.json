@@ -1,0 +1,50 @@
+{
+  "$schema": "token",
+  "name": "Curve frxETH-stETH Pool",
+  "symbol": "st-frxETH-f",
+  "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform.",
+  "categories": ["Curve LP Tokens"],
+  "website": "https://curve.fi/#/ethereum/pools/factory-v2-274",
+  "type": "Curve",
+  "localization": {
+    "en": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "fr": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "es": {
+      "description": "Este token representa un grupo de liquidez de Curve. Los titulares obtienen tarifas de los usuarios que comercian en el grupo y también pueden depositar el LP en los gauges de Curve para obtener emisiones de CRV. Este grupo contiene frxETH y stETH, un token que representa éter en stacking en Lido, una plataforma de staking de ETH 2.0 descentralizada."
+    },
+    "de": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "pt": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "el": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "tr": {
+      "description": "Bu jeton, bir Curve likidite havuzunu temsil eder. Sahipler, havuzda işlem yapan kullanıcılardan ücret alır ve ayrıca CRV emisyonları kazanmak için LP'yi Curve'un göstergelerine yatırabilir. Bu havuz, merkezi olmayan bir ETH 2.0 staking platformu olan Lido'da stake edilen ether'i temsil eden bir token olan frxETH ve stETH'yi içerir."
+    },
+    "vi": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "zh": {
+      "description": "此代币是 Curve 的流动性池代币。代币持有者可以赚取交易费，也可以将代币存入 Curve gauge 以获得 CRV 奖励。其中包含 frxETH 和 stETH，stETH 是 Lido 发行的去中心化 ETH 2.0 质押代币。"
+    },
+    "hi": {
+      "description": "यह टोकन Curve लिक्विडिटी पूल का प्रतिनिधित्व करता है। धारक पूल में व्यापार करने वाले उपयोगकर्ताओं से शुल्क कमाते हैं, और CRV उत्सर्जन अर्जित करने के लिए LP को Curve के गेज में भी जमा कर सकते हैं। इस पूल में frxETH और stETH शामिल हैं, एक टोकन जो Lido में एक विकेन्द्रीकृत ETH 2.0 स्टेकिंग प्लेटफॉर्म में स्टेक्ड ईथर का प्रतिनिधित्व करता है।"
+    },
+    "ja": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "id": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    },
+    "ru": {
+      "description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform."
+    }
+  }
+}

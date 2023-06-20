@@ -18,7 +18,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO", "Frax Finance", "Sturdy Finance", "Hop Exchange", "Velodrome Finance", "Sonne Finance"]
+        "enum": ["0xDAO", "1inch", "88 MPH", "Aave", "Abracadabra", "Alpha Homora", "Angle", "Arrakis Finance", "Aura Finance", "Balancer", "Beethoven-X", "Blockchain Adventurers Guild", "C.R.E.A.M. Finance", "Compound Finance", "Convex Finance", "Cream Finance", "Curve Finance", "Ester Finance", "Fiat DAO", "Geist Finance", "Goldfinch Finance", "Hector Finance", "Hegic", "Idle Finance", "Inverse Finance", "Iron Bank", "KeeperDAO", "League DAO", "Lido Finance", "Liquity", "MakerDAO", "Mushroom Finance", "Notional Finance", "Pool Together", "Scream", "Solidex Finance", "SpiritSwap", "SpookySwap", "Stargate Finance", "Sushi", "Synthetix", "Tarot", "Tokemak", "Uniswap", "Universe", "Vesper Finance", "Yearn", "dYdX", "veDAO", "Frax Finance", "Sturdy Finance", "Hop Exchange", "Velodrome Finance", "Sonne Finance", "Flux Finance"]
       }
     },
     "protocolVersion": {
@@ -33,7 +33,7 @@
         "Angle": {"type": "string", "enum": ["1"]},
         "Arrakis Finance": {"type": "string", "enum": ["1"]},
         "Aura Finance": {"type": "string", "enum": ["1"]},
-        "Balancer": {"type": "string", "enum": ["1", "2"]},
+        "Balancer": {"type": "string", "enum": ["1", "2", "3", "4"]},
         "Beethoven-X": {"type": "string", "enum": ["1"]},
         "Blockchain Adventurers Guild": {"type": "string", "enum": ["1"]},
         "C.R.E.A.M. Finance": {"type": "string", "enum": ["1"]},
@@ -77,7 +77,8 @@
         "veDAO": {"type": "string", "enum": ["1"]},
         "Frax Finance": {"type": "string", "enum": ["1"]},
         "Sturdy Finance": {"type": "string", "enum": ["1"]},
-        "Sonne Finance": {"type": "string", "enum": ["1"]}
+        "Sonne Finance": {"type": "string", "enum": ["1"]},
+        "Flux Finance": {"type": "string", "enum": ["1"]}
       },
       "additionalProperties": false
     },

@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Curve TriCryptoUSDT-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 340,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve TriCryptoUSDT",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Volatile"
+  }
+}

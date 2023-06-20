@@ -319,6 +319,14 @@ func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
 }
 
 /**************************************************************************************************
+** AppendInStrategyMap will add a new vault in the _strategiesSyncMap
+**************************************************************************************************/
+func AppendInStrategyMap(chainID uint64, strat models.TStrategyAdded) {
+	syncMap := _strategiesSyncMap[chainID]
+	syncMap.Store(strat.StrategyAddress, strat)
+}
+
+/**************************************************************************************************
 ** StoreSyncRegistry will store the sync status indicating we went up to the block number to check
 ** for new vaults.
 **************************************************************************************************/

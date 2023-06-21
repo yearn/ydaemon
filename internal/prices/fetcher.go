@@ -85,6 +85,18 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens. We can use the Velo API to
+	** be able to calculate the price of some tokens. We will then add them to our map. Only on
+	** optimism
+	**********************************************************************************************/
+	priceMapFromVeloPairsAPI := getPricesFromVeloPairsAPI(chainID)
+	for token, price := range priceMapFromVeloPairsAPI {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
 	if priceErrorAlreadySent[chainID] == nil {

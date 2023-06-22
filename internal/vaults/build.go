@@ -174,6 +174,7 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
 				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
 			},
+			Error: aggregatedVault.LegacyAPY.Error,
 		}
 		if okMeta && vaultFromMeta.APYTypeOverride != `` {
 			apy.Type = vaultFromMeta.APYTypeOverride
@@ -181,6 +182,7 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 	} else if okMeta && vaultFromMeta.APYTypeOverride != `` {
 		logs.Error(`Missing APY vault data for chainID: ` + strconv.FormatUint(t.ChainID, 10) + ` and address: ` + t.Address.Hex())
 		apy.Type = vaultFromMeta.APYTypeOverride
+		apy.Error = `Missing APY vault data`
 	}
 	return apy
 }

@@ -67,6 +67,7 @@ type TExternalVaultAPY struct {
 	Fees              TExternalAPYFees      `json:"fees"`
 	Points            TExternalAPYPoints    `json:"points"`
 	Composite         TExternalAPYComposite `json:"composite"`
+	Error             string                `json:"error"`
 }
 
 // TExternalVaultMigration is the struct containing the information about the migration of a vault.
@@ -228,6 +229,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		Fees:              TExternalAPYFees(internalAPY.Fees),
 		Points:            TExternalAPYPoints(internalAPY.Points),
 		Composite:         TExternalAPYComposite(internalAPY.Composite),
+		Error:             internalAPY.Error,
 	}
 
 	v.Details = &TExternalVaultDetails{

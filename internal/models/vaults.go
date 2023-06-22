@@ -73,6 +73,7 @@ type TAPY struct {
 	Fees              TAPYFees      `json:"fees"`
 	Points            TAPYPoints    `json:"points"`
 	Composite         TAPYComposite `json:"composite"`
+	Error             string        `json:"error_reason"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.
@@ -147,6 +148,7 @@ type TLegacyAPIAPY struct {
 		CvxAPR     float64 `json:"cvx_apr"`
 		RewardsAPR float64 `json:"rewards_apr"`
 	} `json:"composite"`
+	Error string `json:"error_reason"`
 }
 type TLegacyAPI struct {
 	Address common.MixedcaseAddress

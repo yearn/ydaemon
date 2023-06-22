@@ -29,6 +29,7 @@ type TAPIV1APY struct {
 		CvxAPR     float64 `json:"cvx_apr"`
 		RewardsAPR float64 `json:"rewards_apr"`
 	} `json:"composite"`
+	Error string `json:"error_reason"`
 }
 
 // TAPIV1Vault is the structure of data we receive when calling api.yearn.finance/v1/chains/1/vaults/all

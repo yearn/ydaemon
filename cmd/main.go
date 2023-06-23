@@ -37,7 +37,6 @@ func SummonDaemonsw(chainID uint64, parentWg *sync.WaitGroup) {
 
 func main() {
 	initFlags()
-	logs.Info(`Loading initial state in memory`)
 	loadDaemonsForAllChains(trace)
 	summonDaemonsForAllChains(trace)
 	var wg sync.WaitGroup

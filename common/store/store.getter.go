@@ -190,7 +190,7 @@ func ListAllVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSl
 ** given chainID. Both a map and a slice are returned.
 ** Note: It's for the TStrategyAdded structure.
 **************************************************************************************************/
-func ListAllStrategiess(chainID uint64) (
+func ListAllStrategies(chainID uint64) (
 	asMap map[common.Address]models.TStrategyAdded,
 	asSlice []models.TStrategyAdded,
 ) {

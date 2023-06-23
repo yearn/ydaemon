@@ -4,7 +4,6 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
 )
 
 type TDBType string
@@ -49,7 +48,6 @@ func init() {
 	}
 
 	wg := &sync.WaitGroup{}
-	logs.Info(`Loading DB`)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		wg.Add(4)
 		go LoadBlockTime(chainID, nil)

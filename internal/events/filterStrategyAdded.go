@@ -406,6 +406,5 @@ func HandleStrategyAdded(
 		allStrategiesList = append(allStrategiesList, strat)
 	}
 
-	logs.Info(`DONE HERE`)
 	return allStrategiesList
 }

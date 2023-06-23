@@ -22,6 +22,7 @@ var CTokenABI, _ = contracts.CTokenMetaData.GetAbi()
 var ATokenV1ABI, _ = contracts.ATokenV1MetaData.GetAbi()
 var ATokenV2ABI, _ = contracts.ATokenV2MetaData.GetAbi()
 var LensABI, _ = contracts.OracleMetaData.GetAbi()
+var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -32,6 +33,20 @@ func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, to
 		Target:   contractAddress,
 		Abi:      LensABI,
 		Method:   `getPriceUsdcRecommended`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetPriceCrvUsdcCall(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CrvUSDABI.Pack("price")
+	if err != nil {
+		logs.Error("Error packing LensABI price", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CrvUSDABI,
+		Method:   `price`,
 		CallData: parsedData,
 		Name:     name,
 	}

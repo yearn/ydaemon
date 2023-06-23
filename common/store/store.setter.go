@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"golang.org/x/time/rate"
-	"gorm.io/gorm"
 	"gorm.io/gorm/clause"
 )
 
@@ -52,13 +51,8 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 	logs.Info(`Storing block time for chain ` + strconv.FormatUint(chainID, 10) + ` block ` + strconv.FormatUint(blockNumber, 10) + ` time ` + strconv.FormatUint(blockTime, 10))
 	switch _dbType {
 	case DBBadger:
-		go OpenBadgerDB(chainID, TABLES.BLOCK_TIME).Update(func(txn *badger.Txn) error {
-			dataByte, err := json.Marshal(blockTime)
-			if err != nil {
-				return err
-			}
-			return txn.Set([]byte(strconv.FormatUint(blockNumber, 10)), dataByte)
-		})
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreBlockTime`)
 	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{
@@ -84,13 +78,8 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 
 	switch _dbType {
 	case DBBadger:
-		go OpenBadgerDB(chainID, TABLES.HISTORICAL_PRICES).Update(func(txn *badger.Txn) error {
-			dataByte, err := json.Marshal(price.String())
-			if err != nil {
-				return err
-			}
-			return txn.Set([]byte(key), dataByte)
-		})
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreHistoricalPrice`)
 	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{
@@ -116,7 +105,8 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 func StoreManyHistoricalPrice(items []DBHistoricalPrice) {
 	switch _dbType {
 	case DBBadger:
-		// Not implemented
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreManyHistoricalPrice`)
 	case DBSql:
 		go func() {
 			storeRateLimiter.Wait(context.Background())
@@ -140,42 +130,38 @@ func AppendInHistoricalMap(chainID uint64, blockNumber uint64, tokenAddress comm
 
 /**************************************************************************************************
 ** StoreNewVaultsFromRegistry will store a new vault in the _newVaultsFromRegistrySyncMap for fast
-** access during that same execution, and will store it in the configured DB for future executions.
+** access during that same execution, and will store it in the local DB for future executions.
+** We are using the local DB because we don't want to trust the shared DB for this data.
 **************************************************************************************************/
 func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
 	AppendInNewVaultsFromRegistry(chainID, vault)
 	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
 
-	syncMap.Store(key, vault)
-	switch _dbType {
-	case DBBadger:
-		// Not implemented
-	case DBSql:
-		go func() {
-			DBbaseSchema := DBBaseSchema{
-				UUID:    getUUID(key),
-				Block:   vault.BlockNumber,
-				ChainID: chainID,
-			}
-
-			wait(`StoreNewVaultsFromRegistry`)
-			DATABASE.
-				Table(`db_new_vaults_from_registries`).
-				FirstOrCreate(&DBNewVaultsFromRegistry{
-					DBbaseSchema,
-					vault.RegistryAddress.Hex(),
-					vault.Address.Hex(),
-					vault.TokenAddress.Hex(),
-					vault.BlockHash.Hex(),
-					vault.APIVersion,
-					vault.Activation,
-					vault.ManagementFee,
-					vault.TxIndex,
-					vault.LogIndex,
-					vault.Type,
-				})
-		}()
-	}
+	go OpenBadgerDB(chainID, TABLES.VAULTS_FROM_REGISTRY_SYNC).Update(func(txn *badger.Txn) error {
+		DBbaseSchema := DBBaseSchema{
+			UUID:    getUUID(key),
+			Block:   vault.BlockNumber,
+			ChainID: chainID,
+		}
+		data := &DBNewVaultsFromRegistry{
+			DBbaseSchema,
+			vault.RegistryAddress.Hex(),
+			vault.Address.Hex(),
+			vault.TokenAddress.Hex(),
+			vault.BlockHash.Hex(),
+			vault.APIVersion,
+			vault.Activation,
+			vault.ManagementFee,
+			vault.TxIndex,
+			vault.LogIndex,
+			vault.Type,
+		}
+		dataByte, err := json.Marshal(data)
+		if err != nil {
+			return err
+		}
+		return txn.Set([]byte(key), dataByte)
+	})
 }
 
 /**************************************************************************************************
@@ -197,13 +183,8 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 
 	switch _dbType {
 	case DBBadger:
-		go OpenBadgerDB(chainID, TABLES.TOKENS).Update(func(txn *badger.Txn) error {
-			dataByte, err := json.Marshal(token)
-			if err != nil {
-				return err
-			}
-			return txn.Set([]byte(key), dataByte)
-		})
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreERC20`)
 	case DBSql:
 		go func() {
 			allUnderlyingAsString := []string{}
@@ -312,7 +293,8 @@ func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
 
 	switch _dbType {
 	case DBBadger:
-		// Not implemented
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for StoreStrategies`)
 	case DBSql:
 		go func() {
 			newItem := &DBStrategy{}
@@ -352,30 +334,40 @@ func AppendInStrategyMap(chainID uint64, strat models.TStrategyAdded) {
 ** for new vaults.
 **************************************************************************************************/
 func StoreSyncRegistry(chainID uint64, registryAddess common.Address, end *uint64) {
-	switch _dbType {
-	case DBBadger:
-		// Not implemented
-	case DBSql:
-		go func() {
-			wait(`StoreSyncRegistry`)
-			DATABASE.Table("db_registry_syncs").
-				Where("chain_id = ? AND registry = ?", chainID, registryAddess.Hex()).
-				Where("block <= ?", end).
-				Assign(DBRegistrySync{Block: *end}).
-				FirstOrCreate(&DBRegistrySync{
-					ChainID:  chainID,
-					Registry: registryAddess.Hex(),
-					UUID:     GetUUID(registryAddess.Hex() + strconv.FormatUint(chainID, 10)),
-				})
-		}()
-	}
+	OpenBadgerDB(chainID, TABLES.REGISTRY_SYNC).Update(func(txn *badger.Txn) error {
+		if getter, err := txn.Get([]byte(registryAddess.Hex())); err == nil {
+			if previousValue, err := getter.ValueCopy(nil); err == nil {
+				previousSync := &DBRegistrySync{}
+				if err := json.Unmarshal(previousValue, previousSync); err != nil {
+					logs.Error(`StoreSyncRegistry: json.Unmarshal(previousValue, previousSync)`, err)
+					return err
+				}
+				if previousSync.Block > *end {
+					logs.Info(`StoreSyncRegistry: previousSync.Block > *end`, previousSync.Block, *end)
+					return nil
+				}
+			}
+		}
+
+		data := &DBRegistrySync{
+			ChainID:  chainID,
+			Block:    *end,
+			Registry: registryAddess.Hex(),
+			UUID:     GetUUID(registryAddess.Hex() + strconv.FormatUint(chainID, 10)),
+		}
+		dataByte, err := json.Marshal(data)
+		if err != nil {
+			return err
+		}
+		return txn.Set([]byte(data.Registry), dataByte)
+	})
 }
 
 /**************************************************************************************************
 ** StoreSyncStrategiesAdded will store the sync status indicating we went up to the block number
 ** to check for new strategies added.
 **************************************************************************************************/
-func StoreSyncStrategiesAdded(itemsToUpsert []DBStrategyAddedSync) {
+func StoreSyncStrategiesAdded(chainID uint64, vaultAddress common.Address, end uint64) {
 	OpenBadgerDB(
 		chainID,
 		TABLES.STRATEGIES_FROM_VAULT_SYNC,

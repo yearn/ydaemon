@@ -63,7 +63,7 @@ func filterStrategyAdded(
 	if start == 0 {
 		lastEvent := vaultsLastBlockSync[vault.Address]
 		if lastEvent > 0 {
-			start = lastEvent + 1 //Adding one to get the next event
+			start = lastEvent - 1
 		} else {
 			start = vault.Activation
 		}
@@ -206,7 +206,7 @@ func filterStrategiesMigrated(
 	if start == 0 {
 		lastEvent := vaultsLastBlockSync[vault.Address]
 		if lastEvent > 0 {
-			start = lastEvent + 1 //Adding one to get the next event
+			start = lastEvent - 1
 		} else {
 			start = vault.Activation
 		}
@@ -279,16 +279,12 @@ func HandleStrategyAdded(
 	** Our first action is to make sure we ignore the strategies we already have in our local
 	** storage, which we loaded from the database.
 	**********************************************************************************************/
-	var strategyAddedSync []store.DBStrategyAddedSync
-	store.DATABASE.Table("db_strategy_added_syncs").
-		Where("chain_id = ?", chainID).
-		Find(&strategyAddedSync)
-
+	strategyAddedSync := store.LoadSyncStrategiesAdded(chainID)
 	vaultsLastBlockSync := map[common.Address]uint64{}
 	for _, syncEvent := range strategyAddedSync {
 		vaultsLastBlockSync[common.HexToAddress(syncEvent.Vault)] = syncEvent.Block
 	}
-	allPreviouslyAddedStrategies, _ := store.ListAllStrategiess(chainID)
+	allPreviouslyAddedStrategies, _ := store.ListAllStrategies(chainID)
 
 	/**********************************************************************************************
 	** We will then listen to all events related to the strategies added or migrated to the vaults.
@@ -296,67 +292,37 @@ func HandleStrategyAdded(
 	**********************************************************************************************/
 	asyncStrategiesForVaults := &sync.Map{}
 	asyncStrategiesMigrated := &sync.Map{}
-	asyncVaultEnd := &sync.Map{}
 
 	for _, v := range vaultsMap {
 		wg := &sync.WaitGroup{}
 		wg.Add(2)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()
-			end := filterStrategyAdded(
+			filterStrategyAdded(
 				v,
 				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesForVaults,
 			)
-
-			endArr, ok := asyncVaultEnd.Load(v.Address)
-			if !ok {
-				endArr = []uint64{}
-			}
-			endArr = append(endArr.([]uint64), *end)
-			asyncVaultEnd.Store(v.Address, endArr)
 		}(v)
 		go func(v models.TVaultsFromRegistry) {
 			defer wg.Done()
-			end := filterStrategiesMigrated(
+			filterStrategiesMigrated(
 				v,
 				vaultsLastBlockSync,
 				start,
 				end,
 				asyncStrategiesMigrated,
 			)
-			endArr, ok := asyncVaultEnd.Load(v.Address)
-			if !ok {
-				endArr = []uint64{}
-			}
-			endArr = append(endArr.([]uint64), *end)
-			asyncVaultEnd.Store(v.Address, endArr)
 		}(v)
 		wg.Wait()
 	}
 
-	itemsToUpsert := []store.DBStrategyAddedSync{}
 	for _, v := range vaultsMap {
-		endArr, ok := asyncVaultEnd.Load(v.Address)
-		if !ok {
-			endArr = []uint64{}
+		if end != nil {
+			store.StoreSyncStrategiesAdded(chainID, v.Address, *end)
 		}
-		end := uint64(0)
-		for _, e := range endArr.([]uint64) {
-			if e > end {
-				end = e
-			}
-		}
-		itemsToUpsert = append(itemsToUpsert, store.DBStrategyAddedSync{
-			ChainID: chainID,
-			Vault:   v.Address.Hex(),
-			UUID:    store.GetUUID(v.Address.Hex() + strconv.FormatUint(chainID, 10)),
-			Block:   end,
-		})
-
-		go store.StoreSyncStrategiesAdded(itemsToUpsert)
 	}
 
 	/**********************************************************************************************
@@ -440,6 +406,5 @@ func HandleStrategyAdded(
 		allStrategiesList = append(allStrategiesList, strat)
 	}
 
-	logs.Info(`DONE HERE`)
 	return allStrategiesList
 }

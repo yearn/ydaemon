@@ -4,7 +4,6 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
 )
 
 type TDBType string
@@ -18,6 +17,7 @@ var _dbType TDBType
 var _blockTimeSyncMap = make(map[uint64]*sync.Map)
 var _timeBlockSyncMap = make(map[uint64]*sync.Map)
 var _historicalPriceSyncMap = make(map[uint64]*sync.Map)
+
 var _newVaultsFromRegistrySyncMap = make(map[uint64]*sync.Map)
 var _vaultsSyncMap = make(map[uint64]*sync.Map)
 var _erc20SyncMap = make(map[uint64]*sync.Map)
@@ -48,7 +48,6 @@ func init() {
 	}
 
 	wg := &sync.WaitGroup{}
-	logs.Info(`Loading DB`)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		wg.Add(4)
 		go LoadBlockTime(chainID, nil)

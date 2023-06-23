@@ -40,6 +40,10 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	for _, token := range tokens {
 		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(token.Hex(), lensAddress, token))
 	}
+	if chainID == 1 {
+		crvUSD := common.HexToAddress(`0xe5Afcf332a5457E8FafCD668BcE3dF953762Dfe7`)
+		calls = append(calls, multicalls.GetPriceCrvUsdcCall(crvUSD.Hex(), crvUSD))
+	}
 
 	/**********************************************************************************************
 	** Then we can proceed the responses. We loop over the responses and check if the price is
@@ -69,6 +73,17 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 		}
 		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
 		// store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
+	}
+	if chainID == 1 {
+		crvUSD := common.HexToAddress(`0xe5Afcf332a5457E8FafCD668BcE3dF953762Dfe7`)
+		rawTokenPrice := response[crvUSD.Hex()+`price`]
+		if len(rawTokenPrice) > 0 {
+			tokenPrice := bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
+			if tokenPrice.Gt(bigNumber.Zero) {
+				tokenPrice = tokenPrice.Div(tokenPrice, bigNumber.NewInt(1e12))
+				newPriceMap[crvUSD] = tokenPrice
+			}
+		}
 	}
 	return newPriceMap
 }

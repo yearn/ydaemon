@@ -372,8 +372,7 @@ func InitRiskScore(chainID uint64) {
 				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
 				TVL:       tvl,
 			}
-
-			logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
+			// logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
 		}
 	}
 	computeRiskGroupAllocation(chainID)

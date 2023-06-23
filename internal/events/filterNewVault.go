@@ -89,8 +89,8 @@ func filterNewVaults(
 	client := ethereum.GetRPC(chainID)
 
 	if registry.Version == 1 || registry.Version == 2 {
-		currentVault, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
-		if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
+		currentRegistry, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
+		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
 					continue
@@ -116,8 +116,8 @@ func filterNewVaults(
 			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	} else if registry.Version == 3 {
-		currentVault, _ := contracts.NewYRegistryV3(registry.Address, client) //V3 is not the same
-		if log, err := currentVault.FilterNewVault(opts, nil, nil); err == nil {
+		currentRegistry, _ := contracts.NewYRegistryV3Filterer(registry.Address, client) //V3 is not the same
+		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
 					continue
@@ -199,7 +199,7 @@ func HandleNewVaults(
 		if _start == 0 {
 			lastEvent := registriesLastBlockSync[registry.Address.Hex()]
 			if lastEvent > 0 {
-				_start = lastEvent + 1 //Adding one to get the next event
+				_start = lastEvent - 1
 			} else {
 				_start = registry.Block
 			}
@@ -296,7 +296,7 @@ func HandleNewStandardVaults(
 	if start == 0 {
 		lastEvent := registriesLastBlockSync[registry.Address.Hex()]
 		if lastEvent > 0 {
-			start = lastEvent + 1 //Adding one to get the next event
+			start = lastEvent - 1
 		} else {
 			start = registry.Activation
 		}

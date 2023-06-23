@@ -39,13 +39,11 @@ func _assertMap() {
 			}
 			if badgerDBMutex[chainID] == nil {
 				badgerDBMutex[chainID] = make(map[string]*sync.Mutex)
-				badgerDBMutex[chainID][TABLES.BLOCK_TIME] = &sync.Mutex{}
 				badgerDBMutex[chainID][TABLES.PRICES] = &sync.Mutex{}
-				badgerDBMutex[chainID][TABLES.HISTORICAL_PRICES] = &sync.Mutex{}
-				badgerDBMutex[chainID][TABLES.STRATEGIES] = &sync.Mutex{}
-				badgerDBMutex[chainID][TABLES.TOKENS] = &sync.Mutex{}
-				badgerDBMutex[chainID][TABLES.VAULTS] = &sync.Mutex{}
 				badgerDBMutex[chainID][TABLES.VAULTS_LEGACY] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.VAULTS_FROM_REGISTRY_SYNC] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.STRATEGIES_FROM_VAULT_SYNC] = &sync.Mutex{}
+				badgerDBMutex[chainID][TABLES.REGISTRY_SYNC] = &sync.Mutex{}
 			}
 		}
 		isBadgerDBLoaded = true
@@ -143,6 +141,7 @@ func ListFromBadgerDB(chainID uint64, dbKey string, dest interface{}) error {
 				k := item.Key()
 				v, err := item.ValueCopy(nil)
 				if err != nil {
+					logs.Error(err)
 					traces.
 						Capture(`error`, `impossible to get value for key: `+string(k)).
 						SetEntity(`database`).
@@ -205,6 +204,8 @@ func ListFromBadgerDB(chainID uint64, dbKey string, dest interface{}) error {
 			** Assign our reflected value in our dest pointer
 			**************************************************************************************/
 			reflect.ValueOf(dest).Elem().Set(destMap)
+		} else {
+			logs.Warning(`Unsupported type: `, elem.Kind())
 		}
 		return nil
 	})

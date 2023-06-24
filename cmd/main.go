@@ -35,8 +35,6 @@ func main() {
 		}
 
 		logs.Success(`Server ready on port 8080 !`)
-		// pprof.Lookup("goroutine").WriteTo(os.Stdout, 1)
-
 		select {}
 
 	case ProcessPartnerFees:

@@ -47,14 +47,16 @@ func main() {
 		go NewRouter().Run(`:8080`)
 
 		for _, chainID := range chains {
+			setStatusForChainID(chainID, "Loading")
 			wg.Add(1)
 			go SummonDaemonsw(chainID, &wg)
 		}
 		wg.Wait()
+		for _, chainID := range chains {
+			setStatusForChainID(chainID, "OK")
+		}
 
 		logs.Success(`Server ready on port 8080 !`)
-		// pprof.Lookup("goroutine").WriteTo(os.Stdout, 1)
-
 		select {}
 
 	case ProcessPartnerFees:

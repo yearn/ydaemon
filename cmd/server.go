@@ -122,6 +122,15 @@ func NewRouter() *gin.Engine {
 	{
 		// Get some information about the API
 		GET(router, `info/chains`, utils.GetSupportedChains)
+		GET(router, `:chainID/status`, func(ctx *gin.Context) {
+			chainID, ok := helpers.AssertChainID(ctx.Param("chainID"))
+			if !ok {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid chainID"})
+				return
+			}
+			ctx.JSON(http.StatusOK, getStatusForChainID(chainID))
+		})
+
 	}
 
 	// Meta API section

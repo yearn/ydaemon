@@ -63,6 +63,17 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
+	** be able to calculate the price of some tokens. We will then add them to our map.
+	**********************************************************************************************/
+	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
+	for token, price := range priceMapFromCurveFactoryAPI {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Velo API to
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
 	** optimism
@@ -92,29 +103,6 @@ func fetchPrices(
 	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
 
 	for token, price := range priceMapLensOracle {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
-		}
-	}
-
-	/**********************************************************************************************
-	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
-	** be able to calculate the price of some tokens. We will then add them to our map.
-	**********************************************************************************************/
-	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
-	for token, price := range priceMapFromCurveFactoryAPI {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
-		}
-	}
-
-	/**********************************************************************************************
-	** Once this is done, we will probably have some missing tokens. We can use the Velo API to
-	** be able to calculate the price of some tokens. We will then add them to our map. Only on
-	** optimism
-	**********************************************************************************************/
-	priceMapFromVeloPairsAPI := getPricesFromVeloPairsAPI(chainID)
-	for token, price := range priceMapFromVeloPairsAPI {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
 		}

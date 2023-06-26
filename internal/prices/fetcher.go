@@ -206,9 +206,11 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
 			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 		},
-		10:    {},
-		250:   {},
-		42161: {},
+		10:  {},
+		250: {},
+		42161: {
+			`0x82e3A8F066a6989666b031d916c43672085b1582`, // YFI
+		},
 	}
 	for _, tokenAddress := range extraTokens[chainID] {
 		allTokens = append(allTokens, common.HexToAddress(tokenAddress))

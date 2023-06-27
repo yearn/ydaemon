@@ -1,0 +1,21 @@
+{
+  "$schema": "vault",
+  "comment": "Vel USDC-DOLA",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 13,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome USDC-MAI",
+  "apyTypeOverride": "new",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

@@ -150,6 +150,9 @@ func calculateStrategyAPR(
 }
 
 func ComputeChainAPR(chainID uint64) {
+	if chainID != 1 {
+		return
+	}
 	allVaults := vaults.ListVaults(chainID)
 	gauges := retrieveCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)

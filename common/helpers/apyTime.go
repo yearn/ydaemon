@@ -16,7 +16,6 @@ func GetToday(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.
 	} else if data, ok := ppsPerTime[uint64(noonUTC.AddDate(0, 0, -1).Unix())]; ok {
 		ppsNow = ToNormalizedAmount(data, decimals)
 	}
-
 	return ppsNow
 }
 

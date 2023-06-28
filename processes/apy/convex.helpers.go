@@ -34,7 +34,7 @@ func getConvexRewardAPR(
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
 		if err != nil {
-			logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
+			logs.Error(`Unable to get reward PID for convex strategy`, strategy.Address.Hex(), err)
 			return ZERO
 		}
 	}

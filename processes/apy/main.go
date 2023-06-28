@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
 var ZERO = bigNumber.NewFloat(0)

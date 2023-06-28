@@ -86,6 +86,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		strategies.InitRiskScore(chainID)
 	})
 
+	cron.Every(20).Minute().Do(func() {
+		apy.ComputeChainAPR(chainID)
+	})
+
 	cron.Every(1).Day().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})

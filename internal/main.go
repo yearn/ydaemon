@@ -69,7 +69,6 @@ func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStra
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
-	standardCron := gocron.NewScheduler(time.UTC)
 
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
@@ -91,7 +90,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		apy.ComputeChainAPR(chainID)
 	})
 
-	standardCron.Every(1).Day().At("12:10").Do(func() {
+	cron.Every(1).Day().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 	cron.StartAsync()

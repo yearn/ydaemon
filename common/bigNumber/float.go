@@ -220,7 +220,8 @@ func (b *Float) MarshalJSON() ([]byte, error) {
 	if b == nil {
 		return json.Marshal(big.NewFloat(0).String())
 	}
-	return json.Marshal(b.String())
+	toFloat64, _ := b.Float64()
+	return json.Marshal(toFloat64)
 }
 
 func (b *Float) UnmarshalJSON(p []byte) error {

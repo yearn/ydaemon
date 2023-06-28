@@ -15,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
@@ -84,6 +85,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	cron.Every(10).Minute().Do(func() {
 		strategies.InitRiskScore(chainID)
 	})
+	cron.Every(20).Minute().Do(func() {
+		apy.ComputeChainAPR(chainID)
+	})
+
 	cron.Every(1).Day().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})

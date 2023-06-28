@@ -17,7 +17,7 @@ import (
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
 func isCurveVault(strategies []*models.TStrategy) bool {
-	if len(strategies) > 2 {
+	if len(strategies) > 3 {
 		return false
 	}
 	isCurveOrConvexStrategy := false

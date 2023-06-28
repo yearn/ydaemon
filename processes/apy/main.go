@@ -3,17 +3,16 @@ package apy
 import (
 	"strings"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	externalVaults "github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
 var ZERO = bigNumber.NewFloat(0)
@@ -25,6 +24,8 @@ var CONVEX_VOTER_ADDRESS = common.HexToAddress(`0x989AEb4d175e16225E39E87d0D97A3
 var CVX_BOOSTER_ADDRESS = common.HexToAddress(`0xF403C135812408BFbE8713b5A23a04b3D48AAE31`)
 var CRV_TOKEN_ADDRESS = common.HexToAddress(`0xD533a949740bb3306d119CC777fa900bA034cd52`)
 var CVX_TOKEN_ADDRESS = common.HexToAddress(`0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B`)
+
+var COMPUTED_APR = make(map[uint64]map[common.Address]TAPIV1APY)
 
 func calculateGaugeBaseAPR(
 	gauge models.CurveGauge,
@@ -54,6 +55,7 @@ func calculateStrategyAPR(
 	strategy *models.TStrategy,
 	gauge models.CurveGauge,
 	pool models.CurvePool,
+	fraxPool TFraxPool,
 	subgraphItem models.CurveSubgraphData,
 ) TStrategyAPR {
 	/**********************************************************************************************
@@ -101,9 +103,25 @@ func calculateStrategyAPR(
 	poolDailyAPY := getPoolDailyAPY(subgraphItem)
 
 	/**********************************************************************************************
-	** Now, we need to know if we are in a standard curve vault, or a convex vault. If it's a
-	** convex vault, we need to calculate the convex APY instead of the standard one.
+	** Now, we need to know if we are in a standard curve strat, or a convex strat. If it's a
+	** convex strat, we need to calculate the convex APY instead of the standard one.
+	** If it's a Frax strategy, we need to calculate the Frax APY instead of the standard one.
 	**********************************************************************************************/
+	if isFraxStrategy(strategy) {
+		return calculateFraxForwardAPR(
+			TCalculateFraxAPYDataStruct{
+				vault:          vault,
+				gaugeAddress:   common.HexToAddress(gauge.Gauge),
+				strategy:       strategy,
+				baseAssetPrice: baseAssetPrice,
+				poolPrice:      poolPrice,
+				baseAPR:        baseAPR,
+				rewardAPR:      rewardAPR,
+				poolDailyAPY:   poolDailyAPY,
+			},
+			fraxPool,
+		)
+	}
 	if isConvexStrategy(strategy) {
 		return calculateConvexForwardAPR(
 			TCalculateConvexAPYDataStruct{
@@ -131,34 +149,19 @@ func calculateStrategyAPR(
 	)
 }
 
-func Run(chainID uint64) {
-	initYearnEcosystem(chainID)
+func ComputeChainAPR(chainID uint64) {
 	allVaults := vaults.ListVaults(chainID)
 	gauges := retrieveCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
+	fraxPools := retrieveFraxPools(chainID)
 
-	// 0x29059568bB40344487d62f7450E78b8E6C74e0e5 -> curve (YFI - ETH)
-	// 0x6C280dB098dB673d30d5B34eC04B6387185D3620 -> curve/convex (CLEV - ETH)
-	// 0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC -> curve/convex/frax
-
-	// 0xe1747F4D30479D7a2DCFEa5af69fb86B8f71cCeC -> Broken tryb?
-	// 0x4aCc1BF7D6a591016641325aA6664A1Cd178F002 -> Broken something
-	// 0x453D92C7d4263201C69aACfaf589Ed14202d83a4 -> THIS??
-
-	TEST_VAULT_TOKEN := common.HexToAddress(`0x849dC56ceCa7Cf55AbF5ec87910DA21c5C7dA581`)
-	// for _, vault := range allVaults {
-	// 	vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
-	// 	if ok {
-	// 		if vaultFromMeta.Retired {
-	// 			continue
-	// 		}
-	// 	}
-	// 	logs.Success(vault.Name+` - `+vault.Address.Hex()+`:`, vault.ManagementFee)
-	// }
+	if COMPUTED_APR[chainID] == nil {
+		COMPUTED_APR[chainID] = make(map[common.Address]TAPIV1APY)
+	}
 
 	for _, vault := range allVaults {
-		if vault.Token.Address != TEST_VAULT_TOKEN {
+		if vault.Address != common.HexToAddress(`0xa258C4606Ca8206D8aA700cE2143D7db854D168c`) {
 			continue
 		}
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
@@ -169,55 +172,55 @@ func Run(chainID uint64) {
 		}
 
 		allStrategiesForVault := strategies.ListStrategiesForVault(chainID, vault.Address)
-		if !isCurveVault(allStrategiesForVault) {
-			continue
-		}
-		aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
-		legacyAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
-
-		gauge := findGaugeForVault(vault.Token.Address, gauges)
-		pool := findPoolForVault(vault.Token.Address, pools)
-		subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
-
 		ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 		ppsInception := bigNumber.NewFloat(1)
+		ppsToday := helpers.GetToday(ppsPerTime, vault.Decimals)
 		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vault.Decimals)
 		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vault.Decimals)
+
 		vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 		vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
+		oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
+		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo)
+		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
+		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
 		vaultAPY := TAPIV1APY{
-			Type:              "",
-			GrossAPR:          ZERO,
-			NetAPY:            ZERO,
-			StakingRewardsAPR: ZERO,
+			Type:     "v2:averaged",
+			GrossAPR: grossAPR,
+			NetAPY:   netAPR,
 			Fees: TAPIV1Fees{
 				Performance: vaultPerformanceFee,
 				Management:  vaultManagementFee,
-				Withdrawal:  ZERO,
-				KeepCRV:     ZERO,
-				CvxKeepCRV:  ZERO,
 			},
 			Points: TAPIV1Points{
-				WeekAgo:   ppsWeekAgo,
-				MonthAgo:  ppsMonthAgo,
-				Inception: ppsInception,
-			},
-			Composite: TAPIV1Composite{
-				Boost:      ZERO,
-				PoolAPY:    ZERO,
-				BoostedAPR: ZERO,
-				BaseAPR:    ZERO,
-				CvxAPR:     ZERO,
-				RewardsAPR: ZERO,
+				WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo),
+				MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo),
+				Inception: helpers.GetAPR(ppsToday, ppsInception),
 			},
 		}
+		if !isCurveVault(allStrategiesForVault) {
+			COMPUTED_APR[chainID][vault.Address] = vaultAPY
+			// logs.Pretty(vaultAPY)
+			continue
+		}
+		gauge := findGaugeForVault(vault.Token.Address, gauges)
+		pool := findPoolForVault(vault.Token.Address, pools)
+		fraxPool := findFraxPoolForVault(vault.Token.Address, fraxPools)
+		subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
+
 		for _, strategy := range allStrategiesForVault {
 			if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
 				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
 				continue
 			}
-			strategyAPR := calculateStrategyAPR(vault, strategy, gauge, pool, subgraphItem)
-			logs.Pretty(strategyAPR)
+			strategyAPR := calculateStrategyAPR(
+				vault,
+				strategy,
+				gauge,
+				pool,
+				fraxPool,
+				subgraphItem,
+			)
 			vaultAPY.Type += strings.TrimSpace(` ` + strategyAPR.Type)
 			vaultAPY.GrossAPR = bigNumber.NewFloat(0).Add(vaultAPY.GrossAPR, strategyAPR.GrossAPR)
 			vaultAPY.NetAPY = bigNumber.NewFloat(0).Add(vaultAPY.NetAPY, strategyAPR.NetAPY)
@@ -228,23 +231,30 @@ func Run(chainID uint64) {
 			vaultAPY.Composite.CvxAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.CvxAPR, strategyAPR.Composite.CvxAPR)
 			vaultAPY.Composite.RewardsAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.RewardsAPR, strategyAPR.Composite.RewardsAPR)
 		}
+		COMPUTED_APR[chainID][vault.Address] = vaultAPY
 
-		spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
-		checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.GrossAPR)
-		checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.NetAPY)
-		checkDiff("Mngt Fee      ", legacyAPY.Fees.Management, vaultAPY.Fees.Management)
-		checkDiff("Perf Fee      ", legacyAPY.Fees.Performance, vaultAPY.Fees.Performance)
-		checkDiff("PPS Week      ", legacyAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
-		checkDiff("PPS Month     ", legacyAPY.Points.MonthAgo, vaultAPY.Points.MonthAgo)
-		checkDiff("PPS Inception ", legacyAPY.Points.Inception, vaultAPY.Points.Inception)
-		checkDiff("BaseAPR       ", legacyAPY.Composite.BaseAPR, vaultAPY.Composite.BaseAPR)
-		checkDiff("Boost         ", legacyAPY.Composite.Boost, vaultAPY.Composite.Boost)
-		checkDiff("BoostedAPR    ", legacyAPY.Composite.BoostedAPR, vaultAPY.Composite.BoostedAPR)
-		checkDiff("PoolAPY       ", legacyAPY.Composite.PoolAPY, vaultAPY.Composite.PoolAPY)
-		checkDiff("CvxAPR        ", legacyAPY.Composite.CvxAPR, vaultAPY.Composite.CvxAPR)
-		checkDiff("RewardsAPR    ", legacyAPY.Composite.RewardsAPR, vaultAPY.Composite.RewardsAPR)
-		spew.Printf("\n")
-
-		// logs.Pretty(vault.Address, gauge.SwapToken, baseAPR, boost, grossAPR, crvAPRMinusKeepCrv)
+		// aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
+		// legacyAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
+		// spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
+		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.GrossAPR)
+		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.NetAPY)
+		// checkDiff("Mngt Fee      ", legacyAPY.Fees.Management, vaultAPY.Fees.Management)
+		// checkDiff("Perf Fee      ", legacyAPY.Fees.Performance, vaultAPY.Fees.Performance)
+		// checkDiff("PPS Week      ", legacyAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
+		// checkDiff("PPS Month     ", legacyAPY.Points.MonthAgo, vaultAPY.Points.MonthAgo)
+		// checkDiff("PPS Inception ", legacyAPY.Points.Inception, vaultAPY.Points.Inception)
+		// checkDiff("BaseAPR       ", legacyAPY.Composite.BaseAPR, vaultAPY.Composite.BaseAPR)
+		// checkDiff("Boost         ", legacyAPY.Composite.Boost, vaultAPY.Composite.Boost)
+		// checkDiff("BoostedAPR    ", legacyAPY.Composite.BoostedAPR, vaultAPY.Composite.BoostedAPR)
+		// checkDiff("PoolAPY       ", legacyAPY.Composite.PoolAPY, vaultAPY.Composite.PoolAPY)
+		// checkDiff("CvxAPR        ", legacyAPY.Composite.CvxAPR, vaultAPY.Composite.CvxAPR)
+		// checkDiff("RewardsAPR    ", legacyAPY.Composite.RewardsAPR, vaultAPY.Composite.RewardsAPR)
+		// spew.Printf("\n")
 	}
+}
+
+func Run(chainID uint64) {
+	initYearnEcosystem(chainID)
+	initDailyBlock.Run(chainID)
+	ComputeChainAPR(chainID)
 }

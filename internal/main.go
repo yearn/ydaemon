@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
@@ -14,9 +15,12 @@ import (
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
 var STRATLIST = []models.TStrategy{}
+var cron = gocron.NewScheduler(time.UTC)
 
 func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
@@ -66,30 +70,29 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
-	var internalWG sync.WaitGroup
-	//From the events in the registries, retrieve all the vaults -> Should only be done on init or when a new vault is added
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-
-	// From our list of vaults, retrieve the ERC20 data for each shareToken, underlyingToken and the underlying of those tokens
-	// -> Data store will not change unless extreme event, so this should only be done on init or when a new vault is added
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
-	// From our list of tokens, retieve the price for each one of them -> Should be done every 1(?) minute for all tokens
-	internalWG.Add(1)
-	go runRetrieveAllPrices(chainID, &internalWG, 10*time.Minute)
-	internalWG.Wait()
-
-	//From our list of vault, perform a multicall to get all vaults data -> Should be done every 5(?) minutes for all vaults
-	internalWG.Add(1)
-	go runRetrieveAllVaults(chainID, vaultsMap, &internalWG, 12*time.Minute)
-	internalWG.Wait()
+	cron.Every(10).Minute().Do(prices.RetrieveAllPrices(chainID))
+	cron.Every(12).Minute().Do(vaults.RetrieveAllVaults(chainID, vaultsMap))
 
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 
-	//From our list of strategies, perform a multicall to get all strategies data -> Should be done every 5(?) minutes for all strategies
-	internalWG.Add(1)
-	go runRetrieveAllStrategies(chainID, strategiesAddedList, &internalWG, 15*time.Minute)
-	internalWG.Wait()
+	cron.Every(15).Minute().Do(func() {
+		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+		indexer.PostProcessStrategies(chainID)
+	})
+	cron.Every(10).Minute().Do(func() {
+		strategies.InitRiskScore(chainID)
+	})
+	cron.Every(20).Minute().Do(func() {
+		apy.ComputeChainAPR(chainID)
+	})
+
+	cron.Every(1).Day().At("12:10").Do(func() {
+		initDailyBlock.Run(chainID)
+	})
+	cron.StartBlocking()
 
 	go registries.IndexNewVaults(chainID)
 }

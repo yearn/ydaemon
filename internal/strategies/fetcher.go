@@ -43,6 +43,8 @@ func fetchBasicInformations(
 		calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyIsActive(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCRV(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStrategyName(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetKeeper(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
@@ -69,6 +71,8 @@ func fetchBasicInformations(
 		estimatedTotalAssets := response[stratAddress.Hex()+`estimatedTotalAssets`]
 		isActive := response[stratAddress.Hex()+`isActive`]
 		keepCRV := response[stratAddress.Hex()+`keepCRV`]
+		keepCRVPercent := response[stratAddress.Hex()+`keepCrvPercent`]
+		keepCVX := response[stratAddress.Hex()+`keepCVX`]
 		delegatedAssets := response[stratAddress.Hex()+`delegatedAssets`]
 		name := response[stratAddress.Hex()+`name`]
 		keeper := response[stratAddress.Hex()+`keeper`]
@@ -101,6 +105,8 @@ func fetchBasicInformations(
 			ExpectedReturn:          bigNumber.NewInt(0),
 			EstimatedTotalAssets:    bigNumber.NewInt(0),
 			KeepCRV:                 bigNumber.NewInt(0),
+			KeepCRVPercent:          bigNumber.NewInt(0),
+			KeepCVX:                 bigNumber.NewInt(0),
 			DelegatedAssets:         bigNumber.NewInt(0),
 			IsActive:                false,
 			IsInQueue:               isInQueue,
@@ -117,6 +123,8 @@ func fetchBasicInformations(
 		newStrategy.ExpectedReturn = helpers.DecodeBigInt(expectedReturn)
 		newStrategy.EstimatedTotalAssets = helpers.DecodeBigInt(estimatedTotalAssets)
 		newStrategy.KeepCRV = helpers.DecodeBigInt(keepCRV)
+		newStrategy.KeepCRVPercent = helpers.DecodeBigInt(keepCRVPercent)
+		newStrategy.KeepCVX = helpers.DecodeBigInt(keepCVX)
 		newStrategy.DelegatedAssets = helpers.DecodeBigInt(delegatedAssets)
 		newStrategy.IsActive = helpers.DecodeBool(isActive)
 		newStrategy.Name = helpers.DecodeString(name)

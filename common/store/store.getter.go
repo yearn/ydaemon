@@ -29,6 +29,25 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64, ok bool
 }
 
 /**************************************************************************************************
+** GetTimeBlock will try, for a specific time on a specific chain, to find its execution
+** blockNumber in the _timeBlockSyncMap.
+**************************************************************************************************/
+func GetTimeBlock(chainID uint64, timestamp uint64) (blockNumber uint64, ok bool) {
+	syncMap := _timeBlockSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_timeBlockSyncMap[chainID] = syncMap
+	}
+
+	blockTimeData, ok := syncMap.Load(timestamp)
+	if !ok {
+		return 0, false
+	}
+
+	return blockTimeData.(uint64), true
+}
+
+/**************************************************************************************************
 ** GetBlockPrice will try, for a specific blockNumber on a specific chain, the price of the
 ** provided token address.
 ** If the price is missing, this will try to fetch it via the lens oracle contract.
@@ -219,6 +238,47 @@ func ListAllStrategies(chainID uint64) (
 	})
 
 	return asMap, asSlice
+}
+
+/**************************************************************************************************
+** GetPricePerShare will try, for a specific chain, vault and time, to find the price per share.
+**************************************************************************************************/
+func GetPricePerShare(chainID uint64, vaultAddress common.Address, time uint64) (pps string, ok bool) {
+	key := vaultAddress.Hex() + `_` + strconv.FormatUint(time, 10)
+	syncMapResult, ok := _vaultsPricePerShareSyncMap[chainID].Load(key)
+	if !ok {
+		return ``, false
+	}
+	data := syncMapResult.(DBVaultPricePerShare)
+	return data.PricePerShare, true
+}
+
+/**************************************************************************************************
+** ListPricePerShare will try, for a specific chain and vault, to retrieve all the price per share
+** stored in the cache.
+**************************************************************************************************/
+func ListPricePerShare(chainID uint64, vaultAddress common.Address) (
+	withTime map[uint64]*bigNumber.Int,
+	withBlock map[uint64]*bigNumber.Int,
+) {
+	withTime = make(map[uint64]*bigNumber.Int)
+	withBlock = make(map[uint64]*bigNumber.Int)
+	syncMap := _vaultsPricePerShareSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_vaultsPricePerShareSyncMap[chainID] = syncMap
+	}
+	syncMap.Range(func(key, value interface{}) bool {
+		data := value.(DBVaultPricePerShare)
+		if data.Vault != vaultAddress.Hex() {
+			return true
+		}
+		withTime[data.Time] = bigNumber.NewInt(0).SetString(data.PricePerShare)
+		withBlock[data.Block] = bigNumber.NewInt(0).SetString(data.PricePerShare)
+		return true
+	})
+
+	return withTime, withBlock
 }
 
 /**************************************************************************************************

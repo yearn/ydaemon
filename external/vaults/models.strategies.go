@@ -35,6 +35,7 @@ type TExternalStrategyDetails struct {
 	LastReport              uint64         `json:"lastReport"`
 	Activation              uint64         `json:"activation"`
 	KeepCRV                 uint64         `json:"keepCRV"`
+	KeepCVX                 uint64         `json:"keepCVX"`
 	DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
 	DebtLimit               uint64         `json:"debtLimit"`
 	WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
@@ -106,7 +107,8 @@ func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
 		PerformanceFee:          strategy.PerformanceFee.Uint64(),
 		LastReport:              strategy.LastReport.Uint64(),
 		Activation:              strategy.Activation.Uint64(),
-		KeepCRV:                 strategy.KeepCRV.Uint64(),
+		KeepCRV:                 (strategy.KeepCRV.Uint64() + strategy.KeepCRVPercent.Uint64()),
+		KeepCVX:                 strategy.KeepCVX.Uint64(),
 		DebtRatio:               strategy.DebtRatio.Uint64(),
 		DebtLimit:               strategy.DebtLimit.Uint64(),
 		WithdrawalQueuePosition: strategy.WithdrawalQueuePosition.Int64(),

@@ -23,6 +23,7 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 		defer wg.Done()
 	}
 	syncMap := _blockTimeSyncMap[chainID]
+	syncMapForTime := _timeBlockSyncMap[chainID]
 
 	switch _dbType {
 	case DBBadger:
@@ -35,6 +36,7 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
 				for _, v := range temp {
 					syncMap.Store(v.Block, v.Timestamp)
+					syncMapForTime.Store(v.Timestamp, v.Block)
 				}
 				return nil
 			})
@@ -267,6 +269,33 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 						LogIndex:          stratFromDB.LogIndex,
 					}
 					syncMap.Store(strat.StrategyAddress, strat)
+				}
+				return nil
+			})
+	}
+}
+
+/**************************************************************************************************
+** LoadPricePerShare will retrieve the all the pricePerShare from the configured DB and store them
+** in the _vaultsPricePerShareSyncMap for fast access during that same execution.
+**************************************************************************************************/
+func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _vaultsPricePerShareSyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// not implemented
+	case DBSql:
+		var temp []DBVaultPricePerShare
+		DATABASE.Table(`db_vault_price_per_shares`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, dataFromDB := range temp {
+					key := common.HexToAddress(dataFromDB.Vault).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)
+					syncMap.Store(key, dataFromDB)
 				}
 				return nil
 			})

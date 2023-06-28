@@ -69,6 +69,8 @@ type TStrategy struct {
 	TotalLoss               *bigNumber.Int          `json:"totalLoss"`
 	EstimatedTotalAssets    *bigNumber.Int          `json:"estimatedTotalAssets"`
 	KeepCRV                 *bigNumber.Int          `json:"keepCRV"`
+	KeepCRVPercent          *bigNumber.Int          `json:"keepCRVPercent"`
+	KeepCVX                 *bigNumber.Int          `json:"keepCVX"`
 	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
 	WithdrawalQueuePosition *bigNumber.Int          `json:"withdrawalQueuePosition"`
 	ChainID                 uint64                  `json:"chainID"`

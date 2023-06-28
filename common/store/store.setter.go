@@ -17,7 +17,16 @@ import (
 	"gorm.io/gorm/clause"
 )
 
-var storeRateLimiter = rate.NewLimiter(2, 4)
+var storeRateLimiter = rate.NewLimiter(4, 8)
+
+func wait(name string) {
+	// logs.Warning(`Limiter for ` + name + `: ` + strconv.FormatFloat(storeRateLimiter.Tokens(), 'f', 2, 64))
+	storeRateLimiter.Wait(context.Background())
+}
+
+func StoreRateLimiter() *rate.Limiter {
+	return storeRateLimiter
+}
 
 /**************************************************************************************************
 ** StoreBlockTime will store the blockTime in the _blockTimeSyncMap for fast access during that
@@ -29,7 +38,15 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 		syncMap = &sync.Map{}
 		_blockTimeSyncMap[chainID] = syncMap
 	}
+
+	syncMapForTime := _timeBlockSyncMap[chainID]
+	if syncMapForTime == nil {
+		syncMapForTime = &sync.Map{}
+		_blockTimeSyncMap[chainID] = syncMapForTime
+	}
+
 	syncMap.Store(blockNumber, blockTime)
+	syncMapForTime.Store(blockTime, blockNumber)
 
 	logs.Info(`Storing block time for chain ` + strconv.FormatUint(chainID, 10) + ` block ` + strconv.FormatUint(blockNumber, 10) + ` time ` + strconv.FormatUint(blockTime, 10))
 	switch _dbType {
@@ -43,7 +60,7 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 				Block:   blockNumber,
 				ChainID: chainID,
 			}
-			storeRateLimiter.Wait(context.Background())
+			wait(`StoreBlockTime`)
 			DATABASE.Table(`db_block_times`).Save(&DBBlockTime{DBbaseSchema, blockTime})
 		}()
 	}
@@ -71,7 +88,7 @@ func StoreHistoricalPrice(chainID uint64, blockNumber uint64, tokenAddress commo
 				ChainID: chainID,
 			}
 			humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
-			storeRateLimiter.Wait(context.Background())
+			wait(`StoreHistoricalPrice`)
 			DATABASE.Table(`db_historical_prices`).Save(&DBHistoricalPrice{
 				DBbaseSchema,
 				tokenAddress.Hex(),
@@ -187,9 +204,11 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 				ChainID:                   token.ChainID,
 				UnderlyingTokensAddresses: strings.Join(allUnderlyingAsString, ","),
 			}
-			storeRateLimiter.Wait(context.Background())
+			wait(`StoreERC20`)
 			DATABASE.
 				Table(`db_erc20`).
+				Where(`address = ? AND chain_id = ?`, newItem.Address, newItem.ChainID).
+				Assign(newItem).
 				FirstOrCreate(newItem)
 		}()
 	}
@@ -263,8 +282,13 @@ func AppendInVaultMap(chainID uint64, vault models.TVault) {
 **************************************************************************************************/
 func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
 	syncMap := _strategiesSyncMap[chainID]
-
 	key := strat.StrategyAddress.Hex() + "_" + strat.VaultAddress.Hex() + "_" + strat.TxHash.Hex() + "_" + strconv.FormatUint(strat.ChainID, 10)
+	if data, exists := syncMap.Load(key); exists {
+		if Compare(Hash(data), Hash(strat)) {
+			return
+		}
+	}
+
 	syncMap.Store(strat.StrategyAddress, strat)
 
 	switch _dbType {
@@ -289,7 +313,7 @@ func StoreStrategies(chainID uint64, strat models.TStrategyAdded) {
 			newItem.BlockNumber = strat.BlockNumber
 			newItem.TxIndex = strat.TxIndex
 			newItem.LogIndex = strat.LogIndex
-			storeRateLimiter.Wait(context.Background())
+			wait(`StoreStrategies`)
 			DATABASE.
 				Table(`db_strategies`).
 				FirstOrCreate(newItem)
@@ -375,4 +399,45 @@ func StoreSyncStrategiesAdded(chainID uint64, vaultAddress common.Address, end u
 		}
 		return txn.Set([]byte(data.Vault), dataByte)
 	})
+}
+
+/**************************************************************************************************
+** StorePricePerShare will store the pricePerShare information for a vault at a specific time/block
+** in _vaultsPricePerShareSyncMap for fast access during that same execution, and will store it in
+** the configured DB for future executions.
+**************************************************************************************************/
+func StorePricePerShare(chainID uint64, data []DBVaultPricePerShare) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			items := make([]DBVaultPricePerShare, len(data))
+			syncMap := _vaultsPricePerShareSyncMap[chainID]
+			for _, d := range data {
+				key := (common.HexToAddress(d.Vault).Hex() +
+					`_` +
+					strconv.FormatUint(d.Time, 10) +
+					`_` +
+					strconv.FormatUint(d.ChainID, 10) +
+					`_` +
+					strconv.FormatUint(d.Block, 10))
+				syncMap.Store(key, d)
+				items = append(items, DBVaultPricePerShare{
+					UUID:                   getUUID(key),
+					Vault:                  d.Vault,
+					PricePerShare:          d.PricePerShare,
+					HumanizedPricePerShare: d.HumanizedPricePerShare,
+					Time:                   d.Time,
+					ChainID:                d.ChainID,
+					Block:                  d.Block,
+				})
+			}
+			wait(`StorePricePerShare`)
+			DATABASE.
+				Table(`db_vault_price_per_shares`).
+				Clauses(clause.OnConflict{UpdateAll: true}).
+				Create(&items)
+		}()
+	}
 }

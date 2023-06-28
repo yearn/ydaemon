@@ -161,9 +161,6 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
-		if vault.Address != common.HexToAddress(`0xa258C4606Ca8206D8aA700cE2143D7db854D168c`) {
-			continue
-		}
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
 		if ok {
 			if vaultFromMeta.Retired {
@@ -200,7 +197,6 @@ func ComputeChainAPR(chainID uint64) {
 		}
 		if !isCurveVault(allStrategiesForVault) {
 			COMPUTED_APR[chainID][vault.Address] = vaultAPY
-			// logs.Pretty(vaultAPY)
 			continue
 		}
 		gauge := findGaugeForVault(vault.Token.Address, gauges)
@@ -210,7 +206,7 @@ func ComputeChainAPR(chainID uint64) {
 
 		for _, strategy := range allStrategiesForVault {
 			if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
-				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+				// logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
 				continue
 			}
 			strategyAPR := calculateStrategyAPR(

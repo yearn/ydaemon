@@ -69,33 +69,29 @@ func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStra
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
-	blockingCron := gocron.NewScheduler(time.UTC)
-	standardCron := gocron.NewScheduler(time.UTC)
 
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
-	blockingCron.Every(10).Minute().Do(prices.RetrieveAllPrices(chainID))
-	blockingCron.Every(12).Minute().Do(vaults.RetrieveAllVaults(chainID, vaultsMap))
-	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
-	blockingCron.Every(15).Minute().Do(func() {
+	cron.Every(15).Minute().Do(func() {
+		prices.RetrieveAllPrices(chainID)
+		vaults.RetrieveAllVaults(chainID, vaultsMap)
+		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
 	})
 
-	standardCron.Every(10).Minute().Do(func() {
+	cron.Every(10).Minute().Do(func() {
 		strategies.InitRiskScore(chainID)
 	})
-	standardCron.Every(20).Minute().Do(func() {
+	cron.Every(20).Minute().Do(func() {
 		apy.ComputeChainAPR(chainID)
 	})
 
-	standardCron.Every(1).Day().At("12:10").Do(func() {
+	cron.Every(1).Day().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
-	standardCron.StartAsync()
-	blockingCron.StartBlocking()
-
+	cron.StartAsync()
 	go registries.IndexNewVaults(chainID)
 }
 

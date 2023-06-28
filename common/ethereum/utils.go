@@ -77,7 +77,7 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 
 		client, err := ethclient.Dial(uri.String())
 		if err != nil {
-			logs.Error(err)
+			logs.Error(err, chainID)
 			traces.
 				Capture(`error`, `error while openning ws client for chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`websocket`).

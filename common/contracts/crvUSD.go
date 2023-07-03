@@ -29,8 +29,8 @@ var (
 	_ = abi.ConvertType
 )
 
-// Struct0 is an auto generated low-level Go binding around an user-defined struct.
-type Struct0 struct {
+// CRVUSDStruct0 is an auto generated low-level Go binding around an user-defined struct.
+type CRVUSDStruct0 struct {
 	Pool      common.Address
 	IsInverse bool
 }
@@ -251,15 +251,15 @@ func (_CrvUSD *CrvUSDCallerSession) Price() (*big.Int, error) {
 // PricePairs is a free data retrieval call binding the contract method 0xba5feb37.
 //
 // Solidity: function price_pairs(uint256 arg0) view returns((address,bool))
-func (_CrvUSD *CrvUSDCaller) PricePairs(opts *bind.CallOpts, arg0 *big.Int) (Struct0, error) {
+func (_CrvUSD *CrvUSDCaller) PricePairs(opts *bind.CallOpts, arg0 *big.Int) (CRVUSDStruct0, error) {
 	var out []interface{}
 	err := _CrvUSD.contract.Call(opts, &out, "price_pairs", arg0)
 
 	if err != nil {
-		return *new(Struct0), err
+		return *new(CRVUSDStruct0), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(Struct0)).(*Struct0)
+	out0 := *abi.ConvertType(out[0], new(CRVUSDStruct0)).(*CRVUSDStruct0)
 
 	return out0, err
 
@@ -268,14 +268,14 @@ func (_CrvUSD *CrvUSDCaller) PricePairs(opts *bind.CallOpts, arg0 *big.Int) (Str
 // PricePairs is a free data retrieval call binding the contract method 0xba5feb37.
 //
 // Solidity: function price_pairs(uint256 arg0) view returns((address,bool))
-func (_CrvUSD *CrvUSDSession) PricePairs(arg0 *big.Int) (Struct0, error) {
+func (_CrvUSD *CrvUSDSession) PricePairs(arg0 *big.Int) (CRVUSDStruct0, error) {
 	return _CrvUSD.Contract.PricePairs(&_CrvUSD.CallOpts, arg0)
 }
 
 // PricePairs is a free data retrieval call binding the contract method 0xba5feb37.
 //
 // Solidity: function price_pairs(uint256 arg0) view returns((address,bool))
-func (_CrvUSD *CrvUSDCallerSession) PricePairs(arg0 *big.Int) (Struct0, error) {
+func (_CrvUSD *CrvUSDCallerSession) PricePairs(arg0 *big.Int) (CRVUSDStruct0, error) {
 	return _CrvUSD.Contract.PricePairs(&_CrvUSD.CallOpts, arg0)
 }
 

@@ -95,6 +95,12 @@ func fetchPrices(
 			newPriceMap[token] = price
 		}
 	}
+	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
+	for token, price := range priceMapFromVeloOracle {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
 
 	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.

@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Vel sETH-WETH",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 17,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome sETH-WETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Stable",
+    "stableBaseAsset": "Ether"
+  }
+}

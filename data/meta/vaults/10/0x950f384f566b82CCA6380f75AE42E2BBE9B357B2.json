@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Vel mim-usdc",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 35,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome MIM-USDC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

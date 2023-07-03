@@ -1,0 +1,18 @@
+{
+  "$schema": "vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 53,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome TAROT-OP",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Volatile"
+  }
+}

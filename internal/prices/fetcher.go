@@ -101,7 +101,6 @@ func fetchPrices(
 		}
 	}
 	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
-
 	for token, price := range priceMapLensOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price

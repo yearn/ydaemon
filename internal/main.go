@@ -79,13 +79,14 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
+		go func() {
+			initDailyBlock.Init(chainID)
+			apy.ComputeChainAPR(chainID)
+		}()
 	})
 
 	cron.Every(10).Minute().Do(func() {
 		strategies.InitRiskScore(chainID)
-	})
-	cron.Every(20).Minute().Do(func() {
-		apy.ComputeChainAPR(chainID)
 	})
 
 	cron.Every(1).Day().At("12:10").Do(func() {

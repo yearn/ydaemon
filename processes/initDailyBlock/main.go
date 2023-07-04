@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sort"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
@@ -22,6 +23,8 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
+
+var _dailyBlockNumber = make(map[uint64]*sync.Map)
 
 type TLlamaBlock struct {
 	Height    uint64 `json:"height"`
@@ -49,13 +52,26 @@ func chainIDToName(chainID uint64) string {
 	}
 }
 
-func Run(chainID uint64) {
-	timeBlockMap := assertDailyBlockNumber(chainID)
-	retrieveHistoricalPricePerShare(chainID, timeBlockMap)
-
+func Init(chainID uint64) {
+	assertDailyBlockNumber(chainID)
 }
 
-func retrieveHistoricalPricePerShare(chainID uint64, timeBlockMap map[time.Time]uint64) {
+func Run(chainID uint64) {
+	assertDailyBlockNumber(chainID)
+	retrieveHistoricalPricePerShare(chainID)
+}
+
+func retrieveHistoricalPricePerShare(chainID uint64) {
+	timeBlockMap := map[time.Time]uint64{}
+	syncMap := _dailyBlockNumber[chainID]
+	if syncMap == nil {
+		return
+	}
+	syncMap.Range(func(key, value interface{}) bool {
+		timeBlockMap[key.(time.Time)] = value.(uint64)
+		return true
+	})
+
 	/**********************************************************************************************
 	** The first steps are to init out environment. We need to fetch all our vaults, strategies,
 	** tokens, prices, etc. This will allow us to have an exhaustive list of all the data we need
@@ -159,7 +175,7 @@ func retrieveHistoricalPricePerShare(chainID uint64, timeBlockMap map[time.Time]
 	}
 }
 
-func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
+func assertDailyBlockNumber(chainID uint64) {
 	lastItem := store.DBVaultPricePerShare{}
 	store.DATABASE.
 		Table(`db_vault_price_per_shares`).
@@ -229,7 +245,13 @@ func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
 			time.Sleep(500 * time.Millisecond)
 		}
 	}
-	return dailyBlockNumber
+
+	syncMap := _dailyBlockNumber[chainID]
+	if syncMap == nil {
+		_dailyBlockNumber[chainID] = &sync.Map{}
+		syncMap = _dailyBlockNumber[chainID]
+	}
+	syncMap.Store(`dailyBlockNumber`, dailyBlockNumber)
 }
 
 /**************************************************************************************************

@@ -166,7 +166,11 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
+<<<<<<< HEAD
 		// if !addresses.Equals(vault.Address, common.HexToAddress("0x27B5739e22ad9033bcBf192059122d163b60349D")) {
+=======
+		// if !addresses.Equals(vault.Address, common.HexToAddress("0xa258C4606Ca8206D8aA700cE2143D7db854D168c")) {
+>>>>>>> 4f75861 (fix: new apy not working)
 		// continue
 		// }
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)

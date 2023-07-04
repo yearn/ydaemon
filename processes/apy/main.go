@@ -5,6 +5,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
@@ -65,8 +67,9 @@ func calculateStrategyAPR(
 	chainID := vault.ChainID
 
 	if subgraphItem.LatestWeeklyApy == 0 {
-		logs.Error(`No APY data for vault`, vault.Address.Hex())
-		logs.Pretty(subgraphItem)
+		logs.Error(`No APY data for vault ` + vault.Address.Hex())
+		// logs.Pretty(subgraphItem)
+		return TStrategyAPR{}
 	}
 
 	/**********************************************************************************************
@@ -164,6 +167,9 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
+		// if !addresses.Equals(vault.Address, common.HexToAddress("0xa258C4606Ca8206D8aA700cE2143D7db854D168c")) {
+		// continue
+		// }
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
 		if ok {
 			if vaultFromMeta.Retired {
@@ -175,6 +181,14 @@ func ComputeChainAPR(chainID uint64) {
 		ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 		ppsInception := bigNumber.NewFloat(1)
 		ppsToday := helpers.GetToday(ppsPerTime, vault.Decimals)
+		if ppsToday == nil || ppsToday.IsZero() {
+			vaultContract, err := contracts.NewYearnVaultCaller(vault.Address, ethereum.GetRPC(chainID))
+			if err != nil {
+				continue
+			}
+			pps, _ := vaultContract.PricePerShare(nil)
+			ppsToday = helpers.ToNormalizedAmount(bigNumber.SetInt(pps), vault.Decimals)
+		}
 		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vault.Decimals)
 		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vault.Decimals)
 
@@ -209,7 +223,7 @@ func ComputeChainAPR(chainID uint64) {
 
 		for _, strategy := range allStrategiesForVault {
 			if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
-				// logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
 				continue
 			}
 			strategyAPR := calculateStrategyAPR(
@@ -250,6 +264,7 @@ func ComputeChainAPR(chainID uint64) {
 		// checkDiff("RewardsAPR    ", legacyAPY.Composite.RewardsAPR, vaultAPY.Composite.RewardsAPR)
 		// spew.Printf("\n")
 	}
+	logs.Success(`Computing APR done`)
 }
 
 func Run(chainID uint64) {

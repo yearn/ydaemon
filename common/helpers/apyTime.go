@@ -85,5 +85,8 @@ func GetLastYear(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumb
 func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float) *bigNumber.Float {
 	apr := bigNumber.NewFloat(0).Sub(vf, vi)
 	apr = bigNumber.NewFloat(0).Div(apr, vi)
+	apr = bigNumber.NewFloat(0).Div(apr, bigNumber.NewFloat(7))
+	apr = bigNumber.NewFloat(0).Mul(apr, bigNumber.NewFloat(365))
+
 	return apr
 }

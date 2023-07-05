@@ -183,12 +183,16 @@ func assertDailyBlockNumber(chainID uint64) {
 		Order(`time DESC`).
 		First(&lastItem)
 
+	syncMap := _dailyBlockNumber[chainID]
+	if syncMap == nil {
+		_dailyBlockNumber[chainID] = &sync.Map{}
+		syncMap = _dailyBlockNumber[chainID]
+	}
 	/**********************************************************************************************
 	** The first step is to find the earliest relevant deployment for yearn on this chain. For us
 	** this means the earliest block where we have a registry contract deployed.
 	**********************************************************************************************/
 	earliestBlock := uint64(lastItem.Block)
-	dailyBlockNumber := make(map[time.Time]uint64)
 	if (earliestBlock == 0) || (earliestBlock == math.MaxUint64) {
 		earliestBlock = uint64(math.MaxUint64)
 		for _, registry := range env.YEARN_REGISTRIES[chainID] {
@@ -217,7 +221,7 @@ func assertDailyBlockNumber(chainID uint64) {
 		nextDayNoonUTCTimestamp := noonUTC.Unix()
 		data, ok := store.GetTimeBlock(chainID, uint64(nextDayNoonUTCTimestamp))
 		if ok {
-			dailyBlockNumber[noonUTC] = data
+			syncMap.Store(noonUTC, data)
 			noonUTC = noonUTC.AddDate(0, 0, 1)
 			continue
 		} else {
@@ -240,18 +244,11 @@ func assertDailyBlockNumber(chainID uint64) {
 				continue
 			}
 			store.StoreBlockTime(chainID, data.Height, uint64(nextDayNoonUTCTimestamp))
-			dailyBlockNumber[noonUTC] = data.Height
+			syncMap.Store(noonUTC, data.Height)
 			noonUTC = noonUTC.AddDate(0, 0, 1)
 			time.Sleep(500 * time.Millisecond)
 		}
 	}
-
-	syncMap := _dailyBlockNumber[chainID]
-	if syncMap == nil {
-		_dailyBlockNumber[chainID] = &sync.Map{}
-		syncMap = _dailyBlockNumber[chainID]
-	}
-	syncMap.Store(`dailyBlockNumber`, dailyBlockNumber)
 }
 
 /**************************************************************************************************

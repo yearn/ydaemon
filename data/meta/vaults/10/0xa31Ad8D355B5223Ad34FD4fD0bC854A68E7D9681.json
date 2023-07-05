@@ -1,0 +1,18 @@
+{
+  "$schema": "vault",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 60,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome THALES-USDC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Volatile"
+  }
+}

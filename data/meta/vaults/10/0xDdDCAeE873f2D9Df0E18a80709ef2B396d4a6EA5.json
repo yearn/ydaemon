@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Vel op-weth",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 37,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome OP-WETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Volatile"
+  }
+}

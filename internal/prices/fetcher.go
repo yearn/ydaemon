@@ -32,19 +32,12 @@ var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 ** Returns:
 ** - a map of tokenAddress -> *bigNumber.Int
 **************************************************************************************************/
-func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
+func fetchPrices(
+	chainID uint64,
+	blockNumber *uint64,
+	tokenList []common.Address,
+) map[common.Address]*bigNumber.Int {
 	newPriceMap := fetchPricesFromLens(chainID, blockNumber, tokenList)
-
-	/**********************************************************************************************
-	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
-	** be able to calculate the price of some tokens. We will then add them to our map.
-	**********************************************************************************************/
-	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
-	for token, price := range priceMapFromCurveFactoryAPI {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
-		}
-	}
 
 	/**********************************************************************************************
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
@@ -55,6 +48,7 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 			queryList = append(queryList, token)
 		}
 	}
+
 	// Call the two API endpoints async if we are missing prices
 	if len(queryList) > 0 {
 		chanLlama := make(chan map[common.Address]*bigNumber.Int)
@@ -71,13 +65,40 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 		for _, token := range queryList {
 			if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
 				newPriceMap[token] = pricesLlama[token]
-				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesLlama[token])
 				continue
 			}
 			if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
 				newPriceMap[token] = pricesGecko[token]
-				store.StoreHistoricalPrice(chainID, *blockNumber, token, pricesGecko[token])
 			}
+		}
+	}
+
+	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
+	** be able to calculate the price of some tokens. We will then add them to our map.
+	**********************************************************************************************/
+	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
+	for token, price := range priceMapFromCurveFactoryAPI {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens. We can use the Velo API to
+	** be able to calculate the price of some tokens. We will then add them to our map. Only on
+	** optimism
+	**********************************************************************************************/
+	priceMapFromVeloPairsAPI := getPricesFromVeloPairsAPI(chainID)
+	for token, price := range priceMapFromVeloPairsAPI {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
+	for token, price := range priceMapFromVeloOracle {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
 		}
 	}
 
@@ -99,6 +120,28 @@ func fetchPrices(chainID uint64, blockNumber *uint64, tokenList []common.Address
 		}
 	}
 
+	itemsToUpsert := []store.DBHistoricalPrice{}
+	for tokenAddress, price := range newPriceMap {
+		/******************************************************************************************
+		** To save some process, we will batch the saving to the database in one call.
+		** The following code is creating the upsert array.
+		******************************************************************************************/
+		DBbaseSchema := store.DBBaseSchema{
+			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(*blockNumber, 10) + tokenAddress.Hex()),
+			Block:   *blockNumber,
+			ChainID: chainID,
+		}
+		humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
+		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
+			DBBaseSchema:   DBbaseSchema,
+			Token:          tokenAddress.Hex(),
+			Price:          price.String(),
+			HumanizedPrice: humanizedPrice,
+		})
+		store.AppendInHistoricalMap(chainID, *blockNumber, tokenAddress, price)
+	}
+
+	store.StoreManyHistoricalPrice(itemsToUpsert)
 	return newPriceMap
 }
 
@@ -169,9 +212,11 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
 			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 		},
-		10:    {},
-		250:   {},
-		42161: {},
+		10:  {},
+		250: {},
+		42161: {
+			`0x82e3A8F066a6989666b031d916c43672085b1582`, // YFI
+		},
 	}
 	for _, tokenAddress := range extraTokens[chainID] {
 		allTokens = append(allTokens, common.HexToAddress(tokenAddress))
@@ -234,7 +279,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		wg.Wait()
 		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 	}
-	_priceMap[chainID] = priceMap
+	StorePrices(chainID, priceMap)
 	return priceMap
 }
 
@@ -266,6 +311,7 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 	** API.
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, big.NewInt(int64(blockNumber)))
+	itemsToUpsert := []store.DBHistoricalPrice{}
 	for _, tokenAddress := range tokenList {
 		rawTokenPrice := response[tokenAddress.Hex()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
@@ -276,9 +322,27 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 			continue
 		}
 		newPriceMap[tokenAddress] = helpers.DecodeBigInt(rawTokenPrice)
-		store.StoreHistoricalPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
+
+		/******************************************************************************************
+		** To save some process, we will batch the saving to the database in one call.
+		** The following code is creating the upsert array.
+		******************************************************************************************/
+		DBbaseSchema := store.DBBaseSchema{
+			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
+			Block:   blockNumber,
+			ChainID: chainID,
+		}
+		humanizedPrice, _ := helpers.ToNormalizedAmount(newPriceMap[tokenAddress], 6).Float64()
+		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
+			DBBaseSchema:   DBbaseSchema,
+			Token:          tokenAddress.Hex(),
+			Price:          newPriceMap[tokenAddress].String(),
+			HumanizedPrice: humanizedPrice,
+		})
+		store.AppendInHistoricalMap(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
 	}
 
+	store.StoreManyHistoricalPrice(itemsToUpsert)
 	return newPriceMap
 }
 

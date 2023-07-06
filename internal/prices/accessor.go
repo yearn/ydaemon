@@ -5,6 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 )
 
 /**********************************************************************************************
@@ -12,7 +13,24 @@ import (
 ** able to access them from the rest of the application.
 ** The _priceMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _priceMap = make(map[uint64]map[common.Address]*bigNumber.Int)
+var _priceMap = make(map[uint64]*sync.Map)
+
+func initOrGetPriceMap(chainID uint64) *sync.Map {
+	syncMap := _priceMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_priceMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _priceMap[chainID]; !ok {
+			_priceMap[chainID] = &sync.Map{}
+		}
+	}
+}
 
 /**********************************************************************************************
 ** The _historicalPriceMap variable is not exported and is only used internally by the
@@ -26,10 +44,12 @@ var _historicalPriceMap = sync.Map{}
 ** The map will be of the form: map[vaultAddress]bigNumber.Int
 **********************************************************************************************/
 func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
+	syncMap := initOrGetPriceMap(chainID)
 	prices := make(map[common.Address]*bigNumber.Int)
-	for key, price := range _priceMap[chainID] {
-		prices[key] = price
-	}
+	syncMap.Range(func(key, price interface{}) bool {
+		prices[key.(common.Address)] = price.(*bigNumber.Int)
+		return true
+	})
 	return prices
 }
 
@@ -39,9 +59,17 @@ func MapPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 ** It will return the price if found, and a boolean indicating if the token was found or not.
 **********************************************************************************************/
 func FindPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Int, bool) {
-	price, ok := _priceMap[chainID][tokenAddress]
+	syncMap := initOrGetPriceMap(chainID)
+	price, ok := syncMap.Load(tokenAddress)
 	if !ok {
 		return nil, false
 	}
-	return price, true
+	return price.(*bigNumber.Int), true
+}
+
+func StorePrices(chainID uint64, prices map[common.Address]*bigNumber.Int) {
+	syncMap := initOrGetPriceMap(chainID)
+	for addr, strategy := range prices {
+		syncMap.Store(addr, strategy)
+	}
 }

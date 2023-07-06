@@ -1,6 +1,7 @@
 package env
 
 import (
+	"math"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -42,10 +43,18 @@ var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
-	1:     1900,
-	10:    5_000_000,
+	1:     100_000_000,
+	10:    100_000_000,
 	250:   100_000_000,
 	42161: 100_000_000,
+}
+
+// MAX_BATCH_SIZE is the maximum size request for a multicall
+var MAX_BATCH_SIZE = map[uint64]int{
+	1:     math.MaxInt64,
+	10:    1_000,
+	250:   math.MaxInt64,
+	42161: math.MaxInt64,
 }
 
 // BLACKLISTED_VAULTS contains the vault we should not work with
@@ -89,6 +98,47 @@ var CURVE_FACTORY_URI = map[uint64][]string{
 	42161: {
 		`https://api.curve.fi/api/getPools/arbitrum/factory`,
 	},
+}
+
+// CURVE_POOLS_URI contains the URI of the Curve pools to use
+var CURVE_POOLS_URI = map[uint64][]string{
+	1: {
+		`https://api.curve.fi/api/getPools/ethereum/main`,
+		`https://api.curve.fi/api/getPools/ethereum/crypto`,
+		`https://api.curve.fi/api/getPools/ethereum/factory`,
+		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
+	},
+	10: {
+		`https://api.curve.fi/api/getPools/optimism/main`,
+		`https://api.curve.fi/api/getPools/optimism/crypto`,
+		`https://api.curve.fi/api/getPools/optimism/factory`,
+	},
+	250: {
+		`https://api.curve.fi/api/getPools/fantom/main`,
+		`https://api.curve.fi/api/getPools/fantom/crypto`,
+		`https://api.curve.fi/api/getPools/fantom/factory`,
+	},
+	42161: {
+		`https://api.curve.fi/api/getPools/arbitrum/main`,
+		`https://api.curve.fi/api/getPools/arbitrum/crypto`,
+		`https://api.curve.fi/api/getPools/arbitrum/factory`,
+	},
+}
+
+// CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
+var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
+	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,
+	10:    ``,
+	250:   ``,
+	42161: ``,
+}
+
+// CURVE_GAUGES_URI contains the URI of the Curve gauges to use
+var CURVE_GAUGES_URI = map[uint64]string{
+	1:     `https://api.curve.fi/api/getAllGauges?blockchainId=ethereum`,
+	10:    ``,
+	250:   ``,
+	42161: ``,
 }
 
 // RPC_ENDPOINTS contains the node endpoints to connect the blockchains

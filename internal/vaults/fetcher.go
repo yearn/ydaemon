@@ -2,7 +2,6 @@ package vaults
 
 import (
 	"strconv"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -285,24 +284,19 @@ func RetrieveAllVaults(
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch theses basics informations.
 	**********************************************************************************************/
-	if len(updatedVaultMap) > 0 {
-		updatedVaultMap = findAllVaults(chainID, updatedVaultMap)
+	updatedVaultMap = findAllVaults(chainID, updatedVaultMap)
 
-		/**********************************************************************************************
-		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
-		**********************************************************************************************/
-		wg := sync.WaitGroup{}
-		wg.Add(len(updatedVaultMap))
-		for _, vault := range updatedVaultMap {
-			go func(thisVault models.TVault) {
-				defer wg.Done()
-				store.StoreVault(chainID, thisVault)
-			}(vault)
+	/**********************************************************************************************
+	** Once everything is setup, we will store each token in the DB. The storage is set as a map
+	** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
+	**********************************************************************************************/
+	for _, vault := range updatedVaultMap {
+		store.AppendInVaultMap(chainID, vault)
+		if _, ok := vaultMap[vault.Address]; !ok {
+			store.StoreVault(chainID, vault)
 		}
-		wg.Wait()
-		vaultMap, _ = store.ListAllVaults(chainID)
 	}
+	vaultMap, _ = store.ListAllVaults(chainID)
 
 	_vaultMap[chainID] = vaultMap
 	return vaultMap

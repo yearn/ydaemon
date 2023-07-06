@@ -2,6 +2,7 @@ package vaults
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
@@ -14,12 +15,12 @@ import (
 
 // GetAllVaultsForAllChains will return a list of all vaults for all chains
 func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
-	hideAlways := helpers.StringToBool(helpers.SafeString(c.Query(`hideAlways`), `false`))
-	orderBy := helpers.SafeString(c.Query(`orderBy`), `chainID`)
-	orderDirection := helpers.SafeString(c.Query(`orderDirection`), `asc`)
-	strategiesCondition := selectStrategiesCondition(c.Query(`strategiesCondition`))
-	withStrategiesDetails := c.Query(`strategiesDetails`) == `withDetails`
-	migrable := selectMigrableCondition(c.Query(`migrable`))
+	hideAlways := helpers.StringToBool(helpers.SafeString(getQuery(c, `hideAlways`), `false`))
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `chainID`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
+	withStrategiesDetails := strings.EqualFold(getQuery(c, `strategiesDetails`), `withDetails`)
+	migrable := selectMigrableCondition(getQuery(c, `migrable`))
 	if migrable != `none` && hideAlways {
 		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
 		return

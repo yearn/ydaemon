@@ -297,7 +297,7 @@ func computeRiskGroupAllocation(chainID uint64) {
 		tokenPrice, ok := prices.FindPrice(chainID, tokenData.Address)
 		if !ok {
 			traces.
-				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()).
+				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`strategy`).
 				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
 				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
@@ -372,8 +372,7 @@ func InitRiskScore(chainID uint64) {
 				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
 				TVL:       tvl,
 			}
-
-			logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
+			// logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
 		}
 	}
 	computeRiskGroupAllocation(chainID)

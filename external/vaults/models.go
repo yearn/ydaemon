@@ -8,6 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/apy"
 )
 
 // TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.
@@ -67,6 +68,7 @@ type TExternalVaultAPY struct {
 	Fees              TExternalAPYFees      `json:"fees"`
 	Points            TExternalAPYPoints    `json:"points"`
 	Composite         TExternalAPYComposite `json:"composite"`
+	Error             string                `json:"error"`
 }
 
 // TExternalVaultMigration is the struct containing the information about the migration of a vault.
@@ -142,6 +144,7 @@ type TExternalVault struct {
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               TExternalVaultTVL       `json:"tvl"`
 	APY               TExternalVaultAPY       `json:"apy"`
+	NewAPY            apy.TAPIV1APY           `json:"newApy"`
 	Details           *TExternalVaultDetails  `json:"details"`
 	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
@@ -228,7 +231,9 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		Fees:              TExternalAPYFees(internalAPY.Fees),
 		Points:            TExternalAPYPoints(internalAPY.Points),
 		Composite:         TExternalAPYComposite(internalAPY.Composite),
+		Error:             internalAPY.Error,
 	}
+	v.NewAPY = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
 
 	v.Details = &TExternalVaultDetails{
 		Management:            internalVault.Management.Hex(),

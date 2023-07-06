@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/getsentry/sentry-go"
@@ -13,7 +12,6 @@ import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/external/meta"
@@ -40,15 +38,11 @@ func middleware(log *logrus.Logger) gin.HandlerFunc {
 	}
 
 	return func(c *gin.Context) {
-		if strings.HasPrefix(c.Request.RequestURI, "/api/tokens/list") {
-			c.Header("Cache-Control", "max-age=86400")
-		} else {
-			log.WithFields(logrus.Fields{
-				"path":   c.Request.RequestURI,
-				"method": c.Request.Method,
-				"status": c.Writer.Status(),
-			}).Info(time.Now().Format(time.RFC3339))
-		}
+		log.WithFields(logrus.Fields{
+			"path":   c.Request.RequestURI,
+			"method": c.Request.Method,
+			"status": c.Writer.Status(),
+		}).Info(time.Now().Format(time.RFC3339))
 	}
 }
 
@@ -128,6 +122,15 @@ func NewRouter() *gin.Engine {
 	{
 		// Get some information about the API
 		GET(router, `info/chains`, utils.GetSupportedChains)
+		GET(router, `:chainID/status`, func(ctx *gin.Context) {
+			chainID, ok := helpers.AssertChainID(ctx.Param("chainID"))
+			if !ok {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": "invalid chainID"})
+				return
+			}
+			ctx.JSON(http.StatusOK, getStatusForChainID(chainID))
+		})
+
 	}
 
 	// Meta API section
@@ -188,16 +191,17 @@ func NewRouter() *gin.Engine {
 		GET(router, `:chainID/prices/some/:addresses`, c.GetSomePrices)
 	}
 
+	// WARNING: DEPRECATED
 	// yBribe API section
 	{
 		GET(router, `:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
 	}
 
-	{
-		router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
-		router.StaticFile("tokenlist", env.BASE_DATA_PATH+`/tokensList/public/yearn.json`)
-		GET(router, `tokenlist/live`, tokensList.GetTokenList)
-	}
+	// {
+	// 	router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
+	// 	router.StaticFile("tokenlist", env.BASE_DATA_PATH+`/tokensList/public/yearn.json`)
+	// 	GET(router, `tokenlist/live`, tokensList.GetTokenList)
+	// }
 
 	{
 		//TEST

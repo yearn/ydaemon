@@ -1,7 +1,10 @@
 package strategies
 
 import (
+	"sync"
+
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -10,8 +13,36 @@ import (
 ** being able to access them from the rest of the application.
 ** The _strategyMap variable is not exported and is only used internally by the functions below.
 **********************************************************************************************/
-var _strategyMap = make(map[uint64]map[common.Address]*models.TStrategy)
-var _strategyWithdrawalQueueMap = make(map[uint64]map[common.Address][]common.Address)
+var _strategyMap = make(map[uint64]*sync.Map)
+
+func initOrGetStrategyMap(chainID uint64) *sync.Map {
+	syncMap := _strategyMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_strategyMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+var _strategyWithdrawalQueueMap = make(map[uint64]*sync.Map)
+
+func initOrGetStrategyWithdrawalQueueMap(chainID uint64) *sync.Map {
+	syncMap := _strategyWithdrawalQueueMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_strategyWithdrawalQueueMap[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func init() {
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		if _, ok := _strategyMap[chainID]; !ok {
+			_strategyMap[chainID] = &sync.Map{}
+			_strategyWithdrawalQueueMap[chainID] = &sync.Map{}
+		}
+	}
+}
 
 /**********************************************************************************************
 ** ListStrategies will, for a given chainID, return the list of all the strategies stored in
@@ -19,9 +50,11 @@ var _strategyWithdrawalQueueMap = make(map[uint64]map[common.Address][]common.Ad
 **********************************************************************************************/
 func ListStrategies(chainID uint64) []*models.TStrategy {
 	var strategies []*models.TStrategy
-	for _, strategy := range _strategyMap[chainID] {
-		strategies = append(strategies, strategy)
-	}
+	syncMap := initOrGetStrategyMap(chainID)
+	syncMap.Range(func(_, value interface{}) bool {
+		strategies = append(strategies, value.(*models.TStrategy))
+		return true
+	})
 	return strategies
 }
 
@@ -31,11 +64,14 @@ func ListStrategies(chainID uint64) []*models.TStrategy {
 **********************************************************************************************/
 func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) []*models.TStrategy {
 	var strategies []*models.TStrategy
-	for _, strategy := range _strategyMap[chainID] {
+	syncMap := initOrGetStrategyMap(chainID)
+	syncMap.Range(func(_, value interface{}) bool {
+		strategy := value.(*models.TStrategy)
 		if strategy.VaultAddress.Hex() == vaultAddress.Hex() {
-			strategies = append(strategies, strategy)
+			strategies = append(strategies, value.(*models.TStrategy))
 		}
-	}
+		return true
+	})
 	return strategies
 }
 
@@ -45,9 +81,11 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) []*mode
 **********************************************************************************************/
 func ListStrategiesAddresses(chainID uint64) []common.Address {
 	var addresses []common.Address
-	for address := range _strategyMap[chainID] {
-		addresses = append(addresses, address)
-	}
+	syncMap := initOrGetStrategyMap(chainID)
+	syncMap.Range(func(key, _ interface{}) bool {
+		addresses = append(addresses, common.HexToAddress(key.(string)))
+		return true
+	})
 	return addresses
 }
 
@@ -57,11 +95,19 @@ func ListStrategiesAddresses(chainID uint64) []common.Address {
 ** strategy was found or not.
 **********************************************************************************************/
 func FindStrategy(chainID uint64, strategyAddress common.Address) (*models.TStrategy, bool) {
-	strategy, ok := _strategyMap[chainID][strategyAddress]
+	syncMap := initOrGetStrategyMap(chainID)
+	strategy, ok := syncMap.Load(strategyAddress.Hex())
 	if !ok {
 		return nil, false
 	}
-	return strategy, true
+	return strategy.(*models.TStrategy), true
+}
+
+func StoreStrategies(chainID uint64, strategies map[common.Address]*models.TStrategy) {
+	syncMap := initOrGetStrategyMap(chainID)
+	for addr, strategy := range strategies {
+		syncMap.Store(addr.Hex(), strategy)
+	}
 }
 
 /**********************************************************************************************
@@ -85,18 +131,18 @@ func ToVaultMap(strategiesAddedList []*models.TStrategy) map[common.Address]map[
 ** package to avoid import circles.
 **********************************************************************************************/
 func SetInStrategiesWithdrawalQueue(chainID uint64, vaultAddress common.Address, queue []common.Address) {
-	if _, ok := _strategyWithdrawalQueueMap[chainID]; !ok {
-		_strategyWithdrawalQueueMap[chainID] = make(map[common.Address][]common.Address)
-	}
-	_strategyWithdrawalQueueMap[chainID][vaultAddress] = queue
+	syncMap := initOrGetStrategyWithdrawalQueueMap(chainID)
+	syncMap.Store(vaultAddress.Hex(), queue)
 }
 
 /**********************************************************************************************
 ** FindWithdrawalQueueForVault will retrieve the withdrawal queue for a given vault address.
 **********************************************************************************************/
 func FindWithdrawalQueueForVault(chainID uint64, vaultAddress common.Address) ([]common.Address, bool) {
-	if _, ok := _strategyWithdrawalQueueMap[chainID]; !ok {
+	syncMap := initOrGetStrategyWithdrawalQueueMap(chainID)
+	queue, ok := syncMap.Load(vaultAddress.Hex())
+	if !ok {
 		return nil, false
 	}
-	return _strategyWithdrawalQueueMap[chainID][vaultAddress], true
+	return queue.([]common.Address), true
 }

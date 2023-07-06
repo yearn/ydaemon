@@ -3,13 +3,11 @@ package strategies
 import (
 	"math/big"
 	"strconv"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
@@ -45,6 +43,8 @@ func fetchBasicInformations(
 		calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyIsActive(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCRV(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStrategyName(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
 		calls = append(calls, multicalls.GetKeeper(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
@@ -71,6 +71,8 @@ func fetchBasicInformations(
 		estimatedTotalAssets := response[stratAddress.Hex()+`estimatedTotalAssets`]
 		isActive := response[stratAddress.Hex()+`isActive`]
 		keepCRV := response[stratAddress.Hex()+`keepCRV`]
+		keepCRVPercent := response[stratAddress.Hex()+`keepCrvPercent`]
+		keepCVX := response[stratAddress.Hex()+`keepCVX`]
 		delegatedAssets := response[stratAddress.Hex()+`delegatedAssets`]
 		name := response[stratAddress.Hex()+`name`]
 		keeper := response[stratAddress.Hex()+`keeper`]
@@ -103,6 +105,8 @@ func fetchBasicInformations(
 			ExpectedReturn:          bigNumber.NewInt(0),
 			EstimatedTotalAssets:    bigNumber.NewInt(0),
 			KeepCRV:                 bigNumber.NewInt(0),
+			KeepCRVPercent:          bigNumber.NewInt(0),
+			KeepCVX:                 bigNumber.NewInt(0),
 			DelegatedAssets:         bigNumber.NewInt(0),
 			IsActive:                false,
 			IsInQueue:               isInQueue,
@@ -119,6 +123,8 @@ func fetchBasicInformations(
 		newStrategy.ExpectedReturn = helpers.DecodeBigInt(expectedReturn)
 		newStrategy.EstimatedTotalAssets = helpers.DecodeBigInt(estimatedTotalAssets)
 		newStrategy.KeepCRV = helpers.DecodeBigInt(keepCRV)
+		newStrategy.KeepCRVPercent = helpers.DecodeBigInt(keepCRVPercent)
+		newStrategy.KeepCVX = helpers.DecodeBigInt(keepCVX)
 		newStrategy.DelegatedAssets = helpers.DecodeBigInt(delegatedAssets)
 		newStrategy.IsActive = helpers.DecodeBool(isActive)
 		newStrategy.Name = helpers.DecodeString(name)
@@ -219,41 +225,14 @@ func RetrieveAllStrategies(
 		SetTag(`subsystem`, `daemon`)
 	defer trace.Finish()
 
-	/**********************************************************************************************
-	** First, try to retrieve the list of strategies from the database to exclude the one existing
-	** from the upcoming calls
-	**********************************************************************************************/
-	strategyMap := make(map[common.Address]*models.TStrategy)
-	store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
+	updatedStrategiesMap := findAllStrategies(chainID, strategyAddedList)
+	// for _, s := range strategyAddedList {
+	// 	if s.VaultAddress == common.HexToAddress(`0x849dC56ceCa7Cf55AbF5ec87910DA21c5C7dA581`) {
+	// 		logs.Pretty(s)
+	// 	}
+	// }
+	// logs.Pretty(updatedStrategiesMap)
 
-	/**********************************************************************************************
-	** Once we got out basic list, we will fetch theses basics informations.
-	**********************************************************************************************/
-	if len(strategyAddedList) > 0 {
-		updatedStrategiesMap := findAllStrategies(chainID, strategyAddedList)
-
-		/**********************************************************************************************
-		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of strategyAddress -> TStrategy. All the strategies will be retrievable from the
-		** store.Interate() func.
-		**********************************************************************************************/
-		wg := sync.WaitGroup{}
-		wg.Add(len(updatedStrategiesMap))
-		for _, token := range updatedStrategiesMap {
-			go func(_strategy *models.TStrategy) {
-				defer wg.Done()
-				store.SaveInBadgerDB(
-					chainID,
-					store.TABLES.STRATEGIES,
-					_strategy.Address.Hex(),
-					_strategy,
-				)
-			}(token)
-		}
-		wg.Wait()
-		store.ListFromBadgerDB(chainID, store.TABLES.STRATEGIES, &strategyMap)
-	}
-
-	_strategyMap[chainID] = strategyMap
-	return strategyMap
+	StoreStrategies(chainID, updatedStrategiesMap)
+	return updatedStrategiesMap
 }

@@ -23,17 +23,12 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 		defer wg.Done()
 	}
 	syncMap := _blockTimeSyncMap[chainID]
+	syncMapForTime := _timeBlockSyncMap[chainID]
 
 	switch _dbType {
 	case DBBadger:
-		temp := make(map[uint64]uint64)
-		ListFromBadgerDB(chainID, TABLES.BLOCK_TIME, &temp)
-		if temp != nil && (len(temp) > 0) {
-			for k, v := range temp {
-				syncMap.Store(k, v)
-			}
-		}
-
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for LoadBlockTime`)
 	case DBSql:
 		var temp []DBBlockTime
 		DATABASE.Table(`db_block_times`).
@@ -41,6 +36,7 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
 				for _, v := range temp {
 					syncMap.Store(v.Block, v.Timestamp)
+					syncMapForTime.Store(v.Timestamp, v.Block)
 				}
 				return nil
 			})
@@ -59,13 +55,8 @@ func LoadHistoricalPrice(chainID uint64, wg *sync.WaitGroup) {
 
 	switch _dbType {
 	case DBBadger:
-		temp := make(map[string]string)
-		ListFromBadgerDB(chainID, TABLES.HISTORICAL_PRICES, &temp)
-		if temp != nil && (len(temp) > 0) {
-			for k, v := range temp {
-				syncMap.Store(k, bigNumber.NewInt(0).SetString(v))
-			}
-		}
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for LoadHistoricalPrice`)
 	case DBSql:
 		var temp []DBHistoricalPrice
 		DATABASE.Table(`db_historical_prices`).
@@ -82,7 +73,9 @@ func LoadHistoricalPrice(chainID uint64, wg *sync.WaitGroup) {
 
 /**************************************************************************************************
 ** LoadNewVaultsFromRegistry will retrieve the all the vaults added to the registries from the
-** configured DB and store them in the _newVaultsFromRegistrySyncMap for fast access during that
+** local DB and store them in the _newVaultsFromRegistrySyncMap for fast access during that same
+** execution.
+** Use local DB to not screw up the DB with the same data over and over again.
 **************************************************************************************************/
 func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
@@ -90,36 +83,28 @@ func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
 	}
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]
 
-	switch _dbType {
-	case DBBadger:
-		// Not implemented
-		logs.Warning(`LoadNewVaultsFromRegistry not implemented for DBBadger. Skipping...`)
-	case DBSql:
-		var temp []DBNewVaultsFromRegistry
+	temp := make(map[string]DBNewVaultsFromRegistry)
+	ListFromBadgerDB(chainID, TABLES.VAULTS_FROM_REGISTRY_SYNC, &temp)
 
-		DATABASE.Table(`db_new_vaults_from_registries`).
-			Where("chain_id = ?", chainID).
-			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
-				for _, vaultFromDB := range temp {
-					key := strconv.FormatUint(vaultFromDB.Block, 10) + "_" + addresses.ToAddress(vaultFromDB.RegistryAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.VaultsAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.TokenAddress).Hex() + "_" + vaultFromDB.APIVersion
-					vaultFromRegistry := models.TVaultsFromRegistry{
-						Address:         addresses.ToAddress(vaultFromDB.VaultsAddress),
-						RegistryAddress: addresses.ToAddress(vaultFromDB.RegistryAddress),
-						TokenAddress:    addresses.ToAddress(vaultFromDB.TokenAddress),
-						BlockHash:       common.HexToHash(vaultFromDB.BlockHash),
-						Type:            vaultFromDB.Type,
-						APIVersion:      vaultFromDB.APIVersion,
-						ChainID:         vaultFromDB.ChainID,
-						BlockNumber:     vaultFromDB.Block,
-						Activation:      vaultFromDB.Activation,
-						ManagementFee:   vaultFromDB.ManagementFee,
-						TxIndex:         vaultFromDB.TxIndex,
-						LogIndex:        vaultFromDB.LogIndex,
-					}
-					syncMap.Store(key, vaultFromRegistry)
-				}
-				return nil
-			})
+	if temp != nil && (len(temp) > 0) {
+		for _, vaultFromDB := range temp {
+			key := strconv.FormatUint(vaultFromDB.Block, 10) + "_" + addresses.ToAddress(vaultFromDB.RegistryAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.VaultsAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.TokenAddress).Hex() + "_" + vaultFromDB.APIVersion
+			vaultFromRegistry := models.TVaultsFromRegistry{
+				Address:         addresses.ToAddress(vaultFromDB.VaultsAddress),
+				RegistryAddress: addresses.ToAddress(vaultFromDB.RegistryAddress),
+				TokenAddress:    addresses.ToAddress(vaultFromDB.TokenAddress),
+				BlockHash:       common.HexToHash(vaultFromDB.BlockHash),
+				Type:            vaultFromDB.Type,
+				APIVersion:      vaultFromDB.APIVersion,
+				ChainID:         vaultFromDB.ChainID,
+				BlockNumber:     vaultFromDB.Block,
+				Activation:      vaultFromDB.Activation,
+				ManagementFee:   vaultFromDB.ManagementFee,
+				TxIndex:         vaultFromDB.TxIndex,
+				LogIndex:        vaultFromDB.LogIndex,
+			}
+			syncMap.Store(key, vaultFromRegistry)
+		}
 	}
 }
 
@@ -135,13 +120,8 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 
 	switch _dbType {
 	case DBBadger:
-		temp := make(map[common.Address]models.TERC20Token)
-		ListFromBadgerDB(chainID, TABLES.TOKENS, &temp)
-		if temp != nil && (len(temp) > 0) {
-			for _, v := range temp {
-				syncMap.Store(v.Address, v)
-			}
-		}
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for LoadERC20`)
 	case DBSql:
 		var temp []DBERC20
 		DATABASE.Table(`db_erc20`).
@@ -183,13 +163,8 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 
 	switch _dbType {
 	case DBBadger:
-		temp := make(map[common.Address]models.TVault)
-		ListFromBadgerDB(chainID, TABLES.VAULTS, &temp)
-		if temp != nil && (len(temp) > 0) {
-			for _, v := range temp {
-				syncMap.Store(v.Address, v)
-			}
-		}
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for LoadVaults`)
 	case DBSql:
 		var temp []DBVault
 		DATABASE.Table(`db_vaults`).
@@ -269,7 +244,8 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 
 	switch _dbType {
 	case DBBadger:
-		// not implemented
+		// LEGACY: Deprecated
+		logs.Warning(`BadgerDB is deprecated for LoadStrategies`)
 	case DBSql:
 		var temp []DBStrategy
 		DATABASE.Table(`db_strategies`).
@@ -297,4 +273,59 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 				return nil
 			})
 	}
+}
+
+/**************************************************************************************************
+** LoadPricePerShare will retrieve the all the pricePerShare from the configured DB and store them
+** in the _vaultsPricePerShareSyncMap for fast access during that same execution.
+**************************************************************************************************/
+func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _vaultsPricePerShareSyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// not implemented
+	case DBSql:
+		var temp []DBVaultPricePerShare
+		DATABASE.Table(`db_vault_price_per_shares`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, dataFromDB := range temp {
+					key := common.HexToAddress(dataFromDB.Vault).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)
+					syncMap.Store(key, dataFromDB)
+				}
+				return nil
+			})
+	}
+}
+
+/**************************************************************************************************
+** LoadSyncStrategiesAdded will try to retrieve all the sync for vaults/strategies for a given
+** chain on the local DB.
+**************************************************************************************************/
+func LoadSyncStrategiesAdded(chainID uint64) []DBStrategyAddedSync {
+	syncMap := make(map[string]DBStrategyAddedSync)
+	ListFromBadgerDB(chainID, TABLES.STRATEGIES_FROM_VAULT_SYNC, &syncMap)
+	arr := []DBStrategyAddedSync{}
+	for _, v := range syncMap {
+		arr = append(arr, v)
+	}
+	return arr
+}
+
+/**************************************************************************************************
+** LoadSyncRegistry will try to retrieve all the sync for registry/vault for a given chain on local
+** DB.
+**************************************************************************************************/
+func LoadSyncRegistry(chainID uint64) []DBRegistrySync {
+	syncMap := make(map[string]DBRegistrySync)
+	ListFromBadgerDB(chainID, TABLES.REGISTRY_SYNC, &syncMap)
+	arr := []DBRegistrySync{}
+	for _, v := range syncMap {
+		arr = append(arr, v)
+	}
+	return arr
 }

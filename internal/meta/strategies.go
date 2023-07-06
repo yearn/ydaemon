@@ -3,6 +3,7 @@ package meta
 import (
 	"encoding/json"
 	"strconv"
+	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -17,12 +18,21 @@ import (
 ** The _metaStrategyMap variable is not exported and is only used internally by the functions
 ** below.
 **********************************************************************************************/
-var _metaStrategyMap = make(map[uint64]map[common.Address]*models.TStrategyFromMeta)
+var _metaStrategyMap = make(map[uint64]*sync.Map)
+
+func initOrGetMetaStrategyMap(chainID uint64) *sync.Map {
+	syncMap := _metaStrategyMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_metaStrategyMap[chainID] = syncMap
+	}
+	return syncMap
+}
 
 func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		if _, ok := _metaStrategyMap[chainID]; !ok {
-			_metaStrategyMap[chainID] = make(map[common.Address]*models.TStrategyFromMeta)
+			_metaStrategyMap[chainID] = &sync.Map{}
 		}
 	}
 }
@@ -31,10 +41,8 @@ func init() {
 ** setStrategyInMap will put a TStrategyFromMeta in the _metaStrategyMap variable.
 **********************************************************************************************/
 func setStrategyInMap(chainID uint64, strategy *models.TStrategyFromMeta) {
-	if _, ok := _metaStrategyMap[chainID]; !ok {
-		_metaStrategyMap[chainID] = make(map[common.Address]*models.TStrategyFromMeta)
-	}
-	_metaStrategyMap[chainID][strategy.Address] = strategy
+	syncMap := initOrGetMetaStrategyMap(chainID)
+	syncMap.Store(strategy.Address, strategy)
 }
 
 /**********************************************************************************************
@@ -44,12 +52,12 @@ func setStrategyInMap(chainID uint64, strategy *models.TStrategyFromMeta) {
 ** not.
 **********************************************************************************************/
 func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*models.TStrategyFromMeta, bool) {
-	if strategysForChain, ok := _metaStrategyMap[chainID]; ok {
-		if strategy, ok := strategysForChain[strategyAddress]; ok {
-			return strategy, true
-		}
+	syncMap := initOrGetMetaStrategyMap(chainID)
+	data, ok := syncMap.Load(strategyAddress)
+	if !ok {
+		return nil, false
 	}
-	return nil, false
+	return data.(*models.TStrategyFromMeta), true
 }
 
 /**********************************************************************************************
@@ -57,11 +65,13 @@ func GetMetaStrategy(chainID uint64, strategyAddress common.Address) (*models.TS
 ** _metaStrategyMap variable.
 **********************************************************************************************/
 func ListMetaStrategies(chainID uint64) []*models.TStrategyFromMeta {
-	var strategies []*models.TStrategyFromMeta
-	for _, strategy := range _metaStrategyMap[chainID] {
-		strategies = append(strategies, strategy)
-	}
-	return strategies
+	syncMap := initOrGetMetaStrategyMap(chainID)
+	var retValue []*models.TStrategyFromMeta
+	syncMap.Range(func(_, data interface{}) bool {
+		retValue = append(retValue, data.(*models.TStrategyFromMeta))
+		return true
+	})
+	return retValue
 }
 
 /**************************************************************************************************

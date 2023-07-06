@@ -45,6 +45,7 @@ func initializeMySQLDatabase() (shouldUseMySQLDB bool) {
 		db.AutoMigrate(&DBHistoricalPrice{})
 		db.AutoMigrate(&DBNewVaultsFromRegistry{})
 		db.AutoMigrate(&DBVault{})
+		db.AutoMigrate(&DBVaultPricePerShare{})
 		db.AutoMigrate(&DBStrategy{})
 		db.Table(`db_erc20`).AutoMigrate(&DBERC20{})
 		db.AutoMigrate(&DBRegistrySync{})

@@ -22,6 +22,9 @@ var CTokenABI, _ = contracts.CTokenMetaData.GetAbi()
 var ATokenV1ABI, _ = contracts.ATokenV1MetaData.GetAbi()
 var ATokenV2ABI, _ = contracts.ATokenV2MetaData.GetAbi()
 var LensABI, _ = contracts.OracleMetaData.GetAbi()
+var CurveGaugeABI, _ = contracts.CurveGaugeMetaData.GetAbi()
+var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
+var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -32,6 +35,20 @@ func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, to
 		Target:   contractAddress,
 		Abi:      LensABI,
 		Method:   `getPriceUsdcRecommended`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetPriceCrvUsdcCall(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CrvUSDABI.Pack("price")
+	if err != nil {
+		logs.Error("Error packing LensABI price", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CrvUSDABI,
+		Method:   `price`,
 		CallData: parsedData,
 		Name:     name,
 	}
@@ -144,6 +161,87 @@ func GetCurveCoin(name string, contractAddress common.Address, index *big.Int) e
 		Target:   contractAddress,
 		Abi:      CurveCoinABI,
 		Method:   `coins`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetConvexLockIncentive(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CVXBoosterABI.Pack("lockIncentive")
+	if err != nil {
+		logs.Error("Error packing GetConvexLockIncentive lockIncentive", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CVXBoosterABI,
+		Method:   `lockIncentive`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func GetConvexStakerIncentive(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CVXBoosterABI.Pack("stakerIncentive")
+	if err != nil {
+		logs.Error("Error packing GetConvexStakerIncentive stakerIncentive", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CVXBoosterABI,
+		Method:   `stakerIncentive`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func GetConvexEarmarkIncentive(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CVXBoosterABI.Pack("earmarkIncentive")
+	if err != nil {
+		logs.Error("Error packing GetConvexEarmarkIncentive earmarkIncentive", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CVXBoosterABI,
+		Method:   `earmarkIncentive`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func GetConvexPlatformFee(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CVXBoosterABI.Pack("platformFee")
+	if err != nil {
+		logs.Error("Error packing GetConvexPlatformFee platformFee", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CVXBoosterABI,
+		Method:   `platformFee`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetCurveWorkingBalance(name string, contractAddress common.Address, voter common.Address) ethereum.Call {
+	parsedData, err := CurveGaugeABI.Pack("working_balances", voter)
+	if err != nil {
+		logs.Error("Error packing GetCurveWorkingBalance working_balances", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurveGaugeABI,
+		Method:   `working_balances`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetCurveBalanceOf(name string, contractAddress common.Address, voter common.Address) ethereum.Call {
+	parsedData, err := CurveGaugeABI.Pack("balanceOf", voter)
+	if err != nil {
+		logs.Error("Error packing GetCurveBalanceOf balanceOf", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurveGaugeABI,
+		Method:   `balanceOf`,
 		CallData: parsedData,
 		Name:     name,
 	}

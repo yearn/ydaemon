@@ -38,7 +38,7 @@ func filterStrategyAdded(
 	start uint64,
 	end *uint64,
 	syncMap *sync.Map,
-) {
+) *uint64 {
 	client := ethereum.GetRPC(vault.ChainID)
 
 	/**********************************************************************************************
@@ -63,7 +63,7 @@ func filterStrategyAdded(
 	if start == 0 {
 		lastEvent := vaultsLastBlockSync[vault.Address]
 		if lastEvent > 0 {
-			start = lastEvent + 1 //Adding one to get the next event
+			start = lastEvent - 1
 		} else {
 			start = vault.Activation
 		}
@@ -159,7 +159,7 @@ func filterStrategyAdded(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
+	return end
 }
 
 /**************************************************************************************************
@@ -181,7 +181,7 @@ func filterStrategiesMigrated(
 	start uint64,
 	end *uint64,
 	syncMap *sync.Map,
-) {
+) *uint64 {
 	/**************************************************************************************************
 	** First we make sure to connect with our RPC client and get the vault contract.
 	**************************************************************************************************/
@@ -206,7 +206,7 @@ func filterStrategiesMigrated(
 	if start == 0 {
 		lastEvent := vaultsLastBlockSync[vault.Address]
 		if lastEvent > 0 {
-			start = lastEvent + 1 //Adding one to get the next event
+			start = lastEvent - 1
 		} else {
 			start = vault.Activation
 		}
@@ -251,7 +251,7 @@ func filterStrategiesMigrated(
 	** We are storing in the DB the sync status, indicating we went up to the block number to check
 	** for new vaults.
 	**********************************************************************************************/
-	go store.StoreSyncStrategiesAdded(vault.ChainID, vault.Address, end)
+	return end
 }
 
 /**************************************************************************************************
@@ -279,16 +279,12 @@ func HandleStrategyAdded(
 	** Our first action is to make sure we ignore the strategies we already have in our local
 	** storage, which we loaded from the database.
 	**********************************************************************************************/
-	var strategyAddedSync []store.DBStrategyAddedSync
-	store.DATABASE.Table("db_strategy_added_syncs").
-		Where("chain_id = ?", chainID).
-		Find(&strategyAddedSync)
-
+	strategyAddedSync := store.LoadSyncStrategiesAdded(chainID)
 	vaultsLastBlockSync := map[common.Address]uint64{}
 	for _, syncEvent := range strategyAddedSync {
 		vaultsLastBlockSync[common.HexToAddress(syncEvent.Vault)] = syncEvent.Block
 	}
-	allPreviouslyAddedStrategies, _ := store.ListAllStrategiess(chainID)
+	allPreviouslyAddedStrategies, _ := store.ListAllStrategies(chainID)
 
 	/**********************************************************************************************
 	** We will then listen to all events related to the strategies added or migrated to the vaults.
@@ -323,6 +319,12 @@ func HandleStrategyAdded(
 		wg.Wait()
 	}
 
+	for _, v := range vaultsMap {
+		if end != nil {
+			store.StoreSyncStrategiesAdded(chainID, v.Address, *end)
+		}
+	}
+
 	/**********************************************************************************************
 	** Once all vaults StrategyAdded updates have been retrieved, we need to extract them from the
 	** sync.Map.
@@ -350,7 +352,7 @@ func HandleStrategyAdded(
 		strategies[vaultAddressParsed][strategyAddressParsed] = valueParsed
 		valueParsed.ChainID = chainID
 		allStrategiesList = append(allStrategiesList, valueParsed)
-		go store.StoreStrategies(chainID, valueParsed)
+		store.StoreStrategies(chainID, valueParsed)
 		count++
 		return true
 	})
@@ -395,7 +397,7 @@ func HandleStrategyAdded(
 		newStrategy.VaultVersion = vaultsMap[vaultAddressParsed].APIVersion
 		strategies[vaultAddressParsed][newStrategyAddressParsed] = newStrategy
 		allStrategiesList = append(allStrategiesList, newStrategy)
-		go store.StoreStrategies(chainID, newStrategy)
+		store.StoreStrategies(chainID, newStrategy)
 		count++
 		return true
 	})

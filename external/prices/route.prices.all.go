@@ -12,7 +12,7 @@ import (
 
 // GetAllPrices will return all the prices informations, no matter the chainID.
 func (y Controller) GetAllPrices(c *gin.Context) {
-	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 
 	allPrices := make(map[uint64]map[string]*bigNumber.Int)
 	allPricesHumanized := make(map[uint64]map[string]float64)
@@ -46,7 +46,7 @@ func (y Controller) GetPrices(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	humanized := helpers.StringToBool(helpers.SafeString(c.Query("humanized"), "false"))
+	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 
 	allPrices := prices.MapPrices(chainID)
 	if humanized {

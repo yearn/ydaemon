@@ -52,10 +52,6 @@ func chainIDToName(chainID uint64) string {
 	}
 }
 
-func Init(chainID uint64) {
-	assertDailyBlockNumber(chainID)
-}
-
 func Run(chainID uint64) {
 	assertDailyBlockNumber(chainID)
 	retrieveHistoricalPricePerShare(chainID)

@@ -167,7 +167,7 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
-		// if !addresses.Equals(vault.Address, common.HexToAddress("0xa258C4606Ca8206D8aA700cE2143D7db854D168c")) {
+		// if !addresses.Equals(vault.Address, common.HexToAddress("0x27B5739e22ad9033bcBf192059122d163b60349D")) {
 		// continue
 		// }
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
@@ -195,7 +195,7 @@ func ComputeChainAPR(chainID uint64) {
 		vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 		vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
 		oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
-		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo)
+		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
 		vaultAPY := TAPIV1APY{
@@ -207,9 +207,9 @@ func ComputeChainAPR(chainID uint64) {
 				Management:  vaultManagementFee,
 			},
 			Points: TAPIV1Points{
-				WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo),
-				MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo),
-				Inception: helpers.GetAPR(ppsToday, ppsInception),
+				WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
+				MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
+				Inception: helpers.GetAPR(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 			},
 		}
 		if !isCurveVault(allStrategiesForVault) {

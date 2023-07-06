@@ -80,7 +80,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
 		go func() {
-			initDailyBlock.Init(chainID)
+			initDailyBlock.Run(chainID)
 			apy.ComputeChainAPR(chainID)
 		}()
 	})

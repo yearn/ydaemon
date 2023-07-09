@@ -1,11 +1,8 @@
-package initDailyBlock
+package vaultPricePerShare
 
 import (
-	"encoding/json"
-	"io/ioutil"
 	"math"
 	"math/big"
-	"net/http"
 	"sort"
 	"strconv"
 	"sync"
@@ -53,7 +50,7 @@ func chainIDToName(chainID uint64) string {
 }
 
 func Run(chainID uint64) {
-	assertDailyBlockNumber(chainID)
+	retrievePreviousPPS(chainID)
 	retrieveHistoricalPricePerShare(chainID)
 }
 
@@ -73,7 +70,6 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	** tokens, prices, etc. This will allow us to have an exhaustive list of all the data we need
 	** to process.
 	**********************************************************************************************/
-	initYearnEcosystem(chainID)
 	allVaults := vaults.ListVaults(chainID)
 
 	deployedVaults := []models.TVault{}
@@ -171,7 +167,7 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	}
 }
 
-func assertDailyBlockNumber(chainID uint64) {
+func retrievePreviousPPS(chainID uint64) {
 	lastItem := store.DBVaultPricePerShare{}
 	store.DATABASE.
 		Table(`db_vault_price_per_shares`).
@@ -219,30 +215,8 @@ func assertDailyBlockNumber(chainID uint64) {
 		if ok {
 			syncMap.Store(noonUTC, data)
 			noonUTC = noonUTC.AddDate(0, 0, 1)
-			continue
 		} else {
-			defillamaURI := `https://coins.llama.fi/block/` + chainIDToName(chainID) + `/` + strconv.FormatInt(nextDayNoonUTCTimestamp, 10)
-			resp, err := http.Get(defillamaURI)
-			if err != nil || resp.StatusCode != 200 {
-				logs.Warning("Error fetching timestamp from DeFiLlama for chain", chainID)
-				logs.Error(err)
-				continue
-			}
-			defer resp.Body.Close()
-			body, err := ioutil.ReadAll(resp.Body)
-			if err != nil {
-				logs.Warning("Error unmarshalling response body from DeFiLlama for chain", chainID)
-				continue
-			}
-			data := TLlamaBlock{}
-			if err := json.Unmarshal(body, &data); err != nil {
-				logs.Warning("Error unmarshalling response body from DeFiLlama for chain", chainID)
-				continue
-			}
-			store.StoreBlockTime(chainID, data.Height, uint64(nextDayNoonUTCTimestamp))
-			syncMap.Store(noonUTC, data.Height)
-			noonUTC = noonUTC.AddDate(0, 0, 1)
-			time.Sleep(500 * time.Millisecond)
+			logs.Pretty(`MISSING`, noonUTC)
 		}
 	}
 }

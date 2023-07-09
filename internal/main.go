@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"os"
 	"sync"
 	"time"
 
@@ -16,7 +17,8 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
+	"github.com/yearn/ydaemon/processes/dailyBlockNumber"
+	"github.com/yearn/ydaemon/processes/vaultPricePerShare"
 )
 
 var STRATLIST = []models.TStrategy{}
@@ -80,7 +82,9 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
 		go func() {
-			initDailyBlock.Run(chainID)
+			dailyBlockNumber.Run(chainID)
+			vaultPricePerShare.Run(chainID)
+			os.Exit(1)
 			apy.ComputeChainAPR(chainID)
 		}()
 		strategies.InitRiskScore(chainID)
@@ -91,7 +95,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	})
 
 	cron.Every(1).Day().At("12:10").Do(func() {
-		initDailyBlock.Run(chainID)
+		vaultPricePerShare.Run(chainID)
 	})
 	cron.StartAsync()
 	go registries.IndexNewVaults(chainID)

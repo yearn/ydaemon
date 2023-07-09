@@ -29,6 +29,25 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64, ok bool
 }
 
 /**************************************************************************************************
+** ListBlockTime will return a list of all the blockNumber and blockTime stored in the caching
+** system for a given chainID. A slice is returned.
+**************************************************************************************************/
+func ListBlockTime(chainID uint64) map[uint64]uint64 {
+	syncMap := _blockTimeSyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_blockTimeSyncMap[chainID] = syncMap
+	}
+
+	var blockTimes = make(map[uint64]uint64)
+	syncMap.Range(func(key, value interface{}) bool {
+		blockTimes[key.(uint64)] = value.(uint64)
+		return true
+	})
+	return blockTimes
+}
+
+/**************************************************************************************************
 ** GetTimeBlock will try, for a specific time on a specific chain, to find its execution
 ** blockNumber in the _timeBlockSyncMap.
 **************************************************************************************************/

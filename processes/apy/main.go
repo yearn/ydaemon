@@ -14,7 +14,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
+	"github.com/yearn/ydaemon/processes/vaultPricePerShare"
 )
 
 var ZERO = bigNumber.NewFloat(0)
@@ -195,6 +195,7 @@ func ComputeChainAPR(chainID uint64) {
 		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
+
 		vaultAPY := TAPIV1APY{
 			Type:     "v2:averaged",
 			GrossAPR: grossAPR,
@@ -266,6 +267,6 @@ func ComputeChainAPR(chainID uint64) {
 
 func Run(chainID uint64) {
 	initYearnEcosystem(chainID)
-	initDailyBlock.Run(chainID)
+	vaultPricePerShare.Run(chainID)
 	ComputeChainAPR(chainID)
 }

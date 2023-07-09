@@ -7,9 +7,9 @@ import (
 	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/processes/apy"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/partnerFees"
 	"github.com/yearn/ydaemon/processes/tokenList"
+	"github.com/yearn/ydaemon/processes/vaultPricePerShare"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
 
@@ -78,7 +78,7 @@ func main() {
 		for _, chainID := range chains {
 			wg.Add(1)
 			go func(chainID uint64) {
-				initDailyBlock.Run(chainID)
+				vaultPricePerShare.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

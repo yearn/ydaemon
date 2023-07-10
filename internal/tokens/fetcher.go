@@ -410,7 +410,9 @@ func RetrieveAllTokens(
 			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
 			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 		},
-		10:    {},
+		10: {
+			`0x4200000000000000000000000000000000000042`, // Opt
+		},
 		250:   {},
 		42161: {},
 	}

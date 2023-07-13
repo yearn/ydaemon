@@ -15,48 +15,19 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/registries"
-	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-var _dailyBlockNumber = make(map[uint64]*sync.Map)
-
-type TLlamaBlock struct {
-	Height    uint64 `json:"height"`
-	Timestamp uint64 `json:"timestamp"`
-}
-
-func chainIDToName(chainID uint64) string {
-	switch chainID {
-	case 1:
-		return "ethereum"
-	case 10:
-		return "optimism"
-	case 100:
-		return "gnosis"
-	case 137:
-		return "polygon"
-	case 250:
-		return "fantom"
-	case 42161:
-		return "arbitrum"
-	case 43114:
-		return "avalanche"
-	default:
-		return "Unknown"
-	}
-}
+var _pricePerShare = make(map[uint64]*sync.Map)
 
 func Run(chainID uint64) {
-	retrievePreviousPPS(chainID)
+	retrieveStoredPricePerShare(chainID)
 	retrieveHistoricalPricePerShare(chainID)
 }
 
 func retrieveHistoricalPricePerShare(chainID uint64) {
 	timeBlockMap := map[time.Time]uint64{}
-	syncMap := _dailyBlockNumber[chainID]
+	syncMap := _pricePerShare[chainID]
 	if syncMap == nil {
 		return
 	}
@@ -79,7 +50,7 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	** Sort our timeBlockMap by time. This will allow us to process the blocks in order and select
 	** only the vaults that were deployed at the time of the block.
 	**********************************************************************************************/
-	var keys []time.Time
+	keys := []time.Time{}
 	for k := range timeBlockMap {
 		keys = append(keys, k)
 	}
@@ -87,7 +58,8 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 		return keys[i].Before(keys[j])
 	})
 
-	for time, block := range timeBlockMap {
+	for _, time := range keys {
+		block := timeBlockMap[time]
 		/******************************************************************************************
 		** For each unDeployedVault, check if the vault was deployed since the previous time range.
 		** If it was, add it to the deployedVaults list and remove it from the unDeployedVaults
@@ -135,7 +107,7 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 			calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
 		}
 		response := multicalls.Perform(chainID, calls, big.NewInt(int64(block)))
-		itemToSave := []store.DBVaultPricePerShare{}
+		itemToSave := []store.DBHistoricalValue{}
 		for _, vault := range deployedVaults {
 			rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
 			pricePerShare := helpers.DecodeBigInt(rawPricePerShare)
@@ -144,14 +116,14 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 			}
 			humanizedPricePerShare := helpers.ToNormalizedAmount(pricePerShare, vault.Decimals)
 			humanizedFloat, _ := humanizedPricePerShare.Float64()
-			itemToSave = append(itemToSave, store.DBVaultPricePerShare{
-				UUID:                   `will-be-overwritten`,
-				Vault:                  vault.Address.Hex(),
-				PricePerShare:          pricePerShare.String(),
-				HumanizedPricePerShare: humanizedFloat,
-				Time:                   uint64(time.Unix()),
-				Block:                  block,
-				ChainID:                chainID,
+			itemToSave = append(itemToSave, store.DBHistoricalValue{
+				UUID:           `will-be-overwritten`,
+				Token:          vault.Address.Hex(),
+				Value:          pricePerShare.String(),
+				HumanizedValue: humanizedFloat,
+				Time:           uint64(time.Unix()),
+				Block:          block,
+				ChainID:        chainID,
 			})
 		}
 		store.StorePricePerShare(chainID, itemToSave)
@@ -167,18 +139,24 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	}
 }
 
-func retrievePreviousPPS(chainID uint64) {
-	lastItem := store.DBVaultPricePerShare{}
+/**********************************************************************************************
+** retrieveStoredPricePerShare is used to populate or repopulate the _pricePerShare sync map
+** for a given chain.
+** We need to call this function prior to any run which will look for the _pricePerShare to
+** avoid refetching previous values
+**********************************************************************************************/
+func retrieveStoredPricePerShare(chainID uint64) {
+	lastItem := store.DBHistoricalValue{}
 	store.DATABASE.
-		Table(`db_vault_price_per_shares`).
+		Table(`db_vaults_v2_price_per_share`).
 		Where(`chain_id = ?`, chainID).
 		Order(`time DESC`).
 		First(&lastItem)
 
-	syncMap := _dailyBlockNumber[chainID]
+	syncMap := _pricePerShare[chainID]
 	if syncMap == nil {
-		_dailyBlockNumber[chainID] = &sync.Map{}
-		syncMap = _dailyBlockNumber[chainID]
+		_pricePerShare[chainID] = &sync.Map{}
+		syncMap = _pricePerShare[chainID]
 	}
 	/**********************************************************************************************
 	** The first step is to find the earliest relevant deployment for yearn on this chain. For us
@@ -219,16 +197,4 @@ func retrievePreviousPPS(chainID uint64) {
 			logs.Pretty(`MISSING`, noonUTC)
 		}
 	}
-}
-
-/**************************************************************************************************
-** initYearnEcosystem is used to initialize the yearn ecosystem data, aka fetching all the vaults,
-** strategies, tokens, prices, etc.
-** Based on that, we have everything ready to compute the fees for each partner.
-**************************************************************************************************/
-func initYearnEcosystem(chainID uint64) {
-	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-	tokens.RetrieveAllTokens(chainID, vaultsMap)
-	prices.RetrieveAllPrices(chainID)
-	vaults.RetrieveAllVaults(chainID, vaultsMap)
 }

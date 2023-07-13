@@ -40,8 +40,8 @@ type TEthMultiCaller struct {
 	ContractAddress common.Address
 }
 
-func (call Call) GetMultiCall() contracts.Multicall2Call {
-	return contracts.Multicall2Call{
+func (call Call) GetMultiCall() contracts.Multicall3Call {
+	return contracts.Multicall3Call{
 		Target:   call.Target,
 		CallData: call.CallData,
 	}
@@ -69,7 +69,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 
 	// Load Multicall abi for later use
-	mcAbi, err := contracts.Multicall2MetaData.GetAbi()
+	mcAbi, err := contracts.Multicall3MetaData.GetAbi()
 	if err != nil {
 		currentChainID, _ := client.ChainID(context.Background())
 		traces.
@@ -94,12 +94,13 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 }
 
 func (caller *TEthMultiCaller) execute(
-	multiCallGroup []contracts.Multicall2Call,
+	multiCallGroup []contracts.Multicall3Call,
 	blockNumber *big.Int,
 ) ([]byte, error) {
-	abi, _ := contracts.Multicall2MetaData.GetAbi()
+	abi, _ := contracts.Multicall3MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
 	if err != nil {
+		logs.Error(`failed to pack tryAggregate`)
 		traces.
 			Capture(`error`, `failed to pack tryAggregate`).
 			SetEntity(`multicall`).
@@ -109,7 +110,6 @@ func (caller *TEthMultiCaller) execute(
 		return []byte{}, err
 	}
 
-	// Perform multicall
 	resp, err := caller.Client.CallContract(
 		context.Background(),
 		ethereum.CallMsg{
@@ -121,6 +121,7 @@ func (caller *TEthMultiCaller) execute(
 		blockNumber,
 	)
 	if err != nil {
+		logs.Error(`Failed to perform multicall`, err, resp)
 		chainID, _ := caller.Client.ChainID(context.Background())
 		return []byte{}, errors.New("Failed to perform multicall for:" + chainID.String() + " | " + err.Error())
 	}
@@ -140,7 +141,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	results := make(map[string][]interface{})
 
 	// Add calls to multicall structure for the contract
-	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
+	var multiCalls = make([]contracts.Multicall3Call, 0, len(calls))
 	var rawCalls = make([]Call, 0, len(calls))
 	for _, call := range calls {
 		multiCalls = append(multiCalls, call.GetMultiCall())
@@ -148,7 +149,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	}
 
 	for i := 0; i < len(multiCalls); i += batchSize {
-		var group []contracts.Multicall2Call
+		var group []contracts.Multicall3Call
 		var rawCallsGroup []Call
 
 		if i+batchSize >= len(multiCalls) {
@@ -162,8 +163,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
-			//print associated rawCalls
-			// logs.Error(rawCallsGroup)
 			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")
@@ -194,12 +193,10 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 					return nil
 				}
 				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
-			} else {
-				logs.Error(err)
-				//sleep a few ms and retry
-				time.Sleep(2000 * time.Millisecond)
-				return caller.ExecuteByBatch(calls, batchSize, blockNumber)
 			}
+			logs.Error(err)
+			time.Sleep(2000 * time.Millisecond)
+			return caller.ExecuteByBatch(calls, batchSize, blockNumber)
 		}
 
 		// Unpack results
@@ -217,6 +214,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
+			logs.Error(`failed to marshal response`)
 			traces.
 				Capture(`error`, `failed to marshal response`).
 				SetEntity(`multicall`).
@@ -229,6 +227,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		// Unpack results
 		var tempResp []CallResponse
 		if err := json.Unmarshal(a, &tempResp); err != nil {
+			logs.Error(`failed to unmarshal response`)
 			traces.
 				Capture(`error`, `failed to unmarshal response`).
 				SetEntity(`multicall`).

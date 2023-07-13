@@ -289,12 +289,39 @@ func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
 	case DBBadger:
 		// not implemented
 	case DBSql:
-		var temp []DBVaultPricePerShare
-		DATABASE.Table(`db_vault_price_per_shares`).
+		var temp []DBHistoricalValue
+		DATABASE.Table(`db_vaults_v2_price_per_share`).
 			Where("chain_id = ?", chainID).
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
 				for _, dataFromDB := range temp {
-					key := common.HexToAddress(dataFromDB.Vault).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)
+					key := common.HexToAddress(dataFromDB.Token).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)
+					syncMap.Store(key, dataFromDB)
+				}
+				return nil
+			})
+	}
+}
+
+/**************************************************************************************************
+** LoadVirtualPrices will retrieve the all the virtualPrices from the configured DB and store them
+** in the _curveVirtualPriceSyncMap for fast access during that same execution.
+**************************************************************************************************/
+func LoadVirtualPrices(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _curveVirtualPriceSyncMap[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// not implemented
+	case DBSql:
+		var temp []DBHistoricalValue
+		DATABASE.Table(`db_curve_virtual_prices`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, dataFromDB := range temp {
+					key := common.HexToAddress(dataFromDB.Token).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)
 					syncMap.Store(key, dataFromDB)
 				}
 				return nil

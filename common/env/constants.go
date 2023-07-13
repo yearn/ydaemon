@@ -195,6 +195,19 @@ var YEARN_REGISTRIES = map[uint64][]TContractData{
 	},
 }
 
+// CURVE_REGISTRIES is the list of registries used by Curve across all the supported chains, with the activation block
+var CURVE_REGISTRIES = map[uint64][]TContractData{
+	1: {
+		{Address: common.HexToAddress("0x7D86446dDb609eD0F5f8684AcF30380a356b2B4c"), Block: 11154794},
+		{Address: common.HexToAddress("0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5"), Block: 12195750},
+		{Address: common.HexToAddress("0x8F942C20D02bEfc377D41445793068908E2250D0"), Block: 13986752},
+		{Address: common.HexToAddress("0xF98B45FA17DE75FB1aD0e7aFD971b0ca00e379fC"), Block: 15732062},
+	},
+	10:    {},
+	250:   {},
+	42161: {},
+}
+
 // EXTRA_VAULTS is a list of vaults that are not registered in the registries, but are still used by Yearn
 var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 	1:  {},
@@ -227,22 +240,32 @@ var LENS_ADDRESSES = map[uint64]common.Address{
 	42161: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 }
 
-// MULTICALL_ADDRESSES contains the address of the multicall2 contract for a specific chainID
-var MULTICALL_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`),
-	10:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
-	56:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
-	137:   common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
-	250:   common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),
-	42161: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
-}
-
-// CURVE_REGISTRY_ADDRESSES contains the address of the Curve Registry contract
-var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
-	10:    common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-	250:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+// MULTICALL_ADDRESSES contains the address of the multicall3 contract for a specific chainID
+var MULTICALL_ADDRESSES = map[uint64]TContractData{
+	1: {
+		Address: common.HexToAddress(`0x5ba1e12693dc8f9c48aad8770482f4739beed696`),
+		Block:   12336033,
+	},
+	10: {
+		Address: common.HexToAddress(`0x054FfF7ee30953DdB739458e11EAAd51224343a1`),
+		Block:   31946661,
+	},
+	56: {
+		Address: common.HexToAddress(`0x4c6bb7c24b6f3dfdfb548e54b7c5ea4cb52a0069`),
+		Block:   0,
+	},
+	137: {
+		Address: common.HexToAddress(`0xf43a7be1b284aa908cdfed8b3e286961956b4d2c`),
+		Block:   15695723,
+	},
+	250: {
+		Address: common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),
+		Block:   0,
+	},
+	42161: {
+		Address: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
+		Block:   0,
+	},
 }
 
 // CURVE_FACTORIES_ADDRESSES contains the address of the Curve Registry contract

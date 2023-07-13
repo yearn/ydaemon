@@ -268,8 +268,8 @@ func GetPricePerShare(chainID uint64, vaultAddress common.Address, time uint64) 
 	if !ok {
 		return ``, false
 	}
-	data := syncMapResult.(DBVaultPricePerShare)
-	return data.PricePerShare, true
+	data := syncMapResult.(DBHistoricalValue)
+	return data.Value, true
 }
 
 /**************************************************************************************************
@@ -288,12 +288,12 @@ func ListPricePerShare(chainID uint64, vaultAddress common.Address) (
 		_vaultsPricePerShareSyncMap[chainID] = syncMap
 	}
 	syncMap.Range(func(key, value interface{}) bool {
-		data := value.(DBVaultPricePerShare)
-		if data.Vault != vaultAddress.Hex() {
+		data := value.(DBHistoricalValue)
+		if data.Token != vaultAddress.Hex() {
 			return true
 		}
-		withTime[data.Time] = bigNumber.NewInt(0).SetString(data.PricePerShare)
-		withBlock[data.Block] = bigNumber.NewInt(0).SetString(data.PricePerShare)
+		withTime[data.Time] = bigNumber.NewInt(0).SetString(data.Value)
+		withBlock[data.Block] = bigNumber.NewInt(0).SetString(data.Value)
 		return true
 	})
 

@@ -18,6 +18,12 @@ import (
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
+var standardCoins = map[uint64][]common.Address{
+	1: {
+		common.HexToAddress(`0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984`),
+	},
+}
+
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
 ** for the related token. This includes the name, the symbol, the decimals and the details about
@@ -48,7 +54,9 @@ func fetchBasicInformations(
 		calls = append(calls, multicalls.GetSymbol(token.Hex(), token))
 		calls = append(calls, multicalls.GetDecimals(token.Hex(), token))
 		calls = append(calls, multicalls.GetToken(token.Hex(), token))
-		calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex(), env.CURVE_REGISTRY_ADDRESSES[chainID], token))
+		for _, curveRegistry := range env.CURVE_REGISTRIES[chainID] {
+			calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex()+`_`+curveRegistry.Address.Hex(), curveRegistry.Address, token))
+		}
 		calls = append(calls, multicalls.GetCompoundUnderlying(token.Hex(), token))
 		calls = append(calls, multicalls.GetAaveV1Underlying(token.Hex(), token))
 		calls = append(calls, multicalls.GetAaveV2Underlying(token.Hex(), token))
@@ -79,13 +87,13 @@ func fetchBasicInformations(
 		rawSymbol := response[tokenAddress.Hex()+`symbol`]
 		rawDecimals := response[tokenAddress.Hex()+`decimals`]
 		rawYearnVaultToken := response[tokenAddress.Hex()+`token`]
-		rawPoolFromLpToken := response[tokenAddress.Hex()+`get_pool_from_lp_token`]
 		rawCurveCoinMinterToken := response[tokenAddress.Hex()+`minter`]
 		rawCUnderlying := response[tokenAddress.Hex()+`underlying`]
 		rawAV1Underlying := response[tokenAddress.Hex()+`underlyingAssetAddress`]
 		rawAV2Underlying := response[tokenAddress.Hex()+`UNDERLYING_ASSET_ADDRESS`]
 		rawCurveCoin0 := response[tokenAddress.Hex()+`_coin0coins`]
 		rawCurveCoin1 := response[tokenAddress.Hex()+`_coin1coins`]
+		isStandardCoin := helpers.Contains(standardCoins[chainID], tokenAddress)
 
 		/******************************************************************************************
 		** Preparing our new ERC20Token object
@@ -137,15 +145,18 @@ func fetchBasicInformations(
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != common.Address{}
-		if isCurveLpToken {
-			newToken.Type = models.TokenTypeCurveLP
-			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(env.CURVE_REGISTRY_ADDRESSES[chainID], caller.Client)
-			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
-			for _, coin := range poolCoins {
-				if (coin != common.Address{}) {
-					relatedTokensList = append(relatedTokensList, coin)
-					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+		for _, curveRegistry := range env.CURVE_REGISTRIES[chainID] {
+			rawPoolFromLpToken := response[tokenAddress.Hex()+`_`+curveRegistry.Address.Hex()+`get_pool_from_lp_token`]
+			isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != common.Address{}
+			if isCurveLpToken {
+				newToken.Type = models.TokenTypeCurveLP
+				curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(curveRegistry.Address, caller.Client)
+				poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
+				for _, coin := range poolCoins {
+					if (coin != common.Address{}) {
+						relatedTokensList = append(relatedTokensList, coin)
+						newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+					}
 				}
 			}
 		}
@@ -209,8 +220,9 @@ func fetchBasicInformations(
 		** response from the `minter` RPC call.
 		** This is used for some of the Curve LP tokens.
 		******************************************************************************************/
-		isCurveLPCoin := rawCurveCoinMinterToken != nil && helpers.DecodeAddress(rawCurveCoinMinterToken) != common.Address{}
-		if isCurveLPCoin {
+		minterAddress := helpers.DecodeAddress(rawCurveCoinMinterToken)
+		isCurveLPCoin := rawCurveCoinMinterToken != nil && minterAddress != common.Address{}
+		if isCurveLPCoin && !isStandardCoin {
 			newToken.Type = models.TokenTypeCurveLP
 			minter := helpers.DecodeAddress(rawCurveCoinMinterToken)
 			coins, ok := curveFactoryPoolMap[minter.Hex()]
@@ -227,8 +239,10 @@ func fetchBasicInformations(
 		** response from the `coin` RPC call.
 		** This is used for some of the Curve LP tokens.
 		******************************************************************************************/
-		isCurveLPCoinFromCoins := (rawCurveCoin0 != nil && helpers.DecodeAddress(rawCurveCoin0) != common.Address{}) && (rawCurveCoin1 != nil && helpers.DecodeAddress(rawCurveCoin1) != common.Address{})
-		if isCurveLPCoinFromCoins {
+		coin0 := helpers.DecodeAddress(rawCurveCoin0)
+		coin1 := helpers.DecodeAddress(rawCurveCoin1)
+		isCurveLPCoinFromCoins := coin0 != common.Address{} && coin1 != common.Address{}
+		if isCurveLPCoinFromCoins && !isStandardCoin {
 			newToken.Type = models.TokenTypeCurveLP
 			coin0 := helpers.DecodeAddress(rawCurveCoin0)
 			coin1 := helpers.DecodeAddress(rawCurveCoin1)

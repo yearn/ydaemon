@@ -149,15 +149,15 @@ type DBStrategyAddedSync struct {
 }
 
 /**************************************************************************************************
-** DBVaultPricePerShare is a struct used to keep track of the pricePerShare for a vault, every day
-** at noon UTC.
+** DBHistoricalValue is a struct used to keep track of the value of something, every day at noon
+** UTC.
 **************************************************************************************************/
-type DBVaultPricePerShare struct {
-	UUID                   string  `gorm:"primaryKey" json:"UUID,omitempty"` // UUID is the unique identifier of the entry
-	Block                  uint64  `json:"block"`                            // Block is the block number of the entry
-	Time                   uint64  `json:"time"`                             // Time is the timestamp of the entry
-	ChainID                uint64  `json:"chainID"`                          // ChainID is the chain on which the vault is deployed
-	Vault                  string  `json:"vault"`                            // Vault is the vault address
-	PricePerShare          string  `json:"pricePerShare"`                    // PricePerShare is the price per share of the vault
-	HumanizedPricePerShare float64 `json:"humanizedPricePerShare"`           // HumanizedPricePerShare is the price per share of the vault, humanized in base vaultDecimals
+type DBHistoricalValue struct {
+	UUID           string  `gorm:"primaryKey" json:"UUID,omitempty"` // UUID is the unique identifier of the entry
+	Block          uint64  `json:"block"`                            // Block is the block number of the entry
+	Time           uint64  `json:"time"`                             // Time is the timestamp of the entry
+	ChainID        uint64  `json:"chainID"`                          // ChainID is the chain on which we are working
+	Token          string  `json:"token"`                            // Token is the token address
+	Value          string  `json:"value"`                            // Value is the value of the token
+	HumanizedValue float64 `json:"humanizedValue"`                   // HumanizedValue is the value of the token, humanized in base decimals
 }

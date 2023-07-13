@@ -17,6 +17,7 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/curveVirtualPrice"
 	"github.com/yearn/ydaemon/processes/dailyBlockNumber"
 	"github.com/yearn/ydaemon/processes/vaultPricePerShare"
 )
@@ -83,8 +84,9 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		indexer.PostProcessStrategies(chainID)
 		go func() {
 			dailyBlockNumber.Run(chainID)
-			vaultPricePerShare.Run(chainID)
+			curveVirtualPrice.Run(chainID)
 			os.Exit(1)
+			vaultPricePerShare.Run(chainID)
 			apy.ComputeChainAPR(chainID)
 		}()
 		strategies.InitRiskScore(chainID)

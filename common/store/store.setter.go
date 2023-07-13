@@ -406,16 +406,16 @@ func StoreSyncStrategiesAdded(chainID uint64, vaultAddress common.Address, end u
 ** in _vaultsPricePerShareSyncMap for fast access during that same execution, and will store it in
 ** the configured DB for future executions.
 **************************************************************************************************/
-func StorePricePerShare(chainID uint64, data []DBVaultPricePerShare) {
+func StorePricePerShare(chainID uint64, data []DBHistoricalValue) {
 	switch _dbType {
 	case DBBadger:
 		// Not implemented
 	case DBSql:
 		go func() {
-			items := make([]DBVaultPricePerShare, len(data))
+			items := make([]DBHistoricalValue, len(data))
 			syncMap := _vaultsPricePerShareSyncMap[chainID]
 			for _, d := range data {
-				key := (common.HexToAddress(d.Vault).Hex() +
+				key := (common.HexToAddress(d.Token).Hex() +
 					`_` +
 					strconv.FormatUint(d.Time, 10) +
 					`_` +
@@ -423,19 +423,60 @@ func StorePricePerShare(chainID uint64, data []DBVaultPricePerShare) {
 					`_` +
 					strconv.FormatUint(d.Block, 10))
 				syncMap.Store(key, d)
-				items = append(items, DBVaultPricePerShare{
-					UUID:                   getUUID(key),
-					Vault:                  d.Vault,
-					PricePerShare:          d.PricePerShare,
-					HumanizedPricePerShare: d.HumanizedPricePerShare,
-					Time:                   d.Time,
-					ChainID:                d.ChainID,
-					Block:                  d.Block,
+				items = append(items, DBHistoricalValue{
+					UUID:           getUUID(key),
+					Token:          d.Token,
+					Value:          d.Value,
+					HumanizedValue: d.HumanizedValue,
+					Time:           d.Time,
+					ChainID:        d.ChainID,
+					Block:          d.Block,
 				})
 			}
 			wait(`StorePricePerShare`)
 			DATABASE.
-				Table(`db_vault_price_per_shares`).
+				Table(`db_vaults_v2_price_per_share`).
+				Clauses(clause.OnConflict{UpdateAll: true}).
+				Create(&items)
+		}()
+	}
+}
+
+/**************************************************************************************************
+** StoreVirtualPrice will store the virtualPrice of curve tokens at a specific time/block
+** in _virtualPrices for fast access during that same execution, and will store it in
+** the configured DB for future executions.
+**************************************************************************************************/
+func StoreVirtualPrice(chainID uint64, data []DBHistoricalValue) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			items := make([]DBHistoricalValue, len(data))
+			syncMap := _curveVirtualPriceSyncMap[chainID]
+			for _, d := range data {
+				key := (common.HexToAddress(d.Token).Hex() +
+					`_` +
+					strconv.FormatUint(d.Time, 10) +
+					`_` +
+					strconv.FormatUint(d.ChainID, 10) +
+					`_` +
+					strconv.FormatUint(d.Block, 10))
+				syncMap.Store(key, d)
+				items = append(items, DBHistoricalValue{
+					UUID:           getUUID(key),
+					Token:          d.Token,
+					Value:          d.Value,
+					HumanizedValue: d.HumanizedValue,
+					Time:           d.Time,
+					ChainID:        d.ChainID,
+					Block:          d.Block,
+				})
+			}
+			wait(`StoreVirtualPrice`)
+			DATABASE.
+				Table(`db_curve_virtual_prices`).
 				Clauses(clause.OnConflict{UpdateAll: true}).
 				Create(&items)
 		}()

@@ -43,9 +43,21 @@ func fetchPrices(
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
 	**********************************************************************************************/
 	queryList := []common.Address{}
+	buggyTokensInLensOracle := map[uint64][]common.Address{
+		1: {
+			common.HexToAddress(`0xf5f5b97624542d72a9e06f04804bf81baa15e2b4`),
+		},
+	}
 	for _, token := range tokenList {
 		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
 			queryList = append(queryList, token)
+		}
+		if buggyTokensInLensOracle[chainID] != nil {
+			for _, buggyToken := range buggyTokensInLensOracle[chainID] {
+				if buggyToken == token {
+					queryList = append(queryList, token)
+				}
+			}
 		}
 	}
 

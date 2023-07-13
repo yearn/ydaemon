@@ -1,7 +1,6 @@
 package internal
 
 import (
-	"os"
 	"sync"
 	"time"
 
@@ -85,7 +84,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		go func() {
 			dailyBlockNumber.Run(chainID)
 			curveVirtualPrice.Run(chainID)
-			os.Exit(1)
 			vaultPricePerShare.Run(chainID)
 			apy.ComputeChainAPR(chainID)
 		}()

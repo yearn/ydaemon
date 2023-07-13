@@ -51,7 +51,7 @@ func init() {
 
 	wg := &sync.WaitGroup{}
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(4)
+		wg.Add(5)
 		go LoadBlockTime(chainID, nil)
 		go LoadHistoricalPrice(chainID, nil)
 		go LoadNewVaultsFromRegistry(chainID, wg)

@@ -85,6 +85,7 @@ func retrieveNewVirtualPrices(chainID uint64) {
 		return keys[i].Before(keys[j])
 	})
 
+	logs.Info(`Retrieving new virtual prices started for chain ` + strconv.FormatUint(chainID, 10))
 	itemToSave := []store.DBHistoricalValue{}
 	for _, time := range keys {
 		canUseMulticall := true
@@ -92,7 +93,6 @@ func retrieveNewVirtualPrices(chainID uint64) {
 		if env.MULTICALL_ADDRESSES[chainID].Block > block {
 			canUseMulticall = false
 		}
-		logs.Info(`Processing block ` + strconv.FormatUint(block, 10) + ` for ` + time.String())
 		/******************************************************************************************
 		** For each unDeployedVault, check if the vault was deployed since the previous time range.
 		** If it was, add it to the deployedVaults list and remove it from the unDeployedVaults
@@ -129,7 +129,6 @@ func retrieveNewVirtualPrices(chainID uint64) {
 			}
 		}
 		deployedVaults = updatedDeployedVaults
-		logs.Success(len(updatedDeployedVaults))
 
 		/******************************************************************************************
 		** Once we got the list of vaults to check, we can start the multicall. It's a simple
@@ -266,7 +265,7 @@ func retrieveNewVirtualPrices(chainID uint64) {
 		}
 		store.StoreVirtualPrice(chainID, itemToSave)
 	}
-	logs.Success(`Process finished for chain ` + strconv.FormatUint(chainID, 10))
+	logs.Success(`Retrieving new virtual prices finished for chain ` + strconv.FormatUint(chainID, 10))
 
 	/**********************************************************************************************
 	** Just a for loop to avoid killing the process while some requests are still pending.

@@ -1,0 +1,15 @@
+{
+	"$schema": "risks",
+	"label": "Strategy LQTY Staker",
+	"codeReviewScore": 3,
+	"testingScore": 3,
+	"auditScore": 4,
+	"protocolSafetyScore": 4,
+	"complexityScore": 1,
+	"teamKnowledgeScore": 4,
+	"criteria": {
+		"nameLike": ["StrategyLQTYStaker"],
+		"strategies": [],
+		"exclude": []
+	}
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "strategy",
+  "name": "Liquity Fee Claim and Reinvest",
+  "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY.",
+  "addresses": ["0x478085739EA884F38Add4D36872aCd8333b5D4D6"],
+  "protocols": ["Liquity"],
+  "protocolVersion": {
+    "Liquity": "1"
+  },
+  "localization": {
+    "en": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "fr": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "es": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "de": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "pt": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "el": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "tr": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "vi": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "zh": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "hi": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "ja": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "id": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    },
+    "ru": {
+      "name": "Liquity Fee Claim and Reinvest",
+      "description": "Accepts {{token}} and stakes it at [Liquity](https://liquity.app/) to earn LUSD and ETH. Earned rewards are harvested, swapped for more {{token}} which is deposited back into the strategy. Native rewards are increased via yLQTY Booster, which donates yield from staking Yearn's protocol-owned LQTY."
+    }
+  }
+}

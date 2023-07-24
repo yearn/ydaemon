@@ -19,6 +19,8 @@ import (
 var VELO_PAIR_URI = `https://api.velodrome.finance/api/v1/pairs`
 var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x3b21531bd00289f10c7d8b64b9389095f521a4d3`)
 var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x07f544813e9fb63d57a92f28fbd3ff0f7136f5ce`)
+var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
+var OPT_OP_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000042`)
 var OPT_USDC_ADDRESS = common.HexToAddress(`0x7F5c764cBc14f9669B88837ca1490cCa17c31607`)
 
 func fetchVelo(url string) []models.TVeloPairData {
@@ -116,7 +118,7 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	allSugar, _ := sugar.All(nil, big.NewInt(200), big.NewInt(0), common.Address{})
 
 	for _, pair := range allSugar {
-		ratesConnector := []common.Address{pair.Token0, pair.Token1, OPT_USDC_ADDRESS}
+		ratesConnector := []common.Address{pair.Token0, pair.Token1, OPT_WETH_ADDRESS, OPT_OP_ADDRESS, OPT_USDC_ADDRESS}
 		prices, err := sugarOracle.GetManyRatesWithConnectors(nil, 2, ratesConnector)
 		if err != nil {
 			continue

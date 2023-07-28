@@ -224,6 +224,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
 			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 			`0x30D20208d987713f46DFD34EF128Bb16C404D10f`, // Stader
+			`0xa2E3356610840701BDf5611a53974510Ae27E2e1`, //wBETH
 		},
 		10:  {},
 		250: {},

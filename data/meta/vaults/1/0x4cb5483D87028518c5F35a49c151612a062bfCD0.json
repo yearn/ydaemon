@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Balancer GHO-bb-a-USD-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 402,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Balancer GHO-bb-a-USD",
+  "migrationAvailable": false,
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Balancer",
+    "stability": "Correlated",
+    "stableBaseAsset": "USD"
+  }
+}

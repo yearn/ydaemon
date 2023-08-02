@@ -126,6 +126,7 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 				Management:  aggregatedVault.LegacyAPY.Fees.Management,
 				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
 				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
+				KeepVelo:    aggregatedVault.LegacyAPY.Fees.KeepVelo,
 				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
 			},
 			Error: aggregatedVault.LegacyAPY.Error,

@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Vel tBTC-WBTC",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 77,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Velodrome tBTC-WBTC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Velodrome",
+    "stability": "Stable",
+    "stableBaseAsset": "Bitcoin"
+  }
+}

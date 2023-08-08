@@ -39,6 +39,7 @@ type TExternalAPYFees struct {
 	Withdrawal  float64 `json:"withdrawal"`
 	Management  float64 `json:"management"`
 	KeepCRV     float64 `json:"keep_crv"`
+	KeepVelo    float64 `json:"keep_velo"`
 	CvxKeepCRV  float64 `json:"cvx_keep_crv"`
 }
 

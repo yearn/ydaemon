@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"sort"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
@@ -22,6 +23,8 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
+
+var _dailyBlockNumber = make(map[uint64]*sync.Map)
 
 type TLlamaBlock struct {
 	Height    uint64 `json:"height"`
@@ -50,12 +53,21 @@ func chainIDToName(chainID uint64) string {
 }
 
 func Run(chainID uint64) {
-	timeBlockMap := assertDailyBlockNumber(chainID)
-	retrieveHistoricalPricePerShare(chainID, timeBlockMap)
-
+	assertDailyBlockNumber(chainID)
+	retrieveHistoricalPricePerShare(chainID)
 }
 
-func retrieveHistoricalPricePerShare(chainID uint64, timeBlockMap map[time.Time]uint64) {
+func retrieveHistoricalPricePerShare(chainID uint64) {
+	timeBlockMap := map[time.Time]uint64{}
+	syncMap := _dailyBlockNumber[chainID]
+	if syncMap == nil {
+		return
+	}
+	syncMap.Range(func(key, value interface{}) bool {
+		timeBlockMap[key.(time.Time)] = value.(uint64)
+		return true
+	})
+
 	/**********************************************************************************************
 	** The first steps are to init out environment. We need to fetch all our vaults, strategies,
 	** tokens, prices, etc. This will allow us to have an exhaustive list of all the data we need
@@ -159,7 +171,7 @@ func retrieveHistoricalPricePerShare(chainID uint64, timeBlockMap map[time.Time]
 	}
 }
 
-func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
+func assertDailyBlockNumber(chainID uint64) {
 	lastItem := store.DBVaultPricePerShare{}
 	store.DATABASE.
 		Table(`db_vault_price_per_shares`).
@@ -167,12 +179,16 @@ func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
 		Order(`time DESC`).
 		First(&lastItem)
 
+	syncMap := _dailyBlockNumber[chainID]
+	if syncMap == nil {
+		_dailyBlockNumber[chainID] = &sync.Map{}
+		syncMap = _dailyBlockNumber[chainID]
+	}
 	/**********************************************************************************************
 	** The first step is to find the earliest relevant deployment for yearn on this chain. For us
 	** this means the earliest block where we have a registry contract deployed.
 	**********************************************************************************************/
 	earliestBlock := uint64(lastItem.Block)
-	dailyBlockNumber := make(map[time.Time]uint64)
 	if (earliestBlock == 0) || (earliestBlock == math.MaxUint64) {
 		earliestBlock = uint64(math.MaxUint64)
 		for _, registry := range env.YEARN_REGISTRIES[chainID] {
@@ -201,7 +217,7 @@ func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
 		nextDayNoonUTCTimestamp := noonUTC.Unix()
 		data, ok := store.GetTimeBlock(chainID, uint64(nextDayNoonUTCTimestamp))
 		if ok {
-			dailyBlockNumber[noonUTC] = data
+			syncMap.Store(noonUTC, data)
 			noonUTC = noonUTC.AddDate(0, 0, 1)
 			continue
 		} else {
@@ -224,12 +240,11 @@ func assertDailyBlockNumber(chainID uint64) map[time.Time]uint64 {
 				continue
 			}
 			store.StoreBlockTime(chainID, data.Height, uint64(nextDayNoonUTCTimestamp))
-			dailyBlockNumber[noonUTC] = data.Height
+			syncMap.Store(noonUTC, data.Height)
 			noonUTC = noonUTC.AddDate(0, 0, 1)
 			time.Sleep(500 * time.Millisecond)
 		}
 	}
-	return dailyBlockNumber
 }
 
 /**************************************************************************************************

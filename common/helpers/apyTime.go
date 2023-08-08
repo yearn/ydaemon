@@ -16,6 +16,7 @@ func GetToday(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.
 	} else if data, ok := ppsPerTime[uint64(noonUTC.AddDate(0, 0, -1).Unix())]; ok {
 		ppsNow = ToNormalizedAmount(data, decimals)
 	}
+
 	return ppsNow
 }
 
@@ -23,6 +24,9 @@ func GetLastWeek(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumb
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastWeek := noonUTC.AddDate(0, 0, -7)
+	if now.Before(noonUTC) {
+		lastWeek = noonUTC.AddDate(0, 0, -8)
+	}
 	ppsWeek := bigNumber.NewFloat(0)
 
 	if data, ok := ppsPerTime[uint64(lastWeek.Unix())]; ok {
@@ -44,6 +48,9 @@ func GetLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNum
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastMonth := noonUTC.AddDate(0, -1, 0)
+	if now.Before(noonUTC) {
+		lastMonth = noonUTC.AddDate(0, -1, -1)
+	}
 	ppsMonth := bigNumber.NewFloat(0)
 
 	if data, ok := ppsPerTime[uint64(lastMonth.Unix())]; ok {
@@ -65,6 +72,9 @@ func GetLastYear(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumb
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastYear := noonUTC.AddDate(-1, 0, 0)
+	if now.Before(noonUTC) {
+		lastYear = noonUTC.AddDate(-1, 0, -1)
+	}
 	ppsYear := bigNumber.NewFloat(0)
 
 	if data, ok := ppsPerTime[uint64(lastYear.Unix())]; ok {
@@ -82,8 +92,11 @@ func GetLastYear(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumb
 	return ppsYear
 }
 
-func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float) *bigNumber.Float {
+func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
 	apr := bigNumber.NewFloat(0).Sub(vf, vi)
 	apr = bigNumber.NewFloat(0).Div(apr, vi)
+	apr = bigNumber.NewFloat(0).Div(apr, days)
+	apr = bigNumber.NewFloat(0).Mul(apr, bigNumber.NewFloat(365))
+
 	return apr
 }

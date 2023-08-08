@@ -7,6 +7,7 @@ type TAPIV1Fees struct {
 	Withdrawal  *bigNumber.Float `json:"withdrawal"`
 	Management  *bigNumber.Float `json:"management"`
 	KeepCRV     *bigNumber.Float `json:"keep_crv"`
+	KeepVelo    *bigNumber.Float `json:"keep_velo"`
 	CvxKeepCRV  *bigNumber.Float `json:"cvx_keep_crv"`
 }
 type TAPIV1Composite struct {

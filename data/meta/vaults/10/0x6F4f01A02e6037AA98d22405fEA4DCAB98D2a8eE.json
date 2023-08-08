@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Vel wusdr-usdc",
+  "comment": "Vel perp-usdc",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 46,
+  "order": 72,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Velodrome wUSDR-USDC",
+  "retired": false,
+  "displayName": "Velodrome PERP-USDC",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Velodrome",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stability": "Volatile"
   }
 }

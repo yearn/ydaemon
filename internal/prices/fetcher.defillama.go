@@ -6,6 +6,7 @@ import (
 	"math"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -20,7 +21,7 @@ import (
 **************************************************************************************************/
 func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
 	priceMap := make(map[common.Address]*bigNumber.Int)
-	chunkSize := 300
+	chunkSize := 100
 	for i := 0; i < len(tokens); i += chunkSize {
 		end := i + chunkSize
 		if end > len(tokens) {
@@ -34,6 +35,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		}
 		resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
 		if err != nil || resp.StatusCode != 200 {
+			logs.Error(err, resp.StatusCode, resp.Status)
 			logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
 			return priceMap
 		}
@@ -62,6 +64,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 				priceMap[common.HexToAddress(tokenAddressStr)] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
 			}
 		}
+		time.Sleep(400 * time.Millisecond)
 	}
 	return priceMap
 }

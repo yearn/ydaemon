@@ -37,51 +37,28 @@ func fetchPrices(
 	blockNumber *uint64,
 	tokenList []common.Address,
 ) map[common.Address]*bigNumber.Int {
-	newPriceMap := fetchPricesFromLens(chainID, blockNumber, tokenList)
-
+	newPriceMap := make(map[common.Address]*bigNumber.Int)
 	/**********************************************************************************************
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
 	**********************************************************************************************/
-	queryList := []common.Address{}
-	buggyTokensInLensOracle := map[uint64][]common.Address{
-		1: {
-			common.HexToAddress(`0xf5f5b97624542d72a9e06f04804bf81baa15e2b4`),
-		},
-	}
+	chanLlama := make(chan map[common.Address]*bigNumber.Int)
+	go func() {
+		chanLlama <- fetchPricesFromLlama(chainID, tokenList)
+	}()
+	chanGecko := make(chan map[common.Address]*bigNumber.Int)
+	go func() {
+		chanGecko <- fetchPricesFromGecko(chainID, tokenList)
+	}()
+	pricesLlama := <-chanLlama
+	pricesGecko := <-chanGecko
+
 	for _, token := range tokenList {
-		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			queryList = append(queryList, token)
+		if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
+			newPriceMap[token] = pricesLlama[token]
+			continue
 		}
-		if buggyTokensInLensOracle[chainID] != nil {
-			for _, buggyToken := range buggyTokensInLensOracle[chainID] {
-				if buggyToken == token {
-					queryList = append(queryList, token)
-				}
-			}
-		}
-	}
-
-	// Call the two API endpoints async if we are missing prices
-	if len(queryList) > 0 {
-		chanLlama := make(chan map[common.Address]*bigNumber.Int)
-		go func() {
-			chanLlama <- fetchPricesFromLlama(chainID, queryList)
-		}()
-		chanGecko := make(chan map[common.Address]*bigNumber.Int)
-		go func() {
-			chanGecko <- fetchPricesFromGecko(chainID, queryList)
-		}()
-		pricesLlama := <-chanLlama
-		pricesGecko := <-chanGecko
-
-		for _, token := range queryList {
-			if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
-				newPriceMap[token] = pricesLlama[token]
-				continue
-			}
-			if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
-				newPriceMap[token] = pricesGecko[token]
-			}
+		if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
+			newPriceMap[token] = pricesGecko[token]
 		}
 	}
 
@@ -109,6 +86,23 @@ func fetchPrices(
 	}
 	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
 	for token, price := range priceMapFromVeloOracle {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
+	** If we still have some missing prices, we will use the lens price oracle to fetch them.
+	**********************************************************************************************/
+	queryList := []common.Address{}
+	for _, token := range tokenList {
+		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+			queryList = append(queryList, token)
+		}
+	}
+	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
+
+	for token, price := range priceMapLensOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
 		}

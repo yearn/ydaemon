@@ -6,6 +6,7 @@ import (
 	"math"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -20,7 +21,7 @@ import (
 **************************************************************************************************/
 func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
 	priceMap := make(map[common.Address]*bigNumber.Int)
-	chunkSize := 300
+	chunkSize := 100
 	for i := 0; i < len(tokens); i += chunkSize {
 		end := i + chunkSize
 		if end > len(tokens) {
@@ -44,8 +45,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		req.URL.RawQuery = q.Encode()
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil || resp.StatusCode != 200 {
-			logs.Error(err)
-			logs.Error(resp.StatusCode)
+			logs.Error(err, resp.StatusCode, resp.Status)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}
@@ -74,6 +74,8 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 				priceMap[common.HexToAddress(tokenStr)] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
 			}
 		}
+
+		time.Sleep(400 * time.Millisecond)
 	}
 	return priceMap
 }

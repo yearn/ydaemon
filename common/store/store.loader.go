@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
@@ -289,9 +290,11 @@ func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
 	case DBBadger:
 		// not implemented
 	case DBSql:
+		now := time.Now().Unix()
 		var temp []DBVaultPricePerShare
 		DATABASE.Table(`db_vault_price_per_shares`).
 			Where("chain_id = ?", chainID).
+			Where("time > ?", now-86400*31).
 			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
 				for _, dataFromDB := range temp {
 					key := common.HexToAddress(dataFromDB.Vault).Hex() + `_` + strconv.FormatUint(dataFromDB.Time, 10)

@@ -18,10 +18,19 @@ type TCalculateFraxAPYDataStruct struct {
 }
 
 func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPool) TStrategyAPR {
-	baseConvexStrategyData := calculateConvexForwardAPR(
-		TCalculateConvexAPYDataStruct(args),
-	)
+	/**********************************************************************************************
+	** We will use the convexForwardAPR as a base for the Frax APR. So our first step is to
+	** calculate the convexForwardAPR.
+	**********************************************************************************************/
+	baseConvexStrategyData := calculateConvexForwardAPR(TCalculateConvexAPYDataStruct(args))
+
+	/**********************************************************************************************
+	** We then need to add the minimum rewards APR to the convexForwardAPR to get the Frax APR.
+	** The minimum rewards APR is the minimum amount of rewards we get from the Frax pool.
+	**********************************************************************************************/
 	minRewardsAPR := bigNumber.NewFloat(0).SetString(fraxPool.TotalRewardAPRs.Min)
+	minRewardsAPR = bigNumber.NewFloat(0).Div(minRewardsAPR, bigNumber.NewFloat(100))
+
 	apyStruct := TStrategyAPR{
 		Type:      "frax",
 		DebtRatio: baseConvexStrategyData.DebtRatio,

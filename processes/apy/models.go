@@ -23,6 +23,12 @@ type TAPIV1Points struct {
 	MonthAgo  *bigNumber.Float `json:"month_ago"`
 	Inception *bigNumber.Float `json:"inception"`
 }
+type TForwardAPR struct {
+	Type      string           `json:"type"`
+	GrossAPR  *bigNumber.Float `json:"gross_apr"`
+	NetAPY    *bigNumber.Float `json:"net_apy"`
+	Composite TAPIV1Composite  `json:"composite"`
+}
 type TAPIV1APY struct {
 	Type              string           `json:"type"`
 	GrossAPR          *bigNumber.Float `json:"gross_apr"`
@@ -31,6 +37,7 @@ type TAPIV1APY struct {
 	Fees              TAPIV1Fees       `json:"fees"`
 	Points            TAPIV1Points     `json:"points"`
 	Composite         TAPIV1Composite  `json:"composite"`
+	ForwardAPR        TForwardAPR      `json:"forward_apr"`
 }
 
 type TStrategyAPR struct {

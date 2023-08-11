@@ -51,7 +51,7 @@ func init() {
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
 		wg.Add(4)
 		go LoadBlockTime(chainID, nil)
-		go LoadHistoricalPrice(chainID, nil)
+		// go LoadHistoricalPrice(chainID, nil)
 		go LoadNewVaultsFromRegistry(chainID, wg)
 		go LoadStrategies(chainID, wg)
 		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work

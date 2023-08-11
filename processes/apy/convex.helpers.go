@@ -34,8 +34,11 @@ func getConvexRewardAPR(
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
 		if err != nil {
-			logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
-			return ZERO
+			rewardPID, err = convexStrategyContract.FraxPid(nil)
+			if err != nil {
+				logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
+				return ZERO
+			}
 		}
 	}
 	rewardContract, err := cvxBoosterContract.PoolInfo(nil, rewardPID)
@@ -147,8 +150,11 @@ func getCVXPoolAPR(
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
 		if err != nil {
-			logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
-			return crvAPR, cvxAPR
+			rewardPID, err = convexStrategyContract.FraxPid(nil)
+			if err != nil {
+				logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
+				return crvAPR, cvxAPR
+			}
 		}
 	}
 

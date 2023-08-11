@@ -1,6 +1,9 @@
 package apy
 
 import (
+	"encoding/json"
+	"log"
+	"os"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -152,6 +155,71 @@ func calculateStrategyAPR(
 	)
 }
 
+func computeForwardAPR(
+	vault models.TVault,
+	allStrategiesForVault []*models.TStrategy,
+	gauges []models.CurveGauge,
+	pools []models.CurvePool,
+	subgraphData []models.CurveSubgraphData,
+	fraxPools []TFraxPool,
+) TForwardAPR {
+	gauge := findGaugeForVault(vault.Token.Address, gauges)
+	pool := findPoolForVault(vault.Token.Address, pools)
+	fraxPool := findFraxPoolForVault(vault.Token.Address, fraxPools)
+	subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
+
+	TypeOf := ``
+	GrossAPR := bigNumber.NewFloat(0)
+	NetAPY := bigNumber.NewFloat(0)
+	Boost := bigNumber.NewFloat(0)
+	PoolAPY := bigNumber.NewFloat(0)
+	BoostedAPR := bigNumber.NewFloat(0)
+	BaseAPR := bigNumber.NewFloat(0)
+	CvxAPR := bigNumber.NewFloat(0)
+	RewardsAPR := bigNumber.NewFloat(0)
+	for _, strategy := range allStrategiesForVault {
+		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
+			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+			continue
+		}
+		if strategy.TotalDebt == nil || strategy.TotalDebt.IsZero() {
+			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because total debt is zero")
+			continue
+		}
+
+		strategyAPR := calculateStrategyAPR(
+			vault,
+			strategy,
+			gauge,
+			pool,
+			fraxPool,
+			subgraphItem,
+		)
+		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
+		GrossAPR = bigNumber.NewFloat(0).Add(GrossAPR, strategyAPR.GrossAPR)
+		NetAPY = bigNumber.NewFloat(0).Add(NetAPY, strategyAPR.NetAPY)
+		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
+		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
+		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
+		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
+		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
+		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
+	}
+	return TForwardAPR{
+		Type:     strings.TrimSpace(TypeOf),
+		GrossAPR: GrossAPR,
+		NetAPY:   NetAPY,
+		Composite: TAPIV1Composite{
+			Boost:      Boost,
+			PoolAPY:    PoolAPY,
+			BoostedAPR: BoostedAPR,
+			BaseAPR:    BaseAPR,
+			CvxAPR:     CvxAPR,
+			RewardsAPR: RewardsAPR,
+		},
+	}
+}
+
 func ComputeChainAPR(chainID uint64) {
 	if chainID != 1 {
 		return
@@ -167,8 +235,8 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
-		// if !addresses.Equals(vault.Address, common.HexToAddress("0x27B5739e22ad9033bcBf192059122d163b60349D")) {
-		// continue
+		// if !addresses.Equals(vault.Address, common.HexToAddress("0x7788A5492bc948e1d8c2caa53b2e0a60ed5403b0")) {
+		// 	continue
 		// }
 		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
 		if ok {
@@ -184,6 +252,7 @@ func ComputeChainAPR(chainID uint64) {
 		if ppsToday == nil || ppsToday.IsZero() {
 			vaultContract, err := contracts.NewYearnVaultCaller(vault.Address, ethereum.GetRPC(chainID))
 			if err != nil {
+				logs.Error("Could not get vault contract for " + vault.Address.Hex())
 				continue
 			}
 			pps, _ := vaultContract.PricePerShare(nil)
@@ -192,12 +261,31 @@ func ComputeChainAPR(chainID uint64) {
 		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vault.Decimals)
 		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vault.Decimals)
 
+		/**********************************************************************************************
+		** Retrieve the vault performance fee and management fee, and calculate the net APR.
+		** This can change from one vault to another and will be used to calculate the net APR.
+		**********************************************************************************************/
 		vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 		vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
 		oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
+
+		/**********************************************************************************************
+		** The grossAPR is used by checking the price per share evolution over a 30 days period.
+		** The netAPY is the grossAPR minus the performance fee and the management fee.
+		**********************************************************************************************/
 		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
+
+		/**********************************************************************************************
+		** As we now have the base APR information we can init our structure. This base structure MUST
+		** contains:
+		** - The type of the APR (always v2:averaged for now)
+		** - The grossAPR
+		** - The netAPY
+		** - The fees (performance and management)
+		** - The points (PPS evolution over time, for one week, one month and since inception)
+		**********************************************************************************************/
 		vaultAPY := TAPIV1APY{
 			Type:     "v2:averaged",
 			GrossAPR: grossAPR,
@@ -212,38 +300,23 @@ func ComputeChainAPR(chainID uint64) {
 				Inception: helpers.GetAPR(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 			},
 		}
-		if !isCurveVault(allStrategiesForVault) {
-			COMPUTED_APR[chainID][vault.Address] = vaultAPY
-			continue
-		}
-		gauge := findGaugeForVault(vault.Token.Address, gauges)
-		pool := findPoolForVault(vault.Token.Address, pools)
-		fraxPool := findFraxPoolForVault(vault.Token.Address, fraxPools)
-		subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
 
-		for _, strategy := range allStrategiesForVault {
-			if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
-				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-				continue
-			}
-			strategyAPR := calculateStrategyAPR(
+		/**********************************************************************************************
+		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
+		** APR, aka the expected APR we will get for the upcoming period.
+		** We need to compute it and store it in our ForwardAPR structure.
+		**********************************************************************************************/
+		if isCurveVault(allStrategiesForVault) {
+			vaultAPY.ForwardAPR = computeForwardAPR(
 				vault,
-				strategy,
-				gauge,
-				pool,
-				fraxPool,
-				subgraphItem,
+				allStrategiesForVault,
+				gauges,
+				pools,
+				subgraphData,
+				fraxPools,
 			)
-			vaultAPY.Type += strings.TrimSpace(` ` + strategyAPR.Type)
-			vaultAPY.GrossAPR = bigNumber.NewFloat(0).Add(vaultAPY.GrossAPR, strategyAPR.GrossAPR)
-			vaultAPY.NetAPY = bigNumber.NewFloat(0).Add(vaultAPY.NetAPY, strategyAPR.NetAPY)
-			vaultAPY.Composite.Boost = bigNumber.NewFloat(0).Add(vaultAPY.Composite.Boost, strategyAPR.Composite.Boost)
-			vaultAPY.Composite.PoolAPY = bigNumber.NewFloat(0).Add(vaultAPY.Composite.PoolAPY, strategyAPR.Composite.PoolAPY)
-			vaultAPY.Composite.BoostedAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.BoostedAPR, strategyAPR.Composite.BoostedAPR)
-			vaultAPY.Composite.BaseAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.BaseAPR, strategyAPR.Composite.BaseAPR)
-			vaultAPY.Composite.CvxAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.CvxAPR, strategyAPR.Composite.CvxAPR)
-			vaultAPY.Composite.RewardsAPR = bigNumber.NewFloat(0).Add(vaultAPY.Composite.RewardsAPR, strategyAPR.Composite.RewardsAPR)
 		}
+
 		COMPUTED_APR[chainID][vault.Address] = vaultAPY
 
 		// aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
@@ -265,6 +338,57 @@ func ComputeChainAPR(chainID uint64) {
 		// spew.Printf("\n")
 	}
 	logs.Success(`Computing APR done`)
+
+	/**********************************************************************************************
+	** Some logging to check if the computed APR is correct.
+	** Debug only
+	**********************************************************************************************/
+	// for _, vault := range allVaults {
+	// 	vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
+	// 	if ok {
+	// 		if vaultFromMeta.Retired {
+	// 			continue
+	// 		}
+	// 	}
+
+	// 	if _, ok := COMPUTED_APR[chainID]; !ok {
+	// 		// logs.Warning("No computed APR for " + vault.Address.Hex() + " | " + vault.Name)
+	// 		continue
+	// 	}
+	// 	if _, ok := COMPUTED_APR[chainID][vault.Address]; !ok {
+	// 		// logs.Warning("No computed APR for " + vault.Address.Hex() + " | " + vault.Name)
+	// 		continue
+	// 	}
+	// 	vaultAPY := COMPUTED_APR[chainID][vault.Address]
+	// 	aggregatedVault, okLegacyAPI := extVaults.GetAggregatedVault(1, addresses.ToAddress(vault.Address).Hex())
+	// 	internalAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
+	// 	if COMPUTED_APR[chainID][vault.Address].Points.MonthAgo.IsZero() {
+	// 		if internalAPY.Points.MonthAgo == 0 {
+	// 			// logs.Info("Zero APR on both sources for " + vault.Address.Hex() + " | " + vault.Name)
+	// 		} else {
+	// 			// logs.Warning("Zero APR for " + vault.Address.Hex() + " | " + vault.Name)
+	// 		}
+	// 	}
+	// 	spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
+	// 	checkDiff("PPS Week          ", internalAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
+	// 	checkDiff("PPS Month         ", internalAPY.Points.MonthAgo, vaultAPY.Points.MonthAgo)
+	// 	checkDiff("PPS Inception     ", internalAPY.Points.Inception, vaultAPY.Points.Inception)
+	// 	if vaultAPY.ForwardAPR.Type == "" {
+	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPY.GrossAPR)
+	// 	} else {
+	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPY.ForwardAPR.GrossAPR)
+	// 	}
+	// 	spew.Printf("\n")
+	// }
+
+	//dump computed APR in a file
+	file, err := os.Create("computedAPR.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	json.NewEncoder(file).Encode(COMPUTED_APR)
+
 }
 
 func Run(chainID uint64) {

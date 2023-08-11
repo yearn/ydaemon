@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
+	// "github.com/yearn/ydaemon/processes/apy"
 )
 
 // TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.

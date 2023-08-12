@@ -306,6 +306,33 @@ func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
 }
 
 /**************************************************************************************************
+** LoadVaultsActivation will retrieve the all the activation of a vault from the configured DB and
+** store them in the _vaultsActivations for fast access during that same execution.
+**************************************************************************************************/
+func LoadVaultsActivation(chainID uint64, wg *sync.WaitGroup) {
+	if wg != nil {
+		defer wg.Done()
+	}
+	syncMap := _vaultsActivations[chainID]
+
+	switch _dbType {
+	case DBBadger:
+		// not implemented
+	case DBSql:
+		var temp []DBVaultActivation
+		DATABASE.Table(`db_vault_activations`).
+			Where("chain_id = ?", chainID).
+			FindInBatches(&temp, 10_000, func(tx *gorm.DB, batch int) error {
+				for _, dataFromDB := range temp {
+					key := common.HexToAddress(dataFromDB.Vault).Hex()
+					syncMap.Store(key, dataFromDB)
+				}
+				return nil
+			})
+	}
+}
+
+/**************************************************************************************************
 ** LoadSyncStrategiesAdded will try to retrieve all the sync for vaults/strategies for a given
 ** chain on the local DB.
 **************************************************************************************************/

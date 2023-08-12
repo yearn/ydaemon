@@ -441,3 +441,34 @@ func StorePricePerShare(chainID uint64, data []DBVaultPricePerShare) {
 		}()
 	}
 }
+
+/**************************************************************************************************
+** StoreVaultActivation will store the vault activation in _vaultsActivations for fast access
+** during that same execution, and will store it in the configured DB for future executions.
+**************************************************************************************************/
+func StoreVaultActivation(chainID uint64, data []DBVaultActivation) {
+	switch _dbType {
+	case DBBadger:
+		// Not implemented
+	case DBSql:
+		go func() {
+			items := make([]DBVaultActivation, len(data))
+			syncMap := _vaultsActivations[chainID]
+			for _, d := range data {
+				key := common.HexToAddress(d.Vault).Hex()
+				syncMap.Store(key, d)
+				items = append(items, DBVaultActivation{
+					UUID:    getUUID(key),
+					Vault:   d.Vault,
+					ChainID: d.ChainID,
+					Block:   d.Block,
+				})
+			}
+			wait(`StoreVaultActivation`)
+			DATABASE.
+				Table(`db_vault_activations`).
+				Clauses(clause.OnConflict{UpdateAll: true}).
+				Create(&items)
+		}()
+	}
+}

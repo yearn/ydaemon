@@ -156,7 +156,7 @@ var RPC_ENDPOINTS = map[uint64]string{
 var THEGRAPH_ENDPOINTS = map[uint64]string{
 	1:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
 	10:    `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
-	250:   `https://api.thegraph.com/subgraphs/name/bsamuels453/yearn-fantom-validation-grafted`,
+	250:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
 }
 

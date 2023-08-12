@@ -3,7 +3,6 @@ package events
 import (
 	"context"
 	"strconv"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
@@ -11,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -26,11 +26,7 @@ import (
 **
 ** Returns nothing as the activationMap is updated via a pointer
 **************************************************************************************************/
-func filterUpdateManagementOneTime(
-	vault models.TVaultsFromRegistry,
-	activationMap *sync.Map,
-	wg *sync.WaitGroup,
-) {
+func filterUpdateManagementOneTime(vault models.TVaultsFromRegistry) {
 	client := ethereum.GetRPC(vault.ChainID)
 	currentVault, _ := contracts.NewYvault043(vault.Address, client)
 	/**********************************************************************************************
@@ -56,15 +52,18 @@ func filterUpdateManagementOneTime(
 		if log, err := currentVault.FilterUpdateManagement(opts); err == nil {
 			if log.Next() {
 				if log.Error() != nil {
-					activationMap.Store(vault.Address, vault.Activation)
 					return
 				}
-				activationMap.Store(vault.Address, log.Event.Raw.BlockNumber)
-			} else {
-				activationMap.Store(vault.Address, vault.Activation)
+				store.StoreVaultActivation(vault.ChainID, []store.DBVaultActivation{
+					{
+						UUID:    `will-be-replaced`,
+						ChainID: vault.ChainID,
+						Vault:   vault.Address.Hex(),
+						Block:   log.Event.Raw.BlockNumber,
+					},
+				})
 			}
 		} else {
-			activationMap.Store(vault.Address, vault.Activation)
 			logs.Error(`impossible to FilterUpdateManagement for Yvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(vault.ChainID, 10) + `: ` + err.Error())
 		}
 	}
@@ -82,24 +81,32 @@ func HandleUpdateManagementOneTime(
 	chainID uint64,
 	vaults map[common.Address]models.TVaultsFromRegistry,
 ) map[common.Address]models.TVaultsFromRegistry {
+	activationMap := store.ListVaultActivation(chainID)
 	/**********************************************************************************************
 	** Concurrently retrieve all first updateManagement events, waiting for the end of all
 	** goroutines via the wg before continuing.
 	**********************************************************************************************/
-	activationMap := sync.Map{}
-	wg := &sync.WaitGroup{}
 	for _, v := range vaults {
 		if v.Activation != 0 {
-			activationMap.Store(v.Address, v.Activation)
+			store.StoreVaultActivation(v.ChainID, []store.DBVaultActivation{
+				{
+					UUID:    `will-be-replaced`,
+					ChainID: v.ChainID,
+					Vault:   v.Address.Hex(),
+					Block:   v.Activation,
+				},
+			})
 			continue
 		}
-		wg.Add(1)
-		go func(v models.TVaultsFromRegistry) {
-			defer wg.Done()
-			filterUpdateManagementOneTime(v, &activationMap, wg)
-		}(v)
-		wg.Wait()
+		if _, ok := activationMap[v.Address]; ok {
+			if activationMap[v.Address].Uint64() != 0 {
+				continue
+			}
+		}
+		filterUpdateManagementOneTime(v)
 	}
+
+	activationMap = store.ListVaultActivation(chainID)
 
 	/**********************************************************************************************
 	** Once we got all the activation blocks, we need to extract them from the sync.Map.
@@ -113,14 +120,13 @@ func HandleUpdateManagementOneTime(
 	**********************************************************************************************/
 	count := 0
 	vaultListWithActivation := make(map[common.Address]models.TVaultsFromRegistry)
-	activationMap.Range(func(key, value interface{}) bool {
-		if currentVault, ok := vaults[key.(common.Address)]; ok {
-			currentVault.Activation = value.(uint64)
-			vaultListWithActivation[key.(common.Address)] = currentVault
+	for vault, activationBlock := range activationMap {
+		if currentVault, ok := vaults[vault]; ok {
+			currentVault.Activation = activationBlock.Uint64()
+			vaultListWithActivation[vault] = currentVault
 			count++
 		}
-		return true
-	})
+	}
 
 	return vaultListWithActivation
 }

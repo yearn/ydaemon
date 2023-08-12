@@ -282,6 +282,41 @@ func ListPricePerShare(chainID uint64, vaultAddress common.Address) (
 }
 
 /**************************************************************************************************
+** GetVaultActivation will try, for a specific chain and vault to find the activation block.
+**************************************************************************************************/
+func GetVaultActivation(chainID uint64, vaultAddress common.Address, time uint64) (block uint64, ok bool) {
+	key := vaultAddress.Hex()
+	syncMapResult, ok := _vaultsActivations[chainID].Load(key)
+	if !ok {
+		return 0, false
+	}
+	data := syncMapResult.(DBVaultActivation)
+	return data.Block, true
+}
+
+/**************************************************************************************************
+** ListPricePerShare will try, for a specific chain and vault, to retrieve all the price per share
+** stored in the cache.
+**************************************************************************************************/
+func ListVaultActivation(chainID uint64) (
+	vaultBlock map[common.Address]*bigNumber.Int,
+) {
+	vaultBlock = make(map[common.Address]*bigNumber.Int)
+	syncMap := _vaultsActivations[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_vaultsActivations[chainID] = syncMap
+	}
+	syncMap.Range(func(key, value interface{}) bool {
+		data := value.(DBVaultActivation)
+		vaultBlock[common.HexToAddress(data.Vault)] = bigNumber.NewInt(0).SetUint64(data.Block)
+		return true
+	})
+
+	return vaultBlock
+}
+
+/**************************************************************************************************
 ** GetStrategy will return a strategy stored in the caching system for a given chainID and address.
 **************************************************************************************************/
 func GetStrategy(chainID uint64, strategyAddress common.Address) (models.TStrategyAdded, bool) {

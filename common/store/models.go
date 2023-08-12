@@ -161,3 +161,13 @@ type DBVaultPricePerShare struct {
 	PricePerShare          string  `json:"pricePerShare"`                    // PricePerShare is the price per share of the vault
 	HumanizedPricePerShare float64 `json:"humanizedPricePerShare"`           // HumanizedPricePerShare is the price per share of the vault, humanized in base vaultDecimals
 }
+
+/**************************************************************************************************
+** DBVaultActivation is a struct used to keep track of the activation for a vault
+**************************************************************************************************/
+type DBVaultActivation struct {
+	UUID    string `gorm:"primaryKey" json:"UUID,omitempty"` // UUID is the unique identifier of the entry
+	Block   uint64 `json:"block"`                            // Block is the block number of the entry
+	ChainID uint64 `json:"chainID"`                          // ChainID is the chain on which the vault is deployed
+	Vault   string `json:"vault"`                            // Vault is the vault address
+}

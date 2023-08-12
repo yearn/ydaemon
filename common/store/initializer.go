@@ -23,6 +23,7 @@ var _vaultsSyncMap = make(map[uint64]*sync.Map)
 var _erc20SyncMap = make(map[uint64]*sync.Map)
 var _strategiesSyncMap = make(map[uint64]*sync.Map)
 var _vaultsPricePerShareSyncMap = make(map[uint64]*sync.Map)
+var _vaultsActivations = make(map[uint64]*sync.Map)
 
 /**************************************************************************************************
 ** The init function is a special function triggered directly on execution of the package.
@@ -45,11 +46,12 @@ func init() {
 		_erc20SyncMap[chainID] = &sync.Map{}
 		_strategiesSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
+		_vaultsActivations[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		wg.Add(4)
+		wg.Add(5)
 		go LoadBlockTime(chainID, nil)
 		// go LoadHistoricalPrice(chainID, nil)
 		go LoadNewVaultsFromRegistry(chainID, wg)
@@ -57,6 +59,7 @@ func init() {
 		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
 		go LoadVaults(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
+		go LoadVaultsActivation(chainID, wg)
 	}
 	wg.Wait()
 }

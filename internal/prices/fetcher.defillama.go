@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"math"
+	"math/rand"
 	"net/http"
 	"strings"
 	"time"
@@ -22,7 +23,10 @@ import (
 func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
 	priceMap := make(map[common.Address]*bigNumber.Int)
 	chunkSize := 100
+	timeToSleep := rand.Intn(600-100) + 100
 	for i := 0; i < len(tokens); i += chunkSize {
+		time.Sleep(time.Duration(timeToSleep) * time.Millisecond)
+
 		end := i + chunkSize
 		if end > len(tokens) {
 			end = len(tokens)
@@ -64,7 +68,6 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 				priceMap[common.HexToAddress(tokenAddressStr)] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
 			}
 		}
-		time.Sleep(400 * time.Millisecond)
 	}
 	return priceMap
 }

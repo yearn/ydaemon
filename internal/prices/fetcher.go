@@ -38,6 +38,7 @@ func fetchPrices(
 	tokenList []common.Address,
 ) map[common.Address]*bigNumber.Int {
 	newPriceMap := make(map[common.Address]*bigNumber.Int)
+
 	/**********************************************************************************************
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
 	**********************************************************************************************/
@@ -84,6 +85,7 @@ func fetchPrices(
 			newPriceMap[token] = price
 		}
 	}
+
 	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
 	for token, price := range priceMapFromVeloOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
@@ -105,6 +107,25 @@ func fetchPrices(
 	for token, price := range priceMapLensOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
+	** If the price is missing, check if it's a vault and try to compute the price from the
+	** underlying tokens.
+	**********************************************************************************************/
+	for _, token := range tokenList {
+		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+			if token, ok := tokens.FindToken(chainID, token); ok {
+				if tokens.IsVault(token) {
+					ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
+					underlyingToken := token.UnderlyingTokensAddresses[0]
+					ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
+					underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken])
+					vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
+					newPriceMap[token.Address] = vaultPrice.Int()
+				}
+			}
 		}
 	}
 

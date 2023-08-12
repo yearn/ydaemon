@@ -11,7 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
-var IsEnabled = true
+var IsEnabled = false
 
 var SPANS = map[string]string{
 	//app.bootstrap

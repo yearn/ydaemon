@@ -70,15 +70,28 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
+	// logs.Info(`Will retrieve all vaults`)
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
+	// logs.Info(`All vaults retrieved`)
+
+	// logs.Info(`Will retrieve all tokens`)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
+	// logs.Info(`All tokens retrieved`)
 
 	cron.Every(15).Minute().Do(func() {
+		// logs.Info(`Will retrieve all prices`)
 		prices.RetrieveAllPrices(chainID)
+		// logs.Info(`All prices retrieved`)
+
+		// logs.Info(`Will retrieve all vaults`)
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
+		// logs.Info(`All vaults retrieved`)
+
+		// logs.Info(`Will retrieve all strategies`)
 		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
+		// logs.Info(`All strategies retrieved`)
 		go func() {
 			initDailyBlock.Run(chainID)
 			apy.ComputeChainAPR(chainID)

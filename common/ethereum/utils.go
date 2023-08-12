@@ -5,6 +5,7 @@ import (
 	"math"
 	"math/big"
 	"net/url"
+	"os"
 	"strconv"
 	"time"
 
@@ -26,17 +27,17 @@ func GetRPC(chainID uint64) *ethclient.Client {
 
 // GetRPCURI returns the URI to use to connect to the node for a specific chainID
 func GetRPCURI(chainID uint64) string {
-	switch chainID {
-	case 1:
-		return env.RPC_ENDPOINTS[1]
-	case 10:
-		return env.RPC_ENDPOINTS[10]
-	case 250:
-		return env.RPC_ENDPOINTS[250]
-	case 42161:
-		return env.RPC_ENDPOINTS[42161]
-	}
 	return env.RPC_ENDPOINTS[chainID]
+}
+
+// GetWSEnvURI returns the URI to use to connect to the node for a specific chainID
+func GetWSEnvURI(chainID uint64) string {
+	wsFromEnv, exists := os.LookupEnv("WS_URI_FOR_" + strconv.FormatUint(chainID, 10))
+	if !exists {
+		return env.RPC_ENDPOINTS[chainID]
+	} else {
+		return wsFromEnv
+	}
 }
 
 // MulticallClientForChainID holds the multicall client for a specific chainID
@@ -66,7 +67,8 @@ func randomSigner() *bind.TransactOpts {
 // GetWSClient returns the current ws connection for a specific chain
 func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	if WS[chainID] == nil {
-		uriString := GetRPCURI(chainID)
+		uriString := GetWSEnvURI(chainID)
+		// uriString := GetRPCURI(chainID)
 		// uriString := `http://localhost:8545`
 		uri, _ := url.Parse(uriString)
 		if uri.Scheme == `https` {

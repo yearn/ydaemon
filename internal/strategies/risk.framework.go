@@ -340,24 +340,25 @@ func InitRiskScore(chainID uint64) {
 		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 0, nil)
 		calls := []ethereum.Call{}
 		for _, pool := range allStackingPoolAdded {
-			currentToken, ok := tokens.FindToken(chainID, pool.Token)
+			currentToken, ok := tokens.FindToken(chainID, pool.VaultAddress)
 			if !ok {
-				logs.Warning(`[InitRiskScore]`, `impossible to find token for pool address`, pool.StackingPool.Hex())
+				logs.Warning(`[InitRiskScore]`, `impossible to find token for pool address`, pool.StackingPoolAddress.Hex())
 				continue
 			}
 			if !tokens.IsVault(currentToken) {
-				logs.Warning(`[InitRiskScore]`, `token is not a vault`, pool.Token.Hex())
+				logs.Warning(`[InitRiskScore]`, `token is not a vault`, pool.VaultAddress.Hex())
 				continue
 			}
-			calls = append(calls, multicalls.GetTotalSupply(pool.StackingPool.Hex(), pool.StackingPool))
-			calls = append(calls, multicalls.GetDecimals(pool.StackingPool.Hex(), pool.Token))
-			calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(pool.StackingPool.Hex(), env.LENS_ADDRESSES[chainID], pool.Token))
+			calls = append(calls, multicalls.GetTotalSupply(pool.StackingPoolAddress.Hex(), pool.StackingPoolAddress))
+			calls = append(calls, multicalls.GetDecimals(pool.StackingPoolAddress.Hex(), pool.VaultAddress))
+			calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(pool.StackingPoolAddress.Hex(), env.LENS_ADDRESSES[chainID], pool.VaultAddress))
 		}
+
 		response := multicalls.Perform(chainID, calls, nil)
 		for _, pool := range allStackingPoolAdded {
-			totalSupply := helpers.DecodeBigInt(response[pool.StackingPool.Hex()+`totalSupply`])
-			tokenPrice := helpers.DecodeBigInt(response[pool.StackingPool.Hex()+`getPriceUsdcRecommended`])
-			decimals := helpers.DecodeUint64(response[pool.StackingPool.Hex()+`decimals`])
+			totalSupply := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`totalSupply`])
+			tokenPrice := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`getPriceUsdcRecommended`])
+			decimals := helpers.DecodeUint64(response[pool.StackingPoolAddress.Hex()+`decimals`])
 
 			_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 			_, amount := helpers.FormatAmount(totalSupply.String(), int(decimals))
@@ -366,9 +367,9 @@ func InitRiskScore(chainID uint64) {
 				stakingData[chainID] = map[string]models.TStaking{}
 			}
 			tvl, _ := bigNumber.NewFloat(0).Mul(amount, price).Float64()
-			stakingData[chainID][pool.Token.Hex()] = models.TStaking{
+			stakingData[chainID][pool.VaultAddress.Hex()] = models.TStaking{
 				Available: true,
-				Address:   pool.StackingPool,
+				Address:   pool.StackingPoolAddress,
 				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
 				TVL:       tvl,
 			}

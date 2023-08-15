@@ -13,12 +13,9 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/internal/models"
 )
-
-type TStakingPoolAdded struct {
-	StackingPool common.Address
-	Token        common.Address
-}
 
 /**************************************************************************************************
 ** Filter all stakingPoolAdded events and store them in a map of eventKey -> TStackingPoolAdded
@@ -33,7 +30,7 @@ type TStakingPoolAdded struct {
 func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
 	stackingReward, ok := env.STACKING_REWARD_ADDRESSES[chainID]
-	contract, err := contracts.NewYOptimismStakingReward(stackingReward.Address, client)
+	contract, err := contracts.NewYOptimismStakingRewardRegistry(stackingReward.Address, client)
 	if err != nil || !ok {
 		logs.Error("Error while fetching StakingPoolAdded event", err)
 		return
@@ -73,9 +70,9 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 				}
 
 				eventKey := log.Event.Token.Hex() + `-` + log.Event.StakingPool.Hex() + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-				asyncMap.Store(eventKey, TStakingPoolAdded{
-					StackingPool: log.Event.StakingPool,
-					Token:        log.Event.Token,
+				asyncMap.Store(eventKey, models.TStakingPoolAdded{
+					StackingPoolAddress: log.Event.StakingPool,
+					VaultAddress:        log.Event.Token,
 				})
 			}
 		} else {
@@ -94,7 +91,7 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 ** Returns:
 ** - a map of vaultAddress -> strategyAddress -> blockNumber -> PerformanceFee
 **************************************************************************************************/
-func HandleStakingPoolAdded(chainID uint64, start uint64, end *uint64) []TStakingPoolAdded {
+func HandleStakingPoolAdded(chainID uint64, start uint64, end *uint64) []models.TStakingPoolAdded {
 	timeBefore := time.Now()
 	asyncStackingPoolAddedMap := sync.Map{}
 
@@ -111,24 +108,24 @@ func HandleStakingPoolAdded(chainID uint64, start uint64, end *uint64) []TStakin
 	**
 	** The syncMap variable is setup as follows:
 	** - key: tokenAddress-poolAddress-blockNumber
-	** - value: TStakingPoolAdded
+	** - value: models.TStakingPoolAdded
 	**
 	** We need to transform it into a map as follows:
-	** []TStakingPoolAdded
+	** []models.TStakingPoolAdded
 	**********************************************************************************************/
-	stackingPools := []TStakingPoolAdded{}
 	asyncStackingPoolAddedMap.Range(func(key, value interface{}) bool {
 		eventKey := strings.Split(key.(string), `-`)
 		tokenAddress := common.HexToAddress(eventKey[0])
 		poolAddress := common.HexToAddress(eventKey[1])
 
-		stackingPools = append(stackingPools, TStakingPoolAdded{
-			StackingPool: poolAddress,
-			Token:        tokenAddress,
+		store.AppendToSakingPoolMap(chainID, models.TStakingPoolAdded{
+			StackingPoolAddress: poolAddress,
+			VaultAddress:        tokenAddress,
 		})
 		return true
 	})
 
 	logs.Success(`It tooks`, time.Since(timeBefore), `to retrieve the stakingPoolAdded updates`)
+	_, stackingPools := store.ListAllStakingPools(chainID, store.PerPool)
 	return stackingPools
 }

@@ -27,7 +27,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** - the performanceFee and the managementFee for that vault
 	** - the debtRatio for the strategy (aka the % of fund allocated to the strategy by the vault)
 	**********************************************************************************************/
-	cvxBoost := getCurveBoost(chainID, CONVEX_VOTER_ADDRESS, args.gaugeAddress)
+	cvxBoost := getCurveBoost(chainID, CONVEX_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineConvexKeepCRV(args.strategy)
 	debtRatio := helpers.ToNormalizedAmount(args.strategy.DebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)

@@ -443,7 +443,7 @@ func RetrieveAllTokens(
 		** func.
 		**********************************************************************************************/
 		for _, token := range updatedTokenMap {
-			store.AppendInERC20(chainID, token)
+			store.AppendToERC20(chainID, token)
 			if _, ok := tokenMap[token.Address]; !ok {
 				store.StoreERC20(chainID, token)
 			}

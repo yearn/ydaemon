@@ -1,14 +1,14 @@
 package models
 
 type CurveGaugeData struct {
-	InflationRate string `json:"inflation_rate"`
+	InflationRate any    `json:"inflation_rate"`
 	WorkingSupply string `json:"working_supply"`
 }
 
 type CurveGaugeController struct {
 	GaugeRelativeWeight string `json:"gauge_relative_weight"`
 	GetGaugeWeight      string `json:"get_gauge_weight"`
-	InflationRate       string `json:"inflation_rate"`
+	InflationRate       any    `json:"inflation_rate"`
 }
 
 type CurveGaugeSwapData struct {

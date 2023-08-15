@@ -25,7 +25,7 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	** - the performanceFee and the managementFee for that vault
 	** - the debtRatio for the strategy (aka the % of fund allocated to the strategy by the vault)
 	**********************************************************************************************/
-	yBoost := getCurveBoost(chainID, YEARN_VOTER_ADDRESS, args.gaugeAddress)
+	yBoost := getCurveBoost(chainID, YEARN_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineCurveKeepCRV(args.strategy)
 	debtRatio := helpers.ToNormalizedAmount(args.strategy.DebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)

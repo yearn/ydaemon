@@ -165,7 +165,7 @@ func fetchPrices(
 			Price:          price.String(),
 			HumanizedPrice: humanizedPrice,
 		})
-		store.AppendInHistoricalMap(chainID, *blockNumber, tokenAddress, price)
+		store.AppendToHistoricalPrice(chainID, *blockNumber, tokenAddress, price)
 	}
 
 	store.StoreManyHistoricalPrice(itemsToUpsert)
@@ -368,7 +368,7 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 			Price:          newPriceMap[tokenAddress].String(),
 			HumanizedPrice: humanizedPrice,
 		})
-		store.AppendInHistoricalMap(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
+		store.AppendToHistoricalPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
 	}
 
 	store.StoreManyHistoricalPrice(itemsToUpsert)

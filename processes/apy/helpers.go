@@ -83,6 +83,9 @@ func initYearnEcosystem(chainID uint64) {
 	prices.RetrieveAllPrices(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsMap)
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
+	logs.Info(`loading staking pools...`)
+	events.HandleStakingPoolAdded(chainID, 0, nil)
+	logs.Info(`loading strategies...`)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 	indexer.PostProcessStrategies(chainID)
 }

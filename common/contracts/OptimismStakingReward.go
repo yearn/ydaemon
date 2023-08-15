@@ -30,7 +30,7 @@ var (
 
 // YOptimismStakingRewardMetaData contains all meta data concerning the YOptimismStakingReward contract.
 var YOptimismStakingRewardMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"canEndorse\",\"type\":\"bool\"}],\"name\":\"ApprovedPoolEndorser\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"governance\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovedPoolOwnerUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"stakingPool\",\"type\":\"address\"}],\"name\":\"StakingPoolAdded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_stakingPool\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_replaceExistingPool\",\"type\":\"bool\"}],\"name\":\"addStakingPool\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"approvedPoolOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isStakingPoolEndorsed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numTokens\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"poolEndorsers\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_addr\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_approved\",\"type\":\"bool\"}],\"name\":\"setApprovedPoolOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_addr\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_approved\",\"type\":\"bool\"}],\"name\":\"setPoolEndorsers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"stakingPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"tokens\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_rewardsDistribution\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_rewardsToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_stakingToken\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_zapContract\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnerChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnerNominated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"isPaused\",\"type\":\"bool\"}],\"name\":\"PauseChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Recovered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reward\",\"type\":\"uint256\"}],\"name\":\"RewardAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"reward\",\"type\":\"uint256\"}],\"name\":\"RewardPaid\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newDuration\",\"type\":\"uint256\"}],\"name\":\"RewardsDurationUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Staked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"StakedFor\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Withdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_zapContract\",\"type\":\"address\"}],\"name\":\"ZapContractUpdated\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[],\"name\":\"acceptOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"earned\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"exit\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"getReward\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getRewardForDuration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isRetired\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"lastPauseTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"lastTimeRewardApplicable\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"lastUpdateTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"nominateNewOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"nominatedOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"reward\",\"type\":\"uint256\"}],\"name\":\"notifyRewardAmount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"paused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"periodFinish\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"name\":\"recoverERC20\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardPerToken\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardPerTokenStored\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"rewards\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardsDistribution\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardsDuration\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardsToken\",\"outputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_paused\",\"type\":\"bool\"}],\"name\":\"setPaused\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_rewardsDistribution\",\"type\":\"address\"}],\"name\":\"setRewardsDistribution\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_rewardsDuration\",\"type\":\"uint256\"}],\"name\":\"setRewardsDuration\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_zapContract\",\"type\":\"address\"}],\"name\":\"setZapContract\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"stakeFor\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"stakingToken\",\"outputs\":[{\"internalType\":\"contractIERC20\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userRewardPerTokenPaid\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"zapContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]",
 }
 
 // YOptimismStakingRewardABI is the input ABI used to generate the binding from.
@@ -179,105 +179,12 @@ func (_YOptimismStakingReward *YOptimismStakingRewardTransactorRaw) Transact(opt
 	return _YOptimismStakingReward.Contract.contract.Transact(opts, method, params...)
 }
 
-// ApprovedPoolOwner is a free data retrieval call binding the contract method 0x4f2ac26e.
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
-// Solidity: function approvedPoolOwner(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) ApprovedPoolOwner(opts *bind.CallOpts, arg0 common.Address) (bool, error) {
+// Solidity: function balanceOf(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) BalanceOf(opts *bind.CallOpts, account common.Address) (*big.Int, error) {
 	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "approvedPoolOwner", arg0)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// ApprovedPoolOwner is a free data retrieval call binding the contract method 0x4f2ac26e.
-//
-// Solidity: function approvedPoolOwner(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) ApprovedPoolOwner(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.ApprovedPoolOwner(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// ApprovedPoolOwner is a free data retrieval call binding the contract method 0x4f2ac26e.
-//
-// Solidity: function approvedPoolOwner(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) ApprovedPoolOwner(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.ApprovedPoolOwner(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// IsRegistered is a free data retrieval call binding the contract method 0xc3c5a547.
-//
-// Solidity: function isRegistered(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) IsRegistered(opts *bind.CallOpts, arg0 common.Address) (bool, error) {
-	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "isRegistered", arg0)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// IsRegistered is a free data retrieval call binding the contract method 0xc3c5a547.
-//
-// Solidity: function isRegistered(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) IsRegistered(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.IsRegistered(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// IsRegistered is a free data retrieval call binding the contract method 0xc3c5a547.
-//
-// Solidity: function isRegistered(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) IsRegistered(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.IsRegistered(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// IsStakingPoolEndorsed is a free data retrieval call binding the contract method 0x89884973.
-//
-// Solidity: function isStakingPoolEndorsed(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) IsStakingPoolEndorsed(opts *bind.CallOpts, arg0 common.Address) (bool, error) {
-	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "isStakingPoolEndorsed", arg0)
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// IsStakingPoolEndorsed is a free data retrieval call binding the contract method 0x89884973.
-//
-// Solidity: function isStakingPoolEndorsed(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) IsStakingPoolEndorsed(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.IsStakingPoolEndorsed(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// IsStakingPoolEndorsed is a free data retrieval call binding the contract method 0x89884973.
-//
-// Solidity: function isStakingPoolEndorsed(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) IsStakingPoolEndorsed(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.IsStakingPoolEndorsed(&_YOptimismStakingReward.CallOpts, arg0)
-}
-
-// NumTokens is a free data retrieval call binding the contract method 0x8e499bcf.
-//
-// Solidity: function numTokens() view returns(uint256)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) NumTokens(opts *bind.CallOpts) (*big.Int, error) {
-	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "numTokens")
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "balanceOf", account)
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -289,18 +196,235 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCaller) NumTokens(opts *bin
 
 }
 
-// NumTokens is a free data retrieval call binding the contract method 0x8e499bcf.
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
-// Solidity: function numTokens() view returns(uint256)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) NumTokens() (*big.Int, error) {
-	return _YOptimismStakingReward.Contract.NumTokens(&_YOptimismStakingReward.CallOpts)
+// Solidity: function balanceOf(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) BalanceOf(account common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.BalanceOf(&_YOptimismStakingReward.CallOpts, account)
 }
 
-// NumTokens is a free data retrieval call binding the contract method 0x8e499bcf.
+// BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
 //
-// Solidity: function numTokens() view returns(uint256)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) NumTokens() (*big.Int, error) {
-	return _YOptimismStakingReward.Contract.NumTokens(&_YOptimismStakingReward.CallOpts)
+// Solidity: function balanceOf(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) BalanceOf(account common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.BalanceOf(&_YOptimismStakingReward.CallOpts, account)
+}
+
+// Earned is a free data retrieval call binding the contract method 0x008cc262.
+//
+// Solidity: function earned(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) Earned(opts *bind.CallOpts, account common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "earned", account)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// Earned is a free data retrieval call binding the contract method 0x008cc262.
+//
+// Solidity: function earned(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Earned(account common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.Earned(&_YOptimismStakingReward.CallOpts, account)
+}
+
+// Earned is a free data retrieval call binding the contract method 0x008cc262.
+//
+// Solidity: function earned(address account) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) Earned(account common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.Earned(&_YOptimismStakingReward.CallOpts, account)
+}
+
+// GetRewardForDuration is a free data retrieval call binding the contract method 0x1c1f78eb.
+//
+// Solidity: function getRewardForDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) GetRewardForDuration(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "getRewardForDuration")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetRewardForDuration is a free data retrieval call binding the contract method 0x1c1f78eb.
+//
+// Solidity: function getRewardForDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) GetRewardForDuration() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.GetRewardForDuration(&_YOptimismStakingReward.CallOpts)
+}
+
+// GetRewardForDuration is a free data retrieval call binding the contract method 0x1c1f78eb.
+//
+// Solidity: function getRewardForDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) GetRewardForDuration() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.GetRewardForDuration(&_YOptimismStakingReward.CallOpts)
+}
+
+// IsRetired is a free data retrieval call binding the contract method 0x49343cee.
+//
+// Solidity: function isRetired() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) IsRetired(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "isRetired")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// IsRetired is a free data retrieval call binding the contract method 0x49343cee.
+//
+// Solidity: function isRetired() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) IsRetired() (bool, error) {
+	return _YOptimismStakingReward.Contract.IsRetired(&_YOptimismStakingReward.CallOpts)
+}
+
+// IsRetired is a free data retrieval call binding the contract method 0x49343cee.
+//
+// Solidity: function isRetired() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) IsRetired() (bool, error) {
+	return _YOptimismStakingReward.Contract.IsRetired(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastPauseTime is a free data retrieval call binding the contract method 0x91b4ded9.
+//
+// Solidity: function lastPauseTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) LastPauseTime(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "lastPauseTime")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// LastPauseTime is a free data retrieval call binding the contract method 0x91b4ded9.
+//
+// Solidity: function lastPauseTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) LastPauseTime() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastPauseTime(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastPauseTime is a free data retrieval call binding the contract method 0x91b4ded9.
+//
+// Solidity: function lastPauseTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) LastPauseTime() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastPauseTime(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastTimeRewardApplicable is a free data retrieval call binding the contract method 0x80faa57d.
+//
+// Solidity: function lastTimeRewardApplicable() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) LastTimeRewardApplicable(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "lastTimeRewardApplicable")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// LastTimeRewardApplicable is a free data retrieval call binding the contract method 0x80faa57d.
+//
+// Solidity: function lastTimeRewardApplicable() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) LastTimeRewardApplicable() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastTimeRewardApplicable(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastTimeRewardApplicable is a free data retrieval call binding the contract method 0x80faa57d.
+//
+// Solidity: function lastTimeRewardApplicable() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) LastTimeRewardApplicable() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastTimeRewardApplicable(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastUpdateTime is a free data retrieval call binding the contract method 0xc8f33c91.
+//
+// Solidity: function lastUpdateTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) LastUpdateTime(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "lastUpdateTime")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// LastUpdateTime is a free data retrieval call binding the contract method 0xc8f33c91.
+//
+// Solidity: function lastUpdateTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) LastUpdateTime() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastUpdateTime(&_YOptimismStakingReward.CallOpts)
+}
+
+// LastUpdateTime is a free data retrieval call binding the contract method 0xc8f33c91.
+//
+// Solidity: function lastUpdateTime() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) LastUpdateTime() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.LastUpdateTime(&_YOptimismStakingReward.CallOpts)
+}
+
+// NominatedOwner is a free data retrieval call binding the contract method 0x53a47bb7.
+//
+// Solidity: function nominatedOwner() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) NominatedOwner(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "nominatedOwner")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// NominatedOwner is a free data retrieval call binding the contract method 0x53a47bb7.
+//
+// Solidity: function nominatedOwner() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) NominatedOwner() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.NominatedOwner(&_YOptimismStakingReward.CallOpts)
+}
+
+// NominatedOwner is a free data retrieval call binding the contract method 0x53a47bb7.
+//
+// Solidity: function nominatedOwner() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) NominatedOwner() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.NominatedOwner(&_YOptimismStakingReward.CallOpts)
 }
 
 // Owner is a free data retrieval call binding the contract method 0x8da5cb5b.
@@ -334,12 +458,12 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) Owner() (com
 	return _YOptimismStakingReward.Contract.Owner(&_YOptimismStakingReward.CallOpts)
 }
 
-// PoolEndorsers is a free data retrieval call binding the contract method 0x4f1fde98.
+// Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
-// Solidity: function poolEndorsers(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) PoolEndorsers(opts *bind.CallOpts, arg0 common.Address) (bool, error) {
+// Solidity: function paused() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) Paused(opts *bind.CallOpts) (bool, error) {
 	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "poolEndorsers", arg0)
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "paused")
 
 	if err != nil {
 		return *new(bool), err
@@ -351,26 +475,181 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCaller) PoolEndorsers(opts 
 
 }
 
-// PoolEndorsers is a free data retrieval call binding the contract method 0x4f1fde98.
+// Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
-// Solidity: function poolEndorsers(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) PoolEndorsers(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.PoolEndorsers(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function paused() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Paused() (bool, error) {
+	return _YOptimismStakingReward.Contract.Paused(&_YOptimismStakingReward.CallOpts)
 }
 
-// PoolEndorsers is a free data retrieval call binding the contract method 0x4f1fde98.
+// Paused is a free data retrieval call binding the contract method 0x5c975abb.
 //
-// Solidity: function poolEndorsers(address ) view returns(bool)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) PoolEndorsers(arg0 common.Address) (bool, error) {
-	return _YOptimismStakingReward.Contract.PoolEndorsers(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function paused() view returns(bool)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) Paused() (bool, error) {
+	return _YOptimismStakingReward.Contract.Paused(&_YOptimismStakingReward.CallOpts)
 }
 
-// StakingPool is a free data retrieval call binding the contract method 0x8dddb3e5.
+// PeriodFinish is a free data retrieval call binding the contract method 0xebe2b12b.
 //
-// Solidity: function stakingPool(address ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) StakingPool(opts *bind.CallOpts, arg0 common.Address) (common.Address, error) {
+// Solidity: function periodFinish() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) PeriodFinish(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "stakingPool", arg0)
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "periodFinish")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// PeriodFinish is a free data retrieval call binding the contract method 0xebe2b12b.
+//
+// Solidity: function periodFinish() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) PeriodFinish() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.PeriodFinish(&_YOptimismStakingReward.CallOpts)
+}
+
+// PeriodFinish is a free data retrieval call binding the contract method 0xebe2b12b.
+//
+// Solidity: function periodFinish() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) PeriodFinish() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.PeriodFinish(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardPerToken is a free data retrieval call binding the contract method 0xcd3daf9d.
+//
+// Solidity: function rewardPerToken() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardPerToken(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardPerToken")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// RewardPerToken is a free data retrieval call binding the contract method 0xcd3daf9d.
+//
+// Solidity: function rewardPerToken() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardPerToken() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardPerToken(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardPerToken is a free data retrieval call binding the contract method 0xcd3daf9d.
+//
+// Solidity: function rewardPerToken() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardPerToken() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardPerToken(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardPerTokenStored is a free data retrieval call binding the contract method 0xdf136d65.
+//
+// Solidity: function rewardPerTokenStored() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardPerTokenStored(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardPerTokenStored")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// RewardPerTokenStored is a free data retrieval call binding the contract method 0xdf136d65.
+//
+// Solidity: function rewardPerTokenStored() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardPerTokenStored() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardPerTokenStored(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardPerTokenStored is a free data retrieval call binding the contract method 0xdf136d65.
+//
+// Solidity: function rewardPerTokenStored() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardPerTokenStored() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardPerTokenStored(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardRate is a free data retrieval call binding the contract method 0x7b0a47ee.
+//
+// Solidity: function rewardRate() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardRate(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardRate")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// RewardRate is a free data retrieval call binding the contract method 0x7b0a47ee.
+//
+// Solidity: function rewardRate() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardRate() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardRate(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardRate is a free data retrieval call binding the contract method 0x7b0a47ee.
+//
+// Solidity: function rewardRate() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardRate() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardRate(&_YOptimismStakingReward.CallOpts)
+}
+
+// Rewards is a free data retrieval call binding the contract method 0x0700037d.
+//
+// Solidity: function rewards(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) Rewards(opts *bind.CallOpts, arg0 common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewards", arg0)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// Rewards is a free data retrieval call binding the contract method 0x0700037d.
+//
+// Solidity: function rewards(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Rewards(arg0 common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.Rewards(&_YOptimismStakingReward.CallOpts, arg0)
+}
+
+// Rewards is a free data retrieval call binding the contract method 0x0700037d.
+//
+// Solidity: function rewards(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) Rewards(arg0 common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.Rewards(&_YOptimismStakingReward.CallOpts, arg0)
+}
+
+// RewardsDistribution is a free data retrieval call binding the contract method 0x3fc6df6e.
+//
+// Solidity: function rewardsDistribution() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardsDistribution(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardsDistribution")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -382,26 +661,57 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCaller) StakingPool(opts *b
 
 }
 
-// StakingPool is a free data retrieval call binding the contract method 0x8dddb3e5.
+// RewardsDistribution is a free data retrieval call binding the contract method 0x3fc6df6e.
 //
-// Solidity: function stakingPool(address ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) StakingPool(arg0 common.Address) (common.Address, error) {
-	return _YOptimismStakingReward.Contract.StakingPool(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function rewardsDistribution() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardsDistribution() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.RewardsDistribution(&_YOptimismStakingReward.CallOpts)
 }
 
-// StakingPool is a free data retrieval call binding the contract method 0x8dddb3e5.
+// RewardsDistribution is a free data retrieval call binding the contract method 0x3fc6df6e.
 //
-// Solidity: function stakingPool(address ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) StakingPool(arg0 common.Address) (common.Address, error) {
-	return _YOptimismStakingReward.Contract.StakingPool(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function rewardsDistribution() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardsDistribution() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.RewardsDistribution(&_YOptimismStakingReward.CallOpts)
 }
 
-// Tokens is a free data retrieval call binding the contract method 0x4f64b2be.
+// RewardsDuration is a free data retrieval call binding the contract method 0x386a9525.
 //
-// Solidity: function tokens(uint256 ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardCaller) Tokens(opts *bind.CallOpts, arg0 *big.Int) (common.Address, error) {
+// Solidity: function rewardsDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardsDuration(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _YOptimismStakingReward.contract.Call(opts, &out, "tokens", arg0)
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardsDuration")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// RewardsDuration is a free data retrieval call binding the contract method 0x386a9525.
+//
+// Solidity: function rewardsDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardsDuration() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardsDuration(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardsDuration is a free data retrieval call binding the contract method 0x386a9525.
+//
+// Solidity: function rewardsDuration() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardsDuration() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.RewardsDuration(&_YOptimismStakingReward.CallOpts)
+}
+
+// RewardsToken is a free data retrieval call binding the contract method 0xd1af0c7d.
+//
+// Solidity: function rewardsToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) RewardsToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "rewardsToken")
 
 	if err != nil {
 		return *new(common.Address), err
@@ -413,128 +723,420 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCaller) Tokens(opts *bind.C
 
 }
 
-// Tokens is a free data retrieval call binding the contract method 0x4f64b2be.
+// RewardsToken is a free data retrieval call binding the contract method 0xd1af0c7d.
 //
-// Solidity: function tokens(uint256 ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) Tokens(arg0 *big.Int) (common.Address, error) {
-	return _YOptimismStakingReward.Contract.Tokens(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function rewardsToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardsToken() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.RewardsToken(&_YOptimismStakingReward.CallOpts)
 }
 
-// Tokens is a free data retrieval call binding the contract method 0x4f64b2be.
+// RewardsToken is a free data retrieval call binding the contract method 0xd1af0c7d.
 //
-// Solidity: function tokens(uint256 ) view returns(address)
-func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) Tokens(arg0 *big.Int) (common.Address, error) {
-	return _YOptimismStakingReward.Contract.Tokens(&_YOptimismStakingReward.CallOpts, arg0)
+// Solidity: function rewardsToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardsToken() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.RewardsToken(&_YOptimismStakingReward.CallOpts)
 }
 
-// AddStakingPool is a paid mutator transaction binding the contract method 0xaa9f079c.
+// StakingToken is a free data retrieval call binding the contract method 0x72f702f3.
 //
-// Solidity: function addStakingPool(address _stakingPool, address _token, bool _replaceExistingPool) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) AddStakingPool(opts *bind.TransactOpts, _stakingPool common.Address, _token common.Address, _replaceExistingPool bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.contract.Transact(opts, "addStakingPool", _stakingPool, _token, _replaceExistingPool)
+// Solidity: function stakingToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) StakingToken(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "stakingToken")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
 }
 
-// AddStakingPool is a paid mutator transaction binding the contract method 0xaa9f079c.
+// StakingToken is a free data retrieval call binding the contract method 0x72f702f3.
 //
-// Solidity: function addStakingPool(address _stakingPool, address _token, bool _replaceExistingPool) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) AddStakingPool(_stakingPool common.Address, _token common.Address, _replaceExistingPool bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.AddStakingPool(&_YOptimismStakingReward.TransactOpts, _stakingPool, _token, _replaceExistingPool)
+// Solidity: function stakingToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) StakingToken() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.StakingToken(&_YOptimismStakingReward.CallOpts)
 }
 
-// AddStakingPool is a paid mutator transaction binding the contract method 0xaa9f079c.
+// StakingToken is a free data retrieval call binding the contract method 0x72f702f3.
 //
-// Solidity: function addStakingPool(address _stakingPool, address _token, bool _replaceExistingPool) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) AddStakingPool(_stakingPool common.Address, _token common.Address, _replaceExistingPool bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.AddStakingPool(&_YOptimismStakingReward.TransactOpts, _stakingPool, _token, _replaceExistingPool)
+// Solidity: function stakingToken() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) StakingToken() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.StakingToken(&_YOptimismStakingReward.CallOpts)
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
-// Solidity: function renounceOwnership() returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) RenounceOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _YOptimismStakingReward.contract.Transact(opts, "renounceOwnership")
+// Solidity: function totalSupply() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) TotalSupply(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "totalSupply")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
-// Solidity: function renounceOwnership() returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) RenounceOwnership() (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.RenounceOwnership(&_YOptimismStakingReward.TransactOpts)
+// Solidity: function totalSupply() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) TotalSupply() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.TotalSupply(&_YOptimismStakingReward.CallOpts)
 }
 
-// RenounceOwnership is a paid mutator transaction binding the contract method 0x715018a6.
+// TotalSupply is a free data retrieval call binding the contract method 0x18160ddd.
 //
-// Solidity: function renounceOwnership() returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) RenounceOwnership() (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.RenounceOwnership(&_YOptimismStakingReward.TransactOpts)
+// Solidity: function totalSupply() view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) TotalSupply() (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.TotalSupply(&_YOptimismStakingReward.CallOpts)
 }
 
-// SetApprovedPoolOwner is a paid mutator transaction binding the contract method 0xaa9fd6ef.
+// UserRewardPerTokenPaid is a free data retrieval call binding the contract method 0x8b876347.
 //
-// Solidity: function setApprovedPoolOwner(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetApprovedPoolOwner(opts *bind.TransactOpts, _addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.contract.Transact(opts, "setApprovedPoolOwner", _addr, _approved)
+// Solidity: function userRewardPerTokenPaid(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) UserRewardPerTokenPaid(opts *bind.CallOpts, arg0 common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "userRewardPerTokenPaid", arg0)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
 }
 
-// SetApprovedPoolOwner is a paid mutator transaction binding the contract method 0xaa9fd6ef.
+// UserRewardPerTokenPaid is a free data retrieval call binding the contract method 0x8b876347.
 //
-// Solidity: function setApprovedPoolOwner(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetApprovedPoolOwner(_addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.SetApprovedPoolOwner(&_YOptimismStakingReward.TransactOpts, _addr, _approved)
+// Solidity: function userRewardPerTokenPaid(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) UserRewardPerTokenPaid(arg0 common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.UserRewardPerTokenPaid(&_YOptimismStakingReward.CallOpts, arg0)
 }
 
-// SetApprovedPoolOwner is a paid mutator transaction binding the contract method 0xaa9fd6ef.
+// UserRewardPerTokenPaid is a free data retrieval call binding the contract method 0x8b876347.
 //
-// Solidity: function setApprovedPoolOwner(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetApprovedPoolOwner(_addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.SetApprovedPoolOwner(&_YOptimismStakingReward.TransactOpts, _addr, _approved)
+// Solidity: function userRewardPerTokenPaid(address ) view returns(uint256)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) UserRewardPerTokenPaid(arg0 common.Address) (*big.Int, error) {
+	return _YOptimismStakingReward.Contract.UserRewardPerTokenPaid(&_YOptimismStakingReward.CallOpts, arg0)
 }
 
-// SetPoolEndorsers is a paid mutator transaction binding the contract method 0x5ea38625.
+// ZapContract is a free data retrieval call binding the contract method 0x2549dad9.
 //
-// Solidity: function setPoolEndorsers(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetPoolEndorsers(opts *bind.TransactOpts, _addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.contract.Transact(opts, "setPoolEndorsers", _addr, _approved)
+// Solidity: function zapContract() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCaller) ZapContract(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _YOptimismStakingReward.contract.Call(opts, &out, "zapContract")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
 }
 
-// SetPoolEndorsers is a paid mutator transaction binding the contract method 0x5ea38625.
+// ZapContract is a free data retrieval call binding the contract method 0x2549dad9.
 //
-// Solidity: function setPoolEndorsers(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetPoolEndorsers(_addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.SetPoolEndorsers(&_YOptimismStakingReward.TransactOpts, _addr, _approved)
+// Solidity: function zapContract() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) ZapContract() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.ZapContract(&_YOptimismStakingReward.CallOpts)
 }
 
-// SetPoolEndorsers is a paid mutator transaction binding the contract method 0x5ea38625.
+// ZapContract is a free data retrieval call binding the contract method 0x2549dad9.
 //
-// Solidity: function setPoolEndorsers(address _addr, bool _approved) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetPoolEndorsers(_addr common.Address, _approved bool) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.SetPoolEndorsers(&_YOptimismStakingReward.TransactOpts, _addr, _approved)
+// Solidity: function zapContract() view returns(address)
+func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) ZapContract() (common.Address, error) {
+	return _YOptimismStakingReward.Contract.ZapContract(&_YOptimismStakingReward.CallOpts)
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// AcceptOwnership is a paid mutator transaction binding the contract method 0x79ba5097.
 //
-// Solidity: function transferOwnership(address newOwner) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) TransferOwnership(opts *bind.TransactOpts, newOwner common.Address) (*types.Transaction, error) {
-	return _YOptimismStakingReward.contract.Transact(opts, "transferOwnership", newOwner)
+// Solidity: function acceptOwnership() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) AcceptOwnership(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "acceptOwnership")
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// AcceptOwnership is a paid mutator transaction binding the contract method 0x79ba5097.
 //
-// Solidity: function transferOwnership(address newOwner) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.TransferOwnership(&_YOptimismStakingReward.TransactOpts, newOwner)
+// Solidity: function acceptOwnership() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) AcceptOwnership() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.AcceptOwnership(&_YOptimismStakingReward.TransactOpts)
 }
 
-// TransferOwnership is a paid mutator transaction binding the contract method 0xf2fde38b.
+// AcceptOwnership is a paid mutator transaction binding the contract method 0x79ba5097.
 //
-// Solidity: function transferOwnership(address newOwner) returns()
-func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) TransferOwnership(newOwner common.Address) (*types.Transaction, error) {
-	return _YOptimismStakingReward.Contract.TransferOwnership(&_YOptimismStakingReward.TransactOpts, newOwner)
+// Solidity: function acceptOwnership() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) AcceptOwnership() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.AcceptOwnership(&_YOptimismStakingReward.TransactOpts)
 }
 
-// YOptimismStakingRewardApprovedPoolEndorserIterator is returned from FilterApprovedPoolEndorser and is used to iterate over the raw logs and unpacked data for ApprovedPoolEndorser events raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardApprovedPoolEndorserIterator struct {
-	Event *YOptimismStakingRewardApprovedPoolEndorser // Event containing the contract specifics and raw log
+// Exit is a paid mutator transaction binding the contract method 0xe9fad8ee.
+//
+// Solidity: function exit() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) Exit(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "exit")
+}
+
+// Exit is a paid mutator transaction binding the contract method 0xe9fad8ee.
+//
+// Solidity: function exit() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Exit() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Exit(&_YOptimismStakingReward.TransactOpts)
+}
+
+// Exit is a paid mutator transaction binding the contract method 0xe9fad8ee.
+//
+// Solidity: function exit() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) Exit() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Exit(&_YOptimismStakingReward.TransactOpts)
+}
+
+// GetReward is a paid mutator transaction binding the contract method 0x3d18b912.
+//
+// Solidity: function getReward() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) GetReward(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "getReward")
+}
+
+// GetReward is a paid mutator transaction binding the contract method 0x3d18b912.
+//
+// Solidity: function getReward() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) GetReward() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.GetReward(&_YOptimismStakingReward.TransactOpts)
+}
+
+// GetReward is a paid mutator transaction binding the contract method 0x3d18b912.
+//
+// Solidity: function getReward() returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) GetReward() (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.GetReward(&_YOptimismStakingReward.TransactOpts)
+}
+
+// NominateNewOwner is a paid mutator transaction binding the contract method 0x1627540c.
+//
+// Solidity: function nominateNewOwner(address _owner) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) NominateNewOwner(opts *bind.TransactOpts, _owner common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "nominateNewOwner", _owner)
+}
+
+// NominateNewOwner is a paid mutator transaction binding the contract method 0x1627540c.
+//
+// Solidity: function nominateNewOwner(address _owner) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) NominateNewOwner(_owner common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.NominateNewOwner(&_YOptimismStakingReward.TransactOpts, _owner)
+}
+
+// NominateNewOwner is a paid mutator transaction binding the contract method 0x1627540c.
+//
+// Solidity: function nominateNewOwner(address _owner) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) NominateNewOwner(_owner common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.NominateNewOwner(&_YOptimismStakingReward.TransactOpts, _owner)
+}
+
+// NotifyRewardAmount is a paid mutator transaction binding the contract method 0x3c6b16ab.
+//
+// Solidity: function notifyRewardAmount(uint256 reward) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) NotifyRewardAmount(opts *bind.TransactOpts, reward *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "notifyRewardAmount", reward)
+}
+
+// NotifyRewardAmount is a paid mutator transaction binding the contract method 0x3c6b16ab.
+//
+// Solidity: function notifyRewardAmount(uint256 reward) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) NotifyRewardAmount(reward *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.NotifyRewardAmount(&_YOptimismStakingReward.TransactOpts, reward)
+}
+
+// NotifyRewardAmount is a paid mutator transaction binding the contract method 0x3c6b16ab.
+//
+// Solidity: function notifyRewardAmount(uint256 reward) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) NotifyRewardAmount(reward *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.NotifyRewardAmount(&_YOptimismStakingReward.TransactOpts, reward)
+}
+
+// RecoverERC20 is a paid mutator transaction binding the contract method 0x8980f11f.
+//
+// Solidity: function recoverERC20(address tokenAddress, uint256 tokenAmount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) RecoverERC20(opts *bind.TransactOpts, tokenAddress common.Address, tokenAmount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "recoverERC20", tokenAddress, tokenAmount)
+}
+
+// RecoverERC20 is a paid mutator transaction binding the contract method 0x8980f11f.
+//
+// Solidity: function recoverERC20(address tokenAddress, uint256 tokenAmount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) RecoverERC20(tokenAddress common.Address, tokenAmount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.RecoverERC20(&_YOptimismStakingReward.TransactOpts, tokenAddress, tokenAmount)
+}
+
+// RecoverERC20 is a paid mutator transaction binding the contract method 0x8980f11f.
+//
+// Solidity: function recoverERC20(address tokenAddress, uint256 tokenAmount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) RecoverERC20(tokenAddress common.Address, tokenAmount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.RecoverERC20(&_YOptimismStakingReward.TransactOpts, tokenAddress, tokenAmount)
+}
+
+// SetPaused is a paid mutator transaction binding the contract method 0x16c38b3c.
+//
+// Solidity: function setPaused(bool _paused) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetPaused(opts *bind.TransactOpts, _paused bool) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "setPaused", _paused)
+}
+
+// SetPaused is a paid mutator transaction binding the contract method 0x16c38b3c.
+//
+// Solidity: function setPaused(bool _paused) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetPaused(_paused bool) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetPaused(&_YOptimismStakingReward.TransactOpts, _paused)
+}
+
+// SetPaused is a paid mutator transaction binding the contract method 0x16c38b3c.
+//
+// Solidity: function setPaused(bool _paused) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetPaused(_paused bool) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetPaused(&_YOptimismStakingReward.TransactOpts, _paused)
+}
+
+// SetRewardsDistribution is a paid mutator transaction binding the contract method 0x19762143.
+//
+// Solidity: function setRewardsDistribution(address _rewardsDistribution) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetRewardsDistribution(opts *bind.TransactOpts, _rewardsDistribution common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "setRewardsDistribution", _rewardsDistribution)
+}
+
+// SetRewardsDistribution is a paid mutator transaction binding the contract method 0x19762143.
+//
+// Solidity: function setRewardsDistribution(address _rewardsDistribution) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetRewardsDistribution(_rewardsDistribution common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetRewardsDistribution(&_YOptimismStakingReward.TransactOpts, _rewardsDistribution)
+}
+
+// SetRewardsDistribution is a paid mutator transaction binding the contract method 0x19762143.
+//
+// Solidity: function setRewardsDistribution(address _rewardsDistribution) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetRewardsDistribution(_rewardsDistribution common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetRewardsDistribution(&_YOptimismStakingReward.TransactOpts, _rewardsDistribution)
+}
+
+// SetRewardsDuration is a paid mutator transaction binding the contract method 0xcc1a378f.
+//
+// Solidity: function setRewardsDuration(uint256 _rewardsDuration) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetRewardsDuration(opts *bind.TransactOpts, _rewardsDuration *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "setRewardsDuration", _rewardsDuration)
+}
+
+// SetRewardsDuration is a paid mutator transaction binding the contract method 0xcc1a378f.
+//
+// Solidity: function setRewardsDuration(uint256 _rewardsDuration) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetRewardsDuration(_rewardsDuration *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetRewardsDuration(&_YOptimismStakingReward.TransactOpts, _rewardsDuration)
+}
+
+// SetRewardsDuration is a paid mutator transaction binding the contract method 0xcc1a378f.
+//
+// Solidity: function setRewardsDuration(uint256 _rewardsDuration) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetRewardsDuration(_rewardsDuration *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetRewardsDuration(&_YOptimismStakingReward.TransactOpts, _rewardsDuration)
+}
+
+// SetZapContract is a paid mutator transaction binding the contract method 0xfcaa8737.
+//
+// Solidity: function setZapContract(address _zapContract) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) SetZapContract(opts *bind.TransactOpts, _zapContract common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "setZapContract", _zapContract)
+}
+
+// SetZapContract is a paid mutator transaction binding the contract method 0xfcaa8737.
+//
+// Solidity: function setZapContract(address _zapContract) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) SetZapContract(_zapContract common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetZapContract(&_YOptimismStakingReward.TransactOpts, _zapContract)
+}
+
+// SetZapContract is a paid mutator transaction binding the contract method 0xfcaa8737.
+//
+// Solidity: function setZapContract(address _zapContract) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) SetZapContract(_zapContract common.Address) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.SetZapContract(&_YOptimismStakingReward.TransactOpts, _zapContract)
+}
+
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) Stake(opts *bind.TransactOpts, amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "stake", amount)
+}
+
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Stake(amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Stake(&_YOptimismStakingReward.TransactOpts, amount)
+}
+
+// Stake is a paid mutator transaction binding the contract method 0xa694fc3a.
+//
+// Solidity: function stake(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) Stake(amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Stake(&_YOptimismStakingReward.TransactOpts, amount)
+}
+
+// StakeFor is a paid mutator transaction binding the contract method 0x2ee40908.
+//
+// Solidity: function stakeFor(address recipient, uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) StakeFor(opts *bind.TransactOpts, recipient common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "stakeFor", recipient, amount)
+}
+
+// StakeFor is a paid mutator transaction binding the contract method 0x2ee40908.
+//
+// Solidity: function stakeFor(address recipient, uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) StakeFor(recipient common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.StakeFor(&_YOptimismStakingReward.TransactOpts, recipient, amount)
+}
+
+// StakeFor is a paid mutator transaction binding the contract method 0x2ee40908.
+//
+// Solidity: function stakeFor(address recipient, uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) StakeFor(recipient common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.StakeFor(&_YOptimismStakingReward.TransactOpts, recipient, amount)
+}
+
+// Withdraw is a paid mutator transaction binding the contract method 0x2e1a7d4d.
+//
+// Solidity: function withdraw(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactor) Withdraw(opts *bind.TransactOpts, amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.contract.Transact(opts, "withdraw", amount)
+}
+
+// Withdraw is a paid mutator transaction binding the contract method 0x2e1a7d4d.
+//
+// Solidity: function withdraw(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardSession) Withdraw(amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Withdraw(&_YOptimismStakingReward.TransactOpts, amount)
+}
+
+// Withdraw is a paid mutator transaction binding the contract method 0x2e1a7d4d.
+//
+// Solidity: function withdraw(uint256 amount) returns()
+func (_YOptimismStakingReward *YOptimismStakingRewardTransactorSession) Withdraw(amount *big.Int) (*types.Transaction, error) {
+	return _YOptimismStakingReward.Contract.Withdraw(&_YOptimismStakingReward.TransactOpts, amount)
+}
+
+// YOptimismStakingRewardOwnerChangedIterator is returned from FilterOwnerChanged and is used to iterate over the raw logs and unpacked data for OwnerChanged events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardOwnerChangedIterator struct {
+	Event *YOptimismStakingRewardOwnerChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -548,7 +1150,7 @@ type YOptimismStakingRewardApprovedPoolEndorserIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Next() bool {
+func (it *YOptimismStakingRewardOwnerChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -557,7 +1159,7 @@ func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(YOptimismStakingRewardApprovedPoolEndorser)
+			it.Event = new(YOptimismStakingRewardOwnerChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -572,7 +1174,7 @@ func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(YOptimismStakingRewardApprovedPoolEndorser)
+		it.Event = new(YOptimismStakingRewardOwnerChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -588,42 +1190,42 @@ func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Error() error {
+func (it *YOptimismStakingRewardOwnerChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *YOptimismStakingRewardApprovedPoolEndorserIterator) Close() error {
+func (it *YOptimismStakingRewardOwnerChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// YOptimismStakingRewardApprovedPoolEndorser represents a ApprovedPoolEndorser event raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardApprovedPoolEndorser struct {
-	Account    common.Address
-	CanEndorse bool
-	Raw        types.Log // Blockchain specific contextual infos
+// YOptimismStakingRewardOwnerChanged represents a OwnerChanged event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardOwnerChanged struct {
+	OldOwner common.Address
+	NewOwner common.Address
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterApprovedPoolEndorser is a free log retrieval operation binding the contract event 0x971fecdddf4686fb97d914426cefb86d567c8e5081e48f0346d9ea0c931cac69.
+// FilterOwnerChanged is a free log retrieval operation binding the contract event 0xb532073b38c83145e3e5135377a08bf9aab55bc0fd7c1179cd4fb995d2a5159c.
 //
-// Solidity: event ApprovedPoolEndorser(address account, bool canEndorse)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterApprovedPoolEndorser(opts *bind.FilterOpts) (*YOptimismStakingRewardApprovedPoolEndorserIterator, error) {
+// Solidity: event OwnerChanged(address oldOwner, address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterOwnerChanged(opts *bind.FilterOpts) (*YOptimismStakingRewardOwnerChangedIterator, error) {
 
-	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "ApprovedPoolEndorser")
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "OwnerChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &YOptimismStakingRewardApprovedPoolEndorserIterator{contract: _YOptimismStakingReward.contract, event: "ApprovedPoolEndorser", logs: logs, sub: sub}, nil
+	return &YOptimismStakingRewardOwnerChangedIterator{contract: _YOptimismStakingReward.contract, event: "OwnerChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchApprovedPoolEndorser is a free log subscription operation binding the contract event 0x971fecdddf4686fb97d914426cefb86d567c8e5081e48f0346d9ea0c931cac69.
+// WatchOwnerChanged is a free log subscription operation binding the contract event 0xb532073b38c83145e3e5135377a08bf9aab55bc0fd7c1179cd4fb995d2a5159c.
 //
-// Solidity: event ApprovedPoolEndorser(address account, bool canEndorse)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPoolEndorser(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardApprovedPoolEndorser) (event.Subscription, error) {
+// Solidity: event OwnerChanged(address oldOwner, address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchOwnerChanged(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardOwnerChanged) (event.Subscription, error) {
 
-	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "ApprovedPoolEndorser")
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "OwnerChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -633,8 +1235,8 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPool
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(YOptimismStakingRewardApprovedPoolEndorser)
-				if err := _YOptimismStakingReward.contract.UnpackLog(event, "ApprovedPoolEndorser", log); err != nil {
+				event := new(YOptimismStakingRewardOwnerChanged)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnerChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -655,21 +1257,21 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPool
 	}), nil
 }
 
-// ParseApprovedPoolEndorser is a log parse operation binding the contract event 0x971fecdddf4686fb97d914426cefb86d567c8e5081e48f0346d9ea0c931cac69.
+// ParseOwnerChanged is a log parse operation binding the contract event 0xb532073b38c83145e3e5135377a08bf9aab55bc0fd7c1179cd4fb995d2a5159c.
 //
-// Solidity: event ApprovedPoolEndorser(address account, bool canEndorse)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseApprovedPoolEndorser(log types.Log) (*YOptimismStakingRewardApprovedPoolEndorser, error) {
-	event := new(YOptimismStakingRewardApprovedPoolEndorser)
-	if err := _YOptimismStakingReward.contract.UnpackLog(event, "ApprovedPoolEndorser", log); err != nil {
+// Solidity: event OwnerChanged(address oldOwner, address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseOwnerChanged(log types.Log) (*YOptimismStakingRewardOwnerChanged, error) {
+	event := new(YOptimismStakingRewardOwnerChanged)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnerChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator is returned from FilterApprovedPoolOwnerUpdated and is used to iterate over the raw logs and unpacked data for ApprovedPoolOwnerUpdated events raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator struct {
-	Event *YOptimismStakingRewardApprovedPoolOwnerUpdated // Event containing the contract specifics and raw log
+// YOptimismStakingRewardOwnerNominatedIterator is returned from FilterOwnerNominated and is used to iterate over the raw logs and unpacked data for OwnerNominated events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardOwnerNominatedIterator struct {
+	Event *YOptimismStakingRewardOwnerNominated // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -683,7 +1285,7 @@ type YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Next() bool {
+func (it *YOptimismStakingRewardOwnerNominatedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -692,7 +1294,7 @@ func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(YOptimismStakingRewardApprovedPoolOwnerUpdated)
+			it.Event = new(YOptimismStakingRewardOwnerNominated)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -707,7 +1309,7 @@ func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(YOptimismStakingRewardApprovedPoolOwnerUpdated)
+		it.Event = new(YOptimismStakingRewardOwnerNominated)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -723,42 +1325,41 @@ func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Error() error {
+func (it *YOptimismStakingRewardOwnerNominatedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator) Close() error {
+func (it *YOptimismStakingRewardOwnerNominatedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// YOptimismStakingRewardApprovedPoolOwnerUpdated represents a ApprovedPoolOwnerUpdated event raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardApprovedPoolOwnerUpdated struct {
-	Governance common.Address
-	Approved   bool
-	Raw        types.Log // Blockchain specific contextual infos
+// YOptimismStakingRewardOwnerNominated represents a OwnerNominated event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardOwnerNominated struct {
+	NewOwner common.Address
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterApprovedPoolOwnerUpdated is a free log retrieval operation binding the contract event 0xb3b57e8caeb8200bd5bdd2e4c7a421b0f9683a9e9a376d8a9c6c29883f7a7292.
+// FilterOwnerNominated is a free log retrieval operation binding the contract event 0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22.
 //
-// Solidity: event ApprovedPoolOwnerUpdated(address governance, bool approved)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterApprovedPoolOwnerUpdated(opts *bind.FilterOpts) (*YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator, error) {
+// Solidity: event OwnerNominated(address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterOwnerNominated(opts *bind.FilterOpts) (*YOptimismStakingRewardOwnerNominatedIterator, error) {
 
-	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "ApprovedPoolOwnerUpdated")
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "OwnerNominated")
 	if err != nil {
 		return nil, err
 	}
-	return &YOptimismStakingRewardApprovedPoolOwnerUpdatedIterator{contract: _YOptimismStakingReward.contract, event: "ApprovedPoolOwnerUpdated", logs: logs, sub: sub}, nil
+	return &YOptimismStakingRewardOwnerNominatedIterator{contract: _YOptimismStakingReward.contract, event: "OwnerNominated", logs: logs, sub: sub}, nil
 }
 
-// WatchApprovedPoolOwnerUpdated is a free log subscription operation binding the contract event 0xb3b57e8caeb8200bd5bdd2e4c7a421b0f9683a9e9a376d8a9c6c29883f7a7292.
+// WatchOwnerNominated is a free log subscription operation binding the contract event 0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22.
 //
-// Solidity: event ApprovedPoolOwnerUpdated(address governance, bool approved)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPoolOwnerUpdated(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardApprovedPoolOwnerUpdated) (event.Subscription, error) {
+// Solidity: event OwnerNominated(address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchOwnerNominated(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardOwnerNominated) (event.Subscription, error) {
 
-	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "ApprovedPoolOwnerUpdated")
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "OwnerNominated")
 	if err != nil {
 		return nil, err
 	}
@@ -768,8 +1369,8 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPool
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(YOptimismStakingRewardApprovedPoolOwnerUpdated)
-				if err := _YOptimismStakingReward.contract.UnpackLog(event, "ApprovedPoolOwnerUpdated", log); err != nil {
+				event := new(YOptimismStakingRewardOwnerNominated)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnerNominated", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -790,21 +1391,21 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchApprovedPool
 	}), nil
 }
 
-// ParseApprovedPoolOwnerUpdated is a log parse operation binding the contract event 0xb3b57e8caeb8200bd5bdd2e4c7a421b0f9683a9e9a376d8a9c6c29883f7a7292.
+// ParseOwnerNominated is a log parse operation binding the contract event 0x906a1c6bd7e3091ea86693dd029a831c19049ce77f1dce2ce0bab1cacbabce22.
 //
-// Solidity: event ApprovedPoolOwnerUpdated(address governance, bool approved)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseApprovedPoolOwnerUpdated(log types.Log) (*YOptimismStakingRewardApprovedPoolOwnerUpdated, error) {
-	event := new(YOptimismStakingRewardApprovedPoolOwnerUpdated)
-	if err := _YOptimismStakingReward.contract.UnpackLog(event, "ApprovedPoolOwnerUpdated", log); err != nil {
+// Solidity: event OwnerNominated(address newOwner)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseOwnerNominated(log types.Log) (*YOptimismStakingRewardOwnerNominated, error) {
+	event := new(YOptimismStakingRewardOwnerNominated)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnerNominated", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// YOptimismStakingRewardOwnershipTransferredIterator is returned from FilterOwnershipTransferred and is used to iterate over the raw logs and unpacked data for OwnershipTransferred events raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardOwnershipTransferredIterator struct {
-	Event *YOptimismStakingRewardOwnershipTransferred // Event containing the contract specifics and raw log
+// YOptimismStakingRewardPauseChangedIterator is returned from FilterPauseChanged and is used to iterate over the raw logs and unpacked data for PauseChanged events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardPauseChangedIterator struct {
+	Event *YOptimismStakingRewardPauseChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -818,7 +1419,7 @@ type YOptimismStakingRewardOwnershipTransferredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *YOptimismStakingRewardOwnershipTransferredIterator) Next() bool {
+func (it *YOptimismStakingRewardPauseChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -827,7 +1428,7 @@ func (it *YOptimismStakingRewardOwnershipTransferredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(YOptimismStakingRewardOwnershipTransferred)
+			it.Event = new(YOptimismStakingRewardPauseChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -842,7 +1443,7 @@ func (it *YOptimismStakingRewardOwnershipTransferredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(YOptimismStakingRewardOwnershipTransferred)
+		it.Event = new(YOptimismStakingRewardPauseChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -858,60 +1459,41 @@ func (it *YOptimismStakingRewardOwnershipTransferredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *YOptimismStakingRewardOwnershipTransferredIterator) Error() error {
+func (it *YOptimismStakingRewardPauseChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *YOptimismStakingRewardOwnershipTransferredIterator) Close() error {
+func (it *YOptimismStakingRewardPauseChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// YOptimismStakingRewardOwnershipTransferred represents a OwnershipTransferred event raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardOwnershipTransferred struct {
-	PreviousOwner common.Address
-	NewOwner      common.Address
-	Raw           types.Log // Blockchain specific contextual infos
+// YOptimismStakingRewardPauseChanged represents a PauseChanged event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardPauseChanged struct {
+	IsPaused bool
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterOwnershipTransferred is a free log retrieval operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// FilterPauseChanged is a free log retrieval operation binding the contract event 0x8fb6c181ee25a520cf3dd6565006ef91229fcfe5a989566c2a3b8c115570cec5.
 //
-// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterOwnershipTransferred(opts *bind.FilterOpts, previousOwner []common.Address, newOwner []common.Address) (*YOptimismStakingRewardOwnershipTransferredIterator, error) {
+// Solidity: event PauseChanged(bool isPaused)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterPauseChanged(opts *bind.FilterOpts) (*YOptimismStakingRewardPauseChangedIterator, error) {
 
-	var previousOwnerRule []interface{}
-	for _, previousOwnerItem := range previousOwner {
-		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
-	}
-	var newOwnerRule []interface{}
-	for _, newOwnerItem := range newOwner {
-		newOwnerRule = append(newOwnerRule, newOwnerItem)
-	}
-
-	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "PauseChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &YOptimismStakingRewardOwnershipTransferredIterator{contract: _YOptimismStakingReward.contract, event: "OwnershipTransferred", logs: logs, sub: sub}, nil
+	return &YOptimismStakingRewardPauseChangedIterator{contract: _YOptimismStakingReward.contract, event: "PauseChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchOwnershipTransferred is a free log subscription operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// WatchPauseChanged is a free log subscription operation binding the contract event 0x8fb6c181ee25a520cf3dd6565006ef91229fcfe5a989566c2a3b8c115570cec5.
 //
-// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchOwnershipTransferred(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardOwnershipTransferred, previousOwner []common.Address, newOwner []common.Address) (event.Subscription, error) {
+// Solidity: event PauseChanged(bool isPaused)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchPauseChanged(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardPauseChanged) (event.Subscription, error) {
 
-	var previousOwnerRule []interface{}
-	for _, previousOwnerItem := range previousOwner {
-		previousOwnerRule = append(previousOwnerRule, previousOwnerItem)
-	}
-	var newOwnerRule []interface{}
-	for _, newOwnerItem := range newOwner {
-		newOwnerRule = append(newOwnerRule, newOwnerItem)
-	}
-
-	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "OwnershipTransferred", previousOwnerRule, newOwnerRule)
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "PauseChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -921,8 +1503,8 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchOwnershipTra
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(YOptimismStakingRewardOwnershipTransferred)
-				if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+				event := new(YOptimismStakingRewardPauseChanged)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "PauseChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -943,21 +1525,21 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchOwnershipTra
 	}), nil
 }
 
-// ParseOwnershipTransferred is a log parse operation binding the contract event 0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0.
+// ParsePauseChanged is a log parse operation binding the contract event 0x8fb6c181ee25a520cf3dd6565006ef91229fcfe5a989566c2a3b8c115570cec5.
 //
-// Solidity: event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseOwnershipTransferred(log types.Log) (*YOptimismStakingRewardOwnershipTransferred, error) {
-	event := new(YOptimismStakingRewardOwnershipTransferred)
-	if err := _YOptimismStakingReward.contract.UnpackLog(event, "OwnershipTransferred", log); err != nil {
+// Solidity: event PauseChanged(bool isPaused)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParsePauseChanged(log types.Log) (*YOptimismStakingRewardPauseChanged, error) {
+	event := new(YOptimismStakingRewardPauseChanged)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "PauseChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// YOptimismStakingRewardStakingPoolAddedIterator is returned from FilterStakingPoolAdded and is used to iterate over the raw logs and unpacked data for StakingPoolAdded events raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardStakingPoolAddedIterator struct {
-	Event *YOptimismStakingRewardStakingPoolAdded // Event containing the contract specifics and raw log
+// YOptimismStakingRewardRecoveredIterator is returned from FilterRecovered and is used to iterate over the raw logs and unpacked data for Recovered events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRecoveredIterator struct {
+	Event *YOptimismStakingRewardRecovered // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -971,7 +1553,7 @@ type YOptimismStakingRewardStakingPoolAddedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *YOptimismStakingRewardStakingPoolAddedIterator) Next() bool {
+func (it *YOptimismStakingRewardRecoveredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -980,7 +1562,7 @@ func (it *YOptimismStakingRewardStakingPoolAddedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(YOptimismStakingRewardStakingPoolAdded)
+			it.Event = new(YOptimismStakingRewardRecovered)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -995,7 +1577,7 @@ func (it *YOptimismStakingRewardStakingPoolAddedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(YOptimismStakingRewardStakingPoolAdded)
+		it.Event = new(YOptimismStakingRewardRecovered)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1011,60 +1593,455 @@ func (it *YOptimismStakingRewardStakingPoolAddedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *YOptimismStakingRewardStakingPoolAddedIterator) Error() error {
+func (it *YOptimismStakingRewardRecoveredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *YOptimismStakingRewardStakingPoolAddedIterator) Close() error {
+func (it *YOptimismStakingRewardRecoveredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// YOptimismStakingRewardStakingPoolAdded represents a StakingPoolAdded event raised by the YOptimismStakingReward contract.
-type YOptimismStakingRewardStakingPoolAdded struct {
-	Token       common.Address
-	StakingPool common.Address
+// YOptimismStakingRewardRecovered represents a Recovered event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRecovered struct {
+	Token  common.Address
+	Amount *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterRecovered is a free log retrieval operation binding the contract event 0x8c1256b8896378cd5044f80c202f9772b9d77dc85c8a6eb51967210b09bfaa28.
+//
+// Solidity: event Recovered(address token, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterRecovered(opts *bind.FilterOpts) (*YOptimismStakingRewardRecoveredIterator, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "Recovered")
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardRecoveredIterator{contract: _YOptimismStakingReward.contract, event: "Recovered", logs: logs, sub: sub}, nil
+}
+
+// WatchRecovered is a free log subscription operation binding the contract event 0x8c1256b8896378cd5044f80c202f9772b9d77dc85c8a6eb51967210b09bfaa28.
+//
+// Solidity: event Recovered(address token, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchRecovered(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardRecovered) (event.Subscription, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "Recovered")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardRecovered)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "Recovered", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRecovered is a log parse operation binding the contract event 0x8c1256b8896378cd5044f80c202f9772b9d77dc85c8a6eb51967210b09bfaa28.
+//
+// Solidity: event Recovered(address token, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseRecovered(log types.Log) (*YOptimismStakingRewardRecovered, error) {
+	event := new(YOptimismStakingRewardRecovered)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "Recovered", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardRewardAddedIterator is returned from FilterRewardAdded and is used to iterate over the raw logs and unpacked data for RewardAdded events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardAddedIterator struct {
+	Event *YOptimismStakingRewardRewardAdded // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardRewardAddedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardRewardAdded)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardRewardAdded)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardRewardAddedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardRewardAddedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardRewardAdded represents a RewardAdded event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardAdded struct {
+	Reward *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterRewardAdded is a free log retrieval operation binding the contract event 0xde88a922e0d3b88b24e9623efeb464919c6bf9f66857a65e2bfcf2ce87a9433d.
+//
+// Solidity: event RewardAdded(uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterRewardAdded(opts *bind.FilterOpts) (*YOptimismStakingRewardRewardAddedIterator, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "RewardAdded")
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardRewardAddedIterator{contract: _YOptimismStakingReward.contract, event: "RewardAdded", logs: logs, sub: sub}, nil
+}
+
+// WatchRewardAdded is a free log subscription operation binding the contract event 0xde88a922e0d3b88b24e9623efeb464919c6bf9f66857a65e2bfcf2ce87a9433d.
+//
+// Solidity: event RewardAdded(uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchRewardAdded(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardRewardAdded) (event.Subscription, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "RewardAdded")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardRewardAdded)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardAdded", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRewardAdded is a log parse operation binding the contract event 0xde88a922e0d3b88b24e9623efeb464919c6bf9f66857a65e2bfcf2ce87a9433d.
+//
+// Solidity: event RewardAdded(uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseRewardAdded(log types.Log) (*YOptimismStakingRewardRewardAdded, error) {
+	event := new(YOptimismStakingRewardRewardAdded)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardAdded", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardRewardPaidIterator is returned from FilterRewardPaid and is used to iterate over the raw logs and unpacked data for RewardPaid events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardPaidIterator struct {
+	Event *YOptimismStakingRewardRewardPaid // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardRewardPaidIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardRewardPaid)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardRewardPaid)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardRewardPaidIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardRewardPaidIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardRewardPaid represents a RewardPaid event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardPaid struct {
+	User   common.Address
+	Reward *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterRewardPaid is a free log retrieval operation binding the contract event 0xe2403640ba68fed3a2f88b7557551d1993f84b99bb10ff833f0cf8db0c5e0486.
+//
+// Solidity: event RewardPaid(address indexed user, uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterRewardPaid(opts *bind.FilterOpts, user []common.Address) (*YOptimismStakingRewardRewardPaidIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "RewardPaid", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardRewardPaidIterator{contract: _YOptimismStakingReward.contract, event: "RewardPaid", logs: logs, sub: sub}, nil
+}
+
+// WatchRewardPaid is a free log subscription operation binding the contract event 0xe2403640ba68fed3a2f88b7557551d1993f84b99bb10ff833f0cf8db0c5e0486.
+//
+// Solidity: event RewardPaid(address indexed user, uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchRewardPaid(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardRewardPaid, user []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "RewardPaid", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardRewardPaid)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardPaid", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseRewardPaid is a log parse operation binding the contract event 0xe2403640ba68fed3a2f88b7557551d1993f84b99bb10ff833f0cf8db0c5e0486.
+//
+// Solidity: event RewardPaid(address indexed user, uint256 reward)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseRewardPaid(log types.Log) (*YOptimismStakingRewardRewardPaid, error) {
+	event := new(YOptimismStakingRewardRewardPaid)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardPaid", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardRewardsDurationUpdatedIterator is returned from FilterRewardsDurationUpdated and is used to iterate over the raw logs and unpacked data for RewardsDurationUpdated events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardsDurationUpdatedIterator struct {
+	Event *YOptimismStakingRewardRewardsDurationUpdated // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardRewardsDurationUpdatedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardRewardsDurationUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardRewardsDurationUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardRewardsDurationUpdatedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardRewardsDurationUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardRewardsDurationUpdated represents a RewardsDurationUpdated event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardRewardsDurationUpdated struct {
+	NewDuration *big.Int
 	Raw         types.Log // Blockchain specific contextual infos
 }
 
-// FilterStakingPoolAdded is a free log retrieval operation binding the contract event 0xd58b22ec3b77fb836c6ae1bba270411b0fa4961ff8423444de63e7f804826f74.
+// FilterRewardsDurationUpdated is a free log retrieval operation binding the contract event 0xfb46ca5a5e06d4540d6387b930a7c978bce0db5f449ec6b3f5d07c6e1d44f2d3.
 //
-// Solidity: event StakingPoolAdded(address indexed token, address indexed stakingPool)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterStakingPoolAdded(opts *bind.FilterOpts, token []common.Address, stakingPool []common.Address) (*YOptimismStakingRewardStakingPoolAddedIterator, error) {
+// Solidity: event RewardsDurationUpdated(uint256 newDuration)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterRewardsDurationUpdated(opts *bind.FilterOpts) (*YOptimismStakingRewardRewardsDurationUpdatedIterator, error) {
 
-	var tokenRule []interface{}
-	for _, tokenItem := range token {
-		tokenRule = append(tokenRule, tokenItem)
-	}
-	var stakingPoolRule []interface{}
-	for _, stakingPoolItem := range stakingPool {
-		stakingPoolRule = append(stakingPoolRule, stakingPoolItem)
-	}
-
-	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "StakingPoolAdded", tokenRule, stakingPoolRule)
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "RewardsDurationUpdated")
 	if err != nil {
 		return nil, err
 	}
-	return &YOptimismStakingRewardStakingPoolAddedIterator{contract: _YOptimismStakingReward.contract, event: "StakingPoolAdded", logs: logs, sub: sub}, nil
+	return &YOptimismStakingRewardRewardsDurationUpdatedIterator{contract: _YOptimismStakingReward.contract, event: "RewardsDurationUpdated", logs: logs, sub: sub}, nil
 }
 
-// WatchStakingPoolAdded is a free log subscription operation binding the contract event 0xd58b22ec3b77fb836c6ae1bba270411b0fa4961ff8423444de63e7f804826f74.
+// WatchRewardsDurationUpdated is a free log subscription operation binding the contract event 0xfb46ca5a5e06d4540d6387b930a7c978bce0db5f449ec6b3f5d07c6e1d44f2d3.
 //
-// Solidity: event StakingPoolAdded(address indexed token, address indexed stakingPool)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchStakingPoolAdded(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardStakingPoolAdded, token []common.Address, stakingPool []common.Address) (event.Subscription, error) {
+// Solidity: event RewardsDurationUpdated(uint256 newDuration)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchRewardsDurationUpdated(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardRewardsDurationUpdated) (event.Subscription, error) {
 
-	var tokenRule []interface{}
-	for _, tokenItem := range token {
-		tokenRule = append(tokenRule, tokenItem)
-	}
-	var stakingPoolRule []interface{}
-	for _, stakingPoolItem := range stakingPool {
-		stakingPoolRule = append(stakingPoolRule, stakingPoolItem)
-	}
-
-	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "StakingPoolAdded", tokenRule, stakingPoolRule)
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "RewardsDurationUpdated")
 	if err != nil {
 		return nil, err
 	}
@@ -1074,8 +2051,8 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchStakingPoolA
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(YOptimismStakingRewardStakingPoolAdded)
-				if err := _YOptimismStakingReward.contract.UnpackLog(event, "StakingPoolAdded", log); err != nil {
+				event := new(YOptimismStakingRewardRewardsDurationUpdated)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardsDurationUpdated", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1096,12 +2073,581 @@ func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchStakingPoolA
 	}), nil
 }
 
-// ParseStakingPoolAdded is a log parse operation binding the contract event 0xd58b22ec3b77fb836c6ae1bba270411b0fa4961ff8423444de63e7f804826f74.
+// ParseRewardsDurationUpdated is a log parse operation binding the contract event 0xfb46ca5a5e06d4540d6387b930a7c978bce0db5f449ec6b3f5d07c6e1d44f2d3.
 //
-// Solidity: event StakingPoolAdded(address indexed token, address indexed stakingPool)
-func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseStakingPoolAdded(log types.Log) (*YOptimismStakingRewardStakingPoolAdded, error) {
-	event := new(YOptimismStakingRewardStakingPoolAdded)
-	if err := _YOptimismStakingReward.contract.UnpackLog(event, "StakingPoolAdded", log); err != nil {
+// Solidity: event RewardsDurationUpdated(uint256 newDuration)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseRewardsDurationUpdated(log types.Log) (*YOptimismStakingRewardRewardsDurationUpdated, error) {
+	event := new(YOptimismStakingRewardRewardsDurationUpdated)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "RewardsDurationUpdated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardStakedIterator is returned from FilterStaked and is used to iterate over the raw logs and unpacked data for Staked events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardStakedIterator struct {
+	Event *YOptimismStakingRewardStaked // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardStakedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardStaked)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardStaked)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardStakedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardStakedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardStaked represents a Staked event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardStaked struct {
+	User   common.Address
+	Amount *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterStaked is a free log retrieval operation binding the contract event 0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d.
+//
+// Solidity: event Staked(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterStaked(opts *bind.FilterOpts, user []common.Address) (*YOptimismStakingRewardStakedIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "Staked", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardStakedIterator{contract: _YOptimismStakingReward.contract, event: "Staked", logs: logs, sub: sub}, nil
+}
+
+// WatchStaked is a free log subscription operation binding the contract event 0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d.
+//
+// Solidity: event Staked(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchStaked(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardStaked, user []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "Staked", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardStaked)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "Staked", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStaked is a log parse operation binding the contract event 0x9e71bc8eea02a63969f509818f2dafb9254532904319f9dbda79b67bd34a5f3d.
+//
+// Solidity: event Staked(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseStaked(log types.Log) (*YOptimismStakingRewardStaked, error) {
+	event := new(YOptimismStakingRewardStaked)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "Staked", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardStakedForIterator is returned from FilterStakedFor and is used to iterate over the raw logs and unpacked data for StakedFor events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardStakedForIterator struct {
+	Event *YOptimismStakingRewardStakedFor // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardStakedForIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardStakedFor)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardStakedFor)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardStakedForIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardStakedForIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardStakedFor represents a StakedFor event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardStakedFor struct {
+	User   common.Address
+	Amount *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterStakedFor is a free log retrieval operation binding the contract event 0xd185ae938da574e9cd1073962e1972c75ec585ab222b200a88c0abe2bf0cfe67.
+//
+// Solidity: event StakedFor(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterStakedFor(opts *bind.FilterOpts, user []common.Address) (*YOptimismStakingRewardStakedForIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "StakedFor", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardStakedForIterator{contract: _YOptimismStakingReward.contract, event: "StakedFor", logs: logs, sub: sub}, nil
+}
+
+// WatchStakedFor is a free log subscription operation binding the contract event 0xd185ae938da574e9cd1073962e1972c75ec585ab222b200a88c0abe2bf0cfe67.
+//
+// Solidity: event StakedFor(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchStakedFor(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardStakedFor, user []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "StakedFor", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardStakedFor)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "StakedFor", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseStakedFor is a log parse operation binding the contract event 0xd185ae938da574e9cd1073962e1972c75ec585ab222b200a88c0abe2bf0cfe67.
+//
+// Solidity: event StakedFor(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseStakedFor(log types.Log) (*YOptimismStakingRewardStakedFor, error) {
+	event := new(YOptimismStakingRewardStakedFor)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "StakedFor", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardWithdrawnIterator is returned from FilterWithdrawn and is used to iterate over the raw logs and unpacked data for Withdrawn events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardWithdrawnIterator struct {
+	Event *YOptimismStakingRewardWithdrawn // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardWithdrawnIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardWithdrawn)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardWithdrawn)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardWithdrawnIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardWithdrawnIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardWithdrawn represents a Withdrawn event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardWithdrawn struct {
+	User   common.Address
+	Amount *big.Int
+	Raw    types.Log // Blockchain specific contextual infos
+}
+
+// FilterWithdrawn is a free log retrieval operation binding the contract event 0x7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5.
+//
+// Solidity: event Withdrawn(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterWithdrawn(opts *bind.FilterOpts, user []common.Address) (*YOptimismStakingRewardWithdrawnIterator, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "Withdrawn", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardWithdrawnIterator{contract: _YOptimismStakingReward.contract, event: "Withdrawn", logs: logs, sub: sub}, nil
+}
+
+// WatchWithdrawn is a free log subscription operation binding the contract event 0x7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5.
+//
+// Solidity: event Withdrawn(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchWithdrawn(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardWithdrawn, user []common.Address) (event.Subscription, error) {
+
+	var userRule []interface{}
+	for _, userItem := range user {
+		userRule = append(userRule, userItem)
+	}
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "Withdrawn", userRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardWithdrawn)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "Withdrawn", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseWithdrawn is a log parse operation binding the contract event 0x7084f5476618d8e60b11ef0d7d3f06914655adb8793e28ff7f018d4c76d505d5.
+//
+// Solidity: event Withdrawn(address indexed user, uint256 amount)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseWithdrawn(log types.Log) (*YOptimismStakingRewardWithdrawn, error) {
+	event := new(YOptimismStakingRewardWithdrawn)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "Withdrawn", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// YOptimismStakingRewardZapContractUpdatedIterator is returned from FilterZapContractUpdated and is used to iterate over the raw logs and unpacked data for ZapContractUpdated events raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardZapContractUpdatedIterator struct {
+	Event *YOptimismStakingRewardZapContractUpdated // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *YOptimismStakingRewardZapContractUpdatedIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(YOptimismStakingRewardZapContractUpdated)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(YOptimismStakingRewardZapContractUpdated)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *YOptimismStakingRewardZapContractUpdatedIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *YOptimismStakingRewardZapContractUpdatedIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// YOptimismStakingRewardZapContractUpdated represents a ZapContractUpdated event raised by the YOptimismStakingReward contract.
+type YOptimismStakingRewardZapContractUpdated struct {
+	ZapContract common.Address
+	Raw         types.Log // Blockchain specific contextual infos
+}
+
+// FilterZapContractUpdated is a free log retrieval operation binding the contract event 0x0da458581861b4ff3ae5c23a916ec5218bbf4c371497cec29006f5c55d9c9a84.
+//
+// Solidity: event ZapContractUpdated(address _zapContract)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) FilterZapContractUpdated(opts *bind.FilterOpts) (*YOptimismStakingRewardZapContractUpdatedIterator, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.FilterLogs(opts, "ZapContractUpdated")
+	if err != nil {
+		return nil, err
+	}
+	return &YOptimismStakingRewardZapContractUpdatedIterator{contract: _YOptimismStakingReward.contract, event: "ZapContractUpdated", logs: logs, sub: sub}, nil
+}
+
+// WatchZapContractUpdated is a free log subscription operation binding the contract event 0x0da458581861b4ff3ae5c23a916ec5218bbf4c371497cec29006f5c55d9c9a84.
+//
+// Solidity: event ZapContractUpdated(address _zapContract)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) WatchZapContractUpdated(opts *bind.WatchOpts, sink chan<- *YOptimismStakingRewardZapContractUpdated) (event.Subscription, error) {
+
+	logs, sub, err := _YOptimismStakingReward.contract.WatchLogs(opts, "ZapContractUpdated")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(YOptimismStakingRewardZapContractUpdated)
+				if err := _YOptimismStakingReward.contract.UnpackLog(event, "ZapContractUpdated", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseZapContractUpdated is a log parse operation binding the contract event 0x0da458581861b4ff3ae5c23a916ec5218bbf4c371497cec29006f5c55d9c9a84.
+//
+// Solidity: event ZapContractUpdated(address _zapContract)
+func (_YOptimismStakingReward *YOptimismStakingRewardFilterer) ParseZapContractUpdated(log types.Log) (*YOptimismStakingRewardZapContractUpdated, error) {
+	event := new(YOptimismStakingRewardZapContractUpdated)
+	if err := _YOptimismStakingReward.contract.UnpackLog(event, "ZapContractUpdated", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

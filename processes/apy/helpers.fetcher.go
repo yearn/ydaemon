@@ -12,7 +12,7 @@ import (
 )
 
 func retrieveCurveGauges(chainID uint64) []models.CurveGauge {
-	resp, err := http.Get(env.CURVE_GAUGES_URI[chainID])
+	resp, err := http.Get(CURVE_GAUGES_URI[chainID])
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveGauge{}
@@ -61,7 +61,7 @@ func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 }
 
 func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
-	resp, err := http.Get(env.CURVE_SUBGRAPHDATA_URI[chainID])
+	resp, err := http.Get(CURVE_SUBGRAPHDATA_URI[chainID])
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveSubgraphData{}

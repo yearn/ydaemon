@@ -125,22 +125,6 @@ var CURVE_POOLS_URI = map[uint64][]string{
 	},
 }
 
-// CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
-var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
-	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,
-	10:    ``,
-	250:   ``,
-	42161: ``,
-}
-
-// CURVE_GAUGES_URI contains the URI of the Curve gauges to use
-var CURVE_GAUGES_URI = map[uint64]string{
-	1:     `https://api.curve.fi/api/getAllGauges?blockchainId=ethereum`,
-	10:    ``,
-	250:   ``,
-	42161: ``,
-}
-
 // RPC_ENDPOINTS contains the node endpoints to connect the blockchains
 // Can be overwritten by env variables
 var RPC_ENDPOINTS = map[uint64]string{

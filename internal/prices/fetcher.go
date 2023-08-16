@@ -245,6 +245,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		250: {},
 		42161: {
 			`0x82e3A8F066a6989666b031d916c43672085b1582`, // YFI
+			`0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978`, // CRV
 		},
 	}
 	for _, tokenAddress := range extraTokens[chainID] {

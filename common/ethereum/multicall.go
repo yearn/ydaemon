@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"math/big"
+	"os"
 	"strings"
 	"time"
 
@@ -170,11 +171,17 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			isAssumingOutOfGas := false
 
 			if LIMIT_ERROR {
-				logs.Warning("Multicall gas limit error, retrying with smaller batch size", "batchSize", batchSize)
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Warning("Multicall gas limit error, retrying with smaller batch size", "batchSize", batchSize)
+				}
 			} else if SIZE_ERROR {
-				logs.Warning("Multicall size error, retrying with smaller batch size", "batchSize", batchSize)
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Warning("Multicall size error, retrying with smaller batch size", "batchSize", batchSize)
+				}
 			} else if OUT_OF_GAS_ERROR {
-				logs.Warning("Multicall out of gas error, retrying with smaller batch size", "batchSize", batchSize)
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Warning("Multicall out of gas error, retrying with smaller batch size", "batchSize", batchSize)
+				}
 			} else {
 				//assume it's out of gas for a few tries
 				isAssumingOutOfGas = true

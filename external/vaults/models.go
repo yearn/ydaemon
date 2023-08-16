@@ -8,6 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/apy"
 	// "github.com/yearn/ydaemon/processes/apy"
 )
 
@@ -125,31 +126,31 @@ type TExternalERC20Token struct {
 
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
-	Address           string              `json:"address"`
-	Type              models.TVaultType   `json:"type"`
-	Symbol            string              `json:"symbol"`
-	DisplaySymbol     string              `json:"display_symbol"`
-	FormatedSymbol    string              `json:"formated_symbol"`
-	Name              string              `json:"name"`
-	DisplayName       string              `json:"display_name"`
-	FormatedName      string              `json:"formated_name"`
-	Icon              string              `json:"icon"`
-	Version           string              `json:"version"`
-	Category          string              `json:"category"`
-	Inception         uint64              `json:"inception"`
-	Decimals          uint64              `json:"decimals"`
-	ChainID           uint64              `json:"chainID"`
-	RiskScore         float64             `json:"riskScore"`
-	Endorsed          bool                `json:"endorsed"`
-	EmergencyShutdown bool                `json:"emergency_shutdown"`
-	Token             TExternalERC20Token `json:"token"`
-	TVL               TExternalVaultTVL   `json:"tvl"`
-	APY               TExternalVaultAPY   `json:"apy"`
-	// NewAPY            apy.TAPIV1APY           `json:"newApy"`
-	Details    *TExternalVaultDetails  `json:"details"`
-	Strategies []*TStrategy            `json:"strategies"`
-	Migration  TExternalVaultMigration `json:"migration"`
-	Staking    TExternalVaultStaking   `json:"staking"`
+	Address           string                  `json:"address"`
+	Type              models.TVaultType       `json:"type"`
+	Symbol            string                  `json:"symbol"`
+	DisplaySymbol     string                  `json:"display_symbol"`
+	FormatedSymbol    string                  `json:"formated_symbol"`
+	Name              string                  `json:"name"`
+	DisplayName       string                  `json:"display_name"`
+	FormatedName      string                  `json:"formated_name"`
+	Icon              string                  `json:"icon"`
+	Version           string                  `json:"version"`
+	Category          string                  `json:"category"`
+	Inception         uint64                  `json:"inception"`
+	Decimals          uint64                  `json:"decimals"`
+	ChainID           uint64                  `json:"chainID"`
+	RiskScore         float64                 `json:"riskScore"`
+	Endorsed          bool                    `json:"endorsed"`
+	EmergencyShutdown bool                    `json:"emergency_shutdown"`
+	Token             TExternalERC20Token     `json:"token"`
+	TVL               TExternalVaultTVL       `json:"tvl"`
+	APY               TExternalVaultAPY       `json:"apy"`
+	NewAPY            apy.TAPIV1APY           `json:"newApy"`
+	Details           *TExternalVaultDetails  `json:"details"`
+	Strategies        []*TStrategy            `json:"strategies"`
+	Migration         TExternalVaultMigration `json:"migration"`
+	Staking           TExternalVaultStaking   `json:"staking"`
 }
 
 func NewVault() *TExternalVault {
@@ -234,7 +235,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		Composite:         TExternalAPYComposite(internalAPY.Composite),
 		Error:             internalAPY.Error,
 	}
-	// v.NewAPY = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
+	v.NewAPY = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
 
 	v.Details = &TExternalVaultDetails{
 		Management:            internalVault.Management.Hex(),

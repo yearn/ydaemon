@@ -12,8 +12,8 @@ var WEI = bigNumber.NewFloat(1e18)
 var YEARN_VOTER_ADDRESS = map[uint64]common.Address{
 	1:     common.HexToAddress(`0xF147b8125d2ef93FB6965Db97D6746952a133934`),
 	10:    common.HexToAddress(`0xea3a15df68fcdbe44fdb0db675b2b3a14a148b26`),
-	250:   {},
-	42161: {},
+	250:   common.HexToAddress(`0x72a34AbafAB09b15E7191822A679f28E067C4a16`),
+	42161: common.HexToAddress(`0x6346282DB8323A54E840c6C772B4399C9c655C0d`),
 }
 
 var CONVEX_VOTER_ADDRESS = map[uint64]common.Address{
@@ -48,14 +48,14 @@ var CVX_TOKEN_ADDRESS = map[uint64]common.Address{
 var CURVE_GAUGES_URI = map[uint64]string{
 	1:     `https://api.curve.fi/api/getAllGauges?blockchainId=ethereum`,
 	10:    `https://api.curve.fi/api/getAllGauges?blockchainId=optimism`,
-	250:   ``,
-	42161: ``,
+	250:   `https://api.curve.fi/api/getAllGauges?blockchainId=fantom`,
+	42161: `https://api.curve.fi/api/getAllGauges?blockchainId=arbitrum`,
 }
 
 // CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
 var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
 	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,
 	10:    `https://api.curve.fi/api/getSubgraphData/optimism`,
-	250:   ``,
-	42161: ``,
+	250:   `https://api.curve.fi/api/getSubgraphData/fantom`,
+	42161: `https://api.curve.fi/api/getSubgraphData/arbitrum`,
 }

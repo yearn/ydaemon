@@ -50,3 +50,17 @@ func GetRewardsToken(name string, contractAddress common.Address) ethereum.Call 
 		Name:     name,
 	}
 }
+
+func GetRewardToken(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := StakingABI.Pack("rewardToken")
+	if err != nil {
+		logs.Error("Error packing StakingABI rewardToken", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      StakingABI,
+		Method:   `rewardToken`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}

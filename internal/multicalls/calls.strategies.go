@@ -13,6 +13,7 @@ import (
 **************************************************************************************************/
 
 var YearnStrategyABI, _ = contracts.StrategyBaseMetaData.GetAbi()
+var YearnStrategyVeloABI, _ = contracts.YStrategyVeloMetaData.GetAbi()
 
 func GetStategyEstimatedTotalAsset(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnStrategyABI.Pack("estimatedTotalAssets")
@@ -221,5 +222,19 @@ func GetEmergencyExit(name string, contractAddress common.Address, version strin
 		CallData: parsedData,
 		Name:     name,
 		Version:  version,
+	}
+}
+
+func GetStategyLocalKeepVelo(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnStrategyVeloABI.Pack("localKeepVELO")
+	if err != nil {
+		logs.Error("Error packing YearnStrategyVeloABI localKeepVELO", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnStrategyVeloABI,
+		Method:   `localKeepVELO`,
+		CallData: parsedData,
+		Name:     name,
 	}
 }

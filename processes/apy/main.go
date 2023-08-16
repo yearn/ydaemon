@@ -66,6 +66,9 @@ func ComputeChainAPR(chainID uint64) {
 		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
+		if netAPR.Lte(ZERO) {
+			netAPR = bigNumber.NewFloat(0)
+		}
 
 		/**********************************************************************************************
 		** Some vaults may have a staking rewards system. If so, we need to calculate the APR for

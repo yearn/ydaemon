@@ -1,0 +1,22 @@
+{
+  "$schema": "vault",
+  "comment": "Curve EURS",
+  "hideAlways": false,
+  "depositsDisabled": true,
+  "withdrawalsDisabled": false,
+  "order": 18,
+  "migrationAvailable": true,
+  "migrationContract": "0x9327e2FDc57c7d70782F29AB46F6385afaf4503C",
+  "migrationTargetVault": "0xD6A4180c819324A9E432CA07C689EcBF00088cd6",
+  "allowZapIn": false,
+  "allowZapOut": true,
+  "retired": true,
+  "displayName": "Curve EURS",
+  "classification": {
+    "isAutomated": false,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Stable",
+    "stableBaseAsset": "EUR"
+  }
+}

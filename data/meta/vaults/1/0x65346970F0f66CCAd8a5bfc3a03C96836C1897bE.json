@@ -1,20 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve sdCRV-CRV-f",
+  "comment": "Curve DUSD",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 271,
+  "order": 419,
   "migrationAvailable": false,
-  "allowZapIn": false,
+  "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve sdCRV",
+  "retired": false,
+  "displayName": "Curve DUSD",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "CRV"
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
   }
 }

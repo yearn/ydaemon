@@ -1,20 +1,19 @@
 {
   "$schema": "vault",
-  "comment": "Curve sdCRV-CRV-f",
+  "comment": "Curve TriCryptoCRV-f",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 271,
+  "order": 415,
   "migrationAvailable": false,
-  "allowZapIn": false,
+  "allowZapIn": true,
   "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve sdCRV",
+  "retired": false,
+  "displayName": "Curve TriCryptoCRV",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
-    "stability": "Correlated",
-    "stableBaseAsset": "CRV"
+    "stability": "Volatile"
   }
 }

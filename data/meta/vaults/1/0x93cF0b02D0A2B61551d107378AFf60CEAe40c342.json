@@ -1,20 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Curve stETH-f",
+  "comment": "Curve sdYFI-YFI2-f",
   "hideAlways": false,
-  "depositsDisabled": true,
+  "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 266,
-  "allowZapIn": false,
-  "allowZapOut": true,
-  "retired": true,
-  "displayName": "Curve stETH",
+  "order": 421,
   "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve sdYFI",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Curve",
     "stability": "Correlated",
-    "stableBaseAsset": "Ether"
+    "stableBaseAsset": "YFI"
   }
 }

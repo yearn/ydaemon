@@ -8,6 +8,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/montanaflynn/stats"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -309,6 +310,11 @@ func computeRiskGroupAllocation(chainID uint64) {
 		_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 		_, amount := helpers.FormatAmount(strategy.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 		tvl := bigNumber.NewFloat(0).Mul(amount, price)
+
+		// Underlying was hacked, force TVL to 0
+		if addresses.Equals(strategy.VaultAddress, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
+			tvl = bigNumber.NewFloat(0)
+		}
 
 		if stackingData, hasStackingData := stakingData[chainID][strategy.VaultAddress.Hex()]; hasStackingData {
 			impactedStrategies := []common.Address{

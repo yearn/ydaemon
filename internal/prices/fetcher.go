@@ -268,6 +268,8 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0xBF7AA989192b020a8d3e1C65a558e123834325cA`, // Irrelevant HBTC yVault
 			`0xe92AE2cF5b373c1713eB5855D4D3aF81D8a8aCAE`, // Curve Stax Frax/Temple xLP + LP yVault - Unlisted
 			`0x3883f5e181fccaF8410FA61e12b59BAd963fb645`, // Theta: Old Token
+
+			`0xC4C319E2D4d66CcA4464C0c2B32c9Bd23ebe784e`, // Hacked alETH
 		},
 		10:  {},
 		250: {},

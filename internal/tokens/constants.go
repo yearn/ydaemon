@@ -51,6 +51,19 @@ func init() {
 		Decimals:                  18,
 		ChainID:                   250,
 	}
+	COIN_PER_CHAIN[8453] = models.TERC20Token{
+		Address:                   defaultCoinAddress,
+		UnderlyingTokensAddresses: []common.Address{},
+		Type:                      models.TokenTypeNative,
+		Name:                      `Ether`,
+		Symbol:                    `ETH`,
+		DisplayName:               `Ether`,
+		DisplaySymbol:             `ETH`,
+		Description:               `Base is a Layer 2 scaling solution based on Optimism.`,
+		Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(8453, 10) + `/` + defaultCoinAddress.Hex() + `/logo-128.png`,
+		Decimals:                  18,
+		ChainID:                   8453,
+	}
 	COIN_PER_CHAIN[42161] = models.TERC20Token{
 		Address:                   defaultCoinAddress,
 		UnderlyingTokensAddresses: []common.Address{},

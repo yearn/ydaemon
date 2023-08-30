@@ -43,6 +43,8 @@ func chainIDToName(chainID uint64) string {
 		return "polygon"
 	case 250:
 		return "fantom"
+	case 8453:
+		return "base"
 	case 42161:
 		return "arbitrum"
 	case 43114:

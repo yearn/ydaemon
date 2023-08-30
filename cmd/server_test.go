@@ -17,6 +17,7 @@ func TestEnvironment(t *testing.T) {
 	SummonDaemons(1)
 	SummonDaemons(10)
 	SummonDaemons(250)
+	SummonDaemons(8453)
 	SummonDaemons(42161)
 
 	//Testing the reports endpoint

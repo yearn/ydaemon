@@ -32,6 +32,13 @@ func SetEnv(path string) {
 		RPC_ENDPOINTS[250] = RPCURIFor250
 	}
 
+	RPCURIFor8453, exists := os.LookupEnv("RPC_URI_FOR_8453")
+	if !exists {
+		logs.Debug("RPC_URI_FOR_8453 not set, using default value: [https://developer-access-mainnet.base.org]")
+	} else {
+		RPC_ENDPOINTS[8453] = RPCURIFor8453
+	}
+
 	RPCURIFor42161, exists := os.LookupEnv("RPC_URI_FOR_42161")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_42161 not set, using default value: [https://arbitrum.public-rpc.com]")

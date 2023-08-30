@@ -414,6 +414,7 @@ func RetrieveAllTokens(
 			`0x4200000000000000000000000000000000000042`, // Opt
 		},
 		250:   {},
+		8453:  {},
 		42161: {},
 	}
 	for _, tokenAddress := range extraTokens[chainID] {

@@ -272,6 +272,7 @@ func RetrieveAllVaults(
 		1:     {},
 		10:    {},
 		250:   {},
+		8453:  {},
 		42161: {},
 	}
 	for _, vaultAddress := range extraVaults[chainID] {

@@ -61,6 +61,9 @@ func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 }
 
 func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
+	if v, ok := CURVE_SUBGRAPHDATA_URI[chainID]; !ok || v == `` {
+		return []models.CurveSubgraphData{}
+	}
 	resp, err := http.Get(CURVE_SUBGRAPHDATA_URI[chainID])
 	if err != nil {
 		logs.Error(err)

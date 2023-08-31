@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal/meta"
@@ -78,50 +77,32 @@ func LoadDaemons(chainID uint64) {
 	vaults.LoadAggregatedVaults(chainID, nil)
 }
 
-func waitGroupSummonDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(
-		`app.bootstrap.summon.daemon`,
-		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
-	)
-	defer trace.Finish()
-
+func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)
 	wg.Done()
 	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
 }
 
-func summonDaemonsForAllChains(trace *traces.TTrace) {
-	trace = trace.Child(`app.bootstrap.summon.all`)
-	defer trace.Finish()
-
+func summonDaemonsForAllChains(chains []uint64) {
 	var wg sync.WaitGroup
 	for _, chainID := range chains {
 		wg.Add(1)
-		go waitGroupSummonDaemons(trace, &wg, chainID)
+		go waitGroupSummonDaemons(&wg, chainID)
 	}
 
 	wg.Wait()
 }
 
-func waitGroupLoadDaemons(trace *traces.TTrace, wg *sync.WaitGroup, chainID uint64) {
-	trace = trace.Child(
-		`app.bootstrap.load_state.daemon`,
-		traces.TTags{Name: `chainID`, Value: strconv.Itoa(int(chainID))},
-	)
-	defer trace.Finish()
-
+func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
 	LoadDaemons(chainID)
 	wg.Done()
 }
 
-func loadDaemonsForAllChains(trace *traces.TTrace) {
-	trace = trace.Child(`app.bootstrap.load_state.all`)
-	defer trace.Finish()
-
+func loadDaemonsForAllChains(chains []uint64) {
 	var wg sync.WaitGroup
 	for _, chainID := range chains {
 		wg.Add(1)
-		go waitGroupLoadDaemons(trace, &wg, chainID)
+		go waitGroupLoadDaemons(&wg, chainID)
 	}
 	wg.Wait()
 }

@@ -91,6 +91,8 @@ func getChainStartBlock(chainID uint64) uint64 {
 		return 14166636
 	case 10:
 		return 29675215
+	case 8453:
+		return 3263730
 	case 250:
 		return 40499061
 	case 42161:

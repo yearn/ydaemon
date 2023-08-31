@@ -39,13 +39,14 @@ var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
 
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
-var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 42161}
+var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 8453, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
 	1:     100_000_000,
 	10:    100_000_000,
 	250:   100_000_000,
+	8453:  100_000_000,
 	42161: 100_000_000,
 }
 
@@ -54,6 +55,7 @@ var MAX_BATCH_SIZE = map[uint64]int{
 	1:     math.MaxInt64,
 	10:    math.MaxInt64,
 	250:   math.MaxInt64,
+	8453:  math.MaxInt64,
 	42161: math.MaxInt64,
 }
 
@@ -76,6 +78,9 @@ var BLACKLISTED_VAULTS = map[uint64][]common.Address{
 	250: {
 		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"), // Test deployment - AVAX
 	},
+	8453: {
+		//TODO: ADD IGNORED VAULTS FOR BASE
+	},
 	42161: {
 		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
 		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
@@ -94,6 +99,9 @@ var CURVE_FACTORY_URI = map[uint64][]string{
 	},
 	250: {
 		`https://api.curve.fi/api/getPools/fantom/factory`,
+	},
+	8453: {
+		`https://api.curve.fi/api/getPools/base/factory`,
 	},
 	42161: {
 		`https://api.curve.fi/api/getPools/arbitrum/factory`,
@@ -118,6 +126,11 @@ var CURVE_POOLS_URI = map[uint64][]string{
 		`https://api.curve.fi/api/getPools/fantom/crypto`,
 		`https://api.curve.fi/api/getPools/fantom/factory`,
 	},
+	8453: {
+		`https://api.curve.fi/api/getPools/base/main`,
+		`https://api.curve.fi/api/getPools/base/crypto`,
+		`https://api.curve.fi/api/getPools/base/factory`,
+	},
 	42161: {
 		`https://api.curve.fi/api/getPools/arbitrum/main`,
 		`https://api.curve.fi/api/getPools/arbitrum/crypto`,
@@ -133,6 +146,7 @@ var RPC_ENDPOINTS = map[uint64]string{
 	56:    `https://bsc.rpc.blxrbdn.com`,
 	137:   `https://polygon.llamarpc.com`,
 	250:   `https://rpc.ftm.tools`,
+	8453:  `https://developer-access-mainnet.base.org`,
 	42161: `https://arbitrum.public-rpc.com`,
 }
 
@@ -141,6 +155,7 @@ var THEGRAPH_ENDPOINTS = map[uint64]string{
 	1:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
 	10:    `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
 	250:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
+	8453:  ``, //TODO: ADD THEGRAPH ENDPOINT FOR BASE
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
 }
 
@@ -149,6 +164,7 @@ var LLAMA_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,
 	10:    `optimism`,
 	250:   `fantom`,
+	8453:  `base`,
 	42161: `arbitrum`,
 }
 
@@ -157,6 +173,7 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,
 	10:    `optimistic-ethereum`,
 	250:   `fantom`,
+	8453:  `base`,
 	42161: `arbitrum-one`,
 }
 
@@ -173,6 +190,9 @@ var YEARN_REGISTRIES = map[uint64][]TContractData{
 	},
 	250: {
 		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Block: 18455565},
+	},
+	8453: {
+		{Address: common.HexToAddress("0xF3885eDe00171997BFadAa98E01E167B53a78Ec5"), Version: 3, Block: 3263730},
 	},
 	42161: {
 		{Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"), Version: 2, Block: 4841854},
@@ -200,6 +220,9 @@ var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 			Type:            models.VaultTypeStandard,
 		},
 	},
+	8453: {
+		//TODO: ADD EXTRA_VAULTS FOR BASE
+	},
 	42161: {},
 }
 
@@ -208,6 +231,7 @@ var LENS_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
 	10:    common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
 	250:   common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
+	8453:  common.HexToAddress(`0xE0F3D78DB7bC111996864A32d22AB0F59Ca5Fa86`),
 	42161: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 }
 
@@ -218,14 +242,18 @@ var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	56:    common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	137:   common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	250:   common.HexToAddress(`0x470ADB45f5a9ac3550bcFFaD9D990Bf7e2e941c9`),
+	8453:  common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 	42161: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
 }
 
 // CURVE_REGISTRY_ADDRESSES contains the address of the Curve Registry contract
 var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
-	10:    common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-	250:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+	1:    common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
+	10:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+	250:  common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
+	8453: {
+		//TODO: ADD CURVE_REGISTRY_ADDRESSES FOR BASE
+	},
 	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 }
 
@@ -234,6 +262,7 @@ var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
 	1:     common.HexToAddress(`0xF18056Bbd320E96A48e3Fbf8bC061322531aac99`),
 	10:    {},
 	250:   {},
+	8453:  {},
 	42161: {},
 }
 
@@ -244,7 +273,10 @@ var STACKING_REWARD_ADDRESSES = map[uint64]TContractData{
 		Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
 		Block:   uint64(85969070),
 	},
-	250:   {},
+	250:  {},
+	8453: {
+		//TODO: ADD STACKING_REWARD_ADDRESSES FOR BASE
+	},
 	42161: {},
 }
 
@@ -256,6 +288,7 @@ var YBRIBE_V3_ADDRESSES = map[uint64]TContractData{
 	},
 	10:    {},
 	250:   {},
+	8453:  {},
 	42161: {},
 }
 
@@ -273,6 +306,9 @@ var PARTNER_TRACKERS_ADDRESSES = map[uint64]TContractData{
 		Address: common.HexToAddress(`0x086865B2983320b36C42E48086DaDc786c9Ac73B`),
 		Block:   uint64(40499061),
 	},
+	8453: {
+		//TODO: ADD PARTNER_TRACKERS_ADDRESSES FOR BASE
+	},
 	42161: {
 		Address: common.HexToAddress(`0x0e5b46E4b2a05fd53F5a4cD974eb98a9a613bcb7`),
 		Block:   uint64(30385403),
@@ -286,5 +322,6 @@ var KnownRefferers = map[uint64]map[common.Address]string{
 	},
 	10:    {},
 	250:   {},
+	8453:  {},
 	42161: {},
 }

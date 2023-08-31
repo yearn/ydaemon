@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
@@ -43,6 +44,7 @@ func handleChainsInitialization() []uint64 {
 			continue
 		}
 		chains = append(chains, chainID)
+		ethereum.GetWSClient(chainID)
 	}
 
 	if len(chains) == 0 {

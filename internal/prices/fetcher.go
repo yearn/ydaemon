@@ -240,15 +240,15 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
 			`0x30D20208d987713f46DFD34EF128Bb16C404D10f`, // Stader
 			`0xa2E3356610840701BDf5611a53974510Ae27E2e1`, // wBETH
-
 			`0xac3E018457B222d93114458476f3E3416Abbe38F`, // Staked Frax Ether
 			`0xf951E335afb289353dc249e82926178EaC7DEd78`, // Swell Network Ether
 			`0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`, // Wrapped liquid staked Ether 2.0
 			`0xA35b1B31Ce002FBF2058D22F30f95D405200A15b`, // Stader ETHx
 			`0xBe9895146f7AF43049ca1c1AE358B0541Ea49704`, // Coinbase Wrapped Staked ETH
 		},
-		10:  {},
-		250: {},
+		10:   {},
+		250:  {},
+		8453: {},
 		42161: {
 			`0x82e3A8F066a6989666b031d916c43672085b1582`, // YFI
 			`0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978`, // CRV
@@ -277,8 +277,9 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 
 			`0xC4C319E2D4d66CcA4464C0c2B32c9Bd23ebe784e`, // Hacked alETH
 		},
-		10:  {},
-		250: {},
+		10:   {},
+		250:  {},
+		8453: {},
 		42161: {
 			`0x976a1C749cd8153909e0B04EebE931eF8957b15b`, // PHPTest
 			`0xFa247d0D55a324ca19985577a2cDcFC383D87953`, // Philippine Peso (PHP)

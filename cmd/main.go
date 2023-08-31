@@ -15,8 +15,8 @@ import (
 
 func main() {
 	initFlags()
-	loadDaemonsForAllChains(trace)
-	summonDaemonsForAllChains(trace)
+	loadDaemonsForAllChains(chains)
+	summonDaemonsForAllChains(chains)
 	var wg sync.WaitGroup
 
 	switch process {

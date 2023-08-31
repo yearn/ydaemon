@@ -116,7 +116,7 @@ func filterNewVaults(
 		}
 	} else if registry.Version == 3 {
 		if chainID == 8453 {
-			logs.Pretty(`Hello you2`, opts)
+			opts.Start = registry.Block
 		}
 		currentRegistry, _ := contracts.NewYRegistryV3Filterer(registry.Address, client)
 		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {

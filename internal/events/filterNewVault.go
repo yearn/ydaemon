@@ -143,9 +143,6 @@ func filterNewVaults(
 					newVault.ManagementFee = 0
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
-				if chainID == 8453 {
-					logs.Pretty(newVault)
-				}
 				syncMap.Store(eventKey, newVault)
 			}
 		} else {

@@ -228,12 +228,10 @@ var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
 
 // LENS_ADDRESSES contains the address of the Lens oracle for a specific chainID
 var LENS_ADDRESSES = map[uint64]common.Address{
-	1:    common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
-	10:   common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
-	250:  common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
-	8453: {
-		//TODO: ADD LENS_ADDRESSES FOR BASE
-	},
+	1:     common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
+	10:    common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
+	250:   common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
+	8453:  common.HexToAddress(`0xE0F3D78DB7bC111996864A32d22AB0F59Ca5Fa86`),
 	42161: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 }
 

@@ -116,7 +116,7 @@ func filterNewVaults(
 			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	} else if registry.Version == 3 {
-		currentRegistry, _ := contracts.NewYRegistryV3Filterer(registry.Address, client) //V3 is not the same
+		currentRegistry, _ := contracts.NewYRegistryV3Filterer(registry.Address, client)
 		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {

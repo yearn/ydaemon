@@ -87,6 +87,9 @@ func filterNewVaults(
 	syncMap *sync.Map,
 ) {
 	client := ethereum.GetRPC(chainID)
+	if chainID == 8453 {
+		logs.Info(`Hello you`)
+	}
 
 	if registry.Version == 1 || registry.Version == 2 {
 		currentRegistry, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
@@ -116,6 +119,9 @@ func filterNewVaults(
 			logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 	} else if registry.Version == 3 {
+		if chainID == 8453 {
+			logs.Info(`Hello you2`)
+		}
 		currentRegistry, _ := contracts.NewYRegistryV3Filterer(registry.Address, client)
 		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
@@ -141,6 +147,9 @@ func filterNewVaults(
 					newVault.ManagementFee = 0
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
+				if chainID == 8453 {
+					logs.Pretty(newVault)
+				}
 				syncMap.Store(eventKey, newVault)
 			}
 		} else {

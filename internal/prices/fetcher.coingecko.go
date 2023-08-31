@@ -23,7 +23,7 @@ import (
 func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
 	priceMap := make(map[common.Address]*bigNumber.Int)
 	chunkSize := 100
-	timeToSleep := rand.Intn(600-200) + 200
+	timeToSleep := rand.Intn(2000-200) + 200
 	for i := 0; i < len(tokens); i += chunkSize {
 		time.Sleep(time.Duration(timeToSleep) * time.Millisecond)
 		end := i + chunkSize

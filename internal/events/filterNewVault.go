@@ -301,6 +301,9 @@ func HandleNewStandardVaults(
 			start = registry.Activation
 		}
 	}
+	if chainID == 8453 {
+		start = registry.Activation
+	}
 
 	/**********************************************************************************************
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to avoid

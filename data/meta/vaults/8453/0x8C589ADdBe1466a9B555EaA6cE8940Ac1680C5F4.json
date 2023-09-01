@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Aero DAI+-USD+-f",
+  "comment": "Aero cbETH-WETH-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,12 +9,12 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Aerodrome DAI+-USD+",
+  "displayName": "Aerodrome cbETH-WETH",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Aerodrome",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
   }
 }

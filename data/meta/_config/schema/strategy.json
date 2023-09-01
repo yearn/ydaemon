@@ -78,7 +78,8 @@
         "Frax Finance": {"type": "string", "enum": ["1"]},
         "Sturdy Finance": {"type": "string", "enum": ["1"]},
         "Sonne Finance": {"type": "string", "enum": ["1"]},
-        "Flux Finance": {"type": "string", "enum": ["1"]}
+        "Flux Finance": {"type": "string", "enum": ["1"]},
+        "Aerodrome Finance": {"type": "string", "enum": ["1"]}
       },
       "additionalProperties": false
     },

@@ -1,20 +1,20 @@
 {
   "$schema": "vault",
-  "comment": "Aero cbETH-WETH-f",
+  "comment": "Aero DOLA-USDbC-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 3,
+  "order": 4,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Aerodrome cbETH-WETH",
+  "displayName": "Aerodrome DOLA-USDbC",
   "classification": {
     "isAutomated": true,
     "isPool": true,
     "poolProvider": "Aerodrome",
-    "stability": "Correlated",
-    "stableBaseAsset": "Ether"
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
   }
 }

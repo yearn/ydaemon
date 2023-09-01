@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Aero AERO-USDbC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 8,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Aerodrome AERO-USDbC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Aerodrome",
+    "stability": "Volatile"
+  }
+}

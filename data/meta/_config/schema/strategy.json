@@ -71,7 +71,7 @@
         "Uniswap": {"type": "string", "enum": ["2", "3", "2 & 3"]},
         "Universe": {"type": "string", "enum": ["1"]},
         "Vesper Finance": {"type": "string", "enum": ["1"]},
-        "Velodrome Finance": {"type": "string", "enum": ["1"]},
+        "Velodrome Finance": {"type": "string", "enum": ["2"]},
         "Yearn": {"type": "string", "enum": ["2"]},
         "dYdX": {"type": "string", "enum": ["1"]},
         "veDAO": {"type": "string", "enum": ["1"]},
@@ -79,7 +79,7 @@
         "Sturdy Finance": {"type": "string", "enum": ["1"]},
         "Sonne Finance": {"type": "string", "enum": ["1"]},
         "Flux Finance": {"type": "string", "enum": ["1"]},
-        "Aerodrome Finance": {"type": "string", "enum": ["1"]}
+        "Aerodrome Finance": {"type": "string", "enum": ["2"]}
       },
       "additionalProperties": false
     },

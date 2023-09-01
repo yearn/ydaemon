@@ -22,20 +22,6 @@ import (
 var STRATLIST = []models.TStrategy{}
 var cron = gocron.NewScheduler(time.UTC)
 
-func runRetrieveAllPrices(chainID uint64, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		prices.RetrieveAllPrices(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
 func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]models.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
 	isDone := false
 	for {

@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/multicalls"
@@ -38,7 +37,6 @@ func fetchPrices(
 	blockNumber *uint64,
 	tokenList []common.Address,
 ) map[common.Address]*bigNumber.Int {
-	logs.Success(`Fetching prices`)
 	newPriceMap := make(map[common.Address]*bigNumber.Int)
 
 	/**********************************************************************************************

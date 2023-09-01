@@ -9,7 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 )
 
 var AERO_SUGAR_ADDRESS = common.HexToAddress(`0x2073d8035bb2b0f2e85aaf5a8732c6f397f9ff9b`)
@@ -34,12 +33,10 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []comm
 	sugarOracle, _ := contracts.NewVeloSugarOracleCaller(AERO_SUGAR_ORACLE_ADDRESS, client)
 	allSugar, _ := sugar.All(nil, big.NewInt(200), big.NewInt(0), common.Address{})
 
-	logs.Pretty(len(allSugar))
 	for _, pair := range allSugar {
 		ratesConnector := []common.Address{pair.Token0, pair.Token1, BASE_WETH_ADDRESS, BASE_USDBC_ADDRESS}
 		prices, err := sugarOracle.GetManyRatesWithConnectors(nil, 2, ratesConnector)
 		if err != nil {
-			logs.Error("Error fetching prices from sugar oracle", err)
 			continue
 		}
 		token0Price := bigNumber.SetInt(prices[0])
@@ -52,22 +49,18 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []comm
 		}
 		token0Contract, err := contracts.NewERC20Caller(pair.Token0, client)
 		if err != nil {
-			logs.Error("Error fetching token0 contract", err)
 			continue
 		}
 		token0Decimals, err := token0Contract.Decimals(nil)
 		if err != nil {
-			logs.Error("Error fetching token0 decimals", err)
 			continue
 		}
 		token1Contract, err := contracts.NewERC20Caller(pair.Token1, client)
 		if err != nil {
-			logs.Error("Error fetching token1 contract", err)
 			continue
 		}
 		token1Decimals, err := token1Contract.Decimals(nil)
 		if err != nil {
-			logs.Error("Error fetching token1 decimals", err)
 			continue
 		}
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Aero tBTC-USDbC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 6,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Aerodrome tBTC-USDbC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Aerodrome",
+    "stability": "Volatile"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Aero WETH-USDbC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 12,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Aerodrome WETH-USDbC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Aerodrome",
+    "stability": "Volatile"
+  }
+}

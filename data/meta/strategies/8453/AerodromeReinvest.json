@@ -1,0 +1,78 @@
+{
+  "$schema": "strategy",
+  "name": "Aerodrome Reinvest",
+  "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+  "addresses": [
+    "0x6C3C4447E1a2C87B47d58CF007706bB1835134da",
+    "0x3E07e1187f5F89E60950E8Ee7e66C1eF37B3E1DE",
+    "0x19D2ed1c127800Db4eA982E8a00BBf518bbBF90f",
+    "0x89468E36a687E842699644dc12B986c79AF9ED1F",
+    "0x0AAc66214D40a3D41BD2da53F6D6894E27744bd7",
+    "0x1816545343590701DC29c379BcAC06e92D1e1C79",
+    "0x8470d97ADbAfe4b7dA66dec6C33B60AD9420D318",
+    "0xC070f47c1D92167a1a24B4bC7B2749af3410E93F",
+    "0xfD995513DADA13c0948D853cd253375C3C93805d",
+    "0xCE09d93285ee64b98292F532B563CB0931028BEB",
+    "0xb7A16c8e4343f1a6c946821B811D1438813c1147",
+    "0x17880284d5d186Ece3C53B0E487B0Dd404283c8B",
+    "0xeAdaba9e1C71EAd10605c3903fA932Ddb554baCf"
+  ],
+  "protocols": ["Aerodrome Finance"],
+  "protocolVersion": {
+    "Aerodrome Finance": "2"
+  },
+  "localization": {
+    "en": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "fr": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "es": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "de": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "pt": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "el": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "tr": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "vi": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "zh": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "hi": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ja": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "id": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    },
+    "ru": {
+      "name": "Aerodrome Reinvest",
+      "description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy."
+    }
+  }
+}

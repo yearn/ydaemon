@@ -30,7 +30,7 @@ type TERC20Token struct {
 	ChainID                   uint64           `json:"chainID"`
 }
 
-// TTokenFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/tokens/all
+// TTokenFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/tokens/all
 type TTokenFromMeta struct {
 	Address      common.Address `json:"address"`
 	Name         string         `json:"name"`

@@ -50,8 +50,8 @@ Anything under protocols, strategies, and tokens are able to be translated. In t
 ## Helpful links
 
 - 🌐 [Live site](https://yearn.network)
-- ⚖️ [Governance forum](https://gov.yearn.finance)
-- 📑 [Documentation](https://docs.yearn.finance)
+- ⚖️ [Governance forum](https://gov.yearn.fi)
+- 📑 [Documentation](https://docs.yearn.fi)
 
 ## Contributing
 

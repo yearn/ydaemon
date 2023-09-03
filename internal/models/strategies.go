@@ -81,7 +81,7 @@ type TStrategy struct {
 	Initialization          TStrategyInitialization `json:"-"`
 }
 
-// TStrategyFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/strategies/all
+// TStrategyFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/strategies/all
 type TStrategyFromMeta struct {
 	Address          common.Address   `json:"address"`
 	Name             string           `json:"name"`

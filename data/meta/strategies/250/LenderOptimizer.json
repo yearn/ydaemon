@@ -1,7 +1,7 @@
 {
   "$schema": "strategy",
   "name": "Lender Optimizer",
-  "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy.",
+  "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy.",
   "addresses": [
     "0x695A4a6e5888934828Cb97A3a7ADbfc71A70922D",
     "0xD0D1f041F93c0fF1091457618E529610C67A76de",
@@ -31,55 +31,55 @@
   "localization": {
     "en": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "fr": {
       "name": "Lender Optimizer",
-      "description": "Fournit du {{token}} sur l'[Iron Bank](https://beta.yearn.finance/#/ironbank) ou sur [Scream](https://scream.sh) selon  le meilleur rendement pour générer des intérêts. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
+      "description": "Fournit du {{token}} sur l'[Iron Bank](https://beta.yearn.fi/#/ironbank) ou sur [Scream](https://scream.sh) selon  le meilleur rendement pour générer des intérêts. Les jetons gagnés sont récoltés, vendus pour plus de {{token}} qui sont ensuite redéposés dans la stratégie."
     },
     "es": {
       "name": "Lender Optimizer",
-      "description": "Suministra {{token}} a [Iron Bank](https://beta.yearn.finance/#/ironbank) o [Scream](https://scream.sh), lo que tenga el mejor rendimiento para generar intereses. Los tokens ganados se recolectan, se venden por más {{token}} y luego se deposita nuevamente en la estrategia."
+      "description": "Suministra {{token}} a [Iron Bank](https://beta.yearn.fi/#/ironbank) o [Scream](https://scream.sh), lo que tenga el mejor rendimiento para generar intereses. Los tokens ganados se recolectan, se venden por más {{token}} y luego se deposita nuevamente en la estrategia."
     },
     "de": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "pt": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "el": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "tr": {
       "name": "Lender Optimizer",
-      "description": "Faiz oluşturmak için en iyi getiriye sahip olan [Iron Bank](https://beta.yearn.finance/#/ironbank) veya [Scream](https://scream.sh)'e {{token}} sağlar. Kazanılan jetonlar toplanır, daha fazla {{token}} karşılığında satılır ve ardından stratejiye geri yatırılır."
+      "description": "Faiz oluşturmak için en iyi getiriye sahip olan [Iron Bank](https://beta.yearn.fi/#/ironbank) veya [Scream](https://scream.sh)'e {{token}} sağlar. Kazanılan jetonlar toplanır, daha fazla {{token}} karşılığında satılır ve ardından stratejiye geri yatırılır."
     },
     "vi": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "zh": {
       "name": "Lender Optimizer",
-      "description": "将 {{token}} 存入 [Iron Bank](https://beta.yearn.finance/#/ironbank) 或 [Scream](https://scream.sh) 以赚取利息，哪个利息高就选择哪个。收获到的代币会被卖掉，换为更多的 {{token}} 再进行复投。"
+      "description": "将 {{token}} 存入 [Iron Bank](https://beta.yearn.fi/#/ironbank) 或 [Scream](https://scream.sh) 以赚取利息，哪个利息高就选择哪个。收获到的代币会被卖掉，换为更多的 {{token}} 再进行复投。"
     },
     "hi": {
       "name": "Lender Optimizer",
-      "description": "{{token}} को [Iron Bank](https://beta.yearn.finance/#/ironbank) या [Scream](https://scream.sh) को आपूर्ति करता है, जो ब्याज उत्पन्न करने के लिए सबसे अच्छी उपज है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है, फिर वापस रणनीति में जमा किया जाता है।"
+      "description": "{{token}} को [Iron Bank](https://beta.yearn.fi/#/ironbank) या [Scream](https://scream.sh) को आपूर्ति करता है, जो ब्याज उत्पन्न करने के लिए सबसे अच्छी उपज है। अर्जित टोकन वसूल किया जाता है, अधिक {{token}} के लिए बेचा जाता है, फिर वापस रणनीति में जमा किया जाता है।"
     },
     "ja": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "id": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     },
     "ru": {
       "name": "Lender Optimizer",
-      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.finance/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
+      "description": "Supplies {{token}} to [Iron Bank](https://beta.yearn.fi/#/ironbank) or [Scream](https://scream.sh) whichever has the best yield to generate interest. Earned tokens are harvested, sold for more {{token}}, then deposited back into the strategy."
     }
   }
 }

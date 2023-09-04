@@ -33,7 +33,7 @@ type TAPIV1APY struct {
 	Error string `json:"error_reason"`
 }
 
-// TAPIV1Vault is the structure of data we receive when calling api.yearn.finance/v1/chains/1/vaults/all
+// TAPIV1Vault is the structure of data we receive when calling api.yearn.fi/v1/chains/1/vaults/all
 type TAPIV1Vault struct {
 	Address string    `json:"address"`
 	APY     TAPIV1APY `json:"apy"`

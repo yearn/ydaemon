@@ -36,7 +36,7 @@ var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`
 var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
-var API_V1_BASE_URL = `https://api.yearn.finance/v1/chains/`
+var API_V1_BASE_URL = `https://api.yearn.fi/v1/chains/`
 
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 8453, 42161}

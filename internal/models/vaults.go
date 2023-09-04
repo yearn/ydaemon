@@ -171,7 +171,7 @@ type TInternalVaultFromMetaClassification struct {
 	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
 }
 
-// TInternalVaultFromMeta is the structure of data we receive when calling meta.yearn.finance/api/1/vaults/all
+// TInternalVaultFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/vaults/all
 type TInternalVaultFromMeta struct {
 	Address              common.Address                       `json:"address"`
 	MigrationTargetVault common.Address                       `json:"migrationTargetVault"`

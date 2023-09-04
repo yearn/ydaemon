@@ -49,6 +49,6 @@ func TestDaemons(t *testing.T) {
 	wg.Wait()
 
 	//Edge case testing with values overwrite
-	env.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.finance/`
+	env.API_V1_BASE_URL = `https://thisisarandomurithatshouldnotbeset.yearn.fi/`
 	SummonDaemons(1)
 }

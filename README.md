@@ -89,7 +89,7 @@ curl http://localhost:8080/1/vaults/all
 To build this API data is fetched from several Yearn data sources:
 - [Yearn Subgraph](https://thegraph.com/explorer/subgraph?id=5xMSe3wTNLgFQqsAc5SCVVwT4MiRb5AogJCuSN9PjzXF) as the base data source.
 - [Yearn Meta](https://github.com/yearn/yearn-meta) for some basic data and information updated by the Yearn team.
-- [Yearn API](https://api.yearn.finance/) for the APY computation.
+- [Yearn API](https://api.yearn.fi/) for the APY computation.
 - [Yearn Lens Oracle](https://etherscan.io/address/0xca11bde05977b3631167028862be2a173976ca11) for tokens and vault prices.
 
 To provide a fast and up-to-date experience, a bunch of daemons are summoned with the API, running in the background, forever and ever.

@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Curve WETH-wBETH-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 427,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Curve wBETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

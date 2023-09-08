@@ -1,0 +1,19 @@
+{
+  "$schema": "vault",
+  "comment": "Aero SONNE-USDbC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 19,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Aerodrome SONNE-USDbC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Aerodrome",
+    "stability": "Volatile"
+  }
+}

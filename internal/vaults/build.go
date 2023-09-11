@@ -144,6 +144,16 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 
 func BuildTVL(t models.TVault) models.TTVL {
 	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.Token.Address)
+
+	/**********************************************************************************************
+	** Notice: The vault was implicated in a hack, so the price is now effectively 0 as the pool
+	** is frozen.
+	**********************************************************************************************/
+	if addresses.Equals(t.Address, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
+		humanizedPrice = bigNumber.NewFloat(0)
+		fHumanizedPrice = 0.0
+	}
+
 	fHumanizedTVLPrice := getHumanizedValue(t.TotalAssets, int(t.Decimals), humanizedPrice)
 	strategiesList := strategies.ListStrategiesForVault(t.ChainID, t.Address)
 	delegatedTokenAsBN := bigNumber.NewInt(0)

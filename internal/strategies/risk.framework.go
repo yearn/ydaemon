@@ -10,13 +10,9 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 var stratGroupErrorAlreadySent = make(map[uint64]map[string]bool)
@@ -319,45 +315,6 @@ func populateRisk(chainID uint64) {
 }
 
 func InitRiskScore(chainID uint64) {
-	if chainID == 10 {
-		allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 0, nil)
-		calls := []ethereum.Call{}
-		for _, pool := range allStackingPoolAdded {
-			currentToken, ok := tokens.FindToken(chainID, pool.VaultAddress)
-			if !ok {
-				logs.Warning(`[InitRiskScore]`, `impossible to find token for pool address`, pool.StackingPoolAddress.Hex())
-				continue
-			}
-			if !tokens.IsVault(currentToken) {
-				logs.Warning(`[InitRiskScore]`, `token is not a vault`, pool.VaultAddress.Hex())
-				continue
-			}
-			calls = append(calls, multicalls.GetTotalSupply(pool.StackingPoolAddress.Hex(), pool.StackingPoolAddress))
-			calls = append(calls, multicalls.GetDecimals(pool.StackingPoolAddress.Hex(), pool.VaultAddress))
-			calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(pool.StackingPoolAddress.Hex(), env.LENS_ADDRESSES[chainID], pool.VaultAddress))
-		}
-
-		response := multicalls.Perform(chainID, calls, nil)
-		for _, pool := range allStackingPoolAdded {
-			totalSupply := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`totalSupply`])
-			tokenPrice := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`getPriceUsdcRecommended`])
-			decimals := helpers.DecodeUint64(response[pool.StackingPoolAddress.Hex()+`decimals`])
-
-			_, price := helpers.FormatAmount(tokenPrice.String(), 6)
-			_, amount := helpers.FormatAmount(totalSupply.String(), int(decimals))
-
-			if _, ok := stakingData[chainID]; !ok {
-				stakingData[chainID] = map[string]models.TStaking{}
-			}
-			tvl, _ := bigNumber.NewFloat(0).Mul(amount, price).Float64()
-			stakingData[chainID][pool.VaultAddress.Hex()] = models.TStaking{
-				Available: true,
-				Address:   pool.StackingPoolAddress,
-				Risk:      getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
-				TVL:       tvl,
-			}
-			// logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
-		}
-	}
+	calculateStakingMetrics(chainID)
 	populateRisk(chainID)
 }

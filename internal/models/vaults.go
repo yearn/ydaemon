@@ -86,10 +86,13 @@ type TMigration struct {
 
 // TStaking holds some metadata about the staking contract.
 type TStaking struct {
-	Available bool           `json:"available"`
-	Address   common.Address `json:"address"`
-	Risk      int            `json:"risk"`
-	TVL       float64        `json:"tvl"`
+	Address      common.Address   `json:"address"`
+	VaultAddress common.Address   `json:"vaultAddress"`
+	Available    bool             `json:"available"`
+	Risk         int              `json:"risk"`
+	TVL          float64          `json:"tvl"`
+	Amount       *bigNumber.Float `json:"amount"`
+	Price        *bigNumber.Float `json:"price"`
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

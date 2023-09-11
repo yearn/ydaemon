@@ -1,17 +1,18 @@
 {
-	"$schema": "risks",
 	"label": "0xDAO",
-	"codeReviewScore": 3,
-	"testingScore": 2,
 	"auditScore": 5,
-	"protocolSafetyScore": 4,
+	"codeReviewScore": 3,
 	"complexityScore": 3,
+	"protocolSafetyScore": 4,
 	"teamKnowledgeScore": 3,
-	"criteria": {
-		"nameLike": [
-			"0xdao"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 2,
+	"chainID": 250,
+	"strategies": [
+		"0x177e745771494f1ff8ed3fcdcdff02213a1ad761",
+		"0x71304d618bd2f1334d25f3ac836a2ba94a0622ae",
+		"0x44e0403e7ee547f522bbba5f49fd04a432d2ad82",
+		"0x76e32c811cad5b835b780461efd202d561723d14",
+		"0xa36c91e38bf24e9f2df358e47d4134a8894c6a4c",
+		"0xcf37b4a55f06dda65591b1af56812c5bb7e6d336"
+	]
 }

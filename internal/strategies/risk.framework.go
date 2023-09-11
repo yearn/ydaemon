@@ -3,7 +3,6 @@ package strategies
 import (
 	"encoding/json"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -14,11 +13,9 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/tokens"
 )
 
@@ -65,27 +62,18 @@ func getLongevityImpact(activation *bigNumber.Int) int {
 }
 
 func getMedianScore(group models.TStrategyGroupFromRisk) int {
-	if group.StackingRewardTVLScore > 0 {
-		scores := stats.LoadRawData([]int{
-			group.AuditScore,
-			group.CodeReviewScore,
-			group.ComplexityScore,
-			group.ProtocolSafetyScore,
-			group.TeamKnowledgeScore,
-			group.TestingScore,
-			group.StackingRewardTVLScore,
-		})
-		median, _ := stats.Median(scores)
-		return int(median)
-	}
-	scores := stats.LoadRawData([]int{
+	scoreValues := []int{
 		group.AuditScore,
 		group.CodeReviewScore,
 		group.ComplexityScore,
 		group.ProtocolSafetyScore,
 		group.TeamKnowledgeScore,
 		group.TestingScore,
-	})
+	}
+	if group.StackingRewardTVLScore > 0 {
+		scoreValues = append(scoreValues, group.StackingRewardTVLScore)
+	}
+	scores := stats.LoadRawData(scoreValues)
 	median, _ := stats.Median(scores)
 	return int(median)
 }
@@ -106,80 +94,88 @@ func getMedianAllocation(group models.TStrategyGroupFromRisk) *bigNumber.Float {
 	}
 }
 
-func getAllocationStatus(group models.TStrategyGroupFromRisk) string {
+func getMediamDiffAllowed(group models.TStrategyGroupFromRisk) *bigNumber.Float {
 	median := getMedianScore(group)
+	switch {
+	case median <= 1:
+		return bigNumber.NewFloat(100_000_000)
+	case median <= 2:
+		return bigNumber.NewFloat(50_000_000)
+	case median <= 3:
+		return bigNumber.NewFloat(40_000_000)
+	case median <= 4:
+		return bigNumber.NewFloat(9_000_000)
+	case median <= 5:
+		return bigNumber.NewFloat(1_000_000)
+	default:
+		return bigNumber.NewFloat(0)
+	}
+}
+
+/**********************************************************************************************
+** The getAllocationStatus function takes a strategy group as input and calculates the median
+** allocation and the allowed median difference for the group. It then retrieves the current
+** Total Value Locked (TVL) for the group and calculates the difference between the median
+** allocation and the TVL.
+** If the difference is positive, the function returns "Green".
+** If the difference is greater than the allowed difference, the function returns "Yellow".
+** In all other cases, the function returns "Red".
+** This function is used to determine the allocation status of a strategy group based on its
+** current TVL and median allocation.
+**********************************************************************************************/
+func getAllocationStatus(group models.TStrategyGroupFromRisk) string {
 	medianAllocation := getMedianAllocation(group)
+	diffAllowed := getMediamDiffAllowed(group)
 	tvl := group.Allocation.CurrentTVL
 	diff := bigNumber.NewFloat(0).Sub(medianAllocation, tvl)
 
-	// under allocated - Green
 	if diff.Sign() > 0 {
 		return "Green"
 	}
-	diffAllowed := bigNumber.NewFloat(0)
-	switch {
-	case median <= 1:
-		diffAllowed = bigNumber.NewFloat(100_000_000)
-	case median <= 2:
-		diffAllowed = bigNumber.NewFloat(50_000_000)
-	case median <= 3:
-		diffAllowed = bigNumber.NewFloat(40_000_000)
-	case median <= 4:
-		diffAllowed = bigNumber.NewFloat(9_000_000)
-	case median <= 5:
-		diffAllowed = bigNumber.NewFloat(1_000_000)
-	}
-	// over allocated but within allowed range - Yellow
 	if diff.Sub(diffAllowed, diff).Sign() > 0 {
 		return "Yellow"
 	}
-	// over allocated and out of range - Red
 	return "Red"
 }
 
-func getStrategyGroup(chainID uint64, strategy *models.TStrategy) *models.TStrategyGroupFromRisk {
-	toLowerName := strings.ToLower(strategy.Name)
+/**********************************************************************************************
+** The retrieveStrategyGroup function takes a chainID and a strategy as input. It lists all the
+** risk groups for the given chainID and checks if the strategy's address is in any of the groups.
+** If it finds a match, it returns the group. If no match is found, it returns nil.
+** This function is used to retrieve the risk group that a strategy belongs to.
+**********************************************************************************************/
+func retrieveStrategyGroup(chainID uint64, strategy *models.TStrategy) *models.TStrategyGroupFromRisk {
 	groups := ListStrategiesRiskGroups(chainID)
-
-	//First check if the address is in any group
 	for _, group := range groups {
-		if helpers.Contains(helpers.AddressToString(group.Criteria.Strategies), strategy.Address.Hex()) {
+		if helpers.Contains(helpers.AddressToString(group.Strategies), strategy.Address.Hex()) {
 			return group
 		}
 	}
 
+	return nil
+}
+
+/**********************************************************************************************
+** The useStrategyGroup function takes a list of strategy groups and a strategy as input. It
+** iterates over the strategy groups and checks if the strategy's address is in any of the groups.
+** If it finds a match, it returns the group. If no match is found, it returns nil.
+** This function is used to find the risk group that a strategy belongs to.
+**********************************************************************************************/
+func useStrategyGroup(groups []*models.TStrategyGroupFromRisk, strategy *models.TStrategy) *models.TStrategyGroupFromRisk {
 	for _, group := range groups {
-		// check if nameLike and exclude intersect
-		if helpers.Intersects(group.Criteria.NameLike, group.Criteria.Exclude) {
-			toLowerNameLike := helpers.ToLower(group.Criteria.NameLike)
-			toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
-			for _, nameLike := range toLowerNameLike {
-				// if the nameLike is more specific
-				if strings.Contains(toLowerName, nameLike) &&
-					helpers.ContainsSubString(toLowerExclude, nameLike) {
-					return group
-				}
-			}
-		}
-
-		// check exclude
-		toLowerExclude := helpers.ToLower(group.Criteria.Exclude)
-		if helpers.ContainsSubString(toLowerExclude, toLowerName) {
-			continue
-		}
-		if helpers.Contains(group.Criteria.Exclude, strings.ToLower(strategy.Address.String())) {
-			continue
-		}
-
-		// check nameLike
-		toLowerNameLike := helpers.ToLower(group.Criteria.NameLike)
-		if helpers.ContainsSubString(toLowerNameLike, toLowerName) {
+		if helpers.Contains(helpers.AddressToString(group.Strategies), strategy.Address.Hex()) {
 			return group
 		}
 	}
 	return nil
 }
 
+/**********************************************************************************************
+** The getDefaultRiskGroup function returns a default risk group with a risk score of 5 and a
+** risk group name of "Others". This function is used when a strategy does not belong to any
+** existing risk group. The returned risk group has all its risk details set to 5 and its
+** allocation status set to "Green". The current, available TVL and amount are all set to 0.
+**********************************************************************************************/
 func getDefaultRiskGroup() models.TStrategyFromRisk {
 	return models.TStrategyFromRisk{
 		RiskGroup: "Others",
@@ -214,107 +210,90 @@ func GetStakingData(chainID uint64, vaultAddress common.Address) models.TStaking
 	return models.TStaking{}
 }
 
-/**************************************************************************************************
-** RetrieveAllRisksGroupsFromFiles will read all files in the /risks/network directory for a given
-** chainID and store them in the _strategyRiskGroupMap global variable.
-** The goal of this function is to get a list of all the group risk information for a given
-** chainID.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-**************************************************************************************************/
+/**********************************************************************************************
+** RetrieveAllRisksGroupsFromFiles reads all risk group files for a given chainID from the
+** /risks/networks/ directory.
+** It unmarshals the content of each file into a TStrategyGroupFromRisk model and stores it in
+** the _strategyRiskGroupMap global variable.
+** If any error occurs during the reading or unmarshalling process, it logs the error and
+** returns.
+** The function also sets the ChainID of each risk group to the given chainID.
+*********************************************************************************************
+ */
 func RetrieveAllRisksGroupsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/risks/networks/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		traces.
-			Capture(`warn`, `impossible to read risks files on chain `+chainIDStr).
-			SetEntity(`strategy`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			Send()
+		logs.Error(`[RetrieveAllRisksGroupsFromFiles] impossible to read risks files ` + chainIDStr)
 		return
 	}
 	for _, content := range content {
 		riskGroup := models.TStrategyGroupFromRisk{}
 		if err := json.Unmarshal(content, &riskGroup); err != nil {
-			traces.
-				Capture(`warn`, `impossible to unmarshall risks files response body `+chainIDStr).
-				SetEntity(`strategy`).
-				SetExtra(`error`, err.Error()).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetExtra(`content`, string(content)).
-				Send()
+			logs.Error(`[RetrieveAllRisksGroupsFromFiles] impossible to unmarshal risks files ` + chainIDStr)
 			return
 		}
 		riskGroup.ChainID = chainID
-		setRiskGroupInMap(chainID, &riskGroup)
+		setStrategyRiskGroup(chainID, &riskGroup)
 	}
 }
 
-func computeRiskGroupAllocation(chainID uint64) {
+func populateAllocation(strategy *models.TStrategy, group *models.TStrategyGroupFromRisk) {
+	tvl, amount, price := computeTVL(strategy)
+
+	/**********************************************************************************************
+	** Exception section: If the vault address matches the specified address, the TVL is forced to
+	** 0.
+	** This is done to handle specific cases where the underlying was hacked.
+	**********************************************************************************************/
+	if addresses.Equals(strategy.VaultAddress, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
+		tvl = bigNumber.NewFloat(0)
+	}
+
+	/**********************************************************************************************
+	** The following block of code is responsible for updating the current Total Value Locked (TVL)
+	** and the current amount of the strategy's vault. The TVL is calculated by multiplying the
+	** amount of tokens in the vault by the price of the token. The current amount is the amount
+	** of tokens in the vault. These values are crucial for risk assessment and allocation computations.
+	**********************************************************************************************/
+	group.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(group.Allocation.CurrentTVL, tvl)
+	group.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(group.Allocation.CurrentAmount, amount)
+	if price.Sign() <= 0 {
+		group.Allocation.AvailableTVL = bigNumber.NewFloat(0)
+		group.Allocation.AvailableAmount = bigNumber.NewFloat(0)
+	} else {
+		group.Allocation.AvailableTVL = bigNumber.NewFloat(0).Sub(group.Allocation.AvailableTVL, tvl)
+		group.Allocation.AvailableAmount = bigNumber.NewFloat(0).Quo(group.Allocation.AvailableTVL, price)
+	}
+	group.Allocation.Status = getAllocationStatus(*group)
+}
+
+func populateRisk(chainID uint64) {
 	if stratGroupErrorAlreadySent[chainID] == nil {
 		stratGroupErrorAlreadySent[chainID] = map[string]bool{}
 	}
-	//This will ensure we are working with clean data
+
+	/**********************************************************************************************
+	** This loop iterates over all the risk groups for the given chainID. For each group, it
+	** initializes the Allocation field and sets the AvailableTVL to the median allocation of the group.
+	**********************************************************************************************/
 	groups := ListStrategiesRiskGroups(chainID)
 	for _, group := range groups {
 		group.Allocation = &models.TStrategyAllocation{}
 		group.Allocation.AvailableTVL = getMedianAllocation(*group)
-		setRiskGroupInMap(chainID, group)
 	}
 
 	strategies := ListStrategies(chainID)
 	for _, strategy := range strategies {
-		strategyGroup := getStrategyGroup(chainID, strategy)
-		if strategyGroup == nil {
+		group := useStrategyGroup(groups, strategy)
+		if group == nil {
 			if !stratGroupErrorAlreadySent[chainID][strategy.Name] {
-				traces.
-					Capture(`warn`, `impossible to find stratGroup for strategy `+strategy.Name).
-					SetEntity(`strategy`).
-					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-					SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-					SetTag(`strategyAddress`, strategy.Address.Hex()).
-					SetTag(`strategyName`, strategy.Name).
-					Send()
+				logs.Error(`[populateRisk] impossible to find a risk group for strategy ` + strategy.Address.Hex() + ` (` + strategy.Name + `) on chain ` + strconv.FormatUint(chainID, 10))
 				stratGroupErrorAlreadySent[chainID][strategy.Name] = true
 			}
 			continue
 		}
-
-		tokenData, ok := tokens.FindUnderlyingForVault(chainID, strategy.VaultAddress)
-		if !ok {
-			traces.
-				Capture(`warn`, `impossible to find token for vault `+strategy.VaultAddress.Hex()).
-				SetEntity(`strategy`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-				SetTag(`strategyAddress`, strategy.Address.Hex()).
-				SetTag(`strategyName`, strategy.Name).
-				Send()
-			continue
-		}
-
-		tokenPrice, ok := prices.FindPrice(chainID, tokenData.Address)
-		if !ok {
-			traces.
-				Capture(`warn`, `impossible to find tokenPrice for token `+tokenData.Address.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`strategy`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-				SetTag(`strategyAddress`, strategy.Address.Hex()).
-				SetTag(`strategyName`, strategy.Name).
-				Send()
-			tokenPrice = bigNumber.NewInt(0)
-		}
-		_, price := helpers.FormatAmount(tokenPrice.String(), 6)
-		_, amount := helpers.FormatAmount(strategy.EstimatedTotalAssets.String(), int(tokenData.Decimals))
-		tvl := bigNumber.NewFloat(0).Mul(amount, price)
-
-		// Underlying was hacked, force TVL to 0
-		if addresses.Equals(strategy.VaultAddress, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
-			tvl = bigNumber.NewFloat(0)
-		}
+		populateAllocation(strategy, group)
 
 		if stackingData, hasStackingData := stakingData[chainID][strategy.VaultAddress.Hex()]; hasStackingData {
 			impactedStrategies := []common.Address{
@@ -324,20 +303,18 @@ func computeRiskGroupAllocation(chainID uint64) {
 				common.HexToAddress("0xf8aD69d578bd58c7d3Ff643A22355f0BFd5cA12A"),
 			}
 			if helpers.Contains(impactedStrategies, strategy.Address) {
-				strategyGroup.StackingRewardTVLScore = stackingData.Risk
+				group.StackingRewardTVLScore = stackingData.Risk
 			}
 		}
-		strategyGroup.Allocation.CurrentTVL = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentTVL, tvl)
-		strategyGroup.Allocation.CurrentAmount = bigNumber.NewFloat(0).Add(strategyGroup.Allocation.CurrentAmount, amount)
-		if tokenPrice.Sign() <= 0 {
-			strategyGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0)
-			strategyGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0)
-		} else {
-			strategyGroup.Allocation.AvailableTVL = bigNumber.NewFloat(0).Sub(strategyGroup.Allocation.AvailableTVL, tvl)
-			strategyGroup.Allocation.AvailableAmount = bigNumber.NewFloat(0).Quo(strategyGroup.Allocation.AvailableTVL, price)
-		}
-		strategyGroup.Allocation.Status = getAllocationStatus(*strategyGroup)
-		setRiskGroupInMap(chainID, strategyGroup)
+	}
+
+	/**********************************************************************************************
+	** This loop iterates over all the risk groups for the given chainID. For each group, it
+	** sets the strategy risk group. This is done after the risk group allocation computation
+	** to ensure that the risk group data is up-to-date.
+	**********************************************************************************************/
+	for _, group := range groups {
+		setStrategyRiskGroup(chainID, group)
 	}
 }
 
@@ -382,58 +359,5 @@ func InitRiskScore(chainID uint64) {
 			// logs.Pretty(`[InitRiskScore]`, pool.Token.Hex(), stakingData[chainID][pool.Token.Hex()].Risk, bigNumber.NewFloat(0).Mul(amount, price).String(), amount, price)
 		}
 	}
-	computeRiskGroupAllocation(chainID)
-
-	// strategies := ListStrategies(chainID)
-	// for _, strategy := range strategies {
-	// 	strategyGroup := getStrategyGroup(chainID, strategy)
-	// 	if strategyGroup == nil {
-	// 		continue
-	// 	}
-
-	// 	type TNeoRisk struct {
-	// 		Address             common.Address `json:"address"`
-	// 		Name                string         `json:"name"`
-	// 		ChainID             uint64         `json:"chainID"`
-	// 		CodeReviewScore     int            `json:"codeReviewScore"`
-	// 		TestingScore        int            `json:"testingScore"`
-	// 		AuditScore          int            `json:"auditScore"`
-	// 		ProtocolSafetyScore int            `json:"protocolSafetyScore"`
-	// 		ComplexityScore     int            `json:"complexityScore"`
-	// 		TeamKnowledgeScore  int            `json:"teamKnowledgeScore"`
-	// 	}
-
-	// 	checkSummedAddress := addresses.ToMixedcase(strategy.Address.Hex())
-	// 	if !checkSummedAddress.ValidChecksum() {
-	// 		logs.Warning(`[InitRiskScore]`, `invalid checksum for strategy address`, strategy.Address.Hex())
-	// 	}
-	// 	neoRisk := TNeoRisk{
-	// 		Address:             strategy.Address,
-	// 		Name:                strategy.Name,
-	// 		ChainID:             chainID,
-	// 		CodeReviewScore:     strategyGroup.CodeReviewScore,
-	// 		TestingScore:        strategyGroup.TestingScore,
-	// 		AuditScore:          strategyGroup.AuditScore,
-	// 		ProtocolSafetyScore: strategyGroup.ProtocolSafetyScore,
-	// 		ComplexityScore:     strategyGroup.ComplexityScore,
-	// 		TeamKnowledgeScore:  strategyGroup.TeamKnowledgeScore,
-	// 	}
-
-	// 	file, err := os.Create(env.BASE_DATA_PATH + `/risks/networks/` + strconv.FormatUint(chainID, 10) + `/` + checkSummedAddress.Address().String() + `.json`)
-	// 	if err != nil {
-	// 		logs.Error(`[InitRiskScore]`, `impossible to create file for neoRisk`, err.Error())
-	// 		continue
-	// 	}
-	// 	defer file.Close()
-
-	// 	value, err := json.MarshalIndent(neoRisk, "", "\t")
-	// 	if err != nil {
-	// 		logs.Error(`[InitRiskScore]`, `impossible to marshal neoRisk`, err.Error())
-	// 		continue
-	// 	}
-	// 	//Save to file
-	// 	file.Write(value)
-	// }
-	// os.Exit(1)
-
+	populateRisk(chainID)
 }

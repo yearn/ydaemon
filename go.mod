@@ -13,12 +13,11 @@ require (
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-co-op/gocron v1.28.3
 	github.com/go-sql-driver/mysql v1.7.0
-	github.com/gocarina/gocsv v0.0.0-20230226133904-70c27cb2918a
 	github.com/google/uuid v1.3.0
+	github.com/gosimple/slug v1.13.1
 	github.com/joho/godotenv v1.4.0
 	github.com/machinebox/graphql v0.2.2
 	github.com/montanaflynn/stats v0.6.6
-	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.2
 	golang.org/x/time v0.3.0
 	gorm.io/driver/mysql v1.4.7
@@ -49,6 +48,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/flatbuffers v1.12.1 // indirect
 	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/gosimple/unidecode v1.0.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
 	github.com/jackc/pgx/v5 v5.3.0 // indirect

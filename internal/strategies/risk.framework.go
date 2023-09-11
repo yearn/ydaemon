@@ -383,4 +383,57 @@ func InitRiskScore(chainID uint64) {
 		}
 	}
 	computeRiskGroupAllocation(chainID)
+
+	// strategies := ListStrategies(chainID)
+	// for _, strategy := range strategies {
+	// 	strategyGroup := getStrategyGroup(chainID, strategy)
+	// 	if strategyGroup == nil {
+	// 		continue
+	// 	}
+
+	// 	type TNeoRisk struct {
+	// 		Address             common.Address `json:"address"`
+	// 		Name                string         `json:"name"`
+	// 		ChainID             uint64         `json:"chainID"`
+	// 		CodeReviewScore     int            `json:"codeReviewScore"`
+	// 		TestingScore        int            `json:"testingScore"`
+	// 		AuditScore          int            `json:"auditScore"`
+	// 		ProtocolSafetyScore int            `json:"protocolSafetyScore"`
+	// 		ComplexityScore     int            `json:"complexityScore"`
+	// 		TeamKnowledgeScore  int            `json:"teamKnowledgeScore"`
+	// 	}
+
+	// 	checkSummedAddress := addresses.ToMixedcase(strategy.Address.Hex())
+	// 	if !checkSummedAddress.ValidChecksum() {
+	// 		logs.Warning(`[InitRiskScore]`, `invalid checksum for strategy address`, strategy.Address.Hex())
+	// 	}
+	// 	neoRisk := TNeoRisk{
+	// 		Address:             strategy.Address,
+	// 		Name:                strategy.Name,
+	// 		ChainID:             chainID,
+	// 		CodeReviewScore:     strategyGroup.CodeReviewScore,
+	// 		TestingScore:        strategyGroup.TestingScore,
+	// 		AuditScore:          strategyGroup.AuditScore,
+	// 		ProtocolSafetyScore: strategyGroup.ProtocolSafetyScore,
+	// 		ComplexityScore:     strategyGroup.ComplexityScore,
+	// 		TeamKnowledgeScore:  strategyGroup.TeamKnowledgeScore,
+	// 	}
+
+	// 	file, err := os.Create(env.BASE_DATA_PATH + `/risks/networks/` + strconv.FormatUint(chainID, 10) + `/` + checkSummedAddress.Address().String() + `.json`)
+	// 	if err != nil {
+	// 		logs.Error(`[InitRiskScore]`, `impossible to create file for neoRisk`, err.Error())
+	// 		continue
+	// 	}
+	// 	defer file.Close()
+
+	// 	value, err := json.MarshalIndent(neoRisk, "", "\t")
+	// 	if err != nil {
+	// 		logs.Error(`[InitRiskScore]`, `impossible to marshal neoRisk`, err.Error())
+	// 		continue
+	// 	}
+	// 	//Save to file
+	// 	file.Write(value)
+	// }
+	// os.Exit(1)
+
 }

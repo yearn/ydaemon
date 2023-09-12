@@ -1,21 +1,25 @@
 {
-	"$schema": "risks",
 	"label": "Maker",
-	"codeReviewScore": 3,
-	"testingScore": 3,
 	"auditScore": 5,
-	"protocolSafetyScore": 1,
+	"codeReviewScore": 3,
 	"complexityScore": 5,
+	"protocolSafetyScore": 1,
 	"teamKnowledgeScore": 4,
-	"criteria": {
-		"nameLike": [
-			"maker"
-		],
-		"strategies": [],
-		"exclude": [
-			"makerv2",
-			"maker-lev",
-			"makerv3"
-		]
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0xd7c172cbb4bee22511611e92377b0fb375bbfd43",
+		"0x7a5d88510cd49e878ade26e0f08bf374b5ecaf49",
+		"0x136fe75bfdf142a917c954f58577db04ef6f294b",
+		"0x1aa390681036bfb47f407f26583c50ff8740a7d6",
+		"0x04a508664b053e0a08d5386303e649925cbf763c",
+		"0x0e5397b8547c128ee20958286436b7bc3f9faaa4",
+		"0x9ae0b9a67cf5d603847980d95ad4d45b57ff7783",
+		"0xf06b5c192d1413e7a4db1b2a9640500fdd83f1b2",
+		"0x1a5890d45090701a35d995be3b63948a67460341",
+		"0x946a03264bba08d1f90df1ce0bbd3394c3ab1cfa",
+		"0xcca83ea686f42d45b9de5b5ca668962cd4a30c2e",
+		"0x180d4d79e503428134370d90e917f59a8f05e31d",
+		"0x4730d10703155ef4a448b17b0eaf3468fd4fb02d"
+	]
 }

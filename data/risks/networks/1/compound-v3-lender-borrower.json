@@ -1,18 +1,14 @@
 {
-    "$schema": "risks",
-    "label": "Compound V3 Lender Borrower",
-    "codeReviewScore": 3,
-    "testingScore": 3,
-    "auditScore": 4,
-    "protocolSafetyScore": 2,
-    "complexityScore": 4,
-    "teamKnowledgeScore": 3,
-    "criteria": {
-        "nameLike": [],
-        "strategies": [
-            "0x9E9a2a86eeff52FFD13fc724801a4259b2B1A949",
-            "0x17304367C7680a62F23B667ce5ef7e80aE296205"
-        ],
-        "exclude": []
-    }
+	"label": "Compound V3 Lender Borrower",
+	"auditScore": 4,
+	"codeReviewScore": 3,
+	"complexityScore": 4,
+	"protocolSafetyScore": 2,
+	"teamKnowledgeScore": 3,
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0x9e9a2a86eeff52ffd13fc724801a4259b2b1a949",
+		"0x17304367c7680a62f23b667ce5ef7e80ae296205"
+	]
 }

@@ -1,17 +1,27 @@
 {
-	"$schema": "risks",
 	"label": "Router Strategy v2",
-	"codeReviewScore": 2,
-	"testingScore": 3,
 	"auditScore": 5,
-	"protocolSafetyScore": 2,
+	"codeReviewScore": 2,
 	"complexityScore": 2,
+	"protocolSafetyScore": 2,
 	"teamKnowledgeScore": 4,
-	"criteria": {
-		"nameLike": [
-			"StrategyRouterV2"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0x950acdb04a1b7d852c8184ad4a9d01554baaf86c",
+		"0xb7168729933239b9e2c8b1c046055a7aef74516c",
+		"0x566ff03cfdf9bdcda9d7a2d99180ddbd5e3b06d2",
+		"0xffbeea9dd4a9d27c146e1de904b0979961326ec7",
+		"0x97e8a7f7af2558ef6cb92c31458229422cedcdae",
+		"0x86e454d31a76d38345b548bf7de7eddc6b177e8f",
+		"0x9e241d9818f918511cc1214589eee3aecbb53072",
+		"0x318be693d9110035f7ba02b3bade0b79aac97cf2",
+		"0x2b015f3f75d67b0bc5dae4b26b19a07b77797e39",
+		"0x808e128afd1cdd640525645fdf999f4f0638346d",
+		"0x05f0656164ae39d237d8b6d112899bd0a3a8f940",
+		"0x1814c6ae1ef934d48505caacd3fb27e39c1522e3",
+		"0x9a0c098f2b404546a208ddcb4798e703eddd3a09",
+		"0x3a4a18f238e75ba24ad0a65c554d56cc920f0f78",
+		"0x994a0a0a74cd199c469b1953094b23da8042f96d"
+	]
 }

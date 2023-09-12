@@ -1,17 +1,16 @@
 {
-	"$schema": "risks",
 	"label": "Kashi",
-	"codeReviewScore": 1,
-	"testingScore": 3,
 	"auditScore": 5,
-	"protocolSafetyScore": 2,
+	"codeReviewScore": 1,
 	"complexityScore": 3,
+	"protocolSafetyScore": 2,
 	"teamKnowledgeScore": 5,
-	"criteria": {
-		"nameLike": [
-			"kashi"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0xc8f17f8e15900b6d6079680b15da3ce5263f62aa",
+		"0x564bf2844654f149821697cc56572ee4384c05f7",
+		"0xd2cf8b07fc913e6219e5031b147827c4d0e58a08",
+		"0xeafb3ee25b5a9a1b35f193a4662e3bdba7a95beb"
+	]
 }

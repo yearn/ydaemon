@@ -1,19 +1,17 @@
 {
-	"$schema": "risks",
 	"label": "Maker-lev-v2",
-	"codeReviewScore": 3,
-	"testingScore": 2,
 	"auditScore": 5,
-	"protocolSafetyScore": 1,
+	"codeReviewScore": 3,
 	"complexityScore": 4,
+	"protocolSafetyScore": 1,
 	"teamKnowledgeScore": 2,
-	"criteria": {
-		"nameLike": [
-			"maker-lev-v2"
-		],
-		"strategies": [],
-		"exclude": [
-			"maker-lev"
-		]
-	}
+	"testingScore": 2,
+	"chainID": 1,
+	"strategies": [
+		"0xd1a12d62e434f9a4b8b1ebebff644eef8cb79148",
+		"0xd799d307096b1d1cf204ea7296046d19235b1bc2",
+		"0x25ab651015e256014c7b22625800a0da15055e4e",
+		"0xe5b16812686fc4ae7c5db0dc752172b2cd479f52",
+		"0x3005a9757a87509988bb296a5f553978e84f4172"
+	]
 }

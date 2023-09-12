@@ -12,12 +12,13 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
 var VELO_PAIR_URI = `https://api.velodrome.finance/api/v1/pairs`
-var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x3b21531bd00289f10c7d8b64b9389095f521a4d3`)
+var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x7F45F1eA57E9231f846B2b4f5F8138F94295A726`)
 var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x07f544813e9fb63d57a92f28fbd3ff0f7136f5ce`)
 var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
 var OPT_OP_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000042`)
@@ -26,33 +27,18 @@ var OPT_USDC_ADDRESS = common.HexToAddress(`0x7F5c764cBc14f9669B88837ca1490cCa17
 func fetchVelo(url string) []models.TVeloPairData {
 	resp, err := http.Get(url)
 	if err != nil {
-		traces.
-			Capture(`error`, `impossible to get velo URL`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to get velo URL`, err.Error())
 		return []models.TVeloPairData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		traces.
-			Capture(`error`, `impossible to read velo Get body`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to read velo Get body`, err.Error())
 		return []models.TVeloPairData{}
 	}
 	var factories models.TVeloPairs
 	if err := json.Unmarshal(body, &factories); err != nil {
-		traces.
-			Capture(`error`, `impossible to unmarshal velo Get body`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to unmarshal velo Get body`, err.Error())
 		return []models.TVeloPairData{}
 	}
 	return factories.Data
@@ -114,38 +100,28 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
-	sugarOracle, _ := contracts.NewVeloSugarOracleCaller(VELO_SUGAR_ORACLE_ADDRESS, client)
-	allSugar, _ := sugar.All(nil, big.NewInt(200), big.NewInt(0), common.Address{})
+	// sugarOracle, _ := contracts.NewVeloSugarOracleCaller(VELO_SUGAR_ORACLE_ADDRESS, client)
+	allSugar, _ := sugar.All(nil, big.NewInt(1000), big.NewInt(0), common.Address{})
 
 	for _, pair := range allSugar {
 		ratesConnector := []common.Address{pair.Token0, pair.Token1, OPT_WETH_ADDRESS, OPT_OP_ADDRESS, OPT_USDC_ADDRESS}
-		prices, err := sugarOracle.GetManyRatesWithConnectors(nil, 2, ratesConnector)
-		if err != nil {
-			continue
-		}
-		token0Price := bigNumber.SetInt(prices[0])
+		calls := []ethereum.Call{}
+		calls = append(calls, multicalls.GetManyRatesWithConnectors(VELO_SUGAR_ORACLE_ADDRESS.Hex(), VELO_SUGAR_ORACLE_ADDRESS, 2, ratesConnector))
+		calls = append(calls, multicalls.GetDecimals(pair.Token0.Hex(), pair.Token0))
+		calls = append(calls, multicalls.GetDecimals(pair.Token1.Hex(), pair.Token1))
+		response := multicalls.Perform(chainID, calls, nil)
+
+		prices := helpers.DecodeBigInts(response[VELO_SUGAR_ORACLE_ADDRESS.Hex()+`getManyRatesWithConnectors`])
+		token0Decimals := helpers.DecodeUint64(response[pair.Token0.Hex()+`decimals`])
+		token1Decimals := helpers.DecodeUint64(response[pair.Token1.Hex()+`decimals`])
+		token0Price := prices[0]
+		token1Price := prices[1]
+
 		if token0Price.IsZero() && addresses.Equals(pair.Token0, OPT_USDC_ADDRESS) {
 			token0Price = bigNumber.NewInt(1e18)
 		}
-		token1Price := bigNumber.SetInt(prices[1])
 		if token1Price.IsZero() && addresses.Equals(pair.Token1, OPT_USDC_ADDRESS) {
 			token1Price = bigNumber.NewInt(1e18)
-		}
-		token0Contract, err := contracts.NewERC20Caller(pair.Token0, client)
-		if err != nil {
-			continue
-		}
-		token0Decimals, err := token0Contract.Decimals(nil)
-		if err != nil {
-			continue
-		}
-		token1Contract, err := contracts.NewERC20Caller(pair.Token1, client)
-		if err != nil {
-			continue
-		}
-		token1Decimals, err := token1Contract.Decimals(nil)
-		if err != nil {
-			continue
 		}
 
 		token0PriceUSD := helpers.ToNormalizedAmount(token0Price, 18)
@@ -160,9 +136,18 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 
 		pairPrice := bigNumber.NewFloat(0).Div(valueInPair, pairTotalSupply)
 		pairPrice = bigNumber.NewFloat(0).Mul(pairPrice, bigNumber.NewFloat(1e6))
-		newPriceMap[pair.PairAddress] = pairPrice.Int()
-		newPriceMap[pair.Token0] = bigNumber.NewFloat(0).Mul(token0PriceUSD, bigNumber.NewFloat(1e6)).Int()
-		newPriceMap[pair.Token1] = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
+		token0Price = bigNumber.NewFloat(0).Mul(token0PriceUSD, bigNumber.NewFloat(1e6)).Int()
+		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
+
+		if !pairPrice.IsZero() {
+			newPriceMap[pair.PairAddress] = pairPrice.Int()
+		}
+		if !token0Price.IsZero() {
+			newPriceMap[pair.Token0] = token0Price
+		}
+		if !token1Price.IsZero() {
+			newPriceMap[pair.Token1] = token1Price
+		}
 	}
 
 	return newPriceMap

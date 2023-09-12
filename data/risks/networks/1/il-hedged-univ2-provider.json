@@ -1,0 +1,14 @@
+{
+	"label": "IL-Hedged UniV2 Provider",
+	"auditScore": 5,
+	"codeReviewScore": 2,
+	"complexityScore": 4,
+	"protocolSafetyScore": 2,
+	"teamKnowledgeScore": 3,
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0x26244f5b4a933c6e595665f08f8c76108195b755",
+		"0xb1bc173c2bcc98e8eede8af0443ace29b8fa2992"
+	]
+}

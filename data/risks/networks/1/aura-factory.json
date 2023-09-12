@@ -1,15 +1,23 @@
 {
-	"$schema": "risks",
 	"label": "Aura Factory",
-	"codeReviewScore": 3,
-	"testingScore": 3,
 	"auditScore": 4,
-	"protocolSafetyScore": 4,
+	"codeReviewScore": 3,
 	"complexityScore": 3,
+	"protocolSafetyScore": 4,
 	"teamKnowledgeScore": 3,
-	"criteria": {
-		"nameLike": ["StrategyAuraFactory"],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0x1860cb132ee168da59f1af7577fecf62e771ba87",
+		"0xe5ce88822978306be57b102a1a2ae47d1143c04e",
+		"0x02b348d77434c602e89e6ab4d93f2dc6577aeea3",
+		"0xbcf42b0b250fb683439eab4265821dea8697d3a4",
+		"0xd31ebd8db3bc5ed1f994d022db6ef7d51773eb9f",
+		"0x4d7da893fded3b84102c5bf209d2fd2550cfb1f4",
+		"0xe77e7027ffb55287b3579bbedf4225b78cb600b8",
+		"0x2eb648f654b6db98f777d6c71c0fedb961cf278e",
+		"0xf21c28e71b3e96e2f71066868133affe39094762",
+		"0xa6f84ed655c7ae8d23f497be3546d254e26db778",
+		"0x4bf43882ebfa3e8f43ce238634abfbd2ace4e45a"
+	]
 }

@@ -1,17 +1,14 @@
 {
-	"$schema": "risks",
 	"label": "Inverse",
-	"codeReviewScore": 3,
-	"testingScore": 4,
 	"auditScore": 5,
-	"protocolSafetyScore": 4,
+	"codeReviewScore": 3,
 	"complexityScore": 1,
+	"protocolSafetyScore": 4,
 	"teamKnowledgeScore": 5,
-	"criteria": {
-		"nameLike": [
-			"inverse"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 4,
+	"chainID": 1,
+	"strategies": [
+		"0xba794fb8f64caedba76f592468bdfae5147a6de0",
+		"0x50b5501a4a1b1f89504db0a75def5f1060a98ea6"
+	]
 }

@@ -288,6 +288,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 			`0x3883f5e181fccaF8410FA61e12b59BAd963fb645`, // Theta: Old Token
 
 			`0xC4C319E2D4d66CcA4464C0c2B32c9Bd23ebe784e`, // Hacked alETH
+			`0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`, // Hacked vault
 		},
 		10:   {},
 		250:  {},

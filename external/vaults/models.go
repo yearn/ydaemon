@@ -151,6 +151,8 @@ type TExternalVault struct {
 	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
+	// Computing only
+	FeaturingScore float64 `json:"-"`
 }
 
 func NewVault() *TExternalVault {

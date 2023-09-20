@@ -15,6 +15,15 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
+// GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
+var GECKO_CHAIN_NAMES = map[uint64]string{
+	1:     `ethereum`,
+	10:    `optimistic-ethereum`,
+	250:   `fantom`,
+	8453:  `base`,
+	42161: `arbitrum-one`,
+}
+
 /**************************************************************************************************
 ** fetchPriceFromGecko tries to fetch the price for a given token from
 ** the CoinGecko API, returns nil if there is no data returned
@@ -35,7 +44,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		for _, token := range tokensFromChunk {
 			tokenString = append(tokenString, strings.ToLower(token.Hex()))
 		}
-		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+env.GECKO_CHAIN_NAMES[chainID], nil)
+		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 		if err != nil {
 			logs.Error(err)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)

@@ -6,7 +6,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -84,16 +83,11 @@ func fetchPrices(
 
 	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
 	for token, price := range priceMapFromVeloOracle {
-		if addresses.Equals(`0x4E316557f63C2156eAFdfec08f31DF4957136203`, token) {
-			_, humanizedPrice := helpers.FormatAmount(price.String(), 6)
-			logs.Success(humanizedPrice.Text('f', 6))
-		}
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
 		}
 	}
-	// 86489.527322420454434543 * 2490400.545744
-	// 215 393 566 044,8964987708
+
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Aero API to
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
@@ -151,7 +145,11 @@ func fetchPrices(
 
 	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
-			logs.Warning(`missing a valid price for token ` + token.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+			if tokenData, ok := store.GetERC20(chainID, token); ok {
+				logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
+			} else {
+				logs.Warning(`missing a valid price for token ` + token.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+			}
 			priceErrorAlreadySent[chainID][token] = true
 		}
 	}
@@ -299,7 +297,6 @@ func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		wg.Wait()
 		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 	}
-	logs.Pretty(len(priceMap))
 	prices.StorePrices(chainID, priceMap)
 	return priceMap
 }

@@ -5,8 +5,6 @@ import (
 
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
-	"github.com/yearn/ydaemon/internal/registries"
-	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
@@ -101,8 +99,7 @@ func main() {
 		for _, chainID := range chains {
 			wg.Add(1)
 			go func(chainID uint64) {
-				vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-				tokens.RetrieveAllTokens(chainID, vaultsMap)
+				initDailyBlock.Run(chainID)
 				prices.Run(chainID)
 				wg.Done()
 			}(chainID)

@@ -102,7 +102,7 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
 	// sugarOracle, _ := contracts.NewVeloSugarOracleCaller(VELO_SUGAR_ORACLE_ADDRESS, client)
-	allSugar, _ := sugar.All(nil, big.NewInt(10000), big.NewInt(0), common.Address{})
+	allSugar, _ := sugar.All(nil, big.NewInt(1000), big.NewInt(0), common.Address{})
 
 	for _, pair := range allSugar {
 		ratesConnector := []common.Address{pair.Token0, pair.Token1, OPT_WETH_ADDRESS, OPT_OP_ADDRESS, OPT_USDC_ADDRESS}

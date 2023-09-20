@@ -31,12 +31,12 @@ func computeTVL(t *models.TStrategy) (*bigNumber.Float, *bigNumber.Float, *bigNu
 		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 
+	_, amount := helpers.FormatAmount(t.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 	_tokenPrice, ok := prices.FindPrice(t.ChainID, tokenData.Address)
 	if !ok {
-		logs.Warning(`impossible to find price for token ` + tokenData.Address.Hex() + ` on chain ` + strconv.FormatUint(t.ChainID, 10))
+		return bigNumber.NewFloat(0), amount, bigNumber.NewFloat(0)
 	}
 	_, price := helpers.FormatAmount(_tokenPrice.String(), 6)
-	_, amount := helpers.FormatAmount(t.EstimatedTotalAssets.String(), int(tokenData.Decimals))
 	tvl := bigNumber.NewFloat(0).Mul(amount, price)
 	return tvl, amount, price
 }

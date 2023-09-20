@@ -152,7 +152,7 @@ type TExternalVault struct {
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
 	// Computing only
-	FeaturingScore float64 `json:"-"`
+	FeaturingScore float64 `json:"featuringScore,omitempty"`
 }
 
 func NewVault() *TExternalVault {

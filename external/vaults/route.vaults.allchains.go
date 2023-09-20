@@ -4,10 +4,13 @@ import (
 	"net/http"
 	"strings"
 
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -15,6 +18,8 @@ import (
 
 // GetAllVaultsForAllChains will return a list of all vaults for all chains
 func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
+	now := time.Now()
+	logs.Info(now)
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -24,7 +29,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	** obtained from the 'orderDirection' query parameter in the request. If the parameter is not
 	** provided, it defaults to 'asc'.
 	**************************************************************************************************/
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `FeaturingScore`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 
 	/** 🔵 - Yearn *************************************************************************************
@@ -80,7 +85,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	**************************************************************************************************/
 	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
 	chains := []uint64{}
-	if len(chains) == 0 {
+	if len(chainsStr) == 0 {
 		chains = env.SUPPORTED_CHAIN_IDS
 	} else {
 		for _, chainStr := range chainsStr {
@@ -133,6 +138,44 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 		}
 	}
 
+	/** 🔵 - Yearn *************************************************************************************
+	** The following block of code is a loop that iterates over each vault in the 'allVaults' slice.
+	** For each vault, it performs the following operations:
+	**
+	** 1. It calls the 'ListStrategiesForVault' function to get a list of all strategies for the
+	**    current vault. The function takes two parameters: the chain ID of the vault and the address
+	**    of the vault.
+	**
+	** 2. It initializes an empty slice of pointers to 'TStrategy' objects for the current vault.
+	**
+	** 3. It then enters a nested loop that iterates over each strategy in 'vaultStrategies'. For each
+	**    strategy, it performs the following operations:
+	**
+	**    a. It initializes a pointer to a 'TStrategy' object.
+	**
+	**    b. It calls the 'NewStrategy' function to create a new 'TStrategy' object and assigns the
+	**       current strategy to it using the 'AssignTStrategy' method.
+	**
+	**    c. It checks if the strategy should be included based on the 'strategiesCondition'. If not,
+	**       it skips the current iteration of the loop.
+	**
+	**    d. If 'withStrategiesDetails' is true, it assigns the strategy with details to
+	**       'externalStrategy' and assigns a risk score to it. Otherwise, it assigns a new 'TStrategy'
+	**       object with the address, name, display name, and description of the current strategy to
+	**       'externalStrategy'.
+	**
+	**    e. It appends 'externalStrategy' to the 'Strategies' field of 'currentVault'.
+	**
+	** 4. If 'withStrategiesDetails' is true, it computes the risk score for the current vault and
+	**    assigns it to the 'RiskScore' field of 'currentVault'.
+	**
+	** 5. It appends the current vault to the 'data' slice.
+	**
+	** This loop effectively populates the 'Strategies' field of each vault in 'allVaults' with the
+	** appropriate strategies and computes the risk score for each vault if 'withStrategiesDetails' is
+	** true. It also populates the 'data' slice with the final list of vaults to be returned in the
+	** response.
+	**************************************************************************************************/
 	for _, currentVault := range allVaults {
 		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
 		currentVault.Strategies = []*TStrategy{}
@@ -163,7 +206,26 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 		data = append(data, *currentVault)
 	}
 
-	//Sort by details.order by default
+	/** 🔵 - Yearn *************************************************************************************
+	** The following block of code sorts the 'data' slice based on the 'orderBy' and 'orderDirection'
+	** parameters. The 'SortBy' function from the 'sort' package is used for this purpose.
+	**
+	** After sorting, it applies pagination to the 'data' slice based on the 'page' and 'limit'
+	** parameters. The start index for the slice is calculated as (page - 1) * limit, and the end
+	** index is calculated as page * limit. If the end index is greater than the length of the 'data'
+	** slice, it is set to the length of the 'data' slice.
+	**
+	** The 'data' slice is then updated to only include the vaults between the start and end indices.
+	** This effectively returns only the vaults for the requested page with the specified limit.
+	**************************************************************************************************/
 	sort.SortBy(orderBy, orderDirection, data)
+	start := (page - 1) * limit
+	end := page * limit
+	if end > uint64(len(data)) {
+		end = uint64(len(data))
+	}
+	data = data[start:end]
+
+	logs.Success(time.Since(now))
 	c.JSON(http.StatusOK, data)
 }

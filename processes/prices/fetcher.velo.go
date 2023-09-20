@@ -17,8 +17,8 @@ import (
 )
 
 var VELO_PAIR_URI = `https://api.velodrome.finance/api/v1/pairs`
-var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x7F45F1eA57E9231f846B2b4f5F8138F94295A726`)
-var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x07f544813e9fb63d57a92f28fbd3ff0f7136f5ce`)
+var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x4D996E294B00cE8287C16A2b9A4e637ecA5c939f`)
+var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x395942c2049604a314d39f370dfb8d87aac89e16`)
 var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
 var OPT_OP_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000042`)
 var OPT_USDC_ADDRESS = common.HexToAddress(`0x7F5c764cBc14f9669B88837ca1490cCa17c31607`)
@@ -91,6 +91,8 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	if chainID != 10 {
 		return newPriceMap
 	}
+	newPairPriceMap := make(map[common.Address]*bigNumber.Int)
+	newTokensPriceMap := make(map[common.Address]*bigNumber.Int)
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
@@ -100,7 +102,7 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
 	// sugarOracle, _ := contracts.NewVeloSugarOracleCaller(VELO_SUGAR_ORACLE_ADDRESS, client)
-	allSugar, _ := sugar.All(nil, big.NewInt(1000), big.NewInt(0), common.Address{})
+	allSugar, _ := sugar.All(nil, big.NewInt(10000), big.NewInt(0), common.Address{})
 
 	for _, pair := range allSugar {
 		ratesConnector := []common.Address{pair.Token0, pair.Token1, OPT_WETH_ADDRESS, OPT_OP_ADDRESS, OPT_USDC_ADDRESS}
@@ -139,13 +141,22 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
 
 		if !pairPrice.IsZero() {
-			newPriceMap[pair.PairAddress] = pairPrice.Int()
+			newPairPriceMap[pair.PairAddress] = pairPrice.Int()
 		}
 		if !token0Price.IsZero() {
-			newPriceMap[pair.Token0] = token0Price
+			newTokensPriceMap[pair.Token0] = token0Price
 		}
 		if !token1Price.IsZero() {
-			newPriceMap[pair.Token1] = token1Price
+			newTokensPriceMap[pair.Token1] = token1Price
+		}
+	}
+
+	for token, price := range newPairPriceMap {
+		newPriceMap[token] = price
+	}
+	for token, price := range newTokensPriceMap {
+		if _, ok := newPriceMap[token]; !ok {
+			newPriceMap[token] = price
 		}
 	}
 

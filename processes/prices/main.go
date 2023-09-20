@@ -84,11 +84,16 @@ func fetchPrices(
 
 	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
 	for token, price := range priceMapFromVeloOracle {
+		if addresses.Equals(`0x4E316557f63C2156eAFdfec08f31DF4957136203`, token) {
+			_, humanizedPrice := helpers.FormatAmount(price.String(), 6)
+			logs.Success(humanizedPrice.Text('f', 6))
+		}
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price
 		}
 	}
-
+	// 86489.527322420454434543 * 2490400.545744
+	// 215 393 566 044,8964987708
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Aero API to
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
@@ -281,10 +286,6 @@ func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		wg := sync.WaitGroup{}
 		wg.Add(len(allPrices))
 		for address, price := range allPrices {
-			if addresses.Equals(`0xfA3C6122906f2A2d644409dBB507DB1060D10b3A`, address) {
-				logs.Pretty(`price for ` + address.Hex() + ` is ` + price.String())
-			}
-
 			go func(address common.Address, price *bigNumber.Int) {
 				defer wg.Done()
 				store.SaveInBadgerDB(

@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
+	"github.com/yearn/ydaemon/processes/prices"
 	"github.com/yearn/ydaemon/processes/tokenList"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
@@ -102,7 +103,7 @@ func main() {
 			go func(chainID uint64) {
 				vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 				tokens.RetrieveAllTokens(chainID, vaultsMap)
-				apy.Run(chainID)
+				prices.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

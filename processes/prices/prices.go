@@ -1,4 +1,4 @@
-package models
+package prices
 
 import "encoding/json"
 

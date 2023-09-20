@@ -4,9 +4,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
 	// "github.com/yearn/ydaemon/processes/apy"
@@ -193,7 +193,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
 	v.Category = vaults.BuildCategory(internalVault)
 
-	underlyingToken, ok := tokens.FindUnderlyingForVault(internalVault.ChainID, internalVault.Address)
+	underlyingToken, ok := store.GetUnderlyingERC20(internalVault.ChainID, internalVault.Address)
 	if ok {
 		v.Token = TExternalERC20Token{
 			Address:                   underlyingToken.Address.Hex(),

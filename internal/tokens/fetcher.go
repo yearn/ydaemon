@@ -18,6 +18,8 @@ import (
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
+//TODO: Move this as external process
+
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
 ** for the related token. This includes the name, the symbol, the decimals and the details about
@@ -362,7 +364,7 @@ func RetrieveAllTokens(
 	** First, try to retrieve the list of tokens from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	tokenMap, _ := store.ListAllERC20(chainID)
+	tokenMap, _ := store.ListERC20(chainID)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -449,9 +451,7 @@ func RetrieveAllTokens(
 				store.StoreERC20(chainID, token)
 			}
 		}
-		tokenMap, _ = store.ListAllERC20(chainID)
+		tokenMap, _ = store.ListERC20(chainID)
 	}
-
-	_tokenMap[chainID] = tokenMap
 	return tokenMap
 }

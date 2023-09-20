@@ -18,10 +18,10 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 var _dailyBlockNumber = make(map[uint64]*sync.Map)
@@ -257,6 +257,6 @@ func assertDailyBlockNumber(chainID uint64) {
 func initYearnEcosystem(chainID uint64) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
-	prices.RetrieveAllPrices(chainID)
+	prices.Run(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsMap)
 }

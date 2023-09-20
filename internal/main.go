@@ -10,13 +10,13 @@ import (
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 var STRATLIST = []models.TStrategy{}
@@ -60,7 +60,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
 	cron.Every(15).Minute().Do(func() {
-		prices.RetrieveAllPrices(chainID)
+		prices.Run(chainID)
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
 		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)

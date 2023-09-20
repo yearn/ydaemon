@@ -6,9 +6,9 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 /**********************************************************************************************
@@ -25,7 +25,7 @@ import (
 ** token.
 **********************************************************************************************/
 func computeTVL(t *models.TStrategy) (*bigNumber.Float, *bigNumber.Float, *bigNumber.Float) {
-	tokenData, ok := tokens.FindUnderlyingForVault(t.ChainID, t.VaultAddress)
+	tokenData, ok := store.GetUnderlyingERC20(t.ChainID, t.VaultAddress)
 	if !ok {
 		logs.Warning(`impossible to find tokenData for vault ` + t.VaultAddress.Hex() + ` on chain ` + strconv.FormatUint(t.ChainID, 10))
 		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), bigNumber.NewFloat(0)

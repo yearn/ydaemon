@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
@@ -24,22 +23,22 @@ var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000
 var OPT_OP_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000042`)
 var OPT_USDC_ADDRESS = common.HexToAddress(`0x7F5c764cBc14f9669B88837ca1490cCa17c31607`)
 
-func fetchVelo(url string) []models.TVeloPairData {
+func fetchVelo(url string) []TVeloPairData {
 	resp, err := http.Get(url)
 	if err != nil {
 		logs.Error(`impossible to get velo URL`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(`impossible to read velo Get body`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
-	var factories models.TVeloPairs
+	var factories TVeloPairs
 	if err := json.Unmarshal(body, &factories); err != nil {
 		logs.Error(`impossible to unmarshal velo Get body`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
 	return factories.Data
 }
@@ -56,7 +55,7 @@ func getPricesFromVeloPairsAPI(chainID uint64) map[common.Address]*bigNumber.Int
 	// For each pool, we calculate the price per token and assign it to the token
 	// if the Store price is 0
 	for _, pair := range veloPairs {
-		coins := []models.TVeloToken{}
+		coins := []TVeloToken{}
 		coins = append(coins, pair.Token0)
 		coins = append(coins, pair.Token1)
 		for _, bribes := range pair.Gauge.Bribes {

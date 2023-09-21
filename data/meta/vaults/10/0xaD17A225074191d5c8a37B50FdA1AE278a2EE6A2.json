@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "USDC",
+  "comment": "USDC.e",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "USDC",
+  "displayName": "USDC.e",
   "classification": {
     "isAutomated": false,
     "isPool": false,

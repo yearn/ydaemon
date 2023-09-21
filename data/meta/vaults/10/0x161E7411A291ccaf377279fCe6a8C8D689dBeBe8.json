@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Vel USDC-sUSD",
+  "comment": "Vel USDC.e-sUSD",
   "hideAlways": false,
   "depositsDisabled": true,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "Velodrome USDC-sUSD",
+  "displayName": "Velodrome USDC.e-sUSD",
   "classification": {
     "isAutomated": false,
     "isPool": true,

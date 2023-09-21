@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Vel TAROT-USDC",
+  "comment": "Vel TAROT-USDC.e",
   "hideAlways": false,
   "depositsDisabled": true,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "Velodrome TAROT-USDC",
+  "displayName": "Velodrome TAROT-USDC.e",
   "classification": {
     "isAutomated": true,
     "isPool": true,

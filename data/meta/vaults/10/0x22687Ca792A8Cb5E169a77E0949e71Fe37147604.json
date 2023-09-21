@@ -1,6 +1,6 @@
 {
   "$schema": "vault",
-  "comment": "Vel USDC-DOLA",
+  "comment": "Vel USDC.e-DOLA",
   "hideAlways": false,
   "depositsDisabled": true,
   "withdrawalsDisabled": false,
@@ -9,7 +9,7 @@
   "allowZapIn": false,
   "allowZapOut": true,
   "retired": true,
-  "displayName": "Velodrome USDC-DOLA",
+  "displayName": "Velodrome USDC.e-DOLA",
   "classification": {
     "isAutomated": false,
     "isPool": true,

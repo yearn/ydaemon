@@ -1,0 +1,20 @@
+{
+  "$schema": "vault",
+  "comment": "Aero USDC-USDbC-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 23,
+  "migrationAvailable": false,
+  "allowZapIn": true,
+  "allowZapOut": true,
+  "retired": false,
+  "displayName": "Aerodrome USDC-USDbC",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Aerodrome",
+    "stability": "Stable",
+    "stableBaseAsset": "USD"
+  }
+}

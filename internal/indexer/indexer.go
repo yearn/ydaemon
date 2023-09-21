@@ -5,10 +5,10 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 func PostProcessStrategies(chainID uint64) {
@@ -27,7 +27,7 @@ func PostProcessStrategies(chainID uint64) {
 
 func ProcessNewVault(chainID uint64, vaultsList map[common.Address]models.TVaultsFromRegistry) {
 	tokens.RetrieveAllTokens(chainID, vaultsList)
-	prices.RetrieveAllPrices(chainID)
+	prices.Run(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsList)
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsList, 0, nil)
 	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)

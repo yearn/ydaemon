@@ -13,33 +13,32 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
 var VELO_PAIR_URI = `https://api.velodrome.finance/api/v1/pairs`
-var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x7F45F1eA57E9231f846B2b4f5F8138F94295A726`)
-var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x07f544813e9fb63d57a92f28fbd3ff0f7136f5ce`)
+var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x4D996E294B00cE8287C16A2b9A4e637ecA5c939f`)
+var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x395942c2049604a314d39f370dfb8d87aac89e16`)
 var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
 var OPT_OP_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000042`)
 var OPT_USDC_ADDRESS = common.HexToAddress(`0x7F5c764cBc14f9669B88837ca1490cCa17c31607`)
 
-func fetchVelo(url string) []models.TVeloPairData {
+func fetchVelo(url string) []TVeloPairData {
 	resp, err := http.Get(url)
 	if err != nil {
 		logs.Error(`impossible to get velo URL`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(`impossible to read velo Get body`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
-	var factories models.TVeloPairs
+	var factories TVeloPairs
 	if err := json.Unmarshal(body, &factories); err != nil {
 		logs.Error(`impossible to unmarshal velo Get body`, err.Error())
-		return []models.TVeloPairData{}
+		return []TVeloPairData{}
 	}
 	return factories.Data
 }
@@ -56,7 +55,7 @@ func getPricesFromVeloPairsAPI(chainID uint64) map[common.Address]*bigNumber.Int
 	// For each pool, we calculate the price per token and assign it to the token
 	// if the Store price is 0
 	for _, pair := range veloPairs {
-		coins := []models.TVeloToken{}
+		coins := []TVeloToken{}
 		coins = append(coins, pair.Token0)
 		coins = append(coins, pair.Token1)
 		for _, bribes := range pair.Gauge.Bribes {
@@ -92,6 +91,8 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 	if chainID != 10 {
 		return newPriceMap
 	}
+	newPairPriceMap := make(map[common.Address]*bigNumber.Int)
+	newTokensPriceMap := make(map[common.Address]*bigNumber.Int)
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
@@ -140,13 +141,22 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
 
 		if !pairPrice.IsZero() {
-			newPriceMap[pair.PairAddress] = pairPrice.Int()
+			newPairPriceMap[pair.PairAddress] = pairPrice.Int()
 		}
 		if !token0Price.IsZero() {
-			newPriceMap[pair.Token0] = token0Price
+			newTokensPriceMap[pair.Token0] = token0Price
 		}
 		if !token1Price.IsZero() {
-			newPriceMap[pair.Token1] = token1Price
+			newTokensPriceMap[pair.Token1] = token1Price
+		}
+	}
+
+	for token, price := range newPairPriceMap {
+		newPriceMap[token] = price
+	}
+	for token, price := range newTokensPriceMap {
+		if _, ok := newPriceMap[token]; !ok {
+			newPriceMap[token] = price
 		}
 	}
 

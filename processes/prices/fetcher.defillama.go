@@ -13,8 +13,16 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/models"
 )
+
+// LLAMA_CHAIN_NAMES contains the chain identifiers for the DeFiLlama API
+var LLAMA_CHAIN_NAMES = map[uint64]string{
+	1:     `ethereum`,
+	10:    `optimism`,
+	250:   `fantom`,
+	8453:  `base`,
+	42161: `arbitrum`,
+}
 
 /**************************************************************************************************
 ** fetchPriceFromLlama tries to fetch the price for a given token from
@@ -35,7 +43,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		tokensFromChunk := tokens[i:end]
 		var tokenString []string
 		for _, token := range tokensFromChunk {
-			tokenString = append(tokenString, env.LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
+			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
 		}
 		resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
 		if err != nil || resp.StatusCode != 200 {
@@ -52,7 +60,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 			logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 			return priceMap
 		}
-		priceData := models.TLlamaPrice{}
+		priceData := TLlamaPrice{}
 		if err := json.Unmarshal(body, &priceData); err != nil {
 			logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 			return priceMap

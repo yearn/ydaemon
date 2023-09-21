@@ -13,8 +13,16 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/models"
 )
+
+// GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
+var GECKO_CHAIN_NAMES = map[uint64]string{
+	1:     `ethereum`,
+	10:    `optimistic-ethereum`,
+	250:   `fantom`,
+	8453:  `base`,
+	42161: `arbitrum-one`,
+}
 
 /**************************************************************************************************
 ** fetchPriceFromGecko tries to fetch the price for a given token from
@@ -36,7 +44,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		for _, token := range tokensFromChunk {
 			tokenString = append(tokenString, strings.ToLower(token.Hex()))
 		}
-		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+env.GECKO_CHAIN_NAMES[chainID], nil)
+		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 		if err != nil {
 			logs.Error(err)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
@@ -62,7 +70,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 			return priceMap
 		}
-		priceData := models.TGeckoPrice{}
+		priceData := TGeckoPrice{}
 		if err := json.Unmarshal(body, &priceData); err != nil {
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 			return priceMap

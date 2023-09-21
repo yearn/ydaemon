@@ -2,21 +2,16 @@ package prices
 
 import (
 	"context"
-	"math/big"
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/common/traces"
-	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/internal/prices"
 )
 
 var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
@@ -128,8 +123,8 @@ func fetchPrices(
 	**********************************************************************************************/
 	for _, token := range tokenList {
 		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			if token, ok := tokens.FindToken(chainID, token); ok {
-				if tokens.IsVault(token) {
+			if token, ok := store.GetERC20(chainID, token); ok {
+				if store.IsVaultLike(token) {
 					ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 					underlyingToken := token.UnderlyingTokensAddresses[0]
 					ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
@@ -150,11 +145,11 @@ func fetchPrices(
 
 	for _, token := range queryList {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
-			traces.
-				Capture(`error`, `missing a valid price for token `+token.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`prices`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				Send()
+			if tokenData, ok := store.GetERC20(chainID, token); ok {
+				logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
+			} else {
+				logs.Warning(`missing a valid price for token ` + token.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+			}
 			priceErrorAlreadySent[chainID][token] = true
 		}
 	}
@@ -185,28 +180,6 @@ func fetchPrices(
 }
 
 /**************************************************************************************************
-** findAllPrices is simply a wrapper around our fetchPrices function to make it easier
-** to read. It will call the fetchPrices function to get the prices, before assigning them to a new
-** map.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - tokenList: our list of tokenAddress
-**
-** Returns:
-** - a map of tokenAddress -> *bigNumber.Int
-**************************************************************************************************/
-func findAllPrices(
-	chainID uint64,
-	blockNumber *uint64,
-	tokenList []common.Address,
-) map[common.Address]*bigNumber.Int {
-	newPriceMap := fetchPrices(chainID, blockNumber, tokenList)
-
-	return newPriceMap
-}
-
-/**************************************************************************************************
 ** In order to correctly play with financial data, we need the prices. This is what this internal
 ** package is for. It will fetch the prices of the tokens and store them for later use.
 **
@@ -217,14 +190,7 @@ func findAllPrices(
 ** Returns:
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
-func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
-	trace := traces.Init(`app.indexer.prices`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `prices`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
+func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	/**********************************************************************************************
 	** First, try to retrieve the list of prices from the database to exclude the one existing
 	** from the upcoming calls
@@ -236,7 +202,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** From the vault registry we could build the list of tokens used by our ecosystem. We will
 	** use this list to fetch the prices of the tokens, using different sources.
 	**********************************************************************************************/
-	allTokens := tokens.ListTokensAddresses(chainID)
+	allTokens := store.ListERC20Addresses(chainID)
 
 	/**********************************************************************************************
 	** Somehow, some vaults are not in the registries, but we still need the price data for them.
@@ -309,7 +275,7 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	**********************************************************************************************/
 	currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
 	if len(allTokens) > 0 {
-		allPrices := findAllPrices(chainID, &currentBlockNumber, allTokens)
+		allPrices := fetchPrices(chainID, &currentBlockNumber, allTokens)
 
 		/**********************************************************************************************
 		** Once everything is setup, we will store each token in the DB. The storage is set as a map
@@ -331,86 +297,10 @@ func RetrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 		wg.Wait()
 		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
 	}
-	StorePrices(chainID, priceMap)
+	prices.StorePrices(chainID, priceMap)
 	return priceMap
 }
 
-/*
-*************************************************************************************************
-
-*************************************************************************************************
- */
-func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
-
-	/**********************************************************************************************
-	** The first step is to prepare the multicall, connecting to the multicall instance and
-	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
-	**********************************************************************************************/
-	calls := []ethereum.Call{}
-	for _, tokenAddress := range tokenList {
-		if tokenPrice, ok := store.GetBlockPrice(chainID, blockNumber, tokenAddress); ok {
-			newPriceMap[tokenAddress] = tokenPrice
-			continue
-		}
-		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(tokenAddress.Hex(), env.LENS_ADDRESSES[chainID], tokenAddress))
-	}
-
-	/**********************************************************************************************
-	** Then we can proceed the responses. We loop over the responses and check if the price is
-	** available. If it is, we add it to the map. If it's not, we try to fetch it from an external
-	** API.
-	**********************************************************************************************/
-	response := multicalls.Perform(chainID, calls, big.NewInt(int64(blockNumber)))
-	itemsToUpsert := []store.DBHistoricalPrice{}
-	for _, tokenAddress := range tokenList {
-		rawTokenPrice := response[tokenAddress.Hex()+`getPriceUsdcRecommended`]
-		if len(rawTokenPrice) == 0 {
-			continue
-		}
-		tokenPrice := bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
-		if tokenPrice.IsZero() {
-			continue
-		}
-		newPriceMap[tokenAddress] = helpers.DecodeBigInt(rawTokenPrice)
-
-		/******************************************************************************************
-		** To save some process, we will batch the saving to the database in one call.
-		** The following code is creating the upsert array.
-		******************************************************************************************/
-		DBbaseSchema := store.DBBaseSchema{
-			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(blockNumber, 10) + tokenAddress.Hex()),
-			Block:   blockNumber,
-			ChainID: chainID,
-		}
-		humanizedPrice, _ := helpers.ToNormalizedAmount(newPriceMap[tokenAddress], 6).Float64()
-		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
-			DBBaseSchema:   DBbaseSchema,
-			Token:          tokenAddress.Hex(),
-			Price:          newPriceMap[tokenAddress].String(),
-			HumanizedPrice: humanizedPrice,
-		})
-		store.AppendToHistoricalPrice(chainID, blockNumber, tokenAddress, newPriceMap[tokenAddress])
-	}
-
-	store.StoreManyHistoricalPrice(itemsToUpsert)
-	return newPriceMap
-}
-
-func GetPricesOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Address) (*bigNumber.Int, bool) {
-	tokenPrice, ok := store.GetBlockPrice(chainID, blockNumber, tokenAddress)
-	if ok {
-		return tokenPrice, true
-	}
-
-	client := ethereum.GetRPC(chainID)
-	contractAddress := env.LENS_ADDRESSES[chainID]
-	oracleContract, _ := contracts.NewOracleCaller(contractAddress, client)
-	tokenPriceFromOracle, err := oracleContract.GetPriceUsdcRecommended(&bind.CallOpts{BlockNumber: big.NewInt(int64(blockNumber))}, tokenAddress)
-	if err != nil {
-		return bigNumber.NewInt(0), false
-	}
-	store.StoreHistoricalPrice(chainID, blockNumber, tokenAddress, bigNumber.NewInt(0).Set(tokenPriceFromOracle))
-	return bigNumber.NewInt(0).Set(tokenPriceFromOracle), true
+func Run(chainID uint64) {
+	retrieveAllPrices(chainID)
 }

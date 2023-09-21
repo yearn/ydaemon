@@ -6,10 +6,10 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 /**********************************************************************************************
@@ -37,12 +37,12 @@ func calculateStakingMetrics(chainID uint64) {
 	allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 85969071, nil)
 	calls := []ethereum.Call{}
 	for _, pool := range allStackingPoolAdded {
-		currentToken, ok := tokens.FindToken(chainID, pool.VaultAddress)
+		currentToken, ok := store.GetERC20(chainID, pool.VaultAddress)
 		if !ok {
 			logs.Warning(`[retriveStakingContracts] impossible to find token for pool address`, pool.StackingPoolAddress.Hex())
 			continue
 		}
-		if !tokens.IsVault(currentToken) {
+		if !store.IsVaultLike(currentToken) {
 			logs.Warning(`[retriveStakingContracts] token is not a vault`, pool.VaultAddress.Hex())
 			continue
 		}

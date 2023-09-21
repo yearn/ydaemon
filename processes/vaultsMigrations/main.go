@@ -10,10 +10,10 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 func Run(chainID uint64) {
@@ -111,6 +111,6 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 func initYearnEcosystem(chainID uint64) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
-	prices.RetrieveAllPrices(chainID)
+	prices.Run(chainID)
 	vaults.RetrieveAllVaults(chainID, vaultsMap)
 }

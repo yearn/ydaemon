@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
@@ -28,11 +28,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	**********************************************************************************************/
 	lensAddress, ok := env.LENS_ADDRESSES[chainID]
 	if !ok {
-		traces.
-			Capture(`error`, `missing a valid Lens Address for chain `+strconv.FormatUint(chainID, 10)).
-			SetEntity(`prices`).
-			SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-			Send()
+		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
 		return newPriceMap
 	}
 

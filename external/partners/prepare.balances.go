@@ -7,7 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/tokens"
+	"github.com/yearn/ydaemon/common/store"
 )
 
 func (c *TPartners) BalanceOf() *TPartners {
@@ -51,7 +51,7 @@ func computeDefaultBalance(
 	}
 
 	decimals := 18
-	if token, ok := tokens.FindToken(chainID, vaultAddress.Address()); ok {
+	if token, ok := store.GetERC20(chainID, vaultAddress.Address()); ok {
 		decimals = int(token.Decimals)
 	}
 

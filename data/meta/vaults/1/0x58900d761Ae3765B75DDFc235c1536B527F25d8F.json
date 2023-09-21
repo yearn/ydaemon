@@ -1,0 +1,18 @@
+{
+  "$schema": "vault",
+  "comment": "Curve yETH-f",
+  "hideAlways": false,
+  "depositsDisabled": false,
+  "withdrawalsDisabled": false,
+  "order": 428,
+  "migrationAvailable": false,
+  "retired": false,
+  "displayName": "Curve yETH",
+  "classification": {
+    "isAutomated": true,
+    "isPool": true,
+    "poolProvider": "Curve",
+    "stability": "Correlated",
+    "stableBaseAsset": "Ether"
+  }
+}

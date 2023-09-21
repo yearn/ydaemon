@@ -146,7 +146,7 @@ type TExternalVault struct {
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               TExternalVaultTVL       `json:"tvl"`
 	APY               TExternalVaultAPY       `json:"apy"`
-	NewAPY            apy.TAPIV1APY           `json:"newApy"`
+	APR               apy.TVaultAPR           `json:"apr"`
 	Details           *TExternalVaultDetails  `json:"details"`
 	Strategies        []*TStrategy            `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
@@ -237,7 +237,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		Composite:         TExternalAPYComposite(internalAPY.Composite),
 		Error:             internalAPY.Error,
 	}
-	v.NewAPY = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
+	v.APR = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
 
 	v.Details = &TExternalVaultDetails{
 		Management:            internalVault.Management.Hex(),

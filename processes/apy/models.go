@@ -2,48 +2,47 @@ package apy
 
 import "github.com/yearn/ydaemon/common/bigNumber"
 
-type TAPIV1Fees struct {
+type TFees struct {
 	Performance *bigNumber.Float `json:"performance"`
 	Withdrawal  *bigNumber.Float `json:"withdrawal"`
 	Management  *bigNumber.Float `json:"management"`
-	KeepCRV     *bigNumber.Float `json:"keep_crv"`
-	KeepVelo    *bigNumber.Float `json:"keep_velo"`
-	CvxKeepCRV  *bigNumber.Float `json:"cvx_keep_crv"`
+	KeepCRV     *bigNumber.Float `json:"keepCRV"`
+	KeepVelo    *bigNumber.Float `json:"keepVELO"`
+	CvxKeepCRV  *bigNumber.Float `json:"cvx_keepCRV"`
 }
-type TAPIV1Composite struct {
+type TCompositeData struct {
 	Boost      *bigNumber.Float `json:"boost"`
-	PoolAPY    *bigNumber.Float `json:"pool_apy"`
-	BoostedAPR *bigNumber.Float `json:"boosted_apr"`
-	BaseAPR    *bigNumber.Float `json:"base_apr"`
-	CvxAPR     *bigNumber.Float `json:"cvx_apr"`
-	RewardsAPR *bigNumber.Float `json:"rewards_apr"`
+	PoolAPY    *bigNumber.Float `json:"poolAPY"`
+	BoostedAPR *bigNumber.Float `json:"boostedAPR"`
+	BaseAPR    *bigNumber.Float `json:"baseAPR"`
+	CvxAPR     *bigNumber.Float `json:"cvxAPR"`
+	RewardsAPR *bigNumber.Float `json:"rewardsAPR"`
 }
-type TAPIV1Points struct {
-	WeekAgo   *bigNumber.Float `json:"week_ago"`
-	MonthAgo  *bigNumber.Float `json:"month_ago"`
+type TExtraRewards struct {
+	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`
+}
+type THistoricalPoints struct {
+	WeekAgo   *bigNumber.Float `json:"weekAgo"`
+	MonthAgo  *bigNumber.Float `json:"monthAgo"`
 	Inception *bigNumber.Float `json:"inception"`
 }
 type TForwardAPR struct {
 	Type      string           `json:"type"`
-	GrossAPR  *bigNumber.Float `json:"gross_apr"`
-	NetAPY    *bigNumber.Float `json:"net_apy"`
-	Composite TAPIV1Composite  `json:"composite"`
+	NetAPR    *bigNumber.Float `json:"netAPR"`
+	Composite TCompositeData   `json:"composite"`
 }
-type TAPIV1APY struct {
-	Type              string           `json:"type"`
-	GrossAPR          *bigNumber.Float `json:"gross_apr"`
-	NetAPY            *bigNumber.Float `json:"net_apy"`
-	StakingRewardsAPR *bigNumber.Float `json:"staking_rewards_apr"`
-	Fees              TAPIV1Fees       `json:"fees"`
-	Points            TAPIV1Points     `json:"points"`
-	Composite         TAPIV1Composite  `json:"composite"`
-	ForwardAPR        TForwardAPR      `json:"forward_apr"`
+type TVaultAPR struct {
+	Type       string            `json:"type"`
+	NetAPR     *bigNumber.Float  `json:"netAPR"`
+	Fees       TFees             `json:"fees"`
+	Points     THistoricalPoints `json:"points"`
+	Extra      TExtraRewards     `json:"extra"`
+	ForwardAPR TForwardAPR       `json:"forwardAPR"`
 }
 
 type TStrategyAPR struct {
 	Type      string           `json:"type"`
-	DebtRatio *bigNumber.Float `json:"debt_ratio"`
-	GrossAPR  *bigNumber.Float `json:"gross_apr"`
-	NetAPY    *bigNumber.Float `json:"net_apy"`
-	Composite TAPIV1Composite  `json:"composite"`
+	DebtRatio *bigNumber.Float `json:"debtRatio"`
+	NetAPR    *bigNumber.Float `json:"netAPR"`
+	Composite TCompositeData   `json:"composite"`
 }

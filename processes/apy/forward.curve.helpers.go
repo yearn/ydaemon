@@ -302,8 +302,7 @@ func computeCurveLikeForwardAPR(
 	subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
 
 	TypeOf := ``
-	GrossAPR := bigNumber.NewFloat(0)
-	NetAPY := bigNumber.NewFloat(0)
+	NetAPR := bigNumber.NewFloat(0)
 	Boost := bigNumber.NewFloat(0)
 	PoolAPY := bigNumber.NewFloat(0)
 	BoostedAPR := bigNumber.NewFloat(0)
@@ -334,8 +333,7 @@ func computeCurveLikeForwardAPR(
 			subgraphItem,
 		)
 		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-		GrossAPR = bigNumber.NewFloat(0).Add(GrossAPR, strategyAPR.GrossAPR)
-		NetAPY = bigNumber.NewFloat(0).Add(NetAPY, strategyAPR.NetAPY)
+		NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
 		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
 		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
 		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
@@ -344,10 +342,9 @@ func computeCurveLikeForwardAPR(
 		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
 	}
 	return TForwardAPR{
-		Type:     strings.TrimSpace(TypeOf),
-		GrossAPR: GrossAPR,
-		NetAPY:   NetAPY,
-		Composite: TAPIV1Composite{
+		Type:   strings.TrimSpace(TypeOf),
+		NetAPR: NetAPR,
+		Composite: TCompositeData{
 			Boost:      Boost,
 			PoolAPY:    PoolAPY,
 			BoostedAPR: BoostedAPR,

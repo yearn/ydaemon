@@ -7,7 +7,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
@@ -34,7 +33,7 @@ func calculateStakingMetrics(chainID uint64) {
 	** decimals, and recommended price in USDC for the pool. These calls are appended to a list of
 	** calls to be performed via a multicall.
 	**********************************************************************************************/
-	allStackingPoolAdded := events.HandleStakingPoolAdded(chainID, 85969071, nil)
+	_, allStackingPoolAdded := store.ListAllStakingPools(chainID, store.PerPool)
 	calls := []ethereum.Call{}
 	for _, pool := range allStackingPoolAdded {
 		currentToken, ok := store.GetERC20(chainID, pool.VaultAddress)

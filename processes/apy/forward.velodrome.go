@@ -143,8 +143,7 @@ func calculateVeloLikeStrategyAPR(
 	apyStruct := TStrategyAPR{
 		Type:      "v2:velo",
 		DebtRatio: debtRatio,
-		GrossAPR:  bigNumber.NewFloat(0).Mul(grossAPR, debtRatio),
-		NetAPY:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
 	}
 	return apyStruct
 }
@@ -159,8 +158,7 @@ func computeVeloLikeForwardAPR(
 	veloStakingPoolAddress common.Address,
 ) TForwardAPR {
 	TypeOf := ``
-	GrossAPR := bigNumber.NewFloat(0)
-	NetAPY := bigNumber.NewFloat(0)
+	NetAPR := bigNumber.NewFloat(0)
 	Boost := bigNumber.NewFloat(0)
 	PoolAPY := bigNumber.NewFloat(0)
 	BoostedAPR := bigNumber.NewFloat(0)
@@ -179,8 +177,7 @@ func computeVeloLikeForwardAPR(
 
 		strategyAPR := calculateVeloLikeStrategyAPR(vault, strategy, veloStakingPoolAddress)
 		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-		GrossAPR = bigNumber.NewFloat(0).Add(GrossAPR, strategyAPR.GrossAPR)
-		NetAPY = bigNumber.NewFloat(0).Add(NetAPY, strategyAPR.NetAPY)
+		NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
 		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
 		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
 		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
@@ -190,10 +187,9 @@ func computeVeloLikeForwardAPR(
 	}
 
 	return TForwardAPR{
-		Type:     strings.TrimSpace(TypeOf),
-		GrossAPR: GrossAPR,
-		NetAPY:   NetAPY,
-		Composite: TAPIV1Composite{
+		Type:   strings.TrimSpace(TypeOf),
+		NetAPR: NetAPR,
+		Composite: TCompositeData{
 			Boost:      Boost,
 			PoolAPY:    PoolAPY,
 			BoostedAPR: BoostedAPR,

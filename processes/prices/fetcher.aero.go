@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
@@ -74,14 +75,22 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []comm
 		token0Price = bigNumber.NewFloat(0).Mul(token0PriceUSD, bigNumber.NewFloat(1e6)).Int()
 		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
 
-		if !pairPrice.IsZero() {
-			newPairPriceMap[pair.Lp] = pairPrice.Int()
+		if pairToken, _ := store.GetERC20(chainID, pair.Lp); !store.IsVaultLike(pairToken) {
+			if !pairPrice.IsZero() {
+				newPairPriceMap[pair.Lp] = pairPrice.Int()
+			}
 		}
-		if !token0Price.IsZero() {
-			newTokensPriceMap[pair.Token0] = token0Price
+
+		if token0, _ := store.GetERC20(chainID, pair.Token0); !store.IsVaultLike(token0) {
+			if !token0Price.IsZero() {
+				newTokensPriceMap[pair.Token0] = token0Price
+			}
 		}
-		if !token1Price.IsZero() {
-			newTokensPriceMap[pair.Token1] = token1Price
+
+		if token1, _ := store.GetERC20(chainID, pair.Token1); !store.IsVaultLike(token1) {
+			if !token1Price.IsZero() {
+				newTokensPriceMap[pair.Token1] = token1Price
+			}
 		}
 	}
 

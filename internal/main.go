@@ -59,7 +59,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
-	cron.Every(1).Day().StartImmediately().At("12:10").Do(func() {
+	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
@@ -67,12 +67,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		vaults.RetrieveAllVaults(chainID, vaultsMap)
 		prices.Run(chainID)
 		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
+		events.HandleStakingPoolAdded(chainID, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
-		go func() {
-			initDailyBlock.Run(chainID)
-			apy.ComputeChainAPR(chainID)
-		}()
+		apy.ComputeChainAPR(chainID)
 		go strategies.InitRiskScore(chainID)
 	})
 

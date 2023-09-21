@@ -34,9 +34,8 @@ func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPoo
 	apyStruct := TStrategyAPR{
 		Type:      "frax",
 		DebtRatio: baseConvexStrategyData.DebtRatio,
-		GrossAPR:  bigNumber.NewFloat(0).Add(baseConvexStrategyData.GrossAPR, minRewardsAPR),
-		NetAPY:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPY, minRewardsAPR),
-		Composite: TAPIV1Composite{
+		NetAPR:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPR, minRewardsAPR),
+		Composite: TCompositeData{
 			Boost:      baseConvexStrategyData.Composite.Boost,
 			PoolAPY:    baseConvexStrategyData.Composite.PoolAPY,
 			BoostedAPR: baseConvexStrategyData.Composite.BoostedAPR,

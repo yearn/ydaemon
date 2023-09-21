@@ -124,13 +124,20 @@ func ComputeChainAPR(chainID uint64) {
 			)
 		}
 
-		COMPUTED_APR[chainID][vault.Address] = vaultAPY
+		if aeroPool, ok := isAeroVault(chainID, vault); ok {
+			vaultAPY.ForwardAPR = computeVeloLikeForwardAPR(
+				vault,
+				allStrategiesForVault,
+				aeroPool,
+			)
+		}
 
+		COMPUTED_APR[chainID][vault.Address] = vaultAPY
 		// aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
 		// legacyAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
 		// spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
-		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.GrossAPR)
-		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.NetAPY)
+		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.ForwardAPR.GrossAPR)
+		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.ForwardAPR.NetAPY)
 		// checkDiff("Mngt Fee      ", legacyAPY.Fees.Management, vaultAPY.Fees.Management)
 		// checkDiff("Perf Fee      ", legacyAPY.Fees.Performance, vaultAPY.Fees.Performance)
 		// checkDiff("PPS Week      ", legacyAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)

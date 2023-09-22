@@ -28,29 +28,17 @@
     },
     "criteria": {
       "type": "object",
-      "required": ["nameLike", "strategies", "exclude"],
+      "required": ["strategies"],
       "properties": {
-        "nameLike": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "strategies": {
           "type": "array",
           "items": {
             "type": "string",
             "format": "address"
           }
-        },
-        "exclude": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       }
     }
   },
-  "required": ["label", "criteria"]
+  "required": ["label", "criteria", "codeReviewScore", "testingScore", "auditScore", "protocolSafetyScore", "complexityScore", "teamKnowledgeScore"]
 }

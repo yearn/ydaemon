@@ -1,18 +1,19 @@
 {
   "$schema": "vault",
+  "comment": "Aero MAI-DOLA-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 66,
+  "order": 21,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Velodrome USDT-USDC.e",
+  "displayName": "Aerodrome MAI-DOLA",
   "classification": {
     "isAutomated": true,
     "isPool": true,
-    "poolProvider": "Velodrome",
+    "poolProvider": "Aerodrome",
     "stability": "Stable",
     "stableBaseAsset": "USD"
   }

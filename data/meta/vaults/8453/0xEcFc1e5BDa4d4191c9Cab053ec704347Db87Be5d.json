@@ -1,19 +1,19 @@
 {
   "$schema": "vault",
+  "comment": "Aero WETH-DAI-f",
   "hideAlways": false,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
-  "order": 66,
+  "order": 22,
   "migrationAvailable": false,
   "allowZapIn": true,
   "allowZapOut": true,
   "retired": false,
-  "displayName": "Velodrome USDT-USDC.e",
+  "displayName": "Aerodrome WETH-DAI",
   "classification": {
     "isAutomated": true,
     "isPool": true,
-    "poolProvider": "Velodrome",
-    "stability": "Stable",
-    "stableBaseAsset": "USD"
+    "poolProvider": "Aerodrome",
+    "stability": "Volatile"
   }
 }

@@ -1,22 +1,13 @@
 {
-	"$schema": "risks",
 	"label": "Inactive",
-	"codeReviewScore": 5,
-	"testingScore": 5,
 	"auditScore": 5,
-	"protocolSafetyScore": 5,
+	"codeReviewScore": 5,
 	"complexityScore": 5,
+	"protocolSafetyScore": 5,
 	"teamKnowledgeScore": 5,
-	"criteria": {
-		"nameLike": [],
-		"strategies": [
-			"0x19e70E3195fEC1A33745D9260Bf26c3f915Bb0CC"
-		],
-		"exclude": [
-			"crv",
-			"curve",
-			"curvestakerspell",
-			"stargate"
-		]
-	}
+	"testingScore": 5,
+	"chainID": 42161,
+	"strategies": [
+		"0x19e70e3195fec1a33745d9260bf26c3f915bb0cc"
+	]
 }

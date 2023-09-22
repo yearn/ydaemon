@@ -1,17 +1,17 @@
 {
-	"$schema": "risks",
 	"label": "Router Strategy",
-	"codeReviewScore": 1,
-	"testingScore": 3,
 	"auditScore": 5,
-	"protocolSafetyScore": 2,
+	"codeReviewScore": 1,
 	"complexityScore": 2,
+	"protocolSafetyScore": 2,
 	"teamKnowledgeScore": 5,
-	"criteria": {
-		"nameLike": [
-			"router"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 10,
+	"strategies": [
+		"0xffd4e5bb52fb81ca7adc1353894d1b7840e87050",
+		"0xba8d1effec605648024622c8bd7bb9ab0a489909",
+		"0x140a60fdee99289921e01ac0ead73a92c4c97de2",
+		"0x2ebd8c6325591711280f2a735bc189509620349b",
+		"0x8651ba8416f97a27147e58423240cc786f5a0d32"
+	]
 }

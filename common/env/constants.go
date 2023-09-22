@@ -36,7 +36,7 @@ var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`
 var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 
 // API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
-var API_V1_BASE_URL = `https://api.yearn.fi/v1/chains/`
+var API_V1_BASE_URL = `https://api.yexporter.io/v1/chains/`
 
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
 var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 8453, 42161}
@@ -155,26 +155,8 @@ var THEGRAPH_ENDPOINTS = map[uint64]string{
 	1:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
 	10:    `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
 	250:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
-	8453:  ``, //TODO: ADD THEGRAPH ENDPOINT FOR BASE
+	8453:  `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-base`,
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
-}
-
-// LLAMA_CHAIN_NAMES contains the chain identifiers for the DeFiLlama API
-var LLAMA_CHAIN_NAMES = map[uint64]string{
-	1:     `ethereum`,
-	10:    `optimism`,
-	250:   `fantom`,
-	8453:  `base`,
-	42161: `arbitrum`,
-}
-
-// GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
-var GECKO_CHAIN_NAMES = map[uint64]string{
-	1:     `ethereum`,
-	10:    `optimistic-ethereum`,
-	250:   `fantom`,
-	8453:  `base`,
-	42161: `arbitrum-one`,
 }
 
 // YEARN_REGISTRIES is the list of registries used by Yearn across all the supported chains, with the version and the activation block

@@ -69,7 +69,7 @@ func FindPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Int, boo
 
 func StorePrices(chainID uint64, prices map[common.Address]*bigNumber.Int) {
 	syncMap := initOrGetPriceMap(chainID)
-	for addr, strategy := range prices {
-		syncMap.Store(addr, strategy)
+	for addr, value := range prices {
+		syncMap.Store(addr, value)
 	}
 }

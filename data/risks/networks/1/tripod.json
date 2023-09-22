@@ -1,17 +1,16 @@
 {
-	"$schema": "risks",
 	"label": "tripod",
-	"codeReviewScore": 3,
-	"testingScore": 2,
 	"auditScore": 5,
-	"protocolSafetyScore": 2,
+	"codeReviewScore": 3,
 	"complexityScore": 4,
+	"protocolSafetyScore": 2,
 	"teamKnowledgeScore": 3,
-	"criteria": {
-		"nameLike": [
-			"tripod"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 2,
+	"chainID": 1,
+	"strategies": [
+		"0x99b8598bc993341b4576f299bcea2ecee95d94f0",
+		"0xe05bc41541eb81446e765ff793bcd8d11cc373c3",
+		"0xd4485545e8d00faa454ff95b4a016d1045edf907",
+		"0xde6f5b2452f94337a428c86b5d2f143383b4d573"
+	]
 }

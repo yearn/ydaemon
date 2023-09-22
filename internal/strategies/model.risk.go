@@ -54,14 +54,15 @@ func ListStrategiesRiskGroups(chainID uint64) []*models.TStrategyGroupFromRisk {
 }
 
 /**********************************************************************************************
-** setRiskGroupInMap will put a models.TStrategyGroupFromRisk in the _strategyRiskGroupMap variable.
+** setStrategyRiskGroup will put a models.TStrategyRiskAllocation in the _strategyRiskGroupMap
+** variable.
 **********************************************************************************************/
-func setRiskGroupInMap(chainID uint64, riskGroup *models.TStrategyGroupFromRisk) {
+func setStrategyRiskGroup(chainID uint64, strategyRiskAllocation *models.TStrategyGroupFromRisk) {
 	syncMap := _strategyRiskGroupMap[chainID]
 	if syncMap == nil {
 		syncMap = &sync.Map{}
 		_strategyRiskGroupMap[chainID] = syncMap
 	}
-	key := riskGroup.Label + strconv.FormatUint(chainID, 10)
-	syncMap.Store(key, riskGroup)
+	key := strategyRiskAllocation.Label + strconv.FormatUint(chainID, 10)
+	syncMap.Store(key, strategyRiskAllocation)
 }

@@ -1,49 +1,201 @@
 package apy
 
 import (
+	"strings"
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
-type TCalculateVeloAPYDataStruct struct {
-	vault          models.TVault
-	gaugeAddress   common.Address
-	strategy       *models.TStrategy
-	baseAssetPrice *bigNumber.Float
-	poolPrice      *bigNumber.Float
-	baseAPR        *bigNumber.Float
-	rewardAPR      *bigNumber.Float
-	poolDailyAPY   *bigNumber.Float
+var VELO_STAKING_POOLS_REGISTRY = common.HexToAddress(`0x41c914ee0c7e1a5edcd0295623e6dc557b5abf3c`)
+
+/**************************************************************************************************
+** Check if the vault is a velodrom vault. In order to check this, we need to check if the token
+** has a staking pool in velodrome
+**************************************************************************************************/
+func isVeloVault(chainID uint64, vault models.TVault) (common.Address, bool) {
+	if chainID != 10 {
+		return common.Address{}, false
+	}
+
+	veloVoter, err := contracts.NewYVelodromeVoterRegistry(VELO_STAKING_POOLS_REGISTRY, ethereum.GetRPC(chainID))
+	if err != nil {
+		logs.Error(err)
+		return common.Address{}, false
+	}
+	gaugeAddressForVoter, err := veloVoter.Gauges(nil, vault.Token.Address)
+	if err != nil {
+		logs.Error(err)
+		return common.Address{}, false
+	}
+
+	return gaugeAddressForVoter, gaugeAddressForVoter != common.Address{}
 }
 
-func calculateVeloForwardAPR(args TCalculateVeloAPYDataStruct, fraxPool TFraxPool) TStrategyAPR {
+func calculateVeloLikeStrategyAPR(
+	vault models.TVault,
+	strategy *models.TStrategy,
+	veloStakingPoolAddress common.Address,
+) TStrategyAPR {
 	/**********************************************************************************************
-	** We will use the convexForwardAPR as a base for the Frax APR. So our first step is to
-	** calculate the convexForwardAPR.
+	** First we will need a few things from the staking contract. We will use a multicall to
+	** retrieve the following:
+	** - The periodFinish
+	** - The rewardRate
+	** - The totalSupply
 	**********************************************************************************************/
-	baseConvexStrategyData := calculateConvexForwardAPR(TCalculateConvexAPYDataStruct(args))
+	calls := []ethereum.Call{}
+	calls = append(calls, multicalls.GetPeriodFinish(veloStakingPoolAddress.Hex(), veloStakingPoolAddress))
+	calls = append(calls, multicalls.GetRewardRate(veloStakingPoolAddress.Hex(), veloStakingPoolAddress))
+	calls = append(calls, multicalls.GetTotalSupply(veloStakingPoolAddress.Hex(), veloStakingPoolAddress))
+	calls = append(calls, multicalls.GetRewardToken(veloStakingPoolAddress.Hex(), veloStakingPoolAddress))
+	calls = append(calls, multicalls.GetDecimals(veloStakingPoolAddress.Hex(), veloStakingPoolAddress))
+	calls = append(calls, multicalls.GetStategyLocalKeepVelo(strategy.Address.Hex(), strategy.Address))
+	response := multicalls.Perform(vault.ChainID, calls, nil)
+	periodFinish := helpers.DecodeBigInt(response[veloStakingPoolAddress.Hex()+`periodFinish`])
+	rewardRateRaw := helpers.DecodeBigInt(response[veloStakingPoolAddress.Hex()+`rewardRate`])
+	totalSupplyRaw := helpers.DecodeBigInt(response[veloStakingPoolAddress.Hex()+`totalSupply`])
+	rewardTokenRaw := helpers.DecodeAddress(response[veloStakingPoolAddress.Hex()+`rewardToken`])
+	localKeepVeloRaw := helpers.DecodeBigInt(response[strategy.Address.Hex()+`localKeepVELO`])
 
 	/**********************************************************************************************
-	** We then need to add the minimum rewards APR to the convexForwardAPR to get the Frax APR.
-	** The minimum rewards APR is the minimum amount of rewards we get from the Frax pool.
+	** If periodFinish is before now, aka rewards are over, we can stop here
 	**********************************************************************************************/
-	minRewardsAPR := bigNumber.NewFloat(0).SetString(fraxPool.TotalRewardAPRs.Min)
-	minRewardsAPR = bigNumber.NewFloat(0).Div(minRewardsAPR, bigNumber.NewFloat(100))
+	now := time.Now().Unix()
+	if periodFinish.Int64() < now {
+		return TStrategyAPR{
+			Type: `v2:velo_unpopular`,
+		}
+	}
+
+	/**********************************************************************************************
+	** If the total supply is 0, we can stop here, aka nothing is staked, so no rewards
+	**********************************************************************************************/
+	if totalSupplyRaw.IsZero() {
+		return TStrategyAPR{
+			Type: `v2:velo_unpopular`,
+		}
+	}
+
+	/**********************************************************************************************
+	** We need to retrieve a bunch to be able to proceed. They are already in the vault object
+	** - the performanceFee for that vault
+	** - the managementFee for that vault
+	**********************************************************************************************/
+	debtRatio := helpers.ToNormalizedAmount(strategy.DebtRatio, 4)
+	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
+	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
+	localKeepVelo := helpers.ToNormalizedAmount(localKeepVeloRaw, 4)
+	oneMinusKeepVelo := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), localKeepVelo)
+	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
+	rewardRate := helpers.ToNormalizedAmount(rewardRateRaw, 18)
+	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, 18)
+	secondsPerYear := bigNumber.NewFloat(31_556_952)
+
+	/**********************************************************************************************
+	** If the reward rate is 0, we can stop here, aka no rewards
+	**********************************************************************************************/
+	if rewardRate.IsZero() || oneMinusKeepVelo.IsZero() {
+		return TStrategyAPR{
+			Type: `v2:velo_unpopular`,
+		}
+	}
+
+	/**********************************************************************************************
+	** If that's good, we will need the price of the vault token and the price of the rewards token
+	** to compute the APR.
+	**********************************************************************************************/
+	poolPrice := getTokenPrice(vault.ChainID, vault.Token.Address)
+	rewardsPrice := getTokenPrice(vault.ChainID, rewardTokenRaw)
+
+	/**********************************************************************************************
+	** And now we can compute the APR
+	**********************************************************************************************/
+	rewardRate = bigNumber.NewFloat(0).Mul(rewardRate, oneMinusKeepVelo) // rewardRate = rewardRate * (1 - keep)
+	grossAPRTop := bigNumber.NewFloat(0).Mul(rewardRate, rewardsPrice)   // rewardRate * token_price
+	grossAPRTop = bigNumber.NewFloat(0).Mul(grossAPRTop, secondsPerYear) // rewardRate * token_price * SECONDS_PER_YEAR
+	grossAPRBottom := bigNumber.NewFloat(0).Mul(poolPrice, totalSupply)  // pool_price * totalSupply
+	grossAPR := bigNumber.NewFloat(0).Div(grossAPRTop, grossAPRBottom)   // (rewardRate * token_price * SECONDS_PER_YEAR) / (pool_price * totalSupply)
+
+	/**********************************************************************************************
+	** Calculate the strategy Net APR:
+	** Take the gross APR and remove the performance fee and the management fee
+	**********************************************************************************************/
+	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
+	netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+
+	/**********************************************************************************************
+	** Calculate the strategy Net APY:
+	** Take the net APR and compound it
+	**********************************************************************************************/
+	netAPY := bigNumber.NewFloat(0).Div(netAPR, bigNumber.NewFloat(365)) // netAPR / 365
+	netAPY = bigNumber.NewFloat(0).Add(netAPY, bigNumber.NewFloat(1))    // 1 + (netAPR / 365)
+	netAPY = bigNumber.NewFloat(0).Pow(netAPY, 365)                      // (1 + (netAPR / 365)) ^ 365
+	netAPY = bigNumber.NewFloat(0).Sub(netAPY, bigNumber.NewFloat(1))    // ((1 + (netAPR / 365)) ^ 365) - 1
 
 	apyStruct := TStrategyAPR{
-		Type:      "frax",
-		DebtRatio: baseConvexStrategyData.DebtRatio,
-		GrossAPR:  bigNumber.NewFloat(0).Add(baseConvexStrategyData.GrossAPR, minRewardsAPR),
-		NetAPY:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPY, minRewardsAPR),
-		Composite: TAPIV1Composite{
-			Boost:      baseConvexStrategyData.Composite.Boost,
-			PoolAPY:    baseConvexStrategyData.Composite.PoolAPY,
-			BoostedAPR: baseConvexStrategyData.Composite.BoostedAPR,
-			BaseAPR:    baseConvexStrategyData.Composite.BaseAPR,
-			CvxAPR:     baseConvexStrategyData.Composite.CvxAPR,
-			RewardsAPR: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPR, minRewardsAPR),
-		},
+		Type:      "v2:velo",
+		DebtRatio: debtRatio,
+		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
 	}
 	return apyStruct
+}
+
+/**************************************************************************************************
+** If the vault is a velo vault or a fork of it, we can calculate the forward APR  using always the
+** same base formula
+**************************************************************************************************/
+func computeVeloLikeForwardAPR(
+	vault models.TVault,
+	allStrategiesForVault []*models.TStrategy,
+	veloStakingPoolAddress common.Address,
+) TForwardAPR {
+	TypeOf := ``
+	NetAPR := bigNumber.NewFloat(0)
+	Boost := bigNumber.NewFloat(0)
+	PoolAPY := bigNumber.NewFloat(0)
+	BoostedAPR := bigNumber.NewFloat(0)
+	BaseAPR := bigNumber.NewFloat(0)
+	CvxAPR := bigNumber.NewFloat(0)
+	RewardsAPR := bigNumber.NewFloat(0)
+	for _, strategy := range allStrategiesForVault {
+		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
+			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+			continue
+		}
+		if strategy.TotalDebt == nil || strategy.TotalDebt.IsZero() {
+			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because total debt is zero")
+			continue
+		}
+
+		strategyAPR := calculateVeloLikeStrategyAPR(vault, strategy, veloStakingPoolAddress)
+		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
+		NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
+		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
+		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
+		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
+		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
+		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
+		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
+	}
+
+	return TForwardAPR{
+		Type:   strings.TrimSpace(TypeOf),
+		NetAPR: NetAPR,
+		Composite: TCompositeData{
+			Boost:      Boost,
+			PoolAPY:    PoolAPY,
+			BoostedAPR: BoostedAPR,
+			BaseAPR:    BaseAPR,
+			CvxAPR:     CvxAPR,
+			RewardsAPR: RewardsAPR,
+		},
+	}
 }

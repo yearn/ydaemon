@@ -1,18 +1,22 @@
 {
-	"$schema": "risks",
 	"label": "Curve",
-	"codeReviewScore": 4,
-	"testingScore": 3,
 	"auditScore": 2,
-	"protocolSafetyScore": 1,
+	"codeReviewScore": 4,
 	"complexityScore": 2,
+	"protocolSafetyScore": 1,
 	"teamKnowledgeScore": 1,
-	"criteria": {
-		"nameLike": [
-			"crv",
-			"curve"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 10,
+	"strategies": [
+		"0x1f2cbc45308489097ea583b2989bc8e8355b4d4b",
+		"0x4e93d2d16de8281e2646f90db5525bb7ec2a6a75"
+	]
 }
+
+
+
+
+
+
+
+

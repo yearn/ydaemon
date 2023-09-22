@@ -1,19 +1,18 @@
 {
-	"$schema": "risks",
 	"label": "Stargate",
-	"codeReviewScore": 2,
-	"testingScore": 3,
 	"auditScore": 5,
-	"protocolSafetyScore": 4,
+	"codeReviewScore": 2,
 	"complexityScore": 4,
+	"protocolSafetyScore": 4,
 	"teamKnowledgeScore": 3,
-	"criteria": {
-		"nameLike": [
-			"stargate"
-		],
-		"strategies": [
-			"0x2b982BE433093A80e1801A0Dd894994a170a5025"
-		],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0x2b982be433093a80e1801a0dd894994a170a5025",
+		"0xead650e673f497cdbe365f7a855273bbb468e454",
+		"0xe7a8cbc43a0506d3a328393c1c30548835256d7d",
+		"0x7c85c0a8e2a45eeff98a10b6037f70daf714b7cf",
+		"0x784b645977e141ff3c5eba4788de256fd1da6bcd",
+		"0x336600990ae039b4acece630667871aedea46e5e"
+	]
 }

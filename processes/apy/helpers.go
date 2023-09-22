@@ -11,11 +11,12 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
-	"github.com/yearn/ydaemon/internal/prices"
+	priceAccessor "github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 func checkDiff(key string, legacy float64, neo *bigNumber.Float) {
@@ -64,7 +65,7 @@ func checkDiff(key string, legacy float64, neo *bigNumber.Float) {
 ** The price is returned in base 2 (humanized)
 **************************************************************************************************/
 func getTokenPrice(chainID uint64, tokenAddr common.Address) *bigNumber.Float {
-	price, ok := prices.FindPrice(chainID, tokenAddr)
+	price, ok := priceAccessor.FindPrice(chainID, tokenAddr)
 	if !ok {
 		logs.Warning("Could not find price for token "+tokenAddr.Hex()+" on chain", chainID)
 		price = bigNumber.NewInt(0)
@@ -81,7 +82,7 @@ func initYearnEcosystem(chainID uint64) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 	vaults.RetrieveAllVaults(chainID, vaultsMap)
-	prices.RetrieveAllPrices(chainID)
+	prices.Run(chainID)
 	strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
 	logs.Info(`loading staking pools...`)
 	events.HandleStakingPoolAdded(chainID, 0, nil)

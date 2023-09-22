@@ -212,6 +212,17 @@ func DecodeBigInt(something []interface{}) *bigNumber.Int {
 	}
 	return bigNumber.SetInt(something[0].(*big.Int))
 }
+func DecodeBigInts(something []interface{}) []*bigNumber.Int {
+	if len(something) == 0 {
+		return []*bigNumber.Int{}
+	}
+	bigNumbers := []*bigNumber.Int{}
+	somethingArr := something[0].([]*big.Int)
+	for _, v := range somethingArr {
+		bigNumbers = append(bigNumbers, bigNumber.SetInt(v))
+	}
+	return bigNumbers
+}
 func DecodeBool(something []interface{}) bool {
 	if len(something) == 0 {
 		return false

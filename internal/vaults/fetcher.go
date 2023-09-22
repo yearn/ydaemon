@@ -7,13 +7,12 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 var metaVaultFileErrorAlreadySent = make(map[uint64]map[common.Address]bool)
@@ -87,29 +86,18 @@ func fetchBasicInformations(
 		rawDepositLimit := response[vault.Hex()+`depositLimit`]
 		rawAvailableDepositLimit := response[vault.Hex()+`availableDepositLimit`]
 
-		shareTokenData, ok := tokens.FindToken(chainID, vault)
+		shareTokenData, ok := store.GetERC20(chainID, vault)
 		if !ok {
 			shareTokenData = models.TERC20Token{}
-			traces.
-				Capture(`warn`, `impossible to retrieve share token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`meta`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`vaultAddress`, vault.Hex()).
-				Send()
+			logs.Warning(`impossible to retrieve share token for vault ` + vault.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 		}
 
-		underlyingTokenData, ok := tokens.FindToken(chainID, helpers.DecodeAddress(rawUnderlying))
+		underlyingTokenData, ok := store.GetERC20(chainID, helpers.DecodeAddress(rawUnderlying))
 		if !ok {
 			tokenAddress := helpers.DecodeAddress(rawUnderlying)
 			underlyingTokenData = models.TERC20Token{}
 			if !metaVaultTokenErrorAlreadySent[chainID][tokenAddress] {
-				traces.
-					Capture(`warn`, `impossible to retrieve underlying token for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-					SetEntity(`meta`).
-					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-					SetTag(`vaultAddress`, vault.Hex()).
-					SetTag(`underlyingAddress`, helpers.DecodeAddress(rawUnderlying).Hex()).
-					Send()
+				logs.Warning(`impossible to retrieve underlying token for vault ` + vault.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 				metaVaultTokenErrorAlreadySent[chainID][tokenAddress] = true
 			}
 		}
@@ -117,12 +105,7 @@ func fetchBasicInformations(
 		vaultData, ok := meta.GetMetaVault(chainID, vault)
 		if !ok {
 			if !metaVaultFileErrorAlreadySent[chainID][vault] {
-				traces.
-					Capture(`warn`, `impossible to retrieve meta file for vault `+vault.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-					SetEntity(`meta`).
-					SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-					SetTag(`vaultAddress`, vault.Hex()).
-					Send()
+				logs.Warning(`impossible to retrieve meta file for vault ` + vault.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 				metaVaultFileErrorAlreadySent[chainID][vault] = true
 			}
 		}

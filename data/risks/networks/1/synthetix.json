@@ -1,19 +1,17 @@
 {
-	"$schema": "risks",
 	"label": "Synthetix",
-	"codeReviewScore": 3,
-	"testingScore": 3,
 	"auditScore": 3,
-	"protocolSafetyScore": 1,
+	"codeReviewScore": 3,
 	"complexityScore": 2,
+	"protocolSafetyScore": 1,
 	"teamKnowledgeScore": 4,
-	"criteria": {
-		"nameLike": [
-			"synthetix",
-			"snxstaking",
-			"snx"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0xfb5f4e0656ebff31743e674d324554fd185e1c4b",
+		"0xe2a130825ffb7773b8a13157c6a13f482097aa99",
+		"0x860ea5e0f8777cfa781873ffb7fb3e8ac6f5e63a",
+		"0xc9a62e09834cedcff8c136f33d0ae3406aea66bd",
+		"0xfe08e70acce86d6cb55635bf2ef9ec086f9b0937"
+	]
 }

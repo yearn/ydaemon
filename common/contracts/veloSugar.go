@@ -29,8 +29,8 @@ var (
 	_ = abi.ConvertType
 )
 
-// Struct2 is an auto generated low-level Go binding around an user-defined struct.
-type Struct2 struct {
+// VeloStruct2 is an auto generated low-level Go binding around an user-defined struct.
+type VeloStruct2 struct {
 	PairAddress      common.Address
 	Symbol           string
 	Decimals         uint8
@@ -55,8 +55,8 @@ type Struct2 struct {
 	AccountStaked    *big.Int
 }
 
-// Struct3 is an auto generated low-level Go binding around an user-defined struct.
-type Struct3 struct {
+// VeloStruct3 is an auto generated low-level Go binding around an user-defined struct.
+type VeloStruct3 struct {
 	TokenAddress   common.Address
 	Symbol         string
 	Decimals       uint8
@@ -64,20 +64,20 @@ type Struct3 struct {
 	Listed         bool
 }
 
-// Struct0 is an auto generated low-level Go binding around an user-defined struct.
-type Struct0 struct {
+// VeloStruct0 is an auto generated low-level Go binding around an user-defined struct.
+type VeloStruct0 struct {
 	Token  common.Address
 	Amount *big.Int
 }
 
-// Struct1 is an auto generated low-level Go binding around an user-defined struct.
-type Struct1 struct {
+// VeloStruct1 is an auto generated low-level Go binding around an user-defined struct.
+type VeloStruct1 struct {
 	Ts          *big.Int
 	PairAddress common.Address
 	Votes       *big.Int
 	Emissions   *big.Int
-	Bribes      []Struct0
-	Fees        []Struct0
+	Bribes      []VeloStruct0
+	Fees        []VeloStruct0
 }
 
 // VeloSugarMetaData contains all meta data concerning the VeloSugar contract.
@@ -234,15 +234,15 @@ func (_VeloSugar *VeloSugarTransactorRaw) Transact(opts *bind.TransactOpts, meth
 // All is a free data retrieval call binding the contract method 0xc0d0bf32.
 //
 // Solidity: function all(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256)[])
-func (_VeloSugar *VeloSugarCaller) All(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct2, error) {
+func (_VeloSugar *VeloSugarCaller) All(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct2, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "all", _limit, _offset, _account)
 
 	if err != nil {
-		return *new([]Struct2), err
+		return *new([]VeloStruct2), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new([]Struct2)).(*[]Struct2)
+	out0 := *abi.ConvertType(out[0], new([]VeloStruct2)).(*[]VeloStruct2)
 
 	return out0, err
 
@@ -251,29 +251,29 @@ func (_VeloSugar *VeloSugarCaller) All(opts *bind.CallOpts, _limit *big.Int, _of
 // All is a free data retrieval call binding the contract method 0xc0d0bf32.
 //
 // Solidity: function all(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256)[])
-func (_VeloSugar *VeloSugarSession) All(_limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct2, error) {
+func (_VeloSugar *VeloSugarSession) All(_limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct2, error) {
 	return _VeloSugar.Contract.All(&_VeloSugar.CallOpts, _limit, _offset, _account)
 }
 
 // All is a free data retrieval call binding the contract method 0xc0d0bf32.
 //
 // Solidity: function all(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256)[])
-func (_VeloSugar *VeloSugarCallerSession) All(_limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct2, error) {
+func (_VeloSugar *VeloSugarCallerSession) All(_limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct2, error) {
 	return _VeloSugar.Contract.All(&_VeloSugar.CallOpts, _limit, _offset, _account)
 }
 
 // ByAddress is a free data retrieval call binding the contract method 0x6e917f2e.
 //
 // Solidity: function byAddress(address _address, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarCaller) ByAddress(opts *bind.CallOpts, _address common.Address, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarCaller) ByAddress(opts *bind.CallOpts, _address common.Address, _account common.Address) (VeloStruct2, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "byAddress", _address, _account)
 
 	if err != nil {
-		return *new(Struct2), err
+		return *new(VeloStruct2), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(Struct2)).(*Struct2)
+	out0 := *abi.ConvertType(out[0], new(VeloStruct2)).(*VeloStruct2)
 
 	return out0, err
 
@@ -282,29 +282,29 @@ func (_VeloSugar *VeloSugarCaller) ByAddress(opts *bind.CallOpts, _address commo
 // ByAddress is a free data retrieval call binding the contract method 0x6e917f2e.
 //
 // Solidity: function byAddress(address _address, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarSession) ByAddress(_address common.Address, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarSession) ByAddress(_address common.Address, _account common.Address) (VeloStruct2, error) {
 	return _VeloSugar.Contract.ByAddress(&_VeloSugar.CallOpts, _address, _account)
 }
 
 // ByAddress is a free data retrieval call binding the contract method 0x6e917f2e.
 //
 // Solidity: function byAddress(address _address, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarCallerSession) ByAddress(_address common.Address, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarCallerSession) ByAddress(_address common.Address, _account common.Address) (VeloStruct2, error) {
 	return _VeloSugar.Contract.ByAddress(&_VeloSugar.CallOpts, _address, _account)
 }
 
 // ByIndex is a free data retrieval call binding the contract method 0xfbb70183.
 //
 // Solidity: function byIndex(uint256 _index, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarCaller) ByIndex(opts *bind.CallOpts, _index *big.Int, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarCaller) ByIndex(opts *bind.CallOpts, _index *big.Int, _account common.Address) (VeloStruct2, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "byIndex", _index, _account)
 
 	if err != nil {
-		return *new(Struct2), err
+		return *new(VeloStruct2), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(Struct2)).(*Struct2)
+	out0 := *abi.ConvertType(out[0], new(VeloStruct2)).(*VeloStruct2)
 
 	return out0, err
 
@@ -313,29 +313,29 @@ func (_VeloSugar *VeloSugarCaller) ByIndex(opts *bind.CallOpts, _index *big.Int,
 // ByIndex is a free data retrieval call binding the contract method 0xfbb70183.
 //
 // Solidity: function byIndex(uint256 _index, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarSession) ByIndex(_index *big.Int, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarSession) ByIndex(_index *big.Int, _account common.Address) (VeloStruct2, error) {
 	return _VeloSugar.Contract.ByIndex(&_VeloSugar.CallOpts, _index, _account)
 }
 
 // ByIndex is a free data retrieval call binding the contract method 0xfbb70183.
 //
 // Solidity: function byIndex(uint256 _index, address _account) view returns((address,string,uint8,bool,uint256,address,uint256,uint256,address,uint256,uint256,address,uint256,bool,address,address,address,uint256,address,uint256,uint256,uint256))
-func (_VeloSugar *VeloSugarCallerSession) ByIndex(_index *big.Int, _account common.Address) (Struct2, error) {
+func (_VeloSugar *VeloSugarCallerSession) ByIndex(_index *big.Int, _account common.Address) (VeloStruct2, error) {
 	return _VeloSugar.Contract.ByIndex(&_VeloSugar.CallOpts, _index, _account)
 }
 
 // EpochsByAddress is a free data retrieval call binding the contract method 0x8878d06c.
 //
 // Solidity: function epochsByAddress(uint256 _limit, uint256 _offset, address _address) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarCaller) EpochsByAddress(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _address common.Address) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarCaller) EpochsByAddress(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _address common.Address) ([]VeloStruct1, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "epochsByAddress", _limit, _offset, _address)
 
 	if err != nil {
-		return *new([]Struct1), err
+		return *new([]VeloStruct1), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new([]Struct1)).(*[]Struct1)
+	out0 := *abi.ConvertType(out[0], new([]VeloStruct1)).(*[]VeloStruct1)
 
 	return out0, err
 
@@ -344,29 +344,29 @@ func (_VeloSugar *VeloSugarCaller) EpochsByAddress(opts *bind.CallOpts, _limit *
 // EpochsByAddress is a free data retrieval call binding the contract method 0x8878d06c.
 //
 // Solidity: function epochsByAddress(uint256 _limit, uint256 _offset, address _address) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarSession) EpochsByAddress(_limit *big.Int, _offset *big.Int, _address common.Address) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarSession) EpochsByAddress(_limit *big.Int, _offset *big.Int, _address common.Address) ([]VeloStruct1, error) {
 	return _VeloSugar.Contract.EpochsByAddress(&_VeloSugar.CallOpts, _limit, _offset, _address)
 }
 
 // EpochsByAddress is a free data retrieval call binding the contract method 0x8878d06c.
 //
 // Solidity: function epochsByAddress(uint256 _limit, uint256 _offset, address _address) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarCallerSession) EpochsByAddress(_limit *big.Int, _offset *big.Int, _address common.Address) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarCallerSession) EpochsByAddress(_limit *big.Int, _offset *big.Int, _address common.Address) ([]VeloStruct1, error) {
 	return _VeloSugar.Contract.EpochsByAddress(&_VeloSugar.CallOpts, _limit, _offset, _address)
 }
 
 // EpochsLatest is a free data retrieval call binding the contract method 0xd94b9bc6.
 //
 // Solidity: function epochsLatest(uint256 _limit, uint256 _offset) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarCaller) EpochsLatest(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarCaller) EpochsLatest(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int) ([]VeloStruct1, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "epochsLatest", _limit, _offset)
 
 	if err != nil {
-		return *new([]Struct1), err
+		return *new([]VeloStruct1), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new([]Struct1)).(*[]Struct1)
+	out0 := *abi.ConvertType(out[0], new([]VeloStruct1)).(*[]VeloStruct1)
 
 	return out0, err
 
@@ -375,14 +375,14 @@ func (_VeloSugar *VeloSugarCaller) EpochsLatest(opts *bind.CallOpts, _limit *big
 // EpochsLatest is a free data retrieval call binding the contract method 0xd94b9bc6.
 //
 // Solidity: function epochsLatest(uint256 _limit, uint256 _offset) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarSession) EpochsLatest(_limit *big.Int, _offset *big.Int) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarSession) EpochsLatest(_limit *big.Int, _offset *big.Int) ([]VeloStruct1, error) {
 	return _VeloSugar.Contract.EpochsLatest(&_VeloSugar.CallOpts, _limit, _offset)
 }
 
 // EpochsLatest is a free data retrieval call binding the contract method 0xd94b9bc6.
 //
 // Solidity: function epochsLatest(uint256 _limit, uint256 _offset) view returns((uint256,address,uint256,uint256,(address,uint256)[],(address,uint256)[])[])
-func (_VeloSugar *VeloSugarCallerSession) EpochsLatest(_limit *big.Int, _offset *big.Int) ([]Struct1, error) {
+func (_VeloSugar *VeloSugarCallerSession) EpochsLatest(_limit *big.Int, _offset *big.Int) ([]VeloStruct1, error) {
 	return _VeloSugar.Contract.EpochsLatest(&_VeloSugar.CallOpts, _limit, _offset)
 }
 
@@ -482,15 +482,15 @@ func (_VeloSugar *VeloSugarCallerSession) Token() (common.Address, error) {
 // Tokens is a free data retrieval call binding the contract method 0x5cc33187.
 //
 // Solidity: function tokens(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,uint256,bool)[])
-func (_VeloSugar *VeloSugarCaller) Tokens(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct3, error) {
+func (_VeloSugar *VeloSugarCaller) Tokens(opts *bind.CallOpts, _limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct3, error) {
 	var out []interface{}
 	err := _VeloSugar.contract.Call(opts, &out, "tokens", _limit, _offset, _account)
 
 	if err != nil {
-		return *new([]Struct3), err
+		return *new([]VeloStruct3), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new([]Struct3)).(*[]Struct3)
+	out0 := *abi.ConvertType(out[0], new([]VeloStruct3)).(*[]VeloStruct3)
 
 	return out0, err
 
@@ -499,14 +499,14 @@ func (_VeloSugar *VeloSugarCaller) Tokens(opts *bind.CallOpts, _limit *big.Int, 
 // Tokens is a free data retrieval call binding the contract method 0x5cc33187.
 //
 // Solidity: function tokens(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,uint256,bool)[])
-func (_VeloSugar *VeloSugarSession) Tokens(_limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct3, error) {
+func (_VeloSugar *VeloSugarSession) Tokens(_limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct3, error) {
 	return _VeloSugar.Contract.Tokens(&_VeloSugar.CallOpts, _limit, _offset, _account)
 }
 
 // Tokens is a free data retrieval call binding the contract method 0x5cc33187.
 //
 // Solidity: function tokens(uint256 _limit, uint256 _offset, address _account) view returns((address,string,uint8,uint256,bool)[])
-func (_VeloSugar *VeloSugarCallerSession) Tokens(_limit *big.Int, _offset *big.Int, _account common.Address) ([]Struct3, error) {
+func (_VeloSugar *VeloSugarCallerSession) Tokens(_limit *big.Int, _offset *big.Int, _account common.Address) ([]VeloStruct3, error) {
 	return _VeloSugar.Contract.Tokens(&_VeloSugar.CallOpts, _limit, _offset, _account)
 }
 

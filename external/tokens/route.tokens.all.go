@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/tokens"
 )
 
 type TAllTokens struct {
@@ -31,7 +31,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	allTokens := make(map[uint64]map[string]TAllTokens)
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		tokenList := tokens.ListTokens(chainID)
+		tokenList, _ := store.ListERC20(chainID)
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {
 				allTokens[chainID] = make(map[string]TAllTokens)
@@ -42,7 +42,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 				Name:     token.Name,
 				Symbol:   token.Symbol,
 				Decimals: token.Decimals,
-				IsVault:  tokens.IsVault(token),
+				IsVault:  store.IsVaultLike(token),
 			}
 			for _, addr := range token.UnderlyingTokensAddresses {
 				tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())
@@ -80,15 +80,15 @@ func (y Controller) GetTokens(c *gin.Context) {
 	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 
 	allTokens := make(map[string]TAllTokens)
-	tokenList := tokens.ListTokens(chainID)
-	for _, token := range tokenList {
+	tokenMap, _ := store.ListERC20(chainID)
+	for _, token := range tokenMap {
 		metaToken, ok := meta.GetMetaToken(chainID, token.Address)
 		tokenDetails := TAllTokens{
 			Address:  token.Address.Hex(),
 			Name:     token.Name,
 			Symbol:   token.Symbol,
 			Decimals: token.Decimals,
-			IsVault:  tokens.IsVault(token),
+			IsVault:  store.IsVaultLike(token),
 		}
 		for _, addr := range token.UnderlyingTokensAddresses {
 			tokenDetails.UnderlyingTokens = append(tokenDetails.UnderlyingTokens, addr.Hex())

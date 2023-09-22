@@ -14,7 +14,7 @@ import (
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
-var COMPUTED_APR = make(map[uint64]map[common.Address]TAPIV1APY)
+var COMPUTED_APR = make(map[uint64]map[common.Address]TVaultAPR)
 
 func ComputeChainAPR(chainID uint64) {
 	allVaults := vaults.ListVaults(chainID)
@@ -24,7 +24,7 @@ func ComputeChainAPR(chainID uint64) {
 	fraxPools := retrieveFraxPools(chainID)
 
 	if COMPUTED_APR[chainID] == nil {
-		COMPUTED_APR[chainID] = make(map[common.Address]TAPIV1APY)
+		COMPUTED_APR[chainID] = make(map[common.Address]TVaultAPR)
 	}
 
 	for _, vault := range allVaults {
@@ -58,17 +58,13 @@ func ComputeChainAPR(chainID uint64) {
 		vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 		vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
 		oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
+		_ = oneMinusPerfFee
 
 		/**********************************************************************************************
 		** The grossAPR is used by checking the price per share evolution over a 30 days period.
 		** The netAPY is the grossAPR minus the performance fee and the management fee.
 		**********************************************************************************************/
-		grossAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
-		netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
-		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
-		if netAPR.Lte(ZERO) {
-			netAPR = bigNumber.NewFloat(0)
-		}
+		netAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 
 		/**********************************************************************************************
 		** Some vaults may have a staking rewards system. If so, we need to calculate the APR for
@@ -85,16 +81,17 @@ func ComputeChainAPR(chainID uint64) {
 		** - The fees (performance and management)
 		** - The points (PPS evolution over time, for one week, one month and since inception)
 		**********************************************************************************************/
-		vaultAPY := TAPIV1APY{
-			Type:              "v2:averaged",
-			GrossAPR:          grossAPR,
-			NetAPY:            netAPR,
-			StakingRewardsAPR: stakingRewardAPR,
-			Fees: TAPIV1Fees{
+		vaultAPR := TVaultAPR{
+			Type:   "v2:averaged",
+			NetAPR: netAPR,
+			Extra: TExtraRewards{
+				StakingRewardsAPR: stakingRewardAPR,
+			},
+			Fees: TFees{
 				Performance: vaultPerformanceFee,
 				Management:  vaultManagementFee,
 			},
-			Points: TAPIV1Points{
+			Points: THistoricalPoints{
 				WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
 				MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
 				Inception: helpers.GetAPR(ppsToday, ppsInception, bigNumber.NewFloat(365)),
@@ -107,7 +104,7 @@ func ComputeChainAPR(chainID uint64) {
 		** We need to compute it and store it in our ForwardAPR structure.
 		**********************************************************************************************/
 		if isCurveVault(allStrategiesForVault) {
-			vaultAPY.ForwardAPR = computeCurveLikeForwardAPR(
+			vaultAPR.ForwardAPR = computeCurveLikeForwardAPR(
 				vault,
 				allStrategiesForVault,
 				gauges,
@@ -117,20 +114,27 @@ func ComputeChainAPR(chainID uint64) {
 			)
 		}
 		if veloPool, ok := isVeloVault(chainID, vault); ok {
-			vaultAPY.ForwardAPR = computeVeloLikeForwardAPR(
+			vaultAPR.ForwardAPR = computeVeloLikeForwardAPR(
 				vault,
 				allStrategiesForVault,
 				veloPool,
 			)
 		}
 
-		COMPUTED_APR[chainID][vault.Address] = vaultAPY
+		if aeroPool, ok := isAeroVault(chainID, vault); ok {
+			vaultAPR.ForwardAPR = computeVeloLikeForwardAPR(
+				vault,
+				allStrategiesForVault,
+				aeroPool,
+			)
+		}
 
+		COMPUTED_APR[chainID][vault.Address] = vaultAPR
 		// aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
 		// legacyAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
 		// spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
-		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.GrossAPR)
-		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.NetAPY)
+		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.ForwardAPR.GrossAPR)
+		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.ForwardAPR.NetAPY)
 		// checkDiff("Mngt Fee      ", legacyAPY.Fees.Management, vaultAPY.Fees.Management)
 		// checkDiff("Perf Fee      ", legacyAPY.Fees.Performance, vaultAPY.Fees.Performance)
 		// checkDiff("PPS Week      ", legacyAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
@@ -165,7 +169,7 @@ func ComputeChainAPR(chainID uint64) {
 	// 		// logs.Warning("No computed APR for " + vault.Address.Hex() + " | " + vault.Name)
 	// 		continue
 	// 	}
-	// 	vaultAPY := COMPUTED_APR[chainID][vault.Address]
+	// 	vaultAPR := COMPUTED_APR[chainID][vault.Address]
 	// 	aggregatedVault, okLegacyAPI := extVaults.GetAggregatedVault(chainID, addresses.ToAddress(vault.Address).Hex())
 	// 	internalAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
 	// 	if COMPUTED_APR[chainID][vault.Address].Points.MonthAgo.IsZero() {
@@ -175,16 +179,16 @@ func ComputeChainAPR(chainID uint64) {
 	// 			// logs.Warning("Zero APR for " + vault.Address.Hex() + " | " + vault.Name)
 	// 		}
 	// 	}
-	// 	spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
-	// 	checkDiff("PPS Week          ", internalAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
-	// 	checkDiff("PPS Month         ", internalAPY.Points.MonthAgo, vaultAPY.Points.MonthAgo)
-	// 	checkDiff("PPS Inception     ", internalAPY.Points.Inception, vaultAPY.Points.Inception)
-	// 	if vaultAPY.ForwardAPR.Type == "" {
-	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPY.GrossAPR)
+	// 	spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPR.Type)
+	// 	checkDiff("PPS Week          ", internalAPY.Points.WeekAgo, vaultAPR.Points.WeekAgo)
+	// 	checkDiff("PPS Month         ", internalAPY.Points.MonthAgo, vaultAPR.Points.MonthAgo)
+	// 	checkDiff("PPS Inception     ", internalAPY.Points.Inception, vaultAPR.Points.Inception)
+	// 	if vaultAPR.ForwardAPR.Type == "" {
+	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPR.GrossAPR)
 	// 	} else {
-	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPY.ForwardAPR.GrossAPR)
+	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPR.ForwardAPR.GrossAPR)
 	// 	}
-	// 	checkDiff("Staking APR       ", internalAPY.StakingRewardsAPR, vaultAPY.StakingRewardsAPR)
+	// 	checkDiff("Staking APR       ", internalAPY.StakingRewardsAPR, vaultAPR.StakingRewardsAPR)
 	// 	spew.Printf("\n")
 	// }
 
@@ -217,20 +221,20 @@ func ComputeChainAPR(chainID uint64) {
 	// 	if _, ok := COMPUTED_APR[chainID][vault.Address]; !ok {
 	// 		continue
 	// 	}
-	// 	vaultAPY := COMPUTED_APR[chainID][vault.Address]
+	// 	vaultAPR := COMPUTED_APR[chainID][vault.Address]
 	// 	aggregatedVault, okLegacyAPI := extVaults.GetAggregatedVault(1, addresses.ToAddress(vault.Address).Hex())
 	// 	internalAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
 	// 	file.WriteString(vault.Address.Hex() + "," +
-	// 		vaultAPY.Points.WeekAgo.String() + "," +
+	// 		vaultAPR.Points.WeekAgo.String() + "," +
 	// 		strconv.FormatFloat(internalAPY.Points.WeekAgo, 'f', -1, 64) + "," +
-	// 		vaultAPY.Points.MonthAgo.String() + "," +
+	// 		vaultAPR.Points.MonthAgo.String() + "," +
 	// 		strconv.FormatFloat(internalAPY.Points.MonthAgo, 'f', -1, 64) + "," +
-	// 		vaultAPY.Points.Inception.String() + "," +
+	// 		vaultAPR.Points.Inception.String() + "," +
 	// 		strconv.FormatFloat(internalAPY.Points.Inception, 'f', -1, 64) + "," +
-	// 		vaultAPY.GrossAPR.String() + "," +
-	// 		vaultAPY.ForwardAPR.GrossAPR.String() + "," +
+	// 		vaultAPR.GrossAPR.String() + "," +
+	// 		vaultAPR.ForwardAPR.GrossAPR.String() + "," +
 	// 		strconv.FormatFloat(internalAPY.GrossAPR, 'f', -1, 64) + "," +
-	// 		vaultAPY.NetAPY.String() + "," +
+	// 		vaultAPR.NetAPY.String() + "," +
 	// 		strconv.FormatFloat(internalAPY.NetAPY, 'f', -1, 64) + "," +
 	// 		"\n")
 	// }

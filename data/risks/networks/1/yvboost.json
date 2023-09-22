@@ -1,19 +1,13 @@
 {
-	"$schema": "risks",
 	"label": "yvBoost",
-	"codeReviewScore": 4,
-	"testingScore": 3,
 	"auditScore": 2,
-	"protocolSafetyScore": 1,
+	"codeReviewScore": 4,
 	"complexityScore": 2,
+	"protocolSafetyScore": 1,
 	"teamKnowledgeScore": 1,
-	"criteria": {
-		"nameLike": [
-			"StrategyYearnVECRV"
-		],
-		"strategies": [
-			"0x2923a58c1831205C854DBEa001809B194FDb3Fa5"
-		],
-		"exclude": []
-	}
+	"testingScore": 3,
+	"chainID": 1,
+	"strategies": [
+		"0xd7240b32d24b814fe52946cd44d94a2e3532e63d"
+	]
 }

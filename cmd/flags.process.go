@@ -6,19 +6,17 @@ type TProcess string
 
 const (
 	ProcessServer          TProcess = "server"
-	ProcessPartnerFees     TProcess = "partnerfees"
 	ProcessTokenList       TProcess = "tokenlist"
 	ProcessVaultMigrations TProcess = "vaultmigrations"
 	ProcessInitDailyBlock  TProcess = "initdailyblock"
 	ProcessAPY             TProcess = "apy"
+	ProcessPrice           TProcess = "price"
 )
 
 func handleProcessInitialization(rawProcess *string) TProcess {
 	switch strings.ToLower(*rawProcess) {
 	case string(ProcessServer):
 		process = ProcessServer
-	case string(ProcessPartnerFees):
-		process = ProcessPartnerFees
 	case string(ProcessTokenList):
 		process = ProcessTokenList
 	case string(ProcessVaultMigrations):
@@ -27,6 +25,8 @@ func handleProcessInitialization(rawProcess *string) TProcess {
 		process = ProcessInitDailyBlock
 	case string(ProcessAPY):
 		process = ProcessAPY
+	case string(ProcessPrice):
+		process = ProcessPrice
 	default:
 		process = ProcessServer
 	}

@@ -1,18 +1,13 @@
 {
-	"$schema": "risks",
 	"label": "Mushroom",
-	"codeReviewScore": 1,
-	"testingScore": 4,
 	"auditScore": 5,
-	"protocolSafetyScore": 3,
+	"codeReviewScore": 1,
 	"complexityScore": 2,
+	"protocolSafetyScore": 3,
 	"teamKnowledgeScore": 5,
-	"criteria": {
-		"nameLike": [
-			"stratmm",
-			"mushroom"
-		],
-		"strategies": [],
-		"exclude": []
-	}
+	"testingScore": 4,
+	"chainID": 1,
+	"strategies": [
+		"0xa93cb639ae732559ab9315b3a1615e624c32cc59"
+	]
 }

@@ -74,9 +74,8 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	apyStruct := TStrategyAPR{
 		Type:      "convex",
 		DebtRatio: debtRatio,
-		GrossAPR:  bigNumber.NewFloat(0).Mul(grossAPR, debtRatio),
-		NetAPY:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
-		Composite: TAPIV1Composite{
+		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		Composite: TCompositeData{
 			Boost:      bigNumber.NewFloat(0).Mul(cvxBoost, debtRatio),
 			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolDailyAPY, debtRatio),
 			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPR, debtRatio),

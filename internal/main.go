@@ -10,13 +10,13 @@ import (
 	"github.com/yearn/ydaemon/internal/indexer"
 	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 var STRATLIST = []models.TStrategy{}
@@ -59,25 +59,21 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
 	tokens.RetrieveAllTokens(chainID, vaultsMap)
 
-	cron.Every(15).Minute().Do(func() {
-		prices.RetrieveAllPrices(chainID)
-		vaults.RetrieveAllVaults(chainID, vaultsMap)
-		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		indexer.PostProcessStrategies(chainID)
-		go func() {
-			initDailyBlock.Run(chainID)
-			apy.ComputeChainAPR(chainID)
-		}()
-	})
-
-	cron.Every(10).Minute().Do(func() {
-		strategies.InitRiskScore(chainID)
-	})
-
-	cron.Every(1).Day().At("12:10").Do(func() {
+	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
+
+	cron.Every(15).Minute().StartImmediately().Do(func() {
+		vaults.RetrieveAllVaults(chainID, vaultsMap)
+		prices.Run(chainID)
+		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
+		events.HandleStakingPoolAdded(chainID, 0, nil)
+		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
+		indexer.PostProcessStrategies(chainID)
+		apy.ComputeChainAPR(chainID)
+		go strategies.InitRiskScore(chainID)
+	})
+
 	cron.StartAsync()
 	go registries.IndexNewVaults(chainID)
 }

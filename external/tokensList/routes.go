@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
@@ -144,8 +145,8 @@ func GetTokenList(c *gin.Context) {
 	** Retrieve the MapTokenList for each chainID and return it as a map of chainID to token list.
 	**********************************************************************************************/
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		allTokens := tokens.ListTokens(chainID)
-		for _, token := range allTokens {
+		tokenMap, _ := store.ListERC20(chainID)
+		for _, token := range tokenMap {
 			list.Tokens = append(list.Tokens, models.TTokenListToken{
 				ChainID:  int(chainID),
 				Address:  token.Address.Hex(),

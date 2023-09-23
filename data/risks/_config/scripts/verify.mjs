@@ -4,8 +4,6 @@ import path from "path";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
-import Codeowners from "codeowners";
-
 import { getAddress, isAddress } from "@ethersproject/address";
 
 const SchemasDirectory = "./data/risks/_config/schema/";
@@ -46,7 +44,7 @@ function validate(directory, validators) {
       let data;
       try {
         data = JSON.parse(fs.readFileSync(file, "utf-8"));
-        const schema = data[SchemaField];
+        const schema = data[SchemaField] || 'risks';
         if (!schema) {
           console.error(
             `Error: "${file}" is not a valid JSON file ("${SchemaField}" is not a present).`
@@ -72,7 +70,7 @@ function validate(directory, validators) {
           }
           allValid = false;
         }
-      } catch {
+      } catch (e) {
         console.error(`Error: "${file}" is not a valid JSON file.`);
         allValid = false;
         continue;

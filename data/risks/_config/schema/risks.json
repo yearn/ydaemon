@@ -26,31 +26,16 @@
     "teamKnowledgeScore": {
       "type": "number"
     },
-    "criteria": {
-      "type": "object",
-      "required": ["nameLike", "strategies", "exclude"],
-      "properties": {
-        "nameLike": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "strategies": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "address"
-          }
-        },
-        "exclude": {
-          "type": "array",
-          "items": {
-            "type": "string"
+    "version": {
+      "type": "number"
+    },
+    "strategies": {
+      "type": "array",
+        "items": {
+          "type": "string",
+          "format": "address"
           }
         }
-      }
-    }
   },
-  "required": ["label", "criteria"]
+  "required": ["label", "criteria", "codeReviewScore", "testingScore", "auditScore", "protocolSafetyScore", "complexityScore", "teamKnowledgeScore"]
 }

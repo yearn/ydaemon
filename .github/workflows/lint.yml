@@ -44,3 +44,6 @@ jobs:
 
       - name: Verify data
         run: node ./data/meta/_config/scripts/verify.mjs
+
+      - name: Verify risk schema
+        run: node ./data/risks/_config/scripts/verify.mjs

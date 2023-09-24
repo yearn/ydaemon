@@ -85,7 +85,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	**************************************************************************************************/
 	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
 	chains := []uint64{}
-	if len(chainsStr) == 0 {
+	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
 	} else {
 		for _, chainStr := range chainsStr {

@@ -289,7 +289,8 @@ var PARTNER_TRACKERS_ADDRESSES = map[uint64]TContractData{
 		Block:   uint64(40499061),
 	},
 	8453: {
-		//TODO: ADD PARTNER_TRACKERS_ADDRESSES FOR BASE
+		Address: common.HexToAddress(`0xd0f08e42a40569ff83d28aa783a5b6537462667c`),
+		Block:   uint64(3350506),
 	},
 	42161: {
 		Address: common.HexToAddress(`0x0e5b46E4b2a05fd53F5a4cD974eb98a9a613bcb7`),

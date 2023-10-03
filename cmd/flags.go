@@ -14,9 +14,9 @@ func initFlags() {
 	/**********************************************************************************************
 	** Flag group: Chains
 	** Description: List of chain IDs to run yDaemon for
-	** Default: All supported chains (1, 10, 250, 8453, 42161)
+	** Default: All supported chains (1, 10, 137, 250, 8453, 42161)
 	**********************************************************************************************/
-	flag.Var(&chainFlag, "chains", `List of chain IDs to run yDaemon for: --chains 1 10 250 8453 42161`)
+	flag.Var(&chainFlag, "chains", `List of chain IDs to run yDaemon for: --chains 1 10 137 250 8453 42161`)
 
 	/**********************************************************************************************
 	** Flag group: Sentry

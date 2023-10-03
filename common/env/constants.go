@@ -7,7 +7,6 @@ import (
 	"runtime"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/internal/models"
 )
 
 type TContractData struct {
@@ -39,12 +38,13 @@ var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 var API_V1_BASE_URL = `https://api.yexporter.io/v1/chains/`
 
 // SUPPORTED_CHAIN_IDS is the list of supported chain IDs
-var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 250, 8453, 42161}
+var SUPPORTED_CHAIN_IDS = []uint64{1, 10, 137, 250, 8453, 42161}
 
 // MAX_BLOCK_RANGE is the maximum number of blocks we can query in a single request
 var MAX_BLOCK_RANGE = map[uint64]uint64{
 	1:     100_000_000,
 	10:    100_000_000,
+	137:   100_000_000,
 	250:   100_000_000,
 	8453:  100_000_000,
 	42161: 100_000_000,
@@ -54,88 +54,10 @@ var MAX_BLOCK_RANGE = map[uint64]uint64{
 var MAX_BATCH_SIZE = map[uint64]int{
 	1:     math.MaxInt64,
 	10:    math.MaxInt64,
+	137:   math.MaxInt64,
 	250:   math.MaxInt64,
 	8453:  math.MaxInt64,
 	42161: math.MaxInt64,
-}
-
-// BLACKLISTED_VAULTS contains the vault we should not work with
-var BLACKLISTED_VAULTS = map[uint64][]common.Address{
-	1: {
-		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing
-		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"), // Test deployment - Nothing
-		common.HexToAddress("0xBF7AA989192b020a8d3e1C65a558e123834325cA"), // HBTC yVault - Not Yearn - PPS 0
-		common.HexToAddress("0x4Fdd1B06eF986238446be0F3EA163C1b6Fe28cC1"), // GUSD yVault - Not Yearn - PPS 100
-		common.HexToAddress("0x8a0889d47f9Aa0Fac1cC718ba34E26b867437880"), // Old st-yCRV
-		common.HexToAddress("0x61f46C65E403429266e8b569F23f70dD75d9BeE7"), // Old lp-yCRV
-
-	},
-	10: {
-		common.HexToAddress("0x6884bd538Db61A626Da0a05E10807BFC5Aea2b32"), // Test deployment - Nothing
-		common.HexToAddress("0xDB8bBF2b0e28721F9BAc603e687E39bcF52201f8"), // Test deployment - Nothing
-		common.HexToAddress("0xed5D83bB6Af23bcb05C144DC816f45A389d622a0"), // Test deployment - Nothing
-	},
-	250: {
-		common.HexToAddress("0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d"), // Test deployment - AVAX
-	},
-	8453: {
-		//TODO: ADD IGNORED VAULTS FOR BASE
-	},
-	42161: {
-		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
-		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
-		common.HexToAddress("0xFa247d0D55a324ca19985577a2cDcFC383D87953"), // Test deployment - PHP
-	},
-}
-
-// CURVE_FACTORY_URI contains the URI of the Curve Factory to use
-var CURVE_FACTORY_URI = map[uint64][]string{
-	1: {
-		`https://api.curve.fi/api/getPools/ethereum/factory`,
-		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
-	},
-	10: {
-		`https://api.curve.fi/api/getPools/optimism/factory`,
-	},
-	250: {
-		`https://api.curve.fi/api/getPools/fantom/factory`,
-	},
-	8453: {
-		`https://api.curve.fi/api/getPools/base/factory`,
-	},
-	42161: {
-		`https://api.curve.fi/api/getPools/arbitrum/factory`,
-	},
-}
-
-// CURVE_POOLS_URI contains the URI of the Curve pools to use
-var CURVE_POOLS_URI = map[uint64][]string{
-	1: {
-		`https://api.curve.fi/api/getPools/ethereum/main`,
-		`https://api.curve.fi/api/getPools/ethereum/crypto`,
-		`https://api.curve.fi/api/getPools/ethereum/factory`,
-		`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
-	},
-	10: {
-		`https://api.curve.fi/api/getPools/optimism/main`,
-		`https://api.curve.fi/api/getPools/optimism/crypto`,
-		`https://api.curve.fi/api/getPools/optimism/factory`,
-	},
-	250: {
-		`https://api.curve.fi/api/getPools/fantom/main`,
-		`https://api.curve.fi/api/getPools/fantom/crypto`,
-		`https://api.curve.fi/api/getPools/fantom/factory`,
-	},
-	8453: {
-		`https://api.curve.fi/api/getPools/base/main`,
-		`https://api.curve.fi/api/getPools/base/crypto`,
-		`https://api.curve.fi/api/getPools/base/factory`,
-	},
-	42161: {
-		`https://api.curve.fi/api/getPools/arbitrum/main`,
-		`https://api.curve.fi/api/getPools/arbitrum/crypto`,
-		`https://api.curve.fi/api/getPools/arbitrum/factory`,
-	},
 }
 
 // RPC_ENDPOINTS contains the node endpoints to connect the blockchains
@@ -152,8 +74,9 @@ var RPC_ENDPOINTS = map[uint64]string{
 
 // THEGRAPH_ENDPOINTS contains the URI of the GraphQL provider to use
 var THEGRAPH_ENDPOINTS = map[uint64]string{
-	1:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
-	10:    `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
+	1:  `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
+	10: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
+	// 137:   //TODO: ADD,
 	250:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
 	8453:  `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-base`,
 	42161: `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
@@ -170,6 +93,9 @@ var YEARN_REGISTRIES = map[uint64][]TContractData{
 		{Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"), Version: 3, Block: 22450349},
 		{Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"), Version: 3, Block: 22451152},
 	},
+	137: {
+		{Address: common.HexToAddress("0xFBB087B456a656Ab815EB2D0f3f21Aa409Cec33F"), Version: 4, Block: 47462833},
+	},
 	250: {
 		{Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"), Version: 2, Block: 18455565},
 	},
@@ -181,37 +107,11 @@ var YEARN_REGISTRIES = map[uint64][]TContractData{
 	},
 }
 
-// EXTRA_VAULTS is a list of vaults that are not registered in the registries, but are still used by Yearn
-var EXTRA_VAULTS = map[uint64][]models.TVaultsFromRegistry{
-	1:  {},
-	10: {},
-	250: {
-		{
-			//yvMIM, alone in it's own registry, not work registering and listening to it
-			ChainID:         250,
-			Address:         common.HexToAddress(`0x0A0b23D9786963DE69CB2447dC125c49929419d8`),
-			RegistryAddress: common.HexToAddress(`0x265F7b1413F6B06654746cf2485082182389A5d0`),
-			TokenAddress:    common.HexToAddress(`0x82f0b8b456c1a451378467398982d4834b6829c1`),
-			APIVersion:      `0.4.3`,
-			BlockNumber:     18309707,
-			Activation:      18302860,
-			ManagementFee:   200,
-			BlockHash:       common.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
-			TxIndex:         0,
-			LogIndex:        0,
-			Type:            models.VaultTypeStandard,
-		},
-	},
-	8453: {
-		//TODO: ADD EXTRA_VAULTS FOR BASE
-	},
-	42161: {},
-}
-
 // LENS_ADDRESSES contains the address of the Lens oracle for a specific chainID
 var LENS_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
-	10:    common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
+	1:  common.HexToAddress(`0x83d95e0D5f402511dB06817Aff3f9eA88224B030`),
+	10: common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
+	// 137:   //TODO: ADD THIS
 	250:   common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
 	8453:  common.HexToAddress(`0xE0F3D78DB7bC111996864A32d22AB0F59Ca5Fa86`),
 	42161: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
@@ -228,26 +128,6 @@ var MULTICALL_ADDRESSES = map[uint64]common.Address{
 	42161: common.HexToAddress(`0x842eC2c7D803033Edf55E478F461FC547Bc54EB2`),
 }
 
-// CURVE_REGISTRY_ADDRESSES contains the address of the Curve Registry contract
-var CURVE_REGISTRY_ADDRESSES = map[uint64]common.Address{
-	1:    common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
-	10:   common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-	250:  common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-	8453: {
-		//TODO: ADD CURVE_REGISTRY_ADDRESSES FOR BASE
-	},
-	42161: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
-}
-
-// CURVE_FACTORIES_ADDRESSES contains the address of the Curve Registry contract
-var CURVE_FACTORIES_ADDRESSES = map[uint64]common.Address{
-	1:     common.HexToAddress(`0xF18056Bbd320E96A48e3Fbf8bC061322531aac99`),
-	10:    {},
-	250:   {},
-	8453:  {},
-	42161: {},
-}
-
 // STACKING_REWARD_ADDRESSES contains the address of the stacking reward contract
 var STACKING_REWARD_ADDRESSES = map[uint64]TContractData{
 	1: {},
@@ -255,10 +135,9 @@ var STACKING_REWARD_ADDRESSES = map[uint64]TContractData{
 		Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
 		Block:   uint64(85969070),
 	},
-	250:  {},
-	8453: {
-		//TODO: ADD STACKING_REWARD_ADDRESSES FOR BASE
-	},
+	137:   {},
+	250:   {},
+	8453:  {},
 	42161: {},
 }
 
@@ -269,6 +148,7 @@ var YBRIBE_V3_ADDRESSES = map[uint64]TContractData{
 		Block:   uint64(15878262),
 	},
 	10:    {},
+	137:   {},
 	250:   {},
 	8453:  {},
 	42161: {},
@@ -283,6 +163,9 @@ var PARTNER_TRACKERS_ADDRESSES = map[uint64]TContractData{
 	10: {
 		Address: common.HexToAddress(`0x7E08735690028cdF3D81e7165493F1C34065AbA2`),
 		Block:   uint64(29675215),
+	},
+	137: {
+		//TODO: ADD PARTNER_TRACKERS_ADDRESSES FOR POLYGON
 	},
 	250: {
 		Address: common.HexToAddress(`0x086865B2983320b36C42E48086DaDc786c9Ac73B`),
@@ -303,6 +186,7 @@ var KnownRefferers = map[uint64]map[common.Address]string{
 		common.HexToAddress(`0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52`): `Yearn.finance`,
 	},
 	10:    {},
+	137:   {},
 	250:   {},
 	8453:  {},
 	42161: {},

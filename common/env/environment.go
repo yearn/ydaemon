@@ -25,6 +25,13 @@ func SetEnv(path string) {
 		RPC_ENDPOINTS[10] = RPCURIFor10
 	}
 
+	RPCURIFor137, exists := os.LookupEnv("RPC_URI_FOR_137")
+	if !exists {
+		logs.Debug("RPC_URI_FOR_137 not set, using default value: [https://polygon.llamarpc.com]")
+	} else {
+		RPC_ENDPOINTS[137] = RPCURIFor137
+	}
+
 	RPCURIFor250, exists := os.LookupEnv("RPC_URI_FOR_250")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_250 not set, using default value: [https://rpc.ftm.tools]")

@@ -403,24 +403,7 @@ func RetrieveAllTokens(
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraTokens := map[uint64][]string{
-		1: {
-			`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
-			`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
-			`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
-			`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
-			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
-			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
-		},
-		10: {
-			`0x4200000000000000000000000000000000000042`, // Opt
-		},
-		250:   {},
-		8453:  {},
-		42161: {},
-	}
-	for _, tokenAddress := range extraTokens[chainID] {
-		tokenAddress := common.HexToAddress(tokenAddress)
+	for _, tokenAddress := range env.EXTRA_TOKENS[chainID] {
 		if _, ok := tokenMap[tokenAddress]; !ok {
 			updatedTokenMap[tokenAddress] = models.TERC20Token{
 				Address: tokenAddress,

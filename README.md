@@ -10,6 +10,7 @@ First, ensure [Docker](https://docs.docker.com/get-started/overview/) is install
 ```
 RPC_URI_FOR_1=
 RPC_URI_FOR_10=
+RPC_URI_FOR_137=
 RPC_URI_FOR_250=
 RPC_URI_FOR_8453=
 RPC_URI_FOR_42161=
@@ -28,6 +29,7 @@ First, ensure [Go](https://go.dev/) is installed on your system. then, clone the
 ```
 RPC_URI_FOR_1=
 RPC_URI_FOR_10=
+RPC_URI_FOR_137=
 RPC_URI_FOR_250=
 RPC_URI_FOR_8453=
 RPC_URI_FOR_42161=
@@ -54,7 +56,7 @@ curl http://localhost:8080/1/vaults/all
 
 ## Endpoints
 `GET` `[BASE_URL]/[chainID]/vaults/all`  
-> This endpoint returns all the vaults of the specified chainID. Supported chains are `1`, `10`, `250`, `8453` and `42161`.  
+> This endpoint returns all the vaults of the specified chainID. Supported chains are `1`, `10`, `137`, `250`, `8453` and `42161`.  
 >  
 > **Query**  
 `?skip=N` will skip N vault from the graphQL query. Default is `0`  
@@ -66,7 +68,7 @@ curl http://localhost:8080/1/vaults/all
 -------
 
 `GET` `[BASE_URL]/[chainID]/vaults/[address]`  
-> This endpoint returns the vault matching the specified address, for the specified chainID. Supported chains are `1`, `10`, `250`, `8453`, and `42161`.  
+> This endpoint returns the vault matching the specified address, for the specified chainID. Supported chains are `1`, `10`, `137`, `250`, `8453`, and `42161`.  
 >  
 > **Query**  
 > `?strategiesCondition=debtLimit|inQueue|absolute` will select the "active" strategies based on the specified strategy. Default is `debtLimit`  

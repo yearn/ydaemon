@@ -25,6 +25,7 @@ Run `nano /etc/systemd/system/server.conf` and put the environment variables in 
 ```
 RPC_URI_FOR_1=
 RPC_URI_FOR_10=
+RPC_URI_FOR_137=
 RPC_URI_FOR_250=
 RPC_URI_FOR_8453=
 RPC_URI_FOR_42161=

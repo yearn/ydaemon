@@ -24,7 +24,7 @@ func (y Controller) GetRetiredVaults(c *gin.Context) {
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := currentVault.Address
-		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], vaultAddress) {
+		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
 			continue
 		}
 

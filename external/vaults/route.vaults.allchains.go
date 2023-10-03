@@ -119,7 +119,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	for _, chainID := range chains {
 		vaultsForChain := vaults.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
-			if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
+			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 				continue
 			}
 			newVault := NewVault().AssignTVault(currentVault)

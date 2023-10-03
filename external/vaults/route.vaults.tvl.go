@@ -14,7 +14,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
 	vaultsList := vaults.ListVaults(chainID)
 	for _, currentVault := range vaultsList {
-		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
+		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 			continue
 		}
 		vaultTVL := vaults.BuildTVL(currentVault)

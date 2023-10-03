@@ -192,7 +192,7 @@ func assertDailyBlockNumber(chainID uint64) {
 	earliestBlock := uint64(lastItem.Block)
 	if (earliestBlock == 0) || (earliestBlock == math.MaxUint64) {
 		earliestBlock = uint64(math.MaxUint64)
-		for _, registry := range env.YEARN_REGISTRIES[chainID] {
+		for _, registry := range env.CHAINS[chainID].Registries {
 			if registry.Block < earliestBlock {
 				earliestBlock = registry.Block
 			}

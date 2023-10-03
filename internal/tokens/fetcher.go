@@ -50,7 +50,7 @@ func fetchBasicInformations(
 		calls = append(calls, multicalls.GetSymbol(token.Hex(), token))
 		calls = append(calls, multicalls.GetDecimals(token.Hex(), token))
 		calls = append(calls, multicalls.GetToken(token.Hex(), token))
-		calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex(), env.CURVE_REGISTRY_ADDRESSES[chainID], token))
+		calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, token))
 		calls = append(calls, multicalls.GetCompoundUnderlying(token.Hex(), token))
 		calls = append(calls, multicalls.GetAaveV1Underlying(token.Hex(), token))
 		calls = append(calls, multicalls.GetAaveV2Underlying(token.Hex(), token))
@@ -142,7 +142,10 @@ func fetchBasicInformations(
 		isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != common.Address{}
 		if isCurveLpToken {
 			newToken.Type = models.TokenTypeCurveLP
-			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(env.CURVE_REGISTRY_ADDRESSES[chainID], caller.Client)
+			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(
+				env.CHAINS[chainID].Curve.RegistryAddress,
+				caller.Client,
+			)
 			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
 			for _, coin := range poolCoins {
 				if (coin != common.Address{}) {
@@ -290,7 +293,7 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
-	curvePoolFactory, _ := contracts.NewCurvePoolFactory(env.CURVE_FACTORIES_ADDRESSES[chainID], client)
+	curvePoolFactory, _ := contracts.NewCurvePoolFactory(env.CHAINS[chainID].Curve.FactoryAddress, client)
 	poolCount, err := curvePoolFactory.PoolCount(&bind.CallOpts{})
 	if err != nil {
 		return coinsForPool
@@ -304,7 +307,7 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 	for i := 0; i < int(poolCount.Int64()); i++ {
 		calls = append(calls, multicalls.GetCurveFactoryPool(
 			strconv.Itoa(i),
-			env.CURVE_FACTORIES_ADDRESSES[chainID],
+			env.CHAINS[chainID].Curve.FactoryAddress,
 			big.NewInt(int64(i)),
 		))
 	}
@@ -320,7 +323,7 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 		poolAddress := helpers.DecodeAddress(response[strconv.Itoa(i)+`pool_list`])
 		calls = append(calls, multicalls.GetCurveFactoryCoin(
 			poolAddress.Hex(),
-			env.CURVE_FACTORIES_ADDRESSES[chainID],
+			env.CHAINS[chainID].Curve.FactoryAddress,
 			poolAddress,
 		))
 	}
@@ -403,7 +406,7 @@ func RetrieveAllTokens(
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	for _, tokenAddress := range env.EXTRA_TOKENS[chainID] {
+	for _, tokenAddress := range env.CHAINS[chainID].ExtraTokens {
 		if _, ok := tokenMap[tokenAddress]; !ok {
 			updatedTokenMap[tokenAddress] = models.TERC20Token{
 				Address: tokenAddress,

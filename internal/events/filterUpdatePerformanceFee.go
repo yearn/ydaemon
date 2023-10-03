@@ -56,8 +56,8 @@ func filterUpdatePerformanceFee(vault models.TVault, start uint64, end *uint64, 
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 	** avoid hitting some external node providers' rate limits.
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[vault.ChainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[vault.ChainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[vault.ChainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[vault.ChainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

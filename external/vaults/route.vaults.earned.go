@@ -53,8 +53,8 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	}
 	vaultsAddressesStr := strings.Split(strings.ToLower(c.Param(`vaults`)), `,`)
 
-	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
-	if !ok {
+	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	if graphQLEndpoint == "" {
 		logs.Error(`No graph endpoint for chainID`, chainID)
 		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
 		return
@@ -260,8 +260,8 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 		return
 	}
 
-	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
-	if !ok {
+	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	if graphQLEndpoint == "" {
 		logs.Error(`No graph endpoint for chainID`, chainID)
 		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
 		return

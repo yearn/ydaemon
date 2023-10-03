@@ -209,12 +209,12 @@ func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** Somehow, some vaults are not in the registries, but we still need the price data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	allTokens = append(allTokens, env.EXTRA_TOKENS[chainID]...)
+	allTokens = append(allTokens, env.CHAINS[chainID].ExtraTokens...)
 
 	/**********************************************************************************************
 	** Some tokens are just useless, errors or not wanted. We will remove them from the list.
 	**********************************************************************************************/
-	for _, tokenAddress := range env.IGNORED_TOKENS[chainID] {
+	for _, tokenAddress := range env.CHAINS[chainID].IgnoredTokens {
 		allTokens = helpers.RemoveFromArray(allTokens, tokenAddress)
 	}
 	allTokens = helpers.UniqueArrayAddress(allTokens)

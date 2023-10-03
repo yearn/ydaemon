@@ -82,7 +82,7 @@ func GetYearnTokenList(c *gin.Context) {
 	** available, we add the price to the chainToken struct. Then, we add the chainToken struct to
 	** the tokenBalanceMap map using the chainCoin address as the key.
 	**********************************************************************************************/
-	chainCoin := env.CHAIN_COIN[chainID]
+	chainCoin := env.CHAINS[chainID].Coin
 	chainCoinPrice, ok := prices.FindPrice(chainID, chainCoin.Address)
 	chainToken := models.TYearnTokenListToken{
 		TTokenListToken: models.TTokenListToken{

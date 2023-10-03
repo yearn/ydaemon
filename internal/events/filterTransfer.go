@@ -72,8 +72,8 @@ func filterTransfers(
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 	** avoid hitting some external node providers' rate limits.
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

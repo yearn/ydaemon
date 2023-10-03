@@ -34,8 +34,8 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `timestamp`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `desc`)
 
-	graphQLEndpoint, ok := env.THEGRAPH_ENDPOINTS[chainID]
-	if !ok {
+	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	if graphQLEndpoint == `` {
 		logs.Error(`No graph endpoint for chainID`, chainID)
 		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
 		return

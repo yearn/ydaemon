@@ -186,7 +186,7 @@ func HandleNewVaults(
 	}
 
 	wg := &sync.WaitGroup{}
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.CHAINS[chainID].Registries {
 		_start := start
 
 		/******************************************************************************************
@@ -210,9 +210,9 @@ func HandleNewVaults(
 		** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 		** avoid hitting some external node providers' rate limits.
 		******************************************************************************************/
-		for chunkStart := _start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
+		for chunkStart := _start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
 			wg.Add(2)
-			chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+			chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 			if chunkEnd > *end {
 				chunkEnd = *end
 			}
@@ -311,8 +311,8 @@ func HandleNewStandardVaults(
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to avoid
 	** hitting some external node providers' rate limits.
 	**********************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

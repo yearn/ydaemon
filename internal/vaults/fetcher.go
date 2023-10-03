@@ -251,7 +251,7 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	for _, vault := range env.EXTRA_VAULTS[chainID] {
+	for _, vault := range env.CHAINS[chainID].ExtraVaults {
 		vaultAddress := vault.Address
 		if _, ok := vaultMap[vaultAddress]; !ok {
 			updatedVaultMap[vaultAddress] = models.TVault{Address: vaultAddress}

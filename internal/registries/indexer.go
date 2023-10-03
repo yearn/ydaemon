@@ -530,7 +530,7 @@ func indexNewVaultsWrapper(
 }
 
 func IndexNewVaults(chainID uint64) {
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.CHAINS[chainID].Registries {
 		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Block, 1*time.Minute)
 	}
 

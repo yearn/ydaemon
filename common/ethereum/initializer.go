@@ -27,6 +27,9 @@ func init() {
 
 	// Create the multicall client for all the chains supported by yDaemon
 	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
-		MulticallClientForChainID[chainID] = NewMulticall(GetRPCURI(chainID), env.MULTICALL_ADDRESSES[chainID])
+		MulticallClientForChainID[chainID] = NewMulticall(
+			GetRPCURI(chainID),
+			env.CHAINS[chainID].MulticallContract.Address,
+		)
 	}
 }

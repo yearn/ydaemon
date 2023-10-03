@@ -47,7 +47,11 @@ func calculateStakingMetrics(chainID uint64) {
 		}
 		calls = append(calls, multicalls.GetTotalSupply(pool.StackingPoolAddress.Hex(), pool.StackingPoolAddress))
 		calls = append(calls, multicalls.GetDecimals(pool.StackingPoolAddress.Hex(), pool.VaultAddress))
-		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(pool.StackingPoolAddress.Hex(), env.LENS_ADDRESSES[chainID], pool.VaultAddress))
+		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(
+			pool.StackingPoolAddress.Hex(),
+			env.CHAINS[chainID].LensContract.Address,
+			pool.VaultAddress,
+		))
 	}
 	response := multicalls.Perform(chainID, calls, nil)
 

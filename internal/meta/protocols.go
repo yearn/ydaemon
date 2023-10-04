@@ -29,7 +29,7 @@ func initOrGetMetaProtocolMap(chainID uint64) *sync.Map {
 }
 
 func init() {
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		if _, ok := _metaProtocolMap[chainID]; !ok {
 			_metaProtocolMap[chainID] = &sync.Map{}
 		}

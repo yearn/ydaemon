@@ -113,7 +113,7 @@ func saveTokensListToJSON(YTokenMap map[common.Address]models.TYearnTokenListTok
 }
 
 func init() {
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		yTokenMap, lastUpdate := loadTokensListFromJSON(chainID)
 		_tokenListMap[chainID] = yTokenMap
 		_tokenListUpdateMap[chainID] = lastUpdate

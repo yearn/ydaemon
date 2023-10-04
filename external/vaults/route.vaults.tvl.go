@@ -28,7 +28,7 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	total := 0.0
 	var wg sync.WaitGroup
 	var tvl = make(map[uint64]float64)
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		wg.Add(1)
 		go func(chainID uint64) {
 			defer wg.Done()

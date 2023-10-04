@@ -143,7 +143,7 @@ func GetTokenList(c *gin.Context) {
 	/**********************************************************************************************
 	** Retrieve the MapTokenList for each chainID and return it as a map of chainID to token list.
 	**********************************************************************************************/
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		tokenMap, _ := store.ListERC20(chainID)
 		for _, token := range tokenMap {
 			list.Tokens = append(list.Tokens, models.TTokenListToken{

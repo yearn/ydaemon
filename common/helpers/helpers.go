@@ -137,7 +137,7 @@ func AssertChainID(chainIDStr string) (uint64, bool) {
 	if chainID == 1337 {
 		return 1, true
 	}
-	if !Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+	if _, ok := env.CHAINS[chainID]; !ok {
 		return 0, false
 	}
 	return chainID, true

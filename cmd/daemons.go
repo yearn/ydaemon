@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/vaults"
@@ -47,7 +46,7 @@ func runDaemonWithBlocks(chainID uint64, startBlock uint64, endBlock *uint64, wg
 
 // SummonDaemons is a function that summons the daemons for a given chainID.
 func SummonDaemons(chainID uint64) {
-	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+	if _, ok := env.CHAINS[chainID]; !ok {
 		return
 	}
 
@@ -70,7 +69,7 @@ func SummonDaemons(chainID uint64) {
 
 // LoadDaemons is a function that loads the previous store state for a given chainID
 func LoadDaemons(chainID uint64) {
-	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+	if _, ok := env.CHAINS[chainID]; !ok {
 		return
 	}
 

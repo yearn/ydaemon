@@ -474,7 +474,7 @@ func indexNewVaultsWrapper(
 			lastSyncedBlock,
 		)
 		if err != nil {
-			logs.Error(`error`, `error while indexing NewVault from registry `+registryAddress.Hex()+` on chain `+strconv.FormatUint(chainID, 10))
+			logs.Error(`error while indexing NewVault from registry ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 		if !shouldRetry {
 			break

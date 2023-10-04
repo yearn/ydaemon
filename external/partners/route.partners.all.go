@@ -11,7 +11,7 @@ import (
 // GetAllPartners will return all the partners informations, no matter the chainID.
 func (y Controller) GetAllPartners(c *gin.Context) {
 	allPartners := make(map[uint64]map[string]*TPartners)
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		partners := partnersByAddress[chainID]
 		for _, partner := range partners {
 			if _, ok := allPartners[chainID]; !ok {

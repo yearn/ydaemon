@@ -11,7 +11,7 @@ import (
 func (y Controller) CountAllPartners(c *gin.Context) {
 	total := uint64(0)
 	allPartnersCount := make(map[uint64]uint64)
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		allPartnersCount[chainID] = uint64(len(partnersByAddress[chainID]))
 		total += allPartnersCount[chainID]
 	}

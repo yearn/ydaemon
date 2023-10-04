@@ -37,7 +37,7 @@ func handleChainsInitialization() []uint64 {
 		if err != nil {
 			continue
 		}
-		if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+		if _, ok := env.CHAINS[chainID]; !ok {
 			continue
 		}
 		if helpers.Contains(chains, chainID) {

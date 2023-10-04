@@ -236,6 +236,13 @@ func DecodeAddress(something []interface{}) common.Address {
 	return something[0].(common.Address)
 }
 
+func ToRawAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Int {
+	return bigNumber.NewInt(0).Mul(
+		amount,
+		bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), bigNumber.NewInt(int64(decimals)), nil),
+	)
+}
+
 func ToNormalizedAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Float {
 	return bigNumber.NewFloat(0).Quo(
 		bigNumber.NewFloat(0).SetInt(amount),

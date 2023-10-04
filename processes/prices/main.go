@@ -119,6 +119,38 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** With the ERC-4626 standard, the `price per share` is no longer relevant. We can use the new
+	** `convertToAssets` function to get the value of the underlying asset for a given amount of
+	** shares: 1 share will give me 1.23 asset for example.
+	** Based on that, if we have the price of the underlying asset, we can calculate the price of
+	** the share.
+	**********************************************************************************************/
+	sharesValue := fetchShareValueFromERC4626(chainID, blockNumber, queryList)
+	for _, shareValue := range sharesValue {
+		if shareValue.Value == nil || shareValue.Value.IsZero() {
+			continue
+		}
+		if newPriceMap[shareValue.AssetAddress] == nil || newPriceMap[shareValue.AssetAddress].IsZero() {
+			continue
+		}
+
+		token, ok := store.GetERC20(chainID, shareValue.AssetAddress)
+		if !ok {
+			continue
+		}
+
+		tokenDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
+		sharePrice := bigNumber.NewFloat(0).Quo(
+			bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(0).SetInt(shareValue.Value),
+				bigNumber.NewFloat(0).SetInt(newPriceMap[shareValue.AssetAddress]),
+			),
+			bigNumber.NewFloat(0).SetInt(tokenDecimals),
+		)
+		newPriceMap[shareValue.VaultAddress] = sharePrice.Int()
+	}
+
+	/**********************************************************************************************
 	** If the price is missing, check if it's a vault and try to compute the price from the
 	** underlying tokens.
 	**********************************************************************************************/

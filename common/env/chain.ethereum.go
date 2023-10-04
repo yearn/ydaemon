@@ -83,6 +83,7 @@ var ETHEREUM = TChain{
 		common.HexToAddress(`0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`), // Wrapped liquid staked Ether 2.0
 		common.HexToAddress(`0xA35b1B31Ce002FBF2058D22F30f95D405200A15b`), // Stader ETHx
 		common.HexToAddress(`0xBe9895146f7AF43049ca1c1AE358B0541Ea49704`), // Coinbase Wrapped Staked ETH
+		common.HexToAddress(`0x583019fF0f430721aDa9cfb4fac8F06cA104d0B4`), // st-yETH
 	},
 	IgnoredTokens: []common.Address{
 		common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`), // nothing

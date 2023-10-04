@@ -31,7 +31,6 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 	client := ethereum.GetRPC(chainID)
 	stackingReward := env.CHAINS[chainID].StackingRewardContract
 	if (stackingReward.Address == common.Address{}) {
-		logs.Error(`No stackingReward contract address for chain ` + strconv.FormatUint(chainID, 10))
 		return
 	}
 	contract, err := contracts.NewYOptimismStakingRewardRegistry(stackingReward.Address, client)

@@ -384,6 +384,17 @@ func RetrieveAllTokens(
 		}
 	}
 
+	/**********************************************************************************************
+	** We may have a list of extra tokens to add to the list. This is used for some tokens that
+	** are not in the registry but that we still want to track.
+	**********************************************************************************************/
+	for _, extraToken := range env.CHAINS[chainID].ExtraTokens {
+		updatedTokenMap[extraToken] = models.TERC20Token{
+			Address: extraToken,
+			ChainID: chainID,
+		}
+	}
+
 	// RESET ALL DB
 	for _, currentVault := range vaults {
 		if _, ok := tokenMap[currentVault.Address]; !ok {

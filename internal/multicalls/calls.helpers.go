@@ -4,6 +4,7 @@ import (
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
@@ -25,6 +26,7 @@ var LensABI, _ = contracts.OracleMetaData.GetAbi()
 var CurveGaugeABI, _ = contracts.CurveGaugeMetaData.GetAbi()
 var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
 var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
+var ERC4626ABI, _ = contracts.ERC4626MetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -242,6 +244,48 @@ func GetCurveBalanceOf(name string, contractAddress common.Address, voter common
 		Target:   contractAddress,
 		Abi:      CurveGaugeABI,
 		Method:   `balanceOf`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetConvertToShares(name string, contractAddress common.Address, oneUnit *bigNumber.Int) ethereum.Call {
+	parsedData, err := ERC4626ABI.Pack("convertToShares", &oneUnit.Int)
+	if err != nil {
+		logs.Error("Error packing ERC4626ABI convertToShares", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      ERC4626ABI,
+		Method:   `convertToShares`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetConvertToAssets(name string, contractAddress common.Address, oneUnit *bigNumber.Int) ethereum.Call {
+	parsedData, err := ERC4626ABI.Pack("convertToAssets", &oneUnit.Int)
+	if err != nil {
+		logs.Error("Error packing ERC4626ABI convertToAssets", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      ERC4626ABI,
+		Method:   `convertToAssets`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetAsset(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := ERC4626ABI.Pack("asset")
+	if err != nil {
+		logs.Error("Error packing ERC4626ABI asset", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      ERC4626ABI,
+		Method:   `asset`,
 		CallData: parsedData,
 		Name:     name,
 	}

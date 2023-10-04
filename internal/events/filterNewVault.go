@@ -58,7 +58,7 @@ func filterNewExperimentalVault(
 				BlockHash:       log.Event.Raw.BlockHash,
 				TxIndex:         log.Event.Raw.TxIndex,
 				LogIndex:        log.Event.Raw.Index,
-				Type:            models.VaultTypeExperimental,
+				Type:            models.TokenTypeExperimentalVault,
 			}
 			syncMap.Store(eventKey, newVault)
 		}
@@ -107,7 +107,7 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				syncMap.Store(eventKey, newVault)
 			}
@@ -136,10 +136,10 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				if log.Event.VaultType.Uint64() == 2 {
-					newVault.Type = models.VaultTypeAutomated
+					newVault.Type = models.TokenTypeAutomatedVault
 					newVault.ManagementFee = 0
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)

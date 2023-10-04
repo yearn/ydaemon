@@ -7,12 +7,16 @@ import (
 type TTokenType string
 
 const (
-	TokenTypeVault    TTokenType = "Yearn Vault"
-	TokenTypeNative   TTokenType = "Native"
-	TokenTypeCurveLP  TTokenType = "Curve LP"
-	TokenTypeCompound TTokenType = "Compound"
-	TokenTypeAaveV1   TTokenType = "AAVE V1"
-	TokenTypeAaveV2   TTokenType = "AAVE V2"
+	TokenTypeStandardVault           TTokenType = "Yearn Vault"
+	TokenTypeExperimentalVault       TTokenType = "Experimental Yearn Vault"
+	TokenTypeLegacyExperimentalVault TTokenType = "Experimental"
+	TokenTypeAutomatedVault          TTokenType = "Automated Yearn Vault"
+	TokenTypeLegacyAutomatedVault    TTokenType = "Automated"
+	TokenTypeNative                  TTokenType = "Native"
+	TokenTypeCurveLP                 TTokenType = "Curve LP"
+	TokenTypeCompound                TTokenType = "Compound"
+	TokenTypeAaveV1                  TTokenType = "AAVE V1"
+	TokenTypeAaveV2                  TTokenType = "AAVE V2"
 )
 
 // TERC20Token contains the basic information of an ERC20 token

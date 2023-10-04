@@ -123,7 +123,12 @@ func fetchBasicInformations(
 		******************************************************************************************/
 		isYearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
 		if isYearnVault {
-			newToken.Type = models.TokenTypeVault
+			vault, ok := store.GetVaultFromRegistry(chainID, tokenAddress)
+			if !ok {
+				newToken.Type = models.TokenTypeStandardVault
+			} else {
+				newToken.Type = vault.Type
+			}
 			coin := helpers.DecodeAddress(rawYearnVaultToken)
 			if (coin != common.Address{}) {
 				relatedTokensList = append(relatedTokensList, coin)
@@ -380,6 +385,7 @@ func RetrieveAllTokens(
 	for _, currentVault := range vaults {
 		updatedTokenMap[currentVault.Address] = models.TERC20Token{
 			Address: currentVault.Address,
+			Type:    currentVault.Type,
 			ChainID: chainID,
 		}
 	}

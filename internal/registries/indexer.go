@@ -78,7 +78,7 @@ func fallbackIndexNewVaults(
 						BlockHash:       log.Event.Raw.BlockHash,
 						TxIndex:         log.Event.Raw.TxIndex,
 						LogIndex:        log.Event.Raw.Index,
-						Type:            models.VaultTypeStandard,
+						Type:            models.TokenTypeStandardVault,
 					}
 					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 					newVaultList := map[common.Address]models.TVaultsFromRegistry{
@@ -129,10 +129,10 @@ func fallbackIndexNewVaults(
 						BlockHash:       log.Event.Raw.BlockHash,
 						TxIndex:         log.Event.Raw.TxIndex,
 						LogIndex:        log.Event.Raw.Index,
-						Type:            models.VaultTypeStandard,
+						Type:            models.TokenTypeStandardVault,
 					}
 					if log.Event.VaultType.Cmp(big.NewInt(2)) == 0 {
-						newVault.Type = models.VaultTypeAutomated
+						newVault.Type = models.TokenTypeAutomatedVault
 					}
 					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -183,7 +183,7 @@ func fallbackIndexNewVaults(
 						BlockHash:       log.Event.Raw.BlockHash,
 						TxIndex:         log.Event.Raw.TxIndex,
 						LogIndex:        log.Event.Raw.Index,
-						Type:            models.VaultTypeStandard,
+						Type:            models.TokenTypeStandardVault,
 					}
 					logs.Info(`Got V3 vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -293,7 +293,7 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -349,10 +349,10 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				if log.VaultType.Cmp(big.NewInt(2)) == 0 {
-					newVault.Type = models.VaultTypeAutomated
+					newVault.Type = models.TokenTypeAutomatedVault
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -408,7 +408,7 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				logs.Info(`Got V3 vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 				//TODO: ADD PROCESS TO GET MANAGEMENT FEE

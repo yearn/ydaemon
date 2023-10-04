@@ -120,7 +120,7 @@ func fetchBasicInformations(
 			Symbol:                shareTokenData.Symbol,
 			Decimals:              shareTokenData.Decimals,
 			Icon:                  env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Hex() + `/logo-128.png`,
-			Type:                  models.VaultTypeStandard,
+			Type:                  models.TokenTypeStandardVault,
 			Endorsed:              false, //Default to false, will be updated later
 			Inception:             helpers.DecodeBigInt(rawActivation).Uint64(),
 			Version:               helpers.DecodeString(rawApiVersion),
@@ -241,7 +241,7 @@ func RetrieveAllVaults(
 	for _, currentVault := range vaults {
 		updatedVaultMap[currentVault.Address] = models.TVault{
 			Address:    currentVault.TokenAddress,
-			Endorsed:   (currentVault.Type == models.VaultTypeStandard || currentVault.Type == models.VaultTypeAutomated) && currentVault.TokenAddress != common.Address{},
+			Endorsed:   (currentVault.Type == models.TokenTypeStandardVault || currentVault.Type == models.TokenTypeAutomatedVault) && currentVault.TokenAddress != common.Address{},
 			Type:       currentVault.Type,
 			Activation: currentVault.Activation,
 		}

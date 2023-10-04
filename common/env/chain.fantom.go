@@ -60,7 +60,7 @@ var FANTOM = TChain{
 			BlockHash:       common.HexToHash(`0x00009ee300000d281b4c0169bb3320b32f435e3fd830fe1625adcfd4cf6410cb`),
 			TxIndex:         0,
 			LogIndex:        0,
-			Type:            models.VaultTypeStandard,
+			Type:            models.TokenTypeStandardVault,
 		},
 	},
 	BlacklistedVaults: []common.Address{

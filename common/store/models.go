@@ -52,7 +52,7 @@ type DBNewVaultsFromRegistry struct {
 	ManagementFee   uint64            // ManagementFee is the management fee of the vault
 	TxIndex         uint              // TxIndex is the index of the transaction in the block
 	LogIndex        uint              // LogIndex is the index of the log in the transaction
-	Type            models.TVaultType // Type of vault, can be Experimental, Standard or Automated
+	Type            models.TTokenType // Type of vault, can be Experimental, Standard or Automated
 }
 
 /**************************************************************************************************
@@ -68,7 +68,7 @@ type DBVault struct {
 	Guardian       string            // Guardian is the guardian address
 	Rewards        string            // Rewards is the rewards address
 	Token          string            // Token is the underlying token address
-	Type           models.TVaultType // Type of vault, can be Experimental, Standard or Automated
+	Type           models.TTokenType // Type of vault, can be Experimental, Standard or Automated
 	Symbol         string            // Symbol of the vault
 	DisplaySymbol  string            // DisplaySymbol is an overwrite symbol for display purpose
 	FormatedSymbol string            // FormatedSymbol is an overwrite symbol yv + symbol

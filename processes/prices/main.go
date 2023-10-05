@@ -170,13 +170,49 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** If the price is still missing, we can fallback to try to retreive the price per share of the
+	** vaults (vs the underlying token). Just like with the ERC-4626 standard, we can then
+	** calculate the price of one share (underlyingPrice * pricePerShare)
+	**********************************************************************************************/
+	stillMissing := []common.Address{}
+	for _, token := range queryList {
+		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
+			stillMissing = append(stillMissing, token)
+		}
+	}
+	pricePerShareValue := fetchPricePerShareFromVault(chainID, blockNumber, stillMissing)
+	for _, ppsValue := range pricePerShareValue {
+		if ppsValue.Value == nil || ppsValue.Value.IsZero() {
+			continue
+		}
+		if newPriceMap[ppsValue.AssetAddress] == nil || newPriceMap[ppsValue.AssetAddress].IsZero() {
+			continue
+		}
+
+		token, ok := store.GetERC20(chainID, ppsValue.AssetAddress)
+		if !ok {
+			continue
+		}
+
+		tokenDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
+		sharePrice := bigNumber.NewFloat(0).Quo(
+			bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(0).SetInt(ppsValue.Value),
+				bigNumber.NewFloat(0).SetInt(newPriceMap[ppsValue.AssetAddress]),
+			),
+			bigNumber.NewFloat(0).SetInt(tokenDecimals),
+		)
+		newPriceMap[ppsValue.VaultAddress] = sharePrice.Int()
+	}
+
+	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
 	if priceErrorAlreadySent[chainID] == nil {
 		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
 	}
 
-	for _, token := range queryList {
+	for _, token := range stillMissing {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			if tokenData, ok := store.GetERC20(chainID, token); ok {
 				if !store.IsExperimentalVault(tokenData) {

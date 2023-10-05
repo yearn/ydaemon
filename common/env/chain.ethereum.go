@@ -68,6 +68,11 @@ var ETHEREUM = TChain{
 		common.HexToAddress("0x4Fdd1B06eF986238446be0F3EA163C1b6Fe28cC1"), // GUSD yVault - Not Yearn - PPS 100
 		common.HexToAddress("0x8a0889d47f9Aa0Fac1cC718ba34E26b867437880"), // Old st-yCRV
 		common.HexToAddress("0x61f46C65E403429266e8b569F23f70dD75d9BeE7"), // Old lp-yCRV
+		//
+		common.HexToAddress("0x98E86Ed5b0E48734430BfBe92101156C75418cad"), // yearn BAL - Disabled for now
+		common.HexToAddress("0xc09cfb625e586B117282399433257a1C0841edf3"), // Staked Yearn BAL Vault - Disabled for now
+		common.HexToAddress("0xD725F5742047B4B4A3110D0b38284227fcaB041e"), // LP Yearn BAL Vault - Disabled for now
+		common.HexToAddress("0xD61e198e139369a40818FE05F5d5e6e045Cd6eaF"), // Balancer yBAL Stable Pool - Disabled for now
 	},
 	ExtraTokens: []common.Address{
 		common.HexToAddress("0x34fe2a45D8df28459d7705F37eD13d7aE4382009"), // yvWBTC
@@ -102,7 +107,11 @@ var ETHEREUM = TChain{
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing
 		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"), // Test deployment - Nothing
 		common.HexToAddress("0x4Fdd1B06eF986238446be0F3EA163C1b6Fe28cC1"), // GUSD yVault - Not Yearn - PPS 100
-
+		//
+		common.HexToAddress("0x98E86Ed5b0E48734430BfBe92101156C75418cad"), // yearn BAL - Disabled for now
+		common.HexToAddress("0xc09cfb625e586B117282399433257a1C0841edf3"), // Staked Yearn BAL Vault - Disabled for now
+		common.HexToAddress("0xD725F5742047B4B4A3110D0b38284227fcaB041e"), // LP Yearn BAL Vault - Disabled for now
+		common.HexToAddress("0xD61e198e139369a40818FE05F5d5e6e045Cd6eaF"), // Balancer yBAL Stable Pool - Disabled for now
 	},
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),

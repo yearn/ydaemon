@@ -16,7 +16,7 @@ func initFlags() {
 	** Description: List of chain IDs to run yDaemon for
 	** Default: All supported chains (1, 10, 137, 250, 8453, 42161)
 	**********************************************************************************************/
-	flag.Var(&chainFlag, "chains", `List of chain IDs to run yDaemon for: --chains 1 10 137 250 8453 42161`)
+	rawChains := flag.String(`chains`, `1,10,137,250,8453,42161`, `List of chain IDs to run yDaemon for: --chains 1,10,137,250,8453,42161`)
 
 	/**********************************************************************************************
 	** Flag group: Sentry
@@ -44,7 +44,7 @@ func initFlags() {
 		endBlock = nil
 	}
 
-	handleChainsInitialization()
+	handleChainsInitialization(rawChains)
 	handleSentryInitialization()
 	handleProcessInitialization(rawProcess)
 }

@@ -8,6 +8,7 @@ type TTokenType string
 
 const (
 	TokenTypeStandardVault           TTokenType = "Yearn Vault"
+	TokenTypeLegagyStandardVault     TTokenType = "Standard"
 	TokenTypeExperimentalVault       TTokenType = "Experimental Yearn Vault"
 	TokenTypeLegacyExperimentalVault TTokenType = "Experimental"
 	TokenTypeAutomatedVault          TTokenType = "Automated Yearn Vault"

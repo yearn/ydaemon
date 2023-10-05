@@ -222,7 +222,15 @@ func ListERC20Addresses(chainID uint64) []common.Address {
 ** If the token type matches with "Yearn Vault", it returns true. Otherwise, it returns false.
 **********************************************************************************************/
 func IsVaultLike(t models.TERC20Token) bool {
-	return t.Type == models.TokenTypeStandardVault || IsExperimentalVault(t) || IsAutomatedVault(t)
+	return IsStandardVault(t) || IsExperimentalVault(t) || IsAutomatedVault(t)
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** This function checks if the provided token is of the "Standard Vault" type.
+** It takes a TERC20Token as input and returns a boolean value.
+**************************************************************************************************/
+func IsStandardVault(t models.TERC20Token) bool {
+	return t.Type == models.TokenTypeStandardVault || t.Type == models.TokenTypeLegagyStandardVault
 }
 
 /** 🔵 - Yearn *************************************************************************************

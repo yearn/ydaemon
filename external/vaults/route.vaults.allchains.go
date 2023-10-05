@@ -4,13 +4,10 @@ import (
 	"net/http"
 	"strings"
 
-	"time"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -18,8 +15,6 @@ import (
 
 // GetAllVaultsForAllChains will return a list of all vaults for all chains
 func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
-	now := time.Now()
-	logs.Info(now)
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -226,6 +221,5 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	}
 	data = data[start:end]
 
-	logs.Success(time.Since(now))
 	c.JSON(http.StatusOK, data)
 }

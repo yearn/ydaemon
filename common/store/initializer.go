@@ -27,7 +27,7 @@ func init() {
 		_dbType = DBBadger
 	}
 
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
 		_historicalPriceSyncMap[chainID] = &sync.Map{}
@@ -41,7 +41,7 @@ func init() {
 	}
 
 	wg := &sync.WaitGroup{}
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		wg.Add(5)
 		go LoadBlockTime(chainID, nil)
 		// go LoadHistoricalPrice(chainID, nil)

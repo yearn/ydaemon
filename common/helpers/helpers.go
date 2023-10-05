@@ -137,7 +137,7 @@ func AssertChainID(chainIDStr string) (uint64, bool) {
 	if chainID == 1337 {
 		return 1, true
 	}
-	if !Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+	if _, ok := env.CHAINS[chainID]; !ok {
 		return 0, false
 	}
 	return chainID, true
@@ -148,7 +148,7 @@ func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 		return common.Address{}, false
 	}
 	address := common.HexToAddress(addressStr)
-	if chainID > 0 && Contains(env.BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && Contains(env.CHAINS[chainID].BlacklistedVaults, address) {
 		return common.Address{}, false
 	}
 	return address, true
@@ -158,7 +158,7 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 	if (address == common.Address{} || addresses.Equals(address, "0x0000000000000000000000000000000000000000")) {
 		return false
 	}
-	if chainID > 0 && Contains(env.BLACKLISTED_VAULTS[chainID], address) {
+	if chainID > 0 && Contains(env.CHAINS[chainID].BlacklistedVaults, address) {
 		return false
 	}
 	return true
@@ -234,6 +234,13 @@ func DecodeAddress(something []interface{}) common.Address {
 		return common.Address{}
 	}
 	return something[0].(common.Address)
+}
+
+func ToRawAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Int {
+	return bigNumber.NewInt(0).Mul(
+		amount,
+		bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), bigNumber.NewInt(int64(decimals)), nil),
+	)
 }
 
 func ToNormalizedAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Float {

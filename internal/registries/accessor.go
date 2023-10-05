@@ -41,7 +41,7 @@ func RegisterAllVaults(
 		}
 	}
 
-	for _, v := range env.EXTRA_VAULTS[chainID] {
+	for _, v := range env.CHAINS[chainID].ExtraVaults {
 		if _, ok := uniqueVaultsList[v.Address]; !ok {
 			uniqueVaultsList[v.Address] = v
 		}

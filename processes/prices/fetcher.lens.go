@@ -26,8 +26,8 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
-	lensAddress, ok := env.LENS_ADDRESSES[chainID]
-	if !ok {
+	lensAddress := env.CHAINS[chainID].LensContract.Address
+	if (lensAddress == common.Address{}) {
 		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
 		return newPriceMap
 	}

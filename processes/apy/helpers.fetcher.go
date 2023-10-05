@@ -36,7 +36,7 @@ func retrieveCurveGauges(chainID uint64) []models.CurveGauge {
 }
 
 func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
-	URIsToFetch := env.CURVE_POOLS_URI[chainID]
+	URIsToFetch := env.CHAINS[chainID].Curve.PoolsURIs
 	pools := []models.CurvePool{}
 	for _, uri := range URIsToFetch {
 		resp, err := http.Get(uri)

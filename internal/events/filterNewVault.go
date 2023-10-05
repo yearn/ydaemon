@@ -58,7 +58,7 @@ func filterNewExperimentalVault(
 				BlockHash:       log.Event.Raw.BlockHash,
 				TxIndex:         log.Event.Raw.TxIndex,
 				LogIndex:        log.Event.Raw.Index,
-				Type:            models.VaultTypeExperimental,
+				Type:            models.TokenTypeExperimentalVault,
 			}
 			syncMap.Store(eventKey, newVault)
 		}
@@ -107,7 +107,7 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				syncMap.Store(eventKey, newVault)
 			}
@@ -136,10 +136,10 @@ func filterNewVaults(
 					BlockHash:       log.Event.Raw.BlockHash,
 					TxIndex:         log.Event.Raw.TxIndex,
 					LogIndex:        log.Event.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				if log.Event.VaultType.Uint64() == 2 {
-					newVault.Type = models.VaultTypeAutomated
+					newVault.Type = models.TokenTypeAutomatedVault
 					newVault.ManagementFee = 0
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
@@ -186,7 +186,7 @@ func HandleNewVaults(
 	}
 
 	wg := &sync.WaitGroup{}
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.CHAINS[chainID].Registries {
 		_start := start
 
 		/******************************************************************************************
@@ -210,9 +210,9 @@ func HandleNewVaults(
 		** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to
 		** avoid hitting some external node providers' rate limits.
 		******************************************************************************************/
-		for chunkStart := _start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
+		for chunkStart := _start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
 			wg.Add(2)
-			chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+			chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 			if chunkEnd > *end {
 				chunkEnd = *end
 			}
@@ -311,8 +311,8 @@ func HandleNewStandardVaults(
 	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to avoid
 	** hitting some external node providers' rate limits.
 	**********************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

@@ -127,7 +127,7 @@ type TExternalERC20Token struct {
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
 	Address           string                  `json:"address"`
-	Type              models.TVaultType       `json:"type"`
+	Type              models.TTokenType       `json:"type"`
 	Symbol            string                  `json:"symbol"`
 	DisplaySymbol     string                  `json:"display_symbol"`
 	FormatedSymbol    string                  `json:"formated_symbol"`

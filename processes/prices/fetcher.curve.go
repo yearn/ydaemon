@@ -58,7 +58,7 @@ func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]*bigNumbe
 
 	// Running a sync group to execute all fetch at the same time
 	wg := sync.WaitGroup{}
-	for _, url := range env.CURVE_FACTORY_URI[chainID] {
+	for _, url := range env.CHAINS[chainID].Curve.FactoryURIs {
 		wg.Add(1)
 		go func(url string) {
 			defer wg.Done()

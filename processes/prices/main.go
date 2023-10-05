@@ -7,6 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -118,6 +119,38 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** With the ERC-4626 standard, the `price per share` is no longer relevant. We can use the new
+	** `convertToAssets` function to get the value of the underlying asset for a given amount of
+	** shares: 1 share will give me 1.23 asset for example.
+	** Based on that, if we have the price of the underlying asset, we can calculate the price of
+	** the share.
+	**********************************************************************************************/
+	sharesValue := fetchShareValueFromERC4626(chainID, blockNumber, queryList)
+	for _, shareValue := range sharesValue {
+		if shareValue.Value == nil || shareValue.Value.IsZero() {
+			continue
+		}
+		if newPriceMap[shareValue.AssetAddress] == nil || newPriceMap[shareValue.AssetAddress].IsZero() {
+			continue
+		}
+
+		token, ok := store.GetERC20(chainID, shareValue.AssetAddress)
+		if !ok {
+			continue
+		}
+
+		tokenDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
+		sharePrice := bigNumber.NewFloat(0).Quo(
+			bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(0).SetInt(shareValue.Value),
+				bigNumber.NewFloat(0).SetInt(newPriceMap[shareValue.AssetAddress]),
+			),
+			bigNumber.NewFloat(0).SetInt(tokenDecimals),
+		)
+		newPriceMap[shareValue.VaultAddress] = sharePrice.Int()
+	}
+
+	/**********************************************************************************************
 	** If the price is missing, check if it's a vault and try to compute the price from the
 	** underlying tokens.
 	**********************************************************************************************/
@@ -137,16 +170,54 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** If the price is still missing, we can fallback to try to retreive the price per share of the
+	** vaults (vs the underlying token). Just like with the ERC-4626 standard, we can then
+	** calculate the price of one share (underlyingPrice * pricePerShare)
+	**********************************************************************************************/
+	stillMissing := []common.Address{}
+	for _, token := range queryList {
+		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
+			stillMissing = append(stillMissing, token)
+		}
+	}
+	pricePerShareValue := fetchPricePerShareFromVault(chainID, blockNumber, stillMissing)
+	for _, ppsValue := range pricePerShareValue {
+		if ppsValue.Value == nil || ppsValue.Value.IsZero() {
+			continue
+		}
+		if newPriceMap[ppsValue.AssetAddress] == nil || newPriceMap[ppsValue.AssetAddress].IsZero() {
+			continue
+		}
+
+		token, ok := store.GetERC20(chainID, ppsValue.AssetAddress)
+		if !ok {
+			continue
+		}
+
+		tokenDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
+		sharePrice := bigNumber.NewFloat(0).Quo(
+			bigNumber.NewFloat(0).Mul(
+				bigNumber.NewFloat(0).SetInt(ppsValue.Value),
+				bigNumber.NewFloat(0).SetInt(newPriceMap[ppsValue.AssetAddress]),
+			),
+			bigNumber.NewFloat(0).SetInt(tokenDecimals),
+		)
+		newPriceMap[ppsValue.VaultAddress] = sharePrice.Int()
+	}
+
+	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
 	if priceErrorAlreadySent[chainID] == nil {
 		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
 	}
 
-	for _, token := range queryList {
+	for _, token := range stillMissing {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
 			if tokenData, ok := store.GetERC20(chainID, token); ok {
-				logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
+				if !store.IsExperimentalVault(tokenData) {
+					logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
+				}
 			} else {
 				logs.Warning(`missing a valid price for token ` + token.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 			}
@@ -208,64 +279,13 @@ func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** Somehow, some vaults are not in the registries, but we still need the price data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	extraTokens := map[uint64][]string{
-		1: {
-			`0x34fe2a45D8df28459d7705F37eD13d7aE4382009`, // yvWBTC
-			`0xD533a949740bb3306d119CC777fa900bA034cd52`, // CRV - used by yBribe UI
-			`0x090185f2135308BaD17527004364eBcC2D37e5F6`, // Spell - used by yBribe UI
-			`0xCdF7028ceAB81fA0C6971208e83fa7872994beE5`, // TNT - used by yBribe UI
-			`0xba100000625a3754423978a60c9317c58a424e3D`, // BAL - used by yBAL UI
-			`0x5c6Ee304399DBdB9C8Ef030aB642B10820DB8F56`, // BALWETH - used by yBAL UI
-			`0x30D20208d987713f46DFD34EF128Bb16C404D10f`, // Stader
-			`0xa2E3356610840701BDf5611a53974510Ae27E2e1`, // wBETH
-			`0xac3E018457B222d93114458476f3E3416Abbe38F`, // Staked Frax Ether
-			`0xf951E335afb289353dc249e82926178EaC7DEd78`, // Swell Network Ether
-			`0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0`, // Wrapped liquid staked Ether 2.0
-			`0xA35b1B31Ce002FBF2058D22F30f95D405200A15b`, // Stader ETHx
-			`0xBe9895146f7AF43049ca1c1AE358B0541Ea49704`, // Coinbase Wrapped Staked ETH
-		},
-		10:   {},
-		250:  {},
-		8453: {},
-		42161: {
-			`0x82e3A8F066a6989666b031d916c43672085b1582`, // YFI
-			`0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978`, // CRV
-		},
-	}
-	for _, tokenAddress := range extraTokens[chainID] {
-		allTokens = append(allTokens, common.HexToAddress(tokenAddress))
-	}
+	allTokens = append(allTokens, env.CHAINS[chainID].ExtraTokens...)
 
 	/**********************************************************************************************
 	** Some tokens are just useless, errors or not wanted. We will remove them from the list.
 	**********************************************************************************************/
-	ignoredTokens := map[uint64][]string{
-		1: {
-			`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`, // nothing
-			`0x61f46C65E403429266e8b569F23f70dD75d9BeE7`, // Old lp-yCRV
-			`0x8a0889d47f9Aa0Fac1cC718ba34E26b867437880`, // Old st-yCRV
-			`0x4c1317326fD8EFDeBdBE5e1cd052010D97723bd6`, // Another old st-yCRV
-			`0x2E919d27D515868f3D5Bc9110fa738f9449FC6ad`, // Old yvCurve-yveCRV pool
-			`0x7E46fd8a30869aa9ed55af031067Df666EfE87da`, // Old yvecrv-f
-			`0x5904BAcE7a9cCab585242e9d22f67C9f2F1BF7E2`, // nothing
-			`0x0309A528bBa0394dC4A2Ce59123C52E317A54604`, // Old yCRV-f
-			`0xBF7AA989192b020a8d3e1C65a558e123834325cA`, // Irrelevant HBTC yVault
-			`0xe92AE2cF5b373c1713eB5855D4D3aF81D8a8aCAE`, // Curve Stax Frax/Temple xLP + LP yVault - Unlisted
-			`0x3883f5e181fccaF8410FA61e12b59BAd963fb645`, // Theta: Old Token
-
-			`0xC4C319E2D4d66CcA4464C0c2B32c9Bd23ebe784e`, // Hacked alETH
-			`0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`, // Hacked vault
-		},
-		10:   {},
-		250:  {},
-		8453: {},
-		42161: {
-			`0x976a1C749cd8153909e0B04EebE931eF8957b15b`, // PHPTest
-			`0xFa247d0D55a324ca19985577a2cDcFC383D87953`, // Philippine Peso (PHP)
-		},
-	}
-	for _, tokenAddress := range ignoredTokens[chainID] {
-		allTokens = helpers.RemoveFromArray(allTokens, common.HexToAddress(tokenAddress))
+	for _, tokenAddress := range env.CHAINS[chainID].IgnoredTokens {
+		allTokens = helpers.RemoveFromArray(allTokens, tokenAddress)
 	}
 	allTokens = helpers.UniqueArrayAddress(allTokens)
 

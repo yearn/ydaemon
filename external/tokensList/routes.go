@@ -15,7 +15,6 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/processes/tokenList"
 )
 
@@ -83,7 +82,7 @@ func GetYearnTokenList(c *gin.Context) {
 	** available, we add the price to the chainToken struct. Then, we add the chainToken struct to
 	** the tokenBalanceMap map using the chainCoin address as the key.
 	**********************************************************************************************/
-	chainCoin := tokens.COIN_PER_CHAIN[chainID]
+	chainCoin := env.CHAINS[chainID].Coin
 	chainCoinPrice, ok := prices.FindPrice(chainID, chainCoin.Address)
 	chainToken := models.TYearnTokenListToken{
 		TTokenListToken: models.TTokenListToken{
@@ -144,7 +143,7 @@ func GetTokenList(c *gin.Context) {
 	/**********************************************************************************************
 	** Retrieve the MapTokenList for each chainID and return it as a map of chainID to token list.
 	**********************************************************************************************/
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		tokenMap, _ := store.ListERC20(chainID)
 		for _, token := range tokenMap {
 			list.Tokens = append(list.Tokens, models.TTokenListToken{

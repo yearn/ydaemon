@@ -5,20 +5,12 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
-type TVaultType string
-
-const (
-	VaultTypeExperimental TVaultType = "Experimental"
-	VaultTypeStandard     TVaultType = "Standard"
-	VaultTypeAutomated    TVaultType = "Automated"
-)
-
 type TVaultsFromRegistry struct {
 	Address         common.Address
 	RegistryAddress common.Address
 	TokenAddress    common.Address
 	BlockHash       common.Hash
-	Type            TVaultType
+	Type            TTokenType
 	APIVersion      string
 	ChainID         uint64
 	BlockNumber     uint64
@@ -107,7 +99,7 @@ type TVault struct {
 	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
 	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`
 	TotalAssets           *bigNumber.Int   `json:"total_assets"`
-	Type                  TVaultType       `json:"type"`
+	Type                  TTokenType       `json:"type"`
 	Symbol                string           `json:"symbol"`
 	DisplaySymbol         string           `json:"display_symbol"`
 	FormatedSymbol        string           `json:"formated_symbol"`

@@ -5,7 +5,7 @@ import "github.com/yearn/ydaemon/common/env"
 var STATUS_FOR_CHAINID = map[uint64]string{}
 
 func init() {
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		setStatusForChainID(chainID, "Not Started")
 	}
 }

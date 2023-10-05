@@ -25,7 +25,7 @@ import (
 **************************************************************************************************/
 func filterReferrerBalanceIncreased(chainID uint64, start uint64, end *uint64, syncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-	partnerContract := env.PARTNER_TRACKERS_ADDRESSES[chainID]
+	partnerContract := env.CHAINS[chainID].PartnerContract
 	partnerContractAddress := partnerContract.Address
 	currentPartnerContract, _ := contracts.NewYPartnerTracker(partnerContractAddress, client)
 
@@ -44,8 +44,8 @@ func filterReferrerBalanceIncreased(chainID uint64, start uint64, end *uint64, s
 	** Note: we don't use start here because we want the full history previous to the end
 	** to ensure the balance is correct
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

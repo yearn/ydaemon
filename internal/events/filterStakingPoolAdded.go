@@ -29,9 +29,12 @@ import (
 **************************************************************************************************/
 func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap *sync.Map) {
 	client := ethereum.GetRPC(chainID)
-	stackingReward, ok := env.STACKING_REWARD_ADDRESSES[chainID]
+	stackingReward := env.CHAINS[chainID].StackingRewardContract
+	if (stackingReward.Address == common.Address{}) {
+		return
+	}
 	contract, err := contracts.NewYOptimismStakingRewardRegistry(stackingReward.Address, client)
-	if err != nil || !ok {
+	if err != nil {
 		logs.Error("Error while fetching StakingPoolAdded event", err)
 		return
 	}
@@ -55,8 +58,8 @@ func filterStakingPoolAdded(chainID uint64, start uint64, end *uint64, asyncMap 
 	** Note: we don't use start here because we want the full history previous to the end
 	** to ensure the balance is correct
 	******************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.MAX_BLOCK_RANGE[chainID] {
-		chunkEnd := chunkStart + env.MAX_BLOCK_RANGE[chainID]
+	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 		}

@@ -33,7 +33,7 @@ func _assertMap() {
 			badgerDBMutex = make(map[uint64]map[string]*sync.Mutex)
 		}
 
-		for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		for chainID := range env.CHAINS {
 			if badgerDB[chainID] == nil {
 				badgerDB[chainID] = make(map[string]*badger.DB)
 			}

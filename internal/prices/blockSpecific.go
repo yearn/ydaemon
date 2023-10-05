@@ -18,6 +18,10 @@ import (
 func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.Address) map[common.Address]*bigNumber.Int {
 	newPriceMap := make(map[common.Address]*bigNumber.Int)
 
+	if (len(tokenList) == 0 || env.CHAINS[chainID].LensContract.Address == common.Address{}) {
+		return newPriceMap
+	}
+
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -29,7 +33,11 @@ func FetchPricesOnBlock(chainID uint64, blockNumber uint64, tokenList []common.A
 			newPriceMap[tokenAddress] = tokenPrice
 			continue
 		}
-		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(tokenAddress.Hex(), env.LENS_ADDRESSES[chainID], tokenAddress))
+		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(
+			tokenAddress.Hex(),
+			env.CHAINS[chainID].LensContract.Address,
+			tokenAddress,
+		))
 	}
 
 	/**********************************************************************************************
@@ -80,7 +88,10 @@ func GetPricesOnBlock(chainID uint64, blockNumber uint64, tokenAddress common.Ad
 	}
 
 	client := ethereum.GetRPC(chainID)
-	contractAddress := env.LENS_ADDRESSES[chainID]
+	contractAddress := env.CHAINS[chainID].LensContract.Address
+	if (contractAddress == common.Address{}) {
+		return bigNumber.NewInt(0), false
+	}
 	oracleContract, _ := contracts.NewOracleCaller(contractAddress, client)
 	tokenPriceFromOracle, err := oracleContract.GetPriceUsdcRecommended(&bind.CallOpts{BlockNumber: big.NewInt(int64(blockNumber))}, tokenAddress)
 	if err != nil {

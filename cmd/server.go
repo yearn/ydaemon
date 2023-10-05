@@ -63,6 +63,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/vaults/apy/:address`, c.GetVaultsVisionAPY)
 		router.GET(`:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
 		router.GET(`:chainID/earned/:address`, c.GetEarnedPerUser)
+		router.GET(`earned/:address`, c.GetEarnedPerUserForAllChains)
 
 		// Retrieve the strategies for a specific chainID
 		router.GET(`:chainID/strategies/all`, c.GetAllStrategies)

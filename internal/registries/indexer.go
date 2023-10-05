@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
@@ -79,7 +78,7 @@ func fallbackIndexNewVaults(
 						BlockHash:       log.Event.Raw.BlockHash,
 						TxIndex:         log.Event.Raw.TxIndex,
 						LogIndex:        log.Event.Raw.Index,
-						Type:            models.VaultTypeStandard,
+						Type:            models.TokenTypeStandardVault,
 					}
 					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 					newVaultList := map[common.Address]models.TVaultsFromRegistry{
@@ -130,10 +129,10 @@ func fallbackIndexNewVaults(
 						BlockHash:       log.Event.Raw.BlockHash,
 						TxIndex:         log.Event.Raw.TxIndex,
 						LogIndex:        log.Event.Raw.Index,
-						Type:            models.VaultTypeStandard,
+						Type:            models.TokenTypeStandardVault,
 					}
 					if log.Event.VaultType.Cmp(big.NewInt(2)) == 0 {
-						newVault.Type = models.VaultTypeAutomated
+						newVault.Type = models.TokenTypeAutomatedVault
 					}
 					logs.Info(`Got vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -144,6 +143,54 @@ func fallbackIndexNewVaults(
 					if vaultsWithActivation != nil {
 						newVault.Activation = vaultsWithActivation[newVault.Address].Activation
 					}
+					indexer.ProcessNewVault(chainID, newVaultList)
+				}
+			} else {
+				logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
+			lastSyncedBlockForV3 = currentBlock
+			time.Sleep(60 * time.Second)
+		}
+	case 4:
+		lastSyncedBlockForV3 := lastSyncedBlock
+		for {
+			currentVault, _ := contracts.NewYRegistryV4(registryAddress, client)
+			currentBlock, err := client.BlockNumber(context.Background())
+			if err != nil {
+				time.Sleep(60 * time.Second)
+				continue
+			}
+
+			if currentBlock > lastSyncedBlockForV3 {
+				currentBlock = lastSyncedBlockForV3
+			}
+			opts := &bind.FilterOpts{Start: lastSyncedBlockForV3, End: &currentBlock}
+
+			if log, err := currentVault.FilterNewEndorsedVault(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					newVault := models.TVaultsFromRegistry{
+						ChainID:         chainID,
+						RegistryAddress: registryAddress,
+						Address:         log.Event.Vault,
+						TokenAddress:    log.Event.Asset,
+						APIVersion:      log.Event.ReleaseVersion.Text(10),
+						BlockNumber:     log.Event.Raw.BlockNumber,
+						Activation:      log.Event.Raw.BlockNumber,
+						ManagementFee:   200,
+						BlockHash:       log.Event.Raw.BlockHash,
+						TxIndex:         log.Event.Raw.TxIndex,
+						LogIndex:        log.Event.Raw.Index,
+						Type:            models.TokenTypeStandardVault,
+					}
+					logs.Info(`Got V3 vault ` + log.Event.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+
+					newVaultList := map[common.Address]models.TVaultsFromRegistry{
+						newVault.Address: newVault,
+					}
+					//TODO: ADD PROCESS TO GET MANAGEMENT FEE
 					indexer.ProcessNewVault(chainID, newVaultList)
 				}
 			} else {
@@ -246,7 +293,7 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -302,10 +349,10 @@ func indexNewVaults(
 					BlockHash:       log.Raw.BlockHash,
 					TxIndex:         log.Raw.TxIndex,
 					LogIndex:        log.Raw.Index,
-					Type:            models.VaultTypeStandard,
+					Type:            models.TokenTypeStandardVault,
 				}
 				if log.VaultType.Cmp(big.NewInt(2)) == 0 {
-					newVault.Type = models.VaultTypeAutomated
+					newVault.Type = models.TokenTypeAutomatedVault
 				}
 				logs.Info(`Got vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
 
@@ -315,6 +362,59 @@ func indexNewVaults(
 				vaultsWithActivation := events.HandleUpdateManagementOneTime(chainID, newVaultList)
 				if vaultsWithActivation != nil {
 					newVault.Activation = vaultsWithActivation[newVault.Address].Activation
+				}
+				indexer.ProcessNewVault(chainID, newVaultList)
+			case err := <-watcher.Err():
+				return lastSyncedBlock, true, err
+			}
+		}
+	case 4:
+		logs.Info(`Watching new vaults`)
+		/**********************************************************************************************
+		** Connect to the Yearn Registry with general configuration, starting from the lastSyncedBlock.
+		** No error should happen here, but if it does, we just return.
+		**********************************************************************************************/
+		currentVault, _ := contracts.NewYRegistryV4(registryAddress, client)
+		channel := make(chan *contracts.YRegistryV4NewEndorsedVault)
+		watcher, err := currentVault.WatchNewEndorsedVault(
+			&bind.WatchOpts{Start: &currentBlock},
+			channel,
+			nil,
+			nil,
+		)
+		if err != nil {
+			return currentBlock, false, err
+		}
+
+		/**********************************************************************************************
+		** Listen to the channel forever, and handle the new events as they are emitted. Once an event
+		** is received, we also update the lastSyncedBlock to be able to filter the next events from
+		** that block.
+		** On error, fallback to the default setup
+		**********************************************************************************************/
+		for {
+			select {
+			case log := <-channel:
+				lastSyncedBlock = log.Raw.BlockNumber
+				newVault := models.TVaultsFromRegistry{
+					ChainID:         chainID,
+					RegistryAddress: registryAddress,
+					Address:         log.Vault,
+					TokenAddress:    log.Asset,
+					APIVersion:      log.ReleaseVersion.Text(10),
+					BlockNumber:     log.Raw.BlockNumber,
+					Activation:      log.Raw.BlockNumber,
+					ManagementFee:   200,
+					BlockHash:       log.Raw.BlockHash,
+					TxIndex:         log.Raw.TxIndex,
+					LogIndex:        log.Raw.Index,
+					Type:            models.TokenTypeStandardVault,
+				}
+				logs.Info(`Got V3 vault ` + log.Vault.Hex() + ` from registry ` + registryAddress.Hex())
+				//TODO: ADD PROCESS TO GET MANAGEMENT FEE
+
+				newVaultList := map[common.Address]models.TVaultsFromRegistry{
+					newVault.Address: newVault,
 				}
 				indexer.ProcessNewVault(chainID, newVaultList)
 			case err := <-watcher.Err():
@@ -374,13 +474,7 @@ func indexNewVaultsWrapper(
 			lastSyncedBlock,
 		)
 		if err != nil {
-			traces.
-				Capture(`error`, `error while indexing NewVault from registry `+registryAddress.Hex()+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`registry`).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`registryAddress`, registryAddress.Hex()).
-				SetExtra(`error`, err.Error()).
-				Send()
+			logs.Error(`error while indexing NewVault from registry ` + registryAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 		if !shouldRetry {
 			break
@@ -436,7 +530,7 @@ func indexNewVaultsWrapper(
 }
 
 func IndexNewVaults(chainID uint64) {
-	for _, registry := range env.YEARN_REGISTRIES[chainID] {
+	for _, registry := range env.CHAINS[chainID].Registries {
 		go indexNewVaultsWrapper(chainID, registry.Address, registry.Version, registry.Block, 1*time.Minute)
 	}
 

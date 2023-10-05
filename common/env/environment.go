@@ -15,42 +15,54 @@ func SetEnv(path string) {
 	if !exists {
 		logs.Debug("RPC_URI_FOR_1 not set, using default value: [https://eth.public-rpc.com]")
 	} else {
-		RPC_ENDPOINTS[1] = RPCURIFor1
+		chain := CHAINS[1]
+		chain.RpcURI = RPCURIFor1
+		CHAINS[1] = chain
 	}
 
 	RPCURIFor10, exists := os.LookupEnv("RPC_URI_FOR_10")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_10 not set, using default value: [https://mainnet.optimism.io]")
 	} else {
-		RPC_ENDPOINTS[10] = RPCURIFor10
+		chain := CHAINS[10]
+		chain.RpcURI = RPCURIFor10
+		CHAINS[10] = chain
+	}
+
+	RPCURIFor137, exists := os.LookupEnv("RPC_URI_FOR_137")
+	if !exists {
+		logs.Debug("RPC_URI_FOR_137 not set, using default value: [https://polygon.llamarpc.com]")
+	} else {
+		chain := CHAINS[137]
+		chain.RpcURI = RPCURIFor137
+		CHAINS[137] = chain
 	}
 
 	RPCURIFor250, exists := os.LookupEnv("RPC_URI_FOR_250")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_250 not set, using default value: [https://rpc.ftm.tools]")
 	} else {
-		RPC_ENDPOINTS[250] = RPCURIFor250
+		chain := CHAINS[250]
+		chain.RpcURI = RPCURIFor250
+		CHAINS[250] = chain
 	}
 
 	RPCURIFor8453, exists := os.LookupEnv("RPC_URI_FOR_8453")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_8453 not set, using default value: [https://developer-access-mainnet.base.org]")
 	} else {
-		RPC_ENDPOINTS[8453] = RPCURIFor8453
+		chain := CHAINS[8453]
+		chain.RpcURI = RPCURIFor8453
+		CHAINS[8453] = chain
 	}
 
 	RPCURIFor42161, exists := os.LookupEnv("RPC_URI_FOR_42161")
 	if !exists {
 		logs.Debug("RPC_URI_FOR_42161 not set, using default value: [https://arbitrum.public-rpc.com]")
 	} else {
-		RPC_ENDPOINTS[42161] = RPCURIFor42161
-	}
-
-	GraphAPIURI, exists := os.LookupEnv("GRAPH_API_URI")
-	if !exists {
-		logs.Debug("GRAPH_API_URI not set, using default value: [https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet]")
-	} else {
-		THEGRAPH_ENDPOINTS[1] = GraphAPIURI
+		chain := CHAINS[42161]
+		chain.RpcURI = RPCURIFor42161
+		CHAINS[42161] = chain
 	}
 
 	ApiV1BaseUrl, exists := os.LookupEnv("API_V1_BASE_URL")

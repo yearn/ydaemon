@@ -25,7 +25,7 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 	data := []TStrategy{}
 	allVaults := vaults.ListVaults(chainID)
 	for _, currentVault := range allVaults {
-		if helpers.Contains(env.BLACKLISTED_VAULTS[chainID], currentVault.Address) {
+		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 			continue
 		}
 		vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)

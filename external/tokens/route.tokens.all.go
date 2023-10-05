@@ -30,7 +30,7 @@ type TAllTokens struct {
 func (y Controller) GetAllTokens(c *gin.Context) {
 	localization := helpers.SafeString(getQuery(c, "loc"), "en")
 	allTokens := make(map[uint64]map[string]TAllTokens)
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		tokenList, _ := store.ListERC20(chainID)
 		for _, token := range tokenList {
 			if _, ok := allTokens[chainID]; !ok {

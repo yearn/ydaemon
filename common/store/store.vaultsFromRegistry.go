@@ -171,3 +171,39 @@ func ListVaultsFromRegistry(chainID uint64) (asMap map[common.Address]models.TVa
 
 	return asMap, asSlice
 }
+
+/**************************************************************************************************
+** GetVaultFromRegistry
+**************************************************************************************************/
+func GetVaultFromRegistry(chainID uint64, vaultAddress common.Address) (models.TVaultsFromRegistry, bool) {
+	/**********************************************************************************************
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadNewVaultsFromRegistry`
+	** function which take the data from the database/badger and store it in it.
+	**********************************************************************************************/
+	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_newVaultsFromRegistrySyncMap[chainID] = syncMap
+	}
+
+	/**********************************************************************************************
+	** Here we are trying to load the vault from the syncMap using the vaultAddress. The loaded
+	** vault is then type asserted to models.TVaultsFromRegistry. If the vault is not found in the
+	** syncMap, we return an empty models.TVaultsFromRegistry and false.
+	**********************************************************************************************/
+	vault := models.TVaultsFromRegistry{}
+	found := false
+	syncMap.Range(func(key, value interface{}) bool {
+		element := value.(models.TVaultsFromRegistry)
+		if element.Address == vaultAddress {
+			found = true
+			vault = element
+			return false
+		}
+		return true
+	})
+	if !found {
+		return models.TVaultsFromRegistry{}, false
+	}
+	return vault, true
+}

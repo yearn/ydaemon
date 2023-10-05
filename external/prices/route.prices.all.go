@@ -16,7 +16,7 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 
 	allPrices := make(map[uint64]map[string]*bigNumber.Int)
 	allPricesHumanized := make(map[uint64]map[string]float64)
-	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+	for chainID := range env.CHAINS {
 		allChainPrices := prices.MapPrices(chainID)
 		for key, price := range allChainPrices {
 			if _, ok := allPrices[chainID]; !ok {

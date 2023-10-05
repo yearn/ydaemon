@@ -26,17 +26,16 @@ func GetRPC(chainID uint64) *ethclient.Client {
 
 // GetRPCURI returns the URI to use to connect to the node for a specific chainID
 func GetRPCURI(chainID uint64) string {
-	return env.RPC_ENDPOINTS[chainID]
+	return env.CHAINS[chainID].RpcURI
 }
 
 // GetWSEnvURI returns the URI to use to connect to the node for a specific chainID
 func GetWSEnvURI(chainID uint64) string {
 	wsFromEnv, exists := os.LookupEnv("WS_URI_FOR_" + strconv.FormatUint(chainID, 10))
 	if !exists {
-		return env.RPC_ENDPOINTS[chainID]
-	} else {
-		return wsFromEnv
+		return env.CHAINS[chainID].RpcURI
 	}
+	return wsFromEnv
 }
 
 // MulticallClientForChainID holds the multicall client for a specific chainID

@@ -13,8 +13,8 @@ import (
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
-// GetAllVaultsForAllChains will return a list of all vaults for all chains
-func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
+// GetAllVaultsForAllChainsSimplified will return a list of all vaults for all chains
+func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -30,13 +30,8 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** strategiesCondition: A string that determines the condition for selecting strategies. It is
 	** obtained from the 'strategiesCondition' query parameter in the request.
-	**
-	** withStrategiesDetails: A boolean value that determines whether to include details of the
-	** strategies in the response. It is obtained from the 'strategiesDetails' query parameter in
-	** the request. If the parameter is 'withDetails', this value is true.
 	**************************************************************************************************/
 	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
-	withStrategiesDetails := strings.EqualFold(getQuery(c, `strategiesDetails`), `withDetails`)
 
 	/** 🔵 - Yearn *************************************************************************************
 	** hideAlways: A boolean value that determines whether to hide certain vaults. It is obtained
@@ -109,8 +104,8 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	** This process effectively gathers all vaults across all supported chains, excluding those that
 	** are blacklisted, and stores them in 'allVaults' for further processing.
 	**************************************************************************************************/
-	data := []TExternalVault{}
-	allVaults := []*TExternalVault{}
+	data := []TSimplifiedExternalVault{}
+	allVaults := []TSimplifiedExternalVault{}
 	for _, chainID := range chains {
 		vaultsForChain := vaults.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
@@ -128,7 +123,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 				continue
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * newVault.APY.NetAPY
-			allVaults = append(allVaults, newVault)
+			allVaults = append(allVaults, toSimplifiedVersion(*newVault))
 		}
 	}
 
@@ -180,24 +175,16 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 				continue
 			}
 
-			if withStrategiesDetails {
-				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
-			} else {
-				externalStrategy = &TStrategy{
-					Address:     strategy.Address.Hex(),
-					Name:        strategy.Name,
-					DisplayName: strategy.DisplayName,
-					Description: strategy.Description,
-				}
+			externalStrategy = &TStrategy{
+				Address:     strategy.Address.Hex(),
+				Name:        strategy.Name,
+				DisplayName: strategy.DisplayName,
+				Description: strategy.Description,
 			}
 			currentVault.Strategies = append(currentVault.Strategies, externalStrategy)
 		}
-		if withStrategiesDetails {
-			currentVault.RiskScore = currentVault.ComputeRiskScore()
-		}
 
-		data = append(data, *currentVault)
+		data = append(data, currentVault)
 	}
 
 	/** 🔵 - Yearn *************************************************************************************

@@ -152,7 +152,40 @@ type TExternalVault struct {
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
 	// Computing only
-	FeaturingScore float64 `json:"featuringScore,omitempty"`
+	FeaturingScore float64 `json:"featuringScore"`
+}
+
+type TSimplifiedExternalVaultTVL struct {
+	TotalAssets *bigNumber.Int `json:"total_assets"`
+	TVL         float64        `json:"tvl"`
+	Price       float64        `json:"price"`
+}
+
+type TSimplifiedExternalERC20Token struct {
+	Address     string `json:"address"`
+	Name        string `json:"name"`
+	Symbol      string `json:"symbol"`
+	Description string `json:"description"`
+	Decimals    uint64 `json:"decimals"`
+}
+
+// TSimplifiedExternalVault is the struct containing the information about a vault.
+type TSimplifiedExternalVault struct {
+	Address        string                        `json:"address"`
+	Type           models.TTokenType             `json:"type"`
+	Symbol         string                        `json:"symbol"`
+	Name           string                        `json:"name"`
+	Category       string                        `json:"category"`
+	Decimals       uint64                        `json:"decimals"`
+	ChainID        uint64                        `json:"chainID"`
+	DepositLimit   *bigNumber.Int                `json:"depositLimit"`
+	Retired        bool                          `json:"retired"`
+	Token          TSimplifiedExternalERC20Token `json:"token"`
+	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
+	APR            apy.TVaultAPR                 `json:"apr"`
+	Strategies     []*TStrategy                  `json:"strategies"`
+	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
+	FeaturingScore float64                       `json:"featuringScore"`
 }
 
 func NewVault() *TExternalVault {

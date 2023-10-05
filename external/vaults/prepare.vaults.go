@@ -34,3 +34,71 @@ func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumb
 	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
+
+func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
+	vaultName := vault.DisplayName
+	if vaultName == "" {
+		vaultName = vault.Name
+	}
+	if vaultName == "" {
+		vaultName = vault.FormatedName
+	}
+	if vaultName == "" {
+		vaultName = `Unknown`
+	}
+
+	vaultSymbol := vault.DisplaySymbol
+	if vaultSymbol == "" {
+		vaultSymbol = vault.Symbol
+	}
+	if vaultSymbol == "" {
+		vaultSymbol = vault.FormatedSymbol
+	}
+	if vaultSymbol == "" {
+		vaultSymbol = `Unknown`
+	}
+
+	tokenName := vault.Token.DisplayName
+	if tokenName == "" {
+		tokenName = vault.Token.Name
+	}
+	if tokenName == "" {
+		tokenName = `Unknown`
+	}
+
+	tokenSymbol := vault.Token.DisplaySymbol
+	if tokenSymbol == "" {
+		tokenSymbol = vault.Token.Symbol
+	}
+	if tokenSymbol == "" {
+		tokenSymbol = `Unknown`
+	}
+
+	simplifiedVault := TSimplifiedExternalVault{
+		Address:        vault.Address,
+		Type:           vault.Type,
+		Symbol:         vault.Symbol,
+		Name:           vaultName,
+		Category:       vault.Category,
+		Decimals:       vault.Decimals,
+		ChainID:        vault.ChainID,
+		DepositLimit:   vault.Details.DepositLimit,
+		APR:            vault.APR,
+		Migration:      vault.Migration,
+		Retired:        vault.Details.Retired,
+		FeaturingScore: vault.FeaturingScore,
+		Token: TSimplifiedExternalERC20Token{
+			Address:     vault.Token.Address,
+			Name:        tokenName,
+			Symbol:      tokenSymbol,
+			Description: vault.Token.Description,
+			Decimals:    vault.Token.Decimals,
+		},
+		TVL: TSimplifiedExternalVaultTVL{
+			TotalAssets: vault.TVL.TotalAssets,
+			TVL:         vault.TVL.TVL,
+			Price:       vault.TVL.Price,
+		},
+	}
+	return simplifiedVault
+}

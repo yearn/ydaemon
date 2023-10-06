@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -66,13 +67,14 @@ func randomSigner() *bind.TransactOpts {
 func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	if WS[chainID] == nil {
 		uriString := GetWSEnvURI(chainID)
-		// uriString := GetRPCURI(chainID)
-		// uriString := `http://localhost:8545`
 		uri, _ := url.Parse(uriString)
 		if uri.Scheme == `https` {
 			uri.Scheme = `wss`
 		} else {
 			uri.Scheme = `ws`
+		}
+		if strings.HasPrefix(uri.Host, `nd-`) {
+			uri.Host = strings.Replace(uri.Host, `nd-`, `ws-nd-`, 1)
 		}
 
 		client, err := ethclient.Dial(uri.String())

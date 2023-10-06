@@ -102,7 +102,8 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
-	** If we still have some missing prices, we will use the lens price oracle to fetch them.
+	** With the new version of the Curve LP Token, we can use the contract itself to get the price
+	** of the LP token. We will then add them to our map.
 	**********************************************************************************************/
 	queryList := []common.Address{}
 	for _, token := range tokenList {
@@ -110,8 +111,25 @@ func fetchPrices(
 			queryList = append(queryList, token)
 		}
 	}
-	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
 
+	priceFromCurveAMM := fetchPricesFromCurveAMM(chainID, blockNumber, queryList)
+	for token, price := range priceFromCurveAMM {
+		if !price.IsZero() && newPriceMap[token] == nil {
+			newPriceMap[token] = price
+		}
+	}
+
+	/**********************************************************************************************
+	** If we still have some missing prices, we will use the lens price oracle to fetch them.
+	**********************************************************************************************/
+	queryList = []common.Address{}
+	for _, token := range tokenList {
+		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
+			queryList = append(queryList, token)
+		}
+	}
+
+	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
 	for token, price := range priceMapLensOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
 			newPriceMap[token] = price

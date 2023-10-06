@@ -27,6 +27,7 @@ var CurveGaugeABI, _ = contracts.CurveGaugeMetaData.GetAbi()
 var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
 var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
 var ERC4626ABI, _ = contracts.ERC4626MetaData.GetAbi()
+var CurveAMMABI, _ = contracts.CurveAMMMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -286,6 +287,20 @@ func GetAsset(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      ERC4626ABI,
 		Method:   `asset`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetLPPrice(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := CurveAMMABI.Pack("lp_price")
+	if err != nil {
+		logs.Error("Error packing CurveAMMABI lp_price", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      CurveAMMABI,
+		Method:   `lp_price`,
 		CallData: parsedData,
 		Name:     name,
 	}

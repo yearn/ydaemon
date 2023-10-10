@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
 
@@ -67,16 +68,17 @@ func NewStrategy() *TStrategy {
 func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
 	delegatedValue := `0`
 	if vault, ok := vaults.FindVault(strategy.ChainID, strategy.VaultAddress); ok {
-		if tokenPrice, ok := prices.FindPrice(strategy.ChainID, vault.Token.Address); ok {
-			// tokenPrice
-			_, humanizedTokenPrice := helpers.FormatAmount(tokenPrice.String(), 6)
-			delegatedValue = strconv.FormatFloat(
-				buildDelegated(
-					strategy.DelegatedAssets,
-					int(vault.Decimals),
-					humanizedTokenPrice,
-				), 'f', -1, 64,
-			)
+		if vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address); ok {
+			if tokenPrice, ok := prices.FindPrice(strategy.ChainID, vault.AssetAddress); ok {
+				_, humanizedTokenPrice := helpers.FormatAmount(tokenPrice.String(), 6)
+				delegatedValue = strconv.FormatFloat(
+					buildDelegated(
+						strategy.DelegatedAssets,
+						int(vaultToken.Decimals),
+						humanizedTokenPrice,
+					), 'f', -1, 64,
+				)
+			}
 		}
 	}
 

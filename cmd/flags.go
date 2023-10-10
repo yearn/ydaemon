@@ -6,7 +6,6 @@ import (
 
 var chains = []uint64{}
 var shouldEnableSentry *bool
-var startBlock *uint64
 var endBlock *uint64
 var process TProcess
 
@@ -30,7 +29,6 @@ func initFlags() {
 	** Description: Indicate the start and end block numbers
 	** Default: 0 - nil
 	**********************************************************************************************/
-	startBlock = flag.Uint64(`start`, 0, `Start block number`)
 	endBlock = flag.Uint64(`end`, 0, `End block number`)
 
 	/**********************************************************************************************

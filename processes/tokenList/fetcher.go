@@ -2,7 +2,7 @@ package tokenList
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/yearn/ydaemon/common/logs"
@@ -20,7 +20,7 @@ func fetchDefaultTokenList(url string) models.TTokenList {
 		return models.TTokenList{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
 		return models.TTokenList{}

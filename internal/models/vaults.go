@@ -1,28 +1,25 @@
 package models
 
 import (
+	"time"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
 type TVaultsFromRegistry struct {
-	Address         common.Address
-	RegistryAddress common.Address
-	TokenAddress    common.Address
-	BlockHash       common.Hash
-	Type            TTokenType
-	APIVersion      string
-	ChainID         uint64
-	BlockNumber     uint64
-	Activation      uint64
-	ManagementFee   uint64
-	TxIndex         uint
-	LogIndex        uint
+	Address         common.Address `json:"address"`
+	RegistryAddress common.Address `json:"registryAddress"`
+	TokenAddress    common.Address `json:"tokenAddress"`
+	Type            TTokenType     `json:"type"`
+	APIVersion      string         `json:"version"`
+	ChainID         uint64         `json:"chainID"`
+	BlockNumber     uint64         `json:"blockNumber"`
 }
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets          *bigNumber.Int `json:"total_assets"`
+	TotalAssets          *bigNumber.Int `json:"totalAssets"`
 	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
 	TVLDeposited         float64        `json:"tvl_deposited"`
 	TVLDelegated         float64        `json:"tvl_delegated"`
@@ -89,34 +86,28 @@ type TStaking struct {
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
-	Address               common.Address   `json:"address"`
-	Management            common.Address   `json:"management"`
-	Governance            common.Address   `json:"governance"`
-	Guardian              common.Address   `json:"guardian"`
-	Rewards               common.Address   `json:"rewards"`
-	WithdrawalQueue       []common.Address `json:"withdrawalQueue"`
-	PricePerShare         *bigNumber.Int   `json:"pricePerShare"`
-	DepositLimit          *bigNumber.Int   `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.Int   `json:"availableDepositLimit,omitempty"`
-	TotalAssets           *bigNumber.Int   `json:"total_assets"`
-	Type                  TTokenType       `json:"type"`
-	Symbol                string           `json:"symbol"`
-	DisplaySymbol         string           `json:"display_symbol"`
-	FormatedSymbol        string           `json:"formated_symbol"`
-	Name                  string           `json:"name"`
-	DisplayName           string           `json:"display_name"`
-	FormatedName          string           `json:"formated_name"`
-	Icon                  string           `json:"icon"`
-	Version               string           `json:"version"`
-	ChainID               uint64           `json:"chainID"`
-	Inception             uint64           `json:"inception"`  //Timestamp
-	Activation            uint64           `json:"activation"` //BlockNumber
-	Decimals              uint64           `json:"decimals"`
-	PerformanceFee        uint64           `json:"performanceFee"`
-	ManagementFee         uint64           `json:"managementFee"`
-	Endorsed              bool             `json:"endorsed"`
-	EmergencyShutdown     bool             `json:"emergency_shutdown"`
-	Token                 TERC20Token      `json:"token"`
+	// Immutable elements. They won't change
+	Address      common.Address `json:"address"`
+	AssetAddress common.Address `json:"token"`      // Address of the underlying token
+	Management   common.Address `json:"management"` // Address of the management contract
+	Governance   common.Address `json:"governance"` // Address of the governance contract
+	Guardian     common.Address `json:"guardian"`   // Address of the guardian contract
+	Rewards      common.Address `json:"rewards"`    // Address of the rewards contract
+	Version      string         `json:"version"`    // The version of the vault
+	Activation   uint64         `json:"activation"` // When the vault was activated
+	ChainID      uint64         `json:"chainID"`    // The chainID of the vault
+	Endorsed     bool           `json:"endorsed"`   // If the vault is endorsed by Yearn
+
+	// Semi-mutable eelements. They can change but rarely
+	PerformanceFee    uint64 `json:"performanceFee"`    // The performance fee of the vault
+	ManagementFee     uint64 `json:"managementFee"`     // The management fee of the vault
+	EmergencyShutdown bool   `json:"emergencyShutdown"` // If the vault is in emergency shutdown
+
+	// Mutable elements. They will often change
+	LastActiveStrategies []common.Address `json:"lastActiveStrategies"` // The list of "active" strategies via their withdrawal queue
+	LastPricePerShare    *bigNumber.Int   `json:"lastPricePerShare"`    // Price per share of the vault
+	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault
+	LastUpdate           time.Time        `json:"lastUpdate"`           // When the vault was last updated
 }
 
 type TLegacyAPIAPY struct {

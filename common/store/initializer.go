@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 type TDBType string
@@ -31,26 +32,24 @@ func init() {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
 		_historicalPriceSyncMap[chainID] = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = &sync.Map{}
 		_vaultsSyncMap[chainID] = &sync.Map{}
-		_erc20SyncMap[chainID] = &sync.Map{}
 		_strategiesSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
-		_vaultsActivations[chainID] = &sync.Map{}
 		_stackingPoolsSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
 	for chainID := range env.CHAINS {
-		wg.Add(5)
-		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
-		go LoadBlockTime(chainID, nil)
+		storage.LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
+
+		go LoadBlockTime(chainID, nil) //This does not require a wg
 		// go LoadHistoricalPrice(chainID, nil)
-		go LoadNewVaultsFromRegistry(chainID, wg)
+
+		wg.Add(4)
+		go storage.LoadNewVaultsFromRegistry(chainID, wg)
 		go LoadStrategies(chainID, wg)
 		go LoadVaults(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
-		go LoadVaultsActivation(chainID, wg)
 	}
 	wg.Wait()
 }

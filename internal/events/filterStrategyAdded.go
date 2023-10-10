@@ -65,7 +65,7 @@ func filterStrategyAdded(
 		if lastEvent > 0 {
 			start = lastEvent - 1
 		} else {
-			start = vault.Activation
+			start = vault.BlockNumber
 		}
 	}
 
@@ -208,7 +208,7 @@ func filterStrategiesMigrated(
 		if lastEvent > 0 {
 			start = lastEvent - 1
 		} else {
-			start = vault.Activation
+			start = vault.BlockNumber
 		}
 	}
 

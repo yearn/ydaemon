@@ -2,7 +2,7 @@ package tokenList
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -42,17 +42,6 @@ func GetTokenFromList(chainID uint64, tokenAddress common.Address) (models.TYear
 }
 
 /**********************************************************************************************
-** getLastUpdate will, for a given chainID, return the last time the list was updated and
-** stored in _tokenListUpdateMap.
-**********************************************************************************************/
-func getLastUpdate(chainID uint64) time.Time {
-	if _, ok := _tokenListUpdateMap[chainID]; !ok {
-		_tokenListUpdateMap[chainID] = time.Time{}
-	}
-	return _tokenListUpdateMap[chainID]
-}
-
-/**********************************************************************************************
 ** setTokenFromList will, for a given chainID, update or set a token stored in _tokenListMap.
 **********************************************************************************************/
 func setTokenFromList(chainID uint64, newTokenValue models.TYearnTokenListToken) {
@@ -70,7 +59,7 @@ func setTokenFromList(chainID uint64, newTokenValue models.TYearnTokenListToken)
 **********************************************************************************************/
 func loadTokensListFromJSON(chainID uint64) (map[common.Address]models.TYearnTokenListToken, time.Time) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	file, err := ioutil.ReadFile(env.BASE_DATA_PATH + `/tokensList/` + chainIDStr + `.json`)
+	file, err := os.ReadFile(env.BASE_DATA_PATH + `/tokensList/` + chainIDStr + `.json`)
 	var lastUpdate time.Time
 	if err != nil {
 		return make(map[common.Address]models.TYearnTokenListToken), lastUpdate
@@ -106,8 +95,7 @@ func saveTokensListToJSON(YTokenMap map[common.Address]models.TYearnTokenListTok
 	if err != nil {
 		return
 	}
-	err = ioutil.WriteFile(path, jsonData, 0644)
-	if err != nil {
+	if err = os.WriteFile(path, jsonData, 0644); err != nil {
 		return
 	}
 }

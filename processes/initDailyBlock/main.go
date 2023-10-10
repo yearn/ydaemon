@@ -2,7 +2,7 @@ package initDailyBlock
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math"
 	"math/big"
 	"net/http"
@@ -19,6 +19,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/registries"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 )
@@ -147,7 +148,12 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 			if pricePerShare.IsZero() {
 				continue
 			}
-			humanizedPricePerShare := helpers.ToNormalizedAmount(pricePerShare, vault.Decimals)
+			vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
+			if !ok {
+				continue
+			}
+
+			humanizedPricePerShare := helpers.ToNormalizedAmount(pricePerShare, vaultToken.Decimals)
 			humanizedFloat, _ := humanizedPricePerShare.Float64()
 			itemToSave = append(itemToSave, store.DBVaultPricePerShare{
 				UUID:                   `will-be-overwritten`,
@@ -230,7 +236,7 @@ func assertDailyBlockNumber(chainID uint64) {
 				continue
 			}
 			defer resp.Body.Close()
-			body, err := ioutil.ReadAll(resp.Body)
+			body, err := io.ReadAll(resp.Body)
 			if err != nil {
 				logs.Warning("Error unmarshalling response body from DeFiLlama for chain", chainID)
 				continue
@@ -254,7 +260,7 @@ func assertDailyBlockNumber(chainID uint64) {
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-	tokens.RetrieveAllTokens(chainID, vaultsMap)
-	vaults.RetrieveAllVaults(chainID, vaultsMap)
+	historicalVaults := registries.IndexNewVaults(chainID)
+	tokens.RetrieveAllTokens(chainID, historicalVaults)
+	vaults.RetrieveAllVaults(chainID, historicalVaults)
 }

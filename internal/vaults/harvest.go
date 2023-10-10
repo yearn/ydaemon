@@ -4,8 +4,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/ethereum"
 )
 
 type THarvestFees struct {
@@ -57,46 +55,4 @@ func (harvest *THarvest) New(log types.Log) *THarvest {
 	harvest.LogIndex = log.Index
 	harvest.Removed = log.Removed
 	return harvest
-}
-
-func findRelatedTransfers(
-	log *contracts.Yvault043StrategyReportedIterator,
-	transfersFromVaultsToStrategies map[common.Address]map[uint64][]ethereum.TEventBlock,
-	transfersFromVaultsToTreasury map[uint64][]ethereum.TEventBlock,
-) (*bigNumber.Int, *bigNumber.Int) {
-	currentBlock := ethereum.TEventBlock{
-		BlockNumber: log.Event.Raw.BlockNumber,
-		TxIndex:     log.Event.Raw.TxIndex,
-		LogIndex:    log.Event.Raw.Index,
-	}
-
-	transferToStrategist := ethereum.FindEventBefore(
-		map[uint64][]ethereum.TEventBlock{
-			currentBlock.BlockNumber: transfersFromVaultsToStrategies[log.Event.Strategy][currentBlock.BlockNumber],
-		},
-		currentBlock,
-	)
-	transferToTreasury := ethereum.FindEventBefore(
-		map[uint64][]ethereum.TEventBlock{
-			currentBlock.BlockNumber: transfersFromVaultsToTreasury[currentBlock.BlockNumber],
-		},
-		currentBlock,
-	)
-
-	return transferToStrategist, transferToTreasury
-}
-
-func durationSinceLastReport(
-	log *contracts.Yvault043StrategyReportedIterator,
-	allLastReport map[common.Address]map[uint64]uint64,
-) *bigNumber.Int {
-	previousBlockTimestampUint64 := ethereum.FindPreviousBlock(allLastReport[log.Event.Strategy], log.Event.Raw.BlockNumber)
-	duration := bigNumber.NewInt(0).Sub(
-		bigNumber.NewUint64(allLastReport[log.Event.Strategy][log.Event.Raw.BlockNumber]),
-		bigNumber.NewUint64(previousBlockTimestampUint64),
-	)
-	if previousBlockTimestampUint64 == 0 || duration.IsZero() {
-		return bigNumber.NewInt(0)
-	}
-	return duration
 }

@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math"
 	"math/rand"
 	"net/http"
@@ -19,7 +19,7 @@ import (
 var GECKO_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,
 	10:    `optimistic-ethereum`,
-	137:   `polygon`,
+	137:   `polygon-pos`,
 	250:   `fantom`,
 	8453:  `base`,
 	42161: `arbitrum-one`,
@@ -66,7 +66,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		defer resp.Body.Close()
 
 		// Read the response body
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 			return priceMap

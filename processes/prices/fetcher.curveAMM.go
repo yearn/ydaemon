@@ -3,14 +3,11 @@ package prices
 import (
 	"context"
 	"math/big"
-	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
@@ -19,17 +16,6 @@ import (
 **************************************************************************************************/
 func fetchPricesFromCurveAMM(chainID uint64, blockNumber *uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
 	newPriceMap := make(map[common.Address]*bigNumber.Int)
-
-	/**********************************************************************************************
-	** The first step is to prepare the multicall, connecting to the multicall instance and
-	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
-	**********************************************************************************************/
-	lensAddress := env.CHAINS[chainID].LensContract.Address
-	if (lensAddress == common.Address{}) {
-		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
-		return newPriceMap
-	}
 
 	calls := []ethereum.Call{}
 	for _, token := range tokens {

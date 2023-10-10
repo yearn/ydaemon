@@ -292,9 +292,9 @@ func computeCurveLikeForwardAPR(
 	subgraphData []models.CurveSubgraphData,
 	fraxPools []TFraxPool,
 ) TForwardAPR {
-	gauge := findGaugeForVault(vault.Token.Address, gauges)
-	pool := findPoolForVault(vault.Token.Address, pools)
-	fraxPool := findFraxPoolForVault(vault.Token.Address, fraxPools)
+	gauge := findGaugeForVault(vault.AssetAddress, gauges)
+	pool := findPoolForVault(vault.AssetAddress, pools)
+	fraxPool := findFraxPoolForVault(vault.AssetAddress, fraxPools)
 	subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
 
 	TypeOf := ``

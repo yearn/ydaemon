@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math"
 	"math/rand"
 	"net/http"
@@ -56,7 +56,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		defer resp.Body.Close()
 
 		// Read the response body
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 			return priceMap

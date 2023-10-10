@@ -38,7 +38,7 @@ func filterNewExperimentalVault(
 	}
 
 	client := ethereum.GetRPC(chainID)
-	currentRegistry, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
+	currentRegistry, _ := contracts.NewYRegistryV2(registry.Address, client) //V1 and V2 share the same ABI
 
 	if log, err := currentRegistry.FilterNewExperimentalVault(opts, nil, nil); err == nil {
 		for log.Next() {
@@ -53,11 +53,6 @@ func filterNewExperimentalVault(
 				TokenAddress:    log.Event.Token,
 				APIVersion:      log.Event.ApiVersion,
 				BlockNumber:     log.Event.Raw.BlockNumber,
-				Activation:      0,
-				ManagementFee:   200,
-				BlockHash:       log.Event.Raw.BlockHash,
-				TxIndex:         log.Event.Raw.TxIndex,
-				LogIndex:        log.Event.Raw.Index,
 				Type:            models.TokenTypeExperimentalVault,
 			}
 			syncMap.Store(eventKey, newVault)
@@ -88,7 +83,7 @@ func filterNewVaults(
 ) {
 	client := ethereum.GetRPC(chainID)
 	if registry.Version == 1 || registry.Version == 2 {
-		currentRegistry, _ := contracts.NewYregistryv2(registry.Address, client) //V1 and V2 share the same ABI
+		currentRegistry, _ := contracts.NewYRegistryV2(registry.Address, client) //V1 and V2 share the same ABI
 		if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 			for log.Next() {
 				if log.Error() != nil {
@@ -102,11 +97,6 @@ func filterNewVaults(
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      0,
-					ManagementFee:   200,
-					BlockHash:       log.Event.Raw.BlockHash,
-					TxIndex:         log.Event.Raw.TxIndex,
-					LogIndex:        log.Event.Raw.Index,
 					Type:            models.TokenTypeStandardVault,
 				}
 				syncMap.Store(eventKey, newVault)
@@ -131,16 +121,10 @@ func filterNewVaults(
 					TokenAddress:    log.Event.Token,
 					APIVersion:      log.Event.ApiVersion,
 					BlockNumber:     log.Event.Raw.BlockNumber,
-					Activation:      0,
-					ManagementFee:   200,
-					BlockHash:       log.Event.Raw.BlockHash,
-					TxIndex:         log.Event.Raw.TxIndex,
-					LogIndex:        log.Event.Raw.Index,
 					Type:            models.TokenTypeStandardVault,
 				}
 				if log.Event.VaultType.Uint64() == 2 {
 					newVault.Type = models.TokenTypeAutomatedVault
-					newVault.ManagementFee = 0
 				}
 				eventKey := log.Event.Vault.Hex() + `-` + log.Event.Token.Hex() + `-` + log.Event.ApiVersion + `-` + strconv.FormatUint(uint64(log.Event.Raw.BlockNumber), 10)
 				syncMap.Store(eventKey, newVault)
@@ -251,90 +235,4 @@ func HandleNewVaults(
 	})
 
 	return standardVaultList, experimentalVaultList
-}
-
-/**************************************************************************************************
-** HandleNewStandardVaults will, for one registry, filter all newVault events and store them in an
-** array of TVaultsFromRegistry. This process will allow us to get all the vaults that were ever
-** deployed on the network. From that, all the Yearn's data can be retrieved.
-**
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - start: the block number to start fetching from
-** - end: the block number to stop fetching from
-**
-** Returns:
-** - an array of TVaultsFromRegistry
-**************************************************************************************************/
-func HandleNewStandardVaults(
-	chainID uint64,
-	registry env.TContractData,
-	start uint64,
-	end *uint64,
-) (standardVaultList []models.TVaultsFromRegistry) {
-	syncMap := sync.Map{}
-
-	/**********************************************************************************************
-	** First, we need to know when to stop our log fetching. By default, we will fetch until the
-	** current block number, aka nil.
-	** As using nil may cause some issues, we will specify the current block number instead.
-	**********************************************************************************************/
-	if end == nil {
-		client := ethereum.GetRPC(chainID)
-		blockEnd, _ := client.BlockNumber(context.Background())
-		end = &blockEnd
-	}
-
-	/**********************************************************************************************
-	** Then, we need to know when to start our log fetching. By default, we will fetch from the
-	** registry activation block in order to get all the vaults that were ever deployed since the
-	** registry was deployed.
-	** However, if the external database is used, we may want to only fetch the logs that were
-	** emitted after the last time we fetched the logs. In that case, we will use the last event
-	** block number + 1 as the start block number.
-	** If another start block number is specified, we will use it instead.
-	**********************************************************************************************/
-	registriesLastBlockSync := store.ListLastNewVaultEventForRegistries(chainID)
-	if start == 0 {
-		lastEvent := registriesLastBlockSync[registry.Address.Hex()]
-		if lastEvent > 0 {
-			start = lastEvent - 1
-		} else {
-			start = registry.Activation
-		}
-	}
-	if chainID == 8453 {
-		start = registry.Activation
-	}
-
-	/**********************************************************************************************
-	** Finally, we will fetch the logs in chunks of MAX_BLOCK_RANGE blocks. This is done to avoid
-	** hitting some external node providers' rate limits.
-	**********************************************************************************************/
-	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
-		if chunkEnd > *end {
-			chunkEnd = *end
-		}
-
-		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
-		filterNewVaults(chainID, registry, opts, &syncMap)
-	}
-
-	/**********************************************************************************************
-	** Once we have all the logs, we will dump them from the sync.Map to the array of
-	** TVaultsFromRegistry to use them in the rest of the process.
-	**********************************************************************************************/
-	syncMap.Range(func(_, value interface{}) bool {
-		standardVaultList = append(standardVaultList, value.(models.TVaultsFromRegistry))
-		return true
-	})
-
-	/**********************************************************************************************
-	** We are storing in the DB the sync status, indicating we went up to the block number to check
-	** for new vaults.
-	**********************************************************************************************/
-	go store.StoreSyncRegistry(chainID, registry.Address, end)
-
-	return standardVaultList
 }

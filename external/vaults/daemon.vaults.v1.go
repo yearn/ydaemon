@@ -2,7 +2,7 @@ package vaults
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"sync"
@@ -29,7 +29,7 @@ func FetchVaultsFromV1(chainID uint64) {
 	defer resp.Body.Close()
 
 	// Read the response body and store it in the body variable
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Warning("Error unmarshalling response body from the vaults from V1 for chain", chainID)
 		return

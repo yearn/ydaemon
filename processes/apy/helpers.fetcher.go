@@ -2,7 +2,7 @@ package apy
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -18,7 +18,7 @@ func retrieveCurveGauges(chainID uint64) []models.CurveGauge {
 		return []models.CurveGauge{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveGauge{}
@@ -45,7 +45,7 @@ func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 			continue
 		}
 		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			logs.Error(err)
 			continue
@@ -70,7 +70,7 @@ func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
 		return []models.CurveSubgraphData{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveSubgraphData{}

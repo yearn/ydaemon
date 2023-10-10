@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math/big"
 	"net/http"
 
@@ -13,8 +13,8 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x4D996E294B00cE8287C16A2b9A4e637ecA5c939f`)
@@ -91,7 +91,7 @@ func fetchVelo(url string) []TVeloPairData {
 		return []TVeloPairData{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(`impossible to read velo Get body`, err.Error())
 		return []TVeloPairData{}
@@ -160,19 +160,19 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 		token0Price = bigNumber.NewFloat(0).Mul(token0PriceUSD, bigNumber.NewFloat(1e6)).Int()
 		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
 
-		if pairToken, _ := store.GetERC20(chainID, pair.PairAddress); !store.IsVaultLike(pairToken) {
+		if pairToken, _ := storage.GetERC20(chainID, pair.PairAddress); !pairToken.IsVaultLike() {
 			if !pairPrice.IsZero() {
 				newPairPriceMap[pair.PairAddress] = pairPrice.Int()
 			}
 		}
 
-		if token0, _ := store.GetERC20(chainID, pair.Token0); !store.IsVaultLike(token0) {
+		if token0, _ := storage.GetERC20(chainID, pair.Token0); !token0.IsVaultLike() {
 			if !token0Price.IsZero() {
 				newTokensPriceMap[pair.Token0] = token0Price
 			}
 		}
 
-		if token1, _ := store.GetERC20(chainID, pair.Token1); !store.IsVaultLike(token1) {
+		if token1, _ := storage.GetERC20(chainID, pair.Token1); !token1.IsVaultLike() {
 			if !token1Price.IsZero() {
 				newTokensPriceMap[pair.Token1] = token1Price
 			}

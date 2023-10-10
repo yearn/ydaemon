@@ -31,7 +31,7 @@ func isVeloVault(chainID uint64, vault models.TVault) (common.Address, bool) {
 		logs.Error(err)
 		return common.Address{}, false
 	}
-	gaugeAddressForVoter, err := veloVoter.Gauges(nil, vault.Token.Address)
+	gaugeAddressForVoter, err := veloVoter.Gauges(nil, vault.AssetAddress)
 	if err != nil {
 		logs.Error(err)
 		return common.Address{}, false
@@ -113,7 +113,7 @@ func calculateVeloLikeStrategyAPR(
 	** If that's good, we will need the price of the vault token and the price of the rewards token
 	** to compute the APR.
 	**********************************************************************************************/
-	poolPrice := getTokenPrice(vault.ChainID, vault.Token.Address)
+	poolPrice := getTokenPrice(vault.ChainID, vault.AssetAddress)
 	rewardsPrice := getTokenPrice(vault.ChainID, rewardTokenRaw)
 
 	/**********************************************************************************************
@@ -144,6 +144,7 @@ func calculateVeloLikeStrategyAPR(
 	netAPY = bigNumber.NewFloat(0).Add(netAPY, bigNumber.NewFloat(1))    // 1 + (netAPR / 365)
 	netAPY = bigNumber.NewFloat(0).Pow(netAPY, 365)                      // (1 + (netAPR / 365)) ^ 365
 	netAPY = bigNumber.NewFloat(0).Sub(netAPY, bigNumber.NewFloat(1))    // ((1 + (netAPR / 365)) ^ 365) - 1
+	_ = netAPY
 
 	apyStruct := TStrategyAPR{
 		Type:      "v2:velo",

@@ -1,0 +1,575 @@
+{
+	"0x03b82e4070ca32ff63a03f2ecfc16c0165689a9d": {
+		"address": "0x03b82e4070ca32ff63a03f2ecfc16c0165689a9d",
+		"underlyingTokensAddresses": [
+			"0x511d35c52a3c244e7b8bd92c0c297755fbd89212"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve AVAX yVault",
+		"symbol": "yvAVAX",
+		"display_name": "Curve AVAX yVault",
+		"display_symbol": "yvAVAX",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x03B82e4070cA32FF63A03F2EcfC16c0165689a9d/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x04068da6c83afcfa0e13ba15a6696662335d5b75": {
+		"address": "0x04068da6c83afcfa0e13ba15a6696662335d5b75",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "USD Coin",
+		"symbol": "USDC",
+		"display_name": "USD Coin",
+		"display_symbol": "USDC",
+		"description": "USD Coin is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC is issued by regulated financial institutions.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0x04068DA6C83AFCFA0e13ba15A6696662335D5B75/logo-128.png",
+		"decimals": 6,
+		"chainID": 250
+	},
+	"0x0446acab3e0242fcf33aa526f1c95a88068d5042": {
+		"address": "0x0446acab3e0242fcf33aa526f1c95a88068d5042",
+		"underlyingTokensAddresses": [
+			"0x1e4f97b9f9f913c46f1632781732927b9019c68b"
+		],
+		"type": "Yearn Vault",
+		"name": "CRV yVault",
+		"symbol": "yvCRV",
+		"display_name": "CRV yVault",
+		"display_symbol": "yvCRV",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x0446acaB3e0242fCf33Aa526f1c95a88068d5042/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x049d68029688eabf473097a2fc38ef61633a3c7a": {
+		"address": "0x049d68029688eabf473097a2fc38ef61633a3c7a",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Frapped USDT",
+		"symbol": "fUSDT",
+		"display_name": "Frapped USDT",
+		"display_symbol": "fUSDT",
+		"description": "Frapped USDT is an innovative cross-chain wrapper for USDT token, in collaboration between Tether and Popsicle Finance. USDT is a centralized stablecoin that mirrors the price of the U.S. dollar, issued by Hong Kong-based company Tether. The token’s peg to the USD is achieved via maintaining a sum of commercial paper, fiduciary deposits, cash, reserve repo notes, and treasury bills in reserves that is equal in USD value to the number of USDT in circulation.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0x049d68029688eAbF473097a2fC38ef61633A3C7A/logo-128.png",
+		"decimals": 6,
+		"chainID": 250
+	},
+	"0x0a0b23d9786963de69cb2447dc125c49929419d8": {
+		"address": "0x0a0b23d9786963de69cb2447dc125c49929419d8",
+		"underlyingTokensAddresses": [
+			"0x82f0b8b456c1a451378467398982d4834b6829c1"
+		],
+		"type": "Yearn Vault",
+		"name": "MIM yVault",
+		"symbol": "yvMIM",
+		"display_name": "MIM yVault",
+		"display_symbol": "yvMIM",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x0A0b23D9786963DE69CB2447dC125c49929419d8/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x0dec85e74a92c52b7f708c4b10207d9560cefaf0": {
+		"address": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
+		"underlyingTokensAddresses": [
+			"0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83"
+		],
+		"type": "Yearn Vault",
+		"name": "WFTM yVault",
+		"symbol": "yvWFTM",
+		"display_name": "WFTM yVault",
+		"display_symbol": "yvWFTM",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x0fbbf9848d969776a5eb842edafaf29ef4467698": {
+		"address": "0x0fbbf9848d969776a5eb842edafaf29ef4467698",
+		"underlyingTokensAddresses": [
+			"0x841fad6eae12c286d1fd18d1d525dffa75c7effe"
+		],
+		"type": "Yearn Vault",
+		"name": "BOO yVault",
+		"symbol": "yvBOO",
+		"display_name": "BOO yVault",
+		"display_symbol": "yvBOO",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x0fBbf9848D969776a5Eb842EdAfAf29ef4467698/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x148c05caf1bb09b5670f00d511718f733c54bc4c": {
+		"address": "0x148c05caf1bb09b5670f00d511718f733c54bc4c",
+		"underlyingTokensAddresses": [
+			"0x049d68029688eabf473097a2fc38ef61633a3c7a"
+		],
+		"type": "Yearn Vault",
+		"name": "USDT yVault",
+		"symbol": "yvUSDT",
+		"display_name": "USDT yVault",
+		"display_symbol": "yvUSDT",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x148c05caf1Bb09B5670f00D511718f733C54bC4c/logo-128.png",
+		"decimals": 6,
+		"chainID": 250
+	},
+	"0x1b48641d8251c3e84ecbe3f2bd76b3701401906d": {
+		"address": "0x1b48641d8251c3e84ecbe3f2bd76b3701401906d",
+		"underlyingTokensAddresses": [
+			"0x3129662808bec728a27ab6a6b9afd3cbaca8a43c"
+		],
+		"type": "Yearn Vault",
+		"name": "DOLA yVault",
+		"symbol": "yvDOLA",
+		"display_name": "DOLA yVault",
+		"display_symbol": "yvDOLA",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x1b48641D8251c3E84ecbe3f2bD76B3701401906D/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b": {
+		"address": "0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b",
+		"underlyingTokensAddresses": [
+			"0xfcef8a994209d6916eb2c86cdd2afd60aa6f54b1"
+		],
+		"type": "Yearn Vault",
+		"name": "fBEETS yVault",
+		"symbol": "yvfBEETS",
+		"display_name": "fBEETS yVault",
+		"display_symbol": "yvfBEETS",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x1e2fe8074a5ce1Bb7394856B0C618E75D823B93b/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x1e4f97b9f9f913c46f1632781732927b9019c68b": {
+		"address": "0x1e4f97b9f9f913c46f1632781732927b9019c68b",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Curve DAO",
+		"symbol": "CRV",
+		"display_name": "Curve DAO",
+		"display_symbol": "CRV",
+		"description": "Similar to Uniswap, Curve Finance is an Automated Market Maker (AMM) based Decentralised Exchange (DEX). Unlike Uniswap, its main focus is only to swap between assets that are supposed to have the same value. Locked CRV tokens are used for protocol governance and also receive half of Curve's trading fees.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0x1E4F97b9f9F913c46F1632781732927B9019C68b/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83": {
+		"address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Wrapped Fantom",
+		"symbol": "WFTM",
+		"display_name": "Wrapped Fantom",
+		"display_symbol": "WFTM",
+		"description": "Fantom is a smart contract platform that intends to solve the scalability issues of existing public distributed ledger technologies. The Fantom platform adopts a new protocol known as the Lachesis Protocol to maintain consensus, which will be integrated into the current Fantom Opera Chain. The aim is to allow applications built on top of the Fantom Opera Chain to enjoy instant transactions and near zero transaction costs for all users. To convert your FTM to WFTM, you can easily swap at [Sushi](https://app.sushi.com/swap).",
+		"category": "Smart Contract Platform",
+		"icon": "https://assets.smold.app/api/token/250/0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x29b0da86e484e1c0029b56e817912d778ac0ec69": {
+		"address": "0x29b0da86e484e1c0029b56e817912d778ac0ec69",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "yearn.finance",
+		"symbol": "YFI",
+		"display_name": "yearn.fi",
+		"display_symbol": "YFI",
+		"description": "Yearn Finance is a suite of products in Decentralized Finance (DeFi) that provides yield aggregation, a decentralized money market, and several other DeFi building blocks on the Ethereum blockchain. The protocol is maintained by various independent developers and is governed by YFI holders.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0x29b0Da86e484E1C0029B56e817912d778aC0EC69/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x2c850cced00ce2b14aa9d658b7cad5df659493db": {
+		"address": "0x2c850cced00ce2b14aa9d658b7cad5df659493db",
+		"underlyingTokensAddresses": [
+			"0x29b0da86e484e1c0029b56e817912d778ac0ec69"
+		],
+		"type": "Yearn Vault",
+		"name": "YFI yVault",
+		"symbol": "yvYFI",
+		"display_name": "YFI yVault",
+		"display_symbol": "yvYFI",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x2dd7c9371965472e5a5fd28fbe165007c61439e1": {
+		"address": "0x2dd7c9371965472e5a5fd28fbe165007c61439e1",
+		"underlyingTokensAddresses": [
+			"0x82f0b8b456c1a451378467398982d4834b6829c1",
+			"0x049d68029688eabf473097a2fc38ef61633a3c7a"
+		],
+		"type": "Curve LP",
+		"name": "Curve.fi Factory Plain Pool: 3poolV2",
+		"symbol": "3poolV2-f",
+		"display_name": "Curve MIM 3Pool",
+		"display_symbol": "crvMIM3Pool",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains MIM, fUSDT, and USDC.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/250/0x2dd7C9371965472E5A5fD28fbE165007c61439E1/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x3129662808bec728a27ab6a6b9afd3cbaca8a43c": {
+		"address": "0x3129662808bec728a27ab6a6b9afd3cbaca8a43c",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Dola USD Stablecoin",
+		"symbol": "DOLA",
+		"display_name": "Dola USD Stablecoin",
+		"display_symbol": "DOLA",
+		"description": "DOLA is a synthetic USD stablecoin that can be minted by using other assets on Inverse Finance as collateral.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0x3129662808bEC728a27Ab6a6b9AFd3cBacA8A43c/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x321162cd933e2be498cd2267a90534a804051b11": {
+		"address": "0x321162cd933e2be498cd2267a90534a804051b11",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Bitcoin",
+		"symbol": "BTC",
+		"display_name": "Bitcoin",
+		"display_symbol": "BTC",
+		"description": "Wrapped Bitcoin is a tokenized version of Bitcoin (BTC) that runs on the Ethereum blockchain. The Wrapped Tokens project, of which WBTC is a part, was founded as a joint project of three organizations: BitGo, Kyber Network and Ren. BitGo also serves as the entity that holds WBTC tokens and the keys needed to mint more of them. WBTC is backed by Bitcoin at a 1:1 ratio via a network of automatically monitored merchants and custodians.",
+		"category": "Currency",
+		"icon": "https://assets.smold.app/api/token/250/0x321162Cd933E2Be498Cd2267a90534A804051b11/logo-128.png",
+		"decimals": 8,
+		"chainID": 250
+	},
+	"0x357ca46da26e1eefc195287ce9d838a6d5023ef3": {
+		"address": "0x357ca46da26e1eefc195287ce9d838a6d5023ef3",
+		"underlyingTokensAddresses": [
+			"0xdc301622e621166bd8e82f2ca0a26c13ad0be355"
+		],
+		"type": "Yearn Vault",
+		"name": "FRAX yVault",
+		"symbol": "yvFRAX",
+		"display_name": "FRAX yVault",
+		"display_symbol": "yvFRAX",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x357ca46da26E1EefC195287ce9D838A6D5023ef3/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x468003b688943977e6130f4f68f23aad939a1040": {
+		"address": "0x468003b688943977e6130f4f68f23aad939a1040",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Spell Token",
+		"symbol": "SPELL",
+		"display_name": "Spell Token",
+		"display_symbol": "SPELL",
+		"description": "SPELL is the governance token for Abracadabra, a protocol that allows users to deposit interest-bearing assets such as Yearn vault tokens and mint Magic Internet Money (MIM), a synthetic stablecoin. SPELL can be staked to earn fees paid to the protocol from users borrowing against their assets.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0x468003B688943977e6130F4F68F23aad939a1040/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x511d35c52a3c244e7b8bd92c0c297755fbd89212": {
+		"address": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Avalanche",
+		"symbol": "AVAX",
+		"display_name": "Avalanche",
+		"display_symbol": "AVAX",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/250/0x511D35c52a3C244E7b8bd92c0C297755FbD89212/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x58e57ca18b7a47112b877e31929798cd3d703b0f": {
+		"address": "0x58e57ca18b7a47112b877e31929798cd3d703b0f",
+		"underlyingTokensAddresses": [],
+		"type": "Curve LP",
+		"name": "Curve.fi USD-BTC-ETH",
+		"symbol": "crv3crypto",
+		"display_name": "Curve triCrypto Pool",
+		"display_symbol": "crvTricrypto",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains USDT, WBTC, and WETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/250/0x58e57cA18B7A47112b877E31929798Cd3D703b0f/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x637ec617c86d24e421328e6caea1d92114892439": {
+		"address": "0x637ec617c86d24e421328e6caea1d92114892439",
+		"underlyingTokensAddresses": [
+			"0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e"
+		],
+		"type": "Yearn Vault",
+		"name": "DAI yVault",
+		"symbol": "yvDAI",
+		"display_name": "DAI yVault",
+		"display_symbol": "yvDAI",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0x637eC617c86D24E421328e6CAEa1d92114892439/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x74b23882a30290451a17c44f4f05243b6b58c76d": {
+		"address": "0x74b23882a30290451a17c44f4f05243b6b58c76d",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Ethereum",
+		"symbol": "ETH",
+		"display_name": "Ethereum",
+		"display_symbol": "ETH",
+		"description": "Ether, or ETH, is the native token of the Ethereum blockchain. Wrapped ETH, or WETH, refers to an ERC-20 compatible version of ether. ERC-20 is a technical standard developed after the release of ETH that allows tokens created on the Ethereum blockchain to interact with each other. \nIn order for ETH to be exchanged with other ERC-20s it needs to be wrapped into WETH. Wrapping ETH does not affect its value, 1 ETH = 1 WETH.",
+		"category": "Smart Contract Platform",
+		"icon": "https://assets.smold.app/api/token/250/0x74b23882a30290451A17c44f4F05243b6b58C76d/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x82f0b8b456c1a451378467398982d4834b6829c1": {
+		"address": "0x82f0b8b456c1a451378467398982d4834b6829c1",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Magic Internet Money",
+		"symbol": "MIM",
+		"display_name": "Magic Internet Money",
+		"display_symbol": "MIM",
+		"description": "Abracadabra.money is a lending platform that accepts interest-bearing tokens such as Yearn Vaults as collateral to borrow a USD-pegged stablecoin, Magic Internet Money (MIM), which can then be used as any other traditional stablecoin. In this way, MIM helps unlock capital deposited in Yearn while still earning users yield on the underlying assets.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0x82f0B8B456c1A451378467398982d4834b6829c1/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x841fad6eae12c286d1fd18d1d525dffa75c7effe": {
+		"address": "0x841fad6eae12c286d1fd18d1d525dffa75c7effe",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "SpookyToken",
+		"symbol": "BOO",
+		"display_name": "SpookyToken",
+		"display_symbol": "BOO",
+		"description": "SpookySwap Finance is an automated market-making (AMM) decentralized exchange (DEX) for the Fantom Opera network. SpookySwap is focused on building a strong foundation with the BOO token as a governance token, diverse farms, a built in bridge, built in limit orders and user-centered service.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0x841FAD6EAe12c286d1Fd18d1d525DFfA75C7EFFE/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e": {
+		"address": "0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Dai Stablecoin",
+		"symbol": "DAI",
+		"display_name": "Dai Stablecoin",
+		"display_symbol": "DAI",
+		"description": "DAI is an Ethereum-based stablecoin whose issuance and development is managed by the Maker Protocol and MakerDAO. The price of DAI is soft-pegged to the U.S. dollar and is collateralized by a mix of other cryptocurrencies that are deposited into smart-contract vaults every time new DAI is minted.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0x8D11eC38a3EB5E956B052f67Da8Bdc9bef8Abf3E/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xa97e7da01c7047d6a65f894c99be8c832227a8bc": {
+		"address": "0xa97e7da01c7047d6a65f894c99be8c832227a8bc",
+		"underlyingTokensAddresses": [
+			"0x2dd7c9371965472e5a5fd28fbe165007c61439e1"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve MIM Pool Vault",
+		"symbol": "yvCurve-MIM",
+		"display_name": "Curve MIM Pool Vault",
+		"display_symbol": "yvCurve-MIM",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8": {
+		"address": "0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "ChainLink",
+		"symbol": "LINK",
+		"display_name": "ChainLink",
+		"display_symbol": "LINK",
+		"description": "Through a decentralized oracle network, Chainlink allows blockchains to securely interact with external data feeds, events and payment methods, providing the critical off-chain information needed by complex smart contracts to become the dominant form of digital agreement. The Chainlink Network is driven by a large open-source community of data providers, node operators, smart contract developers, researchers, security auditors and more.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0xb3654dc3D10Ea7645f8319668E8F54d2574FBdC8/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xcbcaf8cb8cbeafa927ecee0c5c56560f83e9b7d9": {
+		"address": "0xcbcaf8cb8cbeafa927ecee0c5c56560f83e9b7d9",
+		"underlyingTokensAddresses": [
+			"0x58e57ca18b7a47112b877e31929798cd3d703b0f"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve Tricrypto Pool yVault",
+		"symbol": "yvCurve-Tricrypto",
+		"display_name": "Curve Tricrypto Pool yVault",
+		"display_symbol": "yvCurve-Tricrypto",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xCbCaF8cB8cbeAFA927ECEE0c5C56560F83E9B7D9/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xce2fc0bdc18bd6a4d9a725791a3dee33f3a23bb7": {
+		"address": "0xce2fc0bdc18bd6a4d9a725791a3dee33f3a23bb7",
+		"underlyingTokensAddresses": [
+			"0x74b23882a30290451a17c44f4f05243b6b58c76d"
+		],
+		"type": "Yearn Vault",
+		"name": "WETH yVault",
+		"symbol": "yvWETH",
+		"display_name": "WETH yVault",
+		"display_symbol": "yvWETH",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xCe2Fc0bDc18BD6a4d9A725791A3DEe33F3a23BB7/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xd02a30d33153877bc20e5721ee53dedee0422b2f": {
+		"address": "0xd02a30d33153877bc20e5721ee53dedee0422b2f",
+		"underlyingTokensAddresses": [],
+		"type": "Curve LP",
+		"name": "Curve.fi gDAI/gUSDC/gUSDT",
+		"symbol": "g3CRV",
+		"display_name": "Curve Geist Pool",
+		"display_symbol": "crvGEIST",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, and USDT that are lent out to Geist, a decentralized money market on Fantom.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/250/0xD02a30d33153877BC20e5721ee53DeDEE0422B2F/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xd3c19eb022cac706c898d60d756bf1535d605e1d": {
+		"address": "0xd3c19eb022cac706c898d60d756bf1535d605e1d",
+		"underlyingTokensAddresses": [
+			"0x468003b688943977e6130f4f68f23aad939a1040"
+		],
+		"type": "Yearn Vault",
+		"name": "SPELL yVault",
+		"symbol": "yvSPELL",
+		"display_name": "SPELL yVault",
+		"display_symbol": "yvSPELL",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xD3c19eB022CAC706c898D60d756bf1535d605e1d/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xd817a100ab8a29fe3dbd925c2eb489d67f758da9": {
+		"address": "0xd817a100ab8a29fe3dbd925c2eb489d67f758da9",
+		"underlyingTokensAddresses": [
+			"0x321162cd933e2be498cd2267a90534a804051b11"
+		],
+		"type": "Yearn Vault",
+		"name": "WBTC yVault",
+		"symbol": "yvWBTC",
+		"display_name": "WBTC yVault",
+		"display_symbol": "yvWBTC",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9/logo-128.png",
+		"decimals": 8,
+		"chainID": 250
+	},
+	"0xdc301622e621166bd8e82f2ca0a26c13ad0be355": {
+		"address": "0xdc301622e621166bd8e82f2ca0a26c13ad0be355",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Frax",
+		"symbol": "FRAX",
+		"display_name": "Frax",
+		"display_symbol": "FRAX",
+		"description": "Frax is the first fractional-algorithmic stablecoin protocol. This means that parts of its supply are backed by collateral and parts of the supply algorithmic. Frax is open-source, permissionless, and entirely on-chain - currently implemented on Ethereum and other chains. The end goal of the Frax protocol is to provide a highly scalable, decentralized, algorithmic money in place of fixed-supply digital assets like BTC.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/250/0xdc301622e621166BD8E82f2cA0A26c13Ad0BE355/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xef0210eb96c7eb36af8ed1c20306462764935607": {
+		"address": "0xef0210eb96c7eb36af8ed1c20306462764935607",
+		"underlyingTokensAddresses": [
+			"0x04068da6c83afcfa0e13ba15a6696662335d5b75"
+		],
+		"type": "Yearn Vault",
+		"name": "USDC yVault",
+		"symbol": "yvUSDC",
+		"display_name": "USDC yVault",
+		"display_symbol": "yvUSDC",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xEF0210eB96c7EB36AF8ed1c20306462764935607/logo-128.png",
+		"decimals": 6,
+		"chainID": 250
+	},
+	"0xf137d22d7b23eeb1950b3e19d1f578c053ed9715": {
+		"address": "0xf137d22d7b23eeb1950b3e19d1f578c053ed9715",
+		"underlyingTokensAddresses": [
+			"0xd02a30d33153877bc20e5721ee53dedee0422b2f"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve Geist Pool yVault",
+		"symbol": "yvCurve-Geist",
+		"display_name": "Curve Geist Pool yVault",
+		"display_symbol": "yvCurve-Geist",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xF137D22d7B23eeB1950B3e19d1f578c053ed9715/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xf2d323621785a066e64282d2b407eac79cc04966": {
+		"address": "0xf2d323621785a066e64282d2b407eac79cc04966",
+		"underlyingTokensAddresses": [
+			"0xb3654dc3d10ea7645f8319668e8f54d2574fbdc8"
+		],
+		"type": "Yearn Vault",
+		"name": "LINK yVault",
+		"symbol": "yvLINK",
+		"display_name": "LINK yVault",
+		"display_symbol": "yvLINK",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/250/0xf2d323621785A066E64282d2B407eAc79cC04966/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	},
+	"0xfcef8a994209d6916eb2c86cdd2afd60aa6f54b1": {
+		"address": "0xfcef8a994209d6916eb2c86cdd2afd60aa6f54b1",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "FreshBeets",
+		"symbol": "fBEETS",
+		"display_name": "FreshBeets",
+		"display_symbol": "fBEETS",
+		"description": "Beethoven-X is a fork of the Automated Market Maker (AMM) based Decentralised Exchange (DEX) Balancer on Fantom Opera. Beethoven-X aims to be a one-stop decentralized investment platform, offering a variety of trading and investment pools for LPs. fBEETS consists of a staked 80/20 BEETS/WFTM Beethoven-X LP token. fBEETS stakers are tasked with governing the Beethoven-X protocol, and in return receive trading fees, farm incentives, and 30% of protocol revenues.",
+		"category": "DeFi",
+		"icon": "https://assets.smold.app/api/token/250/0xfcef8a994209d6916EB2C86cDD2AFD60Aa6F54b1/logo-128.png",
+		"decimals": 18,
+		"chainID": 250
+	}
+}

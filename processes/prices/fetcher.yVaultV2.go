@@ -8,8 +8,8 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 /**************************************************************************************************
@@ -26,7 +26,7 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList 
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, tokenAddress := range tokenList {
-		if _, ok := store.GetERC20(chainID, tokenAddress); ok {
+		if _, ok := storage.GetERC20(chainID, tokenAddress); ok {
 			calls = append(calls, multicalls.GetPricePerShare(tokenAddress.Hex(), tokenAddress))
 			calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
 		}

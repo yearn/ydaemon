@@ -109,8 +109,8 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-	tokens.RetrieveAllTokens(chainID, vaultsMap)
+	historicalVaults := registries.IndexNewVaults(chainID)
+	tokens.RetrieveAllTokens(chainID, historicalVaults)
 	prices.Run(chainID)
-	vaults.RetrieveAllVaults(chainID, vaultsMap)
+	vaults.RetrieveAllVaults(chainID, historicalVaults)
 }

@@ -78,7 +78,7 @@ func filterStrategyReportedFor031To043(vault models.TVault, start uint64, end *u
 				}
 				formatedLogs := TMimicStrategyReportBase{
 					Vault:     vault.Address,
-					Token:     vault.Token.Address,
+					Token:     vault.AssetAddress,
 					Strategy:  log.Event.Strategy,
 					Gain:      log.Event.Gain,
 					Loss:      log.Event.Loss,
@@ -145,7 +145,7 @@ func filterStrategyReportedFor030(vault models.TVault, start uint64, end *uint64
 				}
 				formatedLogs := TMimicStrategyReportBase{
 					Vault:     vault.Address,
-					Token:     vault.Token.Address,
+					Token:     vault.AssetAddress,
 					Strategy:  log.Event.Strategy,
 					Gain:      log.Event.Gain,
 					Loss:      log.Event.Loss,
@@ -214,7 +214,7 @@ func filterStrategyReportedFor022(vault models.TVault, start uint64, end *uint64
 				}
 				formatedLogs := TMimicStrategyReportBase{
 					Vault:     vault.Address,
-					Token:     vault.Token.Address,
+					Token:     vault.AssetAddress,
 					Strategy:  log.Event.Strategy,
 					Gain:      log.Event.Gain,
 					Loss:      log.Event.Loss,

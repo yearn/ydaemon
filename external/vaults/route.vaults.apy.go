@@ -2,7 +2,7 @@ package vaults
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -45,7 +45,7 @@ func fetchFromVision(chainID uint64, vaultAddress string) float64 {
 		return 0
 	}
 	defer resp.Body.Close()
-	bodyText, err := ioutil.ReadAll(resp.Body)
+	bodyText, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return 0
 	}

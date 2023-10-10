@@ -7,7 +7,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"gorm.io/gorm"
@@ -45,19 +44,9 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 						Governance:     common.HexToAddress(vaultFromDB.Governance),
 						Guardian:       common.HexToAddress(vaultFromDB.Guardian),
 						Rewards:        common.HexToAddress(vaultFromDB.Rewards),
-						Type:           vaultFromDB.Type,
-						Symbol:         vaultFromDB.Symbol,
-						DisplaySymbol:  vaultFromDB.DisplaySymbol,
-						FormatedSymbol: vaultFromDB.FormatedSymbol,
-						Name:           vaultFromDB.Name,
-						DisplayName:    vaultFromDB.DisplayName,
-						FormatedName:   vaultFromDB.FormatedName,
-						Icon:           env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + vaultFromDB.Address + `/logo-128.png`,
 						Version:        vaultFromDB.Version,
 						ChainID:        vaultFromDB.ChainID,
-						Inception:      vaultFromDB.Inception,
 						Activation:     vaultFromDB.Activation,
-						Decimals:       vaultFromDB.Decimals,
 						PerformanceFee: vaultFromDB.PerformanceFee,
 						ManagementFee:  vaultFromDB.ManagementFee,
 						Endorsed:       vaultFromDB.Endorsed,
@@ -67,32 +56,16 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 					** As the vaults stored in the DB do not store the underlying token information
 					** we need to retrieve it from the _erc20SyncMap and add it to our structure.
 					******************************************************************************/
-					vault.Token = models.TERC20Token{
-						Address: common.HexToAddress(vaultFromDB.Token),
-						ChainID: vaultFromDB.ChainID,
-					}
-					if token, ok := GetERC20(chainID, common.HexToAddress(vaultFromDB.Token)); ok {
-						vault.Token.Decimals = token.Decimals
-						vault.Token.Symbol = token.Symbol
-						vault.Token.Name = token.Name
-						vault.Token.Icon = env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + vault.Token.Address.Hex() + `/logo-128.png`
-						vault.Token.DisplaySymbol = token.DisplaySymbol
-						vault.Token.DisplayName = token.DisplayName
-						vault.Token.Description = token.Description
-						vault.Token.Type = token.Type
-						vault.Token.UnderlyingTokensAddresses = token.UnderlyingTokensAddresses
-					}
+					vault.AssetAddress = common.HexToAddress(vaultFromDB.Token)
 
 					/******************************************************************************
 					** As the vaults stored in the DB do not store mutable data we will need to
 					** retrieve them on the fly from the blockchain.
 					** Here are the missing fields:
 					******************************************************************************/
-					vault.WithdrawalQueue = []common.Address{}
-					vault.PricePerShare = bigNumber.NewInt(0)
-					vault.DepositLimit = bigNumber.NewInt(0)
-					vault.AvailableDepositLimit = bigNumber.NewInt(0)
-					vault.TotalAssets = bigNumber.NewInt(0)
+					vault.LastActiveStrategies = []common.Address{}
+					vault.LastPricePerShare = bigNumber.NewInt(0)
+					vault.LastTotalAssets = bigNumber.NewInt(0)
 					syncMap.Store(vault.Address, vault)
 				}
 				return nil
@@ -118,7 +91,7 @@ func AppendToVaultMap(chainID uint64, vault models.TVault) {
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
 	AppendToVaultMap(chainID, vault)
-	key := vault.Address.Hex() + "_" + vault.Token.Address.Hex() + "_" + strconv.FormatUint(vault.Activation, 10) + "_" + strconv.FormatUint(vault.ChainID, 10)
+	key := vault.Address.Hex() + strconv.FormatUint(vault.ChainID, 10)
 
 	switch _dbType {
 	case DBBadger:
@@ -132,19 +105,10 @@ func StoreVault(chainID uint64, vault models.TVault) {
 			newItem.Governance = vault.Governance.Hex()
 			newItem.Guardian = vault.Guardian.Hex()
 			newItem.Rewards = vault.Rewards.Hex()
-			newItem.Token = vault.Token.Address.Hex()
-			newItem.Type = vault.Type
-			newItem.Symbol = vault.Symbol
-			newItem.DisplaySymbol = vault.DisplaySymbol
-			newItem.FormatedSymbol = vault.FormatedSymbol
-			newItem.Name = vault.Name
-			newItem.DisplayName = vault.DisplayName
-			newItem.FormatedName = vault.FormatedName
+			newItem.Token = vault.AssetAddress.Hex()
 			newItem.Version = vault.Version
 			newItem.ChainID = vault.ChainID
-			newItem.Inception = vault.Inception
 			newItem.Activation = vault.Activation
-			newItem.Decimals = vault.Decimals
 			newItem.PerformanceFee = vault.PerformanceFee
 			newItem.ManagementFee = vault.ManagementFee
 			newItem.Endorsed = vault.Endorsed

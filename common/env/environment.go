@@ -9,7 +9,7 @@ import (
 
 // SetEnv will init the environment variables based on the .env file
 func SetEnv(path string) {
-	_ = godotenv.Load(path)
+	godotenv.Load(path)
 
 	RPCURIFor1, exists := os.LookupEnv("RPC_URI_FOR_1")
 	if !exists {

@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"sync"
 
@@ -25,7 +25,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 		return []TCurveFactoriesPoolData{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		traces.
 			Capture(`error`, `impossible to read curve Get body`).

@@ -93,7 +93,7 @@ func Init(key string, tags ...TTags) *TTrace {
 		return nil
 	}
 	logs.Trace(key, 1, ``)
-	span := sentry.StartSpan(context.Background(), key, sentry.TransactionName(SPANS[key]))
+	span := sentry.StartSpan(context.Background(), key, sentry.WithTransactionName(SPANS[key]))
 	if len(tags) > 0 {
 		for _, tag := range tags {
 			span.SetTag(tag.Name, tag.Value)
@@ -118,7 +118,7 @@ func (s *TTrace) Child(key string, tags ...TTags) *TTrace {
 		return &TTrace{}
 	}
 	logs.Trace(key, 1, ``)
-	span := s.span.StartChild(key, sentry.TransactionName(SPANS[key]))
+	span := s.span.StartChild(key, sentry.WithTransactionName(SPANS[key]))
 	if len(tags) > 0 {
 		for _, tag := range tags {
 			span.SetTag(tag.Name, tag.Value)

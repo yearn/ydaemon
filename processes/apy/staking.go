@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Float {
@@ -64,7 +65,7 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	** we will need to load it from the blockchain.
 	**********************************************************************************************/
 	rewardsTokenDecimals := uint64(18)
-	rewardsToken, ok := store.GetERC20(chainID, rewardsTokenRaw)
+	rewardsToken, ok := storage.GetERC20(chainID, rewardsTokenRaw)
 	if !ok {
 		erc20Contract, _ := contracts.NewERC20(rewardsTokenRaw, ethereum.GetRPC(chainID))
 		decimals, err := erc20Contract.Decimals(nil)
@@ -75,6 +76,11 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 		}
 	} else {
 		rewardsTokenDecimals = rewardsToken.Decimals
+	}
+
+	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
+	if !ok {
+		return bigNumber.NewFloat(0)
 	}
 
 	/**********************************************************************************************
@@ -89,7 +95,7 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	** decimals of the vault.
 	**********************************************************************************************/
 	rewardRate := helpers.ToNormalizedAmount(rewardRateRaw, rewardsTokenDecimals)
-	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, vault.Decimals)
+	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, vaultToken.Decimals)
 	perStakingTokenRate := bigNumber.NewFloat(0).Div(rewardRate, totalSupply)
 	secondsPerYear := bigNumber.NewFloat(31_556_952)
 

@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/prices"
 )
 
@@ -207,32 +206,6 @@ func getCVXPoolAPR(
 }
 
 /**************************************************************************************************
-** Calculate all the fees from convex.
-** We first fetch everything in a multicall, then we calculate the total fees.
-**************************************************************************************************/
-func getCVXFees(chainID uint64) *bigNumber.Float {
-	calls := []ethereum.Call{
-		multicalls.GetConvexLockIncentive(CVX_BOOSTER_ADDRESS[chainID].Hex(), CVX_BOOSTER_ADDRESS[chainID]),
-		multicalls.GetConvexStakerIncentive(CVX_BOOSTER_ADDRESS[chainID].Hex(), CVX_BOOSTER_ADDRESS[chainID]),
-		multicalls.GetConvexEarmarkIncentive(CVX_BOOSTER_ADDRESS[chainID].Hex(), CVX_BOOSTER_ADDRESS[chainID]),
-		multicalls.GetConvexPlatformFee(CVX_BOOSTER_ADDRESS[chainID].Hex(), CVX_BOOSTER_ADDRESS[chainID]),
-	}
-	response := multicalls.Perform(chainID, calls, nil)
-	cvxLockIncentive := helpers.DecodeBigInt(response[CVX_BOOSTER_ADDRESS[chainID].Hex()+`lockIncentive`])
-	cvxStakerIncentive := helpers.DecodeBigInt(response[CVX_BOOSTER_ADDRESS[chainID].Hex()+`stakerIncentive`])
-	cvxEarmarkIncentive := helpers.DecodeBigInt(response[CVX_BOOSTER_ADDRESS[chainID].Hex()+`earmarkIncentive`])
-	cvxPlatformFee := helpers.DecodeBigInt(response[CVX_BOOSTER_ADDRESS[chainID].Hex()+`platformFee`])
-
-	cvxFee := bigNumber.NewFloat(0)
-	cvxFee = bigNumber.NewFloat(0).Add(cvxFee, bigNumber.NewFloat(0).SetInt(cvxLockIncentive))
-	cvxFee = bigNumber.NewFloat(0).Add(cvxFee, bigNumber.NewFloat(0).SetInt(cvxStakerIncentive))
-	cvxFee = bigNumber.NewFloat(0).Add(cvxFee, bigNumber.NewFloat(0).SetInt(cvxEarmarkIncentive))
-	cvxFee = bigNumber.NewFloat(0).Add(cvxFee, bigNumber.NewFloat(0).SetInt(cvxPlatformFee))
-	cvxFee = bigNumber.NewFloat(0).Div(cvxFee, bigNumber.NewFloat(10000))
-	return cvxFee
-}
-
-/**************************************************************************************************
 ** Determine the keepCRV value for the vault. This indicates the amount of CRV this strategy should
 ** keep as rewards instead of insta dump.
 ** Because of the contract upgrade, we have multiple stuff to checks:
@@ -286,12 +259,4 @@ func determineConvexKeepCRV(strategy *models.TStrategy) *bigNumber.Float {
 func isConvexStrategy(strategy *models.TStrategy) bool {
 	name := strings.ToLower(strategy.Name)
 	return strings.Contains(name, `convex`) && !strings.Contains(name, `convexfrax`)
-}
-
-/**************************************************************************************************
-** Check if the vault is a curve and convex vault, aka uses a strategy with curve and one with
-** convex. This is a check based on the number of strategies (only). What could go wrong.
-**************************************************************************************************/
-func isCuveConvexVault(strategies []*models.TStrategy) bool {
-	return len(strategies) == 2
 }

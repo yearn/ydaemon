@@ -8,8 +8,8 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 type TVaultToAsset struct {
@@ -32,7 +32,7 @@ func fetchShareValueFromERC4626(chainID uint64, blockNumber *uint64, tokenList [
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, tokenAddress := range tokenList {
-		if token, ok := store.GetERC20(chainID, tokenAddress); ok {
+		if token, ok := storage.GetERC20(chainID, tokenAddress); ok {
 			oneUnitScaledToDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
 			calls = append(calls, multicalls.GetConvertToAssets(tokenAddress.Hex(), tokenAddress, oneUnitScaledToDecimals))
 			calls = append(calls, multicalls.GetAsset(tokenAddress.Hex(), tokenAddress))

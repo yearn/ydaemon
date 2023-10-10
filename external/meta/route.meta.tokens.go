@@ -5,8 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetMetaTokens will, for a given chainID, return all the meta informations for the tokens.
@@ -18,27 +17,8 @@ func (y Controller) GetMetaTokens(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-
-	localization := helpers.SafeString(getQuery(c, "loc"), "en")
-	tokensFromMeta := meta.ListMetaTokens(chainID)
-	if localization == "all" {
-		c.JSON(http.StatusOK, tokensFromMeta)
-		return
-	}
-	localizedTokensFromMeta := []*models.TTokenFromMeta{}
-	for _, token := range tokensFromMeta {
-		if token.Localization == nil {
-			token.Localization = nil
-			localizedTokensFromMeta = append(localizedTokensFromMeta, token)
-			continue
-		}
-		local := selectLocalizationFromString(localization, *token.Localization)
-		token.Name = helpers.SafeString(local.Name, token.Name)
-		token.Description = local.Description
-		token.Localization = nil
-		localizedTokensFromMeta = append(localizedTokensFromMeta, token)
-	}
-	c.JSON(http.StatusOK, localizedTokensFromMeta)
+	_, asList := storage.ListERC20(chainID)
+	c.JSON(http.StatusOK, asList)
 }
 
 // GetMetaToken will, for a given address on given chainID, return the meta informations for the token.
@@ -54,26 +34,10 @@ func (y Controller) GetMetaToken(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
-
-	localization := helpers.SafeString(getQuery(c, "loc"), "en")
-	tokenFromMeta, ok := meta.GetMetaToken(chainID, address)
+	token, ok := storage.GetERC20(chainID, address)
 	if !ok {
-		c.String(http.StatusNotFound, "no data available")
+		c.String(http.StatusNotFound, "token not found")
 		return
 	}
-
-	if localization == "all" {
-		c.JSON(http.StatusOK, tokenFromMeta)
-		return
-	}
-	if tokenFromMeta.Localization == nil {
-		tokenFromMeta.Localization = nil
-		c.JSON(http.StatusOK, tokenFromMeta)
-		return
-	}
-	local := selectLocalizationFromString(localization, *tokenFromMeta.Localization)
-	tokenFromMeta.Name = helpers.SafeString(local.Name, tokenFromMeta.Name)
-	tokenFromMeta.Description = local.Description
-	tokenFromMeta.Localization = nil
-	c.JSON(http.StatusOK, tokenFromMeta)
+	c.JSON(http.StatusOK, token)
 }

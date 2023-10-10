@@ -12,13 +12,10 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
-
-//TODO: Move this as external process
 
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
@@ -36,6 +33,7 @@ import (
 func fetchBasicInformations(
 	chainID uint64,
 	tokens []common.Address,
+	toSkip []common.Address,
 	curveFactoryPoolMap map[string][]common.Address,
 ) (tokenList []models.TERC20Token) {
 	/**********************************************************************************************
@@ -45,18 +43,21 @@ func fetchBasicInformations(
 	**********************************************************************************************/
 	caller := ethereum.MulticallClientForChainID[chainID]
 	calls := []ethereum.Call{}
-	for _, token := range tokens {
-		calls = append(calls, multicalls.GetName(token.Hex(), token))
-		calls = append(calls, multicalls.GetSymbol(token.Hex(), token))
-		calls = append(calls, multicalls.GetDecimals(token.Hex(), token))
-		calls = append(calls, multicalls.GetToken(token.Hex(), token))
-		calls = append(calls, multicalls.GetPoolFromLpToken(token.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, token))
-		calls = append(calls, multicalls.GetCompoundUnderlying(token.Hex(), token))
-		calls = append(calls, multicalls.GetAaveV1Underlying(token.Hex(), token))
-		calls = append(calls, multicalls.GetAaveV2Underlying(token.Hex(), token))
-		calls = append(calls, multicalls.GetCurveMinter(token.Hex(), token))
-		calls = append(calls, multicalls.GetCurveCoin(token.Hex()+`_coin0`, token, big.NewInt(0)))
-		calls = append(calls, multicalls.GetCurveCoin(token.Hex()+`_coin1`, token, big.NewInt(1)))
+	for _, tokenAddress := range tokens {
+		if helpers.Contains(toSkip, tokenAddress) {
+			continue
+		}
+		calls = append(calls, multicalls.GetName(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetSymbol(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetDecimals(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetPoolFromLpToken(tokenAddress.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, tokenAddress))
+		calls = append(calls, multicalls.GetCompoundUnderlying(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetAaveV1Underlying(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetAaveV2Underlying(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetCurveMinter(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin0`, tokenAddress, big.NewInt(0)))
+		calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin1`, tokenAddress, big.NewInt(1)))
 	}
 
 	/**********************************************************************************************
@@ -67,6 +68,9 @@ func fetchBasicInformations(
 	relatedTokensList := []common.Address{}
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, tokenAddress := range tokens {
+		if helpers.Contains(toSkip, tokenAddress) {
+			continue
+		}
 		if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
 			tokenList = append(tokenList, models.TERC20Token{
 				Address:  tokenAddress,
@@ -93,25 +97,16 @@ func fetchBasicInformations(
 		** Preparing our new ERC20Token object
 		******************************************************************************************/
 		newToken := models.TERC20Token{
-			Address:  tokenAddress,
-			Name:     helpers.DecodeString(rawName),
-			Symbol:   helpers.DecodeString(rawSymbol),
-			Decimals: helpers.DecodeUint64(rawDecimals),
-			Icon:     env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + tokenAddress.Hex() + `/logo-128.png`,
-			ChainID:  chainID,
+			Address:                   tokenAddress,
+			Name:                      helpers.DecodeString(rawName),
+			DisplayName:               helpers.DecodeString(rawName),
+			Symbol:                    helpers.DecodeString(rawSymbol),
+			DisplaySymbol:             helpers.DecodeString(rawSymbol),
+			Decimals:                  helpers.DecodeUint64(rawDecimals),
+			UnderlyingTokensAddresses: []common.Address{},
+			Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + tokenAddress.Hex() + `/logo-128.png`,
+			ChainID:                   chainID,
 		}
-
-		metaTokenName := newToken.Name
-		metaTokenSymbol := newToken.Symbol
-		metaTokenDescription := ``
-		if tokenFromMeta, ok := meta.GetMetaToken(chainID, tokenAddress); ok {
-			metaTokenName = strings.Replace(tokenFromMeta.Name, "\"", "", -1)
-			metaTokenSymbol = strings.Replace(tokenFromMeta.Symbol, "\"", "", -1)
-			metaTokenDescription = tokenFromMeta.Description
-		}
-		newToken.DisplayName = metaTokenName
-		newToken.DisplaySymbol = metaTokenSymbol
-		newToken.Description = metaTokenDescription
 
 		/******************************************************************************************
 		** Checking if the token is a Yearn Vault. We can determined that if we got a valid
@@ -123,7 +118,7 @@ func fetchBasicInformations(
 		******************************************************************************************/
 		isYearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
 		if isYearnVault {
-			vault, ok := store.GetVaultFromRegistry(chainID, tokenAddress)
+			vault, ok := storage.GetVaultFromRegistry(chainID, tokenAddress)
 			if !ok {
 				newToken.Type = models.TokenTypeStandardVault
 			} else {
@@ -134,6 +129,9 @@ func fetchBasicInformations(
 				relatedTokensList = append(relatedTokensList, coin)
 				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 			}
+		}
+		if newToken.Category == `` && isYearnVault {
+			newToken.Category = `yVault`
 		}
 
 		/******************************************************************************************
@@ -158,6 +156,9 @@ func fetchBasicInformations(
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
 			}
+		}
+		if newToken.Category == `` && isCurveLpToken {
+			newToken.Category = `Curve`
 		}
 
 		/******************************************************************************************
@@ -231,6 +232,9 @@ func fetchBasicInformations(
 				}
 			}
 		}
+		if newToken.Category == `` && isCurveLPCoin {
+			newToken.Category = `Curve`
+		}
 
 		/******************************************************************************************
 		** Checking if the token is a Curve LP token. We can determined that if we got a valid
@@ -249,10 +253,16 @@ func fetchBasicInformations(
 		}
 
 		tokenList = append(tokenList, newToken)
+		toSkip = append(toSkip, tokenAddress)
 	}
 
 	if len(relatedTokensList) > 0 {
-		tokenList = append(tokenList, fetchBasicInformations(chainID, helpers.UniqueArrayAddress(relatedTokensList), curveFactoryPoolMap)...)
+		tokenList = append(tokenList, fetchBasicInformations(
+			chainID,
+			helpers.UniqueArrayAddress(relatedTokensList),
+			helpers.UniqueArrayAddress(toSkip),
+			curveFactoryPoolMap,
+		)...)
 	}
 
 	return tokenList
@@ -282,7 +292,7 @@ func findAllTokens(
 		tokenMapAddresses = append(tokenMapAddresses, tokenAddress)
 	}
 
-	newtokenMap := fetchBasicInformations(chainID, tokenMapAddresses, curveFactoryPoolMap)
+	newtokenMap := fetchBasicInformations(chainID, tokenMapAddresses, []common.Address{}, curveFactoryPoolMap)
 	for _, token := range newtokenMap {
 		newMap[token.Address] = token
 	}
@@ -290,8 +300,19 @@ func findAllTokens(
 	return newMap
 }
 
+/**************************************************************************************************
+** loadCurvePools is used to load the Curve pools from the Curve Factory. This is used to get the
+** underlying tokens for the Curve LP tokens.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+**
+** Returns:
+** - a map of poolAddress -> []common.Address
+**************************************************************************************************/
 func loadCurvePools(chainID uint64) map[string][]common.Address {
 	coinsForPool := make(map[string][]common.Address)
+
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -372,7 +393,7 @@ func RetrieveAllTokens(
 	** First, try to retrieve the list of tokens from the database to exclude the one existing
 	** from the upcoming calls
 	**********************************************************************************************/
-	tokenMap, _ := store.ListERC20(chainID)
+	tokenMap, _ := storage.ListERC20(chainID)
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -383,6 +404,9 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	updatedTokenMap := make(map[common.Address]models.TERC20Token)
 	for _, currentVault := range vaults {
+		if token, ok := tokenMap[currentVault.Address]; ok && !token.ShouldRefresh {
+			continue
+		}
 		updatedTokenMap[currentVault.Address] = models.TERC20Token{
 			Address: currentVault.Address,
 			Type:    currentVault.Type,
@@ -395,38 +419,37 @@ func RetrieveAllTokens(
 	** are not in the registry but that we still want to track.
 	**********************************************************************************************/
 	for _, extraToken := range env.CHAINS[chainID].ExtraTokens {
+		if token, ok := tokenMap[extraToken]; ok && !token.ShouldRefresh {
+			continue
+		}
 		updatedTokenMap[extraToken] = models.TERC20Token{
 			Address: extraToken,
 			ChainID: chainID,
 		}
 	}
 
-	// RESET ALL DB
-	for _, currentVault := range vaults {
-		if _, ok := tokenMap[currentVault.Address]; !ok {
-			updatedTokenMap[currentVault.Address] = models.TERC20Token{
-				Address: currentVault.Address,
-				ChainID: chainID,
-			}
-		}
-
-		if _, ok := tokenMap[currentVault.TokenAddress]; !ok {
-			updatedTokenMap[currentVault.TokenAddress] = models.TERC20Token{
-				Address: currentVault.TokenAddress,
-				ChainID: chainID,
-			}
-		}
-	}
-	curveFactoryPools := loadCurvePools(chainID)
-
 	/**********************************************************************************************
 	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
 	for _, tokenAddress := range env.CHAINS[chainID].ExtraTokens {
-		if _, ok := tokenMap[tokenAddress]; !ok {
-			updatedTokenMap[tokenAddress] = models.TERC20Token{
-				Address: tokenAddress,
+		if token, ok := tokenMap[tokenAddress]; ok && !token.ShouldRefresh {
+			continue
+		}
+		updatedTokenMap[tokenAddress] = models.TERC20Token{
+			Address: tokenAddress,
+			ChainID: chainID,
+		}
+	}
+
+	curveFactoryPools := loadCurvePools(chainID)
+	for _, poolCoins := range curveFactoryPools {
+		for _, coinAddress := range poolCoins {
+			if token, ok := tokenMap[coinAddress]; ok && !token.ShouldRefresh {
+				continue
+			}
+			updatedTokenMap[coinAddress] = models.TERC20Token{
+				Address: coinAddress,
 				ChainID: chainID,
 			}
 		}
@@ -442,19 +465,11 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	if len(updatedTokenMap) > 0 {
 		updatedTokenMap = findAllTokens(chainID, updatedTokenMap, curveFactoryPools)
-
-		/**********************************************************************************************
-		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of tokenAddress -> TERC20Token. All tokens will be retrievable from the store.Interate()
-		** func.
-		**********************************************************************************************/
 		for _, token := range updatedTokenMap {
-			store.AppendToERC20(chainID, token)
-			if _, ok := tokenMap[token.Address]; !ok {
-				store.StoreERC20(chainID, token)
-			}
+			storage.StoreERC20(chainID, token)
 		}
-		tokenMap, _ = store.ListERC20(chainID)
+		tokenMap, _ = storage.ListERC20(chainID)
 	}
+	storage.StoreTokensToJson(chainID, tokenMap)
 	return tokenMap
 }

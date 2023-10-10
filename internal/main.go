@@ -4,7 +4,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
@@ -22,51 +21,21 @@ import (
 var STRATLIST = []models.TStrategy{}
 var cron = gocron.NewScheduler(time.UTC)
 
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]models.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		vaults.RetrieveAllVaults(chainID, vaultsMap)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
-func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		indexer.PostProcessStrategies(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
-
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
-	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-	tokens.RetrieveAllTokens(chainID, vaultsMap)
+	historicalVaults := registries.IndexNewVaults(chainID)
+	tokens.RetrieveAllTokens(chainID, historicalVaults)
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
 	cron.Every(15).Minute().StartImmediately().Do(func() {
-		vaults.RetrieveAllVaults(chainID, vaultsMap)
+		vaults.RetrieveAllVaults(chainID, historicalVaults)
 		prices.Run(chainID)
-		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
+		strategiesAddedList := events.HandleStrategyAdded(chainID, historicalVaults, 0, nil)
 		events.HandleStakingPoolAdded(chainID, 0, nil)
 		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
 		indexer.PostProcessStrategies(chainID)
@@ -75,7 +44,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	})
 
 	cron.StartAsync()
-	go registries.IndexNewVaults(chainID)
 }
 
 func InitializeBribes(chainID uint64) {

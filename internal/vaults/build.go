@@ -11,17 +11,27 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/strategies"
 )
 
-func BuildNames(t models.TVault, metaVaultName string) models.TVault {
-	name := strings.Replace(t.Name, "\"", "", -1)
-	displayName := t.Name
-	formatedName := t.Token.Name
+func BuildNames(t models.TVault, vaultName string) (string, string, string) {
+	name := ``
+	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
+	if ok {
+		name = strings.Replace(vaultToken.Name, "\"", "", -1)
+	}
+
+	displayName := name
+	formatedName := name
+	underlyingToken, ok := storage.GetERC20(t.ChainID, t.AssetAddress)
+	if ok {
+		formatedName = underlyingToken.Name
+	}
 
 	// If the meta file has a display name, use it
-	if metaVaultName != "" {
-		displayName = metaVaultName
+	if vaultName != "" {
+		displayName = vaultName
 	}
 	// If the formated name is missing yVault suffix, add it
 	if !strings.HasSuffix(formatedName, "yVault") {
@@ -47,16 +57,25 @@ func BuildNames(t models.TVault, metaVaultName string) models.TVault {
 		displayName = strings.Replace(displayName, " Auto-Compounding", "", -1)
 	}
 
-	t.Name = strings.Replace(name, "-f-f", "-f", -1)
-	t.DisplayName = strings.Replace(displayName, "-f-f", "-f", -1)
-	t.FormatedName = strings.Replace(formatedName, "-f-f", "-f", -1)
-	return t
+	name = strings.Replace(name, "-f-f", "-f", -1)
+	displayName = strings.Replace(displayName, "-f-f", "-f", -1)
+	formatedName = strings.Replace(formatedName, "-f-f", "-f", -1)
+	return name, displayName, formatedName
 }
 
-func BuildSymbol(t models.TVault, metaVaultSymbol string) models.TVault {
-	symbol := strings.Replace(t.Symbol, "\"", "", -1)
-	formatedSymbol := t.Token.Symbol
-	displaySymbol := metaVaultSymbol
+func BuildSymbol(t models.TVault, vaultSymbol string) (string, string, string) {
+	symbol := ``
+	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
+	if ok {
+		symbol = strings.Replace(vaultToken.Symbol, "\"", "", -1)
+	}
+
+	displaySymbol := vaultSymbol
+	formatedSymbol := vaultSymbol
+	underlyingToken, ok := storage.GetERC20(t.ChainID, t.AssetAddress)
+	if ok {
+		formatedSymbol = underlyingToken.Symbol
+	}
 
 	//If the formated symbol is missing yv prefix, add it
 	if !strings.HasPrefix(formatedSymbol, "yv") {
@@ -69,11 +88,10 @@ func BuildSymbol(t models.TVault, metaVaultSymbol string) models.TVault {
 	symbol = helpers.SafeString(symbol, displaySymbol)
 	symbol = helpers.SafeString(symbol, formatedSymbol)
 	displaySymbol = helpers.SafeString(displaySymbol, symbol)
-
-	t.Symbol = strings.Replace(symbol, "-f-f", "-f", -1)
-	t.DisplaySymbol = strings.Replace(displaySymbol, "-f-f", "-f", -1)
-	t.FormatedSymbol = strings.Replace(formatedSymbol, "-f-f", "-f", -1)
-	return t
+	symbol = strings.Replace(symbol, "-f-f", "-f", -1)
+	displaySymbol = strings.Replace(displaySymbol, "-f-f", "-f", -1)
+	formatedSymbol = strings.Replace(formatedSymbol, "-f-f", "-f", -1)
+	return symbol, displaySymbol, formatedSymbol
 }
 
 func BuildMigration(t models.TVault) models.TMigration {
@@ -143,7 +161,11 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 }
 
 func BuildTVL(t models.TVault) models.TTVL {
-	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.Token.Address)
+	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
+	if !ok {
+		return models.TTVL{}
+	}
+	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.AssetAddress)
 
 	/**********************************************************************************************
 	** Notice: The vault was implicated in a hack, so the price is now effectively 0 as the pool
@@ -154,19 +176,19 @@ func BuildTVL(t models.TVault) models.TTVL {
 		fHumanizedPrice = 0.0
 	}
 
-	fHumanizedTVLPrice := getHumanizedValue(t.TotalAssets, int(t.Decimals), humanizedPrice)
+	fHumanizedTVLPrice := getHumanizedValue(t.LastTotalAssets, int(vaultToken.Decimals), humanizedPrice)
 	strategiesList := strategies.ListStrategiesForVault(t.ChainID, t.Address)
 	delegatedTokenAsBN := bigNumber.NewInt(0)
 	fDelegatedValue := 0.0
 
 	for _, strat := range strategiesList {
-		delegatedValue := getHumanizedValue(strat.DelegatedAssets, int(t.Decimals), humanizedPrice)
+		delegatedValue := getHumanizedValue(strat.DelegatedAssets, int(vaultToken.Decimals), humanizedPrice)
 		delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.DelegatedAssets)
 		fDelegatedValue += delegatedValue
 	}
 
 	tvl := models.TTVL{
-		TotalAssets:          t.TotalAssets,
+		TotalAssets:          t.LastTotalAssets,
 		TotalDelegatedAssets: delegatedTokenAsBN,
 		TVL:                  fHumanizedTVLPrice - fDelegatedValue,
 		TVLDeposited:         fHumanizedTVLPrice,
@@ -183,10 +205,11 @@ func BuildCategory(t models.TVault) string {
 	baseForBalancer := []string{`balancer`, `bal`}
 	baseForVelodrome := []string{`velodrome`, `velo`}
 	baseForAerodrome := []string{`aerodrome`, `aero`}
+	name, displayName, formatedName := BuildNames(t, ``)
 	allNames := []string{
-		strings.ToLower(t.FormatedName),
-		strings.ToLower(t.Name),
-		strings.ToLower(t.DisplayName),
+		strings.ToLower(name),
+		strings.ToLower(displayName),
+		strings.ToLower(formatedName),
 	}
 
 	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, t.Address); ok {

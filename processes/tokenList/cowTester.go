@@ -3,7 +3,7 @@ package tokenList
 import (
 	"encoding/json"
 	"errors"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"time"
@@ -63,7 +63,7 @@ func testCowSwapSupport(fromToken string) (string, string, error) {
 		return ``, ``, err
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
 		return ``, ``, err

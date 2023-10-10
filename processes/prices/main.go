@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
@@ -146,7 +147,7 @@ func fetchPrices(
 			continue
 		}
 
-		token, ok := store.GetERC20(chainID, shareValue.AssetAddress)
+		token, ok := storage.GetERC20(chainID, shareValue.AssetAddress)
 		if !ok {
 			continue
 		}
@@ -168,8 +169,8 @@ func fetchPrices(
 	**********************************************************************************************/
 	for _, token := range tokenList {
 		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			if token, ok := store.GetERC20(chainID, token); ok {
-				if store.IsVaultLike(token) {
+			if token, ok := storage.GetERC20(chainID, token); ok {
+				if token.IsVaultLike() {
 					ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 					underlyingToken := token.UnderlyingTokensAddresses[0]
 					ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
@@ -204,7 +205,7 @@ func fetchPrices(
 			continue
 		}
 
-		token, ok := store.GetERC20(chainID, ppsValue.AssetAddress)
+		token, ok := storage.GetERC20(chainID, ppsValue.AssetAddress)
 		if !ok {
 			continue
 		}
@@ -229,8 +230,8 @@ func fetchPrices(
 
 	for _, token := range stillMissing {
 		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
-			if tokenData, ok := store.GetERC20(chainID, token); ok {
-				if !store.IsExperimentalVault(tokenData) {
+			if tokenData, ok := storage.GetERC20(chainID, token); ok {
+				if !tokenData.IsExperimentalVault() {
 					logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
 				}
 			} else {
@@ -288,7 +289,7 @@ func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
 	** From the vault registry we could build the list of tokens used by our ecosystem. We will
 	** use this list to fetch the prices of the tokens, using different sources.
 	**********************************************************************************************/
-	allTokens := store.ListERC20Addresses(chainID)
+	allTokens := storage.ListERC20Addresses(chainID)
 
 	/**********************************************************************************************
 	** Somehow, some vaults are not in the registries, but we still need the price data for them.

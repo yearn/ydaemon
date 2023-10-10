@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
@@ -32,11 +33,15 @@ func ComputeChainAPR(chainID uint64) {
 				continue
 			}
 		}
+		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
+		if !ok {
+			continue
+		}
 
 		allStrategiesForVault := strategies.ListStrategiesForVault(chainID, vault.Address)
 		ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 		ppsInception := bigNumber.NewFloat(1)
-		ppsToday := helpers.GetToday(ppsPerTime, vault.Decimals)
+		ppsToday := helpers.GetToday(ppsPerTime, vaultToken.Decimals)
 		if ppsToday == nil || ppsToday.IsZero() {
 			ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vault.Decimals)
 		}
@@ -130,115 +135,7 @@ func ComputeChainAPR(chainID uint64) {
 		}
 
 		COMPUTED_APR[chainID][vault.Address] = vaultAPR
-		// aggregatedVault, okLegacyAPI := externalVaults.GetAggregatedVault(chainID, vault.Address.Hex())
-		// legacyAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
-		// spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPY.Type)
-		// checkDiff("GrossAPR      ", legacyAPY.GrossAPR, vaultAPY.ForwardAPR.GrossAPR)
-		// checkDiff("NetAPY        ", legacyAPY.NetAPY, vaultAPY.ForwardAPR.NetAPY)
-		// checkDiff("Mngt Fee      ", legacyAPY.Fees.Management, vaultAPY.Fees.Management)
-		// checkDiff("Perf Fee      ", legacyAPY.Fees.Performance, vaultAPY.Fees.Performance)
-		// checkDiff("PPS Week      ", legacyAPY.Points.WeekAgo, vaultAPY.Points.WeekAgo)
-		// checkDiff("PPS Month     ", legacyAPY.Points.MonthAgo, vaultAPY.Points.MonthAgo)
-		// checkDiff("PPS Inception ", legacyAPY.Points.Inception, vaultAPY.Points.Inception)
-		// checkDiff("BaseAPR       ", legacyAPY.Composite.BaseAPR, vaultAPY.Composite.BaseAPR)
-		// checkDiff("Boost         ", legacyAPY.Composite.Boost, vaultAPY.Composite.Boost)
-		// checkDiff("BoostedAPR    ", legacyAPY.Composite.BoostedAPR, vaultAPY.Composite.BoostedAPR)
-		// checkDiff("PoolAPY       ", legacyAPY.Composite.PoolAPY, vaultAPY.Composite.PoolAPY)
-		// checkDiff("CvxAPR        ", legacyAPY.Composite.CvxAPR, vaultAPY.Composite.CvxAPR)
-		// checkDiff("RewardsAPR    ", legacyAPY.Composite.RewardsAPR, vaultAPY.Composite.RewardsAPR)
-		// spew.Printf("\n")
 	}
-
-	/**********************************************************************************************
-	** Some logging to check if the computed APR is correct.
-	** Debug
-	**********************************************************************************************/
-	// for _, vault := range allVaults {
-	// 	vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
-	// 	if ok {
-	// 		if vaultFromMeta.Retired {
-	// 			continue
-	// 		}
-	// 	}
-
-	// 	if _, ok := COMPUTED_APR[chainID]; !ok {
-	// 		// logs.Warning("No computed APR for " + vault.Address.Hex() + " | " + vault.Name)
-	// 		continue
-	// 	}
-	// 	if _, ok := COMPUTED_APR[chainID][vault.Address]; !ok {
-	// 		// logs.Warning("No computed APR for " + vault.Address.Hex() + " | " + vault.Name)
-	// 		continue
-	// 	}
-	// 	vaultAPR := COMPUTED_APR[chainID][vault.Address]
-	// 	aggregatedVault, okLegacyAPI := extVaults.GetAggregatedVault(chainID, addresses.ToAddress(vault.Address).Hex())
-	// 	internalAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
-	// 	if COMPUTED_APR[chainID][vault.Address].Points.MonthAgo.IsZero() {
-	// 		if internalAPY.Points.MonthAgo == 0 {
-	// 			// logs.Info("Zero APR on both sources for " + vault.Address.Hex() + " | " + vault.Name)
-	// 		} else {
-	// 			// logs.Warning("Zero APR for " + vault.Address.Hex() + " | " + vault.Name)
-	// 		}
-	// 	}
-	// 	spew.Printf("\n%s (%s) - (%s)\n", vault.Name, vault.Address.Hex(), vaultAPR.Type)
-	// 	checkDiff("PPS Week          ", internalAPY.Points.WeekAgo, vaultAPR.Points.WeekAgo)
-	// 	checkDiff("PPS Month         ", internalAPY.Points.MonthAgo, vaultAPR.Points.MonthAgo)
-	// 	checkDiff("PPS Inception     ", internalAPY.Points.Inception, vaultAPR.Points.Inception)
-	// 	if vaultAPR.ForwardAPR.Type == "" {
-	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPR.GrossAPR)
-	// 	} else {
-	// 		checkDiff("Gross/Forward APR ", internalAPY.GrossAPR, vaultAPR.ForwardAPR.GrossAPR)
-	// 	}
-	// 	checkDiff("Staking APR       ", internalAPY.StakingRewardsAPR, vaultAPR.StakingRewardsAPR)
-	// 	spew.Printf("\n")
-	// }
-
-	//dump computed APR in a file
-	// file, err := os.Create("computedAPR.json")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer file.Close()
-	// json.NewEncoder(file).Encode(COMPUTED_APR)
-
-	//Create a CSV file with all the computed APR with cols vaultAddress, pointWeek, pointMonth, pointInception, grossAPR, netAPY
-	// file, err = os.Create("computedAPR.csv")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer file.Close()
-	// file.WriteString("vaultAddress,pointWeek,pointWeekExporter,pointMonth,pointMonthExporter,pointInception,pointInceptionExporter,grossAPR,forwardAPR,grossAPRExporter,netAPY,netAPYExporter\n")
-	// for _, vault := range allVaults {
-	// 	vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
-	// 	if ok {
-	// 		if vaultFromMeta.Retired {
-	// 			continue
-	// 		}
-	// 	}
-
-	// 	if _, ok := COMPUTED_APR[chainID]; !ok {
-	// 		continue
-	// 	}
-	// 	if _, ok := COMPUTED_APR[chainID][vault.Address]; !ok {
-	// 		continue
-	// 	}
-	// 	vaultAPR := COMPUTED_APR[chainID][vault.Address]
-	// 	aggregatedVault, okLegacyAPI := extVaults.GetAggregatedVault(1, addresses.ToAddress(vault.Address).Hex())
-	// 	internalAPY := vaults.BuildAPY(vault, aggregatedVault, okLegacyAPI)
-	// 	file.WriteString(vault.Address.Hex() + "," +
-	// 		vaultAPR.Points.WeekAgo.String() + "," +
-	// 		strconv.FormatFloat(internalAPY.Points.WeekAgo, 'f', -1, 64) + "," +
-	// 		vaultAPR.Points.MonthAgo.String() + "," +
-	// 		strconv.FormatFloat(internalAPY.Points.MonthAgo, 'f', -1, 64) + "," +
-	// 		vaultAPR.Points.Inception.String() + "," +
-	// 		strconv.FormatFloat(internalAPY.Points.Inception, 'f', -1, 64) + "," +
-	// 		vaultAPR.GrossAPR.String() + "," +
-	// 		vaultAPR.ForwardAPR.GrossAPR.String() + "," +
-	// 		strconv.FormatFloat(internalAPY.GrossAPR, 'f', -1, 64) + "," +
-	// 		vaultAPR.NetAPY.String() + "," +
-	// 		strconv.FormatFloat(internalAPY.NetAPY, 'f', -1, 64) + "," +
-	// 		"\n")
-	// }
-
 }
 
 func Run(chainID uint64) {

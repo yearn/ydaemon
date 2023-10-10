@@ -24,7 +24,7 @@ func isAeroVault(chainID uint64, vault models.TVault) (common.Address, bool) {
 		logs.Error(err)
 		return common.Address{}, false
 	}
-	gaugeAddressForVoter, err := aeroVoter.Gauges(nil, vault.Token.Address)
+	gaugeAddressForVoter, err := aeroVoter.Gauges(nil, vault.AssetAddress)
 	if err != nil {
 		logs.Error(err)
 		return common.Address{}, false

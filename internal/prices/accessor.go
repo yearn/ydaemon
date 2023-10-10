@@ -33,13 +33,6 @@ func init() {
 }
 
 /**********************************************************************************************
-** The _historicalPriceMap variable is not exported and is only used internally by the
-** functions below. It is used to store the historical prices of the tokens:
-** map[chainID]map[blockNumber]map[tokenAddress]price
-**********************************************************************************************/
-var _historicalPriceMap = sync.Map{}
-
-/**********************************************************************************************
 ** MapPrices will, for a given chainID, return a map of prices.
 ** The map will be of the form: map[vaultAddress]bigNumber.Int
 **********************************************************************************************/

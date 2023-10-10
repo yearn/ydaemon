@@ -82,7 +82,6 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 		Category:       vault.Category,
 		Decimals:       vault.Decimals,
 		ChainID:        vault.ChainID,
-		DepositLimit:   vault.Details.DepositLimit,
 		APR:            vault.APR,
 		Migration:      vault.Migration,
 		Retired:        vault.Details.Retired,

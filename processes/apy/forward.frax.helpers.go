@@ -2,7 +2,7 @@ package apy
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -65,7 +65,7 @@ func retrieveFraxPools(chainID uint64) []TFraxPool {
 		return []TFraxPool{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
 		return []TFraxPool{}

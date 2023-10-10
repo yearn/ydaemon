@@ -1,17 +1,73 @@
-package store
+package storage
 
 import (
 	"encoding/json"
+	"os"
 	"strconv"
 	"sync"
 
-	"github.com/dgraph-io/badger/v3"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
+	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
 var _newVaultsFromRegistrySyncMap = make(map[uint64]*sync.Map)
+
+/** 🔵 - Yearn *************************************************************************************
+** The function `loadHistoricalVaultsFromJson` is responsible for loading historical vaults from
+** a JSON file. It reads the JSON file, parses the data into a map of vault addresses to
+** `TVaultsFromRegistry` objects, and returns this map along with the highest block number found
+** among all vaults. This function is used to initialize the state of the vaults from a previously
+** saved state.
+**************************************************************************************************/
+func LoadHistoricalVaultsFromJson(chainID uint64) (map[common.Address]models.TVaultsFromRegistry, uint64) {
+	var historicalVaults map[common.Address]models.TVaultsFromRegistry
+	var highestBlockNumber uint64
+	chainIDStr := strconv.FormatUint(chainID, 10)
+
+	// Load the JSON file
+	file, err := os.Open(env.BASE_DATA_PATH + "/meta/store/registries/" + chainIDStr + ".json")
+	if err != nil {
+		return nil, 0
+	}
+	defer file.Close()
+
+	// Decode the JSON file into the map
+	decoder := json.NewDecoder(file)
+	err = decoder.Decode(&historicalVaults)
+	if err != nil {
+		logs.Error("Failed to decode vaults JSON file: " + err.Error())
+		return nil, 0
+	}
+
+	// Find the highest block number
+	for _, vault := range historicalVaults {
+		if vault.BlockNumber > highestBlockNumber {
+			highestBlockNumber = vault.BlockNumber
+		}
+	}
+
+	return historicalVaults, highestBlockNumber
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** The function `storeHistoricalVaultsToJson` is responsible for storing historical vaults to a
+** JSON file. It takes a map of vault addresses to `TVaultsFromRegistry` objects, and writes this
+** map to a JSON file. This function is used to save the state of the vaults for later use.
+**************************************************************************************************/
+func StoreHistoricalVaultsToJson(chainID uint64, historicalVaults map[common.Address]models.TVaultsFromRegistry) {
+	chainIDStr := strconv.FormatUint(chainID, 10)
+
+	file, _ := json.MarshalIndent(historicalVaults, "", "\t")
+	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/store/registries"); os.IsNotExist(err) {
+		os.MkdirAll(env.BASE_DATA_PATH+"/meta/store/registries", 0755)
+	}
+	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/store/registries/"+chainIDStr+".json", file, 0644)
+	if err != nil {
+		logs.Error("Failed to write vaults JSON file: " + err.Error())
+	}
+}
 
 /**************************************************************************************************
 ** LoadNewVaultsFromRegistry will retrieve the all the vaults added to the registries from the
@@ -29,80 +85,22 @@ func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
 		_newVaultsFromRegistrySyncMap[chainID] = syncMap
 	}
 
-	temp := make(map[string]DBNewVaultsFromRegistry)
-	ListFromBadgerDB(chainID, TABLES.VAULTS_FROM_REGISTRY_SYNC, &temp)
-
-	if temp != nil && (len(temp) > 0) {
-		for _, vaultFromDB := range temp {
-			key := strconv.FormatUint(vaultFromDB.Block, 10) + "_" + addresses.ToAddress(vaultFromDB.RegistryAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.VaultsAddress).Hex() + "_" + addresses.ToAddress(vaultFromDB.TokenAddress).Hex() + "_" + vaultFromDB.APIVersion
-			vaultFromRegistry := models.TVaultsFromRegistry{
-				Address:         addresses.ToAddress(vaultFromDB.VaultsAddress),
-				RegistryAddress: addresses.ToAddress(vaultFromDB.RegistryAddress),
-				TokenAddress:    addresses.ToAddress(vaultFromDB.TokenAddress),
-				BlockHash:       common.HexToHash(vaultFromDB.BlockHash),
-				Type:            vaultFromDB.Type,
-				APIVersion:      vaultFromDB.APIVersion,
-				ChainID:         vaultFromDB.ChainID,
-				BlockNumber:     vaultFromDB.Block,
-				Activation:      vaultFromDB.Activation,
-				ManagementFee:   vaultFromDB.ManagementFee,
-				TxIndex:         vaultFromDB.TxIndex,
-				LogIndex:        vaultFromDB.LogIndex,
-			}
-			syncMap.Store(key, vaultFromRegistry)
-		}
+	historicalVaultsMap, _ := LoadHistoricalVaultsFromJson(chainID)
+	for _, vault := range historicalVaultsMap {
+		syncMap.Store(vault.Address.Hex(), vault)
 	}
 }
 
 /**************************************************************************************************
-** AppendToNewVaultsFromRegistry will add a new vault in the _vaultsSyncMap
+** StoreNewVaultsFromRegistry will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
-func AppendToNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
+func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]
 	if syncMap == nil {
 		syncMap = &sync.Map{}
 		_newVaultsFromRegistrySyncMap[chainID] = syncMap
 	}
-
-	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
-	syncMap.Store(key, vault)
-}
-
-/**************************************************************************************************
-** StoreNewVaultsFromRegistry will store a new vault in the _newVaultsFromRegistrySyncMap for fast
-** access during that same execution, and will store it in the local DB for future executions.
-** We are using the local DB because we don't want to trust the shared DB for this data.
-**************************************************************************************************/
-func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
-	AppendToNewVaultsFromRegistry(chainID, vault)
-
-	key := strconv.FormatUint(vault.BlockNumber, 10) + "_" + vault.RegistryAddress.Hex() + "_" + vault.Address.Hex() + "_" + vault.TokenAddress.Hex() + "_" + vault.APIVersion
-
-	go OpenBadgerDB(chainID, TABLES.VAULTS_FROM_REGISTRY_SYNC).Update(func(txn *badger.Txn) error {
-		DBbaseSchema := DBBaseSchema{
-			UUID:    getUUID(key),
-			Block:   vault.BlockNumber,
-			ChainID: chainID,
-		}
-		data := &DBNewVaultsFromRegistry{
-			DBbaseSchema,
-			vault.RegistryAddress.Hex(),
-			vault.Address.Hex(),
-			vault.TokenAddress.Hex(),
-			vault.BlockHash.Hex(),
-			vault.APIVersion,
-			vault.Activation,
-			vault.ManagementFee,
-			vault.TxIndex,
-			vault.LogIndex,
-			vault.Type,
-		}
-		dataByte, err := json.Marshal(data)
-		if err != nil {
-			return err
-		}
-		return txn.Set([]byte(key), dataByte)
-	})
+	syncMap.Store(vault.Address.Hex(), vault)
 }
 
 /**************************************************************************************************

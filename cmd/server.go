@@ -166,10 +166,5 @@ func NewRouter() *gin.Engine {
 	// 	GET(router, `tokenlist/live`, tokensList.GetTokenList)
 	// }
 
-	{
-		//TEST
-		router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
-	}
-
 	return router
 }

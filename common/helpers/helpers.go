@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"io/ioutil"
 	"math"
 	"math/big"
 	"os"
@@ -68,7 +67,7 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, err
 		outputFileHere := outputDirFiles[outputIndex]
 		outputFileName := outputFileHere.Name()
 		if strings.HasSuffix(outputFileName, suffix) {
-			content, err := ioutil.ReadFile(directory + outputFileName)
+			content, err := os.ReadFile(directory + outputFileName)
 			if err != nil {
 				traces.
 					Capture(`error`, `impossible to read files in `+directory).

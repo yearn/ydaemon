@@ -36,7 +36,13 @@ var POLYGON = TChain{
 		{
 			Address: common.HexToAddress("0xFBB087B456a656Ab815EB2D0f3f21Aa409Cec33F"),
 			Version: 4,
-			Block:   47462833,
+			Block:   47_462_833,
+		},
+		{
+			Address: common.HexToAddress("0x8D6Da363b53B8206AA8963763C8401aDF7c54541"),
+			Version: 4,
+			Block:   48030304,
+			Tag:     "experimental",
 		},
 	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},

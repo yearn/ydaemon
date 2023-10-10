@@ -45,11 +45,6 @@ var OPTIMISM = TChain{
 	},
 	Registries: []TContractData{
 		{
-			Address: common.HexToAddress("0x81291ceb9bB265185A9D07b91B5b50Df94f005BF"),
-			Version: 3,
-			Block:   22450349,
-		},
-		{
 			Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"),
 			Version: 3,
 			Block:   22451152,

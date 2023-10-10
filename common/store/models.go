@@ -46,12 +46,7 @@ type DBNewVaultsFromRegistry struct {
 	RegistryAddress string            // RegistryAddress is the address of the registry contract
 	VaultsAddress   string            // VaultAddress is the address of the vault contract
 	TokenAddress    string            // TokenAddress is the address of the underlying token
-	BlockHash       string            // BlockHash is the hash of the block where the event has been emitted
 	APIVersion      string            // APIVersion is the version of the vault API
-	Activation      uint64            // Activation is the block number where the vault has been activated
-	ManagementFee   uint64            // ManagementFee is the management fee of the vault
-	TxIndex         uint              // TxIndex is the index of the transaction in the block
-	LogIndex        uint              // LogIndex is the index of the log in the transaction
 	Type            models.TTokenType // Type of vault, can be Experimental, Standard or Automated
 }
 

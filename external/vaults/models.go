@@ -4,9 +4,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
 	// "github.com/yearn/ydaemon/processes/apy"
@@ -26,7 +26,7 @@ type TExternalVaultHarvest struct {
 
 // TExternalVaultTVL is the struct containing the information about the TVL of a vault.
 type TExternalVaultTVL struct {
-	TotalAssets          *bigNumber.Int `json:"total_assets"`
+	TotalAssets          *bigNumber.Int `json:"totalAssets"`
 	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
 	TVLDeposited         float64        `json:"tvl_deposited"`
 	TVLDelegated         float64        `json:"tvl_delegated"`
@@ -90,24 +90,22 @@ type TExternalVaultStaking struct {
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	Management            string         `json:"management"`
-	Governance            string         `json:"governance"`
-	Guardian              string         `json:"guardian"`
-	Rewards               string         `json:"rewards"`
-	DepositLimit          *bigNumber.Int `json:"depositLimit"`
-	AvailableDepositLimit *bigNumber.Int `json:"availableDepositLimit,omitempty"`
-	Comment               string         `json:"comment"`
-	APYTypeOverride       string         `json:"apyTypeOverride"`
-	APYOverride           float64        `json:"apyOverride"`
-	Order                 float32        `json:"order"`
-	PerformanceFee        uint64         `json:"performanceFee"`
-	ManagementFee         uint64         `json:"managementFee"`
-	DepositsDisabled      bool           `json:"depositsDisabled"`
-	WithdrawalsDisabled   bool           `json:"withdrawalsDisabled"`
-	AllowZapIn            bool           `json:"allowZapIn"`
-	AllowZapOut           bool           `json:"allowZapOut"`
-	Retired               bool           `json:"retired"`
-	HideAlways            bool           `json:"hideAlways"`
+	Management          string  `json:"management"`
+	Governance          string  `json:"governance"`
+	Guardian            string  `json:"guardian"`
+	Rewards             string  `json:"rewards"`
+	Comment             string  `json:"comment"`
+	APYTypeOverride     string  `json:"apyTypeOverride"`
+	APYOverride         float64 `json:"apyOverride"`
+	Order               float32 `json:"order"`
+	PerformanceFee      uint64  `json:"performanceFee"`
+	ManagementFee       uint64  `json:"managementFee"`
+	DepositsDisabled    bool    `json:"depositsDisabled"`
+	WithdrawalsDisabled bool    `json:"withdrawalsDisabled"`
+	AllowZapIn          bool    `json:"allowZapIn"`
+	AllowZapOut         bool    `json:"allowZapOut"`
+	Retired             bool    `json:"retired"`
+	HideAlways          bool    `json:"hideAlways"`
 }
 
 // TExternalERC20Token contains the basic information of an ERC20 token
@@ -137,7 +135,6 @@ type TExternalVault struct {
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
 	Category          string                  `json:"category"`
-	Inception         uint64                  `json:"inception"`
 	Decimals          uint64                  `json:"decimals"`
 	ChainID           uint64                  `json:"chainID"`
 	RiskScore         float64                 `json:"riskScore"`
@@ -156,7 +153,7 @@ type TExternalVault struct {
 }
 
 type TSimplifiedExternalVaultTVL struct {
-	TotalAssets *bigNumber.Int `json:"total_assets"`
+	TotalAssets *bigNumber.Int `json:"totalAssets"`
 	TVL         float64        `json:"tvl"`
 	Price       float64        `json:"price"`
 }
@@ -178,7 +175,6 @@ type TSimplifiedExternalVault struct {
 	Category       string                        `json:"category"`
 	Decimals       uint64                        `json:"decimals"`
 	ChainID        uint64                        `json:"chainID"`
-	DepositLimit   *bigNumber.Int                `json:"depositLimit"`
 	Retired        bool                          `json:"retired"`
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
@@ -206,18 +202,15 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		}
 	}
 
+	vaultToken, ok := storage.GetERC20(internalVault.ChainID, internalVault.Address)
+	if !ok {
+		return nil
+	}
+	name, displayName, formatedName := vaults.BuildNames(internalVault, ``)
+	symbol, displaySymbol, formatedSymbol := vaults.BuildSymbol(internalVault, ``)
+
 	v.Address = internalVault.Address.Hex()
-	v.Symbol = internalVault.Symbol
-	v.DisplaySymbol = internalVault.DisplaySymbol
-	v.FormatedSymbol = internalVault.FormatedSymbol
-	v.Name = internalVault.Name
-	v.DisplayName = internalVault.DisplayName
-	v.FormatedName = internalVault.FormatedName
-	v.Icon = internalVault.Icon
 	v.Version = internalVault.Version
-	v.Type = internalVault.Type
-	v.Inception = internalVault.Inception
-	v.Decimals = internalVault.Decimals
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.ChainID = internalVault.ChainID
@@ -225,8 +218,17 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.Migration = toTExternalVaultMigration(vaults.BuildMigration(internalVault))
 	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
 	v.Category = vaults.BuildCategory(internalVault)
+	v.Symbol = symbol
+	v.DisplaySymbol = displaySymbol
+	v.FormatedSymbol = formatedSymbol
+	v.Name = name
+	v.DisplayName = displayName
+	v.FormatedName = formatedName
+	v.Icon = vaultToken.Icon
+	v.Type = vaultToken.Type
+	v.Decimals = vaultToken.Decimals
 
-	underlyingToken, ok := store.GetUnderlyingERC20(internalVault.ChainID, internalVault.Address)
+	underlyingToken, ok := storage.GetUnderlyingERC20(internalVault.ChainID, internalVault.Address)
 	if ok {
 		v.Token = TExternalERC20Token{
 			Address:                   underlyingToken.Address.Hex(),
@@ -241,17 +243,20 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 			Decimals:                  underlyingToken.Decimals,
 		}
 	} else {
-		v.Token = TExternalERC20Token{
-			Address:                   internalVault.Token.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(internalVault.Token.UnderlyingTokensAddresses),
-			Name:                      internalVault.Token.Name,
-			Symbol:                    internalVault.Token.Symbol,
-			Type:                      internalVault.Token.Type,
-			DisplayName:               internalVault.Token.DisplayName,
-			DisplaySymbol:             internalVault.Token.DisplaySymbol,
-			Description:               internalVault.Token.Description,
-			Icon:                      internalVault.Token.Icon,
-			Decimals:                  internalVault.Token.Decimals,
+		underlyingToken, ok = storage.GetERC20(internalVault.ChainID, internalVault.AssetAddress)
+		if ok {
+			v.Token = TExternalERC20Token{
+				Address:                   underlyingToken.Address.Hex(),
+				UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
+				Name:                      underlyingToken.Name,
+				Symbol:                    underlyingToken.Symbol,
+				Type:                      underlyingToken.Type,
+				DisplayName:               underlyingToken.DisplayName,
+				DisplaySymbol:             underlyingToken.DisplaySymbol,
+				Description:               underlyingToken.Description,
+				Icon:                      underlyingToken.Icon,
+				Decimals:                  underlyingToken.Decimals,
+			}
 		}
 	}
 	if v.Token.UnderlyingTokensAddresses == nil {
@@ -273,24 +278,22 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.APR = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
 
 	v.Details = &TExternalVaultDetails{
-		Management:            internalVault.Management.Hex(),
-		Governance:            internalVault.Governance.Hex(),
-		Guardian:              internalVault.Guardian.Hex(),
-		Rewards:               internalVault.Rewards.Hex(),
-		DepositLimit:          internalVault.DepositLimit,
-		AvailableDepositLimit: internalVault.AvailableDepositLimit,
-		PerformanceFee:        internalVault.PerformanceFee,
-		ManagementFee:         internalVault.ManagementFee,
-		Comment:               vaultFromMeta.Comment,
-		Order:                 vaultFromMeta.Order,
-		DepositsDisabled:      vaultFromMeta.DepositsDisabled,
-		WithdrawalsDisabled:   vaultFromMeta.WithdrawalsDisabled,
-		AllowZapIn:            vaultFromMeta.AllowZapIn,
-		AllowZapOut:           vaultFromMeta.AllowZapOut,
-		Retired:               vaultFromMeta.Retired,
-		APYTypeOverride:       vaultFromMeta.APYTypeOverride,
-		APYOverride:           vaultFromMeta.APYOverride,
-		HideAlways:            vaultFromMeta.HideAlways,
+		Management:          internalVault.Management.Hex(),
+		Governance:          internalVault.Governance.Hex(),
+		Guardian:            internalVault.Guardian.Hex(),
+		Rewards:             internalVault.Rewards.Hex(),
+		PerformanceFee:      internalVault.PerformanceFee,
+		ManagementFee:       internalVault.ManagementFee,
+		Comment:             vaultFromMeta.Comment,
+		Order:               vaultFromMeta.Order,
+		DepositsDisabled:    vaultFromMeta.DepositsDisabled,
+		WithdrawalsDisabled: vaultFromMeta.WithdrawalsDisabled,
+		AllowZapIn:          vaultFromMeta.AllowZapIn,
+		AllowZapOut:         vaultFromMeta.AllowZapOut,
+		Retired:             vaultFromMeta.Retired,
+		APYTypeOverride:     vaultFromMeta.APYTypeOverride,
+		APYOverride:         vaultFromMeta.APYOverride,
+		HideAlways:          vaultFromMeta.HideAlways,
 	}
 
 	return v

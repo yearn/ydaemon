@@ -15,13 +15,13 @@ import (
 var _newVaultsFromRegistrySyncMap = make(map[uint64]*sync.Map)
 
 /** 🔵 - Yearn *************************************************************************************
-** The function `loadHistoricalVaultsFromJson` is responsible for loading historical vaults from
+** The function `loadRegistriesFromJson` is responsible for loading historical vaults from
 ** a JSON file. It reads the JSON file, parses the data into a map of vault addresses to
 ** `TVaultsFromRegistry` objects, and returns this map along with the highest block number found
 ** among all vaults. This function is used to initialize the state of the vaults from a previously
 ** saved state.
 **************************************************************************************************/
-func LoadHistoricalVaultsFromJson(chainID uint64) (map[common.Address]models.TVaultsFromRegistry, uint64) {
+func loadRegistriesFromJson(chainID uint64) (map[common.Address]models.TVaultsFromRegistry, uint64) {
 	var historicalVaults map[common.Address]models.TVaultsFromRegistry
 	var highestBlockNumber uint64
 	chainIDStr := strconv.FormatUint(chainID, 10)
@@ -52,11 +52,11 @@ func LoadHistoricalVaultsFromJson(chainID uint64) (map[common.Address]models.TVa
 }
 
 /** 🔵 - Yearn *************************************************************************************
-** The function `storeHistoricalVaultsToJson` is responsible for storing historical vaults to a
+** The function `storeRegistriesToJson` is responsible for storing historical vaults to a
 ** JSON file. It takes a map of vault addresses to `TVaultsFromRegistry` objects, and writes this
 ** map to a JSON file. This function is used to save the state of the vaults for later use.
 **************************************************************************************************/
-func StoreHistoricalVaultsToJson(chainID uint64, historicalVaults map[common.Address]models.TVaultsFromRegistry) {
+func StoreRegistriesToJson(chainID uint64, historicalVaults map[common.Address]models.TVaultsFromRegistry) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	file, _ := json.MarshalIndent(historicalVaults, "", "\t")
@@ -70,12 +70,12 @@ func StoreHistoricalVaultsToJson(chainID uint64, historicalVaults map[common.Add
 }
 
 /**************************************************************************************************
-** LoadNewVaultsFromRegistry will retrieve the all the vaults added to the registries from the
+** LoadRegistries will retrieve the all the vaults added to the registries from the
 ** local DB and store them in the _newVaultsFromRegistrySyncMap for fast access during that same
 ** execution.
 ** Use local DB to not screw up the DB with the same data over and over again.
 **************************************************************************************************/
-func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
+func LoadRegistries(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
@@ -85,16 +85,16 @@ func LoadNewVaultsFromRegistry(chainID uint64, wg *sync.WaitGroup) {
 		_newVaultsFromRegistrySyncMap[chainID] = syncMap
 	}
 
-	historicalVaultsMap, _ := LoadHistoricalVaultsFromJson(chainID)
+	historicalVaultsMap, _ := loadRegistriesFromJson(chainID)
 	for _, vault := range historicalVaultsMap {
 		syncMap.Store(vault.Address.Hex(), vault)
 	}
 }
 
 /**************************************************************************************************
-** StoreNewVaultsFromRegistry will add a new vault in the _vaultsSyncMap
+** StoreNewVaultToRegistry will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
-func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
+func StoreNewVaultToRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]
 	if syncMap == nil {
 		syncMap = &sync.Map{}
@@ -104,49 +104,14 @@ func StoreNewVaultsFromRegistry(chainID uint64, vault models.TVaultsFromRegistry
 }
 
 /**************************************************************************************************
-** ListLastNewVaultEventForRegistries will return a map of the last blockNumber for each registry
-** that has been registered. This will allow us to know when to start listening for new events
-** instead of going through the whole history.
+** ListVaultsFromRegistries will retrieve the all the vaults added to the registries from the
+** given chainID
 **************************************************************************************************/
-func ListLastNewVaultEventForRegistries(chainID uint64) map[string]uint64 {
-	lastRegisteredEventForRegistry := make(map[string]uint64)
-
-	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the
-	** `LoadNewVaultsFromRegistry` function which take the data from the database/badger and store
-	** it in it.
-	**********************************************************************************************/
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-
-	syncMap.Range(func(key, value interface{}) bool {
-		registry := value.(models.TVaultsFromRegistry).RegistryAddress
-		blockNumber := value.(models.TVaultsFromRegistry).BlockNumber
-
-		if _, ok := lastRegisteredEventForRegistry[registry.Hex()]; !ok {
-			lastRegisteredEventForRegistry[registry.Hex()] = blockNumber
-		} else if lastRegisteredEventForRegistry[registry.Hex()] < blockNumber {
-			lastRegisteredEventForRegistry[registry.Hex()] = blockNumber
-		}
-		return true
-	})
-
-	return lastRegisteredEventForRegistry
-}
-
-/**************************************************************************************************
-** ListVaultsFromRegistry will return a list of all the vaults stored in the caching system for a
-** given chainID. Both a map and a slice are returned.
-** This is for the registry vault version.
-**************************************************************************************************/
-func ListVaultsFromRegistry(chainID uint64) (asMap map[common.Address]models.TVaultsFromRegistry, asSlice []models.TVaultsFromRegistry) {
+func ListVaultsFromRegistries(chainID uint64) (asMap map[common.Address]models.TVaultsFromRegistry, asSlice []models.TVaultsFromRegistry) {
 	asMap = make(map[common.Address]models.TVaultsFromRegistry) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadNewVaultsFromRegistry`
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
 	** function which take the data from the database/badger and store it in it.
 	**********************************************************************************************/
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]
@@ -171,11 +136,47 @@ func ListVaultsFromRegistry(chainID uint64) (asMap map[common.Address]models.TVa
 }
 
 /**************************************************************************************************
+** ListVaultsFromRegistry will return a list of all the vaults stored in the caching system for a
+** given chainID and registry. Both a map and a slice are returned.
+** This is for the registry vault version.
+**************************************************************************************************/
+func ListVaultsFromRegistry(chainID uint64, registryAddress common.Address) (asMap map[common.Address]models.TVaultsFromRegistry, asSlice []models.TVaultsFromRegistry) {
+	asMap = make(map[common.Address]models.TVaultsFromRegistry) // make to avoid nil map
+
+	/**********************************************************************************************
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
+	** function which take the data from the database/badger and store it in it.
+	**********************************************************************************************/
+	syncMap := _newVaultsFromRegistrySyncMap[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		_newVaultsFromRegistrySyncMap[chainID] = syncMap
+	}
+
+	/**********************************************************************************************
+	** We can just iterate over the syncMap and add the vaults to the map and slice.
+	** As the stored vault data are only a subset of static, we need to use the actual structure
+	** and not the DBVault one.
+	**********************************************************************************************/
+	syncMap.Range(func(key, value interface{}) bool {
+		vault := value.(models.TVaultsFromRegistry)
+		if vault.RegistryAddress != registryAddress {
+			return true
+		}
+		asMap[vault.Address] = vault
+		asSlice = append(asSlice, vault)
+		return true
+	})
+
+	return asMap, asSlice
+}
+
+/**************************************************************************************************
 ** GetVaultFromRegistry
 **************************************************************************************************/
 func GetVaultFromRegistry(chainID uint64, vaultAddress common.Address) (models.TVaultsFromRegistry, bool) {
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadNewVaultsFromRegistry`
+	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
 	** function which take the data from the database/badger and store it in it.
 	**********************************************************************************************/
 	syncMap := _newVaultsFromRegistrySyncMap[chainID]

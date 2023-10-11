@@ -1,4 +1,4 @@
-package registries
+package indexer
 
 import (
 	"context"
@@ -15,7 +15,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -65,7 +64,10 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					handleV2Vault(chainID, log.Event)
+					historicalVault := handleV2Vault(chainID, log.Event)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						historicalVault.Address: historicalVault,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -77,7 +79,10 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					handleV3Vault(chainID, log.Event)
+					historicalVault := handleV3Vault(chainID, log.Event)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						historicalVault.Address: historicalVault,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -89,7 +94,10 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					handleV4Vault(chainID, log.Event)
+					historicalVault := handleV4Vault(chainID, log.Event)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						historicalVault.Address: historicalVault,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV4 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -123,7 +131,6 @@ func watchNewVaults(
 	registry env.TContractData,
 	lastSyncedBlock uint64,
 	wg *sync.WaitGroup,
-	newHistoricalVaults *sync.Map,
 ) (uint64, bool, error) {
 	/**********************************************************************************************
 	** First thing is to connect to the node via a WS connection. We need to use a WS connection
@@ -158,7 +165,7 @@ func watchNewVaults(
 				continue
 			}
 			historicalVault := handleV2Vault(chainID, value)
-			newHistoricalVaults.Store(historicalVault.Address, historicalVault)
+			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
 		if wg != nil {
 			wg.Done()
@@ -176,7 +183,7 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV2Vault(chainID, value)
-				indexer.ProcessNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})
 			case err := <-sub.Err():
@@ -209,7 +216,7 @@ func watchNewVaults(
 				continue
 			}
 			historicalVault := handleV3Vault(chainID, value)
-			newHistoricalVaults.Store(historicalVault.Address, historicalVault)
+			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
 		if wg != nil {
 			wg.Done()
@@ -227,7 +234,7 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV3Vault(chainID, value)
-				indexer.ProcessNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})
 			case err := <-sub.Err():
@@ -260,7 +267,7 @@ func watchNewVaults(
 				continue
 			}
 			historicalVault := handleV4Vault(chainID, value)
-			newHistoricalVaults.Store(historicalVault.Address, historicalVault)
+			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
 		if wg != nil {
 			wg.Done()
@@ -278,7 +285,7 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV4Vault(chainID, value)
-				indexer.ProcessNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})
 			case err := <-sub.Err():
@@ -310,7 +317,6 @@ func indexNewVaultsWrapper(
 	registry env.TContractData,
 	higherIndexedBlockNumber uint64,
 	wg *sync.WaitGroup,
-	newHistoricalVaults *sync.Map,
 ) {
 	isDone := false
 	lastSyncedBlock := higherIndexedBlockNumber
@@ -331,7 +337,6 @@ func indexNewVaultsWrapper(
 			registry,
 			lastSyncedBlock,
 			wg,
-			newHistoricalVaults,
 		)
 		if err != nil {
 			logs.Error(`error while indexing NewVault from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -382,37 +387,43 @@ func indexNewVaultsWrapper(
 **   - Listen to new vaults added to the registry (aka listening to the events)
 ** Only the first group is stored in the `sync.Map`.
 **************************************************************************************************/
-func IndexNewVaults(chainID uint64) (historicalVaults map[common.Address]models.TVaultsFromRegistry) {
+func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]models.TVaultsFromRegistry) {
 	logs.Success(`Indexer Daemon has started for chain ` + strconv.FormatUint(chainID, 10))
-	wg := sync.WaitGroup{}            // This WaitGroup will be done when all the historical vaults are indexed
-	newHistoricalVaults := sync.Map{} // This Map will store the historical vaults
+	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical vaults are indexed
 
-	// Load the previous historical vaults from JSON
-	// This will be used to compare with the new vaults and update the historical vaults accordingly
-	logs.Info("Loading existing vaults...")
-	previousHistoricalVaults, higherBlockNumber := storage.LoadHistoricalVaultsFromJson(chainID)
-	for vaultAddress, vault := range previousHistoricalVaults {
-		newHistoricalVaults.Store(vaultAddress, vault)
-	}
-
-	// Index the new vaults
-	logs.Info("Indexing new vaults...")
-	wg.Add(len(env.CHAINS[chainID].Registries))
+	/** 🔵 - Yearn *********************************************************************************
+	** Loop over all the known registries for the specified chain ID.
+	**********************************************************************************************/
 	for _, registry := range env.CHAINS[chainID].Registries {
-		go indexNewVaultsWrapper(chainID, registry, higherBlockNumber, &wg, &newHistoricalVaults)
+		wg.Add(1)
+
+		/** 🔵 - Yearn *****************************************************************************
+		** This block of code is responsible for retrieving the list of vaults for a given registry
+		** It then iterates over these vaults to find the one with the highest block number.
+		** This is where we will start indexing new vaults from to avoid spending ressources with
+		** data we already have.
+		******************************************************************************************/
+		_, vaultSlice := storage.ListVaultsFromRegistry(chainID, registry.Address)
+		highestBlockNumber := uint64(0)
+		for _, strategy := range vaultSlice {
+			if strategy.BlockNumber > highestBlockNumber {
+				highestBlockNumber = strategy.BlockNumber
+			}
+		}
+
+		/** 🔵 - Yearn *****************************************************************************
+		** After retrieving the highest block number we can proceed to index new vaults.
+		******************************************************************************************/
+		go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
 	}
 	wg.Wait()
 
-	logs.Info("Processing new vaults...")
-	// Create a map to store the values from newHistoricalVaults
-	historicalVaults = make(map[common.Address]models.TVaultsFromRegistry)
-	newHistoricalVaults.Range(func(key, value interface{}) bool {
-		historicalVaults[key.(common.Address)] = value.(models.TVaultsFromRegistry)
-		return true
-	})
-	indexer.ProcessNewVault(chainID, historicalVaults)
-
-	// Store the new historical vaults to JSON
-	storage.StoreHistoricalVaultsToJson(chainID, historicalVaults)
-	return historicalVaults
+	/** 🔵 - Yearn *********************************************************************************
+	** This part is only accessed once, once the `historical` vaults, aka that are already deployed
+	** and indexed, are retrieved. New deployed vaults will not hit this part, but will be handle
+	** in the above functions directly
+	**********************************************************************************************/
+	vaultsFromRegistry, _ = storage.ListVaultsFromRegistries(chainID)
+	storage.StoreRegistriesToJson(chainID, vaultsFromRegistry)
+	return vaultsFromRegistry
 }

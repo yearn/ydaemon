@@ -54,7 +54,7 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 			}
 
 			newVault := NewVault().AssignTVault(currentVault)
-			if !newVault.Details.Retired {
+			if !newVault.Details.IsRetired {
 				continue
 			}
 			if newVault.Migration.Available {

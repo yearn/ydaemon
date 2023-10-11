@@ -19,7 +19,7 @@ import (
 func FetchVaultsFromV1(chainID uint64) {
 	// Get the meta information from the Yearn Meta API
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(env.API_V1_BASE_URL + chainIDStr + `/vaults/all`)
+	resp, err := http.Get(env.API_V1_BASE_URL + chainIDStr + `1`)
 	if err != nil || resp.StatusCode != 200 {
 		logs.Warning("Error fetching vaults from V1 for chain", chainID)
 		return

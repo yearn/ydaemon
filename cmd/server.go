@@ -63,7 +63,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
 		router.GET(`:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
-		router.GET(`:chainID/vaults/apy/:address`, c.GetVaultsVisionAPY)
 		router.GET(`:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
 		router.GET(`:chainID/earned/:address`, c.GetEarnedPerUser)
 		router.GET(`earned/:address`, c.GetEarnedPerUserForAllChains)
@@ -112,13 +111,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
 		router.GET(`:chainID/meta/tokens/:address`, c.GetMetaToken)
 		router.GET(`:chainID/meta/token/:address`, c.GetMetaToken)
-
-		// Proxy meta vaults
-		router.GET(`api/:chainID/vaults/all`, c.GetMetaVaultsLegacy)
-		router.GET(`:chainID/meta/vaults`, c.GetMetaVaults)
-		router.GET(`api/:chainID/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vault/:address`, c.GetMetaVault)
 
 		// Proxy meta protocols
 		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocols)

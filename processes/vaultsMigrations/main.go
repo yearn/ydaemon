@@ -8,9 +8,9 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/meta"
+	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/registries"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/prices"
@@ -81,19 +81,19 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 	depositLimit := helpers.DecodeBigInt(rawDepositLimit)
 	decimals := helpers.DecodeUint64(rawDecimals)
 	depositLimitNormalized := helpers.ToNormalizedAmount(depositLimit, decimals)
-	if vaultFromMeta, ok := meta.GetMetaVault(chainID, vaultAddress); ok {
+	if vault, ok := storage.GetVault(chainID, vaultAddress); ok {
 		if depositLimit.Gt(bigNumber.Zero) {
 			return common.Address{}, depositLimitNormalized, true, false, false
 		}
 
 		if depositLimit.Eq(bigNumber.Zero) { //Deposit limit 0
-			if vaultFromMeta.MigrationAvailable {
-				return vaultFromMeta.MigrationTargetVault, depositLimitNormalized, true, false, false
+			if vault.Migration.Available {
+				return vault.Migration.Target, depositLimitNormalized, true, false, false
 			}
-			if (vaultFromMeta.DepositsDisabled || vaultFromMeta.Retired) && !vaultFromMeta.MigrationAvailable {
+			if (vault.IsRetired) && !vault.Migration.Available {
 				return common.Address{}, depositLimitNormalized, false, true, false
 			}
-			if !vaultFromMeta.MigrationAvailable {
+			if !vault.Migration.Available {
 				return common.Address{}, depositLimitNormalized, false, false, true
 			}
 		}
@@ -109,7 +109,7 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	historicalVaults := registries.IndexNewVaults(chainID)
+	historicalVaults := indexer.IndexNewVaults(chainID)
 	tokens.RetrieveAllTokens(chainID, historicalVaults)
 	prices.Run(chainID)
 	vaults.RetrieveAllVaults(chainID, historicalVaults)

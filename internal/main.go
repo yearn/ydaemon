@@ -7,9 +7,7 @@ import (
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
-	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -25,20 +23,27 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
-	historicalVaults := registries.IndexNewVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, historicalVaults)
+	registries := indexer.IndexNewVaults(chainID)
+	vaultMap := vaults.RetrieveAllVaults(chainID, registries)
+	strategiesSlice := indexer.IndexNewStrategies(chainID, vaultMap)
+	tokens.RetrieveAllTokens(chainID, registries)
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
-	cron.Every(15).Minute().StartImmediately().Do(func() {
-		vaults.RetrieveAllVaults(chainID, historicalVaults)
+	cron.Every(15).Minutes().StartImmediately().Do(func() {
 		prices.Run(chainID)
-		strategiesAddedList := events.HandleStrategyAdded(chainID, historicalVaults, 0, nil)
 		events.HandleStakingPoolAdded(chainID, 0, nil)
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		indexer.PostProcessStrategies(chainID)
+	})
+
+	cron.Every(15).Minute().Do(func() {
+		vaultMap := vaults.RetrieveAllVaults(chainID, registries)
+		indexer.IndexNewStrategies(chainID, vaultMap)
+		strategies.RetrieveAllStrategies(chainID, strategiesSlice) //TODO: update here
+
+		indexer.PostProcess(chainID)
+
 		apy.ComputeChainAPR(chainID)
 		go strategies.InitRiskScore(chainID)
 	})
@@ -49,6 +54,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 func InitializeBribes(chainID uint64) {
 	allRewardsAdded := events.HandleRewardsAdded(chainID, 0, nil)
 	for _, reward := range allRewardsAdded {
-		bribes.SetInRewardAddedMap(chainID, reward)
+		indexer.SetInRewardAddedMap(chainID, reward)
 	}
 }

@@ -6,7 +6,6 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -27,11 +26,8 @@ func ComputeChainAPR(chainID uint64) {
 	}
 
 	for _, vault := range allVaults {
-		vaultFromMeta, ok := meta.GetMetaVault(chainID, vault.Address)
-		if ok {
-			if vaultFromMeta.Retired {
-				continue
-			}
+		if vault.IsRetired {
+			continue
 		}
 		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 		if !ok {

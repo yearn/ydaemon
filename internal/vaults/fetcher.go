@@ -8,15 +8,11 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/strategies"
 )
-
-var metaVaultFileErrorAlreadySent = make(map[uint64]map[common.Address]bool)
-var metaVaultTokenErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 
 /**************************************************************************************************
 ** fetchBasicInformations will, for a list of addresses, fetch all the relevant basic information
@@ -41,6 +37,9 @@ func fetchBasicInformations(
 	maxStrategiesPerVault := 20
 	calls := []ethereum.Call{}
 	for _, vault := range vaultMap {
+		if vault.IsRetired {
+			continue
+		}
 		if time.Since(vault.LastUpdate).Hours() > 24 {
 			// If the last vault update was more than 24 hour ago, we will do a full update
 			calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
@@ -83,6 +82,9 @@ func fetchBasicInformations(
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, vault := range vaultMap {
+		if vault.IsRetired {
+			continue
+		}
 		rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
 		rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
 		rawPerformanceFee := response[vault.Address.Hex()+`performanceFee`]
@@ -198,7 +200,7 @@ func RetrieveAllVaults(
 	** First, try to retrieve the list of vaults from the database and populate our updatedVaultMap
 	** with it.
 	**********************************************************************************************/
-	vaultMap, _ := store.ListAllVaults(chainID)
+	vaultMap, _ := storage.ListVaults(chainID)
 	updatedVaultMap := vaultMap
 
 	/**********************************************************************************************
@@ -241,6 +243,12 @@ func RetrieveAllVaults(
 	** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
 	**********************************************************************************************/
 	for _, vault := range updatedVaultMap {
+		if (vault.Migration.Target == common.Address{}) {
+			vault.Migration = models.TMigration{
+				Available: false,
+				Target:    vault.Address,
+			}
+		}
 		storage.StoreVault(chainID, vault)
 	}
 	vaultMap, _ = storage.ListVaults(chainID)

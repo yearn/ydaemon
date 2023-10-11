@@ -1240,6 +1240,20 @@
 		"decimals": 18,
 		"chainID": 1
 	},
+	"0x24ae2da0f361aa4be46b48eb19c91e02c5e4f27e": {
+		"address": "0x24ae2da0f361aa4be46b48eb19c91e02c5e4f27e",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Mev Liquid Staking Receipt",
+		"symbol": "mevETH",
+		"display_name": "Mev Liquid Staking Receipt",
+		"display_symbol": "mevETH",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/1/0x24Ae2dA0f361AA4BE46b48EB19C91e02c5e4f27E/logo-128.png",
+		"decimals": 18,
+		"chainID": 1
+	},
 	"0x24e79e946dea5482212c38aab2d0782f04cdb0e0": {
 		"address": "0x24e79e946dea5482212c38aab2d0782f04cdb0e0",
 		"underlyingTokensAddresses": [],
@@ -2545,6 +2559,20 @@
 		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains sBTC-Crv (sBTC, WBTC, and renBTC) and Binance BTC, a wrapped BTC minted by Binance.",
 		"category": "Curve",
 		"icon": "https://assets.smold.app/api/token/1/0x410e3E86ef427e30B9235497143881f717d93c2A/logo-128.png",
+		"decimals": 18,
+		"chainID": 1
+	},
+	"0x41252e8691e964f7de35156b68493bab6797a275": {
+		"address": "0x41252e8691e964f7de35156b68493bab6797a275",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Discount YFI",
+		"symbol": "dYFI",
+		"display_name": "Discount YFI",
+		"display_symbol": "dYFI",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/1/0x41252E8691e964f7DE35156B68493bAb6797a275/logo-128.png",
 		"decimals": 18,
 		"chainID": 1
 	},

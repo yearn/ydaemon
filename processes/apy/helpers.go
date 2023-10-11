@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/indexer"
 	priceAccessor "github.com/yearn/ydaemon/internal/prices"
-	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/strategies"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -35,14 +34,15 @@ func getTokenPrice(chainID uint64, tokenAddr common.Address) *bigNumber.Float {
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	historicalVaults := registries.IndexNewVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, historicalVaults)
-	vaults.RetrieveAllVaults(chainID, historicalVaults)
+	registries := indexer.IndexNewVaults(chainID)
+	vaultMap := vaults.RetrieveAllVaults(chainID, registries)
+	strategiesSlice := indexer.IndexNewStrategies(chainID, vaultMap)
+	tokens.RetrieveAllTokens(chainID, registries)
+
 	prices.Run(chainID)
-	strategiesAddedList := events.HandleStrategyAdded(chainID, historicalVaults, 0, nil)
 	logs.Info(`loading staking pools...`)
 	events.HandleStakingPoolAdded(chainID, 0, nil)
 	logs.Info(`loading strategies...`)
-	strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-	indexer.PostProcessStrategies(chainID)
+	strategies.RetrieveAllStrategies(chainID, strategiesSlice)
+	indexer.PostProcess(chainID)
 }

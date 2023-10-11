@@ -1,15 +1,12 @@
 package vaults
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -94,31 +91,7 @@ func BuildSymbol(t models.TVault, vaultSymbol string) (string, string, string) {
 	return symbol, displaySymbol, formatedSymbol
 }
 
-func BuildMigration(t models.TVault) models.TMigration {
-	migration := models.TMigration{
-		Available: false,
-		Address:   t.Address,
-	}
-
-	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, t.Address); ok {
-		migrationAddress := t.Address
-		migrationContract := common.Address{}
-		migrationAvailable := vaultFromMeta.MigrationAvailable
-		if vaultFromMeta.MigrationAvailable {
-			migrationAddress = vaultFromMeta.MigrationTargetVault
-			migrationContract = vaultFromMeta.MigrationContract
-		}
-		migration = models.TMigration{
-			Available: migrationAvailable,
-			Address:   migrationAddress,
-			Contract:  migrationContract,
-		}
-	}
-	return migration
-}
-
 func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
-	vaultFromMeta, okMeta := meta.GetMetaVault(t.ChainID, t.Address)
 	apy := models.TAPY{}
 	if hasLegacyAPY {
 		apy = models.TAPY{
@@ -149,13 +122,6 @@ func BuildAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLega
 			},
 			Error: aggregatedVault.LegacyAPY.Error,
 		}
-		if okMeta && vaultFromMeta.APYTypeOverride != `` {
-			apy.Type = vaultFromMeta.APYTypeOverride
-		}
-	} else if okMeta && vaultFromMeta.APYTypeOverride != `` {
-		logs.Error(`Missing APY vault data for chainID: ` + strconv.FormatUint(t.ChainID, 10) + ` and address: ` + t.Address.Hex())
-		apy.Type = vaultFromMeta.APYTypeOverride
-		apy.Error = `Missing APY vault data`
 	}
 	return apy
 }
@@ -199,12 +165,15 @@ func BuildTVL(t models.TVault) models.TTVL {
 }
 
 func BuildCategory(t models.TVault) string {
-	category := `Volatile`
+	category := ``
 	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
 	baseForCurve := []string{`curve`, `crv`}
 	baseForBalancer := []string{`balancer`, `bal`}
 	baseForVelodrome := []string{`velodrome`, `velo`}
 	baseForAerodrome := []string{`aerodrome`, `aero`}
+	baseForBitcoin := []string{`btc`, `bitcoin`}
+	baseForEth := []string{`eth`, `ethereum`}
+	baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
 	name, displayName, formatedName := BuildNames(t, ``)
 	allNames := []string{
 		strings.ToLower(name),
@@ -212,35 +181,30 @@ func BuildCategory(t models.TVault) string {
 		strings.ToLower(formatedName),
 	}
 
-	if vaultFromMeta, ok := meta.GetMetaVault(t.ChainID, t.Address); ok {
-		//Using meta classification to set the category
-		if vaultFromMeta.Classification.Stability == `Volatile` {
-			category = `Volatile`
-		} else {
-			if helpers.Contains(baseForStableCurrencies, vaultFromMeta.Classification.StableBaseAsset) {
-				category = `Stablecoin`
-			} else {
-				category = `Volatile`
-			}
-		}
-		if helpers.Intersects(allNames, baseForCurve) {
-			category = `Curve`
-		}
-		if helpers.Intersects(allNames, baseForBalancer) {
-			category = `Balancer`
-		}
-		if helpers.Intersects(allNames, baseForVelodrome) {
-			category = `Velodrome`
-		}
-		if helpers.Intersects(allNames, baseForAerodrome) {
-			category = `Aerodrome`
-		}
+	//Using meta classification to set the category
+	if t.Classification.Stability == `Volatile` {
+		category = `Volatile`
 	} else {
-		//No meta, back to custom classification
-		baseForBitcoin := []string{`btc`, `bitcoin`}
-		baseForEth := []string{`eth`, `ethereum`}
-		baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
+		if helpers.Contains(baseForStableCurrencies, t.Classification.StableBaseAsset) {
+			category = `Stablecoin`
+		} else {
+			category = `Volatile`
+		}
+	}
+	if helpers.Intersects(allNames, baseForCurve) {
+		category = `Curve`
+	}
+	if helpers.Intersects(allNames, baseForBalancer) {
+		category = `Balancer`
+	}
+	if helpers.Intersects(allNames, baseForVelodrome) {
+		category = `Velodrome`
+	}
+	if helpers.Intersects(allNames, baseForAerodrome) {
+		category = `Aerodrome`
+	}
 
+	if category == `` {
 		for _, stable := range baseForStableCurrencies {
 			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
 		}
@@ -266,6 +230,10 @@ func BuildCategory(t models.TVault) string {
 		if helpers.Intersects(allNames, baseForAerodrome) {
 			category = `Aerodrome`
 		}
+	}
+
+	if category == `` {
+		category = `Volatile`
 	}
 	return category
 }

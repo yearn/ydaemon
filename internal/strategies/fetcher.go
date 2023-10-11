@@ -2,13 +2,11 @@ package strategies
 
 import (
 	"math/big"
-	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/traces"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
@@ -36,24 +34,24 @@ func fetchBasicInformations(
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, strat := range strategyAddedList {
-		calls = append(calls, multicalls.GetCreditAvailable(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDebtOutstanding(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetExpectedReturn(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategies(strat.StrategyAddress.Hex(), strat.VaultAddress, strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyIsActive(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCRV(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCVX(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategyName(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetKeeper(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategist(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategyRewards(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetHealthCheck(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategyAPIVersion(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDoHealthCheck(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
-		calls = append(calls, multicalls.GetEmergencyExit(strat.StrategyAddress.Hex(), strat.StrategyAddress, strat.VaultVersion))
+		calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDebtOutstanding(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetExpectedReturn(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetKeeper(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategist(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyRewards(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyAPIVersion(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetEmergencyExit(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
 
 	/**********************************************************************************************
@@ -63,7 +61,7 @@ func fetchBasicInformations(
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, strat := range strategyAddedList {
 		vaultAddress := strat.VaultAddress
-		stratAddress := strat.StrategyAddress
+		stratAddress := strat.Address
 		creditAvailable0 := response[stratAddress.Hex()+`creditAvailable0`]
 		debtOutstanding0 := response[stratAddress.Hex()+`debtOutstanding0`]
 		expectedReturn := response[stratAddress.Hex()+`expectedReturn0`]
@@ -96,7 +94,7 @@ func fetchBasicInformations(
 		}
 
 		newStrategy := &models.TStrategy{
-			Address:                 strat.StrategyAddress,
+			Address:                 strat.Address,
 			VaultAddress:            strat.VaultAddress,
 			ChainID:                 chainID,
 			VaultVersion:            strat.VaultVersion,
@@ -111,12 +109,6 @@ func fetchBasicInformations(
 			IsActive:                false,
 			IsInQueue:               isInQueue,
 			WithdrawalQueuePosition: bigNumber.NewInt(withdrawalQueuePosition),
-			Initialization: models.TStrategyInitialization{
-				TxHash:      strat.TxHash,
-				BlockNumber: strat.BlockNumber,
-				TxIndex:     strat.TxIndex,
-				LogIndex:    strat.LogIndex,
-			},
 		}
 		newStrategy.CreditAvailable = helpers.DecodeBigInt(creditAvailable0)
 		newStrategy.DebtOutstanding = helpers.DecodeBigInt(debtOutstanding0)
@@ -218,20 +210,7 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategyAddedList []models.TStrategyAdded,
 ) map[common.Address]*models.TStrategy {
-	trace := traces.Init(`app.indexer.strategies.multicall_data`).
-		SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-		SetTag(`rpcURI`, ethereum.GetRPCURI(chainID)).
-		SetTag(`entity`, `strategies`).
-		SetTag(`subsystem`, `daemon`)
-	defer trace.Finish()
-
 	updatedStrategiesMap := findAllStrategies(chainID, strategyAddedList)
-	// for _, s := range strategyAddedList {
-	// 	if s.VaultAddress == common.HexToAddress(`0x849dC56ceCa7Cf55AbF5ec87910DA21c5C7dA581`) {
-	// 		logs.Pretty(s)
-	// 	}
-	// }
-	// logs.Pretty(updatedStrategiesMap)
 
 	StoreStrategies(chainID, updatedStrategiesMap)
 	return updatedStrategiesMap

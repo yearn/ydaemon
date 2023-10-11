@@ -1,0 +1,793 @@
+{
+	"0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1": {
+		"address": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
+		"token": "0x9e4cb8b916289864321661ce02cf66aa5ba63c94",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x1b1387a79064ae13385f160606e9228fd303b4a4"
+		],
+		"lastPricePerShare": "1000920251726171733",
+		"lastTotalAssets": "2940029305716056775",
+		"lastUpdate": "2023-10-11T10:10:11.877753+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x13454b672213f53cb1d31ea0be033c58fe315392": {
+		"address": "0x13454b672213f53cb1d31ea0be033c58fe315392",
+		"token": "0xf6aec4f97623e691a9426a69baf5501509fca05d",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xb7a16c8e4343f1a6c946821b811d1438813c1147"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:17:08.120149+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x13454b672213f53cb1d31ea0be033c58fe315392",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
+		"address": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
+		"token": "0x554eca2a48136724294ce47fb7bfe9aadfcee3c6",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xb641e33c8ea9caa71b856f81051bc71a0fb3c3ea"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758883+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x37fdacd764aa64f4e453842d8056853e5550c09b": {
+		"address": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
+		"token": "0x27a8afa3bd49406e48a074350fb7b2020c43b2bd",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xe12bfdbce72dacd13692345a26c44dec39580ffc"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758414+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0x391e5dc227cdcf3cca012e5278798121236b1861": {
+		"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
+		"token": "0xffa3f8737c39e36dec4300b162c2153c67c8352f",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x8062cdad4b0c5ada2877fbc85eb928fbc587cf79"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.75871+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x391e5dc227cdcf3cca012e5278798121236b1861",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x41102db56d0531be4560ec2db295e28a3c6954c7": {
+		"address": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
+		"token": "0x2d25e0514f23c6367687de89bd5167dc754d4934",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xce09d93285ee64b98292f532b563cb0931028beb"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:29:52.440377+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x41489713d581ec717e1aa55b7729d24965cf96b5": {
+		"address": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
+		"token": "0x4a3636608d7bc5776cb19eb72caa36ebb9ea683b",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x8470d97adbafe4b7da66dec6c33b60ad9420d318"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:13:24.065328+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
+		"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
+		"token": "0x8b432c54d6e8e1b8d1802753514ab53044af1861",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xd2982f4836e00c6f7cb8283c5f25b9d74a188b08"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758979+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0x58dce038423a1e43f3429cb62425a1364cc3bb4c": {
+		"address": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
+		"token": "0xb4885bc63399bf5518b994c1d0c153334ee579d0",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x17880284d5d186ece3c53b0e487b0dd404283c8b"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:29:52.439577+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
+		"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
+		"token": "0x2b7704f1cb9324cd8586b33c6c540cbd64e58237",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x64feec8993286d0d7ee4af2c5885c47b0ea9d6a4"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758444+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x5c366341bb86bad85e78eba974e3f335c9488fa2": {
+		"address": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
+		"token": "0xa56be957d432a5d0edc040b27078d9726f54e7f6",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x6c3c4447e1a2c87b47d58cf007706bb1835134da"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "6335120257164",
+		"lastUpdate": "2023-10-11T20:17:22.758955+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x68393a804c9fe4f1c7148d37796436e450ad98e8": {
+		"address": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
+		"token": "0x2223f9fe624f69da4d8256a7bcc9104fba7f8f75",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f"
+		],
+		"lastPricePerShare": "1095572967268259064",
+		"lastTotalAssets": "1381423528574389",
+		"lastUpdate": "2023-10-11T20:29:52.439923+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608": {
+		"address": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
+		"token": "0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xeadaba9e1c71ead10605c3903fa932ddb554bacf"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:17:08.121054+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
+		"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
+		"token": "0xa819af1cc8abe618ea8abadeb464960f7451ceab",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x7333b5f5f4ea8185b9c3bd3cb740159d3e529eaa"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:17:08.121132+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
+		"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
+		"token": "0x1b05e4e814b3431a48b8164c41eac834d9ce2da6",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x3e07e1187f5f89e60950e8ee7e66c1ef37b3e1de"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:13:24.065793+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4": {
+		"address": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
+		"token": "0x44ecc644449fc3a9858d2007caa8cfaa4c561f91",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:11:53.958089+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Correlated",
+			"stableBaseAsset": "Ether"
+		}
+	},
+	"0x8f22d62434d5e52af442f69f43eb27ba20768692": {
+		"address": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
+		"token": "0x607363389331f4b2d1b955d009506a67c565d75e",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xa12cae02a71b84ccc28532d24f45f1c0f7dfba28"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758734+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {
+		"address": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
+		"token": "0x0b25c51637c43decd6cc1c1e3da4518d54ddb528",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x89468e36a687e842699644dc12b986c79af9ed1f"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:17:22.758539+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0xa49dccd9425cc38d4111df2e665f2a33fe799c42": {
+		"address": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
+		"token": "0x723aef6543aece026a15662be4d3fb3424d502a9",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x1816545343590701dc29c379bcac06e92d1e1c79"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:29:52.440082+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f": {
+		"address": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
+		"token": "0x6eab8c1b93f5799dadf2c687a30230a540dbd636",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0xfd995513dada13c0948d853cd253375c3c93805d"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:29:52.441413+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Stable",
+			"stableBaseAsset": "USD"
+		}
+	},
+	"0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e": {
+		"address": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
+		"token": "0x218f511431194b2c756d67a137de536bea74e498",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x489a60748a8b74cd32c13d090f60314797b218d9"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T20:29:52.441509+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Correlated",
+			"stableBaseAsset": "ERN"
+		}
+	},
+	"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
+		"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
+		"token": "0x9287c921f5d920ceee0d07d7c58d476e46acc640",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:17:08.119882+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	},
+	"0xf8f36ab972f6fe3ae1f594595aee1284e270d034": {
+		"address": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
+		"token": "0x3fc28bfac25fc8e93b5b2fc15efbbd5a8aa44efe",
+		"management": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"governance": "0xbfaaba9f56a39b814281d68d2ad949e88d06b02e",
+		"guardian": "0x01fe3347316b2223961b20689c65eaea71348e93",
+		"rewards": "0x02ff746d8cb62709aeec611cec9b17d7dd1d3480",
+		"version": "0.4.6",
+		"activation": 0,
+		"chainID": 8453,
+		"endorsed": true,
+		"performanceFee": 1000,
+		"managementFee": 0,
+		"emergencyShutdown": false,
+		"lastActiveStrategies": [
+			"0x0aac66214d40a3d41bd2da53f6d6894e27744bd7"
+		],
+		"lastPricePerShare": "1000000000000000000",
+		"lastTotalAssets": "0",
+		"lastUpdate": "2023-10-11T18:17:08.119611+02:00",
+		"isRetired": false,
+		"isHidden": false,
+		"migration": {
+			"available": false,
+			"target": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
+			"contract": "0x0000000000000000000000000000000000000000"
+		},
+		"classification": {
+			"isAutomated": true,
+			"isPool": true,
+			"poolProvider": "Aerodrome",
+			"stability": "Volatile"
+		}
+	}
+}

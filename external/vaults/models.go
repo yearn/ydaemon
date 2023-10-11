@@ -4,7 +4,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -90,22 +89,13 @@ type TExternalVaultStaking struct {
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	Management          string  `json:"management"`
-	Governance          string  `json:"governance"`
-	Guardian            string  `json:"guardian"`
-	Rewards             string  `json:"rewards"`
-	Comment             string  `json:"comment"`
-	APYTypeOverride     string  `json:"apyTypeOverride"`
-	APYOverride         float64 `json:"apyOverride"`
-	Order               float32 `json:"order"`
-	PerformanceFee      uint64  `json:"performanceFee"`
-	ManagementFee       uint64  `json:"managementFee"`
-	DepositsDisabled    bool    `json:"depositsDisabled"`
-	WithdrawalsDisabled bool    `json:"withdrawalsDisabled"`
-	AllowZapIn          bool    `json:"allowZapIn"`
-	AllowZapOut         bool    `json:"allowZapOut"`
-	Retired             bool    `json:"retired"`
-	HideAlways          bool    `json:"hideAlways"`
+	Management     string                 `json:"management"`
+	Governance     string                 `json:"governance"`
+	Guardian       string                 `json:"guardian"`
+	Rewards        string                 `json:"rewards"`
+	IsRetired      bool                   `json:"isRetired"`      // If the vault is retired or not
+	IsHidden       bool                   `json:"isHidden"`       // If the vault is hidden or not
+	Classification models.TClassification `json:"classification"` // The classification of the vault
 }
 
 // TExternalERC20Token contains the basic information of an ERC20 token
@@ -188,20 +178,6 @@ func NewVault() *TExternalVault {
 	return &TExternalVault{}
 }
 func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVault {
-	vaultFromMeta, ok := meta.GetMetaVault(internalVault.ChainID, internalVault.Address)
-	if !ok {
-		vaultFromMeta = &models.TInternalVaultFromMeta{
-			Order:               1000000000,
-			HideAlways:          false,
-			DepositsDisabled:    false,
-			WithdrawalsDisabled: false,
-			MigrationAvailable:  false,
-			AllowZapIn:          true,
-			AllowZapOut:         true,
-			Retired:             false,
-		}
-	}
-
 	vaultToken, ok := storage.GetERC20(internalVault.ChainID, internalVault.Address)
 	if !ok {
 		return nil
@@ -215,7 +191,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.ChainID = internalVault.ChainID
 	v.TVL = TExternalVaultTVL(vaults.BuildTVL(internalVault))
-	v.Migration = toTExternalVaultMigration(vaults.BuildMigration(internalVault))
+	v.Migration = toTExternalVaultMigration(internalVault.Migration)
 	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
 	v.Category = vaults.BuildCategory(internalVault)
 	v.Symbol = symbol
@@ -278,22 +254,13 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.APR = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
 
 	v.Details = &TExternalVaultDetails{
-		Management:          internalVault.Management.Hex(),
-		Governance:          internalVault.Governance.Hex(),
-		Guardian:            internalVault.Guardian.Hex(),
-		Rewards:             internalVault.Rewards.Hex(),
-		PerformanceFee:      internalVault.PerformanceFee,
-		ManagementFee:       internalVault.ManagementFee,
-		Comment:             vaultFromMeta.Comment,
-		Order:               vaultFromMeta.Order,
-		DepositsDisabled:    vaultFromMeta.DepositsDisabled,
-		WithdrawalsDisabled: vaultFromMeta.WithdrawalsDisabled,
-		AllowZapIn:          vaultFromMeta.AllowZapIn,
-		AllowZapOut:         vaultFromMeta.AllowZapOut,
-		Retired:             vaultFromMeta.Retired,
-		APYTypeOverride:     vaultFromMeta.APYTypeOverride,
-		APYOverride:         vaultFromMeta.APYOverride,
-		HideAlways:          vaultFromMeta.HideAlways,
+		Management:     internalVault.Management.Hex(),
+		Governance:     internalVault.Governance.Hex(),
+		Guardian:       internalVault.Guardian.Hex(),
+		Rewards:        internalVault.Rewards.Hex(),
+		IsRetired:      internalVault.IsRetired,
+		IsHidden:       internalVault.IsHidden,
+		Classification: internalVault.Classification,
 	}
 
 	return v
@@ -327,7 +294,7 @@ func (v *TExternalVault) ComputeRiskScore() float64 {
 func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigration {
 	return TExternalVaultMigration{
 		Available: migration.Available,
-		Address:   migration.Address.Hex(),
+		Address:   migration.Target.Hex(),
 		Contract:  migration.Contract.Hex(),
 	}
 }

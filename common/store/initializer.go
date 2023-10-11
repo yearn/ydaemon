@@ -32,8 +32,6 @@ func init() {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
 		_historicalPriceSyncMap[chainID] = &sync.Map{}
-		_vaultsSyncMap[chainID] = &sync.Map{}
-		_strategiesSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
 		_stackingPoolsSyncMap[chainID] = &sync.Map{}
 	}
@@ -46,9 +44,9 @@ func init() {
 		// go LoadHistoricalPrice(chainID, nil)
 
 		wg.Add(4)
-		go storage.LoadNewVaultsFromRegistry(chainID, wg)
-		go LoadStrategies(chainID, wg)
-		go LoadVaults(chainID, wg)
+		go storage.LoadRegistries(chainID, wg)
+		go storage.LoadVaults(chainID, wg)
+		go storage.LoadStrategies(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
 	}
 	wg.Wait()

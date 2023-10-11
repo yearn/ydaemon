@@ -20,19 +20,6 @@ const (
 	TokenTypeAaveV2                  TTokenType = "AAVE V2"
 )
 
-// TTokenFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/tokens/all
-type TTokenFromMeta struct {
-	Address      common.Address `json:"address"`
-	Name         string         `json:"name"`
-	Symbol       string         `json:"symbol"`
-	Description  string         `json:"description"`
-	Website      string         `json:"website"`
-	Categories   []string       `json:"categories"`
-	Type         string         `json:"type"`
-	ChainID      uint64         `json:"chainID"`
-	Localization *TLocalization `json:"localization,omitempty"`
-}
-
 // TERC20Token contains the basic information of an ERC20 token
 // Category can be "Curve", "Stablecoin", "DeFi", "Balancer", "Currency", "Staking", "Smart Contract Platform", "Special",
 type TERC20Token struct {

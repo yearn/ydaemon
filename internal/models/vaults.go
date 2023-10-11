@@ -69,8 +69,8 @@ type TAPY struct {
 // TMigration helps us to know if a vault is in the process of being migrated.
 type TMigration struct {
 	Available bool           `json:"available"`
-	Address   common.Address `json:"address"`
-	Contract  common.Address `json:"contract"`
+	Target    common.Address `json:"target"`
+	Contract  common.Address `json:"contract,omitempty"`
 }
 
 // TStaking holds some metadata about the staking contract.
@@ -87,7 +87,7 @@ type TStaking struct {
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change
-	Address      common.Address `json:"address"`
+	Address      common.Address `json:"address"`    // Address of the vault
 	AssetAddress common.Address `json:"token"`      // Address of the underlying token
 	Management   common.Address `json:"management"` // Address of the management contract
 	Governance   common.Address `json:"governance"` // Address of the governance contract
@@ -108,6 +108,12 @@ type TVault struct {
 	LastPricePerShare    *bigNumber.Int   `json:"lastPricePerShare"`    // Price per share of the vault
 	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault
 	LastUpdate           time.Time        `json:"lastUpdate"`           // When the vault was last updated
+
+	// Manual elements. They are manually set by the team
+	IsRetired      bool            `json:"isRetired"`      // If the vault is retired or not
+	IsHidden       bool            `json:"isHidden"`       // If the vault is hidden or not
+	Migration      TMigration      `json:"migration"`      // If the vault is in the process of being migrated
+	Classification TClassification `json:"classification"` // The classification of the vault
 }
 
 type TLegacyAPIAPY struct {
@@ -149,31 +155,10 @@ type TAggregatedVault struct {
 	PricePerShare bigNumber.Int
 }
 
-type TInternalVaultFromMetaClassification struct {
+type TClassification struct {
 	IsAutomated     bool   `json:"isAutomated"`
 	IsPool          bool   `json:"isPool"`
 	PoolProvider    string `json:"poolProvider,omitempty"`
 	Stability       string `json:"stability"`
 	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
-}
-
-// TInternalVaultFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/vaults/all
-type TInternalVaultFromMeta struct {
-	Address              common.Address                       `json:"address"`
-	MigrationTargetVault common.Address                       `json:"migrationTargetVault"`
-	MigrationContract    common.Address                       `json:"migrationContract"`
-	DisplayName          string                               `json:"displayName"`
-	Comment              string                               `json:"comment"`
-	APYTypeOverride      string                               `json:"apyTypeOverride"`
-	APYOverride          float64                              `json:"apyOverride"`
-	Order                float32                              `json:"order"`
-	ChainID              uint64                               `json:"chainID"`
-	HideAlways           bool                                 `json:"hideAlways"`
-	DepositsDisabled     bool                                 `json:"depositsDisabled"`
-	WithdrawalsDisabled  bool                                 `json:"withdrawalsDisabled"`
-	MigrationAvailable   bool                                 `json:"migrationAvailable"`
-	AllowZapIn           bool                                 `json:"allowZapIn"`
-	AllowZapOut          bool                                 `json:"allowZapOut"`
-	Retired              bool                                 `json:"retired"`
-	Classification       TInternalVaultFromMetaClassification `json:"classification"`
 }

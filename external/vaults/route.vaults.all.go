@@ -68,13 +68,13 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		}
 
 		newVault := NewVault().AssignTVault(currentVault)
-		if migrable == `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+		if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
 			continue
 		} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
 			continue
 		} else if migrable == `all` && !newVault.Migration.Available {
 			continue
-		} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.HideAlways || newVault.Details.Retired) {
+		} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 			continue
 		}
 

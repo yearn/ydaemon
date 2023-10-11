@@ -16,9 +16,9 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/registries"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/internal/tokens"
 	"github.com/yearn/ydaemon/internal/vaults"
@@ -260,7 +260,7 @@ func assertDailyBlockNumber(chainID uint64) {
 ** Based on that, we have everything ready to compute the fees for each partner.
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
-	historicalVaults := registries.IndexNewVaults(chainID)
+	historicalVaults := indexer.IndexNewVaults(chainID)
 	tokens.RetrieveAllTokens(chainID, historicalVaults)
 	vaults.RetrieveAllVaults(chainID, historicalVaults)
 }

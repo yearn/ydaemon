@@ -1,4 +1,4 @@
-package bribes
+package indexer
 
 import "github.com/yearn/ydaemon/internal/models"
 

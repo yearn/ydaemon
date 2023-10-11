@@ -84,7 +84,7 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 		ChainID:        vault.ChainID,
 		APR:            vault.APR,
 		Migration:      vault.Migration,
-		Retired:        vault.Details.Retired,
+		Retired:        vault.Details.IsRetired,
 		FeaturingScore: vault.FeaturingScore,
 		Token: TSimplifiedExternalERC20Token{
 			Address:     vault.Token.Address,

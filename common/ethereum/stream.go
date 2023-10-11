@@ -88,7 +88,7 @@ func (r *Reader) linkHistory(ctx context.Context, stream <-chan chain.Log, q *et
 	// fetch history
 	timeout := r.FetchTimeout
 	if timeout == 0 {
-		timeout = 10 * time.Minute
+		timeout = 20 * time.Minute
 	}
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()

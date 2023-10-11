@@ -117,3 +117,15 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 
 	return asMap, asSlice
 }
+
+/**************************************************************************************************
+** GetVault will return a single vault stored in the caching system for a given pair of chainID
+** and vault address.
+**************************************************************************************************/
+func GetVault(chainID uint64, vaultAddress common.Address) (models.TVault, bool) {
+	vaultFromSyncMap, ok := _vaultsSyncMap[chainID].Load(vaultAddress.Hex())
+	if !ok {
+		return models.TVault{}, false
+	}
+	return vaultFromSyncMap.(models.TVault), true
+}

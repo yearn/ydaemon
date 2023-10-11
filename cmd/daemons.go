@@ -39,9 +39,8 @@ func SummonDaemons(chainID uint64) {
 
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(6)
+	wg.Add(5)
 	{
-		go runDaemon(chainID, &wg, 0, meta.RetrieveAllVaultsFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllStrategiesFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)

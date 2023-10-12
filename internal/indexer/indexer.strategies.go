@@ -15,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -66,8 +67,11 @@ func filterNewStrategies(
 					if log.Error() != nil {
 						continue
 					}
-					handleV2Strategies(chainID, vault.Version, log.Event)
-					//TODO: ProcessStrategy
+					newStrategy := handleV2Strategies(chainID, vault.Version, log.Event)
+					storage.StoreStrategy(chainID, newStrategy)
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault022 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -79,8 +83,11 @@ func filterNewStrategies(
 					if log.Error() != nil {
 						continue
 					}
-					handleV3Strategies(chainID, vault.Version, log.Event)
-					//TODO: ProcessStrategy
+					newStrategy := handleV3Strategies(chainID, vault.Version, log.Event)
+					storage.StoreStrategy(chainID, newStrategy)
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -91,8 +98,14 @@ func filterNewStrategies(
 					if log.Error() != nil {
 						continue
 					}
-					handleV3StrategiesMigration(chainID, log.Event)
-					//TODO: ProcessStrategy
+					newMigratedStrategy := handleV3StrategiesMigration(chainID, log.Event)
+					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
+					processMigrations(chainID)
+					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -104,8 +117,11 @@ func filterNewStrategies(
 					if log.Error() != nil {
 						continue
 					}
-					handleV4Strategies(chainID, vault.Version, log.Event)
-					//TODO: ProcessStrategy
+					newStrategy := handleV4Strategies(chainID, vault.Version, log.Event)
+					storage.StoreStrategy(chainID, newStrategy)
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -116,8 +132,14 @@ func filterNewStrategies(
 					if log.Error() != nil {
 						continue
 					}
-					handleV4StrategiesMigration(chainID, log.Event)
-					//TODO: ProcessStrategy
+					newMigratedStrategy := handleV4StrategiesMigration(chainID, log.Event)
+					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
+					processMigrations(chainID)
+					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -187,8 +209,10 @@ func watchNewStrategies(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newStrategy := handleV2Strategies(chainID, vault.Version, value)
-				_ = newStrategy
-				//TODO: Add a process for this new strategy
+				storage.StoreStrategy(chainID, newStrategy)
+				fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+					newStrategy.Address: newStrategy,
+				})
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -243,16 +267,24 @@ func watchNewStrategies(
 				if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
 					newStrategy := handleV3Strategies(chainID, vault.Version, value)
-					_ = newStrategy
-					// TODO: Add a process for this new strategy
+					storage.StoreStrategy(chainID, newStrategy)
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
 					continue
 				}
 
 				if value, err := currentVault.ParseStrategyMigrated(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
-					newStrategy := handleV3StrategiesMigration(chainID, value)
-					_ = newStrategy
-					// TODO: Add a process for this new strategy
+					newMigratedStrategy := handleV3StrategiesMigration(chainID, value)
+					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
+					processMigrations(chainID)
+					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
+					continue
 				}
 			case err := <-sub.Err():
 				logs.Error(err)
@@ -308,16 +340,23 @@ func watchNewStrategies(
 				if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
 					newStrategy := handleV4Strategies(chainID, vault.Version, value)
-					_ = newStrategy
-					// TODO: Add a process for this new strategy
+					storage.StoreStrategy(chainID, newStrategy)
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
 					continue
 				}
 
 				if value, err := currentVault.ParseStrategyMigrated(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
-					newStrategy := handleV4StrategiesMigration(chainID, value)
-					_ = newStrategy
-					// TODO: Add a process for this new strategy
+					newMigratedStrategy := handleV4StrategiesMigration(chainID, value)
+					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
+					processMigrations(chainID)
+					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			case err := <-sub.Err():
 				logs.Error(err)
@@ -392,7 +431,7 @@ func indexStrategyWrapper(
 func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
-) (historicalStrategiesSlice []models.TStrategyAdded) {
+) (historicalStrategiesMap map[common.Address]models.TStrategy) {
 	logs.Success(`Strategies Indexer has started for chain ` + strconv.FormatUint(chainID, 10))
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
@@ -424,8 +463,8 @@ func IndexNewStrategies(
 		_, strategiesSlice := storage.ListStrategiesForVault(chainID, vault.Address)
 		highestBlockNumber := uint64(0)
 		for _, strategy := range strategiesSlice {
-			if strategy.BlockNumber > highestBlockNumber {
-				highestBlockNumber = strategy.BlockNumber
+			if strategy.Activation > highestBlockNumber {
+				highestBlockNumber = strategy.Activation
 			}
 		}
 
@@ -444,7 +483,6 @@ func IndexNewStrategies(
 	** address.
 	**********************************************************************************************/
 	processMigrations(chainID)
-	historicalStrategiesMap, historicalStrategiesSlice := storage.ListStrategies(chainID)
-	storage.StoreStrategiesToJson(chainID, historicalStrategiesMap)
-	return historicalStrategiesSlice
+	historicalStrategiesMap, _ = storage.ListStrategies(chainID)
+	return historicalStrategiesMap
 }

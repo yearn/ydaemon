@@ -110,6 +110,6 @@ func findFraxPoolForVault(tokenAddress common.Address, pools []TFraxPool) TFraxP
 ** Check if the strategy is a frax strategy. This is a check based on the strategy name. What
 ** could go wrong.
 **************************************************************************************************/
-func isFraxStrategy(strategy *models.TStrategy) bool {
+func isFraxStrategy(strategy models.TStrategy) bool {
 	return strings.Contains(strings.ToLower(strategy.Name), `convexfrax`)
 }

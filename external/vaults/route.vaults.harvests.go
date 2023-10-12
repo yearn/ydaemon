@@ -12,8 +12,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
 	"github.com/yearn/ydaemon/common/sort"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *graphql.Request {

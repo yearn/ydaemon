@@ -102,13 +102,9 @@ func (caller *TEthMultiCaller) execute(
 ) ([]byte, error) {
 	abi, _ := contracts.Multicall2MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
+
 	if err != nil {
-		traces.
-			Capture(`error`, `failed to pack tryAggregate`).
-			SetEntity(`multicall`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`blockNumber`, blockNumber.String()).
-			Send()
+		logs.Error(`failed to pack tryAggregate: ` + err.Error())
 		return []byte{}, err
 	}
 

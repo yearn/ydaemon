@@ -9,7 +9,7 @@ import (
 type TCalculateFraxAPYDataStruct struct {
 	vault          models.TVault
 	gaugeAddress   common.Address
-	strategy       *models.TStrategy
+	strategy       models.TStrategy
 	baseAssetPrice *bigNumber.Float
 	poolPrice      *bigNumber.Float
 	baseAPR        *bigNumber.Float

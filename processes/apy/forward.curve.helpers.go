@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 /**************************************************************************************************
@@ -18,7 +19,10 @@ import (
 ** 2, it can't be.
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
-func isCurveVault(strategies []*models.TStrategy) bool {
+func isCurveVault(strategies map[common.Address]models.TStrategy) bool {
+	if len(strategies) > 3 {
+		return false
+	}
 	isCurveOrConvexStrategy := false
 	for _, strategy := range strategies {
 		strategyName := strings.ToLower(strategy.Name)
@@ -134,7 +138,7 @@ func getRewardsAPR(chainID uint64, pool models.CurvePool) *bigNumber.Float {
 ** value.
 ** If no keepCRV function is available, we can try the keepCrvPercent function.
 **************************************************************************************************/
-func determineCurveKeepCRV(strategy *models.TStrategy) *bigNumber.Float {
+func determineCurveKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 	keepValue := bigNumber.NewInt(0).Add(strategy.KeepCRV, strategy.KeepCRVPercent)
 	keepCrv := helpers.ToNormalizedAmount(keepValue, 4)
 	return keepCrv
@@ -180,7 +184,7 @@ func calculateGaugeBaseAPR(
 **********************************************************************************************/
 func calculateCurveLikeStrategyAPR(
 	vault models.TVault,
-	strategy *models.TStrategy,
+	strategy models.TStrategy,
 	gauge models.CurveGauge,
 	pool models.CurvePool,
 	fraxPool TFraxPool,
@@ -203,7 +207,10 @@ func calculateCurveLikeStrategyAPR(
 	** - We get the pool price from the curve API, which is in base 18 but converted in 2.
 	**********************************************************************************************/
 	baseAssetPrice := bigNumber.NewFloat(0).SetFloat64(gauge.LpTokenPrice)
-	crvPrice := getTokenPrice(chainID, CRV_TOKEN_ADDRESS[chainID])
+	crvPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(chainID, CRV_TOKEN_ADDRESS[chainID]); ok {
+		crvPrice = tokenPrice.HumanizedPrice
+	}
 	poolPrice := getPoolPrice(gauge)
 
 	/**********************************************************************************************
@@ -286,7 +293,7 @@ func calculateCurveLikeStrategyAPR(
 **************************************************************************************************/
 func computeCurveLikeForwardAPR(
 	vault models.TVault,
-	allStrategiesForVault []*models.TStrategy,
+	allStrategiesForVault map[common.Address]models.TStrategy,
 	gauges []models.CurveGauge,
 	pools []models.CurvePool,
 	subgraphData []models.CurveSubgraphData,
@@ -306,7 +313,7 @@ func computeCurveLikeForwardAPR(
 	CvxAPR := bigNumber.NewFloat(0)
 	RewardsAPR := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
-		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
+		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
 				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
 			}

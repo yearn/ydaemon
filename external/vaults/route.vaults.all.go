@@ -7,8 +7,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllVaults will, for a given chainID, return a list of all vaults
@@ -60,7 +60,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 	data := []TExternalVault{}
-	allVaults := vaults.ListVaults(chainID)
+	allVaults, _ := storage.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := currentVault.Address
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
@@ -78,7 +78,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			continue
 		}
 
-		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
+		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
 		newVault.Strategies = []*TStrategy{}
 		for _, strategy := range vaultStrategies {
 			var externalStrategy *TStrategy
@@ -89,7 +89,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 
 			if withStrategiesDetails {
 				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			} else {
 				externalStrategy = &TStrategy{
 					Address:     strategy.Address.Hex(),

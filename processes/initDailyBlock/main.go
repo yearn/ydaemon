@@ -16,12 +16,11 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 var _dailyBlockNumber = make(map[uint64]*sync.Map)
@@ -76,8 +75,7 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	** to process.
 	**********************************************************************************************/
 	initYearnEcosystem(chainID)
-	allVaults := vaults.ListVaults(chainID)
-
+	_, allVaults := storage.ListVaults(chainID)
 	deployedVaults := []models.TVault{}
 	unDeployedVaults := allVaults
 
@@ -261,6 +259,6 @@ func assertDailyBlockNumber(chainID uint64) {
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
 	historicalVaults := indexer.IndexNewVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, historicalVaults)
-	vaults.RetrieveAllVaults(chainID, historicalVaults)
+	vaultMap := fetcher.RetrieveAllVaults(chainID, historicalVaults)
+	fetcher.RetrieveAllTokens(chainID, vaultMap)
 }

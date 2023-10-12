@@ -7,15 +7,13 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
 var COMPUTED_APR = make(map[uint64]map[common.Address]TVaultAPR)
 
 func ComputeChainAPR(chainID uint64) {
-	allVaults := vaults.ListVaults(chainID)
+	allVaults, _ := storage.ListVaults(chainID)
 	gauges := retrieveCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
@@ -34,7 +32,7 @@ func ComputeChainAPR(chainID uint64) {
 			continue
 		}
 
-		allStrategiesForVault := strategies.ListStrategiesForVault(chainID, vault.Address)
+		allStrategiesForVault, _ := storage.ListStrategiesForVault(chainID, vault.Address)
 		ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 		ppsInception := bigNumber.NewFloat(1)
 		ppsToday := helpers.GetToday(ppsPerTime, vaultToken.Decimals)

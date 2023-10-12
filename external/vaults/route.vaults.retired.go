@@ -7,7 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetRetiredVaults will, for a given chainID, return a list of all retired vaults
@@ -21,7 +21,7 @@ func (y Controller) GetRetiredVaults(c *gin.Context) {
 	}
 
 	data := []TExternalVault{}
-	allVaults := vaults.ListVaults(chainID)
+	allVaults, _ := storage.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := currentVault.Address
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {

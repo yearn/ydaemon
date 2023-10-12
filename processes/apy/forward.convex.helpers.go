@@ -12,7 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 /**************************************************************************************************
@@ -22,7 +22,7 @@ import (
 **************************************************************************************************/
 func getConvexRewardAPR(
 	chainID uint64,
-	strategy *models.TStrategy,
+	strategy models.TStrategy,
 	baseAssetPrice *bigNumber.Float,
 	poolPrice *bigNumber.Float,
 ) *bigNumber.Float {
@@ -66,14 +66,14 @@ func getConvexRewardAPR(
 			continue
 		}
 		rewardToken, _ := virtualRewardsPoolContract.RewardToken(nil)
-		rewardTokenPrice, ok := prices.FindPrice(chainID, rewardToken)
+		rewardTokenPrice, ok := storage.GetPrice(chainID, rewardToken)
 		if !ok {
 			continue
 		}
 		rewardRateInt, _ := virtualRewardsPoolContract.RewardRate(nil)
 		totalSupplyInt, _ := virtualRewardsPoolContract.TotalSupply(nil)
 
-		tokenPrice := helpers.ToNormalizedAmount(rewardTokenPrice, 6)
+		tokenPrice := rewardTokenPrice.HumanizedPrice
 		rewardRate := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(rewardRateInt), 18)
 		totalSupply := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(totalSupplyInt), 18)
 		secondPerYear := bigNumber.NewFloat(0).SetFloat64(31556952)
@@ -198,8 +198,14 @@ func getCVXPoolAPR(
 	crvPerYear := bigNumber.NewFloat(0).Mul(crvPerUnderlying, bigNumber.NewFloat(31536000))
 	cvxPerYear := getCVXForCRV(chainID, crvPerYear)
 
-	crvPrice := getTokenPrice(chainID, CRV_TOKEN_ADDRESS[chainID])
-	cvxPrice := getTokenPrice(chainID, CVX_TOKEN_ADDRESS[chainID])
+	crvPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(chainID, CRV_TOKEN_ADDRESS[chainID]); ok {
+		crvPrice = tokenPrice.HumanizedPrice
+	}
+	cvxPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(chainID, CVX_TOKEN_ADDRESS[chainID]); ok {
+		cvxPrice = tokenPrice.HumanizedPrice
+	}
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
 	crvAPR = bigNumber.NewFloat(0).Mul(crvPerYear, crvPrice)
 	return crvAPR, cvxAPR
@@ -216,7 +222,7 @@ func getCVXPoolAPR(
 **     - If it does not, we can check the LocalKeepCRV value and use it if it exists, or ZERO
 **   - If it's false, we can query the KeepCRV value from the curveGlobal contract and use it
 **************************************************************************************************/
-func determineConvexKeepCRV(strategy *models.TStrategy) *bigNumber.Float {
+func determineConvexKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 	if strategy.KeepCRV == nil {
 		return ZERO
 	}
@@ -256,7 +262,7 @@ func determineConvexKeepCRV(strategy *models.TStrategy) *bigNumber.Float {
 ** Check if the strategy is a convex strategy. This is a check based on the strategy name. What
 ** could go wrong.
 **************************************************************************************************/
-func isConvexStrategy(strategy *models.TStrategy) bool {
+func isConvexStrategy(strategy models.TStrategy) bool {
 	name := strings.ToLower(strategy.Name)
 	return strings.Contains(name, `convex`) && !strings.Contains(name, `convexfrax`)
 }

@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal/meta"
-	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/risk"
 )
 
 // runDaemon is a function that contains the standard flow to run a daemon
@@ -39,24 +39,14 @@ func SummonDaemons(chainID uint64) {
 
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(5)
+	wg.Add(4)
 	{
-		go runDaemon(chainID, &wg, 0, meta.RetrieveAllStrategiesFromFiles)
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
-		go runDaemon(chainID, &wg, 0, strategies.RetrieveAllRisksGroupsFromFiles)
+		go runDaemon(chainID, &wg, 0, risk.RetrieveAllRisksGroupsFromFiles)
 		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}
 	wg.Wait()
-}
-
-// LoadDaemons is a function that loads the previous store state for a given chainID
-func LoadDaemons(chainID uint64) {
-	if _, ok := env.CHAINS[chainID]; !ok {
-		return
-	}
-
-	vaults.LoadAggregatedVaults(chainID, nil)
 }
 
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
@@ -72,19 +62,5 @@ func summonDaemonsForAllChains(chains []uint64) {
 		go waitGroupSummonDaemons(&wg, chainID)
 	}
 
-	wg.Wait()
-}
-
-func waitGroupLoadDaemons(wg *sync.WaitGroup, chainID uint64) {
-	LoadDaemons(chainID)
-	wg.Done()
-}
-
-func loadDaemonsForAllChains(chains []uint64) {
-	var wg sync.WaitGroup
-	for _, chainID := range chains {
-		wg.Add(1)
-		go waitGroupLoadDaemons(&wg, chainID)
-	}
 	wg.Wait()
 }

@@ -32,8 +32,6 @@ func LoadBlockTime(chainID uint64, wg *sync.WaitGroup) {
 	}
 
 	switch _dbType {
-	case DBBadger:
-		logs.Warning(`BadgerDB is deprecated for LoadBlockTime`)
 	case DBSql:
 		var temp []DBBlockTime
 		DATABASE.Table(`db_block_times`).
@@ -78,8 +76,6 @@ func StoreBlockTime(chainID uint64, blockNumber uint64, blockTime uint64) {
 	logs.Info(`Storing block time for chain ` + strconv.FormatUint(chainID, 10) + ` block ` + strconv.FormatUint(blockNumber, 10) + ` time ` + strconv.FormatUint(blockTime, 10))
 
 	switch _dbType {
-	case DBBadger:
-		logs.Warning(`BadgerDB is deprecated for StoreBlockTime`)
 	case DBSql:
 		go func() {
 			DBbaseSchema := DBBaseSchema{

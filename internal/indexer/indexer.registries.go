@@ -65,6 +65,7 @@ func filterNewVault(
 						continue
 					}
 					historicalVault := handleV2Vault(chainID, log.Event)
+					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
 					})
@@ -80,6 +81,7 @@ func filterNewVault(
 						continue
 					}
 					historicalVault := handleV3Vault(chainID, log.Event)
+					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
 					})
@@ -95,6 +97,7 @@ func filterNewVault(
 						continue
 					}
 					historicalVault := handleV4Vault(chainID, log.Event)
+					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
 					})
@@ -144,7 +147,10 @@ func watchNewVaults(
 		currentRegistry, _ := contracts.NewYRegistryV2(registry.Address, client)
 		etherReader := ethereum.Reader{Backend: client}
 		contractABI, _ := contracts.YRegistryV2MetaData.GetAbi()
-		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
+		topics, _ := abi.MakeTopics([][]interface{}{{
+			contractABI.Events[`NewVault`].ID,
+			contractABI.Events[`NewExperimentalVault`].ID,
+		}}...)
 		query := goEth.FilterQuery{
 			FromBlock: big.NewInt(int64(lastSyncedBlock)),
 			Addresses: []common.Address{registry.Address},
@@ -160,12 +166,16 @@ func watchNewVaults(
 		** Handle historical events
 		**************************************************************************************************/
 		for _, log := range history {
-			value, err := currentRegistry.ParseNewVault(log)
-			if err != nil {
+			if value, err := currentRegistry.ParseNewVault(log); err == nil {
+				historicalVault := handleV2Vault(chainID, value)
+				storage.StoreNewVaultToRegistry(chainID, historicalVault)
 				continue
 			}
-			historicalVault := handleV2Vault(chainID, value)
-			storage.StoreNewVaultToRegistry(chainID, historicalVault)
+			if value, err := currentRegistry.ParseNewExperimentalVault(log); err == nil {
+				historicalVault := handleV2ExperimentalVault(chainID, value)
+				storage.StoreNewVaultToRegistry(chainID, historicalVault)
+				continue
+			}
 		}
 		if wg != nil {
 			wg.Done()
@@ -177,15 +187,22 @@ func watchNewVaults(
 		for {
 			select {
 			case log := <-stream:
-				value, err := currentRegistry.ParseNewVault(log)
-				if err != nil {
+				if value, err := currentRegistry.ParseNewVault(log); err == nil {
+					newVault := handleV2Vault(chainID, value)
+					storage.StoreNewVaultToRegistry(chainID, newVault)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						newVault.Address: newVault,
+					})
 					continue
 				}
-				lastSyncedBlock = value.Raw.BlockNumber
-				newVault := handleV2Vault(chainID, value)
-				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-					newVault.Address: newVault,
-				})
+
+				if value, err := currentRegistry.ParseNewExperimentalVault(log); err == nil {
+					newVault := handleV2ExperimentalVault(chainID, value)
+					storage.StoreNewVaultToRegistry(chainID, newVault)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						newVault.Address: newVault,
+					})
+				}
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -197,7 +214,7 @@ func watchNewVaults(
 		contractABI, _ := contracts.YRegistryV3MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
 		query := goEth.FilterQuery{
-			FromBlock: big.NewInt(int64(registry.Activation)),
+			FromBlock: big.NewInt(int64(registry.Block)),
 			Addresses: []common.Address{registry.Address},
 			Topics:    topics,
 		}
@@ -248,7 +265,7 @@ func watchNewVaults(
 		contractABI, _ := contracts.YRegistryV4MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewEndorsedVault`].ID}}...)
 		query := goEth.FilterQuery{
-			FromBlock: big.NewInt(int64(registry.Activation)),
+			FromBlock: big.NewInt(int64(registry.Block)),
 			Addresses: []common.Address{registry.Address},
 			Topics:    topics,
 		}

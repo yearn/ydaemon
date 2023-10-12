@@ -4,9 +4,10 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/apy"
 	// "github.com/yearn/ydaemon/processes/apy"
 )
@@ -182,18 +183,18 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	if !ok {
 		return nil
 	}
-	name, displayName, formatedName := vaults.BuildNames(internalVault, ``)
-	symbol, displaySymbol, formatedSymbol := vaults.BuildSymbol(internalVault, ``)
+	name, displayName, formatedName := fetcher.BuildVaultNames(internalVault, ``)
+	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(internalVault, ``)
 
 	v.Address = internalVault.Address.Hex()
 	v.Version = internalVault.Version
 	v.Endorsed = internalVault.Endorsed
 	v.EmergencyShutdown = internalVault.EmergencyShutdown
 	v.ChainID = internalVault.ChainID
-	v.TVL = TExternalVaultTVL(vaults.BuildTVL(internalVault))
+	v.TVL = TExternalVaultTVL(fetcher.BuildVaultTVL(internalVault))
 	v.Migration = toTExternalVaultMigration(internalVault.Migration)
-	v.Staking = toTExternalVaultStaking(vaults.BuildStaking(internalVault))
-	v.Category = vaults.BuildCategory(internalVault)
+	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(internalVault))
+	v.Category = fetcher.BuildVaultCategory(internalVault)
 	v.Symbol = symbol
 	v.DisplaySymbol = displaySymbol
 	v.FormatedSymbol = formatedSymbol
@@ -240,7 +241,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	}
 
 	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
-	internalAPY := vaults.BuildAPY(internalVault, aggregatedVault, okLegacyAPI)
+	internalAPY := fetcher.BuildVaultLegacyAPY(internalVault, aggregatedVault, okLegacyAPI)
 	v.APY = TExternalVaultAPY{
 		Type:              internalAPY.Type,
 		GrossAPR:          internalAPY.GrossAPR,

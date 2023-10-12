@@ -93,6 +93,7 @@ type TVault struct {
 	Governance   common.Address `json:"governance"` // Address of the governance contract
 	Guardian     common.Address `json:"guardian"`   // Address of the guardian contract
 	Rewards      common.Address `json:"rewards"`    // Address of the rewards contract
+	Type         TTokenType     `json:"type"`
 	Version      string         `json:"version"`    // The version of the vault
 	Activation   uint64         `json:"activation"` // When the vault was activated
 	ChainID      uint64         `json:"chainID"`    // The chainID of the vault

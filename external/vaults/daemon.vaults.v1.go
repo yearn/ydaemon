@@ -5,12 +5,10 @@ import (
 	"io"
 	"net/http"
 	"strconv"
-	"sync"
 
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -52,24 +50,5 @@ func FetchVaultsFromV1(chainID uint64) {
 			Address:   vault.Address,
 			LegacyAPY: vault.APY,
 		}
-		go store.SaveInBadgerDB(
-			chainID,
-			store.TABLES.VAULTS_LEGACY,
-			vault.Address.Address().Hex(),
-			aggregatedVault[chainID][addresses.ToAddress(vault.Address).Hex()],
-		)
-	}
-}
-
-// LoadAggregatedVaults will reload the vaults from the v1 API data store from the last state of the local Badger Database
-func LoadAggregatedVaults(chainID uint64, wg *sync.WaitGroup) {
-	if wg != nil {
-		defer wg.Done()
-	}
-	temp := make(map[string]*models.TAggregatedVault)
-	store.ListFromBadgerDB(chainID, store.TABLES.VAULTS_LEGACY, &temp)
-
-	if temp != nil && (len(temp) > 0) {
-		aggregatedVault[chainID] = temp
 	}
 }

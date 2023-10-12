@@ -6,9 +6,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/internal/vaults"
 )
 
 // TExternalStrategyDetails contains the details about a strategy.
@@ -65,17 +63,16 @@ func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanize
 func NewStrategy() *TStrategy {
 	return &TStrategy{}
 }
-func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
+func (v *TStrategy) AssignTStrategy(strategy models.TStrategy) *TStrategy {
 	delegatedValue := `0`
-	if vault, ok := vaults.FindVault(strategy.ChainID, strategy.VaultAddress); ok {
+	if vault, ok := storage.GetVault(strategy.ChainID, strategy.VaultAddress); ok {
 		if vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address); ok {
-			if tokenPrice, ok := prices.FindPrice(strategy.ChainID, vault.AssetAddress); ok {
-				_, humanizedTokenPrice := helpers.FormatAmount(tokenPrice.String(), 6)
+			if tokenPrice, ok := storage.GetPrice(strategy.ChainID, vault.AssetAddress); ok {
 				delegatedValue = strconv.FormatFloat(
 					buildDelegated(
-						strategy.DelegatedAssets,
+						strategy.LastDelegatedAssets,
 						int(vaultToken.Decimals),
-						humanizedTokenPrice,
+						tokenPrice.HumanizedPrice,
 					), 'f', -1, 64,
 				)
 			}
@@ -91,28 +88,27 @@ func (v *TStrategy) AssignTStrategy(strategy *models.TStrategy) *TStrategy {
 		Strategist:           strategy.StrategistAddress.Hex(),  //strategist
 		Rewards:              strategy.RewardsAddress.Hex(),     //rewards
 		HealthCheck:          strategy.HealthCheckAddress.Hex(), //healthCheck
-		TotalDebt:            strategy.TotalDebt,
-		TotalLoss:            strategy.TotalLoss,
-		TotalGain:            strategy.TotalGain,
-		RateLimit:            strategy.RateLimit,
-		MinDebtPerHarvest:    strategy.MinDebtPerHarvest,
-		MaxDebtPerHarvest:    strategy.MaxDebtPerHarvest,
-		EstimatedTotalAssets: strategy.EstimatedTotalAssets,
-		CreditAvailable:      strategy.CreditAvailable,
-		DebtOutstanding:      strategy.DebtOutstanding,
-		ExpectedReturn:       strategy.ExpectedReturn,
-		DelegatedAssets:      strategy.DelegatedAssets,
+		TotalDebt:            strategy.LastTotalDebt,
+		TotalLoss:            strategy.LastTotalLoss,
+		TotalGain:            strategy.LastTotalGain,
+		RateLimit:            strategy.LastRateLimit,
+		MinDebtPerHarvest:    strategy.LastMinDebtPerHarvest,
+		MaxDebtPerHarvest:    strategy.LastMaxDebtPerHarvest,
+		EstimatedTotalAssets: strategy.LastEstimatedTotalAssets,
+		CreditAvailable:      strategy.LastCreditAvailable,
+		DebtOutstanding:      strategy.LastDebtOutstanding,
+		ExpectedReturn:       strategy.LastExpectedReturn,
+		DelegatedAssets:      strategy.LastDelegatedAssets,
 		DelegatedValue:       delegatedValue,
 		Protocols:            strategy.Protocols,
-		Version:              strategy.APIVersion,
 		// APR:                     strategy.APR, //NOT AVAILABLE
-		PerformanceFee:          strategy.PerformanceFee.Uint64(),
+		PerformanceFee:          strategy.LastPerformanceFee.Uint64(),
 		LastReport:              strategy.LastReport.Uint64(),
-		Activation:              strategy.Activation.Uint64(),
+		Activation:              strategy.TimeActivated.Uint64(),
 		KeepCRV:                 (strategy.KeepCRV.Uint64() + strategy.KeepCRVPercent.Uint64()),
 		KeepCVX:                 strategy.KeepCVX.Uint64(),
-		DebtRatio:               strategy.DebtRatio.Uint64(),
-		DebtLimit:               strategy.DebtLimit.Uint64(),
+		DebtRatio:               strategy.LastDebtRatio.Uint64(),
+		DebtLimit:               strategy.LastDebtLimit.Uint64(),
 		WithdrawalQueuePosition: strategy.WithdrawalQueuePosition.Int64(),
 		DoHealthCheck:           strategy.DoHealthCheck,
 		InQueue:                 strategy.IsInQueue,

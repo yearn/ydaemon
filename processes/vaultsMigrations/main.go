@@ -8,11 +8,10 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/vaults"
 	"github.com/yearn/ydaemon/processes/prices"
 )
 
@@ -23,7 +22,7 @@ func Run(chainID uint64) {
 	** to process.
 	**********************************************************************************************/
 	initYearnEcosystem(chainID)
-	allVaults := vaults.ListVaults(chainID)
+	_, allVaults := storage.ListVaults(chainID)
 
 	/**********************************************************************************************
 	** Once all the vaults are here, we can start checking if the vault is disabled or not and if
@@ -110,7 +109,7 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
 	historicalVaults := indexer.IndexNewVaults(chainID)
-	tokens.RetrieveAllTokens(chainID, historicalVaults)
-	prices.Run(chainID)
-	vaults.RetrieveAllVaults(chainID, historicalVaults)
+	vaultMap := fetcher.RetrieveAllVaults(chainID, historicalVaults)
+	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
+	prices.RetrieveAllPrices(chainID, tokenMap)
 }

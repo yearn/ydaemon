@@ -12,8 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/models"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -226,9 +225,9 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 		}
 
 		token, _ := storage.GetUnderlyingERC20(chainID, addresses.ToAddress(vaultAddress))
-		tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
-		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice)
-		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice)
+		tokenPrice, _ := storage.GetPrice(chainID, addresses.ToAddress(vaultAddress))
+		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, int(token.Decimals), tokenPrice.Price)
+		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, int(token.Decimals), tokenPrice.Price)
 		if realizedGains.Lt(bigNumber.NewInt(0)) {
 			realizedGains = bigNumber.NewInt(0)
 		}
@@ -446,15 +445,12 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 
 		tokenDecimal := 18
 		token, ok := storage.GetUnderlyingERC20(chainID, addresses.ToAddress(vaultAddress))
-		tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
+		tokenPrice, _ := storage.GetPrice(chainID, addresses.ToAddress(vaultAddress))
 		if !ok {
 			tokenDecimal = int(token.Decimals)
 		}
-		if tokenPrice == nil {
-			tokenPrice = bigNumber.NewInt(0)
-		}
-		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, tokenDecimal, tokenPrice)
-		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, tokenDecimal, tokenPrice)
+		realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, tokenDecimal, tokenPrice.Price)
+		unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, tokenDecimal, tokenPrice.Price)
 		if realizedGains.Lt(bigNumber.NewInt(0)) {
 			realizedGains = bigNumber.NewInt(0)
 		}
@@ -697,15 +693,12 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 
 			tokenDecimal := 18
 			token, ok := storage.GetUnderlyingERC20(chainID, addresses.ToAddress(vaultAddress))
-			tokenPrice, _ := prices.FindPrice(chainID, addresses.ToAddress(vaultAddress))
+			tokenPrice, _ := storage.GetPrice(chainID, addresses.ToAddress(vaultAddress))
 			if !ok {
 				tokenDecimal = int(token.Decimals)
 			}
-			if tokenPrice == nil {
-				tokenPrice = bigNumber.NewInt(0)
-			}
-			realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, tokenDecimal, tokenPrice)
-			unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, tokenDecimal, tokenPrice)
+			realizedGainsUSD := helpers.GetHumanizedValue(realizedGains, tokenDecimal, tokenPrice.Price)
+			unrealizedGainsUSD := helpers.GetHumanizedValue(unrealizedGains, tokenDecimal, tokenPrice.Price)
 			if realizedGains.Lt(bigNumber.NewInt(0)) {
 				realizedGains = bigNumber.NewInt(0)
 			}

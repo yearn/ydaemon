@@ -10,7 +10,7 @@ import (
 type TCalculateCurveAPYDataStruct struct {
 	vault        models.TVault
 	gaugeAddress common.Address
-	strategy     *models.TStrategy
+	strategy     models.TStrategy
 	baseAPR      *bigNumber.Float
 	rewardAPR    *bigNumber.Float
 	poolAPY      *bigNumber.Float
@@ -27,7 +27,7 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	**********************************************************************************************/
 	yBoost := getCurveBoost(chainID, YEARN_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineCurveKeepCRV(args.strategy)
-	debtRatio := helpers.ToNormalizedAmount(args.strategy.DebtRatio, 4)
+	debtRatio := helpers.ToNormalizedAmount(args.strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)
 	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.ManagementFee)), 4)
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)

@@ -1,0 +1,259 @@
+{
+	"0x11cdb42b0eb46d95f990bedd4695a6e3fa034978": {
+		"address": "0x11cdb42b0eb46d95f990bedd4695a6e3fa034978",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Curve DAO Token",
+		"symbol": "CRV",
+		"display_name": "Curve DAO Token",
+		"display_symbol": "CRV",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x17fc002b466eec40dae837fc4be5c67993ddbd6f": {
+		"address": "0x17fc002b466eec40dae837fc4be5c67993ddbd6f",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Frax",
+		"symbol": "FRAX",
+		"display_name": "Frax",
+		"display_symbol": "FRAX",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x1dba7641dc69188d6086a73b972ac4bda29ec35d": {
+		"address": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
+		"underlyingTokensAddresses": [
+			"0x30df229cefa463e991e29d42db0bae2e122b2ac7"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve MIM Pool Vault",
+		"symbol": "yvCurve-MIM",
+		"display_name": "Curve MIM Pool Vault",
+		"display_symbol": "yvCurve-MIM",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/42161/0x1dBa7641dc69188D6086a73B972aC4bda29Ec35d/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x239e14a19dff93a17339dcc444f74406c17f8e67": {
+		"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
+		"underlyingTokensAddresses": [
+			"0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2"
+		],
+		"type": "Yearn Vault",
+		"name": "Curve Tricrypto Pool Vault",
+		"symbol": "yvCurve-Tricrypto",
+		"display_name": "Curve Tricrypto Pool Vault",
+		"display_symbol": "yvCurve-Tricrypto",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/42161/0x239e14A19DFF93a17339DCC444f74406C17f8E67/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x30df229cefa463e991e29d42db0bae2e122b2ac7": {
+		"address": "0x30df229cefa463e991e29d42db0bae2e122b2ac7",
+		"underlyingTokensAddresses": [
+			"0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+			"0x7f90122bf0700f9e7e1f688fe926940e8839f353"
+		],
+		"type": "Curve LP",
+		"name": "Curve.fi Factory USD Metapool: MIM",
+		"symbol": "MIM3CRV-f",
+		"display_name": "Curve MIM 3Pool",
+		"display_symbol": "crvMIM3Poo",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains MIM, fUSDT, and USDC.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/42161/0x30dF229cefa463e991e29D42DB0bae2e122B2AC7/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
+		"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
+		"underlyingTokensAddresses": [
+			"0x7f90122bf0700f9e7e1f688fe926940e8839f353"
+		],
+		"type": "Yearn Vault",
+		"name": "2CRV yVault",
+		"symbol": "yv2CRV",
+		"display_name": "2CRV yVault",
+		"display_symbol": "yv2CRV",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/42161/0x49448d2B94fb9C4e41a30aD8315D32f46004A34b/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x59bf0545fca0e5ad48e13da269facd2e8c886ba4": {
+		"address": "0x59bf0545fca0e5ad48e13da269facd2e8c886ba4",
+		"underlyingTokensAddresses": [
+			"0x64343594ab9b56e99087bfa6f2335db24c2d1f17",
+			"0x17fc002b466eec40dae837fc4be5c67993ddbd6f"
+		],
+		"type": "Curve LP",
+		"name": "Curve.fi Factory Plain Pool: VST+FRAX",
+		"symbol": "VSTFRAX-f",
+		"display_name": "Curve.fi Factory Plain Pool: VST+FRAX",
+		"display_symbol": "VSTFRAX-f",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0x59bF0545FCa0E5Ad48E13DA269faCD2E8C886Ba4/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
+		"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+		"underlyingTokensAddresses": [
+			"0x59bf0545fca0e5ad48e13da269facd2e8c886ba4"
+		],
+		"type": "Experimental Yearn Vault",
+		"name": "Curve FRAX-VST Pool Vault",
+		"symbol": "yvCurve-FRAX+VST",
+		"display_name": "Curve FRAX-VST Pool Vault",
+		"display_symbol": "yvCurve-FRAX+VST",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/42161/0x630c9050E6b0014C6Fe4C214D4840909345aDB7D/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x64343594ab9b56e99087bfa6f2335db24c2d1f17": {
+		"address": "0x64343594ab9b56e99087bfa6f2335db24c2d1f17",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Vesta Stable",
+		"symbol": "VST",
+		"display_name": "Vesta Stable",
+		"display_symbol": "VST",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0x64343594Ab9b56e99087BfA6F2335Db24c2d1F17/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x7f90122bf0700f9e7e1f688fe926940e8839f353": {
+		"address": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
+		"underlyingTokensAddresses": [
+			"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+		],
+		"type": "Curve LP",
+		"name": "Curve.fi USDC/USDT",
+		"symbol": "2CRV",
+		"display_name": "Curve 2Pool",
+		"display_symbol": "2CRV",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains USDT and USDC.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/42161/0x7f90122BF0700F9E7e1F688fe926940E8839F353/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x82e3a8f066a6989666b031d916c43672085b1582": {
+		"address": "0x82e3a8f066a6989666b031d916c43672085b1582",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "yearn.finance",
+		"symbol": "YFI",
+		"display_name": "yearn.finance",
+		"display_symbol": "YFI",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0x82e3A8F066a6989666b031d916c43672085b1582/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2": {
+		"address": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
+		"underlyingTokensAddresses": [],
+		"type": "Curve LP",
+		"name": "Curve.fi USD-BTC-ETH",
+		"symbol": "crv3crypto",
+		"display_name": "Curve triCrypto Pool",
+		"display_symbol": "crvTricrypto",
+		"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains USDT, WBTC, and WETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
+		"category": "Curve",
+		"icon": "https://assets.smold.app/api/token/42161/0x8e0B8c8BB9db49a46697F3a5Bb8A308e744821D2/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0x976a1c749cd8153909e0b04eebe931ef8957b15b": {
+		"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
+		"underlyingTokensAddresses": [
+			"0xfa247d0d55a324ca19985577a2cdcfc383d87953"
+		],
+		"type": "Experimental Yearn Vault",
+		"name": "PHPTest",
+		"symbol": "yPHP",
+		"display_name": "PHPTest",
+		"display_symbol": "yPHP",
+		"description": "",
+		"category": "yVault",
+		"icon": "https://assets.smold.app/api/token/42161/0x976a1C749cd8153909e0B04EebE931eF8957b15b/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0xfa247d0d55a324ca19985577a2cdcfc383d87953": {
+		"address": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Philippine Peso",
+		"symbol": "PHP",
+		"display_name": "Philippine Peso",
+		"display_symbol": "PHP",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0xFa247d0D55a324ca19985577a2cDcFC383D87953/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
+		"address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Tether USD",
+		"symbol": "USDT",
+		"display_name": "Tether USD",
+		"display_symbol": "USDT",
+		"description": "USDT is a centralized stablecoin that mirrors the price of the U.S. dollar, issued by Hong Kong-based company Tether. The token's peg to the USD is achieved via maintaining a sum of commercial paper, fiduciary deposits, cash, reserve repo notes, and treasury bills in reserves that is equal in USD value to the number of USDT in circulation.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/42161/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/logo-128.png",
+		"decimals": 6,
+		"chainID": 42161
+	},
+	"0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a": {
+		"address": "0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "Magic Internet Money",
+		"symbol": "MIM",
+		"display_name": "Magic Internet Money",
+		"display_symbol": "MIM",
+		"description": "",
+		"category": "",
+		"icon": "https://assets.smold.app/api/token/42161/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo-128.png",
+		"decimals": 18,
+		"chainID": 42161
+	},
+	"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8": {
+		"address": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+		"underlyingTokensAddresses": [],
+		"type": "",
+		"name": "USD Coin (Arb1)",
+		"symbol": "USDC",
+		"display_name": "USD Coin (Arb1)",
+		"display_symbol": "USDC",
+		"description": "USD Coin is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC is issued by regulated financial institutions.",
+		"category": "Stablecoin",
+		"icon": "https://assets.smold.app/api/token/42161/0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8/logo-128.png",
+		"decimals": 6,
+		"chainID": 42161
+	}
+}

@@ -10,8 +10,7 @@ import (
 type TDBType string
 
 const (
-	DBBadger TDBType = "badger"
-	DBSql    TDBType = "sql"
+	DBSql TDBType = "sql"
 )
 
 var _dbType TDBType
@@ -24,29 +23,25 @@ var _dbType TDBType
 func init() {
 	if shouldUseMySQLDB := initializeMySQLDatabase(); shouldUseMySQLDB {
 		_dbType = DBSql
-	} else {
-		_dbType = DBBadger
 	}
 
 	for chainID := range env.CHAINS {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
-		_historicalPriceSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
 		_stackingPoolsSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
 	for chainID := range env.CHAINS {
-		storage.LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
+		storage.LoadRegistries(chainID, nil)
+		storage.LoadVaults(chainID, nil)
+		storage.LoadStrategies(chainID, nil)
+		storage.LoadERC20(chainID, nil)
 
 		go LoadBlockTime(chainID, nil) //This does not require a wg
-		// go LoadHistoricalPrice(chainID, nil)
 
-		wg.Add(4)
-		go storage.LoadRegistries(chainID, wg)
-		go storage.LoadVaults(chainID, wg)
-		go storage.LoadStrategies(chainID, wg)
+		wg.Add(1)
 		go LoadPricePerShare(chainID, wg)
 	}
 	wg.Wait()

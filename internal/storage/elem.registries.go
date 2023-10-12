@@ -27,7 +27,7 @@ func loadRegistriesFromJson(chainID uint64) (map[common.Address]models.TVaultsFr
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
-	file, err := os.Open(env.BASE_DATA_PATH + "/meta/store/registries/" + chainIDStr + ".json")
+	file, err := os.Open(env.BASE_DATA_PATH + "/meta/registries/" + chainIDStr + ".json")
 	if err != nil {
 		return nil, 0
 	}
@@ -60,10 +60,10 @@ func StoreRegistriesToJson(chainID uint64, historicalVaults map[common.Address]m
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	file, _ := json.MarshalIndent(historicalVaults, "", "\t")
-	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/store/registries"); os.IsNotExist(err) {
-		os.MkdirAll(env.BASE_DATA_PATH+"/meta/store/registries", 0755)
+	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/registries"); os.IsNotExist(err) {
+		os.MkdirAll(env.BASE_DATA_PATH+"/meta/registries", 0755)
 	}
-	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/store/registries/"+chainIDStr+".json", file, 0644)
+	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/registries/"+chainIDStr+".json", file, 0644)
 	if err != nil {
 		logs.Error("Failed to write vaults JSON file: " + err.Error())
 	}
@@ -79,15 +79,9 @@ func LoadRegistries(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-
 	historicalVaultsMap, _ := loadRegistriesFromJson(chainID)
 	for _, vault := range historicalVaultsMap {
-		syncMap.Store(vault.Address.Hex(), vault)
+		safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
 	}
 }
 
@@ -95,12 +89,7 @@ func LoadRegistries(chainID uint64, wg *sync.WaitGroup) {
 ** StoreNewVaultToRegistry will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
 func StoreNewVaultToRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-	syncMap.Store(vault.Address.Hex(), vault)
+	safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
 }
 
 /**************************************************************************************************
@@ -111,21 +100,10 @@ func ListVaultsFromRegistries(chainID uint64) (asMap map[common.Address]models.T
 	asMap = make(map[common.Address]models.TVaultsFromRegistry) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
 	** As the stored vault data are only a subset of static, we need to use the actual structure
-	** and not the DBVault one.
 	**********************************************************************************************/
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Range(func(key, value interface{}) bool {
 		vault := value.(models.TVaultsFromRegistry)
 		asMap[vault.Address] = vault
 		asSlice = append(asSlice, vault)
@@ -144,21 +122,10 @@ func ListVaultsFromRegistry(chainID uint64, registryAddress common.Address) (asM
 	asMap = make(map[common.Address]models.TVaultsFromRegistry) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
 	** As the stored vault data are only a subset of static, we need to use the actual structure
-	** and not the DBVault one.
 	**********************************************************************************************/
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Range(func(key, value interface{}) bool {
 		vault := value.(models.TVaultsFromRegistry)
 		if vault.RegistryAddress != registryAddress {
 			return true
@@ -176,23 +143,13 @@ func ListVaultsFromRegistry(chainID uint64, registryAddress common.Address) (asM
 **************************************************************************************************/
 func GetVaultFromRegistry(chainID uint64, vaultAddress common.Address) (models.TVaultsFromRegistry, bool) {
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadRegistry`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _newVaultsFromRegistrySyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** Here we are trying to load the vault from the syncMap using the vaultAddress. The loaded
 	** vault is then type asserted to models.TVaultsFromRegistry. If the vault is not found in the
 	** syncMap, we return an empty models.TVaultsFromRegistry and false.
 	**********************************************************************************************/
 	vault := models.TVaultsFromRegistry{}
 	found := false
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Range(func(key, value interface{}) bool {
 		element := value.(models.TVaultsFromRegistry)
 		if element.Address == vaultAddress {
 			found = true

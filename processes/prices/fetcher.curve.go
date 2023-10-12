@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 func fetchCurve(url string) []TCurveFactoriesPoolData {
@@ -52,8 +53,8 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 // Some missing prices may be for Curve LP tokens or Curve tokens.
 // The Curve API provides the total supply and the total USD value of the LP tokens. Based on that
 // we can calculate the price per token, and assign it to the token if the Store price is 0
-func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
+func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]models.TPrices {
+	priceMap := make(map[common.Address]models.TPrices)
 	curveFactoryPoolData := []TCurveFactoriesPoolData{}
 
 	// Running a sync group to execute all fetch at the same time
@@ -76,7 +77,13 @@ func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]*bigNumbe
 			coinPrice := bigNumber.NewFloat(coin.USDPrice)
 			coinPrice = coinPrice.Mul(coinPrice, bigNumber.NewFloat(1e6))
 			coinPriceBigInt := coinPrice.Int()
-			newPriceMap[coinAddress] = coinPriceBigInt
+			humanizedPrice := helpers.ToNormalizedAmount(coinPriceBigInt, 6)
+			priceMap[coinAddress] = models.TPrices{
+				Address:        coinAddress,
+				Price:          coinPriceBigInt,
+				HumanizedPrice: humanizedPrice,
+				Source:         `curveFactoryAPI`,
+			}
 		}
 
 		pricePerToken := 0.0
@@ -90,8 +97,14 @@ func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]*bigNumbe
 			if addressToUse == `` {
 				addressToUse = fact.Address
 			}
-			newPriceMap[common.HexToAddress(addressToUse)] = pricePerTokenBigInt
+			humanizedPrice := helpers.ToNormalizedAmount(pricePerTokenBigInt, 6)
+			priceMap[common.HexToAddress(addressToUse)] = models.TPrices{
+				Address:        common.HexToAddress(addressToUse),
+				Price:          pricePerTokenBigInt,
+				HumanizedPrice: humanizedPrice,
+				Source:         `curveFactoryAPI`,
+			}
 		}
 	}
-	return newPriceMap
+	return priceMap
 }

@@ -9,8 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllVaultsForAllChainsSimplified will return a list of all vaults for all chains
@@ -107,7 +106,7 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	data := []TSimplifiedExternalVault{}
 	allVaults := []TSimplifiedExternalVault{}
 	for _, chainID := range chains {
-		vaultsForChain := vaults.ListVaults(chainID)
+		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 				continue
@@ -166,7 +165,7 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	** response.
 	**************************************************************************************************/
 	for _, currentVault := range allVaults {
-		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
+		vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
 		currentVault.Strategies = []*TStrategy{}
 		for _, strategy := range vaultStrategies {
 			var externalStrategy *TStrategy

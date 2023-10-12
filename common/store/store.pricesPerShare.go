@@ -28,8 +28,6 @@ func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
 	}
 
 	switch _dbType {
-	case DBBadger:
-		// not implemented
 	case DBSql:
 		now := time.Now().Unix()
 		var temp []DBVaultPricePerShare
@@ -53,8 +51,6 @@ func LoadPricePerShare(chainID uint64, wg *sync.WaitGroup) {
 **************************************************************************************************/
 func StorePricePerShare(chainID uint64, data []DBVaultPricePerShare) {
 	switch _dbType {
-	case DBBadger:
-		// Not implemented
 	case DBSql:
 		go func() {
 			items := make([]DBVaultPricePerShare, len(data))

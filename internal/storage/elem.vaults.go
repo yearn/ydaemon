@@ -22,7 +22,7 @@ func LoadVaultsFromJson(chainID uint64) map[common.Address]models.TVault {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
-	file, err := os.Open(env.BASE_DATA_PATH + "/meta/store/vaults/" + chainIDStr + ".json")
+	file, err := os.Open(env.BASE_DATA_PATH + "/meta/vaults/" + chainIDStr + ".json")
 	if err != nil {
 		return nil
 	}
@@ -46,10 +46,10 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	file, _ := json.MarshalIndent(vaults, "", "\t")
-	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/store/vaults"); os.IsNotExist(err) {
-		os.MkdirAll(env.BASE_DATA_PATH+"/meta/store/vaults", 0755)
+	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/vaults"); os.IsNotExist(err) {
+		os.MkdirAll(env.BASE_DATA_PATH+"/meta/vaults", 0755)
 	}
-	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/store/vaults/"+chainIDStr+".json", file, 0644)
+	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/vaults/"+chainIDStr+".json", file, 0644)
 	if err != nil {
 		logs.Error("Failed to write vaults JSON file: " + err.Error())
 	}
@@ -63,14 +63,10 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	syncMap := _vaultsSyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_vaultsSyncMap[chainID] = syncMap
-	}
+
 	vaultMap := LoadVaultsFromJson(chainID)
 	for _, vault := range vaultMap {
-		syncMap.Store(vault.Address.Hex(), vault)
+		safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
 	}
 }
 
@@ -78,12 +74,7 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 ** StoreVault will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
-	syncMap := _vaultsSyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_vaultsSyncMap[chainID] = syncMap
-	}
-	syncMap.Store(vault.Address, vault)
+	safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
 }
 
 /**************************************************************************************************
@@ -94,21 +85,10 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 	asMap = make(map[common.Address]models.TVault) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadVaults`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _vaultsSyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_vaultsSyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
 	** As the stored vault data are only a subset of static, we need to use the actual structure
-	** and not the DBVault one.
 	**********************************************************************************************/
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_vaultsSyncMap, chainID).Range(func(key, value interface{}) bool {
 		vault := value.(models.TVault)
 		asMap[vault.Address] = vault
 		asSlice = append(asSlice, vault)
@@ -123,7 +103,7 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 ** and vault address.
 **************************************************************************************************/
 func GetVault(chainID uint64, vaultAddress common.Address) (models.TVault, bool) {
-	vaultFromSyncMap, ok := _vaultsSyncMap[chainID].Load(vaultAddress.Hex())
+	vaultFromSyncMap, ok := safeSyncMap(_vaultsSyncMap, chainID).Load(vaultAddress)
 	if !ok {
 		return models.TVault{}, false
 	}

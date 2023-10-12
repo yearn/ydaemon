@@ -10,7 +10,7 @@ import (
 type TCalculateConvexAPYDataStruct struct {
 	vault          models.TVault
 	gaugeAddress   common.Address
-	strategy       *models.TStrategy
+	strategy       models.TStrategy
 	baseAssetPrice *bigNumber.Float
 	poolPrice      *bigNumber.Float
 	baseAPR        *bigNumber.Float
@@ -29,7 +29,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	**********************************************************************************************/
 	cvxBoost := getCurveBoost(chainID, CONVEX_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineConvexKeepCRV(args.strategy)
-	debtRatio := helpers.ToNormalizedAmount(args.strategy.DebtRatio, 4)
+	debtRatio := helpers.ToNormalizedAmount(args.strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)
 	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.ManagementFee)), 4)
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)

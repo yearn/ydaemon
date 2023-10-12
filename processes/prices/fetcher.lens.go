@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
@@ -18,8 +19,8 @@ import (
 ** fetchPriceFromLlama tries to fetch the price for a given token from
 ** the DeFiLlama pricing API, returns nil if there is no data returned
 **************************************************************************************************/
-func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
+func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
+	priceMap := make(map[common.Address]models.TPrices)
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
@@ -29,12 +30,12 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	lensAddress := env.CHAINS[chainID].LensContract.Address
 	if (lensAddress == common.Address{}) {
 		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
-		return newPriceMap
+		return priceMap
 	}
 
 	calls := []ethereum.Call{}
 	for _, token := range tokens {
-		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(token.Hex(), lensAddress, token))
+		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(token.Address.Hex(), lensAddress, token.Address))
 	}
 	if chainID == 1 {
 		crvUSD := common.HexToAddress(`0xe5Afcf332a5457E8FafCD668BcE3dF953762Dfe7`)
@@ -59,7 +60,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 	}
 
 	for _, token := range tokens {
-		rawTokenPrice := response[token.Hex()+`getPriceUsdcRecommended`]
+		rawTokenPrice := response[token.Address.Hex()+`getPriceUsdcRecommended`]
 		if len(rawTokenPrice) == 0 {
 			continue
 		}
@@ -67,9 +68,17 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 		if tokenPrice.IsZero() {
 			continue
 		}
-		newPriceMap[token] = helpers.DecodeBigInt(rawTokenPrice)
-		// store.StoreHistoricalPrice(chainID, *blockNumber, token, tokenPrice)
+
+		price := helpers.DecodeBigInt(rawTokenPrice)
+		humanizedPrice := helpers.ToNormalizedAmount(price, 6)
+		priceMap[token.Address] = models.TPrices{
+			Address:        token.Address,
+			Price:          price,
+			HumanizedPrice: humanizedPrice,
+			Source:         `lens`,
+		}
 	}
+
 	if chainID == 1 {
 		crvUSD := common.HexToAddress(`0xe5Afcf332a5457E8FafCD668BcE3dF953762Dfe7`)
 		rawTokenPrice := response[crvUSD.Hex()+`price`]
@@ -77,9 +86,16 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []common.Ad
 			tokenPrice := bigNumber.SetInt(rawTokenPrice[0].(*big.Int))
 			if tokenPrice.Gt(bigNumber.Zero) {
 				tokenPrice = tokenPrice.Div(tokenPrice, bigNumber.NewInt(1e12))
-				newPriceMap[crvUSD] = tokenPrice
+				humanizedPrice := helpers.ToNormalizedAmount(tokenPrice, 6)
+				priceMap[crvUSD] = models.TPrices{
+					Address:        crvUSD,
+					Price:          tokenPrice,
+					HumanizedPrice: humanizedPrice,
+					Source:         `lens`,
+				}
+
 			}
 		}
 	}
-	return newPriceMap
+	return priceMap
 }

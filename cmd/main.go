@@ -7,14 +7,12 @@ import (
 	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/processes/apy"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
-	"github.com/yearn/ydaemon/processes/prices"
 	"github.com/yearn/ydaemon/processes/tokenList"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
 
 func main() {
 	initFlags()
-	loadDaemonsForAllChains(chains)
 	summonDaemonsForAllChains(chains)
 	var wg sync.WaitGroup
 
@@ -89,18 +87,6 @@ func main() {
 			wg.Add(1)
 			go func(chainID uint64) {
 				apy.Run(chainID)
-				wg.Done()
-			}(chainID)
-		}
-		wg.Wait()
-
-	case ProcessPrice:
-		logs.Info(`Running yDaemon Price process...`)
-		for _, chainID := range chains {
-			wg.Add(1)
-			go func(chainID uint64) {
-				initDailyBlock.Run(chainID)
-				prices.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

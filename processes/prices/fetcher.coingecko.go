@@ -12,7 +12,9 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
@@ -29,8 +31,8 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 ** fetchPriceFromGecko tries to fetch the price for a given token from
 ** the CoinGecko API, returns nil if there is no data returned
 **************************************************************************************************/
-func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
-	priceMap := make(map[common.Address]*bigNumber.Int)
+func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
+	priceMap := make(map[common.Address]models.TPrices)
 	chunkSize := 100
 	timeToSleep := rand.Intn(2000-200) + 200
 	for i := 0; i < len(tokens); i += chunkSize {
@@ -43,7 +45,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 		tokensFromChunk := tokens[i:end]
 		var tokenString []string
 		for _, token := range tokensFromChunk {
-			tokenString = append(tokenString, strings.ToLower(token.Hex()))
+			tokenString = append(tokenString, strings.ToLower(token.Address.Hex()))
 		}
 		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 		if err != nil {
@@ -79,11 +81,17 @@ func fetchPricesFromGecko(chainID uint64, tokens []common.Address) map[common.Ad
 
 		// Parse response
 		decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
-		for _, tokenStr := range tokenString {
-			data, ok := priceData[tokenStr]
+		for _, tokenAddressStr := range tokenString {
+			data, ok := priceData[tokenAddressStr]
 			if ok { // Convert price into USDC decimals
 				price := bigNumber.NewFloat(data.USDPrice)
-				priceMap[common.HexToAddress(tokenStr)] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
+				humanizedPrice := helpers.ToNormalizedAmount(price.Int(), 6)
+				priceMap[common.HexToAddress(tokenAddressStr)] = models.TPrices{
+					Address:        common.HexToAddress(tokenAddressStr),
+					Price:          bigNumber.NewFloat().Mul(price, decimalsUSDC).Int(),
+					HumanizedPrice: humanizedPrice,
+					Source:         `coinGecko`,
+				}
 			}
 		}
 	}

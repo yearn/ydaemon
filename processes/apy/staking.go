@@ -87,8 +87,15 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	** If that's good, we will need the price of the vault token and the price of the rewards token
 	** to compute the APR.
 	**********************************************************************************************/
-	vaultPrice := getTokenPrice(chainID, vault.Address)
-	rewardsPrice := getTokenPrice(chainID, rewardsTokenRaw)
+	vaultPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(vault.ChainID, vault.Address); ok {
+		vaultPrice = tokenPrice.HumanizedPrice
+	}
+
+	rewardsPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(vault.ChainID, rewardsTokenRaw); ok {
+		rewardsPrice = tokenPrice.HumanizedPrice
+	}
 
 	/**********************************************************************************************
 	** Then, we need to scale the decimals of the rewardRate and the totalSupply to match the

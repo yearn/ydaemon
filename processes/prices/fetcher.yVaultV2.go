@@ -4,10 +4,10 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -16,7 +16,7 @@ import (
 ** fetchPricePerShareFromVault will try to get the price per share for a vault type token
 ** It will return an array of struct with vault/asset/value
 **************************************************************************************************/
-func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList []common.Address) []TVaultToAsset {
+func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList []models.TERC20Token) []TVaultToAsset {
 	vaultToAsset := []TVaultToAsset{}
 
 	/**********************************************************************************************
@@ -25,10 +25,10 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList 
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
-	for _, tokenAddress := range tokenList {
-		if _, ok := storage.GetERC20(chainID, tokenAddress); ok {
-			calls = append(calls, multicalls.GetPricePerShare(tokenAddress.Hex(), tokenAddress))
-			calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
+	for _, token := range tokenList {
+		if _, ok := storage.GetERC20(chainID, token.Address); ok {
+			calls = append(calls, multicalls.GetPricePerShare(token.Address.Hex(), token.Address))
+			calls = append(calls, multicalls.GetToken(token.Address.Hex(), token.Address))
 		}
 	}
 
@@ -50,8 +50,8 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList 
 	}
 
 	for _, token := range tokenList {
-		rawPricePerShare := response[token.Hex()+`pricePerShare`]
-		rawToken := response[token.Hex()+`token`]
+		rawPricePerShare := response[token.Address.Hex()+`pricePerShare`]
+		rawToken := response[token.Address.Hex()+`token`]
 		if len(rawPricePerShare) == 0 || len(rawToken) == 0 {
 			continue
 		}
@@ -61,7 +61,7 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokenList 
 		}
 
 		vaultToAsset = append(vaultToAsset, TVaultToAsset{
-			VaultAddress: token,
+			VaultAddress: token.Address,
 			AssetAddress: helpers.DecodeAddress(rawToken),
 			Value:        helpers.DecodeBigInt(rawPricePerShare),
 		})

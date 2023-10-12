@@ -13,7 +13,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
-	"github.com/yearn/ydaemon/internal/prices"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/tokenList"
 )
@@ -83,7 +82,7 @@ func GetYearnTokenList(c *gin.Context) {
 	** the tokenBalanceMap map using the chainCoin address as the key.
 	**********************************************************************************************/
 	chainCoin := env.CHAINS[chainID].Coin
-	chainCoinPrice, ok := prices.FindPrice(chainID, chainCoin.Address)
+	chainCoinPrice, ok := storage.GetPrice(chainID, chainCoin.Address)
 	chainToken := models.TYearnTokenListToken{
 		TTokenListToken: models.TTokenListToken{
 			ChainID:  int(chainID),
@@ -98,7 +97,7 @@ func GetYearnTokenList(c *gin.Context) {
 		SupportedZaps: []models.SupportedZap{models.Wido},
 	}
 	if ok {
-		chainToken.Price = chainCoinPrice
+		chainToken.Price = chainCoinPrice.Price
 	}
 	tokenBalanceMap[chainCoin.Address.Hex()] = chainToken
 
@@ -116,11 +115,11 @@ func GetYearnTokenList(c *gin.Context) {
 			continue
 		}
 		token.Balance = tokenBalance
-		if tokenPrice, ok := prices.FindPrice(
+		if tokenPrice, ok := storage.GetPrice(
 			chainID,
 			addresses.ToAddress(token.Address),
 		); ok {
-			token.Price = tokenPrice
+			token.Price = tokenPrice.Price
 			tokenBalanceMap[token.Address] = token
 		}
 	}

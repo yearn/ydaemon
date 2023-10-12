@@ -1,12 +1,10 @@
 package vaults
 
 import (
-	"math"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
@@ -14,13 +12,10 @@ import (
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
 func buildTokenPrice(chainID uint64, tokenAddress common.MixedcaseAddress) (*bigNumber.Float, float64) {
-	fPrice := new(bigNumber.Float)
-	price, ok := prices.FindPrice(chainID, tokenAddress.Address())
+	price, ok := storage.GetPrice(chainID, tokenAddress.Address())
 	if ok {
-		fPrice.SetInt(price)
-		humanizedPrice := new(bigNumber.Float).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))
-		fHumanizedPrice, _ := humanizedPrice.Float64()
-		return humanizedPrice, fHumanizedPrice
+		fPrice, _ := price.HumanizedPrice.Float64()
+		return price.HumanizedPrice, fPrice
 	}
 	return bigNumber.NewFloat(), 0.0
 }

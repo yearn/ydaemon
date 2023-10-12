@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 var VELO_STAKING_POOLS_REGISTRY = common.HexToAddress(`0x41c914ee0c7e1a5edcd0295623e6dc557b5abf3c`)
@@ -42,7 +43,7 @@ func isVeloVault(chainID uint64, vault models.TVault) (common.Address, bool) {
 
 func calculateVeloLikeStrategyAPR(
 	vault models.TVault,
-	strategy *models.TStrategy,
+	strategy models.TStrategy,
 	veloStakingPoolAddress common.Address,
 ) TStrategyAPR {
 	/**********************************************************************************************
@@ -90,7 +91,7 @@ func calculateVeloLikeStrategyAPR(
 	** - the performanceFee for that vault
 	** - the managementFee for that vault
 	**********************************************************************************************/
-	debtRatio := helpers.ToNormalizedAmount(strategy.DebtRatio, 4)
+	debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
 	localKeepVelo := helpers.ToNormalizedAmount(localKeepVeloRaw, 4)
@@ -113,8 +114,15 @@ func calculateVeloLikeStrategyAPR(
 	** If that's good, we will need the price of the vault token and the price of the rewards token
 	** to compute the APR.
 	**********************************************************************************************/
-	poolPrice := getTokenPrice(vault.ChainID, vault.AssetAddress)
-	rewardsPrice := getTokenPrice(vault.ChainID, rewardTokenRaw)
+	poolPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(vault.ChainID, vault.AssetAddress); ok {
+		poolPrice = tokenPrice.HumanizedPrice
+	}
+
+	rewardsPrice := bigNumber.NewFloat(0)
+	if tokenPrice, ok := storage.GetPrice(vault.ChainID, rewardTokenRaw); ok {
+		rewardsPrice = tokenPrice.HumanizedPrice
+	}
 
 	/**********************************************************************************************
 	** And now we can compute the APR
@@ -160,7 +168,7 @@ func calculateVeloLikeStrategyAPR(
 **************************************************************************************************/
 func computeVeloLikeForwardAPR(
 	vault models.TVault,
-	allStrategiesForVault []*models.TStrategy,
+	allStrategiesForVault map[common.Address]models.TStrategy,
 	veloStakingPoolAddress common.Address,
 ) TForwardAPR {
 	TypeOf := ``
@@ -172,7 +180,7 @@ func computeVeloLikeForwardAPR(
 	CvxAPR := bigNumber.NewFloat(0)
 	RewardsAPR := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
-		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
+		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
 				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
 			}

@@ -10,7 +10,6 @@ const (
 	ProcessVaultMigrations TProcess = "vaultmigrations"
 	ProcessInitDailyBlock  TProcess = "initdailyblock"
 	ProcessAPY             TProcess = "apy"
-	ProcessPrice           TProcess = "price"
 )
 
 func handleProcessInitialization(rawProcess *string) TProcess {
@@ -25,8 +24,6 @@ func handleProcessInitialization(rawProcess *string) TProcess {
 		process = ProcessInitDailyBlock
 	case string(ProcessAPY):
 		process = ProcessAPY
-	case string(ProcessPrice):
-		process = ProcessPrice
 	default:
 		process = ProcessServer
 	}

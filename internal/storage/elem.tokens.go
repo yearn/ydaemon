@@ -22,7 +22,7 @@ func LoadTokensFromJson(chainID uint64) map[common.Address]models.TERC20Token {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
-	file, err := os.Open(env.BASE_DATA_PATH + "/meta/store/tokens/" + chainIDStr + ".json")
+	file, err := os.Open(env.BASE_DATA_PATH + "/meta/tokens/" + chainIDStr + ".json")
 	if err != nil {
 		return nil
 	}
@@ -46,10 +46,10 @@ func StoreTokensToJson(chainID uint64, tokens map[common.Address]models.TERC20To
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	file, _ := json.MarshalIndent(tokens, "", "\t")
-	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/store/tokens"); os.IsNotExist(err) {
-		os.MkdirAll(env.BASE_DATA_PATH+"/meta/store/tokens", 0755)
+	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/tokens"); os.IsNotExist(err) {
+		os.MkdirAll(env.BASE_DATA_PATH+"/meta/tokens", 0755)
 	}
-	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/store/tokens/"+chainIDStr+".json", file, 0644)
+	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/tokens/"+chainIDStr+".json", file, 0644)
 	if err != nil {
 		logs.Error("Failed to write vaults JSON file: " + err.Error())
 	}
@@ -63,14 +63,9 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	syncMap := _erc20SyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_erc20SyncMap[chainID] = syncMap
-	}
 	tokenMap := LoadTokensFromJson(chainID)
 	for _, token := range tokenMap {
-		syncMap.Store(token.Address.Hex(), token)
+		safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 	}
 }
 
@@ -78,13 +73,8 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 ** StoreERC20 will add a new erc20 token in the _erc20SyncMap
 **************************************************************************************************/
 func StoreERC20(chainID uint64, token models.TERC20Token) {
-	syncMap := _erc20SyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_erc20SyncMap[chainID] = syncMap
-	}
 	token.ShouldRefresh = false
-	syncMap.Store(token.Address.Hex(), token)
+	safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 }
 
 /**************************************************************************************************
@@ -95,21 +85,11 @@ func ListERC20(chainID uint64) (asMap map[common.Address]models.TERC20Token, asS
 	asMap = make(map[common.Address]models.TERC20Token) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadERC20`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _erc20SyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_erc20SyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
 	** As the stored vault data are only a subset of static, we need to use the actual structure
-	** and not the DBVault one.
+
 	**********************************************************************************************/
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_erc20SyncMap, chainID).Range(func(key, value interface{}) bool {
 		token := value.(models.TERC20Token)
 		asMap[token.Address] = token
 		asSlice = append(asSlice, token)
@@ -128,21 +108,11 @@ func ListVaultsLike(chainID uint64) (asMap map[common.Address]models.TERC20Token
 	asMap = make(map[common.Address]models.TERC20Token) // make to avoid nil map
 
 	/**********************************************************************************************
-	** We first retrieve the syncMap. This syncMap should be initialized first via the `LoadERC20`
-	** function which take the data from the database/badger and store it in it.
-	**********************************************************************************************/
-	syncMap := _erc20SyncMap[chainID]
-	if syncMap == nil {
-		syncMap = &sync.Map{}
-		_erc20SyncMap[chainID] = syncMap
-	}
-
-	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
 	** As the stored vault data are only a subset of static, we need to use the actual structure
-	** and not the DBVault one.
+
 	**********************************************************************************************/
-	syncMap.Range(func(key, value interface{}) bool {
+	safeSyncMap(_erc20SyncMap, chainID).Range(func(key, value interface{}) bool {
 		token := value.(models.TERC20Token)
 		if token.IsVaultLike() {
 			asMap[token.Address] = token
@@ -158,7 +128,7 @@ func ListVaultsLike(chainID uint64) (asMap map[common.Address]models.TERC20Token
 ** GetERC20 will try, for a specific chain, to find the provided token address as ERC20 struct.
 **************************************************************************************************/
 func GetERC20(chainID uint64, tokenAddress common.Address) (token models.TERC20Token, ok bool) {
-	tokenFromSyncMap, ok := _erc20SyncMap[chainID].Load(tokenAddress.Hex())
+	tokenFromSyncMap, ok := safeSyncMap(_erc20SyncMap, chainID).Load(tokenAddress)
 	if !ok {
 		return models.TERC20Token{}, false
 	}
@@ -191,4 +161,12 @@ func ListERC20Addresses(chainID uint64) []common.Address {
 		addresses = append(addresses, token.Address)
 	}
 	return addresses
+}
+
+func ERC20MapToSlice(tokensMap map[common.Address]models.TERC20Token) []models.TERC20Token {
+	var tokensSlice []models.TERC20Token
+	for _, token := range tokensMap {
+		tokensSlice = append(tokensSlice, token)
+	}
+	return tokensSlice
 }

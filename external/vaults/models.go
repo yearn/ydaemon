@@ -4,12 +4,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apy"
-	// "github.com/yearn/ydaemon/processes/apy"
 )
 
 // TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.
@@ -135,8 +135,8 @@ type TExternalVault struct {
 	TVL               TExternalVaultTVL       `json:"tvl"`
 	APY               TExternalVaultAPY       `json:"apy"`
 	APR               apy.TVaultAPR           `json:"apr"`
-	Details           *TExternalVaultDetails  `json:"details"`
-	Strategies        []*TStrategy            `json:"strategies"`
+	Details           TExternalVaultDetails   `json:"details"`
+	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
 	// Computing only
@@ -170,31 +170,34 @@ type TSimplifiedExternalVault struct {
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
 	APR            apy.TVaultAPR                 `json:"apr"`
-	Strategies     []*TStrategy                  `json:"strategies"`
+	Strategies     []TStrategy                   `json:"strategies"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
 }
 
-func NewVault() *TExternalVault {
-	return &TExternalVault{}
+func NewVault() TExternalVault {
+	return TExternalVault{}
 }
-func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVault {
-	vaultToken, ok := storage.GetERC20(internalVault.ChainID, internalVault.Address)
+func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
+	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		return nil
+		bla, _ := storage.ListERC20(vault.ChainID)
+		logs.Pretty(bla)
+		logs.Error(`NOT OKE`, vault.Address)
+		return v
 	}
-	name, displayName, formatedName := fetcher.BuildVaultNames(internalVault, ``)
-	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(internalVault, ``)
+	name, displayName, formatedName := fetcher.BuildVaultNames(vault, ``)
+	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, ``)
 
-	v.Address = internalVault.Address.Hex()
-	v.Version = internalVault.Version
-	v.Endorsed = internalVault.Endorsed
-	v.EmergencyShutdown = internalVault.EmergencyShutdown
-	v.ChainID = internalVault.ChainID
-	v.TVL = TExternalVaultTVL(fetcher.BuildVaultTVL(internalVault))
-	v.Migration = toTExternalVaultMigration(internalVault.Migration)
-	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(internalVault))
-	v.Category = fetcher.BuildVaultCategory(internalVault)
+	v.Address = vault.Address.Hex()
+	v.Version = vault.Version
+	v.Endorsed = vault.Endorsed
+	v.EmergencyShutdown = vault.EmergencyShutdown
+	v.ChainID = vault.ChainID
+	v.TVL = TExternalVaultTVL(fetcher.BuildVaultTVL(vault))
+	v.Migration = toTExternalVaultMigration(vault.Migration)
+	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(vault))
+	v.Category = fetcher.BuildVaultCategory(vault)
 	v.Symbol = symbol
 	v.DisplaySymbol = displaySymbol
 	v.FormatedSymbol = formatedSymbol
@@ -205,7 +208,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	v.Type = vaultToken.Type
 	v.Decimals = vaultToken.Decimals
 
-	underlyingToken, ok := storage.GetUnderlyingERC20(internalVault.ChainID, internalVault.Address)
+	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)
 	if ok {
 		v.Token = TExternalERC20Token{
 			Address:                   underlyingToken.Address.Hex(),
@@ -220,7 +223,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 			Decimals:                  underlyingToken.Decimals,
 		}
 	} else {
-		underlyingToken, ok = storage.GetERC20(internalVault.ChainID, internalVault.AssetAddress)
+		underlyingToken, ok = storage.GetERC20(vault.ChainID, vault.AssetAddress)
 		if ok {
 			v.Token = TExternalERC20Token{
 				Address:                   underlyingToken.Address.Hex(),
@@ -241,7 +244,7 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 	}
 
 	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
-	internalAPY := fetcher.BuildVaultLegacyAPY(internalVault, aggregatedVault, okLegacyAPI)
+	internalAPY := fetcher.BuildVaultLegacyAPY(vault, aggregatedVault, okLegacyAPI)
 	v.APY = TExternalVaultAPY{
 		Type:              internalAPY.Type,
 		GrossAPR:          internalAPY.GrossAPR,
@@ -252,22 +255,22 @@ func (v *TExternalVault) AssignTVault(internalVault models.TVault) *TExternalVau
 		Composite:         TExternalAPYComposite(internalAPY.Composite),
 		Error:             internalAPY.Error,
 	}
-	v.APR = apy.COMPUTED_APR[internalVault.ChainID][internalVault.Address]
+	v.APR = apy.COMPUTED_APR[vault.ChainID][vault.Address]
 
-	v.Details = &TExternalVaultDetails{
-		Management:     internalVault.Management.Hex(),
-		Governance:     internalVault.Governance.Hex(),
-		Guardian:       internalVault.Guardian.Hex(),
-		Rewards:        internalVault.Rewards.Hex(),
-		IsRetired:      internalVault.IsRetired,
-		IsHidden:       internalVault.IsHidden,
-		Classification: internalVault.Classification,
+	v.Details = TExternalVaultDetails{
+		Management:     vault.Management.Hex(),
+		Governance:     vault.Governance.Hex(),
+		Guardian:       vault.Guardian.Hex(),
+		Rewards:        vault.Rewards.Hex(),
+		IsRetired:      vault.IsRetired,
+		IsHidden:       vault.IsHidden,
+		Classification: vault.Classification,
 	}
 
 	return v
 }
 
-func (v *TExternalVault) ComputeRiskScore() float64 {
+func (v TExternalVault) ComputeRiskScore() float64 {
 	totalRiskScore := bigNumber.NewFloat(0)
 	for _, strat := range v.Strategies {
 		totalDebt := bigNumber.NewFloat(0).SetInt(strat.Details.TotalDebt)

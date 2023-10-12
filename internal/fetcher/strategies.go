@@ -212,6 +212,7 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 		}
 
 		strategiesMap[stratAddress] = newStrategy
+		storage.StoreStrategy(chainID, newStrategy)
 	}
 
 	return strategiesMap
@@ -232,8 +233,9 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategies map[common.Address]models.TStrategy,
 ) map[common.Address]models.TStrategy {
-	updatedStrategies := fetchStrategiesBasicInformations(chainID, strategies)
+	fetchStrategiesBasicInformations(chainID, strategies)
 
-	storage.StoreStrategiesToJson(chainID, updatedStrategies)
-	return updatedStrategies
+	strategyMap, _ := storage.ListStrategies(chainID)
+	storage.StoreStrategiesToJson(chainID, strategyMap)
+	return strategyMap
 }

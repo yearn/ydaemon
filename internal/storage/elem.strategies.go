@@ -76,12 +76,22 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 /**************************************************************************************************
 ** StoreStrategy will add a new strategy in the _strategiesSyncMap
 ** StoreStrategyMigrated will add a new strategy in the _strategiesMigratedSyncMap
+** StoreStrategyIfMissing is used to only add a strategy if it doesn't already exist. This is
+** usefull as the strategy loading is in two steps: first the indexing, then the data.
 **************************************************************************************************/
 func StoreStrategy(chainID uint64, strategy models.TStrategy) {
 	safeSyncMap(_strategiesSyncMap, chainID).Store(strategy.Address, strategy)
 }
 func StoreStrategyMigrated(chainID uint64, strategy models.TStrategyMigrated) {
 	safeSyncMap(_strategiesMigratedSyncMap, chainID).Store(strategy.NewStrategyAddress, strategy)
+}
+func StoreStrategyIfMissing(chainID uint64, strategy models.TStrategy) bool {
+	syncMap := safeSyncMap(_strategiesSyncMap, chainID)
+	if _, ok := syncMap.Load(strategy.Address); !ok {
+		syncMap.Store(strategy.Address, strategy)
+		return true
+	}
+	return false
 }
 
 /**************************************************************************************************

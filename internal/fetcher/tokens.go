@@ -434,20 +434,6 @@ func RetrieveAllTokens(
 		}
 	}
 
-	/**********************************************************************************************
-	** Somehow, some vaults are not in the registries, but we still need the tokens data for them.
-	** We will add them manually here.
-	**********************************************************************************************/
-	for _, tokenAddress := range env.CHAINS[chainID].ExtraTokens {
-		if token, ok := tokenMap[tokenAddress]; ok && !token.ShouldRefresh {
-			continue
-		}
-		updatedTokenMap[tokenAddress] = models.TERC20Token{
-			Address: tokenAddress,
-			ChainID: chainID,
-		}
-	}
-
 	curveFactoryPools := loadCurvePools(chainID)
 	for _, poolCoins := range curveFactoryPools {
 		for _, coinAddress := range poolCoins {
@@ -474,8 +460,8 @@ func RetrieveAllTokens(
 		for _, token := range updatedTokenMap {
 			storage.StoreERC20(chainID, token)
 		}
-		tokenMap, _ = storage.ListERC20(chainID)
 	}
+	tokenMap, _ = storage.ListERC20(chainID)
 	storage.StoreTokensToJson(chainID, tokenMap)
 	return tokenMap
 }

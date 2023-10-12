@@ -100,6 +100,7 @@ func fetchVaultsBasicInformations(
 		** Preparing our new TVault object
 		******************************************************************************************/
 		newVault := vault
+		newVault.ChainID = chainID
 		newVault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
 		newVault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
 		newVault.LastUpdate = time.Now()
@@ -212,10 +213,10 @@ func RetrieveAllVaults(
 	newVaultMap := fetchVaultsBasicInformations(chainID, updatedVaultMap)
 
 	/**********************************************************************************************
-	** Once everything is setup, we will store each token in the DB. The storage is set as a map
-	** of vaultAddress -> TTokens. All vaults will be retrievable from the store.Interate() func.
+	** Once everything is setup we can re-store the elements to save them in our storage
 	**********************************************************************************************/
 	for _, vault := range newVaultMap {
+		vault.ChainID = chainID
 		if (vault.Migration.Target == common.Address{}) {
 			vault.Migration = models.TMigration{
 				Available: false,

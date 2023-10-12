@@ -39,8 +39,8 @@ func (y Controller) GetRetiredVaults(c *gin.Context) {
 			continue
 		}
 
-		newVault.Strategies = []*TStrategy{}
-		data = append(data, *newVault)
+		newVault.Strategies = []TStrategy{}
+		data = append(data, newVault)
 	}
 
 	sort.SortBy(orderBy, orderDirection, data)

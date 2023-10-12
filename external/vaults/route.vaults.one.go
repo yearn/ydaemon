@@ -30,13 +30,12 @@ func (y Controller) GetVault(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid vault")
 		return
 	}
+
 	newVault := NewVault().AssignTVault(currentVault)
-
 	vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
-	newVault.Strategies = []*TStrategy{}
-
+	newVault.Strategies = []TStrategy{}
 	for _, strategy := range vaultStrategies {
-		var externalStrategy *TStrategy
+		var externalStrategy TStrategy
 		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 			continue
@@ -46,7 +45,7 @@ func (y Controller) GetVault(c *gin.Context) {
 			externalStrategy = strategyWithDetails
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 		} else {
-			externalStrategy = &TStrategy{
+			externalStrategy = TStrategy{
 				Address:     strategy.Address.Hex(),
 				Name:        strategy.Name,
 				DisplayName: strategy.DisplayName,

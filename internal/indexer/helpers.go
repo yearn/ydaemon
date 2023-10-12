@@ -152,14 +152,11 @@ func processMigrations(chainID uint64) {
 				continue
 			}
 			if oldStrategy, ok := storage.GetStrategy(chainID, newStrategy.OldStrategyAddress); ok {
-				migratedStrategy := models.TStrategy{
-					Address:      newStrategy.NewStrategyAddress,
-					VaultAddress: newStrategy.VaultAddress,
-					VaultVersion: oldStrategy.VaultVersion,
-					Activation:   newStrategy.BlockNumber,
-					ChainID:      chainID,
-				}
-				storage.StoreStrategy(chainID, migratedStrategy)
+				migratedStrategy := oldStrategy
+				migratedStrategy.Address = newStrategy.NewStrategyAddress
+				migratedStrategy.VaultAddress = newStrategy.VaultAddress
+				migratedStrategy.Activation = newStrategy.BlockNumber
+				storage.StoreStrategyIfMissing(chainID, migratedStrategy)
 			} else {
 				shouldLoop = true
 			}

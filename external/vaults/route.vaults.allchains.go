@@ -110,7 +110,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	** are blacklisted, and stores them in 'allVaults' for further processing.
 	**************************************************************************************************/
 	data := []TExternalVault{}
-	allVaults := []*TExternalVault{}
+	allVaults := []TExternalVault{}
 	for _, chainID := range chains {
 		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
@@ -172,9 +172,9 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	**************************************************************************************************/
 	for _, currentVault := range allVaults {
 		vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
-		currentVault.Strategies = []*TStrategy{}
+		currentVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
+			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
@@ -184,7 +184,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 				externalStrategy = strategyWithDetails
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			} else {
-				externalStrategy = &TStrategy{
+				externalStrategy = TStrategy{
 					Address:     strategy.Address.Hex(),
 					Name:        strategy.Name,
 					DisplayName: strategy.DisplayName,
@@ -197,7 +197,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			currentVault.RiskScore = currentVault.ComputeRiskScore()
 		}
 
-		data = append(data, *currentVault)
+		data = append(data, currentVault)
 	}
 
 	/** 🔵 - Yearn *************************************************************************************

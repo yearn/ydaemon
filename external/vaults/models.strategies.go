@@ -60,10 +60,10 @@ func buildDelegated(delegatedBalanceToken *bigNumber.Int, decimals int, humanize
 	return fHumanizedTVLPrice
 }
 
-func NewStrategy() *TStrategy {
-	return &TStrategy{}
+func NewStrategy() TStrategy {
+	return TStrategy{}
 }
-func (v *TStrategy) AssignTStrategy(strategy models.TStrategy) *TStrategy {
+func (v TStrategy) AssignTStrategy(strategy models.TStrategy) TStrategy {
 	delegatedValue := `0`
 	if vault, ok := storage.GetVault(strategy.ChainID, strategy.VaultAddress); ok {
 		if vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address); ok {
@@ -84,24 +84,23 @@ func (v *TStrategy) AssignTStrategy(strategy models.TStrategy) *TStrategy {
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TExternalStrategyDetails{
-		Keeper:               strategy.KeeperAddress.Hex(),      //keeper
-		Strategist:           strategy.StrategistAddress.Hex(),  //strategist
-		Rewards:              strategy.RewardsAddress.Hex(),     //rewards
-		HealthCheck:          strategy.HealthCheckAddress.Hex(), //healthCheck
-		TotalDebt:            strategy.LastTotalDebt,
-		TotalLoss:            strategy.LastTotalLoss,
-		TotalGain:            strategy.LastTotalGain,
-		RateLimit:            strategy.LastRateLimit,
-		MinDebtPerHarvest:    strategy.LastMinDebtPerHarvest,
-		MaxDebtPerHarvest:    strategy.LastMaxDebtPerHarvest,
-		EstimatedTotalAssets: strategy.LastEstimatedTotalAssets,
-		CreditAvailable:      strategy.LastCreditAvailable,
-		DebtOutstanding:      strategy.LastDebtOutstanding,
-		ExpectedReturn:       strategy.LastExpectedReturn,
-		DelegatedAssets:      strategy.LastDelegatedAssets,
-		DelegatedValue:       delegatedValue,
-		Protocols:            strategy.Protocols,
-		// APR:                     strategy.APR, //NOT AVAILABLE
+		Keeper:                  strategy.KeeperAddress.Hex(),      //keeper
+		Strategist:              strategy.StrategistAddress.Hex(),  //strategist
+		Rewards:                 strategy.RewardsAddress.Hex(),     //rewards
+		HealthCheck:             strategy.HealthCheckAddress.Hex(), //healthCheck
+		TotalDebt:               strategy.LastTotalDebt,
+		TotalLoss:               strategy.LastTotalLoss,
+		TotalGain:               strategy.LastTotalGain,
+		RateLimit:               strategy.LastRateLimit,
+		MinDebtPerHarvest:       strategy.LastMinDebtPerHarvest,
+		MaxDebtPerHarvest:       strategy.LastMaxDebtPerHarvest,
+		EstimatedTotalAssets:    strategy.LastEstimatedTotalAssets,
+		CreditAvailable:         strategy.LastCreditAvailable,
+		DebtOutstanding:         strategy.LastDebtOutstanding,
+		ExpectedReturn:          strategy.LastExpectedReturn,
+		DelegatedAssets:         strategy.LastDelegatedAssets,
+		DelegatedValue:          delegatedValue,
+		Protocols:               strategy.Protocols,
 		PerformanceFee:          strategy.LastPerformanceFee.Uint64(),
 		LastReport:              strategy.LastReport.Uint64(),
 		Activation:              strategy.TimeActivated.Uint64(),
@@ -117,7 +116,7 @@ func (v *TStrategy) AssignTStrategy(strategy models.TStrategy) *TStrategy {
 	}
 	return v
 }
-func (v *TStrategy) ShouldBeIncluded(condition string) bool {
+func (v TStrategy) ShouldBeIncluded(condition string) bool {
 	if condition == `all` {
 		return true
 	} else if condition == `absolute` &&

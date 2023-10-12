@@ -45,7 +45,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	** from the 'chainID' path parameter in the request.
 	**************************************************************************************************/
 	hideAlways := helpers.StringToBool(helpers.SafeString(getQuery(c, `hideAlways`), `false`))
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `details.order`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
 	withStrategiesDetails := getQuery(c, `strategiesDetails`) == `withDetails`
@@ -79,9 +79,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		}
 
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
-		newVault.Strategies = []*TStrategy{}
+		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
+			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
@@ -91,7 +91,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 				externalStrategy = strategyWithDetails
 				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			} else {
-				externalStrategy = &TStrategy{
+				externalStrategy = TStrategy{
 					Address:     strategy.Address.Hex(),
 					Name:        strategy.Name,
 					DisplayName: strategy.DisplayName,
@@ -104,7 +104,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			newVault.RiskScore = newVault.ComputeRiskScore()
 		}
 
-		data = append(data, *newVault)
+		data = append(data, newVault)
 	}
 
 	//Sort by details.order by default

@@ -64,8 +64,8 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 				continue
 			}
 
-			newVault.Strategies = []*TStrategy{}
-			allVaults = append(allVaults, toSimplifiedVersion(*newVault))
+			newVault.Strategies = []TStrategy{}
+			allVaults = append(allVaults, toSimplifiedVersion(newVault))
 		}
 	}
 

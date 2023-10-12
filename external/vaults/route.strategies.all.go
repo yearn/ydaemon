@@ -36,7 +36,7 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 			}
 			// Always show details
 			strategyWithDetails.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
-			data = append(data, *strategyWithDetails)
+			data = append(data, strategyWithDetails)
 		}
 	}
 

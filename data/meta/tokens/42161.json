@@ -184,36 +184,6 @@
 		"decimals": 18,
 		"chainID": 42161
 	},
-	"0x976a1c749cd8153909e0b04eebe931ef8957b15b": {
-		"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
-		"underlyingTokensAddresses": [
-			"0xfa247d0d55a324ca19985577a2cdcfc383d87953"
-		],
-		"type": "Experimental Yearn Vault",
-		"name": "PHPTest",
-		"symbol": "yPHP",
-		"display_name": "PHPTest",
-		"display_symbol": "yPHP",
-		"description": "",
-		"category": "yVault",
-		"icon": "https://assets.smold.app/api/token/42161/0x976a1C749cd8153909e0B04EebE931eF8957b15b/logo-128.png",
-		"decimals": 18,
-		"chainID": 42161
-	},
-	"0xfa247d0d55a324ca19985577a2cdcfc383d87953": {
-		"address": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
-		"underlyingTokensAddresses": [],
-		"type": "",
-		"name": "Philippine Peso",
-		"symbol": "PHP",
-		"display_name": "Philippine Peso",
-		"display_symbol": "PHP",
-		"description": "",
-		"category": "",
-		"icon": "https://assets.smold.app/api/token/42161/0xFa247d0D55a324ca19985577a2cDcFC383D87953/logo-128.png",
-		"decimals": 18,
-		"chainID": 42161
-	},
 	"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9": {
 		"address": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
 		"underlyingTokensAddresses": [],

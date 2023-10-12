@@ -8,6 +8,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -65,7 +66,7 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	}
 	tokenMap := LoadTokensFromJson(chainID)
 	for _, token := range tokenMap {
-		safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
+		StoreERC20(chainID, token)
 	}
 }
 
@@ -73,6 +74,9 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 ** StoreERC20 will add a new erc20 token in the _erc20SyncMap
 **************************************************************************************************/
 func StoreERC20(chainID uint64, token models.TERC20Token) {
+	if helpers.Contains(env.CHAINS[chainID].IgnoredTokens, token.Address) {
+		return
+	}
 	token.ShouldRefresh = false
 	safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 }

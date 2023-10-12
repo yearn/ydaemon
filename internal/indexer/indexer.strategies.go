@@ -68,10 +68,11 @@ func filterNewStrategies(
 						continue
 					}
 					newStrategy := handleV2Strategies(chainID, vault.Version, log.Event)
-					storage.StoreStrategy(chainID, newStrategy)
-					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-						newStrategy.Address: newStrategy,
-					})
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault022 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -84,10 +85,11 @@ func filterNewStrategies(
 						continue
 					}
 					newStrategy := handleV3Strategies(chainID, vault.Version, log.Event)
-					storage.StoreStrategy(chainID, newStrategy)
-					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-						newStrategy.Address: newStrategy,
-					})
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -118,10 +120,11 @@ func filterNewStrategies(
 						continue
 					}
 					newStrategy := handleV4Strategies(chainID, vault.Version, log.Event)
-					storage.StoreStrategy(chainID, newStrategy)
-					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-						newStrategy.Address: newStrategy,
-					})
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 				}
 			} else {
 				logs.Error(`impossible to FilterStrategyAdded for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -190,7 +193,7 @@ func watchNewStrategies(
 		for _, log := range history {
 			if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 				historicalStrategy := handleV2Strategies(chainID, vault.Version, value)
-				storage.StoreStrategy(chainID, historicalStrategy)
+				storage.StoreStrategyIfMissing(chainID, historicalStrategy)
 			}
 		}
 		if wg != nil {
@@ -209,10 +212,11 @@ func watchNewStrategies(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newStrategy := handleV2Strategies(chainID, vault.Version, value)
-				storage.StoreStrategy(chainID, newStrategy)
-				fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-					newStrategy.Address: newStrategy,
-				})
+				if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+						newStrategy.Address: newStrategy,
+					})
+				}
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -245,7 +249,7 @@ func watchNewStrategies(
 		for _, log := range history {
 			if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 				historicalStrategy := handleV3Strategies(chainID, vault.Version, value)
-				storage.StoreStrategy(chainID, historicalStrategy)
+				storage.StoreStrategyIfMissing(chainID, historicalStrategy)
 				continue
 			}
 			if value, err := currentVault.ParseStrategyMigrated(log); err == nil {
@@ -267,10 +271,11 @@ func watchNewStrategies(
 				if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
 					newStrategy := handleV3Strategies(chainID, vault.Version, value)
-					storage.StoreStrategy(chainID, newStrategy)
-					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-						newStrategy.Address: newStrategy,
-					})
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 					continue
 				}
 
@@ -318,7 +323,7 @@ func watchNewStrategies(
 		for _, log := range history {
 			if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 				historicalStrategy := handleV4Strategies(chainID, vault.Version, value)
-				storage.StoreStrategy(chainID, historicalStrategy)
+				storage.StoreStrategyIfMissing(chainID, historicalStrategy)
 				continue
 			}
 			if value, err := currentVault.ParseStrategyMigrated(log); err == nil {
@@ -340,10 +345,11 @@ func watchNewStrategies(
 				if value, err := currentVault.ParseStrategyAdded(log); err == nil {
 					lastSyncedBlock = value.Raw.BlockNumber
 					newStrategy := handleV4Strategies(chainID, vault.Version, value)
-					storage.StoreStrategy(chainID, newStrategy)
-					fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
-						newStrategy.Address: newStrategy,
-					})
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
 					continue
 				}
 

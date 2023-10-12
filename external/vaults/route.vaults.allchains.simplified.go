@@ -122,7 +122,7 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 				continue
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * newVault.APY.NetAPY
-			allVaults = append(allVaults, toSimplifiedVersion(*newVault))
+			allVaults = append(allVaults, toSimplifiedVersion(newVault))
 		}
 	}
 
@@ -166,15 +166,15 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	**************************************************************************************************/
 	for _, currentVault := range allVaults {
 		vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
-		currentVault.Strategies = []*TStrategy{}
+		currentVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
+			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}
 
-			externalStrategy = &TStrategy{
+			externalStrategy = TStrategy{
 				Address:     strategy.Address.Hex(),
 				Name:        strategy.Name,
 				DisplayName: strategy.DisplayName,

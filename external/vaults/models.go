@@ -4,7 +4,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
@@ -181,9 +180,6 @@ func NewVault() TExternalVault {
 func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		bla, _ := storage.ListERC20(vault.ChainID)
-		logs.Pretty(bla)
-		logs.Error(`NOT OKE`, vault.Address)
 		return v
 	}
 	name, displayName, formatedName := fetcher.BuildVaultNames(vault, ``)
@@ -258,10 +254,6 @@ func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 	v.APR = apy.COMPUTED_APR[vault.ChainID][vault.Address]
 
 	v.Details = TExternalVaultDetails{
-		Management:     vault.Management.Hex(),
-		Governance:     vault.Governance.Hex(),
-		Guardian:       vault.Guardian.Hex(),
-		Rewards:        vault.Rewards.Hex(),
 		IsRetired:      vault.IsRetired,
 		IsHidden:       vault.IsHidden,
 		Classification: vault.Classification,

@@ -25,21 +25,16 @@ type TStrategyMigrated struct {
 
 type TStrategy struct {
 	// Immutable elements. They won't change
-	Address                 common.Address `json:"address"`            // The address of the strategy
-	VaultAddress            common.Address `json:"vaultAddress"`       // The address of the vault
-	KeeperAddress           common.Address `json:"keeperAddress"`      // The address of the keeper
-	StrategistAddress       common.Address `json:"strategistAddress"`  // The address of the strategist
-	RewardsAddress          common.Address `json:"rewardsAddress"`     // The address of the rewards
-	HealthCheckAddress      common.Address `json:"healthCheckAddress"` // The address of the health check
-	Name                    string         `json:"name"`
-	VaultVersion            string         `json:"vaultVersion"` // The version of the vault
-	Activation              uint64         `json:"activation"`
-	ChainID                 uint64         `json:"chainID"`
-	DoHealthCheck           bool           `json:"doHealthCheck"`
-	IsActive                bool           `json:"isActive"`
-	IsInQueue               bool           `json:"isInQueue"`
-	TimeActivated           *bigNumber.Int `json:"-"` // When the strategy was activated. Only used internaly to compute the longevityImpact.
-	WithdrawalQueuePosition *bigNumber.Int `json:"withdrawalQueuePosition"`
+	Address       common.Address `json:"address"`      // The address of the strategy
+	VaultAddress  common.Address `json:"vaultAddress"` // The address of the vault
+	Name          string         `json:"name"`
+	VaultVersion  string         `json:"vaultVersion"` // The version of the vault
+	Activation    uint64         `json:"activation"`
+	ChainID       uint64         `json:"chainID"`
+	DoHealthCheck bool           `json:"doHealthCheck"`
+	IsActive      bool           `json:"isActive"`
+	IsInQueue     bool           `json:"isInQueue"`
+	TimeActivated *bigNumber.Int `json:"-"` // When the strategy was activated. Only used internaly to compute the longevityImpact.
 
 	// Semi-mutable eelements. They can change but rarely
 	KeepCRV        *bigNumber.Int `json:"keepCRV"`

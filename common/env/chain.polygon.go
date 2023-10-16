@@ -41,7 +41,7 @@ var POLYGON = TChain{
 		{
 			Address: common.HexToAddress("0x8D6Da363b53B8206AA8963763C8401aDF7c54541"),
 			Version: 4,
-			Block:   48030304,
+			Block:   45_348_757,
 			Tag:     "experimental",
 		},
 	},

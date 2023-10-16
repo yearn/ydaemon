@@ -13,7 +13,7 @@ import (
 ** The different versions of the vaults have different events. We need to handle them differently.
 ** The following functions are helpers used to handle that.
 **************************************************************************************************/
-func handleV2Vault(chainID uint64, value *contracts.YRegistryV2NewVault) models.TVaultsFromRegistry {
+func handleV02Vault(chainID uint64, value *contracts.YRegistryV2NewVault) models.TVaultsFromRegistry {
 	newVault := models.TVaultsFromRegistry{
 		ChainID:         chainID,
 		RegistryAddress: value.Raw.Address,
@@ -25,7 +25,7 @@ func handleV2Vault(chainID uint64, value *contracts.YRegistryV2NewVault) models.
 	}
 	return newVault
 }
-func handleV3Vault(chainID uint64, value *contracts.YRegistryV3NewVault) models.TVaultsFromRegistry {
+func handleV03Vault(chainID uint64, value *contracts.YRegistryV3NewVault) models.TVaultsFromRegistry {
 	newVault := models.TVaultsFromRegistry{
 		ChainID:         chainID,
 		RegistryAddress: value.Raw.Address,
@@ -40,13 +40,13 @@ func handleV3Vault(chainID uint64, value *contracts.YRegistryV3NewVault) models.
 	}
 	return newVault
 }
-func handleV4Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault) models.TVaultsFromRegistry {
+func handleV04Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault) models.TVaultsFromRegistry {
 	newVault := models.TVaultsFromRegistry{
 		ChainID:         chainID,
 		RegistryAddress: value.Raw.Address,
 		Address:         value.Vault,
 		TokenAddress:    value.Asset,
-		APIVersion:      value.ReleaseVersion.Text(10),
+		APIVersion:      `3.0.0`,
 		BlockNumber:     value.Raw.BlockNumber,
 		Type:            models.TokenTypeStandardVault,
 	}
@@ -59,7 +59,7 @@ func handleV4Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault)
 ** differently.
 ** The following functions are helpers used to handle that.
 **************************************************************************************************/
-func handleV2ExperimentalVault(chainID uint64, value *contracts.YRegistryV2NewExperimentalVault) models.TVaultsFromRegistry {
+func handleV02ExperimentalVault(chainID uint64, value *contracts.YRegistryV2NewExperimentalVault) models.TVaultsFromRegistry {
 	newVault := models.TVaultsFromRegistry{
 		ChainID:         chainID,
 		RegistryAddress: value.Raw.Address,
@@ -77,7 +77,7 @@ func handleV2ExperimentalVault(chainID uint64, value *contracts.YRegistryV2NewEx
 ** differently.
 ** The following functions are helpers used to handle that.
 **************************************************************************************************/
-func handleV2Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault022StrategyAdded) models.TStrategy {
+func handleV02Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault022StrategyAdded) models.TStrategy {
 	newStrategy := models.TStrategy{
 		Address:      value.Strategy,
 		ChainID:      chainID,
@@ -87,7 +87,7 @@ func handleV2Strategies(chainID uint64, vaultVersion string, value *contracts.Yv
 	}
 	return newStrategy
 }
-func handleV3Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault030StrategyAdded) models.TStrategy {
+func handleV03Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault030StrategyAdded) models.TStrategy {
 	newStrategy := models.TStrategy{
 		Address:      value.Strategy,
 		ChainID:      chainID,
@@ -97,7 +97,17 @@ func handleV3Strategies(chainID uint64, vaultVersion string, value *contracts.Yv
 	}
 	return newStrategy
 }
-func handleV4Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault043StrategyAdded) models.TStrategy {
+func handleV04Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault043StrategyAdded) models.TStrategy {
+	newStrategy := models.TStrategy{
+		Address:      value.Strategy,
+		ChainID:      chainID,
+		VaultVersion: vaultVersion,
+		VaultAddress: value.Raw.Address,
+		Activation:   value.Raw.BlockNumber,
+	}
+	return newStrategy
+}
+func handleV300Strategies(chainID uint64, vaultVersion string, value *contracts.Yvault300StrategyChanged) models.TStrategy {
 	newStrategy := models.TStrategy{
 		Address:      value.Strategy,
 		ChainID:      chainID,
@@ -114,7 +124,7 @@ func handleV4Strategies(chainID uint64, vaultVersion string, value *contracts.Yv
 ** V2 strategies have no migration.
 ** The following functions are helpers used to handle that.
 **************************************************************************************************/
-func handleV3StrategiesMigration(chainID uint64, value *contracts.Yvault030StrategyMigrated) models.TStrategyMigrated {
+func handleV03StrategiesMigration(chainID uint64, value *contracts.Yvault030StrategyMigrated) models.TStrategyMigrated {
 	newStrategy := models.TStrategyMigrated{
 		ChainID:            chainID,
 		VaultAddress:       value.Raw.Address,
@@ -124,7 +134,7 @@ func handleV3StrategiesMigration(chainID uint64, value *contracts.Yvault030Strat
 	}
 	return newStrategy
 }
-func handleV4StrategiesMigration(chainID uint64, value *contracts.Yvault043StrategyMigrated) models.TStrategyMigrated {
+func handleV04StrategiesMigration(chainID uint64, value *contracts.Yvault043StrategyMigrated) models.TStrategyMigrated {
 	newStrategy := models.TStrategyMigrated{
 		ChainID:            chainID,
 		VaultAddress:       value.Raw.Address,

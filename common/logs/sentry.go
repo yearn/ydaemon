@@ -1,4 +1,4 @@
-package traces
+package logs
 
 import (
 	"context"
@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/getsentry/sentry-go"
-	"github.com/yearn/ydaemon/common/logs"
 )
 
 var IsEnabled = false
@@ -62,19 +61,19 @@ func SetupSentry() {
 		}
 
 		sampleRate := getSampleRate()
-		logs.Info(`Sentry TracesSampleRate set to ` + strconv.FormatFloat(sampleRate, 'f', 2, 64))
+		Info(`Sentry TracesSampleRate set to ` + strconv.FormatFloat(sampleRate, 'f', 2, 64))
 		if err := sentry.Init(sentry.ClientOptions{
 			ServerName:       SERVER_NAME,
 			Dsn:              SENTRY_DSN,
 			TracesSampleRate: sampleRate,
 			AttachStacktrace: true,
 		}); err != nil {
-			logs.Error(err)
+			Error(err)
 		} else {
-			logs.Success("Sentry initialized")
+			Success("Sentry initialized")
 		}
 	} else {
-		logs.Warning("SENTRY_DSN not set, Sentry not initialized")
+		Warning("SENTRY_DSN not set, Sentry not initialized")
 	}
 }
 
@@ -92,7 +91,7 @@ func Init(key string, tags ...TTags) *TTrace {
 	if !IsEnabled {
 		return nil
 	}
-	logs.Trace(key, 1, ``)
+	Trace(key, 1, ``)
 	span := sentry.StartSpan(context.Background(), key, sentry.WithTransactionName(SPANS[key]))
 	if len(tags) > 0 {
 		for _, tag := range tags {
@@ -117,7 +116,7 @@ func (s *TTrace) Child(key string, tags ...TTags) *TTrace {
 	if !IsEnabled {
 		return &TTrace{}
 	}
-	logs.Trace(key, 1, ``)
+	Trace(key, 1, ``)
 	span := s.span.StartChild(key, sentry.WithTransactionName(SPANS[key]))
 	if len(tags) > 0 {
 		for _, tag := range tags {
@@ -139,7 +138,7 @@ func (s TTrace) Finish() {
 	endedAt := time.Now()
 	duration := endedAt.Sub(startedAt)
 
-	logs.Trace(s.key, 0, duration.String())
+	Trace(s.key, 0, duration.String())
 	s.span.Finish()
 }
 
@@ -219,15 +218,15 @@ func (c *TCapturedEvent) Send() *TCapturedEvent {
 	sentry.CurrentHub().Clone().CaptureEvent(c.Event)
 	switch c.Level {
 	case sentry.LevelError:
-		logs.Error(c.Message)
+		Error(c.Message)
 	case sentry.LevelInfo:
-		logs.Info(c.Message)
+		Info(c.Message)
 	case sentry.LevelDebug:
-		logs.Debug(c.Message)
+		Debug(c.Message)
 	case sentry.LevelWarning:
-		logs.Warning(c.Message)
+		Warning(c.Message)
 	default:
-		logs.Info(c.Message)
+		Info(c.Message)
 	}
 	return c
 }

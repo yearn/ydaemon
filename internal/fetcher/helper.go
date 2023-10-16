@@ -1,13 +1,16 @@
 package fetcher
 
 import (
-	"strings"
+	"math/big"
+	"strconv"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -38,228 +41,331 @@ func getHumanizedValue(balanceToken *bigNumber.Int, decimals int, humanizedPrice
 	return fHumanizedValue
 }
 
-func BuildVaultNames(t models.TVault, vaultName string) (string, string, string) {
-	name := ``
-	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
-	if ok {
-		name = strings.Replace(vaultToken.Name, "\"", "", -1)
-	}
+/**********************************************************************************************
+** Prepare the multicall to get the basic informations for the V3 vaults
+**********************************************************************************************/
+func getV3VaultCalls(vault models.TVault) []ethereum.Call {
+	calls := []ethereum.Call{}
+	//For every loop we need at least to update theses
+	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetDefaultQueue(vault.Address.Hex(), vault.Address))
 
-	displayName := name
-	formatedName := name
-	underlyingToken, ok := storage.GetERC20(t.ChainID, t.AssetAddress)
-	if ok {
-		formatedName = underlyingToken.Name
+	if time.Since(vault.LastUpdate).Hours() > 1 || true {
+		// If the last vault update was more than 1 hour ago, we will do a partial update
+		calls = append(calls, multicalls.GetShutdown(vault.Address.Hex(), vault.Address))
 	}
-
-	// If the meta file has a display name, use it
-	if vaultName != "" {
-		displayName = vaultName
+	if time.Since(vault.LastUpdate).Hours() > 24 || true {
+		// If the last vault update was more than 24 hour ago, we will do a full update
+		calls = append(calls, multicalls.GetAsset(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetRoleManager(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 	}
-	// If the formated name is missing yVault suffix, add it
-	if !strings.HasSuffix(formatedName, "yVault") {
-		formatedName = formatedName + " yVault"
-	}
-	// If a display name exist, use it for the formating.
-	if displayName != "" && !strings.HasSuffix(displayName, "yVault") {
-		formatedName = displayName + " yVault"
-	}
-	// If the name is empty, use the displayName instead
-	if name == "" {
-		name = displayName
-	}
-	// If the name is still empty, use the formated name instead
-	if name == "" {
-		name = formatedName
-	}
-
-	if displayName == "" && strings.HasSuffix(name, " Auto-Compounding yVault") {
-		displayName = strings.Replace(name, " Auto-Compounding yVault", "", -1)
-	}
-	if strings.HasSuffix(displayName, " Auto-Compounding") {
-		displayName = strings.Replace(displayName, " Auto-Compounding", "", -1)
-	}
-
-	name = strings.Replace(name, "-f-f", "-f", -1)
-	displayName = strings.Replace(displayName, "-f-f", "-f", -1)
-	formatedName = strings.Replace(formatedName, "-f-f", "-f", -1)
-	return name, displayName, formatedName
+	return calls
 }
 
-func BuildVaultSymbol(t models.TVault, vaultSymbol string) (string, string, string) {
-	symbol := ``
-	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
-	if ok {
-		symbol = strings.Replace(vaultToken.Symbol, "\"", "", -1)
-	}
+/**********************************************************************************************
+** Prepare the multicall to get the basic informations for the V2 and earlier vaults
+**********************************************************************************************/
+func getV2VaultCalls(vault models.TVault) []ethereum.Call {
+	maxStrategiesPerVault := 20
+	calls := []ethereum.Call{}
 
-	displaySymbol := vaultSymbol
-	formatedSymbol := vaultSymbol
-	underlyingToken, ok := storage.GetERC20(t.ChainID, t.AssetAddress)
-	if ok {
-		formatedSymbol = underlyingToken.Symbol
+	//For every loop we need at least to update theses
+	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
+	for i := 0; i < maxStrategiesPerVault; i++ {
+		calls = append(calls, multicalls.GetVaultWithdrawalQueue(vault.Address.Hex(), int64(i), vault.Address))
 	}
-
-	//If the formated symbol is missing yv prefix, add it
-	if !strings.HasPrefix(formatedSymbol, "yv") {
-		formatedSymbol = "yv" + formatedSymbol
+	if time.Since(vault.LastUpdate).Hours() > 1 {
+		// If the last vault update was more than 1 hour ago, we will do a partial update
+		calls = append(calls, multicalls.GetPerformanceFee(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetManagementFee(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetEmergencyShutdown(vault.Address.Hex(), vault.Address))
 	}
-	// If a display name exist, use it for the formating.
-	if displaySymbol != "" && !strings.HasPrefix(displaySymbol, "yv") {
-		formatedSymbol = "yv" + displaySymbol
+	if time.Since(vault.LastUpdate).Hours() > 24 {
+		// If the last vault update was more than 24 hour ago, we will do a full update
+		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetToken(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 	}
-	symbol = helpers.SafeString(symbol, displaySymbol)
-	symbol = helpers.SafeString(symbol, formatedSymbol)
-	displaySymbol = helpers.SafeString(displaySymbol, symbol)
-	symbol = strings.Replace(symbol, "-f-f", "-f", -1)
-	displaySymbol = strings.Replace(displaySymbol, "-f-f", "-f", -1)
-	formatedSymbol = strings.Replace(formatedSymbol, "-f-f", "-f", -1)
-	return symbol, displaySymbol, formatedSymbol
+	return calls
 }
 
-func BuildVaultLegacyAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
-	apy := models.TAPY{}
-	if hasLegacyAPY {
-		apy = models.TAPY{
-			Type:              aggregatedVault.LegacyAPY.Type,
-			GrossAPR:          aggregatedVault.LegacyAPY.GrossAPR,
-			NetAPY:            aggregatedVault.LegacyAPY.NetAPY,
-			StakingRewardsAPR: aggregatedVault.LegacyAPY.StakingRewardsAPR,
-			Points: models.TAPYPoints{
-				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
-				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
-				Inception: aggregatedVault.LegacyAPY.Points.Inception,
-			},
-			Composite: models.TAPYComposite{
-				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
-				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
-				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
-				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
-				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
-				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
-			},
-			Fees: models.TAPYFees{
-				Performance: aggregatedVault.LegacyAPY.Fees.Performance,
-				Management:  aggregatedVault.LegacyAPY.Fees.Management,
-				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
-				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
-				KeepVelo:    aggregatedVault.LegacyAPY.Fees.KeepVelo,
-				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
-			},
-			Error: aggregatedVault.LegacyAPY.Error,
-		}
+/**********************************************************************************************
+** Prepare the multicall to get the basic informations for the V2 and earlier strategies
+**********************************************************************************************/
+func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
+	calls := []ethereum.Call{}
+	//For every loop we need at least to update theses
+	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetDebtOutstanding(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetExpectedReturn(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	if time.Since(strat.LastUpdate).Hours() > 1 {
+		// If the last strat update was more than 1 hour ago, we will do a partial update
+		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetEmergencyExit(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
-	return apy
+	if time.Since(strat.LastUpdate).Hours() > 24 {
+		// If the last strat update was more than 24 hour ago, we will do a full update
+		calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	}
+	return calls
 }
 
-func BuildVaultTVL(t models.TVault) models.TTVL {
-	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
-	if !ok {
-		return models.TTVL{}
+/**********************************************************************************************
+** Prepare the multicall to get the basic informations for the V3 strategies
+**********************************************************************************************/
+func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
+	calls := []ethereum.Call{}
+	//For every loop we need at least to update theses
+	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion)) // ❌
+	calls = append(calls, multicalls.GetDebtOutstanding(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion)) // ❌
+	calls = append(calls, multicalls.GetExpectedReturn(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))  // ❌
+	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))      // ❌
+	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))          // ❌
+	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))              // ❌
+	if time.Since(strat.LastUpdate).Hours() > 1 {
+		// If the last strat update was more than 1 hour ago, we will do a partial update
+		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // ❌
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
+		calls = append(calls, multicalls.GetIsShutdown(strat.Address.Hex(), strat.Address, strat.VaultVersion))            // ✅
 	}
-	humanizedPrice, fHumanizedPrice := getHumanizedTokenPrice(t.ChainID, t.AssetAddress)
-
-	/**********************************************************************************************
-	** Notice: The vault was implicated in a hack, so the price is now effectively 0 as the pool
-	** is frozen.
-	**********************************************************************************************/
-	if addresses.Equals(t.Address, `0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`) {
-		humanizedPrice = bigNumber.NewFloat(0)
-		fHumanizedPrice = 0.0
+	if time.Since(strat.LastUpdate).Hours() > 24 {
+		// If the last strat update was more than 24 hour ago, we will do a full update
+		// calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // 🟠 Same as isShutdown
+		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))  // ✅
+		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // ❌
 	}
-
-	fHumanizedTVLPrice := getHumanizedValue(t.LastTotalAssets, int(vaultToken.Decimals), humanizedPrice)
-	strategiesList, _ := storage.ListStrategiesForVault(t.ChainID, t.Address)
-	delegatedTokenAsBN := bigNumber.NewInt(0)
-	fDelegatedValue := 0.0
-
-	for _, strat := range strategiesList {
-		delegatedValue := getHumanizedValue(strat.LastDelegatedAssets, int(vaultToken.Decimals), humanizedPrice)
-		delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.LastDelegatedAssets)
-		fDelegatedValue += delegatedValue
-	}
-
-	tvl := models.TTVL{
-		TotalAssets:          t.LastTotalAssets,
-		TotalDelegatedAssets: delegatedTokenAsBN,
-		TVL:                  fHumanizedTVLPrice - fDelegatedValue,
-		TVLDeposited:         fHumanizedTVLPrice,
-		TVLDelegated:         fDelegatedValue,
-		Price:                fHumanizedPrice,
-	}
-	return tvl
+	return calls
 }
 
-func BuildVaultCategory(t models.TVault) string {
-	category := ``
-	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
-	baseForCurve := []string{`curve`, `crv`}
-	baseForBalancer := []string{`balancer`, `bal`}
-	baseForVelodrome := []string{`velodrome`, `velo`}
-	baseForAerodrome := []string{`aerodrome`, `aero`}
-	baseForBitcoin := []string{`btc`, `bitcoin`}
-	baseForEth := []string{`eth`, `ethereum`}
-	baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
-	name, displayName, formatedName := BuildVaultNames(t, ``)
-	allNames := []string{
-		strings.ToLower(name),
-		strings.ToLower(displayName),
-		strings.ToLower(formatedName),
+/**********************************************************************************************
+** Handle the calls result
+**********************************************************************************************/
+func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
+	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
+	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
+	rawDefaultQueue := response[vault.Address.Hex()+`get_default_queue`]
+	rawShutdown := response[vault.Address.Hex()+`shutdown`]
+	rawUnderlying := response[vault.Address.Hex()+`asset`]
+	rawApiVersion := response[vault.Address.Hex()+`api_version`]
+	rawAccountant := response[vault.Address.Hex()+`accountant`]
+
+	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
+	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
+	vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
+	vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
+	vault.Version = helpers.DecodeString(rawApiVersion)
+	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
+	vault.Accountant = helpers.DecodeAddress(rawAccountant)
+
+	return vault
+}
+
+func handleV2VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
+	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
+	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
+	rawPerformanceFee := response[vault.Address.Hex()+`performanceFee`]
+	rawManagementFee := response[vault.Address.Hex()+`managementFee`]
+	rawUnderlying := response[vault.Address.Hex()+`token`]
+	rawEmergencyShutdown := response[vault.Address.Hex()+`emergencyShutdown`]
+	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
+
+	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
+	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
+
+	if len(rawPerformanceFee) > 0 {
+		vault.PerformanceFee = helpers.DecodeBigInt(rawPerformanceFee).Uint64()
+	}
+	if len(rawManagementFee) > 0 {
+		vault.ManagementFee = helpers.DecodeBigInt(rawManagementFee).Uint64()
+	}
+	if len(rawEmergencyShutdown) > 0 {
+		vault.EmergencyShutdown = helpers.DecodeBool(rawEmergencyShutdown)
+	}
+	if len(rawUnderlying) > 0 {
+		vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
+	}
+	if len(rawApiVersion) > 0 {
+		vault.Version = helpers.DecodeString(rawApiVersion)
 	}
 
-	//Using meta classification to set the category
-	if t.Classification.Stability == `Volatile` {
-		category = `Volatile`
-	} else {
-		if helpers.Contains(baseForStableCurrencies, t.Classification.StableBaseAsset) {
-			category = `Stablecoin`
-		} else {
-			category = `Volatile`
+	maxStrategiesPerVault := 20
+	withdrawQueueForStrategies := []common.Address{}
+	for i := 0; i < maxStrategiesPerVault; i++ {
+		result := response[vault.Address.Hex()+strconv.FormatInt(int64(i), 10)+`withdrawalQueue`]
+		if len(result) == 1 {
+			strategyAddress := helpers.DecodeAddress(result)
+			if helpers.AddressIsValid(strategyAddress, vault.ChainID) {
+				withdrawQueueForStrategies = append(withdrawQueueForStrategies, strategyAddress)
+			}
 		}
 	}
-	if helpers.Intersects(allNames, baseForCurve) {
-		category = `Curve`
-	}
-	if helpers.Intersects(allNames, baseForBalancer) {
-		category = `Balancer`
-	}
-	if helpers.Intersects(allNames, baseForVelodrome) {
-		category = `Velodrome`
-	}
-	if helpers.Intersects(allNames, baseForAerodrome) {
-		category = `Aerodrome`
+	vault.LastActiveStrategies = withdrawQueueForStrategies
+
+	return vault
+}
+
+func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interface{}) models.TStrategy {
+	rawCreditAvailable0 := response[strat.Address.Hex()+`creditAvailable0`]
+	rawDebtOutstanding0 := response[strat.Address.Hex()+`debtOutstanding0`]
+	rawExpectedReturn := response[strat.Address.Hex()+`expectedReturn0`]
+	rawStrategies := response[strat.Address.Hex()+`strategies`]
+	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
+	rawIsActive := response[strat.Address.Hex()+`isActive`]
+	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
+	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
+	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
+	rawDelegatedAssets := response[strat.Address.Hex()+`delegatedAssets`]
+	rawName := response[strat.Address.Hex()+`name`]
+	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
+	rawEmergencyExit := response[strat.Address.Hex()+`emergencyExit`]
+
+	strat.LastCreditAvailable = helpers.DecodeBigInt(rawCreditAvailable0)
+	strat.LastDebtOutstanding = helpers.DecodeBigInt(rawDebtOutstanding0)
+	strat.LastExpectedReturn = helpers.DecodeBigInt(rawExpectedReturn)
+	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
+	strat.LastDelegatedAssets = helpers.DecodeBigInt(rawDelegatedAssets)
+	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtLimit = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
+	} else if (strat.VaultVersion == `0.3.0` || strat.VaultVersion == `0.3.1`) && len(rawStrategies) == 8 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
+	} else if len(rawStrategies) == 9 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[8].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastMinDebtPerHarvest = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.LastMaxDebtPerHarvest = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
 	}
 
-	if category == `` {
-		for _, stable := range baseForStableCurrencies {
-			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
-		}
-
-		if helpers.Intersects(allNames, baseForBitcoin) {
-			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForEth) {
-			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForStableCoins) {
-			category = `Stablecoin`
-		}
-		if helpers.Intersects(allNames, baseForCurve) {
-			category = `Curve`
-		}
-		if helpers.Intersects(allNames, baseForBalancer) {
-			category = `Balancer`
-		}
-		if helpers.Intersects(allNames, baseForVelodrome) {
-			category = `Velodrome`
-		}
-		if helpers.Intersects(allNames, baseForAerodrome) {
-			category = `Aerodrome`
-		}
+	if len(rawKeepCRV) > 0 {
+		strat.KeepCRV = helpers.DecodeBigInt(rawKeepCRV)
+	}
+	if len(rawKeepCRVPercent) > 0 {
+		strat.KeepCRVPercent = helpers.DecodeBigInt(rawKeepCRVPercent)
+	}
+	if len(rawKeepCVX) > 0 {
+		strat.KeepCVX = helpers.DecodeBigInt(rawKeepCVX)
+	}
+	if len(rawName) > 0 {
+		strat.Name = helpers.DecodeString(rawName)
+	}
+	if len(rawIsActive) > 0 {
+		strat.IsActive = helpers.DecodeBool(rawIsActive)
+	}
+	if len(rawDoHealthCheck) > 0 {
+		strat.DoHealthCheck = helpers.DecodeBool(rawDoHealthCheck)
+	}
+	if len(rawEmergencyExit) > 0 {
+		strat.EmergencyExit = helpers.DecodeBool(rawEmergencyExit)
+	}
+	if !strat.IsActive || strat.EmergencyExit {
+		strat.IsRetired = true
 	}
 
-	if category == `` {
-		category = `Volatile`
+	return strat
+}
+
+func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interface{}) models.TStrategy {
+	rawCreditAvailable0 := response[strat.Address.Hex()+`creditAvailable0`]
+	rawDebtOutstanding0 := response[strat.Address.Hex()+`debtOutstanding0`]
+	rawExpectedReturn := response[strat.Address.Hex()+`expectedReturn0`]
+	rawStrategies := response[strat.Address.Hex()+`strategies`]
+	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
+	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
+	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
+	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
+	rawDelegatedAssets := response[strat.Address.Hex()+`delegatedAssets`]
+	rawName := response[strat.Address.Hex()+`name`]
+	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
+	rawIsShutdown := response[strat.Address.Hex()+`isShutdown`]
+
+	strat.LastCreditAvailable = helpers.DecodeBigInt(rawCreditAvailable0)
+	strat.LastDebtOutstanding = helpers.DecodeBigInt(rawDebtOutstanding0)
+	strat.LastExpectedReturn = helpers.DecodeBigInt(rawExpectedReturn)
+	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
+	strat.LastDelegatedAssets = helpers.DecodeBigInt(rawDelegatedAssets)
+	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtLimit = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
+	} else if (strat.VaultVersion == `0.3.0` || strat.VaultVersion == `0.3.1`) && len(rawStrategies) == 8 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
+	} else if len(rawStrategies) == 9 {
+		strat.LastReport = bigNumber.SetInt(rawStrategies[5].(*big.Int))
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[6].(*big.Int))
+		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[7].(*big.Int))
+		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[8].(*big.Int))
+		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
+		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
+		strat.LastMinDebtPerHarvest = bigNumber.SetInt(rawStrategies[3].(*big.Int))
+		strat.LastMaxDebtPerHarvest = bigNumber.SetInt(rawStrategies[4].(*big.Int))
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
 	}
-	return category
+
+	if len(rawKeepCRV) > 0 {
+		strat.KeepCRV = helpers.DecodeBigInt(rawKeepCRV)
+	}
+	if len(rawKeepCRVPercent) > 0 {
+		strat.KeepCRVPercent = helpers.DecodeBigInt(rawKeepCRVPercent)
+	}
+	if len(rawKeepCVX) > 0 {
+		strat.KeepCVX = helpers.DecodeBigInt(rawKeepCVX)
+	}
+	if len(rawName) > 0 {
+		strat.Name = helpers.DecodeString(rawName)
+	}
+	if len(rawDoHealthCheck) > 0 {
+		strat.DoHealthCheck = helpers.DecodeBool(rawDoHealthCheck)
+	}
+	if len(rawIsShutdown) > 0 {
+		strat.EmergencyExit = helpers.DecodeBool(rawIsShutdown)
+		strat.IsActive = helpers.DecodeBool(rawIsShutdown)
+	}
+	if !strat.IsActive || strat.EmergencyExit {
+		strat.IsRetired = true
+	}
+
+	return strat
 }

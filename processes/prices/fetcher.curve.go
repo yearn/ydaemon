@@ -10,14 +10,14 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
 func fetchCurve(url string) []TCurveFactoriesPoolData {
 	resp, err := http.Get(url)
 	if err != nil {
-		traces.
+		logs.
 			Capture(`error`, `impossible to get curve URL`).
 			SetEntity(`prices`).
 			SetExtra(`error`, err.Error()).
@@ -28,7 +28,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		traces.
+		logs.
 			Capture(`error`, `impossible to read curve Get body`).
 			SetEntity(`prices`).
 			SetExtra(`error`, err.Error()).
@@ -38,7 +38,7 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 	}
 	var factories TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
-		traces.
+		logs.
 			Capture(`error`, `impossible to unmarshal curve Get body`).
 			SetEntity(`prices`).
 			SetExtra(`error`, err.Error()).

@@ -19,7 +19,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 )
 
 type Call struct {
@@ -60,7 +59,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 	client, err := ethclient.Dial(rpcURI)
 	if err != nil {
-		traces.
+		logs.
 			Capture(`error`, `failed to connect to node`).
 			SetEntity(`multicall`).
 			SetExtra(`error`, err.Error()).
@@ -75,7 +74,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	mcAbi, err := contracts.Multicall2MetaData.GetAbi()
 	if err != nil {
 		currentChainID, _ := client.ChainID(context.Background())
-		traces.
+		logs.
 			Capture(`error`, `failed to decode Multicall ABI`).
 			SetEntity(`multicall`).
 			SetExtra(`error`, err.Error()).
@@ -229,7 +228,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		// Unpack results
 		unpackedResp, err := caller.Abi.Unpack("tryAggregate", tempPackedResp)
 		if err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to unpack response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).
@@ -241,7 +240,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to marshal response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).
@@ -253,7 +252,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		// Unpack results
 		var tempResp []CallResponse
 		if err := json.Unmarshal(a, &tempResp); err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to unmarshal response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).

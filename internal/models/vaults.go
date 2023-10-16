@@ -87,12 +87,9 @@ type TStaking struct {
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change
-	Address      common.Address `json:"address"`    // Address of the vault
-	AssetAddress common.Address `json:"token"`      // Address of the underlying token
-	Management   common.Address `json:"management"` // Address of the management contract
-	Governance   common.Address `json:"governance"` // Address of the governance contract
-	Guardian     common.Address `json:"guardian"`   // Address of the guardian contract
-	Rewards      common.Address `json:"rewards"`    // Address of the rewards contract
+	Address      common.Address `json:"address"` // Address of the vault
+	AssetAddress common.Address `json:"token"`   // Address of the underlying token
+	Accountant   common.Address `json:"-"`       // The address of the accountant
 	Type         TTokenType     `json:"type"`
 	Version      string         `json:"version"`    // The version of the vault
 	Activation   uint64         `json:"activation"` // When the vault was activated

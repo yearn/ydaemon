@@ -1,14 +1,12 @@
 package main
 
-import (
-	"github.com/yearn/ydaemon/common/traces"
-)
+import "github.com/yearn/ydaemon/common/logs"
 
 func handleSentryInitialization() {
 	if *shouldEnableSentry {
-		traces.SetupSentry()
-		traces.Init(`app.bootstrap`).SetTag(`subsystem`, `main`)
+		logs.SetupSentry()
+		logs.Init(`app.bootstrap`).SetTag(`subsystem`, `main`)
 	} else {
-		traces.IsEnabled = false
+		logs.IsEnabled = false
 	}
 }

@@ -84,10 +84,6 @@ func (v TStrategy) AssignTStrategy(strategy models.TStrategy) TStrategy {
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TExternalStrategyDetails{
-		Keeper:                  strategy.KeeperAddress.Hex(),      //keeper
-		Strategist:              strategy.StrategistAddress.Hex(),  //strategist
-		Rewards:                 strategy.RewardsAddress.Hex(),     //rewards
-		HealthCheck:             strategy.HealthCheckAddress.Hex(), //healthCheck
 		TotalDebt:               strategy.LastTotalDebt,
 		TotalLoss:               strategy.LastTotalLoss,
 		TotalGain:               strategy.LastTotalGain,

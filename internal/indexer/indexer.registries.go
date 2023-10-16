@@ -64,7 +64,7 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					historicalVault := handleV2Vault(chainID, log.Event)
+					historicalVault := handleV02Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
@@ -80,7 +80,7 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					historicalVault := handleV3Vault(chainID, log.Event)
+					historicalVault := handleV03Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
@@ -96,7 +96,7 @@ func filterNewVault(
 					if log.Error() != nil {
 						continue
 					}
-					historicalVault := handleV4Vault(chainID, log.Event)
+					historicalVault := handleV04Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						historicalVault.Address: historicalVault,
@@ -167,12 +167,12 @@ func watchNewVaults(
 		**************************************************************************************************/
 		for _, log := range history {
 			if value, err := currentRegistry.ParseNewVault(log); err == nil {
-				historicalVault := handleV2Vault(chainID, value)
+				historicalVault := handleV02Vault(chainID, value)
 				storage.StoreNewVaultToRegistry(chainID, historicalVault)
 				continue
 			}
 			if value, err := currentRegistry.ParseNewExperimentalVault(log); err == nil {
-				historicalVault := handleV2ExperimentalVault(chainID, value)
+				historicalVault := handleV02ExperimentalVault(chainID, value)
 				storage.StoreNewVaultToRegistry(chainID, historicalVault)
 				continue
 			}
@@ -188,7 +188,7 @@ func watchNewVaults(
 			select {
 			case log := <-stream:
 				if value, err := currentRegistry.ParseNewVault(log); err == nil {
-					newVault := handleV2Vault(chainID, value)
+					newVault := handleV02Vault(chainID, value)
 					storage.StoreNewVaultToRegistry(chainID, newVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						newVault.Address: newVault,
@@ -197,7 +197,7 @@ func watchNewVaults(
 				}
 
 				if value, err := currentRegistry.ParseNewExperimentalVault(log); err == nil {
-					newVault := handleV2ExperimentalVault(chainID, value)
+					newVault := handleV02ExperimentalVault(chainID, value)
 					storage.StoreNewVaultToRegistry(chainID, newVault)
 					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 						newVault.Address: newVault,
@@ -232,7 +232,7 @@ func watchNewVaults(
 			if err != nil {
 				continue
 			}
-			historicalVault := handleV3Vault(chainID, value)
+			historicalVault := handleV03Vault(chainID, value)
 			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
 		if wg != nil {
@@ -250,7 +250,7 @@ func watchNewVaults(
 					continue
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
-				newVault := handleV3Vault(chainID, value)
+				newVault := handleV03Vault(chainID, value)
 				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})
@@ -283,7 +283,7 @@ func watchNewVaults(
 			if err != nil {
 				continue
 			}
-			historicalVault := handleV4Vault(chainID, value)
+			historicalVault := handleV04Vault(chainID, value)
 			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
 		if wg != nil {
@@ -301,7 +301,7 @@ func watchNewVaults(
 					continue
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
-				newVault := handleV4Vault(chainID, value)
+				newVault := handleV04Vault(chainID, value)
 				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})

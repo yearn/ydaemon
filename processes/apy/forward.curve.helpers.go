@@ -20,9 +20,6 @@ import (
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
 func isCurveVault(strategies map[common.Address]models.TStrategy) bool {
-	if len(strategies) > 3 {
-		return false
-	}
 	isCurveOrConvexStrategy := false
 	for _, strategy := range strategies {
 		strategyName := strings.ToLower(strategy.Name)

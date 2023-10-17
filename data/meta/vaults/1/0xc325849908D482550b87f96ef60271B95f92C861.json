@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Balancer cbETH-wstETH-f",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 346,

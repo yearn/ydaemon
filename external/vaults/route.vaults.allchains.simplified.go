@@ -54,10 +54,10 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	**
 	** limit: A uint64 value that represents the number of vaults to be returned per page. It is
 	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
-	** it defaults to 50.
+	** it defaults to 200.
 	**************************************************************************************************/
 	page := helpers.SafeStringToUint64(getQuery(c, `page`), 1)
-	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 50)
+	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
 
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is

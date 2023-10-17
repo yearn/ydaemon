@@ -74,15 +74,21 @@ var ETHEREUM = TChain{
 		common.HexToAddress("0xD725F5742047B4B4A3110D0b38284227fcaB041e"), // LP Yearn BAL Vault - Disabled for now
 		common.HexToAddress("0xD61e198e139369a40818FE05F5d5e6e045Cd6eaF"), // Balancer yBAL Stable Pool - Disabled for now
 		//
-		// common.HexToAddress(`0x39CAF13a104FF567f71fd2A4c68C026FDB6E740B`),
-		// common.HexToAddress(`0x4560b99C904aAD03027B5178CCa81584744AC01f`),
-		// common.HexToAddress(`0x5c0A86A32c129538D62C106Eb8115a8b02358d57`),
-		// common.HexToAddress(`0x2D5D4869381C4Fce34789BC1D38aCCe747E295AE`),
-		// common.HexToAddress(`0xd88dBBA3f9c4391Ee46f5FF548f289054db6E51C`),
-		// common.HexToAddress(`0xC4dAf3b5e2A9e93861c3FBDd25f1e943B8D87417`),
-		// common.HexToAddress(`0x801Ab06154Bf539dea4385a39f5fa8534fB53073`),
-		// common.HexToAddress(`0xF59D66c1d593Fb10e2f8c2a6fD2C958792434B9c`),
-		// common.HexToAddress(`0x341bb10D8f5947f3066502DC8125d9b8949FD3D6`),
+		// common.HexToAddress(`0x39CAF13a104FF567f71fd2A4c68C026FDB6E740B`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x4560b99C904aAD03027B5178CCa81584744AC01f`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x5c0A86A32c129538D62C106Eb8115a8b02358d57`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x2D5D4869381C4Fce34789BC1D38aCCe747E295AE`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0xd88dBBA3f9c4391Ee46f5FF548f289054db6E51C`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0xC4dAf3b5e2A9e93861c3FBDd25f1e943B8D87417`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x801Ab06154Bf539dea4385a39f5fa8534fB53073`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0xF59D66c1d593Fb10e2f8c2a6fD2C958792434B9c`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x341bb10D8f5947f3066502DC8125d9b8949FD3D6`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0xb4D1Be44BfF40ad6e506edf43156577a3f8672eC`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x59518884EeBFb03e90a18ADBAAAB770d4666471e`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0xdb25cA703181E7484a155DD612b06f57E12Be5F0`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x1b905331F7dE2748F4D6a0678e1521E20347643F`), //DebtRatio 0 - To retire
+		// common.HexToAddress(`0x9d409a0A012CFbA9B15F6D4B36Ac57A46966Ab9a`), //DebtRatio 0 - To retire
 	},
 	ExtraTokens: []common.Address{
 		common.HexToAddress("0x34fe2a45D8df28459d7705F37eD13d7aE4382009"), // yvWBTC

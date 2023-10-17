@@ -68,8 +68,12 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** Calculate the CRV Net APR:
 	** Take the gross APR and remove the performance fee and the management fee
 	**********************************************************************************************/
-	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee)
-	netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee)
+	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
+	if netAPR.Gt(vaultManagementFee) {
+		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	} else {
+		netAPR = bigNumber.NewFloat(0)
+	}
 
 	apyStruct := TStrategyAPR{
 		Type:      "convex",

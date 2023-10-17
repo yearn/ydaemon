@@ -19,13 +19,10 @@ import (
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
 func isCurveVault(strategies []*models.TStrategy) bool {
-	if len(strategies) > 3 {
-		return false
-	}
 	isCurveOrConvexStrategy := false
 	for _, strategy := range strategies {
 		strategyName := strings.ToLower(strategy.Name)
-		if strings.Contains(strategyName, `curve`) || strings.Contains(strategyName, `convex`) {
+		if strings.Contains(strategyName, `curve`) || strings.Contains(strategyName, `convex`) && strategy.DebtRatio.Gt(bigNumber.NewInt(0)) {
 			isCurveOrConvexStrategy = true
 			break
 		}
@@ -197,7 +194,6 @@ func calculateCurveLikeStrategyAPR(
 
 	if subgraphItem.LatestWeeklyApy == 0 {
 		logs.Warning(`No APY data for vault ` + vault.Address.Hex())
-		// return TStrategyAPR{}
 	}
 
 	/**********************************************************************************************

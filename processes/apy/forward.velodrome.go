@@ -130,7 +130,11 @@ func calculateVeloLikeStrategyAPR(
 	** Take the gross APR and remove the performance fee and the management fee
 	**********************************************************************************************/
 	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
-	netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	if netAPR.Gt(vaultManagementFee) {
+		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	} else {
+		netAPR = bigNumber.NewFloat(0)
+	}
 
 	/**********************************************************************************************
 	** Calculate the strategy Net APY:

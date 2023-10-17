@@ -1,8 +1,6 @@
 package fetcher
 
 import (
-	"time"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -56,7 +54,6 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 
 		newStrategy := strat
 		newStrategy.ChainID = chainID
-		newStrategy.LastUpdate = time.Now()
 		newStrategy.ShouldRefresh = false
 		for _, stratInQueue := range vault.LastActiveStrategies {
 			if stratInQueue.Hex() == strat.Address.Hex() {

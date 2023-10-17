@@ -98,6 +98,7 @@ func getV2VaultCalls(vault models.TVault) []ethereum.Call {
 ** Prepare the multicall to get the basic informations for the V2 and earlier strategies
 **********************************************************************************************/
 func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
+	lastUpdate := storage.GetStrategiesLastUpdate(strat.ChainID)
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
@@ -106,14 +107,14 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-	if time.Since(strat.LastUpdate).Hours() > 1 {
+	if time.Since(lastUpdate).Hours() > 1 {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetEmergencyExit(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
-	if time.Since(strat.LastUpdate).Hours() > 24 {
+	if time.Since(lastUpdate).Hours() > 24 {
 		// If the last strat update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
@@ -126,6 +127,7 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 ** Prepare the multicall to get the basic informations for the V3 strategies
 **********************************************************************************************/
 func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
+	lastUpdate := storage.GetStrategiesLastUpdate(strat.ChainID)
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion)) // ❌
@@ -134,14 +136,14 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))      // ❌
 	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))          // ❌
 	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))              // ❌
-	if time.Since(strat.LastUpdate).Hours() > 1 {
+	if time.Since(lastUpdate).Hours() > 1 {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
 		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // ❌
 		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
 		calls = append(calls, multicalls.GetIsShutdown(strat.Address.Hex(), strat.Address, strat.VaultVersion))            // ✅
 	}
-	if time.Since(strat.LastUpdate).Hours() > 24 {
+	if time.Since(lastUpdate).Hours() > 24 {
 		// If the last strat update was more than 24 hour ago, we will do a full update
 		// calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // 🟠 Same as isShutdown
 		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))  // ✅

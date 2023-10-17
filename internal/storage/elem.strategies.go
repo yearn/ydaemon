@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -18,29 +19,32 @@ var _strategiesSyncMap = make(map[uint64]*sync.Map)
 // The _strategiesMigratedSyncMap is never stored in JSON but used for internal caching
 var _strategiesMigratedSyncMap = make(map[uint64]*sync.Map)
 
+// The _strategiesUpdatedSyncMap is a sync map containing the last time the strategies were updated for a specific chainID
+var _strategiesUpdatedSyncMap = sync.Map{}
+
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loaddStrategiesFromJson` is responsible for loading strategies from a JSON file.
 **************************************************************************************************/
-func loadStrategiesFromJson(chainID uint64) map[common.Address]models.TStrategy {
-	var strategies map[common.Address]models.TStrategy
+func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
+	var strategyFile TJsonStrategyStorage
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
 	file, err := os.Open(env.BASE_DATA_PATH + "/meta/strategies/" + chainIDStr + ".json")
 	if err != nil {
-		return nil
+		logs.Error(err)
+		return TJsonStrategyStorage{}
 	}
 	defer file.Close()
 
 	// Decode the JSON file into the map
 	decoder := json.NewDecoder(file)
-	err = decoder.Decode(&strategies)
+	err = decoder.Decode(&strategyFile)
 	if err != nil {
 		logs.Error("Failed to decode strategies JSON file: " + err.Error())
-		return nil
+		return TJsonStrategyStorage{}
 	}
-
-	return strategies
+	return strategyFile
 }
 
 /** 🔵 - Yearn *************************************************************************************
@@ -48,8 +52,17 @@ func loadStrategiesFromJson(chainID uint64) map[common.Address]models.TStrategy 
 **************************************************************************************************/
 func StoreStrategiesToJson(chainID uint64, strategies map[common.Address]models.TStrategy) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
+	previousStrategies := loadStrategiesFromJson(chainID)
+	version := detectVersionUpdate(chainID, previousStrategies.Version, previousStrategies.Strategies, strategies)
 
-	file, _ := json.MarshalIndent(strategies, "", "\t")
+	data := TJsonStrategyStorage{
+		LastUpdate: time.Now(),
+		Version:    version,
+		Strategies: strategies,
+	}
+	_strategiesUpdatedSyncMap.Store(chainID, data.LastUpdate)
+
+	file, _ := json.MarshalIndent(data, "", "\t")
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/strategies"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/strategies", 0755)
 	}
@@ -60,6 +73,16 @@ func StoreStrategiesToJson(chainID uint64, strategies map[common.Address]models.
 }
 
 /**************************************************************************************************
+** Retrieve the last time the strategies were updated for a specific chainID
+**************************************************************************************************/
+func GetStrategiesLastUpdate(chainID uint64) time.Time {
+	if lastUpdate, ok := _strategiesUpdatedSyncMap.Load(chainID); ok {
+		return lastUpdate.(time.Time)
+	}
+	return time.Time{}
+}
+
+/**************************************************************************************************
 ** LoadStrategies will retrieve the all the strategies from the configured DB and store them in the
 ** _strategiesSyncMap for fast access during that same execution.
 **************************************************************************************************/
@@ -67,8 +90,9 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	strategyMap := loadStrategiesFromJson(chainID)
-	for _, strategy := range strategyMap {
+	strategyFile := loadStrategiesFromJson(chainID)
+	_strategiesUpdatedSyncMap.Store(chainID, strategyFile.LastUpdate)
+	for _, strategy := range strategyFile.Strategies {
 		safeSyncMap(_strategiesSyncMap, chainID).Store(strategy.Address, strategy)
 	}
 }

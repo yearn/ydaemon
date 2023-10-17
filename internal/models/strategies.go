@@ -1,8 +1,6 @@
 package models
 
 import (
-	"time"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
@@ -58,7 +56,6 @@ type TStrategy struct {
 	LastRateLimit            *bigNumber.Int `json:"lastRateLimit,omitempty"`         // Only < 0.3.2 | Not used in any yDaemon calculation
 	LastMinDebtPerHarvest    *bigNumber.Int `json:"lastMinDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
 	LastMaxDebtPerHarvest    *bigNumber.Int `json:"lastMaxDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
-	LastUpdate               time.Time      `json:"lastUpdate"`                      // When this struct was last updated
 
 	// Manual elements. They are manually set by the team
 	IsRetired   bool     `json:"isRetired"`   // If false, will bypass the `IsActive` variable

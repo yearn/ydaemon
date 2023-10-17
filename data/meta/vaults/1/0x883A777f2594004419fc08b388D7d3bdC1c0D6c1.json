@@ -1,7 +1,7 @@
 {
   "$schema": "vault",
   "comment": "Balancer bba-USD-v3-f",
-  "hideAlways": false,
+  "hideAlways": true,
   "depositsDisabled": false,
   "withdrawalsDisabled": false,
   "order": 345,

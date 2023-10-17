@@ -11,37 +11,36 @@ import (
 
 // TExternalStrategyDetails contains the details about a strategy.
 type TExternalStrategyDetails struct {
-	Keeper                  string         `json:"keeper"`
-	Strategist              string         `json:"strategist"`
-	Rewards                 string         `json:"rewards"`
-	HealthCheck             string         `json:"healthCheck"`
-	TotalDebt               *bigNumber.Int `json:"totalDebt"`
-	TotalLoss               *bigNumber.Int `json:"totalLoss"`
-	TotalGain               *bigNumber.Int `json:"totalGain"`
-	RateLimit               *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	EstimatedTotalAssets    *bigNumber.Int `json:"estimatedTotalAssets"`
-	CreditAvailable         *bigNumber.Int `json:"creditAvailable"`
-	DebtOutstanding         *bigNumber.Int `json:"debtOutstanding"`
-	ExpectedReturn          *bigNumber.Int `json:"expectedReturn"`
-	DelegatedAssets         *bigNumber.Int `json:"delegatedAssets"`
-	DelegatedValue          string         `json:"delegatedValue"`
-	Version                 string         `json:"version"`
-	Protocols               []string       `json:"protocols"`
-	APR                     float64        `json:"apr"`
-	PerformanceFee          uint64         `json:"performanceFee"`
-	LastReport              uint64         `json:"lastReport"`
-	Activation              uint64         `json:"activation"`
-	KeepCRV                 uint64         `json:"keepCRV"`
-	KeepCVX                 uint64         `json:"keepCVX"`
-	DebtRatio               uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
-	DebtLimit               uint64         `json:"debtLimit"`
-	WithdrawalQueuePosition int64          `json:"withdrawalQueuePosition"`
-	DoHealthCheck           bool           `json:"doHealthCheck"`
-	InQueue                 bool           `json:"inQueue"`
-	EmergencyExit           bool           `json:"emergencyExit"`
-	IsActive                bool           `json:"isActive"`
+	Keeper               string         `json:"keeper"`
+	Strategist           string         `json:"strategist"`
+	Rewards              string         `json:"rewards"`
+	HealthCheck          string         `json:"healthCheck"`
+	TotalDebt            *bigNumber.Int `json:"totalDebt"`
+	TotalLoss            *bigNumber.Int `json:"totalLoss"`
+	TotalGain            *bigNumber.Int `json:"totalGain"`
+	RateLimit            *bigNumber.Int `json:"rateLimit,omitempty"`         // Only < 0.3.2
+	MinDebtPerHarvest    *bigNumber.Int `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	MaxDebtPerHarvest    *bigNumber.Int `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	EstimatedTotalAssets *bigNumber.Int `json:"estimatedTotalAssets"`
+	CreditAvailable      *bigNumber.Int `json:"creditAvailable"`
+	DebtOutstanding      *bigNumber.Int `json:"debtOutstanding"`
+	ExpectedReturn       *bigNumber.Int `json:"expectedReturn"`
+	DelegatedAssets      *bigNumber.Int `json:"delegatedAssets"`
+	DelegatedValue       string         `json:"delegatedValue"`
+	Version              string         `json:"version"`
+	Protocols            []string       `json:"protocols"`
+	APR                  float64        `json:"apr"`
+	PerformanceFee       uint64         `json:"performanceFee"`
+	LastReport           uint64         `json:"lastReport"`
+	Activation           uint64         `json:"activation"`
+	KeepCRV              uint64         `json:"keepCRV"`
+	KeepCVX              uint64         `json:"keepCVX"`
+	DebtRatio            uint64         `json:"debtRatio,omitempty"` // Only > 0.2.2
+	DebtLimit            uint64         `json:"debtLimit"`
+	DoHealthCheck        bool           `json:"doHealthCheck"`
+	InQueue              bool           `json:"inQueue"`
+	EmergencyExit        bool           `json:"emergencyExit"`
+	IsActive             bool           `json:"isActive"`
 }
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
@@ -84,31 +83,30 @@ func (v TStrategy) AssignTStrategy(strategy models.TStrategy) TStrategy {
 	v.DisplayName = strategy.DisplayName
 	v.Description = strategy.Description
 	v.Details = &TExternalStrategyDetails{
-		TotalDebt:               strategy.LastTotalDebt,
-		TotalLoss:               strategy.LastTotalLoss,
-		TotalGain:               strategy.LastTotalGain,
-		RateLimit:               strategy.LastRateLimit,
-		MinDebtPerHarvest:       strategy.LastMinDebtPerHarvest,
-		MaxDebtPerHarvest:       strategy.LastMaxDebtPerHarvest,
-		EstimatedTotalAssets:    strategy.LastEstimatedTotalAssets,
-		CreditAvailable:         strategy.LastCreditAvailable,
-		DebtOutstanding:         strategy.LastDebtOutstanding,
-		ExpectedReturn:          strategy.LastExpectedReturn,
-		DelegatedAssets:         strategy.LastDelegatedAssets,
-		DelegatedValue:          delegatedValue,
-		Protocols:               strategy.Protocols,
-		PerformanceFee:          strategy.LastPerformanceFee.Uint64(),
-		LastReport:              strategy.LastReport.Uint64(),
-		Activation:              strategy.TimeActivated.Uint64(),
-		KeepCRV:                 (strategy.KeepCRV.Uint64() + strategy.KeepCRVPercent.Uint64()),
-		KeepCVX:                 strategy.KeepCVX.Uint64(),
-		DebtRatio:               strategy.LastDebtRatio.Uint64(),
-		DebtLimit:               strategy.LastDebtLimit.Uint64(),
-		WithdrawalQueuePosition: strategy.WithdrawalQueuePosition.Int64(),
-		DoHealthCheck:           strategy.DoHealthCheck,
-		InQueue:                 strategy.IsInQueue,
-		EmergencyExit:           strategy.EmergencyExit,
-		IsActive:                strategy.IsActive,
+		TotalDebt:            strategy.LastTotalDebt,
+		TotalLoss:            strategy.LastTotalLoss,
+		TotalGain:            strategy.LastTotalGain,
+		RateLimit:            strategy.LastRateLimit,
+		MinDebtPerHarvest:    strategy.LastMinDebtPerHarvest,
+		MaxDebtPerHarvest:    strategy.LastMaxDebtPerHarvest,
+		EstimatedTotalAssets: strategy.LastEstimatedTotalAssets,
+		CreditAvailable:      strategy.LastCreditAvailable,
+		DebtOutstanding:      strategy.LastDebtOutstanding,
+		ExpectedReturn:       strategy.LastExpectedReturn,
+		DelegatedAssets:      strategy.LastDelegatedAssets,
+		DelegatedValue:       delegatedValue,
+		Protocols:            strategy.Protocols,
+		PerformanceFee:       strategy.LastPerformanceFee.Uint64(),
+		LastReport:           strategy.LastReport.Uint64(),
+		Activation:           strategy.TimeActivated.Uint64(),
+		KeepCRV:              (strategy.KeepCRV.Uint64() + strategy.KeepCRVPercent.Uint64()),
+		KeepCVX:              strategy.KeepCVX.Uint64(),
+		DebtRatio:            strategy.LastDebtRatio.Uint64(),
+		DebtLimit:            strategy.LastDebtLimit.Uint64(),
+		DoHealthCheck:        strategy.DoHealthCheck,
+		InQueue:              strategy.IsInQueue,
+		EmergencyExit:        strategy.EmergencyExit,
+		IsActive:             strategy.IsActive,
 	}
 	return v
 }

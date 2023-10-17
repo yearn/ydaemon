@@ -43,21 +43,21 @@ type TStrategy struct {
 	EmergencyExit  bool           `json:"emergencyExit"`
 
 	// Mutable elements. They will often change
-	LastCreditAvailable      *bigNumber.Int `json:"lastCreditAvailable"`
-	LastDebtOutstanding      *bigNumber.Int `json:"lastDebtOutstanding"`
-	LastExpectedReturn       *bigNumber.Int `json:"lastExpectedReturn"`
-	LastReport               *bigNumber.Int `json:"lastReport"`
-	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`
-	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`
-	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`
-	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"`
-	LastDelegatedAssets      *bigNumber.Int `json:"lastDelegatedAssets"` //Amount of asset delegated
-	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`
-	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`         // Only > 0.2.2
-	LastDebtLimit            *bigNumber.Int `json:"lastDebtLimit,omitempty"`         // Only = 0.2.2
-	LastRateLimit            *bigNumber.Int `json:"lastRateLimit,omitempty"`         // Only < 0.3.2
-	LastMinDebtPerHarvest    *bigNumber.Int `json:"lastMinDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	LastMaxDebtPerHarvest    *bigNumber.Int `json:"lastMaxDebtPerHarvest,omitempty"` // Only >= 0.3.2
+	LastCreditAvailable      *bigNumber.Int `json:"lastCreditAvailable"`             //Not used in any yDaemon calculation
+	LastDebtOutstanding      *bigNumber.Int `json:"lastDebtOutstanding"`             //Not used in any yDaemon calculation
+	LastExpectedReturn       *bigNumber.Int `json:"lastExpectedReturn"`              //Not used in any yDaemon calculation
+	LastReport               *bigNumber.Int `json:"lastReport"`                      //Not used in any yDaemon calculation
+	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`                   //Not used in any yDaemon calculation
+	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`                   //Not used in any yDaemon calculation
+	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`                   //Not used in any yDaemon calculation
+	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"`        //Used by the risk framework
+	LastDelegatedAssets      *bigNumber.Int `json:"lastDelegatedAssets"`             //Used to compute vault TVL
+	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`              //Not used in any yDaemon calculation
+	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`         // Only > 0.2.2 | Used by the APY process
+	LastDebtLimit            *bigNumber.Int `json:"lastDebtLimit,omitempty"`         // Only = 0.2.2 | Not used in any yDaemon calculation
+	LastRateLimit            *bigNumber.Int `json:"lastRateLimit,omitempty"`         // Only < 0.3.2 | Not used in any yDaemon calculation
+	LastMinDebtPerHarvest    *bigNumber.Int `json:"lastMinDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
+	LastMaxDebtPerHarvest    *bigNumber.Int `json:"lastMaxDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
 	LastUpdate               time.Time      `json:"lastUpdate"`                      // When this struct was last updated
 
 	// Manual elements. They are manually set by the team

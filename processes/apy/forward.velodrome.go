@@ -1,6 +1,7 @@
 package apy
 
 import (
+	"os"
 	"strings"
 	"time"
 
@@ -167,11 +168,9 @@ func computeVeloLikeForwardAPR(
 	RewardsAPR := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
-			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-			continue
-		}
-		if strategy.TotalDebt == nil || strategy.TotalDebt.IsZero() {
-			logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because total debt is zero")
+			if os.Getenv("ENVIRONMENT") == "dev" {
+				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+			}
 			continue
 		}
 

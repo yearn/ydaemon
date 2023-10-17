@@ -280,3 +280,16 @@ func GetExpectedReturn(name string, contractAddress common.Address, strategyAddr
 		Version:  version,
 	}
 }
+func GetDebtRatio(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnVaultABI.Pack("debtRatio")
+	if err != nil {
+		logs.Error("Error packing YearnVaultABI debtRatio", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultABI,
+		Method:   `debtRatio`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}

@@ -196,8 +196,8 @@ func calculateCurveLikeStrategyAPR(
 	chainID := vault.ChainID
 
 	if subgraphItem.LatestWeeklyApy == 0 {
-		logs.Error(`No APY data for vault ` + vault.Address.Hex())
-		return TStrategyAPR{}
+		logs.Warning(`No APY data for vault ` + vault.Address.Hex())
+		// return TStrategyAPR{}
 	}
 
 	/**********************************************************************************************
@@ -311,15 +311,8 @@ func computeCurveLikeForwardAPR(
 	RewardsAPR := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.DebtRatio == nil || strategy.DebtRatio.IsZero() {
-			//only log if on dev
 			if os.Getenv("ENVIRONMENT") == "dev" {
 				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-			}
-			continue
-		}
-		if strategy.TotalDebt == nil || strategy.TotalDebt.IsZero() {
-			if os.Getenv("ENVIRONMENT") == "dev" {
-				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because total debt is zero")
 			}
 			continue
 		}
@@ -341,6 +334,7 @@ func computeCurveLikeForwardAPR(
 		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
 		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
 	}
+
 	return TForwardAPR{
 		Type:   strings.TrimSpace(TypeOf),
 		NetAPR: NetAPR,

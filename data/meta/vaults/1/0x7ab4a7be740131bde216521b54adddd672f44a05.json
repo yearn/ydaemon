@@ -1,0 +1,16 @@
+{
+	"$schema": "vault",
+	"hideAlways": false,
+	"depositsDisabled": true,
+	"withdrawalsDisabled": false,
+	"order": 1000,
+	"apyTypeOverride": "n/a",
+	"migrationAvailable": false,
+	"allowZapIn": true,
+	"allowZapOut": true,
+	"retired": true,
+	"classification": {
+	  "isAutomated": false,
+	  "isPool": false
+	}
+}

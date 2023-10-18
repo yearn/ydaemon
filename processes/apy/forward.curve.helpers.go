@@ -22,7 +22,7 @@ func isCurveVault(strategies []*models.TStrategy) bool {
 	isCurveOrConvexStrategy := false
 	for _, strategy := range strategies {
 		strategyName := strings.ToLower(strategy.Name)
-		if strings.Contains(strategyName, `curve`) || strings.Contains(strategyName, `convex`) && strategy.DebtRatio.Gt(bigNumber.NewInt(0)) {
+		if (strings.Contains(strategyName, `curve`) || strings.Contains(strategyName, `convex`)) && strategy.DebtRatio.Gt(bigNumber.NewInt(0)) {
 			isCurveOrConvexStrategy = true
 			break
 		}

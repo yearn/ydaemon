@@ -18,7 +18,7 @@ var AERO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0xB98fB4C9C99dE155cCbF5A14a
 var BASE_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
 var BASE_USDC_ADDRESS = common.HexToAddress(`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
 
-var RATE_CONNECTORS = []common.Address{
+var BASE_RATE_CONNECTORS = []common.Address{
 	common.HexToAddress(`0xbf1aea8670d2528e08334083616dd9c5f3b087ae`),
 	common.HexToAddress(`0xe3b53af74a4bf62ae5511055290838050bf764df`),
 	common.HexToAddress(`0xf544251d25f3d243a36b07e7e7962a678f952691`),
@@ -82,7 +82,7 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []comm
 
 	for _, pair := range allSugar {
 		ratesConnector := []common.Address{pair.Token0, pair.Token1}
-		ratesConnector = append(ratesConnector, RATE_CONNECTORS...)
+		ratesConnector = append(ratesConnector, BASE_RATE_CONNECTORS...)
 		calls := []ethereum.Call{}
 		calls = append(calls, multicalls.GetManyRatesWithConnectors(AERO_SUGAR_ORACLE_ADDRESS.Hex(), AERO_SUGAR_ORACLE_ADDRESS, 2, ratesConnector))
 		calls = append(calls, multicalls.GetDecimals(pair.Token0.Hex(), pair.Token0))

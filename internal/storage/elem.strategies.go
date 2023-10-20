@@ -15,11 +15,7 @@ import (
 
 // The _strategiesSyncMap is in JSON and contains the strategies informations
 var _strategiesSyncMap = make(map[uint64]*sync.Map)
-
-// The _strategiesMigratedSyncMap is never stored in JSON but used for internal caching
 var _strategiesMigratedSyncMap = make(map[uint64]*sync.Map)
-
-// The _strategiesJSONMetadataSyncMap is a sync map containing the last time the strategies were updated for a specific chainID
 var _strategiesJSONMetadataSyncMap = sync.Map{}
 
 /** 🔵 - Yearn *************************************************************************************

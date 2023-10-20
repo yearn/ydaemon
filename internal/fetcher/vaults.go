@@ -1,8 +1,6 @@
 package fetcher
 
 import (
-	"time"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -54,7 +52,6 @@ func fetchVaultsBasicInformations(
 		}
 		newVault := vault
 		newVault.ChainID = chainID
-		newVault.LastUpdate = time.Now()
 		if vault.Version == `3.0.0` {
 			newVault = handleV3VaultCalls(vault, response)
 		} else {

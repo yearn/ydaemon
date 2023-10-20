@@ -1,8 +1,6 @@
 package models
 
 import (
-	"time"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
@@ -63,7 +61,6 @@ type TVault struct {
 	LastActiveStrategies []common.Address `json:"lastActiveStrategies"` // The list of "active" strategies via their withdrawal queue
 	LastPricePerShare    *bigNumber.Int   `json:"lastPricePerShare"`    // Price per share of the vault
 	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault
-	LastUpdate           time.Time        `json:"lastUpdate"`           // When the vault was last updated
 
 	// Manual elements. They are manually set by the team
 	IsRetired      bool            `json:"isRetired"`      // If the vault is retired or not

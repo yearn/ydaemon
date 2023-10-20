@@ -296,7 +296,7 @@ func watchNewStrategies(
 				return lastSyncedBlock, true, err
 			}
 		}
-	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.5`, `0.4.6`:
+	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.4`, `0.4.5`, `0.4.6`:
 		currentVault, _ := contracts.NewYvault043(vault.Address, client)
 		etherReader := ethereum.Reader{Backend: client}
 		contractABI, _ := contracts.Yvault043MetaData.GetAbi()

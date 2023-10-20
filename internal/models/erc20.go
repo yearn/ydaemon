@@ -28,8 +28,8 @@ type TERC20Token struct {
 	Type                      TTokenType       `json:"type"`
 	Name                      string           `json:"name"`
 	Symbol                    string           `json:"symbol"`
-	DisplayName               string           `json:"display_name"`
-	DisplaySymbol             string           `json:"display_symbol"`
+	DisplayName               string           `json:"displayName"`
+	DisplaySymbol             string           `json:"displaySymbol"`
 	Description               string           `json:"description"`
 	Category                  string           `json:"category"`
 	Icon                      string           `json:"icon"`

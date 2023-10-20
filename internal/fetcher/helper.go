@@ -46,17 +46,21 @@ func getHumanizedValue(balanceToken *bigNumber.Int, decimals int, humanizedPrice
 ** Prepare the multicall to get the basic informations for the V3 vaults
 **********************************************************************************************/
 func getV3VaultCalls(vault models.TVault) []ethereum.Call {
+	metadata := storage.GetStrategiesJsonMetadata(vault.ChainID)
+	lastUpdate := metadata.LastUpdate
+	shouldRefresh := metadata.ShouldRefresh
+
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetDefaultQueue(vault.Address.Hex(), vault.Address))
 
-	if time.Since(vault.LastUpdate).Hours() > 1 || true {
+	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last vault update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetShutdown(vault.Address.Hex(), vault.Address))
 	}
-	if time.Since(vault.LastUpdate).Hours() > 24 || true {
+	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAsset(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))
@@ -70,8 +74,12 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 ** Prepare the multicall to get the basic informations for the V2 and earlier vaults
 **********************************************************************************************/
 func getV2VaultCalls(vault models.TVault) []ethereum.Call {
-	maxStrategiesPerVault := 20
+	metadata := storage.GetStrategiesJsonMetadata(vault.ChainID)
+	lastUpdate := metadata.LastUpdate
+	shouldRefresh := metadata.ShouldRefresh
+
 	calls := []ethereum.Call{}
+	maxStrategiesPerVault := 20
 
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
@@ -79,13 +87,13 @@ func getV2VaultCalls(vault models.TVault) []ethereum.Call {
 	for i := 0; i < maxStrategiesPerVault; i++ {
 		calls = append(calls, multicalls.GetVaultWithdrawalQueue(vault.Address.Hex(), int64(i), vault.Address))
 	}
-	if time.Since(vault.LastUpdate).Hours() > 1 {
+	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last vault update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetPerformanceFee(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetManagementFee(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetEmergencyShutdown(vault.Address.Hex(), vault.Address))
 	}
-	if time.Since(vault.LastUpdate).Hours() > 24 {
+	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))

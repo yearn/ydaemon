@@ -143,8 +143,7 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetV3Strategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetPerformanceFee(strat.Address.Hex(), strat.Address))
-	calls = append(calls, multicalls.GetTotalDebt(strat.VaultAddress.Hex(), strat.VaultAddress, strat.VaultVersion))
-	calls = append(calls, multicalls.GetTotalDebt(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetTotalAssets(strat.VaultAddress.Hex(), strat.VaultAddress))
 	calls = append(calls, multicalls.GetTotalAssets(strat.Address.Hex(), strat.Address))
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
@@ -175,11 +174,19 @@ func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) 
 
 	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
 	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
-	vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
-	vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
-	vault.Version = helpers.DecodeString(rawApiVersion)
 	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
-	vault.Accountant = helpers.DecodeAddress(rawAccountant)
+	if len(rawShutdown) > 0 {
+		vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
+	}
+	if len(rawUnderlying) > 0 {
+		vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
+	}
+	if len(rawApiVersion) > 0 {
+		vault.Version = helpers.DecodeString(rawApiVersion)
+	}
+	if len(rawAccountant) > 0 {
+		vault.Accountant = helpers.DecodeAddress(rawAccountant)
+	}
 
 	return vault
 }
@@ -303,27 +310,26 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
 	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
 	rawName := response[strat.Address.Hex()+`name`]
+	rawVaultTotalAssets := response[strat.VaultAddress.Hex()+`totalAssets`]
 	rawEstimatedTotalAssets := response[strat.Address.Hex()+`totalAssets`]
 	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
 	rawIsShutdown := response[strat.Address.Hex()+`isShutdown`]
-	rawVaultTotalDebt := response[strat.VaultAddress.Hex()+`totalDebt`]
-	rawTotalDebt := response[strat.Address.Hex()+`totalDebt`]
 	rawPerformanceFee := response[strat.Address.Hex()+`performanceFee`]
 
 	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
-	strat.LastTotalDebt = helpers.DecodeBigInt(rawTotalDebt)
 	strat.LastPerformanceFee = helpers.DecodeBigInt(rawPerformanceFee)
+	strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).CurrentDebt)
 	strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)
 	strat.LastReport = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).LastReport)
 	strat.LastTotalGain = bigNumber.NewInt(0) //Not available in V3
 	strat.LastTotalLoss = bigNumber.NewInt(0) //Not available in V3
-	vaultTotalDebt := helpers.DecodeBigInt(rawVaultTotalDebt)
+	vaultTotalAssets := helpers.DecodeBigInt(rawVaultTotalAssets)
 
 	// Debt ratio should be a int between 0 and 10000, 10000 being 100%
 	// At this point, stratDebtRatioBigFloat is a number between 0 and 1
 	// We need to multiply it by 10000 to get the debt ratio
 	// Then, we need to convert it to a int, but first we need to round it
-	stratDebtRatioBigFloat := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(strat.LastTotalDebt), bigNumber.NewFloat().SetInt(vaultTotalDebt))
+	stratDebtRatioBigFloat := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(strat.LastTotalDebt), bigNumber.NewFloat().SetInt(vaultTotalAssets))
 	stratDebtRatioFloat, _ := stratDebtRatioBigFloat.Float64()
 	stratDebtRatioFloat = stratDebtRatioFloat * 10000
 	stratDebtRatioInt := int64(math.Round(stratDebtRatioFloat))

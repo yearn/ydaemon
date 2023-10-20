@@ -45,12 +45,7 @@ func (y Controller) GetVault(c *gin.Context) {
 			externalStrategy = strategyWithDetails
 			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 		} else {
-			externalStrategy = TStrategy{
-				Address:     strategy.Address.Hex(),
-				Name:        strategy.Name,
-				DisplayName: strategy.DisplayName,
-				Description: strategy.Description,
-			}
+			externalStrategy = strategyWithDetails
 		}
 		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}

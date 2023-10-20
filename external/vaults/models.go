@@ -4,11 +4,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/apr"
 )
 
 // TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.
@@ -23,20 +24,9 @@ type TExternalVaultHarvest struct {
 	LossValue       float64 `json:"lossValue"`
 }
 
-// TExternalVaultTVL is the struct containing the information about the TVL of a vault.
-type TExternalVaultTVL struct {
-	TotalAssets          *bigNumber.Int `json:"totalAssets"`
-	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
-	TVLDeposited         float64        `json:"tvl_deposited"`
-	TVLDelegated         float64        `json:"tvl_delegated"`
-	TVL                  float64        `json:"tvl"`
-	Price                float64        `json:"price"`
-}
-
 // TExternalAPYFees holds the fees information about this vault.
 type TExternalAPYFees struct {
 	Performance float64 `json:"performance"`
-	Withdrawal  float64 `json:"withdrawal"`
 	Management  float64 `json:"management"`
 	KeepCRV     float64 `json:"keep_crv"`
 	KeepVelo    float64 `json:"keep_velo"`
@@ -60,18 +50,6 @@ type TExternalAPYComposite struct {
 	RewardsAPR float64 `json:"rewards_apr"`
 }
 
-// TExternalVaultAPY holds the APY information about this vault.
-type TExternalVaultAPY struct {
-	Type              string                `json:"type"`
-	GrossAPR          float64               `json:"gross_apr"`
-	NetAPY            float64               `json:"net_apy"`
-	StakingRewardsAPR float64               `json:"staking_rewards_apr"`
-	Fees              TExternalAPYFees      `json:"fees"`
-	Points            TExternalAPYPoints    `json:"points"`
-	Composite         TExternalAPYComposite `json:"composite"`
-	Error             string                `json:"error"`
-}
-
 // TExternalVaultMigration is the struct containing the information about the migration of a vault.
 type TExternalVaultMigration struct {
 	Available bool   `json:"available"`
@@ -89,13 +67,13 @@ type TExternalVaultStaking struct {
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	Management     string                 `json:"management"`
-	Governance     string                 `json:"governance"`
-	Guardian       string                 `json:"guardian"`
-	Rewards        string                 `json:"rewards"`
-	IsRetired      bool                   `json:"isRetired"`      // If the vault is retired or not
-	IsHidden       bool                   `json:"isHidden"`       // If the vault is hidden or not
-	Classification models.TClassification `json:"classification"` // The classification of the vault
+	IsRetired       bool   `json:"isRetired"` // If the vault is retired or not
+	IsHidden        bool   `json:"isHidden"`  // If the vault is hidden or not
+	IsAutomated     bool   `json:"isAutomated"`
+	IsPool          bool   `json:"isPool"`
+	PoolProvider    string `json:"poolProvider,omitempty"`
+	Stability       string `json:"stability"`
+	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
 }
 
 // TExternalERC20Token contains the basic information of an ERC20 token
@@ -131,9 +109,8 @@ type TExternalVault struct {
 	Endorsed          bool                    `json:"endorsed"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             TExternalERC20Token     `json:"token"`
-	TVL               TExternalVaultTVL       `json:"tvl"`
-	APY               TExternalVaultAPY       `json:"apy"`
-	APR               apy.TVaultAPR           `json:"apr"`
+	TVL               models.TTVL             `json:"tvl"`
+	APR               apr.TVaultAPR           `json:"apr"`
 	Details           TExternalVaultDetails   `json:"details"`
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
@@ -168,7 +145,7 @@ type TSimplifiedExternalVault struct {
 	Retired        bool                          `json:"retired"`
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
-	APR            apy.TVaultAPR                 `json:"apr"`
+	APR            apr.TVaultAPR                 `json:"apr"`
 	Strategies     []TStrategy                   `json:"strategies"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
@@ -190,7 +167,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 	v.Endorsed = vault.Endorsed
 	v.EmergencyShutdown = vault.EmergencyShutdown
 	v.ChainID = vault.ChainID
-	v.TVL = TExternalVaultTVL(fetcher.BuildVaultTVL(vault))
+	v.TVL = fetcher.BuildVaultTVL(vault)
 	v.Migration = toTExternalVaultMigration(vault.Migration)
 	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(vault))
 	v.Category = fetcher.BuildVaultCategory(vault)
@@ -239,24 +216,15 @@ func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 		v.Token.UnderlyingTokensAddresses = []string{}
 	}
 
-	aggregatedVault, okLegacyAPI := GetAggregatedVault(v.ChainID, addresses.ToAddress(v.Address).Hex())
-	internalAPY := fetcher.BuildVaultLegacyAPY(vault, aggregatedVault, okLegacyAPI)
-	v.APY = TExternalVaultAPY{
-		Type:              internalAPY.Type,
-		GrossAPR:          internalAPY.GrossAPR,
-		NetAPY:            internalAPY.NetAPY,
-		StakingRewardsAPR: internalAPY.StakingRewardsAPR,
-		Fees:              TExternalAPYFees(internalAPY.Fees),
-		Points:            TExternalAPYPoints(internalAPY.Points),
-		Composite:         TExternalAPYComposite(internalAPY.Composite),
-		Error:             internalAPY.Error,
-	}
-	v.APR = apy.COMPUTED_APR[vault.ChainID][vault.Address]
-
+	v.APR = apr.COMPUTED_APR[vault.ChainID][vault.Address]
 	v.Details = TExternalVaultDetails{
-		IsRetired:      vault.IsRetired,
-		IsHidden:       vault.IsHidden,
-		Classification: vault.Classification,
+		IsRetired:       vault.IsRetired,
+		IsHidden:        vault.IsHidden,
+		IsAutomated:     vault.Classification.IsAutomated,
+		IsPool:          vault.Classification.IsPool,
+		PoolProvider:    vault.Classification.PoolProvider,
+		Stability:       helpers.SafeString(vault.Classification.Stability, `Unknown`),
+		StableBaseAsset: vault.Classification.StableBaseAsset,
 	}
 
 	return v

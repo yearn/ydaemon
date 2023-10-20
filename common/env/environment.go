@@ -64,13 +64,6 @@ func SetEnv(path string) {
 		chain.RpcURI = RPCURIFor42161
 		CHAINS[42161] = chain
 	}
-
-	ApiV1BaseUrl, exists := os.LookupEnv("API_V1_BASE_URL")
-	if !exists {
-		logs.Warning("API_V1_BASE_URL not set, using default value: [https://api.yearn.fi/v1/chains/]")
-	} else {
-		API_V1_BASE_URL = ApiV1BaseUrl
-	}
 }
 
 func init() {

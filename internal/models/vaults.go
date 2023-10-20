@@ -19,51 +19,9 @@ type TVaultsFromRegistry struct {
 
 // TTVL holds the info about the value locked in a vault
 type TTVL struct {
-	TotalAssets          *bigNumber.Int `json:"totalAssets"`
-	TotalDelegatedAssets *bigNumber.Int `json:"total_delegated_assets"`
-	TVLDeposited         float64        `json:"tvl_deposited"`
-	TVLDelegated         float64        `json:"tvl_delegated"`
-	TVL                  float64        `json:"tvl"`
-	Price                float64        `json:"price"`
-}
-
-// TAPYFees holds the fees information about this vault.
-type TAPYFees struct {
-	Performance float64 `json:"performance"`
-	Withdrawal  float64 `json:"withdrawal"`
-	Management  float64 `json:"management"`
-	KeepCRV     float64 `json:"keep_crv"`
-	KeepVelo    float64 `json:"keep_velo"`
-	CvxKeepCRV  float64 `json:"cvx_keep_crv"`
-}
-
-// TAPYPoints holds the points information about this vault.
-type TAPYPoints struct {
-	WeekAgo   float64 `json:"week_ago"`
-	MonthAgo  float64 `json:"month_ago"`
-	Inception float64 `json:"inception"`
-}
-
-// TAPYComposite holds the points information about this vault.
-type TAPYComposite struct {
-	Boost      float64 `json:"boost"`
-	PoolAPY    float64 `json:"pool_apy"`
-	BoostedAPR float64 `json:"boosted_apr"`
-	BaseAPR    float64 `json:"base_apr"`
-	CvxAPR     float64 `json:"cvx_apr"`
-	RewardsAPR float64 `json:"rewards_apr"`
-}
-
-// TAPY contains all the information useful about the APY, APR, fees and breakdown.
-type TAPY struct {
-	Type              string        `json:"type"`
-	GrossAPR          float64       `json:"gross_apr"`
-	NetAPY            float64       `json:"net_apy"`
-	StakingRewardsAPR float64       `json:"staking_rewards_apr"`
-	Fees              TAPYFees      `json:"fees"`
-	Points            TAPYPoints    `json:"points"`
-	Composite         TAPYComposite `json:"composite"`
-	Error             string        `json:"error_reason"`
+	TotalAssets *bigNumber.Int `json:"totalAssets"`
+	TVL         float64        `json:"tvl"`
+	Price       float64        `json:"price"`
 }
 
 // TMigration helps us to know if a vault is in the process of being migrated.
@@ -121,7 +79,6 @@ type TLegacyAPIAPY struct {
 	StakingRewardsAPR float64 `json:"staking_rewards_apr"`
 	Fees              struct {
 		Performance float64 `json:"performance"`
-		Withdrawal  float64 `json:"withdrawal"`
 		Management  float64 `json:"management"`
 		KeepCRV     float64 `json:"keep_crv"`
 		KeepVelo    float64 `json:"keep_velo"`

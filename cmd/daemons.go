@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/partners"
-	"github.com/yearn/ydaemon/external/vaults"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/risk"
 )
@@ -39,12 +38,11 @@ func SummonDaemons(chainID uint64) {
 
 	// This first work group does not need any other data to be able to work.
 	// They can all be summoned at the same time, with no dependencies.
-	wg.Add(4)
+	wg.Add(3)
 	{
 		go runDaemon(chainID, &wg, 0, meta.RetrieveAllProtocolsFromFiles)
 		go runDaemon(chainID, &wg, 0, partners.FetchPartnersFromFiles)
 		go runDaemon(chainID, &wg, 0, risk.RetrieveAllRisksGroupsFromFiles)
-		go runDaemon(chainID, &wg, 10*time.Minute, vaults.FetchVaultsFromV1)
 	}
 	wg.Wait()
 }

@@ -333,6 +333,23 @@ func GetStrategies(name string, contractAddress common.Address, strategyAddress 
 		Version:  version,
 	}
 }
+
+func GetV3Strategies(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("strategies", strategyAddress)
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI strategies", err)
+	}
+
+	return ethereum.Call{
+		Name:     name,
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `strategies`,
+		CallData: parsedData,
+		Version:  version,
+	}
+}
+
 func GetExpectedReturn(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("expectedReturn0", strategyAddress)
 	if err != nil {

@@ -1,6 +1,7 @@
 package fetcher
 
 import (
+	"math"
 	"math/big"
 	"strconv"
 	"time"
@@ -98,23 +99,22 @@ func getV2VaultCalls(vault models.TVault) []ethereum.Call {
 ** Prepare the multicall to get the basic informations for the V2 and earlier strategies
 **********************************************************************************************/
 func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
-	lastUpdate := storage.GetStrategiesLastUpdate(strat.ChainID)
+	metadata := storage.GetStrategiesJsonMetadata(strat.ChainID)
+	lastUpdate := metadata.LastUpdate
+	shouldRefresh := metadata.ShouldRefresh
+
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
-	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetDebtOutstanding(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetExpectedReturn(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-	if time.Since(lastUpdate).Hours() > 1 {
+	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetEmergencyExit(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
-	if time.Since(lastUpdate).Hours() > 24 {
+	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last strat update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
@@ -127,27 +127,28 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 ** Prepare the multicall to get the basic informations for the V3 strategies
 **********************************************************************************************/
 func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
-	lastUpdate := storage.GetStrategiesLastUpdate(strat.ChainID)
+	metadata := storage.GetStrategiesJsonMetadata(strat.ChainID)
+	lastUpdate := metadata.LastUpdate
+	shouldRefresh := metadata.ShouldRefresh
+
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
-	calls = append(calls, multicalls.GetCreditAvailable(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion)) // ❌
-	calls = append(calls, multicalls.GetDebtOutstanding(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion)) // ❌
-	calls = append(calls, multicalls.GetExpectedReturn(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))  // ❌
-	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))      // ❌
-	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))          // ❌
-	calls = append(calls, multicalls.GetStategyDelegatedAssets(strat.Address.Hex(), strat.Address, strat.VaultVersion))              // ❌
-	if time.Since(lastUpdate).Hours() > 1 {
+	calls = append(calls, multicalls.GetV3Strategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetPerformanceFee(strat.Address.Hex(), strat.Address))
+	calls = append(calls, multicalls.GetTotalDebt(strat.VaultAddress.Hex(), strat.VaultAddress, strat.VaultVersion))
+	calls = append(calls, multicalls.GetTotalDebt(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetTotalAssets(strat.Address.Hex(), strat.Address))
+	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
-		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // ❌
-		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))        // ❌
-		calls = append(calls, multicalls.GetIsShutdown(strat.Address.Hex(), strat.Address, strat.VaultVersion))            // ✅
+		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetIsShutdown(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
-	if time.Since(lastUpdate).Hours() > 24 {
+	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last strat update was more than 24 hour ago, we will do a full update
-		// calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // 🟠 Same as isShutdown
-		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))  // ✅
-		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion)) // ❌
+		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
 	}
 	return calls
 }
@@ -220,33 +221,23 @@ func handleV2VaultCalls(vault models.TVault, response map[string][]interface{}) 
 }
 
 func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interface{}) models.TStrategy {
-	rawCreditAvailable0 := response[strat.Address.Hex()+`creditAvailable0`]
-	rawDebtOutstanding0 := response[strat.Address.Hex()+`debtOutstanding0`]
-	rawExpectedReturn := response[strat.Address.Hex()+`expectedReturn0`]
 	rawStrategies := response[strat.Address.Hex()+`strategies`]
-	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
 	rawIsActive := response[strat.Address.Hex()+`isActive`]
 	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
 	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
 	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
-	rawDelegatedAssets := response[strat.Address.Hex()+`delegatedAssets`]
 	rawName := response[strat.Address.Hex()+`name`]
 	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
 	rawEmergencyExit := response[strat.Address.Hex()+`emergencyExit`]
+	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
 
-	strat.LastCreditAvailable = helpers.DecodeBigInt(rawCreditAvailable0)
-	strat.LastDebtOutstanding = helpers.DecodeBigInt(rawDebtOutstanding0)
-	strat.LastExpectedReturn = helpers.DecodeBigInt(rawExpectedReturn)
 	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
-	strat.LastDelegatedAssets = helpers.DecodeBigInt(rawDelegatedAssets)
 	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
 		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
 		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
 		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
 		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
 		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
-		strat.LastDebtLimit = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
 		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
 	} else if (strat.VaultVersion == `0.3.0` || strat.VaultVersion == `0.3.1`) && len(rawStrategies) == 8 {
 		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
@@ -255,7 +246,6 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
 		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
 		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
 		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
 	} else if len(rawStrategies) == 9 {
 		strat.LastReport = bigNumber.SetInt(rawStrategies[5].(*big.Int))
@@ -264,8 +254,6 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[8].(*big.Int))
 		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
 		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastMinDebtPerHarvest = bigNumber.SetInt(rawStrategies[3].(*big.Int))
-		strat.LastMaxDebtPerHarvest = bigNumber.SetInt(rawStrategies[4].(*big.Int))
 		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
 	}
 
@@ -287,10 +275,7 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	if len(rawDoHealthCheck) > 0 {
 		strat.DoHealthCheck = helpers.DecodeBool(rawDoHealthCheck)
 	}
-	if len(rawEmergencyExit) > 0 {
-		strat.EmergencyExit = helpers.DecodeBool(rawEmergencyExit)
-	}
-	if !strat.IsActive || strat.EmergencyExit {
+	if !strat.IsActive || (len(rawEmergencyExit) > 0 && helpers.DecodeBool(rawEmergencyExit)) {
 		strat.IsRetired = true
 	}
 
@@ -298,53 +283,43 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 }
 
 func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interface{}) models.TStrategy {
-	rawCreditAvailable0 := response[strat.Address.Hex()+`creditAvailable0`]
-	rawDebtOutstanding0 := response[strat.Address.Hex()+`debtOutstanding0`]
-	rawExpectedReturn := response[strat.Address.Hex()+`expectedReturn0`]
+	type typeOfRawStrategies = struct {
+		Activation  *big.Int "json:\"activation\""
+		LastReport  *big.Int "json:\"last_report\""
+		CurrentDebt *big.Int "json:\"current_debt\""
+		MaxDebt     *big.Int "json:\"max_debt\""
+	}
+
 	rawStrategies := response[strat.Address.Hex()+`strategies`]
-	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
 	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
 	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
 	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
-	rawDelegatedAssets := response[strat.Address.Hex()+`delegatedAssets`]
 	rawName := response[strat.Address.Hex()+`name`]
+	rawEstimatedTotalAssets := response[strat.Address.Hex()+`totalAssets`]
 	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
 	rawIsShutdown := response[strat.Address.Hex()+`isShutdown`]
+	rawVaultTotalDebt := response[strat.VaultAddress.Hex()+`totalDebt`]
+	rawTotalDebt := response[strat.Address.Hex()+`totalDebt`]
+	rawPerformanceFee := response[strat.Address.Hex()+`performanceFee`]
 
-	strat.LastCreditAvailable = helpers.DecodeBigInt(rawCreditAvailable0)
-	strat.LastDebtOutstanding = helpers.DecodeBigInt(rawDebtOutstanding0)
-	strat.LastExpectedReturn = helpers.DecodeBigInt(rawExpectedReturn)
 	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
-	strat.LastDelegatedAssets = helpers.DecodeBigInt(rawDelegatedAssets)
-	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
-		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
-		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
-		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
-		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
-		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
-		strat.LastDebtLimit = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
-		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
-	} else if (strat.VaultVersion == `0.3.0` || strat.VaultVersion == `0.3.1`) && len(rawStrategies) == 8 {
-		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
-		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
-		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[6].(*big.Int))
-		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[7].(*big.Int))
-		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
-		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastRateLimit = bigNumber.SetInt(rawStrategies[3].(*big.Int))
-		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
-	} else if len(rawStrategies) == 9 {
-		strat.LastReport = bigNumber.SetInt(rawStrategies[5].(*big.Int))
-		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[6].(*big.Int))
-		strat.LastTotalGain = bigNumber.SetInt(rawStrategies[7].(*big.Int))
-		strat.LastTotalLoss = bigNumber.SetInt(rawStrategies[8].(*big.Int))
-		strat.LastPerformanceFee = bigNumber.SetInt(rawStrategies[0].(*big.Int))
-		strat.LastDebtRatio = bigNumber.SetInt(rawStrategies[2].(*big.Int))
-		strat.LastMinDebtPerHarvest = bigNumber.SetInt(rawStrategies[3].(*big.Int))
-		strat.LastMaxDebtPerHarvest = bigNumber.SetInt(rawStrategies[4].(*big.Int))
-		strat.TimeActivated = bigNumber.SetInt(rawStrategies[1].(*big.Int))
-	}
+	strat.LastTotalDebt = helpers.DecodeBigInt(rawTotalDebt)
+	strat.LastPerformanceFee = helpers.DecodeBigInt(rawPerformanceFee)
+	strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)
+	strat.LastReport = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).LastReport)
+	strat.LastTotalGain = bigNumber.NewInt(0) //Not available in V3
+	strat.LastTotalLoss = bigNumber.NewInt(0) //Not available in V3
+	vaultTotalDebt := helpers.DecodeBigInt(rawVaultTotalDebt)
+
+	// Debt ratio should be a int between 0 and 10000, 10000 being 100%
+	// At this point, stratDebtRatioBigFloat is a number between 0 and 1
+	// We need to multiply it by 10000 to get the debt ratio
+	// Then, we need to convert it to a int, but first we need to round it
+	stratDebtRatioBigFloat := bigNumber.NewFloat(0).Div(bigNumber.NewFloat().SetInt(strat.LastTotalDebt), bigNumber.NewFloat().SetInt(vaultTotalDebt))
+	stratDebtRatioFloat, _ := stratDebtRatioBigFloat.Float64()
+	stratDebtRatioFloat = stratDebtRatioFloat * 10000
+	stratDebtRatioInt := int64(math.Round(stratDebtRatioFloat))
+	strat.LastDebtRatio = bigNumber.NewUint64(uint64(stratDebtRatioInt))
 
 	if len(rawKeepCRV) > 0 {
 		strat.KeepCRV = helpers.DecodeBigInt(rawKeepCRV)
@@ -362,10 +337,9 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 		strat.DoHealthCheck = helpers.DecodeBool(rawDoHealthCheck)
 	}
 	if len(rawIsShutdown) > 0 {
-		strat.EmergencyExit = helpers.DecodeBool(rawIsShutdown)
 		strat.IsActive = helpers.DecodeBool(rawIsShutdown)
 	}
-	if !strat.IsActive || strat.EmergencyExit {
+	if !strat.IsActive || helpers.DecodeBool(rawIsShutdown) {
 		strat.IsRetired = true
 	}
 

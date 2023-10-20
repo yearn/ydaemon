@@ -19,8 +19,8 @@ var _strategiesSyncMap = make(map[uint64]*sync.Map)
 // The _strategiesMigratedSyncMap is never stored in JSON but used for internal caching
 var _strategiesMigratedSyncMap = make(map[uint64]*sync.Map)
 
-// The _strategiesUpdatedSyncMap is a sync map containing the last time the strategies were updated for a specific chainID
-var _strategiesUpdatedSyncMap = sync.Map{}
+// The _strategiesJSONMetadataSyncMap is a sync map containing the last time the strategies were updated for a specific chainID
+var _strategiesJSONMetadataSyncMap = sync.Map{}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loaddStrategiesFromJson` is responsible for loading strategies from a JSON file.
@@ -32,7 +32,6 @@ func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
 	// Load the JSON file
 	file, err := os.Open(env.BASE_DATA_PATH + "/meta/strategies/" + chainIDStr + ".json")
 	if err != nil {
-		logs.Error(err)
 		return TJsonStrategyStorage{}
 	}
 	defer file.Close()
@@ -56,11 +55,17 @@ func StoreStrategiesToJson(chainID uint64, strategies map[common.Address]models.
 	version := detectVersionUpdate(chainID, previousStrategies.Version, previousStrategies.Strategies, strategies)
 
 	data := TJsonStrategyStorage{
-		LastUpdate: time.Now(),
-		Version:    version,
+		TJsonMetadata: TJsonMetadata{
+			LastUpdate: time.Now(),
+			Version:    version,
+		},
 		Strategies: strategies,
 	}
-	_strategiesUpdatedSyncMap.Store(chainID, data.LastUpdate)
+	_strategiesJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		data.LastUpdate,
+		data.Version,
+		data.ShouldRefresh,
+	})
 
 	file, _ := json.MarshalIndent(data, "", "\t")
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/strategies"); os.IsNotExist(err) {
@@ -75,11 +80,11 @@ func StoreStrategiesToJson(chainID uint64, strategies map[common.Address]models.
 /**************************************************************************************************
 ** Retrieve the last time the strategies were updated for a specific chainID
 **************************************************************************************************/
-func GetStrategiesLastUpdate(chainID uint64) time.Time {
-	if lastUpdate, ok := _strategiesUpdatedSyncMap.Load(chainID); ok {
-		return lastUpdate.(time.Time)
+func GetStrategiesJsonMetadata(chainID uint64) TJsonMetadata {
+	if jsonMetadata, ok := _strategiesJSONMetadataSyncMap.Load(chainID); ok {
+		return jsonMetadata.(TJsonMetadata)
 	}
-	return time.Time{}
+	return TJsonMetadata{}
 }
 
 /**************************************************************************************************
@@ -90,9 +95,13 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	strategyFile := loadStrategiesFromJson(chainID)
-	_strategiesUpdatedSyncMap.Store(chainID, strategyFile.LastUpdate)
-	for _, strategy := range strategyFile.Strategies {
+	file := loadStrategiesFromJson(chainID)
+	_strategiesJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		file.LastUpdate,
+		file.Version,
+		file.ShouldRefresh,
+	})
+	for _, strategy := range file.Strategies {
 		safeSyncMap(_strategiesSyncMap, chainID).Store(strategy.Address, strategy)
 	}
 }

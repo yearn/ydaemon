@@ -28,8 +28,8 @@ var (
 	_ = event.NewSubscription
 )
 
-// Struct0 is an auto generated low-level Go binding around an user-defined struct.
-type Struct0 struct {
+// TV3StrategyParams is an auto generated low-level Go binding around an user-defined struct.
+type TV3StrategyParams struct {
 	Activation  *big.Int
 	LastReport  *big.Int
 	CurrentDebt *big.Int
@@ -1306,15 +1306,15 @@ func (_Yvault300 *Yvault300CallerSession) Shutdown() (bool, error) {
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.Address) (Struct0, error) {
+func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.Address) (TV3StrategyParams, error) {
 	var out []interface{}
 	err := _Yvault300.contract.Call(opts, &out, "strategies", arg0)
 
 	if err != nil {
-		return *new(Struct0), err
+		return *new(TV3StrategyParams), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(Struct0)).(*Struct0)
+	out0 := *abi.ConvertType(out[0], new(TV3StrategyParams)).(*TV3StrategyParams)
 
 	return out0, err
 
@@ -1323,14 +1323,14 @@ func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.A
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300Session) Strategies(arg0 common.Address) (Struct0, error) {
+func (_Yvault300 *Yvault300Session) Strategies(arg0 common.Address) (TV3StrategyParams, error) {
 	return _Yvault300.Contract.Strategies(&_Yvault300.CallOpts, arg0)
 }
 
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300CallerSession) Strategies(arg0 common.Address) (Struct0, error) {
+func (_Yvault300 *Yvault300CallerSession) Strategies(arg0 common.Address) (TV3StrategyParams, error) {
 	return _Yvault300.Contract.Strategies(&_Yvault300.CallOpts, arg0)
 }
 

@@ -1,0 +1,42 @@
+{
+	"lastUpdate": "2023-10-20T14:55:59.811865+02:00",
+	"version": {
+		"major": 0,
+		"minor": 0,
+		"patch": 13
+	},
+	"shouldRefresh": false,
+	"vaults": {
+		"0xcaa17796bb3d4a71005cebd817cfeebf85d581b7": {
+			"address": "0xcaa17796bb3d4a71005cebd817cfeebf85d581b7",
+			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+			"type": "Yearn Vault",
+			"version": "3.0.0",
+			"activation": 46330444,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xf32c48793cae27880d18ee4697fab6d08748228e",
+				"0xc5eb11591636ac0794c149ced926846105f61b17"
+			],
+			"lastPricePerShare": "1009012",
+			"lastTotalAssets": "2146292475",
+			"lastUpdate": "0001-01-01T00:00:00Z",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0xcaa17796bb3d4a71005cebd817cfeebf85d581b7",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			}
+		}
+	}
+}

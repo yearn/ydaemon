@@ -32,6 +32,3 @@ var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`
 
 // LLAMA_PRICE_URL contains the URL for the DeFiLlama pricing API
 var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
-
-// API_V1_BASE_URL is the base URL to access query the legacy Yearn's api
-var API_V1_BASE_URL = `https://api.yexporter.io/v1/chains/`

@@ -14,10 +14,22 @@ type TVersion struct {
 	Minor int `json:"minor"`
 	Patch int `json:"patch"`
 }
+type TJsonMetadata struct {
+	LastUpdate    time.Time `json:"lastUpdate"`
+	Version       TVersion  `json:"version"`
+	ShouldRefresh bool      `json:"shouldRefresh"`
+}
+type TJsonVaultStorage struct {
+	TJsonMetadata
+	Vaults map[common.Address]models.TVault `json:"vaults"`
+}
 type TJsonStrategyStorage struct {
-	LastUpdate time.Time                           `json:"lastUpdate"`
-	Version    TVersion                            `json:"version"`
+	TJsonMetadata
 	Strategies map[common.Address]models.TStrategy `json:"strategies"`
+}
+type TJsonERC20Storage struct {
+	TJsonMetadata
+	Tokens map[common.Address]models.TERC20Token `json:"tokens"`
 }
 
 /**************************************************************************

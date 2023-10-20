@@ -35,9 +35,6 @@ type TERC20Token struct {
 	Icon                      string           `json:"icon"`
 	Decimals                  uint64           `json:"decimals"`
 	ChainID                   uint64           `json:"chainID"`
-
-	// Extra fields, used for control purpose
-	ShouldRefresh bool `json:"shouldRefresh,omitempty"`
 }
 
 /** 🔵 - Yearn *************************************************************************************

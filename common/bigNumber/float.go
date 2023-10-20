@@ -128,6 +128,11 @@ func (b *Float) Pow(x *Float, y uint64) *Float {
 	return result
 }
 
+func (b *Float) SetMode(mode big.RoundingMode) *Float {
+	b.Float.SetMode(mode)
+	return b
+}
+
 /**************************************************************************************************
 ** Helpers functions that can be used to convert back a bigNumber.Float to a string or a BigInt.
 **************************************************************************************************/

@@ -1,0 +1,61 @@
+{
+	"lastUpdate": "2023-10-20T14:55:59.693879+02:00",
+	"version": {
+		"major": 0,
+		"minor": 0,
+		"patch": 16
+	},
+	"shouldRefresh": false,
+	"strategies": {
+		"0xc5eb11591636ac0794c149ced926846105f61b17": {
+			"address": "0xc5eb11591636ac0794c149ced926846105f61b17",
+			"vaultAddress": "0xcaa17796bb3d4a71005cebd817cfeebf85d581b7",
+			"name": "AaveV3-USDC-Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 46989425,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": false,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "428902159",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1697143747",
+			"lastDebtRatio": "1998",
+			"lastEstimatedTotalAssets": "428902159",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xf32c48793cae27880d18ee4697fab6d08748228e": {
+			"address": "0xf32c48793cae27880d18ee4697fab6d08748228e",
+			"vaultAddress": "0xcaa17796bb3d4a71005cebd817cfeebf85d581b7",
+			"name": "CompoundV3-USDC-Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 46426046,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": false,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "1719147810",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1697214765",
+			"lastDebtRatio": "8010",
+			"lastEstimatedTotalAssets": "1719147810",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		}
+	}
+}

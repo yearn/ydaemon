@@ -86,6 +86,8 @@ func RetrieveAllVaults(
 	** with it.
 	**********************************************************************************************/
 	vaultMap, _ := storage.ListVaults(chainID)
+	metadata := storage.GetVaultsJsonMetadata(chainID)
+	shouldRefresh := metadata.ShouldRefresh
 	updatedVaultMap := vaultMap
 
 	/**********************************************************************************************
@@ -94,7 +96,7 @@ func RetrieveAllVaults(
 	** for every refresh period, per vault per chainID.
 	**********************************************************************************************/
 	for _, currentVault := range vaults {
-		if _, ok := vaultMap[currentVault.Address]; !ok {
+		if _, ok := vaultMap[currentVault.Address]; !ok || shouldRefresh {
 			if (currentVault.TokenAddress == common.Address{}) {
 				continue
 			}
@@ -115,15 +117,13 @@ func RetrieveAllVaults(
 	** We will add them manually here.
 	**********************************************************************************************/
 	for _, vault := range env.CHAINS[chainID].ExtraVaults {
-		if _, ok := vaultMap[vault.Address]; !ok {
-			if _, ok := updatedVaultMap[vault.Address]; !ok {
-				updatedVaultMap[vault.Address] = models.TVault{
-					Address:      vault.Address,
-					AssetAddress: vault.TokenAddress,
-					Version:      vault.APIVersion,
-					Activation:   vault.BlockNumber,
-					Type:         vault.Type,
-				}
+		if _, ok := updatedVaultMap[vault.Address]; !ok || shouldRefresh {
+			updatedVaultMap[vault.Address] = models.TVault{
+				Address:      vault.Address,
+				AssetAddress: vault.TokenAddress,
+				Version:      vault.APIVersion,
+				Activation:   vault.BlockNumber,
+				Type:         vault.Type,
 			}
 		}
 	}

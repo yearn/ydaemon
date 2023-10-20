@@ -1,10 +1,9 @@
-package apy
+package apr
 
 import "github.com/yearn/ydaemon/common/bigNumber"
 
 type TFees struct {
 	Performance *bigNumber.Float `json:"performance"`
-	Withdrawal  *bigNumber.Float `json:"withdrawal"`
 	Management  *bigNumber.Float `json:"management"`
 	KeepCRV     *bigNumber.Float `json:"keepCRV"`
 	KeepVelo    *bigNumber.Float `json:"keepVELO"`

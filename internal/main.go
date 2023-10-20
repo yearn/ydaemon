@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
-	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
 )
@@ -50,7 +50,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		indexer.IndexNewStrategies(chainID, vaultMap)
 
-		apy.ComputeChainAPR(chainID)
+		apr.ComputeChainAPR(chainID)
 		go risk.InitRiskScore(chainID)
 	})
 

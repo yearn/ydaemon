@@ -38,24 +38,15 @@ type TStrategy struct {
 	KeepCRV        *bigNumber.Int `json:"keepCRV"`
 	KeepCRVPercent *bigNumber.Int `json:"keepCRVPercent"`
 	KeepCVX        *bigNumber.Int `json:"keepCVX"`
-	EmergencyExit  bool           `json:"emergencyExit"`
 
 	// Mutable elements. They will often change
-	LastCreditAvailable      *bigNumber.Int `json:"lastCreditAvailable"`             //Not used in any yDaemon calculation
-	LastDebtOutstanding      *bigNumber.Int `json:"lastDebtOutstanding"`             //Not used in any yDaemon calculation
-	LastExpectedReturn       *bigNumber.Int `json:"lastExpectedReturn"`              //Not used in any yDaemon calculation
-	LastReport               *bigNumber.Int `json:"lastReport"`                      //Not used in any yDaemon calculation
-	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`                   //Not used in any yDaemon calculation
-	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`                   //Not used in any yDaemon calculation
-	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`                   //Not used in any yDaemon calculation
-	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"`        //Used by the risk framework
-	LastDelegatedAssets      *bigNumber.Int `json:"lastDelegatedAssets"`             //Used to compute vault TVL
-	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`              //Not used in any yDaemon calculation
-	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`         // Only > 0.2.2 | Used by the APY process
-	LastDebtLimit            *bigNumber.Int `json:"lastDebtLimit,omitempty"`         // Only = 0.2.2 | Not used in any yDaemon calculation
-	LastRateLimit            *bigNumber.Int `json:"lastRateLimit,omitempty"`         // Only < 0.3.2 | Not used in any yDaemon calculation
-	LastMinDebtPerHarvest    *bigNumber.Int `json:"lastMinDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
-	LastMaxDebtPerHarvest    *bigNumber.Int `json:"lastMaxDebtPerHarvest,omitempty"` // Only >= 0.3.2 | Not used in any yDaemon calculation
+	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`            // Used to filter strategies and by the FE
+	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`            // Used by the FE
+	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`            // Used by the FE
+	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`       // Used for APR calculation and by the FE
+	LastReport               *bigNumber.Int `json:"lastReport"`               // Used by the FE
+	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`  // Only > 0.2.2 | Used by the APY process
+	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"` //Used by the risk framework
 
 	// Manual elements. They are manually set by the team
 	IsRetired   bool     `json:"isRetired"`   // If false, will bypass the `IsActive` variable

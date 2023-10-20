@@ -121,7 +121,8 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 				continue
 			}
-			newVault.FeaturingScore = newVault.TVL.TVL * newVault.APY.NetAPY
+			APRAsFloat, _ := newVault.APR.NetAPR.Float64()
+			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			allVaults = append(allVaults, toSimplifiedVersion(newVault))
 		}
 	}
@@ -174,12 +175,7 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 				continue
 			}
 
-			externalStrategy = TStrategy{
-				Address:     strategy.Address.Hex(),
-				Name:        strategy.Name,
-				DisplayName: strategy.DisplayName,
-				Description: strategy.Description,
-			}
+			externalStrategy = strategyWithDetails
 			currentVault.Strategies = append(currentVault.Strategies, externalStrategy)
 		}
 

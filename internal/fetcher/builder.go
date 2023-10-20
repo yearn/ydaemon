@@ -89,41 +89,6 @@ func BuildVaultSymbol(t models.TVault, vaultSymbol string) (string, string, stri
 	return symbol, displaySymbol, formatedSymbol
 }
 
-func BuildVaultLegacyAPY(t models.TVault, aggregatedVault *models.TAggregatedVault, hasLegacyAPY bool) models.TAPY {
-	apy := models.TAPY{}
-	if hasLegacyAPY {
-		apy = models.TAPY{
-			Type:              aggregatedVault.LegacyAPY.Type,
-			GrossAPR:          aggregatedVault.LegacyAPY.GrossAPR,
-			NetAPY:            aggregatedVault.LegacyAPY.NetAPY,
-			StakingRewardsAPR: aggregatedVault.LegacyAPY.StakingRewardsAPR,
-			Points: models.TAPYPoints{
-				WeekAgo:   aggregatedVault.LegacyAPY.Points.WeekAgo,
-				MonthAgo:  aggregatedVault.LegacyAPY.Points.MonthAgo,
-				Inception: aggregatedVault.LegacyAPY.Points.Inception,
-			},
-			Composite: models.TAPYComposite{
-				Boost:      aggregatedVault.LegacyAPY.Composite.Boost,
-				PoolAPY:    aggregatedVault.LegacyAPY.Composite.PoolAPY,
-				BoostedAPR: aggregatedVault.LegacyAPY.Composite.BoostedAPR,
-				BaseAPR:    aggregatedVault.LegacyAPY.Composite.BaseAPR,
-				CvxAPR:     aggregatedVault.LegacyAPY.Composite.CvxAPR,
-				RewardsAPR: aggregatedVault.LegacyAPY.Composite.RewardsAPR,
-			},
-			Fees: models.TAPYFees{
-				Performance: aggregatedVault.LegacyAPY.Fees.Performance,
-				Management:  aggregatedVault.LegacyAPY.Fees.Management,
-				Withdrawal:  aggregatedVault.LegacyAPY.Fees.Withdrawal,
-				KeepCRV:     aggregatedVault.LegacyAPY.Fees.KeepCRV,
-				KeepVelo:    aggregatedVault.LegacyAPY.Fees.KeepVelo,
-				CvxKeepCRV:  aggregatedVault.LegacyAPY.Fees.CvxKeepCRV,
-			},
-			Error: aggregatedVault.LegacyAPY.Error,
-		}
-	}
-	return apy
-}
-
 func BuildVaultTVL(t models.TVault) models.TTVL {
 	vaultToken, ok := storage.GetERC20(t.ChainID, t.Address)
 	if !ok {
@@ -141,23 +106,11 @@ func BuildVaultTVL(t models.TVault) models.TTVL {
 	}
 
 	fHumanizedTVLPrice := getHumanizedValue(t.LastTotalAssets, int(vaultToken.Decimals), humanizedPrice)
-	strategiesList, _ := storage.ListStrategiesForVault(t.ChainID, t.Address)
-	delegatedTokenAsBN := bigNumber.NewInt(0)
-	fDelegatedValue := 0.0
-
-	for _, strat := range strategiesList {
-		delegatedValue := getHumanizedValue(strat.LastDelegatedAssets, int(vaultToken.Decimals), humanizedPrice)
-		delegatedTokenAsBN = delegatedTokenAsBN.Add(delegatedTokenAsBN, strat.LastDelegatedAssets)
-		fDelegatedValue += delegatedValue
-	}
 
 	tvl := models.TTVL{
-		TotalAssets:          t.LastTotalAssets,
-		TotalDelegatedAssets: delegatedTokenAsBN,
-		TVL:                  fHumanizedTVLPrice - fDelegatedValue,
-		TVLDeposited:         fHumanizedTVLPrice,
-		TVLDelegated:         fDelegatedValue,
-		Price:                fHumanizedPrice,
+		TotalAssets: t.LastTotalAssets,
+		TVL:         fHumanizedTVLPrice,
+		Price:       fHumanizedPrice,
 	}
 	return tvl
 }

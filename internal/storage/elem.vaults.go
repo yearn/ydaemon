@@ -5,26 +5,29 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
 var _vaultsSyncMap = make(map[uint64]*sync.Map)
+var _vaultJSONMetadataSyncMap = sync.Map{}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadVaultsFromJson` is responsible for loading vaults from a JSON file.
 **************************************************************************************************/
-func LoadVaultsFromJson(chainID uint64) map[common.Address]models.TVault {
-	var vaults map[common.Address]models.TVault
+func LoadVaultsFromJson(chainID uint64) TJsonVaultStorage {
+	var vaults TJsonVaultStorage
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
 	file, err := os.Open(env.BASE_DATA_PATH + "/meta/vaults/" + chainIDStr + ".json")
 	if err != nil {
-		return nil
+		return TJsonVaultStorage{}
 	}
 	defer file.Close()
 
@@ -33,7 +36,7 @@ func LoadVaultsFromJson(chainID uint64) map[common.Address]models.TVault {
 	err = decoder.Decode(&vaults)
 	if err != nil {
 		logs.Error("Failed to decode vaults JSON file: " + err.Error())
-		return nil
+		return TJsonVaultStorage{}
 	}
 
 	return vaults
@@ -44,8 +47,23 @@ func LoadVaultsFromJson(chainID uint64) map[common.Address]models.TVault {
 **************************************************************************************************/
 func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
+	previousVaults := LoadVaultsFromJson(chainID)
+	version := detectVersionUpdate(chainID, previousVaults.Version, previousVaults.Vaults, vaults)
 
-	file, _ := json.MarshalIndent(vaults, "", "\t")
+	data := TJsonVaultStorage{
+		TJsonMetadata: TJsonMetadata{
+			LastUpdate: time.Now(),
+			Version:    version,
+		},
+		Vaults: vaults,
+	}
+	_vaultJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		data.LastUpdate,
+		data.Version,
+		data.ShouldRefresh,
+	})
+
+	file, _ := json.MarshalIndent(data, "", "\t")
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/vaults"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/vaults", 0755)
 	}
@@ -53,6 +71,16 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 	if err != nil {
 		logs.Error("Failed to write vaults JSON file: " + err.Error())
 	}
+}
+
+/**************************************************************************************************
+** Retrieve the last time the ERC20s were updated for a specific chainID
+**************************************************************************************************/
+func GetVaultsJsonMetadata(chainID uint64) TJsonMetadata {
+	if jsonMetadata, ok := _vaultJSONMetadataSyncMap.Load(chainID); ok {
+		return jsonMetadata.(TJsonMetadata)
+	}
+	return TJsonMetadata{}
 }
 
 /**************************************************************************************************
@@ -64,8 +92,13 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 		defer wg.Done()
 	}
 
-	vaultMap := LoadVaultsFromJson(chainID)
-	for _, vault := range vaultMap {
+	file := LoadVaultsFromJson(chainID)
+	_vaultJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		file.LastUpdate,
+		file.Version,
+		file.ShouldRefresh,
+	})
+	for _, vault := range file.Vaults {
 		safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
 	}
 }
@@ -74,6 +107,9 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 ** StoreVault will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
+	if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vault.Address) {
+		return
+	}
 	safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
 }
 

@@ -1,4 +1,4 @@
-package apy
+package apr
 
 import (
 	"github.com/ethereum/go-ethereum/common"

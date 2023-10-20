@@ -1,4 +1,4 @@
-package apy
+package apr
 
 import (
 	"time"

@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
@@ -14,18 +15,19 @@ import (
 )
 
 var _erc20SyncMap = make(map[uint64]*sync.Map)
+var _erc20JSONMetadataSyncMap = sync.Map{}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadTokensFromJson` is responsible for loading tokens from a JSON file.
 **************************************************************************************************/
-func LoadTokensFromJson(chainID uint64) map[common.Address]models.TERC20Token {
-	var tokens map[common.Address]models.TERC20Token
+func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
+	var tokens TJsonERC20Storage
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
 	file, err := os.Open(env.BASE_DATA_PATH + "/meta/tokens/" + chainIDStr + ".json")
 	if err != nil {
-		return nil
+		return TJsonERC20Storage{}
 	}
 	defer file.Close()
 
@@ -34,7 +36,7 @@ func LoadTokensFromJson(chainID uint64) map[common.Address]models.TERC20Token {
 	err = decoder.Decode(&tokens)
 	if err != nil {
 		logs.Error("Failed to decode tokens JSON file: " + err.Error())
-		return nil
+		return TJsonERC20Storage{}
 	}
 
 	return tokens
@@ -45,8 +47,23 @@ func LoadTokensFromJson(chainID uint64) map[common.Address]models.TERC20Token {
 **************************************************************************************************/
 func StoreTokensToJson(chainID uint64, tokens map[common.Address]models.TERC20Token) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
+	previousTokens := LoadTokensFromJson(chainID)
+	version := detectVersionUpdate(chainID, previousTokens.Version, previousTokens.Tokens, tokens)
 
-	file, _ := json.MarshalIndent(tokens, "", "\t")
+	data := TJsonERC20Storage{
+		TJsonMetadata: TJsonMetadata{
+			LastUpdate: time.Now(),
+			Version:    version,
+		},
+		Tokens: tokens,
+	}
+	_erc20JSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		data.LastUpdate,
+		data.Version,
+		data.ShouldRefresh,
+	})
+
+	file, _ := json.MarshalIndent(data, "", "\t")
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/tokens"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/tokens", 0755)
 	}
@@ -57,6 +74,16 @@ func StoreTokensToJson(chainID uint64, tokens map[common.Address]models.TERC20To
 }
 
 /**************************************************************************************************
+** Retrieve the last time the ERC20s were updated for a specific chainID
+**************************************************************************************************/
+func GetTokensJsonMetadata(chainID uint64) TJsonMetadata {
+	if jsonMetadata, ok := _erc20JSONMetadataSyncMap.Load(chainID); ok {
+		return jsonMetadata.(TJsonMetadata)
+	}
+	return TJsonMetadata{}
+}
+
+/**************************************************************************************************
 ** LoadERC20 will retrieve the all the ERC20 tokens added to the configured DB and store them in
 ** the _erc20SyncMap for fast access during that
 **************************************************************************************************/
@@ -64,9 +91,14 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
-	tokenMap := LoadTokensFromJson(chainID)
-	for _, token := range tokenMap {
-		StoreERC20(chainID, token)
+	file := LoadTokensFromJson(chainID)
+	_erc20JSONMetadataSyncMap.Store(chainID, TJsonMetadata{
+		file.LastUpdate,
+		file.Version,
+		file.ShouldRefresh,
+	})
+	for _, token := range file.Tokens {
+		safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 	}
 }
 
@@ -77,7 +109,6 @@ func StoreERC20(chainID uint64, token models.TERC20Token) {
 	if helpers.Contains(env.CHAINS[chainID].IgnoredTokens, token.Address) {
 		return
 	}
-	token.ShouldRefresh = false
 	safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 }
 

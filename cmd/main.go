@@ -5,7 +5,7 @@ import (
 
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
-	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/tokenList"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
@@ -86,7 +86,7 @@ func main() {
 		for _, chainID := range chains {
 			wg.Add(1)
 			go func(chainID uint64) {
-				apy.Run(chainID)
+				apr.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

@@ -51,6 +51,7 @@ func fetchTokensBasicInformations(
 		calls = append(calls, multicalls.GetSymbol(tokenAddress.Hex(), tokenAddress))
 		calls = append(calls, multicalls.GetDecimals(tokenAddress.Hex(), tokenAddress))
 		calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
+		calls = append(calls, multicalls.GetAsset(tokenAddress.Hex(), tokenAddress))
 		calls = append(calls, multicalls.GetPoolFromLpToken(tokenAddress.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, tokenAddress))
 		calls = append(calls, multicalls.GetCompoundUnderlying(tokenAddress.Hex(), tokenAddress))
 		calls = append(calls, multicalls.GetAaveV1Underlying(tokenAddress.Hex(), tokenAddress))
@@ -85,6 +86,7 @@ func fetchTokensBasicInformations(
 		rawSymbol := response[tokenAddress.Hex()+`symbol`]
 		rawDecimals := response[tokenAddress.Hex()+`decimals`]
 		rawYearnVaultToken := response[tokenAddress.Hex()+`token`]
+		rawYearnVaultAsset := response[tokenAddress.Hex()+`asset`]
 		rawPoolFromLpToken := response[tokenAddress.Hex()+`get_pool_from_lp_token`]
 		rawCurveCoinMinterToken := response[tokenAddress.Hex()+`minter`]
 		rawCUnderlying := response[tokenAddress.Hex()+`underlying`]
@@ -116,21 +118,30 @@ func fetchTokensBasicInformations(
 		** We can also add the coins to the relatedTokensList, so we can fetch their information
 		** later.
 		******************************************************************************************/
-		isYearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
-		if isYearnVault {
+		isV2YearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
+		isV3YearnVault := rawYearnVaultAsset != nil && helpers.DecodeAddress(rawYearnVaultAsset) != common.Address{}
+		if isV2YearnVault || isV3YearnVault {
 			vault, ok := storage.GetVaultFromRegistry(chainID, tokenAddress)
 			if !ok {
 				newToken.Type = models.TokenTypeStandardVault
 			} else {
 				newToken.Type = vault.Type
 			}
-			coin := helpers.DecodeAddress(rawYearnVaultToken)
-			if (coin != common.Address{}) {
-				relatedTokensList = append(relatedTokensList, coin)
-				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+			if isV2YearnVault {
+				coin := helpers.DecodeAddress(rawYearnVaultToken)
+				if (coin != common.Address{}) {
+					relatedTokensList = append(relatedTokensList, coin)
+					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+				}
+			} else {
+				coin := helpers.DecodeAddress(rawYearnVaultAsset)
+				if (coin != common.Address{}) {
+					relatedTokensList = append(relatedTokensList, coin)
+					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+				}
 			}
 		}
-		if newToken.Category == `` && isYearnVault {
+		if newToken.Category == `` && (isV2YearnVault || isV3YearnVault) {
 			newToken.Category = `yVault`
 		}
 
@@ -394,6 +405,8 @@ func RetrieveAllTokens(
 	** from the upcoming calls
 	**********************************************************************************************/
 	tokenMap, _ := storage.ListERC20(chainID)
+	metadata := storage.GetTokensJsonMetadata(chainID)
+	shouldRefresh := metadata.ShouldRefresh
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of tokens: the vault tokens and the
@@ -404,16 +417,17 @@ func RetrieveAllTokens(
 	**********************************************************************************************/
 	updatedTokenMap := make(map[common.Address]models.TERC20Token)
 	for _, currentVault := range vaults {
-		token, exists := tokenMap[currentVault.Address]
-		if !exists {
+		if _, ok := tokenMap[currentVault.Address]; !ok || shouldRefresh {
 			updatedTokenMap[currentVault.Address] = models.TERC20Token{
 				Address: currentVault.Address,
 				Type:    currentVault.Type,
 				ChainID: chainID,
 			}
-		} else if token.ShouldRefresh {
-			updatedTokenMap[currentVault.Address] = models.TERC20Token{
-				Address: currentVault.Address,
+		}
+
+		if _, ok := tokenMap[currentVault.AssetAddress]; !ok || shouldRefresh {
+			updatedTokenMap[currentVault.AssetAddress] = models.TERC20Token{
+				Address: currentVault.AssetAddress,
 				Type:    currentVault.Type,
 				ChainID: chainID,
 			}
@@ -425,24 +439,22 @@ func RetrieveAllTokens(
 	** are not in the registry but that we still want to track.
 	**********************************************************************************************/
 	for _, extraToken := range env.CHAINS[chainID].ExtraTokens {
-		if token, ok := tokenMap[extraToken]; ok && !token.ShouldRefresh {
-			continue
-		}
-		updatedTokenMap[extraToken] = models.TERC20Token{
-			Address: extraToken,
-			ChainID: chainID,
+		if _, ok := tokenMap[extraToken]; !ok || shouldRefresh {
+			updatedTokenMap[extraToken] = models.TERC20Token{
+				Address: extraToken,
+				ChainID: chainID,
+			}
 		}
 	}
 
 	curveFactoryPools := loadCurvePools(chainID)
 	for _, poolCoins := range curveFactoryPools {
 		for _, coinAddress := range poolCoins {
-			if token, ok := tokenMap[coinAddress]; ok && !token.ShouldRefresh {
-				continue
-			}
-			updatedTokenMap[coinAddress] = models.TERC20Token{
-				Address: coinAddress,
-				ChainID: chainID,
+			if _, ok := tokenMap[coinAddress]; !ok || shouldRefresh {
+				updatedTokenMap[coinAddress] = models.TERC20Token{
+					Address: coinAddress,
+					ChainID: chainID,
+				}
 			}
 		}
 	}

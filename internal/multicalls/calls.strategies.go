@@ -254,3 +254,33 @@ func GetStategyLocalKeepVelo(name string, contractAddress common.Address) ethere
 		Name:     name,
 	}
 }
+
+func GetTotalDebt(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnStrategyV3ABI.Pack("totalDebt")
+	if err != nil {
+		logs.Error("Error packing YearnStrategyV3ABI totalDebt", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnStrategyV3ABI,
+		Method:   `totalDebt`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}
+
+func GetLastReport(name string, contractAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnStrategyV3ABI.Pack("lastReport")
+	if err != nil {
+		logs.Error("Error packing YearnStrategyV3ABI lastReport", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnStrategyV3ABI,
+		Method:   `lastReport`,
+		CallData: parsedData,
+		Name:     name,
+		Version:  version,
+	}
+}

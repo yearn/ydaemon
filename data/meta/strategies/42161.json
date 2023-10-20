@@ -1,10 +1,11 @@
 {
-	"lastUpdate": "2023-10-17T16:21:30.22452+02:00",
+	"lastUpdate": "2023-10-20T15:58:25.751973+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 0
+		"patch": 3
 	},
+	"shouldRefresh": false,
 	"strategies": {
 		"0x19e70e3195fec1a33745d9260bf26c3f915bb0cc": {
 			"address": "0x19e70e3195fec1a33745d9260bf26c3f915bb0cc",
@@ -19,24 +20,19 @@
 			"keepCRV": "0",
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"emergencyExit": false,
-			"lastCreditAvailable": "0",
-			"lastDebtOutstanding": "0",
-			"lastExpectedReturn": "0",
-			"lastReport": "1653434783",
 			"lastTotalDebt": "0",
-			"lastTotalGain": "16441706615157799718",
 			"lastTotalLoss": "0",
-			"lastEstimatedTotalAssets": "0",
-			"lastDelegatedAssets": "0",
+			"lastTotalGain": "16441706615157799718",
 			"lastPerformanceFee": "0",
+			"lastReport": "1653434783",
 			"lastDebtRatio": "0",
-			"lastMinDebtPerHarvest": "0",
-			"lastMaxDebtPerHarvest": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Curve Gauge",
+			"description": "Supplies {{token}} to [Curve Finance](https://arbitrum.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Curve Finance"
+			]
 		},
 		"0xccfff90a596fcc0b549a5f69a70de0a9c5295352": {
 			"address": "0xccfff90a596fcc0b549a5f69a70de0a9c5295352",
@@ -51,20 +47,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"emergencyExit": false,
-			"lastCreditAvailable": "3222835897169552279",
-			"lastDebtOutstanding": "0",
-			"lastExpectedReturn": "71214777963933933651",
-			"lastReport": "1662995529",
 			"lastTotalDebt": "500517850482247806415",
-			"lastTotalGain": "4947849077264360941",
 			"lastTotalLoss": "0",
-			"lastEstimatedTotalAssets": "500517850482247806415",
-			"lastDelegatedAssets": "0",
+			"lastTotalGain": "4947849077264360941",
 			"lastPerformanceFee": "0",
+			"lastReport": "1662995529",
 			"lastDebtRatio": "10000",
-			"lastMinDebtPerHarvest": "0",
-			"lastMaxDebtPerHarvest": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+			"lastEstimatedTotalAssets": "500517850482247806415",
 			"isRetired": false,
 			"displayName": "",
 			"description": "",
@@ -83,24 +72,19 @@
 			"keepCRV": "0",
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"emergencyExit": false,
-			"lastCreditAvailable": "0",
-			"lastDebtOutstanding": "0",
-			"lastExpectedReturn": "21228617207122372",
-			"lastReport": "1697493544",
-			"lastTotalDebt": "64313405741792530888",
-			"lastTotalGain": "15867445447265961846",
+			"lastTotalDebt": "64210542847486782767",
 			"lastTotalLoss": "0",
-			"lastEstimatedTotalAssets": "64313405741792530888",
-			"lastDelegatedAssets": "0",
+			"lastTotalGain": "15867445447265961846",
 			"lastPerformanceFee": "0",
+			"lastReport": "1697666357",
 			"lastDebtRatio": "10000",
-			"lastMinDebtPerHarvest": "0",
-			"lastMaxDebtPerHarvest": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+			"lastEstimatedTotalAssets": "64210542847486782767",
 			"isRetired": false,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Curve Gauge",
+			"description": "Supplies {{token}} to [Curve Finance](https://arbitrum.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Curve Finance"
+			]
 		}
 	}
 }

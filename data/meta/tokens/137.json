@@ -1,20 +1,34 @@
 {
-	"lastUpdate": "2023-10-20T14:55:58.714733+02:00",
+	"lastUpdate": "2023-10-20T15:53:08.738818+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 2
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x0000000000000000000000000000000000000000": {
+			"address": "0x0000000000000000000000000000000000000000",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0000000000000000000000000000000000000000/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x2791bca1f2de4661ed88a30c99a7a9449aa84174": {
 			"address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
 			"underlyingTokensAddresses": [],
 			"type": "",
 			"name": "USD Coin (PoS)",
 			"symbol": "USDC",
-			"display_name": "USD Coin (PoS)",
-			"display_symbol": "USDC",
+			"displayName": "USD Coin (PoS)",
+			"displaySymbol": "USDC",
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo-128.png",
@@ -29,8 +43,8 @@
 			"type": "Yearn Vault",
 			"name": "USDC yVault",
 			"symbol": "yvUSDC",
-			"display_name": "USDC yVault",
-			"display_symbol": "yvUSDC",
+			"displayName": "USDC yVault",
+			"displaySymbol": "yvUSDC",
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xcAA17796bB3d4a71005CeBd817CFEebF85D581b7/logo-128.png",

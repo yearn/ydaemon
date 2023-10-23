@@ -6,7 +6,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -53,16 +52,10 @@ func fetchPrices(
 	for _, token := range tokenList {
 		if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
 			newPriceMap[token] = pricesLlama[token]
-			if addresses.Equals(`0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B`, token) {
-				logs.Error(pricesLlama[token])
-			}
 			continue
 		}
 		if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
 			newPriceMap[token] = pricesGecko[token]
-			if addresses.Equals(`0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B`, token) {
-				logs.Error(pricesGecko[token])
-			}
 		}
 	}
 

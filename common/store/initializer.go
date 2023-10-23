@@ -43,11 +43,11 @@ func init() {
 	wg := &sync.WaitGroup{}
 	for chainID := range env.CHAINS {
 		wg.Add(5)
+		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
 		go LoadBlockTime(chainID, nil)
 		// go LoadHistoricalPrice(chainID, nil)
 		go LoadNewVaultsFromRegistry(chainID, wg)
 		go LoadStrategies(chainID, wg)
-		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
 		go LoadVaults(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
 		go LoadVaultsActivation(chainID, wg)

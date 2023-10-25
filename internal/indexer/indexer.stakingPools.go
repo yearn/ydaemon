@@ -116,7 +116,6 @@ func watchStakingPool(
 	for _, log := range history {
 		value, err := currentRegistry.ParseStakingPoolAdded(log)
 		if err != nil {
-			logs.Pretty(err)
 			continue
 		}
 		storage.StoreStakingPool(chainID, models.TStakingPoolAdded{

@@ -111,8 +111,6 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 	if chainID != 10 {
 		return priceMap
 	}
-	newPairPriceMap := make(map[common.Address]models.TPrices)
-	newTokensPriceMap := make(map[common.Address]models.TPrices)
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
@@ -195,15 +193,6 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 					Source:         `veloSugar`,
 				}
 			}
-		}
-	}
-
-	for token, price := range newPairPriceMap {
-		priceMap[token] = price
-	}
-	for token, price := range newTokensPriceMap {
-		if _, ok := priceMap[token]; !ok {
-			priceMap[token] = price
 		}
 	}
 

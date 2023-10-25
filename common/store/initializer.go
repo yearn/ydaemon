@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -38,10 +39,10 @@ func init() {
 		storage.LoadStrategies(chainID, nil)
 		storage.LoadERC20(chainID, nil)
 
-		go LoadBlockTime(chainID, nil) //This does not require a wg
-
-		wg.Add(1)
+		wg.Add(2)
+		go LoadBlockTime(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
 	}
+	logs.Success(`Initialized the store`)
 	wg.Wait()
 }

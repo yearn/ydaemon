@@ -51,7 +51,7 @@ func filterNewVault(
 			lastBlock = chunkEnd
 		}
 
-		if chunkEnd >= *end && !isDone {
+		if chunkEnd >= *end && !isDone && wg != nil {
 			wg.Done()
 		}
 		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
@@ -134,6 +134,7 @@ func watchNewVaults(
 	registry env.TContractData,
 	lastSyncedBlock uint64,
 	wg *sync.WaitGroup,
+	isDone bool,
 ) (uint64, bool, error) {
 	/**********************************************************************************************
 	** First thing is to connect to the node via a WS connection. We need to use a WS connection
@@ -177,7 +178,7 @@ func watchNewVaults(
 				continue
 			}
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -235,7 +236,7 @@ func watchNewVaults(
 			historicalVault := handleV03Vault(chainID, value)
 			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -286,7 +287,7 @@ func watchNewVaults(
 			historicalVault := handleV04Vault(chainID, value)
 			storage.StoreNewVaultToRegistry(chainID, historicalVault)
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -354,7 +355,9 @@ func indexNewVaultsWrapper(
 			registry,
 			lastSyncedBlock,
 			wg,
+			isDone,
 		)
+		isDone = true
 		if err != nil {
 			logs.Error(`error while indexing NewVault from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}

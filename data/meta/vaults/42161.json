@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-20T15:58:25.909503+02:00",
+	"lastUpdate": "2023-10-25T18:47:18.634542+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 1
+		"patch": 2
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -21,14 +21,14 @@
 			"lastActiveStrategies": [
 				"0xf1c3047c6310806de1d25535bc50748815066a7b"
 			],
-			"lastPricePerShare": "1072251702203997620",
-			"lastTotalAssets": "19715022605990386788107",
+			"lastPricePerShare": "1072725540349863663",
+			"lastTotalAssets": "13444851309095780962713",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d"
+				"target": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": false,
@@ -82,14 +82,14 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1006424769345838532",
-			"lastTotalAssets": "2119388982562838073094",
+			"lastPricePerShare": "1006427940142136130",
+			"lastTotalAssets": "2119993824306069053988",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b"
+				"target": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": false,
@@ -119,8 +119,8 @@
 			"isHidden": true,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x630c9050e6b0014c6fe4c214d4840909345adb7d"
+				"target": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": false,

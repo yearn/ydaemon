@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-20T15:54:15.878393+02:00",
+	"lastUpdate": "2023-10-25T18:47:34.140271+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 4
+		"patch": 25
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -21,14 +21,14 @@
 			"lastActiveStrategies": [
 				"0x1b1387a79064ae13385f160606e9228fd303b4a4"
 			],
-			"lastPricePerShare": "1017569441245806999",
-			"lastTotalAssets": "3058645539800858360",
+			"lastPricePerShare": "1032855363829230257",
+			"lastTotalAssets": "3109783067961261156",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1"
+				"target": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -57,8 +57,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x13454b672213f53cb1d31ea0be033c58fe315392"
+				"target": "0x13454b672213f53cb1d31ea0be033c58fe315392",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -88,8 +88,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x37a74970f80adaa8215598e95a17cbed2c39030d"
+				"target": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -118,8 +118,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x37fdacd764aa64f4e453842d8056853e5550c09b"
+				"target": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -149,8 +149,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x391e5dc227cdcf3cca012e5278798121236b1861"
+				"target": "0x391e5dc227cdcf3cca012e5278798121236b1861",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -179,8 +179,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x41102db56d0531be4560ec2db295e28a3c6954c7"
+				"target": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -209,8 +209,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x41489713d581ec717e1aa55b7729d24965cf96b5"
+				"target": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -240,8 +240,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a"
+				"target": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -271,8 +271,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c"
+				"target": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -301,8 +301,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x5b9b4f9b704faae29f600c04b12af92fb518604f"
+				"target": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -331,8 +331,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x5c366341bb86bad85e78eba974e3f335c9488fa2"
+				"target": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -355,14 +355,14 @@
 			"lastActiveStrategies": [
 				"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f"
 			],
-			"lastPricePerShare": "1131963917343283564",
-			"lastTotalAssets": "1432596689572747",
+			"lastPricePerShare": "1175905657771930452",
+			"lastTotalAssets": "875804430884092",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x68393a804c9fe4f1c7148d37796436e450ad98e8"
+				"target": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -391,8 +391,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608"
+				"target": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -421,8 +421,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671"
+				"target": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -451,8 +451,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6"
+				"target": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -477,13 +477,13 @@
 				"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "3405052641120782019",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4"
+				"target": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -513,8 +513,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x8f22d62434d5e52af442f69f43eb27ba20768692"
+				"target": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -543,8 +543,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317"
+				"target": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -574,8 +574,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42"
+				"target": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -604,8 +604,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f"
+				"target": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -635,8 +635,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e"
+				"target": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -666,8 +666,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d"
+				"target": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,
@@ -696,8 +696,8 @@
 			"isHidden": false,
 			"migration": {
 				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034"
+				"target": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
+				"contract": "0x0000000000000000000000000000000000000000"
 			},
 			"classification": {
 				"isAutomated": true,

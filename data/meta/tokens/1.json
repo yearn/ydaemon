@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-20T15:49:03.670842+02:00",
+	"lastUpdate": "2023-10-25T16:32:17.866414+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 2
+		"patch": 3
 	},
 	"shouldRefresh": false,
 	"tokens": {
@@ -7400,6 +7400,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9b451beb49a03586e6995e5a93b9c745d068581e": {
+			"address": "0x9b451beb49a03586e6995e5a93b9c745d068581e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Index USD",
+			"symbol": "iUSD",
+			"displayName": "Index USD",
+			"displaySymbol": "iUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9b451BEB49a03586e6995E5A93b9c745D068581e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9be89d2a4cd102d8fecc6bf9da793be995c22541": {
 			"address": "0x9be89d2a4cd102d8fecc6bf9da793be995c22541",
 			"underlyingTokensAddresses": [],
@@ -8773,12 +8787,12 @@
 				"0x1a7e4e63778b4f12a199c062f3efdd288afcbce8",
 				"0x1abaea1f7c830bd89acc67ec4af516284b1bc33c"
 			],
-			"type": "Curve",
+			"type": "Curve LP",
 			"name": "Curve.fi Factory Plain Pool: agEUR/EUROC",
 			"symbol": "agEUREUROC-f",
 			"displayName": "Curve.fi Factory Plain Pool: agEUR/EUROC",
 			"displaySymbol": "agEUREUROC-f",
-			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains agEUR, and EUROC. agEUR is a Euro-pegged stablecoin from angle.money and EUROC is Circle's stablecoin.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73/logo-128.png",
 			"decimals": 18,
@@ -9114,12 +9128,12 @@
 		"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
 			"address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
 			"underlyingTokensAddresses": [],
-			"type": "Smart Contract Platform",
+			"type": "",
 			"name": "Wrapped Ether",
 			"symbol": "WETH",
 			"displayName": "Wrapped Ether",
 			"displaySymbol": "WETH",
-			"description": "Ether, or ETH, is the native token of the Ethereum blockchain. Wrapped ETH, or WETH, refers to an ERC-20 compatible version of ether. ERC-20 is a technical standard developed after the release of ETH that allow tokens created on the Ethereum blockchain to interact with each other. In order for ETH to be exchanged with other ERC-20s it needs to be wrapped into WETH. Wrapping ETH does not affect its value, 1 ETH = 1 WETH.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo-128.png",
 			"decimals": 18,
@@ -9422,12 +9436,12 @@
 		"0xc5bddf9843308380375a611c18b50fb9341f502a": {
 			"address": "0xc5bddf9843308380375a611c18b50fb9341f502a",
 			"underlyingTokensAddresses": [],
-			"type": "Special",
+			"type": "",
 			"name": "veCRV-DAO yVault",
 			"symbol": "yveCRV-DAO",
-			"displayName": "yveCRV",
+			"displayName": "veCRV-DAO yVault",
 			"displaySymbol": "yveCRV-DAO",
-			"description": "This token represents the veCRV-DAO yVault which is holding Vote-Escrowed CRV. This vault converts your CRV into yveCRV, earning you a continuous share of Curve fees which are boosted over what you earn staking at Curve. The more CRV converted, the greater your weekly rewards. Every Friday, these can be claimed from the vault as 3Crv. Yearn, itself, deposits 10% of all CRV earned into this vault and gives its 3crv rewards to vault {{token}} holders which is where the boosted weekly rewards come from. Depositing is non-reversible: You can only convert CRV into yveCRV, as the CRV is perpetually staked in Curve's voting escrow.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc5bDdf9843308380375a611c18B50Fb9341f502A/logo-128.png",
 			"decimals": 18,
@@ -10032,12 +10046,12 @@
 		"0xd533a949740bb3306d119cc777fa900ba034cd52": {
 			"address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
 			"underlyingTokensAddresses": [],
-			"type": "DeFi",
+			"type": "Curve LP",
 			"name": "Curve DAO Token",
 			"symbol": "CRV",
 			"displayName": "Curve DAO Token",
 			"displaySymbol": "CRV",
-			"description": "Similar to Uniswap, Curve Finance is an Automated Market Maker (AMM) based Decentralised Exchange (DEX). Unlike Uniswap, its main focus is only to swap between assets that are supposed to have the same value. Locked CRV tokens are used for protocol governance and also receive half of Curve's trading fees.",
+			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xD533a949740bb3306d119CC777fa900bA034cd52/logo-128.png",
 			"decimals": 18,
@@ -11012,6 +11026,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe8449f1495012ee18db7aa18cd5706b47e69627c": {
+			"address": "0xe8449f1495012ee18db7aa18cd5706b47e69627c",
+			"underlyingTokensAddresses": [
+				"0x41252e8691e964f7de35156b68493bab6797a275",
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Crypto Pool: dYFI/ETH",
+			"symbol": "dYFIETH-f",
+			"displayName": "Curve.fi Factory Crypto Pool: dYFI/ETH",
+			"displaySymbol": "dYFIETH-f",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0xE8449F1495012eE18dB7Aa18cD5706b47e69627c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe8a5677171c87fcb65b76957f2852515b404c7b1": {
 			"address": "0xe8a5677171c87fcb65b76957f2852515b404c7b1",
 			"underlyingTokensAddresses": [
@@ -11357,6 +11388,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf48a6134aae5fc7186fee6a7f874426af69aecf8": {
+			"address": "0xf48a6134aae5fc7186fee6a7f874426af69aecf8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WRAPPED-KIBHO",
+			"symbol": "WKBO",
+			"displayName": "WRAPPED-KIBHO",
+			"displaySymbol": "WKBO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF48A6134AaE5fC7186fEe6a7F874426AF69Aecf8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf48e200eaf9906362bb1442fca31e0835773b8b4": {
 			"address": "0xf48e200eaf9906362bb1442fca31e0835773b8b4",
 			"underlyingTokensAddresses": [],
@@ -11509,6 +11554,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF6B9DFE6bc42ed2eaB44D6B829017f7B78B29f88/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf70b3f1ea3bfc659ffb8b27e84fae7ef38b5bd3b": {
+			"address": "0xf70b3f1ea3bfc659ffb8b27e84fae7ef38b5bd3b",
+			"underlyingTokensAddresses": [
+				"0xe8449f1495012ee18db7aa18cd5706b47e69627c"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve dYFIETH-f Factory yVault",
+			"symbol": "yvCurve-dYFIETH-f-f",
+			"displayName": "Curve dYFIETH-f Factory yVault",
+			"displaySymbol": "yvCurve-dYFIETH-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf70B3F1eA3BFc659FFb8b27E84FAE7Ef38b5bD3b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

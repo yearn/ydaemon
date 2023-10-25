@@ -54,7 +54,7 @@ func filterNewStrategies(
 			lastBlock = chunkEnd
 		}
 
-		if chunkEnd >= *end && !isDone {
+		if chunkEnd >= *end && !isDone && wg != nil {
 			wg.Done()
 		}
 		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
@@ -160,6 +160,7 @@ func watchNewStrategies(
 	vault models.TVault,
 	lastSyncedBlock uint64,
 	wg *sync.WaitGroup,
+	isDone bool,
 ) (uint64, bool, error) {
 	/**********************************************************************************************
 	** First thing is to connect to the node via a WS connection. We need to use a WS connection
@@ -196,7 +197,7 @@ func watchNewStrategies(
 				storage.StoreStrategyIfMissing(chainID, historicalStrategy)
 			}
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -258,7 +259,7 @@ func watchNewStrategies(
 				continue
 			}
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -332,7 +333,7 @@ func watchNewStrategies(
 				continue
 			}
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -399,7 +400,7 @@ func watchNewStrategies(
 				continue
 			}
 		}
-		if wg != nil {
+		if wg != nil && !isDone {
 			wg.Done()
 		}
 
@@ -460,7 +461,9 @@ func indexStrategyWrapper(
 			vault,
 			lastSyncedBlock,
 			wg,
+			isDone,
 		)
+		isDone = true
 		if err != nil {
 			logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}

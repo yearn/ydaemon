@@ -2,7 +2,6 @@ package apr
 
 import (
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/processes/prices"
@@ -21,7 +20,7 @@ func initYearnEcosystem(chainID uint64) {
 
 	prices.RetrieveAllPrices(chainID, tokenMap)
 	logs.Info(`loading staking pools...`)
-	events.HandleStakingPoolAdded(chainID, 0, nil)
+	indexer.IndexStakingPools(chainID)
 	logs.Info(`loading strategies...`)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
 }

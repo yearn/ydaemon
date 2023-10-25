@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -122,7 +121,6 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 				continue
 			}
-			logs.Pretty(newVault.APR.NetAPR)
 			APRAsFloat := 0.0
 			if newVault.APR.NetAPR != nil {
 				APRAsFloat, _ = newVault.APR.NetAPR.Float64()

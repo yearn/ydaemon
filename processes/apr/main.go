@@ -37,17 +37,17 @@ func ComputeChainAPR(chainID uint64) {
 		ppsInception := bigNumber.NewFloat(1)
 		ppsToday := helpers.GetToday(ppsPerTime, vaultToken.Decimals)
 		if ppsToday == nil || ppsToday.IsZero() {
-			ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vault.Decimals)
+			ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vaultToken.Decimals)
 		}
 
-		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vault.Decimals)
+		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vaultToken.Decimals)
 		if ppsWeekAgo == nil || ppsWeekAgo.IsZero() {
-			ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vault.Decimals)
+			ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vaultToken.Decimals)
 		}
 
-		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vault.Decimals)
+		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vaultToken.Decimals)
 		if ppsMonthAgo == nil || ppsMonthAgo.IsZero() {
-			ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vault.Decimals)
+			ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vaultToken.Decimals)
 		}
 
 		/**********************************************************************************************

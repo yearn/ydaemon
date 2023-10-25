@@ -29,7 +29,6 @@ func init() {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
-		_stackingPoolsSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}

@@ -10,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
@@ -33,7 +34,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
-
 	prices.RetrieveAllPrices(chainID, tokenMap)           // Retrieve the prices for all tokens
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap) // Retrieve the strategies for all chains
 
@@ -41,14 +41,12 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		initDailyBlock.Run(chainID)
 	})
 
-	cron.Every(15).Minutes().StartImmediately().Do(func() {
-		prices.RetrieveAllPrices(chainID, tokenMap)
-		events.HandleStakingPoolAdded(chainID, 0, nil)
-	})
-
 	cron.Every(15).Minute().Do(func() {
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+		currentTokenMap, _ := storage.ListERC20(chainID)
+		prices.RetrieveAllPrices(chainID, currentTokenMap)
 		indexer.IndexNewStrategies(chainID, vaultMap)
+		indexer.IndexStakingPools(chainID)
 
 		apr.ComputeChainAPR(chainID)
 		go risk.InitRiskScore(chainID)

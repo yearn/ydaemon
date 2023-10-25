@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -177,8 +178,19 @@ func fetchPrices(
 	** If the price is missing, check if it's a vault and try to compute the price from the
 	** underlying tokens.
 	**********************************************************************************************/
+	logs.Error(
+		newPriceMap[common.HexToAddress(`0x667002f9dc61ebcba8ee1cbeb2ad04060388f223`)],
+		newPriceMap[common.HexToAddress(`0x78e20312105a85b7fe86db119cfd5cd8de81fdaa`)],
+	)
+
 	for _, token := range tokenMap {
+		if addresses.Equals(token.Address, `0x78e20312105a85b7fe86db119cfd5cd8de81fdaa`) {
+			logs.Pretty(`SAAME BEFORE`)
+		}
 		if value, ok := newPriceMap[token.Address]; !ok || value.Price.IsZero() {
+			if addresses.Equals(token.Address, `0x78e20312105a85b7fe86db119cfd5cd8de81fdaa`) {
+				logs.Pretty(`SAAME`)
+			}
 			if token.IsVaultLike() {
 				ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 				underlyingToken := token.UnderlyingTokensAddresses[0]
@@ -198,6 +210,7 @@ func fetchPrices(
 			}
 		}
 	}
+	logs.Error(newPriceMap[common.HexToAddress(`0x667002f9dc61ebcba8ee1cbeb2ad04060388f223`)])
 
 	/**********************************************************************************************
 	** If the price is still missing, we can fallback to try to retreive the price per share of the
@@ -238,6 +251,7 @@ func fetchPrices(
 		}
 	}
 
+	logs.Pretty(`DONE`)
 	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/

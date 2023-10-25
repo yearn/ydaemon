@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -19,10 +18,11 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
-	stakingContract, ok := store.GetStakingPoolForVault(chainID, vault.Address)
+	stakingContract, ok := storage.GetStakingPoolForVault(chainID, vault.Address)
 	if !ok {
 		return bigNumber.NewFloat(0)
 	}
+	logs.Success(`Found staking contract for ` + vault.Address.Hex())
 
 	/**********************************************************************************************
 	** Once we got it we will need a few things from the staking contract. We will use a multicall
@@ -97,6 +97,8 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 		rewardsPrice = tokenPrice.HumanizedPrice
 	}
 
+	logs.Pretty(periodFinish, rewardRateRaw, totalSupplyRaw, rewardsTokenRaw, vaultPrice, rewardsPrice)
+
 	/**********************************************************************************************
 	** Then, we need to scale the decimals of the rewardRate and the totalSupply to match the
 	** decimals of the vault.
@@ -105,6 +107,7 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, vaultToken.Decimals)
 	perStakingTokenRate := bigNumber.NewFloat(0).Div(rewardRate, totalSupply)
 	secondsPerYear := bigNumber.NewFloat(31_556_952)
+	logs.Pretty(perStakingTokenRate, secondsPerYear)
 
 	/**********************************************************************************************
 	** Finally, we can compute the APR
@@ -112,5 +115,6 @@ func computeStakingRewardsAPR(chainID uint64, vault models.TVault) *bigNumber.Fl
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
+	logs.Success(stakingRewardAPR)
 	return stakingRewardAPR
 }

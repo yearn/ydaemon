@@ -63,9 +63,9 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 		}
 
 		if vault.Version == `3.0.0` {
-			newStrategy = handleV3StrategyCalls(strat, response)
+			newStrategy = handleV3StrategyCalls(newStrategy, response)
 		} else {
-			newStrategy = handleV2StrategyCalls(strat, response)
+			newStrategy = handleV2StrategyCalls(newStrategy, response)
 		}
 
 		/******************************************************************************************

@@ -43,6 +43,7 @@ func (v TStrategy) AssignTStrategy(strategy models.TStrategy) TStrategy {
 		PerformanceFee: strategy.LastPerformanceFee.Uint64(),
 		LastReport:     strategy.LastReport.Uint64(),
 		DebtRatio:      strategy.LastDebtRatio.Uint64(),
+		InQueue:        strategy.IsInQueue,
 	}
 	return v
 }

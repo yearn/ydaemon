@@ -34,20 +34,32 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
-	prices.RetrieveAllPrices(chainID, tokenMap)           // Retrieve the prices for all tokens
-	fetcher.RetrieveAllStrategies(chainID, strategiesMap) // Retrieve the strategies for all chains
+
+	underWg := sync.WaitGroup{}
+	underWg.Add(3)
+	go func() {
+		prices.RetrieveAllPrices(chainID, tokenMap)
+		underWg.Done()
+	}() // Retrieve the prices for all tokens
+
+	go func() {
+		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+		underWg.Done()
+	}() // Retrieve the strategies for all chains
+
+	go func() {
+		indexer.IndexStakingPools(chainID)
+		underWg.Done()
+	}() // Retrieve the staking pools
+	wg.Wait()
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
 	cron.Every(15).Minute().Do(func() {
-		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)
-		indexer.IndexNewStrategies(chainID, vaultMap)
-		indexer.IndexStakingPools(chainID)
-
 		apr.ComputeChainAPR(chainID)
 		go risk.InitRiskScore(chainID)
 	})

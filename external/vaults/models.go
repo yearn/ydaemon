@@ -140,6 +140,7 @@ type TSimplifiedExternalVault struct {
 	Symbol         string                        `json:"symbol"`
 	Name           string                        `json:"name"`
 	Category       string                        `json:"category"`
+	Version        string                        `json:"version"`
 	Decimals       uint64                        `json:"decimals"`
 	ChainID        uint64                        `json:"chainID"`
 	Retired        bool                          `json:"retired"`

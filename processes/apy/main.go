@@ -1,15 +1,10 @@
 package apy
 
 import (
-	"math/big"
-
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/strategies"
@@ -43,44 +38,17 @@ func ComputeChainAPR(chainID uint64) {
 		ppsInception := bigNumber.NewFloat(1)
 		ppsToday := helpers.GetToday(ppsPerTime, vault.Decimals)
 		if ppsToday == nil || ppsToday.IsZero() {
-			vaultContract, err := contracts.NewYearnVaultCaller(vault.Address, ethereum.GetRPC(chainID))
-			if err != nil {
-				logs.Error("Could not get vault contract for " + vault.Address.Hex())
-				continue
-			}
-			pps, _ := vaultContract.PricePerShare(nil)
-			ppsToday = helpers.ToNormalizedAmount(bigNumber.SetInt(pps), vault.Decimals)
+			ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vault.Decimals)
 		}
 
 		ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vault.Decimals)
 		if ppsWeekAgo == nil || ppsWeekAgo.IsZero() {
-			vaultContract, err := contracts.NewYearnVaultCaller(vault.Address, ethereum.GetRPC(chainID))
-			if err != nil {
-				logs.Error("Could not get vault contract for " + vault.Address.Hex())
-				continue
-			}
-			blocksPerDay := 7150
-			estBlockLastWeek := blocksPerDay * 7
-			opts := &bind.CallOpts{
-				BlockNumber: big.NewInt(int64(estBlockLastWeek)),
-			}
-			pps, _ := vaultContract.PricePerShare(opts)
-			ppsWeekAgo = helpers.ToNormalizedAmount(bigNumber.SetInt(pps), vault.Decimals)
+			ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vault.Decimals)
 		}
+
 		ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vault.Decimals)
 		if ppsMonthAgo == nil || ppsMonthAgo.IsZero() {
-			vaultContract, err := contracts.NewYearnVaultCaller(vault.Address, ethereum.GetRPC(chainID))
-			if err != nil {
-				logs.Error("Could not get vault contract for " + vault.Address.Hex())
-				continue
-			}
-			blocksPerDay := 7150
-			estBlockLastWeek := blocksPerDay * 30
-			opts := &bind.CallOpts{
-				BlockNumber: big.NewInt(int64(estBlockLastWeek)),
-			}
-			pps, _ := vaultContract.PricePerShare(opts)
-			ppsMonthAgo = helpers.ToNormalizedAmount(bigNumber.SetInt(pps), vault.Decimals)
+			ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vault.Decimals)
 		}
 
 		/**********************************************************************************************

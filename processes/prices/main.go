@@ -75,13 +75,6 @@ func fetchPrices(
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
 	** optimism
 	**********************************************************************************************/
-	priceMapFromVeloPairsAPI := getPricesFromVeloPairsAPI(chainID)
-	for token, price := range priceMapFromVeloPairsAPI {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
-		}
-	}
-
 	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
 	for token, price := range priceMapFromVeloOracle {
 		if !price.IsZero() && newPriceMap[token] == nil {
@@ -180,6 +173,9 @@ func fetchPrices(
 					ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 					underlyingToken := token.UnderlyingTokensAddresses[0]
 					ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
+					if ppsToday == nil || ppsToday.IsZero() {
+						ppsToday = ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
+					}
 					underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken])
 					vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
 					newPriceMap[token.Address] = vaultPrice.Int()

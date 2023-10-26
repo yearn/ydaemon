@@ -17,7 +17,6 @@ import (
 	"github.com/yearn/ydaemon/internal/multicalls"
 )
 
-var VELO_PAIR_URI = `https://api.velodrome.finance/api/v1/pairs`
 var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x4D996E294B00cE8287C16A2b9A4e637ecA5c939f`)
 var VELO_SUGAR_ORACLE_ADDRESS = common.HexToAddress(`0x395942c2049604a314d39f370dfb8d87aac89e16`)
 var OPT_WETH_ADDRESS = common.HexToAddress(`0x4200000000000000000000000000000000000006`)
@@ -103,48 +102,6 @@ func fetchVelo(url string) []TVeloPairData {
 		return []TVeloPairData{}
 	}
 	return factories.Data
-}
-
-// getPricesFromVeloPairsAPI is used after setting the prices from the multicall, aka the lens contract.
-// Some missing prices may exists and we can try to call the VELO API to get them
-func getPricesFromVeloPairsAPI(chainID uint64) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
-	if chainID != 10 {
-		return newPriceMap
-	}
-	veloPairs := fetchVelo(VELO_PAIR_URI)
-
-	// For each pool, we calculate the price per token and assign it to the token
-	// if the Store price is 0
-	for _, pair := range veloPairs {
-		coins := []TVeloToken{}
-		coins = append(coins, pair.Token0)
-		coins = append(coins, pair.Token1)
-		for _, bribes := range pair.Gauge.Bribes {
-			coins = append(coins, bribes.Token)
-		}
-		for _, coin := range coins {
-			coinAddress := common.HexToAddress(coin.Address)
-			coinPrice := bigNumber.NewFloat(coin.Price)
-			coinPrice = coinPrice.Mul(coinPrice, bigNumber.NewFloat(1e6))
-			coinPriceBigInt := coinPrice.Int()
-			newPriceMap[coinAddress] = coinPriceBigInt
-		}
-
-		if pair.TotalSupply > 0 {
-			if (pair.Token0.Price == 0) || (pair.Reserve1 == 0) {
-				continue
-			}
-
-			priceOfWrapper := (pair.Token1.Price * pair.Reserve1) / (pair.Token0.Price * pair.Reserve0)
-			wrapperPrice := bigNumber.NewFloat(priceOfWrapper)
-			wrapperPrice = wrapperPrice.Mul(wrapperPrice, bigNumber.NewFloat(1e6))
-			wrapperPriceBigInt := wrapperPrice.Int()
-			newPriceMap[common.HexToAddress(pair.Address)] = wrapperPriceBigInt
-		}
-
-	}
-	return newPriceMap
 }
 
 // fetchPricesFromSugar is used to fetch prices from the sugar APR (velo).

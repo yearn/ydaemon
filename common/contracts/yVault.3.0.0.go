@@ -28,8 +28,8 @@ var (
 	_ = event.NewSubscription
 )
 
-// TV3StrategyParams is an auto generated low-level Go binding around an user-defined struct.
-type TV3StrategyParams struct {
+// Struct0 is an auto generated low-level Go binding around an user-defined struct.
+type Struct0 struct {
 	Activation  *big.Int
 	LastReport  *big.Int
 	CurrentDebt *big.Int
@@ -38,7 +38,7 @@ type TV3StrategyParams struct {
 
 // Yvault300MetaData contains all meta data concerning the Yvault300 contract.
 var Yvault300MetaData = &bind.MetaData{
-	ABI: "[{\"name\":\"Deposit\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"assets\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"shares\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Withdraw\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"receiver\",\"type\":\"address\",\"indexed\":true},{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"assets\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"shares\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Transfer\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"receiver\",\"type\":\"address\",\"indexed\":true},{\"name\":\"value\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Approval\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"spender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"value\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"StrategyChanged\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"change_type\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"StrategyReported\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"gain\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"loss\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"current_debt\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"protocol_fees\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"total_fees\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"total_refunds\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"DebtUpdated\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"current_debt\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"new_debt\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"RoleSet\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":true},{\"name\":\"role\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"RoleStatusChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\",\"indexed\":true},{\"name\":\"status\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateRoleManager\",\"inputs\":[{\"name\":\"role_manager\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateAccountant\",\"inputs\":[{\"name\":\"accountant\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateDefaultQueue\",\"inputs\":[{\"name\":\"new_default_queue\",\"type\":\"address[]\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdatedMaxDebtForStrategy\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"new_debt\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateDepositLimit\",\"inputs\":[{\"name\":\"deposit_limit\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateMinimumTotalIdle\",\"inputs\":[{\"name\":\"minimum_total_idle\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateProfitMaxUnlockTime\",\"inputs\":[{\"name\":\"profit_max_unlock_time\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"DebtPurchased\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"amount\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Shutdown\",\"inputs\":[],\"anonymous\":false,\"type\":\"event\"},{\"stateMutability\":\"nonpayable\",\"type\":\"constructor\",\"inputs\":[{\"name\":\"asset\",\"type\":\"address\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"symbol\",\"type\":\"string\"},{\"name\":\"role_manager\",\"type\":\"address\"},{\"name\":\"profit_max_unlock_time\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_accountant\",\"inputs\":[{\"name\":\"new_accountant\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_default_queue\",\"inputs\":[{\"name\":\"new_default_queue\",\"type\":\"address[]\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_deposit_limit\",\"inputs\":[{\"name\":\"deposit_limit\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_minimum_total_idle\",\"inputs\":[{\"name\":\"minimum_total_idle\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_profit_max_unlock_time\",\"inputs\":[{\"name\":\"new_profit_max_unlock_time\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_role\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_open_role\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"close_open_role\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transfer_role_manager\",\"inputs\":[{\"name\":\"role_manager\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"accept_role_manager\",\"inputs\":[],\"outputs\":[]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"unlocked_shares\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"pricePerShare\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"availableDepositLimit\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"get_default_queue\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"process_report\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"buy_debt\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"add_strategy\",\"inputs\":[{\"name\":\"new_strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"revoke_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"force_revoke_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"update_max_debt_for_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"new_max_debt\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"update_debt\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"target_debt\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"shutdown_vault\",\"inputs\":[],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"deposit\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"mint\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"approve\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transfer\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transferFrom\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"increaseAllowance\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"decreaseAllowance\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"permit\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"deadline\",\"type\":\"uint256\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"balanceOf\",\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalSupply\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"asset\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"decimals\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalAssets\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalIdle\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalDebt\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"convertToShares\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewDeposit\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewMint\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"convertToAssets\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxDeposit\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxMint\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxWithdraw\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxRedeem\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewWithdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewRedeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"api_version\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"assess_share_of_unrealised_losses\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"assets_needed\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"profitMaxUnlockTime\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"fullProfitUnlockDate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"profitUnlockingRate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastProfitUpdate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"DOMAIN_SEPARATOR\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"FACTORY\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"strategies\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"tuple\",\"components\":[{\"name\":\"activation\",\"type\":\"uint256\"},{\"name\":\"last_report\",\"type\":\"uint256\"},{\"name\":\"current_debt\",\"type\":\"uint256\"},{\"name\":\"max_debt\",\"type\":\"uint256\"}]}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"default_queue\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"allowance\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"},{\"name\":\"arg1\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"total_supply\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"minimum_total_idle\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"deposit_limit\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"accountant\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"roles\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"open_roles\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"role_manager\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"future_role_manager\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"shutdown\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"name\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"symbol\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"nonces\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]}]",
+	ABI: "[{\"name\":\"Deposit\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"assets\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"shares\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Withdraw\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"receiver\",\"type\":\"address\",\"indexed\":true},{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"assets\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"shares\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Transfer\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"receiver\",\"type\":\"address\",\"indexed\":true},{\"name\":\"value\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Approval\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\",\"indexed\":true},{\"name\":\"spender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"value\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"StrategyChanged\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"change_type\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"StrategyReported\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"gain\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"loss\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"current_debt\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"protocol_fees\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"total_fees\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"total_refunds\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"DebtUpdated\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"current_debt\",\"type\":\"uint256\",\"indexed\":false},{\"name\":\"new_debt\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"RoleSet\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\",\"indexed\":true},{\"name\":\"role\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"RoleStatusChanged\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\",\"indexed\":true},{\"name\":\"status\",\"type\":\"uint256\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateRoleManager\",\"inputs\":[{\"name\":\"role_manager\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateAccountant\",\"inputs\":[{\"name\":\"accountant\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateDepositLimitModule\",\"inputs\":[{\"name\":\"deposit_limit_module\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateWithdrawLimitModule\",\"inputs\":[{\"name\":\"withdraw_limit_module\",\"type\":\"address\",\"indexed\":true}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateDefaultQueue\",\"inputs\":[{\"name\":\"new_default_queue\",\"type\":\"address[]\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateUseDefaultQueue\",\"inputs\":[{\"name\":\"use_default_queue\",\"type\":\"bool\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdatedMaxDebtForStrategy\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\",\"indexed\":true},{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"new_debt\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateDepositLimit\",\"inputs\":[{\"name\":\"deposit_limit\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateMinimumTotalIdle\",\"inputs\":[{\"name\":\"minimum_total_idle\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"UpdateProfitMaxUnlockTime\",\"inputs\":[{\"name\":\"profit_max_unlock_time\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"DebtPurchased\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\",\"indexed\":true},{\"name\":\"amount\",\"type\":\"uint256\",\"indexed\":false}],\"anonymous\":false,\"type\":\"event\"},{\"name\":\"Shutdown\",\"inputs\":[],\"anonymous\":false,\"type\":\"event\"},{\"stateMutability\":\"nonpayable\",\"type\":\"constructor\",\"inputs\":[{\"name\":\"asset\",\"type\":\"address\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"symbol\",\"type\":\"string\"},{\"name\":\"role_manager\",\"type\":\"address\"},{\"name\":\"profit_max_unlock_time\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_accountant\",\"inputs\":[{\"name\":\"new_accountant\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_default_queue\",\"inputs\":[{\"name\":\"new_default_queue\",\"type\":\"address[]\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_use_default_queue\",\"inputs\":[{\"name\":\"use_default_queue\",\"type\":\"bool\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_deposit_limit\",\"inputs\":[{\"name\":\"deposit_limit\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_deposit_limit_module\",\"inputs\":[{\"name\":\"deposit_limit_module\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_withdraw_limit_module\",\"inputs\":[{\"name\":\"withdraw_limit_module\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_minimum_total_idle\",\"inputs\":[{\"name\":\"minimum_total_idle\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setProfitMaxUnlockTime\",\"inputs\":[{\"name\":\"new_profit_max_unlock_time\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_role\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"add_role\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"remove_role\",\"inputs\":[{\"name\":\"account\",\"type\":\"address\"},{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"set_open_role\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"close_open_role\",\"inputs\":[{\"name\":\"role\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transfer_role_manager\",\"inputs\":[{\"name\":\"role_manager\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"accept_role_manager\",\"inputs\":[],\"outputs\":[]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"isShutdown\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"unlockedShares\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"pricePerShare\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"get_default_queue\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"process_report\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"},{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"buy_debt\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"add_strategy\",\"inputs\":[{\"name\":\"new_strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"revoke_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"force_revoke_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"update_max_debt_for_strategy\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"new_max_debt\",\"type\":\"uint256\"}],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"update_debt\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"target_debt\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"shutdown_vault\",\"inputs\":[],\"outputs\":[]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"deposit\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"mint\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"withdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"redeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"approve\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transfer\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transferFrom\",\"inputs\":[{\"name\":\"sender\",\"type\":\"address\"},{\"name\":\"receiver\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"increaseAllowance\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"decreaseAllowance\",\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"permit\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"deadline\",\"type\":\"uint256\"},{\"name\":\"v\",\"type\":\"uint8\"},{\"name\":\"r\",\"type\":\"bytes32\"},{\"name\":\"s\",\"type\":\"bytes32\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"balanceOf\",\"inputs\":[{\"name\":\"addr\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalSupply\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"asset\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"decimals\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalAssets\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalIdle\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"totalDebt\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"convertToShares\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewDeposit\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewMint\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"convertToAssets\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxDeposit\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxMint\",\"inputs\":[{\"name\":\"receiver\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxWithdraw\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxWithdraw\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxWithdraw\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxRedeem\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxRedeem\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"maxRedeem\",\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"max_loss\",\"type\":\"uint256\"},{\"name\":\"strategies\",\"type\":\"address[]\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewWithdraw\",\"inputs\":[{\"name\":\"assets\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"previewRedeem\",\"inputs\":[{\"name\":\"shares\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"apiVersion\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"assess_share_of_unrealised_losses\",\"inputs\":[{\"name\":\"strategy\",\"type\":\"address\"},{\"name\":\"assets_needed\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"profitMaxUnlockTime\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"fullProfitUnlockDate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"profitUnlockingRate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastProfitUpdate\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"DOMAIN_SEPARATOR\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"FACTORY\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"strategies\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"tuple\",\"components\":[{\"name\":\"activation\",\"type\":\"uint256\"},{\"name\":\"last_report\",\"type\":\"uint256\"},{\"name\":\"current_debt\",\"type\":\"uint256\"},{\"name\":\"max_debt\",\"type\":\"uint256\"}]}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"default_queue\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"use_default_queue\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"allowance\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"},{\"name\":\"arg1\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"total_supply\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"minimum_total_idle\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"deposit_limit\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"accountant\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"deposit_limit_module\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"withdraw_limit_module\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"roles\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"open_roles\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"uint256\"}],\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"role_manager\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"future_role_manager\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"address\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"name\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"symbol\",\"inputs\":[],\"outputs\":[{\"name\":\"\",\"type\":\"string\"}]},{\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"nonces\",\"inputs\":[{\"name\":\"arg0\",\"type\":\"address\"}],\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}]}]",
 }
 
 // Yvault300ABI is the input ABI used to generate the binding from.
@@ -311,12 +311,12 @@ func (_Yvault300 *Yvault300CallerSession) Allowance(arg0 common.Address, arg1 co
 	return _Yvault300.Contract.Allowance(&_Yvault300.CallOpts, arg0, arg1)
 }
 
-// ApiVersion is a free data retrieval call binding the contract method 0xeec40023.
+// ApiVersion is a free data retrieval call binding the contract method 0x25829410.
 //
-// Solidity: function api_version() view returns(string)
+// Solidity: function apiVersion() view returns(string)
 func (_Yvault300 *Yvault300Caller) ApiVersion(opts *bind.CallOpts) (string, error) {
 	var out []interface{}
-	err := _Yvault300.contract.Call(opts, &out, "api_version")
+	err := _Yvault300.contract.Call(opts, &out, "apiVersion")
 
 	if err != nil {
 		return *new(string), err
@@ -328,16 +328,16 @@ func (_Yvault300 *Yvault300Caller) ApiVersion(opts *bind.CallOpts) (string, erro
 
 }
 
-// ApiVersion is a free data retrieval call binding the contract method 0xeec40023.
+// ApiVersion is a free data retrieval call binding the contract method 0x25829410.
 //
-// Solidity: function api_version() view returns(string)
+// Solidity: function apiVersion() view returns(string)
 func (_Yvault300 *Yvault300Session) ApiVersion() (string, error) {
 	return _Yvault300.Contract.ApiVersion(&_Yvault300.CallOpts)
 }
 
-// ApiVersion is a free data retrieval call binding the contract method 0xeec40023.
+// ApiVersion is a free data retrieval call binding the contract method 0x25829410.
 //
-// Solidity: function api_version() view returns(string)
+// Solidity: function apiVersion() view returns(string)
 func (_Yvault300 *Yvault300CallerSession) ApiVersion() (string, error) {
 	return _Yvault300.Contract.ApiVersion(&_Yvault300.CallOpts)
 }
@@ -402,37 +402,6 @@ func (_Yvault300 *Yvault300Session) Asset() (common.Address, error) {
 // Solidity: function asset() view returns(address)
 func (_Yvault300 *Yvault300CallerSession) Asset() (common.Address, error) {
 	return _Yvault300.Contract.Asset(&_Yvault300.CallOpts)
-}
-
-// AvailableDepositLimit is a free data retrieval call binding the contract method 0x153c27c4.
-//
-// Solidity: function availableDepositLimit() view returns(uint256)
-func (_Yvault300 *Yvault300Caller) AvailableDepositLimit(opts *bind.CallOpts) (*big.Int, error) {
-	var out []interface{}
-	err := _Yvault300.contract.Call(opts, &out, "availableDepositLimit")
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// AvailableDepositLimit is a free data retrieval call binding the contract method 0x153c27c4.
-//
-// Solidity: function availableDepositLimit() view returns(uint256)
-func (_Yvault300 *Yvault300Session) AvailableDepositLimit() (*big.Int, error) {
-	return _Yvault300.Contract.AvailableDepositLimit(&_Yvault300.CallOpts)
-}
-
-// AvailableDepositLimit is a free data retrieval call binding the contract method 0x153c27c4.
-//
-// Solidity: function availableDepositLimit() view returns(uint256)
-func (_Yvault300 *Yvault300CallerSession) AvailableDepositLimit() (*big.Int, error) {
-	return _Yvault300.Contract.AvailableDepositLimit(&_Yvault300.CallOpts)
 }
 
 // BalanceOf is a free data retrieval call binding the contract method 0x70a08231.
@@ -621,6 +590,37 @@ func (_Yvault300 *Yvault300CallerSession) DepositLimit() (*big.Int, error) {
 	return _Yvault300.Contract.DepositLimit(&_Yvault300.CallOpts)
 }
 
+// DepositLimitModule is a free data retrieval call binding the contract method 0x61c2ccf4.
+//
+// Solidity: function deposit_limit_module() view returns(address)
+func (_Yvault300 *Yvault300Caller) DepositLimitModule(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "deposit_limit_module")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// DepositLimitModule is a free data retrieval call binding the contract method 0x61c2ccf4.
+//
+// Solidity: function deposit_limit_module() view returns(address)
+func (_Yvault300 *Yvault300Session) DepositLimitModule() (common.Address, error) {
+	return _Yvault300.Contract.DepositLimitModule(&_Yvault300.CallOpts)
+}
+
+// DepositLimitModule is a free data retrieval call binding the contract method 0x61c2ccf4.
+//
+// Solidity: function deposit_limit_module() view returns(address)
+func (_Yvault300 *Yvault300CallerSession) DepositLimitModule() (common.Address, error) {
+	return _Yvault300.Contract.DepositLimitModule(&_Yvault300.CallOpts)
+}
+
 // FullProfitUnlockDate is a free data retrieval call binding the contract method 0x2d632692.
 //
 // Solidity: function fullProfitUnlockDate() view returns(uint256)
@@ -712,6 +712,37 @@ func (_Yvault300 *Yvault300Session) GetDefaultQueue() ([]common.Address, error) 
 // Solidity: function get_default_queue() view returns(address[])
 func (_Yvault300 *Yvault300CallerSession) GetDefaultQueue() ([]common.Address, error) {
 	return _Yvault300.Contract.GetDefaultQueue(&_Yvault300.CallOpts)
+}
+
+// IsShutdown is a free data retrieval call binding the contract method 0xbf86d690.
+//
+// Solidity: function isShutdown() view returns(bool)
+func (_Yvault300 *Yvault300Caller) IsShutdown(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "isShutdown")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// IsShutdown is a free data retrieval call binding the contract method 0xbf86d690.
+//
+// Solidity: function isShutdown() view returns(bool)
+func (_Yvault300 *Yvault300Session) IsShutdown() (bool, error) {
+	return _Yvault300.Contract.IsShutdown(&_Yvault300.CallOpts)
+}
+
+// IsShutdown is a free data retrieval call binding the contract method 0xbf86d690.
+//
+// Solidity: function isShutdown() view returns(bool)
+func (_Yvault300 *Yvault300CallerSession) IsShutdown() (bool, error) {
+	return _Yvault300.Contract.IsShutdown(&_Yvault300.CallOpts)
 }
 
 // LastProfitUpdate is a free data retrieval call binding the contract method 0x8afca8f0.
@@ -838,6 +869,68 @@ func (_Yvault300 *Yvault300CallerSession) MaxRedeem(owner common.Address) (*big.
 	return _Yvault300.Contract.MaxRedeem(&_Yvault300.CallOpts, owner)
 }
 
+// MaxRedeem0 is a free data retrieval call binding the contract method 0x4abe4137.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300Caller) MaxRedeem0(opts *bind.CallOpts, owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "maxRedeem0", owner, max_loss)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MaxRedeem0 is a free data retrieval call binding the contract method 0x4abe4137.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300Session) MaxRedeem0(owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	return _Yvault300.Contract.MaxRedeem0(&_Yvault300.CallOpts, owner, max_loss)
+}
+
+// MaxRedeem0 is a free data retrieval call binding the contract method 0x4abe4137.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300CallerSession) MaxRedeem0(owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	return _Yvault300.Contract.MaxRedeem0(&_Yvault300.CallOpts, owner, max_loss)
+}
+
+// MaxRedeem1 is a free data retrieval call binding the contract method 0x34b5fab6.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300Caller) MaxRedeem1(opts *bind.CallOpts, owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "maxRedeem1", owner, max_loss, strategies)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MaxRedeem1 is a free data retrieval call binding the contract method 0x34b5fab6.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300Session) MaxRedeem1(owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	return _Yvault300.Contract.MaxRedeem1(&_Yvault300.CallOpts, owner, max_loss, strategies)
+}
+
+// MaxRedeem1 is a free data retrieval call binding the contract method 0x34b5fab6.
+//
+// Solidity: function maxRedeem(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300CallerSession) MaxRedeem1(owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	return _Yvault300.Contract.MaxRedeem1(&_Yvault300.CallOpts, owner, max_loss, strategies)
+}
+
 // MaxWithdraw is a free data retrieval call binding the contract method 0xce96cb77.
 //
 // Solidity: function maxWithdraw(address owner) view returns(uint256)
@@ -867,6 +960,68 @@ func (_Yvault300 *Yvault300Session) MaxWithdraw(owner common.Address) (*big.Int,
 // Solidity: function maxWithdraw(address owner) view returns(uint256)
 func (_Yvault300 *Yvault300CallerSession) MaxWithdraw(owner common.Address) (*big.Int, error) {
 	return _Yvault300.Contract.MaxWithdraw(&_Yvault300.CallOpts, owner)
+}
+
+// MaxWithdraw0 is a free data retrieval call binding the contract method 0x85b68756.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300Caller) MaxWithdraw0(opts *bind.CallOpts, owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "maxWithdraw0", owner, max_loss)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MaxWithdraw0 is a free data retrieval call binding the contract method 0x85b68756.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300Session) MaxWithdraw0(owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	return _Yvault300.Contract.MaxWithdraw0(&_Yvault300.CallOpts, owner, max_loss)
+}
+
+// MaxWithdraw0 is a free data retrieval call binding the contract method 0x85b68756.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss) view returns(uint256)
+func (_Yvault300 *Yvault300CallerSession) MaxWithdraw0(owner common.Address, max_loss *big.Int) (*big.Int, error) {
+	return _Yvault300.Contract.MaxWithdraw0(&_Yvault300.CallOpts, owner, max_loss)
+}
+
+// MaxWithdraw1 is a free data retrieval call binding the contract method 0x65cb6765.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300Caller) MaxWithdraw1(opts *bind.CallOpts, owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "maxWithdraw1", owner, max_loss, strategies)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MaxWithdraw1 is a free data retrieval call binding the contract method 0x65cb6765.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300Session) MaxWithdraw1(owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	return _Yvault300.Contract.MaxWithdraw1(&_Yvault300.CallOpts, owner, max_loss, strategies)
+}
+
+// MaxWithdraw1 is a free data retrieval call binding the contract method 0x65cb6765.
+//
+// Solidity: function maxWithdraw(address owner, uint256 max_loss, address[] strategies) view returns(uint256)
+func (_Yvault300 *Yvault300CallerSession) MaxWithdraw1(owner common.Address, max_loss *big.Int, strategies []common.Address) (*big.Int, error) {
+	return _Yvault300.Contract.MaxWithdraw1(&_Yvault300.CallOpts, owner, max_loss, strategies)
 }
 
 // MinimumTotalIdle is a free data retrieval call binding the contract method 0x356d6409.
@@ -1272,49 +1427,18 @@ func (_Yvault300 *Yvault300CallerSession) Roles(arg0 common.Address) (*big.Int, 
 	return _Yvault300.Contract.Roles(&_Yvault300.CallOpts, arg0)
 }
 
-// Shutdown is a free data retrieval call binding the contract method 0xfc0e74d1.
-//
-// Solidity: function shutdown() view returns(bool)
-func (_Yvault300 *Yvault300Caller) Shutdown(opts *bind.CallOpts) (bool, error) {
-	var out []interface{}
-	err := _Yvault300.contract.Call(opts, &out, "shutdown")
-
-	if err != nil {
-		return *new(bool), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-
-	return out0, err
-
-}
-
-// Shutdown is a free data retrieval call binding the contract method 0xfc0e74d1.
-//
-// Solidity: function shutdown() view returns(bool)
-func (_Yvault300 *Yvault300Session) Shutdown() (bool, error) {
-	return _Yvault300.Contract.Shutdown(&_Yvault300.CallOpts)
-}
-
-// Shutdown is a free data retrieval call binding the contract method 0xfc0e74d1.
-//
-// Solidity: function shutdown() view returns(bool)
-func (_Yvault300 *Yvault300CallerSession) Shutdown() (bool, error) {
-	return _Yvault300.Contract.Shutdown(&_Yvault300.CallOpts)
-}
-
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.Address) (TV3StrategyParams, error) {
+func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.Address) (Struct0, error) {
 	var out []interface{}
 	err := _Yvault300.contract.Call(opts, &out, "strategies", arg0)
 
 	if err != nil {
-		return *new(TV3StrategyParams), err
+		return *new(Struct0), err
 	}
 
-	out0 := *abi.ConvertType(out[0], new(TV3StrategyParams)).(*TV3StrategyParams)
+	out0 := *abi.ConvertType(out[0], new(Struct0)).(*Struct0)
 
 	return out0, err
 
@@ -1323,14 +1447,14 @@ func (_Yvault300 *Yvault300Caller) Strategies(opts *bind.CallOpts, arg0 common.A
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300Session) Strategies(arg0 common.Address) (TV3StrategyParams, error) {
+func (_Yvault300 *Yvault300Session) Strategies(arg0 common.Address) (Struct0, error) {
 	return _Yvault300.Contract.Strategies(&_Yvault300.CallOpts, arg0)
 }
 
 // Strategies is a free data retrieval call binding the contract method 0x39ebf823.
 //
 // Solidity: function strategies(address arg0) view returns((uint256,uint256,uint256,uint256))
-func (_Yvault300 *Yvault300CallerSession) Strategies(arg0 common.Address) (TV3StrategyParams, error) {
+func (_Yvault300 *Yvault300CallerSession) Strategies(arg0 common.Address) (Struct0, error) {
 	return _Yvault300.Contract.Strategies(&_Yvault300.CallOpts, arg0)
 }
 
@@ -1520,12 +1644,12 @@ func (_Yvault300 *Yvault300CallerSession) TotalSupply() (*big.Int, error) {
 	return _Yvault300.Contract.TotalSupply(&_Yvault300.CallOpts)
 }
 
-// UnlockedShares is a free data retrieval call binding the contract method 0xf3819242.
+// UnlockedShares is a free data retrieval call binding the contract method 0xd9a0e97a.
 //
-// Solidity: function unlocked_shares() view returns(uint256)
+// Solidity: function unlockedShares() view returns(uint256)
 func (_Yvault300 *Yvault300Caller) UnlockedShares(opts *bind.CallOpts) (*big.Int, error) {
 	var out []interface{}
-	err := _Yvault300.contract.Call(opts, &out, "unlocked_shares")
+	err := _Yvault300.contract.Call(opts, &out, "unlockedShares")
 
 	if err != nil {
 		return *new(*big.Int), err
@@ -1537,18 +1661,80 @@ func (_Yvault300 *Yvault300Caller) UnlockedShares(opts *bind.CallOpts) (*big.Int
 
 }
 
-// UnlockedShares is a free data retrieval call binding the contract method 0xf3819242.
+// UnlockedShares is a free data retrieval call binding the contract method 0xd9a0e97a.
 //
-// Solidity: function unlocked_shares() view returns(uint256)
+// Solidity: function unlockedShares() view returns(uint256)
 func (_Yvault300 *Yvault300Session) UnlockedShares() (*big.Int, error) {
 	return _Yvault300.Contract.UnlockedShares(&_Yvault300.CallOpts)
 }
 
-// UnlockedShares is a free data retrieval call binding the contract method 0xf3819242.
+// UnlockedShares is a free data retrieval call binding the contract method 0xd9a0e97a.
 //
-// Solidity: function unlocked_shares() view returns(uint256)
+// Solidity: function unlockedShares() view returns(uint256)
 func (_Yvault300 *Yvault300CallerSession) UnlockedShares() (*big.Int, error) {
 	return _Yvault300.Contract.UnlockedShares(&_Yvault300.CallOpts)
+}
+
+// UseDefaultQueue is a free data retrieval call binding the contract method 0x1e56558d.
+//
+// Solidity: function use_default_queue() view returns(bool)
+func (_Yvault300 *Yvault300Caller) UseDefaultQueue(opts *bind.CallOpts) (bool, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "use_default_queue")
+
+	if err != nil {
+		return *new(bool), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
+
+	return out0, err
+
+}
+
+// UseDefaultQueue is a free data retrieval call binding the contract method 0x1e56558d.
+//
+// Solidity: function use_default_queue() view returns(bool)
+func (_Yvault300 *Yvault300Session) UseDefaultQueue() (bool, error) {
+	return _Yvault300.Contract.UseDefaultQueue(&_Yvault300.CallOpts)
+}
+
+// UseDefaultQueue is a free data retrieval call binding the contract method 0x1e56558d.
+//
+// Solidity: function use_default_queue() view returns(bool)
+func (_Yvault300 *Yvault300CallerSession) UseDefaultQueue() (bool, error) {
+	return _Yvault300.Contract.UseDefaultQueue(&_Yvault300.CallOpts)
+}
+
+// WithdrawLimitModule is a free data retrieval call binding the contract method 0xf5ba68f3.
+//
+// Solidity: function withdraw_limit_module() view returns(address)
+func (_Yvault300 *Yvault300Caller) WithdrawLimitModule(opts *bind.CallOpts) (common.Address, error) {
+	var out []interface{}
+	err := _Yvault300.contract.Call(opts, &out, "withdraw_limit_module")
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// WithdrawLimitModule is a free data retrieval call binding the contract method 0xf5ba68f3.
+//
+// Solidity: function withdraw_limit_module() view returns(address)
+func (_Yvault300 *Yvault300Session) WithdrawLimitModule() (common.Address, error) {
+	return _Yvault300.Contract.WithdrawLimitModule(&_Yvault300.CallOpts)
+}
+
+// WithdrawLimitModule is a free data retrieval call binding the contract method 0xf5ba68f3.
+//
+// Solidity: function withdraw_limit_module() view returns(address)
+func (_Yvault300 *Yvault300CallerSession) WithdrawLimitModule() (common.Address, error) {
+	return _Yvault300.Contract.WithdrawLimitModule(&_Yvault300.CallOpts)
 }
 
 // AcceptRoleManager is a paid mutator transaction binding the contract method 0xf776bf1f.
@@ -1570,6 +1756,27 @@ func (_Yvault300 *Yvault300Session) AcceptRoleManager() (*types.Transaction, err
 // Solidity: function accept_role_manager() returns()
 func (_Yvault300 *Yvault300TransactorSession) AcceptRoleManager() (*types.Transaction, error) {
 	return _Yvault300.Contract.AcceptRoleManager(&_Yvault300.TransactOpts)
+}
+
+// AddRole is a paid mutator transaction binding the contract method 0xa97cefa2.
+//
+// Solidity: function add_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300Transactor) AddRole(opts *bind.TransactOpts, account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "add_role", account, role)
+}
+
+// AddRole is a paid mutator transaction binding the contract method 0xa97cefa2.
+//
+// Solidity: function add_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300Session) AddRole(account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.AddRole(&_Yvault300.TransactOpts, account, role)
+}
+
+// AddRole is a paid mutator transaction binding the contract method 0xa97cefa2.
+//
+// Solidity: function add_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300TransactorSession) AddRole(account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.AddRole(&_Yvault300.TransactOpts, account, role)
 }
 
 // AddStrategy is a paid mutator transaction binding the contract method 0xde7aeb41.
@@ -1866,6 +2073,27 @@ func (_Yvault300 *Yvault300TransactorSession) Redeem1(shares *big.Int, receiver 
 	return _Yvault300.Contract.Redeem1(&_Yvault300.TransactOpts, shares, receiver, owner, max_loss, strategies)
 }
 
+// RemoveRole is a paid mutator transaction binding the contract method 0xe2bf56dd.
+//
+// Solidity: function remove_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300Transactor) RemoveRole(opts *bind.TransactOpts, account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "remove_role", account, role)
+}
+
+// RemoveRole is a paid mutator transaction binding the contract method 0xe2bf56dd.
+//
+// Solidity: function remove_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300Session) RemoveRole(account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.RemoveRole(&_Yvault300.TransactOpts, account, role)
+}
+
+// RemoveRole is a paid mutator transaction binding the contract method 0xe2bf56dd.
+//
+// Solidity: function remove_role(address account, uint256 role) returns()
+func (_Yvault300 *Yvault300TransactorSession) RemoveRole(account common.Address, role *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.RemoveRole(&_Yvault300.TransactOpts, account, role)
+}
+
 // RevokeStrategy is a paid mutator transaction binding the contract method 0x577db316.
 //
 // Solidity: function revoke_strategy(address strategy) returns()
@@ -1885,6 +2113,27 @@ func (_Yvault300 *Yvault300Session) RevokeStrategy(strategy common.Address) (*ty
 // Solidity: function revoke_strategy(address strategy) returns()
 func (_Yvault300 *Yvault300TransactorSession) RevokeStrategy(strategy common.Address) (*types.Transaction, error) {
 	return _Yvault300.Contract.RevokeStrategy(&_Yvault300.TransactOpts, strategy)
+}
+
+// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0xdf69b22a.
+//
+// Solidity: function setProfitMaxUnlockTime(uint256 new_profit_max_unlock_time) returns()
+func (_Yvault300 *Yvault300Transactor) SetProfitMaxUnlockTime(opts *bind.TransactOpts, new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "setProfitMaxUnlockTime", new_profit_max_unlock_time)
+}
+
+// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0xdf69b22a.
+//
+// Solidity: function setProfitMaxUnlockTime(uint256 new_profit_max_unlock_time) returns()
+func (_Yvault300 *Yvault300Session) SetProfitMaxUnlockTime(new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetProfitMaxUnlockTime(&_Yvault300.TransactOpts, new_profit_max_unlock_time)
+}
+
+// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0xdf69b22a.
+//
+// Solidity: function setProfitMaxUnlockTime(uint256 new_profit_max_unlock_time) returns()
+func (_Yvault300 *Yvault300TransactorSession) SetProfitMaxUnlockTime(new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetProfitMaxUnlockTime(&_Yvault300.TransactOpts, new_profit_max_unlock_time)
 }
 
 // SetAccountant is a paid mutator transaction binding the contract method 0x71da8a8d.
@@ -1950,6 +2199,27 @@ func (_Yvault300 *Yvault300TransactorSession) SetDepositLimit(deposit_limit *big
 	return _Yvault300.Contract.SetDepositLimit(&_Yvault300.TransactOpts, deposit_limit)
 }
 
+// SetDepositLimitModule is a paid mutator transaction binding the contract method 0xbb435466.
+//
+// Solidity: function set_deposit_limit_module(address deposit_limit_module) returns()
+func (_Yvault300 *Yvault300Transactor) SetDepositLimitModule(opts *bind.TransactOpts, deposit_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "set_deposit_limit_module", deposit_limit_module)
+}
+
+// SetDepositLimitModule is a paid mutator transaction binding the contract method 0xbb435466.
+//
+// Solidity: function set_deposit_limit_module(address deposit_limit_module) returns()
+func (_Yvault300 *Yvault300Session) SetDepositLimitModule(deposit_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetDepositLimitModule(&_Yvault300.TransactOpts, deposit_limit_module)
+}
+
+// SetDepositLimitModule is a paid mutator transaction binding the contract method 0xbb435466.
+//
+// Solidity: function set_deposit_limit_module(address deposit_limit_module) returns()
+func (_Yvault300 *Yvault300TransactorSession) SetDepositLimitModule(deposit_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetDepositLimitModule(&_Yvault300.TransactOpts, deposit_limit_module)
+}
+
 // SetMinimumTotalIdle is a paid mutator transaction binding the contract method 0xbdd81c01.
 //
 // Solidity: function set_minimum_total_idle(uint256 minimum_total_idle) returns()
@@ -1992,27 +2262,6 @@ func (_Yvault300 *Yvault300TransactorSession) SetOpenRole(role *big.Int) (*types
 	return _Yvault300.Contract.SetOpenRole(&_Yvault300.TransactOpts, role)
 }
 
-// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0x830ca8c3.
-//
-// Solidity: function set_profit_max_unlock_time(uint256 new_profit_max_unlock_time) returns()
-func (_Yvault300 *Yvault300Transactor) SetProfitMaxUnlockTime(opts *bind.TransactOpts, new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
-	return _Yvault300.contract.Transact(opts, "set_profit_max_unlock_time", new_profit_max_unlock_time)
-}
-
-// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0x830ca8c3.
-//
-// Solidity: function set_profit_max_unlock_time(uint256 new_profit_max_unlock_time) returns()
-func (_Yvault300 *Yvault300Session) SetProfitMaxUnlockTime(new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
-	return _Yvault300.Contract.SetProfitMaxUnlockTime(&_Yvault300.TransactOpts, new_profit_max_unlock_time)
-}
-
-// SetProfitMaxUnlockTime is a paid mutator transaction binding the contract method 0x830ca8c3.
-//
-// Solidity: function set_profit_max_unlock_time(uint256 new_profit_max_unlock_time) returns()
-func (_Yvault300 *Yvault300TransactorSession) SetProfitMaxUnlockTime(new_profit_max_unlock_time *big.Int) (*types.Transaction, error) {
-	return _Yvault300.Contract.SetProfitMaxUnlockTime(&_Yvault300.TransactOpts, new_profit_max_unlock_time)
-}
-
 // SetRole is a paid mutator transaction binding the contract method 0x2cf7fd85.
 //
 // Solidity: function set_role(address account, uint256 role) returns()
@@ -2032,6 +2281,48 @@ func (_Yvault300 *Yvault300Session) SetRole(account common.Address, role *big.In
 // Solidity: function set_role(address account, uint256 role) returns()
 func (_Yvault300 *Yvault300TransactorSession) SetRole(account common.Address, role *big.Int) (*types.Transaction, error) {
 	return _Yvault300.Contract.SetRole(&_Yvault300.TransactOpts, account, role)
+}
+
+// SetUseDefaultQueue is a paid mutator transaction binding the contract method 0x29c8a33b.
+//
+// Solidity: function set_use_default_queue(bool use_default_queue) returns()
+func (_Yvault300 *Yvault300Transactor) SetUseDefaultQueue(opts *bind.TransactOpts, use_default_queue bool) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "set_use_default_queue", use_default_queue)
+}
+
+// SetUseDefaultQueue is a paid mutator transaction binding the contract method 0x29c8a33b.
+//
+// Solidity: function set_use_default_queue(bool use_default_queue) returns()
+func (_Yvault300 *Yvault300Session) SetUseDefaultQueue(use_default_queue bool) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetUseDefaultQueue(&_Yvault300.TransactOpts, use_default_queue)
+}
+
+// SetUseDefaultQueue is a paid mutator transaction binding the contract method 0x29c8a33b.
+//
+// Solidity: function set_use_default_queue(bool use_default_queue) returns()
+func (_Yvault300 *Yvault300TransactorSession) SetUseDefaultQueue(use_default_queue bool) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetUseDefaultQueue(&_Yvault300.TransactOpts, use_default_queue)
+}
+
+// SetWithdrawLimitModule is a paid mutator transaction binding the contract method 0x7b675894.
+//
+// Solidity: function set_withdraw_limit_module(address withdraw_limit_module) returns()
+func (_Yvault300 *Yvault300Transactor) SetWithdrawLimitModule(opts *bind.TransactOpts, withdraw_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.contract.Transact(opts, "set_withdraw_limit_module", withdraw_limit_module)
+}
+
+// SetWithdrawLimitModule is a paid mutator transaction binding the contract method 0x7b675894.
+//
+// Solidity: function set_withdraw_limit_module(address withdraw_limit_module) returns()
+func (_Yvault300 *Yvault300Session) SetWithdrawLimitModule(withdraw_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetWithdrawLimitModule(&_Yvault300.TransactOpts, withdraw_limit_module)
+}
+
+// SetWithdrawLimitModule is a paid mutator transaction binding the contract method 0x7b675894.
+//
+// Solidity: function set_withdraw_limit_module(address withdraw_limit_module) returns()
+func (_Yvault300 *Yvault300TransactorSession) SetWithdrawLimitModule(withdraw_limit_module common.Address) (*types.Transaction, error) {
+	return _Yvault300.Contract.SetWithdrawLimitModule(&_Yvault300.TransactOpts, withdraw_limit_module)
 }
 
 // ShutdownVault is a paid mutator transaction binding the contract method 0x36a55450.
@@ -4131,6 +4422,150 @@ func (_Yvault300 *Yvault300Filterer) ParseUpdateDepositLimit(log types.Log) (*Yv
 	return event, nil
 }
 
+// Yvault300UpdateDepositLimitModuleIterator is returned from FilterUpdateDepositLimitModule and is used to iterate over the raw logs and unpacked data for UpdateDepositLimitModule events raised by the Yvault300 contract.
+type Yvault300UpdateDepositLimitModuleIterator struct {
+	Event *Yvault300UpdateDepositLimitModule // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *Yvault300UpdateDepositLimitModuleIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(Yvault300UpdateDepositLimitModule)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(Yvault300UpdateDepositLimitModule)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *Yvault300UpdateDepositLimitModuleIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *Yvault300UpdateDepositLimitModuleIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// Yvault300UpdateDepositLimitModule represents a UpdateDepositLimitModule event raised by the Yvault300 contract.
+type Yvault300UpdateDepositLimitModule struct {
+	DepositLimitModule common.Address
+	Raw                types.Log // Blockchain specific contextual infos
+}
+
+// FilterUpdateDepositLimitModule is a free log retrieval operation binding the contract event 0x777d215db24fb9fee4ded85c66b422abd7162a1caa6ed3ec4c031f6cd29ada52.
+//
+// Solidity: event UpdateDepositLimitModule(address indexed deposit_limit_module)
+func (_Yvault300 *Yvault300Filterer) FilterUpdateDepositLimitModule(opts *bind.FilterOpts, deposit_limit_module []common.Address) (*Yvault300UpdateDepositLimitModuleIterator, error) {
+
+	var deposit_limit_moduleRule []interface{}
+	for _, deposit_limit_moduleItem := range deposit_limit_module {
+		deposit_limit_moduleRule = append(deposit_limit_moduleRule, deposit_limit_moduleItem)
+	}
+
+	logs, sub, err := _Yvault300.contract.FilterLogs(opts, "UpdateDepositLimitModule", deposit_limit_moduleRule)
+	if err != nil {
+		return nil, err
+	}
+	return &Yvault300UpdateDepositLimitModuleIterator{contract: _Yvault300.contract, event: "UpdateDepositLimitModule", logs: logs, sub: sub}, nil
+}
+
+// WatchUpdateDepositLimitModule is a free log subscription operation binding the contract event 0x777d215db24fb9fee4ded85c66b422abd7162a1caa6ed3ec4c031f6cd29ada52.
+//
+// Solidity: event UpdateDepositLimitModule(address indexed deposit_limit_module)
+func (_Yvault300 *Yvault300Filterer) WatchUpdateDepositLimitModule(opts *bind.WatchOpts, sink chan<- *Yvault300UpdateDepositLimitModule, deposit_limit_module []common.Address) (event.Subscription, error) {
+
+	var deposit_limit_moduleRule []interface{}
+	for _, deposit_limit_moduleItem := range deposit_limit_module {
+		deposit_limit_moduleRule = append(deposit_limit_moduleRule, deposit_limit_moduleItem)
+	}
+
+	logs, sub, err := _Yvault300.contract.WatchLogs(opts, "UpdateDepositLimitModule", deposit_limit_moduleRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(Yvault300UpdateDepositLimitModule)
+				if err := _Yvault300.contract.UnpackLog(event, "UpdateDepositLimitModule", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUpdateDepositLimitModule is a log parse operation binding the contract event 0x777d215db24fb9fee4ded85c66b422abd7162a1caa6ed3ec4c031f6cd29ada52.
+//
+// Solidity: event UpdateDepositLimitModule(address indexed deposit_limit_module)
+func (_Yvault300 *Yvault300Filterer) ParseUpdateDepositLimitModule(log types.Log) (*Yvault300UpdateDepositLimitModule, error) {
+	event := new(Yvault300UpdateDepositLimitModule)
+	if err := _Yvault300.contract.UnpackLog(event, "UpdateDepositLimitModule", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // Yvault300UpdateMinimumTotalIdleIterator is returned from FilterUpdateMinimumTotalIdle and is used to iterate over the raw logs and unpacked data for UpdateMinimumTotalIdle events raised by the Yvault300 contract.
 type Yvault300UpdateMinimumTotalIdleIterator struct {
 	Event *Yvault300UpdateMinimumTotalIdle // Event containing the contract specifics and raw log
@@ -4537,6 +4972,284 @@ func (_Yvault300 *Yvault300Filterer) WatchUpdateRoleManager(opts *bind.WatchOpts
 func (_Yvault300 *Yvault300Filterer) ParseUpdateRoleManager(log types.Log) (*Yvault300UpdateRoleManager, error) {
 	event := new(Yvault300UpdateRoleManager)
 	if err := _Yvault300.contract.UnpackLog(event, "UpdateRoleManager", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// Yvault300UpdateUseDefaultQueueIterator is returned from FilterUpdateUseDefaultQueue and is used to iterate over the raw logs and unpacked data for UpdateUseDefaultQueue events raised by the Yvault300 contract.
+type Yvault300UpdateUseDefaultQueueIterator struct {
+	Event *Yvault300UpdateUseDefaultQueue // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *Yvault300UpdateUseDefaultQueueIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(Yvault300UpdateUseDefaultQueue)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(Yvault300UpdateUseDefaultQueue)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *Yvault300UpdateUseDefaultQueueIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *Yvault300UpdateUseDefaultQueueIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// Yvault300UpdateUseDefaultQueue represents a UpdateUseDefaultQueue event raised by the Yvault300 contract.
+type Yvault300UpdateUseDefaultQueue struct {
+	UseDefaultQueue bool
+	Raw             types.Log // Blockchain specific contextual infos
+}
+
+// FilterUpdateUseDefaultQueue is a free log retrieval operation binding the contract event 0x1f88e73ebc721f227812938fe07a069ec1f7136aafacb397ed460bd15dee13f1.
+//
+// Solidity: event UpdateUseDefaultQueue(bool use_default_queue)
+func (_Yvault300 *Yvault300Filterer) FilterUpdateUseDefaultQueue(opts *bind.FilterOpts) (*Yvault300UpdateUseDefaultQueueIterator, error) {
+
+	logs, sub, err := _Yvault300.contract.FilterLogs(opts, "UpdateUseDefaultQueue")
+	if err != nil {
+		return nil, err
+	}
+	return &Yvault300UpdateUseDefaultQueueIterator{contract: _Yvault300.contract, event: "UpdateUseDefaultQueue", logs: logs, sub: sub}, nil
+}
+
+// WatchUpdateUseDefaultQueue is a free log subscription operation binding the contract event 0x1f88e73ebc721f227812938fe07a069ec1f7136aafacb397ed460bd15dee13f1.
+//
+// Solidity: event UpdateUseDefaultQueue(bool use_default_queue)
+func (_Yvault300 *Yvault300Filterer) WatchUpdateUseDefaultQueue(opts *bind.WatchOpts, sink chan<- *Yvault300UpdateUseDefaultQueue) (event.Subscription, error) {
+
+	logs, sub, err := _Yvault300.contract.WatchLogs(opts, "UpdateUseDefaultQueue")
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(Yvault300UpdateUseDefaultQueue)
+				if err := _Yvault300.contract.UnpackLog(event, "UpdateUseDefaultQueue", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUpdateUseDefaultQueue is a log parse operation binding the contract event 0x1f88e73ebc721f227812938fe07a069ec1f7136aafacb397ed460bd15dee13f1.
+//
+// Solidity: event UpdateUseDefaultQueue(bool use_default_queue)
+func (_Yvault300 *Yvault300Filterer) ParseUpdateUseDefaultQueue(log types.Log) (*Yvault300UpdateUseDefaultQueue, error) {
+	event := new(Yvault300UpdateUseDefaultQueue)
+	if err := _Yvault300.contract.UnpackLog(event, "UpdateUseDefaultQueue", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// Yvault300UpdateWithdrawLimitModuleIterator is returned from FilterUpdateWithdrawLimitModule and is used to iterate over the raw logs and unpacked data for UpdateWithdrawLimitModule events raised by the Yvault300 contract.
+type Yvault300UpdateWithdrawLimitModuleIterator struct {
+	Event *Yvault300UpdateWithdrawLimitModule // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *Yvault300UpdateWithdrawLimitModuleIterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(Yvault300UpdateWithdrawLimitModule)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(Yvault300UpdateWithdrawLimitModule)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *Yvault300UpdateWithdrawLimitModuleIterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *Yvault300UpdateWithdrawLimitModuleIterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// Yvault300UpdateWithdrawLimitModule represents a UpdateWithdrawLimitModule event raised by the Yvault300 contract.
+type Yvault300UpdateWithdrawLimitModule struct {
+	WithdrawLimitModule common.Address
+	Raw                 types.Log // Blockchain specific contextual infos
+}
+
+// FilterUpdateWithdrawLimitModule is a free log retrieval operation binding the contract event 0xce6e3f8beda82a13c441d76efd4a6335760f219f38c60502e6680060874e109d.
+//
+// Solidity: event UpdateWithdrawLimitModule(address indexed withdraw_limit_module)
+func (_Yvault300 *Yvault300Filterer) FilterUpdateWithdrawLimitModule(opts *bind.FilterOpts, withdraw_limit_module []common.Address) (*Yvault300UpdateWithdrawLimitModuleIterator, error) {
+
+	var withdraw_limit_moduleRule []interface{}
+	for _, withdraw_limit_moduleItem := range withdraw_limit_module {
+		withdraw_limit_moduleRule = append(withdraw_limit_moduleRule, withdraw_limit_moduleItem)
+	}
+
+	logs, sub, err := _Yvault300.contract.FilterLogs(opts, "UpdateWithdrawLimitModule", withdraw_limit_moduleRule)
+	if err != nil {
+		return nil, err
+	}
+	return &Yvault300UpdateWithdrawLimitModuleIterator{contract: _Yvault300.contract, event: "UpdateWithdrawLimitModule", logs: logs, sub: sub}, nil
+}
+
+// WatchUpdateWithdrawLimitModule is a free log subscription operation binding the contract event 0xce6e3f8beda82a13c441d76efd4a6335760f219f38c60502e6680060874e109d.
+//
+// Solidity: event UpdateWithdrawLimitModule(address indexed withdraw_limit_module)
+func (_Yvault300 *Yvault300Filterer) WatchUpdateWithdrawLimitModule(opts *bind.WatchOpts, sink chan<- *Yvault300UpdateWithdrawLimitModule, withdraw_limit_module []common.Address) (event.Subscription, error) {
+
+	var withdraw_limit_moduleRule []interface{}
+	for _, withdraw_limit_moduleItem := range withdraw_limit_module {
+		withdraw_limit_moduleRule = append(withdraw_limit_moduleRule, withdraw_limit_moduleItem)
+	}
+
+	logs, sub, err := _Yvault300.contract.WatchLogs(opts, "UpdateWithdrawLimitModule", withdraw_limit_moduleRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(Yvault300UpdateWithdrawLimitModule)
+				if err := _Yvault300.contract.UnpackLog(event, "UpdateWithdrawLimitModule", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUpdateWithdrawLimitModule is a log parse operation binding the contract event 0xce6e3f8beda82a13c441d76efd4a6335760f219f38c60502e6680060874e109d.
+//
+// Solidity: event UpdateWithdrawLimitModule(address indexed withdraw_limit_module)
+func (_Yvault300 *Yvault300Filterer) ParseUpdateWithdrawLimitModule(log types.Log) (*Yvault300UpdateWithdrawLimitModule, error) {
+	event := new(Yvault300UpdateWithdrawLimitModule)
+	if err := _Yvault300.contract.UnpackLog(event, "UpdateWithdrawLimitModule", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log

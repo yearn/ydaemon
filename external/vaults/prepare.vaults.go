@@ -72,6 +72,7 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 	simplifiedVault := TSimplifiedExternalVault{
 		Address:        vault.Address,
 		Type:           vault.Type,
+		Kind:           vault.Kind,
 		Symbol:         vault.Symbol,
 		Name:           vaultName,
 		Category:       vault.Category,

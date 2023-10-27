@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2023-10-26T18:38:05.563656+02:00",
+	"lastUpdate": "2023-10-27T11:34:23.914529+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
@@ -21,19 +21,51 @@
 			"decimals": 6,
 			"chainID": 137
 		},
-		"0xcaa17796bb3d4a71005cebd817cfeebf85d581b7": {
-			"address": "0xcaa17796bb3d4a71005cebd817cfeebf85d581b7",
+		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
+			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"underlyingTokensAddresses": [
 				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
 			],
 			"type": "Yearn Vault",
-			"name": "USDC yVault",
-			"symbol": "yvUSDC",
-			"displayName": "USDC yVault",
-			"displaySymbol": "yvUSDC",
+			"name": "USDC yVault-A",
+			"symbol": "yvUSDC-A",
+			"displayName": "USDC yVault-A",
+			"displaySymbol": "yvUSDC-A",
 			"description": "",
 			"category": "yVault",
-			"icon": "https://assets.smold.app/api/token/137/0xcAA17796bB3d4a71005CeBd817CFEebF85D581b7/logo-128.png",
+			"icon": "https://assets.smold.app/api/token/137/0xA013Fbd4b711f9ded6fB09C1c0d358E2FbC2EAA0/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
+			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
+			"underlyingTokensAddresses": [
+				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+			],
+			"type": "Yearn Vault",
+			"name": "Compound V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Compound V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xb1403908F772E4374BB151F7C67E88761a0Eb4f1/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
+			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
+			"underlyingTokensAddresses": [
+				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780/logo-128.png",
 			"decimals": 6,
 			"chainID": 137
 		}

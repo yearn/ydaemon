@@ -34,15 +34,9 @@ var POLYGON = TChain{
 	},
 	Registries: []TContractData{
 		{
-			Address: common.HexToAddress("0xFBB087B456a656Ab815EB2D0f3f21Aa409Cec33F"),
+			Address: common.HexToAddress("0xfF5e3A7C4cBfA9Dd361385c24C3a0A4eE63CE500"),
 			Version: 4,
-			Block:   47_462_833,
-		},
-		{
-			Address: common.HexToAddress("0x8D6Da363b53B8206AA8963763C8401aDF7c54541"),
-			Version: 4,
-			Block:   45_348_757,
-			Tag:     "experimental",
+			Block:   49_100_596,
 		},
 	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},

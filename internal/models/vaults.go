@@ -5,11 +5,20 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
+type TVaultKind string
+
+const (
+	VaultKindLegacy   TVaultKind = "Legacy"
+	VaultKindMultiple TVaultKind = "Multi Strategies"
+	VaultKindSingle   TVaultKind = "Single Strategy"
+)
+
 type TVaultsFromRegistry struct {
 	Address         common.Address `json:"address"`
 	RegistryAddress common.Address `json:"registryAddress"`
 	TokenAddress    common.Address `json:"tokenAddress"`
 	Type            TTokenType     `json:"type"`
+	Kind            TVaultKind     `json:"kind"`
 	APIVersion      string         `json:"version"`
 	ChainID         uint64         `json:"chainID"`
 	BlockNumber     uint64         `json:"blockNumber"`
@@ -47,6 +56,7 @@ type TVault struct {
 	AssetAddress common.Address `json:"token"`   // Address of the underlying token
 	Accountant   common.Address `json:"-"`       // The address of the accountant
 	Type         TTokenType     `json:"type"`
+	Kind         TVaultKind     `json:"kind"`
 	Version      string         `json:"version"`    // The version of the vault
 	Activation   uint64         `json:"activation"` // When the vault was activated
 	ChainID      uint64         `json:"chainID"`    // The chainID of the vault

@@ -58,12 +58,12 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last vault update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetShutdown(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetIsShutdown(vault.Address.Hex(), vault.Address, ``))
 	}
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAsset(vault.Address.Hex(), vault.Address))
-		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetRoleManager(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 	}
@@ -96,7 +96,7 @@ func getV2VaultCalls(vault models.TVault) []ethereum.Call {
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
-		calls = append(calls, multicalls.GetV3APIVersion(vault.Address.Hex(), vault.Address))
+		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetToken(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 	}
@@ -167,9 +167,9 @@ func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) 
 	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
 	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
 	rawDefaultQueue := response[vault.Address.Hex()+`get_default_queue`]
-	rawShutdown := response[vault.Address.Hex()+`shutdown`]
+	rawShutdown := response[vault.Address.Hex()+`isShutdown`]
 	rawUnderlying := response[vault.Address.Hex()+`asset`]
-	rawApiVersion := response[vault.Address.Hex()+`api_version`]
+	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
 	rawAccountant := response[vault.Address.Hex()+`accountant`]
 
 	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)

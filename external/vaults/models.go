@@ -94,6 +94,7 @@ type TExternalERC20Token struct {
 type TExternalVault struct {
 	Address           string                  `json:"address"`
 	Type              models.TTokenType       `json:"type"`
+	Kind              models.TVaultKind       `json:"kind"`
 	Symbol            string                  `json:"symbol"`
 	DisplaySymbol     string                  `json:"display_symbol"`
 	FormatedSymbol    string                  `json:"formated_symbol"`
@@ -137,6 +138,7 @@ type TSimplifiedExternalERC20Token struct {
 type TSimplifiedExternalVault struct {
 	Address        string                        `json:"address"`
 	Type           models.TTokenType             `json:"type"`
+	Kind           models.TVaultKind             `json:"kind"`
 	Symbol         string                        `json:"symbol"`
 	Name           string                        `json:"name"`
 	Category       string                        `json:"category"`
@@ -180,6 +182,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 	v.FormatedName = formatedName
 	v.Icon = vaultToken.Icon
 	v.Type = vaultToken.Type
+	v.Kind = vault.Kind
 	v.Decimals = vaultToken.Decimals
 
 	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)

@@ -30,7 +30,7 @@ var (
 
 // YRegistryV4MetaData contains all meta data concerning the YRegistryV4 contract.
 var YRegistryV4MetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_governance\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_releaseRegistry\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousGovernance\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newGovernance\",\"type\":\"address\"}],\"name\":\"GovernanceTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"strategy\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"}],\"name\":\"NewEndorsedStrategy\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"}],\"name\":\"NewEndorsedVault\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"strategy\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"}],\"name\":\"RemovedStrategy\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"}],\"name\":\"RemovedVault\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"assetIsUsed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"assets\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_strategy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_releaseDelta\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_deploymentTimestamp\",\"type\":\"uint256\"}],\"name\":\"endorseStrategy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_strategy\",\"type\":\"address\"}],\"name\":\"endorseStrategy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"name\":\"endorseVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_releaseDelta\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_deploymentTimestamp\",\"type\":\"uint256\"}],\"name\":\"endorseVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllEndorsedStrategies\",\"outputs\":[{\"internalType\":\"address[][]\",\"name\":\"allEndorsedStrategies\",\"type\":\"address[][]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllEndorsedVaults\",\"outputs\":[{\"internalType\":\"address[][]\",\"name\":\"allEndorsedVaults\",\"type\":\"address[][]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAssets\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getEndorsedStrategies\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getEndorsedVaults\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"governance\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"info\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"deploymentTimestamp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"tag\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_roleManager\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_profitMaxUnlockTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_releaseDelta\",\"type\":\"uint256\"}],\"name\":\"newEndorsedVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numAssets\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"numEndorsedStrategies\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"numEndorsedVaults\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"releaseRegistry\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"removeAsset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_strategy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"removeStrategy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"removeVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_tag\",\"type\":\"string\"}],\"name\":\"tagVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newGovernance\",\"type\":\"address\"}],\"name\":\"transferGovernance\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_governance\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_releaseRegistry\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousGovernance\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newGovernance\",\"type\":\"address\"}],\"name\":\"GovernanceTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultType\",\"type\":\"uint256\"}],\"name\":\"NewEndorsedVault\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"vault\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"releaseVersion\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vaultType\",\"type\":\"uint256\"}],\"name\":\"RemovedVault\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"MULTI_STRATEGY_TYPE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SINGLE_STRATEGY_TYPE\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"assetIsUsed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"assets\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"name\":\"endorseMultiStrategyVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"name\":\"endorseSingleStrategyVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_releaseDelta\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_vaultType\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_deploymentTimestamp\",\"type\":\"uint256\"}],\"name\":\"endorseVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllEndorsedVaults\",\"outputs\":[{\"internalType\":\"address[][]\",\"name\":\"allEndorsedVaults\",\"type\":\"address[][]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAssets\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"getEndorsedVaults\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"governance\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_roleManager\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_profitMaxUnlockTime\",\"type\":\"uint256\"}],\"name\":\"newEndorsedVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"_roleManager\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_profitMaxUnlockTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_releaseDelta\",\"type\":\"uint256\"}],\"name\":\"newEndorsedVault\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"numAssets\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"}],\"name\":\"numEndorsedVaults\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"releaseRegistry\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"removeAsset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"removeVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_vault\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_tag\",\"type\":\"string\"}],\"name\":\"tagVault\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newGovernance\",\"type\":\"address\"}],\"name\":\"transferGovernance\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"vaultInfo\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint96\",\"name\":\"releaseVersion\",\"type\":\"uint96\"},{\"internalType\":\"uint128\",\"name\":\"vaultType\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"deploymentTimestamp\",\"type\":\"uint128\"},{\"internalType\":\"string\",\"name\":\"tag\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 }
 
 // YRegistryV4ABI is the input ABI used to generate the binding from.
@@ -179,6 +179,68 @@ func (_YRegistryV4 *YRegistryV4TransactorRaw) Transact(opts *bind.TransactOpts, 
 	return _YRegistryV4.Contract.contract.Transact(opts, method, params...)
 }
 
+// MULTISTRATEGYTYPE is a free data retrieval call binding the contract method 0x18d1dd83.
+//
+// Solidity: function MULTI_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4Caller) MULTISTRATEGYTYPE(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YRegistryV4.contract.Call(opts, &out, "MULTI_STRATEGY_TYPE")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// MULTISTRATEGYTYPE is a free data retrieval call binding the contract method 0x18d1dd83.
+//
+// Solidity: function MULTI_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4Session) MULTISTRATEGYTYPE() (*big.Int, error) {
+	return _YRegistryV4.Contract.MULTISTRATEGYTYPE(&_YRegistryV4.CallOpts)
+}
+
+// MULTISTRATEGYTYPE is a free data retrieval call binding the contract method 0x18d1dd83.
+//
+// Solidity: function MULTI_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4CallerSession) MULTISTRATEGYTYPE() (*big.Int, error) {
+	return _YRegistryV4.Contract.MULTISTRATEGYTYPE(&_YRegistryV4.CallOpts)
+}
+
+// SINGLESTRATEGYTYPE is a free data retrieval call binding the contract method 0x98a5e07b.
+//
+// Solidity: function SINGLE_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4Caller) SINGLESTRATEGYTYPE(opts *bind.CallOpts) (*big.Int, error) {
+	var out []interface{}
+	err := _YRegistryV4.contract.Call(opts, &out, "SINGLE_STRATEGY_TYPE")
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// SINGLESTRATEGYTYPE is a free data retrieval call binding the contract method 0x98a5e07b.
+//
+// Solidity: function SINGLE_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4Session) SINGLESTRATEGYTYPE() (*big.Int, error) {
+	return _YRegistryV4.Contract.SINGLESTRATEGYTYPE(&_YRegistryV4.CallOpts)
+}
+
+// SINGLESTRATEGYTYPE is a free data retrieval call binding the contract method 0x98a5e07b.
+//
+// Solidity: function SINGLE_STRATEGY_TYPE() view returns(uint256)
+func (_YRegistryV4 *YRegistryV4CallerSession) SINGLESTRATEGYTYPE() (*big.Int, error) {
+	return _YRegistryV4.Contract.SINGLESTRATEGYTYPE(&_YRegistryV4.CallOpts)
+}
+
 // AssetIsUsed is a free data retrieval call binding the contract method 0xac01762a.
 //
 // Solidity: function assetIsUsed(address ) view returns(bool)
@@ -239,37 +301,6 @@ func (_YRegistryV4 *YRegistryV4Session) Assets(arg0 *big.Int) (common.Address, e
 // Solidity: function assets(uint256 ) view returns(address)
 func (_YRegistryV4 *YRegistryV4CallerSession) Assets(arg0 *big.Int) (common.Address, error) {
 	return _YRegistryV4.Contract.Assets(&_YRegistryV4.CallOpts, arg0)
-}
-
-// GetAllEndorsedStrategies is a free data retrieval call binding the contract method 0x06a70f3d.
-//
-// Solidity: function getAllEndorsedStrategies() view returns(address[][] allEndorsedStrategies)
-func (_YRegistryV4 *YRegistryV4Caller) GetAllEndorsedStrategies(opts *bind.CallOpts) ([][]common.Address, error) {
-	var out []interface{}
-	err := _YRegistryV4.contract.Call(opts, &out, "getAllEndorsedStrategies")
-
-	if err != nil {
-		return *new([][]common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([][]common.Address)).(*[][]common.Address)
-
-	return out0, err
-
-}
-
-// GetAllEndorsedStrategies is a free data retrieval call binding the contract method 0x06a70f3d.
-//
-// Solidity: function getAllEndorsedStrategies() view returns(address[][] allEndorsedStrategies)
-func (_YRegistryV4 *YRegistryV4Session) GetAllEndorsedStrategies() ([][]common.Address, error) {
-	return _YRegistryV4.Contract.GetAllEndorsedStrategies(&_YRegistryV4.CallOpts)
-}
-
-// GetAllEndorsedStrategies is a free data retrieval call binding the contract method 0x06a70f3d.
-//
-// Solidity: function getAllEndorsedStrategies() view returns(address[][] allEndorsedStrategies)
-func (_YRegistryV4 *YRegistryV4CallerSession) GetAllEndorsedStrategies() ([][]common.Address, error) {
-	return _YRegistryV4.Contract.GetAllEndorsedStrategies(&_YRegistryV4.CallOpts)
 }
 
 // GetAllEndorsedVaults is a free data retrieval call binding the contract method 0x70df8ba7.
@@ -334,37 +365,6 @@ func (_YRegistryV4 *YRegistryV4CallerSession) GetAssets() ([]common.Address, err
 	return _YRegistryV4.Contract.GetAssets(&_YRegistryV4.CallOpts)
 }
 
-// GetEndorsedStrategies is a free data retrieval call binding the contract method 0x153a5b16.
-//
-// Solidity: function getEndorsedStrategies(address _asset) view returns(address[])
-func (_YRegistryV4 *YRegistryV4Caller) GetEndorsedStrategies(opts *bind.CallOpts, _asset common.Address) ([]common.Address, error) {
-	var out []interface{}
-	err := _YRegistryV4.contract.Call(opts, &out, "getEndorsedStrategies", _asset)
-
-	if err != nil {
-		return *new([]common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]common.Address)).(*[]common.Address)
-
-	return out0, err
-
-}
-
-// GetEndorsedStrategies is a free data retrieval call binding the contract method 0x153a5b16.
-//
-// Solidity: function getEndorsedStrategies(address _asset) view returns(address[])
-func (_YRegistryV4 *YRegistryV4Session) GetEndorsedStrategies(_asset common.Address) ([]common.Address, error) {
-	return _YRegistryV4.Contract.GetEndorsedStrategies(&_YRegistryV4.CallOpts, _asset)
-}
-
-// GetEndorsedStrategies is a free data retrieval call binding the contract method 0x153a5b16.
-//
-// Solidity: function getEndorsedStrategies(address _asset) view returns(address[])
-func (_YRegistryV4 *YRegistryV4CallerSession) GetEndorsedStrategies(_asset common.Address) ([]common.Address, error) {
-	return _YRegistryV4.Contract.GetEndorsedStrategies(&_YRegistryV4.CallOpts, _asset)
-}
-
 // GetEndorsedVaults is a free data retrieval call binding the contract method 0x53d2e949.
 //
 // Solidity: function getEndorsedVaults(address _asset) view returns(address[])
@@ -425,61 +425,6 @@ func (_YRegistryV4 *YRegistryV4Session) Governance() (common.Address, error) {
 // Solidity: function governance() view returns(address)
 func (_YRegistryV4 *YRegistryV4CallerSession) Governance() (common.Address, error) {
 	return _YRegistryV4.Contract.Governance(&_YRegistryV4.CallOpts)
-}
-
-// Info is a free data retrieval call binding the contract method 0x0aae7a6b.
-//
-// Solidity: function info(address ) view returns(address asset, uint256 releaseVersion, uint256 deploymentTimestamp, string tag)
-func (_YRegistryV4 *YRegistryV4Caller) Info(opts *bind.CallOpts, arg0 common.Address) (struct {
-	Asset               common.Address
-	ReleaseVersion      *big.Int
-	DeploymentTimestamp *big.Int
-	Tag                 string
-}, error) {
-	var out []interface{}
-	err := _YRegistryV4.contract.Call(opts, &out, "info", arg0)
-
-	outstruct := new(struct {
-		Asset               common.Address
-		ReleaseVersion      *big.Int
-		DeploymentTimestamp *big.Int
-		Tag                 string
-	})
-	if err != nil {
-		return *outstruct, err
-	}
-
-	outstruct.Asset = *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	outstruct.ReleaseVersion = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
-	outstruct.DeploymentTimestamp = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
-	outstruct.Tag = *abi.ConvertType(out[3], new(string)).(*string)
-
-	return *outstruct, err
-
-}
-
-// Info is a free data retrieval call binding the contract method 0x0aae7a6b.
-//
-// Solidity: function info(address ) view returns(address asset, uint256 releaseVersion, uint256 deploymentTimestamp, string tag)
-func (_YRegistryV4 *YRegistryV4Session) Info(arg0 common.Address) (struct {
-	Asset               common.Address
-	ReleaseVersion      *big.Int
-	DeploymentTimestamp *big.Int
-	Tag                 string
-}, error) {
-	return _YRegistryV4.Contract.Info(&_YRegistryV4.CallOpts, arg0)
-}
-
-// Info is a free data retrieval call binding the contract method 0x0aae7a6b.
-//
-// Solidity: function info(address ) view returns(address asset, uint256 releaseVersion, uint256 deploymentTimestamp, string tag)
-func (_YRegistryV4 *YRegistryV4CallerSession) Info(arg0 common.Address) (struct {
-	Asset               common.Address
-	ReleaseVersion      *big.Int
-	DeploymentTimestamp *big.Int
-	Tag                 string
-}, error) {
-	return _YRegistryV4.Contract.Info(&_YRegistryV4.CallOpts, arg0)
 }
 
 // Name is a free data retrieval call binding the contract method 0x06fdde03.
@@ -544,37 +489,6 @@ func (_YRegistryV4 *YRegistryV4CallerSession) NumAssets() (*big.Int, error) {
 	return _YRegistryV4.Contract.NumAssets(&_YRegistryV4.CallOpts)
 }
 
-// NumEndorsedStrategies is a free data retrieval call binding the contract method 0x3e3c7b60.
-//
-// Solidity: function numEndorsedStrategies(address _asset) view returns(uint256)
-func (_YRegistryV4 *YRegistryV4Caller) NumEndorsedStrategies(opts *bind.CallOpts, _asset common.Address) (*big.Int, error) {
-	var out []interface{}
-	err := _YRegistryV4.contract.Call(opts, &out, "numEndorsedStrategies", _asset)
-
-	if err != nil {
-		return *new(*big.Int), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
-
-	return out0, err
-
-}
-
-// NumEndorsedStrategies is a free data retrieval call binding the contract method 0x3e3c7b60.
-//
-// Solidity: function numEndorsedStrategies(address _asset) view returns(uint256)
-func (_YRegistryV4 *YRegistryV4Session) NumEndorsedStrategies(_asset common.Address) (*big.Int, error) {
-	return _YRegistryV4.Contract.NumEndorsedStrategies(&_YRegistryV4.CallOpts, _asset)
-}
-
-// NumEndorsedStrategies is a free data retrieval call binding the contract method 0x3e3c7b60.
-//
-// Solidity: function numEndorsedStrategies(address _asset) view returns(uint256)
-func (_YRegistryV4 *YRegistryV4CallerSession) NumEndorsedStrategies(_asset common.Address) (*big.Int, error) {
-	return _YRegistryV4.Contract.NumEndorsedStrategies(&_YRegistryV4.CallOpts, _asset)
-}
-
 // NumEndorsedVaults is a free data retrieval call binding the contract method 0xb2c6161c.
 //
 // Solidity: function numEndorsedVaults(address _asset) view returns(uint256)
@@ -637,109 +551,169 @@ func (_YRegistryV4 *YRegistryV4CallerSession) ReleaseRegistry() (common.Address,
 	return _YRegistryV4.Contract.ReleaseRegistry(&_YRegistryV4.CallOpts)
 }
 
-// EndorseStrategy is a paid mutator transaction binding the contract method 0x0724b07b.
+// VaultInfo is a free data retrieval call binding the contract method 0x9164359a.
 //
-// Solidity: function endorseStrategy(address _strategy, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4Transactor) EndorseStrategy(opts *bind.TransactOpts, _strategy common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "endorseStrategy", _strategy, _releaseDelta, _deploymentTimestamp)
+// Solidity: function vaultInfo(address ) view returns(address asset, uint96 releaseVersion, uint128 vaultType, uint128 deploymentTimestamp, string tag)
+func (_YRegistryV4 *YRegistryV4Caller) VaultInfo(opts *bind.CallOpts, arg0 common.Address) (struct {
+	Asset               common.Address
+	ReleaseVersion      *big.Int
+	VaultType           *big.Int
+	DeploymentTimestamp *big.Int
+	Tag                 string
+}, error) {
+	var out []interface{}
+	err := _YRegistryV4.contract.Call(opts, &out, "vaultInfo", arg0)
+
+	outstruct := new(struct {
+		Asset               common.Address
+		ReleaseVersion      *big.Int
+		VaultType           *big.Int
+		DeploymentTimestamp *big.Int
+		Tag                 string
+	})
+	if err != nil {
+		return *outstruct, err
+	}
+
+	outstruct.Asset = *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+	outstruct.ReleaseVersion = *abi.ConvertType(out[1], new(*big.Int)).(**big.Int)
+	outstruct.VaultType = *abi.ConvertType(out[2], new(*big.Int)).(**big.Int)
+	outstruct.DeploymentTimestamp = *abi.ConvertType(out[3], new(*big.Int)).(**big.Int)
+	outstruct.Tag = *abi.ConvertType(out[4], new(string)).(*string)
+
+	return *outstruct, err
+
 }
 
-// EndorseStrategy is a paid mutator transaction binding the contract method 0x0724b07b.
+// VaultInfo is a free data retrieval call binding the contract method 0x9164359a.
 //
-// Solidity: function endorseStrategy(address _strategy, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4Session) EndorseStrategy(_strategy common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseStrategy(&_YRegistryV4.TransactOpts, _strategy, _releaseDelta, _deploymentTimestamp)
+// Solidity: function vaultInfo(address ) view returns(address asset, uint96 releaseVersion, uint128 vaultType, uint128 deploymentTimestamp, string tag)
+func (_YRegistryV4 *YRegistryV4Session) VaultInfo(arg0 common.Address) (struct {
+	Asset               common.Address
+	ReleaseVersion      *big.Int
+	VaultType           *big.Int
+	DeploymentTimestamp *big.Int
+	Tag                 string
+}, error) {
+	return _YRegistryV4.Contract.VaultInfo(&_YRegistryV4.CallOpts, arg0)
 }
 
-// EndorseStrategy is a paid mutator transaction binding the contract method 0x0724b07b.
+// VaultInfo is a free data retrieval call binding the contract method 0x9164359a.
 //
-// Solidity: function endorseStrategy(address _strategy, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseStrategy(_strategy common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseStrategy(&_YRegistryV4.TransactOpts, _strategy, _releaseDelta, _deploymentTimestamp)
+// Solidity: function vaultInfo(address ) view returns(address asset, uint96 releaseVersion, uint128 vaultType, uint128 deploymentTimestamp, string tag)
+func (_YRegistryV4 *YRegistryV4CallerSession) VaultInfo(arg0 common.Address) (struct {
+	Asset               common.Address
+	ReleaseVersion      *big.Int
+	VaultType           *big.Int
+	DeploymentTimestamp *big.Int
+	Tag                 string
+}, error) {
+	return _YRegistryV4.Contract.VaultInfo(&_YRegistryV4.CallOpts, arg0)
 }
 
-// EndorseStrategy0 is a paid mutator transaction binding the contract method 0x0a225ecf.
+// EndorseMultiStrategyVault is a paid mutator transaction binding the contract method 0x0ab322d9.
 //
-// Solidity: function endorseStrategy(address _strategy) returns()
-func (_YRegistryV4 *YRegistryV4Transactor) EndorseStrategy0(opts *bind.TransactOpts, _strategy common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "endorseStrategy0", _strategy)
+// Solidity: function endorseMultiStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4Transactor) EndorseMultiStrategyVault(opts *bind.TransactOpts, _vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.contract.Transact(opts, "endorseMultiStrategyVault", _vault)
 }
 
-// EndorseStrategy0 is a paid mutator transaction binding the contract method 0x0a225ecf.
+// EndorseMultiStrategyVault is a paid mutator transaction binding the contract method 0x0ab322d9.
 //
-// Solidity: function endorseStrategy(address _strategy) returns()
-func (_YRegistryV4 *YRegistryV4Session) EndorseStrategy0(_strategy common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseStrategy0(&_YRegistryV4.TransactOpts, _strategy)
+// Solidity: function endorseMultiStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4Session) EndorseMultiStrategyVault(_vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseMultiStrategyVault(&_YRegistryV4.TransactOpts, _vault)
 }
 
-// EndorseStrategy0 is a paid mutator transaction binding the contract method 0x0a225ecf.
+// EndorseMultiStrategyVault is a paid mutator transaction binding the contract method 0x0ab322d9.
 //
-// Solidity: function endorseStrategy(address _strategy) returns()
-func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseStrategy0(_strategy common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseStrategy0(&_YRegistryV4.TransactOpts, _strategy)
+// Solidity: function endorseMultiStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseMultiStrategyVault(_vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseMultiStrategyVault(&_YRegistryV4.TransactOpts, _vault)
 }
 
-// EndorseVault is a paid mutator transaction binding the contract method 0x29b2e0c6.
+// EndorseSingleStrategyVault is a paid mutator transaction binding the contract method 0x0f7872cc.
 //
-// Solidity: function endorseVault(address _vault) returns()
-func (_YRegistryV4 *YRegistryV4Transactor) EndorseVault(opts *bind.TransactOpts, _vault common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "endorseVault", _vault)
+// Solidity: function endorseSingleStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4Transactor) EndorseSingleStrategyVault(opts *bind.TransactOpts, _vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.contract.Transact(opts, "endorseSingleStrategyVault", _vault)
 }
 
-// EndorseVault is a paid mutator transaction binding the contract method 0x29b2e0c6.
+// EndorseSingleStrategyVault is a paid mutator transaction binding the contract method 0x0f7872cc.
 //
-// Solidity: function endorseVault(address _vault) returns()
-func (_YRegistryV4 *YRegistryV4Session) EndorseVault(_vault common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseVault(&_YRegistryV4.TransactOpts, _vault)
+// Solidity: function endorseSingleStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4Session) EndorseSingleStrategyVault(_vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseSingleStrategyVault(&_YRegistryV4.TransactOpts, _vault)
 }
 
-// EndorseVault is a paid mutator transaction binding the contract method 0x29b2e0c6.
+// EndorseSingleStrategyVault is a paid mutator transaction binding the contract method 0x0f7872cc.
 //
-// Solidity: function endorseVault(address _vault) returns()
-func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseVault(_vault common.Address) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseVault(&_YRegistryV4.TransactOpts, _vault)
+// Solidity: function endorseSingleStrategyVault(address _vault) returns()
+func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseSingleStrategyVault(_vault common.Address) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseSingleStrategyVault(&_YRegistryV4.TransactOpts, _vault)
 }
 
-// EndorseVault0 is a paid mutator transaction binding the contract method 0x931074ba.
+// EndorseVault is a paid mutator transaction binding the contract method 0x89c6acec.
 //
-// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4Transactor) EndorseVault0(opts *bind.TransactOpts, _vault common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "endorseVault0", _vault, _releaseDelta, _deploymentTimestamp)
+// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _vaultType, uint256 _deploymentTimestamp) returns()
+func (_YRegistryV4 *YRegistryV4Transactor) EndorseVault(opts *bind.TransactOpts, _vault common.Address, _releaseDelta *big.Int, _vaultType *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.contract.Transact(opts, "endorseVault", _vault, _releaseDelta, _vaultType, _deploymentTimestamp)
 }
 
-// EndorseVault0 is a paid mutator transaction binding the contract method 0x931074ba.
+// EndorseVault is a paid mutator transaction binding the contract method 0x89c6acec.
 //
-// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4Session) EndorseVault0(_vault common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseVault0(&_YRegistryV4.TransactOpts, _vault, _releaseDelta, _deploymentTimestamp)
+// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _vaultType, uint256 _deploymentTimestamp) returns()
+func (_YRegistryV4 *YRegistryV4Session) EndorseVault(_vault common.Address, _releaseDelta *big.Int, _vaultType *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseVault(&_YRegistryV4.TransactOpts, _vault, _releaseDelta, _vaultType, _deploymentTimestamp)
 }
 
-// EndorseVault0 is a paid mutator transaction binding the contract method 0x931074ba.
+// EndorseVault is a paid mutator transaction binding the contract method 0x89c6acec.
 //
-// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _deploymentTimestamp) returns()
-func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseVault0(_vault common.Address, _releaseDelta *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.EndorseVault0(&_YRegistryV4.TransactOpts, _vault, _releaseDelta, _deploymentTimestamp)
+// Solidity: function endorseVault(address _vault, uint256 _releaseDelta, uint256 _vaultType, uint256 _deploymentTimestamp) returns()
+func (_YRegistryV4 *YRegistryV4TransactorSession) EndorseVault(_vault common.Address, _releaseDelta *big.Int, _vaultType *big.Int, _deploymentTimestamp *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.EndorseVault(&_YRegistryV4.TransactOpts, _vault, _releaseDelta, _vaultType, _deploymentTimestamp)
 }
 
-// NewEndorsedVault is a paid mutator transaction binding the contract method 0x7be7b20b.
+// NewEndorsedVault is a paid mutator transaction binding the contract method 0x17bdd312.
+//
+// Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime) returns(address _vault)
+func (_YRegistryV4 *YRegistryV4Transactor) NewEndorsedVault(opts *bind.TransactOpts, _asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.contract.Transact(opts, "newEndorsedVault", _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime)
+}
+
+// NewEndorsedVault is a paid mutator transaction binding the contract method 0x17bdd312.
+//
+// Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime) returns(address _vault)
+func (_YRegistryV4 *YRegistryV4Session) NewEndorsedVault(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.NewEndorsedVault(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime)
+}
+
+// NewEndorsedVault is a paid mutator transaction binding the contract method 0x17bdd312.
+//
+// Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime) returns(address _vault)
+func (_YRegistryV4 *YRegistryV4TransactorSession) NewEndorsedVault(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.NewEndorsedVault(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime)
+}
+
+// NewEndorsedVault0 is a paid mutator transaction binding the contract method 0x7be7b20b.
 //
 // Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime, uint256 _releaseDelta) returns(address _vault)
-func (_YRegistryV4 *YRegistryV4Transactor) NewEndorsedVault(opts *bind.TransactOpts, _asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "newEndorsedVault", _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
+func (_YRegistryV4 *YRegistryV4Transactor) NewEndorsedVault0(opts *bind.TransactOpts, _asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.contract.Transact(opts, "newEndorsedVault0", _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
 }
 
-// NewEndorsedVault is a paid mutator transaction binding the contract method 0x7be7b20b.
+// NewEndorsedVault0 is a paid mutator transaction binding the contract method 0x7be7b20b.
 //
 // Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime, uint256 _releaseDelta) returns(address _vault)
-func (_YRegistryV4 *YRegistryV4Session) NewEndorsedVault(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.NewEndorsedVault(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
+func (_YRegistryV4 *YRegistryV4Session) NewEndorsedVault0(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.NewEndorsedVault0(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
 }
 
-// NewEndorsedVault is a paid mutator transaction binding the contract method 0x7be7b20b.
+// NewEndorsedVault0 is a paid mutator transaction binding the contract method 0x7be7b20b.
 //
 // Solidity: function newEndorsedVault(address _asset, string _name, string _symbol, address _roleManager, uint256 _profitMaxUnlockTime, uint256 _releaseDelta) returns(address _vault)
-func (_YRegistryV4 *YRegistryV4TransactorSession) NewEndorsedVault(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.NewEndorsedVault(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
+func (_YRegistryV4 *YRegistryV4TransactorSession) NewEndorsedVault0(_asset common.Address, _name string, _symbol string, _roleManager common.Address, _profitMaxUnlockTime *big.Int, _releaseDelta *big.Int) (*types.Transaction, error) {
+	return _YRegistryV4.Contract.NewEndorsedVault0(&_YRegistryV4.TransactOpts, _asset, _name, _symbol, _roleManager, _profitMaxUnlockTime, _releaseDelta)
 }
 
 // RemoveAsset is a paid mutator transaction binding the contract method 0x2317ef67.
@@ -761,27 +735,6 @@ func (_YRegistryV4 *YRegistryV4Session) RemoveAsset(_asset common.Address, _inde
 // Solidity: function removeAsset(address _asset, uint256 _index) returns()
 func (_YRegistryV4 *YRegistryV4TransactorSession) RemoveAsset(_asset common.Address, _index *big.Int) (*types.Transaction, error) {
 	return _YRegistryV4.Contract.RemoveAsset(&_YRegistryV4.TransactOpts, _asset, _index)
-}
-
-// RemoveStrategy is a paid mutator transaction binding the contract method 0xea682eeb.
-//
-// Solidity: function removeStrategy(address _strategy, uint256 _index) returns()
-func (_YRegistryV4 *YRegistryV4Transactor) RemoveStrategy(opts *bind.TransactOpts, _strategy common.Address, _index *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.contract.Transact(opts, "removeStrategy", _strategy, _index)
-}
-
-// RemoveStrategy is a paid mutator transaction binding the contract method 0xea682eeb.
-//
-// Solidity: function removeStrategy(address _strategy, uint256 _index) returns()
-func (_YRegistryV4 *YRegistryV4Session) RemoveStrategy(_strategy common.Address, _index *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.RemoveStrategy(&_YRegistryV4.TransactOpts, _strategy, _index)
-}
-
-// RemoveStrategy is a paid mutator transaction binding the contract method 0xea682eeb.
-//
-// Solidity: function removeStrategy(address _strategy, uint256 _index) returns()
-func (_YRegistryV4 *YRegistryV4TransactorSession) RemoveStrategy(_strategy common.Address, _index *big.Int) (*types.Transaction, error) {
-	return _YRegistryV4.Contract.RemoveStrategy(&_YRegistryV4.TransactOpts, _strategy, _index)
 }
 
 // RemoveVault is a paid mutator transaction binding the contract method 0xb37c61cd.
@@ -1000,160 +953,6 @@ func (_YRegistryV4 *YRegistryV4Filterer) ParseGovernanceTransferred(log types.Lo
 	return event, nil
 }
 
-// YRegistryV4NewEndorsedStrategyIterator is returned from FilterNewEndorsedStrategy and is used to iterate over the raw logs and unpacked data for NewEndorsedStrategy events raised by the YRegistryV4 contract.
-type YRegistryV4NewEndorsedStrategyIterator struct {
-	Event *YRegistryV4NewEndorsedStrategy // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *YRegistryV4NewEndorsedStrategyIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(YRegistryV4NewEndorsedStrategy)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(YRegistryV4NewEndorsedStrategy)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *YRegistryV4NewEndorsedStrategyIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *YRegistryV4NewEndorsedStrategyIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// YRegistryV4NewEndorsedStrategy represents a NewEndorsedStrategy event raised by the YRegistryV4 contract.
-type YRegistryV4NewEndorsedStrategy struct {
-	Strategy       common.Address
-	Asset          common.Address
-	ReleaseVersion *big.Int
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterNewEndorsedStrategy is a free log retrieval operation binding the contract event 0x2ab8c6c9129a30daa2d2add32ab462e1b35dd8fc42a473ea04380a25b5cc9d3a.
-//
-// Solidity: event NewEndorsedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) FilterNewEndorsedStrategy(opts *bind.FilterOpts, strategy []common.Address, asset []common.Address) (*YRegistryV4NewEndorsedStrategyIterator, error) {
-
-	var strategyRule []interface{}
-	for _, strategyItem := range strategy {
-		strategyRule = append(strategyRule, strategyItem)
-	}
-	var assetRule []interface{}
-	for _, assetItem := range asset {
-		assetRule = append(assetRule, assetItem)
-	}
-
-	logs, sub, err := _YRegistryV4.contract.FilterLogs(opts, "NewEndorsedStrategy", strategyRule, assetRule)
-	if err != nil {
-		return nil, err
-	}
-	return &YRegistryV4NewEndorsedStrategyIterator{contract: _YRegistryV4.contract, event: "NewEndorsedStrategy", logs: logs, sub: sub}, nil
-}
-
-// WatchNewEndorsedStrategy is a free log subscription operation binding the contract event 0x2ab8c6c9129a30daa2d2add32ab462e1b35dd8fc42a473ea04380a25b5cc9d3a.
-//
-// Solidity: event NewEndorsedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) WatchNewEndorsedStrategy(opts *bind.WatchOpts, sink chan<- *YRegistryV4NewEndorsedStrategy, strategy []common.Address, asset []common.Address) (event.Subscription, error) {
-
-	var strategyRule []interface{}
-	for _, strategyItem := range strategy {
-		strategyRule = append(strategyRule, strategyItem)
-	}
-	var assetRule []interface{}
-	for _, assetItem := range asset {
-		assetRule = append(assetRule, assetItem)
-	}
-
-	logs, sub, err := _YRegistryV4.contract.WatchLogs(opts, "NewEndorsedStrategy", strategyRule, assetRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(YRegistryV4NewEndorsedStrategy)
-				if err := _YRegistryV4.contract.UnpackLog(event, "NewEndorsedStrategy", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseNewEndorsedStrategy is a log parse operation binding the contract event 0x2ab8c6c9129a30daa2d2add32ab462e1b35dd8fc42a473ea04380a25b5cc9d3a.
-//
-// Solidity: event NewEndorsedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) ParseNewEndorsedStrategy(log types.Log) (*YRegistryV4NewEndorsedStrategy, error) {
-	event := new(YRegistryV4NewEndorsedStrategy)
-	if err := _YRegistryV4.contract.UnpackLog(event, "NewEndorsedStrategy", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
 // YRegistryV4NewEndorsedVaultIterator is returned from FilterNewEndorsedVault and is used to iterate over the raw logs and unpacked data for NewEndorsedVault events raised by the YRegistryV4 contract.
 type YRegistryV4NewEndorsedVaultIterator struct {
 	Event *YRegistryV4NewEndorsedVault // Event containing the contract specifics and raw log
@@ -1226,12 +1025,13 @@ type YRegistryV4NewEndorsedVault struct {
 	Vault          common.Address
 	Asset          common.Address
 	ReleaseVersion *big.Int
+	VaultType      *big.Int
 	Raw            types.Log // Blockchain specific contextual infos
 }
 
-// FilterNewEndorsedVault is a free log retrieval operation binding the contract event 0x5bf19cf6c9f6c9210bc8cfecb4fda8057ebe0c41e300b60c5efa3de7f98f2f35.
+// FilterNewEndorsedVault is a free log retrieval operation binding the contract event 0xa9a7c68f108b706e545bc75ac8590730afa49f639d2e48f367105c9801c18fd2.
 //
-// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) FilterNewEndorsedVault(opts *bind.FilterOpts, vault []common.Address, asset []common.Address) (*YRegistryV4NewEndorsedVaultIterator, error) {
 
 	var vaultRule []interface{}
@@ -1250,9 +1050,9 @@ func (_YRegistryV4 *YRegistryV4Filterer) FilterNewEndorsedVault(opts *bind.Filte
 	return &YRegistryV4NewEndorsedVaultIterator{contract: _YRegistryV4.contract, event: "NewEndorsedVault", logs: logs, sub: sub}, nil
 }
 
-// WatchNewEndorsedVault is a free log subscription operation binding the contract event 0x5bf19cf6c9f6c9210bc8cfecb4fda8057ebe0c41e300b60c5efa3de7f98f2f35.
+// WatchNewEndorsedVault is a free log subscription operation binding the contract event 0xa9a7c68f108b706e545bc75ac8590730afa49f639d2e48f367105c9801c18fd2.
 //
-// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) WatchNewEndorsedVault(opts *bind.WatchOpts, sink chan<- *YRegistryV4NewEndorsedVault, vault []common.Address, asset []common.Address) (event.Subscription, error) {
 
 	var vaultRule []interface{}
@@ -1296,166 +1096,12 @@ func (_YRegistryV4 *YRegistryV4Filterer) WatchNewEndorsedVault(opts *bind.WatchO
 	}), nil
 }
 
-// ParseNewEndorsedVault is a log parse operation binding the contract event 0x5bf19cf6c9f6c9210bc8cfecb4fda8057ebe0c41e300b60c5efa3de7f98f2f35.
+// ParseNewEndorsedVault is a log parse operation binding the contract event 0xa9a7c68f108b706e545bc75ac8590730afa49f639d2e48f367105c9801c18fd2.
 //
-// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event NewEndorsedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) ParseNewEndorsedVault(log types.Log) (*YRegistryV4NewEndorsedVault, error) {
 	event := new(YRegistryV4NewEndorsedVault)
 	if err := _YRegistryV4.contract.UnpackLog(event, "NewEndorsedVault", log); err != nil {
-		return nil, err
-	}
-	event.Raw = log
-	return event, nil
-}
-
-// YRegistryV4RemovedStrategyIterator is returned from FilterRemovedStrategy and is used to iterate over the raw logs and unpacked data for RemovedStrategy events raised by the YRegistryV4 contract.
-type YRegistryV4RemovedStrategyIterator struct {
-	Event *YRegistryV4RemovedStrategy // Event containing the contract specifics and raw log
-
-	contract *bind.BoundContract // Generic contract to use for unpacking event data
-	event    string              // Event name to use for unpacking event data
-
-	logs chan types.Log        // Log channel receiving the found contract events
-	sub  ethereum.Subscription // Subscription for errors, completion and termination
-	done bool                  // Whether the subscription completed delivering logs
-	fail error                 // Occurred error to stop iteration
-}
-
-// Next advances the iterator to the subsequent event, returning whether there
-// are any more events found. In case of a retrieval or parsing error, false is
-// returned and Error() can be queried for the exact failure.
-func (it *YRegistryV4RemovedStrategyIterator) Next() bool {
-	// If the iterator failed, stop iterating
-	if it.fail != nil {
-		return false
-	}
-	// If the iterator completed, deliver directly whatever's available
-	if it.done {
-		select {
-		case log := <-it.logs:
-			it.Event = new(YRegistryV4RemovedStrategy)
-			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-				it.fail = err
-				return false
-			}
-			it.Event.Raw = log
-			return true
-
-		default:
-			return false
-		}
-	}
-	// Iterator still in progress, wait for either a data or an error event
-	select {
-	case log := <-it.logs:
-		it.Event = new(YRegistryV4RemovedStrategy)
-		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
-			it.fail = err
-			return false
-		}
-		it.Event.Raw = log
-		return true
-
-	case err := <-it.sub.Err():
-		it.done = true
-		it.fail = err
-		return it.Next()
-	}
-}
-
-// Error returns any retrieval or parsing error occurred during filtering.
-func (it *YRegistryV4RemovedStrategyIterator) Error() error {
-	return it.fail
-}
-
-// Close terminates the iteration process, releasing any pending underlying
-// resources.
-func (it *YRegistryV4RemovedStrategyIterator) Close() error {
-	it.sub.Unsubscribe()
-	return nil
-}
-
-// YRegistryV4RemovedStrategy represents a RemovedStrategy event raised by the YRegistryV4 contract.
-type YRegistryV4RemovedStrategy struct {
-	Strategy       common.Address
-	Asset          common.Address
-	ReleaseVersion *big.Int
-	Raw            types.Log // Blockchain specific contextual infos
-}
-
-// FilterRemovedStrategy is a free log retrieval operation binding the contract event 0xd7cdfeb9ab09d32e715ad82cdf2440286c5d462f66b98170a579195945800953.
-//
-// Solidity: event RemovedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) FilterRemovedStrategy(opts *bind.FilterOpts, strategy []common.Address, asset []common.Address) (*YRegistryV4RemovedStrategyIterator, error) {
-
-	var strategyRule []interface{}
-	for _, strategyItem := range strategy {
-		strategyRule = append(strategyRule, strategyItem)
-	}
-	var assetRule []interface{}
-	for _, assetItem := range asset {
-		assetRule = append(assetRule, assetItem)
-	}
-
-	logs, sub, err := _YRegistryV4.contract.FilterLogs(opts, "RemovedStrategy", strategyRule, assetRule)
-	if err != nil {
-		return nil, err
-	}
-	return &YRegistryV4RemovedStrategyIterator{contract: _YRegistryV4.contract, event: "RemovedStrategy", logs: logs, sub: sub}, nil
-}
-
-// WatchRemovedStrategy is a free log subscription operation binding the contract event 0xd7cdfeb9ab09d32e715ad82cdf2440286c5d462f66b98170a579195945800953.
-//
-// Solidity: event RemovedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) WatchRemovedStrategy(opts *bind.WatchOpts, sink chan<- *YRegistryV4RemovedStrategy, strategy []common.Address, asset []common.Address) (event.Subscription, error) {
-
-	var strategyRule []interface{}
-	for _, strategyItem := range strategy {
-		strategyRule = append(strategyRule, strategyItem)
-	}
-	var assetRule []interface{}
-	for _, assetItem := range asset {
-		assetRule = append(assetRule, assetItem)
-	}
-
-	logs, sub, err := _YRegistryV4.contract.WatchLogs(opts, "RemovedStrategy", strategyRule, assetRule)
-	if err != nil {
-		return nil, err
-	}
-	return event.NewSubscription(func(quit <-chan struct{}) error {
-		defer sub.Unsubscribe()
-		for {
-			select {
-			case log := <-logs:
-				// New log arrived, parse the event and forward to the user
-				event := new(YRegistryV4RemovedStrategy)
-				if err := _YRegistryV4.contract.UnpackLog(event, "RemovedStrategy", log); err != nil {
-					return err
-				}
-				event.Raw = log
-
-				select {
-				case sink <- event:
-				case err := <-sub.Err():
-					return err
-				case <-quit:
-					return nil
-				}
-			case err := <-sub.Err():
-				return err
-			case <-quit:
-				return nil
-			}
-		}
-	}), nil
-}
-
-// ParseRemovedStrategy is a log parse operation binding the contract event 0xd7cdfeb9ab09d32e715ad82cdf2440286c5d462f66b98170a579195945800953.
-//
-// Solidity: event RemovedStrategy(address indexed strategy, address indexed asset, uint256 releaseVersion)
-func (_YRegistryV4 *YRegistryV4Filterer) ParseRemovedStrategy(log types.Log) (*YRegistryV4RemovedStrategy, error) {
-	event := new(YRegistryV4RemovedStrategy)
-	if err := _YRegistryV4.contract.UnpackLog(event, "RemovedStrategy", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -1534,12 +1180,13 @@ type YRegistryV4RemovedVault struct {
 	Vault          common.Address
 	Asset          common.Address
 	ReleaseVersion *big.Int
+	VaultType      *big.Int
 	Raw            types.Log // Blockchain specific contextual infos
 }
 
-// FilterRemovedVault is a free log retrieval operation binding the contract event 0x90f0b136797e67e4987983b7f7326571b458a7fd5cb6fb3e1209fdea9483b4cf.
+// FilterRemovedVault is a free log retrieval operation binding the contract event 0xb8d23ba050f8f00e22675f82cf3786ade63b12a46d4ea236927baf4d173c3092.
 //
-// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) FilterRemovedVault(opts *bind.FilterOpts, vault []common.Address, asset []common.Address) (*YRegistryV4RemovedVaultIterator, error) {
 
 	var vaultRule []interface{}
@@ -1558,9 +1205,9 @@ func (_YRegistryV4 *YRegistryV4Filterer) FilterRemovedVault(opts *bind.FilterOpt
 	return &YRegistryV4RemovedVaultIterator{contract: _YRegistryV4.contract, event: "RemovedVault", logs: logs, sub: sub}, nil
 }
 
-// WatchRemovedVault is a free log subscription operation binding the contract event 0x90f0b136797e67e4987983b7f7326571b458a7fd5cb6fb3e1209fdea9483b4cf.
+// WatchRemovedVault is a free log subscription operation binding the contract event 0xb8d23ba050f8f00e22675f82cf3786ade63b12a46d4ea236927baf4d173c3092.
 //
-// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) WatchRemovedVault(opts *bind.WatchOpts, sink chan<- *YRegistryV4RemovedVault, vault []common.Address, asset []common.Address) (event.Subscription, error) {
 
 	var vaultRule []interface{}
@@ -1604,9 +1251,9 @@ func (_YRegistryV4 *YRegistryV4Filterer) WatchRemovedVault(opts *bind.WatchOpts,
 	}), nil
 }
 
-// ParseRemovedVault is a log parse operation binding the contract event 0x90f0b136797e67e4987983b7f7326571b458a7fd5cb6fb3e1209fdea9483b4cf.
+// ParseRemovedVault is a log parse operation binding the contract event 0xb8d23ba050f8f00e22675f82cf3786ade63b12a46d4ea236927baf4d173c3092.
 //
-// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion)
+// Solidity: event RemovedVault(address indexed vault, address indexed asset, uint256 releaseVersion, uint256 vaultType)
 func (_YRegistryV4 *YRegistryV4Filterer) ParseRemovedVault(log types.Log) (*YRegistryV4RemovedVault, error) {
 	event := new(YRegistryV4RemovedVault)
 	if err := _YRegistryV4.contract.UnpackLog(event, "RemovedVault", log); err != nil {

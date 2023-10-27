@@ -22,6 +22,7 @@ func handleV02Vault(chainID uint64, value *contracts.YRegistryV2NewVault) models
 		APIVersion:      value.ApiVersion,
 		BlockNumber:     value.Raw.BlockNumber,
 		Type:            models.TokenTypeStandardVault,
+		Kind:            models.VaultKindLegacy,
 	}
 	return newVault
 }
@@ -34,6 +35,7 @@ func handleV03Vault(chainID uint64, value *contracts.YRegistryV3NewVault) models
 		APIVersion:      value.ApiVersion,
 		BlockNumber:     value.Raw.BlockNumber,
 		Type:            models.TokenTypeStandardVault,
+		Kind:            models.VaultKindLegacy,
 	}
 	if value.VaultType.Cmp(big.NewInt(2)) == 0 {
 		newVault.Type = models.TokenTypeAutomatedVault
@@ -41,6 +43,14 @@ func handleV03Vault(chainID uint64, value *contracts.YRegistryV3NewVault) models
 	return newVault
 }
 func handleV04Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault) models.TVaultsFromRegistry {
+	kind := models.VaultKindLegacy
+	if value.VaultType.Cmp(big.NewInt(0)) == 0 {
+		kind = models.VaultKindLegacy
+	} else if value.VaultType.Cmp(big.NewInt(1)) == 0 {
+		kind = models.VaultKindMultiple
+	} else if value.VaultType.Cmp(big.NewInt(2)) == 0 {
+		kind = models.VaultKindSingle
+	}
 	newVault := models.TVaultsFromRegistry{
 		ChainID:         chainID,
 		RegistryAddress: value.Raw.Address,
@@ -49,6 +59,7 @@ func handleV04Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault
 		APIVersion:      `3.0.0`,
 		BlockNumber:     value.Raw.BlockNumber,
 		Type:            models.TokenTypeStandardVault,
+		Kind:            kind,
 	}
 	logs.Info(`Got V4 vault ` + value.Vault.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
@@ -68,6 +79,7 @@ func handleV02ExperimentalVault(chainID uint64, value *contracts.YRegistryV2NewE
 		APIVersion:      value.ApiVersion,
 		BlockNumber:     value.Raw.BlockNumber,
 		Type:            models.TokenTypeExperimentalVault,
+		Kind:            models.VaultKindLegacy,
 	}
 	return newVault
 }

@@ -98,12 +98,17 @@ func RetrieveAllVaults(
 				continue
 			}
 			isEndorsed := (currentVault.Type == models.TokenTypeStandardVault || currentVault.Type == models.TokenTypeAutomatedVault)
+			kind := currentVault.Kind
+			if currentVault.Kind == `` {
+				kind = models.VaultKindLegacy
+			}
 			updatedVaultMap[currentVault.Address] = models.TVault{
 				Address:      currentVault.Address,
 				AssetAddress: currentVault.TokenAddress,
 				Version:      currentVault.APIVersion,
 				Endorsed:     isEndorsed,
 				Type:         currentVault.Type,
+				Kind:         kind,
 				Activation:   currentVault.BlockNumber,
 			}
 		}
@@ -115,12 +120,17 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range env.CHAINS[chainID].ExtraVaults {
 		if _, ok := updatedVaultMap[vault.Address]; !ok || shouldRefresh {
+			kind := vault.Kind
+			if vault.Kind == `` {
+				kind = models.VaultKindLegacy
+			}
 			updatedVaultMap[vault.Address] = models.TVault{
 				Address:      vault.Address,
 				AssetAddress: vault.TokenAddress,
 				Version:      vault.APIVersion,
 				Activation:   vault.BlockNumber,
 				Type:         vault.Type,
+				Kind:         kind,
 			}
 		}
 	}

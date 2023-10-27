@@ -55,19 +55,6 @@ func GetAPIVersion(name string, contractAddress common.Address) ethereum.Call {
 		Name:     name,
 	}
 }
-func GetV3APIVersion(name string, contractAddress common.Address) ethereum.Call {
-	parsedData, err := YearnVaultV3ABI.Pack("api_version")
-	if err != nil {
-		logs.Error("Error packing YearnVaultV3ABI api_version", err)
-	}
-	return ethereum.Call{
-		Target:   contractAddress,
-		Abi:      YearnVaultV3ABI,
-		Method:   `api_version`,
-		CallData: parsedData,
-		Name:     name,
-	}
-}
 func GetPerformanceFee(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("performanceFee")
 	if err != nil {
@@ -107,20 +94,6 @@ func GetEmergencyShutdown(name string, contractAddress common.Address) ethereum.
 		Name:     name,
 	}
 }
-func GetShutdown(name string, contractAddress common.Address) ethereum.Call {
-	parsedData, err := YearnVaultV3ABI.Pack("shutdown")
-	if err != nil {
-		logs.Error("Error packing YearnVaultV3ABI shutdown", err)
-	}
-	return ethereum.Call{
-		Target:   contractAddress,
-		Abi:      YearnVaultV3ABI,
-		Method:   `shutdown`,
-		CallData: parsedData,
-		Name:     name,
-	}
-}
-
 func GetActivation(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("activation")
 	if err != nil {

@@ -297,7 +297,7 @@ func watchNewStrategies(
 				return lastSyncedBlock, true, err
 			}
 		}
-	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.4`, `0.4.5`, `0.4.6`:
+	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.4`, `0.4.5`, `0.4.6`, `0.4.7`:
 		currentVault, _ := contracts.NewYvault043(vault.Address, client)
 		etherReader := ethereum.Reader{Backend: client}
 		contractABI, _ := contracts.Yvault043MetaData.GetAbi()
@@ -370,7 +370,8 @@ func watchNewStrategies(
 				return lastSyncedBlock, true, err
 			}
 		}
-	case `3.0.0`:
+	default:
+		// case `3.0.0`, `3.0.1`:
 		currentVault, _ := contracts.NewYvault300(vault.Address, client)
 		etherReader := ethereum.Reader{Backend: client}
 		contractABI, _ := contracts.Yvault300MetaData.GetAbi()
@@ -425,11 +426,11 @@ func watchNewStrategies(
 				return lastSyncedBlock, true, err
 			}
 		}
-
-	default: // case `0.4.7`:
-		logs.Warning(`unsupported vault version ` + vault.Version + ` for vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
-		return 0, false, nil
 	}
+	// default: // case `0.4.7`:
+	// 	logs.Warning(`unsupported vault version ` + vault.Version + ` for vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+	// 	return 0, false, nil
+	// }
 }
 
 /**************************************************************************************************

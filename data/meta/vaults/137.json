@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-27T11:38:46.747009+02:00",
+	"lastUpdate": "2023-10-27T17:18:07.39962+02:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 93
+		"patch": 96
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -19,12 +19,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": [
-				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
-				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780"
-			],
+			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "2000000000",
+			"lastTotalAssets": "3287240000",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -47,12 +44,12 @@
 			"activation": 49181585,
 			"chainID": 137,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "1600000000",
+			"lastPricePerShare": "1000001",
+			"lastTotalAssets": "1600228218",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -75,12 +72,12 @@
 			"activation": 49181585,
 			"chainID": 137,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "400000000",
+			"lastPricePerShare": "1000002",
+			"lastTotalAssets": "400019505",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {

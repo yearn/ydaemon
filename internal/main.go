@@ -51,7 +51,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		indexer.IndexStakingPools(chainID)
 		underWg.Done()
 	}() // Retrieve the staking pools
-	wg.Wait()
+	underWg.Wait()
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)

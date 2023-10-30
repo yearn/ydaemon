@@ -1,6 +1,8 @@
 package fetcher
 
 import (
+	"strings"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -34,7 +36,8 @@ func fetchVaultsBasicInformations(
 		if vault.IsRetired {
 			continue
 		}
-		if vault.Version == `3.0.0` {
+		versionMajor := strings.Split(vault.Version, `.`)[0]
+		if versionMajor == `3` {
 			calls = append(calls, getV3VaultCalls(vault)...)
 		} else {
 			calls = append(calls, getV2VaultCalls(vault)...)
@@ -52,7 +55,8 @@ func fetchVaultsBasicInformations(
 		}
 		newVault := vault
 		newVault.ChainID = chainID
-		if vault.Version == `3.0.0` {
+		versionMajor := strings.Split(vault.Version, `.`)[0]
+		if versionMajor == `3` {
 			newVault = handleV3VaultCalls(vault, response)
 		} else {
 			newVault = handleV2VaultCalls(vault, response)

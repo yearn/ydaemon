@@ -1,6 +1,8 @@
 package fetcher
 
 import (
+	"strings"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -34,7 +36,8 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 			continue
 		}
 
-		if vault.Version == `3.0.0` {
+		versionMajor := strings.Split(vault.Version, `.`)[0]
+		if versionMajor == `3` {
 			calls = append(calls, getV3StrategyCalls(strat)...)
 		} else {
 			calls = append(calls, getV2StrategyCalls(strat)...)
@@ -62,7 +65,8 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 			}
 		}
 
-		if vault.Version == `3.0.0` {
+		versionMajor := strings.Split(vault.Version, `.`)[0]
+		if versionMajor == `3` {
 			newStrategy = handleV3StrategyCalls(newStrategy, response)
 		} else {
 			newStrategy = handleV2StrategyCalls(newStrategy, response)

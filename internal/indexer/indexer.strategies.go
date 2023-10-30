@@ -112,7 +112,7 @@ func filterNewStrategies(
 			} else {
 				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
-		default: // case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+		case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.4`, `0.4.5`, `0.4.6`, `0.4.7`:
 			currentVault, _ := contracts.NewYvault043(vault.Address, client)
 			if log, err := currentVault.FilterStrategyAdded(opts, nil); err == nil {
 				for log.Next() {
@@ -147,7 +147,44 @@ func filterNewStrategies(
 			} else {
 				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
+		default:
+			// case `3.0.0`, `3.0.1`:
+			currentVault, _ := contracts.NewYvault300(vault.Address, client)
+			if log, err := currentVault.FilterStrategyChanged(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					newStrategy := handleV300Strategies(chainID, vault.Version, log.Event)
+					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+							newStrategy.Address: newStrategy,
+						})
+					}
+				}
+			} else {
+				logs.Error(`impossible to FilterStrategyAdded for NewYvault043 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
+
+			if log, err := currentVault.FilterStrategyChanged(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					if log.Event.ChangeType.Uint64() == 1 {
+						historicalStrategy := handleV300Strategies(chainID, vault.Version, log.Event)
+						if storage.StoreStrategyIfMissing(chainID, historicalStrategy) {
+							fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
+								historicalStrategy.Address: historicalStrategy,
+							})
+						}
+					}
+				}
+			} else {
+				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
 		}
+
 	}
 	return lastBlock
 }

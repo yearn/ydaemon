@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-27T17:18:07.39962+02:00",
+	"lastUpdate": "2023-10-30T20:32:09.206865+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 96
+		"patch": 101
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -19,9 +19,12 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "3287240000",
+			"lastActiveStrategies": [
+				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
+				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1"
+			],
+			"lastPricePerShare": "1000001",
+			"lastTotalAssets": "3322495711",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -48,8 +51,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000001",
-			"lastTotalAssets": "1600228218",
+			"lastPricePerShare": "1000108",
+			"lastTotalAssets": "3057941630",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -76,8 +79,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000002",
-			"lastTotalAssets": "400019505",
+			"lastPricePerShare": "1000043",
+			"lastTotalAssets": "331243505",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {

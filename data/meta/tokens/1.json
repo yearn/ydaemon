@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-26T15:59:17.707552+02:00",
+	"lastUpdate": "2023-11-07T10:51:51.464015+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 3
+		"patch": 4
 	},
 	"shouldRefresh": false,
 	"tokens": {
@@ -2078,12 +2078,12 @@
 				"0x853d955acef822db058eb8505911ed77f175b99e",
 				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
 			],
-			"type": "Curve",
+			"type": "Curve LP",
 			"name": "Curve.fi FRAX/USDC",
 			"symbol": "crvFRAX",
 			"displayName": "Curve.fi FRAX/USDC",
 			"displaySymbol": "crvFRAX",
-			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains Frax, and USDC.",
+			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC/logo-128.png",
 			"decimals": 18,
@@ -2271,6 +2271,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x34635280737b5bfe6c7dc2fc3065d60d66e78185": {
+			"address": "0x34635280737b5bfe6c7dc2fc3065d60d66e78185",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Convex Prisma",
+			"symbol": "cvxPrisma",
+			"displayName": "Convex Prisma",
+			"displaySymbol": "cvxPrisma",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x34635280737b5BFe6c7DC2FC3065D60d66e78185/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3177,6 +3191,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x466a756E9A7401B5e2444a3fCB3c2C12FBEa0a54/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x468c76f16b7735303f7215b3839d270d058b3d7a": {
+			"address": "0x468c76f16b7735303f7215b3839d270d058b3d7a",
+			"underlyingTokensAddresses": [
+				"0xaeda92e6a3b1028edc139a4ae56ec881f3064d4f"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve eUSD-FRAXBP Factory yVault",
+			"symbol": "yvCurve-eUSD-FRAXBP-f",
+			"displayName": "Curve eUSD-FRAXBP Factory yVault",
+			"displaySymbol": "yvCurve-eUSD-FRAXBP-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x468C76f16B7735303f7215b3839D270d058b3d7a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7632,12 +7662,12 @@
 		"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": {
 			"address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
 			"underlyingTokensAddresses": [],
-			"type": "Stablecoin",
+			"type": "",
 			"name": "USD Coin",
 			"symbol": "USDC",
 			"displayName": "USD Coin",
 			"displaySymbol": "USDC",
-			"description": "USD Coin is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC is issued by regulated financial institutions.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo-128.png",
 			"decimals": 6,
@@ -8319,6 +8349,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xaeda92e6a3b1028edc139a4ae56ec881f3064d4f": {
+			"address": "0xaeda92e6a3b1028edc139a4ae56ec881f3064d4f",
+			"underlyingTokensAddresses": [
+				"0xa0d69e286b938e21cbf7e51d71f6a4c8918f482f",
+				"0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
+			"symbol": "eUSD3CRV-f",
+			"displayName": "Curve.fi Factory USD Metapool: eUSD+FRAX/USDC (FRAXBP)",
+			"displaySymbol": "eUSD3CRV-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9918,6 +9965,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd084944d3c05cd115c09d072b9f44ba3e0e45921": {
+			"address": "0xd084944d3c05cd115c09d072b9f44ba3e0e45921",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Manifold Finance",
+			"symbol": "FOLD",
+			"displayName": "Manifold Finance",
+			"displaySymbol": "FOLD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd084944d3c05CD115C09d072B9F44bA3E0E45921/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd1a075c806e40d79e32ea09553e7080d5d9d4b29": {
 			"address": "0xd1a075c806e40d79e32ea09553e7080d5d9d4b29",
 			"underlyingTokensAddresses": [
@@ -10361,6 +10422,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xd9788f3931Ede4D5018184E198699dC6d66C1915/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xda47862a83dac0c112ba89c6abc2159b95afd71c": {
+			"address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+			"underlyingTokensAddresses": [
+				"0xda47862a83dac0c112ba89c6abc2159b95afd71c"
+			],
+			"type": "Yearn Vault",
+			"name": "Prisma Governance Token",
+			"symbol": "PRISMA",
+			"displayName": "Prisma Governance Token",
+			"displaySymbol": "PRISMA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xdA47862a83dac0c112BA89c6abC2159b95afd71C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -57,7 +57,7 @@ func (r Reader) QueryWithHistory(ctx context.Context, q *ethereum.FilterQuery) (
 		}
 		subscribeCtx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
-		stream := make(chan chain.Log, 120)
+		stream := make(chan chain.Log, 200)
 		sub, err := r.Backend.SubscribeFilterLogs(subscribeCtx, *q, stream)
 		if err != nil {
 			return nil, nil, nil, fmt.Errorf("etherstream: no subscription on log events: %w", err)
@@ -88,7 +88,7 @@ func (r *Reader) linkHistory(ctx context.Context, stream <-chan chain.Log, q *et
 	// fetch history
 	timeout := r.FetchTimeout
 	if timeout == 0 {
-		timeout = 1 * time.Minute
+		timeout = 2 * time.Minute
 	}
 	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()

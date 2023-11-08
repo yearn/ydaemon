@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/go-co-op/gocron"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
@@ -33,6 +34,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
+	logs.Success(`We got all the strategies for chainID`, chainID)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 
 	underWg := sync.WaitGroup{}

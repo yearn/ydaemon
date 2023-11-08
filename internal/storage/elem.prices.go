@@ -1,11 +1,9 @@
 package storage
 
 import (
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -49,7 +47,7 @@ func ListPrices(chainID uint64) (
 func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool) {
 	vaultFromSyncMap, ok := safeSyncMap(_pricesSyncMap, chainID).Load(tokenAddress)
 	if !ok {
-		logs.Warning(`unable to find price for token ` + tokenAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+		// logs.Warning(`unable to find price for token ` + tokenAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 		return models.TPrices{}, false
 	}
 	return vaultFromSyncMap.(models.TPrices), true

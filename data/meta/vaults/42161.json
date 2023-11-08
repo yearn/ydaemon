@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-26T15:59:16.888056+02:00",
+	"lastUpdate": "2023-11-08T19:36:00.688144+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 3
+		"patch": 4
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -11,6 +11,7 @@
 			"address": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
 			"token": "0x30df229cefa463e991e29d42db0bae2e122b2ac7",
 			"type": "Yearn Vault",
+			"kind": "",
 			"version": "0.4.3",
 			"activation": 11987182,
 			"chainID": 42161,
@@ -21,8 +22,8 @@
 			"lastActiveStrategies": [
 				"0xf1c3047c6310806de1d25535bc50748815066a7b"
 			],
-			"lastPricePerShare": "1072984134132837287",
-			"lastTotalAssets": "14236105072791520063340",
+			"lastPricePerShare": "1074863992859898528",
+			"lastTotalAssets": "5073414944690164020638",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -42,6 +43,7 @@
 			"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
 			"token": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
 			"type": "Yearn Vault",
+			"kind": "",
 			"version": "0.4.3",
 			"activation": 4842579,
 			"chainID": 42161,
@@ -72,6 +74,7 @@
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
 			"token": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
 			"type": "Yearn Vault",
+			"kind": "",
 			"version": "0.4.3",
 			"activation": 15542281,
 			"chainID": 42161,
@@ -82,8 +85,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1006427940142136130",
-			"lastTotalAssets": "2119993824306069053988",
+			"lastPricePerShare": "1006528534735808824",
+			"lastTotalAssets": "2122397242284480086197",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -103,6 +106,7 @@
 			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
 			"token": "0x59bf0545fca0e5ad48e13da269facd2e8c886ba4",
 			"type": "Experimental Yearn Vault",
+			"kind": "",
 			"version": "0.4.3",
 			"activation": 20340382,
 			"chainID": 42161,
@@ -134,6 +138,7 @@
 			"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
 			"token": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
 			"type": "Experimental Yearn Vault",
+			"kind": "",
 			"version": "0.4.3",
 			"activation": 5591345,
 			"chainID": 42161,

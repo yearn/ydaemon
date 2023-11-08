@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-10-26T15:59:18.188649+02:00",
+	"lastUpdate": "2023-11-08T19:36:02.002546+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 11
+		"patch": 13
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -43,7 +43,7 @@
 			"chainID": 42161,
 			"doHealthCheck": true,
 			"isActive": true,
-			"isInQueue": false,
+			"isInQueue": true,
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,

@@ -12,7 +12,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -76,7 +75,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 			data, ok := priceData.Coins[tokenStr]
 			if ok { // Convert price into USDC decimals
 				price := bigNumber.NewFloat(data.Price)
-				humanizedPrice := helpers.ToNormalizedAmount(price.Int(), 6)
+				humanizedPrice := price
 				priceMap[common.HexToAddress(tokenAddressStr)] = models.TPrices{
 					Address:        common.HexToAddress(tokenAddressStr),
 					Price:          bigNumber.NewFloat().Mul(price, decimalsUSDC).Int(),

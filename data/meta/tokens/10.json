@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2023-10-26T15:59:58.473472+02:00",
+	"lastUpdate": "2023-11-08T01:23:14.027781+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
@@ -296,6 +296,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x22687Ca792A8Cb5E169a77E0949e71Fe37147604/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x27939e33435cc4ee4e74c0f0260914596bceb116": {
+			"address": "0x27939e33435cc4ee4e74c0f0260914596bceb116",
+			"underlyingTokensAddresses": [
+				"0xc3439bc1a747e545887192d6b7f8be47f608473f"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 OATH-WETH Factory yVault",
+			"symbol": "yvVelo-OATH-WETH-f",
+			"displayName": "Velodrome v2 OATH-WETH Factory yVault",
+			"displaySymbol": "yvVelo-OATH-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x27939E33435cc4ee4e74c0F0260914596bcEb116/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -857,6 +873,22 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x62855b8e5db35551661a1e304ec227314f4493c1": {
+			"address": "0x62855b8e5db35551661a1e304ec227314f4493c1",
+			"underlyingTokensAddresses": [
+				"0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 msUSD-USDC.e Factory yVault",
+			"symbol": "yvVelo-msUSD-USDC.e-f",
+			"displayName": "Velodrome v2 msUSD-USDC.e Factory yVault",
+			"displaySymbol": "yvVelo-msUSD-USDC.e-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x62855B8E5dB35551661a1e304ec227314F4493C1/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x6387765ffa609ab9a1da1b16c455548bfed7cbea": {
 			"address": "0x6387765ffa609ab9a1da1b16c455548bfed7cbea",
 			"underlyingTokensAddresses": [],
@@ -1372,6 +1404,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x844d7d2fca6786be7de6721aabdff6957ace73a0": {
+			"address": "0x844d7d2fca6786be7de6721aabdff6957ace73a0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VolatileV2 AMM - OVN/USD+",
+			"symbol": "vAMMV2-OVN/USD+",
+			"displayName": "VolatileV2 AMM - OVN/USD+",
+			"displaySymbol": "vAMMV2-OVN/USD+",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x844D7d2fCa6786Be7De6721AabdfF6957ACE73a0/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x8453cc52f2108ff9d1636b6a108db06ac137b72f": {
 			"address": "0x8453cc52f2108ff9d1636b6a108db06ac137b72f",
 			"underlyingTokensAddresses": [],
@@ -1706,6 +1752,22 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xac8da30113238cfaf5011157cdf1e05a884cdb72": {
+			"address": "0xac8da30113238cfaf5011157cdf1e05a884cdb72",
+			"underlyingTokensAddresses": [
+				"0x844d7d2fca6786be7de6721aabdff6957ace73a0"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 OVN-USD+ Factory yVault",
+			"symbol": "yvVelo-OVN-USD+-f",
+			"displayName": "Velodrome v2 OVN-USD+ Factory yVault",
+			"displaySymbol": "yvVelo-OVN-USD+-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xAc8da30113238CfAF5011157CdF1E05A884CDB72/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xad17a225074191d5c8a37b50fda1ae278a2ee6a2": {
 			"address": "0xad17a225074191d5c8a37b50fda1ae278a2ee6a2",
 			"underlyingTokensAddresses": [
@@ -1948,6 +2010,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xc3439bc1a747e545887192d6b7f8be47f608473f": {
+			"address": "0xc3439bc1a747e545887192d6b7f8be47f608473f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VolatileV2 AMM - OATH/WETH",
+			"symbol": "vAMMV2-OATH/WETH",
+			"displayName": "VolatileV2 AMM - OATH/WETH",
+			"displaySymbol": "vAMMV2-OATH/WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xc3439bC1A747e545887192d6b7F8BE47f608473F/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xc3566662862c26ff56e3e709dc021902cc68becd": {
 			"address": "0xc3566662862c26ff56e3e709dc021902cc68becd",
 			"underlyingTokensAddresses": [
@@ -2095,6 +2171,22 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains FRAX and USD+.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xD330841EF9527E3Bd0abc28a230C7cA8dec9423B/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c": {
+			"address": "0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c",
+			"underlyingTokensAddresses": [
+				"0xfff37730744930cb61be34c0014068f4f1ec28cf"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 ERN-WETH Factory yVault",
+			"symbol": "yvVelo-ERN-WETH-f",
+			"displayName": "Velodrome v2 ERN-WETH Factory yVault",
+			"displaySymbol": "yvVelo-ERN-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xd3668ca9DF5d1bba8d264b8d10dD2F0C5962CC4C/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2257,6 +2349,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains THALES and WETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xDFF90E4A6c229565f25337B1DB9fA12f6d8cB118/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c": {
+			"address": "0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/msUSD",
+			"symbol": "sAMMV2-USDC/msUSD",
+			"displayName": "StableV2 AMM - USDC/msUSD",
+			"displaySymbol": "sAMMV2-USDC/msUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xe148D6Ae042De77c1f9fe0d6c495EbfD7b705B4c/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2565,6 +2671,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains sfrxETH and frxETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xFF5318f81Dd791e92d51b8A54fA3538832D2890D/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xfff37730744930cb61be34c0014068f4f1ec28cf": {
+			"address": "0xfff37730744930cb61be34c0014068f4f1ec28cf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VolatileV2 AMM - WETH/ERN",
+			"symbol": "vAMMV2-WETH/ERN",
+			"displayName": "VolatileV2 AMM - WETH/ERN",
+			"displaySymbol": "vAMMV2-WETH/ERN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xFFf37730744930Cb61Be34c0014068F4f1eC28cF/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		}

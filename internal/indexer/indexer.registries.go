@@ -159,6 +159,10 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
+			logs.Error(err)
+			if wg != nil && !isDone {
+				wg.Done()
+			}
 			return 0, false, err
 		}
 		defer sub.Unsubscribe()
@@ -221,6 +225,10 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
+			logs.Error(err)
+			if wg != nil && !isDone {
+				wg.Done()
+			}
 			return 0, false, err
 		}
 		defer sub.Unsubscribe()
@@ -272,6 +280,10 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
+			logs.Error(err)
+			if wg != nil && !isDone {
+				wg.Done()
+			}
 			return 0, false, err
 		}
 		defer sub.Unsubscribe()
@@ -344,11 +356,29 @@ func indexNewVaultsWrapper(
 	** indexer to be able to catch the errors, to restart the indexer or just to exit the loop to
 	** fallback to another method.
 	**********************************************************************************************/
-	shouldRetry := true
+	shouldRetry := false
 	err := error(nil)
 	for {
 		if _, err := ethereum.GetWSClient(chainID); err != nil {
-			break
+			/**********************************************************************************************
+			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
+			** latest block. This is a fallback method in case the WS connection is not available.
+			** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
+			** function under certain conditions while avoiding multiple calls to the same function.
+			**********************************************************************************************/
+			for {
+				lastBlock := filterNewVault(
+					chainID,
+					registry,
+					lastSyncedBlock,
+					nil,
+					wg,
+					isDone,
+				)
+				isDone = true
+				lastSyncedBlock = lastBlock
+				time.Sleep(1 * time.Minute)
+			}
 		}
 		lastSyncedBlock, shouldRetry, err = watchNewVaults(
 			chainID,
@@ -361,29 +391,10 @@ func indexNewVaultsWrapper(
 		if err != nil {
 			logs.Error(`error while indexing NewVault from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
-		if !shouldRetry {
-			break
+		if shouldRetry {
+			continue
 		}
-	}
-
-	/**********************************************************************************************
-	** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
-	** latest block. This is a fallback method in case the WS connection is not available.
-	** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
-	** function under certain conditions while avoiding multiple calls to the same function.
-	**********************************************************************************************/
-	for {
-		lastBlock := filterNewVault(
-			chainID,
-			registry,
-			lastSyncedBlock,
-			nil,
-			wg,
-			isDone,
-		)
-		isDone = true
-		lastSyncedBlock = lastBlock
-		time.Sleep(1 * time.Minute)
+		break
 	}
 }
 
@@ -415,7 +426,6 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 	** Loop over all the known registries for the specified chain ID.
 	**********************************************************************************************/
 	for _, registry := range env.CHAINS[chainID].Registries {
-		wg.Add(1)
 
 		/** 🔵 - Yearn *****************************************************************************
 		** This block of code is responsible for retrieving the list of vaults for a given registry
@@ -434,6 +444,7 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 		/** 🔵 - Yearn *****************************************************************************
 		** After retrieving the highest block number we can proceed to index new vaults.
 		******************************************************************************************/
+		wg.Add(1)
 		go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
 	}
 	wg.Wait()

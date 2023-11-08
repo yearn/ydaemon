@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2023-11-08T01:23:14.027781+01:00",
+	"lastUpdate": "2023-11-08T20:33:07.936923+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
@@ -840,22 +840,6 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains USDC.e and wTBT.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x5e6E17F745fF620E87324b7c6ec672B5743BD0B4/logo-128.png",
-			"decimals": 18,
-			"chainID": 10
-		},
-		"0x5e70e0ede43373bd9cf4bc85199d424acf0241ef": {
-			"address": "0x5e70e0ede43373bd9cf4bc85199d424acf0241ef",
-			"underlyingTokensAddresses": [
-				"0x061b87122ed14b9526a813209c8a59a633257bab"
-			],
-			"type": "Yearn Vault",
-			"name": "Curve sUSD Pool yVault",
-			"symbol": "yvCurve-sUSD",
-			"displayName": "Curve sUSD Pool",
-			"displaySymbol": "yvCurve-sUSD",
-			"description": "",
-			"category": "yVault",
-			"icon": "https://assets.smold.app/api/token/10/0x5e70E0EdE43373bD9CF4Bc85199d424AcF0241EF/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

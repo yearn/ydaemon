@@ -55,6 +55,7 @@ var OPTIMISM = TChain{
 		common.HexToAddress("0x6884bd538Db61A626Da0a05E10807BFC5Aea2b32"), // Test deployment - Nothing
 		common.HexToAddress("0xDB8bBF2b0e28721F9BAc603e687E39bcF52201f8"), // Test deployment - Nothing
 		common.HexToAddress("0xed5D83bB6Af23bcb05C144DC816f45A389d622a0"), // Test deployment - Nothing
+		common.HexToAddress("0x5e70E0EdE43373bD9CF4Bc85199d424AcF0241EF"), // Empty sUSD
 	},
 	ExtraTokens: []common.Address{
 		common.HexToAddress("0x4200000000000000000000000000000000000042"), // Opt

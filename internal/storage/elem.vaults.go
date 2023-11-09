@@ -126,6 +126,9 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 	**********************************************************************************************/
 	safeSyncMap(_vaultsSyncMap, chainID).Range(func(key, value interface{}) bool {
 		vault := value.(models.TVault)
+		if (vault.Address == common.Address{}) {
+			return true
+		}
 		asMap[vault.Address] = vault
 		asSlice = append(asSlice, vault)
 		return true

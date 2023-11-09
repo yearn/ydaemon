@@ -31,7 +31,11 @@ func (y Controller) GetVault(c *gin.Context) {
 		return
 	}
 
-	newVault := NewVault().AssignTVault(currentVault)
+	newVault, err := NewVault().AssignTVault(currentVault)
+	if err != nil {
+		c.String(http.StatusBadRequest, "vault not found")
+		return
+	}
 	vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
 	newVault.Strategies = []TStrategy{}
 	for _, strategy := range vaultStrategies {

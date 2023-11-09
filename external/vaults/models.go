@@ -1,6 +1,8 @@
 package vaults
 
 import (
+	"errors"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -157,10 +159,10 @@ type TSimplifiedExternalVault struct {
 func NewVault() TExternalVault {
 	return TExternalVault{}
 }
-func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
+func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error) {
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		return v
+		return v, errors.New(`Token not found`)
 	}
 	name, displayName, formatedName := fetcher.BuildVaultNames(vault, ``)
 	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, ``)
@@ -231,7 +233,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) TExternalVault {
 		StableBaseAsset: vault.Classification.StableBaseAsset,
 	}
 
-	return v
+	return v, nil
 }
 
 func (v TExternalVault) ComputeRiskScore() float64 {

@@ -117,7 +117,10 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			newVault := NewVault().AssignTVault(currentVault)
+			newVault, err := NewVault().AssignTVault(currentVault)
+			if err != nil {
+				continue
+			}
 			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
 				continue
 			} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {

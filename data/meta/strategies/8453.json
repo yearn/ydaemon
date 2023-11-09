@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-08T20:50:44.370855+01:00",
+	"lastUpdate": "2023-11-09T20:38:44.104053+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 13
+		"patch": 14
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -196,6 +196,31 @@
 				"Aerodrome Finance"
 			]
 		},
+		"0x4161255639d94ee0a1d4c27fe0f863293f6a9798": {
+			"address": "0x4161255639d94ee0a1d4c27fe0f863293f6a9798",
+			"vaultAddress": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
+			"name": "",
+			"vaultVersion": "0.4.6",
+			"activation": 6357097,
+			"chainID": 8453,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1699503541",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "0",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
 		"0x489a60748a8b74cd32c13d090f60314797b218d9": {
 			"address": "0x489a60748a8b74cd32c13d090f60314797b218d9",
 			"vaultAddress": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
@@ -303,6 +328,31 @@
 			"protocols": [
 				"Aerodrome Finance"
 			]
+		},
+		"0x7753e6ea61bee08dae2373117a48b0104b7989b4": {
+			"address": "0x7753e6ea61bee08dae2373117a48b0104b7989b4",
+			"vaultAddress": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
+			"name": "",
+			"vaultVersion": "0.4.6",
+			"activation": 6357103,
+			"chainID": 8453,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1699503553",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "0",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
 		},
 		"0x8062cdad4b0c5ada2877fbc85eb928fbc587cf79": {
 			"address": "0x8062cdad4b0c5ada2877fbc85eb928fbc587cf79",

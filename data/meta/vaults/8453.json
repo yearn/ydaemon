@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-08T20:49:44.200459+01:00",
+	"lastUpdate": "2023-11-09T20:36:43.446395+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 42
+		"patch": 43
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -227,6 +227,36 @@
 				"stableBaseAsset": "USD"
 			}
 		},
+		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
+			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
+			"token": "0xb5e331615fdba7df49e05cdeaceb14acdd5091c3",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 6357097,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x4161255639d94ee0a1d4c27fe0f863293f6a9798"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			}
+		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
 			"token": "0x8b432c54d6e8e1b8d1802753514ab53044af1861",
@@ -288,6 +318,36 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
+			}
+		},
+		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
+			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
+			"token": "0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 6357103,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x7753e6ea61bee08dae2373117a48b0104b7989b4"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
 			}
 		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {

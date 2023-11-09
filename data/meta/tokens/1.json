@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2023-11-08T20:50:48.05738+01:00",
+	"lastUpdate": "2023-11-09T20:38:46.591905+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
@@ -4945,6 +4945,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x69681f8fde45345C3870BCD5eaf4A05a60E7D227/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x69833361991ed76f9e8dbbcdf9ea1520febfb4a7": {
+			"address": "0x69833361991ed76f9e8dbbcdf9ea1520febfb4a7",
+			"underlyingTokensAddresses": [
+				"0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+				"0xe3668873d944e4a949da05fc8bde419eff543882"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+			"symbol": "yPRISMA-f",
+			"displayName": "Curve.fi Factory Plain Pool: PRISMA/yPRISMA",
+			"displaySymbol": "yPRISMA-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10927,6 +10944,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xe2F6b9773BF3A015E2aA70741Bde1498bdB9425b/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xe3668873d944e4a949da05fc8bde419eff543882": {
+			"address": "0xe3668873d944e4a949da05fc8bde419eff543882",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Yearn PRISMA",
+			"symbol": "yPRISMA",
+			"displayName": "Yearn PRISMA",
+			"displaySymbol": "yPRISMA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe3668873D944E4A949DA05fc8bDE419eFF543882/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42": {

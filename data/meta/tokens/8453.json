@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2023-11-08T20:50:44.311804+01:00",
+	"lastUpdate": "2023-11-09T20:38:43.771549+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
@@ -273,6 +273,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
+			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
+			"underlyingTokensAddresses": [
+				"0xb5e331615fdba7df49e05cdeaceb14acdd5091c3"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome hyUSD-eUSD Factory yVault",
+			"symbol": "yvAero-hyUSD-eUSD-f",
+			"displayName": "Aerodrome hyUSD-eUSD Factory yVault",
+			"displaySymbol": "yvAero-hyUSD-eUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x4d3ceBA4349ADB06d2De8EBD2F9320A61303aD81/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
 			"underlyingTokensAddresses": [
@@ -319,6 +335,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
+			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
+			"underlyingTokensAddresses": [
+				"0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome eUSD-USDbC Factory yVault",
+			"symbol": "yvAero-eUSD-USDbC-f",
+			"displayName": "Aerodrome eUSD-USDbC Factory yVault",
+			"displaySymbol": "yvAero-eUSD-USDbC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x5b508fE98Ac33DA9352FA539E2EFA9F1DdA26c51/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
 			"underlyingTokensAddresses": [
@@ -332,6 +364,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x5B9b4F9B704faAe29f600C04b12aF92FB518604f/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb": {
+			"address": "0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Stable AMM - eUSD/USDbC",
+			"symbol": "sAMM-eUSD/USDbC",
+			"displayName": "Stable AMM - eUSD/USDbC",
+			"displaySymbol": "sAMM-eUSD/USDbC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x5BfB340FA9305abB164Fb0248D0D82FC3D82C3bb/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -634,6 +680,20 @@
 			"description": "This token represents a Aerodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Aerodrome's gauges to earn emissions. This volatile pool contains WETH and USDbC.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xB4885Bc63399BF5518b994c1d0C153334Ee579D0/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xb5e331615fdba7df49e05cdeaceb14acdd5091c3": {
+			"address": "0xb5e331615fdba7df49e05cdeaceb14acdd5091c3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - hyUSD/eUSD",
+			"symbol": "vAMM-hyUSD/eUSD",
+			"displayName": "Volatile AMM - hyUSD/eUSD",
+			"displaySymbol": "vAMM-hyUSD/eUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xb5E331615FdbA7DF49e05CdEACEb14Acdd5091c3/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

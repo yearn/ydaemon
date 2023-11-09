@@ -108,6 +108,8 @@ var ETHEREUM = TChain{
 		common.HexToAddress(`0x41252E8691e964f7DE35156B68493bAb6797a275`), // dYFI
 		common.HexToAddress(`0xd084944d3c05cd115c09d072b9f44ba3e0e45921`), // Fold
 		common.HexToAddress(`0xdA47862a83dac0c112BA89c6abC2159b95afd71C`), // Prisma
+		common.HexToAddress(`0xe3668873d944e4a949da05fc8bde419eff543882`), // yPrisma
+		common.HexToAddress(`0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7`), // lp-Prisma
 	},
 	IgnoredTokens: []common.Address{
 		common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`), // nothing

@@ -24,6 +24,8 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
+	underWg := sync.WaitGroup{}
+	underWg.Add(3)
 	/** 🔵 - Yearn *************************************************************************************
 	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
 	** - The registries vaults
@@ -33,12 +35,17 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	**************************************************************************************************/
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+
+	go func() {
+		indexer.IndexStakingPools(chainID)
+		underWg.Done()
+		logs.Success(`We have all the staking pool for chainID`, chainID)
+	}() // Retrieve the staking pools
+
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	logs.Success(`We got all the strategies for chainID`, chainID)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 
-	underWg := sync.WaitGroup{}
-	underWg.Add(3)
 	go func() {
 		prices.RetrieveAllPrices(chainID, tokenMap)
 		underWg.Done()
@@ -49,10 +56,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		underWg.Done()
 	}() // Retrieve the strategies for all chains
 
-	go func() {
-		indexer.IndexStakingPools(chainID)
-		underWg.Done()
-	}() // Retrieve the staking pools
 	underWg.Wait()
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {

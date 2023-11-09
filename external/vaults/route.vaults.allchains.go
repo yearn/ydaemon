@@ -130,7 +130,10 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 				continue
 			}
-			APRAsFloat, _ := newVault.APR.NetAPR.Float64()
+			APRAsFloat := 0.0
+			if newVault.APR.NetAPR != nil {
+				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
+			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			allVaults = append(allVaults, newVault)
 		}

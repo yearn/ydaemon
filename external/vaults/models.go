@@ -136,6 +136,11 @@ type TSimplifiedExternalERC20Token struct {
 	Decimals    uint64 `json:"decimals"`
 }
 
+type TStakingData struct {
+	Address   string `json:"address"`
+	Available bool   `json:"available"`
+}
+
 // TSimplifiedExternalVault is the struct containing the information about a vault.
 type TSimplifiedExternalVault struct {
 	Address        string                        `json:"address"`
@@ -152,6 +157,7 @@ type TSimplifiedExternalVault struct {
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
 	APR            apr.TVaultAPR                 `json:"apr"`
 	Strategies     []TStrategy                   `json:"strategies"`
+	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
 }
@@ -162,7 +168,7 @@ func NewVault() TExternalVault {
 func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error) {
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		return v, errors.New(`Token not found`)
+		return v, errors.New(`token not found`)
 	}
 	name, displayName, formatedName := fetcher.BuildVaultNames(vault, ``)
 	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, ``)

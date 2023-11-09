@@ -69,6 +69,7 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 		tokenSymbol = `Unknown`
 	}
 
+	stakingData, hasStakingPool := storage.GetStakingPoolForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	simplifiedVault := TSimplifiedExternalVault{
 		Address:        vault.Address,
 		Type:           vault.Type,
@@ -94,6 +95,10 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 			TotalAssets: vault.TVL.TotalAssets,
 			TVL:         vault.TVL.TVL,
 			Price:       vault.TVL.Price,
+		},
+		Staking: TStakingData{
+			Address:   stakingData.StackingPoolAddress.Hex(),
+			Available: hasStakingPool,
 		},
 	}
 	return simplifiedVault

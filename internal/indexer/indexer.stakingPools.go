@@ -106,6 +106,10 @@ func watchStakingPool(
 	}
 	stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 	if err != nil {
+		logs.Error(err)
+		if wg != nil && !isDone {
+			wg.Done()
+		}
 		return 0, false, err
 	}
 	defer sub.Unsubscribe()
@@ -169,11 +173,30 @@ func indexStakingPoolWrapper(
 	** indexer to be able to catch the errors, to restart the indexer or just to exit the loop to
 	** fallback to another method.
 	**********************************************************************************************/
-	shouldRetry := true
+	shouldRetry := false
 	err := error(nil)
+
 	for {
 		if _, err := ethereum.GetWSClient(chainID); err != nil {
-			break
+			/**********************************************************************************************
+			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
+			** latest block. This is a fallback method in case the WS connection is not available.
+			** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
+			** function under certain conditions while avoiding multiple calls to the same function.
+			**********************************************************************************************/
+			for {
+				lastBlock := filterStakingPools(
+					chainID,
+					registry,
+					lastSyncedBlock,
+					nil,
+					wg,
+					isDone,
+				)
+				isDone = true
+				lastSyncedBlock = lastBlock
+				time.Sleep(1 * time.Minute)
+			}
 		}
 		lastSyncedBlock, shouldRetry, err = watchStakingPool(
 			chainID,
@@ -186,29 +209,10 @@ func indexStakingPoolWrapper(
 		if err != nil {
 			logs.Error(`error while indexing staking pools from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
-		if !shouldRetry {
-			break
+		if shouldRetry {
+			continue
 		}
-	}
-
-	/**********************************************************************************************
-	** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
-	** latest block. This is a fallback method in case the WS connection is not available.
-	** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
-	** function under certain conditions while avoiding multiple calls to the same function.
-	**********************************************************************************************/
-	for {
-		lastBlock := filterStakingPools(
-			chainID,
-			registry,
-			lastSyncedBlock,
-			nil,
-			wg,
-			isDone,
-		)
-		isDone = true
-		lastSyncedBlock = lastBlock
-		time.Sleep(1 * time.Minute)
+		break
 	}
 }
 

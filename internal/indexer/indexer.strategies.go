@@ -570,6 +570,10 @@ func IndexNewStrategies(
 		}
 		_strategiesAlreadyIndexingForVaults[chainID].Store(vault.Address, true)
 
+		if vault.IsRetired || vault.Migration.Available {
+			continue
+		}
+
 		/** 🔵 - Yearn *************************************************************************************
 		** This block of code is responsible for retrieving the list of strategies for a given vault.
 		** It then iterates over these strategies to find the one with the highest block number.

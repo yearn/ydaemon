@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-09T20:38:46.591905+01:00",
+	"lastUpdate": "2023-11-14T16:20:36.914278+01:00",
 	"version": {
 		"major": 0,
-		"minor": 0,
-		"patch": 4
+		"minor": 1,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
@@ -929,6 +929,20 @@
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x196f4727526eA7FB1e17b2071B3d8eAA38486988/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x19747816a030fecda3394c6062cdf6b9b4db0e0b": {
+			"address": "0x19747816a030fecda3394c6062cdf6b9b4db0e0b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Hemelios",
+			"symbol": "HEM",
+			"displayName": "Hemelios",
+			"displaySymbol": "HEM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x19747816A030fECDa3394C6062CDF6b9B4dB0E0b/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0x19b080fe1ffa0553469d20ca36219f17fcf03859": {
@@ -10162,6 +10176,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xd6242E984E6db6B5286FB2c26C69330Da639da12/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd624e5c89466a15812c1d45ce1533be1f16c1702": {
+			"address": "0xd624e5c89466a15812c1d45ce1533be1f16c1702",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "UBD Network",
+			"symbol": "UBDN",
+			"displayName": "UBD Network",
+			"displaySymbol": "UBDN",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0xD624E5C89466A15812c1D45Ce1533be1F16C1702/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

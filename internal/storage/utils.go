@@ -42,10 +42,10 @@ func detectVersionUpdate[T any](chainID uint64, currentVersion TVersion, previou
 	shouldBumpMinor := false
 	shouldBumpPatch := false
 
-	for address, element := range previousElements {
-		if _, ok := newElements[address]; !ok {
+	for address, element := range newElements {
+		if _, ok := previousElements[address]; !ok {
 			shouldBumpMinor = true
-		} else if !reflect.DeepEqual(newElements[address], element) {
+		} else if !reflect.DeepEqual(previousElements[address], element) {
 			shouldBumpPatch = true
 		}
 	}

@@ -53,13 +53,14 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}
+		req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
 		q := req.URL.Query()
 		q.Add("contract_addresses", strings.Join(tokenString, ","))
 		q.Add("vs_currencies", "usd")
 		req.URL.RawQuery = q.Encode()
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil || resp.StatusCode != 200 {
-			logs.Error(err, resp.StatusCode, resp.Status)
+			logs.Error(err, resp.StatusCode)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}

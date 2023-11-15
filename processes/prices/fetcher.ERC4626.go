@@ -23,16 +23,16 @@ type TVaultToAsset struct {
 ** fetchShareValueFromERC4626 will try to get the value of the assets for a ERC4626 vault type token
 ** It will return an array of struct with vault/asset/value
 **************************************************************************************************/
-func fetchShareValueFromERC4626(chainID uint64, blockNumber *uint64, tokenList []models.TERC20Token) []TVaultToAsset {
+func fetchShareValueFromERC4626(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) []TVaultToAsset {
 	vaultToAsset := []TVaultToAsset{}
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
-	** preparing the array of calls to send. All calls for all tokenList will be send in a single
+	** preparing the array of calls to send. All calls for all tokens will be send in a single
 	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
-	for _, token := range tokenList {
+	for _, token := range tokens {
 		if token, ok := storage.GetERC20(chainID, token.Address); ok {
 			oneUnitScaledToDecimals := helpers.ToRawAmount(bigNumber.NewInt(1), token.Decimals)
 			calls = append(calls, multicalls.GetConvertToAssets(token.Address.Hex(), token.Address, oneUnitScaledToDecimals))
@@ -57,7 +57,7 @@ func fetchShareValueFromERC4626(chainID uint64, blockNumber *uint64, tokenList [
 		response = multicalls.Perform(chainID, calls, blockNumberBigInt)
 	}
 
-	for _, token := range tokenList {
+	for _, token := range tokens {
 		rawConvertedToAsset := response[token.Address.Hex()+`convertToAssets`]
 		rawAsset := response[token.Address.Hex()+`asset`]
 		if len(rawConvertedToAsset) == 0 || len(rawAsset) == 0 {

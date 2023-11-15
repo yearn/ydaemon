@@ -28,8 +28,8 @@ type TAllTokens struct {
 func (y Controller) GetAllTokens(c *gin.Context) {
 	allTokens := make(map[uint64]map[string]TAllTokens)
 	for chainID := range env.CHAINS {
-		tokenList, _ := storage.ListERC20(chainID)
-		for _, token := range tokenList {
+		tokens, _ := storage.ListERC20(chainID)
+		for _, token := range tokens {
 			if _, ok := allTokens[chainID]; !ok {
 				allTokens[chainID] = make(map[string]TAllTokens)
 			}

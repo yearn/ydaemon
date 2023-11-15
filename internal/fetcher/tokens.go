@@ -35,7 +35,7 @@ func fetchTokensBasicInformations(
 	tokens []common.Address,
 	toSkip []common.Address,
 	curveFactoryPoolMap map[string][]common.Address,
-) (tokenList []models.TERC20Token) {
+) (sliceOfTokens []models.TERC20Token) {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
@@ -73,7 +73,7 @@ func fetchTokensBasicInformations(
 			continue
 		}
 		if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
-			tokenList = append(tokenList, models.TERC20Token{
+			sliceOfTokens = append(sliceOfTokens, models.TERC20Token{
 				Address:  tokenAddress,
 				Name:     `Ethereum`,
 				Symbol:   `ETH`,
@@ -263,12 +263,12 @@ func fetchTokensBasicInformations(
 			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin1)
 		}
 
-		tokenList = append(tokenList, newToken)
+		sliceOfTokens = append(sliceOfTokens, newToken)
 		toSkip = append(toSkip, tokenAddress)
 	}
 
 	if len(relatedTokensList) > 0 {
-		tokenList = append(tokenList, fetchTokensBasicInformations(
+		sliceOfTokens = append(sliceOfTokens, fetchTokensBasicInformations(
 			chainID,
 			helpers.UniqueArrayAddress(relatedTokensList),
 			helpers.UniqueArrayAddress(toSkip),
@@ -276,7 +276,7 @@ func fetchTokensBasicInformations(
 		)...)
 	}
 
-	return tokenList
+	return sliceOfTokens
 }
 
 /**************************************************************************************************

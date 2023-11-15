@@ -138,11 +138,5 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
 	}
 
-	// {
-	// 	router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
-	// 	router.StaticFile("tokenlist", env.BASE_DATA_PATH+`/tokensList/public/yearn.json`)
-	// 	GET(router, `tokenlist/live`, tokensList.GetTokenList)
-	// }
-
 	return router
 }

@@ -7,8 +7,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllStrategies will, for a given chainID, return a list of all strategies
@@ -23,20 +23,20 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 	}
 
 	data := []TStrategy{}
-	allVaults := vaults.ListVaults(chainID)
+	allVaults, _ := storage.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 			continue
 		}
-		vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)
+		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
 		for _, strategy := range vaultStrategies {
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}
 			// Always show details
-			strategyWithDetails.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
-			data = append(data, *strategyWithDetails)
+			strategyWithDetails.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
+			data = append(data, strategyWithDetails)
 		}
 	}
 

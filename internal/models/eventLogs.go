@@ -17,17 +17,3 @@ type TEventRewardAdded struct {
 	TxIndex     uint           `json:"-"`
 	LogIndex    uint           `json:"-"`
 }
-
-// TEventReferredBalanceIncreased contains the ReferredBalanceIncreased event data
-// for the partner tracker contract
-type TEventReferredBalanceIncreased struct {
-	Amount         *bigNumber.Int `json:"amount"`
-	TotalDeposited *bigNumber.Int `json:"totalDeposited"`
-	PartnerID      common.Address `json:"partnerID"`
-	Vault          common.Address `json:"vault"`
-	Depositer      common.Address `json:"depositer"`
-	TxHash         common.Hash    `json:"txHash"`
-	BlockNumber    uint64         `json:"blockNumber"`
-	TxIndex        uint           `json:"-"`
-	LogIndex       uint           `json:"-"`
-}

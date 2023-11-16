@@ -9,7 +9,7 @@ import (
 
 // SetEnv will init the environment variables based on the .env file
 func SetEnv(path string) {
-	_ = godotenv.Load(path)
+	godotenv.Load(path)
 
 	RPCURIFor1, exists := os.LookupEnv("RPC_URI_FOR_1")
 	if !exists {
@@ -63,13 +63,6 @@ func SetEnv(path string) {
 		chain := CHAINS[42161]
 		chain.RpcURI = RPCURIFor42161
 		CHAINS[42161] = chain
-	}
-
-	ApiV1BaseUrl, exists := os.LookupEnv("API_V1_BASE_URL")
-	if !exists {
-		logs.Warning("API_V1_BASE_URL not set, using default value: [https://api.yearn.fi/v1/chains/]")
-	} else {
-		API_V1_BASE_URL = ApiV1BaseUrl
 	}
 }
 

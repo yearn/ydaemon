@@ -9,8 +9,6 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
-type arrayFlags string
-
 func handleChainsInitialization(rawChains *string) []uint64 {
 	/**********************************************************************************************
 	** chainFlag is an array of strings, so we need to convert it to an array of uint64, excluding

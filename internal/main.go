@@ -4,17 +4,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/go-co-op/gocron"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/events"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
-	bribes "github.com/yearn/ydaemon/internal/indexer.bribes"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/registries"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/tokens"
-	"github.com/yearn/ydaemon/internal/vaults"
-	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
+	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
 )
@@ -22,65 +20,61 @@ import (
 var STRATLIST = []models.TStrategy{}
 var cron = gocron.NewScheduler(time.UTC)
 
-func runRetrieveAllVaults(chainID uint64, vaultsMap map[common.Address]models.TVaultsFromRegistry, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		vaults.RetrieveAllVaults(chainID, vaultsMap)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
-func runRetrieveAllStrategies(chainID uint64, strategiesAddedList []models.TStrategyAdded, wg *sync.WaitGroup, delay time.Duration) {
-	isDone := false
-	for {
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		indexer.PostProcessStrategies(chainID)
-		if !isDone {
-			isDone = true
-			wg.Done()
-		}
-		if delay == 0 {
-			return
-		}
-		time.Sleep(delay)
-	}
-}
-
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	defer wg.Done()
 	go InitializeBribes(chainID)
 
-	vaultsMap := registries.RegisterAllVaults(chainID, 0, nil)
-	tokens.RetrieveAllTokens(chainID, vaultsMap)
+	underWg := sync.WaitGroup{}
+	underWg.Add(3)
+	/** 🔵 - Yearn *************************************************************************************
+	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
+	** - The registries vaults
+	** - The vaults
+	** - The strategies
+	** - The tokens
+	**************************************************************************************************/
+	registries := indexer.IndexNewVaults(chainID)
+	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+
+	go func() {
+		indexer.IndexStakingPools(chainID)
+		underWg.Done()
+		logs.Success(`We have all the staking pool for chainID`, chainID)
+	}() // Retrieve the staking pools
+
+	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
+	logs.Success(`We got all the strategies for chainID`, chainID)
+	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
+
+	go func() {
+		prices.RetrieveAllPrices(chainID, tokenMap)
+		underWg.Done()
+	}() // Retrieve the prices for all tokens
+
+	go func() {
+		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+		underWg.Done()
+	}() // Retrieve the strategies for all chains
+
+	underWg.Wait()
 
 	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
-	cron.Every(15).Minute().StartImmediately().Do(func() {
-		vaults.RetrieveAllVaults(chainID, vaultsMap)
-		prices.Run(chainID)
-		strategiesAddedList := events.HandleStrategyAdded(chainID, vaultsMap, 0, nil)
-		events.HandleStakingPoolAdded(chainID, 0, nil)
-		strategies.RetrieveAllStrategies(chainID, strategiesAddedList)
-		indexer.PostProcessStrategies(chainID)
-		apy.ComputeChainAPR(chainID)
-		go strategies.InitRiskScore(chainID)
+	cron.Every(15).Minute().Do(func() {
+		currentTokenMap, _ := storage.ListERC20(chainID)
+		prices.RetrieveAllPrices(chainID, currentTokenMap)
+		apr.ComputeChainAPR(chainID)
+		go risk.InitRiskScore(chainID)
 	})
 
 	cron.StartAsync()
-	go registries.IndexNewVaults(chainID)
 }
 
 func InitializeBribes(chainID uint64) {
 	allRewardsAdded := events.HandleRewardsAdded(chainID, 0, nil)
 	for _, reward := range allRewardsAdded {
-		bribes.SetInRewardAddedMap(chainID, reward)
+		indexer.SetInRewardAddedMap(chainID, reward)
 	}
 }

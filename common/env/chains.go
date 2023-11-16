@@ -22,6 +22,7 @@ type TChain struct {
 	StackingRewardContract TContractData
 	YBribeV3Contract       TContractData
 	PartnerContract        TContractData
+	APROracleContract      TContractData
 	Coin                   models.TERC20Token
 	Registries             []TContractData
 	ExtraVaults            []models.TVaultsFromRegistry

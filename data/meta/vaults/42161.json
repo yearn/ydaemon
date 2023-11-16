@@ -1,0 +1,167 @@
+{
+	"lastUpdate": "2023-11-09T20:36:43.221961+01:00",
+	"version": {
+		"major": 0,
+		"minor": 0,
+		"patch": 5
+	},
+	"shouldRefresh": false,
+	"vaults": {
+		"0x1dba7641dc69188d6086a73b972ac4bda29ec35d": {
+			"address": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
+			"token": "0x30df229cefa463e991e29d42db0bae2e122b2ac7",
+			"type": "Yearn Vault",
+			"kind": "",
+			"version": "0.4.3",
+			"activation": 11987182,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 2000,
+			"managementFee": 200,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xf1c3047c6310806de1d25535bc50748815066a7b"
+			],
+			"lastPricePerShare": "1075162932631134251",
+			"lastTotalAssets": "5075873312015723377199",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": true,
+				"poolProvider": "Curve",
+				"stability": "Stable",
+				"stableBaseAsset": "USD"
+			}
+		},
+		"0x239e14a19dff93a17339dcc444f74406c17f8e67": {
+			"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
+			"token": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
+			"type": "Yearn Vault",
+			"kind": "",
+			"version": "0.4.3",
+			"activation": 4842579,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 2000,
+			"managementFee": 200,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xcdd989d84f9b63d2f0b1906a2d9b22355316de31"
+			],
+			"lastPricePerShare": "1079472911495095859",
+			"lastTotalAssets": "64210542847486782767",
+			"isRetired": true,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x0000000000000000000000000000000000000000",
+				"contract": "0x239e14a19dff93a17339dcc444f74406c17f8e67"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": true,
+				"poolProvider": "Curve",
+				"stability": "Volatile"
+			}
+		},
+		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
+			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
+			"token": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
+			"type": "Yearn Vault",
+			"kind": "",
+			"version": "0.4.3",
+			"activation": 15542281,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 2000,
+			"managementFee": 200,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xf992fcef771df908f9b09bb2619092f70ab21957"
+			],
+			"lastPricePerShare": "1006528534735808824",
+			"lastTotalAssets": "2122397242284480086197",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": true,
+				"poolProvider": "Curve",
+				"stability": "Stable",
+				"stableBaseAsset": "USD"
+			}
+		},
+		"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
+			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+			"token": "0x59bf0545fca0e5ad48e13da269facd2e8c886ba4",
+			"type": "Experimental Yearn Vault",
+			"kind": "",
+			"version": "0.4.3",
+			"activation": 20340382,
+			"chainID": 42161,
+			"endorsed": false,
+			"performanceFee": 1000,
+			"managementFee": 200,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xccfff90a596fcc0b549a5f69a70de0a9c5295352"
+			],
+			"lastPricePerShare": "1007401799738877861",
+			"lastTotalAssets": "503740686379417358694",
+			"isRetired": false,
+			"isHidden": true,
+			"migration": {
+				"available": false,
+				"target": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": true,
+				"poolProvider": "Curve",
+				"stability": "Stable",
+				"stableBaseAsset": "USD"
+			}
+		},
+		"0x976a1c749cd8153909e0b04eebe931ef8957b15b": {
+			"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
+			"token": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
+			"type": "Experimental Yearn Vault",
+			"kind": "",
+			"version": "0.4.3",
+			"activation": 5591345,
+			"chainID": 42161,
+			"endorsed": false,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "12990000000000000000",
+			"isRetired": true,
+			"isHidden": true,
+			"migration": {
+				"available": false,
+				"target": "0x0000000000000000000000000000000000000000",
+				"contract": "0x976a1c749cd8153909e0b04eebe931ef8957b15b"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": "Stable",
+				"stableBaseAsset": "PHP"
+			}
+		}
+	}
+}

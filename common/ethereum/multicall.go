@@ -6,6 +6,8 @@ import (
 	"errors"
 	"math/big"
 	"os"
+	"runtime"
+	"strconv"
 	"strings"
 	"time"
 
@@ -17,7 +19,6 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/traces"
 )
 
 type Call struct {
@@ -58,7 +59,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 	client, err := ethclient.Dial(rpcURI)
 	if err != nil {
-		traces.
+		logs.
 			Capture(`error`, `failed to connect to node`).
 			SetEntity(`multicall`).
 			SetExtra(`error`, err.Error()).
@@ -73,7 +74,7 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	mcAbi, err := contracts.Multicall2MetaData.GetAbi()
 	if err != nil {
 		currentChainID, _ := client.ChainID(context.Background())
-		traces.
+		logs.
 			Capture(`error`, `failed to decode Multicall ABI`).
 			SetEntity(`multicall`).
 			SetExtra(`error`, err.Error()).
@@ -100,13 +101,9 @@ func (caller *TEthMultiCaller) execute(
 ) ([]byte, error) {
 	abi, _ := contracts.Multicall2MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
+
 	if err != nil {
-		traces.
-			Capture(`error`, `failed to pack tryAggregate`).
-			SetEntity(`multicall`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`blockNumber`, blockNumber.String()).
-			Send()
+		logs.Error(`failed to pack tryAggregate: ` + err.Error())
 		return []byte{}, err
 	}
 
@@ -123,7 +120,7 @@ func (caller *TEthMultiCaller) execute(
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
-		return []byte{}, errors.New("Failed to perform multicall for:" + chainID.String() + " | " + err.Error())
+		return []byte{}, errors.New("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
 	}
 	return resp, nil
 }
@@ -193,11 +190,30 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 					return caller.ExecuteByBatch(calls, 10000, blockNumber)
 				}
 				if isAssumingOutOfGas && batchSize <= 1 {
-					logs.Error(`Multicall failed! See error: ` + err.Error())
+					for i := 0; i < 100; i++ {
+						pc, file, line, ok := runtime.Caller(i)
+						if ok {
+							if strings.Contains(file, "/multicall.go") || strings.Contains(file, "/multicalls/perform.go") {
+								continue
+							}
+							logs.Error(`Multicall failed at [` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `]: ` + err.Error())
+							break
+						}
+					}
 					return nil
 				}
 				if batchSize <= 1 {
-					logs.Error(`Multicall failed! See error: ` + err.Error())
+					logs.Error(`Multicall failed: ` + err.Error())
+					for i := 0; i < 100; i++ {
+						pc, file, line, ok := runtime.Caller(i)
+						if ok {
+							if strings.Contains(file, "/multicall.go") || strings.Contains(file, "/multicalls/perform.go") {
+								continue
+							}
+							logs.Error(`Multicall failed at ` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `: ` + err.Error())
+							break
+						}
+					}
 					return nil
 				}
 				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
@@ -212,7 +228,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		// Unpack results
 		unpackedResp, err := caller.Abi.Unpack("tryAggregate", tempPackedResp)
 		if err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to unpack response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).
@@ -224,7 +240,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to marshal response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).
@@ -236,7 +252,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		// Unpack results
 		var tempResp []CallResponse
 		if err := json.Unmarshal(a, &tempResp); err != nil {
-			traces.
+			logs.
 				Capture(`error`, `failed to unmarshal response`).
 				SetEntity(`multicall`).
 				SetExtra(`error`, err.Error()).

@@ -6,88 +6,54 @@ import (
 )
 
 type TStrategyAdded struct {
-	VaultAddress      common.Address
-	StrategyAddress   common.Address
-	TxHash            common.Hash
-	DebtRatio         *bigNumber.Int // >= 0.3.0
-	MaxDebtPerHarvest *bigNumber.Int // >= 0.3.2
-	MinDebtPerHarvest *bigNumber.Int // >= 0.3.2
-	PerformanceFee    *bigNumber.Int // >= 0.2.2
-	DebtLimit         *bigNumber.Int // == 0.2.2
-	RateLimit         *bigNumber.Int // == 0.2.2 - 0.3.0
-	VaultVersion      string
-	ChainID           uint64
-	BlockNumber       uint64
-	TxIndex           uint
-	LogIndex          uint
+	Address      common.Address `json:"address"`
+	VaultAddress common.Address `json:"vaultAddress"`
+	VaultVersion string         `json:"vaultVersion"`
+	ChainID      uint64         `json:"chainID"`
+	BlockNumber  uint64         `json:"blockNumber"`
 }
 
 type TStrategyMigrated struct {
-	VaultAddress       common.Address
-	OldStrategyAddress common.Address
-	NewStrategyAddress common.Address
-	TxHash             common.Hash
-	BlockNumber        uint64
-	TxIndex            uint
-	LogIndex           uint
-}
-
-type TStrategyInitialization struct {
-	TxHash      common.Hash
-	BlockNumber uint64
-	TxIndex     uint
-	LogIndex    uint
+	VaultAddress       common.Address `json:"vaultAddress"`
+	OldStrategyAddress common.Address `json:"oldStrategyAddress"`
+	NewStrategyAddress common.Address `json:"newStrategyAddress"`
+	ChainID            uint64         `json:"chainID"`
+	BlockNumber        uint64         `json:"blockNumber"`
 }
 
 type TStrategy struct {
-	Address                 common.Address          `json:"address"`
-	VaultAddress            common.Address          `json:"vaultAddress"`
-	KeeperAddress           common.Address          `json:"keeperAddress"`
-	StrategistAddress       common.Address          `json:"strategistAddress"`
-	RewardsAddress          common.Address          `json:"rewardsAddress"`
-	HealthCheckAddress      common.Address          `json:"healthCheckAddress"`
-	VaultVersion            string                  `json:"vaultVersion"`
-	Name                    string                  `json:"name"`
-	DisplayName             string                  `json:"displayName"`
-	GroupName               string                  `json:"groupName"`
-	Description             string                  `json:"description"`
-	APIVersion              string                  `json:"apiVersion"`
-	Protocols               []string                `json:"protocols"`
-	CreditAvailable         *bigNumber.Int          `json:"creditAvailable"`
-	DebtOutstanding         *bigNumber.Int          `json:"debtOutstanding"`
-	ExpectedReturn          *bigNumber.Int          `json:"expectedReturn"`
-	PerformanceFee          *bigNumber.Int          `json:"performanceFee"`
-	Activation              *bigNumber.Int          `json:"activation"`
-	DebtRatio               *bigNumber.Int          `json:"debtRatio,omitempty"`         // Only > 0.2.2
-	DebtLimit               *bigNumber.Int          `json:"debtLimit,omitempty"`         // Only = 0.2.2
-	RateLimit               *bigNumber.Int          `json:"rateLimit,omitempty"`         // Only < 0.3.2
-	MinDebtPerHarvest       *bigNumber.Int          `json:"minDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	MaxDebtPerHarvest       *bigNumber.Int          `json:"maxDebtPerHarvest,omitempty"` // Only >= 0.3.2
-	LastReport              *bigNumber.Int          `json:"lastReport"`
-	TotalDebt               *bigNumber.Int          `json:"totalDebt"`
-	TotalGain               *bigNumber.Int          `json:"totalGain"`
-	TotalLoss               *bigNumber.Int          `json:"totalLoss"`
-	EstimatedTotalAssets    *bigNumber.Int          `json:"estimatedTotalAssets"`
-	KeepCRV                 *bigNumber.Int          `json:"keepCRV"`
-	KeepCRVPercent          *bigNumber.Int          `json:"keepCRVPercent"`
-	KeepCVX                 *bigNumber.Int          `json:"keepCVX"`
-	DelegatedAssets         *bigNumber.Int          `json:"delegatedAssets"`
-	WithdrawalQueuePosition *bigNumber.Int          `json:"withdrawalQueuePosition"`
-	ChainID                 uint64                  `json:"chainID"`
-	DoHealthCheck           bool                    `json:"doHealthCheck"`
-	EmergencyExit           bool                    `json:"emergencyExit"`
-	IsActive                bool                    `json:"isActive"`
-	IsInQueue               bool                    `json:"isInQueue"`
-	Initialization          TStrategyInitialization `json:"-"`
-}
+	// Immutable elements. They won't change
+	Address       common.Address `json:"address"`      // The address of the strategy
+	VaultAddress  common.Address `json:"vaultAddress"` // The address of the vault
+	Name          string         `json:"name"`
+	VaultVersion  string         `json:"vaultVersion"` // The version of the vault
+	Activation    uint64         `json:"activation"`
+	ChainID       uint64         `json:"chainID"`
+	DoHealthCheck bool           `json:"doHealthCheck"`
+	IsActive      bool           `json:"isActive"`
+	IsInQueue     bool           `json:"isInQueue"`
+	TimeActivated *bigNumber.Int `json:"-"` // When the strategy was activated. Only used internaly to compute the longevityImpact.
 
-// TStrategyFromMeta is the structure of data we receive when calling meta.yearn.fi/api/1/strategies/all
-type TStrategyFromMeta struct {
-	Address          common.Address   `json:"address"`
-	Name             string           `json:"name"`
-	Description      string           `json:"description"`
-	RelatedAddresses []common.Address `json:"addresses"`
-	Protocols        []string         `json:"protocols"`
-	ChainID          uint64           `json:"chainID"`
-	Localization     *TLocalization   `json:"localization,omitempty"`
+	// Semi-mutable eelements. They can change but rarely
+	KeepCRV        *bigNumber.Int `json:"keepCRV"`
+	KeepCRVPercent *bigNumber.Int `json:"keepCRVPercent"`
+	KeepCVX        *bigNumber.Int `json:"keepCVX"`
+
+	// Mutable elements. They will often change
+	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`            // Used to filter strategies and by the FE
+	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`            // Used by the FE
+	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`            // Used by the FE
+	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`       // Used for APR calculation and by the FE
+	LastReport               *bigNumber.Int `json:"lastReport"`               // Used by the FE
+	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`  // Only > 0.2.2 | Used by the APY process
+	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"` //Used by the risk framework
+
+	// Manual elements. They are manually set by the team
+	IsRetired   bool     `json:"isRetired"`   // If false, will bypass the `IsActive` variable
+	DisplayName string   `json:"displayName"` // The name of the strategy
+	Description string   `json:"description"` // The description of the strategy
+	Protocols   []string `json:"protocols"`   // The protocols used by the strategy
+
+	// Extra fields, used for control purpose. They are not stored, but can be added to trigger some actions
+	ShouldRefresh bool `json:"shouldRefresh,omitempty"` // Will be refreshed no matter what
 }

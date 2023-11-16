@@ -1,0 +1,90 @@
+{
+	"lastUpdate": "2023-11-09T20:36:44.780898+01:00",
+	"version": {
+		"major": 0,
+		"minor": 0,
+		"patch": 17
+	},
+	"shouldRefresh": false,
+	"strategies": {
+		"0x19e70e3195fec1a33745d9260bf26c3f915bb0cc": {
+			"address": "0x19e70e3195fec1a33745d9260bf26c3f915bb0cc",
+			"vaultAddress": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
+			"name": "StrategyCurveTricrypto",
+			"vaultVersion": "0.4.3",
+			"activation": 5432924,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": false,
+			"isInQueue": false,
+			"keepCRV": "0",
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "16441706615157799718",
+			"lastPerformanceFee": "0",
+			"lastReport": "1653434783",
+			"lastDebtRatio": "0",
+			"lastEstimatedTotalAssets": "0",
+			"isRetired": true,
+			"displayName": "Curve Gauge",
+			"description": "Supplies {{token}} to [Curve Finance](https://arbitrum.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Curve Finance"
+			]
+		},
+		"0xccfff90a596fcc0b549a5f69a70de0a9c5295352": {
+			"address": "0xccfff90a596fcc0b549a5f69a70de0a9c5295352",
+			"vaultAddress": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+			"name": "VstFraxStaker",
+			"vaultVersion": "0.4.3",
+			"activation": 20343414,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "500517850482247806415",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "4947849077264360941",
+			"lastPerformanceFee": "0",
+			"lastReport": "1662995529",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "500517850482247806415",
+			"isRetired": false,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xcdd989d84f9b63d2f0b1906a2d9b22355316de31": {
+			"address": "0xcdd989d84f9b63d2f0b1906a2d9b22355316de31",
+			"vaultAddress": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
+			"name": "StrategyCurveTricrypto",
+			"vaultVersion": "0.4.3",
+			"activation": 12888332,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": false,
+			"keepCRV": "0",
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "64210542847486782767",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "15867445447265961846",
+			"lastPerformanceFee": "0",
+			"lastReport": "1697666357",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "64210542847486782767",
+			"isRetired": false,
+			"displayName": "Curve Gauge",
+			"description": "Supplies {{token}} to [Curve Finance](https://arbitrum.curve.fi) and stakes it in gauge to collect any available tokens and earn CRV rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Curve Finance"
+			]
+		}
+	}
+}

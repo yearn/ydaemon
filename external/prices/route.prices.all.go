@@ -7,7 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllPrices will return all the prices informations, no matter the chainID.
@@ -15,20 +15,19 @@ func (y Controller) GetAllPrices(c *gin.Context) {
 	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 
 	allPrices := make(map[uint64]map[string]*bigNumber.Int)
-	allPricesHumanized := make(map[uint64]map[string]float64)
+	allPricesHumanized := make(map[uint64]map[string]*bigNumber.Float)
 	for chainID := range env.CHAINS {
-		allChainPrices := prices.MapPrices(chainID)
+		allChainPrices, _ := storage.ListPrices(chainID)
 		for key, price := range allChainPrices {
 			if _, ok := allPrices[chainID]; !ok {
 				allPrices[chainID] = make(map[string]*bigNumber.Int)
-				allPricesHumanized[chainID] = make(map[string]float64)
+				allPricesHumanized[chainID] = make(map[string]*bigNumber.Float)
 			}
 
 			if humanized {
-				humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-				allPricesHumanized[chainID][key.Hex()] = humanizedPrice
+				allPricesHumanized[chainID][key.Hex()] = price.HumanizedPrice
 			} else {
-				allPrices[chainID][key.Hex()] = price
+				allPrices[chainID][key.Hex()] = price.Price
 			}
 		}
 	}
@@ -48,18 +47,17 @@ func (y Controller) GetPrices(c *gin.Context) {
 	}
 	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 
-	allPrices := prices.MapPrices(chainID)
+	allPrices, _ := storage.ListPrices(chainID)
 	if humanized {
-		humanizedPrices := make(map[string]float64)
+		humanizedPrices := make(map[string]*bigNumber.Float)
 		for key, price := range allPrices {
-			humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-			humanizedPrices[key.Hex()] = humanizedPrice
+			humanizedPrices[key.Hex()] = price.HumanizedPrice
 		}
 		c.JSON(http.StatusOK, humanizedPrices)
 	} else {
 		prices := make(map[string]*bigNumber.Int)
 		for key, price := range allPrices {
-			prices[key.Hex()] = price
+			prices[key.Hex()] = price.Price
 		}
 		c.JSON(http.StatusOK, prices)
 	}

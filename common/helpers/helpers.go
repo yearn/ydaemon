@@ -1,7 +1,6 @@
 package helpers
 
 import (
-	"io/ioutil"
 	"math"
 	"math/big"
 	"os"
@@ -12,7 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 )
 
 // Intersects returns true if both arrays have at least one element in common
@@ -68,9 +67,9 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, err
 		outputFileHere := outputDirFiles[outputIndex]
 		outputFileName := outputFileHere.Name()
 		if strings.HasSuffix(outputFileName, suffix) {
-			content, err := ioutil.ReadFile(directory + outputFileName)
+			content, err := os.ReadFile(directory + outputFileName)
 			if err != nil {
-				traces.
+				logs.
 					Capture(`error`, `impossible to read files in `+directory).
 					SetEntity(`files`).
 					SetExtra(`error`, err.Error()).
@@ -234,6 +233,12 @@ func DecodeAddress(something []interface{}) common.Address {
 		return common.Address{}
 	}
 	return something[0].(common.Address)
+}
+func DecodeAddresses(something []interface{}) []common.Address {
+	if len(something) == 0 {
+		return []common.Address{}
+	}
+	return something[0].([]common.Address)
 }
 
 func ToRawAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Int {

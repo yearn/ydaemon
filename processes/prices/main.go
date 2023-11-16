@@ -3,19 +3,28 @@ package prices
 import (
 	"context"
 	"strconv"
-	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
+
+func listMissingPrices(chainID uint64, tokenMap map[common.Address]models.TERC20Token, newPriceMap map[common.Address]models.TPrices) []models.TERC20Token {
+	tokenSlice := []models.TERC20Token{}
+	for _, token := range tokenMap {
+		if price, ok := newPriceMap[token.Address]; (ok && price.Price.IsZero()) || !ok {
+			tokenSlice = append(tokenSlice, token)
+		}
+	}
+	return tokenSlice
+}
 
 /**************************************************************************************************
 ** fetchPrices will, for a list of addresses, try to fetch all the prices from the lens price
@@ -23,7 +32,7 @@ var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
-** - tokenList: a list of addresses of the tokens we want to fetch the information for
+** - tokenMap: a list of addresses of the tokens we want to fetch the information for
 **
 ** Returns:
 ** - a map of tokenAddress -> *bigNumber.Int
@@ -31,31 +40,32 @@ var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
 func fetchPrices(
 	chainID uint64,
 	blockNumber *uint64,
-	tokenList []common.Address,
-) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
+	tokenMap map[common.Address]models.TERC20Token,
+) map[common.Address]models.TPrices {
+	newPriceMap := make(map[common.Address]models.TPrices)
+	tokenSlice := storage.ERC20MapToSlice(tokenMap)
 
 	/**********************************************************************************************
 	** We now fill in the missing prices using the DeFiLlama and CoinGecko API.
 	**********************************************************************************************/
-	chanLlama := make(chan map[common.Address]*bigNumber.Int)
-	go func() {
-		chanLlama <- fetchPricesFromLlama(chainID, tokenList)
-	}()
-	chanGecko := make(chan map[common.Address]*bigNumber.Int)
-	go func() {
-		chanGecko <- fetchPricesFromGecko(chainID, tokenList)
-	}()
-	pricesLlama := <-chanLlama
-	pricesGecko := <-chanGecko
-
-	for _, token := range tokenList {
-		if pricesLlama[token] != nil && !pricesLlama[token].IsZero() {
-			newPriceMap[token] = pricesLlama[token]
-			continue
+	pricesLlama := fetchPricesFromLlama(chainID, tokenSlice)
+	for _, token := range tokenMap {
+		if price, ok := pricesLlama[token.Address]; ok {
+			if !price.Price.IsZero() {
+				newPriceMap[token.Address] = price
+				continue
+			}
 		}
-		if pricesGecko[token] != nil && !pricesGecko[token].IsZero() {
-			newPriceMap[token] = pricesGecko[token]
+	}
+
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	pricesGecko := fetchPricesFromGecko(chainID, tokenSlice)
+	for _, token := range tokenMap {
+		if price, ok := pricesGecko[token.Address]; ok {
+			if !price.Price.IsZero() {
+				newPriceMap[token.Address] = price
+				continue
+			}
 		}
 	}
 
@@ -64,9 +74,10 @@ func fetchPrices(
 	** be able to calculate the price of some tokens. We will then add them to our map.
 	**********************************************************************************************/
 	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
-	for token, price := range priceMapFromCurveFactoryAPI {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
+	for _, price := range priceMapFromCurveFactoryAPI {
+		if !price.Price.IsZero() {
+			newPriceMap[price.Address] = price
+			continue
 		}
 	}
 
@@ -75,10 +86,12 @@ func fetchPrices(
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
 	** optimism
 	**********************************************************************************************/
-	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenList)
-	for token, price := range priceMapFromVeloOracle {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceMapFromVeloOracle := fetchPricesFromSugar(chainID, blockNumber, tokenSlice)
+	for _, price := range priceMapFromVeloOracle {
+		if !price.Price.IsZero() {
+			newPriceMap[price.Address] = price
+			continue
 		}
 	}
 
@@ -87,10 +100,12 @@ func fetchPrices(
 	** be able to calculate the price of some tokens. We will then add them to our map. Only on
 	** Base
 	**********************************************************************************************/
-	priceMapFromAeroOracle := fetchPricesFromAeroSugar(chainID, blockNumber, tokenList)
-	for token, price := range priceMapFromAeroOracle {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceMapFromAeroOracle := fetchPricesFromAeroSugar(chainID, blockNumber, tokenSlice)
+	for _, price := range priceMapFromAeroOracle {
+		if !price.Price.IsZero() {
+			newPriceMap[price.Address] = price
+			continue
 		}
 	}
 
@@ -98,35 +113,23 @@ func fetchPrices(
 	** With the new version of the Curve LP Token, we can use the contract itself to get the price
 	** of the LP token. We will then add them to our map.
 	**********************************************************************************************/
-	queryList := []common.Address{}
-	for _, token := range tokenList {
-		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			queryList = append(queryList, token)
-		}
-	}
-
-	priceFromCurveAMM := fetchPricesFromCurveAMM(chainID, blockNumber, queryList)
-	for token, price := range priceFromCurveAMM {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceFromCurveAMM := fetchPricesFromCurveAMM(chainID, blockNumber, tokenSlice)
+	for _, price := range priceFromCurveAMM {
+		if !price.Price.IsZero() {
+			newPriceMap[price.Address] = price
+			continue
 		}
 	}
 
 	/**********************************************************************************************
 	** If we still have some missing prices, we will use the lens price oracle to fetch them.
 	**********************************************************************************************/
-	queryList = []common.Address{}
-	for _, token := range tokenList {
-		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			queryList = append(queryList, token)
-		}
-	}
-
-	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, queryList)
-	for token, price := range priceMapLensOracle {
-		if !price.IsZero() && newPriceMap[token] == nil {
-			newPriceMap[token] = price
-
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, tokenSlice)
+	for _, price := range priceMapLensOracle {
+		if price, ok := newPriceMap[price.Address]; ok && price.Price.IsZero() {
+			newPriceMap[price.Address] = price
 		}
 	}
 
@@ -137,16 +140,18 @@ func fetchPrices(
 	** Based on that, if we have the price of the underlying asset, we can calculate the price of
 	** the share.
 	**********************************************************************************************/
-	sharesValue := fetchShareValueFromERC4626(chainID, blockNumber, queryList)
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	sharesValue := fetchShareValueFromERC4626(chainID, blockNumber, tokenSlice)
 	for _, shareValue := range sharesValue {
 		if shareValue.Value == nil || shareValue.Value.IsZero() {
 			continue
 		}
-		if newPriceMap[shareValue.AssetAddress] == nil || newPriceMap[shareValue.AssetAddress].IsZero() {
+		currentPrice, ok := newPriceMap[shareValue.AssetAddress]
+		if ok && !currentPrice.Price.IsZero() {
 			continue
 		}
 
-		token, ok := store.GetERC20(chainID, shareValue.AssetAddress)
+		token, ok := storage.GetERC20(chainID, shareValue.AssetAddress)
 		if !ok {
 			continue
 		}
@@ -155,30 +160,40 @@ func fetchPrices(
 		sharePrice := bigNumber.NewFloat(0).Quo(
 			bigNumber.NewFloat(0).Mul(
 				bigNumber.NewFloat(0).SetInt(shareValue.Value),
-				bigNumber.NewFloat(0).SetInt(newPriceMap[shareValue.AssetAddress]),
+				bigNumber.NewFloat(0).SetInt(currentPrice.Price),
 			),
 			bigNumber.NewFloat(0).SetInt(tokenDecimals),
 		)
-		newPriceMap[shareValue.VaultAddress] = sharePrice.Int()
+		humanizedPrice := helpers.ToNormalizedAmount(sharePrice.Int(), 6)
+		newPriceMap[shareValue.VaultAddress] = models.TPrices{
+			Address:        shareValue.VaultAddress,
+			Price:          sharePrice.Int(),
+			HumanizedPrice: humanizedPrice,
+			Source:         `ERC4626-convertToAssets`,
+		}
 	}
 
 	/**********************************************************************************************
 	** If the price is missing, check if it's a vault and try to compute the price from the
 	** underlying tokens.
 	**********************************************************************************************/
-	for _, token := range tokenList {
-		if newPriceMap[token] == nil || newPriceMap[token].IsZero() {
-			if token, ok := store.GetERC20(chainID, token); ok {
-				if store.IsVaultLike(token) {
-					ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
-					underlyingToken := token.UnderlyingTokensAddresses[0]
-					ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
-					if ppsToday == nil || ppsToday.IsZero() {
-						ppsToday = ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
-					}
-					underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken])
-					vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
-					newPriceMap[token.Address] = vaultPrice.Int()
+	for _, token := range tokenMap {
+		if value, ok := newPriceMap[token.Address]; !ok || value.Price.IsZero() {
+			if token.IsVaultLike() {
+				ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
+				underlyingToken := token.UnderlyingTokensAddresses[0]
+				ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
+				if ppsToday == nil || ppsToday.IsZero() {
+					ppsToday = ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
+				}
+				underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken].Price)
+				vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
+				humanizedPrice := helpers.ToNormalizedAmount(vaultPrice.Int(), 6)
+				newPriceMap[token.Address] = models.TPrices{
+					Address:        token.Address,
+					Price:          vaultPrice.Int(),
+					HumanizedPrice: humanizedPrice,
+					Source:         `yVaultV2-pps`,
 				}
 			}
 		}
@@ -189,22 +204,19 @@ func fetchPrices(
 	** vaults (vs the underlying token). Just like with the ERC-4626 standard, we can then
 	** calculate the price of one share (underlyingPrice * pricePerShare)
 	**********************************************************************************************/
-	stillMissing := []common.Address{}
-	for _, token := range queryList {
-		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
-			stillMissing = append(stillMissing, token)
-		}
-	}
-	pricePerShareValue := fetchPricePerShareFromVault(chainID, blockNumber, stillMissing)
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	pricePerShareValue := fetchPricePerShareFromVault(chainID, blockNumber, tokenSlice)
 	for _, ppsValue := range pricePerShareValue {
 		if ppsValue.Value == nil || ppsValue.Value.IsZero() {
 			continue
 		}
-		if newPriceMap[ppsValue.AssetAddress] == nil || newPriceMap[ppsValue.AssetAddress].IsZero() {
+
+		currentPrice, ok := newPriceMap[ppsValue.AssetAddress]
+		if ok && !currentPrice.Price.IsZero() {
 			continue
 		}
 
-		token, ok := store.GetERC20(chainID, ppsValue.AssetAddress)
+		token, ok := storage.GetERC20(chainID, ppsValue.AssetAddress)
 		if !ok {
 			continue
 		}
@@ -213,11 +225,17 @@ func fetchPrices(
 		sharePrice := bigNumber.NewFloat(0).Quo(
 			bigNumber.NewFloat(0).Mul(
 				bigNumber.NewFloat(0).SetInt(ppsValue.Value),
-				bigNumber.NewFloat(0).SetInt(newPriceMap[ppsValue.AssetAddress]),
+				bigNumber.NewFloat(0).SetInt(currentPrice.Price),
 			),
 			bigNumber.NewFloat(0).SetInt(tokenDecimals),
 		)
-		newPriceMap[ppsValue.VaultAddress] = sharePrice.Int()
+		humanizedPrice := helpers.ToNormalizedAmount(sharePrice.Int(), 6)
+		newPriceMap[ppsValue.VaultAddress] = models.TPrices{
+			Address:        ppsValue.VaultAddress,
+			Price:          sharePrice.Int(),
+			HumanizedPrice: humanizedPrice,
+			Source:         `yVaultV2-pps`,
+		}
 	}
 
 	/**********************************************************************************************
@@ -227,41 +245,19 @@ func fetchPrices(
 		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
 	}
 
-	for _, token := range stillMissing {
-		if (newPriceMap[token] == nil || newPriceMap[token].IsZero()) && !priceErrorAlreadySent[chainID][token] {
-			if tokenData, ok := store.GetERC20(chainID, token); ok {
-				if !store.IsExperimentalVault(tokenData) {
-					logs.Warning(`missing a valid price for ` + tokenData.Address.Hex() + ` (` + tokenData.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(tokenData.Type) + `)`)
-				}
-			} else {
-				logs.Warning(`missing a valid price for token ` + token.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+	for _, token := range tokenMap {
+		tokenPrice, ok := newPriceMap[token.Address]
+		if !ok || tokenPrice.Price.IsZero() {
+			if !priceErrorAlreadySent[chainID][token.Address] {
+				logs.Warning(`missing a valid price for ` + token.Address.Hex() + ` (` + token.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(token.Type) + `)`)
 			}
-			priceErrorAlreadySent[chainID][token] = true
+			priceErrorAlreadySent[chainID][token.Address] = true
 		}
 	}
 
-	itemsToUpsert := []store.DBHistoricalPrice{}
-	for tokenAddress, price := range newPriceMap {
-		/******************************************************************************************
-		** To save some process, we will batch the saving to the database in one call.
-		** The following code is creating the upsert array.
-		******************************************************************************************/
-		DBbaseSchema := store.DBBaseSchema{
-			UUID:    store.GetUUID(strconv.FormatUint(chainID, 10) + strconv.FormatUint(*blockNumber, 10) + tokenAddress.Hex()),
-			Block:   *blockNumber,
-			ChainID: chainID,
-		}
-		humanizedPrice, _ := helpers.ToNormalizedAmount(price, 6).Float64()
-		itemsToUpsert = append(itemsToUpsert, store.DBHistoricalPrice{
-			DBBaseSchema:   DBbaseSchema,
-			Token:          tokenAddress.Hex(),
-			Price:          price.String(),
-			HumanizedPrice: humanizedPrice,
-		})
-		store.AppendToHistoricalPrice(chainID, *blockNumber, tokenAddress, price)
+	for _, price := range newPriceMap {
+		storage.StorePrice(chainID, price)
 	}
-
-	store.StoreManyHistoricalPrice(itemsToUpsert)
 	return newPriceMap
 }
 
@@ -276,66 +272,15 @@ func fetchPrices(
 ** Returns:
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
-func retrieveAllPrices(chainID uint64) map[common.Address]*bigNumber.Int {
-	/**********************************************************************************************
-	** First, try to retrieve the list of prices from the database to exclude the one existing
-	** from the upcoming calls
-	**********************************************************************************************/
-	priceMap := make(map[common.Address]*bigNumber.Int)
-	store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
-
-	/**********************************************************************************************
-	** From the vault registry we could build the list of tokens used by our ecosystem. We will
-	** use this list to fetch the prices of the tokens, using different sources.
-	**********************************************************************************************/
-	allTokens := store.ListERC20Addresses(chainID)
-
-	/**********************************************************************************************
-	** Somehow, some vaults are not in the registries, but we still need the price data for them.
-	** We will add them manually here.
-	**********************************************************************************************/
-	allTokens = append(allTokens, env.CHAINS[chainID].ExtraTokens...)
-
-	/**********************************************************************************************
-	** Some tokens are just useless, errors or not wanted. We will remove them from the list.
-	**********************************************************************************************/
-	for _, tokenAddress := range env.CHAINS[chainID].IgnoredTokens {
-		allTokens = helpers.RemoveFromArray(allTokens, tokenAddress)
-	}
-	allTokens = helpers.UniqueArrayAddress(allTokens)
-
+func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20Token) map[common.Address]models.TPrices {
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch the price for each of theses tokens, using lens
 	** as primary source, and multiple other sources as fallback.
 	**********************************************************************************************/
 	currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
-	if len(allTokens) > 0 {
-		allPrices := fetchPrices(chainID, &currentBlockNumber, allTokens)
-
-		/**********************************************************************************************
-		** Once everything is setup, we will store each token in the DB. The storage is set as a map
-		** of tokenAddress -> USDC Price. All tokens will be retrievable from the store.Interate() func.
-		**********************************************************************************************/
-		wg := sync.WaitGroup{}
-		wg.Add(len(allPrices))
-		for address, price := range allPrices {
-			go func(address common.Address, price *bigNumber.Int) {
-				defer wg.Done()
-				store.SaveInBadgerDB(
-					chainID,
-					store.TABLES.PRICES,
-					address.Hex(),
-					price,
-				)
-			}(address, price)
-		}
-		wg.Wait()
-		store.ListFromBadgerDB(chainID, store.TABLES.PRICES, &priceMap)
+	if len(tokenMap) > 0 {
+		fetchPrices(chainID, &currentBlockNumber, tokenMap)
 	}
-	prices.StorePrices(chainID, priceMap)
+	priceMap, _ := storage.ListPrices(chainID)
 	return priceMap
-}
-
-func Run(chainID uint64) {
-	retrieveAllPrices(chainID)
 }

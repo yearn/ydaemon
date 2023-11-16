@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math"
 	"math/rand"
 	"net/http"
@@ -13,13 +13,14 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/models"
 )
 
 // LLAMA_CHAIN_NAMES contains the chain identifiers for the DeFiLlama API
 var LLAMA_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,
 	10:    `optimism`,
-	138:   `polygon`,
+	137:   `polygon`,
 	250:   `fantom`,
 	8453:  `base`,
 	42161: `arbitrum`,
@@ -29,8 +30,8 @@ var LLAMA_CHAIN_NAMES = map[uint64]string{
 ** fetchPriceFromLlama tries to fetch the price for a given token from
 ** the DeFiLlama pricing API, returns nil if there is no data returned
 **************************************************************************************************/
-func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
-	priceMap := make(map[common.Address]*bigNumber.Int)
+func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
+	priceMap := make(map[common.Address]models.TPrices)
 	chunkSize := 100
 	timeToSleep := rand.Intn(600-100) + 100
 	for i := 0; i < len(tokens); i += chunkSize {
@@ -44,7 +45,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		tokensFromChunk := tokens[i:end]
 		var tokenString []string
 		for _, token := range tokensFromChunk {
-			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.String())
+			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.Address.Hex())
 		}
 		resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
 		if err != nil || resp.StatusCode != 200 {
@@ -56,7 +57,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 		defer resp.Body.Close()
 
 		// Read the response body
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			logs.Warning("Error unmarshalling response body from the pricing API of DeFiLlama for chain", chainID)
 			return priceMap
@@ -74,7 +75,13 @@ func fetchPricesFromLlama(chainID uint64, tokens []common.Address) map[common.Ad
 			data, ok := priceData.Coins[tokenStr]
 			if ok { // Convert price into USDC decimals
 				price := bigNumber.NewFloat(data.Price)
-				priceMap[common.HexToAddress(tokenAddressStr)] = bigNumber.NewFloat().Mul(price, decimalsUSDC).Int()
+				humanizedPrice := price
+				priceMap[common.HexToAddress(tokenAddressStr)] = models.TPrices{
+					Address:        common.HexToAddress(tokenAddressStr),
+					Price:          bigNumber.NewFloat().Mul(price, decimalsUSDC).Int(),
+					HumanizedPrice: humanizedPrice,
+					Source:         `defillama`,
+				}
 			}
 		}
 	}

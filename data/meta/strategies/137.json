@@ -1,0 +1,61 @@
+{
+	"lastUpdate": "2023-11-09T20:36:44.001773+01:00",
+	"version": {
+		"major": 0,
+		"minor": 0,
+		"patch": 81
+	},
+	"shouldRefresh": false,
+	"strategies": {
+		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
+			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
+			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
+			"name": "Compound V3 USDC Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 49181585,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "2985355319",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1699375649",
+			"lastDebtRatio": "8973",
+			"lastEstimatedTotalAssets": "3063459964",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
+			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
+			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
+			"name": "Aave V3 USDC Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 49181585,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "331543532",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "500",
+			"lastReport": "1699375649",
+			"lastDebtRatio": "997",
+			"lastEstimatedTotalAssets": "332278841",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		}
+	}
+}

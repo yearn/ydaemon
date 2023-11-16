@@ -7,8 +7,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllVaults will, for a given chainID, return a list of all vaults
@@ -45,7 +45,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 	** from the 'chainID' path parameter in the request.
 	**************************************************************************************************/
 	hideAlways := helpers.StringToBool(helpers.SafeString(getQuery(c, `hideAlways`), `false`))
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `details.order`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
 	withStrategiesDetails := getQuery(c, `strategiesDetails`) == `withDetails`
@@ -60,28 +60,31 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		return
 	}
 	data := []TExternalVault{}
-	allVaults := vaults.ListVaults(chainID)
+	allVaults, _ := storage.ListVaults(chainID)
 	for _, currentVault := range allVaults {
 		vaultAddress := currentVault.Address
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
 			continue
 		}
 
-		newVault := NewVault().AssignTVault(currentVault)
-		if migrable == `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+		newVault, err := NewVault().AssignTVault(currentVault)
+		if err != nil {
+			continue
+		}
+		if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
 			continue
 		} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
 			continue
 		} else if migrable == `all` && !newVault.Migration.Available {
 			continue
-		} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.HideAlways || newVault.Details.Retired) {
+		} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 			continue
 		}
 
-		vaultStrategies := strategies.ListStrategiesForVault(chainID, vaultAddress)
-		newVault.Strategies = []*TStrategy{}
+		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
+		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
+			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
@@ -89,14 +92,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 
 			if withStrategiesDetails {
 				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			} else {
-				externalStrategy = &TStrategy{
-					Address:     strategy.Address.Hex(),
-					Name:        strategy.Name,
-					DisplayName: strategy.DisplayName,
-					Description: strategy.Description,
-				}
+				externalStrategy = strategyWithDetails
 			}
 			newVault.Strategies = append(newVault.Strategies, externalStrategy)
 		}
@@ -104,7 +102,7 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 			newVault.RiskScore = newVault.ComputeRiskScore()
 		}
 
-		data = append(data, *newVault)
+		data = append(data, newVault)
 	}
 
 	//Sort by details.order by default

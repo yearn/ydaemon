@@ -9,8 +9,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllVaultsForAllChains will return a list of all vaults for all chains
@@ -110,24 +110,31 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	** are blacklisted, and stores them in 'allVaults' for further processing.
 	**************************************************************************************************/
 	data := []TExternalVault{}
-	allVaults := []*TExternalVault{}
+	allVaults := []TExternalVault{}
 	for _, chainID := range chains {
-		vaultsForChain := vaults.ListVaults(chainID)
+		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			newVault := NewVault().AssignTVault(currentVault)
-			if migrable == `none` && (newVault.Details.HideAlways || newVault.Details.Retired) && hideAlways {
+			newVault, err := NewVault().AssignTVault(currentVault)
+			if err != nil {
+				continue
+			}
+			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
 				continue
 			} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
 				continue
 			} else if migrable == `all` && !newVault.Migration.Available {
 				continue
-			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.HideAlways || newVault.Details.Retired) {
+			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
 				continue
 			}
-			newVault.FeaturingScore = newVault.TVL.TVL * newVault.APY.NetAPY
+			APRAsFloat := 0.0
+			if newVault.APR.NetAPR != nil {
+				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
+			}
+			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			allVaults = append(allVaults, newVault)
 		}
 	}
@@ -171,10 +178,10 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 	** response.
 	**************************************************************************************************/
 	for _, currentVault := range allVaults {
-		vaultStrategies := strategies.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
-		currentVault.Strategies = []*TStrategy{}
+		vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
+		currentVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy *TStrategy
+			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
@@ -182,14 +189,9 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 
 			if withStrategiesDetails {
 				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
+				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			} else {
-				externalStrategy = &TStrategy{
-					Address:     strategy.Address.Hex(),
-					Name:        strategy.Name,
-					DisplayName: strategy.DisplayName,
-					Description: strategy.Description,
-				}
+				externalStrategy = strategyWithDetails
 			}
 			currentVault.Strategies = append(currentVault.Strategies, externalStrategy)
 		}
@@ -197,7 +199,7 @@ func (y Controller) GetAllVaultsForAllChains(c *gin.Context) {
 			currentVault.RiskScore = currentVault.ComputeRiskScore()
 		}
 
-		data = append(data, *currentVault)
+		data = append(data, currentVault)
 	}
 
 	/** 🔵 - Yearn *************************************************************************************

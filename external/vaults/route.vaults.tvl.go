@@ -7,17 +7,18 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/fetcher"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
-	vaultsList := vaults.ListVaults(chainID)
+	vaultsList, _ := storage.ListVaults(chainID)
 	for _, currentVault := range vaultsList {
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 			continue
 		}
-		vaultTVL := vaults.BuildTVL(currentVault)
+		vaultTVL := fetcher.BuildVaultTVL(currentVault)
 		tvl += vaultTVL.TVL
 	}
 	return tvl

@@ -5,16 +5,13 @@ import (
 
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
-	"github.com/yearn/ydaemon/processes/apy"
+	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
-	"github.com/yearn/ydaemon/processes/prices"
-	"github.com/yearn/ydaemon/processes/tokenList"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
 
 func main() {
 	initFlags()
-	loadDaemonsForAllChains(chains)
 	summonDaemonsForAllChains(chains)
 	var wg sync.WaitGroup
 
@@ -49,18 +46,6 @@ func main() {
 		logs.Success(`Server ready on port 8080 !`)
 		select {}
 
-	case ProcessTokenList:
-		logs.Info(`Running yDaemon token list process...`)
-
-		for _, chainID := range chains {
-			wg.Add(1)
-			go func(chainID uint64) {
-				tokenList.BuildTokenList(chainID)
-				wg.Done()
-			}(chainID)
-		}
-		wg.Wait()
-
 	case ProcessVaultMigrations:
 		logs.Info(`Running yDaemon vault migrations process...`)
 		for _, chainID := range chains {
@@ -88,19 +73,7 @@ func main() {
 		for _, chainID := range chains {
 			wg.Add(1)
 			go func(chainID uint64) {
-				apy.Run(chainID)
-				wg.Done()
-			}(chainID)
-		}
-		wg.Wait()
-
-	case ProcessPrice:
-		logs.Info(`Running yDaemon Price process...`)
-		for _, chainID := range chains {
-			wg.Add(1)
-			go func(chainID uint64) {
-				initDailyBlock.Run(chainID)
-				prices.Run(chainID)
+				apr.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

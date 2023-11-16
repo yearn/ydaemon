@@ -5,8 +5,8 @@ import (
 	"math/big"
 	"strconv"
 
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
-	"github.com/yearn/ydaemon/common/traces"
 )
 
 /**************************************************************************************************
@@ -20,7 +20,7 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64) {
 		client := RPC[chainID]
 		block, err := client.HeaderByNumber(context.Background(), big.NewInt(int64(blockNumber)))
 		if err != nil {
-			traces.
+			logs.
 				Capture(`warn`, `impossible to retrieve block `+strconv.FormatUint(blockNumber, 10)+` on chain `+strconv.FormatUint(chainID, 10)).
 				SetEntity(`block`).
 				SetExtra(`error`, err.Error()).

@@ -68,15 +68,22 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 	if WS[chainID] == nil {
 		uriString := GetWSEnvURI(chainID)
 		uri, _ := url.Parse(uriString)
-		if uri.Scheme == `https` {
-			uri.Scheme = `wss`
-		} else {
-			uri.Scheme = `ws`
-		}
 		if strings.HasPrefix(uri.Host, `nd-`) {
 			uri.Host = strings.Replace(uri.Host, `nd-`, `ws-nd-`, 1)
 		}
+		if strings.Contains(uri.Host, `infura.io`) && uri.Scheme == `https` {
+			uri.Path = strings.Replace(uri.Path, `v3`, `ws/v3`, 1)
+		}
+		if strings.Contains(uri.Host, `chainstack.com`) && uri.Scheme == `https` {
+			uri.Path = `ws` + uri.Path
+		}
 
+		switch uri.Scheme {
+		case `https`:
+			uri.Scheme = `wss`
+		case `http`:
+			uri.Scheme = `ws`
+		}
 		client, err := ethclient.Dial(uri.String())
 		if err != nil {
 			logs.Error(`error while openning ws client for chain ` + strconv.FormatUint(chainID, 10) + ` with RPC ` + uri.String())

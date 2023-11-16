@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllRetiredVaultsForAllChainsSimplified will, for a given chainID, return a list of all retired vaults
@@ -46,15 +46,18 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 
 	allVaults := []TSimplifiedExternalVault{}
 	for _, chainID := range chains {
-		vaultsForChain := vaults.ListVaults(chainID)
+		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
 			vaultAddress := currentVault.Address
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
 				continue
 			}
 
-			newVault := NewVault().AssignTVault(currentVault)
-			if !newVault.Details.Retired {
+			newVault, err := NewVault().AssignTVault(currentVault)
+			if err != nil {
+				continue
+			}
+			if !newVault.Details.IsRetired {
 				continue
 			}
 			if newVault.Migration.Available {
@@ -64,8 +67,8 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 				continue
 			}
 
-			newVault.Strategies = []*TStrategy{}
-			allVaults = append(allVaults, toSimplifiedVersion(*newVault))
+			newVault.Strategies = []TStrategy{}
+			allVaults = append(allVaults, toSimplifiedVersion(newVault))
 		}
 	}
 

@@ -52,15 +52,11 @@ function validate(directory, validators) {
 				let schema = data[SchemaField];
 
 				if (!schema) {
-					if (file.includes("tokenList.json")) {
-						schema = "tokenList";
-					} else {
-						console.error(
-							`Error: "${file}" is not a valid JSON file ("${SchemaField}" is not a present).`
-						);
-						allValid = false;
-						continue;
-					}
+					console.error(
+						`Error: "${file}" is not a valid JSON file ("${SchemaField}" is not a present).`
+					);
+					allValid = false;
+					continue;
 				}
 				const validator = validators[schema];
 				if (!validator) {

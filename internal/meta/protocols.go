@@ -7,7 +7,7 @@ import (
 
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/traces"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -86,7 +86,7 @@ func RetrieveAllProtocolsFromFiles(chainID uint64) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	content, _, err := helpers.ReadAllFilesInDir(env.BASE_DATA_PATH+`/meta/protocols/`+chainIDStr+`/`, `.json`)
 	if err != nil {
-		traces.
+		logs.
 			Capture(`warn`, `impossible to read meta files for protocols on chain `+chainIDStr).
 			SetEntity(`meta`).
 			SetExtra(`error`, err.Error()).
@@ -97,7 +97,7 @@ func RetrieveAllProtocolsFromFiles(chainID uint64) {
 	for _, content := range content {
 		protocol := models.TProtocolsFromMeta{}
 		if err := json.Unmarshal(content, &protocol); err != nil {
-			traces.
+			logs.
 				Capture(`warn`, `impossible to unmarshall meta files for protocols response body `+chainIDStr).
 				SetEntity(`meta`).
 				SetExtra(`error`, err.Error()).

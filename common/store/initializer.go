@@ -4,13 +4,14 @@ import (
 	"sync"
 
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 type TDBType string
 
 const (
-	DBBadger TDBType = "badger"
-	DBSql    TDBType = "sql"
+	DBSql TDBType = "sql"
 )
 
 var _dbType TDBType
@@ -23,34 +24,25 @@ var _dbType TDBType
 func init() {
 	if shouldUseMySQLDB := initializeMySQLDatabase(); shouldUseMySQLDB {
 		_dbType = DBSql
-	} else {
-		_dbType = DBBadger
 	}
 
 	for chainID := range env.CHAINS {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
-		_historicalPriceSyncMap[chainID] = &sync.Map{}
-		_newVaultsFromRegistrySyncMap[chainID] = &sync.Map{}
-		_vaultsSyncMap[chainID] = &sync.Map{}
-		_erc20SyncMap[chainID] = &sync.Map{}
-		_strategiesSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
-		_vaultsActivations[chainID] = &sync.Map{}
-		_stackingPoolsSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
 	for chainID := range env.CHAINS {
-		wg.Add(5)
-		LoadERC20(chainID, nil) //This is a blocking function, required for the next function to work
-		go LoadBlockTime(chainID, nil)
-		// go LoadHistoricalPrice(chainID, nil)
-		go LoadNewVaultsFromRegistry(chainID, wg)
-		go LoadStrategies(chainID, wg)
-		go LoadVaults(chainID, wg)
+		storage.LoadRegistries(chainID, nil)
+		storage.LoadVaults(chainID, nil)
+		storage.LoadStrategies(chainID, nil)
+		storage.LoadERC20(chainID, nil)
+
+		wg.Add(2)
+		go LoadBlockTime(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
-		go LoadVaultsActivation(chainID, wg)
 	}
+	logs.Success(`Initialized the store`)
 	wg.Wait()
 }

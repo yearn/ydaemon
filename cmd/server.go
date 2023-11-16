@@ -63,7 +63,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 
 		router.GET(`:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
-		router.GET(`:chainID/vaults/apy/:address`, c.GetVaultsVisionAPY)
 		router.GET(`:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
 		router.GET(`:chainID/earned/:address`, c.GetEarnedPerUser)
 		router.GET(`earned/:address`, c.GetEarnedPerUserForAllChains)
@@ -99,27 +98,6 @@ func NewRouter() *gin.Engine {
 	// Meta API section
 	{
 		c := meta.Controller{}
-		// Proxy meta strategies
-		router.GET(`api/:chainID/strategies/all`, c.GetMetaStrategies)
-		router.GET(`:chainID/meta/strategies`, c.GetMetaStrategies)
-		router.GET(`api/:chainID/strategies/:address`, c.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategies/:address`, c.GetMetaStrategy)
-		router.GET(`:chainID/meta/strategy/:address`, c.GetMetaStrategy)
-
-		// Proxy meta tokens
-		router.GET(`api/:chainID/tokens/all`, c.GetMetaTokens)
-		router.GET(`:chainID/meta/tokens`, c.GetMetaTokens)
-		router.GET(`api/:chainID/tokens/:address`, c.GetMetaToken)
-		router.GET(`:chainID/meta/tokens/:address`, c.GetMetaToken)
-		router.GET(`:chainID/meta/token/:address`, c.GetMetaToken)
-
-		// Proxy meta vaults
-		router.GET(`api/:chainID/vaults/all`, c.GetMetaVaultsLegacy)
-		router.GET(`:chainID/meta/vaults`, c.GetMetaVaults)
-		router.GET(`api/:chainID/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vaults/:address`, c.GetMetaVault)
-		router.GET(`:chainID/meta/vault/:address`, c.GetMetaVault)
-
 		// Proxy meta protocols
 		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocols)
 		router.GET(`:chainID/meta/protocols`, c.GetMetaProtocols)
@@ -158,17 +136,6 @@ func NewRouter() *gin.Engine {
 	// yBribe API section
 	{
 		router.GET(`:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
-	}
-
-	// {
-	// 	router.StaticFile("api/tokens/list", env.BASE_DATA_PATH+`/meta/tokens/tokenList.json`)
-	// 	router.StaticFile("tokenlist", env.BASE_DATA_PATH+`/tokensList/public/yearn.json`)
-	// 	GET(router, `tokenlist/live`, tokensList.GetTokenList)
-	// }
-
-	{
-		//TEST
-		router.GET(`core/harvests/:chainID/:address`, utils.GetHarvests)
 	}
 
 	return router

@@ -2,7 +2,7 @@ package prices
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"math/big"
 	"net/http"
 
@@ -13,8 +13,9 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x4D996E294B00cE8287C16A2b9A4e637ecA5c939f`)
@@ -91,7 +92,7 @@ func fetchVelo(url string) []TVeloPairData {
 		return []TVeloPairData{}
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(`impossible to read velo Get body`, err.Error())
 		return []TVeloPairData{}
@@ -105,13 +106,11 @@ func fetchVelo(url string) []TVeloPairData {
 }
 
 // fetchPricesFromSugar is used to fetch prices from the sugar APR (velo).
-func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.Address) map[common.Address]*bigNumber.Int {
-	newPriceMap := make(map[common.Address]*bigNumber.Int)
+func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
+	priceMap := make(map[common.Address]models.TPrices)
 	if chainID != 10 {
-		return newPriceMap
+		return priceMap
 	}
-	newPairPriceMap := make(map[common.Address]*bigNumber.Int)
-	newTokensPriceMap := make(map[common.Address]*bigNumber.Int)
 
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
@@ -160,33 +159,42 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []common.A
 		token0Price = bigNumber.NewFloat(0).Mul(token0PriceUSD, bigNumber.NewFloat(1e6)).Int()
 		token1Price = bigNumber.NewFloat(0).Mul(token1PriceUSD, bigNumber.NewFloat(1e6)).Int()
 
-		if pairToken, _ := store.GetERC20(chainID, pair.PairAddress); !store.IsVaultLike(pairToken) {
+		if pairToken, _ := storage.GetERC20(chainID, pair.PairAddress); !pairToken.IsVaultLike() {
 			if !pairPrice.IsZero() {
-				newPairPriceMap[pair.PairAddress] = pairPrice.Int()
+				humanizedPrice := helpers.ToNormalizedAmount(pairPrice.Int(), 6)
+				priceMap[pair.PairAddress] = models.TPrices{
+					Address:        pair.PairAddress,
+					Price:          pairPrice.Int(),
+					HumanizedPrice: humanizedPrice,
+					Source:         `veloSugar`,
+				}
 			}
 		}
 
-		if token0, _ := store.GetERC20(chainID, pair.Token0); !store.IsVaultLike(token0) {
+		if token0, _ := storage.GetERC20(chainID, pair.Token0); !token0.IsVaultLike() {
 			if !token0Price.IsZero() {
-				newTokensPriceMap[pair.Token0] = token0Price
+				humanizedPrice := helpers.ToNormalizedAmount(token0Price, 6)
+				priceMap[pair.Token0] = models.TPrices{
+					Address:        pair.Token0,
+					Price:          token0Price,
+					HumanizedPrice: humanizedPrice,
+					Source:         `veloSugar`,
+				}
 			}
 		}
 
-		if token1, _ := store.GetERC20(chainID, pair.Token1); !store.IsVaultLike(token1) {
+		if token1, _ := storage.GetERC20(chainID, pair.Token1); !token1.IsVaultLike() {
 			if !token1Price.IsZero() {
-				newTokensPriceMap[pair.Token1] = token1Price
+				humanizedPrice := helpers.ToNormalizedAmount(token1Price, 6)
+				priceMap[pair.Token1] = models.TPrices{
+					Address:        pair.Token1,
+					Price:          token1Price,
+					HumanizedPrice: humanizedPrice,
+					Source:         `veloSugar`,
+				}
 			}
 		}
 	}
 
-	for token, price := range newPairPriceMap {
-		newPriceMap[token] = price
-	}
-	for token, price := range newTokensPriceMap {
-		if _, ok := newPriceMap[token]; !ok {
-			newPriceMap[token] = price
-		}
-	}
-
-	return newPriceMap
+	return priceMap
 }

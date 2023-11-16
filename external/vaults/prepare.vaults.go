@@ -1,12 +1,10 @@
 package vaults
 
 import (
-	"math"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
@@ -14,13 +12,10 @@ import (
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
 func buildTokenPrice(chainID uint64, tokenAddress common.MixedcaseAddress) (*bigNumber.Float, float64) {
-	fPrice := new(bigNumber.Float)
-	price, ok := prices.FindPrice(chainID, tokenAddress.Address())
+	price, ok := storage.GetPrice(chainID, tokenAddress.Address())
 	if ok {
-		fPrice.SetInt(price)
-		humanizedPrice := new(bigNumber.Float).Quo(fPrice, bigNumber.NewFloat(math.Pow10(int(6))))
-		fHumanizedPrice, _ := humanizedPrice.Float64()
-		return humanizedPrice, fHumanizedPrice
+		fPrice, _ := price.HumanizedPrice.Float64()
+		return price.HumanizedPrice, fPrice
 	}
 	return bigNumber.NewFloat(), 0.0
 }
@@ -74,18 +69,20 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 		tokenSymbol = `Unknown`
 	}
 
+	stakingData, hasStakingPool := storage.GetStakingPoolForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	simplifiedVault := TSimplifiedExternalVault{
 		Address:        vault.Address,
 		Type:           vault.Type,
+		Kind:           vault.Kind,
 		Symbol:         vault.Symbol,
 		Name:           vaultName,
 		Category:       vault.Category,
 		Decimals:       vault.Decimals,
 		ChainID:        vault.ChainID,
-		DepositLimit:   vault.Details.DepositLimit,
 		APR:            vault.APR,
 		Migration:      vault.Migration,
-		Retired:        vault.Details.Retired,
+		Retired:        vault.Details.IsRetired,
+		Version:        vault.Version,
 		FeaturingScore: vault.FeaturingScore,
 		Token: TSimplifiedExternalERC20Token{
 			Address:     vault.Token.Address,
@@ -98,6 +95,10 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 			TotalAssets: vault.TVL.TotalAssets,
 			TVL:         vault.TVL.TVL,
 			Price:       vault.TVL.Price,
+		},
+		Staking: TStakingData{
+			Address:   stakingData.StackingPoolAddress.Hex(),
+			Available: hasStakingPool,
 		},
 	}
 	return simplifiedVault

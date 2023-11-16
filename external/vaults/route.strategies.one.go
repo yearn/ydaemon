@@ -5,7 +5,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/strategies"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetStrategy will, for a given chainID, return the strategy for a given address
@@ -21,14 +22,14 @@ func (y Controller) GetStrategy(c *gin.Context) {
 		return
 	}
 
-	strategy, ok := strategies.FindStrategy(chainID, address)
+	strategy, ok := storage.GetStrategy(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid strategy")
 		return
 	}
 	// Always show details
 	newStrategy := NewStrategy().AssignTStrategy(strategy)
-	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
+	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 
-	c.JSON(http.StatusOK, *newStrategy)
+	c.JSON(http.StatusOK, newStrategy)
 }

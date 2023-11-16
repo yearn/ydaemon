@@ -14,6 +14,7 @@ import (
 )
 
 var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
+var YearnVaultV3ABI, _ = contracts.Yvault300MetaData.GetAbi()
 
 func GetToken(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("token")
@@ -119,6 +120,32 @@ func GetGovernance(name string, contractAddress common.Address) ethereum.Call {
 		Name:     name,
 	}
 }
+func GetRoleManager(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("role_manager")
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI role_manager", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `role_manager`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func GetAccountant(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("accountant")
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI accountant", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `accountant`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
 func GetGuardian(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("guardian")
 	if err != nil {
@@ -210,6 +237,19 @@ func GetVaultWithdrawalQueue(name string, index int64, contractAddress common.Ad
 		Name:     name + strconv.FormatInt(int64(index), 10),
 	}
 }
+func GetDefaultQueue(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("get_default_queue")
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI get_default_queue", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `get_default_queue`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
 func GetCreditAvailable(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("creditAvailable0", strategyAddress)
 	if err != nil {
@@ -266,6 +306,23 @@ func GetStrategies(name string, contractAddress common.Address, strategyAddress 
 		Version:  version,
 	}
 }
+
+func GetV3Strategies(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("strategies", strategyAddress)
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI strategies", err)
+	}
+
+	return ethereum.Call{
+		Name:     name,
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `strategies`,
+		CallData: parsedData,
+		Version:  version,
+	}
+}
+
 func GetExpectedReturn(name string, contractAddress common.Address, strategyAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("expectedReturn0", strategyAddress)
 	if err != nil {

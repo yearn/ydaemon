@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/strategies"
-	"github.com/yearn/ydaemon/internal/vaults"
+	"github.com/yearn/ydaemon/internal/risk"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetVault will, for a given chainID, return a list of all vaults
@@ -25,18 +25,21 @@ func (y Controller) GetVault(c *gin.Context) {
 
 	strategiesCondition := selectStrategiesCondition(getQuery(c, "strategiesCondition"))
 	withStrategiesDetails := strings.EqualFold(getQuery(c, "strategiesDetails"), "withDetails")
-	currentVault, ok := vaults.FindVault(chainID, address)
+	currentVault, ok := storage.GetVault(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid vault")
 		return
 	}
-	newVault := NewVault().AssignTVault(currentVault)
 
-	vaultStrategies := strategies.ListStrategiesForVault(chainID, currentVault.Address)
-	newVault.Strategies = []*TStrategy{}
-
+	newVault, err := NewVault().AssignTVault(currentVault)
+	if err != nil {
+		c.String(http.StatusBadRequest, "vault not found")
+		return
+	}
+	vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
+	newVault.Strategies = []TStrategy{}
 	for _, strategy := range vaultStrategies {
-		var externalStrategy *TStrategy
+		var externalStrategy TStrategy
 		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 			continue
@@ -44,14 +47,9 @@ func (y Controller) GetVault(c *gin.Context) {
 
 		if withStrategiesDetails {
 			externalStrategy = strategyWithDetails
-			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(strategies.BuildRiskScore(strategy))
+			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 		} else {
-			externalStrategy = &TStrategy{
-				Address:     strategy.Address.Hex(),
-				Name:        strategy.Name,
-				DisplayName: strategy.DisplayName,
-				Description: strategy.Description,
-			}
+			externalStrategy = strategyWithDetails
 		}
 		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}
@@ -60,5 +58,5 @@ func (y Controller) GetVault(c *gin.Context) {
 		newVault.RiskScore = newVault.ComputeRiskScore()
 	}
 
-	c.JSON(http.StatusOK, newVault)
+	c.JSON(http.StatusOK, toSimplifiedVersion(newVault))
 }

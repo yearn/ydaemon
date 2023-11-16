@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/prices"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetSomePrices will, for a list of tokens on a given chainID, return the price for them
@@ -19,7 +19,7 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 	}
 	humanized := helpers.StringToBool(helpers.SafeString(getQuery(c, "humanized"), "false"))
 	rawPrices := make(map[string]*bigNumber.Int)
-	humanizedPrices := make(map[string]float64)
+	humanizedPrices := make(map[string]*bigNumber.Float)
 	addressesStr := strings.Split(c.Param("addresses"), ",")
 	for _, addressStr := range addressesStr {
 		address, ok := helpers.AssertAddress(addressStr, chainID)
@@ -27,15 +27,14 @@ func (y Controller) GetSomePrices(c *gin.Context) {
 			continue
 		}
 
-		humanizedPrices[address.Hex()] = 0
+		humanizedPrices[address.Hex()] = bigNumber.NewFloat()
 		rawPrices[address.Hex()] = bigNumber.NewInt()
-		price, ok := prices.FindPrice(chainID, address)
+		price, ok := storage.GetPrice(chainID, address)
 		if !ok {
 			continue
 		}
-		humanizedPrice, _ := helpers.FormatAmount(price.String(), 6)
-		humanizedPrices[address.Hex()] = humanizedPrice
-		rawPrices[address.Hex()] = price
+		humanizedPrices[address.Hex()] = price.HumanizedPrice
+		rawPrices[address.Hex()] = price.Price
 	}
 	if humanized {
 		c.JSON(http.StatusOK, humanizedPrices)

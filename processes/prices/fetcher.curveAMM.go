@@ -52,10 +52,7 @@ func fetchPricesFromCurveAMM(chainID uint64, blockNumber *uint64, tokens []model
 			continue
 		}
 
-		//todo: fix this
 		tokenPriceUSD := helpers.ToNormalizedAmount(bigTokenPrice, decimals)
-		// tokenPrice := bigNumber.NewFloat(0).Mul(tokenPriceUSD, bigNumber.NewFloat(1e6)).Int()
-		// humanizedPrice := helpers.ToNormalizedAmount(bigTokenPrice, 6)
 		priceMap[token.Address] = models.TPrices{
 			Address:        token.Address,
 			Price:          bigTokenPrice,

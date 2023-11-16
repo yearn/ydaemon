@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -52,6 +53,9 @@ func fetchPrices(
 	for _, token := range tokenMap {
 		if price, ok := pricesLlama[token.Address]; ok {
 			if !price.Price.IsZero() {
+				if chainID == 1 && addresses.Equals(token.Address, `0x27B5739e22ad9033bcBf192059122d163b60349D`) { //st-yCRV vault has an incorrect price on DeFiLlama
+					continue
+				}
 				newPriceMap[token.Address] = price
 				continue
 			}
@@ -63,6 +67,9 @@ func fetchPrices(
 	for _, token := range tokenMap {
 		if price, ok := pricesGecko[token.Address]; ok {
 			if !price.Price.IsZero() {
+				if chainID == 1 && addresses.Equals(token.Address, `0x27B5739e22ad9033bcBf192059122d163b60349D`) { //st-yCRV vault has an incorrect price on Coingecko
+					continue
+				}
 				newPriceMap[token.Address] = price
 				continue
 			}

@@ -86,6 +86,10 @@ func init() {
 
 func getSupportedZaps(chainID uint64, tokenAddress common.Address) []SupportedZap {
 	supportedZaps := []SupportedZap{}
+	if tokenAddress == env.DEFAULT_COIN_ADDRESS {
+		return supportedZaps
+	}
+
 	if _, ok := existingTokenLists[`wido`][strconv.FormatInt(int64(chainID), 10)+tokenAddress.Hex()]; ok {
 		supportedZaps = append(supportedZaps, Wido)
 	}

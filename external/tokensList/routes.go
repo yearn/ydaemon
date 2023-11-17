@@ -11,7 +11,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -83,8 +82,6 @@ func init() {
 		portalsMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`portals`] = portalsMap
-
-	logs.Pretty(len(portalsMap), len(widoMap), len(cowswapMap), len(yearnMap))
 }
 
 func getSupportedZaps(chainID uint64, tokenAddress common.Address) []SupportedZap {

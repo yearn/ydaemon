@@ -11,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -27,15 +28,15 @@ const (
 // TTokenListToken is the structure used for the tokens inside a token list.
 // This is a standard and alterations should be avoided.
 type TTokenListToken struct {
-	ChainID       int            `json:"chainID"`                 // ChainID indicates on which chain the token is deployed
-	Decimals      int            `json:"decimals"`                // Decimals is the number of decimals the token uses
-	Address       string         `json:"address"`                 // Address is the address of the token contract
-	Name          string         `json:"name"`                    // Name is the name of the token
-	Symbol        string         `json:"symbol"`                  // Symbol is the symbol of the token
-	LogoURI       string         `json:"logoURI"`                 // LogoURI is the URI of the token logo
-	Balance       *bigNumber.Int `json:"balance,omitempty"`       // Balance is the balance of the token for the user
-	Price         *bigNumber.Int `json:"price,omitempty"`         // Price is the price of the token
-	SupportedZaps []SupportedZap `json:"supportedZaps,omitempty"` // SupportedZaps is the list of zaps supported by the token
+	ChainID       int            `json:"chainID"`           // ChainID indicates on which chain the token is deployed
+	Decimals      int            `json:"decimals"`          // Decimals is the number of decimals the token uses
+	Address       string         `json:"address"`           // Address is the address of the token contract
+	Name          string         `json:"name"`              // Name is the name of the token
+	Symbol        string         `json:"symbol"`            // Symbol is the symbol of the token
+	LogoURI       string         `json:"logoURI"`           // LogoURI is the URI of the token logo
+	Balance       *bigNumber.Int `json:"balance,omitempty"` // Balance is the balance of the token for the user
+	Price         *bigNumber.Int `json:"price,omitempty"`   // Price is the price of the token
+	SupportedZaps []SupportedZap `json:"supportedZaps"`     // SupportedZaps is the list of zaps supported by the token
 }
 
 // TTokenList is the token list struct used in the default token list.
@@ -64,24 +65,26 @@ func init() {
 	portalsMap := make(map[string]TTokenListToken)
 
 	for _, token := range yearnList.Tokens {
-		yearnMap[strconv.FormatInt(int64(token.ChainID), 10)+token.Address] = token
+		yearnMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`yearn`] = yearnMap
 
 	for _, token := range cowswapList.Tokens {
-		cowswapMap[strconv.FormatInt(int64(token.ChainID), 10)+token.Address] = token
+		cowswapMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`cowswap`] = cowswapMap
 
 	for _, token := range widoList.Tokens {
-		widoMap[strconv.FormatInt(int64(token.ChainID), 10)+token.Address] = token
+		widoMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`wido`] = widoMap
 
 	for _, token := range portals.Tokens {
-		portalsMap[strconv.FormatInt(int64(token.ChainID), 10)+token.Address] = token
+		portalsMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`portals`] = portalsMap
+
+	logs.Pretty(len(portalsMap), len(widoMap), len(cowswapMap), len(yearnMap))
 }
 
 func getSupportedZaps(chainID uint64, tokenAddress common.Address) []SupportedZap {
@@ -167,7 +170,6 @@ func GetYearnTokenList(c *gin.Context) {
 		chainToken.Price = chainCoinPrice.Price
 	}
 	tokenBalanceMap[chainCoin.Address.Hex()] = chainToken
-	chainToken.SupportedZaps = getSupportedZaps(chainID, chainCoin.Address)
 
 	/**********************************************************************************************
 	** And we can finally execute the multicall.
@@ -188,6 +190,7 @@ func GetYearnTokenList(c *gin.Context) {
 			addresses.ToAddress(token.Address),
 		); ok {
 			token.Price = tokenPrice.Price
+			token.SupportedZaps = getSupportedZaps(chainID, addresses.ToAddress(token.Address))
 			tokenBalanceMap[token.Address] = token
 		}
 	}

@@ -47,18 +47,18 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)
-		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified)
+		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)                // Migrated to simplified ✅
+		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified) // Migrated to simplified ✅
+		router.GET(`vaults/all`, c.GetAllVaultsForAllChainsSimplified)            // Migrated to simplified ✅
 
-		router.GET(`vaults/all`, c.GetAllVaultsForAllChains)
 		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
 
 		// Retrieve the vaults for a specific chainID
 		router.GET(`:chainID/vaults/tvl`, c.GetVaultsTVL)
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
 		router.GET(`:chainID/vaults/retired`, c.GetRetiredVaults)
-		router.GET(`:chainID/vaults/:address`, c.GetVault)
-		router.GET(`:chainID/vault/:address`, c.GetVault)
+		router.GET(`:chainID/vaults/:address`, c.GetSimplifiedVault) // Migrated to simplified ✅
+		router.GET(`:chainID/vault/:address`, c.GetSimplifiedVault)  // Migrated to simplified ✅
 
 		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
 

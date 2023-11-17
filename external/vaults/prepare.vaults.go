@@ -96,6 +96,7 @@ func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
 			TVL:         vault.TVL.TVL,
 			Price:       vault.TVL.Price,
 		},
+		Strategies: vault.Strategies,
 		Staking: TStakingData{
 			Address:   stakingData.StackingPoolAddress.Hex(),
 			Available: hasStakingPool,

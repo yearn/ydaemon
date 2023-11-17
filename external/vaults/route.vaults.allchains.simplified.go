@@ -154,17 +154,7 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	**    c. It checks if the strategy should be included based on the 'strategiesCondition'. If not,
 	**       it skips the current iteration of the loop.
 	**
-	**    d. If 'withStrategiesDetails' is true, it assigns the strategy with details to
-	**       'externalStrategy' and assigns a risk score to it. Otherwise, it assigns a new 'TStrategy'
-	**       object with the address, name, display name, and description of the current strategy to
-	**       'externalStrategy'.
-	**
-	**    e. It appends 'externalStrategy' to the 'Strategies' field of 'currentVault'.
-	**
-	** 4. If 'withStrategiesDetails' is true, it computes the risk score for the current vault and
-	**    assigns it to the 'RiskScore' field of 'currentVault'.
-	**
-	** 5. It appends the current vault to the 'data' slice.
+	** 4. It appends the current vault to the 'data' slice.
 	**
 	** This loop effectively populates the 'Strategies' field of each vault in 'allVaults' with the
 	** appropriate strategies and computes the risk score for each vault if 'withStrategiesDetails' is

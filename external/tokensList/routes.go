@@ -177,6 +177,9 @@ func GetYearnTokenList(c *gin.Context) {
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, token := range existingTokenLists[`yearn`] {
+		if addresses.Equals(token.Address, env.DEFAULT_COIN_ADDRESS) {
+			continue
+		}
 		rawBalance := response[token.Address+`balanceOf`]
 		if len(rawBalance) == 0 {
 			continue

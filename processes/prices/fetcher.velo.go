@@ -132,6 +132,9 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 		response := multicalls.Perform(chainID, calls, nil)
 
 		prices := helpers.DecodeBigInts(response[VELO_SUGAR_ORACLE_ADDRESS.Hex()+`getManyRatesWithConnectors`])
+		if len(prices) != 2 {
+			continue
+		}
 		token0Decimals := helpers.DecodeUint64(response[pair.Token0.Hex()+`decimals`])
 		token1Decimals := helpers.DecodeUint64(response[pair.Token1.Hex()+`decimals`])
 		token0Price := prices[0]

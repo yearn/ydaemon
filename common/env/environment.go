@@ -64,6 +64,8 @@ func SetEnv(path string) {
 		chain.RpcURI = RPCURIFor42161
 		CHAINS[42161] = chain
 	}
+
+	CG_DEMO_KEY, _ = os.LookupEnv("CG_DEMO_KEY")
 }
 
 func init() {

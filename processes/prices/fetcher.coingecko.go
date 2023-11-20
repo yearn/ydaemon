@@ -49,7 +49,6 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		}
 		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 		if err != nil {
-			logs.Error(err)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}
@@ -57,9 +56,12 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		q := req.URL.Query()
 		q.Add("contract_addresses", strings.Join(tokenString, ","))
 		q.Add("vs_currencies", "usd")
+		if env.CG_DEMO_KEY != `` {
+			q.Add("x_cg_demo_api_key", env.CG_DEMO_KEY)
+		}
 		req.URL.RawQuery = q.Encode()
 		resp, err := http.DefaultClient.Do(req)
-		if err != nil || resp.StatusCode != 200 {
+		if err != nil {
 			logs.Error(err, resp.StatusCode)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
@@ -77,6 +79,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		priceData := TGeckoPrice{}
 		if err := json.Unmarshal(body, &priceData); err != nil {
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
+			logs.Pretty(string(body))
 			return priceMap
 		}
 

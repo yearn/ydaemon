@@ -32,3 +32,5 @@ var GECKO_PRICE_URL = `https://api.coingecko.com/api/v3/simple/token_price/`
 
 // LLAMA_PRICE_URL contains the URL for the DeFiLlama pricing API
 var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
+
+var CG_DEMO_KEY = ``

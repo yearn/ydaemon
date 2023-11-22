@@ -54,8 +54,14 @@ func computeCurrentV2VaultAPR(
 	** - The fees (performance and management)
 	** - The points (PPS evolution over time, for one week, one month and since inception)
 	**********************************************************************************************/
+	vaultAPRType := `v2:averaged`
+	twoWeeksAgoBlockNumber := ethereum.GetBlockNumberXDaysAgo(chainID, 14)
+	if vault.Activation > twoWeeksAgoBlockNumber {
+		vaultAPRType = `v2:new_averaged`
+	}
+
 	vaultAPR := TVaultAPR{
-		Type:   "v2:averaged",
+		Type:   vaultAPRType,
 		NetAPR: netAPR,
 		Fees: TFees{
 			Performance: vaultPerformanceFee,

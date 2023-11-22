@@ -42,7 +42,7 @@ func computeVaultV3ForwardAPR(
 	** the vault as expected APR
 	**********************************************************************************************/
 	if vault.Kind == models.VaultKindSingle {
-		expected, err := oracle.GetExpectedApr(nil, vault.Address, big.NewInt(0))
+		expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
 		if err == nil {
 			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 		}

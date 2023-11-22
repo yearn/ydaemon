@@ -41,11 +41,9 @@ func computeVaultV3ForwardAPR(
 	** If the vault is a single strategy vault, we can use the oracle directly to get the APR of
 	** the vault as expected APR
 	**********************************************************************************************/
-	if vault.Kind == models.VaultKindSingle {
-		expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
-		if err == nil {
-			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
-		}
+	expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
+	if err == nil {
+		netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 	}
 
 	/**********************************************************************************************
@@ -53,7 +51,7 @@ func computeVaultV3ForwardAPR(
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
 	shouldUseV2Method := false
-	if shouldUseV2Method {
+	if shouldUseV2Method && vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 				if os.Getenv("ENVIRONMENT") == "dev" {
@@ -70,10 +68,8 @@ func computeVaultV3ForwardAPR(
 			humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
+			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.9))
 			netAPR = bigNumber.NewFloat(0).Add(netAPR, scaledStrategyAPR)
-
-			// Reduce netAPR by 10% to take into account inaccuracy
-			netAPR = bigNumber.NewFloat(0).Mul(netAPR, bigNumber.NewFloat(0.9))
 		}
 	}
 

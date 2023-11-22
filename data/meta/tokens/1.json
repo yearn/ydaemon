@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-11-20T09:46:34.480524+01:00",
+	"lastUpdate": "2023-11-22T11:30:46.345649+01:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -7976,6 +7976,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xa71d0588eaf47f12b13cf8ec750430d21df04974": {
+			"address": "0xa71d0588eaf47f12b13cf8ec750430d21df04974",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Shiba Predator",
+			"symbol": "QOM",
+			"displayName": "Shiba Predator",
+			"displaySymbol": "QOM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa71d0588EAf47f12B13cF8eC750430d21DF04974/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xa74d4b67b3368e83797a35382afb776baae4f5c8": {

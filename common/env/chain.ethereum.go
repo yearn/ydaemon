@@ -9,11 +9,13 @@ import (
 )
 
 var ETHEREUM = TChain{
-	ID:            1,
-	RpcURI:        `https://eth.public-rpc.com`,
-	SubgraphURI:   `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
-	MaxBlockRange: 100_000_000,
-	MaxBatchSize:  math.MaxInt64,
+	ID:              1,
+	RpcURI:          `https://eth.public-rpc.com`,
+	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
+	EtherscanURI:    `https://api.etherscan.io/api`,
+	MaxBlockRange:   100_000_000,
+	MaxBatchSize:    math.MaxInt64,
+	AvgBlocksPerDay: 7150,
 	YBribeV3Contract: TContractData{
 		Address: common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
 		Block:   15878262,

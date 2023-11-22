@@ -62,7 +62,7 @@ func computeVaultV3ForwardAPR(
 				continue
 			}
 
-			expected, err := oracle.GetExpectedApr(nil, strategy.Address, big.NewInt(0))
+			expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
 			if err != nil {
 				logs.Error(err)
 				continue
@@ -71,6 +71,9 @@ func computeVaultV3ForwardAPR(
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
 			netAPR = bigNumber.NewFloat(0).Add(netAPR, scaledStrategyAPR)
+
+			// Reduce netAPR by 10% to take into account inaccuracy
+			netAPR = bigNumber.NewFloat(0).Mul(netAPR, bigNumber.NewFloat(0.9))
 		}
 	}
 

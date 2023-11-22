@@ -6,7 +6,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
-func GetToday(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
+func GetPPSToday(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	ppsNow := bigNumber.NewFloat(0)
@@ -20,7 +20,7 @@ func GetToday(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.
 	return ppsNow
 }
 
-func GetLastWeek(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
+func GetPPSLastWeek(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastWeek := noonUTC.AddDate(0, 0, -7)
@@ -44,7 +44,7 @@ func GetLastWeek(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumb
 	return ppsWeek
 }
 
-func GetLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
+func GetPPSLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastMonth := noonUTC.AddDate(0, -1, 0)
@@ -66,30 +66,6 @@ func GetLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNum
 	}
 
 	return ppsMonth
-}
-
-func GetLastYear(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *bigNumber.Float {
-	now := time.Now()
-	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
-	lastYear := noonUTC.AddDate(-1, 0, 0)
-	if now.Before(noonUTC) {
-		lastYear = noonUTC.AddDate(-1, 0, -1)
-	}
-	ppsYear := bigNumber.NewFloat(0)
-
-	if data, ok := ppsPerTime[uint64(lastYear.Unix())]; ok {
-		ppsYear = ToNormalizedAmount(data, decimals)
-		return ppsYear
-	}
-	for i := 1; i < 365; i++ {
-		dayToCheck := noonUTC.AddDate(0, 0, i-365)
-		if data, ok := ppsPerTime[uint64(dayToCheck.Unix())]; ok {
-			ppsYear = ToNormalizedAmount(data, decimals)
-			break
-		}
-	}
-
-	return ppsYear
 }
 
 func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {

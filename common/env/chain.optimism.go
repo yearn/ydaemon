@@ -9,11 +9,13 @@ import (
 )
 
 var OPTIMISM = TChain{
-	ID:            10,
-	RpcURI:        `https://mainnet.optimism.io`,
-	SubgraphURI:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
-	MaxBlockRange: 100_000_000,
-	MaxBatchSize:  math.MaxInt64,
+	ID:              10,
+	RpcURI:          `https://mainnet.optimism.io`,
+	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
+	EtherscanURI:    `https://api-optimistic.etherscan.io/api`,
+	MaxBlockRange:   100_000_000,
+	MaxBatchSize:    math.MaxInt64,
+	AvgBlocksPerDay: 43_200,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
 		Block:   18109291,

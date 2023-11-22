@@ -9,11 +9,13 @@ import (
 )
 
 var ARBITRUM = TChain{
-	ID:            42161,
-	RpcURI:        `https://arbitrum.public-rpc.com`,
-	SubgraphURI:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
-	MaxBlockRange: 100_000_000,
-	MaxBatchSize:  math.MaxInt64,
+	ID:              42161,
+	RpcURI:          `https://arbitrum.public-rpc.com`,
+	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
+	EtherscanURI:    `https://api.arbiscan.io/api`,
+	MaxBlockRange:   100_000_000,
+	MaxBatchSize:    math.MaxInt64,
+	AvgBlocksPerDay: 320_000,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 		Block:   2396321,

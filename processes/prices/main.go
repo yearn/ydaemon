@@ -189,7 +189,7 @@ func fetchPrices(
 			if token.IsVaultLike() {
 				ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 				underlyingToken := token.UnderlyingTokensAddresses[0]
-				ppsToday := helpers.GetToday(ppsPerTime, token.Decimals)
+				ppsToday := helpers.GetPPSToday(ppsPerTime, token.Decimals)
 				if ppsToday == nil || ppsToday.IsZero() {
 					ppsToday = ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
 				}

@@ -1,13 +1,9 @@
 package apr
 
 import (
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -19,17 +15,17 @@ func computeCurrentV3VaultAPR(
 	chainID := vault.ChainID
 	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 	ppsInception := bigNumber.NewFloat(1)
-	ppsToday := helpers.GetToday(ppsPerTime, vaultToken.Decimals)
+	ppsToday := helpers.GetPPSToday(ppsPerTime, vaultToken.Decimals)
 	if ppsToday == nil || ppsToday.IsZero() {
 		ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vaultToken.Decimals)
 	}
 
-	ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vaultToken.Decimals)
+	ppsWeekAgo := helpers.GetPPSLastWeek(ppsPerTime, vaultToken.Decimals)
 	if ppsWeekAgo == nil || ppsWeekAgo.IsZero() {
 		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vaultToken.Decimals)
 	}
 
-	ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vaultToken.Decimals)
+	ppsMonthAgo := helpers.GetPPSLastMonth(ppsPerTime, vaultToken.Decimals)
 	if ppsMonthAgo == nil || ppsMonthAgo.IsZero() {
 		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vaultToken.Decimals)
 	}
@@ -47,17 +43,6 @@ func computeCurrentV3VaultAPR(
 	** We can use the onChain oracles to get the netAPR of the vault.
 	**********************************************************************************************/
 	netAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
-	oracleContract := env.CHAINS[vault.ChainID].APROracleContract.Address
-	if oracleContract != common.HexToAddress(``) {
-		oracle, err := contracts.NewYVaultsV3APROracleCaller(oracleContract, ethereum.GetRPC(vault.ChainID))
-		if err != nil {
-			logs.Error(err)
-
-		}
-		if expected, err := oracle.GetCurrentApr(nil, vault.Address); err == nil {
-			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
-		}
-	}
 
 	/**********************************************************************************************
 	** As we now have the base APR information we can init our structure. This base structure MUST
@@ -68,8 +53,10 @@ func computeCurrentV3VaultAPR(
 	** - The fees (performance and management)
 	** - The points (PPS evolution over time, for one week, one month and since inception)
 	**********************************************************************************************/
+	// vault.Activation
+
 	vaultAPR := TVaultAPR{
-		Type:   `v3:onchainOracle`,
+		Type:   `v3:averaged`,
 		NetAPR: netAPR,
 		Fees: TFees{
 			Performance: vaultPerformanceFee,

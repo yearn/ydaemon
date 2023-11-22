@@ -9,11 +9,13 @@ import (
 )
 
 var FANTOM = TChain{
-	ID:            250,
-	RpcURI:        `https://rpc.ftm.tools`,
-	SubgraphURI:   `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
-	MaxBlockRange: 100_000_000,
-	MaxBatchSize:  math.MaxInt64,
+	ID:              250,
+	RpcURI:          `https://rpc.ftm.tools`,
+	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
+	EtherscanURI:    `https://api.ftmscan.com/api`,
+	MaxBlockRange:   100_000_000,
+	MaxBatchSize:    math.MaxInt64,
+	AvgBlocksPerDay: 45_000,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
 		Block:   17091856,

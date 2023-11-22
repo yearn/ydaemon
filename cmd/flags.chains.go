@@ -29,6 +29,7 @@ func handleChainsInitialization(rawChains *string) []uint64 {
 		}
 		chains = append(chains, chainID)
 		ethereum.GetWSClient(chainID)
+		ethereum.InitBlockTimestamp(chainID)
 	}
 
 	if len(chains) == 0 {

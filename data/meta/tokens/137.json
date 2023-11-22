@@ -1,12 +1,42 @@
 {
-	"lastUpdate": "2023-11-09T20:36:43.868137+01:00",
+	"lastUpdate": "2023-11-22T11:30:35.559647+01:00",
 	"version": {
 		"major": 0,
-		"minor": 0,
+		"minor": 1,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270": {
+			"address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped Matic",
+			"symbol": "WMATIC",
+			"displayName": "Wrapped Matic",
+			"displaySymbol": "WMATIC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
+			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
+			"underlyingTokensAddresses": [
+				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 WMATIC Lender",
+			"symbol": "ysWMATIC",
+			"displayName": "Aave V3 WMATIC Lender",
+			"displaySymbol": "ysWMATIC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x12c3Ad898e8eB1C0ec0Bb74f9748F36C46593F68/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
 		"0x2791bca1f2de4661ed88a30c99a7a9449aa84174": {
 			"address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
 			"underlyingTokensAddresses": [],
@@ -19,6 +49,116 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo-128.png",
 			"decimals": 6,
+			"chainID": 137
+		},
+		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
+			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
+			"underlyingTokensAddresses": [
+				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+			],
+			"type": "Yearn Vault",
+			"name": "WMATIC yVault-A",
+			"symbol": "yvWMATIC-A",
+			"displayName": "WMATIC yVault-A",
+			"displaySymbol": "yvWMATIC-A",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
+			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
+			"underlyingTokensAddresses": [
+				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+			],
+			"type": "Yearn Vault",
+			"name": "CompV3 WMATIC Lender USDC Borrower",
+			"symbol": "ysWMATIC",
+			"displayName": "CompV3 WMATIC Lender USDC Borrower",
+			"displaySymbol": "ysWMATIC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x2a42A69F48EfffDF2d4Fb079Af60D98D3e34D49C/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
+			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH yVault-A",
+			"symbol": "yvWETH-A",
+			"displayName": "WETH yVault-A",
+			"displaySymbol": "yvWETH-A",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x305F25377d0a39091e99B975558b1bdfC3975654/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
+			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "CompV3 WETH Lender USDC Borrower",
+			"symbol": "ysWETH",
+			"displayName": "CompV3 WETH Lender USDC Borrower",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x5136c2F7aB13E202eD42bc1AE82Dd63475919653/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
+			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
+			"underlyingTokensAddresses": [
+				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+			],
+			"type": "Yearn Vault",
+			"name": "yearn-V3-LST",
+			"symbol": "ysWMATIC",
+			"displayName": "yearn-V3-LST",
+			"displaySymbol": "ysWMATIC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x6Ed737EF2Ef74e04005dC9810366De5ad38Cf7D6/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7486325a843590b84c98563c6962c58655569eca": {
+			"address": "0x7486325a843590b84c98563c6962c58655569eca",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "yearn-V3-LST-WSTETH",
+			"symbol": "ysWETH",
+			"displayName": "yearn-V3-LST-WSTETH",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x7486325A843590b84c98563c6962C58655569EcA/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619": {
+			"address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped Ether",
+			"symbol": "WETH",
+			"displayName": "Wrapped Ether",
+			"displaySymbol": "WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo-128.png",
+			"decimals": 18,
 			"chainID": 137
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
@@ -51,6 +191,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xb1403908F772E4374BB151F7C67E88761a0Eb4f1/logo-128.png",
 			"decimals": 6,
+			"chainID": 137
+		},
+		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
+			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "AaveV3 WETH Lender",
+			"symbol": "ysWETH",
+			"displayName": "AaveV3 WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xBEDA9A5300393e00229dc15cC54D5185E7646c56/logo-128.png",
+			"decimals": 18,
 			"chainID": 137
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {

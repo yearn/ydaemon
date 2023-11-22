@@ -9,18 +9,20 @@ import (
 )
 
 var POLYGON = TChain{
-	ID:            137,
-	RpcURI:        `https://polygon.llamarpc.com`,
-	SubgraphURI:   ``, //TODO: not deployed
-	MaxBlockRange: 100_000_000,
-	MaxBatchSize:  math.MaxInt64,
-	LensContract:  TContractData{}, //TODO: not deployed
+	ID:              137,
+	RpcURI:          `https://polygon.llamarpc.com`,
+	SubgraphURI:     ``, //TODO: not deployed
+	EtherscanURI:    `https://api.polygonscan.com/api`,
+	MaxBlockRange:   100_000_000,
+	MaxBatchSize:    math.MaxInt64,
+	AvgBlocksPerDay: 40_000,
+	LensContract:    TContractData{}, //TODO: not deployed
 	MulticallContract: TContractData{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 		Block:   25770160,
 	},
 	APROracleContract: TContractData{
-		Address: common.HexToAddress(`0xf012fbb9283e03994a7829fce994a105cc066c14`),
+		Address: common.HexToAddress(`0xF012fBb9283e03994A7829fCE994a105cC066c14`),
 		Block:   48956840,
 	},
 	Coin: models.TERC20Token{

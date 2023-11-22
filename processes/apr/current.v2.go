@@ -15,17 +15,17 @@ func computeCurrentV2VaultAPR(
 	chainID := vault.ChainID
 	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 	ppsInception := bigNumber.NewFloat(1)
-	ppsToday := helpers.GetToday(ppsPerTime, vaultToken.Decimals)
+	ppsToday := helpers.GetPPSToday(ppsPerTime, vaultToken.Decimals)
 	if ppsToday == nil || ppsToday.IsZero() {
 		ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vaultToken.Decimals)
 	}
 
-	ppsWeekAgo := helpers.GetLastWeek(ppsPerTime, vaultToken.Decimals)
+	ppsWeekAgo := helpers.GetPPSLastWeek(ppsPerTime, vaultToken.Decimals)
 	if ppsWeekAgo == nil || ppsWeekAgo.IsZero() {
 		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vaultToken.Decimals)
 	}
 
-	ppsMonthAgo := helpers.GetLastMonth(ppsPerTime, vaultToken.Decimals)
+	ppsMonthAgo := helpers.GetPPSLastMonth(ppsPerTime, vaultToken.Decimals)
 	if ppsMonthAgo == nil || ppsMonthAgo.IsZero() {
 		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vaultToken.Decimals)
 	}

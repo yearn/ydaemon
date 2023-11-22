@@ -25,10 +25,12 @@ func InitBlockTimestamp(chainID uint64) {
 	now := time.Now()
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 	lastWeekTimestamp := noonUTC.AddDate(0, 0, -7).Unix()
+	lastTwoWeekTimestamp := noonUTC.AddDate(0, 0, -14).Unix()
 	lastMonthTimestamp := noonUTC.AddDate(0, -1, 0).Unix()
 
 	APIKey := os.Getenv("SCAN_API_KEY_FOR_" + strconv.FormatUint(chainID, 10))
 	lastWeekBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 	lastMonthBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 
 	if blockTimeMap[chainID] == nil {
@@ -44,6 +46,16 @@ func InitBlockTimestamp(chainID uint64) {
 		blockTimeMap[chainID][7] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 7)
 	}
 
+	if lastTwoWeekBlock.Status == "1" {
+		blockTimeMap[chainID][14], err = strconv.ParseUint(lastTwoWeekBlock.Result, 10, 64)
+		if err != nil {
+			logs.Error(err)
+			blockTimeMap[chainID][14] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 14)
+		}
+	} else {
+		blockTimeMap[chainID][14] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 14)
+	}
+
 	if lastMonthBlock.Status == "1" {
 		blockTimeMap[chainID][30], err = strconv.ParseUint(lastMonthBlock.Result, 10, 64)
 		if err != nil {
@@ -56,7 +68,7 @@ func InitBlockTimestamp(chainID uint64) {
 }
 
 func GetBlockNumberXDaysAgo(chainID uint64, days uint64) uint64 {
-	if (days != 7 && days != 30) || blockTimeMap[chainID] == nil {
+	if (days != 7 && days != 14 && days != 30) || blockTimeMap[chainID] == nil {
 		return 0
 	}
 	return blockTimeMap[chainID][days]

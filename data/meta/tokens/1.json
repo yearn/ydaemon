@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-11-22T11:59:21.268979+01:00",
+	"lastUpdate": "2023-11-27T12:23:54.455622+01:00",
 	"version": {
 		"major": 0,
-		"minor": 2,
+		"minor": 3,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -546,6 +546,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0DAa35A1735152EDb928239c1712883Dd8Eb976f/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0e573ce2736dd9637a0b21058352e1667925c7a8": {
+			"address": "0x0e573ce2736dd9637a0b21058352e1667925c7a8",
+			"underlyingTokensAddresses": [
+				"0x0e573ce2736dd9637a0b21058352e1667925c7a8"
+			],
+			"type": "Yearn Vault",
+			"name": "USDV",
+			"symbol": "USDV",
+			"displayName": "USDV",
+			"displaySymbol": "USDV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x0E573Ce2736Dd9637A0b21058352e1667925C7a8/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x0e880118c29f095143dda28e64d95333a9e75a47": {
@@ -3463,6 +3479,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4c1Aa92781c8813a79596eF5122476E28d656686/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4c2df8adb2b14e1d5fdbd9d11a2cf7562b67adc9": {
+			"address": "0x4c2df8adb2b14e1d5fdbd9d11a2cf7562b67adc9",
+			"underlyingTokensAddresses": [
+				"0x9b77bd0a665f05995b68e36fc1053afffaf0d4b5"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mevETHfrxE-f Factory yVault",
+			"symbol": "yvCurve-mevETHfrxE-f-f",
+			"displayName": "Curve mevETHfrxE-f Factory yVault",
+			"displaySymbol": "yvCurve-mevETHfrxE-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4c2dF8adB2B14e1d5FDBD9d11A2cf7562b67adC9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7182,6 +7214,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9680d4d049d16230f042065daa6e045905d35454": {
+			"address": "0x9680d4d049d16230f042065daa6e045905d35454",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Litra NFT for Beta Testing Wrapped NFT",
+			"symbol": "LNBTwnft",
+			"displayName": "Litra NFT for Beta Testing Wrapped NFT",
+			"displaySymbol": "LNBTwnft",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9680d4D049d16230f042065DAA6e045905D35454/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x96e61422b6a9ba0e068b6c5add4ffabc6a4aae27": {
 			"address": "0x96e61422b6a9ba0e068b6c5add4ffabc6a4aae27",
 			"underlyingTokensAddresses": [],
@@ -7472,6 +7518,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9b451BEB49a03586e6995E5A93b9c745D068581e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9b77bd0a665f05995b68e36fc1053afffaf0d4b5": {
+			"address": "0x9b77bd0a665f05995b68e36fc1053afffaf0d4b5",
+			"underlyingTokensAddresses": [
+				"0x5e8422345238f34275888049021821e8e08caa1f",
+				"0x24ae2da0f361aa4be46b48eb19c91e02c5e4f27e"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Crypto Pool: mevETH/frxETH",
+			"symbol": "mevETHfrxE-f",
+			"displayName": "Curve.fi Factory Crypto Pool: mevETH/frxETH",
+			"displaySymbol": "mevETHfrxE-f",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0x9b77bd0a665F05995b68e36fC1053AFFfAf0d4B5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8704,6 +8767,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb53ecf1345cabee6ea1a65100ebb153cebcac40f": {
+			"address": "0xb53ecf1345cabee6ea1a65100ebb153cebcac40f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Childhoods End",
+			"symbol": "O",
+			"displayName": "Childhoods End",
+			"displaySymbol": "O",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xb53ecF1345caBeE6eA1a65100Ebb153cEbcac40f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb5de7250128775a317b3f775a7afcec73571b732": {
 			"address": "0xb5de7250128775a317b3f775a7afcec73571b732",
 			"underlyingTokensAddresses": [
@@ -8781,6 +8858,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xB8C3B7A2A618C552C23B1E4701109a9E756Bab67/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb8d400f82c100ce5a996e85f46f5cea2b114c989": {
+			"address": "0xb8d400f82c100ce5a996e85f46f5cea2b114c989",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Superdragoncoin",
+			"symbol": "SDC",
+			"displayName": "Superdragoncoin",
+			"displaySymbol": "SDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB8d400f82C100ce5A996E85f46f5ceA2b114C989/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8887,6 +8978,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xBa3436Fd341F2C8A928452Db3C5A3670d1d5Cc73/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xba61baa1d96c2f4e25205b331306507bcaea4677": {
+			"address": "0xba61baa1d96c2f4e25205b331306507bcaea4677",
+			"underlyingTokensAddresses": [
+				"0x69833361991ed76f9e8dbbcdf9ea1520febfb4a7"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "LP Yearn PRISMA Vault",
+			"symbol": "lp-yPRISMA",
+			"displayName": "LP Yearn PRISMA Vault",
+			"displaySymbol": "lp-yPRISMA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xbA61BaA1D96c2F4E25205B331306507BcAeA4677/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11518,6 +11625,20 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains FXS and cvxFXS, a tokenized veFXS from [Convex Finance](https://frax.convexfinance.com).",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xF3A43307DcAFa93275993862Aae628fCB50dC768/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf3b9569f82b18aef890de263b84189bd33ebe452": {
+			"address": "0xf3b9569f82b18aef890de263b84189bd33ebe452",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "A Hunters Dream",
+			"symbol": "CAW",
+			"displayName": "A Hunters Dream",
+			"displaySymbol": "CAW",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf3b9569F82B18aEf890De263B84189bd33EBe452/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

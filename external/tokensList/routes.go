@@ -201,3 +201,90 @@ func GetYearnTokenList(c *gin.Context) {
 
 	c.JSON(http.StatusOK, tokenBalanceMap)
 }
+
+// GetUserBalance will, for a given chainID, return the user's balance for all the tokens in the
+// tokens list.
+func GetUserBalance(c *gin.Context) {
+	if !common.IsHexAddress(c.Param("address")) {
+		c.String(http.StatusBadRequest, "invalid address")
+		return
+	}
+
+	/**********************************************************************************************
+	** The following code will execute the multicall and then map the results to the tokens in the
+	** returned tokenBalanceMap map, which is a map of token addresses to TTokenListToken structs.
+	**********************************************************************************************/
+	tokenBalanceMap := make(map[string]TTokenListToken)
+
+	/**********************************************************************************************
+	** We first need to load the current chainCoin, which is the native coin of the chain. We then
+	** check if the price of the chainCoin is available in the prices map. If the price is
+	** available, we add the price to the chainToken struct. Then, we add the chainToken struct to
+	** the tokenBalanceMap map using the chainCoin address as the key.
+	**********************************************************************************************/
+	for _, chainID := range env.SUPPORTED_CHAIN_IDS {
+		/**********************************************************************************************
+		** Once we have our list of tokens, we can proceed to fetch the balances of the tokens for the
+		** user. We create a slice of calls, which will be used to make a multicall to the blockchain.
+		** For each token in the tokensFromListMap map, we add a call to the slice of calls, for the
+		** balanceOf function of the ERC20 token.
+		**********************************************************************************************/
+		calls := []ethereum.Call{}
+		chainCoin := env.CHAINS[chainID].Coin
+		chainCoinPrice, ok := storage.GetPrice(chainID, chainCoin.Address)
+		chainToken := TTokenListToken{
+			ChainID:       int(chainID),
+			Address:       chainCoin.Address.Hex(),
+			Name:          chainCoin.DisplayName,
+			Symbol:        chainCoin.DisplaySymbol,
+			LogoURI:       chainCoin.Icon,
+			Decimals:      int(chainCoin.Decimals),
+			Balance:       bigNumber.NewInt(0),
+			Price:         bigNumber.NewInt(0),
+			SupportedZaps: []SupportedZap{},
+		}
+		if ok {
+			chainToken.Price = chainCoinPrice.Price
+		}
+		tokenBalanceMap[chainCoin.Address.Hex()] = chainToken
+
+		for _, token := range existingTokenLists[`yearn`] {
+			if token.ChainID == int(chainID) {
+				calls = append(calls, getBalance(
+					token.Address,
+					addresses.ToMixedcase(token.Address),
+					addresses.ToMixedcase(c.Param("address")),
+				))
+			}
+		}
+
+		/**********************************************************************************************
+		** And we can finally execute the multicall.
+		**********************************************************************************************/
+		response := multicalls.Perform(chainID, calls, nil)
+		for _, token := range existingTokenLists[`yearn`] {
+			if addresses.Equals(token.Address, env.DEFAULT_COIN_ADDRESS) {
+				continue
+			}
+			rawBalance := response[token.Address+`balanceOf`]
+			if len(rawBalance) == 0 {
+				continue
+			}
+			tokenBalance := helpers.DecodeBigInt(rawBalance)
+			if tokenBalance.IsZero() {
+				continue
+			}
+			token.Balance = tokenBalance
+			if tokenPrice, ok := storage.GetPrice(
+				chainID,
+				addresses.ToAddress(token.Address),
+			); ok {
+				token.Price = tokenPrice.Price
+				token.SupportedZaps = getSupportedZaps(chainID, addresses.ToAddress(token.Address))
+				tokenBalanceMap[token.Address] = token
+			}
+		}
+	}
+
+	c.JSON(http.StatusOK, tokenBalanceMap)
+}

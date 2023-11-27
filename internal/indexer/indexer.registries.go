@@ -356,7 +356,7 @@ func indexNewVaultsWrapper(
 	** indexer to be able to catch the errors, to restart the indexer or just to exit the loop to
 	** fallback to another method.
 	**********************************************************************************************/
-	shouldRetry := false
+	shouldRetry := true
 	err := error(nil)
 	for {
 		if _, err := ethereum.GetWSClient(chainID); err != nil {
@@ -392,6 +392,7 @@ func indexNewVaultsWrapper(
 			logs.Error(`error while indexing NewVault from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 		if shouldRetry {
+			time.Sleep(30 * time.Second)
 			continue
 		}
 		break

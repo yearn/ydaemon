@@ -41,9 +41,21 @@ func computeVaultV3ForwardAPR(
 	** If the vault is a single strategy vault, we can use the oracle directly to get the APR of
 	** the vault as expected APR
 	**********************************************************************************************/
-	expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
-	if err == nil {
-		netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+	var hasError error
+	if vault.Kind == models.VaultKindSingle {
+		expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
+		if err == nil {
+			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+		} else {
+			hasError = err
+		}
+	}
+
+	if vault.Kind == models.VaultKindMultiple || hasError != nil {
+		expected, err := oracle.GetExpectedApr(nil, vault.Address, big.NewInt(0))
+		if err == nil {
+			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+		}
 	}
 
 	/**********************************************************************************************

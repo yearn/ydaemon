@@ -203,8 +203,20 @@ func DecodeUint64(something []interface{}) uint64 {
 	if len(something) == 0 {
 		return 0
 	}
-	return uint64(something[0].(uint8))
+	return uint64(something[0].(uint64))
 }
+
+func DecodeUint16s(something []interface{}) []uint16 {
+	if len(something) == 0 {
+		return []uint16{}
+	}
+	uints := []uint16{}
+	for _, elem := range something {
+		uints = append(uints, elem.(uint16))
+	}
+	return uints
+}
+
 func DecodeBigInt(something []interface{}) *bigNumber.Int {
 	if len(something) == 0 {
 		return bigNumber.NewInt(0)

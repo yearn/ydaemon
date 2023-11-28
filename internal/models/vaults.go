@@ -52,15 +52,15 @@ type TStaking struct {
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change
-	Address      common.Address `json:"address"` // Address of the vault
-	AssetAddress common.Address `json:"token"`   // Address of the underlying token
-	Accountant   common.Address `json:"-"`       // The address of the accountant
-	Type         TTokenType     `json:"type"`
-	Kind         TVaultKind     `json:"kind"`
-	Version      string         `json:"version"`    // The version of the vault
-	Activation   uint64         `json:"activation"` // When the vault was activated
-	ChainID      uint64         `json:"chainID"`    // The chainID of the vault
-	Endorsed     bool           `json:"endorsed"`   // If the vault is endorsed by Yearn
+	Address      common.Address  `json:"address"`              // Address of the vault
+	AssetAddress common.Address  `json:"token"`                // Address of the underlying token
+	Accountant   *common.Address `json:"accountant,omitempty"` // The address of the accountant
+	Type         TTokenType      `json:"type"`                 // The type of the vault
+	Kind         TVaultKind      `json:"kind"`                 // The kind of the vault (legacy, multi, single)
+	Version      string          `json:"version"`              // The version of the vault
+	Activation   uint64          `json:"activation"`           // When the vault was activated
+	ChainID      uint64          `json:"chainID"`              // The chainID of the vault
+	Endorsed     bool            `json:"endorsed"`             // If the vault is endorsed by Yearn
 
 	// Semi-mutable eelements. They can change but rarely
 	PerformanceFee    uint64 `json:"performanceFee"`    // The performance fee of the vault

@@ -20,7 +20,7 @@ var _vaultJSONMetadataSyncMap = sync.Map{}
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadVaultsFromJson` is responsible for loading vaults from a JSON file.
 **************************************************************************************************/
-func LoadVaultsFromJson(chainID uint64) TJsonVaultStorage {
+func loadVaultsFromJson(chainID uint64) TJsonVaultStorage {
 	var vaults TJsonVaultStorage
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
@@ -47,13 +47,14 @@ func LoadVaultsFromJson(chainID uint64) TJsonVaultStorage {
 **************************************************************************************************/
 func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	previousVaults := LoadVaultsFromJson(chainID)
+	previousVaults := loadVaultsFromJson(chainID)
 	version := detectVersionUpdate(chainID, previousVaults.Version, previousVaults.Vaults, vaults)
 
 	data := TJsonVaultStorage{
 		TJsonMetadata: TJsonMetadata{
-			LastUpdate: time.Now(),
-			Version:    version,
+			LastUpdate:    time.Now(),
+			Version:       version,
+			ShouldRefresh: false,
 		},
 		Vaults: vaults,
 	}
@@ -92,14 +93,14 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 		defer wg.Done()
 	}
 
-	file := LoadVaultsFromJson(chainID)
+	file := loadVaultsFromJson(chainID)
 	_vaultJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
 		file.LastUpdate,
 		file.Version,
 		file.ShouldRefresh,
 	})
 	for _, vault := range file.Vaults {
-		safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
+		StoreVault(chainID, vault)
 	}
 }
 

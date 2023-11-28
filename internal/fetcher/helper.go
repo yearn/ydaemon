@@ -7,7 +7,9 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
@@ -46,10 +48,9 @@ func getHumanizedValue(balanceToken *bigNumber.Int, decimals int, humanizedPrice
 ** Prepare the multicall to get the basic informations for the V3 vaults
 **********************************************************************************************/
 func getV3VaultCalls(vault models.TVault) []ethereum.Call {
-	metadata := storage.GetStrategiesJsonMetadata(vault.ChainID)
+	metadata := storage.GetVaultsJsonMetadata(vault.ChainID)
 	lastUpdate := metadata.LastUpdate
 	shouldRefresh := metadata.ShouldRefresh
-
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
@@ -66,6 +67,30 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetRoleManager(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
+
+		switch vault.Kind {
+		case models.VaultKindMultiple:
+			// If the vault is a multi strategy vault, we need to get the default fees from the accountant
+			existingVault, ok := storage.GetVault(vault.ChainID, vault.Address)
+			if ok && (existingVault.Accountant != nil) && (existingVault.Accountant.Hex() != common.Address{}.Hex()) {
+				calls = append(calls, multicalls.GetDefaultFeeConfig(vault.Address.Hex(), *existingVault.Accountant))
+			} else {
+				//get accountant now
+				client, err := ethclient.Dial(ethereum.GetRPCURI(vault.ChainID))
+				if err == nil {
+					vaultContract, err := contracts.NewYvault300(vault.Address, client)
+					if err == nil {
+						accountant, err := vaultContract.Accountant(nil)
+						if err == nil {
+							calls = append(calls, multicalls.GetDefaultFeeConfig(vault.Address.Hex(), accountant))
+						}
+					}
+				}
+
+			}
+		case models.VaultKindSingle:
+			calls = append(calls, multicalls.GetPerformanceFee(vault.Address.Hex(), vault.Address))
+		}
 	}
 	return calls
 }
@@ -163,34 +188,6 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 /**********************************************************************************************
 ** Handle the calls result
 **********************************************************************************************/
-func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
-	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
-	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
-	rawDefaultQueue := response[vault.Address.Hex()+`get_default_queue`]
-	rawShutdown := response[vault.Address.Hex()+`isShutdown`]
-	rawUnderlying := response[vault.Address.Hex()+`asset`]
-	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
-	rawAccountant := response[vault.Address.Hex()+`accountant`]
-
-	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
-	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
-	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
-	if len(rawShutdown) > 0 {
-		vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
-	}
-	if len(rawUnderlying) > 0 {
-		vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
-	}
-	if len(rawApiVersion) > 0 {
-		vault.Version = helpers.DecodeString(rawApiVersion)
-	}
-	if len(rawAccountant) > 0 {
-		vault.Accountant = helpers.DecodeAddress(rawAccountant)
-	}
-
-	return vault
-}
-
 func handleV2VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
 	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
 	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
@@ -232,6 +229,51 @@ func handleV2VaultCalls(vault models.TVault, response map[string][]interface{}) 
 	}
 	vault.LastActiveStrategies = withdrawQueueForStrategies
 
+	return vault
+}
+
+func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
+	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
+	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
+	rawDefaultQueue := response[vault.Address.Hex()+`get_default_queue`]
+	rawShutdown := response[vault.Address.Hex()+`isShutdown`]
+	rawUnderlying := response[vault.Address.Hex()+`asset`]
+	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
+	rawAccountant := response[vault.Address.Hex()+`accountant`]
+
+	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
+	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
+	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
+	if len(rawShutdown) > 0 {
+		vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
+	}
+	if len(rawUnderlying) > 0 {
+		vault.AssetAddress = helpers.DecodeAddress(rawUnderlying)
+	}
+	if len(rawApiVersion) > 0 {
+		vault.Version = helpers.DecodeString(rawApiVersion)
+	}
+	if len(rawAccountant) > 0 {
+		accountant := helpers.DecodeAddress(rawAccountant)
+		vault.Accountant = &accountant
+	}
+
+	switch vault.Kind {
+	case models.VaultKindMultiple:
+		rawDefaultFees := response[vault.Address.Hex()+`defaultConfig`]
+		if len(rawDefaultFees) >= 2 {
+			defaultFees := helpers.DecodeUint16s(rawDefaultFees)
+			bigMngFee := uint64(defaultFees[0])
+			bigPerfFee := uint64(defaultFees[1])
+			vault.PerformanceFee = bigPerfFee
+			vault.ManagementFee = bigMngFee
+		}
+	case models.VaultKindSingle:
+		rawPerformanceFee := response[vault.Address.Hex()+`performanceFee`]
+		if len(rawPerformanceFee) > 0 {
+			vault.PerformanceFee = helpers.DecodeBigInt(rawPerformanceFee).Uint64()
+		}
+	}
 	return vault
 }
 

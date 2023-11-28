@@ -15,6 +15,7 @@ import (
 
 var YearnVaultABI, _ = contracts.Yvault043MetaData.GetAbi()
 var YearnVaultV3ABI, _ = contracts.Yvault300MetaData.GetAbi()
+var AccountantABI, _ = contracts.AccountantMetaData.GetAbi()
 
 func GetToken(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("token")
@@ -142,6 +143,19 @@ func GetAccountant(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      YearnVaultV3ABI,
 		Method:   `accountant`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+func GetDefaultFeeConfig(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := AccountantABI.Pack("defaultConfig")
+	if err != nil {
+		logs.Error("Error packing AccountantABI defaultConfig", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      AccountantABI,
+		Method:   `defaultConfig`,
 		CallData: parsedData,
 		Name:     name,
 	}

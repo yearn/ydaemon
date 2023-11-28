@@ -101,7 +101,7 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "CompV3 WMATIC Lender USDC Borrower",
+			"displayName": "CompV3 WMATIC Lender Borrower",
 			"displaySymbol": "ysWMATIC",
 			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
@@ -168,7 +168,7 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "CompV3 WETH Lender USDC Borrower",
+			"displayName": "CompV3 WETH Lender Borrower",
 			"displaySymbol": "ysWETH",
 			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},

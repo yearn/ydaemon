@@ -55,7 +55,7 @@
 			"lastDebtRatio": "5000",
 			"lastEstimatedTotalAssets": "1314453858290632830722",
 			"isRetired": true,
-			"displayName": "CompV3 WMATIC Lender USDC Borrower",
+			"displayName": "CompV3 WMATIC Lender Borrower",
 			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"
@@ -82,7 +82,7 @@
 			"lastDebtRatio": "3500",
 			"lastEstimatedTotalAssets": "588428156512001385",
 			"isRetired": true,
-			"displayName": "CompV3 WETH Lender USDC Borrower",
+			"displayName": "CompV3 WETH Lender Borrower",
 			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"

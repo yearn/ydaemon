@@ -77,6 +77,9 @@ type TVault struct {
 	IsHidden       bool            `json:"isHidden"`       // If the vault is hidden or not
 	Migration      TMigration      `json:"migration"`      // If the vault is in the process of being migrated
 	Classification TClassification `json:"classification"` // The classification of the vault
+	DisplayName    string          `json:"displayName"`    // The name of the strategy
+	DisplaySymbol  string          `json:"displaySymbol"`  // The symbol of the strategy
+	Description    string          `json:"description"`    // The description of the strategy
 }
 
 type TLegacyAPIAPY struct {

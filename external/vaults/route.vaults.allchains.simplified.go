@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -129,7 +130,14 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
-			allVaults = append(allVaults, toSimplifiedVersion(newVault))
+
+			vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
+			if ok {
+				simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
+				allVaults = append(allVaults, simplified)
+			} else {
+				allVaults = append(allVaults, toSimplifiedVersion(newVault, models.TStrategy{}))
+			}
 		}
 	}
 

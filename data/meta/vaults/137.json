@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-27T12:23:41.105732+01:00",
+	"lastUpdate": "2023-11-28T11:44:48.575167+01:00",
 	"version": {
 		"major": 0,
 		"minor": 1,
-		"patch": 11
+		"patch": 18
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -20,7 +20,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000282385656901292",
+			"lastPricePerShare": "1000419033489199358",
 			"lastTotalAssets": "525832235840601749011",
 			"isRetired": false,
 			"isHidden": false,
@@ -33,7 +33,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
@@ -52,7 +55,7 @@
 				"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
 				"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6"
 			],
-			"lastPricePerShare": "1000003264040607220",
+			"lastPricePerShare": "1000005177850063841",
 			"lastTotalAssets": "2627977805323533209979",
 			"isRetired": false,
 			"isHidden": false,
@@ -65,7 +68,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -80,8 +86,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000115511271431628",
-			"lastTotalAssets": "1314156426526262412957",
+			"lastPricePerShare": "1000157437065470569",
+			"lastTotalAssets": "1314453858290632830722",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -93,7 +99,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
@@ -125,7 +134,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -140,8 +152,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000119544838219059",
-			"lastTotalAssets": "588273988224583438",
+			"lastPricePerShare": "1000166413659861361",
+			"lastTotalAssets": "588428156512001385",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -153,7 +165,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -168,8 +183,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002968760107606058",
-			"lastTotalAssets": "840077675038997549733",
+			"lastPricePerShare": "1003074734952087229",
+			"lastTotalAssets": "840211810222649346360",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -181,7 +196,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -209,7 +227,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
@@ -227,8 +248,8 @@
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1"
 			],
-			"lastPricePerShare": "1003431",
-			"lastTotalAssets": "10081334493",
+			"lastPricePerShare": "1003585",
+			"lastTotalAssets": "10088728071",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -240,7 +261,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -255,7 +279,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005467",
+			"lastPricePerShare": "1005592",
 			"lastTotalAssets": "9157555194",
 			"isRetired": false,
 			"isHidden": false,
@@ -268,7 +292,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
@@ -283,8 +310,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "420133560730533705",
+			"lastPricePerShare": "1000047660364042683",
+			"lastTotalAssets": "420291735647930029",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -296,7 +323,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -311,8 +341,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006568",
-			"lastTotalAssets": "1012208081",
+			"lastPricePerShare": "1007300",
+			"lastTotalAssets": "1013178456",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -324,7 +354,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

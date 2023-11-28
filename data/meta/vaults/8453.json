@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-27T12:23:41.028117+01:00",
+	"lastUpdate": "2023-11-28T11:44:48.870457+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 47
+		"patch": 48
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -36,7 +36,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x13454b672213f53cb1d31ea0be033c58fe315392": {
 			"address": "0x13454b672213f53cb1d31ea0be033c58fe315392",
@@ -68,7 +71,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
 			"address": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
@@ -99,7 +105,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x37fdacd764aa64f4e453842d8056853e5550c09b": {
 			"address": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
@@ -131,7 +140,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x391e5dc227cdcf3cca012e5278798121236b1861": {
 			"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
@@ -162,7 +174,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x41102db56d0531be4560ec2db295e28a3c6954c7": {
 			"address": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
@@ -193,7 +208,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x41489713d581ec717e1aa55b7729d24965cf96b5": {
 			"address": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
@@ -225,7 +243,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
 			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
@@ -255,7 +276,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
@@ -287,7 +311,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x58dce038423a1e43f3429cb62425a1364cc3bb4c": {
 			"address": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
@@ -318,7 +345,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
 			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
@@ -348,7 +378,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
@@ -379,7 +412,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5c366341bb86bad85e78eba974e3f335c9488fa2": {
 			"address": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
@@ -410,7 +446,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x68393a804c9fe4f1c7148d37796436e450ad98e8": {
 			"address": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
@@ -441,7 +480,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608": {
 			"address": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
@@ -472,7 +514,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
@@ -503,7 +548,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
 			"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
@@ -535,7 +583,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4": {
 			"address": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
@@ -567,7 +618,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x8f22d62434d5e52af442f69f43eb27ba20768692": {
 			"address": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
@@ -598,7 +652,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {
 			"address": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
@@ -630,7 +687,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa49dccd9425cc38d4111df2e665f2a33fe799c42": {
 			"address": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
@@ -661,7 +721,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f": {
 			"address": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
@@ -693,7 +756,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e": {
 			"address": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
@@ -725,7 +791,10 @@
 				"poolProvider": "Aerodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "ERN"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
 			"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
@@ -756,7 +825,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf8f36ab972f6fe3ae1f594595aee1284e270d034": {
 			"address": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
@@ -787,7 +859,10 @@
 				"isPool": true,
 				"poolProvider": "Aerodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

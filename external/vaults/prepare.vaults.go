@@ -4,6 +4,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -30,8 +31,14 @@ func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumb
 	return fHumanizedTVLPrice
 }
 
-func toSimplifiedVersion(vault TExternalVault) TSimplifiedExternalVault {
+func toSimplifiedVersion(
+	vault TExternalVault,
+	vaultAsStrategy models.TStrategy,
+) TSimplifiedExternalVault {
 	vaultName := vault.DisplayName
+	if (vaultName == "" && vaultAsStrategy.Address != common.Address{}) {
+		vaultName = vaultAsStrategy.DisplayName
+	}
 	if vaultName == "" {
 		vaultName = vault.Name
 	}

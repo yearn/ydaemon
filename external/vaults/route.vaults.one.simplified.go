@@ -6,6 +6,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -95,5 +96,17 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}
 
-	c.JSON(http.StatusOK, toSimplifiedVersion(newVault))
+	vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
+	if ok {
+		simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
+		simplified.Description = newVault.Description
+		if simplified.Description == "" {
+			simplified.Description = vaultAsStrategy.Description
+		}
+		c.JSON(http.StatusOK, simplified)
+		return
+	}
+	simplified := toSimplifiedVersion(newVault, models.TStrategy{})
+	simplified.Description = newVault.Description
+	c.JSON(http.StatusOK, simplified)
 }

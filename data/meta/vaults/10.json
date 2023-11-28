@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-27T12:23:53.193302+01:00",
+	"lastUpdate": "2023-11-28T11:45:00.028892+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 145
+		"patch": 146
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -23,7 +23,7 @@
 				"0x81ebdc2f60df4d579bc0df8cb86609e885cac5d3"
 			],
 			"lastPricePerShare": "1015854726388098143",
-			"lastTotalAssets": "45608533739816359878",
+			"lastTotalAssets": "42433784058084154922",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -36,7 +36,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x00cb8e36a9c40491a39e8bf2864ed30c1b579860": {
 			"address": "0x00cb8e36a9c40491a39e8bf2864ed30c1b579860",
@@ -68,7 +71,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Bitcoin"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50": {
 			"address": "0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50",
@@ -85,8 +91,8 @@
 			"lastActiveStrategies": [
 				"0xcd90278862651eed05ebcd5cb34a87deb2b47867"
 			],
-			"lastPricePerShare": "1037294580261268167",
-			"lastTotalAssets": "45333658413596392",
+			"lastPricePerShare": "1037532319083239726",
+			"lastTotalAssets": "32239709311252901",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -99,7 +105,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687": {
 			"address": "0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687",
@@ -116,8 +125,8 @@
 			"lastActiveStrategies": [
 				"0xd22e21a1b9bdc392229fab7e878a10b5b6273fcb"
 			],
-			"lastPricePerShare": "1029625175575119896",
-			"lastTotalAssets": "5957793111455411",
+			"lastPricePerShare": "1029902732332771008",
+			"lastTotalAssets": "5963639019830673",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -130,7 +139,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x05bbaf27429eb35cb3d51a979acba69f2f00e66a": {
 			"address": "0x05bbaf27429eb35cb3d51a979acba69f2f00e66a",
@@ -162,7 +174,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12": {
 			"address": "0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12",
@@ -195,7 +210,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Bitcoin"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x161e7411a291ccaf377279fce6a8c8d689dbebe8": {
 			"address": "0x161e7411a291ccaf377279fce6a8c8d689dbebe8",
@@ -227,7 +245,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x1b1d2efb6045851f8ccde24369003e0ff157980b": {
 			"address": "0x1b1d2efb6045851f8ccde24369003e0ff157980b",
@@ -259,7 +280,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce": {
 			"address": "0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce",
@@ -276,8 +300,8 @@
 			"lastActiveStrategies": [
 				"0x6d094c2c5d3478a198f89b7f8ed6910dfb8842ba"
 			],
-			"lastPricePerShare": "1046282060678963275",
-			"lastTotalAssets": "415728769865495045",
+			"lastPricePerShare": "1046577914495800937",
+			"lastTotalAssets": "414610916812066707",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -291,7 +315,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x22687ca792a8cb5e169a77e0949e71fe37147604": {
 			"address": "0x22687ca792a8cb5e169a77e0949e71fe37147604",
@@ -323,7 +350,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x27939e33435cc4ee4e74c0f0260914596bceb116": {
 			"address": "0x27939e33435cc4ee4e74c0f0260914596bceb116",
@@ -353,7 +383,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x2a90f479002daae9934c3a70ebb6e8dbeb46292b": {
 			"address": "0x2a90f479002daae9934c3a70ebb6e8dbeb46292b",
@@ -370,7 +403,7 @@
 			"lastActiveStrategies": [
 				"0xbfd5df2b57cb9532a39931e4ed74b51cfa940bb0"
 			],
-			"lastPricePerShare": "1027878114044757413",
+			"lastPricePerShare": "1027978009397820690",
 			"lastTotalAssets": "13035469395325164829359",
 			"isRetired": false,
 			"isHidden": false,
@@ -384,7 +417,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b": {
 			"address": "0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b",
@@ -415,7 +451,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x36e4c18b2b43cc989085b4a7306915b115058abf": {
 			"address": "0x36e4c18b2b43cc989085b4a7306915b115058abf",
@@ -447,7 +486,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x39f60710a27a87332d10e3333c2eff41eec911ee": {
 			"address": "0x39f60710a27a87332d10e3333c2eff41eec911ee",
@@ -464,8 +506,8 @@
 			"lastActiveStrategies": [
 				"0x41570ef430d5f507e97403f0de61d35d5efa60f4"
 			],
-			"lastPricePerShare": "1332586280548557831",
-			"lastTotalAssets": "142880473632638949",
+			"lastPricePerShare": "1332817426215303695",
+			"lastTotalAssets": "143077162932035639",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -479,7 +521,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6": {
 			"address": "0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6",
@@ -496,7 +541,7 @@
 			"lastActiveStrategies": [
 				"0xd8177cabbb13922206ccfeacab3060c5fe4cb06b"
 			],
-			"lastPricePerShare": "1033694108786292891",
+			"lastPricePerShare": "1034152049864248301",
 			"lastTotalAssets": "53259820981017893",
 			"isRetired": false,
 			"isHidden": false,
@@ -510,7 +555,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa": {
 			"address": "0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa",
@@ -542,7 +590,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3bde2ab72afe70286fc944c07d98883e383df239": {
 			"address": "0x3bde2ab72afe70286fc944c07d98883e383df239",
@@ -573,7 +624,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3f14df340498f3eaa2894bfc19789dd592dc062d": {
 			"address": "0x3f14df340498f3eaa2894bfc19789dd592dc062d",
@@ -605,7 +659,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3fb792fa67cde50a41e20304e4afef522cf711ee": {
 			"address": "0x3fb792fa67cde50a41e20304e4afef522cf711ee",
@@ -637,7 +694,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x43360fdd9546e3e77ac2e6793f53219729743293": {
 			"address": "0x43360fdd9546e3e77ac2e6793f53219729743293",
@@ -669,7 +729,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41": {
 			"address": "0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41",
@@ -700,7 +763,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d": {
 			"address": "0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d",
@@ -733,7 +799,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03": {
 			"address": "0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03",
@@ -765,7 +834,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x4f1220f6375e95b43462465972cb2f478ed34d0b": {
 			"address": "0x4f1220f6375e95b43462465972cb2f478ed34d0b",
@@ -797,7 +869,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0": {
 			"address": "0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0",
@@ -814,7 +889,7 @@
 			"lastActiveStrategies": [
 				"0x1b929f270346efb14636ce5749c471105e44a0ac"
 			],
-			"lastPricePerShare": "1052420808514761408",
+			"lastPricePerShare": "1052933143463893009",
 			"lastTotalAssets": "12110257855459112884926",
 			"isRetired": false,
 			"isHidden": false,
@@ -829,7 +904,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x507343bad3a1ee0b67c3b1712133290ded43980d": {
 			"address": "0x507343bad3a1ee0b67c3b1712133290ded43980d",
@@ -846,7 +924,7 @@
 			"lastActiveStrategies": [
 				"0x4276b479e851f76f95312cce497dc8fe37f1befd"
 			],
-			"lastPricePerShare": "1034376393023511699",
+			"lastPricePerShare": "1034779096326135018",
 			"lastTotalAssets": "3418167510239422010195",
 			"isRetired": false,
 			"isHidden": false,
@@ -860,7 +938,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x531fdb1c8429f404116932226d487db94471c4b7": {
 			"address": "0x531fdb1c8429f404116932226d487db94471c4b7",
@@ -892,7 +973,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6": {
 			"address": "0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6",
@@ -924,7 +1008,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5b977577eb8a480f63e11fc615d6753adb8652ae": {
 			"address": "0x5b977577eb8a480f63e11fc615d6753adb8652ae",
@@ -942,8 +1029,8 @@
 				"0xf8ad69d578bd58c7d3ff643a22355f0bfd5ca12a",
 				"0x64d23f2efed691a86db3603319562e8287bd342f"
 			],
-			"lastPricePerShare": "1013433362727770196",
-			"lastTotalAssets": "528538361645351983009",
+			"lastPricePerShare": "1013512422048483624",
+			"lastTotalAssets": "528638779828791704915",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -956,7 +1043,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x62855b8e5db35551661a1e304ec227314f4493c1": {
 			"address": "0x62855b8e5db35551661a1e304ec227314f4493c1",
@@ -986,7 +1076,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x65343f414ffd6c97b0f6add33d16f6845ac22bac": {
 			"address": "0x65343f414ffd6c97b0f6add33d16f6845ac22bac",
@@ -1004,8 +1097,8 @@
 				"0x877d377b289aea8e0f8ac2470252d226417d9e21",
 				"0x5aa0d7821a23817d77cdbb7e4a0ca106f2583345"
 			],
-			"lastPricePerShare": "1026548484400998722",
-			"lastTotalAssets": "1257377625118950001017599",
+			"lastPricePerShare": "1026674097839418499",
+			"lastTotalAssets": "1257478142434155642570210",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1018,7 +1111,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6657bdb994fc8678f6d709077f30aa0b3249b5c8": {
 			"address": "0x6657bdb994fc8678f6d709077f30aa0b3249b5c8",
@@ -1049,7 +1145,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6759574667896a453304897993d61f00fdc7214d": {
 			"address": "0x6759574667896a453304897993d61f00fdc7214d",
@@ -1080,7 +1179,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x682df61222a3fb64f3e88fef41ce21499adcc647": {
 			"address": "0x682df61222a3fb64f3e88fef41ce21499adcc647",
@@ -1112,7 +1214,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x686c125472024bdd3fa74eeb3720b3237541dcdc": {
 			"address": "0x686c125472024bdd3fa74eeb3720b3237541dcdc",
@@ -1143,7 +1248,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x68f2b1db2da6204489279a8fc681f83728bb9622": {
 			"address": "0x68f2b1db2da6204489279a8fc681f83728bb9622",
@@ -1160,7 +1268,7 @@
 			"lastActiveStrategies": [
 				"0x8fd559dfe1d64508290025e2312ca69ef172dfe3"
 			],
-			"lastPricePerShare": "1043921580310843061",
+			"lastPricePerShare": "1044223407563611207",
 			"lastTotalAssets": "19206248224254441698484",
 			"isRetired": false,
 			"isHidden": false,
@@ -1175,7 +1283,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6a44b0415a5c440d32e82965fdfaad54a72d477d": {
 			"address": "0x6a44b0415a5c440d32e82965fdfaad54a72d477d",
@@ -1207,7 +1318,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6afa09145245eaedddab9333523af9984494ff34": {
 			"address": "0x6afa09145245eaedddab9333523af9984494ff34",
@@ -1239,7 +1353,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07": {
 			"address": "0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07",
@@ -1256,7 +1373,7 @@
 			"lastActiveStrategies": [
 				"0x332ac9e3ead90e13399ac8ea4168ea27ec132fa9"
 			],
-			"lastPricePerShare": "1002428417118575362",
+			"lastPricePerShare": "1002558707032310716",
 			"lastTotalAssets": "76475450641765639623",
 			"isRetired": false,
 			"isHidden": false,
@@ -1271,7 +1388,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee": {
 			"address": "0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee",
@@ -1302,7 +1422,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x71117bcd8fe69177eeb8857538d625209756b745": {
 			"address": "0x71117bcd8fe69177eeb8857538d625209756b745",
@@ -1334,7 +1457,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x78e20312105a85b7fe86db119cfd5cd8de81fdaa": {
 			"address": "0x78e20312105a85b7fe86db119cfd5cd8de81fdaa",
@@ -1366,7 +1492,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7bdea31f968089f93a548ddec8bb74036e8ac6e0": {
 			"address": "0x7bdea31f968089f93a548ddec8bb74036e8ac6e0",
@@ -1398,7 +1527,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7d2382b1f8af621229d33464340541db362b4907": {
 			"address": "0x7d2382b1f8af621229d33464340541db362b4907",
@@ -1415,8 +1547,8 @@
 			"lastActiveStrategies": [
 				"0x1e88b832e3e8247c38a088511f0bf243dfa00973"
 			],
-			"lastPricePerShare": "1016190729753728793",
-			"lastTotalAssets": "741056101663265157372218",
+			"lastPricePerShare": "1016260946995237442",
+			"lastTotalAssets": "740539650957696475969560",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1428,7 +1560,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7e1d451799af57ea5570d1015c342c12a918a30b": {
 			"address": "0x7e1d451799af57ea5570d1015c342c12a918a30b",
@@ -1460,7 +1595,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7edf16076e56fa4c111055fba1ff5556b8757cfb": {
 			"address": "0x7edf16076e56fa4c111055fba1ff5556b8757cfb",
@@ -1477,8 +1615,8 @@
 			"lastActiveStrategies": [
 				"0x6108591f070ff31809e1da11fd5aea9d3235735f"
 			],
-			"lastPricePerShare": "100085300",
-			"lastTotalAssets": "3884904",
+			"lastPricePerShare": "100085454",
+			"lastTotalAssets": "3884929",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1491,7 +1629,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Bitcoin"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x830cb4aabf786b9349d9701dd8ee073215d95174": {
 			"address": "0x830cb4aabf786b9349d9701dd8ee073215d95174",
@@ -1508,7 +1649,7 @@
 			"lastActiveStrategies": [
 				"0x57926e9cf3d7920afe774dc1d040cce0cd3ed26a"
 			],
-			"lastPricePerShare": "1099493014593670858",
+			"lastPricePerShare": "1099816839977922052",
 			"lastTotalAssets": "2504677480771232527091",
 			"isRetired": false,
 			"isHidden": false,
@@ -1522,7 +1663,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x83b8391b9efbc5b5a38777fb22a4968c622a405a": {
 			"address": "0x83b8391b9efbc5b5a38777fb22a4968c622a405a",
@@ -1539,8 +1683,8 @@
 			"lastActiveStrategies": [
 				"0xe95b08f0aeae413f3b40e19cbae16564c6802509"
 			],
-			"lastPricePerShare": "2903227123176851477",
-			"lastTotalAssets": "261243267621432948",
+			"lastPricePerShare": "2903227123176851484",
+			"lastTotalAssets": "260906462634725316",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1553,7 +1697,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x87be630d279bfd004775c1166f8a488b2fffa500": {
 			"address": "0x87be630d279bfd004775c1166f8a488b2fffa500",
@@ -1585,7 +1732,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x88b429359665b8685b7431f5a0f6e8c719bf49aa": {
 			"address": "0x88b429359665b8685b7431f5a0f6e8c719bf49aa",
@@ -1602,8 +1752,8 @@
 			"lastActiveStrategies": [
 				"0x2a28720b784cc85791c58a47eaed3b569292c71f"
 			],
-			"lastPricePerShare": "1156417517084732820",
-			"lastTotalAssets": "369854495215270144",
+			"lastPricePerShare": "1157811542196031931",
+			"lastTotalAssets": "369896295199456951",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1616,7 +1766,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9": {
 			"address": "0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9",
@@ -1634,7 +1787,7 @@
 				"0x4e1a7a01a41d59cd762beb26684b00762ac8e581"
 			],
 			"lastPricePerShare": "1125517836668713254",
-			"lastTotalAssets": "859195807552629655754",
+			"lastTotalAssets": "859126779554058177591",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -1647,7 +1800,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27": {
 			"address": "0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27",
@@ -1679,7 +1835,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x906122ac1b55b71248abfa552fdc6abd3356884a": {
 			"address": "0x906122ac1b55b71248abfa552fdc6abd3356884a",
@@ -1710,7 +1869,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe": {
 			"address": "0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe",
@@ -1741,7 +1903,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x950f384f566b82cca6380f75ae42e2bbe9b357b2": {
 			"address": "0x950f384f566b82cca6380f75ae42e2bbe9b357b2",
@@ -1773,7 +1938,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b": {
 			"address": "0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b",
@@ -1804,7 +1972,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e": {
 			"address": "0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e",
@@ -1836,7 +2007,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681": {
 			"address": "0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681",
@@ -1867,7 +2041,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa628c54c850ff1077b5c954491d19ecce7e321ff": {
 			"address": "0xa628c54c850ff1077b5c954491d19ecce7e321ff",
@@ -1900,7 +2077,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa7b550b3a80361d8e47e07616dc42f04c655881b": {
 			"address": "0xa7b550b3a80361d8e47e07616dc42f04c655881b",
@@ -1932,7 +2112,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "ERN"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f": {
 			"address": "0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f",
@@ -1964,7 +2147,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xac8da30113238cfaf5011157cdf1e05a884cdb72": {
 			"address": "0xac8da30113238cfaf5011157cdf1e05a884cdb72",
@@ -1994,7 +2180,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xad17a225074191d5c8a37b50fda1ae278a2ee6a2": {
 			"address": "0xad17a225074191d5c8a37b50fda1ae278a2ee6a2",
@@ -2012,8 +2201,8 @@
 				"0xe82deb62412db78d00cae77be3d1334e26034cf6",
 				"0xab9cb23b135ae489aea28dbedeb082f10772d0c4"
 			],
-			"lastPricePerShare": "1023872",
-			"lastTotalAssets": "1372380342195",
+			"lastPricePerShare": "1023975",
+			"lastTotalAssets": "1372761241973",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2026,7 +2215,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb3532518daca20fd14e539b0ed6c0de5c59fd2de": {
 			"address": "0xb3532518daca20fd14e539b0ed6c0de5c59fd2de",
@@ -2058,7 +2250,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3": {
 			"address": "0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3",
@@ -2090,7 +2285,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb83dbac6087592328909996a39d138e89e4b0afe": {
 			"address": "0xb83dbac6087592328909996a39d138e89e4b0afe",
@@ -2122,7 +2320,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb9a14c5c760023801f8c731b4621c99f8ac211d9": {
 			"address": "0xb9a14c5c760023801f8c731b4621c99f8ac211d9",
@@ -2153,7 +2354,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xbc61b71562b01a3a4808d3b9291a3bf743ab3361": {
 			"address": "0xbc61b71562b01a3a4808d3b9291a3bf743ab3361",
@@ -2170,7 +2374,7 @@
 			"lastActiveStrategies": [
 				"0x35a18609bbc01c1e75932fab4f239aeab4742199"
 			],
-			"lastPricePerShare": "1025163982266592861",
+			"lastPricePerShare": "1025397674895670066",
 			"lastTotalAssets": "13275501497679153132628",
 			"isRetired": false,
 			"isHidden": false,
@@ -2184,7 +2388,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc2626acedc27cffb418680d0307c9178955a4743": {
 			"address": "0xc2626acedc27cffb418680d0307c9178955a4743",
@@ -2216,7 +2423,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Correlated",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7": {
 			"address": "0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7",
@@ -2249,7 +2459,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc3439ba7db7566ed0def55c179ed9b3ba273a67f": {
 			"address": "0xc3439ba7db7566ed0def55c179ed9b3ba273a67f",
@@ -2280,7 +2493,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc3566662862c26ff56e3e709dc021902cc68becd": {
 			"address": "0xc3566662862c26ff56e3e709dc021902cc68becd",
@@ -2311,7 +2527,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc86b70e2c16c5fb5315e4663737e0e077abfc395": {
 			"address": "0xc86b70e2c16c5fb5315e4663737e0e077abfc395",
@@ -2329,7 +2548,7 @@
 				"0xe7036cb72f21b1dfe422ad79d54b3d611e2bffa2"
 			],
 			"lastPricePerShare": "1115521865735314912",
-			"lastTotalAssets": "118130143543492227434657",
+			"lastTotalAssets": "118114205490581938650959",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2342,7 +2561,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xcf6bef33c49824226fb9defcdc3b1de11f207db7": {
 			"address": "0xcf6bef33c49824226fb9defcdc3b1de11f207db7",
@@ -2374,7 +2596,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd02ce9e211279ab3f414ff7a661518f9173780cb": {
 			"address": "0xd02ce9e211279ab3f414ff7a661518f9173780cb",
@@ -2406,7 +2631,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd0d2ac44cc842079e978bb11b094764f7d0dec6a": {
 			"address": "0xd0d2ac44cc842079e978bb11b094764f7d0dec6a",
@@ -2438,7 +2666,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c": {
 			"address": "0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c",
@@ -2455,8 +2686,8 @@
 			"lastActiveStrategies": [
 				"0xd13a1c75e5177f4932502aef829493467b1844ab"
 			],
-			"lastPricePerShare": "1009296038115741998",
-			"lastTotalAssets": "7036547572348873533053",
+			"lastPricePerShare": "1009568014889059943",
+			"lastTotalAssets": "7040826913572796341388",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2468,7 +2699,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": ""
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae": {
 			"address": "0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae",
@@ -2485,7 +2719,7 @@
 			"lastActiveStrategies": [
 				"0x79ab263c0dbefd8834f7292864ad6d405ba6793a"
 			],
-			"lastPricePerShare": "7436434162139209983",
+			"lastPricePerShare": "7921963387356805620",
 			"lastTotalAssets": "10534555812651",
 			"isRetired": false,
 			"isHidden": false,
@@ -2499,7 +2733,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5": {
 			"address": "0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5",
@@ -2516,7 +2753,7 @@
 			"lastActiveStrategies": [
 				"0xb92e56fea1f265ca6c85a9cd64a0d58800374985"
 			],
-			"lastPricePerShare": "2299148147723212957",
+			"lastPricePerShare": "2315767735755904886",
 			"lastTotalAssets": "29681135290107183206585",
 			"isRetired": false,
 			"isHidden": false,
@@ -2530,7 +2767,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f": {
 			"address": "0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f",
@@ -2561,7 +2801,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5": {
 			"address": "0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5",
@@ -2578,8 +2821,8 @@
 			"lastActiveStrategies": [
 				"0x0f83d307a1df560b13df25d98f308be403ba8ff7"
 			],
-			"lastPricePerShare": "1022635969870252277",
-			"lastTotalAssets": "295669362838627085390",
+			"lastPricePerShare": "1022978325056316467",
+			"lastTotalAssets": "544878271769241086560",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2592,7 +2835,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf5a8af3c13c0f6c139f58aac8a549100484e0aad": {
 			"address": "0xf5a8af3c13c0f6c139f58aac8a549100484e0aad",
@@ -2623,7 +2869,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf6b272134a193df5b04332e73184e5b40b8eb810": {
 			"address": "0xf6b272134a193df5b04332e73184e5b40b8eb810",
@@ -2640,7 +2889,7 @@
 			"lastActiveStrategies": [
 				"0x2c25e16a3bb0a00d2236e1981b4a6371961ffb80"
 			],
-			"lastPricePerShare": "1067811392074332708",
+			"lastPricePerShare": "1068138565197134177",
 			"lastTotalAssets": "8138455726575482",
 			"isRetired": false,
 			"isHidden": false,
@@ -2654,7 +2903,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf7d66b41cd4241eae450fd9d2d6995754634d9f3": {
 			"address": "0xf7d66b41cd4241eae450fd9d2d6995754634d9f3",
@@ -2671,8 +2923,8 @@
 			"lastActiveStrategies": [
 				"0x02e0e677fad4a8dc9007a7bed973bf0c70905929"
 			],
-			"lastPricePerShare": "1020076759445418753",
-			"lastTotalAssets": "794815523092839895629",
+			"lastPricePerShare": "1020185556710853805",
+			"lastTotalAssets": "794873586613963690161",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2686,7 +2938,10 @@
 				"poolProvider": "Velodrome",
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf89fdbbce1a707061e9d59b8e4387f89798b4d10": {
 			"address": "0xf89fdbbce1a707061e9d59b8e4387f89798b4d10",
@@ -2717,7 +2972,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xfa3c6122906f2a2d644409dbb507db1060d10b3a": {
 			"address": "0xfa3c6122906f2a2d644409dbb507db1060d10b3a",
@@ -2734,8 +2992,8 @@
 			"lastActiveStrategies": [
 				"0x9f38e7866e1e8f82ebef9433f0131981d281adec"
 			],
-			"lastPricePerShare": "2022093089632177460",
-			"lastTotalAssets": "22452039408398886160523",
+			"lastPricePerShare": "2034358013702161974",
+			"lastTotalAssets": "22732100107466305423599",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2748,7 +3006,10 @@
 				"isPool": true,
 				"poolProvider": "Velodrome",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de": {
 			"address": "0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de",
@@ -2766,8 +3027,8 @@
 				"0x1d3be43c5621bda29ab24101c54d434b9b3f29c8",
 				"0x5c7660c1967d7315eefe6c1101ec03d4cd04a4ce"
 			],
-			"lastPricePerShare": "1027589",
-			"lastTotalAssets": "870470441473",
+			"lastPricePerShare": "1027756",
+			"lastTotalAssets": "864923586403",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -2780,7 +3041,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xfbef713696465ddab297164c3b6a0122d92a3bac": {
 			"address": "0xfbef713696465ddab297164c3b6a0122d92a3bac",
@@ -2813,7 +3077,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

@@ -4,10 +4,12 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
+	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -68,7 +70,13 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 			}
 
 			newVault.Strategies = []TStrategy{}
-			allVaults = append(allVaults, toSimplifiedVersion(newVault))
+			vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
+			if ok {
+				simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
+				allVaults = append(allVaults, simplified)
+			} else {
+				allVaults = append(allVaults, toSimplifiedVersion(newVault, models.TStrategy{}))
+			}
 		}
 	}
 

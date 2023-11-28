@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-27T12:23:40.711374+01:00",
+	"lastUpdate": "2023-11-28T11:44:48.48558+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 48
+		"patch": 49
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -34,7 +34,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Avax"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x0446acab3e0242fcf33aa526f1c95a88068d5042": {
 			"address": "0x0446acab3e0242fcf33aa526f1c95a88068d5042",
@@ -65,7 +68,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x0a0b23d9786963de69cb2447dc125c49929419d8": {
 			"address": "0x0a0b23d9786963de69cb2447dc125c49929419d8",
@@ -89,7 +95,7 @@
 				"0xd58003b2bac011b67c108b24e5deb1b22c70fd1f"
 			],
 			"lastPricePerShare": "1088784877188173088",
-			"lastTotalAssets": "117995366268512075389191",
+			"lastTotalAssets": "117995368219556146571341",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -102,7 +108,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x0dec85e74a92c52b7f708c4b10207d9560cefaf0": {
 			"address": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -130,7 +139,7 @@
 				"0x939dc1c32d89ba771c1eeee8f1a12ba9b766c532"
 			],
 			"lastPricePerShare": "1962782776185799071",
-			"lastTotalAssets": "5188661107703483620588382",
+			"lastTotalAssets": "5188653729670917006761001",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -143,7 +152,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "FTM"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x0fbbf9848d969776a5eb842edafaf29ef4467698": {
 			"address": "0x0fbbf9848d969776a5eb842edafaf29ef4467698",
@@ -175,7 +187,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x1482faf8b5a9c458c94e6a561ccf93ed7a9f552e": {
 			"address": "0x1482faf8b5a9c458c94e6a561ccf93ed7a9f552e",
@@ -204,7 +219,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "FTM"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x148c05caf1bb09b5670f00d511718f733c54bc4c": {
 			"address": "0x148c05caf1bb09b5670f00d511718f733c54bc4c",
@@ -239,7 +257,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x1b48641d8251c3e84ecbe3f2bd76b3701401906d": {
 			"address": "0x1b48641d8251c3e84ecbe3f2bd76b3701401906d",
@@ -270,7 +291,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b": {
 			"address": "0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b",
@@ -300,7 +324,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x209667b173fe4e9559bda7818e53bd5f5e0f9acd": {
 			"address": "0x209667b173fe4e9559bda7818e53bd5f5e0f9acd",
@@ -332,7 +359,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x27cbf0fddb356a2d1ebdef604cfa90f8f300d34e": {
 			"address": "0x27cbf0fddb356a2d1ebdef604cfa90f8f300d34e",
@@ -363,7 +393,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "FTM"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x2c850cced00ce2b14aa9d658b7cad5df659493db": {
 			"address": "0x2c850cced00ce2b14aa9d658b7cad5df659493db",
@@ -395,7 +428,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x357ca46da26e1eefc195287ce9d838a6d5023ef3": {
 			"address": "0x357ca46da26e1eefc195287ce9d838a6d5023ef3",
@@ -426,7 +462,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3d8473724287eb1d903fe62688d3734de2b97ee8": {
 			"address": "0x3d8473724287eb1d903fe62688d3734de2b97ee8",
@@ -456,7 +495,10 @@
 				"poolProvider": "Curve",
 				"stability": "Correlated",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x3f0e90a85eab7f2c441379cfc9a080a4e864ae82": {
 			"address": "0x3f0e90a85eab7f2c441379cfc9a080a4e864ae82",
@@ -485,7 +527,10 @@
 				"isPool": true,
 				"poolProvider": "BeethovenX",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x637ec617c86d24e421328e6caea1d92114892439": {
 			"address": "0x637ec617c86d24e421328e6caea1d92114892439",
@@ -522,7 +567,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x85611d071406a9e08ba49c073087e3eb57819839": {
 			"address": "0x85611d071406a9e08ba49c073087e3eb57819839",
@@ -553,7 +601,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Bitcoin"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x8853a6232e3debe12098bf682898a92ec10c9921": {
 			"address": "0x8853a6232e3debe12098bf682898a92ec10c9921",
@@ -586,7 +637,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "FTM"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x9e3922fcbb28f40026da2e58926f0f249d8a138d": {
 			"address": "0x9e3922fcbb28f40026da2e58926f0f249d8a138d",
@@ -617,7 +671,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x9f87fc463327021b510f7e84a5683e1bdce02dcc": {
 			"address": "0x9f87fc463327021b510f7e84a5683e1bdce02dcc",
@@ -646,7 +703,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa946c861de1dd6cb530a07687da99e989b929139": {
 			"address": "0xa946c861de1dd6cb530a07687da99e989b929139",
@@ -676,7 +736,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa97e7da01c7047d6a65f894c99be8c832227a8bc": {
 			"address": "0xa97e7da01c7047d6a65f894c99be8c832227a8bc",
@@ -708,7 +771,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xc3ca90f164d43e2053cca591ac6e63fcaad80782": {
 			"address": "0xc3ca90f164d43e2053cca591ac6e63fcaad80782",
@@ -739,7 +805,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "FTM"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xcbcaf8cb8cbeafa927ecee0c5c56560f83e9b7d9": {
 			"address": "0xcbcaf8cb8cbeafa927ecee0c5c56560f83e9b7d9",
@@ -770,7 +839,10 @@
 				"isPool": true,
 				"poolProvider": "Curve",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xce2fc0bdc18bd6a4d9a725791a3dee33f3a23bb7": {
 			"address": "0xce2fc0bdc18bd6a4d9a725791a3dee33f3a23bb7",
@@ -791,7 +863,7 @@
 				"0xa4f10bc80f6c5cf6a34f828cb53c243eb1976da8"
 			],
 			"lastPricePerShare": "1033965668639920397",
-			"lastTotalAssets": "237432895980437182124",
+			"lastTotalAssets": "228538740618610788825",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -804,7 +876,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Ether"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd3c19eb022cac706c898d60d756bf1535d605e1d": {
 			"address": "0xd3c19eb022cac706c898d60d756bf1535d605e1d",
@@ -834,7 +909,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xd817a100ab8a29fe3dbd925c2eb489d67f758da9": {
 			"address": "0xd817a100ab8a29fe3dbd925c2eb489d67f758da9",
@@ -868,7 +946,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "Bitcoin"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xef0210eb96c7eb36af8ed1c20306462764935607": {
 			"address": "0xef0210eb96c7eb36af8ed1c20306462764935607",
@@ -907,7 +988,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf137d22d7b23eeb1950b3e19d1f578c053ed9715": {
 			"address": "0xf137d22d7b23eeb1950b3e19d1f578c053ed9715",
@@ -939,7 +1023,10 @@
 				"poolProvider": "Curve",
 				"stability": "Correlated",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xf2d323621785a066e64282d2b407eac79cc04966": {
 			"address": "0xf2d323621785a066e64282d2b407eac79cc04966",
@@ -970,7 +1057,10 @@
 				"isAutomated": false,
 				"isPool": false,
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

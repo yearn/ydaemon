@@ -103,6 +103,7 @@ type TExternalVault struct {
 	Name              string                  `json:"name"`
 	DisplayName       string                  `json:"display_name"`
 	FormatedName      string                  `json:"formated_name"`
+	Description       string                  `json:"description,omitempty"`
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
 	Category          string                  `json:"category"`
@@ -150,6 +151,7 @@ type TSimplifiedExternalVault struct {
 	Name           string                        `json:"name"`
 	Category       string                        `json:"category"`
 	Version        string                        `json:"version"`
+	Description    string                        `json:"description,omitempty"`
 	Decimals       uint64                        `json:"decimals"`
 	ChainID        uint64                        `json:"chainID"`
 	Retired        bool                          `json:"retired"`
@@ -170,8 +172,8 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	if !ok {
 		return v, errors.New(`token not found`)
 	}
-	name, displayName, formatedName := fetcher.BuildVaultNames(vault, ``)
-	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, ``)
+	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.DisplayName)
+	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.DisplaySymbol)
 
 	v.Address = vault.Address.Hex()
 	v.Version = vault.Version
@@ -192,6 +194,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Type = vaultToken.Type
 	v.Kind = vault.Kind
 	v.Decimals = vaultToken.Decimals
+	v.Description = vault.Description
 
 	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)
 	if ok {

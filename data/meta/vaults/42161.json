@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-27T12:23:40.768871+01:00",
+	"lastUpdate": "2023-11-28T11:44:48.609969+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 7
+		"patch": 8
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -23,7 +23,7 @@
 				"0xf1c3047c6310806de1d25535bc50748815066a7b"
 			],
 			"lastPricePerShare": "1078236289457950540",
-			"lastTotalAssets": "2786255903568190137420",
+			"lastTotalAssets": "2787238280768124034575",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -37,7 +37,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x239e14a19dff93a17339dcc444f74406c17f8e67": {
 			"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
@@ -68,7 +71,10 @@
 				"isPool": true,
 				"poolProvider": "Curve",
 				"stability": "Volatile"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
@@ -85,8 +91,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1006806332417258303",
-			"lastTotalAssets": "2125749440721502852627",
+			"lastPricePerShare": "1006834811669141802",
+			"lastTotalAssets": "2126115577160234183535",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -100,7 +106,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
 			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
@@ -132,7 +141,10 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x976a1c749cd8153909e0b04eebe931ef8957b15b": {
 			"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
@@ -161,7 +173,10 @@
 				"isPool": false,
 				"stability": "Stable",
 				"stableBaseAsset": "PHP"
-			}
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

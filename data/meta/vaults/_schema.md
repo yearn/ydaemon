@@ -48,6 +48,9 @@ For some specific use cases, we want to be able to manually update some elements
 - `isHidden`: If we should hide the vaults from the standard results
 - `migration`: Indicates the vault migration data and availability
 - `classification`: Give some more details to be able to classify the vaults in some UIs.
+- `displayName`: The name of the vault to use rather than the onchain name
+- `displaySymbol`: The symbol of the vault to use rather than the onchain symbol
+- `description`: The description of the vault. Note: if the vault is also a strategy and this field is empty, the strategy description will be used instead.
 
 ## Example
 
@@ -95,7 +98,10 @@ For some specific use cases, we want to be able to manually update some elements
 			"poolProvider": "Curve",
 			"stability": "Stable",
 			"stableBaseAsset": "USD"
-		}
+		},
+		"displayName": "",
+		"displaySymbol": "",
+		"description": ""
 	},
 	// Some other vaults
 }

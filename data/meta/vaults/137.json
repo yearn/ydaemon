@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-28T15:27:49.883582+01:00",
+	"lastUpdate": "2023-11-28T18:36:26.915275+01:00",
 	"version": {
 		"major": 0,
 		"minor": 1,
-		"patch": 43
+		"patch": 44
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -20,7 +20,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000440789143923373",
+			"lastPricePerShare": "1000459185132041800",
 			"lastTotalAssets": "525832235840601749011",
 			"isRetired": false,
 			"isHidden": false,
@@ -34,9 +34,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Aave V3 WMATIC Lender",
-			"displaySymbol": "ysWMATIC",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
@@ -56,8 +56,8 @@
 				"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
 				"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6"
 			],
-			"lastPricePerShare": "1000005482499446045",
-			"lastTotalAssets": "2627977805323533209979",
+			"lastPricePerShare": "1000011845373360292",
+			"lastTotalAssets": "2629555870412771468677",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -70,9 +70,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "WMATIC-A",
-			"displaySymbol": "yvMATIC-A",
-			"description": "Multi strategy WMATIC vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -87,7 +87,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000165324143848374",
+			"lastPricePerShare": "1000171993071561102",
 			"lastTotalAssets": "1314453858290632830722",
 			"isRetired": false,
 			"isHidden": false,
@@ -101,9 +101,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "CompV3 WMATIC Lender Borrower",
-			"displaySymbol": "ysWMATIC",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
@@ -123,8 +123,8 @@
 				"0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
 				"0x7486325a843590b84c98563c6962c58655569eca"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "1680534242922134822",
+			"lastPricePerShare": "1000010318599327085",
+			"lastTotalAssets": "1682233398412024993",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -137,9 +137,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "WETH-A",
-			"displaySymbol": "yvWETH-A",
-			"description": "Multi strategy WETH vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -154,7 +154,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000175546000257980",
+			"lastPricePerShare": "1000183267878369276",
 			"lastTotalAssets": "588428156512001385",
 			"isRetired": false,
 			"isHidden": false,
@@ -168,9 +168,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "CompV3 WETH Lender Borrower",
-			"displaySymbol": "ysWETH",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -185,7 +185,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1003097059576786466",
+			"lastPricePerShare": "1003115936688149231",
 			"lastTotalAssets": "840211810222649346360",
 			"isRetired": false,
 			"isHidden": false,
@@ -199,9 +199,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Staked MATIC Accumulator",
-			"displaySymbol": "ysWMATIC",
-			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -230,9 +230,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Staked ETH Accumulator",
-			"displaySymbol": "ysWETH",
-			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
@@ -251,7 +251,7 @@
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1"
 			],
-			"lastPricePerShare": "1003610",
+			"lastPricePerShare": "1003632",
 			"lastTotalAssets": "10088728071",
 			"isRetired": false,
 			"isHidden": false,
@@ -265,9 +265,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "USDC-A",
-			"displaySymbol": "yvUSDC-A",
-			"description": "Multi strategy USDC vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -282,7 +282,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005612",
+			"lastPricePerShare": "1005629",
 			"lastTotalAssets": "9157555194",
 			"isRetired": false,
 			"isHidden": false,
@@ -296,9 +296,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Compound V3 USDC Lender",
-			"displaySymbol": "ysUSDC",
-			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
@@ -309,11 +309,11 @@
 			"activation": 50217440,
 			"chainID": 137,
 			"endorsed": true,
-			"performanceFee": 5000,
+			"performanceFee": 500,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000057376384359838",
+			"lastPricePerShare": "1000065591803663321",
 			"lastTotalAssets": "420291735647930029",
 			"isRetired": false,
 			"isHidden": false,
@@ -327,9 +327,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Aave V3 WETH Lender",
-			"displaySymbol": "ysWETH",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -344,8 +344,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007336",
-			"lastTotalAssets": "1013178456",
+			"lastPricePerShare": "1007366",
+			"lastTotalAssets": "1013146847",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -358,9 +358,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Aave V3 USDC Lender",
-			"displaySymbol": "ysUSDC",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

@@ -34,9 +34,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Aave V3 WMATIC Lender",
+			"displaySymbol": "ysWMATIC",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
@@ -70,9 +70,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "WMATIC-A",
+			"displaySymbol": "yvMATIC-A",
+			"description": "Multi strategy WMATIC vault."
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -101,9 +101,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "CompV3 WMATIC Lender USDC Borrower",
+			"displaySymbol": "ysWMATIC",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
@@ -137,9 +137,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "WETH-A",
+			"displaySymbol": "yvWETH-A",
+			"description": "Multi strategy WETH vault."
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -168,9 +168,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "CompV3 WETH Lender USDC Borrower",
+			"displaySymbol": "ysWETH",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -199,9 +199,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Staked MATIC Accumulator",
+			"displaySymbol": "ysWMATIC",
+			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -230,9 +230,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Staked ETH Accumulator",
+			"displaySymbol": "ysWETH",
+			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
@@ -265,9 +265,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "USDC-A",
+			"displaySymbol": "yvUSDC-A",
+			"description": "Multi strategy USDC vault."
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -296,9 +296,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Compound V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
@@ -327,9 +327,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Aave V3 WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -358,9 +358,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		}
 	}
 }

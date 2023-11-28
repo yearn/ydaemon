@@ -203,7 +203,7 @@ func DecodeUint64(something []interface{}) uint64 {
 	if len(something) == 0 {
 		return 0
 	}
-	return uint64(something[0].(uint64))
+	return uint64(something[0].(uint8))
 }
 
 func DecodeUint16s(something []interface{}) []uint16 {

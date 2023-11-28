@@ -1,44 +1,12 @@
 {
-	"lastUpdate": "2023-11-28T11:44:48.48558+01:00",
+	"lastUpdate": "2023-11-28T15:27:49.838706+01:00",
 	"version": {
-		"major": 0,
+		"major": 1,
 		"minor": 0,
-		"patch": 49
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"vaults": {
-		"0x03b82e4070ca32ff63a03f2ecfc16c0165689a9d": {
-			"address": "0x03b82e4070ca32ff63a03f2ecfc16c0165689a9d",
-			"token": "0x511d35c52a3c244e7b8bd92c0c297755fbd89212",
-			"type": "Yearn Vault",
-			"kind": "",
-			"version": "0.4.3",
-			"activation": 27858511,
-			"chainID": 250,
-			"endorsed": true,
-			"performanceFee": 1000,
-			"managementFee": 200,
-			"emergencyShutdown": false,
-			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "16600000000000000",
-			"isRetired": true,
-			"isHidden": true,
-			"migration": {
-				"available": true,
-				"target": "0x148c05caf1bb09b5670f00d511718f733c54bc4c",
-				"contract": "0x09480e53fb713f7c26412436b84e379c0d73f61c"
-			},
-			"classification": {
-				"isAutomated": false,
-				"isPool": false,
-				"stability": "Stable",
-				"stableBaseAsset": "Avax"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
-		},
 		"0x0446acab3e0242fcf33aa526f1c95a88068d5042": {
 			"address": "0x0446acab3e0242fcf33aa526f1c95a88068d5042",
 			"token": "0x1e4f97b9f9f913c46f1632781732927b9019c68b",
@@ -554,7 +522,7 @@
 				"0x84f9e6d5d28edf0ae873a4d84903716684f473d5"
 			],
 			"lastPricePerShare": "1103034957534938024",
-			"lastTotalAssets": "635137629008316520950654",
+			"lastTotalAssets": "635113250686127767013784",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -975,7 +943,7 @@
 				"0x65f2605d8fe21614b294791faae1d7d0a7579276"
 			],
 			"lastPricePerShare": "1060959",
-			"lastTotalAssets": "1875096051555",
+			"lastTotalAssets": "1875106486160",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {

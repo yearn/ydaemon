@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-28T11:44:48.609969+01:00",
+	"lastUpdate": "2023-11-28T15:27:50.235826+01:00",
 	"version": {
-		"major": 0,
+		"major": 1,
 		"minor": 0,
-		"patch": 8
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -141,38 +141,6 @@
 				"poolProvider": "Curve",
 				"stability": "Stable",
 				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
-		},
-		"0x976a1c749cd8153909e0b04eebe931ef8957b15b": {
-			"address": "0x976a1c749cd8153909e0b04eebe931ef8957b15b",
-			"token": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
-			"type": "Experimental Yearn Vault",
-			"kind": "",
-			"version": "0.4.3",
-			"activation": 5591345,
-			"chainID": 42161,
-			"endorsed": false,
-			"performanceFee": 1000,
-			"managementFee": 0,
-			"emergencyShutdown": false,
-			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "12990000000000000000",
-			"isRetired": true,
-			"isHidden": true,
-			"migration": {
-				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x976a1c749cd8153909e0b04eebe931ef8957b15b"
-			},
-			"classification": {
-				"isAutomated": false,
-				"isPool": false,
-				"stability": "Stable",
-				"stableBaseAsset": "PHP"
 			},
 			"displayName": "",
 			"displaySymbol": "",

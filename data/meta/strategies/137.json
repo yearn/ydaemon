@@ -28,9 +28,11 @@
 			"lastDebtRatio": "2000",
 			"lastEstimatedTotalAssets": "525832235840601749011",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Aave V3 {{token}} Lender",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Aave"
+			]
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -53,9 +55,11 @@
 			"lastDebtRatio": "5000",
 			"lastEstimatedTotalAssets": "1314453858290632830722",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "CompV3 WMATIC Lender USDC Borrower",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Compound Finance"
+			]
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -78,9 +82,11 @@
 			"lastDebtRatio": "3500",
 			"lastEstimatedTotalAssets": "588428156512001385",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "CompV3 WETH Lender USDC Borrower",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Compound Finance"
+			]
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -103,9 +109,11 @@
 			"lastDebtRatio": "3000",
 			"lastEstimatedTotalAssets": "840211810222649346360",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Staked MATIC Accumulator",
+			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
+			"protocols": [
+				"stMATIC"
+			]
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -128,9 +136,11 @@
 			"lastDebtRatio": "4000",
 			"lastEstimatedTotalAssets": "683984278784720842",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Staked ETH Accumulator",
+			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
+			"protocols": [
+				"LIDO"
+			]
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -153,8 +163,8 @@
 			"lastDebtRatio": "8998",
 			"lastEstimatedTotalAssets": "9157555194",
 			"isRetired": true,
-			"displayName": "Compound USDC Lender",
-			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"displayName": "Compound V3 USDC Lender",
+			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"
 			]
@@ -180,9 +190,11 @@
 			"lastDebtRatio": "2500",
 			"lastEstimatedTotalAssets": "420291735647930029",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Aave V3 {{token}} Lender",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Aave"
+			]
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -205,9 +217,11 @@
 			"lastDebtRatio": "1002",
 			"lastEstimatedTotalAssets": "1013178456",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
-			"protocols": null
+			"displayName": "Aave V3 {{token}} Lender",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Aave"
+			]
 		}
 	}
 }

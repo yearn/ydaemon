@@ -62,7 +62,7 @@ func computeVaultV3ForwardAPR(
 	** Otherwise we can do the classic calculation of the net APR by summing the APR of each
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
-	shouldUseV2Method := false
+	shouldUseV2Method := true
 	if shouldUseV2Method && vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {

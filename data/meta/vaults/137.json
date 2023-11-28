@@ -293,9 +293,8 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Compound USDC Lender",
+			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/?market=usdc-mainnet) version 3 and borrows USDC which it also deposits to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",

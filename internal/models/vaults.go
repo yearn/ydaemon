@@ -9,7 +9,7 @@ type TVaultKind string
 
 const (
 	VaultKindLegacy   TVaultKind = "Legacy"
-	VaultKindMultiple TVaultKind = "Multi Strategies"
+	VaultKindMultiple TVaultKind = "Multi Strategy"
 	VaultKindSingle   TVaultKind = "Single Strategy"
 )
 

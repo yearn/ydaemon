@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -51,4 +52,10 @@ func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool
 		return models.TPrices{}, false
 	}
 	return vaultFromSyncMap.(models.TPrices), true
+}
+
+func init() {
+	for _, chain := range env.CHAINS {
+		_pricesSyncMap[chain.ID] = &sync.Map{}
+	}
 }

@@ -121,7 +121,9 @@ func NewRouter() *gin.Engine {
 		router.GET(`tokens/all`, c.GetAllTokens)
 		router.GET(`:chainID/tokens/all`, c.GetTokens)
 		router.GET(`:chainID/tokenlistbalances/:address`, tokensList.GetYearnTokenList)
+		router.GET(`:chainID/balances/:address`, tokensList.GetYearnTokenList)
 		router.GET(`balances/:address`, tokensList.GetUserBalance)
+		router.GET(`balancesN/:address`, tokensList.GetNewUserBalance)
 	}
 
 	// Prices API section

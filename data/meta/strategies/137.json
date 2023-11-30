@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-29T19:17:37.001359+01:00",
+	"lastUpdate": "2023-11-30T12:25:42.640702+01:00",
 	"version": {
 		"major": 0,
 		"minor": 1,
-		"patch": 72
+		"patch": 83
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -107,7 +107,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1701186118",
 			"lastDebtRatio": "3001",
-			"lastEstimatedTotalAssets": "843600908416709120804",
+			"lastEstimatedTotalAssets": "843809347188552812630",
 			"isRetired": true,
 			"displayName": "Staked MATIC Accumulator",
 			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
@@ -160,7 +160,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1701103933",
-			"lastDebtRatio": "8998",
+			"lastDebtRatio": "8997",
 			"lastEstimatedTotalAssets": "9163020861",
 			"isRetired": true,
 			"displayName": "Compound V3 USDC Lender",
@@ -209,13 +209,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1011163206",
+			"lastTotalDebt": "1011163202",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1701103909",
 			"lastDebtRatio": "1002",
-			"lastEstimatedTotalAssets": "1013146847",
+			"lastEstimatedTotalAssets": "1013146843",
 			"isRetired": true,
 			"displayName": "Aave V3 {{token}} Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",

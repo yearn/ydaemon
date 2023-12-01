@@ -82,7 +82,7 @@ func fetchPrices(
 	**********************************************************************************************/
 	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
 	for _, price := range priceMapFromCurveFactoryAPI {
-		if !price.Price.IsZero() {
+		if !price.Price.IsZero() && newPriceMap[price.Address].Price.IsZero() {
 			newPriceMap[price.Address] = price
 			continue
 		}

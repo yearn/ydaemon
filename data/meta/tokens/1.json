@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-11-28T15:28:13.971914+01:00",
+	"lastUpdate": "2023-12-06T12:45:25.300111+01:00",
 	"version": {
 		"major": 0,
-		"minor": 3,
+		"minor": 4,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2780,6 +2780,23 @@
 			"description": "This token represents a Balancer Stable liquidity pool. Holders earn fees from users trading in the pools, and can also deposit the LP to Balancer's gauges to earn BAL emissions. This pool contains B-80BAL-20WETH and auraBAL. B-80BAL-20WETH is Balancer's governance token and auraBAL is Aura Finance's wrapped vote-escrowed B-80BAL-20WETH Balancer Pool Token.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x3dd0843A028C86e0b760b1A76929d1C5Ef93a2dd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3de254a0f838a844f727fee81040e0fa7884b935": {
+			"address": "0x3de254a0f838a844f727fee81040e0fa7884b935",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
+			"symbol": "mkcrvUSD-f",
+			"displayName": "Curve.fi Factory Plain Pool: mkUSD/crvUSD",
+			"displaySymbol": "mkcrvUSD-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3de254A0f838a844F727fee81040e0FA7884B935/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10553,6 +10570,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV. This factory crypto pool contains MATIC, and ETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xD8eb58D76aF99547333cfEeb6a0f9bd1A63b6492/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd901dcf4948a29d7d9d7e015aaf61591825ac267": {
+			"address": "0xd901dcf4948a29d7d9d7e015aaf61591825ac267",
+			"underlyingTokensAddresses": [
+				"0x3de254a0f838a844f727fee81040e0fa7884b935"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mkcrvUSD-f Factory yVault",
+			"symbol": "yvCurve-mkcrvUSD-f-f",
+			"displayName": "Curve mkcrvUSD-f Factory yVault",
+			"displaySymbol": "yvCurve-mkcrvUSD-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xd901DCf4948a29d7D9D7E015AAF61591825AC267/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

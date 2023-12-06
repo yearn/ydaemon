@@ -237,7 +237,23 @@ func calculateCurveLikeStrategyAPR(
 	** Now, we need to know if we are in a standard curve strat, or a convex strat. If it's a
 	** convex strat, we need to calculate the convex APY instead of the standard one.
 	** If it's a Frax strategy, we need to calculate the Frax APY instead of the standard one.
+	** If it's a Prisma strategy, we need to calculate the Prisma APY instead of the previous ones.
 	**********************************************************************************************/
+	if isPrismaStrategy(strategy) {
+		return calculatePrismaForwardAPR(
+			TCalculatePrismaAPYDataStruct{
+				vault:          vault,
+				gaugeAddress:   common.HexToAddress(gauge.Gauge),
+				strategy:       strategy,
+				baseAssetPrice: baseAssetPrice,
+				poolPrice:      poolPrice,
+				baseAPR:        baseAPR,
+				rewardAPR:      rewardAPR,
+				poolDailyAPY:   poolDailyAPY,
+			},
+			fraxPool,
+		)
+	}
 	if isFraxStrategy(strategy) {
 		return calculateFraxForwardAPR(
 			TCalculateFraxAPYDataStruct{

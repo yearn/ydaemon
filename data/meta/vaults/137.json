@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-11-30T12:25:41.250428+01:00",
+	"lastUpdate": "2023-12-07T10:58:53.80305+01:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
-		"patch": 55
+		"minor": 2,
+		"patch": 5
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -20,8 +20,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000535075931435058",
-			"lastTotalAssets": "526885575989599441353",
+			"lastPricePerShare": "1000727031784472221",
+			"lastTotalAssets": "526973328209054473596",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -56,8 +56,8 @@
 				"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
 				"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6"
 			],
-			"lastPricePerShare": "1000149083468582684",
-			"lastTotalAssets": "2631555870412771468677",
+			"lastPricePerShare": "1001470573884313594",
+			"lastTotalAssets": "3057578203055268262161",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -72,7 +72,7 @@
 			},
 			"displayName": "WMATIC-A",
 			"displaySymbol": "yvMATIC-A",
-			"description": "Multi strategy WMATIC vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -87,8 +87,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000260538875561236",
-			"lastTotalAssets": "1317453858290632830722",
+			"lastPricePerShare": "1000590393579270642",
+			"lastTotalAssets": "1320017939678102922743",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -104,6 +104,37 @@
 			"displayName": "CompV3 WMATIC Lender Borrower",
 			"displaySymbol": "ysWMATIC",
 			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+		},
+		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
+			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
+			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.1",
+			"activation": 50828658,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
@@ -123,8 +154,8 @@
 				"0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
 				"0x7486325a843590b84c98563c6962c58655569eca"
 			],
-			"lastPricePerShare": "1000236666865026884",
-			"lastTotalAssets": "1682233398412024993",
+			"lastPricePerShare": "1001071214164920543",
+			"lastTotalAssets": "1707704175295952771",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -139,7 +170,38 @@
 			},
 			"displayName": "WETH-A",
 			"displaySymbol": "yvWETH-A",
-			"description": "Multi strategy WETH vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+		},
+		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
+			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
+			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.1",
+			"activation": 50828658,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 500,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -154,8 +216,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000286024224118207",
-			"lastTotalAssets": "588428156512001385",
+			"lastPricePerShare": "1000624771400354059",
+			"lastTotalAssets": "757880117178307766",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -185,8 +247,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1003688690910938515",
-			"lastTotalAssets": "843809347188552812630",
+			"lastPricePerShare": "1006903348441582543",
+			"lastTotalAssets": "122288046872608937946357",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -216,8 +278,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002446048716463358",
-			"lastTotalAssets": "683984278784720842",
+			"lastPricePerShare": "1002094371132332103",
+			"lastTotalAssets": "2571072645183525389",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -234,6 +296,37 @@
 			"displaySymbol": "ysWETH",
 			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
 		},
+		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
+			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
+			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.1",
+			"activation": 50828658,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
+		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
@@ -249,10 +342,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
-				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1"
+				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
+				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1003920",
-			"lastTotalAssets": "10089488922",
+			"lastPricePerShare": "1005253",
+			"lastTotalAssets": "10231949270",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -267,7 +361,7 @@
 			},
 			"displayName": "USDC-A",
 			"displaySymbol": "yvUSDC-A",
-			"description": "Multi strategy USDC vault. <br/><br/>Multi strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -282,8 +376,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005898",
-			"lastTotalAssets": "9163020861",
+			"lastPricePerShare": "1007350",
+			"lastTotalAssets": "5252979289",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -300,6 +394,41 @@
 			"displaySymbol": "ysUSDC",
 			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
+		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
+			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
+			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+			"accountant": "0x54483f1592ab0adea2757ae0d62e6393361d4cee",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.1",
+			"activation": 50828658,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
+				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d"
+			],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
+		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
@@ -313,8 +442,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000174916559360591",
-			"lastTotalAssets": "420291735647930029",
+			"lastPricePerShare": "1000284700767190004",
+			"lastTotalAssets": "420349729856112332",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -344,8 +473,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007765",
-			"lastTotalAssets": "1013146843",
+			"lastPricePerShare": "1008611",
+			"lastTotalAssets": "5081913813",
 			"isRetired": false,
 			"isHidden": false,
 			"migration": {
@@ -361,6 +490,37 @@
 			"displayName": "Aave V3 USDC Lender",
 			"displaySymbol": "ysUSDC",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+		},
+		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
+			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
+			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.1",
+			"activation": 50828658,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 500,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"isRetired": false,
+			"isHidden": false,
+			"migration": {
+				"available": false,
+				"target": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
+				"contract": "0x0000000000000000000000000000000000000000"
+			},
+			"classification": {
+				"isAutomated": false,
+				"isPool": false,
+				"stability": ""
+			},
+			"displayName": "",
+			"displaySymbol": "",
+			"description": ""
 		}
 	}
 }

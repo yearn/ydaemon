@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-11-30T12:25:42.261897+01:00",
+	"lastUpdate": "2023-12-07T10:58:53.858734+01:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -83,6 +83,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
+			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "yearn-V3-Stargate-USDT",
+			"symbol": "ysUSDT",
+			"displayName": "yearn-V3-Stargate-USDT",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x2c5d0c3DB75D2f8A4957c74BE09194a9271Cf28D/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
 			"underlyingTokensAddresses": [
@@ -97,6 +113,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0x305F25377d0a39091e99B975558b1bdfC3975654/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
+			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "AaveV3 USDT Lender",
+			"symbol": "ysUSDT",
+			"displayName": "AaveV3 USDT Lender",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x3bd8C987286D8Ad00c05fdb2Ae3E8C9a0f054734/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
@@ -161,6 +193,36 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
+			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
+			"underlyingTokensAddresses": [
+				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+			],
+			"type": "Yearn Vault",
+			"name": "yearn-V3-Stargate-USDC",
+			"symbol": "ysUSDC",
+			"displayName": "yearn-V3-Stargate-USDC",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x8BBa7AFd0f9B1b664C161EC31d812a8Ec15f7e1a/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063": {
+			"address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "(PoS) Dai Stablecoin",
+			"symbol": "DAI",
+			"displayName": "(PoS) Dai Stablecoin",
+			"displaySymbol": "DAI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"underlyingTokensAddresses": [
@@ -193,6 +255,22 @@
 			"decimals": 6,
 			"chainID": 137
 		},
+		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
+			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT yVault-A",
+			"symbol": "yvUSDT-A",
+			"displayName": "USDT yVault-A",
+			"displaySymbol": "yvUSDT-A",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xBb287E6017d3DEb0e2E65061e8684eab21060123/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
 			"underlyingTokensAddresses": [
@@ -209,6 +287,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xc2132d05d31c914a87c6611c10748aeb04b58e8f": {
+			"address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "(PoS) Tether USD",
+			"symbol": "USDT",
+			"displayName": "(PoS) Tether USD",
+			"displaySymbol": "USDT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xc2132D05D31c914a87C6611C10748AEb04B58e8F/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 			"underlyingTokensAddresses": [
@@ -223,6 +315,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780/logo-128.png",
 			"decimals": 6,
+			"chainID": 137
+		},
+		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
+			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
+			"underlyingTokensAddresses": [
+				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+			],
+			"type": "Yearn Vault",
+			"name": "AaveV3 DAI Lender",
+			"symbol": "ysDAI",
+			"displayName": "AaveV3 DAI Lender",
+			"displaySymbol": "ysDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xf4F9d5697341B4C9B0Cc8151413e05A90f7dc24F/logo-128.png",
+			"decimals": 18,
 			"chainID": 137
 		}
 	}

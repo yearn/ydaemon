@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-12-06T12:45:25.300111+01:00",
+	"lastUpdate": "2023-12-07T11:00:32.419876+01:00",
 	"version": {
 		"major": 0,
-		"minor": 4,
+		"minor": 5,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -8676,6 +8676,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb34e1a3d07f9d180bc2fdb9fd90b8994423e33c1": {
+			"address": "0xb34e1a3d07f9d180bc2fdb9fd90b8994423e33c1",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+				"0xda47862a83dac0c112ba89c6abc2159b95afd71c"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+			"symbol": "PRISMAETH-f",
+			"displayName": "Curve.fi Factory Crypto Pool: PRISMA/ETH",
+			"displaySymbol": "PRISMAETH-f",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0xb34e1a3D07f9D180Bc2FDb9Fd90B8994423e33c1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb364d19c3ff37e0fa4b94bf4cf626729533c1c26": {
 			"address": "0xb364d19c3ff37e0fa4b94bf4cf626729533c1c26",
 			"underlyingTokensAddresses": [
@@ -12292,6 +12309,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xFF8f8A38c80b9899a928152D58F219fDCcD4306C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xffa0f0616229ee2ac08fa4c358d23b18d980134b": {
+			"address": "0xffa0f0616229ee2ac08fa4c358d23b18d980134b",
+			"underlyingTokensAddresses": [
+				"0xb34e1a3d07f9d180bc2fdb9fd90b8994423e33c1"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve PRISMAETH-f Factory yVault",
+			"symbol": "yvCurve-PRISMAETH-f-f",
+			"displayName": "Curve PRISMAETH-f Factory yVault",
+			"displaySymbol": "yvCurve-PRISMAETH-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFfA0F0616229eE2aC08FA4C358D23b18D980134B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		}

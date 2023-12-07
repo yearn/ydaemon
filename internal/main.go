@@ -62,6 +62,11 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		initDailyBlock.Run(chainID)
 	})
 
+	cron.Every(10).Minute().WaitForSchedule().Do(func() {
+		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+		fetcher.RetrieveAllTokens(chainID, vaultMap)
+	})
+
 	cron.Every(15).Minute().Do(func() {
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)

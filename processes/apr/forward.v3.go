@@ -64,6 +64,7 @@ func computeVaultV3ForwardAPR(
 	**********************************************************************************************/
 	shouldUseV2Method := true
 	if shouldUseV2Method && vault.Kind == models.VaultKindMultiple {
+		netAPR = bigNumber.NewFloat(0)
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 				if os.Getenv("ENVIRONMENT") == "dev" {
@@ -80,7 +81,7 @@ func computeVaultV3ForwardAPR(
 			humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
-			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.9))
+			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.8))
 			netAPR = bigNumber.NewFloat(0).Add(netAPR, scaledStrategyAPR)
 		}
 	}

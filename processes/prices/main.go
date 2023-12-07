@@ -56,6 +56,9 @@ func fetchPrices(
 				if chainID == 1 && addresses.Equals(token.Address, `0x27B5739e22ad9033bcBf192059122d163b60349D`) { //st-yCRV vault has an incorrect price on DeFiLlama
 					continue
 				}
+				if chainID == 1 && addresses.Equals(token.Address, `0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7`) { //st-ETH vault has an incorrect price on DeFiLlama
+					continue
+				}
 				newPriceMap[token.Address] = price
 				continue
 			}
@@ -82,7 +85,7 @@ func fetchPrices(
 	**********************************************************************************************/
 	priceMapFromCurveFactoryAPI := getPricesFromCurveFactoriesAPI(chainID)
 	for _, price := range priceMapFromCurveFactoryAPI {
-		if !price.Price.IsZero() {
+		if !price.Price.IsZero() && newPriceMap[price.Address].Price.IsZero() {
 			newPriceMap[price.Address] = price
 			continue
 		}

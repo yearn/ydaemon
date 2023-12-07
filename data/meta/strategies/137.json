@@ -28,7 +28,7 @@
 			"lastDebtRatio": "1720",
 			"lastEstimatedTotalAssets": "526973328209054473596",
 			"isRetired": true,
-			"displayName": "Aave V3 {{token}} Lender",
+			"displayName": "Aave V3 WMATIC Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Aave"
@@ -82,7 +82,7 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "Stargate {{token}} Staker",
+			"displayName": "Stargate USDT Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
@@ -107,7 +107,7 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "Aave V3 {{token}} Lender",
+			"displayName": "Aave V3 USDT Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
@@ -213,7 +213,7 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "Stargate {{token}} Staker",
+			"displayName": "Stargate USDC Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
@@ -265,7 +265,7 @@
 			"lastDebtRatio": "2461",
 			"lastEstimatedTotalAssets": "420349729856112332",
 			"isRetired": true,
-			"displayName": "Aave V3 {{token}} Lender",
+			"displayName": "Aave V3 WETH Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Aave"
@@ -292,7 +292,7 @@
 			"lastDebtRatio": "4961",
 			"lastEstimatedTotalAssets": "5081913813",
 			"isRetired": true,
-			"displayName": "Aave V3 {{token}} Lender",
+			"displayName": "Aave V3 USDC Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Aave"

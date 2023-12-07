@@ -132,7 +132,7 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Stargate {{token}} Staker",
+			"displayName": "Stargate USDT Staker",
 			"displaySymbol": "ysUSDT",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
@@ -323,7 +323,7 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Stargate {{token}} Staker",
+			"displayName": "Stargate USDC Staker",
 			"displaySymbol": "ysUSDC",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},

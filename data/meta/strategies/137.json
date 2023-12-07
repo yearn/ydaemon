@@ -82,8 +82,8 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
+			"displayName": "Stargate {{token}} Staker",
+			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
@@ -107,8 +107,8 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
+			"displayName": "Aave V3 {{token}} Lender",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
@@ -213,8 +213,8 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
+			"displayName": "Stargate {{token}} Staker",
+			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-12-07T11:00:32.419876+01:00",
+	"lastUpdate": "2023-12-12T15:38:27.331626+01:00",
 	"version": {
 		"major": 0,
-		"minor": 5,
+		"minor": 6,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -405,6 +405,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x067079c14b85169e6a29703769daddef90816f4c": {
+			"address": "0x067079c14b85169e6a29703769daddef90816f4c",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0xda47862a83dac0c112ba89c6abc2159b95afd71c"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+			"symbol": "mkPRISMA-f",
+			"displayName": "Curve.fi Factory Crypto Pool: PRISMA/mkUSD",
+			"displaySymbol": "mkPRISMA-f",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0x067079c14B85169e6a29703769dadDef90816f4C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x06b884e60794ce02aafab13791b59a2e6a07442f": {
 			"address": "0x06b884e60794ce02aafab13791b59a2e6a07442f",
 			"underlyingTokensAddresses": [],
@@ -513,6 +530,23 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains FRAX and crvUSD, a dollar pegged stablecoin from [Curve Finance](https://crvusd.curve.fi/#/ethereum/markets).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x0CD6f267b2086bea681E922E19D40512511BE538/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0cfe5c777a7438c9dd8add53ed671cec7a5faee5": {
+			"address": "0x0cfe5c777a7438c9dd8add53ed671cec7a5faee5",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory USD Metapool: Prisma mkUSD",
+			"symbol": "mkUSD3CRV-f",
+			"displayName": "Curve.fi Factory USD Metapool: Prisma mkUSD",
+			"displaySymbol": "mkUSD3CRV-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -776,6 +810,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x133cb5cF617a33F5D02cFFfF579435776ef29FB0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x133daa2fa268b36e088b2be1358857d41a8369eb": {
+			"address": "0x133daa2fa268b36e088b2be1358857d41a8369eb",
+			"underlyingTokensAddresses": [
+				"0x0cfe5c777a7438c9dd8add53ed671cec7a5faee5"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mkUSD-FRAXBP Factory yVault",
+			"symbol": "yvCurve-mkUSD-FRAXBP-f",
+			"displayName": "Curve mkUSD-FRAXBP Factory yVault",
+			"displaySymbol": "yvCurve-mkUSD-FRAXBP-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x133dAa2Fa268b36E088b2BE1358857D41a8369eb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1239,6 +1289,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1d00e86748573c322f4cc41518aa0e77bd912eb4": {
+			"address": "0x1d00e86748573c322f4cc41518aa0e77bd912eb4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDE Stablecoin",
+			"symbol": "USDE",
+			"displayName": "USDE Stablecoin",
+			"displaySymbol": "USDE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1d00E86748573C322f4cc41518AA0e77BD912Eb4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1e19cf2d73a72ef1332c882f20534b6519be0276": {
 			"address": "0x1e19cf2d73a72ef1332c882f20534b6519be0276",
 			"underlyingTokensAddresses": [],
@@ -1340,6 +1404,22 @@
 			"description": "UNI is the governance token for Uniswap, an Automated Market Market DEX on the Ethereum blockchain. The UNI token allows token holders to participate in the governance of the protocol. Key decisions such as usage of the treasury or future upgrades can be decided through a governance vote.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2027d3b2b58f522178ce4cc4e86e99b7c4de3876": {
+			"address": "0x2027d3b2b58f522178ce4cc4e86e99b7c4de3876",
+			"underlyingTokensAddresses": [
+				"0x425bfb93370f14ff525adb6eaeacfe1f4e3b5802"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve sdai-usdm Factory yVault",
+			"symbol": "yvCurve-sdai-usdm-f",
+			"displayName": "Curve sdai-usdm Factory yVault",
+			"displaySymbol": "yvCurve-sdai-usdm-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2027D3b2B58F522178cE4cC4E86e99b7C4DE3876/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2582,6 +2662,23 @@
 			"decimals": 0,
 			"chainID": 1
 		},
+		"0x3b21c2868b6028cfb38ff86127ef22e68d16d53b": {
+			"address": "0x3b21c2868b6028cfb38ff86127ef22e68d16d53b",
+			"underlyingTokensAddresses": [
+				"0xda47862a83dac0c112ba89c6abc2159b95afd71c",
+				"0x34635280737b5bfe6c7dc2fc3065d60d66e78185"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+			"symbol": "cvxprismlp-f",
+			"displayName": "Curve.fi Factory Plain Pool: cvxPrisma/Prisma",
+			"displaySymbol": "cvxprismlp-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3b21C2868B6028CfB38Ff86127eF22E68d16d53B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3b27f92c0e212c671ea351827edf93db27cc0c65": {
 			"address": "0x3b27f92c0e212c671ea351827edf93db27cc0c65",
 			"underlyingTokensAddresses": [
@@ -3060,6 +3157,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4213458C69c19E6792510E1153cb0c5834665fdC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x425bfb93370f14ff525adb6eaeacfe1f4e3b5802": {
+			"address": "0x425bfb93370f14ff525adb6eaeacfe1f4e3b5802",
+			"underlyingTokensAddresses": [
+				"0x83f20f44975d03b1b09e64809b757c47f942beea",
+				"0x59d9356e565ab3a36dd77763fc0d87feaf85508c"
+			],
+			"type": "Curve LP",
+			"name": "sDAI/USDM Rebase Enjoyer Pool",
+			"symbol": "sdai-usdm",
+			"displayName": "sDAI/USDM Rebase Enjoyer Pool",
+			"displaySymbol": "sdai-usdm",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4127,6 +4241,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x59d9356e565ab3a36dd77763fc0d87feaf85508c": {
+			"address": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Mountain Protocol USD",
+			"symbol": "USDM",
+			"displayName": "Mountain Protocol USD",
+			"displaySymbol": "USDM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5a56da75c50aa2733f5fa9a2442aaefcbc60b2e6": {
 			"address": "0x5a56da75c50aa2733f5fa9a2442aaefcbc60b2e6",
 			"underlyingTokensAddresses": [],
@@ -5124,12 +5252,12 @@
 		"0x6b175474e89094c44da98b954eedeac495271d0f": {
 			"address": "0x6b175474e89094c44da98b954eedeac495271d0f",
 			"underlyingTokensAddresses": [],
-			"type": "Stablecoin",
+			"type": "",
 			"name": "Dai Stablecoin",
 			"symbol": "DAI",
 			"displayName": "Dai Stablecoin",
 			"displaySymbol": "DAI",
-			"description": "DAI is an Ethereum-based stablecoin whose issuance and development is managed by the Maker Protocol and MakerDAO. The price of DAI is soft-pegged to the U.S. dollar and is collateralized by a mix of other cryptocurrencies that are deposited into smart-contract vaults every time new DAI is minted.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo-128.png",
 			"decimals": 18,
@@ -5477,6 +5605,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x708c42E0236fe8f5916C5638a462Ee83DA99d07b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x708d1a6fdf342d53f4d006aa9b85e223c68a0edb": {
+			"address": "0x708d1a6fdf342d53f4d006aa9b85e223c68a0edb",
+			"underlyingTokensAddresses": [
+				"0x067079c14b85169e6a29703769daddef90816f4c"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve PRISMA-mkUSD Factory yVault",
+			"symbol": "yvCurve-PRISMA-mkUSD-f",
+			"displayName": "Curve PRISMA-mkUSD Factory yVault",
+			"displaySymbol": "yvCurve-PRISMA-mkUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x708d1A6FDF342D53F4d006aa9B85e223c68a0Edb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6334,6 +6478,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x836A808d4828586A69364065A1e064609F5078c7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x83f20f44975d03b1b09e64809b757c47f942beea": {
+			"address": "0x83f20f44975d03b1b09e64809b757c47f942beea",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Savings Dai",
+			"symbol": "sDAI",
+			"displayName": "Savings Dai",
+			"displaySymbol": "sDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x83F20F44975D03b1b09e64809B757c47f942BEeA/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9183,6 +9343,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbd7c44d61c923ef6efb09697f9d64e0376a0b9cb": {
+			"address": "0xbd7c44d61c923ef6efb09697f9d64e0376a0b9cb",
+			"underlyingTokensAddresses": [
+				"0xf980b4a4194694913af231de69ab4593f5e0fcdc"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mkUSD-USDC Factory yVault",
+			"symbol": "yvCurve-mkUSD-USDC-f",
+			"displayName": "Curve mkUSD-USDC Factory yVault",
+			"displaySymbol": "yvCurve-mkUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBD7c44d61C923eF6Efb09697F9d64e0376A0b9CB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbda3a6cb2aaef41805f6317841d7b8654ec8b124": {
 			"address": "0xbda3a6cb2aaef41805f6317841d7b8654ec8b124",
 			"underlyingTokensAddresses": [
@@ -9784,6 +9960,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xc869206adAfD3D874dB22e8BbA662E05F6257613/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc8809f6c743179e794c4d9b95ca862aa24976e74": {
+			"address": "0xc8809f6c743179e794c4d9b95ca862aa24976e74",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "The Lattice",
+			"symbol": "LATI",
+			"displayName": "The Lattice",
+			"displaySymbol": "LATI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc8809F6C743179e794c4D9B95Ca862aA24976e74/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12019,6 +12209,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf980b4a4194694913af231de69ab4593f5e0fcdc": {
+			"address": "0xf980b4a4194694913af231de69ab4593f5e0fcdc",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Curve LP",
+			"name": "mkUSD-USDC",
+			"symbol": "mkUSDUSDC",
+			"displayName": "mkUSD-USDC",
+			"displaySymbol": "mkUSDUSDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF980B4A4194694913Af231De69AB4593f5E0fCDc/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xfafdf0c4c1cb09d430bf88c75d88bb46dae09967": {
 			"address": "0xfafdf0c4c1cb09d430bf88c75d88bb46dae09967",
 			"underlyingTokensAddresses": [],
@@ -12265,6 +12472,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xFEEf77d3f69374f66429C91d732A244f074bdf74/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xff11566c1bfe3c625804c9cd707dd2f36797bf1d": {
+			"address": "0xff11566c1bfe3c625804c9cd707dd2f36797bf1d",
+			"underlyingTokensAddresses": [
+				"0x3b21c2868b6028cfb38ff86127ef22e68d16d53b"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve cvxPRISMA Factory yVault",
+			"symbol": "yvCurve-cvxPRISMA-f",
+			"displayName": "Curve cvxPRISMA Factory yVault",
+			"displaySymbol": "yvCurve-cvxPRISMA-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xfF11566C1Bfe3c625804c9cd707dD2f36797BF1D/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

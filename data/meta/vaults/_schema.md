@@ -46,6 +46,7 @@ For some specific use cases, we want to be able to manually update some elements
 
 - `isRetired`: If the vault is retired
 - `isHidden`: If we should hide the vaults from the standard results
+- `isAggregator`: If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy
 - `migration`: Indicates the vault migration data and availability
 - `classification`: Give some more details to be able to classify the vaults in some UIs.
 - `displayName`: The name of the vault to use rather than the onchain name

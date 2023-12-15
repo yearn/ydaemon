@@ -75,6 +75,7 @@ type TVault struct {
 	// Manual elements. They are manually set by the team
 	IsRetired      bool            `json:"isRetired"`      // If the vault is retired or not
 	IsHidden       bool            `json:"isHidden"`       // If the vault is hidden or not
+	IsAggregator   bool            `json:"isAggregator"`   // If the vault is an aggregator or not
 	Migration      TMigration      `json:"migration"`      // If the vault is in the process of being migrated
 	Classification TClassification `json:"classification"` // The classification of the vault
 	DisplayName    string          `json:"displayName"`    // The name of the strategy

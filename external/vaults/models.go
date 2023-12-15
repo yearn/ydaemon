@@ -69,8 +69,9 @@ type TExternalVaultStaking struct {
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	IsRetired       bool   `json:"isRetired"` // If the vault is retired or not
-	IsHidden        bool   `json:"isHidden"`  // If the vault is hidden or not
+	IsRetired       bool   `json:"isRetired"`    // If the vault is retired or not
+	IsHidden        bool   `json:"isHidden"`     // If the vault is hidden or not
+	IsAggregator    bool   `json:"isAggregator"` // If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy
 	IsAutomated     bool   `json:"isAutomated"`
 	IsPool          bool   `json:"isPool"`
 	PoolProvider    string `json:"poolProvider,omitempty"`
@@ -235,6 +236,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Details = TExternalVaultDetails{
 		IsRetired:       vault.IsRetired,
 		IsHidden:        vault.IsHidden,
+		IsAggregator:    vault.IsAggregator,
 		IsAutomated:     vault.Classification.IsAutomated,
 		IsPool:          vault.Classification.IsPool,
 		PoolProvider:    vault.Classification.PoolProvider,

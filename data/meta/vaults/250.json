@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-12-12T15:37:54.995229+01:00",
+	"lastUpdate": "2023-12-20T18:21:13.766725+01:00",
 	"version": {
 		"major": 1,
 		"minor": 0,
-		"patch": 12
+		"patch": 13
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -27,6 +27,7 @@
 			"lastTotalAssets": "33148086615799124958911",
 			"isRetired": true,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0000000000000000000000000000000000000000",
@@ -63,9 +64,10 @@
 				"0xd58003b2bac011b67c108b24e5deb1b22c70fd1f"
 			],
 			"lastPricePerShare": "1088784877188173088",
-			"lastTotalAssets": "103939733441939291650148",
+			"lastTotalAssets": "103875424914893373858087",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0a0b23d9786963de69cb2447dc125c49929419d8",
@@ -107,9 +109,10 @@
 				"0x939dc1c32d89ba771c1eeee8f1a12ba9b766c532"
 			],
 			"lastPricePerShare": "1962782776185799071",
-			"lastTotalAssets": "5073653148806243385982131",
+			"lastTotalAssets": "5043560356925677215668000",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -143,9 +146,10 @@
 				"0xfa01ca21239166701b6760d162257b449ba6d011"
 			],
 			"lastPricePerShare": "1431492900385784918",
-			"lastTotalAssets": "122801799424022245297039",
+			"lastTotalAssets": "116268781427214108329749",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0fbbf9848d969776a5eb842edafaf29ef4467698",
@@ -177,6 +181,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -215,6 +220,7 @@
 			"lastTotalAssets": "27937183395",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x148c05caf1bb09b5670f00d511718f733c54bc4c",
@@ -249,6 +255,7 @@
 			"lastTotalAssets": "22477280638602388872804",
 			"isRetired": true,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0000000000000000000000000000000000000000",
@@ -280,9 +287,10 @@
 				"0x5df3e97e96fc04ae1f75a9d07a141348e4b07e45"
 			],
 			"lastPricePerShare": "1253148925219762635",
-			"lastTotalAssets": "197639055620569059927682",
+			"lastTotalAssets": "196194657583451042920249",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b",
@@ -317,6 +325,7 @@
 			"lastTotalAssets": "4111134585915221535",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x0a0b23d9786963de69cb2447dc125c49929419d8",
@@ -351,6 +360,7 @@
 			"lastTotalAssets": "44309286669921190695",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -384,9 +394,10 @@
 				"0xb99d6662127d9a3c68bc949679f364e1739e2ca1"
 			],
 			"lastPricePerShare": "1045299082354470280",
-			"lastTotalAssets": "32203399227360806770",
+			"lastTotalAssets": "31893740389693940132",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x2c850cced00ce2b14aa9d658b7cad5df659493db",
@@ -420,6 +431,7 @@
 			"lastTotalAssets": "7083745787149110585594",
 			"isRetired": true,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0000000000000000000000000000000000000000",
@@ -452,6 +464,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0xf137d22d7b23eeb1950b3e19d1f578c053ed9715",
@@ -485,6 +498,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x1e2fe8074a5ce1bb7394856b0c618e75d823b93b",
@@ -522,9 +536,10 @@
 				"0x84f9e6d5d28edf0ae873a4d84903716684f473d5"
 			],
 			"lastPricePerShare": "1103034957534938024",
-			"lastTotalAssets": "633572005342093176438012",
+			"lastTotalAssets": "626273753643498266500633",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x637ec617c86d24e421328e6caea1d92114892439",
@@ -559,6 +574,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0xd817a100ab8a29fe3dbd925c2eb489d67f758da9",
@@ -595,6 +611,7 @@
 			"lastTotalAssets": "35620763312315735914",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -629,6 +646,7 @@
 			"lastTotalAssets": "422720",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0xef0210eb96c7eb36af8ed1c20306462764935607",
@@ -661,6 +679,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0xef0210eb96c7eb36af8ed1c20306462764935607",
@@ -693,6 +712,7 @@
 			"lastTotalAssets": "0",
 			"isRetired": true,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0000000000000000000000000000000000000000",
@@ -728,6 +748,7 @@
 			"lastTotalAssets": "1070581361323980640681",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xa97e7da01c7047d6a65f894c99be8c832227a8bc",
@@ -763,6 +784,7 @@
 			"lastTotalAssets": "108229479908297245749",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": true,
 				"target": "0x0dec85e74a92c52b7f708c4b10207d9560cefaf0",
@@ -794,9 +816,10 @@
 				"0xa9a904b5567b5affb6bb334bea2f90f700eb221a"
 			],
 			"lastPricePerShare": "1146634912570816933",
-			"lastTotalAssets": "32511512041567050070",
+			"lastTotalAssets": "25689154027885277727",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xcbcaf8cb8cbeafa927ecee0c5c56560f83e9b7d9",
@@ -831,9 +854,10 @@
 				"0xa4f10bc80f6c5cf6a34f828cb53c243eb1976da8"
 			],
 			"lastPricePerShare": "1033965668639920397",
-			"lastTotalAssets": "209872461777453756412",
+			"lastTotalAssets": "209478611627380519920",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xce2fc0bdc18bd6a4d9a725791a3dee33f3a23bb7",
@@ -868,6 +892,7 @@
 			"lastTotalAssets": "23169980127083802792636470",
 			"isRetired": true,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0x0000000000000000000000000000000000000000",
@@ -900,10 +925,11 @@
 				"0x0683b5b75bd0514b5604d3c79a61647d83a02a3f",
 				"0x7114cad096731f4d0b8e0de6e7cedc189a462dce"
 			],
-			"lastPricePerShare": "102949605",
-			"lastTotalAssets": "2340706898",
+			"lastPricePerShare": "102949606",
+			"lastTotalAssets": "2323653869",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xd817a100ab8a29fe3dbd925c2eb489d67f758da9",
@@ -943,9 +969,10 @@
 				"0x65f2605d8fe21614b294791faae1d7d0a7579276"
 			],
 			"lastPricePerShare": "1060959",
-			"lastTotalAssets": "1865903233963",
+			"lastTotalAssets": "1864182121398",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xef0210eb96c7eb36af8ed1c20306462764935607",
@@ -980,6 +1007,7 @@
 			"lastTotalAssets": "163144141859682887385323",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xf137d22d7b23eeb1950b3e19d1f578c053ed9715",
@@ -1016,6 +1044,7 @@
 			"lastTotalAssets": "1126553451485343859242",
 			"isRetired": false,
 			"isHidden": false,
+			"isAggregator": false,
 			"migration": {
 				"available": false,
 				"target": "0xf2d323621785a066e64282d2b407eac79cc04966",

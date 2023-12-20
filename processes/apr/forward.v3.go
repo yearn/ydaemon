@@ -52,7 +52,7 @@ func computeVaultV3ForwardAPR(
 	}
 
 	if vault.Kind == models.VaultKindMultiple || hasError != nil {
-		expected, err := oracle.GetExpectedApr(nil, vault.Address, big.NewInt(0))
+		expected, err := oracle.GetCurrentApr(nil, vault.Address)
 		if err == nil {
 			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 		}
@@ -62,7 +62,7 @@ func computeVaultV3ForwardAPR(
 	** Otherwise we can do the classic calculation of the net APR by summing the APR of each
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
-	shouldUseV2Method := true
+	shouldUseV2Method := false
 	if shouldUseV2Method && vault.Kind == models.VaultKindMultiple {
 		netAPR = bigNumber.NewFloat(0)
 		for _, strategy := range allStrategiesForVault {

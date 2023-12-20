@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-12-12T15:38:27.331626+01:00",
+	"lastUpdate": "2023-12-20T18:21:46.520379+01:00",
 	"version": {
 		"major": 0,
-		"minor": 6,
+		"minor": 7,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1466,6 +1466,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2147935D9739da4E691b8Ae2e1437492A394eBf5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x216f3ac5d0566f934c0fc15c89422cd5e7505df6": {
+			"address": "0x216f3ac5d0566f934c0fc15c89422cd5e7505df6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WE Token",
+			"symbol": "WTK",
+			"displayName": "WE Token",
+			"displaySymbol": "WTK",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x216f3aC5d0566F934C0FC15c89422cD5e7505df6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

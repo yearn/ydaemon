@@ -76,7 +76,7 @@ var ETHEREUM = TChain{
 			TokenAddress:    common.HexToAddress(`0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28`),
 			APIVersion:      `3.0.1`,
 			BlockNumber:     18817046,
-			Type:            models.TTokenType(models.VaultKindSingle),
+			Type:            models.TTokenType(models.VaultKindMultiple),
 		},
 	},
 	BlacklistedVaults: []common.Address{

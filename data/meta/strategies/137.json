@@ -56,7 +56,7 @@
 			"lastEstimatedTotalAssets": "1321360159807182779220",
 			"isRetired": true,
 			"displayName": "CompV3 WMATIC Lender Borrower",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"
 			]
@@ -133,7 +133,7 @@
 			"lastEstimatedTotalAssets": "1538439699332802579",
 			"isRetired": true,
 			"displayName": "CompV3 WETH Lender Borrower",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"
 			]
@@ -213,7 +213,7 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "0",
 			"isRetired": true,
-			"displayName": "Stargate USDC Staker",
+			"displayName": "Stargate USDC.e Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
@@ -238,7 +238,7 @@
 			"lastDebtRatio": "5520",
 			"lastEstimatedTotalAssets": "12939173239",
 			"isRetired": true,
-			"displayName": "Compound V3 USDC Lender",
+			"displayName": "Compound V3 USDC.e Lender",
 			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Compound Finance"
@@ -292,7 +292,7 @@
 			"lastDebtRatio": "4480",
 			"lastEstimatedTotalAssets": "10489089449",
 			"isRetired": true,
-			"displayName": "Aave V3 USDC Lender",
+			"displayName": "Aave V3 USDC.e Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": [
 				"Aave"

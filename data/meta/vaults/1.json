@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2023-12-22T11:43:19.914841+01:00",
+	"lastUpdate": "2023-12-22T12:08:00.187916+01:00",
 	"version": {
 		"major": 1,
 		"minor": 4,
-		"patch": 0
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -193,7 +193,7 @@
 			"address": "0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13",
 			"token": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
 			"type": "Yearn Vault",
-			"kind": "Legacy",
+			"kind": "Single Strategy",
 			"version": "3.0.1",
 			"activation": 18817046,
 			"chainID": 1,
@@ -418,7 +418,7 @@
 			"lastActiveStrategies": [
 				"0x478085739ea884f38add4d36872acd8333b5d4d6"
 			],
-			"lastPricePerShare": "1021821769985388082",
+			"lastPricePerShare": "1021830094414841012",
 			"lastTotalAssets": "197640521895692699908321",
 			"isRetired": false,
 			"isHidden": false,
@@ -1484,7 +1484,7 @@
 			"lastActiveStrategies": [
 				"0x23724d764d8b3d26852ba20d3bc2578093d2b022"
 			],
-			"lastPricePerShare": "1423000252694863570",
+			"lastPricePerShare": "1423022074177955449",
 			"lastTotalAssets": "47694092816878161543717433",
 			"isRetired": false,
 			"isHidden": false,
@@ -2486,7 +2486,7 @@
 				"0xbc04efd0d18685ba97cfade4e2d3171701b4099c",
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8"
 			],
-			"lastPricePerShare": "1031853",
+			"lastPricePerShare": "1031869",
 			"lastTotalAssets": "7209643333593",
 			"isRetired": false,
 			"isHidden": false,
@@ -3637,7 +3637,7 @@
 				"0x64d2dfdb990129966c7ed7f3637139110001211e",
 				"0xd6bbef6fd1f4c02905db978ddbd8baf19ab36187"
 			],
-			"lastPricePerShare": "1036105251532319646",
+			"lastPricePerShare": "1036133809812283117",
 			"lastTotalAssets": "132975782112131333720452",
 			"isRetired": false,
 			"isHidden": false,
@@ -3777,8 +3777,8 @@
 				"0x472f4e5533fb8f7fee97dacd3dbae9d83867ab07",
 				"0x0a94d79e811793141a04106fa797fb6d61163102"
 			],
-			"lastPricePerShare": "1008010809642041748",
-			"lastTotalAssets": "1922017890706781388765",
+			"lastPricePerShare": "1008013156108531459",
+			"lastTotalAssets": "1922974142352116706365",
 			"isRetired": false,
 			"isHidden": false,
 			"isAggregator": false,
@@ -4615,7 +4615,7 @@
 				"0xb8cb98701153c16df52f33e7e084c816be60d8d9",
 				"0x17304367c7680a62f23b667ce5ef7e80ae296205"
 			],
-			"lastPricePerShare": "1023672006273584688",
+			"lastPricePerShare": "1023673023359560981",
 			"lastTotalAssets": "134503878068230775855567",
 			"isRetired": false,
 			"isHidden": false,
@@ -5006,7 +5006,7 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x9004d433d710194a033c15041bacd134fc9ba50f"
 			],
-			"lastPricePerShare": "1068878847404827270",
+			"lastPricePerShare": "1068894316936339400",
 			"lastTotalAssets": "2237118859453785521452584",
 			"isRetired": false,
 			"isHidden": false,
@@ -5832,7 +5832,7 @@
 				"0x7f074cd344cd59fa20866796960a5c5a3f97316e",
 				"0x567343912e422782ad0287f254f9e2390af6740a"
 			],
-			"lastPricePerShare": "1031354519554794389",
+			"lastPricePerShare": "1031367176138431661",
 			"lastTotalAssets": "422720512243794727986827",
 			"isRetired": false,
 			"isHidden": false,
@@ -7101,7 +7101,7 @@
 				"0x120fa5738751b275aed7f7b46b98beb38679e093",
 				"0x64e4779bff8588ccdca9f290b9bc346a798f5277"
 			],
-			"lastPricePerShare": "1050142342656953272",
+			"lastPricePerShare": "1050142394321593816",
 			"lastTotalAssets": "52632084309562856364885",
 			"isRetired": false,
 			"isHidden": false,
@@ -7240,7 +7240,7 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x9430a2501e5f2cd66741375baabb9576e8fb5f48"
 			],
-			"lastPricePerShare": "1071954703512070539",
+			"lastPricePerShare": "1071981079930783002",
 			"lastTotalAssets": "1261306898444114396460432",
 			"isRetired": false,
 			"isHidden": false,
@@ -7351,7 +7351,7 @@
 				"0x9e9a2a86eeff52ffd13fc724801a4259b2b1a949",
 				"0x1e93cd1e6766e7fcb459092e160f876dda650415"
 			],
-			"lastPricePerShare": "102364290",
+			"lastPricePerShare": "102364371",
 			"lastTotalAssets": "7297496016",
 			"isRetired": false,
 			"isHidden": false,
@@ -7571,7 +7571,7 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0xf36c83f6bf4cf656172f6dbc1220af6785362f0f"
 			],
-			"lastPricePerShare": "1046494186536019329",
+			"lastPricePerShare": "1046501071301399112",
 			"lastTotalAssets": "4040593820455635032059",
 			"isRetired": false,
 			"isHidden": false,
@@ -8073,7 +8073,7 @@
 				"0xcd0f7f16f1d1ba3845b481b61285e1a63da2b156",
 				"0xc518042b11e8e678d0ce05b9323064dba13e3ce6"
 			],
-			"lastPricePerShare": "1009715604195965823",
+			"lastPricePerShare": "1009729327956252829",
 			"lastTotalAssets": "525349824563080121589836",
 			"isRetired": false,
 			"isHidden": false,
@@ -8327,7 +8327,7 @@
 				"0x6cbdc5591dab3a15cdeb8e325d67192e04db9573",
 				"0xbbdd8d48fe9a1d11552677ec097a69d4af487c83"
 			],
-			"lastPricePerShare": "1048881956906327663",
+			"lastPricePerShare": "1049009547713491162",
 			"lastTotalAssets": "925970676412718808047676",
 			"isRetired": false,
 			"isHidden": false,
@@ -9940,7 +9940,7 @@
 				"0x3280499298ace3fd3cd9c2558e9e8746ace3e52d",
 				"0x01d127d90513ccb6071f83efe15611c4d9890668"
 			],
-			"lastPricePerShare": "1080581370168581147",
+			"lastPricePerShare": "1080583757304672575",
 			"lastTotalAssets": "26566210770323663852938071",
 			"isRetired": false,
 			"isHidden": false,
@@ -10053,7 +10053,7 @@
 				"0xa78d68c30bcb3d3bbc369ba652adbfa4ea1be52e",
 				"0x89dc05b7ae9a9d6f116eedd6f8ca06961a1574e0"
 			],
-			"lastPricePerShare": "1096808924716001306",
+			"lastPricePerShare": "1096880571994997957",
 			"lastTotalAssets": "52831439944166911157458",
 			"isRetired": false,
 			"isHidden": false,
@@ -10374,7 +10374,7 @@
 				"0xc771d3fe9699a5aac0e6be661c5eee3ed1f9a285",
 				"0xde2b8a0cba4f6996b526a4bc784532d7aeba4e33"
 			],
-			"lastPricePerShare": "1105838016199334142",
+			"lastPricePerShare": "1105847238428407433",
 			"lastTotalAssets": "232486141238904459821",
 			"isRetired": false,
 			"isHidden": false,

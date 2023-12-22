@@ -106,7 +106,7 @@
 			},
 			"displayName": "CompV3 WMATIC Lender Borrower",
 			"displaySymbol": "ysWMATIC",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
@@ -239,7 +239,7 @@
 			},
 			"displayName": "CompV3 WETH Lender Borrower",
 			"displaySymbol": "ysWETH",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -333,8 +333,8 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Stargate USDC Staker",
-			"displaySymbol": "ysUSDC",
+			"displayName": "Stargate USDC.e Staker",
+			"displaySymbol": "ysUSDC.e",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
@@ -370,9 +370,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "USDC-A",
-			"displaySymbol": "yvUSDC-A",
-			"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+			"displayName": "USDC.e-A",
+			"displaySymbol": "yvUSDC.e-A",
+			"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -402,8 +402,8 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Compound V3 USDC Lender",
-			"displaySymbol": "ysUSDC",
+			"displayName": "Compound V3 USDC.e Lender",
+			"displaySymbol": "ysUSDC.e",
 			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
@@ -502,8 +502,8 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "Aave V3 USDC Lender",
-			"displaySymbol": "ysUSDC",
+			"displayName": "Aave V3 USDC.e Lender",
+			"displaySymbol": "ysUSDC.e",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {

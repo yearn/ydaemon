@@ -61,8 +61,24 @@ var ETHEREUM = TChain{
 			Version: 3,
 			Block:   16215519,
 		},
+		{
+			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
+			Version: 4,
+			Block:   18385809,
+		},
 	},
-	ExtraVaults: []models.TVaultsFromRegistry{},
+	ExtraVaults: []models.TVaultsFromRegistry{
+		{
+			//mkUSD yVault-A (yvmkUSD-A), no registry AFAIK
+			ChainID:         250,
+			Address:         common.HexToAddress(`0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13`),
+			RegistryAddress: common.HexToAddress(`0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5`),
+			TokenAddress:    common.HexToAddress(`0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28`),
+			APIVersion:      `3.0.1`,
+			BlockNumber:     18817046,
+			Type:            models.TokenTypeStandardVault,
+		},
+	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing
 		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"), // Test deployment - Nothing

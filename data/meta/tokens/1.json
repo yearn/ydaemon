@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-12-20T18:21:46.520379+01:00",
+	"lastUpdate": "2023-12-22T11:43:32.211038+01:00",
 	"version": {
 		"major": 0,
-		"minor": 7,
+		"minor": 9,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -257,6 +257,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x04A289fe4cE5fa87a76F58d0214340fb5893A58c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13": {
+			"address": "0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
+			"type": "Yearn Vault",
+			"name": "mkUSD yVault-A",
+			"symbol": "yvmkUSD-A",
+			"displayName": "mkUSD yVault-A",
+			"displaySymbol": "yvmkUSD-A",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7070,6 +7086,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x8ee57c05741aA9DB947A744E713C15d4d19D8822/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8f22779662ad253844013d8e99eccb4d80e31417": {
+			"address": "0x8f22779662ad253844013d8e99eccb4d80e31417",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "CURVEBOBR",
+			"symbol": "BobrCRV",
+			"displayName": "CURVEBOBR",
+			"displaySymbol": "BobrCRV",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8F22779662Ad253844013D8E99EcCB4d80e31417/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -63,6 +63,7 @@ func computeVaultV3ForwardAPR(
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
 	summedApr := bigNumber.NewFloat(0)
+	summedApr = bigNumber.NewFloat(0)
 	if vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
@@ -90,6 +91,13 @@ func computeVaultV3ForwardAPR(
 	** Define which APR we want to use as "Net APR".
 	**********************************************************************************************/
 	primaryAPR := summedApr
+	** The current APR from the oracle can be artifically low if we have recently received
+	*  new deposits. We can at least expect to get the summedApr so we take the higher of the two.
+	**********************************************************************************************/
+	if summedApr > netAPR {
+		netAPR := summedApr
+	}
+
 	return TForwardAPR{
 		Type:   `v3:onchainOracle`,
 		NetAPR: primaryAPR,

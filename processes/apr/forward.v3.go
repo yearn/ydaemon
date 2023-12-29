@@ -62,9 +62,8 @@ func computeVaultV3ForwardAPR(
 	** Otherwise we can do the classic calculation of the net APR by summing the APR of each
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
-	shouldUseV2Method := false
-	if shouldUseV2Method && vault.Kind == models.VaultKindMultiple {
-		netAPR = bigNumber.NewFloat(0)
+	summedApr := bigNumber.NewFloat(0)
+	if vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 				if os.Getenv("ENVIRONMENT") == "dev" {
@@ -82,12 +81,21 @@ func computeVaultV3ForwardAPR(
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
 			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.8))
-			netAPR = bigNumber.NewFloat(0).Add(netAPR, scaledStrategyAPR)
+			summedApr = bigNumber.NewFloat(0).Add(summedApr, scaledStrategyAPR)
 		}
 	}
 
+	/**********************************************************************************************
+	** Define which APR we want to use as "Net APR".
+	**********************************************************************************************/
+	primaryAPR := summedApr
+
 	return TForwardAPR{
 		Type:   `v3:onchainOracle`,
-		NetAPR: netAPR,
+		NetAPR: primaryAPR,
+		Composite: TCompositeData{
+			V3OracleCurrentAPR:    netAPR,
+			V3OracleStratRatioAPR: summedApr,
+		},
 	}
 }

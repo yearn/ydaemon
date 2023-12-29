@@ -76,6 +76,7 @@ type TVault struct {
 	IsRetired      bool            `json:"isRetired"`      // If the vault is retired or not
 	IsHidden       bool            `json:"isHidden"`       // If the vault is hidden or not
 	IsAggregator   bool            `json:"isAggregator"`   // If the vault is an aggregator or not
+	IsBoosted      bool            `json:"isBoosted"`      // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
 	Migration      TMigration      `json:"migration"`      // If the vault is in the process of being migrated
 	Classification TClassification `json:"classification"` // The classification of the vault
 	DisplayName    string          `json:"displayName"`    // The name of the strategy

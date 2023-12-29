@@ -10,12 +10,14 @@ type TFees struct {
 	CvxKeepCRV  *bigNumber.Float `json:"cvx_keepCRV"`
 }
 type TCompositeData struct {
-	Boost      *bigNumber.Float `json:"boost"`
-	PoolAPY    *bigNumber.Float `json:"poolAPY"`
-	BoostedAPR *bigNumber.Float `json:"boostedAPR"`
-	BaseAPR    *bigNumber.Float `json:"baseAPR"`
-	CvxAPR     *bigNumber.Float `json:"cvxAPR"`
-	RewardsAPR *bigNumber.Float `json:"rewardsAPR"`
+	Boost                 *bigNumber.Float `json:"boost"`
+	PoolAPY               *bigNumber.Float `json:"poolAPY"`
+	BoostedAPR            *bigNumber.Float `json:"boostedAPR"`
+	BaseAPR               *bigNumber.Float `json:"baseAPR"`
+	CvxAPR                *bigNumber.Float `json:"cvxAPR"`
+	RewardsAPR            *bigNumber.Float `json:"rewardsAPR"`
+	V3OracleCurrentAPR    *bigNumber.Float `json:"v3OracleCurrentAPR,omitempty"`
+	V3OracleStratRatioAPR *bigNumber.Float `json:"v3OracleStratRatioAPR,omitempty"`
 }
 type TExtraRewards struct {
 	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`

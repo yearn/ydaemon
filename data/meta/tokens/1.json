@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2023-12-22T12:08:15.263837+01:00",
+	"lastUpdate": "2023-12-29T11:12:53.41786+01:00",
 	"version": {
 		"major": 0,
-		"minor": 9,
+		"minor": 10,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4103,6 +4103,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x569d0e52c3dbe95983bcc2434cb9f69d905be919": {
+			"address": "0x569d0e52c3dbe95983bcc2434cb9f69d905be919",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Roaring Kitty",
+			"symbol": "roar",
+			"displayName": "Roaring Kitty",
+			"displaySymbol": "roar",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x569d0e52c3DbE95983BCC2434Cb9F69d905be919/logo-128.png",
+			"decimals": 9,
+			"chainID": 1
+		},
 		"0x56a5fd5104a4956898753dfb060ff32882ae0eb4": {
 			"address": "0x56a5fd5104a4956898753dfb060ff32882ae0eb4",
 			"underlyingTokensAddresses": [
@@ -6388,6 +6402,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x8176b059BD8f63aeB7e20282b12D243b4626E2AE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x81cb62d2cd9261f63a1ae96df715748dcbc97d46": {
+			"address": "0x81cb62d2cd9261f63a1ae96df715748dcbc97d46",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "RaeX",
+			"symbol": "RaeX",
+			"displayName": "RaeX",
+			"displaySymbol": "RaeX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x81Cb62d2cD9261f63a1aE96dF715748dCbc97d46/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

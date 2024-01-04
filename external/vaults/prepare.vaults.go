@@ -89,6 +89,7 @@ func toSimplifiedVersion(
 		APR:            vault.APR,
 		Migration:      vault.Migration,
 		Retired:        vault.Details.IsRetired,
+		Boosted:        vault.Details.IsBoosted,
 		Version:        vault.Version,
 		FeaturingScore: vault.FeaturingScore,
 		Token: TSimplifiedExternalERC20Token{

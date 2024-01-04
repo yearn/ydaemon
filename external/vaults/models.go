@@ -158,6 +158,7 @@ type TSimplifiedExternalVault struct {
 	Decimals       uint64                        `json:"decimals"`
 	ChainID        uint64                        `json:"chainID"`
 	Retired        bool                          `json:"retired"`
+	Boosted        bool                          `json:"boosted"`
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
 	APR            apr.TVaultAPR                 `json:"apr"`

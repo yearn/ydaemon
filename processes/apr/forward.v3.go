@@ -80,6 +80,7 @@ func computeVaultV3ForwardAPR(
 			humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
+			//Reduce the APR by 20% to account for the fees/slippage and other factors
 			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.8))
 			summedApr = bigNumber.NewFloat(0).Add(summedApr, scaledStrategyAPR)
 		}
@@ -89,7 +90,6 @@ func computeVaultV3ForwardAPR(
 	** Define which APR we want to use as "Net APR".
 	**********************************************************************************************/
 	primaryAPR := summedApr
-
 	return TForwardAPR{
 		Type:   `v3:onchainOracle`,
 		NetAPR: primaryAPR,

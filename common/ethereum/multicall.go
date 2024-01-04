@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"math/big"
-	"os"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -42,8 +40,8 @@ type TEthMultiCaller struct {
 	ContractAddress common.Address
 }
 
-func (call Call) GetMultiCall() contracts.Multicall2Call {
-	return contracts.Multicall2Call{
+func (call Call) GetMultiCall() contracts.Multicall3Call {
+	return contracts.Multicall3Call{
 		Target:   call.Target,
 		CallData: call.CallData,
 	}
@@ -59,30 +57,15 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 	}
 	client, err := ethclient.Dial(rpcURI)
 	if err != nil {
-		logs.
-			Capture(`error`, `failed to connect to node`).
-			SetEntity(`multicall`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`rpcURI`, rpcURI).
-			SetTag(`multicallAddress`, multicallAddress.Hex()).
-			Send()
+		logs.Error(err)
 		time.Sleep(time.Second)
 		return NewMulticall(rpcURI, multicallAddress)
 	}
 
 	// Load Multicall abi for later use
-	mcAbi, err := contracts.Multicall2MetaData.GetAbi()
+	mcAbi, err := contracts.Multicall3MetaData.GetAbi()
 	if err != nil {
-		currentChainID, _ := client.ChainID(context.Background())
-		logs.
-			Capture(`error`, `failed to decode Multicall ABI`).
-			SetEntity(`multicall`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`chainID`, currentChainID.String()).
-			SetTag(`rpcURI`, rpcURI).
-			SetTag(`multicallAddress`, multicallAddress.Hex()).
-			Send()
-		//TODO: FIX HERE TO PREVENT LOOP
+		logs.Error(err)
 		time.Sleep(time.Second)
 		return NewMulticall(rpcURI, multicallAddress)
 	}
@@ -96,14 +79,12 @@ func NewMulticall(rpcURI string, multicallAddress common.Address) TEthMultiCalle
 }
 
 func (caller *TEthMultiCaller) execute(
-	multiCallGroup []contracts.Multicall2Call,
+	multiCallGroup []contracts.Multicall3Call,
 	blockNumber *big.Int,
 ) ([]byte, error) {
-	abi, _ := contracts.Multicall2MetaData.GetAbi()
+	abi, _ := contracts.Multicall3MetaData.GetAbi()
 	callData, err := abi.Pack("tryAggregate", false, multiCallGroup)
-
 	if err != nil {
-		logs.Error(`failed to pack tryAggregate: ` + err.Error())
 		return []byte{}, err
 	}
 
@@ -114,13 +95,12 @@ func (caller *TEthMultiCaller) execute(
 			To:   &caller.ContractAddress,
 			Data: callData,
 			Gas:  0,
-			From: caller.Signer.From,
 		},
 		blockNumber,
 	)
 	if err != nil {
 		chainID, _ := caller.Client.ChainID(context.Background())
-		return []byte{}, errors.New("Failed to perform multicall for: " + chainID.String() + " | " + err.Error())
+		return []byte{}, errors.New("Failed to perform multicall for:" + chainID.String() + " | " + err.Error())
 	}
 	return resp, nil
 }
@@ -133,23 +113,29 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	batchSize int,
 	blockNumber *big.Int,
 ) map[string][]interface{} {
+	if caller.Client == nil {
+		logs.Error("No client provided.")
+		return nil
+	}
+	var initialBatchSize = batchSize
 	var responses []CallResponse
 	// Create mapping for results. Be aware that we sometimes get two empty results initially, unsure why
 	results := make(map[string][]interface{})
 
 	// Add calls to multicall structure for the contract
-	var multiCalls = make([]contracts.Multicall2Call, 0, len(calls))
+	var multiCalls = make([]contracts.Multicall3Call, 0, len(calls))
 	var rawCalls = make([]Call, 0, len(calls))
 	for _, call := range calls {
 		multiCalls = append(multiCalls, call.GetMultiCall())
 		rawCalls = append(rawCalls, call)
 	}
 
-	for i := 0; i < len(multiCalls); i += batchSize {
-		var group []contracts.Multicall2Call
+	for i := 0; i < len(multiCalls); {
+		var group []contracts.Multicall3Call
 		var rawCallsGroup []Call
-
-		if i+batchSize >= len(multiCalls) {
+		if i >= len(multiCalls) {
+			break
+		} else if i+batchSize >= len(multiCalls) {
 			group = multiCalls[i:]
 			rawCallsGroup = rawCalls[i:]
 		} else {
@@ -160,25 +146,18 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 
 		tempPackedResp, err := caller.execute(group, blockNumber)
 		if err != nil {
-			//print associated rawCalls
-			// logs.Error(rawCallsGroup)
 			LIMIT_ERROR := strings.Contains(strings.ToLower(err.Error()), "call retuned result on length") && strings.Contains(strings.ToLower(err.Error()), "exceeding limit")
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")
 			isAssumingOutOfGas := false
+			chainID, _ := caller.Client.ChainID(context.Background())
 
 			if LIMIT_ERROR {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Warning("Multicall gas limit error, retrying with smaller batch size", "batchSize", batchSize)
-				}
+				logs.Warning("Multicall gas limit error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
 			} else if SIZE_ERROR {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Warning("Multicall size error, retrying with smaller batch size", "batchSize", batchSize)
-				}
+				logs.Warning("Multicall size error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
 			} else if OUT_OF_GAS_ERROR {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Warning("Multicall out of gas error, retrying with smaller batch size", "batchSize", batchSize)
-				}
+				logs.Warning("Multicall out of gas error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
 			} else {
 				//assume it's out of gas for a few tries
 				isAssumingOutOfGas = true
@@ -187,81 +166,57 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			//check if error is a request entity too large
 			if LIMIT_ERROR || SIZE_ERROR || OUT_OF_GAS_ERROR || isAssumingOutOfGas {
 				if batchSize == math.MaxInt64 {
-					return caller.ExecuteByBatch(calls, 10000, blockNumber)
+					batchSize = 10_000
+					continue
 				}
-				if isAssumingOutOfGas && batchSize <= 1 {
-					for i := 0; i < 100; i++ {
-						pc, file, line, ok := runtime.Caller(i)
-						if ok {
-							if strings.Contains(file, "/multicall.go") || strings.Contains(file, "/multicalls/perform.go") {
-								continue
-							}
-							logs.Error(`Multicall failed at [` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `]: ` + err.Error())
-							break
-						}
-					}
-					return nil
+				chainID, _ := caller.Client.ChainID(context.Background())
+				chainIDStr := "unknown"
+				if chainID != nil {
+					chainIDStr = strconv.Itoa(int(chainID.Int64()))
 				}
 				if batchSize <= 1 {
-					logs.Error(`Multicall failed: ` + err.Error())
-					for i := 0; i < 100; i++ {
-						pc, file, line, ok := runtime.Caller(i)
-						if ok {
-							if strings.Contains(file, "/multicall.go") || strings.Contains(file, "/multicalls/perform.go") {
-								continue
-							}
-							logs.Error(`Multicall failed at ` + runtime.FuncForPC(pc).Name() + `:` + strconv.Itoa(line) + `: ` + err.Error())
-							break
-						}
-					}
+					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
 					return nil
 				}
-				return caller.ExecuteByBatch(calls, batchSize/2, blockNumber)
+				if isAssumingOutOfGas {
+					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
+				}
+				batchSize = batchSize / 2
+				continue
 			} else {
 				logs.Error(err)
 				//sleep a few ms and retry
 				time.Sleep(2000 * time.Millisecond)
-				return caller.ExecuteByBatch(calls, batchSize, blockNumber)
+				logs.Warning(`Retrying with initial batch size of ` + strconv.Itoa(initialBatchSize))
+				continue
 			}
 		}
 
 		// Unpack results
 		unpackedResp, err := caller.Abi.Unpack("tryAggregate", tempPackedResp)
 		if err != nil {
-			logs.
-				Capture(`error`, `failed to unpack response`).
-				SetEntity(`multicall`).
-				SetExtra(`error`, err.Error()).
-				SetExtra(`tempPackedResp`, string(tempPackedResp)).
-				SetTag(`blockNumber`, blockNumber.String()).
-				Send()
+			logs.Error(err)
 			continue
 		}
 
 		a, err := json.Marshal(unpackedResp[0])
 		if err != nil {
-			logs.
-				Capture(`error`, `failed to marshal response`).
-				SetEntity(`multicall`).
-				SetExtra(`error`, err.Error()).
-				SetTag(`blockNumber`, blockNumber.String()).
-				Send()
+			logs.Error(err)
 			continue
 		}
 
 		// Unpack results
 		var tempResp []CallResponse
 		if err := json.Unmarshal(a, &tempResp); err != nil {
-			logs.
-				Capture(`error`, `failed to unmarshal response`).
-				SetEntity(`multicall`).
-				SetExtra(`error`, err.Error()).
-				SetTag(`blockNumber`, blockNumber.String()).
-				Send()
+			logs.Error(err)
 			continue
 		}
 
 		responses = append(responses, tempResp...)
+		i += batchSize
+		if batchSize != initialBatchSize {
+			batchSize = initialBatchSize
+		}
 	}
 
 	for i, response := range responses {

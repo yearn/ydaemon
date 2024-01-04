@@ -19,6 +19,8 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
+const SHOULD_LOG_WARNINGS = false
+
 type Call struct {
 	Name     string         `json:"name"`
 	Method   string         `json:"method"`
@@ -110,7 +112,7 @@ func (caller *TEthMultiCaller) execute(
 // the results
 func (caller *TEthMultiCaller) ExecuteByBatch(
 	calls []Call,
-	batchSize int,
+	batchSize uint64,
 	blockNumber *big.Int,
 ) map[string][]interface{} {
 	if caller.Client == nil {
@@ -130,12 +132,12 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		rawCalls = append(rawCalls, call)
 	}
 
-	for i := 0; i < len(multiCalls); {
+	for i := uint64(0); i < uint64(len(multiCalls)); {
 		var group []contracts.Multicall3Call
 		var rawCallsGroup []Call
-		if i >= len(multiCalls) {
+		if i > uint64(len(multiCalls)) {
 			break
-		} else if i+batchSize >= len(multiCalls) {
+		} else if (i + batchSize) > uint64(len(multiCalls)) {
 			group = multiCalls[i:]
 			rawCallsGroup = rawCalls[i:]
 		} else {
@@ -153,11 +155,17 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			chainID, _ := caller.Client.ChainID(context.Background())
 
 			if LIMIT_ERROR {
-				logs.Warning("Multicall gas limit error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
+				if SHOULD_LOG_WARNINGS {
+					logs.Warning("Multicall gas limit error, retrying with smaller batch size: " + strconv.FormatUint(batchSize, 10) + " on chain " + chainID.Text(10))
+				}
 			} else if SIZE_ERROR {
-				logs.Warning("Multicall size error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
+				if SHOULD_LOG_WARNINGS {
+					logs.Warning("Multicall size error, retrying with smaller batch size: " + strconv.FormatUint(batchSize, 10) + " on chain " + chainID.Text(10))
+				}
 			} else if OUT_OF_GAS_ERROR {
-				logs.Warning("Multicall out of gas error, retrying with smaller batch size: " + strconv.Itoa(batchSize) + " on chain " + chainID.Text(10))
+				if SHOULD_LOG_WARNINGS {
+					logs.Warning("Multicall out of gas error, retrying with smaller batch size: " + strconv.FormatUint(batchSize, 10) + " on chain " + chainID.Text(10))
+				}
 			} else {
 				//assume it's out of gas for a few tries
 				isAssumingOutOfGas = true
@@ -175,10 +183,12 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 					chainIDStr = strconv.Itoa(int(chainID.Int64()))
 				}
 				if batchSize <= 1 {
-					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
+					if SHOULD_LOG_WARNINGS {
+						logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
+					}
 					return nil
 				}
-				if isAssumingOutOfGas {
+				if isAssumingOutOfGas && SHOULD_LOG_WARNINGS {
 					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
 				}
 				batchSize = batchSize / 2
@@ -187,7 +197,9 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				logs.Error(err)
 				//sleep a few ms and retry
 				time.Sleep(2000 * time.Millisecond)
-				logs.Warning(`Retrying with initial batch size of ` + strconv.Itoa(initialBatchSize))
+				if SHOULD_LOG_WARNINGS {
+					logs.Warning(`Retrying with initial batch size of ` + strconv.FormatUint(initialBatchSize, 10))
+				}
 				continue
 			}
 		}

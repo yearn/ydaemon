@@ -144,6 +144,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			group = multiCalls[i : i+batchSize]
 			rawCallsGroup = rawCalls[i : i+batchSize]
 		}
+
 		_ = rawCallsGroup
 
 		tempPackedResp, err := caller.execute(group, blockNumber)

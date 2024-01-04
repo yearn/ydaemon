@@ -17,7 +17,7 @@ type TChain struct {
 	SubgraphURI            string
 	EtherscanURI           string
 	MaxBlockRange          uint64
-	MaxBatchSize           int
+	MaxBatchSize           uint64
 	AvgBlocksPerDay        int
 	LensContract           TContractData
 	MulticallContract      TContractData

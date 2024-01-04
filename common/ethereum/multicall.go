@@ -135,9 +135,9 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 	for i := uint64(0); i < uint64(len(multiCalls)); {
 		var group []contracts.Multicall3Call
 		var rawCallsGroup []Call
-		if i > uint64(len(multiCalls)) {
+		if i >= uint64(len(multiCalls)) {
 			break
-		} else if (i + batchSize) > uint64(len(multiCalls)) {
+		} else if (i + batchSize) >= uint64(len(multiCalls)) {
 			group = multiCalls[i:]
 			rawCallsGroup = rawCalls[i:]
 		} else {
@@ -202,6 +202,11 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				}
 				continue
 			}
+		}
+
+		if len(tempPackedResp) == 0 {
+			logs.Error("Empty response from multicall")
+			continue
 		}
 
 		// Unpack results

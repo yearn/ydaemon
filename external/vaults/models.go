@@ -113,6 +113,7 @@ type TExternalVault struct {
 	ChainID           uint64                  `json:"chainID"`
 	RiskScore         float64                 `json:"riskScore"`
 	Endorsed          bool                    `json:"endorsed"`
+	Boosted           bool                    `json:"boosted"`
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               models.TTVL             `json:"tvl"`
@@ -180,6 +181,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Address = vault.Address.Hex()
 	v.Version = vault.Version
 	v.Endorsed = vault.Endorsed
+	v.Boosted = vault.IsBoosted
 	v.EmergencyShutdown = vault.EmergencyShutdown
 	v.ChainID = vault.ChainID
 	v.TVL = fetcher.BuildVaultTVL(vault)

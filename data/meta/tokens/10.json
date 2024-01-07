@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-04T11:35:16.714192+01:00",
+	"lastUpdate": "2024-01-07T20:21:39.815177+01:00",
 	"version": {
 		"major": 0,
-		"minor": 0,
+		"minor": 1,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2276,6 +2276,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4": {
+			"address": "0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VolatileV2 AMM - WETH/GRAIN",
+			"symbol": "vAMMV2-WETH/GRAIN",
+			"displayName": "VolatileV2 AMM - WETH/GRAIN",
+			"displaySymbol": "vAMMV2-WETH/GRAIN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xdc2B136A9C1FD2a0b9497bB8b11823c2FBf47Ac4/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f": {
 			"address": "0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f",
 			"underlyingTokensAddresses": [
@@ -2501,6 +2515,22 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains LUSD and ERN.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xF31cbe21Bbbb8056b75d6ca21e8fFd2CD38bD5C5/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xf39b6196e6bb16cf0f37e4741a83413cc329539d": {
+			"address": "0xf39b6196e6bb16cf0f37e4741a83413cc329539d",
+			"underlyingTokensAddresses": [
+				"0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 GRAIN-WETH Factory yVault",
+			"symbol": "yvVelo-GRAIN-WETH-f",
+			"displayName": "Velodrome v2 GRAIN-WETH Factory yVault",
+			"displaySymbol": "yvVelo-GRAIN-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xf39B6196E6BB16cf0f37E4741a83413Cc329539D/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

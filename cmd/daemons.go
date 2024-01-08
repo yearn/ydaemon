@@ -1,12 +1,10 @@
 package main
 
 import (
-	"strconv"
 	"sync"
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/internal/meta"
 	"github.com/yearn/ydaemon/internal/risk"
@@ -50,7 +48,6 @@ func SummonDaemons(chainID uint64) {
 func waitGroupSummonDaemons(wg *sync.WaitGroup, chainID uint64) {
 	SummonDaemons(chainID)
 	wg.Done()
-	logs.Success(`Daemons for chainID ` + strconv.Itoa(int(chainID)) + ` summoned successfully!`)
 }
 
 func summonDaemonsForAllChains(chains []uint64) {

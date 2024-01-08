@@ -43,6 +43,6 @@ func init() {
 		go LoadBlockTime(chainID, wg)
 		go LoadPricePerShare(chainID, wg)
 	}
-	logs.Success(`Initialized the store`)
 	wg.Wait()
+	logs.Success(`Initialized the store`)
 }

@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 )
 
 func handleChainsInitialization(rawChains *string) []uint64 {
@@ -19,15 +20,19 @@ func handleChainsInitialization(rawChains *string) []uint64 {
 	for _, chainIDString := range chainStr {
 		chainID, err := strconv.ParseUint(chainIDString, 10, 64)
 		if err != nil {
+			logs.Error(`Invalid chain ID: ` + chainIDString)
 			continue
 		}
 		if _, ok := env.CHAINS[chainID]; !ok {
+			logs.Error(`Unsupported chain ID: ` + chainIDString)
 			continue
 		}
 		if helpers.Contains(chains, chainID) {
+			logs.Error(`Duplicate chain ID: ` + chainIDString)
 			continue
 		}
 		chains = append(chains, chainID)
+		logs.Info(`Getting WS client for chain ` + chainIDString)
 		ethereum.GetWSClient(chainID)
 		ethereum.InitBlockTimestamp(chainID)
 	}

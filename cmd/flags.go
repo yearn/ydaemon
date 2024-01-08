@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+
+	"github.com/yearn/ydaemon/common/logs"
 )
 
 var chains = []uint64{}
@@ -42,7 +44,10 @@ func initFlags() {
 		endBlock = nil
 	}
 
+	logs.Info(`Initializing chains...`)
 	handleChainsInitialization(rawChains)
+	logs.Info(`Initializing Sentry...`)
 	handleSentryInitialization()
+	logs.Info(`Initializing process...`)
 	handleProcessInitialization(rawProcess)
 }

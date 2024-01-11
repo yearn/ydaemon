@@ -5,6 +5,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 type TCalculateConvexAPYDataStruct struct {
@@ -27,7 +28,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** - the performanceFee and the managementFee for that vault
 	** - the debtRatio for the strategy (aka the % of fund allocated to the strategy by the vault)
 	**********************************************************************************************/
-	cvxBoost := getCurveBoost(chainID, CONVEX_VOTER_ADDRESS[chainID], args.gaugeAddress)
+	cvxBoost := getCurveBoost(chainID, storage.CONVEX_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineConvexKeepCRV(args.strategy)
 	debtRatio := helpers.ToNormalizedAmount(args.strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)
@@ -58,7 +59,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** 3. Adding the pool APY
 	** 4. Adding the CVX APR
 	**********************************************************************************************/
-	keepCRVRatio := bigNumber.NewFloat(0).Sub(ONE, keepCrv)           // 1 - keepCRV
+	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv)   // 1 - keepCRV
 	grossAPR := bigNumber.NewFloat(0).Mul(crvAPR, keepCRVRatio)       // 1 - baseAPR * keepCRV
 	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, rewardsAPR)        // 2 - (baseAPR * keepCRV) + rewardAPR
 	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.poolDailyAPY) // 3 - (baseAPR * keepCRV) + rewardAPR + poolAPY

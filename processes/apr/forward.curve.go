@@ -5,6 +5,7 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 type TCalculateCurveAPYDataStruct struct {
@@ -25,7 +26,7 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	** - the performanceFee and the managementFee for that vault
 	** - the debtRatio for the strategy (aka the % of fund allocated to the strategy by the vault)
 	**********************************************************************************************/
-	yBoost := getCurveBoost(chainID, YEARN_VOTER_ADDRESS[chainID], args.gaugeAddress)
+	yBoost := getCurveBoost(chainID, storage.YEARN_VOTER_ADDRESS[chainID], args.gaugeAddress)
 	keepCrv := determineCurveKeepCRV(args.strategy)
 	debtRatio := helpers.ToNormalizedAmount(args.strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(args.vault.PerformanceFee)), 4)
@@ -46,11 +47,11 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	** 2. Adding the rewards APR
 	** 3. Adding the pool APY
 	**********************************************************************************************/
-	keepCRVRatio := bigNumber.NewFloat(0).Sub(ONE, keepCrv)        // 1 - keepCRV
-	grossAPR := bigNumber.NewFloat(0).Mul(args.baseAPR, yBoost)    // 1 - baseAPR * yBoost
-	grossAPR = bigNumber.NewFloat(0).Mul(grossAPR, keepCRVRatio)   // 1 - baseAPR * yBoost * keepCRV
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.rewardAPR) // 2 - (baseAPR * yBoost * keepCRV) + rewardAPR
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.poolAPY)   // 3 - (baseAPR * yBoost * keepCRV) + rewardAPR + poolAPY
+	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv) // 1 - keepCRV
+	grossAPR := bigNumber.NewFloat(0).Mul(args.baseAPR, yBoost)     // 1 - baseAPR * yBoost
+	grossAPR = bigNumber.NewFloat(0).Mul(grossAPR, keepCRVRatio)    // 1 - baseAPR * yBoost * keepCRV
+	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.rewardAPR)  // 2 - (baseAPR * yBoost * keepCRV) + rewardAPR
+	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.poolAPY)    // 3 - (baseAPR * yBoost * keepCRV) + rewardAPR + poolAPY
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:

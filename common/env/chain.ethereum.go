@@ -70,13 +70,14 @@ var ETHEREUM = TChain{
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
 			//mkUSD yVault-A (yvmkUSD-A), no registry AFAIK
-			ChainID:         250,
+			ChainID:         1,
 			Address:         common.HexToAddress(`0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13`),
 			RegistryAddress: common.HexToAddress(`0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5`),
 			TokenAddress:    common.HexToAddress(`0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28`),
 			APIVersion:      `3.0.1`,
 			BlockNumber:     18817046,
-			Type:            models.TTokenType(models.VaultKindMultiple),
+			Type:            models.TTokenType(models.TokenTypeStandardVault),
+			Kind:            models.TVaultKind(models.VaultKindMultiple),
 		},
 	},
 	BlacklistedVaults: []common.Address{

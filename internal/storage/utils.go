@@ -1,11 +1,15 @@
 package storage
 
 import (
+	"encoding/json"
+	"io"
+	"net/http"
 	"reflect"
 	"sync"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -76,4 +80,32 @@ func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
 		source[chainID] = syncMap
 	}
 	return syncMap
+}
+
+/**************************************************************************
+** Fetcher function to retrive the curve gauges
+**************************************************************************/
+func FetchCurveGauges(chainID uint64) []models.CurveGauge {
+	resp, err := http.Get(CURVE_GAUGES_URI[chainID])
+	if err != nil {
+		logs.Error(err)
+		return []models.CurveGauge{}
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		logs.Error(err)
+		return []models.CurveGauge{}
+	}
+	var gauges models.TCurveGauges
+	if err := json.Unmarshal(body, &gauges); err != nil {
+		logs.Error(err)
+		return []models.CurveGauge{}
+	}
+	pools := []models.CurveGauge{}
+	for _, gauge := range gauges.Data {
+		pools = append(pools, gauge)
+	}
+	StoreCurveGauges(chainID, pools)
+	return pools
 }

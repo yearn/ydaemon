@@ -205,7 +205,7 @@ func calculateCurveLikeStrategyAPR(
 	**********************************************************************************************/
 	baseAssetPrice := bigNumber.NewFloat(0).SetFloat64(gauge.LpTokenPrice)
 	crvPrice := bigNumber.NewFloat(0)
-	if tokenPrice, ok := storage.GetPrice(chainID, CRV_TOKEN_ADDRESS[chainID]); ok {
+	if tokenPrice, ok := storage.GetPrice(chainID, storage.CRV_TOKEN_ADDRESS[chainID]); ok {
 		crvPrice = tokenPrice.HumanizedPrice
 	}
 	poolPrice := getPoolPrice(gauge)

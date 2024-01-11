@@ -28,7 +28,7 @@ func getConvexRewardAPR(
 ) *bigNumber.Float {
 	client := ethereum.GetRPC(chainID)
 	convexStrategyContract, _ := contracts.NewConvexBaseStrategy(strategy.Address, client)
-	cvxBoosterContract, _ := contracts.NewCVXBooster(CVX_BOOSTER_ADDRESS[chainID], client)
+	cvxBoosterContract, _ := contracts.NewCVXBooster(storage.CVX_BOOSTER_ADDRESS[chainID], client)
 	rewardPID, err := convexStrategyContract.Pid(nil)
 	if err != nil {
 		rewardPID, err = convexStrategyContract.ID(nil)
@@ -36,14 +36,14 @@ func getConvexRewardAPR(
 			rewardPID, err = convexStrategyContract.FraxPid(nil)
 			if err != nil {
 				logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
-				return ZERO
+				return storage.ZERO
 			}
 		}
 	}
 	rewardContract, err := cvxBoosterContract.PoolInfo(nil, rewardPID)
 	if err != nil {
 		logs.Error(err)
-		return ZERO
+		return storage.ZERO
 	}
 	crvRewardContract, _ := contracts.NewCrvRewards(rewardContract.CrvRewards, client)
 	rewardsLength, _ := crvRewardContract.ExtraRewardsLength(nil)
@@ -80,7 +80,7 @@ func getConvexRewardAPR(
 
 		rewardAPRTop := bigNumber.NewFloat(0).Mul(rewardRate, secondPerYear)
 		rewardAPRTop = bigNumber.NewFloat(0).Mul(rewardAPRTop, tokenPrice)
-		rewardAPRBottom := bigNumber.NewFloat(0).Div(poolPrice, ONE) //wei?
+		rewardAPRBottom := bigNumber.NewFloat(0).Div(poolPrice, storage.ONE) //wei?
 		rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, baseAssetPrice)
 		rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, totalSupply)
 		rewardAPR := bigNumber.NewFloat(0).Div(rewardAPRTop, rewardAPRBottom)
@@ -98,12 +98,12 @@ func getCVXForCRV(chainID uint64, crvEarned *bigNumber.Float) *bigNumber.Float {
 	cliffCount := bigNumber.NewFloat(0).SetString(`1000`)                       //1e3
 	maxSupply := bigNumber.NewFloat(0).SetString(`100000000000000000000000000`) //1e26
 
-	cvxContract, _ := contracts.NewERC20(CVX_TOKEN_ADDRESS[chainID], ethereum.GetRPC(chainID))
+	cvxContract, _ := contracts.NewERC20(storage.CVX_TOKEN_ADDRESS[chainID], ethereum.GetRPC(chainID))
 	cvxTotalSupplyInt, _ := cvxContract.TotalSupply(nil)
 	cvxTotalSupply := bigNumber.NewFloat(0).SetInt(bigNumber.NewInt(0).Set(cvxTotalSupplyInt))
 	currentCliff := bigNumber.NewFloat(0).Div(cvxTotalSupply, cliffSize)
 	if currentCliff.Gte(cliffCount) {
-		return ZERO
+		return storage.ZERO
 	}
 	remaining := bigNumber.NewFloat(0).Sub(cliffCount, currentCliff)
 	cvxEarned := bigNumber.NewFloat(0).Mul(crvEarned, remaining)
@@ -161,7 +161,7 @@ func getCVXPoolAPR(
 	** Once we got the PID, we can query the convexBooster contract to get the `poolInfo` for this
 	** and retrieve the `crvRewards` contract
 	***********************************************************************************************/
-	cvxBoosterContract, err := contracts.NewCVXBooster(CVX_BOOSTER_ADDRESS[chainID], client)
+	cvxBoosterContract, err := contracts.NewCVXBooster(storage.CVX_BOOSTER_ADDRESS[chainID], client)
 	if err != nil {
 		return crvAPR, cvxAPR
 	}
@@ -192,18 +192,18 @@ func getCVXPoolAPR(
 	crvPerUnderlying := bigNumber.NewFloat(0)
 	virtualSupply := bigNumber.NewFloat(0).Mul(supply, virtualPoolPrice)
 
-	if virtualSupply.Gt(ZERO) {
+	if virtualSupply.Gt(storage.ZERO) {
 		crvPerUnderlying = bigNumber.NewFloat(0).Div(rate, virtualSupply)
 	}
 	crvPerYear := bigNumber.NewFloat(0).Mul(crvPerUnderlying, bigNumber.NewFloat(31536000))
 	cvxPerYear := getCVXForCRV(chainID, crvPerYear)
 
 	crvPrice := bigNumber.NewFloat(0)
-	if tokenPrice, ok := storage.GetPrice(chainID, CRV_TOKEN_ADDRESS[chainID]); ok {
+	if tokenPrice, ok := storage.GetPrice(chainID, storage.CRV_TOKEN_ADDRESS[chainID]); ok {
 		crvPrice = tokenPrice.HumanizedPrice
 	}
 	cvxPrice := bigNumber.NewFloat(0)
-	if tokenPrice, ok := storage.GetPrice(chainID, CVX_TOKEN_ADDRESS[chainID]); ok {
+	if tokenPrice, ok := storage.GetPrice(chainID, storage.CVX_TOKEN_ADDRESS[chainID]); ok {
 		cvxPrice = tokenPrice.HumanizedPrice
 	}
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
@@ -224,7 +224,7 @@ func getCVXPoolAPR(
 **************************************************************************************************/
 func determineConvexKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 	if strategy.KeepCRV == nil {
-		return ZERO
+		return storage.ZERO
 	}
 	client := ethereum.GetRPC(strategy.ChainID)
 	convexStrategyContract, _ := contracts.NewConvexBaseStrategy(strategy.Address, client)
@@ -237,7 +237,7 @@ func determineConvexKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 		if err != nil {
 			localKeepCRV, err := convexStrategyContract.LocalKeepCRV(nil)
 			if err != nil {
-				return ZERO
+				return storage.ZERO
 			}
 			return helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(localKeepCRV), 4)
 		}
@@ -245,15 +245,15 @@ func determineConvexKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 	}
 	curveGlobal, err := convexStrategyContract.CurveGlobal(nil)
 	if err != nil {
-		return ZERO
+		return storage.ZERO
 	}
 	curveGlobalContract, err := contracts.NewStrategyBase(curveGlobal, client)
 	if err != nil {
-		return ZERO
+		return storage.ZERO
 	}
 	keepCRV, err := curveGlobalContract.KeepCRV(nil)
 	if err != nil {
-		return ZERO
+		return storage.ZERO
 	}
 	return helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(keepCRV), 4)
 }

@@ -122,6 +122,9 @@ type TExternalVault struct {
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
+	Info              struct {
+		SourceURL string `json:"sourceURL,omitempty"`
+	} `json:"info,omitempty"`
 	// Computing only
 	FeaturingScore float64 `json:"featuringScore"`
 }
@@ -166,6 +169,9 @@ type TSimplifiedExternalVault struct {
 	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
+	Info           struct {
+		SourceURL string `json:"sourceURL,omitempty"`
+	} `json:"info,omitempty"`
 }
 
 func NewVault() TExternalVault {
@@ -247,6 +253,11 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		PoolProvider:    vault.Classification.PoolProvider,
 		Stability:       helpers.SafeString(vault.Classification.Stability, `Unknown`),
 		StableBaseAsset: vault.Classification.StableBaseAsset,
+	}
+
+	result, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
+	if found && result.PoolURLs.Deposit != nil && len(result.PoolURLs.Deposit) > 0 {
+		v.Info.SourceURL = result.PoolURLs.Deposit[0]
 	}
 
 	return v, nil

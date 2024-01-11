@@ -10,7 +10,7 @@ var COMPUTED_APR = make(map[uint64]map[common.Address]TVaultAPR)
 
 func ComputeChainAPR(chainID uint64) {
 	allVaults, _ := storage.ListVaults(chainID)
-	gauges := retrieveCurveGauges(chainID)
+	gauges := storage.FetchCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
 	fraxPools := retrieveFraxPools(chainID)

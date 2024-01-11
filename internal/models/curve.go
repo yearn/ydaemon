@@ -33,6 +33,11 @@ type CurveGauge struct {
 	MetaPoolAddress  string               `json:"meta_pool_address"`
 	MetaPoolName     string               `json:"meta_pool_name"`
 	MetaPoolCategory string               `json:"meta_pool_category"`
+	PoolURLs         struct {
+		Swap     []string `json:"swap"`
+		Deposit  []string `json:"deposit"`
+		Withdraw []string `json:"withdraw"`
+	} `json:"poolUrls"`
 }
 
 type TCurveGauges struct {

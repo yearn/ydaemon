@@ -108,5 +108,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	}
 	simplified := toSimplifiedVersion(newVault, models.TStrategy{})
 	simplified.Description = newVault.Description
+
 	c.JSON(http.StatusOK, simplified)
 }

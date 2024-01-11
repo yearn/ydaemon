@@ -9,31 +9,8 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
-
-func retrieveCurveGauges(chainID uint64) []models.CurveGauge {
-	resp, err := http.Get(CURVE_GAUGES_URI[chainID])
-	if err != nil {
-		logs.Error(err)
-		return []models.CurveGauge{}
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error(err)
-		return []models.CurveGauge{}
-	}
-	var gauges models.TCurveGauges
-	if err := json.Unmarshal(body, &gauges); err != nil {
-		logs.Error(err)
-		return []models.CurveGauge{}
-	}
-	pools := []models.CurveGauge{}
-	for _, gauge := range gauges.Data {
-		pools = append(pools, gauge)
-	}
-	return pools
-}
 
 func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 	URIsToFetch := env.CHAINS[chainID].Curve.PoolsURIs
@@ -61,10 +38,10 @@ func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 }
 
 func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
-	if v, ok := CURVE_SUBGRAPHDATA_URI[chainID]; !ok || v == `` {
+	if v, ok := storage.CURVE_SUBGRAPHDATA_URI[chainID]; !ok || v == `` {
 		return []models.CurveSubgraphData{}
 	}
-	resp, err := http.Get(CURVE_SUBGRAPHDATA_URI[chainID])
+	resp, err := http.Get(storage.CURVE_SUBGRAPHDATA_URI[chainID])
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveSubgraphData{}

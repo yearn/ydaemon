@@ -109,6 +109,7 @@ func toSimplifiedVersion(
 			Address:   stakingData.StackingPoolAddress.Hex(),
 			Available: hasStakingPool,
 		},
+		Info: vault.Info,
 	}
 	return simplifiedVault
 }

@@ -62,7 +62,7 @@ func computeVaultV3ForwardAPR(
 	** Otherwise we can do the classic calculation of the net APR by summing the APR of each
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
-	summedApr := bigNumber.NewFloat(0)
+
 	summedApr = bigNumber.NewFloat(0)
 	if vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
@@ -90,12 +90,10 @@ func computeVaultV3ForwardAPR(
 	/**********************************************************************************************
 	** Define which APR we want to use as "Net APR".
 	**********************************************************************************************/
-	primaryAPR := summedApr
-	** The current APR from the oracle can be artifically low if we have recently received
-	*  new deposits. We can at least expect to get the summedApr so we take the higher of the two.
-	**********************************************************************************************/
-	if summedApr > netAPR {
-		netAPR := summedApr
+	if vault.IsBoosted && netAPR > summedApr {
+		primaryAPR := netAPR
+	} else {
+		primaryAPR := summedApr
 	}
 
 	return TForwardAPR{

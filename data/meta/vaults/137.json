@@ -36,9 +36,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Stargate DAI Staker",
+			"displaySymbol": "ysDAI",
+			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
 		},
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
@@ -409,9 +409,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "DAI-A",
+			"displaySymbol": "yvDAI-A",
+			"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",

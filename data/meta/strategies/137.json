@@ -28,8 +28,8 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "2002091106222616200128",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
+			"displayName": "Stargate DAI Staker",
+			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
@@ -344,8 +344,8 @@
 			"lastDebtRatio": "0",
 			"lastEstimatedTotalAssets": "1622444875639836914950",
 			"isRetired": true,
-			"displayName": "",
-			"description": "",
+			"displayName": "Aave V3 DAI Lender",
+			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		}
 	}

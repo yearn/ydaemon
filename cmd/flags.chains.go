@@ -5,7 +5,6 @@ import (
 	"strings"
 
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 )
@@ -32,9 +31,6 @@ func handleChainsInitialization(rawChains *string) []uint64 {
 			continue
 		}
 		chains = append(chains, chainID)
-		logs.Info(`Getting WS client for chain ` + chainIDString)
-		ethereum.GetWSClient(chainID)
-		ethereum.InitBlockTimestamp(chainID)
 	}
 
 	if len(chains) == 0 {

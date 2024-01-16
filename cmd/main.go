@@ -1,8 +1,10 @@
 package main
 
 import (
+	"strconv"
 	"sync"
 
+	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/processes/apr"
@@ -35,6 +37,9 @@ func main() {
 
 		for _, chainID := range chains {
 			setStatusForChainID(chainID, "Loading")
+			logs.Info(`Getting WS client for chain ` + strconv.FormatUint(chainID, 10))
+			ethereum.GetWSClient(chainID)
+			ethereum.InitBlockTimestamp(chainID)
 			wg.Add(1)
 			go internal.InitializeV2(chainID, &wg)
 		}

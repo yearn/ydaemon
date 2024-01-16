@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-11T09:27:55.53321+01:00",
+	"lastUpdate": "2024-01-16T19:00:15.202832+01:00",
 	"version": {
 		"major": 0,
-		"minor": 12,
+		"minor": 13,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1127,9 +1127,9 @@
 			"underlyingTokensAddresses": [],
 			"type": "",
 			"name": "Euro Coin",
-			"symbol": "EUROC",
+			"symbol": "EURC",
 			"displayName": "Euro Coin",
-			"displaySymbol": "EUROC",
+			"displaySymbol": "EURC",
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c/logo-128.png",
@@ -3718,6 +3718,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4CbB6A5EC00cEEC252a7091559484F7adb83165f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4d7564f1272e24111280918b8ae4df9953a6253f": {
+			"address": "0x4d7564f1272e24111280918b8ae4df9953a6253f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "The Llamas Wrapped NFT",
+			"symbol": "LLAMAwnft",
+			"displayName": "The Llamas Wrapped NFT",
+			"displaySymbol": "LLAMAwnft",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4d7564f1272E24111280918b8Ae4Df9953A6253F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

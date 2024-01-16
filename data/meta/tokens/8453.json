@@ -1,12 +1,28 @@
 {
-	"lastUpdate": "2024-01-11T09:11:49.502943+01:00",
+	"lastUpdate": "2024-01-16T18:59:28.226837+01:00",
 	"version": {
 		"major": 0,
-		"minor": 2,
+		"minor": 3,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc": {
+			"address": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
+			"underlyingTokensAddresses": [
+				"0xf213f2d02837012dc0236cc105061e121bb03e37"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome DOLA-USDC Factory yVault",
+			"symbol": "yvAero-DOLA-USDC-f",
+			"displayName": "Aerodrome DOLA-USDC Factory yVault",
+			"displaySymbol": "yvAero-DOLA-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x00F30115B5E828AB387b8190f8532EA7cEAF3fDC/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x0b25c51637c43decd6cc1c1e3da4518d54ddb528": {
 			"address": "0x0b25c51637c43decd6cc1c1e3da4518d54ddb528",
 			"underlyingTokensAddresses": [],
@@ -770,6 +786,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xEcFc1e5BDa4d4191c9Cab053ec704347Db87Be5d/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xf213f2d02837012dc0236cc105061e121bb03e37": {
+			"address": "0xf213f2d02837012dc0236cc105061e121bb03e37",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Stable AMM - DOLA/USDC",
+			"symbol": "sAMM-DOLA/USDC",
+			"displayName": "Stable AMM - DOLA/USDC",
+			"displaySymbol": "sAMM-DOLA/USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xf213F2D02837012dC0236cC105061e121bB03e37/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

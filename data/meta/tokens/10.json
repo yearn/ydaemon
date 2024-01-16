@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-11T09:27:19.485048+01:00",
+	"lastUpdate": "2024-01-16T19:00:12.053816+01:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -840,6 +840,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains USDC.e and wTBT.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x5e6E17F745fF620E87324b7c6ec672B5743BD0B4/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x605cce502dee6bd201b493782e351e645d44abbb": {
+			"address": "0x605cce502dee6bd201b493782e351e645d44abbb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/ERN",
+			"symbol": "sAMMV2-USDC/ERN",
+			"displayName": "StableV2 AMM - USDC/ERN",
+			"displaySymbol": "sAMMV2-USDC/ERN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x605cCE502dEe6BD201b493782e351e645D44abBB/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1685,6 +1699,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xa31Ad8D355B5223Ad34FD4fD0bC854A68E7D9681/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xa3d57625b9a6284d1265d76294443b1e39a18007": {
+			"address": "0xa3d57625b9a6284d1265d76294443b1e39a18007",
+			"underlyingTokensAddresses": [
+				"0x605cce502dee6bd201b493782e351e645d44abbb"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 ERN-USDC Factory yVault",
+			"symbol": "yvVelo-ERN-USDC-f",
+			"displayName": "Velodrome v2 ERN-USDC Factory yVault",
+			"displaySymbol": "yvVelo-ERN-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xa3d57625B9a6284D1265d76294443b1E39a18007/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

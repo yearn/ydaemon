@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-16T19:00:15.202832+01:00",
+	"lastUpdate": "2024-01-18T18:28:54.085544+01:00",
 	"version": {
 		"major": 0,
-		"minor": 13,
+		"minor": 14,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2565,6 +2565,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x3835a58CA93Cdb5f912519ad366826aC9a752510/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x383e6b4437b59fff47b619cba855ca29342a8559": {
+			"address": "0x383e6b4437b59fff47b619cba855ca29342a8559",
+			"underlyingTokensAddresses": [
+				"0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Curve LP",
+			"name": "PayPool",
+			"symbol": "PYUSDUSDC",
+			"displayName": "PayPool",
+			"displaySymbol": "PYUSDUSDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x383E6b4437b59fff47B619CBA855CA29342A8559/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5441,6 +5458,20 @@
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x6C280dB098dB673d30d5B34eC04B6387185D3620/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6c3ea9036406852006290770bedfcaba0e23a0e8": {
+			"address": "0x6c3ea9036406852006290770bedfcaba0e23a0e8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PayPal USD",
+			"symbol": "PYUSD",
+			"displayName": "PayPal USD",
+			"displaySymbol": "PYUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6c3ea9036406852006290770BEdFcAbA0e23A0e8/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x6c3f90f043a72fa612cbac8115ee7e52bde6e490": {
@@ -11843,6 +11874,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEdA43FA2F35EA174a7E9b73658b18a7dA00ADf38/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xeec7036c1af1f07668b4c5520ccb4b52ec4594d7": {
+			"address": "0xeec7036c1af1f07668b4c5520ccb4b52ec4594d7",
+			"underlyingTokensAddresses": [
+				"0x383e6b4437b59fff47b619cba855ca29342a8559"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve PYUSD-USDC Factory yVault",
+			"symbol": "yvCurve-PYUSD-USDC-f",
+			"displayName": "Curve PYUSD-USDC Factory yVault",
+			"displaySymbol": "yvCurve-PYUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xEeC7036C1Af1f07668b4c5520CcB4b52Ec4594D7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

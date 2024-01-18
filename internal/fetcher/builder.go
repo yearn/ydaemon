@@ -3,6 +3,7 @@ package fetcher
 import (
 	"strings"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -115,7 +116,7 @@ func BuildVaultTVL(t models.TVault) models.TTVL {
 	return tvl
 }
 
-func BuildVaultCategory(t models.TVault) string {
+func BuildVaultCategory(t models.TVault, strategies map[common.Address]models.TStrategy) string {
 	category := ``
 	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
 	baseForCurve := []string{`curve`, `crv`}
@@ -125,6 +126,7 @@ func BuildVaultCategory(t models.TVault) string {
 	baseForBitcoin := []string{`btc`, `bitcoin`}
 	baseForEth := []string{`eth`, `ethereum`}
 	baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
+	baseForPrisma := []string{`prisma`}
 	name, displayName, formatedName := BuildVaultNames(t, ``)
 	allNames := []string{
 		strings.ToLower(name),
@@ -153,6 +155,20 @@ func BuildVaultCategory(t models.TVault) string {
 	}
 	if helpers.Intersects(allNames, baseForAerodrome) {
 		category = `Aerodrome`
+	}
+
+	if len(strategies) > 0 {
+		for _, strategy := range strategies {
+			allStratNames := []string{
+				strings.ToLower(strategy.Name),
+				strings.ToLower(strategy.DisplayName),
+			}
+			if helpers.Intersects(allStratNames, baseForPrisma) {
+				category = `Prisma`
+				break
+			}
+		}
+
 	}
 
 	if category == `` {

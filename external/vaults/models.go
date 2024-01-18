@@ -184,6 +184,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	}
 	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.DisplayName)
 	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.DisplaySymbol)
+	strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
 
 	v.Address = vault.Address.Hex()
 	v.Version = vault.Version
@@ -194,7 +195,6 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.TVL = fetcher.BuildVaultTVL(vault)
 	v.Migration = toTExternalVaultMigration(vault.Migration)
 	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(vault))
-	v.Category = fetcher.BuildVaultCategory(vault)
 	v.Symbol = symbol
 	v.DisplaySymbol = displaySymbol
 	v.FormatedSymbol = formatedSymbol
@@ -206,6 +206,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Kind = vault.Kind
 	v.Decimals = vaultToken.Decimals
 	v.Description = vault.Description
+	v.Category = fetcher.BuildVaultCategory(vault, strategies)
 
 	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)
 	if ok {

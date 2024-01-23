@@ -105,6 +105,22 @@ func filterNewVault(
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV4 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
+		case 5:
+			currentRegistry, _ := contracts.NewYRegistryV5(registry.Address, client)
+			if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
+				for log.Next() {
+					if log.Error() != nil {
+						continue
+					}
+					historicalVault := handleV05Vault(chainID, log.Event)
+					storage.StoreNewVaultToRegistry(chainID, historicalVault)
+					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+						historicalVault.Address: historicalVault,
+					})
+				}
+			} else {
+				logs.Error(`impossible to FilterNewVault for YRegistryV4 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			}
 		}
 	}
 	return lastBlock
@@ -315,6 +331,61 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV04Vault(chainID, value)
+				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
+					newVault.Address: newVault,
+				})
+			case err := <-sub.Err():
+				logs.Error(err)
+				return lastSyncedBlock, true, err
+			}
+		}
+	case 5:
+		currentRegistry, _ := contracts.NewYRegistryV5(registry.Address, client)
+		etherReader := ethereum.Reader{Backend: client}
+		contractABI, _ := contracts.YRegistryV5MetaData.GetAbi()
+		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
+		query := goEth.FilterQuery{
+			FromBlock: big.NewInt(int64(registry.Block)),
+			Addresses: []common.Address{registry.Address},
+			Topics:    topics,
+		}
+		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
+		if err != nil {
+			logs.Error(err)
+			if wg != nil && !isDone {
+				wg.Done()
+			}
+			return 0, false, err
+		}
+		defer sub.Unsubscribe()
+
+		/** 🔵 - Yearn *************************************************************************************
+		** Handle historical events
+		**************************************************************************************************/
+		for _, log := range history {
+			value, err := currentRegistry.ParseNewVault(log)
+			if err != nil {
+				continue
+			}
+			historicalVault := handleV05Vault(chainID, value)
+			storage.StoreNewVaultToRegistry(chainID, historicalVault)
+		}
+		if wg != nil && !isDone {
+			wg.Done()
+		}
+
+		/**********************************************************************************************
+		** Listen and handle new events
+		**********************************************************************************************/
+		for {
+			select {
+			case log := <-stream:
+				value, err := currentRegistry.ParseNewVault(log)
+				if err != nil {
+					continue
+				}
+				lastSyncedBlock = value.Raw.BlockNumber
+				newVault := handleV05Vault(chainID, value)
 				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
 					newVault.Address: newVault,
 				})

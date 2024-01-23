@@ -44,11 +44,18 @@ var POLYGON = TChain{
 			Version: 4,
 			Block:   49_100_596,
 		},
+		{
+			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
+			Version: 5,
+			Block:   48_907_735,
+		},
 	},
-	ExtraVaults:       []models.TVaultsFromRegistry{},
-	BlacklistedVaults: []common.Address{},
-	ExtraTokens:       []common.Address{},
-	IgnoredTokens:     []common.Address{},
+	ExtraVaults: []models.TVaultsFromRegistry{},
+	BlacklistedVaults: []common.Address{
+		common.HexToAddress(`0x0128E1D15ED9f0c8572967825Ef46309BDA39836`), //Test USDC
+	},
+	ExtraTokens:   []common.Address{},
+	IgnoredTokens: []common.Address{},
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 		FactoryAddress:  common.Address{},

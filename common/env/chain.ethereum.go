@@ -63,19 +63,19 @@ var ETHEREUM = TChain{
 		},
 		{
 			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
-			Version: 4,
+			Version: 5,
 			Block:   18385809,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
-			//mkUSD yVault-A (yvmkUSD-A), no registry AFAIK
+			//yvAjnaDAI-harvester (ysyvAjnaDAI)
 			ChainID:         1,
-			Address:         common.HexToAddress(`0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13`),
+			Address:         common.HexToAddress(`0x082a5743aAdf3d0Daf750EeF24652b36a68B1e9C`),
 			RegistryAddress: common.HexToAddress(`0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5`),
-			TokenAddress:    common.HexToAddress(`0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28`),
+			TokenAddress:    common.HexToAddress(`0xe24BA27551aBE96Ca401D39761cA2319Ea14e3CB`),
 			APIVersion:      `3.0.1`,
-			BlockNumber:     18817046,
+			BlockNumber:     18981463,
 			Type:            models.TTokenType(models.TokenTypeStandardVault),
 			Kind:            models.TVaultKind(models.VaultKindMultiple),
 		},
@@ -92,6 +92,8 @@ var ETHEREUM = TChain{
 		common.HexToAddress("0xc09cfb625e586B117282399433257a1C0841edf3"), // Staked Yearn BAL Vault - Disabled for now
 		common.HexToAddress("0xD725F5742047B4B4A3110D0b38284227fcaB041e"), // LP Yearn BAL Vault - Disabled for now
 		common.HexToAddress("0xD61e198e139369a40818FE05F5d5e6e045Cd6eaF"), // Balancer yBAL Stable Pool - Disabled for now
+		//
+		common.HexToAddress("0xe1d0549702C0beC3d3F918159449542738e6F942"), // Test V3 Vault
 		//
 		// common.HexToAddress(`0x39CAF13a104FF567f71fd2A4c68C026FDB6E740B`), //DebtRatio 0 - To retire
 		// common.HexToAddress(`0x4560b99C904aAD03027B5178CCa81584744AC01f`), //DebtRatio 0 - To retire
@@ -129,6 +131,7 @@ var ETHEREUM = TChain{
 		common.HexToAddress(`0xdA47862a83dac0c112BA89c6abC2159b95afd71C`), // Prisma
 		common.HexToAddress(`0xe3668873d944e4a949da05fc8bde419eff543882`), // yPrisma
 		common.HexToAddress(`0x69833361991ed76f9e8DBBcdf9ea1520fEbFb4a7`), // lp-Prisma
+		common.HexToAddress(`0x9a96ec9B57Fb64FbC60B423d1f4da7691Bd35079`), // Ajna
 	},
 	IgnoredTokens: []common.Address{
 		common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`), // nothing

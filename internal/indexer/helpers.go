@@ -64,6 +64,21 @@ func handleV04Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault
 	logs.Info(`Got V4 vault ` + value.Vault.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
 }
+func handleV05Vault(chainID uint64, value *contracts.YRegistryV5NewVault) models.TVaultsFromRegistry {
+	kind := models.VaultKindMultiple
+	newVault := models.TVaultsFromRegistry{
+		ChainID:         chainID,
+		RegistryAddress: value.Raw.Address,
+		Address:         value.VaultAddress,
+		TokenAddress:    value.Asset,
+		APIVersion:      `3.0.1`,
+		BlockNumber:     value.Raw.BlockNumber,
+		Type:            models.TokenTypeStandardVault,
+		Kind:            kind,
+	}
+	logs.Info(`Got V5 vault ` + value.VaultAddress.Hex() + ` from registry ` + value.Raw.Address.Hex())
+	return newVault
+}
 
 /**************************************************************************************************
 ** The different versions of the experimental vaults have different events. We need to handle them

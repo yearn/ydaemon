@@ -32,6 +32,10 @@ var ETHEREUM = TChain{
 		Address: common.HexToAddress(`0x8ee392a4787397126C163Cb9844d7c447da419D8`),
 		Block:   14166636,
 	},
+	APROracleContract: TContractData{
+		Address: common.HexToAddress(`0x27aD2fFc74F74Ed27e1C0A19F1858dD0963277aE`),
+		Block:   19070394,
+	},
 	Coin: models.TERC20Token{
 		Address:                   DEFAULT_COIN_ADDRESS,
 		UnderlyingTokensAddresses: []common.Address{},

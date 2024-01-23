@@ -28,6 +28,10 @@ var ARBITRUM = TChain{
 		Address: common.HexToAddress(`0x0e5b46E4b2a05fd53F5a4cD974eb98a9a613bcb7`),
 		Block:   30385403,
 	},
+	APROracleContract: TContractData{
+		Address: common.HexToAddress(`0x27aD2fFc74F74Ed27e1C0A19F1858dD0963277aE`),
+		Block:   19070394,
+	},
 	Coin: models.TERC20Token{
 		Address:                   DEFAULT_COIN_ADDRESS,
 		UnderlyingTokensAddresses: []common.Address{},

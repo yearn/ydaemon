@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-25T17:32:00.917248+01:00",
+	"lastUpdate": "2024-01-25T18:08:31.498901+01:00",
 	"version": {
 		"major": 0,
-		"minor": 5,
+		"minor": 6,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -144,6 +144,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0x3bd8C987286D8Ad00c05fdb2Ae3E8C9a0f054734/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
+			"address": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
+			"underlyingTokensAddresses": [
+				"0xf54a15f6da443041bb075959ea66ee47655ddfca"
+			],
+			"type": "Yearn Vault",
+			"name": "yvAjnaUSDC-compounder",
+			"symbol": "ysyvAjnaUSDC",
+			"displayName": "yvAjnaUSDC-compounder",
+			"displaySymbol": "ysyvAjnaUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x4987d1856F93DFf29e08aa605A805FaF43dC3103/logo-128.png",
 			"decimals": 6,
 			"chainID": 137
 		},
@@ -363,6 +379,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xf4F9d5697341B4C9B0Cc8151413e05A90f7dc24F/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
+			"address": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
+			"underlyingTokensAddresses": [
+				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna USDC Vault ",
+			"symbol": "yvAjnaUSDC",
+			"displayName": "Yearn-Ajna USDC Vault ",
+			"displaySymbol": "yvAjnaUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xF54a15F6da443041Bb075959EA66EE47655DDFcA/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		}
 	}

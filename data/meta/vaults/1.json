@@ -224,9 +224,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
+			"displayName": "mkUSD-A",
 			"displaySymbol": "",
-			"description": ""
+			"description": "Multi strategy mkUSD vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
 		},
 		"0x04c8bfe2eb09a1e2e9fa97a2fd970e06d87b43de": {
 			"address": "0x04c8bfe2eb09a1e2e9fa97a2fd970e06d87b43de",
@@ -407,9 +407,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
+			"displayName": "yvYearn-Ajna DAI Harvester",
 			"displaySymbol": "",
-			"description": ""
+			"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit https://juiced.yearn.fi/ to learn more."
 		},
 		"0x0d4ea8536f9a13e4fba16042a46c30f092b06aa5": {
 			"address": "0x0d4ea8536f9a13e4fba16042a46c30f092b06aa5",
@@ -10853,9 +10853,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Yearn-Ajna DAI Vault",
+			"displaySymbol": "yvAjnaDAI",
+			"description": "Supplies DAI to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more."
 		},
 		"0xe2cad35cfd1a9b5acd557558f44b096ef8340c1b": {
 			"address": "0xe2cad35cfd1a9b5acd557558f44b096ef8340c1b",

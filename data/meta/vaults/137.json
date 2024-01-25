@@ -83,8 +83,8 @@
 			"activation": 50104230,
 			"chainID": 137,
 			"endorsed": true,
-			"performanceFee": 1000,
-			"managementFee": 0,
+			"performanceFee": 0,
+			"managementFee": 100,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68"
@@ -185,8 +185,8 @@
 			"activation": 50217440,
 			"chainID": 137,
 			"endorsed": true,
-			"performanceFee": 1000,
-			"managementFee": 0,
+			"performanceFee": 0,
+			"managementFee": 100,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
@@ -652,9 +652,9 @@
 				"isPool": false,
 				"stability": ""
 			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+			"displayName": "Yearn-Ajna USDC Vault",
+			"displaySymbol": "yvAjnaUSDC",
+			"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more."
 		}
 	}
 }

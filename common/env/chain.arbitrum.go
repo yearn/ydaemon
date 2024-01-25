@@ -49,7 +49,12 @@ var ARBITRUM = TChain{
 		{
 			Address: common.HexToAddress("0x3199437193625DCcD6F9C9e98BDf93582200Eb1f"),
 			Version: 2,
-			Block:   4841854,
+			Block:   4_841_854,
+		},
+		{
+			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
+			Version: 4,
+			Block:   171_850_013,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},

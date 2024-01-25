@@ -132,6 +132,13 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		rawCalls = append(rawCalls, call)
 	}
 
+	//Store the chainID for logging
+	chainID, _ := caller.Client.ChainID(context.Background())
+	chainIDStr := "unknown"
+	if chainID != nil {
+		chainIDStr = strconv.Itoa(int(chainID.Int64()))
+	}
+
 	for i := uint64(0); i < uint64(len(multiCalls)); {
 		var group []contracts.Multicall3Call
 		var rawCallsGroup []Call
@@ -153,7 +160,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 			SIZE_ERROR := strings.Contains(strings.ToLower(err.Error()), "request entity too large")
 			OUT_OF_GAS_ERROR := strings.Contains(strings.ToLower(err.Error()), "out of gas")
 			isAssumingOutOfGas := false
-			chainID, _ := caller.Client.ChainID(context.Background())
 
 			if LIMIT_ERROR {
 				if SHOULD_LOG_WARNINGS {
@@ -178,11 +184,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 					batchSize = 10_000
 					continue
 				}
-				chainID, _ := caller.Client.ChainID(context.Background())
-				chainIDStr := "unknown"
-				if chainID != nil {
-					chainIDStr = strconv.Itoa(int(chainID.Int64()))
-				}
 				if batchSize <= 1 {
 					if SHOULD_LOG_WARNINGS {
 						logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
@@ -206,7 +207,19 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 		}
 
 		if len(tempPackedResp) == 0 {
-			logs.Error("Empty response from multicall")
+			logs.Error("Empty response from multicall for " + strconv.FormatInt(int64(len(group)), 10) + " calls")
+			if batchSize == math.MaxInt64 {
+				batchSize = 10_000
+				continue
+			}
+			if batchSize <= 1 {
+				logs.Pretty(group, rawCallsGroup, tempPackedResp, err, blockNumber)
+				if SHOULD_LOG_WARNINGS {
+					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
+				}
+				return nil
+			}
+			batchSize = batchSize / 2
 			continue
 		}
 

@@ -1,7 +1,6 @@
 package prices
 
 import (
-	"context"
 	"math/big"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -37,17 +36,7 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokens []m
 	** available. If it is, we add it to the map. If it's not, we try to fetch it from an external
 	** API.
 	**********************************************************************************************/
-	var response map[string][]interface{}
-	var blockNumberBigInt *big.Int
-
-	if blockNumber == nil {
-		currentBlockNumber, _ := ethereum.GetRPC(chainID).BlockNumber(context.Background())
-		blockNumber = &currentBlockNumber
-		response = multicalls.Perform(chainID, calls, nil)
-	} else {
-		blockNumberBigInt = big.NewInt(int64(*blockNumber))
-		response = multicalls.Perform(chainID, calls, blockNumberBigInt)
-	}
+	response := multicalls.Perform(chainID, calls, nil)
 
 	for _, token := range tokens {
 		rawPricePerShare := response[token.Address.Hex()+`pricePerShare`]

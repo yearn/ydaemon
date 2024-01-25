@@ -70,18 +70,13 @@ var ETHEREUM = TChain{
 			Version: 4,
 			Block:   19072527,
 		},
-		{
-			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
-			Version: 5,
-			Block:   18385809,
-		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
 			//yvAjnaDAI-harvester (ysyvAjnaDAI)
 			ChainID:         1,
 			Address:         common.HexToAddress(`0x082a5743aAdf3d0Daf750EeF24652b36a68B1e9C`),
-			RegistryAddress: common.HexToAddress(`0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5`),
+			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
 			TokenAddress:    common.HexToAddress(`0xe24BA27551aBE96Ca401D39761cA2319Ea14e3CB`),
 			APIVersion:      `3.0.1`,
 			BlockNumber:     18981463,

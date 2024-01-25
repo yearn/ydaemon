@@ -49,11 +49,6 @@ var POLYGON = TChain{
 			Version: 4,
 			Block:   52_488_140,
 		},
-		// {
-		// 	Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
-		// 	Version: 5,
-		// 	Block:   48_907_735,
-		// },
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{

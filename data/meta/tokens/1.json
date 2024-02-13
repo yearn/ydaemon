@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-25T17:34:33.922075+01:00",
+	"lastUpdate": "2024-02-13T11:03:54.821349+01:00",
 	"version": {
 		"major": 0,
-		"minor": 19,
+		"minor": 20,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -260,6 +260,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13": {
+			"address": "0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
+			"type": "Yearn Vault",
+			"name": "mkUSD yVault-A",
+			"symbol": "yvmkUSD-A",
+			"displayName": "mkUSD yVault-A",
+			"displaySymbol": "yvmkUSD-A",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x04b727c7e246ca70d496ecf52e6b6280f3c8077d": {
 			"address": "0x04b727c7e246ca70d496ecf52e6b6280f3c8077d",
 			"underlyingTokensAddresses": [
@@ -482,22 +498,6 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3/logo-128.png",
-			"decimals": 18,
-			"chainID": 1
-		},
-		"0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13": {
-			"address": "0x04aebe2e4301cdf5e9c57b01ebdfe4ac4b48dd13",
-			"underlyingTokensAddresses": [
-				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
-			],
-			"type": "Yearn Vault",
-			"name": "mkUSD yVault-A",
-			"symbol": "yvmkUSD-A",
-			"displayName": "mkUSD yVault-A",
-			"displaySymbol": "yvmkUSD-A",
-			"description": "",
-			"category": "yVault",
-			"icon": "https://assets.smold.app/api/token/1/0x04AeBe2e4301CdF5E9c57B01eBdfe4Ac4B48DD13/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1965,6 +1965,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x2c8a33c66c00264316ea4e4433e86a386eb6ecbf": {
+			"address": "0x2c8a33c66c00264316ea4e4433e86a386eb6ecbf",
+			"underlyingTokensAddresses": [
+				"0x6951bdc4734b9f7f3e1b74afebc670c736a0edb6"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve pxETH-stETH Factory yVault",
+			"symbol": "yvCurve-pxETH-stETH-f",
+			"displayName": "Curve pxETH-stETH Factory yVault",
+			"displaySymbol": "yvCurve-pxETH-stETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2c8a33C66c00264316Ea4E4433e86A386Eb6ECBf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2d59aa422a7aae58038cf8ae6ed07330cc7d3ae8": {
 			"address": "0x2d59aa422a7aae58038cf8ae6ed07330cc7d3ae8",
 			"underlyingTokensAddresses": [
@@ -2519,6 +2535,34 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x34fe2a45D8df28459d7705F37eD13d7aE4382009/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x352a4b34b8e9f43b869f6f80728978cccdced406": {
+			"address": "0x352a4b34b8e9f43b869f6f80728978cccdced406",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SOUNDLINX",
+			"symbol": "SDLX",
+			"displayName": "SOUNDLINX",
+			"displaySymbol": "SDLX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x352A4B34B8e9f43B869F6F80728978CCcDCED406/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x35fa164735182de50811e8e2e824cfb9b6118ac2": {
+			"address": "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ether.fi ETH",
+			"symbol": "eETH",
+			"displayName": "ether.fi ETH",
+			"displaySymbol": "eETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x365accfca291e7d3914637abf1f7635db165bb09": {
@@ -5244,6 +5288,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6951bdc4734b9f7f3e1b74afebc670c736a0edb6": {
+			"address": "0x6951bdc4734b9f7f3e1b74afebc670c736a0edb6",
+			"underlyingTokensAddresses": [
+				"0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+				"0xae7ab96520de3a18e5e111b5eaab095312d7fe84"
+			],
+			"type": "Curve LP",
+			"name": "pxETH/stETH",
+			"symbol": "pxsteth",
+			"displayName": "pxETH/stETH",
+			"displaySymbol": "pxsteth",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6951bDC4734b9f7F3E1B74afeBC670c736A0EDB6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x69681f8fde45345c3870bcd5eaf4a05a60e7d227": {
 			"address": "0x69681f8fde45345c3870bcd5eaf4a05a60e7d227",
 			"underlyingTokensAddresses": [],
@@ -5255,6 +5316,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x69681f8fde45345C3870BCD5eaf4A05a60E7D227/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6982508145454ce325ddbe47a25d4ec3d2311933": {
+			"address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pepe",
+			"symbol": "PEPE",
+			"displayName": "Pepe",
+			"displaySymbol": "PEPE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6982508145454Ce325dDbE47a25d4ec3d2311933/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7658,6 +7733,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x97effb790f2fbb701d88f89db4521348a2b77be8": {
+			"address": "0x97effb790f2fbb701d88f89db4521348a2b77be8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Convergence",
+			"symbol": "CVG",
+			"displayName": "Convergence",
+			"displaySymbol": "CVG",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x97efFB790f2fbB701D88f89DB4521348A2B77be8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x97fe22e7341a0cd8db6f6c021a24dc8f4dad855f": {
 			"address": "0x97fe22e7341a0cd8db6f6c021a24dc8f4dad855f",
 			"underlyingTokensAddresses": [],
@@ -7887,6 +7976,22 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x9b77bd0a665F05995b68e36fC1053AFFfAf0d4B5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6": {
+			"address": "0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6",
+			"underlyingTokensAddresses": [
+				"0x04c154b66cb340f3ae24111cc767e0184ed00cc6"
+			],
+			"type": "Yearn Vault",
+			"name": "Autocompounding Pirex Ether",
+			"symbol": "apxETH",
+			"displayName": "Autocompounding Pirex Ether",
+			"displaySymbol": "apxETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12460,6 +12565,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xfb5137Aa9e079DB4b7C2929229caf503d0f6DA96/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfb588886715a263f69c1edd4e84e0ac1855e928a": {
+			"address": "0xfb588886715a263f69c1edd4e84e0ac1855e928a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Conic Debt Token",
+			"symbol": "cncDT",
+			"displayName": "Conic Debt Token",
+			"displaySymbol": "cncDT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xFB588886715a263F69c1edd4e84e0Ac1855E928A/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

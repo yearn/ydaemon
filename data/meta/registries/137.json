@@ -198,5 +198,15 @@
 		"version": "3.0.0",
 		"chainID": 137,
 		"blockNumber": 52740408
+	},
+	"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
+		"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"version": "3.0.0",
+		"chainID": 137,
+		"blockNumber": 53085593
 	}
 }

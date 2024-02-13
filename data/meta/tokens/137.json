@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-01-25T18:08:31.498901+01:00",
+	"lastUpdate": "2024-02-13T11:03:22.765433+01:00",
 	"version": {
 		"major": 0,
-		"minor": 6,
+		"minor": 7,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -395,6 +395,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xF54a15F6da443041Bb075959EA66EE47655DDFcA/logo-128.png",
 			"decimals": 6,
+			"chainID": 137
+		},
+		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
+			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
+			"underlyingTokensAddresses": [
+				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
+			],
+			"type": "Yearn Vault",
+			"name": "stMATIC accumulator",
+			"symbol": "ysWMATIC",
+			"displayName": "stMATIC accumulator",
+			"displaySymbol": "ysWMATIC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xf7464410C1ccF86b19711c9B6599336b00641c8f/logo-128.png",
+			"decimals": 18,
 			"chainID": 137
 		}
 	}

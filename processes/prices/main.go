@@ -157,7 +157,7 @@ func fetchPrices(
 			continue
 		}
 		currentPrice, ok := newPriceMap[shareValue.AssetAddress]
-		if ok && !currentPrice.Price.IsZero() {
+		if !ok || currentPrice.Price.IsZero() {
 			continue
 		}
 

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-02-13T11:03:54.821349+01:00",
+	"lastUpdate": "2024-02-16T16:06:29.778175+01:00",
 	"version": {
 		"major": 0,
-		"minor": 20,
+		"minor": 21,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -11108,6 +11108,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xd9788f3931Ede4D5018184E198699dC6d66C1915/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xda16cf041e2780618c49dbae5d734b89a6bac9b3": {
+			"address": "0xda16cf041e2780618c49dbae5d734b89a6bac9b3",
+			"underlyingTokensAddresses": [
+				"0xda16cf041e2780618c49dbae5d734b89a6bac9b3"
+			],
+			"type": "Yearn Vault",
+			"name": "Betswap.gg",
+			"symbol": "BSGG",
+			"displayName": "Betswap.gg",
+			"displaySymbol": "BSGG",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xdA16Cf041E2780618c49Dbae5d734B89a6Bac9b3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

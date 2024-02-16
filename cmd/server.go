@@ -50,6 +50,8 @@ func NewRouter() *gin.Engine {
 		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)                // Migrated to simplified ✅
 		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified) // Migrated to simplified ✅
 		router.GET(`vaults/all`, c.GetAllVaultsForAllChainsSimplified)            // Migrated to simplified ✅
+		router.GET(`vaults/v3`, c.GetAllV3VaultsForAllChainsSimplified)           // Migrated to simplified ✅
+		router.GET(`vaults/v2`, c.GetAllV2VaultsForAllChainsSimplified)           // Migrated to simplified ✅
 
 		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
 

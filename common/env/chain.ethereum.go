@@ -83,6 +83,17 @@ var ETHEREUM = TChain{
 			Type:            models.TTokenType(models.TokenTypeStandardVault),
 			Kind:            models.TVaultKind(models.VaultKindMultiple),
 		},
+		{
+			//Yearn-Ajna WETH Vault (yvAjnaWETH)
+			ChainID:         1,
+			Address:         common.HexToAddress(`0x503e0BaB6acDAE73eA7fb7cf6Ae5792014dbe935`),
+			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
+			TokenAddress:    common.HexToAddress(`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`),
+			APIVersion:      `3.0.1`,
+			BlockNumber:     19237884,
+			Type:            models.TTokenType(models.TokenTypeStandardVault),
+			Kind:            models.TVaultKind(models.VaultKindMultiple),
+		},
 	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing

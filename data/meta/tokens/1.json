@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-02-16T16:06:29.778175+01:00",
+	"lastUpdate": "2024-02-23T08:43:14.689078+01:00",
 	"version": {
 		"major": 0,
-		"minor": 21,
+		"minor": 23,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -3936,6 +3936,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935": {
+			"address": "0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna WETH Vault",
+			"symbol": "yvAjnaWETH",
+			"displayName": "Yearn-Ajna WETH Vault",
+			"displaySymbol": "yvAjnaWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x503e0BaB6acDAE73eA7fb7cf6Ae5792014dbe935/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x507c6de33f50c0505f77f598c0b3ca7b5feb3d68": {
 			"address": "0x507c6de33f50c0505f77f598c0b3ca7b5feb3d68",
 			"underlyingTokensAddresses": [
@@ -4188,6 +4204,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This Curve v2 crypto pool contains ibAUD and USDC.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x54c8Ecf46A81496eEB0608BD3353388b5D7a2a33/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x55296f69f40ea6d20e478533c15a6b08b654e758": {
+			"address": "0x55296f69f40ea6d20e478533c15a6b08b654e758",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "XY Oracle",
+			"symbol": "XYO",
+			"displayName": "XY Oracle",
+			"displaySymbol": "XYO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x55296f69f40Ea6d20E478533C15A6B08B654E758/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -106,6 +106,7 @@ var ETHEREUM = TChain{
 		},
 	},
 	BlacklistedVaults: []common.Address{
+		common.HexToAddress("0xd1b0b6a1093a097227dc117c87ae3a72d9bd7cf2"), // uniETH pool
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing
 		common.HexToAddress("0x9C13e225AE007731caA49Fd17A41379ab1a489F4"), // Test deployment - Nothing
 		common.HexToAddress("0xBF7AA989192b020a8d3e1C65a558e123834325cA"), // HBTC yVault - Not Yearn - PPS 0

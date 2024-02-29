@@ -93,8 +93,14 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 		prices := helpers.DecodeBigInts(response[AERO_SUGAR_ORACLE_ADDRESS.Hex()+`getManyRatesWithConnectors`])
 		token0Decimals := helpers.DecodeUint64(response[pair.Token0.Hex()+`decimals`])
 		token1Decimals := helpers.DecodeUint64(response[pair.Token1.Hex()+`decimals`])
-		token0Price := prices[0]
-		token1Price := prices[1]
+
+		token0Price := bigNumber.NewInt(0)
+		token1Price := bigNumber.NewInt(0)
+
+		if len(prices) > 0 {
+			token0Price = prices[0]
+			token1Price = prices[1]
+		}
 
 		if token0Price.IsZero() && addresses.Equals(pair.Token0, BASE_USDC_ADDRESS) {
 			token0Price = bigNumber.NewInt(1e18)

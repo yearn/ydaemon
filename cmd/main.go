@@ -3,10 +3,12 @@ package main
 import (
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
 	"github.com/yearn/ydaemon/processes/apr"
@@ -42,6 +44,56 @@ func triggerTgMessage(message string) {
 	_ = m
 }
 
+func listenToSignals() {
+	telegramToken, ok := os.LookupEnv("TELEGRAM_BOT")
+	if !ok {
+		logs.Error(`TELEGRAM_BOT environment variable not set`)
+		return
+	}
+	telegramWhitelistedUsers, ok := os.LookupEnv("TELEGRAM_WHITELIST")
+	if !ok {
+		logs.Error(`TELEGRAM_WHITELIST environment variable not set`)
+		return
+	}
+	telegramWhitelistedUsersArray := strings.Split(telegramWhitelistedUsers, `,`)
+	bot, err := tgbotapi.NewBotAPI(telegramToken)
+	if err != nil {
+		logs.Error(`Error initializing Telegram bot: ` + err.Error())
+		return
+	}
+	u := tgbotapi.NewUpdate(0)
+	updates := bot.GetUpdatesChan(u)
+
+	for update := range updates {
+		if update.Message == nil {
+			continue
+		}
+		if !update.Message.IsCommand() {
+			continue
+		}
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
+		lowercaseUserName := strings.ToLower(update.Message.From.UserName)
+		if !helpers.Contains(telegramWhitelistedUsersArray, lowercaseUserName) {
+			logs.Error(`Unauthorized user: ` + update.Message.From.UserName)
+			msg.Text = "You are not authorized to use this bot."
+			bot.Send(msg)
+			continue
+		}
+		// Extract the command from the Message.
+		switch update.Message.Command() {
+		case "help":
+			msg.Text = "I understand /restart."
+			bot.Send(msg)
+		case "restart":
+			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
+			os.Exit(1)
+		default:
+			msg.Text = "I don't know that command"
+			bot.Send(msg)
+		}
+	}
+}
+
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)
@@ -64,6 +116,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
+		go listenToSignals()
 		go triggerTgMessage(`💛 - yDaemon server is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {

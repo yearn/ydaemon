@@ -21,7 +21,9 @@ var STRATLIST = []models.TStrategy{}
 var cron = gocron.NewScheduler(time.UTC)
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 	go InitializeBribes(chainID)
 
 	underWg := sync.WaitGroup{}

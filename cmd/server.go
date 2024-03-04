@@ -42,6 +42,9 @@ func NewRouter() *gin.Engine {
 		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))
+	router.GET(`/`, func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to yDaemon"})
+	})
 
 	// Vaults section
 	{

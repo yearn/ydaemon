@@ -1,9 +1,11 @@
 package main
 
 import (
+	"os"
 	"strconv"
 	"sync"
 
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
@@ -11,6 +13,34 @@ import (
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
+
+func triggerTgMessage(message string) {
+	telegramToken, ok := os.LookupEnv("TELEGRAM_BOT")
+	if !ok {
+		logs.Error(`TELEGRAM_BOT environment variable not set`)
+		return
+	}
+	telegramChatStr, ok := os.LookupEnv("TELEGRAM_CHAT")
+	if !ok {
+		logs.Error(`TELEGRAM_CHAT environment variable not set`)
+		return
+	}
+	telegramChat, err := strconv.ParseInt(telegramChatStr, 10, 64)
+	if err != nil {
+		logs.Error(`TELEGRAM_CHAT environment variable is not a valid chat ID`)
+		return
+	}
+	bot, err := tgbotapi.NewBotAPI(telegramToken)
+	if err != nil {
+		logs.Error(`Error initializing Telegram bot: ` + err.Error())
+		return
+	}
+	m, err := bot.Send(tgbotapi.NewMessage(telegramChat, message))
+	if err != nil {
+		logs.Error(`Error sending message to Telegram: ` + err.Error())
+	}
+	_ = m
+}
 
 func main() {
 	initFlags()
@@ -34,6 +64,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
+		go triggerTgMessage(`💛 - yDaemon server is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {
 			setStatusForChainID(chainID, "Loading")
@@ -41,7 +72,11 @@ func main() {
 			ethereum.GetWSClient(chainID)
 			ethereum.InitBlockTimestamp(chainID)
 			wg.Add(1)
-			go internal.InitializeV2(chainID, &wg)
+			go func(chainID uint64) {
+				internal.InitializeV2(chainID, nil)
+				triggerTgMessage(`✅ - yDaemon V2 initialized for chain ` + strconv.FormatUint(chainID, 10))
+				wg.Done()
+			}(chainID)
 		}
 		wg.Wait()
 		for _, chainID := range chains {

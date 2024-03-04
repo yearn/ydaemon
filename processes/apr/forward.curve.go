@@ -79,6 +79,7 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPR, debtRatio),
 			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPR, debtRatio),
 			RewardsAPR: bigNumber.NewFloat(0).Mul(args.rewardAPR, debtRatio),
+			KeepCRV:    keepCrv,
 		},
 	}
 	return apyStruct

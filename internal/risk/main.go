@@ -314,7 +314,7 @@ func populateRisk(chainID uint64) {
 		group := useStrategyGroup(groups, strategy)
 		if group == nil {
 			if !stratGroupErrorAlreadySent[chainID][strategy.Name] {
-				logs.Error(`[populateRisk] impossible to find a risk group for strategy ` + strategy.Address.Hex() + ` (` + strategy.Name + `) on chain ` + strconv.FormatUint(chainID, 10))
+				// logs.Error(`[populateRisk] impossible to find a risk group for strategy ` + strategy.Address.Hex() + ` (` + strategy.Name + `) on chain ` + strconv.FormatUint(chainID, 10))
 				stratGroupErrorAlreadySent[chainID][strategy.Name] = true
 			}
 			continue

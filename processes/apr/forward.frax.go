@@ -28,7 +28,13 @@ func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPoo
 	** We then need to add the minimum rewards APR to the convexForwardAPR to get the Frax APR.
 	** The minimum rewards APR is the minimum amount of rewards we get from the Frax pool.
 	**********************************************************************************************/
-	minRewardsAPR := bigNumber.NewFloat(0).SetString(fraxPool.TotalRewardAPRs.Min)
+	minRewardsAPR := bigNumber.NewFloat(0)
+	switch fraxPool.TotalRewardAPRs.Min.(type) {
+	case string:
+		minRewardsAPR = bigNumber.NewFloat(0).SetString(fraxPool.TotalRewardAPRs.Min.(string))
+	case float64:
+		minRewardsAPR = bigNumber.NewFloat(0).SetFloat64(fraxPool.TotalRewardAPRs.Min.(float64))
+	}
 	minRewardsAPR = bigNumber.NewFloat(0).Div(minRewardsAPR, bigNumber.NewFloat(100))
 
 	apyStruct := TStrategyAPR{
@@ -42,6 +48,7 @@ func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPoo
 			BaseAPR:    baseConvexStrategyData.Composite.BaseAPR,
 			CvxAPR:     baseConvexStrategyData.Composite.CvxAPR,
 			RewardsAPR: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPR, minRewardsAPR),
+			KeepCRV:    baseConvexStrategyData.Composite.KeepCRV,
 		},
 	}
 	return apyStruct

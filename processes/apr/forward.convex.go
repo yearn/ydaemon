@@ -87,6 +87,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPR, debtRatio),
 			CvxAPR:     bigNumber.NewFloat(0).Mul(cvxAPR, debtRatio),
 			RewardsAPR: bigNumber.NewFloat(0).Mul(args.rewardAPR, debtRatio),
+			KeepCRV:    keepCrv,
 		},
 	}
 	return apyStruct

@@ -251,7 +251,6 @@ func calculateCurveLikeStrategyAPR(
 				rewardAPR:      rewardAPR,
 				poolDailyAPY:   poolDailyAPY,
 			},
-			fraxPool,
 		)
 	}
 	if isFraxStrategy(strategy) {
@@ -325,6 +324,8 @@ func computeCurveLikeForwardAPR(
 	BaseAPR := bigNumber.NewFloat(0)
 	CvxAPR := bigNumber.NewFloat(0)
 	RewardsAPR := bigNumber.NewFloat(0)
+	KeepCRV := bigNumber.NewFloat(0)
+	KeepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
@@ -349,6 +350,8 @@ func computeCurveLikeForwardAPR(
 		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
 		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
 		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
+		KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
+		KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
 	}
 
 	return TForwardAPR{
@@ -361,6 +364,8 @@ func computeCurveLikeForwardAPR(
 			BaseAPR:    BaseAPR,
 			CvxAPR:     CvxAPR,
 			RewardsAPR: RewardsAPR,
+			KeepCRV:    KeepCRV,
+			KeepVelo:   KeepVelo,
 		},
 	}
 }

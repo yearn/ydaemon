@@ -13,7 +13,7 @@ func ComputeChainAPR(chainID uint64) {
 	gauges := storage.FetchCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
-	fraxPools := retrieveFraxPools(chainID)
+	fraxPools := retrieveFraxPools()
 
 	if COMPUTED_APR[chainID] == nil {
 		COMPUTED_APR[chainID] = make(map[common.Address]TVaultAPR)

@@ -5,9 +5,6 @@ import "github.com/yearn/ydaemon/common/bigNumber"
 type TFees struct {
 	Performance *bigNumber.Float `json:"performance"`
 	Management  *bigNumber.Float `json:"management"`
-	KeepCRV     *bigNumber.Float `json:"keepCRV"`
-	KeepVelo    *bigNumber.Float `json:"keepVELO"`
-	CvxKeepCRV  *bigNumber.Float `json:"cvx_keepCRV"`
 }
 type TCompositeData struct {
 	Boost                 *bigNumber.Float `json:"boost"`
@@ -18,6 +15,8 @@ type TCompositeData struct {
 	RewardsAPR            *bigNumber.Float `json:"rewardsAPR"`
 	V3OracleCurrentAPR    *bigNumber.Float `json:"v3OracleCurrentAPR,omitempty"`
 	V3OracleStratRatioAPR *bigNumber.Float `json:"v3OracleStratRatioAPR,omitempty"`
+	KeepCRV               *bigNumber.Float `json:"keepCRV,omitempty"`
+	KeepVelo              *bigNumber.Float `json:"keepVELO,omitempty"`
 }
 type TExtraRewards struct {
 	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`

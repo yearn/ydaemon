@@ -17,7 +17,7 @@ type TCalculatePrismaAPYDataStruct struct {
 	poolDailyAPY   *bigNumber.Float
 }
 
-func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct, fraxPool TFraxPool) TStrategyAPR {
+func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct) TStrategyAPR {
 	/**********************************************************************************************
 	** If the strategy is not a prisma strategy, we can't calculate the prisma APR.
 	**********************************************************************************************/
@@ -49,6 +49,7 @@ func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct, fraxPool TFra
 			BaseAPR:    baseConvexStrategyData.Composite.BaseAPR,
 			CvxAPR:     baseConvexStrategyData.Composite.CvxAPR,
 			RewardsAPR: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPR, prismaAPR),
+			KeepCRV:    baseConvexStrategyData.Composite.KeepCRV,
 		},
 	}
 	return apyStruct

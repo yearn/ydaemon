@@ -66,6 +66,7 @@ func calculateVeloLikeStrategyAPR(
 	totalSupplyRaw := helpers.DecodeBigInt(response[veloStakingPoolAddress.Hex()+`totalSupply`])
 	rewardTokenRaw := helpers.DecodeAddress(response[veloStakingPoolAddress.Hex()+`rewardToken`])
 	localKeepVeloRaw := helpers.DecodeBigInt(response[strategy.Address.Hex()+`localKeepVELO`])
+	localKeepVelo := helpers.ToNormalizedAmount(localKeepVeloRaw, 4)
 
 	/**********************************************************************************************
 	** If periodFinish is before now, aka rewards are over, we can stop here
@@ -74,6 +75,9 @@ func calculateVeloLikeStrategyAPR(
 	if periodFinish.Int64() < now {
 		return TStrategyAPR{
 			Type: `v2:velo_unpopular`,
+			Composite: TCompositeData{
+				KeepVelo: localKeepVelo,
+			},
 		}
 	}
 
@@ -83,6 +87,9 @@ func calculateVeloLikeStrategyAPR(
 	if totalSupplyRaw.IsZero() {
 		return TStrategyAPR{
 			Type: `v2:velo_unpopular`,
+			Composite: TCompositeData{
+				KeepVelo: localKeepVelo,
+			},
 		}
 	}
 
@@ -94,7 +101,6 @@ func calculateVeloLikeStrategyAPR(
 	debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 	vaultPerformanceFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.PerformanceFee)), 4)
 	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
-	localKeepVelo := helpers.ToNormalizedAmount(localKeepVeloRaw, 4)
 	oneMinusKeepVelo := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), localKeepVelo)
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
 	rewardRate := helpers.ToNormalizedAmount(rewardRateRaw, 18)
@@ -107,6 +113,9 @@ func calculateVeloLikeStrategyAPR(
 	if rewardRate.IsZero() || oneMinusKeepVelo.IsZero() {
 		return TStrategyAPR{
 			Type: `v2:velo_unpopular`,
+			Composite: TCompositeData{
+				KeepVelo: localKeepVelo,
+			},
 		}
 	}
 
@@ -158,6 +167,9 @@ func calculateVeloLikeStrategyAPR(
 		Type:      "v2:velo",
 		DebtRatio: debtRatio,
 		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		Composite: TCompositeData{
+			KeepVelo: localKeepVelo,
+		},
 	}
 	return apyStruct
 }
@@ -179,6 +191,8 @@ func computeVeloLikeForwardAPR(
 	BaseAPR := bigNumber.NewFloat(0)
 	CvxAPR := bigNumber.NewFloat(0)
 	RewardsAPR := bigNumber.NewFloat(0)
+	KeepCRV := bigNumber.NewFloat(0)
+	KeepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
@@ -196,6 +210,8 @@ func computeVeloLikeForwardAPR(
 		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
 		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
 		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
+		KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
+		KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
 	}
 
 	return TForwardAPR{
@@ -208,6 +224,8 @@ func computeVeloLikeForwardAPR(
 			BaseAPR:    BaseAPR,
 			CvxAPR:     CvxAPR,
 			RewardsAPR: RewardsAPR,
+			KeepCRV:    KeepCRV,
+			KeepVelo:   KeepVelo,
 		},
 	}
 }

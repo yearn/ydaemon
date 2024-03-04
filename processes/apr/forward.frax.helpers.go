@@ -13,8 +13,8 @@ import (
 )
 
 type TFraxMinMax struct {
-	Min string `json:"min"`
-	Max string `json:"max"`
+	Min any `json:"min"`
+	Max any `json:"max"`
 }
 type TFraxCoin struct {
 	Address                string  `json:"address"`
@@ -58,7 +58,7 @@ type TFraxPools struct {
 
 const FRAX_POOL_API_URI = "https://frax.convexfinance.com/api/frax/pools"
 
-func retrieveFraxPools(chainID uint64) []TFraxPool {
+func retrieveFraxPools() []TFraxPool {
 	resp, err := http.Get(FRAX_POOL_API_URI)
 	if err != nil {
 		logs.Error(err)
@@ -89,8 +89,19 @@ func retrieveFraxPools(chainID uint64) []TFraxPool {
 
 		for index := range pool.RewardCoins {
 			pool.RewardCoins[index].RewardApr, _ = strconv.ParseFloat(pool.RewardAPRs[index], 64)
-			pool.RewardCoins[index].MinBoostedRewardApr, _ = strconv.ParseFloat(pool.BoostedRewardAprs[index].Min, 64)
-			pool.RewardCoins[index].MaxBoostedRewardApr, _ = strconv.ParseFloat(pool.BoostedRewardAprs[index].Max, 64)
+			switch pool.BoostedRewardAprs[index].Min.(type) {
+			case string:
+				pool.RewardCoins[index].MinBoostedRewardApr, _ = strconv.ParseFloat(pool.BoostedRewardAprs[index].Min.(string), 64)
+			case float64:
+				pool.RewardCoins[index].MinBoostedRewardApr = pool.BoostedRewardAprs[index].Min.(float64)
+			}
+
+			switch pool.BoostedRewardAprs[index].Min.(type) {
+			case string:
+				pool.RewardCoins[index].MaxBoostedRewardApr, _ = strconv.ParseFloat(pool.BoostedRewardAprs[index].Max.(string), 64)
+			case float64:
+				pool.RewardCoins[index].MaxBoostedRewardApr = pool.BoostedRewardAprs[index].Max.(float64)
+			}
 		}
 		poolsList = append(poolsList, pool)
 	}

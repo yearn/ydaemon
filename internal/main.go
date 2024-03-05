@@ -2,7 +2,6 @@ package internal
 
 import (
 	"sync"
-	"time"
 
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/common/logs"
@@ -18,9 +17,8 @@ import (
 )
 
 var STRATLIST = []models.TStrategy{}
-var cron = gocron.NewScheduler(time.UTC)
 
-func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
+func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Scheduler) {
 	if wg != nil {
 		defer wg.Done()
 	}
@@ -57,11 +55,11 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	apr.ComputeChainAPR(chainID)
 	go risk.InitRiskScore(chainID)
 
-	cron.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
+	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
 	})
 
-	cron.Every(15).Minute().WaitForSchedule().Do(func() {
+	scheduler.Every(15).Minute().WaitForSchedule().Do(func() {
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		fetcher.RetrieveAllTokens(chainID, vaultMap)
 
@@ -71,7 +69,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		go risk.InitRiskScore(chainID)
 
 	})
-	cron.StartAsync()
+	scheduler.StartAsync()
 }
 
 func InitializeBribes(chainID uint64) {

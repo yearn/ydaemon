@@ -1,23 +1,49 @@
 package apr
 
 import (
+	"sync"
+
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
-var COMPUTED_APR = make(map[uint64]map[common.Address]TVaultAPR)
+var COMPUTED_APR = make(map[uint64]*sync.Map)
 
+func init() {
+	for chainID := range env.CHAINS {
+		if _, ok := COMPUTED_APR[chainID]; !ok {
+			COMPUTED_APR[chainID] = &sync.Map{}
+		}
+	}
+}
+
+/**************************************************************************
+** Little helper to ensure that the sync map is initialized before use.
+**************************************************************************/
+func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
+	syncMap := source[chainID]
+	if syncMap == nil {
+		syncMap = &sync.Map{}
+		source[chainID] = syncMap
+	}
+	return syncMap
+}
+
+func GetComputedAPR(chainID uint64, vaultAddress common.Address) (any, bool) {
+	return safeSyncMap(COMPUTED_APR, chainID).Load(vaultAddress)
+}
+
+/**************************************************************************
+** Function to calculate the APR for all the vaults in a chain.
+**************************************************************************/
 func ComputeChainAPR(chainID uint64) {
 	allVaults, _ := storage.ListVaults(chainID)
 	gauges := storage.FetchCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
 	fraxPools := retrieveFraxPools()
-
-	if COMPUTED_APR[chainID] == nil {
-		COMPUTED_APR[chainID] = make(map[common.Address]TVaultAPR)
-	}
 
 	for _, vault := range allVaults {
 		if vault.IsRetired {
@@ -83,7 +109,7 @@ func ComputeChainAPR(chainID uint64) {
 			)
 		}
 
-		COMPUTED_APR[chainID][vault.Address] = vaultAPR
+		safeSyncMap(COMPUTED_APR, chainID).Store(vault.Address, vaultAPR)
 	}
 }
 

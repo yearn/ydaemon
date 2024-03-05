@@ -243,7 +243,10 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.Token.UnderlyingTokensAddresses = []string{}
 	}
 
-	v.APR = apr.COMPUTED_APR[vault.ChainID][vault.Address]
+	asyncAPR, ok := apr.GetComputedAPR(vault.ChainID, vault.Address)
+	if ok {
+		v.APR = asyncAPR.(apr.TVaultAPR)
+	}
 	v.Details = TExternalVaultDetails{
 		IsRetired:       vault.IsRetired,
 		IsHidden:        vault.IsHidden,

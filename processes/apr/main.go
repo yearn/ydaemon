@@ -44,6 +44,7 @@ func ComputeChainAPR(chainID uint64) {
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
 	fraxPools := retrieveFraxPools()
+	refreshGammaMerkl(chainID)
 
 	for _, vault := range allVaults {
 		if vault.IsRetired {
@@ -71,6 +72,9 @@ func ComputeChainAPR(chainID uint64) {
 		** this staking rewards system and add it to the netAPY.
 		**********************************************************************************************/
 		stakingRewardAPR := computeStakingRewardsAPR(chainID, vault)
+		if extaRewardAPR, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
+			vaultAPR.Extra.GammaRewardAPR = extaRewardAPR
+		}
 		vaultAPR.Extra.StakingRewardsAPR = stakingRewardAPR
 
 		/**********************************************************************************************

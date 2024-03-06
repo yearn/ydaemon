@@ -133,6 +133,20 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens linked to the Gamma protocol.
+	** We can use the Gamma API to be able to calculate the price of some LP tokens. We will then
+	** add them to our map. Only on Polygon POS
+	**********************************************************************************************/
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceMapFromGammaAPI := getGammaLPPricesFromAPI(chainID, blockNumber, tokenSlice)
+	for _, price := range priceMapFromGammaAPI {
+		if !price.Price.IsZero() && price.Price.Gt(bigNumber.Zero) {
+			newPriceMap[price.Address] = price
+			continue
+		}
+	}
+
+	/**********************************************************************************************
 	** If we still have some missing prices, we will use the lens price oracle to fetch them.
 	**********************************************************************************************/
 	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)

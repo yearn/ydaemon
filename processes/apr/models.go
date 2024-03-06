@@ -20,6 +20,7 @@ type TCompositeData struct {
 }
 type TExtraRewards struct {
 	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`
+	GammaRewardAPR    *bigNumber.Float `json:"gammaRewardAPR"`
 }
 type THistoricalPoints struct {
 	WeekAgo   *bigNumber.Float `json:"weekAgo"`

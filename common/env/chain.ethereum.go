@@ -198,4 +198,8 @@ var ETHEREUM = TChain{
 			`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
 		},
 	},
+	ExtraURI: TChainExtraURI{
+		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=1`,
+		GammaHypervisorURI: `https://wire2.gamma.xyz/hypervisors/allData`,
+	},
 }

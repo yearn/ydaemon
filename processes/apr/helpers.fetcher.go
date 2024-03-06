@@ -12,6 +12,9 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
+/**************************************************************************
+** This function retrieves the Curve Pools from the Curve API.
+**************************************************************************/
 func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 	URIsToFetch := env.CHAINS[chainID].Curve.PoolsURIs
 	pools := []models.CurvePool{}
@@ -37,6 +40,9 @@ func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
 	return pools
 }
 
+/**************************************************************************
+** This function retrieves the Curve Subgraph Data from the Curve Subgraph
+**************************************************************************/
 func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
 	if v, ok := storage.CURVE_SUBGRAPHDATA_URI[chainID]; !ok || v == `` {
 		return []models.CurveSubgraphData{}
@@ -60,6 +66,34 @@ func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
 	data := []models.CurveSubgraphData{}
 	data = append(data, subgraphData.Data.PoolList...)
 	return data
+}
+
+/**************************************************************************
+** This function retrieves the Gamma Merkl API response.
+**************************************************************************/
+func retrieveGammaMerklData(chainID uint64) map[string]TGammaMerklAPIResp {
+	if _, ok := cachedGammaMerkl[chainID]; !ok {
+		cachedGammaMerkl[chainID] = map[string]TGammaMerklAPIResp{}
+	}
+
+	pools := map[string]TGammaMerklAPIResp{}
+	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaMerklURI)
+	if err != nil {
+		logs.Error(err)
+		return pools
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		logs.Error(err)
+		return pools
+	}
+	var gammaMerkl map[string]TGammaMerklAPIResp
+	if err := json.Unmarshal(body, &gammaMerkl); err != nil {
+		logs.Error(err)
+		return pools
+	}
+	return gammaMerkl
 }
 
 func findGaugeForVault(tokenAddress common.Address, pools []models.CurveGauge) models.CurveGauge {

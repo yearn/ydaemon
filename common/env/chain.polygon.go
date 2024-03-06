@@ -49,6 +49,11 @@ var POLYGON = TChain{
 			Version: 4,
 			Block:   52_488_140,
 		},
+		{
+			Address: common.HexToAddress("0xd5967178702250d9f0eac34258ebba99b9a28ed0"),
+			Version: 6,
+			Block:   51_550_217,
+		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{
@@ -67,5 +72,9 @@ var POLYGON = TChain{
 			`https://api.curve.fi/api/getPools/polygon/crypto`,
 			`https://api.curve.fi/api/getPools/polygon/factory`,
 		},
+	},
+	ExtraURI: TChainExtraURI{
+		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=137`,
+		GammaHypervisorURI: `https://wire2.gamma.xyz/polygon/hypervisors/allData`,
 	},
 }

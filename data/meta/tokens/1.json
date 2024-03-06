@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-07T09:11:03.64315+01:00",
+	"lastUpdate": "2024-03-06T14:34:30.554728+01:00",
 	"version": {
 		"major": 0,
-		"minor": 24,
+		"minor": 25,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -172,6 +172,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x032c4e67fa01f6c3b01d0903d672d73b2f8d9dce": {
+			"address": "0x032c4e67fa01f6c3b01d0903d672d73b2f8d9dce",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor PERP-ETH Uni v3",
+			"symbol": "vPERP-ETHV3-1",
+			"displayName": "Visor PERP-ETH Uni v3",
+			"displaySymbol": "vPERP-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x032c4e67fa01F6c3B01D0903d672D73B2F8d9Dce/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x03ab458634910aad20ef5f1c8ee96f1d6ac54919": {
 			"address": "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
 			"underlyingTokensAddresses": [],
@@ -215,6 +229,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x03eaE26089A8c28DDC4c81d65bEfE014C793A60d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0407c810546f1dc007f01a80e65983072d5c6dfa": {
+			"address": "0x0407c810546f1dc007f01a80e65983072d5c6dfa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor COMP-ETH Uni v3",
+			"symbol": "vCOMP-ETHV3-1",
+			"displayName": "Visor COMP-ETH Uni v3",
+			"displaySymbol": "vCOMP-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0407C810546f1DC007F01A80E65983072D5C6DFa/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -371,6 +399,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f": {
+			"address": "0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Staked Olympus",
+			"symbol": "sOHM",
+			"displayName": "Staked Olympus",
+			"displaySymbol": "sOHM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x04F2694C8fcee23e8Fd0dfEA1d4f5Bb8c352111F/logo-128.png",
+			"decimals": 9,
+			"chainID": 1
+		},
 		"0x051d7e5609917bd9b73f04bac0ded8dd46a74301": {
 			"address": "0x051d7e5609917bd9b73f04bac0ded8dd46a74301",
 			"underlyingTokensAddresses": [
@@ -418,6 +460,20 @@
 			"decimals": 2,
 			"chainID": 1
 		},
+		"0x0624eb9691d99178d0d2bd76c72f1dbb4db05286": {
+			"address": "0x0624eb9691d99178d0d2bd76c72f1dbb4db05286",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor AXS-ETH Uni v3",
+			"symbol": "vAXS-ETHV3-1",
+			"displayName": "Visor AXS-ETH Uni v3",
+			"displaySymbol": "vAXS-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0624Eb9691D99178d0d2Bd76c72f1dBB4DB05286/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x06325440d014e39736583c165c2963ba99faf14e": {
 			"address": "0x06325440d014e39736583c165c2963ba99faf14e",
 			"underlyingTokensAddresses": [
@@ -432,6 +488,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x06325440D014e39736583c165C2963BA99fAf14E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0642026e7f0b6ccac5925b4e7fa61384250e1701": {
+			"address": "0x0642026e7f0b6ccac5925b4e7fa61384250e1701",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "H2O",
+			"symbol": "H2O",
+			"displayName": "H2O",
+			"displaySymbol": "H2O",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0642026E7f0B6cCaC5925b4E7Fa61384250e1701/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -517,6 +587,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x08a75dbc7167714ceac1a8e43a8d643a4edd625a": {
+			"address": "0x08a75dbc7167714ceac1a8e43a8d643a4edd625a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wild Credit",
+			"symbol": "WILD",
+			"displayName": "Wild Credit",
+			"displaySymbol": "WILD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x08A75dbC7167714CeaC1a8e43a8d643A4EDd625a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x08cea8e5b4551722deb97113c139dd83c26c5398": {
 			"address": "0x08cea8e5b4551722deb97113c139dd83c26c5398",
 			"underlyingTokensAddresses": [
@@ -545,6 +629,34 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x090185f2135308BaD17527004364eBcC2D37e5F6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0954906da0bf32d5479e25f46056d22f08464cab": {
+			"address": "0x0954906da0bf32d5479e25f46056d22f08464cab",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Index",
+			"symbol": "INDEX",
+			"displayName": "Index",
+			"displaySymbol": "INDEX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0954906da0Bf32d5479e25f46056d22f08464cab/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x09b8d86c6275e707155cdb5963cf611a432ccb21": {
+			"address": "0x09b8d86c6275e707155cdb5963cf611a432ccb21",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MATIC-ETH Uni v3",
+			"symbol": "vMATIC-ETHV3-1",
+			"displayName": "Visor MATIC-ETH Uni v3",
+			"displaySymbol": "vMATIC-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x09b8d86c6275E707155CDB5963cF611A432CCb21/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -593,6 +705,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x0CFe5C777A7438C9Dd8Add53ed671cEc7A5FAeE5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0d3fbebfdd96940952618598a5f012de7240c552": {
+			"address": "0x0d3fbebfdd96940952618598a5f012de7240c552",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor HEX-ETH Uni v3",
+			"symbol": "vHEX-ETHV3-1",
+			"displayName": "Visor HEX-ETH Uni v3",
+			"displaySymbol": "vHEX-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0D3FBebfdD96940952618598a5F012De7240C552/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -674,6 +800,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0e8A7717A4FD7694682E7005957dD5d7598bF14A/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x0ec4a47065bf52e1874d2491d4deeed3c638c75f": {
+			"address": "0x0ec4a47065bf52e1874d2491d4deeed3c638c75f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xPSDN-ETH1",
+			"symbol": "xPSDN-ETH1",
+			"displayName": "xPSDN-ETH1",
+			"displaySymbol": "xPSDN-ETH1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0EC4A47065bf52e1874d2491D4dEeEd3c638C75F/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x0f5d2fb29fb7d3cfee444a200298f468908cc942": {
@@ -824,6 +964,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This Curve v2 crypto pool contains ibJPY and USDC.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x127091edE112aEd7Bae281747771b3150Bb047bB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1321f1f1aa541a56c31682c57b80ecfccd9bb288": {
+			"address": "0x1321f1f1aa541a56c31682c57b80ecfccd9bb288",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ARCx Governance Token",
+			"symbol": "ARCX",
+			"displayName": "ARCx Governance Token",
+			"displaySymbol": "ARCX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1321f1f1aa541A56C31682c57b80ECfCCd9bB288/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1028,6 +1182,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x18d3284d9eff64fc97b64ab2b871738e684aa151": {
+			"address": "0x18d3284d9eff64fc97b64ab2b871738e684aa151",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-GTC Uni v3",
+			"symbol": "vETH-GTCV3-1",
+			"displayName": "Visor ETH-GTC Uni v3",
+			"displaySymbol": "vETH-GTCV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x18D3284D9eff64FC97B64ab2B871738E684aa151/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x194ebd173f6cdace046c53eacce9b953f28411d1": {
 			"address": "0x194ebd173f6cdace046c53eacce9b953f28411d1",
 			"underlyingTokensAddresses": [
@@ -1212,6 +1380,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and Meta USD.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x1AEf73d49Dedc4b1778d0706583995958Dc862e6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1b56860eaf38f27b99d2b0d8ffac86b0f1173f1a": {
+			"address": "0x1b56860eaf38f27b99d2b0d8ffac86b0f1173f1a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ARCX-ETH Uni 1%",
+			"symbol": "vARCX-ETH UNI1",
+			"displayName": "Visor ARCX-ETH Uni 1%",
+			"displaySymbol": "vARCX-ETH UNI1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1b56860eaF38F27b99d2b0d8FFaC86B0f1173F1a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1409,6 +1591,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1e86a593e55215957c4755f1be19a229af3286f6": {
+			"address": "0x1e86a593e55215957c4755f1be19a229af3286f6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOHM-USDC3",
+			"symbol": "xOHM-USDC3",
+			"displayName": "xOHM-USDC3",
+			"displaySymbol": "xOHM-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1E86A593E55215957C4755f1BE19a229AF3286f6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c": {
 			"address": "0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c",
 			"underlyingTokensAddresses": [],
@@ -1593,6 +1789,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x23c85dca3d19b31f14aeea19beac32c2cb2ffc72": {
+			"address": "0x23c85dca3d19b31f14aeea19beac32c2cb2ffc72",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH2xFLI-ETH Uni v3",
+			"symbol": "vETH2xFLI-ETHV3-1",
+			"displayName": "Visor ETH2xFLI-ETH Uni v3",
+			"displaySymbol": "vETH2xFLI-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x23C85DCa3D19b31F14aeEa19BEaC32C2CB2fFC72/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x23d3d0f1c697247d5e0a9efb37d8b0ed0c464f7f": {
 			"address": "0x23d3d0f1c697247d5e0a9efb37d8b0ed0c464f7f",
 			"underlyingTokensAddresses": [
@@ -1686,6 +1896,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x24fe0b138d9b10a7f0502e213212ee6648926ecb": {
+			"address": "0x24fe0b138d9b10a7f0502e213212ee6648926ecb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "rETH-THETA - ETH",
+			"symbol": "rETH-THETA-E",
+			"displayName": "rETH-THETA - ETH",
+			"displaySymbol": "rETH-THETA-E",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x24fe0B138D9b10a7F0502e213212EE6648926EcB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x25212df29073fffa7a67399acefc2dd75a831a1a": {
 			"address": "0x25212df29073fffa7a67399acefc2dd75a831a1a",
 			"underlyingTokensAddresses": [
@@ -1699,6 +1923,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x25212Df29073FfFA7A67399AcEfC2dd75a831A1A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x25751853eab4d0eb3652b5eb6ecb102a2789644b": {
+			"address": "0x25751853eab4d0eb3652b5eb6ecb102a2789644b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ribbon ETH Theta Vault",
+			"symbol": "rETH-THETA",
+			"displayName": "Ribbon ETH Theta Vault",
+			"displaySymbol": "rETH-THETA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x25751853Eab4D0eB3652B5eB6ecB102A2789644B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1777,6 +2015,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2807387F1212cB2852aB97cdAa3627dACa5E4661/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2825b12c5e873318b318302408718b961ae74d4e": {
+			"address": "0x2825b12c5e873318b318302408718b961ae74d4e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "agEUR-ETH05",
+			"symbol": "agEUR-ETH05",
+			"displayName": "agEUR-ETH05",
+			"displaySymbol": "agEUR-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2825b12c5e873318B318302408718B961Ae74D4E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2446,6 +2698,48 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x33412fef1af035d6dba8b2f9b33b022e4c31dbb4": {
+			"address": "0x33412fef1af035d6dba8b2f9b33b022e4c31dbb4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GAMMA-ETH Uni .3%",
+			"symbol": "GAMMA-ETH-3",
+			"displayName": "GAMMA-ETH Uni .3%",
+			"displaySymbol": "GAMMA-ETH-3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x33412fEf1aF035d6Dba8B2F9b33B022e4c31DBb4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x33682bfc1d94480a0e3de0a565180b182b71d485": {
+			"address": "0x33682bfc1d94480a0e3de0a565180b182b71d485",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor PERP-ETH Uni v3",
+			"symbol": "vPERP-ETHV3-1",
+			"displayName": "Visor PERP-ETH Uni v3",
+			"displaySymbol": "vPERP-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x33682bfC1d94480a0E3DE0A565180B182B71D485/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x336d7e0a0f87e2729c0080f86801e6f4becf146f": {
+			"address": "0x336d7e0a0f87e2729c0080f86801e6f4becf146f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GAMMA-ETH Uni .3%",
+			"symbol": "GAMMA-ETH.3",
+			"displayName": "GAMMA-ETH Uni .3%",
+			"displaySymbol": "GAMMA-ETH.3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x336D7E0A0F87e2729c0080F86801E6f4becF146F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3408324dbb537886cadc180f6ffcf674ee215f67": {
 			"address": "0x3408324dbb537886cadc180f6ffcf674ee215f67",
 			"underlyingTokensAddresses": [
@@ -2536,6 +2830,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x34b95494c3c2732aa82e1e56be57074fee7a2b28": {
+			"address": "0x34b95494c3c2732aa82e1e56be57074fee7a2b28",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor CVX-ETH Uni 1%",
+			"symbol": "vCVX-ETH1",
+			"displayName": "Visor CVX-ETH Uni 1%",
+			"displaySymbol": "vCVX-ETH1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x34b95494c3C2732Aa82E1e56be57074Fee7a2B28/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x34d655069f4cac1547e4c8ca284ffff5ad4a8db0": {
 			"address": "0x34d655069f4cac1547e4c8ca284ffff5ad4a8db0",
 			"underlyingTokensAddresses": [
@@ -2580,6 +2888,34 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x352A4B34B8e9f43B869F6F80728978CCcDCED406/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x35abccd8e577607275647edab08c537fa32cc65e": {
+			"address": "0x35abccd8e577607275647edab08c537fa32cc65e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWBTC-ETH05",
+			"symbol": "xWBTC-ETH05",
+			"displayName": "xWBTC-ETH05",
+			"displaySymbol": "xWBTC-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x35aBccd8e577607275647edAb08C537fa32CC65E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x35bd01fc9d6d5d81ca9e055db88dc49aa2c699a8": {
+			"address": "0x35bd01fc9d6d5d81ca9e055db88dc49aa2c699a8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Friends With Benefits Pro",
+			"symbol": "FWB",
+			"displayName": "Friends With Benefits Pro",
+			"displaySymbol": "FWB",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x35bD01FC9d6D5D81CA9E055Db88Dc49aa2c699A8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2658,6 +2994,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x383518188c0c6d7730d91b2c03a03c837814a899": {
+			"address": "0x383518188c0c6d7730d91b2c03a03c837814a899",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Olympus",
+			"symbol": "OHM",
+			"displayName": "Olympus",
+			"displaySymbol": "OHM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x383518188C0C6d7730D91b2c03a03C837814a899/logo-128.png",
+			"decimals": 9,
+			"chainID": 1
+		},
 		"0x3835a58ca93cdb5f912519ad366826ac9a752510": {
 			"address": "0x3835a58ca93cdb5f912519ad366826ac9a752510",
 			"underlyingTokensAddresses": [
@@ -2688,6 +3038,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x383E6b4437b59fff47B619CBA855CA29342A8559/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x388a3938fb6c9c6cb0415946dd5d026f7d98e22c": {
+			"address": "0x388a3938fb6c9c6cb0415946dd5d026f7d98e22c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "OHM-FDT Uni 1%",
+			"symbol": "OHM-FDT1",
+			"displayName": "OHM-FDT Uni 1%",
+			"displaySymbol": "OHM-FDT1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x388A3938fb6C9c6cb0415946Dd5d026f7d98e22c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2961,6 +3325,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3cca05926af387f1ab4cd45ce8975d31f0469927": {
+			"address": "0x3cca05926af387f1ab4cd45ce8975d31f0469927",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWBTC-renBTC05",
+			"symbol": "xWBTC-renBTC05",
+			"displayName": "xWBTC-renBTC05",
+			"displaySymbol": "xWBTC-renBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3CCa05926Af387F1AB4cd45CE8975d31F0469927/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3cd7ebfedbe1a79fa557d592f8c8d8454f00f245": {
+			"address": "0x3cd7ebfedbe1a79fa557d592f8c8d8454f00f245",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MKR-ETH Uni v3",
+			"symbol": "vMKR-ETHV3-1",
+			"displayName": "Visor MKR-ETH Uni v3",
+			"displaySymbol": "vMKR-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3Cd7EbfEDbe1a79Fa557d592f8C8D8454F00F245/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3d1e5cf16077f349e999d6b21a4f646e83cd90c5": {
 			"address": "0x3d1e5cf16077f349e999d6b21a4f646e83cd90c5",
 			"underlyingTokensAddresses": [],
@@ -3082,6 +3474,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3ec8798b81485a254928b70cda1cf0a2bb0b74d7": {
+			"address": "0x3ec8798b81485a254928b70cda1cf0a2bb0b74d7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Gro DAO Token",
+			"symbol": "GRO",
+			"displayName": "Gro DAO Token",
+			"displaySymbol": "GRO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3Ec8798B81485A254928B70CDA1cf0A2BB0B74D7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3ed3b47dd13ec9a98b44e6204a523e766b225811": {
 			"address": "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
 			"underlyingTokensAddresses": [
@@ -3146,6 +3552,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3f2bea4c47e5da22ebb65589b06a2fd14ecfa166": {
+			"address": "0x3f2bea4c47e5da22ebb65589b06a2fd14ecfa166",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor COMP-ETH Uni v3",
+			"symbol": "vCOMP-ETHV3-1",
+			"displayName": "Visor COMP-ETH Uni v3",
+			"displaySymbol": "vCOMP-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3F2bEa4c47e5DA22EbB65589B06A2fd14eCFa166/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3f34a7ef4f17528cbffb7817060941bcdac924fa": {
 			"address": "0x3f34a7ef4f17528cbffb7817060941bcdac924fa",
 			"underlyingTokensAddresses": [
@@ -3176,6 +3596,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains RSR, FRAX, and USDC. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x3F436954afb722F5D14D868762a23faB6b0DAbF0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3f805de0ec508bf7311baaa617015809be9ce953": {
+			"address": "0x3f805de0ec508bf7311baaa617015809be9ce953",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor TRIBE-ETH Uni .3%",
+			"symbol": "TRIBE-ETH3",
+			"displayName": "Visor TRIBE-ETH Uni .3%",
+			"displaySymbol": "TRIBE-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3F805DE0ec508BF7311baaa617015809BE9CE953/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3221,6 +3655,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x402F878BDd1f5C66FdAF0fabaBcF74741B68ac36/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x407e99b20d61f245426031df872966953909e9d3": {
+			"address": "0x407e99b20d61f245426031df872966953909e9d3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor LINK-ETH Uni v3",
+			"symbol": "vLINK-ETHV3-1",
+			"displayName": "Visor LINK-ETH Uni v3",
+			"displaySymbol": "vLINK-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x407e99b20d61f245426031dF872966953909e9d3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3475,6 +3923,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4564a37c88e3b13d3a0c08832dcf88278997e6fe": {
+			"address": "0x4564a37c88e3b13d3a0c08832dcf88278997e6fe",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MKR-ETH Uni v3",
+			"symbol": "vMKR-ETHV3-1",
+			"displayName": "Visor MKR-ETH Uni v3",
+			"displaySymbol": "vMKR-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4564a37c88E3B13d3A0c08832Dcf88278997e6Fe/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
 			"address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
 			"underlyingTokensAddresses": [
@@ -3538,6 +4000,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x467414f0312ecedba1e505c12bd97daa3609da87": {
+			"address": "0x467414f0312ecedba1e505c12bd97daa3609da87",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GAMMA INDEX-ETH Uni 1%",
+			"symbol": "xINDEX-ETH1",
+			"displayName": "GAMMA INDEX-ETH Uni 1%",
+			"displaySymbol": "xINDEX-ETH1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x467414f0312eCEDBa1e505c12bd97dAa3609Da87/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x468c76f16b7735303f7215b3839d270d058b3d7a": {
 			"address": "0x468c76f16b7735303f7215b3839d270d058b3d7a",
 			"underlyingTokensAddresses": [
@@ -3551,6 +4027,34 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x468C76f16B7735303f7215b3839D270d058b3d7a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x46b7602e4dad6f71dae532588110e2711682aca3": {
+			"address": "0x46b7602e4dad6f71dae532588110e2711682aca3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor BPRO-ETH Uni 1%",
+			"symbol": "vBPRO-ETH10",
+			"displayName": "Visor BPRO-ETH Uni 1%",
+			"displaySymbol": "vBPRO-ETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x46B7602e4DAD6F71dAe532588110e2711682ACA3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x46e4ddb5b87152dda90afe75daedfddab1c16513": {
+			"address": "0x46e4ddb5b87152dda90afe75daedfddab1c16513",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "rETH-ETH05",
+			"symbol": "rETH-ETH05",
+			"displayName": "rETH-ETH05",
+			"displaySymbol": "rETH-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x46e4DDB5B87152DDA90AFE75daeDfDDAB1C16513/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3874,6 +4378,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d7f0f7395dd58da2e6680453a0d0b4b19d0c832": {
+			"address": "0x4d7f0f7395dd58da2e6680453a0d0b4b19d0c832",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ETH-WRLD Uni 1%",
+			"symbol": "ETH-WRLD1",
+			"displayName": "ETH-WRLD Uni 1%",
+			"displaySymbol": "ETH-WRLD1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4D7f0f7395Dd58Da2e6680453a0d0B4B19D0C832/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d9f9d15101eec665f77210cb999639f760f831e": {
 			"address": "0x4d9f9d15101eec665f77210cb999639f760f831e",
 			"underlyingTokensAddresses": [
@@ -3986,6 +4504,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4f7997158d66ca31d9734674fdcd12cc74e503a7": {
+			"address": "0x4f7997158d66ca31d9734674fdcd12cc74e503a7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor USDC-USDT Uni v3",
+			"symbol": "vUSDC-USDTV3-1",
+			"displayName": "Visor USDC-USDT Uni v3",
+			"displaySymbol": "vUSDC-USDTV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4F7997158d66CA31d9734674FdCD12CC74e503a7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4fabb145d64652a948d72533023f6e7a623c7c53": {
 			"address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
 			"underlyingTokensAddresses": [],
@@ -4076,6 +4608,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5230371a6d5311b1d7dd30c0f5474c2ef0a24661": {
+			"address": "0x5230371a6d5311b1d7dd30c0f5474c2ef0a24661",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ENS-ETH Uni .3%",
+			"symbol": "vENS-ETH3",
+			"displayName": "Visor ENS-ETH Uni .3%",
+			"displaySymbol": "vENS-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5230371A6D5311b1D7Dd30C0f5474c2eF0a24661/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5271045f7b73c17825a7a7aee6917ee46b0b7520": {
 			"address": "0x5271045f7b73c17825a7a7aee6917ee46b0b7520",
 			"underlyingTokensAddresses": [
@@ -4124,6 +4670,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x528D50dC9a333f01544177a924893FA1F5b9F748/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x52ce16b1f37ea7be4352b29fcde3331e225380ff": {
+			"address": "0x52ce16b1f37ea7be4352b29fcde3331e225380ff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-BABL0.3%",
+			"symbol": "xETH-BABL0.3%",
+			"displayName": "xETH-BABL0.3%",
+			"displaySymbol": "xETH-BABL0.3%",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x52cE16B1F37Ea7BE4352B29fcDE3331E225380FF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4203,6 +4763,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x53a4512bbe5083695d8e890789fe1cf6f5686d52": {
+			"address": "0x53a4512bbe5083695d8e890789fe1cf6f5686d52",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FORTH-ETH Uni v3",
+			"symbol": "vFORTH-ETHV3-1",
+			"displayName": "Visor FORTH-ETH Uni v3",
+			"displaySymbol": "vFORTH-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x53a4512Bbe5083695d8e890789Fe1cF6F5686D52/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x53a901d48795c58f485cbb38df08fa96a24669d5": {
 			"address": "0x53a901d48795c58f485cbb38df08fa96a24669d5",
 			"underlyingTokensAddresses": [
@@ -4217,6 +4791,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and rETH, a token that represents staked ether in StaFi, an ETH 2.0 staking platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x53a901d48795C58f485cBB38df08FA96a24669D5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x53f18ee33f8f3ef5df20c25a42aa30c71781a5e3": {
+			"address": "0x53f18ee33f8f3ef5df20c25a42aa30c71781a5e3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor WILD-ETH Uni v3",
+			"symbol": "vWILD-ETHV3-2",
+			"displayName": "Visor WILD-ETH Uni v3",
+			"displaySymbol": "vWILD-ETHV3-2",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x53F18eE33f8f3ef5Df20C25a42AA30C71781A5e3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4313,6 +4901,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains MIM and UST.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x55A8a39bc9694714E2874c1ce77aa1E599461E18/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x55eed13ab07f8b5538eff301551492a1d776da7b": {
+			"address": "0x55eed13ab07f8b5538eff301551492a1d776da7b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor APW-ETH Uni 3%",
+			"symbol": "vAPW-ETH3",
+			"displayName": "Visor APW-ETH Uni 3%",
+			"displaySymbol": "vAPW-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x55eED13aB07F8b5538eFf301551492a1D776dA7b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4447,6 +5049,20 @@
 			"description": "Hegic is an on-chain options trading protocol that is powered by hedge contracts and liquidity pools on Ethereum (ETH). A hedge contract is an options-like, on-chain contract that gives the holder or buyer a right to buy or sell an asset at a certain price (strike) as well as imposes an obligation on the writer or seller to buy or sell an asset at a certain time period. HEGIC tokens are used for protocol governance and can be staked for protocol fees.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x584bC13c7D411c00c01A62e8019472dE68768430/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x586880065937a0b1b9541723619b75739df8ef13": {
+			"address": "0x586880065937a0b1b9541723619b75739df8ef13",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "LQTY-ETH Uni .3%",
+			"symbol": "LQTY-ETH.3",
+			"displayName": "LQTY-ETH Uni .3%",
+			"displaySymbol": "LQTY-ETH.3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x586880065937a0B1b9541723619b75739Df8eF13/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4839,6 +5455,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5d0681ca89490ac59e9d1f79e331a1aba0599d56": {
+			"address": "0x5d0681ca89490ac59e9d1f79e331a1aba0599d56",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOCEAN-PDSN1",
+			"symbol": "xOCEAN-PDSN1",
+			"displayName": "xOCEAN-PDSN1",
+			"displaySymbol": "xOCEAN-PDSN1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5d0681cA89490aC59E9d1f79E331A1abA0599D56/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5d3a536e4d6dbd6114cc1ead35777bab948e3643": {
 			"address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
 			"underlyingTokensAddresses": [
@@ -4855,6 +5485,20 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0x5d40e4687e36628267854d0b985a9b6e26493b74": {
+			"address": "0x5d40e4687e36628267854d0b985a9b6e26493b74",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor BUMP-ETH Uni 1%",
+			"symbol": "vBUMP-ETH10",
+			"displayName": "Visor BUMP-ETH Uni 1%",
+			"displaySymbol": "vBUMP-ETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5D40E4687e36628267854D0B985a9B6e26493b74/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5e69e8b51b71c8596817fd442849bd44219bb095": {
 			"address": "0x5e69e8b51b71c8596817fd442849bd44219bb095",
 			"underlyingTokensAddresses": [
@@ -4868,6 +5512,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x5e69e8b51B71C8596817fD442849BD44219bb095/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5e6c481de496554b66657dd1ca1f70c61cf11660": {
+			"address": "0x5e6c481de496554b66657dd1ca1f70c61cf11660",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-BABL.2 Uni .3%",
+			"symbol": "vETH-BABL3.2",
+			"displayName": "Visor ETH-BABL.2 Uni .3%",
+			"displaySymbol": "vETH-BABL3.2",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5e6c481dE496554b66657Dd1CA1F70C61cf11660/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5232,6 +5890,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x65bc5c6a2630a87c2b494f36148e338dd76c054f": {
+			"address": "0x65bc5c6a2630a87c2b494f36148e338dd76c054f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor OHM-ETH Uni v3",
+			"symbol": "vOHM-ETHV3-1",
+			"displayName": "Visor OHM-ETH Uni v3",
+			"displaySymbol": "vOHM-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x65Bc5c6A2630a87C2B494f36148E338dD76C054F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6601526470e7bad2760fb63507bf6965a0d4360b": {
 			"address": "0x6601526470e7bad2760fb63507bf6965a0d4360b",
 			"underlyingTokensAddresses": [
@@ -5363,6 +6035,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x691c25C461DaFC47792b6E4d674FBB637bca1C6F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6941b1b6b29948a2f74cad0ef2866e93436a5e2d": {
+			"address": "0x6941b1b6b29948a2f74cad0ef2866e93436a5e2d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xFRAX-USDC05",
+			"symbol": "xFRAX-USDC05",
+			"displayName": "xFRAX-USDC05",
+			"displaySymbol": "xFRAX-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6941b1B6B29948A2f74CAd0Ef2866E93436a5E2D/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5565,6 +6251,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6b4c7a5e3f0b99fcd83e9c089bddd6c7fce5c611": {
+			"address": "0x6b4c7a5e3f0b99fcd83e9c089bddd6c7fce5c611",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Million",
+			"symbol": "MM",
+			"displayName": "Million",
+			"displaySymbol": "MM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6B4c7A5e3f0B99FCD83e9c089BDDD6c7FCe5c611/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6b5ce31af687a671a804d8070ddda99cab926dfe": {
 			"address": "0x6b5ce31af687a671a804d8070ddda99cab926dfe",
 			"underlyingTokensAddresses": [
@@ -5639,6 +6339,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6bB61215298F296C55b19Ad842D3Df69021DA2ef/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6bea7cfef803d1e3d5f7c0103f7ded065644e197": {
+			"address": "0x6bea7cfef803d1e3d5f7c0103f7ded065644e197",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Gamma",
+			"symbol": "GAMMA",
+			"displayName": "Gamma",
+			"displaySymbol": "GAMMA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6BeA7CFEF803D1e3d5f7C0103f7ded065644e197/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5723,6 +6437,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6c8116abe5c5f2c39553c6f4217840e71462539c": {
+			"address": "0x6c8116abe5c5f2c39553c6f4217840e71462539c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor DAI-ETH Uni v3",
+			"symbol": "vDAI-ETHV3-1",
+			"displayName": "Visor DAI-ETH Uni v3",
+			"displaySymbol": "vDAI-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6C8116Abe5c5f2c39553c6F4217840E71462539C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6d2f347dcfc55c6ac80e515a58344acd7fef0b84": {
 			"address": "0x6d2f347dcfc55c6ac80e515a58344acd7fef0b84",
 			"underlyingTokensAddresses": [
@@ -5797,6 +6525,20 @@
 			"description": "This token represents a Curve v2 crypto pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains TRYB, and 3CRV (DAI, USDC, and USDT). Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss. TRYB is a stablecoin pegged to the Turkish Lira.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x6E0e681441BE6cB1d8405752462488BD4D691E3A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6e67bb258b6485b688cbb526c868d4428b634cf1": {
+			"address": "0x6e67bb258b6485b688cbb526c868d4428b634cf1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor CRV-ETH Uni v3",
+			"symbol": "vCRV-ETHV3-1",
+			"displayName": "Visor CRV-ETH Uni v3",
+			"displaySymbol": "vCRV-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6e67Bb258b6485b688CBb526c868d4428b634cf1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5894,6 +6636,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x704ececabe7855996cede5cefa660eccd3c01dbe": {
+			"address": "0x704ececabe7855996cede5cefa660eccd3c01dbe",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FEI-USDC Uni .05%",
+			"symbol": "vFEI-USDC05",
+			"displayName": "Visor FEI-USDC Uni .05%",
+			"displaySymbol": "vFEI-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x704eCeCABe7855996CeDE5CeFa660Eccd3c01dBE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x705b3acaf102404cfdd5e4a60535e4e70091273c": {
+			"address": "0x705b3acaf102404cfdd5e4a60535e4e70091273c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-BABL0.3%",
+			"symbol": "xETH-BABL0.3%",
+			"displayName": "xETH-BABL0.3%",
+			"displaySymbol": "xETH-BABL0.3%",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x705b3aCaF102404CfDd5e4A60535E4e70091273C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x708c42e0236fe8f5916c5638a462ee83da99d07b": {
 			"address": "0x708c42e0236fe8f5916c5638a462ee83da99d07b",
 			"underlyingTokensAddresses": [
@@ -5942,6 +6712,34 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x716bd8a7f8a44b010969a1825ae5658e7a18630d": {
+			"address": "0x716bd8a7f8a44b010969a1825ae5658e7a18630d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor USDC-ETH Uni v3",
+			"symbol": "vUSDC-ETHV3-1",
+			"displayName": "Visor USDC-ETH Uni v3",
+			"displaySymbol": "vUSDC-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x716bd8A7f8A44B010969A1825ae5658e7a18630D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x717a3276bd6f9e2f0ae447e0ffb45d0fa1c2dc57": {
+			"address": "0x717a3276bd6f9e2f0ae447e0ffb45d0fa1c2dc57",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xagEUR-USDC01",
+			"symbol": "xagEUR-USDC01",
+			"displayName": "xagEUR-USDC01",
+			"displaySymbol": "xagEUR-USDC01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x717A3276bd6F9e2f0aE447e0ffb45D0fa1c2dc57/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x71955515adf20cbdc699b8bc556fc7fd726b31b0": {
 			"address": "0x71955515adf20cbdc699b8bc556fc7fd726b31b0",
 			"underlyingTokensAddresses": [
@@ -5956,6 +6754,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x71955515ADF20cBDC699B8bC556Fc7Fd726B31B0/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x71a43c0f1b6622c03bcf6babe92f1b644a3a4693": {
+			"address": "0x71a43c0f1b6622c03bcf6babe92f1b644a3a4693",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FRAX-OHM Uni 3%",
+			"symbol": "vFRAX-OHM UNI3",
+			"displayName": "Visor FRAX-OHM Uni 3%",
+			"displaySymbol": "vFRAX-OHM UNI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x71a43c0F1b6622C03BCf6bABe92F1B644A3a4693/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x722f76f34cb5c3b008a50e0664e55a53f4f461ab": {
@@ -5985,6 +6797,20 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x72953a5C32413614d24C29c84a66AE4B59581Bbf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x72e364f2abdc788b7e918bc238b21f109cd634d7": {
+			"address": "0x72e364f2abdc788b7e918bc238b21f109cd634d7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Metaverse Index",
+			"symbol": "MVI",
+			"displayName": "Metaverse Index",
+			"displaySymbol": "MVI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x72e364F2ABdC788b7E918bc238B21f109Cd634D7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6127,6 +6953,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x75cd1842b529ed87817b0453c00b471f5a1b381a": {
+			"address": "0x75cd1842b529ed87817b0453c00b471f5a1b381a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xwTAO-WETH10",
+			"symbol": "xwTAO-WETH10",
+			"displayName": "xwTAO-WETH10",
+			"displaySymbol": "xwTAO-WETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x75cd1842B529Ed87817b0453C00B471f5a1b381a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7616113782aadab041d7b10d474f8a0c04eff258": {
 			"address": "0x7616113782aadab041d7b10d474f8a0c04eff258",
 			"underlyingTokensAddresses": [],
@@ -6217,6 +7057,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44": {
+			"address": "0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped TAO",
+			"symbol": "wTAO",
+			"displayName": "Wrapped TAO",
+			"displaySymbol": "wTAO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x77E06c9eCCf2E797fd462A92B6D7642EF85b0A44/logo-128.png",
+			"decimals": 9,
+			"chainID": 1
+		},
 		"0x77e829fff18c14ad9bb88963acb0010a0506de88": {
 			"address": "0x77e829fff18c14ad9bb88963acb0010a0506de88",
 			"underlyingTokensAddresses": [
@@ -6233,6 +7087,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x77fba179c79de5b7653f68b5039af940ada60ce0": {
+			"address": "0x77fba179c79de5b7653f68b5039af940ada60ce0",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "Ampleforth Governance",
+			"symbol": "FORTH",
+			"displayName": "Ampleforth Governance",
+			"displaySymbol": "FORTH",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0x77FbA179C79De5B7653F68b5039Af940AdA60ce0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7845ebf66c9575fc5f5a0dbb9a34a706ad997a3f": {
 			"address": "0x7845ebf66c9575fc5f5a0dbb9a34a706ad997a3f",
 			"underlyingTokensAddresses": [
@@ -6246,6 +7114,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x7845Ebf66c9575Fc5f5A0dBb9a34a706Ad997a3f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x785c34312dfa6b74f6f1829f79ade39042222168": {
+			"address": "0x785c34312dfa6b74f6f1829f79ade39042222168",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "BUMP",
+			"symbol": "BUMP",
+			"displayName": "BUMP",
+			"displaySymbol": "BUMP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x785c34312dfA6B74F6f1829f79ADe39042222168/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6417,6 +7299,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7d89593e1f327f06579faef15e88aadfae51713a": {
+			"address": "0x7d89593e1f327f06579faef15e88aadfae51713a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xH2O-OCEAN03",
+			"symbol": "xH2O-OCEAN03",
+			"displayName": "xH2O-OCEAN03",
+			"displaySymbol": "xH2O-OCEAN03",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7D89593e1f327F06579FAeF15e88AadFaE51713a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7da96a3891add058ada2e826306d812c638d87a7": {
 			"address": "0x7da96a3891add058ada2e826306d812c638d87a7",
 			"underlyingTokensAddresses": [
@@ -6446,6 +7342,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x7e113c504263354ba99290dadAd00D1e1F2b6476/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7e3034e504fb7eaf638e22085911f82b60583bb2": {
+			"address": "0x7e3034e504fb7eaf638e22085911f82b60583bb2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT01",
+			"symbol": "xUSDC-USDT01",
+			"displayName": "xUSDC-USDT01",
+			"displaySymbol": "xUSDC-USDT01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7E3034e504fB7EAf638e22085911F82b60583BB2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6480,6 +7390,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7f42f0389f3da72447dd69149fbb3da2af4efab3": {
+			"address": "0x7f42f0389f3da72447dd69149fbb3da2af4efab3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FLOAT-ETH Uni 3%",
+			"symbol": "vFLOAT-ETH3",
+			"displayName": "Visor FLOAT-ETH Uni 3%",
+			"displaySymbol": "vFLOAT-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7F42F0389F3DA72447DD69149FbB3DA2af4EfAb3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7f7df0e9a040dda05fc609143cc8da7cc6c59587": {
 			"address": "0x7f7df0e9a040dda05fc609143cc8da7cc6c59587",
 			"underlyingTokensAddresses": [
@@ -6510,6 +7434,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains wBTC, wETH, and USDC. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7f92463e24b2ea1f7267aceed3ad68f7a956d2d8": {
+			"address": "0x7f92463e24b2ea1f7267aceed3ad68f7a956d2d8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MVI-ETH Uni .3%",
+			"symbol": "vMVI-ETH3",
+			"displayName": "Visor MVI-ETH Uni .3%",
+			"displaySymbol": "vMVI-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7f92463e24B2ea1f7267aceEd3AD68F7A956D2d8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6988,6 +7926,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x85a5326f08c44ec673e4bfc666b737f7f3dc6b37": {
+			"address": "0x85a5326f08c44ec673e4bfc666b737f7f3dc6b37",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor GRO-ETH Uni .3%",
+			"symbol": "vGRO-ETH3",
+			"displayName": "Visor GRO-ETH Uni .3%",
+			"displaySymbol": "vGRO-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x85a5326F08c44eC673e4bFc666b737f7f3Dc6b37/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x85cbed523459b7f6f81c11e710df969703a8a70c": {
+			"address": "0x85cbed523459b7f6f81c11e710df969703a8a70c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FLOAT-ETH Uni .3%",
+			"symbol": "vFLOAT-ETH3",
+			"displayName": "Visor FLOAT-ETH Uni .3%",
+			"displaySymbol": "vFLOAT-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x85CBeD523459b7f6F81C11e710DF969703a8A70C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x865377367054516e17014ccded1e7d814edc9ce4": {
 			"address": "0x865377367054516e17014ccded1e7d814edc9ce4",
 			"underlyingTokensAddresses": [],
@@ -7283,6 +8249,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8cd73cb1e1fa35628e36b8c543c5f825cd4e77f1": {
+			"address": "0x8cd73cb1e1fa35628e36b8c543c5f825cd4e77f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor TCR-ETH Uni v3",
+			"symbol": "vTCR-ETHV3-1",
+			"displayName": "Visor TCR-ETH Uni v3",
+			"displaySymbol": "vTCR-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8cd73cB1e1FA35628E36b8C543C5F825CD4E77F1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8cdf57760be305f32e03b3d231e5a81e550c6295": {
 			"address": "0x8cdf57760be305f32e03b3d231e5a81e550c6295",
 			"underlyingTokensAddresses": [
@@ -7466,6 +8446,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9196617815d95853945cd8f5e4e0bb88fdfe0281": {
+			"address": "0x9196617815d95853945cd8f5e4e0bb88fdfe0281",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOCEAN-PSDN1",
+			"symbol": "xOCEAN-PSDN1",
+			"displayName": "xOCEAN-PSDN1",
+			"displaySymbol": "xOCEAN-PSDN1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9196617815d95853945Cd8F5E4e0bB88FdFe0281/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x91ae8feabe09182fe5f91fc273040b7d8f7aefe7": {
 			"address": "0x91ae8feabe09182fe5f91fc273040b7d8f7aefe7",
 			"underlyingTokensAddresses": [
@@ -7496,6 +8490,20 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0x92ccaa1b3dccccae7d68fff50e6e47a747233e62": {
+			"address": "0x92ccaa1b3dccccae7d68fff50e6e47a747233e62",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor VISR-ETH Uni 3%",
+			"symbol": "vVISR-ETH UNI3",
+			"displayName": "Visor VISR-ETH Uni 3%",
+			"displaySymbol": "vVISR-ETH UNI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x92cCaA1B3DccccAE7D68FFf50e6e47a747233E62/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x92d6c1e31e14520e676a687f0a93788b716beff5": {
 			"address": "0x92d6c1e31e14520e676a687f0a93788b716beff5",
 			"underlyingTokensAddresses": [],
@@ -7521,6 +8529,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x92E187a03B6CD19CB6AF293ba17F2745Fd2357D5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x93acb12ae1effb3426220c20c6d408eeaae59d72": {
+			"address": "0x93acb12ae1effb3426220c20c6d408eeaae59d72",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOHM-FDT1%",
+			"symbol": "xOHM-FDT1%",
+			"displayName": "xOHM-FDT1%",
+			"displaySymbol": "xOHM-FDT1%",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x93ACb12ae1Effb3426220C20c6d408eEAaE59D72/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7763,6 +8785,20 @@
 			"description": "This token represents a curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This curve pool contains CRV and cvxCRV. cvxCRV is Convex Finance's liquid staking derivative for Curve Finance's veCRV.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x971add32Ea87f10bD192671630be3BE8A11b8623/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x97491b65c9c8e8754b5c55ed208ff490b2ee6190": {
+			"address": "0x97491b65c9c8e8754b5c55ed208ff490b2ee6190",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor WBTC-ETH Uni v3",
+			"symbol": "vWBTC-ETHV3-1",
+			"displayName": "Visor WBTC-ETH Uni v3",
+			"displaySymbol": "vWBTC-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x97491b65c9c8E8754B5C55ed208fF490b2Ee6190/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8028,6 +9064,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9a98bffabc0abf291d6811c034e239e916bbcec0": {
+			"address": "0x9a98bffabc0abf291d6811c034e239e916bbcec0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-USDT Uni v3",
+			"symbol": "vETH-USDTV3-1",
+			"displayName": "Visor ETH-USDT Uni v3",
+			"displaySymbol": "vETH-USDTV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9a98bFfAbc0ABf291d6811C034E239e916bBceC0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9ae380f0272e2162340a5bb646c354271c0f5cfc": {
 			"address": "0x9ae380f0272e2162340a5bb646c354271c0f5cfc",
 			"underlyingTokensAddresses": [],
@@ -8131,6 +9181,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9c354503C38481a7A7a51629142963F98eCC12D0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9c4a4204b79dd291d6b6571c5be8bbcd0622f050": {
+			"address": "0x9c4a4204b79dd291d6b6571c5be8bbcd0622f050",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Tracer",
+			"symbol": "TCR",
+			"displayName": "Tracer",
+			"displaySymbol": "TCR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9C4A4204B79dd291D6b6571C5BE8BbcD0622F050/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8346,6 +9410,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa1c739fa2fdfdd7049e385d60d4921ef7226daa5": {
+			"address": "0xa1c739fa2fdfdd7049e385d60d4921ef7226daa5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor LUSD-UST Uni .05%",
+			"symbol": "vLUSD-UST05",
+			"displayName": "Visor LUSD-UST Uni .05%",
+			"displaySymbol": "vLUSD-UST05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa1c739fa2FDfdD7049E385D60d4921EF7226Daa5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa1f82e14bc09a1b42710df1a8a999b62f294e592": {
 			"address": "0xa1f82e14bc09a1b42710df1a8a999b62f294e592",
 			"underlyingTokensAddresses": [],
@@ -8436,6 +9514,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2": {
+			"address": "0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Meta",
+			"symbol": "MTA",
+			"displayName": "Meta",
+			"displaySymbol": "MTA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c": {
 			"address": "0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c",
 			"underlyingTokensAddresses": [
@@ -8450,6 +9542,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and sETH, a synthetic ETH minted via the Synthetix platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xA3D87FffcE63B53E0d54fAa1cc983B7eB0b74A9c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa3ecb6e941e773c6568052a509a04cf455a752ae": {
+			"address": "0xa3ecb6e941e773c6568052a509a04cf455a752ae",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-ETH05",
+			"symbol": "wstETH-ETH05",
+			"displayName": "wstETH-ETH05",
+			"displaySymbol": "wstETH-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa3ECB6E941e773C6568052A509a04cf455a752ae/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8516,6 +9622,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa5b947687163fe88c3e6af5b17ae69896f4abccf": {
+			"address": "0xa5b947687163fe88c3e6af5b17ae69896f4abccf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Poseidon - H2O Governance Token",
+			"symbol": "PSDN",
+			"displayName": "Poseidon - H2O Governance Token",
+			"displaySymbol": "PSDN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA5B947687163FE88C3e6af5b17Ae69896F4abccf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa5ca62d95d24a4a350983d5b8ac4eb8638887396": {
 			"address": "0xa5ca62d95d24a4a350983d5b8ac4eb8638887396",
 			"underlyingTokensAddresses": [
@@ -8529,6 +9649,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xa5cA62D95D24A4a350983D5B8ac4EB8638887396/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa625ea468a4c70f13f9a756ffac3d0d250a5c276": {
+			"address": "0xa625ea468a4c70f13f9a756ffac3d0d250a5c276",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor RAW-ETH Uni 1%",
+			"symbol": "vRAW-ETH10",
+			"displayName": "Visor RAW-ETH Uni 1%",
+			"displaySymbol": "vRAW-ETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA625Ea468A4C70F13f9a756FfAc3D0D250a5C276/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8622,6 +9756,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa8076ae31e4b6c64d07b1ed27889924a962a70d3": {
+			"address": "0xa8076ae31e4b6c64d07b1ed27889924a962a70d3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xrETH-ETH05",
+			"symbol": "xrETH-ETH05",
+			"displayName": "xrETH-ETH05",
+			"displaySymbol": "xrETH-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa8076aE31e4B6c64D07b1Ed27889924a962a70d3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa87958c4e0cfae74b6f7a158ab639359cdf989be": {
 			"address": "0xa87958c4e0cfae74b6f7a158ab639359cdf989be",
 			"underlyingTokensAddresses": [
@@ -8700,6 +9848,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xA9412Ffd7E0866755ae0dda3318470A61F62abe8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa9782a2c9c3fb83937f14cdfac9a6d23946c9255": {
+			"address": "0xa9782a2c9c3fb83937f14cdfac9a6d23946c9255",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-ETH05",
+			"symbol": "xUSDC-ETH05",
+			"displayName": "xUSDC-ETH05",
+			"displaySymbol": "xUSDC-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA9782a2C9C3Fb83937f14cDfAc9a6d23946C9255/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8801,6 +9963,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xaa6e8127831c9de45ae56bb1b0d4d4da6e5665bd": {
+			"address": "0xaa6e8127831c9de45ae56bb1b0d4d4da6e5665bd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ETH 2x Flexible Leverage Index",
+			"symbol": "ETH2x-FLI",
+			"displayName": "ETH 2x Flexible Leverage Index",
+			"displaySymbol": "ETH2x-FLI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xaaaee277f21bb7d2bf49e6b36d0d94dc229b0b25": {
 			"address": "0xaaaee277f21bb7d2bf49e6b36d0d94dc229b0b25",
 			"underlyingTokensAddresses": [
@@ -8873,6 +10049,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xabEFBc9fD2F806065b4f3C237d4b59D9A97Bcac7/logo-128.png",
 			"decimals": 0,
+			"chainID": 1
+		},
+		"0xac0f71f2492daf020f459bd163052b9dae28f159": {
+			"address": "0xac0f71f2492daf020f459bd163052b9dae28f159",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xcbETH-WETH05",
+			"symbol": "xcbETH-WETH05",
+			"displayName": "xcbETH-WETH05",
+			"displaySymbol": "xcbETH-WETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAC0f71f2492DAf020f459bD163052B9DAE28F159/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xac1c90b9c76d56ba2e24f3995f7671c745f8f308": {
@@ -8980,6 +10170,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xAd86Df2e8F989c828B25A7Da5EB1Ec363283fA3F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xae29f871c9a4cda7ad2c8dff7193c2a0fe3d0c05": {
+			"address": "0xae29f871c9a4cda7ad2c8dff7193c2a0fe3d0c05",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-BABL0.3%",
+			"symbol": "xETH-BABL0.3%",
+			"displayName": "xETH-BABL0.3%",
+			"displaySymbol": "xETH-BABL0.3%",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xaE29f871c9a4Cda7ad2c8dfF7193c2a0fe3d0C05/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9289,6 +10493,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb41f289d699c5e79a51cb29595c203cfae85f32a": {
+			"address": "0xb41f289d699c5e79a51cb29595c203cfae85f32a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "RAW DAO",
+			"symbol": "RAW",
+			"displayName": "RAW DAO",
+			"displaySymbol": "RAW",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xb41F289d699C5e79A51Cb29595c203cFaE85F32a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb4ada607b9d6b2c9ee07a275e9616b84ac560139": {
 			"address": "0xb4ada607b9d6b2c9ee07a275e9616b84ac560139",
 			"underlyingTokensAddresses": [
@@ -9365,6 +10583,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb542f4cb10b7913307e3ed432acd9bf2e709f5fa": {
+			"address": "0xb542f4cb10b7913307e3ed432acd9bf2e709f5fa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor sOHM-ETH Uni 1%",
+			"symbol": "sOHM-ETH10",
+			"displayName": "Visor sOHM-ETH Uni 1%",
+			"displaySymbol": "sOHM-ETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB542f4Cb10b7913307e3eD432aCD9BF2e709F5FA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb5de7250128775a317b3f775a7afcec73571b732": {
 			"address": "0xb5de7250128775a317b3f775a7afcec73571b732",
 			"underlyingTokensAddresses": [
@@ -9397,6 +10629,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb60f4ac1514be672b2ec35a023f4c89373d3a4ef": {
+			"address": "0xb60f4ac1514be672b2ec35a023f4c89373d3a4ef",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor WBTC-USDC Uni v3",
+			"symbol": "vWBTC-USDCV3-1",
+			"displayName": "Visor WBTC-USDC Uni v3",
+			"displaySymbol": "vWBTC-USDCV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xb60F4Ac1514BE672B2EC35a023f4C89373D3A4EF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb620be8a1949aa9532e6a3510132864ef9bc3f82": {
 			"address": "0xb620be8a1949aa9532e6a3510132864ef9bc3f82",
 			"underlyingTokensAddresses": [],
@@ -9425,6 +10671,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and alETH (Alchemix ETH).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xB657B895B265C38c53FFF00166cF7F6A3C70587d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb666bfdb553a1aff4042c1e4f39e43852ba9731d": {
+			"address": "0xb666bfdb553a1aff4042c1e4f39e43852ba9731d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MM-ETH Uni v3",
+			"symbol": "vMM-ETHV3-1",
+			"displayName": "Visor MM-ETH Uni v3",
+			"displaySymbol": "vMM-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xb666bfDB553a1aFF4042c1E4F39E43852ba9731d/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9472,6 +10732,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xB8d400f82C100ce5A996E85f46f5ceA2b114C989/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb917b739ef85cb81259656a0bcc6bc39f4fe109a": {
+			"address": "0xb917b739ef85cb81259656a0bcc6bc39f4fe109a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "agEUR-USDC01",
+			"symbol": "agEUR-USDC01",
+			"displayName": "agEUR-USDC01",
+			"displaySymbol": "agEUR-USDC01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xb917B739eF85CB81259656a0Bcc6bC39F4fe109A/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9597,6 +10871,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xba5bde662c17e2adff1075610382b9b691296350": {
+			"address": "0xba5bde662c17e2adff1075610382b9b691296350",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SuperRare",
+			"symbol": "RARE",
+			"displayName": "SuperRare",
+			"displaySymbol": "RARE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xba5BDe662c17e2aDFF1075610382B9B691296350/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xba61baa1d96c2f4e25205b331306507bcaea4677": {
 			"address": "0xba61baa1d96c2f4e25205b331306507bcaea4677",
 			"underlyingTokensAddresses": [
@@ -9647,6 +10935,48 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbb0e17ef65f82ab018d8edd776e8dd940327b28b": {
+			"address": "0xbb0e17ef65f82ab018d8edd776e8dd940327b28b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Axie Infinity Shard",
+			"symbol": "AXS",
+			"displayName": "Axie Infinity Shard",
+			"displaySymbol": "AXS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBB0E17EF65F82Ab018d8EDd776e8DD940327B28b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbb9b86a75ca3115caab045e2af17b0bba483acbc": {
+			"address": "0xbb9b86a75ca3115caab045e2af17b0bba483acbc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor AAVE-ETH Uni v3",
+			"symbol": "vAAVE-ETHV3-1",
+			"displayName": "Visor AAVE-ETH Uni v3",
+			"displaySymbol": "vAAVE-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBB9b86a75ca3115cAAB045e2Af17B0BbA483acBC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbbbbbbb5aa847a2003fbc6b5c16df0bd1e725f61": {
+			"address": "0xbbbbbbb5aa847a2003fbc6b5c16df0bd1e725f61",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "B.Protocol",
+			"symbol": "BPRO",
+			"displayName": "B.Protocol",
+			"displaySymbol": "BPRO",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0xbbBBBBB5AA847A2003fbC6b5C16DF0Bd1E725f61/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbbc455cb4f1b9e4bfc4b73970d360c8f032efee6": {
 			"address": "0xbbc455cb4f1b9e4bfc4b73970d360c8f032efee6",
 			"underlyingTokensAddresses": [],
@@ -9672,6 +11002,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xBbe3a58585121F7DC4A5c6e7dE6514eC86987A77/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbc396689893d065f41bc2c6ecbee5e0085233447": {
+			"address": "0xbc396689893d065f41bc2c6ecbee5e0085233447",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Perpetual",
+			"symbol": "PERP",
+			"displayName": "Perpetual",
+			"displaySymbol": "PERP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xbC396689893D065F41bc2C6EcbeE5e0085233447/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9928,6 +11272,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbff4a47a0f77637f735e3a0ce10ff2bf9be12e89": {
+			"address": "0xbff4a47a0f77637f735e3a0ce10ff2bf9be12e89",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor RARE-ETH Uni v3",
+			"symbol": "vRARE-ETHV3-1",
+			"displayName": "Visor RARE-ETH Uni v3",
+			"displaySymbol": "vRARE-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xbFF4A47A0f77637F735e3A0CE10Ff2bf9bE12e89/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc00e94cb662c3520282e6f5717214004a7f26888": {
 			"address": "0xc00e94cb662c3520282e6f5717214004a7f26888",
 			"underlyingTokensAddresses": [],
@@ -10025,6 +11383,34 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xC116dF49c02c5fD147DE25Baa105322ebF26Bd97/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc14e7ec60699a39cfd59bae06168afc2c76f32ac": {
+			"address": "0xc14e7ec60699a39cfd59bae06168afc2c76f32ac",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor MTA-ETH Uni v3",
+			"symbol": "vMTA-ETHV3-1",
+			"displayName": "Visor MTA-ETH Uni v3",
+			"displaySymbol": "vMTA-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc14e7EC60699A39CFD59BAE06168aFc2c76F32aC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc18360217d8f7ab5e7c516566761ea12ce7f9d72": {
+			"address": "0xc18360217d8f7ab5e7c516566761ea12ce7f9d72",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ethereum Name Service",
+			"symbol": "ENS",
+			"displayName": "Ethereum Name Service",
+			"displaySymbol": "ENS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10338,6 +11724,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc7283b66eb1eb5fb86327f08e1b5816b0720212b": {
+			"address": "0xc7283b66eb1eb5fb86327f08e1b5816b0720212b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Tribe",
+			"symbol": "TRIBE",
+			"displayName": "Tribe",
+			"displaySymbol": "TRIBE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc775c0c30840cb9f51e21061b054ebf1a00acc29": {
 			"address": "0xc775c0c30840cb9f51e21061b054ebf1a00acc29",
 			"underlyingTokensAddresses": [],
@@ -10385,6 +11785,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc86b1e7fa86834cac1468937cdd53ba3ccbc1153": {
+			"address": "0xc86b1e7fa86834cac1468937cdd53ba3ccbc1153",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FLOAT-ETH Uni .3%",
+			"symbol": "vFLOAT-ETH3",
+			"displayName": "Visor FLOAT-ETH Uni .3%",
+			"displaySymbol": "vFLOAT-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc86B1e7FA86834CaC1468937cdd53ba3cCbC1153/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc8809f6c743179e794c4d9b95ca862aa24976e74": {
 			"address": "0xc8809f6c743179e794c4d9b95ca862aa24976e74",
 			"underlyingTokensAddresses": [],
@@ -10428,6 +11842,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xC8cA30Aa2E486846f7304D3B9334f96d32000F8d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc92ff322c8a18e38b46393dbcc8a7c5691586497": {
+			"address": "0xc92ff322c8a18e38b46393dbcc8a7c5691586497",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-TRU Uni v3",
+			"symbol": "vETH-TRUV3-1",
+			"displayName": "Visor ETH-TRU Uni v3",
+			"displaySymbol": "vETH-TRUV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc92FF322c8A18e38B46393dbCC8a7C5691586497/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10530,6 +11958,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xca8759814695516c34168bbedd86290964d37ada": {
+			"address": "0xca8759814695516c34168bbedd86290964d37ada",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xGAMMA-WETH3",
+			"symbol": "xGAMMA-WETH3",
+			"displayName": "xGAMMA-WETH3",
+			"displaySymbol": "xGAMMA-WETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xca8759814695516C34168BBedd86290964D37adA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xca978a0528116dda3cba9acd3e68bc6191ca53d0": {
 			"address": "0xca978a0528116dda3cba9acd3e68bc6191ca53d0",
 			"underlyingTokensAddresses": [
@@ -10544,6 +11986,20 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains USDP and crvUSD, a dollar pegged stablecoin from [Curve Finance](https://crvusd.curve.fi/#/ethereum/markets).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xCa978A0528116DDA3cbA9ACD3e68bc6191CA53D0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcaa7ba629eccbf811c76b799d0ef68fd1be97b7b": {
+			"address": "0xcaa7ba629eccbf811c76b799d0ef68fd1be97b7b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor UNI-ETH Uni v3",
+			"symbol": "vUNI-ETHV3-1",
+			"displayName": "Visor UNI-ETH Uni v3",
+			"displaySymbol": "vUNI-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xcaA7BA629ECcbF811c76b799D0Ef68FD1Be97B7B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10948,6 +12404,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9": {
+			"address": "0xd5d86fc8d5c0ea1ac1ac5dfab6e529c9967a45e9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "NFT Worlds",
+			"symbol": "WRLD",
+			"displayName": "NFT Worlds",
+			"displaySymbol": "WRLD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd5fbd81cef9aba7464c5f17e529444918a8ecc57": {
 			"address": "0xd5fbd81cef9aba7464c5f17e529444918a8ecc57",
 			"underlyingTokensAddresses": [],
@@ -11154,6 +12624,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd7b990543ea8e9bd0b9ae2deb9c52c4d0e660431": {
+			"address": "0xd7b990543ea8e9bd0b9ae2deb9c52c4d0e660431",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xDAI-USDC01",
+			"symbol": "xDAI-USDC01",
+			"displayName": "xDAI-USDC01",
+			"displaySymbol": "xDAI-USDC01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd7b990543EA8e9bd0b9aE2Deb9C52c4d0e660431/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd7c9f0e536dc865ae858b0c0453fe76d13c3beac": {
 			"address": "0xd7c9f0e536dc865ae858b0c0453fe76d13c3beac",
 			"underlyingTokensAddresses": [],
@@ -11217,6 +12701,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd8dbdb77305898365d7ba6dd438f2663f7d4e409": {
+			"address": "0xd8dbdb77305898365d7ba6dd438f2663f7d4e409",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor UNI-ETH Uni v3",
+			"symbol": "vUNI-ETHV3-1",
+			"displayName": "Visor UNI-ETH Uni v3",
+			"displaySymbol": "vUNI-ETHV3-1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd8DBdb77305898365D7bA6Dd438f2663f7D4e409/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd8eb58d76af99547333cfeeb6a0f9bd1a63b6492": {
 			"address": "0xd8eb58d76af99547333cfeeb6a0f9bd1a63b6492",
 			"underlyingTokensAddresses": [
@@ -11266,6 +12764,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains DAI, USDC, USDT, and Paxos USD (PAX).",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xD905e2eaeBe188fc92179b6350807D8bd91Db0D8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd930ab15c8078ebae4ac8da1098a81583603f7ce": {
+			"address": "0xd930ab15c8078ebae4ac8da1098a81583603f7ce",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor LQTY-ETH Uni .3%",
+			"symbol": "vLQTY-ETH30",
+			"displayName": "Visor LQTY-ETH Uni .3%",
+			"displaySymbol": "vLQTY-ETH30",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd930Ab15C8078EBaE4AC8dA1098A81583603F7CE/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11443,6 +12955,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdbaa93e030bf2983add67c851892a9e2ee51e66a": {
+			"address": "0xdbaa93e030bf2983add67c851892a9e2ee51e66a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor LQTY-ETH Uni 1%",
+			"symbol": "vLQTY-ETH100",
+			"displayName": "Visor LQTY-ETH Uni 1%",
+			"displaySymbol": "vLQTY-ETH100",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDbaA93e030BF2983aDD67C851892A9e2EE51E66a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdbdb4d16eda451d0503b854cf79d55697f90c8df": {
 			"address": "0xdbdb4d16eda451d0503b854cf79d55697f90c8df",
 			"underlyingTokensAddresses": [],
@@ -11519,6 +13045,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xDDDe38696FBe5d11497D72d8801F651642d62353/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xde30da39c46104798bb5aa3fe8b9e0e1f348163f": {
+			"address": "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "Gitcoin",
+			"symbol": "GTC",
+			"displayName": "Gitcoin",
+			"displaySymbol": "GTC",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0xDe30da39c46104798bB5aA3fe8B9e0e1F348163F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11663,6 +13203,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe065ff6a26f286ddb0e823920caaecd1fcd57ba1": {
+			"address": "0xe065ff6a26f286ddb0e823920caaecd1fcd57ba1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-THX Uni .3%",
+			"symbol": "vETH-THX3",
+			"displayName": "Visor ETH-THX Uni .3%",
+			"displaySymbol": "vETH-THX3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xE065ff6A26F286DDb0E823920CAAeCD1fCD57bA1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe0dfd4d74a7c8064a0f5e233c753c609268d0d37": {
+			"address": "0xe0dfd4d74a7c8064a0f5e233c753c609268d0d37",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xEUROC-USDC05",
+			"symbol": "xEUROC-USDC05",
+			"displayName": "xEUROC-USDC05",
+			"displaySymbol": "xEUROC-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe0DFD4d74A7c8064a0F5e233C753c609268D0d37/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe11ba472f74869176652c35d30db89854b5ae84d": {
 			"address": "0xe11ba472f74869176652c35d30db89854b5ae84d",
 			"underlyingTokensAddresses": [
@@ -11695,6 +13263,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe14dbb7d054ff1ff5c0cd6adac9f8f26bc7b8945": {
+			"address": "0xe14dbb7d054ff1ff5c0cd6adac9f8f26bc7b8945",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xFWB-ETH03",
+			"symbol": "xFWB-ETH03",
+			"displayName": "xFWB-ETH03",
+			"displaySymbol": "xFWB-ETH03",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe14DBB7D054fF1fF5C0cd6AdAc9f8F26Bc7B8945/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe1747f4d30479d7a2dcfea5af69fb86b8f71ccec": {
 			"address": "0xe1747f4d30479d7a2dcfea5af69fb86b8f71ccec",
 			"underlyingTokensAddresses": [
@@ -11708,6 +13290,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xe1747F4D30479D7a2DCFEa5af69fb86B8f71cCeC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe1ae05518a67ebe7e1e08e3b22d905d6c05b6c0f": {
+			"address": "0xe1ae05518a67ebe7e1e08e3b22d905d6c05b6c0f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xH2O-USDC05",
+			"symbol": "xH2O-USDC05",
+			"displayName": "xH2O-USDC05",
+			"displaySymbol": "xH2O-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe1ae05518a67EBe7e1E08e3B22D905d6c05b6C0F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11933,6 +13529,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe632ea2ef2cfd8fc4a2731c76f99078aef6a4b31": {
+			"address": "0xe632ea2ef2cfd8fc4a2731c76f99078aef6a4b31",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "THX Network",
+			"symbol": "THX",
+			"displayName": "THX Network",
+			"displaySymbol": "THX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe632ea2eF2CFD8Fc4a2731C76F99078Aef6a4B31/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe6354ed5bc4b393a5aad09f21c46e101e692d447": {
 			"address": "0xe6354ed5bc4b393a5aad09f21c46e101e692d447",
 			"underlyingTokensAddresses": [
@@ -12059,6 +13669,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe8f20fd90161de1d5b4cf7e2b5d92932ca06d5f4": {
+			"address": "0xe8f20fd90161de1d5b4cf7e2b5d92932ca06d5f4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xagEUR-ETH05",
+			"symbol": "xagEUR-ETH05",
+			"displayName": "xagEUR-ETH05",
+			"displaySymbol": "xagEUR-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xE8f20fD90161de1d5B4cF7e2B5D92932CA06D5f4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe95a203b1a91a908f9b9ce46459d101078c2c3cb": {
 			"address": "0xe95a203b1a91a908f9b9ce46459d101078c2c3cb",
 			"underlyingTokensAddresses": [],
@@ -12086,6 +13710,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xe9Dc63083c464d6EDcCFf23444fF3CFc6886f6FB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xeaa629224b3ab2b42b42fddb53a1b51351acbe4f": {
+			"address": "0xeaa629224b3ab2b42b42fddb53a1b51351acbe4f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xH2O-ETH03",
+			"symbol": "xH2O-ETH03",
+			"displayName": "xH2O-ETH03",
+			"displaySymbol": "xH2O-ETH03",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xeaA629224B3ab2b42b42fDDB53a1B51351acBE4F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12169,6 +13807,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xed1480d12be41d92f36f5f7bdd88212e381a3677": {
+			"address": "0xed1480d12be41d92f36f5f7bdd88212e381a3677",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "FIAT DAO Token",
+			"symbol": "FDT",
+			"displayName": "FIAT DAO Token",
+			"displaySymbol": "FDT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEd1480d12bE41d92F36f5f7bDd88212E381A3677/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca": {
 			"address": "0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca",
 			"underlyingTokensAddresses": [
@@ -12185,6 +13837,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This factory metapool contains 3Crv (DAI, USDC, and USDT) and Liquity USD, a synthetic USD stablecoin collateralized with Ether.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xEd279fDD11cA84bEef15AF5D39BB4d4bEE23F0cA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xed354a827d99992d9cdada809449985cb73b8bb1": {
+			"address": "0xed354a827d99992d9cdada809449985cb73b8bb1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOHMv2-FDT",
+			"symbol": "xOHMv2-FDT",
+			"displayName": "xOHMv2-FDT",
+			"displaySymbol": "xOHMv2-FDT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xed354a827d99992d9cDaDA809449985cb73b8bb1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12213,6 +13879,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEdA43FA2F35EA174a7E9b73658b18a7dA00ADf38/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xee768e132c4a836138969c883dcca6d30f0352b5": {
+			"address": "0xee768e132c4a836138969c883dcca6d30f0352b5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor FEI-USDC Uni .05%",
+			"symbol": "vFEI-USDC05",
+			"displayName": "Visor FEI-USDC Uni .05%",
+			"displaySymbol": "vFEI-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xeE768e132C4a836138969C883dcCa6d30F0352b5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12277,6 +13957,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf0a9f5c64f80fa390a46b298791dab9e2bb29bca": {
+			"address": "0xf0a9f5c64f80fa390a46b298791dab9e2bb29bca",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor BUMP-ETH Uni 1%",
+			"symbol": "vBUMP-ETH10",
+			"displayName": "Visor BUMP-ETH Uni 1%",
+			"displaySymbol": "vBUMP-ETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF0a9F5c64F80fa390A46B298791Dab9E2bB29BcA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf0fc841832e1367e7a4f249908139ea010943b87": {
 			"address": "0xf0fc841832e1367e7a4f249908139ea010943b87",
 			"underlyingTokensAddresses": [],
@@ -12318,6 +14012,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf16e81dce15B08F326220742020379B855B87DF9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf19f91d7889668a533f14d076adc187be781a458": {
+			"address": "0xf19f91d7889668a533f14d076adc187be781a458",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor ETH-BABL Uni .3%",
+			"symbol": "vETH-BABL3",
+			"displayName": "Visor ETH-BABL Uni .3%",
+			"displaySymbol": "vETH-BABL3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF19F91d7889668A533F14d076aDc187be781a458/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12443,6 +14151,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf4dc48d260c93ad6a96c5ce563e70ca578987c74": {
+			"address": "0xf4dc48d260c93ad6a96c5ce563e70ca578987c74",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Babylon.Finance",
+			"symbol": "BABL",
+			"displayName": "Babylon.Finance",
+			"displaySymbol": "BABL",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF4Dc48D260C93ad6a96c5Ce563E70CA578987c74/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf4fdbc7c66dc9832d672ffe6242b6a386cead5de": {
 			"address": "0xf4fdbc7c66dc9832d672ffe6242b6a386cead5de",
 			"underlyingTokensAddresses": [
@@ -12456,6 +14178,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf4fDbc7C66Dc9832D672Ffe6242B6A386CeAd5DE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf56abca39c27d5c74f94c901b8c137fdf53b3e80": {
+			"address": "0xf56abca39c27d5c74f94c901b8c137fdf53b3e80",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xagEUR-USDC01",
+			"symbol": "xagEUR-USDC01",
+			"displayName": "xagEUR-USDC01",
+			"displaySymbol": "xagEUR-USDC01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF56Abca39c27D5C74F94c901b8C137fDf53B3E80/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12540,6 +14276,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf65b5c5104c4fafd4b709d9d60a185eae063276c": {
+			"address": "0xf65b5c5104c4fafd4b709d9d60a185eae063276c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Truebit",
+			"symbol": "TRU",
+			"displayName": "Truebit",
+			"displaySymbol": "TRU",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf65B5C5104c4faFD4b709d9D60a185eAE063276c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf6b1c627e95bfc3c1b4c9b825a032ff0fbf3e07d": {
 			"address": "0xf6b1c627e95bfc3c1b4c9b825a032ff0fbf3e07d",
 			"underlyingTokensAddresses": [],
@@ -12567,6 +14317,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF6B9DFE6bc42ed2eaB44D6B829017f7B78B29f88/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf6eeca73646ea6a5c878814e6508e87facc7927c": {
+			"address": "0xf6eeca73646ea6a5c878814e6508e87facc7927c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GAMMA-ETH Uni .3%",
+			"symbol": "GAMMA-ETH.3",
+			"displayName": "GAMMA-ETH Uni .3%",
+			"displaySymbol": "GAMMA-ETH.3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf6eeCA73646ea6A5c878814e6508e87facC7927C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12600,6 +14364,20 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains CRV and sdCRV, a tokenized veCRV from [StakeDAO](https://lockers.stakedao.org).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf874d4957861e193aec9937223062679c14f9aca": {
+			"address": "0xf874d4957861e193aec9937223062679c14f9aca",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-ETH05",
+			"symbol": "xUSDC-ETH05",
+			"displayName": "xUSDC-ETH05",
+			"displaySymbol": "xUSDC-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf874D4957861E193AEC9937223062679C14f9Aca/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12650,6 +14428,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf938424f7210f31df2aee3011291b658f872e91e": {
+			"address": "0xf938424f7210f31df2aee3011291b658f872e91e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VISOR",
+			"symbol": "VISR",
+			"displayName": "VISOR",
+			"displaySymbol": "VISR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF938424F7210f31dF2Aee3011291b658f872e91e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e": {
 			"address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
 			"underlyingTokensAddresses": [],
@@ -12661,6 +14453,20 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf9443178e92d06f44765e18e907936473606920f": {
+			"address": "0xf9443178e92d06f44765e18e907936473606920f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Visor USDC-UST Uni .05%",
+			"symbol": "vUSDC-UST05",
+			"displayName": "Visor USDC-UST Uni .05%",
+			"displaySymbol": "vUSDC-UST05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf9443178e92D06F44765e18e907936473606920F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12943,6 +14749,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xFe8A3837cFf919C800bdC5d1ac6136F84497d679/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfe9d3a1e865b9eaea9cd1d9d9073cc520be240c5": {
+			"address": "0xfe9d3a1e865b9eaea9cd1d9d9073cc520be240c5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-ETH05",
+			"symbol": "xUSDC-ETH05",
+			"displayName": "xUSDC-ETH05",
+			"displaySymbol": "xUSDC-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xFe9D3A1E865B9eaeA9cD1d9d9073CC520be240c5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

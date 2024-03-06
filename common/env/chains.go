@@ -11,6 +11,10 @@ type TChainCurve struct {
 	FactoryURIs     []string
 	PoolsURIs       []string
 }
+type TChainExtraURI struct {
+	GammaMerklURI      string
+	GammaHypervisorURI string
+}
 type TChain struct {
 	ID                     uint64
 	RpcURI                 string
@@ -32,6 +36,7 @@ type TChain struct {
 	ExtraTokens            []common.Address
 	IgnoredTokens          []common.Address
 	Curve                  TChainCurve
+	ExtraURI               TChainExtraURI
 }
 
 var DEFAULT_COIN_ADDRESS = common.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`)

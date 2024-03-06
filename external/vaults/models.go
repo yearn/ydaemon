@@ -2,6 +2,7 @@ package vaults
 
 import (
 	"errors"
+	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
@@ -262,6 +263,11 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	result, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
 	if found && result.PoolURLs.Deposit != nil && len(result.PoolURLs.Deposit) > 0 {
 		v.Info.SourceURL = result.PoolURLs.Deposit[0]
+	}
+
+	if v.Info.SourceURL == `` && (v.APR.Extra.GammaRewardAPR.Gte(bigNumber.NewFloat(0)) ||
+		strings.Contains(strings.ToLower(v.Name), `gamma`)) {
+		v.Info.SourceURL = `https://app.gamma.xyz/`
 	}
 
 	return v, nil

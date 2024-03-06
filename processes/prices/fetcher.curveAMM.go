@@ -26,7 +26,6 @@ func fetchPricesFromCurveAMM(chainID uint64, blockNumber *uint64, tokens []model
 	** API.
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, nil)
-
 	for _, token := range tokens {
 		rawTokenPrice := response[token.Address.Hex()+`lp_price`]
 		rawDecimals := response[token.Address.Hex()+`decimals`]

@@ -989,6 +989,16 @@
 		"chainID": 1,
 		"blockNumber": 13374501
 	},
+	"0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935": {
+		"address": "0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 19379082
+	},
 	"0x507c6de33f50c0505f77f598c0b3ca7b5feb3d68": {
 		"address": "0x507c6de33f50c0505f77f598c0b3ca7b5feb3d68",
 		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
@@ -2348,6 +2358,16 @@
 		"version": "0.3.2",
 		"chainID": 1,
 		"blockNumber": 12051992
+	},
+	"0xb974598227660befe79a23dfc473d859602254ac": {
+		"address": "0xb974598227660befe79a23dfc473d859602254ac",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 19379082
 	},
 	"0xb98df7163e61bf053564bde010985f67279bbcec": {
 		"address": "0xb98df7163e61bf053564bde010985f67279bbcec",

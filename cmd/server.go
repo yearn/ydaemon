@@ -138,6 +138,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/prices/all`, c.GetPrices)
 		router.GET(`:chainID/prices/:address`, c.GetPrice)
 		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePrices)
+		router.GET(`:chainID/prices/all/details`, c.GetAllPricesWithDetails)
 	}
 
 	// WARNING: DEPRECATED

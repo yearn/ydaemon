@@ -1,7 +1,10 @@
 package fetcher
 
 import (
+	"encoding/json"
+	"io"
 	"math/big"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -12,6 +15,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -383,6 +387,67 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 }
 
 /**************************************************************************************************
+** loadGammaPools is used to load the Gamma pools from the Gamma API. This is used to get the
+** underlying tokens for the Gamma LP tokens.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+**
+** Returns:
+** - a map of tokenAddress -> []models.TERC20Token
+**************************************************************************************************/
+func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
+	type TGammaData struct {
+		PoolAddress string `json:"poolAddress"`
+		Token0      string `json:"token0"`
+		Token1      string `json:"token1"`
+	}
+
+	coinsForPools := make(map[common.Address]models.TERC20Token)
+	/**********************************************************************************************
+	** Fetch the tokens from the Gamma API.
+	**********************************************************************************************/
+	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaHypervisorURI)
+	if err != nil {
+		logs.Error(`impossible to get Gamma URL`, err.Error())
+		return coinsForPools
+	}
+	defer resp.Body.Close()
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		logs.Error(`impossible to read Gamma Get body`, err.Error())
+		return coinsForPools
+	}
+	var pools map[string]TGammaData
+	if err := json.Unmarshal(body, &pools); err != nil {
+		logs.Error(`impossible to unmarshal Gamma Get body`, err.Error())
+		return coinsForPools
+	}
+
+	/**********************************************************************************************
+	** We will loop over the pools and add the tokens to the coinsForPools map.
+	**********************************************************************************************/
+	for poolAddress, poolData := range pools {
+		pool := common.HexToAddress(poolAddress)
+		token0 := common.HexToAddress(poolData.Token0)
+		token1 := common.HexToAddress(poolData.Token1)
+		coinsForPools[pool] = models.TERC20Token{
+			Address: pool,
+			ChainID: chainID,
+		}
+		coinsForPools[token0] = models.TERC20Token{
+			Address: token0,
+			ChainID: chainID,
+		}
+		coinsForPools[token1] = models.TERC20Token{
+			Address: token1,
+			ChainID: chainID,
+		}
+	}
+	return coinsForPools
+}
+
+/**************************************************************************************************
 ** Yearn vaults play with at least 2 tokens: the yVaultToken (aka the vault) and the underlying
 ** token. This underlying token can be a token or a LP token and therefore can have multiple sub
 ** tokens.
@@ -447,6 +512,9 @@ func RetrieveAllTokens(
 		}
 	}
 
+	/**********************************************************************************************
+	** Fetch the tokens from the Curve Factory.
+	**********************************************************************************************/
 	curveFactoryPools := loadCurvePools(chainID)
 	for _, poolCoins := range curveFactoryPools {
 		for _, coinAddress := range poolCoins {
@@ -456,6 +524,16 @@ func RetrieveAllTokens(
 					ChainID: chainID,
 				}
 			}
+		}
+	}
+
+	/**********************************************************************************************
+	** Fetch the tokens from the Gamma API.
+	**********************************************************************************************/
+	gammaPools := loadGammaPools(chainID)
+	for _, token := range gammaPools {
+		if _, ok := tokenMap[token.Address]; !ok || shouldRefresh {
+			updatedTokenMap[token.Address] = token
 		}
 	}
 

@@ -79,4 +79,8 @@ var OPTIMISM = TChain{
 			`https://api.curve.fi/api/getPools/optimism/factory`,
 		},
 	},
+	ExtraURI: TChainExtraURI{
+		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=10`,
+		GammaHypervisorURI: `https://wire2.gamma.xyz/optimism/hypervisors/allData`,
+	},
 }

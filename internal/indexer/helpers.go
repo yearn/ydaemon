@@ -61,7 +61,7 @@ func handleV04Vault(chainID uint64, value *contracts.YRegistryV4NewEndorsedVault
 		Type:            models.TokenTypeStandardVault,
 		Kind:            kind,
 	}
-	logs.Info(`Got V4 vault ` + value.Vault.Hex() + ` from registry ` + value.Raw.Address.Hex())
+	// logs.Info(`Got V4 vault ` + value.Vault.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
 }
 func handleV05Vault(chainID uint64, value *contracts.YRegistryV5NewVault) models.TVaultsFromRegistry {
@@ -77,6 +77,21 @@ func handleV05Vault(chainID uint64, value *contracts.YRegistryV5NewVault) models
 		Kind:            kind,
 	}
 	logs.Info(`Got V5 vault ` + value.VaultAddress.Hex() + ` from registry ` + value.Raw.Address.Hex())
+	return newVault
+}
+func handleV06Vault_Gamma(chainID uint64, value *contracts.YRegistryGammaNewGammaLPCompounder) models.TVaultsFromRegistry {
+	kind := models.VaultKindMultiple
+	newVault := models.TVaultsFromRegistry{
+		ChainID:         chainID,
+		RegistryAddress: value.Raw.Address,
+		Address:         value.Strategy,
+		TokenAddress:    value.Asset,
+		APIVersion:      `3.0.1`,
+		BlockNumber:     value.Raw.BlockNumber,
+		Type:            models.TokenTypeStandardVault,
+		Kind:            kind,
+	}
+	logs.Info(`Got Gammma (V6) vault ` + value.Strategy.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
 }
 

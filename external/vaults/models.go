@@ -259,9 +259,14 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		StableBaseAsset: vault.Classification.StableBaseAsset,
 	}
 
-	result, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
-	if found && result.PoolURLs.Deposit != nil && len(result.PoolURLs.Deposit) > 0 {
-		v.Info.SourceURL = result.PoolURLs.Deposit[0]
+	poolResult, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
+	if found && poolResult.PoolURLs.Deposit != nil && len(poolResult.PoolURLs.Deposit) > 0 {
+		v.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
+	}
+
+	gammaResult, found := storage.GetGammaSourceURL(vault.ChainID, vault.Address)
+	if found && gammaResult != `` {
+		v.Info.SourceURL = gammaResult
 	}
 
 	return v, nil

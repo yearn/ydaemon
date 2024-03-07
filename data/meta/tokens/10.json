@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-04T14:38:41.004396+01:00",
+	"lastUpdate": "2024-03-06T14:42:35.157404+01:00",
 	"version": {
 		"major": 0,
-		"minor": 2,
+		"minor": 3,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -85,6 +85,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x0555221fe56d13daf9c67275424a81f2bdc068b9": {
+			"address": "0x0555221fe56d13daf9c67275424a81f2bdc068b9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-agEUR",
+			"symbol": "xUSDC-agEUR",
+			"displayName": "xUSDC-agEUR",
+			"displaySymbol": "xUSDC-agEUR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0555221Fe56D13dAf9C67275424A81F2BDC068b9/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x05bbaf27429eb35cb3d51a979acba69f2f00e66a": {
 			"address": "0x05bbaf27429eb35cb3d51a979acba69f2f00e66a",
 			"underlyingTokensAddresses": [
@@ -148,6 +162,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x0b4645179c1b668464df01362fc6219a7ab3234c": {
+			"address": "0x0b4645179c1b668464df01362fc6219a7ab3234c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-sUSD05",
+			"symbol": "xUSDC-sUSD05",
+			"displayName": "xUSDC-sUSD05",
+			"displaySymbol": "xUSDC-sUSD05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0b4645179C1b668464Df01362fC6219a7ab3234c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x0df083de449f75691fc5a36477a6f3284c269108": {
 			"address": "0x0df083de449f75691fc5a36477a6f3284c269108",
 			"underlyingTokensAddresses": [],
@@ -159,6 +187,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains OP and USDC.e.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x0df083de449F75691fc5A36477a6f3284C269108/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x0f548d7ad1a0cb30d1872b8c18894484d76e1569": {
+			"address": "0x0f548d7ad1a0cb30d1872b8c18894484d76e1569",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT05",
+			"symbol": "xUSDC-USDT05",
+			"displayName": "xUSDC-USDT05",
+			"displaySymbol": "xUSDC-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0F548d7AD1A0CB30D1872b8C18894484d76e1569/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -179,6 +221,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x1392698b2f2ca87e6329c1ca502c5d4ba938d1b8": {
+			"address": "0x1392698b2f2ca87e6329c1ca502c5d4ba938d1b8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-SNX3",
+			"symbol": "xWETH-SNX3",
+			"displayName": "xWETH-SNX3",
+			"displaySymbol": "xWETH-SNX3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x1392698B2F2cA87E6329c1ca502C5d4BA938d1b8/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x14e42871d90282ec0439f01347178d6331fc1873": {
+			"address": "0x14e42871d90282ec0439f01347178d6331fc1873",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-DAI3",
+			"symbol": "xWETH-DAI3",
+			"displayName": "xWETH-DAI3",
+			"displaySymbol": "xWETH-DAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x14E42871D90282ec0439f01347178D6331fC1873/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x161e7411a291ccaf377279fce6a8c8d689dbebe8": {
 			"address": "0x161e7411a291ccaf377279fce6a8c8d689dbebe8",
 			"underlyingTokensAddresses": [
@@ -195,6 +265,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x174222f62f71c0b2cdc1e2856c5ba644bf9d8c6f": {
+			"address": "0x174222f62f71c0b2cdc1e2856c5ba644bf9d8c6f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-OP05",
+			"symbol": "xETH-OP05",
+			"displayName": "xETH-OP05",
+			"displaySymbol": "xETH-OP05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x174222F62F71c0b2CdC1E2856C5ba644Bf9d8c6F/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x19715771e30c93915a5bbda134d782b81a820076": {
 			"address": "0x19715771e30c93915a5bbda134d782b81a820076",
 			"underlyingTokensAddresses": [],
@@ -206,6 +290,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USDC.e and DAI.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x19715771E30c93915A5bbDa134d782b81A820076/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x19f4ebc0a1744b93a355c2320899276ae7f79ee5": {
+			"address": "0x19f4ebc0a1744b93a355c2320899276ae7f79ee5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDT3",
+			"symbol": "xOP-USDT3",
+			"displayName": "xOP-USDT3",
+			"displaySymbol": "xOP-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x19F4eBc0a1744b93A355C2320899276aE7F79Ee5/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -269,6 +367,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x1f32b1c2345538c0c6f582fcb022739c4a194ebb": {
+			"address": "0x1f32b1c2345538c0c6f582fcb022739c4a194ebb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped liquid staked Ether 2.0",
+			"symbol": "wstETH",
+			"displayName": "Wrapped liquid staked Ether 2.0",
+			"displaySymbol": "wstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x1F32b1c2345538c0c6f582fCB022739c4A194Ebb/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x1f8b46abe1eabf5a60cbbb5fb2e4a6a46fa0b6e6": {
 			"address": "0x1f8b46abe1eabf5a60cbbb5fb2e4a6a46fa0b6e6",
 			"underlyingTokensAddresses": [],
@@ -280,6 +392,34 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains FRAX and DOLA.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x1f8b46abe1EAbF5A60CbBB5Fb2e4a6A46fA0b6e6/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x2102bef0d9727ea50ba844e7658e38480961835c": {
+			"address": "0x2102bef0d9727ea50ba844e7658e38480961835c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDC3",
+			"symbol": "xOP-USDC3",
+			"displayName": "xOP-USDC3",
+			"displaySymbol": "xOP-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x2102BeF0d9727EA50bA844e7658e38480961835c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x2225d4124d5da09765b768be5334b93844dfd1a0": {
+			"address": "0x2225d4124d5da09765b768be5334b93844dfd1a0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-WETH01",
+			"symbol": "WSTETH-WETH01",
+			"displayName": "WSTETH-WETH01",
+			"displaySymbol": "WSTETH-WETH01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x2225D4124D5da09765b768be5334b93844dfD1A0/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -299,6 +439,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x23851bf7d838d50b1b5164b75c79bda3c1bb6fa3": {
+			"address": "0x23851bf7d838d50b1b5164b75c79bda3c1bb6fa3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-WBTC05",
+			"symbol": "WSTETH-WBTC05",
+			"displayName": "WSTETH-WBTC05",
+			"displaySymbol": "WSTETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x23851bF7d838D50B1B5164B75C79BDa3c1BB6FA3/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x27939e33435cc4ee4e74c0f0260914596bceb116": {
 			"address": "0x27939e33435cc4ee4e74c0f0260914596bceb116",
 			"underlyingTokensAddresses": [
@@ -312,6 +466,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x27939E33435cc4ee4e74c0F0260914596bcEb116/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x28a7a607f19c2e51da44663b0a520285be914947": {
+			"address": "0x28a7a607f19c2e51da44663b0a520285be914947",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDT-BUSD05",
+			"symbol": "USDT-BUSD05",
+			"displayName": "USDT-BUSD05",
+			"displaySymbol": "USDT-BUSD05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x28A7A607f19C2e51DA44663b0A520285Be914947/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -345,6 +513,48 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x2bc7243b8b9d50a2acfef05adac78b44e1fa0b47": {
+			"address": "0x2bc7243b8b9d50a2acfef05adac78b44e1fa0b47",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xsUSD-DAI05",
+			"symbol": "xsUSD-DAI05",
+			"displayName": "xsUSD-DAI05",
+			"displaySymbol": "xsUSD-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x2BC7243B8b9D50A2AcfEf05ADaC78B44e1Fa0b47/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x2d6b26f430f261b77d14c495585116aa579b7217": {
+			"address": "0x2d6b26f430f261b77d14c495585116aa579b7217",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xsUSD-DAI05",
+			"symbol": "xsUSD-DAI05",
+			"displayName": "xsUSD-DAI05",
+			"displaySymbol": "xsUSD-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x2d6B26f430F261B77D14C495585116aA579b7217/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x2e5565be8a3ed2222351dc221279317598fa3ffa": {
+			"address": "0x2e5565be8a3ed2222351dc221279317598fa3ffa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-DAI05",
+			"symbol": "xUSDC-DAI05",
+			"displayName": "xUSDC-DAI05",
+			"displaySymbol": "xUSDC-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x2E5565be8A3ED2222351dc221279317598fa3FFA/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x2e931de1fcb2681dc98601e0b513308da9c5ceae": {
 			"address": "0x2e931de1fcb2681dc98601e0b513308da9c5ceae",
 			"underlyingTokensAddresses": [],
@@ -356,6 +566,34 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains TAROT and USDC.e.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x2E931De1fcB2681Dc98601e0b513308DA9C5cEae/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x32e27ff479454e32868ff67ee9f06bafdc1e908f": {
+			"address": "0x32e27ff479454e32868ff67ee9f06bafdc1e908f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-USDT05",
+			"symbol": "xWETH-USDT05",
+			"displayName": "xWETH-USDT05",
+			"displaySymbol": "xWETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x32e27fF479454e32868ff67Ee9F06BAFDC1E908F/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x34d4112d180e9faf06f77c8c550ba20c9f61ae31": {
+			"address": "0x34d4112d180e9faf06f77c8c550ba20c9f61ae31",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-WBTC05",
+			"symbol": "xWETH-WBTC05",
+			"displayName": "xWETH-WBTC05",
+			"displaySymbol": "xWETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x34D4112D180e9fAf06f77c8C550bA20C9F61aE31/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -388,6 +626,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x36E4c18B2B43CC989085B4a7306915b115058abF/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x387854f1885c08cea896eb75f08917e45c6b3c5f": {
+			"address": "0x387854f1885c08cea896eb75f08917e45c6b3c5f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-USDT05",
+			"symbol": "xETH-USDT05",
+			"displayName": "xETH-USDT05",
+			"displaySymbol": "xETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x387854f1885c08CEa896EB75f08917E45c6B3C5F/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -455,6 +707,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x3e29d3a9316dab217754d13b28646b76607c5f04": {
+			"address": "0x3e29d3a9316dab217754d13b28646b76607c5f04",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Alchemix ETH",
+			"symbol": "alETH",
+			"displayName": "Alchemix ETH",
+			"displaySymbol": "alETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x3E29D3A9316dAB217754d13b28646B76607c5f04/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x3f14df340498f3eaa2894bfc19789dd592dc062d": {
 			"address": "0x3f14df340498f3eaa2894bfc19789dd592dc062d",
 			"underlyingTokensAddresses": [
@@ -482,6 +748,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains WETH and frxETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x3f42Dc59DC4dF5cD607163bC620168f7FF7aB970/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x3f848eefd234da0b1b98ea876fe2ee86a10773ca": {
+			"address": "0x3f848eefd234da0b1b98ea876fe2ee86a10773ca",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xsUSD-USDT05",
+			"symbol": "xsUSD-USDT05",
+			"displayName": "xsUSD-USDT05",
+			"displaySymbol": "xsUSD-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x3f848EeFD234dA0B1B98Ea876fe2ee86a10773ca/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -543,6 +823,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x431f6e577a431d9ee87a535fde2db830e352e33c": {
+			"address": "0x431f6e577a431d9ee87a535fde2db830e352e33c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-USDC05",
+			"symbol": "xETH-USDC05",
+			"displayName": "xETH-USDC05",
+			"displaySymbol": "xETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x431f6E577A431D9EE87a535fDE2dB830E352e33c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x43360fdd9546e3e77ac2e6793f53219729743293": {
 			"address": "0x43360fdd9546e3e77ac2e6793f53219729743293",
 			"underlyingTokensAddresses": [
@@ -572,6 +866,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x45b0a7Dc29B7856A1B5069DB4CfA2A984b69cC41/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x46b4fa8e2e98a3c53fe526a87591d596e1b4d98c": {
+			"address": "0x46b4fa8e2e98a3c53fe526a87591d596e1b4d98c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-agEUR05",
+			"symbol": "xUSDC-agEUR05",
+			"displayName": "xUSDC-agEUR05",
+			"displaySymbol": "xUSDC-agEUR05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x46b4FA8E2e98a3c53fe526a87591D596E1B4D98c/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -617,6 +925,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x4C8b1958B09B3bde714f68864Bcc3a74Eaf1A23D/logo-128.png",
 			"decimals": 6,
+			"chainID": 10
+		},
+		"0x4d41f2feb1e0c20a5aeadafc358a49b771682b22": {
+			"address": "0x4d41f2feb1e0c20a5aeadafc358a49b771682b22",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-USDT05",
+			"symbol": "WSTETH-USDT05",
+			"displayName": "WSTETH-USDT05",
+			"displaySymbol": "WSTETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x4d41F2FEb1e0C20A5aEADaFC358a49b771682b22/logo-128.png",
+			"decimals": 18,
 			"chainID": 10
 		},
 		"0x4d7959d17b9710be87e3657e69d946914221bb88": {
@@ -691,6 +1013,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x4edea8a84c695ab6fcc0a46c1e3a988d34954931": {
+			"address": "0x4edea8a84c695ab6fcc0a46c1e3a988d34954931",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-DAI3",
+			"symbol": "xETH-DAI3",
+			"displayName": "xETH-DAI3",
+			"displaySymbol": "xETH-DAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x4EDEa8A84C695Ab6fcc0a46c1e3A988d34954931/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x4f1220f6375e95b43462465972cb2f478ed34d0b": {
 			"address": "0x4f1220f6375e95b43462465972cb2f478ed34d0b",
 			"underlyingTokensAddresses": [
@@ -704,6 +1040,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x4F1220f6375e95b43462465972cB2f478Ed34D0b/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x4f2b80d797bd1b93903cc84e5992586142c3ecd1": {
+			"address": "0x4f2b80d797bd1b93903cc84e5992586142c3ecd1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDC3",
+			"symbol": "xOP-USDC3",
+			"displayName": "xOP-USDC3",
+			"displaySymbol": "xOP-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x4f2b80D797Bd1B93903Cc84e5992586142C3ECD1/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -739,6 +1089,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x51b10b4c8224144e31ab7b570ae51359c4fcc3a6": {
+			"address": "0x51b10b4c8224144e31ab7b570ae51359c4fcc3a6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-WBTC05",
+			"symbol": "WSTETH-WBTC05",
+			"displayName": "WSTETH-WBTC05",
+			"displaySymbol": "WSTETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x51B10B4C8224144E31ab7b570Ae51359c4FCc3A6/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x531fdb1c8429f404116932226d487db94471c4b7": {
 			"address": "0x531fdb1c8429f404116932226d487db94471c4b7",
 			"underlyingTokensAddresses": [
@@ -752,6 +1116,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x531fDb1C8429F404116932226D487db94471C4b7/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x55c3965c000370b389a931b26ff04ab53fec1def": {
+			"address": "0x55c3965c000370b389a931b26ff04ab53fec1def",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-ETH05",
+			"symbol": "xOP-ETH05",
+			"displayName": "xOP-ETH05",
+			"displaySymbol": "xOP-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x55C3965C000370b389A931b26FF04ab53FEC1def/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -798,6 +1176,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x5B977577Eb8a480f63e11FC615D6753adB8652Ae/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x5b9b4ff6a0d065d7374ed315d0a636d955931036": {
+			"address": "0x5b9b4ff6a0d065d7374ed315d0a636d955931036",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "OP-BUSD3",
+			"symbol": "OP-BUSD3",
+			"displayName": "OP-BUSD3",
+			"displaySymbol": "OP-BUSD3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x5b9b4Ff6A0D065d7374ed315d0A636D955931036/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -901,6 +1293,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x63923f4c88bee08fb9bd5cf97badb30435aa4ffd": {
+			"address": "0x63923f4c88bee08fb9bd5cf97badb30435aa4ffd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-KROM3",
+			"symbol": "xOP-KROM3",
+			"displayName": "xOP-KROM3",
+			"displaySymbol": "xOP-KROM3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x63923f4C88bEE08fb9bd5CF97badb30435aA4Ffd/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x6461ed3c4e9c7829896df7f2e2af839820c02612": {
+			"address": "0x6461ed3c4e9c7829896df7f2e2af839820c02612",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDT3",
+			"symbol": "xOP-USDT3",
+			"displayName": "xOP-USDT3",
+			"displaySymbol": "xOP-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x6461ED3c4e9C7829896Df7F2E2aF839820C02612/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x65343f414ffd6c97b0f6add33d16f6845ac22bac": {
 			"address": "0x65343f414ffd6c97b0f6add33d16f6845ac22bac",
 			"underlyingTokensAddresses": [
@@ -914,6 +1334,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x65512de8919baf31cc9c8f067cdca308112b9d1f": {
+			"address": "0x65512de8919baf31cc9c8f067cdca308112b9d1f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xsUSD-USDT05",
+			"symbol": "xsUSD-USDT05",
+			"displayName": "xsUSD-USDT05",
+			"displaySymbol": "xsUSD-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x65512DE8919BAF31cC9C8f067CdCA308112B9d1f/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -944,6 +1378,34 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USD+ and DAI+.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x667002F9DC61ebcBA8Ee1Cbeb2ad04060388f223/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x66cd859053c458688044d816117d5bdf42a56813": {
+			"address": "0x66cd859053c458688044d816117d5bdf42a56813",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-DAI05",
+			"symbol": "xUSDC-DAI05",
+			"displayName": "xUSDC-DAI05",
+			"displaySymbol": "xUSDC-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x66CD859053c458688044d816117D5Bdf42A56813/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x66df9d4a1f065106bd1c489b592d50cfebf78160": {
+			"address": "0x66df9d4a1f065106bd1c489b592d50cfebf78160",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-WBTC05",
+			"symbol": "xWETH-WBTC05",
+			"displayName": "xWETH-WBTC05",
+			"displaySymbol": "xWETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x66DF9d4a1f065106Bd1C489b592D50CfEBF78160/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1159,6 +1621,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x6f670062bca8c759a876841fcf1c4b0147879097": {
+			"address": "0x6f670062bca8c759a876841fcf1c4b0147879097",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-DAI05",
+			"symbol": "xETH-DAI05",
+			"displayName": "xETH-DAI05",
+			"displaySymbol": "xETH-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x6F670062bCa8C759A876841FcF1c4B0147879097/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x71117bcd8fe69177eeb8857538d625209756b745": {
 			"address": "0x71117bcd8fe69177eeb8857538d625209756b745",
 			"underlyingTokensAddresses": [
@@ -1203,6 +1679,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x77809245433dc4dd16f59a923b0a4f276b2dd7bf": {
+			"address": "0x77809245433dc4dd16f59a923b0a4f276b2dd7bf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-USDC05",
+			"symbol": "wstETH-USDC05",
+			"displayName": "wstETH-USDC05",
+			"displaySymbol": "wstETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x77809245433dc4Dd16F59a923B0a4f276b2dD7BF/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x77b6d0279c9cef559ef7c32c31d9a5d8acb664fe": {
 			"address": "0x77b6d0279c9cef559ef7c32c31d9a5d8acb664fe",
 			"underlyingTokensAddresses": [],
@@ -1244,6 +1734,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains RED and VELO.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x7A7f1187c4710010DB17d0a9ad3fcE85e6ecD90a/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x7b6d30a9e68f9bddffbc586ce19c867c28cc6116": {
+			"address": "0x7b6d30a9e68f9bddffbc586ce19c867c28cc6116",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-WBTC05",
+			"symbol": "wstETH-WBTC05",
+			"displayName": "wstETH-WBTC05",
+			"displaySymbol": "wstETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x7b6D30a9e68f9BDDFfBC586ce19c867c28cC6116/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1386,6 +1890,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x8323eac5003d98879e886e5cd6d9abd0c22fc14f": {
+			"address": "0x8323eac5003d98879e886e5cd6d9abd0c22fc14f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDC-BUSD05",
+			"symbol": "USDC-BUSD05",
+			"displayName": "USDC-BUSD05",
+			"displaySymbol": "USDC-BUSD05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8323eac5003D98879e886E5cD6D9abD0c22fc14F/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x83b8391b9efbc5b5a38777fb22a4968c622a405a": {
 			"address": "0x83b8391b9efbc5b5a38777fb22a4968c622a405a",
 			"underlyingTokensAddresses": [
@@ -1399,6 +1917,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x83b8391B9efBc5B5A38777fB22A4968c622a405a/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8421c6102ee8a147facc01977df3b159f7921d54": {
+			"address": "0x8421c6102ee8a147facc01977df3b159f7921d54",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-SNX3",
+			"symbol": "xWETH-SNX3",
+			"displayName": "xWETH-SNX3",
+			"displaySymbol": "xWETH-SNX3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8421c6102EE8a147FAcC01977Df3b159F7921d54/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1430,6 +1962,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x8462e4173d63f8769f94bf7ae5bc1ac7ab5d96e3": {
+			"address": "0x8462e4173d63f8769f94bf7ae5bc1ac7ab5d96e3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-USDT05",
+			"symbol": "xWETH-USDT05",
+			"displayName": "xWETH-USDT05",
+			"displaySymbol": "xWETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8462E4173D63f8769f94bf7ae5Bc1Ac7AB5D96E3/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8480199e5d711399abb4d51bda329e064c89ad77": {
+			"address": "0x8480199e5d711399abb4d51bda329e064c89ad77",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-OP3",
+			"symbol": "xWETH-OP3",
+			"displayName": "xWETH-OP3",
+			"displaySymbol": "xWETH-OP3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8480199E5D711399ABB4D51bDa329E064c89ad77/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x8542dd4744edea38b8a9306268b08f4d26d38581": {
 			"address": "0x8542dd4744edea38b8a9306268b08f4d26d38581",
 			"underlyingTokensAddresses": [],
@@ -1441,6 +2001,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains FRAX and USDC.e.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8542DD4744edEa38b8a9306268b08F4D26d38581/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8700daec35af8ff88c16bdf0418774cb3d7599b4": {
+			"address": "0x8700daec35af8ff88c16bdf0418774cb3d7599b4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Synthetix Network Token",
+			"symbol": "SNX",
+			"displayName": "Synthetix Network Token",
+			"displaySymbol": "SNX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8700dAec35aF8Ff88c16BdF0418774CB3D7599B4/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1473,6 +2047,76 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x88B429359665B8685b7431f5A0f6e8C719Bf49Aa/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x88ec60e481ba5b3842c518f9a61478b680aa2055": {
+			"address": "0x88ec60e481ba5b3842c518f9a61478b680aa2055",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-ETH05",
+			"symbol": "xOP-ETH05",
+			"displayName": "xOP-ETH05",
+			"displaySymbol": "xOP-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x88eC60E481Ba5B3842c518f9A61478b680aa2055/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x89c981270bb3538feed441921ff608a56f7c4812": {
+			"address": "0x89c981270bb3538feed441921ff608a56f7c4812",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-USDT05",
+			"symbol": "wstETH-USDT05",
+			"displayName": "wstETH-USDT05",
+			"displaySymbol": "wstETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x89C981270BB3538feed441921fF608a56F7C4812/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8a9570ec97534277ade6e46d100939fbce4968f0": {
+			"address": "0x8a9570ec97534277ade6e46d100939fbce4968f0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDC3",
+			"symbol": "xOP-USDC3",
+			"displayName": "xOP-USDC3",
+			"displaySymbol": "xOP-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8a9570ec97534277Ade6e46d100939FbCE4968f0/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8b6e73f17b613ce189be413f5dc435139f5fd45c": {
+			"address": "0x8b6e73f17b613ce189be413f5dc435139f5fd45c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-DAI3",
+			"symbol": "xETH-DAI3",
+			"displayName": "xETH-DAI3",
+			"displaySymbol": "xETH-DAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8b6E73f17B613ce189Be413f5DC435139F5fd45c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8ba02c31565aace0328ea90a17fa86d4ba1ec4d8": {
+			"address": "0x8ba02c31565aace0328ea90a17fa86d4ba1ec4d8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-WBTC05",
+			"symbol": "wstETH-WBTC05",
+			"displayName": "wstETH-WBTC05",
+			"displaySymbol": "wstETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8Ba02c31565AaCE0328eA90A17fa86D4ba1ec4D8/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1552,6 +2196,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x910478b691fd695ac269dedf22eafde39fb20e9e": {
+			"address": "0x910478b691fd695ac269dedf22eafde39fb20e9e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDT3",
+			"symbol": "xOP-USDT3",
+			"displayName": "xOP-USDT3",
+			"displaySymbol": "xOP-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x910478B691fd695ac269DeDf22EaFde39FB20E9e/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x912e59071478dca72bf065f3d31d04d0b054547d": {
+			"address": "0x912e59071478dca72bf065f3d31d04d0b054547d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xalETH-alUSD05",
+			"symbol": "xalETH-alUSD05",
+			"displayName": "xalETH-alUSD05",
+			"displaySymbol": "xalETH-alUSD05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x912e59071478dCA72BF065f3D31D04d0B054547D/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x917aa69d539d6518440dd0bea2eaac142a8d5610": {
 			"address": "0x917aa69d539d6518440dd0bea2eaac142a8d5610",
 			"underlyingTokensAddresses": [],
@@ -1579,6 +2251,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x93d6D0AB2b2aA25580cb77e8C5f9D5a0cc5E08Fe/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x9485aca5bbbe1667ad97c7fe7c4531a624c8b1ed": {
+			"address": "0x9485aca5bbbe1667ad97c7fe7c4531a624c8b1ed",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "agEUR",
+			"symbol": "agEUR",
+			"displayName": "agEUR",
+			"displaySymbol": "agEUR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x9485aca5bbBE1667AD97c7fE7C4531a624C8b1ED/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1656,6 +2342,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x9c9e5fd8bbc25984b178fdce6117defa39d2db39": {
+			"address": "0x9c9e5fd8bbc25984b178fdce6117defa39d2db39",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "BUSD Token",
+			"symbol": "BUSD",
+			"displayName": "BUSD Token",
+			"displaySymbol": "BUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x9C9e5fD8bbc25984B178FdCE6117Defa39d2db39/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e": {
 			"address": "0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e",
 			"underlyingTokensAddresses": [
@@ -1699,6 +2399,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xa31Ad8D355B5223Ad34FD4fD0bC854A68E7D9681/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xa330d33f1da50a678f33c853d19fae28aa1077e5": {
+			"address": "0xa330d33f1da50a678f33c853d19fae28aa1077e5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-USDC05",
+			"symbol": "WSTETH-USDC05",
+			"displayName": "WSTETH-USDC05",
+			"displaySymbol": "WSTETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xA330d33F1da50A678f33C853d19FAE28Aa1077e5/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1747,6 +2461,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xa7B550B3A80361d8e47E07616dC42f04c655881b/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xa8524abc230725da48e61b677504fb5e8a409e38": {
+			"address": "0xa8524abc230725da48e61b677504fb5e8a409e38",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-ETH05",
+			"symbol": "wstETH-ETH05",
+			"displayName": "wstETH-ETH05",
+			"displaySymbol": "wstETH-ETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xa8524abc230725DA48E61B677504fb5e8A409e38/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1812,6 +2540,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xaddb6a0412de1ba0f936dcaeb8aaa24578dcf3b2": {
+			"address": "0xaddb6a0412de1ba0f936dcaeb8aaa24578dcf3b2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Coinbase Wrapped Staked ETH",
+			"symbol": "cbETH",
+			"displayName": "Coinbase Wrapped Staked ETH",
+			"displaySymbol": "cbETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xadDb6A0412DE1BA0F936DCaeb8Aaa24578dcF3B2/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xaed05fdd471a4eecee48b34d38c59cc76681a6c8": {
+			"address": "0xaed05fdd471a4eecee48b34d38c59cc76681a6c8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-DAI01",
+			"symbol": "xUSDC-DAI01",
+			"displayName": "xUSDC-DAI01",
+			"displaySymbol": "xUSDC-DAI01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xaED05fdd471a4EecEe48B34d38c59CC76681A6C8/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xaf03f51de7a0e62bf061f6fc3931cf79166b0a29": {
 			"address": "0xaf03f51de7a0e62bf061f6fc3931cf79166b0a29",
 			"underlyingTokensAddresses": [],
@@ -1823,6 +2579,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains FRAX and alUSD.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xaF03f51DE7a0E62BF061F6Fc3931cF79166B0a29/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xaf7ef12d2e456cf38e149fdef5b8c867f6680efb": {
+			"address": "0xaf7ef12d2e456cf38e149fdef5b8c867f6680efb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWSTETH-CBETH01",
+			"symbol": "xWSTETH-CBETH01",
+			"displayName": "xWSTETH-CBETH01",
+			"displaySymbol": "xWSTETH-CBETH01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xaF7EF12D2e456cf38E149FdEF5B8c867F6680EfB/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1883,6 +2653,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains IB and WETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xB545592E38b603F4A904a5260A6ffC538BfcB424/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xb60a9bb5a35387bdb83764cb8c74359d06194533": {
+			"address": "0xb60a9bb5a35387bdb83764cb8c74359d06194533",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT05",
+			"symbol": "xUSDC-USDT05",
+			"displayName": "xUSDC-USDT05",
+			"displaySymbol": "xUSDC-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xB60a9bB5a35387bDb83764CB8C74359D06194533/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1948,6 +2732,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xbcfa4cfa97f74a6abf80b9901569bbc8654f4315": {
+			"address": "0xbcfa4cfa97f74a6abf80b9901569bbc8654f4315",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-OP3",
+			"symbol": "xWETH-OP3",
+			"displayName": "xWETH-OP3",
+			"displaySymbol": "xWETH-OP3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xbcFa4cfA97f74a6AbF80b9901569BBc8654F4315/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xbe418771bc91f75c4d2bce1d5e2b7286f50992da": {
 			"address": "0xbe418771bc91f75c4d2bce1d5e2b7286f50992da",
 			"underlyingTokensAddresses": [],
@@ -1976,6 +2774,34 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xc151f371a88c57e54af979e2dd8f11264b72ad92": {
+			"address": "0xc151f371a88c57e54af979e2dd8f11264b72ad92",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-USDT05",
+			"symbol": "wstETH-USDT05",
+			"displayName": "wstETH-USDT05",
+			"displaySymbol": "wstETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xC151F371a88C57E54af979E2dD8F11264b72AD92/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xc15e1db9a69445dee09806ef073f71f44818dc89": {
+			"address": "0xc15e1db9a69445dee09806ef073f71f44818dc89",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-ETH3",
+			"symbol": "wstETH-ETH3",
+			"displayName": "wstETH-ETH3",
+			"displaySymbol": "wstETH-ETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xC15e1Db9a69445dEE09806eF073F71f44818Dc89/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xc2626acedc27cffb418680d0307c9178955a4743": {
 			"address": "0xc2626acedc27cffb418680d0307c9178955a4743",
 			"underlyingTokensAddresses": [
@@ -1989,6 +2815,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xc2626aCEdc27cFfB418680d0307C9178955A4743/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xc2d11567f0dc97884027c0281d7e746bf0409528": {
+			"address": "0xc2d11567f0dc97884027c0281d7e746bf0409528",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-OP05",
+			"symbol": "xETH-OP05",
+			"displayName": "xETH-OP05",
+			"displaySymbol": "xETH-OP05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xC2d11567F0Dc97884027c0281d7e746bf0409528/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2054,6 +2894,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xc3626320387f27219ba0303702070f0d9f513a95": {
+			"address": "0xc3626320387f27219ba0303702070f0d9f513a95",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-sUSD01",
+			"symbol": "xUSDC-sUSD01",
+			"displayName": "xUSDC-sUSD01",
+			"displaySymbol": "xUSDC-sUSD01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xc3626320387f27219Ba0303702070f0d9F513A95/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xc37a0a37664aeb3848f98c5dd5d7ae286a1e9ebd": {
 			"address": "0xc37a0a37664aeb3848f98c5dd5d7ae286a1e9ebd",
 			"underlyingTokensAddresses": [],
@@ -2065,6 +2919,34 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains FRAX and MAI.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xc37a0a37664aeB3848f98C5dD5d7AE286A1E9Ebd/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xc581e7c92aee3ae52f6bd78437b9430be9fb0c76": {
+			"address": "0xc581e7c92aee3ae52f6bd78437b9430be9fb0c76",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-WBTC05",
+			"symbol": "xWETH-WBTC05",
+			"displayName": "xWETH-WBTC05",
+			"displaySymbol": "xWETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xC581e7C92aEe3AE52F6bD78437b9430BE9Fb0c76/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xc5b001dc33727f8f26880b184090d3e252470d45": {
+			"address": "0xc5b001dc33727f8f26880b184090d3e252470d45",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ethos Reserve Note",
+			"symbol": "ERN",
+			"displayName": "Ethos Reserve Note",
+			"displaySymbol": "ERN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xc5b001DC33727F8F26880B184090D3E252470D45/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2082,6 +2964,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xc79265161ee0766802c576cc0154b03cf2cb72ff": {
+			"address": "0xc79265161ee0766802c576cc0154b03cf2cb72ff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-DAI05",
+			"symbol": "xETH-DAI05",
+			"displayName": "xETH-DAI05",
+			"displaySymbol": "xETH-DAI05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xC79265161eE0766802c576Cc0154B03CF2Cb72FF/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xc86b70e2c16c5fb5315e4663737e0e077abfc395": {
 			"address": "0xc86b70e2c16c5fb5315e4663737e0e077abfc395",
 			"underlyingTokensAddresses": [
@@ -2095,6 +2991,34 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xC86B70e2C16C5fB5315e4663737E0E077ABFC395/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xca8759814695516c34168bbedd86290964d37ada": {
+			"address": "0xca8759814695516c34168bbedd86290964d37ada",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-SNX3",
+			"symbol": "xUSDC-SNX3",
+			"displayName": "xUSDC-SNX3",
+			"displaySymbol": "xUSDC-SNX3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xca8759814695516C34168BBedd86290964D37adA/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xcb8fa9a76b8e203d8c3797bf438d8fb81ea3326a": {
+			"address": "0xcb8fa9a76b8e203d8c3797bf438d8fb81ea3326a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Alchemix USD",
+			"symbol": "alUSD",
+			"displayName": "Alchemix USD",
+			"displaySymbol": "alUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xCB8FA9a76b8e203D8C3797bF438d8FB81Ea3326A/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2160,6 +3084,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xd210fd73d0a430660d5f78a8a3cb2a63c002faa8": {
+			"address": "0xd210fd73d0a430660d5f78a8a3cb2a63c002faa8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-USDC05",
+			"symbol": "wstETH-USDC05",
+			"displayName": "wstETH-USDC05",
+			"displaySymbol": "wstETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xd210fD73d0a430660D5F78A8A3CB2a63c002faA8/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xd25711edfbf747efce181442cc1d8f5f8fc8a0d3": {
 			"address": "0xd25711edfbf747efce181442cc1d8f5f8fc8a0d3",
 			"underlyingTokensAddresses": [],
@@ -2171,6 +3109,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains WETH and OP.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xd25711EdfBf747efCE181442Cc1D8F5F8fc8a0D3/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xd317b3bc6650fc6c128b672a12ae22e66027185f": {
+			"address": "0xd317b3bc6650fc6c128b672a12ae22e66027185f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDC3",
+			"symbol": "xOP-USDC3",
+			"displayName": "xOP-USDC3",
+			"displaySymbol": "xOP-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xD317b3bc6650FC6c128b672a12aE22E66027185F/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2204,6 +3156,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xd3c480ec7a47596ff8d63396227d1f7dc728a7f0": {
+			"address": "0xd3c480ec7a47596ff8d63396227d1f7dc728a7f0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-ERN05",
+			"symbol": "xUSDC-ERN05",
+			"displayName": "xUSDC-ERN05",
+			"displaySymbol": "xUSDC-ERN05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xD3C480EC7a47596fF8D63396227d1F7dC728A7f0/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae": {
 			"address": "0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae",
 			"underlyingTokensAddresses": [
@@ -2231,6 +3197,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USDC.e and MAI.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xd62C9D8a3D4fd98b27CaaEfE3571782a3aF0a737/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xd6cc4a33da7557a629e819c68fb805ddb225f517": {
+			"address": "0xd6cc4a33da7557a629e819c68fb805ddb225f517",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xOP-USDT3",
+			"symbol": "xOP-USDT3",
+			"displayName": "xOP-USDT3",
+			"displaySymbol": "xOP-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xD6Cc4a33dA7557A629e819c68fB805ddB225f517/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2394,6 +3374,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xe256c5da9b75d4272c8fdc9d2818c18843a1b44c": {
+			"address": "0xe256c5da9b75d4272c8fdc9d2818c18843a1b44c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-WBTC05",
+			"symbol": "xWETH-WBTC05",
+			"displayName": "xWETH-WBTC05",
+			"displaySymbol": "xWETH-WBTC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xe256C5Da9b75d4272C8fdC9d2818c18843a1b44C/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xe39120b27e5bfec953524402c2e261763c76519e": {
 			"address": "0xe39120b27e5bfec953524402c2e261763c76519e",
 			"underlyingTokensAddresses": [],
@@ -2436,6 +3430,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xe567d2fbe6c52f22250963a43506c1f15c08307e": {
+			"address": "0xe567d2fbe6c52f22250963a43506c1f15c08307e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT01",
+			"symbol": "xUSDC-USDT01",
+			"displayName": "xUSDC-USDT01",
+			"displaySymbol": "xUSDC-USDT01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xe567d2FbE6C52f22250963a43506c1F15c08307E/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xe5f28fc43bb40cdf7202ebe406793815b6f07fbd": {
 			"address": "0xe5f28fc43bb40cdf7202ebe406793815b6f07fbd",
 			"underlyingTokensAddresses": [],
@@ -2447,6 +3455,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains THALES and USDC.e.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xE5F28Fc43Bb40CDF7202ebe406793815b6f07FbD/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xe8f20fd90161de1d5b4cf7e2b5d92932ca06d5f4": {
+			"address": "0xe8f20fd90161de1d5b4cf7e2b5d92932ca06d5f4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-OP3",
+			"symbol": "xETH-OP3",
+			"displayName": "xETH-OP3",
+			"displaySymbol": "xETH-OP3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xE8f20fD90161de1d5B4cF7e2B5D92932CA06D5f4/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2464,6 +3486,48 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xec573f93dd55e2aefd67b1e59ddfa758676b1184": {
+			"address": "0xec573f93dd55e2aefd67b1e59ddfa758676b1184",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xETH-OP3",
+			"symbol": "xETH-OP3",
+			"displayName": "xETH-OP3",
+			"displaySymbol": "xETH-OP3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xeC573f93dD55e2aefD67B1e59ddfa758676B1184/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xec77724d6ac1b0b8d8871bfca714794bb4a8392c": {
+			"address": "0xec77724d6ac1b0b8d8871bfca714794bb4a8392c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "wstETH-WETH01",
+			"symbol": "wstETH-WETH01",
+			"displayName": "wstETH-WETH01",
+			"displaySymbol": "wstETH-WETH01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xEC77724d6AC1b0B8D8871bFcA714794BB4a8392c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xed17209ab7f9224e29cc9894fa14a011f37b6115": {
+			"address": "0xed17209ab7f9224e29cc9894fa14a011f37b6115",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-USDC05",
+			"symbol": "xWETH-USDC05",
+			"displayName": "xWETH-USDC05",
+			"displaySymbol": "xWETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xeD17209Ab7F9224e29cC9894fa14a011F37B6115/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73": {
 			"address": "0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73",
 			"underlyingTokensAddresses": [],
@@ -2475,6 +3539,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USDC.e and USX.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xeD47E3ce6D9C05F562C469AB1bf1244cc697aa73/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xee538e14ec8ff4985301190e96ffa26e828c929c": {
+			"address": "0xee538e14ec8ff4985301190e96ffa26e828c929c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-USDT05",
+			"symbol": "WSTETH-USDT05",
+			"displayName": "WSTETH-USDT05",
+			"displaySymbol": "WSTETH-USDT05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xeE538E14ec8fF4985301190e96ffa26e828C929C/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2517,6 +3595,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USDC.e and LUSD.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xf04458f7B21265b80FC340dE7Ee598e24485c5bB/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xf232353e39d6180d44981c6da8784e733c87bc67": {
+			"address": "0xf232353e39d6180d44981c6da8784e733c87bc67",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT01",
+			"symbol": "xUSDC-USDT01",
+			"displayName": "xUSDC-USDT01",
+			"displaySymbol": "xUSDC-USDT01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xF232353e39D6180D44981C6DA8784e733c87bc67/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2564,6 +3656,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xf3b1125c8505f038503e002e61a78253610d4f60": {
+			"address": "0xf3b1125c8505f038503e002e61a78253610d4f60",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-SNX3",
+			"symbol": "xUSDC-SNX3",
+			"displayName": "xUSDC-SNX3",
+			"displaySymbol": "xUSDC-SNX3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xF3B1125C8505f038503E002e61a78253610D4F60/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xf3c45b45223df6071a478851b9c17e0630fdf535": {
 			"address": "0xf3c45b45223df6071a478851b9c17e0630fdf535",
 			"underlyingTokensAddresses": [],
@@ -2575,6 +3681,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This volatile pool contains EXA and WETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xf3C45b45223Df6071a478851B9C17e0630fDf535/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xf3f81e3140e5fb73ffb900cf0d6461196b1ecbc3": {
+			"address": "0xf3f81e3140e5fb73ffb900cf0d6461196b1ecbc3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "WSTETH-USDC05",
+			"symbol": "WSTETH-USDC05",
+			"displayName": "WSTETH-USDC05",
+			"displaySymbol": "WSTETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xf3F81e3140e5Fb73ffB900CF0d6461196b1ECbC3/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2642,6 +3762,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xf98dcd95217e15e05d8638da4c91125e59590b07": {
+			"address": "0xf98dcd95217e15e05d8638da4c91125e59590b07",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Kromatika",
+			"symbol": "KROM",
+			"displayName": "Kromatika",
+			"displaySymbol": "KROM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xF98dCd95217E15E05d8638da4c91125E59590B07/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xfa09479d72e2b3f8b6df63399772237ad6658d76": {
 			"address": "0xfa09479d72e2b3f8b6df63399772237ad6658d76",
 			"underlyingTokensAddresses": [],
@@ -2669,6 +3803,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xfA3C6122906f2A2d644409dBB507DB1060D10b3A/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xfae023f592581915ebeac6eea07714107508b885": {
+			"address": "0xfae023f592581915ebeac6eea07714107508b885",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-sUSD05",
+			"symbol": "xUSDC-sUSD05",
+			"displayName": "xUSDC-sUSD05",
+			"displaySymbol": "xUSDC-sUSD05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xfaE023F592581915eBEac6Eea07714107508b885/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

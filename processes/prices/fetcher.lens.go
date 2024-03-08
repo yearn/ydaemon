@@ -45,15 +45,17 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 		}
 
 		var allPriceMap sync.Map
-		var wg sync.WaitGroup
+		// var wg sync.WaitGroup
 		for _, token := range tokens {
-			wg.Add(1)
-			go func(token models.TERC20Token) {
-				defer wg.Done()
+			// wg.Add(1)
+			// go
+			func(token models.TERC20Token) {
+				// defer wg.Done()
 
 				price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
 				if err != nil {
 					logs.Error(err)
+					return
 				}
 				if price.Cmp(big.NewInt(0)) > 0 {
 					humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
@@ -66,7 +68,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 				}
 			}(token)
 		}
-		wg.Wait()
+		// wg.Wait()
 		allPriceMap.Range(func(key, value interface{}) bool {
 			priceMap[key.(common.Address)] = value.(models.TPrices)
 			return true

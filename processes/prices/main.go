@@ -64,7 +64,6 @@ func fetchPrices(
 			}
 		}
 	}
-	logs.Info(`💰 - Llama`)
 
 	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
 	pricesGecko := fetchPricesFromGecko(chainID, tokenSlice)
@@ -79,7 +78,6 @@ func fetchPrices(
 			}
 		}
 	}
-	logs.Info(`💰 - Coingecko`)
 
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Curve API to
@@ -92,7 +90,6 @@ func fetchPrices(
 			continue
 		}
 	}
-	logs.Info(`💰 - Curve Factory`)
 
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Velo API to
@@ -107,7 +104,6 @@ func fetchPrices(
 			continue
 		}
 	}
-	logs.Info(`💰 - Velo Oracle`)
 
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens. We can use the Aero API to
@@ -122,7 +118,6 @@ func fetchPrices(
 			continue
 		}
 	}
-	logs.Info(`💰 - Aero Oracle`)
 
 	/**********************************************************************************************
 	** With the new version of the Curve LP Token, we can use the contract itself to get the price
@@ -136,7 +131,6 @@ func fetchPrices(
 			continue
 		}
 	}
-	logs.Info(`💰 - Curve AMM`)
 
 	/**********************************************************************************************
 	** Once this is done, we will probably have some missing tokens linked to the Gamma protocol.
@@ -151,7 +145,6 @@ func fetchPrices(
 			continue
 		}
 	}
-	logs.Info(`💰 - Gamma LP`)
 
 	/**********************************************************************************************
 	** If we still have some missing prices, we will use the lens price oracle to fetch them.
@@ -163,7 +156,6 @@ func fetchPrices(
 			newPriceMap[price.Address] = price
 		}
 	}
-	logs.Info(`💰 - Lens`)
 
 	/**********************************************************************************************
 	** With the ERC-4626 standard, the `price per share` is no longer relevant. We can use the new
@@ -204,7 +196,6 @@ func fetchPrices(
 			Source:         `ERC4626-convertToAssets`,
 		}
 	}
-	logs.Info(`💰 - ERC4626`)
 
 	/**********************************************************************************************
 	** If the price is missing, check if it's a vault and try to compute the price from the

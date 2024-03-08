@@ -31,7 +31,11 @@ func init() {
 	cachedGammaMerkl = make(map[uint64]map[string]TGammaMerklAPIResp)
 }
 func refreshGammaMerkl(chainID uint64) {
-	cachedGammaMerkl[chainID] = retrieveGammaMerklData(chainID)
+	updatedValues, ok := retrieveGammaMerklData(chainID)
+	if !ok {
+		return
+	}
+	cachedGammaMerkl[chainID] = updatedValues
 }
 
 /**************************************************************************

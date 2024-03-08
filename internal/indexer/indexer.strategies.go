@@ -550,7 +550,6 @@ func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[common.Address]models.TStrategy) {
-	logs.Success(`Strategies Indexer has started for chain ` + strconv.FormatUint(chainID, 10))
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
 	}

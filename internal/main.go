@@ -36,18 +36,21 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 	indexer.IndexStakingPools(chainID)
-	logs.Success(`We have all the staking pool for chainID`, chainID)
+	logs.Success(chainID, `-`, `Index StakingPools ✅`)
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
-	logs.Success(`We got all the strategies for chainID`, chainID)
+	logs.Success(chainID, `-`, `Index New Strategies ✅`)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
+	logs.Success(chainID, `-`, `Retrieve All Tokens ✅`)
 
 	go func() {
 		prices.RetrieveAllPrices(chainID, tokenMap)
+		logs.Success(chainID, `-`, `Retrieve All Prices ✅`)
 		underWg.Done()
 	}() // Retrieve the prices for all tokens
 
 	go func() {
 		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+		logs.Success(chainID, `-`, `Retrieve All Strategies ✅`)
 		underWg.Done()
 	}() // Retrieve the strategies for all chains
 

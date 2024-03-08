@@ -89,14 +89,12 @@ func (caller *TEthMultiCaller) execute(
 	if err != nil {
 		return []byte{}, err
 	}
-
 	// Perform multicall
 	resp, err := caller.Client.CallContract(
 		context.Background(),
 		ethereum.CallMsg{
 			To:   &caller.ContractAddress,
 			Data: callData,
-			Gas:  0,
 		},
 		blockNumber,
 	)

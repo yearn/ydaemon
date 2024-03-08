@@ -121,3 +121,10 @@ func findSubgraphItemForVault(poolAddress common.Address, pools []models.CurveSu
 	}
 	return models.CurveSubgraphData{}
 }
+
+func init() {
+	retrieveGammaMerklData(137)
+	logs.Success(`OK`)
+	retrieveGammaMerklData(10)
+	logs.Success(`OKk`)
+}

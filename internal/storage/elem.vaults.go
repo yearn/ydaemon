@@ -50,13 +50,19 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 	previousVaults := loadVaultsFromJson(chainID)
 	version := detectVersionUpdate(chainID, previousVaults.Version, previousVaults.Vaults, vaults)
 
+	allVaults := make(map[common.Address]models.TVault)
+	for address, vault := range vaults {
+		vault.Metadata.SourceURI = ""
+		allVaults[address] = vault
+	}
+
 	data := TJsonVaultStorage{
 		TJsonMetadata: TJsonMetadata{
 			LastUpdate:    time.Now(),
 			Version:       version,
 			ShouldRefresh: false,
 		},
-		Vaults: vaults,
+		Vaults: allVaults,
 	}
 	_vaultJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
 		data.LastUpdate,

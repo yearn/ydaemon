@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-11T14:34:46.228354+01:00",
+	"lastUpdate": "2024-03-11T14:41:19.176094+01:00",
 	"version": {
 		"major": 1,
 		"minor": 3,
-		"patch": 21
+		"patch": 22
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -40,7 +40,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -58,7 +57,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007033000416333143",
+			"lastPricePerShare": "1007033532225427316",
 			"lastTotalAssets": "49420675607942337526483",
 			"metadata": {
 				"isRetired": false,
@@ -78,7 +77,6 @@
 				"displayName": "Stargate DAI Staker",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -96,7 +94,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004995685720819704",
+			"lastPricePerShare": "1004995835913733313",
 			"lastTotalAssets": "654042828748228515104305",
 			"metadata": {
 				"isRetired": false,
@@ -116,7 +114,6 @@
 				"displayName": "Aave V3 WMATIC Lender",
 				"displaySymbol": "ysWMATIC",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -138,8 +135,8 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1043595248860068765",
-			"lastTotalAssets": "1034200188622962311282620",
+			"lastPricePerShare": "1043596576455345515",
+			"lastTotalAssets": "1034199238622532885336883",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -158,7 +155,6 @@
 				"displayName": "WMATIC-A",
 				"displaySymbol": "yvMATIC-A",
 				"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -196,7 +192,6 @@
 				"displayName": "CompV3 WMATIC Lender Borrower",
 				"displaySymbol": "ysWMATIC",
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -214,7 +209,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1019503",
+			"lastPricePerShare": "1019505",
 			"lastTotalAssets": "50756987738",
 			"metadata": {
 				"isRetired": false,
@@ -234,7 +229,6 @@
 				"displayName": "Stargate USDT Staker",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -255,7 +249,7 @@
 			"lastActiveStrategies": [
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
 			],
-			"lastPricePerShare": "1038630525526484483",
+			"lastPricePerShare": "1038631554977053057",
 			"lastTotalAssets": "224971510915221776303",
 			"metadata": {
 				"isRetired": false,
@@ -275,7 +269,6 @@
 				"displayName": "WETH-A",
 				"displaySymbol": "yvWETH-A",
 				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -313,7 +306,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -351,7 +343,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -369,7 +360,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1020050",
+			"lastPricePerShare": "1020052",
 			"lastTotalAssets": "1843249450836",
 			"metadata": {
 				"isRetired": false,
@@ -389,7 +380,6 @@
 				"displayName": "Aave V3 USDT Lender",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -427,7 +417,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -445,7 +434,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1012140",
+			"lastPricePerShare": "1012146",
 			"lastTotalAssets": "49474219868",
 			"metadata": {
 				"isRetired": false,
@@ -465,7 +454,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -503,7 +491,6 @@
 				"displayName": "CompV3 WETH Lender Borrower",
 				"displaySymbol": "ysWETH",
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -541,7 +528,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -579,7 +565,6 @@
 				"displayName": "Staked MATIC Accumulator",
 				"displaySymbol": "ysWMATIC",
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -617,7 +602,6 @@
 				"displayName": "Staked ETH Accumulator",
 				"displaySymbol": "ysWETH",
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -655,7 +639,6 @@
 				"displayName": "Stargate USDC.e Staker",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -693,7 +676,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -715,7 +697,7 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1039908358926060277",
+			"lastPricePerShare": "1039912290349766665",
 			"lastTotalAssets": "1663931549919571320770874",
 			"metadata": {
 				"isRetired": false,
@@ -735,7 +717,6 @@
 				"displayName": "DAI-A",
 				"displaySymbol": "yvDAI-A",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -773,7 +754,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -796,8 +776,8 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1065109",
-			"lastTotalAssets": "2071402803668",
+			"lastPricePerShare": "1065113",
+			"lastTotalAssets": "2071415804015",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -816,7 +796,6 @@
 				"displayName": "USDC.e-A",
 				"displaySymbol": "yvUSDC.e-A",
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -854,7 +833,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -892,7 +870,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -910,7 +887,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1033278",
+			"lastPricePerShare": "1033280",
 			"lastTotalAssets": "1061868642483",
 			"metadata": {
 				"isRetired": false,
@@ -930,7 +907,6 @@
 				"displayName": "Compound V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -968,7 +944,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -990,8 +965,8 @@
 				"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d"
 			],
-			"lastPricePerShare": "1063507",
-			"lastTotalAssets": "1896358462110",
+			"lastPricePerShare": "1063511",
+			"lastTotalAssets": "1896427111848",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1010,7 +985,6 @@
 				"displayName": "USDT-A",
 				"displaySymbol": "yvUSDt-A",
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1028,7 +1002,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001560712359011421",
+			"lastPricePerShare": "1001560764778423245",
 			"lastTotalAssets": "172143558553411517905",
 			"metadata": {
 				"isRetired": false,
@@ -1048,7 +1022,6 @@
 				"displayName": "Aave V3 WETH Lender",
 				"displaySymbol": "ysWETH",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1066,7 +1039,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1041432",
+			"lastPricePerShare": "1041434",
 			"lastTotalAssets": "1011266784379",
 			"metadata": {
 				"isRetired": false,
@@ -1086,7 +1059,6 @@
 				"displayName": "Aave V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1104,7 +1076,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1021188887549062844",
+			"lastPricePerShare": "1021190465141535437",
 			"lastTotalAssets": "1594778324937937715708385",
 			"metadata": {
 				"isRetired": false,
@@ -1124,7 +1096,6 @@
 				"displayName": "Aave V3 DAI Lender",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1165,7 +1136,6 @@
 				"displayName": "Yearn-Ajna USDC Vault",
 				"displaySymbol": "yvAjnaUSDC",
 				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more.",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1203,7 +1173,6 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
-				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}

@@ -46,6 +46,7 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `displaySymbol` | `string` | The symbol of the vault to use rather than the onchain symbol | ❌ |
 | `description` | `string` | The description of the vault | ❌ |
 | `uiNotice` | `string` | A notice to display in the UI | ❌ |
+| `sourceURI` | `string` | A URI linked to this vault (ex: the curve deposit page) | ❌ |
 | `riskLevel` | `int` | The risk level of the vault (1 to 5, -1 for not set) | ❌ |
 | `protocols` | `string[]` | The protocols used by the vault. The first one is used to defined the main APR method | ❌ |
 

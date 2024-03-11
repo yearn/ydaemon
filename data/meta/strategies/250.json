@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-11T14:34:52.368618+01:00",
+	"lastUpdate": "2024-03-11T14:41:24.656228+01:00",
 	"version": {
 		"major": 0,
 		"minor": 0,
-		"patch": 35
+		"patch": 36
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -531,7 +531,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1642793166",
 			"lastDebtRatio": "3000",
-			"lastEstimatedTotalAssets": "233636327963785517753",
+			"lastEstimatedTotalAssets": "233639179988629395914",
 			"isRetired": false,
 			"displayName": "",
 			"description": "",
@@ -928,7 +928,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1709994368",
 			"lastDebtRatio": "0",
-			"lastEstimatedTotalAssets": "189352857",
+			"lastEstimatedTotalAssets": "189319233",
 			"isRetired": false,
 			"displayName": "Scream Folding",
 			"description": "Supplies and borrows {{token}} on [Scream v2](http://scream.sh) simultaneously to earn SCREAM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -2462,7 +2462,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686759478",
 			"lastDebtRatio": "2100",
-			"lastEstimatedTotalAssets": "166325781042059928850522",
+			"lastEstimatedTotalAssets": "166325783881480946572444",
 			"isRetired": false,
 			"displayName": "Curve Yield Seeker",
 			"description": "Supplies {{token}} to [Curve Finance](https://ftm.curve.fi) to earn CRV. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -2863,7 +2863,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1642017021",
 			"lastDebtRatio": "5000",
-			"lastEstimatedTotalAssets": "268071324603289284538",
+			"lastEstimatedTotalAssets": "268074594990093764316",
 			"isRetired": false,
 			"displayName": "",
 			"description": "",
@@ -3239,7 +3239,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653335330",
 			"lastDebtRatio": "0",
-			"lastEstimatedTotalAssets": "123206415",
+			"lastEstimatedTotalAssets": "123206229",
 			"isRetired": false,
 			"displayName": "Scream Folding",
 			"description": "Supplies and borrows {{token}} on [Scream](http://scream.sh) simultaneously to earn SCREAM. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",

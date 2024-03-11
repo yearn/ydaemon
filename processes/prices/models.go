@@ -36,6 +36,12 @@ type TLlamaPrice struct {
 type TGeckoPrice map[string]struct {
 	USDPrice float64 `json:"usd"`
 }
+type TGeckoAPIKeyStatus struct {
+	Status struct {
+		ErrorCode    int    `json:"error_code"`
+		ErrorMessage string `json:"error_message"`
+	} `json:"status"`
+}
 
 type TVeloToken struct {
 	Price              float64 `json:"price"`

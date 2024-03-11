@@ -33,7 +33,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 
 	/**********************************************************************************************
 	** The lens contract is HEAVY. Like really heavy. On optimism, it can takes up to 10 minutes
-	** to fetch all the ~250 prices we need. Using the following code reduces the time to ~320ms
+	** to fetch all the ~250 prices we need. Using the following code reduces the time to a few s
 	** for the same amount of data.
 	**********************************************************************************************/
 	if NO_MULTICALLS {
@@ -44,31 +44,45 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 			return priceMap
 		}
 
-		var allPriceMap sync.Map
-		// var wg sync.WaitGroup
-		for _, token := range tokens {
-			// wg.Add(1)
-			// go
-			func(token models.TERC20Token) {
-				// defer wg.Done()
-
-				price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
-				if err != nil {
-					logs.Error(err)
-					return
-				}
-				if price.Cmp(big.NewInt(0)) > 0 {
-					humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
-					allPriceMap.Store(token.Address, models.TPrices{
-						Address:        token.Address,
-						Price:          bigNumber.SetInt(price),
-						HumanizedPrice: humanizedPrice,
-						Source:         `lens`,
-					})
-				}
-			}(token)
+		/******************************************************************************************
+		** To avoid DDOS the node, we are grouping the tokens by group of 40 tokens and running the
+		** batch call for each group. This is a bit slower than all as goroutines, but it's safer.
+		******************************************************************************************/
+		grouped := [][]models.TERC20Token{}
+		for i := 0; i < len(tokens); i += 40 {
+			end := i + 40
+			if end > len(tokens) {
+				end = len(tokens)
+			}
+			grouped = append(grouped, tokens[i:end])
 		}
-		// wg.Wait()
+
+		var allPriceMap sync.Map
+		var wg sync.WaitGroup
+		for _, tokens := range grouped {
+			wg.Add(1)
+			go func(tokens []models.TERC20Token) {
+				defer wg.Done()
+
+				for _, token := range tokens {
+					price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
+					if err != nil {
+						logs.Error(err)
+						return
+					}
+					if price.Cmp(big.NewInt(0)) > 0 {
+						humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
+						allPriceMap.Store(token.Address, models.TPrices{
+							Address:        token.Address,
+							Price:          bigNumber.SetInt(price),
+							HumanizedPrice: humanizedPrice,
+							Source:         `lens`,
+						})
+					}
+				}
+			}(tokens)
+		}
+		wg.Wait()
 		allPriceMap.Range(func(key, value interface{}) bool {
 			priceMap[key.(common.Address)] = value.(models.TPrices)
 			return true

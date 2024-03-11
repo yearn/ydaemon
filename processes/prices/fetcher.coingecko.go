@@ -12,7 +12,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -27,6 +26,19 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 	42161: `arbitrum-one`,
 }
 
+var keyIndexToUse uint64 = 0
+
+func useCGAPIKey() string {
+	if len(env.CG_DEMO_KEYS) == 0 {
+		return ``
+	}
+	if keyIndexToUse >= uint64(len(env.CG_DEMO_KEYS)) {
+		keyIndexToUse = 0
+	}
+	keyToUse := env.CG_DEMO_KEYS[keyIndexToUse]
+	return keyToUse
+}
+
 /**************************************************************************************************
 ** fetchPriceFromGecko tries to fetch the price for a given token from
 ** the CoinGecko API, returns nil if there is no data returned
@@ -35,6 +47,8 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 	priceMap := make(map[common.Address]models.TPrices)
 	chunkSize := 100
 	timeToSleep := rand.Intn(2000-200) + 200
+	cgKey := useCGAPIKey()
+
 	for i := 0; i < len(tokens); i += chunkSize {
 		time.Sleep(time.Duration(timeToSleep) * time.Millisecond)
 		end := i + chunkSize
@@ -56,8 +70,8 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		q := req.URL.Query()
 		q.Add("contract_addresses", strings.Join(tokenString, ","))
 		q.Add("vs_currencies", "usd")
-		if env.CG_DEMO_KEY != `` {
-			q.Add("x_cg_demo_api_key", env.CG_DEMO_KEY)
+		if cgKey != `` {
+			q.Add("x_cg_demo_api_key", cgKey)
 		}
 		req.URL.RawQuery = q.Encode()
 		resp, err := http.DefaultClient.Do(req)
@@ -66,30 +80,51 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}
-
-		// Defer the closing of the response body to avoid memory leaks
 		defer resp.Body.Close()
 
-		// Read the response body
+		/******************************************************************************************
+		** Decode the body of the response from the API of CoinGecko
+		******************************************************************************************/
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
 			return priceMap
 		}
+
+		/******************************************************************************************
+		** If we are getting an error from the coingecko call, it's probably linked to the rate
+		** limit. We will just switch to the next key and retry the call.
+		******************************************************************************************/
+		apiKeyStatus := TGeckoAPIKeyStatus{}
+		if err := json.Unmarshal(body, &apiKeyStatus); err == nil {
+			if apiKeyStatus.Status.ErrorCode == 429 || apiKeyStatus.Status.ErrorCode == 1020 || apiKeyStatus.Status.ErrorCode == 10002 {
+				keyIndexToUse++
+				i -= chunkSize
+				continue
+			}
+		}
+
+		/******************************************************************************************
+		** If we are not hitting the rate limit, we will just parse the response and store the
+		** prices in the priceMap
+		******************************************************************************************/
 		priceData := TGeckoPrice{}
 		if err := json.Unmarshal(body, &priceData); err != nil {
 			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
-			logs.Pretty(string(body))
 			return priceMap
 		}
 
-		// Parse response
+		/******************************************************************************************
+		** For consistency, we will convert the price into USDC decimals, aka 10^6 as "raw" prices.
+		** It will not be 100% accurate, as we will miss some decimals, but it's good enough for
+		** our use case.
+		******************************************************************************************/
 		decimalsUSDC := bigNumber.NewFloat(math.Pow10(6))
 		for _, tokenAddressStr := range tokenString {
 			data, ok := priceData[tokenAddressStr]
 			if ok { // Convert price into USDC decimals
 				price := bigNumber.NewFloat(data.USDPrice)
-				humanizedPrice := helpers.ToNormalizedAmount(price.Int(), 6)
+				humanizedPrice := price
 				priceMap[common.HexToAddress(tokenAddressStr)] = models.TPrices{
 					Address:        common.HexToAddress(tokenAddressStr),
 					Price:          bigNumber.NewFloat().Mul(price, decimalsUSDC).Int(),

@@ -2,6 +2,7 @@ package env
 
 import (
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
 	"github.com/yearn/ydaemon/common/logs"
@@ -65,7 +66,15 @@ func SetEnv(path string) {
 		CHAINS[42161] = chain
 	}
 
-	CG_DEMO_KEY, _ = os.LookupEnv("CG_DEMO_KEY")
+	/**********************************************************************************************
+	** Array of Coingecko keys to use
+	**********************************************************************************************/
+	allCGKeys, _ := os.LookupEnv("CG_DEMO_KEYS")
+	if allCGKeys != `` {
+		splittedKeys := strings.Split(allCGKeys, ",")
+		CG_DEMO_KEYS = append(CG_DEMO_KEYS, splittedKeys...)
+	}
+
 }
 
 func init() {

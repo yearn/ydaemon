@@ -308,3 +308,12 @@ func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 	priceMap, _ := storage.ListPrices(chainID)
 	return priceMap
 }
+
+/**************************************************************************************************
+** UpdatePrices will, for a given chainID, just fetch the prices of the tokens and store them for
+** later use.
+**************************************************************************************************/
+func UpdatePrices(chainID uint64) {
+	tokenMap, _ := storage.ListERC20(chainID)
+	fetchPrices(chainID, nil, tokenMap)
+}

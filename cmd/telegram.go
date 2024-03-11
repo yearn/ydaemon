@@ -6,8 +6,10 @@ import (
 	"strings"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/processes/prices"
 )
 
 var initializedCounter = 0
@@ -83,11 +85,34 @@ func listenToSignals() {
 		// Extract the command from the Message.
 		switch update.Message.Command() {
 		case "help":
-			msg.Text = "I understand /restart."
+			msg.Text = `Available commands:
+- /help: Show this help message
+- /restart: Restart the daemon
+- /upd_prices <chainID>: Update the prices for a given chain`
 			bot.Send(msg)
 		case "restart":
 			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
 			os.Exit(1)
+		case "upd_prices":
+			arguments := update.Message.CommandArguments()
+			if arguments == "" {
+				msg.Text = `🔴 - Incorrect format. Should be /upd_prices <chainID>`
+				bot.Send(msg)
+				continue
+			}
+			chainID, err := strconv.ParseUint(arguments, 10, 64)
+			if err != nil {
+				msg.Text = `🔴 - Incorrect format. Should be /upd_prices <chainID> (number)`
+				bot.Send(msg)
+				continue
+			}
+			if _, ok := env.CHAINS[chainID]; !ok {
+				msg.Text = `🔴 - Chain not supported`
+				bot.Send(msg)
+				continue
+			}
+			triggerTgMessage(`💰 - ` + update.Message.From.UserName + ` asked for a price update for chain ` + strconv.FormatUint(chainID, 10))
+			prices.UpdatePrices(chainID)
 		default:
 			msg.Text = "I don't know that command"
 			bot.Send(msg)

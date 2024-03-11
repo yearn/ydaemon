@@ -260,6 +260,10 @@ func ToRawAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Int {
 	)
 }
 
+/**************************************************************************************************
+** Convert a raw amount to a normalized amount. For example, 1234564784154784147 wei to
+** 1.234564784154784147 eth
+**************************************************************************************************/
 func ToNormalizedAmount(amount *bigNumber.Int, decimals uint64) *bigNumber.Float {
 	return bigNumber.NewFloat(0).Quo(
 		bigNumber.NewFloat(0).SetInt(amount),

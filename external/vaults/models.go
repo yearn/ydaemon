@@ -268,9 +268,8 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
 	}
 
-	gammaResult, found := storage.GetGammaSourceURL(vault.ChainID, vault.Address)
-	if found && gammaResult != `` {
-		v.Info.SourceURL = gammaResult
+	if v.Info.SourceURL == `` {
+		v.Info.SourceURL = vault.Metadata.SourceURI
 	}
 
 	return v, nil

@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-11T14:41:39.332774+01:00",
+	"lastUpdate": "2024-03-11T15:04:57.96335+01:00",
 	"version": {
 		"major": 3,
 		"minor": 0,
-		"patch": 27
+		"patch": 28
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -45,6 +45,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -87,6 +89,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -130,6 +134,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -171,6 +177,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -212,6 +220,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -252,6 +262,8 @@
 				"displayName": "mkUSD-A",
 				"displaySymbol": "",
 				"description": "Multi strategy mkUSD vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -272,7 +284,7 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb0da3e219de478a0975599d9c362e724a6dff9"
 			],
-			"lastPricePerShare": "1326436177878269518",
+			"lastPricePerShare": "1326460726035322259",
 			"lastTotalAssets": "51952438001249298706404",
 			"metadata": {
 				"isRetired": false,
@@ -292,6 +304,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -335,6 +349,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -377,6 +393,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -420,6 +438,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -439,7 +459,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025589739860627899",
+			"lastPricePerShare": "1025604315661643875",
 			"lastTotalAssets": "2923790307985612842223428",
 			"metadata": {
 				"isRetired": false,
@@ -459,6 +479,8 @@
 				"displayName": "yvYearn-Ajna DAI Harvester",
 				"displaySymbol": "",
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit https://juiced.yearn.fi/ to learn more.",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -499,6 +521,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -540,6 +564,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -580,6 +606,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -622,6 +650,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -662,6 +692,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -700,6 +732,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -741,6 +775,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -782,6 +818,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -822,6 +860,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -865,6 +905,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -909,6 +951,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -950,6 +994,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -991,6 +1037,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1033,6 +1081,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1072,6 +1122,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1109,6 +1161,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1149,6 +1203,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1191,6 +1247,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1233,6 +1291,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1273,6 +1333,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1315,6 +1377,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -1358,6 +1422,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1400,6 +1466,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1440,6 +1508,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1480,6 +1550,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1523,6 +1595,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1543,7 +1617,7 @@
 				"0xe228772c0a7dc539e6c763a67c0e0de70f50955d",
 				"0x776067440fdc58ceaca3fb016fec8c954590fbb7"
 			],
-			"lastPricePerShare": "1003102008842286915",
+			"lastPricePerShare": "1003109522587815132",
 			"lastTotalAssets": "922708398252787817834607",
 			"metadata": {
 				"isRetired": false,
@@ -1563,6 +1637,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1603,6 +1679,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -1645,6 +1723,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1685,6 +1765,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1728,6 +1810,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1770,6 +1854,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1791,7 +1877,7 @@
 			"lastActiveStrategies": [
 				"0x23724d764d8b3d26852ba20d3bc2578093d2b022"
 			],
-			"lastPricePerShare": "1514616385696262487",
+			"lastPricePerShare": "1514634404023308780",
 			"lastTotalAssets": "47652703361915418704758239",
 			"metadata": {
 				"isRetired": false,
@@ -1812,6 +1898,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1854,6 +1942,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1896,6 +1986,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -1937,6 +2029,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -1976,6 +2070,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2016,6 +2112,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2059,6 +2157,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2101,6 +2201,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2143,6 +2245,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2183,6 +2287,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2224,6 +2330,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2266,6 +2374,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2309,6 +2419,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2350,6 +2462,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2390,6 +2504,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2431,6 +2547,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2471,6 +2589,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2513,6 +2633,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2555,6 +2677,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2597,6 +2721,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2640,6 +2766,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2682,6 +2810,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2722,6 +2852,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2765,6 +2897,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2805,6 +2939,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2844,6 +2980,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -2886,6 +3024,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2928,6 +3068,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -2968,6 +3110,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3010,6 +3154,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3053,6 +3199,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3093,6 +3241,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3132,6 +3282,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3169,6 +3321,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3209,6 +3363,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3249,6 +3405,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3292,6 +3450,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3334,6 +3494,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3377,6 +3539,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3419,6 +3583,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3460,6 +3626,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3500,6 +3668,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -3543,6 +3713,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3586,6 +3758,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3628,6 +3802,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3671,6 +3847,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3711,6 +3889,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3750,6 +3930,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3790,6 +3972,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -3833,6 +4017,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3872,6 +4058,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3912,6 +4100,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3952,6 +4142,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -3992,6 +4184,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4034,6 +4228,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4074,6 +4270,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4116,6 +4314,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -4159,6 +4359,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4198,6 +4400,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4216,7 +4420,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1003410950195891713",
+			"lastPricePerShare": "1003420921159908164",
 			"lastTotalAssets": "984000535130484703733",
 			"metadata": {
 				"isRetired": false,
@@ -4236,6 +4440,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4278,6 +4484,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4327,6 +4535,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4367,6 +4577,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4410,6 +4622,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4453,6 +4667,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4495,6 +4711,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4534,6 +4752,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4575,6 +4795,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4615,6 +4837,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4658,6 +4882,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4700,6 +4926,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4742,6 +4970,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4784,6 +5014,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4826,6 +5058,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4866,6 +5100,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4909,6 +5145,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -4948,6 +5186,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -4968,7 +5208,7 @@
 				"0x3e55bf8882d7f908b4ada67055be14a0ab14622b",
 				"0xabec96ac9cdc6863446657431dd32f73445e80b1"
 			],
-			"lastPricePerShare": "1005262770211596761",
+			"lastPricePerShare": "1005262933573865847",
 			"lastTotalAssets": "7290823158344761205877",
 			"metadata": {
 				"isRetired": false,
@@ -4989,6 +5229,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5031,6 +5273,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5074,6 +5318,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5117,6 +5363,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5166,6 +5414,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -5186,7 +5436,7 @@
 				"0x1aade40cbdc716749668561391596901e7f42da7",
 				"0xcfe19203647fd98b96b692b3dee0afd4e1fc0edd"
 			],
-			"lastPricePerShare": "1011808950891506662",
+			"lastPricePerShare": "1011812485761856417",
 			"lastTotalAssets": "228646463189730426606",
 			"metadata": {
 				"isRetired": false,
@@ -5207,6 +5457,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5249,6 +5501,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5291,6 +5545,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5333,6 +5589,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5377,6 +5635,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -5415,6 +5675,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Yearn"
@@ -5458,6 +5720,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5500,6 +5764,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5543,6 +5809,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5583,6 +5851,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5630,6 +5900,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -5671,6 +5943,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5713,6 +5987,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5755,6 +6031,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5796,6 +6074,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5839,6 +6119,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5878,6 +6160,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5919,6 +6203,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -5962,6 +6248,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6002,6 +6290,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6045,6 +6335,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6065,7 +6357,7 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x9004d433d710194a033c15041bacd134fc9ba50f"
 			],
-			"lastPricePerShare": "1123064426795602664",
+			"lastPricePerShare": "1123071932634756078",
 			"lastTotalAssets": "2962987493128036776639477",
 			"metadata": {
 				"isRetired": false,
@@ -6086,6 +6378,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6128,6 +6422,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6170,6 +6466,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6213,6 +6511,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6255,6 +6555,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6297,6 +6599,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6320,7 +6624,7 @@
 				"0xa3a4cf9947d7967d0cd5f3644b5c730105d0a1da",
 				"0x3408da7623c1f3d07a3c4946c9fc4c1c1b7377d5"
 			],
-			"lastPricePerShare": "1779493104406703785",
+			"lastPricePerShare": "1779573318597793010",
 			"lastTotalAssets": "57407639644206006711929",
 			"metadata": {
 				"isRetired": false,
@@ -6340,6 +6644,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6386,6 +6692,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6426,6 +6734,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6469,6 +6779,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6507,6 +6819,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Yearn"
@@ -6550,6 +6864,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6591,6 +6907,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6631,6 +6949,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6673,6 +6993,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -6714,6 +7036,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6757,6 +7081,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6800,6 +7126,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6822,7 +7150,7 @@
 				"0xaac7aedfb479b58e34373e863f27e263c65ddf28",
 				"0x9dce9929a4e9b77ebb7b4b7f8151208a3595482f"
 			],
-			"lastPricePerShare": "1062745572762999008",
+			"lastPricePerShare": "1062767353368642558",
 			"lastTotalAssets": "664875862189880109444",
 			"metadata": {
 				"isRetired": false,
@@ -6842,6 +7170,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6883,6 +7213,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6926,6 +7258,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -6965,6 +7299,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7002,6 +7338,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7022,7 +7360,7 @@
 				"0x7f074cd344cd59fa20866796960a5c5a3f97316e",
 				"0x567343912e422782ad0287f254f9e2390af6740a"
 			],
-			"lastPricePerShare": "1054660035924569257",
+			"lastPricePerShare": "1054696670969271017",
 			"lastTotalAssets": "435852708891849254122493",
 			"metadata": {
 				"isRetired": false,
@@ -7043,6 +7381,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7092,6 +7432,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7133,6 +7475,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7175,6 +7519,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7214,6 +7560,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7257,6 +7605,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7279,7 +7629,7 @@
 				"0x398c51c68989c5c0c193f17c387acd6a5e8e3a80",
 				"0x9d7cd0041abd91f281e282db3fba7a9db9e4cc8b"
 			],
-			"lastPricePerShare": "1085975546964858147",
+			"lastPricePerShare": "1085986997739949692",
 			"lastTotalAssets": "903783145203553636592",
 			"metadata": {
 				"isRetired": false,
@@ -7299,6 +7649,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7342,6 +7694,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7385,6 +7739,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7428,6 +7784,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7470,6 +7828,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7512,6 +7872,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7553,6 +7915,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7595,6 +7959,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7635,6 +8001,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7676,6 +8044,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7716,6 +8086,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -7759,6 +8131,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7799,6 +8173,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -7839,6 +8215,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7881,6 +8259,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7924,6 +8304,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -7966,6 +8348,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8008,6 +8392,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8050,6 +8436,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8091,6 +8479,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8134,6 +8524,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8177,6 +8569,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8219,6 +8613,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8261,6 +8657,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -8303,6 +8701,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8344,6 +8744,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8386,6 +8788,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8429,6 +8833,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8471,6 +8877,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8515,6 +8923,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8553,6 +8963,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8595,6 +9007,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8633,6 +9047,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8653,7 +9069,7 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x9430a2501e5f2cd66741375baabb9576e8fb5f48"
 			],
-			"lastPricePerShare": "1123125821492676170",
+			"lastPricePerShare": "1123150352211107815",
 			"lastTotalAssets": "880014076504680558094129",
 			"metadata": {
 				"isRetired": false,
@@ -8674,6 +9090,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8718,6 +9136,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8759,6 +9179,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8802,6 +9224,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8842,6 +9266,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8881,6 +9307,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -8922,6 +9350,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -8965,6 +9395,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9007,6 +9439,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -9052,6 +9486,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9072,7 +9508,7 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0xf36c83f6bf4cf656172f6dbc1220af6785362f0f"
 			],
-			"lastPricePerShare": "1070349614992245056",
+			"lastPricePerShare": "1070353783628201093",
 			"lastTotalAssets": "3408578063209219018567",
 			"metadata": {
 				"isRetired": false,
@@ -9092,6 +9528,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9134,6 +9572,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -9174,6 +9614,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9215,6 +9657,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9257,6 +9701,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9297,6 +9743,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9338,6 +9786,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9381,6 +9831,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9424,6 +9876,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9467,6 +9921,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9506,6 +9962,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9550,6 +10008,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9590,6 +10050,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9631,6 +10093,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9672,6 +10136,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9714,6 +10180,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9756,6 +10224,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9799,6 +10269,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9842,6 +10314,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -9881,6 +10355,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9921,6 +10397,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9938,7 +10416,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001807165029625514",
+			"lastPricePerShare": "1001810827492104690",
 			"lastTotalAssets": "803707404033946025075",
 			"metadata": {
 				"isRetired": false,
@@ -9958,6 +10436,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -9998,6 +10478,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10019,7 +10501,7 @@
 				"0x6cbdc5591dab3a15cdeb8e325d67192e04db9573",
 				"0x4cf681652b9bf9c32129b3f6edb6873e8c96ee63"
 			],
-			"lastPricePerShare": "1466657328827500143",
+			"lastPricePerShare": "1466737254923074876",
 			"lastTotalAssets": "1723996639786613838291091",
 			"metadata": {
 				"isRetired": false,
@@ -10039,6 +10521,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10078,6 +10562,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10117,6 +10603,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10158,6 +10646,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10196,6 +10686,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10218,7 +10710,7 @@
 				"0xae85d388474b2170b4114c32918ff6aab1089cd8",
 				"0x15ba66d9a0df19c7518d2e2b43129ffd39d2f7ed"
 			],
-			"lastPricePerShare": "1053279977282241617",
+			"lastPricePerShare": "1053305366152329003",
 			"lastTotalAssets": "278499778068355176095291",
 			"metadata": {
 				"isRetired": false,
@@ -10239,6 +10731,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10282,6 +10776,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10322,6 +10818,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10362,6 +10860,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10405,6 +10905,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10447,6 +10949,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -10488,6 +10992,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10530,6 +11036,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -10572,6 +11080,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10614,6 +11124,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -10657,6 +11169,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10700,6 +11214,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10742,6 +11258,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -10786,6 +11304,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10830,6 +11350,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10872,6 +11394,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10914,6 +11438,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10956,6 +11482,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -10998,6 +11526,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11038,6 +11568,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11079,6 +11611,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11122,6 +11656,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11162,6 +11698,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -11201,6 +11739,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11241,6 +11781,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11280,6 +11822,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11320,6 +11864,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11359,6 +11905,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11400,6 +11948,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11442,6 +11992,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11485,6 +12037,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11524,6 +12078,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11567,6 +12123,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11610,6 +12168,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11652,6 +12212,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -11694,6 +12256,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11736,6 +12300,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11778,6 +12344,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11820,6 +12388,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -11863,6 +12433,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11904,6 +12476,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11925,7 +12499,7 @@
 				"0x01d127d90513ccb6071f83efe15611c4d9890668"
 			],
 			"lastPricePerShare": "1092564391768711862",
-			"lastTotalAssets": "18386156872729698372421639",
+			"lastTotalAssets": "18386910513993989948138363",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11945,6 +12519,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -11987,6 +12563,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12032,6 +12610,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12074,6 +12654,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12116,6 +12698,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12156,6 +12740,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12198,6 +12784,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12239,6 +12827,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12278,6 +12868,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12318,6 +12910,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12361,6 +12955,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12403,6 +12999,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -12425,7 +13023,7 @@
 			"lastActiveStrategies": [
 				"0x83f20f44975d03b1b09e64809b757c47f942beea"
 			],
-			"lastPricePerShare": "1003464015277086763",
+			"lastPricePerShare": "1003466711049117848",
 			"lastTotalAssets": "4292991747468521563130175",
 			"metadata": {
 				"isRetired": false,
@@ -12445,6 +13043,8 @@
 				"displayName": "Yearn-Ajna DAI Vault",
 				"displaySymbol": "yvAjnaDAI",
 				"description": "Supplies DAI to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more.",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12485,6 +13085,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12525,6 +13127,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12565,6 +13169,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12606,6 +13212,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12647,6 +13255,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12691,6 +13301,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12733,6 +13345,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12776,6 +13390,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12819,6 +13435,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12860,6 +13478,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12902,6 +13522,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -12944,6 +13566,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -12984,6 +13608,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13026,6 +13652,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13070,6 +13698,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13110,6 +13740,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13150,6 +13782,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13191,6 +13825,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13233,6 +13869,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13276,6 +13914,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13319,6 +13959,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13360,6 +14002,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13402,6 +14046,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13442,6 +14088,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13485,6 +14133,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13526,6 +14176,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
@@ -13568,6 +14220,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": [
 					"Balancer"
@@ -13613,6 +14267,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13653,6 +14309,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13692,6 +14350,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13733,6 +14393,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13773,6 +14435,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}
@@ -13814,6 +14478,8 @@
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
 				"riskLevel": -1,
 				"protocols": []
 			}

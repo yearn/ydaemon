@@ -52,7 +52,7 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 
 	allVaults := make(map[common.Address]models.TVault)
 	for address, vault := range vaults {
-		vault.Metadata.SourceURI = ""
+		// @dev use this place if you need to update the json
 		allVaults[address] = vault
 	}
 

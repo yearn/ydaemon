@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-08T18:50:38.481222+01:00",
+	"lastUpdate": "2024-03-11T14:34:57.991161+01:00",
 	"version": {
 		"major": 0,
-		"minor": 3,
+		"minor": 4,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -364,6 +364,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x1d49ab5b03268E329fc7d2111E5364e63b36a3cE/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x1de84e1324baf5a9f3a49a48892fe90ce48456f1": {
+			"address": "0x1de84e1324baf5a9f3a49a48892fe90ce48456f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "VolatileV2 AMM - USDC/STG",
+			"symbol": "vAMMV2-USDC/STG",
+			"displayName": "VolatileV2 AMM - USDC/STG",
+			"displaySymbol": "vAMMV2-USDC/STG",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x1dE84E1324BaF5a9f3A49A48892fE90cE48456f1/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1348,6 +1362,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x65512DE8919BAF31cC9C8f067CdCA308112B9d1f/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x65bab5c963aec5bfc72986c2a4c468c190d6de96": {
+			"address": "0x65bab5c963aec5bfc72986c2a4c468c190d6de96",
+			"underlyingTokensAddresses": [
+				"0x1de84e1324baf5a9f3a49a48892fe90ce48456f1"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 STG-USDC Factory yVault",
+			"symbol": "yvVelo-STG-USDC-f",
+			"displayName": "Velodrome v2 STG-USDC Factory yVault",
+			"displaySymbol": "yvVelo-STG-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x65bAb5C963Aec5bFc72986c2a4c468c190d6de96/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2432,6 +2462,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xa56a25dee5b3199a9198bbd48715ee3d0ed98378": {
+			"address": "0xa56a25dee5b3199a9198bbd48715ee3d0ed98378",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/DOLA",
+			"symbol": "sAMMV2-USDC/DOLA",
+			"displayName": "StableV2 AMM - USDC/DOLA",
+			"displaySymbol": "sAMMV2-USDC/DOLA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xA56a25Dee5B3199A9198Bbd48715EE3D0ed98378/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xa628c54c850ff1077b5c954491d19ecce7e321ff": {
 			"address": "0xa628c54c850ff1077b5c954491d19ecce7e321ff",
 			"underlyingTokensAddresses": [
@@ -2757,6 +2801,22 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains DOLA and MAI.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xBE418771bC91F75C4d2BcE1d5E2b7286F50992da/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799": {
+			"address": "0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799",
+			"underlyingTokensAddresses": [
+				"0xa56a25dee5b3199a9198bbd48715ee3d0ed98378"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 DOLA-USDC Factory yVault",
+			"symbol": "yvVelo-DOLA-USDC-f",
+			"displayName": "Velodrome v2 DOLA-USDC Factory yVault",
+			"displaySymbol": "yvVelo-DOLA-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xc009D857bFA8AE8d43ddF2DDbe1686063fC73799/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

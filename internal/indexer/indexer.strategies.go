@@ -570,7 +570,7 @@ func IndexNewStrategies(
 		}
 		_strategiesAlreadyIndexingForVaults[chainID].Store(vault.Address, true)
 
-		if vault.IsRetired || vault.Migration.Available {
+		if vault.Metadata.IsRetired || vault.Metadata.Migration.Available {
 			continue
 		}
 

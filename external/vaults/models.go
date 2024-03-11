@@ -6,7 +6,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/risk"
@@ -69,15 +68,15 @@ type TExternalVaultStaking struct {
 
 // TExternalVaultDetails is the struct containing the information about a vault.
 type TExternalVaultDetails struct {
-	IsRetired       bool   `json:"isRetired"`    // If the vault is retired or not
-	IsHidden        bool   `json:"isHidden"`     // If the vault is hidden or not
-	IsAggregator    bool   `json:"isAggregator"` // If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy
-	IsBoosted       bool   `json:"isBoosted"`    // If the vault is boosted or not. Humanly set.
-	IsAutomated     bool   `json:"isAutomated"`
-	IsPool          bool   `json:"isPool"`
-	PoolProvider    string `json:"poolProvider,omitempty"`
-	Stability       string `json:"stability"`
-	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
+	IsRetired       bool                       `json:"isRetired"`    // If the vault is retired or not
+	IsHidden        bool                       `json:"isHidden"`     // If the vault is hidden or not
+	IsAggregator    bool                       `json:"isAggregator"` // If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy
+	IsBoosted       bool                       `json:"isBoosted"`    // If the vault is boosted or not. Humanly set.
+	IsAutomated     bool                       `json:"isAutomated"`
+	IsPool          bool                       `json:"isPool"`
+	PoolProvider    string                     `json:"poolProvider,omitempty"`
+	Stability       models.TVaultStabilityType `json:"stability"`
+	StableBaseAsset string                     `json:"stableBaseAsset,omitempty"`
 }
 
 // TExternalERC20Token contains the basic information of an ERC20 token
@@ -182,18 +181,18 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	if !ok {
 		return v, errors.New(`token not found`)
 	}
-	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.DisplayName)
-	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.DisplaySymbol)
+	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.Metadata.DisplayName)
+	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.Metadata.DisplaySymbol)
 	strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
 
 	v.Address = vault.Address.Hex()
 	v.Version = vault.Version
 	v.Endorsed = vault.Endorsed
-	v.Boosted = vault.IsBoosted
+	v.Boosted = vault.Metadata.IsBoosted
 	v.EmergencyShutdown = vault.EmergencyShutdown
 	v.ChainID = vault.ChainID
 	v.TVL = fetcher.BuildVaultTVL(vault)
-	v.Migration = toTExternalVaultMigration(vault.Migration)
+	v.Migration = toTExternalVaultMigration(vault.Metadata.Migration)
 	v.Staking = toTExternalVaultStaking(risk.BuildVaultStaking(vault))
 	v.Symbol = symbol
 	v.DisplaySymbol = displaySymbol
@@ -205,7 +204,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Type = vaultToken.Type
 	v.Kind = vault.Kind
 	v.Decimals = vaultToken.Decimals
-	v.Description = vault.Description
+	v.Description = vault.Metadata.Description
 	v.Category = fetcher.BuildVaultCategory(vault, strategies)
 
 	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)
@@ -248,15 +247,20 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.APR = asyncAPR.(apr.TVaultAPR)
 	}
 	v.Details = TExternalVaultDetails{
-		IsRetired:       vault.IsRetired,
-		IsHidden:        vault.IsHidden,
-		IsAggregator:    vault.IsAggregator,
-		IsBoosted:       vault.IsBoosted,
-		IsAutomated:     vault.Classification.IsAutomated,
-		IsPool:          vault.Classification.IsPool,
-		PoolProvider:    vault.Classification.PoolProvider,
-		Stability:       helpers.SafeString(vault.Classification.Stability, `Unknown`),
-		StableBaseAsset: vault.Classification.StableBaseAsset,
+		IsRetired:       vault.Metadata.IsRetired,
+		IsHidden:        vault.Metadata.IsHidden,
+		IsAggregator:    vault.Metadata.IsAggregator,
+		IsBoosted:       vault.Metadata.IsBoosted,
+		IsAutomated:     vault.Metadata.IsAutomated,
+		IsPool:          vault.Metadata.IsPool,
+		Stability:       vault.Metadata.Stability.Stability,
+		StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
+	}
+	if v.Details.Stability == `` {
+		v.Details.Stability = models.VaultStabilityUnknown
+	}
+	if len(vault.Metadata.Protocols) > 0 {
+		v.Details.PoolProvider = vault.Metadata.Protocols[0]
 	}
 
 	poolResult, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)

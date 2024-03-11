@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-05T14:46:39.338385+01:00",
+	"lastUpdate": "2024-03-11T14:34:46.210265+01:00",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 11
+		"patch": 12
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -24,23 +24,28 @@
 			],
 			"lastPricePerShare": "1480311892664767868",
 			"lastTotalAssets": "44226184713506",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
-				"isAutomated": false,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1": {
 			"address": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
@@ -59,24 +64,30 @@
 			],
 			"lastPricePerShare": "1637331337110761400",
 			"lastTotalAssets": "280121125571170719",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x13454b672213f53cb1d31ea0be033c58fe315392": {
 			"address": "0x13454b672213f53cb1d31ea0be033c58fe315392",
@@ -95,25 +106,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x13454b672213f53cb1d31ea0be033c58fe315392",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x13454b672213f53cb1d31ea0be033c58fe315392",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
 			"address": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
@@ -132,24 +149,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x37fdacd764aa64f4e453842d8056853e5550c09b": {
 			"address": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
@@ -168,25 +191,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x391e5dc227cdcf3cca012e5278798121236b1861": {
 			"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
@@ -205,24 +234,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x391e5dc227cdcf3cca012e5278798121236b1861",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x391e5dc227cdcf3cca012e5278798121236b1861",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8": {
 			"address": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
@@ -241,23 +276,28 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
-				"isAutomated": false,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x41102db56d0531be4560ec2db295e28a3c6954c7": {
 			"address": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
@@ -276,24 +316,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x41489713d581ec717e1aa55b7729d24965cf96b5": {
 			"address": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
@@ -312,25 +358,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
 			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
@@ -347,25 +399,30 @@
 			"lastActiveStrategies": [
 				"0x4161255639d94ee0a1d4c27fe0f863293f6a9798"
 			],
-			"lastPricePerShare": "1099535121639815536",
+			"lastPricePerShare": "1105219522029731387",
 			"lastTotalAssets": "11165892393374300976140",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
-				"isAutomated": false,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
@@ -384,25 +441,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x58dce038423a1e43f3429cb62425a1364cc3bb4c": {
 			"address": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
@@ -421,24 +484,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
 			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
@@ -455,25 +524,30 @@
 			"lastActiveStrategies": [
 				"0x7753e6ea61bee08dae2373117a48b0104b7989b4"
 			],
-			"lastPricePerShare": "1079994989964807668",
-			"lastTotalAssets": "15849571846478814",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
-				"isAutomated": false,
+			"lastPricePerShare": "1093458653846779269",
+			"lastTotalAssets": "16079527414678365",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
@@ -492,24 +566,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x5c366341bb86bad85e78eba974e3f335c9488fa2": {
 			"address": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
@@ -528,24 +608,30 @@
 			],
 			"lastPricePerShare": "1020675729220906090",
 			"lastTotalAssets": "6480992292819",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x68393a804c9fe4f1c7148d37796436e450ad98e8": {
 			"address": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
@@ -562,26 +648,32 @@
 			"lastActiveStrategies": [
 				"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f"
 			],
-			"lastPricePerShare": "1768601369950424436",
-			"lastTotalAssets": "1330478939959316",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1895500730943274801",
+			"lastTotalAssets": "1498463066408877",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608": {
 			"address": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
@@ -600,24 +692,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
@@ -636,24 +734,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
 			"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
@@ -672,25 +776,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4": {
 			"address": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
@@ -707,27 +817,33 @@
 			"lastActiveStrategies": [
 				"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f"
 			],
-			"lastPricePerShare": "9359512961686239019",
-			"lastTotalAssets": "4579152290723211639",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "9378090644213116054",
+			"lastTotalAssets": "6044214923598231115",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Correlated",
-				"stableBaseAsset": "Ether"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Correlated",
+					"stableBaseAsset": "Ether"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x8f22d62434d5e52af442f69f43eb27ba20768692": {
 			"address": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
@@ -746,24 +862,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0x9e13e1cfcd750657b81549f8f773d68f1625dcfb": {
 			"address": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
@@ -782,23 +904,28 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
-				"isAutomated": false,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {
 			"address": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
@@ -815,27 +942,33 @@
 			"lastActiveStrategies": [
 				"0x89468e36a687e842699644dc12b986c79af9ed1f"
 			],
-			"lastPricePerShare": "1004162564193351459",
-			"lastTotalAssets": "7607758700548376",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1017215726840029673",
+			"lastTotalAssets": "7730846448929906",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0xa49dccd9425cc38d4111df2e665f2a33fe799c42": {
 			"address": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
@@ -852,26 +985,32 @@
 			"lastActiveStrategies": [
 				"0x1816545343590701dc29c379bcac06e92d1e1c79"
 			],
-			"lastPricePerShare": "1031535085492875828",
-			"lastTotalAssets": "52641191114984",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1040152005862520541",
+			"lastTotalAssets": "53092448984122",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f": {
 			"address": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
@@ -890,25 +1029,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e": {
 			"address": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
@@ -927,25 +1072,31 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Correlated",
-				"stableBaseAsset": "ERN"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Correlated",
+					"stableBaseAsset": "ERN"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
 			"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
@@ -962,26 +1113,32 @@
 			"lastActiveStrategies": [
 				"0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9"
 			],
-			"lastPricePerShare": "1032397683855836876",
-			"lastTotalAssets": "252814232206647973787",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1041034622656276867",
+			"lastTotalAssets": "255196014577242663751",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		},
 		"0xf8f36ab972f6fe3ae1f594595aee1284e270d034": {
 			"address": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
@@ -1000,24 +1157,30 @@
 			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": true,
 				"isPool": true,
-				"poolProvider": "Aerodrome",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Aerodrome"
+				]
+			}
 		}
 	}
 }

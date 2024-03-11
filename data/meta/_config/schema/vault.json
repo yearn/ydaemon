@@ -73,7 +73,7 @@
 				"type": "string"
 			}
 		},
-		"classification": {
+		"stability": {
 			"type": "object",
 			"properties": {
 				"isPool": {"type": "boolean"},
@@ -118,7 +118,7 @@
 			}]
 		}
 	},
-	"required": ["classification", "migrationAvailable"],
+	"required": ["stability", "migrationAvailable"],
 	"allOf": [{
 		"if": {"properties": {"migrationAvailable": {"const": true}}},
 		"then": {"required": ["migrationContract", "migrationTargetVault"]}

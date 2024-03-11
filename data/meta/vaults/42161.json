@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-01-16T18:59:23.565434+01:00",
+	"lastUpdate": "2024-03-11T14:34:47.108017+01:00",
 	"version": {
 		"major": 1,
-		"minor": 0,
-		"patch": 7
+		"minor": 1,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -16,33 +16,39 @@
 			"activation": 11987182,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 2000,
-			"managementFee": 200,
+			"performanceFee": 1000,
+			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xf1c3047c6310806de1d25535bc50748815066a7b"
 			],
 			"lastPricePerShare": "1078984979591167060",
-			"lastTotalAssets": "2562446327564607480198",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastTotalAssets": "1910051679682421321492",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": true,
-				"poolProvider": "Curve",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Curve"
+				]
+			}
 		},
 		"0x239e14a19dff93a17339dcc444f74406c17f8e67": {
 			"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
@@ -61,24 +67,30 @@
 			],
 			"lastPricePerShare": "1079472911495095859",
 			"lastTotalAssets": "64210542847486782767",
-			"isRetired": true,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x0000000000000000000000000000000000000000",
-				"contract": "0x239e14a19dff93a17339dcc444f74406c17f8e67"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": true,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": true,
-				"poolProvider": "Curve",
-				"stability": "Volatile"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x239e14a19dff93a17339dcc444f74406c17f8e67"
+				},
+				"stability": {
+					"stability": "Volatile"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Curve"
+				]
+			}
 		},
 		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
@@ -89,33 +101,115 @@
 			"activation": 15542281,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 2000,
-			"managementFee": 200,
+			"performanceFee": 1000,
+			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1007883749716947736",
-			"lastTotalAssets": "2134473771556012245678",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1009196192887980187",
+			"lastTotalAssets": "2142718872901371473582",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": true,
-				"poolProvider": "Curve",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Curve"
+				]
+			}
+		},
+		"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3": {
+			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
+			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1898080",
+			"lastTotalAssets": "6349212899",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0x5108db0852c0caa2df797dcf31f8a73bfb335452": {
+			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
+			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000517",
+			"lastTotalAssets": "1571635413",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
 		},
 		"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
 			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
@@ -134,25 +228,189 @@
 			],
 			"lastPricePerShare": "1007401799738877861",
 			"lastTotalAssets": "503740686379417358694",
-			"isRetired": false,
-			"isHidden": true,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": true,
-				"poolProvider": "Curve",
-				"stability": "Stable",
-				"stableBaseAsset": "USD"
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Stable",
+					"stableBaseAsset": "USD"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": [
+					"Curve"
+				]
+			}
+		},
+		"0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1": {
+			"address": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
+			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
+				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
+			],
+			"lastPricePerShare": "1000276",
+			"lastTotalAssets": "13317380007",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5": {
+			"address": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
+			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
+				"0x5108db0852c0caa2df797dcf31f8a73bfb335452"
+			],
+			"lastPricePerShare": "1000768",
+			"lastTotalAssets": "7459134978",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b": {
+			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
+			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1085588",
+			"lastTotalAssets": "5845572999",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1": {
+			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
+			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "20148133",
+			"lastTotalAssets": "7518717031",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isPool": false,
+				"migration": {
+					"available": false,
+					"target": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
 		}
 	}
 }

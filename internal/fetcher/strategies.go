@@ -32,7 +32,7 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 	calls := []ethereum.Call{}
 	for _, strat := range strategiesMap {
 		vault, ok := storage.GetVault(chainID, strat.VaultAddress)
-		if ok && !strat.ShouldRefresh && vault.IsRetired {
+		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired {
 			continue
 		}
 
@@ -51,7 +51,7 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, strat := range strategiesMap {
 		vault, ok := storage.GetVault(chainID, strat.VaultAddress)
-		if ok && !strat.ShouldRefresh && vault.IsRetired {
+		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired {
 			continue
 		}
 

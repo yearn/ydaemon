@@ -47,7 +47,7 @@ func ComputeChainAPR(chainID uint64) {
 	refreshGammaMerkl(chainID)
 
 	for _, vault := range allVaults {
-		if vault.IsRetired {
+		if vault.Metadata.IsRetired {
 			continue
 		}
 		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)

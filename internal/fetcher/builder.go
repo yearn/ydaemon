@@ -134,11 +134,11 @@ func BuildVaultCategory(t models.TVault, strategies map[common.Address]models.TS
 		strings.ToLower(formatedName),
 	}
 
-	//Using meta classification to set the category
-	if t.Classification.Stability == `Volatile` {
+	//Using meta stability to set the category
+	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
 		category = `Volatile`
 	} else {
-		if helpers.Contains(baseForStableCurrencies, t.Classification.StableBaseAsset) {
+		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
 			category = `Stablecoin`
 		} else {
 			category = `Volatile`

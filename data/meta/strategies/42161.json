@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-01-16T18:59:25.026772+01:00",
+	"lastUpdate": "2024-03-11T14:34:49.663525+01:00",
 	"version": {
 		"major": 0,
-		"minor": 0,
-		"patch": 32
+		"minor": 1,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -33,6 +33,81 @@
 			"protocols": [
 				"Curve Finance"
 			]
+		},
+		"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3": {
+			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
+			"vaultAddress": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
+			"name": "AaveV3 USDT Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "6038109073",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1709571440",
+			"lastDebtRatio": "8095",
+			"lastEstimatedTotalAssets": "6349212899",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0x5108db0852c0caa2df797dcf31f8a73bfb335452": {
+			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
+			"vaultAddress": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
+			"name": "yearn-V3-Stargate-USDT",
+			"vaultVersion": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "1421025905",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1708547048",
+			"lastDebtRatio": "1905",
+			"lastEstimatedTotalAssets": "1571635413",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b": {
+			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
+			"vaultAddress": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
+			"name": "USDC CompoundV3 Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "5800150768",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1709605080",
+			"lastDebtRatio": "4355",
+			"lastEstimatedTotalAssets": "5845572999",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
 		},
 		"0xccfff90a596fcc0b549a5f69a70de0a9c5295352": {
 			"address": "0xccfff90a596fcc0b549a5f69a70de0a9c5295352",
@@ -85,6 +160,31 @@
 			"protocols": [
 				"Curve Finance"
 			]
+		},
+		"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1": {
+			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
+			"vaultAddress": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
+			"name": "AaveV3 USDC Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "7501935648",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1709571589",
+			"lastDebtRatio": "5633",
+			"lastEstimatedTotalAssets": "7518717031",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
 		}
 	}
 }

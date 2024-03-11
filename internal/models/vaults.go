@@ -13,6 +13,14 @@ const (
 	VaultKindSingle   TVaultKind = "Single Strategy"
 )
 
+type TVaultStabilityType string
+
+const (
+	VaultStabilityStable   TVaultStabilityType = "Stable"
+	VaultStabilityVolatile TVaultStabilityType = "Volatile"
+	VaultStabilityUnknown  TVaultStabilityType = "Unknown"
+)
+
 type TVaultsFromRegistry struct {
 	Address         common.Address `json:"address"`
 	RegistryAddress common.Address `json:"registryAddress"`
@@ -49,6 +57,23 @@ type TStaking struct {
 	Price        *bigNumber.Float `json:"price"`
 }
 
+type TVaultMetadata struct {
+	IsRetired     bool       `json:"isRetired"`     // If the vault is retired or not
+	IsHidden      bool       `json:"isHidden"`      // If the vault is hidden or not
+	IsAggregator  bool       `json:"isAggregator"`  // If the vault is an aggregator or not
+	IsBoosted     bool       `json:"isBoosted"`     // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
+	IsAutomated   bool       `json:"isAutomated"`   // If the vault is automated or not
+	IsPool        bool       `json:"isPool"`        // If the vault is a pool or not
+	Migration     TMigration `json:"migration"`     // If the vault is in the process of being migrated
+	Stability     TStability `json:"stability"`     // The stability of the vault
+	DisplayName   string     `json:"displayName"`   // The name of the vault
+	DisplaySymbol string     `json:"displaySymbol"` // The symbol of the vault
+	Description   string     `json:"description"`   // The description of the vault
+	UINotice      string     `json:"uiNotice"`      // The notice to display in the UI
+	RiskLevel     int8       `json:"riskLevel"`     // The risk level of the vault (1 to 5, -1 if not set)
+	Protocols     []string   `json:"protocols"`     // The Protocols used by the vault
+}
+
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change
@@ -73,15 +98,7 @@ type TVault struct {
 	LastTotalAssets      *bigNumber.Int   `json:"lastTotalAssets"`      // Total assets locked in the vault
 
 	// Manual elements. They are manually set by the team
-	IsRetired      bool            `json:"isRetired"`      // If the vault is retired or not
-	IsHidden       bool            `json:"isHidden"`       // If the vault is hidden or not
-	IsAggregator   bool            `json:"isAggregator"`   // If the vault is an aggregator or not
-	IsBoosted      bool            `json:"isBoosted"`      // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
-	Migration      TMigration      `json:"migration"`      // If the vault is in the process of being migrated
-	Classification TClassification `json:"classification"` // The classification of the vault
-	DisplayName    string          `json:"displayName"`    // The name of the strategy
-	DisplaySymbol  string          `json:"displaySymbol"`  // The symbol of the strategy
-	Description    string          `json:"description"`    // The description of the strategy
+	Metadata TVaultMetadata `json:"metadata"` // The metadata of the vault
 }
 
 type TLegacyAPIAPY struct {
@@ -122,10 +139,7 @@ type TAggregatedVault struct {
 	PricePerShare bigNumber.Int
 }
 
-type TClassification struct {
-	IsAutomated     bool   `json:"isAutomated"`
-	IsPool          bool   `json:"isPool"`
-	PoolProvider    string `json:"poolProvider,omitempty"`
-	Stability       string `json:"stability"`
-	StableBaseAsset string `json:"stableBaseAsset,omitempty"`
+type TStability struct {
+	Stability       TVaultStabilityType `json:"stability"`
+	StableBaseAsset string              `json:"stableBaseAsset,omitempty"`
 }

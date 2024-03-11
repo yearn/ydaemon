@@ -33,7 +33,7 @@ func fetchVaultsBasicInformations(
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, vault := range vaultMap {
-		if vault.IsRetired {
+		if vault.Metadata.IsRetired {
 			continue
 		}
 		versionMajor := strings.Split(vault.Version, `.`)[0]
@@ -50,7 +50,7 @@ func fetchVaultsBasicInformations(
 	**********************************************************************************************/
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, vault := range vaultMap {
-		if vault.IsRetired {
+		if vault.Metadata.IsRetired {
 			continue
 		}
 		newVault := vault
@@ -106,7 +106,7 @@ func RetrieveAllVaults(
 			if currentVault.Kind == `` {
 				kind = models.VaultKindLegacy
 			}
-			updatedVaultMap[currentVault.Address] = models.TVault{
+			newVault := models.TVault{
 				Address:      currentVault.Address,
 				AssetAddress: currentVault.TokenAddress,
 				Version:      currentVault.APIVersion,
@@ -116,6 +116,7 @@ func RetrieveAllVaults(
 				Kind:         kind,
 				Activation:   currentVault.BlockNumber,
 			}
+			updatedVaultMap[currentVault.Address] = newVault
 		}
 	}
 
@@ -123,21 +124,22 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	for _, vault := range env.CHAINS[chainID].ExtraVaults {
-		if _, ok := updatedVaultMap[vault.Address]; !ok || shouldRefresh {
-			kind := vault.Kind
-			if vault.Kind == `` {
+	for _, currentVault := range env.CHAINS[chainID].ExtraVaults {
+		if _, ok := updatedVaultMap[currentVault.Address]; !ok || shouldRefresh {
+			kind := currentVault.Kind
+			if currentVault.Kind == `` {
 				kind = models.VaultKindLegacy
 			}
-			updatedVaultMap[vault.Address] = models.TVault{
-				Address:      vault.Address,
-				AssetAddress: vault.TokenAddress,
-				Version:      vault.APIVersion,
+			newVault := models.TVault{
+				Address:      currentVault.Address,
+				AssetAddress: currentVault.TokenAddress,
+				Version:      currentVault.APIVersion,
 				ChainID:      chainID,
-				Activation:   vault.BlockNumber,
-				Type:         vault.Type,
+				Activation:   currentVault.BlockNumber,
+				Type:         currentVault.Type,
 				Kind:         kind,
 			}
+			updatedVaultMap[currentVault.Address] = newVault
 		}
 	}
 
@@ -151,11 +153,17 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range newVaultMap {
 		vault.ChainID = chainID
-		if (vault.Migration.Target == common.Address{}) {
-			vault.Migration = models.TMigration{
+		if (vault.Metadata.Migration.Target == common.Address{}) {
+			vault.Metadata.Migration = models.TMigration{
 				Available: false,
 				Target:    vault.Address,
 			}
+		}
+		if vault.Type == models.TokenTypeLegacyAutomatedVault || vault.Type == models.TokenTypeAutomatedVault {
+			vault.Metadata.IsAutomated = true
+		}
+		if vault.Metadata.Stability.Stability == `` {
+			vault.Metadata.Stability.Stability = models.VaultStabilityUnknown
 		}
 		storage.StoreVault(chainID, vault)
 	}

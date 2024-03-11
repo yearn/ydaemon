@@ -121,7 +121,6 @@ func getV2VaultCalls(vault models.TVault) []ethereum.Call {
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
-		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetToken(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 	}

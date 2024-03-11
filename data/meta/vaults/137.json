@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-08T16:15:45.53909+01:00",
+	"lastUpdate": "2024-03-11T14:34:46.228354+01:00",
 	"version": {
 		"major": 1,
 		"minor": 3,
-		"patch": 20
+		"patch": 21
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -22,23 +22,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x03e6010193c595ec168756af700479d1aff76895",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x03e6010193c595ec168756af700479d1aff76895",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
 			"address": "0x06ed7c67755344548fafe1822bee365c4208a57f",
@@ -53,25 +58,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006703483823608084",
-			"lastTotalAssets": "49401599882345214790761",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x06ed7c67755344548fafe1822bee365c4208a57f",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1007033000416333143",
+			"lastTotalAssets": "49420675607942337526483",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Stargate DAI Staker",
-			"displaySymbol": "ysDAI",
-			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x06ed7c67755344548fafe1822bee365c4208a57f",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Stargate DAI Staker",
+				"displaySymbol": "ysDAI",
+				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
@@ -86,25 +96,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004895203896166663",
-			"lastTotalAssets": "653975142993645311807720",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1004995685720819704",
+			"lastTotalAssets": "654042828748228515104305",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Aave V3 WMATIC Lender",
-			"displaySymbol": "ysWMATIC",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Aave V3 WMATIC Lender",
+				"displaySymbol": "ysWMATIC",
+				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
@@ -123,25 +138,30 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1042741727023778815",
-			"lastTotalAssets": "1034309341833864620973994",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": true,
-			"migration": {
-				"available": false,
-				"target": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1043595248860068765",
+			"lastTotalAssets": "1034200188622962311282620",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": true,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "WMATIC-A",
-			"displaySymbol": "yvMATIC-A",
-			"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+				"migration": {
+					"available": false,
+					"target": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "WMATIC-A",
+				"displaySymbol": "yvMATIC-A",
+				"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -158,23 +178,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1001788016791273292",
 			"lastTotalAssets": "49088969479530059067731",
-			"isRetired": true,
-			"isHidden": true,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": true,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "CompV3 WMATIC Lender Borrower",
-			"displaySymbol": "ysWMATIC",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"displayName": "CompV3 WMATIC Lender Borrower",
+				"displaySymbol": "ysWMATIC",
+				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
@@ -189,25 +214,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1018323",
-			"lastTotalAssets": "50687543853",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1019503",
+			"lastTotalAssets": "50756987738",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Stargate USDT Staker",
-			"displaySymbol": "ysUSDT",
-			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Stargate USDT Staker",
+				"displaySymbol": "ysUSDT",
+				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
@@ -225,25 +255,30 @@
 			"lastActiveStrategies": [
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
 			],
-			"lastPricePerShare": "1037966896970088709",
-			"lastTotalAssets": "229424803563035162787",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": true,
-			"migration": {
-				"available": false,
-				"target": "0x305f25377d0a39091e99b975558b1bdfc3975654",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1038630525526484483",
+			"lastTotalAssets": "224971510915221776303",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": true,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "WETH-A",
-			"displaySymbol": "yvWETH-A",
-			"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+				"migration": {
+					"available": false,
+					"target": "0x305f25377d0a39091e99b975558b1bdfc3975654",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "WETH-A",
+				"displaySymbol": "yvWETH-A",
+				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x32adfc6170344f848a8c0efe68dad93e5b6964aa": {
 			"address": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
@@ -260,23 +295,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x3a58df70f9204bedcd6aee2b51582eb77fe30e02": {
 			"address": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
@@ -293,23 +333,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "38158047554017",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
 			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
@@ -324,25 +369,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1018871",
-			"lastTotalAssets": "1629562397555",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1020050",
+			"lastTotalAssets": "1843249450836",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Aave V3 USDT Lender",
-			"displaySymbol": "ysUSDT",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Aave V3 USDT Lender",
+				"displaySymbol": "ysUSDT",
+				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x42908891cbc13301c910b4e71055431bf134aaa0": {
 			"address": "0x42908891cbc13301c910b4e71055431bf134aaa0",
@@ -359,23 +409,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1009656181150227082",
 			"lastTotalAssets": "1708760735",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x42908891cbc13301c910b4e71055431bf134aaa0",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x42908891cbc13301c910b4e71055431bf134aaa0",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
 			"address": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
@@ -390,25 +445,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1009235",
-			"lastTotalAssets": "73170481628",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1012140",
+			"lastTotalAssets": "49474219868",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
@@ -425,23 +485,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1001907996103873861",
 			"lastTotalAssets": "50555488675945059296",
-			"isRetired": true,
-			"isHidden": true,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": true,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "CompV3 WETH Lender Borrower",
-			"displaySymbol": "ysWETH",
-			"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"displayName": "CompV3 WETH Lender Borrower",
+				"displaySymbol": "ysWETH",
+				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x54303f18161d9870b0fc66b88b0b129e8e5ff505": {
 			"address": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
@@ -458,23 +523,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
@@ -491,23 +561,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1013002911671756265",
 			"lastTotalAssets": "55825965267529069260966",
-			"isRetired": true,
-			"isHidden": true,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": true,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Staked MATIC Accumulator",
-			"displaySymbol": "ysWMATIC",
-			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
+				"migration": {
+					"available": false,
+					"target": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"displayName": "Staked MATIC Accumulator",
+				"displaySymbol": "ysWMATIC",
+				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -524,23 +599,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1003879823380999577",
 			"lastTotalAssets": "2014465217625558402",
-			"isRetired": true,
-			"isHidden": true,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x7486325a843590b84c98563c6962c58655569eca",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": true,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Staked ETH Accumulator",
-			"displaySymbol": "ysWETH",
-			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards."
+				"migration": {
+					"available": false,
+					"target": "0x7486325a843590b84c98563c6962c58655569eca",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"displayName": "Staked ETH Accumulator",
+				"displaySymbol": "ysWETH",
+				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
@@ -555,25 +635,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2750626",
-			"lastTotalAssets": "116335",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "2753114",
+			"lastTotalAssets": "116454",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Stargate USDC.e Staker",
-			"displaySymbol": "ysUSDC.e",
-			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Stargate USDC.e Staker",
+				"displaySymbol": "ysUSDC.e",
+				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x8df66d28914084f44c4046783810cbad662fa633": {
 			"address": "0x8df66d28914084f44c4046783810cbad662fa633",
@@ -588,25 +673,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006000839520024817",
-			"lastTotalAssets": "160292052571190618001",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x8df66d28914084f44c4046783810cbad662fa633",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1006683888658175881",
+			"lastTotalAssets": "160295784917954934519",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x8df66d28914084f44c4046783810cbad662fa633",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
 			"address": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
@@ -625,25 +715,30 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1037191293386474633",
-			"lastTotalAssets": "1453486061561754602279984",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": true,
-			"migration": {
-				"available": false,
-				"target": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1039908358926060277",
+			"lastTotalAssets": "1663931549919571320770874",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": true,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "DAI-A",
-			"displaySymbol": "yvDAI-A",
-			"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+				"migration": {
+					"available": false,
+					"target": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "DAI-A",
+				"displaySymbol": "yvDAI-A",
+				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0x91e646449a3105e9091e882c9a9a7a81950eebb8": {
 			"address": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
@@ -660,23 +755,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
@@ -696,25 +796,30 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1062450",
-			"lastTotalAssets": "2143833841758",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": true,
-			"migration": {
-				"available": false,
-				"target": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1065109",
+			"lastTotalAssets": "2071402803668",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": true,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "USDC.e-A",
-			"displaySymbol": "yvUSDC.e-A",
-			"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+				"migration": {
+					"available": false,
+					"target": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "USDC.e-A",
+				"displaySymbol": "yvUSDC.e-A",
+				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xa823ef7df6392800569946c6c1dec0e34356ef18": {
 			"address": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
@@ -731,23 +836,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
 			"address": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
@@ -764,23 +874,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
@@ -795,25 +910,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1031825",
-			"lastTotalAssets": "1251140485921",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1033278",
+			"lastTotalAssets": "1061868642483",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Compound V3 USDC.e Lender",
-			"displaySymbol": "ysUSDC.e",
-			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Compound V3 USDC.e Lender",
+				"displaySymbol": "ysUSDC.e",
+				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xb64ce1c06af365424060e2720df46997a4fd3a0a": {
 			"address": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
@@ -830,23 +950,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
 			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
@@ -865,25 +990,30 @@
 				"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d"
 			],
-			"lastPricePerShare": "1061038",
-			"lastTotalAssets": "1676991025811",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": true,
-			"migration": {
-				"available": false,
-				"target": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1063507",
+			"lastTotalAssets": "1896358462110",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": true,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "USDT-A",
-			"displaySymbol": "yvUSDt-A",
-			"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies."
+				"migration": {
+					"available": false,
+					"target": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "USDT-A",
+				"displaySymbol": "yvUSDt-A",
+				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
@@ -898,25 +1028,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001522777281066149",
-			"lastTotalAssets": "172137319598954874494",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1001560712359011421",
+			"lastTotalAssets": "172143558553411517905",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Aave V3 WETH Lender",
-			"displaySymbol": "ysWETH",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Aave V3 WETH Lender",
+				"displaySymbol": "ysWETH",
+				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -931,25 +1066,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1040114",
-			"lastTotalAssets": "897492879342",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1041432",
+			"lastTotalAssets": "1011266784379",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Aave V3 USDC.e Lender",
-			"displaySymbol": "ysUSDC.e",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Aave V3 USDC.e Lender",
+				"displaySymbol": "ysUSDC.e",
+				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
 			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
@@ -964,25 +1104,30 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1020149408986856146",
-			"lastTotalAssets": "1398703400710060903335795",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastPricePerShare": "1021188887549062844",
+			"lastTotalAssets": "1594778324937937715708385",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Aave V3 DAI Lender",
-			"displaySymbol": "ysDAI",
-			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy."
+				"migration": {
+					"available": false,
+					"target": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Aave V3 DAI Lender",
+				"displaySymbol": "ysDAI",
+				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
 			"address": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
@@ -1001,24 +1146,29 @@
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780"
 			],
 			"lastPricePerShare": "1000974",
-			"lastTotalAssets": "232401135769",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"lastTotalAssets": "234550670424",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "Yearn-Ajna USDC Vault",
-			"displaySymbol": "yvAjnaUSDC",
-			"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more."
+				"migration": {
+					"available": false,
+					"target": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "Yearn-Ajna USDC Vault",
+				"displaySymbol": "yvAjnaUSDC",
+				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit https://juiced.yearn.fi/ to learn more.",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		},
 		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
 			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
@@ -1035,23 +1185,28 @@
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "50007000000000000000000",
-			"isRetired": false,
-			"isHidden": false,
-			"isAggregator": false,
-			"isBoosted": false,
-			"migration": {
-				"available": false,
-				"target": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
-				"contract": "0x0000000000000000000000000000000000000000"
-			},
-			"classification": {
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"stability": ""
-			},
-			"displayName": "",
-			"displaySymbol": "",
-			"description": ""
+				"migration": {
+					"available": false,
+					"target": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"uiNotice": "",
+				"riskLevel": -1,
+				"protocols": []
+			}
 		}
 	}
 }

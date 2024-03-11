@@ -64,11 +64,15 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 		data.ShouldRefresh,
 	})
 
-	file, _ := json.MarshalIndent(data, "", "\t")
+	file, err := json.MarshalIndent(data, "", "\t")
+	if err != nil {
+		logs.Error("Failed to marshal vaults JSON file: " + err.Error())
+		return
+	}
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/vaults"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/vaults", 0755)
 	}
-	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/vaults/"+chainIDStr+".json", file, 0644)
+	err = os.WriteFile(env.BASE_DATA_PATH+"/meta/vaults/"+chainIDStr+".json", file, 0644)
 	if err != nil {
 		logs.Error("Failed to write vaults JSON file: " + err.Error())
 	}
@@ -102,6 +106,10 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	for _, vault := range file.Vaults {
 		StoreVault(chainID, vault)
 	}
+
+	// Temp
+	vaultMap, _ := ListVaults(chainID)
+	StoreVaultsToJson(chainID, vaultMap)
 }
 
 /**************************************************************************************************

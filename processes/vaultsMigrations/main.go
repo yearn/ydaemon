@@ -86,13 +86,13 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 		}
 
 		if depositLimit.Eq(bigNumber.Zero) { //Deposit limit 0
-			if vault.Migration.Available {
-				return vault.Migration.Target, depositLimitNormalized, true, false, false
+			if vault.Metadata.Migration.Available {
+				return vault.Metadata.Migration.Target, depositLimitNormalized, true, false, false
 			}
-			if (vault.IsRetired) && !vault.Migration.Available {
+			if (vault.Metadata.IsRetired) && !vault.Metadata.Migration.Available {
 				return common.Address{}, depositLimitNormalized, false, true, false
 			}
-			if !vault.Migration.Available {
+			if !vault.Metadata.Migration.Available {
 				return common.Address{}, depositLimitNormalized, false, false, true
 			}
 		}

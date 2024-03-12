@@ -122,10 +122,11 @@ type TExternalVault struct {
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
 	Info              struct {
-		SourceURL string `json:"sourceURL,omitempty"`
+		SourceURL string `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
+		RiskLevel int8   `json:"riskLevel,omitempty"` // The risk level of the vault (1 to 5, -1 if not set)
+		UINotice  string `json:"uiNotice,omitempty"`  // The notice to display in the UI
 	} `json:"info,omitempty"`
-	// Computing only
-	FeaturingScore float64 `json:"featuringScore"`
+	FeaturingScore float64 `json:"featuringScore"` // Computing only
 }
 
 type TSimplifiedExternalVaultTVL struct {
@@ -271,6 +272,9 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	if v.Info.SourceURL == `` {
 		v.Info.SourceURL = vault.Metadata.SourceURI
 	}
+
+	v.Info.RiskLevel = vault.Metadata.RiskLevel
+	v.Info.UINotice = vault.Metadata.UINotice
 
 	return v, nil
 }

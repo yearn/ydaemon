@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-11T15:05:00.636773+01:00",
+	"lastUpdate": "2024-03-12T18:15:44.9434+01:00",
 	"version": {
 		"major": 0,
-		"minor": 25,
+		"minor": 26,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -138,6 +138,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x028171bCA77440897B824Ca71D1c56caC55b68A3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x028ec7330ff87667b6dfb0d94b954c820195336c": {
+			"address": "0x028ec7330ff87667b6dfb0d94b954c820195336c",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-1 yVault",
+			"symbol": "yvDAI-1",
+			"displayName": "DAI-1 yVault",
+			"displaySymbol": "yvDAI-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x028eC7330ff87667b6dfb0D94b954c820195336c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1665,6 +1681,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1fd862499e9b9402de6c599b6c391f83981180ab": {
+			"address": "0x1fd862499e9b9402de6c599b6c391f83981180ab",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Spark DAI Lender",
+			"symbol": "ysDAI",
+			"displayName": "Spark DAI Lender",
+			"displaySymbol": "ysDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1fd862499e9b9402DE6c599b6C391f83981180Ab/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2027d3b2b58f522178ce4cc4e86e99b7c4de3876": {
 			"address": "0x2027d3b2b58f522178ce4cc4e86e99b7c4de3876",
 			"underlyingTokensAddresses": [
@@ -1847,6 +1879,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV. This factory crypto pool contains JPEG and pETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x23E7817bC73645063FB2fa85c1d098EfFE84bE90/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x23ee3d14f09946a084350cc6a7153fc6eb918817": {
+			"address": "0x23ee3d14f09946a084350cc6a7153fc6eb918817",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Compound V3 WETH Lender",
+			"symbol": "ysWETH",
+			"displayName": "Compound V3 WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x23eE3D14F09946A084350CC6A7153fc6eb918817/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7376,6 +7424,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7ee351aa702c8fc735d77fb229b7676ac15d7c79": {
+			"address": "0x7ee351aa702c8fc735d77fb229b7676ac15d7c79",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Compound V3 USD Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Compound V3 USD Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7eE351aA702C8fC735D77Fb229b7676AC15D7c79/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": {
 			"address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
 			"underlyingTokensAddresses": [],
@@ -11141,6 +11205,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbdb97ec319c41c6fa383e94ece6bdf383dfc7be4": {
+			"address": "0xbdb97ec319c41c6fa383e94ece6bdf383dfc7be4",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xbDb97eC319c41c6FA383E94eCE6Bdf383dFC7BE4/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xbe426b0f37c112dd20d5866769c8034171567b31": {
 			"address": "0xbe426b0f37c112dd20d5866769c8034171567b31",
 			"underlyingTokensAddresses": [
@@ -11189,6 +11269,22 @@
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xbE4f3AD6C9458b901C81b734CB22D9eaE9Ad8b50/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbe53a109b494e5c9f97b9cd39fe969be68bf6204": {
+			"address": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault",
+			"symbol": "yvUSDC-1",
+			"displayName": "USDC-1 yVault",
+			"displaySymbol": "yvUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBe53A109B494E5c9f97b9Cd39Fe969BE68BF6204/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xbe9895146f7af43049ca1c1ae358b0541ea49704": {
@@ -11633,6 +11729,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc55126051B22eBb829D00368f4B12Bde432de5Da/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0": {
+			"address": "0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-1 yVault",
+			"symbol": "yvWETH-1",
+			"displayName": "WETH-1 yVault",
+			"displaySymbol": "yvWETH-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xc56413869c6CDf96496f2b1eF801fEDBdFA7dDB0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12325,6 +12437,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xD2C65E20C3fDE3F18097e7414e65596e0C83B1a9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd2efb90c569ebd5b83d5cfb8632322edfac203a5": {
+			"address": "0xd2efb90c569ebd5b83d5cfb8632322edfac203a5",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 WETH Lender",
+			"symbol": "ysWETH",
+			"displayName": "Aave V3 WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xd2eFB90C569eBD5b83D5cFB8632322edFAc203A5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13909,6 +14037,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xEeC7036C1Af1f07668b4c5520CcB4b52Ec4594D7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xeed00e00236cd7f36f2558d8b5fd05046449599d": {
+			"address": "0xeed00e00236cd7f36f2558d8b5fd05046449599d",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 DAI Lender",
+			"symbol": "ysDAI",
+			"displayName": "Aave V3 DAI Lender",
+			"displaySymbol": "ysDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xEed00e00236cD7F36F2558D8b5fD05046449599D/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

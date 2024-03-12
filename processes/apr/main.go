@@ -58,7 +58,11 @@ func ComputeChainAPR(chainID uint64) {
 		allStrategiesForVault, _ := storage.ListStrategiesForVault(chainID, vault.Address)
 		vaultAPR := TVaultAPR{}
 		if isV3Vault(vault) {
-			vaultAPR = computeCurrentV3VaultAPR(vault, vaultToken)
+			if vault.Metadata.ShouldUseV2APR {
+				vaultAPR = computeCurrentV2VaultAPR(vault, vaultToken)
+			} else {
+				vaultAPR = computeCurrentV3VaultAPR(vault, vaultToken)
+			}
 			vaultAPR.ForwardAPR = computeVaultV3ForwardAPR(
 				vault,
 				allStrategiesForVault,

@@ -93,6 +93,13 @@ type TExternalERC20Token struct {
 	Decimals                  uint64            `json:"decimals"`
 }
 
+// TExternalVaultInfo is the struct containing the information about a vault.
+type TExternalVaultInfo struct {
+	SourceURL string `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
+	RiskLevel int8   `json:"riskLevel,omitempty"` // The risk level of the vault (1 to 5, -1 if not set)
+	UINotice  string `json:"uiNotice,omitempty"`  // The notice to display in the UI
+}
+
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
 	Address           string                  `json:"address"`
@@ -121,12 +128,8 @@ type TExternalVault struct {
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TExternalVaultStaking   `json:"staking"`
-	Info              struct {
-		SourceURL string `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
-		RiskLevel int8   `json:"riskLevel,omitempty"` // The risk level of the vault (1 to 5, -1 if not set)
-		UINotice  string `json:"uiNotice,omitempty"`  // The notice to display in the UI
-	} `json:"info,omitempty"`
-	FeaturingScore float64 `json:"featuringScore"` // Computing only
+	Info              TExternalVaultInfo      `json:"info,omitempty"`
+	FeaturingScore    float64                 `json:"featuringScore"` // Computing only
 }
 
 type TSimplifiedExternalVaultTVL struct {
@@ -169,9 +172,7 @@ type TSimplifiedExternalVault struct {
 	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
-	Info           struct {
-		SourceURL string `json:"sourceURL,omitempty"`
-	} `json:"info,omitempty"`
+	Info           TExternalVaultInfo            `json:"info,omitempty"`
 }
 
 func NewVault() TExternalVault {

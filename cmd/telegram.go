@@ -100,7 +100,6 @@ func listenToSignals() {
 				return true
 			})
 			triggerTgMessage(`👀 - Origins of access:` + "\n" + strings.Join(listOfOrigins, "\n"))
-			os.Exit(1)
 		case "upd_prices":
 			arguments := update.Message.CommandArguments()
 			if arguments == "" {

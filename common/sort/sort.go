@@ -98,7 +98,9 @@ func SortBy[T any](jsonField string, sortOrder string, arr []T) {
 				return v1.Bool() // return big numbers first
 			}
 		default:
-			logs.Warning(`field type [` + lastField.Type.Name() + `] not supported`)
+			if lastField.Type.Name() != `` {
+				logs.Warning(`field type [` + lastField.Type.Name() + `] not supported`)
+			}
 			return false
 		}
 	})

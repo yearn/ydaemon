@@ -48,9 +48,14 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 			tokenString = append(tokenString, LLAMA_CHAIN_NAMES[chainID]+`:`+token.Address.Hex())
 		}
 		resp, err := http.Get(env.LLAMA_PRICE_URL + strings.Join(tokenString, ","))
-		if err != nil || resp.StatusCode != 200 {
-			logs.Error(err, resp.StatusCode, resp.Status)
+		if err != nil {
 			logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+			logs.Error(err)
+			return priceMap
+		}
+		if resp.StatusCode != 200 {
+			logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+			logs.Error(resp.StatusCode, resp.Status)
 			return priceMap
 		}
 		// Defer the closing of the response body to avoid memory leaks

@@ -407,6 +407,9 @@ func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
 	/**********************************************************************************************
 	** Fetch the tokens from the Gamma API.
 	**********************************************************************************************/
+	if env.CHAINS[chainID].ExtraURI.GammaHypervisorURI == `` {
+		return coinsForPools
+	}
 	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaHypervisorURI)
 	if err != nil {
 		logs.Error(`impossible to get Gamma URL`, err.Error())

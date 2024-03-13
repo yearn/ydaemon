@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-12T18:14:32.063275+01:00",
+	"lastUpdate": "2024-03-13T16:19:04.207331+01:00",
 	"version": {
 		"major": 1,
 		"minor": 3,
-		"patch": 60
+		"patch": 71
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -44,7 +44,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
@@ -60,7 +62,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007167435062615613",
+			"lastPricePerShare": "1007273910737160303",
 			"lastTotalAssets": "49420675607942337526483",
 			"metadata": {
 				"isRetired": false,
@@ -100,7 +102,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005033648979852206",
+			"lastPricePerShare": "1005063711694325240",
 			"lastTotalAssets": "654042828748228515104305",
 			"metadata": {
 				"isRetired": false,
@@ -144,8 +146,8 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1043930593284090642",
-			"lastTotalAssets": "1041819952116014693864158",
+			"lastPricePerShare": "1044188934286747665",
+			"lastTotalAssets": "1058596879792850302940415",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -224,7 +226,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1019986",
+			"lastPricePerShare": "1020369",
 			"lastTotalAssets": "50756987738",
 			"metadata": {
 				"isRetired": false,
@@ -267,8 +269,8 @@
 			"lastActiveStrategies": [
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
 			],
-			"lastPricePerShare": "1038891935576779198",
-			"lastTotalAssets": "222412645000888993032",
+			"lastPricePerShare": "1039101126500673018",
+			"lastTotalAssets": "221702750107314871135",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -331,7 +333,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x3a58df70f9204bedcd6aee2b51582eb77fe30e02": {
@@ -371,7 +375,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
@@ -387,8 +393,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1020511",
-			"lastTotalAssets": "1843249450836",
+			"lastPricePerShare": "1020873",
+			"lastTotalAssets": "1892651203477",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -451,7 +457,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
@@ -467,8 +475,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1013638",
-			"lastTotalAssets": "49502099999",
+			"lastPricePerShare": "1014750",
+			"lastTotalAssets": "52998065296",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -571,7 +579,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
@@ -667,8 +677,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2754091",
-			"lastTotalAssets": "116454",
+			"lastPricePerShare": "2754955",
+			"lastTotalAssets": "116598",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -707,8 +717,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006817832474031467",
-			"lastTotalAssets": "160329073510714034779",
+			"lastPricePerShare": "1006901096508738571",
+			"lastTotalAssets": "160337307507756839044",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -731,7 +741,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
@@ -751,8 +763,8 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1040896006567776207",
-			"lastTotalAssets": "1685180633910630812097605",
+			"lastPricePerShare": "1041686818468742820",
+			"lastTotalAssets": "1686404380014628173500006",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -815,7 +827,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
@@ -836,8 +850,8 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1066086",
-			"lastTotalAssets": "2219014899232",
+			"lastPricePerShare": "1066813",
+			"lastTotalAssets": "2270803432709",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -900,7 +914,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
@@ -940,7 +956,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
@@ -956,8 +974,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1033873",
-			"lastTotalAssets": "1112010631473",
+			"lastPricePerShare": "1034717",
+			"lastTotalAssets": "1156294771180",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1020,7 +1038,9 @@
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": ["Gamma"]
+				"protocols": [
+					"Gamma"
+				]
 			}
 		},
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
@@ -1040,8 +1060,8 @@
 				"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d"
 			],
-			"lastPricePerShare": "1064443",
-			"lastTotalAssets": "1917818747387",
+			"lastPricePerShare": "1065178",
+			"lastTotalAssets": "1937801346269",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1080,8 +1100,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001573961739493005",
-			"lastTotalAssets": "172143558553411517905",
+			"lastPricePerShare": "1001585100020985439",
+			"lastTotalAssets": "172150204529284263582",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1120,8 +1140,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1041893",
-			"lastTotalAssets": "1120101256867",
+			"lastPricePerShare": "1042201",
+			"lastTotalAssets": "1128696218765",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1160,8 +1180,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1021582159548412925",
-			"lastTotalAssets": "1638567803849861435339957",
+			"lastPricePerShare": "1021895843392972005",
+			"lastTotalAssets": "1605157169094104393170754",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1203,8 +1223,8 @@
 			"lastActiveStrategies": [
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780"
 			],
-			"lastPricePerShare": "1000981",
-			"lastTotalAssets": "237239806355",
+			"lastPricePerShare": "1001053",
+			"lastTotalAssets": "239534262283",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1244,7 +1264,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "60007000000000000000000",
+			"lastTotalAssets": "80007000000000000000000",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

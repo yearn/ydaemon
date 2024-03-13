@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"sync"
 	"time"
 
 	cache "github.com/chenyahui/gin-cache"
@@ -11,6 +12,7 @@ import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
@@ -19,7 +21,35 @@ import (
 	"github.com/yearn/ydaemon/external/tokensList"
 	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
+	"go.uber.org/ratelimit"
 )
+
+// RateLimitPerOrigin is a sync map if url -> ratelimit
+var RateLimitPerOrigin = sync.Map{}
+
+var allowlist = []string{
+	"https://yearn.finance",
+	"https://yearn.fi",
+	"https://ycrv.yearn.fi",
+	"https://yeth.yearn.fi",
+	"https://veyfi.yearn.fi",
+	"https://juiced.yearn.fi",
+	"https://buyback.yearn.fi",
+	"https://seafood.yearn.watch",
+	"https://juiced.app",
+	"https://ajnafi.com",
+	"https://tokenlistooor.com",
+	"https://ybribe.com",
+	"https://yearn.farm",
+	"https://ape.tax",
+}
+var rootURI = []string{
+	".yearn.fi",
+	".yearn.finance",
+	".yearn.farm",
+	".juiced.app",
+	".smold.app",
+}
 
 // NewRouter create the routes and setup the server
 func NewRouter() *gin.Engine {
@@ -39,11 +69,31 @@ func NewRouter() *gin.Engine {
 		}
 		ctx.Next()
 	})
-	// router.Use(middleware(logrus.New()))
 	corsConf := cors.Config{
-		AllowAllOrigins: true,
-		AllowMethods:    []string{"GET", "HEAD"},
-		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
+		// AllowAllOrigins: true,
+		AllowMethods: []string{"GET", "HEAD"},
+		AllowHeaders: []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
+		AllowOriginFunc: func(origin string) bool {
+			//Check if we have this origin in the RateLimitPerOrigin map
+			//If we don't have it, we add it
+			if helpers.Contains(allowlist, origin) {
+				return true
+			}
+			//Allow our route URI
+			if helpers.EndsWithSubstring(rootURI, origin) {
+				return true
+			}
+
+			if rl, ok := RateLimitPerOrigin.Load(origin); !ok {
+				rl := ratelimit.New(1) // per second
+				RateLimitPerOrigin.Store(origin, rl)
+				rl.Take()
+			} else {
+				rl.(ratelimit.Limiter).Take()
+			}
+			logs.Info(`Request from: `, origin)
+			return true
+		},
 	}
 	router.Use(cors.New(corsConf))
 	router.GET(`/`, func(ctx *gin.Context) {
@@ -54,32 +104,32 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllVaultsForAllChainsSimplified)                // Migrated to simplified ✅
-		router.GET(`vaults/retired`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllRetiredVaultsForAllChainsSimplified) // Migrated to simplified ✅
-		router.GET(`vaults/all`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllVaultsForAllChainsSimplified)            // Migrated to simplified ✅
-		router.GET(`vaults/v3`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllV3VaultsForAllChainsSimplified)           // Migrated to simplified ✅
-		router.GET(`vaults/v2`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllV2VaultsForAllChainsSimplified)           // Migrated to simplified ✅
+		router.GET(`vaults`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllVaultsForAllChainsSimplified)                // Migrated to simplified ✅
+		router.GET(`vaults/retired`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllRetiredVaultsForAllChainsSimplified) // Migrated to simplified ✅
+		router.GET(`vaults/all`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllVaultsForAllChainsSimplified)            // Migrated to simplified ✅
+		router.GET(`vaults/v3`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllV3VaultsForAllChainsSimplified)           // Migrated to simplified ✅
+		router.GET(`vaults/v2`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllV2VaultsForAllChainsSimplified)           // Migrated to simplified ✅
 
-		router.GET(`vaults/tvl`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllVaultsTVL)
+		router.GET(`vaults/tvl`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllVaultsTVL)
 
 		// Retrieve the vaults for a specific chainID
-		router.GET(`:chainID/vaults/tvl`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetVaultsTVL)
-		router.GET(`:chainID/vaults/all`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllVaults)
-		router.GET(`:chainID/vaults/retired`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetRetiredVaults)
-		router.GET(`:chainID/vaults/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetSimplifiedVault) // Migrated to simplified ✅
-		router.GET(`:chainID/vault/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetSimplifiedVault)  // Migrated to simplified ✅
+		router.GET(`:chainID/vaults/tvl`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetVaultsTVL)
+		router.GET(`:chainID/vaults/all`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllVaults)
+		router.GET(`:chainID/vaults/retired`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetRetiredVaults)
+		router.GET(`:chainID/vaults/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetSimplifiedVault) // Migrated to simplified ✅
+		router.GET(`:chainID/vault/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetSimplifiedVault)  // Migrated to simplified ✅
 
-		router.GET(`info/vaults/blacklisted`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetBlacklistedVaults)
+		router.GET(`info/vaults/blacklisted`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetBlacklistedVaults)
 
-		router.GET(`:chainID/vaults/harvests/:addresses`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetHarvestsForVault)
-		router.GET(`:chainID/earned/:address/:vaults`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetEarnedPerVaultPerUser)
-		router.GET(`:chainID/earned/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetEarnedPerUser)
-		router.GET(`earned/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetEarnedPerUserForAllChains)
+		router.GET(`:chainID/vaults/harvests/:addresses`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetHarvestsForVault)
+		router.GET(`:chainID/earned/:address/:vaults`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetEarnedPerVaultPerUser)
+		router.GET(`:chainID/earned/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetEarnedPerUser)
+		router.GET(`earned/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetEarnedPerUserForAllChains)
 
 		// Retrieve the strategies for a specific chainID
-		router.GET(`:chainID/strategies/all`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetAllStrategies)
-		router.GET(`:chainID/strategies/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetStrategy)
-		router.GET(`:chainID/strategy/:address`, cache.CacheByRequestURI(memoryStore, 10*time.Minute), c.GetStrategy)
+		router.GET(`:chainID/strategies/all`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetAllStrategies)
+		router.GET(`:chainID/strategies/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetStrategy)
+		router.GET(`:chainID/strategy/:address`, cache.CacheByRequestURI(memoryStore, 5*time.Minute), c.GetStrategy)
 	}
 
 	// Strategies section

@@ -77,6 +77,9 @@ func retrieveGammaMerklData(chainID uint64) (map[string]TGammaMerklAPIResp, bool
 	}
 
 	pools := map[string]TGammaMerklAPIResp{}
+	if env.CHAINS[chainID].ExtraURI.GammaMerklURI == `` {
+		return pools, false
+	}
 	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaMerklURI)
 	if err != nil {
 		logs.Error(err)

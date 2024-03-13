@@ -117,6 +117,16 @@ func Contains[T comparable](arr []T, value T) bool {
 	return false
 }
 
+// EndsWithSubstring returns true if value exists in arr
+func EndsWithSubstring(arr []string, value string) bool {
+	for _, v := range arr {
+		if strings.HasSuffix(value, v) {
+			return true
+		}
+	}
+	return false
+}
+
 // ContainsSubString returns true if value exists in arr
 // arr are assumed to contain the substrings of value
 func ContainsSubString(arr []string, value string) bool {

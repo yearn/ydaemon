@@ -2,6 +2,7 @@ package apr
 
 import (
 	"math/big"
+	"os"
 	"strings"
 	"time"
 
@@ -35,7 +36,9 @@ func getConvexRewardAPR(
 		if err != nil {
 			rewardPID, err = convexStrategyContract.FraxPid(nil)
 			if err != nil {
-				logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
+				}
 				return storage.ZERO
 			}
 		}
@@ -151,7 +154,9 @@ func getCVXPoolAPR(
 		if err != nil {
 			rewardPID, err = convexStrategyContract.FraxPid(nil)
 			if err != nil {
-				logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
+				}
 				return crvAPR, cvxAPR
 			}
 		}

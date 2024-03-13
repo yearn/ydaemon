@@ -2,6 +2,7 @@ package prices
 
 import (
 	"context"
+	"os"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -273,7 +274,9 @@ func fetchPrices(
 		tokenPrice, ok := newPriceMap[token.Address]
 		if !ok || tokenPrice.Price.IsZero() {
 			if !priceErrorAlreadySent[chainID][token.Address] {
-				logs.Warning(`missing a valid price for ` + token.Address.Hex() + ` (` + token.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(token.Type) + `)`)
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Warning(`missing a valid price for ` + token.Address.Hex() + ` (` + token.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(token.Type) + `)`)
+				}
 			}
 			priceErrorAlreadySent[chainID][token.Address] = true
 		}

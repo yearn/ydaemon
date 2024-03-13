@@ -12,7 +12,6 @@ import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
@@ -91,7 +90,6 @@ func NewRouter() *gin.Engine {
 			} else {
 				rl.(ratelimit.Limiter).Take()
 			}
-			logs.Info(`Request from: `, origin)
 			return true
 		},
 	}

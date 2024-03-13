@@ -88,10 +88,18 @@ func listenToSignals() {
 			triggerTgMessage(`Available commands:
 - /help: Show this help message
 - /restart: Restart the daemon
-- /upd_prices <chainID>: Update the prices for a given chain`)
+- /upd_prices <chainID>: Update the prices for a given chain
+- /origins: Get the origins of access`)
 		case "restart":
 			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
 			os.Exit(1)
+		case "origins":
+			listOfOrigins := []string{}
+			RateLimitPerOrigin.Range(func(key, value interface{}) bool {
+				listOfOrigins = append(listOfOrigins, key.(string))
+				return true
+			})
+			triggerTgMessage(`👀 - Origins of access:` + strings.Join(listOfOrigins, "\n"))
 		case "upd_prices":
 			arguments := update.Message.CommandArguments()
 			if arguments == "" {

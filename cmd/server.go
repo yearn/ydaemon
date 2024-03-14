@@ -7,6 +7,7 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/meta"
@@ -55,6 +56,7 @@ func NewRouter() *gin.Engine {
 	gin.DefaultWriter = nil
 
 	router := gin.New()
+	pprof.Register(router)
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(gin.Recovery())
 	router.Use(sentrygin.New(sentrygin.Options{Repanic: true}))

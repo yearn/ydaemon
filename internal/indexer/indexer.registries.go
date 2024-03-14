@@ -173,7 +173,14 @@ func watchNewVaults(
 	** because we need to listen to new events as they are emitted via the node.
 	** Not all nodes support WS connections, so we need to check if the node supports it.
 	**********************************************************************************************/
-	client, _ := ethereum.GetWSClient(chainID)
+	client, err := ethereum.GetWSClient(chainID)
+	if err != nil {
+		if wg != nil && !isDone {
+			wg.Done()
+		}
+		return 0, false, err
+	}
+	defer client.Close()
 
 	switch registry.Version {
 	case 1, 2:
@@ -191,7 +198,6 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -257,7 +263,6 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -312,7 +317,6 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -367,7 +371,6 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -422,7 +425,6 @@ func watchNewVaults(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}

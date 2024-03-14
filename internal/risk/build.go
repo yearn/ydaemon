@@ -1,6 +1,7 @@
 package risk
 
 import (
+	"os"
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -19,7 +20,9 @@ func BuildRiskScore(t models.TStrategy) *models.TStrategyFromRisk {
 	strategyRiskScore.Address = t.Address
 	strategyRiskScore.ChainID = t.ChainID
 	if strategyGroup == nil {
-		logs.Warning(`impossible to find strategy group for strategy `+t.Address.Hex(), `on chain `+strconv.FormatUint(t.ChainID, 10))
+		if os.Getenv("ENVIRONMENT") == "dev" {
+			logs.Warning(`impossible to find strategy group for strategy `+t.Address.Hex(), `on chain `+strconv.FormatUint(t.ChainID, 10))
+		}
 		return &strategyRiskScore
 	}
 

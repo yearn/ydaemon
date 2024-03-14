@@ -219,7 +219,6 @@ func watchNewStrategies(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -259,7 +258,6 @@ func watchNewStrategies(
 					})
 				}
 			case err := <-sub.Err():
-				logs.Error(err)
 				return lastSyncedBlock, true, err
 			}
 		}
@@ -278,7 +276,6 @@ func watchNewStrategies(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -336,7 +333,6 @@ func watchNewStrategies(
 					continue
 				}
 			case err := <-sub.Err():
-				logs.Error(err)
 				return lastSyncedBlock, true, err
 			}
 		}
@@ -355,7 +351,6 @@ func watchNewStrategies(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -412,7 +407,6 @@ func watchNewStrategies(
 					}
 				}
 			case err := <-sub.Err():
-				logs.Error(err)
 				return lastSyncedBlock, true, err
 			}
 		}
@@ -429,7 +423,6 @@ func watchNewStrategies(
 		}
 		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
-			logs.Error(err)
 			if wg != nil && !isDone {
 				wg.Done()
 			}
@@ -471,15 +464,10 @@ func watchNewStrategies(
 					continue
 				}
 			case err := <-sub.Err():
-				logs.Error(err)
 				return lastSyncedBlock, true, err
 			}
 		}
 	}
-	// default: // case `0.4.7`:
-	// 	logs.Warning(`unsupported vault version ` + vault.Version + ` for vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
-	// 	return 0, false, nil
-	// }
 }
 
 /**************************************************************************************************

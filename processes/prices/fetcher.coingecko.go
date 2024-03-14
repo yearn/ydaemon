@@ -76,7 +76,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		req.URL.RawQuery = q.Encode()
 		resp, err := http.DefaultClient.Do(req)
 		if err != nil {
-			logs.Error(err, resp.StatusCode)
+			logs.Error(err)
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
 			return priceMap
 		}

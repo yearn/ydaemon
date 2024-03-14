@@ -94,7 +94,15 @@ func watchStakingPool(
 	** because we need to listen to new events as they are emitted via the node.
 	** Not all nodes support WS connections, so we need to check if the node supports it.
 	**********************************************************************************************/
-	client, _ := ethereum.GetWSClient(chainID)
+	client, err := ethereum.GetWSClient(chainID)
+	if err != nil {
+		if wg != nil && !isDone {
+			wg.Done()
+		}
+		return 0, false, err
+	}
+	defer client.Close()
+
 	currentRegistry, _ := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
 	etherReader := ethereum.Reader{Backend: client}
 	contractABI, _ := contracts.YOptimismStakingRewardRegistryMetaData.GetAbi()
@@ -174,10 +182,13 @@ func indexStakingPoolWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	err := error(nil)
-
 	for {
-		if _, err := ethereum.GetWSClient(chainID); err != nil {
+		/******************************************************************************************
+		** Just checking if the connection is alive, if not, we will fallback to the filter method.
+		** We must close the client we openned.
+		******************************************************************************************/
+		client, err := ethereum.GetWSClient(chainID)
+		if err != nil {
 			/**********************************************************************************************
 			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
 			** latest block. This is a fallback method in case the WS connection is not available.
@@ -198,6 +209,8 @@ func indexStakingPoolWrapper(
 				time.Sleep(1 * time.Minute)
 			}
 		}
+		client.Close()
+
 		lastSyncedBlock, shouldRetry, err = watchStakingPool(
 			chainID,
 			registry,

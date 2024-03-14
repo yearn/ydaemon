@@ -167,13 +167,6 @@ func retrieveHistoricalPricePerShare(chainID uint64) {
 	}
 
 	logs.Success(`Process finished for chain ` + strconv.FormatUint(chainID, 10))
-
-	/**********************************************************************************************
-	** Just a for loop to avoid killing the process while some requests are still pending.
-	**********************************************************************************************/
-	for !store.StoreRateLimiter().Allow() {
-		time.Sleep(1 * time.Second)
-	}
 }
 
 func assertDailyBlockNumber(chainID uint64) {
@@ -228,9 +221,13 @@ func assertDailyBlockNumber(chainID uint64) {
 		} else {
 			defillamaURI := `https://coins.llama.fi/block/` + chainIDToName(chainID) + `/` + strconv.FormatInt(nextDayNoonUTCTimestamp, 10)
 			resp, err := http.Get(defillamaURI)
-			if err != nil || resp.StatusCode != 200 {
+			if err != nil {
 				logs.Warning("Error fetching timestamp from DeFiLlama for chain", chainID)
 				logs.Error(err)
+				continue
+			}
+			if resp.StatusCode != 200 {
+				logs.Warning("Error fetching timestamp from DeFiLlama for chain", chainID)
 				continue
 			}
 			defer resp.Body.Close()

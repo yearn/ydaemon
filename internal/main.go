@@ -58,11 +58,13 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	apr.ComputeChainAPR(chainID)
 	go risk.InitRiskScore(chainID)
 
-	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
+	scheduler.Every(1).Minute().StartImmediately().At("12:10").Do(func() {
+		logs.Info(chainID, `-`, `Running initDailyBlock Scheduled Task`)
 		initDailyBlock.Run(chainID)
 	})
 
-	scheduler.Every(15).Minute().WaitForSchedule().Do(func() {
+	scheduler.Every(5).Minute().WaitForSchedule().Do(func() {
+		logs.Info(chainID, `-`, `Running Primary Scheduled Task`)
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		fetcher.RetrieveAllTokens(chainID, vaultMap)
 

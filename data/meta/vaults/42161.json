@@ -275,7 +275,7 @@
 			"activation": 183112450,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -291,7 +291,7 @@
 				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
@@ -318,7 +318,7 @@
 			"activation": 183112450,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -334,7 +334,7 @@
 				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",

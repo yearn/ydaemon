@@ -167,7 +167,7 @@
 				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x028ec7330ff87667b6dfb0d94b954c820195336c",
@@ -11208,7 +11208,7 @@
 				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
@@ -11605,7 +11605,7 @@
 				"isBoosted": false,
 				"isAutomated": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0",

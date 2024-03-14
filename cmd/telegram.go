@@ -95,10 +95,10 @@ func listenToSignals() {
 			os.Exit(1)
 		case "origins":
 			listOfOrigins := []string{}
-			RateLimitPerOrigin.Range(func(key, value interface{}) bool {
-				listOfOrigins = append(listOfOrigins, key.(string))
-				return true
-			})
+			itemsInLimiter := limiterSet.Items()
+			for item := range itemsInLimiter {
+				listOfOrigins = append(listOfOrigins, item)
+			}
 			triggerTgMessage(`👀 - Origins of access:` + "\n" + strings.Join(listOfOrigins, "\n"))
 		case "upd_prices":
 			arguments := update.Message.CommandArguments()

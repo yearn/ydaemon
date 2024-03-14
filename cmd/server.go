@@ -2,12 +2,13 @@ package main
 
 import (
 	"net/http"
-	"sync"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
+	"github.com/patrickmn/go-cache"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
@@ -17,11 +18,8 @@ import (
 	"github.com/yearn/ydaemon/external/tokensList"
 	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
-	"go.uber.org/ratelimit"
+	"golang.org/x/time/rate"
 )
-
-// RateLimitPerOrigin is a sync map if url -> ratelimit
-var RateLimitPerOrigin = sync.Map{}
 
 var allowlist = []string{
 	"https://yearn.finance",
@@ -48,42 +46,75 @@ var rootURI = []string{
 	"http://localhost:",
 }
 
-// NewRouter create the routes and setup the server
+/**************************************************************************************************
+** Rate limiting based on https://github.com/yangxikun/gin-limit-by-key/blob/master/limit.go and
+** adapted to our needs.
+**************************************************************************************************/
+var limiterSet = cache.New(5*time.Minute, 10*time.Minute)
+
+func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		/******************************************************************************************
+		** Retrieve the origin from the request header and use it as the key for the rate limiter.
+		** If the origin is not present, we use an empty string as the key.
+		******************************************************************************************/
+		k := ``
+		origin := c.Request.Header.Get("Origin")
+		if len(origin) == 0 {
+			k = ``
+		} else {
+			k = origin
+		}
+
+		/******************************************************************************************
+		** Allows the requests from the allowlist without rate limiting. This is to allow us to
+		** bypass the rate limiting for our own services.
+		******************************************************************************************/
+		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) || origin == `` {
+			c.Next()
+			return
+		}
+
+		/******************************************************************************************
+		** Otherwise, we use the rate limiter to limit the requests to 10 qps/clientIp and permit
+		******************************************************************************************/
+		limiter, ok := limiterSet.Get(k)
+		if !ok {
+			var expire time.Duration
+			// limit 4 query per second per origin and permit bursts of at most 4 tokens, and the limiter liveness time duration is 15 minutes
+			limiter, expire = rate.NewLimiter(rate.Every(1*time.Second), 4), 15*time.Minute
+			limiterSet.Set(k, limiter, expire)
+		}
+		ok = limiter.(*rate.Limiter).Allow()
+		if !ok {
+			abort(c)
+			return
+		}
+		c.Next()
+	}
+}
+
+/**************************************************************************************************
+** NewRouter create the routes and setup the server
+**************************************************************************************************/
 func NewRouter() *gin.Engine {
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
-	//disable logs
 	gin.DefaultWriter = nil
-
 	router := gin.New()
 	pprof.Register(router)
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
-		AllowMethods: []string{"GET", "HEAD"},
-		AllowHeaders: []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
-		AllowOriginFunc: func(origin string) bool {
-			//Check if we have this origin in the RateLimitPerOrigin map
-			//If we don't have it, we add it
-			if helpers.Contains(allowlist, origin) {
-				return true
-			}
-			//Allow our route URI
-			if helpers.EndsWithSubstring(rootURI, origin) {
-				return true
-			}
-
-			if rl, ok := RateLimitPerOrigin.Load(origin); !ok {
-				rl := ratelimit.New(4) // per second
-				RateLimitPerOrigin.Store(origin, rl)
-				rl.Take()
-			} else {
-				rl.(ratelimit.Limiter).Take()
-			}
-			return true
-		},
+		AllowAllOrigins: true,
+		AllowMethods:    []string{"GET", "HEAD"},
+		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
+	router.Use(NewRateLimiter(func(c *gin.Context) {
+		c.AbortWithStatus(429)
+	}))
+
 	router.GET(`/`, func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to yDaemon"})
 	})

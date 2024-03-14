@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"sync"
 
-	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/pprof"
@@ -46,6 +45,7 @@ var rootURI = []string{
 	".yearn.farm",
 	".juiced.app",
 	".smold.app",
+	"http://localhost:",
 }
 
 // NewRouter create the routes and setup the server
@@ -57,17 +57,8 @@ func NewRouter() *gin.Engine {
 
 	router := gin.New()
 	pprof.Register(router)
-	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(gin.Recovery())
-	router.Use(sentrygin.New(sentrygin.Options{Repanic: true}))
-	router.Use(func(ctx *gin.Context) {
-		if hub := sentrygin.GetHubFromContext(ctx); hub != nil {
-			hub.Scope().SetTag("subsystem", "gin")
-		}
-		ctx.Next()
-	})
 	corsConf := cors.Config{
-		// AllowAllOrigins: true,
 		AllowMethods: []string{"GET", "HEAD"},
 		AllowHeaders: []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 		AllowOriginFunc: func(origin string) bool {
@@ -82,7 +73,7 @@ func NewRouter() *gin.Engine {
 			}
 
 			if rl, ok := RateLimitPerOrigin.Load(origin); !ok {
-				rl := ratelimit.New(1) // per second
+				rl := ratelimit.New(4) // per second
 				RateLimitPerOrigin.Store(origin, rl)
 				rl.Take()
 			} else {
@@ -92,6 +83,7 @@ func NewRouter() *gin.Engine {
 		},
 	}
 	router.Use(cors.New(corsConf))
+	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.GET(`/`, func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to yDaemon"})
 	})

@@ -55,12 +55,10 @@ var existingTokenLists = map[string]map[string]TTokenListToken{}
 func init() {
 	yearnList := helpers.FetchJSON[TTokenList](`https://raw.githubusercontent.com/SmolDapp/tokenLists/main/lists/yearn.json`)
 	cowswapList := helpers.FetchJSON[TTokenList](`https://raw.githubusercontent.com/SmolDapp/tokenLists/main/lists/cowswap.json`)
-	widoList := helpers.FetchJSON[TTokenList](`https://raw.githubusercontent.com/SmolDapp/tokenLists/main/lists/wido.json`)
 	portals := helpers.FetchJSON[TTokenList](`https://raw.githubusercontent.com/SmolDapp/tokenLists/main/lists/portals.json`)
 
 	yearnMap := make(map[string]TTokenListToken)
 	cowswapMap := make(map[string]TTokenListToken)
-	widoMap := make(map[string]TTokenListToken)
 	portalsMap := make(map[string]TTokenListToken)
 
 	for _, token := range yearnList.Tokens {
@@ -72,11 +70,6 @@ func init() {
 		cowswapMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
 	}
 	existingTokenLists[`cowswap`] = cowswapMap
-
-	for _, token := range widoList.Tokens {
-		widoMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
-	}
-	existingTokenLists[`wido`] = widoMap
 
 	for _, token := range portals.Tokens {
 		portalsMap[strconv.FormatInt(int64(token.ChainID), 10)+common.HexToAddress(token.Address).Hex()] = token
@@ -90,9 +83,6 @@ func getSupportedZaps(chainID uint64, tokenAddress common.Address) []SupportedZa
 		return supportedZaps
 	}
 
-	if _, ok := existingTokenLists[`wido`][strconv.FormatInt(int64(chainID), 10)+tokenAddress.Hex()]; ok {
-		supportedZaps = append(supportedZaps, Wido)
-	}
 	if _, ok := existingTokenLists[`cowswap`][strconv.FormatInt(int64(chainID), 10)+tokenAddress.Hex()]; ok {
 		supportedZaps = append(supportedZaps, Cowswap)
 	}

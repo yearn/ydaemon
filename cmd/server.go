@@ -81,8 +81,8 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		limiter, ok := limiterSet.Get(k)
 		if !ok {
 			var expire time.Duration
-			// limit 4 query per second per origin and permit bursts of at most 4 tokens, and the limiter liveness time duration is 15 minutes
-			limiter, expire = rate.NewLimiter(rate.Every(1*time.Second), 4), 15*time.Minute
+			// limit 25 query per second per origin and permit bursts of at most 25 tokens, and the limiter liveness time duration is 15 minutes
+			limiter, expire = rate.NewLimiter(rate.Every(1*time.Second), 50), 15*time.Minute
 			limiterSet.Set(k, limiter, expire)
 		}
 		ok = limiter.(*rate.Limiter).Allow()
@@ -112,7 +112,7 @@ func NewRouter() *gin.Engine {
 	router.Use(cors.New(corsConf))
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.Use(NewRateLimiter(func(c *gin.Context) {
-		c.AbortWithStatus(429)
+		c.AbortWithStatus(http.StatusTooManyRequests)
 	}))
 
 	router.GET(`/`, func(ctx *gin.Context) {

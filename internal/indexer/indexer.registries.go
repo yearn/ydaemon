@@ -180,7 +180,6 @@ func watchNewVaults(
 		}
 		return 0, false, err
 	}
-	defer client.Close()
 
 	switch registry.Version {
 	case 1, 2:

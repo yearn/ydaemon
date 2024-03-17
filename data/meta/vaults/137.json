@@ -495,7 +495,7 @@
 				},
 				"displayName": "",
 				"displaySymbol": "",
-				"description": "",
+				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
@@ -1281,9 +1281,9 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "",
+				"displayName": "Staked MATIC Accumulator",
 				"displaySymbol": "",
-				"description": "",
+				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,

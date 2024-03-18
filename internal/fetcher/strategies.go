@@ -23,7 +23,11 @@ import (
 ** Returns:
 ** - a list of TStrategy containing the basic information for the strategies
 **************************************************************************************************/
-func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.Address]models.TStrategy) map[common.Address]models.TStrategy {
+func fetchStrategiesBasicInformations(
+	chainID uint64,
+	strategiesMap map[common.Address]models.TStrategy,
+) map[common.Address]models.TStrategy {
+
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all vaults will be send in a single

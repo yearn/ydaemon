@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
@@ -62,6 +63,10 @@ func computeVaultV3ForwardAPR(
 	** Otherwise we can do the classic calculation of the net APR by summing the APR of each
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
+	if addresses.Equals(`0x028ec7330ff87667b6dfb0d94b954c820195336c`, common.Address(vault.Address)) {
+		logs.Info("Vault " + vault.Address.Hex() + " has net APR " + netAPR.String())
+		logs.Pretty(allStrategiesForVault)
+	}
 	summedApr := bigNumber.NewFloat(0)
 	if vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
@@ -90,6 +95,9 @@ func computeVaultV3ForwardAPR(
 	** Define which APR we want to use as "Net APR".
 	**********************************************************************************************/
 	primaryAPR := summedApr
+	if vault.Metadata.ShouldUseV2APR {
+		primaryAPR = netAPR
+	}
 	return TForwardAPR{
 		Type:   `v3:onchainOracle`,
 		NetAPR: primaryAPR,

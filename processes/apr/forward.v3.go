@@ -26,7 +26,7 @@ func computeVaultV3ForwardAPR(
 	vault models.TVault,
 	allStrategiesForVault map[common.Address]models.TStrategy,
 ) TForwardAPR {
-	netAPR := bigNumber.NewFloat(0)
+	oracleAPR := bigNumber.NewFloat(0)
 	oracleContract := env.CHAINS[vault.ChainID].APROracleContract.Address
 	if oracleContract == common.HexToAddress(``) {
 		logs.Error("No APR oracle contract address for chain " + strconv.FormatUint(vault.ChainID, 10))
@@ -46,7 +46,7 @@ func computeVaultV3ForwardAPR(
 	if vault.Kind == models.VaultKindSingle {
 		expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
 		if err == nil {
-			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+			oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 		} else {
 			hasError = err
 		}
@@ -55,7 +55,7 @@ func computeVaultV3ForwardAPR(
 	if vault.Kind == models.VaultKindMultiple || hasError != nil {
 		expected, err := oracle.GetCurrentApr(nil, vault.Address)
 		if err == nil {
-			netAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+			oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 		}
 	}
 
@@ -64,10 +64,10 @@ func computeVaultV3ForwardAPR(
 	** strategy weighted by the debt ratio of each strategy.
 	**********************************************************************************************/
 	if addresses.Equals(`0x028ec7330ff87667b6dfb0d94b954c820195336c`, common.Address(vault.Address)) {
-		logs.Info("Vault " + vault.Address.Hex() + " has net APR " + netAPR.String())
+		logs.Info("Vault " + vault.Address.Hex() + " has net APR " + oracleAPR.String())
 		logs.Pretty(allStrategiesForVault)
 	}
-	summedApr := bigNumber.NewFloat(0)
+	debtRatioAPR := bigNumber.NewFloat(0)
 	if vault.Kind == models.VaultKindMultiple {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
@@ -87,23 +87,23 @@ func computeVaultV3ForwardAPR(
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
 			//Reduce the APR by 20% to account for the fees/slippage and other factors
 			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.8))
-			summedApr = bigNumber.NewFloat(0).Add(summedApr, scaledStrategyAPR)
+			debtRatioAPR = bigNumber.NewFloat(0).Add(debtRatioAPR, scaledStrategyAPR)
 		}
 	}
 
 	/**********************************************************************************************
 	** Define which APR we want to use as "Net APR".
 	**********************************************************************************************/
-	primaryAPR := summedApr
+	primaryAPR := oracleAPR
 	if vault.Metadata.ShouldUseV2APR {
-		primaryAPR = netAPR
+		primaryAPR = debtRatioAPR
 	}
 	return TForwardAPR{
 		Type:   `v3:onchainOracle`,
 		NetAPR: primaryAPR,
 		Composite: TCompositeData{
-			V3OracleCurrentAPR:    netAPR,
-			V3OracleStratRatioAPR: summedApr,
+			V3OracleCurrentAPR:    oracleAPR,
+			V3OracleStratRatioAPR: debtRatioAPR,
 		},
 	}
 }

@@ -200,10 +200,10 @@ func processMigrations(chainID uint64) {
 		limit++
 		shouldLoop = false
 		for _, newStrategy := range migratedHistoricalStrategies {
-			if _, ok := storage.GetStrategy(chainID, newStrategy.NewStrategyAddress); ok {
+			if _, ok := storage.GetStrategy(chainID, newStrategy.NewStrategyAddress, newStrategy.VaultAddress); ok {
 				continue
 			}
-			if oldStrategy, ok := storage.GetStrategy(chainID, newStrategy.OldStrategyAddress); ok {
+			if oldStrategy, ok := storage.GetStrategy(chainID, newStrategy.OldStrategyAddress, newStrategy.VaultAddress); ok {
 				migratedStrategy := oldStrategy
 				migratedStrategy.Address = newStrategy.NewStrategyAddress
 				migratedStrategy.VaultAddress = newStrategy.VaultAddress

@@ -90,7 +90,6 @@ func fetchStrategiesBasicInformations(
 		strategiesMap[strat.Address] = newStrategy
 		storage.StoreStrategy(chainID, newStrategy)
 	}
-
 	return strategiesMap
 }
 

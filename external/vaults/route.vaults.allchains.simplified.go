@@ -131,10 +131,8 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 
-			vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
-			if ok {
-				simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
-				allVaults = append(allVaults, simplified)
+			if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
+				allVaults = append(allVaults, toSimplifiedVersion(newVault, vaultAsStrategy))
 			} else {
 				allVaults = append(allVaults, toSimplifiedVersion(newVault, models.TStrategy{}))
 			}

@@ -103,7 +103,11 @@ func filterNewStrategies(
 					newMigratedStrategy := handleV03StrategiesMigration(chainID, log.Event)
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
-					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+					if newStrategy, ok := storage.GetStrategy(
+						chainID,
+						newMigratedStrategy.NewStrategyAddress,
+						newMigratedStrategy.VaultAddress,
+					); ok {
 						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
 							newStrategy.Address: newStrategy,
 						})
@@ -138,7 +142,11 @@ func filterNewStrategies(
 					newMigratedStrategy := handleV04StrategiesMigration(chainID, log.Event)
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
-					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+					if newStrategy, ok := storage.GetStrategy(
+						chainID,
+						newMigratedStrategy.NewStrategyAddress,
+						newMigratedStrategy.VaultAddress,
+					); ok {
 						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
 							newStrategy.Address: newStrategy,
 						})
@@ -325,7 +333,11 @@ func watchNewStrategies(
 					newMigratedStrategy := handleV03StrategiesMigration(chainID, value)
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
-					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+					if newStrategy, ok := storage.GetStrategy(
+						chainID,
+						newMigratedStrategy.NewStrategyAddress,
+						newMigratedStrategy.VaultAddress,
+					); ok {
 						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
 							newStrategy.Address: newStrategy,
 						})
@@ -400,7 +412,11 @@ func watchNewStrategies(
 					newMigratedStrategy := handleV04StrategiesMigration(chainID, value)
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
-					if newStrategy, ok := storage.GetStrategy(chainID, newMigratedStrategy.NewStrategyAddress); ok {
+					if newStrategy, ok := storage.GetStrategy(
+						chainID,
+						newMigratedStrategy.NewStrategyAddress,
+						newMigratedStrategy.VaultAddress,
+					); ok {
 						fetcher.RetrieveAllStrategies(chainID, map[common.Address]models.TStrategy{
 							newStrategy.Address: newStrategy,
 						})

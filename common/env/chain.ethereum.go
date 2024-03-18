@@ -187,15 +187,8 @@ var ETHEREUM = TChain{
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x90E00ACe148ca3b23Ac1bC8C240C2a7Dd9c2d7f5`),
 		FactoryAddress:  common.HexToAddress(`0xF18056Bbd320E96A48e3Fbf8bC061322531aac99`),
-		FactoryURIs: []string{
-			`https://api.curve.fi/api/getPools/ethereum/factory`,
-			`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
-		},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/ethereum/main`,
-			`https://api.curve.fi/api/getPools/ethereum/crypto`,
-			`https://api.curve.fi/api/getPools/ethereum/factory`,
-			`https://api.curve.fi/api/getPools/ethereum/factory-crypto`,
+			`https://api.curve.fi/api/getPools/all/ethereum`,
 		},
 	},
 	ExtraURI: TChainExtraURI{

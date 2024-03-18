@@ -51,29 +51,23 @@ type TCurvePools struct {
 }
 
 type CurvePool struct {
-	ID                        string              `json:"id"`
-	Address                   string              `json:"address"`
-	CoinsAddresses            []string            `json:"coinsAddresses"`
-	Decimals                  []string            `json:"decimals"`
-	VirtualPrice              any                 `json:"virtual_price"`
-	AmplificationCoefficient  string              `json:"amplificationCoefficient"`
-	UnderlyingDecimals        []string            `json:"underlyingDecimals"`
-	AssetType                 string              `json:"assetType"`
-	TotalSupply               string              `json:"totalSupply"`
-	Name                      string              `json:"name"`
-	LPTokenAddress            string              `json:"lpTokenAddress"`
-	Symbol                    string              `json:"symbol"`
-	PriceOracle               any                 `json:"priceOracle"`
-	Implementation            string              `json:"implementation"`
-	AssetTypeName             string              `json:"assetTypeName"`
-	Coins                     []CurveGetCoin      `json:"coins"`
-	USDTotal                  float64             `json:"usdTotal"`
-	IsMetaPool                bool                `json:"isMetaPool"`
-	UnderlyingCoins           []CurveGetCoin      `json:"underlyingCoins"`
-	USDTotalExcludingBasePool float64             `json:"usdTotalExcludingBasePool"`
-	GaugeAddress              string              `json:"gaugeAddress"`
-	GaugeRewards              []CurveGetGaugeData `json:"gaugeRewards"`
-	GaugeCrvApy               []float64           `json:"gaugeCrvApy"`
+	ID                       string              `json:"id"`
+	Address                  string              `json:"address"`
+	CoinsAddresses           []string            `json:"coinsAddresses"`
+	Decimals                 []string            `json:"decimals"`
+	VirtualPrice             any                 `json:"virtual_price"`
+	AmplificationCoefficient string              `json:"amplificationCoefficient"`
+	TotalSupply              string              `json:"totalSupply"`
+	Name                     string              `json:"name"`
+	LPTokenAddress           string              `json:"lpTokenAddress"`
+	Symbol                   string              `json:"symbol"`
+	PriceOracle              any                 `json:"priceOracle"`
+	AssetTypeName            string              `json:"assetTypeName"`
+	Coins                    []CurveGetCoin      `json:"coins"`
+	USDTotal                 float64             `json:"usdTotal"`
+	UnderlyingCoins          []CurveGetCoin      `json:"underlyingCoins"`
+	GaugeAddress             string              `json:"gaugeAddress"`
+	GaugeRewards             []CurveGetGaugeData `json:"gaugeRewards"`
 }
 
 type CurveGetCoin struct {

@@ -8,7 +8,6 @@ import (
 type TChainCurve struct {
 	RegistryAddress common.Address
 	FactoryAddress  common.Address
-	FactoryURIs     []string
 	PoolsURIs       []string
 }
 type TChainExtraURI struct {

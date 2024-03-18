@@ -70,13 +70,8 @@ var OPTIMISM = TChain{
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 		FactoryAddress:  common.Address{},
-		FactoryURIs: []string{
-			`https://api.curve.fi/api/getPools/optimism/factory`,
-		},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/optimism/main`,
-			`https://api.curve.fi/api/getPools/optimism/crypto`,
-			`https://api.curve.fi/api/getPools/optimism/factory`,
+			`https://api.curve.fi/api/getPools/all/optimism`,
 		},
 	},
 	ExtraURI: TChainExtraURI{

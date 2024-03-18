@@ -51,13 +51,8 @@ var BASE = TChain{
 	Curve: TChainCurve{
 		RegistryAddress: common.Address{},
 		FactoryAddress:  common.Address{},
-		FactoryURIs: []string{
-			`https://api.curve.fi/api/getPools/base/factory`,
-		},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/base/main`,
-			`https://api.curve.fi/api/getPools/base/crypto`,
-			`https://api.curve.fi/api/getPools/base/factory`,
+			`https://api.curve.fi/api/getPools/all/base`,
 		},
 	},
 	ExtraURI: TChainExtraURI{

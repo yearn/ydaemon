@@ -59,7 +59,7 @@ func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]models.TP
 
 	// Running a sync group to execute all fetch at the same time
 	wg := sync.WaitGroup{}
-	for _, url := range env.CHAINS[chainID].Curve.FactoryURIs {
+	for _, url := range env.CHAINS[chainID].Curve.PoolsURIs {
 		wg.Add(1)
 		go func(url string) {
 			defer wg.Done()

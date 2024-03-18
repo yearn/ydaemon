@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-14T10:51:49.141866+01:00",
+	"lastUpdate": "2024-03-18T10:42:04.674967+01:00",
 	"version": {
 		"major": 0,
-		"minor": 26,
-		"patch": 1
+		"minor": 27,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
@@ -1349,6 +1349,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1ab3d612ea7df26117554dddd379764ebce1a5ad": {
+			"address": "0x1ab3d612ea7df26117554dddd379764ebce1a5ad",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Curve LP",
+			"name": "mkUSDUSDe",
+			"symbol": "mkUSDUSDe",
+			"displayName": "mkUSDUSDe",
+			"displaySymbol": "mkUSDUSDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1ab3D612EA7df26117554ddDD379764EBcE1A5Ad/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4190,6 +4207,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4907fd39d4691f03b3751590b8df6ed01e3c2b63": {
+			"address": "0x4907fd39d4691f03b3751590b8df6ed01e3c2b63",
+			"underlyingTokensAddresses": [
+				"0x6ade6971ca3d90990c30d39c78b0534c7166e07b"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve pxETH-mkUSD Factory yVault",
+			"symbol": "yvCurve-pxETH-mkUSD-f",
+			"displayName": "Curve pxETH-mkUSD Factory yVault",
+			"displaySymbol": "yvCurve-pxETH-mkUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4907fd39d4691F03b3751590b8df6ed01E3c2b63/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x490bd0886f221a5f79713d3e84404355a9293c50": {
 			"address": "0x490bd0886f221a5f79713d3e84404355a9293c50",
 			"underlyingTokensAddresses": [
@@ -4377,6 +4410,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4C4A6A22bCE915C724A66b82128577F1B24831eD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4c9edd5852cd905f086c759e8383e09bff1e68b3": {
+			"address": "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "USDe",
+			"symbol": "USDe",
+			"displayName": "USDe",
+			"displaySymbol": "USDe",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0x4c9EDD5852cd905f086C759E8383e09bff1E68B3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5517,6 +5564,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5d10dfa44adc63c41906af61eeffb9454860e999": {
+			"address": "0x5d10dfa44adc63c41906af61eeffb9454860e999",
+			"underlyingTokensAddresses": [
+				"0x9e10f9fb6f0d32b350cee2618662243d4f24c64a"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mkUSD-PayPool Factory yVault",
+			"symbol": "yvCurve-mkUSD-PayPool-f",
+			"displayName": "Curve mkUSD-PayPool Factory yVault",
+			"displaySymbol": "yvCurve-mkUSD-PayPool-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5d10DFA44AdC63C41906Af61eEffB9454860e999/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5d3a536e4d6dbd6114cc1ead35777bab948e3643": {
 			"address": "0x5d3a536e4d6dbd6114cc1ead35777bab948e3643",
 			"underlyingTokensAddresses": [
@@ -5544,6 +5607,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5D40E4687e36628267854D0B985a9B6e26493b74/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5dc1bf6f1e983c0b21efb003c105133736fa0743": {
+			"address": "0x5dc1bf6f1e983c0b21efb003c105133736fa0743",
+			"underlyingTokensAddresses": [
+				"0x853d955acef822db058eb8505911ed77f175b99e",
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Curve LP",
+			"name": "FRAXUSDe",
+			"symbol": "FRAXUSDe",
+			"displayName": "FRAXUSDe",
+			"displaySymbol": "FRAXUSDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5dc1BF6f1e983C0b21EfB003c105133736fA0743/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5968,6 +6048,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x66a7024fc367eba201df1381a9b6305d1e90919a": {
+			"address": "0x66a7024fc367eba201df1381a9b6305d1e90919a",
+			"underlyingTokensAddresses": [
+				"0x1ab3d612ea7df26117554dddd379764ebce1a5ad"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve mkUSD-USDe Factory yVault",
+			"symbol": "yvCurve-mkUSD-USDe-f",
+			"displayName": "Curve mkUSD-USDe Factory yVault",
+			"displaySymbol": "yvCurve-mkUSD-USDe-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x66A7024fC367eBa201dF1381A9B6305d1e90919A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x66eff5221ca926636224650fd3b9c497ff828f7d": {
 			"address": "0x66eff5221ca926636224650fd3b9c497ff828f7d",
 			"underlyingTokensAddresses": [],
@@ -6252,6 +6348,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x6a7A0481e476827857704B87bdeE7922D058cbE4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6ade6971ca3d90990c30d39c78b0534c7166e07b": {
+			"address": "0x6ade6971ca3d90990c30d39c78b0534c7166e07b",
+			"underlyingTokensAddresses": [
+				"0x04c154b66cb340f3ae24111cc767e0184ed00cc6",
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
+			"symbol": "pxETHmkUSD-f",
+			"displayName": "Curve.fi Factory Crypto Pool: pxETH/mkUSD",
+			"displaySymbol": "pxETHmkUSD-f",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/1/0x6ade6971Ca3d90990C30d39c78b0534C7166e07b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7785,6 +7898,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x82e75cf176c18dccef1b05b0f1d89a444a3a1005": {
+			"address": "0x82e75cf176c18dccef1b05b0f1d89a444a3a1005",
+			"underlyingTokensAddresses": [
+				"0x5dc1bf6f1e983c0b21efb003c105133736fa0743"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve USDe-FRAX Factory yVault",
+			"symbol": "yvCurve-USDe-FRAX-f",
+			"displayName": "Curve USDe-FRAX Factory yVault",
+			"displaySymbol": "yvCurve-USDe-FRAX-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x82e75Cf176C18DCCeF1b05B0F1d89a444a3A1005/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x836a808d4828586a69364065a1e064609f5078c7": {
 			"address": "0x836a808d4828586a69364065a1e064609f5078c7",
 			"underlyingTokensAddresses": [],
@@ -8015,6 +8144,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x85CBeD523459b7f6F81C11e710DF969703a8A70C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x864f78037639225b7cd0b6c632f8f187520b480b": {
+			"address": "0x864f78037639225b7cd0b6c632f8f187520b480b",
+			"underlyingTokensAddresses": [
+				"0xf55b0f6f2da5ffddb104b58a60f2862745960442"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve USDe-crvUSD Factory yVault",
+			"symbol": "yvCurve-USDe-crvUSD-f",
+			"displayName": "Curve USDe-crvUSD Factory yVault",
+			"displaySymbol": "yvCurve-USDe-crvUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x864f78037639225b7CD0B6c632F8F187520b480B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9367,6 +9512,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x9E0E0AF468FbD041Cab7883c5eEf16D1A99a47C3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9e10f9fb6f0d32b350cee2618662243d4f24c64a": {
+			"address": "0x9e10f9fb6f0d32b350cee2618662243d4f24c64a",
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
+				"0x383e6b4437b59fff47b619cba855ca29342a8559"
+			],
+			"type": "Curve LP",
+			"name": "mkUSD/Paypool",
+			"symbol": "mkUSDPay",
+			"displayName": "mkUSD/Paypool",
+			"displaySymbol": "mkUSDPay",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14322,6 +14484,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf4fDbc7C66Dc9832D672Ffe6242B6A386CeAd5DE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf55b0f6f2da5ffddb104b58a60f2862745960442": {
+			"address": "0xf55b0f6f2da5ffddb104b58a60f2862745960442",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Curve LP",
+			"name": "USDe-crvUSD",
+			"symbol": "USDecrvUSD",
+			"displayName": "USDe-crvUSD",
+			"displaySymbol": "USDecrvUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF55B0f6F2Da5ffDDb104b58a60F2862745960442/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

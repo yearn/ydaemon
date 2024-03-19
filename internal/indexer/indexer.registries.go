@@ -570,7 +570,9 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 	** Loop over all the known registries for the specified chain ID.
 	**********************************************************************************************/
 	for _, registry := range env.CHAINS[chainID].Registries {
-
+		if registry.Tag == `DISABLED` {
+			continue
+		}
 		/** 🔵 - Yearn *****************************************************************************
 		** This block of code is responsible for retrieving the list of vaults for a given registry
 		** It then iterates over these vaults to find the one with the highest block number.

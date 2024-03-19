@@ -46,6 +46,7 @@ var FANTOM = TChain{
 			Address: common.HexToAddress("0x727fe1759430df13655ddb0731dE0D0FDE929b04"),
 			Version: 2,
 			Block:   18455565,
+			Tag:     `DISABLED`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{

@@ -54,11 +54,13 @@ var ETHEREUM = TChain{
 			Address: common.HexToAddress("0xe15461b18ee31b7379019dc523231c57d1cbc18c"),
 			Version: 1,
 			Block:   11563389,
+			Tag:     `DISABLED`,
 		},
 		{
 			Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"),
 			Version: 2,
 			Block:   12045555,
+			Tag:     `DISABLED`,
 		},
 		{
 			Address: common.HexToAddress("0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319"),

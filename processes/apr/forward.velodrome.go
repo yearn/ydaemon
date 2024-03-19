@@ -180,7 +180,7 @@ func calculateVeloLikeStrategyAPR(
 **************************************************************************************************/
 func computeVeloLikeForwardAPR(
 	vault models.TVault,
-	allStrategiesForVault map[common.Address]models.TStrategy,
+	allStrategiesForVault map[string]models.TStrategy,
 	veloStakingPoolAddress common.Address,
 ) TForwardAPR {
 	TypeOf := ``

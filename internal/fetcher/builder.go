@@ -3,7 +3,6 @@ package fetcher
 import (
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -116,7 +115,7 @@ func BuildVaultTVL(t models.TVault) models.TTVL {
 	return tvl
 }
 
-func BuildVaultCategory(t models.TVault, strategies map[common.Address]models.TStrategy) string {
+func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy) string {
 	category := ``
 	baseForStableCurrencies := []string{`USD`, `EUR`, `AUD`, `CHF`, `KRW`, `GBP`, `JPY`}
 	baseForCurve := []string{`curve`, `crv`}

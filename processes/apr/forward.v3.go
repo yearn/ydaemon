@@ -23,7 +23,7 @@ func isV3Vault(vault models.TVault) bool {
 
 func computeVaultV3ForwardAPR(
 	vault models.TVault,
-	allStrategiesForVault map[common.Address]models.TStrategy,
+	allStrategiesForVault map[string]models.TStrategy,
 ) TForwardAPR {
 	oracleAPR := bigNumber.NewFloat(0)
 	oracleContract := env.CHAINS[vault.ChainID].APROracleContract.Address

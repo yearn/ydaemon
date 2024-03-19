@@ -19,7 +19,7 @@ import (
 ** 2, it can't be.
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
-func isCurveVault(strategies map[common.Address]models.TStrategy) bool {
+func isCurveVault(strategies map[string]models.TStrategy) bool {
 	isCurveOrConvexStrategy := false
 	for _, strategy := range strategies {
 		strategyName := strings.ToLower(strategy.Name)
@@ -308,7 +308,7 @@ func calculateCurveLikeStrategyAPR(
 **************************************************************************************************/
 func computeCurveLikeForwardAPR(
 	vault models.TVault,
-	allStrategiesForVault map[common.Address]models.TStrategy,
+	allStrategiesForVault map[string]models.TStrategy,
 	gauges []models.CurveGauge,
 	pools []models.CurvePool,
 	subgraphData []models.CurveSubgraphData,

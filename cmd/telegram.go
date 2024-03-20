@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 
@@ -44,7 +45,7 @@ func triggerTgMessage(message string) {
 
 func triggerInitializedStatus(chainID uint64) {
 	initializedCounter++
-	triggerTgMessage(`✅ - yDaemon V2 initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
+	triggerTgMessage(`✅ - yDaemon initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
 }
 
 func listenToSignals() {
@@ -88,10 +89,25 @@ func listenToSignals() {
 			triggerTgMessage(`Available commands:
 - /help: Show this help message
 - /restart: Restart the daemon
+- /update: Update yDaemon with the latest version
 - /upd_prices <chainID>: Update the prices for a given chain
 - /origins: Get the origins of access`)
 		case "restart":
 			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
+			os.Exit(1)
+		case "update":
+			reason := ` without a reason`
+			arguments := update.Message.CommandArguments()
+			if arguments != "" {
+				reason = ` because: ` + arguments
+			}
+			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + version + reason)
+
+			cmdToRun := "(cd /root/ydaemon && git checkout -- . && git pull && go build -o yDaemon -ldflags \"-X main.version=`git rev-parse HEAD`\" ./cmd)"
+			if err := exec.Command(cmdToRun); err != nil {
+				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Err.Error())
+				continue
+			}
 			os.Exit(1)
 		case "origins":
 			listOfOrigins := []string{}

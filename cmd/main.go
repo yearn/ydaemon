@@ -26,6 +26,7 @@ func processServer(chainID uint64) {
 	triggerInitializedStatus(chainID)
 }
 
+var version = "" //version to display based on github tag
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)
@@ -49,7 +50,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
-		go triggerTgMessage(`💛 - yDaemon server is ready to accept requests: https://ydaemon.yearn.fi/`)
+		go triggerTgMessage(`💛 - yDaemon v` + version + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {
 			go processServer(chainID)

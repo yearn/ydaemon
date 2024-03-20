@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -103,16 +104,18 @@ func listenToSignals() {
 			}
 			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + getVersion() + reason)
 
+			execName, _ := os.Executable()
+
 			cmd := exec.Command("git", "checkout", "--", ".")
-			cmd.Dir = "/root/ydaemon"
+			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 
 			cmd = exec.Command("git", "pull")
-			cmd.Dir = "/root/ydaemon"
+			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 
 			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version=`git rev-parse HEAD`", "./cmd")
-			cmd.Dir = "/root/ydaemon"
+			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 
 			//service ydaemon restart

@@ -39,6 +39,10 @@ func getVersion() string {
 	return version[:7]
 }
 
+/**************************************************************************************************
+** Main entry point for the daemon, handling everything from initialization to running external
+** processes.
+**************************************************************************************************/
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)

@@ -106,10 +106,12 @@ func listenToSignals() {
 
 			execName, _ := os.Executable()
 
+			//Checkout local changes
 			cmd := exec.Command("git", "checkout", "--", ".")
 			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 
+			//Pulling changes
 			cmd = exec.Command("git", "pull")
 			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()

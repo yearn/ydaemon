@@ -109,20 +109,26 @@ func listenToSignals() {
 			//Checkout local changes
 			cmd := exec.Command("git", "checkout", "--", ".")
 			cmd.Dir = filepath.Dir(execName)
-			cmd.Run()
+			if err := cmd.Run(); err != nil {
+				triggerTgMessage(`🔴 - Error checking out local changes: ` + err.Error())
+				continue
+			}
 
 			//Pulling changes
 			cmd = exec.Command("git", "pull")
 			cmd.Dir = filepath.Dir(execName)
-			cmd.Run()
+			if err := cmd.Run(); err != nil {
+				triggerTgMessage(`🔴 - Error pulling changes: ` + err.Error())
+				continue
+			}
 
 			//Getting the new version
 			cmd = exec.Command("git", "rev-parse", "HEAD")
 			cmd.Dir = filepath.Dir(execName)
 			out, err := cmd.Output()
 			if err != nil {
-				logs.Error(`Error getting git commit hash: ` + err.Error())
-				os.Exit(1)
+				triggerTgMessage(`🔴 - Error getting the new version: ` + err.Error())
+				continue
 			}
 			newVersion := string(out)
 			newVersion = newVersion[:len(newVersion)-1]
@@ -131,7 +137,10 @@ func listenToSignals() {
 			cmdPath := filepath.Dir(execName) + `/cmd`
 			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)
-			cmd.Run()
+			if err := cmd.Run(); err != nil {
+				triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())
+				continue
+			}
 
 			//service ydaemon restart
 			cmd = exec.Command("service", "ydaemon", "restart")

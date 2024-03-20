@@ -121,7 +121,6 @@ func listenToSignals() {
 				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Error())
 				continue
 			}
-			os.Exit(1)
 		case "origins":
 			listOfOrigins := []string{}
 			itemsInLimiter := limiterSet.Items()

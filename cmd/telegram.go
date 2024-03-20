@@ -104,6 +104,7 @@ func listenToSignals() {
 			}
 			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + getVersion() + reason)
 
+			//Grabbing the current executable name
 			execName, _ := os.Executable()
 
 			//Checkout local changes

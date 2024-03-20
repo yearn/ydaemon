@@ -366,7 +366,7 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	if (len(rawPerformanceFee) > 0) && (len(rawStrategies) > 0) {
 		strat.LastPerformanceFee = helpers.DecodeBigInt(rawPerformanceFee)
 	} else {
-		strat.LastPerformanceFee = bigNumber.NewInt(1000) // Default to 1000, aka 10%
+		strat.LastPerformanceFee = bigNumber.NewInt(0) // Default to 1000, aka 10%
 	}
 	strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).CurrentDebt)
 	strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)

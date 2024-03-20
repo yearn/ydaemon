@@ -27,6 +27,14 @@ func processServer(chainID uint64) {
 }
 
 var version = "" //version to display based on github tag
+func getVersion() string {
+	if version == "" {
+		return "dev"
+	}
+	//trim to only get the first 7 characters of the commit hash
+	return version[:7]
+}
+
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)
@@ -50,7 +58,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
-		go triggerTgMessage(`💛 - yDaemon v` + version + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
+		go triggerTgMessage(`💛 - yDaemon v` + getVersion() + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {
 			go processServer(chainID)

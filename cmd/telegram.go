@@ -101,7 +101,7 @@ func listenToSignals() {
 			if arguments != "" {
 				reason = ` because: ` + arguments
 			}
-			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + version + reason)
+			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + getVersion() + reason)
 
 			cmdToRun := "(cd /root/ydaemon && git checkout -- . && git pull && go build -o yDaemon -ldflags \"-X main.version=`git rev-parse HEAD`\" ./cmd)"
 			if err := exec.Command(cmdToRun); err != nil {

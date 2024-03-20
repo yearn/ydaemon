@@ -98,6 +98,7 @@ func listenToSignals() {
 			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
 			os.Exit(1)
 		case "update":
+			//this might be useless
 			reason := ` without a reason`
 			arguments := update.Message.CommandArguments()
 			if arguments != "" {
@@ -143,11 +144,11 @@ func listenToSignals() {
 			stderr, _ := cmd.StderrPipe()
 			if err := cmd.Start(); err != nil {
 				triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())
-				// continue
-			}
-			scanner := bufio.NewScanner(stderr)
-			for scanner.Scan() {
-				triggerTgMessage(scanner.Text())
+				scanner := bufio.NewScanner(stderr)
+				for scanner.Scan() {
+					triggerTgMessage(scanner.Text())
+				}
+				continue
 			}
 
 			//service ydaemon restart

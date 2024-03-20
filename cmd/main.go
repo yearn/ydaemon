@@ -26,12 +26,16 @@ func processServer(chainID uint64) {
 	triggerInitializedStatus(chainID)
 }
 
-var version = "" //version to display based on github tag
+/**************************************************************************************************
+** The version of the daemon is displayed on the server. The version is based on the latest git
+** commit, trimmed to only show the first 7 characters of the commit hash.
+**************************************************************************************************/
+var version = ""
+
 func getVersion() string {
 	if version == "" {
 		return "dev"
 	}
-	//trim to only get the first 7 characters of the commit hash
 	return version[:7]
 }
 

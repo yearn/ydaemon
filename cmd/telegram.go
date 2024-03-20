@@ -136,7 +136,7 @@ func listenToSignals() {
 
 			//Rebuilding the daemon
 			cmdPath := filepath.Dir(execName) + `/cmd`
-			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
+			cmd = exec.Command("/usr/local/go/bin/go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)
 			if err := cmd.Run(); err != nil {
 				triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())

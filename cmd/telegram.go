@@ -124,37 +124,8 @@ func listenToSignals() {
 				continue
 			}
 
-			//Getting the new version
-			// cmd = exec.Command("git", "rev-parse", "HEAD")
-			// cmd.Dir = filepath.Dir(execName)
-			// out, err := cmd.Output()
-			// if err != nil {
-			// 	triggerTgMessage(`🔴 - Error getting the new version: ` + err.Error())
-			// 	continue
-			// }
-			// newVersion := string(out)
-			// newVersion = newVersion[:len(newVersion)-1]
-			// newVersionShort := newVersion[:7]
-
-			// //Rebuilding the daemon
-			// cmdPath := filepath.Dir(execName) + `/cmd`
-			// cmd = exec.Command("/usr/local/go/bin/go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
-			// cmd.Dir = filepath.Dir(execName)
-			// stderr, _ := cmd.StderrPipe()
-			// if err := cmd.Start(); err != nil {
-			// 	triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())
-			// 	scanner := bufio.NewScanner(stderr)
-			// 	for scanner.Scan() {
-			// 		triggerTgMessage(scanner.Text())
-			// 	}
-			// }
-
 			//service ydaemon restart
-			cmd = exec.Command("service", "ydaemon", "restart")
-			if err := cmd.Start(); err != nil {
-				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Error())
-				continue
-			}
+			os.Exit(1)
 		case "origins":
 			listOfOrigins := []string{}
 			itemsInLimiter := limiterSet.Items()

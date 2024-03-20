@@ -114,7 +114,20 @@ func listenToSignals() {
 			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 
-			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version=`git rev-parse HEAD`", "./cmd")
+			//Getting the new version
+			cmd = exec.Command("git", "rev-parse", "HEAD")
+			cmd.Dir = filepath.Dir(execName)
+			out, err := cmd.Output()
+			if err != nil {
+				logs.Error(`Error getting git commit hash: ` + err.Error())
+				os.Exit(1)
+			}
+			newVersion := string(out)
+			newVersion = newVersion[:len(newVersion)-1]
+			newVersionShort := newVersion[:7]
+
+			cmdPath := filepath.Dir(execName) + `/cmd`
+			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)
 			cmd.Run()
 

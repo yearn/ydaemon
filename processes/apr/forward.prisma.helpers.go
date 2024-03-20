@@ -68,6 +68,6 @@ func getPrismaAPR(chainID uint64, prismaReceiver common.Address) *bigNumber.Floa
 	prismaAPR := bigNumber.NewFloat(0).Mul(rate, prismaPrice)
 	prismaAPR = bigNumber.NewFloat(0).Mul(prismaAPR, bigNumber.NewFloat(31536000))
 	prismaAPR = bigNumber.NewFloat(0).Div(prismaAPR, supply)
-	prismaAPR = bigNumber.NewFloat(0).Mul(prismaAPR, lpTokenPrice)
+	prismaAPR = bigNumber.NewFloat(0).Div(prismaAPR, lpTokenPrice)
 	return prismaAPR
 }

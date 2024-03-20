@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -139,8 +140,13 @@ func listenToSignals() {
 			cmdPath := filepath.Dir(execName) + `/cmd`
 			cmd = exec.Command("/usr/local/go/bin/go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)
+			stderr, _ := cmd.StderrPipe()
 			if err := cmd.Run(); err != nil {
 				triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())
+				scanner := bufio.NewScanner(stderr)
+				for scanner.Scan() {
+					triggerTgMessage(scanner.Text())
+				}
 				continue
 			}
 

@@ -141,21 +141,21 @@ func listenToSignals() {
 			cmd = exec.Command("/usr/local/go/bin/go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)
 			stderr, _ := cmd.StderrPipe()
-			if err := cmd.Run(); err != nil {
+			if err := cmd.Start(); err != nil {
 				triggerTgMessage(`🔴 - Error building the new version: ` + err.Error())
-				scanner := bufio.NewScanner(stderr)
-				for scanner.Scan() {
-					triggerTgMessage(scanner.Text())
-				}
-				continue
+				// continue
+			}
+			scanner := bufio.NewScanner(stderr)
+			for scanner.Scan() {
+				triggerTgMessage(scanner.Text())
 			}
 
 			//service ydaemon restart
-			cmd = exec.Command("service", "ydaemon", "restart")
-			if err := cmd.Start(); err != nil {
-				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Error())
-				continue
-			}
+			// cmd = exec.Command("service", "ydaemon", "restart")
+			// if err := cmd.Start(); err != nil {
+			// 	triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Error())
+			// 	continue
+			// }
 		case "origins":
 			listOfOrigins := []string{}
 			itemsInLimiter := limiterSet.Items()

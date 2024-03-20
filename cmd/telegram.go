@@ -104,8 +104,23 @@ func listenToSignals() {
 			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + getVersion() + reason)
 
 			cmdToRun := "(cd /root/ydaemon && git checkout -- . && git pull && go build -o yDaemon -ldflags \"-X main.version=`git rev-parse HEAD`\" ./cmd) && service ydaemon restart"
-			if err := exec.Command(cmdToRun); err != nil {
-				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Err.Error())
+
+			cmd := exec.Command("git", "checkout", "--", ".")
+			cmd.Dir = "/root/ydaemon"
+			cmd.Run()
+
+			cmd = exec.Command("git", "pull")
+			cmd.Dir = "/root/ydaemon"
+			cmd.Run()
+
+			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version=`git rev-parse HEAD`", "./cmd")
+			cmd.Dir = "/root/ydaemon"
+			cmd.Run()
+
+			//service ydaemon restart
+			cmd = exec.Command("service", "ydaemon", "restart")
+			if err := cmd.Start(); err != nil {
+				triggerTgMessage(`🔴 - Error updating yDaemon: ` + err.Error())
 				continue
 			}
 			os.Exit(1)

@@ -115,6 +115,7 @@ func NewRouter() *gin.Engine {
 		c.AbortWithStatus(http.StatusTooManyRequests)
 	}))
 
+	// Standard basic route for hello
 	router.GET(`/`, func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to yDaemon"})
 	})

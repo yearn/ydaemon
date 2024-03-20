@@ -1,13 +1,13 @@
 {
-	"lastUpdate": "2024-03-14T12:32:16.729148+01:00",
+	"lastUpdate": "2024-03-20T12:18:06.626232+01:00",
 	"version": {
 		"major": 0,
-		"minor": 3,
-		"patch": 27
+		"minor": 4,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"strategies": {
-		"0x0aac66214d40a3d41bd2da53f6d6894e27744bd7": {
+		"0x0AAc66214D40a3D41BD2da53F6D6894E27744bd7_0xF8f36Ab972f6fE3ae1f594595aEe1284E270d034": {
 			"address": "0x0aac66214d40a3d41bd2da53f6d6894e27744bd7",
 			"vaultAddress": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
 			"name": "StrategyAerodromeFactory-vAMM-wUSDR/USDbC",
@@ -34,7 +34,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x17880284d5d186ece3c53b0e487b0dd404283c8b": {
+		"0x17880284d5d186Ece3C53B0E487B0Dd404283c8B_0x58dcE038423A1e43f3429cb62425a1364cc3bb4c": {
 			"address": "0x17880284d5d186ece3c53b0e487b0dd404283c8b",
 			"vaultAddress": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/USDbC",
@@ -61,7 +61,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x1816545343590701dc29c379bcac06e92d1e1c79": {
+		"0x1816545343590701DC29c379BcAC06e92D1e1C79_0xA49dCCD9425cc38d4111Df2e665f2a33fe799C42": {
 			"address": "0x1816545343590701dc29c379bcac06e92d1e1c79",
 			"vaultAddress": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
 			"name": "StrategyAerodromeFactory-vAMM-tBTC/USDbC",
@@ -74,13 +74,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "53238673366649",
+			"lastTotalDebt": "53734205394681",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "2793617156683",
+			"lastTotalGain": "3260401251566",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710367239",
+			"lastReport": "1710852493",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "53238673366649",
+			"lastEstimatedTotalAssets": "53734205394681",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -88,7 +88,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f": {
+		"0x19D2ed1c127800Db4eA982E8a00BBf518bbBF90f_0x8C589ADdBe1466a9B555EaA6cE8940Ac1680C5F4": {
 			"address": "0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f",
 			"vaultAddress": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
 			"name": "StrategyAerodromeFactory-vAMM-cbETH/WETH",
@@ -101,13 +101,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "6049936468992375488",
+			"lastTotalDebt": "15791645454634887665",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "43320765835156376",
+			"lastTotalGain": "69550036594296510",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710296625",
+			"lastReport": "1710852483",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "6049936468992375488",
+			"lastEstimatedTotalAssets": "15791645454634887665",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -115,7 +115,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x1b1387a79064ae13385f160606e9228fd303b4a4": {
+		"0x1B1387a79064AE13385F160606E9228fD303B4a4_0x12e3187D6B7a0BA98A427ef9EF287Bd9960764D1": {
 			"address": "0x1b1387a79064ae13385f160606e9228fd303b4a4",
 			"vaultAddress": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/DEUS",
@@ -128,13 +128,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "35038953821509587",
+			"lastTotalDebt": "35038953821509588",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "234715829511373288",
+			"lastTotalGain": "271828169094219440",
 			"lastPerformanceFee": "0",
-			"lastReport": "1707444607",
+			"lastReport": "1710773693",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "35038953821509587",
+			"lastEstimatedTotalAssets": "35038953821509588",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -142,7 +142,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9": {
+		"0x34eDb20bd93d14cbb9F5D9Da7D2CB2440Dd6dbB9_0xEcFc1e5BDa4d4191c9Cab053ec704347Db87Be5d": {
 			"address": "0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9",
 			"vaultAddress": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/DAI",
@@ -155,13 +155,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "256355814168041091791",
+			"lastTotalDebt": "258944264716229438008",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "14071362681044212813",
+			"lastTotalGain": "16624062399275065794",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710376609",
+			"lastReport": "1710852503",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "256355814168041091791",
+			"lastEstimatedTotalAssets": "258944264716229438008",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -169,7 +169,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x3e07e1187f5f89e60950e8ee7e66c1ef37b3e1de": {
+		"0x3E07e1187f5F89E60950E8Ee7e66C1eF37B3E1DE_0x84C9C1569Aaa02b9a7fD0fa8021464b179e6eCE6": {
 			"address": "0x3e07e1187f5f89e60950e8ee7e66c1ef37b3e1de",
 			"vaultAddress": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
 			"name": "StrategyAerodromeFactory-sAMM-DAI+/USD+",
@@ -196,7 +196,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x4161255639d94ee0a1d4c27fe0f863293f6a9798": {
+		"0x4161255639d94ee0a1D4c27fE0F863293F6a9798_0x4d3ceBA4349ADB06d2De8EBD2F9320A61303aD81": {
 			"address": "0x4161255639d94ee0a1d4c27fe0f863293f6a9798",
 			"vaultAddress": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
 			"name": "StrategyAerodromeFactory-vAMM-hyUSD/eUSD",
@@ -209,19 +209,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "220557999975460698445",
+			"lastTotalDebt": "11258349193419827321583",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "1198256339405043173282",
+			"lastTotalGain": "1306422258295867819526",
 			"lastPerformanceFee": "0",
-			"lastReport": "1709500757",
+			"lastReport": "1710875203",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "220557999975460698445",
+			"lastEstimatedTotalAssets": "11258349193419827321583",
 			"isRetired": true,
 			"displayName": "",
 			"description": "",
 			"protocols": null
 		},
-		"0x45d7d3fd5b8406122bb18476f14a131497310c49": {
+		"0x45d7D3Fd5B8406122bB18476f14A131497310c49_0x9E13E1CfCd750657B81549F8f773d68f1625DCfb": {
 			"address": "0x45d7d3fd5b8406122bb18476f14a131497310c49",
 			"vaultAddress": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
 			"name": "StrategyAerodromeFactory-sAMM-eUSD/USDC",
@@ -246,7 +246,7 @@
 			"description": "",
 			"protocols": null
 		},
-		"0x489a60748a8b74cd32c13d090f60314797b218d9": {
+		"0x489A60748a8B74cd32c13D090F60314797b218d9_0xaCcB6Fa47E2dA8F937f6E33BC25B68328b370D2e": {
 			"address": "0x489a60748a8b74cd32c13d090f60314797b218d9",
 			"vaultAddress": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
 			"name": "StrategyAerodromeFactory-vAMM-ERN/stERN",
@@ -273,7 +273,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x64feec8993286d0d7ee4af2c5885c47b0ea9d6a4": {
+		"0x64feEC8993286D0D7ee4aF2C5885C47b0Ea9D6a4_0x5B9b4F9B704faAe29f600C04b12aF92FB518604f": {
 			"address": "0x64feec8993286d0d7ee4af2c5885c47b0ea9d6a4",
 			"vaultAddress": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
 			"name": "StrategyAerodromeFactory-vAMM-EXTRA/USDbC",
@@ -300,7 +300,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x6c3c4447e1a2c87b47d58cf007706bb1835134da": {
+		"0x6C3C4447E1a2C87B47d58CF007706bB1835134da_0x5C366341bB86baD85e78eBa974E3f335c9488FA2": {
 			"address": "0x6c3c4447e1a2c87b47d58cf007706bb1835134da",
 			"vaultAddress": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
 			"name": "StrategyAerodromeFactory-vAMM-agEUR/USDbC",
@@ -315,9 +315,9 @@
 			"keepCVX": null,
 			"lastTotalDebt": "6480992292819",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "145872035655",
+			"lastTotalGain": "5950488921125",
 			"lastPerformanceFee": "0",
-			"lastReport": "1705243147",
+			"lastReport": "1710773683",
 			"lastDebtRatio": "10000",
 			"lastEstimatedTotalAssets": "6480992292819",
 			"isRetired": false,
@@ -327,7 +327,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x7333b5f5f4ea8185b9c3bd3cb740159d3e529eaa": {
+		"0x7333b5F5F4eA8185b9C3Bd3Cb740159D3e529Eaa_0x7cbdf03CA2B633CA9FA613945ab4b19A46b3d671": {
 			"address": "0x7333b5f5f4ea8185b9c3bd3cb740159d3e529eaa",
 			"vaultAddress": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/UNIDX",
@@ -354,7 +354,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x7753e6ea61bee08dae2373117a48b0104b7989b4": {
+		"0x7753E6Ea61bEE08DaE2373117a48b0104B7989b4_0x5b508fE98Ac33DA9352FA539E2EFA9F1DdA26c51": {
 			"address": "0x7753e6ea61bee08dae2373117a48b0104b7989b4",
 			"vaultAddress": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
 			"name": "StrategyAerodromeFactory-sAMM-eUSD/USDbC",
@@ -367,19 +367,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "16157606568776905",
+			"lastTotalDebt": "16337946755335201",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "1747583938925815",
+			"lastTotalGain": "1925107325315483",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710376635",
+			"lastReport": "1710897909",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "16157606568776905",
+			"lastEstimatedTotalAssets": "16337946755335201",
 			"isRetired": true,
 			"displayName": "",
 			"description": "",
 			"protocols": null
 		},
-		"0x8062cdad4b0c5ada2877fbc85eb928fbc587cf79": {
+		"0x8062cDAd4B0c5aDa2877fbc85Eb928Fbc587CF79_0x391E5dc227CDcf3cCA012E5278798121236b1861": {
 			"address": "0x8062cdad4b0c5ada2877fbc85eb928fbc587cf79",
 			"vaultAddress": "0x391e5dc227cdcf3cca012e5278798121236b1861",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/WELL",
@@ -406,7 +406,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x830e78f60b87590150575ca204a143a122669508": {
+		"0x830E78f60B87590150575CA204a143A122669508_0x3ED55314C0a4B1a1e3E6b4C9E0617d99c8B5fFf8": {
 			"address": "0x830e78f60b87590150575ca204a143a122669508",
 			"vaultAddress": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/wstETH",
@@ -431,7 +431,7 @@
 			"description": "",
 			"protocols": null
 		},
-		"0x8470d97adbafe4b7da66dec6c33b60ad9420d318": {
+		"0x8470d97ADbAfe4b7dA66dec6C33B60AD9420D318_0x41489713d581EC717E1AA55b7729d24965Cf96b5": {
 			"address": "0x8470d97adbafe4b7da66dec6c33b60ad9420d318",
 			"vaultAddress": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
 			"name": "StrategyAerodromeFactory-sAMM-USD+/USDbC",
@@ -458,7 +458,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0x89468e36a687e842699644dc12b986c79af9ed1f": {
+		"0x89468E36a687E842699644dc12B986c79AF9ED1F_0xA3386F0a4034184ECB8A0d1E7E79b4f720634317": {
 			"address": "0x89468e36a687e842699644dc12b986c79af9ed1f",
 			"vaultAddress": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
 			"name": "StrategyAerodromeFactory-sAMM-DOLA/USDbC",
@@ -471,13 +471,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "7768052639942214",
+			"lastTotalDebt": "7883256182712446",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "279399601261784",
+			"lastTotalGain": "387797877857736",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710367231",
+			"lastReport": "1710897901",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "7768052639942214",
+			"lastEstimatedTotalAssets": "7883256182712446",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -485,7 +485,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xa12cae02a71b84ccc28532d24f45f1c0f7dfba28": {
+		"0xA12CAE02a71B84ccc28532d24f45f1c0f7dFba28_0x8f22D62434d5E52AF442F69F43eb27BA20768692": {
 			"address": "0xa12cae02a71b84ccc28532d24f45f1c0f7dfba28",
 			"vaultAddress": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
 			"name": "StrategyAerodromeFactory-vAMM-USD+/stERN",
@@ -512,61 +512,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xb641e33c8ea9caa71b856f81051bc71a0fb3c3ea": {
-			"address": "0xb641e33c8ea9caa71b856f81051bc71a0fb3c3ea",
-			"vaultAddress": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
-			"name": "StrategyAerodromeFactory-vAMM-SONNE/USDbC",
-			"vaultVersion": "0.4.6",
-			"activation": 3404346,
-			"chainID": 8453,
-			"doHealthCheck": false,
-			"isActive": true,
-			"isInQueue": true,
-			"keepCRV": null,
-			"keepCRVPercent": null,
-			"keepCVX": null,
-			"lastTotalDebt": "0",
-			"lastTotalLoss": "0",
-			"lastTotalGain": "0",
-			"lastPerformanceFee": "0",
-			"lastReport": "1693598039",
-			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "0",
-			"isRetired": false,
-			"displayName": "Aerodrome Reinvest",
-			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
-			"protocols": [
-				"Aerodrome Finance"
-			]
-		},
-		"0xb7a16c8e4343f1a6c946821b811d1438813c1147": {
-			"address": "0xb7a16c8e4343f1a6c946821b811d1438813c1147",
-			"vaultAddress": "0x13454b672213f53cb1d31ea0be033c58fe315392",
-			"name": "StrategyAerodromeFactory-sAMM-MAI/USDbC",
-			"vaultVersion": "0.4.6",
-			"activation": 3359488,
-			"chainID": 8453,
-			"doHealthCheck": false,
-			"isActive": true,
-			"isInQueue": true,
-			"keepCRV": null,
-			"keepCRVPercent": null,
-			"keepCVX": null,
-			"lastTotalDebt": "0",
-			"lastTotalLoss": "0",
-			"lastTotalGain": "0",
-			"lastPerformanceFee": "0",
-			"lastReport": "1693508323",
-			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "0",
-			"isRetired": false,
-			"displayName": "Aerodrome Reinvest",
-			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
-			"protocols": [
-				"Aerodrome Finance"
-			]
-		},
-		"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f": {
+		"0xC070f47c1D92167a1a24B4bC7B2749af3410E93F_0x68393A804c9fe4f1c7148d37796436e450Ad98E8": {
 			"address": "0xc070f47c1d92167a1a24b4bc7b2749af3410e93f",
 			"vaultAddress": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
 			"name": "StrategyAerodromeFactory-vAMM-AERO/USDbC",
@@ -579,13 +525,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1521645601846869",
+			"lastTotalDebt": "734608454423284",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "1121261637975478",
+			"lastTotalGain": "1183414878681356",
 			"lastPerformanceFee": "0",
-			"lastReport": "1710376597",
+			"lastReport": "1710875195",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "1521645601846869",
+			"lastEstimatedTotalAssets": "734608454423284",
 			"isRetired": false,
 			"displayName": "Aerodrome Reinvest",
 			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
@@ -593,7 +539,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xce09d93285ee64b98292f532b563cb0931028beb": {
+		"0xCE09d93285ee64b98292F532B563CB0931028BEB_0x41102DB56D0531Be4560Ec2DB295E28a3C6954C7": {
 			"address": "0xce09d93285ee64b98292f532b563cb0931028beb",
 			"vaultAddress": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
 			"name": "StrategyAerodromeFactory-vAMM-WETH/TAROT",
@@ -620,7 +566,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xd2982f4836e00c6f7cb8283c5f25b9d74a188b08": {
+		"0xD2982F4836e00c6f7cB8283C5f25b9D74a188b08_0x4DCC2EcafF01525fBcAB3ED18823270F912a380A": {
 			"address": "0xd2982f4836e00c6f7cb8283c5f25b9d74a188b08",
 			"vaultAddress": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
 			"name": "StrategyAerodromeFactory-sAMM-DOLA/MAI",
@@ -647,7 +593,86 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xe12bfdbce72dacd13692345a26c44dec39580ffc": {
+		"0xE8f9880604Db1CcdFcDCb093Fe89702b44Be144B_0x00F30115B5E828AB387b8190f8532EA7cEAF3fDC": {
+			"address": "0xe8f9880604db1ccdfcdcb093fe89702b44be144b",
+			"vaultAddress": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
+			"name": "StrategyAerodromeFactory-sAMM-DOLA/USDC",
+			"vaultVersion": "0.4.6",
+			"activation": 9119974,
+			"chainID": 8453,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "44226184713506",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "316013576728852",
+			"lastPerformanceFee": "0",
+			"lastReport": "1710466765",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "44226184713506",
+			"isRetired": false,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xb641e33c8EA9caA71b856f81051bC71a0fb3c3ea_0x37A74970f80adAa8215598e95A17Cbed2C39030D": {
+			"address": "0xb641e33c8ea9caa71b856f81051bc71a0fb3c3ea",
+			"vaultAddress": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
+			"name": "StrategyAerodromeFactory-vAMM-SONNE/USDbC",
+			"vaultVersion": "0.4.6",
+			"activation": 3404346,
+			"chainID": 8453,
+			"doHealthCheck": false,
+			"isActive": true,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1693598039",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "0",
+			"isRetired": false,
+			"displayName": "Aerodrome Reinvest",
+			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+			"protocols": [
+				"Aerodrome Finance"
+			]
+		},
+		"0xb7A16c8e4343f1a6c946821B811D1438813c1147_0x13454B672213F53cb1D31eA0BE033c58fe315392": {
+			"address": "0xb7a16c8e4343f1a6c946821b811d1438813c1147",
+			"vaultAddress": "0x13454b672213f53cb1d31ea0be033c58fe315392",
+			"name": "StrategyAerodromeFactory-sAMM-MAI/USDbC",
+			"vaultVersion": "0.4.6",
+			"activation": 3359488,
+			"chainID": 8453,
+			"doHealthCheck": false,
+			"isActive": true,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1693508323",
+			"lastDebtRatio": "10000",
+			"lastEstimatedTotalAssets": "0",
+			"isRetired": false,
+			"displayName": "Aerodrome Reinvest",
+			"description": "Supplies {{token}} to [Aerodrome Finance](https://aerodrome.finance/liquidity) and stakes it in the gauge to collect any available tokens and earn AERO rewards. Rewards are harvested, sold for more {{token}}, and deposited back into the strategy.",
+			"protocols": [
+				"Aerodrome Finance"
+			]
+		},
+		"0xe12BFdbce72dacD13692345a26c44dEc39580FFC_0x37fDacD764AA64F4e453842D8056853e5550c09b": {
 			"address": "0xe12bfdbce72dacd13692345a26c44dec39580ffc",
 			"vaultAddress": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
 			"name": "StrategyAerodromeFactory-sAMM-USDC/USDbC",
@@ -674,32 +699,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xe8f9880604db1ccdfcdcb093fe89702b44be144b": {
-			"address": "0xe8f9880604db1ccdfcdcb093fe89702b44be144b",
-			"vaultAddress": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
-			"name": "StrategyAerodromeFactory-sAMM-DOLA/USDC",
-			"vaultVersion": "0.4.6",
-			"activation": 9119974,
-			"chainID": 8453,
-			"doHealthCheck": true,
-			"isActive": true,
-			"isInQueue": true,
-			"keepCRV": null,
-			"keepCRVPercent": null,
-			"keepCVX": null,
-			"lastTotalDebt": "44226184713506",
-			"lastTotalLoss": "0",
-			"lastTotalGain": "300835546791735",
-			"lastPerformanceFee": "0",
-			"lastReport": "1707793911",
-			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "44226184713506",
-			"isRetired": false,
-			"displayName": "",
-			"description": "",
-			"protocols": null
-		},
-		"0xeadaba9e1c71ead10605c3903fa932ddb554bacf": {
+		"0xeAdaba9e1C71EAd10605c3903fA932Ddb554baCf_0x6fb7CC0B6f0fCEf9cF7c560BeB68954Efc142608": {
 			"address": "0xeadaba9e1c71ead10605c3903fa932ddb554bacf",
 			"vaultAddress": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
 			"name": "StrategyAerodromeFactory-vAMM-tBTC/WETH",
@@ -726,7 +726,7 @@
 				"Aerodrome Finance"
 			]
 		},
-		"0xfd995513dada13c0948d853cd253375c3c93805d": {
+		"0xfD995513DADA13c0948D853cd253375C3C93805d_0xa6cBdD6aE6596b5EE57F67DF70CC7c801129464F": {
 			"address": "0xfd995513dada13c0948d853cd253375c3c93805d",
 			"vaultAddress": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
 			"name": "StrategyAerodromeFactory-sAMM-DAI/USDbC",

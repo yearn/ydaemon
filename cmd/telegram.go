@@ -134,6 +134,7 @@ func listenToSignals() {
 			newVersion = newVersion[:len(newVersion)-1]
 			newVersionShort := newVersion[:7]
 
+			//Rebuilding the daemon
 			cmdPath := filepath.Dir(execName) + `/cmd`
 			cmd = exec.Command("go", "build", "-o", "yDaemon", "-ldflags", "-X main.version="+newVersionShort, cmdPath)
 			cmd.Dir = filepath.Dir(execName)

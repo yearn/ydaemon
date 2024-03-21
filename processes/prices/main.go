@@ -218,7 +218,7 @@ func fetchPrices(
 					Address:        token.Address,
 					Price:          vaultPrice.Int(),
 					HumanizedPrice: humanizedPrice,
-					Source:         `yVaultV2-pps`,
+					Source:         `yVaultV2-pps-store`,
 				}
 			}
 		}

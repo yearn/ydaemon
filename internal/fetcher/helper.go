@@ -56,15 +56,12 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetDefaultQueue(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetIsShutdown(vault.Address.Hex(), vault.Address, ``))
 
-	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
-		// If the last vault update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetIsShutdown(vault.Address.Hex(), vault.Address, ``))
-	}
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAsset(vault.Address.Hex(), vault.Address))
-		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetRoleManager(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 

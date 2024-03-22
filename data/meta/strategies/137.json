@@ -1,13 +1,13 @@
 {
-	"lastUpdate": "2024-03-14T10:51:36.6531+01:00",
+	"lastUpdate": "2024-03-22T12:37:15.165293+01:00",
 	"version": {
 		"major": 0,
-		"minor": 7,
-		"patch": 44
+		"minor": 8,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"strategies": {
-		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
+		"0x06eD7C67755344548FAFe1822bEE365C4208a57F_0x90b2f54C6aDDAD41b8f6c4fCCd555197BC0F773B": {
 			"address": "0x06ed7c67755344548fafe1822bee365c4208a57f",
 			"vaultAddress": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
 			"name": "yearn-V3-Stargate-DAI",
@@ -20,19 +20,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "49356566790017391571283",
+			"lastTotalDebt": "49436577396158583686672",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "287",
-			"lastEstimatedTotalAssets": "49416627547012874307206",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "253",
+			"lastEstimatedTotalAssets": "49453179416134059666043",
 			"isRetired": true,
 			"displayName": "Stargate DAI Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
-		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
+		"0x12c3Ad898e8eB1C0ec0Bb74f9748F36C46593F68_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 			"vaultAddress": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
 			"name": "Aave V3 WMATIC Lender",
@@ -45,13 +45,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "653523825023525038463975",
+			"lastTotalDebt": "653823010407371084859330",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "6158",
-			"lastEstimatedTotalAssets": "654108362576674682261482",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "5853",
+			"lastEstimatedTotalAssets": "654279758908863953271135",
 			"isRetired": true,
 			"displayName": "Aave V3 WMATIC Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -59,7 +59,7 @@
 				"Aave"
 			]
 		},
-		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
+		"0x2a42A69F48EfffDF2d4Fb079Af60D98D3e34D49C_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
 			"vaultAddress": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
 			"name": "CompV3 WMATIC Lender USDC Borrower",
@@ -86,7 +86,7 @@
 				"Compound Finance"
 			]
 		},
-		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
+		"0x2c5d0c3DB75D2f8A4957c74BE09194a9271Cf28D_0xBb287E6017d3DEb0e2E65061e8684eab21060123": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
 			"vaultAddress": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
 			"name": "yearn-V3-Stargate-USDT",
@@ -99,19 +99,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "50547918583",
+			"lastTotalDebt": "50840477238",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "256",
-			"lastEstimatedTotalAssets": "50765721249",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "204",
+			"lastEstimatedTotalAssets": "50902061545",
 			"isRetired": true,
 			"displayName": "Stargate USDT Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
-		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
+		"0x3bd8C987286D8Ad00c05fdb2Ae3E8C9a0f054734_0xBb287E6017d3DEb0e2E65061e8684eab21060123": {
 			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 			"vaultAddress": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
 			"name": "AaveV3 USDT Lender",
@@ -124,19 +124,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1887253427686",
+			"lastTotalDebt": "2435282187105",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "9560",
-			"lastEstimatedTotalAssets": "1894707892442",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "9791",
+			"lastEstimatedTotalAssets": "2437314684539",
 			"isRetired": true,
 			"displayName": "Aave V3 USDT Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
-		"0x479974977bdff289a4157f56ee29401523ae4c0f": {
+		"0x479974977BdFf289a4157f56EE29401523Ae4c0F_0xF54a15F6da443041Bb075959EA66EE47655DDFcA": {
 			"address": "0x479974977bdff289a4157f56ee29401523ae4c0f",
 			"vaultAddress": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
 			"name": "ajna-yvusdca-usdc",
@@ -154,14 +154,14 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1705945578",
-			"lastDebtRatio": "4779",
+			"lastDebtRatio": "5125",
 			"lastEstimatedTotalAssets": "120000000000",
 			"isRetired": true,
 			"displayName": "",
 			"description": "",
 			"protocols": null
 		},
-		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
+		"0x5136c2F7aB13E202eD42bc1AE82Dd63475919653_0x305F25377d0a39091e99B975558b1bdfC3975654": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
 			"vaultAddress": "0x305f25377d0a39091e99b975558b1bdfc3975654",
 			"name": "CompV3 WETH Lender USDC Borrower",
@@ -188,7 +188,7 @@
 				"Compound Finance"
 			]
 		},
-		"0x53da2a29dc8effd4707e0bc0fbf70a8dc63bb5a3": {
+		"0x53Da2A29Dc8EFfD4707e0bc0fbf70A8dc63BB5A3_0xF54a15F6da443041Bb075959EA66EE47655DDFcA": {
 			"address": "0x53da2a29dc8effd4707e0bc0fbf70a8dc63bb5a3",
 			"vaultAddress": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
 			"name": "ajna-wusdm-usdc",
@@ -206,14 +206,14 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1706134272",
-			"lastDebtRatio": "4381",
+			"lastDebtRatio": "4698",
 			"lastEstimatedTotalAssets": "110000000000",
 			"isRetired": true,
 			"displayName": "",
 			"description": "",
 			"protocols": null
 		},
-		"0x5452ba13a65d20fdf21220a397bbe40830c7418a": {
+		"0x5452bA13a65D20fdf21220a397Bbe40830C7418A_0xF54a15F6da443041Bb075959EA66EE47655DDFcA": {
 			"address": "0x5452ba13a65d20fdf21220a397bbe40830c7418a",
 			"vaultAddress": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
 			"name": "ajna-yvusdc-a-usdc",
@@ -238,7 +238,7 @@
 			"description": "",
 			"protocols": null
 		},
-		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
+		"0x6Ed737EF2Ef74e04005dC9810366De5ad38Cf7D6_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
 			"vaultAddress": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
 			"name": "yearn-V3-LST",
@@ -265,7 +265,7 @@
 				"stMATIC"
 			]
 		},
-		"0x7486325a843590b84c98563c6962c58655569eca": {
+		"0x7486325A843590b84c98563c6962C58655569EcA_0x305F25377d0a39091e99B975558b1bdfC3975654": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
 			"vaultAddress": "0x305f25377d0a39091e99b975558b1bdfc3975654",
 			"name": "yearn-V3-LST-WSTETH",
@@ -284,7 +284,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "0",
 			"lastDebtRatio": "0",
-			"lastEstimatedTotalAssets": "2021341984955514855",
+			"lastEstimatedTotalAssets": "2028307915844421906",
 			"isRetired": true,
 			"displayName": "Staked ETH Accumulator",
 			"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
@@ -292,7 +292,7 @@
 				"LIDO"
 			]
 		},
-		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
+		"0x8BBa7AFd0f9B1b664C161EC31d812a8Ec15f7e1a_0xA013Fbd4b711f9ded6fB09C1c0d358E2FbC2EAA0": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
 			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"name": "yearn-V3-Stargate-USDC",
@@ -311,40 +311,13 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1701906872",
 			"lastDebtRatio": "0",
-			"lastEstimatedTotalAssets": "116598",
+			"lastEstimatedTotalAssets": "116965",
 			"isRetired": true,
 			"displayName": "Stargate USDC.e Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
-		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
-			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
-			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
-			"name": "Compound V3 USDC Lender",
-			"vaultVersion": "3.0.0",
-			"activation": 49181585,
-			"chainID": 137,
-			"doHealthCheck": false,
-			"isActive": false,
-			"isInQueue": true,
-			"keepCRV": null,
-			"keepCRVPercent": null,
-			"keepCVX": null,
-			"lastTotalDebt": "1815473851829",
-			"lastTotalLoss": "0",
-			"lastTotalGain": "0",
-			"lastPerformanceFee": "1000",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "7990",
-			"lastEstimatedTotalAssets": "1821300047169",
-			"isRetired": true,
-			"displayName": "Compound V3 USDC.e Lender",
-			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
-			"protocols": [
-				"Compound Finance"
-			]
-		},
-		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
+		"0xBEDA9A5300393e00229dc15cC54D5185E7646c56_0x305F25377d0a39091e99B975558b1bdfC3975654": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
 			"vaultAddress": "0x305f25377d0a39091e99b975558b1bdfc3975654",
 			"name": "AaveV3 WETH Lender",
@@ -357,13 +330,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "230819911514817564419",
+			"lastTotalDebt": "227084712145085745622",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "8485",
-			"lastEstimatedTotalAssets": "230845537449151483825",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "8491",
+			"lastEstimatedTotalAssets": "227106124266103745038",
 			"isRetired": true,
 			"displayName": "Aave V3 WETH Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -371,7 +344,34 @@
 				"Aave"
 			]
 		},
-		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
+		"0xb1403908F772E4374BB151F7C67E88761a0Eb4f1_0xA013Fbd4b711f9ded6fB09C1c0d358E2FbC2EAA0": {
+			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
+			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
+			"name": "Compound V3 USDC Lender",
+			"vaultVersion": "3.0.0",
+			"activation": 49181585,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "2116320951711",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "1000",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "8164",
+			"lastEstimatedTotalAssets": "2119218887725",
+			"isRetired": true,
+			"displayName": "Compound V3 USDC.e Lender",
+			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
+			"protocols": [
+				"Compound Finance"
+			]
+		},
+		"0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780_0xA013Fbd4b711f9ded6fB09C1c0d358E2FbC2EAA0": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 			"vaultAddress": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"name": "Aave V3 USDC Lender",
@@ -384,13 +384,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "456072367810",
+			"lastTotalDebt": "431191314465",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "2007",
-			"lastEstimatedTotalAssets": "465445373289",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "1663",
+			"lastEstimatedTotalAssets": "433030130948",
 			"isRetired": true,
 			"displayName": "Aave V3 USDC.e Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -398,7 +398,32 @@
 				"Aave"
 			]
 		},
-		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
+		"0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780_0xF54a15F6da443041Bb075959EA66EE47655DDFcA": {
+			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
+			"vaultAddress": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
+			"name": "Aave V3 USDC Lender",
+			"vaultVersion": "3.0.1",
+			"activation": 52562727,
+			"chainID": 137,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "793935",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "500",
+			"lastReport": "1710255192",
+			"lastDebtRatio": "0",
+			"lastEstimatedTotalAssets": "433030130948",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
+		},
+		"0xf4F9d5697341B4C9B0Cc8151413e05A90f7dc24F_0x90b2f54C6aDDAD41b8f6c4fCCd555197BC0F773B": {
 			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 			"vaultAddress": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
 			"name": "AaveV3 DAI Lender",
@@ -411,19 +436,19 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1635904786408442804612109",
+			"lastTotalDebt": "1903934087707343911650882",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "9524",
-			"lastEstimatedTotalAssets": "1641735984959261813125605",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "9747",
+			"lastEstimatedTotalAssets": "1905655085956476661847006",
 			"isRetired": true,
 			"displayName": "Aave V3 DAI Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 			"protocols": null
 		},
-		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
+		"0xf7464410C1ccF86b19711c9B6599336b00641c8f_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
 			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
 			"vaultAddress": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
 			"name": "stMATIC accumulator",
@@ -436,13 +461,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "80000000000000000000000",
+			"lastTotalDebt": "100000000000000000000000",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1709832785",
-			"lastDebtRatio": "754",
-			"lastEstimatedTotalAssets": "80007000000000000000000",
+			"lastReport": "1711040696",
+			"lastDebtRatio": "895",
+			"lastEstimatedTotalAssets": "100007000000000000000000",
 			"isRetired": true,
 			"displayName": "",
 			"description": "",

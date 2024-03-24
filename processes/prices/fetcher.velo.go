@@ -80,9 +80,9 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
-	for i := 0; i < 4; i++ {
-		start := int64(i * 500)
-		allSugar, err := sugar.All(nil, big.NewInt(500), big.NewInt(start))
+	for i := 0; i < 10; i++ {
+		start := int64(i * 250)
+		allSugar, err := sugar.All(nil, big.NewInt(250), big.NewInt(start))
 		if len(allSugar) == 0 || err != nil {
 			break
 		}

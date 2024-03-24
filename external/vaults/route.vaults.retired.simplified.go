@@ -70,8 +70,7 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 			}
 
 			newVault.Strategies = []TStrategy{}
-			vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
-			if ok {
+			if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
 				simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
 				allVaults = append(allVaults, simplified)
 			} else {

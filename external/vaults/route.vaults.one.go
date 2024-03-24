@@ -60,8 +60,7 @@ func (y Controller) GetVault(c *gin.Context) {
 		newVault.RiskScore = newVault.ComputeRiskScore()
 	}
 
-	vaultAsStrategy, ok := storage.GetStrategy(newVault.ChainID, common.HexToAddress(newVault.Address))
-	if ok {
+	if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
 		simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
 		simplified.Description = newVault.Description
 		if simplified.Description == "" {

@@ -26,6 +26,23 @@ func processServer(chainID uint64) {
 	triggerInitializedStatus(chainID)
 }
 
+/**************************************************************************************************
+** The version of the daemon is displayed on the server. The version is based on the latest git
+** commit, trimmed to only show the first 7 characters of the commit hash.
+**************************************************************************************************/
+var version = ""
+
+func getVersion() string {
+	if version == "" {
+		return "dev"
+	}
+	return version[:7]
+}
+
+/**************************************************************************************************
+** Main entry point for the daemon, handling everything from initialization to running external
+** processes.
+**************************************************************************************************/
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)
@@ -49,7 +66,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
-		go triggerTgMessage(`💛 - yDaemon server is ready to accept requests: https://ydaemon.yearn.fi/`)
+		go triggerTgMessage(`💛 - yDaemon v` + getVersion() + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {
 			go processServer(chainID)

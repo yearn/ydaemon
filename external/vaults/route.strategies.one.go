@@ -22,7 +22,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 		return
 	}
 
-	strategy, ok := storage.GetStrategy(chainID, address)
+	strategy, ok := storage.GuessStrategy(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid strategy")
 		return

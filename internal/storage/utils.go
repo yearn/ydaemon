@@ -29,7 +29,7 @@ type TJsonVaultStorage struct {
 }
 type TJsonStrategyStorage struct {
 	TJsonMetadata
-	Strategies map[common.Address]models.TStrategy `json:"strategies"`
+	Strategies map[string]models.TStrategy `json:"strategies"` //string here as the key is `stratAddr_vaultAddr`
 }
 type TJsonERC20Storage struct {
 	TJsonMetadata
@@ -42,6 +42,35 @@ type TJsonERC20Storage struct {
 ** If an element is modified, the patch version is bumped.
 **************************************************************************/
 func detectVersionUpdate[T any](chainID uint64, currentVersion TVersion, previousElements map[common.Address]T, newElements map[common.Address]T) TVersion {
+	shouldBumpMajor := false
+	shouldBumpMinor := false
+	shouldBumpPatch := false
+
+	for address, element := range newElements {
+		if _, ok := previousElements[address]; !ok {
+			shouldBumpMinor = true
+		} else if !reflect.DeepEqual(previousElements[address], element) {
+			shouldBumpPatch = true
+		}
+	}
+	if len(previousElements) > len(newElements) {
+		shouldBumpMajor = true
+	}
+
+	if shouldBumpMajor {
+		currentVersion.Major++
+		currentVersion.Minor = 0
+		currentVersion.Patch = 0
+	} else if shouldBumpMinor {
+		currentVersion.Minor++
+		currentVersion.Patch = 0
+	} else if shouldBumpPatch {
+		currentVersion.Patch++
+	}
+	return currentVersion
+}
+
+func detectStrVersionUpdate[T any](chainID uint64, currentVersion TVersion, previousElements map[string]T, newElements map[string]T) TVersion {
 	shouldBumpMajor := false
 	shouldBumpMinor := false
 	shouldBumpPatch := false

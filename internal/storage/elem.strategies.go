@@ -45,10 +45,10 @@ func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
 /** 🔵 - Yearn *************************************************************************************
 ** The function `storedStrategiesToJson` is responsible for storing strategies to a JSON file.
 **************************************************************************************************/
-func StoreStrategiesToJson(chainID uint64, strategies map[common.Address]models.TStrategy) {
+func StoreStrategiesToJson(chainID uint64, strategies map[string]models.TStrategy) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	previousStrategies := loadStrategiesFromJson(chainID)
-	version := detectVersionUpdate(chainID, previousStrategies.Version, previousStrategies.Strategies, strategies)
+	version := detectStrVersionUpdate(chainID, previousStrategies.Version, previousStrategies.Strategies, strategies)
 
 	data := TJsonStrategyStorage{
 		TJsonMetadata: TJsonMetadata{
@@ -98,7 +98,8 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 		file.ShouldRefresh,
 	})
 	for _, strategy := range file.Strategies {
-		safeSyncMap(_strategiesSyncMap, chainID).Store(strategy.Address, strategy)
+		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
+		safeSyncMap(_strategiesSyncMap, chainID).Store(strategyKey, strategy)
 	}
 }
 
@@ -109,15 +110,18 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 ** usefull as the strategy loading is in two steps: first the indexing, then the data.
 **************************************************************************************************/
 func StoreStrategy(chainID uint64, strategy models.TStrategy) {
-	safeSyncMap(_strategiesSyncMap, chainID).Store(strategy.Address, strategy)
+	strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
+	safeSyncMap(_strategiesSyncMap, chainID).Store(strategyKey, strategy)
 }
 func StoreStrategyMigrated(chainID uint64, strategy models.TStrategyMigrated) {
-	safeSyncMap(_strategiesMigratedSyncMap, chainID).Store(strategy.NewStrategyAddress, strategy)
+	strategyKey := strategy.NewStrategyAddress.Hex() + `_` + strategy.VaultAddress.Hex()
+	safeSyncMap(_strategiesMigratedSyncMap, chainID).Store(strategyKey, strategy)
 }
 func StoreStrategyIfMissing(chainID uint64, strategy models.TStrategy) bool {
 	syncMap := safeSyncMap(_strategiesSyncMap, chainID)
-	if _, ok := syncMap.Load(strategy.Address); !ok {
-		syncMap.Store(strategy.Address, strategy)
+	strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
+	if _, ok := syncMap.Load(strategyKey); !ok {
+		syncMap.Store(strategyKey, strategy)
 		return true
 	}
 	return false
@@ -129,18 +133,19 @@ func StoreStrategyIfMissing(chainID uint64, strategy models.TStrategy) bool {
 ** Each returns both a map and a slice.
 **************************************************************************************************/
 func ListStrategies(chainID uint64) (
-	asMap map[common.Address]models.TStrategy,
+	asMap map[string]models.TStrategy,
 	asSlice []models.TStrategy,
 ) {
-	asMap = make(map[common.Address]models.TStrategy) // make to avoid nil map
+	asMap = make(map[string]models.TStrategy) // make to avoid nil map
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the strategies to the map and slice.
 	** As the stored strategy data are only a subset of static, we need to use the actual structure
 	**********************************************************************************************/
-	safeSyncMap(_strategiesSyncMap, chainID).Range(func(key, value interface{}) bool {
+	safeSyncMap(_strategiesSyncMap, chainID).Range(func(_, value interface{}) bool {
 		strategy := value.(models.TStrategy)
-		asMap[strategy.Address] = strategy
+		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
+		asMap[strategyKey] = strategy
 		asSlice = append(asSlice, strategy)
 		return true
 	})
@@ -148,18 +153,19 @@ func ListStrategies(chainID uint64) (
 	return asMap, asSlice
 }
 func ListStrategiesMigrated(chainID uint64) (
-	asMap map[common.Address]models.TStrategyMigrated,
+	asMap map[string]models.TStrategyMigrated,
 	asSlice []models.TStrategyMigrated,
 ) {
-	asMap = make(map[common.Address]models.TStrategyMigrated) // make to avoid nil map
+	asMap = make(map[string]models.TStrategyMigrated) // make to avoid nil map
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the strategies to the map and slice.
 	** As the stored strategy data are only a subset of static, we need to use the actual structure
 	**********************************************************************************************/
-	safeSyncMap(_strategiesMigratedSyncMap, chainID).Range(func(key, value interface{}) bool {
+	safeSyncMap(_strategiesMigratedSyncMap, chainID).Range(func(_, value interface{}) bool {
 		strategy := value.(models.TStrategyMigrated)
-		asMap[strategy.NewStrategyAddress] = strategy
+		strategyKey := strategy.NewStrategyAddress.Hex() + `_` + strategy.VaultAddress.Hex()
+		asMap[strategyKey] = strategy
 		asSlice = append(asSlice, strategy)
 		return true
 	})
@@ -169,10 +175,15 @@ func ListStrategiesMigrated(chainID uint64) (
 
 /**************************************************************************************************
 ** GetStrategy will return a single strategy stored in the caching system for a given pair of
-** chainID and strategy address.
+** chainID and strategyKey.
 **************************************************************************************************/
-func GetStrategy(chainID uint64, strategyAddress common.Address) (models.TStrategy, bool) {
-	strategyFromSyncMap, ok := safeSyncMap(_strategiesSyncMap, chainID).Load(strategyAddress)
+func GetStrategy(
+	chainID uint64,
+	strategyAddress common.Address,
+	vaultAddress common.Address,
+) (models.TStrategy, bool) {
+	strategyKey := strategyAddress.Hex() + `_` + vaultAddress.Hex()
+	strategyFromSyncMap, ok := safeSyncMap(_strategiesSyncMap, chainID).Load(strategyKey)
 	if !ok {
 		return models.TStrategy{}, false
 	}
@@ -180,25 +191,50 @@ func GetStrategy(chainID uint64, strategyAddress common.Address) (models.TStrate
 }
 
 /**************************************************************************************************
+** GuessStrategy will return a single strategy stored in the caching system for a given pair of
+** chainID and strategy address.
+**************************************************************************************************/
+func GuessStrategy(
+	chainID uint64,
+	strategyAddress common.Address,
+) (models.TStrategy, bool) {
+	strat := models.TStrategy{}
+	safeSyncMap(_strategiesSyncMap, chainID).Range(func(_, value interface{}) bool {
+		strategy := value.(models.TStrategy)
+		if strategy.Address == strategyAddress {
+			strat = strategy
+			return true
+		}
+		return true
+	})
+
+	if (strat.Address == common.Address{}) {
+		return models.TStrategy{}, false
+	}
+	return strat, true
+}
+
+/**************************************************************************************************
 ** ListStrategiesForVault will return a list of all the strategies stored in the caching system for
 ** a given chainID and vault address. Both a map and a slice are returned.
 **************************************************************************************************/
 func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) (
-	asMap map[common.Address]models.TStrategy,
+	asMap map[string]models.TStrategy,
 	asSlice []models.TStrategy,
 ) {
-	asMap = make(map[common.Address]models.TStrategy) // make to avoid nil map
+	asMap = make(map[string]models.TStrategy) // make to avoid nil map
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the strategies to the map and slice.
 	** As the stored strategy data are only a subset of static, we need to use the actual structure
 	**********************************************************************************************/
-	safeSyncMap(_strategiesSyncMap, chainID).Range(func(key, value interface{}) bool {
+	safeSyncMap(_strategiesSyncMap, chainID).Range(func(_, value interface{}) bool {
 		strategy := value.(models.TStrategy)
 		if strategy.VaultAddress != vaultAddress {
 			return true
 		}
-		asMap[strategy.Address] = strategy
+		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
+		asMap[strategyKey] = strategy
 		asSlice = append(asSlice, strategy)
 		return true
 	})

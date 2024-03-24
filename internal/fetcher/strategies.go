@@ -3,7 +3,6 @@ package fetcher
 import (
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -23,7 +22,11 @@ import (
 ** Returns:
 ** - a list of TStrategy containing the basic information for the strategies
 **************************************************************************************************/
-func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.Address]models.TStrategy) map[common.Address]models.TStrategy {
+func fetchStrategiesBasicInformations(
+	chainID uint64,
+	strategiesMap map[string]models.TStrategy,
+) map[string]models.TStrategy {
+
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
@@ -83,10 +86,10 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 			}
 		}
 
-		strategiesMap[strat.Address] = newStrategy
+		strategyKey := strat.Address.Hex() + `_` + newStrategy.VaultAddress.Hex()
+		strategiesMap[strategyKey] = newStrategy
 		storage.StoreStrategy(chainID, newStrategy)
 	}
-
 	return strategiesMap
 }
 
@@ -103,8 +106,8 @@ func fetchStrategiesBasicInformations(chainID uint64, strategiesMap map[common.A
 **************************************************************************************************/
 func RetrieveAllStrategies(
 	chainID uint64,
-	strategies map[common.Address]models.TStrategy,
-) map[common.Address]models.TStrategy {
+	strategies map[string]models.TStrategy,
+) map[string]models.TStrategy {
 	fetchStrategiesBasicInformations(chainID, strategies)
 
 	strategyMap, _ := storage.ListStrategies(chainID)

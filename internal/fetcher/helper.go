@@ -56,15 +56,12 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetDefaultQueue(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetIsShutdown(vault.Address.Hex(), vault.Address, ``))
 
-	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
-		// If the last vault update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetIsShutdown(vault.Address.Hex(), vault.Address, ``))
-	}
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last vault update was more than 24 hour ago, we will do a full update
 		calls = append(calls, multicalls.GetAsset(vault.Address.Hex(), vault.Address))
-		calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetRoleManager(vault.Address.Hex(), vault.Address))
 		calls = append(calls, multicalls.GetAccountant(vault.Address.Hex(), vault.Address))
 
@@ -134,23 +131,24 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	metadata := storage.GetStrategiesJsonMetadata(strat.ChainID)
 	lastUpdate := metadata.LastUpdate
 	shouldRefresh := metadata.ShouldRefresh
+	strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
 
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
-	calls = append(calls, multicalls.GetStrategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetStrategies(strategyKey, strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strategyKey, strat.Address, strat.VaultVersion))
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetEmergencyExit(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRV(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetEmergencyExit(strategyKey, strat.Address, strat.VaultVersion))
 	}
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last strat update was more than 24 hour ago, we will do a full update
-		calls = append(calls, multicalls.GetStategyIsActive(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyIsActive(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
 	}
 	return calls
 }
@@ -162,24 +160,25 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	metadata := storage.GetStrategiesJsonMetadata(strat.ChainID)
 	lastUpdate := metadata.LastUpdate
 	shouldRefresh := metadata.ShouldRefresh
+	strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
 
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
-	calls = append(calls, multicalls.GetV3Strategies(strat.Address.Hex(), strat.VaultAddress, strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetPerformanceFee(strat.Address.Hex(), strat.Address))
+	calls = append(calls, multicalls.GetV3Strategies(strategyKey, strat.VaultAddress, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetPerformanceFee(strategyKey, strat.Address))
 	calls = append(calls, multicalls.GetTotalAssets(strat.VaultAddress.Hex(), strat.VaultAddress))
-	calls = append(calls, multicalls.GetTotalAssets(strat.Address.Hex(), strat.Address))
+	calls = append(calls, multicalls.GetTotalAssets(strategyKey, strat.Address))
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
-		calls = append(calls, multicalls.GetStategyKeepCRV(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetStategyKeepCVX(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetIsShutdown(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRV(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStategyKeepCVX(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetIsShutdown(strategyKey, strat.Address, strat.VaultVersion))
 	}
 	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
 		// If the last strat update was more than 24 hour ago, we will do a full update
-		calls = append(calls, multicalls.GetStrategyName(strat.Address.Hex(), strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDoHealthCheck(strat.Address.Hex(), strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
+		calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
 	}
 	return calls
 }
@@ -277,15 +276,16 @@ func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) 
 }
 
 func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interface{}) models.TStrategy {
-	rawStrategies := response[strat.Address.Hex()+`strategies`]
-	rawIsActive := response[strat.Address.Hex()+`isActive`]
-	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
-	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
-	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
-	rawName := response[strat.Address.Hex()+`name`]
-	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
-	rawEmergencyExit := response[strat.Address.Hex()+`emergencyExit`]
-	rawEstimatedTotalAssets := response[strat.Address.Hex()+`estimatedTotalAssets`]
+	strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
+	rawStrategies := response[strategyKey+`strategies`]
+	rawIsActive := response[strategyKey+`isActive`]
+	rawKeepCRV := response[strategyKey+`keepCRV`]
+	rawKeepCRVPercent := response[strategyKey+`keepCrvPercent`]
+	rawKeepCVX := response[strategyKey+`keepCVX`]
+	rawName := response[strategyKey+`name`]
+	rawDoHealthCheck := response[strategyKey+`doHealthCheck`]
+	rawEmergencyExit := response[strategyKey+`emergencyExit`]
+	rawEstimatedTotalAssets := response[strategyKey+`estimatedTotalAssets`]
 
 	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
 	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
@@ -346,23 +346,24 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 		MaxDebt     *big.Int "json:\"max_debt\""
 	}
 
-	rawStrategies := response[strat.Address.Hex()+`strategies`]
-	rawKeepCRV := response[strat.Address.Hex()+`keepCRV`]
-	rawKeepCRVPercent := response[strat.Address.Hex()+`keepCrvPercent`]
-	rawKeepCVX := response[strat.Address.Hex()+`keepCVX`]
-	rawName := response[strat.Address.Hex()+`name`]
+	strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
+	rawStrategies := response[strategyKey+`strategies`]
+	rawKeepCRV := response[strategyKey+`keepCRV`]
+	rawKeepCRVPercent := response[strategyKey+`keepCrvPercent`]
+	rawKeepCVX := response[strategyKey+`keepCVX`]
+	rawName := response[strategyKey+`name`]
 	rawVaultTotalAssets := response[strat.VaultAddress.Hex()+`totalAssets`]
-	rawEstimatedTotalAssets := response[strat.Address.Hex()+`totalAssets`]
-	rawDoHealthCheck := response[strat.Address.Hex()+`doHealthCheck`]
-	rawIsShutdown := response[strat.Address.Hex()+`isShutdown`]
-	rawPerformanceFee := response[strat.Address.Hex()+`performanceFee`]
+	rawEstimatedTotalAssets := response[strategyKey+`totalAssets`]
+	rawDoHealthCheck := response[strategyKey+`doHealthCheck`]
+	rawIsShutdown := response[strategyKey+`isShutdown`]
+	rawPerformanceFee := response[strategyKey+`performanceFee`]
 
 	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
 
 	if (len(rawPerformanceFee) > 0) && (len(rawStrategies) > 0) {
 		strat.LastPerformanceFee = helpers.DecodeBigInt(rawPerformanceFee)
 	} else {
-		strat.LastPerformanceFee = bigNumber.NewInt(1000) // Default to 1000, aka 10%
+		strat.LastPerformanceFee = bigNumber.NewInt(0) // Default to 1000, aka 10%
 	}
 	strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).CurrentDebt)
 	strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)

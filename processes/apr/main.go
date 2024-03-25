@@ -126,6 +126,7 @@ func ComputeChainAPR(chainID uint64) {
 				vault,
 				allStrategiesForVault,
 			)
+			vaultAPR.ForwardAPR.Composite.RewardsAPR = vaultAPR.Extra.GammaRewardAPR
 		}
 
 		safeSyncMap(COMPUTED_APR, chainID).Store(vault.Address, vaultAPR)

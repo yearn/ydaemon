@@ -80,10 +80,20 @@ func computeVaultV3ForwardAPR(
 			humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
 			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
 			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
-			//Reduce the APR by 20% to account for the fees/slippage and other factors
-			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, bigNumber.NewFloat(0.8))
+
+			// Scaling based on the performance fee
+			// Retrieve the ratio we should use to take into account the performance fee. If the performance fee is 10%, the ratio is 0.9
+			// 10_000 is the precision. Ex: 1 - (1000 / 10_000)
+			performanceFeeFloat := bigNumber.NewFloat(0).SetInt(strategy.LastPerformanceFee)
+			performanceFee := bigNumber.NewFloat(0).Div(performanceFeeFloat, bigNumber.NewFloat(10_000))
+			performanceFee = bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), performanceFee)
+			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, performanceFee)
+
 			debtRatioAPR = bigNumber.NewFloat(0).Add(debtRatioAPR, scaledStrategyAPR)
 		}
+
+		//Reduce the APR by 10% to account for the fees/slippage and other factors
+		debtRatioAPR = bigNumber.NewFloat(0).Mul(debtRatioAPR, bigNumber.NewFloat(0.9))
 	}
 
 	/**********************************************************************************************

@@ -81,7 +81,9 @@ var ARBITRUM = TChain{
 		},
 	},
 	ExtraURI: TChainExtraURI{
-		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=42161`,
-		GammaHypervisorURI: `https://wire2.gamma.xyz/arbitrum/hypervisors/allData`,
+		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=42161`,
+		GammaHypervisorURI: []string{
+			`https://wire2.gamma.xyz/arbitrum/hypervisors/allData`,
+		},
 	},
 }

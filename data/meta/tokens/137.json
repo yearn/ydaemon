@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-22T12:37:15.086105+01:00",
+	"lastUpdate": "2024-03-25T14:58:50.650273+01:00",
 	"version": {
 		"major": 0,
-		"minor": 9,
+		"minor": 12,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -35,6 +35,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x00a6177c6455a29b8daa7144b2befc9f2147bb7e": {
+			"address": "0x00a6177c6455a29b8daa7144b2befc9f2147bb7e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x00A6177C6455A29B8dAa7144B2bEfc9F2147BB7E/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x01e0d3b51b8a005951d8ff6b0ad147a7faead9d5": {
+			"address": "0x01e0d3b51b8a005951d8ff6b0ad147a7faead9d5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x01E0d3B51b8A005951d8ff6B0Ad147A7FaeAD9d5/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x02203f2351e7ac6ab5051205172d3f772db7d814": {
 			"address": "0x02203f2351e7ac6ab5051205172d3f772db7d814",
 			"underlyingTokensAddresses": [],
@@ -47,6 +75,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x02203f2351E7aC6aB5051205172D3f772db7D814/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x022df0b3341b3a0157eea97dd024a93f7496d631": {
+			"address": "0x022df0b3341b3a0157eea97dd024a93f7496d631",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x022df0b3341B3A0157EEA97dD024A93f7496D631/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd": {
@@ -77,6 +119,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0x03e6010193c595eC168756aF700479D1AFf76895/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x0416e7f87ae8954a5f9302adcd440444d90452d6": {
+			"address": "0x0416e7f87ae8954a5f9302adcd440444d90452d6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0416e7f87Ae8954A5f9302adcd440444D90452D6/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x04d521e2c414e6d898c6f2599fdd863edf49e247": {
@@ -119,6 +175,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x056e8299B082D5F1016C846D93E71EadF4137851/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x05bfe97bf794a4db69d3059091f064ea0a5e538e": {
+			"address": "0x05bfe97bf794a4db69d3059091f064ea0a5e538e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x05BFE97Bf794a4DB69d3059091F064eA0a5E538E/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x05c731f5f922835796c49412a30615c46cca4d9e": {
@@ -193,6 +263,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x0bef3882798219eeaf40a8b63563a3d3ab6092ab": {
+			"address": "0x0bef3882798219eeaf40a8b63563a3d3ab6092ab",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0beF3882798219Eeaf40A8B63563A3d3AB6092Ab/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x0c087f8d6a1f14f71bb7cc7e1b061ca297af7555": {
 			"address": "0x0c087f8d6a1f14f71bb7cc7e1b061ca297af7555",
 			"underlyingTokensAddresses": [],
@@ -233,6 +317,76 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x0d8dc93577196aff7d674a4e08b74edc04999bcc": {
+			"address": "0x0d8dc93577196aff7d674a4e08b74edc04999bcc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0d8DC93577196aFF7d674A4E08b74EDC04999BcC/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x0db644468cd5c664a354e31aa1f6dba1d1dead47": {
+			"address": "0x0db644468cd5c664a354e31aa1f6dba1d1dead47",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0db644468Cd5C664a354e31aa1F6dBA1D1deAD47/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x0df98245e23e776fe059f5793d03ac4221a0ef50": {
+			"address": "0x0df98245e23e776fe059f5793d03ac4221a0ef50",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0Df98245e23e776Fe059F5793d03AC4221A0ef50/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x0e3eb2c75bd7dd0e12249d96b1321d9570764d77": {
+			"address": "0x0e3eb2c75bd7dd0e12249d96b1321d9570764d77",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0e3Eb2C75Bd7dD0e12249d96b1321d9570764D77/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x0e44ceb592acfc5d3f09d996302eb4c499ff8c10": {
+			"address": "0x0e44ceb592acfc5d3f09d996302eb4c499ff8c10",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x0e44cEb592AcFC5D3F09D996302eB4C499ff8c10/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x0e9b89007eee9c958c0eda24ef70723c2c93dd58": {
@@ -363,6 +517,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x14ef96a0f7d738db906bdd5260e46aa47b1e6e45": {
+			"address": "0x14ef96a0f7d738db906bdd5260e46aa47b1e6e45",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x14Ef96A0f7d738Db906bdD5260E46AA47B1e6E45/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x153c5d94955cdf5725e65cfb9818caf0a55f716f": {
 			"address": "0x153c5d94955cdf5725e65cfb9818caf0a55f716f",
 			"underlyingTokensAddresses": [],
@@ -375,6 +543,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x153C5D94955cDF5725e65CFB9818Caf0A55F716F/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x15419a0edf90005d29f6edcb35d80cc010ab6bcf": {
+			"address": "0x15419a0edf90005d29f6edcb35d80cc010ab6bcf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x15419a0eDF90005D29f6EDcb35D80cc010Ab6bcF/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x15dd97782843aedccc5ba7b45761cc96c7b29102": {
+			"address": "0x15dd97782843aedccc5ba7b45761cc96c7b29102",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x15DD97782843AedCcC5Ba7b45761cC96C7b29102/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x15f2e223000d392a8449a53a4b930f3c54926987": {
@@ -419,6 +615,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x17b509b2b65b0d07b9e46bfc2ffe6c9c09a8e821": {
+			"address": "0x17b509b2b65b0d07b9e46bfc2ffe6c9c09a8e821",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x17B509b2B65B0d07b9e46bFC2fFe6c9c09a8E821/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x17f4e4b273a71bee4c469a1425f23056f83f7bff": {
+			"address": "0x17f4e4b273a71bee4c469a1425f23056f83f7bff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x17F4e4B273a71BEE4c469a1425f23056F83f7bFF/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x1825c76ced3c1625250b8af6204bf4fc4e5b9fcf": {
 			"address": "0x1825c76ced3c1625250b8af6204bf4fc4e5b9fcf",
 			"underlyingTokensAddresses": [],
@@ -447,6 +671,20 @@
 			"decimals": 8,
 			"chainID": 137
 		},
+		"0x1923114924fb259858519256c3b5860e91932dd9": {
+			"address": "0x1923114924fb259858519256c3b5860e91932dd9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x1923114924fb259858519256c3b5860E91932DD9/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x198f1d316aad1c0bfd36a79bd1a8e9dba92daa18": {
 			"address": "0x198f1d316aad1c0bfd36a79bd1a8e9dba92daa18",
 			"underlyingTokensAddresses": [],
@@ -459,6 +697,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x198f1D316aad1C0Bfd36a79bd1A8e9dba92DAa18/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x19e4c89e983f5827e353ca0e8a0d6d26e703a8df": {
+			"address": "0x19e4c89e983f5827e353ca0e8a0d6d26e703a8df",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x19E4c89e983f5827e353ca0e8a0D6D26E703a8dF/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x1a246d546f52d8145a55dda01908fc413111305e": {
@@ -503,6 +755,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x1cf4293125913cb3dea4ad7f2bb4795b9e896ce9": {
+			"address": "0x1cf4293125913cb3dea4ad7f2bb4795b9e896ce9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "aWMATIC-USDC",
+			"symbol": "aWMATIC-USDC",
+			"displayName": "aWMATIC-USDC",
+			"displaySymbol": "aWMATIC-USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x1cf4293125913cB3Dea4aD7f2bb4795B9e896CE9/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
 		"0x1d734a02ef1e1f5886e66b0673b71af5b53ffa94": {
 			"address": "0x1d734a02ef1e1f5886e66b0673b71af5b53ffa94",
 			"underlyingTokensAddresses": [],
@@ -543,6 +809,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x1DDAe2e33C1d68211C5EAE05948FD298e72C541A/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x1f97c0260c6a18b26a9c2681f0faa93ac2182dbc": {
+			"address": "0x1f97c0260c6a18b26a9c2681f0faa93ac2182dbc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x1f97c0260C6a18B26a9C2681F0fAa93aC2182dbC/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x20103b6fcecaa94ddbf3d18ab9d99892003b1d80": {
@@ -629,6 +909,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x26ca661c70f548e2d199aaf2ab5b5b4488d48383": {
+			"address": "0x26ca661c70f548e2d199aaf2ab5b5b4488d48383",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x26Ca661c70f548e2D199AAF2ab5B5B4488d48383/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x27420e641ce96a6c0191dbfa0a9500eace33531d": {
 			"address": "0x27420e641ce96a6c0191dbfa0a9500eace33531d",
 			"underlyingTokensAddresses": [],
@@ -683,6 +977,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/logo-128.png",
 			"decimals": 6,
+			"chainID": 137
+		},
+		"0x27c30be7bf776e31e2cbbb9fe6db18d86f09da01": {
+			"address": "0x27c30be7bf776e31e2cbbb9fe6db18d86f09da01",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x27c30Be7BF776E31e2Cbbb9FE6DB18D86F09dA01/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x27ffa4221a52b02ecc67c5b199007010b90e8660": {
@@ -947,6 +1255,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x33bc9a6a200752ddd44f41dd978977e0699cc00d": {
+			"address": "0x33bc9a6a200752ddd44f41dd978977e0699cc00d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x33bc9A6a200752ddd44F41dD978977E0699cC00d/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x33eeafa7ef22cd4468d65819b2fe30f170db5b69": {
 			"address": "0x33eeafa7ef22cd4468d65819b2fe30f170db5b69",
 			"underlyingTokensAddresses": [],
@@ -975,6 +1297,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x357faf5843c7fd7fb4e34fbeabdac16eabe8a5bc": {
+			"address": "0x357faf5843c7fd7fb4e34fbeabdac16eabe8a5bc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x357faF5843c7FD7fb4E34FBEabDAc16eabE8a5bc/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x3654e293a599953044ac5f6e1e1a45ee749d0d0f": {
+			"address": "0x3654e293a599953044ac5f6e1e1a45ee749d0d0f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3654E293a599953044Ac5f6e1e1a45Ee749d0D0F/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x3672d301778750c41a7864980a5ddbc2af99476e": {
 			"address": "0x3672d301778750c41a7864980a5ddbc2af99476e",
 			"underlyingTokensAddresses": [],
@@ -989,6 +1339,48 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x36b511a006cac909dc56c2c24eb69ca304f74999": {
+			"address": "0x36b511a006cac909dc56c2c24eb69ca304f74999",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "aQUICK-USDC",
+			"symbol": "aQUICK-USDC",
+			"displayName": "aQUICK-USDC",
+			"displaySymbol": "aQUICK-USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x36b511A006cAc909DC56C2c24eb69CA304f74999/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x370404a2a57edfbeaf16dc8ef8e2d1b0a2a9da15": {
+			"address": "0x370404a2a57edfbeaf16dc8ef8e2d1b0a2a9da15",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x370404A2A57eDfbEaF16Dc8ef8E2d1B0a2A9da15/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x3716b8ff0acc565971f7c7cedc0d756b610ecd20": {
+			"address": "0x3716b8ff0acc565971f7c7cedc0d756b610ecd20",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3716b8fF0acC565971f7c7CeDC0d756b610ECd20/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x374c44443553d7eb86b5f77597cc67a507b19179": {
 			"address": "0x374c44443553d7eb86b5f77597cc67a507b19179",
 			"underlyingTokensAddresses": [],
@@ -1001,6 +1393,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x374C44443553d7EB86b5f77597cC67A507b19179/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x384d2094d0df788192043a1cbd200308dd60b068": {
+			"address": "0x384d2094d0df788192043a1cbd200308dd60b068",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x384d2094D0Df788192043a1CBd200308DD60b068/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7": {
@@ -1133,6 +1539,20 @@
 			"decimals": 6,
 			"chainID": 137
 		},
+		"0x3c61b4c0af70b6de7205bad8f63364ddd4f8ba5f": {
+			"address": "0x3c61b4c0af70b6de7205bad8f63364ddd4f8ba5f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3C61b4C0AF70b6de7205BAd8F63364ddd4F8ba5F/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x3cc20a6795c4b57d9817399f68e83e71c8626580": {
 			"address": "0x3cc20a6795c4b57d9817399f68e83e71c8626580",
 			"underlyingTokensAddresses": [],
@@ -1145,6 +1565,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x3Cc20A6795c4b57d9817399F68E83e71C8626580/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x3cc6f5d3cbe52ecf15ccb43d0832ad4f6ef132cf": {
+			"address": "0x3cc6f5d3cbe52ecf15ccb43d0832ad4f6ef132cf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3CC6F5d3CBe52EcF15CCb43D0832ad4F6ef132cf/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x3da7e0320c04d88b71e0ada960aad3d21f10cadf": {
@@ -1161,6 +1595,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x3e31ab7f37c048fc6574189135d108df80f0ea26": {
+			"address": "0x3e31ab7f37c048fc6574189135d108df80f0ea26",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3e31AB7f37c048FC6574189135D108df80F0ea26/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x3e99b86b16f36dcf3b987ebc8b754c54030403b5": {
 			"address": "0x3e99b86b16f36dcf3b987ebc8b754c54030403b5",
 			"underlyingTokensAddresses": [],
@@ -1175,6 +1623,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x3ef7f8fa80e622f358283145172143116c61524d": {
+			"address": "0x3ef7f8fa80e622f358283145172143116c61524d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3EF7f8fA80e622F358283145172143116C61524D/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x3f35705479d9d77c619b2aac9dd7a64e57151506": {
 			"address": "0x3f35705479d9d77c619b2aac9dd7a64e57151506",
 			"underlyingTokensAddresses": [],
@@ -1187,6 +1649,48 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x3f35705479d9d77c619b2aAC9dd7a64e57151506/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x3f5228d0e7d75467366be7de2c31d0d098ba2c23": {
+			"address": "0x3f5228d0e7d75467366be7de2c31d0d098ba2c23",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3F5228d0e7D75467366be7De2c31D0d098bA2C23/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x3f7cd6c7093d5a783128c926200c1fccb1d36b76": {
+			"address": "0x3f7cd6c7093d5a783128c926200c1fccb1d36b76",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3f7cD6C7093D5a783128c926200C1FcCb1D36B76/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x3fa147d6309abeb5c1316f7d8a7d8bd023e0cd80": {
+			"address": "0x3fa147d6309abeb5c1316f7d8a7d8bd023e0cd80",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x3Fa147D6309abeb5C1316f7d8a7d8bD023e0cd80/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x3fb73a554defa86b18f72e543aa2174a4d5f9621": {
@@ -1231,6 +1735,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x4183db4a5a1a3612b17459ba4e072aa59f302e89": {
+			"address": "0x4183db4a5a1a3612b17459ba4e072aa59f302e89",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x4183DB4a5A1A3612B17459BA4e072aa59F302E89/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x42908891cbc13301c910b4e71055431bf134aaa0": {
 			"address": "0x42908891cbc13301c910b4e71055431bf134aaa0",
 			"underlyingTokensAddresses": [
@@ -1273,6 +1791,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x435254d188cb5DFCF62517Aa3dc6cD33AAa94e25/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x44720a6f572649526ac9073cae9200755cc78e0a": {
+			"address": "0x44720a6f572649526ac9073cae9200755cc78e0a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x44720A6f572649526Ac9073caE9200755cc78e0A/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x44899605e50d20d84f58b58c5958ed1c5ddc111d": {
@@ -1345,6 +1877,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x45dda9cb7c25131df268515131f647d726f50608": {
+			"address": "0x45dda9cb7c25131df268515131f647d726f50608",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x45dDa9cb7c25131DF268515131f647d726f50608/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x46840e073376178b1e669693c021329b17fb22aa": {
 			"address": "0x46840e073376178b1e669693c021329b17fb22aa",
 			"underlyingTokensAddresses": [],
@@ -1385,6 +1931,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x4735eCA8D0C18B6a42fC3A722f5F0Ca394a5c667/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x479e1b71a702a595e19b6d5932cd5c863ab57ee0": {
+			"address": "0x479e1b71a702a595e19b6d5932cd5c863ab57ee0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x479e1B71A702a595e19b6d5932CD5c863ab57ee0/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x488d1b74d4b36da3c8909ca88df64e4196b0497a": {
+			"address": "0x488d1b74d4b36da3c8909ca88df64e4196b0497a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x488D1b74D4b36dA3C8909Ca88Df64e4196b0497a/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
@@ -1459,6 +2033,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x4b6998b0cc8825898708564040cbd302257b531b": {
+			"address": "0x4b6998b0cc8825898708564040cbd302257b531b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x4B6998B0Cc8825898708564040cBd302257b531b/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x4b8db017f09f911f5d4387dd602ba40f7bc32b90": {
+			"address": "0x4b8db017f09f911f5d4387dd602ba40f7bc32b90",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x4B8DB017F09f911F5D4387dd602Ba40f7bc32b90/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x4b9e26a02121a1c541403a611b542965bd4b68ce": {
 			"address": "0x4b9e26a02121a1c541403a611b542965bd4b68ce",
 			"underlyingTokensAddresses": [],
@@ -1471,6 +2073,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x4B9e26a02121a1C541403a611b542965Bd4b68Ce/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x4ccd010148379ea531d6c587cfdd60180196f9b1": {
+			"address": "0x4ccd010148379ea531d6c587cfdd60180196f9b1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x4CcD010148379ea531D6C587CfDd60180196F9b1/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x4d05f2a005e6f36633778416764e82d1d12e7fbb": {
+			"address": "0x4d05f2a005e6f36633778416764e82d1d12e7fbb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x4D05f2A005e6F36633778416764E82d1D12E7fbb/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x4e78011ce80ee02d2c3e649fb657e45898257815": {
@@ -1499,6 +2129,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x4F7e090fe185aaC68fc58E7Fa1B9D4314d357327/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x50eaedb835021e4a108b7290636d62e9765cc6d7": {
+			"address": "0x50eaedb835021e4a108b7290636d62e9765cc6d7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x50eaEDB835021E4A108B7290636d62E9765cc6d7/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
@@ -1603,6 +2247,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x55caabb0d2b704fd0ef8192a7e35d8837e678207": {
+			"address": "0x55caabb0d2b704fd0ef8192a7e35d8837e678207",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x55CAaBB0d2b704FD0eF8192A7E35D8837e678207/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x5645dcb64c059aa11212707fbf4e7f984440a8cf": {
+			"address": "0x5645dcb64c059aa11212707fbf4e7f984440a8cf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5645dCB64c059aa11212707fbf4E7F984440a8Cf/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x566452e9d621a1902f9ccf2adaf029cf0f36ec67": {
 			"address": "0x566452e9d621a1902f9ccf2adaf029cf0f36ec67",
 			"underlyingTokensAddresses": [],
@@ -1701,6 +2373,48 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x59db5ea66958b19641b6891fc373b44b567ea15c": {
+			"address": "0x59db5ea66958b19641b6891fc373b44b567ea15c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x59db5eA66958b19641b6891Fc373B44b567ea15C/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x5b1fd9fa139353c5d9eaf459e4bd2f7a6b4812bb": {
+			"address": "0x5b1fd9fa139353c5d9eaf459e4bd2f7a6b4812bb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5B1fD9Fa139353C5D9eaf459E4BD2f7A6B4812Bb/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x5b41eedcfc8e0ae47493d4945aa1ae4fe05430ff": {
+			"address": "0x5b41eedcfc8e0ae47493d4945aa1ae4fe05430ff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5b41EEDCfC8e0AE47493d4945Aa1AE4fe05430ff/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x5b7d7ba63b85cf5de24c3f999af58d46bd51e568": {
 			"address": "0x5b7d7ba63b85cf5de24c3f999af58d46bd51e568",
 			"underlyingTokensAddresses": [],
@@ -1727,6 +2441,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x5bA383530Db75A22E028239dbc777C7Ee8CE4752/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x5baaffa2cb0f71af28a1bd9dcfbb98c95b52fb20": {
+			"address": "0x5baaffa2cb0f71af28a1bd9dcfbb98c95b52fb20",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5baAFFA2CB0f71aF28A1BD9dCfbb98c95b52fB20/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x5bf44bb003efe05f711a14a189c0902d6626e919": {
+			"address": "0x5bf44bb003efe05f711a14a189c0902d6626e919",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5bF44Bb003Efe05f711A14A189C0902d6626E919/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x5c1fa2c9999d4fe0f6b13e95770ca406f79879c4": {
@@ -1757,6 +2499,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x5cd94ead61fea43886feec3c95b1e9d7284fdef3": {
+			"address": "0x5cd94ead61fea43886feec3c95b1e9d7284fdef3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5Cd94eAD61FEA43886FEEC3C95B1e9D7284FdeF3/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x5cdc18b774c6cd6f1398faf19d4bd4f31bc53c57": {
 			"address": "0x5cdc18b774c6cd6f1398faf19d4bd4f31bc53c57",
 			"underlyingTokensAddresses": [],
@@ -1769,6 +2525,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x5CdC18b774C6cD6F1398FAf19D4Bd4f31Bc53C57/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x5d0acfa39a0fca603147f1c14e53f46be76984bc": {
+			"address": "0x5d0acfa39a0fca603147f1c14e53f46be76984bc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5D0aCfa39A0FCA603147f1c14e53f46BE76984BC/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x5d1e23160ed81f33dfae40ed72dd4377c198ddaf": {
+			"address": "0x5d1e23160ed81f33dfae40ed72dd4377c198ddaf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5d1e23160ED81F33dfaE40Ed72dd4377c198ddAf/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x5ec3511b49d4fe7798015a26a83abdc01261615b": {
@@ -1797,6 +2581,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x5F528Db1129488083434E1B96E9808E3c4C6ed83/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x5f69c2ec01c22843f8273838d570243fd1963014": {
+			"address": "0x5f69c2ec01c22843f8273838d570243fd1963014",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x5f69C2ec01c22843f8273838d570243fd1963014/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x6002d7714e8038f2058e8162b0b86c0b19c31908": {
@@ -1855,6 +2653,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x6347c1b550e3cef5edfa2443756d5ca858a04ec4": {
+			"address": "0x6347c1b550e3cef5edfa2443756d5ca858a04ec4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6347C1b550e3CEf5edfa2443756D5Ca858A04EC4/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x64c01d2b748e5deba661ce58393e6ee0e151a1ee": {
+			"address": "0x64c01d2b748e5deba661ce58393e6ee0e151a1ee",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x64C01d2b748e5debA661CE58393E6ee0E151a1eE/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x65ad509db5924ef0001d977590985f965ef1aaaa": {
 			"address": "0x65ad509db5924ef0001d977590985f965ef1aaaa",
 			"underlyingTokensAddresses": [],
@@ -1867,6 +2693,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x65aD509DB5924Ef0001d977590985f965eF1aaaa/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x65c30f39b880bdd9616280450c4b41cc74b438b7": {
+			"address": "0x65c30f39b880bdd9616280450c4b41cc74b438b7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x65c30F39B880BDD9616280450C4b41cC74B438b7/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x6669b4706cc152f359e947bca68e263a87c52634": {
+			"address": "0x6669b4706cc152f359e947bca68e263a87c52634",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6669B4706cC152F359e947BCa68E263A87c52634/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x672688c6ee3e750dfaa4874743ef693a6f2538ed": {
@@ -1995,6 +2849,62 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x6b75f2189f0e11c52e814e09e280eb1a9a8a094a": {
+			"address": "0x6b75f2189f0e11c52e814e09e280eb1a9a8a094a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6b75F2189F0E11C52e814E09e280eb1a9A8A094a/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x6b7a1606558f586ffa1fad23a1ab84ccb9155b00": {
+			"address": "0x6b7a1606558f586ffa1fad23a1ab84ccb9155b00",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6b7a1606558f586FFA1faD23a1aB84cCB9155B00/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x6baead5db7fee6d5c9f0ca07bb5038c4cd279f5c": {
+			"address": "0x6baead5db7fee6d5c9f0ca07bb5038c4cd279f5c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6BaEad5Db7FeE6D5c9F0Ca07Bb5038C4cD279F5c/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x6c6d5501138258dde5bc4fe51bc9bf422c021f9a": {
+			"address": "0x6c6d5501138258dde5bc4fe51bc9bf422c021f9a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6c6d5501138258DdE5bc4FE51bC9BF422c021f9A/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x6ccf63ac74b5533c456c3a68786629e7670293c0": {
 			"address": "0x6ccf63ac74b5533c456c3a68786629e7670293c0",
 			"underlyingTokensAddresses": [],
@@ -2007,6 +2917,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x6CcF63ac74b5533c456C3a68786629e7670293c0/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x6dc111d820b81c5669ba2bdb7074b8a937c923c0": {
+			"address": "0x6dc111d820b81c5669ba2bdb7074b8a937c923c0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x6dC111d820b81c5669BA2bDb7074B8A937c923C0/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x6e4e624106cb12e168e6533f8ec7c82263358940": {
@@ -2065,6 +2989,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x718A554d9740AC9BF4092ec1692961f1c9d96f46/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7212d38aa05d4d76c9af19721fda00c21b7f8b28": {
+			"address": "0x7212d38aa05d4d76c9af19721fda00c21b7f8b28",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7212D38AA05d4D76C9Af19721fDa00C21b7f8B28/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x7268bdc2135364d4d74385d075a3ecefe0bf8924": {
@@ -2167,6 +3105,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x7935aefec4077611ebb088f640de9462d39cc460": {
+			"address": "0x7935aefec4077611ebb088f640de9462d39cc460",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7935aeFec4077611EbB088F640De9462D39CC460/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58": {
 			"address": "0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58",
 			"underlyingTokensAddresses": [],
@@ -2179,6 +3131,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x795f8c9B0A0Da9Cd8dea65Fc10f9B57AbC532E58/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7963a55a5e37e1c8443b62e92e5455e672a1f37e": {
+			"address": "0x7963a55a5e37e1c8443b62e92e5455e672a1f37e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7963a55a5E37E1c8443B62e92e5455E672a1F37e/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x7ae5dece3903388281eff3a3d115ca00d4fafd4d": {
@@ -2209,6 +3175,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x7b925e617aefd7fb3a93abe3a701135d7a1ba710": {
+			"address": "0x7b925e617aefd7fb3a93abe3a701135d7a1ba710",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7B925e617aefd7FB3a93Abe3a701135D7a1Ba710/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619": {
 			"address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
 			"underlyingTokensAddresses": [],
@@ -2221,6 +3201,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7db5c1cc87eaca6fbe7004befea9b7c2daf989d4": {
+			"address": "0x7db5c1cc87eaca6fbe7004befea9b7c2daf989d4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7Db5c1cc87EacA6fBe7004beFea9B7c2dAF989D4/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x7de263d0ad6e5d208844e65118c3a02a9a5d56b6": {
+			"address": "0x7de263d0ad6e5d208844e65118c3a02a9a5d56b6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7de263D0Ad6e5D208844E65118c3a02A9A5D56B6/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x7f09bd2801a7b795df29c273c4afbb0ff15e2d63": {
@@ -2237,6 +3245,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x7f567ce133b0b69458fc318af06eee27642865be": {
+			"address": "0x7f567ce133b0b69458fc318af06eee27642865be",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7F567cE133B0B69458fC318af06Eee27642865be/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x7f8e021b5ad2ebe4df8ef35d8be0023b60b97790": {
 			"address": "0x7f8e021b5ad2ebe4df8ef35d8be0023b60b97790",
 			"underlyingTokensAddresses": [],
@@ -2249,6 +3271,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x7f8E021b5AD2EBe4df8Ef35D8bE0023b60b97790/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x7feadb5714ebe66d155205a8e545f33406fb8923": {
+			"address": "0x7feadb5714ebe66d155205a8e545f33406fb8923",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x7FEAdB5714EbE66d155205a8e545f33406Fb8923/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x80709a760ff54112bd3e0ce31c104d912ba51774": {
@@ -2279,6 +3315,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x80deece4befd9f27d2df88064cf75f080d3ce1b2": {
+			"address": "0x80deece4befd9f27d2df88064cf75f080d3ce1b2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x80DeeCE4befd9F27D2df88064cf75f080d3ce1b2/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x81cec323bf8c4164c66ec066f53cc053a535f03d": {
 			"address": "0x81cec323bf8c4164c66ec066f53cc053a535f03d",
 			"underlyingTokensAddresses": [],
@@ -2291,6 +3341,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x81Cec323BF8C4164c66ec066F53cc053A535f03D/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x8285e5beb07ad954750835ea6c88685b2ccb1d7f": {
+			"address": "0x8285e5beb07ad954750835ea6c88685b2ccb1d7f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x8285e5BEB07AD954750835EA6C88685B2CcB1d7f/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x82927c36ab62e504e24ab160afa5821b6c4a9265": {
@@ -2321,6 +3385,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x847b64f9d3a95e977d157866447a5c0a5dfa0ee5": {
+			"address": "0x847b64f9d3a95e977d157866447a5c0a5dfa0ee5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x847b64f9d3A95e977D157866447a5C0A5dFa0Ee5/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x8557dac2a7724712f12952de3dabeef54459bd97": {
 			"address": "0x8557dac2a7724712f12952de3dabeef54459bd97",
 			"underlyingTokensAddresses": [],
@@ -2333,6 +3411,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x8557dAC2A7724712F12952DE3DaBEeF54459bd97/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x86f1d8390222a3691c28938ec7404a1661e618e0": {
+			"address": "0x86f1d8390222a3691c28938ec7404a1661e618e0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x86f1d8390222A3691C28938eC7404A1661E618e0/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x87b8e76606a9e84458ebc4ee82906acd4a75dffb": {
+			"address": "0x87b8e76606a9e84458ebc4ee82906acd4a75dffb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x87b8e76606a9E84458eBC4EE82906ACD4A75dFfB/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x8891450de400229a58eb23457a7984c6b461beda": {
@@ -2551,6 +3657,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x91bca6cbc144c2fd843534523eaa5e34686a9b19": {
+			"address": "0x91bca6cbc144c2fd843534523eaa5e34686a9b19",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x91BcA6CBc144C2Fd843534523Eaa5E34686a9B19/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x91d6569946a11ca0d5564f31a594210bf06c1f0a": {
 			"address": "0x91d6569946a11ca0d5564f31a594210bf06c1f0a",
 			"underlyingTokensAddresses": [],
@@ -2581,6 +3701,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x9396897d732f4085be74a9c357cae58732b92c75": {
+			"address": "0x9396897d732f4085be74a9c357cae58732b92c75",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9396897D732F4085bE74A9C357cAe58732B92c75/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x93bb1939545557ac68dde78ab74ead3754acaa4d": {
 			"address": "0x93bb1939545557ac68dde78ab74ead3754acaa4d",
 			"underlyingTokensAddresses": [],
@@ -2607,6 +3741,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x93d37be58E9631391ce878aAdD40BA760Eb0730B/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x94d47616f45f98e1ac688326ffdab7bf3a6be440": {
+			"address": "0x94d47616f45f98e1ac688326ffdab7bf3a6be440",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x94d47616f45F98e1ac688326FFdAb7bf3A6be440/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x953e523ea34e85ac55d40be1ff71d52aa62497b7": {
@@ -2665,6 +3813,48 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x9aea1545fa5093b7b0ee2526eb18a521f75004b9": {
+			"address": "0x9aea1545fa5093b7b0ee2526eb18a521f75004b9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9AEa1545fA5093B7b0Ee2526Eb18A521F75004b9/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x9b08288c3be4f62bbf8d1c20ac9c5e6f9467d8b7": {
+			"address": "0x9b08288c3be4f62bbf8d1c20ac9c5e6f9467d8b7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9B08288C3Be4F62bbf8d1C20Ac9C5e6f9467d8B7/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0x9b1751da19984e691034a5affd85449cbcf6ad29": {
+			"address": "0x9b1751da19984e691034a5affd85449cbcf6ad29",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9b1751da19984e691034A5AfFd85449Cbcf6AD29/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x9c3b8d3d977ba1d58848565149cb5ac1689dfa5b": {
 			"address": "0x9c3b8d3d977ba1d58848565149cb5ac1689dfa5b",
 			"underlyingTokensAddresses": [],
@@ -2707,6 +3897,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x9ceff2f5138fc59eb925d270b8a7a9c02a1810f2": {
+			"address": "0x9ceff2f5138fc59eb925d270b8a7a9c02a1810f2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9CEff2F5138fC59eB925d270b8A7A9C02a1810f2/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x9dfdf32ae82c7e8ebc156ea28e6637b120e00d12": {
 			"address": "0x9dfdf32ae82c7e8ebc156ea28e6637b120e00d12",
 			"underlyingTokensAddresses": [],
@@ -2735,6 +3939,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x9eef65b8ed1a8d276a46607ea1e22015f75ae284": {
+			"address": "0x9eef65b8ed1a8d276a46607ea1e22015f75ae284",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9Eef65b8eD1a8D276a46607eA1e22015f75aE284/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0x9f19ad14cd941e29b0e7ed8f5a1003fae4993dcd": {
 			"address": "0x9f19ad14cd941e29b0e7ed8f5a1003fae4993dcd",
 			"underlyingTokensAddresses": [],
@@ -2747,6 +3965,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x9F19aD14cD941E29b0E7Ed8F5a1003FAE4993DCD/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x9f1a8caf3c8e94e43aa64922d67dff4dc3e88a42": {
+			"address": "0x9f1a8caf3c8e94e43aa64922d67dff4dc3e88a42",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x9F1A8cAF3C8e94e43aa64922d67dFf4dc3e88A42/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0x9f28e2455f9ffcfac9ebd6084853417362bc5dbb": {
@@ -2835,6 +4067,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xa2804549aa248796507a98adccbcfefa87f674e7": {
+			"address": "0xa2804549aa248796507a98adccbcfefa87f674e7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xa2804549Aa248796507A98aDccBCFEFA87F674E7/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xa29193af0816d43cf44a3745755bf5f5e2f4f170": {
 			"address": "0xa29193af0816d43cf44a3745755bf5f5e2f4f170",
 			"underlyingTokensAddresses": [],
@@ -2847,6 +4093,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xa29193Af0816D43cF44A3745755BF5f5e2f4F170/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xa374094527e1673a86de625aa59517c5de346d32": {
+			"address": "0xa374094527e1673a86de625aa59517c5de346d32",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xA374094527e1673A86dE625aa59517c5dE346d32/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xa3fa99a148fa48d14ed51d610c367c61876997f1": {
@@ -2863,6 +4123,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xa56796f13566c515471a2fbbab731f88ce5de428": {
+			"address": "0xa56796f13566c515471a2fbbab731f88ce5de428",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xa56796f13566c515471A2fBBAB731F88cE5DE428/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xa5cd8351cbf30b531c7b11b0d9d3ff38ea2e280f": {
+			"address": "0xa5cd8351cbf30b531c7b11b0d9d3ff38ea2e280f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xA5CD8351Cbf30B531C7b11B0D9d3Ff38eA2E280f/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xa5eb3401b93b859b4638f9d40868f89e200f8a44": {
 			"address": "0xa5eb3401b93b859b4638f9d40868f89e200f8a44",
 			"underlyingTokensAddresses": [],
@@ -2875,6 +4163,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xA5eb3401b93b859b4638f9d40868F89E200F8A44/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xa6aedf7c4ed6e821e67a6bfd56fd1702ad9a9719": {
+			"address": "0xa6aedf7c4ed6e821e67a6bfd56fd1702ad9a9719",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xa6AeDF7c4Ed6e821E67a6BfD56FD1702aD9a9719/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xa78a2ce1c72198bacf1f5a64b407cf1e86f623f6": {
@@ -2921,6 +4223,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xa9077cdb3d13f45b8b9d87c43e11bce0e73d8631": {
+			"address": "0xa9077cdb3d13f45b8b9d87c43e11bce0e73d8631",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xa9077cDB3D13F45B8B9d87C43E11bCe0e73d8631/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
 			"address": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
 			"underlyingTokensAddresses": [
@@ -2935,6 +4251,34 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xA9c3b8f7aB9Cc105ac4d27c1bf821eC0c6a9E954/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xab52931301078e2405c3a3ebb86e11ad0dfd2cfd": {
+			"address": "0xab52931301078e2405c3a3ebb86e11ad0dfd2cfd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAb52931301078E2405c3a3EBB86e11ad0dFD2CfD/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xabd95b0a93e2fc462d8e38d2966157cb503f1252": {
+			"address": "0xabd95b0a93e2fc462d8e38d2966157cb503f1252",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAbd95b0A93E2FC462D8E38D2966157cb503f1252/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xac0f71f2492daf020f459bd163052b9dae28f159": {
@@ -2963,6 +4307,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xaC15BaBA7Bcc532F8727C1A42B23501f59630115/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xac4494e30a85369e332bdb5230d6d694d4259dbc": {
+			"address": "0xac4494e30a85369e332bdb5230d6d694d4259dbc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAC4494e30a85369e332BDB5230d6d694d4259DbC/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xacb6a2c03c8012c2817efc4d81e33cc0978e3abd": {
@@ -3007,6 +4365,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xae81fac689a1b4b1e06e7ef4a2ab4cd8ac0a087d": {
+			"address": "0xae81fac689a1b4b1e06e7ef4a2ab4cd8ac0a087d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAE81FAc689A1b4b1e06e7ef4a2ab4CD8aC0A087D/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xaf16d97df951bb8b7d876ae93367ec835c4c11b0": {
+			"address": "0xaf16d97df951bb8b7d876ae93367ec835c4c11b0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAf16D97DF951bb8b7D876AE93367eC835c4C11b0/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xaf825f3b0ad8b509db6a991c5dae092591f675e2": {
 			"address": "0xaf825f3b0ad8b509db6a991c5dae092591f675e2",
 			"underlyingTokensAddresses": [],
@@ -3019,6 +4405,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xaF825F3b0aD8B509db6A991c5Dae092591f675E2/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xaf835698673655e9910de8398df6c5238f5d3aeb": {
+			"address": "0xaf835698673655e9910de8398df6c5238f5d3aeb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xAf835698673655e9910dE8398DF6c5238F5d3AeB/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
@@ -3151,6 +4551,48 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xb9805616911fb067bcb4a09a560682e15f06bf04": {
+			"address": "0xb9805616911fb067bcb4a09a560682e15f06bf04",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xB9805616911fB067BcB4a09a560682e15f06BF04/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xba0216254163b57af68b7161cf824dbadcad61df": {
+			"address": "0xba0216254163b57af68b7161cf824dbadcad61df",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xBa0216254163B57aF68B7161cf824dBadcAD61Df/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xba3b82585355ccd047a96b86aabe256d181c23d2": {
+			"address": "0xba3b82585355ccd047a96b86aabe256d181c23d2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xbA3B82585355CcD047A96b86aaBe256d181c23D2/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c": {
 			"address": "0xba777ae3a3c91fcd83ef85bfe65410592bdd0f7c",
 			"underlyingTokensAddresses": [],
@@ -3209,6 +4651,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xbc8f3da0bd42e1f2509cd8671ce7c7e5f7fd39c8": {
+			"address": "0xbc8f3da0bd42e1f2509cd8671ce7c7e5f7fd39c8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xBC8f3da0bd42E1F2509cd8671Ce7c7E5f7fd39c8/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xbdb10439d9b5eb8ca6c0d7d5a60fe9fd784b5d05": {
 			"address": "0xbdb10439d9b5eb8ca6c0d7d5a60fe9fd784b5d05",
 			"underlyingTokensAddresses": [],
@@ -3221,6 +4677,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xBDb10439D9B5eb8CA6c0D7D5a60Fe9Fd784B5d05/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xbeaf7156ba07c3df8fac42e90188c5a752470db7": {
+			"address": "0xbeaf7156ba07c3df8fac42e90188c5a752470db7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xbEAf7156bA07C3dF8FAc42E90188c5a752470DB7/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
@@ -3237,6 +4707,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xBEDA9A5300393e00229dc15cC54D5185E7646c56/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xbf3036c5c55bdb36ae505f96f4c40c92e782e9f6": {
+			"address": "0xbf3036c5c55bdb36ae505f96f4c40c92e782e9f6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xBf3036C5c55bdb36ae505f96F4C40c92E782E9f6/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xc12e821ff75b464702d2ad55a0f4504ca6441be5": {
@@ -3351,6 +4835,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xc6832ef0af793336aa44a936e54b992bff47e7cd": {
+			"address": "0xc6832ef0af793336aa44a936e54b992bff47e7cd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xc6832Ef0af793336aa44a936E54b992BfF47e7Cd/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xc6dd68b546d696d5a31837b05065a151d6b6f892": {
 			"address": "0xc6dd68b546d696d5a31837b05065a151d6b6f892",
 			"underlyingTokensAddresses": [],
@@ -3391,6 +4889,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xc89004ce7becd2b39c44260327a603885da119B5/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xc98c9434dfb18300be98907a6c627468dbd69604": {
+			"address": "0xc98c9434dfb18300be98907a6c627468dbd69604",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xc98c9434DFb18300bE98907A6C627468dbd69604/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xcad897389fd7f97592fe8d426a61e14bf4da36c0": {
+			"address": "0xcad897389fd7f97592fe8d426a61e14bf4da36c0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xCad897389Fd7f97592fE8D426A61e14BF4dA36C0/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xcb27d08bf34b8076dc82ce33692ead6b38e2d280": {
@@ -3463,6 +4989,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xce5dcdba14982ebeb49d363a9f4efa9156982091": {
+			"address": "0xce5dcdba14982ebeb49d363a9f4efa9156982091",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xcE5DcdbA14982EBeB49d363A9f4EFA9156982091/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xcfd4a6a885c4404a2a5720918a9b4880600876a8": {
 			"address": "0xcfd4a6a885c4404a2a5720918a9b4880600876a8",
 			"underlyingTokensAddresses": [],
@@ -3533,6 +5073,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xd1e4816deaac1ff9cbeffd25195de9ba2d1bcec8": {
+			"address": "0xd1e4816deaac1ff9cbeffd25195de9ba2d1bcec8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xd1e4816DeaaC1fF9CbeFFD25195de9BA2D1BceC8/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xd3bd62439c599739775df75cb33b888d437e23fe": {
 			"address": "0xd3bd62439c599739775df75cb33b888d437e23fe",
 			"underlyingTokensAddresses": [],
@@ -3573,6 +5127,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xD5b29cd75879D49fFe0475bC87f124CBF6e22d6D/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xd5be7961dccb04a22dfe8bea0c584072cfa9d647": {
+			"address": "0xd5be7961dccb04a22dfe8bea0c584072cfa9d647",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xd5Be7961dCCB04a22DFe8Bea0C584072cFa9D647/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xd667f74db442dbc4ca24ec8840c31c8498c93151": {
@@ -3617,6 +5185,48 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xd85a25332b57cc447a791100e7317e534d553761": {
+			"address": "0xd85a25332b57cc447a791100e7317e534d553761",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xD85A25332b57cc447a791100E7317e534d553761/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xd9c2c978915b907df04972cb3f577126fe55143c": {
+			"address": "0xd9c2c978915b907df04972cb3f577126fe55143c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xD9c2c978915b907dF04972Cb3F577126Fe55143C/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xdac8a8e6dbf8c690ec6815e0ff03491b2770255d": {
+			"address": "0xdac8a8e6dbf8c690ec6815e0ff03491b2770255d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xDaC8A8E6DBf8c690ec6815e0fF03491B2770255D/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 			"underlyingTokensAddresses": [
@@ -3659,6 +5269,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xdCb72AE4d5dc6Ae274461d57E65dB8D50d0a33AD/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xdcf937e79c4f730111143b2345c6028c5051f304": {
+			"address": "0xdcf937e79c4f730111143b2345c6028c5051f304",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xdcf937e79C4f730111143b2345c6028c5051F304/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xde2d1fd2e8238aba80a5b80c7262e4833d92f624": {
+			"address": "0xde2d1fd2e8238aba80a5b80c7262e4833d92f624",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xDE2D1fd2E8238aBA80a5B80c7262E4833D92f624/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xde8edc067b079b3965fde36d11aa834287f9b663": {
@@ -3715,6 +5353,34 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xE238Ecb42C424E877652AD82d8A939183A04C35f/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xe3185fd50e850439cdf1082b3c00bdc043d8c5d3": {
+			"address": "0xe3185fd50e850439cdf1082b3c00bdc043d8c5d3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xE3185fD50e850439cDf1082B3C00bDc043D8c5d3/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xe3703608393727c6b3761471d13e064c77c8d836": {
+			"address": "0xe3703608393727c6b3761471d13e064c77c8d836",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xe3703608393727C6B3761471d13e064c77c8d836/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xe389d95e2e8c799fde5d37f245bdd7160bf50864": {
@@ -3815,6 +5481,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xe76bcabe23c0bc0a4799b244c1c390bec61c2d47": {
+			"address": "0xe76bcabe23c0bc0a4799b244c1c390bec61c2d47",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xe76BcAbE23c0bc0a4799B244C1c390BEc61c2d47/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xe7e0eb9f6bcccfe847fdf62a3628319a092f11a2": {
+			"address": "0xe7e0eb9f6bcccfe847fdf62a3628319a092f11a2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xe7E0eB9F6bCcCfe847fDf62a3628319a092F11a2/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xe8df0dd4320b128b87cfcd9554cb1bd182f52a96": {
 			"address": "0xe8df0dd4320b128b87cfcd9554cb1bd182f52a96",
 			"underlyingTokensAddresses": [],
@@ -3913,6 +5607,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xeecb5db986c20a8c88d8332e7e252a9671565751": {
+			"address": "0xeecb5db986c20a8c88d8332e7e252a9671565751",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xEecB5Db986c20a8C88D8332E7e252A9671565751/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xeef1a9507b3d505f0062f2be9453981255b503c8": {
+			"address": "0xeef1a9507b3d505f0062f2be9453981255b503c8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xeEF1A9507B3D505f0062f2be9453981255b503c8/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xef4f95d8c252d64308c04f711fb31892cc4c9965": {
 			"address": "0xef4f95d8c252d64308c04f711fb31892cc4c9965",
 			"underlyingTokensAddresses": [],
@@ -3939,6 +5661,48 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xEF6Ab48ef8dFe984FAB0d5c4cD6AFF2E54dfdA14/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xefdc563f99310a5dd189eaaa91a1bf28034da94c": {
+			"address": "0xefdc563f99310a5dd189eaaa91a1bf28034da94c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xEFdC563F99310A5Dd189eaaA91A1bf28034dA94C/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xeffa9e5e63ba18160ee26bda56b42f3368719615": {
+			"address": "0xeffa9e5e63ba18160ee26bda56b42f3368719615",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xefFA9E5e63ba18160Ee26BdA56b42F3368719615/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xf10c5d3bad214402c9a59b1170be00a9752317af": {
+			"address": "0xf10c5d3bad214402c9a59b1170be00a9752317af",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xF10C5d3bAD214402C9a59b1170BE00A9752317af/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xf25645c4b5b1c040e9889e0fa4c252c2fc0b40be": {
@@ -4001,6 +5765,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xf5d085c669f63d9983dc57b629b235793d009b0e": {
+			"address": "0xf5d085c669f63d9983dc57b629b235793d009b0e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xF5D085c669F63D9983Dc57b629b235793d009B0E/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xf66066175bc4dcbcb7ee6e01becd8489b6eeb344": {
+			"address": "0xf66066175bc4dcbcb7ee6e01becd8489b6eeb344",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xf66066175bC4DCbcb7ee6E01bECD8489b6eEB344/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xf6be87ae8976f50dcd231d42580e430cf6133400": {
 			"address": "0xf6be87ae8976f50dcd231d42580e430cf6133400",
 			"underlyingTokensAddresses": [],
@@ -4013,6 +5805,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xf6bE87Ae8976f50DCd231d42580e430CF6133400/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xf6f56ad7655945319ec2c9b4a13f231b9b94a116": {
+			"address": "0xf6f56ad7655945319ec2c9b4a13f231b9b94a116",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xF6f56ad7655945319Ec2C9b4a13F231B9B94A116/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
@@ -4087,6 +5893,34 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xfb0bc232cd11dbe804b489860c470b7f9cc80d9f": {
+			"address": "0xfb0bc232cd11dbe804b489860c470b7f9cc80d9f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xfb0bc232CD11dBe804B489860c470B7f9cc80D9F/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
+		"0xfb15368c0b9fbd5c8210e0510be6a7e3b94ba51c": {
+			"address": "0xfb15368c0b9fbd5c8210e0510be6a7e3b94ba51c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xfb15368C0b9fBd5c8210E0510Be6A7e3b94bA51C/logo-128.png",
+			"decimals": 0,
+			"chainID": 137
+		},
 		"0xfb4f607dafe2f3b9f8e99a779d3e404aa703cb47": {
 			"address": "0xfb4f607dafe2f3b9f8e99a779d3e404aa703cb47",
 			"underlyingTokensAddresses": [],
@@ -4113,6 +5947,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xfc9Fa9771145fbB98D15C8c2cc94B837a56D554C/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xfd4a63548134595cc101e5653622a8237a763631": {
+			"address": "0xfd4a63548134595cc101e5653622a8237a763631",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0xFd4A63548134595CC101e5653622A8237a763631/logo-128.png",
+			"decimals": 0,
 			"chainID": 137
 		},
 		"0xfd73ce19d3842ad7b551bb184ac6c6256dc2c9ab": {

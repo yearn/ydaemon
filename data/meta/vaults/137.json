@@ -43,7 +43,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -85,7 +85,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -125,7 +125,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -164,12 +164,12 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "WMATIC-A",
-				"displaySymbol": "yvMATIC-A",
+				"displayName": "WMATIC",
+				"displaySymbol": "yvMATIC-1",
 				"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -209,7 +209,7 @@
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -249,7 +249,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -287,12 +287,12 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "WETH-A",
-				"displaySymbol": "yvWETH-A",
+				"displayName": "WETH",
+				"displaySymbol": "yvWETH-1",
 				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -332,7 +332,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -374,7 +374,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -416,7 +416,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -456,7 +456,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -498,7 +498,7 @@
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": []
 			}
 		},
@@ -538,7 +538,7 @@
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -578,7 +578,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -620,7 +620,7 @@
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -660,7 +660,7 @@
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -700,7 +700,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -740,7 +740,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -781,12 +781,12 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "DAI-A",
-				"displaySymbol": "yvDAI-A",
+				"displayName": "DAI",
+				"displaySymbol": "yvDAI-1",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -826,7 +826,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -868,12 +868,12 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "USDC.e-A",
-				"displaySymbol": "yvUSDC.e-A",
+				"displayName": "USDC.e",
+				"displaySymbol": "yvUSDC.e-1",
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -913,7 +913,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -955,7 +955,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -997,7 +997,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -1037,7 +1037,7 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 2,
 				"protocols": [
 					"Gamma"
 				]
@@ -1078,12 +1078,12 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "USDT-A",
-				"displaySymbol": "yvUSDt-A",
+				"displayName": "USDT",
+				"displaySymbol": "yvUSDt-1",
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -1123,7 +1123,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -1163,7 +1163,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -1203,7 +1203,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		},
@@ -1246,7 +1246,7 @@
 				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -1286,7 +1286,7 @@
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 1,
 				"protocols": []
 			}
 		}

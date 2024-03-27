@@ -185,7 +185,7 @@
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -536,7 +536,7 @@
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -1718,7 +1718,7 @@
 				"description": "Supplies {{token}} to [Spark Finance](https://spark.fi/) to generate interest.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -1934,7 +1934,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/weth-mainnet) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -4715,7 +4715,7 @@
 				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -7948,7 +7948,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc-mainnet) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -11061,7 +11061,7 @@
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -11359,7 +11359,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -11448,7 +11448,7 @@
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -11848,7 +11848,7 @@
 				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -12730,7 +12730,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},
@@ -13894,7 +13894,7 @@
 				"description": "Supplies DAI to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
+				"riskLevel": 3,
 				"protocols": []
 			}
 		},
@@ -14512,7 +14512,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null
 			}
 		},

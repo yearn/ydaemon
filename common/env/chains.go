@@ -12,7 +12,7 @@ type TChainCurve struct {
 }
 type TChainExtraURI struct {
 	GammaMerklURI      string
-	GammaHypervisorURI string
+	GammaHypervisorURI []string
 }
 type TChain struct {
 	ID                     uint64

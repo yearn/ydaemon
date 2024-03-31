@@ -44,7 +44,7 @@ func ComputeChainAPR(chainID uint64) {
 	pools := retrieveCurveGetPools(chainID)
 	subgraphData := retrieveCurveSubgraphData(chainID)
 	fraxPools := retrieveFraxPools()
-	refreshGammaMerkl(chainID)
+	storage.RefreshGammaCalls(chainID)
 
 	for _, vault := range allVaults {
 		if vault.Metadata.IsRetired {
@@ -76,9 +76,6 @@ func ComputeChainAPR(chainID uint64) {
 		** this staking rewards system and add it to the netAPY.
 		**********************************************************************************************/
 		stakingRewardAPR := computeStakingRewardsAPR(chainID, vault)
-		if extaRewardAPR, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
-			vaultAPR.Extra.GammaRewardAPR = extaRewardAPR
-		}
 		vaultAPR.Extra.StakingRewardsAPR = stakingRewardAPR
 
 		/**********************************************************************************************
@@ -115,6 +112,21 @@ func ComputeChainAPR(chainID uint64) {
 				allStrategiesForVault,
 				aeroPool,
 			)
+		}
+
+		/**********************************************************************************************
+		** If it's a Gamma Vault, we can get the feeAPR as an estimate for the upcoming period, and we
+		** can retrieve the extraReward APRs.
+		**********************************************************************************************/
+		if isGammaVault(chainID, vault) {
+			if extaRewardAPR, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
+				vaultAPR.Extra.GammaRewardAPR = extaRewardAPR
+			}
+			vaultAPR.ForwardAPR = computeGammaForwardAPR(
+				vault,
+				allStrategiesForVault,
+			)
+			vaultAPR.ForwardAPR.Composite.RewardsAPR = vaultAPR.Extra.GammaRewardAPR
 		}
 
 		safeSyncMap(COMPUTED_APR, chainID).Store(vault.Address, vaultAPR)

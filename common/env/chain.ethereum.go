@@ -194,7 +194,9 @@ var ETHEREUM = TChain{
 		},
 	},
 	ExtraURI: TChainExtraURI{
-		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=1`,
-		GammaHypervisorURI: `https://wire2.gamma.xyz/hypervisors/allData`,
+		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=1`,
+		GammaHypervisorURI: []string{
+			`https://wire2.gamma.xyz/hypervisors/allData`,
+		},
 	},
 }

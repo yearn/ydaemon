@@ -68,37 +68,6 @@ func retrieveCurveSubgraphData(chainID uint64) []models.CurveSubgraphData {
 	return data
 }
 
-/**************************************************************************
-** This function retrieves the Gamma Merkl API response.
-**************************************************************************/
-func retrieveGammaMerklData(chainID uint64) (map[string]TGammaMerklAPIResp, bool) {
-	if _, ok := cachedGammaMerkl[chainID]; !ok {
-		cachedGammaMerkl[chainID] = map[string]TGammaMerklAPIResp{}
-	}
-
-	pools := map[string]TGammaMerklAPIResp{}
-	if env.CHAINS[chainID].ExtraURI.GammaMerklURI == `` {
-		return pools, false
-	}
-	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaMerklURI)
-	if err != nil {
-		logs.Error(err)
-		return pools, false
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error(err)
-		return pools, false
-	}
-	var gammaMerkl map[string]TGammaMerklAPIResp
-	if err := json.Unmarshal(body, &gammaMerkl); err != nil {
-		logs.Error(err)
-		return pools, false
-	}
-	return gammaMerkl, true
-}
-
 func findGaugeForVault(tokenAddress common.Address, pools []models.CurveGauge) models.CurveGauge {
 	for _, pool := range pools {
 		if common.HexToAddress(pool.SwapToken) == tokenAddress {

@@ -69,7 +69,10 @@ var POLYGON = TChain{
 		},
 	},
 	ExtraURI: TChainExtraURI{
-		GammaMerklURI:      `https://api.angle.money/v2/merkl?chainIds%5B%5D=137`,
-		GammaHypervisorURI: `https://wire2.gamma.xyz/polygon/hypervisors/allData`,
+		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=137`,
+		GammaHypervisorURI: []string{
+			`https://wire2.gamma.xyz/polygon/hypervisors/allData`,
+			`https://wire2.gamma.xyz/quickswap/polygon/hypervisors/allData`,
+		},
 	},
 }

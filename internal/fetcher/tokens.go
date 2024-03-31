@@ -1,10 +1,7 @@
 package fetcher
 
 import (
-	"encoding/json"
-	"io"
 	"math/big"
-	"net/http"
 	"strconv"
 	"strings"
 
@@ -15,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -397,33 +393,9 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 ** - a map of tokenAddress -> []models.TERC20Token
 **************************************************************************************************/
 func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
-	type TGammaData struct {
-		PoolAddress string `json:"poolAddress"`
-		Token0      string `json:"token0"`
-		Token1      string `json:"token1"`
-	}
-
 	coinsForPools := make(map[common.Address]models.TERC20Token)
-	/**********************************************************************************************
-	** Fetch the tokens from the Gamma API.
-	**********************************************************************************************/
-	if env.CHAINS[chainID].ExtraURI.GammaHypervisorURI == `` {
-		return coinsForPools
-	}
-	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaHypervisorURI)
-	if err != nil {
-		logs.Error(`impossible to get Gamma URL`, err.Error())
-		return coinsForPools
-	}
-	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		logs.Error(`impossible to read Gamma Get body`, err.Error())
-		return coinsForPools
-	}
-	var pools map[string]TGammaData
-	if err := json.Unmarshal(body, &pools); err != nil {
-		logs.Error(`impossible to unmarshal Gamma Get body`, err.Error())
+	pools, ok := storage.RetrieveGammaAllData(chainID)
+	if !ok {
 		return coinsForPools
 	}
 

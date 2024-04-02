@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-21T17:39:16.026217+01:00",
+	"lastUpdate": "2024-04-02T10:28:15.925695+02:00",
 	"version": {
 		"major": 0,
-		"minor": 4,
+		"minor": 5,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -162,6 +162,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x0b2c639c533813f4aa9d7837caf62653d097ff85": {
+			"address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USD Coin",
+			"symbol": "USDC",
+			"displayName": "USD Coin",
+			"displaySymbol": "USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85/logo-128.png",
+			"decimals": 6,
+			"chainID": 10
+		},
 		"0x0b4645179c1b668464df01362fc6219a7ab3234c": {
 			"address": "0x0b4645179c1b668464df01362fc6219a7ab3234c",
 			"underlyingTokensAddresses": [],
@@ -246,6 +260,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x14E42871D90282ec0439f01347178D6331fC1873/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x15acfbc45b3bc39f25b59ac057811bfdc0438f24": {
+			"address": "0x15acfbc45b3bc39f25b59ac057811bfdc0438f24",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-WETH05",
+			"symbol": "xUSDC-WETH05",
+			"displayName": "xUSDC-WETH05",
+			"displaySymbol": "xUSDC-WETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x15acfBc45B3BC39F25B59Ac057811BfdC0438f24/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1293,6 +1321,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x636692a1a782760f2e40b6effbfdbaec9ebecae3": {
+			"address": "0x636692a1a782760f2e40b6effbfdbaec9ebecae3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-DAI01",
+			"symbol": "xUSDC-DAI01",
+			"displayName": "xUSDC-DAI01",
+			"displaySymbol": "xUSDC-DAI01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x636692a1A782760F2e40B6efFbfDbaec9EbECae3/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x6387765ffa609ab9a1da1b16c455548bfed7cbea": {
 			"address": "0x6387765ffa609ab9a1da1b16c455548bfed7cbea",
 			"underlyingTokensAddresses": [],
@@ -2119,6 +2161,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8a9570ec97534277Ade6e46d100939FbCE4968f0/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8af7ea7526b748c2404f76bd62857467ee75558f": {
+			"address": "0x8af7ea7526b748c2404f76bd62857467ee75558f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDT01",
+			"symbol": "xUSDC-USDT01",
+			"displayName": "xUSDC-USDT01",
+			"displaySymbol": "xUSDC-USDT01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x8af7Ea7526B748c2404F76Bd62857467EE75558F/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -3602,6 +3658,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xee2769169fdfe1ebccf0a4261cbaac2e5050d1d3": {
+			"address": "0xee2769169fdfe1ebccf0a4261cbaac2e5050d1d3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-USDCe01",
+			"symbol": "xUSDC-USDCe01",
+			"displayName": "xUSDC-USDCe01",
+			"displaySymbol": "xUSDC-USDCe01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xEe2769169FDFe1ebcCF0a4261Cbaac2e5050d1d3/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xee538e14ec8ff4985301190e96ffa26e828c929c": {
 			"address": "0xee538e14ec8ff4985301190e96ffa26e828c929c",
 			"underlyingTokensAddresses": [],
@@ -3863,6 +3933,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0xfA3C6122906f2A2d644409dBB507DB1060D10b3A/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xfabbe6c687ad7a163e61dd1a21f7b23dcf6e20c9": {
+			"address": "0xfabbe6c687ad7a163e61dd1a21f7b23dcf6e20c9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-OP3",
+			"symbol": "xUSDC-OP3",
+			"displayName": "xUSDC-OP3",
+			"displaySymbol": "xUSDC-OP3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xFABBE6c687AD7a163E61dd1a21f7b23dcF6E20c9/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

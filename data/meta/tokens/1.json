@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-22T11:57:54.668601+01:00",
+	"lastUpdate": "2024-04-02T10:29:08.325419+02:00",
 	"version": {
 		"major": 0,
-		"minor": 27,
+		"minor": 28,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -443,6 +443,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This liquidity pool contains sBTC and wBTC and serves as a base pool for other Bitcoin pools.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x051d7e5609917Bd9b73f04BAc0DED8Dd46a74301/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x05329aab081b125eef7fbbc8b857428d478e692b": {
+			"address": "0x05329aab081b125eef7fbbc8b857428d478e692b",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Sturdy crvUSD Compounder",
+			"symbol": "yscrvUSD",
+			"displayName": "Sturdy crvUSD Compounder",
+			"displaySymbol": "yscrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x05329AAb081B125eEF7FbbC8b857428D478E692B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5731,6 +5747,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5f76526390d9cd9944d65c605c5006480fa1bfcb": {
+			"address": "0x5f76526390d9cd9944d65c605c5006480fa1bfcb",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Sturdy Swell Aggregator Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Sturdy Swell Aggregator Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5f76526390d9cd9944d65C605C5006480FA1bFcB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5f98805a4e8be255a32880fdec7f6728c6568ba0": {
 			"address": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
 			"underlyingTokensAddresses": [],
@@ -8699,6 +8731,22 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0x92545bce636e6ee91d88d2d017182cd0bd2fc22e": {
+			"address": "0x92545bce636e6ee91d88d2d017182cd0bd2fc22e",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-2 yVault",
+			"symbol": "yvDAI-2",
+			"displayName": "DAI-2 yVault",
+			"displaySymbol": "yvDAI-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x92545bCE636E6eE91D88D2D017182cD0bd2fC22e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x92ccaa1b3dccccae7d68fff50e6e47a747233e62": {
 			"address": "0x92ccaa1b3dccccae7d68fff50e6e47a747233e62",
 			"underlyingTokensAddresses": [],
@@ -9025,6 +9073,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x9777d7E2b60bB01759D0E2f8be2095df444cb07E/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x9784ded306e42c0b8130f668e9b7533faa72e65d": {
+			"address": "0x9784ded306e42c0b8130f668e9b7533faa72e65d",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Sturdy Sommelier Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Sturdy Sommelier Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9784Ded306E42C0b8130f668e9B7533Faa72e65D/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x97983236be88107cc8998733ef73d8d969c52e37": {
@@ -10320,6 +10384,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xac333895ce1A73875CF7B4Ecdc5A743C12f3d82B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xac37729b76db6438ce62042ae1270ee574ca7571": {
+			"address": "0xac37729b76db6438ce62042ae1270ee574ca7571",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-2 yVault",
+			"symbol": "yvWETH-2",
+			"displayName": "WETH-2 yVault",
+			"displaySymbol": "yvWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xAc37729B76db6438CE62042AE1270ee574CA7571/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11831,6 +11911,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This Curve factory liqudity pool contains msUSD, FRAX, and USDC.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc3b19502F8c02be75F3f77fd673503520DEB51dD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc40dc53931cd184f782f3602d95c7e3609706004": {
+			"address": "0xc40dc53931cd184f782f3602d95c7e3609706004",
+			"underlyingTokensAddresses": [
+				"0x04c154b66cb340f3ae24111cc767e0184ed00cc6"
+			],
+			"type": "Yearn Vault",
+			"name": "Sturdy pxETH Compounder",
+			"symbol": "yspxETH",
+			"displayName": "Sturdy pxETH Compounder",
+			"displaySymbol": "yspxETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC40dC53931cd184F782f3602d95C7e3609706004/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

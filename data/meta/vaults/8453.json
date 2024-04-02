@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-03-25T14:58:36.431152+01:00",
+	"lastUpdate": "2024-04-02T10:28:04.784536+02:00",
 	"version": {
 		"major": 0,
-		"minor": 3,
-		"patch": 32
+		"minor": 4,
+		"patch": 3
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -64,7 +64,7 @@
 			"lastActiveStrategies": [
 				"0x1b1387a79064ae13385f160606e9228fd303b4a4"
 			],
-			"lastPricePerShare": "2290897062681646406",
+			"lastPricePerShare": "3048645193033747124",
 			"lastTotalAssets": "72151293404355740",
 			"metadata": {
 				"isRetired": false,
@@ -136,6 +136,48 @@
 				"protocols": [
 					"Aerodrome"
 				]
+			}
+		},
+		"0x30bca23b220deb343f62c83eda1465546ac9c7f7": {
+			"address": "0x30bca23b220deb343f62c83eda1465546ac9c7f7",
+			"token": "0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x0157852e7762ac8feb9f64617f0a8d6e07994e5d"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x30bca23b220deb343f62c83eda1465546ac9c7f7",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
 			}
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
@@ -269,6 +311,48 @@
 				"protocols": [
 					"Aerodrome"
 				]
+			}
+		},
+		"0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497": {
+			"address": "0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497",
+			"token": "0x2a1463cebe85315224c536afd389b381b43f3206",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x4598a02e26c578fcbb6a03f4f7ba600f209d9d0c"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
 			}
 		},
 		"0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8": {
@@ -417,8 +501,8 @@
 			"lastActiveStrategies": [
 				"0x4161255639d94ee0a1d4c27fe0f863293f6a9798"
 			],
-			"lastPricePerShare": "1110269370747831267",
-			"lastTotalAssets": "11274058312265125622384",
+			"lastPricePerShare": "1144825758329550167",
+			"lastTotalAssets": "11717700633949574126628",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -548,8 +632,8 @@
 			"lastActiveStrategies": [
 				"0x7753e6ea61bee08dae2373117a48b0104b7989b4"
 			],
-			"lastPricePerShare": "1112379483090847903",
-			"lastTotalAssets": "16353088224648787",
+			"lastPricePerShare": "1134539248938203665",
+			"lastTotalAssets": "16681338396688484",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -634,7 +718,7 @@
 			"lastActiveStrategies": [
 				"0x6c3c4447e1a2c87b47d58cf007706bb1835134da"
 			],
-			"lastPricePerShare": "1370381278013126261",
+			"lastPricePerShare": "1775784865279023035",
 			"lastTotalAssets": "12285609178289",
 			"metadata": {
 				"isRetired": false,
@@ -678,8 +762,8 @@
 			"lastActiveStrategies": [
 				"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f"
 			],
-			"lastPricePerShare": "2087707489480787800",
-			"lastTotalAssets": "753642626597133",
+			"lastPricePerShare": "2305616832341446964",
+			"lastTotalAssets": "925804774039284",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -751,6 +835,48 @@
 				]
 			}
 		},
+		"0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd": {
+			"address": "0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd",
+			"token": "0xcdac0d6c6c59727a65f871236188350531885c43",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xe0e65a3d8ae24b86f2ac531add317533c0ff0d03"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
 			"token": "0xa819af1cc8abe618ea8abadeb464960f7451ceab",
@@ -793,6 +919,90 @@
 				"protocols": [
 					"Aerodrome"
 				]
+			}
+		},
+		"0x80ba48973490a94941eaec6be8dbcff6a5aa8892": {
+			"address": "0x80ba48973490a94941eaec6be8dbcff6a5aa8892",
+			"token": "0x7f670f78b17dec44d5ef68a48740b6f8849cc2e6",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x243c75a526d62d759eaaa0a9e02574f4d55fe699"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x80ba48973490a94941eaec6be8dbcff6a5aa8892",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0x82a9cc022bffba4358a4286381c0855a8e295605": {
+			"address": "0x82a9cc022bffba4358a4286381c0855a8e295605",
+			"token": "0x6b87b8663ee63191887f18225f79d9eeb2de0d34",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x091e6d9d86e60580db1eb833b804b0bed1417d1a"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x82a9cc022bffba4358a4286381c0855a8e295605",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
 			}
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
@@ -855,8 +1065,8 @@
 			"lastActiveStrategies": [
 				"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f"
 			],
-			"lastPricePerShare": "9407058033593447706",
-			"lastTotalAssets": "15798605436224708756",
+			"lastPricePerShare": "9462626923970258595",
+			"lastTotalAssets": "15921810236121368089",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -929,6 +1139,90 @@
 				]
 			}
 		},
+		"0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7": {
+			"address": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
+			"token": "0xf53b7af40be75043eeba493c622f4f56b3c27a31",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x639c57caf76c5a77cb657bd68e0174f67cdd542a"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
+		"0x99e860d5bbe61a12ca215aba714a2e886860dbc8": {
+			"address": "0x99e860d5bbe61a12ca215aba714a2e886860dbc8",
+			"token": "0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 12438331,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x1cb10c063d2d5583ca631f597a39a84f8ef0e115"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x99e860d5bbe61a12ca215aba714a2e886860dbc8",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null
+			}
+		},
 		"0x9e13e1cfcd750657b81549f8f773d68f1625dcfb": {
 			"address": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
 			"token": "0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f",
@@ -986,8 +1280,8 @@
 			"lastActiveStrategies": [
 				"0x89468e36a687e842699644dc12b986c79af9ed1f"
 			],
-			"lastPricePerShare": "1038372074481658075",
-			"lastTotalAssets": "7900740012471466",
+			"lastPricePerShare": "1069618290419707203",
+			"lastTotalAssets": "8231430691414632",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1031,8 +1325,8 @@
 			"lastActiveStrategies": [
 				"0x1816545343590701dc29c379bcac06e92d1e1c79"
 			],
-			"lastPricePerShare": "1053406936791025528",
-			"lastTotalAssets": "53806262152015",
+			"lastPricePerShare": "1073619927694062431",
+			"lastTotalAssets": "54958441601478",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1165,8 +1459,8 @@
 			"lastActiveStrategies": [
 				"0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9"
 			],
-			"lastPricePerShare": "1056088645513762027",
-			"lastTotalAssets": "259201296725890020115",
+			"lastPricePerShare": "1084474752444061514",
+			"lastTotalAssets": "267623721643511105085",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

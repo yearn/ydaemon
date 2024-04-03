@@ -476,6 +476,22 @@ func watchNewStrategies(
 		}
 
 		/**********************************************************************************************
+		** Because now some stategies are not added via an event but directly in the contract, we need
+		** to fetch them directly from the contract.
+		** Ex: https://etherscan.io/address/0x92545bCE636E6eE91D88D2D017182cD0bd2fC22e#events
+		**********************************************************************************************/
+		for _, lastActiveStrategy := range vault.LastActiveStrategies {
+			newStrategy := models.TStrategy{
+				Address:      lastActiveStrategy,
+				ChainID:      chainID,
+				VaultVersion: vault.Version,
+				VaultAddress: vault.Address,
+				Activation:   vault.Activation,
+			}
+			storage.StoreStrategyIfMissing(chainID, newStrategy)
+		}
+
+		/**********************************************************************************************
 		** Listen and handle new events
 		**********************************************************************************************/
 		for {

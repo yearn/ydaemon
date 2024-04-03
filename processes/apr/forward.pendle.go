@@ -14,28 +14,28 @@ import (
 /**************************************************************************************************
 ** Check if the vault is a gamma vault by checking if we have the relevant information cached.
 **************************************************************************************************/
-func isGammaVault(chainID uint64, vault models.TVault) bool {
-	if _, ok := storage.GetCachedGammaMerkl(chainID); !ok {
-		storage.RefreshGammaCalls(chainID)
+func isPendleVault(chainID uint64, vault models.TVault) bool {
+	if _, ok := storage.GetCachedPendleMarkets(chainID); !ok {
+		storage.RetrievePendleMarkets(chainID)
 	}
-	if _, ok := storage.GetCachedGammaMerkl(chainID); !ok {
+	pendleMarkets, ok := storage.GetCachedPendleMarkets(chainID)
+	if !ok {
 		return false
 	}
 
-	gammaAllData, _ := storage.GetCachedGammaAllData(chainID)
-	_, ok := gammaAllData[vault.AssetAddress.Hex()]
+	_, ok = pendleMarkets[vault.AssetAddress.Hex()]
 	return ok
 }
 
 /**************************************************************************************************
 ** For a given gamma strategy, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func calculateGammaStrategyAPR(
+func calculatePendleStrategyAPR(
 	vault models.TVault,
 	strategy models.TStrategy,
 ) TStrategyAPR {
-	if _, ok := storage.GetCachedGammaMerkl(vault.ChainID); !ok {
-		storage.RefreshGammaCalls(vault.ChainID)
+	if _, ok := storage.GetCachedPendleMarkets(vault.ChainID); !ok {
+		storage.RefreshPendleMarkets(vault.ChainID)
 	}
 
 	debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
@@ -43,35 +43,35 @@ func calculateGammaStrategyAPR(
 	vaultManagementFee := helpers.ToNormalizedAmount(bigNumber.NewInt(int64(vault.ManagementFee)), 4)
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
 
-	if _, ok := storage.GetCachedGammaMerkl(vault.ChainID); !ok {
+	pendleMarkets, ok := storage.GetCachedPendleMarkets(vault.ChainID)
+	if !ok {
 		return TStrategyAPR{
-			Type:      `gamma`,
+			Type:      `pendle`,
+			DebtRatio: debtRatio,
+			NetAPR:    bigNumber.NewFloat(0),
+			Composite: TCompositeData{},
+		}
+	}
+	data, ok := pendleMarkets[vault.AssetAddress.Hex()]
+	if !ok {
+		return TStrategyAPR{
+			Type:      `pendle`,
 			DebtRatio: debtRatio,
 			NetAPR:    bigNumber.NewFloat(0),
 			Composite: TCompositeData{},
 		}
 	}
 
-	gammaAllData, _ := storage.GetCachedGammaAllData(vault.ChainID)
-	data, ok := gammaAllData[vault.AssetAddress.Hex()]
-	if !ok {
-		return TStrategyAPR{
-			Type:      `gamma`,
-			DebtRatio: debtRatio,
-			NetAPR:    bigNumber.NewFloat(0),
-			Composite: TCompositeData{},
-		}
-	}
-	grossAPR := bigNumber.NewFloat(data.Returns.Monthly.APR)
+	grossAPR := bigNumber.NewFloat(data.MaxBoostedAPY)             // Using maxBoostedAPY as Yearn is maxBoosted
 	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
-	if netAPR.Gt(vaultManagementFee) {
+	if netAPR.Gt(vaultManagementFee) {                             // Management fee can never induce a negative APR
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
 	} else {
 		netAPR = bigNumber.NewFloat(0)
 	}
 
 	return TStrategyAPR{
-		Type:      `gamma`,
+		Type:      `pendle`,
 		DebtRatio: debtRatio,
 		NetAPR:    netAPR,
 		Composite: TCompositeData{},
@@ -81,7 +81,7 @@ func calculateGammaStrategyAPR(
 /**************************************************************************************************
 ** For a given gamma vault, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func computeGammaForwardAPR(
+func computePendleForwardAPR(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
 ) TForwardAPR {
@@ -100,7 +100,7 @@ func computeGammaForwardAPR(
 		vaultAsStrategy := models.TStrategy{
 			LastDebtRatio: bigNumber.NewUint64(10000),
 		}
-		strategyAPR := calculateGammaStrategyAPR(vault, vaultAsStrategy)
+		strategyAPR := calculatePendleStrategyAPR(vault, vaultAsStrategy)
 		TypeOf = strategyAPR.Type
 		NetAPR = strategyAPR.NetAPR
 		Boost = strategyAPR.Composite.Boost
@@ -120,7 +120,7 @@ func computeGammaForwardAPR(
 				continue
 			}
 
-			strategyAPR := calculateGammaStrategyAPR(vault, strategy)
+			strategyAPR := calculatePendleStrategyAPR(vault, strategy)
 			TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
 			NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
 			Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)

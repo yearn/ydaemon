@@ -3,6 +3,7 @@ package storage
 import (
 	"encoding/json"
 	"io"
+	"math/big"
 	"net/http"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -23,10 +24,19 @@ type TGammaMerklAPIResp struct {
 }
 
 type TGammaDataAPIResp struct {
-	Address     string `json:"address"`
-	PoolAddress string `json:"poolAddress"`
-	Token0      string `json:"token0"`
-	Token1      string `json:"token1"`
+	Address     string   `json:"address"`
+	PoolAddress string   `json:"poolAddress"`
+	Token0      string   `json:"token0"`
+	Token1      string   `json:"token1"`
+	Name        string   `json:"name"`
+	Decimals0   int      `json:"decimals0"`
+	Decimals1   int      `json:"decimals1"`
+	Tvl0        float64  `json:"tvl0"`
+	Tvl1        float64  `json:"tvl1"`
+	TvlUSD      string   `json:"tvlUSD"`
+	PoolTvlUSD  string   `json:"poolTvlUSD"`
+	PoolFeesUSD string   `json:"poolFeesUSD"`
+	TotalSupply *big.Int `json:"totalSupply"`
 	Returns     struct {
 		Monthly struct {
 			APR float64 `json:"feeApr"`
@@ -97,6 +107,7 @@ func RetrieveGammaMerklData(chainID uint64) (map[string]TGammaMerklAPIResp, bool
 		logs.Error(err)
 		return pools, false
 	}
+	cachedGammaMerkl[chainID] = gammaMerkl
 	return gammaMerkl, true
 }
 
@@ -138,6 +149,7 @@ func RetrieveGammaAllData(chainID uint64) (map[string]TGammaDataAPIResp, bool) {
 			pool.Address = common.HexToAddress(address).Hex()
 			gammaAllData[common.HexToAddress(address).Hex()] = pool
 		}
+		cachedGammaAllData[chainID] = gammaAllData
 	}
 
 	return gammaAllData, true

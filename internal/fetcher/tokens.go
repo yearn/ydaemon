@@ -423,6 +423,27 @@ func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
 }
 
 /**************************************************************************************************
+** loadPendleTokens is used to fetch the tokens from the Pendle EcoSystem.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+**
+** Returns:
+** - a slice of []common.Address
+**************************************************************************************************/
+func loadPendleTokens(chainID uint64) []common.Address {
+	tokens := []common.Address{}
+	pendleTokens, ok := storage.RetrievePendleTokens(chainID)
+	if !ok {
+		return []common.Address{}
+	}
+	for _, address := range pendleTokens {
+		tokens = append(tokens, common.HexToAddress(address.Address))
+	}
+	return tokens
+}
+
+/**************************************************************************************************
 ** Yearn vaults play with at least 2 tokens: the yVaultToken (aka the vault) and the underlying
 ** token. This underlying token can be a token or a LP token and therefore can have multiple sub
 ** tokens.
@@ -509,6 +530,19 @@ func RetrieveAllTokens(
 	for _, token := range gammaPools {
 		if _, ok := tokenMap[token.Address]; !ok || shouldRefresh {
 			updatedTokenMap[token.Address] = token
+		}
+	}
+
+	/**********************************************************************************************
+	** Fetch the tokens from the Pendle V1 API.
+	**********************************************************************************************/
+	pendleTokens := loadPendleTokens(chainID)
+	for _, token := range pendleTokens {
+		if _, ok := tokenMap[token]; !ok || shouldRefresh {
+			updatedTokenMap[token] = models.TERC20Token{
+				Address: token,
+				ChainID: chainID,
+			}
 		}
 	}
 

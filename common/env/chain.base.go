@@ -57,5 +57,6 @@ var BASE = TChain{
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=8453`,
+		PendleCoreURI: ``,
 	},
 }

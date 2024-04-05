@@ -96,5 +96,6 @@ var ARBITRUM = TChain{
 		GammaHypervisorURI: []string{
 			`https://wire2.gamma.xyz/arbitrum/hypervisors/allData`,
 		},
+		PendleCoreURI: `https://api-v2.pendle.finance/core/v1/42161`,
 	},
 }

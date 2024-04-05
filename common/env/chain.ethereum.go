@@ -198,5 +198,6 @@ var ETHEREUM = TChain{
 		GammaHypervisorURI: []string{
 			`https://wire2.gamma.xyz/hypervisors/allData`,
 		},
+		PendleCoreURI: `https://api-v2.pendle.finance/core/v1/1`,
 	},
 }

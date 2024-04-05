@@ -74,5 +74,6 @@ var POLYGON = TChain{
 			`https://wire2.gamma.xyz/polygon/hypervisors/allData`,
 			`https://wire2.gamma.xyz/quickswap/polygon/hypervisors/allData`,
 		},
+		PendleCoreURI: ``,
 	},
 }

@@ -75,4 +75,7 @@ var FANTOM = TChain{
 			`https://api.curve.fi/api/getPools/all/fantom`,
 		},
 	},
+	ExtraURI: TChainExtraURI{
+		PendleCoreURI: ``,
+	},
 }

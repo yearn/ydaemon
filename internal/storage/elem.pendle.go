@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 )
 
@@ -89,22 +90,26 @@ func RetrievePendleTokens(chainID uint64) (map[string]TPendleTokenAPIResp, bool)
 		cachedPendleTokens[chainID] = map[string]TPendleTokenAPIResp{}
 	}
 
+	if env.CHAINS[chainID].ExtraURI.PendleCoreURI == `` {
+		return map[string]TPendleTokenAPIResp{}, false
+	}
+
 	tokens := map[string]TPendleTokenAPIResp{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(`https://api-v2.pendle.finance/core/v1/` + chainIDStr + `/assets/all`)
+	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/assets/all`)
 	if err != nil {
-		logs.Error(err)
+		logs.Error(`Error fetching Pendle tokens for chain ` + chainIDStr + `: ` + err.Error())
 		return tokens, false
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		logs.Error(err)
+		logs.Error(`Error reading Pendle tokens response body for chain ` + chainIDStr + `: ` + err.Error())
 		return tokens, false
 	}
 	var pendleTokensApiResp []TPendleTokenAPIResp
 	if err := json.Unmarshal(body, &pendleTokensApiResp); err != nil {
-		logs.Error(err)
+		logs.Error(`Error unmarshalling Pendle tokens response body for chain ` + chainIDStr + `: ` + err.Error())
 		return tokens, false
 	}
 
@@ -123,6 +128,10 @@ func RetrievePendleMarkets(chainID uint64) (map[string]TPendleMarketAPIResp, boo
 		cachedPendleMarkets[chainID] = map[string]TPendleMarketAPIResp{}
 	}
 
+	if env.CHAINS[chainID].ExtraURI.PendleCoreURI == `` {
+		return map[string]TPendleMarketAPIResp{}, false
+	}
+
 	type TPendleMarketsAPIResp struct {
 		Total   int                    `json:"total"`
 		Results []TPendleMarketAPIResp `json:"results"`
@@ -130,25 +139,25 @@ func RetrievePendleMarkets(chainID uint64) (map[string]TPendleMarketAPIResp, boo
 
 	markets := map[string]TPendleMarketAPIResp{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	baseURI := `https://api-v2.pendle.finance/core/v1/` + chainIDStr + `/markets?is_expired=false&select=simple&is_active=true`
+	baseURI := env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/markets?is_expired=false&select=simple&is_active=true`
 	skip := 0
 	limit := 100
 	totalMarketCount := 100 // This is a dummy value to start the loop
 	for skip < totalMarketCount {
 		resp, err := http.Get(baseURI + `&skip=` + strconv.Itoa(skip) + `&limit=` + strconv.Itoa(limit))
 		if err != nil {
-			logs.Error(err)
+			logs.Error(`Error fetching Pendle markets for chain ` + chainIDStr + `: ` + err.Error())
 			return markets, false
 		}
 		defer resp.Body.Close()
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
-			logs.Error(err)
+			logs.Error(`Error reading Pendle markets response body for chain ` + chainIDStr + `: ` + err.Error())
 			return markets, false
 		}
 		var pendleMarketsApiResp TPendleMarketsAPIResp
 		if err := json.Unmarshal(body, &pendleMarketsApiResp); err != nil {
-			logs.Error(err)
+			logs.Error(`Error unmarshalling Pendle markets response body for chain ` + chainIDStr + `: ` + err.Error())
 			return markets, false
 		}
 

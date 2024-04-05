@@ -79,5 +79,6 @@ var OPTIMISM = TChain{
 		GammaHypervisorURI: []string{
 			`https://wire2.gamma.xyz/optimism/hypervisors/allData`,
 		},
+		PendleCoreURI: `https://api-v2.pendle.finance/core/v1/10`,
 	},
 }

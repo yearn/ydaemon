@@ -16,6 +16,7 @@ var GNOSIS = TChain{
 	MaxBlockRange:   9_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 16_000,
+	CanUseWebsocket: false,
 	LensContract:    TContractData{},
 	MulticallContract: TContractData{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),

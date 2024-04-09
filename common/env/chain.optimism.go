@@ -16,6 +16,7 @@ var OPTIMISM = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 43_200,
+	CanUseWebsocket: true,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
 		Block:   18109291,

@@ -24,6 +24,7 @@ type TChain struct {
 	MaxBlockRange          uint64
 	MaxBatchSize           uint64
 	AvgBlocksPerDay        int
+	CanUseWebsocket        bool
 	LensContract           TContractData
 	MulticallContract      TContractData
 	StackingRewardContract TContractData

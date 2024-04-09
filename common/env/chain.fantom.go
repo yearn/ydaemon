@@ -16,6 +16,7 @@ var FANTOM = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 45_000,
+	CanUseWebsocket: true,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0x57AA88A0810dfe3f9b71a9b179Dd8bF5F956C46A`),
 		Block:   17091856,

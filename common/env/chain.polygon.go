@@ -67,6 +67,7 @@ var POLYGON = TChain{
 		PoolsURIs: []string{
 			`https://api.curve.fi/api/getPools/all/polygon`,
 		},
+		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=polygon`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=137`,

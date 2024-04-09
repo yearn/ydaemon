@@ -54,6 +54,7 @@ var BASE = TChain{
 		PoolsURIs: []string{
 			`https://api.curve.fi/api/getPools/all/base`,
 		},
+		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=base`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=8453`,

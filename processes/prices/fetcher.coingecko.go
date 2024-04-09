@@ -20,6 +20,7 @@ import (
 var GECKO_CHAIN_NAMES = map[uint64]string{
 	1:     `ethereum`,
 	10:    `optimistic-ethereum`,
+	100:   `xdai`,
 	137:   `polygon-pos`,
 	250:   `fantom`,
 	8453:  `base`,

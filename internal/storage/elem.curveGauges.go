@@ -2,6 +2,7 @@ package storage
 
 import (
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -37,7 +38,7 @@ func GetGauge(chainID uint64, underlyingAddress common.Address) (models.CurveGau
 }
 
 func FetchGauges() {
-	for chainID := range CURVE_GAUGES_URI {
-		FetchCurveGauges(chainID)
+	for _, chain := range env.CHAINS {
+		FetchCurveGauges(chain.ID)
 	}
 }

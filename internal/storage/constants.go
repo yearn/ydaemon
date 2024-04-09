@@ -53,16 +53,6 @@ var CVX_TOKEN_ADDRESS = map[uint64]common.Address{
 	42161: {},
 }
 
-// CURVE_GAUGES_URI contains the URI of the Curve gauges to use
-var CURVE_GAUGES_URI = map[uint64]string{
-	1:     `https://api.curve.fi/api/getAllGauges?blockchainId=ethereum`,
-	10:    `https://api.curve.fi/api/getAllGauges?blockchainId=optimism`,
-	137:   `https://api.curve.fi/api/getAllGauges?blockchainId=polygon`,
-	250:   `https://api.curve.fi/api/getAllGauges?blockchainId=fantom`,
-	8453:  `https://api.curve.fi/api/getAllGauges?blockchainId=base`,
-	42161: `https://api.curve.fi/api/getAllGauges?blockchainId=arbitrum`,
-}
-
 // CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
 var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
 	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,

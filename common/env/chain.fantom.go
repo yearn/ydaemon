@@ -74,5 +74,9 @@ var FANTOM = TChain{
 		PoolsURIs: []string{
 			`https://api.curve.fi/api/getPools/all/fantom`,
 		},
+		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=fantom`,
+	},
+	ExtraURI: TChainExtraURI{
+		PendleCoreURI: ``,
 	},
 }

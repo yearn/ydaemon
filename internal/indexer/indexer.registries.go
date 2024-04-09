@@ -184,7 +184,7 @@ func watchNewVaults(
 	switch registry.Version {
 	case 1, 2:
 		currentRegistry, _ := contracts.NewYRegistryV2(registry.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryV2MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{
 			contractABI.Events[`NewVault`].ID,
@@ -252,7 +252,7 @@ func watchNewVaults(
 		}
 	case 3:
 		currentRegistry, _ := contracts.NewYRegistryV3(registry.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryV3MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
 		query := goEth.FilterQuery{
@@ -306,7 +306,7 @@ func watchNewVaults(
 		}
 	case 4:
 		currentRegistry, _ := contracts.NewYRegistryV4(registry.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryV4MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewEndorsedVault`].ID}}...)
 		query := goEth.FilterQuery{
@@ -360,7 +360,7 @@ func watchNewVaults(
 		}
 	case 5:
 		currentRegistry, _ := contracts.NewYRegistryV5(registry.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryV5MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
 		query := goEth.FilterQuery{
@@ -414,7 +414,7 @@ func watchNewVaults(
 		}
 	case 6:
 		currentRegistry, _ := contracts.NewYRegistryGamma(registry.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryGammaMetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewGammaLPCompounder`].ID}}...)
 		query := goEth.FilterQuery{

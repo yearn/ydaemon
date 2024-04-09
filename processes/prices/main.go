@@ -30,7 +30,20 @@ func listMissingPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 
 /**************************************************************************************************
 ** fetchPrices will, for a list of addresses, try to fetch all the prices from the lens price
-** oracle. If the price is not available, it will try to fetch it from some external API.
+** oracle. If the price is not available, it will try to fetch it from some external API. The
+** method used is always "try this source, if it fails, try the next one."
+** Order:
+** 1. DeFiLlama
+** 2. CoinGecko
+** 3. Curve Factories API
+** 4. Velo/Aero Oracles
+** 5. Curve AMM Oracle
+** 6. Gamma API
+** 7. Pendle API
+** 8. Lens Oracle
+** 9. Vault Price Per Share from ERC4626 standard
+** 10. Vault Price Per Share from Vault (cached)
+** 11. Vault Price Per Share from Vault (live)
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
@@ -141,6 +154,20 @@ func fetchPrices(
 	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
 	priceMapFromGammaAPI := getGammaLPPricesFromAPI(chainID, blockNumber, tokenSlice)
 	for _, price := range priceMapFromGammaAPI {
+		if !price.Price.IsZero() && price.Price.Gt(bigNumber.Zero) {
+			newPriceMap[price.Address] = price
+			continue
+		}
+	}
+
+	/**********************************************************************************************
+	** Once this is done, we will probably have some missing tokens linked to the Pendle protocol.
+	** We can use the Pendle API to retrieve the price of some tokens. We will then add them to our
+	** map.
+	**********************************************************************************************/
+	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
+	priceFromPendleAPI := getPendlePricesFromAPI(chainID, blockNumber, tokenSlice)
+	for _, price := range priceFromPendleAPI {
 		if !price.Price.IsZero() && price.Price.Gt(bigNumber.Zero) {
 			newPriceMap[price.Address] = price
 			continue

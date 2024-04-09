@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/internal/models"
@@ -153,15 +154,45 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range newVaultMap {
 		vault.ChainID = chainID
+
+		/******************************************************************************************
+		** We need to check if the associated registry is marked as hidden. If so, we need to mark
+		** the vault as hidden as well.
+		******************************************************************************************/
+		isRegistryHidden := false
+		for _, registry := range env.CHAINS[chainID].Registries {
+			if addresses.Equals(registry.Address, vaults[vault.Address].RegistryAddress) {
+				if registry.Tag == `STEALTH` {
+					isRegistryHidden = true
+					break
+				}
+			}
+		}
+		if isRegistryHidden {
+			vault.Metadata.IsHidden = true
+		}
+
+		/******************************************************************************************
+		** If no migration target is set, we will set it to the vault address as a default value,
+		** and put the available flag to false.
+		******************************************************************************************/
 		if (vault.Metadata.Migration.Target == common.Address{}) {
 			vault.Metadata.Migration = models.TMigration{
 				Available: false,
 				Target:    vault.Address,
 			}
 		}
+
+		/******************************************************************************************
+		** If the vault has some automated Type, we need to mark it as automated in the metadata.
+		******************************************************************************************/
 		if vault.Type == models.TokenTypeLegacyAutomatedVault || vault.Type == models.TokenTypeAutomatedVault {
 			vault.Metadata.IsAutomated = true
 		}
+
+		/******************************************************************************************
+		** If no stability is set, we will set it to unknown as a default value.
+		******************************************************************************************/
 		if vault.Metadata.Stability.Stability == `` {
 			vault.Metadata.Stability.Stability = models.VaultStabilityUnknown
 		}

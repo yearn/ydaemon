@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -115,7 +116,7 @@ func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
 ** Fetcher function to retrive the curve gauges
 **************************************************************************/
 func FetchCurveGauges(chainID uint64) []models.CurveGauge {
-	resp, err := http.Get(CURVE_GAUGES_URI[chainID])
+	resp, err := http.Get(env.CHAINS[chainID].Curve.GaugesURI)
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveGauge{}

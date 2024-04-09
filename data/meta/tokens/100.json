@@ -1,0 +1,87 @@
+{
+	"lastUpdate": "2024-04-09T13:53:10.877416+02:00",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"tokens": {
+		"0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a": {
+			"address": "0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "Curve EURe-3Crv",
+			"symbol": "crvEUReUSD",
+			"displayName": "Curve EURe-3Crv",
+			"displaySymbol": "crvEUReUSD",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/100/0x0CA1C1eC4EBf3CC67a9f545fF90a3795b318cA4a/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		},
+		"0x39b68451f05aaa020611cf887a7338f0991ffd60": {
+			"address": "0x39b68451f05aaa020611cf887a7338f0991ffd60",
+			"underlyingTokensAddresses": [
+				"0xcb444e90d8198415266c6a2724b7900fb12fc56e"
+			],
+			"type": "Yearn Vault",
+			"name": "AJNA EURe yVault",
+			"symbol": "yvAjnaEURe",
+			"displayName": "AJNA EURe yVault",
+			"displaySymbol": "yvAjnaEURe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/100/0x39B68451F05Aaa020611CF887a7338f0991fFd60/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		},
+		"0x5012c6bf79b3047ecfff2f212dffda4d2128188f": {
+			"address": "0x5012c6bf79b3047ecfff2f212dffda4d2128188f",
+			"underlyingTokensAddresses": [
+				"0xcb444e90d8198415266c6a2724b7900fb12fc56e"
+			],
+			"type": "Yearn Vault",
+			"name": "EURe yVault",
+			"symbol": "yvEURe-1",
+			"displayName": "EURe yVault",
+			"displaySymbol": "yvEURe-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/100/0x5012C6bf79b3047ECFFf2F212DfFDA4d2128188f/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		},
+		"0xa21cc1a4a239708690134baed3a1b93cad55f625": {
+			"address": "0xa21cc1a4a239708690134baed3a1b93cad55f625",
+			"underlyingTokensAddresses": [
+				"0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve EURe yVault",
+			"symbol": "yvCurve-EURe",
+			"displayName": "Curve EURe yVault",
+			"displaySymbol": "yvCurve-EURe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/100/0xa21Cc1a4a239708690134bAeD3a1B93cAD55F625/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		},
+		"0xcb444e90d8198415266c6a2724b7900fb12fc56e": {
+			"address": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Monerium EUR emoney",
+			"symbol": "EURe",
+			"displayName": "Monerium EUR emoney",
+			"displaySymbol": "EURe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/100/0xcB444e90D8198415266c6a2724b7900fb12FC56E/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		}
+	}
+}

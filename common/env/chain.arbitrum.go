@@ -58,7 +58,18 @@ var ARBITRUM = TChain{
 			Block:   171_850_013,
 		},
 	},
-	ExtraVaults: []models.TVaultsFromRegistry{},
+	ExtraVaults: []models.TVaultsFromRegistry{
+		{
+			//yvMIM, alone in it's own registry, not work registering and listening to it
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x074943fEfE3391D033A15557dfa1b6f246Ce5fD0`),
+			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
+			TokenAddress:    common.HexToAddress(`0xE11f9786B06438456b044B3E21712228ADcAA0D1`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     195564702,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
 		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
@@ -79,11 +90,13 @@ var ARBITRUM = TChain{
 		PoolsURIs: []string{
 			`https://api.curve.fi/api/getPools/all/arbitrum`,
 		},
+		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=arbitrum`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=42161`,
 		GammaHypervisorURI: []string{
 			`https://wire2.gamma.xyz/arbitrum/hypervisors/allData`,
 		},
+		PendleCoreURI: `https://api-v2.pendle.finance/core/v1/42161`,
 	},
 }

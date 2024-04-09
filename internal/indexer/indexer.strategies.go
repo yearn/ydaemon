@@ -161,7 +161,7 @@ func filterNewStrategies(
 				logs.Error(`impossible to FilterStrategyMigrated for NewYvault030 ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
 		default:
-			// case `3.0.0`, `3.0.1`:
+			// case `3.0.0`, `3.0.1`, `3.0.2`:
 			currentVault, _ := contracts.NewYvault300(vault.Address, client)
 			if log, err := currentVault.FilterStrategyChanged(opts, nil, nil); err == nil {
 				for log.Next() {
@@ -224,7 +224,7 @@ func watchNewStrategies(
 	switch vault.Version {
 	case `0.2.2`:
 		currentVault, _ := contracts.NewYvault022(vault.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault022MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StrategyAdded`].ID}}...)
 		query := goEth.FilterQuery{
@@ -279,7 +279,7 @@ func watchNewStrategies(
 		}
 	case `0.3.0`, `0.3.1`:
 		currentVault, _ := contracts.NewYvault030(vault.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault030MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{
 			contractABI.Events[`StrategyAdded`].ID,
@@ -360,7 +360,7 @@ func watchNewStrategies(
 		}
 	case `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`, `0.4.4`, `0.4.5`, `0.4.6`, `0.4.7`:
 		currentVault, _ := contracts.NewYvault043(vault.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault043MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{
 			contractABI.Events[`StrategyAdded`].ID,
@@ -441,15 +441,33 @@ func watchNewStrategies(
 	default:
 		// case `3.0.0`, `3.0.1`:
 		currentVault, _ := contracts.NewYvault300(vault.Address, client)
-		etherReader := ethereum.Reader{Backend: client}
+		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault300MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StrategyChanged`].ID}}...)
+		// currentBlockNumber, _ := client.BlockNumber(context.Background())
+
+		// for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
+		// 	chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
+		// 	if chunkEnd > *end {
+		// 		chunkEnd = *end
+		// 		lastBlock = chunkEnd
+		// 	}
+
 		query := goEth.FilterQuery{
 			FromBlock: big.NewInt(int64(vault.Activation)),
 			Addresses: []common.Address{vault.Address},
 			Topics:    topics,
+			// ToBlock: big.NewInt(0).Add(
+			// 	big.NewInt(int64(vault.Activation)),
+			// 	big.NewInt(int64(env.CHAINS[chainID].MaxBlockRange)),
+			// ),
 		}
-		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
+		stream, sub, history, err := etherReader.QueryWithHistory(
+			context.Background(),
+			&query,
+			// env.CHAINS[chainID].MaxBlockRange,
+			// currentBlockNumber,
+		)
 		if err != nil {
 			if wg != nil && !isDone {
 				wg.Done()
@@ -457,6 +475,8 @@ func watchNewStrategies(
 			return 0, false, err
 		}
 		defer sub.Unsubscribe()
+
+		logs.Pretty(history)
 
 		/** 🔵 - Yearn *************************************************************************************
 		** Handle historical events. It's only a storing action as the rest will be performed as a batch,
@@ -473,6 +493,22 @@ func watchNewStrategies(
 		}
 		if wg != nil && !isDone {
 			wg.Done()
+		}
+
+		/**********************************************************************************************
+		** Because now some stategies are not added via an event but directly in the contract, we need
+		** to fetch them directly from the contract.
+		** Ex: https://etherscan.io/address/0x92545bCE636E6eE91D88D2D017182cD0bd2fC22e#events
+		**********************************************************************************************/
+		for _, lastActiveStrategy := range vault.LastActiveStrategies {
+			newStrategy := models.TStrategy{
+				Address:      lastActiveStrategy,
+				ChainID:      chainID,
+				VaultVersion: vault.Version,
+				VaultAddress: vault.Address,
+				Activation:   vault.Activation,
+			}
+			storage.StoreStrategyIfMissing(chainID, newStrategy)
 		}
 
 		/**********************************************************************************************

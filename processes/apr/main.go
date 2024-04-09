@@ -129,6 +129,13 @@ func ComputeChainAPR(chainID uint64) {
 			vaultAPR.ForwardAPR.Composite.RewardsAPR = vaultAPR.Extra.GammaRewardAPR
 		}
 
+		if isPendleVault(chainID, vault) {
+			vaultAPR.ForwardAPR = computePendleForwardAPR(
+				vault,
+				allStrategiesForVault,
+			)
+		}
+
 		safeSyncMap(COMPUTED_APR, chainID).Store(vault.Address, vaultAPR)
 	}
 }

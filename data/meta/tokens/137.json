@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-03-25T14:58:50.650273+01:00",
+	"lastUpdate": "2024-04-05T11:20:30.28556+02:00",
 	"version": {
 		"major": 0,
-		"minor": 12,
+		"minor": 13,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -3088,6 +3088,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x779D6De8e56d77646f5CF7314618024482a6b648/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x785a9f42a4568914773be52008a10c4d62e5c63a": {
+			"address": "0x785a9f42a4568914773be52008a10c4d62e5c63a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "aWMATIC-GHST",
+			"symbol": "aWMATIC-GHST",
+			"displayName": "aWMATIC-GHST",
+			"displaySymbol": "aWMATIC-GHST",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x785A9F42a4568914773bE52008A10C4d62e5c63a/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},

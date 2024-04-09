@@ -103,7 +103,7 @@ func watchStakingPool(
 	}
 
 	currentRegistry, _ := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
-	etherReader := ethereum.Reader{Backend: client}
+	etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 	contractABI, _ := contracts.YOptimismStakingRewardRegistryMetaData.GetAbi()
 	topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StakingPoolAdded`].ID}}...)
 	query := goEth.FilterQuery{

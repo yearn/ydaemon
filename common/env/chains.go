@@ -9,10 +9,12 @@ type TChainCurve struct {
 	RegistryAddress common.Address
 	FactoryAddress  common.Address
 	PoolsURIs       []string
+	GaugesURI       string
 }
 type TChainExtraURI struct {
 	GammaMerklURI      string
 	GammaHypervisorURI []string
+	PendleCoreURI      string
 }
 type TChain struct {
 	ID                     uint64
@@ -44,6 +46,7 @@ var DEFAULT_COIN_ADDRESS = common.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEe
 var CHAINS = map[uint64]TChain{
 	1:     ETHEREUM,
 	10:    OPTIMISM,
+	100:   GNOSIS,
 	137:   POLYGON,
 	250:   FANTOM,
 	8453:  BASE,

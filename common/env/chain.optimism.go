@@ -73,11 +73,13 @@ var OPTIMISM = TChain{
 		PoolsURIs: []string{
 			`https://api.curve.fi/api/getPools/all/optimism`,
 		},
+		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=optimism`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=10`,
 		GammaHypervisorURI: []string{
 			`https://wire2.gamma.xyz/optimism/hypervisors/allData`,
 		},
+		PendleCoreURI: `https://api-v2.pendle.finance/core/v1/10`,
 	},
 }

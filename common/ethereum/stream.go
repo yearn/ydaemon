@@ -113,7 +113,6 @@ func (r Reader) QueryWithRangeAndHistory(
 		var finalErr error
 		groupedHistory := []chain.Log{}
 		for i := q.FromBlock.Uint64(); i < currentBlock; i += maxRangeForHistory {
-			logs.Pretty("QueryWithRangeAndHistory", "i", i, "currentBlock", currentBlock)
 			isCurrentBlock := i+maxRangeForHistory >= currentBlock
 
 			sub, err := r.Backend.SubscribeFilterLogs(subscribeCtx, *q, stream)

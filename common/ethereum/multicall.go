@@ -211,7 +211,6 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				continue
 			}
 			if batchSize <= 1 {
-				logs.Pretty(group, rawCallsGroup, tempPackedResp, err, blockNumber)
 				if SHOULD_LOG_WARNINGS {
 					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
 				}

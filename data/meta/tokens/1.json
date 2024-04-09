@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-05T11:21:22.899967+02:00",
+	"lastUpdate": "2024-04-10T00:17:05.616425+02:00",
 	"version": {
 		"major": 0,
-		"minor": 30,
+		"minor": 31,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2156,6 +2156,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2084b373979415bc93190071af3390f92dcdd189": {
+			"address": "0x2084b373979415bc93190071af3390f92dcdd189",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2084b373979415Bc93190071AF3390F92DcDD189/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x20c8cf9714339fd018898cb5de84c089e48d1c87": {
 			"address": "0x20c8cf9714339fd018898cb5de84c089e48d1c87",
 			"underlyingTokensAddresses": [],
@@ -2334,6 +2348,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x22Fc5A29bd3d6CCe19a06f844019fd506fCe4455/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x233d32d4d33ed5f2d6b8544137c8836249de372f": {
+			"address": "0x233d32d4d33ed5f2d6b8544137c8836249de372f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Tensorplex Staked TAO 27JUN2024",
+			"symbol": "YT-stTAO-27JUN2024",
+			"displayName": "YT Tensorplex Staked TAO 27JUN2024",
+			"displaySymbol": "YT-stTAO-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x233D32d4D33eD5F2D6b8544137c8836249de372F/logo-128.png",
+			"decimals": 9,
 			"chainID": 1
 		},
 		"0x23878914efe38d27c4d67ab83ed1b93a74d4086a": {
@@ -5890,6 +5918,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5282ec643c3790e0f781508162a4aa13fd09c528": {
+			"address": "0x5282ec643c3790e0f781508162a4aa13fd09c528",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Tensorplex Staked TAO 27JUN2024",
+			"symbol": "PT-stTAO-27JUN2024",
+			"displayName": "PT Tensorplex Staked TAO 27JUN2024",
+			"displaySymbol": "PT-stTAO-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5282Ec643C3790E0F781508162a4Aa13fd09C528/logo-128.png",
+			"decimals": 9,
+			"chainID": 1
+		},
 		"0x528d50dc9a333f01544177a924893fa1f5b9f748": {
 			"address": "0x528d50dc9a333f01544177a924893fa1f5b9f748",
 			"underlyingTokensAddresses": [
@@ -7085,6 +7127,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6021444f1706f15465bEe85463BCc7d7cC17Fc03/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x60ccefd60ba522f9221f122bb80a1e8cbab9285f": {
+			"address": "0x60ccefd60ba522f9221f122bb80a1e8cbab9285f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Tensorplex Staked TAO",
+			"symbol": "SY-stTAO",
+			"displayName": "SY Tensorplex Staked TAO",
+			"displaySymbol": "SY-stTAO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x60CceFd60bA522f9221f122BB80A1e8cbAB9285F/logo-128.png",
+			"decimals": 9,
 			"chainID": 1
 		},
 		"0x60d1afd87c5ab1a13e27638f1e75277febf4908c": {
@@ -13247,6 +13303,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xb5ff5Da1ca2Ac2abd9dFABEe3b105CCe5A1eB057/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb60acd2057067dc9ed8c083f5aa227a244044fd6": {
+			"address": "0xb60acd2057067dc9ed8c083f5aa227a244044fd6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Tensorplex Staked TAO",
+			"symbol": "stTAO",
+			"displayName": "Tensorplex Staked TAO",
+			"displaySymbol": "stTAO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB60acD2057067DC9ed8c083f5aa227a244044fD6/logo-128.png",
+			"decimals": 9,
 			"chainID": 1
 		},
 		"0xb60f4ac1514be672b2ec35a023f4c89373d3a4ef": {

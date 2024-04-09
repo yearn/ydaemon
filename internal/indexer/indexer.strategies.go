@@ -476,8 +476,6 @@ func watchNewStrategies(
 		}
 		defer sub.Unsubscribe()
 
-		logs.Pretty(history)
-
 		/** 🔵 - Yearn *************************************************************************************
 		** Handle historical events. It's only a storing action as the rest will be performed as a batch,
 		** all the one in the history in one go.
@@ -605,6 +603,11 @@ func IndexNewStrategies(
 ) (historicalStrategiesMap map[string]models.TStrategy) {
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
+	}
+
+	if chainID == 100 {
+		historicalStrategiesMap, _ = storage.ListStrategies(chainID)
+		return historicalStrategiesMap
 	}
 
 	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical strategies are indexed

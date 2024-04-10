@@ -16,6 +16,7 @@ var OPTIMISM = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 43_200,
+	CanUseWebsocket: true,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0xB082d9f4734c535D9d80536F7E87a6f4F471bF65`),
 		Block:   18109291,
@@ -24,9 +25,12 @@ var OPTIMISM = TChain{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 		Block:   4286263,
 	},
-	StackingRewardContract: TContractData{
-		Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
-		Block:   85969070,
+	StakingRewardContract: []TContractData{
+		{
+			Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+			Block:   85969070,
+			Tag:     `OP BOOST`,
+		},
 	},
 	PartnerContract: TContractData{
 		Address: common.HexToAddress(`0x7E08735690028cdF3D81e7165493F1C34065AbA2`),

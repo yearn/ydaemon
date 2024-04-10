@@ -16,6 +16,7 @@ var BASE = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 43_200,
+	CanUseWebsocket: true,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0xE0F3D78DB7bC111996864A32d22AB0F59Ca5Fa86`),
 		Block:   3318817,

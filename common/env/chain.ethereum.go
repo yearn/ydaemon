@@ -16,6 +16,7 @@ var ETHEREUM = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 7150,
+	CanUseWebsocket: true,
 	YBribeV3Contract: TContractData{
 		Address: common.HexToAddress(`0x03dFdBcD4056E2F92251c7B07423E1a33a7D3F6d`),
 		Block:   15878262,
@@ -71,6 +72,13 @@ var ETHEREUM = TChain{
 			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
 			Version: 4,
 			Block:   19072527,
+		},
+	},
+	StakingRewardContract: []TContractData{
+		{
+			Address: common.HexToAddress(`0x1D0fdCb628b2f8c0e22354d45B3B2D4cE9936F8B`),
+			Block:   19573915,
+			Tag:     `VEYFI`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{

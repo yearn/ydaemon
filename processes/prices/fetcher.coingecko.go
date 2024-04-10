@@ -88,7 +88,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		******************************************************************************************/
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
-			logs.Warning("Error unmarshalling response body from the API of CoinGecko for chain", chainID)
+			logs.Warning("Error reading response body from the API of CoinGecko for chain", chainID)
 			return priceMap
 		}
 

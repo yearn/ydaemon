@@ -16,6 +16,7 @@ var ARBITRUM = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 320_000,
+	CanUseWebsocket: false,
 	LensContract: TContractData{
 		Address: common.HexToAddress(`0x043518AB266485dC085a1DB095B8d9C2Fc78E9b9`),
 		Block:   2396321,

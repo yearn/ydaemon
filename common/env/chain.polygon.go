@@ -16,6 +16,7 @@ var POLYGON = TChain{
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 40_000,
+	CanUseWebsocket: true,
 	LensContract:    TContractData{}, //TODO: not deployed
 	MulticallContract: TContractData{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),

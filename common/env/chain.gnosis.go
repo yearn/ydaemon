@@ -16,6 +16,7 @@ var GNOSIS = TChain{
 	MaxBlockRange:   9_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 16_000,
+	CanUseWebsocket: false,
 	LensContract:    TContractData{},
 	MulticallContract: TContractData{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
@@ -37,12 +38,12 @@ var GNOSIS = TChain{
 		ChainID:                   10,
 	},
 	Registries: []TContractData{
-		{
-			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
-			Version: 5,
-			Block:   32_784_248,
-			Tag:     `STEALTH`,
-		},
+		// {
+		// 	Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+		// 	Version: 5,
+		// 	Block:   32_784_248,
+		// 	Tag:     `STEALTH`,
+		// },
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{

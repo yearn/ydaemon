@@ -2,6 +2,7 @@ package ethereum
 
 import (
 	"context"
+	"errors"
 	"math"
 	"math/big"
 	"net/url"
@@ -65,6 +66,10 @@ func randomSigner() *bind.TransactOpts {
 
 // GetWSClient returns the current ws connection for a specific chain
 func GetWSClient(chainID uint64) (*ethclient.Client, error) {
+	if !env.CHAINS[chainID].CanUseWebsocket {
+		return nil, errors.New("chain cannot use websocket")
+	}
+
 	if WS[chainID] == nil {
 		uriString := GetWSEnvURI(chainID)
 		uri, _ := url.Parse(uriString)

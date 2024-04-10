@@ -566,6 +566,11 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 	logs.Success(`Indexer Daemon has started for chain ` + strconv.FormatUint(chainID, 10))
 	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical vaults are indexed
 
+	if chainID == 100 {
+		vaultsFromRegistry, _ = storage.ListVaultsFromRegistries(chainID)
+		return vaultsFromRegistry
+	}
+
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known registries for the specified chain ID.
 	**********************************************************************************************/

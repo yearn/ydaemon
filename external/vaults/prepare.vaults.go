@@ -76,7 +76,38 @@ func toSimplifiedVersion(
 		tokenSymbol = `Unknown`
 	}
 
+	staking := TStakingData{
+		Address:   ``,
+		Available: false,
+	}
+
+	/**********************************************************************************************
+	** Check, retrieve and assign the staking pool for the vault. The staking pool here can only
+	** be an op boost staking pool.
+	**********************************************************************************************/
 	stakingData, hasStakingPool := storage.GetStakingPoolForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	if hasStakingPool {
+		staking = TStakingData{
+			Address:   stakingData.StackingPoolAddress.Hex(),
+			Available: hasStakingPool,
+			Source:    `OP Boost`,
+		}
+	}
+
+	gaugeData, hasVeYFIGauge := storage.GetGaugeForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	if !staking.Available && hasVeYFIGauge {
+		staking = TStakingData{
+			Address:   gaugeData.Hex(),
+			Available: hasVeYFIGauge,
+			Source:    `VeYFI`,
+		}
+	}
+
+	/**********************************************************************************************
+	** Create the simplified version of the vault.
+	** The simplified version of the vault is a struct that contains only the necessary data
+	** to be displayed in the frontend.
+	**********************************************************************************************/
 	simplifiedVault := TSimplifiedExternalVault{
 		Address:        vault.Address,
 		Type:           vault.Type,
@@ -105,11 +136,8 @@ func toSimplifiedVersion(
 			Price:       vault.TVL.Price,
 		},
 		Strategies: vault.Strategies,
-		Staking: TStakingData{
-			Address:   stakingData.StackingPoolAddress.Hex(),
-			Available: hasStakingPool,
-		},
-		Info: vault.Info,
+		Staking:    staking,
+		Info:       vault.Info,
 	}
 	return simplifiedVault
 }

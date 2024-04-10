@@ -232,7 +232,22 @@ func indexStakingPoolWrapper(
 ** The function `IndexStakingPools` ...
 **************************************************************************************************/
 func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Address]models.TStakingPoolAdded) {
-	registry := env.CHAINS[chainID].StackingRewardContract
+	stakingContracts := env.CHAINS[chainID].StakingRewardContract
+	if len(stakingContracts) == 0 {
+		return
+	}
+
+	/** 🔵 - Yearn *********************************************************************************
+	** Find the staking registry for the OP boost
+	**********************************************************************************************/
+	registry := env.TContractData{}
+	for _, contract := range stakingContracts {
+		if contract.Tag == `OP BOOST` {
+			registry = contract
+			break
+		}
+	}
+
 	if (registry.Address == common.Address{}) {
 		return
 	}

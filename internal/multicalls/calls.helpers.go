@@ -28,6 +28,8 @@ var CVXBoosterABI, _ = contracts.CVXBoosterMetaData.GetAbi()
 var CrvUSDABI, _ = contracts.CrvUSDMetaData.GetAbi()
 var ERC4626ABI, _ = contracts.ERC4626MetaData.GetAbi()
 var CurveAMMABI, _ = contracts.CurveAMMMetaData.GetAbi()
+var VeYFIGaugeABI, _ = contracts.YVeYFIGaugeMetaData.GetAbi()
+var VeYFIGaugeRegistryABI, _ = contracts.YGaugeRegistryMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -301,6 +303,20 @@ func GetLPPrice(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      CurveAMMABI,
 		Method:   `lp_price`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetVeYFIGaugeByIndex(name string, contractAddress common.Address, index *big.Int) ethereum.Call {
+	parsedData, err := VeYFIGaugeRegistryABI.Pack("gauges", index)
+	if err != nil {
+		logs.Error("Error packing VeYFIGaugeRegistryABI gauges", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      VeYFIGaugeRegistryABI,
+		Method:   `gauges`,
 		CallData: parsedData,
 		Name:     name,
 	}

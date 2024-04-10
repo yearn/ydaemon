@@ -149,6 +149,7 @@ type TSimplifiedExternalERC20Token struct {
 type TStakingData struct {
 	Address   string `json:"address"`
 	Available bool   `json:"available"`
+	Source    string `json:"source"`
 }
 
 // TSimplifiedExternalVault is the struct containing the information about a vault.

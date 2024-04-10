@@ -25,9 +25,12 @@ var OPTIMISM = TChain{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 		Block:   4286263,
 	},
-	StackingRewardContract: TContractData{
-		Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
-		Block:   85969070,
+	StakingRewardContract: []TContractData{
+		{
+			Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+			Block:   85969070,
+			Tag:     `OP BOOST`,
+		},
 	},
 	PartnerContract: TContractData{
 		Address: common.HexToAddress(`0x7E08735690028cdF3D81e7165493F1C34065AbA2`),

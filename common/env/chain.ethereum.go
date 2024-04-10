@@ -74,6 +74,13 @@ var ETHEREUM = TChain{
 			Block:   19072527,
 		},
 	},
+	StakingRewardContract: []TContractData{
+		{
+			Address: common.HexToAddress(`0x1D0fdCb628b2f8c0e22354d45B3B2D4cE9936F8B`),
+			Block:   19573915,
+			Tag:     `VEYFI`,
+		},
+	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
 			//yvAjnaDAI-harvester (ysyvAjnaDAI)

@@ -102,7 +102,7 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 			continue
 		}
 		assetAddress := helpers.DecodeAddress(rawAssetAddress)
-		logs.Success(`Found new VEYFI gauge:` + gaugeAddress.Hex() + ` - ` + assetAddress.Hex())
+		storage.StoreVeYFIGauge(chainID, assetAddress, gaugeAddress)
 	}
 
 	/**********************************************************************************************

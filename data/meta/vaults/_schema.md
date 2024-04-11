@@ -38,7 +38,8 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `isHidden` | `bool` | If we should hide the vaults from the standard results. Indicates the vault should be hidden from the UI | ❌ |
 | `isAggregator` | `bool` | If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy | ❌ |
 | `isBoosted` | `bool` | If the vault benefits from a boosting, whatever it is (ex: Curve Boost) | ❌ |
-| `isAutomated` | `bool` | If the vault is automated | ✅ | --> DO IT
+| `isAutomated` | `bool` | If the vault is automated | ✅ |
+| `isHighlighted` | `bool` | If the vault is set as highlighted | ❌ |
 | `isPool` | `bool` | If the vault is using a pool token as want | ❌ |
 | `migration` | `object` | Indicates the vault migration data and availability | ❌ |
 | `stability` | `object` | Indicates the stability of the vault | ❌ |

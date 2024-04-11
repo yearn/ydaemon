@@ -73,6 +73,7 @@ type TExternalVaultDetails struct {
 	IsAggregator    bool                       `json:"isAggregator"` // If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy
 	IsBoosted       bool                       `json:"isBoosted"`    // If the vault is boosted or not. Humanly set.
 	IsAutomated     bool                       `json:"isAutomated"`
+	IsHighlighted   bool                       `json:"isHighlighted"`
 	IsPool          bool                       `json:"isPool"`
 	PoolProvider    string                     `json:"poolProvider,omitempty"`
 	Stability       models.TVaultStabilityType `json:"stability"`
@@ -255,6 +256,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		IsAggregator:    vault.Metadata.IsAggregator,
 		IsBoosted:       vault.Metadata.IsBoosted,
 		IsAutomated:     vault.Metadata.IsAutomated,
+		IsHighlighted:   vault.Metadata.IsHighlighted,
 		IsPool:          vault.Metadata.IsPool,
 		Stability:       vault.Metadata.Stability.Stability,
 		StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,

@@ -75,8 +75,15 @@ func ComputeChainAPR(chainID uint64) {
 		** Some vaults may have a staking rewards system. If so, we need to calculate the APR for
 		** this staking rewards system and add it to the netAPY.
 		**********************************************************************************************/
-		stakingRewardAPR := computeStakingRewardsAPR(chainID, vault)
-		vaultAPR.Extra.StakingRewardsAPR = stakingRewardAPR
+		stakingRewardAPR, hasExtraAPR := computeOPBoostStakingRewardsAPR(chainID, vault)
+		if hasExtraAPR {
+			vaultAPR.Extra.StakingRewardsAPR = stakingRewardAPR
+		}
+
+		veYFIGaugeStakingAPR, hasExtraAPR := computeVeYFIGaugeStakingRewardsAPR(chainID, vault)
+		if hasExtraAPR {
+			vaultAPR.Extra.StakingRewardsAPR = veYFIGaugeStakingAPR
+		}
 
 		/**********************************************************************************************
 		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward

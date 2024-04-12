@@ -63,6 +63,7 @@ type TVaultMetadata struct {
 	IsAggregator   bool       `json:"isAggregator"`   // If the vault is an aggregator or not
 	IsBoosted      bool       `json:"isBoosted"`      // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
 	IsAutomated    bool       `json:"isAutomated"`    // If the vault is automated or not
+	IsHighlighted  bool       `json:"isHighlighted"`  // If the vault is highlighted or not
 	IsPool         bool       `json:"isPool"`         // If the vault is a pool or not
 	ShouldUseV2APR bool       `json:"shouldUseV2APR"` // If the vault should use the V2 APR or not (only for V3 vaults)
 	Migration      TMigration `json:"migration"`      // If the vault is in the process of being migrated

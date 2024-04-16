@@ -51,6 +51,7 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 
 	response := multicalls.Perform(chainID, calls, nil)
 	rawTotalSupply := helpers.DecodeBigInt(response[stakingContract.Hex()+`totalSupply`])
+	rawVaultDecimals := helpers.DecodeUint64(response[vault.Address.Hex()+`decimals`])
 	for i := 0; i < 10; i++ {
 		rewardToken := helpers.DecodeAddress(response[strconv.Itoa(i)+`rewardTokens`])
 		if (rewardToken != common.Address{}) {
@@ -97,7 +98,7 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 			bigNumber.NewFloat(0).SetInt(rewardRate),
 			bigNumber.NewFloat(0).SetInt(rewardDuration),
 		)
-		normalizedTotalSupply := helpers.ToNormalizedAmount(rawTotalSupply, uint64(rewardDecimals))
+		normalizedTotalSupply := helpers.ToNormalizedAmount(rawTotalSupply, rawVaultDecimals)
 
 		/**********************************************************************************************
 		** Retrieve the price of the reward token from our storage

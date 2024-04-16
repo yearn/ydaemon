@@ -45,6 +45,20 @@ var GNOSIS = TChain{
 		// 	Tag:     `STEALTH`,
 		// },
 	},
+	StakingRewardRegistry: []TContractData{
+		{
+			Address: common.HexToAddress(`0x776779de45D947B30A5D929C305Dc35eeE1F23be`),
+			Block:   33343074,
+			Tag:     `JUICED`,
+		},
+	},
+	ExtraStakingContracts: []TExtraStakingContracts{
+		{
+			VaultAddress:   common.HexToAddress(`0x39b68451f05aaa020611cf887a7338f0991ffd60`),
+			StakingAddress: common.HexToAddress(`0xd4263aBDdD2afdaAE0A0a69Eb09Deb8000dd642e`),
+			Tag:            `JUICED`,
+		},
+	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
 			ChainID:         100,
@@ -75,8 +89,10 @@ var GNOSIS = TChain{
 		},
 	},
 	BlacklistedVaults: []common.Address{},
-	ExtraTokens:       []common.Address{},
-	IgnoredTokens:     []common.Address{},
+	ExtraTokens: []common.Address{
+		common.HexToAddress("0x67Ee2155601e168F7777F169Cd74f3E22BB5E0cE"), // wAjna
+	},
+	IgnoredTokens: []common.Address{},
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 		FactoryAddress:  common.Address{},

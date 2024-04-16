@@ -21,7 +21,7 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
-	stakingContract, ok := storage.GetGaugeForVault(chainID, vault.Address)
+	stakingContract, ok := storage.GetVeYFIStakingForVault(chainID, vault.Address)
 	if !ok {
 		return bigNumber.NewFloat(0), false
 	}

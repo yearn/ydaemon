@@ -56,11 +56,27 @@ var POLYGON = TChain{
 			Block:   51_550_217,
 		},
 	},
+	StakingRewardRegistry: []TContractData{
+		// {
+		// 	Address: common.HexToAddress(`0x869D79ab412eB74f73b2eB983BA1b265AA1c1af1`),
+		// 	Block:   19265999,
+		// 	Tag:     `JUICED`,
+		// },
+	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress(`0x0128E1D15ED9f0c8572967825Ef46309BDA39836`), //Test USDC
 	},
-	ExtraTokens:   []common.Address{},
+	ExtraStakingContracts: []TExtraStakingContracts{
+		{
+			VaultAddress:   common.HexToAddress(`0xF54a15F6da443041Bb075959EA66EE47655DDFcA`),
+			StakingAddress: common.HexToAddress(`0x602920E7e0a335137E02DF139CdF8D1381DAdBfD`),
+			Tag:            `JUICED`,
+		},
+	},
+	ExtraTokens: []common.Address{
+		common.HexToAddress("0xA63b19647787Da652D0826424460D1BBf43Bf9c6"), // wAjna
+	},
 	IgnoredTokens: []common.Address{},
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),

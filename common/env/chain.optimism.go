@@ -25,7 +25,7 @@ var OPTIMISM = TChain{
 		Address: common.HexToAddress(`0xca11bde05977b3631167028862be2a173976ca11`),
 		Block:   4286263,
 	},
-	StakingRewardContract: []TContractData{
+	StakingRewardRegistry: []TContractData{
 		{
 			Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
 			Block:   85969070,
@@ -65,6 +65,7 @@ var OPTIMISM = TChain{
 	},
 	ExtraTokens: []common.Address{
 		common.HexToAddress("0x4200000000000000000000000000000000000042"), // Opt
+		common.HexToAddress("0x6c518f9D1a163379235816c543E62922a79863Fa"), // wAjna
 	},
 	IgnoredTokens: []common.Address{
 		common.HexToAddress("0x6884bd538Db61A626Da0a05E10807BFC5Aea2b32"), // Test deployment - Nothing

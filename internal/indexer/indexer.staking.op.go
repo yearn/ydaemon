@@ -62,7 +62,7 @@ func filterStakingPools(
 				if log.Error() != nil {
 					continue
 				}
-				storage.StoreStakingPool(chainID, models.TStakingPoolAdded{
+				storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
 					StackingPoolAddress: log.Event.StakingPool,
 					VaultAddress:        log.Event.Token,
 				})
@@ -129,7 +129,7 @@ func watchStakingPool(
 		if err != nil {
 			continue
 		}
-		storage.StoreStakingPool(chainID, models.TStakingPoolAdded{
+		storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
 			StackingPoolAddress: value.StakingPool,
 			VaultAddress:        value.Token,
 		})
@@ -149,7 +149,7 @@ func watchStakingPool(
 				continue
 			}
 			lastSyncedBlock = value.Raw.BlockNumber
-			storage.StoreStakingPool(chainID, models.TStakingPoolAdded{
+			storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
 				StackingPoolAddress: value.StakingPool,
 				VaultAddress:        value.Token,
 			})
@@ -232,7 +232,7 @@ func indexStakingPoolWrapper(
 ** The function `IndexStakingPools` ...
 **************************************************************************************************/
 func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Address]models.TStakingPoolAdded) {
-	stakingContracts := env.CHAINS[chainID].StakingRewardContract
+	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
 	if len(stakingContracts) == 0 {
 		return
 	}
@@ -265,6 +265,6 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 	** and indexed, are retrieved. New deployed pools will not hit this part, but will be handle
 	** in the above functions directly
 	**********************************************************************************************/
-	stakingPoolsFromRegistry, _ = storage.ListStakingPools(chainID, storage.PerPool)
+	stakingPoolsFromRegistry, _ = storage.ListOPStaking(chainID, storage.PerPool)
 	return stakingPoolsFromRegistry
 }

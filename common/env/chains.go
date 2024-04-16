@@ -5,6 +5,11 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
+type TExtraStakingContracts struct {
+	VaultAddress   common.Address
+	StakingAddress common.Address
+	Tag            string
+}
 type TChainCurve struct {
 	RegistryAddress common.Address
 	FactoryAddress  common.Address
@@ -31,8 +36,9 @@ type TChain struct {
 	PartnerContract       TContractData
 	APROracleContract     TContractData
 	Coin                  models.TERC20Token
-	StakingRewardContract []TContractData
+	StakingRewardRegistry []TContractData
 	Registries            []TContractData
+	ExtraStakingContracts []TExtraStakingContracts
 	ExtraVaults           []models.TVaultsFromRegistry
 	BlacklistedVaults     []common.Address
 	ExtraTokens           []common.Address

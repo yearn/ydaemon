@@ -15,11 +15,25 @@ import (
 )
 
 /**************************************************************************************************
-** The function `IndexStakingPools` ...
+** IndexJuicedStakingContract is an indexer responsible for indexing the deployed Juiced staking
+** contracts. Theses staking contracts are used in the Yearn ecosystem to allow users to stake some
+** vaults tokens in it and earn some extra reards
 **************************************************************************************************/
-func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.Address) {
-	stakingContracts := env.CHAINS[chainID].StakingRewardContract
+func IndexJuicedStakingContract(chainID uint64) (stakingMap map[common.Address]common.Address) {
+	/**********************************************************************************************
+	** Some staking contracts might be deployed outside of the Yearn ecosystem and are not indexed
+	** in the Yearn registry. We need to index them manually.
+	**********************************************************************************************/
+	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
+	if len(extraStakingContracts) > 0 {
+		for _, contract := range extraStakingContracts {
+			storage.StoreJuicedStaking(chainID, contract.VaultAddress, contract.StakingAddress)
+		}
+	}
+
+	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
 	if len(stakingContracts) == 0 {
+		logs.Error(`No staking contract`)
 		return
 	}
 
@@ -28,13 +42,14 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 	**********************************************************************************************/
 	registry := env.TContractData{}
 	for _, contract := range stakingContracts {
-		if contract.Tag == `VEYFI` {
+		if contract.Tag == `JUICED` {
 			registry = contract
 			break
 		}
 	}
 
 	if (registry.Address == common.Address{}) {
+		logs.Error(`No registry`)
 		return
 	}
 
@@ -44,31 +59,30 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 	** the second call.
 	******************************************************************************************/
 	client := ethereum.GetRPC(chainID)
-	gaugeRegistry, err := contracts.NewYGaugeRegistry(registry.Address, client)
+	stakingRegistry, err := contracts.NewJuicedStakingRewardsRegistry(registry.Address, client)
 	if err != nil {
-		logs.Error(`Failed to connect to the gauge registry contract`, err)
+		logs.Error(`Failed to connect to the juiced staking registry contract`, err)
 		return
 	}
 
 	/******************************************************************************************
-	** We first need to get the number of gauges via the gaugeRegistry `VaultCount` method.
-	** This will give us the number of vaults having a gauges.
+	** We first need to get the number of vaults that have a staking contract attached to them.
 	******************************************************************************************/
-	numberOfGauges, err := gaugeRegistry.VaultCount(nil)
+	numberOfGauges, err := stakingRegistry.NumTokens(nil)
 	if err != nil {
-		logs.Error(`Failed to retrieve the number of gauges`, err)
+		logs.Error(`Failed to retrieve the number of staking contract`, err)
 		return
 	}
 
 	/******************************************************************************************
-	** Then, via a multicall, we need to call the `gauges(idx)` method from the gaugeRegistry
-	** contract. This will give us the address of the gauge for a given index. Once we have
-	** that, we can know two things: the index of a gauge and the address of that gauge.
+	** Then, via a multicall, we need to call the `tokens(idx)` method from the stakingRegistry
+	** contract. This will give us the address of the vault for a given index. Once we have
+	** that, we can know two things: the index of a vault and the address of that vault.
 	******************************************************************************************/
 	calls := []ethereum.Call{}
 	assetCalls := []ethereum.Call{}
 	for i := int64(0); i < int64(numberOfGauges.Int64()); i++ {
-		calls = append(calls, multicalls.GetVeYFIGaugeByIndex(
+		calls = append(calls, multicalls.GetStakingTokenByIndex(
 			strconv.FormatInt(i, 10),
 			registry.Address,
 			big.NewInt(i),
@@ -76,12 +90,16 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 	}
 	callResponse := multicalls.Perform(chainID, calls, nil)
 	for i := int64(0); i < int64(numberOfGauges.Int64()); i++ {
-		rawGaugeAddress := callResponse[strconv.FormatInt(i, 10)+`gauges`]
-		if len(rawGaugeAddress) == 0 {
+		rawVaultAddress := callResponse[strconv.FormatInt(i, 10)+`tokens`]
+		if len(rawVaultAddress) == 0 {
 			continue
 		}
-		gaugeAddress := helpers.DecodeAddress(rawGaugeAddress)
-		assetCalls = append(assetCalls, multicalls.GetAsset(gaugeAddress.Hex(), gaugeAddress))
+		vaultAddress := helpers.DecodeAddress(rawVaultAddress)
+		assetCalls = append(assetCalls, multicalls.GetStakingPoolForVault(
+			vaultAddress.Hex(),
+			registry.Address,
+			vaultAddress,
+		))
 	}
 
 	/******************************************************************************************
@@ -91,18 +109,18 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 	******************************************************************************************/
 	assetResponse := multicalls.Perform(chainID, assetCalls, nil)
 	for i := int64(0); i < int64(numberOfGauges.Int64()); i++ {
-		rawGaugeAddress := callResponse[strconv.FormatInt(i, 10)+`gauges`]
-		if len(rawGaugeAddress) == 0 {
+		rawVaultAddress := callResponse[strconv.FormatInt(i, 10)+`tokens`]
+		if len(rawVaultAddress) == 0 {
 			continue
 		}
-		gaugeAddress := helpers.DecodeAddress(rawGaugeAddress)
+		vaultAddress := helpers.DecodeAddress(rawVaultAddress)
 
-		rawAssetAddress := assetResponse[gaugeAddress.Hex()+`asset`]
-		if len(rawAssetAddress) == 0 {
+		rawStakingAddress := assetResponse[vaultAddress.Hex()+`stakingPool`]
+		if len(rawStakingAddress) == 0 {
 			continue
 		}
-		assetAddress := helpers.DecodeAddress(rawAssetAddress)
-		storage.StoreVeYFIGauge(chainID, assetAddress, gaugeAddress)
+		stakingAddress := helpers.DecodeAddress(rawStakingAddress)
+		storage.StoreJuicedStaking(chainID, vaultAddress, stakingAddress)
 	}
 
 	/**********************************************************************************************
@@ -110,6 +128,6 @@ func IndexVeYFIGauges(chainID uint64) (veYFIGaugesMap map[common.Address]common.
 	** and indexed, are retrieved. New deployed pools will not hit this part, but will be handle
 	** in the above functions directly
 	**********************************************************************************************/
-	veYFIGaugesMap = storage.ListVeYFIGauges(chainID)
-	return veYFIGaugesMap
+	stakingMap = storage.ListJuicedStaking(chainID)
+	return stakingMap
 }

@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -46,12 +47,24 @@ func ListPrices(chainID uint64) (
 ** and price address.
 **************************************************************************************************/
 func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool) {
-	vaultFromSyncMap, ok := safeSyncMap(_pricesSyncMap, chainID).Load(tokenAddress)
+	priceFromSyncMap, ok := safeSyncMap(_pricesSyncMap, chainID).Load(tokenAddress)
 	if !ok {
-		// logs.Warning(`unable to find price for token ` + tokenAddress.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
+		/******************************************************************************************
+		** The Ajna tokens on sidechain are just a representation of the mainnet token. However,
+		** the price of the token on the sidechain might not be found. In order to avoid the error,
+		** we will return a price of the token on mainnet, even if the requested chain is a
+		** sidechain.
+		******************************************************************************************/
+		if addresses.Equals(tokenAddress, `0x67Ee2155601e168F7777F169Cd74f3E22BB5E0cE`) && chainID == 100 {
+			mainnetPriceFromSyncMap, ok := safeSyncMap(_pricesSyncMap, env.ETHEREUM.ID).Load(tokenAddress)
+			if !ok {
+				return models.TPrices{}, false
+			}
+			return mainnetPriceFromSyncMap.(models.TPrices), true
+		}
 		return models.TPrices{}, false
 	}
-	return vaultFromSyncMap.(models.TPrices), true
+	return priceFromSyncMap.(models.TPrices), true
 }
 
 func init() {

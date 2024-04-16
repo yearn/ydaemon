@@ -30,6 +30,7 @@ var ERC4626ABI, _ = contracts.ERC4626MetaData.GetAbi()
 var CurveAMMABI, _ = contracts.CurveAMMMetaData.GetAbi()
 var VeYFIGaugeABI, _ = contracts.YVeYFIGaugeMetaData.GetAbi()
 var VeYFIGaugeRegistryABI, _ = contracts.YGaugeRegistryMetaData.GetAbi()
+var NewJuicedStakingRewardsRegistryABI, _ = contracts.JuicedStakingRewardsRegistryMetaData.GetAbi()
 
 func GetPriceUsdcRecommendedCall(name string, contractAddress common.Address, tokenAddress common.Address) ethereum.Call {
 	parsedData, err := LensABI.Pack("getPriceUsdcRecommended", tokenAddress)
@@ -317,6 +318,34 @@ func GetVeYFIGaugeByIndex(name string, contractAddress common.Address, index *bi
 		Target:   contractAddress,
 		Abi:      VeYFIGaugeRegistryABI,
 		Method:   `gauges`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetStakingTokenByIndex(name string, contractAddress common.Address, index *big.Int) ethereum.Call {
+	parsedData, err := NewJuicedStakingRewardsRegistryABI.Pack("tokens", index)
+	if err != nil {
+		logs.Error("Error packing NewJuicedStakingRewardsRegistryABI tokens", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      NewJuicedStakingRewardsRegistryABI,
+		Method:   `tokens`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetStakingPoolForVault(name string, contractAddress common.Address, vaultAddress common.Address) ethereum.Call {
+	parsedData, err := NewJuicedStakingRewardsRegistryABI.Pack("stakingPool", vaultAddress)
+	if err != nil {
+		logs.Error("Error packing NewJuicedStakingRewardsRegistryABI stakingPool", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      NewJuicedStakingRewardsRegistryABI,
+		Method:   `stakingPool`,
 		CallData: parsedData,
 		Name:     name,
 	}

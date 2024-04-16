@@ -47,8 +47,10 @@ var BASE = TChain{
 	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{},
-	ExtraTokens:       []common.Address{},
-	IgnoredTokens:     []common.Address{},
+	ExtraTokens: []common.Address{
+		common.HexToAddress("0xf0f326af3b1Ed943ab95C29470730CC8Cf66ae47"), // wAjna
+	},
+	IgnoredTokens: []common.Address{},
 	Curve: TChainCurve{
 		RegistryAddress: common.Address{},
 		FactoryAddress:  common.Address{},

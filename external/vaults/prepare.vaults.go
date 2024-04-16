@@ -85,21 +85,30 @@ func toSimplifiedVersion(
 	** Check, retrieve and assign the staking pool for the vault. The staking pool here can only
 	** be an op boost staking pool.
 	**********************************************************************************************/
-	stakingData, hasStakingPool := storage.GetStakingPoolForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	opStakingData, hasStakingPool := storage.GetOPStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if hasStakingPool {
 		staking = TStakingData{
-			Address:   stakingData.StackingPoolAddress.Hex(),
+			Address:   opStakingData.StackingPoolAddress.Hex(),
 			Available: hasStakingPool,
 			Source:    `OP Boost`,
 		}
 	}
 
-	gaugeData, hasVeYFIGauge := storage.GetGaugeForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	veYFIStakingData, hasVeYFIGauge := storage.GetVeYFIStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasVeYFIGauge {
 		staking = TStakingData{
-			Address:   gaugeData.Hex(),
+			Address:   veYFIStakingData.Hex(),
 			Available: hasVeYFIGauge,
 			Source:    `VeYFI`,
+		}
+	}
+
+	juicedStakingData, hasJuicedGauge := storage.GetJuicedStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	if !staking.Available && hasJuicedGauge {
+		staking = TStakingData{
+			Address:   juicedStakingData.Hex(),
+			Available: hasJuicedGauge,
+			Source:    `Juiced`,
 		}
 	}
 

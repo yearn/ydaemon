@@ -36,7 +36,8 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 	indexer.IndexStakingPools(chainID)
-	indexer.IndexVeYFIGauges(chainID)
+	indexer.IndexVeYFIStakingContract(chainID)
+	indexer.IndexJuicedStakingContract(chainID)
 	logs.Success(chainID, `-`, `Index StakingPools ✅`)
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	logs.Success(chainID, `-`, `Index New Strategies ✅`)
@@ -64,7 +65,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	})
 
 	scheduler.Every(15).Minute().WaitForSchedule().Do(func() {
-		indexer.IndexVeYFIGauges(chainID)
+		indexer.IndexVeYFIStakingContract(chainID)
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		fetcher.RetrieveAllTokens(chainID, vaultMap)
 

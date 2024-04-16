@@ -18,7 +18,7 @@ func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigN
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
-	stakingContract, ok := storage.GetStakingPoolForVault(chainID, vault.Address)
+	stakingContract, ok := storage.GetOPStakingForVault(chainID, vault.Address)
 	if !ok {
 		return bigNumber.NewFloat(0), false
 	}

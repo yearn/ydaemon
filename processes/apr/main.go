@@ -46,8 +46,9 @@ func ComputeChainAPR(chainID uint64) {
 	fraxPools := retrieveFraxPools()
 	storage.RefreshGammaCalls(chainID)
 
+	isOnGnosis := (chainID == 100)
 	for _, vault := range allVaults {
-		if vault.Metadata.IsRetired {
+		if vault.Metadata.IsRetired && !isOnGnosis {
 			continue
 		}
 		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
@@ -83,6 +84,11 @@ func ComputeChainAPR(chainID uint64) {
 		veYFIGaugeStakingAPR, hasExtraAPR := computeVeYFIGaugeStakingRewardsAPR(chainID, vault)
 		if hasExtraAPR {
 			vaultAPR.Extra.StakingRewardsAPR = veYFIGaugeStakingAPR
+		}
+
+		juicedStakingAPR, hasExtraAPR := computeJuicedStakingRewardsAPR(chainID, vault)
+		if hasExtraAPR {
+			vaultAPR.Extra.StakingRewardsAPR = juicedStakingAPR
 		}
 
 		/**********************************************************************************************

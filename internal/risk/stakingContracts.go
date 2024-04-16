@@ -33,7 +33,7 @@ func calculateStakingMetrics(chainID uint64) {
 	** decimals, and recommended price in USDC for the pool. These calls are appended to a list of
 	** calls to be performed via a multicall.
 	**********************************************************************************************/
-	_, allStackingPoolAdded := storage.ListStakingPools(chainID, storage.PerPool)
+	_, allStackingPoolAdded := storage.ListOPStaking(chainID, storage.PerPool)
 	calls := []ethereum.Call{}
 	for _, pool := range allStackingPoolAdded {
 		currentToken, ok := storage.GetERC20(chainID, pool.VaultAddress)

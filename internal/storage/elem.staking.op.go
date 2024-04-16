@@ -8,7 +8,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-var _stakingPoolsSyncMap = make(map[uint64]*sync.Map)
+var _opStakingSyncMap = make(map[uint64]*sync.Map)
 
 type TStakingKey string
 
@@ -18,23 +18,23 @@ const (
 )
 
 /**************************************************************************************************
-** StoreStakingPool will add a new vault in the _vaultsSyncMap
+** StoreOPStaking will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
-func StoreStakingPool(chainID uint64, pool models.TStakingPoolAdded) {
-	safeSyncMap(_stakingPoolsSyncMap, chainID).Store(pool.StackingPoolAddress, pool)
+func StoreOPStaking(chainID uint64, pool models.TStakingPoolAdded) {
+	safeSyncMap(_opStakingSyncMap, chainID).Store(pool.StackingPoolAddress, pool)
 }
 
 /**************************************************************************************************
-** ListStakingPools will retrieve the all the vaults added to the registries from the
+** ListOPStaking will retrieve the all the vaults added to the registries from the
 ** given chainID
 **************************************************************************************************/
-func ListStakingPools(chainID uint64, key TStakingKey) (asMap map[common.Address]models.TStakingPoolAdded, asSlice []models.TStakingPoolAdded) {
+func ListOPStaking(chainID uint64, key TStakingKey) (asMap map[common.Address]models.TStakingPoolAdded, asSlice []models.TStakingPoolAdded) {
 	asMap = make(map[common.Address]models.TStakingPoolAdded) // make to avoid nil map
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the stakingPools to the map and slice.
 	**********************************************************************************************/
-	safeSyncMap(_stakingPoolsSyncMap, chainID).Range(func(key, value interface{}) bool {
+	safeSyncMap(_opStakingSyncMap, chainID).Range(func(key, value interface{}) bool {
 		stakingContract := value.(models.TStakingPoolAdded)
 		if key == PerVault {
 			asMap[stakingContract.VaultAddress] = stakingContract
@@ -48,14 +48,14 @@ func ListStakingPools(chainID uint64, key TStakingKey) (asMap map[common.Address
 }
 
 /**************************************************************************************************
-** GetStakingPoolForVault
+** GetOPStakingForVault
 **************************************************************************************************/
-func GetStakingPoolForVault(chainID uint64, vault common.Address) (models.TStakingPoolAdded, bool) {
+func GetOPStakingForVault(chainID uint64, vault common.Address) (models.TStakingPoolAdded, bool) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingPool for the vault.
 	**********************************************************************************************/
 	var stakingPool models.TStakingPoolAdded
-	safeSyncMap(_stakingPoolsSyncMap, chainID).Range(func(key, value interface{}) bool {
+	safeSyncMap(_opStakingSyncMap, chainID).Range(func(key, value interface{}) bool {
 		stakingContract := value.(models.TStakingPoolAdded)
 		if addresses.Equals(stakingContract.VaultAddress, vault) {
 			stakingPool = stakingContract

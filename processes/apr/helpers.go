@@ -21,7 +21,7 @@ func initYearnEcosystem(chainID uint64) {
 	prices.RetrieveAllPrices(chainID, tokenMap)
 	logs.Info(`loading staking pools...`)
 	indexer.IndexStakingPools(chainID)
-	indexer.IndexVeYFIGauges(chainID)
+	indexer.IndexVeYFIStakingContract(chainID)
 	logs.Info(`loading strategies...`)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
 }

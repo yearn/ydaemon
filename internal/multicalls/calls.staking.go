@@ -1,6 +1,8 @@
 package multicalls
 
 import (
+	"math/big"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -8,6 +10,7 @@ import (
 )
 
 var StakingABI, _ = contracts.YOptimismStakingRewardMetaData.GetAbi()
+var JuicedStakingABI, _ = contracts.JuicedStakingRewardsMetaData.GetAbi()
 
 func GetPeriodFinish(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := StakingABI.Pack("periodFinish")
@@ -60,6 +63,34 @@ func GetRewardToken(name string, contractAddress common.Address) ethereum.Call {
 		Target:   contractAddress,
 		Abi:      StakingABI,
 		Method:   `rewardToken`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetRewardTokens(name string, contractAddress common.Address, index int64) ethereum.Call {
+	parsedData, err := JuicedStakingABI.Pack("rewardTokens", big.NewInt(index))
+	if err != nil {
+		logs.Error("Error packing JuicedStakingABI rewardTokens", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      JuicedStakingABI,
+		Method:   `rewardTokens`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetRewardData(name string, contractAddress common.Address, rewardTokenAddress common.Address) ethereum.Call {
+	parsedData, err := JuicedStakingABI.Pack("rewardData", rewardTokenAddress)
+	if err != nil {
+		logs.Error("Error packing JuicedStakingABI rewardData", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      JuicedStakingABI,
+		Method:   `rewardData`,
 		CallData: parsedData,
 		Name:     name,
 	}

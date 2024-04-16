@@ -72,18 +72,19 @@ var ARBITRUM = TChain{
 		},
 	},
 	BlacklistedVaults: []common.Address{
-		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
-		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
-		common.HexToAddress("0xFa247d0D55a324ca19985577a2cDcFC383D87953"), // Test deployment - PHP
+		common.HexToAddress(`0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3`), // Test deployment - Nothing
+		common.HexToAddress(`0x976a1C749cd8153909e0B04EebE931eF8957b15b`), // Test deployment - PHPTest
+		common.HexToAddress(`0xFa247d0D55a324ca19985577a2cDcFC383D87953`), // Test deployment - PHP
 	},
 	ExtraTokens: []common.Address{
 		common.HexToAddress(`0x82e3A8F066a6989666b031d916c43672085b1582`), // YFI
 		common.HexToAddress(`0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978`), // CRV
+		common.HexToAddress(`0xf0f326af3b1Ed943ab95C29470730CC8Cf66ae47`), // wAjna
 	},
 	IgnoredTokens: []common.Address{
-		common.HexToAddress("0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3"), // Test deployment - Nothing
-		common.HexToAddress("0x976a1C749cd8153909e0B04EebE931eF8957b15b"), // Test deployment - PHPTest
-		common.HexToAddress("0xFa247d0D55a324ca19985577a2cDcFC383D87953"), // Test deployment - PHP
+		common.HexToAddress(`0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3`), // Test deployment - Nothing
+		common.HexToAddress(`0x976a1C749cd8153909e0B04EebE931eF8957b15b`), // Test deployment - PHPTest
+		common.HexToAddress(`0xFa247d0D55a324ca19985577a2cDcFC383D87953`), // Test deployment - PHP
 	},
 	Curve: TChainCurve{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),

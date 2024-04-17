@@ -96,9 +96,12 @@ type TExternalERC20Token struct {
 
 // TExternalVaultInfo is the struct containing the information about a vault.
 type TExternalVaultInfo struct {
-	SourceURL string `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
-	RiskLevel int8   `json:"riskLevel,omitempty"` // The risk level of the vault (1 to 5, -1 if not set)
-	UINotice  string `json:"uiNotice,omitempty"`  // The notice to display in the UI
+	SourceURL     string `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
+	RiskLevel     int8   `json:"riskLevel,omitempty"` // The risk level of the vault (1 to 5, -1 if not set)
+	UINotice      string `json:"uiNotice,omitempty"`  // The notice to display in the UI
+	IsRetired     bool   `json:"isRetired"`
+	IsBoosted     bool   `json:"isBoosted"`
+	IsHighlighted bool   `json:"isHighlighted"`
 }
 
 // TExternalVault is the struct containing the information about a vault.
@@ -165,8 +168,6 @@ type TSimplifiedExternalVault struct {
 	Description    string                        `json:"description,omitempty"`
 	Decimals       uint64                        `json:"decimals"`
 	ChainID        uint64                        `json:"chainID"`
-	Retired        bool                          `json:"retired"`
-	Boosted        bool                          `json:"boosted"`
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
 	APR            apr.TVaultAPR                 `json:"apr"`

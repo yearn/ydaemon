@@ -57,6 +57,9 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 	}
 	newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
+	if newVault.Details.IsHighlighted {
+		newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+	}
 
 	/** 🔵 - Yearn *************************************************************************************
 	** For the vault, it performs the following operations:

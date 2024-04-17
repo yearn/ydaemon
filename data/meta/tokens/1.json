@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-16T17:20:51.372184+02:00",
+	"lastUpdate": "2024-04-17T11:01:22.941098+02:00",
 	"version": {
 		"major": 0,
-		"minor": 32,
+		"minor": 33,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1238,6 +1238,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x10856c8c8e41b8888868789080c7bea6267a2b08": {
+			"address": "0x10856c8c8e41b8888868789080c7bea6267a2b08",
+			"underlyingTokensAddresses": [
+				"0x4f43c77872db6ba177c270986cd30c3381af37ee"
+			],
+			"type": "Yearn Vault",
+			"name": "Kelp rsETH LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "Kelp rsETH LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x10856c8c8e41b8888868789080c7BEA6267A2b08/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x10978db3885ba79bf1bc823e108085fb88e6f02f": {
 			"address": "0x10978db3885ba79bf1bc823e108085fb88e6f02f",
 			"underlyingTokensAddresses": [],
@@ -2019,6 +2035,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1d00E86748573C322f4cc41518AA0e77BD912Eb4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1d0bcbf0f80cc47e7766d48d61c5fe7ad8a19640": {
+			"address": "0x1d0bcbf0f80cc47e7766d48d61c5fe7ad8a19640",
+			"underlyingTokensAddresses": [
+				"0x93a82f3873e5b4ff81902663c43286d662f6721c"
+			],
+			"type": "Yearn Vault",
+			"name": "sDAI LP (26 SEP 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "sDAI LP (26 SEP 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1d0BCbf0f80Cc47E7766d48D61C5fE7AD8a19640/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3973,6 +4005,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x378ffd482c767f847d48818552f8438b17335c89": {
+			"address": "0x378ffd482c767f847d48818552f8438b17335c89",
+			"underlyingTokensAddresses": [
+				"0xbbd395d4820da5c89a3bca4fa28af97254a0fcbe"
+			],
+			"type": "Yearn Vault",
+			"name": "crvUSD LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "crvUSD LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x378fFd482C767f847d48818552f8438B17335C89/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x37fec7b2f36f3bbae956262f46ddf21830fa68ef": {
 			"address": "0x37fec7b2f36f3bbae956262f46ddf21830fa68ef",
 			"underlyingTokensAddresses": [],
@@ -4928,6 +4976,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x429EA2d8d5B06CA40dD986FaC0734BA0E0CaC022/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x433853acba7ec9ffecf7d9732ea94f0668518e8e": {
+			"address": "0x433853acba7ec9ffecf7d9732ea94f0668518e8e",
+			"underlyingTokensAddresses": [
+				"0xa9355a5d306c67027c54de0e5a72df76befa5694"
+			],
+			"type": "Yearn Vault",
+			"name": "Swell rswETH LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "Swell rswETH LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x433853acbA7Ec9fFecF7d9732EA94f0668518e8E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6306,6 +6370,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x55eED13aB07F8b5538eFf301551492a1D776dA7b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x564f7b5d8389f5c4c99e50fed5fc95070e697903": {
+			"address": "0x564f7b5d8389f5c4c99e50fed5fc95070e697903",
+			"underlyingTokensAddresses": [
+				"0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2"
+			],
+			"type": "Yearn Vault",
+			"name": "Lido stETH LP (25 DEC 2025)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "Lido stETH LP (25 DEC 2025)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x564F7b5d8389F5C4c99E50fED5fC95070e697903/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9711,6 +9791,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x82c24073a19f4c46ab2646323b322427eb98f616": {
+			"address": "0x82c24073a19f4c46ab2646323b322427eb98f616",
+			"underlyingTokensAddresses": [
+				"0x38100a480dbed278b0fe57ba80a75498a7dc5bb1"
+			],
+			"type": "Yearn Vault",
+			"name": "uniETH LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "uniETH LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x82c24073a19f4C46ab2646323B322427Eb98F616/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab": {
 			"address": "0x82c7a8f707110f5fbb16184a5933e9f78a34c6ab",
 			"underlyingTokensAddresses": [],
@@ -10797,6 +10893,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x93ACb12ae1Effb3426220C20c6d408eEAaE59D72/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x93b88b35283e1dc30981567843f5ba88485c16cc": {
+			"address": "0x93b88b35283e1dc30981567843f5ba88485c16cc",
+			"underlyingTokensAddresses": [
+				"0x34280882267ffa6383b363e278b027be083bbe3b"
+			],
+			"type": "Yearn Vault",
+			"name": "Lido stETH LP (30 DEC 2027)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "Lido stETH LP (30 DEC 2027)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x93b88b35283E1DC30981567843f5BA88485C16Cc/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12385,6 +12497,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa89a7420b19679b5a124cd1499787a6122e800d7": {
+			"address": "0xa89a7420b19679b5a124cd1499787a6122e800d7",
+			"underlyingTokensAddresses": [
+				"0xf32e58f92e60f4b0a37a69b95d642a471365eae8"
+			],
+			"type": "Yearn Vault",
+			"name": "eETH LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "eETH LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xA89a7420B19679B5A124cD1499787a6122E800D7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa8e0c42f45c877e611c76f2d4bf57476f2014381": {
 			"address": "0xa8e0c42f45c877e611c76f2d4bf57476f2014381",
 			"underlyingTokensAddresses": [
@@ -13240,6 +13368,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb2b42be64f78eeb94a625fbaf2ea18ec35aa4b22": {
+			"address": "0xb2b42be64f78eeb94a625fbaf2ea18ec35aa4b22",
+			"underlyingTokensAddresses": [
+				"0xd0354d4e7bcf345fb117cabe41acadb724eccca2"
+			],
+			"type": "Yearn Vault",
+			"name": "Lido stETH LP (26 DEC 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "Lido stETH LP (26 DEC 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb2B42Be64F78EEb94A625FBAF2eA18eC35Aa4b22/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb30da2376f63de30b42dc055c93fa474f31330a5": {
 			"address": "0xb30da2376f63de30b42dc055c93fa474f31330a5",
 			"underlyingTokensAddresses": [
@@ -13706,6 +13850,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb8deb48bd0a2bac798f19ba8a7ee492384423fea": {
+			"address": "0xb8deb48bd0a2bac798f19ba8a7ee492384423fea",
+			"underlyingTokensAddresses": [
+				"0xb8fbf5cc2826c1c9909f59dd11633b494f46fbfe"
+			],
+			"type": "Yearn Vault",
+			"name": "aUSDT LP (26 SEP 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "aUSDT LP (26 SEP 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb8deb48bD0A2bAC798F19BA8A7EE492384423FeA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb8fbf5cc2826c1c9909f59dd11633b494f46fbfe": {
 			"address": "0xb8fbf5cc2826c1c9909f59dd11633b494f46fbfe",
 			"underlyingTokensAddresses": [],
@@ -13717,6 +13877,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xb8FBF5cC2826c1C9909f59DD11633b494f46FBfe/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb91302cb8a6b248a7ea89dc6c7dbf87e0ddddd58": {
+			"address": "0xb91302cb8a6b248a7ea89dc6c7dbf87e0ddddd58",
+			"underlyingTokensAddresses": [
+				"0x17be998a578fd97687b24e83954fec86dc20c979"
+			],
+			"type": "Yearn Vault",
+			"name": "pufETH LP (27 JUN 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "pufETH LP (27 JUN 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb91302Cb8a6B248a7Ea89Dc6c7DbF87e0dDddD58/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18979,6 +19155,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfe4e8b0fdd1ba3c8eef19e8b32a919b8b80e5200": {
+			"address": "0xfe4e8b0fdd1ba3c8eef19e8b32a919b8b80e5200",
+			"underlyingTokensAddresses": [
+				"0xfb8f489df4e04609f4f4e54f586f960818b70041"
+			],
+			"type": "Yearn Vault",
+			"name": "sfrxETH LP (26 DEC 2024)",
+			"symbol": "ysPENDLE-LPT",
+			"displayName": "sfrxETH LP (26 DEC 2024)",
+			"displaySymbol": "ysPENDLE-LPT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xfe4e8B0FdD1BA3c8eEf19e8b32A919b8B80e5200/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

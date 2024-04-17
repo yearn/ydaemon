@@ -112,6 +112,11 @@ func toSimplifiedVersion(
 		}
 	}
 
+	info := vault.Info
+	info.IsRetired = vault.Details.IsRetired
+	info.IsBoosted = vault.Details.IsBoosted
+	info.IsHighlighted = vault.Details.IsHighlighted
+
 	/**********************************************************************************************
 	** Create the simplified version of the vault.
 	** The simplified version of the vault is a struct that contains only the necessary data
@@ -128,8 +133,6 @@ func toSimplifiedVersion(
 		ChainID:        vault.ChainID,
 		APR:            vault.APR,
 		Migration:      vault.Migration,
-		Retired:        vault.Details.IsRetired,
-		Boosted:        vault.Details.IsBoosted,
 		Version:        vault.Version,
 		FeaturingScore: vault.FeaturingScore,
 		Token: TSimplifiedExternalERC20Token{
@@ -146,7 +149,7 @@ func toSimplifiedVersion(
 		},
 		Strategies: vault.Strategies,
 		Staking:    staking,
-		Info:       vault.Info,
+		Info:       info,
 	}
 	return simplifiedVault
 }

@@ -133,6 +133,9 @@ func (y Controller) GetAllV3VaultsForAllChainsSimplified(c *gin.Context) {
 				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
+			if newVault.Details.IsHighlighted {
+				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+			}
 
 			if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
 				allVaults = append(allVaults, toSimplifiedVersion(newVault, vaultAsStrategy))

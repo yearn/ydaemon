@@ -129,7 +129,7 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 					Address:        pair.Lp,
 					Price:          pairPrice.Int(),
 					HumanizedPrice: humanizedPrice,
-					Source:         `aeroSugar`,
+					Source:         `aeroSugarPair`,
 				}
 			}
 		}
@@ -137,11 +137,19 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 		if token0, _ := storage.GetERC20(chainID, pair.Token0); !token0.IsVaultLike() {
 			if !token0Price.IsZero() {
 				humanizedPrice := helpers.ToNormalizedAmount(token0Price, 6)
-				priceMap[pair.Token0] = models.TPrices{
+				newPriceItem := models.TPrices{
 					Address:        pair.Token0,
 					Price:          token0Price,
 					HumanizedPrice: humanizedPrice,
-					Source:         `aeroSugar`,
+					Source:         `aeroSugarToken0`,
+				}
+
+				if existing, ok := priceMap[pair.Token1]; ok {
+					if existing.Source != `aeroSugarPair` {
+						priceMap[pair.Token0] = newPriceItem
+					}
+				} else {
+					priceMap[pair.Token0] = newPriceItem
 				}
 			}
 		}
@@ -149,11 +157,19 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 		if token1, _ := storage.GetERC20(chainID, pair.Token1); !token1.IsVaultLike() {
 			if !token1Price.IsZero() {
 				humanizedPrice := helpers.ToNormalizedAmount(token1Price, 6)
-				priceMap[pair.Token1] = models.TPrices{
+				newPriceItem := models.TPrices{
 					Address:        pair.Token1,
 					Price:          token1Price,
 					HumanizedPrice: humanizedPrice,
-					Source:         `aeroSugar`,
+					Source:         `aeroSugarToken1`,
+				}
+
+				if existing, ok := priceMap[pair.Token1]; ok {
+					if existing.Source != `aeroSugarPair` {
+						priceMap[pair.Token0] = newPriceItem
+					}
+				} else {
+					priceMap[pair.Token0] = newPriceItem
 				}
 			}
 		}

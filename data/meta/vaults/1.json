@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2024-04-17T11:01:21.979621+02:00",
+	"lastUpdate": "2024-04-29T10:56:48.848055+02:00",
 	"version": {
 		"major": 3,
 		"minor": 5,
@@ -12555,7 +12555,7 @@
 			"activation": 19654313,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -12570,9 +12570,9 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f",
@@ -12581,9 +12581,9 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"displayName": "",
+				"displayName": "crvUSD-2",
 				"displaySymbol": "",
-				"description": "",
+				"description": "Multi strategy crvUSD vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-15T15:51:41.869777+02:00",
+	"lastUpdate": "2024-04-29T10:56:59.490107+02:00",
 	"version": {
 		"major": 0,
-		"minor": 6,
+		"minor": 7,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1658,6 +1658,20 @@
 			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains USDC.e and DOLA.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x6C5019D345Ec05004A7E7B0623A91a0D9B8D590d/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x6c518f9d1a163379235816c543e62922a79863fa": {
+			"address": "0x6c518f9d1a163379235816c543e62922a79863fa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Burn Wrapped AJNA",
+			"symbol": "bwAJNA",
+			"displayName": "Burn Wrapped AJNA",
+			"displaySymbol": "bwAJNA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x6c518f9D1a163379235816c543E62922a79863Fa/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

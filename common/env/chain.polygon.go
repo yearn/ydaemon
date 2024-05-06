@@ -55,11 +55,11 @@ var POLYGON = TChain{
 			Version: 6,
 			Block:   51_550_217,
 		},
-		{
-			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
-			Version: 5,
-			Block:   54_308_118,
-		},
+		// {
+		// 	Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+		// 	Version: 5,
+		// 	Block:   54_308_118,
+		// },
 	},
 	StakingRewardRegistry: []TContractData{
 		// {

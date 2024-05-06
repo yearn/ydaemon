@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-17T11:01:15.213519+02:00",
+	"lastUpdate": "2024-05-06T16:47:51.9308+02:00",
 	"version": {
 		"major": 0,
-		"minor": 14,
+		"minor": 15,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1283,6 +1283,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
+			"address": "0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault",
+			"symbol": "USDC-1",
+			"displayName": "USDC-1 yVault",
+			"displaySymbol": "USDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x34b9421Fe3d52191B64bC32ec1aB764dcBcDbF5e/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666": {
 			"address": "0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666",
 			"underlyingTokensAddresses": [],
@@ -2159,6 +2175,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0x5136c2F7aB13E202eD42bc1AE82Dd63475919653/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
+			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x52367C8E381EDFb068E9fBa1e7E9B2C847042897/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0x525dd4c7b043d3a3adf7fc9276986079e939cbb3": {
@@ -5115,6 +5147,22 @@
 			"decimals": 0,
 			"chainID": 137
 		},
+		"0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0": {
+			"address": "0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0",
+			"underlyingTokensAddresses": [
+				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+			],
+			"type": "Yearn Vault",
+			"name": "dai-vault",
+			"symbol": "dai-stk",
+			"displayName": "dai-vault",
+			"displaySymbol": "dai-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xd2d0C98684050222Ec9418B21E97e3f9a70D9FB0/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
 		"0xd3bd62439c599739775df75cb33b888d437e23fe": {
 			"address": "0xd3bd62439c599739775df75cb33b888d437e23fe",
 			"underlyingTokensAddresses": [],
@@ -5169,6 +5217,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xd5Be7961dCCB04a22DFe8Bea0C584072cFa9D647/logo-128.png",
 			"decimals": 0,
+			"chainID": 137
+		},
+		"0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea": {
+			"address": "0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "weth-vault",
+			"symbol": "weth-stk",
+			"displayName": "weth-vault",
+			"displaySymbol": "weth-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD600D760477fFAED25bf2450e29ff6Bd3C47c9Ea/logo-128.png",
+			"decimals": 18,
 			"chainID": 137
 		},
 		"0xd667f74db442dbc4ca24ec8840c31c8498c93151": {
@@ -5975,6 +6039,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xfc9Fa9771145fbB98D15C8c2cc94B837a56D554C/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xfd179b9793b467fa3dd85edc715ae580b0240090": {
+			"address": "0xfd179b9793b467fa3dd85edc715ae580b0240090",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "usdt-vault",
+			"symbol": "usdt-stk",
+			"displayName": "usdt-vault",
+			"displaySymbol": "usdt-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xFD179B9793B467fa3DD85EDC715AE580B0240090/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0xfd4a63548134595cc101e5653622a8237a763631": {

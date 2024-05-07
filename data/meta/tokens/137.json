@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-17T11:01:15.213519+02:00",
+	"lastUpdate": "2024-05-06T20:21:31.331591+02:00",
 	"version": {
 		"major": 0,
-		"minor": 14,
+		"minor": 15,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1283,6 +1283,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
+			"address": "0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault",
+			"symbol": "USDC-1",
+			"displayName": "USDC-1 yVault",
+			"displaySymbol": "USDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x34b9421Fe3d52191B64bC32ec1aB764dcBcDbF5e/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666": {
 			"address": "0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666",
 			"underlyingTokensAddresses": [],
@@ -2159,6 +2175,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0x5136c2F7aB13E202eD42bc1AE82Dd63475919653/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
+			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x52367C8E381EDFb068E9fBa1e7E9B2C847042897/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0x525dd4c7b043d3a3adf7fc9276986079e939cbb3": {

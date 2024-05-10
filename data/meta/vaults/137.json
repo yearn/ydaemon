@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-05-06T20:20:57.901802+02:00",
+	"lastUpdate": "2024-05-10T13:25:09.327163+02:00",
 	"version": {
 		"major": 1,
 		"minor": 4,
-		"patch": 1
+		"patch": 6
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -39,6 +39,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma USDC.e/DAI LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -63,8 +64,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1015250811155601263",
-			"lastTotalAssets": "49796633521374401160734",
+			"lastPricePerShare": "1015713487717377848",
+			"lastTotalAssets": "49837543444676132798067",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -82,6 +83,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Stargate DAI Staker",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -104,8 +106,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006700043583719559",
-			"lastTotalAssets": "718749917501637773223384",
+			"lastPricePerShare": "1006815108085593800",
+			"lastTotalAssets": "824794874352586947469553",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -123,6 +125,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Aave V3 WMATIC Lender",
 				"displaySymbol": "ysWMATIC",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -149,8 +152,8 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1060180645390801500",
-			"lastTotalAssets": "893024025328721805209271",
+			"lastPricePerShare": "1061410389977803246",
+			"lastTotalAssets": "976231426958948506139165",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -168,6 +171,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "WMATIC",
 				"displaySymbol": "yvMATIC-1",
 				"description": "Multi strategy WMATIC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -209,6 +213,7 @@
 				"stability": {
 					"stability": ""
 				},
+				"category": "",
 				"displayName": "CompV3 WMATIC Lender Borrower",
 				"displaySymbol": "ysWMATIC",
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -231,8 +236,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1037577",
-			"lastTotalAssets": "50465936207",
+			"lastPricePerShare": "1038405",
+			"lastTotalAssets": "50538060962",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -250,6 +255,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Stargate USDT Staker",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -275,8 +281,8 @@
 			"lastActiveStrategies": [
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
 			],
-			"lastPricePerShare": "1047408943381340890",
-			"lastTotalAssets": "345481103946093252966",
+			"lastPricePerShare": "1047955013467025610",
+			"lastTotalAssets": "353442004656534483902",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -294,6 +300,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "WETH",
 				"displaySymbol": "yvWETH-1",
 				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -335,6 +342,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma USDC.e/WETH Wide LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -362,7 +370,7 @@
 				"0x52367c8e381edfb068e9fba1e7e9b2c847042897"
 			],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "5306845844",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -380,6 +388,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "USDC",
 				"displaySymbol": "yvUSDC-1",
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -402,8 +411,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004748527612513973",
-			"lastTotalAssets": "1587085928973974487",
+			"lastPricePerShare": "1005420196540826910",
+			"lastTotalAssets": "1588392266019832569",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -421,6 +430,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WBTC/WETH LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -445,8 +455,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1035451",
-			"lastTotalAssets": "4022347239695",
+			"lastPricePerShare": "1036005",
+			"lastTotalAssets": "4334305725978",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -464,6 +474,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Aave V3 USDT Lender",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -486,8 +497,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1095161425294100609",
-			"lastTotalAssets": "21229256558",
+			"lastPricePerShare": "1131764436691678994",
+			"lastTotalAssets": "3046778616",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -505,6 +516,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WMATIC/USDC.e LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -529,8 +541,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1041719",
-			"lastTotalAssets": "121243071380",
+			"lastPricePerShare": "1042082",
+			"lastTotalAssets": "103519656498",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -548,6 +560,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
@@ -589,6 +602,7 @@
 				"stability": {
 					"stability": ""
 				},
+				"category": "",
 				"displayName": "CompV3 WETH Lender Borrower",
 				"displaySymbol": "ysWETH",
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -612,7 +626,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "5005000000",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -630,6 +644,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -652,8 +667,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1519254671826506728",
-			"lastTotalAssets": "1778588099674910943",
+			"lastPricePerShare": "1548728423790891661",
+			"lastTotalAssets": "1751979853990100730",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -671,6 +686,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma USDC.e/WETH Narrow LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -714,6 +730,7 @@
 				"stability": {
 					"stability": ""
 				},
+				"category": "",
 				"displayName": "Staked MATIC Accumulator",
 				"displaySymbol": "ysWMATIC",
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
@@ -755,6 +772,7 @@
 				"stability": {
 					"stability": ""
 				},
+				"category": "",
 				"displayName": "Staked ETH Accumulator",
 				"displaySymbol": "ysWETH",
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",
@@ -777,8 +795,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2798810",
-			"lastTotalAssets": "98854",
+			"lastPricePerShare": "2801335",
+			"lastTotalAssets": "99002",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -796,6 +814,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Stargate USDC.e Staker",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -837,6 +856,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WMATIC/MATICX LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -865,8 +885,8 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1084430414243630133",
-			"lastTotalAssets": "2860633844602216011382477",
+			"lastPricePerShare": "1086482094945927635",
+			"lastTotalAssets": "3045282515207195947986902",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -884,6 +904,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "DAI",
 				"displaySymbol": "yvDAI-1",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -925,6 +946,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WMATIC/WETH Wide LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -954,8 +976,8 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1104172",
-			"lastTotalAssets": "3464836345388",
+			"lastPricePerShare": "1106045",
+			"lastTotalAssets": "4119405105564",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -973,6 +995,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "USDC.e",
 				"displaySymbol": "yvUSDC.e-1",
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -1014,6 +1037,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma USDC.e/USDT LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1057,6 +1081,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WBTC/USDC.e LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1081,8 +1106,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1118550",
-			"lastTotalAssets": "4112315799",
+			"lastPricePerShare": "1119146",
+			"lastTotalAssets": "4114951518",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1100,6 +1125,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Compound V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1141,6 +1167,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Gamma WMATIC/WETH Narrow LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1169,8 +1196,8 @@
 				"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d"
 			],
-			"lastPricePerShare": "1102630",
-			"lastTotalAssets": "4113250607394",
+			"lastPricePerShare": "1104263",
+			"lastTotalAssets": "4452811809575",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1188,6 +1215,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "USDT",
 				"displaySymbol": "yvUSDt-1",
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -1210,8 +1238,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002422840934317756",
-			"lastTotalAssets": "287215628060220468864",
+			"lastPricePerShare": "1002477948603311473",
+			"lastTotalAssets": "287228875081856531808",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1229,6 +1257,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Aave V3 WETH Lender",
 				"displaySymbol": "ysWETH",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1251,8 +1280,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1059012",
-			"lastTotalAssets": "3698124226378",
+			"lastPricePerShare": "1059656",
+			"lastTotalAssets": "4368438554636",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1270,6 +1299,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Aave V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies USDC.e to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1292,8 +1322,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1035677001646915296",
-			"lastTotalAssets": "2790388177508523075268057",
+			"lastPricePerShare": "1036200801793860990",
+			"lastTotalAssets": "2997207579660152094113501",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1311,6 +1341,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Aave V3 DAI Lender",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1336,8 +1367,8 @@
 			"lastActiveStrategies": [
 				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780"
 			],
-			"lastPricePerShare": "1003750",
-			"lastTotalAssets": "494030247834",
+			"lastPricePerShare": "1004120",
+			"lastTotalAssets": "481493503765",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1355,6 +1386,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Yearn-Ajna USDC Vault",
 				"displaySymbol": "yvAjnaUSDC",
 				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
@@ -1377,7 +1409,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001497078732875477",
+			"lastPricePerShare": "1004265963412188756",
 			"lastTotalAssets": "100469907062895552570067",
 			"metadata": {
 				"isRetired": false,
@@ -1396,6 +1428,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
+				"category": "auto",
 				"displayName": "Staked MATIC Accumulator",
 				"displaySymbol": "",
 				"description": "{{token}} is swapped for a corresponding staking derivative to earn the staking rewards.",

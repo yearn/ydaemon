@@ -196,6 +196,14 @@ func RetrieveAllVaults(
 		if vault.Metadata.Stability.Stability == `` {
 			vault.Metadata.Stability.Stability = models.VaultStabilityUnknown
 		}
+
+		/******************************************************************************************
+		** If the vault has no category, we will set it to automatic as a default value.
+		******************************************************************************************/
+		if vault.Metadata.Category == `` {
+			vault.Metadata.Category = models.VaultCategoryAutomatic
+		}
+
 		storage.StoreVault(chainID, vault)
 	}
 	vaultMap, _ = storage.ListVaults(chainID)

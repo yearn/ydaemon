@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-05-06T20:20:54.685345+02:00",
+	"lastUpdate": "2024-05-10T13:25:18.743402+02:00",
 	"version": {
 		"major": 1,
 		"minor": 0,
-		"patch": 56
+		"patch": 57
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -42,6 +42,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -73,7 +74,7 @@
 				"0xd58003b2bac011b67c108b24e5deb1b22c70fd1f"
 			],
 			"lastPricePerShare": "1088784877188173088",
-			"lastTotalAssets": "89158682905645678458889",
+			"lastTotalAssets": "89158694389141356458889",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -92,6 +93,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -127,7 +129,7 @@
 				"0x939dc1c32d89ba771c1eeee8f1a12ba9b766c532"
 			],
 			"lastPricePerShare": "1962782776185799071",
-			"lastTotalAssets": "3887949068848169957662223",
+			"lastTotalAssets": "3881153787310458381085655",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -146,6 +148,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "FTM"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -173,7 +176,7 @@
 				"0xfa01ca21239166701b6760d162257b449ba6d011"
 			],
 			"lastPricePerShare": "1431492900385784918",
-			"lastTotalAssets": "85262225020474518582777",
+			"lastTotalAssets": "85029918087109180873265",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -191,6 +194,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -233,6 +237,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "FTM"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -281,6 +286,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -325,6 +331,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -350,7 +357,7 @@
 				"0x5df3e97e96fc04ae1f75a9d07a141348e4b07e45"
 			],
 			"lastPricePerShare": "1253148925219762635",
-			"lastTotalAssets": "180376367021143472885265",
+			"lastTotalAssets": "177672367755606058979533",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -368,6 +375,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -413,6 +421,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -457,6 +466,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "FTM"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -483,8 +493,8 @@
 				"0x526f9fcd4db76878b62a450f1bd79cf38f036cc1",
 				"0xb99d6662127d9a3c68bc949679f364e1739e2ca1"
 			],
-			"lastPricePerShare": "1045299082354470289",
-			"lastTotalAssets": "23056224410305074977",
+			"lastPricePerShare": "1045299082354470292",
+			"lastTotalAssets": "23255916603931214860",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -502,6 +512,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -546,6 +557,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -588,6 +600,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -631,6 +644,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -664,7 +678,7 @@
 				"0x84f9e6d5d28edf0ae873a4d84903716684f473d5"
 			],
 			"lastPricePerShare": "1103034957534938024",
-			"lastTotalAssets": "605876013631819770056590",
+			"lastTotalAssets": "605164810220871634836440",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -683,6 +697,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -727,6 +742,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -773,6 +789,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "FTM"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -817,6 +834,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -859,6 +877,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -901,6 +920,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -947,6 +967,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -993,6 +1014,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "FTM"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1018,7 +1040,7 @@
 				"0xa9a904b5567b5affb6bb334bea2f90f700eb221a"
 			],
 			"lastPricePerShare": "1146634912570816933",
-			"lastTotalAssets": "18155399357944857773",
+			"lastTotalAssets": "16790638146957859761",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1036,6 +1058,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1065,8 +1088,8 @@
 				"0x108383e62992b9a90ed3a43c2c9fa26ca052d99b",
 				"0xa4f10bc80f6c5cf6a34f828cb53c243eb1976da8"
 			],
-			"lastPricePerShare": "1033965668639920399",
-			"lastTotalAssets": "146730262409053434153",
+			"lastPricePerShare": "1033965668639920400",
+			"lastTotalAssets": "146009910917080617028",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1085,6 +1108,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1128,6 +1152,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1155,8 +1180,8 @@
 				"0x0683b5b75bd0514b5604d3c79a61647d83a02a3f",
 				"0x7114cad096731f4d0b8e0de6e7cedc189a462dce"
 			],
-			"lastPricePerShare": "102949608",
-			"lastTotalAssets": "2100439531",
+			"lastPricePerShare": "102949609",
+			"lastTotalAssets": "2113665506",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1175,6 +1200,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1208,7 +1234,7 @@
 				"0x65f2605d8fe21614b294791faae1d7d0a7579276"
 			],
 			"lastPricePerShare": "1060959",
-			"lastTotalAssets": "1853747088706",
+			"lastTotalAssets": "1853752166074",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1227,6 +1253,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1271,6 +1298,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1317,6 +1345,7 @@
 				"stability": {
 					"stability": "Volatile"
 				},
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

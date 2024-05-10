@@ -133,14 +133,16 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		strings.ToLower(formatedName),
 	}
 
+	if t.Metadata.Category != `` && t.Metadata.Category != models.VaultCategoryAutomatic {
+		return string(t.Metadata.Category)
+	}
+
 	//Using meta stability to set the category
 	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
 		category = `Volatile`
 	} else {
 		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
 			category = `Stablecoin`
-		} else {
-			category = `Volatile`
 		}
 	}
 	if helpers.Intersects(allNames, baseForCurve) {
@@ -182,9 +184,6 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 			category = `Volatile`
 		}
 		if helpers.Intersects(allNames, baseForStableCoins) {
-			category = `Stablecoin`
-		}
-		if helpers.Intersects(allNames, baseForStableCurrencies) {
 			category = `Stablecoin`
 		}
 		if helpers.Intersects(allNames, baseForCurve) {

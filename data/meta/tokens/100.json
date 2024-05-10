@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-10T00:20:05.676299+02:00",
+	"lastUpdate": "2024-05-10T13:25:10.098662+02:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -50,6 +50,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/100/0x5012C6bf79b3047ECFFf2F212DfFDA4d2128188f/logo-128.png",
+			"decimals": 18,
+			"chainID": 100
+		},
+		"0x67ee2155601e168f7777f169cd74f3e22bb5e0ce": {
+			"address": "0x67ee2155601e168f7777f169cd74f3e22bb5e0ce",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "AjnaToken from Mainnet",
+			"symbol": "AJNA",
+			"displayName": "AjnaToken from Mainnet",
+			"displaySymbol": "AJNA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/100/0x67Ee2155601e168F7777F169Cd74f3E22BB5E0cE/logo-128.png",
 			"decimals": 18,
 			"chainID": 100
 		},

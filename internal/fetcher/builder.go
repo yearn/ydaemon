@@ -126,6 +126,8 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	baseForEth := []string{`eth`, `ethereum`}
 	baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
 	baseForPrisma := []string{`prisma`}
+	baseForGamma := []string{`gamma`}
+	baseForPendle := []string{`pendle`}
 	name, displayName, formatedName := BuildVaultNames(t, ``)
 	allNames := []string{
 		strings.ToLower(name),
@@ -156,6 +158,12 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	}
 	if helpers.Intersects(allNames, baseForAerodrome) {
 		category = `Aerodrome`
+	}
+	if helpers.Intersects(allNames, baseForGamma) {
+		category = `Gamma`
+	}
+	if helpers.Intersects(allNames, baseForPendle) {
+		category = `Pendle`
 	}
 
 	if len(strategies) > 0 {
@@ -197,6 +205,12 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		}
 		if helpers.Intersects(allNames, baseForAerodrome) {
 			category = `Aerodrome`
+		}
+		if helpers.Intersects(allNames, baseForGamma) {
+			category = `Gamma`
+		}
+		if helpers.Intersects(allNames, baseForPendle) {
+			category = `Pendle`
 		}
 	}
 

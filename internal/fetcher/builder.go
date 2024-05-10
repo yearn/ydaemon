@@ -187,13 +187,6 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		for _, stable := range baseForStableCurrencies {
 			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
 		}
-
-		if helpers.Intersects(allNames, baseForBitcoin) {
-			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForEth) {
-			category = `Volatile`
-		}
 		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
 		}
@@ -215,7 +208,9 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	}
 
 	if category == `` {
-		if helpers.Intersects(allNames, baseForStableCoins) {
+		if helpers.Intersects(allNames, baseForBitcoin) || helpers.Intersects(allNames, baseForEth) {
+			category = `Volatile`
+		} else if helpers.Intersects(allNames, baseForStableCoins) {
 			category = `Stablecoin`
 		} else {
 			category = `Volatile`

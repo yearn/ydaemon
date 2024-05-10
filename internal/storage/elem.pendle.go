@@ -139,7 +139,7 @@ func RetrievePendleMarkets(chainID uint64) (map[string]TPendleMarketAPIResp, boo
 
 	markets := map[string]TPendleMarketAPIResp{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	baseURI := env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/markets?is_expired=false&select=simple&is_active=true`
+	baseURI := env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/markets?select=simple`
 	skip := 0
 	limit := 100
 	totalMarketCount := 100 // This is a dummy value to start the loop

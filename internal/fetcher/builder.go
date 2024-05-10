@@ -129,10 +129,14 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	baseForGamma := []string{`gamma`}
 	baseForPendle := []string{`pendle`}
 	name, displayName, formatedName := BuildVaultNames(t, ``)
+	symbol, displaySymbol, formatedSymbol := BuildVaultSymbol(t, ``)
 	allNames := []string{
 		strings.ToLower(name),
 		strings.ToLower(displayName),
 		strings.ToLower(formatedName),
+		strings.ToLower(symbol),
+		strings.ToLower(displaySymbol),
+		strings.ToLower(formatedSymbol),
 	}
 
 	if t.Metadata.Category != `` && t.Metadata.Category != models.VaultCategoryAutomatic {

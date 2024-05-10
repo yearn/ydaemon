@@ -144,13 +144,6 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	}
 
 	//Using meta stability to set the category
-	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
-		category = `Volatile`
-	} else {
-		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
-			category = `Stablecoin`
-		}
-	}
 	if helpers.Intersects(allNames, baseForCurve) {
 		category = `Curve`
 	}
@@ -181,7 +174,13 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 				break
 			}
 		}
-
+	}
+	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
+		category = `Volatile`
+	} else {
+		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
+			category = `Stablecoin`
+		}
 	}
 
 	if category == `` {
@@ -194,9 +193,6 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		}
 		if helpers.Intersects(allNames, baseForEth) {
 			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForStableCoins) {
-			category = `Stablecoin`
 		}
 		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
@@ -219,7 +215,11 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	}
 
 	if category == `` {
-		category = `Volatile`
+		if helpers.Intersects(allNames, baseForStableCoins) {
+			category = `Stablecoin`
+		} else {
+			category = `Volatile`
+		}
 	}
 	return category
 }

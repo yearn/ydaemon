@@ -184,6 +184,9 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		if helpers.Intersects(allNames, baseForStableCoins) {
 			category = `Stablecoin`
 		}
+		if helpers.Intersects(allNames, baseForStableCurrencies) {
+			category = `Stablecoin`
+		}
 		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
 		}

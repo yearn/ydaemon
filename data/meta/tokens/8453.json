@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-10T00:16:42.849509+02:00",
+	"lastUpdate": "2024-05-10T13:25:10.357077+02:00",
 	"version": {
 		"major": 0,
-		"minor": 4,
+		"minor": 5,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -982,6 +982,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xEcFc1e5BDa4d4191c9Cab053ec704347Db87Be5d/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xf0f326af3b1ed943ab95c29470730cc8cf66ae47": {
+			"address": "0xf0f326af3b1ed943ab95c29470730cc8cf66ae47",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Burn Wrapped AJNA",
+			"symbol": "bwAJNA",
+			"displayName": "Burn Wrapped AJNA",
+			"displaySymbol": "bwAJNA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xf0f326af3b1Ed943ab95C29470730CC8Cf66ae47/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

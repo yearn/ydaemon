@@ -126,23 +126,24 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	baseForEth := []string{`eth`, `ethereum`}
 	baseForStableCoins := []string{`dai`, `rai`, `mim`, `dola`}
 	baseForPrisma := []string{`prisma`}
+	baseForGamma := []string{`gamma`}
+	baseForPendle := []string{`pendle`}
 	name, displayName, formatedName := BuildVaultNames(t, ``)
+	symbol, displaySymbol, formatedSymbol := BuildVaultSymbol(t, ``)
 	allNames := []string{
 		strings.ToLower(name),
 		strings.ToLower(displayName),
 		strings.ToLower(formatedName),
+		strings.ToLower(symbol),
+		strings.ToLower(displaySymbol),
+		strings.ToLower(formatedSymbol),
+	}
+
+	if t.Metadata.Category != `` && t.Metadata.Category != models.VaultCategoryAutomatic {
+		return string(t.Metadata.Category)
 	}
 
 	//Using meta stability to set the category
-	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
-		category = `Volatile`
-	} else {
-		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
-			category = `Stablecoin`
-		} else {
-			category = `Volatile`
-		}
-	}
 	if helpers.Intersects(allNames, baseForCurve) {
 		category = `Curve`
 	}
@@ -154,6 +155,12 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 	}
 	if helpers.Intersects(allNames, baseForAerodrome) {
 		category = `Aerodrome`
+	}
+	if helpers.Intersects(allNames, baseForGamma) {
+		category = `Gamma`
+	}
+	if helpers.Intersects(allNames, baseForPendle) {
+		category = `Pendle`
 	}
 
 	if len(strategies) > 0 {
@@ -167,22 +174,18 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 				break
 			}
 		}
-
+	}
+	if t.Metadata.Stability.Stability == models.VaultStabilityVolatile {
+		category = `Volatile`
+	} else {
+		if helpers.Contains(baseForStableCurrencies, t.Metadata.Stability.StableBaseAsset) {
+			category = `Stablecoin`
+		}
 	}
 
 	if category == `` {
 		for _, stable := range baseForStableCurrencies {
 			baseForStableCoins = append(baseForStableCoins, strings.ToLower(stable))
-		}
-
-		if helpers.Intersects(allNames, baseForBitcoin) {
-			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForEth) {
-			category = `Volatile`
-		}
-		if helpers.Intersects(allNames, baseForStableCoins) {
-			category = `Stablecoin`
 		}
 		if helpers.Intersects(allNames, baseForCurve) {
 			category = `Curve`
@@ -196,10 +199,22 @@ func BuildVaultCategory(t models.TVault, strategies map[string]models.TStrategy)
 		if helpers.Intersects(allNames, baseForAerodrome) {
 			category = `Aerodrome`
 		}
+		if helpers.Intersects(allNames, baseForGamma) {
+			category = `Gamma`
+		}
+		if helpers.Intersects(allNames, baseForPendle) {
+			category = `Pendle`
+		}
 	}
 
 	if category == `` {
-		category = `Volatile`
+		if helpers.Intersects(allNames, baseForBitcoin) || helpers.Intersects(allNames, baseForEth) {
+			category = `Volatile`
+		} else if helpers.Intersects(allNames, baseForStableCoins) {
+			category = `Stablecoin`
+		} else {
+			category = `Volatile`
+		}
 	}
 	return category
 }

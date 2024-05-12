@@ -77,6 +77,7 @@ type TExternalVaultDetails struct {
 	IsPool          bool                       `json:"isPool"`
 	PoolProvider    string                     `json:"poolProvider,omitempty"`
 	Stability       models.TVaultStabilityType `json:"stability"`
+	Category        models.TVaultCategoryType  `json:"category"` // The category of the vault
 	StableBaseAsset string                     `json:"stableBaseAsset,omitempty"`
 }
 
@@ -259,11 +260,15 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		IsAutomated:     vault.Metadata.IsAutomated,
 		IsHighlighted:   vault.Metadata.IsHighlighted,
 		IsPool:          vault.Metadata.IsPool,
+		Category:        vault.Metadata.Category,
 		Stability:       vault.Metadata.Stability.Stability,
 		StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
 	}
 	if v.Details.Stability == `` {
 		v.Details.Stability = models.VaultStabilityUnknown
+	}
+	if v.Details.Category == `` {
+		v.Details.Category = models.VaultCategoryAutomatic
 	}
 	if len(vault.Metadata.Protocols) > 0 {
 		v.Details.PoolProvider = vault.Metadata.Protocols[0]

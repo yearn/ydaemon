@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-04-17T10:14:52.803666+02:00",
+	"lastUpdate": "2024-05-10T13:25:11.202897+02:00",
 	"version": {
 		"major": 0,
-		"minor": 6,
+		"minor": 7,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -408,6 +408,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0F2F5fA44Ea2ac3A2D53A7218bF0F2D02A40aDb5/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x10236953fd609fe6a4df9a786b938ced9c9e99d2": {
+			"address": "0x10236953fd609fe6a4df9a786b938ced9c9e99d2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-USDC05",
+			"symbol": "xWETH-USDC05",
+			"displayName": "xWETH-USDC05",
+			"displaySymbol": "xWETH-USDC05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x10236953FD609Fe6a4Df9a786b938ced9c9e99d2/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -881,6 +895,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x22bed3e6e56266c347769189b44646d91b3150c4": {
+			"address": "0x22bed3e6e56266c347769189b44646d91b3150c4",
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
+			"symbol": "sWETH-PT-weETH-27JUN2024",
+			"displayName": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
+			"displaySymbol": "sWETH-PT-weETH-27JUN2024",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x22BED3E6E56266C347769189B44646D91b3150c4/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x23231848ec8acd3a108c6a61049fbc25a697b594": {
 			"address": "0x23231848ec8acd3a108c6a61049fbc25a697b594",
 			"underlyingTokensAddresses": [],
@@ -1069,6 +1099,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x2d5405688f253d741a9f1090dd90d8a285cf5c79": {
+			"address": "0x2d5405688f253d741a9f1090dd90d8a285cf5c79",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT sETH-pteETHSilo 27JUN2024",
+			"symbol": "PT-sETH-pteETHSilo-27JUN2024",
+			"displayName": "PT sETH-pteETHSilo 27JUN2024",
+			"displaySymbol": "PT-sETH-pteETHSilo-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2D5405688f253D741a9F1090DD90D8A285CF5C79/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2dfaf9a5e4f293bceede49f2dba29aacdd88e0c4": {
 			"address": "0x2dfaf9a5e4f293bceede49f2dba29aacdd88e0c4",
 			"underlyingTokensAddresses": [],
@@ -1183,6 +1227,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x32Eb7902D4134bf98A28b963D26de779AF92A212/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x330dfc5bc1a63a1dcf1cd5bc9ad3d5e5e61bcb6c": {
+			"address": "0x330dfc5bc1a63a1dcf1cd5bc9ad3d5e5e61bcb6c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-ARB05",
+			"symbol": "xWETH-ARB05",
+			"displayName": "xWETH-ARB05",
+			"displaySymbol": "xWETH-ARB05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x330DFC5Bc1a63A1dCf1cD5bc9aD3D5e5E61Bcb6C/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2185,6 +2243,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x6abe9ac2df48490693bdb9d66fa898fc9cd7cc36": {
+			"address": "0x6abe9ac2df48490693bdb9d66fa898fc9cd7cc36",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x6aBE9Ac2df48490693BdB9d66Fa898fc9cD7cc36/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x6acacf8dc9d489aa83dbd4390bbe1163d2585e70": {
 			"address": "0x6acacf8dc9d489aa83dbd4390bbe1163d2585e70",
 			"underlyingTokensAddresses": [],
@@ -2483,6 +2555,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x7cfb81e9c9402d48c6f3161204a21800b210baea": {
+			"address": "0x7cfb81e9c9402d48c6f3161204a21800b210baea",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT sETH-pteETHSilo 27JUN2024",
+			"symbol": "YT-sETH-pteETHSilo-27JUN2024",
+			"displayName": "YT sETH-pteETHSilo 27JUN2024",
+			"displaySymbol": "YT-sETH-pteETHSilo-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x7Cfb81E9c9402D48c6F3161204a21800b210BAeA/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x7d180a4f451fc15b543b5d1ba7dda6b3014a4c49": {
 			"address": "0x7d180a4f451fc15b543b5d1ba7dda6b3014a4c49",
 			"underlyingTokensAddresses": [],
@@ -2584,6 +2670,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x8138e8cac470dc963437b055834b54d56d6d6a29": {
+			"address": "0x8138e8cac470dc963437b055834b54d56d6d6a29",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT sETH-ptezETHSilo 27JUN2024",
+			"symbol": "YT-sETH-ptezETHSilo-27JUN2024",
+			"displayName": "YT sETH-ptezETHSilo 27JUN2024",
+			"displaySymbol": "YT-sETH-ptezETHSilo-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8138E8cAC470Dc963437b055834B54D56d6d6a29/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x81f2c7b56f34290d2261f15883f2f80d78981b68": {
 			"address": "0x81f2c7b56f34290d2261f15883f2f80d78981b68",
 			"underlyingTokensAddresses": [],
@@ -2595,6 +2695,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x81f2c7b56f34290D2261F15883F2F80d78981b68/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x8242f81f7b06c1e67bc80dfd2b2716f58bd46651": {
+			"address": "0x8242f81f7b06c1e67bc80dfd2b2716f58bd46651",
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
+			"type": "Yearn Vault",
+			"name": "SY sETH-ptezETHSilo",
+			"symbol": "SY-sETH-ptezETHSilo",
+			"displayName": "SY sETH-ptezETHSilo",
+			"displaySymbol": "SY-sETH-ptezETHSilo",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x8242F81F7B06C1e67bC80DFD2B2716f58bD46651/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2853,6 +2969,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x8D9bA570D6cb60C7e3e0F31343Efe75AB8E65FB1/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x8dbb0993c76d006896ca2c894272580ae561563d": {
+			"address": "0x8dbb0993c76d006896ca2c894272580ae561563d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xPENDLE-WETH3",
+			"symbol": "xPENDLE-WETH3",
+			"displayName": "xPENDLE-WETH3",
+			"displaySymbol": "xPENDLE-WETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8dbB0993C76d006896Ca2c894272580Ae561563d/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4178,6 +4308,36 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xcf602767e9c82194daf58eb67a3169d60dbaac62": {
+			"address": "0xcf602767e9c82194daf58eb67a3169d60dbaac62",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xCf602767e9c82194DaF58EB67a3169d60DbAaC62/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xd0c4351a18f40b96b6446da3a191496df36d60f9": {
+			"address": "0xd0c4351a18f40b96b6446da3a191496df36d60f9",
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
+			"type": "Yearn Vault",
+			"name": "SY sETH-pteETHSilo",
+			"symbol": "SY-sETH-pteETHSilo",
+			"displayName": "SY sETH-pteETHSilo",
+			"displaySymbol": "SY-sETH-pteETHSilo",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xd0c4351a18F40b96b6446Da3A191496DF36d60F9/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xd101df41943ec333f64df316a3093cee1bf16572": {
 			"address": "0xd101df41943ec333f64df316a3093cee1bf16572",
 			"underlyingTokensAddresses": [],
@@ -4189,6 +4349,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xD101DF41943Ec333F64Df316A3093cee1Bf16572/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xd147e0be7b8cb2104274f1ff3962b917c6c300b1": {
+			"address": "0xd147e0be7b8cb2104274f1ff3962b917c6c300b1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xtBTC-WETH05",
+			"symbol": "xtBTC-WETH05",
+			"displayName": "xtBTC-WETH05",
+			"displaySymbol": "xtBTC-WETH05",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xd147E0bE7b8cB2104274F1Ff3962B917c6c300B1/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4231,6 +4405,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xD74f5255D557944cf7Dd0E45FF521520002D5748/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xd7e810aed2988b8a7ea0187d55c939110b178521": {
+			"address": "0xd7e810aed2988b8a7ea0187d55c939110b178521",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT sETH-ptezETHSilo 27JUN2024",
+			"symbol": "PT-sETH-ptezETHSilo-27JUN2024",
+			"displayName": "PT sETH-ptezETHSilo 27JUN2024",
+			"displaySymbol": "PT-sETH-ptezETHSilo-27JUN2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xd7e810aEd2988B8A7eA0187d55C939110b178521/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4531,6 +4719,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xEd9CEB9EB4DD78cA412A72F5D84b527F9176E87D/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xede3d8d3213d8defc37e4edea86448d4c692baa6": {
+			"address": "0xede3d8d3213d8defc37e4edea86448d4c692baa6",
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
+			"symbol": "sWETH-PT-ezETH-27JUN2024",
+			"displayName": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
+			"displaySymbol": "sWETH-PT-ezETH-27JUN2024",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

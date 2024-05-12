@@ -21,6 +21,12 @@ const (
 	VaultStabilityUnknown  TVaultStabilityType = "Unknown"
 )
 
+type TVaultCategoryType string
+
+const (
+	VaultCategoryAutomatic TVaultCategoryType = "auto"
+)
+
 type TVaultsFromRegistry struct {
 	Address         common.Address `json:"address"`
 	RegistryAddress common.Address `json:"registryAddress"`
@@ -58,23 +64,24 @@ type TStaking struct {
 }
 
 type TVaultMetadata struct {
-	IsRetired      bool       `json:"isRetired"`      // If the vault is retired or not
-	IsHidden       bool       `json:"isHidden"`       // If the vault is hidden or not
-	IsAggregator   bool       `json:"isAggregator"`   // If the vault is an aggregator or not
-	IsBoosted      bool       `json:"isBoosted"`      // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
-	IsAutomated    bool       `json:"isAutomated"`    // If the vault is automated or not
-	IsHighlighted  bool       `json:"isHighlighted"`  // If the vault is highlighted or not
-	IsPool         bool       `json:"isPool"`         // If the vault is a pool or not
-	ShouldUseV2APR bool       `json:"shouldUseV2APR"` // If the vault should use the V2 APR or not (only for V3 vaults)
-	Migration      TMigration `json:"migration"`      // If the vault is in the process of being migrated
-	Stability      TStability `json:"stability"`      // The stability of the vault
-	DisplayName    string     `json:"displayName"`    // The name of the vault
-	DisplaySymbol  string     `json:"displaySymbol"`  // The symbol of the vault
-	Description    string     `json:"description"`    // The description of the vault
-	SourceURI      string     `json:"sourceURI"`      // The source URI of the vault
-	UINotice       string     `json:"uiNotice"`       // The notice to display in the UI
-	RiskLevel      int8       `json:"riskLevel"`      // The risk level of the vault (1 to 5, -1 if not set)
-	Protocols      []string   `json:"protocols"`      // The Protocols used by the vault
+	IsRetired      bool               `json:"isRetired"`      // If the vault is retired or not
+	IsHidden       bool               `json:"isHidden"`       // If the vault is hidden or not
+	IsAggregator   bool               `json:"isAggregator"`   // If the vault is an aggregator or not
+	IsBoosted      bool               `json:"isBoosted"`      // If the vault is boosted or not. Act as a fallback if yDaemon has no way to know it
+	IsAutomated    bool               `json:"isAutomated"`    // If the vault is automated or not
+	IsHighlighted  bool               `json:"isHighlighted"`  // If the vault is highlighted or not
+	IsPool         bool               `json:"isPool"`         // If the vault is a pool or not
+	ShouldUseV2APR bool               `json:"shouldUseV2APR"` // If the vault should use the V2 APR or not (only for V3 vaults)
+	Migration      TMigration         `json:"migration"`      // If the vault is in the process of being migrated
+	Stability      TStability         `json:"stability"`      // The stability of the vault
+	Category       TVaultCategoryType `json:"category"`       // The category of the vault
+	DisplayName    string             `json:"displayName"`    // The name of the vault
+	DisplaySymbol  string             `json:"displaySymbol"`  // The symbol of the vault
+	Description    string             `json:"description"`    // The description of the vault
+	SourceURI      string             `json:"sourceURI"`      // The source URI of the vault
+	UINotice       string             `json:"uiNotice"`       // The notice to display in the UI
+	RiskLevel      int8               `json:"riskLevel"`      // The risk level of the vault (1 to 5, -1 if not set)
+	Protocols      []string           `json:"protocols"`      // The Protocols used by the vault
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network

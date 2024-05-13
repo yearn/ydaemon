@@ -62,7 +62,7 @@ func calculatePendleStrategyAPR(
 		}
 	}
 
-	grossAPR := bigNumber.NewFloat(data.MaxBoostedAPY)             // Using maxBoostedAPY as Yearn is maxBoosted
+	grossAPR := bigNumber.NewFloat(data.AggretatedAPY)             // Using aggregatedApy
 	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
 	if netAPR.Gt(vaultManagementFee) {                             // Management fee can never induce a negative APR
 		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee

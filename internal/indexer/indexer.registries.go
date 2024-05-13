@@ -595,8 +595,13 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 		/** 🔵 - Yearn *****************************************************************************
 		** After retrieving the highest block number we can proceed to index new vaults.
 		******************************************************************************************/
-		wg.Add(1)
-		go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
+		if chainID != 42161 {
+			wg.Add(1)
+			go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
+		} else {
+			indexNewVaultsWrapper(chainID, registry, highestBlockNumber, nil)
+		}
+
 	}
 	wg.Wait()
 

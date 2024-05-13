@@ -647,8 +647,12 @@ func IndexNewStrategies(
 		/** 🔵 - Yearn *************************************************************************************
 		** After retrieving the highest block number we can proceed to index new strategies.
 		**************************************************************************************************/
-		wg.Add(1)
-		go indexStrategyWrapper(chainID, vault, highestBlockNumber, &wg)
+		if chainID != 42161 {
+			wg.Add(1)
+			go indexStrategyWrapper(chainID, vault, highestBlockNumber, &wg)
+		} else {
+			indexStrategyWrapper(chainID, vault, highestBlockNumber, nil)
+		}
 	}
 	wg.Wait()
 

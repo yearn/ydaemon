@@ -20,7 +20,16 @@ func processServer(chainID uint64) {
 
 	scheduler := gocron.NewScheduler(time.UTC)
 	logs.Info(`Getting WS client for chain ` + strconv.FormatUint(chainID, 10))
-	ethereum.GetWSClient(chainID)
+	for {
+		_, err := ethereum.GetWSClient(chainID)
+		if err == nil {
+			break
+		}
+		if err.Error() != `i/o timeout` {
+			break
+		}
+		time.Sleep(5 * time.Second)
+	}
 	ethereum.InitBlockTimestamp(chainID)
 	internal.InitializeV2(chainID, nil, scheduler)
 	triggerInitializedStatus(chainID)

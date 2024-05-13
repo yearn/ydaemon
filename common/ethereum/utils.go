@@ -93,7 +93,8 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 		// contextTimeout, cancel := context.WithDeadline(context.Background(), time.Now().Add(10*time.Second))
 		// defer cancel()
 
-		client, err := ethclient.Dial(uri.String())
+		ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+		client, err := ethclient.DialContext(ctx, uri.String())
 		if err != nil {
 			logs.Error(`error while openning ws client for chain ` + strconv.FormatUint(chainID, 10) + ` with RPC ` + uri.String() + `: ` + err.Error())
 			return nil, err

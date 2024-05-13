@@ -65,7 +65,7 @@ func randomSigner() *bind.TransactOpts {
 }
 
 // GetWSClient returns the current ws connection for a specific chain
-func GetWSClient(chainID uint64) (*ethclient.Client, error) {
+func GetWSClient(chainID uint64, shouldRetry bool) (*ethclient.Client, error) {
 	if !env.CHAINS[chainID].CanUseWebsocket {
 		return nil, errors.New("chain cannot use websocket")
 	}
@@ -96,6 +96,11 @@ func GetWSClient(chainID uint64) (*ethclient.Client, error) {
 		ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 		client, err := ethclient.DialContext(ctx, uri.String())
 		if err != nil {
+			if shouldRetry && err.Error() == `i/o timeout` {
+				logs.Warning(`timeout while openning ws client for chain ` + strconv.FormatUint(chainID, 10) + ` with RPC ` + uri.String() + `: ` + err.Error())
+
+				return GetWSClient(chainID, false)
+			}
 			logs.Error(`error while openning ws client for chain ` + strconv.FormatUint(chainID, 10) + ` with RPC ` + uri.String() + `: ` + err.Error())
 			return nil, err
 		}

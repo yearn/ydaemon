@@ -94,7 +94,7 @@ func watchStakingPool(
 	** because we need to listen to new events as they are emitted via the node.
 	** Not all nodes support WS connections, so we need to check if the node supports it.
 	**********************************************************************************************/
-	client, err := ethereum.GetWSClient(chainID)
+	client, err := ethereum.GetWSClient(chainID, true)
 	if err != nil {
 		if wg != nil && !isDone {
 			wg.Done()
@@ -187,7 +187,7 @@ func indexStakingPoolWrapper(
 		** We must close the client we openned.
 		******************************************************************************************/
 		var err error
-		if _, err := ethereum.GetWSClient(chainID); err != nil {
+		if _, err := ethereum.GetWSClient(chainID, true); err != nil {
 			/**********************************************************************************************
 			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
 			** latest block. This is a fallback method in case the WS connection is not available.

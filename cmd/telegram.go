@@ -16,7 +16,7 @@ import (
 
 var initializedCounter = 0
 
-func triggerTgMessage(message string) {
+func TriggerTgMessage(message string) {
 	telegramToken, ok := os.LookupEnv("TELEGRAM_BOT")
 	if !ok {
 		logs.Error(`TELEGRAM_BOT environment variable not set`)
@@ -44,12 +44,12 @@ func triggerTgMessage(message string) {
 	_ = m
 }
 
-func triggerInitializedStatus(chainID uint64) {
+func TriggerInitializedStatus(chainID uint64) {
 	initializedCounter++
-	triggerTgMessage(`✅ - yDaemon initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
+	TriggerTgMessage(`✅ - yDaemon initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
 }
 
-func listenToSignals() {
+func ListenToSignals() {
 	telegramToken, ok := os.LookupEnv("TELEGRAM_BOT")
 	if !ok {
 		logs.Error(`TELEGRAM_BOT environment variable not set`)
@@ -87,14 +87,14 @@ func listenToSignals() {
 		// Extract the command from the Message.
 		switch update.Message.Command() {
 		case "help":
-			triggerTgMessage(`Available commands:
+			TriggerTgMessage(`Available commands:
 - /help: Show this help message
 - /restart: Restart the daemon
 - /update: Update yDaemon with the latest version
 - /upd_prices <chainID>: Update the prices for a given chain
 - /origins: Get the origins of access`)
 		case "restart":
-			triggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
+			TriggerTgMessage(`🔴 - ` + update.Message.From.UserName + ` asked for a restart`)
 			os.Exit(1)
 		case "update":
 			//this might be useless
@@ -103,7 +103,7 @@ func listenToSignals() {
 			if arguments != "" {
 				reason = ` because: ` + arguments
 			}
-			triggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + getVersion() + reason)
+			TriggerTgMessage(`♻️ - ` + update.Message.From.UserName + ` asked to update yDaemon away from v` + GetVersion() + reason)
 
 			//Grabbing the current executable name
 			execName, _ := os.Executable()
@@ -112,7 +112,7 @@ func listenToSignals() {
 			cmd := exec.Command("git", "checkout", "--", ".")
 			cmd.Dir = filepath.Dir(execName)
 			if err := cmd.Run(); err != nil {
-				triggerTgMessage(`🔴 - Error checking out local changes: ` + err.Error())
+				TriggerTgMessage(`🔴 - Error checking out local changes: ` + err.Error())
 				continue
 			}
 
@@ -120,7 +120,7 @@ func listenToSignals() {
 			cmd = exec.Command("git", "pull")
 			cmd.Dir = filepath.Dir(execName)
 			if err := cmd.Run(); err != nil {
-				triggerTgMessage(`🔴 - Error pulling changes: ` + err.Error())
+				TriggerTgMessage(`🔴 - Error pulling changes: ` + err.Error())
 				continue
 			}
 
@@ -132,23 +132,23 @@ func listenToSignals() {
 			for item := range itemsInLimiter {
 				listOfOrigins = append(listOfOrigins, item)
 			}
-			triggerTgMessage(`👀 - Origins of access:` + "\n" + strings.Join(listOfOrigins, "\n"))
+			TriggerTgMessage(`👀 - Origins of access:` + "\n" + strings.Join(listOfOrigins, "\n"))
 		case "upd_prices":
 			arguments := update.Message.CommandArguments()
 			if arguments == "" {
-				triggerTgMessage(`🔴 - Incorrect format. Should be /upd_prices <chainID>`)
+				TriggerTgMessage(`🔴 - Incorrect format. Should be /upd_prices <chainID>`)
 				continue
 			}
 			chainID, err := strconv.ParseUint(arguments, 10, 64)
 			if err != nil {
-				triggerTgMessage(`🔴 - Incorrect format. Should be /upd_prices <chainID> (number)`)
+				TriggerTgMessage(`🔴 - Incorrect format. Should be /upd_prices <chainID> (number)`)
 				continue
 			}
 			if _, ok := env.CHAINS[chainID]; !ok {
-				triggerTgMessage(`🔴 - Chain not supported`)
+				TriggerTgMessage(`🔴 - Chain not supported`)
 				continue
 			}
-			triggerTgMessage(`💰 - ` + update.Message.From.UserName + ` asked for a price update for chain ` + strconv.FormatUint(chainID, 10))
+			TriggerTgMessage(`💰 - ` + update.Message.From.UserName + ` asked for a price update for chain ` + strconv.FormatUint(chainID, 10))
 			prices.UpdatePrices(chainID)
 		default:
 			msg.Text = "I don't know that command"

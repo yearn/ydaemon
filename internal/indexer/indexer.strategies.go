@@ -616,9 +616,6 @@ func IndexNewStrategies(
 	** Loop over all the known vaults for the specified chain ID.
 	**********************************************************************************************/
 	for _, vault := range vaults {
-		if chainID == 42161 {
-			continue
-		}
 		/** 🔵 - Yearn *************************************************************************************
 		** This block of code is responsible for checking if the strategies for a given vault are already
 		** being indexed. If they are, it skips to the next vault. If they are not, it marks them as being

@@ -57,6 +57,7 @@ var ARBITRUM = TChain{
 			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
 			Version: 4,
 			Block:   171_850_013,
+			Tag:     `DISABLED`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{

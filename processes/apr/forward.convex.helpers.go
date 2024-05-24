@@ -211,8 +211,11 @@ func getCVXPoolAPR(
 	if tokenPrice, ok := storage.GetPrice(chainID, storage.CVX_TOKEN_ADDRESS[chainID]); ok {
 		cvxPrice = tokenPrice.HumanizedPrice
 	}
-	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
 	crvAPR = bigNumber.NewFloat(0).Mul(crvPerYear, crvPrice)
+	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
+	crvAPR = bigNumber.NewFloat(0).Div(crvAPR, bigNumber.NewFloat(100))
+	cvxAPR = bigNumber.NewFloat(0).Div(cvxAPR, bigNumber.NewFloat(100))
+
 	return crvAPR, cvxAPR
 }
 

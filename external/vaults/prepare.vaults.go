@@ -127,7 +127,7 @@ func toSimplifiedVersion(
 		}
 	}
 
-	juicedStakingData, hasJuicedGauge := storage.GetOPStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	juicedStakingData, hasJuicedGauge := storage.GetJuicedStakingDataForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasJuicedGauge {
 		rewards := []TStakingRewardsData{}
 		for _, reward := range juicedStakingData.RewardTokens {

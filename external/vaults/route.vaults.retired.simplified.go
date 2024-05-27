@@ -50,6 +50,12 @@ func (y Controller) GetAllRetiredVaultsForAllChainsSimplified(c *gin.Context) {
 	for _, chainID := range chains {
 		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
+			/******************************************************************************************
+			** We want to ignore all non Yearn vaults
+			******************************************************************************************/
+			if !currentVault.Metadata.Inclusion.IsYearn {
+				continue
+			}
 			vaultAddress := currentVault.Address
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
 				continue

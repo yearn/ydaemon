@@ -13,6 +13,7 @@ type TContractData struct {
 	Block   uint64         // Block number where the contract was deployed
 	Version uint64         // Version of the contract. May be empty.
 	Tag     string         // Tag of the contract. May be empty.
+	Label   string         // Label of the contract. May be empty.
 }
 
 func getCurrentPath() string {

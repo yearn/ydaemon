@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-24T10:46:48.77948+02:00",
+	"lastUpdate": "2024-05-27T16:47:15.968274+02:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 1
 	},
 	"shouldRefresh": false,
@@ -10,6 +10,7 @@
 		"0x00a2faf97cc2b985b29a0a0eaa6e0d8033dc0ea1": {
 			"address": "0x00a2faf97cc2b985b29a0a0eaa6e0d8033dc0ea1",
 			"token": "0xadbb23bcc3c1b9810491897cb0690cf645b858b1",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -22,8 +23,8 @@
 			"lastActiveStrategies": [
 				"0x81ebdc2f60df4d579bc0df8cb86609e885cac5d3"
 			],
-			"lastPricePerShare": "1062605173641808175",
-			"lastTotalAssets": "5483018729615845408",
+			"lastPricePerShare": "1067928096695669369",
+			"lastTotalAssets": "3048203082937674718",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -50,12 +51,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x00cb8e36a9c40491a39e8bf2864ed30c1b579860": {
 			"address": "0x00cb8e36a9c40491a39e8bf2864ed30c1b579860",
 			"token": "0x6e57b9e54ea043a829584b22182ad22bf446926c",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -68,8 +76,8 @@
 			"lastActiveStrategies": [
 				"0x63bdfa16af506f7e3e80176c282b2c004ee257e6"
 			],
-			"lastPricePerShare": "1017184476860031918",
-			"lastTotalAssets": "24209943338638",
+			"lastPricePerShare": "1017914224980451943",
+			"lastTotalAssets": "22119902177123",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -97,12 +105,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50": {
 			"address": "0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50",
 			"token": "0x71d53b5b7141e1ec9a3fc9cc48b4766102d14a4a",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -115,8 +130,8 @@
 			"lastActiveStrategies": [
 				"0xcd90278862651eed05ebcd5cb34a87deb2b47867"
 			],
-			"lastPricePerShare": "1142374445816354592",
-			"lastTotalAssets": "4874512367921754",
+			"lastPricePerShare": "1146722381268647053",
+			"lastTotalAssets": "1235629668415953",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -143,12 +158,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687": {
 			"address": "0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687",
 			"token": "0x4be2cbe40521279b8fc561e65bb842bf73ec3a80",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -161,8 +183,8 @@
 			"lastActiveStrategies": [
 				"0xd22e21a1b9bdc392229fab7e878a10b5b6273fcb"
 			],
-			"lastPricePerShare": "1096333056335156886",
-			"lastTotalAssets": "172730716297191",
+			"lastPricePerShare": "1097257274650527031",
+			"lastTotalAssets": "44102414469465",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -189,12 +211,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x05bbaf27429eb35cb3d51a979acba69f2f00e66a": {
 			"address": "0x05bbaf27429eb35cb3d51a979acba69f2f00e66a",
 			"token": "0x5e6e17f745ff620e87324b7c6ec672b5743bd0b4",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -236,12 +265,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12": {
 			"address": "0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12",
 			"token": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.4",
@@ -283,12 +319,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x161e7411a291ccaf377279fce6a8c8d689dbebe8": {
 			"address": "0x161e7411a291ccaf377279fce6a8c8d689dbebe8",
 			"token": "0xd16232ad60188b68076a235c65d692090caba155",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -330,12 +373,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x1b1d2efb6045851f8ccde24369003e0ff157980b": {
 			"address": "0x1b1d2efb6045851f8ccde24369003e0ff157980b",
 			"token": "0x6d5ba400640226e24b50214d2bbb3d4db8e6e15a",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -377,12 +427,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce": {
 			"address": "0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce",
 			"token": "0xe54e4020d1c3afdb312095d90054103e68fe34b0",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -395,8 +452,8 @@
 			"lastActiveStrategies": [
 				"0x6d094c2c5d3478a198f89b7f8ed6910dfb8842ba"
 			],
-			"lastPricePerShare": "1097118118576064775",
-			"lastTotalAssets": "47704290684202187",
+			"lastPricePerShare": "1097751589989183467",
+			"lastTotalAssets": "31685502811904834",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -424,12 +481,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x22687ca792a8cb5e169a77e0949e71fe37147604": {
 			"address": "0x22687ca792a8cb5e169a77e0949e71fe37147604",
 			"token": "0x6c5019d345ec05004a7e7b0623a91a0d9b8d590d",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -471,12 +535,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x27939e33435cc4ee4e74c0f0260914596bceb116": {
 			"address": "0x27939e33435cc4ee4e74c0f0260914596bceb116",
 			"token": "0xc3439bc1a747e545887192d6b7f8be47f608473f",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -489,8 +560,8 @@
 			"lastActiveStrategies": [
 				"0x46f419c19efc83665a0dd8fa522b1b16046ae201"
 			],
-			"lastPricePerShare": "1118246924271635942",
-			"lastTotalAssets": "9504799182066936827120",
+			"lastPricePerShare": "1126904695346331413",
+			"lastTotalAssets": "9465729635016789905478",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -515,12 +586,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x2a90f479002daae9934c3a70ebb6e8dbeb46292b": {
 			"address": "0x2a90f479002daae9934c3a70ebb6e8dbeb46292b",
 			"token": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -533,8 +611,8 @@
 			"lastActiveStrategies": [
 				"0xbfd5df2b57cb9532a39931e4ed74b51cfa940bb0"
 			],
-			"lastPricePerShare": "1080260161487273786",
-			"lastTotalAssets": "2533736965517185196608",
+			"lastPricePerShare": "1080766405071121900",
+			"lastTotalAssets": "2533656103092455371669",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -560,12 +638,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b": {
 			"address": "0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b",
 			"token": "0x9c78da24f2843ccdd02085bdec2484106554ca48",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -606,12 +691,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x36e4c18b2b43cc989085b4a7306915b115058abf": {
 			"address": "0x36e4c18b2b43cc989085b4a7306915b115058abf",
 			"token": "0x19715771e30c93915a5bbda134d782b81a820076",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -653,12 +745,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x39f60710a27a87332d10e3333c2eff41eec911ee": {
 			"address": "0x39f60710a27a87332d10e3333c2eff41eec911ee",
 			"token": "0xb720fbc32d60bb6dcc955be86b98d8fd3c4ba645",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -700,12 +799,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6": {
 			"address": "0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6",
 			"token": "0x0df083de449f75691fc5a36477a6f3284c269108",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -718,8 +824,8 @@
 			"lastActiveStrategies": [
 				"0xd8177cabbb13922206ccfeacab3060c5fe4cb06b"
 			],
-			"lastPricePerShare": "1140771111433581583",
-			"lastTotalAssets": "10608331847226987",
+			"lastPricePerShare": "1146766428733390105",
+			"lastTotalAssets": "10653519820329912",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -746,12 +852,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa": {
 			"address": "0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa",
 			"token": "0x4d7959d17b9710be87e3657e69d946914221bb88",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -764,8 +877,8 @@
 			"lastActiveStrategies": [
 				"0x9932559d1da9e1f00571346d1e4afb240bef6ede"
 			],
-			"lastPricePerShare": "1078717511407385717",
-			"lastTotalAssets": "21789181523572341",
+			"lastPricePerShare": "1079829996571300518",
+			"lastTotalAssets": "19651767996092286",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -793,12 +906,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3bde2ab72afe70286fc944c07d98883e383df239": {
 			"address": "0x3bde2ab72afe70286fc944c07d98883e383df239",
 			"token": "0xf2d42c46528116362aca448837a0236459b53c63",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -839,12 +959,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3f14df340498f3eaa2894bfc19789dd592dc062d": {
 			"address": "0x3f14df340498f3eaa2894bfc19789dd592dc062d",
 			"token": "0x1f8b46abe1eabf5a60cbbb5fb2e4a6a46fa0b6e6",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -857,8 +984,8 @@
 			"lastActiveStrategies": [
 				"0x87a06daae50cee4031a9f0df6a7a5d819da98c6e"
 			],
-			"lastPricePerShare": "1146900326606213299",
-			"lastTotalAssets": "51602172012094250093316",
+			"lastPricePerShare": "1154095789138831792",
+			"lastTotalAssets": "22509538273447946261556",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -886,12 +1013,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3fb792fa67cde50a41e20304e4afef522cf711ee": {
 			"address": "0x3fb792fa67cde50a41e20304e4afef522cf711ee",
 			"token": "0x2b47c794c3789f499d8a54ec12f949eecce8ba16",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -933,12 +1067,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x43360fdd9546e3e77ac2e6793f53219729743293": {
 			"address": "0x43360fdd9546e3e77ac2e6793f53219729743293",
 			"token": "0x95a05d06decf8e1eb93ae09b612fbd342f2f9e2e",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -980,12 +1121,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41": {
 			"address": "0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41",
 			"token": "0xdff90e4a6c229565f25337b1db9fa12f6d8cb118",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -998,8 +1146,8 @@
 			"lastActiveStrategies": [
 				"0xca9912caa94162191f1103a0239bd5be52534b96"
 			],
-			"lastPricePerShare": "1611939805862159111",
-			"lastTotalAssets": "13513135179758761123",
+			"lastPricePerShare": "1656735089552517789",
+			"lastTotalAssets": "13931678241446675843",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1026,12 +1174,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d": {
 			"address": "0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d",
 			"token": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.4",
@@ -1073,12 +1228,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03": {
 			"address": "0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03",
 			"token": "0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1120,12 +1282,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x4f1220f6375e95b43462465972cb2f478ed34d0b": {
 			"address": "0x4f1220f6375e95b43462465972cb2f478ed34d0b",
 			"token": "0x0b28c2e41058edc7d66c516c617b664ea86eec5d",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1167,12 +1336,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0": {
 			"address": "0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0",
 			"token": "0xeea82dcab12c855e3736558d80500ed52c8598cd",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1185,8 +1361,8 @@
 			"lastActiveStrategies": [
 				"0x1b929f270346efb14636ce5749c471105e44a0ac"
 			],
-			"lastPricePerShare": "1104053366531783986",
-			"lastTotalAssets": "1031248630909004380430",
+			"lastPricePerShare": "1109094968561744389",
+			"lastTotalAssets": "1036483668197894780446",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1214,12 +1390,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x507343bad3a1ee0b67c3b1712133290ded43980d": {
 			"address": "0x507343bad3a1ee0b67c3b1712133290ded43980d",
 			"token": "0xc5c247580a4a6e4d3811c0da6215057aac480bac",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1232,8 +1415,8 @@
 			"lastActiveStrategies": [
 				"0x4276b479e851f76f95312cce497dc8fe37f1befd"
 			],
-			"lastPricePerShare": "1074256523580925108",
-			"lastTotalAssets": "234044593935781916328",
+			"lastPricePerShare": "1076371527030505074",
+			"lastTotalAssets": "114028005876088709876",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1260,12 +1443,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x531fdb1c8429f404116932226d487db94471c4b7": {
 			"address": "0x531fdb1c8429f404116932226d487db94471c4b7",
 			"token": "0x77b6d0279c9cef559ef7c32c31d9a5d8acb664fe",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1307,12 +1497,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6": {
 			"address": "0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6",
 			"token": "0xd95e98fc33670dc033424e7aa0578d742d00f9c7",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1354,12 +1551,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x5b977577eb8a480f63e11fc615d6753adb8652ae": {
 			"address": "0x5b977577eb8a480f63e11fc615d6753adb8652ae",
 			"token": "0x4200000000000000000000000000000000000006",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -1400,12 +1604,68 @@
 				"sourceURI": "",
 				"uiNotice": "Deposits to this Vault are permanently disabled due to the recent Sonne Finance incident. Losses have been realized by the strategy, affecting depositors. The Sonne team are pursuing recovery efforts and it is possible that additional funds may be recovered and distributed pro-rata to users with active Vault positions. In the meantime OP rewards for the vault have been increased to begin to offset some of the losses. Please note that withdrawing your position disqualifies you from potential future recovery.",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x5e70e0ede43373bd9cf4bc85199d424acf0241ef": {
+			"address": "0x5e70e0ede43373bd9cf4bc85199d424acf0241ef",
+			"token": "0x061b87122ed14b9526a813209c8a59a633257bab",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
+			"type": "Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.5",
+			"activation": 91983637,
+			"chainID": 10,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x62855b8e5db35551661a1e304ec227314f4493c1": {
 			"address": "0x62855b8e5db35551661a1e304ec227314f4493c1",
 			"token": "0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1419,7 +1679,7 @@
 				"0xf8165806b386108dac5ebaf21b6798fcbf4f101d"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "1022975514990",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1444,12 +1704,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x65343f414ffd6c97b0f6add33d16f6845ac22bac": {
 			"address": "0x65343f414ffd6c97b0f6add33d16f6845ac22bac",
 			"token": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -1490,12 +1757,19 @@
 				"sourceURI": "",
 				"uiNotice": "Deposits to this Vault are permanently disabled due to the recent Sonne Finance incident. Losses have been realized by the strategy, affecting depositors. The Sonne team are pursuing recovery efforts and it is possible that additional funds may be recovered and distributed pro-rata to users with active Vault positions. In the meantime OP rewards for the vault have been increased to begin to offset some of the losses. Please note that withdrawing your position disqualifies you from potential future recovery.",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x65bab5c963aec5bfc72986c2a4c468c190d6de96": {
 			"address": "0x65bab5c963aec5bfc72986c2a4c468c190d6de96",
 			"token": "0x1de84e1324baf5a9f3a49a48892fe90ce48456f1",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1508,8 +1782,8 @@
 			"lastActiveStrategies": [
 				"0x479dce9e0ae72583db923c472ebe6a5fd86988e4"
 			],
-			"lastPricePerShare": "1010897613793246531",
-			"lastTotalAssets": "2229290166077078692",
+			"lastPricePerShare": "1014383936325951728",
+			"lastTotalAssets": "2234509941097301988",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1534,12 +1808,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6657bdb994fc8678f6d709077f30aa0b3249b5c8": {
 			"address": "0x6657bdb994fc8678f6d709077f30aa0b3249b5c8",
 			"token": "0xdb61f9b480f0a8b817811cfaa89a1c219c355224",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1580,12 +1861,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6759574667896a453304897993d61f00fdc7214d": {
 			"address": "0x6759574667896a453304897993d61f00fdc7214d",
 			"token": "0xdfa46478f9e5ea86d57387849598dbfb2e964b02",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -1625,12 +1913,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x682df61222a3fb64f3e88fef41ce21499adcc647": {
 			"address": "0x682df61222a3fb64f3e88fef41ce21499adcc647",
 			"token": "0xd62c9d8a3d4fd98b27caaefe3571782a3af0a737",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -1672,12 +1967,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x686c125472024bdd3fa74eeb3720b3237541dcdc": {
 			"address": "0x686c125472024bdd3fa74eeb3720b3237541dcdc",
 			"token": "0x8f47041adbef5bf321c9f63a0660326614ab6b60",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1718,12 +2020,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x68f2b1db2da6204489279a8fc681f83728bb9622": {
 			"address": "0x68f2b1db2da6204489279a8fc681f83728bb9622",
 			"token": "0xbe418771bc91f75c4d2bce1d5e2b7286f50992da",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1736,8 +2045,8 @@
 			"lastActiveStrategies": [
 				"0x8fd559dfe1d64508290025e2312ca69ef172dfe3"
 			],
-			"lastPricePerShare": "1062099494470966452",
-			"lastTotalAssets": "769195675037068945399",
+			"lastPricePerShare": "1075719690299899167",
+			"lastTotalAssets": "780171362427469709245",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1765,12 +2074,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6a44b0415a5c440d32e82965fdfaad54a72d477d": {
 			"address": "0x6a44b0415a5c440d32e82965fdfaad54a72d477d",
 			"token": "0x5e5a37445fadeb71f23514ae7d675ffc644e5e5a",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1812,12 +2128,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6afa09145245eaedddab9333523af9984494ff34": {
 			"address": "0x6afa09145245eaedddab9333523af9984494ff34",
 			"token": "0xf04458f7b21265b80fc340de7ee598e24485c5bb",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1859,12 +2182,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07": {
 			"address": "0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07",
 			"token": "0x6da98bde0068d10ddd11b468b197ea97d96f96bc",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1877,8 +2207,8 @@
 			"lastActiveStrategies": [
 				"0x332ac9e3ead90e13399ac8ea4168ea27ec132fa9"
 			],
-			"lastPricePerShare": "1024790862632751744",
-			"lastTotalAssets": "42092875736073267571",
+			"lastPricePerShare": "1025914650609137036",
+			"lastTotalAssets": "36294650685279010810",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1906,12 +2236,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee": {
 			"address": "0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee",
 			"token": "0x4ed90ca704f4f6f3955169f202ea35365e41b424",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1952,12 +2289,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x71117bcd8fe69177eeb8857538d625209756b745": {
 			"address": "0x71117bcd8fe69177eeb8857538d625209756b745",
 			"token": "0x7e0f65fab1524da9e2e5711d160541cf1199912e",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1999,12 +2343,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x78e20312105a85b7fe86db119cfd5cd8de81fdaa": {
 			"address": "0x78e20312105a85b7fe86db119cfd5cd8de81fdaa",
 			"token": "0x667002f9dc61ebcba8ee1cbeb2ad04060388f223",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2046,12 +2397,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7bdea31f968089f93a548ddec8bb74036e8ac6e0": {
 			"address": "0x7bdea31f968089f93a548ddec8bb74036e8ac6e0",
 			"token": "0xf31cbe21bbbb8056b75d6ca21e8ffd2cd38bd5c5",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2064,8 +2422,8 @@
 			"lastActiveStrategies": [
 				"0x3ab17cd58007e18bdbdc429496adc3feda250483"
 			],
-			"lastPricePerShare": "1080815020933394969",
-			"lastTotalAssets": "3250407467287048667040",
+			"lastPricePerShare": "1083416870779876278",
+			"lastTotalAssets": "3259103923915051129436",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2093,12 +2451,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7d2382b1f8af621229d33464340541db362b4907": {
 			"address": "0x7d2382b1f8af621229d33464340541db362b4907",
 			"token": "0x4200000000000000000000000000000000000042",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -2111,8 +2476,8 @@
 			"lastActiveStrategies": [
 				"0x1e88b832e3e8247c38a088511f0bf243dfa00973"
 			],
-			"lastPricePerShare": "1020497210064330569",
-			"lastTotalAssets": "445673667261070159402154",
+			"lastPricePerShare": "1020629148459156704",
+			"lastTotalAssets": "434610334892836122201939",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2137,12 +2502,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7e1d451799af57ea5570d1015c342c12a918a30b": {
 			"address": "0x7e1d451799af57ea5570d1015c342c12a918a30b",
 			"token": "0x1ad06ca54de04dbe9e2817f4c13ecb406dcbeaf0",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2155,8 +2527,8 @@
 			"lastActiveStrategies": [
 				"0x495838c99a150066a78402cd620910e924c3fd4a"
 			],
-			"lastPricePerShare": "1075668746996313311",
-			"lastTotalAssets": "37967520872254296771",
+			"lastPricePerShare": "1080916286034324569",
+			"lastTotalAssets": "12120813859636423418",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2184,12 +2556,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7edf16076e56fa4c111055fba1ff5556b8757cfb": {
 			"address": "0x7edf16076e56fa4c111055fba1ff5556b8757cfb",
 			"token": "0x68f180fcce6836688e9084f035309e29bf0a2095",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -2202,8 +2581,8 @@
 			"lastActiveStrategies": [
 				"0x6108591f070ff31809e1da11fd5aea9d3235735f"
 			],
-			"lastPricePerShare": "100104150",
-			"lastTotalAssets": "3859034",
+			"lastPricePerShare": "100106017",
+			"lastTotalAssets": "3859102",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2229,12 +2608,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x830cb4aabf786b9349d9701dd8ee073215d95174": {
 			"address": "0x830cb4aabf786b9349d9701dd8ee073215d95174",
 			"token": "0x7178f61694ba9109205b8d6f686282307625e62d",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2247,8 +2633,8 @@
 			"lastActiveStrategies": [
 				"0x57926e9cf3d7920afe774dc1d040cce0cd3ed26a"
 			],
-			"lastPricePerShare": "1168652487422131777",
-			"lastTotalAssets": "423298860144411613744",
+			"lastPricePerShare": "1172069892157639527",
+			"lastTotalAssets": "131036419696924223113",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2275,12 +2661,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x83b8391b9efbc5b5a38777fb22a4968c622a405a": {
 			"address": "0x83b8391b9efbc5b5a38777fb22a4968c622a405a",
 			"token": "0x615b9dd61f1f9a80f5bcd33a53eb79c37b20addc",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2293,8 +2686,8 @@
 			"lastActiveStrategies": [
 				"0xe95b08f0aeae413f3b40e19cbae16564c6802509"
 			],
-			"lastPricePerShare": "5733104978292499475",
-			"lastTotalAssets": "452101337452598173",
+			"lastPricePerShare": "5810807341360934643",
+			"lastTotalAssets": "379186032858428922",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2321,12 +2714,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x87be630d279bfd004775c1166f8a488b2fffa500": {
 			"address": "0x87be630d279bfd004775c1166f8a488b2fffa500",
 			"token": "0xc37a0a37664aeb3848f98c5dd5d7ae286a1e9ebd",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2368,12 +2768,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x88b429359665b8685b7431f5a0f6e8c719bf49aa": {
 			"address": "0x88b429359665b8685b7431f5a0f6e8c719bf49aa",
 			"token": "0x8134a2fdc127549480865fb8e5a9e8a8a95a54c5",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2386,8 +2793,8 @@
 			"lastActiveStrategies": [
 				"0x2a28720b784cc85791c58a47eaed3b569292c71f"
 			],
-			"lastPricePerShare": "1477479538965812201",
-			"lastTotalAssets": "77964391926969870",
+			"lastPricePerShare": "1494745554054041471",
+			"lastTotalAssets": "62854984744506099",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2414,12 +2821,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9": {
 			"address": "0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9",
 			"token": "0xb545592e38b603f4a904a5260a6ffc538bfcb424",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2432,8 +2846,8 @@
 			"lastActiveStrategies": [
 				"0x4e1a7a01a41d59cd762beb26684b00762ac8e581"
 			],
-			"lastPricePerShare": "1162896591098398608",
-			"lastTotalAssets": "858448355691401984451",
+			"lastPricePerShare": "1165054820002856474",
+			"lastTotalAssets": "859791467790931808812",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2460,12 +2874,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27": {
 			"address": "0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27",
 			"token": "0xaf03f51de7a0e62bf061f6fc3931cf79166b0a29",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2478,8 +2899,8 @@
 			"lastActiveStrategies": [
 				"0x1a841021ade39b75b0900c17072d3d084449b664"
 			],
-			"lastPricePerShare": "1111780754884991839",
-			"lastTotalAssets": "61634034256648720555163",
+			"lastPricePerShare": "1119650515297300116",
+			"lastTotalAssets": "20395059154879418884027",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2507,12 +2928,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x906122ac1b55b71248abfa552fdc6abd3356884a": {
 			"address": "0x906122ac1b55b71248abfa552fdc6abd3356884a",
 			"token": "0x8453cc52f2108ff9d1636b6a108db06ac137b72f",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2553,12 +2981,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe": {
 			"address": "0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe",
 			"token": "0xe39120b27e5bfec953524402c2e261763c76519e",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2599,12 +3034,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x950f384f566b82cca6380f75ae42e2bbe9b357b2": {
 			"address": "0x950f384f566b82cca6380f75ae42e2bbe9b357b2",
 			"token": "0xb2791477da69dde9cd2986349f8855b8e2da7245",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2646,12 +3088,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b": {
 			"address": "0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b",
 			"token": "0xc0a0adf5e3b07e383c2c1533b2f0878a3195c622",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2692,12 +3141,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e": {
 			"address": "0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e",
 			"token": "0x5e4a183fa83c52b1c55b11f2682f6a8421206633",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2739,12 +3195,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681": {
 			"address": "0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681",
 			"token": "0xe5f28fc43bb40cdf7202ebe406793815b6f07fbd",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2757,8 +3220,8 @@
 			"lastActiveStrategies": [
 				"0x2a533d9c6facc699cf808210544db43d37e6203e"
 			],
-			"lastPricePerShare": "1404114161092435278",
-			"lastTotalAssets": "79165831995601",
+			"lastPricePerShare": "1446691470503237955",
+			"lastTotalAssets": "81842144249059",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2785,12 +3248,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa3d57625b9a6284d1265d76294443b1e39a18007": {
 			"address": "0xa3d57625b9a6284d1265d76294443b1e39a18007",
 			"token": "0x605cce502dee6bd201b493782e351e645d44abbb",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -2803,8 +3273,8 @@
 			"lastActiveStrategies": [
 				"0x62e396d4f398fd24ca7e8f028fedcaecf5e65266"
 			],
-			"lastPricePerShare": "1092702295666061045",
-			"lastTotalAssets": "187614307474419037",
+			"lastPricePerShare": "1103020466207526990",
+			"lastTotalAssets": "38475248362053653",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2829,12 +3299,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa628c54c850ff1077b5c954491d19ecce7e321ff": {
 			"address": "0xa628c54c850ff1077b5c954491d19ecce7e321ff",
 			"token": "0x4200000000000000000000000000000000000006",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.4",
@@ -2876,12 +3353,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa7b550b3a80361d8e47e07616dc42f04c655881b": {
 			"address": "0xa7b550b3a80361d8e47e07616dc42f04c655881b",
 			"token": "0x4706e50fde911525e4b904c240056c4ea0884aa6",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2894,8 +3378,8 @@
 			"lastActiveStrategies": [
 				"0x405b0e5ed26856f63344747c0a87de549a334d75"
 			],
-			"lastPricePerShare": "1095162669384685001",
-			"lastTotalAssets": "880340102922298586821",
+			"lastPricePerShare": "1114447546712446278",
+			"lastTotalAssets": "897591065962841702475",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2923,12 +3407,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f": {
 			"address": "0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f",
 			"token": "0x41cc89b91d0abe260f2cb53c1abda07b321e71df",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -2941,8 +3432,8 @@
 			"lastActiveStrategies": [
 				"0x90bb44d6ab538af82f05ee4d6cffef53fb18cb56"
 			],
-			"lastPricePerShare": "1366339983989657708",
-			"lastTotalAssets": "104601173556466059605",
+			"lastPricePerShare": "1415469737038213977",
+			"lastTotalAssets": "108797008919879041216",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2970,12 +3461,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xac8da30113238cfaf5011157cdf1e05a884cdb72": {
 			"address": "0xac8da30113238cfaf5011157cdf1e05a884cdb72",
 			"token": "0x844d7d2fca6786be7de6721aabdff6957ace73a0",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -3014,12 +3512,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xad17a225074191d5c8a37b50fda1ae278a2ee6a2": {
 			"address": "0xad17a225074191d5c8a37b50fda1ae278a2ee6a2",
 			"token": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -3060,12 +3565,19 @@
 				"sourceURI": "",
 				"uiNotice": "Deposits to this Vault are permanently disabled due to the recent Sonne Finance incident. Losses have been realized by the strategy, affecting depositors. The Sonne team are pursuing recovery efforts and it is possible that additional funds may be recovered and distributed pro-rata to users with active Vault positions. In the meantime OP rewards for the vault have been increased to begin to offset some of the losses. Please note that withdrawing your position disqualifies you from potential future recovery.",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xb3532518daca20fd14e539b0ed6c0de5c59fd2de": {
 			"address": "0xb3532518daca20fd14e539b0ed6c0de5c59fd2de",
 			"token": "0x3f42dc59dc4df5cd607163bc620168f7ff7ab970",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3107,12 +3619,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3": {
 			"address": "0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3",
 			"token": "0x7bc5728bc2b59b45a58d9a576e2ffc5f0505b35e",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -3154,12 +3673,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Curve"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xb83dbac6087592328909996a39d138e89e4b0afe": {
 			"address": "0xb83dbac6087592328909996a39d138e89e4b0afe",
 			"token": "0xd330841ef9527e3bd0abc28a230c7ca8dec9423b",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3201,12 +3727,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xb9a14c5c760023801f8c731b4621c99f8ac211d9": {
 			"address": "0xb9a14c5c760023801f8c731b4621c99f8ac211d9",
 			"token": "0x4e60495550071693bc8bdffc40033d278157eac7",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3219,8 +3752,8 @@
 			"lastActiveStrategies": [
 				"0xace439a7b6f7fdbd3bb0554006f044d21205ab3e"
 			],
-			"lastPricePerShare": "6382173465400979571",
-			"lastTotalAssets": "800588772350493",
+			"lastPricePerShare": "7038482755574895718",
+			"lastTotalAssets": "893122016103839",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3247,12 +3780,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xbc61b71562b01a3a4808d3b9291a3bf743ab3361": {
 			"address": "0xbc61b71562b01a3a4808d3b9291a3bf743ab3361",
 			"token": "0x6387765ffa609ab9a1da1b16c455548bfed7cbea",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3265,8 +3805,8 @@
 			"lastActiveStrategies": [
 				"0x35a18609bbc01c1e75932fab4f239aeab4742199"
 			],
-			"lastPricePerShare": "1103168438348633691",
-			"lastTotalAssets": "698651919865652868287",
+			"lastPricePerShare": "1108638604263465161",
+			"lastTotalAssets": "357781783694647963715",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3293,12 +3833,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799": {
 			"address": "0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799",
 			"token": "0xa56a25dee5b3199a9198bbd48715ee3d0ed98378",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -3311,8 +3858,8 @@
 			"lastActiveStrategies": [
 				"0xfc8d063d9f14db98d6e4a73432f9a9bd8ae820be"
 			],
-			"lastPricePerShare": "1056186402679979306",
-			"lastTotalAssets": "149840075062103860",
+			"lastPricePerShare": "1063258633289888267",
+			"lastTotalAssets": "47603975259270728",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3337,12 +3884,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc2626acedc27cffb418680d0307c9178955a4743": {
 			"address": "0xc2626acedc27cffb418680d0307c9178955a4743",
 			"token": "0xff5318f81dd791e92d51b8a54fa3538832d2890d",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3384,12 +3938,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7": {
 			"address": "0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7",
 			"token": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.4",
@@ -3431,12 +3992,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc3439ba7db7566ed0def55c179ed9b3ba273a67f": {
 			"address": "0xc3439ba7db7566ed0def55c179ed9b3ba273a67f",
 			"token": "0xf3c45b45223df6071a478851b9c17e0630fdf535",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3477,12 +4045,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc3566662862c26ff56e3e709dc021902cc68becd": {
 			"address": "0xc3566662862c26ff56e3e709dc021902cc68becd",
 			"token": "0x2e931de1fcb2681dc98601e0b513308da9c5ceae",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3523,12 +4098,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xc86b70e2c16c5fb5315e4663737e0e077abfc395": {
 			"address": "0xc86b70e2c16c5fb5315e4663737e0e077abfc395",
 			"token": "0xe9581d0f1a628b038fc8b2a7f5a7d904f0e2f937",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3541,8 +4123,8 @@
 			"lastActiveStrategies": [
 				"0xe7036cb72f21b1dfe422ad79d54b3d611e2bffa2"
 			],
-			"lastPricePerShare": "1343966408523409041",
-			"lastTotalAssets": "88533337033615670927962",
+			"lastPricePerShare": "1355612007797507869",
+			"lastTotalAssets": "94874116485488864493314",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3569,12 +4151,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xcf6bef33c49824226fb9defcdc3b1de11f207db7": {
 			"address": "0xcf6bef33c49824226fb9defcdc3b1de11f207db7",
 			"token": "0x8542dd4744edea38b8a9306268b08f4d26d38581",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3616,12 +4205,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xd02ce9e211279ab3f414ff7a661518f9173780cb": {
 			"address": "0xd02ce9e211279ab3f414ff7a661518f9173780cb",
 			"token": "0xfa09479d72e2b3f8b6df63399772237ad6658d76",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3634,8 +4230,8 @@
 			"lastActiveStrategies": [
 				"0xad782af29bfb5908ce7305042933eeb8dfe95f1b"
 			],
-			"lastPricePerShare": "1132744600650243185",
-			"lastTotalAssets": "39392342003618263651437",
+			"lastPricePerShare": "1136826324226782665",
+			"lastTotalAssets": "2807117686336523030158",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3663,12 +4259,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xd0d2ac44cc842079e978bb11b094764f7d0dec6a": {
 			"address": "0xd0d2ac44cc842079e978bb11b094764f7d0dec6a",
 			"token": "0x917aa69d539d6518440dd0bea2eaac142a8d5610",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3681,8 +4284,8 @@
 			"lastActiveStrategies": [
 				"0x47972c2f68c1ff6e34cd9b6c1a690938de91d80e"
 			],
-			"lastPricePerShare": "1337382972675342818",
-			"lastTotalAssets": "313287827295837269386",
+			"lastPricePerShare": "1359755162012079379",
+			"lastTotalAssets": "3311303904497689470",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3710,12 +4313,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c": {
 			"address": "0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c",
 			"token": "0xfff37730744930cb61be34c0014068f4f1ec28cf",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -3728,8 +4338,8 @@
 			"lastActiveStrategies": [
 				"0xd13a1c75e5177f4932502aef829493467b1844ab"
 			],
-			"lastPricePerShare": "1154994615603250898",
-			"lastTotalAssets": "1596581490198624949022",
+			"lastPricePerShare": "1185028843582330502",
+			"lastTotalAssets": "94014242412796943233",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3754,12 +4364,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae": {
 			"address": "0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae",
 			"token": "0x1c8d7fc2eaa85af18188f7619b99f939db34836d",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3800,12 +4417,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5": {
 			"address": "0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5",
 			"token": "0x7a7f1187c4710010db17d0a9ad3fce85e6ecd90a",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3818,8 +4442,8 @@
 			"lastActiveStrategies": [
 				"0xb92e56fea1f265ca6c85a9cd64a0d58800374985"
 			],
-			"lastPricePerShare": "5166166300552632002",
-			"lastTotalAssets": "63388855277293977835060",
+			"lastPricePerShare": "5441653534816577277",
+			"lastTotalAssets": "55507655846517141220832",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3846,12 +4470,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f": {
 			"address": "0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f",
 			"token": "0xda0253a7cdccc4b4defbbef863dba1294bf5e3b1",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3892,12 +4523,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5": {
 			"address": "0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5",
 			"token": "0xd25711edfbf747efce181442cc1d8f5f8fc8a0d3",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -3910,8 +4548,8 @@
 			"lastActiveStrategies": [
 				"0x0f83d307a1df560b13df25d98f308be403ba8ff7"
 			],
-			"lastPricePerShare": "1081942169489679088",
-			"lastTotalAssets": "1902667050256133587546",
+			"lastPricePerShare": "1084900886581096841",
+			"lastTotalAssets": "1908247426402529924371",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3938,12 +4576,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf39b6196e6bb16cf0f37e4741a83413cc329539d": {
 			"address": "0xf39b6196e6bb16cf0f37e4741a83413cc329539d",
 			"token": "0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -3956,8 +4601,8 @@
 			"lastActiveStrategies": [
 				"0xd5fbaca004ae9b6061b081d0dac370006cf032a1"
 			],
-			"lastPricePerShare": "1055897449211839865",
-			"lastTotalAssets": "8855285703567019483736",
+			"lastPricePerShare": "1057561130356646546",
+			"lastTotalAssets": "8869353319679986576367",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3982,12 +4627,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf5a8af3c13c0f6c139f58aac8a549100484e0aad": {
 			"address": "0xf5a8af3c13c0f6c139f58aac8a549100484e0aad",
 			"token": "0x6e6046e9b5e3d90eac2abba610bca725834ca5b3",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -4028,12 +4680,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf6b272134a193df5b04332e73184e5b40b8eb810": {
 			"address": "0xf6b272134a193df5b04332e73184e5b40b8eb810",
 			"token": "0x56770b94279539416855fe29ef14b26438b5e421",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -4046,8 +4705,8 @@
 			"lastActiveStrategies": [
 				"0x2c25e16a3bb0a00d2236e1981b4a6371961ffb80"
 			],
-			"lastPricePerShare": "1798521802718883850",
-			"lastTotalAssets": "13321134003815602",
+			"lastPricePerShare": "1806977310231445925",
+			"lastTotalAssets": "135591501126048",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4074,12 +4733,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf7d66b41cd4241eae450fd9d2d6995754634d9f3": {
 			"address": "0xf7d66b41cd4241eae450fd9d2d6995754634d9f3",
 			"token": "0xa1055762336f92b4b8d2edc032a0ce45ead6280a",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -4092,8 +4758,8 @@
 			"lastActiveStrategies": [
 				"0x02e0e677fad4a8dc9007a7bed973bf0c70905929"
 			],
-			"lastPricePerShare": "1059522333007991073",
-			"lastTotalAssets": "671540741032876912784",
+			"lastPricePerShare": "1061943329201317400",
+			"lastTotalAssets": "662871501376246814393",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4121,12 +4787,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf89fdbbce1a707061e9d59b8e4387f89798b4d10": {
 			"address": "0xf89fdbbce1a707061e9d59b8e4387f89798b4d10",
 			"token": "0x0493bf8b6dbb159ce2db2e0e8403e753abd1235b",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -4139,8 +4812,8 @@
 			"lastActiveStrategies": [
 				"0x7f3ed433fbf833748c7cf8b584812ab1f288cd98"
 			],
-			"lastPricePerShare": "1084161412281017302",
-			"lastTotalAssets": "1544039987051",
+			"lastPricePerShare": "1094890068980191507",
+			"lastTotalAssets": "1561035928312",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4167,12 +4840,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xfa3c6122906f2a2d644409dbb507db1060d10b3a": {
 			"address": "0xfa3c6122906f2a2d644409dbb507db1060d10b3a",
 			"token": "0x4e316557f63c2156eafdfec08f31df4957136203",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -4185,8 +4865,8 @@
 			"lastActiveStrategies": [
 				"0x9f38e7866e1e8f82ebef9433f0131981d281adec"
 			],
-			"lastPricePerShare": "3987137509150171429",
-			"lastTotalAssets": "34359717856999919720151",
+			"lastPricePerShare": "4154419911762280117",
+			"lastTotalAssets": "29832584736426676419118",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4213,12 +4893,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Velodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de": {
 			"address": "0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de",
 			"token": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.5",
@@ -4259,12 +4946,19 @@
 				"sourceURI": "",
 				"uiNotice": "Deposits to this Vault are permanently disabled due to the recent Sonne Finance incident. Losses have been realized by the strategy, affecting depositors. The Sonne team are pursuing recovery efforts and it is possible that additional funds may be recovered and distributed pro-rata to users with active Vault positions. In the meantime OP rewards for the vault have been increased to begin to offset some of the losses. Please note that withdrawing your position disqualifies you from potential future recovery.",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xfbef713696465ddab297164c3b6a0122d92a3bac": {
 			"address": "0xfbef713696465ddab297164c3b6a0122d92a3bac",
 			"token": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.4",
@@ -4306,7 +5000,13 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		}
 	}

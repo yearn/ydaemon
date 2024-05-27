@@ -2,6 +2,7 @@ package internal
 
 import (
 	"sync"
+	"time"
 
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/common/logs"
@@ -35,10 +36,41 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	**************************************************************************************************/
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+
+	/**********************************************************************************************
+	** Start the OP Staking Indexing process and schedule it to run every hour. This indexer
+	** will fetch the relevent data for the OP Staking contracts as well as thoose responsible
+	** for the APR calculations.
+	**********************************************************************************************/
 	indexer.IndexStakingPools(chainID)
+	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
+		indexer.IndexStakingPools(chainID)
+	})
+
+	/**********************************************************************************************
+	** Start the VEYFI Staking Indexing process and schedule it to run every hour. This indexer
+	** will fetch the relevent data for the VEYFI Staking contracts as well as thoose responsible
+	** for the APR calculations.
+	**********************************************************************************************/
 	indexer.IndexVeYFIStakingContract(chainID)
+	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
+		indexer.IndexVeYFIStakingContract(chainID)
+	})
+
+	/**********************************************************************************************
+	** Start the Juiced Staking Indexing process and schedule it to run every hour. This indexer
+	** will fetch the relevent data for the Juiced Staking contracts as well as thoose responsible
+	** for the APR calculations.
+	**********************************************************************************************/
 	indexer.IndexJuicedStakingContract(chainID)
+	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
+		indexer.IndexJuicedStakingContract(chainID)
+	})
 	logs.Success(chainID, `-`, `Index StakingPools ✅`)
+
+	/**********************************************************************************************
+	** Continue indexing with Strategies and APR
+	**********************************************************************************************/
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	logs.Success(chainID, `-`, `Index New Strategies ✅`)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)

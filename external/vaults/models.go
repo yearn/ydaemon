@@ -151,10 +151,19 @@ type TSimplifiedExternalERC20Token struct {
 	Decimals    uint64 `json:"decimals"`
 }
 
+type TStakingRewardsData struct {
+	Address    string           `json:"address"`
+	Name       string           `json:"name"`
+	Symbol     string           `json:"symbol"`
+	Decimals   uint64           `json:"decimals"`
+	IsFinished bool             `json:"isFinished"`
+	APR        *bigNumber.Float `json:"apr"`
+}
 type TStakingData struct {
-	Address   string `json:"address"`
-	Available bool   `json:"available"`
-	Source    string `json:"source"`
+	Address   string                `json:"address"`
+	Available bool                  `json:"available"`
+	Source    string                `json:"source"`
+	Rewards   []TStakingRewardsData `json:"rewards"`
 }
 
 // TSimplifiedExternalVault is the struct containing the information about a vault.

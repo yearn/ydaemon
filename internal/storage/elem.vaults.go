@@ -54,6 +54,10 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 	for address, vault := range vaults {
 		// @dev use this place if you need to update the json
 		allVaults[address] = vault
+		// if addresses.Equals(vault.RegistryAddress, common.HexToAddress(`0x0000000000000000000000000000000000000000`)) {
+		// 	logs.Error(`Vault address is 0x0, skipping...`)
+		// }
+
 	}
 
 	data := TJsonVaultStorage{
@@ -114,8 +118,8 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	}
 
 	// Temp
-	vaultMap, _ := ListVaults(chainID)
-	StoreVaultsToJson(chainID, vaultMap)
+	// vaultMap, _ := ListVaults(chainID)
+	// StoreVaultsToJson(chainID, vaultMap)
 }
 
 /**************************************************************************************************

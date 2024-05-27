@@ -86,29 +86,65 @@ func toSimplifiedVersion(
 	** be an op boost staking pool.
 	**********************************************************************************************/
 	opStakingData, hasStakingPool := storage.GetOPStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
-	if hasStakingPool {
+	if !staking.Available && hasStakingPool {
+		rewards := []TStakingRewardsData{}
+		for _, reward := range opStakingData.RewardTokens {
+			rewards = append(rewards, TStakingRewardsData{
+				Address:    reward.Address.Hex(),
+				Name:       reward.Name,
+				Symbol:     reward.Symbol,
+				Decimals:   reward.Decimals,
+				IsFinished: reward.IsFinished,
+				APR:        reward.APR,
+			})
+		}
 		staking = TStakingData{
-			Address:   opStakingData.StackingPoolAddress.Hex(),
+			Address:   opStakingData.StakingAddress.Hex(),
 			Available: hasStakingPool,
 			Source:    `OP Boost`,
+			Rewards:   rewards,
 		}
 	}
 
 	veYFIStakingData, hasVeYFIGauge := storage.GetVeYFIStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasVeYFIGauge {
+		rewards := []TStakingRewardsData{}
+		for _, reward := range veYFIStakingData.RewardTokens {
+			rewards = append(rewards, TStakingRewardsData{
+				Address:    reward.Address.Hex(),
+				Name:       reward.Name,
+				Symbol:     reward.Symbol,
+				Decimals:   reward.Decimals,
+				IsFinished: reward.IsFinished,
+				APR:        reward.APR,
+			})
+		}
 		staking = TStakingData{
-			Address:   veYFIStakingData.Hex(),
+			Address:   veYFIStakingData.StakingAddress.Hex(),
 			Available: hasVeYFIGauge,
 			Source:    `VeYFI`,
+			Rewards:   rewards,
 		}
 	}
 
-	juicedStakingData, hasJuicedGauge := storage.GetJuicedStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	juicedStakingData, hasJuicedGauge := storage.GetOPStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasJuicedGauge {
+		rewards := []TStakingRewardsData{}
+		for _, reward := range juicedStakingData.RewardTokens {
+			rewards = append(rewards, TStakingRewardsData{
+				Address:    reward.Address.Hex(),
+				Name:       reward.Name,
+				Symbol:     reward.Symbol,
+				Decimals:   reward.Decimals,
+				IsFinished: reward.IsFinished,
+				APR:        reward.APR,
+			})
+		}
 		staking = TStakingData{
-			Address:   juicedStakingData.Hex(),
+			Address:   juicedStakingData.StakingAddress.Hex(),
 			Available: hasJuicedGauge,
 			Source:    `Juiced`,
+			Rewards:   rewards,
 		}
 	}
 

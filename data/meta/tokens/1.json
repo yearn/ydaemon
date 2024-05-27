@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-24T10:47:18.926555+02:00",
+	"lastUpdate": "2024-05-27T17:08:24.193867+02:00",
 	"version": {
 		"major": 0,
-		"minor": 36,
+		"minor": 39,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -3206,6 +3206,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2c517bf1db472ab1d65f0d776b7d947986c76ecf": {
+			"address": "0x2c517bf1db472ab1d65f0d776b7d947986c76ecf",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool uniETH/WETH Vault",
+			"symbol": "yv-ajna-unieth-weth",
+			"displayName": "Yearn-Ajna Pool uniETH/WETH Vault",
+			"displaySymbol": "yv-ajna-unieth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2c517bF1Db472ab1D65f0d776b7D947986C76ECf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2c537e5624e4af88a7ae4060c022609376c8d0eb": {
 			"address": "0x2c537e5624e4af88a7ae4060c022609376c8d0eb",
 			"underlyingTokensAddresses": [],
@@ -3247,6 +3263,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2c8a33C66c00264316Ea4E4433e86A386Eb6ECBf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2ca52c78d7932e285f2ea5928fb7251baec3f166": {
+			"address": "0x2ca52c78d7932e285f2ea5928fb7251baec3f166",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Sommelier aggregator",
+			"symbol": "SOMM-agg",
+			"displayName": "Sommelier aggregator",
+			"displaySymbol": "SOMM-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2Ca52C78d7932e285f2eA5928Fb7251baEC3f166/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3307,6 +3339,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2D5D4869381C4Fce34789BC1D38aCCe747E295AE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2dabcea55a12d73191aece59f508b191fb68adac": {
+			"address": "0x2dabcea55a12d73191aece59f508b191fb68adac",
+			"underlyingTokensAddresses": [
+				"0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee"
+			],
+			"type": "Yearn Vault",
+			"name": "Karak - Wrapped eETH",
+			"symbol": "KweETH",
+			"displayName": "Karak - Wrapped eETH",
+			"displaySymbol": "KweETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2DABcea55a12d73191AeCe59F508b191Fb68AdaC/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4204,6 +4252,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x38100A480dBED278B0fe57bA80a75498a7dC5bB1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x381e0be61b3aeb1f321c4775046e6f57bc84c804": {
+			"address": "0x381e0be61b3aeb1f321c4775046e6f57bc84c804",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "USDe-2 yVault",
+			"symbol": "yvUSDe-2",
+			"displayName": "USDe-2 yVault",
+			"displaySymbol": "yvUSDe-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x381E0BE61b3AEB1F321C4775046e6F57BC84c804/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5199,6 +5263,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x433853acbA7Ec9fFecF7d9732EA94f0668518e8E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x437d41b2ebef15a91618f4bf010fa4751bb48be6": {
+			"address": "0x437d41b2ebef15a91618f4bf010fa4751bb48be6",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool apxETH/WETH Vault",
+			"symbol": "yv-ajna-apxeth-weth",
+			"displayName": "Yearn-Ajna Pool apxETH/WETH Vault",
+			"displaySymbol": "yv-ajna-apxeth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x437D41B2EBEF15a91618f4Bf010Fa4751bb48Be6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7098,6 +7178,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5b88a0ddf1ca18e50e7a7cd86eee441ae7d51eb5": {
+			"address": "0x5b88a0ddf1ca18e50e7a7cd86eee441ae7d51eb5",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool mevETH/WETH Vault",
+			"symbol": "yv-ajna-meveth-weth",
+			"displayName": "Yearn-Ajna Pool mevETH/WETH Vault",
+			"displaySymbol": "yv-ajna-meveth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5b88a0DDf1Ca18E50E7A7Cd86EEe441ae7d51eB5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5b8c023d162ee3661cb9740ec271b8bd261767f3": {
 			"address": "0x5b8c023d162ee3661cb9740ec271b8bd261767f3",
 			"underlyingTokensAddresses": [],
@@ -7518,6 +7614,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5ff1ba7273968c4a166ca99d79df9f9ad712091b": {
+			"address": "0x5ff1ba7273968c4a166ca99d79df9f9ad712091b",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool csETH/WETH Vault",
+			"symbol": "yv-ajna-cseth-weth",
+			"displayName": "Yearn-Ajna Pool csETH/WETH Vault",
+			"displaySymbol": "yv-ajna-cseth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5ff1bA7273968c4a166CA99D79DF9F9ad712091b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6021444f1706f15465bee85463bcc7d7cc17fc03": {
 			"address": "0x6021444f1706f15465bee85463bcc7d7cc17fc03",
 			"underlyingTokensAddresses": [],
@@ -7573,6 +7685,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x60D604890feaa0b5460B28A424407c24fe89374a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x610e01895cb39078890e3fe5239b78a51c07892f": {
+			"address": "0x610e01895cb39078890e3fe5239b78a51c07892f",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "dai-vault",
+			"symbol": "dai-stk",
+			"displayName": "dai-vault",
+			"displaySymbol": "dai-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x610E01895cB39078890e3Fe5239b78A51c07892F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8588,6 +8716,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6def54ae7e38992a7d1ab60d279483ba7f7b0aeb": {
+			"address": "0x6def54ae7e38992a7d1ab60d279483ba7f7b0aeb",
+			"underlyingTokensAddresses": [
+				"0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee"
+			],
+			"type": "Compound",
+			"name": "Principal Token: KweETH-1727308807",
+			"symbol": "PT-KweETH-1727308807",
+			"displayName": "Principal Token: KweETH-1727308807",
+			"displaySymbol": "PT-KweETH-1727308807",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6DEF54aE7e38992A7d1AB60D279483Ba7f7b0aEb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6e0e681441be6cb1d8405752462488bd4d691e3a": {
 			"address": "0x6e0e681441be6cb1d8405752462488bd4d691e3a",
 			"underlyingTokensAddresses": [
@@ -9006,6 +9150,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x73AA4ce1d62E30AA0207eaF25De6aC3bEba9E7fd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x73e4c11b670ef9c025a030a20b72cb9150e54523": {
+			"address": "0x73e4c11b670ef9c025a030a20b72cb9150e54523",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Sturdy Aggregator - crvUSD",
+			"symbol": "saCrvUSD",
+			"displayName": "Sturdy Aggregator - crvUSD",
+			"displaySymbol": "saCrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x73E4C11B670Ef9C025A030A20b72CB9150E54523/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10957,6 +11117,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8f03f179d65fa98f27060c06eba6349852bae34a": {
+			"address": "0x8f03f179d65fa98f27060c06eba6349852bae34a",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "EtherFi aggregator",
+			"symbol": "EtherFi-agg",
+			"displayName": "EtherFi aggregator",
+			"displaySymbol": "EtherFi-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8F03F179D65fa98F27060C06EBa6349852bae34A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8f22779662ad253844013d8e99eccb4d80e31417": {
 			"address": "0x8f22779662ad253844013d8e99eccb4d80e31417",
 			"underlyingTokensAddresses": [],
@@ -11103,6 +11279,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x90f1935f733Dd8826DcA2Bd01ccFc600F20E978E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x91603c7fb539f2da2da93ba6bec696a47e46bba2": {
+			"address": "0x91603c7fb539f2da2da93ba6bec696a47e46bba2",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool wstETH/WETH Vault",
+			"symbol": "yv-ajna-wsteth-weth",
+			"displayName": "Yearn-Ajna Pool wstETH/WETH Vault",
+			"displaySymbol": "yv-ajna-wsteth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x91603C7fb539f2DA2da93Ba6Bec696A47e46bBA2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11265,6 +11457,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x93cF0b02D0A2B61551d107378AFf60CEAe40c342/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x93ebc3ca85f96afd72edb914e833fe18888de179": {
+			"address": "0x93ebc3ca85f96afd72edb914e833fe18888de179",
+			"underlyingTokensAddresses": [
+				"0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f"
+			],
+			"type": "Yearn Vault",
+			"name": "GHO aggregator",
+			"symbol": "GHO-agg",
+			"displayName": "GHO aggregator",
+			"displaySymbol": "GHO-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x93eBc3cA85F96aFD72edB914e833Fe18888DE179/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12004,6 +12212,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9c3a4c14a249504b4cdcf5c27867be790c92bb05": {
+			"address": "0x9c3a4c14a249504b4cdcf5c27867be790c92bb05",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool dETH/WETH Vault",
+			"symbol": "yv-ajna-deth-weth",
+			"displayName": "Yearn-Ajna Pool dETH/WETH Vault",
+			"displaySymbol": "yv-ajna-deth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9C3a4C14a249504b4CDCf5c27867Be790C92BB05/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9c4a4204b79dd291d6b6571c5be8bbcd0622f050": {
 			"address": "0x9c4a4204b79dd291d6b6571c5be8bbcd0622f050",
 			"underlyingTokensAddresses": [],
@@ -12044,6 +12268,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9C73879F795CefA1D5239dE08d1B6Aba2D2d1434/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9cfb40acedac259b1d23e790f6c6d0c3898361ad": {
+			"address": "0x9cfb40acedac259b1d23e790f6c6d0c3898361ad",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "usdc-vault",
+			"symbol": "usdc-stk",
+			"displayName": "usdc-vault",
+			"displaySymbol": "usdc-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9cFb40acedaC259B1d23e790f6c6D0C3898361Ad/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x9d0464996170c6b9e75eed71c68b99ddedf279e8": {
@@ -14772,6 +15012,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbd564bfe6f2366336ecd707862eda79b97bce383": {
+			"address": "0xbd564bfe6f2366336ecd707862eda79b97bce383",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Swell aggregator",
+			"symbol": "SWELL-agg",
+			"displayName": "Swell aggregator",
+			"displaySymbol": "SWELL-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBd564BFE6F2366336ecD707862EDa79b97BCE383/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbd65955f752b2ef093b34b05e5ffb439ae8e5049": {
 			"address": "0xbd65955f752b2ef093b34b05e5ffb439ae8e5049",
 			"underlyingTokensAddresses": [
@@ -16428,6 +16684,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xcfb23d05f32ea0be0dbb5078d189cca89688945e": {
+			"address": "0xcfb23d05f32ea0be0dbb5078d189cca89688945e",
+			"underlyingTokensAddresses": [
+				"0x04c154b66cb340f3ae24111cc767e0184ed00cc6"
+			],
+			"type": "Yearn Vault",
+			"name": "Redacted pxETH aggregator",
+			"symbol": "REDACT-agg",
+			"displayName": "Redacted pxETH aggregator",
+			"displaySymbol": "REDACT-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xcFB23D05f32eA0BE0dBb5078d189Cca89688945E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xcfd3a9e44957d5996663b58b69a79978ccfa778f": {
 			"address": "0xcfd3a9e44957d5996663b58b69a79978ccfa778f",
 			"underlyingTokensAddresses": [],
@@ -17962,6 +18234,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe1d0549702c0bec3d3f918159449542738e6f942": {
+			"address": "0xe1d0549702c0bec3d3f918159449542738e6f942",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "test vault",
+			"symbol": "tsWETH",
+			"displayName": "test vault",
+			"displaySymbol": "tsWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe1d0549702C0beC3d3F918159449542738e6F942/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe2277cc76f806925dc6c9a5e4e5933605f43c3c4": {
 			"address": "0xe2277cc76f806925dc6c9a5e4e5933605f43c3c4",
 			"underlyingTokensAddresses": [
@@ -18086,6 +18374,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xe2fdf0526629d85b719dcbc6efe833b1b5b3cb36": {
+			"address": "0xe2fdf0526629d85b719dcbc6efe833b1b5b3cb36",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Kelp aggregator",
+			"symbol": "KELP-agg",
+			"displayName": "Kelp aggregator",
+			"displaySymbol": "KELP-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe2FdF0526629D85b719DCbC6EFE833b1B5b3Cb36/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe3668873d944e4a949da05fc8bde419eff543882": {
 			"address": "0xe3668873d944e4a949da05fc8bde419eff543882",
 			"underlyingTokensAddresses": [],
@@ -18098,6 +18402,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xe3668873D944E4A949DA05fc8bDE419eFF543882/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe3faed70ccaf49c9baa95ca8d41b1777d7ae440f": {
+			"address": "0xe3faed70ccaf49c9baa95ca8d41b1777d7ae440f",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "usdc-vaulty-moo",
+			"symbol": "eeepy",
+			"displayName": "usdc-vaulty-moo",
+			"displaySymbol": "eeepy",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe3faeD70Ccaf49C9BAA95ca8d41b1777d7ae440f/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42": {
@@ -18313,6 +18633,54 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe7383fe1c0c2d26d3ed90049552a9822067ec333": {
+			"address": "0xe7383fe1c0c2d26d3ed90049552a9822067ec333",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn Morpho USDC Vault",
+			"symbol": "yvMorphoUSDC",
+			"displayName": "Yearn Morpho USDC Vault",
+			"displaySymbol": "yvMorphoUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe7383FE1c0c2D26D3eD90049552a9822067ec333/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
+		"0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c": {
+			"address": "0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-STB yVault",
+			"symbol": "stbDAI",
+			"displayName": "DAI-STB yVault",
+			"displaySymbol": "stbDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe7c4bD9ae62B96bF1B77ac5eDB7cCdEb662b479C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe7e1043ea932dbaa7de79450824a92f40481c82b": {
+			"address": "0xe7e1043ea932dbaa7de79450824a92f40481c82b",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool mpETH/WETH Vault",
+			"symbol": "yv-ajna-mpeth-weth",
+			"displayName": "Yearn-Ajna Pool mpETH/WETH Vault",
+			"displaySymbol": "yv-ajna-mpeth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xE7E1043eA932DBAA7De79450824a92f40481c82b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -19094,6 +19462,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf543fb92a316885f345319257efb3b444dcb5284": {
+			"address": "0xf543fb92a316885f345319257efb3b444dcb5284",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool ezETH/WETH Vault",
+			"symbol": "yv-ajna-ezeth-weth",
+			"displayName": "Yearn-Ajna Pool ezETH/WETH Vault",
+			"displaySymbol": "yv-ajna-ezeth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xF543Fb92a316885f345319257efb3b444Dcb5284/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf55b0f6f2da5ffddb104b58a60f2862745960442": {
 			"address": "0xf55b0f6f2da5ffddb104b58a60f2862745960442",
 			"underlyingTokensAddresses": [
@@ -19820,6 +20204,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xfcc0dd0aebf4ea4b751799169e45f014ba2e02dd": {
+			"address": "0xfcc0dd0aebf4ea4b751799169e45f014ba2e02dd",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "weth-vault",
+			"symbol": "weth-stk",
+			"displayName": "weth-vault",
+			"displaySymbol": "weth-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFcC0dD0AeBF4ea4b751799169e45F014bA2e02dd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xfcc5c47be19d06bf83eb04298b026f81069ff65b": {
 			"address": "0xfcc5c47be19d06bf83eb04298b026f81069ff65b",
 			"underlyingTokensAddresses": [],
@@ -20075,6 +20475,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xfF709449528B6fB6b88f557F7d93dEce33bca78D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xff8b9980fda386cafaafab472963c4cb5fb8c412": {
+			"address": "0xff8b9980fda386cafaafab472963c4cb5fb8c412",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Yearn-Ajna Pool xETH/WETH Vault",
+			"symbol": "yv-ajna-xeth-weth",
+			"displayName": "Yearn-Ajna Pool xETH/WETH Vault",
+			"displaySymbol": "yv-ajna-xeth-weth",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFf8b9980fdA386cafAAFaB472963C4Cb5fb8C412/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

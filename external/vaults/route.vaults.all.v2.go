@@ -11,8 +11,8 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// GetAllVaults will, for a given chainID, return a list of all vaults
-func (y Controller) GetAllVaults(c *gin.Context) {
+// GetAllV2Vaults will, for a given chainID, return a list of all vaults
+func (y Controller) GetAllV2Vaults(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** This function takes in a context from the gin framework. The context contains information
 	** about the environment and request. From the context, the function extracts the following
@@ -65,6 +65,9 @@ func (y Controller) GetAllVaults(c *gin.Context) {
 		** We want to ignore all non Yearn vaults
 		******************************************************************************************/
 		if !currentVault.Metadata.Inclusion.IsYearn {
+			continue
+		}
+		if isV3Vault(currentVault) {
 			continue
 		}
 		vaultAddress := currentVault.Address

@@ -1,15 +1,16 @@
 {
-	"lastUpdate": "2024-05-24T10:46:48.725931+02:00",
+	"lastUpdate": "2024-05-27T12:14:54.092556+02:00",
 	"version": {
 		"major": 0,
 		"minor": 4,
-		"patch": 20
+		"patch": 25
 	},
 	"shouldRefresh": false,
 	"vaults": {
 		"0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc": {
 			"address": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
 			"token": "0xf213f2d02837012dc0236cc105061e121bb03e37",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -22,8 +23,8 @@
 			"lastActiveStrategies": [
 				"0xe8f9880604db1ccdfcdcb093fe89702b44be144b"
 			],
-			"lastPricePerShare": "1922367721514926395",
-			"lastTotalAssets": "7903673924382543",
+			"lastPricePerShare": "1943259682934632575",
+			"lastTotalAssets": "7999182980104195",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -48,12 +49,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1": {
 			"address": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
 			"token": "0x9e4cb8b916289864321661ce02cf66aa5ba63c94",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -94,12 +102,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x13454b672213f53cb1d31ea0be033c58fe315392": {
 			"address": "0x13454b672213f53cb1d31ea0be033c58fe315392",
 			"token": "0xf6aec4f97623e691a9426a69baf5501509fca05d",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -141,12 +156,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x30bca23b220deb343f62c83eda1465546ac9c7f7": {
 			"address": "0x30bca23b220deb343f62c83eda1465546ac9c7f7",
 			"token": "0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -185,12 +207,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
 			"address": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
 			"token": "0x554eca2a48136724294ce47fb7bfe9aadfcee3c6",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -231,12 +260,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x37fdacd764aa64f4e453842d8056853e5550c09b": {
 			"address": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
 			"token": "0x27a8afa3bd49406e48a074350fb7b2020c43b2bd",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -278,12 +314,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x391e5dc227cdcf3cca012e5278798121236b1861": {
 			"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
 			"token": "0xffa3f8737c39e36dec4300b162c2153c67c8352f",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -324,12 +367,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497": {
 			"address": "0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497",
 			"token": "0x2a1463cebe85315224c536afd389b381b43f3206",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -368,12 +418,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8": {
 			"address": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
 			"token": "0xa6385c73961dd9c58db2ef0c4eb98ce4b60651e8",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -386,8 +443,8 @@
 			"lastActiveStrategies": [
 				"0x830e78f60b87590150575ca204a143a122669508"
 			],
-			"lastPricePerShare": "1006443129182171107",
-			"lastTotalAssets": "2840763517405237607",
+			"lastPricePerShare": "1009478371595804165",
+			"lastTotalAssets": "2850285048705431136",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -412,12 +469,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x41102db56d0531be4560ec2db295e28a3c6954c7": {
 			"address": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
 			"token": "0x2d25e0514f23c6367687de89bd5167dc754d4934",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -458,12 +522,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x41489713d581ec717e1aa55b7729d24965cf96b5": {
 			"address": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
 			"token": "0x4a3636608d7bc5776cb19eb72caa36ebb9ea683b",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -505,12 +576,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
 			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
 			"token": "0xb5e331615fdba7df49e05cdeaceb14acdd5091c3",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -523,8 +601,8 @@
 			"lastActiveStrategies": [
 				"0x4161255639d94ee0a1d4c27fe0f863293f6a9798"
 			],
-			"lastPricePerShare": "1198001294363647502",
-			"lastTotalAssets": "578763451170252709546393",
+			"lastPricePerShare": "1206746586943441380",
+			"lastTotalAssets": "583776326669260095879331",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -549,12 +627,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
 			"token": "0x8b432c54d6e8e1b8d1802753514ab53044af1861",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -596,12 +681,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x58dce038423a1e43f3429cb62425a1364cc3bb4c": {
 			"address": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
 			"token": "0xb4885bc63399bf5518b994c1d0c153334ee579d0",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -642,12 +734,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
 			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
 			"token": "0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -686,12 +785,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
 			"token": "0x2b7704f1cb9324cd8586b33c6c540cbd64e58237",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -732,12 +838,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x5c366341bb86bad85e78eba974e3f335c9488fa2": {
 			"address": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
 			"token": "0xa56be957d432a5d0edc040b27078d9726f54e7f6",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -778,12 +891,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x68393a804c9fe4f1c7148d37796436e450ad98e8": {
 			"address": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
 			"token": "0x2223f9fe624f69da4d8256a7bcc9104fba7f8f75",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -796,8 +916,8 @@
 			"lastActiveStrategies": [
 				"0xc070f47c1d92167a1a24b4bc7b2749af3410e93f"
 			],
-			"lastPricePerShare": "2723822679329271713",
-			"lastTotalAssets": "991131464320541",
+			"lastPricePerShare": "2763515282451024419",
+			"lastTotalAssets": "622891311215832",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -824,12 +944,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608": {
 			"address": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
 			"token": "0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -870,12 +997,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd": {
 			"address": "0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd",
 			"token": "0xcdac0d6c6c59727a65f871236188350531885c43",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -914,12 +1048,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
 			"token": "0xa819af1cc8abe618ea8abadeb464960f7451ceab",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -960,12 +1101,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x80ba48973490a94941eaec6be8dbcff6a5aa8892": {
 			"address": "0x80ba48973490a94941eaec6be8dbcff6a5aa8892",
 			"token": "0x7f670f78b17dec44d5ef68a48740b6f8849cc2e6",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1004,12 +1152,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x82a9cc022bffba4358a4286381c0855a8e295605": {
 			"address": "0x82a9cc022bffba4358a4286381c0855a8e295605",
 			"token": "0x6b87b8663ee63191887f18225f79d9eeb2de0d34",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1048,12 +1203,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
 			"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
 			"token": "0x1b05e4e814b3431a48b8164c41eac834d9ce2da6",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1095,12 +1257,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4": {
 			"address": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
 			"token": "0x44ecc644449fc3a9858d2007caa8cfaa4c561f91",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1113,8 +1282,8 @@
 			"lastActiveStrategies": [
 				"0x19d2ed1c127800db4ea982e8a00bbf518bbbf90f"
 			],
-			"lastPricePerShare": "9608955230276515031",
-			"lastTotalAssets": "16161504958411711579",
+			"lastPricePerShare": "9611193582462451332",
+			"lastTotalAssets": "1538713812457110769",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1142,12 +1311,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x8f22d62434d5e52af442f69f43eb27ba20768692": {
 			"address": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
 			"token": "0x607363389331f4b2d1b955d009506a67c565d75e",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1188,12 +1364,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7": {
 			"address": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
 			"token": "0xf53b7af40be75043eeba493c622f4f56b3c27a31",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1232,12 +1415,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x99e860d5bbe61a12ca215aba714a2e886860dbc8": {
 			"address": "0x99e860d5bbe61a12ca215aba714a2e886860dbc8",
 			"token": "0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1276,12 +1466,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
-				"protocols": null
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0x9e13e1cfcd750657b81549f8f773d68f1625dcfb": {
 			"address": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
 			"token": "0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "0.4.6",
@@ -1320,12 +1517,19 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": -1,
-				"protocols": []
+				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {
 			"address": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
 			"token": "0x0b25c51637c43decd6cc1c1e3da4518d54ddb528",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1367,12 +1571,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa49dccd9425cc38d4111df2e665f2a33fe799c42": {
 			"address": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
 			"token": "0x723aef6543aece026a15662be4d3fb3424d502a9",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1385,8 +1596,8 @@
 			"lastActiveStrategies": [
 				"0x1816545343590701dc29c379bcac06e92d1e1c79"
 			],
-			"lastPricePerShare": "1107624484088381529",
-			"lastTotalAssets": "56687550261664",
+			"lastPricePerShare": "1114851747156146143",
+			"lastTotalAssets": "57038479563030",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1413,12 +1624,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f": {
 			"address": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
 			"token": "0x6eab8c1b93f5799dadf2c687a30230a540dbd636",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1460,12 +1678,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e": {
 			"address": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
 			"token": "0x218f511431194b2c756d67a137de536bea74e498",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1507,12 +1732,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
 			"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
 			"token": "0x9287c921f5d920ceee0d07d7c58d476e46acc640",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1525,8 +1757,8 @@
 			"lastActiveStrategies": [
 				"0x34edb20bd93d14cbb9f5d9da7d2cb2440dd6dbb9"
 			],
-			"lastPricePerShare": "1135813087853976416",
-			"lastTotalAssets": "279599415421704393791",
+			"lastPricePerShare": "1143447210079937513",
+			"lastTotalAssets": "281555327468666269185",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1553,12 +1785,19 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 		"0xf8f36ab972f6fe3ae1f594595aee1284e270d034": {
 			"address": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
 			"token": "0x3fc28bfac25fc8e93b5b2fc15efbbd5a8aa44efe",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
 			"type": "Automated Yearn Vault",
 			"kind": "",
 			"version": "0.4.6",
@@ -1599,7 +1838,13 @@
 				"riskLevel": -1,
 				"protocols": [
 					"Aerodrome"
-				]
+				],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isPublicERC4626": false
+				}
 			}
 		}
 	}

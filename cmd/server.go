@@ -48,22 +48,35 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)                // Migrated to simplified ✅
-		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified) // Migrated to simplified ✅
-		router.GET(`vaults/all`, c.GetAllVaultsForAllChainsSimplified)            // Migrated to simplified ✅
-		router.GET(`vaults/v3`, c.GetAllV3VaultsForAllChainsSimplified)           // Migrated to simplified ✅
-		router.GET(`vaults/v2`, c.GetAllV2VaultsForAllChainsSimplified)           // Migrated to simplified ✅
+		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)
 
-		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
+		/******************************************************************************************
+		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
+		** will return the vaults for all chains.
+		******************************************************************************************/
+		router.GET(`vaults/all`, c.GetAllVaultsForAllChainsSimplified)
+		router.GET(`vaults/v3`, c.GetAllV3VaultsForAllChainsSimplified)
+		router.GET(`vaults/v2`, c.GetAllV2VaultsForAllChainsSimplified)
+		router.GET(`vaults/juiced`, c.GetAllJuicedVaultsForAllChainsSimplified)
+		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified)
 
-		// Retrieve the vaults for a specific chainID
-		router.GET(`:chainID/vaults/tvl`, c.GetVaultsTVL)
+		/******************************************************************************************
+		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
+		** will return the vaults for a specific chain.
+		******************************************************************************************/
 		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
+		router.GET(`:chainID/vaults/v2/all`, c.GetAllV2Vaults)
+		router.GET(`:chainID/vaults/v3/all`, c.GetAllV3Vaults)
+		router.GET(`:chainID/vaults/juiced/all`, c.GetAllJuicedVaults)
 		router.GET(`:chainID/vaults/retired`, c.GetRetiredVaults)
-		router.GET(`:chainID/vaults/:address`, c.GetSimplifiedVault) // Migrated to simplified ✅
-		router.GET(`:chainID/vault/:address`, c.GetSimplifiedVault)  // Migrated to simplified ✅
+		router.GET(`:chainID/vaults/some/:addresses`, c.GetSomeVaults)
 
-		router.GET(`info/vaults/blacklisted`, c.GetBlacklistedVaults)
+		/******************************************************************************************
+		** Retrieve a specific vault based on the address. This is chain specific and will return
+		** the vault for a specific chain.
+		******************************************************************************************/
+		router.GET(`:chainID/vaults/:address`, c.GetSimplifiedVault)
+		router.GET(`:chainID/vault/:address`, c.GetSimplifiedVault)
 
 		router.GET(`:chainID/vaults/harvests/:addresses`, c.GetHarvestsForVault)
 		router.GET(`:chainID/earned/:address/:vaults`, c.GetEarnedPerVaultPerUser)
@@ -74,6 +87,10 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/strategies/all`, c.GetAllStrategies)
 		router.GET(`:chainID/strategies/:address`, c.GetStrategy)
 		router.GET(`:chainID/strategy/:address`, c.GetStrategy)
+
+		// Retrieve the TVL
+		router.GET(`vaults/tvl`, c.GetAllVaultsTVL)
+		router.GET(`:chainID/vaults/tvl`, c.GetVaultsTVL)
 	}
 
 	// Strategies section
@@ -86,6 +103,8 @@ func NewRouter() *gin.Engine {
 	// General section
 	{
 		// Get some information about the API
+		vController := vaults.Controller{}
+		router.GET(`info/vaults/blacklisted`, vController.GetBlacklistedVaults)
 		router.GET(`info/chains`, utils.GetSupportedChains)
 		router.GET(`:chainID/status`, func(ctx *gin.Context) {
 			chainID, ok := helpers.AssertChainID(ctx.Param("chainID"))
@@ -95,7 +114,6 @@ func NewRouter() *gin.Engine {
 			}
 			ctx.JSON(http.StatusOK, getStatusForChainID(chainID))
 		})
-
 	}
 
 	// Meta API section
@@ -135,8 +153,16 @@ func NewRouter() *gin.Engine {
 		router.GET(`prices/all`, c.GetAllPrices)
 		router.GET(`:chainID/prices/all`, c.GetPrices)
 		router.GET(`:chainID/prices/:address`, c.GetPrice)
-		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePrices)
+		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePricesForChain)
 		router.GET(`:chainID/prices/all/details`, c.GetAllPricesWithDetails)
+
+		/******************************************************************************************
+		** Retrieve some/all prices based on some specific criteria. This is chain agnostic and
+		** will return the prices for all chains.
+		******************************************************************************************/
+		router.GET(`prices/some/:addresses`, c.GetSomePrices)
+		router.POST(`prices/some`, c.GetSomePostPrices)
+
 	}
 
 	// WARNING: DEPRECATED

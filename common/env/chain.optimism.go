@@ -27,7 +27,7 @@ var OPTIMISM = TChain{
 	},
 	StakingRewardRegistry: []TContractData{
 		{
-			Address: common.HexToAddress(`0x8ed9f6343f057870f1def47aae7cd88dfaa049a8`),
+			Address: common.HexToAddress(`0x8ED9F6343f057870F1DeF47AaE7CD88dfAA049A8`),
 			Block:   85969070,
 			Tag:     `OP BOOST`,
 		},
@@ -54,6 +54,14 @@ var OPTIMISM = TChain{
 			Address: common.HexToAddress("0x79286Dd38C9017E5423073bAc11F53357Fc5C128"),
 			Version: 3,
 			Block:   22451152,
+			Label:   `YEARN`,
+		},
+		{
+			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+			Version: 5,
+			Block:   117_040_079,
+			Tag:     `STEALTH`,
+			Label:   `PUBLIC_ERC4626`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},

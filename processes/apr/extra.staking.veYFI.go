@@ -34,13 +34,13 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** - The totalSupply
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
-	calls = append(calls, multicalls.GetPeriodFinish(stakingContract.Hex(), stakingContract))
-	calls = append(calls, multicalls.GetRewardRate(stakingContract.Hex(), stakingContract))
-	calls = append(calls, multicalls.GetTotalSupply(stakingContract.Hex(), stakingContract))
+	calls = append(calls, multicalls.GetPeriodFinish(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
+	calls = append(calls, multicalls.GetRewardRate(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
+	calls = append(calls, multicalls.GetTotalSupply(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
 	response := multicalls.Perform(chainID, calls, nil)
-	periodFinish := helpers.DecodeBigInt(response[stakingContract.Hex()+`periodFinish`])
-	rewardRateRaw := helpers.DecodeBigInt(response[stakingContract.Hex()+`rewardRate`])
-	totalSupplyRaw := helpers.DecodeBigInt(response[stakingContract.Hex()+`totalSupply`])
+	periodFinish := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`periodFinish`])
+	rewardRateRaw := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`rewardRate`])
+	totalSupplyRaw := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`totalSupply`])
 	rewardToken := common.HexToAddress(`0x41252E8691e964f7DE35156B68493bAb6797a275`) // DYFI
 
 	/**********************************************************************************************

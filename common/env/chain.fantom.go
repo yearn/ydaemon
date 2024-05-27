@@ -48,6 +48,7 @@ var FANTOM = TChain{
 			Version: 2,
 			Block:   18455565,
 			Tag:     `DISABLED`,
+			Label:   `YEARN`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{

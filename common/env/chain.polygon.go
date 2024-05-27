@@ -44,22 +44,33 @@ var POLYGON = TChain{
 			Address: common.HexToAddress("0xfF5e3A7C4cBfA9Dd361385c24C3a0A4eE63CE500"),
 			Version: 4,
 			Block:   49_100_596,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
 			Version: 4,
 			Block:   52_488_140,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0xd5967178702250d9f0eac34258ebba99b9a28ed0"),
 			Version: 6,
 			Block:   51_550_217,
+			Label:   `YEARN`,
 		},
-		// {
-		// 	Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
-		// 	Version: 5,
-		// 	Block:   54_308_118,
-		// },
+		{
+			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
+			Version: 5,
+			Block:   48_907_735,
+			Label:   `JUICED`,
+		},
+		{
+			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+			Version: 5,
+			Block:   54_308_118,
+			Tag:     `STEALTH`,
+			Label:   `PUBLIC_ERC4626`,
+		},
 	},
 	StakingRewardRegistry: []TContractData{
 		// {

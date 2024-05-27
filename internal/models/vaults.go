@@ -63,6 +63,14 @@ type TStaking struct {
 	Price        *bigNumber.Float `json:"price"`
 }
 
+// TInclusion holds the inclusion of the vault
+type TInclusion struct {
+	IsSet           bool `json:"isSet"`           // If not set, automatic inclusion will be recomputed
+	IsYearn         bool `json:"isYearn"`         // If the vault is a Yearn vault or not
+	IsYearnJuiced   bool `json:"isYearnJuiced"`   // If the vault is a Yearn Juiced vault or not
+	IsPublicERC4626 bool `json:"isPublicERC4626"` // If the vault is from the public ERC4626 registry or not
+}
+
 type TVaultMetadata struct {
 	IsRetired      bool               `json:"isRetired"`      // If the vault is retired or not
 	IsHidden       bool               `json:"isHidden"`       // If the vault is hidden or not
@@ -82,20 +90,22 @@ type TVaultMetadata struct {
 	UINotice       string             `json:"uiNotice"`       // The notice to display in the UI
 	RiskLevel      int8               `json:"riskLevel"`      // The risk level of the vault (1 to 5, -1 if not set)
 	Protocols      []string           `json:"protocols"`      // The Protocols used by the vault
+	Inclusion      TInclusion         `json:"inclusion"`      // Inclusion is a special field to know "where" the vault should be displayed.
 }
 
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change
-	Address      common.Address  `json:"address"`              // Address of the vault
-	AssetAddress common.Address  `json:"token"`                // Address of the underlying token
-	Accountant   *common.Address `json:"accountant,omitempty"` // The address of the accountant
-	Type         TTokenType      `json:"type"`                 // The type of the vault
-	Kind         TVaultKind      `json:"kind"`                 // The kind of the vault (legacy, multi, single)
-	Version      string          `json:"version"`              // The version of the vault
-	Activation   uint64          `json:"activation"`           // When the vault was activated
-	ChainID      uint64          `json:"chainID"`              // The chainID of the vault
-	Endorsed     bool            `json:"endorsed"`             // If the vault is endorsed by Yearn
+	Address         common.Address  `json:"address"`              // Address of the vault
+	AssetAddress    common.Address  `json:"token"`                // Address of the underlying token
+	RegistryAddress common.Address  `json:"registry"`             // Address of the registry
+	Accountant      *common.Address `json:"accountant,omitempty"` // The address of the accountant
+	Type            TTokenType      `json:"type"`                 // The type of the vault
+	Kind            TVaultKind      `json:"kind"`                 // The kind of the vault (legacy, multi, single)
+	Version         string          `json:"version"`              // The version of the vault
+	Activation      uint64          `json:"activation"`           // When the vault was activated
+	ChainID         uint64          `json:"chainID"`              // The chainID of the vault
+	Endorsed        bool            `json:"endorsed"`             // If the vault is endorsed by Yearn
 
 	// Semi-mutable eelements. They can change but rarely
 	PerformanceFee    uint64 `json:"performanceFee"`    // The performance fee of the vault

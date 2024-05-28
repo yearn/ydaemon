@@ -92,6 +92,7 @@ func StoreNewVaultToRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
 	storedVault, ok := safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Load(vault.Address)
 	if !ok {
 		safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
+		return
 	}
 
 	newIsPublic := env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress)

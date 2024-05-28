@@ -169,7 +169,9 @@ func fetchPrices(
 	priceFromPendleAPI := getPendlePricesFromAPI(chainID, blockNumber, tokenSlice)
 	for _, price := range priceFromPendleAPI {
 		if !price.Price.IsZero() && price.Price.Gt(bigNumber.Zero) {
-			newPriceMap[price.Address] = price
+			if existingPrice, ok := newPriceMap[price.Address]; ok && existingPrice.Price.IsZero() {
+				newPriceMap[price.Address] = price
+			}
 			continue
 		}
 	}

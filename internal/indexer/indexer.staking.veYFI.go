@@ -193,7 +193,7 @@ func IndexVeYFIStakingContract(chainID uint64) (veYFIGaugesMap map[common.Addres
 	******************************************************************************************/
 	for _, stakingElement := range result {
 		key := stakingElement.VaultAddress.Hex() + stakingElement.StakingAddress.Hex()
-		storage.StoreOPStaking(chainID, key, stakingElement)
+		storage.StoreVeYFIStaking(chainID, key, stakingElement)
 	}
 
 	/** 🔵 - Yearn *********************************************************************************

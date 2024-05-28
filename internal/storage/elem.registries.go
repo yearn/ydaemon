@@ -89,7 +89,18 @@ func LoadRegistries(chainID uint64, wg *sync.WaitGroup) {
 ** StoreNewVaultToRegistry will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
 func StoreNewVaultToRegistry(chainID uint64, vault models.TVaultsFromRegistry) {
-	safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
+	storedVault, ok := safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Load(vault.Address)
+	if !ok {
+		safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
+	}
+
+	newIsPublic := env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress)
+	storedIsPublic := env.IsRegistryFromPublicERC4626(chainID, storedVault.(models.TVaultsFromRegistry).RegistryAddress)
+	if storedIsPublic && !newIsPublic {
+		safeSyncMap(_newVaultsFromRegistrySyncMap, chainID).Store(vault.Address, vault)
+	} else if !storedIsPublic && newIsPublic {
+		return
+	}
 }
 
 /**************************************************************************************************

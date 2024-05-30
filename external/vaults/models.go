@@ -156,8 +156,10 @@ type TStakingRewardsData struct {
 	Name       string           `json:"name"`
 	Symbol     string           `json:"symbol"`
 	Decimals   uint64           `json:"decimals"`
+	price      float64          `json:"price"`
 	IsFinished bool             `json:"isFinished"`
 	APR        *bigNumber.Float `json:"apr"`
+	PerWeek    *bigNumber.Float `json:"perWeek"`
 }
 type TStakingData struct {
 	Address   string                `json:"address"`

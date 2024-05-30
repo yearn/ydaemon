@@ -131,6 +131,15 @@ func toSimplifiedVersion(
 	if !staking.Available && hasJuicedGauge {
 		rewards := []TStakingRewardsData{}
 		for _, reward := range juicedStakingData.RewardTokens {
+			rewardsPerWeek := bigNumber.NewFloat(0).Div(
+				bigNumber.NewFloat(0).Mul(
+					bigNumber.NewFloat(0).SetUint64(reward.Rate),
+					bigNumber.NewFloat(0).SetUint64(604800),
+				),
+				bigNumber.NewFloat(0).SetUint64(reward.Duration),
+			)
+
+			_, tokenPrice := buildTokenPrice(vault.ChainID, common.NewMixedcaseAddress(reward.Address))
 			rewards = append(rewards, TStakingRewardsData{
 				Address:    reward.Address.Hex(),
 				Name:       reward.Name,
@@ -138,6 +147,8 @@ func toSimplifiedVersion(
 				Decimals:   reward.Decimals,
 				IsFinished: reward.IsFinished,
 				APR:        reward.APR,
+				PerWeek:    rewardsPerWeek,
+				price:      tokenPrice,
 			})
 		}
 		staking = TStakingData{

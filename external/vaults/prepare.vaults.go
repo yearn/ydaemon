@@ -89,6 +89,15 @@ func toSimplifiedVersion(
 	if !staking.Available && hasStakingPool {
 		rewards := []TStakingRewardsData{}
 		for _, reward := range opStakingData.RewardTokens {
+			normalizedRewardRate := helpers.ToNormalizedAmount(bigNumber.NewFloat(0).SetUint64(reward.Rate).Int(), reward.Decimals)
+			rewardPerDuration := bigNumber.NewFloat(0).Mul(normalizedRewardRate, bigNumber.NewFloat(0).SetUint64(reward.Duration))
+			durationScaledToWeek := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(0).SetUint64(reward.Duration), bigNumber.NewFloat(0).SetUint64(604800))
+			rewardsPerWeek := bigNumber.NewFloat(0).Div(rewardPerDuration, durationScaledToWeek)
+			_, tokenPrice := buildTokenPrice(vault.ChainID, common.NewMixedcaseAddress(reward.Address))
+
+			if reward.IsFinished {
+				rewardsPerWeek = bigNumber.NewFloat()
+			}
 			rewards = append(rewards, TStakingRewardsData{
 				Address:    reward.Address.Hex(),
 				Name:       reward.Name,
@@ -96,6 +105,8 @@ func toSimplifiedVersion(
 				Decimals:   reward.Decimals,
 				IsFinished: reward.IsFinished,
 				APR:        reward.APR,
+				PerWeek:    rewardsPerWeek,
+				Price:      tokenPrice,
 			})
 		}
 		staking = TStakingData{
@@ -110,6 +121,11 @@ func toSimplifiedVersion(
 	if !staking.Available && hasVeYFIGauge {
 		rewards := []TStakingRewardsData{}
 		for _, reward := range veYFIStakingData.RewardTokens {
+			normalizedRewardRate := helpers.ToNormalizedAmount(bigNumber.NewFloat(0).SetUint64(reward.Rate).Int(), reward.Decimals)
+			rewardPerDuration := bigNumber.NewFloat(0).Mul(normalizedRewardRate, bigNumber.NewFloat(0).SetUint64(reward.Duration))
+			durationScaledToWeek := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(0).SetUint64(reward.Duration), bigNumber.NewFloat(0).SetUint64(604800))
+			rewardsPerWeek := bigNumber.NewFloat(0).Div(rewardPerDuration, durationScaledToWeek)
+			_, tokenPrice := buildTokenPrice(vault.ChainID, common.NewMixedcaseAddress(reward.Address))
 			rewards = append(rewards, TStakingRewardsData{
 				Address:    reward.Address.Hex(),
 				Name:       reward.Name,
@@ -117,6 +133,8 @@ func toSimplifiedVersion(
 				Decimals:   reward.Decimals,
 				IsFinished: reward.IsFinished,
 				APR:        reward.APR,
+				PerWeek:    rewardsPerWeek,
+				Price:      tokenPrice,
 			})
 		}
 		staking = TStakingData{
@@ -131,15 +149,15 @@ func toSimplifiedVersion(
 	if !staking.Available && hasJuicedGauge {
 		rewards := []TStakingRewardsData{}
 		for _, reward := range juicedStakingData.RewardTokens {
-			rewardsPerWeek := bigNumber.NewFloat(0).Div(
-				bigNumber.NewFloat(0).Mul(
-					bigNumber.NewFloat(0).SetUint64(reward.Rate),
-					bigNumber.NewFloat(0).SetUint64(604800),
-				),
-				bigNumber.NewFloat(0).SetUint64(reward.Duration),
-			)
-
+			normalizedRewardRate := helpers.ToNormalizedAmount(bigNumber.NewFloat(0).SetUint64(reward.Rate).Int(), reward.Decimals)
+			rewardPerDuration := bigNumber.NewFloat(0).Mul(normalizedRewardRate, bigNumber.NewFloat(0).SetUint64(reward.Duration))
+			durationScaledToWeek := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(0).SetUint64(reward.Duration), bigNumber.NewFloat(0).SetUint64(604800))
+			rewardsPerWeek := bigNumber.NewFloat(0).Div(rewardPerDuration, durationScaledToWeek)
 			_, tokenPrice := buildTokenPrice(vault.ChainID, common.NewMixedcaseAddress(reward.Address))
+
+			if reward.IsFinished {
+				rewardsPerWeek = bigNumber.NewFloat()
+			}
 			rewards = append(rewards, TStakingRewardsData{
 				Address:    reward.Address.Hex(),
 				Name:       reward.Name,
@@ -148,7 +166,7 @@ func toSimplifiedVersion(
 				IsFinished: reward.IsFinished,
 				APR:        reward.APR,
 				PerWeek:    rewardsPerWeek,
-				price:      tokenPrice,
+				Price:      tokenPrice,
 			})
 		}
 		staking = TStakingData{

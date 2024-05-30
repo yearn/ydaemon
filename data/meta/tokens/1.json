@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-28T10:27:17.523346+02:00",
+	"lastUpdate": "2024-05-30T17:57:09.94377+02:00",
 	"version": {
 		"major": 0,
-		"minor": 39,
+		"minor": 40,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -150,6 +150,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x015d78C7aD1289F5aA1DEC25bD6b67ba31fAc1Cf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x019015647be0b2604506f4eb8290908f062b62cb": {
+			"address": "0x019015647be0b2604506f4eb8290908f062b62cb",
+			"underlyingTokensAddresses": [
+				"0x6fc7ea6ca8cd2759803eb78159c931a8ff5e0557"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve rev fxUSD Factory yVault",
+			"symbol": "yvCurve-rev fxUSD-f",
+			"displayName": "Curve rev fxUSD Factory yVault",
+			"displaySymbol": "yvCurve-rev fxUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x019015647be0b2604506F4EB8290908F062B62cb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -955,12 +971,12 @@
 		"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e": {
 			"address": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
 			"underlyingTokensAddresses": [],
-			"type": "DeFi",
+			"type": "",
 			"name": "yearn.finance",
 			"symbol": "YFI",
-			"displayName": "yearn.fi",
+			"displayName": "yearn.finance",
 			"displaySymbol": "YFI",
-			"description": "Yearn Finance is a suite of products in Decentralized Finance (DeFi) that provides yield aggregation, a decentralized money market, and several other DeFi building blocks on the Ethereum blockchain. The protocol is maintained by various independent developers and is governed by YFI holders.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo-128.png",
 			"decimals": 18,
@@ -1403,6 +1419,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x13120b7599ddf33782c748a847cc1d3c96387ecd": {
+			"address": "0x13120b7599ddf33782c748a847cc1d3c96387ecd",
+			"underlyingTokensAddresses": [
+				"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+				"0x95710bde45c8d384a976cc58cc7a7e489576b098"
+			],
+			"type": "Curve LP",
+			"name": "YFI/upYFI",
+			"symbol": "upYFI",
+			"displayName": "YFI/upYFI",
+			"displaySymbol": "upYFI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x13120b7599DdF33782c748A847cc1d3c96387Ecd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1321f1f1aa541a56c31682c57b80ecfccd9bb288": {
 			"address": "0x1321f1f1aa541a56c31682c57b80ecfccd9bb288",
 			"underlyingTokensAddresses": [],
@@ -1730,6 +1763,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x18bafcabf2d5898956ae6ac31543d9657a604165": {
+			"address": "0x18bafcabf2d5898956ae6ac31543d9657a604165",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x18bAFcaBf2d5898956AE6AC31543d9657a604165/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x18d3284d9eff64fc97b64ab2b871738e684aa151": {
 			"address": "0x18d3284d9eff64fc97b64ab2b871738e684aa151",
 			"underlyingTokensAddresses": [],
@@ -2004,6 +2051,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1b641894e66aec7bf5ab86517e8d81763cc8e19e": {
+			"address": "0x1b641894e66aec7bf5ab86517e8d81763cc8e19e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Karak sUSDe",
+			"symbol": "SY-Karak-sUSDe",
+			"displayName": "SY Karak sUSDe",
+			"displaySymbol": "SY-Karak-sUSDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1b641894e66aec7Bf5ab86517e8D81763Cc8e19E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1b905331f7de2748f4d6a0678e1521e20347643f": {
 			"address": "0x1b905331f7de2748f4d6a0678e1521e20347643f",
 			"underlyingTokensAddresses": [
@@ -2033,6 +2094,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x1bb04fCBC210bAA384531079ed7f59d9149309ba/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1bcbdb8c8652345a5acf04e6e74f70086c68fefc": {
+			"address": "0x1bcbdb8c8652345a5acf04e6e74f70086c68fefc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1BCBDB8c8652345A5ACF04e6E74f70086c68FEfC/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2404,6 +2479,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x20bb4a325924917e3336753ba5350a84f70f392e": {
+			"address": "0x20bb4a325924917e3336753ba5350a84f70f392e",
+			"underlyingTokensAddresses": [
+				"0x78da5799cf427fee11e9996982f4150ece7a99a7",
+				"0x865377367054516e17014ccded1e7d814edc9ce4"
+			],
+			"type": "Curve LP",
+			"name": "rev DOLA",
+			"symbol": "rev DOLA",
+			"displayName": "rev DOLA",
+			"displaySymbol": "rev DOLA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x20BB4a325924917E3336753BA5350a84F70f392e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x20c8cf9714339fd018898cb5de84c089e48d1c87": {
 			"address": "0x20c8cf9714339fd018898cb5de84c089e48d1c87",
 			"underlyingTokensAddresses": [],
@@ -2514,12 +2606,12 @@
 		"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
 			"address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
 			"underlyingTokensAddresses": [],
-			"type": "Currency",
+			"type": "",
 			"name": "Wrapped BTC",
 			"symbol": "WBTC",
 			"displayName": "Wrapped BTC",
 			"displaySymbol": "WBTC",
-			"description": "Wrapped Bitcoin is a tokenized version of Bitcoin (BTC) that runs on the Ethereum blockchain. The Wrapped Tokens project, of which WBTC is a part, was founded as a joint project of three organizations: BitGo, Kyber Network and Ren. BitGo also serves as the entity that holds WBTC tokens and the keys needed to mint more of them. WBTC is backed by Bitcoin at a 1:1 ratio via a network of automatically monitored merchants and custodians.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo-128.png",
 			"decimals": 8,
@@ -3404,6 +3496,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2e40d7cfee1e7d31d1f4875e6f33b2c9a17038ff": {
+			"address": "0x2e40d7cfee1e7d31d1f4875e6f33b2c9a17038ff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Karak USDE 26SEP2024",
+			"symbol": "YT-Karak-USDE-26SEP2024",
+			"displayName": "YT Karak USDE 26SEP2024",
+			"displaySymbol": "YT-Karak-USDE-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2e40D7Cfee1e7D31d1F4875e6F33B2c9a17038fF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2e5c7e9b1da0d9cb2832ebb06241d18552a85400": {
 			"address": "0x2e5c7e9b1da0d9cb2832ebb06241d18552a85400",
 			"underlyingTokensAddresses": [
@@ -4224,6 +4330,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x378fFd482C767f847d48818552f8438B17335C89/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x379984a6afb7cbe73efae3b414d8e3474edff7b2": {
+			"address": "0x379984a6afb7cbe73efae3b414d8e3474edff7b2",
+			"underlyingTokensAddresses": [
+				"0x20bb4a325924917e3336753ba5350a84f70f392e"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve rev DOLA Factory yVault",
+			"symbol": "yvCurve-rev DOLA-f",
+			"displayName": "Curve rev DOLA Factory yVault",
+			"displaySymbol": "yvCurve-rev DOLA-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x379984a6Afb7CBE73EFae3B414D8E3474eDfF7B2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6553,6 +6675,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5439c3ef0072e4a19c44478cdf947f5d957e66c7": {
+			"address": "0x5439c3ef0072e4a19c44478cdf947f5d957e66c7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Karak WEETH 26SEP2024",
+			"symbol": "YT-Karak-WEETH-26SEP2024",
+			"displayName": "YT Karak WEETH 26SEP2024",
+			"displaySymbol": "YT-Karak-WEETH-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5439c3Ef0072e4A19C44478CDF947F5d957e66C7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x548e063ce6f3bac31457e4f5b4e2345286274257": {
 			"address": "0x548e063ce6f3bac31457e4f5b4e2345286274257",
 			"underlyingTokensAddresses": [
@@ -7489,6 +7625,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5E9Aaf3b0b09C78C8651968dd1A4d0Ed0D0B55e9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5e9e4bfd81c8c03f8289b827c9b92332789b6fe1": {
+			"address": "0x5e9e4bfd81c8c03f8289b827c9b92332789b6fe1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Karak WEETH 26SEP2024",
+			"symbol": "PT-Karak-WEETH-26SEP2024",
+			"displayName": "PT Karak WEETH 26SEP2024",
+			"displaySymbol": "PT-Karak-WEETH-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5E9e4bFd81c8c03F8289b827C9B92332789b6fe1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8869,6 +9019,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6fc7ea6ca8cd2759803eb78159c931a8ff5e0557": {
+			"address": "0x6fc7ea6ca8cd2759803eb78159c931a8ff5e0557",
+			"underlyingTokensAddresses": [
+				"0x78da5799cf427fee11e9996982f4150ece7a99a7",
+				"0x085780639cc2cacd35e474e71f4d000e2405d8f6"
+			],
+			"type": "Curve LP",
+			"name": "rev fxUSD",
+			"symbol": "rev fxUSD",
+			"displayName": "rev fxUSD",
+			"displaySymbol": "rev fxUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6fC7eA6CA8Cd2759803eb78159C931a8FF5E0557/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7047f90229a057c13bf847c0744d646cfb6c9e1a": {
 			"address": "0x7047f90229a057c13bf847c0744d646cfb6c9e1a",
 			"underlyingTokensAddresses": [
@@ -9483,6 +9650,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x78da5799cf427fee11e9996982f4150ece7a99a7": {
+			"address": "0x78da5799cf427fee11e9996982f4150ece7a99a7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Revenue Generating USD",
+			"symbol": "rgUSD",
+			"displayName": "Revenue Generating USD",
+			"displaySymbol": "rgUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x78da5799CF427Fee11e9996982F4150eCe7a99A7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x790a60024bc3aea28385b60480f15a0771f26d09": {
 			"address": "0x790a60024bc3aea28385b60480f15a0771f26d09",
 			"underlyingTokensAddresses": [
@@ -9496,6 +9677,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x790a60024bC3aea28385b60480f15a0771f26D09/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x791c1e9d38029092e8ad1e252d0bb97261809a2c": {
+			"address": "0x791c1e9d38029092e8ad1e252d0bb97261809a2c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Karak USDE 26SEP2024",
+			"symbol": "PT-Karak-USDE-26SEP2024",
+			"displayName": "PT Karak USDE 26SEP2024",
+			"displaySymbol": "PT-Karak-USDE-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x791c1E9D38029092E8aD1E252d0Bb97261809A2c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11071,6 +11266,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8db42af6b2de9e8aee47f3423570d8e9c3873796": {
+			"address": "0x8db42af6b2de9e8aee47f3423570d8e9c3873796",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Karak WEETH",
+			"symbol": "SY-Karak-WEETH",
+			"displayName": "SY Karak WEETH",
+			"displaySymbol": "SY-Karak-WEETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8DB42Af6B2de9E8AeE47F3423570d8E9c3873796/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8e595470ed749b85c6f7669de83eae304c2ec68f": {
 			"address": "0x8e595470ed749b85c6f7669de83eae304c2ec68f",
 			"underlyingTokensAddresses": [
@@ -11626,6 +11835,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x956F47F50A910163D8BF957Cf5846D573E7f87CA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x95710bde45c8d384a976cc58cc7a7e489576b098": {
+			"address": "0x95710bde45c8d384a976cc58cc7a7e489576b098",
+			"underlyingTokensAddresses": [
+				"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
+			],
+			"type": "Yearn Vault",
+			"name": "1UP Locked YFI",
+			"symbol": "upYFI",
+			"displayName": "1UP Locked YFI",
+			"displaySymbol": "upYFI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x95710BDE45C8D384A976Cc58Cc7a7e489576b098/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13105,6 +13330,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa857ab5913bda50b65d257ad13fc039afe02ec17": {
+			"address": "0xa857ab5913bda50b65d257ad13fc039afe02ec17",
+			"underlyingTokensAddresses": [
+				"0xdf9015472ea23e3bea6fbd6092915f9ed6980a99"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve revPool Factory yVault",
+			"symbol": "yvCurve-revPool-f",
+			"displayName": "Curve revPool Factory yVault",
+			"displaySymbol": "yvCurve-revPool-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xa857aB5913BdA50B65d257aD13FC039afe02eC17/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa87958c4e0cfae74b6f7a158ab639359cdf989be": {
 			"address": "0xa87958c4e0cfae74b6f7a158ab639359cdf989be",
 			"underlyingTokensAddresses": [
@@ -13980,6 +14221,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb1f587b354a4a363f5332e88effbbc2e4961250a": {
+			"address": "0xb1f587b354a4a363f5332e88effbbc2e4961250a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB1f587B354a4a363f5332e88effbbC2E4961250A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb253eff1104802b97ac7e3ac9fdd73aece295a2c": {
 			"address": "0xb253eff1104802b97ac7e3ac9fdd73aece295a2c",
 			"underlyingTokensAddresses": [],
@@ -14629,6 +14884,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb9a0e5e211213bb15315e5e7d9b341db5417e561": {
+			"address": "0xb9a0e5e211213bb15315e5e7d9b341db5417e561",
+			"underlyingTokensAddresses": [
+				"0xf5a7906b41b858b66d3a7cbe167df1fb43ffe977"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve rev alUSD Factory yVault",
+			"symbol": "yvCurve-rev alUSD-f",
+			"displayName": "Curve rev alUSD Factory yVault",
+			"displaySymbol": "yvCurve-rev alUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xB9A0e5E211213bb15315e5E7D9B341DB5417e561/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb9d7dddca9a4ac480991865efef82e01273f79c3": {
 			"address": "0xb9d7dddca9a4ac480991865efef82e01273f79c3",
 			"underlyingTokensAddresses": [],
@@ -15090,6 +15361,38 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xbDb97eC319c41c6FA383E94eCE6Bdf383dFC7BE4/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xbde752ef69880c00a795d88438040b8f737eb254": {
+			"address": "0xbde752ef69880c00a795d88438040b8f737eb254",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Wrapper: uniBTC",
+			"symbol": "sw-uniBTC",
+			"displayName": "Spectra ERC4626 Wrapper: uniBTC",
+			"displaySymbol": "sw-uniBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBDE752ef69880c00a795D88438040b8f737Eb254/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
+		"0xbe3ca34d0e877a1fc889bd5231d65477779aff4e": {
+			"address": "0xbe3ca34d0e877a1fc889bd5231d65477779aff4e",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "Karak - USDe",
+			"symbol": "KUSDe",
+			"displayName": "Karak - USDe",
+			"displaySymbol": "KUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBE3cA34D0E877A1Fc889BD5231D65477779AFf4e/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xbe426b0f37c112dd20d5866769c8034171567b31": {
@@ -16955,6 +17258,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd351de53277c4218cc29f793263fb60e2fcfc1dc": {
+			"address": "0xd351de53277c4218cc29f793263fb60e2fcfc1dc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Karak sUSDe 26SEP2024",
+			"symbol": "PT-Karak-sUSDe-26SEP2024",
+			"displayName": "PT Karak sUSDe 26SEP2024",
+			"displaySymbol": "PT-Karak-sUSDe-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd351de53277c4218CC29f793263FB60E2fcFC1dC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd393d1ddd6b8811a86d925f5e14014282581bc04": {
 			"address": "0xd393d1ddd6b8811a86d925f5e14014282581bc04",
 			"underlyingTokensAddresses": [],
@@ -17785,6 +18102,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdd68f5d26bf1182d6b241108bfc01f95c030502b": {
+			"address": "0xdd68f5d26bf1182d6b241108bfc01f95c030502b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Karak sUSDe 26SEP2024",
+			"symbol": "YT-Karak-sUSDe-26SEP2024",
+			"displayName": "YT Karak sUSDe 26SEP2024",
+			"displaySymbol": "YT-Karak-sUSDe-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xdd68f5D26Bf1182d6b241108bfC01f95C030502b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xddb166c6cb38cede52d12c405b6e906c1fb6f9d7": {
 			"address": "0xddb166c6cb38cede52d12c405b6e906c1fb6f9d7",
 			"underlyingTokensAddresses": [
@@ -17873,6 +18204,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains sBTC-Crv (sBTC, WBTC, and renBTC) and pBTC, which is redeemable for native BTC at any time via pToken's network of secure sandboxes.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xDE5331AC4B3630f94853Ff322B66407e0D6331E8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xde5bff0755f192c333b126a449ff944ee2b69681": {
+			"address": "0xde5bff0755f192c333b126a449ff944ee2b69681",
+			"underlyingTokensAddresses": [
+				"0x9d39a5de30e57443bff2a8307a4256c8797a3497"
+			],
+			"type": "Yearn Vault",
+			"name": "Karak - Staked USDe",
+			"symbol": "KsUSDe",
+			"displayName": "Karak - Staked USDe",
+			"displaySymbol": "KsUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xDe5Bff0755F192C333B126A449FF944Ee2B69681/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18039,6 +18386,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdF74bA4436478969A54eCB352093312fE97EBAa5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xdf9015472ea23e3bea6fbd6092915f9ed6980a99": {
+			"address": "0xdf9015472ea23e3bea6fbd6092915f9ed6980a99",
+			"underlyingTokensAddresses": [
+				"0x78da5799cf427fee11e9996982f4150ece7a99a7",
+				"0xa0d69e286b938e21cbf7e51d71f6a4c8918f482f"
+			],
+			"type": "Curve LP",
+			"name": "revPool",
+			"symbol": "revPool",
+			"displayName": "revPool",
+			"displaySymbol": "revPool",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xdf9015472Ea23e3BeA6fbD6092915F9Ed6980a99/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18532,6 +18896,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xE60986759872393a8360A4a7abEAb3A6e0BA7848/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe617fc640413171100c32cc8dbf69fc7928d895e": {
+			"address": "0xe617fc640413171100c32cc8dbf69fc7928d895e",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-uniBTC-1732752015",
+			"symbol": "PT-sw-uniBTC-1732752015",
+			"displayName": "Principal Token: sw-uniBTC-1732752015",
+			"displaySymbol": "PT-sw-uniBTC-1732752015",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe617fC640413171100c32cC8Dbf69fC7928d895e/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xe632ea2ef2cfd8fc4a2731c76f99078aef6a4b31": {
@@ -19541,6 +19921,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf5a7906b41b858b66d3a7cbe167df1fb43ffe977": {
+			"address": "0xf5a7906b41b858b66d3a7cbe167df1fb43ffe977",
+			"underlyingTokensAddresses": [
+				"0x78da5799cf427fee11e9996982f4150ece7a99a7",
+				"0xbc6da0fe9ad5f3b0d58160288917aa56653660e9"
+			],
+			"type": "Curve LP",
+			"name": "rev alUSD",
+			"symbol": "rev alUSD",
+			"displayName": "rev alUSD",
+			"displaySymbol": "rev alUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF5a7906b41B858B66d3A7cBe167dF1fB43FfE977/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf5f33812c93c5f2ae2f28c041eeb393212439502": {
 			"address": "0xf5f33812c93c5f2ae2f28c041eeb393212439502",
 			"underlyingTokensAddresses": [
@@ -20190,6 +20587,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xfca9ab2996e7b010516adcc575eb63de4f4fa47a": {
+			"address": "0xfca9ab2996e7b010516adcc575eb63de4f4fa47a",
+			"underlyingTokensAddresses": [
+				"0x13120b7599ddf33782c748a847cc1d3c96387ecd"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve upYFI Factory yVault",
+			"symbol": "yvCurve-upYFI-f",
+			"displayName": "Curve upYFI Factory yVault",
+			"displaySymbol": "yvCurve-upYFI-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFCa9Ab2996e7b010516adCC575eB63de4f4fa47A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xfcbae4635ca89866f83add208ecceec742678746": {
 			"address": "0xfcbae4635ca89866f83add208ecceec742678746",
 			"underlyingTokensAddresses": [],
@@ -20312,6 +20725,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfe2d379117895fa6144b209c13894a17ab18c86c": {
+			"address": "0xfe2d379117895fa6144b209c13894a17ab18c86c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Karak USDE",
+			"symbol": "SY-Karak-USDE",
+			"displayName": "SY Karak USDE",
+			"displaySymbol": "SY-Karak-USDE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xfe2d379117895Fa6144B209C13894A17aB18C86c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

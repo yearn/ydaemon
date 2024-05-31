@@ -59,6 +59,7 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 		**********************************************************************************************/
 		now := time.Now().Unix()
 		if rewardPeriodFinish < uint64(now) {
+			storage.AssignJuicedStakingRewardAPR(chainID, vault.Address, rewardToken.Address, bigNumber.NewFloat(0))
 			continue
 		}
 

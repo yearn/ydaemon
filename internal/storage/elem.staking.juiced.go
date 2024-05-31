@@ -87,7 +87,7 @@ func AssignJuicedStakingRewardAPR(chainID uint64, vault common.Address, rewardTo
 		if addresses.Equals(stakingElement.VaultAddress, vault) {
 			for i, reward := range stakingElement.RewardTokens {
 				if addresses.Equals(reward.Address, rewardToken) {
-					stakingElement.RewardTokens[i].APR = apr
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
 					safeSyncMap(_juicedStakingSyncMap, chainID).Store(key, stakingElement)
 					return false
 				}

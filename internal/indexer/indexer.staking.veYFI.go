@@ -3,7 +3,6 @@ package indexer
 import (
 	"math/big"
 	"strconv"
-	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
@@ -56,8 +55,6 @@ func retrieveVEYFIStakingData(chainID uint64, vaultAddresses []common.Address, s
 			duration := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardsDuration`])
 			rate := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardRate`])
 			periodFinish := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`periodFinish`])
-			now := time.Now().Unix()
-			isFinished := periodFinish.Uint64() > 0 && periodFinish.Uint64() < uint64(now)
 			rewardTokenData := storage.TRewardToken{
 				Address:      rewardToken,
 				Name:         helpers.DecodeString(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`name`]),
@@ -66,7 +63,7 @@ func retrieveVEYFIStakingData(chainID uint64, vaultAddresses []common.Address, s
 				Duration:     duration.Uint64(),
 				Rate:         rate.Uint64(),
 				PeriodFinish: periodFinish.Uint64(),
-				IsFinished:   isFinished,
+				IsFinished:   false,
 			}
 			staking.RewardTokens = append(staking.RewardTokens, rewardTokenData)
 		}

@@ -81,6 +81,7 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
+		storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, bigNumber.NewFloat(0))
 		return bigNumber.NewFloat(0), false
 	}
 
@@ -105,7 +106,7 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** - For the gauge `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`, we should use 48 decimals
 	** - For all v3 vaults, we should use 36 decimals
 	**********************************************************************************************/
-	if addresses.Equals(stakingContract, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
+	if addresses.Equals(stakingContract.StakingAddress, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
 		rewardsTokenDecimals = 48
 	}
 	vaultVersionMajor := strings.Split(vault.Version, `.`)[0]
@@ -123,5 +124,8 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
+
+	storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, stakingRewardAPR)
+
 	return stakingRewardAPR, true
 }

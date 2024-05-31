@@ -272,5 +272,5 @@ func determineConvexKeepCRV(strategy models.TStrategy) *bigNumber.Float {
 **************************************************************************************************/
 func isConvexStrategy(strategy models.TStrategy) bool {
 	name := strings.ToLower(strategy.Name)
-	return strings.Contains(name, `convex`) && !strings.Contains(name, `convexfrax`)
+	return strings.Contains(name, `convex`) && !strings.Contains(name, `convexfrax`) && !strings.Contains(name, `ethconvex`)
 }

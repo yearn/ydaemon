@@ -44,6 +44,7 @@ func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigN
 	**********************************************************************************************/
 	now := time.Now().Unix()
 	if rewardPeriodFinish < uint64(now) {
+		storage.AssignOPStakingRewardAPR(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
 		return bigNumber.NewFloat(0), false
 	}
 
@@ -51,6 +52,7 @@ func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigN
 	** If the total supply is 0, we can stop here, aka nothing is staked, so no rewards
 	**********************************************************************************************/
 	if rawTotalSupply.IsZero() {
+		storage.AssignOPStakingRewardAPR(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
 		return bigNumber.NewFloat(0), false
 	}
 

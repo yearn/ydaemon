@@ -53,41 +53,43 @@ func getConvexRewardAPR(
 
 	now := time.Now().Unix()
 	totalRewardsAPR := bigNumber.NewFloat(0)
-	for i := 0; i < int(rewardsLength.Int64()); i++ {
-		virtualRewardsPool, err := crvRewardContract.ExtraRewards(nil, big.NewInt(int64(i)))
-		if err != nil {
-			logs.Error(err)
-			continue
-		}
-		virtualRewardsPoolContract, _ := contracts.NewCrvRewards(virtualRewardsPool, client)
-		periodFinish, err := virtualRewardsPoolContract.PeriodFinish(nil)
-		if err != nil {
-			logs.Error(err)
-			continue
-		}
-		if periodFinish.Int64() < now {
-			continue
-		}
-		rewardToken, _ := virtualRewardsPoolContract.RewardToken(nil)
-		rewardTokenPrice, ok := storage.GetPrice(chainID, rewardToken)
-		if !ok {
-			continue
-		}
-		rewardRateInt, _ := virtualRewardsPoolContract.RewardRate(nil)
-		totalSupplyInt, _ := virtualRewardsPoolContract.TotalSupply(nil)
+	if rewardsLength != nil {
+		for i := 0; i < int(rewardsLength.Int64()); i++ {
+			virtualRewardsPool, err := crvRewardContract.ExtraRewards(nil, big.NewInt(int64(i)))
+			if err != nil {
+				logs.Error(err)
+				continue
+			}
+			virtualRewardsPoolContract, _ := contracts.NewCrvRewards(virtualRewardsPool, client)
+			periodFinish, err := virtualRewardsPoolContract.PeriodFinish(nil)
+			if err != nil {
+				logs.Error(err)
+				continue
+			}
+			if periodFinish.Int64() < now {
+				continue
+			}
+			rewardToken, _ := virtualRewardsPoolContract.RewardToken(nil)
+			rewardTokenPrice, ok := storage.GetPrice(chainID, rewardToken)
+			if !ok {
+				continue
+			}
+			rewardRateInt, _ := virtualRewardsPoolContract.RewardRate(nil)
+			totalSupplyInt, _ := virtualRewardsPoolContract.TotalSupply(nil)
 
-		tokenPrice := rewardTokenPrice.HumanizedPrice
-		rewardRate := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(rewardRateInt), 18)
-		totalSupply := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(totalSupplyInt), 18)
-		secondPerYear := bigNumber.NewFloat(0).SetFloat64(31556952)
+			tokenPrice := rewardTokenPrice.HumanizedPrice
+			rewardRate := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(rewardRateInt), 18)
+			totalSupply := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(totalSupplyInt), 18)
+			secondPerYear := bigNumber.NewFloat(0).SetFloat64(31556952)
 
-		rewardAPRTop := bigNumber.NewFloat(0).Mul(rewardRate, secondPerYear)
-		rewardAPRTop = bigNumber.NewFloat(0).Mul(rewardAPRTop, tokenPrice)
-		rewardAPRBottom := bigNumber.NewFloat(0).Div(poolPrice, storage.ONE) //wei?
-		rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, baseAssetPrice)
-		rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, totalSupply)
-		rewardAPR := bigNumber.NewFloat(0).Div(rewardAPRTop, rewardAPRBottom)
-		totalRewardsAPR = bigNumber.NewFloat(0).Add(totalRewardsAPR, rewardAPR)
+			rewardAPRTop := bigNumber.NewFloat(0).Mul(rewardRate, secondPerYear)
+			rewardAPRTop = bigNumber.NewFloat(0).Mul(rewardAPRTop, tokenPrice)
+			rewardAPRBottom := bigNumber.NewFloat(0).Div(poolPrice, storage.ONE) //wei?
+			rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, baseAssetPrice)
+			rewardAPRBottom = bigNumber.NewFloat(0).Mul(rewardAPRBottom, totalSupply)
+			rewardAPR := bigNumber.NewFloat(0).Div(rewardAPRTop, rewardAPRBottom)
+			totalRewardsAPR = bigNumber.NewFloat(0).Add(totalRewardsAPR, rewardAPR)
+		}
 	}
 	return totalRewardsAPR
 }

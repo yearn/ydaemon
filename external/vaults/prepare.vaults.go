@@ -136,6 +136,7 @@ func toSimplifiedVersion(
 	info.IsRetired = vault.Details.IsRetired
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
+	info.RiskLevel = vault.Info.RiskLevel
 
 	/**********************************************************************************************
 	** Create the simplified version of the vault.
@@ -148,6 +149,7 @@ func toSimplifiedVersion(
 		Kind:           vault.Kind,
 		Symbol:         vault.Symbol,
 		Name:           vaultName,
+		Description:    vault.Description,
 		Category:       vault.Category,
 		Decimals:       vault.Decimals,
 		ChainID:        vault.ChainID,

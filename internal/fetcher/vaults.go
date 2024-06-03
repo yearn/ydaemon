@@ -223,6 +223,7 @@ func RetrieveAllVaults(
 			vault.Metadata.Inclusion.IsYearn = env.IsRegistryFromYearnCore(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsYearnJuiced = env.IsRegistryFromJuiced(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsPublicERC4626 = env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress)
+			vault.Metadata.Inclusion.IsGimme = false //False by default
 			if vault.Metadata.Inclusion.IsPublicERC4626 {
 				vault.Endorsed = false
 				vault.Metadata.IsHidden = true

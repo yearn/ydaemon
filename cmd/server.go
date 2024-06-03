@@ -58,6 +58,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`vaults/v3`, c.GetAllV3VaultsForAllChainsSimplified)
 		router.GET(`vaults/v2`, c.GetAllV2VaultsForAllChainsSimplified)
 		router.GET(`vaults/juiced`, c.GetAllJuicedVaultsForAllChainsSimplified)
+		router.GET(`vaults/gimme`, c.GetAllGimmeVaultsForAllChainsSimplified)
 		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified)
 
 		/******************************************************************************************
@@ -68,6 +69,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/vaults/v2/all`, c.GetAllV2Vaults)
 		router.GET(`:chainID/vaults/v3/all`, c.GetAllV3Vaults)
 		router.GET(`:chainID/vaults/juiced/all`, c.GetAllJuicedVaults)
+		router.GET(`:chainID/vaults/gimme/all`, c.GetAllGimmeVaults)
 		router.GET(`:chainID/vaults/retired`, c.GetRetiredVaults)
 		router.GET(`:chainID/vaults/some/:addresses`, c.GetSomeVaults)
 

@@ -82,7 +82,7 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
 	for i := 0; i < 30; i++ {
 		start := int64(i * 25)
-		allSugar, err := sugar.All(nil, big.NewInt(50), big.NewInt(start))
+		allSugar, err := sugar.All(nil, big.NewInt(25), big.NewInt(start))
 		if len(allSugar) == 0 || err != nil {
 			if err != nil {
 				logs.Error(`error fetching velo sugar`, err)

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-25T11:07:02.75124+02:00",
+	"lastUpdate": "2024-06-07T14:09:28.697857+02:00",
 	"version": {
 		"major": 0,
-		"minor": 5,
+		"minor": 6,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -20,6 +20,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x00F30115B5E828AB387b8190f8532EA7cEAF3fDC/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x03ff264046b085450649a993cdd65dcdd01a893e": {
+			"address": "0x03ff264046b085450649a993cdd65dcdd01a893e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - pHAM/pwBLT",
+			"symbol": "vAMM-pHAM/pwBLT",
+			"displayName": "Volatile AMM - pHAM/pwBLT",
+			"displaySymbol": "vAMM-pHAM/pwBLT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x03FF264046b085450649A993Cdd65dCDD01A893e/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -80,6 +94,22 @@
 			"description": "This token represents a Aerodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Aerodrome's gauges to earn emissions. This stablepool contains DAI+ and USD+.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x1b05e4e814b3431a48b8164c41eaC834d9cE2Da6/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b": {
+			"address": "0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b",
+			"underlyingTokensAddresses": [
+				"0x03ff264046b085450649a993cdd65dcdd01a893e"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome pHAM-pwBLT Factory yVault",
+			"symbol": "yvAero-pHAM-pwBLT-f",
+			"displayName": "Aerodrome pHAM-pwBLT Factory yVault",
+			"displaySymbol": "yvAero-pHAM-pwBLT-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x1F1969209E18F24282CE6Fae9c27f6e1fe5a1d1b/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -194,6 +224,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x30BcA23B220dEb343f62c83edA1465546Ac9C7F7/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x31ce9ab5a358e5c802cc01080f29a65a14eb45b8": {
+			"address": "0x31ce9ab5a358e5c802cc01080f29a65a14eb45b8",
+			"underlyingTokensAddresses": [
+				"0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome BMX-wBLT Factory yVault",
+			"symbol": "yvAero-BMX-wBLT-f",
+			"displayName": "Aerodrome BMX-wBLT Factory yVault",
+			"displaySymbol": "yvAero-BMX-wBLT-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x31Ce9aB5A358E5c802Cc01080F29a65a14EB45b8/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -486,6 +532,20 @@
 			"description": "This token represents a Aerodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Aerodrome's gauges to earn emissions. This volatile pool contains USD+ and stERN.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x607363389331f4B2D1b955d009506A67c565D75E/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5": {
+			"address": "0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - wBLT/BMX",
+			"symbol": "vAMM-wBLT/BMX",
+			"displayName": "Volatile AMM - wBLT/BMX",
+			"displaySymbol": "vAMM-wBLT/BMX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x61907C8C3E6ef7eD813aCc2fBbBf8C05ac0F31d5/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

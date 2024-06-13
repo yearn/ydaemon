@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-31T11:15:09.13614+02:00",
+	"lastUpdate": "2024-06-13T23:07:12.879205+02:00",
 	"version": {
 		"major": 0,
-		"minor": 40,
+		"minor": 41,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1057,6 +1057,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0d4EA8536F9A13e4FBa16042a46c30f092b06aA5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0d86883faf4ffd7aeb116390af37746f45b6f378": {
+			"address": "0x0d86883faf4ffd7aeb116390af37746f45b6f378",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Web 3 Dollar",
+			"symbol": "USD3",
+			"displayName": "Web 3 Dollar",
+			"displaySymbol": "USD3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0d86883FAf4FfD7aEb116390af37746F45b6f378/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3630,6 +3644,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2fc1e74bc8a6d15fe768c10c2ede7d6d95ec27e9": {
+			"address": "0x2fc1e74bc8a6d15fe768c10c2ede7d6d95ec27e9",
+			"underlyingTokensAddresses": [
+				"0xa8258dee2a677874a48f5320670a869d74f0cbc1"
+			],
+			"type": "Curve LP",
+			"name": "Tholgar Warlord Vault",
+			"symbol": "thWAR",
+			"displayName": "Tholgar Warlord Vault",
+			"displaySymbol": "thWAR",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2fc1E74BC8A6D15fE768c10C2EDe7D6d95ec27e9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2fe0be7e4e248fd6dadec01bde35397748412f84": {
 			"address": "0x2fe0be7e4e248fd6dadec01bde35397748412f84",
 			"underlyingTokensAddresses": [],
@@ -4451,6 +4481,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x386Bf9105eF88e79fb8CA53dCC9a4E6f04BE0102/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x386f90eb964a477498b528a39d9405e73ed4032b": {
+			"address": "0x386f90eb964a477498b528a39d9405e73ed4032b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x386F90Eb964A477498b528a39D9405E73Ed4032b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5423,6 +5467,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x43e54c2e7b3e294de3a155785f52ab49d87b9922": {
+			"address": "0x43e54c2e7b3e294de3a155785f52ab49d87b9922",
+			"underlyingTokensAddresses": [
+				"0xd1b5651e55d4ceed36251c61c50c889b36f6abb5"
+			],
+			"type": "Yearn Vault",
+			"name": "Aladdin sdCRV",
+			"symbol": "asdCRV",
+			"displayName": "Aladdin sdCRV",
+			"displaySymbol": "asdCRV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x43E54C2E7b3e294De3A155785F52AB49d87B9922/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x440d08d85cb12352dabac2971de81e9be702d239": {
 			"address": "0x440d08d85cb12352dabac2971de81e9be702d239",
 			"underlyingTokensAddresses": [],
@@ -5787,6 +5847,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x48759F220ED983dB51fA7A8C0D2AAb8f3ce4166a/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x48ee2348991a6b345b170bf5e92e2e5a16cf1edd": {
+			"address": "0x48ee2348991a6b345b170bf5e92e2e5a16cf1edd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Silo crvUSD 26SEP2024",
+			"symbol": "PT-Silo-crvUSD-26SEP2024",
+			"displayName": "PT Silo crvUSD 26SEP2024",
+			"displaySymbol": "PT-Silo-crvUSD-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x48ee2348991A6b345B170bF5E92E2E5A16CF1edD/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x48ff31bbbd8ab553ebe7cbd84e1ea3dba8f54957": {
@@ -7969,6 +8043,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x63121B8f2a88ea0fEF99E3a1614454Ef1837423B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x633defd7e79f94cdb77fe469f348bd919c4b678a": {
+			"address": "0x633defd7e79f94cdb77fe469f348bd919c4b678a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Silo crvUSD 26SEP2024",
+			"symbol": "YT-Silo-crvUSD-26SEP2024",
+			"displayName": "YT Silo crvUSD 26SEP2024",
+			"displaySymbol": "YT-Silo-crvUSD-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x633dEfD7E79f94cDb77fe469f348Bd919c4b678a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12060,6 +12148,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x982e5a072cb6634f45715665a02c723392977e9f": {
+			"address": "0x982e5a072cb6634f45715665a02c723392977e9f",
+			"underlyingTokensAddresses": [
+				"0xa8258dee2a677874a48f5320670a869d74f0cbc1"
+			],
+			"type": "Compound",
+			"name": "Principal Token: thWAR-1725581923",
+			"symbol": "PT-thWAR-1725581923",
+			"displayName": "Principal Token: thWAR-1725581923",
+			"displaySymbol": "PT-thWAR-1725581923",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x982E5a072cb6634f45715665A02C723392977e9F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9848482da3ee3076165ce6497eda906e66bb85c5": {
 			"address": "0x9848482da3ee3076165ce6497eda906e66bb85c5",
 			"underlyingTokensAddresses": [
@@ -13330,6 +13434,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa8258dee2a677874a48f5320670a869d74f0cbc1": {
+			"address": "0xa8258dee2a677874a48f5320670a869d74f0cbc1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Warlord token",
+			"symbol": "WAR",
+			"displayName": "Warlord token",
+			"displaySymbol": "WAR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa8258deE2a677874a48F5320670A869D74f0cbC1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa857ab5913bda50b65d257ad13fc039afe02ec17": {
 			"address": "0xa857ab5913bda50b65d257ad13fc039afe02ec17",
 			"underlyingTokensAddresses": [
@@ -14246,6 +14364,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xb253Eff1104802b97aC7E3aC9FdD73AecE295a2c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb25a14d81794884ae3ce69f14b5c97b4f50eb8f3": {
+			"address": "0xb25a14d81794884ae3ce69f14b5c97b4f50eb8f3",
+			"underlyingTokensAddresses": [
+				"0xde73e407efc75edbafc5bcd62ebb1e7a9b38ebcd"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve USD3-rgUSD Factory yVault",
+			"symbol": "yvCurve-USD3-rgUSD-f",
+			"displayName": "Curve USD3-rgUSD Factory yVault",
+			"displaySymbol": "yvCurve-USD3-rgUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xB25a14D81794884AE3ce69f14B5C97b4F50Eb8F3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18237,6 +18371,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xde73e407efc75edbafc5bcd62ebb1e7a9b38ebcd": {
+			"address": "0xde73e407efc75edbafc5bcd62ebb1e7a9b38ebcd",
+			"underlyingTokensAddresses": [
+				"0x0d86883faf4ffd7aeb116390af37746f45b6f378",
+				"0x78da5799cf427fee11e9996982f4150ece7a99a7"
+			],
+			"type": "Curve LP",
+			"name": "rev USD3",
+			"symbol": "USD3rgUSD",
+			"displayName": "rev USD3",
+			"displaySymbol": "USD3rgUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xde73E407EFC75EdBAfc5bcD62Ebb1E7A9b38EBCD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdeaa5833d09179c20b55601453b9dd22216f2d76": {
 			"address": "0xdeaa5833d09179c20b55601453b9dd22216f2d76",
 			"underlyingTokensAddresses": [
@@ -20163,6 +20314,22 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains CRV and sdCRV, a tokenized veCRV from [StakeDAO](https://lockers.stakedao.org).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf85640cf6ec7658180761927516d11264d635775": {
+			"address": "0xf85640cf6ec7658180761927516d11264d635775",
+			"underlyingTokensAddresses": [
+				"0xd1b5651e55d4ceed36251c61c50c889b36f6abb5"
+			],
+			"type": "Compound",
+			"name": "Principal Token: asdCRV-1733973768",
+			"symbol": "PT-asdCRV-1733973768",
+			"displayName": "Principal Token: asdCRV-1733973768",
+			"displaySymbol": "PT-asdCRV-1733973768",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF85640Cf6Ec7658180761927516d11264D635775/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

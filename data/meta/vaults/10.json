@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-05-27T16:47:15.968274+02:00",
+	"lastUpdate": "2024-06-13T23:06:33.669794+02:00",
 	"version": {
 		"major": 0,
-		"minor": 2,
-		"patch": 1
+		"minor": 3,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -56,6 +56,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -110,6 +111,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -163,6 +165,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -216,6 +219,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -270,6 +274,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -324,6 +329,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -378,6 +384,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -432,6 +439,57 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x1c09aea795dd79e201fa552b108b4b30e90ced4f": {
+			"address": "0x1c09aea795dd79e201fa552b108b4b30e90ced4f",
+			"token": "0xbc26519f936a90e78fe2c9aa2a03cc208f041234",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 121355672,
+			"chainID": 10,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -486,6 +544,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -540,6 +599,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -591,6 +651,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -643,6 +704,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -696,6 +758,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -750,6 +813,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -804,6 +868,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -857,6 +922,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -911,6 +977,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -964,6 +1031,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1018,6 +1086,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1072,6 +1141,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1126,6 +1196,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1179,6 +1250,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1233,6 +1305,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1287,6 +1360,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1341,6 +1415,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1395,6 +1470,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1448,6 +1524,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1502,6 +1579,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1556,6 +1634,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1609,6 +1688,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1658,6 +1738,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1709,6 +1790,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1762,6 +1844,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1813,6 +1896,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1866,6 +1950,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1918,6 +2003,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1972,6 +2058,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2025,6 +2112,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2079,6 +2167,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2133,6 +2222,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2187,6 +2277,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2241,6 +2332,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2294,6 +2386,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2348,6 +2441,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2402,6 +2496,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2456,6 +2551,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2507,6 +2603,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2561,6 +2658,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2613,6 +2711,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2666,6 +2765,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2719,6 +2819,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2773,6 +2874,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2826,6 +2928,57 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x8dc2b8886f289812bb6e58220e740d1f50a00197": {
+			"address": "0x8dc2b8886f289812bb6e58220e740d1f50a00197",
+			"token": "0x124d69daeda338b1b31ffc8e429e39c9a991164e",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 121355672,
+			"chainID": 10,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2879,6 +3032,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2933,6 +3087,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2986,6 +3141,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3039,6 +3195,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3093,6 +3250,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3146,6 +3304,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3200,6 +3359,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3253,6 +3413,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3304,6 +3465,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3358,6 +3520,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3412,6 +3575,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3466,6 +3630,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3517,6 +3682,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3570,6 +3736,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3624,6 +3791,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3678,6 +3846,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3732,6 +3901,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3785,6 +3955,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3838,6 +4009,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3889,6 +4061,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3943,6 +4116,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -3997,6 +4171,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4050,6 +4225,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4103,6 +4279,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4156,6 +4333,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4210,6 +4388,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4264,6 +4443,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4318,6 +4498,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4369,6 +4550,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4422,6 +4604,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4475,6 +4658,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4528,6 +4712,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4581,6 +4766,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4632,6 +4818,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4685,6 +4872,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4738,6 +4926,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4792,6 +4981,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4845,6 +5035,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4898,6 +5089,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -4951,6 +5143,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -5005,6 +5198,7 @@
 					"isSet": true,
 					"isYearn": true,
 					"isYearnJuiced": false,
+					"isGimme": false,
 					"isPublicERC4626": false
 				}
 			}

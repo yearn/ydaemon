@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-27T16:47:24.979863+02:00",
+	"lastUpdate": "2024-06-13T23:06:35.360685+02:00",
 	"version": {
 		"major": 0,
-		"minor": 8,
+		"minor": 9,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -246,6 +246,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x124d69daeda338b1b31ffc8e429e39c9a991164e": {
+			"address": "0x124d69daeda338b1b31ffc8e429e39c9a991164e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/alUSD",
+			"symbol": "sAMMV2-USDC/alUSD",
+			"displayName": "StableV2 AMM - USDC/alUSD",
+			"displaySymbol": "sAMMV2-USDC/alUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x124D69DaeDA338b1b31fFC8e429e39c9A991164e/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x1337bedc9d22ecbe766df105c9623922a27963ec": {
 			"address": "0x1337bedc9d22ecbe766df105c9623922a27963ec",
 			"underlyingTokensAddresses": [
@@ -390,6 +404,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x1B1d2EfB6045851F8ccdE24369003e0fF157980b/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x1c09aea795dd79e201fa552b108b4b30e90ced4f": {
+			"address": "0x1c09aea795dd79e201fa552b108b4b30e90ced4f",
+			"underlyingTokensAddresses": [
+				"0xbc26519f936a90e78fe2c9aa2a03cc208f041234"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 sUSD-USDC Factory yVault",
+			"symbol": "yvVelo-sUSD-USDC-f",
+			"displayName": "Velodrome v2 sUSD-USDC Factory yVault",
+			"displaySymbol": "yvVelo-sUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x1c09aEA795DD79E201fA552b108b4b30E90CEd4f/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2148,6 +2178,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x85269091b2295c73c03a783b02e9ab0c75fbfaf2": {
+			"address": "0x85269091b2295c73c03a783b02e9ab0c75fbfaf2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDCe-WLD10",
+			"symbol": "xUSDCe-WLD10",
+			"displayName": "xUSDCe-WLD10",
+			"displaySymbol": "xUSDCe-WLD10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x85269091B2295C73C03A783b02e9ab0C75FbFaF2/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x8542dd4744edea38b8a9306268b08f4d26d38581": {
 			"address": "0x8542dd4744edea38b8a9306268b08f4d26d38581",
 			"underlyingTokensAddresses": [],
@@ -2303,6 +2347,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8dc2b8886f289812bb6e58220e740d1f50a00197": {
+			"address": "0x8dc2b8886f289812bb6e58220e740d1f50a00197",
+			"underlyingTokensAddresses": [
+				"0x124d69daeda338b1b31ffc8e429e39c9a991164e"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 alUSD-USDC Factory yVault",
+			"symbol": "yvVelo-alUSD-USDC-f",
+			"displayName": "Velodrome v2 alUSD-USDC Factory yVault",
+			"displaySymbol": "yvVelo-alUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x8Dc2B8886F289812Bb6e58220e740D1F50A00197/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2972,6 +3032,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xbc26519f936a90e78fe2c9aa2a03cc208f041234": {
+			"address": "0xbc26519f936a90e78fe2c9aa2a03cc208f041234",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/sUSD",
+			"symbol": "sAMMV2-USDC/sUSD",
+			"displayName": "StableV2 AMM - USDC/sUSD",
+			"displaySymbol": "sAMMV2-USDC/sUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xbC26519f936A90E78fe2C9aA2A03CC208f041234/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xbc61b71562b01a3a4808d3b9291a3bf743ab3361": {
 			"address": "0xbc61b71562b01a3a4808d3b9291a3bf743ab3361",
 			"underlyingTokensAddresses": [
@@ -3597,6 +3671,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xdc2B136A9C1FD2a0b9497bB8b11823c2FBf47Ac4/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1": {
+			"address": "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Worldcoin",
+			"symbol": "WLD",
+			"displayName": "Worldcoin",
+			"displaySymbol": "WLD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

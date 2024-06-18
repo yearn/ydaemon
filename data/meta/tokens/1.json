@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-13T23:07:12.879205+02:00",
+	"lastUpdate": "2024-06-18T09:53:57.243875+02:00",
 	"version": {
 		"major": 0,
-		"minor": 41,
+		"minor": 42,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4570,6 +4570,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x391B570e81e354a85a496952b66ADc831715f54f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x398c66c98ac421b87fc72aa5f654295f9a0e467c": {
+			"address": "0x398c66c98ac421b87fc72aa5f654295f9a0e467c",
+			"underlyingTokensAddresses": [
+				"0x856c4efb76c1d1ae02e20ceb03a2a6a08b0b8dc3"
+			],
+			"type": "Compound",
+			"name": "Principal Token: WOETH-1750118420",
+			"symbol": "PT-WOETH-1750118420",
+			"displayName": "Principal Token: WOETH-1750118420",
+			"displaySymbol": "PT-WOETH-1750118420",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x398C66C98AC421b87fC72aa5f654295F9A0E467C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12599,6 +12615,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9c73e0a1fa310e2bdc95af1145b9d8daa87bd9c0": {
+			"address": "0x9c73e0a1fa310e2bdc95af1145b9d8daa87bd9c0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT ether.fi weETH 25JUL2024",
+			"symbol": "YT-weETH-25JUL2024",
+			"displayName": "YT ether.fi weETH 25JUL2024",
+			"displaySymbol": "YT-weETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9c73E0A1fA310e2BDC95AF1145B9D8Daa87bD9C0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9cfb40acedac259b1d23e790f6c6d0c3898361ad": {
 			"address": "0x9cfb40acedac259b1d23e790f6c6d0c3898361ad",
 			"underlyingTokensAddresses": [
@@ -18675,6 +18705,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe146e7018b3fb588c4efbc2f211e8bb8d8c31c81": {
+			"address": "0xe146e7018b3fb588c4efbc2f211e8bb8d8c31c81",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT ether.fi weETH 25JUL2024",
+			"symbol": "PT-weETH-25JUL2024",
+			"displayName": "PT ether.fi weETH 25JUL2024",
+			"displaySymbol": "PT-weETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe146E7018B3fb588c4EFbC2F211e8BB8d8C31c81/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe14d13d8b3b85af791b2aadd661cdbd5e6097db1": {
 			"address": "0xe14d13d8b3b85af791b2aadd661cdbd5e6097db1",
 			"underlyingTokensAddresses": [
@@ -18762,6 +18806,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xe1d0549702C0beC3d3F918159449542738e6F942/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe1f19cbda26b6418b0c8e1ee978a533184496066": {
+			"address": "0xe1f19cbda26b6418b0c8e1ee978a533184496066",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe1F19CBDa26b6418B0C8E1EE978a533184496066/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

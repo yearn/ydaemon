@@ -108,11 +108,15 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	**********************************************************************************************/
 	if addresses.Equals(stakingContract.StakingAddress, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
 		rewardsTokenDecimals = 48
-	}
-	vaultVersionMajor := strings.Split(vault.Version, `.`)[0]
-	if vaultVersionMajor == `3` {
+	} else if addresses.Equals(stakingContract.StakingAddress, `0xf719B2d3925CC445D2Bb67FA12963265E224Fa11`) {
 		rewardsTokenDecimals = 36
+	} else {
+		vaultVersionMajor := strings.Split(vault.Version, `.`)[0]
+		if vaultVersionMajor == `3` {
+			rewardsTokenDecimals = 36
+		}
 	}
+
 	rewardRate := helpers.ToNormalizedAmount(rewardRateRaw, rewardsTokenDecimals)
 	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, vaultToken.Decimals)
 	perStakingTokenRate := bigNumber.NewFloat(0).Div(rewardRate, totalSupply)

@@ -947,7 +947,7 @@
 				"isAggregator": true,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -2112,7 +2112,7 @@
 			"lastPricePerShare": "1001170724850456417",
 			"lastTotalAssets": "147934179029413",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": true,
 				"isBoosted": false,

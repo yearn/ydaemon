@@ -20,23 +20,10 @@ func processServer(chainID uint64) {
 
 	scheduler := gocron.NewScheduler(time.UTC)
 	logs.Info(`Getting WS client for chain ` + strconv.FormatUint(chainID, 10))
-	ethereum.GetWSClient(chainID)
+	ethereum.GetWSClient(chainID, true)
 	ethereum.InitBlockTimestamp(chainID)
 	internal.InitializeV2(chainID, nil, scheduler)
-	triggerInitializedStatus(chainID)
-}
-
-/**************************************************************************************************
-** The version of the daemon is displayed on the server. The version is based on the latest git
-** commit, trimmed to only show the first 7 characters of the commit hash.
-**************************************************************************************************/
-var version = ""
-
-func getVersion() string {
-	if version == "" {
-		return "dev"
-	}
-	return version[:7]
+	TriggerInitializedStatus(chainID)
 }
 
 /**************************************************************************************************
@@ -46,7 +33,7 @@ func getVersion() string {
 func main() {
 	initFlags()
 	summonDaemonsForAllChains(chains)
-	go listenToSignals()
+	go ListenToSignals()
 
 	var wg sync.WaitGroup
 	logs.Info(`Running external processes...`)
@@ -66,7 +53,7 @@ func main() {
 	case ProcessServer:
 		logs.Info(`Running yDaemon server process...`)
 		go NewRouter().Run(`:8080`)
-		go triggerTgMessage(`💛 - yDaemon v` + getVersion() + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
+		go TriggerTgMessage(`💛 - yDaemon v` + GetVersion() + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 		for _, chainID := range chains {
 			go processServer(chainID)

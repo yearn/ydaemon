@@ -52,11 +52,20 @@ var ARBITRUM = TChain{
 			Version: 2,
 			Block:   4_841_854,
 			Tag:     `DISABLED`,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
 			Version: 4,
 			Block:   171_850_013,
+			Label:   `YEARN`,
+		},
+		{
+			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+			Version: 5,
+			Block:   187_480_878,
+			Tag:     `STEALTH`,
+			Label:   `PUBLIC_ERC4626`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{

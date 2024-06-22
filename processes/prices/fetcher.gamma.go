@@ -1,6 +1,8 @@
 package prices
 
 import (
+	"math/big"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -30,7 +32,15 @@ func getGammaLPPricesFromAPI(chainID uint64, blockNumber *uint64, tokens []model
 
 	for addr, poolData := range pools {
 		totalTVLFloat := bigNumber.NewFloat(0).SetString(poolData.PoolTvlUSD)
-		totalSupplyFloat := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(poolData.TotalSupply), 18)
+		totalSupply := bigNumber.NewInt(0)
+		switch poolData.TotalSupply.(type) {
+		case string:
+			totalSupply = bigNumber.NewInt(0).SetString(poolData.TotalSupply.(string))
+		case *big.Int:
+			totalSupply = bigNumber.NewInt(0).Set(poolData.TotalSupply.(*big.Int))
+		}
+
+		totalSupplyFloat := helpers.ToNormalizedAmount(totalSupply, 18)
 		tokenPrice := bigNumber.NewFloat(0).Div(totalTVLFloat, totalSupplyFloat)
 		rawPrice := bigNumber.NewFloat(0).Mul(tokenPrice, bigNumber.NewFloat(1e6)).Int()
 		priceMap[common.HexToAddress(addr)] = models.TPrices{

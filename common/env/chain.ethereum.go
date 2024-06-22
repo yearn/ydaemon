@@ -63,22 +63,39 @@ var ETHEREUM = TChain{
 			Version: 1,
 			Block:   11563389,
 			Tag:     `DISABLED`,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0x50c1a2eA0a861A967D9d0FFE2AE4012c2E053804"),
 			Version: 2,
 			Block:   12045555,
 			Tag:     `DISABLED`,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0xaF1f5e1c19cB68B30aAD73846eFfDf78a5863319"),
 			Version: 3,
 			Block:   16215519,
+			Label:   `YEARN`,
 		},
 		{
 			Address: common.HexToAddress("0xff31A1B020c868F6eA3f61Eb953344920EeCA3af"),
 			Version: 4,
 			Block:   19072527,
+			Label:   `YEARN`,
+		},
+		{
+			Address: common.HexToAddress("0xE9E8C89c8Fc7E8b8F23425688eb68987231178e5"),
+			Version: 5,
+			Block:   18385809,
+			Label:   `JUICED`,
+		},
+		{
+			Address: common.HexToAddress("0x444045c5C13C246e117eD36437303cac8E250aB0"),
+			Version: 5,
+			Block:   19_372_662,
+			Tag:     `STEALTH`,
+			Label:   `PUBLIC_ERC4626`,
 		},
 	},
 	StakingRewardRegistry: []TContractData{
@@ -93,40 +110,7 @@ var ETHEREUM = TChain{
 			Tag:     `JUICED`,
 		},
 	},
-	ExtraVaults: []models.TVaultsFromRegistry{
-		{
-			//yvAjnaDAI-harvester (ysyvAjnaDAI)
-			ChainID:         1,
-			Address:         common.HexToAddress(`0x082a5743aAdf3d0Daf750EeF24652b36a68B1e9C`),
-			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
-			TokenAddress:    common.HexToAddress(`0xe24BA27551aBE96Ca401D39761cA2319Ea14e3CB`),
-			APIVersion:      `3.0.1`,
-			BlockNumber:     18981463,
-			Type:            models.TTokenType(models.TokenTypeStandardVault),
-			Kind:            models.TVaultKind(models.VaultKindMultiple),
-		},
-		{
-			ChainID:         1,
-			Address:         common.HexToAddress(`0x503e0BaB6acDAE73eA7fb7cf6Ae5792014dbe935`),
-			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
-			TokenAddress:    common.HexToAddress(`0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2`),
-			APIVersion:      `3.0.1`,
-			BlockNumber:     19237884,
-			Type:            models.TTokenType(models.TokenTypeStandardVault),
-			Kind:            models.TVaultKind(models.VaultKindMultiple),
-		},
-		{
-			//Yearn-Ajna WETH Vault (yvAjnaWETH)
-			ChainID:         1,
-			Address:         common.HexToAddress(`0xb974598227660bEfe79a23DFC473D859602254aC`),
-			RegistryAddress: common.HexToAddress(`0xff31A1B020c868F6eA3f61Eb953344920EeCA3af`),
-			TokenAddress:    common.HexToAddress(`0x503e0BaB6acDAE73eA7fb7cf6Ae5792014dbe935`),
-			APIVersion:      `3.0.1`,
-			BlockNumber:     19237884,
-			Type:            models.TTokenType(models.TokenTypeStandardVault),
-			Kind:            models.TVaultKind(models.VaultKindMultiple),
-		},
-	},
+	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress("0xd1b0b6a1093a097227dc117c87ae3a72d9bd7cf2"), // uniETH pool
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing

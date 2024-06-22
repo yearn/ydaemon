@@ -13,8 +13,8 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// GetAllV2VaultsForAllChainsSimplified will return a list of all v3 vaults for all chains
-func (y Controller) GetAllV2VaultsForAllChainsSimplified(c *gin.Context) {
+// GetAllJuicedVaultsForAllChainsSimplified will return a list of all v3 vaults for all chains
+func (y Controller) GetAllJuicedVaultsForAllChainsSimplified(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -112,13 +112,10 @@ func (y Controller) GetAllV2VaultsForAllChainsSimplified(c *gin.Context) {
 			/******************************************************************************************
 			** We want to ignore all non Yearn vaults
 			******************************************************************************************/
-			if !currentVault.Metadata.Inclusion.IsYearn {
+			if !currentVault.Metadata.Inclusion.IsYearnJuiced {
 				continue
 			}
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
-				continue
-			}
-			if isV3Vault(currentVault) {
 				continue
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)

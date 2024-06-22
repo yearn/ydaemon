@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-05-10T13:25:16.97119+02:00",
+	"lastUpdate": "2024-06-22T10:43:11.620606+02:00",
 	"version": {
 		"major": 0,
-		"minor": 7,
+		"minor": 9,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -135,12 +135,12 @@
 				"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
 				"0x1337bedc9d22ecbe766df105c9623922a27963ec"
 			],
-			"type": "Curve",
+			"type": "Curve LP",
 			"name": "Curve.fi Factory USD Metapool: sUSD Synthetix",
 			"symbol": "sUSD3CRV-f",
-			"displayName": "Curve sUSD Pool",
+			"displayName": "Curve.fi Factory USD Metapool: sUSD Synthetix",
 			"displaySymbol": "sUSD3CRV-f",
-			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains USDT, DAI, USDC, and sUSD, a synthetic USD-pegged token minted via the Synthetix platform.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x061b87122Ed14b9526A813209C8a59a633257bAb/logo-128.png",
 			"decimals": 18,
@@ -243,6 +243,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x0F548d7AD1A0CB30D1872b8C18894484d76e1569/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x124d69daeda338b1b31ffc8e429e39c9a991164e": {
+			"address": "0x124d69daeda338b1b31ffc8e429e39c9a991164e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/alUSD",
+			"symbol": "sAMMV2-USDC/alUSD",
+			"displayName": "StableV2 AMM - USDC/alUSD",
+			"displaySymbol": "sAMMV2-USDC/alUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x124D69DaeDA338b1b31fFC8e429e39c9A991164e/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -390,6 +404,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/10/0x1B1d2EfB6045851F8ccdE24369003e0fF157980b/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x1c09aea795dd79e201fa552b108b4b30e90ced4f": {
+			"address": "0x1c09aea795dd79e201fa552b108b4b30e90ced4f",
+			"underlyingTokensAddresses": [
+				"0xbc26519f936a90e78fe2c9aa2a03cc208f041234"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 sUSD-USDC Factory yVault",
+			"symbol": "yvVelo-sUSD-USDC-f",
+			"displayName": "Velodrome v2 sUSD-USDC Factory yVault",
+			"displaySymbol": "yvVelo-sUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x1c09aEA795DD79E201fA552b108b4b30E90CEd4f/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -1333,6 +1363,22 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x5e70e0ede43373bd9cf4bc85199d424acf0241ef": {
+			"address": "0x5e70e0ede43373bd9cf4bc85199d424acf0241ef",
+			"underlyingTokensAddresses": [
+				"0x061b87122ed14b9526a813209c8a59a633257bab"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve sUSD Pool yVault",
+			"symbol": "yvCurve-sUSD",
+			"displayName": "Curve sUSD Pool yVault",
+			"displaySymbol": "yvCurve-sUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x5e70E0EdE43373bD9CF4Bc85199d424AcF0241EF/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x605cce502dee6bd201b493782e351e645d44abbb": {
 			"address": "0x605cce502dee6bd201b493782e351e645d44abbb",
 			"underlyingTokensAddresses": [],
@@ -1991,12 +2037,12 @@
 		"0x7f5c764cbc14f9669b88837ca1490cca17c31607": {
 			"address": "0x7f5c764cbc14f9669b88837ca1490cca17c31607",
 			"underlyingTokensAddresses": [],
-			"type": "Stablecoin",
+			"type": "",
 			"name": "USD Coin",
 			"symbol": "USDC",
 			"displayName": "USD Coin",
-			"displaySymbol": "USDC.e",
-			"description": "USD Coin is a stablecoin that is pegged to the U.S. dollar on a 1:1 basis. Every unit of this cryptocurrency in circulation is backed up by $1 that is held in reserve, in a mix of cash and short-term U.S. Treasury bonds. The Centre consortium, which is behind this asset, says USDC.e is issued by regulated financial institutions.",
+			"displaySymbol": "USDC",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x7F5c764cBc14f9669B88837ca1490cCa17c31607/logo-128.png",
 			"decimals": 6,
@@ -2129,6 +2175,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8480199E5D711399ABB4D51bDa329E064c89ad77/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x85269091b2295c73c03a783b02e9ab0c75fbfaf2": {
+			"address": "0x85269091b2295c73c03a783b02e9ab0c75fbfaf2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDCe-WLD10",
+			"symbol": "xUSDCe-WLD10",
+			"displayName": "xUSDCe-WLD10",
+			"displaySymbol": "xUSDCe-WLD10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x85269091B2295C73C03A783b02e9ab0C75FbFaF2/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2279,14 +2339,30 @@
 		"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9": {
 			"address": "0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9",
 			"underlyingTokensAddresses": [],
-			"type": "Stablecoin",
+			"type": "",
 			"name": "Synth sUSD",
 			"symbol": "sUSD",
 			"displayName": "Synth sUSD",
 			"displaySymbol": "sUSD",
-			"description": "sUSD, or synthetic USD, is a synthetic asset launched by Synthetix Exchange. Like all synthetic assets minted on Synthetix, sUSD is overcollateralized by SNX stakers and mirrors the price of real-world assets (in this case, the US Dollar) via integration with Chainlink oracles.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8c6f28f2F1A3C87F0f938b96d27520d9751ec8d9/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8dc2b8886f289812bb6e58220e740d1f50a00197": {
+			"address": "0x8dc2b8886f289812bb6e58220e740d1f50a00197",
+			"underlyingTokensAddresses": [
+				"0x124d69daeda338b1b31ffc8e429e39c9a991164e"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Velodrome v2 alUSD-USDC Factory yVault",
+			"symbol": "yvVelo-alUSD-USDC-f",
+			"displayName": "Velodrome v2 alUSD-USDC Factory yVault",
+			"displaySymbol": "yvVelo-alUSD-USDC-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x8Dc2B8886F289812Bb6e58220e740D1F50A00197/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -2956,6 +3032,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0xbc26519f936a90e78fe2c9aa2a03cc208f041234": {
+			"address": "0xbc26519f936a90e78fe2c9aa2a03cc208f041234",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "StableV2 AMM - USDC/sUSD",
+			"symbol": "sAMMV2-USDC/sUSD",
+			"displayName": "StableV2 AMM - USDC/sUSD",
+			"displaySymbol": "sAMMV2-USDC/sUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xbC26519f936A90E78fe2C9aA2A03CC208f041234/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0xbc61b71562b01a3a4808d3b9291a3bf743ab3361": {
 			"address": "0xbc61b71562b01a3a4808d3b9291a3bf743ab3361",
 			"underlyingTokensAddresses": [
@@ -3545,12 +3635,12 @@
 		"0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": {
 			"address": "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
 			"underlyingTokensAddresses": [],
-			"type": "Stablecoin",
+			"type": "",
 			"name": "Dai Stablecoin",
 			"symbol": "DAI",
 			"displayName": "Dai Stablecoin",
 			"displaySymbol": "DAI",
-			"description": "DAI is an Ethereum-based stablecoin whose issuance and development is managed by the Maker Protocol and MakerDAO. The price of DAI is soft-pegged to the U.S. dollar and is collateralized by a mix of other cryptocurrencies that are deposited into smart-contract vaults every time new DAI is minted.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1/logo-128.png",
 			"decimals": 18,
@@ -3581,6 +3671,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xdc2B136A9C1FD2a0b9497bB8b11823c2FBf47Ac4/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1": {
+			"address": "0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Worldcoin",
+			"symbol": "WLD",
+			"displayName": "Worldcoin",
+			"displaySymbol": "WLD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xdC6fF44d5d932Cbd77B52E5612Ba0529DC6226F1/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

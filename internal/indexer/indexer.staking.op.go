@@ -1,244 +1,119 @@
 package indexer
 
 import (
-	"context"
 	"math/big"
 	"strconv"
-	"sync"
 	"time"
 
-	goEth "github.com/ethereum/go-ethereum"
-	"github.com/ethereum/go-ethereum/accounts/abi"
-	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func filterStakingPools(
-	chainID uint64,
-	registry env.TContractData,
-	start uint64,
-	end *uint64,
-	wg *sync.WaitGroup,
-	isDone bool,
-) (lastBlock uint64) {
+func retrieveOPStakingData(chainID uint64, vaultAddresses []common.Address, stakingAddresses []common.Address) []storage.TStakingData {
 	/**********************************************************************************************
-	** As we cannot use the WS connection, we will fallback to the regular RPC connection. This
-	** means that we will need to filter the logs from the lastSyncedBlock to the latest block
-	** every x seconds to check if there are new vaults.
+	** First, for all staking contracts, we need to get the reward tokens. This is done via a
+	** multicall, as we need to get the reward tokens for the first 10 indexes for each staking
+	** contract.
 	**********************************************************************************************/
-	client := ethereum.GetRPC(chainID)
-
-	/**********************************************************************************************
-	** First, we need to know when to stop our log fetching. By default, we will fetch until the
-	** current block number, aka nil.
-	** As using nil may cause some issues, we will specify the current block number instead.
-	**********************************************************************************************/
-	if end == nil {
-		blockEnd, _ := client.BlockNumber(context.Background())
-		end = &blockEnd
+	calls := []ethereum.Call{}
+	rewardTokens := map[common.Address][]common.Address{}
+	for _, stakingContract := range stakingAddresses {
+		calls = append(calls, multicalls.GetRewardsToken(stakingContract.Hex(), stakingContract))
 	}
 
-	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
-		if chunkEnd > *end {
-			chunkEnd = *end
-			lastBlock = chunkEnd
+	response := multicalls.Perform(chainID, calls, nil)
+	for _, stakingContract := range stakingAddresses {
+		if _, ok := rewardTokens[stakingContract]; !ok {
+			rewardTokens[stakingContract] = []common.Address{}
 		}
 
-		if chunkEnd >= *end && !isDone && wg != nil {
-			wg.Done()
+		rewardToken := helpers.DecodeAddress(response[stakingContract.Hex()+`rewardsToken`])
+		if (rewardToken != common.Address{}) {
+			rewardTokens[stakingContract] = append(rewardTokens[stakingContract], rewardToken)
 		}
-		opts := &bind.FilterOpts{Start: chunkStart, End: &chunkEnd}
+	}
 
-		currentRegistry, _ := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
-		if log, err := currentRegistry.FilterStakingPoolAdded(opts, nil, nil); err == nil {
-			for log.Next() {
-				if log.Error() != nil {
-					continue
-				}
-				storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
-					StackingPoolAddress: log.Event.StakingPool,
-					VaultAddress:        log.Event.Token,
-				})
+	/******************************************************************************************
+	** Once we have that, the flow is pretty easy: one token, multiple info, but no need to
+	** look at multiple rewards tokens.
+	******************************************************************************************/
+	rewardTokensCalls := []ethereum.Call{}
+	for _, stakingContract := range stakingAddresses {
+		for _, rewardToken := range rewardTokens[stakingContract] {
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetName(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetSymbol(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetDecimals(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardsDuration(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardRate(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetPeriodFinish(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
+		}
+	}
+	rewardTokensResponse := multicalls.Perform(chainID, rewardTokensCalls, nil)
+	allStakingData := []storage.TStakingData{}
+	for i, stakingContract := range stakingAddresses {
+		staking := storage.TStakingData{
+			VaultAddress:   vaultAddresses[i],
+			StakingAddress: stakingContract,
+			RewardTokens:   []storage.TRewardToken{},
+		}
+		for _, rewardToken := range rewardTokens[stakingContract] {
+			duration := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardsDuration`])
+			rate := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardRate`])
+			periodFinish := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`periodFinish`])
+			now := time.Now().Unix()
+			isFinished := periodFinish.Uint64() > 0 && periodFinish.Uint64() < uint64(now)
+			rewardTokenData := storage.TRewardToken{
+				Address:      rewardToken,
+				Name:         helpers.DecodeString(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`name`]),
+				Symbol:       helpers.DecodeString(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`symbol`]),
+				Decimals:     helpers.DecodeUint64(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`decimals`]),
+				Duration:     duration.Uint64(),
+				Rate:         rate.Uint64(),
+				PeriodFinish: periodFinish.Uint64(),
+				IsFinished:   isFinished,
 			}
-		} else {
-			logs.Error(`impossible to FilterStakingPools for YRegistryV4 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
+			staking.RewardTokens = append(staking.RewardTokens, rewardTokenData)
 		}
+		allStakingData = append(allStakingData, staking)
 	}
-	return lastBlock
-}
-
-/**************************************************************************************************
-** Watch for new vaults added to the registry. This function is called by the infinite loop in
-** indexStakingPoolWrapper. It uses the WS connection to listen to the events.
-** It will catch the new vaults and start all the subsequent processes to add them correctly in
-** yDaemon.
-** On errror, it will return the lastSyncedBlock, a boolean to indicate if we should retry and the
-** error.
-**************************************************************************************************/
-func watchStakingPool(
-	chainID uint64,
-	registry env.TContractData,
-	lastSyncedBlock uint64,
-	wg *sync.WaitGroup,
-	isDone bool,
-) (uint64, bool, error) {
-	/**********************************************************************************************
-	** First thing is to connect to the node via a WS connection. We need to use a WS connection
-	** because we need to listen to new events as they are emitted via the node.
-	** Not all nodes support WS connections, so we need to check if the node supports it.
-	**********************************************************************************************/
-	client, err := ethereum.GetWSClient(chainID)
-	if err != nil {
-		if wg != nil && !isDone {
-			wg.Done()
-		}
-		return 0, false, err
-	}
-
-	currentRegistry, _ := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
-	etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
-	contractABI, _ := contracts.YOptimismStakingRewardRegistryMetaData.GetAbi()
-	topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StakingPoolAdded`].ID}}...)
-	query := goEth.FilterQuery{
-		FromBlock: big.NewInt(int64(registry.Block)),
-		Addresses: []common.Address{registry.Address},
-		Topics:    topics,
-	}
-	stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
-	if err != nil {
-		logs.Error(err)
-		if wg != nil && !isDone {
-			wg.Done()
-		}
-		return 0, false, err
-	}
-	defer sub.Unsubscribe()
-
-	/** 🔵 - Yearn *************************************************************************************
-	** Handle historical events
-	**************************************************************************************************/
-	for _, log := range history {
-		value, err := currentRegistry.ParseStakingPoolAdded(log)
-		if err != nil {
-			continue
-		}
-		storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
-			StackingPoolAddress: value.StakingPool,
-			VaultAddress:        value.Token,
-		})
-	}
-	if wg != nil && !isDone {
-		wg.Done()
-	}
-
-	/**********************************************************************************************
-	** Listen and handle new events
-	**********************************************************************************************/
-	for {
-		select {
-		case log := <-stream:
-			value, err := currentRegistry.ParseStakingPoolAdded(log)
-			if err != nil {
-				continue
-			}
-			lastSyncedBlock = value.Raw.BlockNumber
-			storage.StoreOPStaking(chainID, models.TStakingPoolAdded{
-				StackingPoolAddress: value.StakingPool,
-				VaultAddress:        value.Token,
-			})
-		case err := <-sub.Err():
-			logs.Error(err)
-			return lastSyncedBlock, true, err
-		}
-	}
-}
-
-/**************************************************************************************************
-** As WS connections can be lost, can be instable or can just not be supported by the node, we need
-** to have a fallback to the regular RPC connection.
-** This function is called by the infinite loop and will try to index the new vaults using the WS
-** but will also provide a way to catch the new vaults via the RPC connection.
-**************************************************************************************************/
-func indexStakingPoolWrapper(
-	chainID uint64,
-	registry env.TContractData,
-	higherIndexedBlockNumber uint64,
-	wg *sync.WaitGroup,
-) {
-	isDone := false
-	lastSyncedBlock := higherIndexedBlockNumber
-
-	/**********************************************************************************************
-	** Initialize the infinite loop to listen to new events. This is a wrapper around the actual
-	** indexer to be able to catch the errors, to restart the indexer or just to exit the loop to
-	** fallback to another method.
-	**********************************************************************************************/
-	shouldRetry := true
-	for {
-		/******************************************************************************************
-		** Just checking if the connection is alive, if not, we will fallback to the filter method.
-		** We must close the client we openned.
-		******************************************************************************************/
-		var err error
-		if _, err := ethereum.GetWSClient(chainID); err != nil {
-			/**********************************************************************************************
-			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
-			** latest block. This is a fallback method in case the WS connection is not available.
-			** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
-			** function under certain conditions while avoiding multiple calls to the same function.
-			**********************************************************************************************/
-			for {
-				lastBlock := filterStakingPools(
-					chainID,
-					registry,
-					lastSyncedBlock,
-					nil,
-					wg,
-					isDone,
-				)
-				isDone = true
-				lastSyncedBlock = lastBlock
-				time.Sleep(1 * time.Minute)
-			}
-		}
-
-		lastSyncedBlock, shouldRetry, err = watchStakingPool(
-			chainID,
-			registry,
-			lastSyncedBlock,
-			wg,
-			isDone,
-		)
-		isDone = true
-		if err != nil {
-			logs.Error(`error while indexing staking pools from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-		}
-		if shouldRetry {
-			time.Sleep(30 * time.Second)
-			continue
-		}
-		break
-	}
+	return allStakingData
 }
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `IndexStakingPools` ...
 **************************************************************************************************/
-func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Address]models.TStakingPoolAdded) {
+func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Address]storage.TStakingData) {
+	allVaults := []common.Address{}
+	allStaking := []common.Address{}
+
+	/**********************************************************************************************
+	** Some staking contracts might be deployed outside of the Yearn ecosystem and are not indexed
+	** in the Yearn registry. We need to index them manually.
+	**********************************************************************************************/
+	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
+	if len(extraStakingContracts) > 0 {
+		for _, contract := range extraStakingContracts {
+			if contract.Tag == `OP BOOST` {
+				allVaults = append(allVaults, contract.VaultAddress)
+				allStaking = append(allStaking, contract.StakingAddress)
+			}
+		}
+	}
+
 	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
-	if len(stakingContracts) == 0 {
+	if len(stakingContracts) == 0 && len(allVaults) == 0 {
+		logs.Error(`No staking contract`)
 		return
 	}
 
 	/** 🔵 - Yearn *********************************************************************************
-	** Find the staking registry for the OP boost
+	** Find the staking registry for the OP boost staking contracts.
 	**********************************************************************************************/
 	registry := env.TContractData{}
 	for _, contract := range stakingContracts {
@@ -248,23 +123,95 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 		}
 	}
 
-	if (registry.Address == common.Address{}) {
-		return
-	}
-	wg := sync.WaitGroup{}
+	if (registry.Address != common.Address{}) {
+		/******************************************************************************************
+		** In order to get the staking contracts, a few steps are required. We need to get the
+		** number of tokens with staking contract (which are vaults), then we need to get the
+		** staking contract for each of them.
+		******************************************************************************************/
+		client := ethereum.GetRPC(chainID)
+		stakingRegistry, err := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
+		if err != nil {
+			logs.Error(`Failed to connect to the juiced staking registry contract`, err)
+			return
+		}
 
-	/** 🔵 - Yearn *****************************************************************************
-	** After retrieving the highest block number we can proceed to index new pools.
+		/******************************************************************************************
+		** We first need to get the number of vaults that have a staking contract attached to them.
+		******************************************************************************************/
+		numberOfTokens, err := stakingRegistry.NumTokens(nil)
+		if err != nil {
+			logs.Error(`Failed to retrieve the number of staking contract`, err)
+			return
+		}
+
+		/******************************************************************************************
+		** Then, via a multicall, we need to call the `tokens(idx)` method from the stakingRegistry
+		** contract. This will give us the address of the vault for a given index. Once we have
+		** that, we can know two things: the index of a vault and the address of that vault.
+		******************************************************************************************/
+		calls := []ethereum.Call{}
+		assetCalls := []ethereum.Call{}
+		for i := int64(0); i < int64(numberOfTokens.Int64()); i++ {
+			calls = append(calls, multicalls.GetStakingTokenByIndex(
+				strconv.FormatInt(i, 10),
+				registry.Address,
+				big.NewInt(i),
+			))
+		}
+		callResponse := multicalls.Perform(chainID, calls, nil)
+		for i := int64(0); i < int64(numberOfTokens.Int64()); i++ {
+			rawVaultAddress := callResponse[strconv.FormatInt(i, 10)+`tokens`]
+			if len(rawVaultAddress) == 0 {
+				continue
+			}
+			vaultAddress := helpers.DecodeAddress(rawVaultAddress)
+			assetCalls = append(assetCalls, multicalls.GetStakingPoolForVault(
+				vaultAddress.Hex(),
+				registry.Address,
+				vaultAddress,
+			))
+		}
+
+		/******************************************************************************************
+		** Then, via a multicall, we need to call the `asset` method from the individual gauge
+		** contract. This will give us the address of the vault assigned to that specific gauge,
+		** and we will then be able to link the gauge to the vault.
+		******************************************************************************************/
+		assetResponse := multicalls.Perform(chainID, assetCalls, nil)
+		for i := int64(0); i < int64(numberOfTokens.Int64()); i++ {
+			rawVaultAddress := callResponse[strconv.FormatInt(i, 10)+`tokens`]
+			if len(rawVaultAddress) == 0 {
+				continue
+			}
+			vaultAddress := helpers.DecodeAddress(rawVaultAddress)
+
+			rawStakingAddress := assetResponse[vaultAddress.Hex()+`stakingPool`]
+			if len(rawStakingAddress) == 0 {
+				continue
+			}
+			stakingAddress := helpers.DecodeAddress(rawStakingAddress)
+			allVaults = append(allVaults, vaultAddress)
+			allStaking = append(allStaking, stakingAddress)
+		}
+	}
+	result := retrieveOPStakingData(chainID, allVaults, allStaking)
+
+	/******************************************************************************************
+	** Then, via a multicall, we need to call the `asset` method from the individual gauge
+	** contract. This will give us the address of the vault assigned to that specific gauge,
+	** and we will then be able to link the gauge to the vault.
 	******************************************************************************************/
-	wg.Add(1)
-	go indexStakingPoolWrapper(chainID, registry, registry.Block, &wg)
-	wg.Wait()
+	for _, stakingElement := range result {
+		key := stakingElement.VaultAddress.Hex() + stakingElement.StakingAddress.Hex()
+		storage.StoreOPStaking(chainID, key, stakingElement)
+	}
 
 	/** 🔵 - Yearn *********************************************************************************
 	** This part is only accessed once, once the `historical` pools, aka that are already deployed
 	** and indexed, are retrieved. New deployed pools will not hit this part, but will be handle
 	** in the above functions directly
 	**********************************************************************************************/
-	stakingPoolsFromRegistry, _ = storage.ListOPStaking(chainID, storage.PerPool)
-	return stakingPoolsFromRegistry
+	stakingMap, _ := storage.ListOPStaking(chainID, storage.PerPool)
+	return stakingMap
 }

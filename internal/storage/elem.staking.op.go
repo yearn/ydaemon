@@ -5,7 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
-	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
 var _opStakingSyncMap = make(map[uint64]*sync.Map)
@@ -20,28 +20,28 @@ const (
 /**************************************************************************************************
 ** StoreOPStaking will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
-func StoreOPStaking(chainID uint64, pool models.TStakingPoolAdded) {
-	safeSyncMap(_opStakingSyncMap, chainID).Store(pool.StackingPoolAddress, pool)
+func StoreOPStaking(chainID uint64, key string, stakingElement TStakingData) {
+	safeSyncMap(_opStakingSyncMap, chainID).Store(key, stakingElement)
 }
 
 /**************************************************************************************************
 ** ListOPStaking will retrieve the all the vaults added to the registries from the
 ** given chainID
 **************************************************************************************************/
-func ListOPStaking(chainID uint64, key TStakingKey) (asMap map[common.Address]models.TStakingPoolAdded, asSlice []models.TStakingPoolAdded) {
-	asMap = make(map[common.Address]models.TStakingPoolAdded) // make to avoid nil map
+func ListOPStaking(chainID uint64, key TStakingKey) (asMap map[common.Address]TStakingData, asSlice []TStakingData) {
+	asMap = make(map[common.Address]TStakingData) // make to avoid nil map
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the stakingPools to the map and slice.
 	**********************************************************************************************/
 	safeSyncMap(_opStakingSyncMap, chainID).Range(func(key, value interface{}) bool {
-		stakingContract := value.(models.TStakingPoolAdded)
+		stakingElement := value.(TStakingData)
 		if key == PerVault {
-			asMap[stakingContract.VaultAddress] = stakingContract
+			asMap[stakingElement.VaultAddress] = stakingElement
 		} else {
-			asMap[stakingContract.StackingPoolAddress] = stakingContract
+			asMap[stakingElement.StakingAddress] = stakingElement
 		}
-		asSlice = append(asSlice, stakingContract)
+		asSlice = append(asSlice, stakingElement)
 		return true
 	})
 	return asMap, asSlice
@@ -50,18 +50,44 @@ func ListOPStaking(chainID uint64, key TStakingKey) (asMap map[common.Address]mo
 /**************************************************************************************************
 ** GetOPStakingForVault
 **************************************************************************************************/
-func GetOPStakingForVault(chainID uint64, vault common.Address) (models.TStakingPoolAdded, bool) {
+func GetOPStakingForVault(chainID uint64, vault common.Address) (TStakingData, bool) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingPool for the vault.
 	**********************************************************************************************/
-	var stakingPool models.TStakingPoolAdded
+	var stakingPool TStakingData
+	found := false
+
 	safeSyncMap(_opStakingSyncMap, chainID).Range(func(key, value interface{}) bool {
-		stakingContract := value.(models.TStakingPoolAdded)
-		if addresses.Equals(stakingContract.VaultAddress, vault) {
-			stakingPool = stakingContract
+		stakingElement := value.(TStakingData)
+		if addresses.Equals(stakingElement.VaultAddress, vault) {
+			stakingPool = stakingElement
+			found = true
 			return false
 		}
 		return true
 	})
-	return stakingPool, stakingPool != (models.TStakingPoolAdded{})
+	return stakingPool, found
+}
+
+/**************************************************************************************************
+** AssignOPStakingRewardAPR will update an entry in the _opStakingSyncMap syncMap to assign the
+** APR to the staking pool.
+**************************************************************************************************/
+func AssignOPStakingRewardAPR(chainID uint64, vault common.Address, rewardToken common.Address, apr *bigNumber.Float) {
+	/**********************************************************************************************
+	** We can just iterate over the syncMap until we find the stakingContract for the vault.
+	**********************************************************************************************/
+	safeSyncMap(_opStakingSyncMap, chainID).Range(func(key, value interface{}) bool {
+		stakingElement := value.(TStakingData)
+		if addresses.Equals(stakingElement.VaultAddress, vault) {
+			for i, reward := range stakingElement.RewardTokens {
+				if addresses.Equals(reward.Address, rewardToken) {
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
+					safeSyncMap(_opStakingSyncMap, chainID).Store(key, stakingElement)
+					return false
+				}
+			}
+		}
+		return true
+	})
 }

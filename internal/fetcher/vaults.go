@@ -147,13 +147,14 @@ func RetrieveAllVaults(
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch theses basics informations.
 	**********************************************************************************************/
-	newVaultMap := fetchVaultsBasicInformations(chainID, updatedVaultMap)
+	newVaultList := fetchVaultsBasicInformations(chainID, updatedVaultMap)
 
 	/**********************************************************************************************
 	** Once everything is setup we can re-store the elements to save them in our storage
 	**********************************************************************************************/
-	for _, vault := range newVaultMap {
+	for _, vault := range newVaultList {
 		vault.ChainID = chainID
+		vault.RegistryAddress = vaults[vault.Address].RegistryAddress
 
 		/******************************************************************************************
 		** We need to check if the associated registry is marked as hidden. If so, we need to mark
@@ -206,7 +207,34 @@ func RetrieveAllVaults(
 
 		storage.StoreVault(chainID, vault)
 	}
-	vaultMap, _ = storage.ListVaults(chainID)
-	storage.StoreVaultsToJson(chainID, vaultMap)
+
+	/**********************************************************************************************
+	** Somehow, some properties are not properly updated. Let's make sure we have them properly
+	** set.
+	** If the registry address for a given vault is set to the zero address, we will set it to the
+	** registry address of the vault we have in the vaults map.
+	**********************************************************************************************/
+	vaultMapFromStorage, _ := storage.ListVaults(chainID)
+	for _, vault := range vaultMap {
+		if addresses.Equals(vault.RegistryAddress, common.HexToAddress(`0x0000000000000000000000000000000000000000`)) {
+			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
+		}
+		if !vault.Metadata.Inclusion.IsSet {
+			vault.Metadata.Inclusion.IsYearn = env.IsRegistryFromYearnCore(chainID, vault.RegistryAddress)
+			vault.Metadata.Inclusion.IsYearnJuiced = env.IsRegistryFromJuiced(chainID, vault.RegistryAddress)
+			vault.Metadata.Inclusion.IsPublicERC4626 = env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress)
+			vault.Metadata.Inclusion.IsGimme = false //False by default
+			if vault.Metadata.Inclusion.IsPublicERC4626 {
+				vault.Endorsed = false
+				vault.Metadata.IsHidden = true
+				vault.Metadata.IsHighlighted = false
+			}
+
+			vault.Metadata.Inclusion.IsSet = true
+		}
+
+		vaultMapFromStorage[vault.Address] = vault
+	}
+	storage.StoreVaultsToJson(chainID, vaultMapFromStorage)
 	return vaultMap
 }

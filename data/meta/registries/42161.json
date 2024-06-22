@@ -69,6 +69,16 @@
 		"chainID": 42161,
 		"blockNumber": 4842579
 	},
+	"0x2e48847fe29c3883c98125cb2c44244d6602d549": {
+		"address": "0x2e48847fe29c3883c98125cb2c44244d6602d549",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 42161,
+		"blockNumber": 192135954
+	},
 	"0x368d79018e525db25dba517a0b5d3cc34c87cafa": {
 		"address": "0x368d79018e525db25dba517a0b5d3cc34c87cafa",
 		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
@@ -209,6 +219,16 @@
 		"chainID": 42161,
 		"blockNumber": 5591345
 	},
+	"0x9cd4a7c7e7869aa8a2a6b28da6b4cfa1f3e2f1f0": {
+		"address": "0x9cd4a7c7e7869aa8a2a6b28da6b4cfa1f3e2f1f0",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 42161,
+		"blockNumber": 192133825
+	},
 	"0xb119e90beb09fcf9abc92c20a8d84fe8bdfcc6e3": {
 		"address": "0xb119e90beb09fcf9abc92c20a8d84fe8bdfcc6e3",
 		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
@@ -268,5 +288,25 @@
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
+	},
+	"0xedc4949adb7c6e7aeed4ae2545cb4aef82583bd8": {
+		"address": "0xedc4949adb7c6e7aeed4ae2545cb4aef82583bd8",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 42161,
+		"blockNumber": 190123000
+	},
+	"0xfe7aebd759c6e251afa44af17de4cc88f83ff6a4": {
+		"address": "0xfe7aebd759c6e251afa44af17de4cc88f83ff6a4",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 42161,
+		"blockNumber": 188036869
 	}
 }

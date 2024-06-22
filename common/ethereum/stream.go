@@ -157,7 +157,7 @@ func (r *Reader) linkHistory(ctx context.Context, stream <-chan chain.Log, q *et
 	defer cancel()
 
 	if r.ShouldRangeLimit {
-		client, _ := GetWSClient(r.ChainID)
+		client, _ := GetWSClient(r.ChainID, true)
 		blockEnd, _ := client.BlockNumber(context.Background())
 		end := &blockEnd
 		start := q.FromBlock.Uint64()

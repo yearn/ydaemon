@@ -34,13 +34,13 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** - The totalSupply
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
-	calls = append(calls, multicalls.GetPeriodFinish(stakingContract.Hex(), stakingContract))
-	calls = append(calls, multicalls.GetRewardRate(stakingContract.Hex(), stakingContract))
-	calls = append(calls, multicalls.GetTotalSupply(stakingContract.Hex(), stakingContract))
+	calls = append(calls, multicalls.GetPeriodFinish(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
+	calls = append(calls, multicalls.GetRewardRate(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
+	calls = append(calls, multicalls.GetTotalSupply(stakingContract.StakingAddress.Hex(), stakingContract.StakingAddress))
 	response := multicalls.Perform(chainID, calls, nil)
-	periodFinish := helpers.DecodeBigInt(response[stakingContract.Hex()+`periodFinish`])
-	rewardRateRaw := helpers.DecodeBigInt(response[stakingContract.Hex()+`rewardRate`])
-	totalSupplyRaw := helpers.DecodeBigInt(response[stakingContract.Hex()+`totalSupply`])
+	periodFinish := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`periodFinish`])
+	rewardRateRaw := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`rewardRate`])
+	totalSupplyRaw := helpers.DecodeBigInt(response[stakingContract.StakingAddress.Hex()+`totalSupply`])
 	rewardToken := common.HexToAddress(`0x41252E8691e964f7DE35156B68493bAb6797a275`) // DYFI
 
 	/**********************************************************************************************
@@ -81,6 +81,7 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
+		storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, bigNumber.NewFloat(0))
 		return bigNumber.NewFloat(0), false
 	}
 
@@ -105,13 +106,27 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** - For the gauge `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`, we should use 48 decimals
 	** - For all v3 vaults, we should use 36 decimals
 	**********************************************************************************************/
-	if addresses.Equals(stakingContract, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
-		rewardsTokenDecimals = 48
-	}
 	vaultVersionMajor := strings.Split(vault.Version, `.`)[0]
-	if vaultVersionMajor == `3` {
+	if addresses.Equals(stakingContract.StakingAddress, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
+		rewardsTokenDecimals = 48
+	} else if vaultVersionMajor == `3` {
+		rewardsTokenDecimals = 36
+	} else if addresses.Equals(stakingContract.StakingAddress, `0x7Fd8Af959B54A677a1D8F92265Bd0714274C56a3`) {
+		rewardsTokenDecimals = 18
+	} else if addresses.Equals(stakingContract.StakingAddress, `0x81d93531720d86f0491DeE7D03f30b3b5aC24e59`) {
+		rewardsTokenDecimals = 18
+	} else if addresses.Equals(stakingContract.StakingAddress, `0xB61F8fff8Dd8C438E0d61C07b5536cE3d728f660`) {
+		rewardsTokenDecimals = 18
+	} else if addresses.Equals(stakingContract.StakingAddress, `0x28da6dE3e804bDdF0aD237CFA6048f2930D0b4Dc`) {
+		rewardsTokenDecimals = 18
+	} else if addresses.Equals(stakingContract.StakingAddress, `0x6130E6cD924a40b24703407F246966D7435D4998`) {
+		rewardsTokenDecimals = 18
+	} else if addresses.Equals(stakingContract.StakingAddress, `0x107717C98C8125A94D3d2Cc82b86a1b705f3A27C`) {
+		rewardsTokenDecimals = 18
+	} else {
 		rewardsTokenDecimals = 36
 	}
+
 	rewardRate := helpers.ToNormalizedAmount(rewardRateRaw, rewardsTokenDecimals)
 	totalSupply := helpers.ToNormalizedAmount(totalSupplyRaw, vaultToken.Decimals)
 	perStakingTokenRate := bigNumber.NewFloat(0).Div(rewardRate, totalSupply)
@@ -123,5 +138,8 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
+
+	storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, stakingRewardAPR)
+
 	return stakingRewardAPR, true
 }

@@ -3,7 +3,6 @@ package storage
 import (
 	"encoding/json"
 	"io"
-	"math/big"
 	"net/http"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -24,19 +23,19 @@ type TGammaMerklAPIResp struct {
 }
 
 type TGammaDataAPIResp struct {
-	Address     string   `json:"address"`
-	PoolAddress string   `json:"poolAddress"`
-	Token0      string   `json:"token0"`
-	Token1      string   `json:"token1"`
-	Name        string   `json:"name"`
-	Decimals0   int      `json:"decimals0"`
-	Decimals1   int      `json:"decimals1"`
-	Tvl0        float64  `json:"tvl0"`
-	Tvl1        float64  `json:"tvl1"`
-	TvlUSD      string   `json:"tvlUSD"`
-	PoolTvlUSD  string   `json:"poolTvlUSD"`
-	PoolFeesUSD string   `json:"poolFeesUSD"`
-	TotalSupply *big.Int `json:"totalSupply"`
+	Address     string  `json:"address"`
+	PoolAddress string  `json:"poolAddress"`
+	Token0      string  `json:"token0"`
+	Token1      string  `json:"token1"`
+	Name        string  `json:"name"`
+	Decimals0   int     `json:"decimals0"`
+	Decimals1   int     `json:"decimals1"`
+	Tvl0        float64 `json:"tvl0"`
+	Tvl1        float64 `json:"tvl1"`
+	TvlUSD      string  `json:"tvlUSD"`
+	PoolTvlUSD  string  `json:"poolTvlUSD"`
+	PoolFeesUSD string  `json:"poolFeesUSD"`
+	TotalSupply any     `json:"totalSupply"`
 	Returns     struct {
 		Monthly struct {
 			APR float64 `json:"feeApr"`

@@ -18,7 +18,7 @@ import (
 
 func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *graphql.Request {
 	return graphql.NewRequest(`{
-		harvests(where: {vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]})
+		harvests(first: 1000, orderBy: timestamp, orderDirection: desc, where: {vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]})
 		` + helpers.GetHarvestsForVaults() + `
     }`)
 }
@@ -59,6 +59,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 			addresses.ToMixedcase(harvest.Vault.Token.Id),
 		)
 		decimals := harvest.Vault.Token.Decimals
+
 		if bigNumber.NewInt().SetString(harvest.Profit).IsZero() && bigNumber.NewInt().SetString(harvest.Loss).IsZero() {
 			continue
 		}

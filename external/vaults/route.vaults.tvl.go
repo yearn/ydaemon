@@ -15,6 +15,12 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
 	vaultsList, _ := storage.ListVaults(chainID)
 	for _, currentVault := range vaultsList {
+		/******************************************************************************************
+		** We want to ignore all non Yearn vaults
+		******************************************************************************************/
+		if !currentVault.Metadata.Inclusion.IsYearn {
+			continue
+		}
 		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 			continue
 		}

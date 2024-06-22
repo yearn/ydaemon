@@ -26,6 +26,20 @@ func GetPeriodFinish(name string, contractAddress common.Address) ethereum.Call 
 	}
 }
 
+func GetRewardsDuration(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := StakingABI.Pack("rewardsDuration")
+	if err != nil {
+		logs.Error("Error packing StakingABI rewardsDuration", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      StakingABI,
+		Method:   `rewardsDuration`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
 func GetRewardRate(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := StakingABI.Pack("rewardRate")
 	if err != nil {

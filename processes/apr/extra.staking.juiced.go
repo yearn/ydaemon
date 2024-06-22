@@ -1,11 +1,8 @@
 package apr
 
 import (
-	"math/big"
-	"strconv"
 	"time"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -19,7 +16,7 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
-	stakingContract, ok := storage.GetJuicedStakingForVault(chainID, vault.Address)
+	stakingElement, ok := storage.GetJuicedStakingDataForVault(chainID, vault.Address)
 	if !ok {
 		return bigNumber.NewFloat(0), false
 	}
@@ -35,68 +32,40 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 	}
 
 	/**********************************************************************************************
-	** We have no way to know how many reward tokens there are, so we will loop through the first
-	** 10 reward tokens and check if they exist. If they do, we will compute the APR for them.
-	** First step is then to get the rewards tokens for these indexes and remove the empty ones.
-	** We will also need to get the totalSupply of the staking contract. As we need it only
-	** once, it's more efficient to get it here.
+	** Once we got it we will need a few things from the staking contract. We will use a multicall
+	** to retrieve the following:
+	** - The totalSupply
+	** - The vault decimals
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
-	rewardTokens := []common.Address{}
-	calls = append(calls, multicalls.GetTotalSupply(stakingContract.Hex(), stakingContract))
+	calls = append(calls, multicalls.GetTotalSupply(stakingElement.StakingAddress.Hex(), stakingElement.StakingAddress))
 	calls = append(calls, multicalls.GetDecimals(vault.Address.Hex(), vault.Address))
-	for i := 0; i < 10; i++ {
-		calls = append(calls, multicalls.GetRewardTokens(strconv.Itoa(i), stakingContract, int64(i)))
-	}
-
 	response := multicalls.Perform(chainID, calls, nil)
-	rawTotalSupply := helpers.DecodeBigInt(response[stakingContract.Hex()+`totalSupply`])
+	rawTotalSupply := helpers.DecodeBigInt(response[stakingElement.StakingAddress.Hex()+`totalSupply`])
 	rawVaultDecimals := helpers.DecodeUint64(response[vault.Address.Hex()+`decimals`])
-	for i := 0; i < 10; i++ {
-		rewardToken := helpers.DecodeAddress(response[strconv.Itoa(i)+`rewardTokens`])
-		if (rewardToken != common.Address{}) {
-			rewardTokens = append(rewardTokens, rewardToken)
-		}
-	}
-
-	/**********************************************************************************************
-	** Once we have the indexes of the reward tokens, we can do another multicall to get, for each
-	** of them, the reward data, the decimals of the reward token
-	**********************************************************************************************/
-	rewardTokensCalls := []ethereum.Call{}
-	for _, rewardToken := range rewardTokens {
-		rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardData(rewardToken.Hex(), stakingContract, rewardToken))
-		rewardTokensCalls = append(rewardTokensCalls, multicalls.GetDecimals(rewardToken.Hex(), rewardToken))
-	}
-	rewardTokensResponse := multicalls.Perform(chainID, rewardTokensCalls, nil)
 
 	/**********************************************************************************************
 	** Once it's done, we can loop through the reward tokens and compute the APR for each of them
 	** and cumulate them.
 	**********************************************************************************************/
-	for _, rewardToken := range rewardTokens {
-		rewardDataKey := rewardTokensResponse[rewardToken.Hex()+`rewardData`]
-		rewardRate := bigNumber.NewInt(0)
-		rewardDuration := bigNumber.NewInt(0)
-		rewardPeriodFinish := bigNumber.NewInt(0)
-		if len(rewardDataKey) > 0 {
-			rewardDuration = bigNumber.SetInt(rewardDataKey[1].(*big.Int))
-			rewardPeriodFinish = bigNumber.SetInt(rewardDataKey[2].(*big.Int))
-			rewardRate = bigNumber.SetInt(rewardDataKey[3].(*big.Int))
-		}
-		rewardDecimals := helpers.DecodeUint64(rewardTokensResponse[rewardToken.Hex()+`decimals`])
+	for _, rewardToken := range stakingElement.RewardTokens {
+		rewardRate := rewardToken.Rate
+		rewardDuration := rewardToken.Duration
+		rewardPeriodFinish := rewardToken.PeriodFinish
+		rewardDecimals := rewardToken.Decimals
 
 		/**********************************************************************************************
 		** If periodFinish is before now, aka rewards are over, we can stop here
 		**********************************************************************************************/
 		now := time.Now().Unix()
-		if rewardPeriodFinish.Int64() < now {
-			return bigNumber.NewFloat(0), false
+		if rewardPeriodFinish < uint64(now) {
+			storage.AssignJuicedStakingRewardAPR(chainID, vault.Address, rewardToken.Address, bigNumber.NewFloat(0))
+			continue
 		}
 
 		rewardPerWeek := bigNumber.NewFloat(0).Mul(
-			bigNumber.NewFloat(0).SetInt(rewardRate),
-			bigNumber.NewFloat(0).SetInt(rewardDuration),
+			bigNumber.NewFloat(0).SetUint64(rewardRate),
+			bigNumber.NewFloat(0).SetUint64(rewardDuration),
 		)
 		normalizedTotalSupply := helpers.ToNormalizedAmount(rawTotalSupply, rawVaultDecimals)
 
@@ -104,7 +73,7 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 		** Retrieve the price of the reward token from our storage
 		**********************************************************************************************/
 		rewardsPrice := bigNumber.NewFloat(0)
-		if tokenPrice, ok := storage.GetPrice(vault.ChainID, rewardToken); ok {
+		if tokenPrice, ok := storage.GetPrice(vault.ChainID, rewardToken.Address); ok {
 			rewardsPrice = tokenPrice.HumanizedPrice
 		}
 		secondsPerYear := bigNumber.NewFloat(31_556_952)
@@ -122,9 +91,11 @@ func computeJuicedStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNu
 		stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, decimalsScale)       // (rewardPerWeek * rewardsPrice) / (vaultPrice * normalizedTotalSupply) / decimals
 
 		// The stakingRewardAPR at this point is based on a RewardDuration. We want to annualize it based on secondsPerYear
-		rewardDurationAsFloat := bigNumber.NewFloat(0).SetInt(rewardDuration)
+		rewardDurationAsFloat := bigNumber.NewFloat(0).SetUint64(rewardDuration)
 		stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, rewardDurationAsFloat)
 		stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, secondsPerYear)
+
+		storage.AssignJuicedStakingRewardAPR(chainID, vault.Address, rewardToken.Address, stakingRewardAPR)
 		cumulatedStakingRewardAPR = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPR, stakingRewardAPR)
 	}
 

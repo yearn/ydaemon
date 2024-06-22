@@ -38,17 +38,17 @@ func calculateStakingMetrics(chainID uint64) {
 	for _, pool := range allStackingPoolAdded {
 		currentToken, ok := storage.GetERC20(chainID, pool.VaultAddress)
 		if !ok {
-			logs.Warning(`[retriveStakingContracts] impossible to find token for pool address`, pool.StackingPoolAddress.Hex())
+			logs.Warning(`[retriveStakingContracts] impossible to find token for pool address`, pool.StakingAddress.Hex())
 			continue
 		}
 		if !currentToken.IsVaultLike() {
 			logs.Warning(`[retriveStakingContracts] token is not a vault`, pool.VaultAddress.Hex())
 			continue
 		}
-		calls = append(calls, multicalls.GetTotalSupply(pool.StackingPoolAddress.Hex(), pool.StackingPoolAddress))
-		calls = append(calls, multicalls.GetDecimals(pool.StackingPoolAddress.Hex(), pool.VaultAddress))
+		calls = append(calls, multicalls.GetTotalSupply(pool.StakingAddress.Hex(), pool.StakingAddress))
+		calls = append(calls, multicalls.GetDecimals(pool.StakingAddress.Hex(), pool.VaultAddress))
 		calls = append(calls, multicalls.GetPriceUsdcRecommendedCall(
-			pool.StackingPoolAddress.Hex(),
+			pool.StakingAddress.Hex(),
 			env.CHAINS[chainID].LensContract.Address,
 			pool.VaultAddress,
 		))
@@ -66,9 +66,9 @@ func calculateStakingMetrics(chainID uint64) {
 	** chain ID and the vault address of the pool.
 	**********************************************************************************************/
 	for _, pool := range allStackingPoolAdded {
-		totalSupply := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`totalSupply`])
-		tokenPrice := helpers.DecodeBigInt(response[pool.StackingPoolAddress.Hex()+`getPriceUsdcRecommended`])
-		decimals := helpers.DecodeUint64(response[pool.StackingPoolAddress.Hex()+`decimals`])
+		totalSupply := helpers.DecodeBigInt(response[pool.StakingAddress.Hex()+`totalSupply`])
+		tokenPrice := helpers.DecodeBigInt(response[pool.StakingAddress.Hex()+`getPriceUsdcRecommended`])
+		decimals := helpers.DecodeUint64(response[pool.StakingAddress.Hex()+`decimals`])
 
 		_, price := helpers.FormatAmount(tokenPrice.String(), 6)
 		_, amount := helpers.FormatAmount(totalSupply.String(), int(decimals))
@@ -79,7 +79,7 @@ func calculateStakingMetrics(chainID uint64) {
 		tvl, _ := bigNumber.NewFloat(0).Mul(amount, price).Float64()
 		stakingData[chainID][pool.VaultAddress.Hex()] = models.TStaking{
 			Available:    true,
-			Address:      pool.StackingPoolAddress,
+			Address:      pool.StakingAddress,
 			VaultAddress: pool.VaultAddress,
 			Risk:         getTVLImpact(bigNumber.NewFloat(0).Mul(amount, price)),
 			TVL:          tvl,

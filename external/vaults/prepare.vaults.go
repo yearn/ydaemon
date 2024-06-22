@@ -31,6 +31,38 @@ func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumb
 	return fHumanizedTVLPrice
 }
 
+func assignStakingRewards(chainID uint64, stakingData storage.TStakingData, source string) TStakingData {
+	rewards := []TStakingRewardsData{}
+	for _, reward := range stakingData.RewardTokens {
+		normalizedRewardRate := helpers.ToNormalizedAmount(bigNumber.NewFloat(0).SetUint64(reward.Rate).Int(), reward.Decimals)
+		rewardPerDuration := bigNumber.NewFloat(0).Mul(normalizedRewardRate, bigNumber.NewFloat(0).SetUint64(reward.Duration))
+		durationScaledToWeek := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(0).SetUint64(reward.Duration), bigNumber.NewFloat(0).SetUint64(604800))
+		rewardsPerWeek := bigNumber.NewFloat(0).Div(rewardPerDuration, durationScaledToWeek)
+		_, tokenPrice := buildTokenPrice(chainID, common.NewMixedcaseAddress(reward.Address))
+
+		if reward.IsFinished {
+			rewardsPerWeek = bigNumber.NewFloat()
+		}
+		rewards = append(rewards, TStakingRewardsData{
+			Address:    reward.Address.Hex(),
+			Name:       reward.Name,
+			Symbol:     reward.Symbol,
+			Decimals:   reward.Decimals,
+			IsFinished: reward.IsFinished,
+			APR:        reward.APR,
+			PerWeek:    rewardsPerWeek,
+			Price:      tokenPrice,
+		})
+	}
+	staking := TStakingData{
+		Address:   stakingData.StakingAddress.Hex(),
+		Available: true,
+		Source:    source,
+		Rewards:   rewards,
+	}
+	return staking
+}
+
 func toSimplifiedVersion(
 	vault TExternalVault,
 	vaultAsStrategy models.TStrategy,
@@ -86,36 +118,25 @@ func toSimplifiedVersion(
 	** be an op boost staking pool.
 	**********************************************************************************************/
 	opStakingData, hasStakingPool := storage.GetOPStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
-	if hasStakingPool {
-		staking = TStakingData{
-			Address:   opStakingData.StackingPoolAddress.Hex(),
-			Available: hasStakingPool,
-			Source:    `OP Boost`,
-		}
+	if !staking.Available && hasStakingPool {
+		staking = assignStakingRewards(vault.ChainID, opStakingData, `OP Boost`)
 	}
 
 	veYFIStakingData, hasVeYFIGauge := storage.GetVeYFIStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasVeYFIGauge {
-		staking = TStakingData{
-			Address:   veYFIStakingData.Hex(),
-			Available: hasVeYFIGauge,
-			Source:    `VeYFI`,
-		}
+		staking = assignStakingRewards(vault.ChainID, veYFIStakingData, `VeYFI`)
 	}
 
-	juicedStakingData, hasJuicedGauge := storage.GetJuicedStakingForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	juicedStakingData, hasJuicedGauge := storage.GetJuicedStakingDataForVault(vault.ChainID, common.HexToAddress(vault.Address))
 	if !staking.Available && hasJuicedGauge {
-		staking = TStakingData{
-			Address:   juicedStakingData.Hex(),
-			Available: hasJuicedGauge,
-			Source:    `Juiced`,
-		}
+		staking = assignStakingRewards(vault.ChainID, juicedStakingData, `Juiced`)
 	}
 
 	info := vault.Info
 	info.IsRetired = vault.Details.IsRetired
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
+	info.RiskLevel = vault.Info.RiskLevel
 
 	/**********************************************************************************************
 	** Create the simplified version of the vault.
@@ -128,6 +149,7 @@ func toSimplifiedVersion(
 		Kind:           vault.Kind,
 		Symbol:         vault.Symbol,
 		Name:           vaultName,
+		Description:    vault.Description,
 		Category:       vault.Category,
 		Decimals:       vault.Decimals,
 		ChainID:        vault.ChainID,

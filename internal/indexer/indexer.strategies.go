@@ -219,7 +219,7 @@ func watchNewStrategies(
 	** because we need to listen to new events as they are emitted via the node.
 	** Not all nodes support WS connections, so we need to check if the node supports it.
 	**********************************************************************************************/
-	client, _ := ethereum.GetWSClient(chainID)
+	client, _ := ethereum.GetWSClient(chainID, true)
 
 	switch vault.Version {
 	case `0.2.2`:
@@ -554,7 +554,7 @@ func indexStrategyWrapper(
 	err := error(nil)
 
 	for {
-		if _, err := ethereum.GetWSClient(chainID); err != nil {
+		if _, err := ethereum.GetWSClient(chainID, true); err != nil {
 			/**********************************************************************************************
 			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
 			** latest block. This is a fallback method in case the WS connection is not available.

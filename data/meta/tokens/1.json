@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-18T10:15:18.118948+02:00",
+	"lastUpdate": "2024-06-22T10:44:16.868799+02:00",
 	"version": {
 		"major": 0,
-		"minor": 42,
+		"minor": 43,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -742,6 +742,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x06c03069de266f58d10a0724a4f65c3d4fefff4d": {
+			"address": "0x06c03069de266f58d10a0724a4f65c3d4fefff4d",
+			"underlyingTokensAddresses": [
+				"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Wrapper: Amphor Restaked ETH",
+			"symbol": "sw-amphrETH",
+			"displayName": "Spectra ERC4626 Wrapper: Amphor Restaked ETH",
+			"displaySymbol": "sw-amphrETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x06c03069de266F58d10A0724a4f65C3D4feFfF4D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x06cb22615ba53e60d67bf6c341a0fd5e718e1655": {
 			"address": "0x06cb22615ba53e60d67bf6c341a0fd5e718e1655",
 			"underlyingTokensAddresses": [
@@ -774,6 +790,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x07d1718ff05a8c53c8f05adaed57c0d672945f9a": {
+			"address": "0x07d1718ff05a8c53c8f05adaed57c0d672945f9a",
+			"underlyingTokensAddresses": [
+				"0x65d72aa8da931f047169112fcf34f52dbaae7d18"
+			],
+			"type": "Yearn Vault",
+			"name": "Aladdin rUSD",
+			"symbol": "arUSD",
+			"displayName": "Aladdin rUSD",
+			"displaySymbol": "arUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x07D1718fF05a8C53C8F05aDAEd57C0d672945f9a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1862,6 +1894,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x19747816A030fECDa3394C6062CDF6b9B4dB0E0b/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x198139f26d42f2028c10427a161e2d0e8bb00346": {
+			"address": "0x198139f26d42f2028c10427a161e2d0e8bb00346",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Mellow amphrETH",
+			"symbol": "SY-amphrETH",
+			"displayName": "SY Mellow amphrETH",
+			"displaySymbol": "SY-amphrETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x198139F26d42F2028C10427a161e2d0e8bb00346/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x19b080fe1ffa0553469d20ca36219f17fcf03859": {
@@ -3131,6 +3177,20 @@
 			"decimals": 0,
 			"chainID": 1
 		},
+		"0x28ce264d0938c1051687febdcefacc2242ba9e0e": {
+			"address": "0x28ce264d0938c1051687febdcefacc2242ba9e0e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Super Symbiotic LRT 29AUG2024",
+			"symbol": "YT-weETHs-29AUG2024",
+			"displayName": "YT Super Symbiotic LRT 29AUG2024",
+			"displaySymbol": "YT-weETHs-29AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x28cE264D0938C1051687FEbDCeFacc2242BA9E0E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x29059568bb40344487d62f7450e78b8e6c74e0e5": {
 			"address": "0x29059568bb40344487d62f7450e78b8e6c74e0e5",
 			"underlyingTokensAddresses": [
@@ -3222,6 +3282,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2a41384c28b3e327beda4ffb3d3706cad571d5fb": {
+			"address": "0x2a41384c28b3e327beda4ffb3d3706cad571d5fb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2a41384C28B3E327bEDA4ffB3D3706CAd571d5fb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2a82dcdcbfb88e92021b8bcc3da22703a2e4459c": {
 			"address": "0x2a82dcdcbfb88e92021b8bcc3da22703a2e4459c",
 			"underlyingTokensAddresses": [
@@ -3280,6 +3354,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x2b91426e6f2a88b2c4afc6c279fa8842a23ebd7f": {
+			"address": "0x2b91426e6f2a88b2c4afc6c279fa8842a23ebd7f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow Re7LRT 25JUL2024",
+			"symbol": "PT-Re7LRT-25JUL2024",
+			"displayName": "PT Mellow Re7LRT 25JUL2024",
+			"displaySymbol": "PT-Re7LRT-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2B91426E6F2A88B2C4Afc6c279fA8842A23EBD7F/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x2b95a1dcc3d405535f9ed33c219ab38e8d7e0884": {
@@ -3595,6 +3683,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2EC8C498ec997aD963969a2c93Bf7150a1F5b213/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2ed065f447971768c1117e4a36c80f4a54eb88fa": {
+			"address": "0x2ed065f447971768c1117e4a36c80f4a54eb88fa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow Steakhouse steakLRT 25JUL2024",
+			"symbol": "PT-steakLRT-25JUL2024",
+			"displayName": "PT Mellow Steakhouse steakLRT 25JUL2024",
+			"displaySymbol": "PT-steakLRT-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2ED065f447971768c1117E4A36C80F4a54eb88FA/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4751,6 +4853,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3b621df9b429ed1ad64428ea7d8d142374c45121": {
+			"address": "0x3b621df9b429ed1ad64428ea7d8d142374c45121",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3B621df9B429Ed1AD64428Ea7d8D142374c45121/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3b6831c0077a1e44ed0a21841c3bc4dc11bce833": {
 			"address": "0x3b6831c0077a1e44ed0a21841c3bc4dc11bce833",
 			"underlyingTokensAddresses": [],
@@ -5513,6 +5629,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x44188731d5bb43d0aed555d29f1013aeb13bd4a2": {
+			"address": "0x44188731d5bb43d0aed555d29f1013aeb13bd4a2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow Re7LRT 25JUL2024",
+			"symbol": "YT-Re7LRT-25JUL2024",
+			"displayName": "YT Mellow Re7LRT 25JUL2024",
+			"displaySymbol": "YT-Re7LRT-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x44188731D5bb43d0AED555d29f1013AEb13bD4a2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4425c9c6302bd2a815c21012dc7f692216fb3176": {
 			"address": "0x4425c9c6302bd2a815c21012dc7f692216fb3176",
 			"underlyingTokensAddresses": [],
@@ -5682,6 +5812,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x464f5a15aca6fe787cf54fcf1e8af6207939d297": {
+			"address": "0x464f5a15aca6fe787cf54fcf1e8af6207939d297",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x464F5A15Aca6Fe787Cf54fCF1E8AF6207939d297/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x465a5a630482f3abd6d3b84b39b29b07214d19e5": {
 			"address": "0x465a5a630482f3abd6d3b84b39b29b07214d19e5",
 			"underlyingTokensAddresses": [
@@ -5781,6 +5925,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x46e4DDB5B87152DDA90AFE75daeDfDDAB1C16513/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x470f623e8bc3c870f96516b8cbfc6a27e253424d": {
+			"address": "0x470f623e8bc3c870f96516b8cbfc6a27e253424d",
+			"underlyingTokensAddresses": [
+				"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-amphrETH-1726790425",
+			"symbol": "PT-sw-amphrETH-1726790425",
+			"displayName": "Principal Token: sw-amphrETH-1726790425",
+			"displaySymbol": "PT-sw-amphrETH-1726790425",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x470f623e8bc3C870F96516b8CBfc6A27E253424D/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6172,6 +6332,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4ca48e7dd3970f96ee74d6a573ca5678ea1eb31b": {
+			"address": "0x4ca48e7dd3970f96ee74d6a573ca5678ea1eb31b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow amphrETH 25JUL2024",
+			"symbol": "PT-amphrETH-25JUL2024",
+			"displayName": "PT Mellow amphrETH 25JUL2024",
+			"displaySymbol": "PT-amphrETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4CA48e7Dd3970F96EE74D6A573Ca5678EA1EB31b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4cb5483d87028518c5f35a49c151612a062bfcd0": {
 			"address": "0x4cb5483d87028518c5f35a49c151612a062bfcd0",
 			"underlyingTokensAddresses": [
@@ -6290,6 +6464,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains frxETH and stETH, a token that represents staked ether in Lido, a decentralized ETH 2.0 staking platform.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4d9f9D15101EEC665F77210cB999639f760F831E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4da430a0b5b22705acfcc1bd5ee15603861ed98b": {
+			"address": "0x4da430a0b5b22705acfcc1bd5ee15603861ed98b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow amphrETH 25JUL2024",
+			"symbol": "YT-amphrETH-25JUL2024",
+			"displayName": "YT Mellow amphrETH 25JUL2024",
+			"displaySymbol": "YT-amphrETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4dA430a0b5B22705ACFCC1bD5eE15603861ed98b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6838,6 +7026,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x55296f69f40Ea6d20E478533C15A6B08B654E758/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x553cd5e6d2072723f5fe5457576ed6d06b0905b2": {
+			"address": "0x553cd5e6d2072723f5fe5457576ed6d06b0905b2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Mellow rstETH",
+			"symbol": "SY-rstETH",
+			"displayName": "SY Mellow rstETH",
+			"displaySymbol": "SY-rstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x553cD5e6D2072723f5FE5457576Ed6D06b0905b2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7840,6 +8042,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5fd13359ba15a84b76f7f87568309040176167cd": {
+			"address": "0x5fd13359ba15a84b76f7f87568309040176167cd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Amphor Restaked ETH",
+			"symbol": "amphrETH",
+			"displayName": "Amphor Restaked ETH",
+			"displaySymbol": "amphrETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5fD13359Ba15A84B76f7F87568309040176167cd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5fe30ac5cb1abb0e44cdffb2916c254aeb368650": {
 			"address": "0x5fe30ac5cb1abb0e44cdffb2916c254aeb368650",
 			"underlyingTokensAddresses": [],
@@ -8243,6 +8459,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x65Bc5c6A2630a87C2B494f36148E338dD76C054F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x65d72aa8da931f047169112fcf34f52dbaae7d18": {
+			"address": "0x65d72aa8da931f047169112fcf34f52dbaae7d18",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "f(x) rUSD",
+			"symbol": "rUSD",
+			"displayName": "f(x) rUSD",
+			"displaySymbol": "rUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x65D72AA8DA931F047169112fcf34f52DbaAE7D18/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9903,6 +10133,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7a4effd87c2f3c55ca251080b1343b605f327e3a": {
+			"address": "0x7a4effd87c2f3c55ca251080b1343b605f327e3a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Restaking Vault ETH",
+			"symbol": "rstETH",
+			"displayName": "Restaking Vault ETH",
+			"displaySymbol": "rstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7a4EffD87C2f3C55CA251080b1343b605f327E3a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7b246b8dbc2a640bf2d8221890cee8327fc23917": {
 			"address": "0x7b246b8dbc2a640bf2d8221890cee8327fc23917",
 			"underlyingTokensAddresses": [],
@@ -10175,12 +10419,12 @@
 		"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": {
 			"address": "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
 			"underlyingTokensAddresses": [],
-			"type": "Staking",
+			"type": "",
 			"name": "Wrapped liquid staked Ether 2.0",
 			"symbol": "wstETH",
-			"displayName": "Wrapped Liquid Staked Ether 2.0",
+			"displayName": "Wrapped liquid staked Ether 2.0",
 			"displaySymbol": "wstETH",
-			"description": "This token is the wrapped (non-rebasing version) of Lido Finance's Liquid Staking Derivative for ETH 2.0. For it, your balance will remain constant while the token increases in value over time due to staking rewards accrued.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0/logo-128.png",
 			"decimals": 18,
@@ -10712,6 +10956,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ibKRW, a synthetic South Korean won minted from the Iron Bank, and synthetic South Korean won (sKRW) minted on the Synthetix platform.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8461A004b50d321CB22B7d034969cE6803911899/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x84631c0d0081fde56deb72f6de77abbbf6a9f93a": {
+			"address": "0x84631c0d0081fde56deb72f6de77abbbf6a9f93a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Re7 Labs LRT",
+			"symbol": "Re7LRT",
+			"displayName": "Re7 Labs LRT",
+			"displaySymbol": "Re7LRT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x84631c0d0081FDe56DeB72F6DE77abBbF6A9f93a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11595,6 +11853,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x912ff30d1536bb4b2db604b7b0fca2da76a0c5f3": {
+			"address": "0x912ff30d1536bb4b2db604b7b0fca2da76a0c5f3",
+			"underlyingTokensAddresses": [
+				"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-amphrETH-1726704008",
+			"symbol": "PT-sw-amphrETH-1726704008",
+			"displayName": "Principal Token: sw-amphrETH-1726704008",
+			"displaySymbol": "PT-sw-amphrETH-1726704008",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x912fF30d1536BB4B2dB604B7B0fCa2Da76a0C5f3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x91603c7fb539f2da2da93ba6bec696a47e46bba2": {
 			"address": "0x91603c7fb539f2da2da93ba6bec696a47e46bba2",
 			"underlyingTokensAddresses": [
@@ -11608,6 +11882,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x91603C7fb539f2DA2da93Ba6Bec696A47e46bBA2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88": {
+			"address": "0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Super Symbiotic LRT",
+			"symbol": "weETHs",
+			"displayName": "Super Symbiotic LRT",
+			"displaySymbol": "weETHs",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x917ceE801a67f933F2e6b33fC0cD1ED2d5909D88/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12318,6 +12606,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x997949eea781c04e4801d9c0902540236a317b07": {
+			"address": "0x997949eea781c04e4801d9c0902540236a317b07",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow rstETH 25JUL2024",
+			"symbol": "PT-rstETH-25JUL2024",
+			"displayName": "PT Mellow rstETH 25JUL2024",
+			"displaySymbol": "PT-rstETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x997949eEA781c04E4801d9c0902540236A317B07/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x998a1d40f097fd36bff15ca78fc0673bd2a8280c": {
+			"address": "0x998a1d40f097fd36bff15ca78fc0673bd2a8280c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Mellow Steakhouse steakLRT",
+			"symbol": "SY-steakLRT",
+			"displayName": "SY Mellow Steakhouse steakLRT",
+			"displaySymbol": "SY-steakLRT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x998a1d40F097Fd36bFF15cA78Fc0673Bd2a8280C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x99d1fa417f94dcd62bfe781a1213c092a47041bc": {
 			"address": "0x99d1fa417f94dcd62bfe781a1213c092a47041bc",
 			"underlyingTokensAddresses": [
@@ -12783,6 +13099,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9e10f9Fb6F0D32B350CEe2618662243d4f24C64a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9e8f10574acc2c62c6e5d19500ced39163da37a9": {
+			"address": "0x9e8f10574acc2c62c6e5d19500ced39163da37a9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Super Symbiotic LRT",
+			"symbol": "SY-weETHs",
+			"displayName": "SY Super Symbiotic LRT",
+			"displaySymbol": "SY-weETHs",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9e8f10574ACc2c62C6e5d19500CEd39163Da37A9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13618,6 +13948,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xa94ec39c91DF334DCAb55aDaA8EdD9C1dAF67cA7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa96febd6c5faf7739d3149bfb43211ec6844a37c": {
+			"address": "0xa96febd6c5faf7739d3149bfb43211ec6844a37c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa96FeBd6c5FAF7739d3149bfB43211Ec6844a37C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -15653,6 +15997,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbeef69ac7870777598a04b2bd4771c71212e6abc": {
+			"address": "0xbeef69ac7870777598a04b2bd4771c71212e6abc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Steakhouse Resteaking Vault",
+			"symbol": "steakLRT",
+			"displayName": "Steakhouse Resteaking Vault",
+			"displaySymbol": "steakLRT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBEEF69Ac7870777598A04B2bd4771c71212E6aBc/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f": {
 			"address": "0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f",
 			"underlyingTokensAddresses": [
@@ -16240,6 +16598,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc48276dd601c83234d767f4d7d0c1b2b32bc7632": {
+			"address": "0xc48276dd601c83234d767f4d7d0c1b2b32bc7632",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow Steakhouse steakLRT 25JUL2024",
+			"symbol": "YT-steakLRT-25JUL2024",
+			"displayName": "YT Mellow Steakhouse steakLRT 25JUL2024",
+			"displaySymbol": "YT-steakLRT-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC48276dd601C83234D767F4d7d0c1B2B32BC7632/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc4ad29ba4b3c580e6d59105fff484999997675ff": {
 			"address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
 			"underlyingTokensAddresses": [],
@@ -16780,6 +17152,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xcaA7BA629ECcbF811c76b799D0Ef68FD1Be97B7B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcaa8abb72a75c623bece1f4d5c218f425d47a0d0": {
+			"address": "0xcaa8abb72a75c623bece1f4d5c218f425d47a0d0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xcAa8ABB72A75C623BECe1f4D5c218F425d47A0D0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18046,6 +18432,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xdA47862a83dac0c112BA89c6abC2159b95afd71C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xda6530efafd63a42d7b9a0a5a60a03839cdb813a": {
+			"address": "0xda6530efafd63a42d7b9a0a5a60a03839cdb813a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Super Symbiotic LRT 29AUG2024",
+			"symbol": "PT-weETHs-29AUG2024",
+			"displayName": "PT Super Symbiotic LRT 29AUG2024",
+			"displaySymbol": "PT-weETHs-29AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xda6530EfaFD63A42d7b9a0a5a60A03839CDb813A/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -19317,6 +19717,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe833c7a12a10a44cb8b19bdf0931053ac136f105": {
+			"address": "0xe833c7a12a10a44cb8b19bdf0931053ac136f105",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Mellow Re7LRT",
+			"symbol": "SY-Re7LRT",
+			"displayName": "SY Mellow Re7LRT",
+			"displaySymbol": "SY-Re7LRT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xE833C7A12A10A44Cb8b19BdF0931053AC136F105/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe8449f1495012ee18db7aa18cd5706b47e69627c": {
 			"address": "0xe8449f1495012ee18db7aa18cd5706b47e69627c",
 			"underlyingTokensAddresses": [
@@ -19709,6 +20123,20 @@
 			"description": "",
 			"category": "",
 			"icon": "",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf04f1f279c9da038b917538d89947f0e00672487": {
+			"address": "0xf04f1f279c9da038b917538d89947f0e00672487",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow rstETH 25JUL2024",
+			"symbol": "YT-rstETH-25JUL2024",
+			"displayName": "YT Mellow rstETH 25JUL2024",
+			"displaySymbol": "YT-rstETH-25JUL2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF04f1F279C9dA038b917538D89947f0E00672487/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20111,6 +20539,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF56fB6cc29F0666BDD1662FEaAE2A3C935ee3469/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf58e22d224e465fb65f4257573b58dbfb0f704a0": {
+			"address": "0xf58e22d224e465fb65f4257573b58dbfb0f704a0",
+			"underlyingTokensAddresses": [
+				"0x65d72aa8da931f047169112fcf34f52dbaae7d18"
+			],
+			"type": "Compound",
+			"name": "Principal Token: arUSD-1734480037",
+			"symbol": "PT-arUSD-1734480037",
+			"displayName": "Principal Token: arUSD-1734480037",
+			"displaySymbol": "PT-arUSD-1734480037",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF58e22D224e465fB65F4257573B58DBFb0f704A0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

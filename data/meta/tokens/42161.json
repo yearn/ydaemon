@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-13T23:06:36.807028+02:00",
+	"lastUpdate": "2024-06-22T10:42:48.100034+02:00",
 	"version": {
 		"major": 0,
-		"minor": 10,
+		"minor": 11,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -565,6 +565,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x1255638EFeca62e12E344E0b6B22ea853eC6e2c7/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x12bf88c63bf060355a8d2e4c6ee960365a5e8335": {
+			"address": "0x12bf88c63bf060355a8d2e4c6ee960365a5e8335",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "usdc-vault",
+			"symbol": "usdc-stk",
+			"displayName": "usdc-vault",
+			"displaySymbol": "usdc-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x12bF88C63bF060355A8d2E4C6eE960365a5E8335/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x145d55ae4848f9782efcac785a655e3e5dce1bcd": {
@@ -4400,6 +4416,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xACcd9A7cb5518326BeD715f90bD32CDf2fEc2D14/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xace460a8e3f5f219ea9ddb10a0764aedee8c09e1": {
+			"address": "0xace460a8e3f5f219ea9ddb10a0764aedee8c09e1",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "usdc-vault",
+			"symbol": "usdc-stk",
+			"displayName": "usdc-vault",
+			"displaySymbol": "usdc-stk",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xAce460a8e3F5F219Ea9DDB10a0764AedeE8C09e1/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xad22fca714559da1eb25fb24443b0446b54246fc": {

@@ -79,6 +79,15 @@ var ARBITRUM = TChain{
 			BlockNumber:     195564702,
 			Type:            models.TokenTypeAutomatedVault,
 		},
+		{
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x3cE71021cCA8a2902764a43C60ff5F8A312245f9`),
+			RegistryAddress: common.HexToAddress(`0x0000000000000000000000000000000000000000`),
+			TokenAddress:    common.HexToAddress(`0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     223548905,
+			Type:            models.TokenTypeAutomatedVault,
+		},
 	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress(`0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3`), // Test deployment - Nothing

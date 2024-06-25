@@ -95,7 +95,7 @@ func computeV3StakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber
 		stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, rewardDurationAsFloat)
 		stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, secondsPerYear)
 
-		storage.AssignJuicedStakingRewardAPR(chainID, vault.Address, rewardToken.Address, stakingRewardAPR)
+		storage.AssignV3StakingRewardAPR(chainID, vault.Address, rewardToken.Address, stakingRewardAPR)
 		cumulatedStakingRewardAPR = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPR, stakingRewardAPR)
 	}
 

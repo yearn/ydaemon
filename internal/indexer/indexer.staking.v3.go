@@ -35,8 +35,8 @@ func retrieveV3StakingData(chainID uint64, vaultAddresses []common.Address, stak
 	rewardTokens := map[common.Address][]common.Address{}
 	for _, stakingContract := range stakingAddresses {
 		rewardTokens[stakingContract] = []common.Address{}
-		rewardTokensLength := helpers.DecodeUint64(responseRewardLength[stakingContract.Hex()])
-		for i := uint64(0); i < rewardTokensLength; i++ {
+		rewardTokensLength := helpers.DecodeBigInt(responseRewardLength[stakingContract.Hex()+`rewardTokensLength`])
+		for i := uint64(0); i < rewardTokensLength.Uint64(); i++ {
 			calls = append(calls, multicalls.GetRewardTokens(stakingContract.Hex()+strconv.Itoa(int(i)), stakingContract, int64(i)))
 		}
 	}
@@ -47,8 +47,8 @@ func retrieveV3StakingData(chainID uint64, vaultAddresses []common.Address, stak
 			rewardTokens[stakingContract] = []common.Address{}
 		}
 
-		rewardTokensLength := helpers.DecodeUint64(responseRewardLength[stakingContract.Hex()])
-		for i := uint64(0); i < rewardTokensLength; i++ {
+		rewardTokensLength := helpers.DecodeBigInt(responseRewardLength[stakingContract.Hex()+`rewardTokensLength`])
+		for i := uint64(0); i < rewardTokensLength.Uint64(); i++ {
 			rewardToken := helpers.DecodeAddress(response[stakingContract.Hex()+strconv.Itoa(int(i))+`rewardTokens`])
 			if (rewardToken != common.Address{}) {
 				rewardTokens[stakingContract] = append(rewardTokens[stakingContract], rewardToken)
@@ -125,7 +125,7 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
 	if len(extraStakingContracts) > 0 {
 		for _, contract := range extraStakingContracts {
-			if contract.Tag == `V3` {
+			if contract.Tag == `V3 STAKING` {
 				allVaults = append(allVaults, contract.VaultAddress)
 				allStaking = append(allStaking, contract.StakingAddress)
 			}
@@ -143,7 +143,7 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 	**********************************************************************************************/
 	registry := env.TContractData{}
 	for _, contract := range stakingContracts {
-		if contract.Tag == `V3` {
+		if contract.Tag == `V3 STAKING` {
 			registry = contract
 			break
 		}

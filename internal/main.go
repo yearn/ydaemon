@@ -66,6 +66,16 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
 		indexer.IndexJuicedStakingContract(chainID)
 	})
+
+	/**********************************************************************************************
+	** Start the V3 Staking Indexing process and schedule it to run every hour. This indexer
+	** will fetch the relevent data for the V3 Staking contracts as well as thoose responsible
+	** for the APR calculations.
+	**********************************************************************************************/
+	indexer.IndexV3StakingContract(chainID)
+	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
+		indexer.IndexV3StakingContract(chainID)
+	})
 	logs.Success(chainID, `-`, `Index StakingPools ✅`)
 
 	/**********************************************************************************************

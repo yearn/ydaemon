@@ -91,6 +91,11 @@ func ComputeChainAPR(chainID uint64) {
 			vaultAPR.Extra.StakingRewardsAPR = juicedStakingAPR
 		}
 
+		v3StakingAPR, hasExtraAPR := computeV3StakingRewardsAPR(chainID, vault)
+		if hasExtraAPR {
+			vaultAPR.Extra.StakingRewardsAPR = v3StakingAPR
+		}
+
 		/**********************************************************************************************
 		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
 		** APR, aka the expected APR we will get for the upcoming period.

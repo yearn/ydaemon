@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -15,16 +16,29 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func retrieveOPStakingData(chainID uint64, vaultAddresses []common.Address, stakingAddresses []common.Address) []storage.TStakingData {
+func retrieveV3StakingData(chainID uint64, vaultAddresses []common.Address, stakingAddresses []common.Address) []storage.TStakingData {
 	/**********************************************************************************************
-	** First, for all staking contracts, we need to get the reward tokens. This is done via a
-	** multicall, as we need to get the reward tokens for the first 10 indexes for each staking
-	** contract.
+	** First, for all staking contracts, we need to get the number of reward tokens. This is done
+	** via a multicall, as we want to know the answer for all staking contracts at once.
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
+	for _, stakingContract := range stakingAddresses {
+		calls = append(calls, multicalls.GetRewardTokensLength(stakingContract.Hex(), stakingContract))
+	}
+	responseRewardLength := multicalls.Perform(chainID, calls, nil)
+
+	/**********************************************************************************************
+	** Then, we want to know, for each staking contract, the reward tokens. We now know the number
+	** of reward tokens per registry, so we can loop through them and get the reward tokens.
+	**********************************************************************************************/
+	calls = []ethereum.Call{}
 	rewardTokens := map[common.Address][]common.Address{}
 	for _, stakingContract := range stakingAddresses {
-		calls = append(calls, multicalls.GetRewardsToken(stakingContract.Hex(), stakingContract))
+		rewardTokens[stakingContract] = []common.Address{}
+		rewardTokensLength := helpers.DecodeUint64(responseRewardLength[stakingContract.Hex()])
+		for i := uint64(0); i < rewardTokensLength; i++ {
+			calls = append(calls, multicalls.GetRewardTokens(stakingContract.Hex()+strconv.Itoa(int(i)), stakingContract, int64(i)))
+		}
 	}
 
 	response := multicalls.Perform(chainID, calls, nil)
@@ -33,28 +47,30 @@ func retrieveOPStakingData(chainID uint64, vaultAddresses []common.Address, stak
 			rewardTokens[stakingContract] = []common.Address{}
 		}
 
-		rewardToken := helpers.DecodeAddress(response[stakingContract.Hex()+`rewardsToken`])
-		if (rewardToken != common.Address{}) {
-			rewardTokens[stakingContract] = append(rewardTokens[stakingContract], rewardToken)
+		rewardTokensLength := helpers.DecodeUint64(responseRewardLength[stakingContract.Hex()])
+		for i := uint64(0); i < rewardTokensLength; i++ {
+			rewardToken := helpers.DecodeAddress(response[stakingContract.Hex()+strconv.Itoa(int(i))+`rewardTokens`])
+			if (rewardToken != common.Address{}) {
+				rewardTokens[stakingContract] = append(rewardTokens[stakingContract], rewardToken)
+			}
 		}
 	}
 
-	/******************************************************************************************
-	** Once we have that, the flow is pretty easy: one token, multiple info, but no need to
-	** look at multiple rewards tokens.
-	******************************************************************************************/
+	/**********************************************************************************************
+	** Once we have the indexes of the reward tokens, we can do another multicall to get, for each
+	** of them, the reward data, the decimals of the reward token
+	**********************************************************************************************/
 	rewardTokensCalls := []ethereum.Call{}
 	for _, stakingContract := range stakingAddresses {
 		for _, rewardToken := range rewardTokens[stakingContract] {
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardData(stakingContract.Hex()+rewardToken.Hex(), stakingContract, rewardToken))
+			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetDecimals(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
 			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetName(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
 			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetSymbol(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
-			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetDecimals(stakingContract.Hex()+rewardToken.Hex(), rewardToken))
-			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardsDuration(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
-			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetRewardRate(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
-			rewardTokensCalls = append(rewardTokensCalls, multicalls.GetPeriodFinish(stakingContract.Hex()+rewardToken.Hex(), stakingContract))
 		}
 	}
 	rewardTokensResponse := multicalls.Perform(chainID, rewardTokensCalls, nil)
+
 	allStakingData := []storage.TStakingData{}
 	for i, stakingContract := range stakingAddresses {
 		staking := storage.TStakingData{
@@ -63,32 +79,42 @@ func retrieveOPStakingData(chainID uint64, vaultAddresses []common.Address, stak
 			RewardTokens:   []storage.TRewardToken{},
 		}
 		for _, rewardToken := range rewardTokens[stakingContract] {
-			duration := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardsDuration`])
-			rate := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardRate`])
-			periodFinish := helpers.DecodeBigInt(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`periodFinish`])
+			rewardDataKey := rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`rewardData`]
+			rewardRate := bigNumber.NewInt(0)
+			rewardDuration := bigNumber.NewInt(0)
+			rewardPeriodFinish := bigNumber.NewInt(0)
+			if len(rewardDataKey) > 0 {
+				rewardDuration = bigNumber.SetInt(rewardDataKey[1].(*big.Int))
+				rewardPeriodFinish = bigNumber.SetInt(rewardDataKey[2].(*big.Int))
+				rewardRate = bigNumber.SetInt(rewardDataKey[3].(*big.Int))
+			}
+
 			now := time.Now().Unix()
-			isFinished := periodFinish.Uint64() > 0 && periodFinish.Uint64() < uint64(now)
+			isFinished := rewardPeriodFinish.Uint64() > 0 && rewardPeriodFinish.Uint64() < uint64(now)
 			rewardTokenData := storage.TRewardToken{
 				Address:      rewardToken,
 				Name:         helpers.DecodeString(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`name`]),
 				Symbol:       helpers.DecodeString(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`symbol`]),
 				Decimals:     helpers.DecodeUint64(rewardTokensResponse[stakingContract.Hex()+rewardToken.Hex()+`decimals`]),
-				Duration:     duration.Uint64(),
-				Rate:         rate.Uint64(),
-				PeriodFinish: periodFinish.Uint64(),
+				Duration:     rewardDuration.Uint64(),
+				Rate:         rewardRate.Uint64(),
+				PeriodFinish: rewardPeriodFinish.Uint64(),
 				IsFinished:   isFinished,
 			}
 			staking.RewardTokens = append(staking.RewardTokens, rewardTokenData)
 		}
 		allStakingData = append(allStakingData, staking)
 	}
+
 	return allStakingData
 }
 
-/** 🔵 - Yearn *************************************************************************************
-** The function `IndexStakingPools` ...
+/**************************************************************************************************
+** IndexV3StakingContract is an indexer responsible for indexing the V3 version of the staking
+** contracts. Theses staking contracts are used in the Yearn ecosystem to allow users to stake some
+** vaults tokens in it and earn some extra reards
 **************************************************************************************************/
-func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Address]storage.TStakingData) {
+func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]storage.TStakingData) {
 	allVaults := []common.Address{}
 	allStaking := []common.Address{}
 
@@ -99,7 +125,7 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
 	if len(extraStakingContracts) > 0 {
 		for _, contract := range extraStakingContracts {
-			if contract.Tag == `OP BOOST` {
+			if contract.Tag == `V3` {
 				allVaults = append(allVaults, contract.VaultAddress)
 				allStaking = append(allStaking, contract.StakingAddress)
 			}
@@ -112,12 +138,12 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 		return
 	}
 
-	/** 🔵 - Yearn *********************************************************************************
-	** Find the staking registry for the OP boost staking contracts.
+	/**********************************************************************************************
+	** Find the staking registry for the V3 staking contracts
 	**********************************************************************************************/
 	registry := env.TContractData{}
 	for _, contract := range stakingContracts {
-		if contract.Tag == `OP BOOST` {
+		if contract.Tag == `V3` {
 			registry = contract
 			break
 		}
@@ -125,14 +151,16 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 
 	if (registry.Address != common.Address{}) {
 		/******************************************************************************************
-		** In order to get the staking contracts, a few steps are required. We need to get the
-		** number of tokens with staking contract (which are vaults), then we need to get the
-		** staking contract for each of them.
+		** In order to get the gauges, 3 different calls are required, 2 of them are multicalls.
+		** They are performed one after the other, as the result of the first call is required for
+		** the second call.
+		** We are here using the JuicedStakingRewardsRegistry contract that share the same ABI as
+		** the V3StakingRewardsRegistry contract.
 		******************************************************************************************/
 		client := ethereum.GetRPC(chainID)
-		stakingRegistry, err := contracts.NewYOptimismStakingRewardRegistry(registry.Address, client)
+		stakingRegistry, err := contracts.NewJuicedStakingRewardsRegistry(registry.Address, client)
 		if err != nil {
-			logs.Error(`Failed to connect to the OP staking registry contract`, err)
+			logs.Error(`Failed to connect to the v3 staking registry contract`, err)
 			return
 		}
 
@@ -173,12 +201,8 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 			))
 		}
 
-		/******************************************************************************************
-		** Then, via a multicall, we need to call the `asset` method from the individual gauge
-		** contract. This will give us the address of the vault assigned to that specific gauge,
-		** and we will then be able to link the gauge to the vault.
-		******************************************************************************************/
 		assetResponse := multicalls.Perform(chainID, assetCalls, nil)
+
 		for i := int64(0); i < int64(numberOfTokens.Int64()); i++ {
 			rawVaultAddress := callResponse[strconv.FormatInt(i, 10)+`tokens`]
 			if len(rawVaultAddress) == 0 {
@@ -195,7 +219,8 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 			allStaking = append(allStaking, stakingAddress)
 		}
 	}
-	result := retrieveOPStakingData(chainID, allVaults, allStaking)
+
+	result := retrieveV3StakingData(chainID, allVaults, allStaking)
 
 	/******************************************************************************************
 	** Then, via a multicall, we need to call the `asset` method from the individual gauge
@@ -204,14 +229,14 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 	******************************************************************************************/
 	for _, stakingElement := range result {
 		key := stakingElement.VaultAddress.Hex() + stakingElement.StakingAddress.Hex()
-		storage.StoreOPStaking(chainID, key, stakingElement)
+		storage.StoreV3Staking(chainID, key, stakingElement)
 	}
 
-	/** 🔵 - Yearn *********************************************************************************
+	/**********************************************************************************************
 	** This part is only accessed once, once the `historical` pools, aka that are already deployed
 	** and indexed, are retrieved. New deployed pools will not hit this part, but will be handle
 	** in the above functions directly
 	**********************************************************************************************/
-	stakingMap, _ := storage.ListOPStaking(chainID, storage.PerPool)
+	stakingMap = storage.ListV3StakingData(chainID)
 	return stakingMap
 }

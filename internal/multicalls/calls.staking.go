@@ -11,6 +11,7 @@ import (
 
 var StakingABI, _ = contracts.YOptimismStakingRewardMetaData.GetAbi()
 var JuicedStakingABI, _ = contracts.JuicedStakingRewardsMetaData.GetAbi()
+var V3StakingABI, _ = contracts.V3StakingRewardsMetaData.GetAbi()
 
 func GetPeriodFinish(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := StakingABI.Pack("periodFinish")
@@ -91,6 +92,20 @@ func GetRewardTokens(name string, contractAddress common.Address, index int64) e
 		Target:   contractAddress,
 		Abi:      JuicedStakingABI,
 		Method:   `rewardTokens`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
+func GetRewardTokensLength(name string, contractAddress common.Address) ethereum.Call {
+	parsedData, err := V3StakingABI.Pack("rewardTokensLength")
+	if err != nil {
+		logs.Error("Error packing V3StakingABI rewardTokensLength", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      V3StakingABI,
+		Method:   `rewardTokensLength`,
 		CallData: parsedData,
 		Name:     name,
 	}

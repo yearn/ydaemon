@@ -154,7 +154,9 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range newVaultList {
 		vault.ChainID = chainID
-		vault.RegistryAddress = vaults[vault.Address].RegistryAddress
+		if addresses.Equals(vault.RegistryAddress, common.Address{}) {
+			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
+		}
 
 		/******************************************************************************************
 		** We need to check if the associated registry is marked as hidden. If so, we need to mark
@@ -216,7 +218,7 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	vaultMapFromStorage, _ := storage.ListVaults(chainID)
 	for _, vault := range vaultMap {
-		if addresses.Equals(vault.RegistryAddress, common.HexToAddress(`0x0000000000000000000000000000000000000000`)) {
+		if addresses.Equals(vault.RegistryAddress, common.Address{}) {
 			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
 		}
 		if !vault.Metadata.Inclusion.IsSet {

@@ -33,6 +33,13 @@ var ARBITRUM = TChain{
 		Address: common.HexToAddress(`0x27aD2fFc74F74Ed27e1C0A19F1858dD0963277aE`),
 		Block:   19070394,
 	},
+	StakingRewardRegistry: []TContractData{
+		{
+			Address: common.HexToAddress(`0x5DCA08eBA0263B948595f1772bFAad073263E737`),
+			Block:   225114245,
+			Tag:     `V3 STAKING`,
+		},
+	},
 	Coin: models.TERC20Token{
 		Address:                   DEFAULT_COIN_ADDRESS,
 		UnderlyingTokensAddresses: []common.Address{},
@@ -77,6 +84,15 @@ var ARBITRUM = TChain{
 			TokenAddress:    common.HexToAddress(`0xE11f9786B06438456b044B3E21712228ADcAA0D1`),
 			APIVersion:      `3.0.2`,
 			BlockNumber:     195564702,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+		{
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x3cE71021cCA8a2902764a43C60ff5F8A312245f9`),
+			RegistryAddress: common.HexToAddress(`0x0000000000000000000000000000000000000000`),
+			TokenAddress:    common.HexToAddress(`0x35751007a407ca6FEFfE80b3cB397736D2cf4dbe`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     223548905,
 			Type:            models.TokenTypeAutomatedVault,
 		},
 	},

@@ -132,6 +132,11 @@ func toSimplifiedVersion(
 		staking = assignStakingRewards(vault.ChainID, juicedStakingData, `Juiced`)
 	}
 
+	v3StakingData, hasV3Gauge := storage.GetV3StakingDataForVault(vault.ChainID, common.HexToAddress(vault.Address))
+	if !staking.Available && hasV3Gauge {
+		staking = assignStakingRewards(vault.ChainID, v3StakingData, `V3 Staking`)
+	}
+
 	info := vault.Info
 	info.IsRetired = vault.Details.IsRetired
 	info.IsBoosted = vault.Details.IsBoosted

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-22T10:44:16.868799+02:00",
+	"lastUpdate": "2024-06-27T13:44:14.123673+02:00",
 	"version": {
 		"major": 0,
-		"minor": 43,
+		"minor": 44,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -76,6 +76,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x00C2999c8B2AdF4ABC835cc63209533973718eB1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x00cb87656196dd835b9e4d67018ae0477a1de8c1": {
+			"address": "0x00cb87656196dd835b9e4d67018ae0477a1de8c1",
+			"underlyingTokensAddresses": [
+				"0xf1376bcef0f78459c0ed0ba5ddce976f1ddf51f4"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-uniETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-uniETH",
+			"displayName": "yPT-uniETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-uniETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x00CB87656196dD835b9E4d67018aE0477a1De8C1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -318,6 +334,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x038c1b03dab3b891afbca4371ec807edaa3e6eb6": {
+			"address": "0x038c1b03dab3b891afbca4371ec807edaa3e6eb6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x038C1b03daB3B891AfbCa4371ec807eDAa3e6eB6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x03928473f25bb2da6bc880b07ecbadc636822264": {
 			"address": "0x03928473f25bb2da6bc880b07ecbadc636822264",
 			"underlyingTokensAddresses": [
@@ -331,6 +361,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x03928473f25bb2da6Bc880b07eCBaDC636822264/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0393e1abf08f7b80e193e06ca65346fe86a0a189": {
+			"address": "0x0393e1abf08f7b80e193e06ca65346fe86a0a189",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Zircuit Staking USDe 22AUG2024",
+			"symbol": "YT-zs-USDe-22AUG2024",
+			"displayName": "YT Zircuit Staking USDe 22AUG2024",
+			"displaySymbol": "YT-zs-USDe-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0393e1aBF08f7B80e193e06ca65346FE86A0a189/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1226,6 +1270,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x0eea62715beb9565c13232076396b1c80e05a5f1": {
+			"address": "0x0eea62715beb9565c13232076396b1c80e05a5f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Zircuit Staking rsETH 22AUG2024",
+			"symbol": "PT-zs-rsETH-22AUG2024",
+			"displayName": "PT Zircuit Staking rsETH 22AUG2024",
+			"displaySymbol": "PT-zs-rsETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0eEA62715BEb9565C13232076396b1C80e05A5F1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x0f28a763198035825dfadf3455cb5b8473a7c140": {
 			"address": "0x0f28a763198035825dfadf3455cb5b8473a7c140",
 			"underlyingTokensAddresses": [],
@@ -1341,6 +1399,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x1025b1641d1F23C289412Dd5E5701e9810103a93/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1070e528dd1561a4276bbb13a0c837deb8b69c7a": {
+			"address": "0x1070e528dd1561a4276bbb13a0c837deb8b69c7a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Zircuit Staking USDe 22AUG2024",
+			"symbol": "PT-zs-USDe-22AUG2024",
+			"displayName": "PT Zircuit Staking USDe 22AUG2024",
+			"displaySymbol": "PT-zs-USDe-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1070E528dd1561a4276bbB13a0C837deB8b69c7a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1572,6 +1644,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1489310ab64830aa242b957b3a0ff5efb28093b2": {
+			"address": "0x1489310ab64830aa242b957b3a0ff5efb28093b2",
+			"underlyingTokensAddresses": [
+				"0xf1376bcef0f78459c0ed0ba5ddce976f1ddf51f4"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-uniETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-uniETH",
+			"displayName": "yPT-uniETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-uniETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1489310aB64830AA242b957b3a0ff5efb28093b2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x150f76e1339a918baa38338ed9bd695bd0924bcf": {
 			"address": "0x150f76e1339a918baa38338ed9bd695bd0924bcf",
 			"underlyingTokensAddresses": [
@@ -1778,6 +1866,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x17BE998a578fD97687b24E83954FEc86Dc20c979/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x17f211915f87f0aac4b67d8b311e7c38c38830d4": {
+			"address": "0x17f211915f87f0aac4b67d8b311e7c38c38830d4",
+			"underlyingTokensAddresses": [
+				"0xbf5495efe5db9ce00f80364c8b423567e58d2110"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ezETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-ezETH-Zircuit",
+			"displayName": "yPT-ezETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ezETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x17f211915f87F0aAC4B67D8b311e7c38c38830D4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2016,6 +2120,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1a7e4e63778B4f12a199C062f3eFdD288afCBce8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1a985b7a40d19b7263e867d13cd89c787c787925": {
+			"address": "0x1a985b7a40d19b7263e867d13cd89c787c787925",
+			"underlyingTokensAddresses": [
+				"0xd9a442856c234a39a81a089c06451ebaa4306a72"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-pufETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-pufETH",
+			"displayName": "yPT-pufETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-pufETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1A985B7a40d19b7263e867D13Cd89c787c787925/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2646,6 +2766,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x21b0f8109f7f797e8b40a6189d2b773be642666e": {
+			"address": "0x21b0f8109f7f797e8b40a6189d2b773be642666e",
+			"underlyingTokensAddresses": [
+				"0xfae103dc9cf190ed75350761e95403b7b8afa6c0"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rswETH-L2 (auto-rolling Pendle PT)",
+			"symbol": "yPT-rswETH-L2",
+			"displayName": "yPT-rswETH-L2 (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rswETH-L2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x21b0F8109F7f797e8b40a6189D2B773bE642666e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x21e27a5e5513d6e65c4f830167390997aa84843a": {
 			"address": "0x21e27a5e5513d6e65c4f830167390997aa84843a",
 			"underlyingTokensAddresses": [
@@ -2873,6 +3009,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2478d5997324e8b47e9ff870166dba8d2e461993": {
+			"address": "0x2478d5997324e8b47e9ff870166dba8d2e461993",
+			"underlyingTokensAddresses": [
+				"0x2dabcea55a12d73191aece59f508b191fb68adac"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH-Karak",
+			"displayName": "yPT-eETH-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2478d5997324e8B47e9Ff870166DBa8d2e461993/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x248241244356d18f63d0c16082996839ecb0c7bf": {
 			"address": "0x248241244356d18f63d0c16082996839ecb0c7bf",
 			"underlyingTokensAddresses": [],
@@ -2898,6 +3050,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x248d83f7Ac03CEbCC06d5C1A52c9B5d0EbB9936e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x248f43b622ce2f35a14db3fc528284730b619cd5": {
+			"address": "0x248f43b622ce2f35a14db3fc528284730b619cd5",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Wrapper: Universal ETH",
+			"symbol": "sw-uniETH",
+			"displayName": "Spectra ERC4626 Wrapper: Universal ETH",
+			"displaySymbol": "sw-uniETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x248f43B622cE2F35A14dB3FC528284730b619cD5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3099,6 +3267,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x281128b2099ab21e10ecb63750f52be5deffdecf": {
+			"address": "0x281128b2099ab21e10ecb63750f52be5deffdecf",
+			"underlyingTokensAddresses": [
+				"0xa1290d69c65a6fe4df752f95823fae25cb99e5a7"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rsETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-rsETH-Zircuit",
+			"displayName": "yPT-rsETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rsETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x281128B2099aB21e10eCB63750F52BE5deFfdEcf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2825b12c5e873318b318302408718b961ae74d4e": {
 			"address": "0x2825b12c5e873318b318302408718b961ae74d4e",
 			"underlyingTokensAddresses": [],
@@ -3175,6 +3359,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x28a7190805c3646F7Bf63b00C569F7bF06145268/logo-128.png",
 			"decimals": 0,
+			"chainID": 1
+		},
+		"0x28b703ab847fb4a9548af7a4bce38cd94f508298": {
+			"address": "0x28b703ab847fb4a9548af7a4bce38cd94f508298",
+			"underlyingTokensAddresses": [
+				"0x35fa164735182de50811e8e2e824cfb9b6118ac2"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH",
+			"displayName": "yPT-eETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x28B703Ab847FB4a9548AF7A4bCe38CD94F508298/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x28ce264d0938c1051687febdcefacc2242ba9e0e": {
@@ -3536,6 +3736,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2d97ccda31fa1e97b1b7f6c046b9b9b36fc558aa": {
+			"address": "0x2d97ccda31fa1e97b1b7f6c046b9b9b36fc558aa",
+			"underlyingTokensAddresses": [
+				"0x35fa164735182de50811e8e2e824cfb9b6118ac2"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH-Zircuit",
+			"displayName": "yPT-eETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2d97CCda31fa1e97b1b7f6C046b9b9B36fC558AA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2dabcea55a12d73191aece59f508b191fb68adac": {
 			"address": "0x2dabcea55a12d73191aece59f508b191fb68adac",
 			"underlyingTokensAddresses": [
@@ -3716,6 +3932,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2f2bbc50db252eeadd2c9b9197beb6e5aef87e48": {
+			"address": "0x2f2bbc50db252eeadd2c9b9197beb6e5aef87e48",
+			"underlyingTokensAddresses": [
+				"0x57e114b691db790c35207b2e685d4a43181e6061"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ENA (auto-rolling Pendle PT)",
+			"symbol": "yPT-ENA",
+			"displayName": "yPT-ENA (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ENA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2F2BBc50DB252eeADD2c9B9197beb6e5Aef87e48/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2f65aac617d2aeb822c4a5a61beb5e17872f4b18": {
 			"address": "0x2f65aac617d2aeb822c4a5a61beb5e17872f4b18",
 			"underlyingTokensAddresses": [],
@@ -3809,6 +4041,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x30a1d9be865fcebd0a56c15f56e0b0130f585a62": {
+			"address": "0x30a1d9be865fcebd0a56c15f56e0b0130f585a62",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Zircuit Staking ezETH 22AUG2024",
+			"symbol": "PT-zs-ezETH-22AUG2024",
+			"displayName": "PT Zircuit Staking ezETH 22AUG2024",
+			"displaySymbol": "PT-zs-ezETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x30A1D9BE865fCebd0A56c15f56e0b0130f585A62/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x30b801f933e676cb25892d1838fdcc00a1dde4cf": {
 			"address": "0x30b801f933e676cb25892d1838fdcc00a1dde4cf",
 			"underlyingTokensAddresses": [
@@ -3836,6 +4082,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x30D20208d987713f46DFD34EF128Bb16C404D10f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x30dd04107dee5e64fbd2981f7ab980b9f82c2429": {
+			"address": "0x30dd04107dee5e64fbd2981f7ab980b9f82c2429",
+			"underlyingTokensAddresses": [
+				"0x2dabcea55a12d73191aece59f508b191fb68adac"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH-Karak",
+			"displayName": "yPT-eETH-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x30DD04107DeE5e64fBD2981f7Ab980B9f82C2429/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4015,6 +4277,20 @@
 			"description": "This token represents a Balancer Stable liquidity pool. Holders earn fees from users trading in the pools, and can also deposit the LP to Balancer's gauges to earn BAL emissions. This pool contains wstETH and wETH.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x32296969Ef14EB0c6d29669C550D4a0449130230/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x323da63d354c9d79df927fd21ce5b97add3a50d9": {
+			"address": "0x323da63d354c9d79df927fd21ce5b97add3a50d9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Zircuit Ether.fi weETH 22AUG2024",
+			"symbol": "YT-zs-weETH-22AUG2024",
+			"displayName": "YT Zircuit Ether.fi weETH 22AUG2024",
+			"displaySymbol": "YT-zs-weETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x323DA63d354c9d79DF927fd21CE5B97aDD3a50d9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4419,6 +4695,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x36bc05a1072ef7d763d5f11f463915aa1efb8ca8": {
+			"address": "0x36bc05a1072ef7d763d5f11f463915aa1efb8ca8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Zircuit Staking rsETH 22AUG2024",
+			"symbol": "YT-zs-rsETH-22AUG2024",
+			"displayName": "YT Zircuit Staking rsETH 22AUG2024",
+			"displaySymbol": "YT-zs-rsETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x36bc05a1072ef7d763D5f11f463915aA1efb8Ca8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x36ff4dae0e88113d68b1209e245b0e3af92e9d58": {
 			"address": "0x36ff4dae0e88113d68b1209e245b0e3af92e9d58",
 			"underlyingTokensAddresses": [],
@@ -4625,6 +4915,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x389fB29230D02e67eB963C1F5A00f2b16f95BEb7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x38be95a8837d715b31e91f3e223d52af6ca37e1f": {
+			"address": "0x38be95a8837d715b31e91f3e223d52af6ca37e1f",
+			"underlyingTokensAddresses": [
+				"0xde5bff0755f192c333b126a449ff944ee2b69681"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sUSDe-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-sUSDe-Karak",
+			"displayName": "yPT-sUSDe-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sUSDe-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x38BE95A8837d715b31e91f3e223d52aF6ca37e1F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6392,6 +6698,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d1ac746e4a71be24221d05a8dfcd3e1523a161c": {
+			"address": "0x4d1ac746e4a71be24221d05a8dfcd3e1523a161c",
+			"underlyingTokensAddresses": [
+				"0xbe3ca34d0e877a1fc889bd5231d65477779aff4e"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe-Karak",
+			"displayName": "yPT-USDe-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4d1ac746e4a71Be24221D05a8dFCD3E1523a161c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d224452801aced8b2f0aebe155379bb5d594381": {
 			"address": "0x4d224452801aced8b2f0aebe155379bb5d594381",
 			"underlyingTokensAddresses": [],
@@ -6495,6 +6817,22 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains USDC and crvUSD, a dollar pegged stablecoin from [Curve Finance](https://crvusd.curve.fi/#/ethereum/markets).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4DEcE678ceceb27446b35C672dC7d61F30bAD69E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb": {
+			"address": "0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-crvUSD-Silo (auto-rolling Pendle PT)",
+			"symbol": "yPT-crvUSD-Silo",
+			"displayName": "yPT-crvUSD-Silo (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-crvUSD-Silo",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4DF40F310cd760e5f59850C1aEb58242Cdc6e2fB/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6615,6 +6953,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4f43c77872Db6BA177c270986CD30c3381AF37Ee/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4f65a884eb41cd09a2f0a4505de2c6d698a78c73": {
+			"address": "0x4f65a884eb41cd09a2f0a4505de2c6d698a78c73",
+			"underlyingTokensAddresses": [
+				"0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b"
+			],
+			"type": "Compound",
+			"name": "Principal Token: afCVX-1727222454",
+			"symbol": "PT-afCVX-1727222454",
+			"displayName": "Principal Token: afCVX-1727222454",
+			"displaySymbol": "PT-afCVX-1727222454",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4F65A884eB41cd09a2F0a4505De2c6d698A78C73/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6829,6 +7183,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5326d3e4c769bf9ea532470ecbf6d4898b81756b": {
+			"address": "0x5326d3e4c769bf9ea532470ecbf6d4898b81756b",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe",
+			"displayName": "yPT-USDe (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5326d3e4c769BF9EA532470eCbF6D4898B81756b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5331009b82853e9fb711bc0b300e1b374724adac": {
 			"address": "0x5331009b82853e9fb711bc0b300e1b374724adac",
 			"underlyingTokensAddresses": [
@@ -6919,6 +7289,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains ETH and rETH, a token that represents staked ether in StaFi, an ETH 2.0 staking platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x53a901d48795C58f485cBB38df08FA96a24669D5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x53eeddb86c822f8d4cc031ebfc84ccaaaa17d0a8": {
+			"address": "0x53eeddb86c822f8d4cc031ebfc84ccaaaa17d0a8",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-crvUSD-Silo (auto-rolling Pendle PT)",
+			"symbol": "yPT-crvUSD-Silo",
+			"displayName": "yPT-crvUSD-Silo (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-crvUSD-Silo",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x53Eeddb86c822f8D4Cc031EBfc84CCaaAA17d0a8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8492,6 +8878,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x66017371c032cd5a67fec6913a9e37d5bd1c690c": {
+			"address": "0x66017371c032cd5a67fec6913a9e37d5bd1c690c",
+			"underlyingTokensAddresses": [
+				"0xd9a442856c234a39a81a089c06451ebaa4306a72"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-pufETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-pufETH",
+			"displayName": "yPT-pufETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-pufETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x66017371c032Cd5a67Fec6913A9e37d5bd1C690c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x66a7024fc367eba201df1381a9b6305d1e90919a": {
 			"address": "0x66a7024fc367eba201df1381a9b6305d1e90919a",
 			"underlyingTokensAddresses": [
@@ -8637,6 +9039,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x68037790A0229e9Ce6EaA8A99ea92964106C4703/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x68b9f74372b257fad2c9a160d2f12ee526ea9510": {
+			"address": "0x68b9f74372b257fad2c9a160d2f12ee526ea9510",
+			"underlyingTokensAddresses": [
+				"0xa1290d69c65a6fe4df752f95823fae25cb99e5a7"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rsETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-rsETH-Zircuit",
+			"displayName": "yPT-rsETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rsETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x68B9f74372b257fad2c9A160D2F12eE526EA9510/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9014,6 +9432,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6BeA7CFEF803D1e3d5f7C0103f7ded065644e197/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6c269dfc142259c52773430b3c78503cc994a93e": {
+			"address": "0x6c269dfc142259c52773430b3c78503cc994a93e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6c269DFc142259c52773430b3c78503CC994a93E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9446,6 +9878,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7131ed1994ba1a2a5392fe4d99e579f49f5ed48f": {
+			"address": "0x7131ed1994ba1a2a5392fe4d99e579f49f5ed48f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Zircuit Ether.fi weETH 22AUG2024",
+			"symbol": "PT-zs-weETH-22AUG2024",
+			"displayName": "PT Zircuit Ether.fi weETH 22AUG2024",
+			"displaySymbol": "PT-zs-weETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7131eD1994BA1A2a5392FE4D99e579f49F5eD48F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7158c1bee7a0fa5bd6affc77b2309991d7adcdd4": {
 			"address": "0x7158c1bee7a0fa5bd6affc77b2309991d7adcdd4",
 			"underlyingTokensAddresses": [
@@ -9806,6 +10252,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x76e9b1711d85bc9c88a437420787c34282956ec5": {
+			"address": "0x76e9b1711d85bc9c88a437420787c34282956ec5",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe-Zircuit",
+			"displayName": "yPT-USDe-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x76e9B1711D85BC9c88a437420787c34282956eC5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x76eb2fe28b36b3ee97f3adae0c69606eedb2a37c": {
 			"address": "0x76eb2fe28b36b3ee97f3adae0c69606eedb2a37c",
 			"underlyingTokensAddresses": [
@@ -9951,6 +10413,22 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x77FbA179C79De5B7653F68b5039Af940AdA60ce0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7810e336f8b3d9ae7c15632f11f80ae715dde900": {
+			"address": "0x7810e336f8b3d9ae7c15632f11f80ae715dde900",
+			"underlyingTokensAddresses": [
+				"0x57e114b691db790c35207b2e685d4a43181e6061"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ENA (auto-rolling Pendle PT)",
+			"symbol": "yPT-ENA",
+			"displayName": "yPT-ENA (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ENA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7810E336F8b3D9ae7C15632f11F80ae715dDe900/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10231,6 +10709,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7C2D26182adeEf96976035986cF56474feC03bDa/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7c7569585ba5e7f5c0b1d18ab630d1769ca27193": {
+			"address": "0x7c7569585ba5e7f5c0b1d18ab630d1769ca27193",
+			"underlyingTokensAddresses": [
+				"0x83f20f44975d03b1b09e64809b757c47f942beea"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sDAI (auto-rolling Pendle PT)",
+			"symbol": "yPT-sDAI",
+			"displayName": "yPT-sDAI (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7C7569585Ba5E7F5c0b1D18AB630D1769CA27193/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10787,6 +11281,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8294bba6671d4094a7c0e9c98e615fbc11f96388": {
+			"address": "0x8294bba6671d4094a7c0e9c98e615fbc11f96388",
+			"underlyingTokensAddresses": [
+				"0xf951e335afb289353dc249e82926178eac7ded78"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-swETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-swETH",
+			"displayName": "yPT-swETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-swETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8294BbA6671d4094A7C0e9c98E615FBC11f96388/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x82c24073a19f4c46ab2646323b322427eb98f616": {
 			"address": "0x82c24073a19f4c46ab2646323b322427eb98f616",
 			"underlyingTokensAddresses": [
@@ -11140,6 +11650,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8668a15b7b023dc77b372a740fcb8939e15257cf": {
+			"address": "0x8668a15b7b023dc77b372a740fcb8939e15257cf",
+			"underlyingTokensAddresses": [
+				"0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b"
+			],
+			"type": "Yearn Vault",
+			"name": "Asymmetry Finance afCVX",
+			"symbol": "afCVX",
+			"displayName": "Asymmetry Finance afCVX",
+			"displaySymbol": "afCVX",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8668a15b7b023Dc77B372a740FCb8939E15257Cf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8682fbf0cbf312c891532ba9f1a91e44f81ad7df": {
 			"address": "0x8682fbf0cbf312c891532ba9f1a91e44f81ad7df",
 			"underlyingTokensAddresses": [
@@ -11229,6 +11755,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains 3Crv (DAI, USDC, and USDT) and OUSD, a decentralzed stablecoin backed 1:1 by other stablecoins.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x87650D7bbfC3A9F10587d7778206671719d9910D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x87baf4b42c075db7eb1932a0a49a5465e9a5ce9f": {
+			"address": "0x87baf4b42c075db7eb1932a0a49a5465e9a5ce9f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Zircuit Staking ezETH 22AUG2024",
+			"symbol": "YT-zs-ezETH-22AUG2024",
+			"displayName": "YT Zircuit Staking ezETH 22AUG2024",
+			"displaySymbol": "YT-zs-ezETH-22AUG2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x87baF4B42c075Db7eb1932A0a49A5465e9a5Ce9f/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11349,6 +11889,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8A34b5ad76F528bfEc06c80D85EF3b53dA7FC300/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8a878e3149051b810f078fd3f2e0924290be34a6": {
+			"address": "0x8a878e3149051b810f078fd3f2e0924290be34a6",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe",
+			"displayName": "yPT-USDe (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8A878E3149051B810F078FD3F2E0924290be34A6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12302,6 +12858,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x968d4227eecc1d47e46c68d19de2b6858a3f39a7": {
+			"address": "0x968d4227eecc1d47e46c68d19de2b6858a3f39a7",
+			"underlyingTokensAddresses": [
+				"0x35fa164735182de50811e8e2e824cfb9b6118ac2"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH-Zircuit",
+			"displayName": "yPT-eETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x968d4227eeCc1D47e46c68D19De2B6858a3F39A7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x96e61422b6a9ba0e068b6c5add4ffabc6a4aae27": {
 			"address": "0x96e61422b6a9ba0e068b6c5add4ffabc6a4aae27",
 			"underlyingTokensAddresses": [],
@@ -12452,6 +13024,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x980703fae7ab5bdefc3e1cefc9d15014461fe39d": {
+			"address": "0x980703fae7ab5bdefc3e1cefc9d15014461fe39d",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe-Zircuit",
+			"displayName": "yPT-USDe-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x980703fAE7ab5BDEFC3e1cefc9D15014461FE39D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x982e5a072cb6634f45715665a02c723392977e9f": {
 			"address": "0x982e5a072cb6634f45715665a02c723392977e9f",
 			"underlyingTokensAddresses": [
@@ -12572,6 +13160,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x98fA691998a9e6f410702dEA8BC08a9d500AaAFe/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x99184849e35d91dd85f50993bbb03a42fc0a6fe7": {
+			"address": "0x99184849e35d91dd85f50993bbb03a42fc0a6fe7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x99184849E35D91Dd85f50993bBb03A42Fc0A6FE7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12903,6 +13505,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9c54050a66a2457c01b508155373ebe4d94aa0f5": {
+			"address": "0x9c54050a66a2457c01b508155373ebe4d94aa0f5",
+			"underlyingTokensAddresses": [
+				"0xac3e018457b222d93114458476f3e3416abbe38f"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sfrxETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-sfrxETH",
+			"displayName": "yPT-sfrxETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sfrxETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9c54050a66a2457c01b508155373EBE4d94aA0F5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9c6d47ff73e0f5e51be5fd53236e3f595c5793f2": {
 			"address": "0x9c6d47ff73e0f5e51be5fd53236e3f595c5793f2",
 			"underlyingTokensAddresses": [],
@@ -13189,6 +13807,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9fcf418B971134625CdF38448B949C8640971671/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9ff95d3a070259f579f26a4fe12e145edde8e65a": {
+			"address": "0x9ff95d3a070259f579f26a4fe12e145edde8e65a",
+			"underlyingTokensAddresses": [
+				"0xbf5495efe5db9ce00f80364c8b423567e58d2110"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ezETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-ezETH",
+			"displayName": "yPT-ezETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ezETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9Ff95D3A070259f579f26A4Fe12E145EddE8e65A/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14727,6 +15361,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb2155ffa9807b2decb4a411f7330da5bb6e46c31": {
+			"address": "0xb2155ffa9807b2decb4a411f7330da5bb6e46c31",
+			"underlyingTokensAddresses": [
+				"0xac3e018457b222d93114458476f3e3416abbe38f"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sfrxETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-sfrxETH",
+			"displayName": "yPT-sfrxETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sfrxETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb2155fFA9807B2dECb4A411f7330da5BB6e46C31/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb253eff1104802b97ac7e3ac9fdd73aece295a2c": {
 			"address": "0xb253eff1104802b97ac7e3ac9fdd73aece295a2c",
 			"underlyingTokensAddresses": [],
@@ -15422,6 +16072,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb9ef23c587f3f3dea54f42de5b71e78f822c74e8": {
+			"address": "0xb9ef23c587f3f3dea54f42de5b71e78f822c74e8",
+			"underlyingTokensAddresses": [
+				"0xde5bff0755f192c333b126a449ff944ee2b69681"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sUSDe-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-sUSDe-Karak",
+			"displayName": "yPT-sUSDe-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sUSDe-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb9ef23c587f3F3DEa54F42De5B71e78f822C74e8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xba100000625a3754423978a60c9317c58a424e3d": {
 			"address": "0xba100000625a3754423978a60c9317c58a424e3d",
 			"underlyingTokensAddresses": [],
@@ -15852,6 +16518,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xbda3A6CB2aaef41805F6317841d7B8654eC8b124/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbdac8353b03a883654d19ff60c8fcdc1a52f0be2": {
+			"address": "0xbdac8353b03a883654d19ff60c8fcdc1a52f0be2",
+			"underlyingTokensAddresses": [
+				"0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-weETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-weETH",
+			"displayName": "yPT-weETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-weETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xbDAc8353b03a883654d19fF60c8fcdc1A52f0bE2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17029,6 +17711,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc9fb833f11d2d8169953b144fa5242e8aec25c01": {
+			"address": "0xc9fb833f11d2d8169953b144fa5242e8aec25c01",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sDAI (auto-rolling Pendle PT)",
+			"symbol": "yPT-sDAI",
+			"displayName": "yPT-sDAI (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC9FB833f11d2d8169953b144Fa5242e8aeC25C01/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xca0253a98d16e9c1e3614cafda19318ee69772d0": {
 			"address": "0xca0253a98d16e9c1e3614cafda19318ee69772d0",
 			"underlyingTokensAddresses": [
@@ -17324,6 +18022,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xcbC72d92b2dc8187414F6734718563898740C0BC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcc209a1c5a3757597497c83d62d1d6b6a2c7395f": {
+			"address": "0xcc209a1c5a3757597497c83d62d1d6b6a2c7395f",
+			"underlyingTokensAddresses": [
+				"0xa1290d69c65a6fe4df752f95823fae25cb99e5a7"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rsETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-rsETH",
+			"displayName": "yPT-rsETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rsETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xcc209a1c5a3757597497C83d62D1d6B6a2c7395F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17729,6 +18443,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd24cfe2d0fa81369ca6291c28ac5426e16b6d57a": {
+			"address": "0xd24cfe2d0fa81369ca6291c28ac5426e16b6d57a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Zircuit Staking USDe",
+			"symbol": "SY-zs-USDe",
+			"displayName": "SY Zircuit Staking USDe",
+			"displaySymbol": "SY-zs-USDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD24Cfe2d0fa81369ca6291c28ac5426e16B6d57a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd2967f45c4f384deea880f807be904762a3dea07": {
 			"address": "0xd2967f45c4f384deea880f807be904762a3dea07",
 			"underlyingTokensAddresses": [
@@ -17865,6 +18593,38 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xD4108Bb1185A5c30eA3f4264Fd7783473018Ce17/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd469e2a86331a9286de08dfe76083d9e8b168ca9": {
+			"address": "0xd469e2a86331a9286de08dfe76083d9e8b168ca9",
+			"underlyingTokensAddresses": [
+				"0xf951e335afb289353dc249e82926178eac7ded78"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-swETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-swETH",
+			"displayName": "yPT-swETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-swETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD469E2A86331a9286De08DfE76083D9E8B168cA9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd4c0ab44698bca5070624ef62c66b1f4d1488551": {
+			"address": "0xd4c0ab44698bca5070624ef62c66b1f4d1488551",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-uniETH-1727136009",
+			"symbol": "PT-sw-uniETH-1727136009",
+			"displayName": "Principal Token: sw-uniETH-1727136009",
+			"displaySymbol": "PT-sw-uniETH-1727136009",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD4c0aB44698BcA5070624eF62c66b1F4d1488551/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18016,6 +18776,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xd6627F7dE81eB517A32F0F81537Ea2636B27B8CC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd66b560f4e3e85f22c192d91da847886d5c5fd00": {
+			"address": "0xd66b560f4e3e85f22c192d91da847886d5c5fd00",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT rswETH 26SEP2024",
+			"symbol": "YT-rswETH-26SEP2024",
+			"displayName": "YT rswETH 26SEP2024",
+			"displaySymbol": "YT-rswETH-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD66b560f4e3e85f22C192d91dA847886d5C5Fd00/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18390,7 +19164,7 @@
 		"0xd9a442856c234a39a81a089c06451ebaa4306a72": {
 			"address": "0xd9a442856c234a39a81a089c06451ebaa4306a72",
 			"underlyingTokensAddresses": [
-				"0xae7ab96520de3a18e5e111b5eaab095312d7fe84"
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
 			],
 			"type": "Yearn Vault",
 			"name": "pufETH",
@@ -18617,6 +19391,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdc0b53cc326b692a4d89e5f4cadc29a6b7265749": {
+			"address": "0xdc0b53cc326b692a4d89e5f4cadc29a6b7265749",
+			"underlyingTokensAddresses": [
+				"0xfae103dc9cf190ed75350761e95403b7b8afa6c0"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rswETH-L2 (auto-rolling Pendle PT)",
+			"symbol": "yPT-rswETH-L2",
+			"displayName": "yPT-rswETH-L2 (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rswETH-L2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xdc0B53cC326B692a4D89e5F4CadC29a6B7265749/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdcafd1914afdbc5788b701f47283caeeaa5fbaed": {
 			"address": "0xdcafd1914afdbc5788b701f47283caeeaa5fbaed",
 			"underlyingTokensAddresses": [
@@ -18631,6 +19421,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdcafD1914afDBC5788B701F47283CaeEAa5FBAed/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xdcba6f240bb7e8ea00f23a4f970b29d22ddd860e": {
+			"address": "0xdcba6f240bb7e8ea00f23a4f970b29d22ddd860e",
+			"underlyingTokensAddresses": [
+				"0x83f20f44975d03b1b09e64809b757c47f942beea"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-sDAI (auto-rolling Pendle PT)",
+			"symbol": "yPT-sDAI",
+			"displayName": "yPT-sDAI (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-sDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xdCBa6f240Bb7e8Ea00F23a4F970B29d22DDd860E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18832,6 +19638,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xDeaa5833d09179c20B55601453b9Dd22216F2d76/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xdead8193791a6dc90564e6856ad12878200e90ec": {
+			"address": "0xdead8193791a6dc90564e6856ad12878200e90ec",
+			"underlyingTokensAddresses": [
+				"0xbf5495efe5db9ce00f80364c8b423567e58d2110"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ezETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-ezETH-Zircuit",
+			"displayName": "yPT-ezETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ezETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xDead8193791a6Dc90564E6856ad12878200E90ec/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab": {
@@ -19363,6 +20185,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe30f5409c13f77ee94480800e7be329342e14718": {
+			"address": "0xe30f5409c13f77ee94480800e7be329342e14718",
+			"underlyingTokensAddresses": [
+				"0xae7ab96520de3a18e5e111b5eaab095312d7fe84"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-stETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-stETH",
+			"displayName": "yPT-stETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-stETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe30f5409c13f77EE94480800e7Be329342E14718/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe3668873d944e4a949da05fc8bde419eff543882": {
 			"address": "0xe3668873d944e4a949da05fc8bde419eff543882",
 			"underlyingTokensAddresses": [],
@@ -19393,6 +20231,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xe403bbf2262643c2e996e7469be736e211d5b272": {
+			"address": "0xe403bbf2262643c2e996e7469be736e211d5b272",
+			"underlyingTokensAddresses": [
+				"0xbf5495efe5db9ce00f80364c8b423567e58d2110"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-ezETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-ezETH",
+			"displayName": "yPT-ezETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-ezETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xE403bbF2262643c2e996E7469be736E211D5B272/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42": {
 			"address": "0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42",
 			"underlyingTokensAddresses": [
@@ -19406,6 +20260,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xE510E87d0eF7d987Ed1baF8E1D7Aaef5b9e3db42/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe5175a2eb7c40bc5f0e9de4152caa14eab0ffcb7": {
+			"address": "0xe5175a2eb7c40bc5f0e9de4152caa14eab0ffcb7",
+			"underlyingTokensAddresses": [
+				"0x917cee801a67f933f2e6b33fc0cd1ed2d5909d88"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-weETHs (auto-rolling Pendle PT)",
+			"symbol": "yPT-weETHs",
+			"displayName": "yPT-weETHs (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-weETHs",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe5175a2EB7C40bC5f0E9DE4152caA14eab0fFCb7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -19551,6 +20421,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xE6354ed5bC4b393a5Aad09f21c46E101e692d447/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xe64542b15f18f6926b49e0ef53681a84dc8c28f1": {
+			"address": "0xe64542b15f18f6926b49e0ef53681a84dc8c28f1",
+			"underlyingTokensAddresses": [
+				"0xa1290d69c65a6fe4df752f95823fae25cb99e5a7"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rsETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-rsETH",
+			"displayName": "yPT-rsETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rsETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xE64542B15f18f6926b49e0eF53681a84dC8c28f1/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xe653e4048620e546afff02d3689678896d22e236": {
@@ -19731,6 +20617,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe838ab2eb50db41bd713f27346690d3ead2d98f1": {
+			"address": "0xe838ab2eb50db41bd713f27346690d3ead2d98f1",
+			"underlyingTokensAddresses": [
+				"0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-weETH-Zircuit (auto-rolling Pendle PT)",
+			"symbol": "yPT-weETH-Zircuit",
+			"displayName": "yPT-weETH-Zircuit (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-weETH-Zircuit",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe838ab2EB50Db41Bd713f27346690d3Ead2D98f1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe8449f1495012ee18db7aa18cd5706b47e69627c": {
 			"address": "0xe8449f1495012ee18db7aa18cd5706b47e69627c",
 			"underlyingTokensAddresses": [
@@ -19897,6 +20799,38 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xebf3581407ae0ceb07b8149b4c3ac995a72cb589": {
+			"address": "0xebf3581407ae0ceb07b8149b4c3ac995a72cb589",
+			"underlyingTokensAddresses": [
+				"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-wstETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-wstETH",
+			"displayName": "yPT-wstETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-wstETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xebF3581407ae0Ceb07B8149b4C3AC995a72cb589/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xec48e0b9579062770888aaf900d054a1bc10a3bf": {
+			"address": "0xec48e0b9579062770888aaf900d054a1bc10a3bf",
+			"underlyingTokensAddresses": [
+				"0xbe3ca34d0e877a1fc889bd5231d65477779aff4e"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-USDe-Karak (auto-rolling Pendle PT)",
+			"symbol": "yPT-USDe-Karak",
+			"displayName": "yPT-USDe-Karak (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-USDe-Karak",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xec48E0b9579062770888AaF900d054A1bC10A3Bf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xecd5e75afb02efa118af914515d6521aabd189f1": {
 			"address": "0xecd5e75afb02efa118af914515d6521aabd189f1",
 			"underlyingTokensAddresses": [
@@ -20052,6 +20986,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xee6bdfac6767efef0879b924fea12a3437d281a2": {
+			"address": "0xee6bdfac6767efef0879b924fea12a3437d281a2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEe6BdFAc6767eFEf0879B924feA12a3437d281A2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xee768e132c4a836138969c883dcca6d30f0352b5": {
 			"address": "0xee768e132c4a836138969c883dcca6d30f0352b5",
 			"underlyingTokensAddresses": [],
@@ -20063,6 +21011,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xeE768e132C4a836138969C883dcCa6d30F0352b5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xeeb4290377763a3fadbfbf81ab8f2958aec8bb96": {
+			"address": "0xeeb4290377763a3fadbfbf81ab8f2958aec8bb96",
+			"underlyingTokensAddresses": [
+				"0xfae103dc9cf190ed75350761e95403b7b8afa6c0"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rswETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-rswETH",
+			"displayName": "yPT-rswETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rswETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xeEb4290377763A3FaDbfbf81AB8f2958AeC8bB96/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20137,6 +21101,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xF04f1F279C9dA038b917538D89947f0E00672487/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf0574d8b9dc3a9de768eaa7dbb7bb0c68521b148": {
+			"address": "0xf0574d8b9dc3a9de768eaa7dbb7bb0c68521b148",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT rswETH 26SEP2024",
+			"symbol": "PT-rswETH-26SEP2024",
+			"displayName": "PT rswETH 26SEP2024",
+			"displaySymbol": "PT-rswETH-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF0574d8B9Dc3a9DE768eaa7DBB7bB0C68521b148/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20243,6 +21221,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf148a0b15712f5bfeefadb4e6ef9739239f88b07": {
+			"address": "0xf148a0b15712f5bfeefadb4e6ef9739239f88b07",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF148a0B15712f5BfeefAdb4E6eF9739239F88b07/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf16e81dce15b08f326220742020379b855b87df9": {
 			"address": "0xf16e81dce15b08f326220742020379b855b87df9",
 			"underlyingTokensAddresses": [],
@@ -20271,6 +21263,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf1ce36c9c0db95a052eb4b075bc334e1f5a21ef0": {
+			"address": "0xf1ce36c9c0db95a052eb4b075bc334e1f5a21ef0",
+			"underlyingTokensAddresses": [
+				"0xfae103dc9cf190ed75350761e95403b7b8afa6c0"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-rswETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-rswETH",
+			"displayName": "yPT-rswETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-rswETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf1ce36c9C0dB95A052Eb4b075BC334e1f5a21Ef0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf29ae508698bdef169b89834f76704c3b205aedf": {
 			"address": "0xf29ae508698bdef169b89834f76704c3b205aedf",
 			"underlyingTokensAddresses": [
@@ -20284,6 +21292,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF29AE508698bDeF169B89834F76704C3B205aedf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf2a9ef3b50d7615b455691540ccc21ef934daab6": {
+			"address": "0xf2a9ef3b50d7615b455691540ccc21ef934daab6",
+			"underlyingTokensAddresses": [
+				"0xae7ab96520de3a18e5e111b5eaab095312d7fe84"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-stETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-stETH",
+			"displayName": "yPT-stETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-stETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xF2A9Ef3b50D7615b455691540CCC21EF934dAAB6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21085,6 +22109,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xFb087F3Da58e59f4707f2E38e98B44F194468ccD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfb2e038f179f5dfb34a695225f8fd9b854360636": {
+			"address": "0xfb2e038f179f5dfb34a695225f8fd9b854360636",
+			"underlyingTokensAddresses": [
+				"0x35fa164735182de50811e8e2e824cfb9b6118ac2"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-eETH (auto-rolling Pendle PT)",
+			"symbol": "yPT-eETH",
+			"displayName": "yPT-eETH (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-eETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFB2E038F179F5dfB34a695225F8FD9B854360636/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

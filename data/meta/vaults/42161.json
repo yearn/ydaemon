@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-06-26T13:19:21.394226+02:00",
+	"lastUpdate": "2024-06-27T09:40:16.775541+02:00",
 	"version": {
-		"major": 11,
+		"major": 15,
 		"minor": 0,
-		"patch": 55
+		"patch": 54
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -131,8 +131,8 @@
 				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
 				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
 			],
-			"lastPricePerShare": "1058617130905666534",
-			"lastTotalAssets": "10343720715107192",
+			"lastPricePerShare": "1058617130905666539",
+			"lastTotalAssets": "595777349807418492",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -220,7 +220,7 @@
 		"0x075472d809aa98a4686d6f04e2c2663802653f2a": {
 			"address": "0x075472d809aa98a4686d6f04e2c2663802653f2a",
 			"token": "0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -324,7 +324,7 @@
 		"0x0a5e1394ba0c23d71167233a3b4b55cb8d214279": {
 			"address": "0x0a5e1394ba0c23d71167233a3b4b55cb8d214279",
 			"token": "0x551c423c441db0b691b5630f04d2080caee25963",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -374,7 +374,7 @@
 		"0x0d5e99a012415e22557f6df554e97159516e6d3c": {
 			"address": "0x0d5e99a012415e22557f6df554e97159516e6d3c",
 			"token": "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -440,7 +440,7 @@
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "1503101233329196851",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -532,7 +532,7 @@
 		"0x15943b95af6bbe222c49f7501f39f1d2da55ccdf": {
 			"address": "0x15943b95af6bbe222c49f7501f39f1d2da55ccdf",
 			"token": "0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -582,7 +582,7 @@
 		"0x1bd173f9a1186a1abe680071e0f57d4d83c18430": {
 			"address": "0x1bd173f9a1186a1abe680071e0f57d4d83c18430",
 			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.1",
@@ -703,7 +703,7 @@
 				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "1712717292972445525",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -849,7 +849,7 @@
 		"0x2e48847fe29c3883c98125cb2c44244d6602d549": {
 			"address": "0x2e48847fe29c3883c98125cb2c44244d6602d549",
 			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
 			"accountant": "0x1f399808fe52d0e960cab84b6b54d5707ab27c8a",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -919,7 +919,7 @@
 				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "29890703510530020805552",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -957,7 +957,7 @@
 		"0x368d79018e525db25dba517a0b5d3cc34c87cafa": {
 			"address": "0x368d79018e525db25dba517a0b5d3cc34c87cafa",
 			"token": "0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -968,7 +968,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1073288166958181690",
+			"lastPricePerShare": "1073660152822112621",
 			"lastTotalAssets": "261545955689075029",
 			"metadata": {
 				"isRetired": false,
@@ -1068,8 +1068,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000001181732317159",
-			"lastTotalAssets": "150840977479858849",
+			"lastPricePerShare": "1149543270019425676",
+			"lastTotalAssets": "239934551831",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1107,7 +1107,7 @@
 		"0x461ad11a76b302f13ada1296da0178722a50838e": {
 			"address": "0x461ad11a76b302f13ada1296da0178722a50838e",
 			"token": "0x14fbc760efaf36781cb0eb3cb255ad976117b9bd",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1170,8 +1170,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1009197541163224607",
-			"lastTotalAssets": "2117917630824021423635",
+			"lastPricePerShare": "1009197556756211817",
+			"lastTotalAssets": "2117917667183671583736",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1223,8 +1223,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1943246",
-			"lastTotalAssets": "26405323254",
+			"lastPricePerShare": "1943459",
+			"lastTotalAssets": "26439370452",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1262,7 +1262,7 @@
 		"0x4da30274267dedc73a6a7eb233fba81691f34ef7": {
 			"address": "0x4da30274267dedc73a6a7eb233fba81691f34ef7",
 			"token": "0xfd8aee8fcc10aac1897f8d5271d112810c79e022",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1323,8 +1323,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025564",
-			"lastTotalAssets": "2909983096",
+			"lastPricePerShare": "1025677",
+			"lastTotalAssets": "3269026718",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1362,7 +1362,7 @@
 		"0x586fb80ddadfc01294751a7cd58625ccff4bdb2f": {
 			"address": "0x586fb80ddadfc01294751a7cd58625ccff4bdb2f",
 			"token": "0x3803d89c31de8b7def55c86f2469a5ea4db41b92",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1467,7 +1467,7 @@
 		"0x65073e8c0a9c26d4280a43a3ecd3cdedd36fdb89": {
 			"address": "0x65073e8c0a9c26d4280a43a3ecd3cdedd36fdb89",
 			"token": "0x08a152834de126d2ef83d612ff36e4523fd0017f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1533,7 +1533,7 @@
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
 			"lastPricePerShare": "1024455",
-			"lastTotalAssets": "38111101091",
+			"lastTotalAssets": "44139245035",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1586,7 +1586,7 @@
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "5000000000000000000",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1727,7 +1727,7 @@
 		"0x8a64111709ce75434b9156e3878cdd5b1fbc2d13": {
 			"address": "0x8a64111709ce75434b9156e3878cdd5b1fbc2d13",
 			"token": "0x99e9028e274feafa2e1d8787e1ee6de39c6f7724",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1777,7 +1777,7 @@
 		"0x8b5aa1688297bc2e4664a18df6ad22a70c4178b8": {
 			"address": "0x8b5aa1688297bc2e4664a18df6ad22a70c4178b8",
 			"token": "0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -1838,7 +1838,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1096730990946604990",
+			"lastPricePerShare": "1096739869193511406",
 			"lastTotalAssets": "2639423274806",
 			"metadata": {
 				"isRetired": false,
@@ -2049,10 +2049,10 @@
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063"
 			],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "7500000000",
+			"lastTotalAssets": "7510000000",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -2077,7 +2077,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPublicERC4626": false
@@ -2257,7 +2257,7 @@
 				"0x5108db0852c0caa2df797dcf31f8a73bfb335452"
 			],
 			"lastPricePerShare": "1019715",
-			"lastTotalAssets": "29032747442",
+			"lastTotalAssets": "29425838261",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2310,7 +2310,7 @@
 				"0x571293fd9d9716d50ba48aa1628840d7fa166b20"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "283899892311130274",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2359,8 +2359,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1118196",
-			"lastTotalAssets": "38516511331",
+			"lastPricePerShare": "1118291",
+			"lastTotalAssets": "45669839138",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2398,7 +2398,7 @@
 		"0xcb1a0a9c9cbbca82a395301267d525125cfba557": {
 			"address": "0xcb1a0a9c9cbbca82a395301267d525125cfba557",
 			"token": "0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",
@@ -2409,7 +2409,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2064549547291581661",
+			"lastPricePerShare": "2064647957823678465",
 			"lastTotalAssets": "11975864268366",
 			"metadata": {
 				"isRetired": false,
@@ -2512,8 +2512,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "21208331",
-			"lastTotalAssets": "136159378",
+			"lastPricePerShare": "21834002",
+			"lastTotalAssets": "60976407",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2605,7 +2605,7 @@
 		"0xdfaa4001308f5ec4d06920cd0d2c649c6f930e2c": {
 			"address": "0xdfaa4001308f5ec4d06920cd0d2c649c6f930e2c",
 			"token": "0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.2",

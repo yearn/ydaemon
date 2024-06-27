@@ -35,8 +35,8 @@ var ARBITRUM = TChain{
 	},
 	StakingRewardRegistry: []TContractData{
 		{
-			Address: common.HexToAddress(`0x5DCA08eBA0263B948595f1772bFAad073263E737`),
-			Block:   225114245,
+			Address: common.HexToAddress(`0x26d8EA1d8759d0F9abBcf8181b1fD5D3635daD69`),
+			Block:   226125838,
 			Tag:     `V3 STAKING`,
 		},
 	},

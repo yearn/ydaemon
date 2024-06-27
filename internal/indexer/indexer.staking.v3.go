@@ -172,6 +172,7 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 			logs.Error(`Failed to retrieve the number of staking contract`, err)
 			return
 		}
+		logs.Pretty(chainID, `Number of tokens`, numberOfTokens.Int64())
 
 		/******************************************************************************************
 		** Then, via a multicall, we need to call the `tokens(idx)` method from the stakingRegistry
@@ -221,6 +222,7 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 	}
 
 	result := retrieveV3StakingData(chainID, allVaults, allStaking)
+	logs.Pretty(result)
 
 	/******************************************************************************************
 	** Then, via a multicall, we need to call the `asset` method from the individual gauge

@@ -6,8 +6,10 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -109,13 +111,22 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 	for _, chainID := range chains {
 		vaultsForChain, _ := storage.ListVaults(chainID)
 		for _, currentVault := range vaultsForChain {
+			if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+				logs.Pretty(`FOUND THE VAULT`)
+			}
 			/******************************************************************************************
 			** We want to ignore all non Yearn vaults
 			******************************************************************************************/
 			if !currentVault.Metadata.Inclusion.IsYearn {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`NOT YEARN FAULT`)
+				}
 				continue
 			}
 			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`BLACKLISTED`)
+				}
 				continue
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)
@@ -123,12 +134,24 @@ func (y Controller) GetAllVaultsForAllChainsSimplified(c *gin.Context) {
 				continue
 			}
 			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`NONE 1`)
+				}
 				continue
 			} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`NODUST 1`)
+				}
 				continue
 			} else if migrable == `all` && !newVault.Migration.Available {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`ALL`)
+				}
 				continue
 			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
+				if addresses.Equals(currentVault.Address, `0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544`) {
+					logs.Pretty(`IGNORE`)
+				}
 				continue
 			}
 			APRAsFloat := 0.0

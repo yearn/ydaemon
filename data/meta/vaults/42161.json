@@ -34,7 +34,7 @@
 				"isAutomated": false,
 				"isHighlighted": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x022061d81e42fcb59711193346bab758d24d6c43",
@@ -87,7 +87,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x02822b7b6de0bf087dcea626f6f19a838aedb7be",
@@ -141,7 +141,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x044e75fcbf7bd3f8f4577ff317554e9c0037f145",
@@ -295,7 +295,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x08e3d13d50310afbea2da20a3dbd92aacfc503ac",
@@ -449,7 +449,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x0f2ae7531a83982f15ff1d26b165e2bf3d7566da",
@@ -712,7 +712,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x1dd930add968ff5913c3627daa1e6e6fcc9dc544",
@@ -820,7 +820,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x2b0b6376083c6e1f376c7439f328436a673f333c",
@@ -928,7 +928,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x34a2b066af16409648ef15d239e656edb8790ca0",
@@ -1589,11 +1589,11 @@
 			"lastTotalAssets": "5000000000000000000",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -1648,7 +1648,7 @@
 				"isAutomated": false,
 				"isHighlighted": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x7fd798ed77368e787e216dfdb5be5f6cae4c5ad5",
@@ -1901,7 +1901,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x985c0271ad0bf0a45951b64eb6fc58010b050908",
@@ -2005,7 +2005,7 @@
 				"isAutomated": false,
 				"isHighlighted": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x9ed00a5dc4b8e96ecda1b863975a597917948c38",
@@ -2056,7 +2056,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -2162,7 +2162,7 @@
 				"isAutomated": false,
 				"isHighlighted": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xaeba9f4a9293213e0e3ed18a2f688bddd7f5fb0c",
@@ -2319,7 +2319,7 @@
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xc40da6a01ac36f39736731ee50fb3b1b8204e2d3",
@@ -2472,7 +2472,7 @@
 				"isAutomated": false,
 				"isHighlighted": false,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xd21e503d8ac357a7c8f8897bf84a4bfd14fec6e1",
@@ -2570,11 +2570,11 @@
 			"lastTotalAssets": "7500000000",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {

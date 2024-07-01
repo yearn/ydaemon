@@ -62,6 +62,12 @@ func NewRouter() *gin.Engine {
 		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified)
 
 		/******************************************************************************************
+		** Retrieve all vaults for seasolver
+		******************************************************************************************/
+		router.GET(`vaults/underthesea/v2`, c.GetAllV2VaultsForAllChainsSeaSimplified)
+		router.GET(`vaults/underthesea/v3`, c.GetAllV3VaultsForAllChainsSeaSimplified)
+
+		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
 		** will return the vaults for a specific chain.
 		******************************************************************************************/

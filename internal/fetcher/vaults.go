@@ -154,7 +154,15 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	for _, vault := range newVaultList {
 		vault.ChainID = chainID
+		/******************************************************************************************
+		** In some situation, a vault can be added to multiple registries: by default the public
+		** one, and sometime another one on top which should be considered as the actual one.
+		** To properly handle this, we will check assign the registry address we got when the
+		** stored one is the zero address or when the registry is the public one.
+		******************************************************************************************/
 		if addresses.Equals(vault.RegistryAddress, common.Address{}) {
+			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
+		} else if env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress) {
 			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
 		}
 
@@ -218,9 +226,18 @@ func RetrieveAllVaults(
 	**********************************************************************************************/
 	vaultMapFromStorage, _ := storage.ListVaults(chainID)
 	for _, vault := range vaultMap {
+		/******************************************************************************************
+		** In some situation, a vault can be added to multiple registries: by default the public
+		** one, and sometime another one on top which should be considered as the actual one.
+		** To properly handle this, we will check assign the registry address we got when the
+		** stored one is the zero address or when the registry is the public one.
+		******************************************************************************************/
 		if addresses.Equals(vault.RegistryAddress, common.Address{}) {
 			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
+		} else if env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress) {
+			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
 		}
+
 		if !vault.Metadata.Inclusion.IsSet {
 			vault.Metadata.Inclusion.IsYearn = env.IsRegistryFromYearnCore(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsYearnJuiced = env.IsRegistryFromJuiced(chainID, vault.RegistryAddress)

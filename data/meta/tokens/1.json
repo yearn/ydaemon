@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-27T13:44:14.123673+02:00",
+	"lastUpdate": "2024-07-01T19:01:56.043355+02:00",
 	"version": {
 		"major": 0,
-		"minor": 44,
+		"minor": 45,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2782,6 +2782,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x21cf1c5dc48c603b89907fe6a7ae83ea5e3709af": {
+			"address": "0x21cf1c5dc48c603b89907fe6a7ae83ea5e3709af",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve Vault for crvUSD",
+			"symbol": "cvcrvUSD",
+			"displayName": "Curve Vault for crvUSD",
+			"displaySymbol": "cvcrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x21CF1c5Dc48C603b89907FE6a7AE83EA5e3709aF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x21e27a5e5513d6e65c4f830167390997aa84843a": {
 			"address": "0x21e27a5e5513d6e65c4f830167390997aa84843a",
 			"underlyingTokensAddresses": [
@@ -5159,6 +5175,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3b50805453023a91a8bf641e279401a0b23fa6f9": {
+			"address": "0x3b50805453023a91a8bf641e279401a0b23fa6f9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Renzo",
+			"symbol": "REZ",
+			"displayName": "Renzo",
+			"displaySymbol": "REZ",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3B50805453023a91a8bf641e279401a0b23FA6F9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3b621df9b429ed1ad64428ea7d8d142374c45121": {
 			"address": "0x3b621df9b429ed1ad64428ea7d8d142374c45121",
 			"underlyingTokensAddresses": [],
@@ -5683,6 +5713,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x40D16FC0246aD3160Ccc09B8D0D3A2cD28aE6C2f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x40fa9153353cca703352ca2655ad033901b8bca0": {
+			"address": "0x40fa9153353cca703352ca2655ad033901b8bca0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Renzo REZ Staking 26SEP2024",
+			"symbol": "PT-REZtake-26SEP2024",
+			"displayName": "PT Renzo REZ Staking 26SEP2024",
+			"displaySymbol": "PT-REZtake-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x40Fa9153353ccA703352cA2655aD033901b8bCa0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6277,6 +6321,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x47BA20283Be4d72D4AFB1862994F4203551539C5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4803a036c4352bd53906b1c70040fa271d3afe65": {
+			"address": "0x4803a036c4352bd53906b1c70040fa271d3afe65",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4803a036c4352Bd53906B1C70040FA271D3aFE65/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6897,6 +6955,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4f214344569653eb3f6b32a094df883fb9a80fb3": {
+			"address": "0x4f214344569653eb3f6b32a094df883fb9a80fb3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow ENA 26SEP2024",
+			"symbol": "YT-rsENA-26SEP2024",
+			"displayName": "YT Mellow ENA 26SEP2024",
+			"displaySymbol": "YT-rsENA-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4F214344569653eb3F6b32a094df883FB9A80fB3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4f30a9d41b80ecc5b94306ab4364951ae3170210": {
 			"address": "0x4f30a9d41b80ecc5b94306ab4364951ae3170210",
 			"underlyingTokensAddresses": [],
@@ -7336,6 +7408,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains USDC, wETH, and INV. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5426178799ee0a0181A89b4f57eFddfAb49941Ec/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x54264c1b0355c71a678d5a171ca796429ddcb4f4": {
+			"address": "0x54264c1b0355c71a678d5a171ca796429ddcb4f4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Renzo REZ Staking",
+			"symbol": "SY-REZtake",
+			"displayName": "SY Renzo REZ Staking",
+			"displaySymbol": "SY-REZtake",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x54264c1b0355c71A678d5A171Ca796429DDCB4f4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7992,6 +8078,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5b737cc835c29c493845353e0399b408fbd7105d": {
+			"address": "0x5b737cc835c29c493845353e0399b408fbd7105d",
+			"underlyingTokensAddresses": [
+				"0x73a0cba58c19ed5f27c6590bd792ec38de4815ea"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve crvsFRAX Factory yVault",
+			"symbol": "yvCurve-crvsFRAX-f",
+			"displayName": "Curve crvsFRAX Factory yVault",
+			"displaySymbol": "yvCurve-crvsFRAX-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5b737CC835c29c493845353e0399B408Fbd7105D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5b88a0ddf1ca18e50e7a7cd86eee441ae7d51eb5": {
 			"address": "0x5b88a0ddf1ca18e50e7a7cd86eee441ae7d51eb5",
 			"underlyingTokensAddresses": [
@@ -8486,6 +8588,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x60cb28103608c41bfd04ad09d3f7e6221a713b07": {
+			"address": "0x60cb28103608c41bfd04ad09d3f7e6221a713b07",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow sUSDe 26SEP2024",
+			"symbol": "PT-rsUSDe-26SEP2024",
+			"displayName": "PT Mellow sUSDe 26SEP2024",
+			"displaySymbol": "PT-rsUSDe-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x60CB28103608C41BFD04Ad09D3F7e6221A713b07/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x60ccefd60ba522f9221f122bb80a1e8cbab9285f": {
 			"address": "0x60ccefd60ba522f9221f122bb80a1e8cbab9285f",
 			"underlyingTokensAddresses": [],
@@ -8773,6 +8889,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x64046776c9c856fdc5c39c6eba101adc8e18291f": {
+			"address": "0x64046776c9c856fdc5c39c6eba101adc8e18291f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Mellow ENA",
+			"symbol": "SY-rsENA",
+			"displayName": "SY Mellow ENA",
+			"displaySymbol": "SY-rsENA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x64046776c9C856fDc5c39c6EBa101adC8E18291f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x64351fc9810adad17a690e4e1717df5e7e085160": {
 			"address": "0x64351fc9810adad17a690e4e1717df5e7e085160",
 			"underlyingTokensAddresses": [],
@@ -8831,6 +8961,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x65346970F0f66CCAd8a5bfc3a03C96836C1897bE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x653f134dc1b129012fca3d5825d6849ad1d81864": {
+			"address": "0x653f134dc1b129012fca3d5825d6849ad1d81864",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xezETH-WETH01",
+			"symbol": "xezETH-WETH01",
+			"displayName": "xezETH-WETH01",
+			"displaySymbol": "xezETH-WETH01",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x653F134dC1b129012fCa3d5825d6849AD1d81864/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10086,6 +10230,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x73a0cba58c19ed5f27c6590bd792ec38de4815ea": {
+			"address": "0x73a0cba58c19ed5f27c6590bd792ec38de4815ea",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+				"0xa663b02cf0a4b149d2ad41910cb81e23e1c41c32"
+			],
+			"type": "Curve LP",
+			"name": "crvUSD/sFRAX",
+			"symbol": "crvsFRAX",
+			"displayName": "crvUSD/sFRAX",
+			"displaySymbol": "crvsFRAX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x73a0cba58c19ed5F27C6590BD792eC38dE4815Ea/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x73aa4ce1d62e30aa0207eaf25de6ac3beba9e7fd": {
 			"address": "0x73aa4ce1d62e30aa0207eaf25de6ac3beba9e7fd",
 			"underlyingTokensAddresses": [],
@@ -10161,6 +10322,20 @@
 			"description": "This token represents a Curve crypto pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains BTRFLY and ETH. Please be aware that as crypto pools are composed of differently-priced assets, they can be subject to impermanent loss. BTRFLY is the governance token of the [Redacted ecosystem](https://app.redacted.finance).",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x7483Dd57f6488b0e194A151C57Df6Ec85C00aCE9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x74fd29b63766e9d05ed9d1181a365522d096ed6f": {
+			"address": "0x74fd29b63766e9d05ed9d1181a365522d096ed6f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Mellow ENA 26SEP2024",
+			"symbol": "PT-rsENA-26SEP2024",
+			"displayName": "PT Mellow ENA 26SEP2024",
+			"displaySymbol": "PT-rsENA-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x74fd29B63766E9D05Ed9D1181a365522d096ED6F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11373,6 +11548,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x82f5104b23ff2fa54c2345f821dac9369e9e0b26": {
+			"address": "0x82f5104b23ff2fa54c2345f821dac9369e9e0b26",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ethena LRT Vault sUSDe",
+			"symbol": "rsUSDe",
+			"displayName": "Ethena LRT Vault sUSDe",
+			"displaySymbol": "rsUSDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x82f5104b23FF2FA54C2345F821dAc9369e9E0B26/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x836a808d4828586a69364065a1e064609f5078c7": {
 			"address": "0x836a808d4828586a69364065a1e064609f5078c7",
 			"underlyingTokensAddresses": [],
@@ -12228,6 +12417,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8eb1a6a1296f41ccaa20d13b952a7fca1b20c3e4": {
+			"address": "0x8eb1a6a1296f41ccaa20d13b952a7fca1b20c3e4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Renzo REZ Staking",
+			"symbol": "SY-REZtake",
+			"displayName": "SY Renzo REZ Staking",
+			"displaySymbol": "SY-REZtake",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8eB1a6a1296F41CcAa20d13b952a7fca1b20c3e4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8ee57c05741aa9db947a744e713c15d4d19d8822": {
 			"address": "0x8ee57c05741aa9db947a744e713c15d4d19d8822",
 			"underlyingTokensAddresses": [
@@ -12885,6 +13088,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x96E61422b6A9bA0e068B6c5ADd4fFaBC6a4aae27/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x96f2e86b6ba7bec41f5ba89d1aa7c7e75d76d1e5": {
+			"address": "0x96f2e86b6ba7bec41f5ba89d1aa7c7e75d76d1e5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Renzo REZ Staking 26SEP2024",
+			"symbol": "YT-REZtake-26SEP2024",
+			"displayName": "YT Renzo REZ Staking 26SEP2024",
+			"displaySymbol": "YT-REZtake-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x96F2E86b6Ba7Bec41F5BA89D1Aa7c7E75d76d1E5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16210,6 +16427,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xba8e83cc28b54bb063984033df20f9a9f1220c24": {
+			"address": "0xba8e83cc28b54bb063984033df20f9a9f1220c24",
+			"underlyingTokensAddresses": [
+				"0x21cf1c5dc48c603b89907fe6a7ae83ea5e3709af"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve cvcrvUSD Factory yVault",
+			"symbol": "yvCurve-cvcrvUSD-f",
+			"displayName": "Curve cvcrvUSD Factory yVault",
+			"displaySymbol": "yvCurve-cvcrvUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xbA8e83CC28B54bB063984033Df20F9a9F1220C24/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbaaa1f5dba42c3389bdbc2c9d2de134f5cd0dc89": {
 			"address": "0xbaaa1f5dba42c3389bdbc2c9d2de134f5cd0dc89",
 			"underlyingTokensAddresses": [
@@ -16426,6 +16659,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xbcccE9991D2C8A8056D677c0c52C20ac901f39eC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbcd9522eef626dd0363347bde6cab105c2c7797e": {
+			"address": "0xbcd9522eef626dd0363347bde6cab105c2c7797e",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Mellow sUSDe",
+			"symbol": "SY-rsUSDe",
+			"displayName": "SY Mellow sUSDe",
+			"displaySymbol": "SY-rsUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBCD9522EEf626dD0363347BDE6cAB105c2C7797e/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17453,6 +17702,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xc5F3D11580c41cD07104e9AF154Fc6428bb93c73/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc65433845ecd16688eda196497fa9130d6c47bd8": {
+			"address": "0xc65433845ecd16688eda196497fa9130d6c47bd8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ethena LRT Vault ENA",
+			"symbol": "rsENA",
+			"displayName": "Ethena LRT Vault ENA",
+			"displaySymbol": "rsENA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc65433845ecD16688eda196497FA9130d6C47Bd8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18946,6 +19209,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd7d7e9d94535d1eb943e821dd7a9994a2e5bb54f": {
+			"address": "0xd7d7e9d94535d1eb943e821dd7a9994a2e5bb54f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Renzo REZ Staking 26SEP2024",
+			"symbol": "YT-REZtake-26SEP2024",
+			"displayName": "YT Renzo REZ Staking 26SEP2024",
+			"displaySymbol": "YT-REZtake-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD7d7E9D94535d1EB943e821DD7a9994a2E5Bb54F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd7df7e085214743530aff339afc420c7c720bfa7": {
 			"address": "0xd7df7e085214743530aff339afc420c7c720bfa7",
 			"underlyingTokensAddresses": [],
@@ -18971,6 +19248,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xd7E0809998693fD87E81D51dE1619fd0EE658031/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd8072f2084f5876d6ec25c423ea71edc0469cce5": {
+			"address": "0xd8072f2084f5876d6ec25c423ea71edc0469cce5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd8072F2084F5876D6EC25c423eA71eDC0469cCe5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -19374,6 +19665,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdBdb4d16EdA451D0503b854CF79D55697F90c8DF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xdbde8d8a18d76fc86e8d40c2f33ea4dde161806e": {
+			"address": "0xdbde8d8a18d76fc86e8d40c2f33ea4dde161806e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Mellow sUSDe 26SEP2024",
+			"symbol": "YT-rsUSDe-26SEP2024",
+			"displayName": "YT Mellow sUSDe 26SEP2024",
+			"displaySymbol": "YT-rsUSDe-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDBdE8d8a18d76fc86E8d40C2f33ea4DDE161806e/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20664,6 +20969,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe8802f3683bbeb15c10c2c06b3b723ae744a43f1": {
+			"address": "0xe8802f3683bbeb15c10c2c06b3b723ae744a43f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe8802F3683BbEB15c10c2C06b3b723ae744a43F1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe8a5677171c87fcb65b76957f2852515b404c7b1": {
 			"address": "0xe8a5677171c87fcb65b76957f2852515b404c7b1",
 			"underlyingTokensAddresses": [
@@ -21692,6 +22011,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf68300929df14d933eba2d45917563d5ed065666": {
+			"address": "0xf68300929df14d933eba2d45917563d5ed065666",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf68300929DF14d933EBa2D45917563d5ed065666/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf68a6b53d907b5abc0bfdeceb8343e91fec052ee": {
 			"address": "0xf68a6b53d907b5abc0bfdeceb8343e91fec052ee",
 			"underlyingTokensAddresses": [
@@ -21749,6 +22082,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF6B9DFE6bc42ed2eaB44D6B829017f7B78B29f88/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf6d7bb3718c00dfcc357bbff8867eedc0c8c3697": {
+			"address": "0xf6d7bb3718c00dfcc357bbff8867eedc0c8c3697",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Renzo REZ Staking 26SEP2024",
+			"symbol": "PT-REZtake-26SEP2024",
+			"displayName": "PT Renzo REZ Staking 26SEP2024",
+			"displaySymbol": "PT-REZtake-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf6D7BB3718c00DfCc357BBff8867eedc0C8c3697/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

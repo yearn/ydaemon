@@ -16,6 +16,7 @@ func computeCurrentV3VaultAPR(
 	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 	ppsInception := bigNumber.NewFloat(1)
 	ppsToday := helpers.GetPPSToday(ppsPerTime, vaultToken.Decimals)
+
 	if ppsToday == nil || ppsToday.IsZero() {
 		ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vaultToken.Decimals)
 	}

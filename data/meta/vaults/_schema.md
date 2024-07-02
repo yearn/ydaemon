@@ -17,11 +17,11 @@ Please do not change these fields manually.
 | `address` | `address` | Address of the vault | N/A | ✅ |
 | `token` | `address` | Address of the underlying token | N/A | ✅ |
 | `chainID` | `int` | The chainID of the vault | N/A | ✅ |
-| `type` | `string` | Type of the vault (`Standard`, `Experimental`, `Automated`) | N/A | ✅ |
-| `kind` | `string` | Kind of the vault (`Legacy`, `Multi` or `Single` Strategy) | N/A | ✅ |
+| `type` | `string` | Type of the vault, used for some internal computations (`Yearn Vault`, `Standard`, `Experimental Yearn Vault`, `Experimental`, `Automated Yearn Vault`, `Automated`) | N/A | ✅ |
+| `kind` | `string` | Kind of the vault (`Legacy`, `Multi` or `Single` Strategy). Legacy works for V2 vaults while a V3 vault is either `Multi` or `Single`. This is set on deployment Log based on the `VaultType` log. | N/A | ✅ |
 | `version` | `string` | The version of the vault | N/A | ✅ |
 | `activation` | `int` | When the vault was activated | N/A | ✅ |
-| `endorsed` | `bool` | If the vault is endorsed by Yearn | 24h | ✅ |
+| `endorsed` | `bool` | If the vault is endorsed by Yearn. DEPRECATED | 24h | ✅ |
 | `performanceFee` | `int` | The performance fee of the vault (0 to 10000) | 1h | ✅ |
 | `managementFee` | `int` | The management fee of the vault (0 to 10000) | 1h | ✅ |
 | `emergencyShutdown` | `bool` | If the vault is in emergency shutdown | 1h | ✅ |
@@ -35,21 +35,23 @@ The metadata contains a bunch of extra information about the vault that may be u
 | Field | Type | Description | Automatic update |
 | --- | --- | --- | --- |
 | `isRetired` | `bool` | If the vault is retired. Will be excluding from APR calculation or vault fetching | ❌ |
-| `isHidden` | `bool` | If we should hide the vaults from the standard results. Indicates the vault should be hidden from the UI | ❌ |
+| `isHidden` | `bool` | If we should hide the vaults from the standard results. Indicates the vault should be hidden from the default API response | ❌ |
 | `isAggregator` | `bool` | If the vault should be treated as an aggregator vault (aka multi-strategy) even if he only has one strategy | ❌ |
 | `isBoosted` | `bool` | If the vault benefits from a boosting, whatever it is (ex: Curve Boost) | ❌ |
 | `isAutomated` | `bool` | If the vault is automated | ✅ |
-| `isHighlighted` | `bool` | If the vault is set as highlighted | ❌ |
+| `isHighlighted` | `bool` | If the vault is set as highlighted (specific section on UI, higher ordering score) | ❌ |
 | `isPool` | `bool` | If the vault is using a pool token as want | ❌ |
 | `migration` | `object` | Indicates the vault migration data and availability | ❌ |
 | `stability` | `object` | Indicates the stability of the vault | ❌ |
+| `category` | `string` | Indicates the category if the vault. This is set to `auto` by default (aka yDaemon will try to guess) but can be fixed by setting anything else. It's used as a case sensitive filter on the FE | ❌ |
 | `displayName` | `string` | The name of the vault to use rather than the onchain name | ❌ |
 | `displaySymbol` | `string` | The symbol of the vault to use rather than the onchain symbol | ❌ |
 | `description` | `string` | The description of the vault | ❌ |
-| `uiNotice` | `string` | A notice to display in the UI | ❌ |
 | `sourceURI` | `string` | A URI linked to this vault (ex: the curve deposit page) | ❌ |
-| `riskLevel` | `int` | The risk level of the vault (1 to 5, -1 for not set) | ❌ |
+| `uiNotice` | `string` | A notice to display in the UI | ❌ |
+| `riskLevel` | `int` | The risk level of the vault (0 to 5, -1 for not set) | ❌ |
 | `protocols` | `string[]` | The protocols used by the vault. The first one is used to defined the main APR method | ❌ |
+| `inclusion` | `object` | Which project should include this vault. It's auto-set the first time an not updated after | ❌ |
 
 #### The migration object
 | Field | Type | Description | Automatic update |
@@ -64,6 +66,17 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `stability` | `string` | The stability of the vault (`Stable`, `Volatile`, `Unknown`) | ❌ |
 | `stableBaseAsset` | `string` | The base asset of the vault if it is stable (ex: `USD`) | ❌ |
 
+#### The inclusion object
+| Field | Type | Description | Automatic update |
+| --- | --- | --- | --- |
+| `isSet` | `bool` | Indicates if the inclusion has been set. It so, this will not be auto updated | ❌ |
+| `isYearn` | `bool` | Indicates if the vault should be displayer on yearn.fi. True or false based on the detected registry. | ❌ |
+| `isYearnJuiced` | `bool` | Indicates if the vault should be displayer on juiced.app. True or false based on the detected registry. | ❌ |
+| `isGimme` | `bool` | Indicates if the vault should be displayer on gimme. Default to false. | ❌ |
+| `isPublicERC4626` | `bool` | Indicates if the registry for that vault is a public ERC4626. True or false based on the detected registry. | ❌ |
+
+/!\ The first time the vault inclusion is set, if `inclusion.isPublicERC4626 == true`, the vault will be set as `endorced = false`, `isHidden = true` and `IsHighlighted = false`.
+
 
 ## Example
 
@@ -76,49 +89,54 @@ The metadata contains a bunch of extra information about the vault that may be u
 },
 "shouldRefresh": false,
 "vaults": {
-	"0x00e8eb340f8af587eea6200d2081e31dc87285ac": {
-			"address": "0x00e8eb340f8af587eea6200d2081e31dc87285ac",
-			"token": "0x326290a1b0004eee78fa6ed4f1d8f4b2523ab669",
-			"type": "Automated Yearn Vault",
-			"kind": "",
-			"version": "0.4.5",
-			"activation": 16373355,
+	"0x00cb87656196dd835b9e4d67018ae0477a1de8c1": {
+			"address": "0x00cb87656196dd835b9e4d67018ae0477a1de8c1",
+			"token": "0xf1376bcef0f78459c0ed0ba5ddce976f1ddf51f4",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.0",
+			"activation": 20182127,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 1000,
+			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": [
-				"0xa48e7a7e205147b6b0dd053ad8401fb36c1c2d3a",
-				"0x2427e9e6c6ec0fe3baf9b42516d61cee7a2ef769",
-				"0x9c924ee29070964cd7afde32cd6fdca620511747"
-			],
-			"lastPricePerShare": "1007258645643430377",
-			"lastTotalAssets": "31130821900768326453019",
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
-				"isAutomated": true,
-				"isPool": true,
+				"isAutomated": false,
+				"isHighlighted": true,
+				"isPool": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
-					"target": "0x00e8eb340f8af587eea6200d2081e31dc87285ac",
+					"target": "0x0000000000000000000000000000000000000000",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": "Stable",
-					"stableBaseAsset": "USD"
+					"stability": ""
 				},
-				"displayName": "",
+				"category": "Pendle Autorollover",
+				"displayName": "yPT-uniETH Yearn Auto-Rolling Pendle PT",
 				"displaySymbol": "",
-				"description": "",
+				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
+				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
-				"protocols": [
-					"Curve"
-				]
+				"riskLevel": 1,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPublicERC4626": false
+				}
 			}
 		},
 	// Some other vaults

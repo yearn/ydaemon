@@ -64,36 +64,60 @@ func computeVaultV3ForwardAPR(
 	**********************************************************************************************/
 	debtRatioAPR := bigNumber.NewFloat(0)
 	if vault.Kind == models.VaultKindMultiple {
-		for _, strategy := range allStrategiesForVault {
-			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+		/******************************************************************************************
+		** Edge case request by Mil0x: If the vault has no total assets (aka no deposits), we want
+		** to display the APR of the first strategy in the queue. This is because the APR of the
+		** vault is 0% and we want to show the APR of the strategy to give an idea of the potential
+		** return.
+		******************************************************************************************/
+		if vault.LastTotalAssets == nil || vault.LastTotalAssets.IsZero() {
+			if len(allStrategiesForVault) == 0 {
+				logs.Info("Skipping vault " + vault.Address.Hex() + " because total assets is zero and no strategies")
+			} else {
+				for _, strategy := range allStrategiesForVault {
+					expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
+					if err == nil {
+						debtRatioAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+					}
+					// We only want the first strategy
+					break
 				}
-				continue
+			}
+		} else {
+			for _, strategy := range allStrategiesForVault {
+				if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
+					if os.Getenv("ENVIRONMENT") == "dev" {
+						logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
+					}
+					continue
+				}
+
+				expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
+				if err != nil {
+					logs.Error(err)
+					continue
+				}
+				humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+				debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
+				scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
+
+				// Scaling based on the performance fee
+				// Retrieve the ratio we should use to take into account the performance fee. If the performance fee is 10%, the ratio is 0.9
+				// 10_000 is the precision. Ex: 1 - (1000 / 10_000)
+				performanceFeeFloat := bigNumber.NewFloat(0).SetInt(strategy.LastPerformanceFee)
+				performanceFee := bigNumber.NewFloat(0).Div(performanceFeeFloat, bigNumber.NewFloat(10_000))
+				performanceFee = bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), performanceFee)
+				scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, performanceFee)
+
+				debtRatioAPR = bigNumber.NewFloat(0).Add(debtRatioAPR, scaledStrategyAPR)
 			}
 
-			expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
-			if err != nil {
-				logs.Error(err)
-				continue
-			}
-			humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
-			debtRatio := helpers.ToNormalizedAmount(strategy.LastDebtRatio, 4)
-			scaledStrategyAPR := bigNumber.NewFloat(0).Mul(humanizedAPR, debtRatio)
-
-			// Scaling based on the performance fee
-			// Retrieve the ratio we should use to take into account the performance fee. If the performance fee is 10%, the ratio is 0.9
-			// 10_000 is the precision. Ex: 1 - (1000 / 10_000)
-			performanceFeeFloat := bigNumber.NewFloat(0).SetInt(strategy.LastPerformanceFee)
-			performanceFee := bigNumber.NewFloat(0).Div(performanceFeeFloat, bigNumber.NewFloat(10_000))
-			performanceFee = bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), performanceFee)
-			scaledStrategyAPR = bigNumber.NewFloat(0).Mul(scaledStrategyAPR, performanceFee)
-
-			debtRatioAPR = bigNumber.NewFloat(0).Add(debtRatioAPR, scaledStrategyAPR)
+			/******************************************************************************************
+			** Adjustement request by Schlag: Reduce the APR by 10% to account for the fees/slippage
+			** and other factors
+			******************************************************************************************/
+			debtRatioAPR = bigNumber.NewFloat(0).Mul(debtRatioAPR, bigNumber.NewFloat(0.9))
 		}
-
-		//Reduce the APR by 10% to account for the fees/slippage and other factors
-		debtRatioAPR = bigNumber.NewFloat(0).Mul(debtRatioAPR, bigNumber.NewFloat(0.9))
 	}
 
 	/**********************************************************************************************

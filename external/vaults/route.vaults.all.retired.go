@@ -11,7 +11,7 @@ import (
 )
 
 // GetRetiredVaults will, for a given chainID, return a list of all retired vaults
-func (y Controller) GetRetiredVaults(c *gin.Context) {
+func (y Controller) GetLegacyRetiredVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `details.order`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))

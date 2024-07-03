@@ -13,8 +13,11 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// GetAllJuicedVaultsForAllChainsSimplified will return a list of all v3 vaults for all chains
-func (y Controller) GetAllJuicedVaultsForAllChainsSimplified(c *gin.Context) {
+// getAllChainsVaultsWithFilter will return a list of all vaults matching a provided filter function.
+func getAllChainsVaultsWithFilter(
+	c *gin.Context,
+	filterFunc func(vault models.TVault) bool,
+) []TSimplifiedExternalVault {
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -45,7 +48,7 @@ func (y Controller) GetAllJuicedVaultsForAllChainsSimplified(c *gin.Context) {
 	migrable := selectMigrableCondition(getQuery(c, `migrable`))
 	if migrable != `none` && hideAlways {
 		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
-		return
+		return []TSimplifiedExternalVault{}
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
@@ -112,10 +115,10 @@ func (y Controller) GetAllJuicedVaultsForAllChainsSimplified(c *gin.Context) {
 			/******************************************************************************************
 			** We want to ignore all non Yearn vaults
 			******************************************************************************************/
-			if !currentVault.Metadata.Inclusion.IsYearnJuiced {
+			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
+			if !filterFunc(currentVault) {
 				continue
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)
@@ -213,5 +216,15 @@ func (y Controller) GetAllJuicedVaultsForAllChainsSimplified(c *gin.Context) {
 	}
 	data = data[start:end]
 
-	c.JSON(http.StatusOK, data)
+	return data
+}
+
+func isV3Vault(vault models.TVault) bool {
+	versionMajor := strings.Split(vault.Version, `.`)[0]
+	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle || versionMajor == `3`
+}
+
+func isV2Vault(vault models.TVault) bool {
+	versionMajor := strings.Split(vault.Version, `.`)[0]
+	return versionMajor != `3`
 }

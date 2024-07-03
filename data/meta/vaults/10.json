@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-03T14:29:24.633907+02:00",
+	"lastUpdate": "2024-07-03T15:52:24.340068+02:00",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 0
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -23,8 +23,8 @@
 			"lastActiveStrategies": [
 				"0x81ebdc2f60df4d579bc0df8cb86609e885cac5d3"
 			],
-			"lastPricePerShare": "1067928096695669369",
-			"lastTotalAssets": "3048203082937674718",
+			"lastPricePerShare": "1070220027643636365",
+			"lastTotalAssets": "2415208639944115587",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -77,8 +77,8 @@
 			"lastActiveStrategies": [
 				"0x63bdfa16af506f7e3e80176c282b2c004ee257e6"
 			],
-			"lastPricePerShare": "1017914224980451943",
-			"lastTotalAssets": "22119902177123",
+			"lastPricePerShare": "1020004380308128835",
+			"lastTotalAssets": "5230359100545",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -132,8 +132,8 @@
 			"lastActiveStrategies": [
 				"0xcd90278862651eed05ebcd5cb34a87deb2b47867"
 			],
-			"lastPricePerShare": "1146722381268647053",
-			"lastTotalAssets": "1235629668415953",
+			"lastPricePerShare": "1156501701917854070",
+			"lastTotalAssets": "1247345465064444",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -186,8 +186,8 @@
 			"lastActiveStrategies": [
 				"0xd22e21a1b9bdc392229fab7e878a10b5b6273fcb"
 			],
-			"lastPricePerShare": "1097257274650527031",
-			"lastTotalAssets": "44102414469465",
+			"lastPricePerShare": "1097627810881763032",
+			"lastTotalAssets": "44118962959154",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -457,27 +457,29 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [
+				"0x0a73410bafd08ee99f307d0b86b9eb87aaf0267d"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
-				"isAutomated": false,
+				"isAutomated": true,
 				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0x1c09aea795dd79e201fa552b108b4b30e90ced4f",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
-				"category": "",
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -510,8 +512,8 @@
 			"lastActiveStrategies": [
 				"0x6d094c2c5d3478a198f89b7f8ed6910dfb8842ba"
 			],
-			"lastPricePerShare": "1097751589989183467",
-			"lastTotalAssets": "31685502811904834",
+			"lastPricePerShare": "1099459686266781894",
+			"lastTotalAssets": "31740289706994995",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -620,8 +622,8 @@
 			"lastActiveStrategies": [
 				"0x46f419c19efc83665a0dd8fa522b1b16046ae201"
 			],
-			"lastPricePerShare": "1126904695346331413",
-			"lastTotalAssets": "9465729635016789905478",
+			"lastPricePerShare": "1147260185431326214",
+			"lastTotalAssets": "9655204180902074500266",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -672,8 +674,8 @@
 			"lastActiveStrategies": [
 				"0xbfd5df2b57cb9532a39931e4ed74b51cfa940bb0"
 			],
-			"lastPricePerShare": "1080766405071121900",
-			"lastTotalAssets": "2533656103092455371669",
+			"lastPricePerShare": "1090935095123279248",
+			"lastTotalAssets": "2323721374947532406774",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -834,8 +836,8 @@
 			"lastActiveStrategies": [
 				"0x41570ef430d5f507e97403f0de61d35d5efa60f4"
 			],
-			"lastPricePerShare": "1419640587590482391",
-			"lastTotalAssets": "946951936577742",
+			"lastPricePerShare": "1425466910161737843",
+			"lastTotalAssets": "951271638823844",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -889,8 +891,8 @@
 			"lastActiveStrategies": [
 				"0xd8177cabbb13922206ccfeacab3060c5fe4cb06b"
 			],
-			"lastPricePerShare": "1146766428733390105",
-			"lastTotalAssets": "10653519820329912",
+			"lastPricePerShare": "1164837539020878639",
+			"lastTotalAssets": "9929417235482877",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -943,8 +945,8 @@
 			"lastActiveStrategies": [
 				"0x9932559d1da9e1f00571346d1e4afb240bef6ede"
 			],
-			"lastPricePerShare": "1079829996571300518",
-			"lastTotalAssets": "19651767996092286",
+			"lastPricePerShare": "1085414133375578659",
+			"lastTotalAssets": "15116664450381022",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1052,8 +1054,8 @@
 			"lastActiveStrategies": [
 				"0x87a06daae50cee4031a9f0df6a7a5d819da98c6e"
 			],
-			"lastPricePerShare": "1154095789138831792",
-			"lastTotalAssets": "22509538273447946261556",
+			"lastPricePerShare": "1182496797567067039",
+			"lastTotalAssets": "1181812783465715648462",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1217,8 +1219,8 @@
 			"lastActiveStrategies": [
 				"0xca9912caa94162191f1103a0239bd5be52534b96"
 			],
-			"lastPricePerShare": "1656735089552517789",
-			"lastTotalAssets": "13931678241446675843",
+			"lastPricePerShare": "1710375175668459504",
+			"lastTotalAssets": "14434671875347558397",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1436,8 +1438,8 @@
 			"lastActiveStrategies": [
 				"0x1b929f270346efb14636ce5749c471105e44a0ac"
 			],
-			"lastPricePerShare": "1109094968561744389",
-			"lastTotalAssets": "1036483668197894780446",
+			"lastPricePerShare": "1113728187643497101",
+			"lastTotalAssets": "1041296887900789735831",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1491,8 +1493,8 @@
 			"lastActiveStrategies": [
 				"0x4276b479e851f76f95312cce497dc8fe37f1befd"
 			],
-			"lastPricePerShare": "1076371527030505074",
-			"lastTotalAssets": "114028005876088709876",
+			"lastPricePerShare": "1082747077117121297",
+			"lastTotalAssets": "104915951672939178197",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1865,8 +1867,8 @@
 			"lastActiveStrategies": [
 				"0x479dce9e0ae72583db923c472ebe6a5fd86988e4"
 			],
-			"lastPricePerShare": "1014383936325951728",
-			"lastTotalAssets": "2234509941097301988",
+			"lastPricePerShare": "1027958895726479647",
+			"lastTotalAssets": "2267443985307754907",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1971,8 +1973,8 @@
 			"lastActiveStrategies": [
 				"0x49d4224f3d896a40b678bb17641df47ad3de0ca4"
 			],
-			"lastPricePerShare": "1012347039591867782",
-			"lastTotalAssets": "36770928896542457948448",
+			"lastPricePerShare": "1012384312984553733",
+			"lastTotalAssets": "29650953111158568911634",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2079,8 +2081,8 @@
 			"lastActiveStrategies": [
 				"0x9723876259a4fe4f2ab5365c4e8d6d969a532999"
 			],
-			"lastPricePerShare": "1470509136986630761",
-			"lastTotalAssets": "398792662529555483",
+			"lastPricePerShare": "1528764737631173952",
+			"lastTotalAssets": "416404486284615409",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2133,8 +2135,8 @@
 			"lastActiveStrategies": [
 				"0x8fd559dfe1d64508290025e2312ca69ef172dfe3"
 			],
-			"lastPricePerShare": "1075719690299899167",
-			"lastTotalAssets": "780171362427469709245",
+			"lastPricePerShare": "1091193087532671170",
+			"lastTotalAssets": "792660392672996033951",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2298,8 +2300,8 @@
 			"lastActiveStrategies": [
 				"0x332ac9e3ead90e13399ac8ea4168ea27ec132fa9"
 			],
-			"lastPricePerShare": "1025914650609137036",
-			"lastTotalAssets": "36294650685279010810",
+			"lastPricePerShare": "1030341368729981202",
+			"lastTotalAssets": "3513679517629916989",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2462,8 +2464,8 @@
 			"lastActiveStrategies": [
 				"0x6fe7fdd7142804289a2ed8d0d4af6fe263852956"
 			],
-			"lastPricePerShare": "1111032785944499794",
-			"lastTotalAssets": "135213343806154",
+			"lastPricePerShare": "1111032785944527198",
+			"lastTotalAssets": "24900182618295",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2517,8 +2519,8 @@
 			"lastActiveStrategies": [
 				"0x3ab17cd58007e18bdbdc429496adc3feda250483"
 			],
-			"lastPricePerShare": "1083416870779876278",
-			"lastTotalAssets": "3259103923915051129436",
+			"lastPricePerShare": "1093749684425929746",
+			"lastTotalAssets": "1980579116497851682548",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2573,7 +2575,7 @@
 				"0x1e88b832e3e8247c38a088511f0bf243dfa00973"
 			],
 			"lastPricePerShare": "1020629148459156704",
-			"lastTotalAssets": "434610334892836122201939",
+			"lastTotalAssets": "267278698803662732579560",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2624,8 +2626,8 @@
 			"lastActiveStrategies": [
 				"0x495838c99a150066a78402cd620910e924c3fd4a"
 			],
-			"lastPricePerShare": "1080916286034324569",
-			"lastTotalAssets": "12120813859636423418",
+			"lastPricePerShare": "1095034147508480990",
+			"lastTotalAssets": "14424039188873357765",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2679,8 +2681,8 @@
 			"lastActiveStrategies": [
 				"0x6108591f070ff31809e1da11fd5aea9d3235735f"
 			],
-			"lastPricePerShare": "100106017",
-			"lastTotalAssets": "3859102",
+			"lastPricePerShare": "100109712",
+			"lastTotalAssets": "3849735",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2732,8 +2734,8 @@
 			"lastActiveStrategies": [
 				"0x57926e9cf3d7920afe774dc1d040cce0cd3ed26a"
 			],
-			"lastPricePerShare": "1172069892157639527",
-			"lastTotalAssets": "131036419696924223113",
+			"lastPricePerShare": "1177986104370143475",
+			"lastTotalAssets": "131771597523891004997",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2786,8 +2788,8 @@
 			"lastActiveStrategies": [
 				"0xe95b08f0aeae413f3b40e19cbae16564c6802509"
 			],
-			"lastPricePerShare": "5810807341360934643",
-			"lastTotalAssets": "379186032858428922",
+			"lastPricePerShare": "5995319489264218438",
+			"lastTotalAssets": "389677953958099863",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2895,8 +2897,8 @@
 			"lastActiveStrategies": [
 				"0x2a28720b784cc85791c58a47eaed3b569292c71f"
 			],
-			"lastPricePerShare": "1494745554054041471",
-			"lastTotalAssets": "62854984744506099",
+			"lastPricePerShare": "1565582387248162215",
+			"lastTotalAssets": "53184315072216165",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2946,27 +2948,29 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [
+				"0x175bdee5d28755a725ed77a869c7ccadd4b606ac"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
-				"isAutomated": false,
+				"isAutomated": true,
 				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0x8dc2b8886f289812bb6e58220e740d1f50a00197",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
-				"category": "",
+				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2999,8 +3003,8 @@
 			"lastActiveStrategies": [
 				"0x4e1a7a01a41d59cd762beb26684b00762ac8e581"
 			],
-			"lastPricePerShare": "1165054820002856474",
-			"lastTotalAssets": "859791467790931808812",
+			"lastPricePerShare": "1170488943095666711",
+			"lastTotalAssets": "864129196772951122981",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3053,8 +3057,8 @@
 			"lastActiveStrategies": [
 				"0x1a841021ade39b75b0900c17072d3d084449b664"
 			],
-			"lastPricePerShare": "1119650515297300116",
-			"lastTotalAssets": "20395059154879418884027",
+			"lastPricePerShare": "1149733891298851183",
+			"lastTotalAssets": "4184091729336653246966",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3108,8 +3112,8 @@
 			"lastActiveStrategies": [
 				"0x7f20d98691a91771bec4c9fc6302626b4fc99b77"
 			],
-			"lastPricePerShare": "1264786628813522453",
-			"lastTotalAssets": "29894060146078569",
+			"lastPricePerShare": "1265586477350714897",
+			"lastTotalAssets": "29641015345014428",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3380,8 +3384,8 @@
 			"lastActiveStrategies": [
 				"0x2a533d9c6facc699cf808210544db43d37e6203e"
 			],
-			"lastPricePerShare": "1446691470503237955",
-			"lastTotalAssets": "81842144249059",
+			"lastPricePerShare": "1482608898425051365",
+			"lastTotalAssets": "84106076846467",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3434,8 +3438,8 @@
 			"lastActiveStrategies": [
 				"0x62e396d4f398fd24ca7e8f028fedcaecf5e65266"
 			],
-			"lastPricePerShare": "1103020466207526990",
-			"lastTotalAssets": "38475248362053653",
+			"lastPricePerShare": "1135765785298027615",
+			"lastTotalAssets": "21765835029918586",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3541,8 +3545,8 @@
 			"lastActiveStrategies": [
 				"0x405b0e5ed26856f63344747c0a87de549a334d75"
 			],
-			"lastPricePerShare": "1114447546712446278",
-			"lastTotalAssets": "897591065962841702475",
+			"lastPricePerShare": "1148409813529296272",
+			"lastTotalAssets": "928052358860549809999",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3596,8 +3600,8 @@
 			"lastActiveStrategies": [
 				"0x90bb44d6ab538af82f05ee4d6cffef53fb18cb56"
 			],
-			"lastPricePerShare": "1415469737038213977",
-			"lastTotalAssets": "108797008919879041216",
+			"lastPricePerShare": "1454643082504827569",
+			"lastTotalAssets": "112152855060017866977",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3757,8 +3761,8 @@
 			"lastActiveStrategies": [
 				"0x74b3d347eb1a3a086eeec6d929356fbe26e3f2ca"
 			],
-			"lastPricePerShare": "1263496726950288299",
-			"lastTotalAssets": "13800183928275586",
+			"lastPricePerShare": "1275830296431555292",
+			"lastTotalAssets": "13950024121009550",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3922,8 +3926,8 @@
 			"lastActiveStrategies": [
 				"0xace439a7b6f7fdbd3bb0554006f044d21205ab3e"
 			],
-			"lastPricePerShare": "7038482755574895718",
-			"lastTotalAssets": "893122016103839",
+			"lastPricePerShare": "7785555041140622657",
+			"lastTotalAssets": "999708990529781",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3976,8 +3980,8 @@
 			"lastActiveStrategies": [
 				"0x35a18609bbc01c1e75932fab4f239aeab4742199"
 			],
-			"lastPricePerShare": "1108638604263465161",
-			"lastTotalAssets": "357781783694647963715",
+			"lastPricePerShare": "1121951660416266001",
+			"lastTotalAssets": "235198686740857143250",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4030,8 +4034,8 @@
 			"lastActiveStrategies": [
 				"0xfc8d063d9f14db98d6e4a73432f9a9bd8ae820be"
 			],
-			"lastPricePerShare": "1063258633289888267",
-			"lastTotalAssets": "47603975259270728",
+			"lastPricePerShare": "1088143186944981568",
+			"lastTotalAssets": "20885871791419627",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4192,8 +4196,8 @@
 			"lastActiveStrategies": [
 				"0xd028a40fbe0507678c8a821e038d6eed90b4675b"
 			],
-			"lastPricePerShare": "2542383265326747771",
-			"lastTotalAssets": "3304846692474649152",
+			"lastPricePerShare": "2998362029752557171",
+			"lastTotalAssets": "3973155140000735531",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4300,8 +4304,8 @@
 			"lastActiveStrategies": [
 				"0xe7036cb72f21b1dfe422ad79d54b3d611e2bffa2"
 			],
-			"lastPricePerShare": "1355612007797507869",
-			"lastTotalAssets": "94874116485488864493314",
+			"lastPricePerShare": "1402345501869848338",
+			"lastTotalAssets": "64448968824216960662426",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4409,8 +4413,8 @@
 			"lastActiveStrategies": [
 				"0xad782af29bfb5908ce7305042933eeb8dfe95f1b"
 			],
-			"lastPricePerShare": "1136826324226782665",
-			"lastTotalAssets": "2807117686336523030158",
+			"lastPricePerShare": "1154062224140491346",
+			"lastTotalAssets": "2811165601383051430367",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4464,8 +4468,8 @@
 			"lastActiveStrategies": [
 				"0x47972c2f68c1ff6e34cd9b6c1a690938de91d80e"
 			],
-			"lastPricePerShare": "1359755162012079379",
-			"lastTotalAssets": "3311303904497689470",
+			"lastPricePerShare": "1381196319667411375",
+			"lastTotalAssets": "3219600089082931284",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4519,8 +4523,8 @@
 			"lastActiveStrategies": [
 				"0xd13a1c75e5177f4932502aef829493467b1844ab"
 			],
-			"lastPricePerShare": "1185028843582330502",
-			"lastTotalAssets": "94014242412796943233",
+			"lastPricePerShare": "1237147173890904817",
+			"lastTotalAssets": "98315158269585692797",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4625,8 +4629,8 @@
 			"lastActiveStrategies": [
 				"0xb92e56fea1f265ca6c85a9cd64a0d58800374985"
 			],
-			"lastPricePerShare": "5441653534816577277",
-			"lastTotalAssets": "55507655846517141220832",
+			"lastPricePerShare": "6278095829138589485",
+			"lastTotalAssets": "60288362081081885974508",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4733,8 +4737,8 @@
 			"lastActiveStrategies": [
 				"0x0f83d307a1df560b13df25d98f308be403ba8ff7"
 			],
-			"lastPricePerShare": "1084900886581096841",
-			"lastTotalAssets": "1908247426402529924371",
+			"lastPricePerShare": "1094604545856049054",
+			"lastTotalAssets": "1926531588773729710734",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4787,8 +4791,8 @@
 			"lastActiveStrategies": [
 				"0xd5fbaca004ae9b6061b081d0dac370006cf032a1"
 			],
-			"lastPricePerShare": "1057561130356646546",
-			"lastTotalAssets": "8869353319679986576367",
+			"lastPricePerShare": "1069593540486441043",
+			"lastTotalAssets": "8978824369341448486628",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4839,8 +4843,8 @@
 			"lastActiveStrategies": [
 				"0x4a3f4dff2cde557babae2a7e1f7bd84092840631"
 			],
-			"lastPricePerShare": "1711171527315206749",
-			"lastTotalAssets": "12073635945452932480829",
+			"lastPricePerShare": "1721261447310535901",
+			"lastTotalAssets": "12324426633988395329060",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4947,8 +4951,8 @@
 			"lastActiveStrategies": [
 				"0x02e0e677fad4a8dc9007a7bed973bf0c70905929"
 			],
-			"lastPricePerShare": "1061943329201317400",
-			"lastTotalAssets": "662871501376246814393",
+			"lastPricePerShare": "1069254977808472643",
+			"lastTotalAssets": "665255886250609735705",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5002,8 +5006,8 @@
 			"lastActiveStrategies": [
 				"0x7f3ed433fbf833748c7cf8b584812ab1f288cd98"
 			],
-			"lastPricePerShare": "1094890068980191507",
-			"lastTotalAssets": "1561035928312",
+			"lastPricePerShare": "1094890068980769020",
+			"lastTotalAssets": "1435010731615",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5056,8 +5060,8 @@
 			"lastActiveStrategies": [
 				"0x9f38e7866e1e8f82ebef9433f0131981d281adec"
 			],
-			"lastPricePerShare": "4154419911762280117",
-			"lastTotalAssets": "29832584736426676419118",
+			"lastPricePerShare": "4692392499129257362",
+			"lastTotalAssets": "33372917117220557249055",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

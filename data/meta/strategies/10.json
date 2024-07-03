@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-03T14:29:33.154697+02:00",
+	"lastUpdate": "2024-07-03T15:52:30.001082+02:00",
 	"version": {
 		"major": 0,
 		"minor": 6,
-		"patch": 28
+		"patch": 33
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -1119,7 +1119,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1717101597",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "29652095356322376176020",
+			"lastEstimatedTotalAssets": "29652097641724798245968",
 			"isRetired": false,
 			"displayName": "Aave Optimizer",
 			"description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) v3 to generate interest, earn OP tokens, and rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -2536,7 +2536,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719613469",
 			"lastDebtRatio": "10000",
-			"lastEstimatedTotalAssets": "2277707719802066511419",
+			"lastEstimatedTotalAssets": "2277719123580712711953",
 			"isRetired": false,
 			"displayName": "Aave Optimizer",
 			"description": "Supplies {{token}} to [AAVE](https://app.aave.com/home) v3 to generate interest, earn OP tokens, and rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",

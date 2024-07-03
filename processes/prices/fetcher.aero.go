@@ -144,7 +144,7 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 					Source:         `aeroSugarToken0`,
 				}
 
-				if existing, ok := priceMap[pair.Token1]; ok {
+				if existing, ok := priceMap[pair.Token0]; ok {
 					if existing.Source != `aeroSugarPair` {
 						priceMap[pair.Token0] = newPriceItem
 					}
@@ -166,10 +166,10 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 
 				if existing, ok := priceMap[pair.Token1]; ok {
 					if existing.Source != `aeroSugarPair` {
-						priceMap[pair.Token0] = newPriceItem
+						priceMap[pair.Token1] = newPriceItem
 					}
 				} else {
-					priceMap[pair.Token0] = newPriceItem
+					priceMap[pair.Token1] = newPriceItem
 				}
 			}
 		}

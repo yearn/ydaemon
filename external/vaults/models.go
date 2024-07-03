@@ -135,6 +135,7 @@ type TExternalVault struct {
 	Staking           TExternalVaultStaking   `json:"staking"`
 	Info              TExternalVaultInfo      `json:"info,omitempty"`
 	FeaturingScore    float64                 `json:"featuringScore"` // Computing only
+	PricePerShare     *bigNumber.Int          `json:"pricePerShare"`
 }
 
 type TSimplifiedExternalVaultTVL struct {
@@ -187,6 +188,7 @@ type TSimplifiedExternalVault struct {
 	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
+	PricePerShare  *bigNumber.Int                `json:"pricePerShare"`
 	Info           TExternalVaultInfo            `json:"info,omitempty"`
 }
 
@@ -223,6 +225,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 	v.Decimals = vaultToken.Decimals
 	v.Description = vault.Metadata.Description
 	v.Category = fetcher.BuildVaultCategory(vault, strategies)
+	v.PricePerShare = vault.LastPricePerShare
 
 	underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address)
 	if ok {

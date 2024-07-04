@@ -104,7 +104,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	}() // Retrieve the strategies for all chains
 	underWg.Wait()
 
-	scheduler.Every(15).Minute().StartAt(time.Now().Add(time.Minute * 15)).Do(func() {
+	scheduler.Every(2).Hour().StartAt(time.Now().Add(time.Hour * 2)).Do(func() {
 		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
 	})
 

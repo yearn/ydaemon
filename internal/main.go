@@ -104,9 +104,9 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	}() // Retrieve the strategies for all chains
 	underWg.Wait()
 
-	scheduler.Every(2).Hour().StartAt(time.Now().Add(time.Hour * 2)).Do(func() {
-		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-	})
+	// scheduler.Every(2).Hour().StartAt(time.Now().Add(time.Hour * 2)).Do(func() {
+	// 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	// })
 
 	/**********************************************************************************************
 	** Computing APRS

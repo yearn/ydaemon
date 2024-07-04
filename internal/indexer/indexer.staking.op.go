@@ -108,7 +108,6 @@ func IndexStakingPools(chainID uint64) (stakingPoolsFromRegistry map[common.Addr
 
 	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
-		logs.Error(`No staking contract`)
 		return
 	}
 

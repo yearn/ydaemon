@@ -125,7 +125,7 @@ func getMediamDiffAllowed(group models.TStrategyGroupFromRisk) *bigNumber.Float 
 func computeTVL(t models.TStrategy) (*bigNumber.Float, *bigNumber.Float, *bigNumber.Float) {
 	tokenData, ok := storage.GetUnderlyingERC20(t.ChainID, t.VaultAddress)
 	if !ok {
-		logs.Warning(`impossible to find tokenData for vault ` + t.VaultAddress.Hex() + ` on chain ` + strconv.FormatUint(t.ChainID, 10))
+		// logs.Warning(`impossible to find tokenData for vault ` + t.VaultAddress.Hex() + ` on chain ` + strconv.FormatUint(t.ChainID, 10))
 		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 

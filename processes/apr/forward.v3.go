@@ -71,9 +71,7 @@ func computeVaultV3ForwardAPR(
 		** return.
 		******************************************************************************************/
 		if vault.LastTotalAssets == nil || vault.LastTotalAssets.IsZero() {
-			if len(allStrategiesForVault) == 0 {
-				logs.Info("Skipping vault " + vault.Address.Hex() + " because total assets is zero and no strategies")
-			} else {
+			if len(allStrategiesForVault) > 0 {
 				for _, strategy := range allStrategiesForVault {
 					expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
 					if err != nil {

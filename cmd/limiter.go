@@ -31,7 +31,7 @@ var rootURI = []string{
 	// ".yearn.farm",
 	".juiced.app",
 	".smold.app",
-	// "http://localhost:",
+	"http://localhost:",
 }
 
 /**************************************************************************************************
@@ -63,9 +63,13 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		** bypass the rate limiting for our own services.
 		******************************************************************************************/
 		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) {
-			accessPerOrigin[k] = [2]int64{
-				accessPerOrigin[k][0] + 1,
-				accessPerOrigin[k][1] + 1}
+			if _, ok := accessPerOrigin[k]; !ok {
+				accessPerOrigin[k] = [2]int64{1, 1}
+			} else {
+				accessPerOrigin[k] = [2]int64{
+					accessPerOrigin[k][0] + 1,
+					accessPerOrigin[k][1] + 1}
+			}
 			c.Next()
 			return
 		}
@@ -82,15 +86,23 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		}
 		ok = limiter.(*rate.Limiter).Allow()
 		if !ok {
-			accessPerOrigin[k] = [2]int64{
-				accessPerOrigin[k][0],
-				accessPerOrigin[k][1] + 1}
+			if _, ok := accessPerOrigin[k]; !ok {
+				accessPerOrigin[k] = [2]int64{0, 1}
+			} else {
+				accessPerOrigin[k] = [2]int64{
+					accessPerOrigin[k][0],
+					accessPerOrigin[k][1] + 1}
+			}
 			abort(c)
 			return
 		}
-		accessPerOrigin[k] = [2]int64{
-			accessPerOrigin[k][0] + 1,
-			accessPerOrigin[k][1] + 1}
+		if _, ok := accessPerOrigin[k]; !ok {
+			accessPerOrigin[k] = [2]int64{1, 1}
+		} else {
+			accessPerOrigin[k] = [2]int64{
+				accessPerOrigin[k][0] + 1,
+				accessPerOrigin[k][1] + 1}
+		}
 		c.Next()
 	}
 }

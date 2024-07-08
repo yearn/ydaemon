@@ -28,10 +28,10 @@ var allowlist = []string{
 var rootURI = []string{
 	".yearn.fi",
 	".yearn.finance",
-	".yearn.farm",
+	// ".yearn.farm",
 	".juiced.app",
 	".smold.app",
-	"http://localhost:",
+	// "http://localhost:",
 }
 
 /**************************************************************************************************
@@ -39,6 +39,7 @@ var rootURI = []string{
 ** adapted to our needs.
 **************************************************************************************************/
 var limiterSet = cache.New(5*time.Minute, 10*time.Minute)
+var accessPerOrigin = make(map[string][2]int64)
 
 func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -48,6 +49,9 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		******************************************************************************************/
 		k := ``
 		origin := c.Request.Header.Get("Origin")
+		if _, ok := accessPerOrigin[k]; !ok {
+			accessPerOrigin[k] = [2]int64{0, 0}
+		}
 		if len(origin) == 0 {
 			k = ``
 		} else {
@@ -58,7 +62,10 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		** Allows the requests from the allowlist without rate limiting. This is to allow us to
 		** bypass the rate limiting for our own services.
 		******************************************************************************************/
-		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) || origin == `` {
+		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) {
+			accessPerOrigin[k] = [2]int64{
+				accessPerOrigin[k][0] + 1,
+				accessPerOrigin[k][1] + 1}
 			c.Next()
 			return
 		}
@@ -75,9 +82,15 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		}
 		ok = limiter.(*rate.Limiter).Allow()
 		if !ok {
+			accessPerOrigin[k] = [2]int64{
+				accessPerOrigin[k][0],
+				accessPerOrigin[k][1] + 1}
 			abort(c)
 			return
 		}
+		accessPerOrigin[k] = [2]int64{
+			accessPerOrigin[k][0] + 1,
+			accessPerOrigin[k][1] + 1}
 		c.Next()
 	}
 }

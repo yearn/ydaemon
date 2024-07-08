@@ -49,9 +49,6 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		******************************************************************************************/
 		k := ``
 		origin := c.Request.Header.Get("Origin")
-		if _, ok := accessPerOrigin[k]; !ok {
-			accessPerOrigin[k] = [2]int64{0, 0}
-		}
 		if len(origin) == 0 {
 			k = ``
 		} else {
@@ -63,13 +60,6 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		** bypass the rate limiting for our own services.
 		******************************************************************************************/
 		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) {
-			if _, ok := accessPerOrigin[k]; !ok {
-				accessPerOrigin[k] = [2]int64{1, 1}
-			} else {
-				accessPerOrigin[k] = [2]int64{
-					accessPerOrigin[k][0] + 1,
-					accessPerOrigin[k][1] + 1}
-			}
 			c.Next()
 			return
 		}
@@ -86,22 +76,8 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		}
 		ok = limiter.(*rate.Limiter).Allow()
 		if !ok {
-			if _, ok := accessPerOrigin[k]; !ok {
-				accessPerOrigin[k] = [2]int64{0, 1}
-			} else {
-				accessPerOrigin[k] = [2]int64{
-					accessPerOrigin[k][0],
-					accessPerOrigin[k][1] + 1}
-			}
 			abort(c)
 			return
-		}
-		if _, ok := accessPerOrigin[k]; !ok {
-			accessPerOrigin[k] = [2]int64{1, 1}
-		} else {
-			accessPerOrigin[k] = [2]int64{
-				accessPerOrigin[k][0] + 1,
-				accessPerOrigin[k][1] + 1}
 		}
 		c.Next()
 	}

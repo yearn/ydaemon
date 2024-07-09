@@ -93,3 +93,13 @@ func (y Controller) GetIsYearnPendle(c *gin.Context) {
 		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Pendle" || vault.Metadata.Category == "Pendle Autorollover"
 	}))
 }
+
+/**************************************************************************************************
+** GetIsOptimism is a gin handler function to retrieve all the optimism vaults matching the
+** inclusion.IsYearn filter.
+**************************************************************************************************/
+func (y Controller) GetIsOptimism(c *gin.Context) {
+	c.JSON(http.StatusOK, getAllChainsVaultsWithFilter(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.ChainID == 10
+	}))
+}

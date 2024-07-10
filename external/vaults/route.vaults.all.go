@@ -12,7 +12,7 @@ import (
 )
 
 // GetAllVaults will, for a given chainID, return a list of all vaults
-func (y Controller) GetAllVaults(c *gin.Context) {
+func (y Controller) GetLegacyAllVaults(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** This function takes in a context from the gin framework. The context contains information
 	** about the environment and request. From the context, the function extracts the following

@@ -28,7 +28,7 @@ var allowlist = []string{
 var rootURI = []string{
 	".yearn.fi",
 	".yearn.finance",
-	".yearn.farm",
+	// ".yearn.farm",
 	".juiced.app",
 	".smold.app",
 	"http://localhost:",
@@ -39,6 +39,7 @@ var rootURI = []string{
 ** adapted to our needs.
 **************************************************************************************************/
 var limiterSet = cache.New(5*time.Minute, 10*time.Minute)
+var accessPerOrigin = make(map[string][2]int64)
 
 func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -58,7 +59,7 @@ func NewRateLimiter(abort func(*gin.Context)) gin.HandlerFunc {
 		** Allows the requests from the allowlist without rate limiting. This is to allow us to
 		** bypass the rate limiting for our own services.
 		******************************************************************************************/
-		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) || origin == `` {
+		if helpers.Contains(allowlist, origin) || helpers.EndsWithSubstring(rootURI, origin) {
 			c.Next()
 			return
 		}

@@ -30,7 +30,7 @@ func NewRouter() *gin.Engine {
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
-		AllowMethods:    []string{"GET", "HEAD"},
+		AllowMethods:    []string{"GET", "HEAD", "POST"},
 		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))
@@ -48,36 +48,34 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetAllVaultsForAllChainsSimplified)
+		router.GET(`vaults`, c.GetIsYearn)
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
 		** will return the vaults for all chains.
 		******************************************************************************************/
-		router.GET(`vaults/all`, c.GetAllVaultsForAllChainsSimplified)
-		router.GET(`vaults/v3`, c.GetAllV3VaultsForAllChainsSimplified)
-		router.GET(`vaults/v2`, c.GetAllV2VaultsForAllChainsSimplified)
-		router.GET(`vaults/juiced`, c.GetAllJuicedVaultsForAllChainsSimplified)
-		router.GET(`vaults/gimme`, c.GetAllGimmeVaultsForAllChainsSimplified)
-		router.GET(`vaults/retired`, c.GetAllRetiredVaultsForAllChainsSimplified)
-
-		/******************************************************************************************
-		** Retrieve all vaults for seasolver
-		******************************************************************************************/
-		router.GET(`vaults/underthesea/v2`, c.GetAllV2VaultsForAllChainsSeaSimplified)
-		router.GET(`vaults/underthesea/v3`, c.GetAllV3VaultsForAllChainsSeaSimplified)
+		router.GET(`vaults/all`, c.GetIsYearn)
+		router.GET(`vaults/underthesea/v2`, c.GetV2)
+		router.GET(`vaults/v2`, c.GetV2IsYearn)
+		router.GET(`vaults/underthesea/v3`, c.GetV3)
+		router.GET(`vaults/v3`, c.GetV3IsYearn)
+		router.GET(`vaults/juiced`, c.GetIsYearnJuiced)
+		router.GET(`vaults/gimme`, c.GetIsGimme)
+		router.GET(`vaults/retired`, c.GetRetired)
+		router.GET(`vaults/pendle`, c.GetIsYearnPendle)
+		router.GET(`vaults/optimism`, c.GetIsOptimism)
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
 		** will return the vaults for a specific chain.
 		******************************************************************************************/
-		router.GET(`:chainID/vaults/all`, c.GetAllVaults)
-		router.GET(`:chainID/vaults/v2/all`, c.GetAllV2Vaults)
-		router.GET(`:chainID/vaults/v3/all`, c.GetAllV3Vaults)
-		router.GET(`:chainID/vaults/juiced/all`, c.GetAllJuicedVaults)
-		router.GET(`:chainID/vaults/gimme/all`, c.GetAllGimmeVaults)
-		router.GET(`:chainID/vaults/retired`, c.GetRetiredVaults)
-		router.GET(`:chainID/vaults/some/:addresses`, c.GetSomeVaults)
+		router.GET(`:chainID/vaults/all`, c.GetLegacyAllVaults)
+		router.GET(`:chainID/vaults/v2/all`, c.GetLegacyAllV2Vaults)
+		router.GET(`:chainID/vaults/v3/all`, c.GetLegacyAllV3Vaults)
+		router.GET(`:chainID/vaults/juiced/all`, c.GetLegacyAllJuicedVaults)
+		router.GET(`:chainID/vaults/gimme/all`, c.GetLegacyAllGimmeVaults)
+		router.GET(`:chainID/vaults/retired`, c.GetLegacyRetiredVaults)
+		router.GET(`:chainID/vaults/some/:addresses`, c.GetLegacySomeVaults)
 
 		/******************************************************************************************
 		** Retrieve a specific vault based on the address. This is chain specific and will return

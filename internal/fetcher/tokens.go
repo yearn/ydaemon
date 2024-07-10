@@ -12,6 +12,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -444,6 +445,70 @@ func loadPendleTokens(chainID uint64) []common.Address {
 }
 
 /**************************************************************************************************
+** loadVeloTokens is used to load the Velodrom pools from the Sugar contract. This is used to get
+** the underlying tokens for the Velodrom LP tokens.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+**
+** Returns:
+** - a map of poolAddress -> []common.Address
+**************************************************************************************************/
+func loadVeloTokens(chainID uint64) []common.Address {
+	veloTokens := []common.Address{}
+	if chainID != 10 {
+		return veloTokens
+	}
+
+	var VELO_SUGAR_ADDRESS = common.HexToAddress(`0x3e532BC1998584fe18e357B5187897ad0110ED3A`)
+
+	/**********************************************************************************************
+	** The first step is to prepare the multicall, connecting to the multicall instance and
+	** preparing the array of calls to send. All calls for all tokens will be send in a single
+	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	**********************************************************************************************/
+	client := ethereum.GetRPC(chainID)
+	sugar, err := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
+	if err != nil {
+		return veloTokens
+	}
+
+	/**********************************************************************************************
+	** Fetch the tokens
+	**********************************************************************************************/
+	callSize := 25
+	for i := 0; i < 30; i++ {
+		start := int64(i * callSize)
+		allSugar, err := sugar.All(nil, big.NewInt(int64(callSize)), big.NewInt(start))
+		if len(allSugar) == 0 || err != nil {
+			if err != nil {
+				logs.Error(`error fetching velo sugar`, err)
+				if callSize > 1 {
+					callSize /= 2
+					i += 1
+					continue
+				}
+			}
+			break
+		}
+		callSize = 25
+
+		for _, pair := range allSugar {
+			if !helpers.Contains(veloTokens, pair.Token0) {
+				veloTokens = append(veloTokens, pair.Token0)
+			}
+			if !helpers.Contains(veloTokens, pair.Token1) {
+				veloTokens = append(veloTokens, pair.Token1)
+			}
+			if !helpers.Contains(veloTokens, pair.Lp) {
+				veloTokens = append(veloTokens, pair.Lp)
+			}
+		}
+	}
+	return veloTokens
+}
+
+/**************************************************************************************************
 ** Yearn vaults play with at least 2 tokens: the yVaultToken (aka the vault) and the underlying
 ** token. This underlying token can be a token or a LP token and therefore can have multiple sub
 ** tokens.
@@ -503,6 +568,19 @@ func RetrieveAllTokens(
 		if _, ok := tokenMap[extraToken]; !ok || shouldRefresh {
 			updatedTokenMap[extraToken] = models.TERC20Token{
 				Address: extraToken,
+				ChainID: chainID,
+			}
+		}
+	}
+
+	/**********************************************************************************************
+	** Fetch the tokens from the Velodrome API.
+	**********************************************************************************************/
+	veloTokens := loadVeloTokens(chainID)
+	for _, veloToken := range veloTokens {
+		if _, ok := tokenMap[veloToken]; !ok || shouldRefresh {
+			updatedTokenMap[veloToken] = models.TERC20Token{
+				Address: veloToken,
 				ChainID: chainID,
 			}
 		}

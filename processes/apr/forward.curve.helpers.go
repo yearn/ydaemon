@@ -196,9 +196,9 @@ func calculateCurveLikeStrategyAPR(
 	**********************************************************************************************/
 	chainID := vault.ChainID
 
-	if subgraphItem.LatestWeeklyApy == 0 {
-		logs.Warning(`No APY data for vault ` + vault.Address.Hex())
-	}
+	// if subgraphItem.LatestWeeklyApy == 0 {
+	// logs.Warning(`No APY data for vault ` + vault.Address.Hex())
+	// }
 
 	/**********************************************************************************************
 	** We will need a bunch of prices to calculate the APY.

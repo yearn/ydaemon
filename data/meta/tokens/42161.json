@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-06-27T14:02:40.872611+02:00",
+	"lastUpdate": "2024-07-02T18:08:22.283453+02:00",
 	"version": {
 		"major": 0,
-		"minor": 13,
+		"minor": 14,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1076,6 +1076,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x21178DD2BA9cAeE9DF37f2D5F89a097d69FB0A7d/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x221a0f68770658c15b525d0f89f5da2baab5f321": {
+			"address": "0x221a0f68770658c15b525d0f89f5da2baab5f321",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Open Dollar",
+			"symbol": "OD",
+			"displayName": "Open Dollar",
+			"displaySymbol": "OD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x221A0f68770658C15B525d0F89F5da2baAB5f321/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

@@ -12,7 +12,7 @@ import (
 )
 
 // GetAllJuicedVaults will, for a given chainID, return a list of all vaults
-func (y Controller) GetAllJuicedVaults(c *gin.Context) {
+func (y Controller) GetLegacyAllJuicedVaults(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** This function takes in a context from the gin framework. The context contains information
 	** about the environment and request. From the context, the function extracts the following

@@ -174,9 +174,10 @@ func toSimplifiedVersion(
 			TVL:         vault.TVL.TVL,
 			Price:       vault.TVL.Price,
 		},
-		Strategies: vault.Strategies,
-		Staking:    staking,
-		Info:       info,
+		Strategies:    vault.Strategies,
+		Staking:       staking,
+		Info:          info,
+		PricePerShare: vault.PricePerShare,
 	}
 	return simplifiedVault
 }

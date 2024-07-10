@@ -133,6 +133,12 @@ func ListenToSignals() {
 				listOfOrigins = append(listOfOrigins, item)
 			}
 			TriggerTgMessage(`👀 - Origins of access:` + "\n" + strings.Join(listOfOrigins, "\n"))
+		case "access":
+			listOfOrigins := []string{}
+			for item, access := range accessPerOrigin {
+				listOfOrigins = append(listOfOrigins, item+`:`+strconv.FormatInt(access[0], 10)+`/`+strconv.FormatInt(access[1], 10)+"\n")
+			}
+			TriggerTgMessage(`👀 - Access count:` + "\n" + strings.Join(listOfOrigins, "\n"))
 		case "upd_prices":
 			arguments := update.Message.CommandArguments()
 			if arguments == "" {

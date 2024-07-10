@@ -80,15 +80,22 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)
+	callSize := 25
 	for i := 0; i < 30; i++ {
-		start := int64(i * 25)
-		allSugar, err := sugar.All(nil, big.NewInt(25), big.NewInt(start))
+		start := int64(i * callSize)
+		allSugar, err := sugar.All(nil, big.NewInt(int64(callSize)), big.NewInt(start))
 		if len(allSugar) == 0 || err != nil {
 			if err != nil {
 				logs.Error(`error fetching velo sugar`, err)
+				if callSize > 1 {
+					callSize /= 2
+					i += 1
+					continue
+				}
 			}
 			break
 		}
+		callSize = 25
 
 		/**********************************************************************************************
 		** -> Retrieve the ratesConnector
@@ -207,7 +214,7 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 						Source:         `veloSugarToken0`,
 					}
 
-					if existing, ok := priceMap[pair.Token1]; ok {
+					if existing, ok := priceMap[pair.Token0]; ok {
 						if existing.Source != `veloSugarPair` {
 							priceMap[pair.Token0] = newPriceItem
 						}
@@ -229,10 +236,10 @@ func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.T
 
 					if existing, ok := priceMap[pair.Token1]; ok {
 						if existing.Source != `veloSugarPair` {
-							priceMap[pair.Token0] = newPriceItem
+							priceMap[pair.Token1] = newPriceItem
 						}
 					} else {
-						priceMap[pair.Token0] = newPriceItem
+						priceMap[pair.Token1] = newPriceItem
 					}
 				}
 			}

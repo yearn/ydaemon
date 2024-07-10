@@ -13,7 +13,7 @@ import (
 )
 
 // GetSomeVaults will, for a given chainID, return a list of all vaults
-func (y Controller) GetSomeVaults(c *gin.Context) {
+func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDir := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	stratDet := getQuery(c, `strategiesDetails`) == `withDetails`

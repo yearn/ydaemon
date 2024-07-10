@@ -97,7 +97,6 @@ func IndexVeYFIStakingContract(chainID uint64) (veYFIGaugesMap map[common.Addres
 
 	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
-		logs.Error(`No staking contract`)
 		return
 	}
 

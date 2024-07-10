@@ -25,8 +25,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	}
 	go InitializeBribes(chainID)
 
-	underWg := sync.WaitGroup{}
-	underWg.Add(2)
 	/** 🔵 - Yearn *************************************************************************************
 	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
 	** - The registries vaults
@@ -86,6 +84,13 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 	logs.Success(chainID, `-`, `Retrieve All Tokens ✅`)
 
+	/**********************************************************************************************
+	** Retrieving prices and strategies for all the given token and strategies on that chain.
+	** This is done in parallel to speed up the process and reduce the time it takes to complete.
+	** The scheduler is used to retrieve the strategies every 15 minutes.
+	**********************************************************************************************/
+	underWg := sync.WaitGroup{}
+	underWg.Add(2)
 	go func() {
 		prices.RetrieveAllPrices(chainID, tokenMap)
 		logs.Success(chainID, `-`, `Retrieve All Prices ✅`)
@@ -97,8 +102,15 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 		logs.Success(chainID, `-`, `Retrieve All Strategies ✅`)
 		underWg.Done()
 	}() // Retrieve the strategies for all chains
-
 	underWg.Wait()
+
+	// scheduler.Every(2).Hour().StartAt(time.Now().Add(time.Hour * 2)).Do(func() {
+	// 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	// })
+
+	/**********************************************************************************************
+	** Computing APRS
+	**********************************************************************************************/
 	apr.ComputeChainAPR(chainID)
 	go risk.InitRiskScore(chainID)
 

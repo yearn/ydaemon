@@ -121,7 +121,6 @@ func IndexJuicedStakingContract(chainID uint64) (stakingMap map[common.Address]s
 
 	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
-		logs.Error(`No staking contract`)
 		return
 	}
 

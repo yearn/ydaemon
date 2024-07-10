@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -230,7 +231,7 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) (
 	**********************************************************************************************/
 	safeSyncMap(_strategiesSyncMap, chainID).Range(func(_, value interface{}) bool {
 		strategy := value.(models.TStrategy)
-		if strategy.VaultAddress != vaultAddress {
+		if !addresses.Equals(strategy.VaultAddress, vaultAddress) {
 			return true
 		}
 		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()

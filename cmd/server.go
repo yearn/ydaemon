@@ -23,7 +23,7 @@ import (
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
-	CACHE := cache.New(5*time.Minute, 10*time.Minute)
+	CACHE := cache.New(1*time.Minute, 5*time.Minute)
 
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)

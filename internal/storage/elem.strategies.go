@@ -209,7 +209,7 @@ func GuessStrategy(
 		return true
 	})
 
-	if (strat.Address == common.Address{}) {
+	if addresses.Equals(strat.Address, common.Address{}) {
 		return models.TStrategy{}, false
 	}
 	return strat, true

@@ -111,7 +111,7 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 		file.ShouldRefresh,
 	})
 	for _, vault := range file.Vaults {
-		StoreVault(chainID, vault)
+		StoreVault(vault.ChainID, vault)
 	}
 }
 

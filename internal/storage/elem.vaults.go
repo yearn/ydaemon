@@ -16,6 +16,9 @@ import (
 
 var _vaultsSyncMap = make(map[uint64]*sync.Map)
 var _vaultJSONMetadataSyncMap = sync.Map{}
+var _vaultsNonce = 0
+var _vaultsCacheSlice = map[int][]models.TVault{}
+var _vaultsCacheMap = map[int]map[common.Address]models.TVault{}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadVaultsFromJson` is responsible for loading vaults from a JSON file.
@@ -54,10 +57,6 @@ func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) 
 	for address, vault := range vaults {
 		// @dev use this place if you need to update the json
 		allVaults[address] = vault
-		// if addresses.Equals(vault.RegistryAddress, common.HexToAddress(`0x0000000000000000000000000000000000000000`)) {
-		// 	logs.Error(`Vault address is 0x0, skipping...`)
-		// }
-
 	}
 
 	data := TJsonVaultStorage{
@@ -116,10 +115,6 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	for _, vault := range file.Vaults {
 		StoreVault(chainID, vault)
 	}
-
-	// Temp
-	// vaultMap, _ := ListVaults(chainID)
-	// StoreVaultsToJson(chainID, vaultMap)
 }
 
 /**************************************************************************************************
@@ -130,6 +125,7 @@ func StoreVault(chainID uint64, vault models.TVault) {
 		return
 	}
 	safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)
+	_vaultsNonce += 1
 }
 
 /**************************************************************************************************
@@ -138,6 +134,16 @@ func StoreVault(chainID uint64, vault models.TVault) {
 **************************************************************************************************/
 func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice []models.TVault) {
 	asMap = make(map[common.Address]models.TVault) // make to avoid nil map
+	if slice, ok := _vaultsCacheSlice[_vaultsNonce]; ok {
+		if vaultMap, ok := _vaultsCacheMap[_vaultsNonce]; ok {
+			asMap = vaultMap
+		} else {
+			for _, vault := range slice {
+				asMap[vault.Address] = vault
+			}
+		}
+		return asMap, slice
+	}
 
 	/**********************************************************************************************
 	** We can just iterate over the syncMap and add the vaults to the map and slice.
@@ -153,6 +159,8 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 		return true
 	})
 
+	_vaultsCacheSlice[_vaultsNonce] = asSlice
+	_vaultsCacheMap[_vaultsNonce] = asMap
 	return asMap, asSlice
 }
 

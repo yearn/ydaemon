@@ -11,6 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -208,19 +209,13 @@ func filterNewStrategies(
 ** watchNewStrategies...
 **************************************************************************************************/
 func watchNewStrategies(
+	client *ethclient.Client,
 	chainID uint64,
 	vault models.TVault,
 	lastSyncedBlock uint64,
 	wg *sync.WaitGroup,
 	isDone bool,
 ) (uint64, bool, error) {
-	/**********************************************************************************************
-	** First thing is to connect to the node via a WS connection. We need to use a WS connection
-	** because we need to listen to new events as they are emitted via the node.
-	** Not all nodes support WS connections, so we need to check if the node supports it.
-	**********************************************************************************************/
-	client, _ := ethereum.GetWSClient(chainID, true)
-
 	switch vault.Version {
 	case `0.2.2`:
 		currentVault, _ := contracts.NewYvault022(vault.Address, client)
@@ -551,10 +546,10 @@ func indexStrategyWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	err := error(nil)
 
 	for {
-		if _, err := ethereum.GetWSClient(chainID, true); err != nil {
+		client, err := ethereum.GetWSClient(chainID, true)
+		if err != nil {
 			/**********************************************************************************************
 			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
 			** latest block. This is a fallback method in case the WS connection is not available.
@@ -575,7 +570,9 @@ func indexStrategyWrapper(
 				time.Sleep(1 * time.Hour)
 			}
 		}
+
 		lastSyncedBlock, shouldRetry, err = watchNewStrategies(
+			client,
 			chainID,
 			vault,
 			lastSyncedBlock,
@@ -587,7 +584,7 @@ func indexStrategyWrapper(
 			logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 		if shouldRetry {
-			time.Sleep(30 * time.Second)
+			time.Sleep(10 * time.Minute)
 			continue
 		}
 		break

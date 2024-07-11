@@ -74,6 +74,7 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `isYearnJuiced` | `bool` | Indicates if the vault should be displayer on juiced.app. True or false based on the detected registry. | ❌ |
 | `isGimme` | `bool` | Indicates if the vault should be displayer on gimme. Default to false. | ❌ |
 | `isPublicERC4626` | `bool` | Indicates if the registry for that vault is a public ERC4626. True or false based on the detected registry. | ❌ |
+| `isYearnXPoolTogether` | `bool` | Indicates if the vault should be displayer on YearnXPoolTogether UI. Default to false. | ❌ |
 
 /!\ The first time the vault inclusion is set, if `inclusion.isPublicERC4626 == true`, the vault will be set as `endorced = false`, `isHidden = true` and `IsHighlighted = false`.
 

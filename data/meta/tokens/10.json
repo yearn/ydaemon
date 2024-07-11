@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-11T10:46:52.844418+02:00",
+	"lastUpdate": "2024-07-11T15:29:23.812341+02:00",
 	"version": {
 		"major": 0,
-		"minor": 10,
+		"minor": 11,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -432,6 +432,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x05Aa1277cb1Bc91653A0Fc1e43dec7844b08860f/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x05b0f53d5aa6ba7be05268d35a76baa58952fd95": {
+			"address": "0x05b0f53d5aa6ba7be05268d35a76baa58952fd95",
+			"underlyingTokensAddresses": [
+				"0x6e57b9e54ea043a829584b22182ad22bf446926c"
+			],
+			"type": "Single Strategy",
+			"name": "Prize sAMMV2-WBTC/tBTC - Yearn",
+			"symbol": "przsAMMV2-WBTC/tBTC",
+			"displayName": "Prize sAMMV2-WBTC/tBTC - Yearn",
+			"displaySymbol": "przsAMMV2-WBTC/tBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x05B0f53D5aa6Ba7Be05268d35a76bAA58952fD95/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -4371,6 +4387,22 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x3f707a0f3ad1b2784cfbdda17d7345fc0e689751": {
+			"address": "0x3f707a0f3ad1b2784cfbdda17d7345fc0e689751",
+			"underlyingTokensAddresses": [
+				"0xa1055762336f92b4b8d2edc032a0ce45ead6280a"
+			],
+			"type": "Single Strategy",
+			"name": "Prize sAMMV2-alETH/WETH - Yearn",
+			"symbol": "przsAMMV2-alETH/WETH",
+			"displayName": "Prize sAMMV2-alETH/WETH - Yearn",
+			"displaySymbol": "przsAMMV2-alETH/WETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x3F707a0f3AD1b2784CfbdDa17d7345fc0E689751/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x3f848eefd234da0b1b98ea876fe2ee86a10773ca": {
 			"address": "0x3f848eefd234da0b1b98ea876fe2ee86a10773ca",
 			"underlyingTokensAddresses": [],
@@ -5844,6 +5876,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x5404c61F5337D5a06522ca686dc388e0Fc50Fd32/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x54270c51054b63cf990501c50a9c0814a73b4f73": {
+			"address": "0x54270c51054b63cf990501c50a9c0814a73b4f73",
+			"underlyingTokensAddresses": [
+				"0x917aa69d539d6518440dd0bea2eaac142a8d5610"
+			],
+			"type": "Single Strategy",
+			"name": "Prize sAMMV2-msETH/WETH - Yearn",
+			"symbol": "przsAMMV2-msETH/WETH",
+			"displayName": "Prize sAMMV2-msETH/WETH - Yearn",
+			"displaySymbol": "przsAMMV2-msETH/WETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x54270c51054B63CF990501c50a9c0814a73B4f73/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -7588,12 +7636,12 @@
 		"0x6e57b9e54ea043a829584b22182ad22bf446926c": {
 			"address": "0x6e57b9e54ea043a829584b22182ad22bf446926c",
 			"underlyingTokensAddresses": [],
-			"type": "Velodrome",
+			"type": "",
 			"name": "StableV2 AMM - WBTC/tBTC",
 			"symbol": "sAMMV2-WBTC/tBTC",
-			"displayName": "Velodrome Stable WBTC-tBTC",
+			"displayName": "StableV2 AMM - WBTC/tBTC",
 			"displaySymbol": "sAMMV2-WBTC/tBTC",
-			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains WBTC and tBTC.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x6e57B9E54ea043a829584B22182ad22bF446926C/logo-128.png",
 			"decimals": 18,
@@ -10007,12 +10055,12 @@
 		"0x917aa69d539d6518440dd0bea2eaac142a8d5610": {
 			"address": "0x917aa69d539d6518440dd0bea2eaac142a8d5610",
 			"underlyingTokensAddresses": [],
-			"type": "Velodrome",
+			"type": "",
 			"name": "StableV2 AMM - msETH/WETH",
 			"symbol": "sAMMV2-msETH/WETH",
-			"displayName": "Velodrome Stable msETH-WETH",
+			"displayName": "StableV2 AMM - msETH/WETH",
 			"displaySymbol": "sAMMV2-msETH/WETH",
-			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains WETH and msETH.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x917AA69D539D6518440dd0BEA2eaAc142a8d5610/logo-128.png",
 			"decimals": 18,
@@ -10840,6 +10888,22 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x9f4a71c262e5fe634bbe3b9b1bd5dee2bba9e441": {
+			"address": "0x9f4a71c262e5fe634bbe3b9b1bd5dee2bba9e441",
+			"underlyingTokensAddresses": [
+				"0x605cce502dee6bd201b493782e351e645d44abbb"
+			],
+			"type": "Single Strategy",
+			"name": "Prize sAMMV2-USDC/ERN - Yearn",
+			"symbol": "przsAMMV2-USDC/ERN",
+			"displayName": "Prize sAMMV2-USDC/ERN - Yearn",
+			"displaySymbol": "przsAMMV2-USDC/ERN",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x9F4A71c262e5fe634BBe3b9b1bd5deE2BBA9e441/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x9f95af94518694c212394977cacaf43313981835": {
 			"address": "0x9f95af94518694c212394977cacaf43313981835",
 			"underlyingTokensAddresses": [],
@@ -10955,12 +11019,12 @@
 		"0xa1055762336f92b4b8d2edc032a0ce45ead6280a": {
 			"address": "0xa1055762336f92b4b8d2edc032a0ce45ead6280a",
 			"underlyingTokensAddresses": [],
-			"type": "Velodrome",
+			"type": "",
 			"name": "StableV2 AMM - alETH/WETH",
 			"symbol": "sAMMV2-alETH/WETH",
-			"displayName": "Velodrome Stable alETH-WETH",
+			"displayName": "StableV2 AMM - alETH/WETH",
 			"displaySymbol": "sAMMV2-alETH/WETH",
-			"description": "This token represents a Velodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Velodrome's gauges to earn emissions. This stablepool contains alETH and WETH.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xa1055762336F92b4B8d2eDC032A0Ce45ead6280a/logo-128.png",
 			"decimals": 18,
@@ -14047,6 +14111,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xCEcc5dacc7B09D35e19B1c5C47a65bc822A9c559/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xcf6abb37336e3a756b564e2c29222bf187a0de2a": {
+			"address": "0xcf6abb37336e3a756b564e2c29222bf187a0de2a",
+			"underlyingTokensAddresses": [
+				"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"
+			],
+			"type": "Single Strategy",
+			"name": "Prize sUSD - Yearn",
+			"symbol": "przsUSD",
+			"displayName": "Prize sUSD - Yearn",
+			"displaySymbol": "przsUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0xCf6ABB37336E3A756b564E2c29222bf187A0dE2A/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

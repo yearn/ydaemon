@@ -2,6 +2,7 @@ package env
 
 import (
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 )
 
 /**************************************************************************************************
@@ -45,4 +46,15 @@ func IsRegistryFromPublicERC4626(chainID uint64, registryAddress common.Address)
 		}
 	}
 	return false
+}
+
+/**************************************************************************************************
+** IsRegistryFromPoolTogether will check if the registry is for Yearn X Pooltogether vaults.
+** They will not be displayed by default in the Yearn.fi website.
+**************************************************************************************************/
+func IsRegistryFromPoolTogether(chainID uint64, registryAddress common.Address) bool {
+	return chainID == 10 && addresses.Equals(
+		registryAddress,
+		common.HexToAddress(`0x0c379e9b71ba7079084ada0d1c1aeb85d24dfd39`),
+	)
 }

@@ -57,7 +57,7 @@ func NewRouter() *gin.Engine {
 				ctx.JSON(http.StatusOK, result)
 			} else {
 				result := c.GetIsYearn(ctx)
-				CACHE.Set(ctx.Request.URL.String(), result, cache.DefaultExpiration)
+				CACHE.Set(ctx.Request.URL.String(), result, 1*time.Minute)
 				ctx.JSON(http.StatusOK, result)
 			}
 		})

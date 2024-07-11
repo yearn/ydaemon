@@ -2,9 +2,7 @@ package main
 
 import (
 	"net/http"
-	"time"
 
-	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
@@ -23,7 +21,6 @@ import (
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
-	store := persistence.NewInMemoryStore(time.Second)
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil

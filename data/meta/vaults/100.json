@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-05-27T12:14:06.860814+02:00",
+	"lastUpdate": "2024-07-11T10:44:57.599502+02:00",
 	"version": {
 		"major": 0,
 		"minor": 1,
-		"patch": 9
+		"patch": 10
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -11,6 +11,7 @@
 			"address": "0x39b68451f05aaa020611cf887a7338f0991ffd60",
 			"token": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xf7ec5d01f5b5acdae518ce69ff5f2599e4d705be",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "3.0.2",
@@ -23,11 +24,11 @@
 			"lastActiveStrategies": [
 				"0x5012c6bf79b3047ecfff2f212dffda4d2128188f"
 			],
-			"lastPricePerShare": "1000167094171203324",
-			"lastTotalAssets": "79631824581235872879360",
+			"lastPricePerShare": "1007375099352846373",
+			"lastTotalAssets": "55596597514290096866241",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": true,
@@ -54,6 +55,7 @@
 					"isSet": true,
 					"isYearn": false,
 					"isYearnJuiced": true,
+					"isGimme": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -62,6 +64,7 @@
 			"address": "0x5012c6bf79b3047ecfff2f212dffda4d2128188f",
 			"token": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xd84e84f018b9c8cc7d9f898a544d1d18080bfd21",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "3.0.2",
@@ -75,11 +78,11 @@
 				"0x99474363f03d21375da1af4c9694cabcf995e02a",
 				"0x4b40c9ff9d654fd7f1e24ed66d8f0f260b199b43"
 			],
-			"lastPricePerShare": "1000248920184172272",
-			"lastTotalAssets": "82269306063282071772040",
+			"lastPricePerShare": "1012366006939580721",
+			"lastTotalAssets": "68535132953166308489599",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": true,
@@ -106,6 +109,7 @@
 					"isSet": true,
 					"isYearn": false,
 					"isYearnJuiced": true,
+					"isGimme": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -114,6 +118,7 @@
 			"address": "0xa21cc1a4a239708690134baed3a1b93cad55f625",
 			"token": "0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xdb0fd022ba9d52d8c90bc69a22e24c4d3f895d11",
 			"type": "Automated Yearn Vault",
 			"kind": "Legacy",
 			"version": "3.0.2",
@@ -126,11 +131,11 @@
 			"lastActiveStrategies": [
 				"0x1b66b4a3a80ebcfa3ecabf5580cd9929aba57bb1"
 			],
-			"lastPricePerShare": "1006071867283682763",
-			"lastTotalAssets": "42284683044224647909774",
+			"lastPricePerShare": "1023617147350506003",
+			"lastTotalAssets": "22513263304983246138224",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": true,
@@ -157,6 +162,7 @@
 					"isSet": true,
 					"isYearn": false,
 					"isYearnJuiced": true,
+					"isGimme": false,
 					"isPublicERC4626": true
 				}
 			}

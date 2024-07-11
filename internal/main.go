@@ -119,7 +119,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 		initDailyBlock.Run(chainID)
 	})
 
-	scheduler.Every(15).Minute().WaitForSchedule().Do(func() {
+	scheduler.Every(30).Minute().WaitForSchedule().Do(func() {
 		indexer.IndexVeYFIStakingContract(chainID)
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 		fetcher.RetrieveAllTokens(chainID, vaultMap)

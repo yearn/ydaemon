@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
-	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/meta"
@@ -26,7 +25,7 @@ func NewRouter() *gin.Engine {
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil
 	router := gin.New()
-	pprof.Register(router)
+	// pprof.Register(router)
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
@@ -35,9 +34,9 @@ func NewRouter() *gin.Engine {
 	}
 	router.Use(cors.New(corsConf))
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
-	router.Use(NewRateLimiter(func(c *gin.Context) {
-		c.AbortWithStatus(http.StatusTooManyRequests)
-	}))
+	// router.Use(NewRateLimiter(func(c *gin.Context) {
+	// 	c.AbortWithStatus(http.StatusTooManyRequests)
+	// }))
 
 	// Standard basic route for hello
 	router.GET(`/`, func(ctx *gin.Context) {

@@ -11,6 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -162,25 +163,13 @@ func filterNewVault(
 ** - err: the error if any
 **************************************************************************************************/
 func watchNewVaults(
+	client *ethclient.Client,
 	chainID uint64,
 	registry env.TContractData,
 	lastSyncedBlock uint64,
 	wg *sync.WaitGroup,
 	isDone bool,
 ) (uint64, bool, error) {
-	/**********************************************************************************************
-	** First thing is to connect to the node via a WS connection. We need to use a WS connection
-	** because we need to listen to new events as they are emitted via the node.
-	** Not all nodes support WS connections, so we need to check if the node supports it.
-	**********************************************************************************************/
-	client, err := ethereum.GetWSClient(chainID, true)
-	if err != nil {
-		if wg != nil && !isDone {
-			wg.Done()
-		}
-		return 0, false, err
-	}
-
 	switch registry.Version {
 	case 1, 2:
 		currentRegistry, _ := contracts.NewYRegistryV2(registry.Address, client)
@@ -500,9 +489,9 @@ func indexNewVaultsWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	err := error(nil)
 	for {
-		if _, err := ethereum.GetWSClient(chainID, true); err != nil {
+		client, err := ethereum.GetWSClient(chainID, true)
+		if err != nil {
 			/**********************************************************************************************
 			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
 			** latest block. This is a fallback method in case the WS connection is not available.
@@ -520,10 +509,12 @@ func indexNewVaultsWrapper(
 				)
 				isDone = true
 				lastSyncedBlock = lastBlock
-				time.Sleep(1 * time.Minute)
+				time.Sleep(1 * time.Hour)
 			}
 		}
+
 		lastSyncedBlock, shouldRetry, err = watchNewVaults(
+			client,
 			chainID,
 			registry,
 			lastSyncedBlock,
@@ -535,7 +526,7 @@ func indexNewVaultsWrapper(
 			logs.Error(`error while indexing NewVault from registry ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
 		if shouldRetry {
-			time.Sleep(30 * time.Second)
+			time.Sleep(10 * time.Minute)
 			continue
 		}
 		break

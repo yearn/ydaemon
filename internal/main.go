@@ -32,6 +32,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	** - The strategies
 	** - The tokens
 	**************************************************************************************************/
+	indexer.IndexYearnXPoolTogetherVaults(chainID)
 	registries := indexer.IndexNewVaults(chainID)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
 

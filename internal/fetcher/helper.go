@@ -365,9 +365,11 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	} else {
 		strat.LastPerformanceFee = bigNumber.NewInt(0) // Default to 1000, aka 10%
 	}
-	strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).CurrentDebt)
-	strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)
-	strat.LastReport = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).LastReport)
+	if len(rawStrategies) > 0 {
+		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).CurrentDebt)
+		strat.TimeActivated = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).Activation)
+		strat.LastReport = bigNumber.SetInt(rawStrategies[0].(typeOfRawStrategies).LastReport)
+	}
 	strat.LastTotalGain = bigNumber.NewInt(0) //Not available in V3
 	strat.LastTotalLoss = bigNumber.NewInt(0) //Not available in V3
 	vaultTotalAssets := helpers.DecodeBigInt(rawVaultTotalAssets)

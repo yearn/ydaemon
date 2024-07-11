@@ -2,7 +2,10 @@ package main
 
 import (
 	"net/http"
+	"time"
 
+	"github.com/gin-contrib/cache"
+	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
@@ -21,6 +24,7 @@ import (
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
+	store := persistence.NewInMemoryStore(time.Second)
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil
@@ -47,34 +51,34 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetIsYearn)
+		router.GET(`vaults`, cache.CachePage(store, 10*time.Minute, c.GetIsYearn))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
 		** will return the vaults for all chains.
 		******************************************************************************************/
-		router.GET(`vaults/all`, c.GetIsYearn)
-		router.GET(`vaults/underthesea/v2`, c.GetV2)
-		router.GET(`vaults/v2`, c.GetV2IsYearn)
-		router.GET(`vaults/underthesea/v3`, c.GetV3)
-		router.GET(`vaults/v3`, c.GetV3IsYearn)
-		router.GET(`vaults/juiced`, c.GetIsYearnJuiced)
-		router.GET(`vaults/gimme`, c.GetIsGimme)
-		router.GET(`vaults/retired`, c.GetRetired)
-		router.GET(`vaults/pendle`, c.GetIsYearnPendle)
-		router.GET(`vaults/optimism`, c.GetIsOptimism)
+		router.GET(`vaults/all`, cache.CachePage(store, 10*time.Minute, c.GetIsYearn))
+		router.GET(`vaults/underthesea/v2`, cache.CachePage(store, 10*time.Minute, c.GetV2))
+		router.GET(`vaults/v2`, cache.CachePage(store, 10*time.Minute, c.GetV2IsYearn))
+		router.GET(`vaults/underthesea/v3`, cache.CachePage(store, 10*time.Minute, c.GetV3))
+		router.GET(`vaults/v3`, cache.CachePage(store, 10*time.Minute, c.GetV3IsYearn))
+		router.GET(`vaults/juiced`, cache.CachePage(store, 10*time.Minute, c.GetIsYearnJuiced))
+		router.GET(`vaults/gimme`, cache.CachePage(store, 10*time.Minute, c.GetIsGimme))
+		router.GET(`vaults/retired`, cache.CachePage(store, 10*time.Minute, c.GetRetired))
+		router.GET(`vaults/pendle`, cache.CachePage(store, 10*time.Minute, c.GetIsYearnPendle))
+		router.GET(`vaults/optimism`, cache.CachePage(store, 10*time.Minute, c.GetIsOptimism))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
 		** will return the vaults for a specific chain.
 		******************************************************************************************/
-		router.GET(`:chainID/vaults/all`, c.GetLegacyAllVaults)
-		router.GET(`:chainID/vaults/v2/all`, c.GetLegacyAllV2Vaults)
-		router.GET(`:chainID/vaults/v3/all`, c.GetLegacyAllV3Vaults)
-		router.GET(`:chainID/vaults/juiced/all`, c.GetLegacyAllJuicedVaults)
-		router.GET(`:chainID/vaults/gimme/all`, c.GetLegacyAllGimmeVaults)
-		router.GET(`:chainID/vaults/retired`, c.GetLegacyRetiredVaults)
-		router.GET(`:chainID/vaults/some/:addresses`, c.GetLegacySomeVaults)
+		router.GET(`:chainID/vaults/all`, cache.CachePage(store, 10*time.Minute, c.GetLegacyAllVaults))
+		router.GET(`:chainID/vaults/v2/all`, cache.CachePage(store, 10*time.Minute, c.GetLegacyAllV2Vaults))
+		router.GET(`:chainID/vaults/v3/all`, cache.CachePage(store, 10*time.Minute, c.GetLegacyAllV3Vaults))
+		router.GET(`:chainID/vaults/juiced/all`, cache.CachePage(store, 10*time.Minute, c.GetLegacyAllJuicedVaults))
+		router.GET(`:chainID/vaults/gimme/all`, cache.CachePage(store, 10*time.Minute, c.GetLegacyAllGimmeVaults))
+		router.GET(`:chainID/vaults/retired`, cache.CachePage(store, 10*time.Minute, c.GetLegacyRetiredVaults))
+		router.GET(`:chainID/vaults/some/:addresses`, cache.CachePage(store, 10*time.Minute, c.GetLegacySomeVaults))
 
 		/******************************************************************************************
 		** Retrieve a specific vault based on the address. This is chain specific and will return
@@ -155,18 +159,18 @@ func NewRouter() *gin.Engine {
 	// Prices API section
 	{
 		c := prices.Controller{}
-		router.GET(`prices/all`, c.GetAllPrices)
-		router.GET(`:chainID/prices/all`, c.GetPrices)
-		router.GET(`:chainID/prices/:address`, c.GetPrice)
-		router.GET(`:chainID/prices/some/:addresses`, c.GetSomePricesForChain)
-		router.GET(`:chainID/prices/all/details`, c.GetAllPricesWithDetails)
+		router.GET(`prices/all`, cache.CachePage(store, 10*time.Minute, c.GetAllPrices))
+		router.GET(`:chainID/prices/all`, cache.CachePage(store, 10*time.Minute, c.GetPrices))
+		router.GET(`:chainID/prices/:address`, cache.CachePage(store, 10*time.Minute, c.GetPrice))
+		router.GET(`:chainID/prices/some/:addresses`, cache.CachePage(store, 10*time.Minute, c.GetSomePricesForChain))
+		router.GET(`:chainID/prices/all/details`, cache.CachePage(store, 10*time.Minute, c.GetAllPricesWithDetails))
 
 		/******************************************************************************************
 		** Retrieve some/all prices based on some specific criteria. This is chain agnostic and
 		** will return the prices for all chains.
 		******************************************************************************************/
-		router.GET(`prices/some/:addresses`, c.GetSomePrices)
-		router.POST(`prices/some`, c.GetSomePostPrices)
+		router.GET(`prices/some/:addresses`, cache.CachePage(store, 10*time.Minute, c.GetSomePrices))
+		router.POST(`prices/some`, cache.CachePage(store, 10*time.Minute, c.GetSomePostPrices))
 
 	}
 

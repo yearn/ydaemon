@@ -38,10 +38,11 @@ func (y Controller) GetRetired(c *gin.Context) {
 ** GetIsYearn is a gin handler function to retrieve all the vaults matching the
 ** inclusion.IsYearn filter.
 **************************************************************************************************/
-func (y Controller) GetIsYearn(c *gin.Context) {
-	c.JSON(http.StatusOK, getAllChainsVaultsWithFilter(c, func(vault models.TVault) bool {
+func (y Controller) GetIsYearn(c *gin.Context) []TSimplifiedExternalVault {
+	result := getAllChainsVaultsWithFilter(c, func(vault models.TVault) bool {
 		return vault.Metadata.Inclusion.IsYearn
-	}))
+	})
+	return result
 }
 
 /**************************************************************************************************

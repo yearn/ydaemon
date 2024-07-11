@@ -2,10 +2,12 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
+	"github.com/patrickmn/go-cache"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/external/meta"
 	"github.com/yearn/ydaemon/external/partners"
@@ -21,6 +23,8 @@ import (
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
+	CACHE := cache.New(5*time.Minute, 10*time.Minute)
+
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil
@@ -48,13 +52,29 @@ func NewRouter() *gin.Engine {
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
 		// router.GET(`vaults`, c.GetIsYearn)
-		router.GET(`vaults`, c.GetIsYearn)
+		router.GET(`vaults`, func(ctx *gin.Context) {
+			if result, found := CACHE.Get(ctx.Request.URL.String()); found {
+				ctx.JSON(http.StatusOK, result)
+			} else {
+				result := c.GetIsYearn(ctx)
+				CACHE.Set(ctx.Request.URL.String(), result, cache.DefaultExpiration)
+				ctx.JSON(http.StatusOK, result)
+			}
+		})
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
 		** will return the vaults for all chains.
 		******************************************************************************************/
-		router.GET(`vaults/all`, c.GetIsYearn)
+		router.GET(`vaults/all`, func(ctx *gin.Context) {
+			if result, found := CACHE.Get(ctx.Request.URL.String()); found {
+				ctx.JSON(http.StatusOK, result)
+			} else {
+				result := c.GetIsYearn(ctx)
+				CACHE.Set(ctx.Request.URL.String(), result, cache.DefaultExpiration)
+				ctx.JSON(http.StatusOK, result)
+			}
+		})
 		router.GET(`vaults/underthesea/v2`, c.GetV2)
 		router.GET(`vaults/v2`, c.GetV2IsYearn)
 		router.GET(`vaults/underthesea/v3`, c.GetV3)

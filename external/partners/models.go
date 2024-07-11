@@ -1,7 +1,6 @@
 package partners
 
 import (
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
 
@@ -21,11 +20,11 @@ type TExternalPartnersFromFile struct {
 }
 
 type TExternalPartnersWrapper struct {
-	Vault     common.MixedcaseAddress `json:"vault,omitempty"`
-	Wrapper   common.MixedcaseAddress `json:"wrapper"`
-	BalanceOf *bigNumber.Int          `json:"balanceOf,omitempty"`
-	Name      string                  `json:"name"`
-	Type      string                  `json:"type"`
+	Vault     string         `json:"vault,omitempty"`
+	Wrapper   string         `json:"wrapper"`
+	BalanceOf *bigNumber.Int `json:"balanceOf,omitempty"`
+	Name      string         `json:"name"`
+	Type      string         `json:"type"`
 }
 
 type TPartners struct {
@@ -33,15 +32,15 @@ type TPartners struct {
 	FullName        string                     `json:"full_name"`
 	Description     string                     `json:"description"`
 	StartDate       string                     `json:"start_date"`
-	Treasury        common.MixedcaseAddress    `json:"treasury"`
+	Treasury        string                     `json:"treasury"`
 	RetiredTreasury []string                   `json:"retired_treasury"`
 	Wrappers        []TExternalPartnersWrapper `json:"wrappers"`
 }
 
-var partnersByAddress map[uint64]map[common.MixedcaseAddress]*TPartners
+var partnersByAddress map[uint64]map[string]*TPartners
 var partnersByName map[uint64]map[string]*TPartners
 
 func init() {
-	partnersByAddress = make(map[uint64]map[common.MixedcaseAddress]*TPartners)
+	partnersByAddress = make(map[uint64]map[string]*TPartners)
 	partnersByName = make(map[uint64]map[string]*TPartners)
 }

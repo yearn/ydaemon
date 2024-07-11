@@ -128,8 +128,8 @@ func GetYearnTokenList(c *gin.Context) {
 	for _, token := range existingTokenLists[`yearn`] {
 		calls = append(calls, getBalance(
 			token.Address,
-			addresses.ToMixedcase(token.Address),
-			addresses.ToMixedcase(userAddress),
+			common.HexToAddress(token.Address),
+			userAddress,
 		))
 	}
 
@@ -166,7 +166,7 @@ func GetYearnTokenList(c *gin.Context) {
 	calls = append(calls, getEthBalance(
 		chainCoin.Address.Hex(),
 		env.CHAINS[chainID].MulticallContract.Address,
-		addresses.ToMixedcase(c.Param("address")),
+		common.HexToAddress(c.Param("address")),
 	))
 	/**********************************************************************************************
 	** And we can finally execute the multicall.
@@ -270,15 +270,15 @@ func GetNewUserBalance(c *gin.Context) {
 		calls = append(calls, getEthBalance(
 			chainCoin.Address.Hex(),
 			env.CHAINS[chainID].MulticallContract.Address,
-			addresses.ToMixedcase(c.Param("address")),
+			common.HexToAddress(c.Param("address")),
 		))
 
 		for _, token := range existingTokenLists[`yearn`] {
 			if token.ChainID == int(chainID) {
 				calls = append(calls, getBalance(
 					token.Address,
-					addresses.ToMixedcase(token.Address),
-					addresses.ToMixedcase(c.Param("address")),
+					common.HexToAddress(token.Address),
+					common.HexToAddress(c.Param("address")),
 				))
 			}
 		}
@@ -384,8 +384,8 @@ func GetUserBalance(c *gin.Context) {
 			if token.ChainID == int(chainID) {
 				calls = append(calls, getBalance(
 					token.Address,
-					addresses.ToMixedcase(token.Address),
-					addresses.ToMixedcase(c.Param("address")),
+					common.HexToAddress(token.Address),
+					common.HexToAddress(c.Param("address")),
 				))
 			}
 		}

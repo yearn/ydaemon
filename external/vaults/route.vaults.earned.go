@@ -73,7 +73,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	totalRealizedGainsUSD := 0.0
 	totalUnrealizedGainsUSD := 0.0
 	for _, currentVault := range listOfVaults {
-		vaultAddress := addresses.ToMixedcase(currentVault.Vault.Id)
+		vaultAddress := currentVault.Vault.Id
 		pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
 		decimals := bigNumber.NewInt(currentVault.Vault.ShareToken.Decimals)
 		decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
@@ -241,7 +241,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 			unrealizedGainsUSD = 0
 		}
 
-		earnedMap[vaultAddress.Address().Hex()] = &TEarned{
+		earnedMap[vaultAddress] = &TEarned{
 			RealizedGains:      realizedGains.String(),
 			RealizedGainsUSD:   realizedGainsUSD,
 			UnrealizedGains:    unrealizedGains.String(),
@@ -292,7 +292,7 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	totalUnrealizedGainsUSD := 0.0
 	listOfVaults := response.AccountVaultPositions
 	for _, currentVault := range listOfVaults {
-		vaultAddress := addresses.ToMixedcase(currentVault.Vault.Id)
+		vaultAddress := currentVault.Vault.Id
 		pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
 		decimals := bigNumber.NewInt(currentVault.Vault.ShareToken.Decimals)
 		decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
@@ -464,7 +464,7 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 			unrealizedGainsUSD = 0
 		}
 
-		earnedMap[vaultAddress.Address().Hex()] = &TEarned{
+		earnedMap[vaultAddress] = &TEarned{
 			RealizedGains:      realizedGains.String(),
 			RealizedGainsUSD:   realizedGainsUSD,
 			UnrealizedGains:    unrealizedGains.String(),
@@ -540,7 +540,7 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 
 		listOfVaults := response.AccountVaultPositions
 		for _, currentVault := range listOfVaults {
-			vaultAddress := addresses.ToMixedcase(currentVault.Vault.Id)
+			vaultAddress := currentVault.Vault.Id
 			pricePerShare := bigNumber.NewInt(0).SetString(currentVault.Vault.LatestUpdate.PricePerShare)
 			decimals := bigNumber.NewInt(currentVault.Vault.ShareToken.Decimals)
 			decimals = bigNumber.NewInt(0).Exp(bigNumber.NewInt(10), decimals, nil)
@@ -712,7 +712,7 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 				unrealizedGainsUSD = 0
 			}
 
-			earnedMap[chainID][vaultAddress.Address().Hex()] = &TEarned{
+			earnedMap[chainID][vaultAddress] = &TEarned{
 				RealizedGains:      realizedGains.String(),
 				RealizedGainsUSD:   realizedGainsUSD,
 				UnrealizedGains:    unrealizedGains.String(),

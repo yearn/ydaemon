@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -54,10 +54,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	harvests := []TExternalVaultHarvest{}
 	harvestsFromSubgraph := response.Harvests
 	for _, harvest := range harvestsFromSubgraph {
-		tokenPriceBigFloat, _ := buildTokenPrice(
-			chainID,
-			addresses.ToMixedcase(harvest.Vault.Token.Id),
-		)
+		tokenPriceBigFloat, _ := buildTokenPrice(chainID, common.HexToAddress(harvest.Vault.Token.Id))
 		decimals := harvest.Vault.Token.Decimals
 
 		if bigNumber.NewInt().SetString(harvest.Profit).IsZero() && bigNumber.NewInt().SetString(harvest.Loss).IsZero() {

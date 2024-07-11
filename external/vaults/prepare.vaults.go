@@ -12,8 +12,8 @@ import (
 // using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
 // decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
 // in an human readable USDC format.
-func buildTokenPrice(chainID uint64, tokenAddress common.MixedcaseAddress) (*bigNumber.Float, float64) {
-	price, ok := storage.GetPrice(chainID, tokenAddress.Address())
+func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
+	price, ok := storage.GetPrice(chainID, tokenAddress)
 	if ok {
 		fPrice, _ := price.HumanizedPrice.Float64()
 		return price.HumanizedPrice, fPrice
@@ -38,7 +38,7 @@ func assignStakingRewards(chainID uint64, stakingData storage.TStakingData, sour
 		rewardPerDuration := bigNumber.NewFloat(0).Mul(normalizedRewardRate, bigNumber.NewFloat(0).SetUint64(reward.Duration))
 		durationScaledToWeek := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(0).SetUint64(reward.Duration), bigNumber.NewFloat(0).SetUint64(604800))
 		rewardsPerWeek := bigNumber.NewFloat(0).Div(rewardPerDuration, durationScaledToWeek)
-		_, tokenPrice := buildTokenPrice(chainID, common.NewMixedcaseAddress(reward.Address))
+		_, tokenPrice := buildTokenPrice(chainID, reward.Address)
 
 		if reward.IsFinished {
 			rewardsPerWeek = bigNumber.NewFloat()

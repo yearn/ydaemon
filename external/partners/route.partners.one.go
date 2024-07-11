@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
@@ -19,7 +18,7 @@ func (y Controller) GetPartner(c *gin.Context) {
 	partnerAddressOrName := c.Param("addressOrName")
 	partner, ok := partnersByName[chainID][partnerAddressOrName]
 	if !ok {
-		partner, ok = partnersByAddress[chainID][addresses.ToMixedcase(partnerAddressOrName)]
+		partner, ok = partnersByAddress[chainID][partnerAddressOrName]
 		if !ok {
 			c.String(http.StatusBadRequest, "no data available")
 			return

@@ -3,7 +3,6 @@ package apr
 import (
 	"math/big"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -28,7 +27,6 @@ func computeVaultV3ForwardAPR(
 	oracleAPR := bigNumber.NewFloat(0)
 	oracleContract := env.CHAINS[vault.ChainID].APROracleContract.Address
 	if oracleContract == common.HexToAddress(``) {
-		logs.Error("No APR oracle contract address for chain " + strconv.FormatUint(vault.ChainID, 10))
 		return TForwardAPR{}
 	}
 	oracle, err := contracts.NewYVaultsV3APROracleCaller(oracleContract, ethereum.GetRPC(vault.ChainID))

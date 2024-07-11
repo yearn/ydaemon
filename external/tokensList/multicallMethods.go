@@ -10,13 +10,13 @@ import (
 var ERC20ABI, _ = contracts.ERC20MetaData.GetAbi()
 var MulticallABI, _ = contracts.Multicall3MetaData.GetAbi()
 
-func getBalance(name string, contractAddress common.MixedcaseAddress, userAddress common.MixedcaseAddress) ethereum.Call {
-	parsedData, err := ERC20ABI.Pack("balanceOf", userAddress.Address())
+func getBalance(name string, contractAddress common.Address, userAddress common.Address) ethereum.Call {
+	parsedData, err := ERC20ABI.Pack("balanceOf", userAddress)
 	if err != nil {
 		logs.Error(err)
 	}
 	return ethereum.Call{
-		Target:   contractAddress.Address(),
+		Target:   contractAddress,
 		Abi:      ERC20ABI,
 		Method:   `balanceOf`,
 		CallData: parsedData,
@@ -24,8 +24,8 @@ func getBalance(name string, contractAddress common.MixedcaseAddress, userAddres
 	}
 }
 
-func getEthBalance(name string, contractAddress common.Address, userAddress common.MixedcaseAddress) ethereum.Call {
-	parsedData, err := MulticallABI.Pack("getEthBalance", userAddress.Address())
+func getEthBalance(name string, contractAddress common.Address, userAddress common.Address) ethereum.Call {
+	parsedData, err := MulticallABI.Pack("getEthBalance", userAddress)
 	if err != nil {
 		logs.Error(err)
 	}

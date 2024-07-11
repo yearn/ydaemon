@@ -434,35 +434,17 @@ func watchNewStrategies(
 			}
 		}
 	default:
-		// case `3.0.0`, `3.0.1`:
+		// case `3.0.0`, `3.0.1`, `3.0.2`:
 		currentVault, _ := contracts.NewYvault300(vault.Address, client)
 		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault300MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StrategyChanged`].ID}}...)
-		// currentBlockNumber, _ := client.BlockNumber(context.Background())
-
-		// for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		// 	chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
-		// 	if chunkEnd > *end {
-		// 		chunkEnd = *end
-		// 		lastBlock = chunkEnd
-		// 	}
-
 		query := goEth.FilterQuery{
 			FromBlock: big.NewInt(int64(vault.Activation)),
 			Addresses: []common.Address{vault.Address},
 			Topics:    topics,
-			// ToBlock: big.NewInt(0).Add(
-			// 	big.NewInt(int64(vault.Activation)),
-			// 	big.NewInt(int64(env.CHAINS[chainID].MaxBlockRange)),
-			// ),
 		}
-		stream, sub, history, err := etherReader.QueryWithHistory(
-			context.Background(),
-			&query,
-			// env.CHAINS[chainID].MaxBlockRange,
-			// currentBlockNumber,
-		)
+		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
 			if wg != nil && !isDone {
 				wg.Done()

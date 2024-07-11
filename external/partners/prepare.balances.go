@@ -38,11 +38,11 @@ func (c *TPartners) BalanceOf() *TPartners {
 
 func computeDefaultBalance(
 	chainID uint64,
-	vaultAddress common.MixedcaseAddress,
-	userAddress common.MixedcaseAddress,
+	vaultAddress string,
+	userAddress string,
 ) (*bigNumber.Int, error) {
-	yearnVault, _ := contracts.NewYearnVault(vaultAddress.Address(), ethereum.GetRPC(chainID))
-	balance, err := yearnVault.BalanceOf(nil, userAddress.Address())
+	yearnVault, _ := contracts.NewYearnVault(common.HexToAddress(vaultAddress), ethereum.GetRPC(chainID))
+	balance, err := yearnVault.BalanceOf(nil, common.HexToAddress(userAddress))
 	if err != nil {
 		logs.Error(err, `Error getting balance`, err)
 		return nil, err

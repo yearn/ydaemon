@@ -5,8 +5,6 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -34,14 +32,14 @@ func FetchPartnersFromFiles(chainID uint64) {
 		partner.FullName = partnerFromFile.FullName
 		partner.Description = partnerFromFile.Description
 		partner.StartDate = partnerFromFile.StartDate
-		partner.Treasury = addresses.ToMixedcase(partnerFromFile.Treasury)
+		partner.Treasury = partnerFromFile.Treasury
 		partner.RetiredTreasury = partnerFromFile.RetiredTreasury
 		partner.Wrappers = make([]TExternalPartnersWrapper, len(partnerFromFile.Wrappers))
 		for i, v := range partnerFromFile.Wrappers {
 			if v.Vault != `` {
-				partner.Wrappers[i].Vault = addresses.ToMixedcase(v.Vault)
+				partner.Wrappers[i].Vault = v.Vault
 			}
-			partner.Wrappers[i].Wrapper = addresses.ToMixedcase(v.Wrapper)
+			partner.Wrappers[i].Wrapper = v.Wrapper
 			partner.Wrappers[i].Name = v.Name
 			partner.Wrappers[i].Type = v.Type
 		}
@@ -51,7 +49,7 @@ func FetchPartnersFromFiles(chainID uint64) {
 	// To provide faster access to the data, we index the mapping by the vault address, aka
 	// {[vaultAddress]: TPartners} if we were working with JS/TS
 	if partnersByAddress[chainID] == nil {
-		partnersByAddress[chainID] = make(map[common.MixedcaseAddress]*TPartners)
+		partnersByAddress[chainID] = make(map[string]*TPartners)
 		partnersByName[chainID] = make(map[string]*TPartners)
 	}
 	for _, partner := range allPartners {

@@ -17,7 +17,7 @@ func (y Controller) GetAllPartners(c *gin.Context) {
 			if _, ok := allPartners[chainID]; !ok {
 				allPartners[chainID] = make(map[string]*TPartners)
 			}
-			allPartners[chainID][partner.Treasury.Address().Hex()] = partner
+			allPartners[chainID][partner.Treasury] = partner
 		}
 	}
 	c.JSON(http.StatusOK, allPartners)
@@ -38,7 +38,7 @@ func (y Controller) GetPartners(c *gin.Context) {
 	}
 	allPartnersAsHex := make(map[string]*TPartners)
 	for address, partner := range partners {
-		allPartnersAsHex[address.Address().Hex()] = partner
+		allPartnersAsHex[address] = partner
 	}
 	c.JSON(http.StatusOK, allPartnersAsHex)
 }

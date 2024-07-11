@@ -66,6 +66,10 @@ func NewRouter() *gin.Engine {
 		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
 		** will return the vaults for all chains.
 		******************************************************************************************/
+		router.GET(`vaults/all-no-cache`, func(ctx *gin.Context) {
+			result := c.GetIsYearn(ctx)
+			ctx.JSON(http.StatusOK, result)
+		})
 		router.GET(`vaults/all`, func(ctx *gin.Context) {
 			if result, found := CACHE.Get(ctx.Request.URL.String()); found {
 				ctx.JSON(http.StatusOK, result)

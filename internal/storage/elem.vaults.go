@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -137,7 +138,7 @@ func ListVaults(chainID uint64) (asMap map[common.Address]models.TVault, asSlice
 	**********************************************************************************************/
 	safeSyncMap(_vaultsSyncMap, chainID).Range(func(key, value interface{}) bool {
 		vault := value.(models.TVault)
-		if (vault.Address == common.Address{}) {
+		if addresses.Equals(vault.Address, common.Address{}) {
 			return true
 		}
 		asMap[vault.Address] = vault

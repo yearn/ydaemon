@@ -66,5 +66,5 @@ func IsRegistryDisabled(chainID uint64, registryAddress common.Address) bool {
 			return registry.Tag == "DISABLED"
 		}
 	}
-	return true
+	return false
 }

@@ -635,6 +635,9 @@ func IndexNewStrategies(
 		** being indexed. If they are, it skips to the next vault. If they are not, it marks them as being
 		** indexed to prevent duplicate work.
 		**************************************************************************************************/
+		if env.IsRegistryDisabled(chainID, vault.RegistryAddress) {
+			continue
+		}
 		if _, ok := _strategiesAlreadyIndexingForVaults[chainID].Load(vault.Address); ok {
 			continue
 		}

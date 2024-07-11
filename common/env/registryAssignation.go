@@ -58,3 +58,13 @@ func IsRegistryFromPoolTogether(chainID uint64, registryAddress common.Address) 
 		common.HexToAddress(`0x0c379e9b71ba7079084ada0d1c1aeb85d24dfd39`),
 	)
 }
+
+func IsRegistryDisabled(chainID uint64, registryAddress common.Address) bool {
+	registries := CHAINS[chainID].Registries
+	for _, registry := range registries {
+		if registry.Address.Hex() == registryAddress.Hex() {
+			return registry.Tag == "DISABLED"
+		}
+	}
+	return false
+}

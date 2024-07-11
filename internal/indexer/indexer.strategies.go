@@ -546,7 +546,7 @@ func indexStrategyWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	shouldUseSlowIndexer := true
+	shouldUseSlowIndexer := false
 
 	if shouldUseSlowIndexer {
 		for {

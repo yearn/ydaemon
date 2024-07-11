@@ -528,65 +528,48 @@ func indexStrategyWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	shouldUseSlowIndexer := false
 
-	if shouldUseSlowIndexer {
-		for {
-			lastBlock := filterNewStrategies(
-				chainID,
-				vault,
-				lastSyncedBlock,
-				nil,
-				wg,
-				isDone,
-			)
-			isDone = true
-			lastSyncedBlock = lastBlock
-			time.Sleep(1 * time.Hour)
-		}
-	} else {
-		for {
-			client, err := ethereum.GetWSClient(chainID, true)
-			if err != nil {
-				/**********************************************************************************************
-				** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
-				** latest block. This is a fallback method in case the WS connection is not available.
-				** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
-				** function under certain conditions while avoiding multiple calls to the same function.
-				**********************************************************************************************/
-				for {
-					lastBlock := filterNewStrategies(
-						chainID,
-						vault,
-						lastSyncedBlock,
-						nil,
-						wg,
-						isDone,
-					)
-					isDone = true
-					lastSyncedBlock = lastBlock
-					time.Sleep(1 * time.Hour)
-				}
+	for {
+		client, err := ethereum.GetWSClient(chainID, true)
+		if err != nil {
+			/**********************************************************************************************
+			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
+			** latest block. This is a fallback method in case the WS connection is not available.
+			** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
+			** function under certain conditions while avoiding multiple calls to the same function.
+			**********************************************************************************************/
+			for {
+				lastBlock := filterNewStrategies(
+					chainID,
+					vault,
+					lastSyncedBlock,
+					nil,
+					wg,
+					isDone,
+				)
+				isDone = true
+				lastSyncedBlock = lastBlock
+				time.Sleep(1 * time.Hour)
 			}
+		}
 
-			lastSyncedBlock, shouldRetry, err = watchNewStrategies(
-				client,
-				chainID,
-				vault,
-				lastSyncedBlock,
-				wg,
-				isDone,
-			)
-			isDone = true
-			if err != nil {
-				logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-			}
-			if shouldRetry {
-				time.Sleep(10 * time.Minute)
-				continue
-			}
-			break
+		lastSyncedBlock, shouldRetry, err = watchNewStrategies(
+			client,
+			chainID,
+			vault,
+			lastSyncedBlock,
+			wg,
+			isDone,
+		)
+		isDone = true
+		if err != nil {
+			logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
+		if shouldRetry {
+			time.Sleep(10 * time.Minute)
+			continue
+		}
+		break
 	}
 }
 
@@ -597,11 +580,17 @@ func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[string]models.TStrategy) {
+	shouldSkipIndexing := true
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
 	}
 
 	if chainID == 100 {
+		historicalStrategiesMap, _ = storage.ListStrategies(chainID)
+		return historicalStrategiesMap
+	}
+
+	if shouldSkipIndexing {
 		historicalStrategiesMap, _ = storage.ListStrategies(chainID)
 		return historicalStrategiesMap
 	}

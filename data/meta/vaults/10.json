@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-11T17:34:02.783856+02:00",
+	"lastUpdate": "2024-07-11T19:09:37.871589+02:00",
 	"version": {
 		"major": 0,
 		"minor": 5,
-		"patch": 0
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -265,7 +265,7 @@
 		"0x0128e1d15ed9f0c8572967825ef46309bda39836": {
 			"address": "0x0128e1d15ed9f0c8572967825ef46309bda39836",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.1",
@@ -306,7 +306,7 @@
 				"inclusion": {
 					"isSet": true,
 					"isYearn": false,
-					"isYearnJuiced": false,
+					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
@@ -883,7 +883,7 @@
 		"0x03e6010193c595ec168756af700479d1aff76895": {
 			"address": "0x03e6010193c595ec168756af700479d1aff76895",
 			"token": "0x9e31214db6931727b7d63a0d2b6236db455c0965",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -923,7 +923,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -1502,7 +1502,7 @@
 		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
 			"address": "0x06ed7c67755344548fafe1822bee365c4208a57f",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -1542,7 +1542,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -2764,7 +2764,7 @@
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 			"token": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -2804,7 +2804,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -5899,7 +5899,7 @@
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
 			"token": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -5939,7 +5939,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -6001,7 +6001,7 @@
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
 			"token": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -6041,7 +6041,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -6311,7 +6311,7 @@
 		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
 			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -6351,7 +6351,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -7131,7 +7131,7 @@
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -7171,7 +7171,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -7692,7 +7692,7 @@
 		"0x32adfc6170344f848a8c0efe68dad93e5b6964aa": {
 			"address": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
 			"token": "0x6077177d4c41e114780d9901c9b5c784841c523f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -7732,7 +7732,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -7743,7 +7743,7 @@
 		"0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac": {
 			"address": "0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.1",
@@ -7784,7 +7784,7 @@
 				"inclusion": {
 					"isSet": true,
 					"isYearn": false,
-					"isYearnJuiced": false,
+					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
@@ -8001,7 +8001,7 @@
 		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
 			"address": "0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -8041,7 +8041,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -8922,7 +8922,7 @@
 		"0x3a58df70f9204bedcd6aee2b51582eb77fe30e02": {
 			"address": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
 			"token": "0x4b9e26a02121a1c541403a611b542965bd4b68ce",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -8962,7 +8962,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -9177,7 +9177,7 @@
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
 			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
 			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -9217,7 +9217,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -10259,7 +10259,7 @@
 			"version": "3.0.1",
 			"activation": 56658972,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -10268,7 +10268,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -10297,7 +10297,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},
@@ -10355,7 +10355,7 @@
 		"0x42908891cbc13301c910b4e71055431bf134aaa0": {
 			"address": "0x42908891cbc13301c910b4e71055431bf134aaa0",
 			"token": "0x04d521e2c414e6d898c6f2599fdd863edf49e247",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -10395,7 +10395,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -11324,7 +11324,7 @@
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
 			"address": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
 			"token": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -11364,7 +11364,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -12650,7 +12650,7 @@
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -12690,7 +12690,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -12701,7 +12701,7 @@
 		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
 			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -12741,7 +12741,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -13160,7 +13160,7 @@
 		"0x54303f18161d9870b0fc66b88b0b129e8e5ff505": {
 			"address": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
 			"token": "0x3cc20a6795c4b57d9817399f68e83e71c8626580",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -13200,7 +13200,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -17045,7 +17045,7 @@
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
 			"token": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -17085,7 +17085,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -17816,7 +17816,7 @@
 			"version": "3.0.1",
 			"activation": 56658848,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -17825,7 +17825,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -17854,7 +17854,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},
@@ -18014,7 +18014,7 @@
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -18054,7 +18054,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -21190,7 +21190,7 @@
 		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -21230,7 +21230,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -21547,7 +21547,7 @@
 		"0x8df66d28914084f44c4046783810cbad662fa633": {
 			"address": "0x8df66d28914084f44c4046783810cbad662fa633",
 			"token": "0x8dd3bf71ef18dd88869d128bde058c9d8c270176",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -21587,7 +21587,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -21700,7 +21700,7 @@
 		"0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d": {
 			"address": "0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.1",
@@ -21741,7 +21741,7 @@
 				"inclusion": {
 					"isSet": true,
 					"isYearn": false,
-					"isYearnJuiced": false,
+					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
@@ -22159,7 +22159,7 @@
 		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
 			"address": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -22199,7 +22199,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -22312,7 +22312,7 @@
 		"0x91e646449a3105e9091e882c9a9a7a81950eebb8": {
 			"address": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
 			"token": "0x81cec323bf8c4164c66ec066f53cc053a535f03d",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -22352,7 +22352,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -22414,7 +22414,7 @@
 		"0x92f1e6d904f21c05074952bbad51d91fd9f8730f": {
 			"address": "0x92f1e6d904f21c05074952bbad51d91fd9f8730f",
 			"token": "0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2",
-			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -24212,7 +24212,7 @@
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -24252,7 +24252,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -25181,7 +25181,7 @@
 		"0xa823ef7df6392800569946c6c1dec0e34356ef18": {
 			"address": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
 			"token": "0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -25221,7 +25221,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -25597,7 +25597,7 @@
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
 			"address": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
 			"token": "0x3f35705479d9d77c619b2aac9dd7a64e57151506",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -25637,7 +25637,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -26825,7 +26825,7 @@
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -26865,7 +26865,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -27590,7 +27590,7 @@
 		"0xb64ce1c06af365424060e2720df46997a4fd3a0a": {
 			"address": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
 			"token": "0x02203f2351e7ac6ab5051205172d3f772db7d814",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -27630,7 +27630,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -28355,7 +28355,7 @@
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
 			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
 			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -28395,7 +28395,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -28967,7 +28967,7 @@
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -29007,7 +29007,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -31746,7 +31746,7 @@
 			"version": "3.0.1",
 			"activation": 56594532,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -31755,7 +31755,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -31784,7 +31784,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},
@@ -32207,7 +32207,7 @@
 			"version": "3.0.1",
 			"activation": 56594548,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -32216,7 +32216,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -32245,7 +32245,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},
@@ -33333,7 +33333,7 @@
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -33373,7 +33373,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -36310,7 +36310,7 @@
 		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
 			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -36350,7 +36350,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -36463,7 +36463,7 @@
 		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
 			"address": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.0",
@@ -36503,7 +36503,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -37024,7 +37024,7 @@
 		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
 			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
 			"token": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.0",
@@ -37064,7 +37064,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -37285,7 +37285,7 @@
 			"version": "3.0.1",
 			"activation": 56658942,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -37294,7 +37294,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -37323,7 +37323,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},
@@ -37948,7 +37948,7 @@
 			"version": "3.0.1",
 			"activation": 56210378,
 			"chainID": 137,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -37957,7 +37957,7 @@
 			"lastTotalAssets": null,
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -37986,7 +37986,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				}
 			}
 		},

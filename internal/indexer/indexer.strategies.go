@@ -580,7 +580,7 @@ func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[string]models.TStrategy) {
-	shouldSkipIndexing := true
+	shouldSkipIndexing := false
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
 	}

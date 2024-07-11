@@ -520,7 +520,7 @@ func indexNewVaultsWrapper(
 				)
 				isDone = true
 				lastSyncedBlock = lastBlock
-				time.Sleep(1 * time.Minute)
+				time.Sleep(1 * time.Hour)
 			}
 		}
 		lastSyncedBlock, shouldRetry, err = watchNewVaults(

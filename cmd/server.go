@@ -51,8 +51,8 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetIsYearn)
-		// router.GET(`vaults`, cache.CachePage(store, 10*time.Minute, c.GetIsYearn))
+		// router.GET(`vaults`, c.GetIsYearn)
+		router.GET(`vaults`, cache.CachePage(store, 1*time.Minute, c.GetIsYearn))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
@@ -160,18 +160,18 @@ func NewRouter() *gin.Engine {
 	// Prices API section
 	{
 		c := prices.Controller{}
-		router.GET(`prices/all`, cache.CachePage(store, 10*time.Minute, c.GetAllPrices))
-		router.GET(`:chainID/prices/all`, cache.CachePage(store, 10*time.Minute, c.GetPrices))
-		router.GET(`:chainID/prices/:address`, cache.CachePage(store, 10*time.Minute, c.GetPrice))
-		router.GET(`:chainID/prices/some/:addresses`, cache.CachePage(store, 10*time.Minute, c.GetSomePricesForChain))
-		router.GET(`:chainID/prices/all/details`, cache.CachePage(store, 10*time.Minute, c.GetAllPricesWithDetails))
+		router.GET(`prices/all`, cache.CachePage(store, 1*time.Minute, c.GetAllPrices))
+		router.GET(`:chainID/prices/all`, cache.CachePage(store, 1*time.Minute, c.GetPrices))
+		router.GET(`:chainID/prices/:address`, cache.CachePage(store, 1*time.Minute, c.GetPrice))
+		router.GET(`:chainID/prices/some/:addresses`, cache.CachePage(store, 1*time.Minute, c.GetSomePricesForChain))
+		router.GET(`:chainID/prices/all/details`, cache.CachePage(store, 1*time.Minute, c.GetAllPricesWithDetails))
 
 		/******************************************************************************************
 		** Retrieve some/all prices based on some specific criteria. This is chain agnostic and
 		** will return the prices for all chains.
 		******************************************************************************************/
-		router.GET(`prices/some/:addresses`, cache.CachePage(store, 10*time.Minute, c.GetSomePrices))
-		router.POST(`prices/some`, cache.CachePage(store, 10*time.Minute, c.GetSomePostPrices))
+		router.GET(`prices/some/:addresses`, cache.CachePage(store, 1*time.Minute, c.GetSomePrices))
+		router.POST(`prices/some`, cache.CachePage(store, 1*time.Minute, c.GetSomePostPrices))
 
 	}
 

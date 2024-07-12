@@ -43,6 +43,20 @@ func GetPricePerShare(name string, contractAddress common.Address) ethereum.Call
 		Name:     name,
 	}
 }
+func GetConvertPricePerShare(name string, contractAddress common.Address, value *big.Int) ethereum.Call {
+	parsedData, err := YearnVaultV3ABI.Pack("convertToAssets", value)
+	if err != nil {
+		logs.Error("Error packing YearnVaultV3ABI convertToAssets", err)
+	}
+	return ethereum.Call{
+		Target:   contractAddress,
+		Abi:      YearnVaultV3ABI,
+		Method:   `convertToAssets`,
+		CallData: parsedData,
+		Name:     name,
+	}
+}
+
 func GetAPIVersion(name string, contractAddress common.Address) ethereum.Call {
 	parsedData, err := YearnVaultABI.Pack("apiVersion")
 	if err != nil {

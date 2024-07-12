@@ -37,244 +37,256 @@ func fetchTokensBasicInformations(
 	toSkip []common.Address,
 	curveFactoryPoolMap map[string][]common.Address,
 ) (sliceOfTokens []models.TERC20Token) {
-	/**********************************************************************************************
-	** The first step is to prepare the multicall, connecting to the multicall instance and
-	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
-	**********************************************************************************************/
-	caller := ethereum.MulticallClientForChainID[chainID]
-	calls := []ethereum.Call{}
-	for _, tokenAddress := range tokens {
-		if helpers.Contains(toSkip, tokenAddress) {
-			continue
+	chunkSize := 50
+	chunks := [][]common.Address{}
+	for i := 0; i < len(tokens); i += chunkSize {
+		end := i + chunkSize
+		if end > len(tokens) {
+			end = len(tokens)
 		}
-		calls = append(calls, multicalls.GetName(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetSymbol(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetDecimals(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetAsset(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetPoolFromLpToken(tokenAddress.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, tokenAddress))
-		calls = append(calls, multicalls.GetCompoundUnderlying(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetAaveV1Underlying(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetAaveV2Underlying(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetCurveMinter(tokenAddress.Hex(), tokenAddress))
-		calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin0`, tokenAddress, big.NewInt(0)))
-		calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin1`, tokenAddress, big.NewInt(1)))
+		chunks = append(chunks, tokens[i:end])
 	}
 
-	/**********************************************************************************************
-	** Then we can proceed the responses. We will create a new relatedTokensList to be able to know
-	** which token to fetch then (ex: for aDAI, we also need to fetch the DAI token).
-	** Nb: A special case is for Ethereum coin, which is defaulted as address 0xEeeee....EEeE.
-	**********************************************************************************************/
-	relatedTokensList := []common.Address{}
-	response := multicalls.Perform(chainID, calls, nil)
-	for _, tokenAddress := range tokens {
-		if helpers.Contains(toSkip, tokenAddress) {
-			continue
-		}
-		if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
-			sliceOfTokens = append(sliceOfTokens, models.TERC20Token{
-				Address:  tokenAddress,
-				Name:     `Ethereum`,
-				Symbol:   `ETH`,
-				Decimals: 18,
-				ChainID:  chainID,
-			})
-			continue
-		}
-		rawName := response[tokenAddress.Hex()+`name`]
-		rawSymbol := response[tokenAddress.Hex()+`symbol`]
-		rawDecimals := response[tokenAddress.Hex()+`decimals`]
-		rawYearnVaultToken := response[tokenAddress.Hex()+`token`]
-		rawYearnVaultAsset := response[tokenAddress.Hex()+`asset`]
-		rawPoolFromLpToken := response[tokenAddress.Hex()+`get_pool_from_lp_token`]
-		rawCurveCoinMinterToken := response[tokenAddress.Hex()+`minter`]
-		rawCUnderlying := response[tokenAddress.Hex()+`underlying`]
-		rawAV1Underlying := response[tokenAddress.Hex()+`underlyingAssetAddress`]
-		rawAV2Underlying := response[tokenAddress.Hex()+`UNDERLYING_ASSET_ADDRESS`]
-		rawCurveCoin0 := response[tokenAddress.Hex()+`_coin0coins`]
-		rawCurveCoin1 := response[tokenAddress.Hex()+`_coin1coins`]
-
-		/******************************************************************************************
-		** Preparing our new ERC20Token object
-		******************************************************************************************/
-		newToken := models.TERC20Token{
-			Address:                   tokenAddress,
-			Name:                      helpers.DecodeString(rawName),
-			DisplayName:               helpers.DecodeString(rawName),
-			Symbol:                    helpers.DecodeString(rawSymbol),
-			DisplaySymbol:             helpers.DecodeString(rawSymbol),
-			Decimals:                  helpers.DecodeUint64(rawDecimals),
-			UnderlyingTokensAddresses: []common.Address{},
-			Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + tokenAddress.Hex() + `/logo-128.png`,
-			ChainID:                   chainID,
-		}
-
-		/******************************************************************************************
-		** Checking if the token is a Yearn Vault. We can determined that if we got a valid
-		** response from the `token` RPC call.
-		** If so, we set the token type to `Yearn Vault`, we fetch the Coins from the pool and we
-		** add the coins to the newToken UnderlyingTokensAddresses.
-		** We can also add the coins to the relatedTokensList, so we can fetch their information
-		** later.
-		******************************************************************************************/
-		isV2YearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
-		isV3YearnVault := rawYearnVaultAsset != nil && helpers.DecodeAddress(rawYearnVaultAsset) != common.Address{}
-		if isV2YearnVault || isV3YearnVault {
-			vault, ok := storage.GetVaultFromRegistry(chainID, tokenAddress)
-			if !ok {
-				newToken.Type = models.TokenTypeStandardVault
-			} else {
-				newToken.Type = vault.Type
+	for _, chunk := range chunks {
+		/**********************************************************************************************
+		** The first step is to prepare the multicall, connecting to the multicall instance and
+		** preparing the array of calls to send. All calls for all tokens will be send in a single
+		** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+		**********************************************************************************************/
+		caller := ethereum.MulticallClientForChainID[chainID]
+		calls := []ethereum.Call{}
+		for _, tokenAddress := range chunk {
+			if helpers.Contains(toSkip, tokenAddress) {
+				continue
 			}
-			if isV2YearnVault {
-				coin := helpers.DecodeAddress(rawYearnVaultToken)
+			calls = append(calls, multicalls.GetName(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetSymbol(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetDecimals(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetToken(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetAsset(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetPoolFromLpToken(tokenAddress.Hex(), env.CHAINS[chainID].Curve.RegistryAddress, tokenAddress))
+			calls = append(calls, multicalls.GetCompoundUnderlying(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetAaveV1Underlying(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetAaveV2Underlying(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetCurveMinter(tokenAddress.Hex(), tokenAddress))
+			calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin0`, tokenAddress, big.NewInt(0)))
+			calls = append(calls, multicalls.GetCurveCoin(tokenAddress.Hex()+`_coin1`, tokenAddress, big.NewInt(1)))
+		}
+
+		/**********************************************************************************************
+		** Then we can proceed the responses. We will create a new relatedTokensList to be able to know
+		** which token to fetch then (ex: for aDAI, we also need to fetch the DAI token).
+		** Nb: A special case is for Ethereum coin, which is defaulted as address 0xEeeee....EEeE.
+		**********************************************************************************************/
+		relatedTokensList := []common.Address{}
+		response := multicalls.Perform(chainID, calls, nil)
+		for _, tokenAddress := range chunk {
+			if helpers.Contains(toSkip, tokenAddress) {
+				continue
+			}
+			if addresses.Equals(tokenAddress, `0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`) {
+				sliceOfTokens = append(sliceOfTokens, models.TERC20Token{
+					Address:  tokenAddress,
+					Name:     `Ethereum`,
+					Symbol:   `ETH`,
+					Decimals: 18,
+					ChainID:  chainID,
+				})
+				continue
+			}
+			rawName := response[tokenAddress.Hex()+`name`]
+			rawSymbol := response[tokenAddress.Hex()+`symbol`]
+			rawDecimals := response[tokenAddress.Hex()+`decimals`]
+			rawYearnVaultToken := response[tokenAddress.Hex()+`token`]
+			rawYearnVaultAsset := response[tokenAddress.Hex()+`asset`]
+			rawPoolFromLpToken := response[tokenAddress.Hex()+`get_pool_from_lp_token`]
+			rawCurveCoinMinterToken := response[tokenAddress.Hex()+`minter`]
+			rawCUnderlying := response[tokenAddress.Hex()+`underlying`]
+			rawAV1Underlying := response[tokenAddress.Hex()+`underlyingAssetAddress`]
+			rawAV2Underlying := response[tokenAddress.Hex()+`UNDERLYING_ASSET_ADDRESS`]
+			rawCurveCoin0 := response[tokenAddress.Hex()+`_coin0coins`]
+			rawCurveCoin1 := response[tokenAddress.Hex()+`_coin1coins`]
+
+			/******************************************************************************************
+			** Preparing our new ERC20Token object
+			******************************************************************************************/
+			newToken := models.TERC20Token{
+				Address:                   tokenAddress,
+				Name:                      helpers.DecodeString(rawName),
+				DisplayName:               helpers.DecodeString(rawName),
+				Symbol:                    helpers.DecodeString(rawSymbol),
+				DisplaySymbol:             helpers.DecodeString(rawSymbol),
+				Decimals:                  helpers.DecodeUint64(rawDecimals),
+				UnderlyingTokensAddresses: []common.Address{},
+				Icon:                      env.BASE_ASSET_URL + strconv.FormatUint(chainID, 10) + `/` + tokenAddress.Hex() + `/logo-128.png`,
+				ChainID:                   chainID,
+			}
+
+			/******************************************************************************************
+			** Checking if the token is a Yearn Vault. We can determined that if we got a valid
+			** response from the `token` RPC call.
+			** If so, we set the token type to `Yearn Vault`, we fetch the Coins from the pool and we
+			** add the coins to the newToken UnderlyingTokensAddresses.
+			** We can also add the coins to the relatedTokensList, so we can fetch their information
+			** later.
+			******************************************************************************************/
+			isV2YearnVault := rawYearnVaultToken != nil && helpers.DecodeAddress(rawYearnVaultToken) != common.Address{}
+			isV3YearnVault := rawYearnVaultAsset != nil && helpers.DecodeAddress(rawYearnVaultAsset) != common.Address{}
+			if isV2YearnVault || isV3YearnVault {
+				vault, ok := storage.GetVaultFromRegistry(chainID, tokenAddress)
+				if !ok {
+					newToken.Type = models.TokenTypeStandardVault
+				} else {
+					newToken.Type = vault.Type
+				}
+				if isV2YearnVault {
+					coin := helpers.DecodeAddress(rawYearnVaultToken)
+					if (coin != common.Address{}) {
+						relatedTokensList = append(relatedTokensList, coin)
+						newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+					}
+				} else {
+					coin := helpers.DecodeAddress(rawYearnVaultAsset)
+					if (coin != common.Address{}) {
+						relatedTokensList = append(relatedTokensList, coin)
+						newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+					}
+				}
+			}
+			if newToken.Category == `` && (isV2YearnVault || isV3YearnVault) {
+				newToken.Category = `yVault`
+			}
+
+			/******************************************************************************************
+			** Checking if the token is a Curve LP token. We can determined that if we got a valid
+			** response from the `get_pool_from_lp_token` RPC call.
+			** If so, we set the token type to `Curve LP`, we fetch the Coins from the pool and we
+			** add the coins to the newToken UnderlyingTokensAddresses.
+			** We can also add the coins to the relatedTokensList, so we can fetch their information
+			** later.
+			******************************************************************************************/
+			isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != common.Address{}
+			if isCurveLpToken {
+				newToken.Type = models.TokenTypeCurveLP
+				curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(
+					env.CHAINS[chainID].Curve.RegistryAddress,
+					caller.Client,
+				)
+				poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
+				for _, coin := range poolCoins {
+					if (coin != common.Address{}) {
+						relatedTokensList = append(relatedTokensList, coin)
+						newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+					}
+				}
+			}
+			if newToken.Category == `` && isCurveLpToken {
+				newToken.Category = `Curve`
+			}
+
+			/******************************************************************************************
+			** Checking if the token is a Compound token. We can determined that if we got a valid
+			** response from the `underlying` RPC call.
+			** If so, we set the token type to `Compound` and we add the coin we got as response for
+			** this RPC call in the newToken UnderlyingTokensAddresses.
+			** We can also add the coins to the relatedTokensList, so we can fetch it's information
+			** later.
+			******************************************************************************************/
+			isCToken := rawCUnderlying != nil && helpers.DecodeAddress(rawCUnderlying) != common.Address{}
+			if isCToken {
+				newToken.Type = models.TokenTypeCompound
+				coin := helpers.DecodeAddress(rawCUnderlying)
 				if (coin != common.Address{}) {
 					relatedTokensList = append(relatedTokensList, coin)
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
-			} else {
-				coin := helpers.DecodeAddress(rawYearnVaultAsset)
+			}
+
+			/******************************************************************************************
+			** Checking if the token is a AAVE V1 token. We can determined that if we got a valid
+			** response from the `underlyingAssetAddress` RPC call.
+			** If so, we set the token type to `AAVE V1` and we add the coin we got as response for
+			** this RPC call in the newToken UnderlyingTokensAddresses.
+			** We can also add the coins to the relatedTokensList, so we can fetch it's information
+			** later.
+			******************************************************************************************/
+			isAV1Token := rawAV1Underlying != nil && helpers.DecodeAddress(rawAV1Underlying) != common.Address{}
+			if isAV1Token {
+				newToken.Type = models.TokenTypeAaveV1
+				coin := helpers.DecodeAddress(rawAV1Underlying)
 				if (coin != common.Address{}) {
 					relatedTokensList = append(relatedTokensList, coin)
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
 			}
-		}
-		if newToken.Category == `` && (isV2YearnVault || isV3YearnVault) {
-			newToken.Category = `yVault`
-		}
 
-		/******************************************************************************************
-		** Checking if the token is a Curve LP token. We can determined that if we got a valid
-		** response from the `get_pool_from_lp_token` RPC call.
-		** If so, we set the token type to `Curve LP`, we fetch the Coins from the pool and we
-		** add the coins to the newToken UnderlyingTokensAddresses.
-		** We can also add the coins to the relatedTokensList, so we can fetch their information
-		** later.
-		******************************************************************************************/
-		isCurveLpToken := rawPoolFromLpToken != nil && helpers.DecodeAddress(rawPoolFromLpToken) != common.Address{}
-		if isCurveLpToken {
-			newToken.Type = models.TokenTypeCurveLP
-			curvePoolCaller, _ := contracts.NewCurvePoolRegistryCaller(
-				env.CHAINS[chainID].Curve.RegistryAddress,
-				caller.Client,
-			)
-			poolCoins, _ := curvePoolCaller.GetCoins(&bind.CallOpts{}, helpers.DecodeAddress(rawPoolFromLpToken))
-			for _, coin := range poolCoins {
+			/******************************************************************************************
+			** Checking if the token is a AAVE V2 token. We can determined that if we got a valid
+			** response from the `UNDERLYING_ASSET_ADDRESS` RPC call.
+			** If so, we set the token type to `AAVE V2` and we add the coin we got as response for
+			** this RPC call in the newToken UnderlyingTokensAddresses.
+			** We can also add the coins to the relatedTokensList, so we can fetch it's information
+			** later.
+			******************************************************************************************/
+			isAV2Token := rawAV2Underlying != nil && helpers.DecodeAddress(rawAV2Underlying) != common.Address{}
+			if isAV2Token {
+				newToken.Type = models.TokenTypeAaveV2
+				coin := helpers.DecodeAddress(rawAV2Underlying)
 				if (coin != common.Address{}) {
 					relatedTokensList = append(relatedTokensList, coin)
 					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
 				}
 			}
-		}
-		if newToken.Category == `` && isCurveLpToken {
-			newToken.Category = `Curve`
-		}
 
-		/******************************************************************************************
-		** Checking if the token is a Compound token. We can determined that if we got a valid
-		** response from the `underlying` RPC call.
-		** If so, we set the token type to `Compound` and we add the coin we got as response for
-		** this RPC call in the newToken UnderlyingTokensAddresses.
-		** We can also add the coins to the relatedTokensList, so we can fetch it's information
-		** later.
-		******************************************************************************************/
-		isCToken := rawCUnderlying != nil && helpers.DecodeAddress(rawCUnderlying) != common.Address{}
-		if isCToken {
-			newToken.Type = models.TokenTypeCompound
-			coin := helpers.DecodeAddress(rawCUnderlying)
-			if (coin != common.Address{}) {
-				relatedTokensList = append(relatedTokensList, coin)
-				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
-			}
-		}
-
-		/******************************************************************************************
-		** Checking if the token is a AAVE V1 token. We can determined that if we got a valid
-		** response from the `underlyingAssetAddress` RPC call.
-		** If so, we set the token type to `AAVE V1` and we add the coin we got as response for
-		** this RPC call in the newToken UnderlyingTokensAddresses.
-		** We can also add the coins to the relatedTokensList, so we can fetch it's information
-		** later.
-		******************************************************************************************/
-		isAV1Token := rawAV1Underlying != nil && helpers.DecodeAddress(rawAV1Underlying) != common.Address{}
-		if isAV1Token {
-			newToken.Type = models.TokenTypeAaveV1
-			coin := helpers.DecodeAddress(rawAV1Underlying)
-			if (coin != common.Address{}) {
-				relatedTokensList = append(relatedTokensList, coin)
-				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
-			}
-		}
-
-		/******************************************************************************************
-		** Checking if the token is a AAVE V2 token. We can determined that if we got a valid
-		** response from the `UNDERLYING_ASSET_ADDRESS` RPC call.
-		** If so, we set the token type to `AAVE V2` and we add the coin we got as response for
-		** this RPC call in the newToken UnderlyingTokensAddresses.
-		** We can also add the coins to the relatedTokensList, so we can fetch it's information
-		** later.
-		******************************************************************************************/
-		isAV2Token := rawAV2Underlying != nil && helpers.DecodeAddress(rawAV2Underlying) != common.Address{}
-		if isAV2Token {
-			newToken.Type = models.TokenTypeAaveV2
-			coin := helpers.DecodeAddress(rawAV2Underlying)
-			if (coin != common.Address{}) {
-				relatedTokensList = append(relatedTokensList, coin)
-				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
-			}
-		}
-
-		/******************************************************************************************
-		** Checking if the token is a Curve LP token. We can determined that if we got a valid
-		** response from the `minter` RPC call.
-		** This is used for some of the Curve LP tokens.
-		******************************************************************************************/
-		isCurveLPCoin := rawCurveCoinMinterToken != nil && helpers.DecodeAddress(rawCurveCoinMinterToken) != common.Address{}
-		if isCurveLPCoin {
-			newToken.Type = models.TokenTypeCurveLP
-			minter := helpers.DecodeAddress(rawCurveCoinMinterToken)
-			coins, ok := curveFactoryPoolMap[minter.Hex()]
-			if ok {
-				for _, coin := range coins {
-					relatedTokensList = append(relatedTokensList, coin)
-					newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+			/******************************************************************************************
+			** Checking if the token is a Curve LP token. We can determined that if we got a valid
+			** response from the `minter` RPC call.
+			** This is used for some of the Curve LP tokens.
+			******************************************************************************************/
+			isCurveLPCoin := rawCurveCoinMinterToken != nil && helpers.DecodeAddress(rawCurveCoinMinterToken) != common.Address{}
+			if isCurveLPCoin {
+				newToken.Type = models.TokenTypeCurveLP
+				minter := helpers.DecodeAddress(rawCurveCoinMinterToken)
+				coins, ok := curveFactoryPoolMap[minter.Hex()]
+				if ok {
+					for _, coin := range coins {
+						relatedTokensList = append(relatedTokensList, coin)
+						newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin)
+					}
 				}
 			}
-		}
-		if newToken.Category == `` && isCurveLPCoin {
-			newToken.Category = `Curve`
+			if newToken.Category == `` && isCurveLPCoin {
+				newToken.Category = `Curve`
+			}
+
+			/******************************************************************************************
+			** Checking if the token is a Curve LP token. We can determined that if we got a valid
+			** response from the `coin` RPC call.
+			** This is used for some of the Curve LP tokens.
+			******************************************************************************************/
+			isCurveLPCoinFromCoins := (rawCurveCoin0 != nil && helpers.DecodeAddress(rawCurveCoin0) != common.Address{}) && (rawCurveCoin1 != nil && helpers.DecodeAddress(rawCurveCoin1) != common.Address{})
+			if isCurveLPCoinFromCoins {
+				newToken.Type = models.TokenTypeCurveLP
+				coin0 := helpers.DecodeAddress(rawCurveCoin0)
+				coin1 := helpers.DecodeAddress(rawCurveCoin1)
+				relatedTokensList = append(relatedTokensList, coin0)
+				relatedTokensList = append(relatedTokensList, coin1)
+				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin0)
+				newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin1)
+			}
+
+			sliceOfTokens = append(sliceOfTokens, newToken)
+			toSkip = append(toSkip, tokenAddress)
 		}
 
-		/******************************************************************************************
-		** Checking if the token is a Curve LP token. We can determined that if we got a valid
-		** response from the `coin` RPC call.
-		** This is used for some of the Curve LP tokens.
-		******************************************************************************************/
-		isCurveLPCoinFromCoins := (rawCurveCoin0 != nil && helpers.DecodeAddress(rawCurveCoin0) != common.Address{}) && (rawCurveCoin1 != nil && helpers.DecodeAddress(rawCurveCoin1) != common.Address{})
-		if isCurveLPCoinFromCoins {
-			newToken.Type = models.TokenTypeCurveLP
-			coin0 := helpers.DecodeAddress(rawCurveCoin0)
-			coin1 := helpers.DecodeAddress(rawCurveCoin1)
-			relatedTokensList = append(relatedTokensList, coin0)
-			relatedTokensList = append(relatedTokensList, coin1)
-			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin0)
-			newToken.UnderlyingTokensAddresses = append(newToken.UnderlyingTokensAddresses, coin1)
+		if len(relatedTokensList) > 0 {
+			sliceOfTokens = append(sliceOfTokens, fetchTokensBasicInformations(
+				chainID,
+				helpers.UniqueArrayAddress(relatedTokensList),
+				helpers.UniqueArrayAddress(toSkip),
+				curveFactoryPoolMap,
+			)...)
 		}
-
-		sliceOfTokens = append(sliceOfTokens, newToken)
-		toSkip = append(toSkip, tokenAddress)
-	}
-
-	if len(relatedTokensList) > 0 {
-		sliceOfTokens = append(sliceOfTokens, fetchTokensBasicInformations(
-			chainID,
-			helpers.UniqueArrayAddress(relatedTokensList),
-			helpers.UniqueArrayAddress(toSkip),
-			curveFactoryPoolMap,
-		)...)
 	}
 
 	return sliceOfTokens
@@ -308,7 +320,6 @@ func findAllTokens(
 	for _, token := range newtokenMap {
 		newMap[token.Address] = token
 	}
-
 	return newMap
 }
 

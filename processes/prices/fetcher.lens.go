@@ -2,7 +2,6 @@ package prices
 
 import (
 	"math/big"
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -27,7 +26,6 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 
 	lensAddress := env.CHAINS[chainID].LensContract.Address
 	if (lensAddress == common.Address{}) {
-		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
 		return priceMap
 	}
 

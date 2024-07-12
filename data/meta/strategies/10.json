@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-12T09:24:44.803535+02:00",
+	"lastUpdate": "2024-07-12T14:37:57.804288+02:00",
 	"version": {
 		"major": 0,
-		"minor": 7,
-		"patch": 21
+		"minor": 8,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -426,7 +426,7 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "74603002481",
+			"lastTotalDebt": "74568306997",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "54226570836",
 			"lastPerformanceFee": "0",
@@ -1794,6 +1794,30 @@
 			"protocols": [
 				"Velodrome Finance"
 			]
+		},
+		"0x6dB00ED5be8Efc49fB9945DAbcc983F969768F3C_0x682dF61222A3FB64F3e88fEf41cE21499aDcc647": {
+			"address": "0x6db00ed5be8efc49fb9945dabcc983f969768f3c",
+			"vaultAddress": "0x682df61222a3fb64f3e88fef41ce21499adcc647",
+			"name": "",
+			"vaultVersion": "0.4.5",
+			"activation": 105847134,
+			"chainID": 10,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1687347967",
+			"lastDebtRatio": "10000",
+			"isRetired": true,
+			"displayName": "",
+			"description": "",
+			"protocols": null
 		},
 		"0x74B3d347eB1a3a086EEec6d929356FbE26E3F2CA_0xB3532518DACA20Fd14e539B0eD6C0De5C59Fd2DE": {
 			"address": "0x74b3d347eb1a3a086eeec6d929356fbe26e3f2ca",

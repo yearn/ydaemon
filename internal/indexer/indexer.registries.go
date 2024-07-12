@@ -555,7 +555,6 @@ func indexNewVaultsWrapper(
 **************************************************************************************************/
 func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]models.TVaultsFromRegistry) {
 	shouldSkipIndexing := false
-	logs.Success(`Indexer Daemon has started for chain ` + strconv.FormatUint(chainID, 10))
 	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical vaults are indexed
 
 	if chainID == 100 {

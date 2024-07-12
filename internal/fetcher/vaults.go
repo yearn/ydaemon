@@ -27,42 +27,63 @@ func fetchVaultsBasicInformations(
 	chainID uint64,
 	vaultMap map[common.Address]models.TVault,
 ) (vaultList []models.TVault) {
-	/**********************************************************************************************
-	** The first step is to prepare the multicall, connecting to the multicall instance and
-	** preparing the array of calls to send. All calls for all vaults will be send in a single
-	** multicall and will later be accessible via a concatened string `vaultAddress + methodName`.
-	**********************************************************************************************/
-	calls := []ethereum.Call{}
+	chunkSize := 50
+	vaultList = []models.TVault{}
+	vaultSlice := []models.TVault{}
 	for _, vault := range vaultMap {
-		if vault.Metadata.IsRetired {
-			continue
-		}
-		versionMajor := strings.Split(vault.Version, `.`)[0]
-		if versionMajor == `3` {
-			calls = append(calls, getV3VaultCalls(vault)...)
-		} else {
-			calls = append(calls, getV2VaultCalls(vault)...)
-		}
+		vaultSlice = append(vaultSlice, vault)
 	}
 
 	/**********************************************************************************************
-	** Then we can proceed the responses. Some date will already be available from the list of
-	** tokens, so we can already play with that.
+	** We prepare the data by chunking the vaults to avoid overloading the multicall.
 	**********************************************************************************************/
-	response := multicalls.Perform(chainID, calls, nil)
-	for _, vault := range vaultMap {
-		if vault.Metadata.IsRetired {
-			continue
+	chunks := [][]models.TVault{}
+	for i := 0; i < len(vaultSlice); i += chunkSize {
+		end := i + chunkSize
+		if end > len(vaultSlice) {
+			end = len(vaultSlice)
 		}
-		newVault := vault
-		newVault.ChainID = chainID
-		versionMajor := strings.Split(vault.Version, `.`)[0]
-		if versionMajor == `3` {
-			newVault = handleV3VaultCalls(vault, response)
-		} else {
-			newVault = handleV2VaultCalls(vault, response)
+		chunks = append(chunks, vaultSlice[i:end])
+	}
+
+	for _, chunk := range chunks {
+		/**********************************************************************************************
+		** The first step is to prepare the multicall, connecting to the multicall instance and
+		** preparing the array of calls to send. All calls for all vaults will be send in a single
+		** multicall and will later be accessible via a concatened string `vaultAddress + methodName`.
+		**********************************************************************************************/
+		calls := []ethereum.Call{}
+		for _, vault := range chunk {
+			if vault.Metadata.IsRetired {
+				continue
+			}
+			versionMajor := strings.Split(vault.Version, `.`)[0]
+			if versionMajor == `3` {
+				calls = append(calls, getV3VaultCalls(vault)...)
+			} else {
+				calls = append(calls, getV2VaultCalls(vault)...)
+			}
 		}
-		vaultList = append(vaultList, newVault)
+
+		/**********************************************************************************************
+		** Then we can proceed the responses. Some date will already be available from the list of
+		** tokens, so we can already play with that.
+		**********************************************************************************************/
+		response := multicalls.Perform(chainID, calls, nil)
+		for _, vault := range chunk {
+			if vault.Metadata.IsRetired {
+				continue
+			}
+			newVault := vault
+			newVault.ChainID = chainID
+			versionMajor := strings.Split(vault.Version, `.`)[0]
+			if versionMajor == `3` {
+				newVault = handleV3VaultCalls(vault, response)
+			} else {
+				newVault = handleV2VaultCalls(vault, response)
+			}
+			vaultList = append(vaultList, newVault)
+		}
 	}
 
 	return vaultList

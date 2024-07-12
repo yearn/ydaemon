@@ -40,13 +40,12 @@ type TStrategy struct {
 	KeepCVX        *bigNumber.Int `json:"keepCVX"`
 
 	// Mutable elements. They will often change
-	LastTotalDebt            *bigNumber.Int `json:"lastTotalDebt"`            // Used to filter strategies and by the FE
-	LastTotalLoss            *bigNumber.Int `json:"lastTotalLoss"`            // Used by the FE
-	LastTotalGain            *bigNumber.Int `json:"lastTotalGain"`            // Used by the FE
-	LastPerformanceFee       *bigNumber.Int `json:"lastPerformanceFee"`       // Used for APR calculation and by the FE
-	LastReport               *bigNumber.Int `json:"lastReport"`               // Used by the FE
-	LastDebtRatio            *bigNumber.Int `json:"lastDebtRatio,omitempty"`  // Only > 0.2.2 | Used by the APY process
-	LastEstimatedTotalAssets *bigNumber.Int `json:"lastEstimatedTotalAssets"` //Used by the risk framework
+	LastTotalDebt      *bigNumber.Int `json:"lastTotalDebt"`           // Used to filter strategies and by the FE
+	LastTotalLoss      *bigNumber.Int `json:"lastTotalLoss"`           // Used by the FE
+	LastTotalGain      *bigNumber.Int `json:"lastTotalGain"`           // Used by the FE
+	LastPerformanceFee *bigNumber.Int `json:"lastPerformanceFee"`      // Used for APR calculation and by the FE
+	LastReport         *bigNumber.Int `json:"lastReport"`              // Used by the FE
+	LastDebtRatio      *bigNumber.Int `json:"lastDebtRatio,omitempty"` // Only > 0.2.2 | Used by the APY process
 
 	// Manual elements. They are manually set by the team
 	IsRetired   bool     `json:"isRetired"`   // If false, will bypass the `IsActive` variable

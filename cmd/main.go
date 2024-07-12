@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strconv"
 	"sync"
 	"time"
 
@@ -19,7 +18,6 @@ func processServer(chainID uint64) {
 	defer setStatusForChainID(chainID, `OK`)
 
 	scheduler := gocron.NewScheduler(time.UTC)
-	logs.Info(`Getting WS client for chain ` + strconv.FormatUint(chainID, 10))
 	ethereum.GetWSClient(chainID, true)
 	ethereum.InitBlockTimestamp(chainID)
 	internal.InitializeV2(chainID, nil, scheduler)
@@ -32,7 +30,6 @@ func processServer(chainID uint64) {
 **************************************************************************************************/
 func main() {
 	initFlags()
-	summonDaemonsForAllChains(chains)
 	go ListenToSignals()
 
 	var wg sync.WaitGroup

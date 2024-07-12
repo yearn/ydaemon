@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -27,9 +26,6 @@ func (y Controller) GetStrategy(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid strategy")
 		return
 	}
-	// Always show details
 	newStrategy := NewStrategy().AssignTStrategy(strategy)
-	newStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
-
 	c.JSON(http.StatusOK, newStrategy)
 }

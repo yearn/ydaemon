@@ -19,22 +19,18 @@ var initializedCounter = 0
 func TriggerTgMessage(message string) {
 	telegramToken, ok := os.LookupEnv("TELEGRAM_BOT")
 	if !ok {
-		logs.Error(`TELEGRAM_BOT environment variable not set`)
 		return
 	}
 	telegramChatStr, ok := os.LookupEnv("TELEGRAM_CHAT")
 	if !ok {
-		logs.Error(`TELEGRAM_CHAT environment variable not set`)
 		return
 	}
 	telegramChat, err := strconv.ParseInt(telegramChatStr, 10, 64)
 	if err != nil {
-		logs.Error(`TELEGRAM_CHAT environment variable is not a valid chat ID`)
 		return
 	}
 	bot, err := tgbotapi.NewBotAPI(telegramToken)
 	if err != nil {
-		logs.Error(`Error initializing Telegram bot: ` + err.Error())
 		return
 	}
 	m, err := bot.Send(tgbotapi.NewMessage(telegramChat, message))
@@ -47,6 +43,7 @@ func TriggerTgMessage(message string) {
 func TriggerInitializedStatus(chainID uint64) {
 	initializedCounter++
 	TriggerTgMessage(`✅ - yDaemon initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
+	logs.Success(`✅ - yDaemon initialized for chain ` + strconv.FormatUint(chainID, 10) + ` (` + strconv.Itoa(initializedCounter) + `/` + strconv.Itoa(len(chains)) + `)`)
 }
 
 func ListenToSignals() {

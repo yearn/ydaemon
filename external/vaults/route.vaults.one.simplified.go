@@ -82,9 +82,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	**       it skips the current iteration of the loop.
 	**
 	** 4. It appends the current strategies to the vault
-	**
-	** This effectively populates the 'Strategies' field for the vault with the appropriate strategies
-	** and computes the risk score.
 	**************************************************************************************************/
 	vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(newVault.Address))
 	newVault.Strategies = []TStrategy{}

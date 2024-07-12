@@ -85,14 +85,7 @@ func GetBlockTime(chainID uint64, blockNumber uint64) (blockTime uint64) {
 		client := RPC[chainID]
 		block, err := client.HeaderByNumber(context.Background(), big.NewInt(int64(blockNumber)))
 		if err != nil {
-			logs.
-				Capture(`warn`, `impossible to retrieve block `+strconv.FormatUint(blockNumber, 10)+` on chain `+strconv.FormatUint(chainID, 10)).
-				SetEntity(`block`).
-				SetExtra(`error`, err.Error()).
-				SetTag(`chainID`, strconv.FormatUint(chainID, 10)).
-				SetTag(`rpcURI`, GetRPCURI(chainID)).
-				SetTag(`blockNumber`, strconv.FormatUint(blockNumber, 10)).
-				Send()
+			logs.Warning(`impossible to retrieve block ` + strconv.FormatUint(blockNumber, 10) + ` on chain ` + strconv.FormatUint(chainID, 10))
 			return 0
 		}
 		store.StoreBlockTime(chainID, blockNumber, block.Time)

@@ -8,7 +8,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -16,7 +15,6 @@ import (
 func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDir := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
-	stratDet := getQuery(c, `strategiesDetails`) == `withDetails`
 	stratCon := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
 	if !ok {
@@ -42,22 +40,12 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
 		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			var externalStrategy TStrategy
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(stratCon) {
 				continue
 			}
 
-			if stratDet {
-				externalStrategy = strategyWithDetails
-				externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
-			} else {
-				externalStrategy = strategyWithDetails
-			}
-			newVault.Strategies = append(newVault.Strategies, externalStrategy)
-		}
-		if stratDet {
-			newVault.RiskScore = newVault.ComputeRiskScore()
+			newVault.Strategies = append(newVault.Strategies, strategyWithDetails)
 		}
 
 		data = append(data, newVault)

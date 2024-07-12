@@ -6,7 +6,6 @@ import (
 
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
@@ -22,7 +21,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	if wg != nil {
 		defer wg.Done()
 	}
-	go InitializeBribes(chainID)
 
 	/** 🔵 - Yearn *************************************************************************************
 	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
@@ -127,11 +125,4 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 		apr.ComputeChainAPR(chainID)
 	})
 	scheduler.StartAsync()
-}
-
-func InitializeBribes(chainID uint64) {
-	allRewardsAdded := events.HandleRewardsAdded(chainID, 0, nil)
-	for _, reward := range allRewardsAdded {
-		indexer.SetInRewardAddedMap(chainID, reward)
-	}
 }

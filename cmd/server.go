@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
-	"github.com/yearn/ydaemon/external/tokensList"
 	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
 )
@@ -124,10 +123,6 @@ func NewRouter() *gin.Engine {
 		c := tokens.Controller{}
 		router.GET(`tokens/all`, c.GetAllTokens)
 		router.GET(`:chainID/tokens/all`, c.GetTokens)
-		router.GET(`:chainID/tokenlistbalances/:address`, tokensList.GetYearnTokenList)
-		router.GET(`:chainID/balances/:address`, tokensList.GetYearnTokenList)
-		router.GET(`balances/:address`, tokensList.GetUserBalance)
-		router.GET(`balancesN/:address`, tokensList.GetNewUserBalance)
 	}
 
 	// Prices API section
@@ -146,12 +141,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`prices/some/:addresses`, c.GetSomePrices)
 		router.POST(`prices/some`, c.GetSomePostPrices)
 
-	}
-
-	// WARNING: DEPRECATED
-	// yBribe API section
-	{
-		router.GET(`:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
 	}
 
 	return router

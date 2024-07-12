@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
@@ -113,7 +112,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	** Computing APRS
 	**********************************************************************************************/
 	apr.ComputeChainAPR(chainID)
-	go risk.InitRiskScore(chainID)
 
 	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
 		initDailyBlock.Run(chainID)
@@ -127,8 +125,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)
 		apr.ComputeChainAPR(chainID)
-		go risk.InitRiskScore(chainID)
-
 	})
 	scheduler.StartAsync()
 }

@@ -2,13 +2,11 @@ package vaults
 
 import (
 	"net/http"
-	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -26,7 +24,6 @@ func (y Controller) GetVault(c *gin.Context) {
 	}
 
 	strategiesCondition := selectStrategiesCondition(getQuery(c, "strategiesCondition"))
-	withStrategiesDetails := strings.EqualFold(getQuery(c, "strategiesDetails"), "withDetails")
 	currentVault, ok := storage.GetVault(chainID, address)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid vault")
@@ -41,23 +38,11 @@ func (y Controller) GetVault(c *gin.Context) {
 	vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
 	newVault.Strategies = []TStrategy{}
 	for _, strategy := range vaultStrategies {
-		var externalStrategy TStrategy
 		strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 			continue
 		}
-
-		if withStrategiesDetails {
-			externalStrategy = strategyWithDetails
-			externalStrategy.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
-		} else {
-			externalStrategy = strategyWithDetails
-		}
-		newVault.Strategies = append(newVault.Strategies, externalStrategy)
-	}
-
-	if withStrategiesDetails {
-		newVault.RiskScore = newVault.ComputeRiskScore()
+		newVault.Strategies = append(newVault.Strategies, strategyWithDetails)
 	}
 
 	if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {

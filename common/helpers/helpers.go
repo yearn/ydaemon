@@ -69,13 +69,7 @@ func ReadAllFilesInDir(directory string, suffix string) ([][]byte, []string, err
 		if strings.HasSuffix(outputFileName, suffix) {
 			content, err := os.ReadFile(directory + outputFileName)
 			if err != nil {
-				logs.
-					Capture(`error`, `impossible to read files in `+directory).
-					SetEntity(`files`).
-					SetExtra(`error`, err.Error()).
-					SetTag(`directory`, directory).
-					SetTag(`file`, outputFileName).
-					Send()
+				logs.Error(`error`, `impossible to read files in `+directory)
 				continue
 			}
 			filenames = append(filenames, outputFileName)

@@ -17,33 +17,18 @@ import (
 func fetchCurve(url string) []TCurveFactoriesPoolData {
 	resp, err := http.Get(url)
 	if err != nil {
-		logs.
-			Capture(`error`, `impossible to get curve URL`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to get curve URL`)
 		return []TCurveFactoriesPoolData{}
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		logs.
-			Capture(`error`, `impossible to read curve Get body`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to read curve Get body`)
 		return []TCurveFactoriesPoolData{}
 	}
 	var factories TCurveFactories
 	if err := json.Unmarshal(body, &factories); err != nil {
-		logs.
-			Capture(`error`, `impossible to unmarshal curve Get body`).
-			SetEntity(`prices`).
-			SetExtra(`error`, err.Error()).
-			SetTag(`url`, url).
-			Send()
+		logs.Error(`impossible to unmarshal curve Get body`)
 		return []TCurveFactoriesPoolData{}
 	}
 	return factories.Data.PoolData

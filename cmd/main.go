@@ -32,7 +32,6 @@ func processServer(chainID uint64) {
 **************************************************************************************************/
 func main() {
 	initFlags()
-	summonDaemonsForAllChains(chains)
 	go ListenToSignals()
 
 	var wg sync.WaitGroup

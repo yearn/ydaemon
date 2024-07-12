@@ -83,8 +83,8 @@ func (y Controller) GetIsGimme(c *gin.Context) []TSimplifiedExternalVault {
 }
 
 /**************************************************************************************************
-** GetIsPendle is a gin handler function to retrieve all the vaults matching the pendle category
-** and the inclusion.IsYearn filter.
+** GetIsYearnPendle is a gin handler function to retrieve all the vaults matching the pendle
+** category and the inclusion.IsYearn filter.
 **************************************************************************************************/
 func (y Controller) GetIsYearnPendle(c *gin.Context) []TSimplifiedExternalVault {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -99,5 +99,15 @@ func (y Controller) GetIsYearnPendle(c *gin.Context) []TSimplifiedExternalVault 
 func (y Controller) GetIsOptimism(c *gin.Context) []TSimplifiedExternalVault {
 	return getVaults(c, func(vault models.TVault) bool {
 		return vault.Metadata.Inclusion.IsYearn && vault.ChainID == 10
+	})
+}
+
+/**************************************************************************************************
+** GetIsYearnPoolTogether is a gin handler function to retrieve all the vaults matching the
+** inclusion.isPoolTogether filter.
+**************************************************************************************************/
+func (y Controller) GetIsYearnPoolTogether(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsPoolTogether
 	})
 }

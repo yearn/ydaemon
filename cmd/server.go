@@ -60,6 +60,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`vaults/retired`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetRetired))
 		router.GET(`vaults/pendle`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnPendle))
 		router.GET(`vaults/optimism`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsOptimism))
+		router.GET(`vaults/pooltogether`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnPoolTogether))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and

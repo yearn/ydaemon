@@ -36,7 +36,7 @@ func loadVaultsFromJson(chainID uint64) TJsonVaultStorage {
 	decoder := json.NewDecoder(file)
 	err = decoder.Decode(&vaults)
 	if err != nil {
-		logs.Error("Failed to decode vaults JSON file: " + err.Error())
+		logs.Error("Failed to decode vaults JSON file on chainID " + chainIDStr + ": " + err.Error())
 		return TJsonVaultStorage{}
 	}
 

@@ -14177,7 +14177,7 @@
 			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -14192,13 +14192,13 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
-				"displayName": "",
+				"category": "Pendle Autorollover",
+				"displayName": "yPT-rsENA Yearn Auto-Rolling Pendle PT",
 				"displaySymbol": "",
-				"description": "",
+				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -22307,9 +22307,9 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0xd789d846c1eed55161dbd135d7bf02450a836ffa",
@@ -22318,13 +22318,13 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
-				"displayName": "",
+				"category": "Pendle Autorollover",
+				"displayName": "yPT-pzETH Yearn Auto-Rolling Pendle PT",
 				"displaySymbol": "",
-				"description": "",
+				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

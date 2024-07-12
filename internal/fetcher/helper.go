@@ -136,7 +136,6 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	calls := []ethereum.Call{}
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetStrategies(strategyKey, strat.VaultAddress, strat.Address, strat.VaultVersion))
-	calls = append(calls, multicalls.GetStategyEstimatedTotalAsset(strategyKey, strat.Address, strat.VaultVersion))
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetStategyKeepCRV(strategyKey, strat.Address, strat.VaultVersion))
@@ -167,7 +166,6 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 	calls = append(calls, multicalls.GetV3Strategies(strategyKey, strat.VaultAddress, strat.Address, strat.VaultVersion))
 	calls = append(calls, multicalls.GetPerformanceFee(strategyKey, strat.Address))
 	calls = append(calls, multicalls.GetTotalAssets(strat.VaultAddress.Hex(), strat.VaultAddress))
-	calls = append(calls, multicalls.GetTotalAssets(strategyKey, strat.Address))
 	if time.Since(lastUpdate).Hours() > 1 || shouldRefresh {
 		// If the last strat update was more than 1 hour ago, we will do a partial update
 		calls = append(calls, multicalls.GetStategyKeepCRV(strategyKey, strat.Address, strat.VaultVersion))
@@ -285,9 +283,7 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	rawName := response[strategyKey+`name`]
 	rawDoHealthCheck := response[strategyKey+`doHealthCheck`]
 	rawEmergencyExit := response[strategyKey+`emergencyExit`]
-	rawEstimatedTotalAssets := response[strategyKey+`estimatedTotalAssets`]
 
-	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
 	if strat.VaultVersion == `0.2.2` && len(rawStrategies) == 8 {
 		strat.LastReport = bigNumber.SetInt(rawStrategies[4].(*big.Int))
 		strat.LastTotalDebt = bigNumber.SetInt(rawStrategies[5].(*big.Int))
@@ -353,12 +349,9 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	rawKeepCVX := response[strategyKey+`keepCVX`]
 	rawName := response[strategyKey+`name`]
 	rawVaultTotalAssets := response[strat.VaultAddress.Hex()+`totalAssets`]
-	rawEstimatedTotalAssets := response[strategyKey+`totalAssets`]
 	rawDoHealthCheck := response[strategyKey+`doHealthCheck`]
 	rawIsShutdown := response[strategyKey+`isShutdown`]
 	rawPerformanceFee := response[strategyKey+`performanceFee`]
-
-	strat.LastEstimatedTotalAssets = helpers.DecodeBigInt(rawEstimatedTotalAssets)
 
 	if (len(rawPerformanceFee) > 0) && (len(rawStrategies) > 0) {
 		strat.LastPerformanceFee = helpers.DecodeBigInt(rawPerformanceFee)

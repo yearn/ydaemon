@@ -97,6 +97,17 @@ func Info(info ...interface{}) {
 	spew.Printf("%s %-17s %s %s\n", t, colorMagenta(str0), colorBlue(str1), colorBlue(info))
 }
 
+// SameLineInfo function logs an info message
+func SameLineInfo(info ...interface{}) string {
+	if !isLogLevelAtLeast("INFO") {
+		return ""
+	}
+
+	str1 := `[--]`
+
+	return spew.Sprintf("%35s   %-42s", colorMagenta(str1), colorBlue(info))
+}
+
 // Debug function logs a debug message
 func Debug(debug ...interface{}) {
 	if !isLogLevelAtLeast("DEBUG") {

@@ -4,7 +4,6 @@ import (
 	"math/big"
 
 	"github.com/yearn/ydaemon/common/contracts"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -76,7 +75,7 @@ func handleV05Vault(chainID uint64, value *contracts.YRegistryV5NewVault) models
 		Type:            models.TokenTypeStandardVault,
 		Kind:            kind,
 	}
-	logs.Info(`Got V5 vault ` + value.VaultAddress.Hex() + ` from registry ` + value.Raw.Address.Hex())
+	// logs.Info(`Got V5 vault ` + value.VaultAddress.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
 }
 func handleV06Vault_Gamma(chainID uint64, value *contracts.YRegistryGammaNewGammaLPCompounder) models.TVaultsFromRegistry {
@@ -91,7 +90,7 @@ func handleV06Vault_Gamma(chainID uint64, value *contracts.YRegistryGammaNewGamm
 		Type:            models.TokenTypeStandardVault,
 		Kind:            kind,
 	}
-	logs.Info(`Got Gammma (V6) vault ` + value.Strategy.Hex() + ` from registry ` + value.Raw.Address.Hex())
+	// logs.Info(`Got Gammma (V6) vault ` + value.Strategy.Hex() + ` from registry ` + value.Raw.Address.Hex())
 	return newVault
 }
 

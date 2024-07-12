@@ -2,15 +2,13 @@ package internal
 
 import (
 	"sync"
-	"time"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/internal/events"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
@@ -19,12 +17,31 @@ import (
 
 var STRATLIST = []models.TStrategy{}
 
-func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Scheduler) {
-	if wg != nil {
-		defer wg.Done()
-	}
-	go InitializeBribes(chainID)
+func initStakingPools(chainID uint64, scheduler *gocron.Scheduler) {
+	/**********************************************************************************************
+	** Start the Staking Indexing process and schedule it to run every hour. This indexer
+	** will fetch the relevent data for the OP Staking contracts as well as thoose responsible
+	** for the APR calculations.
+	**********************************************************************************************/
+	indexer.IndexStakingPools(chainID)
+	indexer.IndexVeYFIStakingContract(chainID)
+	indexer.IndexJuicedStakingContract(chainID)
+	indexer.IndexV3StakingContract(chainID)
+	logs.Success(chainID, `-`, `InitStakingPools ✅`)
 
+	scheduler.Every(1).Hours().WaitForSchedule().Do(func() {
+		indexer.IndexStakingPools(chainID)
+		indexer.IndexVeYFIStakingContract(chainID)
+		indexer.IndexJuicedStakingContract(chainID)
+		indexer.IndexV3StakingContract(chainID)
+	})
+}
+
+func initVaults(chainID uint64, scheduler *gocron.Scheduler) (
+	map[common.Address]models.TVaultsFromRegistry,
+	map[common.Address]models.TVault,
+	map[common.Address]models.TERC20Token,
+) {
 	/** 🔵 - Yearn *************************************************************************************
 	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
 	** - The registries vaults
@@ -34,108 +51,68 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
 	registries := indexer.IndexNewVaults(chainID)
+	logs.Success(chainID, `-`, `InitRegistries ✅`)
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
-
-	/**********************************************************************************************
-	** Start the OP Staking Indexing process and schedule it to run every hour. This indexer
-	** will fetch the relevent data for the OP Staking contracts as well as thoose responsible
-	** for the APR calculations.
-	**********************************************************************************************/
-	indexer.IndexStakingPools(chainID)
-	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
-		indexer.IndexStakingPools(chainID)
-	})
-
-	/**********************************************************************************************
-	** Start the VEYFI Staking Indexing process and schedule it to run every hour. This indexer
-	** will fetch the relevent data for the VEYFI Staking contracts as well as thoose responsible
-	** for the APR calculations.
-	**********************************************************************************************/
-	indexer.IndexVeYFIStakingContract(chainID)
-	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
-		indexer.IndexVeYFIStakingContract(chainID)
-	})
-
-	/**********************************************************************************************
-	** Start the Juiced Staking Indexing process and schedule it to run every hour. This indexer
-	** will fetch the relevent data for the Juiced Staking contracts as well as thoose responsible
-	** for the APR calculations.
-	**********************************************************************************************/
-	indexer.IndexJuicedStakingContract(chainID)
-	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
-		indexer.IndexJuicedStakingContract(chainID)
-	})
-
-	/**********************************************************************************************
-	** Start the V3 Staking Indexing process and schedule it to run every hour. This indexer
-	** will fetch the relevent data for the V3 Staking contracts as well as thoose responsible
-	** for the APR calculations.
-	**********************************************************************************************/
-	indexer.IndexV3StakingContract(chainID)
-	scheduler.Every(1).Hours().StartAt(time.Now().Add(time.Minute * 10)).Do(func() {
-		indexer.IndexV3StakingContract(chainID)
-	})
-	logs.Success(chainID, `-`, `Index StakingPools ✅`)
-
-	/**********************************************************************************************
-	** Continue indexing with Strategies and APR
-	**********************************************************************************************/
-	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
-	logs.Success(chainID, `-`, `Index New Strategies ✅`)
+	logs.Success(chainID, `-`, `InitVaults ✅`)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
-	logs.Success(chainID, `-`, `Retrieve All Tokens ✅`)
+	logs.Success(chainID, `-`, `InitTokens ✅`)
+
+	scheduler.Every(2).Hours().WaitForSchedule().Do(func() {
+		indexer.IndexYearnXPoolTogetherVaults(chainID)
+		registries := indexer.IndexNewVaults(chainID)
+		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+		fetcher.RetrieveAllTokens(chainID, vaultMap)
+	})
+	return registries, vaultMap, tokenMap
+}
+
+func initStrategies(chainID uint64, scheduler *gocron.Scheduler, vaultMap map[common.Address]models.TVault) {
+	/** 🔵 - Yearn *************************************************************************************
+	** initStrategies is only called on initialization. It's first job is to retrieve the strategies
+	** and then to schedule the retrieval of the strategies every 3 hours
+	**************************************************************************************************/
+	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
+	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	logs.Success(chainID, `-`, `InitStrategies ✅`)
+
+	scheduler.Every(3).Hours().WaitForSchedule().Do(func() {
+		strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
+		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+	})
+}
+
+func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Scheduler) {
+	if wg != nil {
+		defer wg.Done()
+	}
+
+	_, vaultMap, tokenMap := initVaults(chainID, scheduler)
+
+	initStakingPools(chainID, scheduler)
+
+	initStrategies(chainID, scheduler, vaultMap)
 
 	/**********************************************************************************************
 	** Retrieving prices and strategies for all the given token and strategies on that chain.
 	** This is done in parallel to speed up the process and reduce the time it takes to complete.
 	** The scheduler is used to retrieve the strategies every 15 minutes.
-	**********************************************************************************************/
-	underWg := sync.WaitGroup{}
-	underWg.Add(2)
-	go func() {
-		prices.RetrieveAllPrices(chainID, tokenMap)
-		logs.Success(chainID, `-`, `Retrieve All Prices ✅`)
-		underWg.Done()
-	}() // Retrieve the prices for all tokens
-
-	go func() {
-		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-		logs.Success(chainID, `-`, `Retrieve All Strategies ✅`)
-		underWg.Done()
-	}() // Retrieve the strategies for all chains
-	underWg.Wait()
-
-	// scheduler.Every(2).Hour().StartAt(time.Now().Add(time.Hour * 2)).Do(func() {
-	// 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-	// })
-
-	/**********************************************************************************************
 	** Computing APRS
 	**********************************************************************************************/
+	prices.RetrieveAllPrices(chainID, tokenMap)
+	logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
 	apr.ComputeChainAPR(chainID)
-	go risk.InitRiskScore(chainID)
-
-	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
-		initDailyBlock.Run(chainID)
-	})
-
-	scheduler.Every(15).Minute().WaitForSchedule().Do(func() {
-		indexer.IndexVeYFIStakingContract(chainID)
-		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
-		fetcher.RetrieveAllTokens(chainID, vaultMap)
-
+	logs.Success(chainID, `-`, `ComputeChainAPR ✅`)
+	scheduler.Every(30).Minute().WaitForSchedule().Do(func() {
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)
 		apr.ComputeChainAPR(chainID)
-		go risk.InitRiskScore(chainID)
+	})
 
+	/**********************************************************************************************
+	** Do some background work
+	**********************************************************************************************/
+	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
+		initDailyBlock.Run(chainID)
 	})
 	scheduler.StartAsync()
-}
-
-func InitializeBribes(chainID uint64) {
-	allRewardsAdded := events.HandleRewardsAdded(chainID, 0, nil)
-	for _, reward := range allRewardsAdded {
-		indexer.SetInRewardAddedMap(chainID, reward)
-	}
 }

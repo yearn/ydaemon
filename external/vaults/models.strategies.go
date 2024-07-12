@@ -18,11 +18,10 @@ type TExternalStrategyDetails struct {
 
 // TStrategy contains all the information useful about the strategies currently active in this vault.
 type TStrategy struct {
-	Address     string                      `json:"address"`
-	Name        string                      `json:"name"`
-	Description string                      `json:"description,omitempty"`
-	Details     *TExternalStrategyDetails   `json:"details,omitempty"`
-	Risk        *TExternalStrategyRiskScore `json:"risk,omitempty"`
+	Address     string                    `json:"address"`
+	Name        string                    `json:"name"`
+	Description string                    `json:"description,omitempty"`
+	Details     *TExternalStrategyDetails `json:"details,omitempty"`
 }
 
 func NewStrategy() TStrategy {

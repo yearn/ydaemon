@@ -2,7 +2,6 @@ package prices
 
 import (
 	"math/big"
-	"strconv"
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -27,7 +26,6 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 
 	lensAddress := env.CHAINS[chainID].LensContract.Address
 	if (lensAddress == common.Address{}) {
-		logs.Error(`missing a valid Lens Address for chain ` + strconv.FormatUint(chainID, 10))
 		return priceMap
 	}
 
@@ -58,31 +56,50 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 		}
 
 		var allPriceMap sync.Map
-		var wg sync.WaitGroup
-		for _, tokens := range grouped {
-			wg.Add(1)
-			go func(tokens []models.TERC20Token) {
-				defer wg.Done()
+		// var wg sync.WaitGroup
+		// for _, tokens := range grouped {
+		// 	wg.Add(1)
+		// 	go func(tokens []models.TERC20Token) {
+		// 		defer wg.Done()
 
-				for _, token := range tokens {
-					price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
-					if err != nil {
-						logs.Error(err, ethereum.GetRPCURI(chainID))
-						return
-					}
-					if price.Cmp(big.NewInt(0)) > 0 {
-						humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
-						allPriceMap.Store(token.Address, models.TPrices{
-							Address:        token.Address,
-							Price:          bigNumber.SetInt(price),
-							HumanizedPrice: humanizedPrice,
-							Source:         `lens`,
-						})
-					}
+		// 		for _, token := range tokens {
+		// 			price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
+		// 			if err != nil {
+		// 				logs.Error(err, ethereum.GetRPCURI(chainID))
+		// 				return
+		// 			}
+		// 			if price.Cmp(big.NewInt(0)) > 0 {
+		// 				humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
+		// 				allPriceMap.Store(token.Address, models.TPrices{
+		// 					Address:        token.Address,
+		// 					Price:          bigNumber.SetInt(price),
+		// 					HumanizedPrice: humanizedPrice,
+		// 					Source:         `lens`,
+		// 				})
+		// 			}
+		// 		}
+		// 	}(tokens)
+		// }
+		// wg.Wait()
+		for _, tokens := range grouped {
+			for _, token := range tokens {
+				price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
+				if err != nil {
+					logs.Error(err, ethereum.GetRPCURI(chainID))
+					continue
 				}
-			}(tokens)
+				if price.Cmp(big.NewInt(0)) > 0 {
+					humanizedPrice := helpers.ToNormalizedAmount(bigNumber.SetInt(price), 6)
+					allPriceMap.Store(token.Address, models.TPrices{
+						Address:        token.Address,
+						Price:          bigNumber.SetInt(price),
+						HumanizedPrice: humanizedPrice,
+						Source:         `lens`,
+					})
+				}
+			}
 		}
-		wg.Wait()
+
 		allPriceMap.Range(func(key, value interface{}) bool {
 			priceMap[key.(common.Address)] = value.(models.TPrices)
 			return true

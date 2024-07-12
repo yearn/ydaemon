@@ -12,6 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/contracts"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
@@ -23,6 +24,96 @@ import (
 
 var _strategiesAlreadyIndexingForVaults = make(map[uint64]*sync.Map)
 
+/**************************************************************************************************
+** listStrategiesForVault...
+**************************************************************************************************/
+func listStrategiesForVault(
+	chainID uint64,
+	vault models.TVault,
+	wg *sync.WaitGroup,
+	isDone bool,
+) []models.TStrategy {
+	/**********************************************************************************************
+	** As we cannot use the WS connection, we will fallback to the regular RPC connection. This
+	** means that we will need to filter the logs from the lastSyncedBlock to the latest block
+	** every x seconds to check if there are new strategies.
+	**********************************************************************************************/
+	client := ethereum.GetRPC(chainID)
+
+	if !isDone && wg != nil {
+		wg.Done()
+	}
+
+	strategies := []models.TStrategy{}
+	switch vault.Version {
+	case `0.2.2`, `0.3.0`, `0.3.1`, `0.3.2`, `0.3.3`, `0.3.4`, `0.3.5`, `0.4.2`, `0.4.3`:
+		/******************************************************************************************
+		** Vaults versions from 0.2.2 to 0.4.3 are now deprecated and should not be used anymore.
+		** This is only for historical purposes.
+		** The strategies indexer will not run for this version.
+		******************************************************************************************/
+		break
+		currentVault, _ := contracts.NewYvault043(vault.Address, client)
+		for i := 0; i < 10; i++ {
+			indexedStrategy, err := currentVault.WithdrawalQueue(nil, big.NewInt(int64(i)))
+			if addresses.Equals(indexedStrategy, common.Address{}) {
+				break
+			}
+			if err != nil {
+				continue
+			}
+			strategies = append(strategies, models.TStrategy{
+				Address:      indexedStrategy,
+				ChainID:      chainID,
+				VaultVersion: vault.Version,
+				VaultAddress: vault.Address,
+				Activation:   vault.Activation,
+			})
+		}
+	case `0.4.4`, `0.4.5`, `0.4.6`, `0.4.7`:
+		currentVault, _ := contracts.NewYvault043(vault.Address, client)
+		for i := 0; i < 10; i++ {
+			indexedStrategy, err := currentVault.WithdrawalQueue(nil, big.NewInt(int64(i)))
+			if addresses.Equals(indexedStrategy, common.Address{}) {
+				break
+			}
+			if err != nil {
+				continue
+			}
+			strategies = append(strategies, models.TStrategy{
+				Address:      indexedStrategy,
+				ChainID:      chainID,
+				VaultVersion: vault.Version,
+				VaultAddress: vault.Address,
+				Activation:   vault.Activation,
+			})
+		}
+	default:
+		// case `3.0.0`, `3.0.1`, `3.0.2`:
+		currentVault, _ := contracts.NewYvault300(vault.Address, client)
+		for i := 0; i < 10; i++ {
+			indexedStrategy, err := currentVault.DefaultQueue(nil, big.NewInt(int64(i)))
+			if addresses.Equals(indexedStrategy, common.Address{}) {
+				break
+			}
+			if err != nil {
+				continue
+			}
+			strategies = append(strategies, models.TStrategy{
+				Address:      indexedStrategy,
+				ChainID:      chainID,
+				VaultVersion: vault.Version,
+				VaultAddress: vault.Address,
+				Activation:   vault.Activation,
+			})
+		}
+	}
+	return strategies
+}
+
+/**************************************************************************************************
+** filterNewStrategies...
+**************************************************************************************************/
 func filterNewStrategies(
 	chainID uint64,
 	vault models.TVault,
@@ -434,35 +525,17 @@ func watchNewStrategies(
 			}
 		}
 	default:
-		// case `3.0.0`, `3.0.1`:
+		// case `3.0.0`, `3.0.1`, `3.0.2`:
 		currentVault, _ := contracts.NewYvault300(vault.Address, client)
 		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.Yvault300MetaData.GetAbi()
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`StrategyChanged`].ID}}...)
-		// currentBlockNumber, _ := client.BlockNumber(context.Background())
-
-		// for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		// 	chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
-		// 	if chunkEnd > *end {
-		// 		chunkEnd = *end
-		// 		lastBlock = chunkEnd
-		// 	}
-
 		query := goEth.FilterQuery{
 			FromBlock: big.NewInt(int64(vault.Activation)),
 			Addresses: []common.Address{vault.Address},
 			Topics:    topics,
-			// ToBlock: big.NewInt(0).Add(
-			// 	big.NewInt(int64(vault.Activation)),
-			// 	big.NewInt(int64(env.CHAINS[chainID].MaxBlockRange)),
-			// ),
 		}
-		stream, sub, history, err := etherReader.QueryWithHistory(
-			context.Background(),
-			&query,
-			// env.CHAINS[chainID].MaxBlockRange,
-			// currentBlockNumber,
-		)
+		stream, sub, history, err := etherReader.QueryWithHistory(context.Background(), &query)
 		if err != nil {
 			if wg != nil && !isDone {
 				wg.Done()
@@ -546,65 +619,48 @@ func indexStrategyWrapper(
 	** fallback to another method.
 	**********************************************************************************************/
 	shouldRetry := true
-	shouldUseSlowIndexer := false
 
-	if shouldUseSlowIndexer {
-		for {
-			lastBlock := filterNewStrategies(
-				chainID,
-				vault,
-				lastSyncedBlock,
-				nil,
-				wg,
-				isDone,
-			)
-			isDone = true
-			lastSyncedBlock = lastBlock
-			time.Sleep(1 * time.Hour)
-		}
-	} else {
-		for {
-			client, err := ethereum.GetWSClient(chainID, true)
-			if err != nil {
-				/**********************************************************************************************
-				** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
-				** latest block. This is a fallback method in case the WS connection is not available.
-				** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
-				** function under certain conditions while avoiding multiple calls to the same function.
-				**********************************************************************************************/
-				for {
-					lastBlock := filterNewStrategies(
-						chainID,
-						vault,
-						lastSyncedBlock,
-						nil,
-						wg,
-						isDone,
-					)
-					isDone = true
-					lastSyncedBlock = lastBlock
-					time.Sleep(1 * time.Hour)
-				}
+	for {
+		client, err := ethereum.GetWSClient(chainID, true)
+		if err != nil {
+			/**********************************************************************************************
+			** Default method: use the RPC connection to filter the events from the lastSyncedBlock to the
+			** latest block. This is a fallback method in case the WS connection is not available.
+			** It's only triggered if delay is greater than 0, allowing us to try to retry this whole
+			** function under certain conditions while avoiding multiple calls to the same function.
+			**********************************************************************************************/
+			for {
+				lastBlock := filterNewStrategies(
+					chainID,
+					vault,
+					lastSyncedBlock,
+					nil,
+					wg,
+					isDone,
+				)
+				isDone = true
+				lastSyncedBlock = lastBlock
+				time.Sleep(1 * time.Hour)
 			}
+		}
 
-			lastSyncedBlock, shouldRetry, err = watchNewStrategies(
-				client,
-				chainID,
-				vault,
-				lastSyncedBlock,
-				wg,
-				isDone,
-			)
-			isDone = true
-			if err != nil {
-				logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
-			}
-			if shouldRetry {
-				time.Sleep(10 * time.Minute)
-				continue
-			}
-			break
+		lastSyncedBlock, shouldRetry, err = watchNewStrategies(
+			client,
+			chainID,
+			vault,
+			lastSyncedBlock,
+			wg,
+			isDone,
+		)
+		isDone = true
+		if err != nil {
+			logs.Error(`error while indexing New Strategies from vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 		}
+		if shouldRetry {
+			time.Sleep(10 * time.Minute)
+			continue
+		}
+		break
 	}
 }
 
@@ -615,11 +671,12 @@ func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[string]models.TStrategy) {
+	shouldSkipIndexing := false
 	if _, ok := _strategiesAlreadyIndexingForVaults[chainID]; !ok {
 		_strategiesAlreadyIndexingForVaults[chainID] = &sync.Map{}
 	}
 
-	if chainID == 100 {
+	if shouldSkipIndexing {
 		historicalStrategiesMap, _ = storage.ListStrategies(chainID)
 		return historicalStrategiesMap
 	}
@@ -629,6 +686,7 @@ func IndexNewStrategies(
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known vaults for the specified chain ID.
 	**********************************************************************************************/
+	allStrats := []models.TStrategy{}
 	for _, vault := range vaults {
 		/** 🔵 - Yearn *************************************************************************************
 		** This block of code is responsible for checking if the strategies for a given vault are already
@@ -665,9 +723,19 @@ func IndexNewStrategies(
 		** After retrieving the highest block number we can proceed to index new strategies.
 		**************************************************************************************************/
 		wg.Add(1)
-		go indexStrategyWrapper(chainID, vault, highestBlockNumber, &wg)
+		// go indexStrategyWrapper(chainID, vault, highestBlockNumber, &wg)
+		allStrats = append(allStrats, listStrategiesForVault(chainID, vault, &wg, false)...)
 	}
 	wg.Wait()
+
+	for _, strat := range allStrats {
+		if storage.StoreStrategyIfMissing(chainID, strat) {
+			strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
+			fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
+				strategyKey: strat,
+			})
+		}
+	}
 
 	/** 🔵 - Yearn *********************************************************************************
 	** This part is only accessed once, once the `historical` strategies, aka that are already

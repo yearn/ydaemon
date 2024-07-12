@@ -7,13 +7,12 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
-	"github.com/yearn/ydaemon/internal/risk"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
 // GetAllStrategies will, for a given chainID, return a list of all strategies
 func (y Controller) GetAllStrategies(c *gin.Context) {
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `risk.riskScore`)
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `address`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
 	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
 	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
@@ -34,8 +33,6 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}
-			// Always show details
-			strategyWithDetails.Risk = NewRiskScore().AssignTStrategyFromRisk(risk.BuildRiskScore(strategy))
 			data = append(data, strategyWithDetails)
 		}
 	}

@@ -7,7 +7,6 @@ import (
 )
 
 var chains = []uint64{}
-var shouldEnableSentry *bool
 var endBlock *uint64
 var process TProcess
 
@@ -18,13 +17,6 @@ func initFlags() {
 	** Default: All supported chains (1, 10, 137, 250, 8453, 42161)
 	**********************************************************************************************/
 	rawChains := flag.String(`chains`, `1,10,100,137,250,8453,42161`, `List of chain IDs to run yDaemon for: --chains 1,10,100,137,250,8453,42161`)
-
-	/**********************************************************************************************
-	** Flag group: Sentry
-	** Description: Enable Sentry
-	** Default: true
-	**********************************************************************************************/
-	shouldEnableSentry = flag.Bool(`sentry`, true, `Enable Sentry`)
 
 	/**********************************************************************************************
 	** Flag group: BlockNunbers
@@ -46,8 +38,6 @@ func initFlags() {
 
 	logs.Info(`Initializing chains...`)
 	handleChainsInitialization(rawChains)
-	logs.Info(`Initializing Sentry...`)
-	handleSentryInitialization()
 	logs.Info(`Initializing process...`)
 	handleProcessInitialization(rawProcess)
 }

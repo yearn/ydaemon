@@ -2,18 +2,16 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
-	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
+	"github.com/patrickmn/go-cache"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/external/meta"
-	"github.com/yearn/ydaemon/external/partners"
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
-	"github.com/yearn/ydaemon/external/tokensList"
 	"github.com/yearn/ydaemon/external/utils"
 	"github.com/yearn/ydaemon/external/vaults"
 )
@@ -22,11 +20,13 @@ import (
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
+	cachingStore := cache.New(1*time.Minute, 5*time.Minute)
+
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil
 	router := gin.New()
-	pprof.Register(router)
+	// pprof.Register(router)
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
@@ -35,9 +35,9 @@ func NewRouter() *gin.Engine {
 	}
 	router.Use(cors.New(corsConf))
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
-	router.Use(NewRateLimiter(func(c *gin.Context) {
-		c.AbortWithStatus(http.StatusTooManyRequests)
-	}))
+	// router.Use(NewRateLimiter(func(c *gin.Context) {
+	// 	c.AbortWithStatus(http.StatusTooManyRequests)
+	// }))
 
 	// Standard basic route for hello
 	router.GET(`/`, func(ctx *gin.Context) {
@@ -48,33 +48,29 @@ func NewRouter() *gin.Engine {
 	{
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
-		router.GET(`vaults`, c.GetIsYearn)
-
-		/******************************************************************************************
-		** Retrieve some/all vaults based on some specific criteria. This is chain agnostic and
-		** will return the vaults for all chains.
-		******************************************************************************************/
-		router.GET(`vaults/all`, c.GetIsYearn)
-		router.GET(`vaults/underthesea/v2`, c.GetV2)
-		router.GET(`vaults/v2`, c.GetV2IsYearn)
-		router.GET(`vaults/underthesea/v3`, c.GetV3)
-		router.GET(`vaults/v3`, c.GetV3IsYearn)
-		router.GET(`vaults/juiced`, c.GetIsYearnJuiced)
-		router.GET(`vaults/gimme`, c.GetIsGimme)
-		router.GET(`vaults/retired`, c.GetRetired)
-		router.GET(`vaults/pendle`, c.GetIsYearnPendle)
-		router.GET(`vaults/optimism`, c.GetIsOptimism)
+		// router.GET(`vaults`, c.GetIsYearn)
+		router.GET(`vaults`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
+		router.GET(`vaults/all`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
+		router.GET(`vaults/underthesea/v2`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV2))
+		router.GET(`vaults/v2`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV2IsYearn))
+		router.GET(`vaults/underthesea/v3`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV3))
+		router.GET(`vaults/v3`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV3IsYearn))
+		router.GET(`vaults/juiced`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnJuiced))
+		router.GET(`vaults/gimme`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsGimme))
+		router.GET(`vaults/retired`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetRetired))
+		router.GET(`vaults/pendle`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnPendle))
+		router.GET(`vaults/optimism`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsOptimism))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
 		** will return the vaults for a specific chain.
 		******************************************************************************************/
-		router.GET(`:chainID/vaults/all`, c.GetLegacyAllVaults)
-		router.GET(`:chainID/vaults/v2/all`, c.GetLegacyAllV2Vaults)
-		router.GET(`:chainID/vaults/v3/all`, c.GetLegacyAllV3Vaults)
-		router.GET(`:chainID/vaults/juiced/all`, c.GetLegacyAllJuicedVaults)
-		router.GET(`:chainID/vaults/gimme/all`, c.GetLegacyAllGimmeVaults)
-		router.GET(`:chainID/vaults/retired`, c.GetLegacyRetiredVaults)
+		router.GET(`:chainID/vaults/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsYearn))
+		router.GET(`:chainID/vaults/v2/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyV2IsYearn))
+		router.GET(`:chainID/vaults/v3/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyV3IsYearn))
+		router.GET(`:chainID/vaults/juiced/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsYearnJuiced))
+		router.GET(`:chainID/vaults/gimme/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsGimme))
+		router.GET(`:chainID/vaults/retired`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyRetired))
 		router.GET(`:chainID/vaults/some/:addresses`, c.GetLegacySomeVaults)
 
 		/******************************************************************************************
@@ -122,35 +118,11 @@ func NewRouter() *gin.Engine {
 		})
 	}
 
-	// Meta API section
-	{
-		c := meta.Controller{}
-		// Proxy meta protocols
-		router.GET(`api/:chainID/protocols/all`, c.GetMetaProtocols)
-		router.GET(`:chainID/meta/protocols`, c.GetMetaProtocols)
-		router.GET(`api/:chainID/protocols/:name`, c.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocols/:name`, c.GetMetaProtocol)
-		router.GET(`:chainID/meta/protocol/:name`, c.GetMetaProtocol)
-	}
-
-	// Partners API section
-	{
-		c := partners.Controller{}
-		router.GET(`partners/count`, c.CountAllPartners)
-		router.GET(`partners/all`, c.GetAllPartners)
-		router.GET(`:chainID/partners/all`, c.GetPartners)
-		router.GET(`:chainID/partners/:addressOrName`, c.GetPartner)
-	}
-
 	// Tokens API section
 	{
 		c := tokens.Controller{}
 		router.GET(`tokens/all`, c.GetAllTokens)
 		router.GET(`:chainID/tokens/all`, c.GetTokens)
-		router.GET(`:chainID/tokenlistbalances/:address`, tokensList.GetYearnTokenList)
-		router.GET(`:chainID/balances/:address`, tokensList.GetYearnTokenList)
-		router.GET(`balances/:address`, tokensList.GetUserBalance)
-		router.GET(`balancesN/:address`, tokensList.GetNewUserBalance)
 	}
 
 	// Prices API section
@@ -169,12 +141,6 @@ func NewRouter() *gin.Engine {
 		router.GET(`prices/some/:addresses`, c.GetSomePrices)
 		router.POST(`prices/some`, c.GetSomePostPrices)
 
-	}
-
-	// WARNING: DEPRECATED
-	// yBribe API section
-	{
-		router.GET(`:chainID/bribes/newRewardFeed`, utils.GetRewardAdded)
 	}
 
 	return router

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-11T10:48:56.724947+02:00",
+	"lastUpdate": "2024-07-12T14:47:37.208416+02:00",
 	"version": {
 		"major": 0,
-		"minor": 47,
+		"minor": 48,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -9595,6 +9595,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6a5694c1b37ffa30690b6b60d8cf89c937d408ad": {
+			"address": "0x6a5694c1b37ffa30690b6b60d8cf89c937d408ad",
+			"underlyingTokensAddresses": [
+				"0xa3f152837492340daaf201f4dfec6cd73a8a9760"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve COVEYFI Factory yVault",
+			"symbol": "yvCurve-COVEYFI-f",
+			"displayName": "Curve COVEYFI Factory yVault",
+			"displaySymbol": "yvCurve-COVEYFI-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6A5694C1b37fFA30690b6b60D8Cf89c937d408aD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6a7a0481e476827857704b87bdee7922d058cbe4": {
 			"address": "0x6a7a0481e476827857704b87bdee7922d058cbe4",
 			"underlyingTokensAddresses": [
@@ -14712,6 +14728,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xa3ECB6E941e773C6568052A509a04cf455a752ae/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa3f152837492340daaf201f4dfec6cd73a8a9760": {
+			"address": "0xa3f152837492340daaf201f4dfec6cd73a8a9760",
+			"underlyingTokensAddresses": [
+				"0xff71841eefca78a64421db28060855036765c248",
+				"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
+			],
+			"type": "Curve LP",
+			"name": "coveYFI/YFI",
+			"symbol": "COVEYFI",
+			"displayName": "coveYFI/YFI",
+			"displaySymbol": "COVEYFI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa3f152837492340dAAf201F4dFeC6cD73A8a9760/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23645,6 +23678,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xfF709449528B6fB6b88f557F7d93dEce33bca78D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xff71841eefca78a64421db28060855036765c248": {
+			"address": "0xff71841eefca78a64421db28060855036765c248",
+			"underlyingTokensAddresses": [
+				"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
+			],
+			"type": "Yearn Vault",
+			"name": "Cove YFI",
+			"symbol": "coveYFI",
+			"displayName": "Cove YFI",
+			"displaySymbol": "coveYFI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFf71841EeFca78a64421db28060855036765c248/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

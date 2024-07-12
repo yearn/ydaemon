@@ -52,17 +52,6 @@ type TMigration struct {
 	Contract  common.Address `json:"contract,omitempty"`
 }
 
-// TStaking holds some metadata about the staking contract.
-type TStaking struct {
-	Address      common.Address   `json:"address"`
-	VaultAddress common.Address   `json:"vaultAddress"`
-	Available    bool             `json:"available"`
-	Risk         int              `json:"risk"`
-	TVL          float64          `json:"tvl"`
-	Amount       *bigNumber.Float `json:"amount"`
-	Price        *bigNumber.Float `json:"price"`
-}
-
 // TInclusion holds the inclusion of the vault
 type TInclusion struct {
 	IsSet           bool `json:"isSet"`           // If not set, automatic inclusion will be recomputed

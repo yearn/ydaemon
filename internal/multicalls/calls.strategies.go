@@ -16,21 +16,6 @@ var YearnStrategyABI, _ = contracts.StrategyBaseMetaData.GetAbi()
 var YearnStrategyV3ABI, _ = contracts.YStrategyV3MetaData.GetAbi()
 var YearnStrategyVeloABI, _ = contracts.YStrategyVeloMetaData.GetAbi()
 
-func GetStategyEstimatedTotalAsset(name string, contractAddress common.Address, version string) ethereum.Call {
-	parsedData, err := YearnStrategyABI.Pack("estimatedTotalAssets")
-	if err != nil {
-		logs.Error("Error packing YearnStrategyABI estimatedTotalAssets", err)
-	}
-	return ethereum.Call{
-		Target:   contractAddress,
-		Abi:      YearnStrategyABI,
-		Method:   `estimatedTotalAssets`,
-		CallData: parsedData,
-		Name:     name,
-		Version:  version,
-	}
-}
-
 func GetStategyIsActive(name string, contractAddress common.Address, version string) ethereum.Call {
 	parsedData, err := YearnStrategyABI.Pack("isActive")
 	if err != nil {

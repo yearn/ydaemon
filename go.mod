@@ -9,7 +9,6 @@ require (
 	github.com/getsentry/sentry-go v0.25.0
 	github.com/gin-contrib/cors v1.4.0
 	github.com/gin-contrib/gzip v0.0.6
-	github.com/gin-contrib/pprof v1.4.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-co-op/gocron v1.35.0
 	github.com/go-sql-driver/mysql v1.7.1
@@ -18,9 +17,8 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/machinebox/graphql v0.2.2
 	github.com/montanaflynn/stats v0.7.1
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/stretchr/testify v1.8.4
-	github.com/yangxikun/gin-limit-by-key v0.0.0-20190512072151-520697354d5f
-	go.uber.org/ratelimit v0.3.1
 	golang.org/x/time v0.5.0
 	gorm.io/driver/mysql v1.5.1
 	gorm.io/driver/postgres v1.5.2
@@ -29,8 +27,8 @@ require (
 
 require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
-	github.com/benbjohnson/clock v1.3.5 // indirect
 	github.com/bits-and-blooms/bitset v1.9.0 // indirect
+	github.com/bradfitz/gomemcache v0.0.0-20230905024940-24af94b03874 // indirect
 	github.com/btcsuite/btcd/btcec/v2 v2.3.2 // indirect
 	github.com/bytedance/sonic v1.11.3 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20230717121745-296ad89f973d // indirect
@@ -43,6 +41,7 @@ require (
 	github.com/ethereum/c-kzg-4844 v0.3.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
+	github.com/gin-contrib/cache v1.3.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
@@ -51,7 +50,10 @@ require (
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/gomodule/redigo v1.8.9 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
+	github.com/gosuri/uilive v0.0.4 // indirect
+	github.com/gosuri/uiprogress v0.0.1 // indirect
 	github.com/holiman/uint256 v1.2.3 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect
@@ -66,15 +68,18 @@ require (
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
+	github.com/memcachier/mc/v3 v3.0.3 // indirect
+	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/mmcloughlin/addchain v0.4.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
-	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml/v2 v2.1.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/rivo/uniseg v0.4.2 // indirect
+	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/robfig/go-cache v0.0.0-20130306151617-9fc39e0dbf62 // indirect
+	github.com/schollz/progressbar/v3 v3.14.4 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/supranational/blst v0.3.11 // indirect
 	github.com/tklauser/go-sysconf v0.3.12 // indirect
@@ -84,15 +89,16 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	golang.org/x/arch v0.7.0 // indirect
-	golang.org/x/crypto v0.21.0 // indirect
+	golang.org/x/crypto v0.23.0 // indirect
 	golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
 	golang.org/x/mod v0.13.0 // indirect
-	golang.org/x/net v0.22.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/term v0.22.0 // indirect
+	golang.org/x/text v0.15.0 // indirect
 	golang.org/x/tools v0.14.0 // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	google.golang.org/protobuf v1.34.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	rsc.io/tmplfunc v0.0.3 // indirect
 )

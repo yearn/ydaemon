@@ -103,12 +103,11 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	** Then, we need to scale the decimals of the rewardRate and the totalSupply to match the
 	** decimals of the vault.
 	** Two special cases:
-	** - For the gauge `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`, we should use 48 decimals
 	** - For all v3 vaults, we should use 36 decimals
 	**********************************************************************************************/
 	vaultVersionMajor := strings.Split(vault.Version, `.`)[0]
 	if addresses.Equals(stakingContract.StakingAddress, `0x622fA41799406B120f9a40dA843D358b7b2CFEE3`) {
-		rewardsTokenDecimals = 48
+		rewardsTokenDecimals = 36
 	} else if vaultVersionMajor == `3` {
 		rewardsTokenDecimals = 36
 	} else if addresses.Equals(stakingContract.StakingAddress, `0x7Fd8Af959B54A677a1D8F92265Bd0714274C56a3`) {

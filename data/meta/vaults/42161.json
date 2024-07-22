@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-02T18:08:35.263928+02:00",
+	"lastUpdate": "2024-07-22T16:53:19.67265+02:00",
 	"version": {
-		"major": 18,
-		"minor": 0,
-		"patch": 55
+		"major": 19,
+		"minor": 1,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -56,6 +56,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -78,7 +79,7 @@
 				"0x172dd6fd105b9fda87a238d110c92bb0ae30305d"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "322988797820199584",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -109,6 +110,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -132,7 +134,7 @@
 				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
 			],
 			"lastPricePerShare": "1058617130905666541",
-			"lastTotalAssets": "66778494844739288830",
+			"lastTotalAssets": "806561325477654946055",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -163,6 +165,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -213,6 +216,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -263,6 +267,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -286,7 +291,7 @@
 				"0x6ac368e13f893b14e2b4dc01eb83c89a06b9a039"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "24504345823381813",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -317,6 +322,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -367,6 +373,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -417,6 +424,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -440,7 +448,7 @@
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "82733388831699063161",
+			"lastTotalAssets": "508536891626797828439",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -471,6 +479,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -525,6 +534,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -575,6 +585,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -593,8 +604,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "7500000000",
+			"lastPricePerShare": "1001488",
+			"lastTotalAssets": "1526461405792",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -625,6 +636,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -632,7 +644,7 @@
 		"0x1dba7641dc69188d6086a73b972ac4bda29ec35d": {
 			"address": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
 			"token": "0x30df229cefa463e991e29d42db0bae2e122b2ac7",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0x3199437193625dccd6f9c9e98bdf93582200eb1f",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.3",
@@ -646,7 +658,7 @@
 				"0xf1c3047c6310806de1d25535bc50748815066a7b"
 			],
 			"lastPricePerShare": "1078984979591167060",
-			"lastTotalAssets": "1949287448315965487771",
+			"lastTotalAssets": "1908537448315965487771",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -680,6 +692,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -703,7 +716,7 @@
 				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "54409470498396644776",
+			"lastTotalAssets": "544895422356222830239",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -734,6 +747,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -788,6 +802,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -811,7 +826,7 @@
 				"0xda9889b85831ab8841edd3618e1595a7fef96fa8"
 			],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "10111939516",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -842,6 +857,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -866,7 +882,7 @@
 				"0x034f12a217405d54bf2654b66a96fa74ad715951"
 			],
 			"lastPricePerShare": "1000477",
-			"lastTotalAssets": "2500716416",
+			"lastTotalAssets": "1500238806",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -897,6 +913,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -919,7 +936,7 @@
 				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "29890703510530020805552",
+			"lastTotalAssets": "909263614492687153441561",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -950,6 +967,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -968,8 +986,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1074377866300884818",
-			"lastTotalAssets": "261723690849651382",
+			"lastPricePerShare": "1077742068959506994",
+			"lastTotalAssets": "262757476611980131",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1000,6 +1018,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1050,6 +1069,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1100,6 +1120,58 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x45aceaa535830c921316085e355e4a32385e53f2": {
+			"address": "0x45aceaa535830c921316085e355e4a32385e53f2",
+			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 233239437,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1150,6 +1222,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1157,7 +1230,7 @@
 		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
 			"token": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0x3199437193625dccd6f9c9e98bdf93582200eb1f",
 			"type": "Yearn Vault",
 			"kind": "",
 			"version": "0.4.3",
@@ -1170,8 +1243,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1009197585016339088",
-			"lastTotalAssets": "2102016326759465226227",
+			"lastPricePerShare": "1009197724636878600",
+			"lastTotalAssets": "2102828827397286419759",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1205,6 +1278,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1212,7 +1286,7 @@
 		"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3": {
 			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
 			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.1",
@@ -1223,8 +1297,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1945051",
-			"lastTotalAssets": "27270463137",
+			"lastPricePerShare": "1950638",
+			"lastTotalAssets": "24799983874",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1255,6 +1329,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1305,6 +1380,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1312,7 +1388,7 @@
 		"0x5108db0852c0caa2df797dcf31f8a73bfb335452": {
 			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
 			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.1",
@@ -1323,8 +1399,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1026949",
-			"lastTotalAssets": "3274283987",
+			"lastPricePerShare": "1030556",
+			"lastTotalAssets": "5289229482",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1355,6 +1431,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1405,6 +1482,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1412,7 +1490,7 @@
 		"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
 			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
 			"token": "0x59bf0545fca0e5ad48e13da269facd2e8c886ba4",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0x3199437193625dccd6f9c9e98bdf93582200eb1f",
 			"type": "Experimental Yearn Vault",
 			"kind": "",
 			"version": "0.4.3",
@@ -1460,6 +1538,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1510,6 +1589,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1517,7 +1597,7 @@
 		"0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1": {
 			"address": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
 			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"accountant": "0x9ab47be62631036cda3a64b8322704988427f366",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1532,8 +1612,8 @@
 				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
-			"lastPricePerShare": "1024455",
-			"lastTotalAssets": "45391500244",
+			"lastPricePerShare": "1027506",
+			"lastTotalAssets": "39359421931",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1564,6 +1644,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1586,7 +1667,7 @@
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "15165788032390726054909",
+			"lastTotalAssets": "46674779203272251129439",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1617,6 +1698,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -1670,6 +1752,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1720,6 +1803,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1770,6 +1854,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1820,6 +1905,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1870,6 +1956,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1923,6 +2010,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -1974,6 +2062,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -2027,6 +2116,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2048,8 +2138,8 @@
 			"lastActiveStrategies": [
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063"
 			],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "286287942636",
+			"lastPricePerShare": "1000447",
+			"lastTotalAssets": "1525845281568",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2080,6 +2170,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2131,6 +2222,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2184,6 +2276,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2234,6 +2327,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2241,7 +2335,7 @@
 		"0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5": {
 			"address": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
 			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"accountant": "0x9ab47be62631036cda3a64b8322704988427f366",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -2254,10 +2348,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
-				"0x5108db0852c0caa2df797dcf31f8a73bfb335452"
+				"0x5108db0852c0caa2df797dcf31f8a73bfb335452",
+				"0x45aceaa535830c921316085e355e4a32385e53f2"
 			],
-			"lastPricePerShare": "1019715",
-			"lastTotalAssets": "30222278692",
+			"lastPricePerShare": "1023194",
+			"lastTotalAssets": "30004231982",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2288,6 +2383,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2310,7 +2406,7 @@
 				"0x571293fd9d9716d50ba48aa1628840d7fa166b20"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "1092464027463774377",
+			"lastTotalAssets": "270409030525283463",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2341,6 +2437,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -2348,7 +2445,7 @@
 		"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
 			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.1",
@@ -2359,8 +2456,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1118700",
-			"lastTotalAssets": "795768565718",
+			"lastPricePerShare": "1121848",
+			"lastTotalAssets": "552431419085",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2391,6 +2488,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2409,8 +2507,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2066296945235793933",
-			"lastTotalAssets": "11989439416695",
+			"lastPricePerShare": "2072152584949724964",
+			"lastTotalAssets": "12023682802352",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2441,6 +2539,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2494,6 +2593,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2501,7 +2601,7 @@
 		"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1": {
 			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 			"token": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
-			"registry": "0x0000000000000000000000000000000000000000",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
 			"version": "3.0.1",
@@ -2512,8 +2612,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "22038336",
-			"lastTotalAssets": "36719138508",
+			"lastPricePerShare": "22092799",
+			"lastTotalAssets": "71712922083",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2544,6 +2644,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2566,8 +2667,8 @@
 				"0x85968bf0f1f110c707fef10a59f80118f349c058",
 				"0x1bd173f9a1186a1abe680071e0f57d4d83c18430"
 			],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "7500000000",
+			"lastPricePerShare": "1000857",
+			"lastTotalAssets": "1526228543811",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2598,6 +2699,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2648,6 +2750,7 @@
 					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": false
 				}
 			}
@@ -2702,6 +2805,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}
@@ -2756,6 +2860,7 @@
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
+					"isPoolTogether": false,
 					"isPublicERC4626": true
 				}
 			}

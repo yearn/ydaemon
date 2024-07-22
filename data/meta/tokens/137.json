@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-16T11:42:44.246717+02:00",
+	"lastUpdate": "2024-07-22T16:53:13.253387+02:00",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -263,6 +263,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x0f7E4c66Cebb5F5CAbD435684946585a917B2F65/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x0fefee13864c431717f5b2678607b6ce532a170c": {
+			"address": "0x0fefee13864c431717f5b2678607b6ce532a170c",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT CompoundV3 Lender",
+			"symbol": "ysUSDT",
+			"displayName": "USDT CompoundV3 Lender",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x0fEFEe13864c431717f5B2678607b6ce532a170C/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0x10acbe3b9e6a2ff7f341e5cbf4b6617741ff44aa": {

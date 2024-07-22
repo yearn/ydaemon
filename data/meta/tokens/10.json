@@ -1,12 +1,26 @@
 {
-	"lastUpdate": "2024-07-12T16:35:02.533243+02:00",
+	"lastUpdate": "2024-07-22T16:53:16.23748+02:00",
 	"version": {
 		"major": 0,
-		"minor": 12,
+		"minor": 13,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x0000000000000000000000000000000000000000": {
+			"address": "0x0000000000000000000000000000000000000000",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0000000000000000000000000000000000000000/logo-128.png",
+			"decimals": 0,
+			"chainID": 10
+		},
 		"0x0000206329b97db379d5e1bf586bbdb969c63274": {
 			"address": "0x0000206329b97db379d5e1bf586bbdb969c63274",
 			"underlyingTokensAddresses": [],
@@ -14704,6 +14718,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xd52FB3366c5eecf1115784659CE464b08fbF34C0/logo-128.png",
 			"decimals": 18,
+			"chainID": 10
+		},
+		"0xd5c47d2383fddc19596489280c0a33ac42b2bb18": {
+			"address": "0xd5c47d2383fddc19596489280c0a33ac42b2bb18",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xd5C47D2383Fddc19596489280C0A33AC42b2bB18/logo-128.png",
+			"decimals": 0,
 			"chainID": 10
 		},
 		"0xd5cb4b0884350e91f8f72380856af7d101e231dd": {

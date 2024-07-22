@@ -1,12 +1,26 @@
 {
-	"lastUpdate": "2024-07-12T14:47:24.840668+02:00",
+	"lastUpdate": "2024-07-22T16:53:08.447263+02:00",
 	"version": {
 		"major": 0,
-		"minor": 17,
+		"minor": 18,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x0000000000000000000000000000000000000000": {
+			"address": "0x0000000000000000000000000000000000000000",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0000000000000000000000000000000000000000/logo-128.png",
+			"decimals": 0,
+			"chainID": 42161
+		},
 		"0x0052b6096f8c1dcbefb9ba381eb6b67479b5c56b": {
 			"address": "0x0052b6096f8c1dcbefb9ba381eb6b67479b5c56b",
 			"underlyingTokensAddresses": [],
@@ -198,6 +212,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x07fA8F8d7F7969520955eE3e8A45FbEd451b43FA/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x080f6aed32fc474dd5717105dba5ea57268f46eb": {
+			"address": "0x080f6aed32fc474dd5717105dba5ea57268f46eb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Synapse",
+			"symbol": "SYN",
+			"displayName": "Synapse",
+			"displaySymbol": "SYN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x080F6AEd32Fc474DD5717105Dba5ea57268F46eb/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -521,6 +549,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x0f2d8c1837085be476cca9c2bf671438f01a7189": {
+			"address": "0x0f2d8c1837085be476cca9c2bf671438f01a7189",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-DAI3",
+			"symbol": "xWETH-DAI3",
+			"displayName": "xWETH-DAI3",
+			"displaySymbol": "xWETH-DAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0f2d8c1837085bE476CcA9C2Bf671438F01a7189/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x0f2f5fa44ea2ac3a2d53a7218bf0f2d02a40adb5": {
 			"address": "0x0f2f5fa44ea2ac3a2d53a7218bf0f2d02a40adb5",
 			"underlyingTokensAddresses": [],
@@ -647,6 +689,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x12bF88C63bF060355A8d2E4C6eE960365a5E8335/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60": {
+			"address": "0x13ad51ed4f1b7e9dc168d8a00cb3f4ddd85efa60",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Lido DAO Token",
+			"symbol": "LDO",
+			"displayName": "Lido DAO Token",
+			"displaySymbol": "LDO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x13Ad51ed4F1B7e9Dc168d8a00cB3f4dDD85EfA60/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x145d55ae4848f9782efcac785a655e3e5dce1bcd": {
@@ -1107,6 +1163,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x2249f4dcd788f3bfa4096db25bdcd82789752cfd": {
+			"address": "0x2249f4dcd788f3bfa4096db25bdcd82789752cfd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xLDO-USDC3",
+			"symbol": "xLDO-USDC3",
+			"displayName": "xLDO-USDC3",
+			"displaySymbol": "xLDO-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2249F4DCD788F3BFA4096DB25bDCD82789752cfD/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2297aebd383787a160dd0d9f71508148769342e3": {
 			"address": "0x2297aebd383787a160dd0d9f71508148769342e3",
 			"underlyingTokensAddresses": [
@@ -1121,6 +1191,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x2297aEbD383787A160DD0d9F71508148769342E3/logo-128.png",
 			"decimals": 8,
+			"chainID": 42161
+		},
+		"0x22ac3378e643d4fa7345f5e6c9fae9c5ae5e6ff5": {
+			"address": "0x22ac3378e643d4fa7345f5e6c9fae9c5ae5e6ff5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUNI-USDT3",
+			"symbol": "xUNI-USDT3",
+			"displayName": "xUNI-USDT3",
+			"displaySymbol": "xUNI-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x22Ac3378E643D4Fa7345f5e6c9fAe9c5ae5E6fF5/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x22b9e6f6c462bb0b03f76d3a8246950d95f03692": {
@@ -1155,6 +1239,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x22e9ad26ea0e65a7073571d5d7172ff6336084ad": {
+			"address": "0x22e9ad26ea0e65a7073571d5d7172ff6336084ad",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Bedrock uniETH 26DEC2024",
+			"symbol": "PT-uniETH-26DEC2024",
+			"displayName": "PT Bedrock uniETH 26DEC2024",
+			"displaySymbol": "PT-uniETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x22e9aD26eA0e65a7073571d5D7172ff6336084AD/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x23231848ec8acd3a108c6a61049fbc25a697b594": {
 			"address": "0x23231848ec8acd3a108c6a61049fbc25a697b594",
 			"underlyingTokensAddresses": [],
@@ -1166,6 +1264,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x23231848ec8acD3a108C6a61049FbC25A697b594/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x239c1b8642b8da2c9eb334076e0a4295df7f39ac": {
+			"address": "0x239c1b8642b8da2c9eb334076e0a4295df7f39ac",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-AXGT10",
+			"symbol": "xWETH-AXGT10",
+			"displayName": "xWETH-AXGT10",
+			"displaySymbol": "xWETH-AXGT10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x239c1B8642B8dA2C9eB334076E0A4295df7F39Ac/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -1269,6 +1381,22 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0x25d887ce7a35172c62febfd67a1856f20faebb00": {
+			"address": "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+			"underlyingTokensAddresses": [
+				"0x25d887ce7a35172c62febfd67a1856f20faebb00"
+			],
+			"type": "Yearn Vault",
+			"name": "Pepe",
+			"symbol": "PEPE",
+			"displayName": "Pepe",
+			"displaySymbol": "PEPE",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x25d887Ce7a35172C62FeBFD67a1856F20FaEbB00/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x265a0f96b61849773a7b515495c6f04b364b28d8": {
 			"address": "0x265a0f96b61849773a7b515495c6f04b364b28d8",
 			"underlyingTokensAddresses": [],
@@ -1283,6 +1411,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x267a8cc852006e550ade03673d4af31e47dd7af9": {
+			"address": "0x267a8cc852006e550ade03673d4af31e47dd7af9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xCRV-WETH3",
+			"symbol": "xCRV-WETH3",
+			"displayName": "xCRV-WETH3",
+			"displaySymbol": "xCRV-WETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x267A8CC852006E550AdE03673D4aF31E47dd7Af9/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x26f10da086519da50c9af663aadcbdd96e2b308b": {
 			"address": "0x26f10da086519da50c9af663aadcbdd96e2b308b",
 			"underlyingTokensAddresses": [],
@@ -1294,6 +1436,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x26f10da086519da50C9AF663aADCBdD96E2B308b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x279b44e48226d40ec389129061cb0b56c5c09e46": {
+			"address": "0x279b44e48226d40ec389129061cb0b56c5c09e46",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x279b44E48226d40Ec389129061cb0B56C5c09e46/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -1590,6 +1746,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x3209e9412cca80b18338f2a56ada59c484c39644": {
+			"address": "0x3209e9412cca80b18338f2a56ada59c484c39644",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x3209E9412cca80B18338f2a56ADA59c484c39644/logo-128.png",
+			"decimals": 0,
+			"chainID": 42161
+		},
 		"0x32eb7902d4134bf98a28b963d26de779af92a212": {
 			"address": "0x32eb7902d4134bf98a28b963d26de779af92a212",
 			"underlyingTokensAddresses": [],
@@ -1659,6 +1829,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x34a2b066AF16409648eF15d239E656edB8790ca0/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x354a6da3fcde098f8389cad84b0182725c6c91de": {
+			"address": "0x354a6da3fcde098f8389cad84b0182725c6c91de",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Compound",
+			"symbol": "COMP",
+			"displayName": "Compound",
+			"displaySymbol": "COMP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x354A6dA3fcde098F8389cad84b0182725c6C91dE/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -1734,6 +1918,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x369751A0b33DF3adE5e2eE55e7bB9556B10F390C/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x3787f0b07e95243aa2045dfddf51256c099e669d": {
+			"address": "0x3787f0b07e95243aa2045dfddf51256c099e669d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xCOMP-WETH3",
+			"symbol": "xCOMP-WETH3",
+			"displayName": "xCOMP-WETH3",
+			"displaySymbol": "xCOMP-WETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x3787f0b07E95243aA2045dFDDF51256C099e669D/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x37958cb88cdd06ae062e08ce90d0b2384ae34f02": {
@@ -1881,6 +2079,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x3cE71021cCA8a2902764a43C60ff5F8A312245f9/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x3d15fd46ce9e551498328b1c83071d9509e2c3a0": {
+			"address": "0x3d15fd46ce9e551498328b1c83071d9509e2c3a0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Universal ETH",
+			"symbol": "uniETH",
+			"displayName": "Universal ETH",
+			"displaySymbol": "uniETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x3d15fD46CE9e551498328B1C83071D9509E2C3a0/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2188,6 +2400,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x4c66d5cbe7ec536bd71393182d7cab57ca19b367": {
+			"address": "0x4c66d5cbe7ec536bd71393182d7cab57ca19b367",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xSYN-WETH10",
+			"symbol": "xSYN-WETH10",
+			"displayName": "xSYN-WETH10",
+			"displaySymbol": "xSYN-WETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4c66D5cbE7eC536Bd71393182d7cAb57ca19b367/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x4c998bf29efe95925918183136c141602f89332a": {
 			"address": "0x4c998bf29efe95925918183136c141602f89332a",
 			"underlyingTokensAddresses": [],
@@ -2436,6 +2662,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x561877b6b3dd7651313794e5f2894b2f18be0766": {
+			"address": "0x561877b6b3dd7651313794e5f2894b2f18be0766",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Matic Token",
+			"symbol": "MATIC",
+			"displayName": "Matic Token",
+			"displaySymbol": "MATIC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x561877b6b3DD7651313794e5F2894B2F18bE0766/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x563f1e87a6a3cb4a84f7d438fcf4882133e59d6d": {
 			"address": "0x563f1e87a6a3cb4a84f7d438fcf4882133e59d6d",
 			"underlyingTokensAddresses": [],
@@ -2461,6 +2701,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x57155aB31B5AB41EE126f9175723fe1E4053ca3a/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
+			"address": "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812",
+			"underlyingTokensAddresses": [
+				"0x59d9356e565ab3a36dd77763fc0d87feaf85508c"
+			],
+			"type": "Yearn Vault",
+			"name": "Wrapped Mountain Protocol USD",
+			"symbol": "wUSDM",
+			"displayName": "Wrapped Mountain Protocol USD",
+			"displaySymbol": "wUSDM",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x57F5E098CaD7A3D1Eed53991D4d66C45C9AF7812/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2553,6 +2809,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x59d9356e565ab3a36dd77763fc0d87feaf85508c": {
+			"address": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Mountain Protocol USD",
+			"symbol": "USDM",
+			"displayName": "Mountain Protocol USD",
+			"displaySymbol": "USDM",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x59D9356E565Ab3A36dD77763Fc0d87fEaf85508C/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x5a4956d9d4c362c6df3ae442f87ac0afcba468da": {
 			"address": "0x5a4956d9d4c362c6df3ae442f87ac0afcba468da",
 			"underlyingTokensAddresses": [],
@@ -2581,6 +2851,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x5b56f4bf94807b547eb5e7eba5cd8c033af83aed": {
+			"address": "0x5b56f4bf94807b547eb5e7eba5cd8c033af83aed",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Bedrock uniETH",
+			"symbol": "SY-uniETH",
+			"displayName": "SY Bedrock uniETH",
+			"displaySymbol": "SY-uniETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x5b56f4bf94807B547EB5E7eBa5Cd8C033af83aed/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x5bbec590517fc59d9efb2e95347532dba742c385": {
 			"address": "0x5bbec590517fc59d9efb2e95347532dba742c385",
 			"underlyingTokensAddresses": [],
@@ -2606,6 +2890,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x5C4110eD760470f79E469a901Bd6fb45a65BE0F4/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x5c5a73765c6b4b834a797bbb73d8fa184e9785e4": {
+			"address": "0x5c5a73765c6b4b834a797bbb73d8fa184e9785e4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xPEPE-WETH10",
+			"symbol": "xPEPE-WETH10",
+			"displayName": "xPEPE-WETH10",
+			"displaySymbol": "xPEPE-WETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x5C5a73765C6b4b834A797BBB73D8Fa184e9785E4/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2880,6 +3178,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x685155D3BD593508Fe32Be39729810A591ED9c87/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x6985884c4392d348587b19cb9eaaf157f13271cd": {
+			"address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
+			"underlyingTokensAddresses": [
+				"0x6985884c4392d348587b19cb9eaaf157f13271cd"
+			],
+			"type": "Yearn Vault",
+			"name": "LayerZero",
+			"symbol": "ZRO",
+			"displayName": "LayerZero",
+			"displaySymbol": "ZRO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -3586,6 +3900,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x84b3244b5e761b9de104b4bad76ddfee76be5019": {
+			"address": "0x84b3244b5e761b9de104b4bad76ddfee76be5019",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xZRO-WETH10",
+			"symbol": "xZRO-WETH10",
+			"displayName": "xZRO-WETH10",
+			"displaySymbol": "xZRO-WETH10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x84b3244B5E761B9DE104b4bAD76DDfEE76be5019/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x84e0efc0633041aac9d0196b7ac8af3505e8cc32": {
 			"address": "0x84e0efc0633041aac9d0196b7ac8af3505e8cc32",
 			"underlyingTokensAddresses": [
@@ -3964,6 +4292,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x92f19fc597504ed108afa4bfb1051d71b7ae0dc6": {
+			"address": "0x92f19fc597504ed108afa4bfb1051d71b7ae0dc6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-AAVE3",
+			"symbol": "xUSDC-AAVE3",
+			"displayName": "xUSDC-AAVE3",
+			"displaySymbol": "xUSDC-AAVE3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x92F19fc597504Ed108aFA4bfb1051d71b7AE0Dc6/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x92f1e6d904f21c05074952bbad51d91fd9f8730f": {
 			"address": "0x92f1e6d904f21c05074952bbad51d91fd9f8730f",
 			"underlyingTokensAddresses": [
@@ -4203,6 +4545,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x998C07827578C83949a6b755Dd3416fDFD98a75E/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x99a18b918de9c569afc0abbd48804326e90dacfd": {
+			"address": "0x99a18b918de9c569afc0abbd48804326e90dacfd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xMATIC-WETH3",
+			"symbol": "xMATIC-WETH3",
+			"displayName": "xMATIC-WETH3",
+			"displaySymbol": "xMATIC-WETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x99a18b918de9C569AFc0abbd48804326E90DACFD/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4524,6 +4880,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xa06fb6fbd9923d84d968c9436ef4a6f26614ef1b": {
+			"address": "0xa06fb6fbd9923d84d968c9436ef4a6f26614ef1b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xwUSDM-WSTETH3",
+			"symbol": "xwUSDM-WSTETH3",
+			"displayName": "xwUSDM-WSTETH3",
+			"displaySymbol": "xwUSDM-WSTETH3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xa06FB6FBD9923D84D968c9436Ef4a6F26614Ef1B/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xa1c32ef8d3c4c30cb596bab8647e11daf0fa5c94": {
 			"address": "0xa1c32ef8d3c4c30cb596bab8647e11daf0fa5c94",
 			"underlyingTokensAddresses": [],
@@ -4647,6 +5017,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xa7FCe463815f18DbE246152C5291B84db07c0bcd/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xa810ba21e65d54de0283002db8fb6ea504c83234": {
+			"address": "0xa810ba21e65d54de0283002db8fb6ea504c83234",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Bedrock uniETH 26DEC2024",
+			"symbol": "YT-uniETH-26DEC2024",
+			"displayName": "YT Bedrock uniETH 26DEC2024",
+			"displaySymbol": "YT-uniETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xa810ba21e65D54dE0283002dB8fB6Ea504c83234/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4982,6 +5366,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xb766039cc6db368759c1e56b79affe831d0cc507": {
+			"address": "0xb766039cc6db368759c1e56b79affe831d0cc507",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Rocket Pool Protocol",
+			"symbol": "RPL",
+			"displayName": "Rocket Pool Protocol",
+			"displaySymbol": "RPL",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xB766039cc6DB368759C1E56B79AFfE831d0Cc507/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xb7ffe52ea584d2169ae66e7f0423574a5e15056f": {
 			"address": "0xb7ffe52ea584d2169ae66e7f0423574a5e15056f",
 			"underlyingTokensAddresses": [],
@@ -5035,6 +5433,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xBa4A858d664Ddb052158168DB04AFA3cFF5CFCC8/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xba5ddd1f9d7f570dc94a51479a000e3bce967196": {
+			"address": "0xba5ddd1f9d7f570dc94a51479a000e3bce967196",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Aave Token",
+			"symbol": "AAVE",
+			"displayName": "Aave Token",
+			"displaySymbol": "AAVE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xba5DdD1f9d7F570dc94a51479a000E3BCE967196/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -5148,6 +5560,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xBFd3A44f673f4d4dF9b1Ec126C4a5F602F0380Ad/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e": {
+			"address": "0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e",
+			"underlyingTokensAddresses": [
+				"0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e"
+			],
+			"type": "Yearn Vault",
+			"name": "Osaka Protocol",
+			"symbol": "OSAK",
+			"displayName": "Osaka Protocol",
+			"displaySymbol": "OSAK",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xbFd5206962267c7b4b4A8B3D76AC2E1b2A5c4d5e/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5": {
@@ -5340,6 +5768,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xc8a4eea31e9b6b61c406df013dd4fec76f21e279": {
+			"address": "0xc8a4eea31e9b6b61c406df013dd4fec76f21e279",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Render Token",
+			"symbol": "RNDR",
+			"displayName": "Render Token",
+			"displaySymbol": "RNDR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xC8a4EeA31E9B6b61c406DF013DD4FEc76f21E279/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xc8d9369809e48d03ff7b69d7979b174e2d34874c": {
 			"address": "0xc8d9369809e48d03ff7b69d7979b174e2d34874c",
 			"underlyingTokensAddresses": [],
@@ -5509,6 +5951,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xCf602767e9c82194DaF58EB67a3169d60DbAaC62/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xcfc8aed301f23e2e730f783756f64449b941b80f": {
+			"address": "0xcfc8aed301f23e2e730f783756f64449b941b80f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-OSAK10",
+			"symbol": "xWETH-OSAK10",
+			"displayName": "xWETH-OSAK10",
+			"displaySymbol": "xWETH-OSAK10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xcfC8AeD301F23e2e730f783756F64449B941b80F/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -5818,6 +6274,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xe0ee18eacafddaeb38f8907c74347c44385578ab": {
+			"address": "0xe0ee18eacafddaeb38f8907c74347c44385578ab",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "AxonDAO Governance Token",
+			"symbol": "AXGT",
+			"displayName": "AxonDAO Governance Token",
+			"displaySymbol": "AXGT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xE0Ee18EacAfDDAeb38f8907C74347C44385578aB/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xe11f9786b06438456b044b3e21712228adcaa0d1": {
 			"address": "0xe11f9786b06438456b044b3e21712228adcaa0d1",
 			"underlyingTokensAddresses": [],
@@ -5969,6 +6439,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xe822AE44EB2466B4E263b1cbC94b4833dDEf9700/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xe9ba18a9c5b93db9f971c7ce674ff2e9f613340e": {
+			"address": "0xe9ba18a9c5b93db9f971c7ce674ff2e9f613340e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-RNDR10",
+			"symbol": "xWETH-RNDR10",
+			"displayName": "xWETH-RNDR10",
+			"displaySymbol": "xWETH-RNDR10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xE9BA18a9C5b93db9F971C7cE674FF2E9F613340e/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -6156,6 +6640,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xF0A219e14D4c058022A828b16Af9888b143ab5aD/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xf0f326af3b1ed943ab95c29470730cc8cf66ae47": {
+			"address": "0xf0f326af3b1ed943ab95c29470730cc8cf66ae47",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xf0f326af3b1Ed943ab95C29470730CC8Cf66ae47/logo-128.png",
+			"decimals": 0,
 			"chainID": 42161
 		},
 		"0xf176fb51f4eb826136a54fdc71c50fcd2202e272": {
@@ -6466,6 +6964,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xfb072ee95fb8fdd066ac42767d7d76a65ac51c2e": {
+			"address": "0xfb072ee95fb8fdd066ac42767d7d76a65ac51c2e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-RPL10",
+			"symbol": "xWETH-RPL10",
+			"displayName": "xWETH-RPL10",
+			"displaySymbol": "xWETH-RPL10",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xfB072eE95Fb8fdD066AC42767D7D76A65aC51c2e/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xfb2a7ac0372c2425c273932f8d438518402a873e": {
 			"address": "0xfb2a7ac0372c2425c273932f8d438518402a873e",
 			"underlyingTokensAddresses": [],
@@ -6578,6 +7090,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xFE7AebD759C6e251afa44aF17de4cc88F83FF6a4/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xfe8ef0de9e66180c8247fa3435870891b4cb2533": {
+			"address": "0xfe8ef0de9e66180c8247fa3435870891b4cb2533",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xLINK-USDT3",
+			"symbol": "xLINK-USDT3",
+			"displayName": "xLINK-USDT3",
+			"displaySymbol": "xLINK-USDT3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xFe8ef0DE9E66180C8247FA3435870891B4CB2533/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0xfea7a6a0b346362bf88a9e4a88416b77a57d6c2a": {

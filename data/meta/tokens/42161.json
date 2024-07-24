@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-22T16:53:08.447263+02:00",
+	"lastUpdate": "2024-07-24T09:16:41.465624+02:00",
 	"version": {
 		"major": 0,
-		"minor": 18,
+		"minor": 19,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1135,6 +1135,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x212ec13b91e1f3d4e96ee8fce6cf066578360ae2": {
+			"address": "0x212ec13b91e1f3d4e96ee8fce6cf066578360ae2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDC-UNI3",
+			"symbol": "xUSDC-UNI3",
+			"displayName": "xUSDC-UNI3",
+			"displaySymbol": "xUSDC-UNI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x212eC13B91e1F3d4E96eE8fcE6cf066578360ae2/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x221a0f68770658c15b525d0f89f5da2baab5f321": {
 			"address": "0x221a0f68770658c15b525d0f89f5da2baab5f321",
 			"underlyingTokensAddresses": [],
@@ -2254,6 +2268,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x45aceaa535830c921316085e355e4a32385e53f2": {
+			"address": "0x45aceaa535830c921316085e355e4a32385e53f2",
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT CompoundV3 Lender",
+			"symbol": "ysUSDT",
+			"displayName": "USDT CompoundV3 Lender",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x45aCEAA535830C921316085E355E4a32385E53f2/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x461ad11a76b302f13ada1296da0178722a50838e": {
 			"address": "0x461ad11a76b302f13ada1296da0178722a50838e",
 			"underlyingTokensAddresses": [
@@ -2369,6 +2399,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4b64f0bf6B1BFfC23cCA3c8DcD08dde4627aBA9b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4bf39540b1218daa96837295a35465ca889bdec2": {
+			"address": "0x4bf39540b1218daa96837295a35465ca889bdec2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-UNI3",
+			"symbol": "xWETH-UNI3",
+			"displayName": "xWETH-UNI3",
+			"displaySymbol": "xWETH-UNI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4bF39540b1218daA96837295A35465CA889BdeC2/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

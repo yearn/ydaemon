@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-22T16:54:01.574865+02:00",
+	"lastUpdate": "2024-07-24T09:17:07.522645+02:00",
 	"version": {
 		"major": 0,
-		"minor": 49,
+		"minor": 50,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -3189,6 +3189,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x23dbe2a711f0e528a3c0a7c713b5aeff3e9a2826": {
+			"address": "0x23dbe2a711f0e528a3c0a7c713b5aeff3e9a2826",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Swell L2 Deposit RswETH 26SEP2024",
+			"symbol": "PT-sw2Rsweth-26SEP2024",
+			"displayName": "PT Swell L2 Deposit RswETH 26SEP2024",
+			"displaySymbol": "PT-sw2Rsweth-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x23DBE2A711F0e528a3C0a7c713b5aEFF3e9a2826/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x23e7817bc73645063fb2fa85c1d098effe84be90": {
 			"address": "0x23e7817bc73645063fb2fa85c1d098effe84be90",
 			"underlyingTokensAddresses": [
@@ -3390,6 +3404,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x254bd33e2f62713f893f0842c99e68f855cda315": {
+			"address": "0x254bd33e2f62713f893f0842c99e68f855cda315",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Coinflakes Vault v2.0",
+			"symbol": "FLAKES",
+			"displayName": "Coinflakes Vault v2.0",
+			"displaySymbol": "FLAKES",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x254bd33E2f62713F893F0842C99E68f855cDa315/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x256fb830945141f7927785c06b65dabc3744213c": {
 			"address": "0x256fb830945141f7927785c06b65dabc3744213c",
 			"underlyingTokensAddresses": [],
@@ -3538,6 +3568,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x27ffA71dBB25A7C52A3Da74C6eED8C94c9A43E0d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2801b56f6ccc8046ae29e86c0fce556e046122e2": {
+			"address": "0x2801b56f6ccc8046ae29e86c0fce556e046122e2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2801b56f6cCc8046AE29e86C0FCe556E046122E2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4449,6 +4493,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x30FCf7c6cDfC46eC237783D94Fc78553E79d4E9C/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x310b7ea7475a0b449cfd73be81522f1b88efafaa": {
+			"address": "0x310b7ea7475a0b449cfd73be81522f1b88efafaa",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT-1 yVault",
+			"symbol": "yvUSDT-1",
+			"displayName": "USDT-1 yVault",
+			"displaySymbol": "yvUSDT-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x310B7Ea7475A0B449Cfd73bE81522F1B88eFAFaa/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x31429d1856ad1377a8a0079410b297e1a9e214c2": {
@@ -8561,6 +8621,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x5b88a0DDf1Ca18E50E7A7Cd86EEe441ae7d51eB5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5b8ab5cbe12365cf0939501c80a99f481253a6e4": {
+			"address": "0x5b8ab5cbe12365cf0939501c80a99f481253a6e4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Swell L2 Deposit RswETH 26SEP2024",
+			"symbol": "YT-sw2Rsweth-26SEP2024",
+			"displayName": "YT Swell L2 Deposit RswETH 26SEP2024",
+			"displaySymbol": "YT-sw2Rsweth-26SEP2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5b8AB5cbE12365cF0939501c80a99F481253a6e4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

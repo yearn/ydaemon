@@ -509,6 +509,16 @@
 		"chainID": 1,
 		"blockNumber": 18764504
 	},
+	"0x206db0a0af10bec57784045e089a418771d20227": {
+		"address": "0x206db0a0af10bec57784045e089a418771d20227",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 20369520
+	},
 	"0x20f6a2ec303df7120eae3346de5ad877f80beb64": {
 		"address": "0x20f6a2ec303df7120eae3346de5ad877f80beb64",
 		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
@@ -881,11 +891,11 @@
 	},
 	"0x310b7ea7475a0b449cfd73be81522f1b88efafaa": {
 		"address": "0x310b7ea7475a0b449cfd73be81522f1b88efafaa",
-		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 		"tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
-		"version": "3.0.1",
+		"version": "3.0.0",
 		"chainID": 1,
 		"blockNumber": 20369520
 	},
@@ -1538,6 +1548,16 @@
 		"version": "0.3.0",
 		"chainID": 1,
 		"blockNumber": 11729923
+	},
+	"0x57fc2d9809f777cd5c8c433442264b6e8be7fce4": {
+		"address": "0x57fc2d9809f777cd5c8c433442264b6e8be7fce4",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 20391847
 	},
 	"0x58900d761ae3765b75ddfc235c1536b527f25d8f": {
 		"address": "0x58900d761ae3765b75ddfc235c1536b527f25d8f",
@@ -2718,6 +2738,16 @@
 		"version": "0.4.6",
 		"chainID": 1,
 		"blockNumber": 17830399
+	},
+	"0x95d69641ed7ecaa5e7d5539f56dc6194b5bcd7fa": {
+		"address": "0x95d69641ed7ecaa5e7d5539f56dc6194b5bcd7fa",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 20369520
 	},
 	"0x968d4227eecc1d47e46c68d19de2b6858a3f39a7": {
 		"address": "0x968d4227eecc1d47e46c68d19de2b6858a3f39a7",

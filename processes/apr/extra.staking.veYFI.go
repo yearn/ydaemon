@@ -115,7 +115,7 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	} else if addresses.Equals(stakingContract.StakingAddress, `0x81d93531720d86f0491DeE7D03f30b3b5aC24e59`) {
 		rewardsTokenDecimals = 18
 	} else if addresses.Equals(stakingContract.StakingAddress, `0xB61F8fff8Dd8C438E0d61C07b5536cE3d728f660`) {
-		rewardsTokenDecimals = 18
+		rewardsTokenDecimals = 36
 	} else if addresses.Equals(stakingContract.StakingAddress, `0x28da6dE3e804bDdF0aD237CFA6048f2930D0b4Dc`) {
 		rewardsTokenDecimals = 18
 	} else if addresses.Equals(stakingContract.StakingAddress, `0x6130E6cD924a40b24703407F246966D7435D4998`) {

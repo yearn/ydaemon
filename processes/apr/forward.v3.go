@@ -73,7 +73,7 @@ func computeVaultV3ForwardAPR(
 				for _, strategy := range allStrategiesForVault {
 					expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
 					if err != nil {
-						logs.Error(err)
+						logs.Error(`GetStrategyApr ` + err.Error() + " for strategy " + strategy.Address.Hex())
 						continue
 					}
 					humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
@@ -103,7 +103,7 @@ func computeVaultV3ForwardAPR(
 
 				expected, err := oracle.GetStrategyApr(nil, strategy.Address, big.NewInt(0))
 				if err != nil {
-					logs.Error(err)
+					logs.Error(`GetStrategyApr ` + err.Error() + " for strategy " + strategy.Address.Hex())
 					continue
 				}
 				humanizedAPR := helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)

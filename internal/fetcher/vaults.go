@@ -259,6 +259,10 @@ func RetrieveAllVaults(
 			vault.RegistryAddress = vaults[vault.Address].RegistryAddress
 		}
 
+		/******************************************************************************************
+		** If the inclusion is not set, we will set it based on the registry address. Some specific
+		** rules exist, but overall, it's all based on the registry
+		******************************************************************************************/
 		if !vault.Metadata.Inclusion.IsSet {
 			vault.Metadata.Inclusion.IsYearn = env.IsRegistryFromYearnCore(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsYearnJuiced = env.IsRegistryFromJuiced(chainID, vault.RegistryAddress)
@@ -275,6 +279,19 @@ func RetrieveAllVaults(
 			vault.Metadata.Inclusion.IsSet = true
 		}
 
+		/******************************************************************************************
+		** Finally, if the category is set to automatic, we will try to determine the category and
+		** set it properly, updating the JSON with the new value in the end. This should be a one
+		** time operation.
+		******************************************************************************************/
+		if vault.Metadata.Category == models.VaultCategoryAutomatic || vault.Metadata.Category == `` {
+			strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
+			category := BuildVaultCategory(vault, strategies)
+
+			if category != `Volatile` {
+				vault.Metadata.Category = models.TVaultCategoryType(category)
+			}
+		}
 		vaultMapFromStorage[vault.Address] = vault
 	}
 	storage.StoreVaultsToJson(chainID, vaultMapFromStorage)

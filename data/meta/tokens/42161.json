@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-24T09:16:41.465624+02:00",
+	"lastUpdate": "2024-07-31T11:36:49.54822+02:00",
 	"version": {
 		"major": 0,
-		"minor": 19,
+		"minor": 20,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -79,6 +79,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0341C0C0ec423328621788d4854119B97f44E391/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x03577ffa91edb93ac3aee081efbe6f323da949e1": {
+			"address": "0x03577ffa91edb93ac3aee081efbe6f323da949e1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT gUSDC 26DEC2024",
+			"symbol": "YT-gUSDC-26DEC2024",
+			"displayName": "YT gUSDC 26DEC2024",
+			"displaySymbol": "YT-gUSDC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x03577ffA91EDB93ac3aEE081EfBE6F323da949e1/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x044e75fcbf7bd3f8f4577ff317554e9c0037f145": {
@@ -329,6 +343,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0a9bbf8299FEd2441009a7Bb44874EE453de8e5D/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x0a9ed458e6c283d1e84237e3347333aa08221d09": {
+			"address": "0x0a9ed458e6c283d1e84237e3347333aa08221d09",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "SY gUSDC",
+			"symbol": "SY-gUSDC",
+			"displayName": "SY gUSDC",
+			"displaySymbol": "SY-gUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x0a9eD458E6c283D1E84237e3347333Aa08221d09/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x0aded315d2e51f676a2aa8d2bc6a79c88e0f1c1a": {
@@ -1555,6 +1585,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x2BCBDD577616357464CFe307Bc67F9e820A66e80/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x2be6fab4d1408e7ad6ad91ce7b77fa2a7670782f": {
+			"address": "0x2be6fab4d1408e7ad6ad91ce7b77fa2a7670782f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT gUSDC 26DEC2024",
+			"symbol": "PT-gUSDC-26DEC2024",
+			"displayName": "PT gUSDC 26DEC2024",
+			"displaySymbol": "PT-gUSDC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2Be6Fab4d1408e7ad6AD91cE7B77FA2A7670782f/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x2ccfce9be49465cc6f947b5f6ac9383673733da9": {
@@ -3513,6 +3557,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x75690ebcb89a655de5f9f3b8b68e7032450afe94": {
+			"address": "0x75690ebcb89a655de5f9f3b8b68e7032450afe94",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT gUSDC 26DEC2024",
+			"symbol": "YT-gUSDC-26DEC2024",
+			"displayName": "YT gUSDC 26DEC2024",
+			"displaySymbol": "YT-gUSDC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x75690EBcb89A655de5f9f3B8b68e7032450afe94/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x7588c74473a84d7fa87bec375b408e3402f7fdb9": {
 			"address": "0x7588c74473a84d7fa87bec375b408e3402f7fdb9",
 			"underlyingTokensAddresses": [],
@@ -4147,6 +4205,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x8Be4715f1DB9e8551fEA5ef8b30A2eb99398e5d2/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x8c2afc4eddb23cfdcc62a8aac14633d456a91477": {
+			"address": "0x8c2afc4eddb23cfdcc62a8aac14633d456a91477",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8c2aFC4eDDB23cFdcc62a8aAC14633D456A91477/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -5078,6 +5150,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xa877a0e177b54a37066c1786f91a1dab68f094af": {
+			"address": "0xa877a0e177b54a37066c1786f91a1dab68f094af",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xa877a0E177b54A37066c1786F91a1DAb68F094AF/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xa972fb7828f0bff8a22f7f8c63b17cfb971bfc0a": {
 			"address": "0xa972fb7828f0bff8a22f7f8c63b17cfb971bfc0a",
 			"underlyingTokensAddresses": [],
@@ -5854,6 +5940,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xc987809440fdd08dcea0d0571c7a8e9a9bbb45cc": {
+			"address": "0xc987809440fdd08dcea0d0571c7a8e9a9bbb45cc",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "SY gUSDC",
+			"symbol": "SY-gUSDC",
+			"displayName": "SY gUSDC",
+			"displaySymbol": "SY-gUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xc987809440fDd08dCEA0d0571C7A8E9a9Bbb45Cc/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0xc9da32c3b444f15412f7feac6104d1e258d23b1b": {
 			"address": "0xc9da32c3b444f15412f7feac6104d1e258d23b1b",
 			"underlyingTokensAddresses": [],
@@ -6086,6 +6188,22 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0": {
+			"address": "0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "Gains Network USDC",
+			"symbol": "gUSDC",
+			"displayName": "Gains Network USDC",
+			"displaySymbol": "gUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xd3443ee1e91aF28e5FB858Fbd0D72A63bA8046E0/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0xd5aabeda88c31858e5f60905185f8697be185e55": {
 			"address": "0xd5aabeda88c31858e5f60905185f8697be185e55",
 			"underlyingTokensAddresses": [],
@@ -6157,6 +6275,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xd89ee1E95f7728f6964CF321E2648cCd29a881f1/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xd9de069f0980fed309e8885cdfbd66bdd66cdb77": {
+			"address": "0xd9de069f0980fed309e8885cdfbd66bdd66cdb77",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT gUSDC 26DEC2024",
+			"symbol": "PT-gUSDC-26DEC2024",
+			"displayName": "PT gUSDC 26DEC2024",
+			"displaySymbol": "PT-gUSDC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xd9DE069f0980FED309e8885cDFbd66Bdd66CdB77/logo-128.png",
 			"decimals": 6,
 			"chainID": 42161
 		},

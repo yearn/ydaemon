@@ -111,3 +111,43 @@ func (y Controller) GetIsYearnPoolTogether(c *gin.Context) []TSimplifiedExternal
 		return vault.Metadata.Inclusion.IsPoolTogether
 	})
 }
+
+/**************************************************************************************************
+** GetIsAjna is a gin handler function to retrieve all the vaults with a name matching `AJNA` or
+** with the inclusion.IsYearnJuiced filter.
+**************************************************************************************************/
+func (y Controller) GetIsAjna(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Category == "Ajna" || vault.Metadata.Inclusion.IsYearnJuiced
+	})
+}
+
+/**************************************************************************************************
+** GetIsVelodrome is a gin handler function to retrieve all the vaults with a name matching the
+** Velodrome category
+**************************************************************************************************/
+func (y Controller) GetIsVelodrome(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Velodrome"
+	})
+}
+
+/**************************************************************************************************
+** GetIsAerodrome is a gin handler function to retrieve all the vaults with a name matching the
+** Aerodrome category
+**************************************************************************************************/
+func (y Controller) GetIsAerodrome(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Aerodrome"
+	})
+}
+
+/**************************************************************************************************
+** GetIsCurve is a gin handler function to retrieve all the vaults with a name matching the
+** Curve category
+**************************************************************************************************/
+func (y Controller) GetIsCurve(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Curve"
+	})
+}

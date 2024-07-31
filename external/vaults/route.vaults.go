@@ -118,7 +118,7 @@ func (y Controller) GetIsYearnPoolTogether(c *gin.Context) []TSimplifiedExternal
 **************************************************************************************************/
 func (y Controller) GetIsAjna(c *gin.Context) []TSimplifiedExternalVault {
 	return getVaults(c, func(vault models.TVault) bool {
-		return vault.Metadata.Category == "Ajna" || vault.Metadata.Inclusion.IsYearnJuiced
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Ajna"
 	})
 }
 

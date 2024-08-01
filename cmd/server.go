@@ -30,6 +30,7 @@ func NewRouter() *gin.Engine {
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
+		AllowOrigins:    []string{"*"},
 		AllowMethods:    []string{"GET", "HEAD", "POST"},
 		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}

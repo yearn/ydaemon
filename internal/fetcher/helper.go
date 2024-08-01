@@ -52,8 +52,14 @@ func getV3VaultCalls(vault models.TVault) []ethereum.Call {
 	lastUpdate := metadata.LastUpdate
 	shouldRefresh := metadata.ShouldRefresh
 	calls := []ethereum.Call{}
+
+	asEthers := big.NewInt(10)
+	asEthers = asEthers.Exp(asEthers, big.NewInt(18), nil)
+
 	//For every loop we need at least to update theses
 	calls = append(calls, multicalls.GetPricePerShare(vault.Address.Hex(), vault.Address))
+	calls = append(calls, multicalls.GetConvertPricePerShare(vault.Address.Hex(), vault.Address, asEthers))
+	calls = append(calls, multicalls.GetDecimals(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetTotalAssets(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetDefaultQueue(vault.Address.Hex(), vault.Address))
 	calls = append(calls, multicalls.GetAPIVersion(vault.Address.Hex(), vault.Address))
@@ -230,14 +236,40 @@ func handleV2VaultCalls(vault models.TVault, response map[string][]interface{}) 
 
 func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) models.TVault {
 	rawPricePerShare := response[vault.Address.Hex()+`pricePerShare`]
+	rawConvertPricePerShare := response[vault.Address.Hex()+`convertToAssets`]
 	rawTotalAssets := response[vault.Address.Hex()+`totalAssets`]
 	rawDefaultQueue := response[vault.Address.Hex()+`get_default_queue`]
 	rawShutdown := response[vault.Address.Hex()+`isShutdown`]
 	rawUnderlying := response[vault.Address.Hex()+`asset`]
 	rawApiVersion := response[vault.Address.Hex()+`apiVersion`]
 	rawAccountant := response[vault.Address.Hex()+`accountant`]
+	rawDecimals := response[vault.Address.Hex()+`decimals`]
 
 	vault.LastPricePerShare = helpers.DecodeBigInt(rawPricePerShare)
+	if vault.LastPricePerShare.IsZero() {
+		//Try to use rawConvertPricePerShare. However, rawConvertPricePerShare is on base 10^18 while the token decimals are on base 10^decimals.
+		//We need to convert rawConvertPricePerShare to the same base as the token decimals
+		decimals := helpers.DecodeUint64(rawDecimals)
+		converted := helpers.DecodeBigInt(rawConvertPricePerShare)
+
+		//Assuming decimals is 6, the code below is doing `convertedValue * 10^6 / 10^18`
+		vault.LastPricePerShare = bigNumber.NewInt(0).Div(
+			bigNumber.NewInt(0).Mul(
+				converted,
+				bigNumber.NewInt(10).Exp(
+					bigNumber.NewInt(10),
+					bigNumber.NewInt(int64(decimals)),
+					nil,
+				),
+			),
+			bigNumber.NewInt(10).Exp(
+				bigNumber.NewInt(10),
+				bigNumber.NewInt(18),
+				nil,
+			),
+		)
+	}
+
 	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
 	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
 	if len(rawShutdown) > 0 {

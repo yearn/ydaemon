@@ -83,8 +83,8 @@ func (y Controller) GetIsGimme(c *gin.Context) []TSimplifiedExternalVault {
 }
 
 /**************************************************************************************************
-** GetIsPendle is a gin handler function to retrieve all the vaults matching the pendle category
-** and the inclusion.IsYearn filter.
+** GetIsYearnPendle is a gin handler function to retrieve all the vaults matching the pendle
+** category and the inclusion.IsYearn filter.
 **************************************************************************************************/
 func (y Controller) GetIsYearnPendle(c *gin.Context) []TSimplifiedExternalVault {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -99,5 +99,55 @@ func (y Controller) GetIsYearnPendle(c *gin.Context) []TSimplifiedExternalVault 
 func (y Controller) GetIsOptimism(c *gin.Context) []TSimplifiedExternalVault {
 	return getVaults(c, func(vault models.TVault) bool {
 		return vault.Metadata.Inclusion.IsYearn && vault.ChainID == 10
+	})
+}
+
+/**************************************************************************************************
+** GetIsYearnPoolTogether is a gin handler function to retrieve all the vaults matching the
+** inclusion.isPoolTogether filter.
+**************************************************************************************************/
+func (y Controller) GetIsYearnPoolTogether(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsPoolTogether
+	})
+}
+
+/**************************************************************************************************
+** GetIsAjna is a gin handler function to retrieve all the vaults with a name matching `AJNA` or
+** with the inclusion.IsYearnJuiced filter.
+**************************************************************************************************/
+func (y Controller) GetIsAjna(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Ajna"
+	})
+}
+
+/**************************************************************************************************
+** GetIsVelodrome is a gin handler function to retrieve all the vaults with a name matching the
+** Velodrome category
+**************************************************************************************************/
+func (y Controller) GetIsVelodrome(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Velodrome"
+	})
+}
+
+/**************************************************************************************************
+** GetIsAerodrome is a gin handler function to retrieve all the vaults with a name matching the
+** Aerodrome category
+**************************************************************************************************/
+func (y Controller) GetIsAerodrome(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Aerodrome"
+	})
+}
+
+/**************************************************************************************************
+** GetIsCurve is a gin handler function to retrieve all the vaults with a name matching the
+** Curve category
+**************************************************************************************************/
+func (y Controller) GetIsCurve(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsYearn && vault.Metadata.Category == "Curve"
 	})
 }

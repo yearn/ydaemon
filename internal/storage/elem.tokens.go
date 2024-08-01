@@ -25,6 +25,7 @@ func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
 	// Load the JSON file
+	fileName := env.BASE_DATA_PATH + "/meta/tokens/" + chainIDStr + ".json"
 	file, err := os.Open(env.BASE_DATA_PATH + "/meta/tokens/" + chainIDStr + ".json")
 	if err != nil {
 		return TJsonERC20Storage{}
@@ -35,7 +36,7 @@ func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
 	decoder := json.NewDecoder(file)
 	err = decoder.Decode(&tokens)
 	if err != nil {
-		logs.Error("Failed to decode tokens JSON file: " + err.Error())
+		logs.Error("Failed to decode tokens JSON file " + fileName + ": " + err.Error())
 		return TJsonERC20Storage{}
 	}
 

@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-12T14:47:11.785481+02:00",
+	"lastUpdate": "2024-07-31T11:36:09.981108+02:00",
 	"version": {
 		"major": 1,
-		"minor": 5,
-		"patch": 0
+		"minor": 6,
+		"patch": 2
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -40,7 +40,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -91,7 +91,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma USDC.e/DAI LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -144,7 +144,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Stargate DAI Staker",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -152,6 +152,57 @@
 				"uiNotice": "",
 				"riskLevel": 1,
 				"protocols": [],
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x0fefee13864c431717f5b2678607b6ce532a170c": {
+			"address": "0x0fefee13864c431717f5b2678607b6ce532a170c",
+			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.0",
+			"activation": 59497050,
+			"chainID": 137,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -237,7 +288,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -301,7 +352,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "CompV3 WMATIC Lender Borrower",
 				"displaySymbol": "ysWMATIC",
 				"description": "Supplies {{token}} to [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to use as collateral to borrow USDC.e which it deposits back in to earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -352,7 +403,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Stargate USDT Staker",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -393,7 +444,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -457,7 +508,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma USDC.e/WETH Wide LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -510,7 +561,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -550,7 +601,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -563,7 +614,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "USDC",
 				"displaySymbol": "yvUSDC-1",
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -614,7 +665,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WBTC/WETH LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -667,7 +718,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Aave V3 USDT Lender",
 				"displaySymbol": "ysUSDT",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -769,7 +820,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WMATIC/USDC.e LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -811,7 +862,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -822,7 +873,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
@@ -924,7 +975,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -975,7 +1026,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma USDC.e/WETH Narrow LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1079,7 +1130,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1181,7 +1232,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Stargate USDC.e Staker",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1232,7 +1283,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WMATIC/MATICX LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1327,7 +1378,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -1340,7 +1391,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "DAI",
 				"displaySymbol": "yvDAI-1",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -1391,7 +1442,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WMATIC/WETH Wide LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1436,7 +1487,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -1449,7 +1500,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "USDC.e",
 				"displaySymbol": "yvUSDC.e-1",
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -1500,7 +1551,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma USDC.e/USDT LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1553,7 +1604,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WBTC/USDC.e LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1606,7 +1657,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Compound V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1657,7 +1708,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Gamma",
 				"displayName": "Gamma WMATIC/WETH Narrow LP",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1701,7 +1752,7 @@
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": true,
+				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
 				"isPool": false,
@@ -1714,7 +1765,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "USDT",
 				"displaySymbol": "yvUSDt-1",
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -1816,7 +1867,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1918,7 +1969,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Aave V3 USDC.e Lender",
 				"displaySymbol": "ysUSDC.e",
 				"description": "Supplies USDC.e to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -1969,7 +2020,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Aave V3 DAI Lender",
 				"displaySymbol": "ysDAI",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -2012,7 +2063,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -2023,7 +2074,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Ajna",
 				"displayName": "Yearn-Ajna USDC Vault",
 				"displaySymbol": "yvAjnaUSDC",
 				"description": "Supplies {{token}} to multiple [Ajna](https://www.ajna.finance/) isolated lending pools to generate interest. \u003cbr/\u003e\u003cbr/\u003eDISCLAIMER: This Vault deposits into Ajna, a new protocol. The strategies are not 100% liquid. There may be times when you cannot withdraw all of your funds. Proceed with caution. \u003cbr/\u003e\u003cbr/\u003eALPHA: This vault may also be Juiced with extra rewards. Visit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
@@ -2125,7 +2176,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2176,7 +2227,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

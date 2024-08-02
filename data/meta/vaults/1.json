@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-30T16:33:56.40273+02:00",
+	"lastUpdate": "2024-08-01T15:59:29.087396+02:00",
 	"version": {
-		"major": 9,
-		"minor": 3,
+		"major": 10,
+		"minor": 1,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -99,7 +99,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -155,7 +155,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -211,7 +211,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -266,7 +266,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -305,8 +305,8 @@
 				"0xeed00e00236cd7f36f2558d8b5fd05046449599d",
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab"
 			],
-			"lastPricePerShare": "1024125058529768037",
-			"lastTotalAssets": "2920892776129128571928461",
+			"lastPricePerShare": "1025431572258274893",
+			"lastTotalAssets": "2802190952012820325569786",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -324,7 +324,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "DAI",
 				"displaySymbol": "yvDAI",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -378,7 +378,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -486,7 +486,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -522,7 +522,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "191504310697314664391050",
+			"lastTotalAssets": "185026395132007095032579",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -540,7 +540,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "mkUSD-A",
 				"displaySymbol": "",
 				"description": "Multi strategy mkUSD vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
@@ -575,8 +575,8 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1544229257420851124",
-			"lastTotalAssets": "61066229047217561806442",
+			"lastPricePerShare": "1553029733435477740",
+			"lastTotalAssets": "61313681611614531396050",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -651,7 +651,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -707,7 +707,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -741,8 +741,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1024520178785132110",
-			"lastTotalAssets": "193899146178978228815401",
+			"lastPricePerShare": "1025839424262612397",
+			"lastTotalAssets": "204892780732378482320314",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -760,7 +760,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to the corresponding [Sturdy](https://v2.sturdy.finance/aggregators) aggregator earning the underlying yield and compounding the rewards",
@@ -815,7 +815,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -850,7 +850,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1093528475298801418",
-			"lastTotalAssets": "3229807981643753291781363",
+			"lastTotalAssets": "2585623207681706313458293",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -922,7 +922,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -976,7 +976,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1085,7 +1085,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1247,7 +1247,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1355,7 +1355,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x4f43c77872db6ba177c270986cd30c3381af37ee/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -1443,8 +1443,8 @@
 			"lastActiveStrategies": [
 				"0xa323cccbcbade7806ca5bb9951bebd89a7882bf8"
 			],
-			"lastPricePerShare": "1155816995670072529",
-			"lastTotalAssets": "5571897999159810198836105",
+			"lastPricePerShare": "1172693915116141592",
+			"lastTotalAssets": "5938110326016935978332466",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1462,7 +1462,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1516,7 +1516,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1573,7 +1573,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1631,7 +1631,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1683,7 +1683,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1718,7 +1718,7 @@
 				"0x167e0fc591abf5ab77434e115ecf0fbbace39a54",
 				"0x103f3fb1ec32a85f4692df1b4b18c428dbac59da"
 			],
-			"lastPricePerShare": "1025126665512562793",
+			"lastPricePerShare": "1029851352444029696",
 			"lastTotalAssets": "83563272178074745390",
 			"metadata": {
 				"isRetired": false,
@@ -1738,7 +1738,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1774,7 +1774,7 @@
 			"lastActiveStrategies": [
 				"0x2fa2e992bb5c68a8b61cbfa995431afbd0a4db11"
 			],
-			"lastPricePerShare": "1409837170184794330",
+			"lastPricePerShare": "1411238654560998118",
 			"lastTotalAssets": "1696563355495426302297",
 			"metadata": {
 				"isRetired": false,
@@ -1849,7 +1849,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2062,7 +2062,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2118,7 +2118,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2172,7 +2172,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2278,7 +2278,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2332,7 +2332,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "AUD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2388,7 +2388,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2445,7 +2445,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2554,7 +2554,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x93a82f3873e5b4ff81902663c43286d662f6721c/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -2606,7 +2606,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2717,7 +2717,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2749,8 +2749,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1046682948516234396",
-			"lastTotalAssets": "17429420185357531725902",
+			"lastPricePerShare": "1048221595080802857",
+			"lastTotalAssets": "17461248228803381654229",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2768,7 +2768,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Spark Finance](https://spark.fi/) to generate interest.",
@@ -2803,8 +2803,8 @@
 				"0xe228772c0a7dc539e6c763a67c0e0de70f50955d",
 				"0xa0b931553bb6670e5bd889cac7691b2b4ccffff0"
 			],
-			"lastPricePerShare": "1021610385148603668",
-			"lastTotalAssets": "552534495448593159252055",
+			"lastPricePerShare": "1025420913913940301",
+			"lastTotalAssets": "554825346523588270976474",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2822,7 +2822,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2846,16 +2846,16 @@
 			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
-			"version": "3.0.0",
+			"version": "3.0.2",
 			"activation": 20369520,
 			"chainID": 1,
 			"endorsed": true,
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2867,13 +2867,13 @@
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0x206db0a0af10bec57784045e089a418771d20227",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/weth-mainnet) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -2927,7 +2927,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "B-80BAL-20WETH"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3035,7 +3035,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3089,7 +3089,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3123,8 +3123,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006687249703613463",
-			"lastTotalAssets": "538199594155164406222",
+			"lastPricePerShare": "1211800565214332777",
+			"lastTotalAssets": "447647579868437487",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3196,7 +3196,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3231,8 +3231,8 @@
 				"0xa991652b995c4fb3c87d165311bd77e139297cce",
 				"0x61da32f660f37f21e5f0314b0a6e4ded62c358d2"
 			],
-			"lastPricePerShare": "1195749601506691059",
-			"lastTotalAssets": "637535750565691730199877",
+			"lastPricePerShare": "1197371036594561632",
+			"lastTotalAssets": "637988573474608183682306",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3251,7 +3251,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3361,7 +3361,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3398,8 +3398,8 @@
 			"lastActiveStrategies": [
 				"0x430af232a837510b6f677d1e5ae3715c1e94d9d7"
 			],
-			"lastPricePerShare": "1000000000687359581",
-			"lastTotalAssets": "4000000129204378602394",
+			"lastPricePerShare": "1000016083738245973",
+			"lastTotalAssets": "4001808472769742268875",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -3417,7 +3417,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3451,8 +3451,8 @@
 			"lastActiveStrategies": [
 				"0xbdf157c3bad2164ce6f9dc607fd115374010c5dc"
 			],
-			"lastPricePerShare": "1736418721104432895",
-			"lastTotalAssets": "44428036870234295200981503",
+			"lastPricePerShare": "1745302390314111838",
+			"lastTotalAssets": "45138929395619968299121316",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3471,7 +3471,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3527,7 +3527,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3561,8 +3561,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1026444977475918497",
-			"lastTotalAssets": "191403034355750577307941",
+			"lastPricePerShare": "1027764989090744777",
+			"lastTotalAssets": "202546639743534010907062",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3580,7 +3580,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3634,7 +3634,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3686,7 +3686,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3741,7 +3741,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3798,7 +3798,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3903,7 +3903,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -3960,7 +3960,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4105,8 +4105,8 @@
 				"0xecbd24ea29b5cf23fbe658da506589982ef085d4",
 				"0xda00352a66577b2c844678ec78c062a2f68836a5"
 			],
-			"lastPricePerShare": "1179833024615738656",
-			"lastTotalAssets": "734611988259381882577",
+			"lastPricePerShare": "1180187109461797730",
+			"lastTotalAssets": "735392314854392862613",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4124,7 +4124,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4289,7 +4289,7 @@
 				"stability": {
 					"stability": "Unstable"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4345,7 +4345,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4399,7 +4399,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4453,7 +4453,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4510,7 +4510,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4892,7 +4892,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4946,7 +4946,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5057,7 +5057,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5114,7 +5114,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5224,7 +5224,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5281,7 +5281,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5444,7 +5444,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5480,8 +5480,8 @@
 				"0x24788d1468eebb6a57ab8ab94a307f8b31bb2e81",
 				"0x961082de19e9cf87bb4850f6f347407be89d9ebb"
 			],
-			"lastPricePerShare": "1142494959058004473",
-			"lastTotalAssets": "26789480719200771928774",
+			"lastPricePerShare": "1143463448464802554",
+			"lastTotalAssets": "26838164216024899363344",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5500,7 +5500,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5551,7 +5551,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xbbd395d4820da5c89a3bca4fa28af97254a0fcbe/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -5605,7 +5605,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5659,7 +5659,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5711,7 +5711,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5765,7 +5765,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5856,10 +5856,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xbc04efd0d18685ba97cfade4e2d3171701b4099c",
-				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8"
+				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
+				"0x059b1507b22267fc1cda8b6d2fbf2cab5d7a1ce5"
 			],
 			"lastPricePerShare": "1069352",
-			"lastTotalAssets": "6355438431753",
+			"lastTotalAssets": "6371797985121",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5878,7 +5879,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -5932,7 +5933,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6090,7 +6091,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6144,7 +6145,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6201,7 +6202,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6314,7 +6315,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6351,8 +6352,8 @@
 				"0xe318fc9eec4c9aec494b3da06e6d97fe07b2c98b",
 				"0xe403f03eee3aa19156eb13fb6edd9e77de62b89e"
 			],
-			"lastPricePerShare": "1339331237227756203",
-			"lastTotalAssets": "8639611735531106252903",
+			"lastPricePerShare": "1357928872135952831",
+			"lastTotalAssets": "2105915990862677642011",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6424,7 +6425,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6531,7 +6532,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6588,7 +6589,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6641,7 +6642,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xa9355a5d306c67027c54de0e5a72df76befa5694/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -6675,7 +6676,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "687418304108885771421",
+			"lastTotalAssets": "612418304108885771421",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6748,7 +6749,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6804,7 +6805,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6858,7 +6859,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6915,7 +6916,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -6969,7 +6970,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7022,7 +7023,7 @@
 				"stability": {
 					"stability": "Unstable"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7076,7 +7077,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7131,7 +7132,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7185,7 +7186,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CHF"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7242,7 +7243,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7349,7 +7350,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7457,7 +7458,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7513,7 +7514,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7567,7 +7568,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7623,7 +7624,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7680,7 +7681,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7734,7 +7735,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7786,7 +7787,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7891,7 +7892,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7942,7 +7943,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -7977,8 +7978,8 @@
 			"lastActiveStrategies": [
 				"0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"
 			],
-			"lastPricePerShare": "1008228668393020298",
-			"lastTotalAssets": "811244196118208730936",
+			"lastPricePerShare": "1008407073339065828",
+			"lastTotalAssets": "811713257204953474875",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8052,7 +8053,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8169,7 +8170,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "KRW"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8223,7 +8224,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8278,7 +8279,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "YFI"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8335,7 +8336,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "KRW"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8391,7 +8392,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8445,7 +8446,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8477,8 +8478,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1023966068096739388",
-			"lastTotalAssets": "29318989405832000186",
+			"lastPricePerShare": "1025278857848507952",
+			"lastTotalAssets": "29365517344439577560",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8496,7 +8497,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -8604,7 +8605,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8658,7 +8659,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8684,16 +8685,18 @@
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
-			"version": "3.0.1",
+			"version": "3.0.2",
 			"activation": 20391847,
 			"chainID": 1,
 			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [
+				"0x8f6695aacceb1675ad38ff529e5fbaebd76942e1"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -8705,13 +8708,13 @@
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0x57fc2d9809f777cd5c8c433442264b6e8be7fce4",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
-				"category": "",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8746,8 +8749,8 @@
 				"0x472f4e5533fb8f7fee97dacd3dbae9d83867ab07",
 				"0x045b76468342d765bdaa6d2d74bacee4ecdb6f5b"
 			],
-			"lastPricePerShare": "1031250926406038160",
-			"lastTotalAssets": "776787671043939206620",
+			"lastPricePerShare": "1031420667323939064",
+			"lastTotalAssets": "776898370569648532863",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8766,7 +8769,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8822,7 +8825,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "JPY"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8878,7 +8881,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "GBP"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8934,7 +8937,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -8990,7 +8993,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9044,7 +9047,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9101,7 +9104,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9208,7 +9211,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9315,7 +9318,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9371,7 +9374,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9428,7 +9431,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9485,7 +9488,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9540,7 +9543,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9603,7 +9606,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9658,7 +9661,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9692,8 +9695,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1049711855678926754",
-			"lastTotalAssets": "67250528125331614674",
+			"lastPricePerShare": "1052022916751124321",
+			"lastTotalAssets": "67494519474551121023",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -9746,7 +9749,7 @@
 				"0x97e8a7f7af2558ef6cb92c31458229422cedcdae"
 			],
 			"lastPricePerShare": "1113151405837052129",
-			"lastTotalAssets": "305454014189331420425013",
+			"lastTotalAssets": "305385493592316248255779",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -9765,7 +9768,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9821,7 +9824,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9913,7 +9916,7 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab"
 			],
 			"lastPricePerShare": "1002496699773685396",
-			"lastTotalAssets": "74988774113113151955448",
+			"lastTotalAssets": "74989774113113151955448",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -9931,7 +9934,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -9982,7 +9985,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10087,7 +10090,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10145,7 +10148,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10197,7 +10200,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10254,7 +10257,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10367,7 +10370,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10421,7 +10424,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10532,7 +10535,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10573,7 +10576,7 @@
 				"0x17304367c7680a62f23b667ce5ef7e80ae296205"
 			],
 			"lastPricePerShare": "1023757080902174538",
-			"lastTotalAssets": "28175371533530228698611",
+			"lastTotalAssets": "28169895663094302111845",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10646,7 +10649,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10702,7 +10705,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10794,8 +10797,8 @@
 				"0xfa5c4a53d49fd936ca2b757f2c64d4007dd87e5b",
 				"0xa279b480428e58c248ae6cc110aaf67fb8237baa"
 			],
-			"lastPricePerShare": "1278254013511142399",
-			"lastTotalAssets": "2390137440848815307681",
+			"lastPricePerShare": "1297335644456540254",
+			"lastTotalAssets": "2486703950516811464716",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10906,7 +10909,7 @@
 				"0x96109860ec35742bf813e3e8070157a30cb6e3de"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "2000000000000000000",
+			"lastTotalAssets": "6694548396758917270",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10924,7 +10927,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -10979,7 +10982,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11144,7 +11147,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11198,7 +11201,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11237,7 +11240,7 @@
 				"0xb6abbd5594b344f17af8d9a83869c3660ea9a6bd"
 			],
 			"lastPricePerShare": "1142643016548563972",
-			"lastTotalAssets": "69989212363190686939565",
+			"lastTotalAssets": "69973150972955600766760",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11309,7 +11312,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11344,8 +11347,8 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x7bba4a580b97cfbb0f100fb3ea74ae9f1377d039"
 			],
-			"lastPricePerShare": "1226039959751455607",
-			"lastTotalAssets": "5032753840722707900469536",
+			"lastPricePerShare": "1228519713437615735",
+			"lastTotalAssets": "4996168751539350211072376",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11364,7 +11367,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11420,7 +11423,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11533,7 +11536,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11589,7 +11592,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11702,7 +11705,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11762,7 +11765,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11873,7 +11876,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11925,7 +11928,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -11982,7 +11985,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CHF"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12075,8 +12078,8 @@
 				"0x26fe402a57d52c8a323bb6e09f06489c8216ac88",
 				"0x8dde9a50a91cc0a5dabdc5d3931c1af60408c84d"
 			],
-			"lastPricePerShare": "1005819378674312233",
-			"lastTotalAssets": "1280743613081346045362362",
+			"lastPricePerShare": "1008161575708901215",
+			"lastTotalAssets": "1057251229640978700606669",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12094,7 +12097,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12129,8 +12132,8 @@
 				"0xf6e8c7574636c9ef3f35355da475d7e340a4ed62",
 				"0x0a939d1e278d22a87fb254a50d27cf9f3e14af7b"
 			],
-			"lastPricePerShare": "1207714302693996884",
-			"lastTotalAssets": "1932179734719586489707",
+			"lastPricePerShare": "1218861108688500661",
+			"lastTotalAssets": "1952014946967326004706",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12314,7 +12317,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12428,7 +12431,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12482,7 +12485,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12518,7 +12521,7 @@
 				"0x8677d8f5ad53534a28ac9b63f914483f5e0b3776"
 			],
 			"lastPricePerShare": "1115332556737432442",
-			"lastTotalAssets": "49068164264621350323",
+			"lastTotalAssets": "42117347572193109204",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12573,7 +12576,7 @@
 				"0xa04947059831783c561e59a43b93dcb5bee7cab2"
 			],
 			"lastPricePerShare": "1066257965356893367",
-			"lastTotalAssets": "174537767326822976718",
+			"lastTotalAssets": "174581359441178115476",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12648,7 +12651,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12752,7 +12755,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12806,7 +12809,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12841,8 +12844,8 @@
 				"0x7f074cd344cd59fa20866796960a5c5a3f97316e",
 				"0xb803a6efcdbe8d7089a38b2af183d05f3b350055"
 			],
-			"lastPricePerShare": "1124748827929731403",
-			"lastTotalAssets": "292972042832702344987046",
+			"lastPricePerShare": "1133190226115940459",
+			"lastTotalAssets": "294357419147638072544458",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12861,7 +12864,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12924,7 +12927,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -12979,7 +12982,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "FXS"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13013,8 +13016,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1026911",
-			"lastTotalAssets": "370522858748",
+			"lastPricePerShare": "1042586",
+			"lastTotalAssets": "14713922409",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13032,7 +13035,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "Compound V3 USDC Lender",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc-mainnet) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -13086,7 +13089,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13196,7 +13199,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13234,7 +13237,7 @@
 				"0x9b5ea4eb266d47b7056343335dae16b0573c2522"
 			],
 			"lastPricePerShare": "1102705590136189023",
-			"lastTotalAssets": "709129675018906955570",
+			"lastTotalAssets": "696246123325340956200",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13309,7 +13312,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13366,7 +13369,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13404,7 +13407,7 @@
 				"0x5c75263c5390798082cfc389ad38b12196c1c256"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "94789335862143661",
+			"lastTotalAssets": "123116192392354316",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13473,7 +13476,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x38100a480dbed278b0fe57ba80a75498a7dc5bb1/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -13528,7 +13531,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13584,7 +13587,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13638,7 +13641,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13729,8 +13732,8 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1168108484186288456",
-			"lastTotalAssets": "109692908092386458187",
+			"lastPricePerShare": "1173508380728387196",
+			"lastTotalAssets": "110302139790619941817",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13749,7 +13752,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13805,7 +13808,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13859,7 +13862,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13915,7 +13918,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -13968,7 +13971,7 @@
 				"stability": {
 					"stability": "Unstable"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14022,7 +14025,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14238,7 +14241,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14292,7 +14295,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14402,7 +14405,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14456,7 +14459,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14513,7 +14516,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14569,7 +14572,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14677,7 +14680,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14731,7 +14734,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14787,7 +14790,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14841,7 +14844,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14948,7 +14951,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -14984,10 +14987,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0x028ec7330ff87667b6dfb0d94b954c820195336c",
-				"0x3927c4ad1d63bf9629fdae1318aa31df9135f544"
+				"0x3927c4ad1d63bf9629fdae1318aa31df9135f544",
+				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6"
 			],
-			"lastPricePerShare": "1059386727765271824",
-			"lastTotalAssets": "1988417271030689760588308",
+			"lastPricePerShare": "1061021998639156703",
+			"lastTotalAssets": "1387335680410477451756064",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15005,7 +15009,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "DAI-2",
 				"displaySymbol": "",
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
@@ -15056,7 +15060,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x34280882267ffa6383b363e278b027be083bbe3b/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -15111,7 +15115,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "YFI"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15150,7 +15154,7 @@
 				"0xb3bf04a939aacff5bdcfc273ce4f36cf29f063db"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "66742755286314842695110",
+			"lastTotalAssets": "703019584393097603174832",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15204,7 +15208,7 @@
 				"0x8778353f84c1839aaed64adaf527ef29dab3249d"
 			],
 			"lastPricePerShare": "1025010269882741293",
-			"lastTotalAssets": "86694415853652201345610",
+			"lastTotalAssets": "87303765573942686668145",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15223,7 +15227,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15276,7 +15280,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -15328,7 +15332,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15431,7 +15435,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15485,7 +15489,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15541,7 +15545,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15579,7 +15583,7 @@
 				"0x4c39e5cc71de6a9d84359faddf21860f8d0e7ae6"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "63222104498607445020",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15597,7 +15601,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "Curve dgnETH-ETH+ Factory",
 				"displaySymbol": "yvCurve-dgnETH-ETH+-f",
 				"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains two different Reserve RTokens, dgnETH and ETH+. These RTokens are 100% backed by a diversified set of underlying collateral tokens, all pegged to ETH. For more details, check out Reserve's [website](https://app.reserve.org/compare).",
@@ -15741,8 +15745,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3591611102476336167",
-			"lastTotalAssets": "1168649849431695899",
+			"lastPricePerShare": "3591611102476336171",
+			"lastTotalAssets": "809488739184062283",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15812,7 +15816,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15848,8 +15852,8 @@
 				"0xbdb97ec319c41c6fa383e94ece6bdf383dfc7be4",
 				"0x7ee351aa702c8fc735d77fb229b7676ac15d7c79"
 			],
-			"lastPricePerShare": "1004999",
-			"lastTotalAssets": "16271001833",
+			"lastPricePerShare": "1006301",
+			"lastTotalAssets": "15965698079",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -15867,7 +15871,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15921,7 +15925,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -15978,7 +15982,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "ANGLE"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16088,7 +16092,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16124,8 +16128,8 @@
 				"0x64e4779bff8588ccdca9f290b9bc346a798f5277",
 				"0x120fa5738751b275aed7f7b46b98beb38679e093"
 			],
-			"lastPricePerShare": "1070241387894649696",
-			"lastTotalAssets": "31446936733518657378283",
+			"lastPricePerShare": "1070726126861414760",
+			"lastTotalAssets": "31430134750381274642994",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16232,8 +16236,8 @@
 				"0x97d868b5c2937355bf89c5e5463d52016240fe86",
 				"0x0fd45d4fb70d1ec95264da30934095443dc6af6a"
 			],
-			"lastPricePerShare": "1096506",
-			"lastTotalAssets": "13393258171233",
+			"lastPricePerShare": "1097270",
+			"lastTotalAssets": "12837299391566",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16252,7 +16256,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16339,8 +16343,8 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1259861847231157160",
-			"lastTotalAssets": "1031974880737321077257958",
+			"lastPricePerShare": "1270037657408667744",
+			"lastTotalAssets": "1041229248958505632740241",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16359,7 +16363,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16417,7 +16421,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16452,8 +16456,8 @@
 				"0xf87d078899626cf1a4ef49acba0b60138bac37b2",
 				"0x51d749df68ecf652de70f587a92c119d454b7563"
 			],
-			"lastPricePerShare": "1035302356424589083",
-			"lastTotalAssets": "264953523196101383598520",
+			"lastPricePerShare": "1045413432842586831",
+			"lastTotalAssets": "324874835077989987440816",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16472,7 +16476,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16510,7 +16514,7 @@
 				"0x1e93cd1e6766e7fcb459092e160f876dda650415"
 			],
 			"lastPricePerShare": "102392452",
-			"lastTotalAssets": "5310509170",
+			"lastTotalAssets": "5268343228",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16583,7 +16587,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16639,7 +16643,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16693,7 +16697,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16795,7 +16799,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xf32e58f92e60f4b0a37a69b95d642a471365eae8/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -16850,7 +16854,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16907,7 +16911,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -16963,7 +16967,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17057,8 +17061,8 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0x9ad3047d578e79187f0faeef26729097a4973325"
 			],
-			"lastPricePerShare": "1104601989875432881",
-			"lastTotalAssets": "848105414003972667657",
+			"lastPricePerShare": "1105735053904458226",
+			"lastTotalAssets": "823291774455914410833",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17132,7 +17136,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17186,7 +17190,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17222,7 +17226,7 @@
 				"0x5d2cf3986f5589eb44d71c1fdf6436096de8bf4c"
 			],
 			"lastPricePerShare": "1025873346741356340",
-			"lastTotalAssets": "175104460978695373104878",
+			"lastTotalAssets": "173639957264293075698608",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17241,7 +17245,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17333,7 +17337,7 @@
 				"0xf13892b6dfea2346dad34182d5d4ce005e2160fd"
 			],
 			"lastPricePerShare": "1031350078776721812",
-			"lastTotalAssets": "59091897452816031360230",
+			"lastTotalAssets": "28136104209333786669086",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17351,7 +17355,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17443,8 +17447,8 @@
 				"0xe92ade9ee76681f96c8bb0b352d5410ca5b35d70",
 				"0x43ccad774b20de2cf920531529a7b7cc5a23f887"
 			],
-			"lastPricePerShare": "1014246037302931995",
-			"lastTotalAssets": "496002551026111393275",
+			"lastPricePerShare": "1014988560160259534",
+			"lastTotalAssets": "482706815087648580554",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17497,8 +17501,8 @@
 				"0x5cc89e5dd6162a318d394fe14956be428dc87ecf",
 				"0x1e27b0d41923f8260964368c7ad519951f1e74d6"
 			],
-			"lastPricePerShare": "1124969810525923942",
-			"lastTotalAssets": "170985330858707528502",
+			"lastPricePerShare": "1129845599045924734",
+			"lastTotalAssets": "171809145546498246005",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17517,7 +17521,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17555,7 +17559,7 @@
 				"0x8308cf5c99a8b153d7f1d66e40593a910f9f7ed0"
 			],
 			"lastPricePerShare": "1002175193468980501",
-			"lastTotalAssets": "426780948475844265941384",
+			"lastTotalAssets": "426712427878829093772154",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17574,7 +17578,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17631,7 +17635,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17669,7 +17673,7 @@
 				"0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
 				"0xf6e2d36c489e5b361cdc962d4568cea663ad5ddc"
 			],
-			"lastPricePerShare": "1013927",
+			"lastPricePerShare": "1014970",
 			"lastTotalAssets": "25466674951",
 			"metadata": {
 				"isRetired": false,
@@ -17688,7 +17692,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17743,7 +17747,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17854,7 +17858,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -17962,7 +17966,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18013,7 +18017,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xd0354d4e7bcf345fb117cabe41acadb724eccca2/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -18122,7 +18126,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18177,7 +18181,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18233,7 +18237,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18287,7 +18291,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18343,7 +18347,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18400,7 +18404,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18456,7 +18460,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18511,7 +18515,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18669,7 +18673,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xb8fbf5cc2826c1c9909f59dd11633b494f46fbfe/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -18720,7 +18724,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x17be998a578fd97687b24e83954fec86dc20c979/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -18752,8 +18756,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1017508446061216186",
-			"lastTotalAssets": "751081137979118840807",
+			"lastPricePerShare": "1018002853767510733",
+			"lastTotalAssets": "751342712640352839594",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -18825,7 +18829,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18879,7 +18883,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -18987,7 +18991,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19021,10 +19025,10 @@
 			"lastActiveStrategies": [
 				"0x9c2ac19775023bec9dd1f9208cbcd9fc3a19d5f2",
 				"0xee0a6d15f526f00b73a084ad1c5a81cff09cd2c5",
-				"0x4cf681652b9bf9c32129b3f6edb6873e8c96ee63"
+				"0xaef9ae268c601606679c8afb7f5285bdb9c58f54"
 			],
-			"lastPricePerShare": "1956934424797113050",
-			"lastTotalAssets": "1448031922034412946811874",
+			"lastPricePerShare": "2015796777574377450",
+			"lastTotalAssets": "1536373378208792670389390",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19042,7 +19046,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19096,7 +19100,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19150,7 +19154,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19186,7 +19190,7 @@
 				"0x517c12b01de47a0a71b9c5fd055f75a2d99ceb87"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "205381870319532768227251",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19204,7 +19208,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19314,7 +19318,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19352,7 +19356,7 @@
 				"0xc8d4a8a7f593e73cd32cd6c5fb11fe20f23f9695"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "228053014310023834961",
+			"lastTotalAssets": "275619014310023834961",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19457,7 +19461,7 @@
 				"0xb080943309c2f86ae7e194d88284cd874b946db9",
 				"0x6b6b735e2f2f0bc6ec845ba0e32d053e85208c0a"
 			],
-			"lastPricePerShare": "1057552664108645417",
+			"lastPricePerShare": "1063159156141140850",
 			"lastTotalAssets": "133048873102924939998335",
 			"metadata": {
 				"isRetired": false,
@@ -19476,7 +19480,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19528,7 +19532,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19567,7 +19571,7 @@
 				"0xadc0078650b703548ffd4e2536d7816c2cb73c64"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "922329395928304055",
+			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19617,8 +19621,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1058212",
-			"lastTotalAssets": "1456263999363",
+			"lastPricePerShare": "1059723",
+			"lastTotalAssets": "2485892752186",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19636,7 +19640,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -19691,7 +19695,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "GBP"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19730,8 +19734,8 @@
 				"0x7ee351aa702c8fc735d77fb229b7676ac15d7c79",
 				"0xfb7c06ddd70c74ac2f68d0f947be3b4c503e3d6c"
 			],
-			"lastPricePerShare": "1018873",
-			"lastTotalAssets": "2471437818742",
+			"lastPricePerShare": "1019876",
+			"lastTotalAssets": "2916065222478",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19749,13 +19753,64 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "USDC",
 				"displaySymbol": "yvUSDC",
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 1,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0xbf2e5bed692c09af8b39677e315f36adf39bd685": {
+			"address": "0xbf2e5bed692c09af8b39677e315f36adf39bd685",
+			"token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 20426902,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xbf2e5bed692c09af8b39677e315f36adf39bd685",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -19783,10 +19838,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0x27ffa71dbb25a7c52a3da74c6eed8c94c9a43e0d",
-				"0x05329aab081b125eef7fbbc8b857428d478e692b"
+				"0x05329aab081b125eef7fbbc8b857428d478e692b",
+				"0xbf2e5bed692c09af8b39677e315f36adf39bd685"
 			],
-			"lastPricePerShare": "1013397805542208835",
-			"lastTotalAssets": "384063483814050716201035",
+			"lastPricePerShare": "1015092132400064698",
+			"lastTotalAssets": "410062720175998885534167",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19804,7 +19860,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "crvUSD-2",
 				"displaySymbol": "",
 				"description": "Multi strategy crvUSD vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
@@ -19910,7 +19966,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -19964,7 +20020,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20018,7 +20074,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20072,7 +20128,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20180,7 +20236,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20291,7 +20347,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20347,7 +20403,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20454,7 +20510,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20493,8 +20549,8 @@
 				"0x23ee3d14f09946a084350cc6a7153fc6eb918817",
 				"0x288991c055f94e9a0dcf0ad08ee3496e96e68142"
 			],
-			"lastPricePerShare": "1004411646767831772",
-			"lastTotalAssets": "671095021405328241673",
+			"lastPricePerShare": "1004753111364466026",
+			"lastTotalAssets": "719631747522417207979",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20566,7 +20622,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20623,7 +20679,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20680,7 +20736,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CVX"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20736,7 +20792,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20794,7 +20850,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20852,7 +20908,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "CRV"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -20908,7 +20964,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21130,7 +21186,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21294,7 +21350,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21351,7 +21407,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21405,7 +21461,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Balancer",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21494,7 +21550,7 @@
 				"0x0669091f451142b3228171ae6ad794cf98288124"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "1186465356349108067692",
+			"lastTotalAssets": "1216280293802483015765",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -21566,7 +21622,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21758,8 +21814,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1396891968406938184",
-			"lastTotalAssets": "24403279070014495651",
+			"lastPricePerShare": "1399371734842030298",
+			"lastTotalAssets": "613794005450584848054",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -21832,7 +21888,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21888,7 +21944,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21945,7 +22001,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -21997,7 +22053,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22107,7 +22163,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22163,7 +22219,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22218,7 +22274,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "EUR"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22274,7 +22330,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22386,7 +22442,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22547,7 +22603,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22603,7 +22659,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22641,8 +22697,8 @@
 				"0x4f261ed6a8009dc247cddfcb17f4bf144e167503",
 				"0xbdfb1d6a8abfa5ac6fbc60e7a0810d4ffee36462"
 			],
-			"lastPricePerShare": "1136552256977792898",
-			"lastTotalAssets": "75732037846524860091811",
+			"lastPricePerShare": "1152765709887416865",
+			"lastTotalAssets": "28668734816977268229100",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22660,7 +22716,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22750,8 +22806,8 @@
 				"0x3280499298ace3fd3cd9c2558e9e8746ace3e52d",
 				"0x01d127d90513ccb6071f83efe15611c4d9890668"
 			],
-			"lastPricePerShare": "1126811518056406678",
-			"lastTotalAssets": "16987188516249716013845499",
+			"lastPricePerShare": "1127409969856374835",
+			"lastTotalAssets": "15957780914832505171791949",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22770,7 +22826,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22826,7 +22882,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -22867,7 +22923,7 @@
 				"0xf06b5c192d1413e7a4db1b2a9640500fdd83f1b2"
 			],
 			"lastPricePerShare": "1013228104132560109",
-			"lastTotalAssets": "183624041676304141105",
+			"lastTotalAssets": "183341312169924355427",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22941,7 +22997,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23049,7 +23105,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23103,7 +23159,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23157,7 +23213,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23211,7 +23267,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23265,7 +23321,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23535,7 +23591,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23591,7 +23647,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23628,8 +23684,8 @@
 			"lastActiveStrategies": [
 				"0x83f20f44975d03b1b09e64809b757c47f942beea"
 			],
-			"lastPricePerShare": "1025188610475332402",
-			"lastTotalAssets": "3618862989078164335631253",
+			"lastPricePerShare": "1026696132114665064",
+			"lastTotalAssets": "2918090809807624627218589",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23755,7 +23811,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23862,7 +23918,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -23916,7 +23972,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24061,8 +24117,8 @@
 			"lastActiveStrategies": [
 				"0xe7d7dfd8e393bf28a6f2cad5a0e4078f35049fb7"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "12713879294689698211",
+			"lastPricePerShare": "1002856797142690267",
+			"lastTotalAssets": "12769257476890904709",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24165,8 +24221,8 @@
 			"lastActiveStrategies": [
 				"0x566ff03cfdf9bdcda9d7a2d99180ddbd5e3b06d2"
 			],
-			"lastPricePerShare": "1224480959043319232",
-			"lastTotalAssets": "514714736196115122497",
+			"lastPricePerShare": "1224728548067578158",
+			"lastTotalAssets": "515126692038220665167",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -24297,7 +24353,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24351,7 +24407,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24461,7 +24517,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24513,7 +24569,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24620,7 +24676,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "FXS"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24732,7 +24788,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -24766,7 +24822,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1011492526592810826",
+			"lastPricePerShare": "1012047269500974955",
 			"lastTotalAssets": "57117650123598845055",
 			"metadata": {
 				"isRetired": false,
@@ -24894,7 +24950,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Bitcoin"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25111,7 +25167,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25165,7 +25221,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25197,8 +25253,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "7201154097848267548",
-			"lastTotalAssets": "135727518833213171433231",
+			"lastPricePerShare": "7207810263778634921",
+			"lastTotalAssets": "135876525961864759535742",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25216,7 +25272,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -25270,7 +25326,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25420,7 +25476,7 @@
 				"0x75c445f9c13b677b4e5488e37a8eb3c70875441e"
 			],
 			"lastPricePerShare": "1146536340809926676",
-			"lastTotalAssets": "121569315027111946633874",
+			"lastTotalAssets": "120913749017670642021746",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25493,7 +25549,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25547,7 +25603,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "Link"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25601,7 +25657,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25708,7 +25764,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25764,7 +25820,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25821,7 +25877,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25878,7 +25934,7 @@
 					"stability": "Correlated",
 					"stableBaseAsset": "Ether"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -25931,7 +25987,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26018,7 +26074,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1019674",
+			"lastPricePerShare": "1022036",
 			"lastTotalAssets": "12869074331",
 			"metadata": {
 				"isRetired": false,
@@ -26037,7 +26093,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26073,7 +26129,7 @@
 				"0xf5309b37b07250fa261b2a9c30c85ad942d6ccab"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "37168933473599841244",
+			"lastTotalAssets": "37374405574568269469",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26091,7 +26147,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26145,7 +26201,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26254,7 +26310,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26309,7 +26365,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26343,8 +26399,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1011983",
-			"lastTotalAssets": "666878899025",
+			"lastPricePerShare": "1013184",
+			"lastTotalAssets": "438684422491",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26362,7 +26418,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "Invests the USDC through MakerDAO's Peg Stability Module (PSM) into sDAI to benefit from the Dai Savings Rate.",
@@ -26416,7 +26472,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26457,7 +26513,7 @@
 				"0xad389b9caa1820ede6703c499c59bc0a503f754e"
 			],
 			"lastPricePerShare": "1017746042147565603",
-			"lastTotalAssets": "20613898022744944700295",
+			"lastTotalAssets": "20612884473211561642292",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26529,7 +26585,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26638,7 +26694,7 @@
 					"stability": "Stable",
 					"stableBaseAsset": "USD"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26689,7 +26745,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Pendle",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xfb8f489df4e04609f4f4e54f586f960818b70041/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
@@ -26797,7 +26853,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -26831,7 +26887,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1007876934714333770",
-			"lastTotalAssets": "2346897005895916955",
+			"lastTotalAssets": "2336818236548773618",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26958,7 +27014,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Prisma",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

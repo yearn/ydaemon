@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-30T16:34:00.565278+02:00",
+	"lastUpdate": "2024-08-01T15:59:30.24893+02:00",
 	"version": {
 		"major": 0,
-		"minor": 51,
+		"minor": 53,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -552,6 +552,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x04A289fe4cE5fa87a76F58d0214340fb5893A58c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x04a40ef57eb9d6265b90367ddbba17a6916a45df": {
+			"address": "0x04a40ef57eb9d6265b90367ddbba17a6916a45df",
+			"underlyingTokensAddresses": [
+				"0x513d27c94c0d81eed9dc2a88b4531a69993187cf"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Rewards: Kernel Staked ETH",
+			"symbol": "sr-ksETH",
+			"displayName": "Spectra ERC4626 Rewards: Kernel Staked ETH",
+			"displaySymbol": "sr-ksETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x04a40EF57eB9d6265b90367dDbBA17A6916a45DF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1194,6 +1210,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x0Ba11DEe8b63f08EA25d0cc733601e8C15325a8D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0bb9ab78aaf7179b7515e6753d89822b91e670c4": {
+			"address": "0x0bb9ab78aaf7179b7515e6753d89822b91e670c4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Kernel USD",
+			"symbol": "kUSD",
+			"displayName": "Kernel USD",
+			"displaySymbol": "kUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0bB9aB78aAF7179b7515e6753d89822b91e670C4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6746,6 +6776,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x46a338cf74fec38b7420eb59a506facd9448b4e7": {
+			"address": "0x46a338cf74fec38b7420eb59a506facd9448b4e7",
+			"underlyingTokensAddresses": [
+				"0x853d955acef822db058eb8505911ed77f175b99e"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sFRAX-1753833630",
+			"symbol": "PT-sFRAX-1753833630",
+			"displayName": "Principal Token: sFRAX-1753833630",
+			"displaySymbol": "PT-sFRAX-1753833630",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x46a338CF74fEc38B7420EB59A506FAcD9448B4e7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x46b7602e4dad6f71dae532588110e2711682aca3": {
 			"address": "0x46b7602e4dad6f71dae532588110e2711682aca3",
 			"underlyingTokensAddresses": [],
@@ -7678,6 +7724,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x513d27c94c0d81eed9dc2a88b4531a69993187cf": {
+			"address": "0x513d27c94c0d81eed9dc2a88b4531a69993187cf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Kernel Staked ETH",
+			"symbol": "ksETH",
+			"displayName": "Kernel Staked ETH",
+			"displaySymbol": "ksETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x513D27c94C0D81eeD9DC2a88b4531a69993187cF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x514910771af9ca656af840dff83e8264ecf986ca": {
 			"address": "0x514910771af9ca656af840dff83e8264ecf986ca",
 			"underlyingTokensAddresses": [],
@@ -8279,6 +8339,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x57fC2D9809F777Cd5c8C433442264B6E8bE7Fce4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x581b928365b2c339db2b66572e8d9d7cfcca0f80": {
+			"address": "0x581b928365b2c339db2b66572e8d9d7cfcca0f80",
+			"underlyingTokensAddresses": [
+				"0x0bb9ab78aaf7179b7515e6753d89822b91e670c4"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sr-kUSD-1738195558",
+			"symbol": "PT-sr-kUSD-1738195558",
+			"displayName": "Principal Token: sr-kUSD-1738195558",
+			"displaySymbol": "PT-sr-kUSD-1738195558",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x581b928365b2C339dB2B66572E8d9d7cFCCa0f80/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16272,6 +16348,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xae2723263cf924c0dfb81974ada52b2e671d1df3": {
+			"address": "0xae2723263cf924c0dfb81974ada52b2e671d1df3",
+			"underlyingTokensAddresses": [
+				"0x0bb9ab78aaf7179b7515e6753d89822b91e670c4"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Rewards: Kernel USD",
+			"symbol": "sr-kUSD",
+			"displayName": "Spectra ERC4626 Rewards: Kernel USD",
+			"displaySymbol": "sr-kUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xAE2723263Cf924C0dfb81974ada52b2e671D1DF3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xae29f871c9a4cda7ad2c8dff7193c2a0fe3d0c05": {
 			"address": "0xae29f871c9a4cda7ad2c8dff7193c2a0fe3d0c05",
 			"underlyingTokensAddresses": [],
@@ -16549,6 +16641,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xb0D6d7C0ed4b9C2B8186a3Ac3Acad88683586e35/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xb10a1b53f11aa969bc79dc86948de489e5996f8d": {
+			"address": "0xb10a1b53f11aa969bc79dc86948de489e5996f8d",
+			"underlyingTokensAddresses": [
+				"0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Rewards: Kernel Restaked ETH",
+			"symbol": "sr-krETH",
+			"displayName": "Spectra ERC4626 Rewards: Kernel Restaked ETH",
+			"displaySymbol": "sr-krETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xB10a1b53f11aA969bc79dc86948de489e5996f8D/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xb15a55519dbc3d770dded079ebcdeeea69a49ade": {
@@ -18124,6 +18232,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbf2e5bed692c09af8b39677e315f36adf39bd685": {
+			"address": "0xbf2e5bed692c09af8b39677e315f36adf39bd685",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Gearbox crvUSD Lender ",
+			"symbol": "yscrvUSD",
+			"displayName": "Gearbox crvUSD Lender ",
+			"displaySymbol": "yscrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xbf2e5BeD692C09aF8B39677e315F36aDF39bD685/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f": {
 			"address": "0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f",
 			"underlyingTokensAddresses": [
@@ -18661,6 +18785,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc3863CCcd012f8E45D72Ec87c5A9C4F77e1C7549/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc3a20131ee6853fc4d444c9ad952c93f77c0b71b": {
+			"address": "0xc3a20131ee6853fc4d444c9ad952c93f77c0b71b",
+			"underlyingTokensAddresses": [
+				"0x513d27c94c0d81eed9dc2a88b4531a69993187cf"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sr-ksETH-1738195500",
+			"symbol": "PT-sr-ksETH-1738195500",
+			"displayName": "Principal Token: sr-ksETH-1738195500",
+			"displaySymbol": "PT-sr-ksETH-1738195500",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC3A20131Ee6853Fc4d444c9AD952c93f77c0B71B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21295,6 +21435,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdeb0ef575c92188091d33dd1ec5b3519182aaa22": {
+			"address": "0xdeb0ef575c92188091d33dd1ec5b3519182aaa22",
+			"underlyingTokensAddresses": [
+				"0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sr-krETH-1738195474",
+			"symbol": "PT-sr-krETH-1738195474",
+			"displayName": "Principal Token: sr-krETH-1738195474",
+			"displaySymbol": "PT-sr-krETH-1738195474",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xdeB0Ef575C92188091D33dd1EC5b3519182aaA22/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab": {
 			"address": "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
 			"underlyingTokensAddresses": [],
@@ -22815,6 +22971,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xef3F0167b97EFF6979AEf3Bf7AD29cD8e20C5B09/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00": {
+			"address": "0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Kernel Restaked ETH",
+			"symbol": "krETH",
+			"displayName": "Kernel Restaked ETH",
+			"displaySymbol": "krETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf02C96DbbB92DC0325AD52B3f9F2b951f972bf00/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xf04f1f279c9da038b917538d89947f0e00672487": {

@@ -29,9 +29,10 @@ func NewRouter() *gin.Engine {
 	// pprof.Register(router)
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
-		AllowAllOrigins: true,
-		AllowMethods:    []string{"GET", "HEAD", "POST"},
-		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
+		// AllowAllOrigins: true,
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{"GET", "HEAD", "POST"},
+		AllowHeaders: []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))
 	router.Use(gzip.Gzip(gzip.DefaultCompression))

@@ -104,6 +104,11 @@ func RetrieveAllVaults(
 	chainID uint64,
 	vaults map[common.Address]models.TVaultsFromRegistry,
 ) map[common.Address]models.TVault {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil
+	}
+
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database and populate our updatedVaultMap
 	** with it.
@@ -146,7 +151,7 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	for _, currentVault := range env.CHAINS[chainID].ExtraVaults {
+	for _, currentVault := range chain.ExtraVaults {
 		if _, ok := updatedVaultMap[currentVault.Address]; !ok || shouldRefresh {
 			kind := currentVault.Kind
 			if currentVault.Kind == `` {
@@ -192,7 +197,7 @@ func RetrieveAllVaults(
 		** the vault as hidden as well.
 		******************************************************************************************/
 		isRegistryHidden := false
-		for _, registry := range env.CHAINS[chainID].Registries {
+		for _, registry := range chain.Registries {
 			if addresses.Equals(registry.Address, vaults[vault.Address].RegistryAddress) {
 				if registry.Tag == `STEALTH` {
 					isRegistryHidden = true

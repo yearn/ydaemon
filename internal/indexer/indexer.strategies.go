@@ -128,6 +128,10 @@ func filterNewStrategies(
 	** every x seconds to check if there are new strategies.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return 0
+	}
 
 	/**********************************************************************************************
 	** First, we need to know when to stop our log fetching. By default, we will fetch until the
@@ -139,8 +143,8 @@ func filterNewStrategies(
 		end = &blockEnd
 	}
 
-	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
+	for chunkStart := start; chunkStart < *end; chunkStart += chain.MaxBlockRange {
+		chunkEnd := chunkStart + chain.MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 			lastBlock = chunkEnd

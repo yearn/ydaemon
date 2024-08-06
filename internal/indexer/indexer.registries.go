@@ -34,6 +34,10 @@ func filterNewVault(
 	** every x seconds to check if there are new vaults.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return 0
+	}
 
 	/**********************************************************************************************
 	** First, we need to know when to stop our log fetching. By default, we will fetch until the
@@ -45,8 +49,8 @@ func filterNewVault(
 		end = &blockEnd
 	}
 
-	for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[chainID].MaxBlockRange {
-		chunkEnd := chunkStart + env.CHAINS[chainID].MaxBlockRange
+	for chunkStart := start; chunkStart < *end; chunkStart += chain.MaxBlockRange {
+		chunkEnd := chunkStart + chain.MaxBlockRange
 		if chunkEnd > *end {
 			chunkEnd = *end
 			lastBlock = chunkEnd
@@ -557,6 +561,11 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 	shouldSkipIndexing := false
 	wg := sync.WaitGroup{} // This WaitGroup will be done when all the historical vaults are indexed
 
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		vaultsFromRegistry, _ = storage.ListVaultsFromRegistries(chainID)
+		return vaultsFromRegistry
+	}
 	if chainID == 100 {
 		vaultsFromRegistry, _ = storage.ListVaultsFromRegistries(chainID)
 		return vaultsFromRegistry
@@ -570,7 +579,7 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known registries for the specified chain ID.
 	**********************************************************************************************/
-	for _, registry := range env.CHAINS[chainID].Registries {
+	for _, registry := range chain.Registries {
 		if registry.Tag == `DISABLED` {
 			continue
 		}

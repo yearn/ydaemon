@@ -30,7 +30,11 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 			continue
 		}
 		vaultAddress := currentVault.Address
-		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			continue
+		}
+		if helpers.Contains(chain.BlacklistedVaults, vaultAddress) {
 			continue
 		}
 		newVault, err := NewVault().AssignTVault(currentVault)

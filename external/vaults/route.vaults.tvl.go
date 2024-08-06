@@ -21,7 +21,11 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 		if !currentVault.Metadata.Inclusion.IsYearn {
 			continue
 		}
-		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			continue
+		}
+		if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 			continue
 		}
 		vaultTVL := fetcher.BuildVaultTVL(currentVault)
@@ -35,7 +39,7 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 	total := 0.0
 	var wg sync.WaitGroup
 	var tvl = make(map[uint64]float64)
-	for chainID := range env.CHAINS {
+	for chainID := range env.GetChains() {
 		wg.Add(1)
 		go func(chainID uint64) {
 			defer wg.Done()

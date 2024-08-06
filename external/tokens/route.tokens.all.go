@@ -27,7 +27,7 @@ type TAllTokens struct {
 // GetAllTokens will return all the tokens informations, no matter the chainID.
 func (y Controller) GetAllTokens(c *gin.Context) {
 	allTokens := make(map[uint64]map[string]TAllTokens)
-	for chainID := range env.CHAINS {
+	for chainID := range env.GetChains() {
 		tokens, _ := storage.ListERC20(chainID)
 		for _, token := range tokens {
 			if _, ok := allTokens[chainID]; !ok {

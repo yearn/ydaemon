@@ -41,10 +41,14 @@ func fetchCurve(url string) []TCurveFactoriesPoolData {
 func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]models.TPrices {
 	priceMap := make(map[common.Address]models.TPrices)
 	curveFactoryPoolData := []TCurveFactoriesPoolData{}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return priceMap
+	}
 
 	// Running a sync group to execute all fetch at the same time
 	wg := sync.WaitGroup{}
-	for _, url := range env.CHAINS[chainID].Curve.PoolsURIs {
+	for _, url := range chain.Curve.PoolsURIs {
 		wg.Add(1)
 		go func(url string) {
 			defer wg.Done()

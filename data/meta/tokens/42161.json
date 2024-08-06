@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-07-31T11:36:49.54822+02:00",
+	"lastUpdate": "2024-08-06T15:10:01.129726+02:00",
 	"version": {
 		"major": 0,
-		"minor": 20,
+		"minor": 21,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -703,6 +703,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x1255638EFeca62e12E344E0b6B22ea853eC6e2c7/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd": {
+			"address": "0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Lender wstETH/USDC.e",
+			"symbol": "ysUSDC",
+			"displayName": "Silo Lender wstETH/USDC.e",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x127A7F610cc704Be6122dfa76eb61E84C9cb0Efd/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x12bf88c63bf060355a8d2e4c6ee960365a5e8335": {

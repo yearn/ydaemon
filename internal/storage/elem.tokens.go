@@ -107,7 +107,11 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 ** StoreERC20 will add a new erc20 token in the _erc20SyncMap
 **************************************************************************************************/
 func StoreERC20(chainID uint64, token models.TERC20Token) {
-	if helpers.Contains(env.CHAINS[chainID].IgnoredTokens, token.Address) {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
+	if helpers.Contains(chain.IgnoredTokens, token.Address) {
 		return
 	}
 	safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)

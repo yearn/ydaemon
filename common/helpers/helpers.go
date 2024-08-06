@@ -140,7 +140,7 @@ func AssertChainID(chainIDStr string) (uint64, bool) {
 	if chainID == 1337 {
 		return 1, true
 	}
-	if _, ok := env.CHAINS[chainID]; !ok {
+	if _, ok := env.GetChain(chainID); !ok {
 		return 0, false
 	}
 	return chainID, true
@@ -151,7 +151,11 @@ func AssertAddress(addressStr string, chainID uint64) (common.Address, bool) {
 		return common.Address{}, false
 	}
 	address := common.HexToAddress(addressStr)
-	if chainID > 0 && Contains(env.CHAINS[chainID].BlacklistedVaults, address) {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return common.Address{}, false
+	}
+	if chainID > 0 && Contains(chain.BlacklistedVaults, address) {
 		return common.Address{}, false
 	}
 	return address, true
@@ -161,7 +165,11 @@ func AddressIsValid(address common.Address, chainID uint64) bool {
 	if (address == common.Address{} || addresses.Equals(address, "0x0000000000000000000000000000000000000000")) {
 		return false
 	}
-	if chainID > 0 && Contains(env.CHAINS[chainID].BlacklistedVaults, address) {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return false
+	}
+	if chainID > 0 && Contains(chain.BlacklistedVaults, address) {
 		return false
 	}
 	return true

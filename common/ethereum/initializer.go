@@ -19,7 +19,7 @@ import (
 ***************************************************************************************************/
 func init() {
 	// Create the RPC client for all the chains supported by yDaemon
-	for _, chain := range env.CHAINS {
+	for _, chain := range env.GetChains() {
 		client, err := ethclient.Dial(GetRPCURI(chain.ID))
 		if err != nil {
 			logs.Error(err, "Failed to connect to node")
@@ -29,7 +29,7 @@ func init() {
 	}
 
 	// Create the multicall client for all the chains supported by yDaemon
-	for _, chain := range env.CHAINS {
+	for _, chain := range env.GetChains() {
 		rpcToUse := GetRPCURI(chain.ID)
 		multiCallURI, exists := os.LookupEnv("MULTICALL_RPC_URI_FOR_" + strconv.FormatUint(chain.ID, 10))
 		if exists {

@@ -147,7 +147,7 @@ func ListenToSignals() {
 				TriggerTgMessage(`🔴 - Incorrect format. Should be /upd_prices <chainID> (number)`)
 				continue
 			}
-			if _, ok := env.CHAINS[chainID]; !ok {
+			if _, ok := env.GetChain(chainID); !ok {
 				TriggerTgMessage(`🔴 - Chain not supported`)
 				continue
 			}

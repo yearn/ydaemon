@@ -11,7 +11,11 @@ import (
 ** Some vaults/registries are Yearn, but for side projects.
 **************************************************************************************************/
 func IsRegistryFromYearnCore(chainID uint64, registryAddress common.Address) bool {
-	registries := CHAINS[chainID].Registries
+	chains, ok := GetChain(chainID)
+	if !ok {
+		return false
+	}
+	registries := chains.Registries
 	for _, registry := range registries {
 		if registry.Address.Hex() == registryAddress.Hex() {
 			return registry.Label == "YEARN"
@@ -25,7 +29,11 @@ func IsRegistryFromYearnCore(chainID uint64, registryAddress common.Address) boo
 ** the Juiced.app website.
 **************************************************************************************************/
 func IsRegistryFromJuiced(chainID uint64, registryAddress common.Address) bool {
-	registries := CHAINS[chainID].Registries
+	chains, ok := GetChain(chainID)
+	if !ok {
+		return false
+	}
+	registries := chains.Registries
 	for _, registry := range registries {
 		if registry.Address.Hex() == registryAddress.Hex() {
 			return registry.Label == "JUICED"
@@ -39,7 +47,11 @@ func IsRegistryFromJuiced(chainID uint64, registryAddress common.Address) bool {
 ** not be displayed by default in the Yearn.fi website.
 **************************************************************************************************/
 func IsRegistryFromPublicERC4626(chainID uint64, registryAddress common.Address) bool {
-	registries := CHAINS[chainID].Registries
+	chains, ok := GetChain(chainID)
+	if !ok {
+		return false
+	}
+	registries := chains.Registries
 	for _, registry := range registries {
 		if registry.Address.Hex() == registryAddress.Hex() {
 			return registry.Label == "PUBLIC_ERC4626"
@@ -60,7 +72,11 @@ func IsRegistryFromPoolTogether(chainID uint64, registryAddress common.Address) 
 }
 
 func IsRegistryDisabled(chainID uint64, registryAddress common.Address) bool {
-	registries := CHAINS[chainID].Registries
+	chains, ok := GetChain(chainID)
+	if !ok {
+		return false
+	}
+	registries := chains.Registries
 	for _, registry := range registries {
 		if registry.Address.Hex() == registryAddress.Hex() {
 			return registry.Tag == "DISABLED"

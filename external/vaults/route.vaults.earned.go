@@ -52,7 +52,11 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	}
 	vaultsAddressesStr := strings.Split(strings.ToLower(c.Param(`vaults`)), `,`)
 
-	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
+	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
 		logs.Error(`No graph endpoint for chainID`, chainID)
 		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
@@ -271,7 +275,11 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 		return
 	}
 
-	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
+	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
 		logs.Error(`No graph endpoint for chainID`, chainID)
 		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
@@ -522,7 +530,11 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 	totalUnrealizedGainsUSD := 0.0
 	for _, chainID := range chains {
 		earnedMap[chainID] = make(map[string]*TEarned)
-		graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			return
+		}
+		graphQLEndpoint := chain.SubgraphURI
 		if graphQLEndpoint == "" {
 			logs.Error(`No graph endpoint for chainID`, chainID)
 			c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)

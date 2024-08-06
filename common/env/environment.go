@@ -38,6 +38,7 @@ func SetEnv(path string) {
 }
 
 func init() {
+	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")
 	CHAINS[1] = ETHEREUM
 	CHAINS[10] = OPTIMISM
 	CHAINS[100] = GNOSIS
@@ -45,10 +46,7 @@ func init() {
 	CHAINS[250] = FANTOM
 	CHAINS[8453] = BASE
 	CHAINS[42161] = ARBITRUM
-
 	SetEnv(`.env`)
-	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")
-	CHAINS[1] = ETHEREUM
 
 	// Set them as supported
 	for k := range CHAINS {

@@ -48,6 +48,7 @@ func init() {
 
 	SetEnv(`.env`)
 	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")
+	CHAINS[1] = ETHEREUM
 
 	// Set them as supported
 	for k := range CHAINS {

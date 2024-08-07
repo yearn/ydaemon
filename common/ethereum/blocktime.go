@@ -28,10 +28,15 @@ func InitBlockTimestamp(chainID uint64) {
 	lastTwoWeekTimestamp := noonUTC.AddDate(0, 0, -14).Unix()
 	lastMonthTimestamp := noonUTC.AddDate(0, -1, 0).Unix()
 
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
+
 	APIKey := os.Getenv("SCAN_API_KEY_FOR_" + strconv.FormatUint(chainID, 10))
-	lastWeekBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
-	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
-	lastMonthBlock := helpers.FetchJSON[TScanResult](env.CHAINS[chainID].EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastMonthBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 
 	if blockTimeMap[chainID] == nil {
 		blockTimeMap[chainID] = make(map[uint64]uint64)
@@ -40,30 +45,30 @@ func InitBlockTimestamp(chainID uint64) {
 		blockTimeMap[chainID][7], err = strconv.ParseUint(lastWeekBlock.Result, 10, 64)
 		if err != nil {
 			logs.Error(err)
-			blockTimeMap[chainID][7] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 7)
+			blockTimeMap[chainID][7] = uint64(chain.AvgBlocksPerDay * 7)
 		}
 	} else {
-		blockTimeMap[chainID][7] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 7)
+		blockTimeMap[chainID][7] = uint64(chain.AvgBlocksPerDay * 7)
 	}
 
 	if lastTwoWeekBlock.Status == "1" {
 		blockTimeMap[chainID][14], err = strconv.ParseUint(lastTwoWeekBlock.Result, 10, 64)
 		if err != nil {
 			logs.Error(err)
-			blockTimeMap[chainID][14] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 14)
+			blockTimeMap[chainID][14] = uint64(chain.AvgBlocksPerDay * 14)
 		}
 	} else {
-		blockTimeMap[chainID][14] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 14)
+		blockTimeMap[chainID][14] = uint64(chain.AvgBlocksPerDay * 14)
 	}
 
 	if lastMonthBlock.Status == "1" {
 		blockTimeMap[chainID][30], err = strconv.ParseUint(lastMonthBlock.Result, 10, 64)
 		if err != nil {
 			logs.Error(err)
-			blockTimeMap[chainID][30] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 30)
+			blockTimeMap[chainID][30] = uint64(chain.AvgBlocksPerDay * 30)
 		}
 	} else {
-		blockTimeMap[chainID][30] = uint64(env.CHAINS[chainID].AvgBlocksPerDay * 30)
+		blockTimeMap[chainID][30] = uint64(chain.AvgBlocksPerDay * 30)
 	}
 }
 

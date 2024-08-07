@@ -15,12 +15,17 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	chainID := helpers.SafeString(getQuery(c, "chainID"), "0")
 	if chainID == "0" {
 		blacklistedVaults := []common.Address{}
-		for _, chain := range env.CHAINS {
+		for _, chain := range env.GetChains() {
 			blacklistedVaults = append(blacklistedVaults, chain.BlacklistedVaults...)
 		}
 		c.JSON(http.StatusOK, blacklistedVaults)
 	} else {
 		chainIDAsUint, _ := strconv.ParseUint(chainID, 10, 64)
-		c.JSON(http.StatusOK, env.CHAINS[chainIDAsUint].BlacklistedVaults)
+		chain, ok := env.GetChain(chainIDAsUint)
+		if !ok {
+			c.JSON(http.StatusNotFound, gin.H{"error": "chain not found"})
+			return
+		}
+		c.JSON(http.StatusOK, chain.BlacklistedVaults)
 	}
 }

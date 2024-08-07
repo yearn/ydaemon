@@ -62,8 +62,13 @@ func getLegacyVaults(
 		if !filterFunc(currentVault) {
 			continue
 		}
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			continue
+		}
+
 		vaultAddress := currentVault.Address
-		if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vaultAddress) {
+		if helpers.Contains(chain.BlacklistedVaults, vaultAddress) {
 			continue
 		}
 

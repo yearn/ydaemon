@@ -115,7 +115,11 @@ func getVaults(
 			/******************************************************************************************
 			** We want to ignore all non Yearn vaults
 			******************************************************************************************/
-			if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, currentVault.Address) {
+			chain, ok := env.GetChain(chainID)
+			if !ok {
+				continue
+			}
+			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
 			if !filterFunc(currentVault) {

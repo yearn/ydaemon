@@ -105,11 +105,16 @@ func retrieveJuicedStakingData(chainID uint64, vaultAddresses []common.Address, 
 func IndexJuicedStakingContract(chainID uint64) (stakingMap map[common.Address]storage.TStakingData) {
 	allVaults := []common.Address{}
 	allStaking := []common.Address{}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil
+	}
+
 	/**********************************************************************************************
 	** Some staking contracts might be deployed outside of the Yearn ecosystem and are not indexed
 	** in the Yearn registry. We need to index them manually.
 	**********************************************************************************************/
-	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
+	extraStakingContracts := chain.ExtraStakingContracts
 	if len(extraStakingContracts) > 0 {
 		for _, contract := range extraStakingContracts {
 			if contract.Tag == `JUICED` {
@@ -119,7 +124,7 @@ func IndexJuicedStakingContract(chainID uint64) (stakingMap map[common.Address]s
 		}
 	}
 
-	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
+	stakingContracts := chain.StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
 		return
 	}

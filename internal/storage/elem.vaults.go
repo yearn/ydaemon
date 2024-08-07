@@ -119,7 +119,11 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 ** StoreVault will add a new vault in the _vaultsSyncMap
 **************************************************************************************************/
 func StoreVault(chainID uint64, vault models.TVault) {
-	if helpers.Contains(env.CHAINS[chainID].BlacklistedVaults, vault.Address) {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
+	if helpers.Contains(chain.BlacklistedVaults, vault.Address) {
 		return
 	}
 	safeSyncMap(_vaultsSyncMap, chainID).Store(vault.Address, vault)

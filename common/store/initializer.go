@@ -26,14 +26,14 @@ func init() {
 		_dbType = DBSql
 	}
 
-	for chainID := range env.CHAINS {
+	for chainID := range env.GetChains() {
 		_blockTimeSyncMap[chainID] = &sync.Map{}
 		_timeBlockSyncMap[chainID] = &sync.Map{}
 		_vaultsPricePerShareSyncMap[chainID] = &sync.Map{}
 	}
 
 	wg := &sync.WaitGroup{}
-	for chainID := range env.CHAINS {
+	for chainID := range env.GetChains() {
 		storage.LoadRegistries(chainID, nil)
 		storage.LoadVaults(chainID, nil)
 		storage.LoadStrategies(chainID, nil)

@@ -9,6 +9,10 @@ import (
 
 func Perform(chainID uint64, calls []ethereum.Call, blockNumber *big.Int) map[string][]interface{} {
 	caller := ethereum.MulticallClientForChainID[chainID]
-	batchSize := env.CHAINS[chainID].MaxBatchSize
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil
+	}
+	batchSize := chain.MaxBatchSize
 	return caller.ExecuteByBatch(calls, batchSize, blockNumber)
 }

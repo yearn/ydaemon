@@ -34,8 +34,12 @@ func (y Controller) GetReports(c *gin.Context) {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
 
-	graphQLEndpoint := env.CHAINS[chainID].SubgraphURI
+	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
 		logs.Error("No graph endpoint for chainID", chainID)
 		c.String(http.StatusInternalServerError, "impossible to fetch subgraph")

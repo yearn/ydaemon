@@ -81,11 +81,16 @@ func IndexVeYFIStakingContract(chainID uint64) (veYFIGaugesMap map[common.Addres
 	allVaults := []common.Address{}
 	allStaking := []common.Address{}
 
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil
+	}
+
 	/**********************************************************************************************
 	** Some staking contracts might be deployed outside of the Yearn ecosystem and are not indexed
 	** in the Yearn registry. We need to index them manually.
 	**********************************************************************************************/
-	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
+	extraStakingContracts := chain.ExtraStakingContracts
 	if len(extraStakingContracts) > 0 {
 		for _, contract := range extraStakingContracts {
 			if contract.Tag == `VEYFI` {
@@ -95,7 +100,7 @@ func IndexVeYFIStakingContract(chainID uint64) (veYFIGaugesMap map[common.Addres
 		}
 	}
 
-	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
+	stakingContracts := chain.StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
 		return
 	}

@@ -23,8 +23,12 @@ var NO_MULTICALLS = true
 **************************************************************************************************/
 func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
 	priceMap := make(map[common.Address]models.TPrices)
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return priceMap
+	}
 
-	lensAddress := env.CHAINS[chainID].LensContract.Address
+	lensAddress := chain.LensContract.Address
 	if (lensAddress == common.Address{}) {
 		return priceMap
 	}

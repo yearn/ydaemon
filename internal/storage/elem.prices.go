@@ -68,7 +68,7 @@ func GetPrice(chainID uint64, tokenAddress common.Address) (models.TPrices, bool
 }
 
 func init() {
-	for _, chain := range env.CHAINS {
+	for _, chain := range env.GetChains() {
 		_pricesSyncMap[chain.ID] = &sync.Map{}
 	}
 }

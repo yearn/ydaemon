@@ -12,7 +12,7 @@ import (
 var COMPUTED_APR = make(map[uint64]*sync.Map)
 
 func init() {
-	for chainID := range env.CHAINS {
+	for chainID := range env.GetChains() {
 		if _, ok := COMPUTED_APR[chainID]; !ok {
 			COMPUTED_APR[chainID] = &sync.Map{}
 		}

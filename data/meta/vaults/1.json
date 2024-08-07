@@ -1,7 +1,7 @@
 {
-	"lastUpdate": "2024-08-01T15:59:29.087396+02:00",
+	"lastUpdate": "2024-08-06T16:03:08.189837+02:00",
 	"version": {
-		"major": 10,
+		"major": 12,
 		"minor": 1,
 		"patch": 0
 	},
@@ -921,6 +921,57 @@
 				},
 				"stability": {
 					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x0c7e3925e0986826b066ce77138b934f349a871b": {
+			"address": "0x0c7e3925e0986826b066ce77138b934f349a871b",
+			"token": "0x004c167d27ada24305b76d80762997fa6eb8d9b2",
+			"registry": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 20457507,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
 				},
 				"category": "Curve",
 				"displayName": "",
@@ -22496,6 +22547,57 @@
 					"stability": ""
 				},
 				"category": "",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0xd727551e619e54fb0d8d5af30d3fe5c94f8615d6": {
+			"address": "0xd727551e619e54fb0d8d5af30d3fe5c94f8615d6",
+			"token": "0x119806f0e93a213029b599d7bbae50bd965c2cc4",
+			"registry": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 20454767,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

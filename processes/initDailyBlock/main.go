@@ -182,6 +182,11 @@ func assertDailyBlockNumber(chainID uint64) {
 		_dailyBlockNumber[chainID] = &sync.Map{}
 		syncMap = _dailyBlockNumber[chainID]
 	}
+
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return
+	}
 	/**********************************************************************************************
 	** The first step is to find the earliest relevant deployment for yearn on this chain. For us
 	** this means the earliest block where we have a registry contract deployed.
@@ -189,7 +194,7 @@ func assertDailyBlockNumber(chainID uint64) {
 	earliestBlock := uint64(lastItem.Block)
 	if (earliestBlock == 0) || (earliestBlock == math.MaxUint64) {
 		earliestBlock = uint64(math.MaxUint64)
-		for _, registry := range env.CHAINS[chainID].Registries {
+		for _, registry := range chain.Registries {
 			if registry.Block < earliestBlock {
 				earliestBlock = registry.Block
 			}

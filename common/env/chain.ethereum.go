@@ -11,7 +11,7 @@ import (
 var ETHEREUM = TChain{
 	ID:              1,
 	RpcURI:          `https://eth.public-rpc.com`,
-	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
+	SubgraphURI:     ``,
 	EtherscanURI:    `https://api.etherscan.io/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,

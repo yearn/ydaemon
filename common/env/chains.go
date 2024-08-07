@@ -50,20 +50,13 @@ type TChain struct {
 var DEFAULT_COIN_ADDRESS = common.HexToAddress(`0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE`)
 
 // CHAINS is the list of supported chains
-var CHAINS = map[uint64]TChain{
-	1:     ETHEREUM,
-	10:    OPTIMISM,
-	100:   GNOSIS,
-	137:   POLYGON,
-	250:   FANTOM,
-	8453:  BASE,
-	42161: ARBITRUM,
-}
-
+var CHAINS = map[uint64]TChain{}
 var SUPPORTED_CHAIN_IDS = []uint64{}
 
-func init() {
-	for k := range CHAINS {
-		SUPPORTED_CHAIN_IDS = append(SUPPORTED_CHAIN_IDS, k)
-	}
+func GetChains() map[uint64]TChain {
+	return CHAINS
+}
+func GetChain(chainID uint64) (TChain, bool) {
+	chain, ok := CHAINS[chainID]
+	return chain, ok
 }

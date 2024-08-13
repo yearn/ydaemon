@@ -52,7 +52,7 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `riskLevel` | `int` | The risk level of the vault. The value is a calculated from the sum of all risk score from the object. 1 is the most secure and 4 is the least secure. | ❌ |
 | `protocols` | `string[]` | The protocols used by the vault. The first one is used to defined the main APR method | ❌ |
 | `inclusion` | `object` | Which project should include this vault. It's auto-set the first time an not updated after | ❌ |
-| `riskScore` | `object` | All risk scores of the vault. | ❌ |
+| `riskScore` | `object` | All risk scores of the Single Strategy Vault. Multi-Strategy Vault won't have this object because its risk score is combination of multiple vaults. For risk value use `riskLevel`. (empty for Multi-Strategy Vault) | ❌ |
 
 #### The migration object
 | Field | Type | Description | Automatic update |

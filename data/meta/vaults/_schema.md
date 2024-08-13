@@ -49,7 +49,7 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `description` | `string` | The description of the vault | ❌ |
 | `sourceURI` | `string` | A URI linked to this vault (ex: the curve deposit page) | ❌ |
 | `uiNotice` | `string` | A notice to display in the UI | ❌ |
-| `riskLevel` | `int` | The risk level of the vault. The value is a calculated from the sum of all risk score from the object. 1 is the most secure and 5 is the least secure. | ❌ |
+| `riskLevel` | `int` | The risk level of the vault. The value is a calculated from the sum of all risk score from the object for Single Strategy Vaults. Multi-Strategy Vault, highest `riskLevel` of all strategies is set. 1 is the most secure and 5 is the least secure.  | ❌ |
 | `protocols` | `string[]` | The protocols used by the vault. The first one is used to defined the main APR method | ❌ |
 | `inclusion` | `object` | Which project should include this vault. It's auto-set the first time an not updated after | ❌ |
 | `riskScore` | `object` | All risk scores of the Single Strategy Vault. Multi-Strategy Vault won't have this object because its risk score is combination of multiple vaults. For risk value use `riskLevel`. (empty for Multi-Strategy Vault) | ❌ |

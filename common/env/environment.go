@@ -39,6 +39,8 @@ func SetEnv(path string) {
 
 func init() {
 	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")
+	OPTIMISM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_10")
+	ARBITRUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_42161")
 	CHAINS[1] = ETHEREUM
 	CHAINS[10] = OPTIMISM
 	CHAINS[100] = GNOSIS

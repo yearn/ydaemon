@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-06T15:10:01.129726+02:00",
+	"lastUpdate": "2024-08-16T10:08:00.973542+02:00",
 	"version": {
 		"major": 0,
-		"minor": 21,
+		"minor": 22,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1139,6 +1139,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x1fa42e6730df74ff2742704761da41111bb7f019": {
+			"address": "0x1fa42e6730df74ff2742704761da41111bb7f019",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ethena USDe 28NOV2024",
+			"symbol": "PT-USDe-28NOV2024",
+			"displayName": "PT Ethena USDe 28NOV2024",
+			"displaySymbol": "PT-USDe-28NOV2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x1FA42e6730DF74fF2742704761Da41111bB7F019/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2066a650af4b6895f72e618587aad5e8120b7790": {
 			"address": "0x2066a650af4b6895f72e618587aad5e8120b7790",
 			"underlyingTokensAddresses": [],
@@ -1510,6 +1524,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x279b44E48226d40Ec389129061cb0B56C5c09e46/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x281fe15fd3e08a282f52d5cf09a4d13c3709e66d": {
+			"address": "0x281fe15fd3e08a282f52d5cf09a4d13c3709e66d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x281fE15fd3E08A282f52D5cf09a4d13c3709E66D/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4254,6 +4282,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x8d0ac6c608fd4bf52fcc31dcef30d0ae2aed2e81": {
+			"address": "0x8d0ac6c608fd4bf52fcc31dcef30d0ae2aed2e81",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ethena USDe 28NOV2024",
+			"symbol": "YT-USDe-28NOV2024",
+			"displayName": "YT Ethena USDe 28NOV2024",
+			"displaySymbol": "YT-USDe-28NOV2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8D0aC6c608fd4BF52FcC31DcEf30D0aE2aED2e81/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x8d164e0c662c9e199baac9e97b6a8664c75700ea": {
 			"address": "0x8d164e0c662c9e199baac9e97b6a8664c75700ea",
 			"underlyingTokensAddresses": [],
@@ -5079,6 +5121,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xA4f7e00eA5f67d0E126B7BB626FfdDAcD43436Af/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xa4ffe78ba40b7ec0c348ffe36a8de4f9d6198d2d": {
+			"address": "0xa4ffe78ba40b7ec0c348ffe36a8de4f9d6198d2d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Ethena USDe",
+			"symbol": "SY-USDe",
+			"displayName": "SY Ethena USDe",
+			"displaySymbol": "SY-USDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xA4ffe78ba40B7Ec0C348fFE36a8dE4F9d6198d2d/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

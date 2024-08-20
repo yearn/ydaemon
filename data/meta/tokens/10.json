@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-16T10:07:54.80064+02:00",
+	"lastUpdate": "2024-08-20T11:02:20.911977+02:00",
 	"version": {
 		"major": 0,
-		"minor": 13,
+		"minor": 14,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -607,6 +607,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x097b8b52240ef62DfB435c0A61BDbEaDe14EF449/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x0994206dfe8de6ec6920ff4d779b0d950605fb53": {
+			"address": "0x0994206dfe8de6ec6920ff4d779b0d950605fb53",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Curve DAO Token",
+			"symbol": "CRV",
+			"displayName": "Curve DAO Token",
+			"displaySymbol": "CRV",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x0994206dfE8De6Ec6920FF4D779B0d950605Fb53/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -3650,6 +3664,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x34D4112D180e9fAf06f77c8C550bA20C9F61aE31/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6": {
+			"address": "0x350a791bfc2c21f9ed5d10980dad2e2638ffa7f6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ChainLink Token",
+			"symbol": "LINK",
+			"displayName": "ChainLink Token",
+			"displaySymbol": "LINK",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -7965,6 +7993,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x6fd9d7ad17242c41f7131d257212c54a0e816691": {
+			"address": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Uniswap",
+			"symbol": "UNI",
+			"displayName": "Uniswap",
+			"displaySymbol": "UNI",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x6fd9d7AD17242c41f7131d257212c54A0e816691/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x6fe429de4284b7625cac1fcaacfa1d705ac9ec28": {
 			"address": "0x6fe429de4284b7625cac1fcaacfa1d705ac9ec28",
 			"underlyingTokensAddresses": [],
@@ -8398,6 +8440,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x763C9dC392B6BEFe79Fa227056dD9279bAbb4E14/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x76fb31fb4af56892a25e32cfc43de717950c9278": {
+			"address": "0x76fb31fb4af56892a25e32cfc43de717950c9278",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Aave Token",
+			"symbol": "AAVE",
+			"displayName": "Aave Token",
+			"displaySymbol": "AAVE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x76FB31fb4af56892A25e32cFC43De717950c9278/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

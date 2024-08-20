@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-16T10:07:50.672722+02:00",
+	"lastUpdate": "2024-08-20T11:02:23.631054+02:00",
 	"version": {
 		"major": 1,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -149,6 +149,57 @@
 					"stability": "Unknown"
 				},
 				"category": "Aerodrome",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x141719bd8a203839c291b6927d13b32710932b90": {
+			"address": "0x141719bd8a203839c291b6927d13b32710932b90",
+			"token": "0x4a311ac4563abc30e71d0631c88a6232c1309ac5",
+			"registry": "0xf3885ede00171997bfadaa98e01e167b53a78ec5",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.6",
+			"activation": 18653604,
+			"chainID": 8453,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1946,7 +1997,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-16T10:08:00.973542+02:00",
+	"lastUpdate": "2024-08-20T11:02:29.025434+02:00",
 	"version": {
 		"major": 0,
-		"minor": 22,
+		"minor": 23,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1181,6 +1181,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x20db1d8e053e448428b19dbc7c6eed1ccb851023": {
+			"address": "0x20db1d8e053e448428b19dbc7c6eed1ccb851023",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "AJNA USDC yVault",
+			"symbol": "yvAjnaUSDC",
+			"displayName": "AJNA USDC yVault",
+			"displaySymbol": "yvAjnaUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x20db1D8e053E448428B19dBC7C6eed1cCB851023/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x21178dd2ba9caee9df37f2d5f89a097d69fb0a7d": {
 			"address": "0x21178dd2ba9caee9df37f2d5f89a097d69fb0a7d",
 			"underlyingTokensAddresses": [],
@@ -1659,6 +1675,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499": {
+			"address": "0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Lender wBTC/USDC.e",
+			"symbol": "ysUSDC",
+			"displayName": "Silo Lender wBTC/USDC.e",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x2d25Ce68AAd6Ffef1585ff05bC621db1F9F2E499/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x2d5405688f253d741a9f1090dd90d8a285cf5c79": {
 			"address": "0x2d5405688f253d741a9f1090dd90d8a285cf5c79",
 			"underlyingTokensAddresses": [],
@@ -1715,6 +1747,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x2e48847FE29C3883c98125Cb2C44244d6602d549/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x2ec7fa7a87eba241636b2c03ba287ac3897601fc": {
+			"address": "0x2ec7fa7a87eba241636b2c03ba287ac3897601fc",
+			"underlyingTokensAddresses": [
+				"0x4bd135524897333bec344e50ddd85126554e58b4"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve USDM-USDC yVault",
+			"symbol": "yvCurve-USDM-USDC",
+			"displayName": "Curve USDM-USDC yVault",
+			"displaySymbol": "yvCurve-USDM-USDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x2Ec7FA7A87EbA241636B2C03bA287AC3897601FC/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f": {
@@ -2487,6 +2535,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4b64f0bf6B1BFfC23cCA3c8DcD08dde4627aBA9b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4bd135524897333bec344e50ddd85126554e58b4": {
+			"address": "0x4bd135524897333bec344e50ddd85126554e58b4",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+				"0x59d9356e565ab3a36dd77763fc0d87feaf85508c"
+			],
+			"type": "Curve LP",
+			"name": "USDC/USDM",
+			"symbol": "usdc-usdm",
+			"displayName": "USDC/USDM",
+			"displaySymbol": "usdc-usdm",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4bD135524897333bec344e50ddD85126554E58B4/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -3296,6 +3361,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x6694340fc020c5E6B96567843da2df01b2CE1eb6/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x680447595e8b7b3aa1b43beb9f6098c79ac2ab3f": {
+			"address": "0x680447595e8b7b3aa1b43beb9f6098c79ac2ab3f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Decentralized USD",
+			"symbol": "USDD",
+			"displayName": "Decentralized USD",
+			"displaySymbol": "USDD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x680447595e8b7b3Aa1B43beB9f6098C79ac2Ab3f/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -6070,6 +6149,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
+			"address": "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wootrade Network",
+			"symbol": "WOO",
+			"displayName": "Wootrade Network",
+			"displaySymbol": "WOO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xcAFcD85D8ca7Ad1e1C6F82F651fA15E33AEfD07b/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0xcb0be770cc1409a3705d3ca63516244f1bfa8b64": {

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-16T10:07:50.995927+02:00",
+	"lastUpdate": "2024-08-20T11:02:23.829055+02:00",
 	"version": {
 		"major": 0,
-		"minor": 8,
+		"minor": 9,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -80,6 +80,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x13454B672213F53cb1D31eA0BE033c58fe315392/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x141719bd8a203839c291b6927d13b32710932b90": {
+			"address": "0x141719bd8a203839c291b6927d13b32710932b90",
+			"underlyingTokensAddresses": [
+				"0x4a311ac4563abc30e71d0631c88a6232c1309ac5"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome MOG-WETH Factory yVault",
+			"symbol": "yvAero-MOG-WETH-f",
+			"displayName": "Aerodrome MOG-WETH Factory yVault",
+			"displaySymbol": "yvAero-MOG-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x141719bd8A203839c291B6927d13B32710932B90/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -410,6 +426,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x4a311ac4563abc30e71d0631c88a6232c1309ac5": {
+			"address": "0x4a311ac4563abc30e71d0631c88a6232c1309ac5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - Mog/WETH",
+			"symbol": "vAMM-Mog/WETH",
+			"displayName": "Volatile AMM - Mog/WETH",
+			"displaySymbol": "vAMM-Mog/WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x4A311ac4563abc30E71D0631C88A6232C1309ac5/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

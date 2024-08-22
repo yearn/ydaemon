@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-06T15:10:06.073809+02:00",
+	"lastUpdate": "2024-08-20T11:02:23.829055+02:00",
 	"version": {
 		"major": 0,
-		"minor": 7,
+		"minor": 9,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -80,6 +80,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x13454B672213F53cb1D31eA0BE033c58fe315392/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x141719bd8a203839c291b6927d13b32710932b90": {
+			"address": "0x141719bd8a203839c291b6927d13b32710932b90",
+			"underlyingTokensAddresses": [
+				"0x4a311ac4563abc30e71d0631c88a6232c1309ac5"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome MOG-WETH Factory yVault",
+			"symbol": "yvAero-MOG-WETH-f",
+			"displayName": "Aerodrome MOG-WETH Factory yVault",
+			"displaySymbol": "yvAero-MOG-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x141719bd8A203839c291B6927d13B32710932B90/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -369,6 +385,20 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x4200000000000000000000000000000000000006": {
+			"address": "0x4200000000000000000000000000000000000006",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped Ether",
+			"symbol": "WETH",
+			"displayName": "Wrapped Ether",
+			"displaySymbol": "WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x4200000000000000000000000000000000000006/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x44ecc644449fc3a9858d2007caa8cfaa4c561f91": {
 			"address": "0x44ecc644449fc3a9858d2007caa8cfaa4c561f91",
 			"underlyingTokensAddresses": [],
@@ -396,6 +426,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x4a311ac4563abc30e71d0631c88a6232c1309ac5": {
+			"address": "0x4a311ac4563abc30e71d0631c88a6232c1309ac5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - Mog/WETH",
+			"symbol": "vAMM-Mog/WETH",
+			"displayName": "Volatile AMM - Mog/WETH",
+			"displaySymbol": "vAMM-Mog/WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x4A311ac4563abc30E71D0631C88A6232C1309ac5/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -562,6 +606,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x61907C8C3E6ef7eD813aCc2fBbBf8C05ac0F31d5/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x630db4ae19219025df594c943b638b5acb5e9d18": {
+			"address": "0x630db4ae19219025df594c943b638b5acb5e9d18",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-1 yVault",
+			"symbol": "yvWETH-1",
+			"displayName": "WETH-1 yVault",
+			"displaySymbol": "yvWETH-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x630dB4ae19219025dF594c943B638B5aCb5e9D18/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -757,6 +817,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x82A9CC022BfFba4358A4286381c0855A8e295605/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913": {
+			"address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USD Coin",
+			"symbol": "USDC",
+			"displayName": "USD Coin",
+			"displaySymbol": "USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
@@ -1043,6 +1117,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xcDAC0d6c6C59727a65F871236188350531885C43/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xd80c675366966ef42b175125bbf1acb1db4151ac": {
+			"address": "0xd80c675366966ef42b175125bbf1acb1db4151ac",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault",
+			"symbol": "yvUSDC-1",
+			"displayName": "USDC-1 yVault",
+			"displaySymbol": "yvUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xd80c675366966Ef42B175125BBf1AcB1DB4151ac/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {

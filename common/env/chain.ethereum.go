@@ -109,6 +109,11 @@ var ETHEREUM = TChain{
 			Block:   19265999,
 			Tag:     `JUICED`,
 		},
+		{
+			Address: common.HexToAddress(`0x7D8DAc450dF7E222aE1d591046Eb7b5324C9d44f`),
+			Block:   20573647,
+			Tag:     `V3 STAKING`,
+		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{

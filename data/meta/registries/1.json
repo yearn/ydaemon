@@ -1399,6 +1399,16 @@
 		"chainID": 1,
 		"blockNumber": 20140551
 	},
+	"0x4dd0fe8549641a04d7ab4f37dbb541ae7dbb2838": {
+		"address": "0x4dd0fe8549641a04d7ab4f37dbb541ae7dbb2838",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 20487681
+	},
 	"0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb": {
 		"address": "0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb",
 		"registryAddress": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
@@ -1561,13 +1571,13 @@
 	},
 	"0x57fc2d9809f777cd5c8c433442264b6e8be7fce4": {
 		"address": "0x57fc2d9809f777cd5c8c433442264b6e8be7fce4",
-		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 		"tokenAddress": "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
-		"version": "3.0.1",
+		"version": "3.0.0",
 		"chainID": 1,
-		"blockNumber": 20391847
+		"blockNumber": 20470333
 	},
 	"0x58900d761ae3765b75ddfc235c1536b527f25d8f": {
 		"address": "0x58900d761ae3765b75ddfc235c1536b527f25d8f",
@@ -2559,6 +2569,16 @@
 		"chainID": 1,
 		"blockNumber": 17432490
 	},
+	"0x8b2335962111f3cba6cfc5b2acd8894635241c3b": {
+		"address": "0x8b2335962111f3cba6cfc5b2acd8894635241c3b",
+		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+		"tokenAddress": "0x17d964da2bd337cfeaed30a27c9ab6580676e730",
+		"type": "Automated Yearn Vault",
+		"kind": "Legacy",
+		"version": "0.4.6",
+		"chainID": 1,
+		"blockNumber": 20485790
+	},
 	"0x8b58aa42a4aa222b684078459ce03dd0a43342b1": {
 		"address": "0x8b58aa42a4aa222b684078459ce03dd0a43342b1",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",
@@ -3338,6 +3358,16 @@
 		"version": "0.4.5",
 		"chainID": 1,
 		"blockNumber": 16295006
+	},
+	"0xb6246cb8c98a59a753a94c8e16ac54eadb392e40": {
+		"address": "0xb6246cb8c98a59a753a94c8e16ac54eadb392e40",
+		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+		"tokenAddress": "0x19b8524665abac613d82ece5d8347ba44c714bdd",
+		"type": "Automated Yearn Vault",
+		"kind": "Legacy",
+		"version": "0.4.6",
+		"chainID": 1,
+		"blockNumber": 20500355
 	},
 	"0xb8c3b7a2a618c552c23b1e4701109a9e756bab67": {
 		"address": "0xb8c3b7a2a618c552c23b1e4701109a9e756bab67",

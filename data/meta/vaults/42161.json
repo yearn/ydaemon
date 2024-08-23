@@ -157,7 +157,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -471,7 +471,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -790,7 +790,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -1165,7 +1165,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -2456,11 +2456,11 @@
 			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {

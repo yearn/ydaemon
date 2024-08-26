@@ -28,14 +28,22 @@ func GetRPC(chainID uint64) *ethclient.Client {
 
 // GetRPCURI returns the URI to use to connect to the node for a specific chainID
 func GetRPCURI(chainID uint64) string {
-	return env.CHAINS[chainID].RpcURI
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return ""
+	}
+	return chain.RpcURI
 }
 
 // GetWSEnvURI returns the URI to use to connect to the node for a specific chainID
 func GetWSEnvURI(chainID uint64) string {
 	wsFromEnv, exists := os.LookupEnv("WS_URI_FOR_" + strconv.FormatUint(chainID, 10))
 	if !exists {
-		return env.CHAINS[chainID].RpcURI
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			return ""
+		}
+		return chain.RpcURI
 	}
 	return wsFromEnv
 }
@@ -66,7 +74,11 @@ func randomSigner() *bind.TransactOpts {
 
 // GetWSClient returns the current ws connection for a specific chain
 func GetWSClient(chainID uint64, shouldRetry bool) (*ethclient.Client, error) {
-	if !env.CHAINS[chainID].CanUseWebsocket {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil, errors.New("chain not found")
+	}
+	if !chain.CanUseWebsocket {
 		return nil, errors.New("chain cannot use websocket")
 	}
 

@@ -38,7 +38,7 @@ func GetGauge(chainID uint64, underlyingAddress common.Address) (models.CurveGau
 }
 
 func FetchGauges() {
-	for _, chain := range env.CHAINS {
+	for _, chain := range env.GetChains() {
 		FetchCurveGauges(chain.ID)
 	}
 }

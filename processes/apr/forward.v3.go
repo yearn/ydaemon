@@ -25,7 +25,11 @@ func computeVaultV3ForwardAPR(
 	allStrategiesForVault map[string]models.TStrategy,
 ) TForwardAPR {
 	oracleAPR := bigNumber.NewFloat(0)
-	oracleContract := env.CHAINS[vault.ChainID].APROracleContract.Address
+	chain, ok := env.GetChain(vault.ChainID)
+	if !ok {
+		return TForwardAPR{}
+	}
+	oracleContract := chain.APROracleContract.Address
 	if oracleContract == common.HexToAddress(``) {
 		return TForwardAPR{}
 	}

@@ -11,7 +11,7 @@ import (
 var ETHEREUM = TChain{
 	ID:              1,
 	RpcURI:          `https://eth.public-rpc.com`,
-	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-mainnet`,
+	SubgraphURI:     ``,
 	EtherscanURI:    `https://api.etherscan.io/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
@@ -108,6 +108,11 @@ var ETHEREUM = TChain{
 			Address: common.HexToAddress(`0x85d324Bc55D1143B6a0f6310CE18A07dCF779f53`),
 			Block:   19265999,
 			Tag:     `JUICED`,
+		},
+		{
+			Address: common.HexToAddress(`0x7D8DAc450dF7E222aE1d591046Eb7b5324C9d44f`),
+			Block:   20573647,
+			Tag:     `V3 STAKING`,
 		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},

@@ -89,14 +89,18 @@ func RetrievePendleTokens(chainID uint64) (map[string]TPendleTokenAPIResp, bool)
 	if _, ok := cachedPendleTokens[chainID]; !ok {
 		cachedPendleTokens[chainID] = map[string]TPendleTokenAPIResp{}
 	}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return map[string]TPendleTokenAPIResp{}, false
+	}
 
-	if env.CHAINS[chainID].ExtraURI.PendleCoreURI == `` {
+	if chain.ExtraURI.PendleCoreURI == `` {
 		return map[string]TPendleTokenAPIResp{}, false
 	}
 
 	tokens := map[string]TPendleTokenAPIResp{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/assets/all`)
+	resp, err := http.Get(chain.ExtraURI.PendleCoreURI + `/assets/all`)
 	if err != nil {
 		logs.Error(`Error fetching Pendle tokens for chain ` + chainIDStr + `: ` + err.Error())
 		return tokens, false
@@ -127,8 +131,12 @@ func RetrievePendleMarkets(chainID uint64) (map[string]TPendleMarketAPIResp, boo
 	if _, ok := cachedPendleMarkets[chainID]; !ok {
 		cachedPendleMarkets[chainID] = map[string]TPendleMarketAPIResp{}
 	}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return map[string]TPendleMarketAPIResp{}, false
+	}
 
-	if env.CHAINS[chainID].ExtraURI.PendleCoreURI == `` {
+	if chain.ExtraURI.PendleCoreURI == `` {
 		return map[string]TPendleMarketAPIResp{}, false
 	}
 
@@ -139,7 +147,7 @@ func RetrievePendleMarkets(chainID uint64) (map[string]TPendleMarketAPIResp, boo
 
 	markets := map[string]TPendleMarketAPIResp{}
 	chainIDStr := strconv.FormatUint(chainID, 10)
-	baseURI := env.CHAINS[chainID].ExtraURI.PendleCoreURI + `/markets?select=simple`
+	baseURI := chain.ExtraURI.PendleCoreURI + `/markets?select=simple`
 	skip := 0
 	limit := 100
 	totalMarketCount := 100 // This is a dummy value to start the loop

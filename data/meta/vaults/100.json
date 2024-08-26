@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-24T09:16:37.491069+02:00",
+	"lastUpdate": "2024-08-20T11:02:13.954779+02:00",
 	"version": {
 		"major": 1,
 		"minor": 0,
-		"patch": 1
+		"patch": 2
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -40,7 +40,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Ajna",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -50,7 +50,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -91,7 +91,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -142,7 +142,7 @@
 				"stability": {
 					"stability": ""
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

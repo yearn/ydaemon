@@ -85,12 +85,16 @@ func RetrieveGammaMerklData(chainID uint64) (map[string]TGammaMerklAPIResp, bool
 	if _, ok := cachedGammaMerkl[chainID]; !ok {
 		cachedGammaMerkl[chainID] = map[string]TGammaMerklAPIResp{}
 	}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return map[string]TGammaMerklAPIResp{}, false
+	}
 
 	pools := map[string]TGammaMerklAPIResp{}
-	if env.CHAINS[chainID].ExtraURI.GammaMerklURI == `` {
+	if chain.ExtraURI.GammaMerklURI == `` {
 		return pools, false
 	}
-	resp, err := http.Get(env.CHAINS[chainID].ExtraURI.GammaMerklURI)
+	resp, err := http.Get(chain.ExtraURI.GammaMerklURI)
 	if err != nil {
 		logs.Error(err)
 		return pools, false
@@ -117,15 +121,19 @@ func RetrieveGammaAllData(chainID uint64) (map[string]TGammaDataAPIResp, bool) {
 	if _, ok := cachedGammaAllData[chainID]; !ok {
 		cachedGammaAllData[chainID] = map[string]TGammaDataAPIResp{}
 	}
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return map[string]TGammaDataAPIResp{}, false
+	}
 
 	pools := map[string]TGammaDataAPIResp{}
-	if env.CHAINS[chainID].ExtraURI.GammaHypervisorURI == nil ||
-		len(env.CHAINS[chainID].ExtraURI.GammaHypervisorURI) == 0 {
+	if chain.ExtraURI.GammaHypervisorURI == nil ||
+		len(chain.ExtraURI.GammaHypervisorURI) == 0 {
 		return pools, false
 	}
 
 	var gammaAllData map[string]TGammaDataAPIResp
-	for _, uri := range env.CHAINS[chainID].ExtraURI.GammaHypervisorURI {
+	for _, uri := range chain.ExtraURI.GammaHypervisorURI {
 		resp, err := http.Get(uri)
 		if err != nil {
 			logs.Error(err)

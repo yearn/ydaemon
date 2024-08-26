@@ -16,7 +16,11 @@ import (
 ** This function retrieves the Curve Pools from the Curve API.
 **************************************************************************/
 func retrieveCurveGetPools(chainID uint64) []models.CurvePool {
-	URIsToFetch := env.CHAINS[chainID].Curve.PoolsURIs
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return []models.CurvePool{}
+	}
+	URIsToFetch := chain.Curve.PoolsURIs
 	pools := []models.CurvePool{}
 	for _, uri := range URIsToFetch {
 		resp, err := http.Get(uri)

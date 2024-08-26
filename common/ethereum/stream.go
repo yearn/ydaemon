@@ -166,8 +166,12 @@ func (r *Reader) linkHistory(ctx context.Context, stream <-chan chain.Log, q *et
 		start := q.FromBlock.Uint64()
 
 		allHistory := []chain.Log{}
-		for chunkStart := start; chunkStart < *end; chunkStart += env.CHAINS[r.ChainID].MaxBlockRange {
-			chunkEnd := chunkStart + env.CHAINS[r.ChainID].MaxBlockRange
+		chain, ok := env.GetChain(r.ChainID)
+		if !ok {
+			return nil, fmt.Errorf("etherstream: chain %d not found", r.ChainID)
+		}
+		for chunkStart := start; chunkStart < *end; chunkStart += chain.MaxBlockRange {
+			chunkEnd := chunkStart + chain.MaxBlockRange
 			logs.Info("Fetching logs from", chunkStart, "to", chunkEnd, "up to", *end)
 			q.FromBlock = big.NewInt(int64(chunkStart))
 			q.ToBlock = big.NewInt(int64(chunkEnd))

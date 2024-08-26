@@ -118,11 +118,16 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 	allVaults := []common.Address{}
 	allStaking := []common.Address{}
 
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return nil
+	}
+
 	/**********************************************************************************************
 	** Some staking contracts might be deployed outside of the Yearn ecosystem and are not indexed
 	** in the Yearn registry. We need to index them manually.
 	**********************************************************************************************/
-	extraStakingContracts := env.CHAINS[chainID].ExtraStakingContracts
+	extraStakingContracts := chain.ExtraStakingContracts
 	if len(extraStakingContracts) > 0 {
 		for _, contract := range extraStakingContracts {
 			if contract.Tag == `V3 STAKING` {
@@ -132,7 +137,7 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 		}
 	}
 
-	stakingContracts := env.CHAINS[chainID].StakingRewardRegistry
+	stakingContracts := chain.StakingRewardRegistry
 	if len(stakingContracts) == 0 && len(allVaults) == 0 {
 		return
 	}
@@ -171,6 +176,8 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 			logs.Error(`Failed to retrieve the number of staking contract`, err)
 			return
 		}
+
+		logs.Pretty(numberOfTokens)
 
 		/******************************************************************************************
 		** Then, via a multicall, we need to call the `tokens(idx)` method from the stakingRegistry

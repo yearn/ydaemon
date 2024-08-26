@@ -116,7 +116,11 @@ func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
 ** Fetcher function to retrive the curve gauges
 **************************************************************************/
 func FetchCurveGauges(chainID uint64) []models.CurveGauge {
-	resp, err := http.Get(env.CHAINS[chainID].Curve.GaugesURI)
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		return []models.CurveGauge{}
+	}
+	resp, err := http.Get(chain.Curve.GaugesURI)
 	if err != nil {
 		logs.Error(err)
 		return []models.CurveGauge{}

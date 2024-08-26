@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-07-31T11:37:01.611016+02:00",
+	"lastUpdate": "2024-08-20T11:02:26.402148+02:00",
 	"version": {
-		"major": 1,
+		"major": 0,
 		"minor": 1,
-		"patch": 0
+		"patch": 17
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -133,8 +133,8 @@
 				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
 				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
 			],
-			"lastPricePerShare": "1058617130905666541",
-			"lastTotalAssets": "980139433010253506435",
+			"lastPricePerShare": "1059029213953342451",
+			"lastTotalAssets": "1118261634535174633560",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -157,7 +157,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -291,7 +291,7 @@
 				"0x6ac368e13f893b14e2b4dc01eb83c89a06b9a039"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "4345823381813",
+			"lastTotalAssets": "23047229447426",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -447,8 +447,8 @@
 				"0x48bf6f6f1cccbf22d3dcb7cda68fa14ba55b78f2",
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
-			"lastPricePerShare": "1000084072625095967",
-			"lastTotalAssets": "905718846953097988696",
+			"lastPricePerShare": "1001144334658638944",
+			"lastTotalAssets": "948179755195067881635",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -471,7 +471,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -490,16 +490,16 @@
 			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 			"type": "Yearn Vault",
 			"kind": "Single Strategy",
-			"version": "3.0.0",
+			"version": "3.0.2",
 			"activation": 235544816,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1001750",
+			"lastTotalAssets": "718302716096",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -511,11 +511,11 @@
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
 				"category": "Stablecoin",
 				"displayName": "",
@@ -668,8 +668,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1480127",
-			"lastTotalAssets": "514406637394",
+			"lastPricePerShare": "1482826",
+			"lastTotalAssets": "465652639876",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -792,8 +792,8 @@
 				"0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168",
 				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "650449017510091668100",
+			"lastPricePerShare": "1001301278262729159",
+			"lastTotalAssets": "904325570719994542184",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -816,12 +816,64 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x20db1d8e053e448428b19dbc7c6eed1ccb851023": {
+			"address": "0x20db1d8e053e448428b19dbc7c6eed1ccb851023",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"accountant": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.2",
+			"activation": 242782100,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x20db1d8e053e448428b19dbc7c6eed1ccb851023",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -902,8 +954,8 @@
 				"0xdf9640332bcfd3b16cb80c1287ed04b875d9a384",
 				"0xda9889b85831ab8841edd3618e1595a7fef96fa8"
 			],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "9111949458",
+			"lastPricePerShare": "1001355",
+			"lastTotalAssets": "70783540",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -928,6 +980,57 @@
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 1,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499": {
+			"address": "0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 241922618,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 1000,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -995,6 +1098,58 @@
 				}
 			}
 		},
+		"0x2ec7fa7a87eba241636b2c03ba287ac3897601fc": {
+			"address": "0x2ec7fa7a87eba241636b2c03ba287ac3897601fc",
+			"token": "0x4bd135524897333bec344e50ddd85126554e58b4",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"accountant": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.2",
+			"activation": 242569324,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x2ec7fa7a87eba241636b2c03ba287ac3897601fc",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
 		"0x34a2b066af16409648ef15d239e656edb8790ca0": {
 			"address": "0x34a2b066af16409648ef15d239e656edb8790ca0",
 			"token": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
@@ -1012,8 +1167,8 @@
 			"lastActiveStrategies": [
 				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6"
 			],
-			"lastPricePerShare": "1000839156399163281",
-			"lastTotalAssets": "1630891067262644336224619",
+			"lastPricePerShare": "1003895473013796042",
+			"lastTotalAssets": "2066502198485626567354993",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1036,7 +1191,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks.",
 				"sourceURI": "",
-				"uiNotice": "Base APR includes 1500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
+				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
 				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
@@ -1063,8 +1218,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1079731920336520001",
-			"lastTotalAssets": "263203447315573022",
+			"lastPricePerShare": "1082000491111799715",
+			"lastTotalAssets": "263792350957811795",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1114,8 +1269,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000040375818749861",
-			"lastTotalAssets": "72386785817704398569414",
+			"lastPricePerShare": "1000405504125361759",
+			"lastTotalAssets": "78247711229006627529135",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1333,8 +1488,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1009197784033966530",
-			"lastTotalAssets": "2102828964912359811278",
+			"lastPricePerShare": "1009197914261886139",
+			"lastTotalAssets": "2102829266413708371044",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1387,8 +1542,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1953347",
-			"lastTotalAssets": "19416046045",
+			"lastPricePerShare": "1959045",
+			"lastTotalAssets": "18099104033",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1502,8 +1657,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1032815",
-			"lastTotalAssets": "5336193231",
+			"lastPricePerShare": "1036694",
+			"lastTotalAssets": "4518350251",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1728,8 +1883,8 @@
 				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
-			"lastPricePerShare": "1029042",
-			"lastTotalAssets": "35622105426",
+			"lastPricePerShare": "1032701",
+			"lastTotalAssets": "33054884072",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1782,8 +1937,8 @@
 			"lastActiveStrategies": [
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
-			"lastPricePerShare": "1000012818822471647",
-			"lastTotalAssets": "72386486059434340483590",
+			"lastPricePerShare": "1000269099629853594",
+			"lastTotalAssets": "78223950925861267052071",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1887,8 +2042,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001398",
-			"lastTotalAssets": "557105124899",
+			"lastPricePerShare": "1004319",
+			"lastTotalAssets": "727808650213",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2266,10 +2421,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063",
-				"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd"
+				"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
+				"0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499"
 			],
-			"lastPricePerShare": "1000998",
-			"lastTotalAssets": "1674375206007",
+			"lastPricePerShare": "1002682",
+			"lastTotalAssets": "1837584879745",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2378,11 +2534,11 @@
 			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -2481,8 +2637,8 @@
 				"0x5108db0852c0caa2df797dcf31f8a73bfb335452",
 				"0x45aceaa535830c921316085e355e4a32385e53f2"
 			],
-			"lastPricePerShare": "1024651",
-			"lastTotalAssets": "25694424665",
+			"lastPricePerShare": "1028090",
+			"lastTotalAssets": "22534304989",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2535,7 +2691,7 @@
 			"lastActiveStrategies": [
 				"0x571293fd9d9716d50ba48aa1628840d7fa166b20"
 			],
-			"lastPricePerShare": "1001138221923730070",
+			"lastPricePerShare": "1001522994946350744",
 			"lastTotalAssets": "270820862112221074",
 			"metadata": {
 				"isRetired": false,
@@ -2586,8 +2742,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1122852",
-			"lastTotalAssets": "520886760882",
+			"lastPricePerShare": "1126206",
+			"lastTotalAssets": "281095047527",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2650,8 +2806,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2072285786328730573",
-			"lastTotalAssets": "12024723915168",
+			"lastPricePerShare": "2072974370924134136",
+			"lastTotalAssets": "12028940772465",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2755,8 +2911,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "22125726",
-			"lastTotalAssets": "68494265874",
+			"lastPricePerShare": "22214194",
+			"lastTotalAssets": "8763243655",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2823,8 +2979,8 @@
 				"0x85968bf0f1f110c707fef10a59f80118f349c058",
 				"0x1bd173f9a1186a1abe680071e0f57d4d83c18430"
 			],
-			"lastPricePerShare": "1002055",
-			"lastTotalAssets": "1070827674095",
+			"lastPricePerShare": "1003646",
+			"lastTotalAssets": "1119933972246",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

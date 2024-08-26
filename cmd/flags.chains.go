@@ -22,7 +22,7 @@ func handleChainsInitialization(rawChains *string) []uint64 {
 			logs.Error(`Invalid chain ID: ` + chainIDString)
 			continue
 		}
-		if _, ok := env.CHAINS[chainID]; !ok {
+		if _, ok := env.GetChain(chainID); !ok {
 			logs.Error(`Unsupported chain ID: ` + chainIDString)
 			continue
 		}

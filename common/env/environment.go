@@ -10,9 +10,7 @@ import (
 )
 
 // SetEnv will init the environment variables based on the .env file
-func SetEnv(path string) {
-	godotenv.Load(path)
-
+func SetEnv() {
 	for _, chain := range CHAINS {
 		baseKey := `RPC_URI_FOR_`
 		chainID := strconv.FormatUint(chain.ID, 10)
@@ -38,5 +36,21 @@ func SetEnv(path string) {
 }
 
 func init() {
-	SetEnv(`.env`)
+	godotenv.Load(`.env`)
+	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")
+	OPTIMISM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_10")
+	ARBITRUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_42161")
+	CHAINS[1] = ETHEREUM
+	CHAINS[10] = OPTIMISM
+	CHAINS[100] = GNOSIS
+	CHAINS[137] = POLYGON
+	CHAINS[250] = FANTOM
+	CHAINS[8453] = BASE
+	CHAINS[42161] = ARBITRUM
+	SetEnv()
+
+	// Set them as supported
+	for k := range CHAINS {
+		SUPPORTED_CHAIN_IDS = append(SUPPORTED_CHAIN_IDS, k)
+	}
 }

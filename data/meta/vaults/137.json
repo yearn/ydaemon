@@ -150,7 +150,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -159,6 +159,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 2,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 3,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -201,7 +214,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -210,6 +223,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -261,6 +287,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -409,7 +448,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -418,6 +457,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 2,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 3,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -620,7 +672,7 @@
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -733,6 +785,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -879,7 +944,7 @@
 				"description": "Supplies the juiced Yearn vault token to the corresponding staking contract to auto sell and compound any rewards. \u003cbr/\u003e\u003cbr/\u003eVisit [https://juiced.yearn.fi/](https://juiced.yearn.fi/) to learn more.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 2,
+				"riskLevel": 3,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -888,6 +953,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 4,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 5,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 4,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -981,7 +1059,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -990,6 +1068,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1238,7 +1329,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -1247,6 +1338,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 2,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 3,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -1397,7 +1501,7 @@
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -1506,7 +1610,7 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -1672,6 +1776,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1771,7 +1888,7 @@
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": [],
 				"inclusion": {
 					"isSet": true,
@@ -1831,6 +1948,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1984,6 +2114,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2035,6 +2178,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},

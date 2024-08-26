@@ -523,7 +523,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -532,6 +532,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 4,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -680,7 +693,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -689,6 +702,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1215,7 +1241,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1224,6 +1250,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1382,6 +1421,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1475,7 +1527,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1484,6 +1536,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 2,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 3,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -1742,7 +1807,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1847,7 +1912,7 @@
 				"description": "Supplies USDC.e to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1856,6 +1921,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2215,7 +2293,7 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2542,6 +2620,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2698,6 +2789,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2744,7 +2848,7 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

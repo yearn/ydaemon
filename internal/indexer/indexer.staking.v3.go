@@ -177,8 +177,6 @@ func IndexV3StakingContract(chainID uint64) (stakingMap map[common.Address]stora
 			return
 		}
 
-		logs.Pretty(numberOfTokens)
-
 		/******************************************************************************************
 		** Then, via a multicall, we need to call the `tokens(idx)` method from the stakingRegistry
 		** contract. This will give us the address of the vault for a given index. Once we have

@@ -6,6 +6,15 @@ import (
 )
 
 /**************************************************************************************************
+** GetAll is a gin handler function to retrieve all the vaults
+**************************************************************************************************/
+func (y Controller) GetAll(c *gin.Context) []TSimplifiedExternalVault {
+	return getVaults(c, func(vault models.TVault) bool {
+		return true
+	})
+}
+
+/**************************************************************************************************
 ** GetIsYearn is a gin handler function to retrieve all the vaults matching the
 ** inclusion.IsYearn filter.
 **************************************************************************************************/

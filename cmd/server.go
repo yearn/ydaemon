@@ -49,6 +49,7 @@ func NewRouter() *gin.Engine {
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
 		// router.GET(`vaults`, c.GetIsYearn)
+		router.GET(`vaults/detected`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetAll))
 		router.GET(`vaults`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
 		router.GET(`vaults/all`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
 		router.GET(`vaults/underthesea/v2`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV2))

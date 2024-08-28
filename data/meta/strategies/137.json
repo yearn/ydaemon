@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-08-28T09:36:06.598217+02:00",
+	"lastUpdate": "2024-08-28T10:09:53.931607+02:00",
 	"version": {
 		"major": 0,
 		"minor": 11,
-		"patch": 22
+		"patch": 23
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -443,7 +443,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1724379504",
-			"lastDebtRatio": "1005",
+			"lastDebtRatio": "1010",
 			"isRetired": true,
 			"displayName": "Stargate USDC.e Staker",
 			"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -541,7 +541,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1724371005",
-			"lastDebtRatio": "4523",
+			"lastDebtRatio": "4545",
 			"isRetired": true,
 			"displayName": "Compound V3 USDC.e Lender",
 			"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
@@ -586,12 +586,12 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "943814463655",
+			"lastTotalDebt": "933583280925",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1724355186",
-			"lastDebtRatio": "4472",
+			"lastDebtRatio": "4445",
 			"isRetired": true,
 			"displayName": "Aave V3 USDC.e Lender",
 			"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",

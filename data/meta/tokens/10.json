@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-20T11:02:20.911977+02:00",
+	"lastUpdate": "2024-08-28T09:35:57.633393+02:00",
 	"version": {
 		"major": 0,
-		"minor": 14,
+		"minor": 15,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2463,6 +2463,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x23851bF7d838D50B1B5164B75C79BDa3c1BB6FA3/logo-128.png",
 			"decimals": 18,
+			"chainID": 10
+		},
+		"0x23ee2343b892b1bb63503a4fabc840e0e2c6810f": {
+			"address": "0x23ee2343b892b1bb63503a4fabc840e0e2c6810f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Axelar",
+			"symbol": "AXL",
+			"displayName": "Axelar",
+			"displaySymbol": "AXL",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x23ee2343B892b1BB63503a4FAbc840E0e2C6810f/logo-128.png",
+			"decimals": 6,
 			"chainID": 10
 		},
 		"0x2416092f143378750bb29b79ed961ab195cceea5": {
@@ -7394,6 +7408,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x6911FFaD80Ee47A5E78DCF40906B0159EA19aCb0/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x6985884c4392d348587b19cb9eaaf157f13271cd": {
+			"address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
+			"underlyingTokensAddresses": [
+				"0x6985884c4392d348587b19cb9eaaf157f13271cd"
+			],
+			"type": "Yearn Vault",
+			"name": "LayerZero",
+			"symbol": "ZRO",
+			"displayName": "LayerZero",
+			"displaySymbol": "ZRO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

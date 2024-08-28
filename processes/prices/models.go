@@ -13,7 +13,7 @@ type TCurveFactoriesPoolData struct {
 		Address  string          `json:"address"`
 		Decimals json.RawMessage `json:"decimals"`
 		Symbol   string          `json:"symbol"`
-		USDPrice float64         `json:"usdPrice"`
+		USDPrice any             `json:"usdPrice"`
 	} `json:"coins"`
 }
 

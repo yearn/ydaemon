@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-08-20T11:02:26.402148+02:00",
+	"lastUpdate": "2024-08-28T09:36:07.309504+02:00",
 	"version": {
-		"major": 0,
-		"minor": 1,
-		"patch": 17
+		"major": 2,
+		"minor": 0,
+		"patch": 60
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -133,8 +133,8 @@
 				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
 				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
 			],
-			"lastPricePerShare": "1059029213953342451",
-			"lastTotalAssets": "1118261634535174633560",
+			"lastPricePerShare": "1060179808801875756",
+			"lastTotalAssets": "1267742409754473258923",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -291,7 +291,7 @@
 				"0x6ac368e13f893b14e2b4dc01eb83c89a06b9a039"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "23047229447426",
+			"lastTotalAssets": "42451788127012",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -447,8 +447,8 @@
 				"0x48bf6f6f1cccbf22d3dcb7cda68fa14ba55b78f2",
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
-			"lastPricePerShare": "1001144334658638944",
-			"lastTotalAssets": "948179755195067881635",
+			"lastPricePerShare": "1001615771956382838",
+			"lastTotalAssets": "892201328717671501023",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -498,8 +498,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001750",
-			"lastTotalAssets": "718302716096",
+			"lastPricePerShare": "1095549",
+			"lastTotalAssets": "461570004",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -523,7 +523,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -532,6 +532,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 4,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -655,8 +668,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1482826",
-			"lastTotalAssets": "465652639876",
+			"lastPricePerShare": "1483917",
+			"lastTotalAssets": "522397450562",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -680,7 +693,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -689,6 +702,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -766,8 +792,8 @@
 				"0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168",
 				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
 			],
-			"lastPricePerShare": "1001301278262729159",
-			"lastTotalAssets": "904325570719994542184",
+			"lastPricePerShare": "1002458474122860332",
+			"lastTotalAssets": "1024347332973739190359",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1106,7 +1132,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -1139,10 +1165,11 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
-				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6"
+				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6",
+				"0x445300a0b0fcde8081f311c2991de613299df4d7"
 			],
-			"lastPricePerShare": "1003895473013796042",
-			"lastTotalAssets": "2066502198485626567354993",
+			"lastPricePerShare": "1005726492307951198",
+			"lastTotalAssets": "2270482428218084831612783",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1192,8 +1219,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1082000491111799715",
-			"lastTotalAssets": "263792350957811795",
+			"lastPricePerShare": "1083087374883337764",
+			"lastTotalAssets": "264140383426076613",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1243,8 +1270,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000405504125361759",
-			"lastTotalAssets": "78247711229006627529135",
+			"lastPricePerShare": "1000635614333032306",
+			"lastTotalAssets": "89882060687903911760462",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1370,7 +1397,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1379,6 +1406,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1449,8 +1489,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1009197914261886139",
-			"lastTotalAssets": "2102829266413708371044",
+			"lastPricePerShare": "1009197980848076431",
+			"lastTotalAssets": "2102829420572866020782",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1503,8 +1543,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1959045",
-			"lastTotalAssets": "18099104033",
+			"lastPricePerShare": "1960825",
+			"lastTotalAssets": "22213279883",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1537,6 +1577,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -1605,8 +1658,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1036694",
-			"lastTotalAssets": "4518350251",
+			"lastPricePerShare": "1038638",
+			"lastTotalAssets": "936264018",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1630,7 +1683,7 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1639,6 +1692,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 2,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 3,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 2,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 4
 				}
 			}
 		},
@@ -1818,8 +1884,8 @@
 				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
-			"lastPricePerShare": "1032701",
-			"lastTotalAssets": "33054884072",
+			"lastPricePerShare": "1033677",
+			"lastTotalAssets": "32941444355",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1872,8 +1938,8 @@
 			"lastActiveStrategies": [
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
-			"lastPricePerShare": "1000269099629853594",
-			"lastTotalAssets": "78223950925861267052071",
+			"lastPricePerShare": "1000473043227654689",
+			"lastTotalAssets": "89851697309775247313437",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1897,7 +1963,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1977,8 +2043,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004319",
-			"lastTotalAssets": "727808650213",
+			"lastPricePerShare": "1004971",
+			"lastTotalAssets": "659172868212",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2002,7 +2068,7 @@
 				"description": "Supplies USDC.e to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2011,6 +2077,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2344,10 +2423,11 @@
 			"lastActiveStrategies": [
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063",
 				"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
-				"0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499"
+				"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
+				"0xe82d060687c014b280b65df24acd94a77251c784"
 			],
-			"lastPricePerShare": "1002682",
-			"lastTotalAssets": "1837584879745",
+			"lastPricePerShare": "1004091",
+			"lastTotalAssets": "1893787261253",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2369,6 +2449,57 @@
 				"displayName": "USDC.e-2",
 				"displaySymbol": "yvUSDC.e-2",
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 2,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1": {
+			"address": "0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 247305194,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "390000219857",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
 				"riskLevel": 0,
@@ -2559,8 +2690,8 @@
 				"0x5108db0852c0caa2df797dcf31f8a73bfb335452",
 				"0x45aceaa535830c921316085e355e4a32385e53f2"
 			],
-			"lastPricePerShare": "1028090",
-			"lastTotalAssets": "22534304989",
+			"lastPricePerShare": "1029027",
+			"lastTotalAssets": "23080274880",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2664,8 +2795,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1126206",
-			"lastTotalAssets": "281095047527",
+			"lastPricePerShare": "1127395",
+			"lastTotalAssets": "221821894850",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2698,6 +2829,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2715,8 +2859,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2072974370924134136",
-			"lastTotalAssets": "12028940772465",
+			"lastPricePerShare": "2073165090441294481",
+			"lastTotalAssets": "12030366362636",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2820,8 +2964,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "22214194",
-			"lastTotalAssets": "8763243655",
+			"lastPricePerShare": "22238709",
+			"lastTotalAssets": "3788249562",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2854,6 +2998,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2875,8 +3032,8 @@
 				"0x85968bf0f1f110c707fef10a59f80118f349c058",
 				"0x1bd173f9a1186a1abe680071e0f57d4d83c18430"
 			],
-			"lastPricePerShare": "1003646",
-			"lastTotalAssets": "1119933972246",
+			"lastPricePerShare": "1004278",
+			"lastTotalAssets": "1114542140563",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2900,7 +3057,7 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2952,6 +3109,57 @@
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3/zap/in?chain=arbitrum",
 				"uiNotice": "",
 				"riskLevel": 1,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				}
+			}
+		},
+		"0xe82d060687c014b280b65df24acd94a77251c784": {
+			"address": "0xe82d060687c014b280b65df24acd94a77251c784",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 247305194,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "390000095476",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xe82d060687c014b280b65df24acd94a77251c784",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

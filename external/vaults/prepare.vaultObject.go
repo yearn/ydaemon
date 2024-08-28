@@ -145,6 +145,7 @@ func toSimplifiedVersion(
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
 	info.RiskLevel = vault.Info.RiskLevel
+	info.RiskScore = vault.Info.RiskScore
 
 	/**********************************************************************************************
 	** Create the simplified version of the vault.

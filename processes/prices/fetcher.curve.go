@@ -63,7 +63,15 @@ func getPricesFromCurveFactoriesAPI(chainID uint64) map[common.Address]models.TP
 		//First add the underlying tokens
 		for _, coin := range fact.Coins {
 			coinAddress := common.HexToAddress(coin.Address)
-			coinPrice := bigNumber.NewFloat(coin.USDPrice)
+			coinPrice := bigNumber.NewFloat(0)
+			if coin.USDPrice != nil {
+				switch coin.USDPrice.(type) {
+				case string:
+					coinPrice = bigNumber.NewFloat(0).SetString(coin.USDPrice.(string))
+				case float64:
+					coinPrice = bigNumber.NewFloat(0).SetFloat64(coin.USDPrice.(float64))
+				}
+			}
 			coinPrice = coinPrice.Mul(coinPrice, bigNumber.NewFloat(1e6))
 			coinPriceBigInt := coinPrice.Int()
 			humanizedPrice := helpers.ToNormalizedAmount(coinPriceBigInt, 6)

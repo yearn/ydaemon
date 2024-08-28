@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-20T11:02:29.025434+02:00",
+	"lastUpdate": "2024-08-28T09:35:51.608105+02:00",
 	"version": {
 		"major": 0,
-		"minor": 23,
+		"minor": 25,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -299,6 +299,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x08e3D13d50310aFbeA2da20A3DBD92aAcFc503Ac/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x09199d9a5f4448d0848e4395d065e1ad9c4a1f74": {
+			"address": "0x09199d9a5f4448d0848e4395d065e1ad9c4a1f74",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Bonk",
+			"symbol": "Bonk",
+			"displayName": "Bonk",
+			"displaySymbol": "Bonk",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x09199d9A5F4448D0848e4395D065e1ad9c4a1F74/logo-128.png",
+			"decimals": 5,
 			"chainID": 42161
 		},
 		"0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14": {
@@ -5189,6 +5203,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1": {
+			"address": "0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Lender wstETH/USDC.e",
+			"symbol": "ysUSDC",
+			"displayName": "Silo Lender wstETH/USDC.e",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xA4B8873B4629c20f2167c0A2bC33B6AF8699dDc1/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0xa4f7e00ea5f67d0e126b7bb626ffddacd43436af": {
 			"address": "0xa4f7e00ea5f67d0e126b7bb626ffddacd43436af",
 			"underlyingTokensAddresses": [],
@@ -6121,6 +6151,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xca5ca9083702c56b481d1eec86f1776fdbd2e594": {
+			"address": "0xca5ca9083702c56b481d1eec86f1776fdbd2e594",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Reserve Rights",
+			"symbol": "RSR",
+			"displayName": "Reserve Rights",
+			"displaySymbol": "RSR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xCa5Ca9083702c56b481D1eec86F1776FDbd2e594/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xca71e00e364bb033371a7f61f3f6b803b06e9fc4": {
 			"address": "0xca71e00e364bb033371a7f61f3f6b803b06e9fc4",
 			"underlyingTokensAddresses": [],
@@ -6781,6 +6825,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xe822AE44EB2466B4E263b1cbC94b4833dDEf9700/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xe82d060687c014b280b65df24acd94a77251c784": {
+			"address": "0xe82d060687c014b280b65df24acd94a77251c784",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Lender wBTC/USDC.e",
+			"symbol": "ysUSDC",
+			"displayName": "Silo Lender wBTC/USDC.e",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xE82D060687C014B280b65df24AcD94A77251C784/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xe9ba18a9c5b93db9f971c7ce674ff2e9f613340e": {

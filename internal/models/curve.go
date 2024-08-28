@@ -71,12 +71,12 @@ type CurvePool struct {
 }
 
 type CurveGetCoin struct {
-	Address           string  `json:"address"`
-	USDPrice          float64 `json:"usdPrice"`
-	Decimals          any     `json:"decimals"`
-	IsBasePoolLpToken bool    `json:"isBasePoolLpToken"`
-	Symbol            string  `json:"symbol"`
-	PoolBalance       string  `json:"poolBalance"`
+	Address           string `json:"address"`
+	USDPrice          any    `json:"usdPrice"`
+	Decimals          any    `json:"decimals"`
+	IsBasePoolLpToken bool   `json:"isBasePoolLpToken"`
+	Symbol            string `json:"symbol"`
+	PoolBalance       string `json:"poolBalance"`
 }
 
 type CurveGetGaugeData struct {

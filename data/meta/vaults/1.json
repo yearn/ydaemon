@@ -15724,7 +15724,7 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

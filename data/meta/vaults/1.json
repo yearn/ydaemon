@@ -766,7 +766,7 @@
 				"description": "Supplies {{token}} to the corresponding [Sturdy](https://v2.sturdy.finance/aggregators) aggregator earning the underlying yield and compounding the rewards",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -775,6 +775,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 5,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 3,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2834,6 +2847,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -2930,7 +2956,7 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/weth-mainnet) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2939,6 +2965,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -3208,6 +3247,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -3637,7 +3689,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3646,6 +3698,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -9822,7 +9887,7 @@
 				"description": "Supplies {{token}} to the corresponding [Sturdy](https://v2.sturdy.finance/aggregators) aggregator earning the underlying yield and compounding the rewards",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -9831,6 +9896,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 5,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 3,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -10093,7 +10171,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -10102,6 +10180,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -13203,6 +13294,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -15219,7 +15323,7 @@
 				"description": "Multi strategy DAI vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -15499,6 +15603,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -15644,7 +15761,7 @@
 				"description": "Supplies {{token}} to the corresponding [Sturdy](https://v2.sturdy.finance/aggregators) aggregator earning the underlying yield and compounding the rewards",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -15653,6 +15770,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 5,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 3,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -17727,7 +17857,7 @@
 				"description": "Multi strategy WETH vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -19961,6 +20091,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -20116,7 +20259,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -20125,6 +20268,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -20172,7 +20328,7 @@
 				"description": "Multi strategy crvUSD vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -20768,7 +20924,7 @@
 				"description": "Supplies {{token}} to the corresponding [Sturdy](https://v2.sturdy.finance/aggregators) aggregator earning the underlying yield and compounding the rewards",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -20777,6 +20933,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 5,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 3,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -22205,6 +22374,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -24652,7 +24834,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -24661,6 +24843,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -25306,7 +25501,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -25315,6 +25510,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -25746,6 +25954,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},
@@ -26558,7 +26779,7 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26567,6 +26788,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 5,
+					"externalProtocolType": 3
 				}
 			}
 		},
@@ -26934,7 +27168,7 @@
 				"description": "Invests the USDC through MakerDAO's Peg Stability Module (PSM) into sDAI to benefit from the Dai Savings Rate.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26943,6 +27177,19 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskScore": {
+					"review": 3,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1
 				}
 			}
 		},

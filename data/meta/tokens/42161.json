@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-28T14:38:45.085044+02:00",
+	"lastUpdate": "2024-09-03T17:29:19.143186+02:00",
 	"version": {
 		"major": 0,
-		"minor": 25,
+		"minor": 26,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -688,6 +688,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x11cDb42B0EB46D95f990BeDD4695A6e3fA034978/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x1237dcbdd8771580b6e1f709a40a2167f8e35ca0": {
+			"address": "0x1237dcbdd8771580b6e1f709a40a2167f8e35ca0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x1237dcBDd8771580B6E1f709a40a2167f8E35cA0/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -1807,6 +1821,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x2fc3432c0e6a325d09d16f1af14061ec6cf71e98": {
+			"address": "0x2fc3432c0e6a325d09d16f1af14061ec6cf71e98",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2fc3432C0E6a325D09D16f1Af14061eC6cf71E98/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2fdc424946aa72d42e2f897447d7c335e64845f0": {
 			"address": "0x2fdc424946aa72d42e2f897447d7c335e64845f0",
 			"underlyingTokensAddresses": [],
@@ -2010,6 +2038,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x355ec27c9d4530de01a103fa27f884a2f3da65ef": {
+			"address": "0x355ec27c9d4530de01a103fa27f884a2f3da65ef",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT rsETH 26DEC2024",
+			"symbol": "PT-rsETH-26DEC2024",
+			"displayName": "PT rsETH 26DEC2024",
+			"displaySymbol": "PT-rsETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x355ec27c9d4530dE01A103FA27F884a2F3dA65ef/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x35751007a407ca6feffe80b3cb397736d2cf4dbe": {
 			"address": "0x35751007a407ca6feffe80b3cb397736d2cf4dbe",
 			"underlyingTokensAddresses": [],
@@ -2036,6 +2078,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x35f3dB08a6e9cB4391348b0B404F493E7ae264c0/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x35fa164735182de50811e8e2e824cfb9b6118ac2": {
+			"address": "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "",
+			"symbol": "",
+			"displayName": "",
+			"displaySymbol": "",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x35fA164735182de50811E8e2E824cFb9B6118ac2/logo-128.png",
+			"decimals": 0,
 			"chainID": 42161
 		},
 		"0x3635e69f1463cffb72a3b197604ce3c0674a522c": {
@@ -2508,6 +2564,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x4ac1cc1f45b07bb317883ecb7a2a1d95bf617d02": {
+			"address": "0x4ac1cc1f45b07bb317883ecb7a2a1d95bf617d02",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT gDAI 27MAR2025",
+			"symbol": "YT-gDAI-27MAR2025",
+			"displayName": "YT gDAI 27MAR2025",
+			"displaySymbol": "YT-gDAI-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4ac1Cc1F45b07bB317883eCb7A2a1D95BF617D02/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3": {
 			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
 			"underlyingTokensAddresses": [
@@ -2549,6 +2619,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4b64f0bf6B1BFfC23cCA3c8DcD08dde4627aBA9b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4b755c030b455b959246fc0f940de3a95f8e81ec": {
+			"address": "0x4b755c030b455b959246fc0f940de3a95f8e81ec",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT rsETH 26DEC2024",
+			"symbol": "YT-rsETH-26DEC2024",
+			"displayName": "YT rsETH 26DEC2024",
+			"displaySymbol": "YT-rsETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4b755c030b455B959246fC0f940De3a95F8E81Ec/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2639,6 +2723,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x4d5d8375c39dc91a8aca33ff4a4564de92dcd04c": {
+			"address": "0x4d5d8375c39dc91a8aca33ff4a4564de92dcd04c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT gDAI 27MAR2025",
+			"symbol": "PT-gDAI-27MAR2025",
+			"displayName": "PT gDAI 27MAR2025",
+			"displaySymbol": "PT-gDAI-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4D5D8375C39DC91A8acA33FF4A4564De92dcd04c/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x4da30274267dedc73a6a7eb233fba81691f34ef7": {
 			"address": "0x4da30274267dedc73a6a7eb233fba81691f34ef7",
 			"underlyingTokensAddresses": [
@@ -2714,6 +2812,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x5220E1Ef8CE83Aa9fE0CCE1b8395cD698d04bc7E/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x526c73e0ba9cedb44546da4506eaee0b39be8d76": {
+			"address": "0x526c73e0ba9cedb44546da4506eaee0b39be8d76",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x526C73E0bA9CeDb44546Da4506EaEe0b39Be8D76/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -3492,6 +3604,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x6b92feb89ed16aa971b096e247fe234db4aaa262": {
+			"address": "0x6b92feb89ed16aa971b096e247fe234db4aaa262",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x6b92feB89ED16AA971B096e247Fe234dB4Aaa262/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40": {
 			"address": "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
 			"underlyingTokensAddresses": [],
@@ -3934,6 +4060,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x7f37674e5c6dc16b30829b7ae1e0b7fe08144b7d": {
+			"address": "0x7f37674e5c6dc16b30829b7ae1e0b7fe08144b7d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT weETH 26DEC2024",
+			"symbol": "YT-weETH-26DEC2024",
+			"displayName": "YT weETH 26DEC2024",
+			"displaySymbol": "YT-weETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x7F37674E5c6dc16B30829B7AE1E0b7fE08144B7d/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x7f90122bf0700f9e7e1f688fe926940e8839f353": {
 			"address": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
 			"underlyingTokensAddresses": [
@@ -4238,6 +4378,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x877b050d26a780bB43642171859434FdF496F1aE/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x879e35e9450aab46e972b2bc6288c007331d7185": {
+			"address": "0x879e35e9450aab46e972b2bc6288c007331d7185",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT gDAI 26DEC2024",
+			"symbol": "YT-gDAI-26DEC2024",
+			"displayName": "YT gDAI 26DEC2024",
+			"displaySymbol": "YT-gDAI-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x879E35e9450AaB46e972b2Bc6288C007331d7185/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -5345,6 +5499,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xa9104b8b6698979568852c30231871e28a482b3c": {
+			"address": "0xa9104b8b6698979568852c30231871e28a482b3c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xA9104b8B6698979568852C30231871e28A482b3C/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xa972fb7828f0bff8a22f7f8c63b17cfb971bfc0a": {
 			"address": "0xa972fb7828f0bff8a22f7f8c63b17cfb971bfc0a",
 			"underlyingTokensAddresses": [],
@@ -5919,6 +6087,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xc15cb9274cb1f47d6854133a3b822ccf94861642": {
+			"address": "0xc15cb9274cb1f47d6854133a3b822ccf94861642",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT gDAI 26DEC2024",
+			"symbol": "PT-gDAI-26DEC2024",
+			"displayName": "PT gDAI 26DEC2024",
+			"displaySymbol": "PT-gDAI-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xC15CB9274cB1F47D6854133A3B822CCF94861642/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xc25cef6061cf5de5eb761b50e4743c1f5d7e5407": {
 			"address": "0xc25cef6061cf5de5eb761b50e4743c1f5d7e5407",
 			"underlyingTokensAddresses": [],
@@ -6236,6 +6418,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xCB1A0a9C9cBBca82A395301267d525125cFBa557/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xcb471665bf23b2ac6196d84d947490fd5571215f": {
+			"address": "0xcb471665bf23b2ac6196d84d947490fd5571215f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xcB471665BF23B2Ac6196D84D947490fd5571215f/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -6698,6 +6894,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xe281e58E99291E1CaBbc04277c1681f7D995660e/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xe2b2d203577c7cb3d043e89ccf90b5e24d19b66f": {
+			"address": "0xe2b2d203577c7cb3d043e89ccf90b5e24d19b66f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT weETH 26DEC2024",
+			"symbol": "PT-weETH-26DEC2024",
+			"displayName": "PT weETH 26DEC2024",
+			"displaySymbol": "PT-weETH-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xE2B2D203577c7cb3D043E89cCf90b5E24d19b66f/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

@@ -3200,7 +3200,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -10816,12 +10816,12 @@
 			"lastPricePerShare": "1025278857848507952",
 			"lastTotalAssets": "29365517344439577560",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -10837,7 +10837,7 @@
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2/zap/in?chain=ethereum",
-				"uiNotice": "",
+				"uiNotice": "PenPie has experienced an exploit. Deposits and withdrawals have been paused by PenPie.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -19118,7 +19118,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -22841,7 +22841,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -23781,7 +23781,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -33029,12 +33029,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -34033,7 +34033,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,

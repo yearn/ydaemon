@@ -7972,6 +7972,57 @@
 				}
 			}
 		},
+		"0x3f540647b08e3E9bcD297e065e42e6cdaF37eba0": {
+			"address": "0x3f540647b08e3E9bcD297e065e42e6cdaF37eba0",
+			"token": "0xc02aaa39b223fe8d0a0e5c4F27ead9083c756cc2",
+			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.1",
+			"activation": 20670154,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "This multi-strategy WETH vault allocates to Silo markets on Ethereum that accept LRTs (Liquid Restaking Tokens) and their derivatives as collateral. For more information on the markets either check out the vaults tab or see Silo's [website](https://app.silo.finance).",
+				"sourceURI": "",
+				"uiNotice": "",
+				"riskLevel": 0,
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": true
+				}
+			}
+		},
 		"0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb": {
 			"address": "0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb",
 			"token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-08-28T14:39:06.145506+02:00",
+	"lastUpdate": "2024-09-03T17:29:35.200999+02:00",
 	"version": {
 		"major": 0,
-		"minor": 57,
+		"minor": 58,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -6027,6 +6027,22 @@
 			"decimals": 0,
 			"chainID": 1
 		},
+		"0x3ac911110c7d1d14d9a65af1204d5af58ac6bb57": {
+			"address": "0x3ac911110c7d1d14d9a65af1204d5af58ac6bb57",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo-LRT WETH yVault",
+			"symbol": "yvSilo-LRT-WETH",
+			"displayName": "Silo-LRT WETH yVault",
+			"displaySymbol": "yvSilo-LRT-WETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x3aC911110c7d1D14d9A65AF1204d5af58Ac6Bb57/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3b21c2868b6028cfb38ff86127ef22e68d16d53b": {
 			"address": "0x3b21c2868b6028cfb38ff86127ef22e68d16d53b",
 			"underlyingTokensAddresses": [
@@ -6544,6 +6560,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains RSR, FRAX, and USDC. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x3F436954afb722F5D14D868762a23faB6b0DAbF0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3f540647b08e3e9bcd297e065e42e6cdaf37eba0": {
+			"address": "0x3f540647b08e3e9bcd297e065e42e6cdaf37eba0",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo-LRT WETH yVault",
+			"symbol": "yvSilo-LRT-WETH",
+			"displayName": "Silo-LRT WETH yVault",
+			"displaySymbol": "yvSilo-LRT-WETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x3f540647b08e3E9bcD297e065e42E6CDAF37eBa0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7236,6 +7268,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4591DBfF62656E7859Afe5e45f6f47D3669fBB28/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x459f99d7c83bc3653b1913b62d2978b1deda01b5": {
+			"address": "0x459f99d7c83bc3653b1913b62d2978b1deda01b5",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "sUSDC",
+			"symbol": "ysUSDC",
+			"displayName": "sUSDC",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x459F99D7c83Bc3653b1913B62D2978b1deDa01B5/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x4647b6d835f3b393c7a955df51eefcf0db961606": {
@@ -13624,6 +13672,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8670120c32de7bc990e0fe3bbd04704e98492f0a": {
+			"address": "0x8670120c32de7bc990e0fe3bbd04704e98492f0a",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Usual aggregator",
+			"symbol": "USUAL-agg",
+			"displayName": "Usual aggregator",
+			"displaySymbol": "USUAL-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8670120c32DE7bc990e0FE3Bbd04704E98492F0a/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x8682fbf0cbf312c891532ba9f1a91e44f81ad7df": {
 			"address": "0x8682fbf0cbf312c891532ba9f1a91e44f81ad7df",
 			"underlyingTokensAddresses": [
@@ -18110,6 +18174,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb3ca5c531bcaf94c3575500da16b7e219b910224": {
+			"address": "0xb3ca5c531bcaf94c3575500da16b7e219b910224",
+			"underlyingTokensAddresses": [
+				"0xb7ecb2aa52aa64a717180e030241bc75cd946726"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve 2BTC-f Factory yVault",
+			"symbol": "yvCurve-2BTC-f-f",
+			"displayName": "Curve 2BTC-f Factory yVault",
+			"displaySymbol": "yvCurve-2BTC-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb3CA5C531BCaF94C3575500DA16b7e219b910224/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb41c14954e4002d29bbbac86b52143328db2ee47": {
 			"address": "0xb41c14954e4002d29bbbac86b52143328db2ee47",
 			"underlyingTokensAddresses": [
@@ -18451,6 +18531,23 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV. This factory crypto pool contains LDO and ETH. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss. LDO is [Lido Finance](https://lido.fi)'s governance token.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xb79565c01b7Ae53618d9B847b9443aAf4f9011e7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb7ecb2aa52aa64a717180e030241bc75cd946726": {
+			"address": "0xb7ecb2aa52aa64a717180e030241bc75cd946726",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+				"0x18084fba666a33d37592fa2633fd49a74dd93a88"
+			],
+			"type": "Curve LP",
+			"name": "Curve.fi Factory Plain Pool: tBTC/WBTC",
+			"symbol": "2BTC-f",
+			"displayName": "Curve.fi Factory Plain Pool: tBTC/WBTC",
+			"displaySymbol": "2BTC-f",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB7ECB2AA52AA64a717180E030241bC75Cd946726/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

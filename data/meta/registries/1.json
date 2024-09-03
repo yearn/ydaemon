@@ -1059,6 +1059,16 @@
 		"chainID": 1,
 		"blockNumber": 16515136
 	},
+	"0x3ac911110c7d1d14d9a65af1204d5af58ac6bb57": {
+		"address": "0x3ac911110c7d1d14d9a65af1204d5af58ac6bb57",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 20670043
+	},
 	"0x3b27f92c0e212c671ea351827edf93db27cc0c65": {
 		"address": "0x3b27f92c0e212c671ea351827edf93db27cc0c65",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",
@@ -1149,6 +1159,16 @@
 		"chainID": 1,
 		"blockNumber": 17834901
 	},
+	"0x3f540647b08e3e9bcd297e065e42e6cdaf37eba0": {
+		"address": "0x3f540647b08e3e9bcd297e065e42e6cdaf37eba0",
+		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"tokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 20670154
+	},
 	"0x408295aaf78cc6d12b511a752b05f1554eaceed1": {
 		"address": "0x408295aaf78cc6d12b511a752b05f1554eaceed1",
 		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
@@ -1238,6 +1258,16 @@
 		"version": "0.4.3",
 		"chainID": 1,
 		"blockNumber": 13199546
+	},
+	"0x459f99d7c83bc3653b1913b62d2978b1deda01b5": {
+		"address": "0x459f99d7c83bc3653b1913b62d2978b1deda01b5",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+		"tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 20642946
 	},
 	"0x468c76f16b7735303f7215b3839d270d058b3d7a": {
 		"address": "0x468c76f16b7735303f7215b3839d270d058b3d7a",
@@ -1401,13 +1431,13 @@
 	},
 	"0x4dd0fe8549641a04d7ab4f37dbb541ae7dbb2838": {
 		"address": "0x4dd0fe8549641a04d7ab4f37dbb541ae7dbb2838",
-		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 		"tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
-		"version": "3.0.1",
+		"version": "3.0.0",
 		"chainID": 1,
-		"blockNumber": 20487681
+		"blockNumber": 20642946
 	},
 	"0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb": {
 		"address": "0x4df40f310cd760e5f59850c1aeb58242cdc6e2fb",
@@ -2529,6 +2559,16 @@
 		"chainID": 1,
 		"blockNumber": 19448934
 	},
+	"0x8670120c32de7bc990e0fe3bbd04704e98492f0a": {
+		"address": "0x8670120c32de7bc990e0fe3bbd04704e98492f0a",
+		"registryAddress": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
+		"tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 20628805
+	},
 	"0x873fb544277fd7b977b196a826459a69e27ea4ea": {
 		"address": "0x873fb544277fd7b977b196a826459a69e27ea4ea",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",
@@ -3318,6 +3358,16 @@
 		"version": "0.4.5",
 		"chainID": 1,
 		"blockNumber": 16295013
+	},
+	"0xb3ca5c531bcaf94c3575500da16b7e219b910224": {
+		"address": "0xb3ca5c531bcaf94c3575500da16b7e219b910224",
+		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+		"tokenAddress": "0xb7ecb2aa52aa64a717180e030241bc75cd946726",
+		"type": "Automated Yearn Vault",
+		"kind": "Legacy",
+		"version": "0.4.6",
+		"chainID": 1,
+		"blockNumber": 20667004
 	},
 	"0xb41c14954e4002d29bbbac86b52143328db2ee47": {
 		"address": "0xb41c14954e4002d29bbbac86b52143328db2ee47",
@@ -4241,13 +4291,13 @@
 	},
 	"0xdda02a2fa0bb0ee45ba9179a3fd7e65e5d3b2c90": {
 		"address": "0xdda02a2fa0bb0ee45ba9179a3fd7e65e5d3b2c90",
-		"registryAddress": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
 		"tokenAddress": "0xe1b4d34e8754600962cd944b535180bd758e6c2e",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
-		"version": "3.0.1",
+		"version": "3.0.0",
 		"chainID": 1,
-		"blockNumber": 20614022
+		"blockNumber": 20628112
 	},
 	"0xddb166c6cb38cede52d12c405b6e906c1fb6f9d7": {
 		"address": "0xddb166c6cb38cede52d12c405b6e906c1fb6f9d7",

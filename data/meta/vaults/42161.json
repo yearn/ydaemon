@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-08-28T09:36:07.309504+02:00",
+	"lastUpdate": "2024-09-03T17:29:31.197111+02:00",
 	"version": {
-		"major": 2,
+		"major": 4,
 		"minor": 0,
-		"patch": 60
+		"patch": 59
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -49,7 +49,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -58,6 +57,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -103,7 +116,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -112,6 +124,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -133,8 +159,8 @@
 				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
 				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
 			],
-			"lastPricePerShare": "1060179808801875756",
-			"lastTotalAssets": "1267742409754473258923",
+			"lastPricePerShare": "1060331025241379641",
+			"lastTotalAssets": "1174506306544118486781",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -158,7 +184,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -167,6 +192,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -209,7 +248,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xe11f9786b06438456b044b3e21712228adcaa0d1/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xe11f9786b06438456b044b3e21712228adcaa0d1/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -218,6 +256,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -260,7 +312,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -269,6 +320,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -291,7 +356,7 @@
 				"0x6ac368e13f893b14e2b4dc01eb83c89a06b9a039"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "42451788127012",
+			"lastTotalAssets": "23047229447426",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -315,7 +380,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -324,6 +388,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -366,7 +444,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x551c423c441db0b691b5630f04d2080caee25963/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x551c423c441db0b691b5630f04d2080caee25963/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -375,6 +452,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -417,7 +508,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xba4a858d664ddb052158168db04afa3cff5cfcc8/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xba4a858d664ddb052158168db04afa3cff5cfcc8/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -426,6 +516,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -447,8 +551,8 @@
 				"0x48bf6f6f1cccbf22d3dcb7cda68fa14ba55b78f2",
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
-			"lastPricePerShare": "1001615771956382838",
-			"lastTotalAssets": "892201328717671501023",
+			"lastPricePerShare": "1001833444599990454",
+			"lastTotalAssets": "859667623705350801508",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -472,7 +576,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -481,6 +584,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -498,8 +615,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1095549",
-			"lastTotalAssets": "461570004",
+			"lastPricePerShare": "2671688",
+			"lastTotalAssets": "252444143",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -523,7 +640,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -533,6 +649,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 2,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -591,7 +708,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -600,6 +716,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -642,7 +772,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -651,6 +780,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -668,8 +811,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1483917",
-			"lastTotalAssets": "522397450562",
+			"lastPricePerShare": "1486370",
+			"lastTotalAssets": "79990886315",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -693,7 +836,6 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/usdc.e-polygon) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -703,6 +845,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -760,7 +903,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
 				"protocols": [
 					"Curve"
 				],
@@ -771,6 +913,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -792,8 +948,8 @@
 				"0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168",
 				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
 			],
-			"lastPricePerShare": "1002458474122860332",
-			"lastTotalAssets": "1024347332973739190359",
+			"lastPricePerShare": "1002927213391233764",
+			"lastTotalAssets": "953167990131902273150",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -817,7 +973,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -826,6 +981,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -869,7 +1038,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -878,6 +1046,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -922,7 +1104,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
 				"protocols": [
 					"Curve"
 				],
@@ -933,6 +1114,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -955,7 +1150,7 @@
 				"0xda9889b85831ab8841edd3618e1595a7fef96fa8"
 			],
 			"lastPricePerShare": "1001355",
-			"lastTotalAssets": "70783540",
+			"lastTotalAssets": "72475931",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -979,7 +1174,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -988,6 +1182,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -1030,7 +1238,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1039,6 +1246,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1086,7 +1307,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1095,6 +1315,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1138,7 +1372,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1147,6 +1380,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1168,8 +1415,8 @@
 				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6",
 				"0x445300a0b0fcde8081f311c2991de613299df4d7"
 			],
-			"lastPricePerShare": "1005726492307951198",
-			"lastTotalAssets": "2270482428218084831612783",
+			"lastPricePerShare": "1007089692531948357",
+			"lastTotalAssets": "1761669109622636332769452",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1193,7 +1440,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "Base APR includes 2500 ARB/week incentive program from Pendle Finance. Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard)",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1202,6 +1448,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -1219,8 +1479,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1083087374883337764",
-			"lastTotalAssets": "264140383426076613",
+			"lastPricePerShare": "1084240586929945061",
+			"lastTotalAssets": "264435795126628694",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1244,7 +1504,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1253,6 +1512,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1270,8 +1543,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000635614333032306",
-			"lastTotalAssets": "89882060687903911760462",
+			"lastPricePerShare": "1000844277491996495",
+			"lastTotalAssets": "79920386751080383746518",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1295,7 +1568,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1304,6 +1576,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1346,7 +1632,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1355,6 +1640,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1373,7 +1672,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "2504095",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1397,7 +1696,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1407,6 +1705,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -1461,7 +1760,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x14fbc760efaf36781cb0eb3cb255ad976117b9bd/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x14fbc760efaf36781cb0eb3cb255ad976117b9bd/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1470,6 +1768,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1489,8 +1801,8 @@
 			"lastActiveStrategies": [
 				"0xf992fcef771df908f9b09bb2619092f70ab21957"
 			],
-			"lastPricePerShare": "1009197980848076431",
-			"lastTotalAssets": "2102829420572866020782",
+			"lastPricePerShare": "1009198023263188799",
+			"lastTotalAssets": "2102829518771576653615",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1515,7 +1827,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
 				"protocols": [
 					"Curve"
 				],
@@ -1526,6 +1837,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1543,8 +1868,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1960825",
-			"lastTotalAssets": "22213279883",
+			"lastPricePerShare": "1962185",
+			"lastTotalAssets": "25121871844",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1568,7 +1893,6 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1578,6 +1902,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -1632,7 +1957,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xfd8aee8fcc10aac1897f8d5271d112810c79e022/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xfd8aee8fcc10aac1897f8d5271d112810c79e022/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1641,6 +1965,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1658,8 +1996,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1038638",
-			"lastTotalAssets": "936264018",
+			"lastPricePerShare": "1201728",
+			"lastTotalAssets": "8135759",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1683,7 +2021,6 @@
 				"description": "Supplies {{token}} to the corresponding [Stargate](https://stargate.finance/) pool and stakes the LP token to earn STG. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1693,6 +2030,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 2,
 				"riskScore": {
 					"review": 2,
 					"testing": 1,
@@ -1747,7 +2085,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x3803d89c31de8b7def55c86f2469a5ea4db41b92/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x3803d89c31de8b7def55c86f2469a5ea4db41b92/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1756,6 +2093,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1801,7 +2152,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": -1,
 				"protocols": [
 					"Curve"
 				],
@@ -1812,6 +2162,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1854,7 +2218,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x08a152834de126d2ef83d612ff36e4523fd0017f/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x08a152834de126d2ef83d612ff36e4523fd0017f/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1863,6 +2226,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1884,8 +2261,8 @@
 				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
-			"lastPricePerShare": "1033677",
-			"lastTotalAssets": "32941444355",
+			"lastPricePerShare": "1034424",
+			"lastTotalAssets": "37179494918",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1909,7 +2286,6 @@
 				"description": "Multi strategy USDC vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1918,6 +2294,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -1938,8 +2328,8 @@
 			"lastActiveStrategies": [
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
-			"lastPricePerShare": "1000473043227654689",
-			"lastTotalAssets": "89851697309775247313437",
+			"lastPricePerShare": "1000659006051254150",
+			"lastTotalAssets": "79906647304296760250216",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1963,7 +2353,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1972,6 +2361,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2017,7 +2420,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2026,6 +2428,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2043,8 +2459,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004971",
-			"lastTotalAssets": "659172868212",
+			"lastPricePerShare": "1144129",
+			"lastTotalAssets": "317243696",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2068,7 +2484,6 @@
 				"description": "Supplies USDC.e to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2078,6 +2493,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -2132,7 +2548,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x99e9028e274feafa2e1d8787e1ee6de39c6f7724/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x99e9028e274feafa2e1d8787e1ee6de39c6f7724/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2141,6 +2556,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2183,7 +2612,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2192,6 +2620,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2234,7 +2676,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2243,6 +2684,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2288,7 +2743,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2297,6 +2751,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2340,7 +2808,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2349,6 +2816,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2394,7 +2875,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2403,6 +2883,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2422,12 +2916,11 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063",
-				"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
 				"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
 				"0xe82d060687c014b280b65df24acd94a77251c784"
 			],
-			"lastPricePerShare": "1004091",
-			"lastTotalAssets": "1893787261253",
+			"lastPricePerShare": "1004724",
+			"lastTotalAssets": "679227142524",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2451,7 +2944,6 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eVaults labeled with the category of -2 will use strategies deploying into less proven but potentially higher yielding protocols than the standard vaults. These strategies may have a higher likelyhood of becoming temporarily illiquid or even producing losses, but are expected to earn more yield than others.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 2,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2460,6 +2952,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 2,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2473,12 +2979,12 @@
 			"activation": 247305194,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "390000219857",
+			"lastPricePerShare": "1000357",
+			"lastTotalAssets": "265647222224",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2502,7 +3008,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2511,6 +3016,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2554,7 +3073,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2563,6 +3081,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2608,7 +3140,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2617,6 +3148,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -2659,7 +3204,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0x6f02c88650837c8dfe89f66723c4743e9cf833cd/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0x6f02c88650837c8dfe89f66723c4743e9cf833cd/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2668,6 +3212,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2690,8 +3248,8 @@
 				"0x5108db0852c0caa2df797dcf31f8a73bfb335452",
 				"0x45aceaa535830c921316085e355e4a32385e53f2"
 			],
-			"lastPricePerShare": "1029027",
-			"lastTotalAssets": "23080274880",
+			"lastPricePerShare": "1029865",
+			"lastTotalAssets": "25040954685",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2715,7 +3273,6 @@
 				"description": "Multi strategy USDT vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2724,6 +3281,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2744,8 +3315,8 @@
 			"lastActiveStrategies": [
 				"0x571293fd9d9716d50ba48aa1628840d7fa166b20"
 			],
-			"lastPricePerShare": "1001522994946350744",
-			"lastTotalAssets": "270820862112221074",
+			"lastPricePerShare": "1001937400015140391",
+			"lastTotalAssets": "271228897114031496",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2769,7 +3340,6 @@
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2778,6 +3348,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2
 				}
 			}
 		},
@@ -2795,8 +3379,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1127395",
-			"lastTotalAssets": "221821894850",
+			"lastPricePerShare": "1128356",
+			"lastTotalAssets": "226241695345",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2820,7 +3404,6 @@
 				"description": "Supplies {{token}} on [Compound Finance](https://app.compound.finance/markets/) to generate interest and earn COMP. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2830,6 +3413,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -2859,8 +3443,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2073165090441294481",
-			"lastTotalAssets": "12030366362636",
+			"lastPricePerShare": "2073242135956627001",
+			"lastTotalAssets": "12030724123493",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2884,7 +3468,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2893,6 +3476,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2938,7 +3535,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2947,6 +3543,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -2964,8 +3574,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "22238709",
-			"lastTotalAssets": "3788249562",
+			"lastPricePerShare": "22258126",
+			"lastTotalAssets": "3721607076",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2989,7 +3599,6 @@
 				"description": "Supplies {{token}} to [Aave V3](https://app.aave.com/) to generate interest and earn any applicable rewards. Earned tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -2999,6 +3608,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -3032,8 +3642,8 @@
 				"0x85968bf0f1f110c707fef10a59f80118f349c058",
 				"0x1bd173f9a1186a1abe680071e0f57d4d83c18430"
 			],
-			"lastPricePerShare": "1004278",
-			"lastTotalAssets": "1114542140563",
+			"lastPricePerShare": "1050382",
+			"lastTotalAssets": "12682803648",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3057,7 +3667,6 @@
 				"description": "Multi strategy USDC.e vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3066,6 +3675,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -3108,7 +3731,6 @@
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3/zap/in?chain=arbitrum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3/zap/in?chain=arbitrum",
 				"uiNotice": "",
-				"riskLevel": 1,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3117,6 +3739,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -3130,12 +3766,12 @@
 			"activation": 247305194,
 			"chainID": 42161,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "390000095476",
+			"lastPricePerShare": "1000315",
+			"lastTotalAssets": "419975730877",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3159,7 +3795,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3168,6 +3803,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -3214,7 +3863,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3223,6 +3871,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		},
@@ -3269,7 +3931,6 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"riskLevel": 0,
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3278,6 +3939,20 @@
 					"isGimme": false,
 					"isPoolTogether": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0
 				}
 			}
 		}

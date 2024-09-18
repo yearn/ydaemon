@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-03T17:29:19.143186+02:00",
+	"lastUpdate": "2024-09-18T19:03:13.568717+02:00",
 	"version": {
 		"major": 0,
-		"minor": 26,
+		"minor": 27,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4941,6 +4941,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x9869108fab928428a5cdbf1dab0fe4e46027bc51": {
+			"address": "0x9869108fab928428a5cdbf1dab0fe4e46027bc51",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWETH-ENS3",
+			"symbol": "xWETH-ENS3",
+			"displayName": "xWETH-ENS3",
+			"displaySymbol": "xWETH-ENS3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x9869108fAb928428A5CdbF1dAB0fe4E46027bC51/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x9902bc1eb18c5d1594dd97907f1bb427d8a153da": {
 			"address": "0x9902bc1eb18c5d1594dd97907f1bb427d8a153da",
 			"underlyingTokensAddresses": [],
@@ -7714,6 +7728,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xFe8ef0DE9E66180C8247FA3435870891B4CB2533/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xfea31d704deb0975da8e77bf13e04239e70d7c28": {
+			"address": "0xfea31d704deb0975da8e77bf13e04239e70d7c28",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ethereum Name Service",
+			"symbol": "ENS",
+			"displayName": "Ethereum Name Service",
+			"displaySymbol": "ENS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xfeA31d704DEb0975dA8e77Bf13E04239e70d7c28/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

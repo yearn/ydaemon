@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-18T19:03:19.952506+02:00",
+	"lastUpdate": "2024-09-23T09:44:20.612948+02:00",
 	"version": {
 		"major": 0,
-		"minor": 9,
+		"minor": 10,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -48,6 +48,20 @@
 			"description": "This token represents a Aerodrome liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Aerodrome's gauges to earn emissions. This stablepool contains DOLA and USDbC.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x0B25c51637c43decd6CC1C1e3da4518D54ddb528/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x0fac819628a7f612abac1cad939768058cc0170c": {
+			"address": "0x0fac819628a7f612abac1cad939768058cc0170c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - ION/WETH",
+			"symbol": "vAMM-ION/WETH",
+			"displayName": "Volatile AMM - ION/WETH",
+			"displaySymbol": "vAMM-ION/WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x0FAc819628a7F612AbAc1CaD939768058cc0170c/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -638,6 +652,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x68393A804c9fe4f1c7148d37796436e450Ad98E8/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x68a0ba9ecad98bfd16d2457e2546226e8fb7c101": {
+			"address": "0x68a0ba9ecad98bfd16d2457e2546226e8fb7c101",
+			"underlyingTokensAddresses": [
+				"0x0fac819628a7f612abac1cad939768058cc0170c"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Aerodrome ION-WETH Factory yVault",
+			"symbol": "yvAero-ION-WETH-f",
+			"displayName": "Aerodrome ION-WETH Factory yVault",
+			"displaySymbol": "yvAero-ION-WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x68A0ba9EcaD98BFd16D2457E2546226e8FB7C101/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

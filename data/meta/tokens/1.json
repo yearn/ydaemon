@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-18T19:04:29.524068+02:00",
+	"lastUpdate": "2024-09-23T09:44:45.718033+02:00",
 	"version": {
 		"major": 0,
-		"minor": 59,
+		"minor": 60,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1313,6 +1313,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0a35322c5C9Dd22fF592bfC5b134c5CE78154d10/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0a6e7ba5042b38349e437ec6db6214aec7b35676": {
+			"address": "0x0a6e7ba5042b38349e437ec6db6214aec7b35676",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Swell Governance Token",
+			"symbol": "SWELL",
+			"displayName": "Swell Governance Token",
+			"displaySymbol": "SWELL",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0a6E7Ba5042B38349e437ec6Db6214AEC7B35676/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5648,6 +5662,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x358d94b5b2f147d741088803d932acb566acb7b6": {
+			"address": "0x358d94b5b2f147d741088803d932acb566acb7b6",
+			"underlyingTokensAddresses": [
+				"0x0a6e7ba5042b38349e437ec6db6214aec7b35676"
+			],
+			"type": "Yearn Vault",
+			"name": "rSWELL",
+			"symbol": "rSWELL",
+			"displayName": "rSWELL",
+			"displaySymbol": "rSWELL",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x358d94b5b2F147D741088803d932Acb566acB7B6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x35abccd8e577607275647edab08c537fa32cc65e": {
 			"address": "0x35abccd8e577607275647edab08c537fa32cc65e",
 			"underlyingTokensAddresses": [],
@@ -7182,6 +7212,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x42842754abce504e12c20e434af8960fdf85c833": {
+			"address": "0x42842754abce504e12c20e434af8960fdf85c833",
+			"underlyingTokensAddresses": [
+				"0xcf8dfdb73e7434b05903b5599fb96174555f4353"
+			],
+			"type": "Yearn Vault",
+			"name": "yGOLD-styETH (Autocompounding)",
+			"symbol": "yGOLD-styETH",
+			"displayName": "yGOLD-styETH (Autocompounding)",
+			"displaySymbol": "yGOLD-styETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x42842754aBce504E12C20E434Af8960FDf85C833/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21988,6 +22034,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xCf89d9E82A021167945D3af67B2343111D1d3eB9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcf8dfdb73e7434b05903b5599fb96174555f4353": {
+			"address": "0xcf8dfdb73e7434b05903b5599fb96174555f4353",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "60GOLD-40WETH",
+			"symbol": "60GOLD-40WETH",
+			"displayName": "60GOLD-40WETH",
+			"displaySymbol": "60GOLD-40WETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xcF8dFdb73e7434b05903B5599fB96174555F4353/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

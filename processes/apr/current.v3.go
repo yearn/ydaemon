@@ -43,7 +43,7 @@ func computeCurrentV3VaultAPR(
 	/**********************************************************************************************
 	** We can use the onChain oracles to get the netAPR of the vault.
 	**********************************************************************************************/
-	netAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
+	netAPY := helpers.GetAPY(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
 
 	/**********************************************************************************************
 	** As we now have the base APR information we can init our structure. This base structure MUST
@@ -62,15 +62,15 @@ func computeCurrentV3VaultAPR(
 
 	vaultAPR := TVaultAPR{
 		Type:   vaultAPRType,
-		NetAPR: netAPR,
+		NetAPR: netAPY,
 		Fees: TFees{
 			Performance: vaultPerformanceFee,
 			Management:  vaultManagementFee,
 		},
 		Points: THistoricalPoints{
-			WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
-			MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
-			Inception: helpers.GetAPR(ppsToday, ppsInception, bigNumber.NewFloat(365)),
+			WeekAgo:   helpers.GetAPY(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
+			MonthAgo:  netAPY,
+			Inception: helpers.GetAPY(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 		},
 	}
 	return vaultAPR

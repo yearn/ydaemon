@@ -61,13 +61,14 @@ type TExternalERC20Token struct {
 
 // TExternalVaultInfo is the struct containing the information about a vault.
 type TExternalVaultInfo struct {
-	SourceURL     string   `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
-	RiskLevel     int8     `json:"riskLevel"`           // The risk level of the vault. The value is a calculated from the sum of all risk score from the object for Single Strategy Vaults. Multi-Strategy Vault, highest `riskLevel` of all strategies is set. 1 is the most secure and 5 is the least secure.
-	UINotice      string   `json:"uiNotice,omitempty"`  // The notice to display in the UI
-	IsRetired     bool     `json:"isRetired"`
-	IsBoosted     bool     `json:"isBoosted"`
-	IsHighlighted bool     `json:"isHighlighted"`
-	RiskScore     [11]int8 `json:"riskScore"` // All risk scores of the Single Strategy Vault. Multi-Strategy Vault won't have this object because its risk score is combination of multiple vaults. For risk value use `riskLevel`. (empty for Multi-Strategy Vault). Array of 11 integers: [review, testing, complexity, riskExposure, protocolIntegration, centralizationRisk, externalProtocolAudit, externalProtocolCentralisation, externalProtocolTvl, externalProtocolLongevity, externalProtocolType]
+	SourceURL        string   `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
+	RiskLevel        int8     `json:"riskLevel"`           // The risk level of the vault. The value is a calculated from the sum of all risk score from the object for Single Strategy Vaults. Multi-Strategy Vault, highest `riskLevel` of all strategies is set. 1 is the most secure and 5 is the least secure.
+	UINotice         string   `json:"uiNotice,omitempty"`  // The notice to display in the UI
+	IsRetired        bool     `json:"isRetired"`
+	IsBoosted        bool     `json:"isBoosted"`
+	IsHighlighted    bool     `json:"isHighlighted"`
+	RiskScore        [11]int8 `json:"riskScore"`                  // All risk scores of the Single Strategy Vault. Multi-Strategy Vault won't have this object because its risk score is combination of multiple vaults. For risk value use `riskLevel`. (empty for Multi-Strategy Vault). Array of 11 integers: [review, testing, complexity, riskExposure, protocolIntegration, centralizationRisk, externalProtocolAudit, externalProtocolCentralisation, externalProtocolTvl, externalProtocolLongevity, externalProtocolType]
+	RiskScoreComment string   `json:"riskScoreComment,omitempty"` // Comment for the risk score to the strategy. Can be empty.
 }
 
 // TExternalVault is the struct containing the information about a vault.
@@ -272,6 +273,7 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
 		v.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
 		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
+		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
 	}
 	v.Info.UINotice = vault.Metadata.UINotice
 

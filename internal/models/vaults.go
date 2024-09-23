@@ -86,6 +86,8 @@ type TRiskScore struct {
 	ExternalProtocolLongevity int8 `json:"externalProtocolLongevity"`
 	// ExternalProtocolType is a rough estimate of evaluating a protocol's purpose. 5 -> The main expertise of the protocol lies in off-chain operations, such as RWA protocols; 4 -> Cross-chain applications, like cross-chain bridges, cross-chain yield aggregators, and cross-chain lending/borrowing protocols; 3 -> AMM lending/borrowing protocols that are not forks of blue-chip protocols, leveraged farming protocols, as well as newly conceptualized protocols; 2 -> Slightly modified forked blue-chip protocols; 1 -> Blue-chip protocols such as AAVE, Compound, Uniswap, Curve, Convex, and Balancer.ity"`
 	ExternalProtocolType int8 `json:"externalProtocolType"`
+	// Comment is a comment for the risk score to the strategy. Can be empty.
+	Comment string `json:"comment"`
 }
 
 type TVaultMetadata struct {

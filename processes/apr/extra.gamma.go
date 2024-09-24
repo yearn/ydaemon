@@ -16,28 +16,30 @@ import (
 **
 ** Once this is done, we are looking for the ALLMAPR for the given token.
 **************************************************************************************************/
-func calculateGammaExtraRewards(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, bool) {
+func calculateGammaExtraRewards(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, *bigNumber.Float, bool) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	if _, ok := storage.GetCachedGammaMerkl(chainID); !ok {
 		storage.RefreshGammaCalls(chainID)
 	}
 	if _, ok := storage.GetCachedGammaMerkl(chainID); !ok {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	gammaMerkl, _ := storage.GetCachedGammaMerkl(chainID)
 	if _, ok := gammaMerkl[chainIDStr]; !ok {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	for _, pool := range gammaMerkl[chainIDStr].Pools {
 		for lpTokenAddress, alm := range pool.ALM {
 			if addresses.Equals(tokenAddress, lpTokenAddress) {
-				return bigNumber.NewFloat(0).Div(bigNumber.NewFloat(alm.ALMAPR), bigNumber.NewFloat(100)), true
+				apr := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(alm.ALMAPR), bigNumber.NewFloat(100))
+				apy := convertAPRToAPY(apr, bigNumber.NewFloat(365.0/15.0))
+				return apr, apy, true
 			}
 		}
 
 	}
 
-	return bigNumber.NewFloat(0), false
+	return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 }

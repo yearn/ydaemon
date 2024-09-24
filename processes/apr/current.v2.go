@@ -8,10 +8,10 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-func computeCurrentV2VaultAPR(
+func computeCurrentV2VaultAPY(
 	vault models.TVault,
 	vaultToken models.TERC20Token,
-) TVaultAPR {
+) TVaultAPY {
 	chainID := vault.ChainID
 	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 	ppsInception := bigNumber.NewFloat(1)
@@ -40,12 +40,6 @@ func computeCurrentV2VaultAPR(
 	_ = oneMinusPerfFee
 
 	/**********************************************************************************************
-	** The grossAPR is used by checking the price per share evolution over a 30 days period.
-	** The netAPY is the grossAPR minus the performance fee and the management fee.
-	**********************************************************************************************/
-	netAPR := helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
-
-	/**********************************************************************************************
 	** As we now have the base APR information we can init our structure. This base structure MUST
 	** contains:
 	** - The type of the APR (always v2:averaged for now)
@@ -60,17 +54,17 @@ func computeCurrentV2VaultAPR(
 		vaultAPRType = `v2:new_averaged`
 	}
 
-	vaultAPR := TVaultAPR{
+	vaultAPR := TVaultAPY{
 		Type:   vaultAPRType,
-		NetAPR: netAPR,
+		NetAPY: helpers.GetEvolution(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
 		Fees: TFees{
 			Performance: vaultPerformanceFee,
 			Management:  vaultManagementFee,
 		},
 		Points: THistoricalPoints{
-			WeekAgo:   helpers.GetAPR(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
-			MonthAgo:  helpers.GetAPR(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
-			Inception: helpers.GetAPR(ppsToday, ppsInception, bigNumber.NewFloat(365)),
+			WeekAgo:   helpers.GetEvolution(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
+			MonthAgo:  helpers.GetEvolution(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
+			Inception: helpers.GetEvolution(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 		},
 	}
 	return vaultAPR

@@ -11,17 +11,17 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber.Float, bool) {
+func computeOPBoostStakingRewardsAPY(chainID uint64, vault models.TVault) (*bigNumber.Float, *bigNumber.Float, bool) {
 	/**********************************************************************************************
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
 	stakingContract, ok := storage.GetOPStakingForVault(chainID, vault.Address)
 	if !ok {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 	if len(stakingContract.RewardTokens) == 0 {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
@@ -44,16 +44,16 @@ func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigN
 	**********************************************************************************************/
 	now := time.Now().Unix()
 	if rewardPeriodFinish < uint64(now) {
-		storage.AssignOPStakingRewardAPR(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
-		return bigNumber.NewFloat(0), false
+		storage.AssignOPStakingRewardAPY(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
 	** If the total supply is 0, we can stop here, aka nothing is staked, so no rewards
 	**********************************************************************************************/
 	if rawTotalSupply.IsZero() {
-		storage.AssignOPStakingRewardAPR(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
-		return bigNumber.NewFloat(0), false
+		storage.AssignOPStakingRewardAPY(chainID, vault.Address, rewardsToken, bigNumber.NewFloat(0))
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
@@ -85,7 +85,8 @@ func computeOPBoostStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigN
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
+	stakingRewardAPY := convertAPRToAPY(stakingRewardAPR, bigNumber.NewFloat(365.0/15.0))
 
-	storage.AssignOPStakingRewardAPR(chainID, vault.Address, rewardsToken, stakingRewardAPR)
-	return stakingRewardAPR, true
+	storage.AssignOPStakingRewardAPY(chainID, vault.Address, rewardsToken, stakingRewardAPY)
+	return stakingRewardAPR, stakingRewardAPY, true
 }

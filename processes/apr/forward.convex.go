@@ -14,12 +14,12 @@ type TCalculateConvexAPYDataStruct struct {
 	strategy       models.TStrategy
 	baseAssetPrice *bigNumber.Float
 	poolPrice      *bigNumber.Float
-	baseAPR        *bigNumber.Float
-	rewardAPR      *bigNumber.Float
+	baseAPY        *bigNumber.Float
+	rewardAPY      *bigNumber.Float
 	poolDailyAPY   *bigNumber.Float
 }
 
-func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR {
+func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY {
 	chainID := args.vault.ChainID
 
 	/**********************************************************************************************
@@ -36,7 +36,7 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
 
 	/**********************************************************************************************
-	** The CRV APR is simply the baseAPR (aka how much CRV we get from the gauge) not based on
+	** The CRV APR is simply the baseAPY (aka how much CRV we get from the gauge) not based on
 	** curve API but directly from the formula used by convex subgraph (link below). We are using
 	** this for th APR to match convex APR and avoid confusion. This should be very close to the
 	** one we could compute.
@@ -44,13 +44,13 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** of CVX printed, based on the CRV rate for the given gauge. Tldr X crv = Y cvx and we do
 	** something to gt an APR.
 	**********************************************************************************************/
-	crvAPR, cvxAPR := getCVXPoolAPR(chainID, args.strategy.Address, args.baseAssetPrice)
+	crvAPR, cvxAPR, crvAPY, cvxAPY := getCVXPoolAPY(chainID, args.strategy.Address, args.baseAssetPrice)
 
 	/**********************************************************************************************
 	** Just like curve, Convex can have extra rewards which are incentives/bribes on top of the
 	** base rewards. We need to retrieve them.
 	**********************************************************************************************/
-	rewardsAPR := getConvexRewardAPR(chainID, args.strategy, args.baseAssetPrice, args.poolPrice)
+	_, rewardsAPY := getConvexRewardAPY(chainID, args.strategy, args.baseAssetPrice, args.poolPrice)
 
 	/**********************************************************************************************
 	** Calculate the CRV Gross APR:
@@ -60,33 +60,33 @@ func calculateConvexForwardAPR(args TCalculateConvexAPYDataStruct) TStrategyAPR 
 	** 4. Adding the CVX APR
 	**********************************************************************************************/
 	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv)   // 1 - keepCRV
-	grossAPR := bigNumber.NewFloat(0).Mul(crvAPR, keepCRVRatio)       // 1 - baseAPR * keepCRV
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, rewardsAPR)        // 2 - (baseAPR * keepCRV) + rewardAPR
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.poolDailyAPY) // 3 - (baseAPR * keepCRV) + rewardAPR + poolAPY
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, cvxAPR)            // 4 - (baseAPR * keepCRV) + rewardAPR + poolAPY + cvxAPR
+	grossAPY := bigNumber.NewFloat(0).Mul(crvAPY, keepCRVRatio)       // 1 - baseAPY * keepCRV
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, rewardsAPY)        // 2 - (baseAPY * keepCRV) + rewardAPR
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolDailyAPY) // 3 - (baseAPY * keepCRV) + rewardAPR + poolAPY
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, cvxAPY)            // 4 - (baseAPY * keepCRV) + rewardAPR + poolAPY + cvxAPR
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:
 	** Take the gross APR and remove the performance fee and the management fee
 	**********************************************************************************************/
-	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
-	if netAPR.Gt(vaultManagementFee) {
-		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	netAPY := bigNumber.NewFloat(0).Mul(grossAPY, oneMinusPerfFee) // grossAPR * (1 - perfFee)
+	if netAPY.Gt(vaultManagementFee) {
+		netAPY = bigNumber.NewFloat(0).Sub(netAPY, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
 	} else {
-		netAPR = bigNumber.NewFloat(0)
+		netAPY = bigNumber.NewFloat(0)
 	}
 
-	apyStruct := TStrategyAPR{
+	apyStruct := TStrategyAPY{
 		Type:      "convex",
 		DebtRatio: debtRatio,
-		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		NetAPY:    bigNumber.NewFloat(0).Mul(netAPY, debtRatio),
 		Composite: TCompositeData{
 			Boost:      bigNumber.NewFloat(0).Mul(cvxBoost, debtRatio),
 			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolDailyAPY, debtRatio),
 			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPR, debtRatio),
-			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPR, debtRatio),
+			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPY, debtRatio),
 			CvxAPR:     bigNumber.NewFloat(0).Mul(cvxAPR, debtRatio),
-			RewardsAPR: bigNumber.NewFloat(0).Mul(args.rewardAPR, debtRatio),
+			RewardsAPY: bigNumber.NewFloat(0).Mul(args.rewardAPY, debtRatio),
 			KeepCRV:    keepCrv,
 		},
 	}

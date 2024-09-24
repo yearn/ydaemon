@@ -71,6 +71,36 @@ type TExternalVaultInfo struct {
 	RiskScoreComment string   `json:"riskScoreComment,omitempty"` // Comment for the risk score to the strategy. Can be empty.
 }
 
+type TExternalCompositeData struct {
+	Boost                 *bigNumber.Float `json:"boost"`
+	PoolAPY               *bigNumber.Float `json:"poolAPY"`
+	BoostedAPR            *bigNumber.Float `json:"boostedAPR"`
+	BaseAPR               *bigNumber.Float `json:"baseAPR"`
+	CvxAPR                *bigNumber.Float `json:"cvxAPR"`
+	RewardsAPR            *bigNumber.Float `json:"rewardsAPR"`
+	V3OracleCurrentAPR    *bigNumber.Float `json:"v3OracleCurrentAPR,omitempty"`
+	V3OracleStratRatioAPR *bigNumber.Float `json:"v3OracleStratRatioAPR,omitempty"`
+	KeepCRV               *bigNumber.Float `json:"keepCRV,omitempty"`
+	KeepVelo              *bigNumber.Float `json:"keepVELO,omitempty"`
+}
+type TExternalExtraRewards struct {
+	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`
+	GammaRewardAPR    *bigNumber.Float `json:"gammaRewardAPR"`
+}
+type TExternalForwardAPR struct {
+	Type      string                 `json:"type"`
+	NetAPR    *bigNumber.Float       `json:"netAPR"`
+	Composite TExternalCompositeData `json:"composite"`
+}
+type TExternalVaultAPR struct {
+	Type       string                `json:"type"`
+	NetAPR     *bigNumber.Float      `json:"netAPR"`
+	Fees       apr.TFees             `json:"fees"`
+	Points     apr.THistoricalPoints `json:"points"`
+	Extra      TExternalExtraRewards `json:"extra"`
+	ForwardAPR TExternalForwardAPR   `json:"forwardAPR"`
+}
+
 // TExternalVault is the struct containing the information about a vault.
 type TExternalVault struct {
 	Address           string                  `json:"address"`
@@ -93,7 +123,7 @@ type TExternalVault struct {
 	EmergencyShutdown bool                    `json:"emergency_shutdown"`
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               models.TTVL             `json:"tvl"`
-	APR               apr.TVaultAPR           `json:"apr"`
+	APR               TExternalVaultAPR       `json:"apr"`
 	Details           TExternalVaultDetails   `json:"details"`
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
@@ -148,13 +178,51 @@ type TSimplifiedExternalVault struct {
 	ChainID        uint64                        `json:"chainID"`
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
-	APR            apr.TVaultAPR                 `json:"apr"`
+	APR            TExternalVaultAPR             `json:"apr"`
 	Strategies     []TStrategy                   `json:"strategies"`
 	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`
 	PricePerShare  *bigNumber.Int                `json:"pricePerShare"`
 	Info           TExternalVaultInfo            `json:"info,omitempty"`
+}
+
+/************************************************************************************************
+** Function to map the internal TVaultAPY structure to the external TExternalVaultAPR structure.
+** This function takes a TVaultAPY object as input and returns a TExternalVaultAPR object.
+** The mapping includes:
+** - Type: The type of APR.
+** - NetAPR: The net annual percentage rate.
+** - Fees: The associated fees.
+** - Points: Historical points data.
+** - Extra: Extra rewards data.
+** - ForwardAPR: Forward-looking APR data, including type, net APR, and composite data.
+************************************************************************************************/
+func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
+	return TExternalVaultAPR{
+		Type:   vaultAPY.Type,
+		NetAPR: vaultAPY.NetAPY,
+		Fees:   vaultAPY.Fees,
+		Points: vaultAPY.Points,
+		Extra: TExternalExtraRewards{
+			StakingRewardsAPR: vaultAPY.Extra.StakingRewardsAPY,
+			GammaRewardAPR:    vaultAPY.Extra.GammaRewardAPY,
+		},
+		ForwardAPR: TExternalForwardAPR{
+			Type:   vaultAPY.ForwardAPY.Type,
+			NetAPR: vaultAPY.ForwardAPY.NetAPY,
+			Composite: TExternalCompositeData{
+				Boost:                 vaultAPY.ForwardAPY.Composite.Boost,
+				PoolAPY:               vaultAPY.ForwardAPY.Composite.PoolAPY,
+				BoostedAPR:            vaultAPY.ForwardAPY.Composite.BoostedAPR,
+				BaseAPR:               vaultAPY.ForwardAPY.Composite.BaseAPR,
+				CvxAPR:                vaultAPY.ForwardAPY.Composite.CvxAPR,
+				RewardsAPR:            vaultAPY.ForwardAPY.Composite.RewardsAPY,
+				V3OracleCurrentAPR:    vaultAPY.ForwardAPY.Composite.V3OracleCurrentAPR,
+				V3OracleStratRatioAPR: vaultAPY.ForwardAPY.Composite.V3OracleStratRatioAPR,
+			},
+		},
+	}
 }
 
 func NewVault() TExternalVault {
@@ -224,9 +292,9 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.Token.UnderlyingTokensAddresses = []string{}
 	}
 
-	asyncAPR, ok := apr.GetComputedAPR(vault.ChainID, vault.Address)
+	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
 	if ok {
-		v.APR = asyncAPR.(apr.TVaultAPR)
+		v.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
 	}
 	v.Details = TExternalVaultDetails{
 		IsRetired:       vault.Metadata.IsRetired,

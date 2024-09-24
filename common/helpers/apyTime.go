@@ -68,11 +68,15 @@ func GetPPSLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *big
 	return ppsMonth
 }
 
-func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
-	apr := bigNumber.NewFloat(0).Sub(vf, vi)
-	apr = bigNumber.NewFloat(0).Div(apr, vi)
-	apr = bigNumber.NewFloat(0).Div(apr, days)
-	apr = bigNumber.NewFloat(0).Mul(apr, bigNumber.NewFloat(365))
+/************************************************************************************************
+** GetEvolution calculates the evolution based on the final value (vf), initial value (vi), and
+** the number of days (days). The formula used is: EV = ((vf - vi) / vi) / days * 365
+************************************************************************************************/
+func GetEvolution(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
+	evolution := bigNumber.NewFloat(0).Sub(vf, vi)
+	evolution = bigNumber.NewFloat(0).Div(evolution, vi)
+	evolution = bigNumber.NewFloat(0).Div(evolution, days)
+	evolution = bigNumber.NewFloat(0).Mul(evolution, bigNumber.NewFloat(365))
 
-	return apr
+	return evolution
 }

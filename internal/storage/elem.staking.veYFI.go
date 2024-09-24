@@ -58,10 +58,10 @@ func GetVeYFIStakingForVault(chainID uint64, vault common.Address) (TStakingData
 }
 
 /**************************************************************************************************
-** AssignVEYFIStakingRewardAPR will update an entry in the _veYFIStakingSyncMap syncMap to assign
+** AssignVEYFIStakingRewardAPY will update an entry in the _veYFIStakingSyncMap syncMap to assign
 ** the APR to the staking pool.
 **************************************************************************************************/
-func AssignVEYFIStakingRewardAPR(chainID uint64, vault common.Address, rewardToken common.Address, apr *bigNumber.Float) {
+func AssignVEYFIStakingRewardAPY(chainID uint64, vault common.Address, rewardToken common.Address, apy *bigNumber.Float) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingContract for the vault.
 	**********************************************************************************************/
@@ -70,7 +70,7 @@ func AssignVEYFIStakingRewardAPR(chainID uint64, vault common.Address, rewardTok
 		if addresses.Equals(stakingElement.VaultAddress, vault) {
 			for i, reward := range stakingElement.RewardTokens {
 				if addresses.Equals(reward.Address, rewardToken) {
-					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apy)
 					safeSyncMap(_veYFIStakingSyncMap, chainID).Store(key, stakingElement)
 					return false
 				}

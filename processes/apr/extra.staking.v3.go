@@ -11,17 +11,18 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func computeV3StakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber.Float, bool) {
+func computeV3StakingRewardsAPY(chainID uint64, vault models.TVault) (*bigNumber.Float, *bigNumber.Float, bool) {
 	/**********************************************************************************************
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
 	stakingElement, ok := storage.GetV3StakingDataForVault(chainID, vault.Address)
 	if !ok {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	cumulatedStakingRewardAPR := bigNumber.NewFloat(0)
+	cumulatedStakingRewardAPY := bigNumber.NewFloat(0)
 
 	/**********************************************************************************************
 	** We will need the price of the vault token to compute the APR
@@ -59,7 +60,7 @@ func computeV3StakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber
 		**********************************************************************************************/
 		now := time.Now().Unix()
 		if rewardPeriodFinish < uint64(now) {
-			storage.AssignJuicedStakingRewardAPR(chainID, vault.Address, rewardToken.Address, bigNumber.NewFloat(0))
+			storage.AssignV3StakingRewardAPY(chainID, vault.Address, rewardToken.Address, bigNumber.NewFloat(0))
 			continue
 		}
 
@@ -94,13 +95,15 @@ func computeV3StakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber
 		rewardDurationAsFloat := bigNumber.NewFloat(0).SetUint64(rewardDuration)
 		stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, rewardDurationAsFloat)
 		stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, secondsPerYear)
+		stakingRewardAPY := convertAPRToAPY(stakingRewardAPR, bigNumber.NewFloat(365.0/15.0))
 
-		storage.AssignV3StakingRewardAPR(chainID, vault.Address, rewardToken.Address, stakingRewardAPR)
 		cumulatedStakingRewardAPR = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPR, stakingRewardAPR)
+		cumulatedStakingRewardAPY = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPY, stakingRewardAPY)
+		storage.AssignV3StakingRewardAPY(chainID, vault.Address, rewardToken.Address, stakingRewardAPY)
 	}
 
 	/**********************************************************************************************
 	** Finally, we can compute the APR
 	**********************************************************************************************/
-	return cumulatedStakingRewardAPR, true
+	return cumulatedStakingRewardAPR, cumulatedStakingRewardAPY, true
 }

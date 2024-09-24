@@ -8,10 +8,10 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 )
 
-func computeCurrentV3VaultAPR(
+func computeCurrentV3VaultAPY(
 	vault models.TVault,
 	vaultToken models.TERC20Token,
-) TVaultAPR {
+) TVaultAPY {
 	chainID := vault.ChainID
 	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
 	ppsInception := bigNumber.NewFloat(1)
@@ -41,11 +41,6 @@ func computeCurrentV3VaultAPR(
 	_ = oneMinusPerfFee
 
 	/**********************************************************************************************
-	** We can use the onChain oracles to get the netAPR of the vault.
-	**********************************************************************************************/
-	netAPY := helpers.GetAPY(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30))
-
-	/**********************************************************************************************
 	** As we now have the base APR information we can init our structure. This base structure MUST
 	** contains:
 	** - The type of the APR (always v2:averaged for now)
@@ -60,17 +55,17 @@ func computeCurrentV3VaultAPR(
 		vaultAPRType = `v3:new_averaged`
 	}
 
-	vaultAPR := TVaultAPR{
+	vaultAPR := TVaultAPY{
 		Type:   vaultAPRType,
-		NetAPR: netAPY,
+		NetAPY: helpers.GetEvolution(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
 		Fees: TFees{
 			Performance: vaultPerformanceFee,
 			Management:  vaultManagementFee,
 		},
 		Points: THistoricalPoints{
-			WeekAgo:   helpers.GetAPY(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
-			MonthAgo:  netAPY,
-			Inception: helpers.GetAPY(ppsToday, ppsInception, bigNumber.NewFloat(365)),
+			WeekAgo:   helpers.GetEvolution(ppsToday, ppsWeekAgo, bigNumber.NewFloat(7)),
+			MonthAgo:  helpers.GetEvolution(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
+			Inception: helpers.GetEvolution(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 		},
 	}
 	return vaultAPR

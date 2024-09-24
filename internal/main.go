@@ -100,12 +100,12 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	**********************************************************************************************/
 	prices.RetrieveAllPrices(chainID, tokenMap)
 	logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
-	apr.ComputeChainAPR(chainID)
-	logs.Success(chainID, `-`, `ComputeChainAPR ✅`)
+	apr.ComputeChainAPY(chainID)
+	logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
 	scheduler.Every(30).Minute().WaitForSchedule().Do(func() {
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)
-		apr.ComputeChainAPR(chainID)
+		apr.ComputeChainAPY(chainID)
 	})
 
 	/**********************************************************************************************

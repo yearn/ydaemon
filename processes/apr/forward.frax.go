@@ -12,17 +12,17 @@ type TCalculateFraxAPYDataStruct struct {
 	strategy       models.TStrategy
 	baseAssetPrice *bigNumber.Float
 	poolPrice      *bigNumber.Float
-	baseAPR        *bigNumber.Float
-	rewardAPR      *bigNumber.Float
+	baseAPY        *bigNumber.Float
+	rewardAPY      *bigNumber.Float
 	poolDailyAPY   *bigNumber.Float
 }
 
-func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPool) TStrategyAPR {
+func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPool) TStrategyAPY {
 	/**********************************************************************************************
 	** We will use the convexForwardAPR as a base for the Frax APR. So our first step is to
 	** calculate the convexForwardAPR.
 	**********************************************************************************************/
-	baseConvexStrategyData := calculateConvexForwardAPR(TCalculateConvexAPYDataStruct(args))
+	baseConvexStrategyData := calculateConvexForwardAPY(TCalculateConvexAPYDataStruct(args))
 
 	/**********************************************************************************************
 	** We then need to add the minimum rewards APR to the convexForwardAPR to get the Frax APR.
@@ -36,18 +36,19 @@ func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPoo
 		minRewardsAPR = bigNumber.NewFloat(0).SetFloat64(fraxPool.TotalRewardAPRs.Min.(float64))
 	}
 	minRewardsAPR = bigNumber.NewFloat(0).Div(minRewardsAPR, bigNumber.NewFloat(100))
+	minRewardsAPY := convertAPRToAPY(minRewardsAPR, bigNumber.NewFloat(365.0/15.0))
 
-	apyStruct := TStrategyAPR{
+	apyStruct := TStrategyAPY{
 		Type:      "frax",
 		DebtRatio: baseConvexStrategyData.DebtRatio,
-		NetAPR:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPR, minRewardsAPR),
+		NetAPY:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPY, minRewardsAPY),
 		Composite: TCompositeData{
 			Boost:      baseConvexStrategyData.Composite.Boost,
 			PoolAPY:    baseConvexStrategyData.Composite.PoolAPY,
 			BoostedAPR: baseConvexStrategyData.Composite.BoostedAPR,
 			BaseAPR:    baseConvexStrategyData.Composite.BaseAPR,
 			CvxAPR:     baseConvexStrategyData.Composite.CvxAPR,
-			RewardsAPR: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPR, minRewardsAPR),
+			RewardsAPY: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPY, minRewardsAPY),
 			KeepCRV:    baseConvexStrategyData.Composite.KeepCRV,
 		},
 	}

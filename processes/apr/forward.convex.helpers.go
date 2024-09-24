@@ -21,12 +21,12 @@ import (
 ** they will be sold for profit.
 ** We need to pull data from convex's virtual rewards contracts to get bonus rewards
 **************************************************************************************************/
-func getConvexRewardAPR(
+func getConvexRewardAPY(
 	chainID uint64,
 	strategy models.TStrategy,
 	baseAssetPrice *bigNumber.Float,
 	poolPrice *bigNumber.Float,
-) *bigNumber.Float {
+) (*bigNumber.Float, *bigNumber.Float) {
 	client := ethereum.GetRPC(chainID)
 	convexStrategyContract, _ := contracts.NewConvexBaseStrategy(strategy.Address, client)
 	cvxBoosterContract, _ := contracts.NewCVXBooster(storage.CVX_BOOSTER_ADDRESS[chainID], client)
@@ -39,14 +39,14 @@ func getConvexRewardAPR(
 				if os.Getenv("ENVIRONMENT") == "dev" {
 					logs.Error(`Unable to get reward PID for convex strategy ` + strategy.Address.Hex())
 				}
-				return storage.ZERO
+				return storage.ZERO, storage.ZERO
 			}
 		}
 	}
 	rewardContract, err := cvxBoosterContract.PoolInfo(nil, rewardPID)
 	if err != nil {
 		logs.Error(err)
-		return storage.ZERO
+		return storage.ZERO, storage.ZERO
 	}
 	crvRewardContract, _ := contracts.NewCrvRewards(rewardContract.CrvRewards, client)
 	rewardsLength, _ := crvRewardContract.ExtraRewardsLength(nil)
@@ -91,7 +91,8 @@ func getConvexRewardAPR(
 			totalRewardsAPR = bigNumber.NewFloat(0).Add(totalRewardsAPR, rewardAPR)
 		}
 	}
-	return totalRewardsAPR
+	totalRewardsAPY := convertAPRToAPY(totalRewardsAPR, bigNumber.NewFloat(365.0/15.0))
+	return totalRewardsAPR, totalRewardsAPY
 }
 
 /**************************************************************************************************
@@ -127,13 +128,15 @@ func getCVXForCRV(chainID uint64, crvEarned *bigNumber.Float) *bigNumber.Float {
 ** https://github.com/convex-community/convex-subgraph/blob/
 ** 13dbb4e3f3f69c6762fecb1ebc46f477162e2093/subgraphs/convex/src/services/pools.ts#L269-L289
 **************************************************************************************************/
-func getCVXPoolAPR(
+func getCVXPoolAPY(
 	chainID uint64,
 	strategyAddress common.Address,
 	virtualPoolPrice *bigNumber.Float,
-) (*bigNumber.Float, *bigNumber.Float) {
+) (*bigNumber.Float, *bigNumber.Float, *bigNumber.Float, *bigNumber.Float) {
 	crvAPR := bigNumber.NewFloat(0)
 	cvxAPR := bigNumber.NewFloat(0)
+	crvAPY := bigNumber.NewFloat(0)
+	cvxAPY := bigNumber.NewFloat(0)
 
 	/**********************************************************************************************
 	** First thing to do to be able to calculate the APR is to retrieve the `crvRewards` contract
@@ -143,7 +146,7 @@ func getCVXPoolAPR(
 	client := ethereum.GetRPC(chainID)
 	convexStrategyContract, err := contracts.NewConvexBaseStrategy(strategyAddress, client)
 	if err != nil {
-		return crvAPR, cvxAPR
+		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
 
 	/**********************************************************************************************
@@ -159,7 +162,7 @@ func getCVXPoolAPR(
 				if os.Getenv("ENVIRONMENT") == "dev" {
 					logs.Error(`Unable to get reward PID for convex strategy ` + strategyAddress.Hex())
 				}
-				return crvAPR, cvxAPR
+				return crvAPR, cvxAPR, crvAPY, cvxAPY
 			}
 		}
 	}
@@ -170,11 +173,11 @@ func getCVXPoolAPR(
 	***********************************************************************************************/
 	cvxBoosterContract, err := contracts.NewCVXBooster(storage.CVX_BOOSTER_ADDRESS[chainID], client)
 	if err != nil {
-		return crvAPR, cvxAPR
+		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
 	poolInfo, err := cvxBoosterContract.PoolInfo(nil, rewardPID)
 	if err != nil {
-		return crvAPR, cvxAPR
+		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
 
 	/**********************************************************************************************
@@ -183,12 +186,12 @@ func getCVXPoolAPR(
 	***********************************************************************************************/
 	rewardContract, err := contracts.NewCrvRewards(poolInfo.CrvRewards, client)
 	if err != nil {
-		return crvAPR, cvxAPR
+		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
 	rateResult, err1 := rewardContract.RewardRate(nil)
 	supplyResult, err2 := rewardContract.TotalSupply(nil)
 	if err1 != nil || err2 != nil {
-		return crvAPR, cvxAPR
+		return crvAPR, cvxAPR, crvAPY, cvxAPY
 	}
 
 	/**********************************************************************************************
@@ -217,8 +220,10 @@ func getCVXPoolAPR(
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
 	crvAPR = bigNumber.NewFloat(0).Div(crvAPR, bigNumber.NewFloat(100))
 	cvxAPR = bigNumber.NewFloat(0).Div(cvxAPR, bigNumber.NewFloat(100))
+	crvAPY = convertAPRToAPY(crvAPR, bigNumber.NewFloat(365.0/15.0))
+	cvxAPY = convertAPRToAPY(cvxAPR, bigNumber.NewFloat(365.0/15.0))
 
-	return crvAPR, cvxAPR
+	return crvAPR, cvxAPR, crvAPY, cvxAPY
 }
 
 /**************************************************************************************************

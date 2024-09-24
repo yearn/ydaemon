@@ -69,34 +69,14 @@ func GetPPSLastMonth(ppsPerTime map[uint64]*bigNumber.Int, decimals uint64) *big
 }
 
 /************************************************************************************************
-** GetAPR calculates the Annual Percentage Rate (APR) based on the final value (vf), initial
-** value (vi), and the number of days (days). The formula used is:
-** APR = ((vf - vi) / vi) / days * 365
+** GetEvolution calculates the evolution based on the final value (vf), initial value (vi), and
+** the number of days (days). The formula used is: EV = ((vf - vi) / vi) / days * 365
 ************************************************************************************************/
-func GetAPR(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
-	apr := bigNumber.NewFloat(0).Sub(vf, vi)
-	apr = bigNumber.NewFloat(0).Div(apr, vi)
-	apr = bigNumber.NewFloat(0).Div(apr, days)
-	apr = bigNumber.NewFloat(0).Mul(apr, bigNumber.NewFloat(365))
+func GetEvolution(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
+	evolution := bigNumber.NewFloat(0).Sub(vf, vi)
+	evolution = bigNumber.NewFloat(0).Div(evolution, vi)
+	evolution = bigNumber.NewFloat(0).Div(evolution, days)
+	evolution = bigNumber.NewFloat(0).Mul(evolution, bigNumber.NewFloat(365))
 
-	return apr
-}
-
-/************************************************************************************************
-** GetAPY calculates the Annual Percentage Yield (APY) based on the final value (vf), initial
-** value (vi), and the number of days (days). The formula used is:
-** APY = ((vf / vi) ^ (365 / days) - 1)
-************************************************************************************************/
-func GetAPY(vf *bigNumber.Float, vi *bigNumber.Float, days *bigNumber.Float) *bigNumber.Float {
-	if vf == nil || vi == nil || days == nil || vi.IsZero() || days.IsZero() {
-		return bigNumber.NewFloat(0)
-	}
-
-	ratio := bigNumber.NewFloat(0).Quo(vf, vi)
-	exponent := bigNumber.NewFloat(0).Quo(bigNumber.NewFloat(365), days)
-	exponentUint64, _ := exponent.Uint64()
-	apy := bigNumber.NewFloat(0).Pow(ratio, exponentUint64)
-	apy = bigNumber.NewFloat(0).Sub(apy, bigNumber.NewFloat(1))
-
-	return apy
+	return evolution
 }

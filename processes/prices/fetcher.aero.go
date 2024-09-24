@@ -60,7 +60,7 @@ var BASE_RATE_CONNECTORS = []common.Address{
 	common.HexToAddress(`0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca`),
 }
 
-// fetchPricesFromAeroSugar is used to fetch prices from the sugar APR (Base).
+// fetchPricesFromAeroSugar is used to fetch prices from the sugar API (Base).
 func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
 	newPriceMap := make(map[common.Address]models.TPrices)
 	if chainID != 8453 {

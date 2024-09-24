@@ -70,10 +70,10 @@ func GetOPStakingForVault(chainID uint64, vault common.Address) (TStakingData, b
 }
 
 /**************************************************************************************************
-** AssignOPStakingRewardAPR will update an entry in the _opStakingSyncMap syncMap to assign the
+** AssignOPStakingRewardAPY will update an entry in the _opStakingSyncMap syncMap to assign the
 ** APR to the staking pool.
 **************************************************************************************************/
-func AssignOPStakingRewardAPR(chainID uint64, vault common.Address, rewardToken common.Address, apr *bigNumber.Float) {
+func AssignOPStakingRewardAPY(chainID uint64, vault common.Address, rewardToken common.Address, apy *bigNumber.Float) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingContract for the vault.
 	**********************************************************************************************/
@@ -82,7 +82,7 @@ func AssignOPStakingRewardAPR(chainID uint64, vault common.Address, rewardToken 
 		if addresses.Equals(stakingElement.VaultAddress, vault) {
 			for i, reward := range stakingElement.RewardTokens {
 				if addresses.Equals(reward.Address, rewardToken) {
-					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apy)
 					safeSyncMap(_opStakingSyncMap, chainID).Store(key, stakingElement)
 					return false
 				}

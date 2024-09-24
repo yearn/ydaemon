@@ -12,43 +12,43 @@ type TCalculatePrismaAPYDataStruct struct {
 	strategy       models.TStrategy
 	baseAssetPrice *bigNumber.Float
 	poolPrice      *bigNumber.Float
-	baseAPR        *bigNumber.Float
-	rewardAPR      *bigNumber.Float
+	baseAPY        *bigNumber.Float
+	rewardAPY      *bigNumber.Float
 	poolDailyAPY   *bigNumber.Float
 }
 
-func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct) TStrategyAPR {
+func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct) TStrategyAPY {
 	/**********************************************************************************************
 	** If the strategy is not a prisma strategy, we can't calculate the prisma APR.
 	**********************************************************************************************/
 	prismaReceiver := fetchPrismaReceiver(args.vault.ChainID, args.strategy.Address)
 	if (prismaReceiver == common.Address{}) {
-		return TStrategyAPR{}
+		return TStrategyAPY{}
 	}
 
 	/**********************************************************************************************
 	** We will use the convexForwardAPR as a base for the Prisma APR. So our first step is to
 	** calculate the convexForwardAPR.
 	**********************************************************************************************/
-	baseConvexStrategyData := calculateConvexForwardAPR(TCalculateConvexAPYDataStruct(args))
+	baseConvexStrategyData := calculateConvexForwardAPY(TCalculateConvexAPYDataStruct(args))
 
 	/**********************************************************************************************
 	** Finally, we need to add the prisma APR to the convexForwardAPR to get the strategy forward
 	** APR.
 	**********************************************************************************************/
-	prismaAPR := getPrismaAPR(args.vault.ChainID, prismaReceiver)
+	_, prismaAPY := getPrismaAPY(args.vault.ChainID, prismaReceiver)
 
-	apyStruct := TStrategyAPR{
+	apyStruct := TStrategyAPY{
 		Type:      "prisma",
 		DebtRatio: baseConvexStrategyData.DebtRatio,
-		NetAPR:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPR, prismaAPR),
+		NetAPY:    bigNumber.NewFloat(0).Add(baseConvexStrategyData.NetAPY, prismaAPY),
 		Composite: TCompositeData{
 			Boost:      baseConvexStrategyData.Composite.Boost,
 			PoolAPY:    baseConvexStrategyData.Composite.PoolAPY,
 			BoostedAPR: baseConvexStrategyData.Composite.BoostedAPR,
 			BaseAPR:    baseConvexStrategyData.Composite.BaseAPR,
 			CvxAPR:     baseConvexStrategyData.Composite.CvxAPR,
-			RewardsAPR: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPR, prismaAPR),
+			RewardsAPY: bigNumber.NewFloat(0).Add(baseConvexStrategyData.Composite.RewardsAPY, prismaAPY),
 			KeepCRV:    baseConvexStrategyData.Composite.KeepCRV,
 		},
 	}

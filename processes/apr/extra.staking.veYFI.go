@@ -16,14 +16,14 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*bigNumber.Float, bool) {
+func computeVeYFIGaugeStakingRewardsAPY(chainID uint64, vault models.TVault) (*bigNumber.Float, *bigNumber.Float, bool) {
 	/**********************************************************************************************
 	** First thing to do is to check if the vault has a staking contract associated with it.
 	** We can retrieve that from the store.
 	**********************************************************************************************/
 	stakingContract, ok := storage.GetVeYFIStakingForVault(chainID, vault.Address)
 	if !ok {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
@@ -48,14 +48,14 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	**********************************************************************************************/
 	now := time.Now().Unix()
 	if periodFinish.Int64() < now {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
 	** If the total supply is 0, we can stop here, aka nothing is staked, so no rewards
 	**********************************************************************************************/
 	if totalSupplyRaw.IsZero() {
-		return bigNumber.NewFloat(0), false
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
@@ -81,8 +81,8 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, bigNumber.NewFloat(0))
-		return bigNumber.NewFloat(0), false
+		storage.AssignVEYFIStakingRewardAPY(chainID, vault.Address, rewardToken, bigNumber.NewFloat(0))
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0), false
 	}
 
 	/**********************************************************************************************
@@ -137,8 +137,8 @@ func computeVeYFIGaugeStakingRewardsAPR(chainID uint64, vault models.TVault) (*b
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
+	stakingRewardAPY := convertAPRToAPY(stakingRewardAPR, bigNumber.NewFloat(365.0/15.0))
 
-	storage.AssignVEYFIStakingRewardAPR(chainID, vault.Address, rewardToken, stakingRewardAPR)
-
-	return stakingRewardAPR, true
+	storage.AssignVEYFIStakingRewardAPY(chainID, vault.Address, rewardToken, stakingRewardAPY)
+	return stakingRewardAPR, stakingRewardAPY, true
 }

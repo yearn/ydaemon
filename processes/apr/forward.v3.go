@@ -20,23 +20,23 @@ func isV3Vault(vault models.TVault) bool {
 	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle || versionMajor == `3`
 }
 
-func computeVaultV3ForwardAPR(
+func computeVaultV3ForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
-) TForwardAPR {
+) TForwardAPY {
 	oracleAPR := bigNumber.NewFloat(0)
 	chain, ok := env.GetChain(vault.ChainID)
 	if !ok {
-		return TForwardAPR{}
+		return TForwardAPY{}
 	}
 	oracleContract := chain.APROracleContract.Address
 	if oracleContract == common.HexToAddress(``) {
-		return TForwardAPR{}
+		return TForwardAPY{}
 	}
 	oracle, err := contracts.NewYVaultsV3APROracleCaller(oracleContract, ethereum.GetRPC(vault.ChainID))
 	if err != nil {
 		logs.Error(err)
-		return TForwardAPR{}
+		return TForwardAPY{}
 	}
 
 	/**********************************************************************************************
@@ -141,40 +141,12 @@ func computeVaultV3ForwardAPR(
 		primaryAPR = debtRatioAPR
 	}
 
-	logs.Pretty(primaryAPR, convertAPRToAPY(primaryAPR))
-	return TForwardAPR{
+	return TForwardAPY{
 		Type:   `v3:onchainOracle`,
-		NetAPR: primaryAPR,
+		NetAPY: convertAPRToAPY(primaryAPR, bigNumber.NewFloat(52)),
 		Composite: TCompositeData{
-			V3OracleCurrentAPR:    oracleAPR,
-			V3OracleStratRatioAPR: debtRatioAPR,
+			V3OracleCurrentAPR:    convertAPRToAPY(oracleAPR, bigNumber.NewFloat(52)),
+			V3OracleStratRatioAPR: convertAPRToAPY(debtRatioAPR, bigNumber.NewFloat(52)),
 		},
 	}
-}
-
-/**************************************************************************************************
-** Convert APR to APY using the formula: APY = (1 + APR/n)^n - 1
-** where n is the number of compounding periods per year. For simplicity, we will assume compounding
-** per second (n = 31536000).
-**************************************************************************************************/
-func convertAPRToAPY(apr *bigNumber.Float) *bigNumber.Float {
-	if apr == nil {
-		return bigNumber.NewFloat(0)
-	}
-
-	// Define the number of compounding periods per year (seconds in a year)
-	compoundingPeriods := bigNumber.NewFloat(31536000)
-
-	// Calculate (1 + APR/n)
-	onePlusAPRDivN := bigNumber.NewFloat(0).Div(apr, compoundingPeriods)
-	onePlusAPRDivN = bigNumber.NewFloat(0).Add(onePlusAPRDivN, bigNumber.NewFloat(1))
-
-	// Calculate (1 + APR/n)^n
-	compoundingPeriodsUint64, _ := compoundingPeriods.Uint64()
-	apy := bigNumber.NewFloat(0).Pow(onePlusAPRDivN, compoundingPeriodsUint64)
-
-	// Subtract 1 to get the final APY
-	apy = bigNumber.NewFloat(0).Sub(apy, bigNumber.NewFloat(1))
-
-	return apy
 }

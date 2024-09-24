@@ -41,11 +41,11 @@ func isVeloVault(chainID uint64, vault models.TVault) (common.Address, bool) {
 	return gaugeAddressForVoter, gaugeAddressForVoter != common.Address{}
 }
 
-func calculateVeloLikeStrategyAPR(
+func calculateVeloLikeStrategyAPY(
 	vault models.TVault,
 	strategy models.TStrategy,
 	veloStakingPoolAddress common.Address,
-) TStrategyAPR {
+) TStrategyAPY {
 	/**********************************************************************************************
 	** First we will need a few things from the staking contract. We will use a multicall to
 	** retrieve the following:
@@ -73,7 +73,7 @@ func calculateVeloLikeStrategyAPR(
 	**********************************************************************************************/
 	now := time.Now().Unix()
 	if periodFinish.Int64() < now {
-		return TStrategyAPR{
+		return TStrategyAPY{
 			Type: `v2:velo_unpopular`,
 			Composite: TCompositeData{
 				KeepVelo: localKeepVelo,
@@ -85,7 +85,7 @@ func calculateVeloLikeStrategyAPR(
 	** If the total supply is 0, we can stop here, aka nothing is staked, so no rewards
 	**********************************************************************************************/
 	if totalSupplyRaw.IsZero() {
-		return TStrategyAPR{
+		return TStrategyAPY{
 			Type: `v2:velo_unpopular`,
 			Composite: TCompositeData{
 				KeepVelo: localKeepVelo,
@@ -111,7 +111,7 @@ func calculateVeloLikeStrategyAPR(
 	** If the reward rate is 0, we can stop here, aka no rewards
 	**********************************************************************************************/
 	if rewardRate.IsZero() || oneMinusKeepVelo.IsZero() {
-		return TStrategyAPR{
+		return TStrategyAPY{
 			Type: `v2:velo_unpopular`,
 			Composite: TCompositeData{
 				KeepVelo: localKeepVelo,
@@ -155,18 +155,21 @@ func calculateVeloLikeStrategyAPR(
 
 	/**********************************************************************************************
 	** Calculate the strategy Net APY:
-	** Take the net APR and compound it
+	** Take the net APR and compound it every 15 days
 	**********************************************************************************************/
-	netAPY := bigNumber.NewFloat(0).Div(netAPR, bigNumber.NewFloat(365)) // netAPR / 365
-	netAPY = bigNumber.NewFloat(0).Add(netAPY, bigNumber.NewFloat(1))    // 1 + (netAPR / 365)
-	netAPY = bigNumber.NewFloat(0).Pow(netAPY, 365)                      // (1 + (netAPR / 365)) ^ 365
-	netAPY = bigNumber.NewFloat(0).Sub(netAPY, bigNumber.NewFloat(1))    // ((1 + (netAPR / 365)) ^ 365) - 1
-	_ = netAPY
+	const daysInYear = 365
+	const compoundingPeriod = 15
+	const compoundingPeriodsPerYear = daysInYear / compoundingPeriod
 
-	apyStruct := TStrategyAPR{
+	netAPY := bigNumber.NewFloat(0).Div(netAPR, bigNumber.NewFloat(compoundingPeriodsPerYear)) // netAPR / (365 / 15)
+	netAPY = bigNumber.NewFloat(0).Add(netAPY, bigNumber.NewFloat(1))                          // 1 + (netAPR / (365 / 15))
+	netAPY = bigNumber.NewFloat(0).Pow(netAPY, compoundingPeriodsPerYear)                      // (1 + (netAPR / (365 / 15))) ^ (365 / 15)
+	netAPY = bigNumber.NewFloat(0).Sub(netAPY, bigNumber.NewFloat(1))                          // ((1 + (netAPR / (365 / 15))) ^ (365 / 15)) - 1
+
+	apyStruct := TStrategyAPY{
 		Type:      "v2:velo",
 		DebtRatio: debtRatio,
-		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		NetAPY:    bigNumber.NewFloat(0).Mul(netAPY, debtRatio),
 		Composite: TCompositeData{
 			KeepVelo: localKeepVelo,
 		},
@@ -178,21 +181,21 @@ func calculateVeloLikeStrategyAPR(
 ** If the vault is a velo vault or a fork of it, we can calculate the forward APR  using always the
 ** same base formula
 **************************************************************************************************/
-func computeVeloLikeForwardAPR(
+func computeVeloLikeForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
 	veloStakingPoolAddress common.Address,
-) TForwardAPR {
+) TForwardAPY {
 	TypeOf := ``
-	NetAPR := bigNumber.NewFloat(0)
-	Boost := bigNumber.NewFloat(0)
-	PoolAPY := bigNumber.NewFloat(0)
-	BoostedAPR := bigNumber.NewFloat(0)
-	BaseAPR := bigNumber.NewFloat(0)
-	CvxAPR := bigNumber.NewFloat(0)
-	RewardsAPR := bigNumber.NewFloat(0)
-	KeepCRV := bigNumber.NewFloat(0)
-	KeepVelo := bigNumber.NewFloat(0)
+	netAPY := bigNumber.NewFloat(0)
+	boost := bigNumber.NewFloat(0)
+	poolAPY := bigNumber.NewFloat(0)
+	boostedAPR := bigNumber.NewFloat(0)
+	baseAPR := bigNumber.NewFloat(0)
+	cvxAPR := bigNumber.NewFloat(0)
+	rewardsAPY := bigNumber.NewFloat(0)
+	keepCRV := bigNumber.NewFloat(0)
+	keepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
@@ -201,31 +204,31 @@ func computeVeloLikeForwardAPR(
 			continue
 		}
 
-		strategyAPR := calculateVeloLikeStrategyAPR(vault, strategy, veloStakingPoolAddress)
-		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-		NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
-		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
-		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
-		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
-		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
-		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
-		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
-		KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
-		KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
+		strategyAPY := calculateVeloLikeStrategyAPY(vault, strategy, veloStakingPoolAddress)
+		TypeOf += strings.TrimSpace(` ` + strategyAPY.Type)
+		netAPY = bigNumber.NewFloat(0).Add(netAPY, strategyAPY.NetAPY)
+		boost = bigNumber.NewFloat(0).Add(boost, strategyAPY.Composite.Boost)
+		poolAPY = bigNumber.NewFloat(0).Add(poolAPY, strategyAPY.Composite.PoolAPY)
+		boostedAPR = bigNumber.NewFloat(0).Add(boostedAPR, strategyAPY.Composite.BoostedAPR)
+		baseAPR = bigNumber.NewFloat(0).Add(baseAPR, strategyAPY.Composite.BaseAPR)
+		cvxAPR = bigNumber.NewFloat(0).Add(cvxAPR, strategyAPY.Composite.CvxAPR)
+		rewardsAPY = bigNumber.NewFloat(0).Add(rewardsAPY, strategyAPY.Composite.RewardsAPY)
+		keepCRV = bigNumber.NewFloat(0).Add(keepCRV, strategyAPY.Composite.KeepCRV)
+		keepVelo = bigNumber.NewFloat(0).Add(keepVelo, strategyAPY.Composite.KeepVelo)
 	}
 
-	return TForwardAPR{
+	return TForwardAPY{
 		Type:   strings.TrimSpace(TypeOf),
-		NetAPR: NetAPR,
+		NetAPY: netAPY,
 		Composite: TCompositeData{
-			Boost:      Boost,
-			PoolAPY:    PoolAPY,
-			BoostedAPR: BoostedAPR,
-			BaseAPR:    BaseAPR,
-			CvxAPR:     CvxAPR,
-			RewardsAPR: RewardsAPR,
-			KeepCRV:    KeepCRV,
-			KeepVelo:   KeepVelo,
+			Boost:      boost,
+			PoolAPY:    poolAPY,
+			BoostedAPR: boostedAPR,
+			BaseAPR:    baseAPR,
+			CvxAPR:     cvxAPR,
+			RewardsAPY: rewardsAPY,
+			KeepCRV:    keepCRV,
+			KeepVelo:   keepVelo,
 		},
 	}
 }

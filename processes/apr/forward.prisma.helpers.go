@@ -35,22 +35,22 @@ func fetchPrismaReceiver(chainID uint64, strategyAddress common.Address) common.
 }
 
 /**************************************************************************************************
-** Calculate the prisma APR for a given vault and strategy. This is done by getting the rewardRate
+** Calculate the prisma APY for a given vault and strategy. This is done by getting the rewardRate
 ** from the prismaReceiver contract and dividing it by the total supply of the prismaReceiver.
 **************************************************************************************************/
-func getPrismaAPR(chainID uint64, prismaReceiver common.Address) *bigNumber.Float {
+func getPrismaAPY(chainID uint64, prismaReceiver common.Address) (*bigNumber.Float, *bigNumber.Float) {
 	receiver, _ := contracts.NewYPrismaReceiverCaller(prismaReceiver, ethereum.GetRPC(chainID))
 	rewardRate, err := receiver.RewardRate(nil, big.NewInt(0))
 	if err != nil {
-		return bigNumber.NewFloat(0)
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 	totalSupply, err := receiver.TotalSupply(nil)
 	if err != nil {
-		return bigNumber.NewFloat(0)
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 	lpToken, err := receiver.LpToken(nil)
 	if err != nil {
-		return bigNumber.NewFloat(0)
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 	rate := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(rewardRate), 18)
 	supply := helpers.ToNormalizedAmount(bigNumber.NewInt(0).Set(totalSupply), 18)
@@ -69,5 +69,13 @@ func getPrismaAPR(chainID uint64, prismaReceiver common.Address) *bigNumber.Floa
 	prismaAPR = bigNumber.NewFloat(0).Mul(prismaAPR, bigNumber.NewFloat(31536000))
 	prismaAPR = bigNumber.NewFloat(0).Div(prismaAPR, supply)
 	prismaAPR = bigNumber.NewFloat(0).Div(prismaAPR, lpTokenPrice)
-	return prismaAPR
+
+	// Convert APR to APY
+	const compoundingPeriodsPerYear = 365
+	prismaAPY := bigNumber.NewFloat(0).Div(prismaAPR, bigNumber.NewFloat(compoundingPeriodsPerYear))
+	prismaAPY = bigNumber.NewFloat(0).Add(prismaAPY, bigNumber.NewFloat(1))
+	prismaAPY = bigNumber.NewFloat(0).Pow(prismaAPY, compoundingPeriodsPerYear)
+	prismaAPY = bigNumber.NewFloat(0).Sub(prismaAPY, bigNumber.NewFloat(1))
+
+	return prismaAPR, prismaAPY
 }

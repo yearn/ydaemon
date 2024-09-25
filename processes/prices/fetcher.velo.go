@@ -66,7 +66,7 @@ func fetchVelo(url string) []TVeloPairData {
 	return factories.Data
 }
 
-// fetchPricesFromSugar is used to fetch prices from the sugar APR (velo).
+// fetchPricesFromSugar is used to fetch prices from the sugar API (velo).
 func fetchPricesFromSugar(chainID uint64, blockNumber *uint64, tokens []models.TERC20Token) map[common.Address]models.TPrices {
 	priceMap := make(map[common.Address]models.TPrices)
 	if chainID != 10 {

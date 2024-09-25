@@ -75,10 +75,10 @@ func GetJuicedStakingDataForVault(chainID uint64, vault common.Address) (TStakin
 }
 
 /**************************************************************************************************
-** AssignJuicedStakingRewardAPR will update an entry in the _juicedStakingSyncMap syncMap to assign the
+** AssignJuicedStakingRewardAPY will update an entry in the _juicedStakingSyncMap syncMap to assign the
 ** APR to the staking pool.
 **************************************************************************************************/
-func AssignJuicedStakingRewardAPR(chainID uint64, vault common.Address, rewardToken common.Address, apr *bigNumber.Float) {
+func AssignJuicedStakingRewardAPY(chainID uint64, vault common.Address, rewardToken common.Address, apy *bigNumber.Float) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingContract for the vault.
 	**********************************************************************************************/
@@ -87,7 +87,7 @@ func AssignJuicedStakingRewardAPR(chainID uint64, vault common.Address, rewardTo
 		if addresses.Equals(stakingElement.VaultAddress, vault) {
 			for i, reward := range stakingElement.RewardTokens {
 				if addresses.Equals(reward.Address, rewardToken) {
-					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apy)
 					safeSyncMap(_juicedStakingSyncMap, chainID).Store(key, stakingElement)
 					return false
 				}

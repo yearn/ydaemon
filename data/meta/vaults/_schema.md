@@ -94,6 +94,8 @@ The metadata contains a bunch of extra information about the vault that may be u
 | `externalProtocolTvl` | `int` | The active TVL that the external protocol holds. 1 -> TVL of $480M or more; 2 -> TVL between $120M and $480M; 3 -> TVL between $40M and $120M; 4 -> TVL between $10M and $40M; 5 -> TVL of $10M or less | ❌ |
 | `externalProtocolLongevity` | `int` | How long the external protocol contracts in scope have been deployed alive. 1 -> 24 months or more; 2 -> Between 18 and 24 months; 3 -> Between 12 and 18 months; 4 -> Between 6 and 12 months; 5 -> Less than 6 months | ❌ |
 | `externalProtocolType` | `int` | This is a rough estimate of evaluating a protocol's purpose. 1 -> Blue-chip protocols such as AAVE, Compound, Uniswap, Curve, Convex, and Balancer.; 2 -> Slightly modified forked blue-chip protocols; 3 -> AMM lending/borrowing protocols that are not forks of blue-chip protocols, leveraged farming protocols, as well as newly conceptualized protocols; 4 -> Cross-chain applications, like cross-chain bridges, cross-chain yield aggregators, and cross-chain lending/borrowing protocols; 5 -> The main expertise of the protocol lies in off-chain operations, such as RWA protocols | ❌ |
+| `comment` | `string` | Justification for given risk score to the strategy. Can be empty. | ❌ |
+
 
 ## Example
 
@@ -165,7 +167,8 @@ The metadata contains a bunch of extra information about the vault that may be u
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},

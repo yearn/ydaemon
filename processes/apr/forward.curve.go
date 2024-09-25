@@ -12,12 +12,12 @@ type TCalculateCurveAPYDataStruct struct {
 	vault        models.TVault
 	gaugeAddress common.Address
 	strategy     models.TStrategy
-	baseAPR      *bigNumber.Float
-	rewardAPR    *bigNumber.Float
+	baseAPY      *bigNumber.Float
+	rewardAPY    *bigNumber.Float
 	poolAPY      *bigNumber.Float
 }
 
-func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
+func calculateCurveForwardAPY(args TCalculateCurveAPYDataStruct) TStrategyAPY {
 	chainID := args.vault.ChainID
 
 	/**********************************************************************************************
@@ -37,8 +37,8 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	** The CRV APR is simply the baseAPR (aka how much CRV we get from the gauge) scaled by the
 	** yBoost. We then add the extraRewards which are incentives/bribes on top of the base rewards.
 	**********************************************************************************************/
-	crvAPR := bigNumber.NewFloat(0).Mul(args.baseAPR, yBoost)  // baseAPR * yBoost
-	crvAPR = bigNumber.NewFloat(0).Add(crvAPR, args.rewardAPR) // (baseAPR * yBoost) + rewardAPR
+	crvAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost)  // baseAPR * yBoost
+	crvAPY = bigNumber.NewFloat(0).Add(crvAPY, args.rewardAPY) // (baseAPR * yBoost) + rewardAPY
 
 	/**********************************************************************************************
 	** Calculate the CRV Gross APR:
@@ -48,37 +48,32 @@ func calculateCurveForwardAPR(args TCalculateCurveAPYDataStruct) TStrategyAPR {
 	** 3. Adding the pool APY
 	**********************************************************************************************/
 	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv) // 1 - keepCRV
-	grossAPR := bigNumber.NewFloat(0).Mul(args.baseAPR, yBoost)     // 1 - baseAPR * yBoost
-	grossAPR = bigNumber.NewFloat(0).Mul(grossAPR, keepCRVRatio)    // 1 - baseAPR * yBoost * keepCRV
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.rewardAPR)  // 2 - (baseAPR * yBoost * keepCRV) + rewardAPR
-	grossAPR = bigNumber.NewFloat(0).Add(grossAPR, args.poolAPY)    // 3 - (baseAPR * yBoost * keepCRV) + rewardAPR + poolAPY
+	grossAPY := bigNumber.NewFloat(0).Mul(args.baseAPY, yBoost)     // 1 - baseAPR * yBoost
+	grossAPY = bigNumber.NewFloat(0).Mul(grossAPY, keepCRVRatio)    // 1 - baseAPR * yBoost * keepCRV
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.rewardAPY)  // 2 - (baseAPR * yBoost * keepCRV) + rewardAPY
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolAPY)    // 3 - (baseAPR * yBoost * keepCRV) + rewardAPY + poolAPY
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:
 	** Take the gross APR and remove the performance fee and the management fee
 	**********************************************************************************************/
-	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
-	if netAPR.Gt(vaultManagementFee) {
-		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	netAPY := bigNumber.NewFloat(0).Mul(grossAPY, oneMinusPerfFee) // grossAPY * (1 - perfFee)
+	if netAPY.Gt(vaultManagementFee) {
+		netAPY = bigNumber.NewFloat(0).Sub(netAPY, vaultManagementFee) // (grossAPY * (1 - perfFee)) - managementFee
 	} else {
-		netAPR = bigNumber.NewFloat(0)
+		netAPY = bigNumber.NewFloat(0)
 	}
 
-	/**********************************************************************************************
-	** Calculate the final boost
-	**********************************************************************************************/
-	boost := bigNumber.NewFloat(0).Mul(yBoost, debtRatio) // yBoost * debtRatioCurve
-
-	apyStruct := TStrategyAPR{
+	apyStruct := TStrategyAPY{
 		Type:      "crv",
 		DebtRatio: debtRatio,
-		NetAPR:    bigNumber.NewFloat(0).Mul(netAPR, debtRatio),
+		NetAPY:    bigNumber.NewFloat(0).Mul(netAPY, debtRatio),
 		Composite: TCompositeData{
-			Boost:      bigNumber.NewFloat(0).Mul(boost, debtRatio),
+			Boost:      bigNumber.NewFloat(0).Mul(bigNumber.NewFloat(0).Mul(yBoost, debtRatio), debtRatio),
 			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolAPY, debtRatio),
-			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPR, debtRatio),
-			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPR, debtRatio),
-			RewardsAPR: bigNumber.NewFloat(0).Mul(args.rewardAPR, debtRatio),
+			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPY, debtRatio),
+			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPY, debtRatio),
+			RewardsAPY: bigNumber.NewFloat(0).Mul(args.rewardAPY, debtRatio),
 			KeepCRV:    keepCrv,
 		},
 	}

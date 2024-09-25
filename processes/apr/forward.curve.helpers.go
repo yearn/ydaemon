@@ -115,7 +115,7 @@ func getCurveBoost(chainID uint64, voter common.Address, gauge common.Address) *
 ** calculate the APR for them.
 ** The list of rewards and their APR is available in the Curve API.
 **************************************************************************************************/
-func getRewardsAPR(chainID uint64, pool models.CurvePool) *bigNumber.Float {
+func getRewardsAPY(chainID uint64, pool models.CurvePool) *bigNumber.Float {
 	totalRewardAPR := bigNumber.NewFloat(0)
 	if len(pool.GaugeRewards) == 0 {
 		return totalRewardAPR
@@ -151,7 +151,7 @@ func calculateGaugeBaseAPR(
 	crvTokenPrice *bigNumber.Float,
 	poolPrice *bigNumber.Float,
 	baseAssetPrice *bigNumber.Float,
-) *bigNumber.Float {
+) (*bigNumber.Float, *bigNumber.Float) {
 	inflationRate := bigNumber.NewFloat(0)
 	switch gauge.GaugeController.InflationRate.(type) {
 	case string:
@@ -172,8 +172,9 @@ func calculateGaugeBaseAPR(
 	baseAPR = bigNumber.NewFloat(0).Mul(baseAPR, bigNumber.NewFloat(0).Div(perMaxBoost, poolPrice))
 	baseAPR = bigNumber.NewFloat(0).Mul(baseAPR, crvPrice)
 	baseAPR = bigNumber.NewFloat(0).Div(baseAPR, baseAssetPrice)
+	baseAPY := convertAPRToAPY(baseAPR, bigNumber.NewFloat(365.0/15.0))
 
-	return baseAPR
+	return baseAPR, baseAPY
 }
 
 /**********************************************************************************************
@@ -187,7 +188,7 @@ func calculateCurveLikeStrategyAPR(
 	pool models.CurvePool,
 	fraxPool TFraxPool,
 	subgraphItem models.CurveSubgraphData,
-) TStrategyAPR {
+) TStrategyAPY {
 	/**********************************************************************************************
 	** First thing is to retrieve the data we need from curve API. This includes the pool, the
 	** gauges and some APY data from their subgraph.
@@ -215,7 +216,7 @@ func calculateCurveLikeStrategyAPR(
 	** With theses info and the gauges data, we cal calculate both the base APR and the curve
 	** boost for the Yearn Voter.
 	**********************************************************************************************/
-	baseAPR := calculateGaugeBaseAPR(gauge, crvPrice, poolPrice, baseAssetPrice)
+	_, baseAPY := calculateGaugeBaseAPR(gauge, crvPrice, poolPrice, baseAssetPrice)
 
 	/**********************************************************************************************
 	** Once it's done, we need to calculate the rewards APR. Each gauge can get bribes, which are
@@ -223,7 +224,7 @@ func calculateCurveLikeStrategyAPR(
 	** An unknown amount of unknown tokens can be distributed to the gauge, but we still want to
 	** calculate the APR for them.
 	**********************************************************************************************/
-	rewardAPR := getRewardsAPR(chainID, pool)
+	rewardAPY := getRewardsAPY(chainID, pool)
 
 	/**********************************************************************************************
 	** We need to know how is performing the pool in term of APY. We could calculate the whole what
@@ -248,8 +249,8 @@ func calculateCurveLikeStrategyAPR(
 				strategy:       strategy,
 				baseAssetPrice: baseAssetPrice,
 				poolPrice:      poolPrice,
-				baseAPR:        baseAPR,
-				rewardAPR:      rewardAPR,
+				baseAPY:        baseAPY,
+				rewardAPY:      rewardAPY,
 				poolDailyAPY:   poolDailyAPY,
 			},
 		)
@@ -262,35 +263,35 @@ func calculateCurveLikeStrategyAPR(
 				strategy:       strategy,
 				baseAssetPrice: baseAssetPrice,
 				poolPrice:      poolPrice,
-				baseAPR:        baseAPR,
-				rewardAPR:      rewardAPR,
+				baseAPY:        baseAPY,
+				rewardAPY:      rewardAPY,
 				poolDailyAPY:   poolDailyAPY,
 			},
 			fraxPool,
 		)
 	}
 	if isConvexStrategy(strategy) {
-		return calculateConvexForwardAPR(
+		return calculateConvexForwardAPY(
 			TCalculateConvexAPYDataStruct{
 				vault:          vault,
 				gaugeAddress:   common.HexToAddress(gauge.Gauge),
 				strategy:       strategy,
 				baseAssetPrice: baseAssetPrice,
 				poolPrice:      poolPrice,
-				baseAPR:        baseAPR,
-				rewardAPR:      rewardAPR,
+				baseAPY:        baseAPY,
+				rewardAPY:      rewardAPY,
 				poolDailyAPY:   poolDailyAPY,
 			},
 		)
 	}
 
-	return calculateCurveForwardAPR(
+	return calculateCurveForwardAPY(
 		TCalculateCurveAPYDataStruct{
 			vault:        vault,
 			gaugeAddress: common.HexToAddress(gauge.Gauge),
 			strategy:     strategy,
-			baseAPR:      baseAPR,
-			rewardAPR:    rewardAPR,
+			baseAPY:      baseAPY,
+			rewardAPY:    rewardAPY,
 			poolAPY:      poolWeeklyAPY,
 		},
 	)
@@ -304,29 +305,29 @@ func calculateCurveLikeStrategyAPR(
 ** - The subgraph data
 ** - The frax pool
 **************************************************************************************************/
-func computeCurveLikeForwardAPR(
+func computeCurveLikeForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
 	gauges []models.CurveGauge,
 	pools []models.CurvePool,
 	subgraphData []models.CurveSubgraphData,
 	fraxPools []TFraxPool,
-) TForwardAPR {
+) TForwardAPY {
 	gauge := findGaugeForVault(vault.AssetAddress, gauges)
 	pool := findPoolForVault(vault.AssetAddress, pools)
 	fraxPool := findFraxPoolForVault(vault.AssetAddress, fraxPools)
 	subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
 
 	TypeOf := ``
-	NetAPR := bigNumber.NewFloat(0)
-	Boost := bigNumber.NewFloat(0)
-	PoolAPY := bigNumber.NewFloat(0)
-	BoostedAPR := bigNumber.NewFloat(0)
-	BaseAPR := bigNumber.NewFloat(0)
-	CvxAPR := bigNumber.NewFloat(0)
-	RewardsAPR := bigNumber.NewFloat(0)
-	KeepCRV := bigNumber.NewFloat(0)
-	KeepVelo := bigNumber.NewFloat(0)
+	netAPY := bigNumber.NewFloat(0)
+	boost := bigNumber.NewFloat(0)
+	poolAPY := bigNumber.NewFloat(0)
+	boostedAPR := bigNumber.NewFloat(0)
+	baseAPR := bigNumber.NewFloat(0)
+	cvxAPR := bigNumber.NewFloat(0)
+	rewardsAPY := bigNumber.NewFloat(0)
+	keepCRV := bigNumber.NewFloat(0)
+	keepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
 			if os.Getenv("ENVIRONMENT") == "dev" {
@@ -344,29 +345,29 @@ func computeCurveLikeForwardAPR(
 			subgraphItem,
 		)
 		TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-		NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
-		Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
-		PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
-		BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
-		BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
-		CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
-		RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
-		KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
-		KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
+		netAPY = bigNumber.NewFloat(0).Add(netAPY, strategyAPR.NetAPY)
+		boost = bigNumber.NewFloat(0).Add(boost, strategyAPR.Composite.Boost)
+		poolAPY = bigNumber.NewFloat(0).Add(poolAPY, strategyAPR.Composite.PoolAPY)
+		boostedAPR = bigNumber.NewFloat(0).Add(boostedAPR, strategyAPR.Composite.BoostedAPR)
+		baseAPR = bigNumber.NewFloat(0).Add(baseAPR, strategyAPR.Composite.BaseAPR)
+		cvxAPR = bigNumber.NewFloat(0).Add(cvxAPR, strategyAPR.Composite.CvxAPR)
+		rewardsAPY = bigNumber.NewFloat(0).Add(rewardsAPY, strategyAPR.Composite.RewardsAPY)
+		keepCRV = bigNumber.NewFloat(0).Add(keepCRV, strategyAPR.Composite.KeepCRV)
+		keepVelo = bigNumber.NewFloat(0).Add(keepVelo, strategyAPR.Composite.KeepVelo)
 	}
 
-	return TForwardAPR{
+	return TForwardAPY{
 		Type:   strings.TrimSpace(TypeOf),
-		NetAPR: NetAPR,
+		NetAPY: netAPY,
 		Composite: TCompositeData{
-			Boost:      Boost,
-			PoolAPY:    PoolAPY,
-			BoostedAPR: BoostedAPR,
-			BaseAPR:    BaseAPR,
-			CvxAPR:     CvxAPR,
-			RewardsAPR: RewardsAPR,
-			KeepCRV:    KeepCRV,
-			KeepVelo:   KeepVelo,
+			Boost:      boost,
+			PoolAPY:    poolAPY,
+			BoostedAPR: boostedAPR,
+			BaseAPR:    baseAPR,
+			CvxAPR:     cvxAPR,
+			RewardsAPY: rewardsAPY,
+			KeepCRV:    keepCRV,
+			KeepVelo:   keepVelo,
 		},
 	}
 }

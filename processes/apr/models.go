@@ -12,38 +12,38 @@ type TCompositeData struct {
 	BoostedAPR            *bigNumber.Float `json:"boostedAPR"`
 	BaseAPR               *bigNumber.Float `json:"baseAPR"`
 	CvxAPR                *bigNumber.Float `json:"cvxAPR"`
-	RewardsAPR            *bigNumber.Float `json:"rewardsAPR"`
+	RewardsAPY            *bigNumber.Float `json:"rewardsAPY"`
 	V3OracleCurrentAPR    *bigNumber.Float `json:"v3OracleCurrentAPR,omitempty"`
 	V3OracleStratRatioAPR *bigNumber.Float `json:"v3OracleStratRatioAPR,omitempty"`
 	KeepCRV               *bigNumber.Float `json:"keepCRV,omitempty"`
 	KeepVelo              *bigNumber.Float `json:"keepVELO,omitempty"`
 }
 type TExtraRewards struct {
-	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`
-	GammaRewardAPR    *bigNumber.Float `json:"gammaRewardAPR"`
+	StakingRewardsAPY *bigNumber.Float `json:"stakingRewardsAPY"`
+	GammaRewardAPY    *bigNumber.Float `json:"gammaRewardAPY"`
 }
 type THistoricalPoints struct {
 	WeekAgo   *bigNumber.Float `json:"weekAgo"`
 	MonthAgo  *bigNumber.Float `json:"monthAgo"`
 	Inception *bigNumber.Float `json:"inception"`
 }
-type TForwardAPR struct {
+type TForwardAPY struct {
 	Type      string           `json:"type"`
-	NetAPR    *bigNumber.Float `json:"netAPR"`
+	NetAPY    *bigNumber.Float `json:"netAPY"`
 	Composite TCompositeData   `json:"composite"`
 }
-type TVaultAPR struct {
+type TVaultAPY struct {
 	Type       string            `json:"type"`
-	NetAPR     *bigNumber.Float  `json:"netAPR"`
+	NetAPY     *bigNumber.Float  `json:"netAPY"`
 	Fees       TFees             `json:"fees"`
 	Points     THistoricalPoints `json:"points"`
 	Extra      TExtraRewards     `json:"extra"`
-	ForwardAPR TForwardAPR       `json:"forwardAPR"`
+	ForwardAPY TForwardAPY       `json:"forwardAPY"`
 }
 
-type TStrategyAPR struct {
+type TStrategyAPY struct {
 	Type      string           `json:"type"`
 	DebtRatio *bigNumber.Float `json:"debtRatio"`
-	NetAPR    *bigNumber.Float `json:"netAPR"`
+	NetAPY    *bigNumber.Float `json:"netAPY"`
 	Composite TCompositeData   `json:"composite"`
 }

@@ -30,10 +30,10 @@ func isPendleVault(chainID uint64, vault models.TVault) bool {
 /**************************************************************************************************
 ** For a given gamma strategy, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func calculatePendleStrategyAPR(
+func calculatePendleStrategyAPY(
 	vault models.TVault,
 	strategy models.TStrategy,
-) TStrategyAPR {
+) TStrategyAPY {
 	if _, ok := storage.GetCachedPendleMarkets(vault.ChainID); !ok {
 		storage.RefreshPendleMarkets(vault.ChainID)
 	}
@@ -45,35 +45,35 @@ func calculatePendleStrategyAPR(
 
 	pendleMarkets, ok := storage.GetCachedPendleMarkets(vault.ChainID)
 	if !ok {
-		return TStrategyAPR{
+		return TStrategyAPY{
 			Type:      `pendle`,
 			DebtRatio: debtRatio,
-			NetAPR:    bigNumber.NewFloat(0),
+			NetAPY:    bigNumber.NewFloat(0),
 			Composite: TCompositeData{},
 		}
 	}
 	data, ok := pendleMarkets[vault.AssetAddress.Hex()]
 	if !ok {
-		return TStrategyAPR{
+		return TStrategyAPY{
 			Type:      `pendle`,
 			DebtRatio: debtRatio,
-			NetAPR:    bigNumber.NewFloat(0),
+			NetAPY:    bigNumber.NewFloat(0),
 			Composite: TCompositeData{},
 		}
 	}
 
-	grossAPR := bigNumber.NewFloat(data.AggretatedAPY)             // Using aggregatedApy
-	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
-	if netAPR.Gt(vaultManagementFee) {                             // Management fee can never induce a negative APR
-		netAPR = bigNumber.NewFloat(0).Sub(netAPR, vaultManagementFee) // (grossAPR * (1 - perfFee)) - managementFee
+	grossAPY := bigNumber.NewFloat(data.AggretatedAPY)             // Using aggregatedApy
+	netAPY := bigNumber.NewFloat(0).Mul(grossAPY, oneMinusPerfFee) // grossAPY * (1 - perfFee)
+	if netAPY.Gt(vaultManagementFee) {                             // Management fee can never induce a negative APR
+		netAPY = bigNumber.NewFloat(0).Sub(netAPY, vaultManagementFee) // (grossAPY * (1 - perfFee)) - managementFee
 	} else {
-		netAPR = bigNumber.NewFloat(0)
+		netAPY = bigNumber.NewFloat(0)
 	}
 
-	return TStrategyAPR{
+	return TStrategyAPY{
 		Type:      `pendle`,
 		DebtRatio: debtRatio,
-		NetAPR:    netAPR,
+		NetAPY:    netAPY, //Actually APY
 		Composite: TCompositeData{},
 	}
 }
@@ -81,36 +81,36 @@ func calculatePendleStrategyAPR(
 /**************************************************************************************************
 ** For a given gamma vault, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func computePendleForwardAPR(
+func computePendleForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
-) TForwardAPR {
+) TForwardAPY {
 	TypeOf := ``
-	NetAPR := bigNumber.NewFloat(0)
-	Boost := bigNumber.NewFloat(0)
-	PoolAPY := bigNumber.NewFloat(0)
-	BoostedAPR := bigNumber.NewFloat(0)
-	BaseAPR := bigNumber.NewFloat(0)
-	CvxAPR := bigNumber.NewFloat(0)
-	RewardsAPR := bigNumber.NewFloat(0)
-	KeepCRV := bigNumber.NewFloat(0)
-	KeepVelo := bigNumber.NewFloat(0)
+	netAPY := bigNumber.NewFloat(0)
+	boost := bigNumber.NewFloat(0)
+	poolAPY := bigNumber.NewFloat(0)
+	boostedAPR := bigNumber.NewFloat(0)
+	baseAPR := bigNumber.NewFloat(0)
+	cvxAPR := bigNumber.NewFloat(0)
+	rewardsAPY := bigNumber.NewFloat(0)
+	keepCRV := bigNumber.NewFloat(0)
+	keepVelo := bigNumber.NewFloat(0)
 
 	if len(allStrategiesForVault) == 0 {
 		vaultAsStrategy := models.TStrategy{
 			LastDebtRatio: bigNumber.NewUint64(10000),
 		}
-		strategyAPR := calculatePendleStrategyAPR(vault, vaultAsStrategy)
-		TypeOf = strategyAPR.Type
-		NetAPR = strategyAPR.NetAPR
-		Boost = strategyAPR.Composite.Boost
-		PoolAPY = strategyAPR.Composite.PoolAPY
-		BoostedAPR = strategyAPR.Composite.BoostedAPR
-		BaseAPR = strategyAPR.Composite.BaseAPR
-		CvxAPR = strategyAPR.Composite.CvxAPR
-		RewardsAPR = strategyAPR.Composite.RewardsAPR
-		KeepCRV = strategyAPR.Composite.KeepCRV
-		KeepVelo = strategyAPR.Composite.KeepVelo
+		strategyAPY := calculatePendleStrategyAPY(vault, vaultAsStrategy)
+		TypeOf = strategyAPY.Type
+		netAPY = strategyAPY.NetAPY
+		boost = strategyAPY.Composite.Boost
+		poolAPY = strategyAPY.Composite.PoolAPY
+		boostedAPR = strategyAPY.Composite.BoostedAPR
+		baseAPR = strategyAPY.Composite.BaseAPR
+		cvxAPR = strategyAPY.Composite.CvxAPR
+		rewardsAPY = strategyAPY.Composite.RewardsAPY
+		keepCRV = strategyAPY.Composite.KeepCRV
+		keepVelo = strategyAPY.Composite.KeepVelo
 	} else {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
@@ -120,32 +120,32 @@ func computePendleForwardAPR(
 				continue
 			}
 
-			strategyAPR := calculatePendleStrategyAPR(vault, strategy)
-			TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-			NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
-			Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
-			PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
-			BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
-			BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
-			CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
-			RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
-			KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
-			KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
+			strategyAPY := calculatePendleStrategyAPY(vault, strategy)
+			TypeOf += strings.TrimSpace(` ` + strategyAPY.Type)
+			netAPY = bigNumber.NewFloat(0).Add(netAPY, strategyAPY.NetAPY)
+			boost = bigNumber.NewFloat(0).Add(boost, strategyAPY.Composite.Boost)
+			poolAPY = bigNumber.NewFloat(0).Add(poolAPY, strategyAPY.Composite.PoolAPY)
+			boostedAPR = bigNumber.NewFloat(0).Add(boostedAPR, strategyAPY.Composite.BoostedAPR)
+			baseAPR = bigNumber.NewFloat(0).Add(baseAPR, strategyAPY.Composite.BaseAPR)
+			cvxAPR = bigNumber.NewFloat(0).Add(cvxAPR, strategyAPY.Composite.CvxAPR)
+			rewardsAPY = bigNumber.NewFloat(0).Add(rewardsAPY, strategyAPY.Composite.RewardsAPY)
+			keepCRV = bigNumber.NewFloat(0).Add(keepCRV, strategyAPY.Composite.KeepCRV)
+			keepVelo = bigNumber.NewFloat(0).Add(keepVelo, strategyAPY.Composite.KeepVelo)
 		}
 	}
 
-	return TForwardAPR{
+	return TForwardAPY{
 		Type:   strings.TrimSpace(TypeOf),
-		NetAPR: NetAPR,
+		NetAPY: netAPY,
 		Composite: TCompositeData{
-			Boost:      Boost,
-			PoolAPY:    PoolAPY,
-			BoostedAPR: BoostedAPR,
-			BaseAPR:    BaseAPR,
-			CvxAPR:     CvxAPR,
-			RewardsAPR: RewardsAPR,
-			KeepCRV:    KeepCRV,
-			KeepVelo:   KeepVelo,
+			Boost:      boost,
+			PoolAPY:    poolAPY,
+			BoostedAPR: boostedAPR,
+			BaseAPR:    baseAPR,
+			CvxAPR:     cvxAPR,
+			RewardsAPY: rewardsAPY,
+			KeepCRV:    keepCRV,
+			KeepVelo:   keepVelo,
 		},
 	}
 }

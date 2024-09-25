@@ -9,12 +9,12 @@ import (
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
-var COMPUTED_APR = make(map[uint64]*sync.Map)
+var COMPUTED_APY = make(map[uint64]*sync.Map)
 
 func init() {
 	for chainID := range env.GetChains() {
-		if _, ok := COMPUTED_APR[chainID]; !ok {
-			COMPUTED_APR[chainID] = &sync.Map{}
+		if _, ok := COMPUTED_APY[chainID]; !ok {
+			COMPUTED_APY[chainID] = &sync.Map{}
 		}
 	}
 }
@@ -31,14 +31,14 @@ func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
 	return syncMap
 }
 
-func GetComputedAPR(chainID uint64, vaultAddress common.Address) (any, bool) {
-	return safeSyncMap(COMPUTED_APR, chainID).Load(vaultAddress)
+func GetComputedAPY(chainID uint64, vaultAddress common.Address) (any, bool) {
+	return safeSyncMap(COMPUTED_APY, chainID).Load(vaultAddress)
 }
 
 /**************************************************************************
-** Function to calculate the APR for all the vaults in a chain.
+** Function to calculate the APY for all the vaults in a chain.
 **************************************************************************/
-func ComputeChainAPR(chainID uint64) {
+func ComputeChainAPY(chainID uint64) {
 	allVaults, _ := storage.ListVaults(chainID)
 	gauges := storage.FetchCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
@@ -57,52 +57,52 @@ func ComputeChainAPR(chainID uint64) {
 		}
 
 		allStrategiesForVault, _ := storage.ListStrategiesForVault(chainID, vault.Address)
-		vaultAPR := TVaultAPR{}
+		vaultAPY := TVaultAPY{}
 		if isV3Vault(vault) {
 			if vault.Metadata.ShouldUseV2APR {
-				vaultAPR = computeCurrentV2VaultAPR(vault, vaultToken)
+				vaultAPY = computeCurrentV2VaultAPY(vault, vaultToken)
 			} else {
-				vaultAPR = computeCurrentV3VaultAPR(vault, vaultToken)
+				vaultAPY = computeCurrentV3VaultAPY(vault, vaultToken)
 			}
-			vaultAPR.ForwardAPR = computeVaultV3ForwardAPR(
+			vaultAPY.ForwardAPY = computeVaultV3ForwardAPY(
 				vault,
 				allStrategiesForVault,
 			)
 		} else {
-			vaultAPR = computeCurrentV2VaultAPR(vault, vaultToken)
+			vaultAPY = computeCurrentV2VaultAPY(vault, vaultToken)
 		}
 
 		/**********************************************************************************************
-		** Some vaults may have a staking rewards system. If so, we need to calculate the APR for
+		** Some vaults may have a staking rewards system. If so, we need to calculate the APY for
 		** this staking rewards system and add it to the netAPY.
 		**********************************************************************************************/
-		stakingRewardAPR, hasExtraAPR := computeOPBoostStakingRewardsAPR(chainID, vault)
+		_, stakingRewardAPY, hasExtraAPR := computeOPBoostStakingRewardsAPY(chainID, vault)
 		if hasExtraAPR {
-			vaultAPR.Extra.StakingRewardsAPR = stakingRewardAPR
+			vaultAPY.Extra.StakingRewardsAPY = stakingRewardAPY
 		}
 
-		veYFIGaugeStakingAPR, hasExtraAPR := computeVeYFIGaugeStakingRewardsAPR(chainID, vault)
+		_, veYFIGaugeStakingAPY, hasExtraAPR := computeVeYFIGaugeStakingRewardsAPY(chainID, vault)
 		if hasExtraAPR {
-			vaultAPR.Extra.StakingRewardsAPR = veYFIGaugeStakingAPR
+			vaultAPY.Extra.StakingRewardsAPY = veYFIGaugeStakingAPY
 		}
 
-		juicedStakingAPR, hasExtraAPR := computeJuicedStakingRewardsAPR(chainID, vault)
+		_, juicedStakingAPY, hasExtraAPR := computeJuicedStakingRewardsAPY(chainID, vault)
 		if hasExtraAPR {
-			vaultAPR.Extra.StakingRewardsAPR = juicedStakingAPR
+			vaultAPY.Extra.StakingRewardsAPY = juicedStakingAPY
 		}
 
-		v3StakingAPR, hasExtraAPR := computeV3StakingRewardsAPR(chainID, vault)
+		_, v3StakingAPY, hasExtraAPR := computeV3StakingRewardsAPY(chainID, vault)
 		if hasExtraAPR {
-			vaultAPR.Extra.StakingRewardsAPR = v3StakingAPR
+			vaultAPY.Extra.StakingRewardsAPY = v3StakingAPY
 		}
 
 		/**********************************************************************************************
 		** If it's a Curve Vault (has a Curve, Convex or Frax strategy), we can estimate the forward
-		** APR, aka the expected APR we will get for the upcoming period.
-		** We need to compute it and store it in our ForwardAPR structure.
+		** APY, aka the expected APY we will get for the upcoming period.
+		** We need to compute it and store it in our ForwardAPY structure.
 		**********************************************************************************************/
 		if isCurveVault(allStrategiesForVault) {
-			vaultAPR.ForwardAPR = computeCurveLikeForwardAPR(
+			vaultAPY.ForwardAPY = computeCurveLikeForwardAPY(
 				vault,
 				allStrategiesForVault,
 				gauges,
@@ -113,19 +113,19 @@ func ComputeChainAPR(chainID uint64) {
 		}
 
 		/**********************************************************************************************
-		** If it's a Velo Vault (has a Velo or Aero strategy), we can estimate the forward APR, aka
-		** the expected APR we will get for the upcoming period.
-		** We need to compute it and store it in our ForwardAPR structure.
+		** If it's a Velo Vault (has a Velo or Aero strategy), we can estimate the forward APY, aka
+		** the expected APY we will get for the upcoming period.
+		** We need to compute it and store it in our ForwardAPY structure.
 		**********************************************************************************************/
 		if veloPool, ok := isVeloVault(chainID, vault); ok {
-			vaultAPR.ForwardAPR = computeVeloLikeForwardAPR(
+			vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
 				vault,
 				allStrategiesForVault,
 				veloPool,
 			)
 		}
 		if aeroPool, ok := isAeroVault(chainID, vault); ok {
-			vaultAPR.ForwardAPR = computeVeloLikeForwardAPR(
+			vaultAPY.ForwardAPY = computeVeloLikeForwardAPY(
 				vault,
 				allStrategiesForVault,
 				aeroPool,
@@ -137,29 +137,29 @@ func ComputeChainAPR(chainID uint64) {
 		** can retrieve the extraReward APRs.
 		**********************************************************************************************/
 		if isGammaVault(chainID, vault) {
-			if extaRewardAPR, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
-				vaultAPR.Extra.GammaRewardAPR = extaRewardAPR
+			if _, extaRewardAPY, ok := calculateGammaExtraRewards(chainID, vault.AssetAddress); ok {
+				vaultAPY.Extra.GammaRewardAPY = extaRewardAPY
 			}
-			vaultAPR.ForwardAPR = computeGammaForwardAPR(
+			vaultAPY.ForwardAPY = computeGammaForwardAPY(
 				vault,
 				allStrategiesForVault,
 			)
-			vaultAPR.ForwardAPR.Composite.RewardsAPR = vaultAPR.Extra.GammaRewardAPR
+			vaultAPY.ForwardAPY.Composite.RewardsAPY = vaultAPY.Extra.GammaRewardAPY
 		}
 
 		if isPendleVault(chainID, vault) {
-			vaultAPR.ForwardAPR = computePendleForwardAPR(
+			vaultAPY.ForwardAPY = computePendleForwardAPY(
 				vault,
 				allStrategiesForVault,
 			)
 		}
 
-		safeSyncMap(COMPUTED_APR, chainID).Store(vault.Address, vaultAPR)
+		safeSyncMap(COMPUTED_APY, chainID).Store(vault.Address, vaultAPY)
 	}
 }
 
 func Run(chainID uint64) {
 	initYearnEcosystem(chainID)
 	initDailyBlock.Run(chainID)
-	ComputeChainAPR(chainID)
+	ComputeChainAPY(chainID)
 }

@@ -94,12 +94,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "322988797820199584",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -575,7 +575,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
+				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum&sourceChain=arbitrum-one). Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

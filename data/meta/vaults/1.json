@@ -27456,12 +27456,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "1001000000000000",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -29485,12 +29485,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -30106,12 +30106,12 @@
 			"lastPricePerShare": "1002716147402462786",
 			"lastTotalAssets": "3701246580077639480",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -30127,7 +30127,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Pendle has retired rswETH-L2. Please withdraw your funds. A possible alternative with the same asset is [yPT-rswETH](https://yearn.fi/v3/1/0xf1ce36c9C0dB95A052Eb4b075BC334e1f5a21Ef0).",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

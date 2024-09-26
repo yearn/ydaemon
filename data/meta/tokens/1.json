@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-24T17:16:53.327734+02:00",
+	"lastUpdate": "2024-09-26T20:04:51.991062+02:00",
 	"version": {
 		"major": 0,
-		"minor": 62,
+		"minor": 64,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1727,6 +1727,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0F6121fB28C7C42916d663171063c62684598f9F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0f7454c4537afe1243df65842c7919b5d6d6198c": {
+			"address": "0x0f7454c4537afe1243df65842c7919b5d6d6198c",
+			"underlyingTokensAddresses": [
+				"0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-stkGHO-1742860812",
+			"symbol": "PT-sw-stkGHO-1742860812",
+			"displayName": "Principal Token: sw-stkGHO-1742860812",
+			"displaySymbol": "PT-sw-stkGHO-1742860812",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0F7454c4537AFe1243df65842C7919b5d6d6198C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6227,6 +6243,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3a49f5a6a8af9b2103d882278193112cf9f73a25": {
+			"address": "0x3a49f5a6a8af9b2103d882278193112cf9f73a25",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Prize USDC - Yearn USDC-1",
+			"symbol": "przUSDC",
+			"displayName": "Prize USDC - Yearn USDC-1",
+			"displaySymbol": "przUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x3A49f5a6A8aF9B2103D882278193112Cf9F73a25/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x3a51269e0707a3416044bad5066858a12198fcf5": {
 			"address": "0x3a51269e0707a3416044bad5066858a12198fcf5",
 			"underlyingTokensAddresses": [
@@ -7177,6 +7209,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4139cDC6345aFFbaC0692b43bed4D059Df3e6d65/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4147cb38fae27a737ecd55551d3315fec11c28d2": {
+			"address": "0x4147cb38fae27a737ecd55551d3315fec11c28d2",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Prize DAI - Yearn DAI-1",
+			"symbol": "przDAI",
+			"displayName": "Prize DAI - Yearn DAI-1",
+			"displaySymbol": "przDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4147cB38FAe27a737ECd55551d3315fEc11c28d2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9333,6 +9381,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x56A5Fd5104a4956898753dfb060ff32882Ae0eb4/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x56bb34a12b70046b0a03ee63392c09cdddaaa430": {
+			"address": "0x56bb34a12b70046b0a03ee63392c09cdddaaa430",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Corn pumpBTC",
+			"symbol": "SY-corn-pumpBTC",
+			"displayName": "SY Corn pumpBTC",
+			"displaySymbol": "SY-corn-pumpBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x56bb34A12b70046b0a03EE63392C09cdDDAaA430/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0x571b384636ba518697d745ac218ad4cee5ee0abc": {
@@ -17326,6 +17388,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa5ad927a85516885f09aa1b2124a8975dc725c48": {
+			"address": "0xa5ad927a85516885f09aa1b2124a8975dc725c48",
+			"underlyingTokensAddresses": [
+				"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-amphrLRT-1742860816",
+			"symbol": "PT-sw-amphrLRT-1742860816",
+			"displayName": "Principal Token: sw-amphrLRT-1742860816",
+			"displaySymbol": "PT-sw-amphrLRT-1742860816",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA5aD927a85516885F09aa1b2124a8975dC725c48/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa5b947687163fe88c3e6af5b17ae69896f4abccf": {
 			"address": "0xa5b947687163fe88c3e6af5b17ae69896f4abccf",
 			"underlyingTokensAddresses": [],
@@ -17532,6 +17610,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xA76436957378bF3812dba0A98E864686086fd0e6/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa76f0c6e5f286bff151b891d2a0245077f1ad74c": {
+			"address": "0xa76f0c6e5f286bff151b891d2a0245077f1ad74c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Corn pumpBTC 26DEC2024",
+			"symbol": "PT-corn-pumpBTC-26DEC2024",
+			"displayName": "PT Corn pumpBTC 26DEC2024",
+			"displaySymbol": "PT-corn-pumpBTC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa76f0C6e5f286bFF151b891d2A0245077F1Ad74c/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xa8076ae31e4b6c64d07b1ed27889924a962a70d3": {
@@ -17929,6 +18021,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xAB846Fb6C81370327e784Ae7CbB6d6a6af6Ff4BF/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xabb4f186f67c6517a9cafc54a5b93cff2aa4c5eb": {
+			"address": "0xabb4f186f67c6517a9cafc54a5b93cff2aa4c5eb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Corn pumpBTC 26DEC2024",
+			"symbol": "YT-corn-pumpBTC-26DEC2024",
+			"displayName": "YT Corn pumpBTC 26DEC2024",
+			"displaySymbol": "YT-corn-pumpBTC-26DEC2024",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xABb4F186F67c6517A9caFc54a5B93cFF2Aa4c5Eb/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xabc8ae339e3f560bf700a3f6ee85ee719979762b": {
@@ -26035,6 +26141,20 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0xf469fbd2abcd6b9de8e169d128226c0fc90a012e": {
+			"address": "0xf469fbd2abcd6b9de8e169d128226c0fc90a012e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "pumpBTC",
+			"symbol": "pumpBTC",
+			"displayName": "pumpBTC",
+			"displaySymbol": "pumpBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xf48a6134aae5fc7186fee6a7f874426af69aecf8": {
 			"address": "0xf48a6134aae5fc7186fee6a7f874426af69aecf8",
 			"underlyingTokensAddresses": [],
@@ -26514,6 +26634,20 @@
 			"description": "This token represents a Curve factory liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains CRV and sdCRV, a tokenized veCRV from [StakeDAO](https://lockers.stakedao.org).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf7b55C3732aD8b2c2dA7c24f30A69f55c54FB717/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf8208fb52ba80075af09840a683143c22dc5b4dd": {
+			"address": "0xf8208fb52ba80075af09840a683143c22dc5b4dd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf8208fB52BA80075aF09840A683143C22DC5B4dd/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-24T17:16:43.239669+02:00",
+	"lastUpdate": "2024-09-26T20:04:48.287957+02:00",
 	"version": {
 		"major": 0,
-		"minor": 28,
+		"minor": 30,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2520,6 +2520,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x482cc95bc6c92d6254529dc2d45095663ae726a2": {
+			"address": "0x482cc95bc6c92d6254529dc2d45095663ae726a2",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Prize USDC.e - Yearn USDC.e-2",
+			"symbol": "przUSDC.e",
+			"displayName": "Prize USDC.e - Yearn USDC.e-2",
+			"displaySymbol": "przUSDC.e",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x482CC95BC6c92D6254529DC2d45095663Ae726A2/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
 			"underlyingTokensAddresses": [
@@ -3762,6 +3778,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x723a85b4554d79ed20e061efc64c5a6e04f196aa": {
+			"address": "0x723a85b4554d79ed20e061efc64c5a6e04f196aa",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Prize USDC.e - Yearn USDC.e-1",
+			"symbol": "przUSDC.e",
+			"displayName": "Prize USDC.e - Yearn USDC.e-1",
+			"displaySymbol": "przUSDC.e",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x723A85b4554d79ED20E061EfC64c5a6e04f196AA/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x724dc807b04555b71ed48a6896b6f41593b8c637": {
 			"address": "0x724dc807b04555b71ed48a6896b6f41593b8c637",
 			"underlyingTokensAddresses": [
@@ -4105,6 +4137,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x7fD798ED77368E787E216DfDb5Be5F6CAe4C5aD5/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x801c26fcfd916719631e0cf7d36ca1e049df0373": {
+			"address": "0x801c26fcfd916719631e0cf7d36ca1e049df0373",
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
+			"type": "Yearn Vault",
+			"name": "Prize USDT - Yearn USDT-1",
+			"symbol": "przUSDT",
+			"displayName": "Prize USDT - Yearn USDT-1",
+			"displaySymbol": "przUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x801c26fCfD916719631E0cf7D36ca1e049DF0373/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x8036762bcc01704949e8995eb6c7c85aca155e20": {
@@ -5857,6 +5905,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xB7337f35dAFf97781F5C6D5BEA396d2327f70017/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2": {
+			"address": "0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2",
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
+			"type": "Yearn Vault",
+			"name": "Silo Lender ARB/USDC.e",
+			"symbol": "ysUSDC",
+			"displayName": "Silo Lender ARB/USDC.e",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xb739AE19620f7ECB4fb84727f205453aa5bc1AD2/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xb766039cc6db368759c1e56b79affe831d0cc507": {

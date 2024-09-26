@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-09-24T17:17:09.662968+02:00",
+	"lastUpdate": "2024-09-26T20:05:01.615938+02:00",
 	"version": {
-		"major": 7,
+		"major": 11,
 		"minor": 0,
-		"patch": 62
+		"patch": 63
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -70,7 +70,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -137,7 +138,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -156,11 +158,11 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
-				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
-				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9"
+				"0x3ce71021cca8a2902764a43c60ff5f8a312245f9",
+				"0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6"
 			],
-			"lastPricePerShare": "1062508822043852556",
-			"lastTotalAssets": "872018134756466049281",
+			"lastPricePerShare": "1062592835082522617",
+			"lastTotalAssets": "869970554738544680491",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -205,7 +207,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -269,7 +272,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -333,7 +337,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -401,7 +406,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -465,7 +471,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -529,7 +536,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -551,8 +559,8 @@
 				"0x48bf6f6f1cccbf22d3dcb7cda68fa14ba55b78f2",
 				"0xc21a609c0fce6c97332f5f63996525d15b7e0cf4"
 			],
-			"lastPricePerShare": "1003628247702882757",
-			"lastTotalAssets": "610815751126955868167",
+			"lastPricePerShare": "1003872482265519602",
+			"lastTotalAssets": "339921423007264662466",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -575,7 +583,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum&sourceChain=arbitrum-one). Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
+				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum\u0026sourceChain=arbitrum-one). Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -597,7 +605,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -661,7 +670,8 @@
 					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 4,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 4
+					"externalProtocolType": 4,
+					"comment": ""
 				}
 			}
 		},
@@ -729,7 +739,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -793,7 +804,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -811,8 +823,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1490340",
-			"lastTotalAssets": "4987456662",
+			"lastPricePerShare": "1490728",
+			"lastTotalAssets": "4989765362",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -857,7 +869,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -926,7 +939,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -945,11 +959,11 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
-				"0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168",
-				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879"
+				"0x3518ffff84e40229d9925afd57a6f4bdf1fa5879",
+				"0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168"
 			],
-			"lastPricePerShare": "1003428785371217890",
-			"lastTotalAssets": "546278602686806948762",
+			"lastPricePerShare": "1003754763639936681",
+			"lastTotalAssets": "450326260680709062971",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -994,7 +1008,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -1059,7 +1074,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1127,7 +1143,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1195,7 +1212,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -1259,7 +1277,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1328,7 +1347,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1393,7 +1413,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1416,7 +1437,7 @@
 				"0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6"
 			],
 			"lastPricePerShare": "1008579658809951381",
-			"lastTotalAssets": "1337230215480289175478653",
+			"lastTotalAssets": "1160468577729414408342660",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1461,7 +1482,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -1525,7 +1547,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1543,8 +1566,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001354853770751977",
-			"lastTotalAssets": "63127643115375707429752",
+			"lastPricePerShare": "1001394199563956565",
+			"lastTotalAssets": "61770951506842965501838",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1589,7 +1612,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1608,7 +1632,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "28067116762632537332",
-			"lastTotalAssets": "239934551831",
+			"lastTotalAssets": "869970554978479232308",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1653,7 +1677,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1672,7 +1697,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "1945217",
+			"lastTotalAssets": "2165901",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1717,7 +1742,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -1781,7 +1807,73 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x482cc95bc6c92d6254529dc2d45095663ae726a2": {
+			"address": "0x482cc95bc6c92d6254529dc2d45095663ae726a2",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "3.0.2",
+			"activation": 223522463,
+			"chainID": 42161,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "100000",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x482cc95bc6c92d6254529dc2d45095663ae726a2",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1850,7 +1942,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1868,8 +1961,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1966498",
-			"lastTotalAssets": "19531331438",
+			"lastPricePerShare": "1966860",
+			"lastTotalAssets": "21732791415",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1914,7 +2007,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -1978,7 +2072,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -1996,8 +2091,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1201746",
-			"lastTotalAssets": "3836382",
+			"lastPricePerShare": "1201747",
+			"lastTotalAssets": "3836395",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2042,7 +2137,8 @@
 					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 2,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 4
+					"externalProtocolType": 4,
+					"comment": ""
 				}
 			}
 		},
@@ -2106,7 +2202,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2175,7 +2272,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2239,7 +2337,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2261,8 +2360,8 @@
 				"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
 				"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b"
 			],
-			"lastPricePerShare": "1036468",
-			"lastTotalAssets": "43688802282",
+			"lastPricePerShare": "1036632",
+			"lastTotalAssets": "46102612486",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2307,7 +2406,73 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x723a85b4554d79ed20e061efc64c5a6e04f196aa": {
+			"address": "0x723a85b4554d79ed20e061efc64c5a6e04f196aa",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "3.0.2",
+			"activation": 223522463,
+			"chainID": 42161,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "100000",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x723a85b4554d79ed20e061efc64c5a6e04f196aa",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2328,8 +2493,8 @@
 			"lastActiveStrategies": [
 				"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905"
 			],
-			"lastPricePerShare": "1001173568073163280",
-			"lastTotalAssets": "63114610154450053660908",
+			"lastPricePerShare": "1001214676487813988",
+			"lastTotalAssets": "61745307078129106192720",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2374,7 +2539,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2441,7 +2607,73 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x801c26fcfd916719631e0cf7d36ca1e049df0373": {
+			"address": "0x801c26fcfd916719631e0cf7d36ca1e049df0373",
+			"token": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Automated Yearn Vault",
+			"kind": "Legacy",
+			"version": "3.0.1",
+			"activation": 183112450,
+			"chainID": 42161,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "100000",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": true,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x801c26fcfd916719631e0cf7d36ca1e049df0373",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2459,8 +2691,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1146093",
-			"lastTotalAssets": "317821358",
+			"lastPricePerShare": "1146265",
+			"lastTotalAssets": "317923631",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2505,7 +2737,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -2569,7 +2802,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2633,7 +2867,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2697,7 +2932,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2764,7 +3000,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2829,7 +3066,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2896,7 +3134,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2917,10 +3156,11 @@
 			"lastActiveStrategies": [
 				"0xda3b69a45797dca697ff5bb2c10682f14373c063",
 				"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
-				"0xe82d060687c014b280b65df24acd94a77251c784"
+				"0xe82d060687c014b280b65df24acd94a77251c784",
+				"0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2"
 			],
-			"lastPricePerShare": "1007912",
-			"lastTotalAssets": "360588103273",
+			"lastPricePerShare": "1008285",
+			"lastTotalAssets": "346113619538",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2965,7 +3205,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -2983,8 +3224,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004654",
-			"lastTotalAssets": "152294611997",
+			"lastPricePerShare": "1005597",
+			"lastTotalAssets": "14011750237",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3029,7 +3270,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3094,7 +3336,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3161,7 +3404,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -3225,7 +3469,73 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2": {
+			"address": "0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2",
+			"token": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+			"registry": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 256920936,
+			"chainID": 42161,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000056",
+			"lastTotalAssets": "195082782924",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3248,8 +3558,8 @@
 				"0x5108db0852c0caa2df797dcf31f8a73bfb335452",
 				"0x45aceaa535830c921316085e355e4a32385e53f2"
 			],
-			"lastPricePerShare": "1032100",
-			"lastTotalAssets": "19452179967",
+			"lastPricePerShare": "1032279",
+			"lastTotalAssets": "21659011669",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3294,7 +3604,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3361,7 +3672,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": ""
 				}
 			}
 		},
@@ -3379,8 +3691,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1130769",
-			"lastTotalAssets": "192414647509",
+			"lastPricePerShare": "1131043",
+			"lastTotalAssets": "194919120220",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3425,7 +3737,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -3489,7 +3802,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3556,7 +3870,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3574,8 +3889,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "22295073",
-			"lastTotalAssets": "3464208421",
+			"lastPricePerShare": "22298934",
+			"lastTotalAssets": "3467478941",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3620,7 +3935,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 1,
-					"externalProtocolType": 1
+					"externalProtocolType": 1,
+					"comment": ""
 				}
 			}
 		},
@@ -3642,8 +3958,8 @@
 				"0x85968bf0f1f110c707fef10a59f80118f349c058",
 				"0x1bd173f9a1186a1abe680071e0f57d4d83c18430"
 			],
-			"lastPricePerShare": "1055541",
-			"lastTotalAssets": "2327175978",
+			"lastPricePerShare": "1056263",
+			"lastTotalAssets": "1768405899",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3688,7 +4004,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3752,7 +4069,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3770,8 +4088,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1004522",
-			"lastTotalAssets": "216416615212",
+			"lastPricePerShare": "1005495",
+			"lastTotalAssets": "145219470475",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3816,7 +4134,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3884,7 +4203,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -3952,7 +4272,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -4020,7 +4341,8 @@
 					"externalProtocolCentralisation": 0,
 					"externalProtocolTvl": 0,
 					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		}

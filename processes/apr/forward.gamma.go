@@ -30,10 +30,10 @@ func isGammaVault(chainID uint64, vault models.TVault) bool {
 /**************************************************************************************************
 ** For a given gamma strategy, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func calculateGammaStrategyAPR(
+func calculateGammaStrategyAPY(
 	vault models.TVault,
 	strategy models.TStrategy,
-) TStrategyAPR {
+) (*bigNumber.Float, *bigNumber.Float) {
 	if _, ok := storage.GetCachedGammaMerkl(vault.ChainID); !ok {
 		storage.RefreshGammaCalls(vault.ChainID)
 	}
@@ -44,23 +44,13 @@ func calculateGammaStrategyAPR(
 	oneMinusPerfFee := bigNumber.NewFloat(0).Sub(bigNumber.NewFloat(1), vaultPerformanceFee)
 
 	if _, ok := storage.GetCachedGammaMerkl(vault.ChainID); !ok {
-		return TStrategyAPR{
-			Type:      `gamma`,
-			DebtRatio: debtRatio,
-			NetAPR:    bigNumber.NewFloat(0),
-			Composite: TCompositeData{},
-		}
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 
 	gammaAllData, _ := storage.GetCachedGammaAllData(vault.ChainID)
 	data, ok := gammaAllData[vault.AssetAddress.Hex()]
 	if !ok {
-		return TStrategyAPR{
-			Type:      `gamma`,
-			DebtRatio: debtRatio,
-			NetAPR:    bigNumber.NewFloat(0),
-			Composite: TCompositeData{},
-		}
+		return bigNumber.NewFloat(0), bigNumber.NewFloat(0)
 	}
 	grossAPR := bigNumber.NewFloat(data.Returns.Monthly.APR)
 	netAPR := bigNumber.NewFloat(0).Mul(grossAPR, oneMinusPerfFee) // grossAPR * (1 - perfFee)
@@ -70,47 +60,47 @@ func calculateGammaStrategyAPR(
 		netAPR = bigNumber.NewFloat(0)
 	}
 
-	return TStrategyAPR{
-		Type:      `gamma`,
-		DebtRatio: debtRatio,
-		NetAPR:    netAPR,
-		Composite: TCompositeData{},
-	}
+	/**********************************************************************************************
+	** Calculate the strategy Net APY:
+	** Take the net APR and compound it every 15 days
+	**********************************************************************************************/
+	const daysInYear = 365
+	const compoundingPeriod = 15
+	const compoundingPeriodsPerYear = daysInYear / compoundingPeriod
+
+	netAPY := bigNumber.NewFloat(0).Div(netAPR, bigNumber.NewFloat(compoundingPeriodsPerYear)) // netAPR / (365 / 15)
+	netAPY = bigNumber.NewFloat(0).Add(netAPY, bigNumber.NewFloat(1))                          // 1 + (netAPR / (365 / 15))
+	netAPY = bigNumber.NewFloat(0).Pow(netAPY, compoundingPeriodsPerYear)                      // (1 + (netAPR / (365 / 15))) ^ (365 / 15)
+	netAPY = bigNumber.NewFloat(0).Sub(netAPY, bigNumber.NewFloat(1))                          // ((1 + (netAPR / (365 / 15))) ^ (365 / 15)) - 1
+
+	return bigNumber.NewFloat(0).Mul(netAPR, debtRatio), bigNumber.NewFloat(0).Mul(netAPY, debtRatio)
 }
 
 /**************************************************************************************************
 ** For a given gamma vault, we will calculate the APR based on the cached data we have.
 **************************************************************************************************/
-func computeGammaForwardAPR(
+func computeGammaForwardAPY(
 	vault models.TVault,
 	allStrategiesForVault map[string]models.TStrategy,
-) TForwardAPR {
+) TForwardAPY {
 	TypeOf := ``
-	NetAPR := bigNumber.NewFloat(0)
-	Boost := bigNumber.NewFloat(0)
-	PoolAPY := bigNumber.NewFloat(0)
-	BoostedAPR := bigNumber.NewFloat(0)
-	BaseAPR := bigNumber.NewFloat(0)
-	CvxAPR := bigNumber.NewFloat(0)
-	RewardsAPR := bigNumber.NewFloat(0)
-	KeepCRV := bigNumber.NewFloat(0)
-	KeepVelo := bigNumber.NewFloat(0)
+	netAPY := bigNumber.NewFloat(0)
+	boost := bigNumber.NewFloat(0)
+	poolAPY := bigNumber.NewFloat(0)
+	boostedAPR := bigNumber.NewFloat(0)
+	baseAPR := bigNumber.NewFloat(0)
+	cvxAPR := bigNumber.NewFloat(0)
+	rewardsAPY := bigNumber.NewFloat(0)
+	keepCRV := bigNumber.NewFloat(0)
+	keepVelo := bigNumber.NewFloat(0)
 
 	if len(allStrategiesForVault) == 0 {
 		vaultAsStrategy := models.TStrategy{
 			LastDebtRatio: bigNumber.NewUint64(10000),
 		}
-		strategyAPR := calculateGammaStrategyAPR(vault, vaultAsStrategy)
-		TypeOf = strategyAPR.Type
-		NetAPR = strategyAPR.NetAPR
-		Boost = strategyAPR.Composite.Boost
-		PoolAPY = strategyAPR.Composite.PoolAPY
-		BoostedAPR = strategyAPR.Composite.BoostedAPR
-		BaseAPR = strategyAPR.Composite.BaseAPR
-		CvxAPR = strategyAPR.Composite.CvxAPR
-		RewardsAPR = strategyAPR.Composite.RewardsAPR
-		KeepCRV = strategyAPR.Composite.KeepCRV
-		KeepVelo = strategyAPR.Composite.KeepVelo
+		_, strategyAPY := calculateGammaStrategyAPY(vault, vaultAsStrategy)
+		TypeOf = `gamma`
+		netAPY = strategyAPY
 	} else {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
@@ -120,32 +110,24 @@ func computeGammaForwardAPR(
 				continue
 			}
 
-			strategyAPR := calculateGammaStrategyAPR(vault, strategy)
-			TypeOf += strings.TrimSpace(` ` + strategyAPR.Type)
-			NetAPR = bigNumber.NewFloat(0).Add(NetAPR, strategyAPR.NetAPR)
-			Boost = bigNumber.NewFloat(0).Add(Boost, strategyAPR.Composite.Boost)
-			PoolAPY = bigNumber.NewFloat(0).Add(PoolAPY, strategyAPR.Composite.PoolAPY)
-			BoostedAPR = bigNumber.NewFloat(0).Add(BoostedAPR, strategyAPR.Composite.BoostedAPR)
-			BaseAPR = bigNumber.NewFloat(0).Add(BaseAPR, strategyAPR.Composite.BaseAPR)
-			CvxAPR = bigNumber.NewFloat(0).Add(CvxAPR, strategyAPR.Composite.CvxAPR)
-			RewardsAPR = bigNumber.NewFloat(0).Add(RewardsAPR, strategyAPR.Composite.RewardsAPR)
-			KeepCRV = bigNumber.NewFloat(0).Add(KeepCRV, strategyAPR.Composite.KeepCRV)
-			KeepVelo = bigNumber.NewFloat(0).Add(KeepVelo, strategyAPR.Composite.KeepVelo)
+			_, strategyAPY := calculateGammaStrategyAPY(vault, strategy)
+			TypeOf += strings.TrimSpace(` ` + `gamma`)
+			netAPY = bigNumber.NewFloat(0).Add(netAPY, strategyAPY)
 		}
 	}
 
-	return TForwardAPR{
+	return TForwardAPY{
 		Type:   strings.TrimSpace(TypeOf),
-		NetAPR: NetAPR,
+		NetAPY: netAPY,
 		Composite: TCompositeData{
-			Boost:      Boost,
-			PoolAPY:    PoolAPY,
-			BoostedAPR: BoostedAPR,
-			BaseAPR:    BaseAPR,
-			CvxAPR:     CvxAPR,
-			RewardsAPR: RewardsAPR,
-			KeepCRV:    KeepCRV,
-			KeepVelo:   KeepVelo,
+			Boost:      boost,
+			PoolAPY:    poolAPY,
+			BoostedAPR: boostedAPR,
+			BaseAPR:    baseAPR,
+			CvxAPR:     cvxAPR,
+			RewardsAPY: rewardsAPY,
+			KeepCRV:    keepCRV,
+			KeepVelo:   keepVelo,
 		},
 	}
 }

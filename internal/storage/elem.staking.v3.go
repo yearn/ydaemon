@@ -58,10 +58,10 @@ func GetV3StakingDataForVault(chainID uint64, vault common.Address) (TStakingDat
 }
 
 /**************************************************************************************************
-** AssignV3StakingRewardAPR will update an entry in the _v3StakingSyncMap syncMap to assign the
+** AssignV3StakingRewardAPY will update an entry in the _v3StakingSyncMap syncMap to assign the
 ** APR to the staking pool.
 **************************************************************************************************/
-func AssignV3StakingRewardAPR(chainID uint64, vault common.Address, rewardToken common.Address, apr *bigNumber.Float) {
+func AssignV3StakingRewardAPY(chainID uint64, vault common.Address, rewardToken common.Address, apy *bigNumber.Float) {
 	/**********************************************************************************************
 	** We can just iterate over the syncMap until we find the stakingContract for the vault.
 	**********************************************************************************************/
@@ -70,7 +70,7 @@ func AssignV3StakingRewardAPR(chainID uint64, vault common.Address, rewardToken 
 		if addresses.Equals(stakingElement.VaultAddress, vault) {
 			for i, reward := range stakingElement.RewardTokens {
 				if addresses.Equals(reward.Address, rewardToken) {
-					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apr)
+					stakingElement.RewardTokens[i].APR = bigNumber.NewFloat().Clone(apy)
 					safeSyncMap(_v3StakingSyncMap, chainID).Store(key, stakingElement)
 					return false
 				}

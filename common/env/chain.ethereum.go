@@ -115,7 +115,28 @@ var ETHEREUM = TChain{
 			Tag:     `V3 STAKING`,
 		},
 	},
-	ExtraVaults: []models.TVaultsFromRegistry{},
+	ExtraVaults: []models.TVaultsFromRegistry{
+		{
+			// PoolTogether Vault
+			ChainID:         1,
+			Address:         common.HexToAddress(`0x3A49f5a6A8aF9B2103D882278193112Cf9F73a25`),
+			RegistryAddress: common.HexToAddress(`0xff31a1b020c868f6ea3f61eb953344920eeca3af`),
+			TokenAddress:    common.HexToAddress(`0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     19419991,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+		{
+			// PoolTogether Vault
+			ChainID:         1,
+			Address:         common.HexToAddress(`0x4147cB38FAe27a737ECd55551d3315fEc11c28d2`),
+			RegistryAddress: common.HexToAddress(`0xff31a1b020c868f6ea3f61eb953344920eeca3af`),
+			TokenAddress:    common.HexToAddress(`0x6b175474e89094c44da98b954eedeac495271d0f`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     19419991,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress("0xd1b0b6a1093a097227dc117c87ae3a72d9bd7cf2"), // uniETH pool
 		common.HexToAddress("0x662fBF2c1E4b04342EeBA6371ec1C7420042B86F"), // Test deployment - Nothing

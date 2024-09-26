@@ -85,6 +85,36 @@ var ARBITRUM = TChain{
 			BlockNumber:     195564702,
 			Type:            models.TokenTypeAutomatedVault,
 		},
+		{
+			//PoolTogether
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x723a85b4554d79ed20e061efc64c5a6e04f196aa`),
+			RegistryAddress: common.HexToAddress(`0xff31a1b020c868f6ea3f61eb953344920eeca3af`),
+			TokenAddress:    common.HexToAddress(`0xff970a61a04b1ca14834a43f5de4533ebddb5cc8`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     223522463,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+		{
+			//PoolTogether
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x801c26fcfd916719631e0cf7d36ca1e049df0373`),
+			RegistryAddress: common.HexToAddress(`0xff31a1b020c868f6ea3f61eb953344920eeca3af`),
+			TokenAddress:    common.HexToAddress(`0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9`),
+			APIVersion:      `3.0.1`,
+			BlockNumber:     183112450,
+			Type:            models.TokenTypeAutomatedVault,
+		},
+		{
+			//PoolTogether
+			ChainID:         42161,
+			Address:         common.HexToAddress(`0x482cc95bc6c92d6254529dc2d45095663ae726a2`),
+			RegistryAddress: common.HexToAddress(`0xff31a1b020c868f6ea3f61eb953344920eeca3af`),
+			TokenAddress:    common.HexToAddress(`0xff970a61a04b1ca14834a43f5de4533ebddb5cc8`),
+			APIVersion:      `3.0.2`,
+			BlockNumber:     223522463,
+			Type:            models.TokenTypeAutomatedVault,
+		},
 	},
 	BlacklistedVaults: []common.Address{
 		common.HexToAddress(`0x5796698A29F3626c9FE13C4d3d3dEE987c84EBB3`), // Test deployment - Nothing

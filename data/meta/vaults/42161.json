@@ -193,7 +193,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -205,7 +205,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -389,7 +390,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -401,7 +402,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -585,19 +587,20 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0
+					"review": 1,
+					"testing": 1,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -982,7 +985,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -994,7 +997,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -1183,7 +1187,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -1195,7 +1199,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -1449,7 +1454,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -1461,7 +1466,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -3149,7 +3155,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -3161,7 +3167,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},
@@ -3349,7 +3356,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": true
 				},
-				"riskLevel": 1,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
 					"testing": 1,
@@ -3361,7 +3368,8 @@
 					"externalProtocolCentralisation": 1,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
-					"externalProtocolType": 2
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
 				}
 			}
 		},

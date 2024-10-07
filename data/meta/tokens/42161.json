@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-26T20:04:48.287957+02:00",
+	"lastUpdate": "2024-10-07T14:20:43.264926+02:00",
 	"version": {
 		"major": 0,
-		"minor": 30,
+		"minor": 31,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1777,6 +1777,20 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0x2ea0be86990e8dac0d09e4316bb92086f304622d": {
+			"address": "0x2ea0be86990e8dac0d09e4316bb92086f304622d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "The Standard USD",
+			"symbol": "USDs",
+			"displayName": "The Standard USD",
+			"displaySymbol": "USDs",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2Ea0bE86990E8Dac0D09e4316Bb92086F304622d/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2ec7fa7a87eba241636b2c03ba287ac3897601fc": {
 			"address": "0x2ec7fa7a87eba241636b2c03ba287ac3897601fc",
 			"underlyingTokensAddresses": [
@@ -2926,6 +2940,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x5429706887FCb58a595677B73E9B0441C25d993D/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x547a116a2622876ce1c8d19d41c683c8f7bec5c0": {
+			"address": "0x547a116a2622876ce1c8d19d41c683c8f7bec5c0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xUSDs-USDC3",
+			"symbol": "xUSDs-USDC3",
+			"displayName": "xUSDs-USDC3",
+			"displaySymbol": "xUSDs-USDC3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x547A116a2622876cE1C8d19d41c683C8f7BeC5c0/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

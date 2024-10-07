@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-09-26T20:04:51.991062+02:00",
+	"lastUpdate": "2024-10-07T14:20:52.91494+02:00",
 	"version": {
 		"major": 0,
-		"minor": 64,
+		"minor": 65,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -3229,6 +3229,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1E2391a261217c93D09Ff3Ae9aB1903EA237BdA8/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1e30afeb27c0544f335f8aa21e0a9599c273823a": {
+			"address": "0x1e30afeb27c0544f335f8aa21e0a9599c273823a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Lombard LBTC 27MAR2025",
+			"symbol": "YT-LBTC-27MAR2025",
+			"displayName": "YT Lombard LBTC 27MAR2025",
+			"displaySymbol": "YT-LBTC-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1e30afeB27C0544F335f8aa21e0A9599c273823A/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0x1e3d13932c31d7355fcb3fec680b0cd159dc1a07": {
@@ -9487,6 +9501,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x57e9ebeb30852d31f99a08e39068d93b0d8fc917": {
+			"address": "0x57e9ebeb30852d31f99a08e39068d93b0d8fc917",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Compound",
+			"name": "Principal Token: sw-ynETH-1735516827",
+			"symbol": "PT-sw-ynETH-1735516827",
+			"displayName": "Principal Token: sw-ynETH-1735516827",
+			"displaySymbol": "PT-sw-ynETH-1735516827",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x57E9EBeB30852D31f99A08E39068d93b0D8FC917/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x57fc2d9809f777cd5c8c433442264b6e8be7fce4": {
 			"address": "0x57fc2d9809f777cd5c8c433442264b6e8be7fce4",
 			"underlyingTokensAddresses": [
@@ -11882,6 +11912,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6e0dccf49d095f8ea8920a8af03d236fa167b7e0": {
+			"address": "0x6e0dccf49d095f8ea8920a8af03d236fa167b7e0",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Spectra ERC4626 Wrapper: ynETH",
+			"symbol": "sw-ynETH",
+			"displayName": "Spectra ERC4626 Wrapper: ynETH",
+			"displaySymbol": "sw-ynETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6e0dccf49D095F8ea8920A8aF03D236FA167B7E0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6e0e681441be6cb1d8405752462488bd4d691e3a": {
 			"address": "0x6e0e681441be6cb1d8405752462488bd4d691e3a",
 			"underlyingTokensAddresses": [
@@ -12110,6 +12156,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x70568ada62b82282b030c220ad96bebc4e57fadb": {
+			"address": "0x70568ada62b82282b030c220ad96bebc4e57fadb",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho USDC aggregator",
+			"symbol": "Morpho-USDC-agg",
+			"displayName": "Morpho USDC aggregator",
+			"displaySymbol": "Morpho-USDC-agg",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x70568adA62b82282B030c220Ad96BebC4e57fADb/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x705b3acaf102404cfdd5e4a60535e4e70091273c": {
 			"address": "0x705b3acaf102404cfdd5e4a60535e4e70091273c",
 			"underlyingTokensAddresses": [],
@@ -12153,6 +12215,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x708d1A6FDF342D53F4d006aa9B85e223c68a0Edb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x70b70ac0445c3ef04e314dfda6caafd825428221": {
+			"address": "0x70b70ac0445c3ef04e314dfda6caafd825428221",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x70B70Ac0445C3eF04E314DFdA6caafd825428221/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14412,6 +14488,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x87898bf3197e6713397a83c9ac0e04481c33f441": {
+			"address": "0x87898bf3197e6713397a83c9ac0e04481c33f441",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "mock stcrvUSD",
+			"symbol": "mock stcrvUSD",
+			"displayName": "mock stcrvUSD",
+			"displaySymbol": "mock stcrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x87898Bf3197e6713397A83C9AC0e04481C33F441/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x87baf4b42c075db7eb1932a0a49a5465e9a5ce9f": {
 			"address": "0x87baf4b42c075db7eb1932a0a49a5465e9a5ce9f",
 			"underlyingTokensAddresses": [],
@@ -14723,6 +14815,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8bb08042c06FA0Fc26cd2474C5F0C03a1056Ad2F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8be3460a480c80728a8c4d7a5d5303c85ba7b3b9": {
+			"address": "0x8be3460a480c80728a8c4d7a5d5303c85ba7b3b9",
+			"underlyingTokensAddresses": [
+				"0x57e114b691db790c35207b2e685d4a43181e6061"
+			],
+			"type": "Yearn Vault",
+			"name": "Staked ENA",
+			"symbol": "sENA",
+			"displayName": "Staked ENA",
+			"displaySymbol": "sENA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8bE3460A480c80728a8C4D7a5D5303c85ba7B3b9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21458,6 +21566,20 @@
 			"decimals": 5,
 			"chainID": 1
 		},
+		"0xc781c0cc527cb8c351be3a64c690216c535c6f36": {
+			"address": "0xc781c0cc527cb8c351be3a64c690216c535c6f36",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Lombard LBTC",
+			"symbol": "SY-LBTC",
+			"displayName": "SY Lombard LBTC",
+			"displaySymbol": "SY-LBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC781c0cC527CB8C351bE3A64c690216c535C6F36/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xc794c6a95f30d0ebf7b3bbe85e8a0a95c9e411c1": {
 			"address": "0xc794c6a95f30d0ebf7b3bbe85e8a0a95c9e411c1",
 			"underlyingTokensAddresses": [
@@ -21995,6 +22117,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xCb9f85730f57732fc899fb158164b9Ed60c77D49/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
+			"address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Coinbase Wrapped BTC",
+			"symbol": "cbBTC",
+			"displayName": "Coinbase Wrapped BTC",
+			"displaySymbol": "cbBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xcbc72d92b2dc8187414f6734718563898740c0bc": {
@@ -25434,6 +25570,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xec48E0b9579062770888AaF900d054A1bC10A3Bf/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xec5a52c685cc3ad79a6a347abace330d69e0b1ed": {
+			"address": "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Lombard LBTC 27MAR2025",
+			"symbol": "PT-LBTC-27MAR2025",
+			"displayName": "PT Lombard LBTC 27MAR2025",
+			"displaySymbol": "PT-LBTC-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEc5a52C685CC3Ad79a6a347aBACe330d69e0b1eD/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xecd5e75afb02efa118af914515d6521aabd189f1": {

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-07T14:20:52.91494+02:00",
+	"lastUpdate": "2024-10-08T17:53:15.730843+02:00",
 	"version": {
 		"major": 0,
-		"minor": 65,
+		"minor": 66,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1554,6 +1554,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x0e7e6cb2eda4f298e5b4ef675405bd0dd37a1933": {
+			"address": "0x0e7e6cb2eda4f298e5b4ef675405bd0dd37a1933",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staking USDS 27MAR2025",
+			"symbol": "YT-staking-USDS-27MAR2025",
+			"displayName": "YT Staking USDS 27MAR2025",
+			"displaySymbol": "YT-staking-USDS-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x0e7e6Cb2eDA4F298E5b4Ef675405bD0dD37A1933/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x0e880118c29f095143dda28e64d95333a9e75a47": {
 			"address": "0x0e880118c29f095143dda28e64d95333a9e75a47",
 			"underlyingTokensAddresses": [
@@ -2499,6 +2513,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x18084fbA666a33d37592fA2633fD49a74DD93a88/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x182863131f9a4630ff9e27830d945b1413e347e8": {
+			"address": "0x182863131f9a4630ff9e27830d945b1413e347e8",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS-1 yVault",
+			"symbol": "yvUSDS-1",
+			"displayName": "USDS-1 yVault",
+			"displaySymbol": "yvUSDS-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x182863131F9a4630fF9E27830d945B1413e347E8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4131,6 +4161,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x270d664d2Fc7D962012a787Aec8661CA83DF24EB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x276dc1714bdb1beb869babc6e84c0b102e75bf32": {
+			"address": "0x276dc1714bdb1beb869babc6e84c0b102e75bf32",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staking USDS 27MAR2025",
+			"symbol": "PT-staking-USDS-27MAR2025",
+			"displayName": "PT Staking USDS 27MAR2025",
+			"displaySymbol": "PT-staking-USDS-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x276dc1714bDB1beB869BAbC6e84c0b102E75bf32/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9337,6 +9381,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x56072c95faa701256059aa122697b133aded9279": {
+			"address": "0x56072c95faa701256059aa122697b133aded9279",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SKY Governance Token",
+			"symbol": "SKY",
+			"displayName": "SKY Governance Token",
+			"displaySymbol": "SKY",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x56072C95FAA701256059aa122697B133aDEd9279/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x564f7b5d8389f5c4c99e50fed5fc95070e697903": {
 			"address": "0x564f7b5d8389f5c4c99e50fed5fc95070e697903",
 			"underlyingTokensAddresses": [
@@ -14059,6 +14117,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x832c30802054f60f0cedb5be1f9a0e3da2a0cab4": {
+			"address": "0x832c30802054f60f0cedb5be1f9a0e3da2a0cab4",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDS Lender",
+			"symbol": "ysUSDS",
+			"displayName": "Aave V3 USDS Lender",
+			"displaySymbol": "ysUSDS",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x832c30802054F60f0CeDb5BE1F9A0e3da2a0Cab4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x836a808d4828586a69364065a1e064609f5078c7": {
 			"address": "0x836a808d4828586a69364065a1e064609f5078c7",
 			"underlyingTokensAddresses": [],
@@ -15377,6 +15451,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x90759801579208b28d2d36d13b1ed7443d1b717f": {
+			"address": "0x90759801579208b28d2d36d13b1ed7443d1b717f",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 WETH Lender",
+			"symbol": "ysWETH",
+			"displayName": "Aave V3 WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x90759801579208B28D2D36D13b1ED7443D1b717F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x90c98ab215498b72abfec04c651e2e496ba364c0": {
 			"address": "0x90c98ab215498b72abfec04c651e2e496ba364c0",
 			"underlyingTokensAddresses": [],
@@ -16089,6 +16179,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x9777d7E2b60bB01759D0E2f8be2095df444cb07E/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x977ebf77581f94de969349549ab2108a681e8f4c": {
+			"address": "0x977ebf77581f94de969349549ab2108a681e8f4c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x977ebf77581f94De969349549Ab2108a681E8f4C/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x9784ded306e42c0b8130f668e9b7533faa72e65d": {
@@ -18680,6 +18784,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb0154f71912866bb69fe26ffc44779d99b9cae85": {
+			"address": "0xb0154f71912866bb69fe26ffc44779d99b9cae85",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 crvUSD Lender",
+			"symbol": "yscrvUSD",
+			"displayName": "Aave V3 crvUSD Lender",
+			"displaySymbol": "yscrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb0154f71912866Bb69fE26fFc44779D99B9CAE85/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb05097849bca421a3f51b249ba6cca4af4b97cb9": {
 			"address": "0xb05097849bca421a3f51b249ba6cca4af4b97cb9",
 			"underlyingTokensAddresses": [],
@@ -20761,6 +20881,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xc08d81aba10f2dcba50f9a3efbc0988439223978": {
+			"address": "0xc08d81aba10f2dcba50f9a3efbc0988439223978",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 Lido USDS Lender",
+			"symbol": "ysUSDS",
+			"displayName": "Aave V3 Lido USDS Lender",
+			"displaySymbol": "ysUSDS",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC08d81aba10f2dcBA50F9A3Efbc0988439223978/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc0c293ce456ff0ed870add98a0828dd4d2903dbf": {
 			"address": "0xc0c293ce456ff0ed870add98a0828dd4d2903dbf",
 			"underlyingTokensAddresses": [],
@@ -21594,6 +21730,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains hyUSD and eUSD. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xc794C6A95f30d0ebF7B3Bbe85e8a0A95C9e411c1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc7bae383738274ea8c3292d53afbb3b42b348df0": {
+			"address": "0xc7bae383738274ea8c3292d53afbb3b42b348df0",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 Lido WETH Lender",
+			"symbol": "ysWETH",
+			"displayName": "Aave V3 Lido WETH Lender",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC7baE383738274ea8C3292d53AfBB3b42B348DF0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23752,6 +23904,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdb01707567cf99c2e2215f1bd8ca567d998415de": {
+			"address": "0xdb01707567cf99c2e2215f1bd8ca567d998415de",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Staking USDS",
+			"symbol": "SY-staking-USDS",
+			"displayName": "SY Staking USDS",
+			"displaySymbol": "SY-staking-USDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDb01707567Cf99C2E2215f1BD8Ca567D998415dE/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdb25ca703181e7484a155dd612b06f57e12be5f0": {
 			"address": "0xdb25ca703181e7484a155dd612b06f57e12be5f0",
 			"underlyingTokensAddresses": [
@@ -23911,6 +24077,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdc02b77a3986da62C7A78FED73949C9767850809/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xdc035d45d973e3ec169d2276ddab16f1e407384f": {
+			"address": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDS Stablecoin",
+			"symbol": "USDS",
+			"displayName": "USDS Stablecoin",
+			"displaySymbol": "USDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xdC035D45d973E3EC169d2276DDab16f1e407384F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24997,6 +25177,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe5baf8b6be442811211e9339d9fbc1b8fb7d66df": {
+			"address": "0xe5baf8b6be442811211e9339d9fbc1b8fb7d66df",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDT Lender",
+			"symbol": "ysUSDT",
+			"displayName": "Aave V3 USDT Lender",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe5baF8b6Be442811211e9339d9fbC1B8fb7D66dF/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xe5edce53e39cbc6d819e2c340bcf295e0084ff7c": {
 			"address": "0xe5edce53e39cbc6d819e2c340bcf295e0084ff7c",
 			"underlyingTokensAddresses": [
@@ -25965,6 +26161,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf0825750791a4444c5e70743270dcfa8bb38f959": {
+			"address": "0xf0825750791a4444c5e70743270dcfa8bb38f959",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 DAI Lender",
+			"symbol": "ysDAI",
+			"displayName": "Aave V3 DAI Lender",
+			"displaySymbol": "ysDAI",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xF0825750791A4444c5E70743270DcfA8Bb38f959/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf091867ec603a6628ed83d274e835539d82e9cc8": {
 			"address": "0xf091867ec603a6628ed83d274e835539d82e9cc8",
 			"underlyingTokensAddresses": [],
@@ -26740,6 +26952,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf70B3F1eA3BFc659FFb8b27E84FAE7Ef38b5bD3b/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf766c7293f4e0265ddfa8369f78a808df8ac70c1": {
+			"address": "0xf766c7293f4e0265ddfa8369f78a808df8ac70c1",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Aave V3 USDC Lender",
+			"symbol": "ysUSDC",
+			"displayName": "Aave V3 USDC Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf766c7293f4e0265dDfA8369F78a808dF8AC70c1/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf77205f5a1eeab54555b13b231fa5e4e0cf2fc1c": {

@@ -601,7 +601,10 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 		** After retrieving the highest block number we can proceed to index new vaults.
 		******************************************************************************************/
 		wg.Add(1)
-		go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
+		go filterNewVault(chainID, registry, highestBlockNumber, nil, &wg, false)
+
+		// Disable watching and use plain RPC call indexing
+		// go indexNewVaultsWrapper(chainID, registry, highestBlockNumber, &wg)
 	}
 	wg.Wait()
 

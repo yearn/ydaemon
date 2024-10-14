@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-08T17:53:15.730843+02:00",
+	"lastUpdate": "2024-10-14T10:34:15.081842+02:00",
 	"version": {
 		"major": 0,
-		"minor": 66,
+		"minor": 67,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -8020,6 +8020,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x487e1cef7805cf0225dec3dd0f3044fe0fb70611": {
+			"address": "0x487e1cef7805cf0225dec3dd0f3044fe0fb70611",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x487E1cEF7805CF0225deC3dD0f3044fe0fB70611/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x48ee2348991a6b345b170bf5e92e2e5a16cf1edd": {
 			"address": "0x48ee2348991a6b345b170bf5e92e2e5a16cf1edd",
 			"underlyingTokensAddresses": [],
@@ -10975,6 +10989,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This metapool contains sBTC-Crv (sBTC, WBTC, and renBTC) and tBTC, an ERC-20 supply-pegged to native BTC and overcollateralized with ETH.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x64eda51d3Ad40D56b9dFc5554E06F94e1Dd786Fd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x65265595b87d4206d0de02819d82bd33faca8648": {
+			"address": "0x65265595b87d4206d0de02819d82bd33faca8648",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked ENA 24APR2025",
+			"symbol": "YT-sENA-24APR2025",
+			"displayName": "YT Staked ENA 24APR2025",
+			"displaySymbol": "YT-sENA-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x65265595B87D4206D0dE02819d82bd33fAca8648/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14814,6 +14842,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8ac5fc4085f6baeabad8f4a6bb1dd7d18a320230": {
+			"address": "0x8ac5fc4085f6baeabad8f4a6bb1dd7d18a320230",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked ENA 24APR2025",
+			"symbol": "PT-sENA-24APR2025",
+			"displayName": "PT Staked ENA 24APR2025",
+			"displaySymbol": "PT-sENA-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8AC5Fc4085f6baeAbAd8f4A6bb1dd7d18a320230/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8ad5505bfe38692630a51f1a47ede66a8d2e8b13": {
 			"address": "0x8ad5505bfe38692630a51f1a47ede66a8d2e8b13",
 			"underlyingTokensAddresses": [
@@ -17388,6 +17430,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa36ecca8b7624d224f01cd6649c8afad3da12c3d": {
+			"address": "0xa36ecca8b7624d224f01cd6649c8afad3da12c3d",
+			"underlyingTokensAddresses": [
+				"0x57e114b691db790c35207b2e685d4a43181e6061"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Staked ENA",
+			"symbol": "SY-sENA",
+			"displayName": "SY Staked ENA",
+			"displaySymbol": "SY-sENA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xA36ECCA8B7624D224F01CD6649C8afAd3Da12C3D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2": {
 			"address": "0xa3bed4e1c75d00fa6f4e5e6922db7261b5e9acd2",
 			"underlyingTokensAddresses": [],
@@ -18695,6 +18753,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xAEda92e6A3B1028edc139A4ae56Ec881f3064D4F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xaef93396096dac384f34c5300fafb6f16ef79351": {
+			"address": "0xaef93396096dac384f34c5300fafb6f16ef79351",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked ENA 24APR2025",
+			"symbol": "YT-sENA-24APR2025",
+			"displayName": "YT Staked ENA 24APR2025",
+			"displaySymbol": "YT-sENA-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xaEF93396096dAC384F34c5300FaFB6f16Ef79351/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21597,6 +21669,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xc5F3D11580c41cD07104e9AF154Fc6428bb93c73/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc64056237c8107ecb9860cbd4519644e9ba2aed4": {
+			"address": "0xc64056237c8107ecb9860cbd4519644e9ba2aed4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc64056237C8107ECB9860CBd4519644E9ba2aeD4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24674,6 +24760,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe0e4d07e90508a53ad03155e86ecdd09d24ce98a": {
+			"address": "0xe0e4d07e90508a53ad03155e86ecdd09d24ce98a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked ENA 24APR2025",
+			"symbol": "PT-sENA-24APR2025",
+			"displayName": "PT Staked ENA 24APR2025",
+			"displaySymbol": "PT-sENA-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe0e4d07e90508a53aD03155e86ECDd09D24cE98a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe11ba472f74869176652c35d30db89854b5ae84d": {
 			"address": "0xe11ba472f74869176652c35d30db89854b5ae84d",
 			"underlyingTokensAddresses": [
@@ -26761,6 +26861,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF614d3864EF53510909a94c618a5EC1Ff75103BF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf6193c65cf3d1cedde0ff9d8cb9781ad21ec980f": {
+			"address": "0xf6193c65cf3d1cedde0ff9d8cb9781ad21ec980f",
+			"underlyingTokensAddresses": [
+				"0x57e114b691db790c35207b2e685d4a43181e6061"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Staked ENA",
+			"symbol": "SY-sENA",
+			"displayName": "SY Staked ENA",
+			"displaySymbol": "SY-sENA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf6193C65Cf3d1CeDDe0FF9d8Cb9781Ad21Ec980f/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

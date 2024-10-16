@@ -11820,7 +11820,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -11831,7 +11831,7 @@
 					"isPublicERC4626": true
 				},
 				"riskLevel": 2,
-					"riskScore": {
+				"riskScore": {
 					"review": 1,
 					"testing": 5,
 					"complexity": 3,
@@ -31424,7 +31424,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles and 1x EigenLayer Points on [KelpDAO](https://kelpdao.xyz/dashboard/)",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses.\nDepositing into this vault grants an extra 1x Kelp Miles and 1x EigenLayer Points on [KelpDAO](https://kelpdao.xyz/dashboard/)",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

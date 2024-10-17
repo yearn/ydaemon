@@ -71,7 +71,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -4316,7 +4316,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -6149,7 +6149,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -6162,17 +6162,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -11770,7 +11770,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -11782,18 +11782,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -11838,7 +11838,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -11851,17 +11851,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -14076,7 +14076,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -18101,7 +18101,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -19125,7 +19125,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -24386,7 +24386,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -24399,17 +24399,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -25836,7 +25836,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -26633,7 +26633,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26646,17 +26646,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -28914,7 +28914,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -28927,17 +28927,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -31397,7 +31397,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles and 1x EigenLayer Points on [KelpDAO](https://kelpdao.xyz/dashboard/)",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses.\nDepositing into this vault grants an extra 1x Kelp Miles and 1x EigenLayer Points on [KelpDAO](https://kelpdao.xyz/dashboard/)",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -31409,18 +31409,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -32422,7 +32422,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -32435,17 +32435,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -32561,7 +32561,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -32574,17 +32574,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},
@@ -33721,7 +33721,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -33734,17 +33734,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -33812,7 +33812,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34328,7 +34328,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -34341,17 +34341,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34607,7 +34607,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Maximize your returns by waiting for market maturity. Withdrawing early may lead to potential losses",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -34619,18 +34619,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},

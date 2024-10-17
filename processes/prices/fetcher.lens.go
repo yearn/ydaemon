@@ -33,6 +33,10 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 		return priceMap
 	}
 
+	if true {
+		return priceMap
+	}
+
 	/**********************************************************************************************
 	** The lens contract is HEAVY. Like really heavy. On optimism, it can takes up to 10 minutes
 	** to fetch all the ~250 prices we need. Using the following code reduces the time to a few s
@@ -51,8 +55,8 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 		** batch call for each group. This is a bit slower than all as goroutines, but it's safer.
 		******************************************************************************************/
 		grouped := [][]models.TERC20Token{}
-		for i := 0; i < len(tokens); i += 40 {
-			end := i + 40
+		for i := 0; i < len(tokens); i += 500 {
+			end := i + 500
 			if end > len(tokens) {
 				end = len(tokens)
 			}

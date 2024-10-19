@@ -60,8 +60,11 @@ func initVaults(chainID uint64, scheduler *gocron.Scheduler) (
 	scheduler.Every(2).Hours().WaitForSchedule().Do(func() {
 		indexer.IndexYearnXPoolTogetherVaults(chainID)
 		registries := indexer.IndexNewVaults(chainID)
+		logs.Success(chainID, `-`, `InitRegistries ✅`)
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+		logs.Success(chainID, `-`, `InitVaults ✅`)
 		fetcher.RetrieveAllTokens(chainID, vaultMap)
+		logs.Success(chainID, `-`, `InitTokens ✅`)
 	})
 	return registries, vaultMap, tokenMap
 }

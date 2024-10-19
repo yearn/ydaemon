@@ -205,8 +205,8 @@ func getCVXPoolAPY(
 	if virtualSupply.Gt(storage.ZERO) {
 		crvPerUnderlying = bigNumber.NewFloat(0).Div(rate, virtualSupply)
 	}
-	crvPerYear := bigNumber.NewFloat(0).Mul(crvPerUnderlying, bigNumber.NewFloat(31536000))
-	cvxPerYear := getCVXForCRV(chainID, crvPerYear)
+	crvPerUnderlyingPerYear := bigNumber.NewFloat(0).Mul(crvPerUnderlying, bigNumber.NewFloat(31536000))
+	cvxPerYear := getCVXForCRV(chainID, crvPerUnderlyingPerYear)
 
 	crvPrice := bigNumber.NewFloat(0)
 	if tokenPrice, ok := storage.GetPrice(chainID, storage.CRV_TOKEN_ADDRESS[chainID]); ok {
@@ -216,10 +216,10 @@ func getCVXPoolAPY(
 	if tokenPrice, ok := storage.GetPrice(chainID, storage.CVX_TOKEN_ADDRESS[chainID]); ok {
 		cvxPrice = tokenPrice.HumanizedPrice
 	}
-	crvAPR = bigNumber.NewFloat(0).Mul(crvPerYear, crvPrice)
+	crvAPR = bigNumber.NewFloat(0).Mul(crvPerUnderlyingPerYear, crvPrice)
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
-	crvAPR = bigNumber.NewFloat(0).Div(crvAPR, bigNumber.NewFloat(100))
-	cvxAPR = bigNumber.NewFloat(0).Div(cvxAPR, bigNumber.NewFloat(100))
+	// crvAPR = bigNumber.NewFloat(0).Div(crvAPR, bigNumber.NewFloat(100))
+	// cvxAPR = bigNumber.NewFloat(0).Div(cvxAPR, bigNumber.NewFloat(100))
 	crvAPY = convertAPRToAPY(crvAPR, bigNumber.NewFloat(365.0/15.0))
 	cvxAPY = convertAPRToAPY(cvxAPR, bigNumber.NewFloat(365.0/15.0))
 

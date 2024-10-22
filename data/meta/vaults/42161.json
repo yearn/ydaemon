@@ -198,17 +198,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 5,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 3,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -397,17 +397,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -583,7 +583,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum\u0026sourceChain=arbitrum-one). Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
+				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum\u0026sourceChain=arbitrum-one). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -606,7 +606,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -986,7 +986,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles on [KelpDAO](https://kelpdao.xyz/dashboard/). Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
+				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles on [KelpDAO](https://kelpdao.xyz/dashboard/). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -999,17 +999,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -1203,17 +1203,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -1473,17 +1473,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},
@@ -3395,17 +3395,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -3663,17 +3663,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},

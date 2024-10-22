@@ -71,7 +71,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -4316,7 +4316,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -6162,17 +6162,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -10471,19 +10471,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": "3",
+					"testing": "5",
+					"complexity": "1",
+					"riskExposure": "1",
+					"protocolIntegration": "2",
+					"centralizationRisk": "2",
+					"externalProtocolAudit": "1",
+					"externalProtocolCentralisation": "1",
+					"externalProtocolTvl": "1",
+					"externalProtocolLongevity": "1",
+					"externalProtocolType": "1",
 					"comment": ""
 				}
 			}
@@ -11782,18 +11782,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -11851,17 +11851,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -13371,19 +13371,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": "3",
+					"testing": "3",
+					"complexity": "1",
+					"riskExposure": "2",
+					"protocolIntegration": "2",
+					"centralizationRisk": "2",
+					"externalProtocolAudit": "1",
+					"externalProtocolCentralisation": "1",
+					"externalProtocolTvl": "1",
+					"externalProtocolLongevity": "1",
+					"externalProtocolType": "1",
 					"comment": ""
 				}
 			}
@@ -14076,7 +14076,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -14757,19 +14757,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": "3",
+					"testing": "2",
+					"complexity": "1",
+					"riskExposure": "1",
+					"protocolIntegration": "1",
+					"centralizationRisk": "1",
+					"externalProtocolAudit": "1",
+					"externalProtocolCentralisation": "1",
+					"externalProtocolTvl": "1",
+					"externalProtocolLongevity": "1",
+					"externalProtocolType": "1",
 					"comment": ""
 				}
 			}
@@ -18101,7 +18101,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -19125,7 +19125,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -20341,19 +20341,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": "3",
+					"testing": "5",
+					"complexity": "1",
+					"riskExposure": "1",
+					"protocolIntegration": "1",
+					"centralizationRisk": "2",
+					"externalProtocolAudit": "1",
+					"externalProtocolCentralisation": "1",
+					"externalProtocolTvl": "1",
+					"externalProtocolLongevity": "1",
+					"externalProtocolType": "1",
 					"comment": ""
 				}
 			}
@@ -24399,17 +24399,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -25836,7 +25836,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -26646,17 +26646,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -28927,17 +28927,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -31409,18 +31409,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -32435,17 +32435,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -32574,17 +32574,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},
@@ -33734,17 +33734,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -33812,7 +33812,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34341,17 +34341,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34619,18 +34619,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},

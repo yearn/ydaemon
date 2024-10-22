@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-17T15:15:53.027333+02:00",
+	"lastUpdate": "2024-10-22T11:34:29.202554+02:00",
 	"version": {
 		"major": 0,
-		"minor": 10,
+		"minor": 11,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -427,6 +427,20 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x456c166e63634d75a4b49edec86cb51424d4c926": {
+			"address": "0x456c166e63634d75a4b49edec86cb51424d4c926",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Volatile AMM - sfrxETH/wstETH",
+			"symbol": "vAMM-sfrxETH/wstETH",
+			"displayName": "Volatile AMM - sfrxETH/wstETH",
+			"displaySymbol": "vAMM-sfrxETH/wstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x456c166e63634D75a4B49EDEC86cB51424D4C926/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
 			"address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
 			"underlyingTokensAddresses": [
@@ -501,6 +515,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x4DCC2EcafF01525fBcAB3ED18823270F912a380A/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x50fd1e6e0e2153c2b26ebbcd9bcded4639a1aae3": {
+			"address": "0x50fd1e6e0e2153c2b26ebbcd9bcded4639a1aae3",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "MUV002 - Flagship USDC",
+			"symbol": "MUV002_USDC",
+			"displayName": "MUV002 - Flagship USDC",
+			"displaySymbol": "MUV002_USDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x50fd1E6E0E2153C2B26eBBcD9bCdeD4639A1AAE3/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x554eca2a48136724294ce47fb7bfe9aadfcee3c6": {
@@ -607,6 +637,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x607363389331f4B2D1b955d009506A67c565D75E/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42": {
+			"address": "0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "EURC",
+			"symbol": "EURC",
+			"displayName": "EURC",
+			"displaySymbol": "EURC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5": {
@@ -1209,6 +1253,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xf4b57a2177e6695bc56fd16c042548baf4aa8f5a": {
+			"address": "0xf4b57a2177e6695bc56fd16c042548baf4aa8f5a",
+			"underlyingTokensAddresses": [
+				"0x456c166e63634d75a4b49edec86cb51424d4c926"
+			],
+			"type": "Yearn Vault",
+			"name": "Aerodrome sfrxETH-wstETH Factory yVault",
+			"symbol": "yvAero-sfrxETH-wstETH-f",
+			"displayName": "Aerodrome sfrxETH-wstETH Factory yVault",
+			"displaySymbol": "yvAero-sfrxETH-wstETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xf4B57A2177e6695Bc56fd16c042548BAF4Aa8f5A/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0xf53b7af40be75043eeba493c622f4f56b3c27a31": {
 			"address": "0xf53b7af40be75043eeba493c622f4f56b3c27a31",
 			"underlyingTokensAddresses": [],
@@ -1251,6 +1311,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xF8f36Ab972f6fE3ae1f594595aEe1284E270d034/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xff3035968a44df696297d710cb7c0d7f807bf641": {
+			"address": "0xff3035968a44df696297d710cb7c0d7f807bf641",
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
+			"type": "Yearn Vault",
+			"name": "MUV003 - Flagship EURC",
+			"symbol": "MUV003_EURC",
+			"displayName": "MUV003 - Flagship EURC",
+			"displaySymbol": "MUV003_EURC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xfF3035968A44Df696297d710cB7c0D7f807bF641/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xffa3f8737c39e36dec4300b162c2153c67c8352f": {

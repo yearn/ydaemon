@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-17T11:57:34.054654+02:00",
+	"lastUpdate": "2024-10-22T11:34:36.733016+02:00",
 	"version": {
 		"major": 0,
-		"minor": 69,
+		"minor": 70,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1089,6 +1089,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x079F21309eB9cbD2a387972eB2168d57C8542e32/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x07c5b1f5265591a8e0e541466654b07dd2d1a6fd": {
+			"address": "0x07c5b1f5265591a8e0e541466654b07dd2d1a6fd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x07c5b1f5265591a8E0e541466654B07DD2d1a6FD/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18431,6 +18445,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa9b8ea09bbb7d3f423398f3757573bf6621a70ea": {
+			"address": "0xa9b8ea09bbb7d3f423398f3757573bf6621a70ea",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY ether.fi EIGEN",
+			"symbol": "SY-eEIGEN",
+			"displayName": "SY ether.fi EIGEN",
+			"displaySymbol": "SY-eEIGEN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xa9b8eA09BbB7D3f423398F3757573BF6621a70eA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa9fe4601811213c340e850ea305481aff02f5b28": {
 			"address": "0xa9fe4601811213c340e850ea305481aff02f5b28",
 			"underlyingTokensAddresses": [
@@ -22112,6 +22140,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc76395183036c6f3d042460a4f8cc143eb9d7c73": {
+			"address": "0xc76395183036c6f3d042460a4f8cc143eb9d7c73",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT ether.fi EIGEN 27MAR2025",
+			"symbol": "YT-eEIGEN-27MAR2025",
+			"displayName": "YT ether.fi EIGEN 27MAR2025",
+			"displaySymbol": "YT-eEIGEN-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC76395183036C6F3D042460a4F8cC143EB9d7c73/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc775c0c30840cb9f51e21061b054ebf1a00acc29": {
 			"address": "0xc775c0c30840cb9f51e21061b054ebf1a00acc29",
 			"underlyingTokensAddresses": [],
@@ -23366,6 +23408,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xd29a7D69cF5f06CCd777e53d6E437032804aBf89/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd2b9f0587e89a508e5786525c82ae494389f2dda": {
+			"address": "0xd2b9f0587e89a508e5786525c82ae494389f2dda",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT ether.fi EIGEN 27MAR2025",
+			"symbol": "PT-eEIGEN-27MAR2025",
+			"displayName": "PT ether.fi EIGEN 27MAR2025",
+			"displaySymbol": "PT-eEIGEN-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd2b9f0587e89A508e5786525c82ae494389f2ddA/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -25874,6 +25930,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xe77076518a813616315eaaba6ca8e595e845eee9": {
+			"address": "0xe77076518a813616315eaaba6ca8e595e845eee9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "ether.fi EIGEN",
+			"symbol": "eEIGEN",
+			"displayName": "ether.fi EIGEN",
+			"displaySymbol": "eEIGEN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xE77076518A813616315EaAba6cA8e595E845EeE9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c": {
 			"address": "0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c",
 			"underlyingTokensAddresses": [
@@ -26261,6 +26331,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xec48E0b9579062770888AaF900d054A1bC10A3Bf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xec53bf9167f50cdeb3ae105f56099aaab9061f83": {
+			"address": "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Eigen",
+			"symbol": "EIGEN",
+			"displayName": "Eigen",
+			"displaySymbol": "EIGEN",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xec53bF9167f50cDEB3Ae105f56099aaaB9061F83/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

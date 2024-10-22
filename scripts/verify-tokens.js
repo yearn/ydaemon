@@ -15,7 +15,7 @@ const tokenSchema = {
 			pattern: '^0x[a-fA-F0-9]{40}$'
 		},
 		underlyingTokensAddresses: {
-			type: 'array',
+			type: ['array', 'null'],
 			items: {
 				type: 'string',
 				pattern: '^0x[a-fA-F0-9]{40}$'

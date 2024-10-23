@@ -49,6 +49,7 @@ func assignStakingRewards(chainID uint64, stakingData storage.TStakingData, sour
 			Symbol:     reward.Symbol,
 			Decimals:   reward.Decimals,
 			IsFinished: reward.IsFinished,
+			FinishedAt: reward.PeriodFinish,
 			APR:        reward.APR,
 			PerWeek:    rewardsPerWeek,
 			Price:      tokenPrice,

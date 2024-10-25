@@ -11,6 +11,7 @@ import (
 
 type GetSimplifiedVaults func(c *gin.Context) []vaults.TSimplifiedExternalVault
 type GetLegacyExternalVaults func(c *gin.Context) []vaults.TExternalVault
+type GetCustomVaults func(c *gin.Context) []vaults.TRotkiVaults
 
 func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, handle GetSimplifiedVaults) gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -25,6 +26,18 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 }
 
 func CacheLegacyVaults(cachingStore *cache.Cache, expire time.Duration, handle GetLegacyExternalVaults) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		if result, found := cachingStore.Get(c.Request.URL.String()); found {
+			c.JSON(http.StatusOK, result)
+		} else {
+			result := handle(c)
+			cachingStore.Set(c.Request.URL.String(), result, expire)
+			c.JSON(http.StatusOK, result)
+		}
+	}
+}
+
+func CacheCustomVaults(cachingStore *cache.Cache, expire time.Duration, handle GetCustomVaults) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		if result, found := cachingStore.Get(c.Request.URL.String()); found {
 			c.JSON(http.StatusOK, result)

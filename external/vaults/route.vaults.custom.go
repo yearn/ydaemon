@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -173,4 +174,87 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	data = data[start:end]
 
 	return data
+}
+
+/**************************************************************************************************
+** CountVaultsForRotki counts the number of vaults for Rotki integration
+**
+** This function takes a Gin context as input and returns an integer representing the count of
+** vaults that meet the specified criteria. It performs the following steps:
+**
+** 1. Parses the 'chainIDs' query parameter to determine which chains to include
+** 2. Iterates through the specified chains
+** 3. For each chain, retrieves the list of vaults
+** 4. Filters out blacklisted vaults and non-Yearn vaults
+** 5. Calculates a featuring score for each valid vault
+** 6. Increments the count for each valid vault
+**
+** The function uses various helper functions and environment variables to perform its operations.
+** It's designed to work with the Rotki integration, providing a count of relevant vaults across
+** specified blockchain networks.
+**************************************************************************************************/
+func (y Controller) CountVaultsForRotki(c *gin.Context) {
+	/** 🔵 - Yearn *************************************************************************************
+	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
+	** obtained from the 'chainIDs' query parameter in the request. The string is split by commas to
+	** obtain an array of chain IDs.
+	**
+	** chains: An array of uint64 values that represents the chain IDs for which the vaults are to be
+	** returned. If the 'chains' query parameter is not provided or is empty, this array defaults to
+	** all supported chain IDs.
+	**
+	** The 'chains' array is populated by iterating over the 'chainsStr' array and converting each
+	** chain ID to a uint64 value. If the conversion is not successful, the chain ID is ignored.
+	**
+	** The 'chains' array is used to filter the vaults that are returned in the response.
+	**************************************************************************************************/
+	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chains := []uint64{}
+	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
+		chains = env.SUPPORTED_CHAIN_IDS
+	} else {
+		for _, chainStr := range chainsStr {
+			chain, ok := helpers.AssertChainID(chainStr)
+			if !ok {
+				continue
+			}
+			chains = append(chains, chain)
+		}
+	}
+
+	count := 0
+	for _, chainID := range chains {
+		vaultsForChain, _ := storage.ListVaults(chainID)
+		for _, currentVault := range vaultsForChain {
+			/******************************************************************************************
+			** We want to ignore all non Yearn vaults
+			******************************************************************************************/
+			chain, ok := env.GetChain(chainID)
+			if !ok {
+				continue
+			}
+			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
+				continue
+			}
+			newVault, err := NewVault().AssignTVault(currentVault)
+			if err != nil {
+				continue
+			}
+
+			APRAsFloat := 0.0
+			if newVault.APR.NetAPR != nil {
+				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
+			}
+			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
+			if newVault.Details.IsHighlighted {
+				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+			}
+
+			count += 1
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		`numberOfVaults`: count,
+	})
 }

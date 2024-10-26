@@ -80,6 +80,12 @@ func NewRouter() *gin.Engine {
 		router.GET(`:chainID/vaults/some/:addresses`, c.GetLegacySomeVaults)
 
 		/******************************************************************************************
+		** Vaults for a custom integration
+		******************************************************************************************/
+		router.GET(`rotki/list/vaults`, CacheCustomVaults(cachingStore, 10*time.Minute, c.GetVaultsForRotki))
+		router.GET(`rotki/count/vaults`, c.CountVaultsForRotki)
+
+		/******************************************************************************************
 		** Retrieve a specific vault based on the address. This is chain specific and will return
 		** the vault for a specific chain.
 		******************************************************************************************/

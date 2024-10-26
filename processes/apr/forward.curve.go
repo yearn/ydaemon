@@ -69,7 +69,7 @@ func calculateCurveForwardAPY(args TCalculateCurveAPYDataStruct) TStrategyAPY {
 		DebtRatio: debtRatio,
 		NetAPY:    bigNumber.NewFloat(0).Mul(netAPY, debtRatio),
 		Composite: TCompositeData{
-			Boost:      bigNumber.NewFloat(0).Mul(bigNumber.NewFloat(0).Mul(yBoost, debtRatio), debtRatio),
+			Boost:      bigNumber.NewFloat(0).Mul(yBoost, debtRatio),
 			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolAPY, debtRatio),
 			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPY, debtRatio),
 			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPY, debtRatio),

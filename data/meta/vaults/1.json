@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-10-17T12:01:36.87142+02:00",
+	"lastUpdate": "2024-10-25T17:24:58.947512+02:00",
 	"version": {
-		"major": 20,
+		"major": 25,
 		"minor": 0,
-		"patch": 2
+		"patch": 12
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -71,7 +71,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -376,8 +376,8 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab",
 				"0x6aceda98725505737c0f00a3da0d047304052948"
 			],
-			"lastPricePerShare": "1036460862502623646",
-			"lastTotalAssets": "4345913702915997161901328",
+			"lastPricePerShare": "1037263731839030821",
+			"lastTotalAssets": "6028989976905208609403224",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -649,7 +649,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "102416698380041863988922",
+			"lastTotalAssets": "99039126352925424839360",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -716,8 +716,8 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1630759620403589569",
-			"lastTotalAssets": "64272272123974294926212",
+			"lastPricePerShare": "1638935273760094174",
+			"lastTotalAssets": "65210602485611428274516",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -924,8 +924,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1052779609073886108",
-			"lastTotalAssets": "467358825408461745358621",
+			"lastPricePerShare": "1057258028110073626",
+			"lastTotalAssets": "507870120757810236625534",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1061,7 +1061,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1093528475298801418",
-			"lastTotalAssets": "675685291327324284212077",
+			"lastTotalAssets": "674573688106204500037091",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1876,8 +1876,8 @@
 			"lastActiveStrategies": [
 				"0xa323cccbcbade7806ca5bb9951bebd89a7882bf8"
 			],
-			"lastPricePerShare": "1435432182354704871",
-			"lastTotalAssets": "9402808101154876126251530",
+			"lastPricePerShare": "1450178353596634756",
+			"lastTotalAssets": "9611538585627246644005412",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2221,7 +2221,7 @@
 				"0x167e0fc591abf5ab77434e115ecf0fbbace39a54",
 				"0x103f3fb1ec32a85f4692df1b4b18c428dbac59da"
 			],
-			"lastPricePerShare": "1094153088411102731",
+			"lastPricePerShare": "1099449915073898521",
 			"lastTotalAssets": "62458470236339519436",
 			"metadata": {
 				"isRetired": false,
@@ -2291,8 +2291,8 @@
 			"lastActiveStrategies": [
 				"0x2fa2e992bb5c68a8b61cbfa995431afbd0a4db11"
 			],
-			"lastPricePerShare": "1446253632145528238",
-			"lastTotalAssets": "1741219211191980020484",
+			"lastPricePerShare": "1469937380658551069",
+			"lastTotalAssets": "1767900607187487479607",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -2569,8 +2569,8 @@
 				"0x91f008870eef686b61a3775944d55a3fc53b7024",
 				"0x4ce9c93513dff543bc392870d57df8c04e89ba0a"
 			],
-			"lastPricePerShare": "1000038954631835331",
-			"lastTotalAssets": "1279410427514802471511061",
+			"lastPricePerShare": "1000460087135986856",
+			"lastTotalAssets": "6274156578062352276439451",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3590,8 +3590,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1063156262140298784",
-			"lastTotalAssets": "3843950035188231733414176",
+			"lastPricePerShare": "1064885959786290004",
+			"lastTotalAssets": "1452794891844707977028058",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3658,8 +3658,8 @@
 				"0xe228772c0a7dc539e6c763a67c0e0de70f50955d",
 				"0xa0b931553bb6670e5bd889cac7691b2b4ccffff0"
 			],
-			"lastPricePerShare": "1029617741181932861",
-			"lastTotalAssets": "550941874647324162976385",
+			"lastPricePerShare": "1031461708178915892",
+			"lastTotalAssets": "465070623872339286944692",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3723,8 +3723,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1012698",
-			"lastTotalAssets": "2515117912745",
+			"lastPricePerShare": "1015397",
+			"lastTotalAssets": "746873741547",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4062,8 +4062,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1240031060102847630",
-			"lastTotalAssets": "2239713262785804791",
+			"lastPricePerShare": "1240868271373067507",
+			"lastTotalAssets": "1235906826557229403",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4198,8 +4198,8 @@
 				"0xa991652b995c4fb3c87d165311bd77e139297cce",
 				"0x61da32f660f37f21e5f0314b0a6e4ded62c358d2"
 			],
-			"lastPricePerShare": "1217653423465007494",
-			"lastTotalAssets": "164520859902202064807774",
+			"lastPricePerShare": "1223942694215355031",
+			"lastTotalAssets": "165465582644929194186876",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4316,7 +4316,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -4409,8 +4409,8 @@
 				"0xdf5f0577bd56a67fd0844f7ea08649d63a5d5f3c",
 				"0x054f4b8fcb63c5c6abddb4496c129b03682de57b"
 			],
-			"lastPricePerShare": "989479328058977967",
-			"lastTotalAssets": "392759706836901522466860",
+			"lastPricePerShare": "991990921378187255",
+			"lastTotalAssets": "394917861795777788667116",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -4544,8 +4544,8 @@
 			"lastActiveStrategies": [
 				"0xe3974e44bc08f435da2c6db7d01e1758496da119"
 			],
-			"lastPricePerShare": "1811888822975686740",
-			"lastTotalAssets": "45672506207763262366574424",
+			"lastPricePerShare": "1817209564206766195",
+			"lastTotalAssets": "44422521288300465406479505",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5366,8 +5366,8 @@
 				"0xecbd24ea29b5cf23fbe658da506589982ef085d4",
 				"0xda00352a66577b2c844678ec78c062a2f68836a5"
 			],
-			"lastPricePerShare": "1204962164061786720",
-			"lastTotalAssets": "712600549537585481395",
+			"lastPricePerShare": "1206117796832132203",
+			"lastTotalAssets": "13146378117709741101",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5778,8 +5778,8 @@
 			"lastActiveStrategies": [
 				"0x407780eb70e53ec88c1fb0b40d7192fc757ac5c2"
 			],
-			"lastPricePerShare": "1814745443650593083",
-			"lastTotalAssets": "28656422443141208812571",
+			"lastPricePerShare": "1842803851521732609",
+			"lastTotalAssets": "29149651931272851992773",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -6125,8 +6125,8 @@
 				"0xd5d388d8331fcbd4af0dfae9be14c2c34897cf24",
 				"0x05086056e7111346e246e5b97153ae8cc6fc4a71"
 			],
-			"lastPricePerShare": "1025232528102673439",
-			"lastTotalAssets": "140594800107703289198821",
+			"lastPricePerShare": "1027500247259862142",
+			"lastTotalAssets": "148141522211890995933639",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6162,17 +6162,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -6471,8 +6471,8 @@
 				"0x206db0a0af10bec57784045e089a418771d20227",
 				"0xed48069a2b9982b4eec646cbfa7b81d181f9400b"
 			],
-			"lastPricePerShare": "1007092",
-			"lastTotalAssets": "6315014980644",
+			"lastPricePerShare": "1008163",
+			"lastTotalAssets": "6348057499321",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7837,8 +7837,8 @@
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
 				"0x059b1507b22267fc1cda8b6d2fbf2cab5d7a1ce5"
 			],
-			"lastPricePerShare": "1076972",
-			"lastTotalAssets": "6406036145437",
+			"lastPricePerShare": "1077997",
+			"lastTotalAssets": "6409927391079",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8457,7 +8457,7 @@
 				"0xe403f03eee3aa19156eb13fb6edd9e77de62b89e"
 			],
 			"lastPricePerShare": "1375825964171252696",
-			"lastTotalAssets": "2014473353147188171142",
+			"lastTotalAssets": "1990028171856189863369",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8864,7 +8864,7 @@
 			"lastActiveStrategies": [
 				"0xc44fa9defc3fcaef37ee83b2dc4570f77e5597b0"
 			],
-			"lastPricePerShare": "1000036860437421712",
+			"lastPricePerShare": "1001153747446859968",
 			"lastTotalAssets": "150192315894918078359",
 			"metadata": {
 				"isRetired": false,
@@ -9340,8 +9340,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007212",
-			"lastTotalAssets": "881235429524",
+			"lastPricePerShare": "1010156",
+			"lastTotalAssets": "100230176144",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10433,12 +10433,12 @@
 			"activation": 20951591,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000894761208331038",
-			"lastTotalAssets": "829413935028470689825261",
+			"lastPricePerShare": "1002249548726792958",
+			"lastTotalAssets": "4310068598749873995565769",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10471,19 +10471,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": 3,
+					"testing": 5,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 2,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1,
 					"comment": ""
 				}
 			}
@@ -10846,8 +10846,8 @@
 			"lastActiveStrategies": [
 				"0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"
 			],
-			"lastPricePerShare": "1009580865869278191",
-			"lastTotalAssets": "170979314613473655889",
+			"lastPricePerShare": "1010138209908476522",
+			"lastTotalAssets": "171334591787034424833",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11746,8 +11746,8 @@
 			"lastActiveStrategies": [
 				"0xb9261fad596c7ae8631c5de57d51646aa627552a"
 			],
-			"lastPricePerShare": "100204385",
-			"lastTotalAssets": "9133739",
+			"lastPricePerShare": "100349573",
+			"lastTotalAssets": "10682474",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11782,18 +11782,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -11851,17 +11851,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -11882,7 +11882,7 @@
 				"0x472f4e5533fb8f7fee97dacd3dbae9d83867ab07",
 				"0x045b76468342d765bdaa6d2d74bacee4ecdb6f5b"
 			],
-			"lastPricePerShare": "1039006688186164712",
+			"lastPricePerShare": "1039254333718455260",
 			"lastTotalAssets": "696342377565088810943",
 			"metadata": {
 				"isRetired": false,
@@ -12572,7 +12572,7 @@
 				"0x95be5ac6beb4858b829a29e795b132d9f6799431"
 			],
 			"lastPricePerShare": "1005412134990790212",
-			"lastTotalAssets": "5049480375476899399456",
+			"lastTotalAssets": "4560513801873336161269",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12784,8 +12784,8 @@
 				"0xbdcfd9815e777efecdedebf17d1a51bd03c2ee5c",
 				"0x8a4bc6702f116dcaa621e7554c950984bc872dfc"
 			],
-			"lastPricePerShare": "1043674509479257389",
-			"lastTotalAssets": "76823616088370707385691",
+			"lastPricePerShare": "1067523835307707371",
+			"lastTotalAssets": "81518353032433405568660",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13333,12 +13333,12 @@
 			"activation": 20951586,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000001",
-			"lastTotalAssets": "593760319546",
+			"lastPricePerShare": "1000139",
+			"lastTotalAssets": "1717269050981",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13371,19 +13371,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": 3,
+					"testing": 3,
+					"complexity": 1,
+					"riskExposure": 2,
+					"protocolIntegration": 2,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1,
 					"comment": ""
 				}
 			}
@@ -13408,7 +13408,7 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab"
 			],
 			"lastPricePerShare": "1015080109153572771",
-			"lastTotalAssets": "25378848399680174921311",
+			"lastTotalAssets": "25328131941642572591970",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -13472,8 +13472,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2461773006938551299",
-			"lastTotalAssets": "239453947848372885307",
+			"lastPricePerShare": "2463334089070365722",
+			"lastTotalAssets": "239649604134496204840",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14076,7 +14076,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -14448,8 +14448,8 @@
 				"0xfa5c4a53d49fd936ca2b757f2c64d4007dd87e5b",
 				"0xa279b480428e58c248ae6cc110aaf67fb8237baa"
 			],
-			"lastPricePerShare": "1410368349354563100",
-			"lastTotalAssets": "2754215290053118336374",
+			"lastPricePerShare": "1419130301311269895",
+			"lastTotalAssets": "2683041852631280495556",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14719,12 +14719,12 @@
 			"activation": 20951586,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000002050992153717",
-			"lastTotalAssets": "648136334656987689067642",
+			"lastPricePerShare": "1000095446259742583",
+			"lastTotalAssets": "4517217377691937320382742",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14757,19 +14757,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": 3,
+					"testing": 2,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 1,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1,
 					"comment": ""
 				}
 			}
@@ -15203,8 +15203,8 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x7bba4a580b97cfbb0f100fb3ea74ae9f1377d039"
 			],
-			"lastPricePerShare": "1269822671782067700",
-			"lastTotalAssets": "5908568057823036540765177",
+			"lastPricePerShare": "1275710379857711703",
+			"lastTotalAssets": "5895272618341047113677762",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16323,7 +16323,7 @@
 				"0x8dde9a50a91cc0a5dabdc5d3931c1af60408c84d"
 			],
 			"lastPricePerShare": "1021486298803378322",
-			"lastTotalAssets": "1196521543266279547504951",
+			"lastTotalAssets": "1194048146546204401444054",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16390,8 +16390,8 @@
 				"0xf6e8c7574636c9ef3f35355da475d7e340a4ed62",
 				"0x0a939d1e278d22a87fb254a50d27cf9f3e14af7b"
 			],
-			"lastPricePerShare": "1260244377872129440",
-			"lastTotalAssets": "2007744839314133307602",
+			"lastPricePerShare": "1267760643839885306",
+			"lastTotalAssets": "2012609471591259033619",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16670,7 +16670,7 @@
 				"0x8c1acaf5fb36838280c671fb6ab3538df3213286"
 			],
 			"lastPricePerShare": "1118862022130630952",
-			"lastTotalAssets": "64401328481798705919829",
+			"lastTotalAssets": "64436006982761779854968",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16945,8 +16945,8 @@
 			"lastActiveStrategies": [
 				"0xa04947059831783c561e59a43b93dcb5bee7cab2"
 			],
-			"lastPricePerShare": "1070478330012089786",
-			"lastTotalAssets": "141649263363462822851",
+			"lastPricePerShare": "1071097041200768676",
+			"lastTotalAssets": "155680290526883715209",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17566,8 +17566,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1063036",
-			"lastTotalAssets": "2008601737987",
+			"lastPricePerShare": "1070135",
+			"lastTotalAssets": "27238259820",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18101,7 +18101,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -18323,8 +18323,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002208216447345064",
-			"lastTotalAssets": "85087916445362149679357",
+			"lastPricePerShare": "1008052380997428791",
+			"lastTotalAssets": "1964523677660879296689028",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18529,8 +18529,8 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1195149827074036774",
-			"lastTotalAssets": "99406505190673766576",
+			"lastPricePerShare": "1197915818227868412",
+			"lastTotalAssets": "95167446219837981639",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18806,8 +18806,8 @@
 			"lastActiveStrategies": [
 				"0x501bbbef60c407b36ea6b87af4964559c5229b11"
 			],
-			"lastPricePerShare": "1000311",
-			"lastTotalAssets": "625863851410",
+			"lastPricePerShare": "1000475",
+			"lastTotalAssets": "696325526673",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19125,7 +19125,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -20105,8 +20105,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3089344752889666240",
-			"lastTotalAssets": "19700689671812810",
+			"lastPricePerShare": "3291766264635320268",
+			"lastTotalAssets": "19710786087881692",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20303,12 +20303,12 @@
 			"activation": 20951591,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 500,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002150945336476375",
-			"lastTotalAssets": "356289057541255992180",
+			"lastPricePerShare": "1003501833349312231",
+			"lastTotalAssets": "356804205269487719824",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20341,19 +20341,19 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": 3,
+					"testing": 5,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 1,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1,
 					"comment": ""
 				}
 			}
@@ -20377,8 +20377,8 @@
 				"0x3927c4ad1d63bf9629fdae1318aa31df9135f544",
 				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6"
 			],
-			"lastPricePerShare": "1072186823313572883",
-			"lastTotalAssets": "826880068587221215560285",
+			"lastPricePerShare": "1073371276296609675",
+			"lastTotalAssets": "977329180776970270838034",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20510,8 +20510,8 @@
 				"0x4bfbd6875ed316a4fbac5abc36aab409d215ab8a",
 				"0x24b63e52ac85d880efbc7d7d78250b402be45d9b"
 			],
-			"lastPricePerShare": "1063893713629589935",
-			"lastTotalAssets": "86569013903043780607",
+			"lastPricePerShare": "1066623152627288902",
+			"lastTotalAssets": "101277766930733039153",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20583,7 +20583,7 @@
 				"0xb3bf04a939aacff5bdcfc273ce4f36cf29f063db"
 			],
 			"lastPricePerShare": "999999999999999999",
-			"lastTotalAssets": "469363952525315242599070",
+			"lastTotalAssets": "447619944683572022254553",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20786,8 +20786,8 @@
 				"0x02d89f68756fed0ed3f1dc33aef7e4e5e2d311b5",
 				"0x464f3e9ad5b4765c8af8f75f97dd8b5b9767ae88"
 			],
-			"lastPricePerShare": "1009434153261106355",
-			"lastTotalAssets": "465596283571444126532",
+			"lastPricePerShare": "1010460038902923262",
+			"lastTotalAssets": "465962442555420844570",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -21044,12 +21044,12 @@
 			"activation": 20944073,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001828236693511794",
-			"lastTotalAssets": "599120198667009393843",
+			"lastPricePerShare": "1003017433493905195",
+			"lastTotalAssets": "600009438742884913554",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -21942,8 +21942,8 @@
 				"0x64e4779bff8588ccdca9f290b9bc346a798f5277",
 				"0x120fa5738751b275aed7f7b46b98beb38679e093"
 			],
-			"lastPricePerShare": "1079326726901816315",
-			"lastTotalAssets": "21088037537926922265249",
+			"lastPricePerShare": "1080169522875335378",
+			"lastTotalAssets": "21102421803854816535191",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22079,8 +22079,8 @@
 				"0x0fd45d4fb70d1ec95264da30934095443dc6af6a",
 				"0xbbca1111ec2204bd9c546b755f91979e32a15b2e"
 			],
-			"lastPricePerShare": "1106533",
-			"lastTotalAssets": "11437638700768",
+			"lastPricePerShare": "1107644",
+			"lastTotalAssets": "11489562397147",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22214,8 +22214,8 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1326838807374495636",
-			"lastTotalAssets": "1394466974767003589310137",
+			"lastPricePerShare": "1332681204301781034",
+			"lastTotalAssets": "1401101848325751757006935",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22355,8 +22355,8 @@
 				"0xf87d078899626cf1a4ef49acba0b60138bac37b2",
 				"0x51d749df68ecf652de70f587a92c119d454b7563"
 			],
-			"lastPricePerShare": "1110758181205495216",
-			"lastTotalAssets": "663891258189477244642141",
+			"lastPricePerShare": "1118296489602698474",
+			"lastTotalAssets": "668923535784340854252760",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22832,7 +22832,7 @@
 				"0xfafc64e627d9cd4bb2a32c818ff9f291c3dcedb8"
 			],
 			"lastPricePerShare": "1020141687252549509",
-			"lastTotalAssets": "76649129660480620382958",
+			"lastTotalAssets": "76649129660480620382959",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23114,8 +23114,8 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0x9ad3047d578e79187f0faeef26729097a4973325"
 			],
-			"lastPricePerShare": "1115006234246979612",
-			"lastTotalAssets": "819100497478246503491",
+			"lastPricePerShare": "1115494661378154220",
+			"lastTotalAssets": "802368077557574190183",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23321,7 +23321,7 @@
 				"0x5d2cf3986f5589eb44d71c1fdf6436096de8bf4c"
 			],
 			"lastPricePerShare": "1025873346741356340",
-			"lastTotalAssets": "163617990882378865872113",
+			"lastTotalAssets": "163617990882378865872112",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23460,7 +23460,7 @@
 				"0xf13892b6dfea2346dad34182d5d4ce005e2160fd"
 			],
 			"lastPricePerShare": "1082025928538693342",
-			"lastTotalAssets": "129458684987546191487527",
+			"lastTotalAssets": "29867043004716614384904",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23600,8 +23600,8 @@
 				"0xd8b27cf359b7d15710a5be299af6e7bf904984c2",
 				"0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c"
 			],
-			"lastPricePerShare": "1020359179026438793",
-			"lastTotalAssets": "649599070147674254430",
+			"lastPricePerShare": "1021059263815787861",
+			"lastTotalAssets": "650538691834409222546",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23951,8 +23951,8 @@
 				"0xf6e2d36c489e5b361cdc962d4568cea663ad5ddc",
 				"0x797dd80692c3b2dadabce8e30c07fde5307d48a9"
 			],
-			"lastPricePerShare": "1023771",
-			"lastTotalAssets": "28823578640",
+			"lastPricePerShare": "1024672",
+			"lastTotalAssets": "28853019375",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24022,7 +24022,7 @@
 				"0xeef271a0071423ea56d38e4abe748165cc432e3f"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "25065376790679221593",
+			"lastTotalAssets": "31111460637834376012",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24155,8 +24155,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000374035741573368",
-			"lastTotalAssets": "94113233158482140849094",
+			"lastPricePerShare": "1259851849390599394",
+			"lastTotalAssets": "208418746210611254066",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24399,17 +24399,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -25585,8 +25585,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1024056435447054246",
-			"lastTotalAssets": "152441976235326203739",
+			"lastPricePerShare": "1024907602668580641",
+			"lastTotalAssets": "152541070717950446195",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -25836,7 +25836,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -25926,8 +25926,8 @@
 				"0xee0a6d15f526f00b73a084ad1c5a81cff09cd2c5",
 				"0xaef9ae268c601606679c8afb7f5285bdb9c58f54"
 			],
-			"lastPricePerShare": "2432103403673859754",
-			"lastTotalAssets": "2045713428605978739094510",
+			"lastPricePerShare": "2485451045883891381",
+			"lastTotalAssets": "2076541457729017947493134",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26269,7 +26269,7 @@
 				"0x025466b3e29a854e8946c13bcf9a5fc9746aa976"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "92585308378842092809090",
+			"lastTotalAssets": "53380243490028620771509",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26339,7 +26339,7 @@
 				"0xc8d4a8a7f593e73cd32cd6c5fb11fe20f23f9695"
 			],
 			"lastPricePerShare": "1014655917224922900",
-			"lastTotalAssets": "9241179871990984806",
+			"lastTotalAssets": "8972869500268344463",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26472,8 +26472,8 @@
 				"0xb080943309c2f86ae7e194d88284cd874b946db9",
 				"0x6b6b735e2f2f0bc6ec845ba0e32d053e85208c0a"
 			],
-			"lastPricePerShare": "1109936033433909501",
-			"lastTotalAssets": "140122449654409491684681",
+			"lastPricePerShare": "1114534232326383676",
+			"lastTotalAssets": "141666733929234791820765",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26646,17 +26646,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -26817,8 +26817,8 @@
 				"0x25f893276544d86a82b1ce407182836f45cb6673",
 				"0x602da189f5ada033e9ac7096fc39c7f44a77e942"
 			],
-			"lastPricePerShare": "1028251",
-			"lastTotalAssets": "3956280420259",
+			"lastPricePerShare": "1028975",
+			"lastTotalAssets": "3975523614241",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26882,8 +26882,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006945281591938734",
-			"lastTotalAssets": "270969132156383718328800",
+			"lastPricePerShare": "1007334901031745869",
+			"lastTotalAssets": "426304675989544666443067",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26952,8 +26952,8 @@
 				"0x05329aab081b125eef7fbbc8b857428d478e692b",
 				"0xbf2e5bed692c09af8b39677e315f36adf39bd685"
 			],
-			"lastPricePerShare": "1027788622314061770",
-			"lastTotalAssets": "833181174188068549507502",
+			"lastPricePerShare": "1029161402679011456",
+			"lastTotalAssets": "897490267543871000944209",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -27638,7 +27638,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastTotalAssets": "68624352036390821816",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -27916,8 +27916,8 @@
 				"0x365cc9c28df1663fa37c565a3ac1addc3a219e15",
 				"0xc7bae383738274ea8c3292d53afbb3b42b348df0"
 			],
-			"lastPricePerShare": "1012015879709697138",
-			"lastTotalAssets": "277409585977092199001",
+			"lastPricePerShare": "1012573746149132904",
+			"lastTotalAssets": "286743262450628352386",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28122,8 +28122,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000351417047975696",
-			"lastTotalAssets": "277570537182630818202",
+			"lastPricePerShare": "1001335070154011271",
+			"lastTotalAssets": "287041037620851543824",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28927,17 +28927,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -28959,8 +28959,8 @@
 				"0xbbbe0410ac3e0cd29bb1e8fbfad4caf36b0018f0",
 				"0x74e37a751e163f66148402198da13df5dc47cfaf"
 			],
-			"lastPricePerShare": "1000761051956818517",
-			"lastTotalAssets": "1083626636250784213464762",
+			"lastPricePerShare": "1002853817960002580",
+			"lastTotalAssets": "1656567577140452487939138",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29303,8 +29303,8 @@
 				"0x0669091f451142b3228171ae6ad794cf98288124",
 				"0xfa68707be4b58fb9f10748e30e25a15113edee1d"
 			],
-			"lastPricePerShare": "1008858441734278102",
-			"lastTotalAssets": "1765675100822442431980",
+			"lastPricePerShare": "1009347825648300431",
+			"lastTotalAssets": "1809918822918490810518",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -30818,7 +30818,7 @@
 				"0xdcffee74abdcf70453bb798be1b41462eddbc692"
 			],
 			"lastPricePerShare": "1049363732534658754",
-			"lastTotalAssets": "277475707744171282285",
+			"lastTotalAssets": "227778540286526892444",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -30885,8 +30885,8 @@
 				"0x3280499298ace3fd3cd9c2558e9e8746ace3e52d",
 				"0x01d127d90513ccb6071f83efe15611c4d9890668"
 			],
-			"lastPricePerShare": "1139980143331946005",
-			"lastTotalAssets": "19008397126562106879026372",
+			"lastPricePerShare": "1141452761551690842",
+			"lastTotalAssets": "17481942638656028380614072",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -31030,7 +31030,7 @@
 				"0xf06b5c192d1413e7a4db1b2a9640500fdd83f1b2"
 			],
 			"lastPricePerShare": "1013228104132560109",
-			"lastTotalAssets": "181038659481602426961",
+			"lastTotalAssets": "180710439760923443029",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -31303,7 +31303,7 @@
 				"0x9084b5a98e3b4b257affd82ae4a1753f87906dce"
 			],
 			"lastPricePerShare": "1098425989399406290",
-			"lastTotalAssets": "3082932216331421843140",
+			"lastTotalAssets": "2966496210115115935983",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -31373,8 +31373,8 @@
 			"lastActiveStrategies": [
 				"0x5b4f1009c456271407e5de95909979d52aea5557"
 			],
-			"lastPricePerShare": "1005460800334079621",
-			"lastTotalAssets": "51575210212257166986",
+			"lastPricePerShare": "1006768823230444638",
+			"lastTotalAssets": "51642305374813535237",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -31409,18 +31409,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -31991,7 +31991,7 @@
 				"0x83f20f44975d03b1b09e64809b757c47f942beea"
 			],
 			"lastPricePerShare": "1035441404029514328",
-			"lastTotalAssets": "838189216445771073497681",
+			"lastTotalAssets": "828087552914603993218891",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -32196,7 +32196,7 @@
 				"0xe53ffd56fadc7030156069ae1b34de0ab8b703f4"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "50097960728124361634",
+			"lastTotalAssets": "111303391805413414",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -32435,17 +32435,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -32537,8 +32537,8 @@
 				"0xd769d276d1d2858d76ea771d7cf6e03e39973040",
 				"0xe7d7dfd8e393bf28a6f2cad5a0e4078f35049fb7"
 			],
-			"lastPricePerShare": "1016310074946162232",
-			"lastTotalAssets": "54499079411882413292",
+			"lastPricePerShare": "1016846254764317497",
+			"lastTotalAssets": "54527831765331472995",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -32574,17 +32574,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},
@@ -32736,8 +32736,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000646",
-			"lastTotalAssets": "3216237335335",
+			"lastPricePerShare": "1001520",
+			"lastTotalAssets": "2807230721825",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -33489,8 +33489,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1023866227579240242",
-			"lastTotalAssets": "19827701941311133876",
+			"lastPricePerShare": "1031217205988394265",
+			"lastTotalAssets": "19898002171014602238",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -33734,17 +33734,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -33812,7 +33812,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34165,8 +34165,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastPricePerShare": "1000011171356016622",
+			"lastTotalAssets": "230012119836202826199358",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34341,17 +34341,17 @@
 				"riskLevel": 3,
 				"riskScore": {
 					"review": 1,
-					"testing": 1,
-					"complexity": 1,
-					"riskExposure": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
 					"protocolIntegration": 1,
-					"centralizationRisk": 2,
+					"centralizationRisk": 4,
 					"externalProtocolAudit": 1,
-					"externalProtocolCentralisation": 1,
+					"externalProtocolCentralisation": 3,
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
 				}
 			}
 		},
@@ -34619,18 +34619,18 @@
 				},
 				"riskLevel": 3,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops."
+					"review": 1,
+					"testing": 5,
+					"complexity": 3,
+					"riskExposure": 4,
+					"protocolIntegration": 1,
+					"centralizationRisk": 4,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 3,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 2,
+					"externalProtocolType": 2,
+					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses. Underlying SY contract which holds asset is upgradable"
 				}
 			}
 		},
@@ -35197,8 +35197,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1033180",
-			"lastTotalAssets": "13026819264",
+			"lastPricePerShare": "1033787",
+			"lastTotalAssets": "13035047943",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35266,7 +35266,7 @@
 				"0xf5309b37b07250fa261b2a9c30c85ad942d6ccab"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "90175994476019087030",
+			"lastTotalAssets": "94001479910885983314",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35330,8 +35330,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001002",
-			"lastTotalAssets": "444737129339",
+			"lastPricePerShare": "1001984",
+			"lastTotalAssets": "2071908477144",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35671,8 +35671,8 @@
 				"0x97d4ee49ee15e8223f0bac1c925f9db75918e7b3",
 				"0xb85887c847597dec6f45b155fda30c98a0ef0228"
 			],
-			"lastPricePerShare": "1315772654860727916",
-			"lastTotalAssets": "869169272629526541433392",
+			"lastPricePerShare": "1317926970173237599",
+			"lastTotalAssets": "874857754676789156772261",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35949,7 +35949,7 @@
 				"0x58bef4d2361016cf2ee9ec9c0353af6fb941acd3"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "3018543290411433980798244",
+			"lastTotalAssets": "2718543290411433980798244",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -36489,8 +36489,8 @@
 				"0xc3d78d594e1147d2634b86ecc03ed4bf6f36caa6",
 				"0x84de4754c12ffc2a33fa5dc895ad968984d6f7fd"
 			],
-			"lastPricePerShare": "1497512790584222926",
-			"lastTotalAssets": "82876855948656839121",
+			"lastPricePerShare": "1790950590460579148",
+			"lastTotalAssets": "128772218344179239811",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

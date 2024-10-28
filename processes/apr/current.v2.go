@@ -66,6 +66,11 @@ func computeCurrentV2VaultAPY(
 			MonthAgo:  helpers.GetEvolution(ppsToday, ppsMonthAgo, bigNumber.NewFloat(30)),
 			Inception: helpers.GetEvolution(ppsToday, ppsInception, bigNumber.NewFloat(365)),
 		},
+		PricePerShare: TPricePerShare{
+			Today:     ppsToday,
+			WeekAgo:   ppsWeekAgo,
+			MonthAgo:  ppsMonthAgo,
+		},
 	}
 	return vaultAPR
 }

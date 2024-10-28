@@ -93,12 +93,13 @@ type TExternalForwardAPR struct {
 	Composite TExternalCompositeData `json:"composite"`
 }
 type TExternalVaultAPR struct {
-	Type       string                `json:"type"`
-	NetAPR     *bigNumber.Float      `json:"netAPR"`
-	Fees       apr.TFees             `json:"fees"`
-	Points     apr.THistoricalPoints `json:"points"`
-	Extra      TExternalExtraRewards `json:"extra"`
-	ForwardAPR TExternalForwardAPR   `json:"forwardAPR"`
+	Type          string                `json:"type"`
+	NetAPR        *bigNumber.Float      `json:"netAPR"`
+	Fees          apr.TFees             `json:"fees"`
+	Points        apr.THistoricalPoints `json:"points"`
+	PricePerShare apr.TPricePerShare    `json:"pricePerShare"`
+	Extra         TExternalExtraRewards `json:"extra"`
+	ForwardAPR    TExternalForwardAPR   `json:"forwardAPR"`
 }
 
 // TExternalVault is the struct containing the information about a vault.
@@ -201,10 +202,11 @@ type TSimplifiedExternalVault struct {
 ************************************************************************************************/
 func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 	return TExternalVaultAPR{
-		Type:   vaultAPY.Type,
-		NetAPR: vaultAPY.NetAPY,
-		Fees:   vaultAPY.Fees,
-		Points: vaultAPY.Points,
+		Type:          vaultAPY.Type,
+		NetAPR:        vaultAPY.NetAPY,
+		Fees:          vaultAPY.Fees,
+		Points:        vaultAPY.Points,
+		PricePerShare: vaultAPY.PricePerShare,
 		Extra: TExternalExtraRewards{
 			StakingRewardsAPR: vaultAPY.Extra.StakingRewardsAPY,
 			GammaRewardAPR:    vaultAPY.Extra.GammaRewardAPY,

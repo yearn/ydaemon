@@ -158,6 +158,11 @@ type TLegacyAPIAPY struct {
 		MonthAgo  float64 `json:"month_ago"`
 		Inception float64 `json:"inception"`
 	} `json:"points"`
+	PricePerShare struct {
+		WeekAgo   float64 `json:"week_ago"`
+		MonthAgo  float64 `json:"month_ago"`
+		Inception float64 `json:"inception"`
+	} `json:"pricePerShare"`
 	Composite struct {
 		Boost      float64 `json:"boost"`
 		PoolAPY    float64 `json:"pool_apy"`

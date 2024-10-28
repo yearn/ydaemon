@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-22T11:34:30.443728+02:00",
+	"lastUpdate": "2024-10-28T10:48:17.097133+01:00",
 	"version": {
 		"major": 0,
-		"minor": 33,
+		"minor": 34,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -7725,6 +7725,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xF66DA0f517c6f5431c77f4d0525EbC4b3bb40578/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xf7d015bd465beaf7360064f451fdf16949199848": {
+			"address": "0xf7d015bd465beaf7360064f451fdf16949199848",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "Usdc Kalani",
+			"symbol": "klUSDC",
+			"displayName": "Usdc Kalani",
+			"displaySymbol": "klUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xf7d015BD465BeAf7360064f451Fdf16949199848/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xf83d5f96fb4715d4e52359089fa3e4d7c7c32298": {

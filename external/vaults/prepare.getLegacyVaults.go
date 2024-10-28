@@ -17,6 +17,17 @@ func getLegacyVaults(
 	filterFunc func(vault models.TVault) bool,
 ) []TExternalVault {
 	/** 🔵 - Yearn *************************************************************************************
+	** page: A uint64 value that represents the page number for pagination. It is obtained from the
+	** 'page' query parameter in the request. If the parameter is not provided, it defaults to 1.
+	**
+	** limit: A uint64 value that represents the number of vaults to be returned per page. It is
+	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
+	** it defaults to 200.
+	**************************************************************************************************/
+	page := helpers.SafeStringToUint64(getQuery(c, `page`), 1)
+	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
+
+	/** 🔵 - Yearn *************************************************************************************
 	** This function takes in a context from the gin framework. The context contains information
 	** about the environment and request. From the context, the function extracts the following
 	** parameters:
@@ -102,5 +113,12 @@ func getLegacyVaults(
 
 	//Sort by details.order by default
 	sort.SortBy(orderBy, orderDirection, data)
+	start := (page - 1) * limit
+	end := page * limit
+	if end > uint64(len(data)) {
+		end = uint64(len(data))
+	}
+	data = data[start:end]
+
 	return data
 }

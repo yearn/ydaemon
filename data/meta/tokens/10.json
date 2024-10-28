@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-22T11:34:33.420282+02:00",
+	"lastUpdate": "2024-10-28T10:48:35.240734+01:00",
 	"version": {
 		"major": 0,
-		"minor": 15,
+		"minor": 16,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -206,6 +206,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x02659556a1d9ea1Bb7b91296428698d3A748502E/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x02a00971bb3c29fddf91ea8565b02c872e16a29e": {
+			"address": "0x02a00971bb3c29fddf91ea8565b02c872e16a29e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xWLD-MAI3",
+			"symbol": "xWLD-MAI3",
+			"displayName": "xWLD-MAI3",
+			"displaySymbol": "xWLD-MAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x02A00971BB3C29fddF91ea8565B02C872E16A29e/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -9542,6 +9556,20 @@
 			"decimals": 18,
 			"chainID": 10
 		},
+		"0x85324d0e1470db4c841918dda2b2ad1593e1da17": {
+			"address": "0x85324d0e1470db4c841918dda2b2ad1593e1da17",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xZRO-MAI3",
+			"symbol": "xZRO-MAI3",
+			"displayName": "xZRO-MAI3",
+			"displaySymbol": "xZRO-MAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0x85324D0E1470dB4c841918dda2b2ad1593E1da17/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
 		"0x8542dd4744edea38b8a9306268b08f4d26d38581": {
 			"address": "0x8542dd4744edea38b8a9306268b08f4d26d38581",
 			"underlyingTokensAddresses": [],
@@ -9993,6 +10021,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0x8Ba02c31565AaCE0328eA90A17fa86D4ba1ec4D8/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0x8bf2d37acc93fde36dcffe9ba9b8b0fb5d2fa747": {
+			"address": "0x8bf2d37acc93fde36dcffe9ba9b8b0fb5d2fa747",
+			"underlyingTokensAddresses": [
+				"0x112d7a717a617c25a91b1c261708cce6831474b4"
+			],
+			"type": "Yearn Vault",
+			"name": "Velodrome sAMMV2-pxETH/WETH Factory yVault",
+			"symbol": "yvVelo-sAMMV2-pxETH/WETH-f",
+			"displayName": "Velodrome sAMMV2-pxETH/WETH Factory yVault",
+			"displaySymbol": "yvVelo-sAMMV2-pxETH/WETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/10/0x8BF2D37ACC93FdE36DCfFe9Ba9b8B0fB5d2fA747/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},
@@ -16775,6 +16819,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/10/0xf72f804e043DE5EF0eA4b14F44c42D7e9827235c/logo-128.png",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xf740c9e8e3f81cc8d1905a1be6e28aba406111bd": {
+			"address": "0xf740c9e8e3f81cc8d1905a1be6e28aba406111bd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xKWENTA-MAI3",
+			"symbol": "xKWENTA-MAI3",
+			"displayName": "xKWENTA-MAI3",
+			"displaySymbol": "xKWENTA-MAI3",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/10/0xF740C9e8E3f81cC8D1905A1Be6E28abA406111bd/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

@@ -38,6 +38,7 @@ type TChain struct {
 	Coin                  models.TERC20Token
 	StakingRewardRegistry []TContractData
 	Registries            []TContractData
+	YearnXRegistries      []TContractData
 	ExtraStakingContracts []TExtraStakingContracts
 	ExtraVaults           []models.TVaultsFromRegistry
 	BlacklistedVaults     []common.Address

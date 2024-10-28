@@ -17,7 +17,7 @@ import (
 
 func isV3Vault(vault models.TVault) bool {
 	versionMajor := strings.Split(vault.Version, `.`)[0]
-	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle || versionMajor == `3`
+	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle || versionMajor == `3` || versionMajor == `~3`
 }
 
 func computeVaultV3ForwardAPY(

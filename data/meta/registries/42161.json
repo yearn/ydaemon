@@ -5,6 +5,7 @@
 		"tokenAddress": "0xe11f9786b06438456b044b3e21712228adcaa0d1",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -15,6 +16,7 @@
 		"tokenAddress": "0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -25,6 +27,7 @@
 		"tokenAddress": "0x551c423c441db0b691b5630f04d2080caee25963",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -35,6 +38,7 @@
 		"tokenAddress": "0xba4a858d664ddb052158168db04afa3cff5cfcc8",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -45,6 +49,7 @@
 		"tokenAddress": "0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -55,6 +60,7 @@
 		"tokenAddress": "0x30df229cefa463e991e29d42db0bae2e122b2ac7",
 		"type": "Yearn Vault",
 		"kind": "",
+		"extraProperties": {},
 		"version": "0.4.3",
 		"chainID": 42161,
 		"blockNumber": 11987182
@@ -65,6 +71,7 @@
 		"tokenAddress": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
 		"type": "Yearn Vault",
 		"kind": "",
+		"extraProperties": {},
 		"version": "0.4.3",
 		"chainID": 42161,
 		"blockNumber": 4842579
@@ -75,6 +82,7 @@
 		"tokenAddress": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.1",
 		"chainID": 42161,
 		"blockNumber": 192135954
@@ -85,6 +93,7 @@
 		"tokenAddress": "0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -95,9 +104,23 @@
 		"tokenAddress": "0x14fbc760efaf36781cb0eb3cb255ad976117b9bd",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
+	},
+	"0x482cc95bc6c92d6254529dc2d45095663ae726a2": {
+		"address": "0x482cc95bc6c92d6254529dc2d45095663ae726a2",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
 	},
 	"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 		"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
@@ -105,6 +128,7 @@
 		"tokenAddress": "0x7f90122bf0700f9e7e1f688fe926940e8839f353",
 		"type": "Yearn Vault",
 		"kind": "",
+		"extraProperties": {},
 		"version": "0.4.3",
 		"chainID": 42161,
 		"blockNumber": 15542281
@@ -115,6 +139,7 @@
 		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
@@ -125,6 +150,7 @@
 		"tokenAddress": "0xfd8aee8fcc10aac1897f8d5271d112810c79e022",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -135,6 +161,7 @@
 		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
@@ -145,6 +172,7 @@
 		"tokenAddress": "0x3803d89c31de8b7def55c86f2469a5ea4db41b92",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -155,6 +183,7 @@
 		"tokenAddress": "0x59bf0545fca0e5ad48e13da269facd2e8c886ba4",
 		"type": "Experimental Yearn Vault",
 		"kind": "Legacy",
+		"extraProperties": {},
 		"version": "0.4.3",
 		"chainID": 42161,
 		"blockNumber": 20340382
@@ -165,6 +194,7 @@
 		"tokenAddress": "0x08a152834de126d2ef83d612ff36e4523fd0017f",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -175,9 +205,36 @@
 		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
+	},
+	"0x723a85b4554d79ed20e061efc64c5a6e04f196aa": {
+		"address": "0x723a85b4554d79ed20e061efc64c5a6e04f196aa",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0xDa3b69a45797DCA697Ff5bB2c10682f14373c063"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
+	},
+	"0x801c26fcfd916719631e0cf7d36ca1e049df0373": {
+		"address": "0x801c26fcfd916719631e0cf7d36ca1e049df0373",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0xc0ba9bfED28aB46Da48d2B69316A3838698EF3f5"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
 	},
 	"0x8a64111709ce75434b9156e3878cdd5b1fbc2d13": {
 		"address": "0x8a64111709ce75434b9156e3878cdd5b1fbc2d13",
@@ -185,6 +242,7 @@
 		"tokenAddress": "0x99e9028e274feafa2e1d8787e1ee6de39c6f7724",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -195,6 +253,7 @@
 		"tokenAddress": "0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -205,6 +264,7 @@
 		"tokenAddress": "0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -215,6 +275,7 @@
 		"tokenAddress": "0xfa247d0d55a324ca19985577a2cdcfc383d87953",
 		"type": "Experimental Yearn Vault",
 		"kind": "",
+		"extraProperties": {},
 		"version": "0.4.3",
 		"chainID": 42161,
 		"blockNumber": 5591345
@@ -225,6 +286,7 @@
 		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.1",
 		"chainID": 42161,
 		"blockNumber": 192133825
@@ -235,6 +297,7 @@
 		"tokenAddress": "0x6f02c88650837c8dfe89f66723c4743e9cf833cd",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -245,6 +308,7 @@
 		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
@@ -255,6 +319,7 @@
 		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
@@ -265,6 +330,7 @@
 		"tokenAddress": "0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -275,6 +341,7 @@
 		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 183112450
@@ -285,6 +352,7 @@
 		"tokenAddress": "0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3",
 		"type": "Yearn Vault",
 		"kind": "Single Strategy",
+		"extraProperties": {},
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
@@ -295,6 +363,7 @@
 		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.1",
 		"chainID": 42161,
 		"blockNumber": 190123000
@@ -305,6 +374,7 @@
 		"tokenAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
 		"type": "Yearn Vault",
 		"kind": "Multi Strategy",
+		"extraProperties": {},
 		"version": "3.0.1",
 		"chainID": 42161,
 		"blockNumber": 188036869

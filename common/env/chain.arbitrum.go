@@ -74,6 +74,13 @@ var ARBITRUM = TChain{
 			Label:   `PUBLIC_ERC4626`,
 		},
 	},
+	YearnXRegistries: []TContractData{
+		{
+			Address: common.HexToAddress(`0x8020Fb37b21E0eF1707aDa7A914baf44F9045E52`),
+			Block:   20693634,
+			Label:   `POOL_TOGETHER`,
+		},
+	},
 	ExtraVaults: []models.TVaultsFromRegistry{
 		{
 			//yvMIM, alone in it's own registry, not work registering and listening to it

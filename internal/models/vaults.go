@@ -27,15 +27,20 @@ const (
 	VaultCategoryAutomatic TVaultCategoryType = "auto"
 )
 
+type TExtraProperties struct {
+	YieldVaultAddress string `json:"yieldVaultAddress,omitempty"`
+}
+
 type TVaultsFromRegistry struct {
-	Address         common.Address `json:"address"`
-	RegistryAddress common.Address `json:"registryAddress"`
-	TokenAddress    common.Address `json:"tokenAddress"`
-	Type            TTokenType     `json:"type"`
-	Kind            TVaultKind     `json:"kind"`
-	APIVersion      string         `json:"version"`
-	ChainID         uint64         `json:"chainID"`
-	BlockNumber     uint64         `json:"blockNumber"`
+	Address         common.Address   `json:"address"`
+	RegistryAddress common.Address   `json:"registryAddress"`
+	TokenAddress    common.Address   `json:"tokenAddress"`
+	Type            TTokenType       `json:"type"`
+	Kind            TVaultKind       `json:"kind"`
+	ExtraProperties TExtraProperties `json:"extraProperties,omitempty"`
+	APIVersion      string           `json:"version"`
+	ChainID         uint64           `json:"chainID"`
+	BlockNumber     uint64           `json:"blockNumber"`
 }
 
 // TTVL holds the info about the value locked in a vault

@@ -2,11 +2,10 @@ package indexer
 
 import (
 	"math/big"
-	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/contracts"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -16,18 +15,27 @@ import (
 **
 **************************************************************************************************/
 func IndexYearnXPoolTogetherVaults(chainID uint64) (vaults []models.TVaultsFromRegistry) {
-	if chainID != 10 {
+	chain, ok := env.GetChain(chainID)
+	if !ok {
 		return vaults
+	}
+	if len(chain.YearnXRegistries) == 0 {
+		return vaults
+	}
+
+	var registryToUse env.TContractData
+	for _, registry := range chain.YearnXRegistries {
+		if registry.Label == `POOL_TOGETHER` {
+			registryToUse = registry
+			break
+		}
 	}
 
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known vaults for the specified chain ID.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
-	registry, err := contracts.NewPoolTogetherRegistry(
-		common.HexToAddress(`0x0c379e9b71ba7079084ada0d1c1aeb85d24dfd39`),
-		client,
-	)
+	registry, err := contracts.NewPoolTogetherRegistry(registryToUse.Address, client)
 	if err != nil {
 		return vaults
 	}
@@ -41,36 +49,31 @@ func IndexYearnXPoolTogetherVaults(chainID uint64) (vaults []models.TVaultsFromR
 		if err != nil {
 			continue
 		}
-
-		if addresses.Equals(vaultAddress, `0x3a14DdB934e785Cd1e29949EA814e8090D5F8b69`) {
-			continue
-		}
-		if addresses.Equals(vaultAddress, `0x37E49c9dBf195F5D436C7A7610fe703cDcd8147B`) {
+		if addresses.Equals(vaultAddress, `0x8aB157b779C72e2348364b5F8148cC45f63a8724`) {
 			continue
 		}
 
-		if _, ok := storage.GetVaultFromRegistry(chainID, vaultAddress); ok {
-			continue
-		}
-		vaultContract, err := contracts.NewERC4626(vaultAddress, client)
+		// if _, ok := storage.GetVaultFromRegistry(chainID, vaultAddress); ok {
+		// 	continue
+		// }
+		vaultContract, err := contracts.NewPrizeVault(vaultAddress, client)
 		if err != nil {
 			continue
 		}
 		vaultAsset, _ := vaultContract.Asset(nil)
-		vaultName, _ := vaultContract.Name(nil)
-		if !strings.Contains(strings.ToLower(vaultName), `yearn`) {
-			continue
-		}
-
+		yieldVault, err := vaultContract.YieldVault(nil)
 		poolTogetherVault := models.TVaultsFromRegistry{
 			ChainID:         chainID,
 			Address:         vaultAddress,
-			RegistryAddress: common.HexToAddress(`0x0c379e9b71ba7079084ada0d1c1aeb85d24dfd39`),
+			RegistryAddress: registryToUse.Address,
 			TokenAddress:    vaultAsset,
-			APIVersion:      `3.0.2`,
-			BlockNumber:     119_536_717,
+			APIVersion:      `~3.0.2`,
+			BlockNumber:     registryToUse.Block,
 			Type:            models.TTokenType(models.VaultKindSingle),
 			Kind:            models.VaultKindSingle,
+			ExtraProperties: models.TExtraProperties{
+				YieldVaultAddress: yieldVault.String(),
+			},
 		}
 		vaults = append(vaults, poolTogetherVault)
 		storage.StoreNewVaultToRegistry(chainID, poolTogetherVault)

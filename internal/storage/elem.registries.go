@@ -56,10 +56,10 @@ func loadRegistriesFromJson(chainID uint64) (map[common.Address]models.TVaultsFr
 ** JSON file. It takes a map of vault addresses to `TVaultsFromRegistry` objects, and writes this
 ** map to a JSON file. This function is used to save the state of the vaults for later use.
 **************************************************************************************************/
-func StoreRegistriesToJson(chainID uint64, historicalVaults map[common.Address]models.TVaultsFromRegistry) {
+func StoreRegistriesToJson(chainID uint64, registries map[common.Address]models.TVaultsFromRegistry) {
 	chainIDStr := strconv.FormatUint(chainID, 10)
 
-	file, _ := json.MarshalIndent(historicalVaults, "", "\t")
+	file, _ := json.MarshalIndent(registries, "", "\t")
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/registries"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/registries", 0755)
 	}

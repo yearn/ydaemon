@@ -1,11 +1,13 @@
 package apr
 
 import (
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 )
 
 func computeCurrentV3VaultAPY(
@@ -13,22 +15,27 @@ func computeCurrentV3VaultAPY(
 	vaultToken models.TERC20Token,
 ) TVaultAPY {
 	chainID := vault.ChainID
-	ppsPerTime, _ := store.ListPricePerShare(chainID, vault.Address)
+	yieldVault := vault.Address
+	registry, found := storage.GetVaultFromRegistry(chainID, vault.Address)
+	if found && registry.ExtraProperties.YieldVaultAddress != `` {
+		yieldVault = common.HexToAddress(registry.ExtraProperties.YieldVaultAddress)
+	}
+
+	ppsPerTime, _ := store.ListPricePerShare(chainID, yieldVault)
 	ppsInception := bigNumber.NewFloat(1)
 	ppsToday := helpers.GetPPSToday(ppsPerTime, vaultToken.Decimals)
-
 	if ppsToday == nil || ppsToday.IsZero() {
-		ppsToday = ethereum.FetchPPSToday(chainID, vault.Address, vaultToken.Decimals)
+		ppsToday = ethereum.FetchPPSToday(chainID, yieldVault, vaultToken.Decimals)
 	}
 
 	ppsWeekAgo := helpers.GetPPSLastWeek(ppsPerTime, vaultToken.Decimals)
 	if ppsWeekAgo == nil || ppsWeekAgo.IsZero() {
-		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, vault.Address, vaultToken.Decimals)
+		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vaultToken.Decimals)
 	}
 
 	ppsMonthAgo := helpers.GetPPSLastMonth(ppsPerTime, vaultToken.Decimals)
 	if ppsMonthAgo == nil || ppsMonthAgo.IsZero() {
-		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, vault.Address, vaultToken.Decimals)
+		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, yieldVault, vaultToken.Decimals)
 	}
 
 	/**********************************************************************************************

@@ -1,7 +1,7 @@
 {
-	"lastUpdate": "2024-10-28T10:43:44.472737+01:00",
+	"lastUpdate": "2024-10-28T10:49:43.53966+01:00",
 	"version": {
-		"major": 23,
+		"major": 24,
 		"minor": 0,
 		"patch": 14
 	},
@@ -21,7 +21,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xb4a0e65f8d23cfb92ba94cdd726c707b864796d0"],
+			"lastActiveStrategies": [
+				"0xb4a0e65f8d23cfb92ba94cdd726c707b864796d0"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "93502007822593",
 			"metadata": {
@@ -117,7 +119,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -156,7 +160,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x55b0341d9316d24fcb409c8d98e2477364969184"],
+			"lastActiveStrategies": [
+				"0x55b0341d9316d24fcb409c8d98e2477364969184"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -183,7 +189,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -320,7 +328,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -366,7 +376,7 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab",
 				"0x6aceda98725505737c0f00a3da0d047304052948"
 			],
-			"lastPricePerShare": "1037557438304867978",
+			"lastPricePerShare": "1037557866569811961",
 			"lastTotalAssets": "6028989976905208609403224",
 			"metadata": {
 				"isRetired": false,
@@ -431,7 +441,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x8cb3649114051ca5119141a34c200d65dc0faa73"],
+			"lastActiveStrategies": [
+				"0x8cb3649114051ca5119141a34c200d65dc0faa73"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -496,7 +508,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9908540786acc0b2cb5a3fb76c1aa8bf2aa3b5bc"],
+			"lastActiveStrategies": [
+				"0x9908540786acc0b2cb5a3fb76c1aa8bf2aa3b5bc"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -591,7 +605,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -700,7 +716,7 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1642291719619643622",
+			"lastPricePerShare": "1642296612397864540",
 			"lastTotalAssets": "65210602485611428274516",
 			"metadata": {
 				"isRetired": false,
@@ -725,7 +741,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -794,7 +812,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -833,7 +853,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3ed2b9ae4f6b71ea58bed770066a04dad218b1af"],
+			"lastActiveStrategies": [
+				"0x3ed2b9ae4f6b71ea58bed770066a04dad218b1af"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -860,7 +882,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -900,7 +924,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1058967876975359500",
+			"lastPricePerShare": "1058970457426523574",
 			"lastTotalAssets": "508472331053290915342010",
 			"metadata": {
 				"isRetired": false,
@@ -994,7 +1018,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1234,7 +1260,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5e10e27deae12877e23a68cc0d6f1b134b4d517a"],
+			"lastActiveStrategies": [
+				"0x5e10e27deae12877e23a68cc0d6f1b134b4d517a"
+			],
 			"lastPricePerShare": "1105611178112137444",
 			"lastTotalAssets": "6869117836455681020847",
 			"metadata": {
@@ -1261,7 +1289,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1300,7 +1330,9 @@
 			"performanceFee": 500,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x478085739ea884f38add4d36872acd8333b5d4d6"],
+			"lastActiveStrategies": [
+				"0x478085739ea884f38add4d36872acd8333b5d4d6"
+			],
 			"lastPricePerShare": "1050125110136324639",
 			"lastTotalAssets": "31748406226862012043800",
 			"metadata": {
@@ -1365,7 +1397,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x33e7c1718569d9f37b7a154b30ae4f3c9f619a23"],
+			"lastActiveStrategies": [
+				"0x33e7c1718569d9f37b7a154b30ae4f3c9f619a23"
+			],
 			"lastPricePerShare": "1007700682472377666",
 			"lastTotalAssets": "329653378078357079",
 			"metadata": {
@@ -1392,7 +1426,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1431,7 +1467,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa93cb639ae732559ab9315b3a1615e624c32cc59"],
+			"lastActiveStrategies": [
+				"0xa93cb639ae732559ab9315b3a1615e624c32cc59"
+			],
 			"lastPricePerShare": "107196091",
 			"lastTotalAssets": "6531207",
 			"metadata": {
@@ -1497,7 +1535,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3f64bb4c334488765a82a697cb210da9bb876b67"],
+			"lastActiveStrategies": [
+				"0x3f64bb4c334488765a82a697cb210da9bb876b67"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -1590,7 +1630,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1629,7 +1671,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc0c130f7aca4212354ef8ebf88de5e1021b7123e"],
+			"lastActiveStrategies": [
+				"0xc0c130f7aca4212354ef8ebf88de5e1021b7123e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "20108929835544649882",
 			"metadata": {
@@ -1655,7 +1699,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1759,7 +1805,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x0d377efed80f7225656f6d995ce2a8a6f909d44a"],
+			"lastActiveStrategies": [
+				"0x0d377efed80f7225656f6d995ce2a8a6f909d44a"
+			],
 			"lastPricePerShare": "1086293291929898982",
 			"lastTotalAssets": "25727813891917962826",
 			"metadata": {
@@ -1825,8 +1873,10 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa323cccbcbade7806ca5bb9951bebd89a7882bf8"],
-			"lastPricePerShare": "1455004142277671549",
+			"lastActiveStrategies": [
+				"0xa323cccbcbade7806ca5bb9951bebd89a7882bf8"
+			],
+			"lastPricePerShare": "1455010818735758923",
 			"lastTotalAssets": "10503725897658546921219714",
 			"metadata": {
 				"isRetired": false,
@@ -1890,7 +1940,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9e241d9818f918511cc1214589eee3aecbb53072"],
+			"lastActiveStrategies": [
+				"0x9e241d9818f918511cc1214589eee3aecbb53072"
+			],
 			"lastPricePerShare": "1038518801690273855",
 			"lastTotalAssets": "31305400029005075414",
 			"metadata": {
@@ -1917,7 +1969,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1986,7 +2040,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2165,7 +2221,7 @@
 				"0x167e0fc591abf5ab77434e115ecf0fbbace39a54",
 				"0x103f3fb1ec32a85f4692df1b4b18c428dbac59da"
 			],
-			"lastPricePerShare": "1100758498096816117",
+			"lastPricePerShare": "1100763124883900317",
 			"lastTotalAssets": "62748637961103841099",
 			"metadata": {
 				"isRetired": false,
@@ -2191,7 +2247,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2230,7 +2288,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2fa2e992bb5c68a8b61cbfa995431afbd0a4db11"],
+			"lastActiveStrategies": [
+				"0x2fa2e992bb5c68a8b61cbfa995431afbd0a4db11"
+			],
 			"lastPricePerShare": "1469937380658551069",
 			"lastTotalAssets": "1767900607187487479607",
 			"metadata": {
@@ -2256,7 +2316,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2295,7 +2357,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x42c6d09d202c22fe64f41559223db8b2afff6367"],
+			"lastActiveStrategies": [
+				"0x42c6d09d202c22fe64f41559223db8b2afff6367"
+			],
 			"lastPricePerShare": "1037368748266655312",
 			"lastTotalAssets": "3093163976537912284937",
 			"metadata": {
@@ -2322,7 +2386,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2503,7 +2569,7 @@
 				"0x91f008870eef686b61a3775944d55a3fc53b7024",
 				"0x4ce9c93513dff543bc392870d57df8c04e89ba0a"
 			],
-			"lastPricePerShare": "1000704156744000579",
+			"lastPricePerShare": "1000704543924898349",
 			"lastTotalAssets": "6937535169722132477909815",
 			"metadata": {
 				"isRetired": false,
@@ -2632,7 +2698,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3d6532c589a11117a4494d9725bb8518c731f1be"],
+			"lastActiveStrategies": [
+				"0x3d6532c589a11117a4494d9725bb8518c731f1be"
+			],
 			"lastPricePerShare": "1136137848144945585",
 			"lastTotalAssets": "912536887429126604718528",
 			"metadata": {
@@ -2729,7 +2797,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2834,7 +2904,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xffb5fdbbd42c567830f258a9c56aefea976e2310"],
+			"lastActiveStrategies": [
+				"0xffb5fdbbd42c567830f258a9c56aefea976e2310"
+			],
 			"lastPricePerShare": "100000000",
 			"lastTotalAssets": "1907728",
 			"metadata": {
@@ -2966,7 +3038,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x4a300b67b5ec68ef7b57e5ccd4d60d17b2cd2d28"],
+			"lastActiveStrategies": [
+				"0x4a300b67b5ec68ef7b57e5ccd4d60d17b2cd2d28"
+			],
 			"lastPricePerShare": "1009148499303206688",
 			"lastTotalAssets": "2219486169938870252405",
 			"metadata": {
@@ -2993,7 +3067,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3032,7 +3108,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2eb648f654b6db98f777d6c71c0fedb961cf278e"],
+			"lastActiveStrategies": [
+				"0x2eb648f654b6db98f777d6c71c0fedb961cf278e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -3059,7 +3137,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3128,7 +3208,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3196,7 +3278,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3327,7 +3411,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3504,7 +3590,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1066031345739102495",
+			"lastPricePerShare": "1066032390128927049",
 			"lastTotalAssets": "811804326417191794553273",
 			"metadata": {
 				"isRetired": false,
@@ -3701,7 +3787,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x4d7da893fded3b84102c5bf209d2fd2550cfb1f4"],
+			"lastActiveStrategies": [
+				"0x4d7da893fded3b84102c5bf209d2fd2550cfb1f4"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -3728,7 +3816,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3767,7 +3857,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3c64fbd61943bea4e14351547dabb834ab9c7711"],
+			"lastActiveStrategies": [
+				"0x3c64fbd61943bea4e14351547dabb834ab9c7711"
+			],
 			"lastPricePerShare": "1021764487569078706",
 			"lastTotalAssets": "10215168672807201178",
 			"metadata": {
@@ -3899,7 +3991,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x07fb6a53185e2f095253099a47f34cd410eb2a89"],
+			"lastActiveStrategies": [
+				"0x07fb6a53185e2f095253099a47f34cd410eb2a89"
+			],
 			"lastPricePerShare": "1077384197500688294",
 			"lastTotalAssets": "21235283696329212",
 			"metadata": {
@@ -3926,7 +4020,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -3966,7 +4062,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1241010857015103396",
+			"lastPricePerShare": "1241010935078949851",
 			"lastTotalAssets": "159568738992066551376",
 			"metadata": {
 				"isRetired": false,
@@ -4128,7 +4224,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -4168,7 +4266,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x1e4e7e1b99539c0762bb4c38a61509bfabcb0d11"],
+			"lastActiveStrategies": [
+				"0x1e4e7e1b99539c0762bb4c38a61509bfabcb0d11"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -4233,7 +4333,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x39e327ac9f875c6685f8a6191688390f48d37274"],
+			"lastActiveStrategies": [
+				"0x39e327ac9f875c6685f8a6191688390f48d37274"
+			],
 			"lastPricePerShare": "1100714985868961191",
 			"lastTotalAssets": "1023339308767380288675477",
 			"metadata": {
@@ -4260,7 +4362,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -4305,7 +4409,7 @@
 				"0xdf5f0577bd56a67fd0844f7ea08649d63a5d5f3c",
 				"0x054f4b8fcb63c5c6abddb4496c129b03682de57b"
 			],
-			"lastPricePerShare": "992886366527534595",
+			"lastPricePerShare": "992887778188677506",
 			"lastTotalAssets": "395223643885843859389818",
 			"metadata": {
 				"isRetired": false,
@@ -4370,7 +4474,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x90551c1795392094fe6d29b758eccd233cfaa260"],
+			"lastActiveStrategies": [
+				"0x90551c1795392094fe6d29b758eccd233cfaa260"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -4435,8 +4541,10 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe3974e44bc08f435da2c6db7d01e1758496da119"],
-			"lastPricePerShare": "1819517044177480687",
+			"lastActiveStrategies": [
+				"0xe3974e44bc08f435da2c6db7d01e1758496da119"
+			],
+			"lastPricePerShare": "1819520572680943869",
 			"lastTotalAssets": "44283670403426373817415588",
 			"metadata": {
 				"isRetired": false,
@@ -4462,7 +4570,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -4501,7 +4611,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x887d9a19eb8116d94924ddef57bd91049fd92533"],
+			"lastActiveStrategies": [
+				"0x887d9a19eb8116d94924ddef57bd91049fd92533"
+			],
 			"lastPricePerShare": "1124524558802004997",
 			"lastTotalAssets": "921133022554160117243094",
 			"metadata": {
@@ -4528,7 +4640,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -4632,7 +4746,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x657c5838656b4965da46f9383db407ddcc3f4034"],
+			"lastActiveStrategies": [
+				"0x657c5838656b4965da46f9383db407ddcc3f4034"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -4794,7 +4910,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -4967,7 +5085,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc76637800a22778c1bbf4315d0e6b61910b1f5d4"],
+			"lastActiveStrategies": [
+				"0xc76637800a22778c1bbf4315d0e6b61910b1f5d4"
+			],
 			"lastPricePerShare": "1086147471348315942",
 			"lastTotalAssets": "70260785161092540401823",
 			"metadata": {
@@ -4994,7 +5114,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5063,7 +5185,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5131,7 +5255,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5240,7 +5366,7 @@
 				"0xecbd24ea29b5cf23fbe658da506589982ef085d4",
 				"0xda00352a66577b2c844678ec78c062a2f68836a5"
 			],
-			"lastPricePerShare": "1223333512326567915",
+			"lastPricePerShare": "1223424818944245846",
 			"lastTotalAssets": "14181792169308504225",
 			"metadata": {
 				"isRetired": false,
@@ -5403,7 +5529,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5442,7 +5570,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3b9bf424be6bf5e21bf0349a02aec2a7fc4be5f4"],
+			"lastActiveStrategies": [
+				"0x3b9bf424be6bf5e21bf0349a02aec2a7fc4be5f4"
+			],
 			"lastPricePerShare": "1029882406011568415",
 			"lastTotalAssets": "79680839726417510760238",
 			"metadata": {
@@ -5468,7 +5598,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5576,7 +5708,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x52fdc7687d77589a589d79003c4aeeeb5eb5adc4"],
+			"lastActiveStrategies": [
+				"0x52fdc7687d77589a589d79003c4aeeeb5eb5adc4"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -5641,7 +5775,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x407780eb70e53ec88c1fb0b40d7192fc757ac5c2"],
+			"lastActiveStrategies": [
+				"0x407780eb70e53ec88c1fb0b40d7192fc757ac5c2"
+			],
 			"lastPricePerShare": "1842808723618954366",
 			"lastTotalAssets": "29149651931272851992773",
 			"metadata": {
@@ -5668,7 +5804,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5737,7 +5875,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5776,7 +5916,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x53664792d9d535d7c85d2ae868fecb3a9a6cb77f"],
+			"lastActiveStrategies": [
+				"0x53664792d9d535d7c85d2ae868fecb3a9a6cb77f"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -5802,7 +5944,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5868,7 +6012,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -5907,7 +6053,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe4ed9e97b02db76a7727c0ee4567c96fb47f57bf"],
+			"lastActiveStrategies": [
+				"0xe4ed9e97b02db76a7727c0ee4567c96fb47f57bf"
+			],
 			"lastPricePerShare": "1011974466494083841",
 			"lastTotalAssets": "2538507804906040200",
 			"metadata": {
@@ -5977,7 +6125,7 @@
 				"0xd5d388d8331fcbd4af0dfae9be14c2c34897cf24",
 				"0x05086056e7111346e246e5b97153ae8cc6fc4a71"
 			],
-			"lastPricePerShare": "1028862354735603621",
+			"lastPricePerShare": "1028865498368032697",
 			"lastTotalAssets": "148467705952479079431565",
 			"metadata": {
 				"isRetired": false,
@@ -6070,7 +6218,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6138,7 +6288,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6243,7 +6395,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x808e128afd1cdd640525645fdf999f4f0638346d"],
+			"lastActiveStrategies": [
+				"0x808e128afd1cdd640525645fdf999f4f0638346d"
+			],
 			"lastPricePerShare": "1091755326938904139",
 			"lastTotalAssets": "63516441813022486184984",
 			"metadata": {
@@ -6270,7 +6424,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6315,7 +6471,7 @@
 				"0x206db0a0af10bec57784045e089a418771d20227",
 				"0xed48069a2b9982b4eec646cbfa7b81d181f9400b"
 			],
-			"lastPricePerShare": "1008552",
+			"lastPricePerShare": "1008553",
 			"lastTotalAssets": "6368373720761",
 			"metadata": {
 				"isRetired": false,
@@ -6379,7 +6535,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xaa354088f930d32b8aaa94a1cb13fa0deaf4482e"],
+			"lastActiveStrategies": [
+				"0xaa354088f930d32b8aaa94a1cb13fa0deaf4482e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -6406,7 +6564,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6446,7 +6606,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa35b7a9fe5dc4cd51ba47acdf67b0f41c893329a"],
+			"lastActiveStrategies": [
+				"0xa35b7a9fe5dc4cd51ba47acdf67b0f41c893329a"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -6541,7 +6703,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6609,7 +6773,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6675,7 +6841,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6783,7 +6951,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc8b55e29a05d7f31790ca8f9d0bd8aa7b4b15b85"],
+			"lastActiveStrategies": [
+				"0xc8b55e29a05d7f31790ca8f9d0bd8aa7b4b15b85"
+			],
 			"lastPricePerShare": "100000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -6849,7 +7019,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x916011bd2d333fba14dbb8bf0bdf01e3384fd2e6"],
+			"lastActiveStrategies": [
+				"0x916011bd2d333fba14dbb8bf0bdf01e3384fd2e6"
+			],
 			"lastPricePerShare": "1055309524466787207",
 			"lastTotalAssets": "1075225914388863179506039",
 			"metadata": {
@@ -6875,7 +7047,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -6914,7 +7088,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa04fe40ed8a8a8d657e41276ec9e9ee877675e34"],
+			"lastActiveStrategies": [
+				"0xa04fe40ed8a8a8d657e41276ec9e9ee877675e34"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "26147073174677997127",
 			"metadata": {
@@ -6981,7 +7157,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x473f0adec308dc82440665d9fc7d5e26ebcf0e05"],
+			"lastActiveStrategies": [
+				"0x473f0adec308dc82440665d9fc7d5e26ebcf0e05"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "1000000000000000000",
 			"metadata": {
@@ -7051,7 +7229,7 @@
 				"0x24788d1468eebb6a57ab8ab94a307f8b31bb2e81",
 				"0x961082de19e9cf87bb4850f6f347407be89d9ebb"
 			],
-			"lastPricePerShare": "1153491270537716219",
+			"lastPricePerShare": "1153493324272107060",
 			"lastTotalAssets": "48800501039320719873451",
 			"metadata": {
 				"isRetired": false,
@@ -7250,7 +7428,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x4424d0c829316dcec5701a4e2b30b368721e0a10"],
+			"lastActiveStrategies": [
+				"0x4424d0c829316dcec5701a4e2b30b368721e0a10"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "1799423435378397568448",
 			"metadata": {
@@ -7381,7 +7561,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x13934ae7cbfcd53360dd956666f90221d805ac8c"],
+			"lastActiveStrategies": [
+				"0x13934ae7cbfcd53360dd956666f90221d805ac8c"
+			],
 			"lastPricePerShare": "1029642769234918699",
 			"lastTotalAssets": "46761415577005795334674",
 			"metadata": {
@@ -7408,7 +7590,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -7541,7 +7725,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -7651,7 +7837,7 @@
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
 				"0x059b1507b22267fc1cda8b6d2fbf2cab5d7a1ce5"
 			],
-			"lastPricePerShare": "1078257",
+			"lastPricePerShare": "1078258",
 			"lastTotalAssets": "6414359415281",
 			"metadata": {
 				"isRetired": false,
@@ -7716,7 +7902,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x96076472e426d939155ccad475d6f900a6067168"],
+			"lastActiveStrategies": [
+				"0x96076472e426d939155ccad475d6f900a6067168"
+			],
 			"lastPricePerShare": "1225152703008193636",
 			"lastTotalAssets": "539888163095641969018205",
 			"metadata": {
@@ -7743,7 +7931,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -7912,7 +8102,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x7b5cb4694b0a299ed2f65db7d87b286461549e84"],
+			"lastActiveStrategies": [
+				"0x7b5cb4694b0a299ed2f65db7d87b286461549e84"
+			],
 			"lastPricePerShare": "1097874304883871833",
 			"lastTotalAssets": "5477043745765029038",
 			"metadata": {
@@ -7939,7 +8131,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8005,7 +8199,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8074,7 +8270,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8142,7 +8340,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8211,7 +8411,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8279,7 +8481,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8519,7 +8723,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xaa1c21f4ab475b2e12bc7a56f7b60610e201dcf6"],
+			"lastActiveStrategies": [
+				"0xaa1c21f4ab475b2e12bc7a56f7b60610e201dcf6"
+			],
 			"lastPricePerShare": "1000027774039638538",
 			"lastTotalAssets": "706279063107420",
 			"metadata": {
@@ -8584,7 +8790,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc7ef34bfef71c54c23f072bd1a57d74d02fd125d"],
+			"lastActiveStrategies": [
+				"0xc7ef34bfef71c54c23f072bd1a57d74d02fd125d"
+			],
 			"lastPricePerShare": "1000403106008410054",
 			"lastTotalAssets": "4932368166249857201",
 			"metadata": {
@@ -8611,7 +8819,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8651,7 +8861,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc44fa9defc3fcaef37ee83b2dc4570f77e5597b0"],
+			"lastActiveStrategies": [
+				"0xc44fa9defc3fcaef37ee83b2dc4570f77e5597b0"
+			],
 			"lastPricePerShare": "1001153747446859968",
 			"lastTotalAssets": "2150192315894918078359",
 			"metadata": {
@@ -8746,7 +8958,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8946,7 +9160,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -8986,7 +9202,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x95d69641ed7ecaa5e7d5539f56dc6194b5bcd7fa"],
+			"lastActiveStrategies": [
+				"0x95d69641ed7ecaa5e7d5539f56dc6194b5bcd7fa"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -9051,7 +9269,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xd58fe05e7a9327cf48377a780cdce0a17df6965b"],
+			"lastActiveStrategies": [
+				"0xd58fe05e7a9327cf48377a780cdce0a17df6965b"
+			],
 			"lastPricePerShare": "1368900295772430206",
 			"lastTotalAssets": "56337999029790128569965",
 			"metadata": {
@@ -9078,7 +9298,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -9118,7 +9340,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1094725",
+			"lastPricePerShare": "1094726",
 			"lastTotalAssets": "120061460935",
 			"metadata": {
 				"isRetired": false,
@@ -9251,7 +9473,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x282e8af431d082d4a27251588315954b9bec341b"],
+			"lastActiveStrategies": [
+				"0x282e8af431d082d4a27251588315954b9bec341b"
+			],
 			"lastPricePerShare": "10742852",
 			"lastTotalAssets": "282161268",
 			"metadata": {
@@ -9317,7 +9541,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9a00f6b8d484d670604338d793a6e36249e4322f"],
+			"lastActiveStrategies": [
+				"0x9a00f6b8d484d670604338d793a6e36249e4322f"
+			],
 			"lastPricePerShare": "1000883212234048030",
 			"lastTotalAssets": "899976351886815786927",
 			"metadata": {
@@ -9519,7 +9745,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x318be693d9110035f7ba02b3bade0b79aac97cf2"],
+			"lastActiveStrategies": [
+				"0x318be693d9110035f7ba02b3bade0b79aac97cf2"
+			],
 			"lastPricePerShare": "1351328985372338334",
 			"lastTotalAssets": "151298376036390753176535",
 			"metadata": {
@@ -9546,7 +9774,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -9654,7 +9884,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc1810aa7f733269c39d640f240555d0a4ebf4264"],
+			"lastActiveStrategies": [
+				"0xc1810aa7f733269c39d640f240555d0a4ebf4264"
+			],
 			"lastPricePerShare": "1003703915089621489",
 			"lastTotalAssets": "701360350097428702",
 			"metadata": {
@@ -9719,7 +9951,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x7f2ccf4e38599c4b4a1fb4ac33b32a4796accc03"],
+			"lastActiveStrategies": [
+				"0x7f2ccf4e38599c4b4a1fb4ac33b32a4796accc03"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -9853,7 +10087,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x4977e17b09498476386349a0926461dcdd7ddb6c"],
+			"lastActiveStrategies": [
+				"0x4977e17b09498476386349a0926461dcdd7ddb6c"
+			],
 			"lastPricePerShare": "1085459763698484907",
 			"lastTotalAssets": "635607519932246743830222",
 			"metadata": {
@@ -9880,7 +10116,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -9987,7 +10225,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xfeb97e1f6a64b5b75c5cf33e231f1908e447f96d"],
+			"lastActiveStrategies": [
+				"0xfeb97e1f6a64b5b75c5cf33e231f1908e447f96d"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -10014,7 +10254,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -10053,7 +10295,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa6f84ed655c7ae8d23f497be3546d254e26db778"],
+			"lastActiveStrategies": [
+				"0xa6f84ed655c7ae8d23f497be3546d254e26db778"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -10080,7 +10324,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -10149,7 +10395,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -10189,7 +10437,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002568348088807014",
+			"lastPricePerShare": "1002568806842133195",
 			"lastTotalAssets": "5962642862959018972651035",
 			"metadata": {
 				"isRetired": false,
@@ -10595,8 +10843,10 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"],
-			"lastPricePerShare": "1010580493672644207",
+			"lastActiveStrategies": [
+				"0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"
+			],
+			"lastPricePerShare": "1010581125894689227",
 			"lastTotalAssets": "218623355754453175656",
 			"metadata": {
 				"isRetired": false,
@@ -10691,7 +10941,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -10805,7 +11057,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x1814c6ae1ef934d48505caacd3fb27e39c1522e3"],
+			"lastActiveStrategies": [
+				"0x1814c6ae1ef934d48505caacd3fb27e39c1522e3"
+			],
 			"lastPricePerShare": "1286315224574786066",
 			"lastTotalAssets": "439092626935987109083416842",
 			"metadata": {
@@ -10832,7 +11086,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -10967,7 +11223,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11036,7 +11294,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11144,7 +11404,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x0e6cef7acf6637e6869e62b47962eff121714040"],
+			"lastActiveStrategies": [
+				"0x0e6cef7acf6637e6869e62b47962eff121714040"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -11274,7 +11536,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9a631f009ea64eed2306c1fd34a7e728880a67af"],
+			"lastActiveStrategies": [
+				"0x9a631f009ea64eed2306c1fd34a7e728880a67af"
+			],
 			"lastPricePerShare": "1504457531185611753",
 			"lastTotalAssets": "133022217349361040187",
 			"metadata": {
@@ -11369,7 +11633,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11435,7 +11701,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11475,7 +11743,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xb9261fad596c7ae8631c5de57d51646aa627552a"],
+			"lastActiveStrategies": [
+				"0xb9261fad596c7ae8631c5de57d51646aa627552a"
+			],
 			"lastPricePerShare": "100349573",
 			"lastTotalAssets": "10682474",
 			"metadata": {
@@ -11541,7 +11811,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x8f6695aacceb1675ad38ff529e5fbaebd76942e1"],
+			"lastActiveStrategies": [
+				"0x8f6695aacceb1675ad38ff529e5fbaebd76942e1"
+			],
 			"lastPricePerShare": "1003738705999709125",
 			"lastTotalAssets": "2607066364601367286035",
 			"metadata": {
@@ -11610,7 +11882,7 @@
 				"0x472f4e5533fb8f7fee97dacd3dbae9d83867ab07",
 				"0x045b76468342d765bdaa6d2d74bacee4ecdb6f5b"
 			],
-			"lastPricePerShare": "1039263755472693737",
+			"lastPricePerShare": "1039264250456159165",
 			"lastTotalAssets": "696708365256148227313",
 			"metadata": {
 				"isRetired": false,
@@ -11636,7 +11908,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11675,7 +11949,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xb2690ec8179a220f494dbf486bd8e2e508455fb4"],
+			"lastActiveStrategies": [
+				"0xb2690ec8179a220f494dbf486bd8e2e508455fb4"
+			],
 			"lastPricePerShare": "1206425347396790674",
 			"lastTotalAssets": "300689177894934912441975",
 			"metadata": {
@@ -11702,7 +11978,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11741,7 +12019,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xb7168729933239b9e2c8b1c046055a7aef74516c"],
+			"lastActiveStrategies": [
+				"0xb7168729933239b9e2c8b1c046055a7aef74516c"
+			],
 			"lastPricePerShare": "1892504427686105271",
 			"lastTotalAssets": "170574206537282820441206",
 			"metadata": {
@@ -11768,7 +12048,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11807,7 +12089,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xddb50885f450875f6c15c1e6cb327a3c65e86c66"],
+			"lastActiveStrategies": [
+				"0xddb50885f450875f6c15c1e6cb327a3c65e86c66"
+			],
 			"lastPricePerShare": "1104361333325697521",
 			"lastTotalAssets": "345880052531450799314554",
 			"metadata": {
@@ -11834,7 +12118,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11873,7 +12159,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xd978bfad6d15437ceeac34070cd9ce9050956a87"],
+			"lastActiveStrategies": [
+				"0xd978bfad6d15437ceeac34070cd9ce9050956a87"
+			],
 			"lastPricePerShare": "1111984317042355972",
 			"lastTotalAssets": "494203182652719716282278",
 			"metadata": {
@@ -11900,7 +12188,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -11966,7 +12256,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12035,7 +12327,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12303,7 +12597,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12342,7 +12638,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x36cd87a3231b3fefc6c398746c90bc22e56077df"],
+			"lastActiveStrategies": [
+				"0x36cd87a3231b3fefc6c398746c90bc22e56077df"
+			],
 			"lastPricePerShare": "1001725659625476576",
 			"lastTotalAssets": "63227799612535868302",
 			"metadata": {
@@ -12369,7 +12667,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12438,7 +12738,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12576,7 +12878,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12720,7 +13024,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12824,7 +13130,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x97e8a7f7af2558ef6cb92c31458229422cedcdae"],
+			"lastActiveStrategies": [
+				"0x97e8a7f7af2558ef6cb92c31458229422cedcdae"
+			],
 			"lastPricePerShare": "1113151405837052129",
 			"lastTotalAssets": "282600428305299773515555",
 			"metadata": {
@@ -12851,7 +13159,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -12890,7 +13200,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x37a612b6b46ac4e63b0084432dabe3aca03343c4"],
+			"lastActiveStrategies": [
+				"0x37a612b6b46ac4e63b0084432dabe3aca03343c4"
+			],
 			"lastPricePerShare": "1001145186478962350",
 			"lastTotalAssets": "120677044291911938482",
 			"metadata": {
@@ -12917,7 +13229,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13158,7 +13472,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2463834517152684768",
+			"lastPricePerShare": "2463835246788097112",
 			"lastTotalAssets": "239649604134496204840",
 			"metadata": {
 				"isRetired": false,
@@ -13222,7 +13536,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2b015f3f75d67b0bc5dae4b26b19a07b77797e39"],
+			"lastActiveStrategies": [
+				"0x2b015f3f75d67b0bc5dae4b26b19a07b77797e39"
+			],
 			"lastPricePerShare": "1070100808169458414",
 			"lastTotalAssets": "3740719621117266436",
 			"metadata": {
@@ -13249,7 +13565,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13385,7 +13703,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Yearn"],
+				"protocols": [
+					"Yearn"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13454,7 +13774,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13522,7 +13844,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13591,7 +13915,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13657,7 +13983,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13936,7 +14264,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -13975,7 +14305,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x950acdb04a1b7d852c8184ad4a9d01554baaf86c"],
+			"lastActiveStrategies": [
+				"0x950acdb04a1b7d852c8184ad4a9d01554baaf86c"
+			],
 			"lastPricePerShare": "1506789236357791028",
 			"lastTotalAssets": "996494458098858947654119",
 			"metadata": {
@@ -14002,7 +14334,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14114,7 +14448,7 @@
 				"0xfa5c4a53d49fd936ca2b757f2c64d4007dd87e5b",
 				"0xa279b480428e58c248ae6cc110aaf67fb8237baa"
 			],
-			"lastPricePerShare": "1424258744447501906",
+			"lastPricePerShare": "1424267700534131444",
 			"lastTotalAssets": "2698466438972674244286",
 			"metadata": {
 				"isRetired": false,
@@ -14139,7 +14473,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14178,7 +14514,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": true,
-			"lastActiveStrategies": ["0x3dd9636ca2b554cccd219d73796e80d819c90cba"],
+			"lastActiveStrategies": [
+				"0x3dd9636ca2b554cccd219d73796e80d819c90cba"
+			],
 			"lastPricePerShare": "1222606466551708213",
 			"lastTotalAssets": "1245311623823304114121",
 			"metadata": {
@@ -14204,7 +14542,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14341,7 +14681,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14381,7 +14723,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000194728725772993",
+			"lastPricePerShare": "1000194995213686247",
 			"lastTotalAssets": "5275453953262517409452944",
 			"metadata": {
 				"isRetired": false,
@@ -14471,7 +14813,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14510,7 +14854,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe6e5ec06c73afa2e6d1f53bb909bc051acd753f5"],
+			"lastActiveStrategies": [
+				"0xe6e5ec06c73afa2e6d1f53bb909bc051acd753f5"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "26431833291863545227",
 			"metadata": {
@@ -14536,7 +14882,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14605,7 +14953,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14671,7 +15021,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14780,7 +15132,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x95eef579155cd2c5510f312c8fa39208c3be01a8"],
+			"lastActiveStrategies": [
+				"0x95eef579155cd2c5510f312c8fa39208c3be01a8"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -14875,7 +15229,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -14914,7 +15270,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xffbeea9dd4a9d27c146e1de904b0979961326ec7"],
+			"lastActiveStrategies": [
+				"0xffbeea9dd4a9d27c146e1de904b0979961326ec7"
+			],
 			"lastPricePerShare": "1067962452918821558",
 			"lastTotalAssets": "49133363216670536557957",
 			"metadata": {
@@ -14941,7 +15299,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15009,7 +15369,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15049,7 +15411,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9fb7b4477576fe5b32be4c1843afb1e55f251b33"],
+			"lastActiveStrategies": [
+				"0x9fb7b4477576fe5b32be4c1843afb1e55f251b33"
+			],
 			"lastPricePerShare": "1002063",
 			"lastTotalAssets": "1252866",
 			"metadata": {
@@ -15144,7 +15508,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15183,7 +15549,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xf8126ef025651e1b313a6893fcf4034f4f4bd2aa"],
+			"lastActiveStrategies": [
+				"0xf8126ef025651e1b313a6893fcf4034f4f4bd2aa"
+			],
 			"lastPricePerShare": "1054407111335006333",
 			"lastTotalAssets": "62529421658848730",
 			"metadata": {
@@ -15210,7 +15578,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15348,7 +15718,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15530,7 +15902,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": true,
-			"lastActiveStrategies": ["0x5d98ce7d43c47f23f15f2f55c690acc075658cb1"],
+			"lastActiveStrategies": [
+				"0x5d98ce7d43c47f23f15f2f55c690acc075658cb1"
+			],
 			"lastPricePerShare": "1071900132515662138",
 			"lastTotalAssets": "2463718487993125975",
 			"metadata": {
@@ -15557,7 +15931,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15666,7 +16042,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa9f908da2e3ec7475a743e97bb5b06081b688ae4"],
+			"lastActiveStrategies": [
+				"0xa9f908da2e3ec7475a743e97bb5b06081b688ae4"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -15758,7 +16136,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Yearn"],
+				"protocols": [
+					"Yearn"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15827,7 +16207,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -15866,7 +16248,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x1a930f92c780ff359466472d667738bcf6b294ba"],
+			"lastActiveStrategies": [
+				"0x1a930f92c780ff359466472d667738bcf6b294ba"
+			],
 			"lastPricePerShare": "1001505341596413811",
 			"lastTotalAssets": "351447095030585226",
 			"metadata": {
@@ -16031,7 +16415,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16237,7 +16623,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16306,7 +16694,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16375,7 +16765,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16509,7 +16901,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16548,7 +16942,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa04947059831783c561e59a43b93dcb5bee7cab2"],
+			"lastActiveStrategies": [
+				"0xa04947059831783c561e59a43b93dcb5bee7cab2"
+			],
 			"lastPricePerShare": "1071109979190918577",
 			"lastTotalAssets": "155680290526883715209",
 			"metadata": {
@@ -16574,7 +16970,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16643,7 +17041,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -16881,7 +17281,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xca36627878621ff63239e9819e357e41666317b6"],
+			"lastActiveStrategies": [
+				"0xca36627878621ff63239e9819e357e41666317b6"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -16976,7 +17378,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17120,7 +17524,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17160,7 +17566,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1070527",
+			"lastPricePerShare": "1070528",
 			"lastTotalAssets": "758834985508",
 			"metadata": {
 				"isRetired": false,
@@ -17224,7 +17630,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x86fd69eddcc0d185fc2678aa02aeae67f614b76e"],
+			"lastActiveStrategies": [
+				"0x86fd69eddcc0d185fc2678aa02aeae67f614b76e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -17290,7 +17698,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x6c28899a71ecdcf1f94f2fcaa8845735460f7034"],
+			"lastActiveStrategies": [
+				"0x6c28899a71ecdcf1f94f2fcaa8845735460f7034"
+			],
 			"lastPricePerShare": "1056759226746473121",
 			"lastTotalAssets": "4467546568306556568992",
 			"metadata": {
@@ -17316,7 +17726,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17385,7 +17797,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17453,7 +17867,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17522,7 +17938,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17591,7 +18009,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17631,7 +18051,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5c75263c5390798082cfc389ad38b12196c1c256"],
+			"lastActiveStrategies": [
+				"0x5c75263c5390798082cfc389ad38b12196c1c256"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "123116192392354316",
 			"metadata": {
@@ -17791,7 +18213,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -17899,7 +18323,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1008928131765478942",
+			"lastPricePerShare": "1008929743836364803",
 			"lastTotalAssets": "978432812983084214739751",
 			"metadata": {
 				"isRetired": false,
@@ -17963,7 +18387,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xec93ed9f40792b201e91b7682b51724609e10c03"],
+			"lastActiveStrategies": [
+				"0xec93ed9f40792b201e91b7682b51724609e10c03"
+			],
 			"lastPricePerShare": "1026794713148063193",
 			"lastTotalAssets": "1469173395045326568",
 			"metadata": {
@@ -17990,7 +18416,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18029,7 +18457,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x8792a8cda2828b1cdfd7a349eca40d25399256f9"],
+			"lastActiveStrategies": [
+				"0x8792a8cda2828b1cdfd7a349eca40d25399256f9"
+			],
 			"lastPricePerShare": "1000365784055822225",
 			"lastTotalAssets": "344099042299291",
 			"metadata": {
@@ -18099,7 +18529,7 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1199873866093853892",
+			"lastPricePerShare": "1199878410870932078",
 			"lastTotalAssets": "103045281615089008249",
 			"metadata": {
 				"isRetired": false,
@@ -18125,7 +18555,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18164,7 +18596,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x91c3424a608439fbf3a91b6d954af0577c1b9b8a"],
+			"lastActiveStrategies": [
+				"0x91c3424a608439fbf3a91b6d954af0577c1b9b8a"
+			],
 			"lastPricePerShare": "1196225692544857060",
 			"lastTotalAssets": "11668728954700754113",
 			"metadata": {
@@ -18230,7 +18664,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x05f0656164ae39d237d8b6d112899bd0a3a8f940"],
+			"lastActiveStrategies": [
+				"0x05f0656164ae39d237d8b6d112899bd0a3a8f940"
+			],
 			"lastPricePerShare": "1038071107970340945",
 			"lastTotalAssets": "1226971527464733658418809",
 			"metadata": {
@@ -18257,7 +18693,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18365,7 +18803,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x501bbbef60c407b36ea6b87af4964559c5229b11"],
+			"lastActiveStrategies": [
+				"0x501bbbef60c407b36ea6b87af4964559c5229b11"
+			],
 			"lastPricePerShare": "1000475",
 			"lastTotalAssets": "677731456114",
 			"metadata": {
@@ -18430,7 +18870,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5d411d2cde10e138d68517c42be2808c90c22026"],
+			"lastActiveStrategies": [
+				"0x5d411d2cde10e138d68517c42be2808c90c22026"
+			],
 			"lastPricePerShare": "1003001851527245298",
 			"lastTotalAssets": "2305029849953107027053",
 			"metadata": {
@@ -18561,7 +19003,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x1860cb132ee168da59f1af7577fecf62e771ba87"],
+			"lastActiveStrategies": [
+				"0x1860cb132ee168da59f1af7577fecf62e771ba87"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -18588,7 +19032,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18726,7 +19172,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18899,7 +19347,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3199437193625dccd6f9c9e98bdf93582200eb1f"],
+			"lastActiveStrategies": [
+				"0x3199437193625dccd6f9c9e98bdf93582200eb1f"
+			],
 			"lastPricePerShare": "2362570751356385356",
 			"lastTotalAssets": "93790709962704556599",
 			"metadata": {
@@ -18926,7 +19376,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -18966,7 +19418,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xd8588e04ad8939902a949de496d4fae0be78d8b7"],
+			"lastActiveStrategies": [
+				"0xd8588e04ad8939902a949de496d4fae0be78d8b7"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -19099,7 +19553,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x994a0a0a74cd199c469b1953094b23da8042f96d"],
+			"lastActiveStrategies": [
+				"0x994a0a0a74cd199c469b1953094b23da8042f96d"
+			],
 			"lastPricePerShare": "1106559347161776335",
 			"lastTotalAssets": "129193258338136804394567",
 			"metadata": {
@@ -19126,7 +19582,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -19195,7 +19653,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -19234,7 +19694,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3aa32042cb5f7d75642f5616b804e1519c3a0ba4"],
+			"lastActiveStrategies": [
+				"0x3aa32042cb5f7d75642f5616b804e1519c3a0ba4"
+			],
 			"lastPricePerShare": "1533153096238061650",
 			"lastTotalAssets": "74905463881130802922754",
 			"metadata": {
@@ -19261,7 +19723,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -19367,7 +19831,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xbeef047a543e45807105e51a8bbefcc5950fcfba"],
+			"lastActiveStrategies": [
+				"0xbeef047a543e45807105e51a8bbefcc5950fcfba"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -19432,7 +19898,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe9ac8d34c546cbfdad98f9a4546db5fe08d01bf2"],
+			"lastActiveStrategies": [
+				"0xe9ac8d34c546cbfdad98f9a4546db5fe08d01bf2"
+			],
 			"lastPricePerShare": "1020753067207344014",
 			"lastTotalAssets": "5264055490375908892",
 			"metadata": {
@@ -19459,7 +19927,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -19498,7 +19968,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2b982be433093a80e1801a0dd894994a170a5025"],
+			"lastActiveStrategies": [
+				"0x2b982be433093a80e1801a0dd894994a170a5025"
+			],
 			"lastPricePerShare": "1000978",
 			"lastTotalAssets": "604814",
 			"metadata": {
@@ -19633,7 +20105,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3292247473409580770",
+			"lastPricePerShare": "3292248205169672967",
 			"lastTotalAssets": "19714106964468646",
 			"metadata": {
 				"isRetired": false,
@@ -19793,7 +20265,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -19903,7 +20377,7 @@
 				"0x3927c4ad1d63bf9629fdae1318aa31df9135f544",
 				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6"
 			],
-			"lastPricePerShare": "1073788281692137305",
+			"lastPricePerShare": "1073788910809384765",
 			"lastTotalAssets": "977329180776970270838034",
 			"metadata": {
 				"isRetired": false,
@@ -20062,7 +20536,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -20200,7 +20676,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -20570,7 +21048,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1003423034553802399",
+			"lastPricePerShare": "1003423646475570843",
 			"lastTotalAssets": "600009438742884913554",
 			"metadata": {
 				"isRetired": false,
@@ -20634,7 +21112,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x073afd725da2454d180aeb5e933da2ae79b4ca7e"],
+			"lastActiveStrategies": [
+				"0x073afd725da2454d180aeb5e933da2ae79b4ca7e"
+			],
 			"lastPricePerShare": "1988125182179061055",
 			"lastTotalAssets": "251389185106388329378",
 			"metadata": {
@@ -20661,7 +21141,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -20700,7 +21182,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xf21c28e71b3e96e2f71066868133affe39094762"],
+			"lastActiveStrategies": [
+				"0xf21c28e71b3e96e2f71066868133affe39094762"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -20727,7 +21211,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -20863,7 +21349,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -20902,7 +21390,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5ed61ef2437df5c58a6834dea58d3557d6a812e9"],
+			"lastActiveStrategies": [
+				"0x5ed61ef2437df5c58a6834dea58d3557d6a812e9"
+			],
 			"lastPricePerShare": "1282794807182978581",
 			"lastTotalAssets": "339688697401194569018",
 			"metadata": {
@@ -20928,7 +21418,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21168,7 +21660,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x7fe508ee30316e3261079e2c81f4451e0445103b"],
+			"lastActiveStrategies": [
+				"0x7fe508ee30316e3261079e2c81f4451e0445103b"
+			],
 			"lastPricePerShare": "1993421298729529618",
 			"lastTotalAssets": "1562562245735893622255255",
 			"metadata": {
@@ -21195,7 +21689,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21264,7 +21760,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21332,7 +21830,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21714,7 +22214,7 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1336031514047915763",
+			"lastPricePerShare": "1336035334791848649",
 			"lastTotalAssets": "1178634301196294765285464",
 			"metadata": {
 				"isRetired": false,
@@ -21740,7 +22240,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21879,7 +22381,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -21987,7 +22491,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3a4a18f238e75ba24ad0a65c554d56cc920f0f78"],
+			"lastActiveStrategies": [
+				"0x3a4a18f238e75ba24ad0a65c554d56cc920f0f78"
+			],
 			"lastPricePerShare": "1118885774405786261",
 			"lastTotalAssets": "570818416603063591255663",
 			"metadata": {
@@ -22014,7 +22520,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22349,7 +22857,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22418,7 +22928,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22457,7 +22969,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x7641eb9493d35637cf65c7404a592351e934761c"],
+			"lastActiveStrategies": [
+				"0x7641eb9493d35637cf65c7404a592351e934761c"
+			],
 			"lastPricePerShare": "1099769905711827358",
 			"lastTotalAssets": "4021989980671218848997",
 			"metadata": {
@@ -22484,7 +22998,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22623,7 +23139,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22662,7 +23180,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xd31ebd8db3bc5ed1f994d022db6ef7d51773eb9f"],
+			"lastActiveStrategies": [
+				"0xd31ebd8db3bc5ed1f994d022db6ef7d51773eb9f"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -22689,7 +23209,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22824,7 +23346,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -22999,7 +23523,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xac5da2ca938a7328de563d7d7209370e24bfd21e"],
+			"lastActiveStrategies": [
+				"0xac5da2ca938a7328de563d7d7209370e24bfd21e"
+			],
 			"lastPricePerShare": "1009675898057449538",
 			"lastTotalAssets": "92433929080331931",
 			"metadata": {
@@ -23074,7 +23600,7 @@
 				"0xd8b27cf359b7d15710a5be299af6e7bf904984c2",
 				"0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c"
 			],
-			"lastPricePerShare": "1021410210480806507",
+			"lastPricePerShare": "1021410757562280781",
 			"lastTotalAssets": "650538691834409222546",
 			"metadata": {
 				"isRetired": false,
@@ -23168,7 +23694,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -23237,7 +23765,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -23277,7 +23807,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5c20b550819128074fd538edf79791733ccedd18"],
+			"lastActiveStrategies": [
+				"0x5c20b550819128074fd538edf79791733ccedd18"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -23372,7 +23904,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -23417,7 +23951,7 @@
 				"0xf6e2d36c489e5b361cdc962d4568cea663ad5ddc",
 				"0x797dd80692c3b2dadabce8e30c07fde5307d48a9"
 			],
-			"lastPricePerShare": "1024932",
+			"lastPricePerShare": "1024933",
 			"lastTotalAssets": "28853019375",
 			"metadata": {
 				"isRetired": false,
@@ -23621,7 +24155,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1284470852492264094",
+			"lastPricePerShare": "1284471186273950233",
 			"lastTotalAssets": "10455479218226790120769",
 			"metadata": {
 				"isRetired": false,
@@ -23685,7 +24219,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3aa2264ae162c7126d48190ef6b53a4c6e6dd6f0"],
+			"lastActiveStrategies": [
+				"0x3aa2264ae162c7126d48190ef6b53a4c6e6dd6f0"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "30838954120624977",
 			"metadata": {
@@ -23711,7 +24247,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -23821,7 +24359,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x6cfc23f8c12d411e0c40b48bcbbf4830a01c2be3"],
+			"lastActiveStrategies": [
+				"0x6cfc23f8c12d411e0c40b48bcbbf4830a01c2be3"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -24186,7 +24726,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -24361,7 +24903,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3375799f724edaa4f74e18ed6421fd5445df37d4"],
+			"lastActiveStrategies": [
+				"0x3375799f724edaa4f74e18ed6421fd5445df37d4"
+			],
 			"lastPricePerShare": "1130695711011851330",
 			"lastTotalAssets": "521309210185392951685465",
 			"metadata": {
@@ -24388,7 +24932,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -24427,7 +24973,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xb939babbce109de047e43e5a8fddf254e8e545de"],
+			"lastActiveStrategies": [
+				"0xb939babbce109de047e43e5a8fddf254e8e545de"
+			],
 			"lastPricePerShare": "1062183756025662299",
 			"lastTotalAssets": "259201444718420684453653",
 			"metadata": {
@@ -24454,7 +25002,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -24523,7 +25073,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -24563,7 +25115,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2c25f6c25770ffec5959d34b94bf898865e5d6b1"],
+			"lastActiveStrategies": [
+				"0x2c25f6c25770ffec5959d34b94bf898865e5d6b1"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -24658,7 +25212,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -25029,7 +25585,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025162520866594367",
+			"lastPricePerShare": "1025162904752668379",
 			"lastTotalAssets": "153065799997448568222",
 			"metadata": {
 				"isRetired": false,
@@ -25093,7 +25649,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x74be9eb35b07f6fc8d767b9f980c1d7854bf0364"],
+			"lastActiveStrategies": [
+				"0x74be9eb35b07f6fc8d767b9f980c1d7854bf0364"
+			],
 			"lastPricePerShare": "1000898159130851173",
 			"lastTotalAssets": "5161550505925987260",
 			"metadata": {
@@ -25228,7 +25786,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x812d922c7ac72971daa5668fedb1a5c380fdff1f"],
+			"lastActiveStrategies": [
+				"0x812d922c7ac72971daa5668fedb1a5c380fdff1f"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -25634,7 +26194,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x86e454d31a76d38345b548bf7de7eddc6b177e8f"],
+			"lastActiveStrategies": [
+				"0x86e454d31a76d38345b548bf7de7eddc6b177e8f"
+			],
 			"lastPricePerShare": "1059741618854991343",
 			"lastTotalAssets": "1128167724786110216905",
 			"metadata": {
@@ -25660,7 +26222,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -25999,7 +26563,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26202,7 +26768,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26314,7 +26882,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1007381216351964399",
+			"lastPricePerShare": "1007381282344963016",
 			"lastTotalAssets": "501257218876276902863136",
 			"metadata": {
 				"isRetired": false,
@@ -26384,7 +26952,7 @@
 				"0x05329aab081b125eef7fbbc8b857428d478e692b",
 				"0xbf2e5bed692c09af8b39677e315f36adf39bd685"
 			],
-			"lastPricePerShare": "1029653897181157046",
+			"lastPricePerShare": "1029654652376221430",
 			"lastTotalAssets": "983831070146186791168594",
 			"metadata": {
 				"isRetired": false,
@@ -26478,7 +27046,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26651,7 +27221,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9a0c098f2b404546a208ddcb4798e703eddd3a09"],
+			"lastActiveStrategies": [
+				"0x9a0c098f2b404546a208ddcb4798e703eddd3a09"
+			],
 			"lastPricePerShare": "1059509384750292672",
 			"lastTotalAssets": "444707395119816917023",
 			"metadata": {
@@ -26678,7 +27250,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26812,7 +27386,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26851,7 +27427,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x179e7f502d3b410955d1a7d2047058f70fb812af"],
+			"lastActiveStrategies": [
+				"0x179e7f502d3b410955d1a7d2047058f70fb812af"
+			],
 			"lastPricePerShare": "1052483530348744231",
 			"lastTotalAssets": "90887109626419",
 			"metadata": {
@@ -26947,7 +27525,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -26986,7 +27566,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x02b348d77434c602e89e6ab4d93f2dc6577aeea3"],
+			"lastActiveStrategies": [
+				"0x02b348d77434c602e89e6ab4d93f2dc6577aeea3"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -27013,7 +27595,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27118,7 +27702,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x2411802d8bea09be0af8fd8d08314a63e706b29c"],
+			"lastActiveStrategies": [
+				"0x2411802d8bea09be0af8fd8d08314a63e706b29c"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -27183,7 +27769,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xf56ffe4f6a86af30be0e2fb7c9db8c99f469a9dd"],
+			"lastActiveStrategies": [
+				"0xf56ffe4f6a86af30be0e2fb7c9db8c99f469a9dd"
+			],
 			"lastPricePerShare": "1111166648402484748",
 			"lastTotalAssets": "1086827496635791071387108",
 			"metadata": {
@@ -27210,7 +27798,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27326,7 +27916,7 @@
 				"0x365cc9c28df1663fa37c565a3ac1addc3a219e15",
 				"0xc7bae383738274ea8c3292d53afbb3b42b348df0"
 			],
-			"lastPricePerShare": "1012724683117308509",
+			"lastPricePerShare": "1012724898637935408",
 			"lastTotalAssets": "316515809723976183745",
 			"metadata": {
 				"isRetired": false,
@@ -27390,7 +27980,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5582b3b21cad1eff2c31398d61665bd13d3fc9f9"],
+			"lastActiveStrategies": [
+				"0x5582b3b21cad1eff2c31398d61665bd13d3fc9f9"
+			],
 			"lastPricePerShare": "1065756796741938495",
 			"lastTotalAssets": "1468262637180644081649",
 			"metadata": {
@@ -27417,7 +28009,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27486,7 +28080,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27526,7 +28122,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1001656559456889729",
+			"lastPricePerShare": "1001657250369592138",
 			"lastTotalAssets": "158325539995649394701",
 			"metadata": {
 				"isRetired": false,
@@ -27620,7 +28216,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27659,7 +28257,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xbcf42b0b250fb683439eab4265821dea8697d3a4"],
+			"lastActiveStrategies": [
+				"0xbcf42b0b250fb683439eab4265821dea8697d3a4"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -27686,7 +28286,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27756,7 +28358,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27826,7 +28430,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27865,7 +28471,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x530985cc0a35ab180d0f2ec57aa7b41a8913a432"],
+			"lastActiveStrategies": [
+				"0x530985cc0a35ab180d0f2ec57aa7b41a8913a432"
+			],
 			"lastPricePerShare": "1000059592567797378",
 			"lastTotalAssets": "352106496713460020482",
 			"metadata": {
@@ -27892,7 +28500,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -27932,7 +28542,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x73deb43c657119e33da84b5a0e01b2b0b4df6ece"],
+			"lastActiveStrategies": [
+				"0x73deb43c657119e33da84b5a0e01b2b0b4df6ece"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "1001000000000000",
 			"metadata": {
@@ -28026,7 +28638,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -28094,7 +28708,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -28133,7 +28749,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5639c29df481463da17d3e144d84e8fc1fd96e50"],
+			"lastActiveStrategies": [
+				"0x5639c29df481463da17d3e144d84e8fc1fd96e50"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "345337417",
 			"metadata": {
@@ -28199,7 +28817,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x3e14d864e4e82ed98849bf666971f39cf49ca986"],
+			"lastActiveStrategies": [
+				"0x3e14d864e4e82ed98849bf666971f39cf49ca986"
+			],
 			"lastPricePerShare": "100298661",
 			"lastTotalAssets": "1641860",
 			"metadata": {
@@ -28339,7 +28959,7 @@
 				"0xbbbe0410ac3e0cd29bb1e8fbfad4caf36b0018f0",
 				"0x74e37a751e163f66148402198da13df5dc47cfaf"
 			],
-			"lastPricePerShare": "1003460293658745872",
+			"lastPricePerShare": "1003461511519328763",
 			"lastTotalAssets": "1668017525867278706866746",
 			"metadata": {
 				"isRetired": false,
@@ -28433,7 +29053,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -28541,7 +29163,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x4bf43882ebfa3e8f43ce238634abfbd2ace4e45a"],
+			"lastActiveStrategies": [
+				"0x4bf43882ebfa3e8f43ce238634abfbd2ace4e45a"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -28568,7 +29192,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -28809,7 +29435,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc87c0459afff408cdc43ba66a14787a9f69421e8"],
+			"lastActiveStrategies": [
+				"0xc87c0459afff408cdc43ba66a14787a9f69421e8"
+			],
 			"lastPricePerShare": "1021650632846528034",
 			"lastTotalAssets": "2301626331072716671",
 			"metadata": {
@@ -28942,7 +29570,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe92b3d2e0bdd5255610eafe248334be922329fab"],
+			"lastActiveStrategies": [
+				"0xe92b3d2e0bdd5255610eafe248334be922329fab"
+			],
 			"lastPricePerShare": "1050935595430606743",
 			"lastTotalAssets": "52012881867594556584",
 			"metadata": {
@@ -29102,7 +29732,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29141,7 +29773,9 @@
 			"performanceFee": 5000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x57505ac8dac3ce916a48b115e4003dc5587372c7"],
+			"lastActiveStrategies": [
+				"0x57505ac8dac3ce916a48b115e4003dc5587372c7"
+			],
 			"lastPricePerShare": "1103361336856128292",
 			"lastTotalAssets": "129981325086166037625",
 			"metadata": {
@@ -29168,7 +29802,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29342,7 +29978,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xedb4b647524fc2b9985019190551b197c6ab6c5c"],
+			"lastActiveStrategies": [
+				"0xedb4b647524fc2b9985019190551b197c6ab6c5c"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -29368,7 +30006,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29437,7 +30077,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29477,7 +30119,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xed48069a2b9982b4eec646cbfa7b81d181f9400b"],
+			"lastActiveStrategies": [
+				"0xed48069a2b9982b4eec646cbfa7b81d181f9400b"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -29572,7 +30216,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29611,7 +30257,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe5ce88822978306be57b102a1a2ae47d1143c04e"],
+			"lastActiveStrategies": [
+				"0xe5ce88822978306be57b102a1a2ae47d1143c04e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -29638,7 +30286,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29706,7 +30356,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29745,7 +30397,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x04824d4872949dfb6f256487459d3807a9a0599a"],
+			"lastActiveStrategies": [
+				"0x04824d4872949dfb6f256487459d3807a9a0599a"
+			],
 			"lastPricePerShare": "1031776034252886163",
 			"lastTotalAssets": "172320837500604413964014",
 			"metadata": {
@@ -29772,7 +30426,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -29880,7 +30536,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x68bbd83a0ff896c2328b9c5bdd9977855544f15e"],
+			"lastActiveStrategies": [
+				"0x68bbd83a0ff896c2328b9c5bdd9977855544f15e"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -29945,7 +30603,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xf88345738c1c950d5a82d6bb77fc00de464ac13d"],
+			"lastActiveStrategies": [
+				"0xf88345738c1c950d5a82d6bb77fc00de464ac13d"
+			],
 			"lastPricePerShare": "1165195216409538256",
 			"lastTotalAssets": "1706431071265295650562",
 			"metadata": {
@@ -29972,7 +30632,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30011,7 +30673,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5796698a29f3626c9fe13c4d3d3dee987c84ebb3"],
+			"lastActiveStrategies": [
+				"0x5796698a29f3626c9fe13c4d3d3dee987c84ebb3"
+			],
 			"lastPricePerShare": "1070941123821623566",
 			"lastTotalAssets": "62236240035365804860795",
 			"metadata": {
@@ -30038,7 +30702,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30219,7 +30885,7 @@
 				"0x3280499298ace3fd3cd9c2558e9e8746ace3e52d",
 				"0x01d127d90513ccb6071f83efe15611c4d9890668"
 			],
-			"lastPricePerShare": "1141471169009566492",
+			"lastPricePerShare": "1141472832657362834",
 			"lastTotalAssets": "17511612615956704787606876",
 			"metadata": {
 				"isRetired": false,
@@ -30315,7 +30981,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30456,7 +31124,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30496,7 +31166,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x1d06ce81d7c4a42e60040c5664595fb6b87d86b5"],
+			"lastActiveStrategies": [
+				"0x1d06ce81d7c4a42e60040c5664595fb6b87d86b5"
+			],
 			"lastPricePerShare": "1002716147402462786",
 			"lastTotalAssets": "3701246580077639480",
 			"metadata": {
@@ -30627,7 +31299,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x9084b5a98e3b4b257affd82ae4a1753f87906dce"],
+			"lastActiveStrategies": [
+				"0x9084b5a98e3b4b257affd82ae4a1753f87906dce"
+			],
 			"lastPricePerShare": "1098425989399406290",
 			"lastTotalAssets": "2961280004025787145707",
 			"metadata": {
@@ -30654,7 +31328,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30694,8 +31370,10 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5b4f1009c456271407e5de95909979d52aea5557"],
-			"lastPricePerShare": "1006983026398639756",
+			"lastActiveStrategies": [
+				"0x5b4f1009c456271407e5de95909979d52aea5557"
+			],
+			"lastPricePerShare": "1006984078702012043",
 			"lastTotalAssets": "51681182209888713631",
 			"metadata": {
 				"isRetired": false,
@@ -30786,7 +31464,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -30891,7 +31571,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x137f79e5a16bcf14d6a54d1d4cedb00b8ce65838"],
+			"lastActiveStrategies": [
+				"0x137f79e5a16bcf14d6a54d1d4cedb00b8ce65838"
+			],
 			"lastPricePerShare": "1006189498172118057",
 			"lastTotalAssets": "102566082213780892152",
 			"metadata": {
@@ -31026,7 +31708,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x0a5157244e4f82f100a461ca65c7b05c8dacf835"],
+			"lastActiveStrategies": [
+				"0x0a5157244e4f82f100a461ca65c7b05c8dacf835"
+			],
 			"lastPricePerShare": "1065136554030822604",
 			"lastTotalAssets": "104203090393340091731",
 			"metadata": {
@@ -31120,7 +31804,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -31189,7 +31875,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -31228,7 +31916,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5567b3a9d6b7def8a8e8d99678120c8af9a65283"],
+			"lastActiveStrategies": [
+				"0x5567b3a9d6b7def8a8e8d99678120c8af9a65283"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -31255,7 +31945,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -31295,7 +31987,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x83f20f44975d03b1b09e64809b757c47f942beea"],
+			"lastActiveStrategies": [
+				"0x83f20f44975d03b1b09e64809b757c47f942beea"
+			],
 			"lastPricePerShare": "1035441404029514328",
 			"lastTotalAssets": "782157750709054742326772",
 			"metadata": {
@@ -31389,7 +32083,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -31630,7 +32326,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x7ee351aa702c8fc735d77fb229b7676ac15d7c79"],
+			"lastActiveStrategies": [
+				"0x7ee351aa702c8fc735d77fb229b7676ac15d7c79"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "1000000",
 			"metadata": {
@@ -31793,7 +32491,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -31966,7 +32666,9 @@
 			"performanceFee": 1000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x566ff03cfdf9bdcda9d7a2d99180ddbd5e3b06d2"],
+			"lastActiveStrategies": [
+				"0x566ff03cfdf9bdcda9d7a2d99180ddbd5e3b06d2"
+			],
 			"lastPricePerShare": "1225362908814334490",
 			"lastTotalAssets": "503036951580901054837",
 			"metadata": {
@@ -31992,7 +32694,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32032,7 +32736,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002156",
+			"lastPricePerShare": "1002157",
 			"lastTotalAssets": "1247990197568",
 			"metadata": {
 				"isRetired": false,
@@ -32096,7 +32800,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5fd3815dcb668200a662114fbc9af13ac0a55b4d"],
+			"lastActiveStrategies": [
+				"0x5fd3815dcb668200a662114fbc9af13ac0a55b4d"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -32122,7 +32828,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32192,7 +32900,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32326,7 +33036,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32366,7 +33078,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x144e52050a2b6e3a36949f3e09785e526cc90c72"],
+			"lastActiveStrategies": [
+				"0x144e52050a2b6e3a36949f3e09785e526cc90c72"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "511271387",
 			"metadata": {
@@ -32593,7 +33307,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32731,7 +33447,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32771,7 +33489,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1032125541181162957",
+			"lastPricePerShare": "1032126957922360320",
 			"lastTotalAssets": "19898002171014602238",
 			"metadata": {
 				"isRetired": false,
@@ -32835,7 +33553,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x791f11d3d07263d45e7889307667ac3e47f36655"],
+			"lastActiveStrategies": [
+				"0x791f11d3d07263d45e7889307667ac3e47f36655"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -32861,7 +33581,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -32900,7 +33622,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xc34229096524feb4834c0cef82774010fe0a931a"],
+			"lastActiveStrategies": [
+				"0xc34229096524feb4834c0cef82774010fe0a931a"
+			],
 			"lastPricePerShare": "1065667304704515342",
 			"lastTotalAssets": "1160735027080357365",
 			"metadata": {
@@ -32927,7 +33651,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -33036,7 +33762,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x30397408a77cd8754b18734bfea5ba28f0152db1"],
+			"lastActiveStrategies": [
+				"0x30397408a77cd8754b18734bfea5ba28f0152db1"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -33101,7 +33829,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa35a4972d74d4b3e4486163066e5ffed6d62b213"],
+			"lastActiveStrategies": [
+				"0xa35a4972d74d4b3e4486163066e5ffed6d62b213"
+			],
 			"lastPricePerShare": "1012764485595261611",
 			"lastTotalAssets": "32308093914850952",
 			"metadata": {
@@ -33367,7 +34097,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x5c20b550819128074fd538edf79791733ccedd18"],
+			"lastActiveStrategies": [
+				"0x5c20b550819128074fd538edf79791733ccedd18"
+			],
 			"lastPricePerShare": "1000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -33433,7 +34165,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000709107008992676",
+			"lastPricePerShare": "1000710583558403146",
 			"lastTotalAssets": "114682460501835387269414",
 			"metadata": {
 				"isRetired": false,
@@ -33777,7 +34509,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x94c818e3e024493808692e2ae782f3ce7fadc456"],
+			"lastActiveStrategies": [
+				"0x94c818e3e024493808692e2ae782f3ce7fadc456"
+			],
 			"lastPricePerShare": "1015764501718117121",
 			"lastTotalAssets": "44500421833798538191915",
 			"metadata": {
@@ -33804,7 +34538,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -33844,7 +34580,9 @@
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x512f80e15837c8ac4aaf3f3b57bda92c51f206f5"],
+			"lastActiveStrategies": [
+				"0x512f80e15837c8ac4aaf3f3b57bda92c51f206f5"
+			],
 			"lastPricePerShare": "100000000",
 			"lastTotalAssets": "1005094",
 			"metadata": {
@@ -34071,7 +34809,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34110,7 +34850,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xeae356e858767da76405e43ccf405258a078687b"],
+			"lastActiveStrategies": [
+				"0xeae356e858767da76405e43ccf405258a078687b"
+			],
 			"lastPricePerShare": "1059012765532247216",
 			"lastTotalAssets": "7752146277354286240786",
 			"metadata": {
@@ -34137,7 +34879,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34206,7 +34950,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34275,7 +35021,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34379,7 +35127,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa9a2dfff1f454594ed677d4e71b05bfe3dffa443"],
+			"lastActiveStrategies": [
+				"0xa9a2dfff1f454594ed677d4e71b05bfe3dffa443"
+			],
 			"lastPricePerShare": "1037948726678583889",
 			"lastTotalAssets": "275953119747108465308",
 			"metadata": {
@@ -34405,7 +35155,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34642,7 +35394,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x270101459e9a38db38ba4cb8718ffa31953a9af3"],
+			"lastActiveStrategies": [
+				"0x270101459e9a38db38ba4cb8718ffa31953a9af3"
+			],
 			"lastPricePerShare": "1159352215129510958",
 			"lastTotalAssets": "6998488658757368042291",
 			"metadata": {
@@ -34669,7 +35423,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -34941,7 +35697,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Curve"],
+				"protocols": [
+					"Curve"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -35045,7 +35803,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xe77e7027ffb55287b3579bbedf4225b78cb600b8"],
+			"lastActiveStrategies": [
+				"0xe77e7027ffb55287b3579bbedf4225b78cb600b8"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -35072,7 +35832,9 @@
 				"description": "",
 				"sourceURI": "",
 				"uiNotice": "",
-				"protocols": ["Balancer"],
+				"protocols": [
+					"Balancer"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -35319,7 +36081,9 @@
 			"performanceFee": 2000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x564bf2844654f149821697cc56572ee4384c05f7"],
+			"lastActiveStrategies": [
+				"0x564bf2844654f149821697cc56572ee4384c05f7"
+			],
 			"lastPricePerShare": "1055297594827238398",
 			"lastTotalAssets": "7129426542501067452703",
 			"metadata": {
@@ -35450,7 +36214,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa49293b3593aefbe512d11894972fcc0e6683346"],
+			"lastActiveStrategies": [
+				"0xa49293b3593aefbe512d11894972fcc0e6683346"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -35650,7 +36416,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xa48c616144fd4429b216a86388cab0eed990ce87"],
+			"lastActiveStrategies": [
+				"0xa48c616144fd4429b216a86388cab0eed990ce87"
+			],
 			"lastPricePerShare": "1006807457139069435",
 			"lastTotalAssets": "5308899356301521",
 			"metadata": {

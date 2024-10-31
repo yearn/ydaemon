@@ -2,8 +2,6 @@ name: Verify Tokens and Vaults
 
 on:
     push:
-        branches:
-            - main # Adjust this if you want to run on different branches
 
 jobs:
     verify:

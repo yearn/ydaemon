@@ -2,6 +2,7 @@ name: Verify Tokens and Vaults
 
 on:
     push:
+    pull_request:
 
 jobs:
     verify:

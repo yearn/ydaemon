@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-10-28T13:07:00.561423+01:00",
+	"lastUpdate": "2024-11-04T10:19:07.931383+01:00",
 	"version": {
 		"major": 0,
-		"minor": 34,
+		"minor": 35,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -329,6 +329,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x0a52bcb532f59f6a37a9d3b5bc9ffd47e461d995": {
+			"address": "0x0a52bcb532f59f6a37a9d3b5bc9ffd47e461d995",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Dolomite: WBTC",
+			"symbol": "dWBTC",
+			"displayName": "Dolomite: WBTC",
+			"displaySymbol": "dWBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0a52BCb532F59F6a37A9d3B5bc9FfD47E461d995/logo-128.png",
+			"decimals": 8,
+			"chainID": 42161
+		},
 		"0x0a5e1394ba0c23d71167233a3b4b55cb8d214279": {
 			"address": "0x0a5e1394ba0c23d71167233a3b4b55cb8d214279",
 			"underlyingTokensAddresses": [
@@ -387,6 +401,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0AdEd315d2e51F676a2Aa8d2bc6A79C88e0F1c1a/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x0bd6890b3bb15f16430546147734b254d0b03059": {
+			"address": "0x0bd6890b3bb15f16430546147734b254d0b03059",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0bD6890b3Bb15f16430546147734b254d0B03059/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x0be708c78166183f12de9afa134fd091f26d4210": {
@@ -762,6 +790,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x12bF88C63bF060355A8d2E4C6eE960365a5E8335/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x137f793505e7884cb70ee5933c83447e85b1bd17": {
+			"address": "0x137f793505e7884cb70ee5933c83447e85b1bd17",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Dolomite USDC 26JUN2025",
+			"symbol": "PT-dUSDC-26JUN2025",
+			"displayName": "PT Dolomite USDC 26JUN2025",
+			"displaySymbol": "PT-dUSDC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x137f793505e7884CB70Ee5933c83447E85B1BD17/logo-128.png",
 			"decimals": 6,
 			"chainID": 42161
 		},
@@ -1863,6 +1905,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x3055a746e040bd05ad1806840ca0114d632bc7e2": {
+			"address": "0x3055a746e040bd05ad1806840ca0114d632bc7e2",
+			"underlyingTokensAddresses": [
+				"0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Dolomite WBTC",
+			"symbol": "SY-dWBTC",
+			"displayName": "SY Dolomite WBTC",
+			"displaySymbol": "SY-dWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x3055A746e040bd05AD1806840cA0114d632Bc7e2/logo-128.png",
+			"decimals": 8,
+			"chainID": 42161
+		},
 		"0x3082cc23568ea640225c2467653db90e9250aaa0": {
 			"address": "0x3082cc23568ea640225c2467653db90e9250aaa0",
 			"underlyingTokensAddresses": [
@@ -2498,6 +2556,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4439FE47139be8B9b13635C142569c3e60D71259/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x458db433b74b1094c8282152500f6d5bdf062eb0": {
+			"address": "0x458db433b74b1094c8282152500f6d5bdf062eb0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Dolomite WBTC 26JUN2025",
+			"symbol": "YT-dWBTC-26JUN2025",
+			"displayName": "YT Dolomite WBTC 26JUN2025",
+			"displaySymbol": "YT-dWBTC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x458DB433B74B1094c8282152500F6D5bdF062Eb0/logo-128.png",
+			"decimals": 8,
 			"chainID": 42161
 		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
@@ -4675,6 +4747,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x8cab5fd029ae2fbf28c53e965e4194c7260adf0c": {
+			"address": "0x8cab5fd029ae2fbf28c53e965e4194c7260adf0c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8cAB5Fd029ae2FBF28c53E965E4194C7260aDF0C/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x8d0ac6c608fd4bf52fcc31dcef30d0ae2aed2e81": {
 			"address": "0x8d0ac6c608fd4bf52fcc31dcef30d0ae2aed2e81",
 			"underlyingTokensAddresses": [],
@@ -5083,6 +5169,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x983B04920F4B73eA6a772363AAc68A810d036380/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x98510fbe752a97f97abd7d971a1b3290dd62ec4a": {
+			"address": "0x98510fbe752a97f97abd7d971a1b3290dd62ec4a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Dolomite WBTC 26JUN2025",
+			"symbol": "PT-dWBTC-26JUN2025",
+			"displayName": "PT Dolomite WBTC 26JUN2025",
+			"displaySymbol": "PT-dWBTC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x98510Fbe752A97F97Abd7D971a1B3290DD62Ec4A/logo-128.png",
+			"decimals": 8,
 			"chainID": 42161
 		},
 		"0x985c0271ad0bf0a45951b64eb6fc58010b050908": {
@@ -6449,6 +6549,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xC5b5d60EccB76C4a53F7DBE7cE3cb5D92557EFfF/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xc617daee26f67edbed5bd978f4f8e02a1f8c9a6c": {
+			"address": "0xc617daee26f67edbed5bd978f4f8e02a1f8c9a6c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Dolomite USDC 26JUN2025",
+			"symbol": "YT-dUSDC-26JUN2025",
+			"displayName": "YT Dolomite USDC 26JUN2025",
+			"displaySymbol": "YT-dUSDC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xc617dAeE26F67edBEd5Bd978f4f8E02A1f8C9a6C/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xc79d8a2aa6d769138e599d4dbc30569c9870a6ee": {

@@ -20,16 +20,22 @@ type TRotkiVaultToken struct {
 	Icon     string `json:"icon"`
 }
 
+type TRotkiVaultStaking struct {
+	Address   string `json:"address"`
+	Available bool   `json:"available"`
+}
+
 type TRotkiVaults struct {
-	Address        string            `json:"address"`
-	Name           string            `json:"name"`
-	Symbol         string            `json:"symbol"`
-	Decimals       uint64            `json:"decimals"`
-	Version        string            `json:"version"`
-	Icon           string            `json:"icon"`
-	FeaturingScore float64           `json:"-"` // Not exported
-	Type           models.TTokenType `json:"type"`
-	Token          TRotkiVaultToken  `json:"token"`
+	Address        string             `json:"address"`
+	Name           string             `json:"name"`
+	Symbol         string             `json:"symbol"`
+	Decimals       uint64             `json:"decimals"`
+	Version        string             `json:"version"`
+	Icon           string             `json:"icon"`
+	FeaturingScore float64            `json:"-"` // Not exported
+	Type           models.TTokenType  `json:"type"`
+	Token          TRotkiVaultToken   `json:"token"`
+	Staking        TRotkiVaultStaking `json:"staking"`
 }
 
 /**************************************************************************************************
@@ -132,7 +138,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 			}
 
-			data = append(data, TRotkiVaults{
+			vaultForRotki := TRotkiVaults{
 				Address:        newVault.Address,
 				Name:           newVault.Name,
 				Symbol:         newVault.Symbol,
@@ -148,7 +154,13 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 					Decimals: newVault.Token.Decimals,
 					Icon:     newVault.Token.Icon,
 				},
-			})
+				Staking: TRotkiVaultStaking{
+					Address:   newVault.Staking.Address,
+					Available: newVault.Staking.Available,
+				},
+			}
+
+			data = append(data, vaultForRotki)
 		}
 	}
 

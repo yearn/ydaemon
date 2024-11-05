@@ -22,6 +22,7 @@ type TRotkiVaultToken struct {
 
 type TRotkiVaultStaking struct {
 	Address   string `json:"address"`
+	Source    string `json:"source"`
 	Available bool   `json:"available"`
 }
 
@@ -157,6 +158,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 				Staking: TRotkiVaultStaking{
 					Address:   newVault.Staking.Address,
 					Available: newVault.Staking.Available,
+					Source:    newVault.Staking.Source,
 				},
 			}
 

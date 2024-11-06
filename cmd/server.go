@@ -44,6 +44,10 @@ func NewRouter() *gin.Engine {
 		ctx.JSON(http.StatusOK, gin.H{"message": "Welcome to yDaemon"})
 	})
 
+	router.GET(`/health`, func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"status": "ok", "timestamp": time.Now().Format(time.RFC3339)})
+	})
+
 	// Vaults section
 	{
 		c := vaults.Controller{}

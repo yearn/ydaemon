@@ -32,12 +32,24 @@ func loadVaultsFromJson(chainID uint64) TJsonVaultStorage {
 	}
 	defer file.Close()
 
-	// Decode the JSON file into the map
-	decoder := json.NewDecoder(file)
-	err = decoder.Decode(&vaults)
-	if err != nil {
-		logs.Error("Failed to decode vaults JSON file on chainID " + chainIDStr + ": " + err.Error())
-		return TJsonVaultStorage{}
+	retry := 0
+	for {
+		// Decode the JSON file into the map
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&vaults)
+		if err != nil {
+			logs.Error("Failed to decode vaults JSON file on chainID " + chainIDStr + ": " + err.Error())
+			time.Sleep(1 * time.Second)
+			retry++
+			if retry > 5 {
+				return TJsonVaultStorage{}
+			}
+			continue
+		}
+		if retry > 0 {
+			logs.Success(`Succeed to decode vaults JSON file on chainID ` + chainIDStr + ` after ` + strconv.Itoa(retry) + ` retries`)
+		}
+		break
 	}
 
 	return vaults

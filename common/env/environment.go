@@ -53,4 +53,5 @@ func init() {
 	for k := range CHAINS {
 		SUPPORTED_CHAIN_IDS = append(SUPPORTED_CHAIN_IDS, k)
 	}
+	logs.Pretty(ETHEREUM.RpcURI)
 }

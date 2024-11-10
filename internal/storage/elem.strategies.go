@@ -33,12 +33,24 @@ func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
 	}
 	defer file.Close()
 
-	// Decode the JSON file into the map
-	decoder := json.NewDecoder(file)
-	err = decoder.Decode(&strategyFile)
-	if err != nil {
-		logs.Error("Failed to decode strategies JSON file: " + err.Error())
-		return TJsonStrategyStorage{}
+	retry := 0
+	for {
+		// Decode the JSON file into the map
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&strategyFile)
+		if err != nil {
+			logs.Error("Failed to decode strategies JSON file: " + err.Error())
+			time.Sleep(1 * time.Second)
+			retry++
+			if retry > 5 {
+				return TJsonStrategyStorage{}
+			}
+			continue
+		}
+		if retry > 0 {
+			logs.Success(`Succeed to decode vaults JSON file on chainID ` + chainIDStr + ` after ` + strconv.Itoa(retry) + ` retries`)
+		}
+		break
 	}
 	return strategyFile
 }

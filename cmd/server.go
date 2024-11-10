@@ -58,40 +58,40 @@ func NewRouter() *gin.Engine {
 		c := vaults.Controller{}
 		// Retrieve the vaults for all chains
 		// router.GET(`vaults`, c.GetIsYearn)
-		router.GET(`vaults/detected`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetAll))
-		router.GET(`vaults`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
-		router.GET(`vaults/all`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearn))
-		router.GET(`vaults/underthesea/v2`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV2))
-		router.GET(`vaults/v2`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV2IsYearn))
-		router.GET(`vaults/underthesea/v3`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV3))
-		router.GET(`vaults/v3`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetV3IsYearn))
-		router.GET(`vaults/juiced`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnJuiced))
-		router.GET(`vaults/gimme`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsGimme))
-		router.GET(`vaults/retired`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetRetired))
-		router.GET(`vaults/pendle`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnPendle))
-		router.GET(`vaults/optimism`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsOptimism))
-		router.GET(`vaults/pooltogether`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsYearnPoolTogether))
-		router.GET(`vaults/ajna`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsAjna))
-		router.GET(`vaults/velodrome`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsVelodrome))
-		router.GET(`vaults/aerodrome`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsAerodrome))
-		router.GET(`vaults/curve`, CacheSimplifiedVaults(cachingStore, 10*time.Minute, c.GetIsCurve))
+		router.GET(`vaults/detected`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetAll))
+		router.GET(`vaults`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearn))
+		router.GET(`vaults/all`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearn))
+		router.GET(`vaults/underthesea/v2`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetV2))
+		router.GET(`vaults/v2`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetV2IsYearn))
+		router.GET(`vaults/underthesea/v3`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetV3))
+		router.GET(`vaults/v3`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetV3IsYearn))
+		router.GET(`vaults/juiced`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearnJuiced))
+		router.GET(`vaults/gimme`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsGimme))
+		router.GET(`vaults/retired`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetRetired))
+		router.GET(`vaults/pendle`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearnPendle))
+		router.GET(`vaults/optimism`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsOptimism))
+		router.GET(`vaults/pooltogether`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearnPoolTogether))
+		router.GET(`vaults/ajna`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsAjna))
+		router.GET(`vaults/velodrome`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsVelodrome))
+		router.GET(`vaults/aerodrome`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsAerodrome))
+		router.GET(`vaults/curve`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsCurve))
 
 		/******************************************************************************************
 		** Retrieve some/all vaults based on some specific criteria. This is chain specific and
 		** will return the vaults for a specific chain.
 		******************************************************************************************/
-		router.GET(`:chainID/vaults/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsYearn))
-		router.GET(`:chainID/vaults/v2/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyV2IsYearn))
-		router.GET(`:chainID/vaults/v3/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyV3IsYearn))
-		router.GET(`:chainID/vaults/juiced/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsYearnJuiced))
-		router.GET(`:chainID/vaults/gimme/all`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyIsGimme))
-		router.GET(`:chainID/vaults/retired`, CacheLegacyVaults(cachingStore, 10*time.Minute, c.GetLegacyRetired))
+		router.GET(`:chainID/vaults/all`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyIsYearn))
+		router.GET(`:chainID/vaults/v2/all`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyV2IsYearn))
+		router.GET(`:chainID/vaults/v3/all`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyV3IsYearn))
+		router.GET(`:chainID/vaults/juiced/all`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyIsYearnJuiced))
+		router.GET(`:chainID/vaults/gimme/all`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyIsGimme))
+		router.GET(`:chainID/vaults/retired`, CacheLegacyVaults(cachingStore, 5*time.Minute, c.GetLegacyRetired))
 		router.GET(`:chainID/vaults/some/:addresses`, c.GetLegacySomeVaults)
 
 		/******************************************************************************************
 		** Vaults for a custom integration
 		******************************************************************************************/
-		router.GET(`rotki/list/vaults`, CacheCustomVaults(cachingStore, 10*time.Minute, c.GetVaultsForRotki))
+		router.GET(`rotki/list/vaults`, CacheCustomVaults(cachingStore, 5*time.Minute, c.GetVaultsForRotki))
 		router.GET(`rotki/count/vaults`, c.CountVaultsForRotki)
 
 		/******************************************************************************************

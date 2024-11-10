@@ -10,7 +10,7 @@ import (
 	"github.com/yearn/ydaemon/external/vaults"
 )
 
-type GetSimplifiedVaults func(c *gin.Context) []vaults.TSimplifiedExternalVault
+type GetSimplifiedVaults func(c *gin.Context) ([]vaults.TSimplifiedExternalVault, error)
 type GetLegacyExternalVaults func(c *gin.Context) []vaults.TExternalVault
 type GetCustomVaults func(c *gin.Context) []vaults.TRotkiVaults
 
@@ -25,7 +25,11 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 			}
 		}
 
-		result := handle(c)
+		result, err := handle(c)
+		if err != nil {
+			//Json was already sent
+			return
+		}
 		cachingStore.Set(c.Request.URL.String(), result, expire)
 		logs.Info(`Cache miss with`, len(result), `vaults`)
 		c.JSON(http.StatusOK, result)

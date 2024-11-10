@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-11-08T16:21:30.815719+01:00",
+	"lastUpdate": "2024-11-10T11:06:48.412385+01:00",
 	"version": {
 		"major": 0,
-		"minor": 36,
+		"minor": 37,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1439,6 +1439,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x23231848ec8acD3a108C6a61049FbC25A697b594/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x232c7a26e0bb7b7922b291ebbd111570827a99f0": {
+			"address": "0x232c7a26e0bb7b7922b291ebbd111570827a99f0",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Single Strategy",
+			"name": "Prize USDC - Gains Network",
+			"symbol": "przUSDC",
+			"displayName": "Prize USDC - Gains Network",
+			"displaySymbol": "przUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x232C7a26E0bB7b7922B291EbBd111570827a99F0/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x239c1b8642b8da2c9eb334076e0a4295df7f39ac": {
@@ -6131,6 +6147,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xb119e90Beb09Fcf9ABc92c20a8D84fe8bdfcc6E3/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xb2c12a6c665bb8383b1ec21da115015e0763d4df": {
+			"address": "0xb2c12a6c665bb8383b1ec21da115015e0763d4df",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Single Strategy",
+			"name": "Prize gUSDC",
+			"symbol": "przUSDC",
+			"displayName": "Prize gUSDC",
+			"displaySymbol": "przUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xB2C12a6C665BB8383b1EC21DA115015e0763d4df/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xb33808ea0e883138680ba29311a220a7377cdb92": {

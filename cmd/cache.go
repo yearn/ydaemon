@@ -15,7 +15,7 @@ type GetCustomVaults func(c *gin.Context) []vaults.TRotkiVaults
 
 func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, handle GetSimplifiedVaults) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if result, found := cachingStore.Get(c.Request.URL.String()); found {
+		if result, found := cachingStore.Get(c.Request.URL.String()); found && result != nil && len(result.([]vaults.TSimplifiedExternalVault)) > 0 {
 			c.JSON(http.StatusOK, result)
 		} else {
 			result := handle(c)
@@ -27,7 +27,7 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 
 func CacheLegacyVaults(cachingStore *cache.Cache, expire time.Duration, handle GetLegacyExternalVaults) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if result, found := cachingStore.Get(c.Request.URL.String()); found {
+		if result, found := cachingStore.Get(c.Request.URL.String()); found && result != nil && len(result.([]vaults.TExternalVault)) > 0 {
 			c.JSON(http.StatusOK, result)
 		} else {
 			result := handle(c)
@@ -39,7 +39,7 @@ func CacheLegacyVaults(cachingStore *cache.Cache, expire time.Duration, handle G
 
 func CacheCustomVaults(cachingStore *cache.Cache, expire time.Duration, handle GetCustomVaults) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if result, found := cachingStore.Get(c.Request.URL.String()); found {
+		if result, found := cachingStore.Get(c.Request.URL.String()); found && result != nil && len(result.([]vaults.TRotkiVaults)) > 0 {
 			c.JSON(http.StatusOK, result)
 		} else {
 			result := handle(c)

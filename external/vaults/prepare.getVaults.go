@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -128,7 +127,6 @@ func getVaults(
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)
 			if err != nil {
-				logs.Error(`Impossible to assign TVault`, err)
 				continue
 			}
 			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
@@ -220,7 +218,6 @@ func getVaults(
 	}
 	data = data[start:end]
 
-	logs.Pretty(len(data))
 	return data
 }
 

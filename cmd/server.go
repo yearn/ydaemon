@@ -16,11 +16,12 @@ import (
 	"github.com/yearn/ydaemon/external/vaults"
 )
 
+var cachingStore = cache.New(1*time.Minute, 5*time.Minute)
+
 /**************************************************************************************************
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
-	cachingStore := cache.New(1*time.Minute, 5*time.Minute)
 
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
@@ -30,7 +31,7 @@ func NewRouter() *gin.Engine {
 	router.Use(gin.Recovery())
 	corsConf := cors.Config{
 		AllowAllOrigins: true,
-		AllowMethods:    []string{"GET", "HEAD", "POST"},
+		AllowMethods:    []string{"GET", "HEAD", "POST", "OPTIONS"},
 		AllowHeaders:    []string{`Origin`, `Content-Length`, `Content-Type`, `Authorization`},
 	}
 	router.Use(cors.New(corsConf))

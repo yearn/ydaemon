@@ -128,6 +128,7 @@ func getVaults(
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)
 			if err != nil {
+				logs.Error(`Impossible to assign TVault`, err)
 				continue
 			}
 			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {

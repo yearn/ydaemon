@@ -35,7 +35,7 @@ func init() {
 func NewRouter() *gin.Engine {
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
-	gin.DefaultWriter = nil
+	// gin.DefaultWriter = nil
 	router := gin.New()
 	// pprof.Register(router)
 	router.Use(gin.Recovery())

@@ -214,6 +214,9 @@ func getVaults(
 	if end > uint64(len(data)) {
 		end = uint64(len(data))
 	}
+	if start >= uint64(len(data)) {
+		return []TSimplifiedExternalVault{}
+	}
 	data = data[start:end]
 
 	logs.Pretty(len(data))

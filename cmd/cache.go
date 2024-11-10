@@ -30,8 +30,10 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 			//Json was already sent
 			return
 		}
-		cachingStore.Set(c.Request.URL.String(), result, expire)
-		logs.Info(`Cache miss with`, len(result), `vaults`)
+		if len(result) > 0 {
+			cachingStore.Set(c.Request.URL.String(), result, expire)
+			logs.Info(`Cache miss with`, len(result), `vaults`)
+		}
 		c.JSON(http.StatusOK, result)
 	}
 }

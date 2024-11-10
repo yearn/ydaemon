@@ -7,9 +7,8 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	cache "github.com/jfarleyx/go-simple-cache"
+	"github.com/patrickmn/go-cache"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
@@ -20,13 +19,7 @@ import (
 var cachingStore *cache.Cache
 
 func init() {
-	// Create cache with 1 minute default expiration
-	cachingStore = cache.New(1 * time.Minute)
-
-	// Add callback for cache expiration
-	cachingStore.OnExpired(func() {
-		logs.Info("Cache expired, clearing...")
-	})
+	cachingStore = cache.New(1*time.Minute, 5*time.Minute)
 }
 
 /**************************************************************************************************

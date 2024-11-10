@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	cache "github.com/jfarleyx/go-simple-cache"
+	"github.com/patrickmn/go-cache"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/vaults"
 )
@@ -26,7 +26,7 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 		}
 
 		result := handle(c)
-		cachingStore.Set(c.Request.URL.String(), result)
+		cachingStore.Set(c.Request.URL.String(), result, expire)
 		logs.Info(`Cache miss with`, len(result), `vaults`)
 		c.JSON(http.StatusOK, result)
 	}
@@ -43,7 +43,7 @@ func CacheLegacyVaults(cachingStore *cache.Cache, expire time.Duration, handle G
 		}
 
 		result := handle(c)
-		cachingStore.Set(c.Request.URL.String(), result)
+		cachingStore.Set(c.Request.URL.String(), result, expire)
 		c.JSON(http.StatusOK, result)
 	}
 }
@@ -59,7 +59,7 @@ func CacheCustomVaults(cachingStore *cache.Cache, expire time.Duration, handle G
 		}
 
 		result := handle(c)
-		cachingStore.Set(c.Request.URL.String(), result)
+		cachingStore.Set(c.Request.URL.String(), result, expire)
 		c.JSON(http.StatusOK, result)
 	}
 }

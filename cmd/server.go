@@ -7,8 +7,9 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	"github.com/patrickmn/go-cache"
+	cache "github.com/jfarleyx/go-simple-cache"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/external/prices"
 	"github.com/yearn/ydaemon/external/strategies"
 	"github.com/yearn/ydaemon/external/tokens"
@@ -16,13 +17,22 @@ import (
 	"github.com/yearn/ydaemon/external/vaults"
 )
 
-var cachingStore = cache.New(1*time.Minute, 5*time.Minute)
+var cachingStore *cache.Cache
+
+func init() {
+	// Create cache with 1 minute default expiration
+	cachingStore = cache.New(1 * time.Minute)
+
+	// Add callback for cache expiration
+	cachingStore.OnExpired(func() {
+		logs.Info("Cache expired, clearing...")
+	})
+}
 
 /**************************************************************************************************
 ** NewRouter create the routes and setup the server
 **************************************************************************************************/
 func NewRouter() *gin.Engine {
-
 	gin.EnableJsonDecoderDisallowUnknownFields()
 	gin.SetMode(gin.ReleaseMode)
 	gin.DefaultWriter = nil

@@ -18,6 +18,22 @@ import (
 var _strategiesSyncMap = make(map[uint64]*sync.Map)
 var _strategiesMigratedSyncMap = make(map[uint64]*sync.Map)
 var _strategiesJSONMetadataSyncMap = sync.Map{}
+var _strategyJSONMutexes = make(map[uint64]*sync.RWMutex)
+var _strategyJSONMutexesLock sync.Mutex // Protects access to _strategyJSONMutexes map
+
+/** 🔵 - Yearn *************************************************************************************
+** getStrategyMutex safely gets or creates a mutex for a specific chainID
+**************************************************************************************************/
+func getStrategyMutex(chainID uint64) *sync.RWMutex {
+	_strategyJSONMutexesLock.Lock()
+	defer _strategyJSONMutexesLock.Unlock()
+
+	if mutex, exists := _strategyJSONMutexes[chainID]; exists {
+		return mutex
+	}
+	_strategyJSONMutexes[chainID] = &sync.RWMutex{}
+	return _strategyJSONMutexes[chainID]
+}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loaddStrategiesFromJson` is responsible for loading strategies from a JSON file.
@@ -59,6 +75,10 @@ func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
 ** The function `storedStrategiesToJson` is responsible for storing strategies to a JSON file.
 **************************************************************************************************/
 func StoreStrategiesToJson(chainID uint64, strategies map[string]models.TStrategy) {
+	mutex := getStrategyMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	previousStrategies := loadStrategiesFromJson(chainID)
 	version := detectStrVersionUpdate(chainID, previousStrategies.Version, previousStrategies.Strategies, strategies)
@@ -104,6 +124,10 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
+	mutex := getStrategyMutex(chainID)
+	mutex.RLock()
+	defer mutex.RUnlock()
+
 	file := loadStrategiesFromJson(chainID)
 	_strategiesJSONMetadataSyncMap.Store(chainID, TJsonMetadata{
 		file.LastUpdate,

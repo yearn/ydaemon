@@ -17,6 +17,22 @@ import (
 
 var _vaultsSyncMap = make(map[uint64]*sync.Map)
 var _vaultJSONMetadataSyncMap = sync.Map{}
+var _vaultJSONMutexes = make(map[uint64]*sync.RWMutex)
+var _vaultJSONMutexesLock sync.Mutex // Protects access to _vaultJSONMutexes map
+
+/** 🔵 - Yearn *************************************************************************************
+** getVaultMutex safely gets or creates a mutex for a specific chainID
+**************************************************************************************************/
+func getVaultMutex(chainID uint64) *sync.RWMutex {
+	_vaultJSONMutexesLock.Lock()
+	defer _vaultJSONMutexesLock.Unlock()
+
+	if mutex, exists := _vaultJSONMutexes[chainID]; exists {
+		return mutex
+	}
+	_vaultJSONMutexes[chainID] = &sync.RWMutex{}
+	return _vaultJSONMutexes[chainID]
+}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadVaultsFromJson` is responsible for loading vaults from a JSON file.
@@ -59,13 +75,16 @@ func loadVaultsFromJson(chainID uint64) TJsonVaultStorage {
 ** The function `storeVaultsToJson` is responsible for storing vaults to a JSON file.
 **************************************************************************************************/
 func StoreVaultsToJson(chainID uint64, vaults map[common.Address]models.TVault) {
+	mutex := getVaultMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	previousVaults := loadVaultsFromJson(chainID)
 	version := detectVersionUpdate(chainID, previousVaults.Version, previousVaults.Vaults, vaults)
 
 	allVaults := make(map[common.Address]models.TVault)
 	for address, vault := range vaults {
-		// @dev use this place if you need to update the json
 		allVaults[address] = vault
 	}
 
@@ -115,6 +134,9 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
+	mutex := getVaultMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
 
 	file := loadVaultsFromJson(chainID)
 	_vaultJSONMetadataSyncMap.Store(chainID, TJsonMetadata{

@@ -7,6 +7,7 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -106,6 +107,7 @@ func RetrieveAllVaults(
 ) map[common.Address]models.TVault {
 	chain, ok := env.GetChain(chainID)
 	if !ok {
+		logs.Error(chainID, `-`, `RetrieveAllVaults`, `Chain not found`)
 		return nil
 	}
 

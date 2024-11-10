@@ -16,6 +16,22 @@ import (
 
 var _erc20SyncMap = make(map[uint64]*sync.Map)
 var _erc20JSONMetadataSyncMap = sync.Map{}
+var _tokenJSONMutexes = make(map[uint64]*sync.RWMutex)
+var _tokenJSONMutexesLock sync.Mutex // Protects access to _tokenJSONMutexes map
+
+/** 🔵 - Yearn *************************************************************************************
+** getTokenMutex safely gets or creates a mutex for a specific chainID
+**************************************************************************************************/
+func getTokenMutex(chainID uint64) *sync.RWMutex {
+	_tokenJSONMutexesLock.Lock()
+	defer _tokenJSONMutexesLock.Unlock()
+
+	if mutex, exists := _tokenJSONMutexes[chainID]; exists {
+		return mutex
+	}
+	_tokenJSONMutexes[chainID] = &sync.RWMutex{}
+	return _tokenJSONMutexes[chainID]
+}
 
 /** 🔵 - Yearn *************************************************************************************
 ** The function `loadTokensFromJson` is responsible for loading tokens from a JSON file.
@@ -47,6 +63,10 @@ func LoadTokensFromJson(chainID uint64) TJsonERC20Storage {
 ** The function `storeTokensToJson` is responsible for storing tokens to a JSON file.
 **************************************************************************************************/
 func StoreTokensToJson(chainID uint64, tokens map[common.Address]models.TERC20Token) {
+	mutex := getTokenMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	previousTokens := LoadTokensFromJson(chainID)
 	version := detectVersionUpdate(chainID, previousTokens.Version, previousTokens.Tokens, tokens)
@@ -92,6 +112,10 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
+
+	mutex := getTokenMutex(chainID)
+	mutex.RLock()
+	defer mutex.RUnlock()
 	file := LoadTokensFromJson(chainID)
 	_erc20JSONMetadataSyncMap.Store(chainID, TJsonMetadata{
 		file.LastUpdate,

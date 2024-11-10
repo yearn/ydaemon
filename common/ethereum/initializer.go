@@ -41,7 +41,4 @@ func Initialize() {
 			chain.MulticallContract.Address,
 		)
 	}
-	for _, chain := range env.GetChains() {
-		logs.Pretty(GetRPCURI(chain.ID))
-	}
 }

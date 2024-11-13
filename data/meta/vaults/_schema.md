@@ -7,7 +7,7 @@ The Vaults JSON file contains all the information about the vaults. As other JSO
 	- `patch`: When at least one vault is updated since the last version
 - `shouldRefresh`: If the file should be refreshed or not. This is used by the bot to know if it should update the file or not, no matter if the other conditions are met.
 
-Each vault contains theses elements:
+Each vault contains these elements:
 
 ### The Vault Information
 These elements are fetched automatically by the normal process of yDaemon with different update frequencies. No manual intervention is required and any manual change will be overwritten.

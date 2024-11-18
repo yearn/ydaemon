@@ -91,7 +91,8 @@ func getConvexRewardAPY(
 			totalRewardsAPR = bigNumber.NewFloat(0).Add(totalRewardsAPR, rewardAPR)
 		}
 	}
-	totalRewardsAPY := convertAPRToAPY(totalRewardsAPR, bigNumber.NewFloat(365.0/15.0))
+	totalRewardsAPRFloat64, _ := totalRewardsAPR.Float64()
+	totalRewardsAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(totalRewardsAPRFloat64, 365/15))
 	return totalRewardsAPR, totalRewardsAPY
 }
 
@@ -218,10 +219,11 @@ func getCVXPoolAPY(
 	}
 	crvAPR = bigNumber.NewFloat(0).Mul(crvPerUnderlyingPerYear, crvPrice)
 	cvxAPR = bigNumber.NewFloat(0).Mul(cvxPerYear, cvxPrice)
-	// crvAPR = bigNumber.NewFloat(0).Div(crvAPR, bigNumber.NewFloat(100))
-	// cvxAPR = bigNumber.NewFloat(0).Div(cvxAPR, bigNumber.NewFloat(100))
-	crvAPY = convertAPRToAPY(crvAPR, bigNumber.NewFloat(365.0/15.0))
-	cvxAPY = convertAPRToAPY(cvxAPR, bigNumber.NewFloat(365.0/15.0))
+
+	crvAPRFloat64, _ := crvAPR.Float64()
+	cvxAPRFloat64, _ := cvxAPR.Float64()
+	crvAPY = bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(crvAPRFloat64, 365/15))
+	cvxAPY = bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(cvxAPRFloat64, 365/15))
 
 	return crvAPR, cvxAPR, crvAPY, cvxAPY
 }

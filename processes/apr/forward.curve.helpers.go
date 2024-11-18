@@ -172,7 +172,8 @@ func calculateGaugeBaseAPR(
 	baseAPR = bigNumber.NewFloat(0).Mul(baseAPR, bigNumber.NewFloat(0).Div(perMaxBoost, poolPrice))
 	baseAPR = bigNumber.NewFloat(0).Mul(baseAPR, crvPrice)
 	baseAPR = bigNumber.NewFloat(0).Div(baseAPR, baseAssetPrice)
-	baseAPY := convertAPRToAPY(baseAPR, bigNumber.NewFloat(365.0/15.0))
+	baseAPRFloat64, _ := baseAPR.Float64()
+	baseAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(baseAPRFloat64, 365/15))
 
 	return baseAPR, baseAPY
 }

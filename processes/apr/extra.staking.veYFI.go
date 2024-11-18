@@ -137,7 +137,8 @@ func computeVeYFIGaugeStakingRewardsAPY(chainID uint64, vault models.TVault) (*b
 	stakingRewardAPR := bigNumber.NewFloat(0).Mul(secondsPerYear, perStakingTokenRate)
 	stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, rewardsPrice)
 	stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, vaultPrice)
-	stakingRewardAPY := convertAPRToAPY(stakingRewardAPR, bigNumber.NewFloat(365.0/15.0))
+	stakingRewardAPRFloat64, _ := stakingRewardAPR.Float64()
+	stakingRewardAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(stakingRewardAPRFloat64, 365/15))
 
 	storage.AssignVEYFIStakingRewardAPY(chainID, vault.Address, rewardToken, stakingRewardAPY)
 	return stakingRewardAPR, stakingRewardAPY, true

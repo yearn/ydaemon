@@ -141,12 +141,21 @@ func computeVaultV3ForwardAPY(
 		primaryAPR = debtRatioAPR
 	}
 
+	primaryAPRFloat64, _ := primaryAPR.Float64()
+	primaryAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(primaryAPRFloat64, 52))
+
+	oracleAPRFloat64, _ := oracleAPR.Float64()
+	oracleAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(oracleAPRFloat64, 52))
+
+	debtRatioAPRFloat64, _ := debtRatioAPR.Float64()
+	debtRatioAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(debtRatioAPRFloat64, 52))
+
 	return TForwardAPY{
 		Type:   `v3:onchainOracle`,
-		NetAPY: convertAPRToAPY(primaryAPR, bigNumber.NewFloat(52)),
+		NetAPY: primaryAPY,
 		Composite: TCompositeData{
-			V3OracleCurrentAPR:    convertAPRToAPY(oracleAPR, bigNumber.NewFloat(52)),
-			V3OracleStratRatioAPR: convertAPRToAPY(debtRatioAPR, bigNumber.NewFloat(52)),
+			V3OracleCurrentAPR:    oracleAPY,
+			V3OracleStratRatioAPR: debtRatioAPY,
 		},
 	}
 }

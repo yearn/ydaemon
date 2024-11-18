@@ -34,7 +34,8 @@ func calculateGammaExtraRewards(chainID uint64, tokenAddress common.Address) (*b
 		for lpTokenAddress, alm := range pool.ALM {
 			if addresses.Equals(tokenAddress, lpTokenAddress) {
 				apr := bigNumber.NewFloat(0).Div(bigNumber.NewFloat(alm.ALMAPR), bigNumber.NewFloat(100))
-				apy := convertAPRToAPY(apr, bigNumber.NewFloat(365.0/15.0))
+				aprFloat64, _ := apr.Float64()
+				apy := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(aprFloat64, 365/15))
 				return apr, apy, true
 			}
 		}

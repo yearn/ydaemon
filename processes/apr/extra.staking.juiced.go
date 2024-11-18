@@ -95,7 +95,8 @@ func computeJuicedStakingRewardsAPY(chainID uint64, vault models.TVault) (*bigNu
 		rewardDurationAsFloat := bigNumber.NewFloat(0).SetUint64(rewardDuration)
 		stakingRewardAPR = bigNumber.NewFloat(0).Div(stakingRewardAPR, rewardDurationAsFloat)
 		stakingRewardAPR = bigNumber.NewFloat(0).Mul(stakingRewardAPR, secondsPerYear)
-		stakingRewardAPY := convertAPRToAPY(stakingRewardAPR, bigNumber.NewFloat(365.0/15.0))
+		stakingRewardAPRFloat64, _ := stakingRewardAPR.Float64()
+		stakingRewardAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(stakingRewardAPRFloat64, 365/15))
 
 		cumulatedStakingRewardAPR = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPR, stakingRewardAPR)
 		cumulatedStakingRewardAPY = bigNumber.NewFloat(0).Add(cumulatedStakingRewardAPY, stakingRewardAPY)

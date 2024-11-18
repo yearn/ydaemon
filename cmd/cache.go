@@ -19,7 +19,6 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 		if result, found := cachingStore.Get(c.Request.URL.String()); found && result != nil {
 			vaults, ok := result.([]vaults.TSimplifiedExternalVault)
 			if ok && len(vaults) > 0 {
-				logs.Info(`Cache hit with`, len(vaults), `vaults`)
 				c.JSON(http.StatusOK, vaults)
 				return
 			}
@@ -27,11 +26,16 @@ func CacheSimplifiedVaults(cachingStore *cache.Cache, expire time.Duration, hand
 
 		result, err := handle(c)
 		if err != nil {
+			logs.Error(`Error while getting simplified vaults`, err)
 			//Json was already sent
 			return
 		}
 		if len(result) > 0 {
-			cachingStore.Set(c.Request.URL.String(), result, expire)
+			if _, found := cachingStore.Get(c.Request.URL.String()); found {
+				logs.Info(`Cache hit with`, len(result), `vaults`)
+			} else {
+				cachingStore.Set(c.Request.URL.String(), result, expire)
+			}
 			logs.Info(`Cache miss with`, len(result), `vaults`)
 		}
 		c.JSON(http.StatusOK, result)

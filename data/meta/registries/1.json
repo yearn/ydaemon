@@ -5459,6 +5459,19 @@
 		"chainID": 1,
 		"blockNumber": 20182127
 	},
+	"0xf241462d376c5fb4b8ebaebc074802650730c107": {
+		"address": "0xf241462d376c5fb4b8ebaebc074802650730c107",
+		"registryAddress": "0xd499ccf3e93f4cfb335ac388e3c896d59cdde7c3",
+		"tokenAddress": "0x698978e0fc8f814989d8c23b8b9d3bdfabab4451",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0xd91724BCF3165EDF79c6a756E94AeFa9FDA16e6F"
+		},
+		"version": "~3.0.2",
+		"chainID": 1,
+		"blockNumber": 20693634
+	},
 	"0xf29ae508698bdef169b89834f76704c3b205aedf": {
 		"address": "0xf29ae508698bdef169b89834f76704c3b205aedf",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",

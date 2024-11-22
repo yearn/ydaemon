@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-11-18T11:46:19.553861+01:00",
+	"lastUpdate": "2024-11-22T11:14:30.010279+01:00",
 	"version": {
 		"major": 0,
-		"minor": 75,
+		"minor": 76,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -641,6 +641,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x046ffBC0458a409Fe5b7e3053bDbEd8a98681bC8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x048680f64d6dff1748ba6d9a01f578433787e24b": {
+			"address": "0x048680f64d6dff1748ba6d9a01f578433787e24b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x048680F64d6DFf1748ba6D9a01F578433787e24B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3763,6 +3777,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x21CF1c5Dc48C603b89907FE6a7AE83EA5e3709aF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x21d85ff3bedff031ef466c7d5295240c8ab2a2b8": {
+			"address": "0x21d85ff3bedff031ef466c7d5295240c8ab2a2b8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x21D85Ff3BEDFF031EF466C7d5295240C8AB2a2b8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11842,6 +11870,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x6985884C4392D348587B19cb9eAAf157F13271cd/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x698978e0fc8f814989d8c23b8b9d3bdfabab4451": {
+			"address": "0x698978e0fc8f814989d8c23b8b9d3bdfabab4451",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "TEST_V2 Resolv USD",
+			"symbol": "USR_TEST_V2",
+			"displayName": "TEST_V2 Resolv USD",
+			"displaySymbol": "USR_TEST_V2",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x698978E0fc8f814989d8c23b8b9D3bdfABab4451/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -26821,6 +26863,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xead01319c2ab0dc2c690eff5dfc5f465cd38fc87": {
+			"address": "0xead01319c2ab0dc2c690eff5dfc5f465cd38fc87",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT USD0++ 26JUN2025",
+			"symbol": "YT-USD0++-26JUN2025",
+			"displayName": "YT USD0++ 26JUN2025",
+			"displaySymbol": "YT-USD0++-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEAD01319c2aB0dC2C690EfF5DfC5f465Cd38FC87/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xeb4c2781e4eba804ce9a9803c67d0893436bb27d": {
 			"address": "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
 			"underlyingTokensAddresses": [],
@@ -27518,6 +27574,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf241462d376c5fb4b8ebaebc074802650730c107": {
+			"address": "0xf241462d376c5fb4b8ebaebc074802650730c107",
+			"underlyingTokensAddresses": [
+				"0x698978e0fc8f814989d8c23b8b9d3bdfabab4451"
+			],
+			"type": "Single Strategy",
+			"name": "Prize USR_TEST - wstUSRTest",
+			"symbol": "przUSR_TEST",
+			"displayName": "Prize USR_TEST - wstUSRTest",
+			"displaySymbol": "przUSR_TEST",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf241462d376c5Fb4b8ebAebc074802650730C107/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf29ae508698bdef169b89834f76704c3b205aedf": {
 			"address": "0xf29ae508698bdef169b89834f76704c3b205aedf",
 			"underlyingTokensAddresses": [
@@ -28060,6 +28132,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF68a6B53D907B5ABC0bFdeCEB8343E91FEC052ee/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf696fe29ef85e892b5926313897d178288faa07e": {
+			"address": "0xf696fe29ef85e892b5926313897d178288faa07e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT USD0++ 26JUN2025",
+			"symbol": "PT-USD0++-26JUN2025",
+			"displayName": "PT USD0++ 26JUN2025",
+			"displaySymbol": "PT-USD0++-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf696FE29Ef85E892b5926313897D178288faA07e/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

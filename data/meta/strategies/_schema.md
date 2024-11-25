@@ -7,7 +7,7 @@ The Strategies JSON file contains all the information about the strategies. As o
 	- `patch`: When at least one strategy is updated since the last version
 - `shouldRefresh`: If the file should be refreshed or not. This is used by the bot to know if it should update the file or not, no matter if the other conditions are met.
 
-Each strategies contains theses elements:
+Each strategies contains these elements:
 
 #### The immutable elements
 

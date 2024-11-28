@@ -1,6 +1,8 @@
 package apr
 
 import (
+	"math"
+
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
@@ -48,4 +50,17 @@ func convertAPRToAPY(apr *bigNumber.Float, compoundingPeriods *bigNumber.Float) 
 	apy = bigNumber.NewFloat(0).Sub(apy, bigNumber.NewFloat(1))
 
 	return apy
+}
+
+func convertFloatAPRToAPY(apr float64, periodsPerYear float64) float64 {
+
+	// Convert APR to decimal form
+	aprDecimal := apr / 100.0
+
+	// APY = (1 + r/n)^n - 1
+	// where r is the APR in decimal form and n is the number of compounding periods
+	apy := math.Pow(1+(aprDecimal/periodsPerYear), periodsPerYear) - 1
+
+	// Convert back to percentage
+	return apy * 100
 }

@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"errors"
 	"net/http"
 	"strings"
 
@@ -17,7 +18,7 @@ import (
 func getVaults(
 	c *gin.Context,
 	filterFunc func(vault models.TVault) bool,
-) []TSimplifiedExternalVault {
+) ([]TSimplifiedExternalVault, error) {
 	/** 🔵 - Yearn *************************************************************************************
 	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
@@ -48,7 +49,7 @@ func getVaults(
 	migrable := selectMigrableCondition(getQuery(c, `migrable`))
 	if migrable != `none` && hideAlways {
 		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
-		return []TSimplifiedExternalVault{}
+		return []TSimplifiedExternalVault{}, errors.New(`migrable and hideAlways cannot be true at the same time`)
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
@@ -213,9 +214,12 @@ func getVaults(
 	if end > uint64(len(data)) {
 		end = uint64(len(data))
 	}
+	if start >= uint64(len(data)) {
+		return []TSimplifiedExternalVault{}, nil
+	}
 	data = data[start:end]
 
-	return data
+	return data, nil
 }
 
 func isV3Vault(vault models.TVault) bool {

@@ -17,7 +17,7 @@ import (
 ** Then it will create the multicall clients for each chain.
 ** Then, it will init the blockTimeSyncMap for all the chains.
 ***************************************************************************************************/
-func init() {
+func Initialize() {
 	// Create the RPC client for all the chains supported by yDaemon
 	for _, chain := range env.GetChains() {
 		client, err := ethclient.Dial(GetRPCURI(chain.ID))

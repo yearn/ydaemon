@@ -30,8 +30,8 @@ var ARBITRUM = TChain{
 		Block:   30385403,
 	},
 	APROracleContract: TContractData{
-		Address: common.HexToAddress(`0x27aD2fFc74F74Ed27e1C0A19F1858dD0963277aE`),
-		Block:   19070394,
+		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
+		Block:   265347717,
 	},
 	StakingRewardRegistry: []TContractData{
 		{
@@ -72,6 +72,12 @@ var ARBITRUM = TChain{
 			Version: 5,
 			Block:   187_480_878,
 			Label:   `PUBLIC_ERC4626`,
+		},
+		{
+			Address: common.HexToAddress("0x770D0d1Fb036483Ed4AbB6d53c1C88fb277D812F"),
+			Version: 5,
+			Block:   269623414,
+			Label:   `YEARN`,
 		},
 	},
 	YearnXRegistries: []TContractData{

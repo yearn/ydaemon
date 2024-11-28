@@ -63,6 +63,12 @@ var OPTIMISM = TChain{
 			Tag:     `STEALTH`,
 			Label:   `PUBLIC_ERC4626`,
 		},
+		{
+			Address: common.HexToAddress("0x770D0d1Fb036483Ed4AbB6d53c1C88fb277D812F"),
+			Version: 5,
+			Block:   127397389,
+			Label:   `YEARN`,
+		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{

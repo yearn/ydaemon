@@ -36,7 +36,8 @@ func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPoo
 		minRewardsAPR = bigNumber.NewFloat(0).SetFloat64(fraxPool.TotalRewardAPRs.Min.(float64))
 	}
 	minRewardsAPR = bigNumber.NewFloat(0).Div(minRewardsAPR, bigNumber.NewFloat(100))
-	minRewardsAPY := convertAPRToAPY(minRewardsAPR, bigNumber.NewFloat(365.0/15.0))
+	minRewardsAPRFloat64, _ := minRewardsAPR.Float64()
+	minRewardsAPY := bigNumber.NewFloat(0).SetFloat64(convertFloatAPRToAPY(minRewardsAPRFloat64, 365/15))
 
 	apyStruct := TStrategyAPY{
 		Type:      "frax",

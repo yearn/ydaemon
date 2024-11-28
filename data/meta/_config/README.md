@@ -8,7 +8,7 @@
 This repo contains all the metadata of the yearn ecosystem. Contents of the
 [`meta`](./data/meta) directory are synced to IPFS for storage, accessible through
 our gateway [meta.yearn.network](https://meta.yearn.network). Consistency of
-the stored data is verified by smalls scripts and schemas.
+the stored data is verified by small scripts and schemas.
 
 ## Adding documents
 
@@ -45,7 +45,7 @@ see [meta.yearn.network/index.json](https://meta.yearn.network/json)
 
 ## Translations
 
-Anything under protocols, strategies, and tokens are able to be translated. In the json files listed, we have locale codes and the English text to be translated. The name (if applicable) and description are what should be translated. If you dont see your locale code, make an issue and it will be added manually. To update new json's with the locale information run the python script `toLocale.py` located in the scripts folder.
+Anything under protocols, strategies, and tokens are able to be translated. In the json files listed, we have locale codes and the English text to be translated. The name (if applicable) and description are what should be translated. If you don't see your locale code, make an issue and it will be added manually. To update new json's with the locale information run the python script `toLocale.py` located in the scripts folder.
 
 ## Helpful links
 

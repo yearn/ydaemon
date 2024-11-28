@@ -30,6 +30,7 @@ func processServer(chainID uint64) {
 **************************************************************************************************/
 func main() {
 	initFlags()
+	ethereum.Initialize()
 	go ListenToSignals()
 
 	var wg sync.WaitGroup

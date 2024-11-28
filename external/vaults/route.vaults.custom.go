@@ -30,6 +30,7 @@ type TRotkiVaults struct {
 	FeaturingScore float64           `json:"-"` // Not exported
 	Type           models.TTokenType `json:"type"`
 	Token          TRotkiVaultToken  `json:"token"`
+	StakingAddress string            `json:"staking,omitempty"`
 }
 
 /**************************************************************************************************
@@ -53,11 +54,10 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	** page: A uint64 value that represents the page number for pagination. It is obtained from the
 	** 'page' query parameter in the request. If the parameter is not provided, it defaults to 1.
 	**
-	** limit: A uint64 value that represents the number of vaults to be returned per page. It is
-	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
-	** it defaults to 200.
+	** skip: A uint64 value that represents the number of vaults to skip. It is obtained from the
+	** 'skip' query parameter in the request. If the parameter is not provided, it defaults to 0.
 	**************************************************************************************************/
-	page := helpers.SafeStringToUint64(getQuery(c, `page`), 1)
+	skip := helpers.SafeStringToUint64(getQuery(c, `skip`), 0)
 	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
 
 	/** 🔵 - Yearn *************************************************************************************
@@ -133,7 +133,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 			}
 
-			data = append(data, TRotkiVaults{
+			vaultForRotki := TRotkiVaults{
 				Address:        newVault.Address,
 				Name:           newVault.Name,
 				Symbol:         newVault.Symbol,
@@ -149,7 +149,13 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 					Decimals: newVault.Token.Decimals,
 					Icon:     newVault.Token.Icon,
 				},
-			})
+			}
+
+			if newVault.Staking.Address != `` {
+				vaultForRotki.StakingAddress = newVault.Staking.Address
+			}
+
+			data = append(data, vaultForRotki)
 		}
 	}
 
@@ -166,8 +172,8 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	** This effectively returns only the vaults for the requested page with the specified limit.
 	**************************************************************************************************/
 	sort.SortBy(orderBy, orderDirection, data)
-	start := (page - 1) * limit
-	end := page * limit
+	start := skip
+	end := skip + limit
 	if end > uint64(len(data)) {
 		end = uint64(len(data))
 	}
@@ -236,18 +242,9 @@ func (y Controller) CountVaultsForRotki(c *gin.Context) {
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			newVault, err := NewVault().AssignTVault(currentVault)
+			_, err := NewVault().AssignTVault(currentVault)
 			if err != nil {
 				continue
-			}
-
-			APRAsFloat := 0.0
-			if newVault.APR.NetAPR != nil {
-				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
-			}
-			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
-			if newVault.Details.IsHighlighted {
-				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 			}
 
 			count += 1

@@ -52,6 +52,16 @@ var BASE = TChain{
 			Tag:     `STEALTH`,
 			Label:   `PUBLIC_ERC4626`,
 		},
+		{
+			Address: common.HexToAddress("0x770D0d1Fb036483Ed4AbB6d53c1C88fb277D812F"),
+			Version: 5,
+			Block:   21802552,
+			Label:   `YEARN`,
+		},
+	},
+	APROracleContract: TContractData{
+		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),
+		Block:   63167152,
 	},
 	ExtraVaults:       []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{},

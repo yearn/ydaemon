@@ -51,20 +51,20 @@ func initVaults(chainID uint64, scheduler *gocron.Scheduler) (
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
 	registries := indexer.IndexNewVaults(chainID)
-	logs.Success(chainID, `-`, `InitRegistries ✅`)
+	logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
 	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
-	logs.Success(chainID, `-`, `InitVaults ✅`)
+	logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
-	logs.Success(chainID, `-`, `InitTokens ✅`)
+	logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
 
 	scheduler.Every(2).Hours().WaitForSchedule().Do(func() {
 		indexer.IndexYearnXPoolTogetherVaults(chainID)
 		registries := indexer.IndexNewVaults(chainID)
-		logs.Success(chainID, `-`, `InitRegistries ✅`)
+		logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
 		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
-		logs.Success(chainID, `-`, `InitVaults ✅`)
+		logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 		fetcher.RetrieveAllTokens(chainID, vaultMap)
-		logs.Success(chainID, `-`, `InitTokens ✅`)
+		logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
 	})
 	return registries, vaultMap, tokenMap
 }
@@ -76,11 +76,12 @@ func initStrategies(chainID uint64, scheduler *gocron.Scheduler, vaultMap map[co
 	**************************************************************************************************/
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-	logs.Success(chainID, `-`, `InitStrategies ✅`)
+	logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
 
 	scheduler.Every(3).Hours().WaitForSchedule().Do(func() {
 		strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
+		logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
 	})
 }
 

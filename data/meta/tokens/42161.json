@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-11-28T16:29:20.77373+01:00",
+	"lastUpdate": "2024-12-02T09:42:49.105815+01:00",
 	"version": {
 		"major": 0,
-		"minor": 38,
+		"minor": 39,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2793,6 +2793,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x49448d2B94fb9C4e41a30aD8315D32f46004A34b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4949d359f24ba4882cfc1fc750f99a51863c9ccb": {
+			"address": "0x4949d359f24ba4882cfc1fc750f99a51863c9ccb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "xXY-USDT5",
+			"symbol": "xXY-USDT5",
+			"displayName": "xXY-USDT5",
+			"displaySymbol": "xXY-USDT5",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4949d359F24Ba4882cfc1fc750F99A51863c9ccb/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -7255,6 +7269,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xd3443ee1e91aF28e5FB858Fbd0D72A63bA8046E0/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xd4fe6e1e37dfcf35e9eeb54d4cca149d1c10239f": {
+			"address": "0xd4fe6e1e37dfcf35e9eeb54d4cca149d1c10239f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "TREN Debt Token",
+			"symbol": "XY",
+			"displayName": "TREN Debt Token",
+			"displaySymbol": "XY",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xD4fe6e1e37dfCf35E9EEb54D4cca149d1c10239f/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0xd5aabeda88c31858e5f60905185f8697be185e55": {

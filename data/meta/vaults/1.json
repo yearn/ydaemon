@@ -6336,7 +6336,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -6352,7 +6352,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Pendle has retired ENA. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -11767,7 +11767,7 @@
 				"displaySymbol": "",
 				"description": "[Click here](https://app.pendle.finance/trade/pools/0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2/zap/in?chain=ethereum) to get your Pendle LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes your Pendle LP tokens on [Penpie](https://www.pendle.magpiexyz.io/stake). Earned reward tokens are harvested, sold for more LP tokens and deposited back into the strategy.",
 				"sourceURI": "https://app.pendle.finance/trade/pools/0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2/zap/in?chain=ethereum",
-				"uiNotice": "PenPie has experienced an exploit. Deposits and withdrawals have been paused by PenPie.",
+				"uiNotice": "PenPie has experienced an exploit and started a recovery plan for affected users to claim PRT tokens [here](https://www.pendle.magpiexyz.io/recovery).",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -21463,7 +21463,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -21477,7 +21477,7 @@
 				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
-				"description": "",
+				"description": "Lends WETH to Across Protocol and auto-compounds the ACX rewards into more WETH.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"protocols": null,

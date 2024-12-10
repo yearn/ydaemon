@@ -14,7 +14,7 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// getVault will return a list of all vaults matching a provided filter function.
+// getVaults will return a list of all vaults matching a provided filter function.
 func getVaults(
 	c *gin.Context,
 	filterFunc func(vault models.TVault) bool,

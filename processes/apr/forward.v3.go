@@ -44,16 +44,14 @@ func computeVaultV3ForwardAPY(
 	** the vault as expected APR
 	**********************************************************************************************/
 	var hasError error
-	if vault.Kind == models.VaultKindSingle {
-		expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
-		if err == nil {
-			oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
-		} else {
-			hasError = err
-		}
+	expected, err := oracle.GetStrategyApr(nil, vault.Address, big.NewInt(0))
+	if err == nil {
+		oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+	} else {
+		hasError = err
 	}
 
-	if vault.Kind == models.VaultKindMultiple || hasError != nil {
+	if hasError != nil || oracleAPR.IsZero() {
 		expected, err := oracle.GetCurrentApr(nil, vault.Address)
 		if err == nil {
 			oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)

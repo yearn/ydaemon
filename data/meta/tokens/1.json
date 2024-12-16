@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-11T15:18:16.111831+01:00",
+	"lastUpdate": "2024-12-16T10:03:35.456148+01:00",
 	"version": {
 		"major": 0,
-		"minor": 79,
+		"minor": 80,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2163,6 +2163,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x129e6B5DBC0Ecc12F9e486C5BC9cDF1a6A80bc6A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x12f6139a5dc6d80990d30a4d45bb86449ff804d8": {
+			"address": "0x12f6139a5dc6d80990d30a4d45bb86449ff804d8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x12f6139a5DC6d80990D30a4d45bB86449FF804D8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11259,6 +11273,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x60ac70d1646c7b49840313ef8008bd78f8901d75": {
+			"address": "0x60ac70d1646c7b49840313ef8008bd78f8901d75",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Compound",
+			"name": "SY Aave Ethereum USDT",
+			"symbol": "SY-aUSDT",
+			"displayName": "SY Aave Ethereum USDT",
+			"displaySymbol": "SY-aUSDT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x60AC70D1646c7B49840313Ef8008bd78f8901D75/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x60cb28103608c41bfd04ad09d3f7e6221a713b07": {
 			"address": "0x60cb28103608c41bfd04ad09d3f7e6221a713b07",
 			"underlyingTokensAddresses": [],
@@ -13718,6 +13748,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x773f0d42e418df4165a0a5bb754dc447b652538c": {
+			"address": "0x773f0d42e418df4165a0a5bb754dc447b652538c",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Compound",
+			"name": "SY Aave Ethereum USDC",
+			"symbol": "SY-aUSDC",
+			"displayName": "SY Aave Ethereum USDC",
+			"displaySymbol": "SY-aUSDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x773f0D42e418Df4165a0A5Bb754dc447B652538C/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x7749f5ed1e356edc63d469c2fcac9adeb56d1c2b": {
 			"address": "0x7749f5ed1e356edc63d469c2fcac9adeb56d1c2b",
 			"underlyingTokensAddresses": [],
@@ -15301,6 +15347,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains YFI and sdYFI, a tokenized veYFI from [StakeDAO](https://lockers.stakedao.org).",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x852b90239C5034b5bb7a5e54eF1bEF3Ce3359CC8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8539b41ca14148d1f7400d399723827a80579414": {
+			"address": "0x8539b41ca14148d1f7400d399723827a80579414",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8539B41CA14148d1F7400d399723827a80579414/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17600,6 +17660,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x98b72deBe9BEdCc11aF3f1f5BFAc6994aac43786/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c": {
+			"address": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "AAVE V2",
+			"name": "Aave Ethereum USDC",
+			"symbol": "aEthUSDC",
+			"displayName": "Aave Ethereum USDC",
+			"displaySymbol": "aEthUSDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x98C23E9d8f34FEFb1B7BD6a91B7FF122F4e16F5c/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x98fa691998a9e6f410702dea8bc08a9d500aaafe": {
@@ -21943,6 +22019,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbe2a1463bd646d04f45bbf845f47afc6f8863d3b": {
+			"address": "0xbe2a1463bd646d04f45bbf845f47afc6f8863d3b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Aave Ethereum USDC 26JUN2025",
+			"symbol": "YT-aUSDC-26JUN2025",
+			"displayName": "YT Aave Ethereum USDC 26JUN2025",
+			"displaySymbol": "YT-aUSDC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBE2A1463Bd646d04f45Bbf845f47aFc6F8863d3b/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xbe3ca34d0e877a1fc889bd5231d65477779aff4e": {
 			"address": "0xbe3ca34d0e877a1fc889bd5231d65477779aff4e",
 			"underlyingTokensAddresses": [
@@ -24620,6 +24710,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xd3719A10991b6CA2cd32dE536D6e81CCD46e9C02/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd390d043d07887c5f03bab87576c53f657222953": {
+			"address": "0xd390d043d07887c5f03bab87576c53f657222953",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Aave Ethereum USDT 26JUN2025",
+			"symbol": "YT-aUSDT-26JUN2025",
+			"displayName": "YT Aave Ethereum USDT 26JUN2025",
+			"displaySymbol": "YT-aUSDT-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD390d043D07887c5F03Bab87576c53F657222953/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xd393d1ddd6b8811a86d925f5e14014282581bc04": {
@@ -27456,6 +27560,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xea1180804bdba8ac04e2a4406b11fb7970c474f1": {
+			"address": "0xea1180804bdba8ac04e2a4406b11fb7970c474f1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Aave Ethereum USDC 26JUN2025",
+			"symbol": "PT-aUSDC-26JUN2025",
+			"displayName": "PT Aave Ethereum USDC 26JUN2025",
+			"displaySymbol": "PT-aUSDC-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xeA1180804bDBA8aC04E2a4406B11fb7970c474f1/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xeaa629224b3ab2b42b42fddb53a1b51351acbe4f": {
 			"address": "0xeaa629224b3ab2b42b42fddb53a1b51351acbe4f",
 			"underlyingTokensAddresses": [],
@@ -28301,6 +28419,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xF32e58F92e60f4b0A37A69b95d642A471365EAe8/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf358ffe722a0984e940351462fef4a77dde04c33": {
+			"address": "0xf358ffe722a0984e940351462fef4a77dde04c33",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Aave Ethereum USDT 26JUN2025",
+			"symbol": "PT-aUSDT-26JUN2025",
+			"displayName": "PT Aave Ethereum USDT 26JUN2025",
+			"displaySymbol": "PT-aUSDT-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF358fFE722a0984E940351462fEf4a77ddE04c33/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf3a43307dcafa93275993862aae628fcb50dc768": {

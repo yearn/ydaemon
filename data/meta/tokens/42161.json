@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-11T15:18:11.393527+01:00",
+	"lastUpdate": "2024-12-16T10:03:27.635314+01:00",
 	"version": {
 		"major": 0,
-		"minor": 39,
+		"minor": 40,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -675,6 +675,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0F2F5fA44Ea2ac3A2D53A7218bF0F2D02A40aDb5/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x0fc042b32a9a6191834ea12ffa04f2044d0eb302": {
+			"address": "0x0fc042b32a9a6191834ea12ffa04f2044d0eb302",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Aave Arbitrum USDCn 26JUN2025",
+			"symbol": "PT-aArbUSDCn-26JUN2025",
+			"displayName": "PT Aave Arbitrum USDCn 26JUN2025",
+			"displaySymbol": "PT-aArbUSDCn-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0fc042b32a9A6191834eA12ffa04F2044D0EB302/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x10236953fd609fe6a4df9a786b938ced9c9e99d2": {
@@ -2671,6 +2685,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4439FE47139be8B9b13635C142569c3e60D71259/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4505ec38982bb796b34d050ca8d765acff1abdee": {
+			"address": "0x4505ec38982bb796b34d050ca8d765acff1abdee",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4505ec38982Bb796B34D050ca8d765aCFF1aBdee/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4991,6 +5019,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x8dc75acdc362e22febf0a9e358e501a6414aafa7": {
+			"address": "0x8dc75acdc362e22febf0a9e358e501a6414aafa7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Aave Arbitrum USDCn 26JUN2025",
+			"symbol": "YT-aArbUSDCn-26JUN2025",
+			"displayName": "YT Aave Arbitrum USDCn 26JUN2025",
+			"displaySymbol": "YT-aArbUSDCn-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8dC75ACdc362E22fEBf0A9e358E501a6414aaFA7/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2": {
 			"address": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
 			"underlyingTokensAddresses": [],
@@ -6561,6 +6603,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xBdbF7dF0A96B780fbE7D8242a9ea416c1A2aff17/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4": {
+			"address": "0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Compound",
+			"name": "SY Aave Arbitrum USDCn",
+			"symbol": "SY-aArbUSDCn",
+			"displayName": "SY Aave Arbitrum USDCn",
+			"displaySymbol": "SY-aArbUSDCn",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xbE9A9b386FdbA0de5fD76fA2495b0940102Ea1e4/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xbf5c84697058ce641c8477866e031ea844554869": {

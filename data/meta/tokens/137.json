@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-11T15:18:09.158448+01:00",
+	"lastUpdate": "2024-12-16T10:03:24.883181+01:00",
 	"version": {
 		"major": 0,
-		"minor": 3,
+		"minor": 4,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1489,6 +1489,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
+			"address": "0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-2 RombusDAO",
+			"symbol": "rdUSDC-2",
+			"displayName": "USDC-2 RombusDAO",
+			"displaySymbol": "rdUSDC-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x56b33795C24b1c46049031EA9bB8466C5B6cB3Fb/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x578fee9def9a270c20865242cfd4ff86f31d0e5b": {
 			"address": "0x578fee9def9a270c20865242cfd4ff86f31d0e5b",
 			"underlyingTokensAddresses": [],
@@ -2328,6 +2344,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x9A4b458a5aE5d96565455D1e1882301Fea5c076f/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
+			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
+			"underlyingTokensAddresses": [
+				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+			],
+			"type": "Yearn Vault",
+			"name": "supervault",
+			"symbol": "sprvlt",
+			"displayName": "supervault",
+			"displaySymbol": "sprvlt",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x9bc04daBDe16F559d9C8DDE00325aaD15F0B0a47/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},

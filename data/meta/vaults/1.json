@@ -13616,7 +13616,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -13628,7 +13628,7 @@
 					"stability": "Unknown"
 				},
 				"category": "Stablecoin",
-				"displayName": "",
+				"displayName": "USDC to yvUSDS Farmer",
 				"displaySymbol": "",
 				"description": "Invests the USDC through MakerDAO's Peg Stability Module (PSM) and Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
@@ -15002,7 +15002,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -15014,7 +15014,7 @@
 					"stability": "Unknown"
 				},
 				"category": "Stablecoin",
-				"displayName": "",
+				"displayName": "DAI to yvUSDS Farmer",
 				"displaySymbol": "",
 				"description": "Invests the DAI through Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
@@ -21463,7 +21463,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {

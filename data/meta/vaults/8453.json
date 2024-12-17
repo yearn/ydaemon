@@ -277,7 +277,7 @@
 			"version": "3.0.4",
 			"activation": 23747123,
 			"chainID": 8453,
-			"endorsed": true,
+			"endorsed": false,
 			"performanceFee": 0,
 			"managementFee": 0,
 			"emergencyShutdown": false,
@@ -286,7 +286,7 @@
 			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": false,
+				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
@@ -310,11 +310,11 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": true,
+					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": false
+					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
 				"riskScore": {

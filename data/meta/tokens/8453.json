@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-16T10:03:26.845521+01:00",
+	"lastUpdate": "2024-12-17T17:53:37.907372+01:00",
 	"version": {
 		"major": 0,
-		"minor": 11,
+		"minor": 12,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -125,6 +125,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x1b05e4e814b3431a48b8164c41eaC834d9cE2Da6/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe": {
+			"address": "0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe",
+			"underlyingTokensAddresses": [
+				"0xecac9c5f704e954931349da37f60e39f515c11c1"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-LBTC (auto-rolling Pendle PT)",
+			"symbol": "yPT-LBTC",
+			"displayName": "yPT-LBTC (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-LBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x1D7A8593c249ab84B2733d09A9E4a6B9E42140fe/logo-128.png",
+			"decimals": 8,
 			"chainID": 8453
 		},
 		"0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b": {
@@ -1207,6 +1223,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xd80c675366966Ef42B175125BBf1AcB1DB4151ac/logo-128.png",
 			"decimals": 6,
+			"chainID": 8453
+		},
+		"0xecac9c5f704e954931349da37f60e39f515c11c1": {
+			"address": "0xecac9c5f704e954931349da37f60e39f515c11c1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Lombard Staked Bitcoin",
+			"symbol": "LBTC",
+			"displayName": "Lombard Staked Bitcoin",
+			"displaySymbol": "LBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xecAc9C5F704e954931349Da37F60E39f515c11c1/logo-128.png",
+			"decimals": 8,
 			"chainID": 8453
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {

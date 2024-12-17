@@ -77,6 +77,12 @@ var POLYGON = TChain{
 			Block:   63721181,
 			Label:   `YEARN`,
 		},
+		{
+			Address: common.HexToAddress("0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038"),
+			Version: 4,
+			Block:   64224620,
+			Label:   `YEARN`,
+		},
 	},
 	StakingRewardRegistry: []TContractData{
 		// {

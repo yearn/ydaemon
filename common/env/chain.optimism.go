@@ -69,6 +69,12 @@ var OPTIMISM = TChain{
 			Block:   127397389,
 			Label:   `YEARN`,
 		},
+		{
+			Address: common.HexToAddress("0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038"),
+			Version: 4,
+			Block:   127940043,
+			Label:   `YEARN`,
+		},
 	},
 	ExtraVaults: []models.TVaultsFromRegistry{},
 	BlacklistedVaults: []common.Address{

@@ -58,6 +58,12 @@ var BASE = TChain{
 			Block:   21802552,
 			Label:   `YEARN`,
 		},
+		{
+			Address: common.HexToAddress("0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038"),
+			Version: 4,
+			Block:   22344791,
+			Label:   `YEARN`,
+		},
 	},
 	APROracleContract: TContractData{
 		Address: common.HexToAddress(`0x1981AD9F44F2EA9aDd2dC4AD7D075c102C70aF92`),

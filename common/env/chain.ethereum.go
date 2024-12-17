@@ -109,6 +109,12 @@ var ETHEREUM = TChain{
 			Block:   21087110,
 			Label:   `YEARN`,
 		},
+		{
+			Address: common.HexToAddress("0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038"),
+			Version: 4,
+			Block:   21176924,
+			Label:   `YEARN`,
+		},
 	},
 	YearnXRegistries: []TContractData{
 		{

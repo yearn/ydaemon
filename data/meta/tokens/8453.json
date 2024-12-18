@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-17T17:53:37.907372+01:00",
+	"lastUpdate": "2024-12-18T18:20:33.159871+01:00",
 	"version": {
 		"major": 0,
-		"minor": 12,
+		"minor": 13,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -999,6 +999,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
+			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship EURC Compounder",
+			"symbol": "ysEURC",
+			"displayName": "Morpho Moonwell Flagship EURC Compounder",
+			"displaySymbol": "ysEURC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x985CC9c306Bfe075F7c67EC275fb0b80F0b21976/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7": {
 			"address": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
 			"underlyingTokensAddresses": [
@@ -1209,6 +1225,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xd5428b889621eee8060fc105aa0ab0fa2e344468": {
+			"address": "0xd5428b889621eee8060fc105aa0ab0fa2e344468",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship USDC Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "Morpho Moonwell Flagship USDC Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xd5428B889621Eee8060fc105AA0AB0Fa2e344468/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xd80c675366966ef42b175125bbf1acb1db4151ac": {
 			"address": "0xd80c675366966ef42b175125bbf1acb1db4151ac",
 			"underlyingTokensAddresses": [
@@ -1252,6 +1284,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xEcFc1e5BDa4d4191c9Cab053ec704347Db87Be5d/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xef34b4dcb851385b8f3a8ff460c34adafd160802": {
+			"address": "0xef34b4dcb851385b8f3a8ff460c34adafd160802",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship ETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Moonwell Flagship ETH Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xEF34B4Dcb851385b8F3a8ff460C34aDAFD160802/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

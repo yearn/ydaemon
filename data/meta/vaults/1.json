@@ -10413,7 +10413,7 @@
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to the corresponding [Meta Morpho](https://app.morpho.org/?network=mainnet) vault earning the underlying yield and auto-compounding all reward tokens.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "The market is using USD0 as collateral",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -10423,7 +10423,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 2,
+				"riskLevel": 3,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -10436,7 +10436,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 4,
 					"externalProtocolType": 1,
-					"comment": "USD0 makes 25% collateral. Risk depends heavily on the specific vault configuration and the curator managing the vault."
+					"comment": "USD0 makes 45% collateral. For more info about USD0 check website: https://usual.money/ \nRisk depends heavily on the specific vault configuration and the curator managing the vault."
 				}
 			}
 		},
@@ -25992,7 +25992,7 @@
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to the corresponding [Meta Morpho](https://app.morpho.org/?network=mainnet) vault earning the underlying yield and auto-compounding all reward tokens.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Most of the market collateral is in USD0.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26002,7 +26002,7 @@
 					"isPoolTogether": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 3,
+				"riskLevel": 5,
 				"riskScore": {
 					"review": 3,
 					"testing": 1,
@@ -26015,7 +26015,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 4,
 					"externalProtocolType": 1,
-					"comment": "Attention! All collateral is tied to USD0. For more info about USD0 check website: https://usual.money/ \nRisk depends heavily on the specific vault configuration and the curator managing the vault."
+					"comment": "Most of the collateral is tied to USD0. For more info about USD0 check website: https://usual.money/ \nRisk depends heavily on the specific vault configuration and the curator managing the vault."
 				}
 			}
 		},

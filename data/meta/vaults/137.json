@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2024-12-17T17:53:41.903894+01:00",
+	"lastUpdate": "2025-01-06T10:36:23.706096+01:00",
 	"version": {
-		"major": 9,
+		"major": 10,
 		"minor": 0,
-		"patch": 32
+		"patch": 28
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -46,7 +46,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-dai-stable",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -86,8 +88,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1022808020081244905",
-			"lastTotalAssets": "7380907183000000000000",
+			"lastPricePerShare": "1022810497693170827",
+			"lastTotalAssets": "6212047505000000000000",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -151,8 +153,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2304818",
-			"lastTotalAssets": "292956164634",
+			"lastPricePerShare": "2314500",
+			"lastTotalAssets": "170977360895",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -216,8 +218,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1017725872903378534",
-			"lastTotalAssets": "277408471892536714192048",
+			"lastPricePerShare": "1018576837111542667",
+			"lastTotalAssets": "255881198076485588452652",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -285,8 +287,8 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1081807738405024074",
-			"lastTotalAssets": "177291924864932563259187",
+			"lastPricePerShare": "1082527109366344664",
+			"lastTotalAssets": "173905103414969888838978",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -415,8 +417,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1066715",
-			"lastTotalAssets": "74010751",
+			"lastPricePerShare": "1066722",
+			"lastTotalAssets": "74011240",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -480,9 +482,11 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xbeda9a5300393e00229dc15cc54d5185e7646c56"],
-			"lastPricePerShare": "1056419023956308150",
-			"lastTotalAssets": "35221297494245549301",
+			"lastActiveStrategies": [
+				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
+			],
+			"lastPricePerShare": "1056895085851383003",
+			"lastTotalAssets": "26110091276425128945",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -571,7 +575,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-wide",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -681,9 +687,11 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0x52367c8e381edfb068e9fba1e7e9b2c847042897"],
-			"lastPricePerShare": "1070323",
-			"lastTotalAssets": "617605979836",
+			"lastActiveStrategies": [
+				"0x52367c8e381edfb068e9fba1e7e9b2c847042897"
+			],
+			"lastPricePerShare": "1077444",
+			"lastTotalAssets": "399682145400",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -747,8 +755,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025038174364674923",
-			"lastTotalAssets": "4664513989414796",
+			"lastPricePerShare": "1025038174364675181",
+			"lastTotalAssets": "964193562204604",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -772,7 +780,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-weth-narrow",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -812,8 +822,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1073036",
-			"lastTotalAssets": "924903821665",
+			"lastPricePerShare": "1079485",
+			"lastTotalAssets": "674691295470",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -877,7 +887,9 @@
 			"performanceFee": 2000,
 			"managementFee": 200,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xbeda9a5300393e00229dc15cc54d5185e7646c56"],
+			"lastActiveStrategies": [
+				"0xbeda9a5300393e00229dc15cc54d5185e7646c56"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -943,8 +955,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1402727933033016948",
-			"lastTotalAssets": "2137410617",
+			"lastPricePerShare": "1402727933593423502",
+			"lastTotalAssets": "1161777325",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -968,7 +980,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-usdc.e-narrow",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1138,8 +1152,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1034856",
-			"lastTotalAssets": "634346608411",
+			"lastPricePerShare": "1041659",
+			"lastTotalAssets": "410470455521",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1203,8 +1217,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1989257650675528799",
-			"lastTotalAssets": "37116107908105930310",
+			"lastPricePerShare": "1990170812061279633",
+			"lastTotalAssets": "3526345343384593179",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1228,7 +1242,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-weth-narrow",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1257,7 +1273,7 @@
 		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
 			"address": "0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1533,8 +1549,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2864045",
-			"lastTotalAssets": "29587038",
+			"lastPricePerShare": "2864060",
+			"lastTotalAssets": "29587207",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1623,7 +1639,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-maticx-pegged-price",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1733,8 +1751,8 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1141996985663562021",
-			"lastTotalAssets": "773748490022223764058337",
+			"lastPricePerShare": "1150926705324225263",
+			"lastTotalAssets": "588363639673096962526749",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1823,7 +1841,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-wide",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -1852,7 +1872,7 @@
 		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
 			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xc322c31a85b002baca8462d608b1b0177d2b4e5c",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1863,7 +1883,9 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f"],
+			"lastActiveStrategies": [
+				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f"
+			],
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
@@ -1934,8 +1956,8 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1156983",
-			"lastTotalAssets": "746428749148",
+			"lastPricePerShare": "1162466",
+			"lastTotalAssets": "661910364478",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2024,7 +2046,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/usdc.e-usdt-stable",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2089,7 +2113,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wbtc-usdc.e-narrow",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2129,8 +2155,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1230835",
-			"lastTotalAssets": "353999874481",
+			"lastPricePerShare": "1238242",
+			"lastTotalAssets": "311093021333",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2219,7 +2245,9 @@
 				"description": "[Click here](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow) to get your {{token}} Gamma LP tokens. \u003cbr/\u003e\u003cbr/\u003eStakes {{token}} on [Gamma.xyz](https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow). Earned reward tokens are harvested, sold for more {{token}} which is deposited back into the strategy.",
 				"sourceURI": "https://app.gamma.xyz/vault/qi/polygon/details/wmatic-weth-narrow",
 				"uiNotice": "",
-				"protocols": ["Gamma"],
+				"protocols": [
+					"Gamma"
+				],
 				"inclusion": {
 					"isSet": true,
 					"isYearn": true,
@@ -2264,8 +2292,8 @@
 				"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
 				"0x0fefee13864c431717f5b2678607b6ce532a170c"
 			],
-			"lastPricePerShare": "1157264",
-			"lastTotalAssets": "1200674347869",
+			"lastPricePerShare": "1165030",
+			"lastTotalAssets": "828880742417",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2329,8 +2357,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006399267390625144",
-			"lastTotalAssets": "35550630018174409278",
+			"lastPricePerShare": "1006991126228002063",
+			"lastTotalAssets": "23038997807560963527",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2526,8 +2554,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1089836",
-			"lastTotalAssets": "434994471174",
+			"lastPricePerShare": "1095735",
+			"lastTotalAssets": "366763640042",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2591,8 +2619,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1073045845128667647",
-			"lastTotalAssets": "775324444669817342187501",
+			"lastPricePerShare": "1082320987946660402",
+			"lastTotalAssets": "599594871154524485962042",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2656,9 +2684,11 @@
 			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": ["0xdb92b89ca415c0dab40dc96e99fc411c08f20780"],
+			"lastActiveStrategies": [
+				"0xdb92b89ca415c0dab40dc96e99fc411c08f20780"
+			],
 			"lastPricePerShare": "1015342",
-			"lastTotalAssets": "13574287485",
+			"lastTotalAssets": "3435580811",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2722,8 +2752,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1017857035666324501",
-			"lastTotalAssets": "198146488380046960178",
+			"lastPricePerShare": "1309212750097972165",
+			"lastTotalAssets": "54805970185748236946",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2911,7 +2941,7 @@
 		"0xffcf7fb615614b96f5730af9da3d7114c119aabe": {
 			"address": "0xffcf7fb615614b96f5730af9da3d7114c119aabe",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",

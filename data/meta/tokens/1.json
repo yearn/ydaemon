@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-06T10:36:34.939769+01:00",
+	"lastUpdate": "2025-01-13T11:07:14.525311+01:00",
 	"version": {
 		"major": 0,
-		"minor": 85,
+		"minor": 86,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2423,6 +2423,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x14c1878bd3f989d0d2199c537ea1a6d3b5225d05": {
+			"address": "0x14c1878bd3f989d0d2199c537ea1a6d3b5225d05",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Ether.Fi Liquid Bera ETH",
+			"symbol": "SY-liquidBeraETH",
+			"displayName": "SY Ether.Fi Liquid Bera ETH",
+			"displaySymbol": "SY-liquidBeraETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x14C1878BD3F989D0D2199c537EA1a6d3b5225d05/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x150f76e1339a918baa38338ed9bd695bd0924bcf": {
 			"address": "0x150f76e1339a918baa38338ed9bd695bd0924bcf",
 			"underlyingTokensAddresses": [
@@ -4350,6 +4364,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x24a65ddc2949dec27cee9beacfc23e4bc86b38d8": {
+			"address": "0x24a65ddc2949dec27cee9beacfc23e4bc86b38d8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Concrete USDe Vault 10APR2025",
+			"symbol": "YT-ctUSDe-10APR2025",
+			"displayName": "YT Concrete USDe Vault 10APR2025",
+			"displaySymbol": "YT-ctUSDe-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x24a65DDc2949DeC27cEE9bEacFc23E4Bc86B38D8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x24ae2da0f361aa4be46b48eb19c91e02c5e4f27e": {
 			"address": "0x24ae2da0f361aa4be46b48eb19c91e02c5e4f27e",
 			"underlyingTokensAddresses": [
@@ -5277,6 +5305,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2D85Ac3F2AeD4f0A14DC6852f1725240E47Cfc1f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2d8f5997af9bc7ae4047287425355518ef01fcfc": {
+			"address": "0x2d8f5997af9bc7ae4047287425355518ef01fcfc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2D8F5997Af9bc7AE4047287425355518EF01fcfC/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7404,6 +7446,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3dc05f96160bdf70cf23989a632c087ebc022f92": {
+			"address": "0x3dc05f96160bdf70cf23989a632c087ebc022f92",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3dC05F96160BdF70CF23989a632C087ebC022F92/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x3dd0843a028c86e0b760b1a76929d1c5ef93a2dd": {
 			"address": "0x3dd0843a028c86e0b760b1a76929d1c5ef93a2dd",
 			"underlyingTokensAddresses": [],
@@ -8594,6 +8650,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x46e6b4a950eb1abba159517dea956afd01ea9497": {
+			"address": "0x46e6b4a950eb1abba159517dea956afd01ea9497",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x46E6b4A950Eb1AbBa159517DEA956Afd01ea9497/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x470f623e8bc3c870f96516b8cbfc6a27e253424d": {
 			"address": "0x470f623e8bc3c870f96516b8cbfc6a27e253424d",
 			"underlyingTokensAddresses": [
@@ -9194,6 +9264,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d1c297d39c5c1277964d0e3f8aa901493664530": {
+			"address": "0x4d1c297d39c5c1277964d0e3f8aa901493664530",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PUFFER",
+			"symbol": "PUFFER",
+			"displayName": "PUFFER",
+			"displaySymbol": "PUFFER",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4d1C297d39C5c1277964D0E3f8Aa901493664530/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d224452801aced8b2f0aebe155379bb5d594381": {
 			"address": "0x4d224452801aced8b2f0aebe155379bb5d594381",
 			"underlyingTokensAddresses": [],
@@ -9570,6 +9654,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x500f4ac4b1cfae7de51799ecf5bd09649a8b05d3": {
+			"address": "0x500f4ac4b1cfae7de51799ecf5bd09649a8b05d3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Concrete sUSDe Vault 10APR2025",
+			"symbol": "PT-ctsUSDe-10APR2025",
+			"displayName": "PT Concrete sUSDe Vault 10APR2025",
+			"displaySymbol": "PT-ctsUSDe-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x500F4Ac4B1cFae7De51799eCf5bD09649A8b05D3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935": {
 			"address": "0x503e0bab6acdae73ea7fb7cf6ae5792014dbe935",
 			"underlyingTokensAddresses": [
@@ -9599,6 +9697,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x507c6dE33f50c0505F77F598c0B3CA7b5fEB3D68/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x50bf5c6445b79b79e368856095a70c564d0c6966": {
+			"address": "0x50bf5c6445b79b79e368856095a70c564d0c6966",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ether.Fi Liquid Bera ETH 10APR2025",
+			"symbol": "PT-liquidBeraETH-10APR2025",
+			"displayName": "PT Ether.Fi Liquid Bera ETH 10APR2025",
+			"displaySymbol": "PT-liquidBeraETH-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x50bF5C6445b79b79E368856095a70c564d0c6966/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9850,6 +9962,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x530824DA86689C9C17CdC2871Ff29B058345b44a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x532486c59cd371ffedb19241186d786a1e8ee111": {
+			"address": "0x532486c59cd371ffedb19241186d786a1e8ee111",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Concrete USDe Vault 10APR2025",
+			"symbol": "PT-ctUSDe-10APR2025",
+			"displayName": "PT Concrete USDe Vault 10APR2025",
+			"displaySymbol": "PT-ctUSDe-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x532486C59cD371ffEDb19241186D786A1E8Ee111/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10645,6 +10771,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5A0f44FE239856091C52a4b2114aba55773b9c8d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5a129c3f14df4d92c13d9a3dffdc695a778f6023": {
+			"address": "0x5a129c3f14df4d92c13d9a3dffdc695a778f6023",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Concrete sUSDe Vault 10APR2025",
+			"symbol": "YT-ctsUSDe-10APR2025",
+			"displayName": "YT Concrete sUSDe Vault 10APR2025",
+			"displaySymbol": "YT-ctsUSDe-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5A129C3F14DF4d92C13D9a3DFfDC695a778f6023/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12477,6 +12617,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x697c54a84d83f37380d034e2bfc6f7ce8d89f4ee": {
+			"address": "0x697c54a84d83f37380d034e2bfc6f7ce8d89f4ee",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Meta Vault",
+			"symbol": "tmvUSDC",
+			"displayName": "USDC Meta Vault",
+			"displaySymbol": "tmvUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x697c54a84D83F37380d034e2BfC6F7cE8d89F4Ee/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x6982508145454ce325ddbe47a25d4ec3d2311933": {
 			"address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
 			"underlyingTokensAddresses": [],
@@ -12852,6 +13008,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6bB61215298F296C55b19Ad842D3Df69021DA2ef/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6bd07c8691651a31c2d56532e4e5c0f46e1d80e8": {
+			"address": "0x6bd07c8691651a31c2d56532e4e5c0f46e1d80e8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ether.Fi Liquid Bera ETH 10APR2025",
+			"symbol": "YT-liquidBeraETH-10APR2025",
+			"displayName": "YT Ether.Fi Liquid Bera ETH 10APR2025",
+			"displaySymbol": "YT-liquidBeraETH-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6bd07C8691651A31c2d56532E4E5C0f46E1D80e8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -15575,6 +15745,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x83599937c2c9bea0e0e8ac096c6f32e86486b410": {
+			"address": "0x83599937c2c9bea0e0e8ac096c6f32e86486b410",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ether.Fi Liquid Bera ETH",
+			"symbol": "liquidBeraETH",
+			"displayName": "Ether.Fi Liquid Bera ETH",
+			"displaySymbol": "liquidBeraETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x83599937c2C9bEA0E0E8ac096c6f32e86486b410/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x836a808d4828586a69364065a1e064609f5078c7": {
 			"address": "0x836a808d4828586a69364065a1e064609f5078c7",
 			"underlyingTokensAddresses": [],
@@ -15837,6 +16021,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x856ca0217838e9fefefd6141028c85bd423ec54b": {
+			"address": "0x856ca0217838e9fefefd6141028c85bd423ec54b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT pumpBTC 29MAY2025",
+			"symbol": "PT-pumpBTC-29MAY2025",
+			"displayName": "PT pumpBTC 29MAY2025",
+			"displaySymbol": "PT-pumpBTC-29MAY2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x856CA0217838E9FefeFd6141028c85bD423EC54B/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0x85a5326f08c44ec673e4bfc666b737f7f3dc6b37": {
@@ -18764,6 +18962,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9dc37e4a901b1e21bd05e75c3b9a633a17001a39": {
+			"address": "0x9dc37e4a901b1e21bd05e75c3b9a633a17001a39",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "Concrete-USDe-Vault",
+			"symbol": "ctUSDe",
+			"displayName": "Concrete-USDe-Vault",
+			"displaySymbol": "ctUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9DC37e4a901b1e21Bd05E75c3B9A633A17001a39/logo-128.png",
+			"decimals": 27,
+			"chainID": 1
+		},
 		"0x9ddc69eb24329365e96cdca508e37ddf1cd4478d": {
 			"address": "0x9ddc69eb24329365e96cdca508e37ddf1cd4478d",
 			"underlyingTokensAddresses": [],
@@ -19118,6 +19332,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa15c425bd160dc5b03d79975c934ecc3535c3d43": {
+			"address": "0xa15c425bd160dc5b03d79975c934ecc3535c3d43",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT pumpBTC 29MAY2025",
+			"symbol": "YT-pumpBTC-29MAY2025",
+			"displayName": "YT pumpBTC 29MAY2025",
+			"displaySymbol": "YT-pumpBTC-29MAY2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA15c425bd160dc5B03D79975c934eCC3535C3d43/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xa183754f09af59fa1e0b5b9e32b9dea91b6dc0a3": {
 			"address": "0xa183754f09af59fa1e0b5b9e32b9dea91b6dc0a3",
 			"underlyingTokensAddresses": [],
@@ -19204,6 +19432,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xa2619fDFB99ABeb533a1147461f3f1109c5ADe75/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa2621f9b02549d05289b46700e9d53fcd2ee0b6d": {
+			"address": "0xa2621f9b02549d05289b46700e9d53fcd2ee0b6d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ether.Fi Liquid Bera BTC 10APR2025",
+			"symbol": "PT-liquidBeraBTC-10APR2025",
+			"displayName": "PT Ether.Fi Liquid Bera BTC 10APR2025",
+			"displaySymbol": "PT-liquidBeraBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA2621F9b02549D05289b46700e9d53fcd2ee0B6D/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xa2b4c479c98163bbdbd3987a9f3474bb7bc72f84": {
@@ -20171,6 +20413,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xaaa576f3c8b1f6f12afd37f3936ced36e1a6ab94": {
+			"address": "0xaaa576f3c8b1f6f12afd37f3936ced36e1a6ab94",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Ether.Fi Liquid Bera BTC",
+			"symbol": "SY-liquidBeraBTC",
+			"displayName": "SY Ether.Fi Liquid Bera BTC",
+			"displaySymbol": "SY-liquidBeraBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAaA576F3c8b1f6F12AfD37f3936ced36E1A6Ab94/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xaaaee277f21bb7d2bf49e6b36d0d94dc229b0b25": {
 			"address": "0xaaaee277f21bb7d2bf49e6b36d0d94dc229b0b25",
 			"underlyingTokensAddresses": [
@@ -20227,6 +20483,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xab5eB14c09D416F0aC63661E57EDB7AEcDb9BEfA/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xab659cfa8a179fc305df3a083f1400e6a230bf15": {
+			"address": "0xab659cfa8a179fc305df3a083f1400e6a230bf15",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Concrete USDe Vault",
+			"symbol": "SY-ctUSDe",
+			"displayName": "SY Concrete USDe Vault",
+			"displaySymbol": "SY-ctUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xab659cfa8a179fC305dF3a083f1400E6A230bf15/logo-128.png",
+			"decimals": 27,
 			"chainID": 1
 		},
 		"0xab846fb6c81370327e784ae7cbb6d6a6af6ff4bf": {
@@ -20478,6 +20750,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xaCdf0DBA4B9839b96221a8487e9ca660a48212be/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xad016c9565a4aeec6d4cfc8a01c648ecbea1a602": {
+			"address": "0xad016c9565a4aeec6d4cfc8a01c648ecbea1a602",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAD016C9565A4aEEC6d4cFC8a01c648eCbea1A602/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -22280,6 +22566,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbb1a58c7cf8705f4f2f476a4409198064e153cea": {
+			"address": "0xbb1a58c7cf8705f4f2f476a4409198064e153cea",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ether.Fi Liquid Bera BTC 10APR2025",
+			"symbol": "YT-liquidBeraBTC-10APR2025",
+			"displayName": "YT Ether.Fi Liquid Bera BTC 10APR2025",
+			"displaySymbol": "YT-liquidBeraBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBB1a58c7cF8705F4F2F476a4409198064E153Cea/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xbb1cc2ca1d89fb593e2f79fc7474fdf40d78f6be": {
 			"address": "0xbb1cc2ca1d89fb593e2f79fc7474fdf40d78f6be",
 			"underlyingTokensAddresses": [
@@ -23968,6 +24268,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xC669928185DbCE49d2230CC9B0979BE6DC797957/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc673ef7791724f0dcca38adb47fbb3aef3db6c80": {
+			"address": "0xc673ef7791724f0dcca38adb47fbb3aef3db6c80",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ether.Fi Liquid Bera BTC",
+			"symbol": "liquidBeraBTC",
+			"displayName": "Ether.Fi Liquid Bera BTC",
+			"displaySymbol": "liquidBeraBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC673ef7791724f0dcca38adB47Fbb3AEF3DB6C80/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xc687141c18f20f7ba405e45328825579fddd3195": {
@@ -26148,6 +26462,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd84e88abbe6a44a2ef9b72de9def68317d6df336": {
+			"address": "0xd84e88abbe6a44a2ef9b72de9def68317d6df336",
+			"underlyingTokensAddresses": [
+				"0x9d39a5de30e57443bff2a8307a4256c8797a3497"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Concrete sUSDe Vault",
+			"symbol": "SY-ctsUSDe",
+			"displayName": "SY Concrete sUSDe Vault",
+			"displaySymbol": "SY-ctsUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xd84e88AbBe6a44A2ef9B72DE9DEf68317d6DF336/logo-128.png",
+			"decimals": 27,
+			"chainID": 1
+		},
 		"0xd86f4d98b34108cb4c059d540bd513f09b2ddd30": {
 			"address": "0xd86f4d98b34108cb4c059d540bd513f09b2ddd30",
 			"underlyingTokensAddresses": [],
@@ -28035,6 +28365,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe6df8d8879595100e4b6b359e6d0712e107c7472": {
+			"address": "0xe6df8d8879595100e4b6b359e6d0712e107c7472",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xe6DF8d8879595100E4B6B359E6D0712E107C7472/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe6fe6e1f6ef1de6a21cd752e805f953673a7c0f0": {
 			"address": "0xe6fe6e1f6ef1de6a21cd752e805f953673a7c0f0",
 			"underlyingTokensAddresses": [],
@@ -28528,6 +28872,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xebf5c58b74a836f1e51d08e9c909c4a4530afd41": {
+			"address": "0xebf5c58b74a836f1e51d08e9c909c4a4530afd41",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEbf5c58b74A836F1e51d08e9C909c4A4530AFD41/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xec30e55b51d9518cfcf5e870bcf89c73f5708f72": {
 			"address": "0xec30e55b51d9518cfcf5e870bcf89c73f5708f72",
 			"underlyingTokensAddresses": [],
@@ -28584,6 +28942,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEc5a52C685CC3Ad79a6a347aBACe330d69e0b1eD/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xecb32aa437efcd4e6dd4e750684846b66a2010c6": {
+			"address": "0xecb32aa437efcd4e6dd4e750684846b66a2010c6",
+			"underlyingTokensAddresses": [
+				"0xfa81c70fc43b120b226e99382ef9ef8fda65d902"
+			],
+			"type": "Yearn Vault",
+			"name": "sdyvCurve-upYFI-f-gauge-1 Yieldoor",
+			"symbol": "ysdyvCurve-upYFI-f-gauge-1",
+			"displayName": "sdyvCurve-upYFI-f-gauge-1 Yieldoor",
+			"displaySymbol": "ysdyvCurve-upYFI-f-gauge-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xecB32Aa437EFCd4e6Dd4e750684846b66A2010c6/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xecd5e75afb02efa118af914515d6521aabd189f1": {
@@ -29981,6 +30355,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf80c6636f9597d6a7fc1e5182b168b71e98fd1cb": {
+			"address": "0xf80c6636f9597d6a7fc1e5182b168b71e98fd1cb",
+			"underlyingTokensAddresses": [
+				"0x9d39a5de30e57443bff2a8307a4256c8797a3497"
+			],
+			"type": "Yearn Vault",
+			"name": "Concrete-sUSDe-Vault",
+			"symbol": "ctsUSDe",
+			"displayName": "Concrete-sUSDe-Vault",
+			"displaySymbol": "ctsUSDe",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf80c6636F9597d6a7FC1E5182B168B71e98Fd1cB/logo-128.png",
+			"decimals": 27,
+			"chainID": 1
+		},
 		"0xf8208fb52ba80075af09840a683143c22dc5b4dd": {
 			"address": "0xf8208fb52ba80075af09840a683143c22dc5b4dd",
 			"underlyingTokensAddresses": [],
@@ -30249,6 +30639,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xfa6dCB142e12b4f2CB15CABb344a618B7e8d6A62/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfa81c70fc43b120b226e99382ef9ef8fda65d902": {
+			"address": "0xfa81c70fc43b120b226e99382ef9ef8fda65d902",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Stake DAO yvCurve-upYFI-f Gauge",
+			"symbol": "sdyvCurve-upYFI-f-gauge",
+			"displayName": "Stake DAO yvCurve-upYFI-f Gauge",
+			"displaySymbol": "sdyvCurve-upYFI-f-gauge",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xfa81C70FC43b120b226e99382Ef9ef8fdA65d902/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

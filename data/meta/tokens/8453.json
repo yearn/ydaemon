@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-11T15:18:11.932069+01:00",
+	"lastUpdate": "2025-01-13T11:06:52.046325+01:00",
 	"version": {
 		"major": 0,
-		"minor": 11,
+		"minor": 13,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -125,6 +125,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x1b05e4e814b3431a48b8164c41eaC834d9cE2Da6/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe": {
+			"address": "0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe",
+			"underlyingTokensAddresses": [
+				"0xecac9c5f704e954931349da37f60e39f515c11c1"
+			],
+			"type": "Yearn Vault",
+			"name": "yPT-LBTC (auto-rolling Pendle PT)",
+			"symbol": "yPT-LBTC",
+			"displayName": "yPT-LBTC (auto-rolling Pendle PT)",
+			"displaySymbol": "yPT-LBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x1D7A8593c249ab84B2733d09A9E4a6B9E42140fe/logo-128.png",
+			"decimals": 8,
 			"chainID": 8453
 		},
 		"0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b": {
@@ -983,6 +999,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
+			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship EURC Compounder",
+			"symbol": "ysEURC",
+			"displayName": "Morpho Moonwell Flagship EURC Compounder",
+			"displaySymbol": "ysEURC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x985CC9c306Bfe075F7c67EC275fb0b80F0b21976/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7": {
 			"address": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
 			"underlyingTokensAddresses": [
@@ -1193,6 +1225,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xd5428b889621eee8060fc105aa0ab0fa2e344468": {
+			"address": "0xd5428b889621eee8060fc105aa0ab0fa2e344468",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship USDC Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "Morpho Moonwell Flagship USDC Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xd5428B889621Eee8060fc105AA0AB0Fa2e344468/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xd80c675366966ef42b175125bbf1acb1db4151ac": {
 			"address": "0xd80c675366966ef42b175125bbf1acb1db4151ac",
 			"underlyingTokensAddresses": [
@@ -1209,6 +1257,20 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0xecac9c5f704e954931349da37f60e39f515c11c1": {
+			"address": "0xecac9c5f704e954931349da37f60e39f515c11c1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Lombard Staked Bitcoin",
+			"symbol": "LBTC",
+			"displayName": "Lombard Staked Bitcoin",
+			"displaySymbol": "LBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xecAc9C5F704e954931349Da37F60E39f515c11c1/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
 			"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
 			"underlyingTokensAddresses": [
@@ -1222,6 +1284,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xEcFc1e5BDa4d4191c9Cab053ec704347Db87Be5d/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xef34b4dcb851385b8f3a8ff460c34adafd160802": {
+			"address": "0xef34b4dcb851385b8f3a8ff460c34adafd160802",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Flagship ETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Moonwell Flagship ETH Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xEF34B4Dcb851385b8F3a8ff460C34aDAFD160802/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

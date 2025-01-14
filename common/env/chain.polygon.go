@@ -75,6 +75,13 @@ var POLYGON = TChain{
 			Address: common.HexToAddress("0x770D0d1Fb036483Ed4AbB6d53c1C88fb277D812F"),
 			Version: 5,
 			Block:   63721181,
+			Tag:     `STEALTH`,
+			Label:   `PUBLIC_ERC4626`,
+		},
+		{
+			Address: common.HexToAddress("0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038"),
+			Version: 4,
+			Block:   64224620,
 			Label:   `YEARN`,
 		},
 	},

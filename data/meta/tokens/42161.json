@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2024-12-11T15:18:11.393527+01:00",
+	"lastUpdate": "2025-01-13T11:06:58.562404+01:00",
 	"version": {
 		"major": 0,
-		"minor": 39,
+		"minor": 41,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -675,6 +675,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x0F2F5fA44Ea2ac3A2D53A7218bF0F2D02A40aDb5/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x0fc042b32a9a6191834ea12ffa04f2044d0eb302": {
+			"address": "0x0fc042b32a9a6191834ea12ffa04f2044d0eb302",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Aave Arbitrum USDCn 26JUN2025",
+			"symbol": "PT-aArbUSDCn-26JUN2025",
+			"displayName": "PT Aave Arbitrum USDCn 26JUN2025",
+			"displaySymbol": "PT-aArbUSDCn-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x0fc042b32a9A6191834eA12ffa04F2044D0EB302/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x10236953fd609fe6a4df9a786b938ced9c9e99d2": {
@@ -1713,6 +1727,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x2a18a490ec18b019837f6153269d21a772167292": {
+			"address": "0x2a18a490ec18b019837f6153269d21a772167292",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked ePENDLE 27MAR2025",
+			"symbol": "PT-stk-EPendle-27MAR2025",
+			"displayName": "PT Staked ePENDLE 27MAR2025",
+			"displaySymbol": "PT-stk-EPendle-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x2A18A490EC18b019837f6153269d21A772167292/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x2ac2b254bc18cd4999f64773a966e4f4869c34ee": {
 			"address": "0x2ac2b254bc18cd4999f64773a966e4f4869c34ee",
 			"underlyingTokensAddresses": [
@@ -2674,6 +2702,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x4505ec38982bb796b34d050ca8d765acff1abdee": {
+			"address": "0x4505ec38982bb796b34d050ca8d765acff1abdee",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4505ec38982Bb796B34D050ca8d765aCFF1aBdee/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x458db433b74b1094c8282152500f6d5bdf062eb0": {
 			"address": "0x458db433b74b1094c8282152500f6d5bdf062eb0",
 			"underlyingTokensAddresses": [],
@@ -2835,6 +2877,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4a8E64c3A66ce0830e3bf2ea7863b013Aa592114/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4a94091cadd74bdf313b74d58eac908c5fc53704": {
+			"address": "0x4a94091cadd74bdf313b74d58eac908c5fc53704",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT mPendle 27MAR2025",
+			"symbol": "PT-mPendle-27MAR2025",
+			"displayName": "PT mPendle 27MAR2025",
+			"displaySymbol": "PT-mPendle-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4a94091CAdD74BDf313B74d58EAc908C5fC53704/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4991,6 +5047,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x8dc75acdc362e22febf0a9e358e501a6414aafa7": {
+			"address": "0x8dc75acdc362e22febf0a9e358e501a6414aafa7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Aave Arbitrum USDCn 26JUN2025",
+			"symbol": "YT-aArbUSDCn-26JUN2025",
+			"displayName": "YT Aave Arbitrum USDCn 26JUN2025",
+			"displaySymbol": "YT-aArbUSDCn-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x8dC75ACdc362E22fEBf0A9e358E501a6414aaFA7/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
 		"0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2": {
 			"address": "0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2",
 			"underlyingTokensAddresses": [],
@@ -5763,6 +5833,20 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0x9ff912568eb011d719b5f4e940f8135633f4bcdc": {
+			"address": "0x9ff912568eb011d719b5f4e940f8135633f4bcdc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x9fF912568eB011D719B5F4E940f8135633F4bCDc/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xa0192f6567f8f5dc38c53323235fd08b318d2dca": {
 			"address": "0xa0192f6567f8f5dc38c53323235fd08b318d2dca",
 			"underlyingTokensAddresses": [],
@@ -6333,6 +6417,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xb5209cdbf58947b1189ab467f18365b0300570d0": {
+			"address": "0xb5209cdbf58947b1189ab467f18365b0300570d0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked ePENDLE 27MAR2025",
+			"symbol": "YT-stk-EPendle-27MAR2025",
+			"displayName": "YT Staked ePENDLE 27MAR2025",
+			"displaySymbol": "YT-stk-EPendle-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xB5209CdbF58947B1189AB467f18365b0300570D0/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xb688ba096b7bb75d7841e47163cd12d18b36a5bf": {
 			"address": "0xb688ba096b7bb75d7841e47163cd12d18b36a5bf",
 			"underlyingTokensAddresses": [
@@ -6561,6 +6659,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xBdbF7dF0A96B780fbE7D8242a9ea416c1A2aff17/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4": {
+			"address": "0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Compound",
+			"name": "SY Aave Arbitrum USDCn",
+			"symbol": "SY-aArbUSDCn",
+			"displayName": "SY Aave Arbitrum USDCn",
+			"displaySymbol": "SY-aArbUSDCn",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xbE9A9b386FdbA0de5fD76fA2495b0940102Ea1e4/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0xbf5c84697058ce641c8477866e031ea844554869": {
@@ -7166,6 +7280,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xd0c4351a18F40b96b6446Da3A191496DF36d60F9/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xd0fdb5ee558b3bcd9e5bc1344b28b2249de6559c": {
+			"address": "0xd0fdb5ee558b3bcd9e5bc1344b28b2249de6559c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xd0FDb5EE558B3BCd9e5Bc1344B28b2249de6559C/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -8140,6 +8268,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xf4A53f7F455Cddd37776a138930CeeAab820ad4e/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xf602eecd270eb87be1bfcc716d27083223b35f04": {
+			"address": "0xf602eecd270eb87be1bfcc716d27083223b35f04",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT mPendle 27MAR2025",
+			"symbol": "YT-mPendle-27MAR2025",
+			"displayName": "YT mPendle 27MAR2025",
+			"displaySymbol": "YT-mPendle-27MAR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xf602EecD270Eb87BE1Bfcc716D27083223B35F04/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

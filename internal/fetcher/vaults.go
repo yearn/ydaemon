@@ -91,6 +91,25 @@ func fetchVaultsBasicInformations(
 }
 
 /**************************************************************************************************
+** fetchVaultsRiskScore will fetch the risk scores for a specific vault from a GitHub repository.
+** The scores are stored in JSON files organized by chain ID and vault address.
+** If the risk scores are not found, it will return an empty TRiskScore structure.
+**
+** Arguments:
+** - chainID: the chain ID of the network we are working on
+** - vaultAddress: the address of the vault to fetch the risk scores for
+**
+** Returns:
+** - a TRiskScore structure containing the risk scores for the vault
+**************************************************************************************************/
+func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) models.TRiskScore {
+	baseURL := "https://raw.githubusercontent.com/spalen0/risk-score/refs/heads/master/strategy/"
+	uri := baseURL + strconv.FormatUint(chainID, 10) + "/" + strings.ToLower(vaultAddress.Hex()) + ".json"
+	riskScores := helpers.FetchJSON[models.TRiskScore](uri)
+	return riskScores
+}
+
+/**************************************************************************************************
 ** The base of Yearn are the vaults. They are the smart contracts that are used to manage the
 ** deposits and the withdrawals of the users.
 ** The goal of this function is to get a list of all the Vaults living in the Yearn's Ecosystem.
@@ -241,6 +260,14 @@ func RetrieveAllVaults(
 		******************************************************************************************/
 		if vault.Metadata.Category == `` {
 			vault.Metadata.Category = models.VaultCategoryAutomatic
+		}
+
+		/******************************************************************************************
+		** Fetch and update risk scores defined by ySec.
+		******************************************************************************************/
+		riskScores := fetchVaultsRiskScore(chainID, vault.Address)
+		if riskScores.Review == 0 {
+			vault.Metadata.RiskScores = riskScores
 		}
 
 		storage.StoreVault(chainID, vault)

@@ -118,6 +118,11 @@ type TVaultMetadata struct {
 	RiskScore      TRiskScore         `json:"riskScore"`      // The risk score of the vault
 }
 
+type TRiskScoreYsec struct {
+	RiskLevel      int8               `json:"riskLevel"`      // The risk level of the vault (1 to 5, -1 if not set)
+	RiskScore      TRiskScore         `json:"riskScore"`      // The risk score of the vault
+}
+
 // TVault is the main structure returned by the API when trying to get all the vaults for a specific network
 type TVault struct {
 	// Immutable elements. They won't change

@@ -100,12 +100,12 @@ func fetchVaultsBasicInformations(
 ** - vaultAddress: the address of the vault to fetch the risk scores for
 **
 ** Returns:
-** - a TRiskScore structure containing the risk scores for the vault
+** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
-func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) models.TRiskScore {
+func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) models.TRiskScoreYsec {
 	baseURL := "https://raw.githubusercontent.com/spalen0/risk-score/refs/heads/master/strategy/"
 	uri := baseURL + strconv.FormatUint(chainID, 10) + "/" + strings.ToLower(vaultAddress.Hex()) + ".json"
-	riskScores := helpers.FetchJSON[models.TRiskScore](uri)
+	riskScores := helpers.FetchJSON[models.TRiskScoreYsec](uri)
 	return riskScores
 }
 
@@ -266,8 +266,9 @@ func RetrieveAllVaults(
 		** Fetch and update risk scores defined by ySec.
 		******************************************************************************************/
 		riskScores := fetchVaultsRiskScore(chainID, vault.Address)
-		if riskScores.Review == 0 {
-			vault.Metadata.RiskScores = riskScores
+		if riskScores.RiskLevel == 0 {
+			vault.Metadata.RiskScore = riskScores.RiskScore
+			vault.Metadata.RiskLevel = riskScores.RiskLevel
 		}
 
 		storage.StoreVault(chainID, vault)

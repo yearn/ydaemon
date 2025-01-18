@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-13T11:07:14.525311+01:00",
+	"lastUpdate": "2025-01-18T13:17:55.440276+01:00",
 	"version": {
 		"major": 0,
-		"minor": 86,
+		"minor": 87,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1520,6 +1520,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x0a35322c5C9Dd22fF592bfC5b134c5CE78154d10/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5": {
+			"address": "0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Steakhouse USDT Compounder",
+			"symbol": "ysUSDT",
+			"displayName": "Morpho Steakhouse USDT Compounder",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x0a4ea2bDe8496a878a7ca2772056a8e6fe3245c5/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x0a6e7ba5042b38349e437ec6db6214aec7b35676": {
@@ -6316,6 +6332,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x34bdba9b3d8e3073eb4470cd4c031c2e39c32da8": {
+			"address": "0x34bdba9b3d8e3073eb4470cd4c031c2e39c32da8",
+			"underlyingTokensAddresses": [
+				"0x8236a87084f8b84306f72007f36f2618a5634494"
+			],
+			"type": "Yearn Vault",
+			"name": "Concrete-LBTC-Vault",
+			"symbol": "ctLBTC",
+			"displayName": "Concrete-LBTC-Vault",
+			"displaySymbol": "ctLBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x34bdbA9b3D8E3073Eb4470cd4C031C2e39C32DA8/logo-128.png",
+			"decimals": 17,
+			"chainID": 1
+		},
 		"0x34d655069f4cac1547e4c8ca284ffff5ad4a8db0": {
 			"address": "0x34d655069f4cac1547e4c8ca284ffff5ad4a8db0",
 			"underlyingTokensAddresses": [
@@ -7879,6 +7911,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x409b499780Ac04dC4780F9B79fBEdE665Ac773d5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x40b7b4ab1e95e28df06971581276966fdf95688e": {
+			"address": "0x40b7b4ab1e95e28df06971581276966fdf95688e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Berachain STONE 10APR2025",
+			"symbol": "PT-beraSTONE-10APR2025",
+			"displayName": "PT Berachain STONE 10APR2025",
+			"displaySymbol": "PT-beraSTONE-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x40b7B4aB1E95e28DF06971581276966FDF95688E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9935,6 +9981,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x52bB650211e8a6986287306A4c09B73A9Affd5e9/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x52c2bc859f5082c4f8c17266a3cd640b5047370e": {
+			"address": "0x52c2bc859f5082c4f8c17266a3cd640b5047370e",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "Concrete-WBTC-Vault",
+			"symbol": "ctWBTC",
+			"displayName": "Concrete-WBTC-Vault",
+			"displaySymbol": "ctWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x52c2bc859F5082C4f8c17266A3CD640b5047370e/logo-128.png",
+			"decimals": 17,
 			"chainID": 1
 		},
 		"0x52ce16b1f37ea7be4352b29fcde3331e225380ff": {
@@ -12603,6 +12665,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x695e502ee8e39a128fb79e8d01230d15f368ea45": {
+			"address": "0x695e502ee8e39a128fb79e8d01230d15f368ea45",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Berachain STONE 10APR2025",
+			"symbol": "YT-beraSTONE-10APR2025",
+			"displayName": "YT Berachain STONE 10APR2025",
+			"displaySymbol": "YT-beraSTONE-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x695e502eE8e39A128FB79e8D01230d15f368eA45/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x69681f8fde45345c3870bcd5eaf4a05a60e7d227": {
 			"address": "0x69681f8fde45345c3870bcd5eaf4a05a60e7d227",
 			"underlyingTokensAddresses": [],
@@ -13222,6 +13298,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f": {
+			"address": "0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet USDT Prime Compounder",
+			"symbol": "ysUSDT",
+			"displayName": "Morpho Gauntlet USDT Prime Compounder",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6D2981FF9b8d7edbb7604de7A65BAC8694ac849F/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x6d2f347dcfc55c6ac80e515a58344acd7fef0b84": {
 			"address": "0x6d2f347dcfc55c6ac80e515a58344acd7fef0b84",
 			"underlyingTokensAddresses": [
@@ -13706,6 +13798,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7122985656e38bdc0302db86685bb972b145bd3c": {
+			"address": "0x7122985656e38bdc0302db86685bb972b145bd3c",
+			"underlyingTokensAddresses": [
+				"0x7122985656e38bdc0302db86685bb972b145bd3c"
+			],
+			"type": "Curve LP",
+			"name": "StakeStone Ether",
+			"symbol": "STONE",
+			"displayName": "StakeStone Ether",
+			"displaySymbol": "STONE",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7122985656e38BDC0302Db86685bb972b145bD3C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7131ed1994ba1a2a5392fe4d99e579f49f5ed48f": {
 			"address": "0x7131ed1994ba1a2a5392fe4d99e579f49f5ed48f",
 			"underlyingTokensAddresses": [],
@@ -14167,6 +14275,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x752B4c6e92d96467fE9b9a2522EF07228E00F87c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7561c5ccfe41a26b33944b58c70d6a3cb63e881c": {
+			"address": "0x7561c5ccfe41a26b33944b58c70d6a3cb63e881c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7561C5CCfe41A26B33944B58C70D6a3CB63E881c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -15773,6 +15895,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x83916356556f51dcbcb226202c3efeefc88d5eaa": {
+			"address": "0x83916356556f51dcbcb226202c3efeefc88d5eaa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x83916356556f51dcBcB226202c3efeEfc88d5eaA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x839d6bdedff886404a6d7a788ef241e4e28f4802": {
 			"address": "0x839d6bdedff886404a6d7a788ef241e4e28f4802",
 			"underlyingTokensAddresses": [
@@ -15961,6 +16097,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x84E13785B5a27879921D6F685f041421C7F482dA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x84e750c4b79482050ab25c7b3d77fff334663a53": {
+			"address": "0x84e750c4b79482050ab25c7b3d77fff334663a53",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho LlamaRisk crvUSD Vault Compounder",
+			"symbol": "yscrvUSD",
+			"displayName": "Morpho LlamaRisk crvUSD Vault Compounder",
+			"displaySymbol": "yscrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x84E750c4B79482050Ab25C7B3D77fFF334663A53/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17716,6 +17868,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9471d9c5b57b59d42b739b00389a6d520c33a7a9": {
+			"address": "0x9471d9c5b57b59d42b739b00389a6d520c33a7a9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9471d9c5B57b59d42B739b00389a6d520c33A7a9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x94b17476a93b3262d87b9a326965d1e91f9c13e7": {
 			"address": "0x94b17476a93b3262d87b9a326965d1e91f9c13e7",
 			"underlyingTokensAddresses": [
@@ -18046,6 +18212,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x96fe14bf8c1681db311fa95547b254a178ab5527": {
+			"address": "0x96fe14bf8c1681db311fa95547b254a178ab5527",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Concrete WBTC Vault 10APR2025",
+			"symbol": "PT-ctWBTC-10APR2025",
+			"displayName": "PT Concrete WBTC Vault 10APR2025",
+			"displaySymbol": "PT-ctWBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x96fE14bf8c1681db311fa95547b254a178ab5527/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0x971add32ea87f10bd192671630be3be8a11b8623": {
 			"address": "0x971add32ea87f10bd192671630be3be8a11b8623",
 			"underlyingTokensAddresses": [
@@ -18134,6 +18314,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x97983236bE88107Cc8998733Ef73D8d969c52E37/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x97ad75064b20fb2b2447fed4fa953bf7f007a706": {
+			"address": "0x97ad75064b20fb2b2447fed4fa953bf7f007a706",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Berachain STONE",
+			"symbol": "beraSTONE",
+			"displayName": "Berachain STONE",
+			"displaySymbol": "beraSTONE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x97Ad75064b20fb2B2447feD4fa953bF7F007a706/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18675,6 +18869,20 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x9b77bd0a665F05995b68e36fC1053AFFfAf0d4B5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9b7dbfb30534da9f57f42201e9484d4c09c95c19": {
+			"address": "0x9b7dbfb30534da9f57f42201e9484d4c09c95c19",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9b7dbFb30534Da9f57f42201E9484d4c09C95C19/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20122,6 +20330,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa8abe7ac0c4bb1ade8b22de6a33691fcedcbd8d3": {
+			"address": "0xa8abe7ac0c4bb1ade8b22de6a33691fcedcbd8d3",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Concrete WBTC Vault",
+			"symbol": "SY-ctWBTC",
+			"displayName": "SY Concrete WBTC Vault",
+			"displaySymbol": "SY-ctWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xa8aBe7ac0C4bb1adE8B22De6A33691fcEDCbd8d3/logo-128.png",
+			"decimals": 17,
+			"chainID": 1
+		},
 		"0xa8c8861b5ccf8cce0ade6811cd2a7a7d3222b0b8": {
 			"address": "0xa8c8861b5ccf8cce0ade6811cd2a7a7d3222b0b8",
 			"underlyingTokensAddresses": [],
@@ -20707,6 +20931,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xac440d0eE23FA69632Aa731322C2a480dD1376e4/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xac614884b52dbab8728476b5d50f0d672baed31f": {
+			"address": "0xac614884b52dbab8728476b5d50f0d672baed31f",
+			"underlyingTokensAddresses": [
+				"0x8236a87084f8b84306f72007f36f2618a5634494"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Concrete LBTC Vault",
+			"symbol": "SY-ctLBTC",
+			"displayName": "SY Concrete LBTC Vault",
+			"displaySymbol": "SY-ctLBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xac614884b52DbAB8728476b5d50F0D672BaED31F/logo-128.png",
+			"decimals": 17,
 			"chainID": 1
 		},
 		"0xaca399117ac588e1f48398d34eca76cdb1e45fa5": {
@@ -26347,6 +26587,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd7b2a47ac9236d9685b573a2428f72ec45e97c45": {
+			"address": "0xd7b2a47ac9236d9685b573a2428f72ec45e97c45",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Berachain STONE",
+			"symbol": "SY-beraSTONE",
+			"displayName": "SY Berachain STONE",
+			"displaySymbol": "SY-beraSTONE",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd7B2a47aC9236d9685B573a2428f72Ec45E97C45/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd7b990543ea8e9bd0b9ae2deb9c52c4d0e660431": {
 			"address": "0xd7b990543ea8e9bd0b9ae2deb9c52c4d0e660431",
 			"underlyingTokensAddresses": [],
@@ -27470,6 +27724,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdf9015472Ea23e3BeA6fbD6092915F9Ed6980a99/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xdfb913b117bc93fde164a4ff8b3176662d4198f3": {
+			"address": "0xdfb913b117bc93fde164a4ff8b3176662d4198f3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Concrete LBTC Vault 10APR2025",
+			"symbol": "PT-ctLBTC-10APR2025",
+			"displayName": "PT Concrete LBTC Vault 10APR2025",
+			"displaySymbol": "PT-ctLBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xdfB913b117Bc93fdE164A4ff8B3176662D4198F3/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xdfdb7f72c1f195c5951a234e8db9806eb0635346": {
@@ -28800,6 +29068,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xead901ce4786d4e97b35cb07905a4ed0b35b4d7d": {
+			"address": "0xead901ce4786d4e97b35cb07905a4ed0b35b4d7d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Concrete LBTC Vault 10APR2025",
+			"symbol": "YT-ctLBTC-10APR2025",
+			"displayName": "YT Concrete LBTC Vault 10APR2025",
+			"displaySymbol": "YT-ctLBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xeAD901CE4786d4e97B35cb07905a4ed0B35B4d7D/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xeb4c2781e4eba804ce9a9803c67d0893436bb27d": {
 			"address": "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
 			"underlyingTokensAddresses": [],
@@ -29157,6 +29439,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xeeb27d72ab6e7539dce4c377c95e9ef9e18bdcd8": {
+			"address": "0xeeb27d72ab6e7539dce4c377c95e9ef9e18bdcd8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Concrete WBTC Vault 10APR2025",
+			"symbol": "YT-ctWBTC-10APR2025",
+			"displayName": "YT Concrete WBTC Vault 10APR2025",
+			"displaySymbol": "YT-ctWBTC-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xeEb27d72ab6e7539dCe4c377C95e9eF9e18bDcd8/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0xeeb4290377763a3fadbfbf81ab8f2958aec8bb96": {
 			"address": "0xeeb4290377763a3fadbfbf81ab8f2958aec8bb96",
 			"underlyingTokensAddresses": [
@@ -29511,6 +29807,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf16e81dce15B08F326220742020379B855B87DF9/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf18245b7b7ba6c9c3bf29b070ebea893d8fc549d": {
+			"address": "0xf18245b7b7ba6c9c3bf29b070ebea893d8fc549d",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet WBTC Core Compounder",
+			"symbol": "ysWBTC",
+			"displayName": "Morpho Gauntlet WBTC Core Compounder",
+			"displaySymbol": "ysWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xF18245B7B7bA6c9c3Bf29B070ebea893d8FC549d/logo-128.png",
+			"decimals": 8,
 			"chainID": 1
 		},
 		"0xf19f91d7889668a533f14d076adc187be781a458": {

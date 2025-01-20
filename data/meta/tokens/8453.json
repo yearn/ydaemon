@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-18T13:17:41.988127+01:00",
+	"lastUpdate": "2025-01-20T17:48:04.278471+01:00",
 	"version": {
 		"major": 0,
-		"minor": 13,
+		"minor": 14,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -21,6 +21,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x00F30115B5E828AB387b8190f8532EA7cEAF3fDC/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x03c5aff0cd5e40889d689fd9d9caff286b1bd7fb": {
+			"address": "0x03c5aff0cd5e40889d689fd9d9caff286b1bd7fb",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "Moonwell cbBTC Lender WETH Borrower",
+			"symbol": "yscbBTC",
+			"displayName": "Moonwell cbBTC Lender WETH Borrower",
+			"displaySymbol": "yscbBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x03c5AfF0cd5e40889d689fD9D9Caff286b1BD7Fb/logo-128.png",
+			"decimals": 8,
 			"chainID": 8453
 		},
 		"0x03ff264046b085450649a993cdd65dcdd01a893e": {
@@ -187,6 +203,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x25f32ec89ce7732a4e9f8f3340a09259f823b7d3": {
+			"address": "0x25f32ec89ce7732a4e9f8f3340a09259f823b7d3",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "cbBTC Horizon yVault",
+			"symbol": "yvcbBTC-H",
+			"displayName": "cbBTC Horizon yVault",
+			"displaySymbol": "yvcbBTC-H",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x25f32eC89ce7732A4E9f8F3340a09259F823b7d3/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
 		"0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078": {
 			"address": "0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078",
 			"underlyingTokensAddresses": [],
@@ -226,6 +258,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x2a1463CeBE85315224c536AfD389b381B43F3206/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22": {
+			"address": "0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Coinbase Wrapped Staked ETH",
+			"symbol": "cbETH",
+			"displayName": "Coinbase Wrapped Staked ETH",
+			"displaySymbol": "cbETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -514,6 +560,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x4d3ceBA4349ADB06d2De8EBD2F9320A61303aD81/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x4d81c7d534d703e0a0aecadf668c0e0253e1f1c3": {
+			"address": "0x4d81c7d534d703e0a0aecadf668c0e0253e1f1c3",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH Horizon yVault",
+			"symbol": "yvWETH-H",
+			"displayName": "WETH Horizon yVault",
+			"displaySymbol": "yvWETH-H",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x4d81C7d534D703E0a0AECaDF668C0E0253E1f1C3/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -923,6 +985,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0x8436027a799ac6c8b512e68b4d3852217c63647d": {
+			"address": "0x8436027a799ac6c8b512e68b4d3852217c63647d",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Moonwell WETH Lender cbBTC Borrower",
+			"symbol": "ysWETH",
+			"displayName": "Moonwell WETH Lender cbBTC Borrower",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x8436027a799Ac6c8B512E68b4d3852217c63647d/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
 			"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
 			"underlyingTokensAddresses": [
@@ -999,6 +1077,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x945df73d55557ea23c0c35cd350d8de3b745287e": {
+			"address": "0x945df73d55557ea23c0c35cd350d8de3b745287e",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Moonwell USDC Lender cbBTC Borrower",
+			"symbol": "ysUSDC",
+			"displayName": "Moonwell USDC Lender cbBTC Borrower",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x945Df73d55557Ea23c0c35CD350d8DE3b745287E/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
 			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
 			"underlyingTokensAddresses": [
@@ -1028,6 +1122,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x987949D2dC1D2b70Bc3284b556D3Ecd2d7C060b7/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x989381f7efb45f97e46be9f390a69c5d94bf9e17": {
+			"address": "0x989381f7efb45f97e46be9f390a69c5d94bf9e17",
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
+			"type": "Yearn Vault",
+			"name": "cbETH Horizon yVault",
+			"symbol": "yvcbETH-H",
+			"displayName": "cbETH Horizon yVault",
+			"displaySymbol": "yvcbETH-H",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x989381F7eFb45F97E46BE9f390a69c5d94bf9e17/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -1211,6 +1321,52 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xb9acb02818bddd3ac178fa51a0587101e54748b0": {
+			"address": "0xb9acb02818bddd3ac178fa51a0587101e54748b0",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Moonwell Frontier cbBTC Compounder",
+			"symbol": "yscbBTC",
+			"displayName": "Morpho Moonwell Frontier cbBTC Compounder",
+			"displaySymbol": "yscbBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xB9acb02818BDDD3aC178fa51a0587101E54748B0/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
+		"0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9": {
+			"address": "0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Horizon yVault",
+			"symbol": "yvUSDC-H",
+			"displayName": "USDC Horizon yVault",
+			"displaySymbol": "yvUSDC-H",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xc3BD0A2193c8F027B82ddE3611D18589ef3f62a9/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
+		"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
+			"address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Coinbase Wrapped BTC",
+			"symbol": "cbBTC",
+			"displayName": "Coinbase Wrapped BTC",
+			"displaySymbol": "cbBTC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
 		"0xcdac0d6c6c59727a65f871236188350531885c43": {
 			"address": "0xcdac0d6c6c59727a65f871236188350531885c43",
 			"underlyingTokensAddresses": [],
@@ -1255,6 +1411,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xd80c675366966Ef42B175125BBf1AcB1DB4151ac/logo-128.png",
 			"decimals": 6,
+			"chainID": 8453
+		},
+		"0xd89a4f020c8d256a2a4b0dc40b36ee0b27680776": {
+			"address": "0xd89a4f020c8d256a2a4b0dc40b36ee0b27680776",
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
+			"type": "Yearn Vault",
+			"name": "Moonwell cbETH Lender WETH Borrower",
+			"symbol": "yscbETH",
+			"displayName": "Moonwell cbETH Lender WETH Borrower",
+			"displaySymbol": "yscbETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xd89A4f020C8d256a2A4B0dC40B36Ee0b27680776/logo-128.png",
+			"decimals": 18,
 			"chainID": 8453
 		},
 		"0xecac9c5f704e954931349da37f60e39f515c11c1": {
@@ -1389,6 +1561,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xF8f36Ab972f6fE3ae1f594595aEe1284E270d034/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xfdb431e661372fa1146efb70bf120ecded944a78": {
+			"address": "0xfdb431e661372fa1146efb70bf120ecded944a78",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Moonwell USDC Lender WETH Borrower",
+			"symbol": "ysUSDC",
+			"displayName": "Moonwell USDC Lender WETH Borrower",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xfdB431E661372fA1146efB70bf120ECDed944a78/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xff3035968a44df696297d710cb7c0d7f807bf641": {

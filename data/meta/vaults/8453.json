@@ -361,13 +361,13 @@
 			"lastTotalAssets": "0",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
-				"shouldUseV2APR": false,
+				"shouldUseV2APR": true,
 				"migration": {
 					"available": false,
 					"target": "0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe",
@@ -376,20 +376,20 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "Pendle",
-				"displayName": "",
+				"category": "Pendle Autorollover",
+				"displayName": "yPT-LBTC Yearn Auto-Rolling Pendle PT",
 				"displaySymbol": "",
-				"description": "",
+				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
-					"isPublicERC4626": true
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {

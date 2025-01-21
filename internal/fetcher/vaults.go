@@ -200,7 +200,7 @@ func RetrieveAllVaults(
 		******************************************************************************************/
 		isRegistryHidden := false
 		for _, registry := range chain.Registries {
-			if addresses.Equals(registry.Address, vaults[vault.Address].RegistryAddress) {
+			if addresses.Equals(registry.Address, vault.RegistryAddress) {
 				if registry.Tag == `STEALTH` {
 					isRegistryHidden = true
 					break

@@ -53,7 +53,7 @@ func IsRegistryFromPublicERC4626(chainID uint64, registryAddress common.Address)
 	}
 	registries := chains.Registries
 	for _, registry := range registries {
-		if registry.Address.Hex() == registryAddress.Hex() {
+		if addresses.Equals(registry.Address, registryAddress) {
 			return registry.Label == "PUBLIC_ERC4626"
 		}
 	}

@@ -107,7 +107,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	apr.ComputeChainAPY(chainID)
 	logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
 
-	scheduler.Every(1).Days().StartImmediately().Do(func() {
+	scheduler.Every(1).Days().At("01:00").StartImmediately().Do(func() {
 		risks.RetrieveAllRiskScores(chainID, vaultMap)
 	})
 

@@ -6,6 +6,7 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
+	"github.com/yearn/ydaemon/processes/risks"
 )
 
 // Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
@@ -145,8 +146,30 @@ func toSimplifiedVersion(
 	info.IsRetired = vault.Details.IsRetired
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
-	info.RiskLevel = vault.Info.RiskLevel
+
+	/**********************************************************************************************
+	** Initialize the risk score based on the cached riskscore, or the schema we have.
+	**********************************************************************************************/
 	info.RiskScore = vault.Info.RiskScore
+	info.RiskLevel = vault.Info.RiskLevel
+	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, common.HexToAddress(vault.Address))
+	if err == nil {
+		info.RiskLevel = cachedRiskScore.RiskLevel
+		info.RiskScore = [11]int8{
+			cachedRiskScore.RiskScore.Review,
+			cachedRiskScore.RiskScore.Testing,
+			cachedRiskScore.RiskScore.Complexity,
+			cachedRiskScore.RiskScore.RiskExposure,
+			cachedRiskScore.RiskScore.ProtocolIntegration,
+			cachedRiskScore.RiskScore.CentralizationRisk,
+			cachedRiskScore.RiskScore.ExternalProtocolAudit,
+			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
+			cachedRiskScore.RiskScore.ExternalProtocolTvl,
+			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
+			cachedRiskScore.RiskScore.ExternalProtocolType,
+		}
+		info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
+	}
 
 	/**********************************************************************************************
 	** Create the simplified version of the vault.

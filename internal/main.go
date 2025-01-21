@@ -13,6 +13,7 @@ import (
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
+	"github.com/yearn/ydaemon/processes/risks"
 )
 
 var STRATLIST = []models.TStrategy{}
@@ -93,7 +94,6 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	_, vaultMap, tokenMap := initVaults(chainID, scheduler)
 
 	initStakingPools(chainID, scheduler)
-
 	initStrategies(chainID, scheduler, vaultMap)
 
 	/**********************************************************************************************
@@ -106,6 +106,11 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
 	apr.ComputeChainAPY(chainID)
 	logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+
+	scheduler.Every(1).Days().StartImmediately().Do(func() {
+		risks.RetrieveAllRiskScores(chainID, vaultMap)
+	})
+
 	scheduler.Every(30).Minute().WaitForSchedule().Do(func() {
 		currentTokenMap, _ := storage.ListERC20(chainID)
 		prices.RetrieveAllPrices(chainID, currentTokenMap)

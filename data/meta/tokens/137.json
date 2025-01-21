@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-18T13:17:40.776463+01:00",
+	"lastUpdate": "2025-01-21T10:11:34.674071+01:00",
 	"version": {
 		"major": 0,
-		"minor": 4,
+		"minor": 5,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1226,6 +1226,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x454Ff7780A9A99Ecb3462ab61bA06fe4A886862E/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0": {
+			"address": "0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0",
+			"underlyingTokensAddresses": [
+				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-2 RancheroDAO",
+			"symbol": "rdDAI-2",
+			"displayName": "DAI-2 RancheroDAO",
+			"displaySymbol": "rdDAI-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x4572c3C8f2CfDd77D1dd7987BC46CA20D72f32b0/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},
@@ -2665,6 +2681,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95": {
+			"address": "0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 RogerThatDAO",
+			"symbol": "rtUSDC-1",
+			"displayName": "USDC-1 RogerThatDAO",
+			"displaySymbol": "rtUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xB40f69b0cC508dFBaA0c8C5Fd34107e3a191ac95/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0xb56ff8144e1d4ff94e8b2801bade11bee0d87397": {
 			"address": "0xb56ff8144e1d4ff94e8b2801bade11bee0d87397",
 			"underlyingTokensAddresses": [],
@@ -3050,6 +3082,54 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xD6DF932A45C0f255f85145f286eA0b292B21C90B/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1": {
+			"address": "0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1",
+			"underlyingTokensAddresses": [
+				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 RancheroDAO",
+			"symbol": "rdUSDC-1",
+			"displayName": "USDC-1 RancheroDAO",
+			"displaySymbol": "rdUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD7be0Ec4f6D7ec344311F8284b448f5BcCfD0fD1/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
+			"address": "0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-3 RancheroDAO",
+			"symbol": "rdUSDC-3",
+			"displayName": "USDC-3 RancheroDAO",
+			"displaySymbol": "rdUSDC-3",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD92A3A0aD7FbE4b8f6382e0caDa87471ef800515/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4": {
+			"address": "0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4",
+			"underlyingTokensAddresses": [
+				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-3 RancheroDAO",
+			"symbol": "rdDAI-3",
+			"displayName": "DAI-3 RancheroDAO",
+			"displaySymbol": "rdDAI-3",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD9df4b212c9565A6281a2025B7ed87Dd0f4a6cb4/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},

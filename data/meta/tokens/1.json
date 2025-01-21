@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-18T13:17:55.440276+01:00",
+	"lastUpdate": "2025-01-21T10:11:47.067007+01:00",
 	"version": {
 		"major": 0,
-		"minor": 87,
+		"minor": 88,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -316,6 +316,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x01BA67AAC7f75f647D94220Cc98FB30FCc5105Bf/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x01ece02951395b7adba57ca3281c4d6a565d347e": {
+			"address": "0x01ece02951395b7adba57ca3281c4d6a565d347e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Syrup USDC 24APR2025",
+			"symbol": "YT-syrupUSDC-24APR2025",
+			"displayName": "YT Syrup USDC 24APR2025",
+			"displaySymbol": "YT-syrupUSDC-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x01eCe02951395b7AdBa57cA3281C4d6a565d347e/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x020aba13e46baa0ddcbab4505fabad697e223908": {
@@ -5100,6 +5114,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2b95A1Dcc3D405535f9ed33c219ab38E8d7e0884/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2beeb2c4809954e5b514a3205afbdc097eb810b4": {
+			"address": "0x2beeb2c4809954e5b514a3205afbdc097eb810b4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Syrup USDC 24APR2025",
+			"symbol": "PT-syrupUSDC-24APR2025",
+			"displayName": "PT Syrup USDC 24APR2025",
+			"displaySymbol": "PT-syrupUSDC-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2beEb2c4809954e5b514a3205afbDC097eb810B4/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x2bf616c236d1abd31ff105247a774e6e738b5f4e": {
@@ -10609,6 +10637,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x57fC2D9809F777Cd5c8C433442264B6E8bE7Fce4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x580e40c15261f7baf18ea50f562118ae99361096": {
+			"address": "0x580e40c15261f7baf18ea50f562118ae99361096",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x580E40c15261F7Baf18eA50F562118aE99361096/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

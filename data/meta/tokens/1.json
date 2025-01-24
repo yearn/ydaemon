@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-21T11:02:40.13128+01:00",
+	"lastUpdate": "2025-01-24T10:41:59.18876+01:00",
 	"version": {
 		"major": 0,
-		"minor": 88,
+		"minor": 89,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4424,6 +4424,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x24d9bf5aadfc1ada369a6d1ba4572bdf16ac17cb": {
+			"address": "0x24d9bf5aadfc1ada369a6d1ba4572bdf16ac17cb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT USDa saving token 24APR2025",
+			"symbol": "YT-sUSDa-24APR2025",
+			"displayName": "YT USDa saving token 24APR2025",
+			"displaySymbol": "YT-sUSDa-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x24D9bf5aAdFC1adA369A6D1bA4572Bdf16aC17cB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x24e79e946dea5482212c38aab2d0782f04cdb0e0": {
 			"address": "0x24e79e946dea5482212c38aab2d0782f04cdb0e0",
 			"underlyingTokensAddresses": [],
@@ -5084,6 +5098,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9": {
+			"address": "0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9",
+			"underlyingTokensAddresses": [
+				"0x2b66aade1e9c062ff411bd47c44e0ad696d43bd9"
+			],
+			"type": "Yearn Vault",
+			"name": "USDa saving token",
+			"symbol": "sUSDa",
+			"displayName": "USDa saving token",
+			"displaySymbol": "sUSDa",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2B66AAdE1e9C062FF411bd47C44E0Ad696d43BD9/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x2b91426e6f2a88b2c4afc6c279fa8842a23ebd7f": {
@@ -9581,6 +9611,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4ef516d5f8644d19caadf352e2c97ec346b6b986": {
+			"address": "0x4ef516d5f8644d19caadf352e2c97ec346b6b986",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT USDa saving token 24APR2025",
+			"symbol": "PT-sUSDa-24APR2025",
+			"displayName": "PT USDa saving token 24APR2025",
+			"displaySymbol": "PT-sUSDa-24APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4Ef516d5F8644D19CAAdf352E2c97ec346b6b986/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4f0b4e6512630480b868e62a8a1d3451b0e9192d": {
 			"address": "0x4f0b4e6512630480b868e62a8a1d3451b0e9192d",
 			"underlyingTokensAddresses": [],
@@ -12572,6 +12616,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x67e58f0240b432e78795dc010716e54b70c609d7": {
+			"address": "0x67e58f0240b432e78795dc010716e54b70c609d7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY SolvBTC Bera Vault",
+			"symbol": "SY SolvBTC.BERA",
+			"displayName": "SY SolvBTC Bera Vault",
+			"displaySymbol": "SY SolvBTC.BERA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x67e58F0240B432E78795DC010716e54B70c609d7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x67ec4046800bc2c27a51528e9d382d43c3146d29": {
 			"address": "0x67ec4046800bc2c27a51528e9d382d43c3146d29",
 			"underlyingTokensAddresses": [],
@@ -14261,6 +14319,20 @@
 			"description": "This token represents a Curve crypto pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains BTRFLY and ETH. Please be aware that as crypto pools are composed of differently-priced assets, they can be subject to impermanent loss. BTRFLY is the governance token of the [Redacted ecosystem](https://app.redacted.finance).",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x7483Dd57f6488b0e194A151C57Df6Ec85C00aCE9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x74ada3987bcc29e64f5fd3f9229b9d319268c005": {
+			"address": "0x74ada3987bcc29e64f5fd3f9229b9d319268c005",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT SolvBTC Bera Vault 10APR2025",
+			"symbol": "PT-SolvBTC.BERA-10APR2025",
+			"displayName": "PT SolvBTC Bera Vault 10APR2025",
+			"displaySymbol": "PT-SolvBTC.BERA-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x74ADa3987bCc29E64f5fD3f9229b9d319268c005/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16651,6 +16723,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8946f653aed1af1f82a8de6d7f54088afff5a14e": {
+			"address": "0x8946f653aed1af1f82a8de6d7f54088afff5a14e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY USDa saving token",
+			"symbol": "SY-sUSDa",
+			"displayName": "SY USDa saving token",
+			"displaySymbol": "SY-sUSDa",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x8946f653aeD1af1F82a8dE6d7F54088afFf5A14e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8999eb39237dd9e3c184fb2f10780a95a34a14ef": {
 			"address": "0x8999eb39237dd9e3c184fb2f10780a95a34a14ef",
 			"underlyingTokensAddresses": [
@@ -16721,6 +16807,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8a49f2AC2730ba15AB7EA832EdaC7f6BA22289f8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8a60e489004ca22d775c5f2c657598278d17d9c2": {
+			"address": "0x8a60e489004ca22d775c5f2c657598278d17d9c2",
+			"underlyingTokensAddresses": [
+				"0x8a60e489004ca22d775c5f2c657598278d17d9c2"
+			],
+			"type": "Yearn Vault",
+			"name": "USDa",
+			"symbol": "USDa",
+			"displayName": "USDa",
+			"displaySymbol": "USDa",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8A60E489004Ca22d775C5F2c657598278d17D9c2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24125,6 +24227,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc387ad871d94990e073f1bd0b759ffdb5e0313aa": {
+			"address": "0xc387ad871d94990e073f1bd0b759ffdb5e0313aa",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc387ad871D94990E073f1BD0b759ffDB5e0313aA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc3a20131ee6853fc4d444c9ad952c93f77c0b71b": {
 			"address": "0xc3a20131ee6853fc4d444c9ad952c93f77c0b71b",
 			"underlyingTokensAddresses": [
@@ -26613,6 +26729,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd75fc2b1ca52e72163787d1c370650f952e75dd7": {
+			"address": "0xd75fc2b1ca52e72163787d1c370650f952e75dd7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD75FC2B1ca52e72163787D1C370650F952E75DD7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd789d846c1eed55161dbd135d7bf02450a836ffa": {
 			"address": "0xd789d846c1eed55161dbd135d7bf02450a836ffa",
 			"underlyingTokensAddresses": [
@@ -28747,6 +28877,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe7c253ead50976caf7b0c2cbca569146a7741b50": {
+			"address": "0xe7c253ead50976caf7b0c2cbca569146a7741b50",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SolvBTC Bera Vault",
+			"symbol": "SolvBTC.BERA",
+			"displayName": "SolvBTC Bera Vault",
+			"displaySymbol": "SolvBTC.BERA",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xE7C253EAD50976Caf7b0C2cbca569146A7741B50/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c": {
 			"address": "0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c",
 			"underlyingTokensAddresses": [
@@ -30106,6 +30250,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xF4349323C990BB697F8755A51319142CBB209fd3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf456aa0730a5bedcea25b81006f8d01a635decef": {
+			"address": "0xf456aa0730a5bedcea25b81006f8d01a635decef",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT SolvBTC Bera Vault 10APR2025",
+			"symbol": "YT-SolvBTC.BERA-10APR2025",
+			"displayName": "YT SolvBTC Bera Vault 10APR2025",
+			"displaySymbol": "YT-SolvBTC.BERA-10APR2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF456aa0730a5bEdCEa25b81006F8D01A635dEcEF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

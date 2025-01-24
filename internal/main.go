@@ -18,7 +18,7 @@ import (
 
 var STRATLIST = []models.TStrategy{}
 
-func initStakingPools(chainID uint64, scheduler *gocron.Scheduler) {
+func initStakingPools(chainID uint64) {
 	/**********************************************************************************************
 	** Start the Staking Indexing process and schedule it to run every hour. This indexer
 	** will fetch the relevent data for the OP Staking contracts as well as thoose responsible
@@ -29,16 +29,9 @@ func initStakingPools(chainID uint64, scheduler *gocron.Scheduler) {
 	indexer.IndexJuicedStakingContract(chainID)
 	indexer.IndexV3StakingContract(chainID)
 	logs.Success(chainID, `-`, `InitStakingPools ✅`)
-
-	scheduler.Every(1).Hours().WaitForSchedule().Do(func() {
-		indexer.IndexStakingPools(chainID)
-		indexer.IndexVeYFIStakingContract(chainID)
-		indexer.IndexJuicedStakingContract(chainID)
-		indexer.IndexV3StakingContract(chainID)
-	})
 }
 
-func initVaults(chainID uint64, scheduler *gocron.Scheduler) (
+func initVaults(chainID uint64) (
 	map[common.Address]models.TVaultsFromRegistry,
 	map[common.Address]models.TVault,
 	map[common.Address]models.TERC20Token,
@@ -57,20 +50,10 @@ func initVaults(chainID uint64, scheduler *gocron.Scheduler) (
 	logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 	logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
-
-	scheduler.Every(2).Hours().WaitForSchedule().Do(func() {
-		indexer.IndexYearnXPoolTogetherVaults(chainID)
-		registries := indexer.IndexNewVaults(chainID)
-		logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
-		vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
-		logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
-		fetcher.RetrieveAllTokens(chainID, vaultMap)
-		logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
-	})
 	return registries, vaultMap, tokenMap
 }
 
-func initStrategies(chainID uint64, scheduler *gocron.Scheduler, vaultMap map[common.Address]models.TVault) {
+func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
 	/** 🔵 - Yearn *************************************************************************************
 	** initStrategies is only called on initialization. It's first job is to retrieve the strategies
 	** and then to schedule the retrieval of the strategies every 3 hours
@@ -78,12 +61,6 @@ func initStrategies(chainID uint64, scheduler *gocron.Scheduler, vaultMap map[co
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
 	logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
-
-	scheduler.Every(3).Hours().WaitForSchedule().Do(func() {
-		strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
-		fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-		logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
-	})
 }
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Scheduler) {
@@ -91,21 +68,26 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 		defer wg.Done()
 	}
 
-	_, vaultMap, tokenMap := initVaults(chainID, scheduler)
+	var vaultMap map[common.Address]models.TVault
+	var tokenMap map[common.Address]models.TERC20Token
 
-	initStakingPools(chainID, scheduler)
-	initStrategies(chainID, scheduler, vaultMap)
+	scheduler.Every(2).Hours().StartImmediately().Do(func() {
 
-	/**********************************************************************************************
-	** Retrieving prices and strategies for all the given token and strategies on that chain.
-	** This is done in parallel to speed up the process and reduce the time it takes to complete.
-	** The scheduler is used to retrieve the strategies every 15 minutes.
-	** Computing APRS
-	**********************************************************************************************/
-	prices.RetrieveAllPrices(chainID, tokenMap)
-	logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
-	apr.ComputeChainAPY(chainID)
-	logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+		_, vaultMap, tokenMap = initVaults(chainID)
+
+		initStakingPools(chainID)
+		initStrategies(chainID, vaultMap)
+		/**********************************************************************************************
+		** Retrieving prices and strategies for all the given token and strategies on that chain.
+		** This is done in parallel to speed up the process and reduce the time it takes to complete.
+		** The scheduler is used to retrieve the strategies every 15 minutes.
+		** Computing APRS
+		**********************************************************************************************/
+		prices.RetrieveAllPrices(chainID, tokenMap)
+		logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
+		apr.ComputeChainAPY(chainID)
+		logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+	})
 
 	scheduler.Every(1).Days().At("01:00").StartImmediately().Do(func() {
 		risks.RetrieveAllRiskScores(chainID, vaultMap)

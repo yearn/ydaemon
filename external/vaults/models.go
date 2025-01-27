@@ -333,20 +333,6 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 
 	v.Info.RiskLevel = vault.Metadata.RiskLevel
 	v.Info.RiskScore = [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-	if (vault.Metadata.RiskScore != models.TRiskScore{}) {
-		v.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
-		v.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
-		v.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
-		v.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
-		v.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
-		v.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
-		v.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
-		v.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
-		v.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
-		v.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
-		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
-		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
-	}
 	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
 	if err == nil {
 		v.Info.RiskLevel = cachedRiskScore.RiskLevel
@@ -364,6 +350,19 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 			cachedRiskScore.RiskScore.ExternalProtocolType,
 		}
 		v.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
+	} else if (vault.Metadata.RiskScore != models.TRiskScore{}) {
+		v.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
+		v.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
+		v.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
+		v.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
+		v.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
+		v.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
+		v.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
+		v.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
+		v.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
+		v.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
+		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
+		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
 	}
 
 	v.Info.UINotice = vault.Metadata.UINotice

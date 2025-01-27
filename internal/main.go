@@ -72,8 +72,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	var tokenMap map[common.Address]models.TERC20Token
 
 	scheduler.Every(2).Hours().StartImmediately().Do(func() {
-
 		_, vaultMap, tokenMap = initVaults(chainID)
+
+		risks.RetrieveAvailableRiskScores(chainID)
+		risks.RetrieveAllRiskScores(chainID, vaultMap)
 
 		initStakingPools(chainID)
 		initStrategies(chainID, vaultMap)
@@ -90,6 +92,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	})
 
 	scheduler.Every(1).Days().At("01:00").StartImmediately().Do(func() {
+		risks.RetrieveAvailableRiskScores(chainID)
 		risks.RetrieveAllRiskScores(chainID, vaultMap)
 	})
 

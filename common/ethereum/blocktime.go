@@ -5,6 +5,7 @@ import (
 	"math/big"
 	"os"
 	"strconv"
+	"sync"
 	"time"
 
 	"github.com/yearn/ydaemon/common/env"
@@ -13,7 +14,10 @@ import (
 	"github.com/yearn/ydaemon/common/store"
 )
 
-var blockTimeMap = make(map[uint64]map[uint64]uint64)
+var (
+	blockTimeMap   = make(map[uint64]map[uint64]uint64)
+	blockTimeMutex sync.RWMutex
+)
 
 func InitBlockTimestamp(chainID uint64) {
 	type TScanResult struct {
@@ -37,6 +41,9 @@ func InitBlockTimestamp(chainID uint64) {
 	lastWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 	lastMonthBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+
+	blockTimeMutex.Lock()
+	defer blockTimeMutex.Unlock()
 
 	if blockTimeMap[chainID] == nil {
 		blockTimeMap[chainID] = make(map[uint64]uint64)
@@ -73,6 +80,9 @@ func InitBlockTimestamp(chainID uint64) {
 }
 
 func GetBlockNumberXDaysAgo(chainID uint64, days uint64) uint64 {
+	blockTimeMutex.RLock()
+	defer blockTimeMutex.RUnlock()
+
 	if (days != 7 && days != 14 && days != 30) || blockTimeMap[chainID] == nil {
 		return 0
 	}

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-24T10:41:47.380722+01:00",
+	"lastUpdate": "2025-01-27T09:49:41.722864+01:00",
 	"version": {
 		"major": 0,
-		"minor": 5,
+		"minor": 6,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1717,6 +1717,20 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68": {
+			"address": "0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "STARV4 by StarSeeds Protocol",
+			"symbol": "STARV4",
+			"displayName": "STARV4 by StarSeeds Protocol",
+			"displaySymbol": "STARV4",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/137/0x61fFE097137d543f019F5257E1a1Ff7A6C5F0b68/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
 		"0x62f88fb208df717b035325d065c6919d7913b937": {
 			"address": "0x62f88fb208df717b035325d065c6919d7913b937",
 			"underlyingTokensAddresses": [],
@@ -3247,6 +3261,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0xe4244bf798f63881591113126b64493ac36ac525": {
+			"address": "0xe4244bf798f63881591113126b64493ac36ac525",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 DemoDAO",
+			"symbol": "ddUSDC-1",
+			"displayName": "USDC-1 DemoDAO",
+			"displaySymbol": "ddUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xE4244bf798f63881591113126b64493ac36Ac525/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0xe503c1dfd7012e72af4c415f4c5e8abf5b45c25f": {
 			"address": "0xe503c1dfd7012e72af4c415f4c5e8abf5b45c25f",
 			"underlyingTokensAddresses": [],
@@ -3504,6 +3534,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xfB4f607daFe2F3B9F8e99a779d3E404Aa703Cb47/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47": {
+			"address": "0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47",
+			"underlyingTokensAddresses": [
+				"0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68"
+			],
+			"type": "Yearn Vault",
+			"name": "StarSeeds Liquidity Protocol Vault V1",
+			"symbol": "STARV4-V1",
+			"displayName": "StarSeeds Liquidity Protocol Vault V1",
+			"displaySymbol": "STARV4-V1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xfC47EFc0BaF8Ee64B2d94EF2bE400D90ceCA0f47/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},

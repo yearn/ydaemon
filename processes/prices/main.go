@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"strconv"
+	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
@@ -16,7 +17,10 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-var priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
+var (
+	priceErrorAlreadySent = make(map[uint64]map[common.Address]bool)
+	priceErrorMutex       sync.RWMutex
+)
 
 func listMissingPrices(chainID uint64, tokenMap map[common.Address]models.TERC20Token, newPriceMap map[common.Address]models.TPrices) []models.TERC20Token {
 	tokenSlice := []models.TERC20Token{}
@@ -295,21 +299,7 @@ func fetchPrices(
 	/**********************************************************************************************
 	** Finally, we will list all the tokens that are still missing a price to log them to Sentry.
 	**********************************************************************************************/
-	if priceErrorAlreadySent[chainID] == nil {
-		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
-	}
-
-	for _, token := range tokenMap {
-		tokenPrice, ok := newPriceMap[token.Address]
-		if !ok || tokenPrice.Price.IsZero() {
-			if !priceErrorAlreadySent[chainID][token.Address] {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Warning(`missing a valid price for ` + token.Address.Hex() + ` (` + token.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(token.Type) + `)`)
-				}
-			}
-			priceErrorAlreadySent[chainID][token.Address] = true
-		}
-	}
+	markPriceErrorSent(chainID, tokenMap, newPriceMap)
 
 	for _, price := range newPriceMap {
 		storage.StorePrice(chainID, price)
@@ -348,4 +338,35 @@ func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 func UpdatePrices(chainID uint64) {
 	tokenMap, _ := storage.ListERC20(chainID)
 	fetchPrices(chainID, nil, tokenMap)
+}
+
+func markPriceErrorSent(chainID uint64, tokenMap map[common.Address]models.TERC20Token, newPriceMap map[common.Address]models.TPrices) {
+	priceErrorMutex.Lock()
+	defer priceErrorMutex.Unlock()
+
+	if _, exists := priceErrorAlreadySent[chainID]; !exists {
+		priceErrorAlreadySent[chainID] = make(map[common.Address]bool)
+	}
+
+	for _, token := range tokenMap {
+		tokenPrice, ok := newPriceMap[token.Address]
+		if !ok || tokenPrice.Price.IsZero() {
+			if !priceErrorAlreadySent[chainID][token.Address] {
+				if os.Getenv("ENVIRONMENT") == "dev" {
+					logs.Warning(`missing a valid price for ` + token.Address.Hex() + ` (` + token.Name + `)` + ` on chain ` + strconv.FormatUint(chainID, 10) + ` (` + string(token.Type) + `)`)
+				}
+			}
+			priceErrorAlreadySent[chainID][token.Address] = true
+		}
+	}
+}
+
+func isPriceErrorSent(chainID uint64, address common.Address) bool {
+	priceErrorMutex.RLock()
+	defer priceErrorMutex.RUnlock()
+
+	if innerMap, exists := priceErrorAlreadySent[chainID]; exists {
+		return innerMap[address]
+	}
+	return false
 }

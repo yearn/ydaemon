@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-24T10:41:56.930058+01:00",
+	"lastUpdate": "2025-01-27T09:49:41.443207+01:00",
 	"version": {
 		"major": 0,
-		"minor": 14,
+		"minor": 16,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -475,6 +475,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x44da1202285ed9678dab99b55aadb2fa549fdfdc": {
+			"address": "0x44da1202285ed9678dab99b55aadb2fa549fdfdc",
+			"underlyingTokensAddresses": [
+				"0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452"
+			],
+			"type": "Yearn Vault",
+			"name": "LevMoonwell wstETH",
+			"symbol": "yswstETH",
+			"displayName": "LevMoonwell wstETH",
+			"displaySymbol": "yswstETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x44da1202285eD9678dAB99B55AaDB2fA549fDFDC/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x44ecc644449fc3a9858d2007caa8cfaa4c561f91": {
 			"address": "0x44ecc644449fc3a9858d2007caa8cfaa4c561f91",
 			"underlyingTokensAddresses": [],
@@ -895,6 +911,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2": {
+			"address": "0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "LevMoonwell WETH",
+			"symbol": "ysWETH",
+			"displayName": "LevMoonwell WETH",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x7c0Fa3905B38D44C0F29150FD61f182d1e097EC2/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
 			"underlyingTokensAddresses": [
@@ -1263,6 +1295,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xa7a8eb9f200ddd4137f71b92d3d44b403af20e44": {
+			"address": "0xa7a8eb9f200ddd4137f71b92d3d44b403af20e44",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 Gimme",
+			"symbol": "gimmeUSDC-1",
+			"displayName": "USDC-1 Gimme",
+			"displaySymbol": "gimmeUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xa7A8eB9F200dDD4137F71b92d3d44B403AF20E44/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xa819af1cc8abe618ea8abadeb464960f7451ceab": {
 			"address": "0xa819af1cc8abe618ea8abadeb464960f7451ceab",
 			"underlyingTokensAddresses": [],
@@ -1335,6 +1383,36 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xB9acb02818BDDD3aC178fa51a0587101E54748B0/logo-128.png",
 			"decimals": 8,
+			"chainID": 8453
+		},
+		"0xbb808a822dd7aed1635956b85ca5e55478cca957": {
+			"address": "0xbb808a822dd7aed1635956b85ca5e55478cca957",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "LevMoonwell cbBTC",
+			"symbol": "yscbBTC",
+			"displayName": "LevMoonwell cbBTC",
+			"displaySymbol": "yscbBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xBb808A822dD7aEd1635956b85ca5e55478cCa957/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
+		"0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452": {
+			"address": "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped liquid staked Ether 2.0",
+			"symbol": "wstETH",
+			"displayName": "Wrapped liquid staked Ether 2.0",
+			"displaySymbol": "wstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452/logo-128.png",
+			"decimals": 18,
 			"chainID": 8453
 		},
 		"0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9": {
@@ -1426,6 +1504,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xd89A4f020C8d256a2A4B0dC40B36Ee0b27680776/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xdd120ded7c1c9e4978f92847bcb24847a9dbb071": {
+			"address": "0xdd120ded7c1c9e4978f92847bcb24847a9dbb071",
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
+			"type": "Yearn Vault",
+			"name": "LevMoonwell cbETH",
+			"symbol": "yscbETH",
+			"displayName": "LevMoonwell cbETH",
+			"displaySymbol": "yscbETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xDd120ded7c1c9E4978f92847bcb24847A9dBb071/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

@@ -9,6 +9,7 @@ import (
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
+	"github.com/yearn/ydaemon/processes/risks"
 )
 
 // TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.
@@ -346,6 +347,25 @@ func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error
 		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
 		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
 	}
+	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
+	if err == nil {
+		v.Info.RiskLevel = cachedRiskScore.RiskLevel
+		v.Info.RiskScore = [11]int8{
+			cachedRiskScore.RiskScore.Review,
+			cachedRiskScore.RiskScore.Testing,
+			cachedRiskScore.RiskScore.Complexity,
+			cachedRiskScore.RiskScore.RiskExposure,
+			cachedRiskScore.RiskScore.ProtocolIntegration,
+			cachedRiskScore.RiskScore.CentralizationRisk,
+			cachedRiskScore.RiskScore.ExternalProtocolAudit,
+			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
+			cachedRiskScore.RiskScore.ExternalProtocolTvl,
+			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
+			cachedRiskScore.RiskScore.ExternalProtocolType,
+		}
+		v.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
+	}
+
 	v.Info.UINotice = vault.Metadata.UINotice
 
 	return v, nil

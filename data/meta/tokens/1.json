@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-01-28T17:52:48.479073+01:00",
+	"lastUpdate": "2025-02-04T17:37:15.036027+01:00",
 	"version": {
 		"major": 0,
-		"minor": 89,
+		"minor": 90,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1142,6 +1142,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x06c03069de266F58d10A0724a4f65C3D4feFfF4D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x06c055753e37356b463813a288b2b0931b024dd4": {
+			"address": "0x06c055753e37356b463813a288b2b0931b024dd4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Treehouse ETH 29MAY2025",
+			"symbol": "YT-tETH-29MAY2025",
+			"displayName": "YT Treehouse ETH 29MAY2025",
+			"displaySymbol": "YT-tETH-29MAY2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x06C055753e37356b463813a288B2b0931B024dD4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3266,6 +3280,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1b6238e95bbcabee58997c99badd4154ad68ba92": {
+			"address": "0x1b6238e95bbcabee58997c99badd4154ad68ba92",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "InternalAccountingUnit_Wrapped liquid staked Ether 2.0",
+			"symbol": "IAU_wstETH",
+			"displayName": "InternalAccountingUnit_Wrapped liquid staked Ether 2.0",
+			"displaySymbol": "IAU_wstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1B6238E95bBCABEE58997c99BaDD4154ad68BA92/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1b641894e66aec7bf5ab86517e8d81763cc8e19e": {
 			"address": "0x1b641894e66aec7bf5ab86517e8d81763cc8e19e",
 			"underlyingTokensAddresses": [],
@@ -3727,6 +3755,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1F573D6Fb3F13d689FF844B4cE37794d79a7FF1C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1f59cc10c6360da918b0235c98e58008452816eb": {
+			"address": "0x1f59cc10c6360da918b0235c98e58008452816eb",
+			"underlyingTokensAddresses": [
+				"0x09db87a538bd693e9d08544577d5ccfaa6373a48",
+				"0x35ec69a77b79c255e5d47d5a3bdbefefe342630c"
+			],
+			"type": "Curve LP",
+			"name": "yn-ETH/LSD",
+			"symbol": "yn-ETH/LSD",
+			"displayName": "yn-ETH/LSD",
+			"displaySymbol": "yn-ETH/LSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1f59cC10c6360DA918B0235c98E58008452816EB/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -6596,6 +6641,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x35D8949372D46B7a3D5A56006AE77B215fc69bC0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x35ec69a77b79c255e5d47d5a3bdbefefe342630c": {
+			"address": "0x35ec69a77b79c255e5d47d5a3bdbefefe342630c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YieldNest Restaked LSD - Eigenlayer",
+			"symbol": "ynLSDe",
+			"displayName": "YieldNest Restaked LSD - Eigenlayer",
+			"displaySymbol": "ynLSDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x35Ec69A77B79c255e5d47D5A3BdbEFEfE342630c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -15767,6 +15826,22 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0x823976da34ac45c23a8dfea51b3ff1ae0d980213": {
+			"address": "0x823976da34ac45c23a8dfea51b3ff1ae0d980213",
+			"underlyingTokensAddresses": [
+				"0x1f59cc10c6360da918b0235c98e58008452816eb"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve yn-ETH/LSD Factory yVault",
+			"symbol": "yvCurve-yn-ETH/LSD-f",
+			"displayName": "Curve yn-ETH/LSD Factory yVault",
+			"displaySymbol": "yvCurve-yn-ETH/LSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x823976dA34aC45C23a8DfEa51B3Ff1Ae0D980213/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x823e1b82ce1dc147bbdb25a203f046afab1ce918": {
 			"address": "0x823e1b82ce1dc147bbdb25a203f046afab1ce918",
 			"underlyingTokensAddresses": [],
@@ -16195,6 +16270,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x84ca3Bf4822A342E9C1aD27bd5FBCf5fc5E37128/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x84d17ef6bec165484c320b852eeb294203e191be": {
+			"address": "0x84d17ef6bec165484c320b852eeb294203e191be",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Treehouse ETH 29MAY2025",
+			"symbol": "PT-tETH-29MAY2025",
+			"displayName": "PT Treehouse ETH 29MAY2025",
+			"displaySymbol": "PT-tETH-29MAY2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x84D17Ef6BeC165484c320B852eEB294203e191be/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21849,6 +21938,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb2dbc10f4fa6113ac75eea254806f6a2aa4bf20b": {
+			"address": "0xb2dbc10f4fa6113ac75eea254806f6a2aa4bf20b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Treehouse ETH",
+			"symbol": "SY tETH",
+			"displayName": "SY Treehouse ETH",
+			"displaySymbol": "SY tETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB2dBc10F4fa6113ac75eEA254806F6a2AA4Bf20B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb30da2376f63de30b42dc055c93fa474f31330a5": {
 			"address": "0xb30da2376f63de30b42dc055c93fa474f31330a5",
 			"underlyingTokensAddresses": [
@@ -23319,6 +23422,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xbDAc8353b03a883654d19fF60c8fcdc1A52f0bE2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbdb8f9729d3194f75fd1a3d9bc4ffe0dde3a404c": {
+			"address": "0xbdb8f9729d3194f75fd1a3d9bc4ffe0dde3a404c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBDb8F9729d3194f75fD1A3D9bc4FFe0DDe3A404c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -25903,6 +26020,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xD09FC28733E094F7c327fb9D1e526177305EF9e2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd11c452fc99cf405034ee446803b6f6c1f6d5ed8": {
+			"address": "0xd11c452fc99cf405034ee446803b6f6c1f6d5ed8",
+			"underlyingTokensAddresses": [
+				"0x1b6238e95bbcabee58997c99badd4154ad68ba92"
+			],
+			"type": "Yearn Vault",
+			"name": "Treehouse ETH",
+			"symbol": "tETH",
+			"displayName": "Treehouse ETH",
+			"displaySymbol": "tETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD11c452fc99cF405034ee446803b6F6c1F6d5ED8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -92,6 +92,7 @@ const vaultSchema = {
 						isYearnJuiced: {type: 'boolean'},
 						isGimme: {type: 'boolean'},
 						isPoolTogether: {type: 'boolean'},
+						isMorpho: {type: 'boolean'},
 						isPublicERC4626: {type: 'boolean'}
 					},
 					required: ['isSet', 'isYearn', 'isYearnJuiced', 'isGimme', 'isPoolTogether', 'isPublicERC4626']

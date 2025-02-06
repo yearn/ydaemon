@@ -18,7 +18,7 @@ These vaults all share the same query parameters:
 ---
 
 #### **GET** `/vaults`
-Returns all vaults matching the `inclusion.IsYearn` filter.  
+Returns all vaults matching the `inclusion.IsYearn` filter.
 
 #### **GET** `/vaults/detected`
 Returns all detected vaults.
@@ -49,6 +49,9 @@ Returns all Optimism vaults matching the `inclusion.IsYearn` filter.
 
 #### **GET** `/vaults/pooltogether`
 Returns all vaults matching the `inclusion.isPoolTogether` filter.
+
+#### **GET** `/vaults/morpho`
+Returns all vaults matching the `inclusion.isMorpho` filter.
 
 #### **GET** `/vaults/ajna`
 Returns all vaults with the Ajna category and the `inclusion.IsYearn` filter.

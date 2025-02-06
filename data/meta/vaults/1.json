@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-02-06T14:16:17.696462+01:00",
+	"lastUpdate": "2025-02-06T18:35:32.496578+01:00",
 	"version": {
-		"major": 46,
-		"minor": 2,
-		"patch": 0
+		"major": 48,
+		"minor": 0,
+		"patch": 45
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -56,6 +56,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -128,6 +129,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -198,6 +200,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -266,6 +269,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -337,6 +341,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -376,7 +381,7 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab",
 				"0x6aceda98725505737c0f00a3da0d047304052948"
 			],
-			"lastPricePerShare": "1061218760295615015",
+			"lastPricePerShare": "1061273854840241623",
 			"lastTotalAssets": "1997557486177018116001137",
 			"metadata": {
 				"isRetired": false,
@@ -408,6 +413,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -476,6 +482,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -543,6 +550,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -614,6 +622,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -680,6 +689,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -716,7 +726,7 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1738852175617701013",
+			"lastPricePerShare": "1739021587381595355",
 			"lastTotalAssets": "70675486426930161066217",
 			"metadata": {
 				"isRetired": false,
@@ -750,6 +760,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -821,6 +832,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -891,6 +903,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -924,7 +937,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1118585997784807251",
+			"lastPricePerShare": "1118661476613148805",
 			"lastTotalAssets": "405305146974062061226190",
 			"metadata": {
 				"isRetired": false,
@@ -956,6 +969,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1027,6 +1041,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1061,8 +1076,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1036984109554138830",
-			"lastTotalAssets": "24236132982107755472182763",
+			"lastPricePerShare": "1037001594867688377",
+			"lastTotalAssets": "24534024974292454354663701",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1093,6 +1108,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -1126,7 +1142,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1017104",
+			"lastPricePerShare": "1017137",
 			"lastTotalAssets": "1077312167989",
 			"metadata": {
 				"isRetired": false,
@@ -1158,6 +1174,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1223,6 +1240,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -1291,6 +1309,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1324,7 +1343,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1013896945167110492",
+			"lastPricePerShare": "1013945914062893928",
 			"lastTotalAssets": "1042188436402721057556458",
 			"metadata": {
 				"isRetired": false,
@@ -1356,6 +1375,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1424,6 +1444,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1457,7 +1478,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005118",
+			"lastPricePerShare": "1005175",
 			"lastTotalAssets": "867084099726",
 			"metadata": {
 				"isRetired": false,
@@ -1489,6 +1510,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1557,6 +1579,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1627,6 +1650,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1694,6 +1718,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1764,6 +1789,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1832,6 +1858,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1900,6 +1927,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1968,6 +1996,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2037,6 +2066,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2102,6 +2132,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2169,6 +2200,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2237,6 +2269,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2307,6 +2340,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2378,6 +2412,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2448,6 +2483,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2514,6 +2550,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2585,6 +2622,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2621,7 +2659,7 @@
 				"0x2fa2e992bb5c68a8b61cbfa995431afbd0a4db11"
 			],
 			"lastPricePerShare": "1487833687052001275",
-			"lastTotalAssets": "1787697635328765853752",
+			"lastTotalAssets": "1786605377742006736947",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -2654,6 +2692,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2724,6 +2763,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2789,6 +2829,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2858,6 +2899,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2899,8 +2941,8 @@
 				"0x4ce9c93513dff543bc392870d57df8c04e89ba0a",
 				"0x6701dea9809deaf068b8445798d0e19b025480fe"
 			],
-			"lastPricePerShare": "1029003874628449022",
-			"lastTotalAssets": "6604787863579131055856094",
+			"lastPricePerShare": "1029088850627713915",
+			"lastTotalAssets": "6628888922436491943035327",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2931,6 +2973,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2960,7 +3003,7 @@
 			"activation": 21780240,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -2986,7 +3029,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -2999,6 +3042,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3064,6 +3108,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3132,6 +3177,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3204,6 +3250,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3270,6 +3317,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3338,6 +3386,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3404,6 +3453,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -3474,6 +3524,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3544,6 +3595,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3615,6 +3667,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3685,6 +3738,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3750,6 +3804,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3818,6 +3873,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3886,6 +3942,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3952,6 +4009,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4023,6 +4081,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4091,6 +4150,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4124,7 +4184,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1095200885652633337",
+			"lastPricePerShare": "1095256980266344422",
 			"lastTotalAssets": "107599410985390933611085",
 			"metadata": {
 				"isRetired": false,
@@ -4156,6 +4216,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -4224,6 +4285,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4257,8 +4319,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1055834",
-			"lastTotalAssets": "1136062302085",
+			"lastPricePerShare": "1055854",
+			"lastTotalAssets": "581727298649",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4289,6 +4351,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -4359,6 +4422,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4427,6 +4491,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4493,6 +4558,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4563,6 +4629,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4596,7 +4663,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1384448182210534800",
+			"lastPricePerShare": "1388139548440390958",
 			"lastTotalAssets": "1378283491196655395",
 			"metadata": {
 				"isRetired": false,
@@ -4628,6 +4695,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -4696,6 +4764,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4732,7 +4801,7 @@
 				"0xa991652b995c4fb3c87d165311bd77e139297cce",
 				"0x61da32f660f37f21e5f0314b0a6e4ded62c358d2"
 			],
-			"lastPricePerShare": "1294388955326942843",
+			"lastPricePerShare": "1294567602066399213",
 			"lastTotalAssets": "284235889072119578332658",
 			"metadata": {
 				"isRetired": false,
@@ -4767,6 +4836,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4835,6 +4905,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 1,
@@ -4905,6 +4976,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4975,6 +5047,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5043,6 +5116,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -5078,7 +5152,7 @@
 			"lastActiveStrategies": [
 				"0xe3974e44bc08f435da2c6db7d01e1758496da119"
 			],
-			"lastPricePerShare": "1908846482351261193",
+			"lastPricePerShare": "1909139590451595469",
 			"lastTotalAssets": "41117441109962091575056814",
 			"metadata": {
 				"isRetired": false,
@@ -5113,6 +5187,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5183,6 +5258,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5248,6 +5324,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -5316,6 +5393,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5382,6 +5460,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5453,6 +5532,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5522,6 +5602,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5587,6 +5668,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5657,6 +5739,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5728,6 +5811,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5798,6 +5882,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5864,6 +5949,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5901,7 +5987,7 @@
 				"0xda00352a66577b2c844678ec78c062a2f68836a5"
 			],
 			"lastPricePerShare": "1412536472199240134",
-			"lastTotalAssets": "119818245743077173247",
+			"lastTotalAssets": "130002676265437569516",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5932,6 +6018,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6002,6 +6089,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6072,6 +6160,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6141,6 +6230,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6209,6 +6299,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6277,6 +6368,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -6347,6 +6439,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6418,6 +6511,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6487,6 +6581,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6555,6 +6650,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6622,6 +6718,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6691,6 +6788,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -6761,6 +6859,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6831,6 +6930,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6897,6 +6997,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6967,6 +7068,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7007,8 +7109,8 @@
 				"0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5",
 				"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f"
 			],
-			"lastPricePerShare": "1026778",
-			"lastTotalAssets": "6095704414043",
+			"lastPricePerShare": "1026806",
+			"lastTotalAssets": "6095726138359",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7039,6 +7141,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -7109,6 +7212,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7177,6 +7281,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -7248,6 +7353,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7318,6 +7424,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7386,6 +7493,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7455,6 +7563,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7523,6 +7632,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7592,6 +7702,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7629,7 +7740,7 @@
 				"0x9b778fbbb2e1e7cbcb1eca66ab86ae8895096fc3"
 			],
 			"lastPricePerShare": "1032483690394550818",
-			"lastTotalAssets": "7452057469822808742673946",
+			"lastTotalAssets": "6763166502033944400501418",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7660,6 +7771,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7728,6 +7840,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7765,7 +7878,7 @@
 				"0x473f0adec308dc82440665d9fc7d5e26ebcf0e05"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "244116731882352541038071827",
+			"lastTotalAssets": "244124737615030416597203706",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -7796,6 +7909,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -7862,6 +7976,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -7932,6 +8047,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7997,6 +8113,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -8065,6 +8182,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8133,6 +8251,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -8199,6 +8318,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8269,6 +8389,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8303,7 +8424,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "1974062273",
+			"lastTotalAssets": "1974139634",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8334,6 +8455,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": true,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8404,6 +8526,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8470,6 +8593,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -8507,7 +8631,7 @@
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
 				"0xa55713a301f23b02dcbe36321164a78614e368df"
 			],
-			"lastPricePerShare": "1093433",
+			"lastPricePerShare": "1093489",
 			"lastTotalAssets": "5984208335190",
 			"metadata": {
 				"isRetired": false,
@@ -8540,6 +8664,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8610,6 +8735,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8675,6 +8801,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8740,6 +8867,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8810,6 +8938,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8878,6 +9007,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8949,6 +9079,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9019,6 +9150,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9090,6 +9222,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9160,6 +9293,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9230,6 +9364,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9296,6 +9431,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9330,7 +9466,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "100982332348875401865",
+			"lastTotalAssets": "100987579022517849429",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -9361,6 +9497,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": true,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -9428,6 +9565,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9498,6 +9636,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9566,6 +9705,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9637,6 +9777,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9702,6 +9843,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -9768,6 +9910,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -9839,6 +9982,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9907,6 +10051,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9977,6 +10122,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10010,7 +10156,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "53989614",
+			"lastPricePerShare": "53992171",
 			"lastTotalAssets": "57950252710",
 			"metadata": {
 				"isRetired": false,
@@ -10042,6 +10188,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -10111,6 +10258,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10179,6 +10327,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10246,6 +10395,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10314,6 +10464,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -10383,6 +10534,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -10453,6 +10605,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10522,6 +10675,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10589,6 +10743,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10657,6 +10812,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10725,6 +10881,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10790,6 +10947,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -10860,6 +11018,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10928,6 +11087,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10998,6 +11158,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11068,6 +11229,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11139,6 +11301,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11172,8 +11335,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1036225610452750925",
-			"lastTotalAssets": "3942912746388298211542359",
+			"lastPricePerShare": "1036292384746221988",
+			"lastTotalAssets": "3942493774858103877192882",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11204,6 +11367,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -11270,6 +11434,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11346,6 +11511,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -11412,6 +11578,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11477,6 +11644,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11545,6 +11713,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11613,6 +11782,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -11685,6 +11855,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11760,6 +11931,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11830,6 +12002,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11896,6 +12069,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11967,6 +12141,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12038,6 +12213,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12106,6 +12282,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12174,6 +12351,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -12239,6 +12417,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -12306,6 +12485,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12377,6 +12557,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12445,6 +12626,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12514,6 +12696,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -12582,6 +12765,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -12653,6 +12837,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12723,6 +12908,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12793,6 +12979,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12863,6 +13050,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12933,6 +13121,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13001,6 +13190,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13072,6 +13262,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13137,6 +13328,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13205,6 +13397,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13271,6 +13464,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13342,6 +13536,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13412,6 +13607,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13483,6 +13679,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13552,6 +13749,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13623,6 +13821,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13698,6 +13897,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13769,6 +13969,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13834,6 +14035,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -13904,6 +14106,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13974,6 +14177,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14040,6 +14244,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14073,8 +14278,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025087",
-			"lastTotalAssets": "3255108133804",
+			"lastPricePerShare": "1025120",
+			"lastTotalAssets": "3253579954308",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14105,6 +14310,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -14175,6 +14381,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -14208,7 +14415,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3671309295357058315",
+			"lastPricePerShare": "3671442664630523685",
 			"lastTotalAssets": "1002809401924173476531",
 			"metadata": {
 				"isRetired": false,
@@ -14240,6 +14447,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -14310,6 +14518,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14380,6 +14589,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14448,6 +14658,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14519,6 +14730,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14589,6 +14801,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14660,6 +14873,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14728,6 +14942,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14797,6 +15012,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -14865,6 +15081,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14898,7 +15115,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1804436317663548164",
+			"lastPricePerShare": "1804530018320834354",
 			"lastTotalAssets": "6592623293832519475241",
 			"metadata": {
 				"isRetired": false,
@@ -14930,6 +15147,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -15003,6 +15221,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15074,6 +15293,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15144,6 +15364,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15213,6 +15434,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -15249,8 +15471,8 @@
 				"0xfa5c4a53d49fd936ca2b757f2c64d4007dd87e5b",
 				"0xa279b480428e58c248ae6cc110aaf67fb8237baa"
 			],
-			"lastPricePerShare": "1752367107765268535",
-			"lastTotalAssets": "627221620427378526734",
+			"lastPricePerShare": "1752646415806687670",
+			"lastTotalAssets": "630892473138730401536",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15283,6 +15505,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15316,7 +15539,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1013785",
+			"lastPricePerShare": "1013846",
 			"lastTotalAssets": "469867220257",
 			"metadata": {
 				"isRetired": false,
@@ -15348,6 +15571,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -15388,8 +15612,8 @@
 				"0xa10c40f9e318b0ed67ecc3499d702d8db9437228",
 				"0x901d94b9b6cf8b0eb84888b8bf7e978b16ec7bff"
 			],
-			"lastPricePerShare": "1007700",
-			"lastTotalAssets": "3542609567379",
+			"lastPricePerShare": "1007755",
+			"lastTotalAssets": "3543204662790",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -15420,6 +15644,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15489,6 +15714,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15557,6 +15783,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15628,6 +15855,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15661,8 +15889,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1026642820589211684",
-			"lastTotalAssets": "2001249391959780429769147",
+			"lastPricePerShare": "1026676551455835479",
+			"lastTotalAssets": "2000246817535405859884681",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15693,6 +15921,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -15760,6 +15989,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15829,6 +16059,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15900,6 +16131,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15933,7 +16165,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1009807",
+			"lastPricePerShare": "1009915",
 			"lastTotalAssets": "409679770026",
 			"metadata": {
 				"isRetired": false,
@@ -15965,6 +16197,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -16033,6 +16266,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16102,6 +16336,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16170,6 +16405,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -16206,7 +16442,7 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x7bba4a580b97cfbb0f100fb3ea74ae9f1377d039"
 			],
-			"lastPricePerShare": "1348918331023847162",
+			"lastPricePerShare": "1349025516999752055",
 			"lastTotalAssets": "5441957903855952419607245",
 			"metadata": {
 				"isRetired": false,
@@ -16241,6 +16477,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16311,6 +16548,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16381,6 +16619,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16449,6 +16688,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -16520,6 +16760,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16590,6 +16831,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16660,6 +16902,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -16730,6 +16973,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16799,6 +17043,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16832,7 +17077,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025751089434210099",
+			"lastPricePerShare": "1025757581415041573",
 			"lastTotalAssets": "64071695626947550589",
 			"metadata": {
 				"isRetired": false,
@@ -16864,6 +17109,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -16938,6 +17184,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17008,6 +17255,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17077,6 +17325,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17145,6 +17394,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -17213,6 +17463,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17284,6 +17535,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17352,6 +17604,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -17419,6 +17672,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17490,6 +17744,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -17526,8 +17781,8 @@
 				"0xf6e8c7574636c9ef3f35355da475d7e340a4ed62",
 				"0x0a939d1e278d22a87fb254a50d27cf9f3e14af7b"
 			],
-			"lastPricePerShare": "1387770851102786314",
-			"lastTotalAssets": "2222849169888435483111",
+			"lastPricePerShare": "1388033919298753322",
+			"lastTotalAssets": "2223941427475194599916",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17560,6 +17815,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17628,6 +17884,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17697,6 +17954,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -17768,6 +18026,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17839,6 +18098,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17910,6 +18170,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17976,6 +18237,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18046,6 +18308,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18115,6 +18378,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18186,6 +18450,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18251,6 +18516,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18316,6 +18582,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18384,6 +18651,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18452,6 +18720,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -18523,6 +18792,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18598,6 +18868,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18669,6 +18940,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18702,7 +18974,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1115247",
+			"lastPricePerShare": "1115280",
 			"lastTotalAssets": "520639494665",
 			"metadata": {
 				"isRetired": false,
@@ -18734,6 +19006,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -18802,6 +19075,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18871,6 +19145,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18942,6 +19217,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19012,6 +19288,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19083,6 +19360,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19154,6 +19432,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19222,6 +19501,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19290,6 +19570,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19358,6 +19639,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -19423,6 +19705,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -19494,6 +19777,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19562,6 +19846,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19595,7 +19880,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "4116890483339570436",
+			"lastPricePerShare": "4117105624563867714",
 			"lastTotalAssets": "1128654366959442931979",
 			"metadata": {
 				"isRetired": false,
@@ -19627,6 +19912,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -19697,6 +19983,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19765,6 +20052,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19801,7 +20089,7 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1245457201669887109",
+			"lastPricePerShare": "1245486229570497514",
 			"lastTotalAssets": "262692531352091063095",
 			"metadata": {
 				"isRetired": false,
@@ -19836,6 +20124,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19904,6 +20193,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19974,6 +20264,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20007,7 +20298,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1141559604440504930",
+			"lastPricePerShare": "1141718926909096102",
 			"lastTotalAssets": "58536593357914750719699",
 			"metadata": {
 				"isRetired": false,
@@ -20039,6 +20330,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20107,6 +20399,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20175,6 +20468,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20242,6 +20536,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20278,7 +20573,7 @@
 				"0xc5de11369e39e2384a23e6973f4c19e28f61443a",
 				"0x3d9a5c10ab9bc5364e753ccdce18b4da687d3620"
 			],
-			"lastPricePerShare": "1001768135009265098",
+			"lastPricePerShare": "1001772756972056644",
 			"lastTotalAssets": "968126675345141343189211",
 			"metadata": {
 				"isRetired": false,
@@ -20310,6 +20605,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20376,6 +20672,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -20446,6 +20743,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20515,6 +20813,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -20586,6 +20885,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20622,7 +20922,7 @@
 				"0x5e6d44661e97d65a116d34ce8fa5f5594e5eea2e",
 				"0x8c3b300b963d0422cbe200c94f61af1812924bdc"
 			],
-			"lastPricePerShare": "2145547456238545200",
+			"lastPricePerShare": "2146575530925057674",
 			"lastTotalAssets": "11543779136379041520",
 			"metadata": {
 				"isRetired": false,
@@ -20654,6 +20954,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20720,6 +21021,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20790,6 +21092,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20858,6 +21161,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -20926,6 +21230,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20996,6 +21301,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21067,6 +21373,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21137,6 +21444,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21203,6 +21511,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21271,6 +21580,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -21341,6 +21651,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21409,6 +21720,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21477,6 +21789,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21510,7 +21823,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3747835738881968743",
+			"lastPricePerShare": "3747878870770078847",
 			"lastTotalAssets": "13058672784340677",
 			"metadata": {
 				"isRetired": false,
@@ -21542,6 +21855,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -21608,6 +21922,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21679,6 +21994,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21744,6 +22060,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -21783,7 +22100,7 @@
 				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6",
 				"0x09580f2305a335218bdb2eb828387d52ed8fc2f4"
 			],
-			"lastPricePerShare": "1112229768378081407",
+			"lastPricePerShare": "1112311684417272590",
 			"lastTotalAssets": "1032741547551328392342128",
 			"metadata": {
 				"isRetired": false,
@@ -21815,6 +22132,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -21880,6 +22198,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -21916,7 +22235,7 @@
 				"0x4bfbd6875ed316a4fbac5abc36aab409d215ab8a",
 				"0x24b63e52ac85d880efbc7d7d78250b402be45d9b"
 			],
-			"lastPricePerShare": "1075393923501371308",
+			"lastPricePerShare": "1075413314355632996",
 			"lastTotalAssets": "89423711179732173701",
 			"metadata": {
 				"isRetired": false,
@@ -21951,6 +22270,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22020,6 +22340,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22091,6 +22412,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22156,6 +22478,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -22192,7 +22515,7 @@
 				"0x02d89f68756fed0ed3f1dc33aef7e4e5e2d311b5",
 				"0x464f3e9ad5b4765c8af8f75f97dd8b5b9767ae88"
 			],
-			"lastPricePerShare": "1082242732407054598",
+			"lastPricePerShare": "1082360629529306028",
 			"lastTotalAssets": "99401163317794115609",
 			"metadata": {
 				"isRetired": false,
@@ -22224,6 +22547,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22290,6 +22614,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22355,6 +22680,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -22421,6 +22747,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22454,8 +22781,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1020055626680994073",
-			"lastTotalAssets": "2291485497503703458294",
+			"lastPricePerShare": "1020073275011668143",
+			"lastTotalAssets": "2290973128515324167156",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22486,6 +22813,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -22556,6 +22884,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22626,6 +22955,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22694,6 +23024,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22764,6 +23095,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22829,6 +23161,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22898,6 +23231,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22964,6 +23298,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23030,6 +23365,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23099,6 +23435,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -23169,6 +23506,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23240,6 +23578,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23310,6 +23649,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23376,6 +23716,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23414,7 +23755,7 @@
 				"0x120fa5738751b275aed7f7b46b98beb38679e093",
 				"0xebdd83cd87036670d045776b2bc79a8184a9978c"
 			],
-			"lastPricePerShare": "1088835590205505080",
+			"lastPricePerShare": "1088845662459660207",
 			"lastTotalAssets": "17875288405764273161447",
 			"metadata": {
 				"isRetired": false,
@@ -23447,6 +23788,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23513,6 +23855,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23551,7 +23894,7 @@
 				"0x0fd45d4fb70d1ec95264da30934095443dc6af6a",
 				"0xc113c4d519af3e9efb1adb80dbd9e0f20591f48d"
 			],
-			"lastPricePerShare": "1130230",
+			"lastPricePerShare": "1130269",
 			"lastTotalAssets": "10361576171100",
 			"metadata": {
 				"isRetired": false,
@@ -23584,6 +23927,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23650,6 +23994,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23686,7 +24031,7 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1455769051098195512",
+			"lastPricePerShare": "1455958977312446600",
 			"lastTotalAssets": "1509680717486817730640718",
 			"metadata": {
 				"isRetired": false,
@@ -23721,6 +24066,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23791,6 +24137,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23827,7 +24174,7 @@
 				"0xf87d078899626cf1a4ef49acba0b60138bac37b2",
 				"0x51d749df68ecf652de70f587a92c119d454b7563"
 			],
-			"lastPricePerShare": "1235986327532525585",
+			"lastPricePerShare": "1236431716633472677",
 			"lastTotalAssets": "110099533192046712108117",
 			"metadata": {
 				"isRetired": false,
@@ -23862,6 +24209,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23931,6 +24279,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24001,6 +24350,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24069,6 +24419,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24137,6 +24488,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24202,6 +24554,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24267,6 +24620,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -24338,6 +24692,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24409,6 +24764,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24479,6 +24835,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24550,6 +24907,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24586,7 +24944,7 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0x9ad3047d578e79187f0faeef26729097a4973325"
 			],
-			"lastPricePerShare": "1159530389446551066",
+			"lastPricePerShare": "1159617389514490541",
 			"lastTotalAssets": "753168825475093999433",
 			"metadata": {
 				"isRetired": false,
@@ -24620,6 +24978,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24690,6 +25049,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24756,6 +25116,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24827,6 +25188,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24895,6 +25257,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24963,6 +25326,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25031,6 +25395,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25073,7 +25438,7 @@
 				"0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c",
 				"0x70e75d8053e3fb0dda35e80eb16f208c7e4d54f4"
 			],
-			"lastPricePerShare": "1047566703663021095",
+			"lastPricePerShare": "1047601450855171249",
 			"lastTotalAssets": "2573527971438126539116",
 			"metadata": {
 				"isRetired": false,
@@ -25105,6 +25470,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -25174,6 +25540,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25210,7 +25577,7 @@
 				"0x5cc89e5dd6162a318d394fe14956be428dc87ecf",
 				"0x1e27b0d41923f8260964368c7ad519951f1e74d6"
 			],
-			"lastPricePerShare": "1197832306902574034",
+			"lastPricePerShare": "1197895738255335536",
 			"lastTotalAssets": "150475990228072821488",
 			"metadata": {
 				"isRetired": false,
@@ -25245,6 +25612,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25316,6 +25684,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25384,6 +25753,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -25455,6 +25825,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25494,7 +25865,7 @@
 				"0x797dd80692c3b2dadabce8e30c07fde5307d48a9",
 				"0xf7f72e473f01da378e83d9376e07f7225a3945c5"
 			],
-			"lastPricePerShare": "1040891",
+			"lastPricePerShare": "1040962",
 			"lastTotalAssets": "29362078657",
 			"metadata": {
 				"isRetired": false,
@@ -25526,6 +25897,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -25596,6 +25968,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25665,6 +26038,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25698,8 +26072,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3679430655787596571",
-			"lastTotalAssets": "17306918116877614626739",
+			"lastPricePerShare": "3679815856663384740",
+			"lastTotalAssets": "16482950843670596674901",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25730,6 +26104,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -25799,6 +26174,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25869,6 +26245,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25937,6 +26314,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -26005,6 +26383,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26070,6 +26449,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -26138,6 +26518,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26207,6 +26588,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26278,6 +26660,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26346,6 +26729,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26414,6 +26798,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26484,6 +26869,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26554,6 +26940,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26625,6 +27012,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26693,6 +27081,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -26764,6 +27153,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26829,6 +27219,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26897,6 +27288,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26962,6 +27354,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 5,
@@ -27030,6 +27423,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27095,6 +27489,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -27160,6 +27555,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -27225,6 +27621,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -27293,6 +27690,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27361,6 +27759,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27429,6 +27828,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -27497,6 +27897,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27566,6 +27967,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27634,6 +28036,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27702,6 +28105,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27770,6 +28174,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27839,6 +28244,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27908,6 +28314,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27944,7 +28351,7 @@
 				"0x0a3d5befd575843d41625428a77fde9fa0b8fb42",
 				"0x2ef9d2162673d06c43ae8cdaf718e4ac88914fe7"
 			],
-			"lastPricePerShare": "1031996814598581335",
+			"lastPricePerShare": "1032025970336381105",
 			"lastTotalAssets": "6520757823361159031843838",
 			"metadata": {
 				"isRetired": false,
@@ -27976,6 +28383,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28046,6 +28454,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28111,6 +28520,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28180,6 +28590,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28248,6 +28659,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28317,6 +28729,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -28382,6 +28795,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -28453,6 +28867,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28496,8 +28911,8 @@
 				"0x074134a2784f4f66b6ced6f68849382990ff3215",
 				"0x694e47afd14a64661a04eee674fb331bcdef3737"
 			],
-			"lastPricePerShare": "1049371",
-			"lastTotalAssets": "6820992482584",
+			"lastPricePerShare": "1049413",
+			"lastTotalAssets": "6813944142444",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28528,6 +28943,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -28561,7 +28977,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1426467551010545964",
+			"lastPricePerShare": "1426469962586196390",
 			"lastTotalAssets": "34579358263749361580763",
 			"metadata": {
 				"isRetired": false,
@@ -28593,6 +29009,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -28633,8 +29050,8 @@
 				"0x0655977feb2f289a4ab78af67bab0d17aab84367",
 				"0x05329aab081b125eef7fbbc8b857428d478e692b"
 			],
-			"lastPricePerShare": "1058755670407479692",
-			"lastTotalAssets": "2115272992534561025180989",
+			"lastPricePerShare": "1058796543717525000",
+			"lastTotalAssets": "2114449025261354007229152",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28665,6 +29082,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -28701,7 +29119,7 @@
 				"0x4b3fc8ecb96c4f92ba2adc6a19b58efa479006d6",
 				"0xd10e4692234d91b8b50f8b13b6425387c30c351d"
 			],
-			"lastPricePerShare": "1001683262015105002",
+			"lastPricePerShare": "1001687955082509300",
 			"lastTotalAssets": "979295693467486895608589",
 			"metadata": {
 				"isRetired": false,
@@ -28733,6 +29151,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28804,6 +29223,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28870,6 +29290,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28906,7 +29327,7 @@
 				"0x2663bd22c2ba9e03b3ae1aa1c0c765781d2da154",
 				"0xb3650ee177e186732c0a3b54bcaec201c76b2df2"
 			],
-			"lastPricePerShare": "1089038603675784018",
+			"lastPricePerShare": "1090009255647745009",
 			"lastTotalAssets": "50676071231843041923725",
 			"metadata": {
 				"isRetired": false,
@@ -28938,6 +29359,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -29008,6 +29430,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29041,7 +29464,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "24868585562693332490",
+			"lastPricePerShare": "24869030739101719089",
 			"lastTotalAssets": "59620187030617041981",
 			"metadata": {
 				"isRetired": false,
@@ -29073,6 +29496,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -29144,6 +29568,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29212,6 +29637,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29283,6 +29709,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29353,6 +29780,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29418,6 +29846,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -29486,6 +29915,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -29556,6 +29986,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29625,6 +30056,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -29666,8 +30098,8 @@
 				"0xc7bae383738274ea8c3292d53afbb3b42b348df0",
 				"0xeeb6be70ff212238419cd638fab17910cf61cbe7"
 			],
-			"lastPricePerShare": "1020269086878675098",
-			"lastTotalAssets": "906589818651370112902",
+			"lastPricePerShare": "1020276425241811259",
+			"lastTotalAssets": "906044532149340968563",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29698,6 +30130,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -29768,6 +30201,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29839,6 +30273,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29872,8 +30307,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1014023540572138736",
-			"lastTotalAssets": "101012146482931709749",
+			"lastPricePerShare": "1014037584236812999",
+			"lastTotalAssets": "303573059420258411891",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29904,6 +30339,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -29975,6 +30411,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30045,6 +30482,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30117,6 +30555,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30189,6 +30628,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30259,6 +30699,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30327,6 +30768,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -30397,6 +30839,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30467,6 +30910,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30535,6 +30979,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30603,6 +31048,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30672,6 +31118,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -30741,6 +31188,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -30812,6 +31260,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30881,6 +31330,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30951,6 +31401,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31016,6 +31467,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31085,6 +31537,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31153,6 +31606,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31220,6 +31674,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31288,6 +31743,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31356,6 +31812,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31423,6 +31880,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31488,6 +31946,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -31559,6 +32018,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31629,6 +32089,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31698,6 +32159,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31764,6 +32226,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31833,6 +32296,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31904,6 +32368,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31972,6 +32437,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -32043,6 +32509,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32113,6 +32580,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32183,6 +32651,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32253,6 +32722,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32321,6 +32791,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32389,6 +32860,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -32459,6 +32931,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32529,6 +33002,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32598,6 +33072,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32667,6 +33142,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32704,7 +33180,7 @@
 				"0x01d127d90513ccb6071f83efe15611c4d9890668",
 				"0x19a11b4c29708243088fa939ec7863722f9f5bb0"
 			],
-			"lastPricePerShare": "1165245278228895887",
+			"lastPricePerShare": "1165370935304387375",
 			"lastTotalAssets": "16159298883620947664935286",
 			"metadata": {
 				"isRetired": false,
@@ -32737,6 +33213,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32809,6 +33286,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32880,6 +33358,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32952,6 +33431,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33020,6 +33500,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -33086,6 +33567,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33156,6 +33638,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33225,6 +33708,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -33293,6 +33777,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33359,6 +33844,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33427,6 +33913,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33496,6 +33983,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33563,6 +34051,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33633,6 +34122,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33704,6 +34194,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33774,6 +34265,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33842,6 +34334,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -33912,6 +34405,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33978,6 +34472,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34047,6 +34542,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34113,6 +34609,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34181,6 +34678,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -34250,6 +34748,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -34316,6 +34815,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -34386,6 +34886,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34455,6 +34956,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -34520,6 +35022,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -34589,6 +35092,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34622,8 +35126,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1027917",
-			"lastTotalAssets": "3665469798377",
+			"lastPricePerShare": "1027952",
+			"lastTotalAssets": "4287488805337",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34654,6 +35158,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -34723,6 +35228,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34795,6 +35301,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34861,6 +35368,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34931,6 +35439,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34999,6 +35508,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35067,6 +35577,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35133,6 +35644,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -35199,6 +35711,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35270,6 +35783,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35339,6 +35853,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -35410,6 +35925,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35443,7 +35959,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1236829404445285660",
+			"lastPricePerShare": "1236829419726751510",
 			"lastTotalAssets": "201951412396372948459",
 			"metadata": {
 				"isRetired": false,
@@ -35475,6 +35991,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -35544,6 +36061,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35614,6 +36132,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35683,6 +36202,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -35751,6 +36271,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -35817,6 +36338,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35885,6 +36407,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35951,6 +36474,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35984,7 +36508,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1005955620716781631",
+			"lastPricePerShare": "1005965898307709075",
 			"lastTotalAssets": "567038699282630233016",
 			"metadata": {
 				"isRetired": false,
@@ -36016,6 +36540,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36084,6 +36609,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36149,6 +36675,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36217,6 +36744,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -36250,7 +36778,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3536289467894768474",
+			"lastPricePerShare": "3536389065687271854",
 			"lastTotalAssets": "701142910968266641146",
 			"metadata": {
 				"isRetired": false,
@@ -36282,6 +36810,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36352,6 +36881,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36417,6 +36947,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": true,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -36486,6 +37017,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -36551,6 +37083,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -36623,6 +37156,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36692,6 +37226,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -36762,6 +37297,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36830,6 +37366,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -36896,6 +37433,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36962,6 +37500,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37033,6 +37572,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37103,6 +37643,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37174,6 +37715,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37245,6 +37787,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37310,6 +37853,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -37379,6 +37923,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37412,7 +37957,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1057172",
+			"lastPricePerShare": "1057218",
 			"lastTotalAssets": "13363685681",
 			"metadata": {
 				"isRetired": false,
@@ -37444,6 +37989,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -37512,6 +38058,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37545,8 +38092,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1232552",
-			"lastTotalAssets": "1093385607473",
+			"lastPricePerShare": "1232562",
+			"lastTotalAssets": "1086387955103",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37577,6 +38124,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -37647,6 +38195,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37716,6 +38265,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37784,6 +38334,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37850,6 +38401,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37921,6 +38473,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37986,6 +38539,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -38056,6 +38610,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38085,30 +38640,33 @@
 			"activation": 21787370,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
+			"lastActiveStrategies": [
+				"0xf5cf7299906817faa72cdf8fa0026565756596c0",
+				"0x0c5b53fcd533c14939f87dbbe993151ce91f638d"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "27225918900579145535735",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
-				"isAutomated": false,
+				"isAutomated": true,
 				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
+					"target": "0xfbd4d8bf19c67582168059332c46567563d0d75f",
 					"contract": "0x0000000000000000000000000000000000000000"
 				},
 				"stability": {
-					"stability": ""
+					"stability": "Unknown"
 				},
-				"category": "",
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -38121,6 +38679,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38192,6 +38751,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38260,6 +38820,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38329,6 +38890,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -38397,6 +38959,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38462,6 +39025,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -38529,6 +39093,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38598,6 +39163,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38664,6 +39230,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38732,6 +39299,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38801,6 +39369,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,

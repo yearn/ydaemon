@@ -63,7 +63,8 @@ type TInclusion struct {
 	IsYearn         bool `json:"isYearn"`         // If the vault is a Yearn vault or not
 	IsYearnJuiced   bool `json:"isYearnJuiced"`   // If the vault is a Yearn Juiced vault or not
 	IsGimme         bool `json:"isGimme"`         // If the vault is a Gimme vault or not
-	IsPoolTogether  bool `json:"isPoolTogether"`  // If the vault is a Gimme vault or not
+	IsPoolTogether  bool `json:"isPoolTogether"`  // If the vault is a PoolTogether vault or not
+	IsMorpho        bool `json:"isMorpho"`        // If the vault is a Morpho vault or not
 	IsPublicERC4626 bool `json:"isPublicERC4626"` // If the vault is from the public ERC4626 registry or not
 }
 

@@ -275,7 +275,8 @@ func RetrieveAllVaults(
 			vault.Metadata.Inclusion.IsYearnJuiced = env.IsRegistryFromJuiced(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsPublicERC4626 = env.IsRegistryFromPublicERC4626(chainID, vault.RegistryAddress)
 			vault.Metadata.Inclusion.IsPoolTogether = env.IsRegistryFromPoolTogether(chainID, vault.RegistryAddress)
-			vault.Metadata.Inclusion.IsGimme = false //False by default
+			vault.Metadata.Inclusion.IsMorpho = false //False by default
+			vault.Metadata.Inclusion.IsGimme = false  //False by default
 
 			isYearn := vault.Metadata.Inclusion.IsYearn || vault.Metadata.Inclusion.IsYearnJuiced || vault.Metadata.Inclusion.IsGimme
 			isPublic := vault.Metadata.Inclusion.IsPublicERC4626

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-06T18:34:52.102667+01:00",
+	"lastUpdate": "2025-02-06T18:40:49.174198+01:00",
 	"version": {
 		"major": 0,
-		"minor": 16,
+		"minor": 17,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -577,6 +577,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x4d3ceBA4349ADB06d2De8EBD2F9320A61303aD81/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x4d73de04431050347d6d94f7fab5887ea6737a18": {
+			"address": "0x4d73de04431050347d6d94f7fab5887ea6737a18",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "test USDC",
+			"symbol": "tUSDC",
+			"displayName": "test USDC",
+			"displaySymbol": "tUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x4d73De04431050347d6D94f7FAb5887Ea6737a18/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x4d81c7d534d703e0a0aecadf668c0e0253e1f1c3": {

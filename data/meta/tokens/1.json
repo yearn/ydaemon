@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-04T17:37:15.036027+01:00",
+	"lastUpdate": "2025-02-06T14:15:33.77923+01:00",
 	"version": {
 		"major": 0,
-		"minor": 90,
+		"minor": 91,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2882,6 +2882,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x18bAFcaBf2d5898956AE6AC31543d9657a604165/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x18c11b1dc74cab82ad18d5034fde93fe90a41d99": {
+			"address": "0x18c11b1dc74cab82ad18d5034fde93fe90a41d99",
+			"underlyingTokensAddresses": [
+				"0xd1b5651e55d4ceed36251c61c50c889b36f6abb5"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Aladdin sdCRV",
+			"symbol": "SY-asdCRV",
+			"displayName": "SY Aladdin sdCRV",
+			"displaySymbol": "SY-asdCRV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x18C11b1DC74cAB82AD18d5034FDe93FE90a41D99/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9471,6 +9487,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d7356369273c6373e6c5074fe540cb070acfe6b": {
+			"address": "0x4d7356369273c6373e6c5074fe540cb070acfe6b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4D7356369273c6373E6C5074fe540CB070acfE6b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d7564f1272e24111280918b8ae4df9953a6253f": {
 			"address": "0x4d7564f1272e24111280918b8ae4df9953a6253f",
 			"underlyingTokensAddresses": [],
@@ -11976,6 +12006,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x613b5ebcea88a64d484ff91347073c153a4d3aa4": {
+			"address": "0x613b5ebcea88a64d484ff91347073c153a4d3aa4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Aladdin sdCRV 26JUN2025",
+			"symbol": "YT-asdCRV-26JUN2025",
+			"displayName": "YT Aladdin sdCRV 26JUN2025",
+			"displaySymbol": "YT-asdCRV-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x613b5ebcea88A64d484FF91347073c153A4D3AA4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x61439b9575278054d69c9176d88fafaf8319e4b7": {
 			"address": "0x61439b9575278054d69c9176d88fafaf8319e4b7",
 			"underlyingTokensAddresses": [],
@@ -12392,6 +12436,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x653F134dC1b129012fCa3d5825d6849AD1d81864/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb": {
+			"address": "0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "ynETH MAX",
+			"symbol": "ynETHx",
+			"displayName": "ynETH MAX",
+			"displaySymbol": "ynETHx",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x657d9ABA1DBb59e53f9F3eCAA878447dCfC96dCb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -26647,6 +26707,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd65ed4bce447195187f37ce7d82f56adf1826f8f": {
+			"address": "0xd65ed4bce447195187f37ce7d82f56adf1826f8f",
+			"underlyingTokensAddresses": [
+				"0x657d9aba1dbb59e53f9f3ecaa878447dcfc96dcb",
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Curve LP",
+			"name": "ynETHx/ETH",
+			"symbol": "ynETHx/ETH",
+			"displayName": "ynETHx/ETH",
+			"displaySymbol": "ynETHx/ETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD65ed4BcE447195187f37cE7D82f56AdF1826F8F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd6627f7de81eb517a32f0f81537ea2636b27b8cc": {
 			"address": "0xd6627f7de81eb517a32f0f81537ea2636b27b8cc",
 			"underlyingTokensAddresses": [
@@ -29024,6 +29101,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe7c25cb1eac7d870f3cd103cbb060a6dfbc5eaf2": {
+			"address": "0xe7c25cb1eac7d870f3cd103cbb060a6dfbc5eaf2",
+			"underlyingTokensAddresses": [
+				"0xd65ed4bce447195187f37ce7d82f56adf1826f8f"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve ynETHx/ETH Factory yVault",
+			"symbol": "yvCurve-ynETHx/ETH-f",
+			"displayName": "Curve ynETHx/ETH Factory yVault",
+			"displaySymbol": "yvCurve-ynETHx/ETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe7c25cb1eac7D870F3cD103cBB060A6DFbc5eaF2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c": {
 			"address": "0xe7c4bd9ae62b96bf1b77ac5edb7ccdeb662b479c",
 			"underlyingTokensAddresses": [
@@ -29755,6 +29848,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEe9085fC268F6727d5D4293dBABccF901ffDCC29/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xeead826151d25f44418553303f2722893f08478c": {
+			"address": "0xeead826151d25f44418553303f2722893f08478c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Aladdin sdCRV 26JUN2025",
+			"symbol": "PT-asdCRV-26JUN2025",
+			"displayName": "PT Aladdin sdCRV 26JUN2025",
+			"displaySymbol": "PT-asdCRV-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEEAd826151d25F44418553303F2722893f08478C/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

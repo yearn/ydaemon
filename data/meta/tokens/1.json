@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-08T23:11:05.104513+01:00",
+	"lastUpdate": "2025-02-12T10:04:31.878585+01:00",
 	"version": {
 		"major": 0,
-		"minor": 92,
+		"minor": 93,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4784,6 +4784,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x27eb97233f6228704ea64bb272fc8eece68fd9f4": {
+			"address": "0x27eb97233f6228704ea64bb272fc8eece68fd9f4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Curve.fi GHOUSR 31JUL2025",
+			"symbol": "PT-Curve-GHOUSR-31JUL2025",
+			"displayName": "PT Curve.fi GHOUSR 31JUL2025",
+			"displaySymbol": "PT-Curve-GHOUSR-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x27eB97233f6228704eA64Bb272fc8eecE68FD9f4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x27f6f2f5e87a383471c79296c64e4e82269877f7": {
 			"address": "0x27f6f2f5e87a383471c79296c64e4e82269877f7",
 			"underlyingTokensAddresses": [],
@@ -4871,6 +4885,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2825b12c5e873318B318302408718B961Ae74D4E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x282a69142bac47855c3fbe1693fcc4ba3b4d5ed6": {
+			"address": "0x282a69142bac47855c3fbe1693fcc4ba3b4d5ed6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Carrot",
+			"symbol": "CARROT",
+			"displayName": "Carrot",
+			"displaySymbol": "CARROT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x282A69142bac47855C3fbE1693FcC4bA3B4d5Ed6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8284,6 +8312,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x425BfB93370F14fF525aDb6EaEAcfE1f4e3b5802/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4263edde8814056f8672acc3a8d6a57160003245": {
+			"address": "0x4263edde8814056f8672acc3a8d6a57160003245",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Curve.fi GHOUSR 31JUL2025",
+			"symbol": "YT-Curve-GHOUSR-31JUL2025",
+			"displayName": "YT Curve.fi GHOUSR 31JUL2025",
+			"displaySymbol": "YT-Curve-GHOUSR-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4263eDde8814056f8672ACc3a8D6a57160003245/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16120,6 +16162,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x82d810ededb09614144900f914e75dd76700f19d": {
+			"address": "0x82d810ededb09614144900f914e75dd76700f19d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x82D810ededb09614144900F914e75Dd76700f19d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x82e75cf176c18dccef1b05b0f1d89a444a3a1005": {
 			"address": "0x82e75cf176c18dccef1b05b0f1d89a444a3a1005",
 			"underlyingTokensAddresses": [
@@ -19785,6 +19841,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa08ceb657d9a8035a44a1b44b8d4c42ec31dd4d4": {
+			"address": "0xa08ceb657d9a8035a44a1b44b8d4c42ec31dd4d4",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "EVK Vault eUSDC-2 Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "EVK Vault eUSDC-2 Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xa08CEb657D9A8035A44A1b44b8d4C42eC31Dd4D4/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xa0ab94debb3cc9a7ea77f3205ba4ab23276fed08": {
 			"address": "0xa0ab94debb3cc9a7ea77f3205ba4ab23276fed08",
 			"underlyingTokensAddresses": [],
@@ -21649,6 +21721,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xaf48f006e75af050c4136f5a32b69e3fe1c4140f": {
+			"address": "0xaf48f006e75af050c4136f5a32b69e3fe1c4140f",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Euler Prime WETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Euler Prime WETH Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xaf48f006e75AF050c4136F5a32B69e3FE1C4140f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6": {
 			"address": "0xaf5191b0de278c7286d6c7cc6ab6bb8a73ba2cd6",
 			"underlyingTokensAddresses": [],
@@ -22947,6 +23035,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xb9ef23c587f3F3DEa54F42De5B71e78f822C74e8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xba04c9a4297484aa671fd3425364994cf2ac8037": {
+			"address": "0xba04c9a4297484aa671fd3425364994cf2ac8037",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Curve.fi GHOUSR",
+			"symbol": "SY-Curve-GHOUSR",
+			"displayName": "SY Curve.fi GHOUSR",
+			"displaySymbol": "SY-Curve-GHOUSR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xba04C9a4297484AA671Fd3425364994cF2AC8037/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24423,6 +24525,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xc325849908D482550b87f96ef60271B95f92C861/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc372ccdd24bb0753ceb78bbac4d24eb7de4abe4e": {
+			"address": "0xc372ccdd24bb0753ceb78bbac4d24eb7de4abe4e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Curve.fi GHOUSR Gauge Deposit",
+			"symbol": "GHOUSR-gauge",
+			"displayName": "Curve.fi GHOUSR Gauge Deposit",
+			"displaySymbol": "GHOUSR-gauge",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc372CCdD24Bb0753CEB78bBaC4D24EB7dE4aBE4e/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -29542,6 +29658,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xeAD901CE4786d4e97B35cb07905a4ed0B35B4d7D/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xeadc18ca9363565e1c8bc5415db0110d7c91cde5": {
+			"address": "0xeadc18ca9363565e1c8bc5415db0110d7c91cde5",
+			"underlyingTokensAddresses": [
+				"0x4628f13651ead6793f8d838b34b8f8522fb0cc52"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve GHO-USR yVault",
+			"symbol": "yvCurve-GHO-USR",
+			"displayName": "Curve GHO-USR yVault",
+			"displaySymbol": "yvCurve-GHO-USR",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xEadc18ca9363565E1c8BC5415Db0110d7c91cDE5/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xeb4c2781e4eba804ce9a9803c67d0893436bb27d": {

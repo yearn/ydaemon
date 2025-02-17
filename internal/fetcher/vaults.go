@@ -56,7 +56,10 @@ func fetchVaultsBasicInformations(
 		calls := []ethereum.Call{}
 		for _, vault := range chunk {
 			// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
-			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2") ||
+				addresses.Equals(vault.Address, "0x5B977577Eb8a480f63e11FC615D6753adB8652Ae") ||
+				addresses.Equals(vault.Address, "0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc") ||
+				addresses.Equals(vault.Address, "0xFaee21D0f0Af88EE72BB6d68E54a90E6EC2616de")
 			if vault.Metadata.IsRetired && !isException {
 				continue
 			}
@@ -75,7 +78,10 @@ func fetchVaultsBasicInformations(
 		response := multicalls.Perform(chainID, calls, nil)
 		for _, vault := range chunk {
 			// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
-			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2") ||
+				addresses.Equals(vault.Address, "0x5B977577Eb8a480f63e11FC615D6753adB8652Ae") ||
+				addresses.Equals(vault.Address, "0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc") ||
+				addresses.Equals(vault.Address, "0xFaee21D0f0Af88EE72BB6d68E54a90E6EC2616de")
 			if vault.Metadata.IsRetired && !isException {
 				continue
 			}

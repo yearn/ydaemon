@@ -50,8 +50,20 @@ func ComputeChainAPY(chainID uint64) {
 	isOnGnosis := (chainID == 100)
 	for _, vault := range allVaults {
 		// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
-		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
-		shouldSkip := vault.Metadata.IsRetired && !isOnGnosis && !isException
+		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2") ||
+			addresses.Equals(vault.Address, "0x5B977577Eb8a480f63e11FC615D6753adB8652Ae") ||
+			addresses.Equals(vault.Address, "0x65343F414FFD6c97b0f6add33d16F6845Ac22BAc") ||
+			addresses.Equals(vault.Address, "0xFaee21D0f0Af88EE72BB6d68E54a90E6EC2616de")
+		shouldSkip := false
+		if vault.Metadata.IsRetired {
+			shouldSkip = true
+			if isOnGnosis {
+				shouldSkip = false
+			}
+			if isException {
+				shouldSkip = false
+			}
+		}
 		if shouldSkip {
 			continue
 		}

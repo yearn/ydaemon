@@ -41,8 +41,8 @@ func FetchPPSLastWeek(
 		BlockNumber: big.NewInt(int64(estBlockLastWeek)),
 	}
 	pps, _ := vaultContract.PricePerShare(opts)
-	ppsToday := helpers.ToNormalizedAmount(bigNumber.SetInt(pps), decimals)
-	return ppsToday
+	ppsLastWeek := helpers.ToNormalizedAmount(bigNumber.SetInt(pps), decimals)
+	return ppsLastWeek
 }
 
 func FetchPPSLastMonth(

@@ -35,7 +35,9 @@ func fetchStrategiesBasicInformations(
 	calls := []ethereum.Call{}
 	for _, strat := range strategiesMap {
 		vault, ok := storage.GetVault(chainID, strat.VaultAddress)
-		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired {
+		// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
+		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired && !isException {
 			continue
 		}
 
@@ -54,7 +56,9 @@ func fetchStrategiesBasicInformations(
 	response := multicalls.Perform(chainID, calls, nil)
 	for _, strat := range strategiesMap {
 		vault, ok := storage.GetVault(chainID, strat.VaultAddress)
-		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired {
+		// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
+		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+		if ok && !strat.ShouldRefresh && vault.Metadata.IsRetired && !isException {
 			continue
 		}
 

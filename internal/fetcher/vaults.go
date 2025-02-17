@@ -55,7 +55,9 @@ func fetchVaultsBasicInformations(
 		**********************************************************************************************/
 		calls := []ethereum.Call{}
 		for _, vault := range chunk {
-			if vault.Metadata.IsRetired {
+			// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
+			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+			if vault.Metadata.IsRetired && !isException {
 				continue
 			}
 			versionMajor := strings.Split(vault.Version, `.`)[0]
@@ -72,7 +74,9 @@ func fetchVaultsBasicInformations(
 		**********************************************************************************************/
 		response := multicalls.Perform(chainID, calls, nil)
 		for _, vault := range chunk {
-			if vault.Metadata.IsRetired {
+			// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
+			isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+			if vault.Metadata.IsRetired && !isException {
 				continue
 			}
 			newVault := vault

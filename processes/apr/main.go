@@ -4,6 +4,7 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/initDailyBlock"
@@ -48,7 +49,10 @@ func ComputeChainAPY(chainID uint64) {
 
 	isOnGnosis := (chainID == 100)
 	for _, vault := range allVaults {
-		if vault.Metadata.IsRetired && !isOnGnosis {
+		// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
+		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2")
+		shouldSkip := vault.Metadata.IsRetired && !isOnGnosis && !isException
+		if shouldSkip {
 			continue
 		}
 		vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)

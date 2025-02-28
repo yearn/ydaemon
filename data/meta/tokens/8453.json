@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-19T15:20:30.582916+01:00",
+	"lastUpdate": "2025-02-28T10:22:14.584624+01:00",
 	"version": {
 		"major": 0,
-		"minor": 18,
+		"minor": 19,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -927,6 +927,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x7bc9e2d216b22611d9805c12e0c682391720752f": {
+			"address": "0x7bc9e2d216b22611d9805c12e0c682391720752f",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Seamless cbBTC Vault Compounder",
+			"symbol": "yscbBTC",
+			"displayName": "Morpho Seamless cbBTC Vault Compounder",
+			"displaySymbol": "yscbBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x7bc9E2D216B22611D9805C12E0C682391720752F/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
 		"0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2": {
 			"address": "0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2",
 			"underlyingTokensAddresses": [
@@ -1141,6 +1157,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0x953370e91b70897a0cecc97b58e99d7946c841de": {
+			"address": "0x953370e91b70897a0cecc97b58e99d7946c841de",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Seamless USDC Vault Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "Morpho Seamless USDC Vault Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x953370e91B70897A0cECc97B58E99D7946C841dE/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
 			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
 			"underlyingTokensAddresses": [
@@ -1308,6 +1340,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xa6cBdD6aE6596b5EE57F67DF70CC7c801129464F/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xa72a60e6167e8fc5e523184911475c4b37b835e2": {
+			"address": "0xa72a60e6167e8fc5e523184911475c4b37b835e2",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Seamless WETH Vault Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Seamless WETH Vault Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xa72a60e6167E8fC5e523184911475c4B37B835E2/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},

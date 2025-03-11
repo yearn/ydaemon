@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-28T10:22:14.584624+01:00",
+	"lastUpdate": "2025-03-11T21:25:50.53182+01:00",
 	"version": {
 		"major": 0,
-		"minor": 19,
+		"minor": 21,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1005,6 +1005,20 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x820c137fa70c8691f0e44dc420a5e53c168921dc": {
+			"address": "0x820c137fa70c8691f0e44dc420a5e53c168921dc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDS Stablecoin",
+			"symbol": "USDS",
+			"displayName": "USDS Stablecoin",
+			"displaySymbol": "USDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x820C137fa70C8691f0e44Dc420a5e53c168921Dc/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b": {
 			"address": "0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b",
 			"underlyingTokensAddresses": [],
@@ -1081,6 +1095,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x878b75772c0abf2d22a9d4a5ae062b1aadaaebb3": {
+			"address": "0x878b75772c0abf2d22a9d4a5ae062b1aadaaebb3",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Hotline",
+			"symbol": "hUSDC",
+			"displayName": "USDC Hotline",
+			"displaySymbol": "hUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x878b75772C0abF2D22A9d4A5aE062b1aadaAeBb3/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x8b432c54d6e8e1b8d1802753514ab53044af1861": {
 			"address": "0x8b432c54d6e8e1b8d1802753514ab53044af1861",
 			"underlyingTokensAddresses": [],
@@ -1108,6 +1138,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x8C589ADdBe1466a9B555EaA6cE8940Ac1680C5F4/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x8e462a2b3a8c2713b5e157f5f3a3cd503588e59a": {
+			"address": "0x8e462a2b3a8c2713b5e157f5f3a3cd503588e59a",
+			"underlyingTokensAddresses": [
+				"0x820c137fa70c8691f0e44dc420a5e53c168921dc"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS MkDedz",
+			"symbol": "mdUSDS",
+			"displayName": "USDS MkDedz",
+			"displaySymbol": "mdUSDS",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x8e462a2b3A8c2713B5E157f5f3a3Cd503588E59A/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -1511,6 +1557,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0xcad1719469bc67341eec1a29a07684fe075596da": {
+			"address": "0xcad1719469bc67341eec1a29a07684fe075596da",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC MkDedz",
+			"symbol": "mdUSDC",
+			"displayName": "USDC MkDedz",
+			"displaySymbol": "mdUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xCAd1719469bC67341EEC1a29a07684Fe075596DA/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
 			"address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
 			"underlyingTokensAddresses": [],
@@ -1705,6 +1767,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xf53B7Af40BE75043eeBa493C622F4f56b3C27A31/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xf595152ceaf50fa854c4606a457d2388375d4fa0": {
+			"address": "0xf595152ceaf50fa854c4606a457d2388375d4fa0",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 Test LucasiaLLC",
+			"symbol": "USDC-1 Test LucasiaLLC",
+			"displayName": "USDC-1 Test LucasiaLLC",
+			"displaySymbol": "USDC-1 Test LucasiaLLC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xf595152CEAf50Fa854c4606a457d2388375d4fa0/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xf6aec4f97623e691a9426a69baf5501509fca05d": {

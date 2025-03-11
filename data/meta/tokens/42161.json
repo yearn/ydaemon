@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-02-28T10:22:19.579178+01:00",
+	"lastUpdate": "2025-03-11T21:25:49.178592+01:00",
 	"version": {
 		"major": 0,
-		"minor": 42,
+		"minor": 43,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1596,6 +1596,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x242FFeaACA4A3A845DfA06234Ea91397528866c6/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x244f22dd5f309506129513d0954787d52d80ba3d": {
+			"address": "0x244f22dd5f309506129513d0954787d52d80ba3d",
+			"underlyingTokensAddresses": [
+				"0xddb9c8fb4ceae7b1096118769fb706f49d15e294"
+			],
+			"type": "Yearn Vault",
+			"name": "TestTokenV1-1 LucasiaLLC",
+			"symbol": "TestTokenV1-1 LucasiaLLC",
+			"displayName": "TestTokenV1-1 LucasiaLLC",
+			"displaySymbol": "TestTokenV1-1 LucasiaLLC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x244F22Dd5F309506129513D0954787d52D80ba3D/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -3271,6 +3287,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x54a77d0628e472643753ccb6cd929ac768f5f634": {
+			"address": "0x54a77d0628e472643753ccb6cd929ac768f5f634",
+			"underlyingTokensAddresses": [
+				"0xddb9c8fb4ceae7b1096118769fb706f49d15e294"
+			],
+			"type": "Yearn Vault",
+			"name": "TestTokenV1-1 TestCBDevOps1",
+			"symbol": "TestTokenV1-1 TestCBDevOps1",
+			"displayName": "TestTokenV1-1 TestCBDevOps1",
+			"displaySymbol": "TestTokenV1-1 TestCBDevOps1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x54A77d0628e472643753ccb6CD929ac768F5f634/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x551c423c441db0b691b5630f04d2080caee25963": {
 			"address": "0x551c423c441db0b691b5630f04d2080caee25963",
 			"underlyingTokensAddresses": [],
@@ -4092,6 +4124,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x71b34b7c4a0592a186ddb2fde1fcdebe299150dd": {
+			"address": "0x71b34b7c4a0592a186ddb2fde1fcdebe299150dd",
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
+			"type": "Single Strategy",
+			"name": "Prize Compound WETH - Beefy",
+			"symbol": "przcWETH",
+			"displayName": "Prize Compound WETH - Beefy",
+			"displaySymbol": "przcWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x71B34b7c4A0592a186DDB2FDE1fCDEBe299150dd/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x722a6031d5976fc61fa952a02160406960969927": {
 			"address": "0x722a6031d5976fc61fa952a02160406960969927",
 			"underlyingTokensAddresses": [],
@@ -4317,6 +4365,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x77BDa306cE23890129B572381999369732ffE3c5/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x788fe989fadcfefb68861303f763dd1b0a9e1264": {
+			"address": "0x788fe989fadcfefb68861303f763dd1b0a9e1264",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "TestToken 20250221",
+			"symbol": "TestToken 20250221",
+			"displayName": "TestToken 20250221",
+			"displaySymbol": "TestToken 20250221",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x788Fe989Fadcfefb68861303f763dD1b0A9e1264/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -5486,6 +5548,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x9869108fAb928428A5CdbF1dAB0fe4E46027bC51/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x989b2a056db791aca934686eebe9b0514d635a11": {
+			"address": "0x989b2a056db791aca934686eebe9b0514d635a11",
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
+			"type": "Yearn Vault",
+			"name": "TestTokenV1-2 CBDevOps",
+			"symbol": "TestTokenV1-2 CBDevOps",
+			"displayName": "TestTokenV1-2 CBDevOps",
+			"displaySymbol": "TestTokenV1-2 CBDevOps",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x989b2A056DB791aCA934686EeBE9b0514D635a11/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -7013,6 +7091,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xc80e7eee121570f36c629378de42eb80dc22ecad": {
+			"address": "0xc80e7eee121570f36c629378de42eb80dc22ecad",
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
+			"type": "Yearn Vault",
+			"name": "TestToken 20250221-1 LucasiaLLC",
+			"symbol": "TestToken 20250221-1 LucasiaLLC",
+			"displayName": "TestToken 20250221-1 LucasiaLLC",
+			"displaySymbol": "TestToken 20250221-1 LucasiaLLC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xC80e7eee121570F36c629378De42EB80dc22eCAd/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xc85910daf21367cc293eb82876d094c31583b0b7": {
 			"address": "0xc85910daf21367cc293eb82876d094c31583b0b7",
 			"underlyingTokensAddresses": [],
@@ -7431,6 +7525,22 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0xd49afd20aff04f86127c4b7b2ed893aad82f8d9b": {
+			"address": "0xd49afd20aff04f86127c4b7b2ed893aad82f8d9b",
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
+			"type": "Yearn Vault",
+			"name": "TestToken 20250221-1 CBDevOps",
+			"symbol": "TestToken 20250221-1 CBDevOps",
+			"displayName": "TestToken 20250221-1 CBDevOps",
+			"displaySymbol": "TestToken 20250221-1 CBDevOps",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xd49Afd20AFF04F86127C4b7b2eD893aAD82F8d9b/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xd4fe6e1e37dfcf35e9eeb54d4cca149d1c10239f": {
 			"address": "0xd4fe6e1e37dfcf35e9eeb54d4cca149d1c10239f",
 			"underlyingTokensAddresses": [],
@@ -7644,6 +7754,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xdd4C7313Fe4C92e043B9B7dFE433e239BcD05A0D/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xddb9c8fb4ceae7b1096118769fb706f49d15e294": {
+			"address": "0xddb9c8fb4ceae7b1096118769fb706f49d15e294",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "TestTokenV1",
+			"symbol": "TestTokenV1",
+			"displayName": "TestTokenV1",
+			"displaySymbol": "TestTokenV1",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xddb9C8Fb4CeAe7B1096118769Fb706F49D15E294/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -7974,6 +8098,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xEa7DD7285350d1153510069Ac4b382a96E479683/logo-128.png",
+			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xeadb712d95f347c3223261ef0f67505579eac159": {
+			"address": "0xeadb712d95f347c3223261ef0f67505579eac159",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 TEST LucasiaLLC",
+			"symbol": "USDC-1 Test LucasiaLLC",
+			"displayName": "USDC-1 TEST LucasiaLLC",
+			"displaySymbol": "USDC-1 Test LucasiaLLC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0xeAdB712d95f347c3223261ef0f67505579eAC159/logo-128.png",
 			"decimals": 6,
 			"chainID": 42161
 		},

@@ -58,9 +58,9 @@ func getVaults(
 	** strategiesCondition: A string that determines the condition for selecting strategies. It is
 	** obtained from the 'strategiesCondition' query parameter in the request.
 	**************************************************************************************************/
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
-	hideAlways := helpers.StringToBool(getQuery(c, `hideAlways`))
+	orderBy := helpers.SafeString(getQueryParam(c, `orderBy`), `featuringScore`)
+	orderDirection := helpers.SafeString(getQueryParam(c, `orderDirection`), `asc`)
+	hideAlways := helpers.StringToBool(getQueryParam(c, `hideAlways`))
 
 	/** 🔵 - Yearn *************************************************************************************
 	** migrable: A string that determines the condition for selecting migrable vaults. It is
@@ -81,8 +81,8 @@ func getVaults(
 	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
 	** it defaults to 200.
 	**************************************************************************************************/
-	page := ValidateNumericQuery(c, "page", 1, 1, 1000, "GetVaults")
-	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetVaults")
+	page := ValidateNumericQuery(c, "page", DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
+	limit := ValidateNumericQuery(c, "limit", DEFAULT_PAGE_LIMIT, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
@@ -98,7 +98,7 @@ func getVaults(
 	**
 	** The 'chains' array is used to filter the vaults that are returned in the response.
 	**************************************************************************************************/
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
@@ -179,7 +179,7 @@ func getVaults(
 
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			if newVault.Details.IsHighlighted {
-				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+				newVault.FeaturingScore = newVault.FeaturingScore * HIGHLIGHTING_MULTIPLIER
 			}
 
 			// Check if strategies are required - only retrieve the count if needed
@@ -193,11 +193,11 @@ func getVaults(
 
 			// Apply migrable-specific filters
 			if !currentVault.Metadata.IsRetired {
-				if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
+				if migrable == MIGRABLE_CONDITION_NO_DUST && (newVault.TVL.TVL < MIN_DUST_TVL || !newVault.Migration.Available) {
 					continue
-				} else if migrable == `all` && !newVault.Migration.Available {
+				} else if migrable == MIGRABLE_CONDITION_ALL && !newVault.Migration.Available {
 					continue
-				} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden) {
+				} else if migrable == MIGRABLE_CONDITION_IGNORE && (newVault.Migration.Available || newVault.Details.IsHidden) {
 					continue
 				}
 			}
@@ -245,48 +245,28 @@ func strategyDataIsRequired(migrable string) bool {
 }
 
 /**************************************************************************************************
-** isV3Vault determines if a vault is a v3 vault based on its version and kind.
+** Helper functions for vault version checks were consolidated in validation.go.
 **
-** This function identifies v3 vaults by checking if:
-** 1. It has kind VaultKindMultiple or VaultKindSingle (which are v3-specific kinds), or
-** 2. Its version string starts with "3" (e.g., "3.0.0") or equals "v3"
+** To maintain compatibility with existing code, these forwarding functions are kept
+** but delegate to the centralized implementation.
+**************************************************************************************************/
+
+/**************************************************************************************************
+** isV3Vault determines if a vault is a v3 vault based on its version and kind.
 **
 ** @param vault models.TVault - The vault to check
 ** @return bool - True if the vault is a v3 vault, false otherwise
 **************************************************************************************************/
 func isV3Vault(vault models.TVault) bool {
-	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle ||
-		strings.HasPrefix(vault.Version, "3") || vault.Version == "v3"
+	return VaultVersionChecks.IsV3(vault)
 }
 
 /**************************************************************************************************
 ** isV2Vault determines if a vault is a v2 vault based on its version.
 **
-** This function checks if a vault is a v2 vault by examining its version string. A vault is
-** considered v2 if it's NOT a v3 vault and has a version starting with:
-** - "0." (legacy versions of v2)
-** - "2." (numeric v2 versions like "2.0.0")
-** - or exactly equals "v2" or "2" (string representations)
-**
-** Note: v1 vaults (starting with "1." or equal to "v1" or "1") are NOT considered v2 vaults.
-**
 ** @param vault models.TVault - The vault to check
 ** @return bool - True if the vault is a v2 vault, false otherwise
 **************************************************************************************************/
 func isV2Vault(vault models.TVault) bool {
-	// First check if it's a v3 vault (which takes precedence)
-	if isV3Vault(vault) {
-		return false
-	}
-
-	// If it's a v1 vault, it's not v2
-	if strings.HasPrefix(vault.Version, "1.") || vault.Version == "v1" || vault.Version == "1" {
-		return false
-	}
-
-	// It's a v2 vault if it starts with "0." or "2." or equals "v2" or "2"
-	return strings.HasPrefix(vault.Version, "0.") ||
-		strings.HasPrefix(vault.Version, "2.") ||
-		vault.Version == "v2" ||
-		vault.Version == "2"
+	return VaultVersionChecks.IsV2(vault)
 }

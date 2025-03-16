@@ -113,7 +113,9 @@ func TestGetAllStrategies_InvalidChainID(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, http.StatusBadRequest, w.Code)
-	assert.Equal(t, "invalid chainID: invalid", w.Body.String())
+	// Match the new error format from our structured error handling
+	assert.Contains(t, w.Body.String(), "Invalid chain ID format")
+	assert.Contains(t, w.Body.String(), "invalid")
 }
 
 /**************************************************************************************************

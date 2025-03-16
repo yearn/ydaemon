@@ -138,7 +138,7 @@ func TestGetQuery(t *testing.T) {
 	// Define a test handler
 	router.GET("/test", func(c *gin.Context) {
 		paramName := "testParam"
-		paramValue := getQuery(c, paramName)
+		paramValue := getQueryParam(c, paramName)
 		c.String(http.StatusOK, paramValue)
 	})
 

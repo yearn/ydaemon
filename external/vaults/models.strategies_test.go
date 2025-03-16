@@ -10,25 +10,10 @@ import (
 )
 
 /**************************************************************************************************
-** TestNewStrategy tests the NewStrategy function to ensure it correctly initializes
-** an empty TStrategy instance.
-**************************************************************************************************/
-func TestNewStrategy(t *testing.T) {
-	// Execute the function
-	strategy := NewStrategy()
-
-	// Verify the result
-	assert.Empty(t, strategy.Address, "Address should be empty")
-	assert.Empty(t, strategy.Name, "Name should be empty")
-	assert.Empty(t, strategy.Description, "Description should be empty")
-	assert.Nil(t, strategy.Details, "Details should be nil")
-}
-
-/**************************************************************************************************
-** TestAssignTStrategy tests the AssignTStrategy method to verify it properly converts
+** TestCreateExternalStrategy tests the CreateExternalStrategy function to verify it properly converts
 ** an internal strategy model to the external TStrategy format.
 **************************************************************************************************/
-func TestAssignTStrategy(t *testing.T) {
+func TestCreateExternalStrategy(t *testing.T) {
 	// Create test data
 	address := common.HexToAddress("0x1234567890123456789012345678901234567890")
 	totalDebt := bigNumber.NewInt(10000)
@@ -54,8 +39,7 @@ func TestAssignTStrategy(t *testing.T) {
 
 	// Test with display name present
 	t.Run("With display name", func(t *testing.T) {
-		emptyStrategy := NewStrategy()
-		strategy := emptyStrategy.AssignTStrategy(internalStrategy)
+		strategy := CreateExternalStrategy(internalStrategy)
 
 		// Verify the result
 		assert.Equal(t, address.Hex(), strategy.Address, "Address should match")
@@ -76,8 +60,7 @@ func TestAssignTStrategy(t *testing.T) {
 		internalStrategyNoDisplay := internalStrategy
 		internalStrategyNoDisplay.DisplayName = ""
 
-		emptyStrategy := NewStrategy()
-		strategy := emptyStrategy.AssignTStrategy(internalStrategyNoDisplay)
+		strategy := CreateExternalStrategy(internalStrategyNoDisplay)
 
 		// Verify the result
 		assert.Equal(t, internalStrategyNoDisplay.Name, strategy.Name, "Name should fall back to Name when DisplayName is empty")

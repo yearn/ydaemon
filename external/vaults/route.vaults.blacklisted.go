@@ -35,7 +35,7 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	defer cancel()
 
 	// Get and validate the chainID parameter
-	chainIDParam := getQuery(c, "chainID")
+	chainIDParam := getQueryParam(c, "chainID")
 
 	// Verify the param exists and isn't empty
 	if chainIDParam == "" {

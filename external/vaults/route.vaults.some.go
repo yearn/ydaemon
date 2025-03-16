@@ -41,8 +41,8 @@ import (
 ** @return void - Response is sent directly via Gin with the requested vaults
 **************************************************************************************************/
 func (y Controller) GetLegacySomeVaults(c *gin.Context) {
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
-	orderDir := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	orderBy := helpers.SafeString(getQueryParam(c, `orderBy`), `featuringScore`)
+	orderDir := helpers.SafeString(getQueryParam(c, `orderDirection`), `asc`)
 	stratCon := ValidateStrategyCondition(c, "strategiesCondition")
 
 	// Validate chain ID using the utility function
@@ -110,7 +110,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		}
 
 		// Process the vault
-		newVault, err := NewVault().AssignTVault(currentVault)
+		newVault, err := CreateExternalVault(currentVault)
 		if err != nil {
 			// Log error but continue with other vaults
 			HandleError(c, fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
@@ -122,7 +122,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, address)
 		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
+			strategyWithDetails := CreateExternalStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(stratCon) {
 				continue
 			}

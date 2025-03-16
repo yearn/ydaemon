@@ -110,7 +110,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetVaultsForRotki")
 
 	// Process chain IDs parameter
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
@@ -160,7 +160,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			newVault, err := NewVault().AssignTVault(currentVault)
+			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
 				continue
 			}
@@ -193,7 +193,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			if newVault.Details.IsHighlighted {
-				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+				newVault.FeaturingScore = newVault.FeaturingScore * HIGHLIGHTING_MULTIPLIER
 			}
 
 			vaultForRotki := TRotkiVaults{
@@ -276,7 +276,7 @@ func (y Controller) CountVaultsForRotki(c *gin.Context) {
 	**
 	** The 'chains' array is used to filter the vaults that are returned in the response.
 	**************************************************************************************************/
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
@@ -304,7 +304,7 @@ func (y Controller) CountVaultsForRotki(c *gin.Context) {
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			_, err := NewVault().AssignTVault(currentVault)
+			_, err := CreateExternalVault(currentVault)
 			if err != nil {
 				continue
 			}

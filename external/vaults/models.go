@@ -52,8 +52,17 @@ type TExternalVaultMigration struct {
 ** TExternalVaultDetails contains metadata and classification information for a vault.
 **
 ** This structure holds various flags and attributes that determine how a vault is displayed,
-** categorized, and processed in the UI and API responses. It includes metadata like retirement
-** status, boosting, automation, and categorization information.
+** categorized, and processed in the UI and API responses. It includes:
+**
+** - Status flags: isRetired (no longer active), isHidden (not shown by default in UIs)
+** - Classification: isPool (represents a liquidity pool), isAutomated (uses automation systems)
+** - Display preferences: isHighlighted (promoted in UI listings)
+** - Architecture flags: isAggregator (manages multiple strategies as a single vault)
+** - Performance traits: isBoosted (has enhanced yield through external incentives)
+** - Categorization: stability type, category, poolProvider, etc.
+**
+** API consumers can use these fields to filter, sort, and display vaults appropriately
+** in user interfaces, dashboards, and analytics tools.
 **************************************************************************************************/
 type TExternalVaultDetails struct {
 	IsRetired       bool                       `json:"isRetired"`    // If the vault is retired or not
@@ -90,14 +99,34 @@ type TExternalERC20Token struct {
 }
 
 /**************************************************************************************************
-** TExternalVaultInfo contains risk and display metadata for vaults.
+** TExternalVaultInfo contains risk assessment data and display metadata for vaults.
 **
 ** This structure holds important information about a vault's risk profile, UI display guidelines,
-** and special notices. It includes risk scores, UI notices, and flags that affect how the vault
-** is presented to users.
+** and special notices that help users make informed investment decisions.
 **
-** The risk scoring system uses a combination of individual risk factors (stored in the RiskScore array)
-** and an overall RiskLevel that ranges from 1 (most secure) to 5 (least secure).
+** Risk Assessment System:
+** - RiskLevel: Overall risk rating from 1 (safest) to 5 (highest risk)
+** - RiskScore: Detailed 11-element array with individual risk factor scores:
+**   [0] Code review quality (0-5)
+**   [1] Testing coverage and quality (0-5)
+**   [2] Code complexity assessment (0-5)
+**   [3] Risk exposure to market conditions (0-5)
+**   [4] Protocol integration complexity (0-5)
+**   [5] Centralization risk of the strategy (0-5)
+**   [6] External protocol audit status (0-5)
+**   [7] External protocol centralization (0-5)
+**   [8] External protocol TVL size (0-5)
+**   [9] External protocol longevity (0-5)
+**   [10] External protocol type risk (0-5)
+**
+** For Multi-Strategy Vaults, the overall RiskLevel is derived from the highest risk 
+** strategy, while the detailed RiskScore array may not be populated (use the individual
+** strategy risk scores instead).
+**
+** Display Guidelines:
+** - UINotice: Optional message to display to users (warnings, information)
+** - SourceURL: Link to relevant external resource (e.g., token purchase site)
+** - Status flags: Control how the vault appears in listings
 **************************************************************************************************/
 type TExternalVaultInfo struct {
 	SourceURL        string   `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
@@ -172,12 +201,35 @@ type TExternalVaultAPR struct {
 }
 
 /**************************************************************************************************
-** TExternalVault represents a complete vault entity with all associated data.
+** TExternalVault represents a complete Yearn vault with all its associated data.
 **
-** This is the primary data structure for representing a Yearn vault. It contains comprehensive
-** information about the vault, including its fundamental properties, token details, TVL,
-** strategies, migration options, APR data, and metadata. This structure is used for the
-** main vault API endpoints.
+** This is the primary data structure used in API responses for detailed vault information.
+** It provides a comprehensive view of a vault, including:
+**
+** Core Properties:
+** - Identifiers: address, name, symbol, version
+** - Classification: type, kind, category
+** - Metadata: description, icon, display formats
+**
+** Financial Data:
+** - TVL (Total Value Locked): assets under management and USD value
+** - APR (Annual Percentage Rate): yield information across all sources
+** - PricePerShare: token value growth over time
+**
+** Technical Components:
+** - Underlying token details
+** - Associated strategies (yield-generating components)
+** - Staking options and rewards
+** - Migration information (if a newer vault version exists)
+**
+** Risk and Presentation:
+** - Risk assessment and scoring
+** - UI display preferences and status flags
+** - Featuring score (for sorting and highlighting)
+**
+** This structure is the most complete representation of a vault and should be used
+** when detailed information is required. For list views or lightweight use cases,
+** consider using TSimplifiedExternalVault instead.
 **************************************************************************************************/
 type TExternalVault struct {
 	Address           string                  `json:"address"`
@@ -297,15 +349,23 @@ type TSimplifiedExternalVault struct {
 }
 
 /************************************************************************************************
-** Function to map the internal TVaultAPY structure to the external TExternalVaultAPR structure.
-** This function takes a TVaultAPY object as input and returns a TExternalVaultAPR object.
-** The mapping includes:
-** - Type: The type of APR.
-** - NetAPR: The net annual percentage rate.
-** - Fees: The associated fees.
-** - Points: Historical points data.
-** - Extra: Extra rewards data.
-** - ForwardAPR: Forward-looking APR data, including type, net APR, and composite data.
+** assignVaultAPR maps the internal TVaultAPY structure to the external TExternalVaultAPR structure.
+**
+** This function converts APY (Annual Percentage Yield) data from internal calculations to the 
+** standardized APR (Annual Percentage Rate) format used in the API. The conversion preserves
+** all component values needed for displaying comprehensive yield information to users.
+**
+** The field mapping is as follows:
+** - Type: Yield calculation method (e.g., "crv", "compound")
+** - NetAPR: Primary annualized rate value used for yield calculations and comparisons
+** - Fees: All fee components (management, performance, etc.)
+** - Points: Historical yield data points for trend analysis
+** - PricePerShare: Token value growth data for verification
+** - Extra: Additional yield sources (staking rewards, protocol rewards)
+** - ForwardAPR: Projected future yield information
+**
+** @param vaultAPY apr.TVaultAPY - The internal APY structure to convert
+** @return TExternalVaultAPR - The populated external APR structure for API responses
 ************************************************************************************************/
 func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 	return TExternalVaultAPR{
@@ -336,15 +396,26 @@ func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 }
 
 /************************************************************************************************
-** CreateExternalVault creates a fully populated external vault structure from an internal vault model.
+** CreateExternalVault transforms an internal vault model into the external API representation.
 **
-** This function replaces the pattern of NewVault().AssignTVault() to avoid creating
-** an intermediate empty vault object. It directly populates and returns the external
-** vault structure in a single operation, improving memory efficiency.
+** This function handles the complete conversion process from the internal data model to the 
+** external API format, including:
+**
+** 1. Retrieving associated token information (vault token, underlying token)
+** 2. Building display names and symbols with proper formatting
+** 3. Calculating and populating TVL (Total Value Locked) data
+** 4. Fetching and formatting APR (Annual Percentage Rate) information
+** 5. Loading risk assessment data and metadata
+** 6. Setting up migration status and highlighting information
+** 7. Populating staking-related information if available
+**
+** The function will return an error in the following cases:
+** - If the vault token information cannot be found
+** - If required data for conversion is missing or invalid
 **
 ** @param vault models.TVault - The internal vault structure to convert
-** @return TExternalVault - The populated external vault structure
-** @return error - Any error encountered during the conversion process
+** @return TExternalVault - The fully populated external vault structure for API responses
+** @return error - Error if conversion fails (typically due to missing token data)
 ************************************************************************************************/
 func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	// Get vault token
@@ -464,32 +535,10 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
 	if err == nil {
 		externalVault.Info.RiskLevel = cachedRiskScore.RiskLevel
-		externalVault.Info.RiskScore = [11]int8{
-			cachedRiskScore.RiskScore.Review,
-			cachedRiskScore.RiskScore.Testing,
-			cachedRiskScore.RiskScore.Complexity,
-			cachedRiskScore.RiskScore.RiskExposure,
-			cachedRiskScore.RiskScore.ProtocolIntegration,
-			cachedRiskScore.RiskScore.CentralizationRisk,
-			cachedRiskScore.RiskScore.ExternalProtocolAudit,
-			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
-			cachedRiskScore.RiskScore.ExternalProtocolTvl,
-			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
-			cachedRiskScore.RiskScore.ExternalProtocolType,
-		}
+		externalVault.Info.RiskScore = PopulateRiskScoreArray(cachedRiskScore.RiskScore)
 		externalVault.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
 	} else if (vault.Metadata.RiskScore != models.TRiskScore{}) {
-		externalVault.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
-		externalVault.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
-		externalVault.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
-		externalVault.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
-		externalVault.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
-		externalVault.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
-		externalVault.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
-		externalVault.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
-		externalVault.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
-		externalVault.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
-		externalVault.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
+		externalVault.Info.RiskScore = PopulateRiskScoreArray(vault.Metadata.RiskScore)
 		externalVault.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
 	}
 
@@ -498,163 +547,6 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	return externalVault, nil
 }
 
-/**************************************************************************************************
-** NewVault creates an empty external vault structure.
-**
-** Deprecated: Use CreateExternalVault instead to avoid creating an intermediate empty vault.
-**
-** @return TExternalVault - An empty external vault structure
-**************************************************************************************************/
-func NewVault() TExternalVault {
-	return TExternalVault{}
-}
-
-/**************************************************************************************************
-** AssignTVault populates an external vault structure with data from an internal vault model.
-**
-** Deprecated: Use CreateExternalVault instead to avoid creating an intermediate empty vault.
-**
-** @param vault models.TVault - The internal vault structure to convert
-** @return TExternalVault - The populated external vault structure
-** @return error - Any error encountered during the conversion process
-**************************************************************************************************/
-func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error) {
-	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
-	if !ok {
-		return v, errors.New(`token not found`)
-	}
-	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.Metadata.DisplayName)
-	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.Metadata.DisplaySymbol)
-	strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
-
-	v.Address = vault.Address.Hex()
-	v.Version = vault.Version
-	v.Endorsed = vault.Endorsed
-	v.Boosted = vault.Metadata.IsBoosted
-	v.EmergencyShutdown = vault.EmergencyShutdown
-	v.ChainID = vault.ChainID
-	v.TVL = fetcher.BuildVaultTVL(vault)
-	v.Migration = toTExternalVaultMigration(vault.Metadata.Migration)
-	v.Symbol = symbol
-	v.DisplaySymbol = displaySymbol
-	v.FormatedSymbol = formatedSymbol
-	v.Name = name
-	v.DisplayName = displayName
-	v.FormatedName = formatedName
-	v.Icon = vaultToken.Icon
-	v.Type = vaultToken.Type
-	v.Kind = vault.Kind
-	v.Decimals = vaultToken.Decimals
-	v.Description = vault.Metadata.Description
-	v.Category = fetcher.BuildVaultCategory(vault, strategies)
-	v.PricePerShare = vault.LastPricePerShare
-	v.Staking = assignStakingData(vault.ChainID, vault.Address)
-
-	if underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address); ok {
-		v.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
-	} else if underlyingToken, ok = storage.GetERC20(vault.ChainID, vault.AssetAddress); ok {
-		v.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
-	}
-
-	if v.Token.UnderlyingTokensAddresses == nil {
-		v.Token.UnderlyingTokensAddresses = []string{}
-	}
-
-	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
-	if ok {
-		v.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
-	}
-	v.Details = TExternalVaultDetails{
-		IsRetired:       vault.Metadata.IsRetired,
-		IsHidden:        vault.Metadata.IsHidden,
-		IsAggregator:    vault.Metadata.IsAggregator,
-		IsBoosted:       vault.Metadata.IsBoosted,
-		IsAutomated:     vault.Metadata.IsAutomated,
-		IsHighlighted:   vault.Metadata.IsHighlighted,
-		IsPool:          vault.Metadata.IsPool,
-		Category:        vault.Metadata.Category,
-		Stability:       vault.Metadata.Stability.Stability,
-		StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
-	}
-	if v.Details.Stability == `` {
-		v.Details.Stability = models.VaultStabilityUnknown
-	}
-	if v.Details.Category == `` {
-		v.Details.Category = models.VaultCategoryAutomatic
-	}
-	if len(vault.Metadata.Protocols) > 0 {
-		v.Details.PoolProvider = vault.Metadata.Protocols[0]
-	}
-
-	poolResult, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
-	if found && poolResult.PoolURLs.Deposit != nil && len(poolResult.PoolURLs.Deposit) > 0 {
-		v.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
-	}
-
-	if v.Info.SourceURL == `` {
-		v.Info.SourceURL = vault.Metadata.SourceURI
-	}
-
-	v.Info.RiskLevel = vault.Metadata.RiskLevel
-	v.Info.RiskScore = [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
-	if err == nil {
-		v.Info.RiskLevel = cachedRiskScore.RiskLevel
-		v.Info.RiskScore = [11]int8{
-			cachedRiskScore.RiskScore.Review,
-			cachedRiskScore.RiskScore.Testing,
-			cachedRiskScore.RiskScore.Complexity,
-			cachedRiskScore.RiskScore.RiskExposure,
-			cachedRiskScore.RiskScore.ProtocolIntegration,
-			cachedRiskScore.RiskScore.CentralizationRisk,
-			cachedRiskScore.RiskScore.ExternalProtocolAudit,
-			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
-			cachedRiskScore.RiskScore.ExternalProtocolTvl,
-			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
-			cachedRiskScore.RiskScore.ExternalProtocolType,
-		}
-		v.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
-	} else if (vault.Metadata.RiskScore != models.TRiskScore{}) {
-		v.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
-		v.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
-		v.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
-		v.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
-		v.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
-		v.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
-		v.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
-		v.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
-		v.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
-		v.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
-		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
-		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
-	}
-
-	v.Info.UINotice = vault.Metadata.UINotice
-
-	return v, nil
-}
 
 /**************************************************************************************************
 ** toTExternalVaultMigration converts internal migration data to the external format.

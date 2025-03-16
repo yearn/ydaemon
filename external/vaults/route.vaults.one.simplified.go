@@ -137,28 +137,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 	}
 
-	/** 🔵 - Yearn *************************************************************************************
-	** For the vault, it performs the following operations:
-	**
-	** 1. It calls the 'ListStrategiesForVault' function to get a list of all strategies for the
-	**    current vault. The function takes two parameters: the chain ID of the vault and the address
-	**    of the vault.
-	**
-	** 2. It initializes an empty slice of pointers to 'TStrategy' objects for the current vault.
-	**
-	** 3. It then enters a nested loop that iterates over each strategy in 'vaultStrategies'. For each
-	**    strategy, it performs the following operations:
-	**
-	**    a. It initializes a pointer to a 'TStrategy' object.
-	**
-	**    b. It calls the 'NewStrategy' function to create a new 'TStrategy' object and assigns the
-	**       current strategy to it using the 'AssignTStrategy' method.
-	**
-	**    c. It checks if the strategy should be included based on the 'strategiesCondition'. If not,
-	**       it skips the current iteration of the loop.
-	**
-	** 4. It appends the current strategies to the vault
-	**************************************************************************************************/
 	vaultStrategiesMap, vaultStrategies := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(newVault.Address))
 	if len(vaultStrategies) == 0 && len(vaultStrategiesMap) == 0 {
 		// Log a warning but continue - no strategies is a valid scenario
@@ -193,7 +171,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 				}
 			}()
 
-			strategyWithDetails = NewStrategy().AssignTStrategy(strategy)
+			strategyWithDetails = CreateExternalStrategy(strategy)
 		}()
 
 		// Skip invalid strategies

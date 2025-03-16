@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
@@ -16,13 +17,18 @@ import (
 
 /************************************************************************************************
 ** StrategyCondition constants define the available filtering options for strategies.
-** These determine which strategies will be included in API responses.
+** These constants are used as query parameters to determine which strategies will be included 
+** in API responses.
 **
-** - ALL: Include all strategies associated with a vault
-** - IN_QUEUE: Include only strategies in the vault's withdrawal queue
-** - DEBT_LIMIT: Include only strategies with an allocated debt limit
-** - DEBT_RATIO: Include only strategies with an allocated debt ratio
-** - ABSOLUTE: Include only active strategies with debt > 0
+** Available filter conditions:
+** - ALL: Include all strategies associated with a vault, regardless of status
+** - IN_QUEUE: Include only strategies that are in the vault's withdrawal queue
+** - DEBT_LIMIT: Include only strategies that have a non-zero debt limit allocation
+** - DEBT_RATIO: Include only strategies that have a non-zero debt ratio allocation
+** - ABSOLUTE: Include only strategies with actual debt > 0 (currently deployed funds)
+**
+** The default filter used when no condition is specified is DEBT_RATIO, which returns
+** strategies that are allocated a portion of the vault's assets.
 ************************************************************************************************/
 const (
 	STRATEGY_CONDITION_ALL        = "all"
@@ -49,6 +55,45 @@ const (
 )
 
 /************************************************************************************************
+** Common constants used across the vaults package.
+** These include timeouts, default values, and array sizes.
+************************************************************************************************/
+const (
+	// Default timeout for endpoint requests
+	DEFAULT_REQUEST_TIMEOUT = 10 * time.Second
+	
+	// Default pagination values
+	DEFAULT_PAGE_NUMBER = 1
+	DEFAULT_PAGE_LIMIT = 200
+	MAX_PAGE_LIMIT = 1000
+	
+	// Common TVL thresholds
+	MIN_DUST_TVL = 100 // Minimum TVL in USD to not be considered "dust"
+	
+	// Multiplier values
+	HIGHLIGHTING_MULTIPLIER = 1e18 // Used to boost featuring score for highlighted vaults
+)
+
+/************************************************************************************************
+** Risk score indices for the standardized array of risk scores.
+** These constants provide semantically meaningful names for the risk score array indices.
+************************************************************************************************/
+const (
+	RISK_SCORE_REVIEW                        = 0
+	RISK_SCORE_TESTING                       = 1
+	RISK_SCORE_COMPLEXITY                    = 2
+	RISK_SCORE_RISK_EXPOSURE                 = 3
+	RISK_SCORE_PROTOCOL_INTEGRATION          = 4
+	RISK_SCORE_CENTRALIZATION_RISK           = 5
+	RISK_SCORE_EXTERNAL_PROTOCOL_AUDIT       = 6
+	RISK_SCORE_EXTERNAL_PROTOCOL_CENTRAL     = 7
+	RISK_SCORE_EXTERNAL_PROTOCOL_TVL         = 8
+	RISK_SCORE_EXTERNAL_PROTOCOL_LONGEVITY   = 9
+	RISK_SCORE_EXTERNAL_PROTOCOL_TYPE        = 10
+	RISK_SCORE_ARRAY_LENGTH                  = 11
+)
+
+/************************************************************************************************
 ** ValidateStrategyCondition validates the strategy condition parameter and returns the
 ** appropriate value to use.
 **
@@ -57,7 +102,7 @@ const (
 ** @return string - The validated strategy condition or default "debtRatio"
 ************************************************************************************************/
 func ValidateStrategyCondition(c *gin.Context, paramName string) string {
-	conditionParam := getQuery(c, paramName)
+	conditionParam := getQueryParam(c, paramName)
 	if conditionParam == "" {
 		return STRATEGY_CONDITION_DEBT_RATIO
 	}
@@ -88,7 +133,7 @@ func ValidateStrategyCondition(c *gin.Context, paramName string) string {
 ** @return string - The validated migrable condition or default "none"
 ************************************************************************************************/
 func ValidateMigrableCondition(c *gin.Context, paramName string) string {
-	conditionParam := getQuery(c, paramName)
+	conditionParam := getQueryParam(c, paramName)
 	if conditionParam == "" {
 		return MIGRABLE_CONDITION_NONE
 	}
@@ -163,7 +208,7 @@ func ProcessStrategiesForVault(
 				}
 			}()
 
-			strategyWithDetails = NewStrategy().AssignTStrategy(strategy)
+			strategyWithDetails = CreateExternalStrategy(strategy)
 		}()
 
 		// Skip invalid strategies or if conversion failed
@@ -205,24 +250,38 @@ func ValidateAddressesParam(
 		return nil, false
 	}
 
-	// Process addresses
-	addressesStr := strings.Split(strings.ToLower(addressesParam), ",")
+	// Pre-validate the string to avoid unnecessary splits
+	if len(addressesParam) < 42 {  // Minimum length for a single address
+		HandleError(c, fmt.Errorf("address parameter is too short to be valid"),
+			http.StatusBadRequest, "Invalid parameter value", funcName)
+		return nil, false
+	}
+
+	// Process addresses - split first without lowercasing to improve performance
+	addressesStr := strings.Split(addressesParam, ",")
 	if len(addressesStr) == 0 {
 		HandleError(c, fmt.Errorf("at least one address must be provided"),
 			http.StatusBadRequest, "Invalid parameter value", funcName)
 		return nil, false
 	}
 
+	// Pre-allocate result slice for better performance
+	result := make([]string, 0, len(addressesStr))
+
 	// Validate each address format
 	for i, addr := range addressesStr {
-		if !strings.HasPrefix(addr, "0x") || len(addr) != 42 {
+		// Use direct byte comparison to check prefix (more efficient than HasPrefix)
+		if len(addr) != 42 || addr[0] != '0' || addr[1] != 'x' {
 			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
 				http.StatusBadRequest, "Invalid address format", funcName)
 			return nil, false
 		}
+		
+		// Convert to lowercase and add to result
+		result = append(result, strings.ToLower(addr))
 	}
 
-	return addressesStr, true
+	return result, true
 }
 
 /************************************************************************************************
@@ -241,16 +300,92 @@ func IsVaultBlacklisted(chainID uint64, address common.Address) bool {
 }
 
 /************************************************************************************************
+** VaultVersionChecks contains centralized logic for identifying Yearn vault versions.
+**
+** Yearn has multiple generations of vaults with different implementations:
+** - V1: First generation vaults (legacy)
+** - V2: Second generation vaults with strategy separation (primary version until 2023)
+** - V3: Third generation vaults with enhanced security, functionality, and gas efficiency
+**
+** These helper functions ensure consistent version detection across the codebase, which is
+** critical for determining available functionality, compatible strategies, and API behavior.
+************************************************************************************************/
+
+// VaultVersionChecks provides a unified interface for vault version classification.
+// Using this structure ensures consistent version detection throughout the application.
+var VaultVersionChecks = struct {
+	// IsV3 checks if a vault is a v3 vault based on version or kind
+	// 
+	// A vault is considered V3 if:
+	// - It has kind VaultKindMultiple or VaultKindSingle
+	// - Its version string starts with "3" or equals "v3"
+	//
+	// @param vault models.TVault - The vault to check
+	// @return bool - True if the vault is a v3 vault, false otherwise
+	IsV3 func(vault models.TVault) bool
+
+	// IsV2 checks if a vault is a v2 vault based on version
+	//
+	// A vault is considered V2 if:
+	// - It's NOT a V3 vault AND
+	// - It's NOT a V1 vault AND
+	// - Its version starts with "0." or "2." or equals "v2" or "2"
+	//
+	// @param vault models.TVault - The vault to check
+	// @return bool - True if the vault is a v2 vault, false otherwise
+	IsV2 func(vault models.TVault) bool
+
+	// IsV1 checks if a vault is a v1 vault based on version
+	//
+	// A vault is considered V1 if:
+	// - Its version string starts with "1." or equals "v1" or "1"
+	//
+	// @param vault models.TVault - The vault to check
+	// @return bool - True if the vault is a v1 vault, false otherwise
+	IsV1 func(vault models.TVault) bool
+}{
+	IsV3: func(vault models.TVault) bool {
+		return vault.Kind == models.VaultKindMultiple ||
+			vault.Kind == models.VaultKindSingle ||
+			strings.HasPrefix(vault.Version, "3") ||
+			vault.Version == "v3"
+	},
+	IsV1: func(vault models.TVault) bool {
+		return strings.HasPrefix(vault.Version, "1.") || 
+			vault.Version == "v1" || 
+			vault.Version == "1"
+	},
+}
+
+// Initialize IsV2 separately because it depends on IsV3 and IsV1
+func init() {
+	VaultVersionChecks.IsV2 = func(vault models.TVault) bool {
+		// First check if it's a v3 vault (which takes precedence)
+		if VaultVersionChecks.IsV3(vault) {
+			return false
+		}
+
+		// If it's a v1 vault, it's not v2
+		if VaultVersionChecks.IsV1(vault) {
+			return false
+		}
+
+		// It's a v2 vault if it starts with "0." or "2." or equals "v2" or "2"
+		return strings.HasPrefix(vault.Version, "0.") ||
+			strings.HasPrefix(vault.Version, "2.") ||
+			vault.Version == "v2" ||
+			vault.Version == "2"
+	}
+}
+
+/************************************************************************************************
 ** IsValidV3Vault checks if a vault is a valid v3 vault based on criteria.
 **
 ** @param vault models.TVault - The vault to check
 ** @return bool - True if valid v3 vault, false otherwise
 ************************************************************************************************/
 func IsValidV3Vault(vault models.TVault) bool {
-	return vault.Kind == models.VaultKindMultiple ||
-		vault.Kind == models.VaultKindSingle ||
-		strings.HasPrefix(vault.Version, "3") ||
-		vault.Version == "v3"
+	return VaultVersionChecks.IsV3(vault)
 }
 
 /************************************************************************************************
@@ -260,19 +395,33 @@ func IsValidV3Vault(vault models.TVault) bool {
 ** @return bool - True if valid v2 vault, false otherwise
 ************************************************************************************************/
 func IsValidV2Vault(vault models.TVault) bool {
-	// First check if it's a v3 vault (which takes precedence)
-	if IsValidV3Vault(vault) {
-		return false
-	}
+	return VaultVersionChecks.IsV2(vault)
+}
 
-	// If it's a v1 vault, it's not v2
-	if strings.HasPrefix(vault.Version, "1.") || vault.Version == "v1" || vault.Version == "1" {
-		return false
-	}
-
-	// It's a v2 vault if it starts with "0." or "2." or equals "v2" or "2"
-	return strings.HasPrefix(vault.Version, "0.") ||
-		strings.HasPrefix(vault.Version, "2.") ||
-		vault.Version == "v2" ||
-		vault.Version == "2"
+/************************************************************************************************
+** PopulateRiskScoreArray creates a standardized risk score array from a risk score struct.
+**
+** This function centralizes the logic for converting a TRiskScore struct to the fixed-size
+** array used in external vault representations. Using the constant indices ensures consistency
+** and makes the code more readable and maintainable.
+**
+** @param riskScore models.TRiskScore - The risk score struct to convert
+** @return [RISK_SCORE_ARRAY_LENGTH]int8 - The populated risk score array
+************************************************************************************************/
+func PopulateRiskScoreArray(riskScore models.TRiskScore) [RISK_SCORE_ARRAY_LENGTH]int8 {
+	var riskScoreArray [RISK_SCORE_ARRAY_LENGTH]int8
+	
+	riskScoreArray[RISK_SCORE_REVIEW] = riskScore.Review
+	riskScoreArray[RISK_SCORE_TESTING] = riskScore.Testing
+	riskScoreArray[RISK_SCORE_COMPLEXITY] = riskScore.Complexity
+	riskScoreArray[RISK_SCORE_RISK_EXPOSURE] = riskScore.RiskExposure
+	riskScoreArray[RISK_SCORE_PROTOCOL_INTEGRATION] = riskScore.ProtocolIntegration
+	riskScoreArray[RISK_SCORE_CENTRALIZATION_RISK] = riskScore.CentralizationRisk
+	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_AUDIT] = riskScore.ExternalProtocolAudit
+	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_CENTRAL] = riskScore.ExternalProtocolCentralisation
+	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_TVL] = riskScore.ExternalProtocolTvl
+	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_LONGEVITY] = riskScore.ExternalProtocolLongevity
+	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_TYPE] = riskScore.ExternalProtocolType
+	
+	return riskScoreArray
 }

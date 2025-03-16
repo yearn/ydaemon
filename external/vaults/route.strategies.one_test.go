@@ -102,7 +102,9 @@ func TestGetStrategy(t *testing.T) {
 			setupMock:      false,
 			expectedStatus: http.StatusBadRequest,
 			validateResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				assert.Equal(t, "invalid chainID: invalid", recorder.Body.String())
+				// Match the new error format from our structured error handling
+				assert.Contains(t, recorder.Body.String(), "Invalid chain ID format")
+				assert.Contains(t, recorder.Body.String(), "invalid")
 			},
 		},
 		{
@@ -112,7 +114,9 @@ func TestGetStrategy(t *testing.T) {
 			setupMock:      false,
 			expectedStatus: http.StatusBadRequest,
 			validateResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				assert.Equal(t, "invalid address: invalid", recorder.Body.String())
+				// Match the new error format from our structured error handling
+				assert.Contains(t, recorder.Body.String(), "Invalid address format")
+				assert.Contains(t, recorder.Body.String(), "invalid")
 			},
 		},
 	}

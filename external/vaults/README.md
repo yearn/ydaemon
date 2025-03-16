@@ -4,6 +4,8 @@
 
 The `vaults` package is a core component of yDaemon that provides API endpoints and data structures for interacting with Yearn Finance vaults across multiple blockchain networks. This package serves as the primary interface for clients to access comprehensive vault information, including vault details, APR/APY data, strategies, harvest data, TVL metrics, and user-specific earnings calculations.
 
+The package follows consistent patterns for error handling, parameter validation, and response formatting to ensure a reliable API experience. It processes raw blockchain data into standardized formats suitable for frontend applications, data analytics, and integration with third-party services.
+
 ## Package Structure
 
 The vaults package is organized into several logical components:
@@ -35,8 +37,9 @@ The vaults package is organized into several logical components:
 
 ### Utilities
 
-- `utils.go`: Helper functions for vault filtering and identification
-- `controller_test.go` and `getVaults_test.go`: Test files for API endpoints and vault retrieval
+- `utils.go`: Helper functions for vault filtering, parameter validation, and error handling
+- `validation.go`: Functions for validating inputs and performing version checks
+- `test_helpers.go`: Testing utilities and mock functions
 
 ## Key Data Models
 
@@ -62,13 +65,41 @@ The package provides multiple vault representations to serve different use cases
 
 ### Strategy Representations
 
-- **`TStrategy`**: Detailed information about vault strategies
-- **`TExternalStrategyDetails`**: External representation of strategy data
+- **`TStrategy`**: Detailed information about vault strategies, including:
+  - Address and name
+  - Description and purpose
+  - Performance data (total debt, gains, losses)
+  - Historical metrics (last report timestamp, performance fee)
+  - Operational status (debt ratio, queue position)
+
+- **`TExternalStrategyDetails`**: Financial and operational metrics for a strategy:
+  - Total debt allocated from the vault
+  - Cumulative gains and losses
+  - Performance fee percentage
+  - Timestamp of last report
+  - Debt ratio allocation (for v0.2.2+ vaults)
 
 ### Performance Metrics
 
-- **`TExternalVaultAPR`**: APR/APY data with historical metrics
-- **`TEarned`**: User-specific earnings data with realized and unrealized gains
+- **`TExternalVaultAPR`**: Comprehensive yield data including:
+  - Net APR (primary yield metric)
+  - Fee information (management, performance, etc.)
+  - Historical performance points (day, week, month ago)
+  - Forward-looking projections (expected future yields)
+  - Component yields (base, boosted, rewards)
+  - Special rewards (staking, Gamma, etc.)
+
+- **`TExternalVaultHarvest`**: Strategy harvest event data:
+  - Transaction details (hash, timestamp)
+  - Profit and loss amounts (both raw and USD value)
+  - Calculated historical APR based on harvest
+  - Associated vault and strategy information
+
+- **`TEarned`**: User-specific earnings calculated with FIFO methodology:
+  - Realized gains (from completed deposit/withdrawal pairs)
+  - Unrealized gains (from active deposits based on current share price)
+  - Token amount and USD value of earnings
+  - Deposit timestamps and duration information
 
 ## API Endpoints
 
@@ -84,14 +115,45 @@ The package provides multiple vault representations to serve different use cases
 
 ### Specialized Endpoints
 
-- `GET /vaults/blacklisted`: Retrieve blacklisted vaults
-- `GET /vaults/tvl`: Get TVL information across all vaults
+- `GET /vaults/blacklisted`: Retrieve blacklisted vaults (vaults excluded from standard listings due to deprecation, security concerns, or other issues)
+  - Optional `chainID` parameter to filter by chain
+  - Returns vaults with detailed metadata explaining why they're blacklisted
+
+- `GET /vaults/tvl`: Get Total Value Locked information across all vaults
+  - Returns aggregate TVL plus breakdown by chain
+  - Includes vault count and USD value per chain
+  - Optional `chainIDs` parameter to filter by specific chains
+
+- `GET /vaults/:chainID/:addresses`: Retrieve specific vaults by their addresses
+  - Comma-separated list of vault addresses
+  - Returns full vault details for the specified addresses
+  - Supports all standard query parameters for sorting and filtering
+
+- `GET /chains/:chainID/vaults/harvests/:address`: Get harvest events for a specific vault
+  - Returns chronological list of strategy harvests
+  - Parameters:
+    - `limit`: Maximum number of harvests to return (default: 20)
+    - `startTimestamp`: Filter harvests after this timestamp
+    - `endTimestamp`: Filter harvests before this timestamp
+    - `orderBy`: Sort field, options: `timestamp`, `profit`, `loss` (default: `timestamp`)
+    - `orderDirection`: Sort order, `asc` or `desc` (default: `desc`)
+
 - `GET /chains/:chainID/vaults/earned/:address`: Calculate user earnings across all vaults on a chain
 - `GET /chains/:chainID/vaults/earned/:address/:vaults`: Calculate user earnings for specific vaults
 - `GET /vaults/earned/:address`: Calculate user earnings across all chains and vaults
-- `GET /chains/:chainID/vaults/harvests/:address`: Get harvest events for a specific vault
+  - All earned endpoints use the same FIFO calculation methodology
+  - Return both realized and unrealized gains
+  - Include original deposit timestamps and durations
+
 - `GET /chains/:chainID/strategies`: Get all strategies for a chain
+  - Parameters:
+    - `strategiesCondition`: Filter by strategy status (default: `debtRatio`)
+    - `orderBy`: Sort field, options: `address`, `tvl`, `apy` (default: `address`)
+    - `orderDirection`: Sort order, `asc` or `desc` (default: `asc`)
+
 - `GET /chains/:chainID/strategies/:address`: Get details for a specific strategy
+  - Returns comprehensive details including all financial metrics
+  - Contains both current and historical performance data
 
 ### Legacy Format Endpoints
 
@@ -111,13 +173,39 @@ The package provides multiple vault representations to serve different use cases
 
 Most vault endpoints support these common query parameters:
 
+### Sorting Parameters
 - `orderBy`: Field to sort results by (default: `featuringScore`)
+  - Common values: `featuringScore`, `name`, `symbol`, `tvl`, `apyTypeOverall`
+  - Strategy endpoints: `address`, `totalDebt`, `debtRatio`
+  - Harvest endpoints: `timestamp`, `profit`, `loss`
 - `orderDirection`: Sort direction, `asc` or `desc` (default: `asc`)
-- `strategiesCondition`: Filter for strategies, values: `inQueue`, `debtLimit`, `debtRatio`, `absolute`, `all` (default: `debtRatio`)
-- `hideAlways`: Whether to hide certain vaults (default: `false`)
-- `migrable`: Filter for migrable vaults, values: `none`, `all`, `nodust`, `ignore` (default: `none`)
-- `page` & `limit`: For pagination control (default: page 1, limit 200)
-- `chainIDs`: Comma-separated list of chain IDs to include (defaults to all supported chains)
+
+### Filtering Parameters
+- `strategiesCondition`: Filter for strategies, with the following values:
+  - `debtRatio`: Include strategies with non-zero debt ratio allocation (default)
+  - `inQueue`: Include only strategies in the vault's withdrawal queue
+  - `debtLimit`: Include strategies with a non-zero debt limit
+  - `absolute`: Include only strategies with actual debt > 0
+  - `all`: Include all strategies regardless of status
+- `hideAlways`: Whether to hide retired and hidden vaults (default: `false`)
+- `migrable`: Filter for vaults with migration options:
+  - `none`: Exclude migrable vaults if they are hidden/retired (default)
+  - `all`: Include all vaults with migration available
+  - `nodust`: Include only migrable vaults with TVL > $100
+  - `ignore`: Exclude all vaults with migration available
+
+### Pagination Parameters
+- `page`: Page number starting from 1 (default: 1)
+- `limit`: Number of results per page (default: 200, max: 1000)
+
+### Chain Selection
+- `chainIDs`: Comma-separated list of chain IDs to include 
+  - Examples: `1` (Ethereum), `10` (Optimism), `137` (Polygon), etc.
+  - Defaults to all supported chains if not specified
+
+### Time Range Parameters (Harvest Endpoints)
+- `startTimestamp`: Filter results after this Unix timestamp
+- `endTimestamp`: Filter results before this Unix timestamp
 
 ## Usage Examples
 
@@ -161,18 +249,42 @@ router.GET("/vaults/tvl", func(c *gin.Context) {
 ## Best Practices
 
 1. **Use Simplified Models When Possible**: Use `TSimplifiedExternalVault` when full details aren't needed to reduce payload size.
+   - The simplified model is typically 50-70% smaller than the full model
+   - Most listing views can use the simplified model effectively
 
 2. **Apply Proper Filtering**: Leverage query parameters to filter results on the server side rather than client side.
+   - Use `strategiesCondition` to limit strategy data transfer
+   - Use `hideAlways=true` to exclude retired and hidden vaults
+   - Combine `chainIDs` with specific filter endpoints for targeted results
 
 3. **Consider Version-Specific Endpoints**: Use `GetV2` or `GetV3` endpoints when targeting specific vault architectures.
+   - V3 vaults have different fields and capabilities than V2
+   - Version-specific endpoints ensure consistent data structure
 
 4. **Cache Responses When Appropriate**: Many vault endpoints return substantial data that doesn't change frequently.
+   - TVL and APR data typically update every 15-30 minutes
+   - Full vault details rarely change except for performance metrics
+   - Strategy allocation data changes infrequently (typically on harvests)
 
 5. **Handle Pagination**: For endpoints that return large datasets, implement proper pagination using `page` and `limit` parameters.
+   - Large chains may have 50+ vaults and 200+ strategies
+   - Calculate total pages using the data length and limit
+   - Always use pagination for strategies and harvests endpoints
 
 6. **Chain ID Handling**: Always validate chain IDs and provide appropriate fallbacks when querying multi-chain data.
+   - Check for supported chains using the environment variables
+   - Handle scenarios where a chain might be temporarily unavailable
+   - Provide clear error messages for unsupported chain IDs
 
-7. **Error Handling**: All endpoints have standardized error responses that should be handled appropriately.
+7. **Error Handling**: All endpoints follow a consistent error response format that should be handled appropriately.
+   - HTTP status codes indicate the category of error
+   - Response bodies contain detailed error messages
+   - JSON responses include both user-friendly messages and technical details
+
+8. **Performance Considerations**:
+   - For user interfaces showing multiple vaults, use the `/vaults/:chainID/:addresses` endpoint
+   - When fetching harvest data, use appropriate time filters to limit result size
+   - For dashboard views, consider using the TVL endpoint for aggregate metrics
 
 ## GraphQL Integration
 
@@ -184,10 +296,29 @@ Several endpoints (particularly for harvests and earnings) utilize GraphQL for h
 
 ## FIFO Calculation Methodology
 
-The earnings endpoints implement a First-In-First-Out (FIFO) methodology to calculate user gains:
+The earnings endpoints implement a First-In-First-Out (FIFO) methodology to calculate user gains, which provides the most accurate representation of realized and unrealized yields over time:
 
-1. All user deposits and withdrawals are retrieved from the subgraph
-2. Deposits are processed in chronological order and paired with withdrawals
-3. Price per share differences between deposit and withdrawal times are used to calculate realized gains
-4. Remaining active deposits are evaluated against current price per share for unrealized gains
-5. Results include both token-denominated and USD-equivalent values
+1. **Data Collection**: All user deposits and withdrawals are retrieved from the subgraph
+   - Transaction timestamps, amounts, and share prices are recorded
+   - Share prices are retrieved for each transaction time
+
+2. **Chronological Processing**: Deposits are processed in order of occurrence
+   - Each deposit creates a "position" with a specific share price and amount
+   - When a withdrawal occurs, it's matched against the oldest available deposit
+
+3. **Realized Gain Calculation**:
+   - When a position is partially or fully closed (withdrawal matched against deposit):
+   - `realized_gain = (withdrawal_share_price - deposit_share_price) * withdrawn_shares`
+   - This represents actual profit/loss for completed transactions
+
+4. **Unrealized Gain Calculation**:
+   - For positions that remain open (deposits without matching withdrawals):
+   - `unrealized_gain = (current_share_price - deposit_share_price) * remaining_shares`
+   - This represents potential profit/loss based on current market conditions
+
+5. **Result Compilation**:
+   - Results include both token amounts and USD-equivalent values
+   - Duration information shows how long each position has been active
+   - Historical deposit information is preserved for audit purposes
+
+This methodology ensures accurate accounting of gains across multiple deposits and withdrawals over time, and properly distinguishes between completed transactions and open positions.

@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -103,26 +104,43 @@ func getLegacyVaults(
 	}
 
 	if migrable != `none` && hideAlways {
-		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
+		HandleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
+			http.StatusBadRequest, "Invalid parameter combination", "getLegacyVaults")
 		return nil
 	}
-	data := []TExternalVault{}
+	
+	// Get chain configuration early to avoid repeated lookups
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			http.StatusInternalServerError, "Internal configuration error", "getLegacyVaults")
+		return nil
+	}
+	
+	// Get all vaults and pre-estimate the capacity
 	allVaults, _ := storage.ListVaults(chainID)
+	estimatedCapacity := 0
+	for _, v := range allVaults {
+		if filterFunc(v) && !helpers.Contains(chain.BlacklistedVaults, v.Address) {
+			estimatedCapacity++
+		}
+	}
+	
+	// Pre-allocate the slice to avoid reallocations
+	data := make([]TExternalVault, 0, estimatedCapacity)
+	
+	// Process vaults
 	for _, currentVault := range allVaults {
 		if !filterFunc(currentVault) {
 			continue
 		}
-		chain, ok := env.GetChain(chainID)
-		if !ok {
-			continue
-		}
-
+		
 		vaultAddress := currentVault.Address
 		if helpers.Contains(chain.BlacklistedVaults, vaultAddress) {
 			continue
 		}
 
-		newVault, err := NewVault().AssignTVault(currentVault)
+		newVault, err := CreateExternalVault(currentVault)
 		if err != nil {
 			continue
 		}
@@ -139,7 +157,7 @@ func getLegacyVaults(
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
 		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
-			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
+			strategyWithDetails := CreateExternalStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}

@@ -11,6 +11,15 @@ import (
 ** This endpoint returns all vaults in the system without filtering, though it still respects
 ** query parameters for sorting, pagination, and strategy conditions.
 **
+** Supported query parameters:
+** - orderBy: Field to sort results by (default: 'featuringScore')
+** - orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+** - strategiesCondition: Strategy filter condition (default: 'debtRatio')
+** - hideAlways: Whether to hide certain vaults (default: false)
+** - migrable: Condition for including migrable vaults (default: 'none')
+** - page/limit: Pagination controls (defaults: page 1, limit 200)
+** - chainIDs: Comma-separated list of chain IDs to include
+**
 ** Endpoint: GET /vaults
 **
 ** @param c *gin.Context - The Gin context containing the HTTP request

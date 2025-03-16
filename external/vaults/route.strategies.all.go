@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -38,8 +39,8 @@ import (
 ** @return void - Response is sent directly via Gin with the array of strategies
 **************************************************************************************************/
 func (y Controller) GetAllStrategies(c *gin.Context) {
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `address`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	orderBy := helpers.SafeString(getQueryParam(c, `orderBy`), `address`)
+	orderDirection := helpers.SafeString(getQueryParam(c, `orderDirection`), `asc`)
 	strategiesCondition := ValidateStrategyCondition(c, "strategiesCondition")
 
 	// Validate chain ID using the utility function
@@ -48,19 +49,38 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 		return
 	}
 
-	data := []TStrategy{}
+	// Get early reference to chain config to avoid repeated lookups
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			http.StatusInternalServerError, "Internal configuration error", "GetAllStrategies")
+		return
+	}
+
+	// First, count the total strategies to correctly pre-allocate the slice
 	allVaults, _ := storage.ListVaults(chainID)
+	totalStrategyCount := 0
+	
+	// We'll count eligible vaults and their strategies to estimate final capacity
 	for _, currentVault := range allVaults {
-		chain, ok := env.GetChain(chainID)
-		if !ok {
+		if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 			continue
 		}
+		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
+		totalStrategyCount += len(vaultStrategies)
+	}
+	
+	// Pre-allocate the slice with the estimated capacity
+	data := make([]TStrategy, 0, totalStrategyCount)
+	
+	// Now process the strategies
+	for _, currentVault := range allVaults {
 		if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 			continue
 		}
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
 		for _, strategy := range vaultStrategies {
-			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
+			strategyWithDetails := CreateExternalStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
 				continue
 			}

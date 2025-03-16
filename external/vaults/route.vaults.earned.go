@@ -635,7 +635,7 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 	**
 	** The 'chains' array is used to filter the vaults that are returned in the response.
 	**************************************************************************************************/
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS

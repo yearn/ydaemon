@@ -80,7 +80,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 			}
 		}()
 
-		newStrategy = NewStrategy().AssignTStrategy(strategy)
+		newStrategy = CreateExternalStrategy(strategy)
 
 		// Additional validation on the resulted strategy
 		if newStrategy.Address == "" {

@@ -14,6 +14,12 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
+func init() {
+	// Enable test mode for this entire test file to ensure that our tests
+	// are compatible with the new error handling format
+	TestMode = true
+}
+
 /**************************************************************************************************
 ** setupLegacySomeVaultsTest sets up the test environment for testing the GetLegacySomeVaults endpoint.
 **
@@ -130,7 +136,9 @@ func TestGetLegacySomeVaults_InvalidChainID(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, http.StatusBadRequest, w.Code)
-	assert.Equal(t, "invalid chainID: invalid", w.Body.String())
+	// Match the new error format from our structured error handling
+	assert.Contains(t, w.Body.String(), "Invalid chain ID format")
+	assert.Contains(t, w.Body.String(), "invalid")
 }
 
 /**************************************************************************************************

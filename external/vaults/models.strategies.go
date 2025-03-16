@@ -50,45 +50,33 @@ type TStrategy struct {
 }
 
 /**************************************************************************************************
-** NewStrategy creates a new, empty TStrategy instance.
+** CreateExternalStrategy creates a fully populated external strategy structure from an internal model.
 **
-** This factory function initializes and returns a new TStrategy object with default values.
-** It's typically used as the first step before assigning actual strategy data using the
-** AssignTStrategy method.
+** This function directly creates and populates a TStrategy instance from a models.TStrategy.
 **
-** @return TStrategy - A new, empty TStrategy instance
+** @param strategy models.TStrategy - The internal strategy model to convert
+** @return TStrategy - The fully populated external strategy structure
 **************************************************************************************************/
-func NewStrategy() TStrategy {
-	return TStrategy{}
-}
+func CreateExternalStrategy(strategy models.TStrategy) TStrategy {
+	name := strategy.DisplayName
+	if name == "" {
+		name = strategy.Name
+	}
 
-/**************************************************************************************************
-** AssignTStrategy populates a TStrategy with data from an internal strategy model.
-**
-** This method converts the internal strategy representation (models.TStrategy) to the external
-** TStrategy format that's suitable for API responses. It handles various data transformations
-** including display name selection, copying description, and setting up detailed metrics.
-**
-** @param strategy models.TStrategy - The internal strategy data to convert
-** @return TStrategy - The populated external strategy representation
-**************************************************************************************************/
-func (v TStrategy) AssignTStrategy(strategy models.TStrategy) TStrategy {
-	v.Address = strategy.Address.Hex()
-	v.Name = strategy.DisplayName
-	if v.Name == "" {
-		v.Name = strategy.Name
+	return TStrategy{
+		Address:     strategy.Address.Hex(),
+		Name:        name,
+		Description: strategy.Description,
+		Details: &TExternalStrategyDetails{
+			TotalDebt:      strategy.LastTotalDebt,
+			TotalLoss:      strategy.LastTotalLoss,
+			TotalGain:      strategy.LastTotalGain,
+			PerformanceFee: strategy.LastPerformanceFee.Uint64(),
+			LastReport:     strategy.LastReport.Uint64(),
+			DebtRatio:      strategy.LastDebtRatio.Uint64(),
+			InQueue:        strategy.IsInQueue,
+		},
 	}
-	v.Description = strategy.Description
-	v.Details = &TExternalStrategyDetails{
-		TotalDebt:      strategy.LastTotalDebt,
-		TotalLoss:      strategy.LastTotalLoss,
-		TotalGain:      strategy.LastTotalGain,
-		PerformanceFee: strategy.LastPerformanceFee.Uint64(),
-		LastReport:     strategy.LastReport.Uint64(),
-		DebtRatio:      strategy.LastDebtRatio.Uint64(),
-		InQueue:        strategy.IsInQueue,
-	}
-	return v
 }
 
 /**************************************************************************************************

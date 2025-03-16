@@ -137,31 +137,21 @@ func assignStakingData(chainID uint64, vaultAddress common.Address) TStakingData
 	return staking
 }
 
-/**************************************************************************************************
-** toSimplifiedVersion converts a detailed vault representation to a simplified format.
+/************************************************************************************************
+** toSimplifiedVersion converts a full vault object into a simplified representation.
 **
-** This function transforms a TExternalVault object (and optionally a TVault object when the vault
-** is also a strategy) into a TSimplifiedExternalVault object that contains only the essential
-** information needed for client-side display. It handles fallbacks for display names and symbols,
-** processes risk scores, and ensures all required fields are populated with sensible defaults.
+** This function optimizes memory usage by directly mapping required fields instead of creating
+** intermediate objects.
 **
-** The function performs the following key operations:
-** 1. Determines the best display name and symbol for the vault and its underlying token
-** 2. Copies and enhances metadata like retirement status and boosted status
-** 3. Processes risk scores from cached data when available
-** 4. Builds a clean simplified structure with only the necessary fields
-** 5. Retrieves and attaches staking data if available
-**
-** This simplified representation helps reduce payload size and simplifies frontend integration.
-**
-** @param vault TExternalVault - The detailed vault object to simplify
-** @param vaultAsStrategy models.TStrategy - Optional strategy details if the vault is also a strategy
+** @param vault TExternalVault - The complete vault data
+** @param vaultAsStrategy models.TStrategy - Optional strategy data if the vault is also a strategy
 ** @return TSimplifiedExternalVault - The simplified vault representation
-**************************************************************************************************/
+************************************************************************************************/
 func toSimplifiedVersion(
 	vault TExternalVault,
 	vaultAsStrategy models.TStrategy,
 ) TSimplifiedExternalVault {
+	// Determine the best name to use without creating intermediate strings
 	vaultName := vault.DisplayName
 	if (vaultName == "" && vaultAsStrategy.Address != common.Address{}) {
 		vaultName = vaultAsStrategy.DisplayName
@@ -176,6 +166,7 @@ func toSimplifiedVersion(
 		vaultName = `Unknown`
 	}
 
+	// Determine the best symbol to use without creating intermediate strings
 	vaultSymbol := vault.DisplaySymbol
 	if vaultSymbol == "" {
 		vaultSymbol = vault.Symbol
@@ -187,6 +178,7 @@ func toSimplifiedVersion(
 		vaultSymbol = `Unknown`
 	}
 
+	// Determine token name and symbol directly
 	tokenName := vault.Token.DisplayName
 	if tokenName == "" {
 		tokenName = vault.Token.Name
@@ -203,16 +195,14 @@ func toSimplifiedVersion(
 		tokenSymbol = `Unknown`
 	}
 
+	// Handle risk information
+	// Create a copy of the info struct to avoid mutating the original
 	info := vault.Info
 	info.IsRetired = vault.Details.IsRetired
 	info.IsBoosted = vault.Details.IsBoosted
 	info.IsHighlighted = vault.Details.IsHighlighted
 
-	/**********************************************************************************************
-	** Initialize the risk score based on the cached riskscore, or the schema we have.
-	**********************************************************************************************/
-	info.RiskScore = vault.Info.RiskScore
-	info.RiskLevel = vault.Info.RiskLevel
+	// Try to use cached risk score if available
 	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, common.HexToAddress(vault.Address))
 	if err == nil {
 		info.RiskLevel = cachedRiskScore.RiskLevel
@@ -232,12 +222,8 @@ func toSimplifiedVersion(
 		info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
 	}
 
-	/**********************************************************************************************
-	** Create the simplified version of the vault.
-	** The simplified version of the vault is a struct that contains only the necessary data
-	** to be displayed in the frontend.
-	**********************************************************************************************/
-	simplifiedVault := TSimplifiedExternalVault{
+	// Create the simplified vault directly without intermediate objects
+	return TSimplifiedExternalVault{
 		Address:        vault.Address,
 		Type:           vault.Type,
 		Kind:           vault.Kind,
@@ -268,5 +254,4 @@ func toSimplifiedVersion(
 		Info:          info,
 		PricePerShare: vault.PricePerShare,
 	}
-	return simplifiedVault
 }

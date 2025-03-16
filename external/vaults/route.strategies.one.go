@@ -1,10 +1,12 @@
 package vaults
 
 import (
+	"context"
+	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -28,22 +30,82 @@ import (
 ** @return void - Response is sent directly via Gin with the strategy data
 **************************************************************************************************/
 func (y Controller) GetStrategy(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	// Create a timeout context for the request to prevent hanging operations
+	ctx, cancel := context.WithTimeout(c.Request.Context(), 5*time.Second)
+	defer cancel()
+
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, "chainID")
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
-		return
-	}
-	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid address")
+		// ValidateChainID already sets the response, so we just return
 		return
 	}
 
-	strategy, ok := storage.GuessStrategy(chainID, address)
+	// Validate address using the utility function
+	address, ok := ValidateAddress(c, "address", chainID)
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid strategy")
+		// ValidateAddress already sets the response, so we just return
 		return
 	}
-	newStrategy := NewStrategy().AssignTStrategy(strategy)
+
+	// Check if the context is still valid before proceeding
+	select {
+	case <-ctx.Done():
+		HandleError(c, fmt.Errorf("operation timed out while validating parameters"),
+			http.StatusGatewayTimeout, "Request processing timed out", "GetStrategy")
+		return
+	default:
+		// Continue processing
+	}
+
+	// Look up the strategy
+	strategy, ok := storage.GuessStrategy(chainID, address)
+	if !ok {
+		HandleError(c, fmt.Errorf("strategy not found for address %s on chain %d",
+			address.String(), chainID),
+			http.StatusNotFound, "Strategy not found", "GetStrategy")
+		return
+	}
+
+	// Try to convert the strategy to the external format
+	var newStrategy TStrategy
+	var conversionErr error
+
+	// Use a function with recover to handle potential panics during conversion
+	func() {
+		defer func() {
+			if r := recover(); r != nil {
+				conversionErr = fmt.Errorf("panic while processing strategy %s: %v",
+					address.String(), r)
+			}
+		}()
+
+		newStrategy = NewStrategy().AssignTStrategy(strategy)
+
+		// Additional validation on the resulted strategy
+		if newStrategy.Address == "" {
+			conversionErr = fmt.Errorf("strategy conversion resulted in invalid data")
+		}
+	}()
+
+	// Handle conversion errors
+	if conversionErr != nil {
+		HandleError(c, fmt.Errorf("failed to process strategy %s on chain %d: %w",
+			address.String(), chainID, conversionErr),
+			http.StatusInternalServerError, "Error processing strategy data", "GetStrategy")
+		return
+	}
+
+	// Check if the context is still valid before sending the response
+	select {
+	case <-ctx.Done():
+		HandleError(c, fmt.Errorf("operation timed out while processing strategy"),
+			http.StatusGatewayTimeout, "Request processing timed out", "GetStrategy")
+		return
+	default:
+		// Continue processing
+	}
+
+	// Return the strategy
 	c.JSON(http.StatusOK, newStrategy)
 }

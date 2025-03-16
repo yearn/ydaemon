@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-13T10:35:43.234143+01:00",
+	"lastUpdate": "2025-03-16T16:53:06.511453+01:00",
 	"version": {
 		"major": 0,
-		"minor": 96,
+		"minor": 97,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -11720,6 +11720,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x5aa213c1d8d3de74fb70dd66206feadc5fab8ebb": {
+			"address": "0x5aa213c1d8d3de74fb70dd66206feadc5fab8ebb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT swETH 26JUN2025",
+			"symbol": "YT-swETH-26JUN2025",
+			"displayName": "YT swETH 26JUN2025",
+			"displaySymbol": "YT-swETH-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5AA213C1d8d3DE74fB70DD66206FeAdc5Fab8eBb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x5ab64c599fcc59f0f2726a300b03166a395578da": {
 			"address": "0x5ab64c599fcc59f0f2726a300b03166a395578da",
 			"underlyingTokensAddresses": [
@@ -17452,6 +17466,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x86d27c49a6a7a2bc033b5d67a21f93d62894ccb9": {
+			"address": "0x86d27c49a6a7a2bc033b5d67a21f93d62894ccb9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x86D27c49A6a7A2BC033B5d67a21F93d62894CCb9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x86e2a16a5abc67467ce502e3dab511c909c185a8": {
 			"address": "0x86e2a16a5abc67467ce502e3dab511c909c185a8",
 			"underlyingTokensAddresses": [
@@ -22501,6 +22529,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xAE5099C39f023C91d3dd55244CAFB36225B0850E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xae666c484c28a3376ea8929a4de6c378621d62a6": {
+			"address": "0xae666c484c28a3376ea8929a4de6c378621d62a6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT swETH 26JUN2025",
+			"symbol": "PT-swETH-26JUN2025",
+			"displayName": "PT swETH 26JUN2025",
+			"displaySymbol": "PT-swETH-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xaE666C484C28a3376Ea8929A4DE6c378621d62a6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

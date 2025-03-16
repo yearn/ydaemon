@@ -43,71 +43,83 @@ import (
 func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
 	orderDir := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
-	stratCon := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
+	stratCon := ValidateStrategyCondition(c, "strategiesCondition")
 
-	// Validate chain ID
-	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, `chainID`)
 	if !ok {
-		c.String(http.StatusBadRequest, `invalid chainID`)
 		return
 	}
 
 	// Validate address parameter
 	addressesParam := c.Param(`addresses`)
 	if addressesParam == "" {
-		c.String(http.StatusBadRequest, `addresses parameter cannot be empty`)
+		HandleError(c, fmt.Errorf("addresses parameter cannot be empty"),
+			http.StatusBadRequest, "Missing required parameter", "GetLegacySomeVaults")
 		return
 	}
 
 	// Process addresses
 	addressesStr := strings.Split(strings.ToLower(addressesParam), `,`)
 	if len(addressesStr) == 0 {
-		c.String(http.StatusBadRequest, `at least one address must be provided`)
+		HandleError(c, fmt.Errorf("at least one address must be provided"),
+			http.StatusBadRequest, "Invalid parameter value", "GetLegacySomeVaults")
 		return
 	}
 
 	// Validate each address format (basic check)
 	for i, addr := range addressesStr {
 		if !strings.HasPrefix(addr, "0x") || len(addr) != 42 {
-			c.String(http.StatusBadRequest, fmt.Sprintf(`invalid address format at position %d: %s`, i, addr))
+			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
+				http.StatusBadRequest, "Invalid address format", "GetLegacySomeVaults")
 			return
 		}
 	}
 
-	// Fetch vaults and prepare response
-	data := []TExternalVault{}
-	allVaults, err := storage.ListVaults(chainID)
-	if err != nil {
-		c.String(http.StatusInternalServerError, fmt.Sprintf("failed to retrieve vaults: %v", err))
+	// Get chain configuration
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			http.StatusInternalServerError, "Internal configuration error", "GetLegacySomeVaults")
 		return
 	}
 
-	// Process matching vaults
-	matchCount := 0
-	for _, currentVault := range allVaults {
-		vaultAddressLower := strings.ToLower(currentVault.Address.Hex())
-		if !helpers.Contains(addressesStr, vaultAddressLower) {
-			continue
-		}
-		matchCount++
+	// Prepare response data
+	data := []TExternalVault{}
+	vaultsMap, _ := storage.ListVaults(chainID)
 
-		vaultAddress := currentVault.Address
-		chain, ok := env.GetChain(chainID)
+	// Only process the requested vaults instead of iterating through all vaults
+	for _, addressStr := range addressesStr {
+		// Convert string address to common.Address
+		address, ok := helpers.AssertAddress(addressStr, chainID)
 		if !ok {
-			continue
-		}
-		if helpers.Contains(chain.BlacklistedVaults, vaultAddress) {
+			// Skip invalid addresses (we've already validated format, but address might still be invalid)
 			continue
 		}
 
+		// Check if vault exists in storage
+		currentVault, exists := vaultsMap[address]
+		if !exists {
+			// Vault not found, skip
+			continue
+		}
+
+		// Check if vault is blacklisted
+		if helpers.Contains(chain.BlacklistedVaults, address) {
+			continue
+		}
+
+		// Process the vault
 		newVault, err := NewVault().AssignTVault(currentVault)
 		if err != nil {
 			// Log error but continue with other vaults
+			HandleError(c, fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
+				http.StatusInternalServerError, "Error processing vault", "GetLegacySomeVaults")
 			continue
 		}
 
-		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
-
+		// Get and filter strategies
+		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, address)
 		newVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
 			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
@@ -121,13 +133,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		data = append(data, newVault)
 	}
 
-	// Provide informative response if no vaults matched
-	if len(data) == 0 && matchCount == 0 {
-		c.JSON(http.StatusOK, []TExternalVault{}) // Return empty array, not an error
-		return
-	}
-
-	//Sort by details.order by default
+	// Sort the results
 	sort.SortBy(orderBy, orderDir, data)
 	c.JSON(http.StatusOK, data)
 }

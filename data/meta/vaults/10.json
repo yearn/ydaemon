@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-13T10:34:54.674136+01:00",
+	"lastUpdate": "2025-03-16T17:32:44.73394+01:00",
 	"version": {
-		"major": 67,
-		"minor": 0,
+		"major": 68,
+		"minor": 1,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2276,6 +2276,72 @@
 					"stability": "Unknown"
 				},
 				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x5e70e0ede43373bd9cf4bc85199d424acf0241ef": {
+			"address": "0x5e70e0ede43373bd9cf4bc85199d424acf0241ef",
+			"token": "0x061b87122ed14b9526a813209c8a59a633257bab",
+			"registry": "0x79286dd38c9017e5423073bac11f53357fc5c128",
+			"type": "Yearn Vault",
+			"kind": "Legacy",
+			"version": "0.4.5",
+			"activation": 91983637,
+			"chainID": 10,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": null,
+			"lastPricePerShare": null,
+			"lastTotalAssets": null,
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x0000000000000000000000000000000000000000",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": ""
+				},
+				"category": "Curve",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",

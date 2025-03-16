@@ -2,16 +2,16 @@ package vaults
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -28,12 +28,48 @@ import (
 ** timestamps, and profit/loss figures.
 **
 ** @param vaultAddresses []string - Array of vault addresses to fetch harvests for
-** @param c *gin.Context - The Gin context (for potential parameter access)
+** @param orderBy string - Field to sort results by
+** @param orderDirection string - Sort direction, 'asc' or 'desc'
+** @param limit int - Maximum number of records to return (defaults to 1000 if 0 or negative)
 ** @return *graphql.Request - The constructed GraphQL request object ready to be executed
 **************************************************************************************************/
-func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *graphql.Request {
+func graphQLHarvestRequestForOneVault(vaultAddresses []string, orderBy, orderDirection string, limit int) *graphql.Request {
+	// Validate and set default limit
+	if limit <= 0 {
+		limit = 1000 // Default limit
+	} else if limit > 5000 {
+		limit = 5000 // Cap maximum to avoid oversized requests
+	}
+
+	// Validate orderBy field
+	validOrderFields := map[string]bool{
+		"timestamp":   true,
+		"profit":      true,
+		"loss":        true,
+		"profitValue": true,
+		"lossValue":   true,
+	}
+	if !validOrderFields[orderBy] {
+		orderBy = "timestamp" // Default to timestamp if invalid
+	}
+
+	// Validate orderDirection
+	if orderDirection != "asc" && orderDirection != "desc" {
+		orderDirection = "desc" // Default to desc if invalid
+	}
+
+	// Join addresses with proper formatting and escaping
+	var sanitizedAddresses []string
+	for _, addr := range vaultAddresses {
+		// Basic validation for address format
+		if strings.HasPrefix(addr, "0x") && len(addr) == 42 {
+			sanitizedAddresses = append(sanitizedAddresses, addr)
+		}
+	}
+
+	// Construct and return the query
 	return graphql.NewRequest(`{
-		harvests(first: 1000, orderBy: timestamp, orderDirection: desc, where: {vault_in: ["` + strings.Join(vaultAddresses, `", "`) + `"]})
+		harvests(first: ` + fmt.Sprint(limit) + `, orderBy: ` + orderBy + `, orderDirection: ` + orderDirection + `, where: {vault_in: ["` + strings.Join(sanitizedAddresses, `", "`) + `"]})
 		` + helpers.GetHarvestsForVaults() + `
     }`)
 }
@@ -50,6 +86,7 @@ func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *
 ** - addresses: Comma-separated list of vault addresses from the URL path parameter
 ** - orderBy: Field to sort results by (default: 'timestamp')
 ** - orderDirection: Sort direction, 'asc' or 'desc' (default: 'desc')
+** - limit: Maximum number of results to return (default: 1000)
 **
 ** The function processes data through the following steps:
 ** 1. Validates the chain ID and retrieves sorting parameters
@@ -65,58 +102,147 @@ func graphQLHarvestRequestForOneVault(vaultAddresses []string, c *gin.Context) *
 ** @return void - Response is sent directly via Gin with the list of harvest events
 **************************************************************************************************/
 func (y Controller) GetHarvestsForVault(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
+	// Create a timeout context for the request to prevent hanging operations
+	ctx, cancel := context.WithTimeout(c.Request.Context(), 15*time.Second)
+	defer cancel()
+
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, "chainID")
 	if !ok {
-		c.String(http.StatusBadRequest, `invalid chainID`)
+		// ValidateChainID already sets the response, so we just return
 		return
 	}
-	addressesStr := strings.Split(strings.ToLower(c.Param(`addresses`)), `,`)
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `timestamp`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `desc`)
 
+	// Validate addresses parameter
+	addressesParam := c.Param("addresses")
+	if addressesParam == "" {
+		HandleError(c, fmt.Errorf("addresses parameter cannot be empty"),
+			http.StatusBadRequest, "Missing required parameter", "GetHarvestsForVault")
+		return
+	}
+
+	// Process addresses
+	addressesStr := strings.Split(strings.ToLower(addressesParam), ",")
+	if len(addressesStr) == 0 {
+		HandleError(c, fmt.Errorf("at least one address must be provided"),
+			http.StatusBadRequest, "Invalid parameter value", "GetHarvestsForVault")
+		return
+	}
+
+	// Validate each address format (basic check)
+	for i, addr := range addressesStr {
+		if !strings.HasPrefix(addr, "0x") || len(addr) != 42 {
+			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
+				http.StatusBadRequest, "Invalid address format", "GetHarvestsForVault")
+			return
+		}
+	}
+
+	// Get and validate query parameters with defaults
+	orderBy := ValidateStringChoiceQuery(c, "orderBy", "timestamp",
+		[]string{"timestamp", "profit", "loss", "profitValue", "lossValue"}, "GetHarvestsForVault")
+
+	orderDirection := ValidateStringChoiceQuery(c, "orderDirection", "desc",
+		[]string{"asc", "desc"}, "GetHarvestsForVault")
+
+	limit := int(ValidateNumericQuery(c, "limit", 1000, 1, 5000, "GetHarvestsForVault"))
+
+	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		return
-	}
-	graphQLEndpoint := chain.SubgraphURI
-	if graphQLEndpoint == `` {
-		logs.Error(`No graph endpoint for chainID`, chainID)
-		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			http.StatusInternalServerError, "Internal configuration error", "GetHarvestsForVault")
 		return
 	}
 
+	// Validate subgraph endpoint availability
+	graphQLEndpoint := chain.SubgraphURI
+	if graphQLEndpoint == "" {
+		HandleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
+			http.StatusInternalServerError, "Subgraph not available", "GetHarvestsForVault")
+		return
+	}
+
+	// Create GraphQL request
 	client := graphql.NewClient(graphQLEndpoint)
-	request := graphQLHarvestRequestForOneVault(addressesStr, c)
+	request := graphQLHarvestRequestForOneVault(addressesStr, orderBy, orderDirection, limit)
+
+	// Execute GraphQL request with timeout context
 	var response models.TGraphQLHarvestRequestForOneVault
-	if err := client.Run(context.Background(), request, &response); err != nil {
-		logs.Error(err)
-		c.String(http.StatusInternalServerError, `invalid graphQL response`)
+	if err := client.Run(ctx, request, &response); err != nil {
+		// Check if this is a context timeout
+		if ctx.Err() == context.DeadlineExceeded {
+			HandleError(c, fmt.Errorf("GraphQL request timed out after 15 seconds: %w", err),
+				http.StatusGatewayTimeout, "Request to subgraph timed out", "GetHarvestsForVault")
+			return
+		}
+
+		// Otherwise, it's another kind of GraphQL error
+		HandleError(c, fmt.Errorf("failed to execute GraphQL request: %w", err),
+			http.StatusInternalServerError, "Failed to fetch data from subgraph", "GetHarvestsForVault")
 		return
 	}
 
 	// For each harvest from the subgraph, compute our TExternalVaultHarvest structure
-	harvests := []TExternalVaultHarvest{}
+	harvests := make([]TExternalVaultHarvest, 0, len(response.Harvests))
 	harvestsFromSubgraph := response.Harvests
-	for _, harvest := range harvestsFromSubgraph {
-		tokenPriceBigFloat, _ := buildTokenPrice(chainID, common.HexToAddress(harvest.Vault.Token.Id))
-		decimals := harvest.Vault.Token.Decimals
 
-		if bigNumber.NewInt().SetString(harvest.Profit).IsZero() && bigNumber.NewInt().SetString(harvest.Loss).IsZero() {
+	for _, harvest := range harvestsFromSubgraph {
+		// Check for context timeout in long loops
+		select {
+		case <-ctx.Done():
+			HandleError(c, fmt.Errorf("request timed out while processing harvest data"),
+				http.StatusGatewayTimeout, "Request processing timed out", "GetHarvestsForVault")
+			return
+		default:
+			// Continue processing
+		}
+
+		// Process the harvest record
+		// Use the available fields from the response and construct a valid TExternalVaultHarvest
+		// Note: Some fields like BlockNumber and APR might not be available in the GraphQL response
+
+		// Use profit for profitValue and convert to float
+		profitsBN := bigNumber.NewFloat().SetString(harvest.Profit)
+		// Skip records with invalid data
+		if profitsBN == nil {
+			c.Error(fmt.Errorf("skipping harvest record with invalid profit data for vault %s",
+				harvest.Vault.Id))
 			continue
 		}
-		harvests = append(harvests, TExternalVaultHarvest{
-			VaultAddress:    harvest.Vault.Id,
-			StrategyAddress: harvest.Strategy.Id,
-			TxHash:          harvest.Transaction.Hash,
+
+		profitsFloat, _ := profitsBN.Float64()
+		lossFloat := 0.0
+		if harvest.Loss != "" {
+			lossValue := bigNumber.NewFloat().SetString(harvest.Loss)
+			if lossValue != nil {
+				lossFloat, _ = lossValue.Float64()
+			}
+		}
+
+		// Only include records with non-zero profit or loss
+		if profitsFloat == 0.0 && lossFloat == 0.0 {
+			continue
+		}
+
+		harvestNewFormat := TExternalVaultHarvest{
 			Timestamp:       harvest.Timestamp,
 			Profit:          harvest.Profit,
-			ProfitValue:     buildTVL(bigNumber.NewInt().SetString(harvest.Profit), decimals, tokenPriceBigFloat),
 			Loss:            harvest.Loss,
-			LossValue:       buildTVL(bigNumber.NewInt().SetString(harvest.Loss), decimals, tokenPriceBigFloat),
-		})
+			TxHash:          harvest.Transaction.Hash,
+			ProfitValue:     profitsFloat,
+			LossValue:       lossFloat,
+			VaultAddress:    harvest.Vault.Id,
+			StrategyAddress: harvest.Strategy.Id,
+		}
+
+		harvests = append(harvests, harvestNewFormat)
 	}
 
-	// Sorting the data by timestamp
+	// Sort the results
+	if len(harvests) > 0 {
 	sort.SortBy(orderBy, orderDirection, harvests)
+	}
+
 	c.JSON(http.StatusOK, harvests)
 }

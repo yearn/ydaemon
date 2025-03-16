@@ -74,6 +74,7 @@ func TestGetEarnedPerVaultPerUser(t *testing.T) {
 
 		// Assert we get the expected 400 Bad Request response
 		assert.Equal(t, http.StatusBadRequest, w.Code)
+		assert.Equal(t, "invalid chainID: invalid", w.Body.String())
 	})
 
 	t.Run("Invalid_address", func(t *testing.T) {
@@ -84,6 +85,7 @@ func TestGetEarnedPerVaultPerUser(t *testing.T) {
 
 		// Assert we get the expected 400 Bad Request response
 		assert.Equal(t, http.StatusBadRequest, w.Code)
+		assert.Equal(t, "invalid address: invalid", w.Body.String())
 	})
 }
 
@@ -110,6 +112,7 @@ func TestGetEarnedPerUser(t *testing.T) {
 
 		// Assert we get the expected 400 Bad Request response
 		assert.Equal(t, http.StatusBadRequest, w.Code)
+		assert.Equal(t, "invalid chainID: invalid", w.Body.String())
 	})
 
 	t.Run("Invalid_address", func(t *testing.T) {
@@ -120,6 +123,7 @@ func TestGetEarnedPerUser(t *testing.T) {
 
 		// Assert we get the expected 400 Bad Request response
 		assert.Equal(t, http.StatusBadRequest, w.Code)
+		assert.Equal(t, "invalid address: invalid", w.Body.String())
 	})
 }
 
@@ -146,5 +150,6 @@ func TestGetEarnedPerUserForAllChains(t *testing.T) {
 
 		// Assert we get the expected 400 Bad Request response
 		assert.Equal(t, http.StatusBadRequest, w.Code)
+		assert.Equal(t, "invalid address: invalid", w.Body.String())
 	})
 }

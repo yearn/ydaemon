@@ -28,6 +28,12 @@ type TExternalVaultHarvest struct {
 	ProfitValue     float64 `json:"profitValue"`
 	Loss            string  `json:"loss"`
 	LossValue       float64 `json:"lossValue"`
+	// Additional fields used in route.harvests.go
+	BlockNumber  string  `json:"blockNumber,omitempty"`
+	HistAPR      float64 `json:"histAPR,omitempty"`
+	VaultTVL     float64 `json:"vaultTVL,omitempty"`
+	VaultName    string  `json:"vaultName,omitempty"`
+	StrategyName string  `json:"strategyName,omitempty"`
 }
 
 /**************************************************************************************************
@@ -329,13 +335,175 @@ func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 	}
 }
 
+/************************************************************************************************
+** CreateExternalVault creates a fully populated external vault structure from an internal vault model.
+**
+** This function replaces the pattern of NewVault().AssignTVault() to avoid creating
+** an intermediate empty vault object. It directly populates and returns the external
+** vault structure in a single operation, improving memory efficiency.
+**
+** @param vault models.TVault - The internal vault structure to convert
+** @return TExternalVault - The populated external vault structure
+** @return error - Any error encountered during the conversion process
+************************************************************************************************/
+func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
+	// Get vault token
+	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
+	if !ok {
+		return TExternalVault{}, errors.New(`token not found`)
+	}
+
+	// Get vault name and symbol
+	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.Metadata.DisplayName)
+	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.Metadata.DisplaySymbol)
+	strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
+
+	// Create the vault directly without intermediate objects
+	externalVault := TExternalVault{
+		Address:           vault.Address.Hex(),
+		Version:           vault.Version,
+		Endorsed:          vault.Endorsed,
+		Boosted:           vault.Metadata.IsBoosted,
+		EmergencyShutdown: vault.EmergencyShutdown,
+		ChainID:           vault.ChainID,
+		TVL:               fetcher.BuildVaultTVL(vault),
+		Migration:         toTExternalVaultMigration(vault.Metadata.Migration),
+		Symbol:            symbol,
+		DisplaySymbol:     displaySymbol,
+		FormatedSymbol:    formatedSymbol,
+		Name:              name,
+		DisplayName:       displayName,
+		FormatedName:      formatedName,
+		Icon:              vaultToken.Icon,
+		Type:              vaultToken.Type,
+		Kind:              vault.Kind,
+		Decimals:          vaultToken.Decimals,
+		Description:       vault.Metadata.Description,
+		Category:          fetcher.BuildVaultCategory(vault, strategies),
+		PricePerShare:     vault.LastPricePerShare,
+		Details: TExternalVaultDetails{
+			IsRetired:       vault.Metadata.IsRetired,
+			IsHidden:        vault.Metadata.IsHidden,
+			IsAggregator:    vault.Metadata.IsAggregator,
+			IsBoosted:       vault.Metadata.IsBoosted,
+			IsAutomated:     vault.Metadata.IsAutomated,
+			IsHighlighted:   vault.Metadata.IsHighlighted,
+			IsPool:          vault.Metadata.IsPool,
+			Category:        vault.Metadata.Category,
+			Stability:       vault.Metadata.Stability.Stability,
+			StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
+		},
+		Info: TExternalVaultInfo{
+			SourceURL: vault.Metadata.SourceURI,
+			RiskLevel: vault.Metadata.RiskLevel,
+			RiskScore: [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		},
+	}
+
+	// Set staking data
+	externalVault.Staking = assignStakingData(vault.ChainID, vault.Address)
+
+	// Set token data
+	if underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address); ok {
+		externalVault.Token = TExternalERC20Token{
+			Address:                   underlyingToken.Address.Hex(),
+			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
+			Name:                      underlyingToken.Name,
+			Symbol:                    underlyingToken.Symbol,
+			Type:                      underlyingToken.Type,
+			DisplayName:               underlyingToken.DisplayName,
+			DisplaySymbol:             underlyingToken.DisplaySymbol,
+			Description:               underlyingToken.Description,
+			Icon:                      underlyingToken.Icon,
+			Decimals:                  underlyingToken.Decimals,
+		}
+	} else if underlyingToken, ok = storage.GetERC20(vault.ChainID, vault.AssetAddress); ok {
+		externalVault.Token = TExternalERC20Token{
+			Address:                   underlyingToken.Address.Hex(),
+			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
+			Name:                      underlyingToken.Name,
+			Symbol:                    underlyingToken.Symbol,
+			Type:                      underlyingToken.Type,
+			DisplayName:               underlyingToken.DisplayName,
+			DisplaySymbol:             underlyingToken.DisplaySymbol,
+			Description:               underlyingToken.Description,
+			Icon:                      underlyingToken.Icon,
+			Decimals:                  underlyingToken.Decimals,
+		}
+	}
+
+	// Initialize empty token array if needed
+	if externalVault.Token.UnderlyingTokensAddresses == nil {
+		externalVault.Token.UnderlyingTokensAddresses = []string{}
+	}
+
+	// Set APR data
+	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
+	if ok {
+		externalVault.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
+	}
+
+	// Set stability defaults
+	if externalVault.Details.Stability == `` {
+		externalVault.Details.Stability = models.VaultStabilityUnknown
+	}
+	if externalVault.Details.Category == `` {
+		externalVault.Details.Category = models.VaultCategoryAutomatic
+	}
+	if len(vault.Metadata.Protocols) > 0 {
+		externalVault.Details.PoolProvider = vault.Metadata.Protocols[0]
+	}
+
+	// Set source URL from gauge if available
+	poolResult, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
+	if found && poolResult.PoolURLs.Deposit != nil && len(poolResult.PoolURLs.Deposit) > 0 {
+		externalVault.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
+	}
+
+	// Set risk data from cached risk score if available
+	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
+	if err == nil {
+		externalVault.Info.RiskLevel = cachedRiskScore.RiskLevel
+		externalVault.Info.RiskScore = [11]int8{
+			cachedRiskScore.RiskScore.Review,
+			cachedRiskScore.RiskScore.Testing,
+			cachedRiskScore.RiskScore.Complexity,
+			cachedRiskScore.RiskScore.RiskExposure,
+			cachedRiskScore.RiskScore.ProtocolIntegration,
+			cachedRiskScore.RiskScore.CentralizationRisk,
+			cachedRiskScore.RiskScore.ExternalProtocolAudit,
+			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
+			cachedRiskScore.RiskScore.ExternalProtocolTvl,
+			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
+			cachedRiskScore.RiskScore.ExternalProtocolType,
+		}
+		externalVault.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
+	} else if (vault.Metadata.RiskScore != models.TRiskScore{}) {
+		externalVault.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
+		externalVault.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
+		externalVault.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
+		externalVault.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
+		externalVault.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
+		externalVault.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
+		externalVault.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
+		externalVault.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
+		externalVault.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
+		externalVault.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
+		externalVault.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
+		externalVault.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
+	}
+
+	externalVault.Info.UINotice = vault.Metadata.UINotice
+
+	return externalVault, nil
+}
+
 /**************************************************************************************************
-** NewVault creates a new empty TExternalVault instance.
+** NewVault creates an empty external vault structure.
 **
-** This constructor provides an initialized external vault structure that can be further
-** populated with data from the internal models.
+** Deprecated: Use CreateExternalVault instead to avoid creating an intermediate empty vault.
 **
-** @return TExternalVault - An initialized empty vault structure
+** @return TExternalVault - An empty external vault structure
 **************************************************************************************************/
 func NewVault() TExternalVault {
 	return TExternalVault{}
@@ -344,9 +512,7 @@ func NewVault() TExternalVault {
 /**************************************************************************************************
 ** AssignTVault populates an external vault structure with data from an internal vault model.
 **
-** This method converts an internal TVault structure to the external TExternalVault format,
-** enriching it with additional data from related sources like token information, strategy data,
-** risk scores, and APR calculations.
+** Deprecated: Use CreateExternalVault instead to avoid creating an intermediate empty vault.
 **
 ** @param vault models.TVault - The internal vault structure to convert
 ** @return TExternalVault - The populated external vault structure

@@ -2,8 +2,10 @@ package vaults
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
@@ -85,35 +87,65 @@ type TEarned struct {
 **   - earned: Map of vault addresses to their respective TEarned objects
 **************************************************************************************************/
 func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, "chainID")
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	userAddress, ok := helpers.AssertAddress(c.Param("address"), chainID)
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid address")
-		return
-	}
-	vaultsAddressesStr := strings.Split(strings.ToLower(c.Param(`vaults`)), `,`)
 
+	// Validate user address using the utility function
+	userAddress, ok := ValidateAddress(c, "address", chainID)
+	if !ok {
+		return
+	}
+
+	// Validate vault addresses parameter
+	vaultsParam := c.Param("vaults")
+	vaultsAddressesStr, ok := ValidateAddressesParam(c, vaultsParam, chainID, "GetEarnedPerVaultPerUser")
+	if !ok {
+		return
+	}
+
+	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		return
-	}
-	graphQLEndpoint := chain.SubgraphURI
-	if graphQLEndpoint == "" {
-		logs.Error(`No graph endpoint for chainID`, chainID)
-		c.String(http.StatusInternalServerError, `impossible to fetch subgraph`)
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			http.StatusInternalServerError, "Internal configuration error", "GetEarnedPerVaultPerUser")
 		return
 	}
 
+	// Validate subgraph endpoint availability
+	graphQLEndpoint := chain.SubgraphURI
+	if graphQLEndpoint == "" {
+		HandleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
+			http.StatusInternalServerError, "Subgraph not available", "GetEarnedPerVaultPerUser")
+		return
+	}
+
+	// Create GraphQL request
 	client := graphql.NewClient(graphQLEndpoint)
 	request := graphQLRequestForUser(userAddress.Hex(), vaultsAddressesStr)
+
+	// Execute GraphQL request with timeout context
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
 	var response models.TFIFOForUserForVault
-	if err := client.Run(context.Background(), request, &response); err != nil {
-		logs.Error(err)
-		c.String(http.StatusInternalServerError, `invalid graphQL response`)
+	if err := client.Run(ctx, request, &response); err != nil {
+		wrappedErr := fmt.Errorf("failed to execute GraphQL request for user %s: %w", userAddress.Hex(), err)
+		HandleError(c, wrappedErr, http.StatusInternalServerError,
+			"Failed to fetch data from subgraph", "GetEarnedPerVaultPerUser")
+		return
+	}
+
+	// Verify response contains data
+	if response.AccountVaultPositions == nil {
+		// Not an error, just no data for this user
+		c.JSON(http.StatusOK, gin.H{
+			"totalRealizedGainsUSD":   0,
+			"totalUnrealizedGainsUSD": 0,
+			"earned":                  gin.H{},
+		})
 		return
 	}
 
@@ -331,14 +363,15 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 **   - earned: Map of vault addresses to their respective TEarned objects
 **************************************************************************************************/
 func (y Controller) GetEarnedPerUser(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, "chainID")
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
-	userAddress, ok := helpers.AssertAddress(c.Param("address"), chainID)
+
+	// Validate user address using the utility function
+	userAddress, ok := ValidateAddress(c, "address", chainID)
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid address")
 		return
 	}
 
@@ -582,6 +615,12 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 **   - earned: Nested map of chain IDs to vault addresses to their respective TEarned objects
 **************************************************************************************************/
 func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
+	// Validate address using the utility function - we use chain ID 1 as default for format validation
+	userAddress, ok := ValidateAddress(c, "address", 1)
+	if !ok {
+		return
+	}
+
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
 	** obtained from the 'chainIDs' query parameter in the request. The string is split by commas to
@@ -608,12 +647,6 @@ func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 			}
 			chains = append(chains, chain)
 		}
-	}
-
-	userAddress, ok := helpers.AssertAddress(c.Param("address"), 1)
-	if !ok {
-		c.String(http.StatusBadRequest, "invalid address")
-		return
 	}
 
 	earnedMap := make(map[uint64]map[string]*TEarned)

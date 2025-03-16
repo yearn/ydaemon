@@ -113,7 +113,7 @@ func TestGetAllStrategies_InvalidChainID(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, http.StatusBadRequest, w.Code)
-	assert.Equal(t, "invalid chainID", w.Body.String())
+	assert.Equal(t, "invalid chainID: invalid", w.Body.String())
 }
 
 /**************************************************************************************************

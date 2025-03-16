@@ -31,6 +31,9 @@ func setupBlacklistedVaultsTest(t *testing.T, chainID string) (*gin.Context, *ht
 	// Set up the request with query parameters if provided
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 
+	// Set Accept header to get JSON responses
+	req.Header.Set("Accept", "application/json")
+
 	if chainID != "" {
 		req.URL.RawQuery = "chainID=" + chainID
 	}
@@ -115,7 +118,7 @@ func TestGetBlacklistedVaults_SpecificChain(t *testing.T) {
 /**************************************************************************************************
 ** TestGetBlacklistedVaults_InvalidChain tests the GetBlacklistedVaults function with an invalid chain ID.
 **
-** This test verifies that the function correctly returns a 404 Not Found response when
+** This test verifies that the function correctly returns a 400 Not Found response when
 ** an invalid chain ID is provided.
 **
 ** @param t *testing.T - The testing object
@@ -129,11 +132,11 @@ func TestGetBlacklistedVaults_InvalidChain(t *testing.T) {
 	controller.GetBlacklistedVaults(c)
 
 	// Assert
-	assert.Equal(t, http.StatusNotFound, w.Code)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
 
 	// Verify error message
 	var response map[string]string
 	err := json.Unmarshal(w.Body.Bytes(), &response)
 	assert.NoError(t, err)
-	assert.Equal(t, "chain not found", response["error"])
+	assert.Equal(t, "Unsupported chain", response["error"])
 }

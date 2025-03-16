@@ -40,10 +40,11 @@ import (
 func (y Controller) GetAllStrategies(c *gin.Context) {
 	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `address`)
 	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
-	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
-	chainID, ok := helpers.AssertChainID(c.Param(`chainID`))
+	strategiesCondition := ValidateStrategyCondition(c, "strategiesCondition")
+
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, `chainID`)
 	if !ok {
-		c.String(http.StatusBadRequest, `invalid chainID`)
 		return
 	}
 

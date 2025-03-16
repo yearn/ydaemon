@@ -51,11 +51,10 @@ func setupHarvestsTest(t *testing.T, chainID, addresses string) (*gin.Context, *
 **************************************************************************************************/
 func TestGraphQLHarvestRequestForOneVault(t *testing.T) {
 	// Setup
-	c, _ := setupHarvestsTest(t, "1", "0x1234,0x5678")
 	vaultAddresses := []string{"0x1234", "0x5678"}
 
 	// Execute
-	request := graphQLHarvestRequestForOneVault(vaultAddresses, c)
+	request := graphQLHarvestRequestForOneVault(vaultAddresses, "timestamp", "desc", 1000)
 
 	// Assert
 	assert.NotNil(t, request)
@@ -78,5 +77,5 @@ func TestGetHarvestsForVault_InvalidChainID(t *testing.T) {
 
 	// Assert
 	assert.Equal(t, http.StatusBadRequest, w.Code)
-	assert.Equal(t, "invalid chainID", w.Body.String())
+	assert.Equal(t, "invalid chainID: invalid", w.Body.String())
 }

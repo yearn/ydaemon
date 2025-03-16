@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -86,41 +87,29 @@ type TRotkiVaults struct {
 **************************************************************************************************/
 func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	/** 🔵 - Yearn *************************************************************************************
-	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
-	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
-	** it defaults to 'details.order'.
+	** Validate and process query parameters for sorting, pagination, and chain filtering.
 	**
-	** orderDirection: A string that determines the direction of the ordering of the vaults. It is
-	** obtained from the 'orderDirection' query parameter in the request. If the parameter is not
-	** provided, it defaults to 'asc'.
+	** orderBy: Field to sort results by (default: 'featuringScore')
+	** orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+	** skip: Number of records to skip for pagination (default: 0)
+	** limit: Maximum number of records to return (default: 200)
+	** chainIDs: Comma-separated list of chain IDs to include (default: all supported chains)
 	**************************************************************************************************/
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	// Define valid fields for sorting
+	validOrderFields := []string{
+		"featuringScore", "name", "symbol", "decimals", "type", "version", "address",
+	}
+	orderBy := ValidateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetVaultsForRotki")
 
-	/** 🔵 - Yearn *************************************************************************************
-	** page: A uint64 value that represents the page number for pagination. It is obtained from the
-	** 'page' query parameter in the request. If the parameter is not provided, it defaults to 1.
-	**
-	** skip: A uint64 value that represents the number of vaults to skip. It is obtained from the
-	** 'skip' query parameter in the request. If the parameter is not provided, it defaults to 0.
-	**************************************************************************************************/
-	skip := helpers.SafeStringToUint64(getQuery(c, `skip`), 0)
-	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
+	// Define valid sort directions
+	validDirections := []string{"asc", "desc"}
+	orderDirection := ValidateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetVaultsForRotki")
 
-	/** 🔵 - Yearn *************************************************************************************
-	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
-	** obtained from the 'chainIDs' query parameter in the request. The string is split by commas to
-	** obtain an array of chain IDs.
-	**
-	** chains: An array of uint64 values that represents the chain IDs for which the vaults are to be
-	** returned. If the 'chains' query parameter is not provided or is empty, this array defaults to
-	** all supported chain IDs.
-	**
-	** The 'chains' array is populated by iterating over the 'chainsStr' array and converting each
-	** chain ID to a uint64 value. If the conversion is not successful, the chain ID is ignored.
-	**
-	** The 'chains' array is used to filter the vaults that are returned in the response.
-	**************************************************************************************************/
+	// Validate pagination parameters
+	skip := ValidateNumericQuery(c, "skip", 0, 0, 10000, "GetVaultsForRotki")
+	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetVaultsForRotki")
+
+	// Process chain IDs parameter
 	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
@@ -129,9 +118,15 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 		for _, chainStr := range chainsStr {
 			chain, ok := helpers.AssertChainID(chainStr)
 			if !ok {
+				HandleError(c, fmt.Errorf("invalid chain ID: %s", chainStr),
+					http.StatusBadRequest, "Invalid chain ID", "GetVaultsForRotki")
 				continue
 			}
 			chains = append(chains, chain)
+		}
+		// If no valid chains were provided, use all supported chains
+		if len(chains) == 0 {
+			chains = env.SUPPORTED_CHAIN_IDS
 		}
 	}
 

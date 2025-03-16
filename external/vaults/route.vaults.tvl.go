@@ -1,6 +1,8 @@
 package vaults
 
 import (
+	"fmt"
+	"math"
 	"net/http"
 	"sync"
 
@@ -31,24 +33,49 @@ import (
 **************************************************************************************************/
 func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	tvl := 0.0
-	vaultsList, _ := storage.ListVaults(chainID)
+
+	// Verify chain is supported
+	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+		HandleError(c, fmt.Errorf("chain %d is not supported", chainID), http.StatusBadRequest,
+			fmt.Sprintf("Chain %d is not supported", chainID), "ComputeChainTVL")
+		return tvl
+	}
+
+	// Get chain configuration
+	chain, ok := env.GetChain(chainID)
+	if !ok {
+		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID), http.StatusInternalServerError,
+			"Internal configuration error", "ComputeChainTVL")
+		return tvl
+	}
+
+	// Retrieve all vaults for the chain
+	_, vaultsList := storage.ListVaults(chainID)
+
+	// Process each vault and calculate total TVL
 	for _, currentVault := range vaultsList {
-		/******************************************************************************************
-		** We want to ignore all non Yearn vaults
-		******************************************************************************************/
+		// Skip non-Yearn vaults
 		if !currentVault.Metadata.Inclusion.IsYearn {
 			continue
 		}
-		chain, ok := env.GetChain(chainID)
-		if !ok {
-			continue
-		}
+
+		// Skip blacklisted vaults
 		if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 			continue
 		}
+
+		// Calculate TVL for the vault
 		vaultTVL := fetcher.BuildVaultTVL(currentVault)
-		tvl += vaultTVL.TVL
+
+		// Add to total (handle potential NaN/Inf values)
+		if !math.IsNaN(vaultTVL.TVL) && !math.IsInf(vaultTVL.TVL, 0) {
+			tvl += vaultTVL.TVL
+		} else {
+			HandleError(c, fmt.Errorf("invalid TVL value for vault %s: %v", currentVault.Address.Hex(), vaultTVL.TVL),
+				http.StatusInternalServerError, "Invalid TVL calculation result", "ComputeChainTVL")
+		}
 	}
+
 	return tvl
 }
 
@@ -120,9 +147,9 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 ** @return void - Response is sent directly via Gin with the chain's TVL value
 **************************************************************************************************/
 func (y Controller) GetVaultsTVL(c *gin.Context) {
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	// Validate chain ID using the utility function
+	chainID, ok := ValidateChainID(c, "chainID")
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid chainID")
 		return
 	}
 	c.JSON(http.StatusOK, computeChainTVL(chainID, c))

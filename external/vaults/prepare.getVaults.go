@@ -1,12 +1,10 @@
 package vaults
 
 import (
-	"errors"
 	"fmt"
 	"net/http"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
@@ -41,36 +39,38 @@ func getVaults(
 	filterFunc func(vault models.TVault) bool,
 ) ([]TSimplifiedExternalVault, error) {
 	/** 🔵 - Yearn *************************************************************************************
-	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
-	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
-	** it defaults to 'details.order'.
+	** This function takes in a context from the gin framework. The context contains information
+	** about the environment and request. From the context, the function extracts the following
+	** parameters:
 	**
-	** orderDirection: A string that determines the direction of the ordering of the vaults. It is
+	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
+	** from the 'orderBy' query parameter in the request. If the parameter is not provided, it
+	** defaults to 'featuringScore'.
+	**
+	** orderDirection: A string that determines the direction in which the vaults are ordered. It is
 	** obtained from the 'orderDirection' query parameter in the request. If the parameter is not
 	** provided, it defaults to 'asc'.
-	**************************************************************************************************/
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
-
-	/** 🔵 - Yearn *************************************************************************************
-	** strategiesCondition: A string that determines the condition for selecting strategies. It is
-	** obtained from the 'strategiesCondition' query parameter in the request.
-	**************************************************************************************************/
-	strategiesCondition := selectStrategiesCondition(getQuery(c, `strategiesCondition`))
-
-	/** 🔵 - Yearn *************************************************************************************
+	**
 	** hideAlways: A boolean value that determines whether to hide certain vaults. It is obtained
 	** from the 'hideAlways' query parameter in the request. If the parameter is not provided,
 	** it defaults to 'false'.
 	**
+	** strategiesCondition: A string that determines the condition for selecting strategies. It is
+	** obtained from the 'strategiesCondition' query parameter in the request.
+	**************************************************************************************************/
+	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
+	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	hideAlways := helpers.StringToBool(getQuery(c, `hideAlways`))
+
+	/** 🔵 - Yearn *************************************************************************************
 	** migrable: A string that determines the condition for selecting migrable vaults. It is
 	** obtained from the 'migrable' query parameter in the request.
 	**************************************************************************************************/
-	hideAlways := helpers.StringToBool(helpers.SafeString(getQuery(c, `hideAlways`), `false`))
-	migrable := selectMigrableCondition(getQuery(c, `migrable`))
+	migrable := ValidateMigrableCondition(c, `migrable`)
 	if migrable != `none` && hideAlways {
-		c.String(http.StatusBadRequest, `migrable and hideAlways cannot be true at the same time`)
-		return []TSimplifiedExternalVault{}, errors.New(`migrable and hideAlways cannot be true at the same time`)
+		HandleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
+			http.StatusBadRequest, "Invalid parameter combination", "GetVaults")
+		return []TSimplifiedExternalVault{}, fmt.Errorf("migrable and hideAlways cannot be true at the same time")
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
@@ -81,8 +81,8 @@ func getVaults(
 	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
 	** it defaults to 200.
 	**************************************************************************************************/
-	page := helpers.SafeStringToUint64(getQuery(c, `page`), 1)
-	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
+	page := ValidateNumericQuery(c, "page", 1, 1, 1000, "GetVaults")
+	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetVaults")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
@@ -113,143 +113,135 @@ func getVaults(
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
-	** The following block of code initializes two empty slices, 'data' and 'allVaults'. 'data' will
-	** store the final list of vaults to be returned in the response, while 'allVaults' is a temporary
-	** storage for all vaults across all chains.
+	** The following code processes vaults across all specified chains and applies filtering.
+	** It retrieves vaults for each chain, applies the filter function, and processes valid vaults
+	** into a simplified format. It also applies additional filters based on parameters like
+	** hideAlways and migrable.
 	**
-	** The first for loop iterates over the 'SUPPORTED_CHAIN_IDS' from the environment variables. For
-	** each chain ID, it calls the 'ListVaults' function to get a list of all vaults for that chain.
-	**
-	** The second nested for loop then iterates over each vault in 'vaultsForChain'. If the vault's
-	** address is not in the 'BLACKLISTED_VAULTS' for the current chain ID, it is appended to the
-	** 'allVaults' slice.
-	** It will also check if, based on the provided parameters, the vault should be included in the
-	** response. If not, it will be skipped.
-	**
-	** This process effectively gathers all vaults across all supported chains, excluding those that
-	** are blacklisted, and stores them in 'allVaults' for further processing.
+	** Optimizations include:
+	** 1. Early validation of chain configuration
+	** 2. Pre-filtering vaults before expensive operations
+	** 3. Skipping unnecessary strategy lookups when possible
+	** 4. Using a capacity hint for the allVaults slice to reduce reallocations
 	**************************************************************************************************/
 	data := []TSimplifiedExternalVault{}
-	allVaults := []TSimplifiedExternalVault{}
+	// Provide capacity hint based on typical vault counts to reduce reallocations
+	estimatedVaultCount := len(chains) * 50 // Rough estimate of 50 vaults per chain
+	allVaults := make([]TSimplifiedExternalVault, 0, estimatedVaultCount)
+
 	for _, chainID := range chains {
-		vaultsForChain, err := storage.ListVaults(chainID)
-		if err != nil {
-			// Log error but continue to check other chains
+		// Get chain configuration early to validate
+		chain, ok := env.GetChain(chainID)
+		if !ok {
+			HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+				http.StatusInternalServerError, "Internal configuration error", "GetVaults")
 			continue
 		}
-		for _, currentVault := range vaultsForChain {
-			/******************************************************************************************
-			** We want to ignore all non Yearn vaults
-			******************************************************************************************/
-			chain, ok := env.GetChain(chainID)
-			if !ok {
-				continue
-			}
+
+		// Retrieve vaults for this chain
+		_, vaultsSlice := storage.ListVaults(chainID)
+		if len(vaultsSlice) == 0 {
+			// Skip empty chains
+			continue
+		}
+
+		// Process each vault with optimized filtering
+		for _, currentVault := range vaultsSlice {
+			// Apply early filters to avoid unnecessary processing
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
+
+			// Apply custom filter function
 			if !filterFunc(currentVault) {
 				continue
 			}
-			newVault, err := NewVault().AssignTVault(currentVault)
+
+			// Skip retired vaults when hideAlways is true
+			if migrable == `none` && currentVault.Metadata.IsRetired && hideAlways {
+				continue
+			}
+
+			// Process vault data - use the optimized CreateExternalVault function
+			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
-				// Add context to error but continue with other vaults
-				err = fmt.Errorf("failed to convert vault %s on chain %d: %w", currentVault.Address.Hex(), chainID, err)
+				HandleError(c, fmt.Errorf("failed to process vault %s on chain %d: %s",
+					currentVault.Address.Hex(), chainID, err), http.StatusInternalServerError,
+					"Error processing vault data", "GetVaults")
 				continue
 			}
-			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
-				continue
-			} else if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
-				continue
-			} else if migrable == `all` && !newVault.Migration.Available {
-				continue
-			} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden || newVault.Details.IsRetired) {
-				continue
-			}
+
+			// Calculate APR and featuring score
 			APRAsFloat := 0.0
 			if newVault.APR.NetAPR != nil {
 				APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 			}
+
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			if newVault.Details.IsHighlighted {
 				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
 			}
 
-			if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
-				allVaults = append(allVaults, toSimplifiedVersion(newVault, vaultAsStrategy))
-			} else {
-				allVaults = append(allVaults, toSimplifiedVersion(newVault, models.TStrategy{}))
+			// Check if strategies are required - only retrieve the count if needed
+			if strategyDataIsRequired(migrable) {
+				_, strategiesSlice := storage.ListStrategiesForVault(chainID, currentVault.Address)
+				if len(strategiesSlice) == 0 {
+					// Skip vaults without strategies if needed based on migrable condition
+					continue
+				}
 			}
+
+			// Apply migrable-specific filters
+			if !currentVault.Metadata.IsRetired {
+				if migrable == `nodust` && (newVault.TVL.TVL < 100 || !newVault.Migration.Available) {
+					continue
+				} else if migrable == `all` && !newVault.Migration.Available {
+					continue
+				} else if migrable == `ignore` && (newVault.Migration.Available || newVault.Details.IsHidden) {
+					continue
+				}
+			}
+
+			// Convert directly to simplified format
+			simplified := toSimplifiedVersion(newVault, models.TStrategy{})
+			simplified.Description = newVault.Description
+			allVaults = append(allVaults, simplified)
 		}
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
-	** The following block of code is a loop that iterates over each vault in the 'allVaults' slice.
-	** For each vault, it performs the following operations:
+	** Finally, all vaults in 'allVaults' are sorted based on 'orderBy' and 'orderDirection'.
 	**
-	** 1. It calls the 'ListStrategiesForVault' function to get a list of all strategies for the
-	**    current vault. The function takes two parameters: the chain ID of the vault and the address
-	**    of the vault.
-	**
-	** 2. It initializes an empty slice of pointers to 'TStrategy' objects for the current vault.
-	**
-	** 3. It then enters a nested loop that iterates over each strategy in 'vaultStrategies'. For each
-	**    strategy, it performs the following operations:
-	**
-	**    a. It initializes a pointer to a 'TStrategy' object.
-	**
-	**    b. It calls the 'NewStrategy' function to create a new 'TStrategy' object and assigns the
-	**       current strategy to it using the 'AssignTStrategy' method.
-	**
-	**    c. It checks if the strategy should be included based on the 'strategiesCondition'. If not,
-	**       it skips the current iteration of the loop.
-	**
-	** 4. It appends the current vault to the 'data' slice.
+	** The sorted vaults are then paginated based on 'page' and 'limit', and the paginated data is
+	** returned in the response.
 	**************************************************************************************************/
-	for _, currentVault := range allVaults {
-		vaultStrategies, err := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
-		if err != nil {
-			// Log error but continue with empty strategies list rather than skipping the vault
-		}
-		currentVault.Strategies = []TStrategy{}
-		for _, strategy := range vaultStrategies {
-			var externalStrategy TStrategy
-			strategyWithDetails := NewStrategy().AssignTStrategy(strategy)
-			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
-				continue
-			}
-
-			externalStrategy = strategyWithDetails
-			currentVault.Strategies = append(currentVault.Strategies, externalStrategy)
-		}
-
-		data = append(data, currentVault)
-	}
-
-	/** 🔵 - Yearn *************************************************************************************
-	** The following block of code sorts the 'data' slice based on the 'orderBy' and 'orderDirection'
-	** parameters. The 'SortBy' function from the 'sort' package is used for this purpose.
-	**
-	** After sorting, it applies pagination to the 'data' slice based on the 'page' and 'limit'
-	** parameters. The start index for the slice is calculated as (page - 1) * limit, and the end
-	** index is calculated as page * limit. If the end index is greater than the length of the 'data'
-	** slice, it is set to the length of the 'data' slice.
-	**
-	** The 'data' slice is then updated to only include the vaults between the start and end indices.
-	** This effectively returns only the vaults for the requested page with the specified limit.
-	**************************************************************************************************/
-	sort.SortBy(orderBy, orderDirection, data)
+	sort.SortBy(orderBy, orderDirection, allVaults)
 	start := (page - 1) * limit
 	end := page * limit
-	if end > uint64(len(data)) {
-		end = uint64(len(data))
-	}
-	if start >= uint64(len(data)) {
+	if start > uint64(len(allVaults)) {
+		// If the start index is beyond the total number of vaults, return an empty array
 		return []TSimplifiedExternalVault{}, nil
 	}
-	data = data[start:end]
+	if end > uint64(len(allVaults)) {
+		end = uint64(len(allVaults))
+	}
+	data = allVaults[start:end]
 
 	return data, nil
+}
+
+/**************************************************************************************************
+** strategyDataIsRequired determines if strategy data is needed based on migrable condition.
+**
+** This helper function checks if the vault strategies need to be loaded based on the migrable
+** parameter. This helps avoid unnecessary strategy lookups for certain filter conditions.
+**
+** @param migrable string - The migrable condition being used
+** @return bool - True if strategy data is required for the given condition
+**************************************************************************************************/
+func strategyDataIsRequired(migrable string) bool {
+	// For most migrable conditions, we need strategy data
+	return migrable != "none" && migrable != "ignore"
 }
 
 /**************************************************************************************************

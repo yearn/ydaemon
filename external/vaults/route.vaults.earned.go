@@ -16,6 +16,17 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
+/**************************************************************************************************
+** graphQLRequestForUser builds a GraphQL query to fetch vault position data for a specific user.
+**
+** This helper function constructs a GraphQL query that retrieves FIFO (First In, First Out) data
+** for a user's positions in vaults. It can be used to query all vaults for a user or filtered to
+** specific vaults provided in the vaultAddresses parameter.
+**
+** @param userAddress string - The Ethereum address of the user whose data is being queried
+** @param vaultAddresses []string - Optional list of vault addresses to filter the query
+** @return *graphql.Request - A prepared GraphQL request object ready to be executed
+**************************************************************************************************/
 func graphQLRequestForUser(userAddress string, vaultAddresses []string) *graphql.Request {
 	if len(vaultAddresses) == 0 {
 		return graphql.NewRequest(`{
@@ -31,6 +42,18 @@ func graphQLRequestForUser(userAddress string, vaultAddresses []string) *graphql
 	}`)
 }
 
+/**************************************************************************************************
+** TEarned represents the earnings data for a user's position in a vault.
+**
+** This structure contains both realized and unrealized gains data in both token and USD values.
+** Realized gains represent profits that have been actualized through withdrawals, while
+** unrealized gains represent the current value increase that has not yet been withdrawn.
+**
+** @field RealizedGains string - The amount of realized gains in token units
+** @field RealizedGainsUSD float64 - The USD value of realized gains
+** @field UnrealizedGains string - The amount of unrealized gains in token units
+** @field UnrealizedGainsUSD float64 - The USD value of unrealized gains
+**************************************************************************************************/
 type TEarned struct {
 	RealizedGains      string  `json:"realizedGains"`
 	RealizedGainsUSD   float64 `json:"realizedGainsUSD"`
@@ -38,7 +61,29 @@ type TEarned struct {
 	UnrealizedGainsUSD float64 `json:"unrealizedGainsUSD"`
 }
 
-// GetEarnedPerVaultPerUser will, for a given chainID, return the amount earned by an user in a vault from a FIFO perspective
+/**************************************************************************************************
+** GetEarnedPerVaultPerUser calculates and returns earnings data for a specific user in specific
+** vaults on a given chain.
+**
+** This endpoint performs FIFO (First In, First Out) calculations to determine how much a user
+** has earned in specified vaults. It retrieves transaction history from a subgraph, processes
+** deposit and withdrawal events, and calculates both realized and unrealized gains.
+**
+** The calculation considers token price changes between deposits and withdrawals to accurately
+** determine profits. Results are returned both in token amount and USD value.
+**
+** Endpoint: GET /chains/:chainID/vaults/earned/:address/:vaults
+**
+** @param c *gin.Context - The Gin context containing the HTTP request with parameters:
+**   - chainID: The blockchain network ID
+**   - address: The user's wallet address
+**   - vaults: Comma-separated list of vault addresses to calculate earnings for
+**
+** @return JSON response with:
+**   - totalRealizedGainsUSD: Sum of all realized gains in USD
+**   - totalUnrealizedGainsUSD: Sum of all unrealized gains in USD
+**   - earned: Map of vault addresses to their respective TEarned objects
+**************************************************************************************************/
 func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -262,7 +307,29 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	})
 }
 
-// GetEarnedPerUser will, for a given chainID, return the amount earned by an user in all vaults
+/**************************************************************************************************
+** GetEarnedPerUser calculates and returns earnings data for a specific user across all vaults
+** on a given chain.
+**
+** This endpoint performs FIFO (First In, First Out) calculations to determine how much a user
+** has earned across all vaults they've interacted with on the specified blockchain. It retrieves
+** transaction history from a subgraph, processes all deposit and withdrawal events, and calculates
+** both realized and unrealized gains for each vault.
+**
+** The calculation considers token price changes between deposits and withdrawals to accurately
+** determine profits. Results are aggregated by vault and returned both in token amount and USD value.
+**
+** Endpoint: GET /chains/:chainID/vaults/earned/:address
+**
+** @param c *gin.Context - The Gin context containing the HTTP request with parameters:
+**   - chainID: The blockchain network ID
+**   - address: The user's wallet address
+**
+** @return JSON response with:
+**   - totalRealizedGainsUSD: Sum of all realized gains in USD across all vaults
+**   - totalUnrealizedGainsUSD: Sum of all unrealized gains in USD across all vaults
+**   - earned: Map of vault addresses to their respective TEarned objects
+**************************************************************************************************/
 func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {
@@ -489,7 +556,31 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	})
 }
 
-// GetEarnedPerUser will, for a given chainID, return the amount earned by an user in all vaults
+/**************************************************************************************************
+** GetEarnedPerUserForAllChains calculates and returns earnings data for a specific user across
+** all vaults on multiple chains.
+**
+** This endpoint aggregates earnings data across multiple blockchain networks, performing FIFO
+** calculations for each chain and combining the results. It allows querying specific chains via
+** the chainIDs query parameter or defaults to all supported chains if not specified.
+**
+** The function processes deposit and withdrawal events from each chain's subgraph, calculating
+** realized and unrealized gains for every vault the user has interacted with. Results are
+** organized hierarchically by chain ID and vault address.
+**
+** Endpoint: GET /vaults/earned/:address
+**
+** Query Parameters:
+**   - chainIDs: Optional comma-separated list of chain IDs to include (defaults to all supported chains)
+**
+** @param c *gin.Context - The Gin context containing the HTTP request with parameters:
+**   - address: The user's wallet address
+**
+** @return JSON response with:
+**   - totalRealizedGainsUSD: Sum of all realized gains in USD across all chains and vaults
+**   - totalUnrealizedGainsUSD: Sum of all unrealized gains in USD across all chains and vaults
+**   - earned: Nested map of chain IDs to vault addresses to their respective TEarned objects
+**************************************************************************************************/
 func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is

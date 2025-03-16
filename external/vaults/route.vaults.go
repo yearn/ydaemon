@@ -6,7 +6,16 @@ import (
 )
 
 /**************************************************************************************************
-** GetAll is a gin handler function to retrieve all the vaults
+** GetAll is a gin handler function to retrieve all vaults across all supported chains.
+**
+** This endpoint returns all vaults in the system without filtering, though it still respects
+** query parameters for sorting, pagination, and strategy conditions.
+**
+** Endpoint: GET /vaults
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of all vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetAll(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -15,8 +24,16 @@ func (y Controller) GetAll(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 }
 
 /**************************************************************************************************
-** GetIsYearn is a gin handler function to retrieve all the vaults matching the
-** inclusion.IsYearn filter.
+** GetIsYearn retrieves only vaults that are officially part of Yearn Finance.
+**
+** This endpoint returns vaults marked with the 'isYearn' flag, filtering out third-party
+** or non-Yearn vaults that might be in the system.
+**
+** Endpoint: GET /vaults/yearn
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of Yearn vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetIsYearn(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -25,7 +42,16 @@ func (y Controller) GetIsYearn(c *gin.Context) ([]TSimplifiedExternalVault, erro
 }
 
 /**************************************************************************************************
-** GetV3 is a gin handler function to retrieve all the v3 vaults
+** GetV3 retrieves only vaults that use the V3 vault architecture.
+**
+** This endpoint returns vaults that are built using the V3 vault architecture, which
+** includes both single-strategy and multi-strategy vaults.
+**
+** Endpoint: GET /vaults/v3
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of V3 vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetV3(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -34,7 +60,16 @@ func (y Controller) GetV3(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 }
 
 /**************************************************************************************************
-** GetV2 is a gin handler function to retrieve all the v2 vaults
+** GetV2 retrieves only vaults that use the V2 vault architecture.
+**
+** This endpoint returns vaults that are built using the V2 vault architecture, which
+** preceded the V3 architecture and is still widely used.
+**
+** Endpoint: GET /vaults/v2
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of V2 vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetV2(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -43,7 +78,16 @@ func (y Controller) GetV2(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 }
 
 /**************************************************************************************************
-** GetV2 is a gin handler function to retrieve all the retired vaults
+** GetRetired retrieves vaults that have been marked as retired.
+**
+** This endpoint returns vaults that are no longer actively maintained or supported,
+** but may still contain user funds or be of historical interest.
+**
+** Endpoint: GET /vaults/retired
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of retired vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetRetired(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -52,8 +96,16 @@ func (y Controller) GetRetired(c *gin.Context) ([]TSimplifiedExternalVault, erro
 }
 
 /**************************************************************************************************
-** GetV2IsYearn is a gin handler function to retrieve all the V2 vaults matching the
-** inclusion.IsYearn filter.
+** GetV2IsYearn retrieves V2 vaults that are officially part of Yearn Finance.
+**
+** This endpoint combines the V2 and IsYearn filters to return only V2 vaults
+** that are also marked as official Yearn vaults.
+**
+** Endpoint: GET /vaults/v2/yearn
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of V2 Yearn vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetV2IsYearn(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {
@@ -62,8 +114,16 @@ func (y Controller) GetV2IsYearn(c *gin.Context) ([]TSimplifiedExternalVault, er
 }
 
 /**************************************************************************************************
-** GetV3IsYearn is a gin handler function to retrieve all the V3 vaults matching the
-** inclusion.IsYearn filter.
+** GetV3IsYearn retrieves V3 vaults that are officially part of Yearn Finance.
+**
+** This endpoint combines the V3 and IsYearn filters to return only V3 vaults
+** that are also marked as official Yearn vaults.
+**
+** Endpoint: GET /vaults/v3/yearn
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TSimplifiedExternalVault - The list of V3 Yearn vaults
+** @return error - Any error encountered during processing
 **************************************************************************************************/
 func (y Controller) GetV3IsYearn(c *gin.Context) ([]TSimplifiedExternalVault, error) {
 	return getVaults(c, func(vault models.TVault) bool {

@@ -1,6 +1,25 @@
 package helpers
 
-// GetStrategyReports construct the basic graphQL request to get the reports
+/**************************************************************************************************
+** This file contains pre-formatted GraphQL query strings used throughout the application to
+** retrieve data from The Graph protocol endpoints. These queries target Yearn-specific data
+** such as strategy reports, vault harvests, and user transaction history.
+**
+** Each function returns a standardized GraphQL query fragment that can be incorporated into
+** larger queries or used directly with GraphQL endpoints. The fragments are formatted as
+** multi-line strings for better readability.
+**************************************************************************************************/
+
+/**************************************************************************************************
+** GetStrategyReports constructs a GraphQL query fragment to retrieve the most recent strategy
+** reports for a vault. This query targets key performance metrics for strategies including
+** debt levels, gains, losses, and calculated APR.
+**
+** The query is limited to the 10 most recent reports, ordered by timestamp in descending order
+** to prioritize the most recent data.
+**
+** @return string A formatted GraphQL query fragment for strategy reports
+**************************************************************************************************/
 func GetStrategyReports() string {
 	return (`reports(first: 10, orderBy: timestamp, orderDirection: desc) {
 		id
@@ -21,8 +40,16 @@ func GetStrategyReports() string {
 	}`)
 }
 
-// GetHarvestsForVaults construct the basic graphQL request to get the harvests for a vault with
-// all the minimal elements to format the data
+/**************************************************************************************************
+** GetHarvestsForVaults constructs a GraphQL query fragment to retrieve harvest events for a
+** vault. This query includes essential data needed to analyze harvest performance, including
+** vault and strategy identification, transaction details, and profit/loss information.
+**
+** This query is designed to be incorporated into a larger GraphQL query with the appropriate
+** entity selection and filtering.
+**
+** @return string A formatted GraphQL query fragment for vault harvests
+**************************************************************************************************/
 func GetHarvestsForVaults() string {
 	return (`{
 		vault {
@@ -44,8 +71,16 @@ func GetHarvestsForVaults() string {
 	}`)
 }
 
-// GetFIFOForUser construct the basic graphQL request to get all the deposits and withdrawals for a user
-// for a given vault
+/**************************************************************************************************
+** GetFIFOForUser constructs a GraphQL query fragment to retrieve a user's deposit and withdrawal
+** history for a specific vault. This query captures all token movements, including shares minted,
+** burnt, sent, and received, as well as the underlying tokens involved in these transactions.
+**
+** The query also includes the vault's latest price per share, which is essential for calculating
+** current portfolio value and returns.
+**
+** @return string A formatted GraphQL query fragment for user transaction history
+**************************************************************************************************/
 func GetFIFOForUser() string {
 	return (`
 		updates {

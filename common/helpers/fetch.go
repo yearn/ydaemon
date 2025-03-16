@@ -10,6 +10,27 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
+/**************************************************************************************************
+** The fetch package provides HTTP utility functions for fetching and processing JSON data from
+** external APIs. These functions simplify common tasks like making HTTP requests, handling
+** responses, and parsing JSON data, while also providing special handling for certain API
+** endpoints that require custom headers.
+**
+** This package supports both error-swallowing and error-returning variants of the fetch
+** functions to accommodate different error handling requirements across the application.
+**************************************************************************************************/
+
+/**************************************************************************************************
+** FetchJSON makes an HTTP GET request to the specified URI and unmarshals the JSON response
+** into the provided generic type. This function handles all aspects of the HTTP request,
+** including setting appropriate headers for certain APIs that require them.
+**
+** This function has "swallowing" error behavior - it logs errors but does not return them,
+** instead returning a zero value of the requested type if any error occurs.
+**
+** @param uri The URL to fetch JSON data from
+** @return data The unmarshaled JSON data as the specified generic type T
+**************************************************************************************************/
 func FetchJSON[T any](uri string) (data T) {
 	var resp *http.Response
 	var err error
@@ -46,6 +67,18 @@ func FetchJSON[T any](uri string) (data T) {
 	return data
 }
 
+/**************************************************************************************************
+** FetchJSONWithReject makes an HTTP GET request to the specified URI and unmarshals the JSON
+** response into the provided generic type, but unlike FetchJSON, it returns any errors that
+** occur during the process.
+**
+** This function is useful when the caller needs to know if and why a request failed, allowing
+** for more sophisticated error handling and potential retry logic.
+**
+** @param uri The URL to fetch JSON data from
+** @return data The unmarshaled JSON data as the specified generic type T
+** @return err An error if any step of the fetch process failed, or nil on success
+**************************************************************************************************/
 func FetchJSONWithReject[T any](uri string) (data T, err error) {
 	var resp *http.Response
 

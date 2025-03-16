@@ -7,7 +7,6 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/internal/storage"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
 )
 
 var COMPUTED_APY = make(map[uint64]*sync.Map)
@@ -176,6 +175,5 @@ func ComputeChainAPY(chainID uint64) {
 
 func Run(chainID uint64) {
 	initYearnEcosystem(chainID)
-	initDailyBlock.Run(chainID)
 	ComputeChainAPY(chainID)
 }

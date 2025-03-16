@@ -11,7 +11,35 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// getLegacyVaults will return a list of all vaults matching a provided filter function.
+/**************************************************************************************************
+** getLegacyVaults retrieves a filtered list of vaults in the legacy TExternalVault format.
+**
+** This function is the core implementation for all legacy vault endpoints. It retrieves vaults
+** from storage, applies filtering based on the provided filter function and query parameters,
+** and returns them in the original TExternalVault format (as opposed to the newer
+** TSimplifiedExternalVault format).
+**
+** The function supports comprehensive filtering and sorting capabilities through query parameters:
+** - page & limit: For pagination control (default: page 1, limit 200)
+** - hideAlways: Whether to hide vaults marked as hidden or retired (default: false)
+** - orderBy: Field to sort results by (default: 'featuringScore')
+** - orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+** - strategiesCondition: Filter for strategies (default: 'debtRatio')
+** - migrable: Filter for migrable vaults, values: 'none', 'all', 'nodust', 'ignore' (default: 'none')
+**
+** The function follows these processing steps:
+** 1. Extracts and validates query parameters for pagination, filtering, and sorting
+** 2. Retrieves all vaults for the specified chain
+** 3. Applies the provided filter function to include only matching vaults
+** 4. Filters out blacklisted vaults
+** 5. Applies additional filters based on migration status and hide settings
+** 6. Retrieves and filters strategies for each vault
+** 7. Sorts and paginates the final results
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @param filterFunc func(vault models.TVault) bool - Function to filter vaults
+** @return []TExternalVault - The filtered, sorted, and paginated list of vaults
+**************************************************************************************************/
 func getLegacyVaults(
 	c *gin.Context,
 	filterFunc func(vault models.TVault) bool,

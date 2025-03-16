@@ -9,7 +9,17 @@ import (
 	"github.com/yearn/ydaemon/common/logs"
 )
 
-// SetEnv will init the environment variables based on the .env file
+/**************************************************************************************************
+** SetEnv initializes and updates environment-specific configuration values by reading from
+** environment variables. This function is called during application startup by the init() function.
+**
+** It performs two primary tasks:
+** 1. Updates RPC URIs for all supported chains from environment variables (RPC_URI_FOR_[chainID])
+** 2. Loads CoinGecko API keys from the CG_DEMO_KEYS environment variable
+**
+** The function allows for runtime configuration of network endpoints and API services without
+** requiring code changes or recompilation.
+**************************************************************************************************/
 func SetEnv() {
 	for _, chain := range CHAINS {
 		baseKey := `RPC_URI_FOR_`
@@ -35,6 +45,19 @@ func SetEnv() {
 
 }
 
+/**************************************************************************************************
+** init is automatically called when the package is imported and performs the initial setup of
+** the environment configuration. This function is responsible for:
+**
+** 1. Loading variables from the .env file into the environment
+** 2. Setting subgraph URIs for various chains from environment variables
+** 3. Populating the CHAINS map with all supported blockchain networks
+** 4. Calling SetEnv to apply any environment-specific overrides
+** 5. Building the list of supported chain IDs for easy reference
+**
+** This initialization ensures that all chain configurations are properly loaded before
+** any other parts of the application attempt to use them.
+**************************************************************************************************/
 func init() {
 	godotenv.Load(`.env`)
 	ETHEREUM.SubgraphURI = os.Getenv("SUBGRAPGH_FOR_1")

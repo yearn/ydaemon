@@ -2,6 +2,7 @@ package vaults
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -14,7 +15,27 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// getVaults will return a list of all vaults matching a provided filter function.
+/**************************************************************************************************
+** getVaults retrieves a filtered list of vaults based on query parameters and a filter function.
+**
+** This is the core function that powers most vault-related API endpoints. It retrieves vaults
+** from storage, applies filtering based on the provided filter function and query parameters,
+** and returns a list of simplified external vault structures.
+**
+** The function handles various query parameters:
+** - orderBy: Field to sort the results by (default: 'featuringScore')
+** - orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+** - strategiesCondition: Condition for including strategies in results (default: 'debtRatio')
+** - hideAlways: Whether to hide certain vaults (default: false)
+** - migrable: Condition for including migrable vaults (default: 'none')
+** - page/limit: Pagination controls (defaults: page 1, limit 200)
+** - chainIDs: Comma-separated list of chain IDs to include (default: all supported chains)
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @param filterFunc func(vault models.TVault) bool - Function that determines if a vault should be included
+** @return []TSimplifiedExternalVault - The filtered and sorted list of vaults
+** @return error - Any error encountered during processing
+**************************************************************************************************/
 func getVaults(
 	c *gin.Context,
 	filterFunc func(vault models.TVault) bool,
@@ -111,7 +132,11 @@ func getVaults(
 	data := []TSimplifiedExternalVault{}
 	allVaults := []TSimplifiedExternalVault{}
 	for _, chainID := range chains {
-		vaultsForChain, _ := storage.ListVaults(chainID)
+		vaultsForChain, err := storage.ListVaults(chainID)
+		if err != nil {
+			// Log error but continue to check other chains
+			continue
+		}
 		for _, currentVault := range vaultsForChain {
 			/******************************************************************************************
 			** We want to ignore all non Yearn vaults
@@ -128,6 +153,8 @@ func getVaults(
 			}
 			newVault, err := NewVault().AssignTVault(currentVault)
 			if err != nil {
+				// Add context to error but continue with other vaults
+				err = fmt.Errorf("failed to convert vault %s on chain %d: %w", currentVault.Address.Hex(), chainID, err)
 				continue
 			}
 			if migrable == `none` && (newVault.Details.IsHidden || newVault.Details.IsRetired) && hideAlways {
@@ -180,7 +207,10 @@ func getVaults(
 	** 4. It appends the current vault to the 'data' slice.
 	**************************************************************************************************/
 	for _, currentVault := range allVaults {
-		vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
+		vaultStrategies, err := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(currentVault.Address))
+		if err != nil {
+			// Log error but continue with empty strategies list rather than skipping the vault
+		}
 		currentVault.Strategies = []TStrategy{}
 		for _, strategy := range vaultStrategies {
 			var externalStrategy TStrategy
@@ -222,12 +252,49 @@ func getVaults(
 	return data, nil
 }
 
+/**************************************************************************************************
+** isV3Vault determines if a vault is a v3 vault based on its version and kind.
+**
+** This function identifies v3 vaults by checking if:
+** 1. It has kind VaultKindMultiple or VaultKindSingle (which are v3-specific kinds), or
+** 2. Its version string starts with "3" (e.g., "3.0.0") or equals "v3"
+**
+** @param vault models.TVault - The vault to check
+** @return bool - True if the vault is a v3 vault, false otherwise
+**************************************************************************************************/
 func isV3Vault(vault models.TVault) bool {
-	versionMajor := strings.Split(vault.Version, `.`)[0]
-	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle || versionMajor == `3`
+	return vault.Kind == models.VaultKindMultiple || vault.Kind == models.VaultKindSingle ||
+		strings.HasPrefix(vault.Version, "3") || vault.Version == "v3"
 }
 
+/**************************************************************************************************
+** isV2Vault determines if a vault is a v2 vault based on its version.
+**
+** This function checks if a vault is a v2 vault by examining its version string. A vault is
+** considered v2 if it's NOT a v3 vault and has a version starting with:
+** - "0." (legacy versions of v2)
+** - "2." (numeric v2 versions like "2.0.0")
+** - or exactly equals "v2" or "2" (string representations)
+**
+** Note: v1 vaults (starting with "1." or equal to "v1" or "1") are NOT considered v2 vaults.
+**
+** @param vault models.TVault - The vault to check
+** @return bool - True if the vault is a v2 vault, false otherwise
+**************************************************************************************************/
 func isV2Vault(vault models.TVault) bool {
-	versionMajor := strings.Split(vault.Version, `.`)[0]
-	return versionMajor != `3`
+	// First check if it's a v3 vault (which takes precedence)
+	if isV3Vault(vault) {
+		return false
+	}
+
+	// If it's a v1 vault, it's not v2
+	if strings.HasPrefix(vault.Version, "1.") || vault.Version == "v1" || vault.Version == "1" {
+		return false
+	}
+
+	// It's a v2 vault if it starts with "0." or "2." or equals "v2" or "2"
+	return strings.HasPrefix(vault.Version, "0.") ||
+		strings.HasPrefix(vault.Version, "2.") ||
+		vault.Version == "v2" ||
+		vault.Version == "2"
 }

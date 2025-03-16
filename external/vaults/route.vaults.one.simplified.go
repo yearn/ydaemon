@@ -1,24 +1,58 @@
 package vaults
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// GetSimplifiedVault will, for a given chainID, return a list of all vaults
+/**************************************************************************************************
+** GetSimplifiedVault retrieves a lightweight version of a specific vault's details.
+**
+** This endpoint provides a simplified representation of a single vault, optimized for clients
+** that need essential information without the full detail load. It's particularly useful for
+** client applications focusing on performance or bandwidth constraints.
+**
+** The endpoint handles the following:
+** 1. Validating the chain ID and address parameters
+** 2. Retrieving the vault from storage and converting to external format
+** 3. Including only relevant strategies based on the strategiesCondition parameter
+** 4. Applying the featuring score calculation for sorting relevance
+** 5. Handling special cases where the vault is also registered as a strategy
+** 6. Returning a simplified representation with essential vault information
+**
+** Endpoint: GET /vaults/:chainID/:address/simplified
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return void - Response is sent directly via Gin with the simplified vault representation
+**************************************************************************************************/
 func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
 	** chainID: The chain IDs for which the vaults are to be returned. It is obtained from the
 	** 'chainIDs' query parameter in the request.
 	**************************************************************************************************/
-	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
+	// Validate chainID parameter
+	chainIDParam := c.Param("chainID")
+	if chainIDParam == "" {
+		c.String(http.StatusBadRequest, "chainID parameter is required")
+		return
+	}
+
+	chainID, ok := helpers.AssertChainID(chainIDParam)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid chainID")
+		return
+	}
+
+	// Verify chain is supported
+	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
+		c.String(http.StatusBadRequest, fmt.Sprintf("chain %d is not supported", chainID))
 		return
 	}
 
@@ -26,7 +60,14 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	** address: The address of the vault to be returned. It is obtained from the 'address' query
 	** parameter in the request.
 	**************************************************************************************************/
-	address, ok := helpers.AssertAddress(c.Param("address"), chainID)
+	// Validate address parameter
+	addressParam := c.Param("address")
+	if addressParam == "" {
+		c.String(http.StatusBadRequest, "address parameter is required")
+		return
+	}
+
+	address, ok := helpers.AssertAddress(addressParam, chainID)
 	if !ok {
 		c.String(http.StatusBadRequest, "invalid address")
 		return
@@ -44,16 +85,20 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	**************************************************************************************************/
 	currentVault, ok := storage.GetVault(chainID, address)
 	if !ok {
-		c.String(http.StatusBadRequest, "invalid vault")
-		return
-	}
-	newVault, err := NewVault().AssignTVault(currentVault)
-	if err != nil {
 		c.String(http.StatusBadRequest, "vault not found")
 		return
 	}
+
+	newVault, err := NewVault().AssignTVault(currentVault)
+	if err != nil {
+		c.String(http.StatusBadRequest, fmt.Sprintf("failed to process vault data: %v", err))
+		return
+	}
+
 	APRAsFloat := 0.0
 	if newVault.APR.NetAPR != nil {
+		// APR.NetAPR.Float64() returns (float64, big.Accuracy), not an error
+		// big.Accuracy is an int8 type that indicates precision, not an error
 		APRAsFloat, _ = newVault.APR.NetAPR.Float64()
 	}
 	newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
@@ -84,6 +129,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	** 4. It appends the current strategies to the vault
 	**************************************************************************************************/
 	vaultStrategies, _ := storage.ListStrategiesForVault(currentVault.ChainID, common.HexToAddress(newVault.Address))
+
 	newVault.Strategies = []TStrategy{}
 	for _, strategy := range vaultStrategies {
 		var externalStrategy TStrategy
@@ -96,6 +142,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		newVault.Strategies = append(newVault.Strategies, externalStrategy)
 	}
 
+	// Special handling for vaults that are also registered as strategies
 	if vaultAsStrategy, ok := storage.GuessStrategy(newVault.ChainID, common.HexToAddress(newVault.Address)); ok {
 		simplified := toSimplifiedVersion(newVault, vaultAsStrategy)
 		simplified.Description = newVault.Description
@@ -105,6 +152,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		c.JSON(http.StatusOK, simplified)
 		return
 	}
+
 	simplified := toSimplifiedVersion(newVault, models.TStrategy{})
 	simplified.Description = newVault.Description
 

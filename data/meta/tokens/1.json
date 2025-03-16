@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-11T21:24:31.904724+01:00",
+	"lastUpdate": "2025-03-13T10:35:43.234143+01:00",
 	"version": {
 		"major": 0,
-		"minor": 95,
+		"minor": 96,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -9989,6 +9989,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4D7f0f7395Dd58Da2e6680453a0d0B4B19D0C832/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4d968a5db8da0822a2f08840f553de4129aae5f3": {
+			"address": "0x4d968a5db8da0822a2f08840f553de4129aae5f3",
+			"underlyingTokensAddresses": [
+				"0xcacd6fd266af91b8aed52accc382b4e165586e29",
+				"0x0655977feb2f289a4ab78af67bab0d17aab84367"
+			],
+			"type": "Curve LP",
+			"name": "frxUSD/scrvUSD",
+			"symbol": "frxscrvUSD",
+			"displayName": "frxUSD/scrvUSD",
+			"displaySymbol": "frxscrvUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4d968a5Db8dA0822A2F08840f553De4129aAe5F3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27846,6 +27863,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xD547d9C74314F787aFFc587d101146e1663d046e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd5497a68c3a77e7de0fa7fa0880387e6ec55d014": {
+			"address": "0xd5497a68c3a77e7de0fa7fa0880387e6ec55d014",
+			"underlyingTokensAddresses": [
+				"0x4d968a5db8da0822a2f08840f553de4129aae5f3"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve frxscrvUSD Factory yVault",
+			"symbol": "yvCurve-frxscrvUSD-f",
+			"displayName": "Curve frxscrvUSD Factory yVault",
+			"displaySymbol": "yvCurve-frxscrvUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD5497A68c3a77e7De0fa7fa0880387e6EC55d014/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

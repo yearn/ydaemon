@@ -12,7 +12,6 @@ import (
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
-	"github.com/yearn/ydaemon/common/store"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -238,12 +237,8 @@ func fetchPrices(
 	for _, token := range tokenMap {
 		if value, ok := newPriceMap[token.Address]; !ok || value.Price.IsZero() {
 			if token.IsVaultLike() {
-				ppsPerTime, _ := store.ListPricePerShare(chainID, token.Address)
 				underlyingToken := token.UnderlyingTokensAddresses[0]
-				ppsToday := helpers.GetPPSToday(ppsPerTime, token.Decimals)
-				if ppsToday == nil || ppsToday.IsZero() {
-					ppsToday = ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
-				}
+				ppsToday := ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
 				underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken].Price)
 				vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
 				humanizedPrice := helpers.ToNormalizedAmount(vaultPrice.Int(), 6)

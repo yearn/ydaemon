@@ -10,7 +10,22 @@ import (
 	"github.com/yearn/ydaemon/common/helpers"
 )
 
-// GetBlacklistedVaults returns a list of blacklisted vaults by the API
+/**************************************************************************************************
+** GetBlacklistedVaults retrieves the list of vaults excluded from API results.
+**
+** This endpoint returns the addresses of vaults that are blacklisted across all chains or for
+** a specific chain. Blacklisted vaults are excluded from regular API responses for various
+** reasons such as being deprecated, vulnerable, or not meeting current standards.
+**
+** The endpoint supports an optional chainID query parameter:
+** - If chainID is omitted or "0", returns blacklisted vaults across all supported chains
+** - If chainID is provided, returns blacklisted vaults for only that specific chain
+**
+** Endpoint: GET /vaults/blacklisted?chainID=:chainID
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return void - Response is sent directly via Gin with the list of blacklisted vault addresses
+**************************************************************************************************/
 func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	chainID := helpers.SafeString(getQuery(c, "chainID"), "0")
 	if chainID == "0" {

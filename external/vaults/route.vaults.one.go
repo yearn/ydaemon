@@ -10,7 +10,25 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// GetVault will, for a given chainID, return a list of all vaults
+/**************************************************************************************************
+** GetVault retrieves detailed information about a specific vault.
+**
+** This endpoint returns comprehensive data about a single vault identified by its chain ID
+** and address. It includes complete vault information, associated strategies, and related
+** data like APR, TVL, and token details.
+**
+** The function handles the following:
+** 1. Validating the chain ID and address parameters
+** 2. Retrieving the vault from storage
+** 3. Converting the internal vault structure to the external format
+** 4. Filtering strategies based on the strategiesCondition parameter
+** 5. Including simplified version if the vault is also a strategy
+**
+** Endpoint: GET /vaults/:chainID/:address
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return void - Response is sent directly via Gin
+**************************************************************************************************/
 func (y Controller) GetVault(c *gin.Context) {
 	chainID, ok := helpers.AssertChainID(c.Param("chainID"))
 	if !ok {

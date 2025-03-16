@@ -9,10 +9,18 @@ import (
 	"github.com/yearn/ydaemon/processes/risks"
 )
 
-// Get the price of the underlying asset. This is tricky because of the decimals. The prices are fetched
-// using the lens oracle daemon, stored in the TokenPrices map, and based on the USDC token, aka with 6
-// decimals. We first need to parse the Int Price to a float64, then divide by 10^6 to get the price
-// in an human readable USDC format.
+/**************************************************************************************************
+** buildTokenPrice retrieves and formats the price of a token.
+**
+** This function handles the complexity of decimals. The prices are fetched using the lens oracle
+** daemon, stored in the TokenPrices map, and based on the USDC token (6 decimals). It parses the
+** Int Price to a float64, then divides by 10^6 to get the price in a human-readable USDC format.
+**
+** @param chainID uint64 - The chain ID where the token exists
+** @param tokenAddress common.Address - The address of the token
+** @return *bigNumber.Float - The humanized price as a bigNumber.Float
+** @return float64 - The humanized price as a float64
+**************************************************************************************************/
 func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Float, float64) {
 	price, ok := storage.GetPrice(chainID, tokenAddress)
 	if ok {
@@ -22,16 +30,35 @@ func buildTokenPrice(chainID uint64, tokenAddress common.Address) (*bigNumber.Fl
 	return bigNumber.NewFloat(), 0.0
 }
 
-// Get the total assets locked in this vault. This is tricky because of the decimals. The total asset value
-// is a string which will be formated as a float64 and scaled with the underlying token decimals. With that
-// we should have a human readable Total Asset value, and we should be able to get the Total Value Locked
-// in the vault thanks to the above humanizedPrice value.
+/**************************************************************************************************
+** buildTVL calculates the Total Value Locked (TVL) for a vault.
+**
+** This function handles the complexity of decimals. The total asset value is formatted as a float64
+** and scaled with the token decimals to produce a human-readable Total Asset value. The TVL is then
+** calculated by multiplying the humanized balance with the token price.
+**
+** @param balanceToken *bigNumber.Int - The token balance
+** @param decimals int - The number of decimals for the token
+** @param humanizedPrice *bigNumber.Float - The humanized price of the token
+** @return float64 - The calculated TVL in USD
+**************************************************************************************************/
 func buildTVL(balanceToken *bigNumber.Int, decimals int, humanizedPrice *bigNumber.Float) float64 {
 	_, humanizedTVL := helpers.FormatAmount(balanceToken.String(), decimals)
 	fHumanizedTVLPrice, _ := bigNumber.NewFloat().Mul(humanizedTVL, humanizedPrice).Float64()
 	return fHumanizedTVLPrice
 }
 
+/**************************************************************************************************
+** assignStakingRewards processes and formats the staking rewards for a vault.
+**
+** This function calculates reward rates, duration-scaled rewards, and normalizes values to produce
+** a consistent representation of staking rewards that can be presented to users.
+**
+** @param chainID uint64 - The chain ID where the staking contract exists
+** @param stakingData storage.TStakingData - The raw staking data from storage
+** @param source string - The source of the staking rewards
+** @return TStakingData - The processed staking data with formatted rewards
+**************************************************************************************************/
 func assignStakingRewards(chainID uint64, stakingData storage.TStakingData, source string) TStakingData {
 	rewards := []TStakingRewardsData{}
 	for _, reward := range stakingData.RewardTokens {
@@ -65,6 +92,19 @@ func assignStakingRewards(chainID uint64, stakingData storage.TStakingData, sour
 	return staking
 }
 
+/**************************************************************************************************
+** assignStakingData retrieves and formats staking data for a vault.
+**
+** This function attempts to find staking contracts associated with a vault by checking various
+** sources like Convex, Velodrome, Lido, and standard Yearn staking. When a staking contract is
+** found, the rewards are processed using assignStakingRewards to create a standardized format.
+**
+** If no staking contract is found, a default TStakingData with Available=false is returned.
+**
+** @param chainID uint64 - The chain ID where the vault exists
+** @param vaultAddress common.Address - The address of the vault
+** @return TStakingData - The processed staking data or a default unavailable staking data
+**************************************************************************************************/
 func assignStakingData(chainID uint64, vaultAddress common.Address) TStakingData {
 	staking := TStakingData{
 		Address:   ``,
@@ -97,6 +137,27 @@ func assignStakingData(chainID uint64, vaultAddress common.Address) TStakingData
 	return staking
 }
 
+/**************************************************************************************************
+** toSimplifiedVersion converts a detailed vault representation to a simplified format.
+**
+** This function transforms a TExternalVault object (and optionally a TVault object when the vault
+** is also a strategy) into a TSimplifiedExternalVault object that contains only the essential
+** information needed for client-side display. It handles fallbacks for display names and symbols,
+** processes risk scores, and ensures all required fields are populated with sensible defaults.
+**
+** The function performs the following key operations:
+** 1. Determines the best display name and symbol for the vault and its underlying token
+** 2. Copies and enhances metadata like retirement status and boosted status
+** 3. Processes risk scores from cached data when available
+** 4. Builds a clean simplified structure with only the necessary fields
+** 5. Retrieves and attaches staking data if available
+**
+** This simplified representation helps reduce payload size and simplifies frontend integration.
+**
+** @param vault TExternalVault - The detailed vault object to simplify
+** @param vaultAsStrategy models.TStrategy - Optional strategy details if the vault is also a strategy
+** @return TSimplifiedExternalVault - The simplified vault representation
+**************************************************************************************************/
 func toSimplifiedVersion(
 	vault TExternalVault,
 	vaultAsStrategy models.TStrategy,

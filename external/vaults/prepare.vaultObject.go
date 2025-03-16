@@ -178,22 +178,8 @@ func toSimplifiedVersion(
 		vaultSymbol = `Unknown`
 	}
 
-	// Determine token name and symbol directly
-	tokenName := vault.Token.DisplayName
-	if tokenName == "" {
-		tokenName = vault.Token.Name
-	}
-	if tokenName == "" {
-		tokenName = `Unknown`
-	}
-
-	tokenSymbol := vault.Token.DisplaySymbol
-	if tokenSymbol == "" {
-		tokenSymbol = vault.Token.Symbol
-	}
-	if tokenSymbol == "" {
-		tokenSymbol = `Unknown`
-	}
+	// Get token info using the helper function
+	tokenInfo := getSimplifiedTokenInfo(vault.Token)
 
 	// Handle risk information
 	// Create a copy of the info struct to avoid mutating the original
@@ -237,13 +223,7 @@ func toSimplifiedVersion(
 		Migration:      vault.Migration,
 		Version:        vault.Version,
 		FeaturingScore: vault.FeaturingScore,
-		Token: TSimplifiedExternalERC20Token{
-			Address:     vault.Token.Address,
-			Name:        tokenName,
-			Symbol:      tokenSymbol,
-			Description: vault.Token.Description,
-			Decimals:    vault.Token.Decimals,
-		},
+		Token: tokenInfo,
 		TVL: TSimplifiedExternalVaultTVL{
 			TotalAssets: vault.TVL.TotalAssets,
 			TVL:         vault.TVL.TVL,
@@ -253,5 +233,43 @@ func toSimplifiedVersion(
 		Staking:       assignStakingData(vault.ChainID, common.HexToAddress(vault.Address)),
 		Info:          info,
 		PricePerShare: vault.PricePerShare,
+	}
+}
+
+/**************************************************************************************************
+** getSimplifiedTokenInfo creates a simplified token representation for API responses.
+**
+** This function extracts only the essential token information needed for simplified views,
+** prioritizing display names and symbols when available. It provides fallbacks to ensure
+** that even with missing data, a valid and useful token representation is returned.
+**
+** @param token TExternalERC20Token - The full token data structure
+** @return TSimplifiedExternalERC20Token - The simplified token representation
+**************************************************************************************************/
+func getSimplifiedTokenInfo(token TExternalERC20Token) TSimplifiedExternalERC20Token {
+	// Determine token name with priority for display name
+	tokenName := token.DisplayName
+	if tokenName == "" {
+		tokenName = token.Name
+	}
+	if tokenName == "" {
+		tokenName = `Unknown`
+	}
+
+	// Determine token symbol with priority for display symbol
+	tokenSymbol := token.DisplaySymbol
+	if tokenSymbol == "" {
+		tokenSymbol = token.Symbol
+	}
+	if tokenSymbol == "" {
+		tokenSymbol = `Unknown`
+	}
+	
+	return TSimplifiedExternalERC20Token{
+		Address:     token.Address,
+		Name:        tokenName,
+		Symbol:      tokenSymbol,
+		Description: token.Description,
+		Decimals:    token.Decimals,
 	}
 }

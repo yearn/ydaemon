@@ -475,38 +475,7 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	externalVault.Staking = assignStakingData(vault.ChainID, vault.Address)
 
 	// Set token data
-	if underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address); ok {
-		externalVault.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
-	} else if underlyingToken, ok = storage.GetERC20(vault.ChainID, vault.AssetAddress); ok {
-		externalVault.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
-	}
-
-	// Initialize empty token array if needed
-	if externalVault.Token.UnderlyingTokensAddresses == nil {
-		externalVault.Token.UnderlyingTokensAddresses = []string{}
-	}
+	externalVault.Token = getUnderlyingTokenInfo(vault.ChainID, vault.Address, vault.AssetAddress)
 
 	// Set APR data
 	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
@@ -562,6 +531,75 @@ func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigrat
 		Available: migration.Available,
 		Address:   migration.Target.Hex(),
 		Contract:  migration.Contract.Hex(),
+	}
+}
+
+/**************************************************************************************************
+** getUnderlyingTokenInfo retrieves and formats token information for a vault.
+**
+** This helper function centralizes the logic for retrieving token information associated with
+** a vault. It first tries to get the specialized underlying token data, then falls back to the
+** basic token data if needed. The function handles all token information retrieval and formatting
+** in one place, making the code more maintainable.
+**
+** The function follows this process:
+** 1. Try to get the underlying ERC20 token using the vault address
+** 2. If not found, try to get the ERC20 token using the asset address
+** 3. Format the retrieved token data into the external API representation
+** 4. Ensure the UnderlyingTokensAddresses array is never nil
+**
+** @param chainID uint64 - The chain ID of the vault
+** @param vaultAddress common.Address - The address of the vault
+** @param assetAddress common.Address - The address of the underlying asset
+** @return TExternalERC20Token - The formatted token information
+**************************************************************************************************/
+func getUnderlyingTokenInfo(chainID uint64, vaultAddress, assetAddress common.Address) TExternalERC20Token {
+	var tokenInfo TExternalERC20Token
+	var tokenFound bool
+	
+	// First try to get the specialized underlying token data
+	if underlyingToken, ok := storage.GetUnderlyingERC20(chainID, vaultAddress); ok {
+		tokenInfo = convertToExternalToken(underlyingToken)
+		tokenFound = true
+	} 
+	
+	// Fallback to basic token data if specialized data not available
+	if !tokenFound {
+		if underlyingToken, ok := storage.GetERC20(chainID, assetAddress); ok {
+			tokenInfo = convertToExternalToken(underlyingToken)
+		}
+	}
+
+	// Initialize empty token array if needed to avoid nil references
+	if tokenInfo.UnderlyingTokensAddresses == nil {
+		tokenInfo.UnderlyingTokensAddresses = []string{}
+	}
+	
+	return tokenInfo
+}
+
+/**************************************************************************************************
+** convertToExternalToken converts an internal ERC20 token to external representation.
+**
+** This utility function creates a standardized external representation of token data from
+** the internal storage model. This eliminates duplication and ensures consistent token
+** data formatting across the API.
+**
+** @param token models.TERC20Token - The internal token data
+** @return TExternalERC20Token - The formatted external token structure
+**************************************************************************************************/
+func convertToExternalToken(token models.TERC20Token) TExternalERC20Token {
+	return TExternalERC20Token{
+		Address:                   token.Address.Hex(),
+		UnderlyingTokensAddresses: toArrTMixedcaseAddress(token.UnderlyingTokensAddresses),
+		Name:                      token.Name,
+		Symbol:                    token.Symbol,
+		Type:                      token.Type,
+		DisplayName:               token.DisplayName,
+		DisplaySymbol:             token.DisplaySymbol,
+		Description:               token.Description,
+		Icon:                      token.Icon,
+		Decimals:                  token.Decimals,
 	}
 }
 

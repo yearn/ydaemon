@@ -17,6 +17,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/ethereum/go-ethereum/common/math"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
@@ -70,6 +71,27 @@ var (
 	blockTimeData    *BlockTimeData
 	blockTimeDataDir string = "data/blocktime"
 )
+
+/************************************************************************************************
+** SafeUint64ToInt64 safely converts a uint64 to an int64 with bounds checking.
+**
+** This helper function prevents overflow errors when converting from unsigned to signed integers.
+** It ensures that the uint64 value does not exceed the maximum value that can be represented
+** by an int64 (math.MaxInt64).
+**
+** @param value uint64 - The unsigned 64-bit integer to convert
+** @return int64 - The converted signed 64-bit integer (or math.MaxInt64 if conversion would overflow)
+** @return bool - True if conversion was successful, false if it would overflow
+************************************************************************************************/
+func SafeUint64ToInt64(value uint64) (int64, bool) {
+	// Check if the uint64 value exceeds the maximum int64 value
+	if value > math.MaxInt64 {
+		return math.MaxInt64, false
+	}
+
+	// Safe to convert
+	return int64(value), true
+}
 
 /**************************************************************************************************
 ** InitBlockTimestamp initializes block timestamp mappings for a specific chain ID. It fetches
@@ -338,8 +360,22 @@ func loadBlocktimeFromCSV(chainID uint64) ([]TimestampBlockPair, error) {
 
 	// Log the date range of the data
 	if len(pairs) > 0 {
-		firstDate := time.Unix(int64(pairs[0].Timestamp), 0).UTC().Format("2006-01-02")
-		lastDate := time.Unix(int64(pairs[len(pairs)-1].Timestamp), 0).UTC().Format("2006-01-02")
+		firstTimestamp, ok := SafeUint64ToInt64(pairs[0].Timestamp)
+		if !ok {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Timestamp overflow for first record: %d",
+				chainID, pairs[0].Timestamp))
+			firstTimestamp = 0
+		}
+
+		lastTimestamp, ok := SafeUint64ToInt64(pairs[len(pairs)-1].Timestamp)
+		if !ok {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Timestamp overflow for last record: %d",
+				chainID, pairs[len(pairs)-1].Timestamp))
+			lastTimestamp = 0
+		}
+
+		firstDate := time.Unix(firstTimestamp, 0).UTC().Format("2006-01-02")
+		lastDate := time.Unix(lastTimestamp, 0).UTC().Format("2006-01-02")
 		blocktimeLog(fmt.Sprintf("Chain %d - Loaded %d records spanning from %s to %s",
 			chainID, len(pairs), firstDate, lastDate))
 	} else {
@@ -367,7 +403,13 @@ func updateBlocktimeUntilToday(chainID uint64, existingPairs []TimestampBlockPai
 
 	// Find the last timestamp in the data
 	lastPair := existingPairs[len(existingPairs)-1]
-	lastTime := time.Unix(int64(lastPair.Timestamp), 0).UTC()
+	lastTimestamp, ok := SafeUint64ToInt64(lastPair.Timestamp)
+	if !ok {
+		blocktimeWarning(fmt.Sprintf("Chain %d - Timestamp overflow for last record: %d",
+			chainID, lastPair.Timestamp))
+		return // Skip update if timestamp is invalid
+	}
+	lastTime := time.Unix(lastTimestamp, 0).UTC()
 
 	blocktimeLog(fmt.Sprintf("Chain %d - Last blocktime record is from %s (timestamp %d, block %d)",
 		chainID, lastTime.Format("2006-01-02 15:04:05"), lastPair.Timestamp, lastPair.Block))
@@ -521,7 +563,12 @@ func fetchBlockNumberFromAPI(chain env.TChain, timestamp uint64, apiKey string) 
 	}
 
 	// Convert timestamp to date string for logging
-	dateStr := time.Unix(int64(timestamp), 0).UTC().Format("2006-01-02 15:04:05")
+	timestampInt64, ok := SafeUint64ToInt64(timestamp)
+	if !ok {
+		blocktimeWarning(fmt.Sprintf("Chain %d - Timestamp overflow: %d", chain.ID, timestamp))
+		return 0, fmt.Errorf("timestamp value too large: %d", timestamp)
+	}
+	dateStr := time.Unix(timestampInt64, 0).UTC().Format("2006-01-02 15:04:05")
 	blocktimeLog(fmt.Sprintf("Chain %d - Attempting to fetch block for %s", chain.ID, dateStr))
 
 	// Try to use DefiLlama API first for supported chains
@@ -586,7 +633,12 @@ func fetchBlockNumberFromAPI(chain env.TChain, timestamp uint64, apiKey string) 
 			chain.ID, chain.AvgBlocksPerDay))
 
 		now := time.Now().UTC()
-		daysDiff := int(now.Sub(time.Unix(int64(timestamp), 0).UTC()).Hours() / 24)
+		timestampInt64, ok := SafeUint64ToInt64(timestamp)
+		if !ok {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Timestamp overflow: %d", chain.ID, timestamp))
+			return 0, fmt.Errorf("timestamp value too large: %d", timestamp)
+		}
+		daysDiff := int(now.Sub(time.Unix(timestampInt64, 0).UTC()).Hours() / 24)
 		if daysDiff >= 0 {
 			// Get current block number
 			latestBlock, err := RPC[chain.ID].BlockNumber(context.Background())
@@ -649,7 +701,20 @@ func appendBlocktimeToCSV(chainID uint64, pairs []TimestampBlockPair) {
 	// Write each pair
 	writtenPairs := 0
 	for _, pair := range pairs {
-		line := fmt.Sprintf("%d,%d,%s\n", pair.Timestamp, pair.Block, pair.Date)
+		timestampInt64, ok := SafeUint64ToInt64(pair.Timestamp)
+		if !ok {
+			blocktimeWarning(fmt.Sprintf("Chain %d - Skipping record with timestamp overflow: %d",
+				chainID, pair.Timestamp))
+			continue
+		}
+
+		// If date is not already set, format it
+		pairDate := pair.Date
+		if pairDate == "" {
+			pairDate = time.Unix(timestampInt64, 0).UTC().Format("02/01/2006")
+		}
+
+		line := fmt.Sprintf("%d,%d,%s\n", pair.Timestamp, pair.Block, pairDate)
 		if _, err := writer.WriteString(line); err != nil {
 			blocktimeWarning(fmt.Sprintf("Chain %d - Failed to write CSV line for timestamp %d: %v",
 				chainID, pair.Timestamp, err))

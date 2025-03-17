@@ -1,6 +1,7 @@
 package ethereum
 
 import (
+	"math"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -429,4 +430,138 @@ func TestCSVFileOperations(t *testing.T) {
 **************************************************************************************************/
 func contains(s, substr string) bool {
 	return strings.Contains(s, substr)
+}
+
+/************************************************************************************************
+** TestSafeUint64ToInt64 tests the SafeUint64ToInt64 function to ensure it correctly converts
+** uint64 values to int64 with proper bounds checking.
+**
+** This test focuses on:
+** 1. Valid conversions: uint64 values that are within the valid int64 range
+** 2. Boundary values: testing at and around the int64 maximum value
+** 3. Invalid conversions: values that exceed the maximum int64 value
+** 4. Zero and small values: ensuring edge cases work correctly
+**
+** @param t *testing.T - The testing framework
+************************************************************************************************/
+func TestSafeUint64ToInt64(t *testing.T) {
+	tests := []struct {
+		name          string
+		input         uint64
+		expectedValue int64
+		expectedOk    bool
+	}{
+		{
+			name:          "Zero value",
+			input:         0,
+			expectedValue: 0,
+			expectedOk:    true,
+		},
+		{
+			name:          "Small positive value",
+			input:         42,
+			expectedValue: 42,
+			expectedOk:    true,
+		},
+		{
+			name:          "Medium positive value",
+			input:         1000000,
+			expectedValue: 1000000,
+			expectedOk:    true,
+		},
+		{
+			name:          "Large positive value",
+			input:         1000000000000,
+			expectedValue: 1000000000000,
+			expectedOk:    true,
+		},
+		{
+			name:          "Maximum int64 value",
+			input:         math.MaxInt64,
+			expectedValue: math.MaxInt64,
+			expectedOk:    true,
+		},
+		{
+			name:          "Maximum int64 value plus 1 (overflow)",
+			input:         uint64(math.MaxInt64) + 1,
+			expectedValue: math.MaxInt64,
+			expectedOk:    false,
+		},
+		{
+			name:          "Large uint64 value (overflow)",
+			input:         math.MaxUint64,
+			expectedValue: math.MaxInt64,
+			expectedOk:    false,
+		},
+		{
+			name:          "Half of uint64 range (overflow)",
+			input:         1 << 63,
+			expectedValue: math.MaxInt64,
+			expectedOk:    false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			value, ok := SafeUint64ToInt64(tt.input)
+
+			// Check if the conversion result matches the expected value
+			if value != tt.expectedValue {
+				t.Errorf("SafeUint64ToInt64(%d) returned value = %d, want %d",
+					tt.input, value, tt.expectedValue)
+			}
+
+			// Check if the success flag matches the expected result
+			if ok != tt.expectedOk {
+				t.Errorf("SafeUint64ToInt64(%d) returned ok = %v, want %v",
+					tt.input, ok, tt.expectedOk)
+			}
+		})
+	}
+}
+
+/************************************************************************************************
+** TestSafeUint64ToInt64_EdgeCases tests specific edge cases for the SafeUint64ToInt64 function,
+** focusing on values right at and around the boundary of valid conversions.
+**
+** This test focuses on:
+** 1. Values very close to the int64 maximum to ensure precise boundary checking
+** 2. Values that transition from valid to invalid to validate the boundary logic
+**
+** @param t *testing.T - The testing framework
+************************************************************************************************/
+func TestSafeUint64ToInt64_EdgeCases(t *testing.T) {
+	// Test values exactly at the boundary
+	maxInt64 := uint64(math.MaxInt64)
+
+	// Test maximum valid value
+	value, ok := SafeUint64ToInt64(maxInt64)
+	if !ok || value != math.MaxInt64 {
+		t.Errorf("Expected (%d, true) for max valid value, got (%d, %v)",
+			math.MaxInt64, value, ok)
+	}
+
+	// Test minimum invalid value
+	value, ok = SafeUint64ToInt64(maxInt64 + 1)
+	if ok || value != math.MaxInt64 {
+		t.Errorf("Expected (math.MaxInt64, false) for min invalid value, got (%d, %v)",
+			value, ok)
+	}
+
+	// Test a sequence of values at the boundary
+	for i := uint64(0); i < 10; i++ {
+		testValue := maxInt64 - 5 + i
+		expectedOk := testValue <= maxInt64
+		expectedValue := int64(math.MaxInt64)
+		if expectedOk {
+			expectedValue = int64(testValue)
+		}
+
+		value, ok := SafeUint64ToInt64(testValue)
+
+		if value != expectedValue || ok != expectedOk {
+			t.Errorf("SafeUint64ToInt64(%d) = (%d, %v), want (%d, %v)",
+				testValue, value, ok, expectedValue, expectedOk)
+		}
+	}
 }

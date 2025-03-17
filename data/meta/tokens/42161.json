@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-11T21:25:49.178592+01:00",
+	"lastUpdate": "2025-03-17T09:25:13.298348+01:00",
 	"version": {
 		"major": 0,
-		"minor": 43,
+		"minor": 44,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1016,6 +1016,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x18c11FD286C5EC11c3b683Caa813B77f5163A122/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x1942ee88b2ed1a848251f071fb658922ec8fd4d9": {
+			"address": "0x1942ee88b2ed1a848251f071fb658922ec8fd4d9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked ePENDLE 26JUN2025",
+			"symbol": "PT-stk-EPendle-26JUN2025",
+			"displayName": "PT Staked ePENDLE 26JUN2025",
+			"displaySymbol": "PT-stk-EPendle-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x1942ee88b2ed1A848251f071Fb658922Ec8Fd4d9/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2646,6 +2660,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x4173dd58ee78764bfd274e2bd79fc684cdd40397": {
+			"address": "0x4173dd58ee78764bfd274e2bd79fc684cdd40397",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT mPendle 26JUN2025",
+			"symbol": "YT-mPendle-26JUN2025",
+			"displayName": "YT mPendle 26JUN2025",
+			"displaySymbol": "YT-mPendle-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4173dd58eE78764bfD274e2Bd79fc684Cdd40397/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x4186bfc76e2e237523cbc30fd220fe055156b41f": {
 			"address": "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
 			"underlyingTokensAddresses": [
@@ -3038,6 +3066,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4c43F75F34BF34D3DB3fc3841845d2b69A5eB6A3/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x4c5342a6107824a77e133136df2b79029546410d": {
+			"address": "0x4c5342a6107824a77e133136df2b79029546410d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked ePENDLE 26JUN2025",
+			"symbol": "YT-stk-EPendle-26JUN2025",
+			"displayName": "YT Staked ePENDLE 26JUN2025",
+			"displaySymbol": "YT-stk-EPendle-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x4c5342A6107824A77E133136dF2b79029546410d/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4848,6 +4890,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x8621c587059357d6C669f72dA3Bfe1398fc0D0B5/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x86aacbed3e7b3d33149d5dcfd2def3c6d8498b8b": {
+			"address": "0x86aacbed3e7b3d33149d5dcfd2def3c6d8498b8b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x86AACBed3E7b3D33149d5DcfD2Def3C6d8498B8b/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -7237,6 +7293,20 @@
 			"decimals": 6,
 			"chainID": 42161
 		},
+		"0xcaf560681233b54c996ba06c71566fd30f32c973": {
+			"address": "0xcaf560681233b54c996ba06c71566fd30f32c973",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xCAf560681233b54c996ba06C71566FD30F32C973/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b": {
 			"address": "0xcafcd85d8ca7ad1e1c6f82f651fa15e33aefd07b",
 			"underlyingTokensAddresses": [],
@@ -7566,6 +7636,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xD5AabeDA88c31858E5f60905185f8697bE185e55/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xd6be2dc6767da105b73e1e78f9a61fe4eb9b03e0": {
+			"address": "0xd6be2dc6767da105b73e1e78f9a61fe4eb9b03e0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT mPendle 26JUN2025",
+			"symbol": "PT-mPendle-26JUN2025",
+			"displayName": "PT mPendle 26JUN2025",
+			"displaySymbol": "PT-mPendle-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xd6Be2DC6767DA105B73e1e78f9A61fE4eB9b03E0/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

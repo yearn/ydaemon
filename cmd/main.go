@@ -2,14 +2,12 @@ package main
 
 import (
 	"sync"
-	"time"
 
-	"github.com/go-co-op/gocron"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/vaultsMigrations"
 )
 
@@ -17,10 +15,9 @@ func processServer(chainID uint64) {
 	setStatusForChainID(chainID, `Loading`)
 	defer setStatusForChainID(chainID, `OK`)
 
-	scheduler := gocron.NewScheduler(time.UTC)
 	ethereum.GetWSClient(chainID, true)
 	ethereum.InitBlockTimestamp(chainID)
-	internal.InitializeV2(chainID, nil, scheduler)
+	internal.InitializeV2(chainID, nil)
 	TriggerInitializedStatus(chainID)
 }
 
@@ -31,6 +28,7 @@ func processServer(chainID uint64) {
 func main() {
 	initFlags()
 	ethereum.Initialize()
+	storage.InitializeStorage()
 	go ListenToSignals()
 
 	var wg sync.WaitGroup
@@ -65,17 +63,6 @@ func main() {
 			wg.Add(1)
 			go func(chainID uint64) {
 				vaultsMigrations.Run(chainID)
-				wg.Done()
-			}(chainID)
-		}
-		wg.Wait()
-
-	case ProcessInitDailyBlock:
-		logs.Info(`Running yDaemon DailyBlock Initializer process...`)
-		for _, chainID := range chains {
-			wg.Add(1)
-			go func(chainID uint64) {
-				initDailyBlock.Run(chainID)
 				wg.Done()
 			}(chainID)
 		}

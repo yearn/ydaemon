@@ -12,7 +12,13 @@ import (
 	"github.com/yearn/ydaemon/processes/risks"
 )
 
-// TExternalVaultHarvest is the struct containing the information about the harvest of a vault that can be used to compute the Gain/Loss and access the Transactions on the explorer.
+/**************************************************************************************************
+** TExternalVaultHarvest represents harvest data for a vault strategy.
+**
+** This structure contains information about a strategy's harvest transaction, including profit/loss
+** amounts and their USD values. It's primarily used in reporting vault performance and for
+** analytics dashboards.
+**************************************************************************************************/
 type TExternalVaultHarvest struct {
 	VaultAddress    string  `json:"vaultAddress,omitempty"`
 	StrategyAddress string  `json:"strategyAddress"`
@@ -22,16 +28,42 @@ type TExternalVaultHarvest struct {
 	ProfitValue     float64 `json:"profitValue"`
 	Loss            string  `json:"loss"`
 	LossValue       float64 `json:"lossValue"`
+	// Additional fields used in route.harvests.go
+	BlockNumber  string  `json:"blockNumber,omitempty"`
+	HistAPR      float64 `json:"histAPR,omitempty"`
+	VaultTVL     float64 `json:"vaultTVL,omitempty"`
+	VaultName    string  `json:"vaultName,omitempty"`
+	StrategyName string  `json:"strategyName,omitempty"`
 }
 
-// TExternalVaultMigration is the struct containing the information about the migration of a vault.
+/**************************************************************************************************
+** TExternalVaultMigration contains migration information for a vault.
+**
+** When vaults need to be migrated to newer versions, this structure provides data about the
+** migration target and availability status, helping users transition their funds.
+**************************************************************************************************/
 type TExternalVaultMigration struct {
 	Available bool   `json:"available"`
 	Address   string `json:"address"`
 	Contract  string `json:"contract"`
 }
 
-// TExternalVaultDetails is the struct containing the information about a vault.
+/**************************************************************************************************
+** TExternalVaultDetails contains metadata and classification information for a vault.
+**
+** This structure holds various flags and attributes that determine how a vault is displayed,
+** categorized, and processed in the UI and API responses. It includes:
+**
+** - Status flags: isRetired (no longer active), isHidden (not shown by default in UIs)
+** - Classification: isPool (represents a liquidity pool), isAutomated (uses automation systems)
+** - Display preferences: isHighlighted (promoted in UI listings)
+** - Architecture flags: isAggregator (manages multiple strategies as a single vault)
+** - Performance traits: isBoosted (has enhanced yield through external incentives)
+** - Categorization: stability type, category, poolProvider, etc.
+**
+** API consumers can use these fields to filter, sort, and display vaults appropriately
+** in user interfaces, dashboards, and analytics tools.
+**************************************************************************************************/
 type TExternalVaultDetails struct {
 	IsRetired       bool                       `json:"isRetired"`    // If the vault is retired or not
 	IsHidden        bool                       `json:"isHidden"`     // If the vault is hidden or not
@@ -46,7 +78,13 @@ type TExternalVaultDetails struct {
 	StableBaseAsset string                     `json:"stableBaseAsset,omitempty"`
 }
 
-// TExternalERC20Token contains the basic information of an ERC20 token
+/**************************************************************************************************
+** TExternalERC20Token represents token information for vault assets and rewards.
+**
+** This structure contains the basic information about an ERC20 token, including its address,
+** name, symbol, decimals, and price data. It's used for vault assets, reward tokens, and
+** other token representations in the API.
+**************************************************************************************************/
 type TExternalERC20Token struct {
 	Address                   string            `json:"address"`
 	UnderlyingTokensAddresses []string          `json:"underlyingTokensAddresses"`
@@ -60,7 +98,36 @@ type TExternalERC20Token struct {
 	Decimals                  uint64            `json:"decimals"`
 }
 
-// TExternalVaultInfo is the struct containing the information about a vault.
+/**************************************************************************************************
+** TExternalVaultInfo contains risk assessment data and display metadata for vaults.
+**
+** This structure holds important information about a vault's risk profile, UI display guidelines,
+** and special notices that help users make informed investment decisions.
+**
+** Risk Assessment System:
+** - RiskLevel: Overall risk rating from 1 (safest) to 5 (highest risk)
+** - RiskScore: Detailed 11-element array with individual risk factor scores:
+**   [0] Code review quality (0-5)
+**   [1] Testing coverage and quality (0-5)
+**   [2] Code complexity assessment (0-5)
+**   [3] Risk exposure to market conditions (0-5)
+**   [4] Protocol integration complexity (0-5)
+**   [5] Centralization risk of the strategy (0-5)
+**   [6] External protocol audit status (0-5)
+**   [7] External protocol centralization (0-5)
+**   [8] External protocol TVL size (0-5)
+**   [9] External protocol longevity (0-5)
+**   [10] External protocol type risk (0-5)
+**
+** For Multi-Strategy Vaults, the overall RiskLevel is derived from the highest risk
+** strategy, while the detailed RiskScore array may not be populated (use the individual
+** strategy risk scores instead).
+**
+** Display Guidelines:
+** - UINotice: Optional message to display to users (warnings, information)
+** - SourceURL: Link to relevant external resource (e.g., token purchase site)
+** - Status flags: Control how the vault appears in listings
+**************************************************************************************************/
 type TExternalVaultInfo struct {
 	SourceURL        string   `json:"sourceURL,omitempty"` // The vault might require some specific tokens that needs to be bought by a specific provider. It's the URL of the provider.
 	RiskLevel        int8     `json:"riskLevel"`           // The risk level of the vault. The value is a calculated from the sum of all risk score from the object for Single Strategy Vaults. Multi-Strategy Vault, highest `riskLevel` of all strategies is set. 1 is the most secure and 5 is the least secure.
@@ -72,6 +139,13 @@ type TExternalVaultInfo struct {
 	RiskScoreComment string   `json:"riskScoreComment,omitempty"` // Comment for the risk score to the strategy. Can be empty.
 }
 
+/**************************************************************************************************
+** TExternalCompositeData contains additional yield data for composite vaults.
+**
+** This structure is used for vaults that incorporate multiple yield sources or have boosted
+** rewards. It includes information about boost multipliers and underlying pool APY values that
+** contribute to the overall vault yield.
+**************************************************************************************************/
 type TExternalCompositeData struct {
 	Boost                 *bigNumber.Float `json:"boost"`
 	PoolAPY               *bigNumber.Float `json:"poolAPY"`
@@ -84,15 +158,38 @@ type TExternalCompositeData struct {
 	KeepCRV               *bigNumber.Float `json:"keepCRV,omitempty"`
 	KeepVelo              *bigNumber.Float `json:"keepVELO,omitempty"`
 }
+
+/**************************************************************************************************
+** TExternalExtraRewards represents additional yield sources for vaults.
+**
+** This structure contains information about extra rewards that may be available beyond
+** the standard yield, such as staking rewards and gamma (protocol-specific) rewards.
+**************************************************************************************************/
 type TExternalExtraRewards struct {
 	StakingRewardsAPR *bigNumber.Float `json:"stakingRewardsAPR"`
 	GammaRewardAPR    *bigNumber.Float `json:"gammaRewardAPR"`
 }
+
+/**************************************************************************************************
+** TExternalForwardAPR contains projected yield information for vaults.
+**
+** This structure holds forward-looking APR data which represents the expected future
+** performance of the vault. It includes a netAPR value and composite data showing the
+** breakdown of yield sources.
+**************************************************************************************************/
 type TExternalForwardAPR struct {
 	Type      string                 `json:"type"`
 	NetAPR    *bigNumber.Float       `json:"netAPR"`
 	Composite TExternalCompositeData `json:"composite"`
 }
+
+/**************************************************************************************************
+** TExternalVaultAPR contains comprehensive yield information for a vault.
+**
+** This structure aggregates all yield-related data for a vault, including current APR,
+** historical performance, fee information, price per share data, and forward-looking APR
+** projections. It serves as the central source for all performance metrics.
+**************************************************************************************************/
 type TExternalVaultAPR struct {
 	Type          string                `json:"type"`
 	NetAPR        *bigNumber.Float      `json:"netAPR"`
@@ -103,17 +200,47 @@ type TExternalVaultAPR struct {
 	ForwardAPR    TExternalForwardAPR   `json:"forwardAPR"`
 }
 
-// TExternalVault is the struct containing the information about a vault.
+/**************************************************************************************************
+** TExternalVault represents a complete Yearn vault with all its associated data.
+**
+** This is the primary data structure used in API responses for detailed vault information.
+** It provides a comprehensive view of a vault, including:
+**
+** Core Properties:
+** - Identifiers: address, name, symbol, version
+** - Classification: type, kind, category
+** - Metadata: description, icon, display formats
+**
+** Financial Data:
+** - TVL (Total Value Locked): assets under management and USD value
+** - APR (Annual Percentage Rate): yield information across all sources
+** - PricePerShare: token value growth over time
+**
+** Technical Components:
+** - Underlying token details
+** - Associated strategies (yield-generating components)
+** - Staking options and rewards
+** - Migration information (if a newer vault version exists)
+**
+** Risk and Presentation:
+** - Risk assessment and scoring
+** - UI display preferences and status flags
+** - Featuring score (for sorting and highlighting)
+**
+** This structure is the most complete representation of a vault and should be used
+** when detailed information is required. For list views or lightweight use cases,
+** consider using TSimplifiedExternalVault instead.
+**************************************************************************************************/
 type TExternalVault struct {
 	Address           string                  `json:"address"`
 	Type              models.TTokenType       `json:"type"`
 	Kind              models.TVaultKind       `json:"kind"`
 	Symbol            string                  `json:"symbol"`
-	DisplaySymbol     string                  `json:"display_symbol"`
-	FormatedSymbol    string                  `json:"formated_symbol"`
+	DisplaySymbol     string                  `json:"-"`
+	FormatedSymbol    string                  `json:"-"`
 	Name              string                  `json:"name"`
-	DisplayName       string                  `json:"display_name"`
-	FormatedName      string                  `json:"formated_name"`
+	DisplayName       string                  `json:"-"`
+	FormatedName      string                  `json:"-"`
 	Description       string                  `json:"description,omitempty"`
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
@@ -126,7 +253,7 @@ type TExternalVault struct {
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               models.TTVL             `json:"tvl"`
 	APR               TExternalVaultAPR       `json:"apr"`
-	Details           TExternalVaultDetails   `json:"details"`
+	Details           TExternalVaultDetails   `json:"-"`
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TStakingData            `json:"staking"`
@@ -135,12 +262,24 @@ type TExternalVault struct {
 	PricePerShare     *bigNumber.Int          `json:"pricePerShare"`
 }
 
+/**************************************************************************************************
+** TSimplifiedExternalVaultTVL represents total value locked data for simplified vault responses.
+**
+** This structure contains essential TVL information for a vault in a more compact format,
+** including the total assets in raw form, the calculated TVL in USD, and the token price.
+**************************************************************************************************/
 type TSimplifiedExternalVaultTVL struct {
 	TotalAssets *bigNumber.Int `json:"totalAssets"`
 	TVL         float64        `json:"tvl"`
 	Price       float64        `json:"price"`
 }
 
+/**************************************************************************************************
+** TSimplifiedExternalERC20Token represents basic token information for simplified vault responses.
+**
+** This structure contains the essential information about ERC20 tokens used in the simplified
+** vault responses, focusing on identification, display, and basic properties.
+**************************************************************************************************/
 type TSimplifiedExternalERC20Token struct {
 	Address     string `json:"address"`
 	Name        string `json:"name"`
@@ -149,6 +288,12 @@ type TSimplifiedExternalERC20Token struct {
 	Decimals    uint64 `json:"decimals"`
 }
 
+/**************************************************************************************************
+** TStakingRewardsData represents information about token rewards from staking.
+**
+** This structure contains detailed information about the rewards available from staking
+** vault tokens, including reward token details, rate information, and APR data.
+**************************************************************************************************/
 type TStakingRewardsData struct {
 	Address    string           `json:"address"`
 	Name       string           `json:"name"`
@@ -160,6 +305,13 @@ type TStakingRewardsData struct {
 	APR        *bigNumber.Float `json:"apr"`
 	PerWeek    *bigNumber.Float `json:"perWeek"`
 }
+
+/**************************************************************************************************
+** TStakingData represents the overall staking capabilities for a vault.
+**
+** This structure contains information about the staking options available for a vault,
+** including the staking contract address, availability status, and detailed reward information.
+**************************************************************************************************/
 type TStakingData struct {
 	Address   string                `json:"address"`
 	Available bool                  `json:"available"`
@@ -167,7 +319,13 @@ type TStakingData struct {
 	Rewards   []TStakingRewardsData `json:"rewards"`
 }
 
-// TSimplifiedExternalVault is the struct containing the information about a vault.
+/**************************************************************************************************
+** TSimplifiedExternalVault provides a streamlined representation of vault data.
+**
+** This structure contains a more compact version of vault information suitable for list views
+** and scenarios where the full vault details aren't necessary. It includes essential properties,
+** token information, TVL, APR, strategies, and metadata.
+**************************************************************************************************/
 type TSimplifiedExternalVault struct {
 	Address        string                        `json:"address"`
 	Type           models.TTokenType             `json:"type"`
@@ -191,15 +349,23 @@ type TSimplifiedExternalVault struct {
 }
 
 /************************************************************************************************
-** Function to map the internal TVaultAPY structure to the external TExternalVaultAPR structure.
-** This function takes a TVaultAPY object as input and returns a TExternalVaultAPR object.
-** The mapping includes:
-** - Type: The type of APR.
-** - NetAPR: The net annual percentage rate.
-** - Fees: The associated fees.
-** - Points: Historical points data.
-** - Extra: Extra rewards data.
-** - ForwardAPR: Forward-looking APR data, including type, net APR, and composite data.
+** assignVaultAPR maps the internal TVaultAPY structure to the external TExternalVaultAPR structure.
+**
+** This function converts APY (Annual Percentage Yield) data from internal calculations to the
+** standardized APR (Annual Percentage Rate) format used in the API. The conversion preserves
+** all component values needed for displaying comprehensive yield information to users.
+**
+** The field mapping is as follows:
+** - Type: Yield calculation method (e.g., "crv", "compound")
+** - NetAPR: Primary annualized rate value used for yield calculations and comparisons
+** - Fees: All fee components (management, performance, etc.)
+** - Points: Historical yield data points for trend analysis
+** - PricePerShare: Token value growth data for verification
+** - Extra: Additional yield sources (staking rewards, protocol rewards)
+** - ForwardAPR: Projected future yield information
+**
+** @param vaultAPY apr.TVaultAPY - The internal APY structure to convert
+** @return TExternalVaultAPR - The populated external APR structure for API responses
 ************************************************************************************************/
 func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 	return TExternalVaultAPR{
@@ -229,147 +395,136 @@ func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 	}
 }
 
-func NewVault() TExternalVault {
-	return TExternalVault{}
-}
-func (v TExternalVault) AssignTVault(vault models.TVault) (TExternalVault, error) {
+/************************************************************************************************
+** CreateExternalVault transforms an internal vault model into the external API representation.
+**
+** This function handles the complete conversion process from the internal data model to the
+** external API format, including:
+**
+** 1. Retrieving associated token information (vault token, underlying token)
+** 2. Building display names and symbols with proper formatting
+** 3. Calculating and populating TVL (Total Value Locked) data
+** 4. Fetching and formatting APR (Annual Percentage Rate) information
+** 5. Loading risk assessment data and metadata
+** 6. Setting up migration status and highlighting information
+** 7. Populating staking-related information if available
+**
+** The function will return an error in the following cases:
+** - If the vault token information cannot be found
+** - If required data for conversion is missing or invalid
+**
+** @param vault models.TVault - The internal vault structure to convert
+** @return TExternalVault - The fully populated external vault structure for API responses
+** @return error - Error if conversion fails (typically due to missing token data)
+************************************************************************************************/
+func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
+	// Get vault token
 	vaultToken, ok := storage.GetERC20(vault.ChainID, vault.Address)
 	if !ok {
-		return v, errors.New(`token not found`)
+		return TExternalVault{}, errors.New(`token not found`)
 	}
+
+	// Get vault name and symbol
 	name, displayName, formatedName := fetcher.BuildVaultNames(vault, vault.Metadata.DisplayName)
 	symbol, displaySymbol, formatedSymbol := fetcher.BuildVaultSymbol(vault, vault.Metadata.DisplaySymbol)
 	strategies, _ := storage.ListStrategiesForVault(vault.ChainID, vault.Address)
 
-	v.Address = vault.Address.Hex()
-	v.Version = vault.Version
-	v.Endorsed = vault.Endorsed
-	v.Boosted = vault.Metadata.IsBoosted
-	v.EmergencyShutdown = vault.EmergencyShutdown
-	v.ChainID = vault.ChainID
-	v.TVL = fetcher.BuildVaultTVL(vault)
-	v.Migration = toTExternalVaultMigration(vault.Metadata.Migration)
-	v.Symbol = symbol
-	v.DisplaySymbol = displaySymbol
-	v.FormatedSymbol = formatedSymbol
-	v.Name = name
-	v.DisplayName = displayName
-	v.FormatedName = formatedName
-	v.Icon = vaultToken.Icon
-	v.Type = vaultToken.Type
-	v.Kind = vault.Kind
-	v.Decimals = vaultToken.Decimals
-	v.Description = vault.Metadata.Description
-	v.Category = fetcher.BuildVaultCategory(vault, strategies)
-	v.PricePerShare = vault.LastPricePerShare
-	v.Staking = assignStakingData(vault.ChainID, vault.Address)
-
-	if underlyingToken, ok := storage.GetUnderlyingERC20(vault.ChainID, vault.Address); ok {
-		v.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
-	} else if underlyingToken, ok = storage.GetERC20(vault.ChainID, vault.AssetAddress); ok {
-		v.Token = TExternalERC20Token{
-			Address:                   underlyingToken.Address.Hex(),
-			UnderlyingTokensAddresses: toArrTMixedcaseAddress(underlyingToken.UnderlyingTokensAddresses),
-			Name:                      underlyingToken.Name,
-			Symbol:                    underlyingToken.Symbol,
-			Type:                      underlyingToken.Type,
-			DisplayName:               underlyingToken.DisplayName,
-			DisplaySymbol:             underlyingToken.DisplaySymbol,
-			Description:               underlyingToken.Description,
-			Icon:                      underlyingToken.Icon,
-			Decimals:                  underlyingToken.Decimals,
-		}
+	// Create the vault directly without intermediate objects
+	externalVault := TExternalVault{
+		Address:           vault.Address.Hex(),
+		Version:           vault.Version,
+		Endorsed:          vault.Endorsed,
+		Boosted:           vault.Metadata.IsBoosted,
+		EmergencyShutdown: vault.EmergencyShutdown,
+		ChainID:           vault.ChainID,
+		TVL:               fetcher.BuildVaultTVL(vault),
+		Migration:         toTExternalVaultMigration(vault.Metadata.Migration),
+		Symbol:            symbol,
+		DisplaySymbol:     displaySymbol,
+		FormatedSymbol:    formatedSymbol,
+		Name:              name,
+		DisplayName:       displayName,
+		FormatedName:      formatedName,
+		Icon:              vaultToken.Icon,
+		Type:              vaultToken.Type,
+		Kind:              vault.Kind,
+		Decimals:          vaultToken.Decimals,
+		Description:       vault.Metadata.Description,
+		Category:          fetcher.BuildVaultCategory(vault, strategies),
+		PricePerShare:     vault.LastPricePerShare,
+		Details: TExternalVaultDetails{
+			IsRetired:       vault.Metadata.IsRetired,
+			IsHidden:        vault.Metadata.IsHidden,
+			IsAggregator:    vault.Metadata.IsAggregator,
+			IsBoosted:       vault.Metadata.IsBoosted,
+			IsAutomated:     vault.Metadata.IsAutomated,
+			IsHighlighted:   vault.Metadata.IsHighlighted,
+			IsPool:          vault.Metadata.IsPool,
+			Category:        vault.Metadata.Category,
+			Stability:       vault.Metadata.Stability.Stability,
+			StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
+		},
+		Info: TExternalVaultInfo{
+			SourceURL: vault.Metadata.SourceURI,
+			RiskLevel: vault.Metadata.RiskLevel,
+			RiskScore: [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+		},
 	}
 
-	if v.Token.UnderlyingTokensAddresses == nil {
-		v.Token.UnderlyingTokensAddresses = []string{}
-	}
+	// Set staking data
+	externalVault.Staking = assignStakingData(vault.ChainID, vault.Address)
 
+	// Set token data
+	externalVault.Token = getUnderlyingTokenInfo(vault.ChainID, vault.Address, vault.AssetAddress)
+
+	// Set APR data
 	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
 	if ok {
-		v.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
+		externalVault.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
 	}
-	v.Details = TExternalVaultDetails{
-		IsRetired:       vault.Metadata.IsRetired,
-		IsHidden:        vault.Metadata.IsHidden,
-		IsAggregator:    vault.Metadata.IsAggregator,
-		IsBoosted:       vault.Metadata.IsBoosted,
-		IsAutomated:     vault.Metadata.IsAutomated,
-		IsHighlighted:   vault.Metadata.IsHighlighted,
-		IsPool:          vault.Metadata.IsPool,
-		Category:        vault.Metadata.Category,
-		Stability:       vault.Metadata.Stability.Stability,
-		StableBaseAsset: vault.Metadata.Stability.StableBaseAsset,
+
+	// Set stability defaults
+	if externalVault.Details.Stability == `` {
+		externalVault.Details.Stability = models.VaultStabilityUnknown
 	}
-	if v.Details.Stability == `` {
-		v.Details.Stability = models.VaultStabilityUnknown
-	}
-	if v.Details.Category == `` {
-		v.Details.Category = models.VaultCategoryAutomatic
+	if externalVault.Details.Category == `` {
+		externalVault.Details.Category = models.VaultCategoryAutomatic
 	}
 	if len(vault.Metadata.Protocols) > 0 {
-		v.Details.PoolProvider = vault.Metadata.Protocols[0]
+		externalVault.Details.PoolProvider = vault.Metadata.Protocols[0]
 	}
 
+	// Set source URL from gauge if available
 	poolResult, found := storage.GetGauge(vault.ChainID, vault.AssetAddress)
 	if found && poolResult.PoolURLs.Deposit != nil && len(poolResult.PoolURLs.Deposit) > 0 {
-		v.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
+		externalVault.Info.SourceURL = poolResult.PoolURLs.Deposit[0]
 	}
 
-	if v.Info.SourceURL == `` {
-		v.Info.SourceURL = vault.Metadata.SourceURI
-	}
-
-	v.Info.RiskLevel = vault.Metadata.RiskLevel
-	v.Info.RiskScore = [11]int8{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+	// Set risk data from cached risk score if available
 	cachedRiskScore, err := risks.GetCachedRiskScore(vault.ChainID, vault.Address)
 	if err == nil {
-		v.Info.RiskLevel = cachedRiskScore.RiskLevel
-		v.Info.RiskScore = [11]int8{
-			cachedRiskScore.RiskScore.Review,
-			cachedRiskScore.RiskScore.Testing,
-			cachedRiskScore.RiskScore.Complexity,
-			cachedRiskScore.RiskScore.RiskExposure,
-			cachedRiskScore.RiskScore.ProtocolIntegration,
-			cachedRiskScore.RiskScore.CentralizationRisk,
-			cachedRiskScore.RiskScore.ExternalProtocolAudit,
-			cachedRiskScore.RiskScore.ExternalProtocolCentralisation,
-			cachedRiskScore.RiskScore.ExternalProtocolTvl,
-			cachedRiskScore.RiskScore.ExternalProtocolLongevity,
-			cachedRiskScore.RiskScore.ExternalProtocolType,
-		}
-		v.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
+		externalVault.Info.RiskLevel = cachedRiskScore.RiskLevel
+		externalVault.Info.RiskScore = PopulateRiskScoreArray(cachedRiskScore.RiskScore)
+		externalVault.Info.RiskScoreComment = cachedRiskScore.RiskScore.Comment
 	} else if (vault.Metadata.RiskScore != models.TRiskScore{}) {
-		v.Info.RiskScore[0] = vault.Metadata.RiskScore.Review
-		v.Info.RiskScore[1] = vault.Metadata.RiskScore.Testing
-		v.Info.RiskScore[2] = vault.Metadata.RiskScore.Complexity
-		v.Info.RiskScore[3] = vault.Metadata.RiskScore.RiskExposure
-		v.Info.RiskScore[4] = vault.Metadata.RiskScore.ProtocolIntegration
-		v.Info.RiskScore[5] = vault.Metadata.RiskScore.CentralizationRisk
-		v.Info.RiskScore[6] = vault.Metadata.RiskScore.ExternalProtocolAudit
-		v.Info.RiskScore[7] = vault.Metadata.RiskScore.ExternalProtocolCentralisation
-		v.Info.RiskScore[8] = vault.Metadata.RiskScore.ExternalProtocolTvl
-		v.Info.RiskScore[9] = vault.Metadata.RiskScore.ExternalProtocolLongevity
-		v.Info.RiskScore[10] = vault.Metadata.RiskScore.ExternalProtocolType
-		v.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
+		externalVault.Info.RiskScore = PopulateRiskScoreArray(vault.Metadata.RiskScore)
+		externalVault.Info.RiskScoreComment = vault.Metadata.RiskScore.Comment
 	}
 
-	v.Info.UINotice = vault.Metadata.UINotice
+	externalVault.Info.UINotice = vault.Metadata.UINotice
 
-	return v, nil
+	return externalVault, nil
 }
 
+/**************************************************************************************************
+** toTExternalVaultMigration converts internal migration data to the external format.
+**
+** This function transforms the internal TMigration structure to the external TExternalVaultMigration
+** format, converting addresses to their hexadecimal string representation.
+**
+** @param migration models.TMigration - The internal migration data
+** @return TExternalVaultMigration - The converted external migration structure
+**************************************************************************************************/
 func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigration {
 	return TExternalVaultMigration{
 		Available: migration.Available,
@@ -377,6 +532,85 @@ func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigrat
 		Contract:  migration.Contract.Hex(),
 	}
 }
+
+/**************************************************************************************************
+** getUnderlyingTokenInfo retrieves and formats token information for a vault.
+**
+** This helper function centralizes the logic for retrieving token information associated with
+** a vault. It first tries to get the specialized underlying token data, then falls back to the
+** basic token data if needed. The function handles all token information retrieval and formatting
+** in one place, making the code more maintainable.
+**
+** The function follows this process:
+** 1. Try to get the underlying ERC20 token using the vault address
+** 2. If not found, try to get the ERC20 token using the asset address
+** 3. Format the retrieved token data into the external API representation
+** 4. Ensure the UnderlyingTokensAddresses array is never nil
+**
+** @param chainID uint64 - The chain ID of the vault
+** @param vaultAddress common.Address - The address of the vault
+** @param assetAddress common.Address - The address of the underlying asset
+** @return TExternalERC20Token - The formatted token information
+**************************************************************************************************/
+func getUnderlyingTokenInfo(chainID uint64, vaultAddress, assetAddress common.Address) TExternalERC20Token {
+	var tokenInfo TExternalERC20Token
+	var tokenFound bool
+
+	// First try to get the specialized underlying token data
+	if underlyingToken, ok := storage.GetUnderlyingERC20(chainID, vaultAddress); ok {
+		tokenInfo = convertToExternalToken(underlyingToken)
+		tokenFound = true
+	}
+
+	// Fallback to basic token data if specialized data not available
+	if !tokenFound {
+		if underlyingToken, ok := storage.GetERC20(chainID, assetAddress); ok {
+			tokenInfo = convertToExternalToken(underlyingToken)
+		}
+	}
+
+	// Initialize empty token array if needed to avoid nil references
+	if tokenInfo.UnderlyingTokensAddresses == nil {
+		tokenInfo.UnderlyingTokensAddresses = []string{}
+	}
+
+	return tokenInfo
+}
+
+/**************************************************************************************************
+** convertToExternalToken converts an internal ERC20 token to external representation.
+**
+** This utility function creates a standardized external representation of token data from
+** the internal storage model. This eliminates duplication and ensures consistent token
+** data formatting across the API.
+**
+** @param token models.TERC20Token - The internal token data
+** @return TExternalERC20Token - The formatted external token structure
+**************************************************************************************************/
+func convertToExternalToken(token models.TERC20Token) TExternalERC20Token {
+	return TExternalERC20Token{
+		Address:                   token.Address.Hex(),
+		UnderlyingTokensAddresses: toArrTMixedcaseAddress(token.UnderlyingTokensAddresses),
+		Name:                      token.Name,
+		Symbol:                    token.Symbol,
+		Type:                      token.Type,
+		DisplayName:               token.DisplayName,
+		DisplaySymbol:             token.DisplaySymbol,
+		Description:               token.Description,
+		Icon:                      token.Icon,
+		Decimals:                  token.Decimals,
+	}
+}
+
+/**************************************************************************************************
+** toArrTMixedcaseAddress converts an array of common.Address to string addresses.
+**
+** This utility function transforms an array of Ethereum addresses from their binary representation
+** to hexadecimal string format suitable for JSON serialization and API responses.
+**
+** @param addresses []common.Address - The array of addresses to convert
+** @return []string - The array of hexadecimal address strings
+**************************************************************************************************/
 func toArrTMixedcaseAddress(addresses []common.Address) []string {
 	arr := make([]string, len(addresses))
 	for i, address := range addresses {

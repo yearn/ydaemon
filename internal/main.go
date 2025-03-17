@@ -2,16 +2,15 @@ package internal
 
 import (
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/go-co-op/gocron"
+	"github.com/go-co-op/gocron/v2"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
-	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
-	"github.com/yearn/ydaemon/processes/initDailyBlock"
 	"github.com/yearn/ydaemon/processes/prices"
 	"github.com/yearn/ydaemon/processes/risks"
 )
@@ -63,7 +62,7 @@ func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
 	logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
 }
 
-func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Scheduler) {
+func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
 		defer wg.Done()
 	}
@@ -71,42 +70,38 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup, scheduler *gocron.Schedule
 	var vaultMap map[common.Address]models.TVault
 	var tokenMap map[common.Address]models.TERC20Token
 
-	scheduler.Every(2).Hours().StartImmediately().Do(func() {
-		_, vaultMap, tokenMap = initVaults(chainID)
+	scheduler, err := gocron.NewScheduler()
+	if err != nil {
+		logs.Error(chainID, `-`, `Failed to create scheduler: %v`, err)
+		return
+	}
 
-		risks.RetrieveAvailableRiskScores(chainID)
-		risks.RetrieveAllRiskScores(chainID, vaultMap)
+	scheduler.NewJob(
+		gocron.DurationJob(
+			time.Minute*30,
+		),
+		gocron.NewTask(
+			func() {
+				_, vaultMap, tokenMap = initVaults(chainID)
 
-		initStakingPools(chainID)
-		initStrategies(chainID, vaultMap)
-		/**********************************************************************************************
-		** Retrieving prices and strategies for all the given token and strategies on that chain.
-		** This is done in parallel to speed up the process and reduce the time it takes to complete.
-		** The scheduler is used to retrieve the strategies every 15 minutes.
-		** Computing APRS
-		**********************************************************************************************/
-		prices.RetrieveAllPrices(chainID, tokenMap)
-		logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
-		apr.ComputeChainAPY(chainID)
-		logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
-	})
+				risks.RetrieveAvailableRiskScores(chainID)
+				risks.RetrieveAllRiskScores(chainID, vaultMap)
 
-	scheduler.Every(1).Days().At("01:00").StartImmediately().Do(func() {
-		risks.RetrieveAvailableRiskScores(chainID)
-		risks.RetrieveAllRiskScores(chainID, vaultMap)
-	})
-
-	scheduler.Every(30).Minute().WaitForSchedule().Do(func() {
-		currentTokenMap, _ := storage.ListERC20(chainID)
-		prices.RetrieveAllPrices(chainID, currentTokenMap)
-		apr.ComputeChainAPY(chainID)
-	})
-
-	/**********************************************************************************************
-	** Do some background work
-	**********************************************************************************************/
-	scheduler.Every(10).Hours().StartImmediately().At("12:10").Do(func() {
-		initDailyBlock.Run(chainID)
-	})
-	scheduler.StartAsync()
+				initStakingPools(chainID)
+				initStrategies(chainID, vaultMap)
+				/**********************************************************************************************
+				** Retrieving prices and strategies for all the given token and strategies on that chain.
+				** This is done in parallel to speed up the process and reduce the time it takes to complete.
+				** The scheduler is used to retrieve the strategies every 15 minutes.
+				** Computing APRS
+				**********************************************************************************************/
+				prices.RetrieveAllPrices(chainID, tokenMap)
+				logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
+				apr.ComputeChainAPY(chainID)
+				logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+			},
+		),
+		gocron.WithStartAt(gocron.WithStartImmediately()),
+	)
+	scheduler.Start()
 }

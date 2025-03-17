@@ -18,6 +18,11 @@ import (
 ** Then, it will init the blockTimeSyncMap for all the chains.
 ***************************************************************************************************/
 func Initialize() {
+	// Check if verbose blocktime logging is enabled
+	if os.Getenv("VERBOSE_BLOCKTIME") == "true" {
+		EnableVerboseBlocktime()
+	}
+
 	// Create the RPC client for all the chains supported by yDaemon
 	for _, chain := range env.GetChains() {
 		logs.Info(`Using RPC URI`, GetRPCURI(chain.ID), `for chain`, chain.ID)
@@ -41,5 +46,13 @@ func Initialize() {
 			rpcToUse,
 			chain.MulticallContract.Address,
 		)
+	}
+
+	// Initialize the internal block time data storage
+	InitBlockTimeData()
+
+	// Initialize block timestamps for each supported chain
+	for _, chain := range env.GetChains() {
+		InitBlockTimestamp(chain.ID)
 	}
 }

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-11T21:24:31.904724+01:00",
+	"lastUpdate": "2025-03-17T09:25:21.373144+01:00",
 	"version": {
 		"major": 0,
-		"minor": 95,
+		"minor": 98,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -9992,6 +9992,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d968a5db8da0822a2f08840f553de4129aae5f3": {
+			"address": "0x4d968a5db8da0822a2f08840f553de4129aae5f3",
+			"underlyingTokensAddresses": [
+				"0xcacd6fd266af91b8aed52accc382b4e165586e29",
+				"0x0655977feb2f289a4ab78af67bab0d17aab84367"
+			],
+			"type": "Curve LP",
+			"name": "frxUSD/scrvUSD",
+			"symbol": "frxscrvUSD",
+			"displayName": "frxUSD/scrvUSD",
+			"displaySymbol": "frxscrvUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4d968a5Db8dA0822A2F08840f553De4129aAe5F3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d9f9d15101eec665f77210cb999639f760f831e": {
 			"address": "0x4d9f9d15101eec665f77210cb999639f760f831e",
 			"underlyingTokensAddresses": [
@@ -11700,6 +11717,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5aa213c1d8d3de74fb70dd66206feadc5fab8ebb": {
+			"address": "0x5aa213c1d8d3de74fb70dd66206feadc5fab8ebb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT swETH 26JUN2025",
+			"symbol": "YT-swETH-26JUN2025",
+			"displayName": "YT swETH 26JUN2025",
+			"displaySymbol": "YT-swETH-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5AA213C1d8d3DE74fB70DD66206FeAdc5Fab8eBb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17435,6 +17466,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x86d27c49a6a7a2bc033b5d67a21f93d62894ccb9": {
+			"address": "0x86d27c49a6a7a2bc033b5d67a21f93d62894ccb9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x86D27c49A6a7A2BC033B5d67a21F93d62894CCb9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x86e2a16a5abc67467ce502e3dab511c909c185a8": {
 			"address": "0x86e2a16a5abc67467ce502e3dab511c909c185a8",
 			"underlyingTokensAddresses": [
@@ -22484,6 +22529,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xAE5099C39f023C91d3dd55244CAFB36225B0850E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xae666c484c28a3376ea8929a4de6c378621d62a6": {
+			"address": "0xae666c484c28a3376ea8929a4de6c378621d62a6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT swETH 26JUN2025",
+			"symbol": "PT-swETH-26JUN2025",
+			"displayName": "PT swETH 26JUN2025",
+			"displaySymbol": "PT-swETH-26JUN2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xaE666C484C28a3376Ea8929A4DE6c378621d62a6/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27849,6 +27908,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd5497a68c3a77e7de0fa7fa0880387e6ec55d014": {
+			"address": "0xd5497a68c3a77e7de0fa7fa0880387e6ec55d014",
+			"underlyingTokensAddresses": [
+				"0x4d968a5db8da0822a2f08840f553de4129aae5f3"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve frxscrvUSD Factory yVault",
+			"symbol": "yvCurve-frxscrvUSD-f",
+			"displayName": "Curve frxscrvUSD Factory yVault",
+			"displaySymbol": "yvCurve-frxscrvUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD5497A68c3a77e7De0fa7fa0880387e6EC55d014/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52": {
 			"address": "0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52",
 			"underlyingTokensAddresses": [],
@@ -32484,6 +32559,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf7906F274c174A52d444175729E3fa98f9bde285/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf7a7873c32c73813b5411ca58eaadbbb6d806e4f": {
+			"address": "0xf7a7873c32c73813b5411ca58eaadbbb6d806e4f",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "ROOMV",
+			"symbol": "ROMV",
+			"displayName": "ROOMV",
+			"displaySymbol": "ROMV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf7a7873C32c73813b5411CA58EaadBBb6d806e4f/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf7b55c3732ad8b2c2da7c24f30a69f55c54fb717": {

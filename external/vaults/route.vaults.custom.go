@@ -1,6 +1,7 @@
 package vaults
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -8,10 +9,24 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/sort"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
+/**************************************************************************************************
+** TRotkiVaultToken represents the underlying token for a vault in Rotki format.
+**
+** This structure contains simplified token information specifically formatted for Rotki,
+** a portfolio tracking application. It includes only the essential token properties needed
+** for integration with Rotki's tracking system.
+**
+** @field Address string - The token's Ethereum address
+** @field Name string - The human-readable name of the token
+** @field Symbol string - The token's symbol (e.g., DAI, USDC)
+** @field Decimals uint64 - The number of decimal places the token uses
+** @field Icon string - URL to the token's icon image
+**************************************************************************************************/
 type TRotkiVaultToken struct {
 	Address  string `json:"address"`
 	Name     string `json:"name"`
@@ -20,6 +35,24 @@ type TRotkiVaultToken struct {
 	Icon     string `json:"icon"`
 }
 
+/**************************************************************************************************
+** TRotkiVaults represents vault information in Rotki format.
+**
+** This structure contains the vault data specifically formatted for integration with Rotki,
+** a portfolio tracking application. It presents a streamlined representation with only
+** the information necessary for tracking vault positions.
+**
+** @field Address string - The vault's Ethereum address
+** @field Name string - The human-readable name of the vault
+** @field Symbol string - The vault's symbol
+** @field Decimals uint64 - The vault's token decimal places
+** @field Version string - The vault's version identifier
+** @field Icon string - URL to the vault's icon image
+** @field FeaturingScore float64 - Internal score used for sorting (not exported to JSON)
+** @field Type models.TTokenType - The vault's type classification
+** @field Token TRotkiVaultToken - The underlying token information
+** @field StakingAddress string - Optional staking contract address if available
+**************************************************************************************************/
 type TRotkiVaults struct {
 	Address        string            `json:"address"`
 	Name           string            `json:"name"`
@@ -34,47 +67,50 @@ type TRotkiVaults struct {
 }
 
 /**************************************************************************************************
-** GetVaultsForRotki is a gin handler function to retrieve all the vaults matching the
-** inclusion.IsYearn filter.
+** GetVaultsForRotki retrieves vaults formatted specifically for Rotki integration.
+**
+** This endpoint provides vault data in a format specifically designed for the Rotki portfolio
+** tracking application. It includes a streamlined representation with only the information
+** necessary for tracking vault positions and returns data in a format compatible with Rotki's
+** integration needs.
+**
+** The endpoint accepts parameters for sorting, pagination, and filtering by chain IDs:
+** - orderBy: Field to sort results by (default: 'featuringScore')
+** - orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+** - skip/limit: Pagination controls (defaults: skip 0, limit 200)
+** - chainIDs: Comma-separated list of chain IDs to include (default: all supported chains)
+**
+** Endpoint: GET /vaults/rotki
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return []TRotkiVaults - The formatted list of vaults for Rotki
 **************************************************************************************************/
 func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	/** 🔵 - Yearn *************************************************************************************
-	** orderBy: A string that determines the order in which the vaults are returned. It is obtained
-	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
-	** it defaults to 'details.order'.
+	** Validate and process query parameters for sorting, pagination, and chain filtering.
 	**
-	** orderDirection: A string that determines the direction of the ordering of the vaults. It is
-	** obtained from the 'orderDirection' query parameter in the request. If the parameter is not
-	** provided, it defaults to 'asc'.
+	** orderBy: Field to sort results by (default: 'featuringScore')
+	** orderDirection: Sort direction, 'asc' or 'desc' (default: 'asc')
+	** skip: Number of records to skip for pagination (default: 0)
+	** limit: Maximum number of records to return (default: 200)
+	** chainIDs: Comma-separated list of chain IDs to include (default: all supported chains)
 	**************************************************************************************************/
-	orderBy := helpers.SafeString(getQuery(c, `orderBy`), `featuringScore`)
-	orderDirection := helpers.SafeString(getQuery(c, `orderDirection`), `asc`)
+	// Define valid fields for sorting
+	validOrderFields := []string{
+		"featuringScore", "name", "symbol", "decimals", "type", "version", "address",
+	}
+	orderBy := validateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetVaultsForRotki")
 
-	/** 🔵 - Yearn *************************************************************************************
-	** page: A uint64 value that represents the page number for pagination. It is obtained from the
-	** 'page' query parameter in the request. If the parameter is not provided, it defaults to 1.
-	**
-	** skip: A uint64 value that represents the number of vaults to skip. It is obtained from the
-	** 'skip' query parameter in the request. If the parameter is not provided, it defaults to 0.
-	**************************************************************************************************/
-	skip := helpers.SafeStringToUint64(getQuery(c, `skip`), 0)
-	limit := helpers.SafeStringToUint64(getQuery(c, `limit`), 200)
+	// Define valid sort directions
+	validDirections := []string{"asc", "desc"}
+	orderDirection := validateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetVaultsForRotki")
 
-	/** 🔵 - Yearn *************************************************************************************
-	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
-	** obtained from the 'chainIDs' query parameter in the request. The string is split by commas to
-	** obtain an array of chain IDs.
-	**
-	** chains: An array of uint64 values that represents the chain IDs for which the vaults are to be
-	** returned. If the 'chains' query parameter is not provided or is empty, this array defaults to
-	** all supported chain IDs.
-	**
-	** The 'chains' array is populated by iterating over the 'chainsStr' array and converting each
-	** chain ID to a uint64 value. If the conversion is not successful, the chain ID is ignored.
-	**
-	** The 'chains' array is used to filter the vaults that are returned in the response.
-	**************************************************************************************************/
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	// Validate pagination parameters
+	skip := validateNumericQuery(c, "skip", 0, 0, 10000, "GetVaultsForRotki")
+	limit := validateNumericQuery(c, "limit", 200, 1, 1000, "GetVaultsForRotki")
+
+	// Process chain IDs parameter
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
@@ -82,28 +118,33 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 		for _, chainStr := range chainsStr {
 			chain, ok := helpers.AssertChainID(chainStr)
 			if !ok {
+				handleError(c, fmt.Errorf("invalid chain ID: %s", chainStr),
+					http.StatusBadRequest, "Invalid chain ID", "GetVaultsForRotki")
 				continue
 			}
 			chains = append(chains, chain)
 		}
+		// If no valid chains were provided, use all supported chains
+		if len(chains) == 0 {
+			chains = env.SUPPORTED_CHAIN_IDS
+		}
 	}
 
 	/** 🔵 - Yearn *************************************************************************************
-	** The following block of code initializes two empty slices, 'data' and 'allVaults'. 'data' will
-	** store the final list of vaults to be returned in the response, while 'allVaults' is a temporary
-	** storage for all vaults across all chains.
+	** The following block of code initializes an empty array of TRotkiVaults objects to 'data'.
+	** 'data' will store the final list of vaults to be returned in the response
 	**
-	** The first for loop iterates over the 'SUPPORTED_CHAIN_IDS' from the environment variables. For
-	** each chain ID, it calls the 'ListVaults' function to get a list of all vaults for that chain.
+	** The first for loop iterates over the 'chains' array of chain IDs. For each chain ID,
+	** it calls the 'ListVaults' function to get a list of all vaults for that chain.
 	**
 	** The second nested for loop then iterates over each vault in 'vaultsForChain'. If the vault's
-	** address is not in the 'BLACKLISTED_VAULTS' for the current chain ID, it is appended to the
-	** 'allVaults' slice.
-	** It will also check if, based on the provided parameters, the vault should be included in the
-	** response. If not, it will be skipped.
+	** address is not in the 'BLACKLISTED_VAULTS' for the current chain ID, it attempts to process the vault.
 	**
-	** This process effectively gathers all vaults across all supported chains, excluding those that
-	** are blacklisted, and stores them in 'allVaults' for further processing.
+	** For each valid vault, it retrieves the token and staking information, and constructs a
+	** TRotkiVaults object with the appropriate data. This object is then appended to the 'data' slice.
+	**
+	** This process effectively gathers all non-blacklisted vaults across all specified chains
+	** and formats them in the Rotki-specific structure.
 	**************************************************************************************************/
 	data := []TRotkiVaults{}
 	for _, chainID := range chains {
@@ -119,9 +160,31 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			newVault, err := NewVault().AssignTVault(currentVault)
+			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
 				continue
+			}
+
+			stakingData := assignStakingData(chainID, currentVault.Address)
+			stakingAddress := ""
+			if stakingData.Available {
+				stakingAddress = stakingData.Address
+			}
+
+			vaultToken, ok := storage.GetERC20(chainID, currentVault.Address)
+			if !ok {
+				continue
+			}
+			name, displayName, _ := fetcher.BuildVaultNames(currentVault, currentVault.Metadata.DisplayName)
+			symbol, displaySymbol, _ := fetcher.BuildVaultSymbol(currentVault, currentVault.Metadata.DisplaySymbol)
+
+			vaultName := displayName
+			if vaultName == "" {
+				vaultName = name
+			}
+			vaultSymbol := displaySymbol
+			if vaultSymbol == "" {
+				vaultSymbol = symbol
 			}
 
 			APRAsFloat := 0.0
@@ -130,29 +193,29 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 			}
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			if newVault.Details.IsHighlighted {
-				newVault.FeaturingScore = newVault.FeaturingScore * 1e18
+				newVault.FeaturingScore = newVault.FeaturingScore * HIGHLIGHTING_MULTIPLIER
 			}
 
 			vaultForRotki := TRotkiVaults{
 				Address:        newVault.Address,
-				Name:           newVault.Name,
-				Symbol:         newVault.Symbol,
+				Name:           vaultName,
+				Symbol:         vaultSymbol,
 				Decimals:       newVault.Decimals,
 				Version:        newVault.Version,
 				Icon:           newVault.Icon,
 				Type:           newVault.Type,
 				FeaturingScore: newVault.FeaturingScore,
 				Token: TRotkiVaultToken{
-					Address:  newVault.Token.Address,
-					Name:     newVault.Token.Name,
-					Symbol:   newVault.Token.Symbol,
-					Decimals: newVault.Token.Decimals,
-					Icon:     newVault.Token.Icon,
+					Address:  vaultToken.Address.String(),
+					Name:     vaultToken.Name,
+					Symbol:   vaultToken.Symbol,
+					Decimals: vaultToken.Decimals,
+					Icon:     vaultToken.Icon,
 				},
 			}
 
-			if newVault.Staking.Address != `` {
-				vaultForRotki.StakingAddress = newVault.Staking.Address
+			if stakingAddress != "" {
+				vaultForRotki.StakingAddress = stakingAddress
 			}
 
 			data = append(data, vaultForRotki)
@@ -163,41 +226,40 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	** The following block of code sorts the 'data' slice based on the 'orderBy' and 'orderDirection'
 	** parameters. The 'SortBy' function from the 'sort' package is used for this purpose.
 	**
-	** After sorting, it applies pagination to the 'data' slice based on the 'page' and 'limit'
-	** parameters. The start index for the slice is calculated as (page - 1) * limit, and the end
-	** index is calculated as page * limit. If the end index is greater than the length of the 'data'
-	** slice, it is set to the length of the 'data' slice.
+	** After sorting, it applies pagination to the 'data' slice based on the 'skip' and 'limit'
+	** parameters. If 'skip' is greater than the length of the 'data' slice, an empty slice is returned.
+	** Otherwise, the 'data' slice is updated to only include the vaults starting from the 'skip' index
+	** and up to 'limit' vaults.
 	**
-	** The 'data' slice is then updated to only include the vaults between the start and end indices.
-	** This effectively returns only the vaults for the requested page with the specified limit.
+	** This effectively returns only the vaults for the requested pagination with the specified limit.
 	**************************************************************************************************/
 	sort.SortBy(orderBy, orderDirection, data)
-	start := skip
+	if skip >= uint64(len(data)) {
+		return []TRotkiVaults{}
+	}
 	end := skip + limit
 	if end > uint64(len(data)) {
 		end = uint64(len(data))
 	}
-	data = data[start:end]
+	data = data[skip:end]
 
 	return data
 }
 
 /**************************************************************************************************
-** CountVaultsForRotki counts the number of vaults for Rotki integration
+** CountVaultsForRotki returns the total count of vaults available for Rotki integration.
 **
-** This function takes a Gin context as input and returns an integer representing the count of
-** vaults that meet the specified criteria. It performs the following steps:
+** This endpoint provides a simple count of all vaults that would be available through the
+** GetVaultsForRotki endpoint. It's useful for pagination purposes and for Rotki to understand
+** the total dataset size without retrieving all vault data.
 **
-** 1. Parses the 'chainIDs' query parameter to determine which chains to include
-** 2. Iterates through the specified chains
-** 3. For each chain, retrieves the list of vaults
-** 4. Filters out blacklisted vaults and non-Yearn vaults
-** 5. Calculates a featuring score for each valid vault
-** 6. Increments the count for each valid vault
+** The endpoint accepts chainIDs as a filtering parameter:
+** - chainIDs: Comma-separated list of chain IDs to include (default: all supported chains)
 **
-** The function uses various helper functions and environment variables to perform its operations.
-** It's designed to work with the Rotki integration, providing a count of relevant vaults across
-** specified blockchain networks.
+** Endpoint: GET /vaults/rotki/count
+**
+** @param c *gin.Context - The Gin context containing the HTTP request
+** @return void - Response is sent directly via Gin with JSON containing the count
 **************************************************************************************************/
 func (y Controller) CountVaultsForRotki(c *gin.Context) {
 	/** 🔵 - Yearn *************************************************************************************
@@ -214,7 +276,7 @@ func (y Controller) CountVaultsForRotki(c *gin.Context) {
 	**
 	** The 'chains' array is used to filter the vaults that are returned in the response.
 	**************************************************************************************************/
-	chainsStr := strings.Split(getQuery(c, `chainIDs`), `,`)
+	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
 	chains := []uint64{}
 	if len(chainsStr) == 0 || (len(chainsStr) == 1 && chainsStr[0] == ``) {
 		chains = env.SUPPORTED_CHAIN_IDS
@@ -242,7 +304,7 @@ func (y Controller) CountVaultsForRotki(c *gin.Context) {
 			if helpers.Contains(chain.BlacklistedVaults, currentVault.Address) {
 				continue
 			}
-			_, err := NewVault().AssignTVault(currentVault)
+			_, err := CreateExternalVault(currentVault)
 			if err != nil {
 				continue
 			}

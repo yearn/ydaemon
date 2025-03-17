@@ -236,11 +236,11 @@ type TExternalVault struct {
 	Type              models.TTokenType       `json:"type"`
 	Kind              models.TVaultKind       `json:"kind"`
 	Symbol            string                  `json:"symbol"`
-	DisplaySymbol     string                  `json:"-"`
-	FormatedSymbol    string                  `json:"-"`
+	DisplaySymbol     string                  `json:"displaySymbol"`
+	FormatedSymbol    string                  `json:"formatedSymbol"`
 	Name              string                  `json:"name"`
-	DisplayName       string                  `json:"-"`
-	FormatedName      string                  `json:"-"`
+	DisplayName       string                  `json:"displayName"`
+	FormatedName      string                  `json:"formatedName"`
 	Description       string                  `json:"description,omitempty"`
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
@@ -253,7 +253,7 @@ type TExternalVault struct {
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               models.TTVL             `json:"tvl"`
 	APR               TExternalVaultAPR       `json:"apr"`
-	Details           TExternalVaultDetails   `json:"-"`
+	Details           TExternalVaultDetails   `json:"details"`
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TStakingData            `json:"staking"`

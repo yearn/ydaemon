@@ -45,26 +45,26 @@ func (y Controller) GetVault(c *gin.Context) {
 	defer cancel()
 
 	// Validate chainID parameter using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
-		// ValidateChainID already sets the response, so we just return
+		// validateChainID already sets the response, so we just return
 		return
 	}
 
 	// Validate address parameter using the utility function
-	address, ok := ValidateAddress(c, "address", chainID)
+	address, ok := validateAddress(c, "address", chainID)
 	if !ok {
-		// ValidateAddress already sets the response, so we just return
+		// validateAddress already sets the response, so we just return
 		return
 	}
 
 	// Validate and process strategiesCondition
-	strategiesCondition := ValidateStrategyCondition(c, "strategiesCondition")
+	strategiesCondition := validateStrategyCondition(c, "strategiesCondition")
 
 	// Get vault from storage
 	currentVault, ok := storage.GetVault(chainID, address)
 	if !ok {
-		HandleError(c, fmt.Errorf("vault not found: %s on chain %d", address.Hex(), chainID),
+		handleError(c, fmt.Errorf("vault not found: %s on chain %d", address.Hex(), chainID),
 			http.StatusNotFound, "Vault not found", "GetVault")
 		return
 	}
@@ -72,7 +72,7 @@ func (y Controller) GetVault(c *gin.Context) {
 	// Verify context is still valid before proceeding
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("request timed out while retrieving vault data"),
+		handleError(c, fmt.Errorf("request timed out while retrieving vault data"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetVault")
 		return
 	default:
@@ -82,7 +82,7 @@ func (y Controller) GetVault(c *gin.Context) {
 	// Convert to external vault format
 	newVault, err := CreateExternalVault(currentVault)
 	if err != nil {
-		HandleError(c, fmt.Errorf("failed to process vault data for vault %s on chain %d: %w",
+		handleError(c, fmt.Errorf("failed to process vault data for vault %s on chain %d: %w",
 			address.Hex(), chainID, err),
 			http.StatusInternalServerError, "Error processing vault data", "GetVault")
 		return
@@ -108,7 +108,7 @@ func (y Controller) GetVault(c *gin.Context) {
 	// Verify context is still valid before proceeding to response
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("request timed out before sending response"),
+		handleError(c, fmt.Errorf("request timed out before sending response"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetVault")
 		return
 	default:

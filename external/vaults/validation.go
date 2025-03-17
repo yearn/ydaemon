@@ -17,7 +17,7 @@ import (
 
 /************************************************************************************************
 ** StrategyCondition constants define the available filtering options for strategies.
-** These constants are used as query parameters to determine which strategies will be included 
+** These constants are used as query parameters to determine which strategies will be included
 ** in API responses.
 **
 ** Available filter conditions:
@@ -61,15 +61,15 @@ const (
 const (
 	// Default timeout for endpoint requests
 	DEFAULT_REQUEST_TIMEOUT = 10 * time.Second
-	
+
 	// Default pagination values
 	DEFAULT_PAGE_NUMBER = 1
-	DEFAULT_PAGE_LIMIT = 200
-	MAX_PAGE_LIMIT = 1000
-	
+	DEFAULT_PAGE_LIMIT  = 200
+	MAX_PAGE_LIMIT      = 1000
+
 	// Common TVL thresholds
 	MIN_DUST_TVL = 100 // Minimum TVL in USD to not be considered "dust"
-	
+
 	// Multiplier values
 	HIGHLIGHTING_MULTIPLIER = 1e18 // Used to boost featuring score for highlighted vaults
 )
@@ -79,29 +79,29 @@ const (
 ** These constants provide semantically meaningful names for the risk score array indices.
 ************************************************************************************************/
 const (
-	RISK_SCORE_REVIEW                        = 0
-	RISK_SCORE_TESTING                       = 1
-	RISK_SCORE_COMPLEXITY                    = 2
-	RISK_SCORE_RISK_EXPOSURE                 = 3
-	RISK_SCORE_PROTOCOL_INTEGRATION          = 4
-	RISK_SCORE_CENTRALIZATION_RISK           = 5
-	RISK_SCORE_EXTERNAL_PROTOCOL_AUDIT       = 6
-	RISK_SCORE_EXTERNAL_PROTOCOL_CENTRAL     = 7
-	RISK_SCORE_EXTERNAL_PROTOCOL_TVL         = 8
-	RISK_SCORE_EXTERNAL_PROTOCOL_LONGEVITY   = 9
-	RISK_SCORE_EXTERNAL_PROTOCOL_TYPE        = 10
-	RISK_SCORE_ARRAY_LENGTH                  = 11
+	RISK_SCORE_REVIEW                      = 0
+	RISK_SCORE_TESTING                     = 1
+	RISK_SCORE_COMPLEXITY                  = 2
+	RISK_SCORE_RISK_EXPOSURE               = 3
+	RISK_SCORE_PROTOCOL_INTEGRATION        = 4
+	RISK_SCORE_CENTRALIZATION_RISK         = 5
+	RISK_SCORE_EXTERNAL_PROTOCOL_AUDIT     = 6
+	RISK_SCORE_EXTERNAL_PROTOCOL_CENTRAL   = 7
+	RISK_SCORE_EXTERNAL_PROTOCOL_TVL       = 8
+	RISK_SCORE_EXTERNAL_PROTOCOL_LONGEVITY = 9
+	RISK_SCORE_EXTERNAL_PROTOCOL_TYPE      = 10
+	RISK_SCORE_ARRAY_LENGTH                = 11
 )
 
 /************************************************************************************************
-** ValidateStrategyCondition validates the strategy condition parameter and returns the
+** validateStrategyCondition validates the strategy condition parameter and returns the
 ** appropriate value to use.
 **
 ** @param c *gin.Context - The Gin context containing the request
 ** @param paramName string - The name of the query parameter to validate
 ** @return string - The validated strategy condition or default "debtRatio"
 ************************************************************************************************/
-func ValidateStrategyCondition(c *gin.Context, paramName string) string {
+func validateStrategyCondition(c *gin.Context, paramName string) string {
 	conditionParam := getQueryParam(c, paramName)
 	if conditionParam == "" {
 		return STRATEGY_CONDITION_DEBT_RATIO
@@ -125,14 +125,14 @@ func ValidateStrategyCondition(c *gin.Context, paramName string) string {
 }
 
 /************************************************************************************************
-** ValidateMigrableCondition validates the migrable condition parameter and returns the
+** validateMigrableCondition validates the migrable condition parameter and returns the
 ** appropriate value to use.
 **
 ** @param c *gin.Context - The Gin context containing the request
 ** @param paramName string - The name of the query parameter to validate
 ** @return string - The validated migrable condition or default "none"
 ************************************************************************************************/
-func ValidateMigrableCondition(c *gin.Context, paramName string) string {
+func validateMigrableCondition(c *gin.Context, paramName string) string {
 	conditionParam := getQueryParam(c, paramName)
 	if conditionParam == "" {
 		return MIGRABLE_CONDITION_NONE
@@ -190,7 +190,7 @@ func ProcessStrategiesForVault(
 		// Check for context timeout
 		select {
 		case <-ctx.Done():
-			HandleError(c, fmt.Errorf("operation timed out while processing strategies"),
+			handleError(c, fmt.Errorf("operation timed out while processing strategies"),
 				http.StatusGatewayTimeout, "Request processing timed out", funcName)
 			return nil, false
 		default:
@@ -229,7 +229,7 @@ func ProcessStrategiesForVault(
 }
 
 /************************************************************************************************
-** ValidateAddressesParam validates a comma-separated list of addresses.
+** validateAddressesParam validates a comma-separated list of addresses.
 **
 ** @param c *gin.Context - The Gin context containing the request
 ** @param addressesParam string - The comma-separated list of addresses
@@ -238,21 +238,21 @@ func ProcessStrategiesForVault(
 ** @return []string - The list of validated addresses
 ** @return bool - True if validation succeeded, false if it failed
 ************************************************************************************************/
-func ValidateAddressesParam(
+func validateAddressesParam(
 	c *gin.Context,
 	addressesParam string,
 	chainID uint64,
 	funcName string,
 ) ([]string, bool) {
 	if addressesParam == "" {
-		HandleError(c, fmt.Errorf("addresses parameter cannot be empty"),
+		handleError(c, fmt.Errorf("addresses parameter cannot be empty"),
 			http.StatusBadRequest, "Missing required parameter", funcName)
 		return nil, false
 	}
 
 	// Pre-validate the string to avoid unnecessary splits
-	if len(addressesParam) < 42 {  // Minimum length for a single address
-		HandleError(c, fmt.Errorf("address parameter is too short to be valid"),
+	if len(addressesParam) < 42 { // Minimum length for a single address
+		handleError(c, fmt.Errorf("address parameter is too short to be valid"),
 			http.StatusBadRequest, "Invalid parameter value", funcName)
 		return nil, false
 	}
@@ -260,7 +260,7 @@ func ValidateAddressesParam(
 	// Process addresses - split first without lowercasing to improve performance
 	addressesStr := strings.Split(addressesParam, ",")
 	if len(addressesStr) == 0 {
-		HandleError(c, fmt.Errorf("at least one address must be provided"),
+		handleError(c, fmt.Errorf("at least one address must be provided"),
 			http.StatusBadRequest, "Invalid parameter value", funcName)
 		return nil, false
 	}
@@ -272,11 +272,11 @@ func ValidateAddressesParam(
 	for i, addr := range addressesStr {
 		// Use direct byte comparison to check prefix (more efficient than HasPrefix)
 		if len(addr) != 42 || addr[0] != '0' || addr[1] != 'x' {
-			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
+			handleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
 				http.StatusBadRequest, "Invalid address format", funcName)
 			return nil, false
 		}
-		
+
 		// Convert to lowercase and add to result
 		result = append(result, strings.ToLower(addr))
 	}
@@ -315,7 +315,7 @@ func IsVaultBlacklisted(chainID uint64, address common.Address) bool {
 // Using this structure ensures consistent version detection throughout the application.
 var VaultVersionChecks = struct {
 	// IsV3 checks if a vault is a v3 vault based on version or kind
-	// 
+	//
 	// A vault is considered V3 if:
 	// - It has kind VaultKindMultiple or VaultKindSingle
 	// - Its version string starts with "3" or equals "v3"
@@ -351,8 +351,8 @@ var VaultVersionChecks = struct {
 			vault.Version == "v3"
 	},
 	IsV1: func(vault models.TVault) bool {
-		return strings.HasPrefix(vault.Version, "1.") || 
-			vault.Version == "v1" || 
+		return strings.HasPrefix(vault.Version, "1.") ||
+			vault.Version == "v1" ||
 			vault.Version == "1"
 	},
 }
@@ -410,7 +410,7 @@ func IsValidV2Vault(vault models.TVault) bool {
 ************************************************************************************************/
 func PopulateRiskScoreArray(riskScore models.TRiskScore) [RISK_SCORE_ARRAY_LENGTH]int8 {
 	var riskScoreArray [RISK_SCORE_ARRAY_LENGTH]int8
-	
+
 	riskScoreArray[RISK_SCORE_REVIEW] = riskScore.Review
 	riskScoreArray[RISK_SCORE_TESTING] = riskScore.Testing
 	riskScoreArray[RISK_SCORE_COMPLEXITY] = riskScore.Complexity
@@ -422,6 +422,6 @@ func PopulateRiskScoreArray(riskScore models.TRiskScore) [RISK_SCORE_ARRAY_LENGT
 	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_TVL] = riskScore.ExternalProtocolTvl
 	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_LONGEVITY] = riskScore.ExternalProtocolLongevity
 	riskScoreArray[RISK_SCORE_EXTERNAL_PROTOCOL_TYPE] = riskScore.ExternalProtocolType
-	
+
 	return riskScoreArray
 }

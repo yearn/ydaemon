@@ -4,7 +4,7 @@ package vaults
 ** This file contains helper functions used specifically for testing purposes.
 ** These functions should not be used in production code.
 **
-** When we run tests, we'll use a simplified version of HandleError that maintains
+** When we run tests, we'll use a simplified version of handleError that maintains
 ** the same error format as before to avoid having to update all test assertions.
 **************************************************************************************************/
 
@@ -23,7 +23,7 @@ package vaults
 var TestMode = false
 
 /**************************************************************************************************
-** selectStrategiesCondition is a test helper function to simulate ValidateStrategyCondition
+** selectStrategiesCondition is a test helper function to simulate validateStrategyCondition
 ** without needing the Gin context.
 **
 ** @param input string - The input strategy condition
@@ -50,7 +50,7 @@ func selectStrategiesCondition(input string) string {
 }
 
 /**************************************************************************************************
-** selectMigrableCondition is a test helper function to simulate ValidateMigrableCondition
+** selectMigrableCondition is a test helper function to simulate validateMigrableCondition
 ** without needing the Gin context.
 **
 ** @param input string - The input migrable condition

@@ -88,20 +88,20 @@ type TEarned struct {
 **************************************************************************************************/
 func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
 		return
 	}
 
 	// Validate user address using the utility function
-	userAddress, ok := ValidateAddress(c, "address", chainID)
+	userAddress, ok := validateAddress(c, "address", chainID)
 	if !ok {
 		return
 	}
 
 	// Validate vault addresses parameter
 	vaultsParam := c.Param("vaults")
-	vaultsAddressesStr, ok := ValidateAddressesParam(c, vaultsParam, chainID, "GetEarnedPerVaultPerUser")
+	vaultsAddressesStr, ok := validateAddressesParam(c, vaultsParam, chainID, "GetEarnedPerVaultPerUser")
 	if !ok {
 		return
 	}
@@ -109,7 +109,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
 			http.StatusInternalServerError, "Internal configuration error", "GetEarnedPerVaultPerUser")
 		return
 	}
@@ -117,7 +117,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	// Validate subgraph endpoint availability
 	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
-		HandleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
+		handleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
 			http.StatusInternalServerError, "Subgraph not available", "GetEarnedPerVaultPerUser")
 		return
 	}
@@ -133,7 +133,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 	var response models.TFIFOForUserForVault
 	if err := client.Run(ctx, request, &response); err != nil {
 		wrappedErr := fmt.Errorf("failed to execute GraphQL request for user %s: %w", userAddress.Hex(), err)
-		HandleError(c, wrappedErr, http.StatusInternalServerError,
+		handleError(c, wrappedErr, http.StatusInternalServerError,
 			"Failed to fetch data from subgraph", "GetEarnedPerVaultPerUser")
 		return
 	}
@@ -364,13 +364,13 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 **************************************************************************************************/
 func (y Controller) GetEarnedPerUser(c *gin.Context) {
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
 		return
 	}
 
 	// Validate user address using the utility function
-	userAddress, ok := ValidateAddress(c, "address", chainID)
+	userAddress, ok := validateAddress(c, "address", chainID)
 	if !ok {
 		return
 	}
@@ -616,7 +616,7 @@ func (y Controller) GetEarnedPerUser(c *gin.Context) {
 **************************************************************************************************/
 func (y Controller) GetEarnedPerUserForAllChains(c *gin.Context) {
 	// Validate address using the utility function - we use chain ID 1 as default for format validation
-	userAddress, ok := ValidateAddress(c, "address", 1)
+	userAddress, ok := validateAddress(c, "address", 1)
 	if !ok {
 		return
 	}

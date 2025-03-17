@@ -107,16 +107,16 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	defer cancel()
 
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
-		// ValidateChainID already sets the response, so we just return
+		// validateChainID already sets the response, so we just return
 		return
 	}
 
 	// Validate addresses parameter
 	addressesParam := c.Param("addresses")
 	if addressesParam == "" {
-		HandleError(c, fmt.Errorf("addresses parameter cannot be empty"),
+		handleError(c, fmt.Errorf("addresses parameter cannot be empty"),
 			http.StatusBadRequest, "Missing required parameter", "GetHarvestsForVault")
 		return
 	}
@@ -124,7 +124,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	// Process addresses
 	addressesStr := strings.Split(strings.ToLower(addressesParam), ",")
 	if len(addressesStr) == 0 {
-		HandleError(c, fmt.Errorf("at least one address must be provided"),
+		handleError(c, fmt.Errorf("at least one address must be provided"),
 			http.StatusBadRequest, "Invalid parameter value", "GetHarvestsForVault")
 		return
 	}
@@ -132,25 +132,25 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	// Validate each address format (basic check)
 	for i, addr := range addressesStr {
 		if !strings.HasPrefix(addr, "0x") || len(addr) != 42 {
-			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
+			handleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
 				http.StatusBadRequest, "Invalid address format", "GetHarvestsForVault")
 			return
 		}
 	}
 
 	// Get and validate query parameters with defaults
-	orderBy := ValidateStringChoiceQuery(c, "orderBy", "timestamp",
+	orderBy := validateStringChoiceQuery(c, "orderBy", "timestamp",
 		[]string{"timestamp", "profit", "loss", "profitValue", "lossValue"}, "GetHarvestsForVault")
 
-	orderDirection := ValidateStringChoiceQuery(c, "orderDirection", "desc",
+	orderDirection := validateStringChoiceQuery(c, "orderDirection", "desc",
 		[]string{"asc", "desc"}, "GetHarvestsForVault")
 
-	limit := int(ValidateNumericQuery(c, "limit", 1000, 1, 5000, "GetHarvestsForVault"))
+	limit := int(validateNumericQuery(c, "limit", 1000, 1, 5000, "GetHarvestsForVault"))
 
 	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
 			http.StatusInternalServerError, "Internal configuration error", "GetHarvestsForVault")
 		return
 	}
@@ -158,7 +158,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	// Validate subgraph endpoint availability
 	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
-		HandleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
+		handleError(c, fmt.Errorf("no graph endpoint configured for chainID %d", chainID),
 			http.StatusInternalServerError, "Subgraph not available", "GetHarvestsForVault")
 		return
 	}
@@ -172,13 +172,13 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 	if err := client.Run(ctx, request, &response); err != nil {
 		// Check if this is a context timeout
 		if ctx.Err() == context.DeadlineExceeded {
-			HandleError(c, fmt.Errorf("GraphQL request timed out after 15 seconds: %w", err),
+			handleError(c, fmt.Errorf("GraphQL request timed out after 15 seconds: %w", err),
 				http.StatusGatewayTimeout, "Request to subgraph timed out", "GetHarvestsForVault")
 			return
 		}
 
 		// Otherwise, it's another kind of GraphQL error
-		HandleError(c, fmt.Errorf("failed to execute GraphQL request: %w", err),
+		handleError(c, fmt.Errorf("failed to execute GraphQL request: %w", err),
 			http.StatusInternalServerError, "Failed to fetch data from subgraph", "GetHarvestsForVault")
 		return
 	}
@@ -191,7 +191,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 		// Check for context timeout in long loops
 		select {
 		case <-ctx.Done():
-			HandleError(c, fmt.Errorf("request timed out while processing harvest data"),
+			handleError(c, fmt.Errorf("request timed out while processing harvest data"),
 				http.StatusGatewayTimeout, "Request processing timed out", "GetHarvestsForVault")
 			return
 		default:
@@ -241,7 +241,7 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 
 	// Sort the results
 	if len(harvests) > 0 {
-	sort.SortBy(orderBy, orderDirection, harvests)
+		sort.SortBy(orderBy, orderDirection, harvests)
 	}
 
 	c.JSON(http.StatusOK, harvests)

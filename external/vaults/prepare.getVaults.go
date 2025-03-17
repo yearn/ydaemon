@@ -66,9 +66,9 @@ func getVaults(
 	** migrable: A string that determines the condition for selecting migrable vaults. It is
 	** obtained from the 'migrable' query parameter in the request.
 	**************************************************************************************************/
-	migrable := ValidateMigrableCondition(c, `migrable`)
+	migrable := validateMigrableCondition(c, `migrable`)
 	if migrable != `none` && hideAlways {
-		HandleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
+		handleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
 			http.StatusBadRequest, "Invalid parameter combination", "GetVaults")
 		return []TSimplifiedExternalVault{}, fmt.Errorf("migrable and hideAlways cannot be true at the same time")
 	}
@@ -81,8 +81,8 @@ func getVaults(
 	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
 	** it defaults to 200.
 	**************************************************************************************************/
-	page := ValidateNumericQuery(c, "page", DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
-	limit := ValidateNumericQuery(c, "limit", DEFAULT_PAGE_LIMIT, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
+	page := validateNumericQuery(c, "page", DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
+	limit := validateNumericQuery(c, "limit", DEFAULT_PAGE_LIMIT, DEFAULT_PAGE_NUMBER, MAX_PAGE_LIMIT, "GetVaults")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** chainsStr: A string that represents the chain IDs for which the vaults are to be returned. It is
@@ -133,7 +133,7 @@ func getVaults(
 		// Get chain configuration early to validate
 		chain, ok := env.GetChain(chainID)
 		if !ok {
-			HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
 				http.StatusInternalServerError, "Internal configuration error", "GetVaults")
 			continue
 		}
@@ -165,7 +165,7 @@ func getVaults(
 			// Process vault data - use the optimized CreateExternalVault function
 			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
-				HandleError(c, fmt.Errorf("failed to process vault %s on chain %d: %s",
+				handleError(c, fmt.Errorf("failed to process vault %s on chain %d: %s",
 					currentVault.Address.Hex(), chainID, err), http.StatusInternalServerError,
 					"Error processing vault data", "GetVaults")
 				continue

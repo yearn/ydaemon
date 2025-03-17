@@ -99,15 +99,15 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 	validOrderFields := []string{
 		"featuringScore", "name", "symbol", "decimals", "type", "version", "address",
 	}
-	orderBy := ValidateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetVaultsForRotki")
+	orderBy := validateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetVaultsForRotki")
 
 	// Define valid sort directions
 	validDirections := []string{"asc", "desc"}
-	orderDirection := ValidateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetVaultsForRotki")
+	orderDirection := validateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetVaultsForRotki")
 
 	// Validate pagination parameters
-	skip := ValidateNumericQuery(c, "skip", 0, 0, 10000, "GetVaultsForRotki")
-	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetVaultsForRotki")
+	skip := validateNumericQuery(c, "skip", 0, 0, 10000, "GetVaultsForRotki")
+	limit := validateNumericQuery(c, "limit", 200, 1, 1000, "GetVaultsForRotki")
 
 	// Process chain IDs parameter
 	chainsStr := strings.Split(getQueryParam(c, `chainIDs`), `,`)
@@ -118,7 +118,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 		for _, chainStr := range chainsStr {
 			chain, ok := helpers.AssertChainID(chainStr)
 			if !ok {
-				HandleError(c, fmt.Errorf("invalid chain ID: %s", chainStr),
+				handleError(c, fmt.Errorf("invalid chain ID: %s", chainStr),
 					http.StatusBadRequest, "Invalid chain ID", "GetVaultsForRotki")
 				continue
 			}

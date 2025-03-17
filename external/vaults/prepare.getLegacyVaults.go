@@ -55,8 +55,8 @@ func getLegacyVaults(
 	** obtained from the 'limit' query parameter in the request. If the parameter is not provided,
 	** it defaults to 200.
 	**************************************************************************************************/
-	page := ValidateNumericQuery(c, "page", 1, 1, 1000, "GetLegacyVaults")
-	limit := ValidateNumericQuery(c, "limit", 200, 1, 1000, "GetLegacyVaults")
+	page := validateNumericQuery(c, "page", 1, 1, 1000, "GetLegacyVaults")
+	limit := validateNumericQuery(c, "limit", 200, 1, 1000, "GetLegacyVaults")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** This function takes in a context from the gin framework. The context contains information
@@ -71,18 +71,18 @@ func getLegacyVaults(
 	** from the 'orderBy' query parameter in the request. If the parameter is not provided,
 	** it defaults to 'details.order'.
 	**************************************************************************************************/
-	hideAlways := ValidateBooleanQuery(c, "hideAlways", false, "GetLegacyVaults")
+	hideAlways := validateBooleanQuery(c, "hideAlways", false, "GetLegacyVaults")
 
 	// Define valid order fields
 	validOrderFields := []string{
 		"featuringScore", "name", "symbol", "decimals", "type", "tvl",
 		"apr.net_apy", "apr.composite.boost", "apr.points.week_ago", "apr.type", "details.order",
 	}
-	orderBy := ValidateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetLegacyVaults")
+	orderBy := validateStringChoiceQuery(c, "orderBy", "featuringScore", validOrderFields, "GetLegacyVaults")
 
 	// Validate order direction
 	validDirections := []string{"asc", "desc"}
-	orderDirection := ValidateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetLegacyVaults")
+	orderDirection := validateStringChoiceQuery(c, "orderDirection", "asc", validDirections, "GetLegacyVaults")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** strategiesCondition: A string that determines the condition for selecting strategies. It is
@@ -94,29 +94,29 @@ func getLegacyVaults(
 	** chainID: A string that represents the chain ID of the vaults to be returned. It is obtained
 	** from the 'chainID' path parameter in the request.
 	**************************************************************************************************/
-	strategiesCondition := ValidateStrategyCondition(c, "strategiesCondition")
-	migrable := ValidateMigrableCondition(c, "migrable")
+	strategiesCondition := validateStrategyCondition(c, "strategiesCondition")
+	migrable := validateMigrableCondition(c, "migrable")
 
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, `chainID`)
+	chainID, ok := validateChainID(c, `chainID`)
 	if !ok {
 		return nil
 	}
 
 	if migrable != `none` && hideAlways {
-		HandleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
+		handleError(c, fmt.Errorf("migrable and hideAlways cannot be true at the same time"),
 			http.StatusBadRequest, "Invalid parameter combination", "getLegacyVaults")
 		return nil
 	}
-	
+
 	// Get chain configuration early to avoid repeated lookups
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
 			http.StatusInternalServerError, "Internal configuration error", "getLegacyVaults")
 		return nil
 	}
-	
+
 	// Get all vaults and pre-estimate the capacity
 	allVaults, _ := storage.ListVaults(chainID)
 	estimatedCapacity := 0
@@ -125,16 +125,16 @@ func getLegacyVaults(
 			estimatedCapacity++
 		}
 	}
-	
+
 	// Pre-allocate the slice to avoid reallocations
 	data := make([]TExternalVault, 0, estimatedCapacity)
-	
+
 	// Process vaults
 	for _, currentVault := range allVaults {
 		if !filterFunc(currentVault) {
 			continue
 		}
-		
+
 		vaultAddress := currentVault.Address
 		if helpers.Contains(chain.BlacklistedVaults, vaultAddress) {
 			continue

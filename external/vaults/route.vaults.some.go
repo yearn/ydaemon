@@ -43,10 +43,10 @@ import (
 func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	orderBy := helpers.SafeString(getQueryParam(c, `orderBy`), `featuringScore`)
 	orderDir := helpers.SafeString(getQueryParam(c, `orderDirection`), `asc`)
-	stratCon := ValidateStrategyCondition(c, "strategiesCondition")
+	stratCon := validateStrategyCondition(c, "strategiesCondition")
 
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, `chainID`)
+	chainID, ok := validateChainID(c, `chainID`)
 	if !ok {
 		return
 	}
@@ -54,7 +54,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	// Validate address parameter
 	addressesParam := c.Param(`addresses`)
 	if addressesParam == "" {
-		HandleError(c, fmt.Errorf("addresses parameter cannot be empty"),
+		handleError(c, fmt.Errorf("addresses parameter cannot be empty"),
 			http.StatusBadRequest, "Missing required parameter", "GetLegacySomeVaults")
 		return
 	}
@@ -62,7 +62,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	// Process addresses
 	addressesStr := strings.Split(strings.ToLower(addressesParam), `,`)
 	if len(addressesStr) == 0 {
-		HandleError(c, fmt.Errorf("at least one address must be provided"),
+		handleError(c, fmt.Errorf("at least one address must be provided"),
 			http.StatusBadRequest, "Invalid parameter value", "GetLegacySomeVaults")
 		return
 	}
@@ -70,7 +70,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	// Validate each address format (basic check)
 	for i, addr := range addressesStr {
 		if !strings.HasPrefix(addr, "0x") || len(addr) != 42 {
-			HandleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
+			handleError(c, fmt.Errorf("invalid address format at position %d: %s", i, addr),
 				http.StatusBadRequest, "Invalid address format", "GetLegacySomeVaults")
 			return
 		}
@@ -79,7 +79,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
 			http.StatusInternalServerError, "Internal configuration error", "GetLegacySomeVaults")
 		return
 	}
@@ -113,7 +113,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		newVault, err := CreateExternalVault(currentVault)
 		if err != nil {
 			// Log error but continue with other vaults
-			HandleError(c, fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
+			handleError(c, fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
 				http.StatusInternalServerError, "Error processing vault", "GetLegacySomeVaults")
 			continue
 		}

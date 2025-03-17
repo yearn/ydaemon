@@ -35,23 +35,23 @@ func (y Controller) GetStrategy(c *gin.Context) {
 	defer cancel()
 
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
-		// ValidateChainID already sets the response, so we just return
+		// validateChainID already sets the response, so we just return
 		return
 	}
 
 	// Validate address using the utility function
-	address, ok := ValidateAddress(c, "address", chainID)
+	address, ok := validateAddress(c, "address", chainID)
 	if !ok {
-		// ValidateAddress already sets the response, so we just return
+		// validateAddress already sets the response, so we just return
 		return
 	}
 
 	// Check if the context is still valid before proceeding
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("operation timed out while validating parameters"),
+		handleError(c, fmt.Errorf("operation timed out while validating parameters"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetStrategy")
 		return
 	default:
@@ -61,7 +61,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 	// Look up the strategy
 	strategy, ok := storage.GuessStrategy(chainID, address)
 	if !ok {
-		HandleError(c, fmt.Errorf("strategy not found for address %s on chain %d",
+		handleError(c, fmt.Errorf("strategy not found for address %s on chain %d",
 			address.String(), chainID),
 			http.StatusNotFound, "Strategy not found", "GetStrategy")
 		return
@@ -90,7 +90,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 
 	// Handle conversion errors
 	if conversionErr != nil {
-		HandleError(c, fmt.Errorf("failed to process strategy %s on chain %d: %w",
+		handleError(c, fmt.Errorf("failed to process strategy %s on chain %d: %w",
 			address.String(), chainID, conversionErr),
 			http.StatusInternalServerError, "Error processing strategy data", "GetStrategy")
 		return
@@ -99,7 +99,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 	// Check if the context is still valid before sending the response
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("operation timed out while processing strategy"),
+		handleError(c, fmt.Errorf("operation timed out while processing strategy"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetStrategy")
 		return
 	default:

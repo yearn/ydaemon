@@ -42,9 +42,9 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	** 'chainIDs' query parameter in the request.
 	**************************************************************************************************/
 	// Validate chainID parameter using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
-		// ValidateChainID already sets the response, so we just return
+		// validateChainID already sets the response, so we just return
 		return
 	}
 
@@ -53,9 +53,9 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	** parameter in the request.
 	**************************************************************************************************/
 	// Validate address parameter using the utility function
-	address, ok := ValidateAddress(c, "address", chainID)
+	address, ok := validateAddress(c, "address", chainID)
 	if !ok {
-		// ValidateAddress already sets the response, so we just return
+		// validateAddress already sets the response, so we just return
 		return
 	}
 
@@ -63,7 +63,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	** strategiesCondition: A string that determines the condition for selecting strategies. It is
 	** obtained from the 'strategiesCondition' query parameter in the request.
 	**************************************************************************************************/
-	strategiesCondition := ValidateStrategyCondition(c, "strategiesCondition")
+	strategiesCondition := validateStrategyCondition(c, "strategiesCondition")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** The following block of code will store the final vault to be returned in the response, which will
@@ -71,7 +71,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	**************************************************************************************************/
 	currentVault, ok := storage.GetVault(chainID, address)
 	if !ok {
-		HandleError(c, fmt.Errorf("vault not found for chain %d and address %s", chainID, address.Hex()),
+		handleError(c, fmt.Errorf("vault not found for chain %d and address %s", chainID, address.Hex()),
 			http.StatusNotFound, "Vault not found", "GetSimplifiedVault")
 		return
 	}
@@ -79,7 +79,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	// Verify context is still valid before proceeding
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("request timed out while retrieving vault data"),
+		handleError(c, fmt.Errorf("request timed out while retrieving vault data"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
 		return
 	default:
@@ -89,7 +89,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	// Process the vault and return a simplified version
 	newVault, err := CreateExternalVault(currentVault)
 	if err != nil {
-		HandleError(c, fmt.Errorf("failed to process vault %s on chain %d: %w",
+		handleError(c, fmt.Errorf("failed to process vault %s on chain %d: %w",
 			address.String(), chainID, err),
 			http.StatusInternalServerError, "Error processing vault data", "GetSimplifiedVault")
 		return
@@ -125,7 +125,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	// Verify context is still valid before continuing with potential expensive calculations
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("request timed out during featuring score calculation"),
+		handleError(c, fmt.Errorf("request timed out during featuring score calculation"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
 		return
 	default:
@@ -152,7 +152,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		// Check for context timeout
 		select {
 		case <-ctx.Done():
-			HandleError(c, fmt.Errorf("operation timed out while processing strategies"),
+			handleError(c, fmt.Errorf("operation timed out while processing strategies"),
 				http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
 			return
 		default:
@@ -191,7 +191,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 	// Verify context is still valid before proceeding to response
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("request timed out before sending response"),
+		handleError(c, fmt.Errorf("request timed out before sending response"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
 		return
 	default:

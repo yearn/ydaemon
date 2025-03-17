@@ -29,16 +29,16 @@ type ErrorCode string
 const (
 	// Configuration errors relate to system setup issues
 	ErrorTypeConfig ErrorType = "config"
-	
+
 	// Validation errors relate to invalid user input
 	ErrorTypeValidation ErrorType = "validation"
-	
+
 	// Data errors relate to missing or invalid data from storage
 	ErrorTypeData ErrorType = "data"
-	
+
 	// Processing errors relate to runtime failures during data processing
 	ErrorTypeProcessing ErrorType = "processing"
-	
+
 	// External errors relate to failures in external services
 	ErrorTypeExternal ErrorType = "external"
 )
@@ -46,9 +46,9 @@ const (
 // Defined error codes for specific error scenarios
 const (
 	// Configuration errors
-	ErrorCodeChainNotSupported ErrorCode = "chain_not_supported"
+	ErrorCodeChainNotSupported  ErrorCode = "chain_not_supported"
 	ErrorCodeChainConfigMissing ErrorCode = "chain_config_missing"
-	
+
 	// Validation errors
 	ErrorCodeMissingParam      ErrorCode = "missing_param"
 	ErrorCodeInvalidParam      ErrorCode = "invalid_param"
@@ -56,17 +56,17 @@ const (
 	ErrorCodeInvalidFormat     ErrorCode = "invalid_format"
 	ErrorCodeInvalidCondition  ErrorCode = "invalid_condition"
 	ErrorCodeIncompatibleParam ErrorCode = "incompatible_param"
-	
+
 	// Data errors
-	ErrorCodeVaultNotFound     ErrorCode = "vault_not_found"
-	ErrorCodeStrategyNotFound  ErrorCode = "strategy_not_found"
-	ErrorCodeTokenNotFound     ErrorCode = "token_not_found"
-	ErrorCodePriceDataMissing  ErrorCode = "price_data_missing"
-	
+	ErrorCodeVaultNotFound    ErrorCode = "vault_not_found"
+	ErrorCodeStrategyNotFound ErrorCode = "strategy_not_found"
+	ErrorCodeTokenNotFound    ErrorCode = "token_not_found"
+	ErrorCodePriceDataMissing ErrorCode = "price_data_missing"
+
 	// Processing errors
-	ErrorCodeTimeout           ErrorCode = "timeout"
-	ErrorCodeProcessingFailed  ErrorCode = "processing_failed"
-	
+	ErrorCodeTimeout          ErrorCode = "timeout"
+	ErrorCodeProcessingFailed ErrorCode = "processing_failed"
+
 	// External errors
 	ErrorCodeGraphQLFailed     ErrorCode = "graphql_failed"
 	ErrorCodeExternalAPIFailed ErrorCode = "external_api_failed"
@@ -98,7 +98,7 @@ func NewAPIError(errType ErrorType, errCode ErrorCode, message string, details s
 	if ok {
 		source = fmt.Sprintf("%s:%d", filepath.Base(file), line)
 	}
-	
+
 	return APIError{
 		Type:    errType,
 		Code:    errCode,
@@ -146,7 +146,7 @@ func getQueryParam(c *gin.Context, targetKey string) string {
 }
 
 /************************************************************************************************
-** ValidateChainID validates a chainID parameter from the request context and sends appropriate
+** validateChainID validates a chainID parameter from the request context and sends appropriate
 ** error responses if validation fails.
 **
 ** This utility function centralizes the common chain ID validation logic used across multiple
@@ -163,12 +163,12 @@ func getQueryParam(c *gin.Context, targetKey string) string {
 ** @return uint64 - The validated chain ID
 ** @return bool - True if validation succeeded, false if it failed (and response was sent)
 ************************************************************************************************/
-func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
+func validateChainID(c *gin.Context, paramName string) (uint64, bool) {
 	// Default to "chainID" if no parameter name is provided
 	if paramName == "" {
 		paramName = "chainID"
 	}
-	functionName := "ValidateChainID"
+	functionName := "validateChainID"
 
 	// Validate chainID parameter exists
 	chainIDParam := c.Param(paramName)
@@ -179,8 +179,8 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 			"Missing required parameter",
 			fmt.Sprintf("%s parameter is required", paramName),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusBadRequest, "Missing required parameter", functionName)
+
+		handleError(c, err, http.StatusBadRequest, "Missing required parameter", functionName)
 		return 0, false
 	}
 
@@ -193,8 +193,8 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 			"Invalid chain ID format",
 			fmt.Sprintf("The value '%s' is not a valid chain ID", chainIDParam),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusBadRequest, "Invalid parameter format", functionName)
+
+		handleError(c, err, http.StatusBadRequest, "Invalid parameter format", functionName)
 		return 0, false
 	}
 
@@ -206,8 +206,8 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 			"Unsupported chain",
 			fmt.Sprintf("Chain ID %d is not in the list of supported chains", chainID),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusBadRequest, "Unsupported chain", functionName)
+
+		handleError(c, err, http.StatusBadRequest, "Unsupported chain", functionName)
 		return 0, false
 	}
 
@@ -220,8 +220,8 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 			"Chain configuration missing",
 			fmt.Sprintf("Configuration for chain ID %d exists but cannot be loaded", chainID),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusInternalServerError, "Internal configuration error", functionName)
+
+		handleError(c, err, http.StatusInternalServerError, "Internal configuration error", functionName)
 		return 0, false
 	}
 
@@ -229,7 +229,7 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 }
 
 /************************************************************************************************
-** ValidateAddress validates an address parameter from the request context and sends appropriate
+** validateAddress validates an address parameter from the request context and sends appropriate
 ** error responses if validation fails.
 **
 ** This utility function centralizes the common address validation logic used across multiple
@@ -245,12 +245,12 @@ func ValidateChainID(c *gin.Context, paramName string) (uint64, bool) {
 ** @return common.Address - The validated Ethereum address
 ** @return bool - True if validation succeeded, false if it failed (and response was sent)
 ************************************************************************************************/
-func ValidateAddress(c *gin.Context, paramName string, chainID uint64) (common.Address, bool) {
+func validateAddress(c *gin.Context, paramName string, chainID uint64) (common.Address, bool) {
 	// Default to "address" if no parameter name is provided
 	if paramName == "" {
 		paramName = "address"
 	}
-	functionName := "ValidateAddress"
+	functionName := "validateAddress"
 
 	// Validate address parameter exists
 	addressParam := c.Param(paramName)
@@ -261,8 +261,8 @@ func ValidateAddress(c *gin.Context, paramName string, chainID uint64) (common.A
 			"Missing required parameter",
 			fmt.Sprintf("%s parameter is required", paramName),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusBadRequest, "Missing required parameter", functionName)
+
+		handleError(c, err, http.StatusBadRequest, "Missing required parameter", functionName)
 		return common.Address{}, false
 	}
 
@@ -275,8 +275,8 @@ func ValidateAddress(c *gin.Context, paramName string, chainID uint64) (common.A
 			"Invalid address format",
 			fmt.Sprintf("The value '%s' is not a valid address", addressParam),
 		).WithContext(functionName)
-		
-		HandleError(c, err, http.StatusBadRequest, "Invalid address format", functionName)
+
+		handleError(c, err, http.StatusBadRequest, "Invalid address format", functionName)
 		return common.Address{}, false
 	}
 
@@ -284,7 +284,7 @@ func ValidateAddress(c *gin.Context, paramName string, chainID uint64) (common.A
 }
 
 /************************************************************************************************
-** HandleError provides standardized error handling for API endpoints.
+** handleError provides standardized error handling for API endpoints.
 **
 ** This utility function ensures consistent error handling throughout the vaults package by:
 ** 1. Converting standard errors to structured APIError types for better context
@@ -302,14 +302,14 @@ func ValidateAddress(c *gin.Context, paramName string, chainID uint64) (common.A
 ** @param userMessage string - A user-friendly message explaining what went wrong
 ** @param fnContext string - Function or operation context (e.g., function name)
 ************************************************************************************************/
-func HandleError(c *gin.Context, err error, statusCode int, userMessage string, fnContext string) {
+func handleError(c *gin.Context, err error, statusCode int, userMessage string, fnContext string) {
 	// Skip this if there's no actual error
 	if err == nil {
 		return
 	}
 
 	var apiErr APIError
-	
+
 	// Check if this is already an APIError
 	if e, ok := err.(APIError); ok {
 		// If context is not already set, add it
@@ -324,11 +324,11 @@ func HandleError(c *gin.Context, err error, statusCode int, userMessage string, 
 		if ok {
 			source = fmt.Sprintf("%s:%d", filepath.Base(file), line)
 		}
-		
+
 		// Create a new APIError from the standard error
 		apiErr = APIError{
 			// Infer type based on status code
-			Type:    inferErrorType(statusCode),
+			Type: inferErrorType(statusCode),
 			// Use a generic code based on status
 			Code:    inferErrorCode(statusCode),
 			Message: userMessage,
@@ -339,7 +339,7 @@ func HandleError(c *gin.Context, err error, statusCode int, userMessage string, 
 	}
 
 	// Format a detailed error message for the logs
-	logMessage := fmt.Sprintf("[%s] %s: %s (code=%s, source=%s)", 
+	logMessage := fmt.Sprintf("[%s] %s: %s (code=%s, source=%s)",
 		apiErr.Type, apiErr.Context, apiErr.Message, apiErr.Code, apiErr.Source)
 
 	// Log the error to Gin's internal error logger
@@ -401,7 +401,7 @@ func inferErrorCode(statusCode int) ErrorCode {
 }
 
 /************************************************************************************************
-** ValidateNumericQuery validates a numeric query parameter against a specified range.
+** validateNumericQuery validates a numeric query parameter against a specified range.
 **
 ** This utility function handles the extraction and validation of numeric query parameters.
 ** It performs the following operations:
@@ -418,7 +418,7 @@ func inferErrorCode(statusCode int) ErrorCode {
 ** @param logContext string - Additional context for error logging
 ** @return uint64 - The validated numeric value
 ************************************************************************************************/
-func ValidateNumericQuery(c *gin.Context, paramName string, defaultValue, minValue, maxValue uint64, logContext string) uint64 {
+func validateNumericQuery(c *gin.Context, paramName string, defaultValue, minValue, maxValue uint64, logContext string) uint64 {
 	// Get the query parameter
 	paramValue := getQueryParam(c, paramName)
 	if paramValue == "" {
@@ -449,7 +449,7 @@ func ValidateNumericQuery(c *gin.Context, paramName string, defaultValue, minVal
 }
 
 /************************************************************************************************
-** ValidateStringChoiceQuery validates a string query parameter against a list of valid options.
+** validateStringChoiceQuery validates a string query parameter against a list of valid options.
 **
 ** This utility function handles the extraction and validation of string query parameters where
 ** the value must be one of a predefined set of options.
@@ -466,7 +466,7 @@ func ValidateNumericQuery(c *gin.Context, paramName string, defaultValue, minVal
 ** @param logContext string - Additional context for error logging
 ** @return string - The validated string value
 ************************************************************************************************/
-func ValidateStringChoiceQuery(c *gin.Context, paramName, defaultValue string, validOptions []string, logContext string) string {
+func validateStringChoiceQuery(c *gin.Context, paramName, defaultValue string, validOptions []string, logContext string) string {
 	// Get the query parameter
 	paramValue := getQueryParam(c, paramName)
 	if paramValue == "" {
@@ -487,7 +487,7 @@ func ValidateStringChoiceQuery(c *gin.Context, paramName, defaultValue string, v
 }
 
 /************************************************************************************************
-** ValidateBooleanQuery validates a boolean query parameter.
+** validateBooleanQuery validates a boolean query parameter.
 **
 ** This utility function handles the extraction and validation of boolean query parameters.
 ** It performs the following operations:
@@ -502,7 +502,7 @@ func ValidateStringChoiceQuery(c *gin.Context, paramName, defaultValue string, v
 ** @param logContext string - Additional context for error logging
 ** @return bool - The validated boolean value
 ************************************************************************************************/
-func ValidateBooleanQuery(c *gin.Context, paramName string, defaultValue bool, logContext string) bool {
+func validateBooleanQuery(c *gin.Context, paramName string, defaultValue bool, logContext string) bool {
 	// Get the query parameter
 	paramValue := getQueryParam(c, paramName)
 	if paramValue == "" {

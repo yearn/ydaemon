@@ -47,7 +47,7 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	if chainID != "0" {
 		_, err := strconv.ParseUint(chainID, 10, 64)
 		if err != nil {
-			HandleError(c, fmt.Errorf("invalid chainID format: %s - %w", chainID, err),
+			handleError(c, fmt.Errorf("invalid chainID format: %s - %w", chainID, err),
 				http.StatusBadRequest, "Invalid chainID parameter", "GetBlacklistedVaults")
 			return
 		}
@@ -55,25 +55,24 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 
 	// All chains case
 	if chainID == "0" {
-		blacklistedVaults := []common.Address{}
 		chains := env.GetChains()
 
 		// Check that we have at least one chain configured
 		if len(chains) == 0 {
-			HandleError(c, fmt.Errorf("no chains configured in the environment"),
+			handleError(c, fmt.Errorf("no chains configured in the environment"),
 				http.StatusInternalServerError, "Configuration error", "GetBlacklistedVaults")
 			return
 		}
 
 		// Pre-allocate the slice with estimated capacity to avoid reallocations
 		estimatedCapacity := len(chains) * 5 // assuming average 5 blacklisted vaults per chain
-		blacklistedVaults = make([]common.Address, 0, estimatedCapacity)
+		blacklistedVaults := make([]common.Address, 0, estimatedCapacity)
 
 		for _, chain := range chains {
 			// Check for context timeout
 			select {
 			case <-ctx.Done():
-				HandleError(c, fmt.Errorf("operation timed out while processing blacklisted vaults"),
+				handleError(c, fmt.Errorf("operation timed out while processing blacklisted vaults"),
 					http.StatusGatewayTimeout, "Request processing timed out", "GetBlacklistedVaults")
 				return
 			default:
@@ -86,7 +85,7 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 		// Check for context timeout before sending response
 		select {
 		case <-ctx.Done():
-			HandleError(c, fmt.Errorf("operation timed out before sending response"),
+			handleError(c, fmt.Errorf("operation timed out before sending response"),
 				http.StatusGatewayTimeout, "Request processing timed out", "GetBlacklistedVaults")
 			return
 		default:
@@ -100,14 +99,14 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	// Parse and validate the chainID
 	chainIDAsUint, err := strconv.ParseUint(chainID, 10, 64)
 	if err != nil {
-		HandleError(c, fmt.Errorf("invalid chainID format: %s - %w", chainID, err),
+		handleError(c, fmt.Errorf("invalid chainID format: %s - %w", chainID, err),
 			http.StatusBadRequest, "Invalid chainID parameter", "GetBlacklistedVaults")
 		return
 	}
 
 	// Verify chain is supported
 	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainIDAsUint) {
-		HandleError(c, fmt.Errorf("chain %d is not supported", chainIDAsUint),
+		handleError(c, fmt.Errorf("chain %d is not supported", chainIDAsUint),
 			http.StatusBadRequest, "Unsupported chain", "GetBlacklistedVaults")
 		return
 	}
@@ -115,7 +114,7 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	// Get chain configuration
 	chain, ok := env.GetChain(chainIDAsUint)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainIDAsUint),
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainIDAsUint),
 			http.StatusInternalServerError, "Chain configuration error", "GetBlacklistedVaults")
 		return
 	}
@@ -123,7 +122,7 @@ func (y Controller) GetBlacklistedVaults(c *gin.Context) {
 	// Check for context timeout before sending response
 	select {
 	case <-ctx.Done():
-		HandleError(c, fmt.Errorf("operation timed out before sending response"),
+		handleError(c, fmt.Errorf("operation timed out before sending response"),
 			http.StatusGatewayTimeout, "Request processing timed out", "GetBlacklistedVaults")
 		return
 	default:

@@ -119,7 +119,7 @@ type TExternalERC20Token struct {
 **   [9] External protocol longevity (0-5)
 **   [10] External protocol type risk (0-5)
 **
-** For Multi-Strategy Vaults, the overall RiskLevel is derived from the highest risk 
+** For Multi-Strategy Vaults, the overall RiskLevel is derived from the highest risk
 ** strategy, while the detailed RiskScore array may not be populated (use the individual
 ** strategy risk scores instead).
 **
@@ -236,11 +236,11 @@ type TExternalVault struct {
 	Type              models.TTokenType       `json:"type"`
 	Kind              models.TVaultKind       `json:"kind"`
 	Symbol            string                  `json:"symbol"`
-	DisplaySymbol     string                  `json:"display_symbol"`
-	FormatedSymbol    string                  `json:"formated_symbol"`
+	DisplaySymbol     string                  `json:"-"`
+	FormatedSymbol    string                  `json:"-"`
 	Name              string                  `json:"name"`
-	DisplayName       string                  `json:"display_name"`
-	FormatedName      string                  `json:"formated_name"`
+	DisplayName       string                  `json:"-"`
+	FormatedName      string                  `json:"-"`
 	Description       string                  `json:"description,omitempty"`
 	Icon              string                  `json:"icon"`
 	Version           string                  `json:"version"`
@@ -253,7 +253,7 @@ type TExternalVault struct {
 	Token             TExternalERC20Token     `json:"token"`
 	TVL               models.TTVL             `json:"tvl"`
 	APR               TExternalVaultAPR       `json:"apr"`
-	Details           TExternalVaultDetails   `json:"details"`
+	Details           TExternalVaultDetails   `json:"-"`
 	Strategies        []TStrategy             `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TStakingData            `json:"staking"`
@@ -351,7 +351,7 @@ type TSimplifiedExternalVault struct {
 /************************************************************************************************
 ** assignVaultAPR maps the internal TVaultAPY structure to the external TExternalVaultAPR structure.
 **
-** This function converts APY (Annual Percentage Yield) data from internal calculations to the 
+** This function converts APY (Annual Percentage Yield) data from internal calculations to the
 ** standardized APR (Annual Percentage Rate) format used in the API. The conversion preserves
 ** all component values needed for displaying comprehensive yield information to users.
 **
@@ -398,7 +398,7 @@ func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
 /************************************************************************************************
 ** CreateExternalVault transforms an internal vault model into the external API representation.
 **
-** This function handles the complete conversion process from the internal data model to the 
+** This function handles the complete conversion process from the internal data model to the
 ** external API format, including:
 **
 ** 1. Retrieving associated token information (vault token, underlying token)
@@ -516,7 +516,6 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	return externalVault, nil
 }
 
-
 /**************************************************************************************************
 ** toTExternalVaultMigration converts internal migration data to the external format.
 **
@@ -556,13 +555,13 @@ func toTExternalVaultMigration(migration models.TMigration) TExternalVaultMigrat
 func getUnderlyingTokenInfo(chainID uint64, vaultAddress, assetAddress common.Address) TExternalERC20Token {
 	var tokenInfo TExternalERC20Token
 	var tokenFound bool
-	
+
 	// First try to get the specialized underlying token data
 	if underlyingToken, ok := storage.GetUnderlyingERC20(chainID, vaultAddress); ok {
 		tokenInfo = convertToExternalToken(underlyingToken)
 		tokenFound = true
-	} 
-	
+	}
+
 	// Fallback to basic token data if specialized data not available
 	if !tokenFound {
 		if underlyingToken, ok := storage.GetERC20(chainID, assetAddress); ok {
@@ -574,7 +573,7 @@ func getUnderlyingTokenInfo(chainID uint64, vaultAddress, assetAddress common.Ad
 	if tokenInfo.UnderlyingTokensAddresses == nil {
 		tokenInfo.UnderlyingTokensAddresses = []string{}
 	}
-	
+
 	return tokenInfo
 }
 

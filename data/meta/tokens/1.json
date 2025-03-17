@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-16T16:53:06.511453+01:00",
+	"lastUpdate": "2025-03-17T09:25:21.373144+01:00",
 	"version": {
 		"major": 0,
-		"minor": 97,
+		"minor": 98,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -32559,6 +32559,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf7906F274c174A52d444175729E3fa98f9bde285/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf7a7873c32c73813b5411ca58eaadbbb6d806e4f": {
+			"address": "0xf7a7873c32c73813b5411ca58eaadbbb6d806e4f",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "ROOMV",
+			"symbol": "ROMV",
+			"displayName": "ROOMV",
+			"displaySymbol": "ROMV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf7a7873C32c73813b5411CA58EaadBBb6d806e4f/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf7b55c3732ad8b2c2da7c24f30a69f55c54fb717": {

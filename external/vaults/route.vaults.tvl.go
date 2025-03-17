@@ -36,7 +36,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 
 	// Verify chain is supported
 	if !helpers.Contains(env.SUPPORTED_CHAIN_IDS, chainID) {
-		HandleError(c, fmt.Errorf("chain %d is not supported", chainID), http.StatusBadRequest,
+		handleError(c, fmt.Errorf("chain %d is not supported", chainID), http.StatusBadRequest,
 			fmt.Sprintf("Chain %d is not supported", chainID), "ComputeChainTVL")
 		return tvl
 	}
@@ -44,7 +44,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 	// Get chain configuration
 	chain, ok := env.GetChain(chainID)
 	if !ok {
-		HandleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID), http.StatusInternalServerError,
+		handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID), http.StatusInternalServerError,
 			"Internal configuration error", "ComputeChainTVL")
 		return tvl
 	}
@@ -71,7 +71,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 		if !math.IsNaN(vaultTVL.TVL) && !math.IsInf(vaultTVL.TVL, 0) {
 			tvl += vaultTVL.TVL
 		} else {
-			HandleError(c, fmt.Errorf("invalid TVL value for vault %s: %v", currentVault.Address.Hex(), vaultTVL.TVL),
+			handleError(c, fmt.Errorf("invalid TVL value for vault %s: %v", currentVault.Address.Hex(), vaultTVL.TVL),
 				http.StatusInternalServerError, "Invalid TVL calculation result", "ComputeChainTVL")
 		}
 	}
@@ -148,7 +148,7 @@ func (y Controller) GetAllVaultsTVL(c *gin.Context) {
 **************************************************************************************************/
 func (y Controller) GetVaultsTVL(c *gin.Context) {
 	// Validate chain ID using the utility function
-	chainID, ok := ValidateChainID(c, "chainID")
+	chainID, ok := validateChainID(c, "chainID")
 	if !ok {
 		return
 	}

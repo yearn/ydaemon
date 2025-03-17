@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
 	"github.com/machinebox/graphql"
 	"github.com/yearn/ydaemon/common/bigNumber"
@@ -201,6 +202,8 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 		// Process the harvest record
 		// Use the available fields from the response and construct a valid TExternalVaultHarvest
 		// Note: Some fields like BlockNumber and APR might not be available in the GraphQL response
+		tokenPriceBigFloat, _ := buildTokenPrice(chainID, common.HexToAddress(harvest.Vault.Token.Id))
+		decimals := harvest.Vault.Token.Decimals
 
 		// Use profit for profitValue and convert to float
 		profitsBN := bigNumber.NewFloat().SetString(harvest.Profit)
@@ -230,8 +233,8 @@ func (y Controller) GetHarvestsForVault(c *gin.Context) {
 			Profit:          harvest.Profit,
 			Loss:            harvest.Loss,
 			TxHash:          harvest.Transaction.Hash,
-			ProfitValue:     profitsFloat,
-			LossValue:       lossFloat,
+			ProfitValue:     buildTVL(bigNumber.NewInt().SetString(harvest.Profit), decimals, tokenPriceBigFloat),
+			LossValue:       buildTVL(bigNumber.NewInt().SetString(harvest.Loss), decimals, tokenPriceBigFloat),
 			VaultAddress:    harvest.Vault.Id,
 			StrategyAddress: harvest.Strategy.Id,
 		}

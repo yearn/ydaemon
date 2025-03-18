@@ -124,7 +124,6 @@ func getVaults(
 	** 3. Skipping unnecessary strategy lookups when possible
 	** 4. Using a capacity hint for the allVaults slice to reduce reallocations
 	**************************************************************************************************/
-	data := []TSimplifiedExternalVault{}
 	// Provide capacity hint based on typical vault counts to reduce reallocations
 	estimatedVaultCount := len(chains) * 50 // Rough estimate of 50 vaults per chain
 	allVaults := make([]TSimplifiedExternalVault, 0, estimatedVaultCount)
@@ -225,7 +224,7 @@ func getVaults(
 	if end > uint64(len(allVaults)) {
 		end = uint64(len(allVaults))
 	}
-	data = allVaults[start:end]
+	data := allVaults[start:end]
 
 	return data, nil
 }

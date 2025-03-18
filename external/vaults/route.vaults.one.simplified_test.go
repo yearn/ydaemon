@@ -181,11 +181,12 @@ func TestGetSimplifiedVault_StrategyCondition(t *testing.T) {
 	queryParams := map[string]string{
 		"strategiesCondition": "debtRatio",
 	}
-	c, w := setupSimplifiedVaultTest(t, "1", vaultAddress.Hex(), queryParams)
-	controller := Controller{}
 
 	// Skip this test if GetSupportedChains is not available
 	t.Skip("Skipping test as the implementation may have changed")
+
+	c, w := setupSimplifiedVaultTest(t, "1", vaultAddress.Hex(), queryParams)
+	controller := Controller{}
 
 	// Execute
 	controller.GetSimplifiedVault(c)

@@ -241,7 +241,6 @@ func ProcessStrategiesForVault(
 func validateAddressesParam(
 	c *gin.Context,
 	addressesParam string,
-	chainID uint64,
 	funcName string,
 ) ([]string, bool) {
 	if addressesParam == "" {

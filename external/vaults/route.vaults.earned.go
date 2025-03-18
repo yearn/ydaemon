@@ -101,7 +101,7 @@ func (y Controller) GetEarnedPerVaultPerUser(c *gin.Context) {
 
 	// Validate vault addresses parameter
 	vaultsParam := c.Param("vaults")
-	vaultsAddressesStr, ok := validateAddressesParam(c, vaultsParam, chainID, "GetEarnedPerVaultPerUser")
+	vaultsAddressesStr, ok := validateAddressesParam(c, vaultsParam, "GetEarnedPerVaultPerUser")
 	if !ok {
 		return
 	}

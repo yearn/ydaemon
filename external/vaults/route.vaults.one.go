@@ -131,14 +131,3 @@ func (y Controller) GetVault(c *gin.Context) {
 	simplified.Description = newVault.Description
 	c.JSON(http.StatusOK, simplified)
 }
-
-// isValidStrategiesCondition checks if the strategies condition parameter is valid
-func isValidStrategiesCondition(condition string) bool {
-	validConditions := map[string]bool{
-		"all":       true,
-		"inQueue":   true,
-		"debtRatio": true,
-		"absolute":  true,
-	}
-	return validConditions[condition]
-}

@@ -171,7 +171,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 				stakingAddress = stakingData.Address
 			}
 
-			vaultToken, ok := storage.GetERC20(chainID, currentVault.Address)
+			vaultToken, ok := storage.GetERC20(chainID, currentVault.AssetAddress)
 			if !ok {
 				continue
 			}

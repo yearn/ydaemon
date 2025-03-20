@@ -56,7 +56,7 @@ func fetchTokensBasicInformations(
 		/**********************************************************************************************
 		** The first step is to prepare the multicall, connecting to the multicall instance and
 		** preparing the array of calls to send. All calls for all tokens will be send in a single
-		** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+		** multicall and will later be accessible via a concatenated string `tokenAddress + methodName`.
 		**********************************************************************************************/
 		caller := ethereum.MulticallClientForChainID[chainID]
 		calls := []ethereum.Call{}
@@ -350,7 +350,7 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	** multicall and will later be accessible via a concatenated string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	curvePoolFactory, _ := contracts.NewCurvePoolFactory(chain.Curve.FactoryAddress, client)
@@ -483,7 +483,7 @@ func loadVeloTokens(chainID uint64) []common.Address {
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	** multicall and will later be accessible via a concatenated string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	sugar, err := contracts.NewVeloSugarCaller(VELO_SUGAR_ADDRESS, client)

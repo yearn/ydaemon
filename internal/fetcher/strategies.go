@@ -30,7 +30,7 @@ func fetchStrategiesBasicInformations(
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all vaults will be send in a single
-	** multicall and will later be accessible via a concatened string `stratAddress + methodName`.
+	** multicall and will later be accessible via a concatenated string `stratAddress + methodName`.
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, strat := range strategiesMap {

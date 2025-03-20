@@ -72,7 +72,7 @@ func fetchPricesFromAeroSugar(chainID uint64, blockNumber *uint64, tokens []mode
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	** multicall and will later be accessible via a concatenated string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
 	sugar, _ := contracts.NewAeroSugar(AERO_SUGAR_ADDRESS, client)

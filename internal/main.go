@@ -20,7 +20,7 @@ var STRATLIST = []models.TStrategy{}
 func initStakingPools(chainID uint64) {
 	/**********************************************************************************************
 	** Start the Staking Indexing process and schedule it to run every hour. This indexer
-	** will fetch the relevent data for the OP Staking contracts as well as thoose responsible
+	** will fetch the relevant data for the OP Staking contracts as well as thoose responsible
 	** for the APR calculations.
 	**********************************************************************************************/
 	indexer.IndexStakingPools(chainID)

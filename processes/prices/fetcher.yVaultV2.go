@@ -21,7 +21,7 @@ func fetchPricePerShareFromVault(chainID uint64, blockNumber *uint64, tokens []m
 	/**********************************************************************************************
 	** The first step is to prepare the multicall, connecting to the multicall instance and
 	** preparing the array of calls to send. All calls for all tokens will be send in a single
-	** multicall and will later be accessible via a concatened string `tokenAddress + methodName`.
+	** multicall and will later be accessible via a concatenated string `tokenAddress + methodName`.
 	**********************************************************************************************/
 	calls := []ethereum.Call{}
 	for _, token := range tokens {

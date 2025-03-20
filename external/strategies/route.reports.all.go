@@ -68,10 +68,10 @@ var runGraphQLRequest graphQLRunner = func(ctx context.Context, client *graphql.
 ** @param c The Gin context containing additional request parameters
 ** @return *graphql.Request A ready-to-use GraphQL request
 **************************************************************************************************/
-func graphQLRequestForReports(strategyAddress string, c *gin.Context) *graphql.Request {
+func graphQLRequestForReports(strategyAddress string, first int, c *gin.Context) *graphql.Request {
 	return graphql.NewRequest(`{
 		strategy(id: "` + strings.ToLower(strategyAddress) + `") {
-			` + helpers.GetStrategyReports() + `
+			` + helpers.GetStrategyReports(first) + `
 		}
 	}`)
 }
@@ -125,7 +125,7 @@ func (y Controller) GetReports(c *gin.Context) {
 
 	// Create GraphQL client and request
 	client := createGraphQLClient(graphQLEndpoint)
-	request := graphQLRequestForReports(address.Hex(), c)
+	request := graphQLRequestForReports(address.Hex(), 10, c)
 
 	// Execute the request
 	var responseRaw models.TReportsFromGraph

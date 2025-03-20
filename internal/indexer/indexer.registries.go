@@ -16,6 +16,7 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/logs"
+	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -71,26 +72,34 @@ func filterNewVault(
 					}
 					historicalVault := handleV02Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						historicalVault.Address: historicalVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
 		case 3:
+			logs.Debug(`Checking YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + ` from block ` + strconv.FormatUint(chunkStart, 10) + ` to ` + strconv.FormatUint(chunkEnd, 10))
 			currentRegistry, _ := contracts.NewYRegistryV3(registry.Address, client)
 			if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 				for log.Next() {
 					if log.Error() != nil {
+						logs.Error(`Error in YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + log.Error().Error())
 						continue
 					}
 					historicalVault := handleV03Vault(chainID, log.Event)
+					logs.Success(`Detected a new vault in YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + ` at block ` + strconv.FormatUint(log.Event.Raw.BlockNumber, 10) + ` | ` + historicalVault.Address.Hex())
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						historicalVault.Address: historicalVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
+				logs.Success(`Done Indexing YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
@@ -103,9 +112,11 @@ func filterNewVault(
 					}
 					historicalVault := handleV04Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						historicalVault.Address: historicalVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV4 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -119,9 +130,11 @@ func filterNewVault(
 					}
 					historicalVault := handleV05Vault(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						historicalVault.Address: historicalVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV5 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -135,9 +148,11 @@ func filterNewVault(
 					}
 					historicalVault := handleV06Vault_Gamma(chainID, log.Event)
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						historicalVault.Address: historicalVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{historicalVault.Address: historicalVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV6 (Gamma) ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
@@ -225,18 +240,22 @@ func watchNewVaults(
 				if value, err := currentRegistry.ParseNewVault(log); err == nil {
 					newVault := handleV02Vault(chainID, value)
 					storage.StoreNewVaultToRegistry(chainID, newVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						newVault.Address: newVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 					continue
 				}
 
 				if value, err := currentRegistry.ParseNewExperimentalVault(log); err == nil {
 					newVault := handleV02ExperimentalVault(chainID, value)
 					storage.StoreNewVaultToRegistry(chainID, newVault)
-					processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-						newVault.Address: newVault,
-					})
+					ProcessNewVault(
+						chainID,
+						map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+						fetcher.ProcessNewVaultMethodAppend,
+					)
 				}
 			case err := <-sub.Err():
 				logs.Error(err)
@@ -289,9 +308,11 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV03Vault(chainID, value)
-				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-					newVault.Address: newVault,
-				})
+				ProcessNewVault(
+					chainID,
+					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					fetcher.ProcessNewVaultMethodAppend,
+				)
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -343,9 +364,11 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV04Vault(chainID, value)
-				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-					newVault.Address: newVault,
-				})
+				ProcessNewVault(
+					chainID,
+					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					fetcher.ProcessNewVaultMethodAppend,
+				)
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -397,9 +420,11 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV05Vault(chainID, value)
-				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-					newVault.Address: newVault,
-				})
+				ProcessNewVault(
+					chainID,
+					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					fetcher.ProcessNewVaultMethodAppend,
+				)
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -451,9 +476,11 @@ func watchNewVaults(
 				}
 				lastSyncedBlock = value.Raw.BlockNumber
 				newVault := handleV06Vault_Gamma(chainID, value)
-				processNewVault(chainID, map[common.Address]models.TVaultsFromRegistry{
-					newVault.Address: newVault,
-				})
+				ProcessNewVault(
+					chainID,
+					map[common.Address]models.TVaultsFromRegistry{newVault.Address: newVault},
+					fetcher.ProcessNewVaultMethodAppend,
+				)
 			case err := <-sub.Err():
 				logs.Error(err)
 				return lastSyncedBlock, true, err
@@ -596,6 +623,7 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 				highestBlockNumber = strategy.BlockNumber
 			}
 		}
+		logs.Debug(chainID, highestBlockNumber, len(vaultSlice), registry.Address.Hex())
 
 		/** 🔵 - Yearn *****************************************************************************
 		** After retrieving the highest block number we can proceed to index new vaults.

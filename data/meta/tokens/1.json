@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-18T10:46:46.064347+01:00",
+	"lastUpdate": "2025-03-20T11:17:40.976289+01:00",
 	"version": {
 		"major": 0,
-		"minor": 98,
+		"minor": 100,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1529,6 +1529,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x09db87A538BD693E9d08544577d5cCfAA6373A48/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x09fa04aac9c6d1c6131352ee950cd67ecc6d4fb9": {
+			"address": "0x09fa04aac9c6d1c6131352ee950cd67ecc6d4fb9",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x09fA04Aac9c6d1c6131352EE950CD67ecC6d4fB9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3769,6 +3783,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1ce7d9942ff78c328a4181b9f3826fee6d845a97": {
+			"address": "0x1ce7d9942ff78c328a4181b9f3826fee6d845a97",
+			"underlyingTokensAddresses": [
+				"0x4f8e1426a9d10bddc11d26042ad270f16ccb95f2"
+			],
+			"type": "Yearn Vault",
+			"name": "YieldFi yToken",
+			"symbol": "yUSD",
+			"displayName": "YieldFi yToken",
+			"displaySymbol": "yUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1CE7D9942ff78c328A4181b9F3826fEE6D845A97/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1ceb5cb57c4d4e2b2433641b95dd330a33185a44": {
 			"address": "0x1ceb5cb57c4d4e2b2433641b95dd330a33185a44",
 			"underlyingTokensAddresses": [],
@@ -3910,6 +3940,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1E2391a261217c93D09Ff3Ae9aB1903EA237BdA8/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1e24b022329f3ca0083b12faf75d19639faebf6f": {
+			"address": "0x1e24b022329f3ca0083b12faf75d19639faebf6f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Wrapped stUSR 25SEP2025",
+			"symbol": "YT-wstUSR-25SEP2025",
+			"displayName": "YT Wrapped stUSR 25SEP2025",
+			"displaySymbol": "YT-wstUSR-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1E24B022329f3CA0083b12FAF75d19639FAebF6f/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4539,6 +4583,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x23e479ddcda990E8523494895759bD98cD2fDBF6/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x23e60d1488525bf4685f53b3aa8e676c30321066": {
+			"address": "0x23e60d1488525bf4685f53b3aa8e676c30321066",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Wrapped stUSR 25SEP2025",
+			"symbol": "PT-wstUSR-25SEP2025",
+			"displayName": "PT Wrapped stUSR 25SEP2025",
+			"displaySymbol": "PT-wstUSR-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x23E60d1488525bf4685f53b3aa8E676c30321066/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x23e7817bc73645063fb2fa85c1d098effe84be90": {
@@ -8582,6 +8640,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x419905009e4656fdc02418c7df35b1e61ed5f726": {
+			"address": "0x419905009e4656fdc02418c7df35b1e61ed5f726",
+			"underlyingTokensAddresses": [
+				"0x419905009e4656fdc02418c7df35b1e61ed5f726"
+			],
+			"type": "Curve LP",
+			"name": "Resupply",
+			"symbol": "RSUP",
+			"displayName": "Resupply",
+			"displaySymbol": "RSUP",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x419905009e4656fdC02418C7Df35B1E61Ed5F726/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68": {
 			"address": "0x41d5d79431a913c4ae7d69a668ecdfe5ff9dfb68",
 			"underlyingTokensAddresses": [],
@@ -10358,6 +10432,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4f8e1426a9d10bddc11d26042ad270f16ccb95f2": {
+			"address": "0x4f8e1426a9d10bddc11d26042ad270f16ccb95f2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YieldFi Stable Token",
+			"symbol": "sUSD",
+			"displayName": "YieldFi Stable Token",
+			"displaySymbol": "sUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x4F8E1426A9d10bddc11d26042ad270F16cCb95F2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4fabb145d64652a948d72533023f6e7a623c7c53": {
 			"address": "0x4fabb145d64652a948d72533023f6e7a623c7c53",
 			"underlyingTokensAddresses": [],
@@ -11282,6 +11370,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x57a8b4061AA598d2Bb5f70C5F931a75C9F511fc8/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x57ab1e0003f623289cd798b1824be09a793e4bec": {
+			"address": "0x57ab1e0003f623289cd798b1824be09a793e4bec",
+			"underlyingTokensAddresses": [
+				"0x57ab1e0003f623289cd798b1824be09a793e4bec"
+			],
+			"type": "Yearn Vault",
+			"name": "Resupply USD",
+			"symbol": "reUSD",
+			"displayName": "Resupply USD",
+			"displaySymbol": "reUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x57aB1E0003F623289CD798B1824Be09a793e4Bec/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x57ab1ec28d129707052df4df418d58a2d46d5f51": {
@@ -16459,6 +16563,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x8017b5d498f75d12da6a857e867699fb07de41a4": {
+			"address": "0x8017b5d498f75d12da6a857e867699fb07de41a4",
+			"underlyingTokensAddresses": [
+				"0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve wethrsup Factory yVault",
+			"symbol": "yvCurve-wethrsup-f",
+			"displayName": "Curve wethrsup Factory yVault",
+			"displaySymbol": "yvCurve-wethrsup-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8017B5d498f75d12dA6A857e867699fB07De41a4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x801ab06154bf539dea4385a39f5fa8534fb53073": {
 			"address": "0x801ab06154bf539dea4385a39f5fa8534fb53073",
 			"underlyingTokensAddresses": [
@@ -19018,6 +19138,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9335A7A9208cdA49f287Ea9af7B3D1faAdfcfe80/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9353976a6b6e7a9e1e9b1f2aaaba629ad310947f": {
+			"address": "0x9353976a6b6e7a9e1e9b1f2aaaba629ad310947f",
+			"underlyingTokensAddresses": [
+				"0x1ce7d9942ff78c328a4181b9f3826fee6d845a97",
+				"0xb45ad160634c528cc3d2926d9807104fa3157305"
+			],
+			"type": "Curve LP",
+			"name": "sDOLA/yUSD",
+			"symbol": "sDOLA yUSD",
+			"displayName": "sDOLA/yUSD",
+			"displaySymbol": "sDOLA yUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9353976A6B6E7A9e1E9B1F2aaaBA629aD310947f/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24485,6 +24622,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbc2b808e385e933b5f6655fe311aebaa0d6fc80f": {
+			"address": "0xbc2b808e385e933b5f6655fe311aebaa0d6fc80f",
+			"underlyingTokensAddresses": [
+				"0x9353976a6b6e7a9e1e9b1f2aaaba629ad310947f"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve sDOLA yUSD Factory yVault",
+			"symbol": "yvCurve-sDOLA yUSD-f",
+			"displayName": "Curve sDOLA yUSD Factory yVault",
+			"displaySymbol": "yvCurve-sDOLA yUSD-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBc2b808e385E933b5f6655fE311aeBaa0d6fc80F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbc396689893d065f41bc2c6ecbee5e0085233447": {
 			"address": "0xbc396689893d065f41bc2c6ecbee5e0085233447",
 			"underlyingTokensAddresses": [],
@@ -25863,6 +26016,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc522a6606bba746d7960404f22a3db936b6f4f50": {
+			"address": "0xc522a6606bba746d7960404f22a3db936b6f4f50",
+			"underlyingTokensAddresses": [
+				"0x57ab1e0003f623289cd798b1824be09a793e4bec",
+				"0x0655977feb2f289a4ab78af67bab0d17aab84367"
+			],
+			"type": "Curve LP",
+			"name": "reUSD/scrvUSD",
+			"symbol": "reusdscrv",
+			"displayName": "reUSD/scrvUSD",
+			"displaySymbol": "reusdscrv",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xc522A6606BBA746d7960404F22a3DB936B6F4F50/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc5240ac6b9d81b2dba30e331e3b419ed52cd2720": {
 			"address": "0xc5240ac6b9d81b2dba30e331e3b419ed52cd2720",
 			"underlyingTokensAddresses": [],
@@ -27211,6 +27381,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xcf62f905562626cfcdd2261162a51fd02fc9c5b6": {
+			"address": "0xcf62f905562626cfcdd2261162a51fd02fc9c5b6",
+			"underlyingTokensAddresses": [
+				"0xcacd6fd266af91b8aed52accc382b4e165586e29"
+			],
+			"type": "Yearn Vault",
+			"name": "Staked Frax USD",
+			"symbol": "sfrxUSD",
+			"displayName": "Staked Frax USD",
+			"displaySymbol": "sfrxUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xcf62F905562626CfcDD2261162a51fd02Fc9c5b6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xcf756c00a755172bdc073787ea83817603da42ef": {
 			"address": "0xcf756c00a755172bdc073787ea83817603da42ef",
 			"underlyingTokensAddresses": [],
@@ -27550,6 +27736,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xd1D7D99764f8a52Aff007b7831cc02748b2013b5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd2433ec6de2a932ab7bc1a0080676333aef8b546": {
+			"address": "0xd2433ec6de2a932ab7bc1a0080676333aef8b546",
+			"underlyingTokensAddresses": [
+				"0xed785af60bed688baa8990cd5c4166221599a441"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve reusdsfrx Factory yVault",
+			"symbol": "yvCurve-reusdsfrx-f",
+			"displayName": "Curve reusdsfrx Factory yVault",
+			"displaySymbol": "yvCurve-reusdsfrx-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD2433Ec6De2a932Ab7bc1A0080676333AeF8B546/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -31224,6 +31426,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xed785af60bed688baa8990cd5c4166221599a441": {
+			"address": "0xed785af60bed688baa8990cd5c4166221599a441",
+			"underlyingTokensAddresses": [
+				"0x57ab1e0003f623289cd798b1824be09a793e4bec",
+				"0xcf62f905562626cfcdd2261162a51fd02fc9c5b6"
+			],
+			"type": "Curve LP",
+			"name": "reUSD/sfrxUSD",
+			"symbol": "reusdsfrx",
+			"displayName": "reUSD/sfrxUSD",
+			"displaySymbol": "reusdsfrx",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xed785Af60bEd688baa8990cD5c4166221599A441/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xed97f94dd94255637a054098604e0201c442a3fd": {
 			"address": "0xed97f94dd94255637a054098604e0201c442a3fd",
 			"underlyingTokensAddresses": [],
@@ -31263,6 +31482,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEDda7526EC81055F2af99d51D968FC2FBca9Ee96/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d": {
+			"address": "0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+				"0x419905009e4656fdc02418c7df35b1e61ed5f726"
+			],
+			"type": "Curve LP",
+			"name": "WETH/RSUP",
+			"symbol": "wethrsup",
+			"displayName": "WETH/RSUP",
+			"displaySymbol": "wethrsup",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEe351f12EAE8C2B8B9d1B9BFd3c5dd565234578d/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -31675,6 +31911,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xF148a0B15712f5BfeefAdb4E6eF9739239F88b07/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf165a634296800812b8b0607a75deddcd4d3cc88": {
+			"address": "0xf165a634296800812b8b0607a75deddcd4d3cc88",
+			"underlyingTokensAddresses": [
+				"0xc522a6606bba746d7960404f22a3db936b6f4f50"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve reusdscrv Factory yVault",
+			"symbol": "yvCurve-reusdscrv-f",
+			"displayName": "Curve reusdscrv Factory yVault",
+			"displaySymbol": "yvCurve-reusdscrv-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf165a634296800812B8B0607a75DeDdcD4D3cC88/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

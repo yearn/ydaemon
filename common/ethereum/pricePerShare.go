@@ -3,6 +3,7 @@ package ethereum
 import (
 	"fmt"
 	"math/big"
+	"strconv"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -39,6 +40,7 @@ import (
 func FetchPPSToday(
 	chainID uint64,
 	vaultAddress common.Address,
+	vaultActivation uint64,
 	decimals uint64,
 ) *bigNumber.Float {
 	vaultContract, err := contracts.NewYearnVaultCaller(vaultAddress, GetRPC(chainID))
@@ -73,6 +75,7 @@ func FetchPPSToday(
 func FetchPPSLastWeek(
 	chainID uint64,
 	vaultAddress common.Address,
+	vaultDeploymentBlock uint64,
 	decimals uint64,
 ) *bigNumber.Float {
 	vaultContract, err := contracts.NewYearnVaultCaller(vaultAddress, GetRPC(chainID))
@@ -85,6 +88,11 @@ func FetchPPSLastWeek(
 	if estBlockLastWeek == 0 {
 		logs.Warning(fmt.Sprintf("Chain %d - Failed to get block number from 7 days ago for vault %s", chainID, vaultAddress.Hex()))
 		return bigNumber.NewFloat(0)
+	}
+
+	if vaultDeploymentBlock > 0 && estBlockLastWeek < vaultDeploymentBlock {
+		logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last week, using inception PPS`)
+		return bigNumber.NewFloat(1)
 	}
 
 	opts := &bind.CallOpts{
@@ -118,6 +126,7 @@ func FetchPPSLastWeek(
 func FetchPPSLastMonth(
 	chainID uint64,
 	vaultAddress common.Address,
+	vaultDeploymentBlock uint64,
 	decimals uint64,
 ) *bigNumber.Float {
 	vaultContract, err := contracts.NewYearnVaultCaller(vaultAddress, GetRPC(chainID))
@@ -130,6 +139,11 @@ func FetchPPSLastMonth(
 	if estBlockLastMonth == 0 {
 		logs.Warning(fmt.Sprintf("Chain %d - Failed to get block number from 30 days ago for vault %s", chainID, vaultAddress.Hex()))
 		return bigNumber.NewFloat(0)
+	}
+
+	if vaultDeploymentBlock > 0 && estBlockLastMonth < vaultDeploymentBlock {
+		logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last month, using inception PPS`)
+		return bigNumber.NewFloat(1)
 	}
 
 	opts := &bind.CallOpts{

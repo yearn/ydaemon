@@ -289,6 +289,9 @@ func (b *Float) String() string {
 ** @return bool True if the value is zero, false otherwise
 **************************************************************************************************/
 func (b *Float) IsZero() bool {
+	if b == nil {
+		return true
+	}
 	return b.Cmp(big.NewFloat(0)) == 0
 }
 

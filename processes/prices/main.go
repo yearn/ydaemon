@@ -238,7 +238,7 @@ func fetchPrices(
 		if value, ok := newPriceMap[token.Address]; !ok || value.Price.IsZero() {
 			if token.IsVaultLike() {
 				underlyingToken := token.UnderlyingTokensAddresses[0]
-				ppsToday := ethereum.FetchPPSToday(chainID, token.Address, token.Decimals)
+				ppsToday := ethereum.FetchPPSToday(chainID, token.Address, 0, token.Decimals)
 				underlyingPrice := bigNumber.NewFloat(0).SetInt(newPriceMap[underlyingToken].Price)
 				vaultPrice := bigNumber.NewFloat(0).Mul(ppsToday, underlyingPrice)
 				humanizedPrice := helpers.ToNormalizedAmount(vaultPrice.Int(), 6)

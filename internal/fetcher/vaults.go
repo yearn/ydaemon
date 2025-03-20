@@ -1,6 +1,7 @@
 package fetcher
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -114,12 +115,15 @@ func fetchVaultsBasicInformations(
 func RetrieveAllVaults(
 	chainID uint64,
 	vaults map[common.Address]models.TVaultsFromRegistry,
+	method TProcessNewVaultMethod,
 ) map[common.Address]models.TVault {
 	chain, ok := env.GetChain(chainID)
 	if !ok {
 		logs.Error(chainID, `-`, `RetrieveAllVaults`, `Chain not found`)
 		return nil
 	}
+
+	logs.Pretty(`Retrieving all vaults for chain ` + strconv.FormatUint(chainID, 10) + ` with len vaults: ` + strconv.Itoa(len(vaults)))
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database and populate our updatedVaultMap
@@ -129,6 +133,9 @@ func RetrieveAllVaults(
 	metadata := storage.GetVaultsJsonMetadata(chainID)
 	shouldRefresh := metadata.ShouldRefresh
 	updatedVaultMap := vaultMap
+	if method == ProcessNewVaultMethodAppend {
+		updatedVaultMap = map[common.Address]models.TVault{}
+	}
 
 	/**********************************************************************************************
 	** From the vault registry we have the first batch of vaults. In order to proceed, we will
@@ -163,22 +170,24 @@ func RetrieveAllVaults(
 	** Somehow, some vaults are not in the registries, but we still need the vault data for them.
 	** We will add them manually here.
 	**********************************************************************************************/
-	for _, currentVault := range chain.ExtraVaults {
-		if _, ok := updatedVaultMap[currentVault.Address]; !ok || shouldRefresh {
-			kind := currentVault.Kind
-			if currentVault.Kind == `` {
-				kind = models.VaultKindLegacy
+	if method == ProcessNewVaultMethodReplace {
+		for _, currentVault := range chain.ExtraVaults {
+			if _, ok := updatedVaultMap[currentVault.Address]; !ok || shouldRefresh {
+				kind := currentVault.Kind
+				if currentVault.Kind == `` {
+					kind = models.VaultKindLegacy
+				}
+				newVault := models.TVault{
+					Address:      currentVault.Address,
+					AssetAddress: currentVault.TokenAddress,
+					Version:      currentVault.APIVersion,
+					ChainID:      chainID,
+					Activation:   currentVault.BlockNumber,
+					Type:         currentVault.Type,
+					Kind:         kind,
+				}
+				updatedVaultMap[currentVault.Address] = newVault
 			}
-			newVault := models.TVault{
-				Address:      currentVault.Address,
-				AssetAddress: currentVault.TokenAddress,
-				Version:      currentVault.APIVersion,
-				ChainID:      chainID,
-				Activation:   currentVault.BlockNumber,
-				Type:         currentVault.Type,
-				Kind:         kind,
-			}
-			updatedVaultMap[currentVault.Address] = newVault
 		}
 	}
 
@@ -190,6 +199,7 @@ func RetrieveAllVaults(
 	/**********************************************************************************************
 	** Once everything is setup we can re-store the elements to save them in our storage
 	**********************************************************************************************/
+	logs.Warning(`Storing ` + strconv.Itoa(len(newVaultList)) + ` vaults for chain ` + strconv.FormatUint(chainID, 10))
 	for _, vault := range newVaultList {
 		vault.ChainID = chainID
 		/******************************************************************************************
@@ -253,6 +263,7 @@ func RetrieveAllVaults(
 			vault.Metadata.Category = models.VaultCategoryAutomatic
 		}
 
+		logs.Info(`Storing vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 		storage.StoreVault(chainID, vault)
 	}
 
@@ -320,5 +331,15 @@ func RetrieveAllVaults(
 		vaultMapFromStorage[vault.Address] = vault
 	}
 	storage.StoreVaultsToJson(chainID, vaultMapFromStorage)
-	return vaultMap
+
+	returnedVaultMap := map[common.Address]models.TVault{}
+
+	// If the method is append, we only want the vaults that we asked to be added in the Vaults args
+	if method == ProcessNewVaultMethodAppend {
+		for _, vault := range vaults {
+			returnedVaultMap[vault.Address] = vaultMapFromStorage[vault.Address]
+		}
+		return returnedVaultMap
+	}
+	return vaultMapFromStorage
 }

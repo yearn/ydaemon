@@ -109,7 +109,7 @@ func checkVaultMigrationStatus(vaultAddress common.Address, depositLimitMultical
 **************************************************************************************************/
 func initYearnEcosystem(chainID uint64) {
 	historicalVaults := indexer.IndexNewVaults(chainID)
-	vaultMap := fetcher.RetrieveAllVaults(chainID, historicalVaults)
+	vaultMap, _ := indexer.ProcessNewVault(chainID, historicalVaults, fetcher.ProcessNewVaultMethodReplace)
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 	prices.RetrieveAllPrices(chainID, tokenMap)
 }

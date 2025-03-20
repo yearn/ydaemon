@@ -21,9 +21,9 @@ func computeCurrentV3VaultAPY(
 	}
 
 	ppsInception := bigNumber.NewFloat(1)
-	ppsToday := ethereum.FetchPPSToday(chainID, yieldVault, vaultToken.Decimals)
-	ppsWeekAgo := ethereum.FetchPPSLastWeek(chainID, yieldVault, vaultToken.Decimals)
-	ppsMonthAgo := ethereum.FetchPPSLastMonth(chainID, yieldVault, vaultToken.Decimals)
+	ppsToday := ethereum.FetchPPSToday(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+	ppsWeekAgo := ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+	ppsMonthAgo := ethereum.FetchPPSLastMonth(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 
 	/**********************************************************************************************
 	** Retrieve the vault performance fee and management fee, and calculate the net APR.

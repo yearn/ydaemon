@@ -433,3 +433,10 @@ func handleV3StrategyCalls(strat models.TStrategy, response map[string][]interfa
 
 	return strat
 }
+
+type TProcessNewVaultMethod string
+
+const (
+	ProcessNewVaultMethodAppend  TProcessNewVaultMethod = "append"
+	ProcessNewVaultMethodReplace TProcessNewVaultMethod = "replace"
+)

@@ -11215,7 +11215,7 @@
 				"displaySymbol": "",
 				"description": "Supplies {{token}} to the corresponding [Meta Morpho](https://app.morpho.org/?network=mainnet) vault earning the underlying yield and auto-compounding all reward tokens.",
 				"sourceURI": "",
-				"uiNotice": "The market is using USD0 as collateral",
+				"uiNotice": "",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -11239,7 +11239,7 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 4,
 					"externalProtocolType": 1,
-					"comment": "USD0 makes 45% collateral. For more info about USD0 check website: https://usual.money/ \nRisk depends heavily on the specific vault configuration and the curator managing the vault."
+					"comment": ""
 				}
 			}
 		},

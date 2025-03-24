@@ -68,7 +68,7 @@ func (y Controller) GetStrategy(c *gin.Context) {
 	}
 
 	// Try to convert the strategy to the external format
-	var newStrategy TStrategy
+	var newStrategy TExternalStrategy
 	var conversionErr error
 
 	// Use a function with recover to handle potential panics during conversion

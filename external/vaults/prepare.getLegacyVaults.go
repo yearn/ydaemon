@@ -155,7 +155,7 @@ func getLegacyVaults(
 		}
 
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, vaultAddress)
-		newVault.Strategies = []TStrategy{}
+		newVault.Strategies = []TExternalStrategy{}
 		for _, strategy := range vaultStrategies {
 			strategyWithDetails := CreateExternalStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {

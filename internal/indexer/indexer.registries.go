@@ -82,7 +82,6 @@ func filterNewVault(
 				logs.Error(`impossible to FilterNewVault for YRegistryV2 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
 		case 3:
-			logs.Debug(`Checking YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + ` from block ` + strconv.FormatUint(chunkStart, 10) + ` to ` + strconv.FormatUint(chunkEnd, 10))
 			currentRegistry, _ := contracts.NewYRegistryV3(registry.Address, client)
 			if log, err := currentRegistry.FilterNewVault(opts, nil, nil); err == nil {
 				for log.Next() {
@@ -91,7 +90,6 @@ func filterNewVault(
 						continue
 					}
 					historicalVault := handleV03Vault(chainID, log.Event)
-					logs.Success(`Detected a new vault in YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + ` at block ` + strconv.FormatUint(log.Event.Raw.BlockNumber, 10) + ` | ` + historicalVault.Address.Hex())
 					storage.StoreNewVaultToRegistry(chainID, historicalVault)
 					ProcessNewVault(
 						chainID,
@@ -99,7 +97,6 @@ func filterNewVault(
 						fetcher.ProcessNewVaultMethodAppend,
 					)
 				}
-				logs.Success(`Done Indexing YRegistryV3 for ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 			} else {
 				logs.Error(`impossible to FilterNewVault for YRegistryV3 ` + registry.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `: ` + err.Error())
 			}
@@ -623,7 +620,6 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 				highestBlockNumber = strategy.BlockNumber
 			}
 		}
-		logs.Debug(chainID, highestBlockNumber, len(vaultSlice), registry.Address.Hex())
 
 		/** 🔵 - Yearn *****************************************************************************
 		** After retrieving the highest block number we can proceed to index new vaults.

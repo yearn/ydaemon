@@ -1,7 +1,6 @@
 package fetcher
 
 import (
-	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -123,8 +122,6 @@ func RetrieveAllVaults(
 		return nil
 	}
 
-	logs.Pretty(`Retrieving all vaults for chain ` + strconv.FormatUint(chainID, 10) + ` with len vaults: ` + strconv.Itoa(len(vaults)))
-
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database and populate our updatedVaultMap
 	** with it.
@@ -199,7 +196,6 @@ func RetrieveAllVaults(
 	/**********************************************************************************************
 	** Once everything is setup we can re-store the elements to save them in our storage
 	**********************************************************************************************/
-	logs.Warning(`Storing ` + strconv.Itoa(len(newVaultList)) + ` vaults for chain ` + strconv.FormatUint(chainID, 10))
 	for _, vault := range newVaultList {
 		vault.ChainID = chainID
 		/******************************************************************************************
@@ -263,7 +259,6 @@ func RetrieveAllVaults(
 			vault.Metadata.Category = models.VaultCategoryAutomatic
 		}
 
-		logs.Info(`Storing vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10))
 		storage.StoreVault(chainID, vault)
 	}
 

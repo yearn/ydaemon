@@ -2,7 +2,6 @@ package apr
 
 import (
 	"math/big"
-	"os"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -97,9 +96,6 @@ func computeVaultV3ForwardAPY(
 		} else {
 			for _, strategy := range allStrategiesForVault {
 				if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
-					if os.Getenv("ENVIRONMENT") == "dev" {
-						logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-					}
 					continue
 				}
 

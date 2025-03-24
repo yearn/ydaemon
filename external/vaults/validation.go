@@ -170,7 +170,7 @@ func validateMigrableCondition(c *gin.Context, paramName string) string {
 ** @param vaultAddress common.Address - The address of the vault
 ** @param condition string - The strategy filtering condition
 ** @param funcName string - The name of the calling function for error context
-** @return []TStrategy - The processed list of strategies
+** @return []TExternalStrategy - The processed list of strategies
 ** @return bool - True if successful, false if a timeout occurred
 ************************************************************************************************/
 func ProcessStrategiesForVault(
@@ -180,11 +180,11 @@ func ProcessStrategiesForVault(
 	vaultAddress common.Address,
 	condition string,
 	funcName string,
-) ([]TStrategy, bool) {
+) ([]TExternalStrategy, bool) {
 	_, vaultStrategies := storage.ListStrategiesForVault(chainID, vaultAddress)
 
 	// Pre-allocate the slice to avoid reallocations
-	results := make([]TStrategy, 0, len(vaultStrategies))
+	results := make([]TExternalStrategy, 0, len(vaultStrategies))
 
 	for _, strategy := range vaultStrategies {
 		// Check for context timeout
@@ -198,7 +198,7 @@ func ProcessStrategiesForVault(
 		}
 
 		// Use a deferred recovery function to prevent panics during strategy processing
-		var strategyWithDetails TStrategy
+		var strategyWithDetails TExternalStrategy
 		func() {
 			defer func() {
 				if r := recover(); r != nil {

@@ -71,7 +71,7 @@ func (y Controller) GetAllStrategies(c *gin.Context) {
 	}
 
 	// Pre-allocate the slice with the estimated capacity
-	data := make([]TStrategy, 0, totalStrategyCount)
+	data := make([]TExternalStrategy, 0, totalStrategyCount)
 
 	// Now process the strategies
 	for _, currentVault := range allVaults {

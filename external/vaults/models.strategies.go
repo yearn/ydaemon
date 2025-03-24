@@ -40,33 +40,50 @@ type TExternalStrategyDetails struct {
 ** @field Address string - The on-chain address of the strategy contract
 ** @field Name string - The human-readable name of the strategy
 ** @field Description string - A description of the strategy's approach and mechanisms
+** @field Status string - The operational status of the strategy (active, not_active, unallocated)
 ** @field Details *TExternalStrategyDetails - Detailed performance and configuration metrics
 **************************************************************************************************/
-type TStrategy struct {
+type TExternalStrategy struct {
 	Address     string                    `json:"address"`
 	Name        string                    `json:"name"`
 	Description string                    `json:"description,omitempty"`
+	Status      string                    `json:"status"`
+	NetAPR      *bigNumber.Float          `json:"netAPR,omitempty"`
 	Details     *TExternalStrategyDetails `json:"details,omitempty"`
 }
 
 /**************************************************************************************************
 ** CreateExternalStrategy creates a fully populated external strategy structure from an internal model.
 **
-** This function directly creates and populates a TStrategy instance from a models.TStrategy.
+** This function directly creates and populates a TExternalStrategy instance from a models.TStrategy.
 **
 ** @param strategy models.TStrategy - The internal strategy model to convert
-** @return TStrategy - The fully populated external strategy structure
+** @return TExternalStrategy - The fully populated external strategy structure
 **************************************************************************************************/
-func CreateExternalStrategy(strategy models.TStrategy) TStrategy {
+func CreateExternalStrategy(strategy models.TStrategy) TExternalStrategy {
 	name := strategy.DisplayName
 	if name == "" {
 		name = strategy.Name
 	}
 
-	return TStrategy{
+	// Use the Status field if it's set, otherwise determine it based on the rules
+	status := string(strategy.Status)
+	if status == "" {
+		if strategy.IsRetired || !strategy.IsActive {
+			status = string(models.StrategyStatusNotActive)
+		} else if strategy.LastTotalDebt.IsZero() {
+			status = string(models.StrategyStatusUnallocated)
+		} else {
+			status = string(models.StrategyStatusActive)
+		}
+	}
+
+	return TExternalStrategy{
 		Address:     strategy.Address.Hex(),
 		Name:        name,
 		Description: strategy.Description,
+		Status:      status,
+		NetAPR:      strategy.NetAPR,
 		Details: &TExternalStrategyDetails{
 			TotalDebt:      strategy.LastTotalDebt,
 			TotalLoss:      strategy.LastTotalLoss,
@@ -94,7 +111,7 @@ func CreateExternalStrategy(strategy models.TStrategy) TStrategy {
 ** @param condition string - The inclusion condition to check against
 ** @return bool - True if the strategy should be included, false otherwise
 **************************************************************************************************/
-func (v TStrategy) ShouldBeIncluded(condition string) bool {
+func (v TExternalStrategy) ShouldBeIncluded(condition string) bool {
 	if condition == `all` {
 		return true
 	} else if condition == `absolute` && v.Details.TotalDebt.Gt(bigNumber.Zero) {

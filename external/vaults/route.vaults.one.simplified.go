@@ -8,6 +8,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -144,8 +145,10 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 			address.String(), chainID))
 	}
 
+	logs.Pretty(vaultStrategies, vaultStrategiesMap)
+
 	// Initialize the strategies array with appropriate capacity to avoid reallocations
-	newVault.Strategies = make([]TStrategy, 0, len(vaultStrategies))
+	newVault.Strategies = make([]TExternalStrategy, 0, len(vaultStrategies))
 
 	// Process strategies with context awareness
 	for _, strategy := range vaultStrategies {
@@ -160,14 +163,12 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		}
 
 		// Try to convert the strategy, capturing any errors
-		var strategyWithDetails TStrategy
+		var strategyWithDetails TExternalStrategy
 		func() {
 			// Use a deferred recover to handle any panics during conversion
 			defer func() {
 				if r := recover(); r != nil {
-					c.Error(fmt.Errorf("panic while processing strategy %s: %v",
-						strategy.Address.String(), r))
-					// Continue with next strategy
+					c.Error(fmt.Errorf("panic while processing strategy %s: %v", strategy.Address.String(), r))
 				}
 			}()
 
@@ -182,6 +183,7 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		}
 
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
+			logs.Info(`Skipping strategy ` + strategy.Address.Hex() + ` because it does not match the condition ` + strategiesCondition)
 			continue
 		}
 

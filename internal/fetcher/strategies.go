@@ -30,6 +30,20 @@ var (
 	cacheDuration      = 5 * time.Minute
 )
 
+/**************************************************************************************************
+** trimIgnoredStrategies filters the strategies map to include only those that should be processed.
+**
+** This function optimizes performance by filtering out strategies that don't need to be processed:
+** 1. Keeps strategies explicitly marked for refresh regardless of other conditions
+** 2. Filters out strategies whose vaults cannot be found in storage
+** 3. Filters out strategies from retired vaults (with exceptions for specific Alchemix-related vaults)
+**
+** This pre-filtering step significantly reduces the number of multicalls and processing needed
+** for strategies that don't require updates.
+**
+** @param strategiesMap map[string]models.TStrategy - The map of strategies to filter
+** @return map[string]models.TStrategy - The filtered map containing only relevant strategies
+**************************************************************************************************/
 func trimIgnoredStrategies(strategiesMap map[string]models.TStrategy) map[string]models.TStrategy {
 	relevantStrategies := make(map[string]models.TStrategy)
 	for key, strat := range strategiesMap {
@@ -56,6 +70,25 @@ func trimIgnoredStrategies(strategiesMap map[string]models.TStrategy) map[string
 	return relevantStrategies
 }
 
+/**************************************************************************************************
+** getStrategyAPR calculates and returns the appropriate APR for a strategy based on its version.
+**
+** This function determines and retrieves the Annual Percentage Rate (APR) for a strategy, with
+** behavior that varies depending on the vault version. For v3 vaults, it first attempts to use
+** forward-looking APR, then falls back to current APR if that fails. For earlier versions, it
+** always uses current APR.
+**
+** The function includes performance optimizations to avoid unnecessary calculations:
+** - Skips APR calculation for inactive strategies (not active, not in queue, or retired)
+** - Skips APR calculation when there's no financial activity (zero debt, gain, and loss)
+**
+** @param chainID uint64 - The blockchain network ID
+** @param versionMajor string - Major version of the vault ("3" for v3, etc.)
+** @param strategy models.TStrategy - The strategy to calculate APR for
+** @return *bigNumber.Float - The calculated APR value
+** @return models.TStrategyAPRType - The type of APR (forward or current)
+** @return error - Any error encountered during calculation
+**************************************************************************************************/
 func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrategy) (*bigNumber.Float, models.TStrategyAPRType, error) {
 	netAPR := bigNumber.NewFloat(0)
 	aprType := models.APRTypeCurrent
@@ -73,6 +106,10 @@ func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrate
 		return netAPR, aprType, nil
 	}
 
+	/******************************************************************************************
+	** For v3 vaults: First try to get forward-looking APR, fall back to current APR if that fails
+	** For earlier versions: Only try to get current APR
+	******************************************************************************************/
 	if versionMajor == `3` {
 		if forwardAPR, err := apr.ComputeForwardStrategyAPR(strategy); err == nil {
 			netAPR = forwardAPR
@@ -94,6 +131,30 @@ func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrate
 	return netAPR, aprType, nil
 }
 
+/**************************************************************************************************
+** assignStrategy processes a strategy, updates its properties, and calculates its APR.
+**
+** This function handles the full lifecycle of strategy data processing:
+** 1. Checks cache to avoid redundant processing
+** 2. Updates strategy properties based on vault information
+** 3. Applies version-specific processing (V2 vs V3)
+** 4. Handles special cases for specific strategies
+** 5. Sets the strategy status based on its activity and allocation state
+** 6. Calculates and assigns APR values
+** 7. Updates the cache and persistent storage
+**
+** The strategy status is categorized as:
+** - active: The default state for active strategies with allocated funds
+** - not_active: For retired strategies or those explicitly marked as inactive
+** - unallocated: For strategies that are active but have no funds allocated (LastTotalDebt = 0)
+**
+** @param chainID uint64 - The blockchain network ID
+** @param strategy models.TStrategy - The strategy to process
+** @param response map[string][]interface{} - Multicall responses containing strategy data
+** @return string - The strategy key (composite of address and vault address)
+** @return models.TStrategy - The updated strategy object
+** @return bool - Whether a cached version was used (true) or a fresh update was performed (false)
+**************************************************************************************************/
 func assignStrategy(chainID uint64, strategy models.TStrategy, response map[string][]interface{}) (string, models.TStrategy, bool) {
 	strategyCacheMutex.RLock()
 	defer strategyCacheMutex.RUnlock()
@@ -107,9 +168,11 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 		if !strategy.ShouldRefresh && now.Sub(cache.lastFetch) < cacheDuration {
 			return strategyKey, cache.strategy, true
 		}
-
 	}
 
+	/******************************************************************************************
+	** Initialize strategy properties and sync with vault information
+	******************************************************************************************/
 	vault, _ := storage.GetVault(chainID, strategy.VaultAddress) // Checked before with trimIgnoredStrategies
 	newStrategy := strategy
 	newStrategy.ChainID = chainID
@@ -121,6 +184,9 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 		}
 	}
 
+	/******************************************************************************************
+	** Apply version-specific processing to extract strategy metrics
+	******************************************************************************************/
 	versionMajor := strings.Split(vault.Version, `.`)[0]
 	if versionMajor == `3` {
 		newStrategy = handleV3StrategyCalls(newStrategy, response)
@@ -129,7 +195,7 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 	}
 
 	/******************************************************************************************
-	** Handle some specific cases
+	** Handle some specific cases for particular strategies
 	******************************************************************************************/
 	if chainID == 1 && addresses.Equals(newStrategy.Address, `0xE7863292dd8eE5d215eC6D75ac00911D06E59B2d`) {
 		styCRVVault, ok := storage.GetVault(chainID, newStrategy.VaultAddress)
@@ -139,15 +205,34 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 		}
 	}
 
+	/******************************************************************************************
+	** Set the strategy status based on its properties
+	** - active: The default state for active strategies with allocated funds
+	** - not_active: When it's retired or IsActive is false
+	** - unallocated: When it's active but LastTotalDebt is 0
+	******************************************************************************************/
+	if newStrategy.IsRetired || !newStrategy.IsActive {
+		newStrategy.Status = models.StrategyStatusNotActive
+	} else if newStrategy.LastTotalDebt.IsZero() {
+		newStrategy.Status = models.StrategyStatusUnallocated
+	} else {
+		newStrategy.Status = models.StrategyStatusActive
+	}
+
+	/******************************************************************************************
+	** Calculate and assign APR values
+	******************************************************************************************/
 	netAPR, aprType, err := getStrategyAPR(chainID, versionMajor, newStrategy)
 	if err == nil {
 		newStrategy.NetAPR = netAPR
 		newStrategy.APRType = aprType
 	} else {
-		logs.Pretty(newStrategy)
 		logs.Error(`Error while computing APR for ` + newStrategy.Address.Hex() + ` | ` + newStrategy.VaultAddress.Hex() + `: ` + err.Error())
 	}
 
+	/******************************************************************************************
+	** Update cache and persistent storage
+	******************************************************************************************/
 	// Use Store instead of direct map assignment
 	strategyCacheStore.Store(strategyKey, strategyCache{now, newStrategy})
 	storage.StoreStrategy(chainID, newStrategy)

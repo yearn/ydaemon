@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -26,7 +25,6 @@ func ComputeForwardStrategyAPR(strategy models.TStrategy) (*bigNumber.Float, err
 	}
 	oracle, err := contracts.NewYVaultsV3APROracleCaller(oracleContract, ethereum.GetRPC(strategy.ChainID))
 	if err != nil {
-		logs.Error(err)
 		return nil, err
 	}
 
@@ -43,9 +41,12 @@ func ComputeForwardStrategyAPR(strategy models.TStrategy) (*bigNumber.Float, err
 	}
 
 	if hasError != nil || oracleAPR.IsZero() {
-		expected, err := oracle.GetCurrentApr(nil, strategy.VaultAddress)
-		if err == nil {
+		expected, newErr := oracle.GetCurrentApr(nil, strategy.VaultAddress)
+		err = newErr
+		if newErr == nil {
 			oracleAPR = helpers.ToNormalizedAmount(bigNumber.SetInt(expected), 18)
+		} else {
+			return nil, err
 		}
 	}
 

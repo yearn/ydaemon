@@ -28,6 +28,22 @@ const (
 	APRTypeForward TStrategyAPRType = "forward"
 )
 
+/**************************************************************************************************
+** TStrategyStatus represents the operational status of a strategy.
+**
+** This type is used to categorize strategies based on their current state in the system:
+** - Active: The strategy is currently active and has funds allocated to it
+** - NotActive: The strategy is either retired or explicitly marked as inactive
+** - Unallocated: The strategy is supposed to be active but currently has no funds (LastTotalDebt = 0)
+**************************************************************************************************/
+type TStrategyStatus string
+
+const (
+	StrategyStatusActive      TStrategyStatus = "active"
+	StrategyStatusNotActive   TStrategyStatus = "not_active"
+	StrategyStatusUnallocated TStrategyStatus = "unallocated"
+)
+
 type TStrategy struct {
 	Address            common.Address   `json:"address"`      // The address of the strategy
 	VaultAddress       common.Address   `json:"vaultAddress"` // The address of the vault
@@ -42,6 +58,7 @@ type TStrategy struct {
 	IsInQueue          bool             `json:"isInQueue"`
 	IsRetired          bool             `json:"isRetired"`               // If false, will bypass the `IsActive` variable
 	ShouldRefresh      bool             `json:"shouldRefresh,omitempty"` // Will be refreshed no matter what
+	Status             TStrategyStatus  `json:"status"`                  // Categorized status: active, not_active, or unallocated
 	TimeActivated      *bigNumber.Int   `json:"-"`                       // When the strategy was activated. Only used internaly to compute the longevityImpact.
 	KeepCRV            *bigNumber.Int   `json:"keepCRV"`
 	KeepCRVPercent     *bigNumber.Int   `json:"keepCRVPercent"`

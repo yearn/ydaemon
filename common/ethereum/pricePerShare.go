@@ -3,7 +3,6 @@ package ethereum
 import (
 	"fmt"
 	"math/big"
-	"strconv"
 	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -91,7 +90,7 @@ func FetchPPSLastWeek(
 	}
 
 	if vaultDeploymentBlock > 0 && estBlockLastWeek < vaultDeploymentBlock {
-		logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last week, using inception PPS`)
+		// logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last week, using inception PPS`)
 		return bigNumber.NewFloat(1)
 	}
 
@@ -142,7 +141,7 @@ func FetchPPSLastMonth(
 	}
 
 	if vaultDeploymentBlock > 0 && estBlockLastMonth < vaultDeploymentBlock {
-		logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last month, using inception PPS`)
+		// logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last month, using inception PPS`)
 		return bigNumber.NewFloat(1)
 	}
 

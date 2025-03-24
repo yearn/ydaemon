@@ -1,12 +1,10 @@
 package apr
 
 import (
-	"os"
 	"strings"
 
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -114,9 +112,6 @@ func computePendleForwardAPY(
 	} else {
 		for _, strategy := range allStrategiesForVault {
 			if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
-				if os.Getenv("ENVIRONMENT") == "dev" {
-					logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-				}
 				continue
 			}
 

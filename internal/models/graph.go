@@ -27,6 +27,26 @@ type TReportsFromGraph struct {
 	} `json:"strategy"`
 }
 
+type TReportsFromKong struct {
+	Data struct {
+		Strategy struct {
+			LastReportDetail struct {
+				Apr struct {
+					Net   float64 `json:"net"`
+					Gross float64 `json:"gross"`
+				} `json:"apr"`
+				Loss        string  `json:"loss"`
+				LossUsd     float64 `json:"lossUsd"`
+				Profit      string  `json:"profit"`
+				ProfitUsd   float64 `json:"profitUsd"`
+				BlockTime   string  `json:"blockTime"`
+				BlockNumber string  `json:"blockNumber"`
+			} `json:"lastReportDetail"`
+			Address string `json:"address"`
+		} `json:"strategy"`
+	} `json:"data"`
+}
+
 type TReportResult struct {
 	Duration   uint64  `json:"duration"`
 	DurationPR uint64  `json:"durationPR"`

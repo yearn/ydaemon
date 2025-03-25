@@ -43,6 +43,23 @@ func GetStrategyReports(first int) string {
 }
 
 /**************************************************************************************************
+**************************************************************************************************/
+func GetKongStrategyReports(first int) string {
+	return (`lastReportDetail {
+		apr {
+			net
+			gross
+		}
+		loss
+		lossUsd
+		profit
+		profitUsd
+		blockTime
+      	blockNumber
+	}`)
+}
+
+/**************************************************************************************************
 ** GetHarvestsForVaults constructs a GraphQL query fragment to retrieve harvest events for a
 ** vault. This query includes essential data needed to analyze harvest performance, including
 ** vault and strategy identification, transaction details, and profit/loss information.

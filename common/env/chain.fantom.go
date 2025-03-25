@@ -11,7 +11,7 @@ import (
 var FANTOM = TChain{
 	ID:              250,
 	RpcURI:          `https://rpc.ftm.tools`,
-	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-fantom`,
+	SubgraphURI:     ``,
 	EtherscanURI:    `https://api.ftmscan.com/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,

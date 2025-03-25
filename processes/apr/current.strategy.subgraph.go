@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -71,10 +70,15 @@ func GetCurrentStrategyAPR(chainID uint64, strategyAddress string) (*bigNumber.F
 		return bigNumber.NewFloat(0), errors.New("chain not found")
 	}
 
+	// First, try to get the APR from Kong, and use it if available and > 0
+	kongApr, kongErr := GetCurrentStrategyAPRFromKong(chainID, strategyAddress)
+	if kongErr == nil && !kongApr.IsZero() {
+		return kongApr, nil
+	}
+
 	// Ensure subgraph endpoint is available
 	graphQLEndpoint := chain.SubgraphURI
 	if graphQLEndpoint == "" {
-		logs.Error("No graph endpoint for chainID", chainID)
 		return bigNumber.NewFloat(0), errors.New("no graph endpoint for chainID")
 	}
 
@@ -85,7 +89,6 @@ func GetCurrentStrategyAPR(chainID uint64, strategyAddress string) (*bigNumber.F
 	// Execute the request
 	var responseRaw models.TReportsFromGraph
 	if err := runGraphQLRequest(context.Background(), client, request, &responseRaw); err != nil {
-		logs.Error(err)
 		return bigNumber.NewFloat(0), err
 	}
 
@@ -103,7 +106,6 @@ func GetCurrentStrategyAPR(chainID uint64, strategyAddress string) (*bigNumber.F
 
 	apr, err := strconv.ParseFloat(latestReport.Results[0].Apr, 64)
 	if err != nil {
-		logs.Error("Error parsing APR value:", err)
 		return bigNumber.NewFloat(0), err
 	}
 

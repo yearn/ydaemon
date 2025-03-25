@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-18T10:46:36.021677+01:00",
+	"lastUpdate": "2025-03-24T11:07:10.528849+01:00",
 	"version": {
 		"major": 0,
-		"minor": 6,
+		"minor": 7,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1871,6 +1871,22 @@
 			"decimals": 6,
 			"chainID": 137
 		},
+		"0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca": {
+			"address": "0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Compound USDC Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "Morpho Compound USDC Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x6E9ac188DbCC14632a253aA9Ce2783cD712aB3cA/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
 			"underlyingTokensAddresses": [
@@ -2405,6 +2421,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0x9C3E0445559E6de1fe6391E8e018DcA02B480836/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0x9d1046cecb0662037b13decf1cd125c4aa3fb65b": {
+			"address": "0x9d1046cecb0662037b13decf1cd125c4aa3fb65b",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Compound USDT Compounder",
+			"symbol": "ysUSDT",
+			"displayName": "Morpho Compound USDT Compounder",
+			"displaySymbol": "ysUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x9d1046ceCB0662037b13dECF1CD125C4Aa3fb65B/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0x9dfdf32ae82c7e8ebc156ea28e6637b120e00d12": {
@@ -3066,6 +3098,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xD3BD62439C599739775df75Cb33b888D437e23FE/logo-128.png",
+			"decimals": 18,
+			"chainID": 137
+		},
+		"0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259": {
+			"address": "0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259",
+			"underlyingTokensAddresses": [
+				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Compound WETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Compound WETH Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD4a0AA006e0f70580Aaa7ee1FD04Fa447c36B259/logo-128.png",
 			"decimals": 18,
 			"chainID": 137
 		},

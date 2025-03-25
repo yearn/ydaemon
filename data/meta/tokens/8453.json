@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-18T10:46:37.764689+01:00",
+	"lastUpdate": "2025-03-24T11:07:15.882023+01:00",
 	"version": {
 		"major": 0,
-		"minor": 22,
+		"minor": 23,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -65,6 +65,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x0B25c51637c43decd6CC1C1e3da4518D54ddb528/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x0dcb575fd705f1352b0c0f8fa6a64a0561ce8c3c": {
+			"address": "0x0dcb575fd705f1352b0c0f8fa6a64a0561ce8c3c",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "ROOM USDC VAULT",
+			"symbol": "roomUSDC",
+			"displayName": "ROOM USDC VAULT",
+			"displaySymbol": "roomUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x0Dcb575fd705f1352b0c0F8fA6A64A0561Ce8C3c/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x0fac819628a7f612abac1cad939768058cc0170c": {
@@ -913,6 +929,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x7509d40ef0087611d2dfd76f0752d32783b8c2a2": {
+			"address": "0x7509d40ef0087611d2dfd76f0752d32783b8c2a2",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "ROOM USDC VAULT",
+			"symbol": "roomUSDC",
+			"displayName": "ROOM USDC VAULT",
+			"displaySymbol": "roomUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x7509D40ef0087611d2DFD76f0752d32783b8c2a2/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f": {
 			"address": "0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f",
 			"underlyingTokensAddresses": [],
@@ -1003,6 +1035,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x7f670f78B17dEC44d5Ef68a48740b6f8849cc2e6/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x7f678f3f661364dcad39cc2946c31388a43ce1f4": {
+			"address": "0x7f678f3f661364dcad39cc2946c31388a43ce1f4",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "roomUSDC",
+			"symbol": "rmUSDC",
+			"displayName": "roomUSDC",
+			"displaySymbol": "rmUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x7F678F3f661364dCaD39cC2946c31388a43Ce1f4/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x80ba48973490a94941eaec6be8dbcff6a5aa8892": {

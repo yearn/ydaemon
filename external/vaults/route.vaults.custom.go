@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
@@ -118,7 +119,7 @@ func (y Controller) GetVaultsForRotki(c *gin.Context) []TRotkiVaults {
 		for _, chainStr := range chainsStr {
 			chain, ok := helpers.AssertChainID(chainStr)
 			if !ok {
-				handleError(c, fmt.Errorf("invalid chain ID: %s", chainStr),
+				logs.Error(fmt.Errorf("invalid chain ID: %s", chainStr),
 					http.StatusBadRequest, "Invalid chain ID", "GetVaultsForRotki")
 				continue
 			}

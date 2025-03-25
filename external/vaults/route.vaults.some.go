@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -113,7 +114,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 		newVault, err := CreateExternalVault(currentVault)
 		if err != nil {
 			// Log error but continue with other vaults
-			handleError(c, fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
+			logs.Error(fmt.Errorf("failed to process vault %s: %w", address.Hex(), err),
 				http.StatusInternalServerError, "Error processing vault", "GetLegacySomeVaults")
 			continue
 		}

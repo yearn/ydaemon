@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-18T10:46:37.76759+01:00",
+	"lastUpdate": "2025-03-25T09:37:31.059737+01:00",
 	"version": {
 		"major": 0,
-		"minor": 44,
+		"minor": 45,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2504,6 +2504,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x3b72b0171f5f37a4027b33bd902b088481cd70cd": {
+			"address": "0x3b72b0171f5f37a4027b33bd902b088481cd70cd",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Savings USDS 28AUG2025",
+			"symbol": "YT-sUSDS-28AUG2025",
+			"displayName": "YT Savings USDS 28AUG2025",
+			"displaySymbol": "YT-sUSDS-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x3b72b0171f5F37a4027b33bd902b088481cD70cd/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x3be83cc235455ae1b624cf6e326505769ad8f9ea": {
 			"address": "0x3be83cc235455ae1b624cf6e326505769ad8f9ea",
 			"underlyingTokensAddresses": [],
@@ -3861,6 +3875,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x64343594Ab9b56e99087BfA6F2335Db24c2d1F17/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x6491c05a82219b8d1479057361ff1654749b876b": {
+			"address": "0x6491c05a82219b8d1479057361ff1654749b876b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USDS Stablecoin",
+			"symbol": "USDS",
+			"displayName": "USDS Stablecoin",
+			"displaySymbol": "USDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x6491c05A82219b8D1479057361ff1654749b876b/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -6827,6 +6855,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xbdcf887b8c8ac9fb27876c5376695008b13dbc63": {
+			"address": "0xbdcf887b8c8ac9fb27876c5376695008b13dbc63",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Savings USDS 28AUG2025",
+			"symbol": "PT-sUSDS-28AUG2025",
+			"displayName": "PT Savings USDS 28AUG2025",
+			"displaySymbol": "PT-sUSDS-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xBDcf887B8c8aC9FB27876C5376695008b13dbC63/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4": {
 			"address": "0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4",
 			"underlyingTokensAddresses": [
@@ -7216,6 +7258,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xC8fD1F1E059d97ec71AE566DD6ca788DC92f36AF/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xc913698f534ed275f28d8379f5600f333f60594d": {
+			"address": "0xc913698f534ed275f28d8379f5600f333f60594d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Savings USDS",
+			"symbol": "SY-sUSDS",
+			"displayName": "SY Savings USDS",
+			"displaySymbol": "SY-sUSDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xc913698F534eD275f28d8379F5600f333f60594D/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -7838,6 +7894,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xdd4C7313Fe4C92e043B9B7dFE433e239BcD05A0D/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xddb46999f8891663a8f2828d25298f70416d7610": {
+			"address": "0xddb46999f8891663a8f2828d25298f70416d7610",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Savings USDS",
+			"symbol": "sUSDS",
+			"displayName": "Savings USDS",
+			"displaySymbol": "sUSDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xdDb46999F8891663a8F2828d25298f70416d7610/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -8920,6 +8990,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xff4d6991658c5844856faef5da9232c252896fca": {
+			"address": "0xff4d6991658c5844856faef5da9232c252896fca",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xFF4d6991658c5844856FAEF5da9232C252896FCa/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

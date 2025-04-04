@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-03-24T11:07:01.832413+01:00",
+	"lastUpdate": "2025-04-04T11:30:01.596175+02:00",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 107
+		"patch": 109
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -105,14 +105,14 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1060667003368781509888",
+			"lastTotalDebt": "1060995588185406422953",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742733575",
+			"lastReport": "1743342995",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
-			"aprType": "",
+			"netAPR": 0.018043819949549213,
+			"aprType": "current",
 			"protocols": null
 		},
 		"0xA48359e7E970BE9f38fB6D183C57c8d0b28268B9_0x39B68451F05Aaa020611CF887a7338f0991fFd60": {

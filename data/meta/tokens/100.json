@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2025-03-24T11:07:01.131557+01:00",
+	"lastUpdate": "2025-04-04T11:30:01.089783+02:00",
 	"version": {
 		"major": 0,
 		"minor": 4,
@@ -793,7 +793,9 @@
 		},
 		"0x39b68451f05aaa020611cf887a7338f0991ffd60": {
 			"address": "0x39b68451f05aaa020611cf887a7338f0991ffd60",
-			"underlyingTokensAddresses": ["0xcb444e90d8198415266c6a2724b7900fb12fc56e"],
+			"underlyingTokensAddresses": [
+				"0xcb444e90d8198415266c6a2724b7900fb12fc56e"
+			],
 			"type": "Yearn Vault",
 			"name": "AJNA EURe yVault",
 			"symbol": "yvAjnaEURe",
@@ -1031,7 +1033,9 @@
 		},
 		"0x5012c6bf79b3047ecfff2f212dffda4d2128188f": {
 			"address": "0x5012c6bf79b3047ecfff2f212dffda4d2128188f",
-			"underlyingTokensAddresses": ["0xcb444e90d8198415266c6a2724b7900fb12fc56e"],
+			"underlyingTokensAddresses": [
+				"0xcb444e90d8198415266c6a2724b7900fb12fc56e"
+			],
 			"type": "Yearn Vault",
 			"name": "EURe yVault",
 			"symbol": "yvEURe-1",
@@ -1902,7 +1906,9 @@
 		},
 		"0xa21cc1a4a239708690134baed3a1b93cad55f625": {
 			"address": "0xa21cc1a4a239708690134baed3a1b93cad55f625",
-			"underlyingTokensAddresses": ["0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a"],
+			"underlyingTokensAddresses": [
+				"0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve EURe yVault",
 			"symbol": "yvCurve-EURe",

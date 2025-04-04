@@ -32,11 +32,7 @@ func (y Controller) GetAllPricesWithDetails(c *gin.Context) {
 	}
 
 	// Fetch all prices with details from storage
-	priceDetails, err := storage.ListPrices(chainID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve price details"})
-		return
-	}
+	priceDetails, _ := storage.ListPrices(chainID)
 
 	// Format the response
 	result := make(map[string]map[string]interface{}, len(priceDetails))

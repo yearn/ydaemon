@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/common/sort"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -132,7 +133,7 @@ func getVaults(
 		// Get chain configuration early to validate
 		chain, ok := env.GetChain(chainID)
 		if !ok {
-			handleError(c, fmt.Errorf("chain configuration not found for chainID %d", chainID),
+			logs.Error(fmt.Errorf("chain configuration not found for chainID %d", chainID),
 				http.StatusInternalServerError, "Internal configuration error", "GetVaults")
 			continue
 		}
@@ -164,7 +165,7 @@ func getVaults(
 			// Process vault data - use the optimized CreateExternalVault function
 			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
-				handleError(c, fmt.Errorf("failed to process vault %s on chain %d: %s",
+				logs.Error(fmt.Errorf("failed to process vault %s on chain %d: %s",
 					currentVault.Address.Hex(), chainID, err), http.StatusInternalServerError,
 					"Error processing vault data", "GetVaults")
 				continue

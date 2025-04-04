@@ -23,9 +23,7 @@
 		},
 		"0x0128e1d15ed9f0c8572967825ef46309bda39836": {
 			"address": "0x0128e1d15ed9f0c8572967825ef46309bda39836",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "test usdc",
 			"symbol": "tsUSDC",
@@ -67,9 +65,7 @@
 		},
 		"0x03e6010193c595ec168756af700479d1aff76895": {
 			"address": "0x03e6010193c595ec168756af700479d1aff76895",
-			"underlyingTokensAddresses": [
-				"0x9e31214db6931727b7d63a0d2b6236db455c0965"
-			],
+			"underlyingTokensAddresses": ["0x9e31214db6931727b7d63a0d2b6236db455c0965"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-USDC.e-DAI",
 			"symbol": "ysaUSDC-DAI",
@@ -153,9 +149,7 @@
 		},
 		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
 			"address": "0x06ed7c67755344548fafe1822bee365c4208a57f",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Stargate-DAI",
 			"symbol": "ysDAI",
@@ -267,9 +261,7 @@
 		},
 		"0x0fefee13864c431717f5b2678607b6ce532a170c": {
 			"address": "0x0fefee13864c431717f5b2678607b6ce532a170c",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "USDT CompoundV3 Lender",
 			"symbol": "ysUSDT",
@@ -325,9 +317,7 @@
 		},
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
-			"underlyingTokensAddresses": [
-				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
-			],
+			"underlyingTokensAddresses": ["0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"],
 			"type": "Yearn Vault",
 			"name": "Aave V3 WMATIC Lender",
 			"symbol": "ysWMATIC",
@@ -649,9 +639,7 @@
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
-			"underlyingTokensAddresses": [
-				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
-			],
+			"underlyingTokensAddresses": ["0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"],
 			"type": "Yearn Vault",
 			"name": "WMATIC yVault-A",
 			"symbol": "yvWMATIC-A",
@@ -665,9 +653,7 @@
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
-			"underlyingTokensAddresses": [
-				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
-			],
+			"underlyingTokensAddresses": ["0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"],
 			"type": "Yearn Vault",
 			"name": "CompV3 WMATIC Lender USDC Borrower",
 			"symbol": "ysWMATIC",
@@ -709,9 +695,7 @@
 		},
 		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Stargate-USDT",
 			"symbol": "ysUSDT",
@@ -795,9 +779,7 @@
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "WETH yVault-A",
 			"symbol": "yvWETH-A",
@@ -839,9 +821,7 @@
 		},
 		"0x32adfc6170344f848a8c0efe68dad93e5b6964aa": {
 			"address": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
-			"underlyingTokensAddresses": [
-				"0x6077177d4c41e114780d9901c9b5c784841c523f"
-			],
+			"underlyingTokensAddresses": ["0x6077177d4c41e114780d9901c9b5c784841c523f"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-USDC.e-WETH-Wide",
 			"symbol": "ysaUSDC-WETH",
@@ -855,9 +835,7 @@
 		},
 		"0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac": {
 			"address": "0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "YieldFox USDC.e-B",
 			"symbol": "yfUSDC.e-B",
@@ -899,9 +877,7 @@
 		},
 		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
 			"address": "0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-1 yVault",
 			"symbol": "USDC-1",
@@ -1027,9 +1003,7 @@
 		},
 		"0x3a58df70f9204bedcd6aee2b51582eb77fe30e02": {
 			"address": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
-			"underlyingTokensAddresses": [
-				"0x4b9e26a02121a1c541403a611b542965bd4b68ce"
-			],
+			"underlyingTokensAddresses": ["0x4b9e26a02121a1c541403a611b542965bd4b68ce"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WBTC-WETH",
 			"symbol": "ysaWBTC-WETH",
@@ -1057,9 +1031,7 @@
 		},
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
 			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "AaveV3 USDT Lender",
 			"symbol": "ysUSDT",
@@ -1171,9 +1143,7 @@
 		},
 		"0x41f63bd9180eaaa58185e1a88e2b22cea52634b9": {
 			"address": "0x41f63bd9180eaaa58185e1a88e2b22cea52634b9",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "dai-vault",
 			"symbol": "dai-stk",
@@ -1187,9 +1157,7 @@
 		},
 		"0x42908891cbc13301c910b4e71055431bf134aaa0": {
 			"address": "0x42908891cbc13301c910b4e71055431bf134aaa0",
-			"underlyingTokensAddresses": [
-				"0x04d521e2c414e6d898c6f2599fdd863edf49e247"
-			],
+			"underlyingTokensAddresses": ["0x04d521e2c414e6d898c6f2599fdd863edf49e247"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WMATIC-USDC.e",
 			"symbol": "ysawMATIC-USDC",
@@ -1231,9 +1199,7 @@
 		},
 		"0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0": {
 			"address": "0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "DAI-2 RancheroDAO",
 			"symbol": "rdDAI-2",
@@ -1303,9 +1269,7 @@
 		},
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
 			"address": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
-			"underlyingTokensAddresses": [
-				"0xf54a15f6da443041bb075959ea66ee47655ddfca"
-			],
+			"underlyingTokensAddresses": ["0xf54a15f6da443041bb075959ea66ee47655ddfca"],
 			"type": "Yearn Vault",
 			"name": "yvAjnaUSDC-compounder",
 			"symbol": "ysyvAjnaUSDC",
@@ -1389,9 +1353,7 @@
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "CompV3 WETH Lender USDC Borrower",
 			"symbol": "ysWETH",
@@ -1405,9 +1367,7 @@
 		},
 		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
 			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "Aave V3 USDC Lender",
 			"symbol": "ysUSDC",
@@ -1449,9 +1409,7 @@
 		},
 		"0x54303f18161d9870b0fc66b88b0b129e8e5ff505": {
 			"address": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
-			"underlyingTokensAddresses": [
-				"0x3cc20a6795c4b57d9817399f68e83e71c8626580"
-			],
+			"underlyingTokensAddresses": ["0x3cc20a6795c4b57d9817399f68e83e71c8626580"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-USDC.e-WETH",
 			"symbol": "ysaUSDC-WETH",
@@ -1507,9 +1465,7 @@
 		},
 		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
 			"address": "0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-2 RombusDAO",
 			"symbol": "rdUSDC-2",
@@ -1873,9 +1829,7 @@
 		},
 		"0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca": {
 			"address": "0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "Morpho Compound USDC Compounder",
 			"symbol": "ysUSDC",
@@ -1889,9 +1843,7 @@
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
-			"underlyingTokensAddresses": [
-				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
-			],
+			"underlyingTokensAddresses": ["0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-LST",
 			"symbol": "ysWMATIC",
@@ -1933,9 +1885,7 @@
 		},
 		"0x72449578349b69544de5ff2fb70f0cfba18a6ad1": {
 			"address": "0x72449578349b69544de5ff2fb70f0cfba18a6ad1",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "dai-vault",
 			"symbol": "dai-stk",
@@ -1963,9 +1913,7 @@
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-LST-WSTETH",
 			"symbol": "ysWETH",
@@ -2203,9 +2151,7 @@
 		},
 		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Stargate-USDC",
 			"symbol": "ysUSDC",
@@ -2233,9 +2179,7 @@
 		},
 		"0x8df66d28914084f44c4046783810cbad662fa633": {
 			"address": "0x8df66d28914084f44c4046783810cbad662fa633",
-			"underlyingTokensAddresses": [
-				"0x8dd3bf71ef18dd88869d128bde058c9d8c270176"
-			],
+			"underlyingTokensAddresses": ["0x8dd3bf71ef18dd88869d128bde058c9d8c270176"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WMATIC-MATICX",
 			"symbol": "ysaWMATIC-MATICX",
@@ -2249,9 +2193,7 @@
 		},
 		"0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d": {
 			"address": "0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "ETHDENVER",
 			"symbol": "DEN",
@@ -2279,9 +2221,7 @@
 		},
 		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
 			"address": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "DAI yVault-A",
 			"symbol": "yvDAI-A",
@@ -2323,9 +2263,7 @@
 		},
 		"0x91e646449a3105e9091e882c9a9a7a81950eebb8": {
 			"address": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
-			"underlyingTokensAddresses": [
-				"0x81cec323bf8c4164c66ec066f53cc053a535f03d"
-			],
+			"underlyingTokensAddresses": ["0x81cec323bf8c4164c66ec066f53cc053a535f03d"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WMATIC-WETH-Wide",
 			"symbol": "ysawMATIC-WETH",
@@ -2395,9 +2333,7 @@
 		},
 		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
 			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "supervault",
 			"symbol": "sprvlt",
@@ -2425,9 +2361,7 @@
 		},
 		"0x9d1046cecb0662037b13decf1cd125c4aa3fb65b": {
 			"address": "0x9d1046cecb0662037b13decf1cd125c4aa3fb65b",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "Morpho Compound USDT Compounder",
 			"symbol": "ysUSDT",
@@ -2497,9 +2431,7 @@
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "USDC yVault-A",
 			"symbol": "yvUSDC-A",
@@ -2569,9 +2501,7 @@
 		},
 		"0xa823ef7df6392800569946c6c1dec0e34356ef18": {
 			"address": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
-			"underlyingTokensAddresses": [
-				"0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58"
-			],
+			"underlyingTokensAddresses": ["0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-USDC.e-USDT",
 			"symbol": "ysaUSDC-USDT",
@@ -2599,9 +2529,7 @@
 		},
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
 			"address": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
-			"underlyingTokensAddresses": [
-				"0x3f35705479d9d77c619b2aac9dd7a64e57151506"
-			],
+			"underlyingTokensAddresses": ["0x3f35705479d9d77c619b2aac9dd7a64e57151506"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WBTC-USDC.e",
 			"symbol": "ysaWBTC-USDC",
@@ -2699,9 +2627,7 @@
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "Compound V3 USDC Lender",
 			"symbol": "ysUSDC",
@@ -2729,9 +2655,7 @@
 		},
 		"0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95": {
 			"address": "0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-1 RogerThatDAO",
 			"symbol": "rtUSDC-1",
@@ -2773,9 +2697,7 @@
 		},
 		"0xb64ce1c06af365424060e2720df46997a4fd3a0a": {
 			"address": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
-			"underlyingTokensAddresses": [
-				"0x02203f2351e7ac6ab5051205172d3f772db7d814"
-			],
+			"underlyingTokensAddresses": ["0x02203f2351e7ac6ab5051205172d3f772db7d814"],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Gamma-WMATIC-WETH",
 			"symbol": "ysawMATIC-WETH",
@@ -2817,9 +2739,7 @@
 		},
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
 			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "USDT yVault-A",
 			"symbol": "yvUSDT-A",
@@ -2847,9 +2767,7 @@
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "AaveV3 WETH Lender",
 			"symbol": "ysWETH",
@@ -3073,9 +2991,7 @@
 		},
 		"0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0": {
 			"address": "0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "dai-vault",
 			"symbol": "dai-stk",
@@ -3103,9 +3019,7 @@
 		},
 		"0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259": {
 			"address": "0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "Morpho Compound WETH Compounder",
 			"symbol": "ysWETH",
@@ -3119,9 +3033,7 @@
 		},
 		"0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea": {
 			"address": "0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea",
-			"underlyingTokensAddresses": [
-				"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"
-			],
+			"underlyingTokensAddresses": ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619"],
 			"type": "Yearn Vault",
 			"name": "weth-vault",
 			"symbol": "weth-stk",
@@ -3149,9 +3061,7 @@
 		},
 		"0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1": {
 			"address": "0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "USDC-1 RancheroDAO",
 			"symbol": "rdUSDC-1",
@@ -3165,9 +3075,7 @@
 		},
 		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
 			"address": "0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-3 RancheroDAO",
 			"symbol": "rdUSDC-3",
@@ -3181,9 +3089,7 @@
 		},
 		"0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4": {
 			"address": "0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "DAI-3 RancheroDAO",
 			"symbol": "rdDAI-3",
@@ -3197,9 +3103,7 @@
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "Aave V3 USDC Lender",
 			"symbol": "ysUSDC",
@@ -3311,9 +3215,7 @@
 		},
 		"0xe4244bf798f63881591113126b64493ac36ac525": {
 			"address": "0xe4244bf798f63881591113126b64493ac36ac525",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-1 DemoDAO",
 			"symbol": "ddUSDC-1",
@@ -3467,9 +3369,7 @@
 		},
 		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
 			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
-			"underlyingTokensAddresses": [
-				"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
-			],
+			"underlyingTokensAddresses": ["0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"],
 			"type": "Yearn Vault",
 			"name": "AaveV3 DAI Lender",
 			"symbol": "ysDAI",
@@ -3483,9 +3383,7 @@
 		},
 		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
 			"address": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
-			"underlyingTokensAddresses": [
-				"0x2791bca1f2de4661ed88a30c99a7a9449aa84174"
-			],
+			"underlyingTokensAddresses": ["0x2791bca1f2de4661ed88a30c99a7a9449aa84174"],
 			"type": "Yearn Vault",
 			"name": "Yearn-Ajna USDC Vault ",
 			"symbol": "yvAjnaUSDC",
@@ -3513,9 +3411,7 @@
 		},
 		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
 			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
-			"underlyingTokensAddresses": [
-				"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"
-			],
+			"underlyingTokensAddresses": ["0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270"],
 			"type": "Yearn Vault",
 			"name": "stMATIC accumulator",
 			"symbol": "ysWMATIC",
@@ -3543,9 +3439,7 @@
 		},
 		"0xf8fd29a8f95e96a125984c4e384534ace18cbfbd": {
 			"address": "0xf8fd29a8f95e96a125984c4e384534ace18cbfbd",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "dai-vault",
 			"symbol": "dai-stk",
@@ -3587,9 +3481,7 @@
 		},
 		"0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47": {
 			"address": "0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47",
-			"underlyingTokensAddresses": [
-				"0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68"
-			],
+			"underlyingTokensAddresses": ["0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68"],
 			"type": "Yearn Vault",
 			"name": "StarSeeds Liquidity Protocol Vault V1",
 			"symbol": "STARV4-V1",
@@ -3617,9 +3509,7 @@
 		},
 		"0xfd179b9793b467fa3dd85edc715ae580b0240090": {
 			"address": "0xfd179b9793b467fa3dd85edc715ae580b0240090",
-			"underlyingTokensAddresses": [
-				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
-			],
+			"underlyingTokensAddresses": ["0xc2132d05d31c914a87c6611c10748aeb04b58e8f"],
 			"type": "Yearn Vault",
 			"name": "usdt-vault",
 			"symbol": "usdt-stk",
@@ -3675,9 +3565,7 @@
 		},
 		"0xffa188493c15dfaf2c206c97d8633377847b6a52": {
 			"address": "0xffa188493c15dfaf2c206c97d8633377847b6a52",
-			"underlyingTokensAddresses": [
-				"0xffa188493c15dfaf2c206c97d8633377847b6a52"
-			],
+			"underlyingTokensAddresses": ["0xffa188493c15dfaf2c206c97d8633377847b6a52"],
 			"type": "Yearn Vault",
 			"name": "WeFi",
 			"symbol": "WEFI",
@@ -3691,9 +3579,7 @@
 		},
 		"0xffcf7fb615614b96f5730af9da3d7114c119aabe": {
 			"address": "0xffcf7fb615614b96f5730af9da3d7114c119aabe",
-			"underlyingTokensAddresses": [
-				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
-			],
+			"underlyingTokensAddresses": ["0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"],
 			"type": "Yearn Vault",
 			"name": "USDC-1 RombusDAO",
 			"symbol": "rdUSDC-1",

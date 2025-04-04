@@ -6,7 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -99,11 +98,7 @@ func (y Controller) GetAllTokens(c *gin.Context) {
 
 	// Iterate through all supported chains
 	for chainID := range env.GetChains() {
-		tokens, err := storage.ListERC20(chainID)
-		if err != nil {
-			logs.Error("Failed to list tokens for chain", chainID, ":", err)
-			continue
-		}
+		tokens, _ := storage.ListERC20(chainID)
 
 		// Skip if no tokens found for this chain
 		if len(tokens) == 0 {
@@ -150,12 +145,7 @@ func (y Controller) GetTokens(c *gin.Context) {
 	}
 
 	// Fetch tokens for the specified chain
-	tokenMap, err := storage.ListERC20(chainID)
-	if err != nil {
-		logs.Error("Failed to list tokens for chain", chainID, ":", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve token data"})
-		return
-	}
+	tokenMap, _ := storage.ListERC20(chainID)
 
 	// If no tokens found, return an empty map rather than null
 	allTokens := make(map[string]TAllTokens, len(tokenMap))

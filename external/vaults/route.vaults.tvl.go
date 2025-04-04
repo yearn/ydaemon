@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -71,7 +72,7 @@ func computeChainTVL(chainID uint64, c *gin.Context) float64 {
 		if !math.IsNaN(vaultTVL.TVL) && !math.IsInf(vaultTVL.TVL, 0) {
 			tvl += vaultTVL.TVL
 		} else {
-			handleError(c, fmt.Errorf("invalid TVL value for vault %s: %v", currentVault.Address.Hex(), vaultTVL.TVL),
+			logs.Error(fmt.Errorf("invalid TVL value for vault %s: %v", currentVault.Address.Hex(), vaultTVL.TVL),
 				http.StatusInternalServerError, "Invalid TVL calculation result", "ComputeChainTVL")
 		}
 	}

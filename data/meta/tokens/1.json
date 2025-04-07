@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-04T18:25:34.789283+02:00",
+	"lastUpdate": "2025-04-07T12:13:40.522953+02:00",
 	"version": {
 		"major": 0,
-		"minor": 103,
+		"minor": 105,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2269,6 +2269,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x107717c98c8125a94d3d2cc82b86a1b705f3a27c": {
+			"address": "0x107717c98c8125a94d3d2cc82b86a1b705f3a27c",
+			"underlyingTokensAddresses": [
+				"0x6e9455d109202b426169f0d8f01a3332dae160f3"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge LP Yearn CRV Vault v2",
+			"symbol": "yG-lp-yCRVv2",
+			"displayName": "yGauge LP Yearn CRV Vault v2",
+			"displaySymbol": "yG-lp-yCRVv2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x107717C98C8125A94D3d2Cc82b86a1b705f3A27C/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x107a2e3cd2bb9a32b9ee2e4d51143149f8367eba": {
 			"address": "0x107a2e3cd2bb9a32b9ee2e4d51143149f8367eba",
 			"underlyingTokensAddresses": [],
@@ -2420,6 +2436,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x120b128cf1a5117fe8e9e12b79b3437e7396bd14": {
+			"address": "0x120b128cf1a5117fe8e9e12b79b3437e7396bd14",
+			"underlyingTokensAddresses": [
+				"0x28da6de3e804bddf0ad237cfa6048f2930d0b4dc"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvCurve-dYFIETH-f-f",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvCurve-dYFIETH-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x120B128cF1a5117Fe8E9E12b79B3437e7396bd14/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1211a5b5f5a87b677074c391f0a80019adf6bbd8": {
 			"address": "0x1211a5b5f5a87b677074c391f0a80019adf6bbd8",
 			"underlyingTokensAddresses": [],
@@ -2448,6 +2480,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This Curve v2 crypto pool contains ibJPY and USDC.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x127091edE112aEd7Bae281747771b3150Bb047bB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x128e72dfd8b00cbf9d12cb75e846ac87b83ddfc9": {
+			"address": "0x128e72dfd8b00cbf9d12cb75e846ac87b83ddfc9",
+			"underlyingTokensAddresses": [
+				"0x028ec7330ff87667b6dfb0d94b954c820195336c"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge DAI-1 yVault",
+			"symbol": "yG-yvDAI-1",
+			"displayName": "yGauge DAI-1 yVault",
+			"displaySymbol": "yG-yvDAI-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x128e72DfD8b00cbF9d12cB75E846AC87B83DdFc9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3121,6 +3169,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x18D3284D9eff64FC97B64ab2B871738E684aa151/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x18f365ecce58fa865ec9fb027e9175125db93b91": {
+			"address": "0x18f365ecce58fa865ec9fb027e9175125db93b91",
+			"underlyingTokensAddresses": [
+				"0x81d93531720d86f0491dee7d03f30b3b5ac24e59"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvCurve-yETH-f",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvCurve-yETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x18f365ECCe58fA865Ec9FB027E9175125DB93B91/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5293,6 +5357,22 @@
 			"decimals": 0,
 			"chainID": 1
 		},
+		"0x28b2dc219c047b10f353caa2934ad8803e089a88": {
+			"address": "0x28b2dc219c047b10f353caa2934ad8803e089a88",
+			"underlyingTokensAddresses": [
+				"0x128e72dfd8b00cbf9d12cb75e846ac87b83ddfc9"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvDAI-1",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvDAI-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x28b2DC219c047B10F353caA2934ad8803e089A88/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x28b703ab847fb4a9548af7a4bce38cd94f508298": {
 			"address": "0x28b703ab847fb4a9548af7a4bce38cd94f508298",
 			"underlyingTokensAddresses": [
@@ -5323,18 +5403,34 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x28da6de3e804bddf0ad237cfa6048f2930d0b4dc": {
+			"address": "0x28da6de3e804bddf0ad237cfa6048f2930d0b4dc",
+			"underlyingTokensAddresses": [
+				"0xf70b3f1ea3bfc659ffb8b27e84fae7ef38b5bd3b"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge Curve dYFIETH-f Factory yVault",
+			"symbol": "yG-yvCurve-dYFIETH-f-f",
+			"displayName": "yGauge Curve dYFIETH-f Factory yVault",
+			"displaySymbol": "yG-yvCurve-dYFIETH-f-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x28da6dE3e804bDdF0aD237CFA6048f2930D0b4Dc/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x29059568bb40344487d62f7450e78b8e6c74e0e5": {
 			"address": "0x29059568bb40344487d62f7450e78b8e6c74e0e5",
 			"underlyingTokensAddresses": [
 				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
 				"0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
 			],
-			"type": "Curve",
+			"type": "Curve LP",
 			"name": "Curve.fi Factory Crypto Pool: YFI/ETH",
 			"symbol": "YFIETH-f",
-			"displayName": "Curve Factory YFI-ETH",
-			"displaySymbol": "YFI-ETH",
-			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains YFI and ETH",
+			"displayName": "Curve.fi Factory Crypto Pool: YFI/ETH",
+			"displaySymbol": "YFIETH-f",
+			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x29059568bB40344487d62f7450E78b8E6C74e0e5/logo-128.png",
 			"decimals": 18,
@@ -5439,6 +5535,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x29A7aDB4c69f697b6d9F04114175ae9989884926/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa": {
+			"address": "0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa",
+			"underlyingTokensAddresses": [
+				"0x8e2485942b399ea41f3c910c1bb8567128f79859"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvWETH-2",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x29eE8c3FB7ea0b52261B18782F1a060C2e210aFa/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7543,6 +7655,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x38De22a3175708D45E7c7c64CD78479C8B56f76E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x38e3d865e34f7367a69f096c80a4fc329db38bf4": {
+			"address": "0x38e3d865e34f7367a69f096c80a4fc329db38bf4",
+			"underlyingTokensAddresses": [
+				"0x92545bce636e6ee91d88d2d017182cd0bd2fc22e"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge DAI-2 yVault",
+			"symbol": "yG-yvDAI-2",
+			"displayName": "yGauge DAI-2 yVault",
+			"displaySymbol": "yG-yvDAI-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x38E3d865e34f7367a69f096C80A4fc329DB38BF4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -11245,6 +11373,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x552868611d2641144454140dded98e6160b3bfc9": {
+			"address": "0x552868611d2641144454140dded98e6160b3bfc9",
+			"underlyingTokensAddresses": [
+				"0x7fd8af959b54a677a1d8f92265bd0714274c56a3"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvCurve-YFIETH",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvCurve-YFIETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x552868611d2641144454140DdED98E6160b3Bfc9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x55296f69f40ea6d20e478533c15a6b08b654e758": {
 			"address": "0x55296f69f40ea6d20e478533c15a6b08b654e758",
 			"underlyingTokensAddresses": [],
@@ -11728,7 +11872,7 @@
 			"type": "Automated Yearn Vault",
 			"name": "Curve yETH Factory yVault",
 			"symbol": "yvCurve-yETH-f",
-			"displayName": "Curve yETH",
+			"displayName": "Curve yETH Factory yVault",
 			"displaySymbol": "yvCurve-yETH-f",
 			"description": "",
 			"category": "yVault",
@@ -11762,6 +11906,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5935cEdD7D33a32cD60e0F97cFf54A6Bbdbe7Eee/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x5943f7090282eb66575662eadf7c60a717a7ce4d": {
+			"address": "0x5943f7090282eb66575662eadf7c60a717a7ce4d",
+			"underlyingTokensAddresses": [
+				"0xc56413869c6cdf96496f2b1ef801fedbdfa7ddb0"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge WETH-1 yVault",
+			"symbol": "yG-yvWETH-1",
+			"displayName": "yGauge WETH-1 yVault",
+			"displaySymbol": "yG-yvWETH-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5943F7090282Eb66575662EADf7C60a717a7cE4D/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x59463bb67ddd04fe58ed291ba36c26d99a39fbc6": {
@@ -12898,6 +13058,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6130e6cd924a40b24703407f246966d7435d4998": {
+			"address": "0x6130e6cd924a40b24703407f246966d7435d4998",
+			"underlyingTokensAddresses": [
+				"0xba61baa1d96c2f4e25205b331306507bcaea4677"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge LP Yearn PRISMA Vault",
+			"symbol": "yG-lp-yPRISMA",
+			"displayName": "yGauge LP Yearn PRISMA Vault",
+			"displaySymbol": "yG-lp-yPRISMA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6130E6cD924a40b24703407F246966D7435D4998/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x613b5ebcea88a64d484ff91347073c153a4d3aa4": {
 			"address": "0x613b5ebcea88a64d484ff91347073c153a4d3aa4",
 			"underlyingTokensAddresses": [],
@@ -12981,6 +13157,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x62187066FD9C24559ffB54B0495a304ADe26d50B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x622fa41799406b120f9a40da843d358b7b2cfee3": {
+			"address": "0x622fa41799406b120f9a40da843d358b7b2cfee3",
+			"underlyingTokensAddresses": [
+				"0xbe53a109b494e5c9f97b9cd39fe969be68bf6204"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge USDC-1 yVault",
+			"symbol": "yG-yvUSDC-1",
+			"displayName": "yGauge USDC-1 yVault",
+			"displaySymbol": "yG-yvUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x622fA41799406B120f9a40dA843D358b7b2CFEE3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13300,6 +13492,22 @@
 			"decimals": 9,
 			"chainID": 1
 		},
+		"0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7": {
+			"address": "0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7",
+			"underlyingTokensAddresses": [
+				"0x71c3223d6f836f84caa7ab5a68aab6ece21a9f3b"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvcrvUSD-2",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvcrvUSD-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x64DC55D76d1541E0853cbd7cF6586615e9E6f4C7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x64eda51d3ad40d56b9dfc5554e06f94e1dd786fd": {
 			"address": "0x64eda51d3ad40d56b9dfc5554e06f94e1dd786fd",
 			"underlyingTokensAddresses": [
@@ -13358,6 +13566,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x653F134dC1b129012fCa3d5825d6849AD1d81864/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6568921f9059b6b8a3902651783a7a0e74ca83ff": {
+			"address": "0x6568921f9059b6b8a3902651783a7a0e74ca83ff",
+			"underlyingTokensAddresses": [
+				"0x6130e6cd924a40b24703407f246966d7435d4998"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-lp-yPRISMA",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-lp-yPRISMA",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6568921f9059B6b8a3902651783A7A0E74Ca83fF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14051,10 +14275,10 @@
 				"0xa3f152837492340daaf201f4dfec6cd73a8a9760"
 			],
 			"type": "Automated Yearn Vault",
-			"name": "Curve COVEYFI Factory yVault",
-			"symbol": "yvCurve-COVEYFI-f",
-			"displayName": "Curve COVEYFI Factory yVault",
-			"displaySymbol": "yvCurve-COVEYFI-f",
+			"name": "Curve coveYFI Factory yVault",
+			"symbol": "yvCurve-coveYFI-f",
+			"displayName": "Curve coveYFI Factory yVault",
+			"displaySymbol": "yvCurve-coveYFI-f",
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x6A5694C1b37fFA30690b6b60D8Cf89c937d408aD/logo-128.png",
@@ -14745,7 +14969,7 @@
 			"type": "Automated Yearn Vault",
 			"name": "LP Yearn CRV Vault v2",
 			"symbol": "lp-yCRVv2",
-			"displayName": "Liquidity Provider yCRV v2",
+			"displayName": "LP Yearn CRV Vault v2",
 			"displaySymbol": "lp-yCRVv2",
 			"description": "",
 			"category": "yVault",
@@ -15213,6 +15437,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x71B2B207BB596508e119b3DeF876b6bb381f4c2e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x71c3223d6f836f84caa7ab5a68aab6ece21a9f3b": {
+			"address": "0x71c3223d6f836f84caa7ab5a68aab6ece21a9f3b",
+			"underlyingTokensAddresses": [
+				"0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge crvUSD-2 yVault",
+			"symbol": "yG-yvcrvUSD-2",
+			"displayName": "yGauge crvUSD-2 yVault",
+			"displaySymbol": "yG-yvcrvUSD-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x71c3223D6f836f84cAA7ab5a68AAb6ECe21A9f3b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16073,7 +16313,7 @@
 			"type": "Yearn Vault",
 			"name": "Curve YFI-ETH Pool yVault",
 			"symbol": "yvCurve-YFIETH",
-			"displayName": "Curve YFI-ETH",
+			"displayName": "Curve YFI-ETH Pool yVault",
 			"displaySymbol": "yvCurve-YFIETH",
 			"description": "",
 			"category": "yVault",
@@ -16805,6 +17045,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7fd8af959b54a677a1d8f92265bd0714274c56a3": {
+			"address": "0x7fd8af959b54a677a1d8f92265bd0714274c56a3",
+			"underlyingTokensAddresses": [
+				"0x790a60024bc3aea28385b60480f15a0771f26d09"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge Curve YFI-ETH Pool yVault",
+			"symbol": "yG-yvCurve-YFIETH",
+			"displayName": "yGauge Curve YFI-ETH Pool yVault",
+			"displaySymbol": "yG-yvCurve-YFIETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7Fd8Af959B54A677a1D8F92265Bd0714274C56a3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8017b5d498f75d12da6a857e867699fb07de41a4": {
 			"address": "0x8017b5d498f75d12da6a857e867699fb07de41a4",
 			"underlyingTokensAddresses": [
@@ -17031,6 +17287,38 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x81d40243c649f7d6092295f50f4b1d3a8e53da99": {
+			"address": "0x81d40243c649f7d6092295f50f4b1d3a8e53da99",
+			"underlyingTokensAddresses": [
+				"0x5943f7090282eb66575662eadf7c60a717a7ce4d"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvWETH-1",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvWETH-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x81D40243c649f7d6092295F50F4B1D3A8e53DA99/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x81d93531720d86f0491dee7d03f30b3b5ac24e59": {
+			"address": "0x81d93531720d86f0491dee7d03f30b3b5ac24e59",
+			"underlyingTokensAddresses": [
+				"0x58900d761ae3765b75ddfc235c1536b527f25d8f"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge Curve yETH Factory yVault",
+			"symbol": "yG-yvCurve-yETH-f",
+			"displayName": "yGauge Curve yETH Factory yVault",
+			"displaySymbol": "yG-yvCurve-yETH-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x81d93531720d86f0491DeE7D03f30b3b5aC24e59/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x81f3a11db1de16f4f9ba8bf46b71d2b168c64899": {
 			"address": "0x81f3a11db1de16f4f9ba8bf46b71d2b168c64899",
 			"underlyingTokensAddresses": [],
@@ -17042,6 +17330,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x81f3a11dB1DE16f4F9ba8Bf46B71D2B168c64899/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x81f78def7a3a8b0f6aaba69925efc69e70239d95": {
+			"address": "0x81f78def7a3a8b0f6aaba69925efc69e70239d95",
+			"underlyingTokensAddresses": [
+				"0xd57aea3686d623da2dcebc87010a4f2f38ac7b15"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvUSDS-1",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvUSDS-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x81f78DeF7a3a8B0F6aABa69925efC69E70239D95/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17918,6 +18222,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x87588d3fbcdff1bf84555f0a22056d94534a74a6": {
+			"address": "0x87588d3fbcdff1bf84555f0a22056d94534a74a6",
+			"underlyingTokensAddresses": [
+				"0x622fa41799406b120f9a40da843d358b7b2cfee3"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvUSDC-1",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x87588D3fBCdff1bF84555F0A22056d94534A74A6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x87650d7bbfc3a9f10587d7778206671719d9910d": {
 			"address": "0x87650d7bbfc3a9f10587d7778206671719d9910d",
 			"underlyingTokensAddresses": [
@@ -18731,6 +19051,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8e1C2Be682B0d3d8f8EE32024455A34Cc724CF08/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8e2485942b399ea41f3c910c1bb8567128f79859": {
+			"address": "0x8e2485942b399ea41f3c910c1bb8567128f79859",
+			"underlyingTokensAddresses": [
+				"0xac37729b76db6438ce62042ae1270ee574ca7571"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge WETH-2 yVault",
+			"symbol": "yG-yvWETH-2",
+			"displayName": "yGauge WETH-2 yVault",
+			"displaySymbol": "yG-yvWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8E2485942B399EA41f3C910c1Bb8567128f79859/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20087,6 +20423,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x97a597cbca514afcc29cd300f04f98d9dbaa3624": {
+			"address": "0x97a597cbca514afcc29cd300f04f98d9dbaa3624",
+			"underlyingTokensAddresses": [
+				"0x6a5694c1b37ffa30690b6b60d8cf89c937d408ad"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge Curve COVEYFI Factory yVault",
+			"symbol": "yG-yvCurve-COVEYFI-f",
+			"displayName": "yGauge Curve COVEYFI Factory yVault",
+			"displaySymbol": "yG-yvCurve-COVEYFI-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x97A597CBcA514AfCc29cD300f04F98d9DbAA3624/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x97ad75064b20fb2b2447fed4fa953bf7f007a706": {
 			"address": "0x97ad75064b20fb2b2447fed4fa953bf7f007a706",
 			"underlyingTokensAddresses": [],
@@ -20542,12 +20894,12 @@
 				"0xd533a949740bb3306d119cc777fa900ba034cd52",
 				"0xfcc5c47be19d06bf83eb04298b026f81069ff65b"
 			],
-			"type": "Curve",
+			"type": "Curve LP",
 			"name": "Curve.fi Factory Plain Pool: yCRV",
 			"symbol": "yCRV-f",
-			"displayName": "Curve yCRV v2 Pool",
+			"displayName": "Curve.fi Factory Plain Pool: yCRV",
 			"displaySymbol": "yCRV-f",
-			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This factory pool contains yCRV and CRV. CRV is Curve's governance token, and yCRV is Yearn's new liquid veCRV wrapper, redesigned from the ground up to give users 'the best CRV yields in DeFi'.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x99f5aCc8EC2Da2BC0771c32814EFF52b712de1E5/logo-128.png",
 			"decimals": 18,
@@ -20716,6 +21068,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x9bb4d5a122d85e24d8c9b8025a5162fa6b385292": {
+			"address": "0x9bb4d5a122d85e24d8c9b8025a5162fa6b385292",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "crvUSD-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2crvUSD",
+			"displayName": "crvUSD-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2crvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9bb4D5A122d85E24d8c9b8025A5162Fa6B385292/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9bca74f805ab0a22ddd0886db0942199a0feba71": {
 			"address": "0x9bca74f805ab0a22ddd0886db0942199a0feba71",
 			"underlyingTokensAddresses": [],
@@ -20874,6 +21242,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9c73E0A1fA310e2BDC95AF1145B9D8Daa87bD9C0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b": {
+			"address": "0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b",
+			"underlyingTokensAddresses": [
+				"0x38e3d865e34f7367a69f096c80a4fc329db38bf4"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvDAI-2",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvDAI-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x9Cb8c5136aD079d3311F5b766D6fC370bF29E76b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -28572,6 +28956,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd57aea3686d623da2dcebc87010a4f2f38ac7b15": {
+			"address": "0xd57aea3686d623da2dcebc87010a4f2f38ac7b15",
+			"underlyingTokensAddresses": [
+				"0x182863131f9a4630ff9e27830d945b1413e347e8"
+			],
+			"type": "Yearn Vault",
+			"name": "yGauge USDS-1 yVault",
+			"symbol": "yG-yvUSDS-1",
+			"displayName": "yGauge USDS-1 yVault",
+			"displaySymbol": "yG-yvUSDS-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xd57aEa3686d623dA2dCEbc87010a4F2F38Ac7B15/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52": {
 			"address": "0xd5cf704dc17403343965b4f9cd4d7b5e9b20cc52",
 			"underlyingTokensAddresses": [],
@@ -29240,6 +29640,22 @@
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0xD905e2eaeBe188fc92179b6350807D8bd91Db0D8/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd91b6ded55c0fba2c1e88f2cdf6e051ecd788952": {
+			"address": "0xd91b6ded55c0fba2c1e88f2cdf6e051ecd788952",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Katana Pre-DepositUSDC",
+			"symbol": "kpdUSDC",
+			"displayName": "Katana Pre-DepositUSDC",
+			"displaySymbol": "kpdUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD91B6DeD55C0fba2c1E88F2cDF6e051ECD788952/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xd930ab15c8078ebae4ac8da1098a81583603f7ce": {
@@ -33307,10 +33723,10 @@
 				"0xe8449f1495012ee18db7aa18cd5706b47e69627c"
 			],
 			"type": "Automated Yearn Vault",
-			"name": "Curve dYFIETH-f Factory yVault",
-			"symbol": "yvCurve-dYFIETH-f-f",
-			"displayName": "Curve dYFIETH-f Factory yVault",
-			"displaySymbol": "yvCurve-dYFIETH-f-f",
+			"name": "Curve dYFI-ETH Factory yVault",
+			"symbol": "yvCurve-dYFI-ETH-f",
+			"displayName": "Curve dYFI-ETH Factory yVault",
+			"displaySymbol": "yvCurve-dYFI-ETH-f",
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf70B3F1eA3BFc659FFb8b27E84FAE7Ef38b5bD3b/logo-128.png",
@@ -33661,6 +34077,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF962B098Ecc4352aA2AD1d4164BD2b8367fd94c3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf96e4c5eee8095f918ed3312b3de3d68156798f8": {
+			"address": "0xf96e4c5eee8095f918ed3312b3de3d68156798f8",
+			"underlyingTokensAddresses": [
+				"0x97a597cbca514afcc29cd300f04f98d9dbaa3624"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-yvCurve-COVEYFI-f",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-yvCurve-COVEYFI-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xF96E4C5Eee8095F918eD3312B3De3d68156798f8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -34060,12 +34492,12 @@
 		"0xfcc5c47be19d06bf83eb04298b026f81069ff65b": {
 			"address": "0xfcc5c47be19d06bf83eb04298b026f81069ff65b",
 			"underlyingTokensAddresses": [],
-			"type": "DeFi",
+			"type": "",
 			"name": "Yearn CRV",
 			"symbol": "yCRV",
 			"displayName": "Yearn CRV",
 			"displaySymbol": "yCRV",
-			"description": "yCRV is Yearn Finance's new and improved veCRV wrapper system designed to tokenize Yearn's veCRV position which passes all revenue and benefits along to users. This system is composed of a base-token called yCRV which a user can deposit into any one of two `activated` positons to earn yield or voting power: st-yCRV and lp-yCRV. st-yCRV yVault receives admin fees and bribes from locked CRV. lp-yCRV yVault converts yCRV into CRV/yCRV LP tokens and uses them to farm CRV emissions and trading fees.",
+			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xFCc5c47bE19d06BF83eB04298b026F81069ff65b/logo-128.png",
 			"decimals": 18,
@@ -34205,6 +34637,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xFdfc9E828aE3708814996147D23aCeaeF4e4CdF2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfe08fc631be2da2b47aa6adba275adab2197c0cd": {
+			"address": "0xfe08fc631be2da2b47aa6adba275adab2197c0cd",
+			"underlyingTokensAddresses": [
+				"0x107717c98c8125a94d3d2cc82b86a1b705f3a27c"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy",
+			"symbol": "ysyG-lp-yCRVv2",
+			"displayName": "Wrapped YearnV3 Strategy",
+			"displaySymbol": "ysyG-lp-yCRVv2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xfe08Fc631BE2DA2B47aa6adBA275ADAB2197C0cd/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -44,6 +44,7 @@ func initVaults(chainID uint64) (
 	** - The tokens
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
+	indexer.IndexYearnXCoveVaults(chainID)
 	registries := indexer.IndexNewVaults(chainID)
 	logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
 	vaultMap, strategiesMap := indexer.ProcessNewVault(chainID, registries, fetcher.ProcessNewVaultMethodReplace)

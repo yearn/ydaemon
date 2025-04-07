@@ -55,10 +55,10 @@ var CVX_TOKEN_ADDRESS = map[uint64]common.Address{
 
 // CURVE_SUBGRAPHDATA_URI contains the URI of the Curve gauges to use
 var CURVE_SUBGRAPHDATA_URI = map[uint64]string{
-	1:     `https://api.curve.fi/api/getSubgraphData/ethereum`,
-	10:    `https://api.curve.fi/api/getSubgraphData/optimism`,
-	137:   `https://api.curve.fi/api/getSubgraphData/polygon`,
-	250:   `https://api.curve.fi/api/getSubgraphData/fantom`,
-	8453:  ``, //TODO: ADD CURVE_SUBGRAPHDATA_URI FOR BASE
-	42161: `https://api.curve.fi/api/getSubgraphData/arbitrum`,
+	1:     `https://api.curve.fi/v1/getBaseApys/ethereum`,
+	10:    `https://api.curve.fi/v1/getBaseApys/optimism`,
+	137:   `https://api.curve.fi/v1/getBaseApys/polygon`,
+	250:   `https://api.curve.fi/v1/getBaseApys/fantom`,
+	8453:  `https://api.curve.fi/v1/getBaseApys/base`,
+	42161: `https://api.curve.fi/v1/getBaseApys/arbitrum`,
 }

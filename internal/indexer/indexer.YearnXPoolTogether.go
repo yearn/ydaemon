@@ -11,9 +11,6 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-/** 🔵 - Yearn *************************************************************************************
-**
-**************************************************************************************************/
 func IndexYearnXPoolTogetherVaults(chainID uint64) (vaults []models.TVaultsFromRegistry) {
 	chain, ok := env.GetChain(chainID)
 	if !ok {

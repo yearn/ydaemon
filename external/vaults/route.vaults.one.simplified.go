@@ -145,8 +145,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 			address.String(), chainID))
 	}
 
-	logs.Pretty(vaultStrategies, vaultStrategiesMap)
-
 	// Initialize the strategies array with appropriate capacity to avoid reallocations
 	newVault.Strategies = make([]TExternalStrategy, 0, len(vaultStrategies))
 

@@ -28,7 +28,14 @@ const (
 )
 
 type TExtraProperties struct {
-	YieldVaultAddress string `json:"yieldVaultAddress,omitempty"`
+	YieldVaultAddress       string `json:"yieldVaultAddress,omitempty"`
+	YearnVaultAsset         string `json:"yearnVaultAsset,omitempty"`
+	YearnVault              string `json:"yearnVault,omitempty"`
+	IsVaultV2               bool   `json:"isVaultV2,omitempty"`
+	YearnGauge              string `json:"yearnGauge,omitempty"`
+	CoveYearnStrategy       string `json:"coveYearnStrategy,omitempty"`
+	AutoCompoundingGauge    string `json:"autoCompoundingGauge,omitempty"`
+	NonAutoCompoundingGauge string `json:"nonAutoCompoundingGauge,omitempty"`
 }
 
 type TVaultsFromRegistry struct {
@@ -64,6 +71,7 @@ type TInclusion struct {
 	IsYearnJuiced   bool `json:"isYearnJuiced"`   // If the vault is a Yearn Juiced vault or not
 	IsGimme         bool `json:"isGimme"`         // If the vault is a Gimme vault or not
 	IsPoolTogether  bool `json:"isPoolTogether"`  // If the vault is a PoolTogether vault or not
+	IsCove          bool `json:"isCove"`          // If the vault is a Cove related vault or not
 	IsMorpho        bool `json:"isMorpho"`        // If the vault is a Morpho vault or not
 	IsPublicERC4626 bool `json:"isPublicERC4626"` // If the vault is from the public ERC4626 registry or not
 }

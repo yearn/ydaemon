@@ -92,10 +92,19 @@ const vaultSchema = {
 						isYearnJuiced: {type: 'boolean'},
 						isGimme: {type: 'boolean'},
 						isPoolTogether: {type: 'boolean'},
+						isCove: {type: 'boolean'},
 						isMorpho: {type: 'boolean'},
 						isPublicERC4626: {type: 'boolean'}
 					},
-					required: ['isSet', 'isYearn', 'isYearnJuiced', 'isGimme', 'isPoolTogether', 'isPublicERC4626']
+					required: [
+						'isSet',
+						'isYearn',
+						'isYearnJuiced',
+						'isGimme',
+						'isPoolTogether',
+						'isCove',
+						'isPublicERC4626'
+					]
 				},
 				riskLevel: {type: 'number'},
 				riskScore: {

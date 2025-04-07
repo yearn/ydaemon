@@ -91,15 +91,11 @@ type CurveGetGaugeData struct {
 
 type TCurveSubgraphData struct {
 	Data struct {
-		PoolList []CurveSubgraphData `json:"poolList"`
+		PoolList []CurveSubgraphData `json:"baseApys"`
 	} `json:"data"`
 }
 
 type CurveSubgraphData struct {
-	Type            string  `json:"type"`
 	Address         string  `json:"address"`
-	RawVolume       float64 `json:"rawVolume"`
-	VolumeUSD       float64 `json:"volumeUSD"`
-	LatestDailyApy  float64 `json:"latestDailyApy"`
-	LatestWeeklyApy float64 `json:"latestWeeklyApy"`
+	LatestWeeklyApy float64 `json:"latestWeeklyApyPcent"`
 }

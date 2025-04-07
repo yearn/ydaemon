@@ -71,6 +71,24 @@ func IsRegistryFromPoolTogether(chainID uint64, registryAddress common.Address) 
 	)
 }
 
+/**************************************************************************************************
+** IsRegistryFromCove will check if the registry is for Cove related vaults.
+** They will not be displayed by default in the Yearn.fi website.
+**************************************************************************************************/
+func IsRegistryFromCove(chainID uint64, registryAddress common.Address) bool {
+	chains, ok := GetChain(chainID)
+	if !ok {
+		return false
+	}
+	registries := chains.YearnXRegistries
+	for _, registry := range registries {
+		if addresses.Equals(registry.Address, registryAddress) {
+			return registry.Label == "COVE"
+		}
+	}
+	return false
+}
+
 func IsRegistryDisabled(chainID uint64, registryAddress common.Address) bool {
 	chains, ok := GetChain(chainID)
 	if !ok {

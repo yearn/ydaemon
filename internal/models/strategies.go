@@ -1,6 +1,8 @@
 package models
 
 import (
+	"encoding/json"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
@@ -72,4 +74,34 @@ type TStrategy struct {
 	NetAPR             *bigNumber.Float `json:"netAPR"`                  // The net APR of the strategy
 	APRType            TStrategyAPRType `json:"aprType"`                 // The type of APR of the strategy
 	Protocols          []string         `json:"protocols"`               // The protocols used by the strategy
+}
+
+/**************************************************************************************************
+** TStrategyReportDB represents a strategy report from the database
+**
+** This type is used to store the data retrieved from the database for strategy reports
+**************************************************************************************************/
+type TStrategyReportDB struct {
+	ChainID            uint64          `json:"chainId"`
+	Address            string          `json:"address"`
+	EventName          string          `json:"eventName"`
+	Profit             string          `json:"profit"`
+	Loss               string          `json:"loss"`
+	DebtPayment        string          `json:"debtPayment"`
+	DebtOutstanding    string          `json:"debtOutstanding"`
+	ProtocolFees       string          `json:"protocolFees"`
+	PerformanceFees    string          `json:"performanceFees"`
+	APR                json.RawMessage `json:"apr"`
+	ProfitUSD          string          `json:"profitUsd"`
+	LossUSD            string          `json:"lossUsd"`
+	DebtPaymentUSD     string          `json:"debtPaymentUsd"`
+	DebtOutstandingUSD string          `json:"debtOutstandingUsd"`
+	ProtocolFeesUSD    string          `json:"protocolFeesUsd"`
+	PerformanceFeesUSD string          `json:"performanceFeesUsd"`
+	PriceUSD           string          `json:"priceUsd"`
+	PriceSource        string          `json:"priceSource"`
+	BlockNumber        uint64          `json:"blockNumber"`
+	BlockTime          uint64          `json:"blockTime"`
+	LogIndex           uint64          `json:"logIndex"`
+	TransactionHash    string          `json:"transactionHash"`
 }

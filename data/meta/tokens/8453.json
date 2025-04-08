@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2025-03-24T11:07:15.882023+01:00",
+	"lastUpdate": "2025-04-08T09:58:41.819613+02:00",
 	"version": {
 		"major": 0,
 		"minor": 23,
@@ -9,7 +9,9 @@
 	"tokens": {
 		"0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc": {
 			"address": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
-			"underlyingTokensAddresses": ["0xf213f2d02837012dc0236cc105061e121bb03e37"],
+			"underlyingTokensAddresses": [
+				"0xf213f2d02837012dc0236cc105061e121bb03e37"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome DOLA-USDC Factory yVault",
 			"symbol": "yvAero-DOLA-USDC-f",
@@ -23,7 +25,9 @@
 		},
 		"0x03c5aff0cd5e40889d689fd9d9caff286b1bd7fb": {
 			"address": "0x03c5aff0cd5e40889d689fd9d9caff286b1bd7fb",
-			"underlyingTokensAddresses": ["0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"],
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
 			"type": "Yearn Vault",
 			"name": "Moonwell cbBTC Lender WETH Borrower",
 			"symbol": "yscbBTC",
@@ -65,7 +69,9 @@
 		},
 		"0x0dcb575fd705f1352b0c0f8fa6a64a0561ce8c3c": {
 			"address": "0x0dcb575fd705f1352b0c0f8fa6a64a0561ce8c3c",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "ROOM USDC VAULT",
 			"symbol": "roomUSDC",
@@ -93,7 +99,9 @@
 		},
 		"0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1": {
 			"address": "0x12e3187d6b7a0ba98a427ef9ef287bd9960764d1",
-			"underlyingTokensAddresses": ["0x9e4cb8b916289864321661ce02cf66aa5ba63c94"],
+			"underlyingTokensAddresses": [
+				"0x9e4cb8b916289864321661ce02cf66aa5ba63c94"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome DEUS-WETH Factory yVault",
 			"symbol": "yvAero-DEUS-WETH-f",
@@ -107,7 +115,9 @@
 		},
 		"0x13454b672213f53cb1d31ea0be033c58fe315392": {
 			"address": "0x13454b672213f53cb1d31ea0be033c58fe315392",
-			"underlyingTokensAddresses": ["0xf6aec4f97623e691a9426a69baf5501509fca05d"],
+			"underlyingTokensAddresses": [
+				"0xf6aec4f97623e691a9426a69baf5501509fca05d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome MAI-USDbC Factory yVault",
 			"symbol": "yvAero-MAI-USDbC-f",
@@ -121,7 +131,9 @@
 		},
 		"0x141719bd8a203839c291b6927d13b32710932b90": {
 			"address": "0x141719bd8a203839c291b6927d13b32710932b90",
-			"underlyingTokensAddresses": ["0x4a311ac4563abc30e71d0631c88a6232c1309ac5"],
+			"underlyingTokensAddresses": [
+				"0x4a311ac4563abc30e71d0631c88a6232c1309ac5"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome MOG-WETH Factory yVault",
 			"symbol": "yvAero-MOG-WETH-f",
@@ -149,7 +161,9 @@
 		},
 		"0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe": {
 			"address": "0x1d7a8593c249ab84b2733d09a9e4a6b9e42140fe",
-			"underlyingTokensAddresses": ["0xecac9c5f704e954931349da37f60e39f515c11c1"],
+			"underlyingTokensAddresses": [
+				"0xecac9c5f704e954931349da37f60e39f515c11c1"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-LBTC (auto-rolling Pendle PT)",
 			"symbol": "yPT-LBTC",
@@ -163,7 +177,9 @@
 		},
 		"0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b": {
 			"address": "0x1f1969209e18f24282ce6fae9c27f6e1fe5a1d1b",
-			"underlyingTokensAddresses": ["0x03ff264046b085450649a993cdd65dcdd01a893e"],
+			"underlyingTokensAddresses": [
+				"0x03ff264046b085450649a993cdd65dcdd01a893e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome pHAM-pwBLT Factory yVault",
 			"symbol": "yvAero-pHAM-pwBLT-f",
@@ -205,7 +221,9 @@
 		},
 		"0x25f32ec89ce7732a4e9f8f3340a09259f823b7d3": {
 			"address": "0x25f32ec89ce7732a4e9f8f3340a09259f823b7d3",
-			"underlyingTokensAddresses": ["0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"],
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
 			"type": "Yearn Vault",
 			"name": "cbBTC Horizon yVault",
 			"symbol": "yvcbBTC-H",
@@ -219,7 +237,9 @@
 		},
 		"0x26adf26c86bef23c4e1f66ddf2a62e6ecb98152e": {
 			"address": "0x26adf26c86bef23c4e1f66ddf2a62e6ecb98152e",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "ROOM VAULT V2",
 			"symbol": "ROOMV",
@@ -317,7 +337,9 @@
 		},
 		"0x30bca23b220deb343f62c83eda1465546ac9c7f7": {
 			"address": "0x30bca23b220deb343f62c83eda1465546ac9c7f7",
-			"underlyingTokensAddresses": ["0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d"],
+			"underlyingTokensAddresses": [
+				"0x6cdcb1c4a4d1c3c6d054b27ac5b77e89eafb971d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome AERO-USDC Factory yVault",
 			"symbol": "yvAero-AERO-USDC-f",
@@ -331,7 +353,9 @@
 		},
 		"0x31ce9ab5a358e5c802cc01080f29a65a14eb45b8": {
 			"address": "0x31ce9ab5a358e5c802cc01080f29a65a14eb45b8",
-			"underlyingTokensAddresses": ["0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5"],
+			"underlyingTokensAddresses": [
+				"0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome BMX-wBLT Factory yVault",
 			"symbol": "yvAero-BMX-wBLT-f",
@@ -345,7 +369,9 @@
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
 			"address": "0x37a74970f80adaa8215598e95a17cbed2c39030d",
-			"underlyingTokensAddresses": ["0x554eca2a48136724294ce47fb7bfe9aadfcee3c6"],
+			"underlyingTokensAddresses": [
+				"0x554eca2a48136724294ce47fb7bfe9aadfcee3c6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome SONNE-USDbC Factory yVault",
 			"symbol": "yvAero-SONNE-USDbC-f",
@@ -359,7 +385,9 @@
 		},
 		"0x37fdacd764aa64f4e453842d8056853e5550c09b": {
 			"address": "0x37fdacd764aa64f4e453842d8056853e5550c09b",
-			"underlyingTokensAddresses": ["0x27a8afa3bd49406e48a074350fb7b2020c43b2bd"],
+			"underlyingTokensAddresses": [
+				"0x27a8afa3bd49406e48a074350fb7b2020c43b2bd"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome USDC-USDbC Factory yVault",
 			"symbol": "yvAero-USDC-USDbC-f",
@@ -373,7 +401,9 @@
 		},
 		"0x391e5dc227cdcf3cca012e5278798121236b1861": {
 			"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
-			"underlyingTokensAddresses": ["0xffa3f8737c39e36dec4300b162c2153c67c8352f"],
+			"underlyingTokensAddresses": [
+				"0xffa3f8737c39e36dec4300b162c2153c67c8352f"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome WELL-WETH Factory yVault",
 			"symbol": "yvAero-WELL-WETH-f",
@@ -387,7 +417,9 @@
 		},
 		"0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497": {
 			"address": "0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497",
-			"underlyingTokensAddresses": ["0x2a1463cebe85315224c536afd389b381b43f3206"],
+			"underlyingTokensAddresses": [
+				"0x2a1463cebe85315224c536afd389b381b43f3206"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome MAI-USDC Factory yVault",
 			"symbol": "yvAero-MAI-USDC-f",
@@ -401,7 +433,9 @@
 		},
 		"0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8": {
 			"address": "0x3ed55314c0a4b1a1e3e6b4c9e0617d99c8b5fff8",
-			"underlyingTokensAddresses": ["0xa6385c73961dd9c58db2ef0c4eb98ce4b60651e8"],
+			"underlyingTokensAddresses": [
+				"0xa6385c73961dd9c58db2ef0c4eb98ce4b60651e8"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome wstETH-WETH Factory yVault",
 			"symbol": "yvAero-wstETH-WETH-f",
@@ -429,7 +463,9 @@
 		},
 		"0x41102db56d0531be4560ec2db295e28a3c6954c7": {
 			"address": "0x41102db56d0531be4560ec2db295e28a3c6954c7",
-			"underlyingTokensAddresses": ["0x2d25e0514f23c6367687de89bd5167dc754d4934"],
+			"underlyingTokensAddresses": [
+				"0x2d25e0514f23c6367687de89bd5167dc754d4934"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome TAROT-WETH Factory yVault",
 			"symbol": "yvAero-TAROT-WETH-f",
@@ -443,7 +479,9 @@
 		},
 		"0x41489713d581ec717e1aa55b7729d24965cf96b5": {
 			"address": "0x41489713d581ec717e1aa55b7729d24965cf96b5",
-			"underlyingTokensAddresses": ["0x4a3636608d7bc5776cb19eb72caa36ebb9ea683b"],
+			"underlyingTokensAddresses": [
+				"0x4a3636608d7bc5776cb19eb72caa36ebb9ea683b"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome USD+-USDbC Factory yVault",
 			"symbol": "yvAero-USD+-USDbC-f",
@@ -471,7 +509,9 @@
 		},
 		"0x44da1202285ed9678dab99b55aadb2fa549fdfdc": {
 			"address": "0x44da1202285ed9678dab99b55aadb2fa549fdfdc",
-			"underlyingTokensAddresses": ["0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452"],
+			"underlyingTokensAddresses": [
+				"0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452"
+			],
 			"type": "Yearn Vault",
 			"name": "LevMoonwell wstETH",
 			"symbol": "yswstETH",
@@ -513,7 +553,9 @@
 		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
 			"address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
-			"underlyingTokensAddresses": ["0x4591dbff62656e7859afe5e45f6f47d3669fbb28"],
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
 			"type": "Yearn Vault",
 			"name": "Prisma mkUSD",
 			"symbol": "mkUSD",
@@ -555,7 +597,9 @@
 		},
 		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
 			"address": "0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81",
-			"underlyingTokensAddresses": ["0xb5e331615fdba7df49e05cdeaceb14acdd5091c3"],
+			"underlyingTokensAddresses": [
+				"0xb5e331615fdba7df49e05cdeaceb14acdd5091c3"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome hyUSD-eUSD Factory yVault",
 			"symbol": "yvAero-hyUSD-eUSD-f",
@@ -569,7 +613,9 @@
 		},
 		"0x4d73de04431050347d6d94f7fab5887ea6737a18": {
 			"address": "0x4d73de04431050347d6d94f7fab5887ea6737a18",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "test USDC",
 			"symbol": "tUSDC",
@@ -583,7 +629,9 @@
 		},
 		"0x4d81c7d534d703e0a0aecadf668c0e0253e1f1c3": {
 			"address": "0x4d81c7d534d703e0a0aecadf668c0e0253e1f1c3",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "WETH Horizon yVault",
 			"symbol": "yvWETH-H",
@@ -597,7 +645,9 @@
 		},
 		"0x4dcc2ecaff01525fbcab3ed18823270f912a380a": {
 			"address": "0x4dcc2ecaff01525fbcab3ed18823270f912a380a",
-			"underlyingTokensAddresses": ["0x8b432c54d6e8e1b8d1802753514ab53044af1861"],
+			"underlyingTokensAddresses": [
+				"0x8b432c54d6e8e1b8d1802753514ab53044af1861"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome MAI-DOLA Factory yVault",
 			"symbol": "yvAero-MAI-DOLA-f",
@@ -611,7 +661,9 @@
 		},
 		"0x50fd1e6e0e2153c2b26ebbcd9bcded4639a1aae3": {
 			"address": "0x50fd1e6e0e2153c2b26ebbcd9bcded4639a1aae3",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "MUV002 - Flagship USDC",
 			"symbol": "MUV002_USDC",
@@ -639,7 +691,9 @@
 		},
 		"0x58dce038423a1e43f3429cb62425a1364cc3bb4c": {
 			"address": "0x58dce038423a1e43f3429cb62425a1364cc3bb4c",
-			"underlyingTokensAddresses": ["0xb4885bc63399bf5518b994c1d0c153334ee579d0"],
+			"underlyingTokensAddresses": [
+				"0xb4885bc63399bf5518b994c1d0c153334ee579d0"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome WETH-USDbC Factory yVault",
 			"symbol": "yvAero-WETH-USDbC-f",
@@ -653,7 +707,9 @@
 		},
 		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
 			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
-			"underlyingTokensAddresses": ["0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb"],
+			"underlyingTokensAddresses": [
+				"0x5bfb340fa9305abb164fb0248d0d82fc3d82c3bb"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome eUSD-USDbC Factory yVault",
 			"symbol": "yvAero-eUSD-USDbC-f",
@@ -667,7 +723,9 @@
 		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
-			"underlyingTokensAddresses": ["0x2b7704f1cb9324cd8586b33c6c540cbd64e58237"],
+			"underlyingTokensAddresses": [
+				"0x2b7704f1cb9324cd8586b33c6c540cbd64e58237"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome EXTRA-USDbC Factory yVault",
 			"symbol": "yvAero-EXTRA-USDbC-f",
@@ -695,7 +753,9 @@
 		},
 		"0x5c366341bb86bad85e78eba974e3f335c9488fa2": {
 			"address": "0x5c366341bb86bad85e78eba974e3f335c9488fa2",
-			"underlyingTokensAddresses": ["0xa56be957d432a5d0edc040b27078d9726f54e7f6"],
+			"underlyingTokensAddresses": [
+				"0xa56be957d432a5d0edc040b27078d9726f54e7f6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome agEUR-USDbC Factory yVault",
 			"symbol": "yvAero-agEUR-USDbC-f",
@@ -751,7 +811,9 @@
 		},
 		"0x630db4ae19219025df594c943b638b5acb5e9d18": {
 			"address": "0x630db4ae19219025df594c943b638b5acb5e9d18",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "WETH-1 yVault",
 			"symbol": "yvWETH-1",
@@ -765,7 +827,9 @@
 		},
 		"0x68393a804c9fe4f1c7148d37796436e450ad98e8": {
 			"address": "0x68393a804c9fe4f1c7148d37796436e450ad98e8",
-			"underlyingTokensAddresses": ["0x2223f9fe624f69da4d8256a7bcc9104fba7f8f75"],
+			"underlyingTokensAddresses": [
+				"0x2223f9fe624f69da4d8256a7bcc9104fba7f8f75"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome AERO-USDbC Factory yVault",
 			"symbol": "yvAero-AERO-USDbC-f",
@@ -779,7 +843,9 @@
 		},
 		"0x68a0ba9ecad98bfd16d2457e2546226e8fb7c101": {
 			"address": "0x68a0ba9ecad98bfd16d2457e2546226e8fb7c101",
-			"underlyingTokensAddresses": ["0x0fac819628a7f612abac1cad939768058cc0170c"],
+			"underlyingTokensAddresses": [
+				"0x0fac819628a7f612abac1cad939768058cc0170c"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome ION-WETH Factory yVault",
 			"symbol": "yvAero-ION-WETH-f",
@@ -835,7 +901,9 @@
 		},
 		"0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608": {
 			"address": "0x6fb7cc0b6f0fcef9cf7c560beb68954efc142608",
-			"underlyingTokensAddresses": ["0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078"],
+			"underlyingTokensAddresses": [
+				"0x2722c8f9b5e2ac72d1f225f8e8c990e449ba0078"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome tBTC-WETH Factory yVault",
 			"symbol": "yvAero-tBTC-WETH-f",
@@ -863,7 +931,9 @@
 		},
 		"0x7509d40ef0087611d2dfd76f0752d32783b8c2a2": {
 			"address": "0x7509d40ef0087611d2dfd76f0752d32783b8c2a2",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "ROOM USDC VAULT",
 			"symbol": "roomUSDC",
@@ -891,7 +961,9 @@
 		},
 		"0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd": {
 			"address": "0x7b8bf6d5557b7c1b5b0235b7cc2aca6345534cdd",
-			"underlyingTokensAddresses": ["0xcdac0d6c6c59727a65f871236188350531885c43"],
+			"underlyingTokensAddresses": [
+				"0xcdac0d6c6c59727a65f871236188350531885c43"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome WETH-USDC Factory yVault",
 			"symbol": "yvAero-WETH-USDC-f",
@@ -905,7 +977,9 @@
 		},
 		"0x7bc9e2d216b22611d9805c12e0c682391720752f": {
 			"address": "0x7bc9e2d216b22611d9805c12e0c682391720752f",
-			"underlyingTokensAddresses": ["0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"],
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Seamless cbBTC Vault Compounder",
 			"symbol": "yscbBTC",
@@ -919,7 +993,9 @@
 		},
 		"0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2": {
 			"address": "0x7c0fa3905b38d44c0f29150fd61f182d1e097ec2",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "LevMoonwell WETH",
 			"symbol": "ysWETH",
@@ -933,7 +1009,9 @@
 		},
 		"0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671": {
 			"address": "0x7cbdf03ca2b633ca9fa613945ab4b19a46b3d671",
-			"underlyingTokensAddresses": ["0xa819af1cc8abe618ea8abadeb464960f7451ceab"],
+			"underlyingTokensAddresses": [
+				"0xa819af1cc8abe618ea8abadeb464960f7451ceab"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome UNIDX-WETH Factory yVault",
 			"symbol": "yvAero-UNIDX-WETH-f",
@@ -961,7 +1039,9 @@
 		},
 		"0x7f678f3f661364dcad39cc2946c31388a43ce1f4": {
 			"address": "0x7f678f3f661364dcad39cc2946c31388a43ce1f4",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "roomUSDC",
 			"symbol": "rmUSDC",
@@ -975,7 +1055,9 @@
 		},
 		"0x80ba48973490a94941eaec6be8dbcff6a5aa8892": {
 			"address": "0x80ba48973490a94941eaec6be8dbcff6a5aa8892",
-			"underlyingTokensAddresses": ["0x7f670f78b17dec44d5ef68a48740b6f8849cc2e6"],
+			"underlyingTokensAddresses": [
+				"0x7f670f78b17dec44d5ef68a48740b6f8849cc2e6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome AERO-WETH Factory yVault",
 			"symbol": "yvAero-AERO-WETH-f",
@@ -1017,7 +1099,9 @@
 		},
 		"0x82a9cc022bffba4358a4286381c0855a8e295605": {
 			"address": "0x82a9cc022bffba4358a4286381c0855a8e295605",
-			"underlyingTokensAddresses": ["0x6b87b8663ee63191887f18225f79d9eeb2de0d34"],
+			"underlyingTokensAddresses": [
+				"0x6b87b8663ee63191887f18225f79d9eeb2de0d34"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome bsdETH-WETH Factory yVault",
 			"symbol": "yvAero-bsdETH-WETH-f",
@@ -1045,7 +1129,9 @@
 		},
 		"0x8436027a799ac6c8b512e68b4d3852217c63647d": {
 			"address": "0x8436027a799ac6c8b512e68b4d3852217c63647d",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "Moonwell WETH Lender cbBTC Borrower",
 			"symbol": "ysWETH",
@@ -1059,7 +1145,9 @@
 		},
 		"0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6": {
 			"address": "0x84c9c1569aaa02b9a7fd0fa8021464b179e6ece6",
-			"underlyingTokensAddresses": ["0x1b05e4e814b3431a48b8164c41eac834d9ce2da6"],
+			"underlyingTokensAddresses": [
+				"0x1b05e4e814b3431a48b8164c41eac834d9ce2da6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome DAI+-USD+ Factory yVault",
 			"symbol": "yvAero-DAI+-USD+-f",
@@ -1073,7 +1161,9 @@
 		},
 		"0x854020fb245753c1e71dff9d1b14528518050afb": {
 			"address": "0x854020fb245753c1e71dff9d1b14528518050afb",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "ROOM VAULT",
 			"symbol": "ROMV",
@@ -1087,7 +1177,9 @@
 		},
 		"0x878b75772c0abf2d22a9d4a5ae062b1aadaaebb3": {
 			"address": "0x878b75772c0abf2d22a9d4a5ae062b1aadaaebb3",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC Hotline",
 			"symbol": "hUSDC",
@@ -1115,7 +1207,9 @@
 		},
 		"0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4": {
 			"address": "0x8c589addbe1466a9b555eaa6ce8940ac1680c5f4",
-			"underlyingTokensAddresses": ["0x44ecc644449fc3a9858d2007caa8cfaa4c561f91"],
+			"underlyingTokensAddresses": [
+				"0x44ecc644449fc3a9858d2007caa8cfaa4c561f91"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome cbETH-WETH Factory yVault",
 			"symbol": "yvAero-cbETH-WETH-f",
@@ -1129,7 +1223,9 @@
 		},
 		"0x8e462a2b3a8c2713b5e157f5f3a3cd503588e59a": {
 			"address": "0x8e462a2b3a8c2713b5e157f5f3a3cd503588e59a",
-			"underlyingTokensAddresses": ["0x820c137fa70c8691f0e44dc420a5e53c168921dc"],
+			"underlyingTokensAddresses": [
+				"0x820c137fa70c8691f0e44dc420a5e53c168921dc"
+			],
 			"type": "Yearn Vault",
 			"name": "USDS MkDedz",
 			"symbol": "mdUSDS",
@@ -1143,7 +1239,9 @@
 		},
 		"0x8f22d62434d5e52af442f69f43eb27ba20768692": {
 			"address": "0x8f22d62434d5e52af442f69f43eb27ba20768692",
-			"underlyingTokensAddresses": ["0x607363389331f4b2d1b955d009506a67c565d75e"],
+			"underlyingTokensAddresses": [
+				"0x607363389331f4b2d1b955d009506a67c565d75e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome stERN-USD+ Factory yVault",
 			"symbol": "yvAero-stERN-USD+-f",
@@ -1171,7 +1269,9 @@
 		},
 		"0x945df73d55557ea23c0c35cd350d8de3b745287e": {
 			"address": "0x945df73d55557ea23c0c35cd350d8de3b745287e",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "Moonwell USDC Lender cbBTC Borrower",
 			"symbol": "ysUSDC",
@@ -1185,7 +1285,9 @@
 		},
 		"0x953370e91b70897a0cecc97b58e99d7946c841de": {
 			"address": "0x953370e91b70897a0cecc97b58e99d7946c841de",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Seamless USDC Vault Compounder",
 			"symbol": "ysUSDC",
@@ -1199,7 +1301,9 @@
 		},
 		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
 			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
-			"underlyingTokensAddresses": ["0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"],
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Moonwell Flagship EURC Compounder",
 			"symbol": "ysEURC",
@@ -1213,7 +1317,9 @@
 		},
 		"0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7": {
 			"address": "0x987949d2dc1d2b70bc3284b556d3ecd2d7c060b7",
-			"underlyingTokensAddresses": ["0xf53b7af40be75043eeba493c622f4f56b3c27a31"],
+			"underlyingTokensAddresses": [
+				"0xf53b7af40be75043eeba493c622f4f56b3c27a31"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome LUSD-USDC Factory yVault",
 			"symbol": "yvAero-LUSD-USDC-f",
@@ -1227,7 +1333,9 @@
 		},
 		"0x989381f7efb45f97e46be9f390a69c5d94bf9e17": {
 			"address": "0x989381f7efb45f97e46be9f390a69c5d94bf9e17",
-			"underlyingTokensAddresses": ["0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"],
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
 			"type": "Yearn Vault",
 			"name": "cbETH Horizon yVault",
 			"symbol": "yvcbETH-H",
@@ -1241,7 +1349,9 @@
 		},
 		"0x99e860d5bbe61a12ca215aba714a2e886860dbc8": {
 			"address": "0x99e860d5bbe61a12ca215aba714a2e886860dbc8",
-			"underlyingTokensAddresses": ["0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b"],
+			"underlyingTokensAddresses": [
+				"0x82a0c1a0d4ef0c0ca3cfda3ad1aa78309cc6139b"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome AERO-wstETH Factory yVault",
 			"symbol": "yvAero-AERO-wstETH-f",
@@ -1255,7 +1365,9 @@
 		},
 		"0x9e13e1cfcd750657b81549f8f773d68f1625dcfb": {
 			"address": "0x9e13e1cfcd750657b81549f8f773d68f1625dcfb",
-			"underlyingTokensAddresses": ["0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f"],
+			"underlyingTokensAddresses": [
+				"0x7a034374c89c463dd65d8c9bcfe63bcbced41f4f"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome eUSD-USDC Factory yVault",
 			"symbol": "yvAero-eUSD-USDC-f",
@@ -1283,7 +1395,9 @@
 		},
 		"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {
 			"address": "0xa3386f0a4034184ecb8a0d1e7e79b4f720634317",
-			"underlyingTokensAddresses": ["0x0b25c51637c43decd6cc1c1e3da4518d54ddb528"],
+			"underlyingTokensAddresses": [
+				"0x0b25c51637c43decd6cc1c1e3da4518d54ddb528"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome DOLA-USDbC Factory yVault",
 			"symbol": "yvAero-DOLA-USDbC-f",
@@ -1297,7 +1411,9 @@
 		},
 		"0xa49dccd9425cc38d4111df2e665f2a33fe799c42": {
 			"address": "0xa49dccd9425cc38d4111df2e665f2a33fe799c42",
-			"underlyingTokensAddresses": ["0x723aef6543aece026a15662be4d3fb3424d502a9"],
+			"underlyingTokensAddresses": [
+				"0x723aef6543aece026a15662be4d3fb3424d502a9"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome tBTC-USDbC Factory yVault",
 			"symbol": "yvAero-tBTC-USDbC-f",
@@ -1339,7 +1455,9 @@
 		},
 		"0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f": {
 			"address": "0xa6cbdd6ae6596b5ee57f67df70cc7c801129464f",
-			"underlyingTokensAddresses": ["0x6eab8c1b93f5799dadf2c687a30230a540dbd636"],
+			"underlyingTokensAddresses": [
+				"0x6eab8c1b93f5799dadf2c687a30230a540dbd636"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome DAI-USDbC Factory yVault",
 			"symbol": "yvAero-DAI-USDbC-f",
@@ -1353,7 +1471,9 @@
 		},
 		"0xa72a60e6167e8fc5e523184911475c4b37b835e2": {
 			"address": "0xa72a60e6167e8fc5e523184911475c4b37b835e2",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Seamless WETH Vault Compounder",
 			"symbol": "ysWETH",
@@ -1367,7 +1487,9 @@
 		},
 		"0xa7a8eb9f200ddd4137f71b92d3d44b403af20e44": {
 			"address": "0xa7a8eb9f200ddd4137f71b92d3d44b403af20e44",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-1 Gimme",
 			"symbol": "gimmeUSDC-1",
@@ -1395,7 +1517,9 @@
 		},
 		"0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e": {
 			"address": "0xaccb6fa47e2da8f937f6e33bc25b68328b370d2e",
-			"underlyingTokensAddresses": ["0x218f511431194b2c756d67a137de536bea74e498"],
+			"underlyingTokensAddresses": [
+				"0x218f511431194b2c756d67a137de536bea74e498"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome stERN-ERN Factory yVault",
 			"symbol": "yvAero-stERN-ERN-f",
@@ -1437,7 +1561,9 @@
 		},
 		"0xb9acb02818bddd3ac178fa51a0587101e54748b0": {
 			"address": "0xb9acb02818bddd3ac178fa51a0587101e54748b0",
-			"underlyingTokensAddresses": ["0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"],
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Moonwell Frontier cbBTC Compounder",
 			"symbol": "yscbBTC",
@@ -1451,7 +1577,9 @@
 		},
 		"0xbb808a822dd7aed1635956b85ca5e55478cca957": {
 			"address": "0xbb808a822dd7aed1635956b85ca5e55478cca957",
-			"underlyingTokensAddresses": ["0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"],
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
 			"type": "Yearn Vault",
 			"name": "LevMoonwell cbBTC",
 			"symbol": "yscbBTC",
@@ -1465,7 +1593,9 @@
 		},
 		"0xbcbe4815fa99971b4dd918adfb12599679ca4b0e": {
 			"address": "0xbcbe4815fa99971b4dd918adfb12599679ca4b0e",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "TEST ETH2",
 			"symbol": "TEST ETH2",
@@ -1493,7 +1623,9 @@
 		},
 		"0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9": {
 			"address": "0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC Horizon yVault",
 			"symbol": "yvUSDC-H",
@@ -1507,7 +1639,9 @@
 		},
 		"0xcad1719469bc67341eec1a29a07684fe075596da": {
 			"address": "0xcad1719469bc67341eec1a29a07684fe075596da",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC MkDedz",
 			"symbol": "mdUSDC",
@@ -1549,7 +1683,9 @@
 		},
 		"0xd5428b889621eee8060fc105aa0ab0fa2e344468": {
 			"address": "0xd5428b889621eee8060fc105aa0ab0fa2e344468",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Moonwell Flagship USDC Compounder",
 			"symbol": "ysUSDC",
@@ -1563,7 +1699,9 @@
 		},
 		"0xd80c675366966ef42b175125bbf1acb1db4151ac": {
 			"address": "0xd80c675366966ef42b175125bbf1acb1db4151ac",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-1 yVault",
 			"symbol": "yvUSDC-1",
@@ -1577,7 +1715,9 @@
 		},
 		"0xd89a4f020c8d256a2a4b0dc40b36ee0b27680776": {
 			"address": "0xd89a4f020c8d256a2a4b0dc40b36ee0b27680776",
-			"underlyingTokensAddresses": ["0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"],
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
 			"type": "Yearn Vault",
 			"name": "Moonwell cbETH Lender WETH Borrower",
 			"symbol": "yscbETH",
@@ -1591,7 +1731,9 @@
 		},
 		"0xdd120ded7c1c9e4978f92847bcb24847a9dbb071": {
 			"address": "0xdd120ded7c1c9e4978f92847bcb24847a9dbb071",
-			"underlyingTokensAddresses": ["0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"],
+			"underlyingTokensAddresses": [
+				"0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22"
+			],
 			"type": "Yearn Vault",
 			"name": "LevMoonwell cbETH",
 			"symbol": "yscbETH",
@@ -1605,7 +1747,9 @@
 		},
 		"0xde9de9dfb3cc912cccda145bd6cb8a145a66ea92": {
 			"address": "0xde9de9dfb3cc912cccda145bd6cb8a145a66ea92",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "ROOM USDC",
 			"symbol": "roomUSDC",
@@ -1633,7 +1777,9 @@
 		},
 		"0xecfc1e5bda4d4191c9cab053ec704347db87be5d": {
 			"address": "0xecfc1e5bda4d4191c9cab053ec704347db87be5d",
-			"underlyingTokensAddresses": ["0x9287c921f5d920ceee0d07d7c58d476e46acc640"],
+			"underlyingTokensAddresses": [
+				"0x9287c921f5d920ceee0d07d7c58d476e46acc640"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome WETH-DAI Factory yVault",
 			"symbol": "yvAero-WETH-DAI-f",
@@ -1647,7 +1793,9 @@
 		},
 		"0xef34b4dcb851385b8f3a8ff460c34adafd160802": {
 			"address": "0xef34b4dcb851385b8f3a8ff460c34adafd160802",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "Morpho Moonwell Flagship ETH Compounder",
 			"symbol": "ysWETH",
@@ -1689,7 +1837,9 @@
 		},
 		"0xf4b57a2177e6695bc56fd16c042548baf4aa8f5a": {
 			"address": "0xf4b57a2177e6695bc56fd16c042548baf4aa8f5a",
-			"underlyingTokensAddresses": ["0x456c166e63634d75a4b49edec86cb51424d4c926"],
+			"underlyingTokensAddresses": [
+				"0x456c166e63634d75a4b49edec86cb51424d4c926"
+			],
 			"type": "Yearn Vault",
 			"name": "Aerodrome sfrxETH-wstETH Factory yVault",
 			"symbol": "yvAero-sfrxETH-wstETH-f",
@@ -1717,7 +1867,9 @@
 		},
 		"0xf595152ceaf50fa854c4606a457d2388375d4fa0": {
 			"address": "0xf595152ceaf50fa854c4606a457d2388375d4fa0",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-1 Test LucasiaLLC",
 			"symbol": "USDC-1 Test LucasiaLLC",
@@ -1745,7 +1897,9 @@
 		},
 		"0xf8f36ab972f6fe3ae1f594595aee1284e270d034": {
 			"address": "0xf8f36ab972f6fe3ae1f594595aee1284e270d034",
-			"underlyingTokensAddresses": ["0x3fc28bfac25fc8e93b5b2fc15efbbd5a8aa44efe"],
+			"underlyingTokensAddresses": [
+				"0x3fc28bfac25fc8e93b5b2fc15efbbd5a8aa44efe"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Aerodrome wUSDR-USDbC Factory yVault",
 			"symbol": "yvAero-wUSDR-USDbC-f",
@@ -1759,7 +1913,9 @@
 		},
 		"0xfdb431e661372fa1146efb70bf120ecded944a78": {
 			"address": "0xfdb431e661372fa1146efb70bf120ecded944a78",
-			"underlyingTokensAddresses": ["0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"],
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
 			"type": "Yearn Vault",
 			"name": "Moonwell USDC Lender WETH Borrower",
 			"symbol": "ysUSDC",
@@ -1773,7 +1929,9 @@
 		},
 		"0xff3035968a44df696297d710cb7c0d7f807bf641": {
 			"address": "0xff3035968a44df696297d710cb7c0d7f807bf641",
-			"underlyingTokensAddresses": ["0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"],
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
 			"type": "Yearn Vault",
 			"name": "MUV003 - Flagship EURC",
 			"symbol": "MUV003_EURC",

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-24T11:07:15.195689+01:00",
+	"lastUpdate": "2025-04-08T09:58:41.465588+02:00",
 	"version": {
 		"major": 0,
-		"minor": 45,
+		"minor": 46,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -37,7 +37,9 @@
 		},
 		"0x022061d81e42fcb59711193346bab758d24d6c43": {
 			"address": "0x022061d81e42fcb59711193346bab758d24d6c43",
-			"underlyingTokensAddresses": ["0x7cbaf5a14d953ff896e5b3312031515c858737c8"],
+			"underlyingTokensAddresses": [
+				"0x7cbaf5a14d953ff896e5b3312031515c858737c8"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-MUXLP (auto-rolling Pendle PT)",
 			"symbol": "yPT-MUXLP",
@@ -51,7 +53,9 @@
 		},
 		"0x02822b7b6de0bf087dcea626f6f19a838aedb7be": {
 			"address": "0x02822b7b6de0bf087dcea626f6f19a838aedb7be",
-			"underlyingTokensAddresses": ["0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"],
+			"underlyingTokensAddresses": [
+				"0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-mPENDLE (auto-rolling Pendle PT)",
 			"symbol": "yPT-mPENDLE",
@@ -93,7 +97,9 @@
 		},
 		"0x044e75fcbf7bd3f8f4577ff317554e9c0037f145": {
 			"address": "0x044e75fcbf7bd3f8f4577ff317554e9c0037f145",
-			"underlyingTokensAddresses": ["0x35751007a407ca6feffe80b3cb397736d2cf4dbe"],
+			"underlyingTokensAddresses": [
+				"0x35751007a407ca6feffe80b3cb397736d2cf4dbe"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-weETH (auto-rolling Pendle PT)",
 			"symbol": "yPT-weETH",
@@ -135,7 +141,9 @@
 		},
 		"0x068def65b9dbaff02b4ee54572a9fa7dfb188ea3": {
 			"address": "0x068def65b9dbaff02b4ee54572a9fa7dfb188ea3",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Compound",
 			"name": "SY Stargate USDT",
 			"symbol": "SY-Stargate USDT",
@@ -163,7 +171,9 @@
 		},
 		"0x074943fefe3391d033a15557dfa1b6f246ce5fd0": {
 			"address": "0x074943fefe3391d033a15557dfa1b6f246ce5fd0",
-			"underlyingTokensAddresses": ["0xe11f9786b06438456b044b3e21712228adcaa0d1"],
+			"underlyingTokensAddresses": [
+				"0xe11f9786b06438456b044b3e21712228adcaa0d1"
+			],
 			"type": "Yearn Vault",
 			"name": "eETH LP (25 APR 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -177,7 +187,9 @@
 		},
 		"0x075472d809aa98a4686d6f04e2c2663802653f2a": {
 			"address": "0x075472d809aa98a4686d6f04e2c2663802653f2a",
-			"underlyingTokensAddresses": ["0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14"],
+			"underlyingTokensAddresses": [
+				"0x0a21291a184cf36ad3b0a0def4a17c12cbd66a14"
+			],
 			"type": "Yearn Vault",
 			"name": "Stargate USDT LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -275,7 +287,9 @@
 		},
 		"0x08e3d13d50310afbea2da20a3dbd92aacfc503ac": {
 			"address": "0x08e3d13d50310afbea2da20a3dbd92aacfc503ac",
-			"underlyingTokensAddresses": ["0x5979d7b546e38e414f7e9822514be443a4800529"],
+			"underlyingTokensAddresses": [
+				"0x5979d7b546e38e414f7e9822514be443a4800529"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-wstETH (auto-rolling Pendle PT)",
 			"symbol": "yPT-wstETH",
@@ -331,7 +345,9 @@
 		},
 		"0x0a5e1394ba0c23d71167233a3b4b55cb8d214279": {
 			"address": "0x0a5e1394ba0c23d71167233a3b4b55cb8d214279",
-			"underlyingTokensAddresses": ["0x551c423c441db0b691b5630f04d2080caee25963"],
+			"underlyingTokensAddresses": [
+				"0x551c423c441db0b691b5630f04d2080caee25963"
+			],
 			"type": "Yearn Vault",
 			"name": "GLP LP (26 SEP 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -359,7 +375,9 @@
 		},
 		"0x0a9ed458e6c283d1e84237e3347333aa08221d09": {
 			"address": "0x0a9ed458e6c283d1e84237e3347333aa08221d09",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "SY gUSDC",
 			"symbol": "SY-gUSDC",
@@ -457,7 +475,9 @@
 		},
 		"0x0c7fdb9d3f9b053bb5da838edae4414787ae32d3": {
 			"address": "0x0c7fdb9d3f9b053bb5da838edae4414787ae32d3",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-ptrsETHSilo",
 			"symbol": "SY-sETH-ptrsETHSilo",
@@ -527,7 +547,9 @@
 		},
 		"0x0d5e99a012415e22557f6df554e97159516e6d3c": {
 			"address": "0x0d5e99a012415e22557f6df554e97159516e6d3c",
-			"underlyingTokensAddresses": ["0xba4a858d664ddb052158168db04afa3cff5cfcc8"],
+			"underlyingTokensAddresses": [
+				"0xba4a858d664ddb052158168db04afa3cff5cfcc8"
+			],
 			"type": "Yearn Vault",
 			"name": "aUSDC LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -583,7 +605,9 @@
 		},
 		"0x0ed2954ab05e59ea63338e2a0c08c8316f245466": {
 			"address": "0x0ed2954ab05e59ea63338e2a0c08c8316f245466",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-pteETHSilo",
 			"symbol": "SY-sETH-pteETHSilo",
@@ -611,7 +635,9 @@
 		},
 		"0x0f2ae7531a83982f15ff1d26b165e2bf3d7566da": {
 			"address": "0x0f2ae7531a83982f15ff1d26b165e2bf3d7566da",
-			"underlyingTokensAddresses": ["0x2416092f143378750bb29b79ed961ab195cceea5"],
+			"underlyingTokensAddresses": [
+				"0x2416092f143378750bb29b79ed961ab195cceea5"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-ezETH (auto-rolling Pendle PT)",
 			"symbol": "yPT-ezETH",
@@ -779,7 +805,9 @@
 		},
 		"0x127a7f610cc704be6122dfa76eb61e84c9cb0efd": {
 			"address": "0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Lender wstETH/USDC.e",
 			"symbol": "ysUSDC",
@@ -793,7 +821,9 @@
 		},
 		"0x12bf88c63bf060355a8d2e4c6ee960365a5e8335": {
 			"address": "0x12bf88c63bf060355a8d2e4c6ee960365a5e8335",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "usdc-vault",
 			"symbol": "usdc-stk",
@@ -877,7 +907,9 @@
 		},
 		"0x15943b95af6bbe222c49f7501f39f1d2da55ccdf": {
 			"address": "0x15943b95af6bbe222c49f7501f39f1d2da55ccdf",
-			"underlyingTokensAddresses": ["0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa"],
+			"underlyingTokensAddresses": [
+				"0x6ea328bf810ef0f0bd1291eb52f1529aa073cefa"
+			],
 			"type": "Yearn Vault",
 			"name": "Camelot GRAIL-ARB LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -1045,7 +1077,9 @@
 		},
 		"0x1bd173f9a1186a1abe680071e0f57d4d83c18430": {
 			"address": "0x1bd173f9a1186a1abe680071e0f57d4d83c18430",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Compound V3 USDC.e Lender",
 			"symbol": "ysUSDC",
@@ -1115,7 +1149,9 @@
 		},
 		"0x1dba7641dc69188d6086a73b972ac4bda29ec35d": {
 			"address": "0x1dba7641dc69188d6086a73b972ac4bda29ec35d",
-			"underlyingTokensAddresses": ["0x30df229cefa463e991e29d42db0bae2e122b2ac7"],
+			"underlyingTokensAddresses": [
+				"0x30df229cefa463e991e29d42db0bae2e122b2ac7"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve MIM Pool Vault",
 			"symbol": "yvCurve-MIM",
@@ -1129,7 +1165,9 @@
 		},
 		"0x1dd930add968ff5913c3627daa1e6e6fcc9dc544": {
 			"address": "0x1dd930add968ff5913c3627daa1e6e6fcc9dc544",
-			"underlyingTokensAddresses": ["0x4186bfc76e2e237523cbc30fd220fe055156b41f"],
+			"underlyingTokensAddresses": [
+				"0x4186bfc76e2e237523cbc30fd220fe055156b41f"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-rsETH (auto-rolling Pendle PT)",
 			"symbol": "yPT-rsETH",
@@ -1171,7 +1209,9 @@
 		},
 		"0x1e6fd3251c949e1708a5277faa773cc88e799b99": {
 			"address": "0x1e6fd3251c949e1708a5277faa773cc88e799b99",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-rsETH-26SEP2024 Silo",
 			"symbol": "sWETH-PT-rsETH-26SEP2024",
@@ -1283,7 +1323,9 @@
 		},
 		"0x20db1d8e053e448428b19dbc7c6eed1ccb851023": {
 			"address": "0x20db1d8e053e448428b19dbc7c6eed1ccb851023",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "AJNA USDC yVault",
 			"symbol": "yvAjnaUSDC",
@@ -1367,7 +1409,9 @@
 		},
 		"0x2297aebd383787a160dd0d9f71508148769342e3": {
 			"address": "0x2297aebd383787a160dd0d9f71508148769342e3",
-			"underlyingTokensAddresses": ["0x2297aebd383787a160dd0d9f71508148769342e3"],
+			"underlyingTokensAddresses": [
+				"0x2297aebd383787a160dd0d9f71508148769342e3"
+			],
 			"type": "Yearn Vault",
 			"name": "Bitcoin",
 			"symbol": "BTC.b",
@@ -1395,7 +1439,9 @@
 		},
 		"0x22b9e6f6c462bb0b03f76d3a8246950d95f03692": {
 			"address": "0x22b9e6f6c462bb0b03f76d3a8246950d95f03692",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-wstEthSilo",
 			"symbol": "SY-sETH-wstEthSilo",
@@ -1409,7 +1455,9 @@
 		},
 		"0x22bed3e6e56266c347769189b44646d91b3150c4": {
 			"address": "0x22bed3e6e56266c347769189b44646d91b3150c4",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-weETH-27JUN2024 Silo",
 			"symbol": "sWETH-PT-weETH-27JUN2024",
@@ -1465,7 +1513,9 @@
 		},
 		"0x232c7a26e0bb7b7922b291ebbd111570827a99f0": {
 			"address": "0x232c7a26e0bb7b7922b291ebbd111570827a99f0",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Single Strategy",
 			"name": "Prize USDC - Gains Network",
 			"symbol": "przUSDC",
@@ -1507,7 +1557,9 @@
 		},
 		"0x239e14a19dff93a17339dcc444f74406c17f8e67": {
 			"address": "0x239e14a19dff93a17339dcc444f74406c17f8e67",
-			"underlyingTokensAddresses": ["0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2"],
+			"underlyingTokensAddresses": [
+				"0x8e0b8c8bb9db49a46697f3a5bb8a308e744821d2"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve Tricrypto Pool Vault",
 			"symbol": "yvCurve-Tricrypto",
@@ -1563,7 +1615,9 @@
 		},
 		"0x244f22dd5f309506129513d0954787d52d80ba3d": {
 			"address": "0x244f22dd5f309506129513d0954787d52d80ba3d",
-			"underlyingTokensAddresses": ["0xddb9c8fb4ceae7b1096118769fb706f49d15e294"],
+			"underlyingTokensAddresses": [
+				"0xddb9c8fb4ceae7b1096118769fb706f49d15e294"
+			],
 			"type": "Yearn Vault",
 			"name": "TestTokenV1-1 LucasiaLLC",
 			"symbol": "TestTokenV1-1 LucasiaLLC",
@@ -1605,7 +1659,9 @@
 		},
 		"0x25d887ce7a35172c62febfd67a1856f20faebb00": {
 			"address": "0x25d887ce7a35172c62febfd67a1856f20faebb00",
-			"underlyingTokensAddresses": ["0x25d887ce7a35172c62febfd67a1856f20faebb00"],
+			"underlyingTokensAddresses": [
+				"0x25d887ce7a35172c62febfd67a1856f20faebb00"
+			],
 			"type": "Yearn Vault",
 			"name": "Pepe",
 			"symbol": "PEPE",
@@ -1717,7 +1773,9 @@
 		},
 		"0x2ac2b254bc18cd4999f64773a966e4f4869c34ee": {
 			"address": "0x2ac2b254bc18cd4999f64773a966e4f4869c34ee",
-			"underlyingTokensAddresses": ["0x2ac2b254bc18cd4999f64773a966e4f4869c34ee"],
+			"underlyingTokensAddresses": [
+				"0x2ac2b254bc18cd4999f64773a966e4f4869c34ee"
+			],
 			"type": "Yearn Vault",
 			"name": "Penpie Token",
 			"symbol": "PNP",
@@ -1745,7 +1803,9 @@
 		},
 		"0x2b0b6376083c6e1f376c7439f328436a673f333c": {
 			"address": "0x2b0b6376083c6e1f376c7439f328436a673f333c",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-aUSDC (auto-rolling Pendle PT)",
 			"symbol": "yPT-aUSDC",
@@ -1759,7 +1819,9 @@
 		},
 		"0x2b5fa2c7cb4b0f51ea7250f66ca3ed369253addf": {
 			"address": "0x2b5fa2c7cb4b0f51ea7250f66ca3ed369253addf",
-			"underlyingTokensAddresses": ["0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"],
+			"underlyingTokensAddresses": [
+				"0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"
+			],
 			"type": "Compound",
 			"name": "mPendle Penpie Receipt Token",
 			"symbol": "mPendle_PRT",
@@ -1815,7 +1877,9 @@
 		},
 		"0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499": {
 			"address": "0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Lender wBTC/USDC.e",
 			"symbol": "ysUSDC",
@@ -1871,7 +1935,9 @@
 		},
 		"0x2e48847fe29c3883c98125cb2c44244d6602d549": {
 			"address": "0x2e48847fe29c3883c98125cb2c44244d6602d549",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Yearn-Silo USDC.e Vault",
 			"symbol": "yvSiloUSDC.e",
@@ -1899,7 +1965,9 @@
 		},
 		"0x2ec7fa7a87eba241636b2c03ba287ac3897601fc": {
 			"address": "0x2ec7fa7a87eba241636b2c03ba287ac3897601fc",
-			"underlyingTokensAddresses": ["0x4bd135524897333bec344e50ddd85126554e58b4"],
+			"underlyingTokensAddresses": [
+				"0x4bd135524897333bec344e50ddd85126554e58b4"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve USDM-USDC yVault",
 			"symbol": "yvCurve-USDM-USDC",
@@ -1969,7 +2037,9 @@
 		},
 		"0x3055a746e040bd05ad1806840ca0114d632bc7e2": {
 			"address": "0x3055a746e040bd05ad1806840ca0114d632bc7e2",
-			"underlyingTokensAddresses": ["0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"],
+			"underlyingTokensAddresses": [
+				"0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f"
+			],
 			"type": "Yearn Vault",
 			"name": "SY Dolomite WBTC",
 			"symbol": "SY-dWBTC",
@@ -1983,7 +2053,9 @@
 		},
 		"0x3082cc23568ea640225c2467653db90e9250aaa0": {
 			"address": "0x3082cc23568ea640225c2467653db90e9250aaa0",
-			"underlyingTokensAddresses": ["0x3082cc23568ea640225c2467653db90e9250aaa0"],
+			"underlyingTokensAddresses": [
+				"0x3082cc23568ea640225c2467653db90e9250aaa0"
+			],
 			"type": "Yearn Vault",
 			"name": "Radiant",
 			"symbol": "RDNT",
@@ -2140,7 +2212,9 @@
 		},
 		"0x34a2b066af16409648ef15d239e656edb8790ca0": {
 			"address": "0x34a2b066af16409648ef15d239e656edb8790ca0",
-			"underlyingTokensAddresses": ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"],
+			"underlyingTokensAddresses": [
+				"0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-USDe (auto-rolling Pendle PT)",
 			"symbol": "yPT-USDe",
@@ -2238,7 +2312,9 @@
 		},
 		"0x368d79018e525db25dba517a0b5d3cc34c87cafa": {
 			"address": "0x368d79018e525db25dba517a0b5d3cc34c87cafa",
-			"underlyingTokensAddresses": ["0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f"],
+			"underlyingTokensAddresses": [
+				"0x99ed4f0ab6524d26b31d0aea087ebe20d5949e0f"
+			],
 			"type": "Yearn Vault",
 			"name": "gDAI LP (26 SEP 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -2252,7 +2328,9 @@
 		},
 		"0x369751a0b33df3ade5e2ee55e7bb9556b10f390c": {
 			"address": "0x369751a0b33df3ade5e2ee55e7bb9556b10f390c",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Compound",
 			"name": "SY Aave aUSDC",
 			"symbol": "SY-aUSDC",
@@ -2280,7 +2358,9 @@
 		},
 		"0x374c07997b3c0df6db0f370ed8561404b729a43a": {
 			"address": "0x374c07997b3c0df6db0f370ed8561404b729a43a",
-			"underlyingTokensAddresses": ["0x0341c0c0ec423328621788d4854119b97f44e391"],
+			"underlyingTokensAddresses": [
+				"0x0341c0c0ec423328621788d4854119b97f44e391"
+			],
 			"type": "Yearn Vault",
 			"name": "SY spSILO",
 			"symbol": "SY-spSILO",
@@ -2350,7 +2430,9 @@
 		},
 		"0x39ce72ace7722fe38a4aff02bfbe7789b58c6905": {
 			"address": "0x39ce72ace7722fe38a4aff02bfbe7789b58c6905",
-			"underlyingTokensAddresses": ["0x912ce59144191c1204e64559fe8253a0e49e6548"],
+			"underlyingTokensAddresses": [
+				"0x912ce59144191c1204e64559fe8253a0e49e6548"
+			],
 			"type": "Yearn Vault",
 			"name": "AaveV3 ARB Lender",
 			"symbol": "ysARB",
@@ -2364,7 +2446,9 @@
 		},
 		"0x3a26d8f73057a2487f9f752d1a71cd2c56fa412c": {
 			"address": "0x3a26d8f73057a2487f9f752d1a71cd2c56fa412c",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-pteETHSilo",
 			"symbol": "SY-sETH-pteETHSilo",
@@ -2406,7 +2490,9 @@
 		},
 		"0x3b409ea0b33cf1f782b091af73bacb46ec1e0cbd": {
 			"address": "0x3b409ea0b33cf1f782b091af73bacb46ec1e0cbd",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-ptezETHSilo",
 			"symbol": "SY-sETH-ptezETHSilo",
@@ -2462,7 +2548,9 @@
 		},
 		"0x3ce71021cca8a2902764a43c60ff5f8a312245f9": {
 			"address": "0x3ce71021cca8a2902764a43c60ff5f8a312245f9",
-			"underlyingTokensAddresses": ["0x35751007a407ca6feffe80b3cb397736d2cf4dbe"],
+			"underlyingTokensAddresses": [
+				"0x35751007a407ca6feffe80b3cb397736d2cf4dbe"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-weETH (auto-rolling Pendle PT)",
 			"symbol": "ysweETH",
@@ -2602,7 +2690,9 @@
 		},
 		"0x4186bfc76e2e237523cbc30fd220fe055156b41f": {
 			"address": "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
-			"underlyingTokensAddresses": ["0x4186bfc76e2e237523cbc30fd220fe055156b41f"],
+			"underlyingTokensAddresses": [
+				"0x4186bfc76e2e237523cbc30fd220fe055156b41f"
+			],
 			"type": "Yearn Vault",
 			"name": "KelpDao Restaked ETH",
 			"symbol": "rsETH",
@@ -2700,7 +2790,9 @@
 		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
 			"address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
-			"underlyingTokensAddresses": ["0x4591dbff62656e7859afe5e45f6f47d3669fbb28"],
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
 			"type": "Yearn Vault",
 			"name": "Prisma mkUSD",
 			"symbol": "mkUSD",
@@ -2714,7 +2806,9 @@
 		},
 		"0x45aceaa535830c921316085e355e4a32385e53f2": {
 			"address": "0x45aceaa535830c921316085e355e4a32385e53f2",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "USDT CompoundV3 Lender",
 			"symbol": "ysUSDT",
@@ -2728,7 +2822,9 @@
 		},
 		"0x461ad11a76b302f13ada1296da0178722a50838e": {
 			"address": "0x461ad11a76b302f13ada1296da0178722a50838e",
-			"underlyingTokensAddresses": ["0x14fbc760efaf36781cb0eb3cb255ad976117b9bd"],
+			"underlyingTokensAddresses": [
+				"0x14fbc760efaf36781cb0eb3cb255ad976117b9bd"
+			],
 			"type": "Yearn Vault",
 			"name": "rETH LP (26 JUN 2025)",
 			"symbol": "ysPENDLE-LPT",
@@ -2756,7 +2852,9 @@
 		},
 		"0x482cc95bc6c92d6254529dc2d45095663ae726a2": {
 			"address": "0x482cc95bc6c92d6254529dc2d45095663ae726a2",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Prize USDC.e - Yearn USDC.e-2",
 			"symbol": "przUSDC.e",
@@ -2784,7 +2882,9 @@
 		},
 		"0x49448d2b94fb9c4e41a30ad8315d32f46004a34b": {
 			"address": "0x49448d2b94fb9c4e41a30ad8315d32f46004a34b",
-			"underlyingTokensAddresses": ["0x7f90122bf0700f9e7e1f688fe926940e8839f353"],
+			"underlyingTokensAddresses": [
+				"0x7f90122bf0700f9e7e1f688fe926940e8839f353"
+			],
 			"type": "Yearn Vault",
 			"name": "2CRV yVault",
 			"symbol": "yv2CRV",
@@ -2868,7 +2968,9 @@
 		},
 		"0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3": {
 			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "AaveV3 USDT Lender",
 			"symbol": "ysUSDT",
@@ -3039,7 +3141,9 @@
 		},
 		"0x4da30274267dedc73a6a7eb233fba81691f34ef7": {
 			"address": "0x4da30274267dedc73a6a7eb233fba81691f34ef7",
-			"underlyingTokensAddresses": ["0xfd8aee8fcc10aac1897f8d5271d112810c79e022"],
+			"underlyingTokensAddresses": [
+				"0xfd8aee8fcc10aac1897f8d5271d112810c79e022"
+			],
 			"type": "Yearn Vault",
 			"name": "Lido wstETH LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -3053,7 +3157,9 @@
 		},
 		"0x50288c30c37fa1ec6167a31e575ea8632645de20": {
 			"address": "0x50288c30c37fa1ec6167a31e575ea8632645de20",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Compound",
 			"name": "SY aUSDC",
 			"symbol": "SY-aUSDC",
@@ -3067,7 +3173,9 @@
 		},
 		"0x5108db0852c0caa2df797dcf31f8a73bfb335452": {
 			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "yearn-V3-Stargate-USDT",
 			"symbol": "ysUSDT",
@@ -3081,7 +3189,9 @@
 		},
 		"0x51b902f19a56f0c8e409a34a215ad2673edf3284": {
 			"address": "0x51b902f19a56f0c8e409a34a215ad2673edf3284",
-			"underlyingTokensAddresses": ["0x51b902f19a56f0c8e409a34a215ad2673edf3284"],
+			"underlyingTokensAddresses": [
+				"0x51b902f19a56f0c8e409a34a215ad2673edf3284"
+			],
 			"type": "Yearn Vault",
 			"name": "NFTEarthOFT",
 			"symbol": "NFTE",
@@ -3235,7 +3345,9 @@
 		},
 		"0x54a77d0628e472643753ccb6cd929ac768f5f634": {
 			"address": "0x54a77d0628e472643753ccb6cd929ac768f5f634",
-			"underlyingTokensAddresses": ["0xddb9c8fb4ceae7b1096118769fb706f49d15e294"],
+			"underlyingTokensAddresses": [
+				"0xddb9c8fb4ceae7b1096118769fb706f49d15e294"
+			],
 			"type": "Yearn Vault",
 			"name": "TestTokenV1-1 TestCBDevOps1",
 			"symbol": "TestTokenV1-1 TestCBDevOps1",
@@ -3277,7 +3389,9 @@
 		},
 		"0x55ade3b74abef55bf379ff6ae61cb77a405eb4a8": {
 			"address": "0x55ade3b74abef55bf379ff6ae61cb77a405eb4a8",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable USDC Deposit in ARB Silo",
 			"symbol": "sUSDC-ARB",
@@ -3347,7 +3461,9 @@
 		},
 		"0x57f5e098cad7a3d1eed53991d4d66c45c9af7812": {
 			"address": "0x57f5e098cad7a3d1eed53991d4d66c45c9af7812",
-			"underlyingTokensAddresses": ["0x59d9356e565ab3a36dd77763fc0d87feaf85508c"],
+			"underlyingTokensAddresses": [
+				"0x59d9356e565ab3a36dd77763fc0d87feaf85508c"
+			],
 			"type": "Yearn Vault",
 			"name": "Wrapped Mountain Protocol USD",
 			"symbol": "wUSDM",
@@ -3389,7 +3505,9 @@
 		},
 		"0x586fb80ddadfc01294751a7cd58625ccff4bdb2f": {
 			"address": "0x586fb80ddadfc01294751a7cd58625ccff4bdb2f",
-			"underlyingTokensAddresses": ["0x3803d89c31de8b7def55c86f2469a5ea4db41b92"],
+			"underlyingTokensAddresses": [
+				"0x3803d89c31de8b7def55c86f2469a5ea4db41b92"
+			],
 			"type": "Yearn Vault",
 			"name": "Camelot ARB-ETH LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -3574,7 +3692,9 @@
 		},
 		"0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34": {
 			"address": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
-			"underlyingTokensAddresses": ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"],
+			"underlyingTokensAddresses": [
+				"0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
+			],
 			"type": "Yearn Vault",
 			"name": "USDe",
 			"symbol": "USDe",
@@ -3658,7 +3778,9 @@
 		},
 		"0x60955a190dec0db9a45abe553ad2994126efdfcc": {
 			"address": "0x60955a190dec0db9a45abe553ad2994126efdfcc",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sUSDC-ARBSilo",
 			"symbol": "SY-sUSDC-ARBSilo",
@@ -3700,7 +3822,9 @@
 		},
 		"0x630c9050e6b0014c6fe4c214d4840909345adb7d": {
 			"address": "0x630c9050e6b0014c6fe4c214d4840909345adb7d",
-			"underlyingTokensAddresses": ["0x59bf0545fca0e5ad48e13da269facd2e8c886ba4"],
+			"underlyingTokensAddresses": [
+				"0x59bf0545fca0e5ad48e13da269facd2e8c886ba4"
+			],
 			"type": "Experimental Yearn Vault",
 			"name": "Curve FRAX-VST Pool Vault",
 			"symbol": "yvCurve-FRAX+VST",
@@ -3770,7 +3894,9 @@
 		},
 		"0x65073e8c0a9c26d4280a43a3ecd3cdedd36fdb89": {
 			"address": "0x65073e8c0a9c26d4280a43a3ecd3cdedd36fdb89",
-			"underlyingTokensAddresses": ["0x08a152834de126d2ef83d612ff36e4523fd0017f"],
+			"underlyingTokensAddresses": [
+				"0x08a152834de126d2ef83d612ff36e4523fd0017f"
+			],
 			"type": "Yearn Vault",
 			"name": "Lido wstETH LP (26 JUN 2025)",
 			"symbol": "ysPENDLE-LPT",
@@ -3840,7 +3966,9 @@
 		},
 		"0x6985884c4392d348587b19cb9eaaf157f13271cd": {
 			"address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
-			"underlyingTokensAddresses": ["0x6985884c4392d348587b19cb9eaaf157f13271cd"],
+			"underlyingTokensAddresses": [
+				"0x6985884c4392d348587b19cb9eaaf157f13271cd"
+			],
 			"type": "Yearn Vault",
 			"name": "LayerZero",
 			"symbol": "ZRO",
@@ -4022,7 +4150,9 @@
 		},
 		"0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1": {
 			"address": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-A yVault",
 			"symbol": "yvUSDC-A",
@@ -4050,7 +4180,9 @@
 		},
 		"0x71453d859918a1d59354324c2a70d32e53b97f67": {
 			"address": "0x71453d859918a1d59354324c2a70d32e53b97f67",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-26SEP2024 Silo",
 			"symbol": "sWETH-PT-ezETH-26SEP2024",
@@ -4064,7 +4196,9 @@
 		},
 		"0x71b34b7c4a0592a186ddb2fde1fcdebe299150dd": {
 			"address": "0x71b34b7c4a0592a186ddb2fde1fcdebe299150dd",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Single Strategy",
 			"name": "Prize Compound WETH - Beefy",
 			"symbol": "przcWETH",
@@ -4092,7 +4226,9 @@
 		},
 		"0x723a85b4554d79ed20e061efc64c5a6e04f196aa": {
 			"address": "0x723a85b4554d79ed20e061efc64c5a6e04f196aa",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Prize USDC.e - Yearn USDC.e-1",
 			"symbol": "przUSDC.e",
@@ -4106,7 +4242,9 @@
 		},
 		"0x724dc807b04555b71ed48a6896b6f41593b8c637": {
 			"address": "0x724dc807b04555b71ed48a6896b6f41593b8c637",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "AAVE V2",
 			"name": "Aave Arbitrum USDCn",
 			"symbol": "aArbUSDCn",
@@ -4372,7 +4510,9 @@
 		},
 		"0x7d353420b3eb3cd9e7c819b4fea369686fd26b32": {
 			"address": "0x7d353420b3eb3cd9e7c819b4fea369686fd26b32",
-			"underlyingTokensAddresses": ["0x0341c0c0ec423328621788d4854119b97f44e391"],
+			"underlyingTokensAddresses": [
+				"0x0341c0c0ec423328621788d4854119b97f44e391"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Protected Silo Deposit",
 			"symbol": "spSilo",
@@ -4414,7 +4554,9 @@
 		},
 		"0x7deb119b92b76f78c212bc54fbbb34cea75f4d4a": {
 			"address": "0x7deb119b92b76f78c212bc54fbbb34cea75f4d4a",
-			"underlyingTokensAddresses": ["0x912ce59144191c1204e64559fe8253a0e49e6548"],
+			"underlyingTokensAddresses": [
+				"0x912ce59144191c1204e64559fe8253a0e49e6548"
+			],
 			"type": "Yearn Vault",
 			"name": "ARB-1 yVault",
 			"symbol": "yvARB-1",
@@ -4423,6 +4565,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x7DEB119b92b76f78C212bc54FBBb34CEA75f4d4A/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33": {
+			"address": "0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Gho Token",
+			"symbol": "GHO",
+			"displayName": "Gho Token",
+			"displaySymbol": "GHO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x7dfF72693f6A4149b17e7C6314655f6A9F7c8B33/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -4473,7 +4629,9 @@
 		},
 		"0x7f9b714965cd915011e651f5cd9622315b60616a": {
 			"address": "0x7f9b714965cd915011e651f5cd9622315b60616a",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Smart Growers",
 			"symbol": "SMG",
@@ -4487,7 +4645,9 @@
 		},
 		"0x7fd798ed77368e787e216dfdb5be5f6cae4c5ad5": {
 			"address": "0x7fd798ed77368e787e216dfdb5be5f6cae4c5ad5",
-			"underlyingTokensAddresses": ["0x4307fbdcd9ec7aea5a1c2958decaa6f316952bab"],
+			"underlyingTokensAddresses": [
+				"0x4307fbdcd9ec7aea5a1c2958decaa6f316952bab"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-HLP (auto-rolling Pendle PT)",
 			"symbol": "yPT-HLP",
@@ -4501,7 +4661,9 @@
 		},
 		"0x801c26fcfd916719631e0cf7d36ca1e049df0373": {
 			"address": "0x801c26fcfd916719631e0cf7d36ca1e049df0373",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "Prize USDT - Yearn USDT-1",
 			"symbol": "przUSDT",
@@ -4585,7 +4747,9 @@
 		},
 		"0x821cac5cb29c2d9c99c63be153316a479d550d72": {
 			"address": "0x821cac5cb29c2d9c99c63be153316a479d550d72",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-ptezETHSilo",
 			"symbol": "SY-sETH-ptezETHSilo",
@@ -4599,7 +4763,9 @@
 		},
 		"0x8242f81f7b06c1e67bc80dfd2b2716f58bd46651": {
 			"address": "0x8242f81f7b06c1e67bc80dfd2b2716f58bd46651",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-ptezETHSilo",
 			"symbol": "SY-sETH-ptezETHSilo",
@@ -4725,7 +4891,9 @@
 		},
 		"0x84e0efc0633041aac9d0196b7ac8af3505e8cc32": {
 			"address": "0x84e0efc0633041aac9d0196b7ac8af3505e8cc32",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "SY Dolomite USDC",
 			"symbol": "SY-dUSDC",
@@ -4739,7 +4907,9 @@
 		},
 		"0x85968bf0f1f110c707fef10a59f80118f349c058": {
 			"address": "0x85968bf0f1f110c707fef10a59f80118f349c058",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "AaveV3 USDC.e Lender",
 			"symbol": "ysUSDC",
@@ -4879,7 +5049,9 @@
 		},
 		"0x8a64111709ce75434b9156e3878cdd5b1fbc2d13": {
 			"address": "0x8a64111709ce75434b9156e3878cdd5b1fbc2d13",
-			"underlyingTokensAddresses": ["0x99e9028e274feafa2e1d8787e1ee6de39c6f7724"],
+			"underlyingTokensAddresses": [
+				"0x99e9028e274feafa2e1d8787e1ee6de39c6f7724"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo PT-eETH LP (25 APR 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -4907,7 +5079,9 @@
 		},
 		"0x8b5aa1688297bc2e4664a18df6ad22a70c4178b8": {
 			"address": "0x8b5aa1688297bc2e4664a18df6ad22a70c4178b8",
-			"underlyingTokensAddresses": ["0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6"],
+			"underlyingTokensAddresses": [
+				"0x24e4df37ea00c4954d668e3ce19ffdcffdec2cf6"
+			],
 			"type": "Yearn Vault",
 			"name": "Camelot PENDLE-ETH LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -4921,7 +5095,9 @@
 		},
 		"0x8be4715f1db9e8551fea5ef8b30a2eb99398e5d2": {
 			"address": "0x8be4715f1db9e8551fea5ef8b30a2eb99398e5d2",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-weETH-25APR2024 Silo",
 			"symbol": "sWETH-PT-weETH-25APR2024",
@@ -4949,7 +5125,9 @@
 		},
 		"0x8c8f82a3a24c3ef2dd9cefd4a8faa8ca9807db55": {
 			"address": "0x8c8f82a3a24c3ef2dd9cefd4a8faa8ca9807db55",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-pteETHSilo",
 			"symbol": "SY-sETH-pteETHSilo",
@@ -5089,7 +5267,9 @@
 		},
 		"0x8f5ee98867f5d5cfd71eaefe9997ea37a46deb33": {
 			"address": "0x8f5ee98867f5d5cfd71eaefe9997ea37a46deb33",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-ptrsETHSilo",
 			"symbol": "SY-sETH-ptrsETHSilo",
@@ -5215,7 +5395,9 @@
 		},
 		"0x92f1e6d904f21c05074952bbad51d91fd9f8730f": {
 			"address": "0x92f1e6d904f21c05074952bbad51d91fd9f8730f",
-			"underlyingTokensAddresses": ["0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2"],
+			"underlyingTokensAddresses": [
+				"0x5e03c94fc5fb2e21882000a96df0b63d2c4312e2"
+			],
 			"type": "Yearn Vault",
 			"name": "ezETH LP (27 JUN 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -5439,7 +5621,9 @@
 		},
 		"0x985c0271ad0bf0a45951b64eb6fc58010b050908": {
 			"address": "0x985c0271ad0bf0a45951b64eb6fc58010b050908",
-			"underlyingTokensAddresses": ["0xbfca4230115de8341f3a3d5e8845ffb3337b2be3"],
+			"underlyingTokensAddresses": [
+				"0xbfca4230115de8341f3a3d5e8845ffb3337b2be3"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-Pendle-ETH-Camelot (auto-rolling Pendle PT)",
 			"symbol": "yPT-Pendle-ETH-Camelot",
@@ -5467,7 +5651,9 @@
 		},
 		"0x989b2a056db791aca934686eebe9b0514d635a11": {
 			"address": "0x989b2a056db791aca934686eebe9b0514d635a11",
-			"underlyingTokensAddresses": ["0x788fe989fadcfefb68861303f763dd1b0a9e1264"],
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
 			"type": "Yearn Vault",
 			"name": "TestTokenV1-2 CBDevOps",
 			"symbol": "TestTokenV1-2 CBDevOps",
@@ -5649,7 +5835,9 @@
 		},
 		"0x9cd4a7c7e7869aa8a2a6b28da6b4cfa1f3e2f1f0": {
 			"address": "0x9cd4a7c7e7869aa8a2a6b28da6b4cfa1f3e2f1f0",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Yearn-Silo USDC Vault",
 			"symbol": "yvSiloUSDC",
@@ -5691,7 +5879,9 @@
 		},
 		"0x9d0c7dafe3b34b51010db522b9f17455fa9cea7c": {
 			"address": "0x9d0c7dafe3b34b51010db522b9f17455fa9cea7c",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-weETH-26SEP2024 Silo",
 			"symbol": "sWETH-PT-weETH-26SEP2024",
@@ -5747,7 +5937,9 @@
 		},
 		"0x9e20461bc2c4c980f62f1b279d71734207a6a356": {
 			"address": "0x9e20461bc2c4c980f62f1b279d71734207a6a356",
-			"underlyingTokensAddresses": ["0x9e20461bc2c4c980f62f1b279d71734207a6a356"],
+			"underlyingTokensAddresses": [
+				"0x9e20461bc2c4c980f62f1b279d71734207a6a356"
+			],
 			"type": "Yearn Vault",
 			"name": "OmniCat",
 			"symbol": "OMNI",
@@ -5761,7 +5953,9 @@
 		},
 		"0x9ed00a5dc4b8e96ecda1b863975a597917948c38": {
 			"address": "0x9ed00a5dc4b8e96ecda1b863975a597917948c38",
-			"underlyingTokensAddresses": ["0x6dbd962b4f62d18f756b5de57425574c4b8228d6"],
+			"underlyingTokensAddresses": [
+				"0x6dbd962b4f62d18f756b5de57425574c4b8228d6"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-dUSDC (auto-rolling Pendle PT)",
 			"symbol": "yPT-dUSDC",
@@ -5817,7 +6011,9 @@
 		},
 		"0x9fa306b1f4a6a83fec98d8ebbabedff78c407f6b": {
 			"address": "0x9fa306b1f4a6a83fec98d8ebbabedff78c407f6b",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-2 yVault",
 			"symbol": "yvUSDC-2",
@@ -5915,7 +6111,9 @@
 		},
 		"0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1": {
 			"address": "0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Lender wstETH/USDC.e",
 			"symbol": "ysUSDC",
@@ -6041,7 +6239,9 @@
 		},
 		"0xa7fea37ae7eb3fe0b26ab454399cf42fe5e308a3": {
 			"address": "0xa7fea37ae7eb3fe0b26ab454399cf42fe5e308a3",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Asset Super Stakehouse",
 			"symbol": "ASS",
@@ -6167,7 +6367,9 @@
 		},
 		"0xace460a8e3f5f219ea9ddb10a0764aedee8c09e1": {
 			"address": "0xace460a8e3f5f219ea9ddb10a0764aedee8c09e1",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "usdc-vault",
 			"symbol": "usdc-stk",
@@ -6251,7 +6453,9 @@
 		},
 		"0xaeba9f4a9293213e0e3ed18a2f688bddd7f5fb0c": {
 			"address": "0xaeba9f4a9293213e0e3ed18a2f688bddd7f5fb0c",
-			"underlyingTokensAddresses": ["0xd85e038593d7a098614721eae955ec2022b9b91b"],
+			"underlyingTokensAddresses": [
+				"0xd85e038593d7a098614721eae955ec2022b9b91b"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-gDAI (auto-rolling Pendle PT)",
 			"symbol": "yPT-gDAI",
@@ -6321,7 +6525,9 @@
 		},
 		"0xb119e90beb09fcf9abc92c20a8d84fe8bdfcc6e3": {
 			"address": "0xb119e90beb09fcf9abc92c20a8d84fe8bdfcc6e3",
-			"underlyingTokensAddresses": ["0x6f02c88650837c8dfe89f66723c4743e9cf833cd"],
+			"underlyingTokensAddresses": [
+				"0x6f02c88650837c8dfe89f66723c4743e9cf833cd"
+			],
 			"type": "Yearn Vault",
 			"name": "Kelp rsETH LP (25 APR 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -6335,7 +6541,9 @@
 		},
 		"0xb2c12a6c665bb8383b1ec21da115015e0763d4df": {
 			"address": "0xb2c12a6c665bb8383b1ec21da115015e0763d4df",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Single Strategy",
 			"name": "Prize gUSDC",
 			"symbol": "przUSDC",
@@ -6433,7 +6641,9 @@
 		},
 		"0xb688ba096b7bb75d7841e47163cd12d18b36a5bf": {
 			"address": "0xb688ba096b7bb75d7841e47163cd12d18b36a5bf",
-			"underlyingTokensAddresses": ["0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"],
+			"underlyingTokensAddresses": [
+				"0xb688ba096b7bb75d7841e47163cd12d18b36a5bf"
+			],
 			"type": "Curve LP",
 			"name": "mPendle",
 			"symbol": "mPendle",
@@ -6447,7 +6657,9 @@
 		},
 		"0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641": {
 			"address": "0xb6cfcf89a7b22988bfc96632ac2a9d6dab60d641",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "Tether USD-LP",
 			"symbol": "S*USDT",
@@ -6489,7 +6701,9 @@
 		},
 		"0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2": {
 			"address": "0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Lender ARB/USDC.e",
 			"symbol": "ysUSDC",
@@ -6671,7 +6885,9 @@
 		},
 		"0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4": {
 			"address": "0xbe9a9b386fdba0de5fd76fa2495b0940102ea1e4",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Compound",
 			"name": "SY Aave Arbitrum USDCn",
 			"symbol": "SY-aArbUSDCn",
@@ -6755,7 +6971,9 @@
 		},
 		"0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e": {
 			"address": "0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e",
-			"underlyingTokensAddresses": ["0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e"],
+			"underlyingTokensAddresses": [
+				"0xbfd5206962267c7b4b4a8b3d76ac2e1b2a5c4d5e"
+			],
 			"type": "Yearn Vault",
 			"name": "Osaka Protocol",
 			"symbol": "OSAK",
@@ -6769,7 +6987,9 @@
 		},
 		"0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5": {
 			"address": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "USDT-A yVault",
 			"symbol": "yvUSDT-A",
@@ -6853,7 +7073,9 @@
 		},
 		"0xc40da6a01ac36f39736731ee50fb3b1b8204e2d3": {
 			"address": "0xc40da6a01ac36f39736731ee50fb3b1b8204e2d3",
-			"underlyingTokensAddresses": ["0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8"],
+			"underlyingTokensAddresses": [
+				"0xec70dcb4a1efa46b8f2d97c310c9c4790ba5ffa8"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-rETH (auto-rolling Pendle PT)",
 			"symbol": "yPT-rETH",
@@ -6881,7 +7103,9 @@
 		},
 		"0xc46c5de6eca1ca6dc3f8c5d3ce863ae326f4b2cf": {
 			"address": "0xc46c5de6eca1ca6dc3f8c5d3ce863ae326f4b2cf",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in wstETH Silo",
 			"symbol": "sWETH-wstETH",
@@ -6895,7 +7119,9 @@
 		},
 		"0xc49d8fda920a46b21e1821780238f9e7a0de68df": {
 			"address": "0xc49d8fda920a46b21e1821780238f9e7a0de68df",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-wstEthSilo",
 			"symbol": "SY-sETH-wstEthSilo",
@@ -6979,7 +7205,9 @@
 		},
 		"0xc80e7eee121570f36c629378de42eb80dc22ecad": {
 			"address": "0xc80e7eee121570f36c629378de42eb80dc22ecad",
-			"underlyingTokensAddresses": ["0x788fe989fadcfefb68861303f763dd1b0a9e1264"],
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
 			"type": "Yearn Vault",
 			"name": "TestToken 20250221-1 LucasiaLLC",
 			"symbol": "TestToken 20250221-1 LucasiaLLC",
@@ -7063,7 +7291,9 @@
 		},
 		"0xc987809440fdd08dcea0d0571c7a8e9a9bbb45cc": {
 			"address": "0xc987809440fdd08dcea0d0571c7a8e9a9bbb45cc",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "SY gUSDC",
 			"symbol": "SY-gUSDC",
@@ -7119,7 +7349,9 @@
 		},
 		"0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC CompoundV3 Lender",
 			"symbol": "ysUSDC",
@@ -7175,7 +7407,9 @@
 		},
 		"0xcb1a0a9c9cbbca82a395301267d525125cfba557": {
 			"address": "0xcb1a0a9c9cbbca82a395301267d525125cfba557",
-			"underlyingTokensAddresses": ["0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14"],
+			"underlyingTokensAddresses": [
+				"0xaccd9a7cb5518326bed715f90bd32cdf2fec2d14"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo wstETH LP (26 DEC 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -7301,7 +7535,9 @@
 		},
 		"0xd0c4351a18f40b96b6446da3a191496df36d60f9": {
 			"address": "0xd0c4351a18f40b96b6446da3a191496df36d60f9",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "SY sETH-pteETHSilo",
 			"symbol": "SY-sETH-pteETHSilo",
@@ -7371,7 +7607,9 @@
 		},
 		"0xd21e503d8ac357a7c8f8897bf84a4bfd14fec6e1": {
 			"address": "0xd21e503d8ac357a7c8f8897bf84a4bfd14fec6e1",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "yPT-USDC-Dolomite (auto-rolling Pendle PT)",
 			"symbol": "yPT-USDC-Dolomite",
@@ -7413,7 +7651,9 @@
 		},
 		"0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0": {
 			"address": "0xd3443ee1e91af28e5fb858fbd0d72a63ba8046e0",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Gains Network USDC",
 			"symbol": "gUSDC",
@@ -7427,7 +7667,9 @@
 		},
 		"0xd49afd20aff04f86127c4b7b2ed893aad82f8d9b": {
 			"address": "0xd49afd20aff04f86127c4b7b2ed893aad82f8d9b",
-			"underlyingTokensAddresses": ["0x788fe989fadcfefb68861303f763dd1b0a9e1264"],
+			"underlyingTokensAddresses": [
+				"0x788fe989fadcfefb68861303f763dd1b0a9e1264"
+			],
 			"type": "Yearn Vault",
 			"name": "TestToken 20250221-1 CBDevOps",
 			"symbol": "TestToken 20250221-1 CBDevOps",
@@ -7511,7 +7753,9 @@
 		},
 		"0xd85e038593d7a098614721eae955ec2022b9b91b": {
 			"address": "0xd85e038593d7a098614721eae955ec2022b9b91b",
-			"underlyingTokensAddresses": ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"],
+			"underlyingTokensAddresses": [
+				"0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"
+			],
 			"type": "Yearn Vault",
 			"name": "Gains Network DAI",
 			"symbol": "gDAI",
@@ -7525,7 +7769,9 @@
 		},
 		"0xd89ee1e95f7728f6964cf321e2648ccd29a881f1": {
 			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "AaveV3 USDC Lender",
 			"symbol": "ysUSDC",
@@ -7595,7 +7841,9 @@
 		},
 		"0xda3b69a45797dca697ff5bb2c10682f14373c063": {
 			"address": "0xda3b69a45797dca697ff5bb2c10682f14373c063",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-1 yVault",
 			"symbol": "yvUSDC-1",
@@ -7707,7 +7955,9 @@
 		},
 		"0xdfaa4001308f5ec4d06920cd0d2c649c6f930e2c": {
 			"address": "0xdfaa4001308f5ec4d06920cd0d2c649c6f930e2c",
-			"underlyingTokensAddresses": ["0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3"],
+			"underlyingTokensAddresses": [
+				"0xf617792ea9dceb2208f4c440258b21d2f3fdb9a3"
+			],
 			"type": "Yearn Vault",
 			"name": "mPENDLE LP (26 SEP 2024)",
 			"symbol": "ysPENDLE-LPT",
@@ -7889,7 +8139,9 @@
 		},
 		"0xe6dbfb035b44e94d07f7b3e4f6bfbf1c6e68e3d0": {
 			"address": "0xe6dbfb035b44e94d07f7b3e4f6bfbf1c6e68e3d0",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "MUV001 - Flagship USDC",
 			"symbol": "MUV001_USDC",
@@ -7945,7 +8197,9 @@
 		},
 		"0xe82d060687c014b280b65df24acd94a77251c784": {
 			"address": "0xe82d060687c014b280b65df24acd94a77251c784",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Lender wBTC/USDC.e",
 			"symbol": "ysUSDC",
@@ -8001,7 +8255,9 @@
 		},
 		"0xea7dd7285350d1153510069ac4b382a96e479683": {
 			"address": "0xea7dd7285350d1153510069ac4b382a96e479683",
-			"underlyingTokensAddresses": ["0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"],
+			"underlyingTokensAddresses": [
+				"0xff970a61a04b1ca14834a43f5de4533ebddb5cc8"
+			],
 			"type": "Yearn Vault",
 			"name": "MUV001 - Terra Vault",
 			"symbol": "MUV001",
@@ -8015,7 +8271,9 @@
 		},
 		"0xeadb712d95f347c3223261ef0f67505579eac159": {
 			"address": "0xeadb712d95f347c3223261ef0f67505579eac159",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC-1 TEST LucasiaLLC",
 			"symbol": "USDC-1 Test LucasiaLLC",
@@ -8113,7 +8371,9 @@
 		},
 		"0xedc4949adb7c6e7aeed4ae2545cb4aef82583bd8": {
 			"address": "0xedc4949adb7c6e7aeed4ae2545cb4aef82583bd8",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Lumin Finance Arbitrum USDC",
 			"symbol": "lfArbUSDC",
@@ -8127,7 +8387,9 @@
 		},
 		"0xede3d8d3213d8defc37e4edea86448d4c692baa6": {
 			"address": "0xede3d8d3213d8defc37e4edea86448d4c692baa6",
-			"underlyingTokensAddresses": ["0x82af49447d8a07e3bd95bd0d56f35241523fbab1"],
+			"underlyingTokensAddresses": [
+				"0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+			],
 			"type": "Yearn Vault",
 			"name": "Silo Finance Borrowable WETH Deposit in PT-ezETH-27JUN2024 Silo",
 			"symbol": "sWETH-PT-ezETH-27JUN2024",
@@ -8407,7 +8669,9 @@
 		},
 		"0xf7d015bd465beaf7360064f451fdf16949199848": {
 			"address": "0xf7d015bd465beaf7360064f451fdf16949199848",
-			"underlyingTokensAddresses": ["0xaf88d065e77c8cc2239327c5edb3a432268e5831"],
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
 			"type": "Yearn Vault",
 			"name": "Usdc Kalani",
 			"symbol": "klUSDC",
@@ -8687,7 +8951,9 @@
 		},
 		"0xfe7aebd759c6e251afa44af17de4cc88f83ff6a4": {
 			"address": "0xfe7aebd759c6e251afa44af17de4cc88f83ff6a4",
-			"underlyingTokensAddresses": ["0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"],
+			"underlyingTokensAddresses": [
+				"0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
+			],
 			"type": "Yearn Vault",
 			"name": "Lumin Finance Arbitrum USDT",
 			"symbol": "lfArbUSDT",

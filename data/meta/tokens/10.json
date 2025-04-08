@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2025-03-24T11:48:03.223867+01:00",
+	"lastUpdate": "2025-04-08T09:58:59.377585+02:00",
 	"version": {
 		"major": 0,
 		"minor": 16,
@@ -37,7 +37,9 @@
 		},
 		"0x00a2faf97cc2b985b29a0a0eaa6e0d8033dc0ea1": {
 			"address": "0x00a2faf97cc2b985b29a0a0eaa6e0d8033dc0ea1",
-			"underlyingTokensAddresses": ["0xadbb23bcc3c1b9810491897cb0690cf645b858b1"],
+			"underlyingTokensAddresses": [
+				"0xadbb23bcc3c1b9810491897cb0690cf645b858b1"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 tBTC-WETH Factory yVault",
 			"symbol": "yvVelo-tBTC-WETH-f",
@@ -65,7 +67,9 @@
 		},
 		"0x00cb8e36a9c40491a39e8bf2864ed30c1b579860": {
 			"address": "0x00cb8e36a9c40491a39e8bf2864ed30c1b579860",
-			"underlyingTokensAddresses": ["0x6e57b9e54ea043a829584b22182ad22bf446926c"],
+			"underlyingTokensAddresses": [
+				"0x6e57b9e54ea043a829584b22182ad22bf446926c"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 tBTC-WBTC Factory yVault",
 			"symbol": "yvVelo-tBTC-WBTC-f",
@@ -149,7 +153,9 @@
 		},
 		"0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50": {
 			"address": "0x01c77e8a099e97b7b0dca2f987d9bd1911cdde50",
-			"underlyingTokensAddresses": ["0x71d53b5b7141e1ec9a3fc9cc48b4766102d14a4a"],
+			"underlyingTokensAddresses": [
+				"0x71d53b5b7141e1ec9a3fc9cc48b4766102d14a4a"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 SNX-USDC.e Factory yVault",
 			"symbol": "yvVelo-SNX-USDC.e-f",
@@ -317,7 +323,9 @@
 		},
 		"0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687": {
 			"address": "0x03894ca9b0cabfc53dde7c2dcfcc2a58d6192687",
-			"underlyingTokensAddresses": ["0x4be2cbe40521279b8fc561e65bb842bf73ec3a80"],
+			"underlyingTokensAddresses": [
+				"0x4be2cbe40521279b8fc561e65bb842bf73ec3a80"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 agEUR-USDC.e Factory yVault",
 			"symbol": "yvVelo-agEUR-USDC.e-f",
@@ -457,7 +465,9 @@
 		},
 		"0x05b0f53d5aa6ba7be05268d35a76baa58952fd95": {
 			"address": "0x05b0f53d5aa6ba7be05268d35a76baa58952fd95",
-			"underlyingTokensAddresses": ["0x6e57b9e54ea043a829584b22182ad22bf446926c"],
+			"underlyingTokensAddresses": [
+				"0x6e57b9e54ea043a829584b22182ad22bf446926c"
+			],
 			"type": "Single Strategy",
 			"name": "Prize sAMMV2-WBTC/tBTC - Yearn",
 			"symbol": "przsAMMV2-WBTC/tBTC",
@@ -471,7 +481,9 @@
 		},
 		"0x05bbaf27429eb35cb3d51a979acba69f2f00e66a": {
 			"address": "0x05bbaf27429eb35cb3d51a979acba69f2f00e66a",
-			"underlyingTokensAddresses": ["0x5e6e17f745ff620e87324b7c6ec672b5743bd0b4"],
+			"underlyingTokensAddresses": [
+				"0x5e6e17f745ff620e87324b7c6ec672b5743bd0b4"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 wTBT-USDC.e Factory yVault",
 			"symbol": "yvVelo-wTBT-USDC.e-f",
@@ -656,7 +668,9 @@
 		},
 		"0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12": {
 			"address": "0x0a2f234ad2e5e9047067904a9d37d0cd02b80d12",
-			"underlyingTokensAddresses": ["0x68f180fcce6836688e9084f035309e29bf0a2095"],
+			"underlyingTokensAddresses": [
+				"0x68f180fcce6836688e9084f035309e29bf0a2095"
+			],
 			"type": "Yearn Vault",
 			"name": "WBTC yVault",
 			"symbol": "yvWBTC",
@@ -1527,7 +1541,9 @@
 		},
 		"0x161e7411a291ccaf377279fce6a8c8d689dbebe8": {
 			"address": "0x161e7411a291ccaf377279fce6a8c8d689dbebe8",
-			"underlyingTokensAddresses": ["0xd16232ad60188b68076a235c65d692090caba155"],
+			"underlyingTokensAddresses": [
+				"0xd16232ad60188b68076a235c65d692090caba155"
+			],
 			"type": "Yearn Vault",
 			"name": "Velodrome USDC-sUSD yVault",
 			"symbol": "yvVelo-USDC-sUSD",
@@ -1835,7 +1851,9 @@
 		},
 		"0x1b1d2efb6045851f8ccde24369003e0ff157980b": {
 			"address": "0x1b1d2efb6045851f8ccde24369003e0ff157980b",
-			"underlyingTokensAddresses": ["0x6d5ba400640226e24b50214d2bbb3d4db8e6e15a"],
+			"underlyingTokensAddresses": [
+				"0x6d5ba400640226e24b50214d2bbb3d4db8e6e15a"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 sUSD-USDC.e Factory yVault",
 			"symbol": "yvVelo-sUSD-USDC.e-f",
@@ -1891,7 +1909,9 @@
 		},
 		"0x1c09aea795dd79e201fa552b108b4b30e90ced4f": {
 			"address": "0x1c09aea795dd79e201fa552b108b4b30e90ced4f",
-			"underlyingTokensAddresses": ["0xbc26519f936a90e78fe2c9aa2a03cc208f041234"],
+			"underlyingTokensAddresses": [
+				"0xbc26519f936a90e78fe2c9aa2a03cc208f041234"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 sUSD-USDC Factory yVault",
 			"symbol": "yvVelo-sUSD-USDC-f",
@@ -1989,7 +2009,9 @@
 		},
 		"0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce": {
 			"address": "0x1d49ab5b03268e329fc7d2111e5364e63b36a3ce",
-			"underlyingTokensAddresses": ["0xe54e4020d1c3afdb312095d90054103e68fe34b0"],
+			"underlyingTokensAddresses": [
+				"0xe54e4020d1c3afdb312095d90054103e68fe34b0"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MAI-USDC.e Factory yVault",
 			"symbol": "yvVelo-MAI-USDC.e-f",
@@ -2157,7 +2179,9 @@
 		},
 		"0x1f514a61bcde34f94bc39731235690ab9da737f7": {
 			"address": "0x1f514a61bcde34f94bc39731235690ab9da737f7",
-			"underlyingTokensAddresses": ["0x1f514a61bcde34f94bc39731235690ab9da737f7"],
+			"underlyingTokensAddresses": [
+				"0x1f514a61bcde34f94bc39731235690ab9da737f7"
+			],
 			"type": "Yearn Vault",
 			"name": "Tarot",
 			"symbol": "TAROT",
@@ -2353,7 +2377,9 @@
 		},
 		"0x22687ca792a8cb5e169a77e0949e71fe37147604": {
 			"address": "0x22687ca792a8cb5e169a77e0949e71fe37147604",
-			"underlyingTokensAddresses": ["0x6c5019d345ec05004a7e7b0623a91a0d9b8d590d"],
+			"underlyingTokensAddresses": [
+				"0x6c5019d345ec05004a7e7b0623a91a0d9b8d590d"
+			],
 			"type": "Yearn Vault",
 			"name": "Velodrome USDC-DOLA yVault",
 			"symbol": "yvVelo-USDC-DOLA",
@@ -2381,7 +2407,9 @@
 		},
 		"0x2297aebd383787a160dd0d9f71508148769342e3": {
 			"address": "0x2297aebd383787a160dd0d9f71508148769342e3",
-			"underlyingTokensAddresses": ["0x2297aebd383787a160dd0d9f71508148769342e3"],
+			"underlyingTokensAddresses": [
+				"0x2297aebd383787a160dd0d9f71508148769342e3"
+			],
 			"type": "Yearn Vault",
 			"name": "Bitcoin",
 			"symbol": "BTC.b",
@@ -2409,7 +2437,9 @@
 		},
 		"0x233dc79f924c35acb4524bac4a883c8ce11a75b2": {
 			"address": "0x233dc79f924c35acb4524bac4a883c8ce11a75b2",
-			"underlyingTokensAddresses": ["0x233dc79f924c35acb4524bac4a883c8ce11a75b2"],
+			"underlyingTokensAddresses": [
+				"0x233dc79f924c35acb4524bac4a883c8ce11a75b2"
+			],
 			"type": "Yearn Vault",
 			"name": "Bridge",
 			"symbol": "BRIDGE",
@@ -2689,7 +2719,9 @@
 		},
 		"0x27939e33435cc4ee4e74c0f0260914596bceb116": {
 			"address": "0x27939e33435cc4ee4e74c0f0260914596bceb116",
-			"underlyingTokensAddresses": ["0xc3439bc1a747e545887192d6b7f8be47f608473f"],
+			"underlyingTokensAddresses": [
+				"0xc3439bc1a747e545887192d6b7f8be47f608473f"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 OATH-WETH Factory yVault",
 			"symbol": "yvVelo-OATH-WETH-f",
@@ -2801,7 +2833,9 @@
 		},
 		"0x2a90f479002daae9934c3a70ebb6e8dbeb46292b": {
 			"address": "0x2a90f479002daae9934c3a70ebb6e8dbeb46292b",
-			"underlyingTokensAddresses": ["0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"],
+			"underlyingTokensAddresses": [
+				"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"
+			],
 			"type": "Yearn Vault",
 			"name": "sUSD yVault",
 			"symbol": "yvsUSD",
@@ -3291,7 +3325,9 @@
 		},
 		"0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4": {
 			"address": "0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4",
-			"underlyingTokensAddresses": ["0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4"],
+			"underlyingTokensAddresses": [
+				"0x300d2c875c6fb8ce4bf5480b4d34b7c9ea8a33a4"
+			],
 			"type": "Yearn Vault",
 			"name": "Pirex Ether OFT",
 			"symbol": "pxETH",
@@ -3403,7 +3439,9 @@
 		},
 		"0x31515cfc4550d9c83e2d86e8a352886d1364e2d9": {
 			"address": "0x31515cfc4550d9c83e2d86e8a352886d1364e2d9",
-			"underlyingTokensAddresses": ["0x7f5c764cbc14f9669b88837ca1490cca17c31607"],
+			"underlyingTokensAddresses": [
+				"0x7f5c764cbc14f9669b88837ca1490cca17c31607"
+			],
 			"type": "Yearn Vault",
 			"name": "PoolTogether Prize USD Coin",
 			"symbol": "PTUSDC",
@@ -3445,7 +3483,9 @@
 		},
 		"0x323665443cef804a3b5206103304bd4872ea4253": {
 			"address": "0x323665443cef804a3b5206103304bd4872ea4253",
-			"underlyingTokensAddresses": ["0x323665443cef804a3b5206103304bd4872ea4253"],
+			"underlyingTokensAddresses": [
+				"0x323665443cef804a3b5206103304bd4872ea4253"
+			],
 			"type": "Yearn Vault",
 			"name": "USDV",
 			"symbol": "USDV",
@@ -3599,7 +3639,9 @@
 		},
 		"0x348fdfe2c35934a96c1353185f09d0f9efbada86": {
 			"address": "0x348fdfe2c35934a96c1353185f09d0f9efbada86",
-			"underlyingTokensAddresses": ["0x348fdfe2c35934a96c1353185f09d0f9efbada86"],
+			"underlyingTokensAddresses": [
+				"0x348fdfe2c35934a96c1353185f09d0f9efbada86"
+			],
 			"type": "Yearn Vault",
 			"name": "Arbitrove Governance Token",
 			"symbol": "TROVE",
@@ -3739,7 +3781,9 @@
 		},
 		"0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b": {
 			"address": "0x36baf52bc8a2db4450500c1a6c78f10f6d0e1c3b",
-			"underlyingTokensAddresses": ["0x9c78da24f2843ccdd02085bdec2484106554ca48"],
+			"underlyingTokensAddresses": [
+				"0x9c78da24f2843ccdd02085bdec2484106554ca48"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 TAROT-USDC.e Factory yVault",
 			"symbol": "yvVelo-TAROT-USDC.e-f",
@@ -3767,7 +3811,9 @@
 		},
 		"0x36e4c18b2b43cc989085b4a7306915b115058abf": {
 			"address": "0x36e4c18b2b43cc989085b4a7306915b115058abf",
-			"underlyingTokensAddresses": ["0x19715771e30c93915a5bbda134d782b81a820076"],
+			"underlyingTokensAddresses": [
+				"0x19715771e30c93915a5bbda134d782b81a820076"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 DAI-USDC.e Factory yVault",
 			"symbol": "yvVelo-DAI-USDC.e-f",
@@ -3893,7 +3939,9 @@
 		},
 		"0x385719545ef34d457a88e723504544a53f0ad9bc": {
 			"address": "0x385719545ef34d457a88e723504544a53f0ad9bc",
-			"underlyingTokensAddresses": ["0x385719545ef34d457a88e723504544a53f0ad9bc"],
+			"underlyingTokensAddresses": [
+				"0x385719545ef34d457a88e723504544a53f0ad9bc"
+			],
 			"type": "Yearn Vault",
 			"name": "MUMMY",
 			"symbol": "MMY",
@@ -3991,7 +4039,9 @@
 		},
 		"0x39f60710a27a87332d10e3333c2eff41eec911ee": {
 			"address": "0x39f60710a27a87332d10e3333c2eff41eec911ee",
-			"underlyingTokensAddresses": ["0xb720fbc32d60bb6dcc955be86b98d8fd3c4ba645"],
+			"underlyingTokensAddresses": [
+				"0xb720fbc32d60bb6dcc955be86b98d8fd3c4ba645"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 DOLA-USDC.e Factory yVault",
 			"symbol": "yvVelo-DOLA-USDC.e-f",
@@ -4047,7 +4097,9 @@
 		},
 		"0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6": {
 			"address": "0x3ad9566b15aacdd26d8a220ca8635f925ea7a3f6",
-			"underlyingTokensAddresses": ["0x0df083de449f75691fc5a36477a6f3284c269108"],
+			"underlyingTokensAddresses": [
+				"0x0df083de449f75691fc5a36477a6f3284c269108"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 OP-USDC.e Factory yVault",
 			"symbol": "yvVelo-OP-USDC.e-f",
@@ -4089,7 +4141,9 @@
 		},
 		"0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa": {
 			"address": "0x3b141bd7d6e1d67e2101a08e4dd849a8408d91aa",
-			"underlyingTokensAddresses": ["0x4d7959d17b9710be87e3657e69d946914221bb88"],
+			"underlyingTokensAddresses": [
+				"0x4d7959d17b9710be87e3657e69d946914221bb88"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 alUSD-USDC.e Factory yVault",
 			"symbol": "yvVelo-alUSD-USDC.e-f",
@@ -4117,7 +4171,9 @@
 		},
 		"0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad": {
 			"address": "0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad",
-			"underlyingTokensAddresses": ["0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad"],
+			"underlyingTokensAddresses": [
+				"0x3b6564b5da73a41d3a66e6558a98fd0e9e1e77ad"
+			],
 			"type": "Yearn Vault",
 			"name": "Unitus",
 			"symbol": "UTS",
@@ -4131,7 +4187,9 @@
 		},
 		"0x3bde2ab72afe70286fc944c07d98883e383df239": {
 			"address": "0x3bde2ab72afe70286fc944c07d98883e383df239",
-			"underlyingTokensAddresses": ["0xf2d42c46528116362aca448837a0236459b53c63"],
+			"underlyingTokensAddresses": [
+				"0xf2d42c46528116362aca448837a0236459b53c63"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 TAROT-OP Factory yVault",
 			"symbol": "yvVelo-TAROT-OP-f",
@@ -4327,7 +4385,9 @@
 		},
 		"0x3ee6107d9c93955acbb3f39871d32b02f82b78ab": {
 			"address": "0x3ee6107d9c93955acbb3f39871d32b02f82b78ab",
-			"underlyingTokensAddresses": ["0xc5b001dc33727f8f26880b184090d3e252470d45"],
+			"underlyingTokensAddresses": [
+				"0xc5b001dc33727f8f26880b184090d3e252470d45"
+			],
 			"type": "Yearn Vault",
 			"name": "Staked ERN Vault",
 			"symbol": "stERN",
@@ -4369,7 +4429,9 @@
 		},
 		"0x3f14df340498f3eaa2894bfc19789dd592dc062d": {
 			"address": "0x3f14df340498f3eaa2894bfc19789dd592dc062d",
-			"underlyingTokensAddresses": ["0x1f8b46abe1eabf5a60cbbb5fb2e4a6a46fa0b6e6"],
+			"underlyingTokensAddresses": [
+				"0x1f8b46abe1eabf5a60cbbb5fb2e4a6a46fa0b6e6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 FRAX-DOLA Factory yVault",
 			"symbol": "yvVelo-FRAX-DOLA-f",
@@ -4425,7 +4487,9 @@
 		},
 		"0x3f707a0f3ad1b2784cfbdda17d7345fc0e689751": {
 			"address": "0x3f707a0f3ad1b2784cfbdda17d7345fc0e689751",
-			"underlyingTokensAddresses": ["0xa1055762336f92b4b8d2edc032a0ce45ead6280a"],
+			"underlyingTokensAddresses": [
+				"0xa1055762336f92b4b8d2edc032a0ce45ead6280a"
+			],
 			"type": "Single Strategy",
 			"name": "Prize sAMMV2-alETH/WETH - Yearn",
 			"symbol": "przsAMMV2-alETH/WETH",
@@ -4481,7 +4545,9 @@
 		},
 		"0x3fb792fa67cde50a41e20304e4afef522cf711ee": {
 			"address": "0x3fb792fa67cde50a41e20304e4afef522cf711ee",
-			"underlyingTokensAddresses": ["0x2b47c794c3789f499d8a54ec12f949eecce8ba16"],
+			"underlyingTokensAddresses": [
+				"0x2b47c794c3789f499d8a54ec12f949eecce8ba16"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USDT-USDC.e Factory yVault",
 			"symbol": "yvVelo-USDT-USDC.e-f",
@@ -4537,7 +4603,9 @@
 		},
 		"0x4186bfc76e2e237523cbc30fd220fe055156b41f": {
 			"address": "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
-			"underlyingTokensAddresses": ["0x4186bfc76e2e237523cbc30fd220fe055156b41f"],
+			"underlyingTokensAddresses": [
+				"0x4186bfc76e2e237523cbc30fd220fe055156b41f"
+			],
 			"type": "Yearn Vault",
 			"name": "KelpDao Restaked ETH",
 			"symbol": "rsETH",
@@ -4677,7 +4745,9 @@
 		},
 		"0x43360fdd9546e3e77ac2e6793f53219729743293": {
 			"address": "0x43360fdd9546e3e77ac2e6793f53219729743293",
-			"underlyingTokensAddresses": ["0x95a05d06decf8e1eb93ae09b612fbd342f2f9e2e"],
+			"underlyingTokensAddresses": [
+				"0x95a05d06decf8e1eb93ae09b612fbd342f2f9e2e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 wUSDR-USDC.e Factory yVault",
 			"symbol": "yvVelo-wUSDR-USDC.e-f",
@@ -4747,7 +4817,9 @@
 		},
 		"0x4591dbff62656e7859afe5e45f6f47d3669fbb28": {
 			"address": "0x4591dbff62656e7859afe5e45f6f47d3669fbb28",
-			"underlyingTokensAddresses": ["0x4591dbff62656e7859afe5e45f6f47d3669fbb28"],
+			"underlyingTokensAddresses": [
+				"0x4591dbff62656e7859afe5e45f6f47d3669fbb28"
+			],
 			"type": "Yearn Vault",
 			"name": "Prisma mkUSD",
 			"symbol": "mkUSD",
@@ -4789,7 +4861,9 @@
 		},
 		"0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41": {
 			"address": "0x45b0a7dc29b7856a1b5069db4cfa2a984b69cc41",
-			"underlyingTokensAddresses": ["0xdff90e4a6c229565f25337b1db9fa12f6d8cb118"],
+			"underlyingTokensAddresses": [
+				"0xdff90e4a6c229565f25337b1db9fa12f6d8cb118"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 THALES-WETH Factory yVault",
 			"symbol": "yvVelo-THALES-WETH-f",
@@ -5223,7 +5297,9 @@
 		},
 		"0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d": {
 			"address": "0x4c8b1958b09b3bde714f68864bcc3a74eaf1a23d",
-			"underlyingTokensAddresses": ["0x7f5c764cbc14f9669b88837ca1490cca17c31607"],
+			"underlyingTokensAddresses": [
+				"0x7f5c764cbc14f9669b88837ca1490cca17c31607"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC yVault",
 			"symbol": "yvUSDC",
@@ -5405,7 +5481,9 @@
 		},
 		"0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03": {
 			"address": "0x4e9c59f9b1b13ba7e1ac4c09b64df7fdeff41b03",
-			"underlyingTokensAddresses": ["0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73"],
+			"underlyingTokensAddresses": [
+				"0xed47e3ce6d9c05f562c469ab1bf1244cc697aa73"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USX-USDC.e Factory yVault",
 			"symbol": "yvVelo-USX-USDC.e-f",
@@ -5475,7 +5553,9 @@
 		},
 		"0x4f1220f6375e95b43462465972cb2f478ed34d0b": {
 			"address": "0x4f1220f6375e95b43462465972cb2f478ed34d0b",
-			"underlyingTokensAddresses": ["0x0b28c2e41058edc7d66c516c617b664ea86eec5d"],
+			"underlyingTokensAddresses": [
+				"0x0b28c2e41058edc7d66c516c617b664ea86eec5d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USD+-DOLA Factory yVault",
 			"symbol": "yvVelo-USD+-DOLA-f",
@@ -5657,7 +5737,9 @@
 		},
 		"0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0": {
 			"address": "0x50032be2b2c7e8a6a6bc241e3aebef21497a3cf0",
-			"underlyingTokensAddresses": ["0xeea82dcab12c855e3736558d80500ed52c8598cd"],
+			"underlyingTokensAddresses": [
+				"0xeea82dcab12c855e3736558d80500ed52c8598cd"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 ERN-DOLA Factory yVault",
 			"symbol": "yvVelo-ERN-DOLA-f",
@@ -5685,7 +5767,9 @@
 		},
 		"0x507343bad3a1ee0b67c3b1712133290ded43980d": {
 			"address": "0x507343bad3a1ee0b67c3b1712133290ded43980d",
-			"underlyingTokensAddresses": ["0xc5c247580a4a6e4d3811c0da6215057aac480bac"],
+			"underlyingTokensAddresses": [
+				"0xc5c247580a4a6e4d3811c0da6215057aac480bac"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 LDO-wstETH Factory yVault",
 			"symbol": "yvVelo-LDO-wstETH-f",
@@ -5853,7 +5937,9 @@
 		},
 		"0x531fdb1c8429f404116932226d487db94471c4b7": {
 			"address": "0x531fdb1c8429f404116932226d487db94471c4b7",
-			"underlyingTokensAddresses": ["0x77b6d0279c9cef559ef7c32c31d9a5d8acb664fe"],
+			"underlyingTokensAddresses": [
+				"0x77b6d0279c9cef559ef7c32c31d9a5d8acb664fe"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 wUSDR-USDC.e Factory yVault",
 			"symbol": "yvVelo-wUSDR-USDC.e-f",
@@ -5895,7 +5981,9 @@
 		},
 		"0x539505dde2b9771debe0898a84441c5e7fdf6bc0": {
 			"address": "0x539505dde2b9771debe0898a84441c5e7fdf6bc0",
-			"underlyingTokensAddresses": ["0x7f5c764cbc14f9669b88837ca1490cca17c31607"],
+			"underlyingTokensAddresses": [
+				"0x7f5c764cbc14f9669b88837ca1490cca17c31607"
+			],
 			"type": "Yearn Vault",
 			"name": "vaUSDC Pool",
 			"symbol": "vaUSDC",
@@ -5937,7 +6025,9 @@
 		},
 		"0x54270c51054b63cf990501c50a9c0814a73b4f73": {
 			"address": "0x54270c51054b63cf990501c50a9c0814a73b4f73",
-			"underlyingTokensAddresses": ["0x917aa69d539d6518440dd0bea2eaac142a8d5610"],
+			"underlyingTokensAddresses": [
+				"0x917aa69d539d6518440dd0bea2eaac142a8d5610"
+			],
 			"type": "Single Strategy",
 			"name": "Prize sAMMV2-msETH/WETH - Yearn",
 			"symbol": "przsAMMV2-msETH/WETH",
@@ -6077,7 +6167,9 @@
 		},
 		"0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6": {
 			"address": "0x56eef8430dddf95b2b92c58b21edf1ac7f77e6a6",
-			"underlyingTokensAddresses": ["0xd95e98fc33670dc033424e7aa0578d742d00f9c7"],
+			"underlyingTokensAddresses": [
+				"0xd95e98fc33670dc033424e7aa0578d742d00f9c7"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USD+-USDC.e Factory yVault",
 			"symbol": "yvVelo-USD+-USDC.e-f",
@@ -6301,7 +6393,9 @@
 		},
 		"0x5b977577eb8a480f63e11fc615d6753adb8652ae": {
 			"address": "0x5b977577eb8a480f63e11fc615d6753adb8652ae",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "WETH yVault",
 			"symbol": "yvWETH",
@@ -6371,7 +6465,9 @@
 		},
 		"0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34": {
 			"address": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
-			"underlyingTokensAddresses": ["0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"],
+			"underlyingTokensAddresses": [
+				"0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34"
+			],
 			"type": "Yearn Vault",
 			"name": "USDe",
 			"symbol": "USDe",
@@ -6483,7 +6579,9 @@
 		},
 		"0x5e70e0ede43373bd9cf4bc85199d424acf0241ef": {
 			"address": "0x5e70e0ede43373bd9cf4bc85199d424acf0241ef",
-			"underlyingTokensAddresses": ["0x061b87122ed14b9526a813209c8a59a633257bab"],
+			"underlyingTokensAddresses": [
+				"0x061b87122ed14b9526a813209c8a59a633257bab"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve sUSD Pool yVault",
 			"symbol": "yvCurve-sUSD",
@@ -6721,7 +6819,9 @@
 		},
 		"0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
 			"address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-			"underlyingTokensAddresses": ["0x7f5c764cbc14f9669b88837ca1490cca17c31607"],
+			"underlyingTokensAddresses": [
+				"0x7f5c764cbc14f9669b88837ca1490cca17c31607"
+			],
 			"type": "AAVE V2",
 			"name": "Aave Optimism USDC",
 			"symbol": "aOptUSDC",
@@ -6735,7 +6835,9 @@
 		},
 		"0x62855b8e5db35551661a1e304ec227314f4493c1": {
 			"address": "0x62855b8e5db35551661a1e304ec227314f4493c1",
-			"underlyingTokensAddresses": ["0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c"],
+			"underlyingTokensAddresses": [
+				"0xe148d6ae042de77c1f9fe0d6c495ebfd7b705b4c"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 msUSD-USDC.e Factory yVault",
 			"symbol": "yvVelo-msUSD-USDC.e-f",
@@ -6903,7 +7005,9 @@
 		},
 		"0x65343f414ffd6c97b0f6add33d16f6845ac22bac": {
 			"address": "0x65343f414ffd6c97b0f6add33d16f6845ac22bac",
-			"underlyingTokensAddresses": ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"],
+			"underlyingTokensAddresses": [
+				"0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"
+			],
 			"type": "Yearn Vault",
 			"name": "DAI yVault",
 			"symbol": "yvDAI",
@@ -6959,7 +7063,9 @@
 		},
 		"0x65bab5c963aec5bfc72986c2a4c468c190d6de96": {
 			"address": "0x65bab5c963aec5bfc72986c2a4c468c190d6de96",
-			"underlyingTokensAddresses": ["0x1de84e1324baf5a9f3a49a48892fe90ce48456f1"],
+			"underlyingTokensAddresses": [
+				"0x1de84e1324baf5a9f3a49a48892fe90ce48456f1"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 STG-USDC Factory yVault",
 			"symbol": "yvVelo-STG-USDC-f",
@@ -7001,7 +7107,9 @@
 		},
 		"0x6657bdb994fc8678f6d709077f30aa0b3249b5c8": {
 			"address": "0x6657bdb994fc8678f6d709077f30aa0b3249b5c8",
-			"underlyingTokensAddresses": ["0xdb61f9b480f0a8b817811cfaa89a1c219c355224"],
+			"underlyingTokensAddresses": [
+				"0xdb61f9b480f0a8b817811cfaa89a1c219c355224"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 LYRA-USDC.e Factory yVault",
 			"symbol": "yvVelo-LYRA-USDC.e-f",
@@ -7071,7 +7179,9 @@
 		},
 		"0x66e535e8d2ebf13f49f3d49e5c50395a97c137b1": {
 			"address": "0x66e535e8d2ebf13f49f3d49e5c50395a97c137b1",
-			"underlyingTokensAddresses": ["0x66e535e8d2ebf13f49f3d49e5c50395a97c137b1"],
+			"underlyingTokensAddresses": [
+				"0x66e535e8d2ebf13f49f3d49e5c50395a97c137b1"
+			],
 			"type": "Yearn Vault",
 			"name": "Molten",
 			"symbol": "MOLTEN",
@@ -7113,7 +7223,9 @@
 		},
 		"0x6759574667896a453304897993d61f00fdc7214d": {
 			"address": "0x6759574667896a453304897993d61f00fdc7214d",
-			"underlyingTokensAddresses": ["0xdfa46478f9e5ea86d57387849598dbfb2e964b02"],
+			"underlyingTokensAddresses": [
+				"0xdfa46478f9e5ea86d57387849598dbfb2e964b02"
+			],
 			"type": "Yearn Vault",
 			"name": "MAI yVault",
 			"symbol": "yvMAI",
@@ -7211,7 +7323,9 @@
 		},
 		"0x682df61222a3fb64f3e88fef41ce21499adcc647": {
 			"address": "0x682df61222a3fb64f3e88fef41ce21499adcc647",
-			"underlyingTokensAddresses": ["0xd62c9d8a3d4fd98b27caaefe3571782a3af0a737"],
+			"underlyingTokensAddresses": [
+				"0xd62c9d8a3d4fd98b27caaefe3571782a3af0a737"
+			],
 			"type": "Yearn Vault",
 			"name": "Velodrome USDC-MAI yVault",
 			"symbol": "yvVelo-USDC-MAI",
@@ -7225,7 +7339,9 @@
 		},
 		"0x686c125472024bdd3fa74eeb3720b3237541dcdc": {
 			"address": "0x686c125472024bdd3fa74eeb3720b3237541dcdc",
-			"underlyingTokensAddresses": ["0x8f47041adbef5bf321c9f63a0660326614ab6b60"],
+			"underlyingTokensAddresses": [
+				"0x8f47041adbef5bf321c9f63a0660326614ab6b60"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 KWENTA-WETH Factory yVault",
 			"symbol": "yvVelo-KWENTA-WETH-f",
@@ -7267,7 +7383,9 @@
 		},
 		"0x68f2b1db2da6204489279a8fc681f83728bb9622": {
 			"address": "0x68f2b1db2da6204489279a8fc681f83728bb9622",
-			"underlyingTokensAddresses": ["0xbe418771bc91f75c4d2bce1d5e2b7286f50992da"],
+			"underlyingTokensAddresses": [
+				"0xbe418771bc91f75c4d2bce1d5e2b7286f50992da"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MAI-DOLA Factory yVault",
 			"symbol": "yvVelo-MAI-DOLA-f",
@@ -7309,7 +7427,9 @@
 		},
 		"0x6985884c4392d348587b19cb9eaaf157f13271cd": {
 			"address": "0x6985884c4392d348587b19cb9eaaf157f13271cd",
-			"underlyingTokensAddresses": ["0x6985884c4392d348587b19cb9eaaf157f13271cd"],
+			"underlyingTokensAddresses": [
+				"0x6985884c4392d348587b19cb9eaaf157f13271cd"
+			],
 			"type": "Yearn Vault",
 			"name": "LayerZero",
 			"symbol": "ZRO",
@@ -7379,7 +7499,9 @@
 		},
 		"0x6a44b0415a5c440d32e82965fdfaad54a72d477d": {
 			"address": "0x6a44b0415a5c440d32e82965fdfaad54a72d477d",
-			"underlyingTokensAddresses": ["0x5e5a37445fadeb71f23514ae7d675ffc644e5e5a"],
+			"underlyingTokensAddresses": [
+				"0x5e5a37445fadeb71f23514ae7d675ffc644e5e5a"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 sETH-WETH Factory yVault",
 			"symbol": "yvVelo-sETH-WETH-f",
@@ -7421,7 +7543,9 @@
 		},
 		"0x6afa09145245eaedddab9333523af9984494ff34": {
 			"address": "0x6afa09145245eaedddab9333523af9984494ff34",
-			"underlyingTokensAddresses": ["0xf04458f7b21265b80fc340de7ee598e24485c5bb"],
+			"underlyingTokensAddresses": [
+				"0xf04458f7b21265b80fc340de7ee598e24485c5bb"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 LUSD-USDC.e Factory yVault",
 			"symbol": "yvVelo-LUSD-USDC.e-f",
@@ -7785,7 +7909,9 @@
 		},
 		"0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07": {
 			"address": "0x6ec9d003f0e5184ee54c1d899b414322a0f0dc07",
-			"underlyingTokensAddresses": ["0x6da98bde0068d10ddd11b468b197ea97d96f96bc"],
+			"underlyingTokensAddresses": [
+				"0x6da98bde0068d10ddd11b468b197ea97d96f96bc"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 wstETH-WETH Factory yVault",
 			"symbol": "yvVelo-wstETH-WETH-f",
@@ -7869,7 +7995,9 @@
 		},
 		"0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee": {
 			"address": "0x6f4f01a02e6037aa98d22405fea4dcab98d2a8ee",
-			"underlyingTokensAddresses": ["0x4ed90ca704f4f6f3955169f202ea35365e41b424"],
+			"underlyingTokensAddresses": [
+				"0x4ed90ca704f4f6f3955169f202ea35365e41b424"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 PERP-USDC.e Factory yVault",
 			"symbol": "yvVelo-PERP-USDC.e-f",
@@ -8009,7 +8137,9 @@
 		},
 		"0x71117bcd8fe69177eeb8857538d625209756b745": {
 			"address": "0x71117bcd8fe69177eeb8857538d625209756b745",
-			"underlyingTokensAddresses": ["0x7e0f65fab1524da9e2e5711d160541cf1199912e"],
+			"underlyingTokensAddresses": [
+				"0x7e0f65fab1524da9e2e5711d160541cf1199912e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 rETH-WETH Factory yVault",
 			"symbol": "yvVelo-rETH-WETH-f",
@@ -8527,7 +8657,9 @@
 		},
 		"0x78e20312105a85b7fe86db119cfd5cd8de81fdaa": {
 			"address": "0x78e20312105a85b7fe86db119cfd5cd8de81fdaa",
-			"underlyingTokensAddresses": ["0x667002f9dc61ebcba8ee1cbeb2ad04060388f223"],
+			"underlyingTokensAddresses": [
+				"0x667002f9dc61ebcba8ee1cbeb2ad04060388f223"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USD+-DAI+ Factory yVault",
 			"symbol": "yvVelo-USD+-DAI+-f",
@@ -8740,7 +8872,9 @@
 		},
 		"0x7bdea31f968089f93a548ddec8bb74036e8ac6e0": {
 			"address": "0x7bdea31f968089f93a548ddec8bb74036e8ac6e0",
-			"underlyingTokensAddresses": ["0xf31cbe21bbbb8056b75d6ca21e8ffd2cd38bd5c5"],
+			"underlyingTokensAddresses": [
+				"0xf31cbe21bbbb8056b75d6ca21e8ffd2cd38bd5c5"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 ERN-LUSD Factory yVault",
 			"symbol": "yvVelo-ERN-LUSD-f",
@@ -8796,7 +8930,9 @@
 		},
 		"0x7d2382b1f8af621229d33464340541db362b4907": {
 			"address": "0x7d2382b1f8af621229d33464340541db362b4907",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000042"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000042"
+			],
 			"type": "Yearn Vault",
 			"name": "OP yVault",
 			"symbol": "yvOP",
@@ -8880,7 +9016,9 @@
 		},
 		"0x7e1d451799af57ea5570d1015c342c12a918a30b": {
 			"address": "0x7e1d451799af57ea5570d1015c342c12a918a30b",
-			"underlyingTokensAddresses": ["0x1ad06ca54de04dbe9e2817f4c13ecb406dcbeaf0"],
+			"underlyingTokensAddresses": [
+				"0x1ad06ca54de04dbe9e2817f4c13ecb406dcbeaf0"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 alETH-frxETH Factory yVault",
 			"symbol": "yvVelo-alETH-frxETH-f",
@@ -8922,7 +9060,9 @@
 		},
 		"0x7edf16076e56fa4c111055fba1ff5556b8757cfb": {
 			"address": "0x7edf16076e56fa4c111055fba1ff5556b8757cfb",
-			"underlyingTokensAddresses": ["0x68f180fcce6836688e9084f035309e29bf0a2095"],
+			"underlyingTokensAddresses": [
+				"0x68f180fcce6836688e9084f035309e29bf0a2095"
+			],
 			"type": "Yearn Vault",
 			"name": "WBTC yVault",
 			"symbol": "yvWBTC",
@@ -9048,7 +9188,9 @@
 		},
 		"0x8158b34ff8a36dd9e4519d62c52913c24ad5554b": {
 			"address": "0x8158b34ff8a36dd9e4519d62c52913c24ad5554b",
-			"underlyingTokensAddresses": ["0x94b008aa00579c1307b0ef2c499ad98a8ce58e58"],
+			"underlyingTokensAddresses": [
+				"0x94b008aa00579c1307b0ef2c499ad98a8ce58e58"
+			],
 			"type": "Compound",
 			"name": "WePiggy USDT",
 			"symbol": "pUSDT",
@@ -9146,7 +9288,9 @@
 		},
 		"0x830cb4aabf786b9349d9701dd8ee073215d95174": {
 			"address": "0x830cb4aabf786b9349d9701dd8ee073215d95174",
-			"underlyingTokensAddresses": ["0x7178f61694ba9109205b8d6f686282307625e62d"],
+			"underlyingTokensAddresses": [
+				"0x7178f61694ba9109205b8d6f686282307625e62d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 wstETH-OP Factory yVault",
 			"symbol": "yvVelo-wstETH-OP-f",
@@ -9244,7 +9388,9 @@
 		},
 		"0x83b8391b9efbc5b5a38777fb22a4968c622a405a": {
 			"address": "0x83b8391b9efbc5b5a38777fb22a4968c622a405a",
-			"underlyingTokensAddresses": ["0x615b9dd61f1f9a80f5bcd33a53eb79c37b20addc"],
+			"underlyingTokensAddresses": [
+				"0x615b9dd61f1f9a80f5bcd33a53eb79c37b20addc"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 BLU-USDC.e Factory yVault",
 			"symbol": "yvVelo-BLU-USDC.e-f",
@@ -9608,7 +9754,9 @@
 		},
 		"0x87be630d279bfd004775c1166f8a488b2fffa500": {
 			"address": "0x87be630d279bfd004775c1166f8a488b2fffa500",
-			"underlyingTokensAddresses": ["0xc37a0a37664aeb3848f98c5dd5d7ae286a1e9ebd"],
+			"underlyingTokensAddresses": [
+				"0xc37a0a37664aeb3848f98c5dd5d7ae286a1e9ebd"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MAI-FRAX Factory yVault",
 			"symbol": "yvVelo-MAI-FRAX-f",
@@ -9678,7 +9826,9 @@
 		},
 		"0x88b429359665b8685b7431f5a0f6e8c719bf49aa": {
 			"address": "0x88b429359665b8685b7431f5a0f6e8c719bf49aa",
-			"underlyingTokensAddresses": ["0x8134a2fdc127549480865fb8e5a9e8a8a95a54c5"],
+			"underlyingTokensAddresses": [
+				"0x8134a2fdc127549480865fb8e5a9e8a8a95a54c5"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 VELO-USDC.e Factory yVault",
 			"symbol": "yvVelo-VELO-USDC.e-f",
@@ -9720,7 +9870,9 @@
 		},
 		"0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487": {
 			"address": "0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487",
-			"underlyingTokensAddresses": ["0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487"],
+			"underlyingTokensAddresses": [
+				"0x894134a25a5fac1c2c26f1d8fbf05111a3cb9487"
+			],
 			"type": "Yearn Vault",
 			"name": "Gravita Debt Token",
 			"symbol": "GRAI",
@@ -9874,7 +10026,9 @@
 		},
 		"0x8bf2d37acc93fde36dcffe9ba9b8b0fb5d2fa747": {
 			"address": "0x8bf2d37acc93fde36dcffe9ba9b8b0fb5d2fa747",
-			"underlyingTokensAddresses": ["0x112d7a717a617c25a91b1c261708cce6831474b4"],
+			"underlyingTokensAddresses": [
+				"0x112d7a717a617c25a91b1c261708cce6831474b4"
+			],
 			"type": "Yearn Vault",
 			"name": "Velodrome sAMMV2-pxETH/WETH Factory yVault",
 			"symbol": "yvVelo-sAMMV2-pxETH/WETH-f",
@@ -9944,7 +10098,9 @@
 		},
 		"0x8dc2b8886f289812bb6e58220e740d1f50a00197": {
 			"address": "0x8dc2b8886f289812bb6e58220e740d1f50a00197",
-			"underlyingTokensAddresses": ["0x124d69daeda338b1b31ffc8e429e39c9a991164e"],
+			"underlyingTokensAddresses": [
+				"0x124d69daeda338b1b31ffc8e429e39c9a991164e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 alUSD-USDC Factory yVault",
 			"symbol": "yvVelo-alUSD-USDC-f",
@@ -10000,7 +10156,9 @@
 		},
 		"0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9": {
 			"address": "0x8e8d635e28bb8774fd23107cc1d9b6d30ad5d0b9",
-			"underlyingTokensAddresses": ["0xb545592e38b603f4a904a5260a6ffc538bfcb424"],
+			"underlyingTokensAddresses": [
+				"0xb545592e38b603f4a904a5260a6ffc538bfcb424"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 IB-WETH Factory yVault",
 			"symbol": "yvVelo-IB-WETH-f",
@@ -10098,7 +10256,9 @@
 		},
 		"0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27": {
 			"address": "0x9056b19fde674b5ad8397e7ed3e25a1bccef0c27",
-			"underlyingTokensAddresses": ["0xaf03f51de7a0e62bf061f6fc3931cf79166b0a29"],
+			"underlyingTokensAddresses": [
+				"0xaf03f51de7a0e62bf061f6fc3931cf79166b0a29"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 alUSD-FRAX Factory yVault",
 			"symbol": "yvVelo-alUSD-FRAX-f",
@@ -10112,7 +10272,9 @@
 		},
 		"0x906122ac1b55b71248abfa552fdc6abd3356884a": {
 			"address": "0x906122ac1b55b71248abfa552fdc6abd3356884a",
-			"underlyingTokensAddresses": ["0x8453cc52f2108ff9d1636b6a108db06ac137b72f"],
+			"underlyingTokensAddresses": [
+				"0x8453cc52f2108ff9d1636b6a108db06ac137b72f"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MTA-USDC.e Factory yVault",
 			"symbol": "yvVelo-MTA-USDC.e-f",
@@ -10294,7 +10456,9 @@
 		},
 		"0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe": {
 			"address": "0x93d6d0ab2b2aa25580cb77e8c5f9d5a0cc5e08fe",
-			"underlyingTokensAddresses": ["0xe39120b27e5bfec953524402c2e261763c76519e"],
+			"underlyingTokensAddresses": [
+				"0xe39120b27e5bfec953524402c2e261763c76519e"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 UNIDX-WETH Factory yVault",
 			"symbol": "yvVelo-UNIDX-WETH-f",
@@ -10378,7 +10542,9 @@
 		},
 		"0x950f384f566b82cca6380f75ae42e2bbe9b357b2": {
 			"address": "0x950f384f566b82cca6380f75ae42e2bbe9b357b2",
-			"underlyingTokensAddresses": ["0xb2791477da69dde9cd2986349f8855b8e2da7245"],
+			"underlyingTokensAddresses": [
+				"0xb2791477da69dde9cd2986349f8855b8e2da7245"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MIM-USDC.e Factory yVault",
 			"symbol": "yvVelo-MIM-USDC.e-f",
@@ -10546,7 +10712,9 @@
 		},
 		"0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b": {
 			"address": "0x9778589c8e0417687cf5d3dd2ed7c4ec01d7e53b",
-			"underlyingTokensAddresses": ["0xc0a0adf5e3b07e383c2c1533b2f0878a3195c622"],
+			"underlyingTokensAddresses": [
+				"0xc0a0adf5e3b07e383c2c1533b2f0878a3195c622"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 UNIDX-DAI Factory yVault",
 			"symbol": "yvVelo-UNIDX-DAI-f",
@@ -10826,7 +10994,9 @@
 		},
 		"0x9d36f8f62347538440a212e9162f534f797542df": {
 			"address": "0x9d36f8f62347538440a212e9162f534f797542df",
-			"underlyingTokensAddresses": ["0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40"],
+			"underlyingTokensAddresses": [
+				"0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40"
+			],
 			"type": "Yearn Vault",
 			"name": "Satoshi",
 			"symbol": "SATS",
@@ -10938,7 +11108,9 @@
 		},
 		"0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e": {
 			"address": "0x9e724b3f65b509326a4f5ec90d4689bee6b6c78e",
-			"underlyingTokensAddresses": ["0x5e4a183fa83c52b1c55b11f2682f6a8421206633"],
+			"underlyingTokensAddresses": [
+				"0x5e4a183fa83c52b1c55b11f2682f6a8421206633"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 ERN-USDC.e Factory yVault",
 			"symbol": "yvVelo-ERN-USDC.e-f",
@@ -10994,7 +11166,9 @@
 		},
 		"0x9f4a71c262e5fe634bbe3b9b1bd5dee2bba9e441": {
 			"address": "0x9f4a71c262e5fe634bbe3b9b1bd5dee2bba9e441",
-			"underlyingTokensAddresses": ["0x605cce502dee6bd201b493782e351e645d44abbb"],
+			"underlyingTokensAddresses": [
+				"0x605cce502dee6bd201b493782e351e645d44abbb"
+			],
 			"type": "Single Strategy",
 			"name": "Prize sAMMV2-USDC/ERN - Yearn",
 			"symbol": "przsAMMV2-USDC/ERN",
@@ -11274,7 +11448,9 @@
 		},
 		"0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681": {
 			"address": "0xa31ad8d355b5223ad34fd4fd0bc854a68e7d9681",
-			"underlyingTokensAddresses": ["0xe5f28fc43bb40cdf7202ebe406793815b6f07fbd"],
+			"underlyingTokensAddresses": [
+				"0xe5f28fc43bb40cdf7202ebe406793815b6f07fbd"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 THALES-USDC.e Factory yVault",
 			"symbol": "yvVelo-THALES-USDC.e-f",
@@ -11316,7 +11492,9 @@
 		},
 		"0xa3d57625b9a6284d1265d76294443b1e39a18007": {
 			"address": "0xa3d57625b9a6284d1265d76294443b1e39a18007",
-			"underlyingTokensAddresses": ["0x605cce502dee6bd201b493782e351e645d44abbb"],
+			"underlyingTokensAddresses": [
+				"0x605cce502dee6bd201b493782e351e645d44abbb"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 ERN-USDC Factory yVault",
 			"symbol": "yvVelo-ERN-USDC-f",
@@ -11484,7 +11662,9 @@
 		},
 		"0xa628c54c850ff1077b5c954491d19ecce7e321ff": {
 			"address": "0xa628c54c850ff1077b5c954491d19ecce7e321ff",
-			"underlyingTokensAddresses": ["0x4200000000000000000000000000000000000006"],
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
 			"type": "Yearn Vault",
 			"name": "WETH yVault",
 			"symbol": "yvWETH",
@@ -11526,7 +11706,9 @@
 		},
 		"0xa7b550b3a80361d8e47e07616dc42f04c655881b": {
 			"address": "0xa7b550b3a80361d8e47e07616dc42f04c655881b",
-			"underlyingTokensAddresses": ["0x4706e50fde911525e4b904c240056c4ea0884aa6"],
+			"underlyingTokensAddresses": [
+				"0x4706e50fde911525e4b904c240056c4ea0884aa6"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 stERN-ERN Factory yVault",
 			"symbol": "yvVelo-stERN-ERN-f",
@@ -11666,7 +11848,9 @@
 		},
 		"0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f": {
 			"address": "0xaa07ca79490b3cda1a25b8fcc69b76c09c6e7a4f",
-			"underlyingTokensAddresses": ["0x41cc89b91d0abe260f2cb53c1abda07b321e71df"],
+			"underlyingTokensAddresses": [
+				"0x41cc89b91d0abe260f2cb53c1abda07b321e71df"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 CHI-DAI Factory yVault",
 			"symbol": "yvVelo-CHI-DAI-f",
@@ -11792,7 +11976,9 @@
 		},
 		"0xac8da30113238cfaf5011157cdf1e05a884cdb72": {
 			"address": "0xac8da30113238cfaf5011157cdf1e05a884cdb72",
-			"underlyingTokensAddresses": ["0x844d7d2fca6786be7de6721aabdff6957ace73a0"],
+			"underlyingTokensAddresses": [
+				"0x844d7d2fca6786be7de6721aabdff6957ace73a0"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 OVN-USD+ Factory yVault",
 			"symbol": "yvVelo-OVN-USD+-f",
@@ -11848,7 +12034,9 @@
 		},
 		"0xad17a225074191d5c8a37b50fda1ae278a2ee6a2": {
 			"address": "0xad17a225074191d5c8a37b50fda1ae278a2ee6a2",
-			"underlyingTokensAddresses": ["0x7f5c764cbc14f9669b88837ca1490cca17c31607"],
+			"underlyingTokensAddresses": [
+				"0x7f5c764cbc14f9669b88837ca1490cca17c31607"
+			],
 			"type": "Yearn Vault",
 			"name": "USDC.e yVault",
 			"symbol": "yvUSDC.e",
@@ -11988,7 +12176,9 @@
 		},
 		"0xaf20f5f19698f1d19351028cd7103b63d30de7d7": {
 			"address": "0xaf20f5f19698f1d19351028cd7103b63d30de7d7",
-			"underlyingTokensAddresses": ["0xaf20f5f19698f1d19351028cd7103b63d30de7d7"],
+			"underlyingTokensAddresses": [
+				"0xaf20f5f19698f1d19351028cd7103b63d30de7d7"
+			],
 			"type": "Yearn Vault",
 			"name": "Wagmi",
 			"symbol": "WAGMI",
@@ -12352,7 +12542,9 @@
 		},
 		"0xb3532518daca20fd14e539b0ed6c0de5c59fd2de": {
 			"address": "0xb3532518daca20fd14e539b0ed6c0de5c59fd2de",
-			"underlyingTokensAddresses": ["0x3f42dc59dc4df5cd607163bc620168f7ff7ab970"],
+			"underlyingTokensAddresses": [
+				"0x3f42dc59dc4df5cd607163bc620168f7ff7ab970"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 frxETH-WETH Factory yVault",
 			"symbol": "yvVelo-frxETH-WETH-f",
@@ -12436,7 +12628,9 @@
 		},
 		"0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3": {
 			"address": "0xb4e4cfa9971c7e1069685771dab61ca56e72e5c3",
-			"underlyingTokensAddresses": ["0x7bc5728bc2b59b45a58d9a576e2ffc5f0505b35e"],
+			"underlyingTokensAddresses": [
+				"0x7bc5728bc2b59b45a58d9a576e2ffc5f0505b35e"
+			],
 			"type": "Yearn Vault",
 			"name": "Curve sETH Pool yVault",
 			"symbol": "yvCurve-sETH",
@@ -12632,7 +12826,9 @@
 		},
 		"0xb83dbac6087592328909996a39d138e89e4b0afe": {
 			"address": "0xb83dbac6087592328909996a39d138e89e4b0afe",
-			"underlyingTokensAddresses": ["0xd330841ef9527e3bd0abc28a230c7ca8dec9423b"],
+			"underlyingTokensAddresses": [
+				"0xd330841ef9527e3bd0abc28a230c7ca8dec9423b"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USD+-FRAX Factory yVault",
 			"symbol": "yvVelo-USD+-FRAX-f",
@@ -12702,7 +12898,9 @@
 		},
 		"0xb9a14c5c760023801f8c731b4621c99f8ac211d9": {
 			"address": "0xb9a14c5c760023801f8c731b4621c99f8ac211d9",
-			"underlyingTokensAddresses": ["0x4e60495550071693bc8bdffc40033d278157eac7"],
+			"underlyingTokensAddresses": [
+				"0x4e60495550071693bc8bdffc40033d278157eac7"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 SONNE-USDC.e Factory yVault",
 			"symbol": "yvVelo-SONNE-USDC.e-f",
@@ -12828,7 +13026,9 @@
 		},
 		"0xbc61b71562b01a3a4808d3b9291a3bf743ab3361": {
 			"address": "0xbc61b71562b01a3a4808d3b9291a3bf743ab3361",
-			"underlyingTokensAddresses": ["0x6387765ffa609ab9a1da1b16c455548bfed7cbea"],
+			"underlyingTokensAddresses": [
+				"0x6387765ffa609ab9a1da1b16c455548bfed7cbea"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 LUSD-WETH Factory yVault",
 			"symbol": "yvVelo-LUSD-WETH-f",
@@ -13108,7 +13308,9 @@
 		},
 		"0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799": {
 			"address": "0xc009d857bfa8ae8d43ddf2ddbe1686063fc73799",
-			"underlyingTokensAddresses": ["0xa56a25dee5b3199a9198bbd48715ee3d0ed98378"],
+			"underlyingTokensAddresses": [
+				"0xa56a25dee5b3199a9198bbd48715ee3d0ed98378"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 DOLA-USDC Factory yVault",
 			"symbol": "yvVelo-DOLA-USDC-f",
@@ -13136,7 +13338,9 @@
 		},
 		"0xc03b43d492d904406db2d7d57e67c7e8234ba752": {
 			"address": "0xc03b43d492d904406db2d7d57e67c7e8234ba752",
-			"underlyingTokensAddresses": ["0xc03b43d492d904406db2d7d57e67c7e8234ba752"],
+			"underlyingTokensAddresses": [
+				"0xc03b43d492d904406db2d7d57e67c7e8234ba752"
+			],
 			"type": "Yearn Vault",
 			"name": "Wrapped USDR",
 			"symbol": "wUSDR",
@@ -13290,7 +13494,9 @@
 		},
 		"0xc2626acedc27cffb418680d0307c9178955a4743": {
 			"address": "0xc2626acedc27cffb418680d0307c9178955a4743",
-			"underlyingTokensAddresses": ["0xff5318f81dd791e92d51b8a54fa3538832d2890d"],
+			"underlyingTokensAddresses": [
+				"0xff5318f81dd791e92d51b8a54fa3538832d2890d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 sfrxETH-frxETH Factory yVault",
 			"symbol": "yvVelo-sfrxETH-frxETH-f",
@@ -13304,7 +13510,9 @@
 		},
 		"0xc26921b5b9ee80773774d36c84328ccb22c3a819": {
 			"address": "0xc26921b5b9ee80773774d36c84328ccb22c3a819",
-			"underlyingTokensAddresses": ["0x139283255069ea5deef6170699aaef7139526f1f"],
+			"underlyingTokensAddresses": [
+				"0x139283255069ea5deef6170699aaef7139526f1f"
+			],
 			"type": "Compound",
 			"name": "Wrapped OptiDoge",
 			"symbol": "wOptiDoge",
@@ -13388,7 +13596,9 @@
 		},
 		"0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7": {
 			"address": "0xc328d83883f5f90e1108d4dd7a18ffca17ae74d7",
-			"underlyingTokensAddresses": ["0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"],
+			"underlyingTokensAddresses": [
+				"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"
+			],
 			"type": "Yearn Vault",
 			"name": "sUSD yVault",
 			"symbol": "yvsUSD",
@@ -13402,7 +13612,9 @@
 		},
 		"0xc3439ba7db7566ed0def55c179ed9b3ba273a67f": {
 			"address": "0xc3439ba7db7566ed0def55c179ed9b3ba273a67f",
-			"underlyingTokensAddresses": ["0xf3c45b45223df6071a478851b9c17e0630fdf535"],
+			"underlyingTokensAddresses": [
+				"0xf3c45b45223df6071a478851b9c17e0630fdf535"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 EXA-WETH Factory yVault",
 			"symbol": "yvVelo-EXA-WETH-f",
@@ -13430,7 +13642,9 @@
 		},
 		"0xc3566662862c26ff56e3e709dc021902cc68becd": {
 			"address": "0xc3566662862c26ff56e3e709dc021902cc68becd",
-			"underlyingTokensAddresses": ["0x2e931de1fcb2681dc98601e0b513308da9c5ceae"],
+			"underlyingTokensAddresses": [
+				"0x2e931de1fcb2681dc98601e0b513308da9c5ceae"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 TAROT-USDC.e Factory yVault",
 			"symbol": "yvVelo-TAROT-USDC.e-f",
@@ -13570,7 +13784,9 @@
 		},
 		"0xc45a479877e1e9dfe9fcd4056c699575a1045daa": {
 			"address": "0xc45a479877e1e9dfe9fcd4056c699575a1045daa",
-			"underlyingTokensAddresses": ["0x1f32b1c2345538c0c6f582fcb022739c4a194ebb"],
+			"underlyingTokensAddresses": [
+				"0x1f32b1c2345538c0c6f582fcb022739c4a194ebb"
+			],
 			"type": "AAVE V2",
 			"name": "Aave Optimism wstETH",
 			"symbol": "aOptwstETH",
@@ -13696,7 +13912,9 @@
 		},
 		"0xc608dfb90a430df79a8a1edbc8be7f1a0eb4e763": {
 			"address": "0xc608dfb90a430df79a8a1edbc8be7f1a0eb4e763",
-			"underlyingTokensAddresses": ["0xc608dfb90a430df79a8a1edbc8be7f1a0eb4e763"],
+			"underlyingTokensAddresses": [
+				"0xc608dfb90a430df79a8a1edbc8be7f1a0eb4e763"
+			],
 			"type": "Yearn Vault",
 			"name": "Fractional ETH",
 			"symbol": "fETH",
@@ -13794,7 +14012,9 @@
 		},
 		"0xc86b70e2c16c5fb5315e4663737e0e077abfc395": {
 			"address": "0xc86b70e2c16c5fb5315e4663737e0e077abfc395",
-			"underlyingTokensAddresses": ["0xe9581d0f1a628b038fc8b2a7f5a7d904f0e2f937"],
+			"underlyingTokensAddresses": [
+				"0xe9581d0f1a628b038fc8b2a7f5a7d904f0e2f937"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 OP-VELO Factory yVault",
 			"symbol": "yvVelo-OP-VELO-f",
@@ -14158,7 +14378,9 @@
 		},
 		"0xcf6abb37336e3a756b564e2c29222bf187a0de2a": {
 			"address": "0xcf6abb37336e3a756b564e2c29222bf187a0de2a",
-			"underlyingTokensAddresses": ["0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"],
+			"underlyingTokensAddresses": [
+				"0x8c6f28f2f1a3c87f0f938b96d27520d9751ec8d9"
+			],
 			"type": "Single Strategy",
 			"name": "Prize sUSD - Yearn",
 			"symbol": "przsUSD",
@@ -14172,7 +14394,9 @@
 		},
 		"0xcf6bef33c49824226fb9defcdc3b1de11f207db7": {
 			"address": "0xcf6bef33c49824226fb9defcdc3b1de11f207db7",
-			"underlyingTokensAddresses": ["0x8542dd4744edea38b8a9306268b08f4d26d38581"],
+			"underlyingTokensAddresses": [
+				"0x8542dd4744edea38b8a9306268b08f4d26d38581"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 FRAX-USDC.e Factory yVault",
 			"symbol": "yvVelo-FRAX-USDC.e-f",
@@ -14242,7 +14466,9 @@
 		},
 		"0xd02ce9e211279ab3f414ff7a661518f9173780cb": {
 			"address": "0xd02ce9e211279ab3f414ff7a661518f9173780cb",
-			"underlyingTokensAddresses": ["0xfa09479d72e2b3f8b6df63399772237ad6658d76"],
+			"underlyingTokensAddresses": [
+				"0xfa09479d72e2b3f8b6df63399772237ad6658d76"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 MAI-alUSD Factory yVault",
 			"symbol": "yvVelo-MAI-alUSD-f",
@@ -14270,7 +14496,9 @@
 		},
 		"0xd0d2ac44cc842079e978bb11b094764f7d0dec6a": {
 			"address": "0xd0d2ac44cc842079e978bb11b094764f7d0dec6a",
-			"underlyingTokensAddresses": ["0x917aa69d539d6518440dd0bea2eaac142a8d5610"],
+			"underlyingTokensAddresses": [
+				"0x917aa69d539d6518440dd0bea2eaac142a8d5610"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 msETH-WETH Factory yVault",
 			"symbol": "yvVelo-msETH-WETH-f",
@@ -14494,7 +14722,9 @@
 		},
 		"0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c": {
 			"address": "0xd3668ca9df5d1bba8d264b8d10dd2f0c5962cc4c",
-			"underlyingTokensAddresses": ["0xfff37730744930cb61be34c0014068f4f1ec28cf"],
+			"underlyingTokensAddresses": [
+				"0xfff37730744930cb61be34c0014068f4f1ec28cf"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 ERN-WETH Factory yVault",
 			"symbol": "yvVelo-ERN-WETH-f",
@@ -14550,7 +14780,9 @@
 		},
 		"0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae": {
 			"address": "0xd402f3c8a999bfe97f8644e80dbd57e2ba7704ae",
-			"underlyingTokensAddresses": ["0x1c8d7fc2eaa85af18188f7619b99f939db34836d"],
+			"underlyingTokensAddresses": [
+				"0x1c8d7fc2eaa85af18188f7619b99f939db34836d"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 QI-USDC.e Factory yVault",
 			"symbol": "yvVelo-QI-USDC.e-f",
@@ -14788,7 +15020,9 @@
 		},
 		"0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5": {
 			"address": "0xd7ee0e2d232bcbefa74ef36a439d0de880c6ece5",
-			"underlyingTokensAddresses": ["0x7a7f1187c4710010db17d0a9ad3fce85e6ecd90a"],
+			"underlyingTokensAddresses": [
+				"0x7a7f1187c4710010db17d0a9ad3fce85e6ecd90a"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 RED-VELO Factory yVault",
 			"symbol": "yvVelo-RED-VELO-f",
@@ -15096,7 +15330,9 @@
 		},
 		"0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f": {
 			"address": "0xdd76a3c91a358b1093de52cb82af5ec3282f6f7f",
-			"underlyingTokensAddresses": ["0xda0253a7cdccc4b4defbbef863dba1294bf5e3b1"],
+			"underlyingTokensAddresses": [
+				"0xda0253a7cdccc4b4defbbef863dba1294bf5e3b1"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 TAROT-OP Factory yVault",
 			"symbol": "yvVelo-TAROT-OP-f",
@@ -15110,7 +15346,9 @@
 		},
 		"0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5": {
 			"address": "0xdddcaee873f2d9df0e18a80709ef2b396d4a6ea5",
-			"underlyingTokensAddresses": ["0xd25711edfbf747efce181442cc1d8f5f8fc8a0d3"],
+			"underlyingTokensAddresses": [
+				"0xd25711edfbf747efce181442cc1d8f5f8fc8a0d3"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 OP-WETH Factory yVault",
 			"symbol": "yvVelo-OP-WETH-f",
@@ -16314,7 +16552,9 @@
 		},
 		"0xf39b6196e6bb16cf0f37e4741a83413cc329539d": {
 			"address": "0xf39b6196e6bb16cf0f37e4741a83413cc329539d",
-			"underlyingTokensAddresses": ["0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4"],
+			"underlyingTokensAddresses": [
+				"0xdc2b136a9c1fd2a0b9497bb8b11823c2fbf47ac4"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 GRAIN-WETH Factory yVault",
 			"symbol": "yvVelo-GRAIN-WETH-f",
@@ -16468,7 +16708,9 @@
 		},
 		"0xf5a8af3c13c0f6c139f58aac8a549100484e0aad": {
 			"address": "0xf5a8af3c13c0f6c139f58aac8a549100484e0aad",
-			"underlyingTokensAddresses": ["0x6e6046e9b5e3d90eac2abba610bca725834ca5b3"],
+			"underlyingTokensAddresses": [
+				"0x6e6046e9b5e3d90eac2abba610bca725834ca5b3"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 UNLOCK-VELO Factory yVault",
 			"symbol": "yvVelo-UNLOCK-VELO-f",
@@ -16524,7 +16766,9 @@
 		},
 		"0xf6b272134a193df5b04332e73184e5b40b8eb810": {
 			"address": "0xf6b272134a193df5b04332e73184e5b40b8eb810",
-			"underlyingTokensAddresses": ["0x56770b94279539416855fe29ef14b26438b5e421"],
+			"underlyingTokensAddresses": [
+				"0x56770b94279539416855fe29ef14b26438b5e421"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 STG-USDC.e Factory yVault",
 			"symbol": "yvVelo-STG-USDC.e-f",
@@ -16622,7 +16866,9 @@
 		},
 		"0xf7d66b41cd4241eae450fd9d2d6995754634d9f3": {
 			"address": "0xf7d66b41cd4241eae450fd9d2d6995754634d9f3",
-			"underlyingTokensAddresses": ["0xa1055762336f92b4b8d2edc032a0ce45ead6280a"],
+			"underlyingTokensAddresses": [
+				"0xa1055762336f92b4b8d2edc032a0ce45ead6280a"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 alETH-WETH Factory yVault",
 			"symbol": "yvVelo-alETH-WETH-f",
@@ -16650,7 +16896,9 @@
 		},
 		"0xf89fdbbce1a707061e9d59b8e4387f89798b4d10": {
 			"address": "0xf89fdbbce1a707061e9d59b8e4387f89798b4d10",
-			"underlyingTokensAddresses": ["0x0493bf8b6dbb159ce2db2e0e8403e753abd1235b"],
+			"underlyingTokensAddresses": [
+				"0x0493bf8b6dbb159ce2db2e0e8403e753abd1235b"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 USDC.e-WETH Factory yVault",
 			"symbol": "yvVelo-USDC.e-WETH-f",
@@ -16790,7 +17038,9 @@
 		},
 		"0xfa3c6122906f2a2d644409dbb507db1060d10b3a": {
 			"address": "0xfa3c6122906f2a2d644409dbb507db1060d10b3a",
-			"underlyingTokensAddresses": ["0x4e316557f63c2156eafdfec08f31df4957136203"],
+			"underlyingTokensAddresses": [
+				"0x4e316557f63c2156eafdfec08f31df4957136203"
+			],
 			"type": "Automated Yearn Vault",
 			"name": "Velodrome v2 RED-OP Factory yVault",
 			"symbol": "yvVelo-RED-OP-f",
@@ -16888,7 +17138,9 @@
 		},
 		"0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de": {
 			"address": "0xfaee21d0f0af88ee72bb6d68e54a90e6ec2616de",
-			"underlyingTokensAddresses": ["0x94b008aa00579c1307b0ef2c499ad98a8ce58e58"],
+			"underlyingTokensAddresses": [
+				"0x94b008aa00579c1307b0ef2c499ad98a8ce58e58"
+			],
 			"type": "Yearn Vault",
 			"name": "USDT yVault",
 			"symbol": "yvUSDT",
@@ -16958,7 +17210,9 @@
 		},
 		"0xfbef713696465ddab297164c3b6a0122d92a3bac": {
 			"address": "0xfbef713696465ddab297164c3b6a0122d92a3bac",
-			"underlyingTokensAddresses": ["0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"],
+			"underlyingTokensAddresses": [
+				"0xda10009cbd5d07dd0cecc66161fc93d7c9000da1"
+			],
 			"type": "Yearn Vault",
 			"name": "DAI yVault",
 			"symbol": "yvDAI",

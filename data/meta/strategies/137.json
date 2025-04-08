@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-03-24T11:07:14.462299+01:00",
+	"lastUpdate": "2025-04-08T09:58:41.861266+02:00",
 	"version": {
 		"major": 0,
 		"minor": 9,
-		"patch": 276
+		"patch": 322
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -51,13 +51,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "5063682847709076869461",
+			"lastTotalDebt": "5063695989494998272149",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742320837",
-			"lastDebtRatio": "106",
-			"netAPR": 0.04590209953545532,
+			"lastReport": "1743531237",
+			"lastDebtRatio": "112",
+			"netAPR": 0.04185945181391926,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -74,18 +74,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "active",
+			"status": "unallocated",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "128654697056",
+			"lastTotalDebt": "0",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742571151",
-			"lastDebtRatio": "2709",
-			"netAPR": 0.04744690935407636,
-			"aprType": "forward",
+			"lastReport": "1743076843",
+			"lastDebtRatio": "0",
+			"netAPR": 0,
+			"aprType": "current",
 			"protocols": null
 		},
 		"0x12c3Ad898e8eB1C0ec0Bb74f9748F36C46593F68_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
@@ -105,15 +105,17 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "132678473567535723425452",
+			"lastTotalDebt": "108757123144087722275738",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320873",
-			"lastDebtRatio": "9062",
-			"netAPR": 0.008885532072011593,
+			"lastReport": "1743531265",
+			"lastDebtRatio": "7548",
+			"netAPR": 0.0081148497305783,
 			"aprType": "forward",
-			"protocols": ["Aave"]
+			"protocols": [
+				"Aave"
+			]
 		},
 		"0x2a42A69F48EfffDF2d4Fb079Af60D98D3e34D49C_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
@@ -140,7 +142,9 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": ["Compound Finance"]
+			"protocols": [
+				"Compound Finance"
+			]
 		},
 		"0x2c5d0c3DB75D2f8A4957c74BE09194a9271Cf28D_0xBb287E6017d3DEb0e2E65061e8684eab21060123": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
@@ -240,13 +244,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "346337889273",
+			"lastTotalDebt": "406208913340",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320845",
-			"lastDebtRatio": "7291",
-			"netAPR": 0.03349056479995394,
+			"lastReport": "1743531245",
+			"lastDebtRatio": "8783",
+			"netAPR": 0.02499820049171042,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -329,7 +333,9 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": ["Compound Finance"]
+			"protocols": [
+				"Compound Finance"
+			]
 		},
 		"0x52367C8E381EDFb068E9fBa1e7E9B2C847042897_0x34b9421Fe3d52191B64bC32ec1aB764dcBcDbF5e": {
 			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
@@ -344,18 +350,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "active",
+			"status": "unallocated",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "226508076883",
+			"lastTotalDebt": "0",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320867",
-			"lastDebtRatio": "10000",
-			"netAPR": 0.03560533371647079,
-			"aprType": "forward",
+			"lastReport": "1743077297",
+			"lastDebtRatio": "0",
+			"netAPR": 0,
+			"aprType": "current",
 			"protocols": null
 		},
 		"0x52367C8E381EDFb068E9fBa1e7E9B2C847042897_0xE4244bf798f63881591113126b64493ac36Ac525": {
@@ -506,18 +512,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "222461328113",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742241541",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
+			"lastReport": "1743683252",
+			"lastDebtRatio": "10000",
+			"netAPR": 0.000993949454586307,
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0x6Ed737EF2Ef74e04005dC9810366De5ad38Cf7D6_0x28F53bA70E5c8ce8D03b1FaD41E9dF11Bb646c36": {
@@ -545,7 +551,9 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": ["stMATIC"]
+			"protocols": [
+				"stMATIC"
+			]
 		},
 		"0x7486325A843590b84c98563c6962C58655569EcA_0x305F25377d0a39091e99B975558b1bdfC3975654": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
@@ -572,7 +580,9 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": ["LIDO"]
+			"protocols": [
+				"LIDO"
+			]
 		},
 		"0x8BBa7AFd0f9B1b664C161EC31d812a8Ec15f7e1a_0x336f8B2cD78Cd280116d2Db68b7cd983ee3D53aC": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
@@ -641,18 +651,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "56295795055",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742241541",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
+			"lastReport": "1743683246",
+			"lastDebtRatio": "1217",
+			"netAPR": 0.02499820049171042,
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0xA013Fbd4b711f9ded6fB09C1c0d358E2FbC2EAA0_0xD7be0Ec4f6D7ec344311F8284b448f5BcCfD0fD1": {
@@ -695,19 +705,21 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "active",
+			"status": "unallocated",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "21330338578975823167",
+			"lastTotalDebt": "0",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320897",
-			"lastDebtRatio": "9891",
-			"netAPR": 0.006557922414551776,
-			"aprType": "forward",
-			"protocols": ["Aave"]
+			"lastReport": "1743076843",
+			"lastDebtRatio": "0",
+			"netAPR": 0,
+			"aprType": "current",
+			"protocols": [
+				"Aave"
+			]
 		},
 		"0xBEDA9A5300393e00229dc15cC54D5185E7646c56_0x41f63Bd9180Eaaa58185E1a88E2B22Cea52634b9": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
@@ -749,18 +761,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "21515117943980064556",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742241541",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
+			"lastReport": "1743683260",
+			"lastDebtRatio": "10000",
+			"netAPR": 0.00012075953259582661,
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0xb1403908F772E4374BB151F7C67E88761a0Eb4f1_0x336f8B2cD78Cd280116d2Db68b7cd983ee3D53aC": {
@@ -807,15 +819,17 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "309308849065",
+			"lastTotalDebt": "266931621983",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1742320861",
-			"lastDebtRatio": "5397",
-			"netAPR": 0.047729198170687326,
+			"lastReport": "1743531257",
+			"lastDebtRatio": "4665",
+			"netAPR": 0.04056719836551537,
 			"aprType": "forward",
-			"protocols": ["Compound Finance"]
+			"protocols": [
+				"Compound Finance"
+			]
 		},
 		"0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780_0x336f8B2cD78Cd280116d2Db68b7cd983ee3D53aC": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -861,15 +875,17 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "263826751248",
+			"lastTotalDebt": "305307857848",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320851",
-			"lastDebtRatio": "4603",
-			"netAPR": 0.03430168730704786,
+			"lastReport": "1743531251",
+			"lastDebtRatio": "5335",
+			"netAPR": 0.03139366147466571,
 			"aprType": "forward",
-			"protocols": ["Aave"]
+			"protocols": [
+				"Aave"
+			]
 		},
 		"0xdB92B89Ca415c0dab40Dc96E99Fc411C08F20780_0xF54a15F6da443041Bb075959EA66EE47655DDFcA": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
@@ -942,13 +958,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "471667748451652610532262",
+			"lastTotalDebt": "447569426813374185393199",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1742320829",
-			"lastDebtRatio": "9894",
-			"netAPR": 0.04590209953545532,
+			"lastReport": "1743531229",
+			"lastDebtRatio": "9888",
+			"netAPR": 0.04185945181391926,
 			"aprType": "forward",
 			"protocols": null
 		},

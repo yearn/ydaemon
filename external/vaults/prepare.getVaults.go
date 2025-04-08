@@ -127,7 +127,7 @@ func getVaults(
 	** 4. Using a capacity hint for the allVaults slice to reduce reallocations
 	**************************************************************************************************/
 	// Provide capacity hint based on typical vault counts to reduce reallocations
-	estimatedVaultCount := len(chains) * 50 // Rough estimate of 50 vaults per chain
+	estimatedVaultCount := len(chains) * 300 // Rough estimate of 300 vaults per chain
 	allVaults := make([]TSimplifiedExternalVault, 0, estimatedVaultCount)
 
 	for _, chainID := range chains {
@@ -181,15 +181,6 @@ func getVaults(
 			newVault.FeaturingScore = newVault.TVL.TVL * APRAsFloat
 			if newVault.Details.IsHighlighted {
 				newVault.FeaturingScore = newVault.FeaturingScore * HIGHLIGHTING_MULTIPLIER
-			}
-
-			// Check if strategies are required - only retrieve the count if needed
-			if stratCon != `` {
-				_, strategiesSlice := storage.ListStrategiesForVault(chainID, currentVault.Address)
-				if len(strategiesSlice) == 0 {
-					// Skip vaults without strategies if needed based on migrable condition
-					continue
-				}
 			}
 
 			// Apply migrable-specific filters

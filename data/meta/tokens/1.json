@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-08T09:59:10.877442+02:00",
+	"lastUpdate": "2025-04-08T20:38:00.564165+02:00",
 	"version": {
 		"major": 0,
-		"minor": 106,
+		"minor": 107,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -137,6 +137,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x005F893EcD7bF9667195642f7649DA8163e23658/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x008fe64e71602843ce310585e6bbe85c3452c2d5": {
+			"address": "0x008fe64e71602843ce310585e6bbe85c3452c2d5",
+			"underlyingTokensAddresses": [
+				"0x6130e6cd924a40b24703407f246966d7435d4998"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge LP Yearn PRISMA Vault Cove Rewards Gauge",
+			"symbol": "yG-lp-yPRISMA-gauge",
+			"displayName": "yGauge LP Yearn PRISMA Vault Cove Rewards Gauge",
+			"displaySymbol": "yG-lp-yPRISMA-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x008FE64E71602843cE310585e6bBe85c3452c2d5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -1488,6 +1504,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x093f4fca4b71912edb33b2d4bb92e5b85658d833": {
+			"address": "0x093f4fca4b71912edb33b2d4bb92e5b85658d833",
+			"underlyingTokensAddresses": [
+				"0x18f365ecce58fa865ec9fb027e9175125db93b91"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvCurve-yETH-f-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvCurve-yETH-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x093f4FCA4b71912EDb33B2d4Bb92E5b85658D833/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x094be6bd31d7b860f7d2c1f280fd09f0463d7e67": {
 			"address": "0x094be6bd31d7b860f7d2c1f280fd09f0463d7e67",
 			"underlyingTokensAddresses": [],
@@ -2631,6 +2663,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x133dAa2Fa268b36E088b2BE1358857D41a8369eb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x13b0f3bb3934539dcc8aba18c27f6808fda17a19": {
+			"address": "0x13b0f3bb3934539dcc8aba18c27f6808fda17a19",
+			"underlyingTokensAddresses": [
+				"0x7fd8af959b54a677a1d8f92265bd0714274c56a3"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge Curve YFI-ETH Pool yVault Cove Rewards Gauge",
+			"symbol": "yG-yvCurve-YFIETH-gauge",
+			"displayName": "yGauge Curve YFI-ETH Pool yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvCurve-YFIETH-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x13b0F3bB3934539dcC8ABa18c27F6808FDa17A19/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4146,6 +4194,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1E86A593E55215957C4755f1BE19a229AF3286f6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1eb1d7fec395748cff0e437f4b3e8a850550987d": {
+			"address": "0x1eb1d7fec395748cff0e437f4b3e8a850550987d",
+			"underlyingTokensAddresses": [
+				"0x81f78def7a3a8b0f6aaba69925efc69e70239d95"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvUSDS-1-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvUSDS-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1eB1d7fEc395748cFF0e437F4B3e8A850550987d/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5743,6 +5807,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2b95A1Dcc3D405535f9ed33c219ab38E8d7e0884/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2bcc065433c608b2e71ea80405e260ca9b40ff65": {
+			"address": "0x2bcc065433c608b2e71ea80405e260ca9b40ff65",
+			"underlyingTokensAddresses": [
+				"0xfe08fc631be2da2b47aa6adba275adab2197c0cd"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-lp-yCRVv2-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-lp-yCRVv2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2BCc065433c608B2e71eA80405E260cA9B40ff65/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9317,6 +9397,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x45380b6249a1005bec67928af03b8aa8ec4eadcc": {
+			"address": "0x45380b6249a1005bec67928af03b8aa8ec4eadcc",
+			"underlyingTokensAddresses": [
+				"0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvDAI-2-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvDAI-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x45380B6249a1005bec67928AF03b8aA8ec4eadCC/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x453d92c7d4263201c69aacfaf589ed14202d83a4": {
 			"address": "0x453d92c7d4263201c69aacfaf589ed14202d83a4",
 			"underlyingTokensAddresses": [
@@ -10126,6 +10222,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4be42460681fcf7ed6bb5e2c2638251f2a586017": {
+			"address": "0x4be42460681fcf7ed6bb5e2c2638251f2a586017",
+			"underlyingTokensAddresses": [
+				"0x5943f7090282eb66575662eadf7c60a717a7ce4d"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge WETH-1 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvWETH-1-gauge",
+			"displayName": "yGauge WETH-1 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvWETH-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4be42460681FCF7ed6Bb5E2C2638251f2a586017/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4c19596f5aaff459fa38b0f7ed92f11ae6543784": {
 			"address": "0x4c19596f5aaff459fa38b0f7ed92f11ae6543784",
 			"underlyingTokensAddresses": [],
@@ -10406,6 +10518,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4d840966887673132ec61ab4ffb5e3c26cb1f4bd": {
+			"address": "0x4d840966887673132ec61ab4ffb5e3c26cb1f4bd",
+			"underlyingTokensAddresses": [
+				"0xf96e4c5eee8095f918ed3312b3de3d68156798f8"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvCurve-COVEYFI-f-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvCurve-COVEYFI-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4D840966887673132Ec61aB4Ffb5e3c26cB1F4BD/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4d968a5db8da0822a2f08840f553de4129aae5f3": {
 			"address": "0x4d968a5db8da0822a2f08840f553de4129aae5f3",
 			"underlyingTokensAddresses": [
@@ -10542,6 +10670,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4e69d3b01a5693dbff8dc0ad340ebf816b38d162": {
+			"address": "0x4e69d3b01a5693dbff8dc0ad340ebf816b38d162",
+			"underlyingTokensAddresses": [
+				"0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvWETH-2-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvWETH-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4E69d3b01a5693DBff8dC0AD340eBF816b38D162/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10900,6 +11044,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x510Db3F7d1d6e9F24B0c452b561257292DD6E4a8/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x511ecc2baa35063315d75fcfd3754fd242ad8318": {
+			"address": "0x511ecc2baa35063315d75fcfd3754fd242ad8318",
+			"underlyingTokensAddresses": [
+				"0x97a597cbca514afcc29cd300f04f98d9dbaa3624"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge Curve COVEYFI Factory yVault Cove Rewards Gauge",
+			"symbol": "yG-yvCurve-COVEYFI-f-gauge",
+			"displayName": "yGauge Curve COVEYFI Factory yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvCurve-COVEYFI-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x511ecC2BaA35063315d75fCFd3754Fd242AD8318/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x5120feabd5c21883a4696dbcc5d123d6270637e9": {
@@ -12042,6 +12202,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x59a06b97b2d566B9Dee2a368EaC8787Cfa57f95D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x59d7bc6260f9424e843dafc07c6950da6cd806a1": {
+			"address": "0x59d7bc6260f9424e843dafc07c6950da6cd806a1",
+			"underlyingTokensAddresses": [
+				"0x107717c98c8125a94d3d2cc82b86a1b705f3a27c"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge LP Yearn CRV Vault v2 Cove Rewards Gauge",
+			"symbol": "yG-lp-yCRVv2-gauge",
+			"displayName": "yGauge LP Yearn CRV Vault v2 Cove Rewards Gauge",
+			"displaySymbol": "yG-lp-yCRVv2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x59D7Bc6260f9424E843dafc07C6950DA6CD806a1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13820,6 +13996,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x66afc16e2facf4eea0712edebe0b96c5f51606fa": {
+			"address": "0x66afc16e2facf4eea0712edebe0b96c5f51606fa",
+			"underlyingTokensAddresses": [
+				"0x87588d3fbcdff1bf84555f0a22056d94534a74a6"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvUSDC-1-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvUSDC-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x66Afc16E2FaCf4EeA0712EDEBE0B96C5f51606Fa/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x66c68a7bcc4cbcab43a2947a529765d86d4ef14f": {
 			"address": "0x66c68a7bcc4cbcab43a2947a529765d86d4ef14f",
 			"underlyingTokensAddresses": [],
@@ -14778,6 +14970,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6c9687c19b5ef70f3b7ba4c0a719100a6608e886": {
+			"address": "0x6c9687c19b5ef70f3b7ba4c0a719100a6608e886",
+			"underlyingTokensAddresses": [
+				"0x38e3d865e34f7367a69f096c80a4fc329db38bf4"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge DAI-2 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvDAI-2-gauge",
+			"displayName": "yGauge DAI-2 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvDAI-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6C9687C19b5Ef70f3b7ba4C0a719100a6608E886/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6c9f097e044506712b58eac670c9a5fd4bccef13": {
 			"address": "0x6c9f097e044506712b58eac670c9a5fd4bccef13",
 			"underlyingTokensAddresses": [],
@@ -15673,6 +15881,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x730A5E2AcEbccAA5e9095723B3CB862739DA793c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x73127e809387747fe516aed11a977a8e964693d1": {
+			"address": "0x73127e809387747fe516aed11a977a8e964693d1",
+			"underlyingTokensAddresses": [
+				"0x71c3223d6f836f84caa7ab5a68aab6ece21a9f3b"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge crvUSD-2 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvcrvUSD-2-gauge",
+			"displayName": "yGauge crvUSD-2 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvcrvUSD-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x73127e809387747fe516AED11a977a8E964693d1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16744,6 +16968,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7c37d1ca716c4519becc9bc0ceea065c88caf98b": {
+			"address": "0x7c37d1ca716c4519becc9bc0ceea065c88caf98b",
+			"underlyingTokensAddresses": [
+				"0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvcrvUSD-2-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvcrvUSD-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7c37d1Ca716c4519BEcc9bC0CEea065C88caF98B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7c7569585ba5e7f5c0b1d18ab630d1769ca27193": {
 			"address": "0x7c7569585ba5e7f5c0b1d18ab630d1769ca27193",
 			"underlyingTokensAddresses": [
@@ -17023,6 +17263,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7F42F0389F3DA72447DD69149FbB3DA2af4EfAb3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7f43760691340ce4dde147b2d3501d30a5e917e3": {
+			"address": "0x7f43760691340ce4dde147b2d3501d30a5e917e3",
+			"underlyingTokensAddresses": [
+				"0x128e72dfd8b00cbf9d12cb75e846ac87b83ddfc9"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge DAI-1 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvDAI-1-gauge",
+			"displayName": "yGauge DAI-1 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvDAI-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7F43760691340CE4DDE147b2D3501D30a5e917e3/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -19524,6 +19780,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x90759801579208B28D2D36D13b1ED7443D1b717F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x90b28aa7df2efaaad4582afaf4d2a1c61519a245": {
+			"address": "0x90b28aa7df2efaaad4582afaf4d2a1c61519a245",
+			"underlyingTokensAddresses": [
+				"0x28b2dc219c047b10f353caa2934ad8803e089a88"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvDAI-1-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvDAI-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x90B28aa7Df2eFaaAD4582afaF4D2a1c61519A245/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23165,6 +23437,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xab91485dbff271bd7f4cc0664e9974fab2b2ee96": {
+			"address": "0xab91485dbff271bd7f4cc0664e9974fab2b2ee96",
+			"underlyingTokensAddresses": [
+				"0xd57aea3686d623da2dcebc87010a4f2f38ac7b15"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge USDS-1 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvUSDS-1-gauge",
+			"displayName": "yGauge USDS-1 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvUSDS-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xAB91485dbff271Bd7F4Cc0664E9974fAb2B2eE96/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xabb4f186f67c6517a9cafc54a5b93cff2aa4c5eb": {
 			"address": "0xabb4f186f67c6517a9cafc54a5b93cff2aa4c5eb",
 			"underlyingTokensAddresses": [],
@@ -23356,6 +23644,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xac440d0eE23FA69632Aa731322C2a480dD1376e4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xac553bde3c4c65caf1f5b6f9c82ec549ec1a48ca": {
+			"address": "0xac553bde3c4c65caf1f5b6f9c82ec549ec1a48ca",
+			"underlyingTokensAddresses": [
+				"0x81d93531720d86f0491dee7d03f30b3b5ac24e59"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge Curve yETH Factory yVault Cove Rewards Gauge",
+			"symbol": "yG-yvCurve-yETH-f-gauge",
+			"displayName": "yGauge Curve yETH Factory yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvCurve-yETH-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xAc553BDE3c4c65cAf1F5B6f9c82ec549Ec1A48Ca/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24349,6 +24653,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb393273bace7c8fd0b8ed93d6692ccc7a3fd44ef": {
+			"address": "0xb393273bace7c8fd0b8ed93d6692ccc7a3fd44ef",
+			"underlyingTokensAddresses": [
+				"0x622fa41799406b120f9a40da843d358b7b2cfee3"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge USDC-1 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvUSDC-1-gauge",
+			"displayName": "yGauge USDC-1 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvUSDC-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xB393273baCe7C8fD0b8eD93D6692CcC7A3FD44EF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb3ad645db386d7f6d753b2b9c3f4b853da6890b8": {
 			"address": "0xb3ad645db386d7f6d753b2b9c3f4b853da6890b8",
 			"underlyingTokensAddresses": [],
@@ -24596,6 +24916,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xB54E6AADBF1ac1a3EF2A56E358706F0f8E320a03/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb5907b7913f4dc10c5c0fc75c570c7d78d16768f": {
+			"address": "0xb5907b7913f4dc10c5c0fc75c570c7d78d16768f",
+			"underlyingTokensAddresses": [
+				"0x120b128cf1a5117fe8e9e12b79b3437e7396bd14"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvCurve-dYFIETH-f-f-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvCurve-dYFIETH-f-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xb5907b7913F4dc10C5c0fc75c570c7D78D16768F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27030,6 +27366,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc55126051B22eBb829D00368f4B12Bde432de5Da/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc553b0ed5640ce5cdb8efc11f5515f06b1b3b412": {
+			"address": "0xc553b0ed5640ce5cdb8efc11f5515f06b1b3b412",
+			"underlyingTokensAddresses": [
+				"0x8e2485942b399ea41f3c910c1bb8567128f79859"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge WETH-2 yVault Cove Rewards Gauge",
+			"symbol": "yG-yvWETH-2-gauge",
+			"displayName": "yGauge WETH-2 yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvWETH-2-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xc553b0Ed5640Ce5cDB8EFC11f5515F06B1b3b412/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -31438,6 +31790,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe4f9305d9864b24f4bc50b966f7b92c56347fe31": {
+			"address": "0xe4f9305d9864b24f4bc50b966f7b92c56347fe31",
+			"underlyingTokensAddresses": [
+				"0x28da6de3e804bddf0ad237cfa6048f2930d0b4dc"
+			],
+			"type": "Single Strategy",
+			"name": "yGauge Curve dYFIETH-f Factory yVault Cove Rewards Gauge",
+			"symbol": "yG-yvCurve-dYFIETH-f-f-gauge",
+			"displayName": "yGauge Curve dYFIETH-f Factory yVault Cove Rewards Gauge",
+			"displaySymbol": "yG-yvCurve-dYFIETH-f-f-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe4F9305d9864B24F4bc50b966f7b92C56347fe31/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42": {
 			"address": "0xe510e87d0ef7d987ed1baf8e1d7aaef5b9e3db42",
 			"underlyingTokensAddresses": [
@@ -32453,6 +32821,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0xed08b03baeab9eef24f8aaa7c752f34a3264992e": {
+			"address": "0xed08b03baeab9eef24f8aaa7c752f34a3264992e",
+			"underlyingTokensAddresses": [
+				"0x81d40243c649f7d6092295f50f4b1d3a8e53da99"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvWETH-1-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvWETH-1-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xED08B03bAeAB9EEF24F8AAa7c752f34a3264992e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xed1480d12be41d92f36f5f7bdd88212e381a3677": {
 			"address": "0xed1480d12be41d92f36f5f7bdd88212e381a3677",
 			"underlyingTokensAddresses": [],
@@ -33418,6 +33802,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf4e7ff66fd3d1c33b3020ffa575c33cb2968082d": {
+			"address": "0xf4e7ff66fd3d1c33b3020ffa575c33cb2968082d",
+			"underlyingTokensAddresses": [
+				"0x6568921f9059b6b8a3902651783a7a0e74ca83ff"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-lp-yPRISMA-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-lp-yPRISMA-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf4e7Ff66Fd3d1c33B3020fFA575C33Cb2968082D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xf4fdbc7c66dc9832d672ffe6242b6a386cead5de": {
 			"address": "0xf4fdbc7c66dc9832d672ffe6242b6a386cead5de",
 			"underlyingTokensAddresses": [
@@ -33884,6 +34284,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf70B3F1eA3BFc659FFb8b27E84FAE7Ef38b5bD3b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf750c238ce033afc224c2e57d0fcb86e64db0221": {
+			"address": "0xf750c238ce033afc224c2e57d0fcb86e64db0221",
+			"underlyingTokensAddresses": [
+				"0x552868611d2641144454140dded98e6160b3bfc9"
+			],
+			"type": "Single Strategy",
+			"name": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"symbol": "ysyG-yvCurve-YFIETH-gauge",
+			"displayName": "Wrapped YearnV3 Strategy Cove Rewards Gauge",
+			"displaySymbol": "ysyG-yvCurve-YFIETH-gauge",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf750c238cE033afC224C2E57d0fcb86E64Db0221/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

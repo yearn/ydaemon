@@ -62,6 +62,7 @@ func getVaults(
 	orderBy := helpers.SafeString(getQueryParam(c, `orderBy`), `featuringScore`)
 	orderDirection := helpers.SafeString(getQueryParam(c, `orderDirection`), `asc`)
 	hideAlways := helpers.StringToBool(getQueryParam(c, `hideAlways`))
+	stratCon := validateStrategyCondition(c, "strategiesCondition")
 
 	/** 🔵 - Yearn *************************************************************************************
 	** migrable: A string that determines the condition for selecting migrable vaults. It is
@@ -183,7 +184,7 @@ func getVaults(
 			}
 
 			// Check if strategies are required - only retrieve the count if needed
-			if strategyDataIsRequired(migrable) {
+			if stratCon != `` {
 				_, strategiesSlice := storage.ListStrategiesForVault(chainID, currentVault.Address)
 				if len(strategiesSlice) == 0 {
 					// Skip vaults without strategies if needed based on migrable condition
@@ -200,6 +201,17 @@ func getVaults(
 				} else if migrable == MIGRABLE_CONDITION_IGNORE && (newVault.Migration.Available || newVault.Details.IsHidden) {
 					continue
 				}
+			}
+
+			vaultStrategies, _ := storage.ListStrategiesForVault(chainID, currentVault.Address)
+			newVault.Strategies = []TExternalStrategy{}
+			for _, strategy := range vaultStrategies {
+				strategyWithDetails := CreateExternalStrategy(strategy)
+				if !strategyWithDetails.ShouldBeIncluded(stratCon) {
+					continue
+				}
+
+				newVault.Strategies = append(newVault.Strategies, strategyWithDetails)
 			}
 
 			// Convert directly to simplified format

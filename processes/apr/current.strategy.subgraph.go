@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
 
@@ -74,7 +73,6 @@ func GetCurrentStrategyAPR(chainID uint64, strategyAddress string) (*bigNumber.F
 	// First, try to get the APR from Kong, and use it if available and > 0
 	kongApr, kongErr := GetCurrentStrategyAPRFromDB(chainID, strategyAddress)
 	if kongErr == nil && !kongApr.IsZero() {
-		logs.Pretty("Using Kong APR", kongApr)
 		return kongApr, nil
 	}
 

@@ -121,7 +121,7 @@ func (y Controller) GetLegacySomeVaults(c *gin.Context) {
 
 		// Get and filter strategies
 		vaultStrategies, _ := storage.ListStrategiesForVault(chainID, address)
-		newVault.Strategies = []TStrategy{}
+		newVault.Strategies = []TExternalStrategy{}
 		for _, strategy := range vaultStrategies {
 			strategyWithDetails := CreateExternalStrategy(strategy)
 			if !strategyWithDetails.ShouldBeIncluded(stratCon) {

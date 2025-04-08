@@ -123,6 +123,11 @@ var ETHEREUM = TChain{
 			Block:   20693634,
 			Label:   `POOL_TOGETHER`,
 		},
+		{
+			Address: common.HexToAddress(`0x842b22Eb2A1C1c54344eDdbE6959F787c2d15844`),
+			Block:   19594531,
+			Label:   `COVE`,
+		},
 	},
 	StakingRewardRegistry: []TContractData{
 		{

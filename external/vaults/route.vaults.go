@@ -191,6 +191,16 @@ func (y Controller) GetIsYearnPoolTogether(c *gin.Context) ([]TSimplifiedExterna
 }
 
 /**************************************************************************************************
+** GetIsYearnCove is a gin handler function to retrieve all the vaults matching the
+** inclusion.isCove filter.
+**************************************************************************************************/
+func (y Controller) GetIsYearnCove(c *gin.Context) ([]TSimplifiedExternalVault, error) {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsCove
+	})
+}
+
+/**************************************************************************************************
 ** GetIsMorpho is a gin handler function to retrieve all the vaults matching the
 ** inclusion.isMorpho filter.
 **************************************************************************************************/

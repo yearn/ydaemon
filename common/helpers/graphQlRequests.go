@@ -1,5 +1,7 @@
 package helpers
 
+import "strconv"
+
 /**************************************************************************************************
 ** This file contains pre-formatted GraphQL query strings used throughout the application to
 ** retrieve data from The Graph protocol endpoints. These queries target Yearn-specific data
@@ -20,8 +22,8 @@ package helpers
 **
 ** @return string A formatted GraphQL query fragment for strategy reports
 **************************************************************************************************/
-func GetStrategyReports() string {
-	return (`reports(first: 10, orderBy: timestamp, orderDirection: desc) {
+func GetStrategyReports(first int) string {
+	return (`reports(first: ` + strconv.Itoa(first) + `, orderBy: timestamp, orderDirection: desc) {
 		id
 		totalDebt
 		totalLoss
@@ -37,6 +39,23 @@ func GetStrategyReports() string {
 			duration
 			durationPr
 		}
+	}`)
+}
+
+/**************************************************************************************************
+**************************************************************************************************/
+func GetKongStrategyReports(first int) string {
+	return (`lastReportDetail {
+		apr {
+			net
+			gross
+		}
+		loss
+		lossUsd
+		profit
+		profitUsd
+		blockTime
+      	blockNumber
 	}`)
 }
 

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-03-25T09:37:31.059737+01:00",
+	"lastUpdate": "2025-04-08T09:58:41.465588+02:00",
 	"version": {
 		"major": 0,
-		"minor": 45,
+		"minor": 46,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -4565,6 +4565,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x7DEB119b92b76f78C212bc54FBBb34CEA75f4d4A/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33": {
+			"address": "0x7dff72693f6a4149b17e7c6314655f6a9f7c8b33",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Gho Token",
+			"symbol": "GHO",
+			"displayName": "Gho Token",
+			"displaySymbol": "GHO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x7dfF72693f6A4149b17e7C6314655f6A9F7c8B33/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

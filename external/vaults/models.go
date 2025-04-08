@@ -254,7 +254,7 @@ type TExternalVault struct {
 	TVL               models.TTVL             `json:"tvl"`
 	APR               TExternalVaultAPR       `json:"apr"`
 	Details           TExternalVaultDetails   `json:"details"`
-	Strategies        []TStrategy             `json:"strategies"`
+	Strategies        []TExternalStrategy     `json:"strategies"`
 	Migration         TExternalVaultMigration `json:"migration"`
 	Staking           TStakingData            `json:"staking"`
 	Info              TExternalVaultInfo      `json:"info,omitempty"`
@@ -340,7 +340,7 @@ type TSimplifiedExternalVault struct {
 	Token          TSimplifiedExternalERC20Token `json:"token"`
 	TVL            TSimplifiedExternalVaultTVL   `json:"tvl"`
 	APR            TExternalVaultAPR             `json:"apr"`
-	Strategies     []TStrategy                   `json:"strategies"`
+	Strategies     []TExternalStrategy           `json:"strategies"`
 	Staking        TStakingData                  `json:"staking,omitempty"`
 	Migration      TExternalVaultMigration       `json:"migration,omitempty"`
 	FeaturingScore float64                       `json:"featuringScore"`

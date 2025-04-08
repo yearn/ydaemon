@@ -14,7 +14,7 @@ type TCalculateFraxAPYDataStruct struct {
 	poolPrice      *bigNumber.Float
 	baseAPY        *bigNumber.Float
 	rewardAPY      *bigNumber.Float
-	poolDailyAPY   *bigNumber.Float
+	poolWeeklyAPY  *bigNumber.Float
 }
 
 func calculateFraxForwardAPR(args TCalculateFraxAPYDataStruct, fraxPool TFraxPool) TStrategyAPY {

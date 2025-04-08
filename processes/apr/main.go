@@ -172,8 +172,3 @@ func ComputeChainAPY(chainID uint64) {
 		safeSyncMap(COMPUTED_APY, chainID).Store(vault.Address, vaultAPY)
 	}
 }
-
-func Run(chainID uint64) {
-	initYearnEcosystem(chainID)
-	ComputeChainAPY(chainID)
-}

@@ -299,17 +299,23 @@ func fetchTokensBasicInformations(
 }
 
 /**************************************************************************************************
-** findAllTokens is simply a wrapper around our fetchTokensBasicInformations function to make it easier
-** to read. It will take the tokenMap, extract the individual addresses, and then call the
-** fetchTokensBasicInformations function to get the tokens information, before assigning them to a new
-** map.
+** findAllTokens constructs a complete token information map from a list of token addresses.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - tokenMap: our map of tokenAddress -> TTokens
+** This function serves as a wrapper around fetchTokensBasicInformations that simplifies token
+** information retrieval and organization. It performs these key operations:
 **
-** Returns:
-** - a map of tokenAddress -> TTokens
+** 1. Extracts individual token addresses from the input map
+** 2. Calls fetchTokensBasicInformations to retrieve detailed token data
+** 3. Constructs a new map with the fetched token information
+**
+** The function maintains clean separation of concerns by isolating the token address extraction,
+** information fetching, and map construction steps. This makes the code more maintainable and
+** the token retrieval process more understandable.
+**
+** @param chainID uint64 - The chain ID of the network we are working on
+** @param tokenMap map[common.Address]models.TERC20Token - Map of token addresses to existing token data
+** @param curveFactoryPoolMap map[string][]common.Address - Map of Curve pool addresses to their underlying tokens
+** @return map[common.Address]models.TERC20Token - Updated map of token addresses to complete token information
 **************************************************************************************************/
 func findAllTokens(
 	chainID uint64,
@@ -330,14 +336,24 @@ func findAllTokens(
 }
 
 /**************************************************************************************************
-** loadCurvePools is used to load the Curve pools from the Curve Factory. This is used to get the
-** underlying tokens for the Curve LP tokens.
+** loadCurvePools retrieves Curve liquidity pool data including underlying tokens.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
+** This function fetches data from the Curve Factory to identify all deployed pools and their
+** constituent tokens. The process involves:
 **
-** Returns:
-** - a map of poolAddress -> []common.Address
+** 1. Connecting to the appropriate Curve Factory contract for the specified chain
+** 2. Determining the total number of pools via the poolCount method
+** 3. Executing a multicall to efficiently retrieve all pool addresses in a single RPC request
+** 4. Executing a second multicall to fetch the underlying tokens for each pool
+** 5. Organizing the results into a map of pool addresses to token arrays
+**
+** The function includes special handling for chains with RPC limitations (particularly Fantom)
+** by optimizing the multicall batch sizes. This ensures reliable operation across all supported
+** networks regardless of RPC endpoint constraints.
+**
+** @param chainID uint64 - The blockchain network ID
+** @return map[string][]common.Address - A map where keys are pool addresses (as hex strings) and
+**                                       values are arrays of token addresses in that pool
 **************************************************************************************************/
 func loadCurvePools(chainID uint64) map[string][]common.Address {
 	chain, ok := env.GetChain(chainID)
@@ -402,14 +418,22 @@ func loadCurvePools(chainID uint64) map[string][]common.Address {
 }
 
 /**************************************************************************************************
-** loadGammaPools is used to load the Gamma pools from the Gamma API. This is used to get the
-** underlying tokens for the Gamma LP tokens.
+** loadGammaPools retrieves Gamma liquidity pool data including underlying tokens.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
+** This function fetches Gamma concentrated liquidity pool information from storage, which was
+** previously loaded from the Gamma API. For each pool, it extracts:
 **
-** Returns:
-** - a map of tokenAddress -> []models.TERC20Token
+** 1. The pool address (which is the LP token address)
+** 2. The two underlying token addresses (token0 and token1)
+**
+** It then creates simple TERC20Token objects for each address (the pool token and both underlying
+** tokens) and organizes them into a map. These token objects contain minimal information (just
+** the address and chain ID) as they will be enriched with additional data later in the token
+** processing pipeline.
+**
+** @param chainID uint64 - The blockchain network ID
+** @return map[common.Address]models.TERC20Token - A map of token addresses to basic token objects,
+**                                               including both pool tokens and their underlying tokens
 **************************************************************************************************/
 func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
 	coinsForPools := make(map[common.Address]models.TERC20Token)
@@ -442,13 +466,21 @@ func loadGammaPools(chainID uint64) map[common.Address]models.TERC20Token {
 }
 
 /**************************************************************************************************
-** loadPendleTokens is used to fetch the tokens from the Pendle EcoSystem.
+** loadPendleTokens retrieves token addresses from the Pendle ecosystem.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
+** This function fetches Pendle token information from storage, which was previously loaded
+** from the Pendle API or subgraph. It performs these key operations:
 **
-** Returns:
-** - a slice of []common.Address
+** 1. Attempts to retrieve the Pendle token data for the specified chain
+** 2. If no data is found, returns an empty slice
+** 3. If data is found, extracts token addresses and converts them to common.Address format
+**
+** Pendle tokens include yield-bearing tokens and PT (Principal Tokens) that are part of
+** Pendle's yield trading infrastructure. These tokens are important for Yearn strategies
+** that may interact with the Pendle ecosystem.
+**
+** @param chainID uint64 - The blockchain network ID
+** @return []common.Address - An array of Pendle-related token addresses
 **************************************************************************************************/
 func loadPendleTokens(chainID uint64) []common.Address {
 	tokens := []common.Address{}
@@ -463,14 +495,22 @@ func loadPendleTokens(chainID uint64) []common.Address {
 }
 
 /**************************************************************************************************
-** loadVeloTokens is used to load the Velodrom pools from the Sugar contract. This is used to get
-** the underlying tokens for the Velodrom LP tokens.
+** loadVeloTokens retrieves token addresses from the Velodrome ecosystem.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
+** This function fetches token information from the Velodrome Sugar contract, which provides
+** a simplified interface to access Velodrome pool data. It performs these steps:
 **
-** Returns:
-** - a map of poolAddress -> []common.Address
+** 1. Checks if the chain ID is 10 (Optimism), as Velodrome only exists on Optimism
+** 2. Connects to the Velodrome Sugar contract at a specific address
+** 3. Iteratively calls the "all" method to retrieve batches of pool data
+** 4. Extracts token0, token1, and LP token addresses from each pool
+** 5. Implements an adaptive batch size approach to handle potential RPC limitations
+**
+** The function uses a resilient fetching strategy that reduces the batch size if errors occur,
+** ensuring maximum data retrieval even under suboptimal network conditions.
+**
+** @param chainID uint64 - The blockchain network ID (only processes data if chainID is 10)
+** @return []common.Address - An array containing all unique token addresses from the Velodrome ecosystem
 **************************************************************************************************/
 func loadVeloTokens(chainID uint64) []common.Address {
 	veloTokens := []common.Address{}
@@ -527,18 +567,38 @@ func loadVeloTokens(chainID uint64) []common.Address {
 }
 
 /**************************************************************************************************
-** Yearn vaults play with at least 2 tokens: the yVaultToken (aka the vault) and the underlying
-** token. This underlying token can be a token or a LP token and therefore can have multiple sub
-** tokens.
-** The goal of this function is to get a list of all the tokens living in the Yearn Extended
-** Ecosystem.
+** RetrieveAllTokens collects comprehensive token information across the Yearn ecosystem.
 **
-** Arguments:
-** - chainID: the chain ID of the network we are working on
-** - vaults: the array of TVault
+** This function orchestrates the collection of token data from multiple sources to create
+** a complete view of the token ecosystem that Yearn interacts with. The process involves:
 **
-** Returns:
-** - a map of tokenAddress -> TTokens
+** 1. Token Source Collection:
+**    - Extracts vault tokens and their underlying assets from vault registry
+**    - Includes chain-specific extra tokens defined in configuration
+**    - Fetches Velodrome ecosystem tokens (Optimism only)
+**    - Retrieves Curve Factory pool tokens and their underlying assets
+**    - Includes Gamma concentrated liquidity pools and their constituent tokens
+**    - Adds Pendle yield tokens to the ecosystem
+**
+** 2. Token Information Retrieval:
+**    - Processes new tokens not already in storage
+**    - Refreshes token information when explicitly requested
+**    - Fetches basic information (name, symbol, decimals) via multicalls
+**    - Determines token types (Yearn vault, Curve LP, Compound, AAVE, etc.)
+**    - Identifies underlying tokens recursively
+**
+** 3. Storage Integration:
+**    - Stores token information persistently for future reference
+**    - Exports token data to JSON for external consumption
+**
+** The function implements optimizations to minimize RPC calls by:
+** - Utilizing existing token information from storage when available
+** - Processing tokens in batches
+** - Using multicalls to fetch multiple properties in single RPC requests
+**
+** @param chainID uint64 - The blockchain network ID
+** @param vaults map[common.Address]models.TVault - Map of vault addresses to vault models
+** @return map[common.Address]models.TERC20Token - Complete map of token addresses to token information
 **************************************************************************************************/
 func RetrieveAllTokens(
 	chainID uint64,

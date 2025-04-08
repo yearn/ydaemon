@@ -16,7 +16,7 @@ type TCalculateConvexAPYDataStruct struct {
 	poolPrice      *bigNumber.Float
 	baseAPY        *bigNumber.Float
 	rewardAPY      *bigNumber.Float
-	poolDailyAPY   *bigNumber.Float
+	poolWeeklyAPY  *bigNumber.Float
 }
 
 func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY {
@@ -59,11 +59,11 @@ func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY 
 	** 3. Adding the pool APY
 	** 4. Adding the CVX APR
 	**********************************************************************************************/
-	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv)   // 1 - keepCRV
-	grossAPY := bigNumber.NewFloat(0).Mul(crvAPY, keepCRVRatio)       // 1 - baseAPY * keepCRV
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, rewardsAPY)        // 2 - (baseAPY * keepCRV) + rewardAPR
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolDailyAPY) // 3 - (baseAPY * keepCRV) + rewardAPR + poolAPY
-	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, cvxAPY)            // 4 - (baseAPY * keepCRV) + rewardAPR + poolAPY + cvxAPR
+	keepCRVRatio := bigNumber.NewFloat(0).Sub(storage.ONE, keepCrv)    // 1 - keepCRV
+	grossAPY := bigNumber.NewFloat(0).Mul(crvAPY, keepCRVRatio)        // 1 - baseAPY * keepCRV
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, rewardsAPY)         // 2 - (baseAPY * keepCRV) + rewardAPR
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, args.poolWeeklyAPY) // 3 - (baseAPY * keepCRV) + rewardAPR + poolAPY
+	grossAPY = bigNumber.NewFloat(0).Add(grossAPY, cvxAPY)             // 4 - (baseAPY * keepCRV) + rewardAPR + poolAPY + cvxAPR
 
 	/**********************************************************************************************
 	** Calculate the CRV Net APR:
@@ -82,7 +82,7 @@ func calculateConvexForwardAPY(args TCalculateConvexAPYDataStruct) TStrategyAPY 
 		NetAPY:    bigNumber.NewFloat(0).Mul(netAPY, debtRatio),
 		Composite: TCompositeData{
 			Boost:      bigNumber.NewFloat(0).Mul(cvxBoost, debtRatio),
-			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolDailyAPY, debtRatio),
+			PoolAPY:    bigNumber.NewFloat(0).Mul(args.poolWeeklyAPY, debtRatio),
 			BoostedAPR: bigNumber.NewFloat(0).Mul(crvAPR, debtRatio),
 			BaseAPR:    bigNumber.NewFloat(0).Mul(args.baseAPY, debtRatio),
 			CvxAPR:     bigNumber.NewFloat(0).Mul(cvxAPR, debtRatio),

@@ -11,7 +11,7 @@ import (
 var BASE = TChain{
 	ID:              8453,
 	RpcURI:          `https://developer-access-mainnet.base.org`,
-	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/rareweasel/yearn-vaults-v2-subgraph-base`,
+	SubgraphURI:     ``,
 	EtherscanURI:    `https://api.basescan.org/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,

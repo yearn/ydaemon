@@ -14,7 +14,7 @@ type TCalculatePrismaAPYDataStruct struct {
 	poolPrice      *bigNumber.Float
 	baseAPY        *bigNumber.Float
 	rewardAPY      *bigNumber.Float
-	poolDailyAPY   *bigNumber.Float
+	poolWeeklyAPY  *bigNumber.Float
 }
 
 func calculatePrismaForwardAPR(args TCalculatePrismaAPYDataStruct) TStrategyAPY {

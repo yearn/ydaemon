@@ -1,7 +1,6 @@
 package apr
 
 import (
-	"os"
 	"strings"
 	"time"
 
@@ -198,9 +197,6 @@ func computeVeloLikeForwardAPY(
 	keepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
-			if os.Getenv("ENVIRONMENT") == "dev" {
-				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-			}
 			continue
 		}
 

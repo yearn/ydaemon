@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-03-25T09:40:03.875575+01:00",
+	"lastUpdate": "2025-04-08T09:58:53.720589+02:00",
 	"version": {
-		"major": 71,
+		"major": 164,
 		"minor": 0,
-		"patch": 12
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -56,6 +56,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -129,6 +130,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -200,6 +202,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -269,6 +272,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -341,6 +345,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -381,8 +386,8 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab",
 				"0x6aceda98725505737c0f00a3da0d047304052948"
 			],
-			"lastPricePerShare": "1069209748720484263",
-			"lastTotalAssets": "3093149539423658921647441",
+			"lastPricePerShare": "1071054534433896406",
+			"lastTotalAssets": "2882116121179968488404253",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -413,6 +418,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -482,6 +488,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -550,6 +557,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -622,6 +630,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -658,7 +667,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "27310379734374455254113",
+			"lastTotalAssets": "27164094788708148507990",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -689,6 +698,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -726,8 +736,8 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1769438628083523133",
-			"lastTotalAssets": "74252523713128927106375",
+			"lastPricePerShare": "1779018951840594247",
+			"lastTotalAssets": "74740426279359566735644",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -760,6 +770,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -832,6 +843,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -903,6 +915,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -938,7 +951,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1128502977197139341",
-			"lastTotalAssets": "759170876324776665168176",
+			"lastTotalAssets": "377431520656457932183053",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -969,6 +982,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1041,6 +1055,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1076,8 +1091,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1042195711081095780",
-			"lastTotalAssets": "17972424274352178485762638",
+			"lastPricePerShare": "1042996275908575071",
+			"lastTotalAssets": "21453406845929015881601671",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1108,6 +1123,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -1142,8 +1158,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1028117",
-			"lastTotalAssets": "2854599954626",
+			"lastPricePerShare": "1031051",
+			"lastTotalAssets": "3007586225110",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1174,6 +1190,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -1209,7 +1226,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1111983542872595852",
-			"lastTotalAssets": "242526951385595632355433",
+			"lastTotalAssets": "234906448996993745037106",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1240,6 +1257,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1309,6 +1327,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1343,8 +1362,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1106283591118143494",
-			"lastTotalAssets": "168056518390482295625996",
+			"lastPricePerShare": "1109456123986994383",
+			"lastTotalAssets": "370372224543297482184232",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1375,6 +1394,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -1444,6 +1464,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1478,8 +1499,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1232685",
-			"lastTotalAssets": "1166067332665",
+			"lastPricePerShare": "1236285",
+			"lastTotalAssets": "474356148830",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1510,6 +1531,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -1579,6 +1601,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1650,6 +1673,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1718,6 +1742,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1789,6 +1814,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1858,6 +1884,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1927,6 +1954,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -1996,6 +2024,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2066,6 +2095,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2132,6 +2162,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2200,6 +2231,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2238,7 +2270,7 @@
 				"0xa323cccbcbade7806ca5bb9951bebd89a7882bf8"
 			],
 			"lastPricePerShare": "1543855344270970898",
-			"lastTotalAssets": "2171944843313075801776419",
+			"lastTotalAssets": "2125611620100281033356204",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2269,6 +2301,74 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x120b128cf1a5117fe8e9e12b79b3437e7396bd14": {
+			"address": "0x120b128cf1a5117fe8e9e12b79b3437e7396bd14",
+			"token": "0x28da6de3e804bddf0ad237cfa6048f2930d0b4dc",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1684609234163863278",
+			"lastTotalAssets": "5778198351999806658",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x120b128cf1a5117fe8e9e12b79b3437e7396bd14",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2340,6 +2440,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2412,6 +2513,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2483,6 +2585,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2554,6 +2657,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2621,6 +2725,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2658,8 +2763,8 @@
 				"0x167e0fc591abf5ab77434e115ecf0fbbace39a54",
 				"0x103f3fb1ec32a85f4692df1b4b18c428dbac59da"
 			],
-			"lastPricePerShare": "1216047988247422884",
-			"lastTotalAssets": "38622058375177173603",
+			"lastPricePerShare": "1222709988763405340",
+			"lastTotalAssets": "38828312493227340241",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2693,6 +2798,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2763,6 +2869,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2834,6 +2941,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2900,6 +3008,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -2969,6 +3078,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3039,6 +3149,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3081,8 +3192,8 @@
 				"0x4ce9c93513dff543bc392870d57df8c04e89ba0a",
 				"0x6701dea9809deaf068b8445798d0e19b025480fe"
 			],
-			"lastPricePerShare": "1040460249711290048",
-			"lastTotalAssets": "9084465032761626059028597",
+			"lastPricePerShare": "1042513685505300432",
+			"lastTotalAssets": "12508303009962571658966374",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3113,10 +3224,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x18f365ecce58fa865ec9fb027e9175125db93b91": {
+			"address": "0x18f365ecce58fa865ec9fb027e9175125db93b91",
+			"token": "0x81d93531720d86f0491dee7d03f30b3b5ac24e59",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1060556443617886455",
+			"lastTotalAssets": "6919377084051571153",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x18f365ecce58fa865ec9fb027e9175125db93b91",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -3150,8 +3329,8 @@
 				"0xaa76a865759d631cb721ec6964e9308d528672df",
 				"0x40b2e65af332835833658905bd086ebf2bd074c3"
 			],
-			"lastPricePerShare": "1002220283305783800",
-			"lastTotalAssets": "7340593143256335969198783",
+			"lastPricePerShare": "1002224751538583079",
+			"lastTotalAssets": "4908633479642616166733393",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3182,6 +3361,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3248,6 +3428,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3317,6 +3498,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3390,6 +3572,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3457,6 +3640,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3526,6 +3710,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3593,6 +3778,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -3664,6 +3850,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3735,6 +3922,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3807,6 +3995,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3878,6 +4067,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -3944,6 +4134,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4013,6 +4204,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4082,6 +4274,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4149,6 +4342,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4221,6 +4415,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4258,8 +4453,8 @@
 				"0x9da375aea0f4c70eaef72863c900264d22995b30",
 				"0x7c0bbcf8ecf27f362b1bd82144ae3a5b7eecda97"
 			],
-			"lastPricePerShare": "1135646599724793804",
-			"lastTotalAssets": "804187693598368021188166",
+			"lastPricePerShare": "1139850658445710293",
+			"lastTotalAssets": "2141371895657259241137544",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4290,6 +4485,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4324,8 +4520,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1104807172635367469",
-			"lastTotalAssets": "108594758596703860446879",
+			"lastPricePerShare": "1106672980508835363",
+			"lastTotalAssets": "108753061233007437036974",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4356,6 +4552,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4425,6 +4622,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4459,8 +4657,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1089147",
-			"lastTotalAssets": "3188573364178",
+			"lastPricePerShare": "1090858",
+			"lastTotalAssets": "4686933623572",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4491,6 +4689,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4562,6 +4761,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4631,6 +4831,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4698,6 +4899,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4769,6 +4971,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4803,8 +5006,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1464680018799994595",
-			"lastTotalAssets": "543508874957212261167",
+			"lastPricePerShare": "1466222952248281216",
+			"lastTotalAssets": "1779402183271791118187",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4835,6 +5038,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4904,6 +5108,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -4941,8 +5146,8 @@
 				"0xa991652b995c4fb3c87d165311bd77e139297cce",
 				"0x61da32f660f37f21e5f0314b0a6e4ded62c358d2"
 			],
-			"lastPricePerShare": "1312667514255528531",
-			"lastTotalAssets": "348110194779701922737406",
+			"lastPricePerShare": "1316998760287844469",
+			"lastTotalAssets": "386734838158943986934612",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -4976,6 +5181,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5045,6 +5251,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -5116,6 +5323,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5155,8 +5363,8 @@
 				"0xdf5f0577bd56a67fd0844f7ea08649d63a5d5f3c",
 				"0x054f4b8fcb63c5c6abddb4496c129b03682de57b"
 			],
-			"lastPricePerShare": "1025918602445305614",
-			"lastTotalAssets": "153941272105540341779748",
+			"lastPricePerShare": "937886989471360418",
+			"lastTotalAssets": "138641154814810669600248",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -5187,6 +5395,80 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x26fcb50eec367ddab060ccf5e7394cecd95f7db2": {
+			"address": "0x26fcb50eec367ddab060ccf5e7394cecd95f7db2",
+			"token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22171511,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x330732581d30076137a1159b3ae8780158d902be",
+				"0xfc36c2edb18829308fa9ee9500e8be6520a47caf",
+				"0x32a338b07de8a9529ea640ba8a5806334d4b0931",
+				"0xd5e617420b9ea0be28751435b647328d63b10368",
+				"0x59d675f75f973835b94d02b6d27b8539757dc65f"
+			],
+			"lastPricePerShare": "1000003686797612727",
+			"lastTotalAssets": "26992111095444494253",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x26fcb50eec367ddab060ccf5e7394cecd95f7db2",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5256,6 +5538,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -5292,8 +5575,8 @@
 			"lastActiveStrategies": [
 				"0xe3974e44bc08f435da2c6db7d01e1758496da119"
 			],
-			"lastPricePerShare": "1961174671100593212",
-			"lastTotalAssets": "39857086121020475771859473",
+			"lastPricePerShare": "1973901133741005028",
+			"lastTotalAssets": "45303188171271957708887958",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5327,6 +5610,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5398,6 +5682,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5464,6 +5749,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5533,6 +5819,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5600,6 +5887,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5672,10 +5960,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x28b2dc219c047b10f353caa2934ad8803e089a88": {
+			"address": "0x28b2dc219c047b10f353caa2934ad8803e089a88",
+			"token": "0x128e72dfd8b00cbf9d12cb75e846ac87b83ddfc9",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1024835473874621944",
+			"lastTotalAssets": "34994849455767744923525",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x28b2dc219c047b10f353caa2934ad8803e089a88",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -5742,6 +6098,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5808,10 +6165,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa": {
+			"address": "0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa",
+			"token": "0x8e2485942b399ea41f3c910c1bb8567128f79859",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1005927945610113212",
+			"lastTotalAssets": "10362012603833265494",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x29ee8c3fb7ea0b52261b18782f1a060c2e210afa",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -5879,6 +6304,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -5951,6 +6377,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6022,6 +6449,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6089,6 +6517,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6126,8 +6555,8 @@
 				"0xecbd24ea29b5cf23fbe658da506589982ef085d4",
 				"0xda00352a66577b2c844678ec78c062a2f68836a5"
 			],
-			"lastPricePerShare": "1430881332373351950",
-			"lastTotalAssets": "167547342280518145347",
+			"lastPricePerShare": "1432367831235280584",
+			"lastTotalAssets": "168586374360496252122",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6158,6 +6587,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6229,6 +6659,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6300,6 +6731,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6370,6 +6802,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6439,6 +6872,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6508,6 +6942,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -6579,6 +7014,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6651,6 +7087,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6721,6 +7158,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6790,6 +7228,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6859,6 +7298,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6927,6 +7367,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -6966,7 +7407,7 @@
 				"0x05086056e7111346e246e5b97153ae8cc6fc4a71"
 			],
 			"lastPricePerShare": "1041200511685636723",
-			"lastTotalAssets": "52503081263673101881519",
+			"lastTotalAssets": "25434859031670004247721",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6997,6 +7438,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7068,6 +7510,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7139,6 +7582,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7206,6 +7650,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7277,6 +7722,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7318,8 +7764,8 @@
 				"0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5",
 				"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f"
 			],
-			"lastPricePerShare": "1033210",
-			"lastTotalAssets": "5543478331648",
+			"lastPricePerShare": "1035096",
+			"lastTotalAssets": "5329677675674",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7350,6 +7796,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7421,6 +7868,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7490,6 +7938,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -7527,8 +7976,8 @@
 				"0x89234c954cc17994999cbda920e35306dce232c2",
 				"0x9e5f4954be2471b4cf1f0c0746a933909ea3b0eb"
 			],
-			"lastPricePerShare": "1193074081841616766",
-			"lastTotalAssets": "64579041358125656507218",
+			"lastPricePerShare": "1202572920924264589",
+			"lastTotalAssets": "65150831367224884552003",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7562,6 +8011,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7633,6 +8083,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7702,6 +8153,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7772,6 +8224,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7841,6 +8294,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7911,6 +8365,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -7948,8 +8403,8 @@
 				"0x04289ce03b2a13bb16417dcc6bb177a83f922c70",
 				"0x9b778fbbb2e1e7cbcb1eca66ab86ae8895096fc3"
 			],
-			"lastPricePerShare": "1049523171110311773",
-			"lastTotalAssets": "3538769065909208301197006",
+			"lastPricePerShare": "1053454330148967890",
+			"lastTotalAssets": "3275773752108152839972557",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -7980,6 +8435,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8049,6 +8505,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8087,7 +8544,7 @@
 				"0x473f0adec308dc82440665d9fc7d5e26ebcf0e05"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "221188586431647710110972488",
+			"lastTotalAssets": "221539412246984903662100829",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -8118,6 +8575,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -8185,6 +8643,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -8223,8 +8682,8 @@
 				"0x24788d1468eebb6a57ab8ab94a307f8b31bb2e81",
 				"0x961082de19e9cf87bb4850f6f347407be89d9ebb"
 			],
-			"lastPricePerShare": "1186860780054527223",
-			"lastTotalAssets": "27219908881733261140283",
+			"lastPricePerShare": "1188766318681973457",
+			"lastTotalAssets": "27274558736378731723136",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8256,6 +8715,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8322,6 +8782,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8391,6 +8852,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8460,6 +8922,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -8527,6 +8990,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8598,6 +9062,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8633,7 +9098,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "1989817097",
+			"lastTotalAssets": "1980440038",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8664,6 +9129,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": true,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8701,8 +9167,8 @@
 				"0xd73b085c715adee2551f5babc28200e79f739b0a",
 				"0x7c04a7900f0c7b681665f303ae0d04d07cad384f"
 			],
-			"lastPricePerShare": "4904608203475876932",
-			"lastTotalAssets": "46855033169730702368",
+			"lastPricePerShare": "5082155286332687886",
+			"lastTotalAssets": "49394999745325798973",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8735,6 +9201,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8802,6 +9269,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -8840,8 +9308,8 @@
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
 				"0xa55713a301f23b02dcbe36321164a78614e368df"
 			],
-			"lastPricePerShare": "1099083",
-			"lastTotalAssets": "5455973828538",
+			"lastPricePerShare": "1100858",
+			"lastTotalAssets": "5275668719680",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8873,6 +9341,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -8944,6 +9413,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9010,6 +9480,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9076,6 +9547,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9147,6 +9619,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9216,6 +9689,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9288,6 +9762,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9359,6 +9834,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9431,6 +9907,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9469,7 +9946,7 @@
 				"0xe403f03eee3aa19156eb13fb6edd9e77de62b89e"
 			],
 			"lastPricePerShare": "1457356869404841469",
-			"lastTotalAssets": "1797575010823615216095",
+			"lastTotalAssets": "1726759320657181158358",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -9502,6 +9979,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9573,6 +10051,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -9640,6 +10119,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -9675,7 +10155,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "55446427555220958844",
+			"lastTotalAssets": "55542093328504469247",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -9706,6 +10186,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": true,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9774,6 +10255,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9845,6 +10327,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -9883,7 +10366,7 @@
 				"0xc44fa9defc3fcaef37ee83b2dc4570f77e5597b0"
 			],
 			"lastPricePerShare": "1010230687866113379",
-			"lastTotalAssets": "6476723744432762646331",
+			"lastTotalAssets": "1521542220449476522204",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -9914,6 +10397,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -9986,6 +10470,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10052,6 +10537,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10119,6 +10605,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10191,6 +10678,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10260,6 +10748,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -10331,6 +10820,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10365,8 +10855,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "54499400",
-			"lastTotalAssets": "58621452269",
+			"lastPricePerShare": "54569975",
+			"lastTotalAssets": "58688159738",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10397,6 +10887,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10435,8 +10926,8 @@
 				"0xb3a130e8133843b27c2cfbcf59524b6623418883",
 				"0xcf156f35eef72b3f117af6b7ff531ba27c131c0c"
 			],
-			"lastPricePerShare": "7204572220435593143",
-			"lastTotalAssets": "1457812308550794031760",
+			"lastPricePerShare": "8013996754827801343",
+			"lastTotalAssets": "1769970771696004936849",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10467,6 +10958,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10503,7 +10995,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "45630783535",
+			"lastTotalAssets": "42957089278",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -10534,6 +11026,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10603,6 +11096,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10671,6 +11165,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10740,6 +11235,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10810,6 +11306,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10881,6 +11378,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -10951,6 +11449,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11019,6 +11518,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11088,6 +11588,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11157,6 +11658,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11223,6 +11725,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -11294,6 +11797,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11363,6 +11867,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11434,6 +11939,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11505,6 +12011,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11577,6 +12084,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11611,8 +12119,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1049433865512427965",
-			"lastTotalAssets": "10331215772793665889385813",
+			"lastPricePerShare": "1051711482052375261",
+			"lastTotalAssets": "13960508904365399091938145",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11643,6 +12151,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11710,6 +12219,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11787,6 +12297,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -11854,6 +12365,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11920,6 +12432,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -11989,6 +12502,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12058,6 +12572,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12131,6 +12646,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12207,6 +12723,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12278,6 +12795,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12345,6 +12863,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12417,6 +12936,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12489,6 +13009,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12526,8 +13047,8 @@
 				"0x64d2dfdb990129966c7ed7f3637139110001211e",
 				"0x6b6e10d838b41fc96b14711980c4d53c6c97a0ac"
 			],
-			"lastPricePerShare": "1439433329924562316",
-			"lastTotalAssets": "2076575526463063718520",
+			"lastPricePerShare": "1884413955412308232",
+			"lastTotalAssets": "3939010003006395802830",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -12558,6 +13079,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12627,8 +13149,76 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x552868611d2641144454140dded98e6160b3bfc9": {
+			"address": "0x552868611d2641144454140dded98e6160b3bfc9",
+			"token": "0x7fd8af959b54a677a1d8f92265bd0714274c56a3",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1201689464267649321",
+			"lastTotalAssets": "1179662162872968857",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x552868611d2641144454140dded98e6160b3bfc9",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {
@@ -12693,6 +13283,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12761,6 +13352,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12833,6 +13425,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12902,6 +13495,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -12971,6 +13565,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13008,8 +13603,8 @@
 				"0x3ccdee09d89f975cb3c60ade2da29eaa31f31745",
 				"0xe1e426113dc75480bb6838520defa7df92627b9a"
 			],
-			"lastPricePerShare": "1003027683642665884",
-			"lastTotalAssets": "2828429541786752396380390",
+			"lastPricePerShare": "1006924329318773100",
+			"lastTotalAssets": "2358272448010196615091831",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13040,6 +13635,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13078,8 +13674,8 @@
 				"0xea08f4ca472ade8f59df8d669adba5dad8173826",
 				"0xb9261fad596c7ae8631c5de57d51646aa627552a"
 			],
-			"lastPricePerShare": "102193103",
-			"lastTotalAssets": "86979229",
+			"lastPricePerShare": "102441514",
+			"lastTotalAssets": "87190658",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13110,6 +13706,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13179,6 +13776,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -13216,8 +13814,8 @@
 				"0x472f4e5533fb8f7fee97dacd3dbae9d83867ab07",
 				"0x045b76468342d765bdaa6d2d74bacee4ecdb6f5b"
 			],
-			"lastPricePerShare": "1062729756555737942",
-			"lastTotalAssets": "1079524455711147836942",
+			"lastPricePerShare": "1065091883297943944",
+			"lastTotalAssets": "1716529901753588833021",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13251,6 +13849,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13322,6 +13921,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13393,6 +13993,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13464,6 +14065,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13535,6 +14137,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13604,6 +14207,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13676,6 +14280,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13742,6 +14347,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13811,6 +14417,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13878,6 +14485,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -13916,7 +14524,7 @@
 				"0x95be5ac6beb4858b829a29e795b132d9f6799431"
 			],
 			"lastPricePerShare": "1005446236681781028",
-			"lastTotalAssets": "4077620924425462425931",
+			"lastTotalAssets": "4064100654417567996068",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -13950,6 +14558,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14021,6 +14630,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14093,6 +14703,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14163,6 +14774,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14235,6 +14847,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14311,6 +14924,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14349,7 +14963,7 @@
 				"0x2fa0e184d09183851673b8f6ecffa36b539f5023"
 			],
 			"lastPricePerShare": "1021588788563784529",
-			"lastTotalAssets": "102449258812660256944",
+			"lastTotalAssets": "33573742687689903997",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14383,6 +14997,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14449,6 +15064,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14486,7 +15102,7 @@
 				"0x97e8a7f7af2558ef6cb92c31458229422cedcdae"
 			],
 			"lastPricePerShare": "1118606780753783489",
-			"lastTotalAssets": "260715258878595579484606",
+			"lastTotalAssets": "260715258878595579484607",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -14520,6 +15136,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14591,6 +15208,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14658,6 +15276,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14692,8 +15311,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2402058",
-			"lastTotalAssets": "3545905125371",
+			"lastPricePerShare": "2406673",
+			"lastTotalAssets": "3377372578459",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14724,6 +15343,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14795,6 +15415,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -14829,8 +15450,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3691651166386002720",
-			"lastTotalAssets": "1009212267624890234468",
+			"lastPricePerShare": "3695802318006832142",
+			"lastTotalAssets": "1010013003541222572483",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -14861,6 +15482,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -14932,6 +15554,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15003,6 +15626,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15072,6 +15696,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15144,6 +15769,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15215,10 +15841,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7": {
+			"address": "0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7",
+			"token": "0x71c3223d6f836f84caa7ab5a68aab6ece21a9f3b",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1048905561917792674",
+			"lastTotalAssets": "8656057391734383951189",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x64dc55d76d1541e0853cbd7cf6586615e9e6f4c7",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -15287,10 +15981,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x6568921f9059b6b8a3902651783a7a0e74ca83ff": {
+			"address": "0x6568921f9059b6b8a3902651783a7a0e74ca83ff",
+			"token": "0x6130e6cd924a40b24703407f246966d7435d4998",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1653733210468792204",
+			"lastTotalAssets": "5684438858553500521967",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x6568921f9059b6b8a3902651783a7a0e74ca83ff",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -15356,6 +16118,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15426,6 +16189,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15495,6 +16259,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15529,8 +16294,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1937720770019711628",
-			"lastTotalAssets": "61347132344557239842906",
+			"lastPricePerShare": "1971480612911285921",
+			"lastTotalAssets": "7797813791012431580523",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15561,6 +16326,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15635,6 +16401,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15707,6 +16474,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15778,6 +16546,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15848,6 +16617,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15919,6 +16689,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -15953,8 +16724,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1024504",
-			"lastTotalAssets": "1601446141405",
+			"lastPricePerShare": "1027041",
+			"lastTotalAssets": "838050186720",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -15985,6 +16756,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -16020,14 +16792,14 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
+				"0x2cdaeebe9607ee7579bbd69af44f44553fda764f",
 				"0xb4e41e6eef1a77e700b46abacdf6d426fd256791",
 				"0xa10c40f9e318b0ed67ecc3499d702d8db9437228",
 				"0x901d94b9b6cf8b0eb84888b8bf7e978b16ec7bff",
-				"0x2be901715468c3c5393efa841525a713c583a8ec",
-				"0x2cdaeebe9607ee7579bbd69af44f44553fda764f"
+				"0x2be901715468c3c5393efa841525a713c583a8ec"
 			],
-			"lastPricePerShare": "1015212",
-			"lastTotalAssets": "10100721029390",
+			"lastPricePerShare": "1016991",
+			"lastTotalAssets": "8288198380646",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -16058,6 +16830,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16128,6 +16901,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16166,7 +16940,7 @@
 				"0x96109860ec35742bf813e3e8070157a30cb6e3de"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "14731829240292491126",
+			"lastTotalAssets": "14756401337860608247",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16197,6 +16971,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16269,6 +17044,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16303,8 +17079,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1701478700819467644",
-			"lastTotalAssets": "3097107552511675005787166",
+			"lastPricePerShare": "1704910206120363151",
+			"lastTotalAssets": "2886749334345010291513913",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16335,6 +17111,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16403,6 +17180,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16473,6 +17251,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16545,6 +17324,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16579,8 +17359,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1203999",
-			"lastTotalAssets": "1163087318463",
+			"lastPricePerShare": "1208619",
+			"lastTotalAssets": "215789247329",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16611,6 +17391,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -16680,6 +17461,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16750,6 +17532,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16819,6 +17602,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -16856,8 +17640,8 @@
 				"0xda64d669b3fd915f58d4cac799a57aeae0593ae7",
 				"0x7bba4a580b97cfbb0f100fb3ea74ae9f1377d039"
 			],
-			"lastPricePerShare": "1380182601306451542",
-			"lastTotalAssets": "6020021774907042078012874",
+			"lastPricePerShare": "1391357450281902445",
+			"lastTotalAssets": "6268623111788148688821672",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -16891,6 +17675,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -16962,6 +17747,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17033,6 +17819,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17102,6 +17889,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -17174,6 +17962,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17245,6 +18034,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17316,6 +18106,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -17387,6 +18178,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17457,6 +18249,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17491,8 +18284,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1031339445380557089",
-			"lastTotalAssets": "61334572223998558183",
+			"lastPricePerShare": "1033655242471333658",
+			"lastTotalAssets": "61536071275760539275",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17523,6 +18316,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -17598,6 +18392,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17669,6 +18464,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17739,6 +18535,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17808,6 +18605,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -17877,6 +18675,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17949,6 +18748,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -17986,8 +18786,8 @@
 				"0xd2d365cd5430c3194fa42b15fb1b380b31bc7165",
 				"0x48a4688b6c854e03a124fe57b5af35dcf5cee205"
 			],
-			"lastPricePerShare": "1005970620745275081",
-			"lastTotalAssets": "733419351876618875711708",
+			"lastPricePerShare": "1007424070608914542",
+			"lastTotalAssets": "734586472642484591763956",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18018,6 +18818,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18086,6 +18887,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18126,8 +18928,8 @@
 				"0x26fe402a57d52c8a323bb6e09f06489c8216ac88",
 				"0x8dde9a50a91cc0a5dabdc5d3931c1af60408c84d"
 			],
-			"lastPricePerShare": "1029815689753285271",
-			"lastTotalAssets": "1000257955511936102986202",
+			"lastPricePerShare": "1036230392050698063",
+			"lastTotalAssets": "487540027005800564148919",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18158,6 +18960,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18195,8 +18998,8 @@
 				"0xf6e8c7574636c9ef3f35355da475d7e340a4ed62",
 				"0x0a939d1e278d22a87fb254a50d27cf9f3e14af7b"
 			],
-			"lastPricePerShare": "1431548942296717735",
-			"lastTotalAssets": "2299390355171418115348",
+			"lastPricePerShare": "1447171696233736241",
+			"lastTotalAssets": "2327799002446948593889",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18229,6 +19032,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18298,6 +19102,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18368,6 +19173,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18440,6 +19246,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18478,8 +19285,8 @@
 				"0x6b7cba100e7bea38dcc7bbcfe79ab5dbfdac63ac",
 				"0x8c1acaf5fb36838280c671fb6ab3538df3213286"
 			],
-			"lastPricePerShare": "1154976259509878337",
-			"lastTotalAssets": "66716782833374947108862",
+			"lastPricePerShare": "1156797129663340925",
+			"lastTotalAssets": "24196102742354370619483",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18512,6 +19319,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18584,6 +19392,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18651,6 +19460,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18688,8 +19498,8 @@
 				"0xaac7aedfb479b58e34373e863f27e263c65ddf28",
 				"0x8677d8f5ad53534a28ac9b63f914483f5e0b3776"
 			],
-			"lastPricePerShare": "1208914619892518960",
-			"lastTotalAssets": "15360786577707179031",
+			"lastPricePerShare": "1226569906253506618",
+			"lastTotalAssets": "15610450265632111998",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18722,6 +19532,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18758,8 +19569,8 @@
 			"lastActiveStrategies": [
 				"0xa04947059831783c561e59a43b93dcb5bee7cab2"
 			],
-			"lastPricePerShare": "1092022045834366402",
-			"lastTotalAssets": "95462872324884425349",
+			"lastPricePerShare": "1094736195399564024",
+			"lastTotalAssets": "173550140973523606088",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18792,6 +19603,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18864,6 +19676,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18930,6 +19743,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -18996,6 +19810,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19065,6 +19880,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19134,6 +19950,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -19171,8 +19988,8 @@
 				"0x7f074cd344cd59fa20866796960a5c5a3f97316e",
 				"0xb803a6efcdbe8d7089a38b2af183d05f3b350055"
 			],
-			"lastPricePerShare": "1249810528713867494",
-			"lastTotalAssets": "155741636919309049260401",
+			"lastPricePerShare": "1255475645698444309",
+			"lastTotalAssets": "272409070831426779744158",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19206,6 +20023,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19282,6 +20100,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19354,6 +20173,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19388,8 +20208,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1152720",
-			"lastTotalAssets": "22407370367",
+			"lastPricePerShare": "1159537",
+			"lastTotalAssets": "86238269298",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19420,6 +20240,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19489,6 +20310,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19526,8 +20348,8 @@
 				"0x0d72cc78dd75acc57a4b77672dc8beb37f9ac92a",
 				"0x35c7aff6a75f0d166bc01417975592235fd08c31"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "8138048497233101087",
+			"lastPricePerShare": "1016141180435241851",
+			"lastTotalAssets": "1868843765072687056972",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19558,6 +20380,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19628,6 +20451,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19700,6 +20524,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19771,6 +20596,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19843,6 +20669,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -19880,8 +20707,8 @@
 				"0xd7c355c78ba2716b5d52065c3e0735badf046b8c",
 				"0x78b964dbb57ef4dbbbb0c33b83233f9091c92641"
 			],
-			"lastPricePerShare": "1582988600047010234",
-			"lastTotalAssets": "4346448809170717150110",
+			"lastPricePerShare": "1628568458640304767",
+			"lastTotalAssets": "4543633316653504871323",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19915,10 +20742,145 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x81d40243c649f7d6092295f50f4b1d3a8e53da99": {
+			"address": "0x81d40243c649f7d6092295f50f4b1d3a8e53da99",
+			"token": "0x5943f7090282eb66575662eadf7c60a717a7ce4d",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1040190800307460414",
+			"lastTotalAssets": "31188594645531354563",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x81d40243c649f7d6092295f50f4b1d3a8e53da99",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x81f78def7a3a8b0f6aaba69925efc69e70239d95": {
+			"address": "0x81f78def7a3a8b0f6aaba69925efc69e70239d95",
+			"token": "0xd57aea3686d623da2dcebc87010a4f2f38ac7b15",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "19506390191213017478807",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x81f78def7a3a8b0f6aaba69925efc69e70239d95",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -19952,8 +20914,8 @@
 				"0xc402096580c72242c2c16b956ac20f9af7aae679",
 				"0x213df1840159bd02a4aae70cf34e3f2303d6b4f1"
 			],
-			"lastPricePerShare": "1001518317076882754",
-			"lastTotalAssets": "4846294348542800434144",
+			"lastPricePerShare": "1002831143221598022",
+			"lastTotalAssets": "5016293131725094901680",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19984,6 +20946,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20053,6 +21016,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20122,6 +21086,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20188,6 +21153,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20225,8 +21191,8 @@
 				"0x92272902e2bfa8f3809ed6bab5f21876c8dd634b",
 				"0x95774d83d1c6d79af44758e3fb6cc9acb694b22c"
 			],
-			"lastPricePerShare": "1430159289894648620",
-			"lastTotalAssets": "30154843855729294958049",
+			"lastPricePerShare": "1449897719544326317",
+			"lastTotalAssets": "30617980629310176452979",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20260,6 +21226,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20329,6 +21296,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20363,8 +21331,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "5071063240624510453",
-			"lastTotalAssets": "114719204011794638153592",
+			"lastPricePerShare": "5303252784118210219",
+			"lastTotalAssets": "561907305126486177282459",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20395,6 +21363,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20466,6 +21435,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20535,6 +21505,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20572,8 +21543,8 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1256936195677814713",
-			"lastTotalAssets": "249768914074279134715",
+			"lastPricePerShare": "1262277236172095841",
+			"lastTotalAssets": "233346317480525350874",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20607,6 +21578,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20676,6 +21648,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20747,6 +21720,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20781,8 +21755,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1310897963776495601",
-			"lastTotalAssets": "29915602467046177104244",
+			"lastPricePerShare": "4811113406940273684",
+			"lastTotalAssets": "24860880909086310190499",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20813,6 +21787,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -20882,6 +21857,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -20919,8 +21895,8 @@
 			"lastActiveStrategies": [
 				"0x501bbbef60c407b36ea6b87af4964559c5229b11"
 			],
-			"lastPricePerShare": "1003991",
-			"lastTotalAssets": "110762025688",
+			"lastPricePerShare": "1004239",
+			"lastTotalAssets": "94499058296",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -20951,6 +21927,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21019,10 +21996,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x87588d3fbcdff1bf84555f0a22056d94534a74a6": {
+			"address": "0x87588d3fbcdff1bf84555f0a22056d94534a74a6",
+			"token": "0x622fa41799406b120f9a40da843d358b7b2cfee3",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1031899325409308503",
+			"lastTotalAssets": "108640263884",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x87588d3fbcdff1bf84555f0a22056d94534a74a6",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -21056,8 +22101,8 @@
 				"0xc5de11369e39e2384a23e6973f4c19e28f61443a",
 				"0x3d9a5c10ab9bc5364e753ccdce18b4da687d3620"
 			],
-			"lastPricePerShare": "1007015900820296488",
-			"lastTotalAssets": "973854904614480027318618",
+			"lastPricePerShare": "1008464452830940724",
+			"lastTotalAssets": "975411189700858814261547",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -21088,6 +22133,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21155,6 +22201,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -21226,6 +22273,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21296,6 +22344,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21368,6 +22417,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21437,6 +22487,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21504,6 +22555,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21575,10 +22627,82 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x8bdb719c46e010c6a0701195e8ee7f9712f24588": {
+			"address": "0x8bdb719c46e010c6a0701195e8ee7f9712f24588",
+			"token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22170842,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x91aa3d2400655afea2fb148c5b484812b74a303d",
+				"0x408bce2fee41d0285e3b4c9d869f8d70995161bc",
+				"0x134be1a7ec921fe38ead8052f2b8e0949eb86a75"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "9000000000000000000",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x8bdb719c46e010c6a0701195e8ee7f9712f24588",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -21644,6 +22768,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21713,6 +22838,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21784,6 +22910,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21856,6 +22983,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21927,6 +23055,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -21994,6 +23123,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22063,6 +23193,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -22134,6 +23265,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22203,6 +23335,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22272,6 +23405,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22306,8 +23440,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "4901524217836551947",
-			"lastTotalAssets": "296763982310818838725",
+			"lastPricePerShare": "6822995717609827704",
+			"lastTotalAssets": "691439209085133101",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22338,6 +23472,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22405,6 +23540,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22477,6 +23613,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22543,6 +23680,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22583,8 +23721,8 @@
 				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6",
 				"0x09580f2305a335218bdb2eb828387d52ed8fc2f4"
 			],
-			"lastPricePerShare": "1129575907558598926",
-			"lastTotalAssets": "1239002530466051586910917",
+			"lastPricePerShare": "1131934440908174802",
+			"lastTotalAssets": "1223274284840399411421845",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22615,6 +23753,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22681,6 +23820,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22718,8 +23858,8 @@
 				"0x4bfbd6875ed316a4fbac5abc36aab409d215ab8a",
 				"0x24b63e52ac85d880efbc7d7d78250b402be45d9b"
 			],
-			"lastPricePerShare": "1075574351210894293",
-			"lastTotalAssets": "78344432675774483154",
+			"lastPricePerShare": "1076724874400962642",
+			"lastTotalAssets": "94054714269651081815",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22753,6 +23893,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22792,7 +23933,7 @@
 				"0xb3bf04a939aacff5bdcfc273ce4f36cf29f063db"
 			],
 			"lastPricePerShare": "999999999999999999",
-			"lastTotalAssets": "104539816391921132407343",
+			"lastTotalAssets": "112422141402932157343046",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22823,6 +23964,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22860,8 +24002,8 @@
 				"0x8b037a44706e67102291f2e0db0935cb2558581d",
 				"0x8778353f84c1839aaed64adaf527ef29dab3249d"
 			],
-			"lastPricePerShare": "1025010269882741293",
-			"lastTotalAssets": "80339071747723985662357",
+			"lastPricePerShare": "1027566317650418245",
+			"lastTotalAssets": "80561733384946826493845",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22895,6 +24037,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22961,6 +24104,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -22998,8 +24142,8 @@
 				"0x02d89f68756fed0ed3f1dc33aef7e4e5e2d311b5",
 				"0x464f3e9ad5b4765c8af8f75f97dd8b5b9767ae88"
 			],
-			"lastPricePerShare": "1096189972666290388",
-			"lastTotalAssets": "97011335685924304594",
+			"lastPricePerShare": "1106104290801961885",
+			"lastTotalAssets": "46518402453440253675",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23030,6 +24174,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23097,6 +24242,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23163,6 +24309,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23230,6 +24377,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23264,8 +24412,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1858995852793881983",
-			"lastTotalAssets": "1396360671435076707749",
+			"lastPricePerShare": "1861362491195914772",
+			"lastTotalAssets": "72285019946441080567",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23296,6 +24444,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23367,6 +24516,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23438,6 +24588,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23507,6 +24658,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23578,6 +24730,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23644,6 +24797,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23714,10 +24868,82 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x9bb4d5a122d85e24d8c9b8025a5162fa6b385292": {
+			"address": "0x9bb4d5a122d85e24d8c9b8025a5162fa6b385292",
+			"token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22196879,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xa78ae49aa84c3051e6038d42013f7eae0274ad71",
+				"0x5ed5579e984dba1666b4cf2706cc6ecd2025a17e",
+				"0x4ba07ed0d7f8e63cf1cf91b454d017ddc7bd47a2"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "494266023190000000001",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x9bb4d5a122d85e24d8c9b8025a5162fa6b385292",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -23781,6 +25007,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23848,6 +25075,74 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b": {
+			"address": "0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b",
+			"token": "0x38e3d865e34f7367a69f096c80a4fc329db38bf4",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1198283113741570626",
+			"lastTotalAssets": "6594684955582871267944",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x9cb8c5136ad079d3311f5b766d6fc370bf29e76b",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -23887,7 +25182,7 @@
 				"0x7ee351aa702c8fc735d77fb229b7676ac15d7c79"
 			],
 			"lastPricePerShare": "1049329",
-			"lastTotalAssets": "18849025073",
+			"lastTotalAssets": "14065399185",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -23918,6 +25213,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -23989,6 +25285,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24061,6 +25358,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24132,6 +25430,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24199,6 +25498,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24233,8 +25533,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2090999",
-			"lastTotalAssets": "19849509821",
+			"lastPricePerShare": "3746680",
+			"lastTotalAssets": "30741148",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24265,6 +25565,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24304,8 +25605,8 @@
 				"0x120fa5738751b275aed7f7b46b98beb38679e093",
 				"0xebdd83cd87036670d045776b2bc79a8184a9978c"
 			],
-			"lastPricePerShare": "1092472691371252506",
-			"lastTotalAssets": "17520552506544392759307",
+			"lastPricePerShare": "1093543090264005723",
+			"lastTotalAssets": "17486582140293640357050",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24337,6 +25638,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24404,6 +25706,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24443,8 +25746,8 @@
 				"0x0fd45d4fb70d1ec95264da30934095443dc6af6a",
 				"0xc113c4d519af3e9efb1adb80dbd9e0f20591f48d"
 			],
-			"lastPricePerShare": "1135950",
-			"lastTotalAssets": "9279316568456",
+			"lastPricePerShare": "1137357",
+			"lastTotalAssets": "9488247646705",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24476,6 +25779,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24543,6 +25847,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24580,8 +25885,8 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1489753617977899359",
-			"lastTotalAssets": "2624737777609078908999328",
+			"lastPricePerShare": "1505527377449649839",
+			"lastTotalAssets": "2744724265022915871765749",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24615,6 +25920,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24686,6 +25992,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24723,8 +26030,8 @@
 				"0xf87d078899626cf1a4ef49acba0b60138bac37b2",
 				"0x51d749df68ecf652de70f587a92c119d454b7563"
 			],
-			"lastPricePerShare": "1267506980942645514",
-			"lastTotalAssets": "112491124872141646470894",
+			"lastPricePerShare": "1289111886366071986",
+			"lastTotalAssets": "115103549795656702778951",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24758,6 +26065,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24796,7 +26104,7 @@
 				"0x1e93cd1e6766e7fcb459092e160f876dda650415"
 			],
 			"lastPricePerShare": "102392452",
-			"lastTotalAssets": "5117339571",
+			"lastTotalAssets": "5117065696",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24828,6 +26136,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24899,6 +26208,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -24968,6 +26278,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25037,6 +26348,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25103,6 +26415,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25169,6 +26482,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25207,7 +26521,7 @@
 				"0xfafc64e627d9cd4bb2a32c818ff9f291c3dcedb8"
 			],
 			"lastPricePerShare": "1020141687252549509",
-			"lastTotalAssets": "29967137011109555270756",
+			"lastTotalAssets": "29995784795410041137555",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25241,6 +26555,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25278,8 +26593,8 @@
 				"0xdb46dcb5134a03e2dbe78329e8146a48977b262f",
 				"0x86d1177524961d9ab1dad7c42534f1379c43bd49"
 			],
-			"lastPricePerShare": "2266869296712860846",
-			"lastTotalAssets": "9859315691223661952424",
+			"lastPricePerShare": "2354171997464246485",
+			"lastTotalAssets": "10505186165480125892618",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25313,6 +26628,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25384,6 +26700,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25456,6 +26773,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25493,8 +26811,8 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0x9ad3047d578e79187f0faeef26729097a4973325"
 			],
-			"lastPricePerShare": "1174657575989213104",
-			"lastTotalAssets": "769941940975470008425",
+			"lastPricePerShare": "1179717962532318302",
+			"lastTotalAssets": "764003674522891779442",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25527,6 +26845,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25598,6 +26917,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25665,6 +26985,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25702,8 +27023,8 @@
 				"0xb60362fa811c576d4c220c0834ebda9bfe68888c",
 				"0x5d2cf3986f5589eb44d71c1fdf6436096de8bf4c"
 			],
-			"lastPricePerShare": "1038362034065620532",
-			"lastTotalAssets": "161228399029132605041261",
+			"lastPricePerShare": "1039522841613354856",
+			"lastTotalAssets": "161428691398215129669827",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25737,6 +27058,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25806,6 +27128,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25843,8 +27166,8 @@
 				"0xa4946ce5f86c454b29976618ffd2bf59b6f2d709",
 				"0xf13892b6dfea2346dad34182d5d4ce005e2160fd"
 			],
-			"lastPricePerShare": "1766950929925700334",
-			"lastTotalAssets": "1633739271893871649104",
+			"lastPricePerShare": "1865571687450926613",
+			"lastTotalAssets": "1839135606520889928452",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25875,6 +27198,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25944,6 +27268,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -25989,8 +27314,8 @@
 				"0xaf48f006e75af050c4136f5a32b69e3fe1c4140f",
 				"0xeeb6be70ff212238419cd638fab17910cf61cbe7"
 			],
-			"lastPricePerShare": "1050936809199514200",
-			"lastTotalAssets": "2300782186801430526143",
+			"lastPricePerShare": "1051935020397122384",
+			"lastTotalAssets": "1643350889916599406840",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26021,6 +27346,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26060,7 +27386,7 @@
 				"0x137ff1d982928df3ec626e0a5b6cf7f015de3202"
 			],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "548891893931",
+			"lastTotalAssets": "431953042257",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -26091,6 +27417,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26128,8 +27455,8 @@
 				"0x5cc89e5dd6162a318d394fe14956be428dc87ecf",
 				"0x1e27b0d41923f8260964368c7ad519951f1e74d6"
 			],
-			"lastPricePerShare": "1241373490289372909",
-			"lastTotalAssets": "85870400973960396399",
+			"lastPricePerShare": "1246476410779120183",
+			"lastTotalAssets": "134204977176539363630",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26163,6 +27490,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26201,7 +27529,7 @@
 				"0x8308cf5c99a8b153d7f1d66e40593a910f9f7ed0"
 			],
 			"lastPricePerShare": "1007624496635404069",
-			"lastTotalAssets": "380620382750729681970856",
+			"lastTotalAssets": "380620382750729681970865",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26235,6 +27563,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26304,6 +27633,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -26376,6 +27706,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26419,8 +27750,8 @@
 				"0x074134a2784f4f66b6ced6f68849382990ff3215",
 				"0x694e47afd14a64661a04eee674fb331bcdef3737"
 			],
-			"lastPricePerShare": "1045547",
-			"lastTotalAssets": "184158527859",
+			"lastPricePerShare": "1048758",
+			"lastTotalAssets": "33681852859",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26451,6 +27782,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26491,7 +27823,7 @@
 				"0xeef271a0071423ea56d38e4abe748165cc432e3f"
 			],
 			"lastPricePerShare": "999999999999999999",
-			"lastTotalAssets": "28240851591150014947",
+			"lastTotalAssets": "29725981172990635166",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26522,6 +27854,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26589,6 +27922,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26659,6 +27993,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26693,7 +28028,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1025324554558768050",
+			"lastPricePerShare": "2085245073414142768",
 			"lastTotalAssets": "3335590439584964",
 			"metadata": {
 				"isRetired": false,
@@ -26725,6 +28060,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26759,8 +28095,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "5678841695921186021",
-			"lastTotalAssets": "313529778077166005301141",
+			"lastPricePerShare": "6492418975632077090",
+			"lastTotalAssets": "82181661957787675909819",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26791,6 +28127,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26861,6 +28198,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -26932,6 +28270,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27001,6 +28340,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27070,6 +28410,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27136,6 +28477,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27205,6 +28547,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27275,6 +28618,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27313,7 +28657,7 @@
 				"0xcb7ddc0e702c2017b23a84d1b890fd32400f7a25"
 			],
 			"lastPricePerShare": "1018906325606405407",
-			"lastTotalAssets": "164579247596261919007038",
+			"lastTotalAssets": "139562145188923683821628",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -27347,6 +28691,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27416,6 +28761,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27485,6 +28831,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27556,6 +28903,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27627,6 +28975,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27699,6 +29048,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27768,6 +29118,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -27840,6 +29191,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27906,6 +29258,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -27975,6 +29328,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28009,8 +29363,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1032052",
-			"lastTotalAssets": "1035740833",
+			"lastPricePerShare": "1032053",
+			"lastTotalAssets": "737728",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28041,6 +29395,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -28110,6 +29465,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28176,6 +29532,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28242,6 +29599,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28308,6 +29666,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28377,6 +29736,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28446,6 +29806,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28515,6 +29876,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28584,6 +29946,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28623,7 +29986,7 @@
 				"0xaef9ae268c601606679c8afb7f5285bdb9c58f54"
 			],
 			"lastPricePerShare": "2742085652172065478",
-			"lastTotalAssets": "2384657174679218785823051",
+			"lastTotalAssets": "1862356122859596454984475",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28654,6 +30017,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28723,6 +30087,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28792,6 +30157,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28861,6 +30227,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -28930,6 +30297,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29000,6 +30368,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29070,6 +30439,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29107,8 +30477,8 @@
 				"0x0a3d5befd575843d41625428a77fde9fa0b8fb42",
 				"0x2ef9d2162673d06c43ae8cdaf718e4ac88914fe7"
 			],
-			"lastPricePerShare": "1057415497211540467",
-			"lastTotalAssets": "1146589050281489354239385",
+			"lastPricePerShare": "1090029914874933329",
+			"lastTotalAssets": "22166245509917861678972",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29139,6 +30509,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29179,7 +30550,7 @@
 				"0xc8d4a8a7f593e73cd32cd6c5fb11fe20f23f9695"
 			],
 			"lastPricePerShare": "1014655917224922901",
-			"lastTotalAssets": "6657562376303965352",
+			"lastTotalAssets": "6656040392428127968",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29210,6 +30581,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29276,6 +30648,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29346,6 +30719,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29415,6 +30789,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29485,6 +30860,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29551,6 +30927,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29623,6 +31000,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29667,8 +31045,8 @@
 				"0x074134a2784f4f66b6ced6f68849382990ff3215",
 				"0x694e47afd14a64661a04eee674fb331bcdef3737"
 			],
-			"lastPricePerShare": "1055618",
-			"lastTotalAssets": "7703977509305",
+			"lastPricePerShare": "1057222",
+			"lastTotalAssets": "6999355717906",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29699,6 +31077,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29768,6 +31147,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29802,8 +31182,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1468642996019137376",
-			"lastTotalAssets": "116540913542672775564516",
+			"lastPricePerShare": "1477572200397346422",
+			"lastTotalAssets": "53995375489992638348727",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29834,6 +31214,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29875,8 +31256,8 @@
 				"0x0655977feb2f289a4ab78af67bab0d17aab84367",
 				"0x05329aab081b125eef7fbbc8b857428d478e692b"
 			],
-			"lastPricePerShare": "1065634329721211872",
-			"lastTotalAssets": "2534460528531742954199957",
+			"lastPricePerShare": "1066946674528406017",
+			"lastTotalAssets": "2381779635606570918835799",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29907,6 +31288,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -29944,8 +31326,8 @@
 				"0x4b3fc8ecb96c4f92ba2adc6a19b58efa479006d6",
 				"0xd10e4692234d91b8b50f8b13b6425387c30c351d"
 			],
-			"lastPricePerShare": "1007643253032562066",
-			"lastTotalAssets": "985911767921034183864778",
+			"lastPricePerShare": "1009305743501590285",
+			"lastTotalAssets": "987683377213967207366169",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29976,6 +31358,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30048,6 +31431,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30115,6 +31499,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30152,8 +31537,8 @@
 				"0x2663bd22c2ba9e03b3ae1aa1c0c765781d2da154",
 				"0xb3650ee177e186732c0a3b54bcaec201c76b2df2"
 			],
-			"lastPricePerShare": "1107996237471744099",
-			"lastTotalAssets": "510466549846115474514830",
+			"lastPricePerShare": "1114852866693160172",
+			"lastTotalAssets": "563470661714898565022310",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -30184,6 +31569,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30255,6 +31641,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30289,8 +31676,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "24963027575330978091",
-			"lastTotalAssets": "59851281513231239698",
+			"lastPricePerShare": "24978364597863549738",
+			"lastTotalAssets": "59883060159435410747",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -30321,6 +31708,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30393,6 +31781,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30462,6 +31851,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30534,6 +31924,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30605,6 +31996,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30671,6 +32063,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30740,6 +32133,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -30811,6 +32205,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30881,6 +32276,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -30923,8 +32319,8 @@
 				"0xc7bae383738274ea8c3292d53afbb3b42b348df0",
 				"0xeeb6be70ff212238419cd638fab17910cf61cbe7"
 			],
-			"lastPricePerShare": "1022283064004011607",
-			"lastTotalAssets": "2034713757168474409065",
+			"lastPricePerShare": "1023508647659813477",
+			"lastTotalAssets": "3018671685432473419607",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -30955,6 +32351,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31026,6 +32423,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31098,6 +32496,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31132,8 +32531,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1016630567068624625",
-			"lastTotalAssets": "100652100879437474776",
+			"lastPricePerShare": "1017269550758538736",
+			"lastTotalAssets": "100709899169756609580",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -31164,6 +32563,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31201,8 +32601,8 @@
 				"0xdca0293707424508a6c730c068c212ad966c5533",
 				"0xf109447489eb03a1ff4c717e803033e37b345c3f"
 			],
-			"lastPricePerShare": "1012526703615121051",
-			"lastTotalAssets": "2215410164814065098133812",
+			"lastPricePerShare": "1019142985084385743",
+			"lastTotalAssets": "652727303862801557951738",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -31233,6 +32633,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31305,6 +32706,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31376,6 +32778,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31449,6 +32852,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31522,6 +32926,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31593,6 +32998,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31662,6 +33068,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31733,6 +33140,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31804,6 +33212,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31873,6 +33282,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -31942,6 +33352,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32012,6 +33423,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -32082,6 +33494,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32154,6 +33567,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32224,6 +33638,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32295,6 +33710,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32361,6 +33777,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32399,8 +33816,8 @@
 				"0x0669091f451142b3228171ae6ad794cf98288124",
 				"0xfa68707be4b58fb9f10748e30e25a15113edee1d"
 			],
-			"lastPricePerShare": "1010774179452800008",
-			"lastTotalAssets": "565108217392012775094",
+			"lastPricePerShare": "1010898938150780810",
+			"lastTotalAssets": "320821010480616930133",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -32431,6 +33848,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32468,7 +33886,7 @@
 				"0x1ea323272acf0ee3080f9a744b06984e5354b11b",
 				"0xda1f2b287575375b0f9a1d1338fa1c9698257b20"
 			],
-			"lastPricePerShare": "1280366666526317229",
+			"lastPricePerShare": "1318629863353555519",
 			"lastTotalAssets": "98952980196458331013",
 			"metadata": {
 				"isRetired": false,
@@ -32500,6 +33918,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32568,6 +33987,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32637,6 +34057,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32706,6 +34127,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32743,8 +34165,8 @@
 				"0xd2fa8632088726ccdb0922bcb771b1882924fc2d",
 				"0x6b556d82b2698a31b1424cd0e80e1aa0100b163e"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "0",
+			"lastPricePerShare": "1006524216783728979",
+			"lastTotalAssets": "1687368395990942411077349",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -32775,6 +34197,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32843,6 +34266,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32909,6 +34333,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -32981,6 +34406,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33052,6 +34478,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33122,6 +34549,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33189,6 +34617,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33258,6 +34687,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33328,6 +34758,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33400,6 +34831,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33469,6 +34901,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -33541,6 +34974,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33612,6 +35046,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33683,6 +35118,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33754,6 +35190,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33823,6 +35260,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0xd74aecff75e15767734a1d59b9dc7cfb278b3dbe": {
+			"address": "0xd74aecff75e15767734a1d59b9dc7cfb278b3dbe",
+			"token": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22191422,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xf0df905ba8a82af947130884c20171dff70eda2d",
+				"0xe54a84eb14e8633160382f6da0dd19afa79789ee",
+				"0x4a63e0947b966b3bfa99da557f6f09eadc9d9f4c"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xd74aecff75e15767734a1d59b9dc7cfb278b3dbe",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33892,6 +35401,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -33963,6 +35473,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34034,6 +35545,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34073,7 +35585,7 @@
 				"0xbdfb1d6a8abfa5ac6fbc60e7a0810d4ffee36462"
 			],
 			"lastPricePerShare": "1222717240456496594",
-			"lastTotalAssets": "14423515127413210440114",
+			"lastTotalAssets": "2026384268152873458736",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34104,10 +35616,81 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0xd91b6ded55c0fba2c1e88f2cdf6e051ecd788952": {
+			"address": "0xd91b6ded55c0fba2c1e88f2cdf6e051ecd788952",
+			"token": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22197268,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+				"0x59f6e998a78aa074f67b2e2cd1dc1774214c7547"
+			],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "1035003768",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xd91b6ded55c0fba2c1e88f2cdf6e051ecd788952",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Stablecoin",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -34174,6 +35757,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34212,8 +35796,8 @@
 				"0x01d127d90513ccb6071f83efe15611c4d9890668",
 				"0x19a11b4c29708243088fa939ec7863722f9f5bb0"
 			],
-			"lastPricePerShare": "1174896159362708403",
-			"lastTotalAssets": "15251745867485034546373284",
+			"lastPricePerShare": "1176539458157598249",
+			"lastTotalAssets": "16176612569158140209504999",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34245,6 +35829,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34318,6 +35903,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34359,7 +35945,7 @@
 				"0xf06b5c192d1413e7a4db1b2a9640500fdd83f1b2"
 			],
 			"lastPricePerShare": "1013228104132560109",
-			"lastTotalAssets": "165664969513724970683",
+			"lastTotalAssets": "165654461918591194614",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34390,6 +35976,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34428,8 +36015,8 @@
 				"0xae8a4092c8e21290fe8c5241a90517d6921c33da",
 				"0x89dc05b7ae9a9d6f116eedd6f8ca06961a1574e0"
 			],
-			"lastPricePerShare": "4387852092960900847",
-			"lastTotalAssets": "59268385547799212292688",
+			"lastPricePerShare": "4706319379859591503",
+			"lastTotalAssets": "4313003808949068050842",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34463,6 +36050,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34532,6 +36120,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34599,6 +36188,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34636,7 +36226,7 @@
 				"0x9084b5a98e3b4b257affd82ae4a1753f87906dce"
 			],
 			"lastPricePerShare": "1098425989399406290",
-			"lastTotalAssets": "2626268319132649446572",
+			"lastTotalAssets": "2626154182724826901806",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -34670,6 +36260,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34740,6 +36331,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -34809,6 +36401,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34876,6 +36469,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -34945,6 +36539,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35015,6 +36610,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35083,6 +36679,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35154,6 +36751,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35226,6 +36824,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35297,6 +36896,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35335,7 +36935,7 @@
 				"0x83f20f44975d03b1b09e64809b757c47f942beea"
 			],
 			"lastPricePerShare": "1062931110464636377",
-			"lastTotalAssets": "333465640482477530649454",
+			"lastTotalAssets": "325470620816262512588078",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35366,6 +36966,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35403,7 +37004,7 @@
 				"0xc771d3fe9699a5aac0e6be661c5eee3ed1f9a285",
 				"0x3f3a9fa43196ec62e5f5d1ab1a6d73ed640e61ee"
 			],
-			"lastPricePerShare": "1541375383293254801",
+			"lastPricePerShare": "1542982292306000063",
 			"lastTotalAssets": "60364537013602976046",
 			"metadata": {
 				"isRetired": false,
@@ -35437,6 +37038,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35504,6 +37106,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35574,6 +37177,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35641,6 +37245,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35710,6 +37315,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -35780,6 +37386,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35847,6 +37454,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -35918,6 +37526,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -35988,6 +37597,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36054,6 +37664,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36124,6 +37735,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36158,8 +37770,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1165276",
-			"lastTotalAssets": "77231978700",
+			"lastPricePerShare": "1180822",
+			"lastTotalAssets": "5585186494",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -36190,6 +37802,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36260,6 +37873,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36333,6 +37947,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36400,6 +38015,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36471,6 +38087,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36540,6 +38157,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36577,8 +38195,8 @@
 				"0x840372686a8ecb892f72b0f3f3eb0e1de6798c79",
 				"0x222c65ec2cc9abd160536c78054d6b40290163dc"
 			],
-			"lastPricePerShare": "1009017797294487538",
-			"lastTotalAssets": "124080407167609875386",
+			"lastPricePerShare": "1012014277066541937",
+			"lastTotalAssets": "130437864582655423598",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -36609,6 +38227,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36676,6 +38295,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -36743,6 +38363,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36815,6 +38436,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36885,6 +38507,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36957,6 +38580,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -36991,8 +38615,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1368666167647837296",
-			"lastTotalAssets": "1977594166055329497",
+			"lastPricePerShare": "1511187720361237592",
+			"lastTotalAssets": "30009965883842372679",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37023,6 +38647,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37093,6 +38718,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37164,6 +38790,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37202,7 +38829,7 @@
 				"0x88ac6a2a55ce6adb53a38e8be85e179a188dd7b1"
 			],
 			"lastPricePerShare": "1001765629741922450",
-			"lastTotalAssets": "7338298431206859542469303",
+			"lastTotalAssets": "4906338081320049562926689",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -37233,6 +38860,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37272,7 +38900,7 @@
 				"0xf1f9cb62c0159f33e2fd96f37e71be622a5e6393"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "511008301734993570",
+			"lastTotalAssets": "944949293102431014",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37303,6 +38931,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37372,6 +39001,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37439,6 +39069,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37508,6 +39139,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37575,6 +39207,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37609,8 +39242,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1011922019621088692",
-			"lastTotalAssets": "1738534656620186390639",
+			"lastPricePerShare": "1013169880837180834",
+			"lastTotalAssets": "422209697875354432447",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37641,6 +39274,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -37710,6 +39344,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37776,6 +39411,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37845,6 +39481,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -37879,8 +39516,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3555857329790650354",
-			"lastTotalAssets": "705228256639024741287",
+			"lastPricePerShare": "3559492745068142990",
+			"lastTotalAssets": "705871686287960769423",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37911,6 +39548,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -37982,6 +39620,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38019,8 +39658,8 @@
 				"0x163c59dd67bbf0dd61a1ae91e2a41f14137734b9",
 				"0x9df207d6b2d5e917e4a3125f2f475faa665834bd"
 			],
-			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "6972382545390958845551",
+			"lastPricePerShare": "1004073050598908050",
+			"lastTotalAssets": "3194311710249063850182898",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -38051,6 +39690,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38117,6 +39757,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": true,
 					"isPublicERC4626": false
 				},
@@ -38187,6 +39828,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38222,7 +39864,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "2248156037673584964",
+			"lastTotalAssets": "2256130863211719068",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -38253,6 +39895,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38326,6 +39969,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38396,6 +40040,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -38467,6 +40112,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38536,6 +40182,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38603,6 +40250,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38670,6 +40318,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38742,6 +40391,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38813,6 +40463,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38885,6 +40536,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -38957,6 +40609,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39023,6 +40676,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39093,6 +40747,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39127,8 +40782,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1062020",
-			"lastTotalAssets": "10887712261",
+			"lastPricePerShare": "1393336",
+			"lastTotalAssets": "229989327",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -39159,6 +40814,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39197,7 +40853,7 @@
 				"0xf5309b37b07250fa261b2a9c30c85ad942d6ccab"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "102193928486416077385",
+			"lastTotalAssets": "177789659526687784512",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -39228,6 +40884,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39262,8 +40919,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1333266",
-			"lastTotalAssets": "1871869223",
+			"lastPricePerShare": "1334704",
+			"lastTotalAssets": "1873685729",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -39294,6 +40951,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39361,6 +41019,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39432,6 +41091,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39502,10 +41162,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0xf96e4c5eee8095f918ed3312b3de3d68156798f8": {
+			"address": "0xf96e4c5eee8095f918ed3312b3de3d68156798f8",
+			"token": "0x97a597cbca514afcc29cd300f04f98d9dbaa3624",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1160187609343235957",
+			"lastTotalAssets": "2707254372151250728",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xf96e4c5eee8095f918ed3312b3de3d68156798f8",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -39571,6 +41299,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39638,6 +41367,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39675,8 +41405,8 @@
 				"0x97d4ee49ee15e8223f0bac1c925f9db75918e7b3",
 				"0xb85887c847597dec6f45b155fda30c98a0ef0228"
 			],
-			"lastPricePerShare": "1436621012428313576",
-			"lastTotalAssets": "352290876762724623357735",
+			"lastPricePerShare": "1449613150889451508",
+			"lastTotalAssets": "156952329176184394622671",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -39710,6 +41440,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39776,6 +41507,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39847,6 +41579,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39916,6 +41649,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -39988,6 +41722,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40026,7 +41761,7 @@
 				"0x58bef4d2361016cf2ee9ec9c0353af6fb941acd3"
 			],
 			"lastPricePerShare": "1006927175015120609",
-			"lastTotalAssets": "2884968886845827632693340",
+			"lastTotalAssets": "3029409332867847750400657",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -40057,6 +41792,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40127,6 +41863,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": true
 				},
@@ -40196,10 +41933,78 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0xfe08fc631be2da2b47aa6adba275adab2197c0cd": {
+			"address": "0xfe08fc631be2da2b47aa6adba275adab2197c0cd",
+			"token": "0x107717c98c8125a94d3d2cc82b86a1b705f3a27c",
+			"registry": "0x842b22eb2a1c1c54344eddbe6959f787c2d15844",
+			"type": "Single Strategy",
+			"kind": "Single Strategy",
+			"version": "3.0.2",
+			"activation": 19594531,
+			"chainID": 1,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1125225493431024693",
+			"lastTotalAssets": "166363795174269152346003",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xfe08fc631be2da2b47aa6adba275adab2197c0cd",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "Curve",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": true,
+					"isMorpho": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -40262,6 +42067,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40330,6 +42136,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40400,6 +42207,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40467,6 +42275,7 @@
 					"isYearnJuiced": true,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40536,6 +42345,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
@@ -40606,6 +42416,7 @@
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
+					"isCove": false,
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},

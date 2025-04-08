@@ -1,14 +1,12 @@
 package apr
 
 import (
-	"os"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
 	"github.com/yearn/ydaemon/common/helpers"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -41,20 +39,6 @@ func isCurveVault(strategies map[string]models.TStrategy) bool {
 func getPoolWeeklyAPY(subgraphItem models.CurveSubgraphData) *bigNumber.Float {
 	poolAPY := bigNumber.NewFloat(0).Div(
 		bigNumber.NewFloat(0).SetFloat64(subgraphItem.LatestWeeklyApy),
-		bigNumber.NewFloat(100),
-	)
-	return poolAPY
-}
-
-/**************************************************************************************************
-** We need to know how is performing the pool in term of APY. We could calculate the whole what is
-** the price now, vs what it was one week ago, and cale it to one year etc. but the daily apy
-** is already available in the Curve API.
-** So just use it. It's mainly used for the convex type of curve APR.
-**************************************************************************************************/
-func getPoolDailyAPY(subgraphItem models.CurveSubgraphData) *bigNumber.Float {
-	poolAPY := bigNumber.NewFloat(0).Div(
-		bigNumber.NewFloat(0).SetFloat64(subgraphItem.LatestDailyApy),
 		bigNumber.NewFloat(100),
 	)
 	return poolAPY
@@ -234,7 +218,6 @@ func calculateCurveLikeStrategyAPR(
 	** So just use it.
 	**********************************************************************************************/
 	poolWeeklyAPY := getPoolWeeklyAPY(subgraphItem)
-	poolDailyAPY := getPoolDailyAPY(subgraphItem)
 
 	/**********************************************************************************************
 	** Now, we need to know if we are in a standard curve strat, or a convex strat. If it's a
@@ -252,7 +235,7 @@ func calculateCurveLikeStrategyAPR(
 				poolPrice:      poolPrice,
 				baseAPY:        baseAPY,
 				rewardAPY:      rewardAPY,
-				poolDailyAPY:   poolDailyAPY,
+				poolWeeklyAPY:  poolWeeklyAPY,
 			},
 		)
 	}
@@ -266,7 +249,7 @@ func calculateCurveLikeStrategyAPR(
 				poolPrice:      poolPrice,
 				baseAPY:        baseAPY,
 				rewardAPY:      rewardAPY,
-				poolDailyAPY:   poolDailyAPY,
+				poolWeeklyAPY:  poolWeeklyAPY,
 			},
 			fraxPool,
 		)
@@ -281,7 +264,7 @@ func calculateCurveLikeStrategyAPR(
 				poolPrice:      poolPrice,
 				baseAPY:        baseAPY,
 				rewardAPY:      rewardAPY,
-				poolDailyAPY:   poolDailyAPY,
+				poolWeeklyAPY:  poolWeeklyAPY,
 			},
 		)
 	}
@@ -331,9 +314,6 @@ func computeCurveLikeForwardAPY(
 	keepVelo := bigNumber.NewFloat(0)
 	for _, strategy := range allStrategiesForVault {
 		if strategy.LastDebtRatio == nil || strategy.LastDebtRatio.IsZero() {
-			if os.Getenv("ENVIRONMENT") == "dev" {
-				logs.Info("Skipping strategy " + strategy.Address.Hex() + " for vault " + vault.Address.Hex() + " because debt ratio is zero")
-			}
 			continue
 		}
 

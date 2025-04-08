@@ -32,6 +32,7 @@ func initStakingPools(chainID uint64) {
 
 func initVaults(chainID uint64) (
 	map[common.Address]models.TVaultsFromRegistry,
+	map[string]models.TStrategy,
 	map[common.Address]models.TVault,
 	map[common.Address]models.TERC20Token,
 ) {
@@ -43,13 +44,14 @@ func initVaults(chainID uint64) (
 	** - The tokens
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
+	indexer.IndexYearnXCoveVaults(chainID)
 	registries := indexer.IndexNewVaults(chainID)
 	logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
-	vaultMap := fetcher.RetrieveAllVaults(chainID, registries)
+	vaultMap, strategiesMap := indexer.ProcessNewVault(chainID, registries, fetcher.ProcessNewVaultMethodReplace)
 	logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
 	logs.Success(chainID, `-`, `InitTokens ✅`, len(tokenMap))
-	return registries, vaultMap, tokenMap
+	return registries, strategiesMap, vaultMap, tokenMap
 }
 
 func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
@@ -82,7 +84,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		),
 		gocron.NewTask(
 			func() {
-				_, vaultMap, tokenMap = initVaults(chainID)
+				_, _, vaultMap, tokenMap = initVaults(chainID)
 
 				risks.RetrieveAvailableRiskScores(chainID)
 				risks.RetrieveAllRiskScores(chainID, vaultMap)

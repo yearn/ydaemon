@@ -8,7 +8,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -181,7 +180,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		}
 
 		if !strategyWithDetails.ShouldBeIncluded(strategiesCondition) {
-			logs.Info(`Skipping strategy ` + strategy.Address.Hex() + ` because it does not match the condition ` + strategiesCondition)
 			continue
 		}
 

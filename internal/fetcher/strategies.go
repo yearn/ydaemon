@@ -10,7 +10,6 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -232,7 +231,7 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 		newStrategy.NetAPR = netAPRFloat
 		newStrategy.APRType = aprType
 	} else {
-		logs.Error(`Error while computing APR for ` + newStrategy.Address.Hex() + ` | ` + newStrategy.VaultAddress.Hex() + `: ` + err.Error())
+		// logs.Error(`Error while computing APR for ` + newStrategy.Address.Hex() + ` | ` + newStrategy.VaultAddress.Hex() + `: ` + err.Error())
 	}
 
 	/******************************************************************************************

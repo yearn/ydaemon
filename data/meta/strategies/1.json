@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-04-10T14:13:19.036453+02:00",
+	"lastUpdate": "2025-04-10T14:29:12.359752+02:00",
 	"version": {
 		"major": 0,
 		"minor": 114,
-		"patch": 26
+		"patch": 84
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -30,7 +30,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670799",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -141,7 +141,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1668084383",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -253,7 +253,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631482229",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -280,7 +280,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1646861337",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -477,7 +477,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1743619079",
 			"lastDebtRatio": "9341",
-			"netAPR": 0.07465945722315848,
+			"netAPR": 0.07459444188502307,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -504,7 +504,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1715706251",
 			"lastDebtRatio": "0",
-			"netAPR": 0.07465945722315848,
+			"netAPR": 0.07459444188502307,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -561,7 +561,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1651449423",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -618,7 +618,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1617203659",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -844,7 +844,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723911263",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -929,7 +929,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620512463",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1037,7 +1037,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743967403",
 			"lastDebtRatio": "1608",
-			"netAPR": 0.08062913707029828,
+			"netAPR": 0.08099314940297475,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1064,7 +1064,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744173311",
 			"lastDebtRatio": "539",
-			"netAPR": 25.966387086677113,
+			"netAPR": 25.986568211603476,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1145,7 +1145,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724618375",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -1174,7 +1174,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629112341",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1201,7 +1201,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1619110198",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Blockchain Adventurers Guild"
@@ -1230,7 +1230,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667293535",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1257,7 +1257,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1743803207",
 			"lastDebtRatio": "8248",
-			"netAPR": 0.03730962832864115,
+			"netAPR": 0.03718827020964266,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1369,7 +1369,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1670449463",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1396,7 +1396,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1720018391",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -1426,7 +1426,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743602951",
 			"lastDebtRatio": "5348",
-			"netAPR": 0.04526016370731689,
+			"netAPR": 0.04538755596081856,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1453,7 +1453,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619019",
 			"lastDebtRatio": "4272",
-			"netAPR": 0.04526016370731689,
+			"netAPR": 0.04538755677059303,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1563,7 +1563,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -1651,7 +1651,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641146136",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -1681,7 +1681,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1671641375",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -1711,7 +1711,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619091",
 			"lastDebtRatio": "659",
-			"netAPR": 0.062273693507508554,
+			"netAPR": 0.06236220388098346,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1767,7 +1767,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624563227",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1821,7 +1821,7 @@
 			"lastPerformanceFee": "4000",
 			"lastReport": "1663026995",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -1875,7 +1875,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724234099",
 			"lastDebtRatio": "9950",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -1988,7 +1988,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620332174",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2098,7 +2098,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621865326",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"MakerDAO"
@@ -2154,7 +2154,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628960104",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -2183,7 +2183,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1673315699",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -2296,7 +2296,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1619806827",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2323,7 +2323,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619151",
 			"lastDebtRatio": "874",
-			"netAPR": 0.03535820370388354,
+			"netAPR": 0.03544412346898618,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2406,7 +2406,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1673538287",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -2633,7 +2633,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620332174",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2660,7 +2660,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615551487",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2714,7 +2714,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1655328566",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sushi"
@@ -2774,7 +2774,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2855,7 +2855,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628991863",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2882,7 +2882,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3023,7 +3023,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1628514131",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3079,7 +3079,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629021853",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3162,7 +3162,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1635574359",
 			"lastDebtRatio": "9900",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3216,7 +3216,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690987643",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -3246,7 +3246,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1625834690",
 			"lastDebtRatio": "10",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -3496,7 +3496,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1679697455",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -3584,7 +3584,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1616341862",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3611,7 +3611,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670787",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -3697,7 +3697,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629086300",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3894,7 +3894,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1656094263",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Uniswap"
@@ -3979,7 +3979,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1683698579",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4033,7 +4033,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1619305791",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4087,7 +4087,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1672084463",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4141,7 +4141,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -4281,7 +4281,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1650641024",
 			"lastDebtRatio": "3000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -4368,7 +4368,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719335159",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4422,7 +4422,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628670437",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"MakerDAO"
@@ -4621,7 +4621,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1644356877",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Notional Finance"
@@ -4650,7 +4650,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1725960023",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4734,7 +4734,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719079907",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4817,7 +4817,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1618853859",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Cream Finance"
@@ -4846,7 +4846,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1630954071",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -4873,7 +4873,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5068,7 +5068,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1656094263",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Uniswap"
@@ -5124,7 +5124,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1726222595",
 			"lastDebtRatio": "539",
-			"netAPR": 0.04206881617945246,
+			"netAPR": 0.04206882486705865,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -5235,7 +5235,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5262,7 +5262,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619139",
 			"lastDebtRatio": "5000",
-			"netAPR": 0.03144369968495209,
+			"netAPR": 0.03144370569365673,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -5370,7 +5370,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1647269448",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -5400,7 +5400,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1623751796",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5592,7 +5592,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667838239",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -5649,7 +5649,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628992777",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5676,7 +5676,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1675103471",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5703,7 +5703,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1726222607",
 			"lastDebtRatio": "7671",
-			"netAPR": 0.10563038188207141,
+			"netAPR": 0.10475593895735713,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -5730,7 +5730,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743531203",
 			"lastDebtRatio": "2263",
-			"netAPR": 0.10563037629078842,
+			"netAPR": 0.10475593342567091,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -5757,7 +5757,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1637355443",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5840,7 +5840,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629330649",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5867,7 +5867,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621616445",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -5977,7 +5977,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1615573307",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6031,7 +6031,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1677259859",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6283,7 +6283,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1630034762",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6367,7 +6367,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -6397,7 +6397,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719335939",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6478,7 +6478,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615319719",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6532,7 +6532,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674563471",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -6562,7 +6562,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1620662126",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6589,7 +6589,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629295286",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6728,7 +6728,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1644524084",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6894,7 +6894,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621082337",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -6921,7 +6921,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723911131",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -6950,7 +6950,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1638305483",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -7062,7 +7062,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1649871715",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -7092,7 +7092,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1646862793",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7232,7 +7232,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664879879",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -7316,7 +7316,7 @@
 			"lastPerformanceFee": "100",
 			"lastReport": "1649351406",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Stargate Finance"
@@ -7345,7 +7345,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181231",
 			"lastDebtRatio": "851",
-			"netAPR": 0.040269790995850485,
+			"netAPR": 0.04026983971316955,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -7399,7 +7399,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7426,7 +7426,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181231",
 			"lastDebtRatio": "6305",
-			"netAPR": 0.03839805850249789,
+			"netAPR": 0.03839810279482325,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -7453,7 +7453,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670811",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -7540,7 +7540,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1663038705",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7567,7 +7567,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627952070",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -7627,7 +7627,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724431175",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7654,7 +7654,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7681,7 +7681,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080543",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7708,7 +7708,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7735,7 +7735,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1621889518",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -7792,7 +7792,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
 			"lastReport": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -7852,7 +7852,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -7881,7 +7881,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7908,7 +7908,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1630266916",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -7989,7 +7989,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628976463",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8016,7 +8016,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181219",
 			"lastDebtRatio": "1000",
-			"netAPR": 0.004129308050870861,
+			"netAPR": 0.004129308563571854,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -8043,7 +8043,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628776485",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8070,7 +8070,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1634072839",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -8099,7 +8099,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181219",
 			"lastDebtRatio": "6000",
-			"netAPR": 0.004730806704733581,
+			"netAPR": 0.0047308073767293735,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -8126,7 +8126,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1635286856",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8182,7 +8182,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723277699",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -8267,7 +8267,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625059915",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -8324,7 +8324,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648757395",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -8354,7 +8354,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1671050819",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8381,7 +8381,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1613513936",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -8551,7 +8551,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719493991",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8692,7 +8692,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1632867992",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8719,7 +8719,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1663106446",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"88 MPH"
@@ -8748,7 +8748,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1743437147",
 			"lastDebtRatio": "400",
-			"netAPR": 0.021024002780056783,
+			"netAPR": 0.021024007353642737,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -8775,7 +8775,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723119431",
 			"lastDebtRatio": "9800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -8804,7 +8804,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690981703",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8885,7 +8885,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1656977794",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -8939,7 +8939,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641531932",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Pool Together"
@@ -8968,7 +8968,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1620185259",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9052,7 +9052,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9079,7 +9079,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1616341995",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9106,7 +9106,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -9135,7 +9135,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722833303",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -9164,7 +9164,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653819854",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9191,7 +9191,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1613062082",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -9303,7 +9303,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690987091",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9330,7 +9330,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1645594417",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9384,7 +9384,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724609603",
 			"lastDebtRatio": "9924",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -9413,7 +9413,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722308111",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9440,7 +9440,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617308426",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9497,7 +9497,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1632263605",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sushi",
@@ -9527,7 +9527,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1640110420",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -9581,7 +9581,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1623348641",
 			"lastDebtRatio": "9500",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -9747,7 +9747,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1621638548",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -9806,7 +9806,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684642751",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -9892,7 +9892,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719321059",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -9951,7 +9951,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1660570815",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10032,7 +10032,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1622384119",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10115,7 +10115,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672668539",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10142,7 +10142,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648785386",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -10172,7 +10172,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1673538287",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -10202,7 +10202,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652660190",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -10232,7 +10232,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1632870259",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10315,7 +10315,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670775",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -10345,7 +10345,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1643575119",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -10401,7 +10401,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1635124969",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10455,7 +10455,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624405466",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10703,7 +10703,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719321155",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -10732,7 +10732,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621183291",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -10761,7 +10761,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1614031758",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10788,7 +10788,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1679034875",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -10901,7 +10901,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1614812888",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -10984,7 +10984,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654580653",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave",
@@ -11041,7 +11041,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -11203,7 +11203,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1617835352",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -11284,7 +11284,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1656357119",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -11311,7 +11311,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690985963",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -11424,7 +11424,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1669692935",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -11508,7 +11508,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628632639",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -11724,7 +11724,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1644356877",
 			"lastDebtRatio": "500",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Notional Finance"
@@ -11782,7 +11782,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684613135",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -11866,7 +11866,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1711233911",
 			"lastDebtRatio": "8000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -11924,7 +11924,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1639500382",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12059,7 +12059,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629433455",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12116,7 +12116,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627775758",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12200,7 +12200,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624443389",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -12427,7 +12427,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986083",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -12457,7 +12457,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1634072839",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -12542,7 +12542,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615867007",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12687,8 +12687,8 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744117139",
-			"lastDebtRatio": "10000",
-			"netAPR": 0.08295832629676703,
+			"lastDebtRatio": "9990",
+			"netAPR": 0.08292285839139879,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -12715,7 +12715,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641146136",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12769,7 +12769,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627491338",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -12853,7 +12853,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641097276",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -12907,7 +12907,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1641145732",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sushi",
@@ -13018,7 +13018,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625588713",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13153,7 +13153,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1638504410",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -13209,7 +13209,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1645566120",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -13265,7 +13265,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724432099",
 			"lastDebtRatio": "2000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13292,7 +13292,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1691271383",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13319,7 +13319,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654193597",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13403,7 +13403,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624442632",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13511,7 +13511,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1663084642",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13596,7 +13596,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686584795",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13650,7 +13650,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1643632020",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -13737,7 +13737,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625059915",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -13767,7 +13767,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1633483978",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -13796,7 +13796,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1655909977",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -13908,7 +13908,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1704821531",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -13995,7 +13995,7 @@
 			"lastPerformanceFee": "4000",
 			"lastReport": "1672299287",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14078,7 +14078,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14161,7 +14161,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628989141",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14217,7 +14217,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627501218",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Pool Together"
@@ -14410,7 +14410,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181219",
 			"lastDebtRatio": "1000",
-			"netAPR": 0.003977952547806751,
+			"netAPR": 0.003977953023537317,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -14493,7 +14493,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
 			"lastReport": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -14523,7 +14523,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686701279",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14714,7 +14714,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1695502571",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14741,7 +14741,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1673235491",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14768,7 +14768,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652280715",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -14798,7 +14798,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1630345386",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14825,7 +14825,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14879,7 +14879,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670847",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -14968,7 +14968,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654193571",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -14995,7 +14995,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624562588",
 			"lastDebtRatio": "9990",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15049,7 +15049,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1616429853",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15301,7 +15301,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744013951",
 			"lastDebtRatio": "4586",
-			"netAPR": 0.07465945722315848,
+			"netAPR": 0.07459444188502307,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -15328,7 +15328,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654033905",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Uniswap"
@@ -15357,7 +15357,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624562588",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15440,7 +15440,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1619110198",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Blockchain Adventurers Guild"
@@ -15523,7 +15523,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080147",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15607,7 +15607,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653104599",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15663,7 +15663,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080231",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15690,7 +15690,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690987823",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -15832,7 +15832,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1661630064",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -15888,7 +15888,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1671050555",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -15942,7 +15942,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690987343",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -16026,7 +16026,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1617046333",
 			"lastDebtRatio": "1000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -16167,7 +16167,7 @@
 			"lastPerformanceFee": "4000",
 			"lastReport": "1668200519",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16279,7 +16279,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1633578263",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -16335,7 +16335,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684113215",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16362,7 +16362,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1617046132",
 			"lastDebtRatio": "8000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Cream Finance"
@@ -16533,7 +16533,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624877957",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16560,7 +16560,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16587,7 +16587,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620627141",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16641,7 +16641,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621406232",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16668,7 +16668,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684450211",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -16698,7 +16698,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1720284119",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -16725,7 +16725,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1637775735",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -16755,7 +16755,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743602999",
 			"lastDebtRatio": "4622",
-			"netAPR": 0.04506026935060525,
+			"netAPR": 0.04531587204836818,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -16782,7 +16782,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619031",
 			"lastDebtRatio": "1143",
-			"netAPR": 0.04506026935060525,
+			"netAPR": 0.04531587204836818,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -16836,7 +16836,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690984787",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -17004,7 +17004,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986923",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17058,7 +17058,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1643403596",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -17144,7 +17144,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743619163",
 			"lastDebtRatio": "4126",
-			"netAPR": 0.03798785479427469,
+			"netAPR": 0.03807420707320208,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -17171,7 +17171,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1630266916",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17281,7 +17281,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620981165",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -17310,7 +17310,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617206146",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17337,7 +17337,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1743614891",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.07465945722315848,
+			"netAPR": 0.07459444188502307,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -17445,7 +17445,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628985224",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17725,7 +17725,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1613390778",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17752,7 +17752,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1627806175",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -17779,7 +17779,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654629759",
 			"lastDebtRatio": "3000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Tokemak"
@@ -17835,7 +17835,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724431559",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18007,7 +18007,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1642215707",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -18037,7 +18037,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080495",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18118,7 +18118,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620278153",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -18174,7 +18174,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1637152594",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18230,7 +18230,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1676209583",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -18317,7 +18317,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653798390",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -18376,7 +18376,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686584795",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18541,7 +18541,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641096932",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -18571,7 +18571,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625000947",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18598,7 +18598,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1687698431",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -18627,7 +18627,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1635124969",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18654,7 +18654,7 @@
 			"lastPerformanceFee": "100",
 			"lastReport": "1648827054",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Stargate Finance"
@@ -18740,7 +18740,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1649997685",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -18797,7 +18797,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1670449463",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18824,7 +18824,7 @@
 			"lastPerformanceFee": "4000",
 			"lastReport": "1660012541",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -18938,7 +18938,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617649494",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -18992,7 +18992,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624984502",
 			"lastDebtRatio": "500",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -19077,7 +19077,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628530460",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"MakerDAO"
@@ -19384,7 +19384,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627597075",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -19411,7 +19411,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664878739",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -19498,7 +19498,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629448134",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -19552,7 +19552,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1655909977",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -19609,7 +19609,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1693108247",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -19697,7 +19697,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674109583",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -19810,7 +19810,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624976878",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -19920,7 +19920,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1738761911",
 			"lastDebtRatio": "9526",
-			"netAPR": 0.037393408508723525,
+			"netAPR": 0.03739341792459161,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -20001,7 +20001,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615404222",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -20030,7 +20030,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664458775",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -20057,7 +20057,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719994127",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -20140,7 +20140,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1637770128",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -20199,7 +20199,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080507",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -20226,7 +20226,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1635124969",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -20363,7 +20363,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1651862969",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Alpha Homora"
@@ -20392,7 +20392,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690985855",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -20439,18 +20439,18 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "14999962366958029508087",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1744185035",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
+			"lastDebtRatio": "10",
+			"netAPR": 0.0447623675189579,
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0x837963994Ff184143e4D448E6Fc685d92Cee639B_0xD347e7A3DdF5Ce4C42E19a4F30eEAA761795C72B": {
@@ -20476,7 +20476,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1713147599",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -20703,7 +20703,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1630266916",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -20757,7 +20757,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743936659",
 			"lastDebtRatio": "5",
-			"netAPR": 0.018327688401398312,
+			"netAPR": 0.018326435710114275,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -20865,7 +20865,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -20975,7 +20975,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1661897479",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -21002,7 +21002,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625908314",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -21086,7 +21086,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1639339620",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -21171,7 +21171,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723521287",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -21198,7 +21198,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1623114837",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -21255,7 +21255,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648662155",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -21338,7 +21338,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1642973031",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -21367,7 +21367,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1645566120",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -21453,7 +21453,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1691200103",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -21566,7 +21566,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1704821507",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -21626,7 +21626,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1712689019",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -21655,7 +21655,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1632915938",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -22018,7 +22018,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1638801010",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -22077,7 +22077,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719494255",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -22362,7 +22362,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1643580872",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -22529,7 +22529,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654405361",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -22586,7 +22586,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1712688779",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -22642,7 +22642,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719321059",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -22730,7 +22730,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181231",
 			"lastDebtRatio": "976",
-			"netAPR": 0.03373007811136031,
+			"netAPR": 0.03373011185703323,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -22811,7 +22811,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1744244291",
 			"lastDebtRatio": "545",
-			"netAPR": 0.020634044531964157,
+			"netAPR": 0.020654486817450746,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -22975,7 +22975,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690984583",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -23056,7 +23056,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1663958339",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -23139,7 +23139,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621615902",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -23225,7 +23225,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672372055",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -23286,7 +23286,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620491828",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -23313,7 +23313,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1681746851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -23484,7 +23484,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621865368",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"MakerDAO"
@@ -23513,7 +23513,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1695502571",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -23542,7 +23542,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1635419176",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -23571,7 +23571,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1676242091",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -23601,7 +23601,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628987044",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -23655,7 +23655,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -23684,7 +23684,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1616521953",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -23738,7 +23738,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1634611431",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -23875,7 +23875,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1623026501",
 			"lastDebtRatio": "5800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -23958,7 +23958,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628712243",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -23987,7 +23987,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1675302407",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -24184,7 +24184,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627276100",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -24437,7 +24437,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615519625",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Cream Finance"
@@ -24466,7 +24466,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690987703",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -24496,7 +24496,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722357863",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -24525,7 +24525,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -24635,7 +24635,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622820841",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -24664,7 +24664,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723911311",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -24890,7 +24890,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627349714",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -25258,7 +25258,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615551487",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -25312,7 +25312,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629448134",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -25341,7 +25341,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1691344103",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -25370,7 +25370,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686780947",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -25508,7 +25508,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1695502571",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -25618,7 +25618,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617692344",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -25703,7 +25703,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1626698572",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -25786,7 +25786,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722753983",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -25842,7 +25842,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628986125",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -25869,7 +25869,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1646862793",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -25898,7 +25898,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1612217199",
 			"lastDebtRatio": "9800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -25927,7 +25927,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684192727",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -25954,7 +25954,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181231",
 			"lastDebtRatio": "1001",
-			"netAPR": 0.040771011159890236,
+			"netAPR": 0.04077106046369572,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -26035,7 +26035,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652660190",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -26176,7 +26176,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648757395",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -26289,7 +26289,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1660509966",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -26375,7 +26375,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622650139",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Cream Finance"
@@ -26431,7 +26431,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1617069893",
 			"lastDebtRatio": "9800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Mushroom Finance"
@@ -26571,7 +26571,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1648491167",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"88 MPH"
@@ -26629,7 +26629,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1614980078",
 			"lastDebtRatio": "9000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -26713,7 +26713,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620491828",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -26740,7 +26740,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648783674",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -26912,7 +26912,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664301095",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -27030,7 +27030,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1656708535",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27084,7 +27084,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1640110420",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27140,7 +27140,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723597871",
 			"lastDebtRatio": "9800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -27169,7 +27169,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629383785",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27196,7 +27196,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1638995545",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27223,7 +27223,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648783674",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -27307,7 +27307,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1677122723",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27334,7 +27334,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690984763",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -27394,7 +27394,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670835",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -27424,7 +27424,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1669225547",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27481,7 +27481,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627501218",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -27564,7 +27564,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627197444",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27591,7 +27591,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1633746673",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27701,7 +27701,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181231",
 			"lastDebtRatio": "867",
-			"netAPR": 0.035627371202995306,
+			"netAPR": 0.035627409333938154,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -27728,7 +27728,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1618543995",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -27838,7 +27838,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -27923,7 +27923,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1621091430",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -28004,7 +28004,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986563",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -28150,7 +28150,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653525156",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -28346,7 +28346,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1623591450",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -28458,7 +28458,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1705812431",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -28569,7 +28569,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1743791483",
 			"lastDebtRatio": "9034",
-			"netAPR": 0.05626884091995965,
+			"netAPR": 0.056314303614235506,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -28653,7 +28653,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621953550",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -28680,7 +28680,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1635564933",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -28793,7 +28793,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1628001763",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -28876,7 +28876,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719178739",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -29067,7 +29067,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1659435397",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -29232,7 +29232,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1661621569",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -29261,7 +29261,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -29315,7 +29315,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1744133687",
 			"lastDebtRatio": "788",
-			"netAPR": 0.022766629053161402,
+			"netAPR": 0.022766635588689077,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -29342,7 +29342,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667082515",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aura Finance",
@@ -29372,7 +29372,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1621149258",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -29679,7 +29679,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629433455",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -29709,7 +29709,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622517125",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -29736,7 +29736,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1632263605",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sushi",
@@ -29766,7 +29766,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1645640979",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -29878,7 +29878,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -30185,7 +30185,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -30239,7 +30239,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622798293",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -30268,7 +30268,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1675302407",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -30297,7 +30297,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181219",
 			"lastDebtRatio": "1000",
-			"netAPR": 0.004129308041633806,
+			"netAPR": 0.004129308547407007,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -30351,7 +30351,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628995728",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -30405,7 +30405,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684246283",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -30745,7 +30745,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631246170",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -30801,7 +30801,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724610335",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -30884,7 +30884,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1712675879",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -30971,7 +30971,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1718232179",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -31000,7 +31000,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648783674",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -31030,7 +31030,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622518680",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31084,7 +31084,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1615513122",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31278,7 +31278,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615521382",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31305,7 +31305,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1623026573",
 			"lastDebtRatio": "4000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31677,7 +31677,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1621213348",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31734,7 +31734,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1612149236",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Mushroom Finance"
@@ -31763,7 +31763,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722758891",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -31792,7 +31792,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624970925",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -31822,7 +31822,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1666740611",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31849,7 +31849,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625003745",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -31879,7 +31879,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654193608",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -31906,7 +31906,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1633006578",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -31936,7 +31936,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986323",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -31966,7 +31966,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620578859",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -32049,7 +32049,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621197597",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -32219,7 +32219,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -32276,7 +32276,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1622249559",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -32303,7 +32303,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1625345416",
 			"lastDebtRatio": "4000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sushi"
@@ -32332,7 +32332,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672372307",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -32558,7 +32558,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1638244167",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -32612,7 +32612,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1671641375",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -32641,7 +32641,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1615573307",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -32722,7 +32722,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641175195",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -32752,7 +32752,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627199308",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -32974,7 +32974,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622517125",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -33028,7 +33028,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1627277126",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -33165,7 +33165,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1625846682",
 			"lastDebtRatio": "5500",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Compound Finance",
@@ -33281,7 +33281,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1663624583",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -33311,7 +33311,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986023",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -33397,7 +33397,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1740637415",
 			"lastDebtRatio": "6062",
-			"netAPR": 0.04772580825411765,
+			"netAPR": 0.04772587667964956,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -33511,7 +33511,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986131",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -33595,7 +33595,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1661536580",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -33679,7 +33679,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1622650139",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -33760,7 +33760,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1743620207",
 			"lastDebtRatio": "0",
-			"netAPR": 0.00796309625437086,
+			"netAPR": 0.007963098135355118,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -33844,7 +33844,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1619110198",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Blockchain Adventurers Guild"
@@ -33873,7 +33873,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621182958",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -33956,7 +33956,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1633646279",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -33985,7 +33985,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1689529679",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -34042,7 +34042,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1719795107",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -34183,7 +34183,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1718232179",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -34268,7 +34268,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1612100849",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -34322,7 +34322,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1614170075",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -34378,7 +34378,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1649893599",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Tokemak"
@@ -34407,7 +34407,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1614216413",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -34689,7 +34689,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371851",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -34775,7 +34775,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615843283",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Idle Finance"
@@ -34863,7 +34863,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719335975",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -34917,7 +34917,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615240308",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Alpha Homora"
@@ -35110,7 +35110,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1743963311",
 			"lastDebtRatio": "27",
-			"netAPR": 0.03151778123982041,
+			"netAPR": 0.03151781199937087,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -35251,7 +35251,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621183291",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -35334,7 +35334,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624746313",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -35445,7 +35445,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1625834690",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -35532,7 +35532,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1620784760",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -35673,7 +35673,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648757395",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -35730,7 +35730,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1631319850",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -35815,7 +35815,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624421482",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -35896,7 +35896,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629566945",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"KeeperDAO"
@@ -36121,7 +36121,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1635124969",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36265,7 +36265,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1713096659",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36292,7 +36292,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743462983",
 			"lastDebtRatio": "112",
-			"netAPR": 0.025171855497907458,
+			"netAPR": 0.02517183645138754,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -36319,7 +36319,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628988215",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36346,7 +36346,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654193585",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36429,7 +36429,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625912641",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -36488,7 +36488,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672372115",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -36547,7 +36547,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719080171",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36574,7 +36574,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1677122603",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36657,7 +36657,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1740249827",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.04767990503435904,
+			"netAPR": 0.041075255720146586,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -36684,7 +36684,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744028579",
 			"lastDebtRatio": "2200",
-			"netAPR": 0.04767990503435904,
+			"netAPR": 0.04107525441472415,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -36738,7 +36738,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1695502571",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -36767,7 +36767,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1713097031",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -36794,7 +36794,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1625481621",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -36850,7 +36850,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1724190371",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -36936,7 +36936,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1640996756",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave",
@@ -37138,7 +37138,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617401415",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"MakerDAO"
@@ -37197,7 +37197,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684135787",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -37478,7 +37478,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1615486333",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Cream Finance"
@@ -37728,7 +37728,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686855119",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -37758,7 +37758,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1615521326",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -37895,7 +37895,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986863",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -37952,7 +37952,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628994816",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -37979,7 +37979,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654127813",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38063,7 +38063,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1617398215",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38230,7 +38230,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1723911227",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38313,7 +38313,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1623259220",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -38455,7 +38455,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1641146136",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -38485,7 +38485,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624282959",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38512,7 +38512,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1621545388",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38539,7 +38539,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628996629",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38566,7 +38566,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648787402",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38620,7 +38620,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629316908",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -38676,7 +38676,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1658978059",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Uniswap"
@@ -38763,7 +38763,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1691016515",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -38905,7 +38905,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1669692935",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -38986,7 +38986,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1651449553",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39013,7 +39013,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1616968989",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": []
 		},
@@ -39067,7 +39067,7 @@
 			"lastPerformanceFee": "2000",
 			"lastReport": "1719335051",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39291,7 +39291,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653161362",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -39347,7 +39347,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672299287",
 			"lastDebtRatio": "9998",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39458,7 +39458,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624678836",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39485,7 +39485,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743963299",
 			"lastDebtRatio": "4958",
-			"netAPR": 0.03608504759062825,
+			"netAPR": 0.03608503034857602,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -39512,7 +39512,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1625834690",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -39542,7 +39542,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1628983209",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39654,7 +39654,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690986971",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39681,7 +39681,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664879027",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -39738,7 +39738,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672372055",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -39825,7 +39825,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1650050688",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -39855,7 +39855,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1694077679",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39882,7 +39882,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1624225268",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -39909,7 +39909,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743602939",
 			"lastDebtRatio": "185",
-			"netAPR": 0.04182185182632914,
+			"netAPR": 0.029926912619027135,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -39936,7 +39936,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744133675",
 			"lastDebtRatio": "6004",
-			"netAPR": 0.04182185182632914,
+			"netAPR": 0.029926912619027135,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -39992,7 +39992,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1679697455",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -40023,7 +40023,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1690984223",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -40302,7 +40302,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648670904",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Balancer"
@@ -40331,7 +40331,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654881402",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -40558,7 +40558,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1631319912",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -40585,7 +40585,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1642905143",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -40787,7 +40787,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1686670823",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -40903,7 +40903,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1629011484",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -41013,7 +41013,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1672371899",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -41043,7 +41043,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1638035608",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -41127,7 +41127,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1643341437",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -41184,7 +41184,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1630345386",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -41211,7 +41211,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1718232179",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -41294,7 +41294,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744181219",
 			"lastDebtRatio": "1000",
-			"netAPR": 0.004129308063571813,
+			"netAPR": 0.004129308569345014,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -41378,7 +41378,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1624282959",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -41432,7 +41432,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1613693059",
 			"lastDebtRatio": "1000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -41461,7 +41461,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1671640343",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -41517,7 +41517,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654230884",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Convex Finance",
@@ -41608,7 +41608,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1616335538",
 			"lastDebtRatio": "9800",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -41635,7 +41635,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1628216305",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"

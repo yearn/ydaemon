@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-04-10T14:12:37.936797+02:00",
+	"lastUpdate": "2025-04-10T14:28:06.317423+02:00",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 115
+		"patch": 121
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -30,7 +30,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1737951975",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -84,7 +84,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1727129950",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},

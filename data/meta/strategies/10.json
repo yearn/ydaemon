@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-04-10T14:12:57.373221+02:00",
+	"lastUpdate": "2025-04-10T14:28:33.552069+02:00",
 	"version": {
 		"major": 0,
 		"minor": 10,
-		"patch": 264
+		"patch": 272
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -24,13 +24,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "292885768300434331259",
+			"lastTotalDebt": "292932919328092246004",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "66915328701640906597",
+			"lastTotalGain": "66967613890221377580",
 			"lastPerformanceFee": "0",
-			"lastReport": "1744204021",
+			"lastReport": "1744287727",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.05588683746525871,
+			"netAPR": 0.06725590598644325,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -109,13 +109,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "2008195258031876643241",
+			"lastTotalDebt": "2008931429945470297347",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "315768550266664313591",
+			"lastTotalGain": "316526321976724171986",
 			"lastPerformanceFee": "0",
-			"lastReport": "1744028365",
+			"lastReport": "1744287717",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.04481995989059261,
+			"netAPR": 0.045882751728818595,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -173,7 +173,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1721945355",
 			"lastDebtRatio": "9476",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -314,7 +314,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674567896",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -399,7 +399,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1726098103",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -513,7 +513,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674567896",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -712,7 +712,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1715030903",
 			"lastDebtRatio": "7095",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -735,13 +735,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "31418545813443702",
+			"lastTotalDebt": "31515813320607266",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "113393938666812945",
+			"lastTotalGain": "113505241352817156",
 			"lastPerformanceFee": "0",
-			"lastReport": "1743770305",
+			"lastReport": "1744287689",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.23479252369654413,
+			"netAPR": 0.21593009594254134,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -886,7 +886,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667259282",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -973,7 +973,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674567896",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -1224,13 +1224,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "2462310570332670419",
+			"lastTotalDebt": "2462584963995369917",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "263888744997224620",
+			"lastTotalGain": "264161046557139739",
 			"lastPerformanceFee": "0",
-			"lastReport": "1744204069",
+			"lastReport": "1744287775",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.03868575436391604,
+			"netAPR": 0.04166365032740112,
 			"aprType": "current",
 			"protocols": null
 		},
@@ -1688,7 +1688,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1689173611",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sonne Finance"
@@ -1968,7 +1968,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667259282",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -2335,7 +2335,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1715030869",
 			"lastDebtRatio": "9542",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -2451,7 +2451,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667259282",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -2648,13 +2648,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "15272824990751397",
+			"lastTotalDebt": "15278409250959113",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "10846455816415034",
+			"lastTotalGain": "10851738565803809",
 			"lastPerformanceFee": "0",
-			"lastReport": "1742989767",
+			"lastReport": "1744287709",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.01350445344741061,
+			"netAPR": 0.00840411437289821,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -2791,13 +2791,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "66894224097643087153420",
+			"lastTotalDebt": "66996684228916294604811",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "70181676243187902204047",
+			"lastTotalGain": "70278497974832869655142",
 			"lastPerformanceFee": "0",
-			"lastReport": "1744204047",
+			"lastReport": "1744287743",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.5331520803957114,
+			"netAPR": 0.5453635765979215,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -3027,7 +3027,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674567896",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -3050,13 +3050,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "120275039123957481769412",
+			"lastTotalDebt": "120867547668156445782442",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "138464913673784306458576",
+			"lastTotalGain": "138874872460452190805020",
 			"lastPerformanceFee": "0",
-			"lastReport": "1744113157",
+			"lastReport": "1744287699",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.6118672715874999,
+			"netAPR": 0.6158449026889641,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -3085,7 +3085,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1721771539",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -3114,7 +3114,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1715030893",
 			"lastDebtRatio": "8780",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"
@@ -3516,7 +3516,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1722377399",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Sonne Finance"
@@ -3630,7 +3630,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674567896",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -3792,13 +3792,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "17604671397406521502",
+			"lastTotalDebt": "17728935908780116856",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "31345507977354291301",
+			"lastTotalGain": "31533730916325742541",
 			"lastPerformanceFee": "0",
-			"lastReport": "1743505999",
+			"lastReport": "1744287759",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.32677547783814115,
+			"netAPR": 0.4312983422580853,
 			"aprType": "current",
 			"protocols": [
 				"Velodrome Finance"
@@ -4055,7 +4055,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667259282",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -4169,7 +4169,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1667259282",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Aave"
@@ -4254,7 +4254,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1721945351",
 			"lastDebtRatio": "7877",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Yearn"

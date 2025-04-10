@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-04-10T14:12:40.828585+02:00",
+	"lastUpdate": "2025-04-10T14:28:22.649268+02:00",
 	"version": {
 		"major": 0,
 		"minor": 9,
-		"patch": 414
+		"patch": 552
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -57,7 +57,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744137919",
 			"lastDebtRatio": "112",
-			"netAPR": 0.03825744790866281,
+			"netAPR": 0.03825749146064705,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -111,7 +111,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1744137947",
 			"lastDebtRatio": "7577",
-			"netAPR": 0.0082945624760411,
+			"netAPR": 0.008294564523381176,
 			"aprType": "forward",
 			"protocols": [
 				"Aave"
@@ -244,13 +244,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "405992967909",
+			"lastTotalDebt": "405992528938",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1744137927",
 			"lastDebtRatio": "8782",
-			"netAPR": 0.02797670231133864,
+			"netAPR": 0.027976752169012187,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -522,7 +522,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743683252",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.0009943353479258121,
+			"netAPR": 0,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -661,7 +661,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743683246",
 			"lastDebtRatio": "1218",
-			"netAPR": 0.02797670231133864,
+			"netAPR": 0.027976752169012187,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -771,7 +771,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1743683260",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.00012354708811557202,
+			"netAPR": 0,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -825,7 +825,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744137941",
 			"lastDebtRatio": "4679",
-			"netAPR": 0.04081538943632168,
+			"netAPR": 0.04088469620406876,
 			"aprType": "forward",
 			"protocols": [
 				"Compound Finance"
@@ -881,7 +881,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1744137935",
 			"lastDebtRatio": "5321",
-			"netAPR": 0.0301656407553752,
+			"netAPR": 0.030165667832493526,
 			"aprType": "forward",
 			"protocols": [
 				"Aave"
@@ -964,7 +964,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1744137911",
 			"lastDebtRatio": "9888",
-			"netAPR": 0.03825744790866281,
+			"netAPR": 0.038257491646565,
 			"aprType": "forward",
 			"protocols": null
 		},

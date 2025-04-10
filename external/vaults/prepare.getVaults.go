@@ -230,6 +230,8 @@ func getVaults(
 	}
 	data := allVaults[start:end]
 
+	logs.Pretty(len(data))
+
 	return data, nil
 }
 

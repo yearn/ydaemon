@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-04-10T14:12:40.502442+02:00",
+	"lastUpdate": "2025-04-10T14:28:08.488033+02:00",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 94
+		"patch": 100
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -59,7 +59,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1634817348",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -198,7 +198,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654795596",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Curve Finance"
@@ -256,7 +256,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1684017754",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Geist Finance"
@@ -627,7 +627,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1642793166",
 			"lastDebtRatio": "3000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -654,7 +654,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1643208965",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream",
@@ -826,7 +826,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1649245604",
 			"lastDebtRatio": "10000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -911,7 +911,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1726099170",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream"
@@ -1027,7 +1027,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1726065829",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream"
@@ -1201,7 +1201,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1643208965",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream",
@@ -1345,7 +1345,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1653376723",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Solidex Finance"
@@ -1604,7 +1604,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1688999373",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream",
@@ -1802,7 +1802,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1726064698",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream"
@@ -2320,7 +2320,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1651145055",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"SpookySwap"
@@ -2523,7 +2523,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1643208965",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Scream",
@@ -2698,7 +2698,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1651865405",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Geist Finance"
@@ -2957,7 +2957,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1642017021",
 			"lastDebtRatio": "5000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -2984,7 +2984,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1645484145",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},
@@ -3100,7 +3100,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1641076837",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"Beethoven-X"
@@ -3643,7 +3643,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654620172",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"0xDAO"
@@ -3873,7 +3873,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1643114695",
 			"lastDebtRatio": "0",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": [
 				"veDAO"
@@ -4016,7 +4016,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1635960210",
 			"lastDebtRatio": "9000",
-			"netAPR": null,
+			"netAPR": 0,
 			"aprType": "",
 			"protocols": null
 		},

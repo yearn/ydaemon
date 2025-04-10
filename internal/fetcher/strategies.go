@@ -2,6 +2,7 @@ package fetcher
 
 import (
 	"errors"
+	"math"
 	"strings"
 	"sync"
 	"time"
@@ -224,7 +225,11 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 	******************************************************************************************/
 	netAPR, aprType, err := getStrategyAPR(chainID, versionMajor, newStrategy)
 	if err == nil {
-		newStrategy.NetAPR = netAPR
+		netAPRFloat, _ := netAPR.Float64()
+		if math.IsInf(netAPRFloat, 0) {
+			netAPRFloat = 0
+		}
+		newStrategy.NetAPR = netAPRFloat
 		newStrategy.APRType = aprType
 	} else {
 		logs.Error(`Error while computing APR for ` + newStrategy.Address.Hex() + ` | ` + newStrategy.VaultAddress.Hex() + `: ` + err.Error())

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-08T20:38:00.564165+02:00",
+	"lastUpdate": "2025-04-10T14:13:13.564384+02:00",
 	"version": {
 		"major": 0,
-		"minor": 107,
+		"minor": 109,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -2235,6 +2235,22 @@
 			"description": "",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x1005F7406f32a61BD760CfA14aCCd2737913d546/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1017c97c03d6738c358576735de76028f2395625": {
+			"address": "0x1017c97c03d6738c358576735de76028f2395625",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2USDS-1",
+			"displayName": "USDS-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2USDS-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1017C97C03d6738c358576735DE76028f2395625/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4578,6 +4594,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x21E27a5E5513D6e65C4f830167390997aA84843a/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x22028e652a2e937c876f2577f8e78f692d6daa93": {
+			"address": "0x22028e652a2e937c876f2577f8e78f692d6daa93",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2USDC-1",
+			"displayName": "USDC-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2USDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x22028E652a2e937c876F2577f8E78f692d6DAA93/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
@@ -9867,6 +9899,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x482cce30cde09292279371956a3c7c57bbe125a9": {
+			"address": "0x482cce30cde09292279371956a3c7c57bbe125a9",
+			"underlyingTokensAddresses": [
+				"0xc522a6606bba746d7960404f22a3db936b6f4f50"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve reUSD-scrvUSD yVault",
+			"symbol": "yvCurve-reUSD-scrvUSD",
+			"displayName": "Curve reUSD-scrvUSD yVault",
+			"displaySymbol": "yvCurve-reUSD-scrvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x482Cce30Cde09292279371956a3C7c57bbe125A9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4856a7efbbfcae92ab13c5e2e322fc77647bb856": {
 			"address": "0x4856a7efbbfcae92ab13c5e2e322fc77647bb856",
 			"underlyingTokensAddresses": [
@@ -11329,6 +11377,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x531f882a76a949c51457a3eb9e5d09a9cad50418": {
+			"address": "0x531f882a76a949c51457a3eb9e5d09a9cad50418",
+			"underlyingTokensAddresses": [
+				"0xee351f12eae8c2b8b9d1b9bfd3c5dd565234578d"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve RSUP-WETH yVault",
+			"symbol": "yvCurve-RSUP-WETH",
+			"displayName": "Curve RSUP-WETH yVault",
+			"displaySymbol": "yvCurve-RSUP-WETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x531F882a76A949c51457A3eB9E5d09a9cad50418/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x532486c59cd371ffedb19241186d786a1e8ee111": {
 			"address": "0x532486c59cd371ffedb19241186d786a1e8ee111",
 			"underlyingTokensAddresses": [],
@@ -11717,6 +11781,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x56072C95FAA701256059aa122697B133aDEd9279/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x560c0f86124472d6a649ac347a7c3415c34f2929": {
+			"address": "0x560c0f86124472d6a649ac347a7c3415c34f2929",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-2 yVault Liquid Locker Compounder",
+			"symbol": "yv^2DAI-2",
+			"displayName": "DAI-2 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2DAI-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x560C0f86124472d6a649aC347A7c3415C34F2929/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -13693,6 +13773,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x64351fC9810aDAd17A690E4e1717Df5e7e085160/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66": {
+			"address": "0x643c4e15d7d62ad0abec4a9bd4b001aa3ef52d66",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Syrup Token",
+			"symbol": "SYRUP",
+			"displayName": "Syrup Token",
+			"displaySymbol": "SYRUP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x643C4E15d7d62Ad0aBeC4a9BD4b001aA3Ef52d66/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23028,6 +23122,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xa89e83e39c8a1cb173d7a0c0201cd3956b57db6d": {
+			"address": "0xa89e83e39c8a1cb173d7a0c0201cd3956b57db6d",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-2 yVault Liquid Locker Compounder",
+			"symbol": "yv^2WETH-2",
+			"displayName": "WETH-2 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2WETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xA89E83E39c8A1cB173D7a0c0201Cd3956B57db6d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xa8abe7ac0c4bb1ade8b22de6a33691fcedcbd8d3": {
 			"address": "0xa8abe7ac0c4bb1ade8b22de6a33691fcedcbd8d3",
 			"underlyingTokensAddresses": [
@@ -24604,6 +24714,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xb359F0A97Ca269Ae5574dc75be48b0e81eFD1dA2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb35b02e3353be80a5648f5299b0336579bcf64a0": {
+			"address": "0xb35b02e3353be80a5648f5299b0336579bcf64a0",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2WETH-1",
+			"displayName": "WETH-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2WETH-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xB35b02E3353BE80A5648F5299b0336579BCf64a0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27440,6 +27566,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xC58aa33Ce619c7f7Ac4929DF357D0Ef762edbD23/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc5ab829b2f7cb3e869949747bc8c6f66ef2250cc": {
+			"address": "0xc5ab829b2f7cb3e869949747bc8c6f66ef2250cc",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "DAI-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2DAI-1",
+			"displayName": "DAI-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2DAI-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC5Ab829B2f7Cb3E869949747BC8c6F66ef2250Cc/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -34697,6 +34839,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xf9a7084ec30238495b3f5c51f05ba7cd1c358dcf": {
+			"address": "0xf9a7084ec30238495b3f5c51f05ba7cd1c358dcf",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "crvUSD-2 yVault Liquid Locker Compounder",
+			"symbol": "yv^2crvUSD",
+			"displayName": "crvUSD-2 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2crvUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xf9A7084Ec30238495b3F5C51f05BA7Cd1C358dcF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xfa6dcb142e12b4f2cb15cabb344a618b7e8d6a62": {
 			"address": "0xfa6dcb142e12b4f2cb15cabb344a618b7e8d6a62",
 			"underlyingTokensAddresses": [
@@ -35581,6 +35739,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xffC374D301F2EA381EE313Da0324ea7bf0dbFddF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xffcaf6549a229d63351b71313559edbe0c467b78": {
+			"address": "0xffcaf6549a229d63351b71313559edbe0c467b78",
+			"underlyingTokensAddresses": [
+				"0xed785af60bed688baa8990cd5c4166221599a441"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve reUSD-sfrxUSD yVault",
+			"symbol": "yvCurve-reUSD-sfrxUSD",
+			"displayName": "Curve reUSD-sfrxUSD yVault",
+			"displaySymbol": "yvCurve-reUSD-sfrxUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xFFcaF6549a229D63351B71313559EDbe0C467B78/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		}

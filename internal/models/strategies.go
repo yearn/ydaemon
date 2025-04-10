@@ -71,7 +71,7 @@ type TStrategy struct {
 	LastPerformanceFee *bigNumber.Int   `json:"lastPerformanceFee"`      // Used for APR calculation and by the FE
 	LastReport         *bigNumber.Int   `json:"lastReport"`              // Used by the FE
 	LastDebtRatio      *bigNumber.Int   `json:"lastDebtRatio,omitempty"` // Only > 0.2.2 | Used by the APY process
-	NetAPR             *bigNumber.Float `json:"netAPR"`                  // The net APR of the strategy
+	NetAPR             float64          `json:"netAPR"`                  // The net APR of the strategy
 	APRType            TStrategyAPRType `json:"aprType"`                 // The type of APR of the strategy
 	Protocols          []string         `json:"protocols"`               // The protocols used by the strategy
 }

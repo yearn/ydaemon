@@ -96,12 +96,14 @@ func StoreStrategiesToJson(chainID uint64, strategies map[string]models.TStrateg
 		data.ShouldRefresh,
 	})
 
-	file, _ := json.MarshalIndent(data, "", "\t")
+	file, err := json.MarshalIndent(data, "", "\t")
+	if err != nil {
+		logs.Error("Failed to marshal strategies JSON file: " + err.Error())
+	}
 	if _, err := os.Stat(env.BASE_DATA_PATH + "/meta/strategies"); os.IsNotExist(err) {
 		os.MkdirAll(env.BASE_DATA_PATH+"/meta/strategies", 0755)
 	}
-	err := os.WriteFile(env.BASE_DATA_PATH+"/meta/strategies/"+chainIDStr+".json", file, 0644)
-	if err != nil {
+	if err := os.WriteFile(env.BASE_DATA_PATH+"/meta/strategies/"+chainIDStr+".json", file, 0644); err != nil {
 		logs.Error("Failed to write strategies JSON file: " + err.Error())
 	}
 }

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-08T09:58:41.819613+02:00",
+	"lastUpdate": "2025-04-10T14:20:46.649008+02:00",
 	"version": {
 		"major": 0,
-		"minor": 23,
+		"minor": 24,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -51,6 +51,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x03FF264046b085450649A993Cdd65dCDD01A893e/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x0ace53f57a14acfd4d43c7d4c46be4b4a5347eff": {
+			"address": "0x0ace53f57a14acfd4d43c7d4c46be4b4a5347eff",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "LevMoonwell USDC",
+			"symbol": "ysUSDC",
+			"displayName": "LevMoonwell USDC",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x0ace53f57A14ACfD4D43C7d4c46BE4b4a5347efF/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x0b25c51637c43decd6cc1c1e3da4518d54ddb528": {
@@ -721,6 +737,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x5b6c2b7ac69ad287c7c9eb85e725f3799695df09": {
+			"address": "0x5b6c2b7ac69ad287c7c9eb85e725f3799695df09",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Yield Chasing pfUSDC1",
+			"symbol": "yvpfUSDC1",
+			"displayName": "Yield Chasing pfUSDC1",
+			"displaySymbol": "yvpfUSDC1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x5B6c2b7Ac69AD287c7C9Eb85E725f3799695DF09/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x5b9b4f9b704faae29f600c04b12af92fb518604f": {
 			"address": "0x5b9b4f9b704faae29f600c04b12af92fb518604f",
 			"underlyingTokensAddresses": [
@@ -972,6 +1004,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x7B8BF6D5557B7c1b5b0235B7cC2aCa6345534cdD/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x7bc2fdef0cf03d8488d7ab06c4a36b61725d06ec": {
+			"address": "0x7bc2fdef0cf03d8488d7ab06c4a36b61725d06ec",
+			"underlyingTokensAddresses": [
+				"0x820c137fa70c8691f0e44dc420a5e53c168921dc"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS BaseInvaders",
+			"symbol": "biUSDS",
+			"displayName": "USDS BaseInvaders",
+			"displaySymbol": "biUSDS",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x7bC2fdef0CF03d8488d7aB06C4A36b61725d06eC/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -1679,6 +1727,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xcDAC0d6c6C59727a65F871236188350531885C43/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xd1468af648565f11393e4033cb0cd270b62495c9": {
+			"address": "0xd1468af648565f11393e4033cb0cd270b62495c9",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC BaseInvaders",
+			"symbol": "biUSDC",
+			"displayName": "USDC BaseInvaders",
+			"displaySymbol": "biUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xD1468AF648565f11393e4033cb0Cd270b62495c9/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xd5428b889621eee8060fc105aa0ab0fa2e344468": {

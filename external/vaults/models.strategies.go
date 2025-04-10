@@ -83,7 +83,7 @@ func CreateExternalStrategy(strategy models.TStrategy) TExternalStrategy {
 		Name:        name,
 		Description: strategy.Description,
 		Status:      status,
-		NetAPR:      strategy.NetAPR,
+		NetAPR:      bigNumber.NewFloat(strategy.NetAPR),
 		Details: &TExternalStrategyDetails{
 			TotalDebt:      strategy.LastTotalDebt,
 			TotalLoss:      strategy.LastTotalLoss,

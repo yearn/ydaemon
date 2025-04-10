@@ -135,7 +135,6 @@ func InitBlockTimestamp(chainID uint64) {
 	if lastWeekBlock.Status == "1" {
 		blockTimeMap[chainID][7], err = strconv.ParseUint(lastWeekBlock.Result, 10, 64)
 		if err != nil {
-			logs.Error(err)
 			blockTimeMap[chainID][7] = uint64(chain.AvgBlocksPerDay * 7)
 		}
 	} else {
@@ -145,7 +144,6 @@ func InitBlockTimestamp(chainID uint64) {
 	if lastTwoWeekBlock.Status == "1" {
 		blockTimeMap[chainID][14], err = strconv.ParseUint(lastTwoWeekBlock.Result, 10, 64)
 		if err != nil {
-			logs.Error(err)
 			blockTimeMap[chainID][14] = uint64(chain.AvgBlocksPerDay * 14)
 		}
 	} else {
@@ -155,7 +153,6 @@ func InitBlockTimestamp(chainID uint64) {
 	if lastMonthBlock.Status == "1" {
 		blockTimeMap[chainID][30], err = strconv.ParseUint(lastMonthBlock.Result, 10, 64)
 		if err != nil {
-			logs.Error(err)
 			blockTimeMap[chainID][30] = uint64(chain.AvgBlocksPerDay * 30)
 		}
 	} else {

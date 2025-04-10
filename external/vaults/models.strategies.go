@@ -48,7 +48,7 @@ type TExternalStrategy struct {
 	Name        string                    `json:"name"`
 	Description string                    `json:"description,omitempty"`
 	Status      string                    `json:"status"`
-	NetAPR      *bigNumber.Float          `json:"netAPR,omitempty"`
+	NetAPR      float64                   `json:"netAPR,omitempty"`
 	Details     *TExternalStrategyDetails `json:"details,omitempty"`
 }
 
@@ -83,7 +83,7 @@ func CreateExternalStrategy(strategy models.TStrategy) TExternalStrategy {
 		Name:        name,
 		Description: strategy.Description,
 		Status:      status,
-		NetAPR:      bigNumber.NewFloat(strategy.NetAPR),
+		NetAPR:      strategy.NetAPR,
 		Details: &TExternalStrategyDetails{
 			TotalDebt:      strategy.LastTotalDebt,
 			TotalLoss:      strategy.LastTotalLoss,

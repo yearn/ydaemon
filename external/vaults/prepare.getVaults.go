@@ -3,6 +3,7 @@ package vaults
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -166,9 +167,7 @@ func getVaults(
 			// Process vault data - use the optimized CreateExternalVault function
 			newVault, err := CreateExternalVault(currentVault)
 			if err != nil {
-				logs.Error(fmt.Errorf("failed to process vault %s on chain %d: %s",
-					currentVault.Address.Hex(), chainID, err), http.StatusInternalServerError,
-					"Error processing vault data", "GetVaults")
+				logs.Error("failed to process vault " + currentVault.Address.Hex() + " on chain " + strconv.FormatUint(chainID, 10) + ": " + err.Error())
 				continue
 			}
 
@@ -229,8 +228,6 @@ func getVaults(
 		end = uint64(len(allVaults))
 	}
 	data := allVaults[start:end]
-
-	logs.Pretty(len(data))
 
 	return data, nil
 }

@@ -202,10 +202,6 @@ var ETHEREUM = TChain{
 		common.HexToAddress(`0x9a96ec9B57Fb64FbC60B423d1f4da7691Bd35079`), // Ajna
 		common.HexToAddress(`0x9Ba021B0a9b958B5E75cE9f6dff97C7eE52cb3E6`), // apxETH
 		common.HexToAddress(`0x04C154b66CB340F3Ae24111CC767e0184Ed00Cc6`), // pxETH
-		common.HexToAddress(`0x2E919d27D515868f3D5Bc9110fa738f9449FC6ad`),
-		common.HexToAddress(`0xe92AE2cF5b373c1713eB5855D4D3aF81D8a8aCAE`),
-		common.HexToAddress(`0x718AbE90777F5B778B52D553a5aBaa148DD0dc5D`),
-		common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`),
 	},
 	IgnoredTokens: []common.Address{
 		common.HexToAddress(`0x7AB4a7BE740131BdE216521B54ADddD672F44A05`), // nothing

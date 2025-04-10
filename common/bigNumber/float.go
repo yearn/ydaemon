@@ -3,6 +3,7 @@ package bigNumber
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"math/big"
 )
 
@@ -421,6 +422,9 @@ func (b *Float) MarshalJSON() ([]byte, error) {
 	if b == nil {
 		return json.Marshal(big.NewFloat(0).String())
 	}
+	if b.IsInf() {
+		return json.Marshal(math.MaxFloat64)
+	}
 	toFloat64, _ := b.Float64()
 	return json.Marshal(toFloat64)
 }
@@ -440,6 +444,10 @@ func (b *Float) UnmarshalJSON(p []byte) error {
 	_, ok := z.SetString(string(p))
 	if !ok {
 		return fmt.Errorf("not a valid big integer: %s", p)
+	}
+	if z.IsInf() {
+		b.Float = *big.NewFloat(math.MaxFloat64)
+		return nil
 	}
 	b.Float = z
 	return nil

@@ -149,16 +149,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 
 	// Process strategies with context awareness
 	for _, strategy := range vaultStrategies {
-		// Check for context timeout
-		select {
-		case <-ctx.Done():
-			handleError(c, fmt.Errorf("operation timed out while processing strategies"),
-				http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
-			return
-		default:
-			// Continue processing
-		}
-
 		// Try to convert the strategy, capturing any errors
 		var strategyWithDetails TExternalStrategy
 		func() {
@@ -184,16 +174,6 @@ func (y Controller) GetSimplifiedVault(c *gin.Context) {
 		}
 
 		newVault.Strategies = append(newVault.Strategies, strategyWithDetails)
-	}
-
-	// Verify context is still valid before proceeding to response
-	select {
-	case <-ctx.Done():
-		handleError(c, fmt.Errorf("request timed out before sending response"),
-			http.StatusGatewayTimeout, "Request processing timed out", "GetSimplifiedVault")
-		return
-	default:
-		// Continue to response
 	}
 
 	// Special handling for vaults that are also registered as strategies

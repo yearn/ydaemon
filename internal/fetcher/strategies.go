@@ -226,7 +226,7 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 	if err == nil {
 		netAPRFloat, _ := netAPR.Float64()
 		if math.IsInf(netAPRFloat, 0) {
-			netAPRFloat = 0
+			netAPRFloat = math.MaxFloat64
 		}
 		newStrategy.NetAPR = netAPRFloat
 		newStrategy.APRType = aprType

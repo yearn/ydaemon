@@ -423,7 +423,7 @@ func (b *Float) MarshalJSON() ([]byte, error) {
 		return json.Marshal(big.NewFloat(0).String())
 	}
 	if b.IsInf() {
-		return json.Marshal(math.MaxFloat64)
+		return json.Marshal(big.NewFloat(0).String())
 	}
 	toFloat64, _ := b.Float64()
 	return json.Marshal(toFloat64)

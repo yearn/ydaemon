@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-10T14:29:04.669274+02:00",
+	"lastUpdate": "2025-04-14T21:42:07.974481+02:00",
 	"version": {
 		"major": 0,
-		"minor": 109,
+		"minor": 110,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1698,6 +1698,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x0a9b2c09f8756c743b0702973ed33970d16cf6f9": {
+			"address": "0x0a9b2c09f8756c743b0702973ed33970d16cf6f9",
+			"underlyingTokensAddresses": [
+				"0x7c1156e515aa1a2e851674120074968c905aaf37"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Staked lvlUSD",
+			"symbol": "SY-slvlUSD",
+			"displayName": "SY Staked lvlUSD",
+			"displaySymbol": "SY-slvlUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x0a9B2C09F8756c743B0702973ed33970d16cF6f9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x0aa0f6308214bf53f6eaefcd56a2bf4482ec4b34": {
 			"address": "0x0aa0f6308214bf53f6eaefcd56a2bf4482ec4b34",
 			"underlyingTokensAddresses": [],
@@ -2797,6 +2813,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x14C1878BD3F989D0D2199c537EA1a6d3b5225d05/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x14ff57675c9c34eeb9e1516ffda7cac6ed1b9748": {
+			"address": "0x14ff57675c9c34eeb9e1516ffda7cac6ed1b9748",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Level USD",
+			"symbol": "SY-lvlUSD",
+			"displayName": "SY Level USD",
+			"displaySymbol": "SY-lvlUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x14Ff57675c9c34EEb9E1516fFda7cAC6Ed1B9748/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4396,6 +4426,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x206db0A0Af10Bec57784045e089A418771D20227/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x207f7205fd6c4b602fa792c8b2b60e6006d4a0b8": {
+			"address": "0x207f7205fd6c4b602fa792c8b2b60e6006d4a0b8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Level USD 25SEP2025",
+			"symbol": "PT-lvlUSD-25SEP2025",
+			"displayName": "PT Level USD 25SEP2025",
+			"displaySymbol": "PT-lvlUSD-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x207F7205fd6c4b602Fa792C8b2B60e6006D4a0b8/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x2084b373979415bc93190071af3390f92dcdd189": {
@@ -6001,6 +6045,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2Ca52C78d7932e285f2eA5928Fb7251baEC3f166/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2ca5f2c4300450d53214b00546795c1c07b89acb": {
+			"address": "0x2ca5f2c4300450d53214b00546795c1c07b89acb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked lvlUSD 25SEP2025",
+			"symbol": "PT-slvlUSD-25SEP2025",
+			"displayName": "PT Staked lvlUSD 25SEP2025",
+			"displaySymbol": "PT-slvlUSD-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2CA5f2C4300450D53214B00546795c1c07B89acB/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9538,6 +9596,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x461bc2ac3f80801bc11b0f20d63b73fef60c8076": {
+			"address": "0x461bc2ac3f80801bc11b0f20d63b73fef60c8076",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x461bc2ac3f80801BC11B0F20d63B73feF60C8076/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x461cd9222e130d1dc0bd79dab4643952430937c1": {
 			"address": "0x461cd9222e130d1dc0bd79dab4643952430937c1",
 			"underlyingTokensAddresses": [],
@@ -9803,6 +9875,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x470f623e8bc3C870F96516b8CBfc6A27E253424D/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x47247749e976c54c6db2a9db68c5cadb05482e9f": {
+			"address": "0x47247749e976c54c6db2a9db68c5cadb05482e9f",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked lvlUSD 25SEP2025",
+			"symbol": "YT-slvlUSD-25SEP2025",
+			"displayName": "YT Staked lvlUSD 25SEP2025",
+			"displaySymbol": "YT-slvlUSD-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x47247749E976c54c6DB2A9dB68c5caDb05482E9F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12832,6 +12918,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5C8151643F7aAC530e2c5D13F91cA2A2D645A9a7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5c8d0c48810fd37a0a824d074ee290e64f7a8fa2": {
+			"address": "0x5c8d0c48810fd37a0a824d074ee290e64f7a8fa2",
+			"underlyingTokensAddresses": [
+				"0x5c8d0c48810fd37a0a824d074ee290e64f7a8fa2"
+			],
+			"type": "Yearn Vault",
+			"name": "AVL",
+			"symbol": "AVL",
+			"displayName": "AVL",
+			"displaySymbol": "AVL",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x5c8D0C48810FD37A0A824D074ee290E64f7A8Fa2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20304,6 +20406,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x93c903299c22c4c226944bf8ba3daf8f6a94e435": {
+			"address": "0x93c903299c22c4c226944bf8ba3daf8f6a94e435",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT USDa saving token 28AUG2025",
+			"symbol": "PT-sUSDa-28AUG2025",
+			"displayName": "PT USDa saving token 28AUG2025",
+			"displaySymbol": "PT-sUSDa-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x93c903299C22C4c226944Bf8ba3DaF8F6a94E435/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x93cf0b02d0a2b61551d107378aff60ceae40c342": {
 			"address": "0x93cf0b02d0a2b61551d107378aff60ceae40c342",
 			"underlyingTokensAddresses": [
@@ -20347,6 +20463,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x93eBc3cA85F96aFD72edB914e833Fe18888DE179/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9408beea2c4c1b7bfefa04874f79cbb9c147e7ae": {
+			"address": "0x9408beea2c4c1b7bfefa04874f79cbb9c147e7ae",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT USDa saving token 28AUG2025",
+			"symbol": "YT-sUSDa-28AUG2025",
+			"displayName": "YT USDa saving token 28AUG2025",
+			"displaySymbol": "YT-sUSDa-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9408BeeA2c4c1B7bfeFA04874f79cBB9c147e7Ae/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20421,6 +20551,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9468b647b36A23af2E48DaB81a178596a6aF95D9/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x946934554a2bf59039661f971986f0223e906264": {
+			"address": "0x946934554a2bf59039661f971986f0223e906264",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Level USD 25SEP2025",
+			"symbol": "YT-lvlUSD-25SEP2025",
+			"displayName": "YT Level USD 25SEP2025",
+			"displaySymbol": "YT-lvlUSD-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x946934554a2Bf59039661f971986F0223E906264/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23500,6 +23644,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xAB182E2a98234DB8298565f0eb9327206B558C57/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xab39fb8e28def89e5df77c2788a811d881d7fc8e": {
+			"address": "0xab39fb8e28def89e5df77c2788a811d881d7fc8e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xab39fb8E28Def89e5df77c2788a811d881D7fC8E/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27993,6 +28151,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xc8809F6C743179e794c4D9B95Ca862aA24976e74/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc88ff954d42d3e11d43b62523b3357847c29377c": {
+			"address": "0xc88ff954d42d3e11d43b62523b3357847c29377c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC88FF954d42d3e11D43B62523B3357847C29377c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

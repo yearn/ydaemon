@@ -1,5 +1,5 @@
 {
-	"lastUpdate": "2025-04-14T21:42:07.974481+02:00",
+	"lastUpdate": "2025-04-15T16:35:05.907776+02:00",
 	"version": {
 		"major": 0,
 		"minor": 110,
@@ -927,6 +927,20 @@
 			"decimals": 9,
 			"chainID": 1
 		},
+		"0x050960d2438d151a246625916b64626f49a1bc0a": {
+			"address": "0x050960d2438d151a246625916b64626f49a1bc0a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Reservoir Protocol RUSD 31JUL2025",
+			"symbol": "YT-RUSD-31JUL2025",
+			"displayName": "YT Reservoir Protocol RUSD 31JUL2025",
+			"displaySymbol": "YT-RUSD-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x050960D2438D151A246625916b64626f49A1Bc0a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x051d7e5609917bd9b73f04bac0ded8dd46a74301": {
 			"address": "0x051d7e5609917bd9b73f04bac0ded8dd46a74301",
 			"underlyingTokensAddresses": [
@@ -1575,6 +1589,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x09b8d86c6275E707155CDB5963cF611A432CCb21/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x09d4214c03d01f49544c0448dbe3a27f768f2b34": {
+			"address": "0x09d4214c03d01f49544c0448dbe3a27f768f2b34",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Reservoir Stablecoin",
+			"symbol": "rUSD",
+			"displayName": "Reservoir Stablecoin",
+			"displaySymbol": "rUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x09D4214C03D01F49544C0448DBE3A27f768F2b34/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -2695,6 +2723,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x133dAa2Fa268b36E088b2BE1358857D41a8369eb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x13945b761b2ed3219a497a46d15a8923f418d2ab": {
+			"address": "0x13945b761b2ed3219a497a46d15a8923f418d2ab",
+			"underlyingTokensAddresses": [
+				"0x65c9a641afceb9c0e6034e558a319488fa0fa3be"
+			],
+			"type": "Yearn Vault",
+			"name": "SY f(x) USD Saving",
+			"symbol": "SY-fxSAVE",
+			"displayName": "SY f(x) USD Saving",
+			"displaySymbol": "SY-fxSAVE",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x13945B761B2Ed3219A497a46D15a8923f418d2ab/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4574,6 +4618,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x216f3aC5d0566F934C0FC15c89422cD5e7505df6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x21aace56a8f21210b7e76d8ef1a77253db85bf0a": {
+			"address": "0x21aace56a8f21210b7e76d8ef1a77253db85bf0a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT f(x) USD Saving 30OCT2025",
+			"symbol": "PT-fxSAVE-30OCT2025",
+			"displayName": "PT f(x) USD Saving 30OCT2025",
+			"displaySymbol": "PT-fxSAVE-30OCT2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x21aacE56a8F21210b7E76d8eF1a77253Db85BF0a/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7556,6 +7614,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3787c19c32e727310708c0693aec00fb37a01e7b": {
+			"address": "0x3787c19c32e727310708c0693aec00fb37a01e7b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT f(x) USD Saving 30OCT2025",
+			"symbol": "YT-fxSAVE-30OCT2025",
+			"displayName": "YT f(x) USD Saving 30OCT2025",
+			"displaySymbol": "YT-fxSAVE-30OCT2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3787c19c32e727310708C0693AEC00Fb37a01E7b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x378cb52b00f9d0921cb46dfc099cff73b42419dc": {
 			"address": "0x378cb52b00f9d0921cb46dfc099cff73b42419dc",
 			"underlyingTokensAddresses": [
@@ -9293,6 +9365,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This factory metapool contains 3Crv (DAI, USDC, and USDT) and Alchemix USD.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x43b4FdFD4Ff969587185cDB6f0BD875c5Fc83f8c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x43d6651ff941776976ae8e5b11ef513e054a7931": {
+			"address": "0x43d6651ff941776976ae8e5b11ef513e054a7931",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Reservoir Protocol RUSD",
+			"symbol": "SY-RUSD",
+			"displayName": "SY Reservoir Protocol RUSD",
+			"displaySymbol": "SY-RUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x43D6651FF941776976aE8e5B11Ef513E054A7931/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -14085,6 +14171,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x65c9a641afceb9c0e6034e558a319488fa0fa3be": {
+			"address": "0x65c9a641afceb9c0e6034e558a319488fa0fa3be",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": " f(x) Stability Pool",
+			"symbol": "fxSP",
+			"displayName": " f(x) Stability Pool",
+			"displaySymbol": "fxSP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x65C9A641afCEB9C0E6034e558A319488FA0FA3be/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x65d72aa8da931f047169112fcf34f52dbaae7d18": {
 			"address": "0x65d72aa8da931f047169112fcf34f52dbaae7d18",
 			"underlyingTokensAddresses": [],
@@ -16575,6 +16675,22 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x7743e50f534a7f9f1791dde7dcd89f7783eefc39": {
+			"address": "0x7743e50f534a7f9f1791dde7dcd89f7783eefc39",
+			"underlyingTokensAddresses": [
+				"0x65c9a641afceb9c0e6034e558a319488fa0fa3be"
+			],
+			"type": "Yearn Vault",
+			"name": "f(x) USD Saving",
+			"symbol": "fxSAVE",
+			"displayName": "f(x) USD Saving",
+			"displaySymbol": "fxSAVE",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7743e50F534a7f9F1791DdE7dCD89F7783Eefc39/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x7749f5ed1e356edc63d469c2fcac9adeb56d1c2b": {
 			"address": "0x7749f5ed1e356edc63d469c2fcac9adeb56d1c2b",
 			"underlyingTokensAddresses": [],
@@ -18937,6 +19053,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x887F62e4189c6b04Cc6db1478Fb71976FD1E84bf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x88c4f34b86907b7221c0061f7a0bbec9391ea727": {
+			"address": "0x88c4f34b86907b7221c0061f7a0bbec9391ea727",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x88C4F34B86907b7221c0061f7a0bBeC9391Ea727/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -21717,6 +21847,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x9bb4D5A122d85E24d8c9b8025A5162Fa6B385292/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9bc2fb257e00468fe921635fe5a73271f385d0eb": {
+			"address": "0x9bc2fb257e00468fe921635fe5a73271f385d0eb",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9bc2fb257e00468fE921635fe5a73271F385d0EB/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -34598,6 +34742,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf70B3F1eA3BFc659FFb8b27E84FAE7Ef38b5bD3b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf736acf34ff7cd9b3565b73a1f15e652859bf322": {
+			"address": "0xf736acf34ff7cd9b3565b73a1f15e652859bf322",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Reservoir Protocol RUSD 31JUL2025",
+			"symbol": "PT-RUSD-31JUL2025",
+			"displayName": "PT Reservoir Protocol RUSD 31JUL2025",
+			"displaySymbol": "PT-RUSD-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf736acF34FF7Cd9B3565b73a1f15E652859bF322/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

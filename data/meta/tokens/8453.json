@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-14T21:41:02.81557+02:00",
+	"lastUpdate": "2025-04-30T19:48:46.014469086Z",
 	"version": {
 		"major": 0,
-		"minor": 24,
+		"minor": 26,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -721,6 +721,20 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x5b14ce8de84448e9a6f6af652af318472aa4fcaf": {
+			"address": "0x5b14ce8de84448e9a6f6af652af318472aa4fcaf",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Balancer Aave GHO-USR",
+			"symbol": "Aave GHO-USR",
+			"displayName": "Balancer Aave GHO-USR",
+			"displaySymbol": "Aave GHO-USR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x5b14ce8DE84448e9A6F6aF652af318472aA4FCAF/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0x5b508fe98ac33da9352fa539e2efa9f1dda26c51": {
 			"address": "0x5b508fe98ac33da9352fa539e2efa9f1dda26c51",
 			"underlyingTokensAddresses": [
@@ -886,6 +900,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x68A0ba9EcaD98BFd16D2457E2546226e8FB7C101/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x69efa3cd7fc773fe227b9cc4f41132dcde020a29": {
+			"address": "0x69efa3cd7fc773fe227b9cc4f41132dcde020a29",
+			"underlyingTokensAddresses": [
+				"0x5b14ce8de84448e9a6f6af652af318472aa4fcaf"
+			],
+			"type": "Yearn Vault",
+			"name": "Balancer GHO-USR yVault",
+			"symbol": "yvBal-GHO-USR",
+			"displayName": "Balancer GHO-USR yVault",
+			"displaySymbol": "yvBal-GHO-USR",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x69eFa3Cd7FC773fE227b9Cc4f41132dcde020A29/logo-128.png",
 			"decimals": 18,
 			"chainID": 8453
 		},
@@ -1655,6 +1685,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xbdd79a7df622e9d9e19a7d92bc7ea212fa0d2f3e": {
+			"address": "0xbdd79a7df622e9d9e19a7d92bc7ea212fa0d2f3e",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Y-WETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Y-WETH Compounder",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xBDD79a7DF622E9d9e19a7d92Bc7ea212FA0D2F3E/logo-128.png",
+			"decimals": 18,
+			"chainID": 8453
+		},
 		"0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452": {
 			"address": "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
 			"underlyingTokensAddresses": [],
@@ -1885,6 +1931,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0xf115c134c23c7a05fbd489a8be3116ebf54b0d9f": {
+			"address": "0xf115c134c23c7a05fbd489a8be3116ebf54b0d9f",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn Morpho Vault 1 Compounder",
+			"symbol": "ysUSDC",
+			"displayName": "Morpho Yearn Morpho Vault 1 Compounder",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xF115C134c23C7A05FBD489A8bE3116EbF54B0D9f/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xf213f2d02837012dc0236cc105061e121bb03e37": {
 			"address": "0xf213f2d02837012dc0236cc105061e121bb03e37",
 			"underlyingTokensAddresses": [],
@@ -1988,6 +2050,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xfdB431E661372fA1146efB70bf120ECDed944a78/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
+		"0xfeeefb32e88efef50aedd9630e07fa4f47ae886d": {
+			"address": "0xfeeefb32e88efef50aedd9630e07fa4f47ae886d",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Yield Chasing pfUSDC-1",
+			"symbol": "ycpfUSDC-1",
+			"displayName": "Yield Chasing pfUSDC-1",
+			"displaySymbol": "ycpfUSDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xFEEefB32e88eFEF50AeDD9630E07fa4F47ae886D/logo-128.png",
 			"decimals": 6,
 			"chainID": 8453
 		},

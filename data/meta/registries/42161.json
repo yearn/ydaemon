@@ -131,6 +131,19 @@
 		"chainID": 42161,
 		"blockNumber": 199266154
 	},
+	"0x1864ff55cb8bddcb063d226086e043ea671d19dd": {
+		"address": "0x1864ff55cb8bddcb063d226086e043ea671d19dd",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0x74E6AFeF5705BEb126C6d3Bf46f8fad8F3e07825"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
+	},
 	"0x1bd173f9a1186a1abe680071e0f57d4d83c18430": {
 		"address": "0x1bd173f9a1186a1abe680071e0f57d4d83c18430",
 		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
@@ -409,6 +422,19 @@
 		"version": "3.0.0",
 		"chainID": 42161,
 		"blockNumber": 199266154
+	},
+	"0x6cb3f756516e8fe2de515ee0f9b6ec1352e96ffc": {
+		"address": "0x6cb3f756516e8fe2de515ee0f9b6ec1352e96ffc",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0x9c5fe8db1543b0c47d10bacbd66fde454f341d88",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0x39D467BAFa70f02f0Ba7fc469a1ac7F68A93413B"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
 	},
 	"0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1": {
 		"address": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",

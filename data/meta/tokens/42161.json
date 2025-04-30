@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-04-14T21:40:46.372541+02:00",
+	"lastUpdate": "2025-04-30T19:48:47.139388654Z",
 	"version": {
 		"major": 0,
-		"minor": 46,
+		"minor": 47,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1003,6 +1003,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F/logo-128.png",
 			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x1864ff55cb8bddcb063d226086e043ea671d19dd": {
+			"address": "0x1864ff55cb8bddcb063d226086e043ea671d19dd",
+			"underlyingTokensAddresses": [
+				"0xaf88d065e77c8cc2239327c5edb3a432268e5831"
+			],
+			"type": "Single Strategy",
+			"name": "USDC-Revert",
+			"symbol": "usdc-Revert",
+			"displayName": "USDC-Revert",
+			"displaySymbol": "usdc-Revert",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x1864ff55cb8BDDcB063d226086e043EA671D19dd/logo-128.png",
+			"decimals": 6,
 			"chainID": 42161
 		},
 		"0x18c11fd286c5ec11c3b683caa813b77f5163a122": {
@@ -4078,6 +4094,22 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0x6cb3f756516e8fe2de515ee0f9b6ec1352e96ffc": {
+			"address": "0x6cb3f756516e8fe2de515ee0f9b6ec1352e96ffc",
+			"underlyingTokensAddresses": [
+				"0x9c5fe8db1543b0c47d10bacbd66fde454f341d88"
+			],
+			"type": "Single Strategy",
+			"name": "Prize BV - BankVault",
+			"symbol": "przBV",
+			"displayName": "Prize BV - BankVault",
+			"displaySymbol": "przBV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x6CB3f756516e8fe2De515eE0f9b6EC1352e96FFc/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0x6dbd962b4f62d18f756b5de57425574c4b8228d6": {
 			"address": "0x6dbd962b4f62d18f756b5de57425574c4b8228d6",
 			"underlyingTokensAddresses": [],
@@ -5830,6 +5862,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x9bEcd6b4Fb076348A455518aea23d3799361FE95/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x9c5fe8db1543b0c47d10bacbd66fde454f341d88": {
+			"address": "0x9c5fe8db1543b0c47d10bacbd66fde454f341d88",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "BankVault",
+			"symbol": "BV",
+			"displayName": "BankVault",
+			"displaySymbol": "BV",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x9C5fe8db1543B0C47D10BAcbd66fDE454f341D88/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

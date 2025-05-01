@@ -223,7 +223,7 @@ func toSimplifiedVersion(
 		Migration:      vault.Migration,
 		Version:        vault.Version,
 		FeaturingScore: vault.FeaturingScore,
-		Token: tokenInfo,
+		Token:          tokenInfo,
 		TVL: TSimplifiedExternalVaultTVL{
 			TotalAssets: vault.TVL.TotalAssets,
 			TVL:         vault.TVL.TVL,
@@ -264,7 +264,7 @@ func getSimplifiedTokenInfo(token TExternalERC20Token) TSimplifiedExternalERC20T
 	if tokenSymbol == "" {
 		tokenSymbol = `Unknown`
 	}
-	
+
 	return TSimplifiedExternalERC20Token{
 		Address:     token.Address,
 		Name:        tokenName,

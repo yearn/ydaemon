@@ -10242,7 +10242,6 @@ func (_StrategyConvexstETH *StrategyConvexstETHCallerSession) KeepCrvPercent() (
 	return _StrategyConvexstETH.Contract.KeepCRV(&_StrategyConvexstETH.CallOpts)
 }
 
-
 // KeepCVX is a free data retrieval call binding the contract method 0x4b31217e.
 //
 // Solidity: function keepCVX() view returns(uint256)

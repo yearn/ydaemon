@@ -676,8 +676,6 @@ func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) DoHealthCheck() (boo
 	return _ConvexBaseStrategy.Contract.DoHealthCheck(&_ConvexBaseStrategy.CallOpts)
 }
 
-
-
 // UselLocalCRV is a free data retrieval call binding the contract method 0x6718835f.
 //
 // Solidity: function uselLocalCRV() view returns(bool)
@@ -957,7 +955,6 @@ func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) HealthCheck() (commo
 	return _ConvexBaseStrategy.Contract.HealthCheck(&_ConvexBaseStrategy.CallOpts)
 }
 
-
 // -------------------------
 // CurveGlobal is a free data retrieval call binding the contract method 0xb252720b.
 //
@@ -989,6 +986,7 @@ func (_ConvexBaseStrategy *ConvexBaseStrategySession) CurveGlobal() (common.Addr
 func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) CurveGlobal() (common.Address, error) {
 	return _ConvexBaseStrategy.Contract.CurveGlobal(&_ConvexBaseStrategy.CallOpts)
 }
+
 // -------------------------
 
 // IsActive is a free data retrieval call binding the contract method 0x22f3e2d4.
@@ -1146,8 +1144,6 @@ func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) LocalKeepCRV() (*big
 	return _ConvexBaseStrategy.Contract.LocalKeepCRV(&_ConvexBaseStrategy.CallOpts)
 }
 
-
-
 // --------------------------------------------------------------------------------
 // LocalCRV is a free data retrieval call binding the contract method 0x73fd827f.
 //
@@ -1179,6 +1175,7 @@ func (_ConvexBaseStrategy *ConvexBaseStrategySession) LocalCRV() (*big.Int, erro
 func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) LocalCRV() (*big.Int, error) {
 	return _ConvexBaseStrategy.Contract.LocalCRV(&_ConvexBaseStrategy.CallOpts)
 }
+
 // --------------------------------------------------------------------------------
 
 // LocalKeepCVX is a free data retrieval call binding the contract method 0x28f30a4c.
@@ -1459,7 +1456,6 @@ func (_ConvexBaseStrategy *ConvexBaseStrategySession) FraxPid() (*big.Int, error
 func (_ConvexBaseStrategy *ConvexBaseStrategyCallerSession) FraxPid() (*big.Int, error) {
 	return _ConvexBaseStrategy.Contract.FraxPid(&_ConvexBaseStrategy.CallOpts)
 }
-
 
 // Rewards is a free data retrieval call binding the contract method 0x9ec5a894.
 //

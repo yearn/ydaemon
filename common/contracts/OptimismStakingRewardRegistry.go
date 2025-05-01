@@ -63,22 +63,22 @@ type YOptimismStakingRewardRegistryFilterer struct {
 // with pre-set call and transact options.
 type YOptimismStakingRewardRegistrySession struct {
 	Contract     *YOptimismStakingRewardRegistry // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts           // Call options to use throughout this session
-	TransactOpts bind.TransactOpts       // Transaction auth options to use throughout this session
+	CallOpts     bind.CallOpts                   // Call options to use throughout this session
+	TransactOpts bind.TransactOpts               // Transaction auth options to use throughout this session
 }
 
 // YOptimismStakingRewardRegistryCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
 type YOptimismStakingRewardRegistryCallerSession struct {
 	Contract *YOptimismStakingRewardRegistryCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts                 // Call options to use throughout this session
+	CallOpts bind.CallOpts                         // Call options to use throughout this session
 }
 
 // YOptimismStakingRewardRegistryTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
 type YOptimismStakingRewardRegistryTransactorSession struct {
 	Contract     *YOptimismStakingRewardRegistryTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts                 // Transaction auth options to use throughout this session
+	TransactOpts bind.TransactOpts                         // Transaction auth options to use throughout this session
 }
 
 // YOptimismStakingRewardRegistryRaw is an auto generated low-level Go binding around an Ethereum contract.

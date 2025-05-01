@@ -737,7 +737,6 @@ func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardsToken
 	return _YOptimismStakingReward.Contract.RewardsToken(&_YOptimismStakingReward.CallOpts)
 }
 
-
 // RewardsToken is a free data retrieval call binding the contract method 0xd1af0c7d.
 //
 // Solidity: function rewardToken() view returns(address)
@@ -768,7 +767,6 @@ func (_YOptimismStakingReward *YOptimismStakingRewardSession) RewardToken() (com
 func (_YOptimismStakingReward *YOptimismStakingRewardCallerSession) RewardToken() (common.Address, error) {
 	return _YOptimismStakingReward.Contract.RewardToken(&_YOptimismStakingReward.CallOpts)
 }
-
 
 // StakingToken is a free data retrieval call binding the contract method 0x72f702f3.
 //

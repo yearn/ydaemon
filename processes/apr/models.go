@@ -28,9 +28,9 @@ type THistoricalPoints struct {
 	Inception *bigNumber.Float `json:"inception"`
 }
 type TPricePerShare struct {
-	Today     *bigNumber.Float `json:"today"`
-	WeekAgo   *bigNumber.Float `json:"weekAgo"`
-	MonthAgo  *bigNumber.Float `json:"monthAgo"`
+	Today    *bigNumber.Float `json:"today"`
+	WeekAgo  *bigNumber.Float `json:"weekAgo"`
+	MonthAgo *bigNumber.Float `json:"monthAgo"`
 }
 type TForwardAPY struct {
 	Type      string           `json:"type"`
@@ -38,13 +38,13 @@ type TForwardAPY struct {
 	Composite TCompositeData   `json:"composite"`
 }
 type TVaultAPY struct {
-	Type       string            `json:"type"`
-	NetAPY     *bigNumber.Float  `json:"netAPY"`
-	Fees       TFees             `json:"fees"`
-	Points     THistoricalPoints `json:"points"`
-	PricePerShare TPricePerShare   `json:"pricePerShare"`
-	Extra      TExtraRewards     `json:"extra"`
-	ForwardAPY TForwardAPY       `json:"forwardAPY"`
+	Type          string            `json:"type"`
+	NetAPY        *bigNumber.Float  `json:"netAPY"`
+	Fees          TFees             `json:"fees"`
+	Points        THistoricalPoints `json:"points"`
+	PricePerShare TPricePerShare    `json:"pricePerShare"`
+	Extra         TExtraRewards     `json:"extra"`
+	ForwardAPY    TForwardAPY       `json:"forwardAPY"`
 }
 
 type TStrategyAPY struct {

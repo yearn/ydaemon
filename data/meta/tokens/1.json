@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-03T00:16:22.341481878Z",
+	"lastUpdate": "2025-05-03T18:36:54.113424414Z",
 	"version": {
 		"major": 0,
-		"minor": 112,
+		"minor": 113,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -17371,6 +17371,23 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x7956fad09a1d1c47550331e7f06bf7c7b7c2af08": {
+			"address": "0x7956fad09a1d1c47550331e7f06bf7c7b7c2af08",
+			"underlyingTokensAddresses": [
+				"0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+				"0x8668a15b7b023dc77b372a740fcb8939e15257cf"
+			],
+			"type": "Curve LP",
+			"name": "afCVX/CVX",
+			"symbol": "CVXafCVX",
+			"displayName": "afCVX/CVX",
+			"displaySymbol": "CVXafCVX",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7956FAd09a1D1C47550331E7f06bF7c7B7C2aF08/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x79586fa680958102154093b795fdb8efbc013822": {
 			"address": "0x79586fa680958102154093b795fdb8efbc013822",
 			"underlyingTokensAddresses": [
@@ -21680,6 +21697,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x97A597CBcA514AfCc29cD300f04F98d9DbAA3624/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x97aae86e5efc305f2189f78b5c7e9dac1249c379": {
+			"address": "0x97aae86e5efc305f2189f78b5c7e9dac1249c379",
+			"underlyingTokensAddresses": [
+				"0x7956fad09a1d1c47550331e7f06bf7c7b7c2af08"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve CVXafCVX Factory yVault",
+			"symbol": "yvCurve-CVXafCVX-f",
+			"displayName": "Curve CVXafCVX Factory yVault",
+			"displaySymbol": "yvCurve-CVXafCVX-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x97aae86E5efC305f2189f78B5C7e9Dac1249c379/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

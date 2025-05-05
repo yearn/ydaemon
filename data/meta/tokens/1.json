@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-03T18:36:54.113424414Z",
+	"lastUpdate": "2025-05-05T18:23:08.02778184Z",
 	"version": {
 		"major": 0,
-		"minor": 113,
+		"minor": 114,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1606,6 +1606,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x099de83315c5f84d6c8a08af020e8428d3a121e0": {
+			"address": "0x099de83315c5f84d6c8a08af020e8428d3a121e0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT USDS Stablecoin 31JUL2025",
+			"symbol": "PT-USDS-31JUL2025",
+			"displayName": "PT USDS Stablecoin 31JUL2025",
+			"displaySymbol": "PT-USDS-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x099DE83315C5f84D6C8A08af020E8428D3a121E0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x09b8d86c6275e707155cdb5963cf611a432ccb21": {
 			"address": "0x09b8d86c6275e707155cdb5963cf611a432ccb21",
 			"underlyingTokensAddresses": [],
@@ -2371,6 +2385,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x1025b1641d1F23C289412Dd5E5701e9810103a93/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1047a4d2dc60e6652b51e7c63ba276b501ad6bc8": {
+			"address": "0x1047a4d2dc60e6652b51e7c63ba276b501ad6bc8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1047a4D2dC60e6652B51e7c63bA276b501ad6bc8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3643,6 +3671,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x19ebd191f7a24ece672ba13a302212b5ef7f35cb": {
+			"address": "0x19ebd191f7a24ece672ba13a302212b5ef7f35cb",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "YieldFi yUSD",
+			"symbol": "yUSD",
+			"displayName": "YieldFi yUSD",
+			"displaySymbol": "yUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x19Ebd191f7A24ECE672ba13A302212b5eF7F35cb/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x1a5ebff0e881aec34837845e4d0eb430a1b4b737": {
 			"address": "0x1a5ebff0e881aec34837845e4d0eb430a1b4b737",
 			"underlyingTokensAddresses": [
@@ -4260,6 +4304,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x1D27254125246873a19580B7364BFf322c5DEF0f/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1d7d382ea7ceabb8d7c14ef066124d2e575698f8": {
+			"address": "0x1d7d382ea7ceabb8d7c14ef066124d2e575698f8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1d7D382ea7CEabb8D7C14ef066124d2E575698F8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -8227,6 +8285,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x3992e4c12e22d7535d6144f3af66e712963e9345": {
+			"address": "0x3992e4c12e22d7535d6144f3af66e712963e9345",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Fluid Gho Token 31JUL2025",
+			"symbol": "YT-fGHO-31JUL2025",
+			"displayName": "YT Fluid Gho Token 31JUL2025",
+			"displaySymbol": "YT-fGHO-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3992E4C12E22d7535d6144f3Af66E712963e9345/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x39aa39c021dfbae8fac545936693ac917d5e7563": {
 			"address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
 			"underlyingTokensAddresses": [
@@ -8788,6 +8860,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x3de254A0f838a844F727fee81040e0FA7884B935/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3de3421a44eb00b62d72fb325b18cf2b155151db": {
+			"address": "0x3de3421a44eb00b62d72fb325b18cf2b155151db",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT YieldFi yUSD 7AUG2025",
+			"symbol": "YT-yUSD-7AUG2025",
+			"displayName": "YT YieldFi yUSD 7AUG2025",
+			"displaySymbol": "YT-yUSD-7AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3dE3421A44Eb00b62d72Fb325b18cF2B155151db/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x3e720ba935bf137d45a3c98938db1f4c8517298e": {
@@ -10271,6 +10357,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x4726fcb2fbe4398449bb7ce44eb458dbd7141191": {
+			"address": "0x4726fcb2fbe4398449bb7ce44eb458dbd7141191",
+			"underlyingTokensAddresses": [
+				"0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Fluid Gho Token",
+			"symbol": "SY-fGHO",
+			"displayName": "SY Fluid Gho Token",
+			"displaySymbol": "SY-fGHO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4726FCb2FBE4398449bB7CE44EB458Dbd7141191/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x4737d9b4592b40d51e110b94c9c043c6654067ae": {
 			"address": "0x4737d9b4592b40d51e110b94c9c043c6654067ae",
 			"underlyingTokensAddresses": [
@@ -11566,6 +11668,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x508defdb5dd2adeefe36f58fdcd75d6efa36697b": {
+			"address": "0x508defdb5dd2adeefe36f58fdcd75d6efa36697b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY USDS Stablecoin",
+			"symbol": "SY-USDS",
+			"displayName": "SY USDS Stablecoin",
+			"displaySymbol": "SY-USDS",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x508deFdB5DD2aDEEfe36f58fdCD75d6efa36697b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x50bf5c6445b79b79e368856095a70c564d0c6966": {
 			"address": "0x50bf5c6445b79b79e368856095a70c564d0c6966",
 			"underlyingTokensAddresses": [],
@@ -12130,6 +12246,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x54264c1b0355c71A678d5A171Ca796429DDCB4f4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x5429f8e004cf3e3b166c30adb125bef441a11108": {
+			"address": "0x5429f8e004cf3e3b166c30adb125bef441a11108",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT USDS Stablecoin 31JUL2025",
+			"symbol": "YT-USDS-31JUL2025",
+			"displayName": "YT USDS Stablecoin 31JUL2025",
+			"displaySymbol": "YT-USDS-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x5429F8e004Cf3e3b166c30aDB125bef441A11108/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -15167,6 +15297,22 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0x6a29a46e21c730dca1d8b23d637c101cec605c5b": {
+			"address": "0x6a29a46e21c730dca1d8b23d637c101cec605c5b",
+			"underlyingTokensAddresses": [
+				"0x40d16fc0246ad3160ccc09b8d0d3a2cd28ae6c2f"
+			],
+			"type": "Yearn Vault",
+			"name": "Fluid Gho Token",
+			"symbol": "fGHO",
+			"displayName": "Fluid Gho Token",
+			"displaySymbol": "fGHO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6A29A46E21C730DcA1d8b23d637c101cec605C5B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6a445e9f40e0b97c92d0b8a3366cef1d67f700bf": {
 			"address": "0x6a445e9f40e0b97c92d0b8a3366cef1d67f700bf",
 			"underlyingTokensAddresses": [],
@@ -16893,6 +17039,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x75cd1842B529Ed87817b0453C00B471f5a1b381a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x75f35498e0d053d0dbd2472bc06e7cba1f0c7d3a": {
+			"address": "0x75f35498e0d053d0dbd2472bc06e7cba1f0c7d3a",
+			"underlyingTokensAddresses": [
+				"0x6b175474e89094c44da98b954eedeac495271d0f"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG DAI Compounder",
+			"symbol": "ysDAI",
+			"displayName": "Morpho Yearn OG DAI Compounder",
+			"displaySymbol": "ymvc-OG-DAI",
+			"description": "Supplies DAI to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -24390,6 +24552,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xaacae34960cac6f32826f81e15f855f8e8c7f39e": {
+			"address": "0xaacae34960cac6f32826f81e15f855f8e8c7f39e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Fluid Gho Token 31JUL2025",
+			"symbol": "PT-fGHO-31JUL2025",
+			"displayName": "PT Fluid Gho Token 31JUL2025",
+			"displaySymbol": "PT-fGHO-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xAAcAE34960CaC6F32826f81E15F855f8e8c7f39e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xab182e2a98234db8298565f0eb9327206b558c57": {
 			"address": "0xab182e2a98234db8298565f0eb9327206b558c57",
 			"underlyingTokensAddresses": [],
@@ -28734,6 +28910,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc64d59eb11c869012c686349d24e1d7c91c86ee2": {
+			"address": "0xc64d59eb11c869012c686349d24e1d7c91c86ee2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC64D59eb11c869012C686349d24e1D7C91C86ee2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc653f79de1274ee65674befda54986020d6f8fc1": {
 			"address": "0xc653f79de1274ee65674befda54986020d6f8fc1",
 			"underlyingTokensAddresses": [],
@@ -30298,6 +30488,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd1d0ff7bb555f57a9604ce06bca704ab97a0049a": {
+			"address": "0xd1d0ff7bb555f57a9604ce06bca704ab97a0049a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT YieldFi yUSD 7AUG2025",
+			"symbol": "PT-yUSD-7AUG2025",
+			"displayName": "PT YieldFi yUSD 7AUG2025",
+			"displaySymbol": "PT-yUSD-7AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD1d0fF7BB555f57A9604CE06bca704ab97A0049A/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xd1d7d99764f8a52aff007b7831cc02748b2013b5": {
 			"address": "0xd1d7d99764f8a52aff007b7831cc02748b2013b5",
 			"underlyingTokensAddresses": [],
@@ -30562,6 +30766,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xd3c29550D12A5234e6AEb5aea7c841134cd6ddd5/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd3f2cc98cf302365582757fcd6288efb92e8d254": {
+			"address": "0xd3f2cc98cf302365582757fcd6288efb92e8d254",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "SY YieldFi yUSD",
+			"symbol": "SY-yUSD",
+			"displayName": "SY YieldFi yUSD",
+			"displaySymbol": "SY-yUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD3F2cC98Cf302365582757fcd6288EFb92E8d254/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -31488,6 +31708,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xD9A442856C234a39a81a089C06451EBAa4306a72/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd9ba99d93ea94a65b5bc838a0106ca3abc82ec4f": {
+			"address": "0xd9ba99d93ea94a65b5bc838a0106ca3abc82ec4f",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG WETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Yearn OG WETH Compounder",
+			"displaySymbol": "ymvc-OG-WETH",
+			"description": "Supplies WETH to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -37116,38 +37352,6 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xFFcaF6549a229D63351B71313559EDbe0C467B78/logo-128.png",
-			"decimals": 18,
-			"chainID": 1
-		},
-		"0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a": {
-			"address": "0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a",
-			"underlyingTokensAddresses": [
-				"0x6B175474E89094C44Da98b954EedeAC495271d0F"
-			],
-			"type": "Yearn Vault",
-			"name": "Morpho Yearn OG DAI Compounder",
-			"symbol": "ysDAI",
-			"displayName": "Morpho Yearn OG DAI Compounder",
-			"displaySymbol": "ymvc-OG-DAI",
-			"description": "Supplies DAI to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
-			"category": "yVault",
-			"icon": "https://assets.smold.app/api/token/1/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo-128.png",
-			"decimals": 18,
-			"chainID": 1
-		},
-		"0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F": {
-			"address": "0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F",
-			"underlyingTokensAddresses": [
-				"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
-			],
-			"type": "Yearn Vault",
-			"name": "Morpho Yearn OG WETH Compounder",
-			"symbol": "ysWETH",
-			"displayName": "Morpho Yearn OG WETH Compounder",
-			"displaySymbol": "ymvc-OG-WETH",
-			"description": "Supplies WETH to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
-			"category": "yVault",
-			"icon": "https://assets.smold.app/api/token/1/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		}

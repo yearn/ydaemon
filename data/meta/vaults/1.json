@@ -25823,7 +25823,8 @@
 				"0x028ec7330ff87667b6dfb0d94b954c820195336c",
 				"0x3927c4ad1d63bf9629fdae1318aa31df9135f544",
 				"0x6164045fc2b2b269ffcab2197736a74b1725b6c6",
-				"0x09580f2305a335218bdb2eb828387d52ed8fc2f4"
+				"0x09580f2305a335218bdb2eb828387d52ed8fc2f4",
+				"0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a"
 			],
 			"lastPricePerShare": "1135293721861066966",
 			"lastTotalAssets": "1212201738490687497861561",
@@ -29625,7 +29626,8 @@
 				"0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c",
 				"0x70e75d8053e3fb0dda35e80eb16f208c7e4d54f4",
 				"0xaf48f006e75af050c4136f5a32b69e3fe1c4140f",
-				"0xeeb6be70ff212238419cd638fab17910cf61cbe7"
+				"0xeeb6be70ff212238419cd638fab17910cf61cbe7",
+				"0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F"
 			],
 			"lastPricePerShare": "1053838092308710908",
 			"lastTotalAssets": "1617802629466327246463",
@@ -46252,6 +46254,140 @@
 					"externalProtocolLongevity": 0,
 					"externalProtocolType": 0,
 					"comment": ""
+				}
+			}
+		},
+		"0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a": {
+			"address": "0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a",
+			"token": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+			"registry": "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.4",
+			"activation": 1746462966,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "Supplies DAI to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 2,
+				"riskScore": {
+					"review": 3,
+					"testing": 3,
+					"complexity": 3,
+					"riskExposure": 2,
+					"protocolIntegration": 2,
+					"centralizationRisk": 3,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 4,
+					"externalProtocolType": 1,
+					"comment": "Lends to a Morpho vault curated by Yearn"
+				}
+			}
+		},
+		"0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F": {
+			"address": "0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F",
+			"token": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+			"registry": "0xd40ecF29e001c76Dcc4cC0D9cd50520CE845B038",
+			"type": "Yearn Vault",
+			"kind": "Single Strategy",
+			"version": "3.0.4",
+			"activation": 1746462966,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": false,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "Supplies WETH to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 2,
+				"riskScore": {
+					"review": 3,
+					"testing": 3,
+					"complexity": 3,
+					"riskExposure": 2,
+					"protocolIntegration": 2,
+					"centralizationRisk": 3,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 2,
+					"externalProtocolTvl": 2,
+					"externalProtocolLongevity": 4,
+					"externalProtocolType": 1,
+					"comment": "Lends to a Morpho vault curated by Yearn"
 				}
 			}
 		}

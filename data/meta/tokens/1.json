@@ -37118,6 +37118,38 @@
 			"icon": "https://assets.smold.app/api/token/1/0xFFcaF6549a229D63351B71313559EDbe0C467B78/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
+		},
+		"0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a": {
+			"address": "0x75f35498E0D053d0DBd2472BC06e7CbA1f0c7d3a",
+			"underlyingTokensAddresses": [
+				"0x6B175474E89094C44Da98b954EedeAC495271d0F"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG DAI Compounder",
+			"symbol": "ysDAI",
+			"displayName": "Morpho Yearn OG DAI Compounder",
+			"displaySymbol": "ymvc-OG-DAI",
+			"description": "Supplies DAI to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F": {
+			"address": "0xd9BA99D93ea94a65b5BC838a0106cA3AbC82Ec4F",
+			"underlyingTokensAddresses": [
+				"0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG WETH Compounder",
+			"symbol": "ysWETH",
+			"displayName": "Morpho Yearn OG WETH Compounder",
+			"displaySymbol": "ymvc-OG-WETH",
+			"description": "Supplies WETH to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
 		}
 	}
 }

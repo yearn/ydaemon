@@ -35,6 +35,7 @@ func filterNewVault(
 	** every x seconds to check if there are new vaults.
 	**********************************************************************************************/
 	client := ethereum.GetRPC(chainID)
+
 	chain, ok := env.GetChain(chainID)
 	if !ok {
 		return 0
@@ -375,6 +376,7 @@ func watchNewVaults(
 		currentRegistry, _ := contracts.NewYRegistryV5(registry.Address, client)
 		etherReader := ethereum.Reader{Backend: client, ChainID: chainID}
 		contractABI, _ := contracts.YRegistryV5MetaData.GetAbi()
+
 		topics, _ := abi.MakeTopics([][]interface{}{{contractABI.Events[`NewVault`].ID}}...)
 		query := goEth.FilterQuery{
 			FromBlock: big.NewInt(int64(registry.Block)),

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-05T18:23:08.02778184Z",
+	"lastUpdate": "2025-05-06T22:11:11.627773821Z",
 	"version": {
 		"major": 0,
-		"minor": 114,
+		"minor": 115,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -6839,6 +6839,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x30041947d1ca70c8dde4ee0088cd60dfc21cda7a": {
+			"address": "0x30041947d1ca70c8dde4ee0088cd60dfc21cda7a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Caulflower",
+			"symbol": "CFLWR",
+			"displayName": "Caulflower",
+			"displaySymbol": "CFLWR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x30041947d1CA70C8Dde4ee0088cD60DFC21CDA7A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x302091967c09323815594ad8db2d8de35c3a1985": {
 			"address": "0x302091967c09323815594ad8db2d8de35c3a1985",
 			"underlyingTokensAddresses": [],
@@ -7847,6 +7861,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x36d3ca43ae7939645C306E26603ce16e39A89192/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x36e5d788c8809c2cf5b0e919bfe5687404893428": {
+			"address": "0x36e5d788c8809c2cf5b0e919bfe5687404893428",
+			"underlyingTokensAddresses": [
+				"0x30041947d1ca70c8dde4ee0088cd60dfc21cda7a"
+			],
+			"type": "Single Strategy",
+			"name": "Prize CFLWR - CauliflowerVault",
+			"symbol": "przCFLWR",
+			"displayName": "Prize CFLWR - CauliflowerVault",
+			"displaySymbol": "przCFLWR",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x36e5D788C8809c2cf5b0E919BfE5687404893428/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12874,6 +12904,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x5935cEdD7D33a32cD60e0F97cFf54A6Bbdbe7Eee/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x593b67a445e836d0b4e9186d7604c53b0ae6a74b": {
+			"address": "0x593b67a445e836d0b4e9186d7604c53b0ae6a74b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x593b67a445E836D0b4e9186D7604C53b0aE6A74b/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x5943f7090282eb66575662eadf7c60a717a7ce4d": {
@@ -19784,6 +19828,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x89678540206e7d6964a4e22ae5cf4ac55926651a": {
+			"address": "0x89678540206e7d6964a4e22ae5cf4ac55926651a",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Amplify Finance WETH",
+			"symbol": "amplifyWETH",
+			"displayName": "Amplify Finance WETH",
+			"displaySymbol": "amplifyWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x89678540206E7d6964a4e22aE5Cf4ac55926651A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x8999eb39237dd9e3c184fb2f10780a95a34a14ef": {
 			"address": "0x8999eb39237dd9e3c184fb2f10780a95a34a14ef",
 			"underlyingTokensAddresses": [
@@ -22443,6 +22503,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9a98bFfAbc0ABf291d6811C034E239e916bBceC0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9ac87302429a367cde6df17e1f150b53e2967924": {
+			"address": "0x9ac87302429a367cde6df17e1f150b53e2967924",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Staked EURA 6NOV2025",
+			"symbol": "PT-stEUR-6NOV2025",
+			"displayName": "PT Staked EURA 6NOV2025",
+			"displaySymbol": "PT-stEUR-6NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9AC87302429A367cdE6df17E1f150B53E2967924/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -32395,6 +32469,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xde7ae7a07bea6d1012df17082f04c024146f7fdc": {
+			"address": "0xde7ae7a07bea6d1012df17082f04c024146f7fdc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Staked EURA 6NOV2025",
+			"symbol": "YT-stEUR-6NOV2025",
+			"displayName": "YT Staked EURA 6NOV2025",
+			"displaySymbol": "YT-stEUR-6NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDE7AE7A07BEa6d1012dF17082f04C024146f7Fdc/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xde970829ea3244da47e462eaa8ed93d3efd68e87": {
 			"address": "0xde970829ea3244da47e462eaa8ed93d3efd68e87",
 			"underlyingTokensAddresses": [],
@@ -34315,6 +34403,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xec48E0b9579062770888AaF900d054A1bC10A3Bf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xec535ae692f414c45cc4e2610d66ffd1cbddb02b": {
+			"address": "0xec535ae692f414c45cc4e2610d66ffd1cbddb02b",
+			"underlyingTokensAddresses": [
+				"0x1a7e4e63778b4f12a199c062f3efdd288afcbce8"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Staked EURA",
+			"symbol": "SY-stEUR",
+			"displayName": "SY Staked EURA",
+			"displaySymbol": "SY-stEUR",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xEc535Ae692F414C45cc4E2610D66Ffd1CbdDB02b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-06T22:11:11.627773821Z",
+	"lastUpdate": "2025-05-06T22:43:12.646062813Z",
 	"version": {
 		"major": 0,
-		"minor": 115,
+		"minor": 116,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -6806,6 +6806,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x2fc1E74BC8A6D15fE768c10C2EDe7D6d95ec27e9/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2fcc9f8f7ab421856f8c1a1b2b4b794f6d930022": {
+			"address": "0x2fcc9f8f7ab421856f8c1a1b2b4b794f6d930022",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2USDC-1",
+			"displayName": "USDC-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2USDC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2fCC9F8f7Ab421856F8c1a1b2b4b794F6D930022/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x2fe0be7e4e248fd6dadec01bde35397748412f84": {
@@ -17159,6 +17175,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x76A962BA6770068bCF454D34dDE17175611e6637/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x76cf74eba6413fd290f5599a2ec412882119af32": {
+			"address": "0x76cf74eba6413fd290f5599a2ec412882119af32",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT-test",
+			"symbol": "USDT-1",
+			"displayName": "USDT-test",
+			"displaySymbol": "USDT-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x76cf74ebA6413Fd290f5599a2eC412882119aF32/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x76e9b1711d85bc9c88a437420787c34282956ec5": {
@@ -34373,6 +34405,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xEbf5c58b74A836F1e51d08e9C909c4A4530AFD41/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xec1e21c752081efb25612bf0a892abe9c14b0db4": {
+			"address": "0xec1e21c752081efb25612bf0a892abe9c14b0db4",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS-1 yVault Liquid Locker Compounder",
+			"symbol": "yv^2USDS-1",
+			"displayName": "USDS-1 yVault Liquid Locker Compounder",
+			"displaySymbol": "yv^2USDS-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xec1e21C752081EfB25612bf0a892Abe9c14B0Db4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

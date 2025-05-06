@@ -5558,7 +5558,7 @@
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
-				"isAggregator": true,
+				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
 				"isHighlighted": true,
@@ -44605,7 +44605,7 @@
 			"activation": 22226461,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [

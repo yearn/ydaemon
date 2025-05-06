@@ -5589,7 +5589,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -14584,7 +14584,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -28667,7 +28667,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -30939,7 +30939,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -35155,7 +35155,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,
@@ -44641,7 +44641,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -44649,7 +44649,7 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 2,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,

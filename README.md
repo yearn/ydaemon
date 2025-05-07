@@ -134,3 +134,17 @@ ok      github.com/yearn/ydaemon/internal/models      0.521s  coverage: [no stat
 ok      github.com/yearn/ydaemon/internal/utils/store       0.213s  coverage: [no statements]
 ok      github.com/yearn/ydaemon/internal/utils       0.406s  coverage: 100.0% of statements
 ```
+
+## How to use a real debugger 🪓
+
+install dlv (delve go debugger) in your devenv
+
+```
+
+go install github.com/go-delve/delve/cmd/dlv@latest
+
+```
+
+in vscode, install go team go extension. set breakpoints. ctrl-shift-D
+
+ez

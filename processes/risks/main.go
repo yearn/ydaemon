@@ -44,7 +44,7 @@ type TGithubTreeResponse struct {
 ** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
 func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-	baseURL := "https://raw.githubusercontent.com/spalen0/risk-score/refs/heads/master/strategy/"
+	baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/strategy/"
 	uri := baseURL + strconv.FormatUint(chainID, 10) + "/" + vaultAddress.Hex() + ".json"
 	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](uri)
 	if err != nil {
@@ -106,7 +106,7 @@ func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
 	}
 
 	// Fetch the GitHub tree
-	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/spalen0/risk-score/git/trees/master?recursive=1")
+	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/yearn/risk-score/git/trees/master?recursive=1")
 
 	// Parse the tree to find risk scores for this chain
 	prefix := fmt.Sprintf("strategy/%d/", chainID)

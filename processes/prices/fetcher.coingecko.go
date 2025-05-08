@@ -22,6 +22,7 @@ var GECKO_CHAIN_NAMES = map[uint64]string{
 	10:    `optimistic-ethereum`,
 	100:   `xdai`,
 	137:   `polygon-pos`,
+	146:   `sonic`,
 	250:   `fantom`,
 	8453:  `base`,
 	42161: `arbitrum-one`,

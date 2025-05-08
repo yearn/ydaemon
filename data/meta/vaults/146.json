@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-08T14:42:14.670086486Z",
+	"lastUpdate": "2025-05-08T15:01:56.99335553Z",
 	"version": {
 		"major": 0,
 		"minor": 7,
-		"patch": 79
+		"patch": 114
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -302,7 +302,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {

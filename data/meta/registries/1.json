@@ -1346,6 +1346,17 @@
 		"chainID": 1,
 		"blockNumber": 16845785
 	},
+	"0x2fcc9f8f7ab421856f8c1a1b2b4b794f6d930022": {
+		"address": "0x2fcc9f8f7ab421856f8c1a1b2b4b794f6d930022",
+		"registryAddress": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+		"tokenAddress": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"extraProperties": {},
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 22420191
+	},
 	"0x30b801f933e676cb25892d1838fdcc00a1dde4cf": {
 		"address": "0x30b801f933e676cb25892d1838fdcc00a1dde4cf",
 		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
@@ -3399,6 +3410,28 @@
 		"chainID": 1,
 		"blockNumber": 12339537
 	},
+	"0x75f35498e0d053d0dbd2472bc06e7cba1f0c7d3a": {
+		"address": "0x75f35498e0d053d0dbd2472bc06e7cba1f0c7d3a",
+		"registryAddress": "0xd40ecf29e001c76dcc4cc0d9cd50520ce845b038",
+		"tokenAddress": "0x6b175474e89094c44da98b954eedeac495271d0f",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"extraProperties": {},
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 22417846
+	},
+	"0x76cf74eba6413fd290f5599a2ec412882119af32": {
+		"address": "0x76cf74eba6413fd290f5599a2ec412882119af32",
+		"registryAddress": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+		"tokenAddress": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"extraProperties": {},
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 22423061
+	},
 	"0x76e9b1711d85bc9c88a437420787c34282956ec5": {
 		"address": "0x76e9b1711d85bc9c88a437420787c34282956ec5",
 		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",
@@ -3962,6 +3995,17 @@
 		"chainID": 1,
 		"blockNumber": 17395949
 	},
+	"0x89678540206e7d6964a4e22ae5cf4ac55926651a": {
+		"address": "0x89678540206e7d6964a4e22ae5cf4ac55926651a",
+		"registryAddress": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+		"tokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"extraProperties": {},
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 22411370
+	},
 	"0x8a0889d47f9aa0fac1cc718ba34e26b867437880": {
 		"address": "0x8a0889d47f9aa0fac1cc718ba34e26b867437880",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",
@@ -4309,6 +4353,17 @@
 		"version": "3.0.0",
 		"chainID": 1,
 		"blockNumber": 19542116
+	},
+	"0x97aae86e5efc305f2189f78b5c7e9dac1249c379": {
+		"address": "0x97aae86e5efc305f2189f78b5c7e9dac1249c379",
+		"registryAddress": "0xaf1f5e1c19cb68b30aad73846effdf78a5863319",
+		"tokenAddress": "0x7956fad09a1d1c47550331e7f06bf7c7b7c2af08",
+		"type": "Automated Yearn Vault",
+		"kind": "Legacy",
+		"extraProperties": {},
+		"version": "0.4.6",
+		"chainID": 1,
+		"blockNumber": 22391253
 	},
 	"0x980703fae7ab5bdefc3e1cefc9d15014461fe39d": {
 		"address": "0x980703fae7ab5bdefc3e1cefc9d15014461fe39d",
@@ -6257,6 +6312,17 @@
 		"chainID": 1,
 		"blockNumber": 13066988
 	},
+	"0xd9ba99d93ea94a65b5bc838a0106ca3abc82ec4f": {
+		"address": "0xd9ba99d93ea94a65b5bc838a0106ca3abc82ec4f",
+		"registryAddress": "0xd40ecf29e001c76dcc4cc0d9cd50520ce845b038",
+		"tokenAddress": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+		"type": "Yearn Vault",
+		"kind": "Single Strategy",
+		"extraProperties": {},
+		"version": "3.0.0",
+		"chainID": 1,
+		"blockNumber": 22417846
+	},
 	"0xda816459f1ab5631232fe5e97a05bbbb94970c95": {
 		"address": "0xda816459f1ab5631232fe5e97a05bbbb94970c95",
 		"registryAddress": "0x50c1a2ea0a861a967d9d0ffe2ae4012c2e053804",
@@ -6781,6 +6847,17 @@
 		"version": "3.0.0",
 		"chainID": 1,
 		"blockNumber": 20182127
+	},
+	"0xec1e21c752081efb25612bf0a892abe9c14b0db4": {
+		"address": "0xec1e21c752081efb25612bf0a892abe9c14b0db4",
+		"registryAddress": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+		"tokenAddress": "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+		"type": "Yearn Vault",
+		"kind": "Multi Strategy",
+		"extraProperties": {},
+		"version": "3.0.1",
+		"chainID": 1,
+		"blockNumber": 22420189
 	},
 	"0xec48e0b9579062770888aaf900d054a1bc10a3bf": {
 		"address": "0xec48e0b9579062770888aaf900d054a1bc10a3bf",

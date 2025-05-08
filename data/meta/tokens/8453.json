@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-03T00:15:05.937271796Z",
+	"lastUpdate": "2025-05-07T22:11:15.403332682Z",
 	"version": {
 		"major": 0,
-		"minor": 26,
+		"minor": 27,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -609,6 +609,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x4a3636608d7Bc5776CB19Eb72cAa36EbB9Ea683B/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x4ac823c6a820f9953f4052f9381474818d5bea7d": {
+			"address": "0x4ac823c6a820f9953f4052f9381474818d5bea7d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "USD Coin",
+			"symbol": "USDC",
+			"displayName": "USD Coin",
+			"displaySymbol": "USDC",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/8453/0x4Ac823C6A820f9953F4052F9381474818d5Bea7d/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x4d3ceba4349adb06d2de8ebd2f9320a61303ad81": {
@@ -1694,8 +1708,8 @@
 			"name": "Morpho Yearn OG WETH Compounder",
 			"symbol": "ysWETH",
 			"displayName": "Morpho Yearn OG WETH Compounder",
-			"displaySymbol": "ysWETH",
-			"description": "",
+			"displaySymbol": "ymvc-OG-WETH",
+			"description": "Supplies WETH to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xBDD79a7DF622E9d9e19a7d92Bc7ea212FA0D2F3E/logo-128.png",
 			"decimals": 18,
@@ -1713,6 +1727,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xc31dfb6b3e053c4e06fa76853a6b3e367bc2233d": {
+			"address": "0xc31dfb6b3e053c4e06fa76853a6b3e367bc2233d",
+			"underlyingTokensAddresses": [
+				"0x4ac823c6a820f9953f4052f9381474818d5bea7d"
+			],
+			"type": "Yearn Vault",
+			"name": "Test True Yield Dollar",
+			"symbol": "tTYD",
+			"displayName": "Test True Yield Dollar",
+			"displaySymbol": "tTYD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xC31dFB6B3E053c4e06FA76853a6B3E367BC2233d/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xc3bd0a2193c8f027b82dde3611d18589ef3f62a9": {
@@ -1940,8 +1970,8 @@
 			"name": "Morpho Yearn OG USDC Compounder",
 			"symbol": "ysUSDC",
 			"displayName": "Morpho Yearn OG USDC Compounder",
-			"displaySymbol": "ysUSDC",
-			"description": "",
+			"displaySymbol": "ymvc-OG-USDC",
+			"description": "Supplies USDC to the Meta Morpho vault managed by Yearn, earning the underlying yield and auto-compounding all reward tokens.",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xF115C134c23C7A05FBD489A8bE3116EbF54B0D9f/logo-128.png",
 			"decimals": 6,

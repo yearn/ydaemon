@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-09T02:37:52.377292918Z",
+	"lastUpdate": "2025-05-09T16:20:10.383335089Z",
 	"version": {
 		"major": 0,
 		"minor": 89,
-		"patch": 46
+		"patch": 53
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -57,7 +57,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1746439151",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.0692328607323267,
+			"netAPR": 0.0647171499495558,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -429,11 +429,11 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "624151707288031212851882",
+			"lastTotalDebt": "624373630770833568587004",
 			"lastTotalLoss": "0",
-			"lastTotalGain": "122426591162002079581757",
+			"lastTotalGain": "122669345556503626862775",
 			"lastPerformanceFee": "0",
-			"lastReport": "1746707775",
+			"lastReport": "1746794673",
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "",
@@ -948,7 +948,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1746655903",
 			"lastDebtRatio": "632",
-			"netAPR": 0.07484355198008608,
+			"netAPR": 0.070452998974746,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1029,7 +1029,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1745935185",
 			"lastDebtRatio": "84",
-			"netAPR": 0.0001335395290125163,
+			"netAPR": 0,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1704,7 +1704,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1745935185",
 			"lastDebtRatio": "2080",
-			"netAPR": 0.005125111437731533,
+			"netAPR": 0,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1839,7 +1839,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744466121",
 			"lastDebtRatio": "2999",
-			"netAPR": 0.018945219726229645,
+			"netAPR": 0.01825818527045886,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1995,13 +1995,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "10065518991359719049644718",
+			"lastTotalDebt": "10381921555127893315096721",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "250",
-			"lastReport": "1746622493",
+			"lastReport": "1746794937",
 			"lastDebtRatio": "10000",
-			"netAPR": 0,
+			"netAPR": 0.05466715696405,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2028,7 +2028,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1746439151",
 			"lastDebtRatio": "7100",
-			"netAPR": 0.07368264575522421,
+			"netAPR": 0.06879559651025158,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2109,7 +2109,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744466131",
 			"lastDebtRatio": "5001",
-			"netAPR": 0.03464468133345111,
+			"netAPR": 0.034773999431392255,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2217,7 +2217,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1746745655",
 			"lastDebtRatio": "1498",
-			"netAPR": 0.03464468140967902,
+			"netAPR": 0.03477399927764857,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2352,7 +2352,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744466147",
 			"lastDebtRatio": "2001",
-			"netAPR": 0.11788094875266886,
+			"netAPR": 0.11360408519875964,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2433,7 +2433,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1746439151",
 			"lastDebtRatio": "1787",
-			"netAPR": 0.11788094875266886,
+			"netAPR": 0.11360408519875964,
 			"aprType": "forward",
 			"protocols": null
 		}

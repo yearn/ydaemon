@@ -111,9 +111,9 @@ var POLYGON = TChain{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 		FactoryAddress:  common.Address{},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/all/polygon`,
+			`https://api.curve.finance/api/getPools/all/polygon`,
 		},
-		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=polygon`,
+		GaugesURI: `https://api.curve.finance/api/getAllGauges?blockchainId=polygon`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=137`,

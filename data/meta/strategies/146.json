@@ -1,22 +1,22 @@
 {
-	"lastUpdate": "2025-05-09T16:18:26.007488273Z",
+	"lastUpdate": "2025-05-13T15:23:39.779763803Z",
 	"version": {
 		"major": 0,
 		"minor": 2,
-		"patch": 209
+		"patch": 214
 	},
 	"shouldRefresh": false,
 	"strategies": {
 		"0x3FfA0C3fba4Adfe2b6e4D7E2f8E6e6324bE5305B_0xb9228370e2fa4908FC2Bf559a50bB77ba66fDD66": {
 			"address": "0x3ffa0c3fba4adfe2b6e4d7e2f8e6e6324be5305b",
 			"vaultAddress": "0xb9228370e2fa4908fc2bf559a50bb77ba66fdd66",
-			"name": "",
+			"name": "Silo Lender S/USDC (8)",
 			"vaultVersion": "3.0.4",
 			"displayName": "",
 			"description": "",
 			"activation": 20467947,
 			"chainID": 146,
-			"doHealthCheck": false,
+			"doHealthCheck": true,
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
@@ -37,7 +37,7 @@
 		"0xBe3E3Ca48525406063CB2CE9c7c848BCf24DC9fc_0x8dB97437F8E28A11019128D7B2604A42e333025E": {
 			"address": "0xbe3e3ca48525406063cb2ce9c7c848bcf24dc9fc",
 			"vaultAddress": "0x8db97437f8e28a11019128d7b2604a42e333025e",
-			"name": "",
+			"name": "USDC Test",
 			"vaultVersion": "3.0.4",
 			"displayName": "",
 			"description": "",
@@ -64,13 +64,13 @@
 		"0xf1dF9a0390Fd65984F311f17230B9F6B85497C6e_0xb9228370e2fa4908FC2Bf559a50bB77ba66fDD66": {
 			"address": "0xf1df9a0390fd65984f311f17230b9f6b85497c6e",
 			"vaultAddress": "0xb9228370e2fa4908fc2bf559a50bb77ba66fdd66",
-			"name": "",
+			"name": "Silo Lender S/USDC (20)",
 			"vaultVersion": "3.0.4",
 			"displayName": "",
 			"description": "",
 			"activation": 20467947,
 			"chainID": 146,
-			"doHealthCheck": false,
+			"doHealthCheck": true,
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,

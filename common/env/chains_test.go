@@ -44,8 +44,8 @@ func TestChainStructures(t *testing.T) {
 		chainCurve := TChainCurve{
 			RegistryAddress: common.HexToAddress("0x3333333333333333333333333333333333333333"),
 			FactoryAddress:  common.HexToAddress("0x4444444444444444444444444444444444444444"),
-			PoolsURIs:       []string{"https://api.curve.fi/api/getPoolList", "https://api.curve.fi/api/getFactoryPoolList"},
-			GaugesURI:       "https://api.curve.fi/api/getGauges",
+			PoolsURIs:       []string{"https://api.curve.finance/api/getPoolList", "https://api.curve.finance/api/getFactoryPoolList"},
+			GaugesURI:       "https://api.curve.finance/api/getGauges",
 		}
 
 		if chainCurve.RegistryAddress.Hex() != "0x3333333333333333333333333333333333333333" {
@@ -62,8 +62,8 @@ func TestChainStructures(t *testing.T) {
 			t.Errorf("PoolsURIs length mismatch, got %d, expected 2", len(chainCurve.PoolsURIs))
 		}
 
-		if chainCurve.GaugesURI != "https://api.curve.fi/api/getGauges" {
-			t.Errorf("GaugesURI mismatch, got %s, expected https://api.curve.fi/api/getGauges",
+		if chainCurve.GaugesURI != "https://api.curve.finance/api/getGauges" {
+			t.Errorf("GaugesURI mismatch, got %s, expected https://api.curve.finance/api/getGauges",
 				chainCurve.GaugesURI)
 		}
 	})

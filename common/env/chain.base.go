@@ -80,9 +80,9 @@ var BASE = TChain{
 		RegistryAddress: common.Address{},
 		FactoryAddress:  common.Address{},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/all/base`,
+			`https://api.curve.finance/api/getPools/all/base`,
 		},
-		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=base`,
+		GaugesURI: `https://api.curve.finance/api/getAllGauges?blockchainId=base`,
 	},
 	ExtraURI: TChainExtraURI{
 		GammaMerklURI: `https://api.angle.money/v2/merkl?chainIds%5B%5D=8453`,

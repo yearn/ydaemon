@@ -70,9 +70,9 @@ var GNOSIS = TChain{
 		RegistryAddress: common.HexToAddress(`0x0000000022d53366457f9d5e68ec105046fc4383`),
 		FactoryAddress:  common.Address{},
 		PoolsURIs: []string{
-			`https://api.curve.fi/api/getPools/all/xdai`,
+			`https://api.curve.finance/api/getPools/all/xdai`,
 		},
-		GaugesURI: `https://api.curve.fi/api/getAllGauges?blockchainId=xdai`,
+		GaugesURI: `https://api.curve.finance/api/getAllGauges?blockchainId=xdai`,
 	},
 	ExtraURI: TChainExtraURI{},
 }

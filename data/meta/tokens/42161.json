@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-09T16:18:33.672632389Z",
+	"lastUpdate": "2025-05-13T15:23:53.225201123Z",
 	"version": {
 		"major": 0,
-		"minor": 47,
+		"minor": 48,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1742,6 +1742,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x279b44E48226d40Ec389129061cb0B56C5c09e46/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x27ad7bbddf9e7735463189b3179221160b6cba5d": {
+			"address": "0x27ad7bbddf9e7735463189b3179221160b6cba5d",
+			"underlyingTokensAddresses": [
+				"0xee547c9ec563bd5e1f2f340855583a6b31843787"
+			],
+			"type": "Single Strategy",
+			"name": "getLUCKED",
+			"symbol": "GL",
+			"displayName": "getLUCKED",
+			"displaySymbol": "GL",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x27aD7bBddf9e7735463189B3179221160B6cBa5d/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -8444,6 +8460,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0xEde3D8D3213D8defC37E4EdEA86448D4c692bAa6/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0xee547c9ec563bd5e1f2f340855583a6b31843787": {
+			"address": "0xee547c9ec563bd5e1f2f340855583a6b31843787",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GETLUCKY",
+			"symbol": "LUCK",
+			"displayName": "GETLUCKY",
+			"displaySymbol": "LUCK",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xEe547c9eC563Bd5E1F2F340855583a6b31843787/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},

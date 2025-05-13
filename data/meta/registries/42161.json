@@ -223,6 +223,19 @@
 		"chainID": 42161,
 		"blockNumber": 309774321
 	},
+	"0x27ad7bbddf9e7735463189b3179221160b6cba5d": {
+		"address": "0x27ad7bbddf9e7735463189b3179221160b6cba5d",
+		"registryAddress": "0x8020fb37b21e0ef1707ada7a914baf44f9045e52",
+		"tokenAddress": "0xee547c9ec563bd5e1f2f340855583a6b31843787",
+		"type": "Single Strategy",
+		"kind": "Single Strategy",
+		"extraProperties": {
+			"yieldVaultAddress": "0x2549C026Ff1b031E5719E8913183E56AD649CCef"
+		},
+		"version": "~3.0.2",
+		"chainID": 42161,
+		"blockNumber": 20693634
+	},
 	"0x2b0b6376083c6e1f376c7439f328436a673f333c": {
 		"address": "0x2b0b6376083c6e1f376c7439f328436a673f333c",
 		"registryAddress": "0xff31a1b020c868f6ea3f61eb953344920eeca3af",

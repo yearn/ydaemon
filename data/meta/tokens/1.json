@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-13T15:25:36.901659165Z",
+	"lastUpdate": "2025-05-14T17:40:06.185450419Z",
 	"version": {
 		"major": 0,
-		"minor": 118,
+		"minor": 119,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -464,6 +464,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x029aad400f6092Dc735A65be95102efcc2Fe64bf/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x029d6247adb0a57138c62e3019c92d3dfc9c1840": {
+			"address": "0x029d6247adb0a57138c62e3019c92d3dfc9c1840",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ethena sUSDE 25SEP2025",
+			"symbol": "YT-sUSDE-25SEP2025",
+			"displayName": "YT Ethena sUSDE 25SEP2025",
+			"displaySymbol": "YT-sUSDE-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x029d6247ADb0A57138c62E3019C92d3dfC9c1840/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4964,6 +4978,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x220c37ee56f260111a1c3d5ef778a3556de84b1c": {
+			"address": "0x220c37ee56f260111a1c3d5ef778a3556de84b1c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT SuperETH 31JUL2025",
+			"symbol": "YT-ysWETH-31JUL2025",
+			"displayName": "YT SuperETH 31JUL2025",
+			"displaySymbol": "YT-ysWETH-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x220C37ee56f260111a1c3D5eF778a3556dE84B1c/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599": {
 			"address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
 			"underlyingTokensAddresses": [],
@@ -6737,6 +6765,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2ED065f447971768c1117E4A36C80F4a54eb88FA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2efa3db84bef6cd479bd6192b61f942fe04038f4": {
+			"address": "0x2efa3db84bef6cd479bd6192b61f942fe04038f4",
+			"underlyingTokensAddresses": [
+				"0xddfe32decc3888f0e950a9fd3e07c7942428bd6a"
+			],
+			"type": "Single Strategy",
+			"name": "lucky",
+			"symbol": "lucky",
+			"displayName": "lucky",
+			"displaySymbol": "lucky",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x2EFA3Db84bEF6CD479Bd6192B61f942FE04038f4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9862,6 +9906,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x43fc23e85a2f1078de7c0ab7e6b5c1eaa648f8f3": {
+			"address": "0x43fc23e85a2f1078de7c0ab7e6b5c1eaa648f8f3",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "Resupply crvUSD yVault",
+			"symbol": "yvcrvUSD-R",
+			"displayName": "Resupply crvUSD yVault",
+			"displaySymbol": "yvcrvUSD-R",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x43FC23e85a2F1078de7C0aB7e6B5C1Eaa648f8f3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x440d08d85cb12352dabac2971de81e9be702d239": {
 			"address": "0x440d08d85cb12352dabac2971de81e9be702d239",
 			"underlyingTokensAddresses": [],
@@ -10660,6 +10720,36 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x48bbbedc4d2491cc08915d7a5c7cc8a8edf165da": {
+			"address": "0x48bbbedc4d2491cc08915d7a5c7cc8a8edf165da",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ethena USDe 25SEP2025",
+			"symbol": "YT-USDe-25SEP2025",
+			"displayName": "YT Ethena USDe 25SEP2025",
+			"displaySymbol": "YT-USDe-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x48bbbEdc4d2491cc08915D7a5c7cc8A8EdF165da/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x48c03b6ffd0008460f8657db1037c7e09deedfcb": {
+			"address": "0x48c03b6ffd0008460f8657db1037c7e09deedfcb",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "Katana Pre-Deposit USDT",
+			"symbol": "kpdUSDT",
+			"displayName": "Katana Pre-Deposit USDT",
+			"displaySymbol": "kpdUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x48c03B6FfD0008460F8657Db1037C7e09dEedfcb/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x48d670d189b4b48757992d36897bca6e3f889040": {
 			"address": "0x48d670d189b4b48757992d36897bca6e3f889040",
 			"underlyingTokensAddresses": [
@@ -10816,6 +10906,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC and renBTC, an ERC-20 backed by native BTC via Ren's decentralized Darknodes.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x49849C98ae39Fff122806C06791Fa73784FB3675/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x49afd881cd581cc0258ce6db95e3fe167113c65b": {
+			"address": "0x49afd881cd581cc0258ce6db95e3fe167113c65b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x49AFd881Cd581CC0258ce6Db95e3fE167113c65b/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16076,6 +16180,20 @@
 			"decimals": 6,
 			"chainID": 1
 		},
+		"0x6d98a2b6cdbf44939362a3e99793339ba2016af4": {
+			"address": "0x6d98a2b6cdbf44939362a3e99793339ba2016af4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6d98a2b6CDbF44939362a3E99793339Ba2016aF4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d": {
 			"address": "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d",
 			"underlyingTokensAddresses": [],
@@ -17126,6 +17244,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x751f0cc6115410a3ee9ec92d08f46ff6da98b708": {
+			"address": "0x751f0cc6115410a3ee9ec92d08f46ff6da98b708",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "WBTC-1 yVault",
+			"symbol": "yvWBTC-1",
+			"displayName": "WBTC-1 yVault",
+			"displaySymbol": "yvWBTC-1",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x751F0cC6115410A3eE9eC92d08f46Ff6Da98b708/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0x752b4c6e92d96467fe9b9a2522ef07228e00f87c": {
 			"address": "0x752b4c6e92d96467fe9b9a2522ef07228e00f87c",
 			"underlyingTokensAddresses": [],
@@ -17930,6 +18064,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7B50775383d3D6f0215A8F290f2C9e2eEBBEceb2/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7b5a0182e400b241b317e781a4e9dedfc1429822": {
+			"address": "0x7b5a0182e400b241b317e781a4e9dedfc1429822",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Katana Pre-Deposit USDC",
+			"symbol": "kpdUSDC",
+			"displayName": "Katana Pre-Deposit USDC",
+			"displaySymbol": "kpdUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7B5A0182E400b241b317e781a4e9dEdFc1429822/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x7b64b99a1fd80b6c012e354a14adb352b5916ce1": {
@@ -19492,6 +19642,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x85F17Cf997934a597031b2E18a9aB6ebD4B9f6a4/logo-128.png",
 			"decimals": 24,
+			"chainID": 1
+		},
+		"0x860ae8aaa07bd743ee7dd0eff93e4bb8bd953497": {
+			"address": "0x860ae8aaa07bd743ee7dd0eff93e4bb8bd953497",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT SuperETH 31JUL2025",
+			"symbol": "PT-ysWETH-31JUL2025",
+			"displayName": "PT SuperETH 31JUL2025",
+			"displaySymbol": "PT-ysWETH-31JUL2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x860Ae8aAA07Bd743Ee7dD0EFF93E4bB8BD953497/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x864f78037639225b7cd0b6c632f8f187520b480b": {
@@ -21252,6 +21416,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x92c82f5f771f6a44cfa09357dd0575b81bf5f728": {
+			"address": "0x92c82f5f771f6a44cfa09357dd0575b81bf5f728",
+			"underlyingTokensAddresses": [
+				"0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
+			],
+			"type": "Yearn Vault",
+			"name": "Katana Pre-Deposit WBTC",
+			"symbol": "kpdWBTC",
+			"displayName": "Katana Pre-Deposit WBTC",
+			"displaySymbol": "kpdWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x92C82f5F771F6A44CfA09357DD0575B81BF5F728/logo-128.png",
+			"decimals": 8,
+			"chainID": 1
+		},
 		"0x92ccaa1b3dccccae7d68fff50e6e47a747233e62": {
 			"address": "0x92ccaa1b3dccccae7d68fff50e6e47a747233e62",
 			"underlyingTokensAddresses": [],
@@ -21779,6 +21959,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x95dFDC8161832e4fF7816aC4B6367CE201538253/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x95f19b19aff698169a1a0bbc28a2e47b14cb9a86": {
+			"address": "0x95f19b19aff698169a1a0bbc28a2e47b14cb9a86",
+			"underlyingTokensAddresses": [
+				"0x62b9c7356a2dc64a1969e19c23e4f579f9810aa7"
+			],
+			"type": "Yearn Vault",
+			"name": "cvxCRV yVault",
+			"symbol": "ycvxCRV",
+			"displayName": "cvxCRV yVault",
+			"displaySymbol": "ycvxCRV",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x95f19B19aff698169a1A0BBC28a2e47B14CB9a86/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23287,6 +23483,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9f56094c450763769ba0ea9fe2876070c0fd5f77": {
+			"address": "0x9f56094c450763769ba0ea9fe2876070c0fd5f77",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ethena sUSDE 25SEP2025",
+			"symbol": "PT-sUSDE-25SEP2025",
+			"displayName": "PT Ethena sUSDE 25SEP2025",
+			"displaySymbol": "PT-sUSDE-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9F56094C450763769BA0EA9Fe2876070c0fD5F77/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9f8b5c0fc18b79ddfc05b21c43da7e324cf3b8eb": {
 			"address": "0x9f8b5c0fc18b79ddfc05b21c43da7e324cf3b8eb",
 			"underlyingTokensAddresses": [
@@ -23738,6 +23948,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xA35b1B31Ce002FBF2058D22F30f95D405200A15b/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa36b60a14a1a5247912584768c6e53e1a269a9f7": {
+			"address": "0xa36b60a14a1a5247912584768c6e53e1a269a9f7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA36b60A14A1A5247912584768C6e53E1a269a9F7/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -27453,6 +27677,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xbc6736d346a5ebc0debc997397912cd9b8fae10a": {
+			"address": "0xbc6736d346a5ebc0debc997397912cd9b8fae10a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ethena USDe 25SEP2025",
+			"symbol": "PT-USDe-25SEP2025",
+			"displayName": "PT Ethena USDe 25SEP2025",
+			"displaySymbol": "PT-USDe-25SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBC6736d346a5eBC0dEbc997397912CD9b8FAe10a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xbc6da0fe9ad5f3b0d58160288917aa56653660e9": {
 			"address": "0xbc6da0fe9ad5f3b0d58160288917aa56653660e9",
 			"underlyingTokensAddresses": [],
@@ -28215,6 +28453,22 @@
 			"description": "Synthetix is a decentralized finance (DeFi) protocol that provides on-chain exposure to a wide variety of crypto and non-crypto assets. The protocol is based on the Ethereum (ETH) blockchain and offers users access to highly liquid synthetic assets (synths). Synths track and provide returns on the underlying asset without requiring one to directly hold the asset. SNX tokens are used for protocol governance and can also be used as collateral to mint synths.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc01cde799245a25e6eabc550b36a47f6f83cc0f1": {
+			"address": "0xc01cde799245a25e6eabc550b36a47f6f83cc0f1",
+			"underlyingTokensAddresses": [
+				"0x4c9edd5852cd905f086c759e8383e09bff1e68b3"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Ethena sUSDE",
+			"symbol": "SY-sUSDE",
+			"displayName": "SY Ethena sUSDE",
+			"displaySymbol": "SY-sUSDE",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC01cde799245a25e6EabC550b36A47F6F83cc0f1/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -30102,6 +30356,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xcC2EFb8bEdB6eD69ADeE0c3762470c38D4730C50/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xcc6a16be713f6a714f68b0e1f4914fd3db15fbef": {
+			"address": "0xcc6a16be713f6a714f68b0e1f4914fd3db15fbef",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "Katana Pre-Deposit WETH",
+			"symbol": "kpdWETH",
+			"displayName": "Katana Pre-Deposit WETH",
+			"displaySymbol": "kpdWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xcc6a16Be713f6a714f68b0E1f4914fD3db15fBeF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -32563,6 +32833,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xddfe32decc3888f0e950a9fd3e07c7942428bd6a": {
+			"address": "0xddfe32decc3888f0e950a9fd3e07c7942428bd6a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "GETLUCKY",
+			"symbol": "LUCK",
+			"displayName": "GETLUCKY",
+			"displaySymbol": "LUCK",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDDfE32DECC3888f0E950A9Fd3E07C7942428bd6A/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xde30da39c46104798bb5aa3fe8b9e0e1f348163f": {
 			"address": "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
 			"underlyingTokensAddresses": [],
@@ -34839,6 +35123,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xed5cc19927e3a4ac20e4a9e9e433ddd99138504e": {
+			"address": "0xed5cc19927e3a4ac20e4a9e9e433ddd99138504e",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "SY SuperETH",
+			"symbol": "SY-ysWETH",
+			"displayName": "SY SuperETH",
+			"displaySymbol": "SY-ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xeD5cC19927E3a4AC20e4A9e9e433dDd99138504e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xed785af60bed688baa8990cd5c4166221599a441": {
 			"address": "0xed785af60bed688baa8990cd5c4166221599a441",
 			"underlyingTokensAddresses": [
@@ -35105,6 +35405,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xEF0FacE04f2D9CC4dC47f560B0DBFc5dd6b56CBb/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xef101508bf4dc6cf0f0a0c135f39a41fab4e4389": {
+			"address": "0xef101508bf4dc6cf0f0a0c135f39a41fab4e4389",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "SuperETH",
+			"symbol": "ysWETH",
+			"displayName": "SuperETH",
+			"displaySymbol": "ysWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xeF101508bf4DC6CF0f0a0C135f39a41faB4E4389/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xef3f0167b97eff6979aef3bf7ad29cd8e20c5b09": {
@@ -35627,6 +35943,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf3b9569F82B18aEf890De263B84189bd33EBe452/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf3dbde762e5b67fad09d88da3dfd38a83f753ffe": {
+			"address": "0xf3dbde762e5b67fad09d88da3dfd38a83f753ffe",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Ethena USDe",
+			"symbol": "SY-USDe",
+			"displayName": "SY Ethena USDe",
+			"displaySymbol": "SY-USDe",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf3DbdE762E5B67FaD09d88da3dfD38A83f753FFe/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -36592,9 +36922,9 @@
 			"address": "0xf939e0a03fb07f59a73314e73794be0e57ac1b4e",
 			"underlyingTokensAddresses": [],
 			"type": "Curve LP",
-			"name": "Curve.Finance USD Stablecoin",
+			"name": "Curve.Fi USD Stablecoin",
 			"symbol": "crvUSD",
-			"displayName": "Curve.Finance USD Stablecoin",
+			"displayName": "Curve.Fi USD Stablecoin",
 			"displaySymbol": "crvUSD",
 			"description": "",
 			"category": "Curve",

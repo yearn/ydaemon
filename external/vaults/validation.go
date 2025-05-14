@@ -65,7 +65,7 @@ const (
 	// Default pagination values
 	DEFAULT_PAGE_NUMBER = 1
 	DEFAULT_PAGE_LIMIT  = 200
-	MAX_PAGE_LIMIT      = 1000
+	MAX_PAGE_LIMIT      = 1500
 
 	// Common TVL thresholds
 	MIN_DUST_TVL = 100 // Minimum TVL in USD to not be considered "dust"

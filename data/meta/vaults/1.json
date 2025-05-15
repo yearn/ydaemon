@@ -94,12 +94,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "93502007822593",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -115,7 +115,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3540,7 +3540,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -3556,7 +3556,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds. A possible alternative vault with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272).",
+				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -5933,7 +5933,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -8233,7 +8233,7 @@
 			"lastPricePerShare": "1041200511685636723",
 			"lastTotalAssets": "24952617886186210858513",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -13501,7 +13501,7 @@
 			"lastPricePerShare": "1056563025247566760",
 			"lastTotalAssets": "10809983218410532467309533",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -13510,9 +13510,9 @@
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
-					"available": false,
+					"available": true,
 					"target": "0x4ce9c93513dff543bc392870d57df8c04e89ba0a",
-					"contract": "0x0000000000000000000000000000000000000000"
+					"contract": "0x0868076663Bbc6638ceDd27704cc8F0Fa53d5b81"
 				},
 				"stability": {
 					"stability": "Unknown"
@@ -13522,7 +13522,7 @@
 				"displaySymbol": "",
 				"description": "Invests the USDS into Sky's Rewards Token Module and auto-compounds the SKY Rewards into more USDS.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -15396,12 +15396,12 @@
 			"lastPricePerShare": "102441522",
 			"lastTotalAssets": "97817279",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -15417,7 +15417,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -15466,12 +15466,12 @@
 			"lastPricePerShare": "1003738705999709125",
 			"lastTotalAssets": "1656836324068249253201",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -15487,7 +15487,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -17100,7 +17100,7 @@
 			"lastPricePerShare": "2416325",
 			"lastTotalAssets": "3810346924535",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -17121,7 +17121,7 @@
 				"displaySymbol": "",
 				"description": "Invests the USDC through MakerDAO's Peg Stability Module (PSM) and Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -17946,12 +17946,12 @@
 			"lastPricePerShare": "1006111288376575609",
 			"lastTotalAssets": "21621244017614856",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -17967,7 +17967,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -18446,7 +18446,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -18462,7 +18462,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds. A possible alternative vault with the same asset is [yPT-rsETH](https://yearn.fi/v3/1/0xcc209a1c5a3757597497C83d62D1d6B6a2c7395F).",
+				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -18935,7 +18935,7 @@
 			"lastPricePerShare": "1722353757551941722",
 			"lastTotalAssets": "2802024472300725305470198",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -18956,7 +18956,7 @@
 				"displaySymbol": "",
 				"description": "Invests the DAI through Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -21340,7 +21340,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -21356,7 +21356,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds. A possible alternative vault with the same asset is [yPT-USDe](https://yearn.fi/v3/1/0x8A878E3149051B810F078FD3F2E0924290be34A6).",
+				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -23522,12 +23522,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -23543,7 +23543,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -24848,12 +24848,12 @@
 			"lastPricePerShare": "1004049094487434405",
 			"lastTotalAssets": "26984610689517364388",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -24869,7 +24869,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -25273,7 +25273,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -25294,7 +25294,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26252,7 +26252,7 @@
 			"lastPricePerShare": "1046789058332543135",
 			"lastTotalAssets": "372610269290800483111",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -26273,7 +26273,7 @@
 				"displaySymbol": "",
 				"description": "Invests the USDS into the Sky Savings Rate.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -27224,7 +27224,7 @@
 			"lastPricePerShare": "1869153340626033459",
 			"lastTotalAssets": "1440396790773780620432",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -27233,9 +27233,9 @@
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
-					"available": false,
+					"available": true,
 					"target": "0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c",
-					"contract": "0x0000000000000000000000000000000000000000"
+					"contract": "0xD1F7723881afDEc574e7C76Edcf5B0458082a8b2"
 				},
 				"stability": {
 					"stability": "Unknown"
@@ -27245,7 +27245,7 @@
 				"displaySymbol": "",
 				"description": "Lends WETH to Across Protocol and auto-compounds the ACX rewards into more WETH.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -31327,12 +31327,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -31348,7 +31348,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -33160,7 +33160,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -34123,12 +34123,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "200989816670798325",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -34144,7 +34144,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -36560,7 +36560,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -36894,12 +36894,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -36915,7 +36915,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -39035,7 +39035,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -40012,12 +40012,12 @@
 			"lastPricePerShare": "1019574661686776029",
 			"lastTotalAssets": "53229570783542496199",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -40033,7 +40033,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles and 1x EigenLayer Points on [KelpDAO](https://kelpdao.xyz/dashboard/)",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future. Don't forget to claim Kelp Miles and EigenLayer Points on the [KelpDAO](https://kelpdao.xyz/dashboard/) website",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -41067,12 +41067,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "19780138785928592",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -41088,7 +41088,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -41345,12 +41345,12 @@
 			"lastPricePerShare": "1025132183518372199",
 			"lastTotalAssets": "10911423727491805064",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -41366,7 +41366,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -42260,7 +42260,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -42276,7 +42276,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds. A possible alternative vault with the same asset is [yPT-weETH](https://yearn.fi/v3/1/0xbDAc8353b03a883654d19fF60c8fcdc1A52f0bE2).",
+				"uiNotice": "Pendle has recently retired all Zircuit vaults, as a result this vault is also retired. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -42679,12 +42679,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "721564611192883093",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -42700,7 +42700,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -42841,7 +42841,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -43782,12 +43782,12 @@
 			"lastPricePerShare": "2000000000000001043",
 			"lastTotalAssets": "5752087043883535",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -43803,7 +43803,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -44207,12 +44207,12 @@
 			"lastPricePerShare": "100000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -44228,7 +44228,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

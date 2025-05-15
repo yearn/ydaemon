@@ -27,7 +27,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -48,7 +48,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -118,7 +118,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -168,12 +168,12 @@
 			"lastPricePerShare": "1064817042618852155",
 			"lastTotalAssets": "61023861778265019532",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -189,7 +189,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future. If you haven't already, claim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -373,12 +373,12 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "23047229447426",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -394,7 +394,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -583,7 +583,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -599,7 +599,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-ezETH](https://yearn.fi/v3/1/0xE403bbF2262643c2e996E7469be736E211D5B272) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum\u0026sourceChain=arbitrum-one). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
+				"uiNotice": "Pendle has retired ezETH on Arbitrum. Please withdraw your funds.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1060,12 +1060,12 @@
 			"lastPricePerShare": "1006498456721256484",
 			"lastTotalAssets": "28594774869172372372",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -1081,7 +1081,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Depositing into this vault grants an extra 1x Kelp Miles on [KelpDAO](https://kelpdao.xyz/dashboard/). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future. \nDon't forget to claim Kelp Miles on the [KelpDAO dashboard](https://kelpdao.xyz/dashboard/). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard) after 21 Sep 2024.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1476,12 +1476,12 @@
 			"lastPricePerShare": "1023294",
 			"lastTotalAssets": "205718659",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -1497,7 +1497,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1754,7 +1754,7 @@
 			"lastPricePerShare": "1017447616504831455",
 			"lastTotalAssets": "65703971069080284102078",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -1775,7 +1775,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "Pendle has retired USDe on Arbitrum. Please withdraw your funds. A possible alternative with the same asset is [yPT-USDe](https://yearn.fi/v3/1/0x8A878E3149051B810F078FD3F2E0924290be34A6) on Mainnet through a [bridge](https://bridge.arbitrum.io/?destinationChain=ethereum\u0026sourceChain=arbitrum-one). \nClaim your ARB rewards on the [Pendle Arbitrum Season Dashboard](https://app.pendle.finance/arbitrum/dashboard).",
+				"uiNotice": "Pendle has retired USDe on Arbitrum. Please withdraw your funds. ",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -1955,7 +1955,7 @@
 			"lastPricePerShare": "28093864940111223139",
 			"lastTotalAssets": "3310650892270053",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -1976,7 +1976,7 @@
 				"displaySymbol": "yPT-weETH",
 				"description": "",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -3679,7 +3679,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -4212,7 +4212,7 @@
 			"lastPricePerShare": "1000000000000000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
@@ -4233,7 +4233,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -4555,12 +4555,12 @@
 			"lastPricePerShare": "1009747736377730456",
 			"lastTotalAssets": "2518391737936",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -4576,7 +4576,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

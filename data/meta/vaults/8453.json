@@ -508,12 +508,12 @@
 			"lastPricePerShare": "100000000",
 			"lastTotalAssets": "0",
 			"metadata": {
-				"isRetired": false,
+				"isRetired": true,
 				"isHidden": true,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": true,
+				"isHighlighted": false,
 				"isPool": false,
 				"shouldUseV2APR": true,
 				"migration": {
@@ -529,7 +529,7 @@
 				"displaySymbol": "",
 				"description": "This vault invests into [Pendle PT Markets](https://app.pendle.finance/trade/markets) and automatically rolls them gas-free into the next maturity upon expiry. \u003cbr/\u003e\u003cbr/\u003eRead the [Pendle Docs](https://docs.pendle.finance/) to learn about the associated risks. Withdrawals may result in a loss depending on withdrawal size and current market conditions.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "Yearn has retired it's current set of Pendle Vaults. Please withdraw at your earliest convenience. Stay tuned for information on a new version in the future.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

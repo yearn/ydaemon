@@ -73,6 +73,7 @@ type TInclusion struct {
 	IsPoolTogether  bool `json:"isPoolTogether"`  // If the vault is a PoolTogether vault or not
 	IsCove          bool `json:"isCove"`          // If the vault is a Cove related vault or not
 	IsMorpho        bool `json:"isMorpho"`        // If the vault is a Morpho vault or not
+	IsKatana        bool `json:"isKatana"`        // If the vault is a Katana vault or not
 	IsPublicERC4626 bool `json:"isPublicERC4626"` // If the vault is from the public ERC4626 registry or not
 }
 

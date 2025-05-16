@@ -211,6 +211,16 @@ func (y Controller) GetIsMorpho(c *gin.Context) ([]TSimplifiedExternalVault, err
 }
 
 /**************************************************************************************************
+** GetIsKatana is a gin handler function to retrieve all the vaults matching the
+** inclusion.isKatana filter.
+**************************************************************************************************/
+func (y Controller) GetIsKatana(c *gin.Context) ([]TSimplifiedExternalVault, error) {
+	return getVaults(c, func(vault models.TVault) bool {
+		return vault.Metadata.Inclusion.IsKatana
+	})
+}
+
+/**************************************************************************************************
 ** GetIsAjna is a gin handler function to retrieve all the vaults with a name matching `AJNA` or
 ** with the inclusion.IsYearnJuiced filter.
 **************************************************************************************************/

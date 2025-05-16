@@ -94,7 +94,8 @@ const vaultSchema = {
 						isPoolTogether: {type: 'boolean'},
 						isCove: {type: 'boolean'},
 						isMorpho: {type: 'boolean'},
-						isPublicERC4626: {type: 'boolean'}
+						isPublicERC4626: { type: 'boolean' },
+						isKatana: { type: 'boolean' }
 					},
 					required: [
 						'isSet',

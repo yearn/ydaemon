@@ -273,6 +273,7 @@ func TestCategoryFilters(t *testing.T) {
 		{"GetIsOptimism", controller.GetIsOptimism},
 		{"GetIsYearnPoolTogether", controller.GetIsYearnPoolTogether},
 		{"GetIsMorpho", controller.GetIsMorpho},
+		{"GetIsKatana", controller.GetIsKatana},
 	}
 
 	for _, test := range categoryTests {

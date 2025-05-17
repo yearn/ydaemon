@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-14T17:39:00.620874019Z",
+	"lastUpdate": "2025-05-17T16:05:45.437382462Z",
 	"version": {
 		"major": 0,
-		"minor": 27,
+		"minor": 28,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1483,6 +1483,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0x9e4CB8b916289864321661CE02cf66aa5BA63C94/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x9eb7675377d1191bed352552267e5b5e592fcf53": {
+			"address": "0x9eb7675377d1191bed352552267e5b5e592fcf53",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Truemarket USDC yVault",
+			"symbol": "yvtmUSDC",
+			"displayName": "Truemarket USDC yVault",
+			"displaySymbol": "yvtmUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x9Eb7675377d1191beD352552267E5b5E592Fcf53/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xa3386f0a4034184ecb8a0d1e7e79b4f720634317": {

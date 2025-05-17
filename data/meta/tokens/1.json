@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-14T17:40:06.185450419Z",
+	"lastUpdate": "2025-05-17T16:07:08.598298214Z",
 	"version": {
 		"major": 0,
-		"minor": 119,
+		"minor": 120,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -6308,6 +6308,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2c0fa52e70298fbb5909a92f354585da016254b7": {
+			"address": "0x2c0fa52e70298fbb5909a92f354585da016254b7",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT EVK Vault eUSDC-22 18DEC2025",
+			"symbol": "PT-eUSDC-22-18DEC2025",
+			"displayName": "PT EVK Vault eUSDC-22 18DEC2025",
+			"displaySymbol": "PT-eUSDC-22-18DEC2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2c0FA52e70298Fbb5909a92F354585Da016254b7/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x2c131770ee1f943f1fb261784c41bb6abe57e2c9": {
 			"address": "0x2c131770ee1f943f1fb261784c41bb6abe57e2c9",
 			"underlyingTokensAddresses": [],
@@ -6451,6 +6465,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2CA5f2C4300450D53214B00546795c1c07B89acB/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x2cbb8efe9a7ff340768a1b672475111672e7527e": {
+			"address": "0x2cbb8efe9a7ff340768a1b672475111672e7527e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2CbB8eFe9a7ff340768A1b672475111672e7527e/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7087,6 +7115,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x30FCf7c6cDfC46eC237783D94Fc78553E79d4E9C/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x31081a986f55d071bd89e5f66ef5187e77383197": {
+			"address": "0x31081a986f55d071bd89e5f66ef5187e77383197",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "SY EVK Vault eUSDC-22",
+			"symbol": "SY-eUSDC-22",
+			"displayName": "SY EVK Vault eUSDC-22",
+			"displaySymbol": "SY-eUSDC-22",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x31081a986F55d071Bd89E5F66eF5187e77383197/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x310b7ea7475a0b449cfd73be81522f1b88efafaa": {
@@ -11631,6 +11675,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains crvUSD, wETH, and CRV. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x4eBdF703948ddCEA3B11f675B4D1Fba9d2414A14/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x4ede9c1dd28dac5356642663bea5a72fe9b6b2a2": {
+			"address": "0x4ede9c1dd28dac5356642663bea5a72fe9b6b2a2",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "SY EVK Vault eWETH-2",
+			"symbol": "SY-eWETH-2",
+			"displayName": "SY EVK Vault eWETH-2",
+			"displaySymbol": "SY-eWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x4EDE9C1Dd28dAc5356642663bEA5a72fe9b6B2A2/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -18802,6 +18862,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x80c229544530c2ba693bf7e8a5aa76ff98705c6e": {
+			"address": "0x80c229544530c2ba693bf7e8a5aa76ff98705c6e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x80c229544530c2bA693bF7e8A5AA76Ff98705C6E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x80caccdbd3f07bbdb558db4a9e146d099933d677": {
 			"address": "0x80caccdbd3f07bbdb558db4a9e146d099933d677",
 			"underlyingTokensAddresses": [],
@@ -22064,6 +22138,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x9680d4D049d16230f042065DAA6e045905D35454/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x9686a5fdf8022eaf6613d39cac1633eefe040433": {
+			"address": "0x9686a5fdf8022eaf6613d39cac1633eefe040433",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT EVK Vault eWETH-2 18DEC2025",
+			"symbol": "YT-eWETH-2-18DEC2025",
+			"displayName": "YT EVK Vault eWETH-2 18DEC2025",
+			"displaySymbol": "YT-eWETH-2-18DEC2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9686A5FDf8022eAF6613D39cac1633EEFE040433/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -32055,6 +32143,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd8b27cf359b7d15710a5be299af6e7bf904984c2": {
+			"address": "0xd8b27cf359b7d15710a5be299af6e7bf904984c2",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "EVK Vault eWETH-2",
+			"symbol": "eWETH-2",
+			"displayName": "EVK Vault eWETH-2",
+			"displaySymbol": "eWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xD8b27CF359b7D15710a5BE299AF6e7Bf904984C2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd8c620991b8e626c099eaab29b1e3eea279763bb": {
 			"address": "0xd8c620991b8e626c099eaab29b1e3eea279763bb",
 			"underlyingTokensAddresses": [
@@ -33338,6 +33442,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xE0a5Fe2c7b188D47490778995f4fa8C0bc8eBA8B/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xe0a80d35bb6618cba260120b279d357978c42bce": {
+			"address": "0xe0a80d35bb6618cba260120b279d357978c42bce",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "EVK Vault eUSDC-22",
+			"symbol": "eUSDC-22",
+			"displayName": "EVK Vault eUSDC-22",
+			"displaySymbol": "eUSDC-22",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe0a80d35bB6618CBA260120b279d357978c42BCE/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xe0dfd4d74a7c8064a0f5e233c753c609268d0d37": {
@@ -35016,6 +35136,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xecfba66f021303080c4089050340ad3fb34606d8": {
+			"address": "0xecfba66f021303080c4089050340ad3fb34606d8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT EVK Vault eUSDC-22 18DEC2025",
+			"symbol": "YT-eUSDC-22-18DEC2025",
+			"displayName": "YT EVK Vault eUSDC-22 18DEC2025",
+			"displaySymbol": "YT-eUSDC-22-18DEC2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEcfbA66f021303080c4089050340AD3Fb34606D8/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xed0244b688cf059f32f45e38a6ac6e479d6755f6": {
 			"address": "0xed0244b688cf059f32f45e38a6ac6e479d6755f6",
 			"underlyingTokensAddresses": [
@@ -36241,6 +36375,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF56fB6cc29F0666BDD1662FEaAE2A3C935ee3469/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf577439af94dc7434143380cd43dee77b0cff607": {
+			"address": "0xf577439af94dc7434143380cd43dee77b0cff607",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT EVK Vault eWETH-2 18DEC2025",
+			"symbol": "PT-eWETH-2-18DEC2025",
+			"displayName": "PT EVK Vault eWETH-2 18DEC2025",
+			"displaySymbol": "PT-eWETH-2-18DEC2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xf577439aF94dc7434143380Cd43Dee77B0cff607/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

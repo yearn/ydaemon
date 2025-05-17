@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-14T17:38:50.617403618Z",
+	"lastUpdate": "2025-05-17T11:08:44.311889507-04:00",
 	"version": {
 		"major": 1,
 		"minor": 0,
-		"patch": 14
+		"patch": 15
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -11,13 +11,14 @@
 			"address": "0x39b68451f05aaa020611cf887a7338f0991ffd60",
 			"token": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xf7ec5d01f5b5acdae518ce69ff5f2599e4d705be",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.2",
 			"activation": 33279667,
 			"chainID": 100,
 			"endorsed": false,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -80,21 +81,22 @@
 			"address": "0x5012c6bf79b3047ecfff2f212dffda4d2128188f",
 			"token": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xd84e84f018b9c8cc7d9f898a544d1d18080bfd21",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.2",
 			"activation": 32895501,
 			"chainID": 100,
 			"endorsed": false,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
 				"0x99474363f03d21375da1af4c9694cabcf995e02a",
 				"0x4b40c9ff9d654fd7f1e24ed66d8f0f260b199b43"
 			],
-			"lastPricePerShare": "1040832559952562262",
-			"lastTotalAssets": "1062428214832366685899",
+			"lastPricePerShare": "1040832559952562263",
+			"lastTotalAssets": "1838871529347469574",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -150,13 +152,14 @@
 			"address": "0xa21cc1a4a239708690134baed3a1b93cad55f625",
 			"token": "0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a",
 			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"accountant": "0xdb0fd022ba9d52d8c90bc69a22e24c4d3f895d11",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.2",
 			"activation": 32935257,
 			"chainID": 100,
 			"endorsed": false,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [

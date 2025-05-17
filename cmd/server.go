@@ -73,6 +73,7 @@ func NewRouter() *gin.Engine {
 		router.GET(`vaults/pooltogether`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearnPoolTogether))
 		router.GET(`vaults/cove`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsYearnCove))
 		router.GET(`vaults/morpho`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsMorpho))
+		router.GET(`vaults/katana`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsKatana))
 		router.GET(`vaults/ajna`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsAjna))
 		router.GET(`vaults/velodrome`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsVelodrome))
 		router.GET(`vaults/aerodrome`, CacheSimplifiedVaults(cachingStore, 5*time.Minute, c.GetIsAerodrome))

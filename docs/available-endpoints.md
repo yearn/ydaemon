@@ -68,6 +68,10 @@ Returns all vaults matching the `inclusion.isCove` filter.
 
 Returns all vaults matching the `inclusion.isMorpho` filter.
 
+#### **GET** `/vaults/katana`
+
+Returns all vaults matching the `inclusion.isKatana` filter.
+
 #### **GET** `/vaults/ajna`
 
 Returns all vaults with the Ajna category and the `inclusion.IsYearn` filter.

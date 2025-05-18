@@ -28,7 +28,7 @@ func main() {
 	go ListenToSignals()
 
 	logs.Info(`Running yDaemon server process...`)
-	go NewRouter().Run(`:8080`)
+	go NewRouter().Run(`:3001`)
 	go TriggerTgMessage(`💛 - yDaemon v` + GetVersion() + ` is ready to accept requests: https://ydaemon.yearn.fi/`)
 
 	for _, chainID := range chains {

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-18T12:34:54.606275136Z",
+	"lastUpdate": "2025-05-18T12:53:02.85527584Z",
 	"version": {
 		"major": 0,
-		"minor": 121,
+		"minor": 122,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1409,6 +1409,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x085780639CC2cACd35E474e71f4d000e2405d8f6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x0868076663bbc6638cedd27704cc8f0fa53d5b81": {
+			"address": "0x0868076663bbc6638cedd27704cc8f0fa53d5b81",
+			"underlyingTokensAddresses": [
+				"0xdc035d45d973e3ec169d2276ddab16f1e407384f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDS Sky Rewards Compounder",
+			"symbol": "ysUSDS",
+			"displayName": "USDS Sky Rewards Compounder",
+			"displaySymbol": "ysUSDS",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x0868076663Bbc6638ceDd27704cc8F0Fa53d5b81/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -1381,7 +1381,7 @@
 				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
-				"description": "",
+				"description": "Deposits USDS into Sky's Rewards Token Module and auto-compounds the SKY Rewards into more USDS.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"protocols": null,
@@ -1395,19 +1395,19 @@
 					"isMorpho": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
+					"review": 3,
+					"testing": 5,
+					"complexity": 1,
+					"riskExposure": 1,
+					"protocolIntegration": 2,
+					"centralizationRisk": 2,
+					"externalProtocolAudit": 1,
+					"externalProtocolCentralisation": 1,
+					"externalProtocolTvl": 1,
+					"externalProtocolLongevity": 1,
+					"externalProtocolType": 1,
 					"comment": ""
 				}
 			}
@@ -13577,8 +13577,8 @@
 				"shouldUseV2APR": false,
 				"migration": {
 					"available": true,
-					"target": "0x4ce9c93513dff543bc392870d57df8c04e89ba0a",
-					"contract": "0x0868076663bbc6638cedd27704cc8f0fa53d5b81"
+					"target": "0x0868076663bbc6638cedd27704cc8f0fa53d5b81",
+					"contract": "0x1112dbcf805682e828606f74ab717abf4b4fd8de"
 				},
 				"stability": {
 					"stability": "Unknown"
@@ -17255,7 +17255,7 @@
 				"displaySymbol": "",
 				"description": "Invests the USDC through MakerDAO's Peg Stability Module (PSM) and Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
-				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
+				"uiNotice": "This vault has been retired. Please withdraw your funds at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -19089,7 +19089,7 @@
 				"displaySymbol": "",
 				"description": "Invests the DAI through Sky into USDS and farms yearn's USDS vault for yield.",
 				"sourceURI": "",
-				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
+				"uiNotice": "This vault has been retired. Please withdraw your funds at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -26478,7 +26478,7 @@
 				"displaySymbol": "",
 				"description": "Invests the USDS into the Sky Savings Rate.",
 				"sourceURI": "",
-				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
+				"uiNotice": "This vault has been retired. Please withdraw your funds at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
@@ -27439,9 +27439,9 @@
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
-					"available": true,
+					"available": false,
 					"target": "0x9861708f2ad2bd1ed8d4d12436c0d8eb1ed36f1c",
-					"contract": "0xd1f7723881afdec574e7c76edcf5b0458082a8b2"
+					"contract": "0x0868076663bbc6638cedd27704cc8f0fa53d5b81"
 				},
 				"stability": {
 					"stability": "Unknown"
@@ -27451,7 +27451,7 @@
 				"displaySymbol": "",
 				"description": "Lends WETH to Across Protocol and auto-compounds the ACX rewards into more WETH.",
 				"sourceURI": "",
-				"uiNotice": "This vault has been retired. Please migrate to the new vault at your earliest convenience.",
+				"uiNotice": "This vault has been retired. Please withdraw your funds at your earliest convenience.",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

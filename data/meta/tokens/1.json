@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-18T12:53:02.85527584Z",
+	"lastUpdate": "2025-05-18T16:11:12.141214572Z",
 	"version": {
 		"major": 0,
-		"minor": 122,
+		"minor": 123,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -12750,6 +12750,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x55eED13aB07F8b5538eFf301551492a1D776dA7b/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x55f85ebb12f54c58ac1e8c1d56e12e4767ff262e": {
+			"address": "0x55f85ebb12f54c58ac1e8c1d56e12e4767ff262e",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Grothex",
+			"symbol": "gUSDC",
+			"displayName": "USDC Grothex",
+			"displaySymbol": "gUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x55F85eBB12F54c58Ac1E8C1d56E12E4767ff262E/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x56072c95faa701256059aa122697b133aded9279": {

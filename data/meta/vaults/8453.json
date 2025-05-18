@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-17T16:05:36.425452394Z",
+	"lastUpdate": "2025-05-18T12:33:40.081385769Z",
 	"version": {
 		"major": 1,
 		"minor": 50,
-		"patch": 2
+		"patch": 17
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -4082,7 +4082,7 @@
 		"0x9eb7675377d1191bed352552267e5b5e592fcf53": {
 			"address": "0x9eb7675377d1191bed352552267e5b5e592fcf53",
 			"token": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.4",
@@ -4117,7 +4117,7 @@
 				"stability": {
 					"stability": "Unknown"
 				},
-				"category": "auto",
+				"category": "Stablecoin",
 				"displayName": "",
 				"displaySymbol": "",
 				"description": "",
@@ -4125,7 +4125,7 @@
 				"uiNotice": "",
 				"protocols": null,
 				"inclusion": {
-					"isSet": false,
+					"isSet": true,
 					"isYearn": false,
 					"isYearnJuiced": false,
 					"isGimme": false,

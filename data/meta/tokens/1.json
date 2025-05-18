@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-17T16:07:08.598298214Z",
+	"lastUpdate": "2025-05-18T12:34:54.606275136Z",
 	"version": {
 		"major": 0,
-		"minor": 120,
+		"minor": 121,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -15348,6 +15348,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x68749665ff8d2d112fa859aa293f07a622782f38": {
+			"address": "0x68749665ff8d2d112fa859aa293f07a622782f38",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Tether Gold",
+			"symbol": "XAUt",
+			"displayName": "Tether Gold",
+			"displaySymbol": "XAUt",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x68749665FF8D2d112Fa859AA293F07A622782F38/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x68a2a15fd9832a4b03a5907e067220773aa71214": {
 			"address": "0x68a2a15fd9832a4b03a5907e067220773aa71214",
 			"underlyingTokensAddresses": [],
@@ -18647,6 +18661,22 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains wBTC, wETH, and USDC. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7F86Bf177Dd4F3494b841a37e810A34dD56c829B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7f8b06cdf3b4b0650bc9e810744e15140f5984ee": {
+			"address": "0x7f8b06cdf3b4b0650bc9e810744e15140f5984ee",
+			"underlyingTokensAddresses": [
+				"0xc48a38499a90e3b883c509ca08ec1b540cdf15ee"
+			],
+			"type": "Automated Yearn Vault",
+			"name": "Curve GOLD++ Factory yVault",
+			"symbol": "yvCurve-GOLD++-f",
+			"displayName": "Curve GOLD++ Factory yVault",
+			"displaySymbol": "yvCurve-GOLD++-f",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x7F8b06CDF3b4b0650bc9E810744E15140f5984Ee/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -29184,6 +29214,23 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xC48276dd601C83234D767F4d7d0c1B2B32BC7632/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xc48a38499a90e3b883c509ca08ec1b540cdf15ee": {
+			"address": "0xc48a38499a90e3b883c509ca08ec1b540cdf15ee",
+			"underlyingTokensAddresses": [
+				"0x68749665ff8d2d112fa859aa293f07a622782f38",
+				"0x45804880de22913dafe09f4980848ece6ecbaf78"
+			],
+			"type": "Curve LP",
+			"name": "Better Gold",
+			"symbol": "GOLD++",
+			"displayName": "Better Gold",
+			"displaySymbol": "GOLD++",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xC48A38499A90E3b883c509ca08eC1b540CDF15EE/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

@@ -1,79 +1,12 @@
 {
-	"lastUpdate": "2025-05-18T16:10:09.952116645Z",
+	"lastUpdate": "2025-05-19T03:50:20.2944557Z",
 	"version": {
-		"major": 90,
-		"minor": 1,
-		"patch": 0
+		"major": 92,
+		"minor": 0,
+		"patch": 12
 	},
 	"shouldRefresh": false,
 	"vaults": {
-		"0x0128e1d15ed9f0c8572967825ef46309bda39836": {
-			"address": "0x0128e1d15ed9f0c8572967825ef46309bda39836",
-			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0xe9e8c89c8fc7e8b8f23425688eb68987231178e5",
-			"type": "Yearn Vault",
-			"kind": "Multi Strategy",
-			"version": "3.0.1",
-			"activation": 49067937,
-			"chainID": 137,
-			"endorsed": true,
-			"performanceFee": 0,
-			"managementFee": 0,
-			"emergencyShutdown": false,
-			"lastActiveStrategies": null,
-			"lastPricePerShare": null,
-			"lastTotalAssets": null,
-			"metadata": {
-				"isRetired": false,
-				"isHidden": false,
-				"isAggregator": false,
-				"isBoosted": false,
-				"isAutomated": false,
-				"isHighlighted": false,
-				"isPool": false,
-				"shouldUseV2APR": false,
-				"migration": {
-					"available": false,
-					"target": "0x0000000000000000000000000000000000000000",
-					"contract": "0x0000000000000000000000000000000000000000"
-				},
-				"stability": {
-					"stability": ""
-				},
-				"category": "Stablecoin",
-				"displayName": "",
-				"displaySymbol": "",
-				"description": "",
-				"sourceURI": "",
-				"uiNotice": "",
-				"protocols": null,
-				"inclusion": {
-					"isSet": true,
-					"isYearn": false,
-					"isYearnJuiced": true,
-					"isGimme": false,
-					"isPoolTogether": false,
-					"isCove": false,
-					"isMorpho": false,
-					"isPublicERC4626": false
-				},
-				"riskLevel": 0,
-				"riskScore": {
-					"review": 0,
-					"testing": 0,
-					"complexity": 0,
-					"riskExposure": 0,
-					"protocolIntegration": 0,
-					"centralizationRisk": 0,
-					"externalProtocolAudit": 0,
-					"externalProtocolCentralisation": 0,
-					"externalProtocolTvl": 0,
-					"externalProtocolLongevity": 0,
-					"externalProtocolType": 0,
-					"comment": ""
-				}
-			}
-		},
 		"0x03e6010193c595ec168756af700479d1aff76895": {
 			"address": "0x03e6010193c595ec168756af700479d1aff76895",
 			"token": "0x9e31214db6931727b7d63a0d2b6236db455c0965",
@@ -124,6 +57,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -157,8 +91,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1022818598154831371",
-			"lastTotalAssets": "5087235947000000000000",
+			"lastPricePerShare": "1022818648393210954",
+			"lastTotalAssets": "5087242174000000000000",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -191,6 +125,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -258,6 +193,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -291,7 +227,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1022336830340899425",
+			"lastPricePerShare": "1022349249825683780",
 			"lastTotalAssets": "231508494291441046521381",
 			"metadata": {
 				"isRetired": false,
@@ -325,6 +261,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -362,7 +299,7 @@
 				"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
 				"0xf7464410c1ccf86b19711c9b6599336b00641c8f"
 			],
-			"lastPricePerShare": "1085563201816338490",
+			"lastPricePerShare": "1085567758145406512",
 			"lastTotalAssets": "136182140255435024006219",
 			"metadata": {
 				"isRetired": false,
@@ -396,6 +333,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -463,6 +401,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -530,6 +469,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -567,8 +507,8 @@
 				"0xbeda9a5300393e00229dc15cc54d5185e7646c56",
 				"0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259"
 			],
-			"lastPricePerShare": "1065350997830366924",
-			"lastTotalAssets": "20549418689033165101",
+			"lastPricePerShare": "1065466596341211144",
+			"lastTotalAssets": "20541845139710135631",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -601,6 +541,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -670,6 +611,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -742,6 +684,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -779,8 +722,8 @@
 				"0x52367c8e381edfb068e9fba1e7e9b2c847042897",
 				"0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca"
 			],
-			"lastPricePerShare": "1099440",
-			"lastTotalAssets": "298446612775",
+			"lastPricePerShare": "1099444",
+			"lastTotalAssets": "298294198227",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -813,6 +756,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -882,6 +826,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -915,8 +860,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1098361",
-			"lastTotalAssets": "370969084849",
+			"lastPricePerShare": "1098435",
+			"lastTotalAssets": "360663397759",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -949,6 +894,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -971,7 +917,7 @@
 		"0x41f63bd9180eaaa58185e1a88e2b22cea52634b9": {
 			"address": "0x41f63bd9180eaaa58185e1a88e2b22cea52634b9",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1f399808fe52d0e960cab84b6b54d5707ab27c8a",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1019,6 +965,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -1088,6 +1035,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1110,7 +1058,7 @@
 		"0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0": {
 			"address": "0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xb89c1d321ef404d086fb8d1d6eb0be69ff1d504e",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1156,6 +1104,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1223,6 +1172,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -1290,6 +1240,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -1323,8 +1274,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1063852",
-			"lastTotalAssets": "311236859501",
+			"lastPricePerShare": "1063907",
+			"lastTotalAssets": "311145632140",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1357,6 +1308,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1426,6 +1378,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1448,7 +1401,7 @@
 		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
 			"address": "0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1494,6 +1447,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -1527,8 +1481,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1920263",
-			"lastTotalAssets": "478866402",
+			"lastPricePerShare": "1920322",
+			"lastTotalAssets": "478930265",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1561,6 +1515,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1628,6 +1583,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1650,7 +1606,7 @@
 		"0x72449578349b69544de5ff2fb70f0cfba18a6ad1": {
 			"address": "0x72449578349b69544de5ff2fb70f0cfba18a6ad1",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1f399808fe52d0e960cab84b6b54d5707ab27c8a",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -1699,6 +1655,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -1766,6 +1723,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1833,6 +1791,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1902,6 +1861,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1970,6 +1930,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2007,8 +1968,8 @@
 				"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
 				"0x06ed7c67755344548fafe1822bee365c4208a57f"
 			],
-			"lastPricePerShare": "1171338347764838536",
-			"lastTotalAssets": "369480159778917985705893",
+			"lastPricePerShare": "1171371682387745903",
+			"lastTotalAssets": "369457611515263857458174",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2041,6 +2002,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2110,6 +2072,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -2132,7 +2095,7 @@
 		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
 			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xc322c31a85b002baca8462d608b1b0177d2b4e5c",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -2180,6 +2143,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -2213,8 +2177,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1011282",
-			"lastTotalAssets": "62028184113",
+			"lastPricePerShare": "1011329",
+			"lastTotalAssets": "72333871203",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2247,6 +2211,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2285,8 +2250,8 @@
 				"0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
 				"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a"
 			],
-			"lastPricePerShare": "1181348",
-			"lastTotalAssets": "545410845505",
+			"lastPricePerShare": "1181371",
+			"lastTotalAssets": "545410834975",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2319,6 +2284,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2388,6 +2354,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -2457,6 +2424,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -2524,6 +2492,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2546,7 +2515,7 @@
 		"0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95": {
 			"address": "0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x3f6440c795917fde1b77805e3154e160727ad7cd",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -2594,6 +2563,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2663,6 +2633,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -2702,8 +2673,8 @@
 				"0x0fefee13864c431717f5b2678607b6ce532a170c",
 				"0x9d1046cecb0662037b13decf1cd125c4aa3fb65b"
 			],
-			"lastPricePerShare": "1189648",
-			"lastTotalAssets": "410708687955",
+			"lastPricePerShare": "1189698",
+			"lastTotalAssets": "410798138955",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2736,6 +2707,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2769,7 +2741,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1015879227998779494",
+			"lastPricePerShare": "1015889456227403365",
 			"lastTotalAssets": "151492419536687012",
 			"metadata": {
 				"isRetired": false,
@@ -2803,6 +2775,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2825,7 +2798,7 @@
 		"0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0": {
 			"address": "0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -2871,6 +2844,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -2904,8 +2878,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1008903997837394709",
-			"lastTotalAssets": "20591755164863625524",
+			"lastPricePerShare": "1008935594370867728",
+			"lastTotalAssets": "22697572053375059680",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -2938,6 +2912,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2960,7 +2935,7 @@
 		"0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea": {
 			"address": "0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea",
 			"token": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3006,6 +2981,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -3028,7 +3004,7 @@
 		"0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1": {
 			"address": "0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1",
 			"token": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xb89c1d321ef404d086fb8d1d6eb0be69ff1d504e",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3076,6 +3052,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3098,7 +3075,7 @@
 		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
 			"address": "0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xb89c1d321ef404d086fb8d1d6eb0be69ff1d504e",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3144,6 +3121,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3166,7 +3144,7 @@
 		"0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4": {
 			"address": "0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4",
 			"token": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xb89c1d321ef404d086fb8d1d6eb0be69ff1d504e",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3212,6 +3190,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3245,8 +3224,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1111084",
-			"lastTotalAssets": "287298042057",
+			"lastPricePerShare": "1111131",
+			"lastTotalAssets": "287298031526",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3279,6 +3258,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3301,7 +3281,7 @@
 		"0xe4244bf798f63881591113126b64493ac36ac525": {
 			"address": "0xe4244bf798f63881591113126b64493ac36ac525",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1b84502815447fb419ac1ea8f3fba17be8a29b4d",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3349,6 +3329,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3382,8 +3363,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1101874352526004685",
-			"lastTotalAssets": "429171376353611214237862",
+			"lastPricePerShare": "1101941096736344358",
+			"lastTotalAssets": "429148828089957085990143",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3416,6 +3397,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3486,6 +3468,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -3553,6 +3536,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3575,7 +3559,7 @@
 		"0xf8fd29a8f95e96a125984c4e384534ace18cbfbd": {
 			"address": "0xf8fd29a8f95e96a125984c4e384534ace18cbfbd",
 			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1f399808fe52d0e960cab84b6b54d5707ab27c8a",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3624,6 +3608,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -3646,7 +3631,7 @@
 		"0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47": {
 			"address": "0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47",
 			"token": "0x61ffe097137d543f019f5257e1a1ff7a6c5f0b68",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x68842659c971404ebc66208635f57c0e37c218cb",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3692,6 +3677,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3714,7 +3700,7 @@
 		"0xfd179b9793b467fa3dd85edc715ae580b0240090": {
 			"address": "0xfd179b9793b467fa3dd85edc715ae580b0240090",
 			"token": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"registry": "0x444045c5c13c246e117ed36437303cac8e250ab0",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3760,6 +3746,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -3782,7 +3769,7 @@
 		"0xffcf7fb615614b96f5730af9da3d7114c119aabe": {
 			"address": "0xffcf7fb615614b96f5730af9da3d7114c119aabe",
 			"token": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -3831,6 +3818,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,

@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-18T16:11:14.40385433Z",
+	"lastUpdate": "2025-05-19T03:50:58.932580931Z",
 	"version": {
-		"major": 211,
-		"minor": 0,
-		"patch": 8
+		"major": 212,
+		"minor": 2,
+		"patch": 0
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -55,6 +55,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -125,6 +126,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -199,6 +201,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -271,6 +274,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -341,6 +345,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -414,6 +419,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -453,8 +459,8 @@
 				"0x1fd862499e9b9402de6c599b6c391f83981180ab",
 				"0xaedf7d5f3112552e110e5f9d08c9997adce0b78d"
 			],
-			"lastPricePerShare": "1075108775487066554",
-			"lastTotalAssets": "2948290348051669862586380",
+			"lastPricePerShare": "1075129134839420434",
+			"lastTotalAssets": "2947261096199175010730826",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -487,6 +493,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -557,6 +564,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -626,6 +634,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -699,6 +708,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -734,7 +744,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "8327691967764573890821",
+			"lastTotalAssets": "8121606486279192311621",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -767,6 +777,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -803,7 +814,7 @@
 				"0x11829e810afcca3e28b0c7d9e560a3f3e1294ba3",
 				"0xccb65389cdcf52ab636973a93aa9b518b7f3b933"
 			],
-			"lastPricePerShare": "1808014008295224375",
+			"lastPricePerShare": "1808441386499025976",
 			"lastTotalAssets": "78498707935400149987307",
 			"metadata": {
 				"isRetired": false,
@@ -839,6 +850,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -912,6 +924,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -984,6 +997,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1051,6 +1065,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1124,6 +1139,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -1158,8 +1174,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1044861621468874883",
-			"lastTotalAssets": "37381676084165495749909930",
+			"lastPricePerShare": "1044885307843269532",
+			"lastTotalAssets": "37626098048958470017561410",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -1192,6 +1208,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -1225,7 +1242,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1037940",
+			"lastPricePerShare": "1038219",
 			"lastTotalAssets": "349476514025",
 			"metadata": {
 				"isRetired": false,
@@ -1259,6 +1276,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1326,6 +1344,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -1359,8 +1378,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1000055763381070409",
-			"lastTotalAssets": "16273211059828452633397499",
+			"lastPricePerShare": "1000070444794761743",
+			"lastTotalAssets": "16273320899022177976670165",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -1393,6 +1412,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -1463,6 +1483,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1530,6 +1551,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1563,7 +1585,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1127072795152120174",
+			"lastPricePerShare": "1127165408066972278",
 			"lastTotalAssets": "128599985962669787685318",
 			"metadata": {
 				"isRetired": false,
@@ -1597,6 +1619,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -1668,6 +1691,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1738,6 +1762,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1771,7 +1796,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1268846",
+			"lastPricePerShare": "1270435",
 			"lastTotalAssets": "8805543280",
 			"metadata": {
 				"isRetired": false,
@@ -1805,6 +1830,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1875,6 +1901,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -1947,6 +1974,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2016,6 +2044,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2088,6 +2117,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2158,6 +2188,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2228,6 +2259,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2298,6 +2330,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2370,6 +2403,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2441,6 +2475,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2508,6 +2543,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -2577,6 +2613,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2647,6 +2684,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2680,7 +2718,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1875639799056504890",
+			"lastPricePerShare": "1877106329001087370",
 			"lastTotalAssets": "9263858120483608640",
 			"metadata": {
 				"isRetired": false,
@@ -2714,6 +2752,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -2786,6 +2825,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2859,6 +2899,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2931,6 +2972,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -2998,6 +3040,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3071,6 +3114,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3139,6 +3183,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3212,6 +3257,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3283,6 +3329,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3355,6 +3402,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3422,6 +3470,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -3492,6 +3541,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3562,6 +3612,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3633,6 +3684,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3702,6 +3754,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3743,8 +3796,8 @@
 				"0x3f2de801629116a83b9734bb72012a554e01cfc1",
 				"0x0868076663bbc6638cedd27704cc8f0fa53d5b81"
 			],
-			"lastPricePerShare": "1047286475631690583",
-			"lastTotalAssets": "19178102644320356821865758",
+			"lastPricePerShare": "1047325715704755424",
+			"lastTotalAssets": "19143930851939551664658630",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -3777,6 +3830,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -3810,7 +3864,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1067232178836982927",
+			"lastPricePerShare": "1067323397540997840",
 			"lastTotalAssets": "29295644543701666570",
 			"metadata": {
 				"isRetired": false,
@@ -3844,6 +3898,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3914,6 +3969,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -3981,6 +4037,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4051,6 +4108,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4125,6 +4183,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4193,6 +4252,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4263,6 +4323,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4331,6 +4392,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -4398,6 +4460,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4470,6 +4533,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4542,6 +4606,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4615,6 +4680,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4687,6 +4753,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4754,6 +4821,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -4824,6 +4892,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -4894,6 +4963,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -4961,6 +5031,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5029,6 +5100,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5102,6 +5174,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5172,6 +5245,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5205,8 +5279,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1120088450605502332",
-			"lastTotalAssets": "129159109975452744395842",
+			"lastPricePerShare": "1120122327220627974",
+			"lastTotalAssets": "129187592585666455408818",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5239,6 +5313,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -5309,6 +5384,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5342,8 +5418,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1096343",
-			"lastTotalAssets": "390384261709",
+			"lastPricePerShare": "1096477",
+			"lastTotalAssets": "2712251945515",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5376,6 +5452,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -5448,6 +5525,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5518,6 +5596,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5586,6 +5665,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5658,6 +5738,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -5730,6 +5811,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -5763,8 +5845,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1475407042005269068",
-			"lastTotalAssets": "471464773480290506202",
+			"lastPricePerShare": "1475428982605990751",
+			"lastTotalAssets": "831295845394916425763",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -5797,6 +5879,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -5867,6 +5950,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -5940,6 +6024,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6010,6 +6095,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 1,
@@ -6082,6 +6168,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6154,6 +6241,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6193,7 +6281,7 @@
 				"0xd5e617420b9ea0be28751435b647328d63b10368",
 				"0x59d675f75f973835b94d02b6d27b8539757dc65f"
 			],
-			"lastPricePerShare": "1003156932858486068",
+			"lastPricePerShare": "1003216727195065126",
 			"lastTotalAssets": "1905881351031236107243",
 			"metadata": {
 				"isRetired": false,
@@ -6227,6 +6315,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6297,6 +6386,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -6332,8 +6422,8 @@
 			"lastActiveStrategies": [
 				"0xe3974e44bc08f435da2c6db7d01e1758496da119"
 			],
-			"lastPricePerShare": "2012733078447359677",
-			"lastTotalAssets": "46425113561147110199378033",
+			"lastPricePerShare": "2013171869824900821",
+			"lastTotalAssets": "46443883949284433881347246",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -6369,6 +6459,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6441,6 +6532,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6508,6 +6600,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -6578,6 +6671,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6646,6 +6740,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6719,6 +6814,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6786,6 +6882,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6857,6 +6954,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -6924,6 +7022,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -6957,7 +7056,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1006073324274899153",
+			"lastPricePerShare": "1006121114962943935",
 			"lastTotalAssets": "33251422321150310007",
 			"metadata": {
 				"isRetired": false,
@@ -6991,6 +7090,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7063,6 +7163,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7136,6 +7237,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7208,6 +7310,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7275,6 +7378,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7343,6 +7447,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7413,6 +7518,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7485,6 +7591,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7557,6 +7664,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7628,6 +7736,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7698,6 +7807,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -7768,6 +7878,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -7840,6 +7951,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7913,6 +8025,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -7984,6 +8097,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8054,6 +8168,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8121,6 +8236,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8191,6 +8307,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8260,6 +8377,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8331,6 +8449,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -8403,6 +8522,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8474,6 +8594,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8546,6 +8667,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8614,6 +8736,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -8686,6 +8809,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8726,8 +8850,8 @@
 				"0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5",
 				"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f"
 			],
-			"lastPricePerShare": "1038918",
-			"lastTotalAssets": "5281369562428",
+			"lastPricePerShare": "1038972",
+			"lastTotalAssets": "5276583763062",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -8760,6 +8884,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -8832,6 +8957,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -8902,6 +9028,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -8975,6 +9102,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9047,6 +9175,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9117,6 +9246,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9188,6 +9318,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9258,6 +9389,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9329,6 +9461,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9399,6 +9532,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -9469,6 +9603,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9506,7 +9641,7 @@
 				"0x473f0adec308dc82440665d9fc7d5e26ebcf0e05"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "215379969721876022559326931",
+			"lastTotalAssets": "215373670136585484451933671",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -9539,6 +9674,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9607,6 +9743,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -9674,6 +9811,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -9746,6 +9884,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -9813,6 +9952,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -9883,6 +10023,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -9953,6 +10094,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -10021,6 +10163,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -10093,6 +10236,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10127,7 +10271,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "1972507650",
+			"lastTotalAssets": "1972601612",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10160,6 +10304,7 @@
 					"isPoolTogether": true,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -10232,6 +10377,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10300,6 +10446,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -10337,8 +10484,8 @@
 				"0xd8f414beb0aeb5784c5e5ebe32ca9fc182682ff8",
 				"0xa55713a301f23b02dcbe36321164a78614e368df"
 			],
-			"lastPricePerShare": "1104106",
-			"lastTotalAssets": "5211341952444",
+			"lastPricePerShare": "1104129",
+			"lastTotalAssets": "5211863601066",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -10372,6 +10519,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10444,6 +10592,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10511,6 +10660,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10578,6 +10728,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10650,6 +10801,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10720,6 +10872,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10793,6 +10946,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10865,6 +11019,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10938,6 +11093,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -10974,7 +11130,7 @@
 				"0xe318fc9eec4c9aec494b3da06e6d97fe07b2c98b",
 				"0xe403f03eee3aa19156eb13fb6edd9e77de62b89e"
 			],
-			"lastPricePerShare": "1492600710097356454",
+			"lastPricePerShare": "1494099132521930651",
 			"lastTotalAssets": "1538371748936627405846",
 			"metadata": {
 				"isRetired": false,
@@ -11010,6 +11166,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11082,6 +11239,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -11150,6 +11308,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -11184,7 +11343,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "0",
-			"lastTotalAssets": "55852534355044088407",
+			"lastTotalAssets": "55853592337681956574",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -11217,6 +11376,7 @@
 					"isPoolTogether": true,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11286,6 +11446,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11358,6 +11519,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11428,6 +11590,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -11501,6 +11664,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11568,6 +11732,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -11636,6 +11801,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11712,6 +11878,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11785,6 +11952,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -11855,6 +12023,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -11922,6 +12091,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -11994,6 +12164,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12027,7 +12198,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "60552349",
+			"lastPricePerShare": "60554148",
 			"lastTotalAssets": "103933263",
 			"metadata": {
 				"isRetired": false,
@@ -12061,6 +12232,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -12132,6 +12304,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12167,7 +12340,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "102779379058",
+			"lastTotalAssets": "102795379058",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -12200,6 +12373,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -12270,6 +12444,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12306,7 +12481,7 @@
 				"0xc6e53d7c2453163f9b708393086237b0ee0fd9b3"
 			],
 			"lastPricePerShare": "1014235766981470177",
-			"lastTotalAssets": "2032194433654562888753",
+			"lastTotalAssets": "4902821102935710054291",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -12339,6 +12514,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -12408,6 +12584,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12478,6 +12655,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -12547,8 +12725,8 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
-					"isPublicERC4626": false,
-					"isKatana": true
+					"isKatana": true,
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {
@@ -12619,6 +12797,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -12691,6 +12870,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12762,6 +12942,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12830,6 +13011,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -12899,6 +13081,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -12969,6 +13152,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13039,6 +13223,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13106,6 +13291,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -13178,6 +13364,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13245,6 +13432,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13315,6 +13503,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13387,6 +13576,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13459,6 +13649,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13532,6 +13723,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -13599,6 +13791,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -13667,6 +13860,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13734,6 +13928,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13812,6 +14007,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -13880,6 +14076,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -13947,6 +14144,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14014,6 +14212,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14084,6 +14283,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14154,6 +14354,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -14228,6 +14429,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14295,6 +14497,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14372,6 +14575,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14444,6 +14648,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14512,6 +14717,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -14580,6 +14786,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -14653,6 +14860,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14726,6 +14934,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14796,6 +15005,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -14866,6 +15076,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -14933,6 +15144,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15003,6 +15215,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15075,6 +15288,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -15142,6 +15356,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -15211,6 +15426,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15247,7 +15463,7 @@
 				"0x316fbf1a81b2765fa122ae0d985217c8d657efd9",
 				"0x6db528a2276cf28b02fa454191b073d1b4c73f1a"
 			],
-			"lastPricePerShare": "4208249173949452238",
+			"lastPricePerShare": "4213785806279100408",
 			"lastTotalAssets": "17168446760573023",
 			"metadata": {
 				"isRetired": false,
@@ -15284,6 +15500,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15354,6 +15571,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15424,6 +15642,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15494,6 +15713,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15565,6 +15785,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -15635,6 +15856,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -15708,6 +15930,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15780,6 +16003,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15852,6 +16076,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -15919,6 +16144,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -15991,6 +16217,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16063,6 +16290,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16133,6 +16361,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16206,6 +16435,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16273,6 +16503,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16343,6 +16574,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -16411,6 +16643,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -16484,6 +16717,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16556,6 +16790,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16629,6 +16864,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16700,6 +16936,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -16773,6 +17010,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16850,6 +17088,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16923,6 +17162,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -16990,6 +17230,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -17062,6 +17303,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17134,6 +17376,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17202,6 +17445,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -17269,6 +17513,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -17341,6 +17586,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -17374,8 +17620,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3704038117743976255",
-			"lastTotalAssets": "1012492472659789670924",
+			"lastPricePerShare": "3704127560226952538",
+			"lastTotalAssets": "1013123045983930010700",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -17408,6 +17654,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -17480,6 +17727,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17552,6 +17800,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17622,6 +17871,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17695,6 +17945,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17767,6 +18018,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17800,7 +18052,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1063941187213067922",
+			"lastPricePerShare": "1064027230256926489",
 			"lastTotalAssets": "32089159848847717897174",
 			"metadata": {
 				"isRetired": false,
@@ -17834,6 +18086,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -17907,6 +18160,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -17974,6 +18228,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18044,6 +18299,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18115,6 +18371,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -18131,6 +18388,76 @@
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
 					"comment": "Withdrawals can incur losses if the PT-SY exchange rate drops. Waiting for market maturity eliminates potential losses."
+				}
+			}
+		},
+		"0x661077153a02628786d180dbdf633f790774df10": {
+			"address": "0x661077153a02628786d180dbdf633f790774df10",
+			"token": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22510192,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x90759801579208b28d2d36d13b1ed7443d1b717f"
+			],
+			"lastPricePerShare": "1000000000000000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x661077153a02628786d180dbdf633f790774df10",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": false,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isKatana": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
 				}
 			}
 		},
@@ -18185,6 +18512,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18252,6 +18580,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18285,7 +18614,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1984267367934724278",
+			"lastPricePerShare": "1984446520849222116",
 			"lastTotalAssets": "533063412202782562868301",
 			"metadata": {
 				"isRetired": false,
@@ -18319,6 +18648,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -18361,7 +18691,7 @@
 				"0x17304367c7680a62f23b667ce5ef7e80ae296205"
 			],
 			"lastPricePerShare": "1023757080902174538",
-			"lastTotalAssets": "16481035272415692358999",
+			"lastTotalAssets": "14453928094988140001183",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -18394,6 +18724,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18467,6 +18798,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18539,6 +18871,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18610,6 +18943,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -18682,6 +19016,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18715,7 +19050,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1035519",
+			"lastPricePerShare": "1036204",
 			"lastTotalAssets": "85196271644",
 			"metadata": {
 				"isRetired": false,
@@ -18749,6 +19084,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -18783,12 +19119,12 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
-				"0xa10c40f9e318b0ed67ecc3499d702d8db9437228",
 				"0x2be901715468c3c5393efa841525a713c583a8ec",
 				"0x2cdaeebe9607ee7579bbd69af44f44553fda764f",
-				"0xb4e41e6eef1a77e700b46abacdf6d426fd256791"
+				"0xb4e41e6eef1a77e700b46abacdf6d426fd256791",
+				"0xa10c40f9e318b0ed67ecc3499d702d8db9437228"
 			],
-			"lastPricePerShare": "1021660",
+			"lastPricePerShare": "1021728",
 			"lastTotalAssets": "7116574300371",
 			"metadata": {
 				"isRetired": false,
@@ -18822,6 +19158,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -18893,6 +19230,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -18963,6 +19301,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19036,6 +19375,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19103,6 +19443,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -19172,6 +19513,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19243,6 +19585,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19316,6 +19659,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19383,6 +19727,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19416,7 +19761,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1272004",
+			"lastPricePerShare": "1272048",
 			"lastTotalAssets": "294182743249",
 			"metadata": {
 				"isRetired": false,
@@ -19450,6 +19795,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -19520,6 +19866,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19591,6 +19938,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19661,6 +20009,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -19698,7 +20047,7 @@
 				"0x7bba4a580b97cfbb0f100fb3ea74ae9f1377d039"
 			],
 			"lastPricePerShare": "1416631447085428139",
-			"lastTotalAssets": "6638686535318081540326052",
+			"lastTotalAssets": "6627190152091080011381011",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -19734,6 +20083,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19806,6 +20156,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19878,6 +20229,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -19948,6 +20300,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -20021,6 +20374,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20093,6 +20447,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20165,6 +20520,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -20237,6 +20593,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20308,6 +20665,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20341,7 +20699,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1043703583063830823",
+			"lastPricePerShare": "1043744105869030437",
 			"lastTotalAssets": "9967103014898821244",
 			"metadata": {
 				"isRetired": false,
@@ -20375,6 +20733,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -20451,6 +20810,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20523,6 +20883,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20594,6 +20955,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20664,6 +21026,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -20734,6 +21097,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20807,6 +21171,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -20843,7 +21208,7 @@
 				"0xd2d365cd5430c3194fa42b15fb1b380b31bc7165",
 				"0x48a4688b6c854e03a124fe57b5af35dcf5cee205"
 			],
-			"lastPricePerShare": "1012486587458204323",
+			"lastPricePerShare": "1012579091911850733",
 			"lastTotalAssets": "738880129469807871487738",
 			"metadata": {
 				"isRetired": false,
@@ -20877,6 +21242,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -20944,6 +21310,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21013,6 +21380,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21086,6 +21454,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21156,6 +21525,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21228,6 +21598,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21298,6 +21669,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21365,6 +21737,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -21401,7 +21774,7 @@
 				"0xe5baf8b6be442811211e9339d9fbc1b8fb7d66df",
 				"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f"
 			],
-			"lastPricePerShare": "1000591",
+			"lastPricePerShare": "1002685",
 			"lastTotalAssets": "18330217",
 			"metadata": {
 				"isRetired": false,
@@ -21435,6 +21808,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21506,6 +21880,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -21579,6 +21954,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21616,7 +21992,7 @@
 				"0x6b7cba100e7bea38dcc7bbcfe79ab5dbfdac63ac",
 				"0x8c1acaf5fb36838280c671fb6ab3538df3213286"
 			],
-			"lastPricePerShare": "1167956373730121032",
+			"lastPricePerShare": "1168080028430089337",
 			"lastTotalAssets": "24459412492602598977218",
 			"metadata": {
 				"isRetired": false,
@@ -21652,6 +22028,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21725,6 +22102,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21793,6 +22171,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -21865,6 +22244,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -21900,7 +22280,7 @@
 			"lastActiveStrategies": [
 				"0xa04947059831783c561e59a43b93dcb5bee7cab2"
 			],
-			"lastPricePerShare": "1103031520756031460",
+			"lastPricePerShare": "1103170168805705818",
 			"lastTotalAssets": "178156089269315811595",
 			"metadata": {
 				"isRetired": false,
@@ -21936,6 +22316,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22009,6 +22390,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22076,6 +22458,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22143,6 +22526,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22212,8 +22596,8 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
-					"isPublicERC4626": false,
-					"isKatana": true
+					"isKatana": true,
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {
@@ -22283,6 +22667,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22350,6 +22735,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22420,6 +22806,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22490,6 +22877,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -22526,8 +22914,8 @@
 				"0x7f074cd344cd59fa20866796960a5c5a3f97316e",
 				"0xb803a6efcdbe8d7089a38b2af183d05f3b350055"
 			],
-			"lastPricePerShare": "1268774079543001703",
-			"lastTotalAssets": "346092232570747478968352",
+			"lastPricePerShare": "1268993739317360968",
+			"lastTotalAssets": "346142555694612787618265",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -22563,6 +22951,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22640,6 +23029,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22713,6 +23103,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22746,7 +23137,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1167887",
+			"lastPricePerShare": "1167932",
 			"lastTotalAssets": "22531082941",
 			"metadata": {
 				"isRetired": false,
@@ -22780,6 +23171,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -22847,6 +23239,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -22917,6 +23310,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -22987,6 +23381,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23023,8 +23418,8 @@
 				"0x0d72cc78dd75acc57a4b77672dc8beb37f9ac92a",
 				"0x35c7aff6a75f0d166bc01417975592235fd08c31"
 			],
-			"lastPricePerShare": "1264361377566172704",
-			"lastTotalAssets": "2442790978684975331339",
+			"lastPricePerShare": "1267053791501675690",
+			"lastTotalAssets": "2467583099429621103552",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -23057,6 +23452,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23128,6 +23524,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23201,6 +23598,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23273,6 +23671,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23346,6 +23745,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23419,6 +23819,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23486,6 +23887,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23519,7 +23921,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1003867706372387203",
+			"lastPricePerShare": "1003910081670644425",
 			"lastTotalAssets": "148205067750117110917825",
 			"metadata": {
 				"isRetired": false,
@@ -23553,6 +23955,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23589,7 +23992,7 @@
 				"0xc402096580c72242c2c16b956ac20f9af7aae679",
 				"0x213df1840159bd02a4aae70cf34e3f2303d6b4f1"
 			],
-			"lastPricePerShare": "1006757119906550536",
+			"lastPricePerShare": "1006790496103928030",
 			"lastTotalAssets": "5038032765590690233037",
 			"metadata": {
 				"isRetired": false,
@@ -23623,6 +24026,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23693,6 +24097,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -23763,6 +24168,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -23830,6 +24236,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -23903,6 +24310,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -23973,6 +24381,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24006,8 +24415,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "5384546365639198605",
-			"lastTotalAssets": "2420342863986790912356709",
+			"lastPricePerShare": "5385697807539886130",
+			"lastTotalAssets": "2377714430910142982089094",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -24040,6 +24449,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -24112,6 +24522,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24182,6 +24593,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24218,7 +24630,7 @@
 				"0x1149c471e605101b7095344d43be777474f707cf",
 				"0x592b487f078d9b4d22b230f8c5b6509b82aded5a"
 			],
-			"lastPricePerShare": "1282631390727650367",
+			"lastPricePerShare": "1282931743912114773",
 			"lastTotalAssets": "173458802628010053140",
 			"metadata": {
 				"isRetired": false,
@@ -24255,6 +24667,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24325,6 +24738,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24397,6 +24811,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24430,7 +24845,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "4878645674624981659",
+			"lastPricePerShare": "4878678936842139536",
 			"lastTotalAssets": "878080373748220193397",
 			"metadata": {
 				"isRetired": false,
@@ -24464,6 +24879,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24534,6 +24950,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24604,6 +25021,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24673,6 +25091,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -24740,6 +25159,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24776,7 +25196,7 @@
 				"0xc5de11369e39e2384a23e6973f4c19e28f61443a",
 				"0x3d9a5c10ab9bc5364e753ccdce18b4da687d3620"
 			],
-			"lastPricePerShare": "1014228305240633414",
+			"lastPricePerShare": "1014356459786818395",
 			"lastTotalAssets": "982178289381015271724734",
 			"metadata": {
 				"isRetired": false,
@@ -24810,6 +25230,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -24878,6 +25299,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -24950,6 +25372,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25018,6 +25441,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25089,6 +25513,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -25162,6 +25587,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25198,8 +25624,8 @@
 				"0x5e6d44661e97d65a116d34ce8fa5f5594e5eea2e",
 				"0x8c3b300b963d0422cbe200c94f61af1812924bdc"
 			],
-			"lastPricePerShare": "2791433619797996435",
-			"lastTotalAssets": "8771648316687364215",
+			"lastPricePerShare": "2791433619797996437",
+			"lastTotalAssets": "616960154193142092",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -25232,6 +25658,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25300,6 +25727,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25372,6 +25800,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25444,6 +25873,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25514,6 +25944,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -25584,6 +26015,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25656,6 +26088,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25729,6 +26162,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25801,6 +26235,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -25869,6 +26304,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -25939,6 +26375,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -26011,6 +26448,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26081,6 +26519,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26151,6 +26590,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26184,8 +26624,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "10840876271950111548",
-			"lastTotalAssets": "132568165904132841",
+			"lastPricePerShare": "10854715310799196625",
+			"lastTotalAssets": "133568605333758994",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26218,6 +26658,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -26285,6 +26726,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26353,6 +26795,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26426,6 +26869,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26493,6 +26937,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -26533,8 +26978,8 @@
 				"0x09580f2305a335218bdb2eb828387d52ed8fc2f4",
 				"0x75f35498e0d053d0dbd2472bc06e7cba1f0c7d3a"
 			],
-			"lastPricePerShare": "1137228604390927562",
-			"lastTotalAssets": "1186215082684027781440002",
+			"lastPricePerShare": "1137289547409894860",
+			"lastTotalAssets": "1185185830831532929584448",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26567,6 +27012,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -26636,8 +27082,8 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
-					"isPublicERC4626": false,
-					"isKatana": true
+					"isKatana": true,
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {
@@ -26704,6 +27150,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -26777,6 +27224,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26815,7 +27263,7 @@
 				"0xb3bf04a939aacff5bdcfc273ce4f36cf29f063db"
 			],
 			"lastPricePerShare": "1000000000000000000",
-			"lastTotalAssets": "147388876823044891894445",
+			"lastTotalAssets": "147088876823044891894445",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -26848,6 +27296,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -26921,6 +27370,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -26988,6 +27438,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -27057,6 +27508,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27093,8 +27545,8 @@
 				"0x02d89f68756fed0ed3f1dc33aef7e4e5e2d311b5",
 				"0x464f3e9ad5b4765c8af8f75f97dd8b5b9767ae88"
 			],
-			"lastPricePerShare": "1119705455565038152",
-			"lastTotalAssets": "183924253509512688851",
+			"lastPricePerShare": "1119795376460353253",
+			"lastTotalAssets": "184020199092779569265",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -27127,6 +27579,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27195,6 +27648,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27262,6 +27716,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -27332,6 +27787,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27400,6 +27856,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27467,6 +27924,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -27539,6 +27997,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27611,6 +28070,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27681,6 +28141,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27753,6 +28214,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27820,6 +28282,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -27891,6 +28354,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -27962,6 +28426,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -28030,6 +28495,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28098,6 +28564,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28165,6 +28632,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28236,6 +28704,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -28308,6 +28777,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28381,6 +28851,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28453,6 +28924,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28521,6 +28993,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28554,7 +29027,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "4796014",
+			"lastPricePerShare": "4796124",
 			"lastTotalAssets": "725154342",
 			"metadata": {
 				"isRetired": false,
@@ -28588,6 +29061,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -28626,8 +29100,8 @@
 				"0x120fa5738751b275aed7f7b46b98beb38679e093",
 				"0xebdd83cd87036670d045776b2bc79a8184a9978c"
 			],
-			"lastPricePerShare": "1096303425852657675",
-			"lastTotalAssets": "17311357674895967811940",
+			"lastPricePerShare": "1096306483303901162",
+			"lastTotalAssets": "17311356590153877760036",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -28661,6 +29135,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28729,6 +29204,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28767,7 +29243,7 @@
 				"0x0fd45d4fb70d1ec95264da30934095443dc6af6a",
 				"0xc113c4d519af3e9efb1adb80dbd9e0f20591f48d"
 			],
-			"lastPricePerShare": "1141264",
+			"lastPricePerShare": "1141326",
 			"lastTotalAssets": "8747837280454",
 			"metadata": {
 				"isRetired": false,
@@ -28802,6 +29278,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28870,6 +29347,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -28906,7 +29384,7 @@
 				"0xf4b4464d03c1f3226c23fe58407b558489510dab",
 				"0x34ec144cbcf4ced98bd00209fad37d1010c214fe"
 			],
-			"lastPricePerShare": "1533000150257154906",
+			"lastPricePerShare": "1533443276072470920",
 			"lastTotalAssets": "3418987368191465622404105",
 			"metadata": {
 				"isRetired": false,
@@ -28943,6 +29421,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29015,6 +29494,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29051,7 +29531,7 @@
 				"0xf87d078899626cf1a4ef49acba0b60138bac37b2",
 				"0x51d749df68ecf652de70f587a92c119d454b7563"
 			],
-			"lastPricePerShare": "1322065485761444703",
+			"lastPricePerShare": "1322958346908997691",
 			"lastTotalAssets": "118216790051356892511318",
 			"metadata": {
 				"isRetired": false,
@@ -29088,6 +29568,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29159,6 +29640,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29231,6 +29713,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29301,6 +29784,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -29371,6 +29855,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -29438,6 +29923,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29505,6 +29991,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -29577,6 +30064,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -29650,6 +30138,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29723,6 +30212,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29795,6 +30285,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29868,6 +30359,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -29904,8 +30396,8 @@
 				"0x0472d09b1eecea082245b88c22b2a52e8892b018",
 				"0x9ad3047d578e79187f0faeef26729097a4973325"
 			],
-			"lastPricePerShare": "1199536917389182755",
-			"lastTotalAssets": "688305118929275159408",
+			"lastPricePerShare": "1199609697437769483",
+			"lastTotalAssets": "688173657492273869442",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -29940,6 +30432,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30012,6 +30505,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30080,6 +30574,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30147,6 +30642,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -30220,6 +30716,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30290,6 +30787,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30326,7 +30824,7 @@
 				"0xa4946ce5f86c454b29976618ffd2bf59b6f2d709",
 				"0xf13892b6dfea2346dad34182d5d4ce005e2160fd"
 			],
-			"lastPricePerShare": "1970713158900179642",
+			"lastPricePerShare": "1970725035715623032",
 			"lastTotalAssets": "142515423679632891973507",
 			"metadata": {
 				"isRetired": false,
@@ -30360,6 +30858,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -30430,6 +30929,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30475,7 +30975,7 @@
 				"0xd9ba99d93ea94a65b5bc838a0106ca3abc82ec4f",
 				"0xd1f7723881afdec574e7c76edcf5b0458082a8b2"
 			],
-			"lastPricePerShare": "1055147086256967872",
+			"lastPricePerShare": "1055179694176401895",
 			"lastTotalAssets": "1635323244066338566972",
 			"metadata": {
 				"isRetired": false,
@@ -30509,6 +31009,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -30576,6 +31077,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -30647,6 +31149,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -30683,7 +31186,7 @@
 				"0x5cc89e5dd6162a318d394fe14956be428dc87ecf",
 				"0x1e27b0d41923f8260964368c7ad519951f1e74d6"
 			],
-			"lastPricePerShare": "1281500695457810401",
+			"lastPricePerShare": "1281745146697671047",
 			"lastTotalAssets": "309723764411773470168",
 			"metadata": {
 				"isRetired": false,
@@ -30720,6 +31223,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30793,6 +31297,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30863,6 +31368,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -30936,6 +31442,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -30978,7 +31485,7 @@
 				"0x074134a2784f4f66b6ced6f68849382990ff3215",
 				"0x694e47afd14a64661a04eee674fb331bcdef3737"
 			],
-			"lastPricePerShare": "1056980",
+			"lastPricePerShare": "1057253",
 			"lastTotalAssets": "11349441798",
 			"metadata": {
 				"isRetired": false,
@@ -31012,6 +31519,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -31084,6 +31592,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31152,6 +31661,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31223,6 +31733,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31256,7 +31767,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "10843556971119995411",
+			"lastPricePerShare": "10843649646578097260",
 			"lastTotalAssets": "86569998575258356127",
 			"metadata": {
 				"isRetired": false,
@@ -31290,6 +31801,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31323,7 +31835,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "8136606327390776842",
+			"lastPricePerShare": "8200010119283716027",
 			"lastTotalAssets": "221009652319134910819",
 			"metadata": {
 				"isRetired": false,
@@ -31357,6 +31869,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -31428,6 +31941,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31500,6 +32014,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31570,6 +32085,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -31640,6 +32156,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -31707,6 +32224,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -31777,6 +32295,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31849,6 +32368,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -31920,6 +32440,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -31993,6 +32514,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32060,6 +32582,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32130,6 +32653,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32200,6 +32724,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32272,6 +32797,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32344,6 +32870,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32417,6 +32944,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32484,6 +33012,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32554,6 +33083,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -32627,6 +33157,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32694,6 +33225,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -32764,6 +33296,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32831,6 +33364,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 5,
@@ -32901,6 +33435,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -32971,6 +33506,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33038,6 +33574,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -33105,6 +33642,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -33172,6 +33710,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -33242,6 +33781,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33312,6 +33852,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33382,6 +33923,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -33452,6 +33994,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33523,6 +34066,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33593,6 +34137,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33663,6 +34208,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33733,6 +34279,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33803,6 +34350,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -33874,6 +34422,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -33945,6 +34494,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34015,6 +34565,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34087,6 +34638,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34154,6 +34706,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34225,6 +34778,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34295,6 +34849,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34366,6 +34921,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -34433,6 +34989,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -34506,6 +35063,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -34549,8 +35107,8 @@
 				"0x694e47afd14a64661a04eee674fb331bcdef3737",
 				"0x39c0aec5738ed939876245224afc7e09c8480a52"
 			],
-			"lastPricePerShare": "1061898",
-			"lastTotalAssets": "7745171276355",
+			"lastPricePerShare": "1061949",
+			"lastTotalAssets": "7728058095303",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34583,6 +35141,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -34653,6 +35212,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34686,7 +35246,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1489365415848116833",
+			"lastPricePerShare": "1489475679112300108",
 			"lastTotalAssets": "10623765770682185252861",
 			"metadata": {
 				"isRetired": false,
@@ -34720,6 +35280,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -34765,8 +35326,8 @@
 				"0x2d2c784f45d9fcce8a5bf9ebf4ee01fa6f064d1d",
 				"0x75b7db3e11138134fe4744553b5e5e3d6546d289"
 			],
-			"lastPricePerShare": "1070332991105044503",
-			"lastTotalAssets": "2873715876982628023816810",
+			"lastPricePerShare": "1070386878274118034",
+			"lastTotalAssets": "2877786170129657270760717",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -34799,6 +35360,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -34835,7 +35397,7 @@
 				"0x4b3fc8ecb96c4f92ba2adc6a19b58efa479006d6",
 				"0xd10e4692234d91b8b50f8b13b6425387c30c351d"
 			],
-			"lastPricePerShare": "1015153057568346646",
+			"lastPricePerShare": "1015281718136589198",
 			"lastTotalAssets": "994611508679776376060710",
 			"metadata": {
 				"isRetired": false,
@@ -34869,6 +35431,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -34942,6 +35505,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35010,6 +35574,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35046,7 +35611,7 @@
 				"0x2663bd22c2ba9e03b3ae1aa1c0c765781d2da154",
 				"0xb3650ee177e186732c0a3b54bcaec201c76b2df2"
 			],
-			"lastPricePerShare": "1131792041351595524",
+			"lastPricePerShare": "1132003690626557758",
 			"lastTotalAssets": "690962906384631458124920",
 			"metadata": {
 				"isRetired": false,
@@ -35080,6 +35645,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35152,6 +35718,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35185,7 +35752,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "25069154226893308247",
+			"lastPricePerShare": "25070015426198592473",
 			"lastTotalAssets": "60122825832254426510",
 			"metadata": {
 				"isRetired": false,
@@ -35219,6 +35786,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -35292,6 +35860,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35362,6 +35931,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35435,6 +36005,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35505,6 +36076,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35577,6 +36149,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35610,7 +36183,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1002074942255457013",
+			"lastPricePerShare": "1002155864924608428",
 			"lastTotalAssets": "68788774570620457438",
 			"metadata": {
 				"isRetired": false,
@@ -35644,6 +36217,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -35714,6 +36288,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -35786,6 +36361,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -35857,6 +36433,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35924,6 +36501,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -35965,8 +36543,8 @@
 				"0xc7bae383738274ea8c3292d53afbb3b42b348df0",
 				"0xeeb6be70ff212238419cd638fab17910cf61cbe7"
 			],
-			"lastPricePerShare": "1026373597794238386",
-			"lastTotalAssets": "1193314187433315931195",
+			"lastPricePerShare": "1026391846386262134",
+			"lastTotalAssets": "1193723066456445785772",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -35999,6 +36577,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36071,6 +36650,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36143,6 +36723,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36216,6 +36797,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36249,7 +36831,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1019417746690614935",
+			"lastPricePerShare": "1019443392731930600",
 			"lastTotalAssets": "100935090990829886973",
 			"metadata": {
 				"isRetired": false,
@@ -36283,6 +36865,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36320,7 +36903,7 @@
 				"0xf109447489eb03a1ff4c717e803033e37b345c3f"
 			],
 			"lastPricePerShare": "1031936299351396347",
-			"lastTotalAssets": "1402252369302652253371233",
+			"lastTotalAssets": "647478096301117818512560",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -36353,6 +36936,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -36426,6 +37010,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36498,6 +37083,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36572,6 +37158,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36646,6 +37233,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36718,6 +37306,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36788,6 +37377,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -36860,6 +37450,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -36932,6 +37523,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37002,6 +37594,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37072,6 +37665,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37143,6 +37737,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -37214,6 +37809,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37283,8 +37879,8 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
-					"isPublicERC4626": false,
-					"isKatana": true
+					"isKatana": true,
+					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
 				"riskScore": {
@@ -37357,6 +37953,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37428,6 +38025,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37500,6 +38098,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37571,6 +38170,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -37638,6 +38238,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37709,6 +38310,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37745,8 +38347,8 @@
 				"0x1ea323272acf0ee3080f9a744b06984e5354b11b",
 				"0xda1f2b287575375b0f9a1d1338fa1c9698257b20"
 			],
-			"lastPricePerShare": "1391542199017414165",
-			"lastTotalAssets": "145064677644826262694",
+			"lastPricePerShare": "1393081551042897172",
+			"lastTotalAssets": "147742778249235795833",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -37779,6 +38381,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37848,6 +38451,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -37918,6 +38522,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -37988,6 +38593,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38058,6 +38664,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38127,6 +38734,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38194,6 +38802,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -38267,6 +38876,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38339,6 +38949,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38410,6 +39021,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38478,6 +39090,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38548,6 +39161,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -38619,6 +39233,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38692,6 +39307,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38762,6 +39378,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -38798,7 +39415,7 @@
 				"0xb2d91583fca7ef0f08d1f7ba7b6ea9328b776f7c",
 				"0x8aad3f849fe9e572125264267179245c52eab55b"
 			],
-			"lastPricePerShare": "4307610987048988022",
+			"lastPricePerShare": "4314630738308736813",
 			"lastTotalAssets": "288343596784101675824",
 			"metadata": {
 				"isRetired": false,
@@ -38835,6 +39452,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38907,6 +39525,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -38979,6 +39598,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39051,6 +39671,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39121,6 +39742,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -39193,6 +39815,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -39263,6 +39886,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -39335,6 +39959,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39407,6 +40032,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39478,6 +40104,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39549,6 +40176,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -39620,6 +40248,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39687,6 +40316,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -39724,8 +40354,8 @@
 				"0x01d127d90513ccb6071f83efe15611c4d9890668",
 				"0x19a11b4c29708243088fa939ec7863722f9f5bb0"
 			],
-			"lastPricePerShare": "1181102340682211997",
-			"lastTotalAssets": "15569873479315691731253388",
+			"lastPricePerShare": "1181199703348785434",
+			"lastTotalAssets": "15564029995368200946606718",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -39759,6 +40389,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39833,6 +40464,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39906,6 +40538,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -39980,6 +40613,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40050,6 +40684,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -40065,6 +40700,77 @@
 					"externalProtocolTvl": 1,
 					"externalProtocolLongevity": 2,
 					"externalProtocolType": 2,
+					"comment": ""
+				}
+			}
+		},
+		"0xdcaba03509e719a1e136b7266cbd8ad8399b43b7": {
+			"address": "0xdcaba03509e719a1e136b7266cbd8ad8399b43b7",
+			"token": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 22510102,
+			"chainID": 1,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [
+				"0x6d2981ff9b8d7edbb7604de7a65bac8694ac849f",
+				"0x0a4ea2bde8496a878a7ca2772056a8e6fe3245c5"
+			],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "10003007",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0xdcaba03509e719a1e136b7266cbd8ad8399b43b7",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "",
+				"displaySymbol": "",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": false,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isKatana": false,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
 					"comment": ""
 				}
 			}
@@ -40118,6 +40824,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -40190,6 +40897,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40261,6 +40969,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 3,
@@ -40331,6 +41040,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40399,6 +41109,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -40469,6 +41180,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40540,6 +41252,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40609,6 +41322,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40681,6 +41395,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40754,6 +41469,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40826,6 +41542,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -40896,6 +41613,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -40968,6 +41686,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -41036,6 +41755,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -41107,6 +41827,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -41175,6 +41896,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -41245,6 +41967,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -41316,6 +42039,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -41384,6 +42108,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -41451,6 +42176,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -41523,6 +42249,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -41594,6 +42321,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -41661,6 +42389,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -41732,6 +42461,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -41765,8 +42495,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1186260",
-			"lastTotalAssets": "4652102847151",
+			"lastPricePerShare": "1186341",
+			"lastTotalAssets": "2325449363979",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -41799,6 +42529,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -41870,6 +42601,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -41944,6 +42676,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42012,6 +42745,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -42084,6 +42818,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42154,6 +42889,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -42190,7 +42926,7 @@
 				"0x840372686a8ecb892f72b0f3f3eb0e1de6798c79",
 				"0x222c65ec2cc9abd160536c78054d6b40290163dc"
 			],
-			"lastPricePerShare": "1022890609212013912",
+			"lastPricePerShare": "1023080722801575093",
 			"lastTotalAssets": "134465666995820599656",
 			"metadata": {
 				"isRetired": false,
@@ -42224,6 +42960,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -42292,6 +43029,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -42360,6 +43098,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -42433,6 +43172,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42504,6 +43244,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -42577,6 +43318,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42610,8 +43352,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "2022893232472484389",
-			"lastTotalAssets": "669082537944417478",
+			"lastPricePerShare": "2023845312004282336",
+			"lastTotalAssets": "669493365679054047",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -42644,6 +43386,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -42715,6 +43458,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42787,6 +43531,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -42857,6 +43602,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -42928,6 +43674,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -42999,6 +43746,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43069,6 +43817,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -43137,6 +43886,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43207,6 +43957,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -43274,6 +44025,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43342,6 +44094,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43375,8 +44128,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1016229949263341193",
-			"lastTotalAssets": "951040834851619904724",
+			"lastPricePerShare": "1016258572505381330",
+			"lastTotalAssets": "618112240172636700739",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -43409,6 +44162,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -43479,6 +44233,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -43546,6 +44301,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -43614,6 +44370,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43684,6 +44441,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -43717,8 +44475,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "3568517834033895102",
-			"lastTotalAssets": "707721098877560524488",
+			"lastPricePerShare": "3568658998149693902",
+			"lastTotalAssets": "707904072836852616926",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -43751,6 +44509,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -43823,6 +44582,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -43860,7 +44620,7 @@
 				"0x9df207d6b2d5e917e4a3125f2f475faa665834bd"
 			],
 			"lastPricePerShare": "1025025657779341360",
-			"lastTotalAssets": "11397618481568848754858386",
+			"lastTotalAssets": "11400489108238129902023924",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -43893,6 +44653,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -43960,6 +44721,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": true,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -44031,6 +44793,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -44102,6 +44865,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -44169,6 +44933,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -44243,6 +45008,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44314,6 +45080,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -44386,6 +45153,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44456,6 +45224,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 3,
@@ -44523,6 +45292,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -44591,6 +45361,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44659,6 +45430,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -44732,6 +45504,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44804,6 +45577,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44877,6 +45651,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -44950,6 +45725,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45017,6 +45793,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -45088,6 +45865,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45121,8 +45899,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1687048",
-			"lastTotalAssets": "328971665",
+			"lastPricePerShare": "1687130",
+			"lastTotalAssets": "329303613",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -45155,6 +45933,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -45225,6 +46004,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45292,6 +46072,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -45325,8 +46106,8 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1338747",
-			"lastTotalAssets": "1879576228",
+			"lastPricePerShare": "1338810",
+			"lastTotalAssets": "1880170336",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,
@@ -45359,6 +46140,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -45427,6 +46209,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -45499,6 +46282,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45570,6 +46354,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45637,6 +46422,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -45708,6 +46494,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 2,
@@ -45778,6 +46565,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -45846,6 +46634,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -45919,6 +46708,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -45986,6 +46776,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -46058,6 +46849,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46128,6 +46920,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -46201,6 +46994,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46270,6 +47064,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -46340,6 +47135,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -46411,6 +47207,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": true
 				},
 				"riskLevel": 0,
@@ -46481,6 +47278,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46514,7 +47312,7 @@
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
-			"lastPricePerShare": "1133971926546764153",
+			"lastPricePerShare": "1134057720878277740",
 			"lastTotalAssets": "248444673765386031062038",
 			"metadata": {
 				"isRetired": false,
@@ -46548,6 +47346,7 @@
 					"isPoolTogether": false,
 					"isCove": true,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -46615,6 +47414,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 1,
@@ -46684,6 +47484,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46755,6 +47556,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46823,6 +47625,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,
@@ -46893,6 +47696,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -46964,6 +47768,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": -1,
@@ -47033,6 +47838,7 @@
 					"isPoolTogether": false,
 					"isCove": false,
 					"isMorpho": false,
+					"isKatana": false,
 					"isPublicERC4626": false
 				},
 				"riskLevel": 0,

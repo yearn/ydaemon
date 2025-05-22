@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-19T03:51:19.960201425Z",
+	"lastUpdate": "2025-05-22T18:21:43.532778323Z",
 	"version": {
 		"major": 0,
-		"minor": 123,
+		"minor": 124,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -6694,6 +6694,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2e250f3e0ca772e87f0c9e2aa55254f7eb82ea58": {
+			"address": "0x2e250f3e0ca772e87f0c9e2aa55254f7eb82ea58",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2e250f3E0Ca772E87f0C9E2aa55254F7Eb82EA58/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2e2b268cbc86917d2809ce2715a19e58a210fcee": {
 			"address": "0x2e2b268cbc86917d2809ce2715a19e58a210fcee",
 			"underlyingTokensAddresses": [
@@ -12752,6 +12766,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x55f06992e4c3ed17df830da37644885c0c34edda": {
+			"address": "0x55f06992e4c3ed17df830da37644885c0c34edda",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x55F06992E4C3ed17Df830dA37644885c0c34EDdA/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x55f85ebb12f54c58ac1e8c1d56e12e4767ff262e": {
 			"address": "0x55f85ebb12f54c58ac1e8c1d56e12e4767ff262e",
 			"underlyingTokensAddresses": [
@@ -15085,6 +15113,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x661077153a02628786d180dbdf633f790774df10": {
+			"address": "0x661077153a02628786d180dbdf633f790774df10",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH Grothex",
+			"symbol": "gWETH",
+			"displayName": "WETH Grothex",
+			"displaySymbol": "gWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x661077153a02628786D180DbDf633F790774df10/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x662c9b3d7f59e9cee96810a9e83ba7729710b1b2": {
 			"address": "0x662c9b3d7f59e9cee96810a9e83ba7729710b1b2",
 			"underlyingTokensAddresses": [],
@@ -15421,6 +15465,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x68B9f74372b257fad2c9A160D2F12eE526EA9510/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x690559c7bd75c9a301e15515a8ea3316840f17be": {
+			"address": "0x690559c7bd75c9a301e15515a8ea3316840f17be",
+			"underlyingTokensAddresses": [
+				"0x18084fba666a33d37592fa2633fd49a74dd93a88"
+			],
+			"type": "Yearn Vault",
+			"name": "SY August Mezo tBTC Vault",
+			"symbol": "SY-uptBTC",
+			"displayName": "SY August Mezo tBTC Vault",
+			"displaySymbol": "SY-uptBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x690559C7bd75C9a301E15515a8EA3316840f17Be/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -17229,6 +17289,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x742b4166878bfd339db65a29a17e49b81a6b6aac": {
+			"address": "0x742b4166878bfd339db65a29a17e49b81a6b6aac",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Resolv Liquidity Provider Token 4SEP2025",
+			"symbol": "PT-RLP-4SEP2025",
+			"displayName": "PT Resolv Liquidity Provider Token 4SEP2025",
+			"displaySymbol": "PT-RLP-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x742B4166878Bfd339Db65a29a17E49b81a6B6Aac/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x74345504eaea3d9408fc69ae7eb2d14095643c5b": {
 			"address": "0x74345504eaea3d9408fc69ae7eb2d14095643c5b",
 			"underlyingTokensAddresses": [
@@ -18364,6 +18438,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x7C7FbB2d11803C35Aa3e283985237aD27f64406B/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x7c853d6bfb49256af65af672dcc3f66c015e96e0": {
+			"address": "0x7c853d6bfb49256af65af672dcc3f66c015e96e0",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT August Mezo tBTC Vault 14AUG2025",
+			"symbol": "PT-uptBTC-14AUG2025",
+			"displayName": "PT August Mezo tBTC Vault 14AUG2025",
+			"displaySymbol": "PT-uptBTC-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x7c853d6bFb49256af65AF672dCc3f66C015E96e0/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -20423,6 +20511,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8AC5Fc4085f6baeAbAd8f4A6bb1dd7d18a320230/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x8aca0841993ef4c87244d519166e767f49362c21": {
+			"address": "0x8aca0841993ef4c87244d519166e767f49362c21",
+			"underlyingTokensAddresses": [
+				"0x18084fba666a33d37592fa2633fd49a74dd93a88"
+			],
+			"type": "Yearn Vault",
+			"name": "August Mezo tBTC Vault",
+			"symbol": "uptBTC",
+			"displayName": "August Mezo tBTC Vault",
+			"displaySymbol": "uptBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8AcA0841993ef4C87244d519166e767f49362C21/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23766,6 +23870,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xa0021EF8970104c2d008F38D92f115ad56a9B8e1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa004dd9439c2cf00794786c9662267bee6d9f723": {
+			"address": "0xa004dd9439c2cf00794786c9662267bee6d9f723",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Resolv Liquidity Provider Token",
+			"symbol": "SY-RLP",
+			"displayName": "SY Resolv Liquidity Provider Token",
+			"displaySymbol": "SY-RLP",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA004dD9439c2CF00794786C9662267beE6d9F723/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -32456,6 +32574,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xda23e4f55b258d35491d5826ad75e5af01218db2": {
+			"address": "0xda23e4f55b258d35491d5826ad75e5af01218db2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT August Mezo tBTC Vault 14AUG2025",
+			"symbol": "YT-uptBTC-14AUG2025",
+			"displayName": "YT August Mezo tBTC Vault 14AUG2025",
+			"displaySymbol": "YT-uptBTC-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDa23E4F55b258D35491d5826aD75e5AF01218DB2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xda47862a83dac0c112ba89c6abc2159b95afd71c": {
 			"address": "0xda47862a83dac0c112ba89c6abc2159b95afd71c",
 			"underlyingTokensAddresses": [
@@ -32845,6 +32977,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdC3740c3C71F28285EA4cE6b74843D448a488379/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xdcaba03509e719a1e136b7266cbd8ad8399b43b7": {
+			"address": "0xdcaba03509e719a1e136b7266cbd8ad8399b43b7",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT Grothex",
+			"symbol": "gUSDT",
+			"displayName": "USDT Grothex",
+			"displaySymbol": "gUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xDcABA03509E719A1e136B7266cbD8Ad8399b43b7/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xdcafd1914afdbc5788b701f47283caeeaa5fbaed": {
@@ -35683,6 +35831,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xefed11cfc088b996c1a871ddb76375c4f6288f98": {
+			"address": "0xefed11cfc088b996c1a871ddb76375c4f6288f98",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Resolv Liquidity Provider Token 4SEP2025",
+			"symbol": "YT-RLP-4SEP2025",
+			"displayName": "YT Resolv Liquidity Provider Token 4SEP2025",
+			"displaySymbol": "YT-RLP-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xEfED11CFc088B996C1A871dDb76375c4F6288f98/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00": {
 			"address": "0xf02c96dbbb92dc0325ad52b3f9f2b951f972bf00",
 			"underlyingTokensAddresses": [],
@@ -36038,6 +36200,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xF2A9Ef3b50D7615b455691540CCC21EF934dAAB6/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf2ad4ec58033be97ec3f4f61b660156fb38ecb30": {
+			"address": "0xf2ad4ec58033be97ec3f4f61b660156fb38ecb30",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Resolv Liquidity Provider Token 4SEP2025",
+			"symbol": "YT-RLP-4SEP2025",
+			"displayName": "YT Resolv Liquidity Provider Token 4SEP2025",
+			"displaySymbol": "YT-RLP-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF2ad4eC58033BE97Ec3f4f61b660156fB38ECB30/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf2ce61699660f0f5800ba7d962741ba582d7346b": {
@@ -36857,6 +37033,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xf736acF34FF7Cd9B3565b73a1f15E652859bF322/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf7422399d662928558c7c17e3b853f288b01e709": {
+			"address": "0xf7422399d662928558c7c17e3b853f288b01e709",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Resolv Liquidity Provider Token 4SEP2025",
+			"symbol": "PT-RLP-4SEP2025",
+			"displayName": "PT Resolv Liquidity Provider Token 4SEP2025",
+			"displaySymbol": "PT-RLP-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF7422399d662928558C7c17E3B853F288B01E709/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xf750c238ce033afc224c2e57d0fcb86e64db0221": {

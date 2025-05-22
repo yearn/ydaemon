@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-19T03:50:05.583234591Z",
+	"lastUpdate": "2025-05-22T18:20:29.573325475Z",
 	"version": {
 		"major": 0,
 		"minor": 7,
-		"patch": 157
+		"patch": 160
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -219,6 +219,7 @@
 			"address": "0xb9228370e2fa4908fc2bf559a50bb77ba66fdd66",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
 			"registry": "0xd40ecf29e001c76dcc4cc0d9cd50520ce845b038",
+			"accountant": "0xb89c1d321ef404d086fb8d1d6eb0be69ff1d504e",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.4",

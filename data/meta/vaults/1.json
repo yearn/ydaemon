@@ -29597,11 +29597,11 @@
 			"lastTotalAssets": "99000000000000000000",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
-				"isBoosted": false,
+				"isBoosted": true,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -29615,13 +29615,13 @@
 				"category": "auto",
 				"displayName": "",
 				"displaySymbol": "",
-				"description": "",
+				"description": "yBOLD is Yearn's BOLD tokenized Stability pool product. It is designed to tokenize the different benefits of a BOLD-in-Stability-Pool position in a simple, user-friendly way.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -29630,7 +29630,7 @@
 					"isKatana": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,

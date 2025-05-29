@@ -12,7 +12,7 @@ var BASE = TChain{
 	ID:              8453,
 	RpcURI:          `https://developer-access-mainnet.base.org`,
 	SubgraphURI:     ``,
-	EtherscanURI:    `https://api.basescan.org/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 43_200,

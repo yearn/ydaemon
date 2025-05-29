@@ -12,7 +12,7 @@ var OPTIMISM = TChain{
 	ID:              10,
 	RpcURI:          `https://mainnet.optimism.io`,
 	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-optimism`,
-	EtherscanURI:    `https://api-optimistic.etherscan.io/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 43_200,

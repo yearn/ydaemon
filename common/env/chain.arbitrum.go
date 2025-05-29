@@ -12,7 +12,7 @@ var ARBITRUM = TChain{
 	ID:              42161,
 	RpcURI:          `https://arbitrum.public-rpc.com`,
 	SubgraphURI:     `https://api.thegraph.com/subgraphs/name/yearn/yearn-vaults-v2-arbitrum`,
-	EtherscanURI:    `https://api.arbiscan.io/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 320_000,

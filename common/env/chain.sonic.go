@@ -12,7 +12,7 @@ var SONIC = TChain{
 	ID:              146,
 	RpcURI:          `https://sonic.drpc.org`,
 	SubgraphURI:     ``,
-	EtherscanURI:    `https://api.sonicscan.org/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 45_000,

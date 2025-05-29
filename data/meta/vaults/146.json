@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-22T18:20:29.573325475Z",
+	"lastUpdate": "2025-05-29T13:38:32.812760823Z",
 	"version": {
 		"major": 0,
 		"minor": 7,
-		"patch": 160
+		"patch": 164
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -23,7 +23,7 @@
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "34599250",
+			"lastTotalAssets": "35599250",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": true,
@@ -151,13 +151,14 @@
 			"address": "0xa369c32fd1fa2cd265f0bdf76f39201ff333f6ac",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
 			"registry": "0x0000000000000000000000000000000000000000",
+			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.4",
 			"activation": 5486305,
 			"chainID": 146,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [],

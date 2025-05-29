@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-22T18:21:43.532778323Z",
+	"lastUpdate": "2025-05-29T13:40:15.147355433Z",
 	"version": {
 		"major": 0,
-		"minor": 124,
+		"minor": 125,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1321,6 +1321,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This pool contains WBTC, renBTC, and sBTC, and is the basis for all of Curve's BTC metapools. sBTC is synthetic BTC minted on the Synthetix platform.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x076bda095a434a7b00733115a0d679de6478d9f8": {
+			"address": "0x076bda095a434a7b00733115a0d679de6478d9f8",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Yala stablecoin 4SEP2025",
+			"symbol": "PT-YU-4SEP2025",
+			"displayName": "PT Yala stablecoin 4SEP2025",
+			"displaySymbol": "PT-YU-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x076BdA095a434a7B00733115A0D679DE6478d9f8/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -3605,6 +3619,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x19666817843b3ca6c053d5128123fbadd75c7ba4": {
+			"address": "0x19666817843b3ca6c053d5128123fbadd75c7ba4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Compounding Open Dollar 20NOV2025",
+			"symbol": "YT-cUSDO-20NOV2025",
+			"displayName": "YT Compounding Open Dollar 20NOV2025",
+			"displaySymbol": "YT-cUSDO-20NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x19666817843B3CA6c053D5128123fbAdD75c7Ba4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x196f4727526ea7fb1e17b2071b3d8eaa38486988": {
 			"address": "0x196f4727526ea7fb1e17b2071b3d8eaa38486988",
 			"underlyingTokensAddresses": [],
@@ -4407,6 +4435,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x1d8d9048b43723ff83188d1b24cae48c3d2081da": {
+			"address": "0x1d8d9048b43723ff83188d1b24cae48c3d2081da",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT Dusfer",
+			"symbol": "dUSDT",
+			"displayName": "USDT Dusfer",
+			"displaySymbol": "dUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x1d8D9048B43723fF83188D1B24CaE48c3d2081da/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x1de6ff19fda7496ddc12f2161f6ad6427c52abbe": {
 			"address": "0x1de6ff19fda7496ddc12f2161f6ad6427c52abbe",
 			"underlyingTokensAddresses": [],
@@ -4564,6 +4608,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x1eB1d7fEc395748cFF0e437F4B3e8A850550987d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x1f509072388208a698c8d5784bda2702cae06f9c": {
+			"address": "0x1f509072388208a698c8d5784bda2702cae06f9c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Yala stablecoin 4SEP2025",
+			"symbol": "YT-YU-4SEP2025",
+			"displayName": "YT Yala stablecoin 4SEP2025",
+			"displaySymbol": "YT-YU-4SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x1F509072388208A698C8D5784BDA2702CaE06f9c/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -4761,6 +4819,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x2084b373979415Bc93190071AF3390F92DcDD189/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x20b59becded839835a3ba58629430375dae02720": {
+			"address": "0x20b59becded839835a3ba58629430375dae02720",
+			"underlyingTokensAddresses": [
+				"0x8238884ec9668ef77b90c6dff4d1a9f4f4823bfe"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Compounding Open Dollar",
+			"symbol": "SY-cUSDO",
+			"displayName": "SY Compounding Open Dollar",
+			"displaySymbol": "SY-cUSDO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x20B59BEcdeD839835A3BA58629430375dAE02720/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -5269,6 +5343,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x23eE3D14F09946A084350CC6A7153fc6eb918817/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x23f0decc26eceeafa5cc900f8b47d99ff94ddd2b": {
+			"address": "0x23f0decc26eceeafa5cc900f8b47d99ff94ddd2b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x23f0dEcc26ecEeafa5CC900F8B47D99FF94DDD2B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -7716,6 +7804,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x349c55bad4a9f17c3381e3299e0a07d58cdd8a1d": {
+			"address": "0x349c55bad4a9f17c3381e3299e0a07d58cdd8a1d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Compounding Open Dollar 20NOV2025",
+			"symbol": "YT-cUSDO-20NOV2025",
+			"displayName": "YT Compounding Open Dollar 20NOV2025",
+			"displaySymbol": "YT-cUSDO-20NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x349C55BAD4A9F17c3381e3299e0A07D58cdd8a1d/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x34b95494c3c2732aa82e1e56be57074fee7a2b28": {
 			"address": "0x34b95494c3c2732aa82e1e56be57074fee7a2b28",
 			"underlyingTokensAddresses": [],
@@ -8320,6 +8422,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x3845badAde8e6dFF049820680d1F14bD3903a5d0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x385d17215295a186c1ff0d1fd121831694dd9ba4": {
+			"address": "0x385d17215295a186c1ff0d1fd121831694dd9ba4",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Yala stablecoin",
+			"symbol": "SY-YU",
+			"displayName": "SY Yala stablecoin",
+			"displaySymbol": "SY-YU",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x385D17215295a186C1FF0d1fd121831694dd9Ba4/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -9278,6 +9394,20 @@
 			"description": "This token represents a Curve liquidity pool. Holders earn fees from users trading in the pool, and can also deposit the LP to Curve's gauges to earn CRV emissions. This crypto pool contains RSR, FRAX, and USDC. Please be aware that as crypto pools are composed of differently-priced assets, they are subject to impermanent loss.",
 			"category": "Curve",
 			"icon": "https://assets.smold.app/api/token/1/0x3F436954afb722F5D14D868762a23faB6b0DAbF0/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3f53eb4c57c7e7118be8566bcd503ea502639581": {
+			"address": "0x3f53eb4c57c7e7118be8566bcd503ea502639581",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3F53eb4c57c7E7118BE8566bCd503EA502639581/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10822,6 +10952,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x48c03B6FfD0008460F8657Db1037C7e09dEedfcb/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0x48c05c25fb0c92152b57aa057e121cb2e5da81e4": {
+			"address": "0x48c05c25fb0c92152b57aa057e121cb2e5da81e4",
+			"underlyingTokensAddresses": [
+				"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH Dusfer",
+			"symbol": "dWETH",
+			"displayName": "WETH Dusfer",
+			"displaySymbol": "dWETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x48C05c25FB0C92152B57aa057e121CB2E5da81e4/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0x48d670d189b4b48757992d36897bca6e3f889040": {
@@ -15206,6 +15352,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x66c44eb61bd22a1f53b18e1570e514de39c79997": {
+			"address": "0x66c44eb61bd22a1f53b18e1570e514de39c79997",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Dusfer",
+			"symbol": "dUSDC",
+			"displayName": "USDC Dusfer",
+			"displaySymbol": "dUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x66C44eB61BD22A1F53B18e1570e514de39c79997/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0x66c68a7bcc4cbcab43a2947a529765d86d4ef14f": {
 			"address": "0x66c68a7bcc4cbcab43a2947a529765d86d4ef14f",
 			"underlyingTokensAddresses": [],
@@ -15816,6 +15978,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x6acEDA98725505737c0F00a3dA0d047304052948/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6ada3d3a4304aa7c5d9e5801cba45bc1e6c59319": {
+			"address": "0x6ada3d3a4304aa7c5d9e5801cba45bc1e6c59319",
+			"underlyingTokensAddresses": [
+				"0x8238884ec9668ef77b90c6dff4d1a9f4f4823bfe"
+			],
+			"type": "Yearn Vault",
+			"name": "SY Compounding Open Dollar",
+			"symbol": "SY-cUSDO",
+			"displayName": "SY Compounding Open Dollar",
+			"displaySymbol": "SY-cUSDO",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6aDA3D3a4304aA7c5D9E5801cbA45bC1e6c59319/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16641,6 +16819,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6f80310CA7F2C654691D1383149Fa1A57d8AB1f8/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6f8430f4a5cb815bb72e59000511db24d0d798f9": {
+			"address": "0x6f8430f4a5cb815bb72e59000511db24d0d798f9",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Delos",
+			"symbol": "dUSDC",
+			"displayName": "USDC Delos",
+			"displaySymbol": "dUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x6F8430F4a5Cb815bB72e59000511DB24d0D798f9/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x6fafca7f49b4fd9dc38117469cd31a1e5aec91f5": {
@@ -20621,6 +20815,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x8b89d5eA6C9ea52daB5834E9789aA10085c14858/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0x8b98165bc61841f1df64e1509a450e11e25181cc": {
+			"address": "0x8b98165bc61841f1df64e1509a450e11e25181cc",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "Dusfer USDT",
+			"symbol": "dUSDT",
+			"displayName": "Dusfer USDT",
+			"displaySymbol": "dUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x8b98165bC61841f1df64e1509a450E11e25181Cc/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x8b9c0c24307344b6d7941ab654b2aeee25347473": {
@@ -25618,6 +25828,22 @@
 			"decimals": 17,
 			"chainID": 1
 		},
+		"0xac64c681102e23f4114bc6fc873499267aeb9ea8": {
+			"address": "0xac64c681102e23f4114bc6fc873499267aeb9ea8",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "Dusfer USDC",
+			"symbol": "dUSDC",
+			"displayName": "Dusfer USDC",
+			"displaySymbol": "dUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xAC64c681102E23f4114bC6fC873499267aeb9eA8/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xaca399117ac588e1f48398d34eca76cdb1e45fa5": {
 			"address": "0xaca399117ac588e1f48398d34eca76cdb1e45fa5",
 			"underlyingTokensAddresses": [
@@ -26255,6 +26481,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xb10da2f9147f9cf2b8826877cd0c95c18a0f42dc": {
+			"address": "0xb10da2f9147f9cf2b8826877cd0c95c18a0f42dc",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Compounding Open Dollar 20NOV2025",
+			"symbol": "PT-cUSDO-20NOV2025",
+			"displayName": "PT Compounding Open Dollar 20NOV2025",
+			"displaySymbol": "PT-cUSDO-20NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB10DA2F9147f9cf2B8826877Cd0c95c18A0f42dc/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xb15a55519dbc3d770dded079ebcdeeea69a49ade": {
 			"address": "0xb15a55519dbc3d770dded079ebcdeeea69a49ade",
 			"underlyingTokensAddresses": [],
@@ -26859,6 +27099,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xB5130E951e5D8D77AC2fD1ca40982d03b2483782/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xb5202e3055964b88c8c4c33bcf2346dbbfcf3a9b": {
+			"address": "0xb5202e3055964b88c8c4c33bcf2346dbbfcf3a9b",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Compounding Open Dollar 20NOV2025",
+			"symbol": "PT-cUSDO-20NOV2025",
+			"displayName": "PT Compounding Open Dollar 20NOV2025",
+			"displaySymbol": "PT-cUSDO-20NOV2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xB5202e3055964b88c8c4c33bCF2346dbBFCF3A9B/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -34807,6 +35061,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xe868084cf08f3c3db11f4b73a95473762d9463f7": {
+			"address": "0xe868084cf08f3c3db11f4b73a95473762d9463f7",
+			"underlyingTokensAddresses": [
+				"0xe868084cf08f3c3db11f4b73a95473762d9463f7"
+			],
+			"type": "Yearn Vault",
+			"name": "Yala stablecoin",
+			"symbol": "YU",
+			"displayName": "Yala stablecoin",
+			"displaySymbol": "YU",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xE868084cf08F3c3db11f4B73a95473762d9463f7/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xe877b2a8a53763c8b0534a15e87da28f3ac1257e": {
 			"address": "0xe877b2a8a53763c8b0534a15e87da28f3ac1257e",
 			"underlyingTokensAddresses": [
@@ -37530,6 +37800,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xfa81C70FC43b120b226e99382Ef9ef8fdA65d902/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfaa442d3babf60633c191c6a932a811893275c12": {
+			"address": "0xfaa442d3babf60633c191c6a932a811893275c12",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xfaA442D3bAbF60633c191C6A932a811893275C12/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

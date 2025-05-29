@@ -113,7 +113,7 @@ import (
 var NETWORKNAME = TChain{
 	ID:              [CHAIN_ID],  // The network's unique chain ID
 	RpcURI:          `[DEFAULT_RPC_ENDPOINT]`, // Public RPC endpoint
-	EtherscanURI:    `[EXPLORER_API_URL]`, // Chain explorer API URL
+	EtherscanURI:    `https://api.etherscan.io/v2/api`, // Chain explorer API URL
 	MaxBlockRange:   [BLOCK_RANGE],  // Maximum block range for queries (e.g., 10000)
 	MaxBatchSize:    math.MaxInt64,  // Or appropriate batch size limit
 	AvgBlocksPerDay: [BLOCKS_PER_DAY], // Average blocks produced per day

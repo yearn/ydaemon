@@ -12,7 +12,7 @@ var POLYGON = TChain{
 	ID:              137,
 	RpcURI:          `https://polygon.llamarpc.com`,
 	SubgraphURI:     ``, //TODO: not deployed
-	EtherscanURI:    `https://api.polygonscan.com/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 40_000,

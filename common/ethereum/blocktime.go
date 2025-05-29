@@ -121,10 +121,10 @@ func InitBlockTimestamp(chainID uint64) {
 		return
 	}
 
-	APIKey := os.Getenv("SCAN_API_KEY_FOR_" + strconv.FormatUint(chainID, 10))
-	lastWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
-	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
-	lastMonthBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	APIKey := os.Getenv("SCAN_API_KEY")
+	lastWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?chainid=` + strconv.FormatUint(chainID, 10) + `&module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastTwoWeekBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?chainid=` + strconv.FormatUint(chainID, 10) + `&module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastTwoWeekTimestamp, 10) + `&closest=before&apikey=` + APIKey)
+	lastMonthBlock := helpers.FetchJSON[TScanResult](chain.EtherscanURI + `?chainid=` + strconv.FormatUint(chainID, 10) + `&module=block&action=getblocknobytime&timestamp=` + strconv.FormatInt(lastMonthTimestamp, 10) + `&closest=before&apikey=` + APIKey)
 
 	blockTimeMutex.Lock()
 	defer blockTimeMutex.Unlock()
@@ -602,8 +602,8 @@ func fetchBlockNumberFromAPI(chain env.TChain, timestamp uint64, apiKey string) 
 
 	// Fallback to Etherscan API
 	if chain.EtherscanURI != "" {
-		apiURL := fmt.Sprintf("%s?module=block&action=getblocknobytime&timestamp=%d&closest=before&apikey=%s",
-			chain.EtherscanURI, timestamp, apiKey)
+		apiURL := fmt.Sprintf("%s?chainid=%d&module=block&action=getblocknobytime&timestamp=%d&closest=before&apikey=%s",
+			chain.EtherscanURI, chain.ID, timestamp, apiKey)
 
 		blocktimeLog(fmt.Sprintf("Chain %d - Trying Etherscan compatible API: %s",
 			chain.ID, chain.EtherscanURI))

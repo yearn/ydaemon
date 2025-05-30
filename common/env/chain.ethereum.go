@@ -12,7 +12,7 @@ var ETHEREUM = TChain{
 	ID:              1,
 	RpcURI:          `https://eth.public-rpc.com`,
 	SubgraphURI:     ``,
-	EtherscanURI:    `https://api.etherscan.io/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 7150,

@@ -12,7 +12,7 @@ var GNOSIS = TChain{
 	ID:              100,
 	RpcURI:          `https://rpc.gnosis.gateway.fm`,
 	SubgraphURI:     ``,
-	EtherscanURI:    `https://gnosisscan.io/api`,
+	EtherscanURI:    `https://api.etherscan.io/v2/api`,
 	MaxBlockRange:   9_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 16_000,

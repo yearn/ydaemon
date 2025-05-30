@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-29T13:38:48.665072726Z",
+	"lastUpdate": "2025-05-29T21:43:46.811397953Z",
 	"version": {
 		"major": 0,
 		"minor": 96,
-		"patch": 65
+		"patch": 83
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -51,13 +51,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "6170233",
+			"lastTotalDebt": "6170177",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1748468129",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.05065575974816383,
+			"netAPR": 0.05062354884048936,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -138,7 +138,7 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1748334393",
 			"lastDebtRatio": "7999",
-			"netAPR": 0.11848530552229786,
+			"netAPR": 0.11782905833446211,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -489,7 +489,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1748325577",
 			"lastDebtRatio": "1664",
-			"netAPR": 0.024005200430532447,
+			"netAPR": 0.024875424677528457,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -623,7 +623,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
 			"lastReport": "1746565251",
-			"lastDebtRatio": "6919",
+			"lastDebtRatio": "6920",
 			"netAPR": 0,
 			"aprType": "current",
 			"protocols": null
@@ -753,12 +753,12 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "615692163",
+			"lastTotalDebt": "615235612",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
 			"lastReport": "1747432225",
-			"lastDebtRatio": "3081",
+			"lastDebtRatio": "3080",
 			"netAPR": 0,
 			"aprType": "current",
 			"protocols": null
@@ -996,13 +996,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "463718540311609213",
+			"lastTotalDebt": "463644409747262510",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
 			"lastReport": "1748466873",
 			"lastDebtRatio": "8336",
-			"netAPR": 0.05526004887408398,
+			"netAPR": 0.05546272510332795,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -1838,7 +1838,7 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1745935185",
-			"lastDebtRatio": "2080",
+			"lastDebtRatio": "2081",
 			"netAPR": 0,
 			"aprType": "forward",
 			"protocols": null
@@ -1974,7 +1974,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744466121",
 			"lastDebtRatio": "2999",
-			"netAPR": 0.10793705139702237,
+			"netAPR": 0.10745251140980017,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2184,7 +2184,7 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "12501692194497762409077490",
+			"lastTotalDebt": "12503462496730535017815598",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
@@ -2216,8 +2216,8 @@
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1748465505",
-			"lastDebtRatio": "7107",
-			"netAPR": 0.04720547513632489,
+			"lastDebtRatio": "7109",
+			"netAPR": 0.04725327881205388,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2298,7 +2298,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1744466131",
 			"lastDebtRatio": "5001",
-			"netAPR": 0.03636139778731007,
+			"netAPR": 0.0364642010112437,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2406,7 +2406,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1748293201",
 			"lastDebtRatio": "1489",
-			"netAPR": 0.03636139778731007,
+			"netAPR": 0.0364642010112437,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2541,7 +2541,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1744466147",
 			"lastDebtRatio": "2001",
-			"netAPR": 0.09941351817792654,
+			"netAPR": 0.09948951974645404,
 			"aprType": "forward",
 			"protocols": null
 		},
@@ -2616,13 +2616,13 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "767329630",
+			"lastTotalDebt": "767242698",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
 			"lastReport": "1748464883",
 			"lastDebtRatio": "2001",
-			"netAPR": 0.09941351817792654,
+			"netAPR": 0.09948951974645404,
 			"aprType": "forward",
 			"protocols": null
 		}

@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-05-29T21:44:21.294012069Z",
+	"lastUpdate": "2025-05-30T11:11:41.134622232-04:00",
 	"version": {
 		"major": 216,
 		"minor": 0,
-		"patch": 15
+		"patch": 19
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -1853,7 +1853,7 @@
 		"0x0abd93da8387b5ef0511a2859d85d84fe4519e94": {
 			"address": "0x0abd93da8387b5ef0511a2859d85d84fe4519e94",
 			"token": "0x85e30b8b263bc64d94b827ed450f2edfee8579da",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
 			"version": "3.0.4",
@@ -29617,7 +29617,7 @@
 				"displaySymbol": "",
 				"description": "yBOLD is Yearn's BOLD tokenized Stability pool product. It is designed to tokenize the different benefits of a BOLD-in-Stability-Pool position in a simple, user-friendly way.",
 				"sourceURI": "",
-				"uiNotice": "",
+				"uiNotice": "💡 Important: You must stake your yBOLD to st-yBOLD to earn yield after depositing!",
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,

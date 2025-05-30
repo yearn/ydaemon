@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-29T21:44:47.382581617Z",
+	"lastUpdate": "2025-05-30T19:14:31.217080111Z",
 	"version": {
 		"major": 0,
-		"minor": 126,
+		"minor": 127,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -716,6 +716,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x042677ce7e0e63fa5881f44a0f00d33feb5f55da": {
+			"address": "0x042677ce7e0e63fa5881f44a0f00d33feb5f55da",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY Ether.Fi Liquid Bera ETH",
+			"symbol": "SY-liquidBeraETH",
+			"displayName": "SY Ether.Fi Liquid Bera ETH",
+			"displaySymbol": "SY-liquidBeraETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x042677ce7e0e63fA5881f44a0f00d33FEB5f55Da/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x04545c88f0839b7fffbffd328c38c1fc574ed6f1": {
 			"address": "0x04545c88f0839b7fffbffd328c38c1fc574ed6f1",
 			"underlyingTokensAddresses": [],
@@ -1044,6 +1058,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd/logo-128.png",
 			"decimals": 2,
+			"chainID": 1
+		},
+		"0x05db2d5f89b3e9eab8f9c07149cd3a7575db8b9d": {
+			"address": "0x05db2d5f89b3e9eab8f9c07149cd3a7575db8b9d",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT AI Dollar Alpha USDC 14AUG2025",
+			"symbol": "YT-AIDaUSDC-14AUG2025",
+			"displayName": "YT AI Dollar Alpha USDC 14AUG2025",
+			"displaySymbol": "YT-AIDaUSDC-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x05dB2D5F89b3e9eAB8f9c07149CD3A7575Db8b9D/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x05f0d9ef9103d2f5f16e6807570167d3d8547500": {
@@ -6663,6 +6691,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x2d3bbc6e3ffeb584fc34b8c433f7170741ad75c1": {
+			"address": "0x2d3bbc6e3ffeb584fc34b8c433f7170741ad75c1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x2d3BBC6e3FfeB584FC34B8C433F7170741Ad75c1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x2d59aa422a7aae58038cf8ae6ed07330cc7d3ae8": {
 			"address": "0x2d59aa422a7aae58038cf8ae6ed07330cc7d3ae8",
 			"underlyingTokensAddresses": [
@@ -7659,6 +7701,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x336D7E0A0F87e2729c0080F86801E6f4becF146F/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x338e2cafa81e72ff422983e124e265eeccd718cb": {
+			"address": "0x338e2cafa81e72ff422983e124e265eeccd718cb",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "SY AI Dollar Alpha USDT",
+			"symbol": "SY-AIDaUSDT",
+			"displayName": "SY AI Dollar Alpha USDT",
+			"displaySymbol": "SY-AIDaUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x338E2cafa81E72ff422983E124E265EeCcd718cb/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x33a269066457e5e3dc9b6dd1c7d854a7df714b6d": {
@@ -9202,6 +9260,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x3D980E50508CFd41a13837A60149927a11c03731/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x3d98195b252dbfec41dff573981224e4a4b01aff": {
+			"address": "0x3d98195b252dbfec41dff573981224e4a4b01aff",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY ether.fi Liquid Bera BTC scaled18",
+			"symbol": "SY-liquidBera-BTC-scaled18",
+			"displayName": "SY ether.fi Liquid Bera BTC scaled18",
+			"displaySymbol": "SY-liquidBera-BTC-scaled18",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x3D98195b252Dbfec41dff573981224E4a4B01AFF/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -10816,6 +10888,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0x4726FCb2FBE4398449bB7CE44EB458Dbd7141191/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x47306e3cb4e325042556864b38aa0cbe8d928be5": {
+			"address": "0x47306e3cb4e325042556864b38aa0cbe8d928be5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x47306E3Cb4E325042556864B38aA0CBE8D928bE5/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -12554,6 +12640,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x530824DA86689C9C17CdC2871Ff29B058345b44a/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x53176cadd446700fa6b89f840357ac586d7e33db": {
+			"address": "0x53176cadd446700fa6b89f840357ac586d7e33db",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Ether.Fi Liquid Bera BTC scaled18",
+			"symbol": "liquidBeraBTC-scaled18",
+			"displayName": "Ether.Fi Liquid Bera BTC scaled18",
+			"displaySymbol": "liquidBeraBTC-scaled18",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x53176cADd446700fa6b89f840357AC586D7e33Db/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -16784,6 +16884,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6E6003A1a2804cD3259EF4eb12513bF441EBf74e/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6e6551a332c453ead27bc3b2a084657dee1b5f76": {
+			"address": "0x6e6551a332c453ead27bc3b2a084657dee1b5f76",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT AI Dollar Alpha USDC 14AUG2025",
+			"symbol": "PT-AIDaUSDC-14AUG2025",
+			"displayName": "PT AI Dollar Alpha USDC 14AUG2025",
+			"displaySymbol": "PT-AIDaUSDC-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6E6551A332c453eaD27bC3B2a084657dee1b5F76/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0x6e67bb258b6485b688cbb526c868d4428b634cf1": {
@@ -24535,6 +24649,20 @@
 			"decimals": 8,
 			"chainID": 1
 		},
+		"0xa28194de3de7166ee81c2e13c864b9c7cca1b8ef": {
+			"address": "0xa28194de3de7166ee81c2e13c864b9c7cca1b8ef",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT AI Dollar Alpha USDT 14AUG2025",
+			"symbol": "PT-AIDaUSDT-14AUG2025",
+			"displayName": "PT AI Dollar Alpha USDT 14AUG2025",
+			"displaySymbol": "PT-AIDaUSDT-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA28194DE3de7166Ee81C2E13c864b9C7CcA1b8eF/logo-128.png",
+			"decimals": 6,
+			"chainID": 1
+		},
 		"0xa2b4c479c98163bbdbd3987a9f3474bb7bc72f84": {
 			"address": "0xa2b4c479c98163bbdbd3987a9f3474bb7bc72f84",
 			"underlyingTokensAddresses": [],
@@ -24679,6 +24807,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xa3BeD4E1c75D00fa6f4E5E6922DB7261B5E9AcD2/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa3d827d2604b547d1858e3cdc11707c27930d142": {
+			"address": "0xa3d827d2604b547d1858e3cdc11707c27930d142",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT AI Dollar Alpha USDT 14AUG2025",
+			"symbol": "YT-AIDaUSDT-14AUG2025",
+			"displayName": "YT AI Dollar Alpha USDT 14AUG2025",
+			"displaySymbol": "YT-AIDaUSDT-14AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xA3D827D2604b547d1858E3CDC11707C27930d142/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c": {
@@ -28039,6 +28181,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xba46fc84409589f369c107e869c06809df3d9727": {
+			"address": "0xba46fc84409589f369c107e869c06809df3d9727",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped BTC scaled18",
+			"symbol": "WBTC-scaled18",
+			"displayName": "Wrapped BTC scaled18",
+			"displaySymbol": "WBTC-scaled18",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xbA46fc84409589F369c107e869c06809Df3D9727/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xba5bde662c17e2adff1075610382b9b691296350": {
 			"address": "0xba5bde662c17e2adff1075610382b9b691296350",
 			"underlyingTokensAddresses": [],
@@ -28127,6 +28283,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xBAa0886c8Cf48D027D29E60d214C7e5a4d114bEe/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbaa5aed0afd90390f00b1915744ad7e3296fb880": {
+			"address": "0xbaa5aed0afd90390f00b1915744ad7e3296fb880",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xBaA5aED0aFD90390F00B1915744Ad7e3296FB880/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -28679,6 +28849,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xbdC7c08592Ee4aa51D06C27Ee23D5087D65aDbcD/logo-128.png",
 			"decimals": 18,
+			"chainID": 1
+		},
+		"0xbdd578ab1a6af894b9abe1c9d97f183005e07b1d": {
+			"address": "0xbdd578ab1a6af894b9abe1c9d97f183005e07b1d",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "SY AI Dollar Alpha USDC",
+			"symbol": "SY-AIDaUSDC",
+			"displayName": "SY AI Dollar Alpha USDC",
+			"displaySymbol": "SY-AIDaUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xBDD578AB1A6AF894b9ABe1C9D97f183005e07B1d/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xbde752ef69880c00a795d88438040b8f737eb254": {
@@ -31106,6 +31292,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xcc84d9667791357c1e6f0d2de47451bc6e6565f6": {
+			"address": "0xcc84d9667791357c1e6f0d2de47451bc6e6565f6",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT ether.fi Liquid Bera BTC scaled18 28AUG2025",
+			"symbol": "YT-liquidBera-BTC-scaled18-28AUG2025",
+			"displayName": "YT ether.fi Liquid Bera BTC scaled18 28AUG2025",
+			"displaySymbol": "YT-liquidBera-BTC-scaled18-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xcc84d9667791357C1E6F0D2de47451bC6e6565f6/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xcc9efbf580120676bfb3420fbd2cfc34019a1967": {
 			"address": "0xcc9efbf580120676bfb3420fbd2cfc34019a1967",
 			"underlyingTokensAddresses": [],
@@ -31513,6 +31713,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd009a734028e3aa0839eb69dab4a594abcfae728": {
+			"address": "0xd009a734028e3aa0839eb69dab4a594abcfae728",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xD009A734028e3aa0839eB69DAB4A594AbcfAE728/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd02b103f7f5dba89ad316e2b3fe247f280cce5b2": {
 			"address": "0xd02b103f7f5dba89ad316e2b3fe247f280cce5b2",
 			"underlyingTokensAddresses": [
@@ -31870,6 +32084,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xd2d0ed784f01dde636d9925da760e87f3ac5e721": {
+			"address": "0xd2d0ed784f01dde636d9925da760e87f3ac5e721",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT Ether.Fi Liquid Bera ETH 28AUG2025",
+			"symbol": "PT-liquidBeraETH-28AUG2025",
+			"displayName": "PT Ether.Fi Liquid Bera ETH 28AUG2025",
+			"displaySymbol": "PT-liquidBeraETH-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xd2d0eD784F01DdE636d9925DA760e87F3aC5e721/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xd2efb90c569ebd5b83d5cfb8632322edfac203a5": {
 			"address": "0xd2efb90c569ebd5b83d5cfb8632322edfac203a5",
 			"underlyingTokensAddresses": [
@@ -32122,6 +32350,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xD4fa2b2b7a3b2be26CA9349763f55DE07e2Fbfd0/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xd5255cc08ebaf6d54ac9448822a18d8a3da29a42": {
+			"address": "0xd5255cc08ebaf6d54ac9448822a18d8a3da29a42",
+			"underlyingTokensAddresses": [
+				"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+			],
+			"type": "Yearn Vault",
+			"name": "AI Dollar Alpha USDC",
+			"symbol": "AIDaUSDC",
+			"displayName": "AI Dollar Alpha USDC",
+			"displaySymbol": "AIDaUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xd5255Cc08EBAf6D54ac9448822a18d8A3da29A42/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xd533a949740bb3306d119cc777fa900ba034cd52": {
@@ -33311,6 +33555,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xdbd6b83ae33952a2272ed3e900d3a00f1b2d611e": {
+			"address": "0xdbd6b83ae33952a2272ed3e900d3a00f1b2d611e",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT Ether.Fi Liquid Bera ETH 28AUG2025",
+			"symbol": "YT-liquidBeraETH-28AUG2025",
+			"displayName": "YT Ether.Fi Liquid Bera ETH 28AUG2025",
+			"displaySymbol": "YT-liquidBeraETH-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xDBD6B83Ae33952A2272eD3E900d3A00F1B2d611e/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xdbd8a24e780e7661c5c9f66310a3d4ad309cd763": {
 			"address": "0xdbd8a24e780e7661c5c9f66310a3d4ad309cd763",
 			"underlyingTokensAddresses": [],
@@ -33423,6 +33681,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xdC3740c3C71F28285EA4cE6b74843D448a488379/logo-128.png",
 			"decimals": 8,
+			"chainID": 1
+		},
+		"0xdc45e7027a0489fe6c2e4a0735097d8e6952a340": {
+			"address": "0xdc45e7027a0489fe6c2e4a0735097d8e6952a340",
+			"underlyingTokensAddresses": [
+				"0xdac17f958d2ee523a2206206994597c13d831ec7"
+			],
+			"type": "Yearn Vault",
+			"name": "AI Dollar Alpha USDT",
+			"symbol": "AIDaUSDT",
+			"displayName": "AI Dollar Alpha USDT",
+			"displaySymbol": "AIDaUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xDc45e7027A0489FE6C2E4A0735097d8E6952A340/logo-128.png",
+			"decimals": 6,
 			"chainID": 1
 		},
 		"0xdcaba03509e719a1e136b7266cbd8ad8399b43b7": {
@@ -38338,6 +38612,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xFcAAE839cfC7E3627741bd9914f661FD75Cc3CBF/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xfcb43e1b5da5059dadde1575af613ea867796a13": {
+			"address": "0xfcb43e1b5da5059dadde1575af613ea867796a13",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT ether.fi Liquid Bera BTC scaled18 28AUG2025",
+			"symbol": "PT-liquidBera-BTC-scaled18-28AUG2025",
+			"displayName": "PT ether.fi Liquid Bera BTC scaled18 28AUG2025",
+			"displaySymbol": "PT-liquidBera-BTC-scaled18-28AUG2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xFCB43E1b5da5059dAddE1575af613eA867796A13/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

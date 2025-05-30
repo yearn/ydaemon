@@ -13,21 +13,21 @@ import (
 )
 
 /**************************************************************************************************
-** Check if the strategies related to that vault are a curve strategy. If the vault has more than
-** 2, it can't be.
+** Check if all the strategies related to that vault are curve strategies. If any strategies are 
+not curve strategies, this returns false
 ** TLDR; check if name contains curve or convex
 **************************************************************************************************/
 func isCurveVault(strategies map[string]models.TStrategy) bool {
-	for _, strategy := range strategies {
-		strategyName := strings.ToLower(strategy.Name)
-		if (strings.Contains(strategyName, `curve`) ||
-			strings.Contains(strategyName, `convex`)) &&
-			!strings.Contains(strategyName, `ajna-`) &&
-			strategy.LastDebtRatio.Gt(bigNumber.NewInt(0)) {
-			return true
-		}
-	}
-	return false
+    for _, strategy := range strategies {
+        strategyName := strings.ToLower(strategy.Name)
+        if !(strings.Contains(strategyName, `curve`) ||
+            strings.Contains(strategyName, `convex`)) ||
+            strings.Contains(strategyName, `ajna-`) ||
+            !strategy.LastDebtRatio.Gt(bigNumber.NewInt(0)) {
+            return false // Return false if any strategy does not meet the criteria
+        }
+    }
+    return true // Return true only if all strategies meet the criteria
 }
 
 /**************************************************************************************************

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-05-30T19:14:31.217080111Z",
+	"lastUpdate": "2025-06-02T19:44:25.213458028Z",
 	"version": {
 		"major": 0,
-		"minor": 127,
+		"minor": 128,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -5243,6 +5243,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x22Fc5A29bd3d6CCe19a06f844019fd506fCe4455/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x23346b04a7f55b8760e5860aa5a77383d63491cd": {
+			"address": "0x23346b04a7f55b8760e5860aa5a77383d63491cd",
+			"underlyingTokensAddresses": [
+				"0x9f4330700a36b29952869fac9b33f45eedd8a3d8"
+			],
+			"type": "Yearn Vault",
+			"name": "Staked yBOLD",
+			"symbol": "ysyBOLD",
+			"displayName": "Staked yBOLD",
+			"displaySymbol": "ysyBOLD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x23346B04a7f55b8760E5860AA5A77383D63491cD/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

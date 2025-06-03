@@ -12,22 +12,30 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-/**************************************************************************************************
-** Check if all the strategies related to that vault are curve strategies. If any strategies are 
+/*
+*************************************************************************************************
+** Check if all the strategies related to that vault are curve strategies. If any strategies are
 not curve strategies, this returns false
 ** TLDR; check if name contains curve or convex
-**************************************************************************************************/
+*************************************************************************************************
+*/
 func isCurveVault(strategies map[string]models.TStrategy) bool {
-    for _, strategy := range strategies {
-        strategyName := strings.ToLower(strategy.Name)
-        if !(strings.Contains(strategyName, `curve`) ||
-            strings.Contains(strategyName, `convex`)) ||
-            strings.Contains(strategyName, `ajna-`) ||
-            !strategy.LastDebtRatio.Gt(bigNumber.NewInt(0)) {
-            return false // Return false if any strategy does not meet the criteria
-        }
-    }
-    return true // Return true only if all strategies meet the criteria
+	for _, strategy := range strategies {
+		// skip any strategy that has zero debt or isn’t active
+		if strategy.LastDebtRatio == nil ||
+			strategy.LastDebtRatio.IsZero() {
+			continue
+		}
+
+		strategyName := strings.ToLower(strategy.Name)
+		if !(strings.Contains(strategyName, `curve`) ||
+			strings.Contains(strategyName, `convex`)) ||
+			strings.Contains(strategyName, `ajna-`) ||
+			!strategy.LastDebtRatio.Gt(bigNumber.NewInt(0)) {
+			return false // Return false if any strategy does not meet the criteria
+		}
+	}
+	return true
 }
 
 /**************************************************************************************************

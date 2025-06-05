@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-03T13:47:53.963343377Z",
+	"lastUpdate": "2025-06-05T22:21:01.435493301Z",
 	"version": {
 		"major": 0,
-		"minor": 28,
+		"minor": 29,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1280,6 +1280,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x878b75772C0abF2D22A9d4A5aE062b1aadaAeBb3/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
+		"0x8907b99db2393af47a48b4bb91abb509b52c5d8f": {
+			"address": "0x8907b99db2393af47a48b4bb91abb509b52c5d8f",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "test dai",
+			"symbol": "tstdai",
+			"displayName": "test dai",
+			"displaySymbol": "tstdai",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x8907b99dB2393AF47A48B4BB91abB509b52C5d8f/logo-128.png",
 			"decimals": 6,
 			"chainID": 8453
 		},

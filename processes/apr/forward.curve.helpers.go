@@ -20,21 +20,29 @@ not curve strategies, this returns false
 *************************************************************************************************
 */
 func isCurveVault(strategies map[string]models.TStrategy) bool {
+	hasActive := false
+
 	for _, strategy := range strategies {
 		// skip any strategy that has zero debt or isn’t active
 		if strategy.LastDebtRatio == nil ||
 			strategy.LastDebtRatio.IsZero() {
 			continue
 		}
+		hasActive = true
 
 		strategyName := strings.ToLower(strategy.Name)
 		if !(strings.Contains(strategyName, `curve`) ||
 			strings.Contains(strategyName, `convex`)) ||
 			strings.Contains(strategyName, `ajna-`) ||
 			!strategy.LastDebtRatio.Gt(bigNumber.NewInt(0)) {
-			return false // Return false if any strategy does not meet the criteria
+			return false // Return false if any active strategy does not meet the criteria
 		}
 	}
+	// if we never saw an active strategy, it’s not a Curve vault
+	if !hasActive {
+		return false
+	}
+
 	return true
 }
 

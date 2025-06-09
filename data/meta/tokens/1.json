@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-05T22:22:48.847738656Z",
+	"lastUpdate": "2025-06-09T22:45:10.107357893Z",
 	"version": {
 		"major": 0,
-		"minor": 130,
+		"minor": 131,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -16629,6 +16629,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x6c5972311191097d002e804a9bf97c96c54059ed": {
+			"address": "0x6c5972311191097d002e804a9bf97c96c54059ed",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Balancer Surge USDf-aGHO",
+			"symbol": "Surge USDf-aGHO",
+			"displayName": "Balancer Surge USDf-aGHO",
+			"displaySymbol": "Surge USDf-aGHO",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6c5972311191097D002E804A9Bf97C96C54059ed/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x6c6371e15499fedcdadee06adc5b55680b3d0785": {
 			"address": "0x6c6371e15499fedcdadee06adc5b55680b3d0785",
 			"underlyingTokensAddresses": [
@@ -19672,6 +19686,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x80f0C1c49891dcFDD40b6e0F960F84E6042bcB6F/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x815351aaa0c22ad55ce70eac6a8d63af175224b9": {
+			"address": "0x815351aaa0c22ad55ce70eac6a8d63af175224b9",
+			"underlyingTokensAddresses": [
+				"0x9b784f7fd6c888463666eb2c05aa6e61628e06b2"
+			],
+			"type": "Single Strategy",
+			"name": "Prize BFT - przBFTOKEN",
+			"symbol": "przBFTOKEN",
+			"displayName": "Prize BFT - przBFTOKEN",
+			"displaySymbol": "przBFTOKEN",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0x815351aAa0C22Ad55ce70eAc6a8d63Af175224b9/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -23822,6 +23852,20 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0x9b784f7fd6c888463666eb2c05aa6e61628e06b2": {
+			"address": "0x9b784f7fd6c888463666eb2c05aa6e61628e06b2",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "BFToken",
+			"symbol": "BFT",
+			"displayName": "BFToken",
+			"displaySymbol": "BFT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x9B784F7Fd6C888463666eb2c05AA6E61628E06B2/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0x9b7dbfb30534da9f57f42201e9484d4c09c95c19": {
 			"address": "0x9b7dbfb30534da9f57f42201e9484d4c09c95c19",
 			"underlyingTokensAddresses": [],
@@ -25523,6 +25567,22 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xa8258deE2a677874a48F5320670A869D74f0cbC1/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xa83308d681ee69a4afad3d5768b4bfe441305e15": {
+			"address": "0xa83308d681ee69a4afad3d5768b4bfe441305e15",
+			"underlyingTokensAddresses": [
+				"0xf244324fbb57f09f0606ff088bc894b051d632eb"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve slvlUSD-lvlUSD yVault",
+			"symbol": "yvCurve-slvlUSD-lvlUSD",
+			"displayName": "Curve slvlUSD-lvlUSD yVault",
+			"displaySymbol": "yvCurve-slvlUSD-lvlUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xa83308d681ee69A4AFAd3d5768B4bFE441305e15/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},
@@ -29579,6 +29639,22 @@
 			"decimals": 18,
 			"chainID": 1
 		},
+		"0xc0c31393c0b406c9ccfdbfb772202ce3a7cb667e": {
+			"address": "0xc0c31393c0b406c9ccfdbfb772202ce3a7cb667e",
+			"underlyingTokensAddresses": [
+				"0x6c5972311191097d002e804a9bf97c96c54059ed"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve GHO-USDf yVault",
+			"symbol": "yvCurve-GHO-USDf",
+			"displayName": "Curve GHO-USDf yVault",
+			"displaySymbol": "yvCurve-GHO-USDf",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xC0C31393C0B406C9cCfDBFb772202ce3A7cb667E/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
 		"0xc0ca1e345be44ea2c83202222e5084ae3a01e9dc": {
 			"address": "0xc0ca1e345be44ea2c83202222e5084ae3a01e9dc",
 			"underlyingTokensAddresses": [],
@@ -31483,6 +31559,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0xCcE7D12f683c6dAe700154f0BAdf779C0bA1F89A/logo-128.png",
 			"decimals": 6,
+			"chainID": 1
+		},
+		"0xcd3b300a0dced996608f12e3c09f7deaa3022863": {
+			"address": "0xcd3b300a0dced996608f12e3c09f7deaa3022863",
+			"underlyingTokensAddresses": [
+				"0xf939e0a03fb07f59a73314e73794be0e57ac1b4e"
+			],
+			"type": "Yearn Vault",
+			"name": "crvYSD-2 ",
+			"symbol": "c",
+			"displayName": "crvYSD-2 ",
+			"displaySymbol": "c",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xCd3b300a0DCED996608F12E3C09F7DeaA3022863/logo-128.png",
+			"decimals": 18,
 			"chainID": 1
 		},
 		"0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee": {
@@ -37038,6 +37130,23 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/1/0xf241462d376c5Fb4b8ebAebc074802650730C107/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0xf244324fbb57f09f0606ff088bc894b051d632eb": {
+			"address": "0xf244324fbb57f09f0606ff088bc894b051d632eb",
+			"underlyingTokensAddresses": [
+				"0x7c1156e515aa1a2e851674120074968c905aaf37",
+				"0x4737d9b4592b40d51e110b94c9c043c6654067ae"
+			],
+			"type": "Curve LP",
+			"name": "slvlUSD/lvlUSD",
+			"symbol": "s/lvlUSD",
+			"displayName": "slvlUSD/lvlUSD",
+			"displaySymbol": "s/lvlUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0xF244324FBB57f09F0606FF088bC894b051d632Eb/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

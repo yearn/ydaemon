@@ -140,9 +140,57 @@ func FetchPPSLastMonth(
 		return bigNumber.NewFloat(0)
 	}
 
+	/**************************************************************************************************
+	** if the vault was deployed less than 30 days ago, we can use the current block and 30 days ago block to determine
+	** how many days ago the vault was deployed. We then input that value into the APY calculation.
+	*******************************************/
 	if vaultDeploymentBlock > 0 && estBlockLastMonth < vaultDeploymentBlock {
-		// logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last month, using inception PPS`)
-		return bigNumber.NewFloat(1)
+		logs.Info(fmt.Sprintf("Chain %d - Vault %s was deployed less than 30 days ago, using interpolation for PPS", chainID, vaultAddress.Hex()))
+		currentPPS := FetchPPSToday(chainID, vaultAddress, vaultDeploymentBlock, decimals)
+		logs.Info(fmt.Sprintf("currentPPS: %s", currentPPS.String()))
+		currentBlock := GetBlockNumberByPeriod(chainID, 1)
+
+		// Calculate average blocks per day over the last 30 days
+		blocksIn30Days := currentBlock - estBlockLastMonth
+		blocksPerDay := float64(blocksIn30Days) / 30.0
+
+		// Estimate days since deployment
+		blocksSinceDeployment := currentBlock - vaultDeploymentBlock
+		daysSinceDeployment := float64(blocksSinceDeployment) / blocksPerDay
+		if daysSinceDeployment < 1 {
+			daysSinceDeployment = 1
+		}
+		logs.Info(fmt.Sprintf("daysSinceDeployment: %f", daysSinceDeployment))
+		// Get the number of days missing to complete the 30 days
+		// (29 because getBlockNumberByPeriod subtracts a day)
+		daysMissing := 29 - int(daysSinceDeployment)
+		logs.Info(fmt.Sprintf("daysMissing: %d", daysMissing))
+		// get the difference between the current PPS and 1 (the initial PPS). If negative, set to 0
+		deltaPPS := bigNumber.NewFloat(0).Sub(currentPPS, bigNumber.NewFloat(1))
+		if deltaPPS.Float.Cmp(big.NewFloat(0)) < 0 {
+			deltaPPS = bigNumber.NewFloat(0)
+		}
+		logs.Info(fmt.Sprintf("deltaPPS: %s", deltaPPS.String()))
+		if deltaPPS.IsZero() {
+			logs.Info("deltaPPS is 0. Returning 1")
+			return bigNumber.NewFloat(1) // If no change, return 1
+		}
+		// divide the PPS over the number of days since deployment to get the average PPS per day
+		ppsPerDay := bigNumber.NewFloat(0).Div(
+			deltaPPS,
+			bigNumber.NewFloat(daysSinceDeployment),
+		)
+		logs.Info(fmt.Sprintf("ppsPerDay: %s", ppsPerDay.String()))
+		//multiply the average PPS per day by the number of days missing to get the "missing" PPS
+		missingPPS := bigNumber.NewFloat(0).Mul(ppsPerDay, bigNumber.NewFloat(float64(daysMissing)))
+		logs.Info(fmt.Sprintf("missingPPS: %s", missingPPS.String()))
+		//subtract the missing PPS from 1 to get the extrapolated Start PPS
+		interpolatedPPS := bigNumber.NewFloat(0).Sub(
+			bigNumber.NewFloat(1),
+			missingPPS,
+		)
+		logs.Info(fmt.Sprintf("Interpolated PPS for last month: %s", interpolatedPPS.String()))
+		return interpolatedPPS
 	}
 
 	opts := &bind.CallOpts{

@@ -20,10 +20,57 @@ func computeCurrentV3VaultAPY(
 		yieldVault = common.HexToAddress(registry.ExtraProperties.YieldVaultAddress)
 	}
 
-	ppsInception := bigNumber.NewFloat(1)
+	currentBlock := ethereum.GetBlockNumberByPeriod(chainID, 0)
+	estBlockLastWeek := ethereum.GetBlockNumberByPeriod(chainID, 7)
+	estBlockLastMonth := ethereum.GetBlockNumberByPeriod(chainID, 30)
+	estBlockLastYear := ethereum.GetBlockNumberByPeriod(chainID, 365)
+	blocksSinceDeployment := currentBlock - vault.Activation
 	ppsToday := ethereum.FetchPPSToday(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
-	ppsWeekAgo := ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
-	ppsMonthAgo := ethereum.FetchPPSLastMonth(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+	ppsWeekAgo := bigNumber.NewFloat(1)
+	ppsMonthAgo := bigNumber.NewFloat(1)
+	ppsInception := bigNumber.NewFloat(1)
+	weeklyAPY := bigNumber.NewFloat(0)
+	monthlyAPY := bigNumber.NewFloat(0)
+	inceptionAPY := bigNumber.NewFloat(0)
+
+	isLessThanAWeekOld := vault.Activation > 0 && estBlockLastWeek < vault.Activation
+	isLessThanAMonthOld := vault.Activation > 0 && estBlockLastMonth < vault.Activation
+
+	switch {
+	case isLessThanAWeekOld:
+		// vault is less than a week old, return 1 as PPS and deal with the calculation later
+		ppsWeekAgo = bigNumber.NewFloat(1)
+		// Calculate average blocks per day over the last 7 days
+		numBlocksIn7Days := currentBlock - estBlockLastWeek
+		numBlocksPerDay := float64(numBlocksIn7Days) / 7
+		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
+		if daysSinceDeployment < 1 {
+			daysSinceDeployment = 1
+		}
+		weeklyAPY = ethereum.CalculateAPY(ppsToday, ppsWeekAgo, int(daysSinceDeployment))
+		monthlyAPY = weeklyAPY
+	case isLessThanAMonthOld:
+		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)
+		ppsMonthAgo = bigNumber.NewFloat(1)
+		// Calculate average blocks per day over the last 7 days
+		numBlocksIn30Days := currentBlock - estBlockLastMonth
+		numBlocksPerDay := float64(numBlocksIn30Days) / 30
+		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
+		if daysSinceDeployment < 1 {
+			daysSinceDeployment = 1
+		}
+		monthlyAPY = ethereum.CalculateAPY(ppsToday, ppsMonthAgo, int(daysSinceDeployment))
+	default:
+		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)
+		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
+		monthlyAPY = ethereum.CalculateMonthlyAPY(ppsToday, ppsMonthAgo)
+		numBlocksIn365Days := currentBlock - estBlockLastYear
+		numBlocksPerDay := float64(numBlocksIn365Days) / 365
+		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
+		inceptionAPY = ethereum.CalculateAPY(ppsToday, ppsInception, int(daysSinceDeployment))
+	}
 
 	/**********************************************************************************************
 	** Retrieve the vault performance fee and management fee, and calculate the net APR.
@@ -44,8 +91,8 @@ func computeCurrentV3VaultAPY(
 	** - The points (PPS evolution over time, for one week, one month and since inception)
 	**********************************************************************************************/
 	vaultAPRType := `v3:averaged`
-	monthAgoBlockNumber := ethereum.GetBlockNumberByPeriod(chainID, 7)
-	if vault.Activation > monthAgoBlockNumber {
+	weekAgoBlockNumber := ethereum.GetBlockNumberByPeriod(chainID, 7)
+	if vault.Activation > weekAgoBlockNumber {
 		vaultAPRType = `v3:new_averaged`
 	}
 
@@ -57,9 +104,9 @@ func computeCurrentV3VaultAPY(
 			Management:  vaultManagementFee,
 		},
 		Points: THistoricalPoints{
-			WeekAgo:   ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo),
-			MonthAgo:  ethereum.CalculateMonthlyAPY(ppsToday, ppsMonthAgo),
-			Inception: ethereum.CalculateYearlyAPY(ppsToday, ppsInception),
+			WeekAgo:   weeklyAPY,
+			MonthAgo:  monthlyAPY,
+			Inception: inceptionAPY,
 		},
 		PricePerShare: TPricePerShare{
 			Today:    ppsToday,

@@ -49,6 +49,7 @@ func computeCurrentV3VaultAPY(
 		}
 		weeklyAPY = ethereum.CalculateAPY(ppsToday, ppsWeekAgo, int(daysSinceDeployment))
 		monthlyAPY = weeklyAPY
+		inceptionAPY = monthlyAPY
 	case isLessThanAMonthOld:
 		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)
@@ -61,6 +62,7 @@ func computeCurrentV3VaultAPY(
 			daysSinceDeployment = 1
 		}
 		monthlyAPY = ethereum.CalculateAPY(ppsToday, ppsMonthAgo, int(daysSinceDeployment))
+		inceptionAPY = monthlyAPY
 	default:
 		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)

@@ -44,7 +44,7 @@ func computeCurrentV3VaultAPY(
 	** - The points (PPS evolution over time, for one week, one month and since inception)
 	**********************************************************************************************/
 	vaultAPRType := `v3:averaged`
-	monthAgoBlockNumber := ethereum.GetBlockNumberByPeriod(chainID, 30)
+	monthAgoBlockNumber := ethereum.GetBlockNumberByPeriod(chainID, 7)
 	if vault.Activation > monthAgoBlockNumber {
 		vaultAPRType = `v3:new_averaged`
 	}

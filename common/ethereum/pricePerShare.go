@@ -148,15 +148,16 @@ func FetchPPSLastMonth(
 		logs.Info(fmt.Sprintf("Chain %d - Vault %s was deployed less than 30 days ago, using interpolation for PPS", chainID, vaultAddress.Hex()))
 		currentPPS := FetchPPSToday(chainID, vaultAddress, vaultDeploymentBlock, decimals)
 		logs.Info(fmt.Sprintf("currentPPS: %s", currentPPS.String()))
-		currentBlock := GetBlockNumberByPeriod(chainID, 1)
+		//get yesterday's block number. Would be better to get the current block but I'm not sure how.
+		currentBlock := GetBlockNumberByPeriod(chainID, 0)
 
 		// Calculate average blocks per day over the last 30 days
-		blocksIn30Days := currentBlock - estBlockLastMonth
-		blocksPerDay := float64(blocksIn30Days) / 30.0
+		numBlocksIn30Days := currentBlock - estBlockLastMonth
+		numBlocksPerDay := float64(numBlocksIn30Days) / 30.0
 
 		// Estimate days since deployment
 		blocksSinceDeployment := currentBlock - vaultDeploymentBlock
-		daysSinceDeployment := float64(blocksSinceDeployment) / blocksPerDay
+		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
 		if daysSinceDeployment < 1 {
 			daysSinceDeployment = 1
 		}

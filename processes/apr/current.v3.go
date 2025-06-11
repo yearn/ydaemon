@@ -20,11 +20,11 @@ func computeCurrentV3VaultAPY(
 		yieldVault = common.HexToAddress(registry.ExtraProperties.YieldVaultAddress)
 	}
 
-	currentBlock := ethereum.GetBlockNumberByPeriod(chainID, 0)
+	estBlockToday := ethereum.GetBlockNumberByPeriod(chainID, 0)
 	estBlockLastWeek := ethereum.GetBlockNumberByPeriod(chainID, 7)
 	estBlockLastMonth := ethereum.GetBlockNumberByPeriod(chainID, 30)
 	estBlockLastYear := ethereum.GetBlockNumberByPeriod(chainID, 365)
-	blocksSinceDeployment := currentBlock - vault.Activation
+	blocksSinceDeployment := estBlockToday - vault.Activation
 	ppsToday := ethereum.FetchPPSToday(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 	ppsWeekAgo := bigNumber.NewFloat(1)
 	ppsMonthAgo := bigNumber.NewFloat(1)
@@ -36,12 +36,17 @@ func computeCurrentV3VaultAPY(
 	isLessThanAWeekOld := vault.Activation > 0 && estBlockLastWeek < vault.Activation
 	isLessThanAMonthOld := vault.Activation > 0 && estBlockLastMonth < vault.Activation
 
+	/**************************************************************************
+	** Switch function to gracefully handle APY calculations for vaults that
+	** are less than a week or month old.
+	** We calculate the number of days the vault has been active and use that
+	** number to calculate the APY.
+	** default case if for all vaults older than a month.
+	**************************************************************************/
 	switch {
 	case isLessThanAWeekOld:
-		// vault is less than a week old, return 1 as PPS and deal with the calculation later
-		ppsWeekAgo = bigNumber.NewFloat(1)
 		// Calculate average blocks per day over the last 7 days
-		numBlocksIn7Days := currentBlock - estBlockLastWeek
+		numBlocksIn7Days := estBlockToday - estBlockLastWeek
 		numBlocksPerDay := float64(numBlocksIn7Days) / 7
 		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
 		if daysSinceDeployment < 1 {
@@ -53,9 +58,8 @@ func computeCurrentV3VaultAPY(
 	case isLessThanAMonthOld:
 		ppsWeekAgo = ethereum.FetchPPSLastWeek(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)
-		ppsMonthAgo = bigNumber.NewFloat(1)
-		// Calculate average blocks per day over the last 7 days
-		numBlocksIn30Days := currentBlock - estBlockLastMonth
+		// Calculate average blocks per day over the last 30 days
+		numBlocksIn30Days := estBlockToday - estBlockLastMonth
 		numBlocksPerDay := float64(numBlocksIn30Days) / 30
 		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
 		if daysSinceDeployment < 1 {
@@ -68,7 +72,7 @@ func computeCurrentV3VaultAPY(
 		weeklyAPY = ethereum.CalculateWeeklyAPY(ppsToday, ppsWeekAgo)
 		ppsMonthAgo = ethereum.FetchPPSLastMonth(chainID, yieldVault, vault.Activation, vaultToken.Decimals)
 		monthlyAPY = ethereum.CalculateMonthlyAPY(ppsToday, ppsMonthAgo)
-		numBlocksIn365Days := currentBlock - estBlockLastYear
+		numBlocksIn365Days := estBlockToday - estBlockLastYear
 		numBlocksPerDay := float64(numBlocksIn365Days) / 365
 		daysSinceDeployment := float64(blocksSinceDeployment) / numBlocksPerDay
 		inceptionAPY = ethereum.CalculateAPY(ppsToday, ppsInception, int(daysSinceDeployment))
@@ -93,14 +97,13 @@ func computeCurrentV3VaultAPY(
 	** - The points (PPS evolution over time, for one week, one month and since inception)
 	**********************************************************************************************/
 	vaultAPRType := `v3:averaged`
-	weekAgoBlockNumber := ethereum.GetBlockNumberByPeriod(chainID, 7)
-	if vault.Activation > weekAgoBlockNumber {
+	if vault.Activation > estBlockLastWeek {
 		vaultAPRType = `v3:new_averaged`
 	}
 
 	vaultAPR := TVaultAPY{
 		Type:   vaultAPRType,
-		NetAPY: ethereum.CalculateMonthlyAPY(ppsToday, ppsMonthAgo),
+		NetAPY: monthlyAPY,
 		Fees: TFees{
 			Performance: vaultPerformanceFee,
 			Management:  vaultManagementFee,

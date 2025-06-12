@@ -1,0 +1,71 @@
+{
+	"lastUpdate": "2025-06-12T14:56:38.589124521-04:00",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"tokens": {
+		"0x00000000efe302beaa2b3e6e1b18d08d69a9012a": {
+			"address": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "AUSD",
+			"symbol": "AUSD",
+			"displayName": "AUSD",
+			"displaySymbol": "AUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/747474/0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
+		"0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74": {
+			"address": "0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Woofy",
+			"symbol": "WOOFY",
+			"displayName": "Woofy",
+			"displaySymbol": "WOOFY",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/747474/0x0eF68c1aB3C83CF11f9546FaBA385E8a1bd38d74/logo-128.png",
+			"decimals": 12,
+			"chainID": 747474
+		},
+		"0x639bccf37cc0415812a6f110cfca33127a81c0e9": {
+			"address": "0x639bccf37cc0415812a6f110cfca33127a81c0e9",
+			"underlyingTokensAddresses": [
+				"0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74"
+			],
+			"type": "Yearn Vault",
+			"name": "Woofy yVault",
+			"symbol": "yvWOOFY",
+			"displayName": "Woofy yVault",
+			"displaySymbol": "yvWOOFY",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x639bCcF37CC0415812A6f110CFCa33127a81c0e9/logo-128.png",
+			"decimals": 12,
+			"chainID": 747474
+		},
+		"0x93fec6639717b6215a48e5a72a162c50dcc40d68": {
+			"address": "0x93fec6639717b6215a48e5a72a162c50dcc40d68",
+			"underlyingTokensAddresses": [
+				"0x00000000efe302beaa2b3e6e1b18d08d69a9012a"
+			],
+			"type": "Yearn Vault",
+			"name": "AUSD yVault",
+			"symbol": "AUSD",
+			"displayName": "AUSD yVault",
+			"displaySymbol": "AUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x93Fec6639717b6215A48E5a72a162C50DCC40d68/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		}
+	}
+}

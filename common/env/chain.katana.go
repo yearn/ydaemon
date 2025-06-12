@@ -18,15 +18,17 @@ var KATANA = TChain{
 	AvgBlocksPerDay: 86_400,
 	CanUseWebsocket: true, //CHECK!
 	LensContract:    TContractData{},
-	MulticallContract: TContractData{
-		Address: common.HexToAddress(`0x1F4c1E0afBeb5b5B86d7722549274434b29884F6`),
-		Block:   1295447,
-	},
-	// Or do I use this one?
-	// Multicall2Contract: TContractData{
-	// 	Address: common.HexToAddress(`0xe9128E672bc08E12deb1C2048E9f91e6D6E08e74`),
-	// 	Block:   1295938,
+	// // this one is multicall1
+	// MulticallContract: TContractData{
+	// 	Address: common.HexToAddress(`0x1F4c1E0afBeb5b5B86d7722549274434b29884F6`),
+	// 	Block:   1295447,
 	// },
+	//this one is multicall2
+	MulticallContract: TContractData{
+		Address: common.HexToAddress(`0xe9128E672bc08E12deb1C2048E9f91e6D6E08e74`),
+		Block:   1295938,
+	},
+	// // this one is multicall3
 	// Multicall3Contract: TContractData{
 	// 	Address: common.HexToAddress(`0xcA11bde05977b3631167028862bE2a173976CA11`),
 	// 	Block:    1898013,

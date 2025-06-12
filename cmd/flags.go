@@ -16,7 +16,7 @@ func initFlags() {
 	** Description: List of chain IDs to run yDaemon for
 	** Default: All supported chains (1, 10, 137, 250, 8453, 42161)
 	**********************************************************************************************/
-	rawChains := flag.String(`chains`, `1,10,100,137,146,250,8453,42161`, `List of chain IDs to run yDaemon for: --chains 1,10,100,137,146,250,8453,42161`)
+	rawChains := flag.String(`chains`, `1,10,100,137,146,250,8453,42161,747474`, `List of chain IDs to run yDaemon for: --chains 1,10,100,137,146,250,8453,42161,747474`)
 
 	/**********************************************************************************************
 	** Flag group: BlockNunbers

@@ -71,6 +71,7 @@ func init() {
 	CHAINS[250] = FANTOM
 	CHAINS[8453] = BASE
 	CHAINS[42161] = ARBITRUM
+	CHAINS[747474] = KATANA
 	SetEnv()
 
 	// Set them as supported

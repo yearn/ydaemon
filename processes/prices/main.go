@@ -253,7 +253,7 @@ func fetchPrices(
 	}
 
 	/**********************************************************************************************
-	** If the price is still missing, we can fallback to try to retreive the price per share of the
+	** If the price is still missing, we can fallback to try to retrieve the price per share of the
 	** vaults (vs the underlying token). Just like with the ERC-4626 standard, we can then
 	** calculate the price of one share (underlyingPrice * pricePerShare)
 	**********************************************************************************************/

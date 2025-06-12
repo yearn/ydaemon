@@ -1,0 +1,147 @@
+{
+	"lastUpdate": "2025-06-12T14:56:38.553710795-04:00",
+	"version": {
+		"major": 0,
+		"minor": 2,
+		"patch": 3
+	},
+	"shouldRefresh": false,
+	"vaults": {
+		"0x639bccf37cc0415812a6f110cfca33127a81c0e9": {
+			"address": "0x639bccf37cc0415812a6f110cfca33127a81c0e9",
+			"token": "0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74",
+			"registry": "0x0000000000000000000000000000000000000000",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 2238267,
+			"chainID": 747474,
+			"endorsed": true,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000000000",
+			"lastTotalAssets": "48897965875001310",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x639bccf37cc0415812a6f110cfca33127a81c0e9",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "Woofy yVault",
+				"displaySymbol": "yvWOOFY",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isKatana": true,
+					"isPublicERC4626": false
+				},
+				"riskLevel": 1,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		},
+		"0x93fec6639717b6215a48e5a72a162c50dcc40d68": {
+			"address": "0x93fec6639717b6215a48e5a72a162c50dcc40d68",
+			"token": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"type": "Yearn Vault",
+			"kind": "Multi Strategy",
+			"version": "3.0.4",
+			"activation": 2850438,
+			"chainID": 747474,
+			"endorsed": false,
+			"performanceFee": 0,
+			"managementFee": 0,
+			"emergencyShutdown": false,
+			"lastActiveStrategies": [],
+			"lastPricePerShare": "1000000",
+			"lastTotalAssets": "0",
+			"metadata": {
+				"isRetired": false,
+				"isHidden": true,
+				"isAggregator": false,
+				"isBoosted": false,
+				"isAutomated": false,
+				"isHighlighted": false,
+				"isPool": false,
+				"shouldUseV2APR": false,
+				"migration": {
+					"available": false,
+					"target": "0x93fec6639717b6215a48e5a72a162c50dcc40d68",
+					"contract": "0x0000000000000000000000000000000000000000"
+				},
+				"stability": {
+					"stability": "Unknown"
+				},
+				"category": "auto",
+				"displayName": "AUSD yVault?",
+				"displaySymbol": "yvAUSD?",
+				"description": "",
+				"sourceURI": "",
+				"uiNotice": "",
+				"protocols": null,
+				"inclusion": {
+					"isSet": true,
+					"isYearn": true,
+					"isYearnJuiced": false,
+					"isGimme": false,
+					"isPoolTogether": false,
+					"isCove": false,
+					"isMorpho": false,
+					"isKatana": true,
+					"isPublicERC4626": true
+				},
+				"riskLevel": 0,
+				"riskScore": {
+					"review": 0,
+					"testing": 0,
+					"complexity": 0,
+					"riskExposure": 0,
+					"protocolIntegration": 0,
+					"centralizationRisk": 0,
+					"externalProtocolAudit": 0,
+					"externalProtocolCentralisation": 0,
+					"externalProtocolTvl": 0,
+					"externalProtocolLongevity": 0,
+					"externalProtocolType": 0,
+					"comment": ""
+				}
+			}
+		}
+	}
+}

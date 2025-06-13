@@ -140,8 +140,12 @@ func FetchPPSLastMonth(
 		return bigNumber.NewFloat(0)
 	}
 
+	/**************************************************************************************************
+	** if the vault was deployed less than 30 days ago, we can use the current block and 30 days ago block to determine
+	** how many days ago the vault was deployed. We then input that value into the APY calculation.
+	*******************************************/
 	if vaultDeploymentBlock > 0 && estBlockLastMonth < vaultDeploymentBlock {
-		// logs.Warning(`Chain ` + strconv.Itoa(int(chainID)) + ` - Vault ` + vaultAddress.Hex() + ` was not deployed last month, using inception PPS`)
+		logs.Warning(fmt.Sprintf("Chain %d - Vault %s missed checks and is getting a hardcoded one month PPS", chainID, vaultAddress.Hex()))
 		return bigNumber.NewFloat(1)
 	}
 

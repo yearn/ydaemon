@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-09T22:44:07.587263985Z",
+	"lastUpdate": "2025-06-13T02:29:45.198137706Z",
 	"version": {
 		"major": 0,
-		"minor": 29,
+		"minor": 30,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -381,6 +381,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x31Ce9aB5A358E5c802Cc01080F29a65a14EB45b8/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x338dfa34f66b6922b9edec82da86519ce7938184": {
+			"address": "0x338dfa34f66b6922b9edec82da86519ce7938184",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC-2 Base USDC Vault",
+			"symbol": "buUSDC-2",
+			"displayName": "USDC-2 Base USDC Vault",
+			"displaySymbol": "buUSDC-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x338Dfa34F66B6922B9Edec82DA86519CE7938184/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x37a74970f80adaa8215598e95a17cbed2c39030d": {
@@ -2159,6 +2175,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/8453/0xffA3F8737C39e36dec4300B162c2153c67c8352f/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xffec1057a5dd33fc74f453b88a6c62cc3d9446be": {
+			"address": "0xffec1057a5dd33fc74f453b88a6c62cc3d9446be",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Supercharger",
+			"symbol": "USDSuper",
+			"displayName": "USDC Supercharger",
+			"displaySymbol": "USDSuper",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xfFec1057A5dD33Fc74f453b88a6c62cC3D9446BE/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		}
 	}

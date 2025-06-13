@@ -911,6 +911,7 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 	noonUTC := time.Date(now.Year(), now.Month(), now.Day(), 12, 0, 0, 0, time.UTC)
 
 	timestamps := map[string]int64{
+		"now":  noonUTC.Unix(),
 		"24h":  noonUTC.AddDate(0, 0, -1).Unix(),
 		"7d":   noonUTC.AddDate(0, 0, -7).Unix(),
 		"30d":  noonUTC.AddDate(0, -1, 0).Unix(),
@@ -978,8 +979,8 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 ** the data.
 **
 ** @param chainID The chain ID to get the block number for
-** @param periodOrDays The time period ("24h", "7d", "30d", "365d") or a numeric days value (1, 7, 30, 365)
-**               When using a numeric value: 1=24h, 7=7d, 30=30d, 365=365d
+** @param periodOrDays The time period ("now", "24h", "7d", "30d", "365d") or a numeric days value (0, 1, 7, 30, 365)
+**               When using a numeric value: 0 = now, 1=24h, 7=7d, 30=30d, 365=365d
 ** @return uint64 The block number for the specified period, or 0 if not available
 **************************************************************************************************/
 func GetBlockNumberByPeriod(chainID uint64, periodOrDays interface{}) uint64 {
@@ -999,12 +1000,12 @@ func GetBlockNumberByPeriod(chainID uint64, periodOrDays interface{}) uint64 {
 	case int:
 		// If it's a numeric integer, convert to appropriate period string
 		blocktimeLog(fmt.Sprintf("Chain %d - GetBlockNumberByPeriod received int days: %d", chainID, value))
-		period = daysToperiod(uint64(value))
+		period = daysToPeriod(uint64(value))
 		blocktimeLog(fmt.Sprintf("Chain %d - Converted %d days to period: '%s'", chainID, value, period))
 	case uint64:
 		// If it's an unsigned integer, convert to appropriate period string
 		blocktimeLog(fmt.Sprintf("Chain %d - GetBlockNumberByPeriod received uint64 days: %d", chainID, value))
-		period = daysToperiod(value)
+		period = daysToPeriod(value)
 		blocktimeLog(fmt.Sprintf("Chain %d - Converted %d days to period: '%s'", chainID, value, period))
 	default:
 		blocktimeWarning(fmt.Sprintf("Chain %d - Unsupported period type in GetBlockNumberByPeriod: %T with value %v",
@@ -1013,7 +1014,7 @@ func GetBlockNumberByPeriod(chainID uint64, periodOrDays interface{}) uint64 {
 	}
 
 	// Validate the period format
-	if period != "24h" && period != "7d" && period != "30d" && period != "365d" {
+	if period != "now" && period != "24h" && period != "7d" && period != "30d" && period != "365d" {
 		blocktimeWarning(fmt.Sprintf("Chain %d - Unsupported period in GetBlockNumberByPeriod: '%s' (original input: %v of type %T)",
 			chainID, period, periodOrDays, periodOrDays))
 		return 0
@@ -1040,14 +1041,16 @@ func GetBlockNumberByPeriod(chainID uint64, periodOrDays interface{}) uint64 {
 }
 
 /**************************************************************************************************
-** daysToperiod converts a numeric days value to the corresponding period string format.
+** daysToPeriod converts a numeric days value to the corresponding period string format.
 ** This helper function is used by GetBlockNumberByPeriod to standardize period representations.
 **
 ** @param days The number of days (1, 7, 30, or 365)
 ** @return string The corresponding period string ("24h", "7d", "30d", "365d") or "invalid"
 **************************************************************************************************/
-func daysToperiod(days uint64) string {
+func daysToPeriod(days uint64) string {
 	switch days {
+	case 0:
+		return "now"
 	case 1:
 		return "24h"
 	case 7:

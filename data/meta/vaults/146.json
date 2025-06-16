@@ -1,16 +1,16 @@
 {
-	"lastUpdate": "2025-06-13T02:29:36.461033135Z",
+	"lastUpdate": "2025-06-16T21:10:12.189330157Z",
 	"version": {
 		"major": 0,
 		"minor": 7,
-		"patch": 191
+		"patch": 195
 	},
 	"shouldRefresh": false,
 	"vaults": {
 		"0x2f7397fd2d49e5b636ef44503771b17eded67620": {
 			"address": "0x2f7397fd2d49e5b636ef44503771b17eded67620",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0xc322c31a85b002baca8462d608b1b0177d2b4e5c",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -79,7 +79,7 @@
 		"0x8db97437f8e28a11019128d7b2604a42e333025e": {
 			"address": "0x8db97437f8e28a11019128d7b2604a42e333025e",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -150,7 +150,7 @@
 		"0xa369c32fd1fa2cd265f0bdf76f39201ff333f6ac": {
 			"address": "0xa369c32fd1fa2cd265f0bdf76f39201ff333f6ac",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -360,7 +360,7 @@
 		"0xe272e402d817c8f20ac4426aac21b95a13f76c99": {
 			"address": "0xe272e402d817c8f20ac4426aac21b95a13f76c99",
 			"token": "0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",
@@ -429,7 +429,7 @@
 		"0xf8815e49bd30c79d7a026eae414aa92faff29541": {
 			"address": "0xf8815e49bd30c79d7a026eae414aa92faff29541",
 			"token": "0x29219dd400f2bf60e5a23d13be72b486d4038894",
-			"registry": "0x770d0d1fb036483ed4abb6d53c1c88fb277d812f",
+			"registry": "0x0000000000000000000000000000000000000000",
 			"accountant": "0x1da267586adc3f772fe45d600d1487e636cc4fde",
 			"type": "Yearn Vault",
 			"kind": "Multi Strategy",

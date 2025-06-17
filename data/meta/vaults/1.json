@@ -22271,11 +22271,11 @@
 			"lastTotalAssets": "1",
 			"metadata": {
 				"isRetired": false,
-				"isHidden": true,
+				"isHidden": false,
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -22295,7 +22295,7 @@
 				"protocols": null,
 				"inclusion": {
 					"isSet": true,
-					"isYearn": false,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -22304,7 +22304,7 @@
 					"isKatana": false,
 					"isPublicERC4626": false
 				},
-				"riskLevel": 0,
+				"riskLevel": 1,
 				"riskScore": {
 					"review": 0,
 					"testing": 0,

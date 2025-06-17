@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-16T21:10:54.093536269Z",
+	"lastUpdate": "2025-06-17T21:14:04.929846019Z",
 	"version": {
 		"major": 0,
-		"minor": 16,
+		"minor": 17,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -16323,6 +16323,20 @@
 			"description": "",
 			"category": "",
 			"icon": "",
+			"decimals": 18,
+			"chainID": 10
+		},
+		"0xef4461891dfb3ac8572ccf7c794664a8dd927945": {
+			"address": "0xef4461891dfb3ac8572ccf7c794664a8dd927945",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "WalletConnect",
+			"symbol": "WCT",
+			"displayName": "WalletConnect",
+			"displaySymbol": "WCT",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/10/0xeF4461891DfB3AC8572cCf7C794664A8DD927945/logo-128.png",
 			"decimals": 18,
 			"chainID": 10
 		},

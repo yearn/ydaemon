@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-16T21:10:21.641211584Z",
+	"lastUpdate": "2025-06-17T21:12:46.839817136Z",
 	"version": {
 		"major": 0,
-		"minor": 50,
+		"minor": 51,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -847,6 +847,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/42161/0x12bF88C63bF060355A8d2E4C6eE960365a5E8335/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0x1337420ded5adb9980cfc35f8f2b054ea86f8ab1": {
+			"address": "0x1337420ded5adb9980cfc35f8f2b054ea86f8ab1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Subsquid",
+			"symbol": "SQD",
+			"displayName": "Subsquid",
+			"displaySymbol": "SQD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x1337420dED5ADb9980CFc35f8f2B054ea86f8aB1/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0x137f793505e7884cb70ee5933c83447e85b1bd17": {

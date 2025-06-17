@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-16T21:10:23.643556025Z",
+	"lastUpdate": "2025-06-17T21:12:50.929240272Z",
 	"version": {
 		"major": 0,
-		"minor": 30,
+		"minor": 31,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -871,6 +871,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0x61812b7226d8cd931be995177056c0e90a8554fa": {
+			"address": "0x61812b7226d8cd931be995177056c0e90a8554fa",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Test USDC",
+			"symbol": "tUSDC",
+			"displayName": "Test USDC",
+			"displaySymbol": "tUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x61812B7226D8cD931Be995177056C0E90a8554Fa/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5": {
 			"address": "0x61907c8c3e6ef7ed813acc2fbbbf8c05ac0f31d5",
 			"underlyingTokensAddresses": [],
@@ -1669,6 +1685,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xaCcB6Fa47E2dA8F937f6E33BC25B68328b370D2e/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xb13cf163d916917d9cd6e836905ca5f12a1def4b": {
+			"address": "0xb13cf163d916917d9cd6e836905ca5f12a1def4b",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "True Yield Dollar",
+			"symbol": "TYD",
+			"displayName": "True Yield Dollar",
+			"displaySymbol": "TYD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xb13CF163d916917d9cD6E836905cA5f12a1dEF4B/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xb4885bc63399bf5518b994c1d0c153334ee579d0": {

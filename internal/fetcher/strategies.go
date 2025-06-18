@@ -211,7 +211,8 @@ func assignStrategy(chainID uint64, strategy models.TStrategy, response map[stri
 	** - not_active: When it's retired or IsActive is false
 	** - unallocated: When it's active but LastTotalDebt is 0
 	******************************************************************************************/
-	if newStrategy.IsRetired || !newStrategy.IsActive {
+	// if newStrategy.IsRetired || !newStrategy.IsActive {
+	if newStrategy.IsRetired {
 		newStrategy.Status = models.StrategyStatusNotActive
 	} else if newStrategy.LastTotalDebt.IsZero() {
 		newStrategy.Status = models.StrategyStatusUnallocated

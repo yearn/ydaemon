@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-18T13:03:21.579450715Z",
+	"lastUpdate": "2025-06-19T16:53:15.460012994Z",
 	"version": {
 		"major": 0,
-		"minor": 135,
+		"minor": 136,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -17594,6 +17594,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/1/0x6d98a2b6CDbF44939362a3E99793339Ba2016aF4/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
+		},
+		"0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24": {
+			"address": "0x6de037ef9ad2725eb40118bb1702ebb27e4aeb24",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Render Token",
+			"symbol": "RNDR",
+			"displayName": "Render Token",
+			"displaySymbol": "RNDR",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/1/0x6De037ef9aD2725EB40118Bb1702EBb27e4Aeb24/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
 		},

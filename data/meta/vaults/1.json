@@ -33177,7 +33177,7 @@
 			"activation": 22739777,
 			"chainID": 1,
 			"endorsed": true,
-			"performanceFee": 0,
+			"performanceFee": 1000,
 			"managementFee": 0,
 			"emergencyShutdown": false,
 			"lastActiveStrategies": [
@@ -33191,7 +33191,7 @@
 				"isAggregator": false,
 				"isBoosted": false,
 				"isAutomated": false,
-				"isHighlighted": false,
+				"isHighlighted": true,
 				"isPool": false,
 				"shouldUseV2APR": false,
 				"migration": {
@@ -33203,9 +33203,9 @@
 					"stability": "Unknown"
 				},
 				"category": "auto",
-				"displayName": "",
-				"displaySymbol": "",
-				"description": "",
+				"displayName": "SKY",
+				"displaySymbol": "yvSKY-1",
+				"description": "Multi strategy SKY vault. \u003cbr/\u003e\u003cbr/\u003eMulti strategy vaults are (wait for it) vaults that contain multiple strategies. Multi strategy vaults give the vault creator flexibility to balance risk and opportunity across multiple different strategies.",
 				"sourceURI": "",
 				"uiNotice": "",
 				"protocols": null,

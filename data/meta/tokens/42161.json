@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-19T16:51:39.46163494Z",
+	"lastUpdate": "2025-06-20T14:28:23.429759181Z",
 	"version": {
 		"major": 0,
-		"minor": 51,
+		"minor": 52,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -1074,6 +1074,36 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x18ffB61c6d223bd91ec15acC248bb7e670aBcc48/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x1903aa5b603819b9debd2f4b202b686e9e393aff": {
+			"address": "0x1903aa5b603819b9debd2f4b202b686e9e393aff",
+			"underlyingTokensAddresses": [
+				"0x1903aa5b603819b9debd2f4b202b686e9e393aff"
+			],
+			"type": "Yearn Vault",
+			"name": "eigenATH",
+			"symbol": "eATH",
+			"displayName": "eigenATH",
+			"displaySymbol": "eATH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/42161/0x1903aa5b603819B9dEbd2F4b202B686e9e393AfF/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x193b2f36957f7e9e498758bbf182273bc145bb92": {
+			"address": "0x193b2f36957f7e9e498758bbf182273bc145bb92",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "SY eigenATH",
+			"symbol": "SY-eATH",
+			"displayName": "SY eigenATH",
+			"displaySymbol": "SY-eATH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x193b2f36957f7E9e498758bbF182273bc145bB92/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -2929,6 +2959,20 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0x4307fbDCD9Ec7AEA5a1c2958deCaa6f316952bAb/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
+		"0x43864094f3e6e5d5cc3bdc7414611248d4d56ed5": {
+			"address": "0x43864094f3e6e5d5cc3bdc7414611248d4d56ed5",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "YT eigenATH 11SEP2025",
+			"symbol": "YT-eATH-11SEP2025",
+			"displayName": "YT eigenATH 11SEP2025",
+			"displaySymbol": "YT-eATH-11SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0x43864094F3E6E5D5Cc3bdc7414611248d4d56ED5/logo-128.png",
 			"decimals": 18,
 			"chainID": 42161
 		},
@@ -6469,6 +6513,20 @@
 			"decimals": 18,
 			"chainID": 42161
 		},
+		"0xa520b3cc6431a7937eaf96e75ccde57c2a7aa6d1": {
+			"address": "0xa520b3cc6431a7937eaf96e75ccde57c2a7aa6d1",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "PT eigenATH 11SEP2025",
+			"symbol": "PT-eATH-11SEP2025",
+			"displayName": "PT eigenATH 11SEP2025",
+			"displaySymbol": "PT-eATH-11SEP2025",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xa520B3CC6431a7937EAF96E75CcdE57c2a7aA6D1/logo-128.png",
+			"decimals": 18,
+			"chainID": 42161
+		},
 		"0xa5eb3401b93b859b4638f9d40868f89e200f8a44": {
 			"address": "0xa5eb3401b93b859b4638f9d40868f89e200f8a44",
 			"underlyingTokensAddresses": [],
@@ -7517,6 +7575,20 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/42161/0xc617dAeE26F67edBEd5Bd978f4f8E02A1f8C9a6C/logo-128.png",
 			"decimals": 6,
+			"chainID": 42161
+		},
+		"0xc76311b199eb5a84d17a906a0409e560c43d12e3": {
+			"address": "0xc76311b199eb5a84d17a906a0409e560c43d12e3",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Pendle Market",
+			"symbol": "PENDLE-LPT",
+			"displayName": "Pendle Market",
+			"displaySymbol": "PENDLE-LPT",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/42161/0xc76311b199EB5A84d17A906A0409E560c43d12E3/logo-128.png",
+			"decimals": 18,
 			"chainID": 42161
 		},
 		"0xc79d8a2aa6d769138e599d4dbc30569c9870a6ee": {

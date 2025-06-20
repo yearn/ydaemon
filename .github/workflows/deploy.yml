@@ -1,0 +1,60 @@
+name: deploy ydaemon
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Build yDaemon
+        run: |
+          go build -o yDaemon -ldflags "-X main.version=$(git rev-parse HEAD)" ./cmd
+
+      - name: Take snapshot
+        run: |
+          ./yDaemon | tee out.log &
+          pid=$!
+          timeout=600
+          while ! grep -q "\[ OK \] \[1 - ComputeChainAPY ✅\]" <(tail -n 100 out.log); do
+            sleep 5
+            timeout=$((timeout - 5))
+            if [ "$timeout" -le 0 ]; then echo "Timeout waiting for APY"; kill $pid; exit 1; fi
+          done
+          kill $pid
+
+      - name: Push snapshot
+        if: ${{ !env.ACT }}  # only push in production (just cause it's easier)
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add .
+          git commit -m "Snapshot" || echo "No changes to commit"
+          git push
+
+      - name: Deploy to Production
+        run: |
+          echo -e "${{ secrets.YDAEMON_SSH_KEY }}" > id_ed25519
+          chmod 600 id_ed25519
+
+          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} bash -c "
+            set -e
+            export PATH=\$PATH:/usr/local/go/bin
+            git config --global --add safe.directory /opt/ydaemon
+            cd /opt/ydaemon/
+            git reset --hard
+            git pull
+            go build -o yDaemon -ldflags '-X main.version=$(git rev-parse HEAD)' ./cmd
+            sudo systemctl stop ydaemon.service
+            sleep 5
+            sudo systemctl start ydaemon.service
+          "

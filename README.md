@@ -147,4 +147,4 @@ go install github.com/go-delve/delve/cmd/dlv@latest
 
 in vscode, install go team go extension. set breakpoints. ctrl-shift-D
 
-ezpz
+

@@ -2,7 +2,6 @@ name: deploy ydaemon
 
 permissions:
   contents: write
-  secrets: read
 
 on:
   push:

@@ -2,7 +2,7 @@ name: notify telegram
 
 on:
   pull_request:
-    types: [opened, reopened, review_requested, closed]
+    types: [opened, review_requested]
 
 jobs:
   notify:

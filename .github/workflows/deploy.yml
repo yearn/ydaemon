@@ -27,7 +27,7 @@ jobs:
         run: |
           go build -o yDaemon -ldflags "-X main.version=$(git rev-parse HEAD)" ./cmd
 
-      - name: Take snapshot
+      - name: Generate snapshot
         run: |
           ./yDaemon | tee out.log &
           pid=$!
@@ -39,17 +39,7 @@ jobs:
           done
           kill $pid
 
-      - name: Push snapshot
-        if: ${{ !env.ACT }}  # only push in production (just cause it's easier)
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@users.noreply.github.com
-          git add .
-          git commit -m "Snapshot" || echo "No changes to commit"
-          git remote set-url origin https://x-access-token:${{ secrets.YDAEMON_PUSH_TOKEN }}@github.com/${{ github.repository }}
-          git push origin main
-
-      - name: Deploy to Production
+      - name: Update production
         run: |
           echo -e "${{ secrets.YDAEMON_SSH_KEY }}" > id_ed25519
           chmod 600 id_ed25519
@@ -62,7 +52,11 @@ jobs:
             git reset --hard
             git pull
             go build -o yDaemon -ldflags '-X main.version=$(git rev-parse HEAD)' ./cmd
-            sudo systemctl stop ydaemon.service
-            sleep 5
-            sudo systemctl start ydaemon.service
+          "
+
+          scp -i id_ed25519 -r data/ ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }}:/opt/ydaemon/data/
+
+          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} bash -c "
+            set -e
+            sudo systemctl restart ydaemon.service
           "

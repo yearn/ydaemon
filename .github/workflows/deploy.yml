@@ -20,6 +20,10 @@ jobs:
         with:
           go-version: '1.22'
 
+      - name: Create .env
+        if: ${{ !env.ACT }}  # only needed in production
+        run: echo "${{ secrets.YDAEMON_ENV_FILE }}" > .env
+
       - name: Build yDaemon
         run: |
           go build -o yDaemon -ldflags "-X main.version=$(git rev-parse HEAD)" ./cmd

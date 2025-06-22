@@ -8,6 +8,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Post status
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WEBOPS_TG_TOKEN }}
@@ -19,16 +22,13 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf 'ydaemon deploy - 🚀 *start*\n[%s](%s) %s' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🚀 start\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
             -d message_thread_id="${TOPIC_ID}" \
             -d text="${MESSAGE}" \
             -d parse_mode="Markdown"
-
-      - name: Checkout
-        uses: actions/checkout@v4
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -54,7 +54,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf 'ydaemon deploy - 📸 *take snapshot*\n[%s](%s) %s' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n📸 snapshot x deploy\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
@@ -91,10 +91,7 @@ jobs:
 
           scp -i id_ed25519 -r data/ ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }}:/opt/ydaemon/data/
 
-          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} bash -c "
-            set -e
-            sudo systemctl restart ydaemon.service
-          "
+          ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} bash -c "set -e && sudo systemctl restart ydaemon.service"
 
       - name: Post status
         env:
@@ -107,7 +104,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf 'ydaemon deploy - ⛑️ *run healthchecks*\n[%s](%s) %s' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n⛑️ check health\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
@@ -166,7 +163,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf 'ydaemon deploy - *🏁 live*\n[%s](%s) %s' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🏁 live!!\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \

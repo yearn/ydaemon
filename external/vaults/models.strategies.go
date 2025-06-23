@@ -69,7 +69,7 @@ func CreateExternalStrategy(strategy models.TStrategy) TExternalStrategy {
 	// Use the Status field if it's set, otherwise determine it based on the rules
 	status := string(strategy.Status)
 	if status == "" {
-		if strategy.IsRetired || !strategy.IsActive {
+		if strategy.IsRetired {
 			status = string(models.StrategyStatusNotActive)
 		} else if strategy.LastTotalDebt.IsZero() {
 			status = string(models.StrategyStatusUnallocated)

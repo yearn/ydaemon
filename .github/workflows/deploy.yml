@@ -22,7 +22,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🚀 start\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🚀 pushed to main\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
@@ -54,7 +54,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n📸 snapshot x deploy\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n📸 taking snapshot x deploy\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
@@ -104,7 +104,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n⛑️ check health\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n⛑️ running healthchecks\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \
@@ -152,7 +152,7 @@ jobs:
           done
           exit 1
 
-      - name: Send Telegram Message
+      - name: Post status
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.WEBOPS_TG_TOKEN }}
           CHAT_ID: ${{ secrets.WEBOPS_TG_CHAT_ID }}
@@ -163,7 +163,7 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%s)
           COMMIT_URL="https://github.com/${{ github.repository }}/commit/${FULL_HASH}"
 
-          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🏁 live!!\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
+          MESSAGE=$(printf '*ydaemon deploy*\n[%s](%s) %s\n\n🏁 live\n' "$COMMIT_HASH" "$COMMIT_URL" "$COMMIT_MESSAGE")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \

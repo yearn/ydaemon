@@ -38,10 +38,10 @@ var KATANA = TChain{
 		Address:                   DEFAULT_COIN_ADDRESS, // unclear if this should be KAT or ETH (which is the gas token)
 		UnderlyingTokensAddresses: []common.Address{},
 		Type:                      models.TokenTypeNative,
-		Name:                      `Katana`, // unclear if this should be KAT or ETH (which is the gas token)
-		Symbol:                    `KAT`,    // unclear if this should be KAT or ETH (which is the gas token)
-		DisplayName:               `Katana`, // unclear if this should be KAT or ETH (which is the gas token)
-		DisplaySymbol:             `KAT`,    // unclear if this should be KAT or ETH (which is the gas token)
+		Name:                      `Ether`, // unclear if this should be KAT or ETH (which is the gas token)
+		Symbol:                    `ETH`,   // unclear if this should be KAT or ETH (which is the gas token)
+		DisplayName:               `Ether`, // unclear if this should be KAT or ETH (which is the gas token)
+		DisplaySymbol:             `ETH`,   // unclear if this should be KAT or ETH (which is the gas token)
 		Description:               `Katana is a DeFi chain for deep liquidity and high yield.`,
 		Icon:                      BASE_ASSET_URL + strconv.FormatUint(747474, 10) + `/` + DEFAULT_COIN_ADDRESS.Hex() + `/logo-128.png`,
 		Decimals:                  18,

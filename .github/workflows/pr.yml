@@ -2,7 +2,7 @@ name: notify telegram
 
 on:
   pull_request:
-    types: [opened, reopened, review_requested, closed]
+    types: [opened, review_requested]
 
 jobs:
   notify:
@@ -21,7 +21,16 @@ jobs:
           PR_NUMBER="${{ github.event.pull_request.number }}"
           REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
 
-          MESSAGE=$(printf '*%s PR %s %s*\n[%s](%s)\nby *%s*' "$REPO_NAME" "$PR_NUMBER" "${PR_STATE^}" "$PR_TITLE" "$PR_URL" "$PR_USER")
+          EVENT_NAME="${{ github.event_name }}"
+          REVIEWER="${{ github.event.requested_reviewer.login }}"
+
+          if [ "$EVENT_NAME" = "pull_request" ] && [ "${{ github.event.action }}" = "review_requested" ]; then
+            STATE_MSG="Review requested from $REVIEWER"
+          else
+            STATE_MSG="${PR_STATE^}"
+          fi
+
+          MESSAGE=$(printf '*%s PR %s %s*\n[%s](%s)\nby *%s*' "$REPO_NAME" "$PR_NUMBER" "$STATE_MSG" "$PR_TITLE" "$PR_URL" "$PR_USER")
 
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             -d chat_id="${CHAT_ID}" \

@@ -18,7 +18,8 @@
   },
   "scripts": {
     "format": "prettier --write . --verbose",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test-github-workflow-deploy": "act -j deploy --env-file .env"
   },
   "devDependencies": {
     "prettier": "^3.3.3"

@@ -18,14 +18,15 @@ import (
 
 // GECKO_CHAIN_NAMES contains the chain identifiers for the CoinGecko API
 var GECKO_CHAIN_NAMES = map[uint64]string{
-	1:     `ethereum`,
-	10:    `optimistic-ethereum`,
-	100:   `xdai`,
-	137:   `polygon-pos`,
-	146:   `sonic`,
-	250:   `fantom`,
-	8453:  `base`,
-	42161: `arbitrum-one`,
+	1:      `ethereum`,
+	10:     `optimistic-ethereum`,
+	100:    `xdai`,
+	137:    `polygon-pos`,
+	146:    `sonic`,
+	250:    `fantom`,
+	8453:   `base`,
+	42161:  `arbitrum-one`,
+	747474: `katana`,
 }
 
 var keyIndexToUse uint64 = 0

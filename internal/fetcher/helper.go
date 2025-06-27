@@ -541,9 +541,9 @@ func handleV2StrategyCalls(strat models.TStrategy, response map[string][]interfa
 	}
 	if len(rawIsActive) > 0 {
 		strat.IsActive = helpers.DecodeBool(rawIsActive)
-		if !strat.IsActive {
-			strat.IsRetired = true
-		}
+		// if !strat.IsActive {
+		// 	strat.IsRetired = true
+		// }
 	}
 	if len(rawDoHealthCheck) > 0 {
 		strat.DoHealthCheck = helpers.DecodeBool(rawDoHealthCheck)

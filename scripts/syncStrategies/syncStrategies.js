@@ -2,7 +2,9 @@
      * This script synchronizes strategy states between fresh and stale directories. 
      * in PR #496, the strategies .json files were deleted and recreated by running yDaemon. This did not catch older strategies,
      * so I needed to create this script to update the stale strategies file and replace all that matched with the fresh strategies.
-     * It is easiest to run this script in a separate 
+     * It is easiest to do this with 2 worktrees to create the new .json files and still keep the old ones. 
+     * Run this script with the old json files in a new folder called "stale", and the new ones in a folder called "fresh". 
+     * New files will be created in the refreshed directory with the same name as the stale files, but with the updated strategy states.
      *
      * @type {any}
      * @constant

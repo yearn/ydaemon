@@ -237,11 +237,9 @@ func getV2StrategyCalls(strat models.TStrategy) []ethereum.Call {
 		calls = append(calls, multicalls.GetStategyKeepCVX(strategyKey, strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetEmergencyExit(strategyKey, strat.Address, strat.VaultVersion))
 	}
-	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
-		// If the last strat update was more than 24 hour ago, we will do a full update
-		calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
-	}
+	// Always fetch strategy name and health check
+	calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
 	return calls
 }
 
@@ -289,11 +287,9 @@ func getV3StrategyCalls(strat models.TStrategy) []ethereum.Call {
 		calls = append(calls, multicalls.GetStategyKeepCRVPercent(strategyKey, strat.Address, strat.VaultVersion))
 		calls = append(calls, multicalls.GetStategyKeepCVX(strategyKey, strat.Address, strat.VaultVersion))
 	}
-	if time.Since(lastUpdate).Hours() > 24 || shouldRefresh {
-		// If the last strat update was more than 24 hour ago, we will do a full update
-		calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
-		calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
-	}
+	// Always fetch strategy name and health check
+	calls = append(calls, multicalls.GetStrategyName(strategyKey, strat.Address, strat.VaultVersion))
+	calls = append(calls, multicalls.GetDoHealthCheck(strategyKey, strat.Address, strat.VaultVersion))
 	return calls
 }
 

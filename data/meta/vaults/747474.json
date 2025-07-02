@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-07-02T20:46:09.567053079Z",
+	"lastUpdate": "2025-07-02T20:56:00.8828643Z",
 	"version": {
 		"major": 0,
 		"minor": 18,
-		"patch": 0
+		"patch": 20
 	},
 	"shouldRefresh": false,
 	"vaults": {
@@ -48,8 +48,8 @@
 				"uiNotice": "",
 				"protocols": null,
 				"inclusion": {
-					"isSet": false,
-					"isYearn": false,
+					"isSet": true,
+					"isYearn": true,
 					"isYearnJuiced": false,
 					"isGimme": false,
 					"isPoolTogether": false,
@@ -505,7 +505,7 @@
 				"0xf0a8a393abe6dc35e873ff795d013adcc72604d2"
 			],
 			"lastPricePerShare": "1000000",
-			"lastTotalAssets": "69121271388940",
+			"lastTotalAssets": "69123771636464",
 			"metadata": {
 				"isRetired": false,
 				"isHidden": false,

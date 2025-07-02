@@ -1,17 +1,221 @@
 {
-	"lastUpdate": "2025-07-02T20:46:16.275746528Z",
+	"lastUpdate": "2025-07-02T20:56:25.820793682Z",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 2,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"apy": {
+		"0x0a1937f0d7f15b9adee5d96616f269a0c6749c6d": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x156c729c78076b7cd815d01ca6967c00c5ac8d9c": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x37a79bfb9f645f8ed0a9ead9c722710d8f47c431": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x543cc24962b540430dd1121e83e8564770da6810": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x58b369aec52dd904f70122cf72ed311f7aae3bac": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
 		"0x639bccf37cc0415812a6f110cfca33127a81c0e9": {
 			"type": "v3:new_averaged",
 			"netAPY": 0,
 			"fees": {
 				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x78ec25fba1baf6b7dc097ebb8115a390a2a4ee12": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
 				"management": 0
 			},
 			"points": {
@@ -211,11 +415,181 @@
 				}
 			}
 		},
+		"0xc1ec6d26902949bf6cbb0c9859dbead1e87fb243": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xcea8d1281ddacfdcd68eaaf88dd59ced0e627746": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xd46dfdaa7caa8739b0e3274e2c085dffc8d4776a": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
 		"0xe007ca01894c863d7898045ed5a3b4abf0b18f37": {
 			"type": "v3:new_averaged",
 			"netAPY": 0,
 			"fees": {
 				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xea79c91540c7e884e6e0069ce036e52f7bbb1194": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xf7ede5332c6b4a235be4aa3c019222cfe72e984f": {
+			"type": "v3:new_averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
 				"management": 0
 			},
 			"points": {

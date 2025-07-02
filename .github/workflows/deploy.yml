@@ -85,6 +85,7 @@ jobs:
             git config --global --add safe.directory /opt/ydaemon
             cd /opt/ydaemon/
             git reset --hard
+            git clean -fd
             git pull
             go build -o yDaemon -ldflags '-X main.version=$(git rev-parse HEAD)' ./cmd
           "

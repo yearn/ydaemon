@@ -1,0 +1,89 @@
+{
+	"lastUpdate": "2025-07-02T20:46:08.54204563Z",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"prices": {
+		"0x00000000efe302beaa2b3e6e1b18d08d69a9012a": {
+			"address": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+			"price": "999849",
+			"humanizedPrice": 0.999849,
+			"source": "defillama"
+		},
+		"0x0913da6da4b42f538b445599b46bb4622342cf52": {
+			"address": "0x0913da6da4b42f538b445599b46bb4622342cf52",
+			"price": "109374000000",
+			"humanizedPrice": 109374,
+			"source": "defillama"
+		},
+		"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36": {
+			"address": "0x203a662b0bd271a6ed5a60edfbd04bfce608fd36",
+			"price": "999874",
+			"humanizedPrice": 0.999874,
+			"source": "defillama"
+		},
+		"0x2dca96907fde857dd3d816880a0df407eeb2d2f2": {
+			"address": "0x2dca96907fde857dd3d816880a0df407eeb2d2f2",
+			"price": "1000999",
+			"humanizedPrice": 1.001,
+			"source": "defillama"
+		},
+		"0x62d6a123e8d19d06d68cf0d2294f9a3a0362c6b3": {
+			"address": "0x62d6a123e8d19d06d68cf0d2294f9a3a0362c6b3",
+			"price": "999885",
+			"humanizedPrice": 0.999885,
+			"source": "defillama"
+		},
+		"0x639bccf37cc0415812a6f110cfca33127a81c0e9": {
+			"address": "0x639bccf37cc0415812a6f110cfca33127a81c0e9",
+			"price": "0",
+			"humanizedPrice": 0,
+			"source": "yVaultV2-pps-store"
+		},
+		"0x80c34bd3a3569e126e7055831036aa7b212cb159": {
+			"address": "0x80c34bd3a3569e126e7055831036aa7b212cb159",
+			"price": "999874",
+			"humanizedPrice": 0.999874,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x8fb1c10ad4417eca341a1d903ff437d25ff87a4e": {
+			"address": "0x8fb1c10ad4417eca341a1d903ff437d25ff87a4e",
+			"price": "999885",
+			"humanizedPrice": 0.999885,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x93fec6639717b6215a48e5a72a162c50dcc40d68": {
+			"address": "0x93fec6639717b6215a48e5a72a162c50dcc40d68",
+			"price": "999849",
+			"humanizedPrice": 0.999849,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x9a6bd7b6fd5c4f87eb66356441502fc7dcdd185b": {
+			"address": "0x9a6bd7b6fd5c4f87eb66356441502fc7dcdd185b",
+			"price": "1000999",
+			"humanizedPrice": 1.000999,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0xaa0362ecc584b985056e47812931270b99c91f9d": {
+			"address": "0xaa0362ecc584b985056e47812931270b99c91f9d",
+			"price": "109374000000",
+			"humanizedPrice": 109374,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0xe007ca01894c863d7898045ed5a3b4abf0b18f37": {
+			"address": "0xe007ca01894c863d7898045ed5a3b4abf0b18f37",
+			"price": "2599150000",
+			"humanizedPrice": 2599.15,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62": {
+			"address": "0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62",
+			"price": "2599150000",
+			"humanizedPrice": 2599.15,
+			"source": "defillama"
+		}
+	}
+}

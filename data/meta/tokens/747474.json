@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-06-26T16:08:23.747489119-04:00",
+	"lastUpdate": "2025-07-02T20:56:01.734141368Z",
 	"version": {
 		"major": 0,
-		"minor": 3,
+		"minor": 4,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -35,6 +35,22 @@
 			"decimals": 8,
 			"chainID": 747474
 		},
+		"0x0a1937f0d7f15b9adee5d96616f269a0c6749c6d": {
+			"address": "0x0a1937f0d7f15b9adee5d96616f269a0c6749c6d",
+			"underlyingTokensAddresses": [
+				"0x0913da6da4b42f538b445599b46bb4622342cf52"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet WBTC Vault Compounder",
+			"symbol": "ysvbWBTC",
+			"displayName": "Morpho Gauntlet WBTC Vault Compounder",
+			"displaySymbol": "ysvbWBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x0a1937F0D7f15B9ADee5d96616f269a0C6749C6d/logo-128.png",
+			"decimals": 8,
+			"chainID": 747474
+		},
 		"0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74": {
 			"address": "0x0ef68c1ab3c83cf11f9546faba385e8a1bd38d74",
 			"underlyingTokensAddresses": [],
@@ -47,6 +63,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/747474/0x0eF68c1aB3C83CF11f9546FaBA385E8a1bd38d74/logo-128.png",
 			"decimals": 12,
+			"chainID": 747474
+		},
+		"0x156c729c78076b7cd815d01ca6967c00c5ac8d9c": {
+			"address": "0x156c729c78076b7cd815d01ca6967c00c5ac8d9c",
+			"underlyingTokensAddresses": [
+				"0x2dca96907fde857dd3d816880a0df407eeb2d2f2"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG USDT Compounder",
+			"symbol": "ysvbUSDT",
+			"displayName": "Morpho Yearn OG USDT Compounder",
+			"displaySymbol": "ysvbUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x156C729C78076b7cd815D01Ca6967c00c5ac8D9C/logo-128.png",
+			"decimals": 6,
 			"chainID": 747474
 		},
 		"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36": {
@@ -74,6 +106,54 @@
 			"description": "",
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/747474/0x2DCa96907fde857dd3D816880A0df407eeB2D2F2/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
+		"0x37a79bfb9f645f8ed0a9ead9c722710d8f47c431": {
+			"address": "0x37a79bfb9f645f8ed0a9ead9c722710d8f47c431",
+			"underlyingTokensAddresses": [
+				"0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG vbETH Compounder",
+			"symbol": "ysvbETH",
+			"displayName": "Morpho Yearn OG vbETH Compounder",
+			"displaySymbol": "ysvbETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x37a79Bfb9F645F8Ed0a9ead9c722710D8f47C431/logo-128.png",
+			"decimals": 18,
+			"chainID": 747474
+		},
+		"0x543cc24962b540430dd1121e83e8564770da6810": {
+			"address": "0x543cc24962b540430dd1121e83e8564770da6810",
+			"underlyingTokensAddresses": [
+				"0x2dca96907fde857dd3d816880a0df407eeb2d2f2"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet USDT Vault Compounder",
+			"symbol": "ysvbUSDT",
+			"displayName": "Morpho Gauntlet USDT Vault Compounder",
+			"displaySymbol": "ysvbUSDT",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x543CC24962b540430DD1121E83E8564770Da6810/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
+		"0x58b369aec52dd904f70122cf72ed311f7aae3bac": {
+			"address": "0x58b369aec52dd904f70122cf72ed311f7aae3bac",
+			"underlyingTokensAddresses": [
+				"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Steakhouse Prime USDC Compounder",
+			"symbol": "ysvbUSDC",
+			"displayName": "Morpho Steakhouse Prime USDC Compounder",
+			"displaySymbol": "ysvbUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x58B369aEC52DD904f70122cF72ed311f7AAe3bAc/logo-128.png",
 			"decimals": 6,
 			"chainID": 747474
 		},
@@ -105,6 +185,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/747474/0x639bCcF37CC0415812A6f110CFCa33127a81c0e9/logo-128.png",
 			"decimals": 12,
+			"chainID": 747474
+		},
+		"0x78ec25fba1baf6b7dc097ebb8115a390a2a4ee12": {
+			"address": "0x78ec25fba1baf6b7dc097ebb8115a390a2a4ee12",
+			"underlyingTokensAddresses": [
+				"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Yearn OG USDC Compounder",
+			"symbol": "ysvbUSDC",
+			"displayName": "Morpho Yearn OG USDC Compounder",
+			"displaySymbol": "ysvbUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x78EC25FBa1bAf6b7dc097Ebb8115A390A2a4Ee12/logo-128.png",
+			"decimals": 6,
 			"chainID": 747474
 		},
 		"0x80c34bd3a3569e126e7055831036aa7b212cb159": {
@@ -187,6 +283,54 @@
 			"decimals": 8,
 			"chainID": 747474
 		},
+		"0xc1ec6d26902949bf6cbb0c9859dbead1e87fb243": {
+			"address": "0xc1ec6d26902949bf6cbb0c9859dbead1e87fb243",
+			"underlyingTokensAddresses": [
+				"0x00000000efe302beaa2b3e6e1b18d08d69a9012a"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Steakhouse Prime AUSD Compounder",
+			"symbol": "ysAUSD",
+			"displayName": "Morpho Steakhouse Prime AUSD Compounder",
+			"displaySymbol": "ysAUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0xC1Ec6d26902949Bf6cbb0c9859dbEAD1E87FB243/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
+		"0xcea8d1281ddacfdcd68eaaf88dd59ced0e627746": {
+			"address": "0xcea8d1281ddacfdcd68eaaf88dd59ced0e627746",
+			"underlyingTokensAddresses": [
+				"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36"
+			],
+			"type": "Yearn Vault",
+			"name": "vbUSDC TOKI",
+			"symbol": "tovbUSDC",
+			"displayName": "vbUSDC TOKI",
+			"displaySymbol": "tovbUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0xCEa8d1281DdACFDcD68eAAf88dd59cEd0e627746/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
+		"0xd46dfdaa7caa8739b0e3274e2c085dffc8d4776a": {
+			"address": "0xd46dfdaa7caa8739b0e3274e2c085dffc8d4776a",
+			"underlyingTokensAddresses": [
+				"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet USDC Vault Compounder",
+			"symbol": "ysvbUSDC",
+			"displayName": "Morpho Gauntlet USDC Vault Compounder",
+			"displaySymbol": "ysvbUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0xD46dFDAA7cAA8739B0e3274e2C085dFFc8d4776A/logo-128.png",
+			"decimals": 6,
+			"chainID": 747474
+		},
 		"0xe007ca01894c863d7898045ed5a3b4abf0b18f37": {
 			"address": "0xe007ca01894c863d7898045ed5a3b4abf0b18f37",
 			"underlyingTokensAddresses": [
@@ -203,6 +347,22 @@
 			"decimals": 18,
 			"chainID": 747474
 		},
+		"0xea79c91540c7e884e6e0069ce036e52f7bbb1194": {
+			"address": "0xea79c91540c7e884e6e0069ce036e52f7bbb1194",
+			"underlyingTokensAddresses": [
+				"0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet WETH Vault Compounder",
+			"symbol": "ysvbETH",
+			"displayName": "Morpho Gauntlet WETH Vault Compounder",
+			"displaySymbol": "ysvbETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0xEA79C91540C7E884e6E0069Ce036E52f7BbB1194/logo-128.png",
+			"decimals": 18,
+			"chainID": 747474
+		},
 		"0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62": {
 			"address": "0xee7d8bcfb72bc1880d0cf19822eb0a2e6577ab62",
 			"underlyingTokensAddresses": [],
@@ -215,6 +375,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/747474/0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62/logo-128.png",
 			"decimals": 18,
+			"chainID": 747474
+		},
+		"0xf7ede5332c6b4a235be4aa3c019222cfe72e984f": {
+			"address": "0xf7ede5332c6b4a235be4aa3c019222cfe72e984f",
+			"underlyingTokensAddresses": [
+				"0x00000000efe302beaa2b3e6e1b18d08d69a9012a"
+			],
+			"type": "Yearn Vault",
+			"name": "Morpho Gauntlet AUSD Vault Compounder",
+			"symbol": "ysAUSD",
+			"displayName": "Morpho Gauntlet AUSD Vault Compounder",
+			"displaySymbol": "ysAUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0xF7EDe5332c6b4A235be4aA3c019222CFe72e984F/logo-128.png",
+			"decimals": 6,
 			"chainID": 747474
 		}
 	}

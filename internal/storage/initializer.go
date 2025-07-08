@@ -16,6 +16,8 @@ func InitializeStorage() {
 		LoadVaults(chainID, nil)
 		LoadStrategies(chainID, nil)
 		LoadERC20(chainID, nil)
+		LoadAPY(chainID, nil)
+		LoadPrices(chainID, nil)
 	}
 	logs.Success(`Initialized the store`)
 }

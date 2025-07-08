@@ -20,6 +20,16 @@ func init() {
 }
 
 /**************************************************************************
+** LoadPersistedAPY loads the persisted APY data from disk into the COMPUTED_APY map
+**************************************************************************/
+func LoadPersistedAPY(chainID uint64) {
+	apyMap, _ := storage.ListAPY(chainID)
+	for vaultAddress, apy := range apyMap {
+		safeSyncMap(COMPUTED_APY, chainID).Store(vaultAddress, apy)
+	}
+}
+
+/**************************************************************************
 ** Little helper to ensure that the sync map is initialized before use.
 **************************************************************************/
 func safeSyncMap(source map[uint64]*sync.Map, chainID uint64) *sync.Map {
@@ -47,6 +57,8 @@ func ComputeChainAPY(chainID uint64) {
 	storage.RefreshGammaCalls(chainID)
 
 	isOnGnosis := (chainID == 100)
+	computedAPYData := make(map[common.Address]TVaultAPY)
+
 	for _, vault := range allVaults {
 		// Adding an exception for the vault that is retired but we still want to compute. Alchemix related
 		isException := addresses.Equals(vault.Address, "0xaD17A225074191d5c8a37B50FdA1AE278a2EE6A2") ||
@@ -170,5 +182,9 @@ func ComputeChainAPY(chainID uint64) {
 		}
 
 		safeSyncMap(COMPUTED_APY, chainID).Store(vault.Address, vaultAPY)
+		computedAPYData[vault.Address] = vaultAPY
 	}
+
+	// Save the computed APY data to disk
+	storage.StoreAPYToJson(chainID, computedAPYData)
 }

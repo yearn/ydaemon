@@ -299,6 +299,10 @@ func fetchPrices(
 	for _, price := range newPriceMap {
 		storage.StorePrice(chainID, price)
 	}
+
+	// Save the computed prices data to disk
+	storage.StorePricesToJson(chainID, newPriceMap)
+
 	return newPriceMap
 }
 

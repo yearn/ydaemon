@@ -106,4 +106,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		gocron.WithStartAt(gocron.WithStartImmediately()),
 	)
 	scheduler.Start()
+
+	// Load persisted APY data on initialization
+	apr.LoadPersistedAPY(chainID)
 }

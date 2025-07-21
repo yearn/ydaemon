@@ -185,10 +185,32 @@ func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.T
 **************************************************************************************************/
 func FetchCmsVaultsMeta(chainID uint64) map[common.Address]models.TVaultCmsMetadataSchema {
 	cmsRoot := env.CMS_ROOT_URL
-	cmsURL := cmsRoot + "/packages/cms/cdn/content/vaults/" +
-		strconv.FormatUint(chainID, 10) + ".json"
+	var vaultsMetadata []models.TVaultCmsMetadataSchema
 
-	vaultsMetadata := helpers.FetchJSON[[]models.TVaultCmsMetadataSchema](cmsURL)
+	if cmsRoot != "" {
+		cmsURL := cmsRoot + "/vaults/" +
+			strconv.FormatUint(chainID, 10) + ".json"
+		vaultsMetadata = helpers.FetchJSON[[]models.TVaultCmsMetadataSchema](cmsURL)
+		logs.Success("Fetch", len(vaultsMetadata), "vault metadata from cms, chain", chainID)
+
+	} else {
+		localPath := env.BASE_DATA_PATH + "/cdn-dev/vaults/" + strconv.FormatUint(chainID, 10) + ".json"
+
+		file, err := os.Open(localPath)
+		if err != nil {
+			logs.Error("Failed to open local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TVaultCmsMetadataSchema)
+		}
+		defer file.Close()
+
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&vaultsMetadata)
+		if err != nil {
+			logs.Error("Failed to decode local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TVaultCmsMetadataSchema)
+		}
+		logs.Success("Load", len(vaultsMetadata), "vault metadata from local cms, chain", chainID)
+	}
 
 	// Convert array to map for easier lookup
 	vaultsMap := make(map[common.Address]models.TVaultCmsMetadataSchema)
@@ -196,7 +218,6 @@ func FetchCmsVaultsMeta(chainID uint64) map[common.Address]models.TVaultCmsMetad
 		vaultsMap[vault.Address] = vault
 	}
 
-	logs.Success("Fetched", len(vaultsMap), "vault metadata from cms for chain", chainID)
 	return vaultsMap
 }
 

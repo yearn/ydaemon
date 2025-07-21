@@ -127,6 +127,80 @@ func GetVaultsJsonMetadata(chainID uint64) TJsonMetadata {
 }
 
 /**************************************************************************************************
+** ApplyCmsVaultMeta applies CMS metadata to a vault's metadata field.
+** This function updates the vault's metadata with values from the CMS metadata,
+** applying field-by-field updates to the vault.Metadata struct.
+**
+** @param vaultMeta The CMS metadata to apply
+** @param vault The vault to update (passed by reference)
+**************************************************************************************************/
+func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.TVault) {
+	// Apply boolean fields
+	vault.Metadata.IsRetired = vaultMeta.IsRetired
+	vault.Metadata.IsAggregator = vaultMeta.IsAggregator
+	vault.Metadata.IsBoosted = vaultMeta.IsBoosted
+	vault.Metadata.IsPool = vaultMeta.IsPool
+	vault.Metadata.ShouldUseV2APR = vaultMeta.ShouldUseV2APR
+
+	// Apply struct fields
+	vault.Metadata.Migration = vaultMeta.Migration
+	vault.Metadata.Stability = vaultMeta.Stability
+
+	// Apply string fields (handle nil pointers)
+	if vaultMeta.Category != nil {
+		vault.Metadata.Category = models.TVaultCategoryType(*vaultMeta.Category)
+	}
+	if vaultMeta.DisplayName != nil {
+		vault.Metadata.DisplayName = *vaultMeta.DisplayName
+	}
+	if vaultMeta.DisplaySymbol != nil {
+		vault.Metadata.DisplaySymbol = *vaultMeta.DisplaySymbol
+	}
+	if vaultMeta.Description != nil {
+		vault.Metadata.Description = *vaultMeta.Description
+	}
+	if vaultMeta.SourceURI != nil {
+		vault.Metadata.SourceURI = *vaultMeta.SourceURI
+	}
+	if vaultMeta.UINotice != nil {
+		vault.Metadata.UINotice = *vaultMeta.UINotice
+	}
+
+	// Apply protocols array (convert TCmsProtocolType to string)
+	if vaultMeta.Protocols != nil {
+		protocols := make([]string, len(vaultMeta.Protocols))
+		for i, protocol := range vaultMeta.Protocols {
+			protocols[i] = string(protocol)
+		}
+		vault.Metadata.Protocols = protocols
+	}
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** FetchCmsVaultsMeta fetches vault metadata from the CMS for a specific chain ID.
+** The CMS returns an array of vault metadata following the TVaultCmsMetadataSchema structure.
+**
+** @param chainID The blockchain network ID
+** @return map[common.Address]models.TVaultCmsMetadataSchema A mapping of vault addresses to their metadata
+**************************************************************************************************/
+func FetchCmsVaultsMeta(chainID uint64) map[common.Address]models.TVaultCmsMetadataSchema {
+	cmsRoot := env.CMS_ROOT_URL
+	cmsURL := cmsRoot + "/packages/cms/cdn/content/vaults/" +
+		strconv.FormatUint(chainID, 10) + ".json"
+
+	vaultsMetadata := helpers.FetchJSON[[]models.TVaultCmsMetadataSchema](cmsURL)
+
+	// Convert array to map for easier lookup
+	vaultsMap := make(map[common.Address]models.TVaultCmsMetadataSchema)
+	for _, vault := range vaultsMetadata {
+		vaultsMap[vault.Address] = vault
+	}
+
+	logs.Success("Fetched", len(vaultsMap), "vault metadata from cms for chain", chainID)
+	return vaultsMap
+}
+
+/**************************************************************************************************
 ** LoadVaults will retrieve the all the vaults from the configured DB and store them in the
 ** _vaultsSyncMap for fast access during that same execution.
 **************************************************************************************************/
@@ -144,7 +218,21 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 		file.Version,
 		file.ShouldRefresh,
 	})
+
+	meta := FetchCmsVaultsMeta(chainID)
+
 	for _, vault := range file.Vaults {
+		vaultMeta, ok := meta[vault.Address]
+		if ok {
+			// override vault.Metadata with the meta[vault.Address], field by field
+			ApplyCmsVaultMeta(vaultMeta, &vault)
+			logs.Info("Apply cms vault metadata", chainID, vault.Address)
+			continue
+		} else {
+			logs.Warning("Vault metadata not found for vault", vault.Address, "on chain", chainID)
+		}
+
+		// Store it
 		StoreVault(vault.ChainID, vault)
 	}
 }

@@ -16,9 +16,11 @@ const (
 type TVaultStabilityType string
 
 const (
-	VaultStabilityStable   TVaultStabilityType = "Stable"
-	VaultStabilityVolatile TVaultStabilityType = "Volatile"
-	VaultStabilityUnknown  TVaultStabilityType = "Unknown"
+	VaultStabilityStable     TVaultStabilityType = "Stable"
+	VaultStabilityVolatile   TVaultStabilityType = "Volatile"
+	VaultStabilityUnknown    TVaultStabilityType = "Unknown"
+	VaultStabilityCorrelated TVaultStabilityType = "Correlated"
+	VaultStabilityUnstable   TVaultStabilityType = "Unstable"
 )
 
 type TVaultCategoryType string
@@ -202,4 +204,36 @@ type TAggregatedVault struct {
 type TStability struct {
 	Stability       TVaultStabilityType `json:"stability"`
 	StableBaseAsset string              `json:"stableBaseAsset,omitempty"`
+}
+
+// TCmsProtocolType represents the supported protocols
+type TCmsProtocolType string
+
+const (
+	ProtocolCurve      TCmsProtocolType = "Curve"
+	ProtocolBeethovenX TCmsProtocolType = "BeethovenX"
+	ProtocolGamma      TCmsProtocolType = "Gamma"
+	ProtocolBalancer   TCmsProtocolType = "Balancer"
+	ProtocolYearn      TCmsProtocolType = "Yearn"
+)
+
+// TVaultCmsMetadataSchema represents the vault metadata structure from ycms
+type TVaultCmsMetadataSchema struct {
+	ChainID        uint64             `json:"chainId"`
+	Address        common.Address     `json:"address"`
+	Registry       *common.Address    `json:"registry,omitempty"`
+	IsRetired      bool               `json:"isRetired"`
+	IsAggregator   bool               `json:"isAggregator"`
+	IsBoosted      bool               `json:"isBoosted"`
+	IsPool         bool               `json:"isPool"`
+	ShouldUseV2APR bool               `json:"shouldUseV2APR"`
+	Migration      TMigration         `json:"migration"`
+	Stability      TStability         `json:"stability"`
+	Category       *string            `json:"category,omitempty"`
+	DisplayName    *string            `json:"displayName,omitempty"`
+	DisplaySymbol  *string            `json:"displaySymbol,omitempty"`
+	Description    *string            `json:"description,omitempty"`
+	SourceURI      *string            `json:"sourceURI,omitempty"`
+	UINotice       *string            `json:"uiNotice,omitempty"`
+	Protocols      []TCmsProtocolType `json:"protocols"`
 }

@@ -72,3 +72,11 @@ var LLAMA_PRICE_URL = `https://coins.llama.fi/prices/current/`
 ** This array is populated from the CG_DEMO_KEYS environment variable during initialization.
 **************************************************************************************************/
 var CG_DEMO_KEYS = []string{}
+
+/**************************************************************************************************
+** CMS_ROOT_URL contains the base URL for the CMS (Content Management System) API.
+** This endpoint is used to fetch vault metadata and other CMS-related data.
+** When CMS_ROOT_URL ``, yDaemon will fetch metadata locally from
+** ../webops-sdk/packages/cms/cdn/content
+**************************************************************************************************/
+var CMS_ROOT_URL = ``

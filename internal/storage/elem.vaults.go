@@ -137,6 +137,7 @@ func GetVaultsJsonMetadata(chainID uint64) TJsonMetadata {
 func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.TVault) {
 	// Apply boolean fields
 	vault.Metadata.IsRetired = vaultMeta.IsRetired
+	vault.Metadata.IsHighlighted = vaultMeta.IsHighlighted
 	vault.Metadata.IsAggregator = vaultMeta.IsAggregator
 	vault.Metadata.IsBoosted = vaultMeta.IsBoosted
 	vault.Metadata.IsPool = vaultMeta.IsPool
@@ -248,7 +249,6 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 			// override vault.Metadata with the meta[vault.Address], field by field
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 			logs.Info("Apply cms vault metadata", chainID, vault.Address)
-			continue
 		} else {
 			logs.Warning("Vault metadata not found for vault", vault.Address, "on chain", chainID)
 		}

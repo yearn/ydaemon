@@ -223,6 +223,7 @@ type TVaultCmsMetadataSchema struct {
 	Address        common.Address     `json:"address"`
 	Registry       *common.Address    `json:"registry,omitempty"`
 	IsRetired      bool               `json:"isRetired"`
+	IsHighlighted  bool               `json:"isHighlighted"`
 	IsAggregator   bool               `json:"isAggregator"`
 	IsBoosted      bool               `json:"isBoosted"`
 	IsPool         bool               `json:"isPool"`

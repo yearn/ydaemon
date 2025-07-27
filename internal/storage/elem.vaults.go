@@ -305,3 +305,27 @@ func GetVault(chainID uint64, vaultAddress common.Address) (models.TVault, bool)
 	}
 	return vaultFromSyncMap.(models.TVault), true
 }
+
+/**************************************************************************************************
+** RefreshVaultMetadata will fetch the latest vault metadata from CMS and apply it to all
+** currently loaded vaults. This function is designed to be called periodically by the scheduler.
+**
+** @param chainID The blockchain network ID
+**************************************************************************************************/
+func RefreshVaultMetadata(chainID uint64) {
+	mutex := getVaultMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	meta := FetchCmsVaultsMeta(chainID)
+
+	vaultsMap, _ := ListVaults(chainID)
+
+	for address, vault := range vaultsMap {
+		vaultMeta, ok := meta[address]
+		if ok {
+			ApplyCmsVaultMeta(vaultMeta, &vault)
+			StoreVault(chainID, vault)
+		}
+	}
+}

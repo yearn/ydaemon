@@ -246,14 +246,12 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	for _, vault := range file.Vaults {
 		vaultMeta, ok := meta[vault.Address]
 		if ok {
-			// override vault.Metadata with the meta[vault.Address], field by field
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 			logs.Info("Apply cms vault metadata", chainID, vault.Address)
-		} else {
-			logs.Warning("Vault metadata not found for vault", vault.Address, "on chain", chainID)
 		}
+	}
 
-		// Store it
+	for _, vault := range file.Vaults {
 		StoreVault(vault.ChainID, vault)
 	}
 }

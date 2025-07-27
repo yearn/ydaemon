@@ -474,7 +474,7 @@ func fetchBlocktimeForDateRange(chainID uint64, startDate, endDate *time.Time) {
 	newPairs := make([]TimestampBlockPair, 0, days)
 
 	// Get EtherScan API key
-	APIKey := os.Getenv("SCAN_API_KEY_FOR_" + strconv.FormatUint(chainID, 10))
+	APIKey := os.Getenv("SCAN_API_KEY")
 	if APIKey == "" {
 		blocktimeWarning(fmt.Sprintf("Chain %d - No Etherscan API key found in environment, API rate limits may apply", chainID))
 	}
@@ -952,7 +952,7 @@ func GetHistoricalBlockNumbers(chainID uint64) map[string]uint64 {
 			continue
 		}
 
-		APIKey := os.Getenv("SCAN_API_KEY_FOR_" + strconv.FormatUint(chainID, 10))
+		APIKey := os.Getenv("SCAN_API_KEY")
 		blockNumber, err := fetchBlockNumberFromAPI(chain, uint64(timestamp), APIKey)
 		if err != nil {
 			blocktimeWarning(fmt.Sprintf("Chain %d - Failed to fetch historical block for period %s: %v",

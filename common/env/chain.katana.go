@@ -12,7 +12,7 @@ var KATANA = TChain{
 	ID:              747474,
 	RpcURI:          `https://rpc.katana.network`,
 	SubgraphURI:     ``,
-	EtherscanURI:    `https://api.etherscan.io/v2/api`,
+	EtherscanURI:    ``,
 	MaxBlockRange:   100_000_000,
 	MaxBatchSize:    math.MaxInt64,
 	AvgBlocksPerDay: 86_400,

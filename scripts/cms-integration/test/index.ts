@@ -2,12 +2,12 @@
 // This file provides custom Jest-like matchers (like toAlmostBe) that work with Bun's test runner.
 
 import { expect as bunExpect, test as bunTest } from 'bun:test'
-import compareObjects from './compareObjects'
+import deepCompareObjects from './deepCompareObjects'
 
 declare module 'bun:test' {
   interface Matchers<T> {
     toAlmostBe(expected: number, tolerance?: number): void
-    toAlmostEqual(expected: any, options?: { tolerance?: Record<string, number> }): void
+    toAlmostEqual(expected: any, options?: { tolerance?: Record<string, number>, message?: string }): void
   }
 }
 
@@ -28,17 +28,17 @@ bunExpect.extend({
     }
   },
 
-  toAlmostEqual(received: unknown, expected: any, options: { tolerance?: Record<string, number> } = {}) {
-    const { tolerance = {} } = options
+  toAlmostEqual(received: unknown, expected: any, options: { tolerance?: Record<string, number>, message?: string } = {}) {
+    const { tolerance = {}, message } = options
     
     if (typeof received !== 'object' || typeof expected !== 'object') {
       return {
         pass: false,
-        message: () => `expected both values to be objects, got ${typeof received} and ${typeof expected}`
+        message: () => `${message ? message + '\n' : ''}expected both values to be objects, got ${typeof received} and ${typeof expected}`
       }
     }
 
-    return compareObjects(received, expected, tolerance)
+    return deepCompareObjects(received, expected, { tolerance, message })
   }
 })
 

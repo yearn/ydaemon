@@ -39,7 +39,7 @@ export const YDaemonVaultResponseSchema = z.object({
     decimals: z.number(),
   }),
   tvl: z.object({
-    totalAssets: z.string(),
+    totalAssets: z.bigint({ coerce: true }),
     tvl: z.number(),
     price: z.number(),
   }),
@@ -77,12 +77,11 @@ export const YDaemonVaultResponseSchema = z.object({
       }),
     }),
   }),
-  strategies: z.array(z.object({
-    address: EvmAddressSchema,
-    name: z.string(),
-    symbol: z.string(),
-    decimals: z.number(),
-  })),
+  // strategies: z.array(z.object({
+  //   address: EvmAddressSchema,
+  //   name: z.string()
+  //   ...
+  // })),
   staking: z.object({
     address: optionalString(EvmAddressSchema),
     available: z.boolean(),
@@ -95,7 +94,7 @@ export const YDaemonVaultResponseSchema = z.object({
     contract: EvmAddressSchema,
   }),
   featuringScore: z.number(),
-  pricePerShare: z.string(),
+  pricePerShare: z.bigint({ coerce: true }),
   info: z.object({
     riskLevel: z.number(),
     isRetired: z.boolean(),

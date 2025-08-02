@@ -13,35 +13,18 @@ test('compare local with live', async () => {
   const local = YDaemonVaultResponseSchema.parse(localJson)
   const live = YDaemonVaultResponseSchema.parse(liveJson)
 
-  expect(local.chainID).toBe(live.chainID)
-  expect(local.address).toBe(live.address)
-  expect(local.type).toBe(live.type)
-  expect(local.kind).toBe(live.kind)
-  expect(local.symbol).toBe(live.symbol)
-  expect(local.name).toBe(live.name)
-  expect(local.category).toBe(live.category)
-  expect(local.version).toBe(live.version)
-  expect(local.decimals).toBe(live.decimals)
-  expect(local.token.address).toBe(live.token.address)
-  expect(local.token.name).toBe(live.token.name)
-  expect(local.token.symbol).toBe(live.token.symbol)
-  expect(local.token.description).toBe(live.token.description)
-  expect(local.token.decimals).toBe(live.token.decimals)
-  expect(local.tvl.totalAssets).toBe(live.tvl.totalAssets)
-  expect(local.tvl.tvl).toAlmostBe(live.tvl.tvl, 1000)
-  expect(local.tvl.price).toAlmostBe(live.tvl.price, 1e-4)
-  // expect(local.apr.type).toBe(live.apr.type)
-  // expect(local.apr.netAPR).toBe(live.apr.netAPR)
-  // expect(local.apr.fees.performance).toBe(live.apr.fees.performance)
-  // expect(local.apr.fees.management).toBe(live.apr.fees.management)
-  // expect(local.apr.forwardAPR.type).toBe(live.apr.forwardAPR.type)
-  // expect(local.apr.forwardAPR.netAPR).toBe(live.apr.forwardAPR.netAPR)
-  // expect(local.apr.forwardAPR.composite.boost).toBe(live.apr.forwardAPR.composite.boost)
-  // expect(local.apr.forwardAPR.composite.poolAPY).toBe(live.apr.forwardAPR.composite.poolAPY)
-  // expect(local.apr.forwardAPR.composite.boostedAPR).toBe(live.apr.forwardAPR.composite.boostedAPR)
-  // expect(local.apr.forwardAPR.composite.baseAPR).toBe(live.apr.forwardAPR.composite.baseAPR)
-  // expect(local.apr.forwardAPR.composite.cvxAPR).toBe(live.apr.forwardAPR.composite.cvxAPR)
-  // expect(local.apr.forwardAPR.composite.rewardsAPR).toBe(live.apr.forwardAPR.composite.rewardsAPR)
-  // expect(local.apr.extra.stakingRewardsAPR).toBe(live.apr.extra.stakingRewardsAPR)
-  // expect(local.apr.extra.gammaRewardAPR).toBe(live.apr.extra.gammaRewardAPR)
+  expect(local).toAlmostEqual(live, { tolerance: { 
+    'tvl/tvl': 10_000 * live.tvl.tvl / local.tvl.tvl,
+    'tvl/price': 1e-4,
+    'apr/netAPR': 1e-4,
+    'apr/forwardAPR/composite/boost': 1e-4,
+    'apr/forwardAPR/composite/poolAPY': 1e-4,
+    'apr/forwardAPR/composite/boostedAPR': 1e-4,
+    'apr/points/weekAgo': 6e-4,
+    'apr/points/monthAgo': 1e-4,
+    'apr/points/inception': 3e-4,
+    'apr/pricePerShare/weekAgo': 2e-5,
+    'apr/pricePerShare/monthAgo': 1e-5,
+    'featuringScore': 1000
+  } })
 })

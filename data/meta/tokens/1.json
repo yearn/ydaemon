@@ -41512,6 +41512,22 @@
 			"icon": "https://assets.smold.app/api/token/1/0xfFeeb0B47D0EDe7E4FF3e7851cEfb944A6a74e0F/logo-128.png",
 			"decimals": 18,
 			"chainID": 1
+		},
+		"0xe3Bf2D04cd3B6e74613D36368c7D21B2d6C26d72": {
+			"address": "0xe3Bf2D04cd3B6e74613D36368c7D21B2d6C26d72",
+			"underlyingTokensAddresses": [
+				"0x3bE454C4391690ab4DDae3Fb987c8147b8Ecc08A"
+			],
+			"type": "Yearn Vault",
+			"name": "Curve USDafscrv Factory yVault",
+			"symbol": "yvCurve-USDafscrv-f ",
+			"displayName": "Curve USDafscrv Factory yVault",
+			"displaySymbol": "yvCurve-USDafscrv-f ",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/1/0xe3Bf2D04cd3B6e74613D36368c7D21B2d6C26d72/logo-128.png",
+			"decimals": 18,
+			"chainID": 1
 		}
 	}
 }

@@ -1,0 +1,115 @@
+{
+	"lastUpdate": "2025-08-07T09:15:49.868686417-04:00",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"apy": {
+		"0x39b68451f05aaa020611cf887a7338f0991ffd60": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.030821535002682178
+			},
+			"pricePerShare": {
+				"today": 1.041292412647429,
+				"weekAgo": 1.041292412647429,
+				"monthAgo": 1.041292412647429
+			},
+			"extra": {
+				"stakingRewardsAPY": 0,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0x5012c6bf79b3047ecfff2f212dffda4d2128188f": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.029109149184932105
+			},
+			"pricePerShare": {
+				"today": 1.0408325599525623,
+				"weekAgo": 1.0408325599525623,
+				"monthAgo": 1.0408325599525623
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xa21cc1a4a239708690134baed3a1b93cad55f625": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.21245586101248787
+			},
+			"pricePerShare": {
+				"today": 1.296274063713305,
+				"weekAgo": 1.296274063713305,
+				"monthAgo": 1.296274063713305
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "crv",
+				"netAPY": 0.14387993347822922,
+				"composite": {
+					"boost": 1,
+					"poolAPY": 0,
+					"boostedAPR": 0.15986659275358803,
+					"baseAPR": 0,
+					"cvxAPR": 0,
+					"rewardsAPY": 0.15986659275358803,
+					"keepCRV": 0,
+					"keepVELO": 0
+				}
+			}
+		}
+	}
+}

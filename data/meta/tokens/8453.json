@@ -1,12 +1,28 @@
 {
-	"lastUpdate": "2025-06-20T14:28:26.173145953Z",
+	"lastUpdate": "2025-08-07T09:15:55.804070803-04:00",
 	"version": {
 		"major": 0,
-		"minor": 31,
+		"minor": 32,
 		"patch": 0
 	},
 	"shouldRefresh": false,
 	"tokens": {
+		"0x0017a89a230cb1304efcf7cab8855db29243474b": {
+			"address": "0x0017a89a230cb1304efcf7cab8855db29243474b",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC syyCore",
+			"symbol": "syycUSDC",
+			"displayName": "USDC syyCore",
+			"displaySymbol": "syycUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x0017A89a230cb1304EfCF7Cab8855DB29243474B/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc": {
 			"address": "0x00f30115b5e828ab387b8190f8532ea7ceaf3fdc",
 			"underlyingTokensAddresses": [
@@ -477,6 +493,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x3ED55314C0a4B1a1e3E6b4C9E0617d99c8B5fFf8/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x3fa853290b0a21396f2e7bf0d4a372927d6eb5b4": {
+			"address": "0x3fa853290b0a21396f2e7bf0d4a372927d6eb5b4",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "cbBTC BaseInvaders",
+			"symbol": "bicbBTC",
+			"displayName": "cbBTC BaseInvaders",
+			"displaySymbol": "bicbBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x3Fa853290B0A21396F2e7bF0d4A372927D6Eb5b4/logo-128.png",
+			"decimals": 8,
 			"chainID": 8453
 		},
 		"0x3fc28bfac25fc8e93b5b2fc15efbbd5a8aa44efe": {

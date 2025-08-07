@@ -1,0 +1,389 @@
+{
+	"lastUpdate": "2025-08-07T09:15:46.164728564-04:00",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"prices": {
+		"0x004626a008b1acdc4c74ab51644093b155e59a23": {
+			"address": "0x004626a008b1acdc4c74ab51644093b155e59a23",
+			"price": "1260000",
+			"humanizedPrice": 1.26,
+			"source": "curveFactoryAPI"
+		},
+		"0x029ee678c91b52ed567d106a6f28e6b483165987": {
+			"address": "0x029ee678c91b52ed567d106a6f28e6b483165987",
+			"price": "127432618",
+			"humanizedPrice": 127.432618,
+			"source": "curveFactoryAPI"
+		},
+		"0x02e7e2dd3ba409148a49d5cc9a9034d2f884f245": {
+			"address": "0x02e7e2dd3ba409148a49d5cc9a9034d2f884f245",
+			"price": "2334483847",
+			"humanizedPrice": 2334.483847,
+			"source": "curveFactoryAPI"
+		},
+		"0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce": {
+			"address": "0x0aa1e96d2a46ec6beb2923de1e61addf5f5f1dce",
+			"price": "161869",
+			"humanizedPrice": 0.161869,
+			"source": "curveFactoryAPI"
+		},
+		"0x0c8fa74c7b2de5a92b39217dc98d2d609439a2e5": {
+			"address": "0x0c8fa74c7b2de5a92b39217dc98d2d609439a2e5",
+			"price": "1069825",
+			"humanizedPrice": 1.069825,
+			"source": "curveFactoryAPI"
+		},
+		"0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a": {
+			"address": "0x0ca1c1ec4ebf3cc67a9f545ff90a3795b318ca4a",
+			"price": "2181703",
+			"humanizedPrice": 2.1817035012160475,
+			"source": "defillama"
+		},
+		"0x0ff26a978a61d40f6591fc700ef878e96af6c2c0": {
+			"address": "0x0ff26a978a61d40f6591fc700ef878e96af6c2c0",
+			"price": "2623000",
+			"humanizedPrice": 2.623,
+			"source": "curveFactoryAPI"
+		},
+		"0x1337bedc9d22ecbe766df105c9623922a27963ec": {
+			"address": "0x1337bedc9d22ecbe766df105c9623922a27963ec",
+			"price": "1010629",
+			"humanizedPrice": 1.010629,
+			"source": "curveFactoryAPI"
+		},
+		"0x2993bd6da994378eadf1a5ba5c9017fdfc92f111": {
+			"address": "0x2993bd6da994378eadf1a5ba5c9017fdfc92f111",
+			"price": "999747",
+			"humanizedPrice": 0.999747,
+			"source": "curveFactoryAPI"
+		},
+		"0x2a22f9c3b484c3629090feed35f17ff8f88f76f0": {
+			"address": "0x2a22f9c3b484c3629090feed35f17ff8f88f76f0",
+			"price": "999917",
+			"humanizedPrice": 0.999917,
+			"source": "curveFactoryAPI"
+		},
+		"0x2b20faaf99d1f849815d55bed626bde050aa12c4": {
+			"address": "0x2b20faaf99d1f849815d55bed626bde050aa12c4",
+			"price": "10000",
+			"humanizedPrice": 0.01,
+			"source": "curveFactoryAPI"
+		},
+		"0x32b0456100e4febca554244b225706b1beeeaeb1": {
+			"address": "0x32b0456100e4febca554244b225706b1beeeaeb1",
+			"price": "1086483",
+			"humanizedPrice": 1.086483,
+			"source": "curveFactoryAPI"
+		},
+		"0x33b21eea0b59a97e9d568c793b6b3924e1d46fec": {
+			"address": "0x33b21eea0b59a97e9d568c793b6b3924e1d46fec",
+			"price": "1000072",
+			"humanizedPrice": 1.000072,
+			"source": "curveFactoryAPI"
+		},
+		"0x36390a1ae126f16c5d222cb1f2ab341dd09f2fec": {
+			"address": "0x36390a1ae126f16c5d222cb1f2ab341dd09f2fec",
+			"price": "993510",
+			"humanizedPrice": 0.99351,
+			"source": "curveFactoryAPI"
+		},
+		"0x39b68451f05aaa020611cf887a7338f0991ffd60": {
+			"address": "0x39b68451f05aaa020611cf887a7338f0991ffd60",
+			"price": "1218312",
+			"humanizedPrice": 1.218312,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x3f105e0a641747c5401e9513b125e00a5f403556": {
+			"address": "0x3f105e0a641747c5401e9513b125e00a5f403556",
+			"price": "200019",
+			"humanizedPrice": 0.200019,
+			"source": "curveFactoryAPI"
+		},
+		"0x3f56e0c36d275367b8c502090edf38289b3dea0d": {
+			"address": "0x3f56e0c36d275367b8c502090edf38289b3dea0d",
+			"price": "990281",
+			"humanizedPrice": 0.990281,
+			"source": "curveFactoryAPI"
+		},
+		"0x44fa8e6f47987339850636f88629646662444217": {
+			"address": "0x44fa8e6f47987339850636f88629646662444217",
+			"price": "1010000",
+			"humanizedPrice": 1.01,
+			"source": "curveFactoryAPI"
+		},
+		"0x4ecaba5870353805a9f068101a40e0f32ed605c6": {
+			"address": "0x4ecaba5870353805a9f068101a40e0f32ed605c6",
+			"price": "1000269",
+			"humanizedPrice": 1.000269,
+			"source": "curveFactoryAPI"
+		},
+		"0x5012c6bf79b3047ecfff2f212dffda4d2128188f": {
+			"address": "0x5012c6bf79b3047ecfff2f212dffda4d2128188f",
+			"price": "1217774",
+			"humanizedPrice": 1.217774,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x54e4cb2a4fa0ee46e3d9a98d13bea119666e09f6": {
+			"address": "0x54e4cb2a4fa0ee46e3d9a98d13bea119666e09f6",
+			"price": "1166993",
+			"humanizedPrice": 1.166993,
+			"source": "curveFactoryAPI"
+		},
+		"0x5815e61ef72c9e6107b5c5a05fd121f334f7a7f1": {
+			"address": "0x5815e61ef72c9e6107b5c5a05fd121f334f7a7f1",
+			"price": "1167139",
+			"humanizedPrice": 1.167139,
+			"source": "curveFactoryAPI"
+		},
+		"0x592878b920101946fb5915ab97961bc546f211cc": {
+			"address": "0x592878b920101946fb5915ab97961bc546f211cc",
+			"price": "2111957",
+			"humanizedPrice": 2.111957,
+			"source": "curveFactoryAPI"
+		},
+		"0x5cb9073902f2035222b9749f8fb0c9bfe5527108": {
+			"address": "0x5cb9073902f2035222b9749f8fb0c9bfe5527108",
+			"price": "1188505",
+			"humanizedPrice": 1.188505,
+			"source": "curveFactoryAPI"
+		},
+		"0x5d7309a01b727d6769153fcb1df5587858d53b9c": {
+			"address": "0x5d7309a01b727d6769153fcb1df5587858d53b9c",
+			"price": "36706640",
+			"humanizedPrice": 36.70664,
+			"source": "curveFactoryAPI"
+		},
+		"0x67ee2155601e168f7777f169cd74f3e22bb5e0ce": {
+			"address": "0x67ee2155601e168f7777f169cd74f3e22bb5e0ce",
+			"price": "5933",
+			"humanizedPrice": 0.00593392,
+			"source": "defillama"
+		},
+		"0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1": {
+			"address": "0x6a023ccd1ff6f2045c3309768ead9e68f978f6e1",
+			"price": "3843360000",
+			"humanizedPrice": 3843.36,
+			"source": "curveFactoryAPI"
+		},
+		"0x705a06cded7b24df255804224dfc991681313bc9": {
+			"address": "0x705a06cded7b24df255804224dfc991681313bc9",
+			"price": "1000336",
+			"humanizedPrice": 1.000336,
+			"source": "curveFactoryAPI"
+		},
+		"0x712b3d230f3c1c19db860d80619288b1f0bdd0bd": {
+			"address": "0x712b3d230f3c1c19db860d80619288b1f0bdd0bd",
+			"price": "922301",
+			"humanizedPrice": 0.922301,
+			"source": "curveFactoryAPI"
+		},
+		"0x71850b7e9ee3f13ab46d67167341e4bdc905eef9": {
+			"address": "0x71850b7e9ee3f13ab46d67167341e4bdc905eef9",
+			"price": "1918692",
+			"humanizedPrice": 1.918692,
+			"source": "curveFactoryAPI"
+		},
+		"0x845c8bc94610807fcbab5dd2bc7ac9dabaff3c55": {
+			"address": "0x845c8bc94610807fcbab5dd2bc7ac9dabaff3c55",
+			"price": "1168619",
+			"humanizedPrice": 1.168619,
+			"source": "curveFactoryAPI"
+		},
+		"0x892406491a47ef0db3abad92064fb5551ff776e0": {
+			"address": "0x892406491a47ef0db3abad92064fb5551ff776e0",
+			"price": "1001148",
+			"humanizedPrice": 1.001148,
+			"source": "curveFactoryAPI"
+		},
+		"0x8d374ab634a5a5396fce288d50cbe394a2018812": {
+			"address": "0x8d374ab634a5a5396fce288d50cbe394a2018812",
+			"price": "2777743",
+			"humanizedPrice": 2.777743,
+			"source": "curveFactoryAPI"
+		},
+		"0x8e5bbbb09ed1ebde8674cda39a0c169401db4252": {
+			"address": "0x8e5bbbb09ed1ebde8674cda39a0c169401db4252",
+			"price": "116435000000",
+			"humanizedPrice": 116435,
+			"source": "curveFactoryAPI"
+		},
+		"0x96aaf8f6a2e3f45aaf548b753a0e004211e0ad63": {
+			"address": "0x96aaf8f6a2e3f45aaf548b753a0e004211e0ad63",
+			"price": "1167401",
+			"humanizedPrice": 1.167401,
+			"source": "curveFactoryAPI"
+		},
+		"0x9c58bacc331c9aa871afd802db6379a98e80cedb": {
+			"address": "0x9c58bacc331c9aa871afd802db6379a98e80cedb",
+			"price": "126890000",
+			"humanizedPrice": 126.89,
+			"source": "curveFactoryAPI"
+		},
+		"0x9fb1d52596c44603198fb0aee434fac3a679f702": {
+			"address": "0x9fb1d52596c44603198fb0aee434fac3a679f702",
+			"price": "769957",
+			"humanizedPrice": 0.769957,
+			"source": "curveFactoryAPI"
+		},
+		"0xa21cc1a4a239708690134baed3a1b93cad55f625": {
+			"address": "0xa21cc1a4a239708690134baed3a1b93cad55f625",
+			"price": "2828085",
+			"humanizedPrice": 2.828085,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0xa4ef9da5ba71cc0d2e5e877a910a37ec43420445": {
+			"address": "0xa4ef9da5ba71cc0d2e5e877a910a37ec43420445",
+			"price": "126442389",
+			"humanizedPrice": 126.442389,
+			"source": "curveFactoryAPI"
+		},
+		"0xa555d5344f6fb6c65da19e403cb4c1ec4a1a5ee3": {
+			"address": "0xa555d5344f6fb6c65da19e403cb4c1ec4a1a5ee3",
+			"price": "1000863",
+			"humanizedPrice": 1.000863,
+			"source": "curveFactoryAPI"
+		},
+		"0xa64d8025dda09bce94da2cf2dc175d1831e2df76": {
+			"address": "0xa64d8025dda09bce94da2cf2dc175d1831e2df76",
+			"price": "1016151",
+			"humanizedPrice": 1.016151,
+			"source": "curveFactoryAPI"
+		},
+		"0xabef652195f98a91e490f047a5006b71c85f058d": {
+			"address": "0xabef652195f98a91e490f047a5006b71c85f058d",
+			"price": "999970",
+			"humanizedPrice": 0.99997,
+			"source": "curveFactoryAPI"
+		},
+		"0xacd0f57a608cb3af6af7f76efc587f7462f51207": {
+			"address": "0xacd0f57a608cb3af6af7f76efc587f7462f51207",
+			"price": "1039871",
+			"humanizedPrice": 1.039871,
+			"source": "curveFactoryAPI"
+		},
+		"0xaf204776c7245bf4147c2612bf6e5972ee483701": {
+			"address": "0xaf204776c7245bf4147c2612bf6e5972ee483701",
+			"price": "1192677",
+			"humanizedPrice": 1.192677,
+			"source": "curveFactoryAPI"
+		},
+		"0xb8c6b3cb8f931b7865fa2010efa1205abb738a63": {
+			"address": "0xb8c6b3cb8f931b7865fa2010efa1205abb738a63",
+			"price": "1017275",
+			"humanizedPrice": 1.017275,
+			"source": "curveFactoryAPI"
+		},
+		"0xbdf4488dcf7165788d438b62b4c8a333879b7078": {
+			"address": "0xbdf4488dcf7165788d438b62b4c8a333879b7078",
+			"price": "126982024",
+			"humanizedPrice": 126.982024,
+			"source": "curveFactoryAPI"
+		},
+		"0xc6ed4f520f6a4e4dc27273509239b7f8a68d2068": {
+			"address": "0xc6ed4f520f6a4e4dc27273509239b7f8a68d2068",
+			"price": "978629",
+			"humanizedPrice": 0.978629,
+			"source": "curveFactoryAPI"
+		},
+		"0xcb444e90d8198415266c6a2724b7900fb12fc56e": {
+			"address": "0xcb444e90d8198415266c6a2724b7900fb12fc56e",
+			"price": "1170000",
+			"humanizedPrice": 1.17,
+			"source": "defillama"
+		},
+		"0xcd92002a5015288f95ac80d9772f3fbdea4bb76b": {
+			"address": "0xcd92002a5015288f95ac80d9772f3fbdea4bb76b",
+			"price": "1002028",
+			"humanizedPrice": 1.002028,
+			"source": "curveFactoryAPI"
+		},
+		"0xd4b7769dffa274daa8ec351b67609804fafb4307": {
+			"address": "0xd4b7769dffa274daa8ec351b67609804fafb4307",
+			"price": "1002737",
+			"humanizedPrice": 1.002737,
+			"source": "curveFactoryAPI"
+		},
+		"0xd51e1ddd116fff9a71c1b8feeb58113afa2b4d93": {
+			"address": "0xd51e1ddd116fff9a71c1b8feeb58113afa2b4d93",
+			"price": "9097",
+			"humanizedPrice": 0.009097,
+			"source": "curveFactoryAPI"
+		},
+		"0xd5fe5f651dde69f6fc444d123f2c0cfb804542cd": {
+			"address": "0xd5fe5f651dde69f6fc444d123f2c0cfb804542cd",
+			"price": "1010000",
+			"humanizedPrice": 1.01,
+			"source": "curveFactoryAPI"
+		},
+		"0xd7468e6c3c9259010d1148f79788ba631b94b506": {
+			"address": "0xd7468e6c3c9259010d1148f79788ba631b94b506",
+			"price": "60710",
+			"humanizedPrice": 0.06071,
+			"source": "curveFactoryAPI"
+		},
+		"0xd7a28aa9c470e7e9d8c676bcd5dd2f40c5683afa": {
+			"address": "0xd7a28aa9c470e7e9d8c676bcd5dd2f40c5683afa",
+			"price": "2976437",
+			"humanizedPrice": 2.976437,
+			"source": "curveFactoryAPI"
+		},
+		"0xd8883eec56cb95f9bbdccaa9b453e3cc19a90e72": {
+			"address": "0xd8883eec56cb95f9bbdccaa9b453e3cc19a90e72",
+			"price": "19174",
+			"humanizedPrice": 0.019174,
+			"source": "curveFactoryAPI"
+		},
+		"0xdd96b45877d0e8361a4ddb732da741e97f3191ff": {
+			"address": "0xdd96b45877d0e8361a4ddb732da741e97f3191ff",
+			"price": "1014999",
+			"humanizedPrice": 1.014999,
+			"source": "curveFactoryAPI"
+		},
+		"0xddafbb505ad214d7b80b1f830fccc89b60fb7a83": {
+			"address": "0xddafbb505ad214d7b80b1f830fccc89b60fb7a83",
+			"price": "999649",
+			"humanizedPrice": 0.999649,
+			"source": "defillama"
+		},
+		"0xe5f32a099eb90ddb97f3684fc6663dd253dfae55": {
+			"address": "0xe5f32a099eb90ddb97f3684fc6663dd253dfae55",
+			"price": "24130",
+			"humanizedPrice": 0.02413,
+			"source": "curveFactoryAPI"
+		},
+		"0xe91d153e0b41518a2ce8dd3d7944fa863463a97d": {
+			"address": "0xe91d153e0b41518a2ce8dd3d7944fa863463a97d",
+			"price": "999649",
+			"humanizedPrice": 0.999649,
+			"source": "defillama"
+		},
+		"0xf3d8f3de71657d342db60dd714c8a2ae37eac6b4": {
+			"address": "0xf3d8f3de71657d342db60dd714c8a2ae37eac6b4",
+			"price": "1002001",
+			"humanizedPrice": 1.002001,
+			"source": "curveFactoryAPI"
+		},
+		"0xf3e3376b15aca6dc3852b131b7de4851754062eb": {
+			"address": "0xf3e3376b15aca6dc3852b131b7de4851754062eb",
+			"price": "985625",
+			"humanizedPrice": 0.985625,
+			"source": "curveFactoryAPI"
+		},
+		"0xf490c80aae5f2616d3e3bda2483e30c4cb21d1a0": {
+			"address": "0xf490c80aae5f2616d3e3bda2483e30c4cb21d1a0",
+			"price": "131153191",
+			"humanizedPrice": 131.153191,
+			"source": "curveFactoryAPI"
+		},
+		"0xff193b129cdf13300b182c12229f4a7d2a2b1d1f": {
+			"address": "0xff193b129cdf13300b182c12229f4a7d2a2b1d1f",
+			"price": "2188545",
+			"humanizedPrice": 2.188545,
+			"source": "curveFactoryAPI"
+		}
+	}
+}

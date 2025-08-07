@@ -1,0 +1,1487 @@
+{
+	"lastUpdate": "2025-08-07T09:17:53.792095345-04:00",
+	"version": {
+		"major": 0,
+		"minor": 1,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"apy": {
+		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
+			"type": "v3:averaged",
+			"netAPY": 8.009779348526608e-9,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 9.91060180653415e-9,
+				"monthAgo": 8.009779348526608e-9,
+				"inception": 0.014664106929058578
+			},
+			"pricePerShare": {
+				"today": 1.0228197609197405,
+				"weekAgo": 1.0228197607253369,
+				"monthAgo": 1.0228197602463793
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 2.1538504313411977e-8,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 2.1538504313411977e-8,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x0fefee13864c431717f5b2678607b6ce532a170c": {
+			"type": "v3:averaged",
+			"netAPY": 0.04179211564559328,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.051994716374069994,
+				"monthAgo": 0.04179211564559328,
+				"inception": 1.348402909090909
+			},
+			"pricePerShare": {
+				"today": 2.422288,
+				"weekAgo": 2.419875,
+				"monthAgo": 2.413996
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.07583443528629275,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.07583443528629275,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
+			"type": "v3:averaged",
+			"netAPY": 0.004874316154672609,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.005722961142660557,
+				"monthAgo": 0.004874316154672609,
+				"inception": 0.014224317939268814
+			},
+			"pricePerShare": {
+				"today": 1.0241228843956367,
+				"weekAgo": 1.0240104936946623,
+				"monthAgo": 1.023712755659528
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.006561134147875514,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.006561134147875514,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
+			"type": "v3:averaged",
+			"netAPY": 0.004588231041032864,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.0034211486142028402,
+				"monthAgo": 0.004588231041032864,
+				"inception": 0.051325640612359336
+			},
+			"pricePerShare": {
+				"today": 1.087042661750823,
+				"weekAgo": 1.086971344398604,
+				"monthAgo": 1.0866328763239719
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.0047532462640109685,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.0047532462640109685,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
+			"type": "v3:averaged",
+			"netAPY": 0.00003421626932019193,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0.00003421626932019193,
+				"inception": 0.040536863560732043
+			},
+			"pricePerShare": {
+				"today": 1.066747,
+				"weekAgo": 1.066747,
+				"monthAgo": 1.066744
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
+			"type": "v3:averaged",
+			"netAPY": 0.04355365981211546,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.056044947841875185,
+				"monthAgo": 0.04355365981211546,
+				"inception": 0.04412698575116259
+			},
+			"pricePerShare": {
+				"today": 1.0744718444457977,
+				"weekAgo": 1.073318204885048,
+				"monthAgo": 1.0706392206323514
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.05599492478767232,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.05599492478767232,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0.023674685441377186
+				}
+			}
+		},
+		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
+			"type": "v3:averaged",
+			"netAPY": 0.03566432722605081,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.03545400331804443,
+				"monthAgo": 0.03566432722605081,
+				"inception": 0.08604457516339867
+			},
+			"pricePerShare": {
+				"today": 1.108204,
+				"weekAgo": 1.107451,
+				"monthAgo": 1.104965
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.036271181082181414,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.036271181082181414,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
+			"type": "v3:averaged",
+			"netAPY": 0.039271631489658086,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.03972327775427435,
+				"monthAgo": 0.039271631489658086,
+				"inception": 0.06523175540765395
+			},
+			"pricePerShare": {
+				"today": 1.107409,
+				"weekAgo": 1.106566,
+				"monthAgo": 1.103846
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.03664828411191756,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.03664828411191756,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x41f63bd9180eaaa58185e1a88e2b22cea52634b9": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.2,
+				"management": 0.02
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.05252039783001807
+			},
+			"pricePerShare": {
+				"today": 1.079572,
+				"weekAgo": 1.079572,
+				"monthAgo": 1.079572
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
+			"type": "v3:averaged",
+			"netAPY": 0.039966714151068526,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.04047652147162698,
+				"monthAgo": 0.039966714151068526,
+				"inception": 0.05775985838779957
+			},
+			"pricePerShare": {
+				"today": 1.072635,
+				"weekAgo": 1.071803,
+				"monthAgo": 1.069123
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.04135954766582017,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.04135954766582017,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca": {
+			"type": "v3:averaged",
+			"netAPY": 0.0793613582369554,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.05734321321266529,
+				"monthAgo": 0.0793613582369554,
+				"inception": 2.4338327622377625
+			},
+			"pricePerShare": {
+				"today": 1.953529,
+				"weekAgo": 1.951383,
+				"monthAgo": 1.940869
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.18740112394539654,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.18740112394539654,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x72449578349b69544de5ff2fb70f0cfba18a6ad1": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.2,
+				"management": 0.02
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
+			"type": "v3:averaged",
+			"netAPY": 0.00002548796357085588,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.00005461700758607612,
+				"monthAgo": 0.00002548796357085588,
+				"inception": 1.132109143094842
+			},
+			"pricePerShare": {
+				"today": 2.864103,
+				"weekAgo": 2.8641,
+				"monthAgo": 2.864097
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
+			"type": "v3:averaged",
+			"netAPY": 0.03611384648145202,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.03520920543285796,
+				"monthAgo": 0.03611384648145202,
+				"inception": 0.11592043066830827
+			},
+			"pricePerShare": {
+				"today": 1.1803912455331482,
+				"weekAgo": 1.1795947300475473,
+				"monthAgo": 1.1768979049634885
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.03514664064525608,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.03514664064525608,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0x9d1046cecb0662037b13decf1cd125c4aa3fb65b": {
+			"type": "v3:averaged",
+			"netAPY": 0.07606442886666827,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.07980793130437482,
+				"monthAgo": 0.07606442886666827,
+				"inception": 0.07311486013986022
+			},
+			"pricePerShare": {
+				"today": 1.028645,
+				"weekAgo": 1.027073,
+				"monthAgo": 1.022254
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.10970812718202883,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.10970812718202883,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
+			"type": "v3:averaged",
+			"netAPY": 0.05862666106275872,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.07397093638319462,
+				"monthAgo": 0.05862666106275872,
+				"inception": 0.10972059190031148
+			},
+			"pricePerShare": {
+				"today": 1.192988,
+				"weekAgo": 1.191298,
+				"monthAgo": 1.187267
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.026305545350013837,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.026305545350013837,
+					"v3OracleStratRatioAPR": 0.023674685441377186
+				}
+			}
+		},
+		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
+			"type": "v3:averaged",
+			"netAPY": 0.05906535326819001,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.027464030939047736,
+				"monthAgo": 0.05906535326819001,
+				"inception": 0.15613301401869162
+			},
+			"pricePerShare": {
+				"today": 1.274623,
+				"weekAgo": 1.273952,
+				"monthAgo": 1.268465
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.027690235624810988,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.027690235624810988,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
+			"type": "v3:averaged",
+			"netAPY": 0.04123201135717121,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.0421184138511509,
+				"monthAgo": 0.04123201135717121,
+				"inception": 0.12182679700499163
+			},
+			"pricePerShare": {
+				"today": 1.200597,
+				"weekAgo": 1.199628,
+				"monthAgo": 1.196542
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.042270500092467245,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.042270500092467245,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
+			"type": "v3:averaged",
+			"netAPY": 0.009602168660960813,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.009645973426098513,
+				"monthAgo": 0.009602168660960813,
+				"inception": 0.010362594450633048
+			},
+			"pricePerShare": {
+				"today": 1.0174886525523013,
+				"weekAgo": 1.0173004608468716,
+				"monthAgo": 1.0166862640879406
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.009865063934122453,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.009865063934122453,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259": {
+			"type": "v3:averaged",
+			"netAPY": 0.04692281432182385,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.03713959045379769,
+				"monthAgo": 0.04692281432182385,
+				"inception": 0.047628283000828026
+			},
+			"pricePerShare": {
+				"today": 1.0186598478605984,
+				"weekAgo": 1.0179348073866668,
+				"monthAgo": 1.014746306557064
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.08495107797636958,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.08495107797636958,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0.02367468536055295
+				}
+			}
+		},
+		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
+			"type": "v3:averaged",
+			"netAPY": 0.025713584796499652,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.026856935967178093,
+				"monthAgo": 0.025713584796499652,
+				"inception": 0.07090210280373838
+			},
+			"pricePerShare": {
+				"today": 1.12471,
+				"weekAgo": 1.124131,
+				"monthAgo": 1.122338
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.026681144632956233,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.026681144632956233,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xe4244bf798f63881591113126b64493ac36ac525": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
+			"type": "v3:averaged",
+			"netAPY": 0.040105165051954335,
+			"fees": {
+				"performance": 0.05,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.039667636622693854,
+				"monthAgo": 0.040105165051954335,
+				"inception": 0.067464759463696
+			},
+			"pricePerShare": {
+				"today": 1.111085809418305,
+				"weekAgo": 1.1102411943229087,
+				"monthAgo": 1.1074353537214254
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.03875103357198206,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.03875103357198206,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.01003553763440858
+			},
+			"pricePerShare": {
+				"today": 1.015342,
+				"weekAgo": 1.015342,
+				"monthAgo": 1.015342
+			},
+			"extra": {
+				"stakingRewardsAPY": 0,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.15,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0.21000367432370964
+			},
+			"pricePerShare": {
+				"today": 1.3135671301545802,
+				"weekAgo": 1.3135671301545802,
+				"monthAgo": 1.3135671301545802
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0.04000784716005068,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0.04000784716005068,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xf8fd29a8f95e96a125984c4e384534ace18cbfbd": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.2,
+				"management": 0.02
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xfd179b9793b467fa3dd85edc715ae580b0240090": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		},
+		"0xffcf7fb615614b96f5730af9da3d7114c119aabe": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "v3:onchainOracle",
+				"netAPY": 0,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null,
+					"v3OracleCurrentAPR": 0,
+					"v3OracleStratRatioAPR": 0
+				}
+			}
+		}
+	}
+}

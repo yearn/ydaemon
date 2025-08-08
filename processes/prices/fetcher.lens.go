@@ -56,10 +56,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 		******************************************************************************************/
 		grouped := [][]models.TERC20Token{}
 		for i := 0; i < len(tokens); i += 500 {
-			end := i + 500
-			if end > len(tokens) {
-				end = len(tokens)
-			}
+			end := min(i+500, len(tokens))
 			grouped = append(grouped, tokens[i:end])
 		}
 

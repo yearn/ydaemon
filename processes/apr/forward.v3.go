@@ -120,7 +120,7 @@ func computeVaultV3ForwardAPY(
 			}
 
 			/******************************************************************************************
-			** Adjustement request by Schlag: Reduce the APR by 10% to account for the fees/slippage
+			** Adjustment request by Schlag: Reduce the APR by 10% to account for the fees/slippage
 			** and other factors
 			******************************************************************************************/
 			debtRatioAPR = bigNumber.NewFloat(0).Mul(debtRatioAPR, bigNumber.NewFloat(0.9))

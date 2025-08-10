@@ -10,6 +10,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 )
@@ -119,6 +120,75 @@ func GetStrategiesJsonMetadata(chainID uint64) TJsonMetadata {
 }
 
 /**************************************************************************************************
+** ApplyCmsStrategyMeta applies CMS metadata to a strategy's metadata field.
+** This function updates the strategy's metadata with values from the CMS metadata,
+** applying field-by-field updates to the strategy.Metadata struct.
+**
+** @param strategyMeta The CMS metadata to apply
+** @param strategy The strategy to update (passed by reference)
+**************************************************************************************************/
+func ApplyCmsStrategyMeta(strategyMeta models.TStrategyCmsMetadataSchema, strategy *models.TStrategy) {
+	// Apply boolean fields
+	strategy.IsRetired = strategyMeta.IsRetired
+
+	// Apply string fields (handle nil pointers)
+	if strategyMeta.DisplayName != nil {
+		strategy.DisplayName = *strategyMeta.DisplayName
+	}
+	if strategyMeta.Description != nil {
+		strategy.Description = *strategyMeta.Description
+	}
+
+	// Apply protocols array
+	strategy.Protocols = strategyMeta.Protocols
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** FetchCmsStrategiesMeta fetches strategy metadata from the CMS for a specific chain ID.
+** The CMS returns an array of strategy metadata following the TStrategyCmsMetadataSchema structure.
+**
+** @param chainID The blockchain network ID
+** @return map[common.Address]models.TStrategyCmsMetadataSchema A mapping of strategy addresses to their metadata
+**************************************************************************************************/
+func FetchCmsStrategiesMeta(chainID uint64) map[common.Address]models.TStrategyCmsMetadataSchema {
+	cmsRoot := env.CMS_ROOT_URL
+	var strategiesMetadata []models.TStrategyCmsMetadataSchema
+
+	if cmsRoot != "" {
+		cmsURL := cmsRoot + "/strategies/" +
+			strconv.FormatUint(chainID, 10) + ".json"
+		strategiesMetadata = helpers.FetchJSON[[]models.TStrategyCmsMetadataSchema](cmsURL)
+		logs.Success("Fetch", len(strategiesMetadata), "strategy metadata from cms, chain", chainID)
+
+	} else {
+		localPath := env.BASE_DATA_PATH + "/cdn-dev/strategies/" + strconv.FormatUint(chainID, 10) + ".json"
+
+		file, err := os.Open(localPath)
+		if err != nil {
+			logs.Error("Failed to open local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TStrategyCmsMetadataSchema)
+		}
+		defer file.Close()
+
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&strategiesMetadata)
+		if err != nil {
+			logs.Error("Failed to decode local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TStrategyCmsMetadataSchema)
+		}
+		logs.Success("Load", len(strategiesMetadata), "strategy metadata from local cms, chain", chainID)
+	}
+
+	// Convert array to map for easier lookup
+	strategiesMap := make(map[common.Address]models.TStrategyCmsMetadataSchema)
+	for _, strategy := range strategiesMetadata {
+		strategiesMap[strategy.Address] = strategy
+	}
+
+	return strategiesMap
+}
+
+/**************************************************************************************************
 ** LoadStrategies will retrieve the all the strategies from the configured DB and store them in the
 ** _strategiesSyncMap for fast access during that same execution.
 **************************************************************************************************/
@@ -136,6 +206,17 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 		file.Version,
 		file.ShouldRefresh,
 	})
+
+	meta := FetchCmsStrategiesMeta(chainID)
+
+	for _, strategy := range file.Strategies {
+		strategyMeta, ok := meta[strategy.Address]
+		if ok {
+			ApplyCmsStrategyMeta(strategyMeta, &strategy)
+			logs.Info("Apply cms strategy metadata", chainID, strategy.Address)
+		}
+	}
+
 	for _, strategy := range file.Strategies {
 		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
 		safeSyncMap(_strategiesSyncMap, chainID).Store(strategyKey, strategy)
@@ -279,4 +360,29 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) (
 	})
 
 	return asMap, asSlice
+}
+
+/**************************************************************************************************
+** RefreshStrategyMetadata will fetch the latest strategy metadata from CMS and apply it to all
+** currently loaded strategies. This function is designed to be called periodically by the scheduler.
+**
+** @param chainID The blockchain network ID
+**************************************************************************************************/
+func RefreshStrategyMetadata(chainID uint64) {
+	mutex := getStrategyMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	meta := FetchCmsStrategiesMeta(chainID)
+
+	strategiesMap, _ := ListStrategies(chainID)
+
+	for _, strategy := range strategiesMap {
+		strategyMeta, ok := meta[strategy.Address]
+		if !ok {
+			continue
+		}
+		ApplyCmsStrategyMeta(strategyMeta, &strategy)
+		StoreStrategy(chainID, strategy)
+	}
 }

@@ -105,3 +105,13 @@ type TStrategyReportDB struct {
 	LogIndex           uint64          `json:"logIndex"`
 	TransactionHash    string          `json:"transactionHash"`
 }
+
+// TStrategyCmsMetadataSchema represents the strategy metadata structure from ycms
+type TStrategyCmsMetadataSchema struct {
+	ChainID     uint64         `json:"chainId"`
+	Address     common.Address `json:"address"`
+	IsRetired   bool           `json:"isRetired"`
+	DisplayName *string        `json:"displayName,omitempty"`
+	Description *string        `json:"description,omitempty"`
+	Protocols   []string       `json:"protocols"`
+}

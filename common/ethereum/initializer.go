@@ -25,7 +25,7 @@ func Initialize() {
 
 	// Create the RPC client for all the chains supported by yDaemon
 	for _, chain := range env.GetChains() {
-		logs.Info(`Using RPC URI`, GetRPCURI(chain.ID), `for chain`, chain.ID)
+		logs.Info(`Dial RPC URI for chain`, chain.ID)
 		client, err := ethclient.Dial(GetRPCURI(chain.ID))
 		if err != nil {
 			logs.Error(err, "Failed to connect to node")

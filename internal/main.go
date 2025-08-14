@@ -10,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/prices"
 	"github.com/yearn/ydaemon/processes/risks"
@@ -86,6 +87,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 			func() {
 				_, _, vaultMap, tokenMap = initVaults(chainID)
 
+				// do this at the beginning of the task so kong values are available right away
+				storage.RefreshKongVaultData(chainID)
+				logs.Success(chainID, `-`, `RefreshKongVaultData ✅`)
+
 				risks.RetrieveAvailableRiskScores(chainID)
 				risks.RetrieveAllRiskScores(chainID, vaultMap)
 
@@ -101,6 +106,10 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 				logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
 				apr.ComputeChainAPY(chainID)
 				logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+
+				// do this again at the end of the task to make sure kong values take effect
+				storage.RefreshKongVaultData(chainID)
+				logs.Success(chainID, `-`, `RefreshKongVaultData ✅`)
 			},
 		),
 		gocron.WithStartAt(gocron.WithStartImmediately()),

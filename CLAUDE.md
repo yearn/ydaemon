@@ -10,9 +10,7 @@ yDaemon is the next-generation API for Yearn Finance, providing comprehensive da
 
 ### Building and Running
 ```bash
-# Build the project
-make build
-# or manually:
+# Build the project (make commands are not functional)
 go build -o yDaemon ./cmd
 
 # Run the daemon
@@ -26,19 +24,7 @@ make down
 ```
 
 ### Code Quality
-```bash
-# Format code
-make fmt
-# or: go fmt ./...
-
-# Lint code
-make lint
-# or: golint ./...
-
-# Vet code
-make vet  
-# or: go vet ./...
-```
+**NOTE: Do not run formatting, linting, or vetting commands for this project.**
 
 ### Testing
 ```bash

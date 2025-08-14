@@ -1,7 +1,9 @@
 package storage
 
 import (
+	"database/sql"
 	"encoding/json"
+	"fmt"
 	"os"
 	"strconv"
 	"sync"
@@ -144,7 +146,15 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 		file.Version,
 		file.ShouldRefresh,
 	})
+
+	// Fetch Kong vault data
+	kongVaults := FetchKongVaultData(chainID)
+
 	for _, vault := range file.Vaults {
+		// Apply Kong vault data if available
+		if kongVault, ok := kongVaults[vault.Address]; ok {
+			ApplyKongVaultData(kongVault, &vault)
+		}
 		StoreVault(vault.ChainID, vault)
 	}
 }
@@ -197,4 +207,122 @@ func GetVault(chainID uint64, vaultAddress common.Address) (models.TVault, bool)
 		return models.TVault{}, false
 	}
 	return vaultFromSyncMap.(models.TVault), true
+}
+
+/**************************************************************************************************
+** FetchKongVaultData retrieves vault data from Kong database in batches
+**************************************************************************************************/
+func FetchKongVaultData(chainID uint64) map[common.Address]models.TKongVaultSchema {
+	db := GetDB()
+	if db == nil {
+		logs.Error("Failed to connect to Kong database")
+		return make(map[common.Address]models.TKongVaultSchema)
+	}
+
+	sqlDB, err := db.DB()
+	if err != nil {
+		logs.Error("Failed to get raw SQL connection: " + err.Error())
+		return make(map[common.Address]models.TKongVaultSchema)
+	}
+
+	query := `SELECT snapshot.address, snapshot.snapshot, snapshot.hook 
+FROM snapshot 
+JOIN thing on snapshot.chain_id = thing.chain_id and snapshot.address = thing.address
+WHERE snapshot.chain_id = $1 AND thing.label = 'vault'`
+	rows, err := sqlDB.Query(query, chainID)
+	if err != nil {
+		logs.Error(fmt.Sprintf("Failed to query Kong database for chain %d: %s", chainID, err.Error()))
+		return make(map[common.Address]models.TKongVaultSchema)
+	}
+	defer rows.Close()
+
+	kongVaults := make(map[common.Address]models.TKongVaultSchema)
+
+	for rows.Next() {
+		var addressStr string
+		var snapshotJSON sql.NullString
+		var hookJSON sql.NullString
+
+		if err := rows.Scan(&addressStr, &snapshotJSON, &hookJSON); err != nil {
+			logs.Error("Failed to scan Kong row: " + err.Error())
+			continue
+		}
+
+		address := common.HexToAddress(addressStr)
+		kongVault := models.TKongVaultSchema{}
+
+		// Parse snapshot JSON
+		if snapshotJSON.Valid {
+			if err := json.Unmarshal([]byte(snapshotJSON.String), &kongVault.Snapshot); err != nil {
+				logs.Error("Failed to unmarshal snapshot JSON for address " + addressStr + ": " + err.Error())
+			}
+		}
+
+		// Parse hook JSON
+		if hookJSON.Valid {
+			if err := json.Unmarshal([]byte(hookJSON.String), &kongVault.Hook); err != nil {
+				logs.Error("Failed to unmarshal hook JSON for address " + addressStr + ": " + err.Error())
+			}
+		}
+
+		kongVaults[address] = kongVault
+	}
+
+	if err := rows.Err(); err != nil {
+		logs.Error("Error iterating Kong rows: " + err.Error())
+	}
+
+	logs.Success(fmt.Sprintf("Fetched %d Kong vault records for chain %d", len(kongVaults), chainID))
+	return kongVaults
+}
+
+/**************************************************************************************************
+** ApplyKongVaultData applies Kong vault data to an existing vault
+** Coalesces fees with hook taking precedence over snapshot
+**************************************************************************************************/
+func ApplyKongVaultData(kongVault models.TKongVaultSchema, vault *models.TVault) {
+	// Start with snapshot fees as base
+	managementFee := kongVault.Snapshot.ManagementFee.Value
+	performanceFee := kongVault.Snapshot.PerformanceFee.Value
+	
+	// Override with hook fees if they exist (hook takes precedence)
+	if kongVault.Hook.Fees.ManagementFee != 0 {
+		managementFee = kongVault.Hook.Fees.ManagementFee
+	}
+	if kongVault.Hook.Fees.PerformanceFee != 0 {
+		performanceFee = kongVault.Hook.Fees.PerformanceFee
+	}
+	
+	vault.ManagementFee = managementFee
+	vault.PerformanceFee = performanceFee
+}
+
+/**************************************************************************************************
+** RefreshKongVaultData refreshes vault data with Kong database information for a specific chain
+**************************************************************************************************/
+func RefreshKongVaultData(chainID uint64) {
+	mutex := getVaultMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	logs.Info(fmt.Sprintf("Refreshing Kong vault data for chain %d", chainID))
+
+	kongVaults := FetchKongVaultData(chainID)
+	if len(kongVaults) == 0 {
+		logs.Warning(fmt.Sprintf("No Kong vault data found for chain %d", chainID))
+		return
+	}
+
+	vaultsMap, _ := ListVaults(chainID)
+	updatedCount := 0
+
+	for address, vault := range vaultsMap {
+		if kongVault, ok := kongVaults[address]; ok {
+			ApplyKongVaultData(kongVault, &vault)
+			StoreVault(chainID, vault)
+			updatedCount++
+		}
+	}
+
+	logs.Success(fmt.Sprintf("Updated %d vaults with Kong data for chain %d", updatedCount, chainID))
 }

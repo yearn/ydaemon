@@ -169,12 +169,12 @@ func GetWSClient(chainID uint64, shouldRetry bool) (*ethclient.Client, error) {
 		client, err := ethclient.DialContext(ctx, uri.String())
 		if err != nil {
 			if shouldRetry && err.Error() == `i/o timeout` {
-				logs.Warning(fmt.Sprintf("Chain %d - Timeout while opening WS client with RPC %s: %v",
-					chainID, uri.String(), err))
+				logs.Warning(fmt.Sprintf("Chain %d - Timeout while opening WS client with RPC %v",
+					chainID, err))
 				return GetWSClient(chainID, false)
 			}
-			logs.Error(fmt.Sprintf("Chain %d - Error while opening WS client with RPC %s: %v",
-				chainID, uri.String(), err))
+			logs.Error(fmt.Sprintf("Chain %d - Error while opening WS client with RPC %v",
+				chainID, err))
 			return nil, err
 		}
 		WS[chainID] = client

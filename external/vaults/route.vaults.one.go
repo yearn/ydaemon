@@ -8,6 +8,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/gin-gonic/gin"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
 )
@@ -81,6 +82,9 @@ func (y Controller) GetVault(c *gin.Context) {
 
 	// Convert to external vault format
 	newVault, err := CreateExternalVault(currentVault)
+	logs.Info("****************************************")
+	logs.Info("newVault", newVault)
+	logs.Info("****************************************")
 	if err != nil {
 		handleError(c, fmt.Errorf("failed to process vault data for vault %s on chain %d: %w",
 			address.Hex(), chainID, err),

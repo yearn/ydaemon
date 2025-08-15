@@ -5,6 +5,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -349,6 +350,46 @@ type TSimplifiedExternalVault struct {
 }
 
 /************************************************************************************************
+** ApplyKongData applies kong data enhancements to an external vault response
+** This function serves as a post-processing step to overlay kong data onto the vault response
+************************************************************************************************/
+func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
+	kongData, hasKongData := storage.GetKongVaultData(vault.ChainID, vault.Address)
+	
+	logs.Info("****************************************")
+	logs.Info("Vault Address:", vault.Address.Hex())
+	logs.Info("ChainID:", vault.ChainID) 
+	logs.Info("hasKongData:", hasKongData)
+	logs.Info("kongData:", kongData)
+	logs.Info("****************************************")
+	
+	if !hasKongData {
+		return
+	}
+	
+	// Apply kong fees with priority: hook > snapshot > vault model
+	managementFee := kongData.Snapshot.ManagementFee.Value
+	performanceFee := kongData.Snapshot.PerformanceFee.Value
+	
+	// Override with hook fees if they exist (hook takes precedence)
+	if kongData.Hook.Fees.ManagementFee != 0 {
+		managementFee = kongData.Hook.Fees.ManagementFee
+	}
+	if kongData.Hook.Fees.PerformanceFee != 0 {
+		performanceFee = kongData.Hook.Fees.PerformanceFee
+	}
+	
+	// Convert from basis points to percentage and apply to APR fees
+	externalVault.APR.Fees.Management = bigNumber.NewFloat(float64(managementFee) / 10000.0)
+	externalVault.APR.Fees.Performance = bigNumber.NewFloat(float64(performanceFee) / 10000.0)
+	
+	// Future: Apply other kong data
+	// applyKongPrices(externalVault, kongData)
+	// applyKongAPY(externalVault, kongData) 
+	// applyKongMetadata(externalVault, kongData)
+}
+
+/************************************************************************************************
 ** assignVaultAPR maps the internal TVaultAPY structure to the external TExternalVaultAPR structure.
 **
 ** This function converts APY (Annual Percentage Yield) data from internal calculations to the
@@ -358,20 +399,27 @@ type TSimplifiedExternalVault struct {
 ** The field mapping is as follows:
 ** - Type: Yield calculation method (e.g., "crv", "compound")
 ** - NetAPR: Primary annualized rate value used for yield calculations and comparisons
-** - Fees: All fee components (management, performance, etc.)
+** - Fees: Management and performance fees from the vault (not APY object)
 ** - Points: Historical yield data points for trend analysis
 ** - PricePerShare: Token value growth data for verification
 ** - Extra: Additional yield sources (staking rewards, protocol rewards)
 ** - ForwardAPR: Projected future yield information
 **
+** @param vault models.TVault - The vault containing fee information
 ** @param vaultAPY apr.TVaultAPY - The internal APY structure to convert
 ** @return TExternalVaultAPR - The populated external APR structure for API responses
 ************************************************************************************************/
-func assignVaultAPR(vaultAPY apr.TVaultAPY) TExternalVaultAPR {
+func assignVaultAPR(vault models.TVault, vaultAPY apr.TVaultAPY) TExternalVaultAPR {
+	// Use vault model fees as default (kong fees will be applied later in ApplyKongData)
+	fees := apr.TFees{
+		Management:  bigNumber.NewFloat(float64(vault.ManagementFee) / 10000.0),
+		Performance: bigNumber.NewFloat(float64(vault.PerformanceFee) / 10000.0),
+	}
+
 	return TExternalVaultAPR{
 		Type:          vaultAPY.Type,
 		NetAPR:        vaultAPY.NetAPY,
-		Fees:          vaultAPY.Fees,
+		Fees:          fees,
 		Points:        vaultAPY.Points,
 		PricePerShare: vaultAPY.PricePerShare,
 		Extra: TExternalExtraRewards{
@@ -480,7 +528,7 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	// Set APR data
 	asyncAPR, ok := apr.GetComputedAPY(vault.ChainID, vault.Address)
 	if ok {
-		externalVault.APR = assignVaultAPR(asyncAPR.(apr.TVaultAPY))
+		externalVault.APR = assignVaultAPR(vault, asyncAPR.(apr.TVaultAPY))
 	}
 
 	// Set stability defaults
@@ -512,6 +560,9 @@ func CreateExternalVault(vault models.TVault) (TExternalVault, error) {
 	}
 
 	externalVault.Info.UINotice = vault.Metadata.UINotice
+
+	// Apply kong data enhancements as final step
+	ApplyKongData(&externalVault, vault)
 
 	return externalVault, nil
 }

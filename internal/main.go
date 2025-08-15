@@ -10,6 +10,7 @@ import (
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/indexer"
 	"github.com/yearn/ydaemon/internal/models"
+	"github.com/yearn/ydaemon/internal/storage"
 	"github.com/yearn/ydaemon/processes/apr"
 	"github.com/yearn/ydaemon/processes/prices"
 	"github.com/yearn/ydaemon/processes/risks"
@@ -78,6 +79,22 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		return
 	}
 
+	// Schedule metadata refresh every 5 minutes
+	scheduler.NewJob(
+		gocron.DurationJob(
+			time.Minute*5,
+		),
+		gocron.NewTask(
+			func() {
+				storage.RefreshVaultMetadata(chainID)
+				storage.RefreshStrategyMetadata(chainID)
+				storage.RefreshKongData(chainID)
+			},
+		),
+		gocron.WithStartAt(gocron.WithStartImmediately()),
+	)
+
+	// Schedule snapshot refresh every 30 minutes
 	scheduler.NewJob(
 		gocron.DurationJob(
 			time.Minute*30,

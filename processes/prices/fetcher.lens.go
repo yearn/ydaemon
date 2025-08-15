@@ -93,7 +93,7 @@ func fetchPricesFromLens(chainID uint64, blockNumber *uint64, tokens []models.TE
 			for _, token := range tokens {
 				price, err := lensContract.GetPriceUsdcRecommended(nil, token.Address)
 				if err != nil {
-					logs.Error(err, ethereum.GetRPCURI(chainID))
+					logs.Error(`error fetching lens contract`, err)
 					continue
 				}
 				if price.Cmp(big.NewInt(0)) > 0 {

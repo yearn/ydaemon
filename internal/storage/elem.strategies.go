@@ -179,10 +179,12 @@ func FetchCmsStrategiesMeta(chainID uint64) map[common.Address]models.TStrategyC
 		logs.Success("Load", len(strategiesMetadata), "strategy metadata from local cms, chain", chainID)
 	}
 
-	// Convert array to map for easier lookup
+	// Convert array to map for easier lookup with normalized addresses
 	strategiesMap := make(map[common.Address]models.TStrategyCmsMetadataSchema)
 	for _, strategy := range strategiesMetadata {
-		strategiesMap[strategy.Address] = strategy
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(strategy.Address.Hex())
+		strategiesMap[normalizedAddress] = strategy
 	}
 
 	return strategiesMap
@@ -210,7 +212,9 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 	meta := FetchCmsStrategiesMeta(chainID)
 
 	for _, strategy := range file.Strategies {
-		strategyMeta, ok := meta[strategy.Address]
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(strategy.Address.Hex())
+		strategyMeta, ok := meta[normalizedAddress]
 		if ok {
 			ApplyCmsStrategyMeta(strategyMeta, &strategy)
 			// logs.Info("Apply cms strategy metadata", chainID, strategy.Address)
@@ -378,7 +382,9 @@ func RefreshStrategyMetadata(chainID uint64) {
 	strategiesMap, _ := ListStrategies(chainID)
 
 	for _, strategy := range strategiesMap {
-		strategyMeta, ok := meta[strategy.Address]
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(strategy.Address.Hex())
+		strategyMeta, ok := meta[normalizedAddress]
 		if !ok {
 			continue
 		}

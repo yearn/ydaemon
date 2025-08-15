@@ -215,10 +215,12 @@ func FetchCmsVaultsMeta(chainID uint64) map[common.Address]models.TVaultCmsMetad
 		logs.Success("Load", len(vaultsMetadata), "vault metadata from local cms, chain", chainID)
 	}
 
-	// Convert array to map for easier lookup
+	// Convert array to map for easier lookup with normalized addresses
 	vaultsMap := make(map[common.Address]models.TVaultCmsMetadataSchema)
 	for _, vault := range vaultsMetadata {
-		vaultsMap[vault.Address] = vault
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(vault.Address.Hex())
+		vaultsMap[normalizedAddress] = vault
 	}
 
 	return vaultsMap
@@ -246,7 +248,9 @@ func LoadVaults(chainID uint64, wg *sync.WaitGroup) {
 	meta := FetchCmsVaultsMeta(chainID)
 
 	for _, vault := range file.Vaults {
-		vaultMeta, ok := meta[vault.Address]
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(vault.Address.Hex())
+		vaultMeta, ok := meta[normalizedAddress]
 		if ok {
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 			// logs.Info("Apply cms vault metadata", chainID, vault.Address)
@@ -324,7 +328,9 @@ func RefreshVaultMetadata(chainID uint64) {
 	vaultsMap, _ := ListVaults(chainID)
 
 	for address, vault := range vaultsMap {
-		vaultMeta, ok := meta[address]
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(address.Hex())
+		vaultMeta, ok := meta[normalizedAddress]
 		if ok {
 			ApplyCmsVaultMeta(vaultMeta, &vault)
 			StoreVault(chainID, vault)

@@ -213,7 +213,7 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 		strategyMeta, ok := meta[strategy.Address]
 		if ok {
 			ApplyCmsStrategyMeta(strategyMeta, &strategy)
-			logs.Info("Apply cms strategy metadata", chainID, strategy.Address)
+			// logs.Info("Apply cms strategy metadata", chainID, strategy.Address)
 		}
 	}
 

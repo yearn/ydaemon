@@ -1,6 +1,9 @@
 package models
 
 import (
+	"encoding/json"
+	"strconv"
+
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
 )
@@ -237,4 +240,48 @@ type TVaultCmsMetadataSchema struct {
 	SourceURI      *string            `json:"sourceURI,omitempty"`
 	UINotice       *string            `json:"uiNotice,omitempty"`
 	Protocols      []TCmsProtocolType `json:"protocols"`
+}
+
+type CoercibleUint64 struct {
+	Value uint64
+}
+
+func (f *CoercibleUint64) UnmarshalJSON(data []byte) error {
+	// Try to unmarshal as uint64 first
+	if err := json.Unmarshal(data, &f.Value); err == nil {
+		return nil
+	}
+
+	// Try to unmarshal as string
+	var str string
+	if err := json.Unmarshal(data, &str); err != nil {
+		return err
+	}
+
+	// Convert string to uint64
+	if str == "" {
+		f.Value = 0
+		return nil
+	}
+
+	parsed, err := strconv.ParseUint(str, 10, 64)
+	if err != nil {
+		return err
+	}
+
+	f.Value = parsed
+	return nil
+}
+
+type TKongVaultSchema struct {
+	Hook struct {
+		Fees struct {
+			ManagementFee  uint64 `json:"managementFee"`
+			PerformanceFee uint64 `json:"performanceFee"`
+		} `json:"fees"`
+	} `json:"hook"`
+	Snapshot struct {
+		ManagementFee  CoercibleUint64 `json:"managementFee"`
+		PerformanceFee CoercibleUint64 `json:"performanceFee"`
+	} `json:"snapshot"`
 }

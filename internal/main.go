@@ -88,6 +88,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 			func() {
 				storage.RefreshVaultMetadata(chainID)
 				storage.RefreshStrategyMetadata(chainID)
+				storage.RefreshKongData(chainID)
 			},
 		),
 		gocron.WithStartAt(gocron.WithStartImmediately()),

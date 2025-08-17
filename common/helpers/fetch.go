@@ -56,7 +56,7 @@ func FetchJSON[T any](uri string) (data T) {
 	}
 
 	if (resp.StatusCode < 200) || (resp.StatusCode > 299) {
-		logs.Error(`failed to fetch: ` + uri)
+		logs.Error(`failed to fetch`, resp.StatusCode)
 		return data
 	}
 
@@ -103,8 +103,8 @@ func FetchJSONWithReject[T any](uri string) (data T, err error) {
 	}
 
 	if (resp.StatusCode < 200) || (resp.StatusCode > 299) {
-		logs.Error(`failed to fetch: ` + uri)
-		return data, errors.New(`failed to fetch: ` + uri)
+		logs.Error(`failed to fetch`, resp.StatusCode)
+		return data, errors.New(`failed to fetch`)
 	}
 
 	if err := json.Unmarshal(body, &data); err != nil {

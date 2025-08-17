@@ -1,0 +1,14 @@
+{
+  "name": "cms-integration",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "viem": "^2.33.1",
+    "zod": "^4.0.10"
+  }
+}

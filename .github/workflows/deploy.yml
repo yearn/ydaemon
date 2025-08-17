@@ -90,7 +90,7 @@ jobs:
             go build -o yDaemon -ldflags '-X main.version=$(git rev-parse HEAD)' ./cmd
           "
 
-          scp -i id_ed25519 -r data/ ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }}:/opt/ydaemon/data/
+          tar --exclude='cdn-dev' -czf - -C data . | ssh -i id_ed25519 ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} "cd /opt/ydaemon/data && tar -xzf -"
 
           ssh -i id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.YDAEMON_USER }}@${{ secrets.YDAEMON_HOST }} bash -c "set -e && sudo systemctl restart ydaemon.service"
 

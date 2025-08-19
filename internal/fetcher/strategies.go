@@ -94,19 +94,6 @@ func getStrategyAPR(chainID uint64, versionMajor string, strategy models.TStrate
 	aprType := models.APRTypeCurrent
 
 	/******************************************************************************************
-	** Skip APR calculation for inactive strategies to optimize performance
-	** If the strategy is not active, not in queue, or retired, we return 0 APR
-	** Also if all totalLoss, totalGain, and totalDebt are 0, no need to calculate APR
-	******************************************************************************************/
-	if !strategy.IsActive || !strategy.IsInQueue || strategy.IsRetired {
-		return netAPR, aprType, nil
-	}
-
-	if strategy.LastTotalLoss.IsZero() && strategy.LastTotalGain.IsZero() && strategy.LastTotalDebt.IsZero() {
-		return netAPR, aprType, nil
-	}
-
-	/******************************************************************************************
 	** For v3 vaults: First try to get forward-looking APR, fall back to current APR if that fails
 	** For earlier versions: Only try to get current APR
 	******************************************************************************************/

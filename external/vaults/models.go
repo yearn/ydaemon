@@ -5,7 +5,6 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/bigNumber"
-	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/fetcher"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -355,22 +354,15 @@ type TSimplifiedExternalVault struct {
 ************************************************************************************************/
 func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
 	kongData, hasKongData := storage.GetKongVaultData(vault.ChainID, vault.Address)
-	
-	logs.Info("****************************************")
-	logs.Info("Vault Address:", vault.Address.Hex())
-	logs.Info("ChainID:", vault.ChainID) 
-	logs.Info("hasKongData:", hasKongData)
-	logs.Info("kongData:", kongData)
-	logs.Info("****************************************")
-	
+
 	if !hasKongData {
 		return
 	}
-	
+
 	// Apply kong fees with priority: hook > snapshot > vault model
 	managementFee := kongData.Snapshot.ManagementFee.Value
 	performanceFee := kongData.Snapshot.PerformanceFee.Value
-	
+
 	// Override with hook fees if they exist (hook takes precedence)
 	if kongData.Hook.Fees.ManagementFee != 0 {
 		managementFee = kongData.Hook.Fees.ManagementFee
@@ -378,14 +370,14 @@ func ApplyKongData(externalVault *TExternalVault, vault models.TVault) {
 	if kongData.Hook.Fees.PerformanceFee != 0 {
 		performanceFee = kongData.Hook.Fees.PerformanceFee
 	}
-	
+
 	// Convert from basis points to percentage and apply to APR fees
 	externalVault.APR.Fees.Management = bigNumber.NewFloat(float64(managementFee) / 10000.0)
 	externalVault.APR.Fees.Performance = bigNumber.NewFloat(float64(performanceFee) / 10000.0)
-	
+
 	// Future: Apply other kong data
 	// applyKongPrices(externalVault, kongData)
-	// applyKongAPY(externalVault, kongData) 
+	// applyKongAPY(externalVault, kongData)
 	// applyKongMetadata(externalVault, kongData)
 }
 

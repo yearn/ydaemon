@@ -44,14 +44,29 @@ type TGithubTreeResponse struct {
 ** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
 func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-	baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/strategy/"
-	uri := baseURL + strconv.FormatUint(chainID, 10) + "/" + vaultAddress.Hex() + ".json"
-	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](uri)
-	if err != nil {
-		logs.Error(err)
-		return TRiskScoreYsec{}, err
-	}
-	return riskScores, nil
+    baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/strategy/"
+    
+    // Try checksummed first (matches our vault address format)
+    uriChecksummed := baseURL + strconv.FormatUint(chainID, 10) + "/" + vaultAddress.Hex() + ".json"
+    logs.Info("📡 Trying checksummed URL:", uriChecksummed)
+    riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](uriChecksummed)
+    if err == nil {
+        logs.Info("✅ Successfully fetched risk score using checksummed address")
+        return riskScores, nil
+    }
+    
+    // If checksummed fails, try lowercase address
+    uriLowercase := baseURL + strconv.FormatUint(chainID, 10) + "/" + strings.ToLower(vaultAddress.Hex()) + ".json"
+    logs.Info("📡 Checksummed failed, trying lowercase URL:", uriLowercase)
+    riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](uriLowercase)
+    if err == nil {
+        logs.Info("✅ Successfully fetched risk score using lowercase address")
+        return riskScores, nil
+    }
+    
+    // Both attempts failed
+    logs.Error("❌ Failed to fetch risk score with both checksummed and lowercase addresses:", err)
+    return TRiskScoreYsec{}, err
 }
 
 /**************************************************************************************************

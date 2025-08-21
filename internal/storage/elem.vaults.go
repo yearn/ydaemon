@@ -138,10 +138,14 @@ func GetVaultsJsonMetadata(chainID uint64) TJsonMetadata {
 **************************************************************************************************/
 func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.TVault) {
 	// Apply boolean fields
+	vault.Kind = models.TVaultKind(*vaultMeta.Kind)
+	vault.Type = models.TTokenType(*vaultMeta.Type)
 	vault.Metadata.IsRetired = vaultMeta.IsRetired
-	vault.Metadata.IsHighlighted = vaultMeta.IsHighlighted
+	vault.Metadata.IsHidden = vaultMeta.IsHidden
 	vault.Metadata.IsAggregator = vaultMeta.IsAggregator
 	vault.Metadata.IsBoosted = vaultMeta.IsBoosted
+	vault.Metadata.IsAutomated = vaultMeta.IsAutomated
+	vault.Metadata.IsHighlighted = vaultMeta.IsHighlighted
 	vault.Metadata.IsPool = vaultMeta.IsPool
 	vault.Metadata.ShouldUseV2APR = vaultMeta.ShouldUseV2APR
 
@@ -177,6 +181,9 @@ func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.T
 		}
 		vault.Metadata.Protocols = protocols
 	}
+
+	isYearn := vault.Metadata.Inclusion.IsYearn || vault.Metadata.Inclusion.IsYearnJuiced || vault.Metadata.Inclusion.IsGimme
+	vault.Endorsed = isYearn
 }
 
 /** 🔵 - Yearn *************************************************************************************

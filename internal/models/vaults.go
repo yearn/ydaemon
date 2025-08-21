@@ -225,10 +225,14 @@ type TVaultCmsMetadataSchema struct {
 	ChainID        uint64             `json:"chainId"`
 	Address        common.Address     `json:"address"`
 	Registry       *common.Address    `json:"registry,omitempty"`
+	Kind           *TVaultKind        `json:"kind"`
+	Type           *TTokenType        `json:"type"`
 	IsRetired      bool               `json:"isRetired"`
-	IsHighlighted  bool               `json:"isHighlighted"`
+	IsHidden       bool               `json:"isHidden"`
 	IsAggregator   bool               `json:"isAggregator"`
 	IsBoosted      bool               `json:"isBoosted"`
+	IsAutomated    bool               `json:"isAutomated"`
+	IsHighlighted  bool               `json:"isHighlighted"`
 	IsPool         bool               `json:"isPool"`
 	ShouldUseV2APR bool               `json:"shouldUseV2APR"`
 	Migration      TMigration         `json:"migration"`

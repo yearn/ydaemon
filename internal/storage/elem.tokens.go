@@ -234,3 +234,121 @@ func ERC20MapToSlice(tokensMap map[common.Address]models.TERC20Token) []models.T
 	}
 	return tokensSlice
 }
+
+func CreateTokenFromCms(tokenMeta models.TTokenCmsMetadataSchema) models.TERC20Token {
+	token := models.TERC20Token{
+		Address: tokenMeta.Address,
+		Name:    tokenMeta.Name,
+		Symbol:  tokenMeta.Symbol,
+		Decimals: tokenMeta.Decimals,
+		ChainID: tokenMeta.ChainID,
+	}
+
+	// Apply optional string fields (handle nil pointers)
+	if tokenMeta.DisplayName != nil {
+		token.DisplayName = *tokenMeta.DisplayName
+	}
+	if tokenMeta.DisplaySymbol != nil {
+		token.DisplaySymbol = *tokenMeta.DisplaySymbol
+	}
+	if tokenMeta.Description != nil {
+		token.Description = *tokenMeta.Description
+	}
+
+	return token
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** FetchCmsTokensMeta fetches token metadata from the CMS for a specific chain ID.
+** The CMS returns an array of token metadata following the TTokenCmsMetadataSchema structure.
+**
+** @param chainID
+** @return map[common.Address]models.TTokenCmsMetadataSchema A mapping of token addresses to their metadata
+**************************************************************************************************/
+func FetchCmsTokensMeta(chainID uint64) map[common.Address]models.TTokenCmsMetadataSchema {
+	cmsRoot := env.CMS_ROOT_URL
+	var tokensMetadata []models.TTokenCmsMetadataSchema
+
+	if cmsRoot != "" {
+		cmsURL := cmsRoot + "/tokens/" +
+			strconv.FormatUint(chainID, 10) + ".json"
+		tokensMetadata = helpers.FetchJSON[[]models.TTokenCmsMetadataSchema](cmsURL)
+		logs.Success("Fetch", len(tokensMetadata), "token metadata from cms, chain", chainID)
+
+	} else {
+		localPath := env.BASE_DATA_PATH + "/cdn-dev/tokens/" + strconv.FormatUint(chainID, 10) + ".json"
+
+		file, err := os.Open(localPath)
+		if err != nil {
+			logs.Error("Failed to open local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TTokenCmsMetadataSchema)
+		}
+		defer file.Close()
+
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&tokensMetadata)
+		if err != nil {
+			logs.Error("Failed to decode local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TTokenCmsMetadataSchema)
+		}
+		logs.Success("Load", len(tokensMetadata), "token metadata from local cms, chain", chainID)
+	}
+
+	// Convert array to map for easier lookup with normalized addresses
+	tokensMap := make(map[common.Address]models.TTokenCmsMetadataSchema)
+	for _, token := range tokensMetadata {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(token.Address.Hex())
+		tokensMap[normalizedAddress] = token
+	}
+
+	return tokensMap
+}
+
+/**************************************************************************************************
+** RefreshTokenMetadata will fetch the latest token metadata from CMS and add new tokens that
+** are present in CMS but not in the current repo.
+**
+** @param chainID
+**************************************************************************************************/
+func RefreshTokenMetadata(chainID uint64) {
+	mutex := getTokenMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	logs.Info("Refreshing token metadata for chain", chainID)
+	cmsTokens := FetchCmsTokensMeta(chainID)
+	logs.Info("Fetched", len(cmsTokens), "tokens from CMS for chain", chainID)
+	currentTokensMap, _ := ListERC20(chainID)
+
+	newTokensAdded := 0
+
+	for address, cmsToken := range cmsTokens {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(address.Hex())
+		
+		// Only add tokens that don't exist in the current repo
+		if _, exists := currentTokensMap[normalizedAddress]; !exists {
+			// Create new token from CMS data
+			newToken := CreateTokenFromCms(cmsToken)
+			
+			// Store the new token
+			StoreERC20(chainID, newToken)
+			logs.Info("Added new token", newToken.Address.Hex(), "to chain", chainID)
+			newTokensAdded++
+		}
+	}
+
+	if newTokensAdded > 0 {
+		logs.Success("Added", newTokensAdded, "new tokens from CMS for chain", chainID)
+		
+		// Save updated tokens to JSON if new tokens were added
+		// Note: We need to call this outside the current mutex to avoid deadlock
+		go func() {
+			allTokensMap, _ := ListERC20(chainID)
+			StoreTokensToJson(chainID, allTokensMap)
+		}()
+	} else {
+		logs.Info("No new tokens to add from CMS for chain", chainID)
+	}
+}

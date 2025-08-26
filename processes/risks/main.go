@@ -34,7 +34,10 @@ type TGithubTreeResponse struct {
 /**************************************************************************************************
 ** fetchVaultsRiskScore will fetch the risk scores for a specific vault from a GitHub repository.
 ** The scores are stored in JSON files organized by chain ID and vault address.
-** If the risk scores are not found, it will return an empty TRiskScore structure.
+** This function tries two locations in order:
+** 1. strategy/ directory (legacy location)
+** 2. vaults/ directory (new location)
+** If the risk scores are not found in either location, it will return an error.
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
@@ -44,13 +47,25 @@ type TGithubTreeResponse struct {
 ** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
 func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-	baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/strategy/"
-	uri := baseURL + strconv.FormatUint(chainID, 10) + "/" + vaultAddress.Hex() + ".json"
-	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](uri)
+	baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/"
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	vaultHex := vaultAddress.Hex()
+	
+	// Try strategy directory first (legacy location)
+	strategyURI := baseURL + "strategy/" + chainIDStr + "/" + vaultHex + ".json"
+	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](strategyURI)
+	if err == nil {
+		return riskScores, nil
+	}
+	
+	// Fallback to vaults directory (new location)
+	vaultsURI := baseURL + "vaults/" + chainIDStr + "/" + vaultHex + ".json"
+	riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](vaultsURI)
 	if err != nil {
-		logs.Error(err)
+		logs.Error("Failed to fetch risk scores from both strategy/ and vaults/ directories: " + err.Error())
 		return TRiskScoreYsec{}, err
 	}
+	
 	return riskScores, nil
 }
 
@@ -108,12 +123,23 @@ func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
 	// Fetch the GitHub tree
 	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/yearn/risk-score/git/trees/master?recursive=1")
 
-	// Parse the tree to find risk scores for this chain
-	prefix := fmt.Sprintf("strategy/%d/", chainID)
+	// Parse the tree to find risk scores for this chain in both directories
+	strategyPrefix := fmt.Sprintf("strategy/%d/", chainID)
+	vaultsPrefix := fmt.Sprintf("vaults/%d/", chainID)
+	
 	for _, item := range treeResponse.Tree {
-		if strings.HasPrefix(item.Path, prefix) && strings.HasSuffix(item.Path, ".json") {
-			// Extract address from path (remove prefix and .json suffix)
-			addressStr := strings.TrimSuffix(strings.TrimPrefix(item.Path, prefix), ".json")
+		var addressStr string
+		
+		// Check strategy directory (legacy location)
+		if strings.HasPrefix(item.Path, strategyPrefix) && strings.HasSuffix(item.Path, ".json") {
+			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, strategyPrefix), ".json")
+		}
+		// Check vaults directory (new location)
+		if strings.HasPrefix(item.Path, vaultsPrefix) && strings.HasSuffix(item.Path, ".json") {
+			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, vaultsPrefix), ".json")
+		}
+		
+		if addressStr != "" {
 			address := common.HexToAddress(addressStr)
 			availableRiskScores[chainID][address] = true
 		}

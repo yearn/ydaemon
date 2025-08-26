@@ -55,7 +55,7 @@ The script creates files in the risk-score repository following this structure:
 
 ```
 risk-score/
-└── strategy/
+└── vaults/
     ├── 1/           # Ethereum mainnet
     ├── 137/         # Polygon
     ├── 42161/       # Arbitrum

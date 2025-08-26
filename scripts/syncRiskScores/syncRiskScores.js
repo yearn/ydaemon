@@ -5,14 +5,14 @@
 * 
 * This script synchronizes vault risk information from ydaemon's vault metadata to the 
 * risk-score repository. It processes all vaults across different chains and creates new
-* risk score files in the risk-score repository structure.
+* risk score files in the risk-score repository's vaults directory structure.
 *
 * IMPORTANT: This script NEVER overwrites existing files in the risk-score repository.
 * Existing files are considered authoritative and take higher priority than ydaemon data.
 *
 * Features:
 * - Processes all chain vault files (1.json, 10.json, 137.json, etc.)
-* - Creates chain-specific directories in risk-score repo if they don't exist
+* - Creates chain-specific directories in risk-score/vaults/ if they don't exist
 * - Only syncs vaults that have risk data (riskLevel and riskScore)
 * - PRESERVES all existing risk score files (never overwrites)
 * - Only creates NEW files for vaults not yet present in risk-score repo
@@ -28,7 +28,7 @@ const path = require('path');
 const YDAEMON_ROOT = __dirname + '/../..';
 const VAULTS_DIR = path.join(YDAEMON_ROOT, 'data', 'meta', 'vaults');
 const RISK_SCORE_ROOT = path.join(YDAEMON_ROOT, '..', 'risk-score');
-const RISK_SCORE_STRATEGY_DIR = path.join(RISK_SCORE_ROOT, 'strategy');
+const RISK_SCORE_VAULTS_DIR = path.join(RISK_SCORE_ROOT, 'vaults');
 
 // Command line arguments
 const args = process.argv.slice(2);
@@ -63,23 +63,7 @@ function hasValidRiskData(vault) {
     if (!metadata.riskScore || typeof metadata.riskScore !== 'object') {
         return false;
     }
-    
-    // Verify riskScore has required fields
-    const requiredFields = [
-        'review', 'testing', 'complexity', 'riskExposure', 
-        'protocolIntegration', 'centralizationRisk', 'externalProtocolAudit',
-        'externalProtocolCentralisation', 'externalProtocolTvl', 
-        'externalProtocolLongevity', 'externalProtocolType'
-    ];
-    
-    for (const field of requiredFields) {
-        if (typeof metadata.riskScore[field] !== 'number' ||
-            metadata.riskScore[field] < 1 ||
-            metadata.riskScore[field] > 5) {
-            return false;
-        }
-    }
-    
+
     return true;
 }
 
@@ -166,7 +150,7 @@ function processVaultFile(chainId, filePath) {
     }
     
     const stats = { processed: 0, created: 0, skipped: 0, errors: 0 };
-    const chainDir = path.join(RISK_SCORE_STRATEGY_DIR, chainId.toString());
+    const chainDir = path.join(RISK_SCORE_VAULTS_DIR, chainId.toString());
     let chainDirCreated = false;
     
     // Process each vault
@@ -225,8 +209,8 @@ function main() {
         process.exit(1);
     }
     
-    // Ensure strategy directory exists
-    ensureDirectoryExists(RISK_SCORE_STRATEGY_DIR);
+    // Ensure vaults directory exists
+    ensureDirectoryExists(RISK_SCORE_VAULTS_DIR);
     
     // Get all vault files
     const vaultFiles = fs.readdirSync(VAULTS_DIR)

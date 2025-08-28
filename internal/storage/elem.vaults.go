@@ -152,6 +152,16 @@ func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.T
 	// Apply struct fields
 	vault.Metadata.Migration = vaultMeta.Migration
 	vault.Metadata.Stability = vaultMeta.Stability
+	
+	vault.Metadata.Inclusion.IsYearn = vaultMeta.Inclusion.IsYearn
+	vault.Metadata.Inclusion.IsYearnJuiced = vaultMeta.Inclusion.IsYearnJuiced
+	vault.Metadata.Inclusion.IsGimme = vaultMeta.Inclusion.IsGimme
+	vault.Metadata.Inclusion.IsSet = vaultMeta.Inclusion.IsSet
+	vault.Metadata.Inclusion.IsPoolTogether = vaultMeta.Inclusion.IsPoolTogether
+	vault.Metadata.Inclusion.IsCove = vaultMeta.Inclusion.IsCove
+	vault.Metadata.Inclusion.IsMorpho = vaultMeta.Inclusion.IsMorpho
+	vault.Metadata.Inclusion.IsKatana = vaultMeta.Inclusion.IsKatana
+	vault.Metadata.Inclusion.IsPublicERC4626 = vaultMeta.Inclusion.IsPublicERC4626
 
 	// Apply string fields (handle nil pointers)
 	if vaultMeta.Category != nil {

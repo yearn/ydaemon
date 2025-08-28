@@ -244,6 +244,7 @@ type TVaultCmsMetadataSchema struct {
 	SourceURI      *string            `json:"sourceURI,omitempty"`
 	UINotice       *string            `json:"uiNotice,omitempty"`
 	Protocols      []TCmsProtocolType `json:"protocols"`
+	Inclusion      TInclusion         `json:"inclusion"`
 }
 
 type CoercibleUint64 struct {

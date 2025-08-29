@@ -57,13 +57,19 @@ type TAllTokens struct {
 ** @return TAllTokens The formatted token data for API responses
 **************************************************************************************************/
 func convertToTokenResponse(token models.TERC20Token) TAllTokens {
+	// Use DisplaySymbol if available, otherwise fall back to Symbol
+	displaySymbol := token.DisplaySymbol
+	if displaySymbol == "" {
+		displaySymbol = token.Symbol
+	}
+
 	tokenDetails := TAllTokens{
 		Address:       token.Address.Hex(),
 		Name:          token.Name,
 		DisplayName:   token.DisplayName,
 		Symbol:        token.Symbol,
 		Decimals:      token.Decimals,
-		DisplaySymbol: token.Symbol,
+		DisplaySymbol: displaySymbol,
 		Category:      token.Category,
 		Description:   token.Description,
 		IsVault:       token.IsVaultLike(),

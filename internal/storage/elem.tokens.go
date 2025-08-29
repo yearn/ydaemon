@@ -106,7 +106,7 @@ func GetTokensJsonMetadata(chainID uint64) TJsonMetadata {
 
 /**************************************************************************************************
 ** LoadERC20 will retrieve the all the ERC20 tokens added to the configured DB and store them in
-** the _erc20SyncMap for fast access during that
+** the _erc20SyncMap for fast access during that same execution.
 **************************************************************************************************/
 func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
@@ -122,6 +122,18 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 		file.Version,
 		file.ShouldRefresh,
 	})
+
+	meta := FetchCmsTokensMeta(chainID)
+
+	for _, token := range file.Tokens {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(token.Address.Hex())
+		tokenMeta, ok := meta[normalizedAddress]
+		if ok {
+			ApplyCmsTokenMeta(tokenMeta, &token)
+		}
+	}
+
 	for _, token := range file.Tokens {
 		safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 	}
@@ -235,14 +247,20 @@ func ERC20MapToSlice(tokensMap map[common.Address]models.TERC20Token) []models.T
 	return tokensSlice
 }
 
-func CreateTokenFromCms(tokenMeta models.TTokenCmsMetadataSchema) models.TERC20Token {
-	token := models.TERC20Token{
-		Address: tokenMeta.Address,
-		Name:    tokenMeta.Name,
-		Symbol:  tokenMeta.Symbol,
-		Decimals: tokenMeta.Decimals,
-		ChainID: tokenMeta.ChainID,
-	}
+/**************************************************************************************************
+** ApplyCmsTokenMeta applies CMS metadata to a token's fields.
+** This function updates the token with values from the CMS metadata,
+** applying field-by-field updates to the token struct.
+**
+** @param tokenMeta The CMS metadata to apply
+** @param token The token to update (passed by reference)
+**************************************************************************************************/
+func ApplyCmsTokenMeta(tokenMeta models.TTokenCmsMetadataSchema, token *models.TERC20Token) {
+	// Apply basic fields
+	token.Name = tokenMeta.Name
+	token.Symbol = tokenMeta.Symbol
+	token.Decimals = tokenMeta.Decimals
+	token.ChainID = tokenMeta.ChainID
 
 	// Apply optional string fields (handle nil pointers)
 	if tokenMeta.DisplayName != nil {
@@ -254,8 +272,6 @@ func CreateTokenFromCms(tokenMeta models.TTokenCmsMetadataSchema) models.TERC20T
 	if tokenMeta.Description != nil {
 		token.Description = *tokenMeta.Description
 	}
-
-	return token
 }
 
 /** 🔵 - Yearn *************************************************************************************
@@ -306,49 +322,29 @@ func FetchCmsTokensMeta(chainID uint64) map[common.Address]models.TTokenCmsMetad
 }
 
 /**************************************************************************************************
-** RefreshTokenMetadata will fetch the latest token metadata from CMS and add new tokens that
-** are present in CMS but not in the current repo.
+** RefreshTokenMetadata will fetch the latest token metadata from CMS and apply it to all
+** currently loaded tokens. This function also adds new tokens that are present in CMS but
+** not in the current repo. This function is designed to be called periodically by the scheduler.
 **
-** @param chainID
+** @param chainID The blockchain network ID
 **************************************************************************************************/
 func RefreshTokenMetadata(chainID uint64) {
 	mutex := getTokenMutex(chainID)
 	mutex.Lock()
 	defer mutex.Unlock()
 
-	logs.Info("Refreshing token metadata for chain", chainID)
-	cmsTokens := FetchCmsTokensMeta(chainID)
-	logs.Info("Fetched", len(cmsTokens), "tokens from CMS for chain", chainID)
-	currentTokensMap, _ := ListERC20(chainID)
+	meta := FetchCmsTokensMeta(chainID)
 
-	newTokensAdded := 0
+	tokensMap, _ := ListERC20(chainID)
 
-	for address, cmsToken := range cmsTokens {
+	// First, update existing tokens with CMS metadata
+	for address, token := range tokensMap {
 		// Normalize address to ensure consistent lookup (case-insensitive)
 		normalizedAddress := common.HexToAddress(address.Hex())
-		
-		// Only add tokens that don't exist in the current repo
-		if _, exists := currentTokensMap[normalizedAddress]; !exists {
-			// Create new token from CMS data
-			newToken := CreateTokenFromCms(cmsToken)
-			
-			// Store the new token
-			StoreERC20(chainID, newToken)
-			logs.Info("Added new token", newToken.Address.Hex(), "to chain", chainID)
-			newTokensAdded++
+		tokenMeta, ok := meta[normalizedAddress]
+		if ok {
+			ApplyCmsTokenMeta(tokenMeta, &token)
+			StoreERC20(chainID, token)
 		}
-	}
-
-	if newTokensAdded > 0 {
-		logs.Success("Added", newTokensAdded, "new tokens from CMS for chain", chainID)
-		
-		// Save updated tokens to JSON if new tokens were added
-		// Note: We need to call this outside the current mutex to avoid deadlock
-		go func() {
-			allTokensMap, _ := ListERC20(chainID)
-			StoreTokensToJson(chainID, allTokensMap)
-		}()
-	} else {
-		logs.Info("No new tokens to add from CMS for chain", chainID)
 	}
 }

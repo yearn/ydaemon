@@ -68,3 +68,18 @@ func (t TERC20Token) GetVaultUnderlying() common.Address {
 	}
 	return common.Address{}
 }
+
+/**************************************************************************************************
+** TTokenCmsMetadataSchema represents the token metadata structure from CMS
+** This structure matches the simplified token format found in the CMS repository
+**************************************************************************************************/
+type TTokenCmsMetadataSchema struct {
+	Address       common.Address `json:"address"`
+	ChainID       uint64         `json:"chainId"`
+	Name          string         `json:"name"`
+	Symbol        string         `json:"symbol"`
+	DisplayName   *string        `json:"displayName,omitempty"`
+	DisplaySymbol *string        `json:"displaySymbol,omitempty"`
+	Description   *string        `json:"description,omitempty"`
+	Decimals      uint64         `json:"decimals"`
+}

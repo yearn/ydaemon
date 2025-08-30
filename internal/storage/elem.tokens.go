@@ -106,7 +106,7 @@ func GetTokensJsonMetadata(chainID uint64) TJsonMetadata {
 
 /**************************************************************************************************
 ** LoadERC20 will retrieve the all the ERC20 tokens added to the configured DB and store them in
-** the _erc20SyncMap for fast access during that
+** the _erc20SyncMap for fast access during that same execution.
 **************************************************************************************************/
 func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 	if wg != nil {
@@ -122,6 +122,18 @@ func LoadERC20(chainID uint64, wg *sync.WaitGroup) {
 		file.Version,
 		file.ShouldRefresh,
 	})
+
+	meta := FetchCmsTokensMeta(chainID)
+
+	for _, token := range file.Tokens {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(token.Address.Hex())
+		tokenMeta, ok := meta[normalizedAddress]
+		if ok {
+			ApplyCmsTokenMeta(tokenMeta, &token)
+		}
+	}
+
 	for _, token := range file.Tokens {
 		safeSyncMap(_erc20SyncMap, chainID).Store(token.Address, token)
 	}
@@ -233,4 +245,106 @@ func ERC20MapToSlice(tokensMap map[common.Address]models.TERC20Token) []models.T
 		tokensSlice = append(tokensSlice, token)
 	}
 	return tokensSlice
+}
+
+/**************************************************************************************************
+** ApplyCmsTokenMeta applies CMS metadata to a token's fields.
+** This function updates the token with values from the CMS metadata,
+** applying field-by-field updates to the token struct.
+**
+** @param tokenMeta The CMS metadata to apply
+** @param token The token to update (passed by reference)
+**************************************************************************************************/
+func ApplyCmsTokenMeta(tokenMeta models.TTokenCmsMetadataSchema, token *models.TERC20Token) {
+	// Apply basic fields
+	token.Name = tokenMeta.Name
+	token.Symbol = tokenMeta.Symbol
+	token.Decimals = tokenMeta.Decimals
+	token.ChainID = tokenMeta.ChainID
+
+	// Apply optional string fields (handle nil pointers)
+	if tokenMeta.DisplayName != nil {
+		token.DisplayName = *tokenMeta.DisplayName
+	}
+	if tokenMeta.DisplaySymbol != nil {
+		token.DisplaySymbol = *tokenMeta.DisplaySymbol
+	}
+	if tokenMeta.Description != nil {
+		token.Description = *tokenMeta.Description
+	}
+}
+
+/** 🔵 - Yearn *************************************************************************************
+** FetchCmsTokensMeta fetches token metadata from the CMS for a specific chain ID.
+** The CMS returns an array of token metadata following the TTokenCmsMetadataSchema structure.
+**
+** @param chainID
+** @return map[common.Address]models.TTokenCmsMetadataSchema A mapping of token addresses to their metadata
+**************************************************************************************************/
+func FetchCmsTokensMeta(chainID uint64) map[common.Address]models.TTokenCmsMetadataSchema {
+	cmsRoot := env.CMS_ROOT_URL
+	var tokensMetadata []models.TTokenCmsMetadataSchema
+
+	if cmsRoot != "" {
+		cmsURL := cmsRoot + "/tokens/" +
+			strconv.FormatUint(chainID, 10) + ".json"
+		tokensMetadata = helpers.FetchJSON[[]models.TTokenCmsMetadataSchema](cmsURL)
+		logs.Success("Fetch", len(tokensMetadata), "token metadata from cms, chain", chainID)
+
+	} else {
+		localPath := env.BASE_DATA_PATH + "/cdn-dev/tokens/" + strconv.FormatUint(chainID, 10) + ".json"
+
+		file, err := os.Open(localPath)
+		if err != nil {
+			logs.Error("Failed to open local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TTokenCmsMetadataSchema)
+		}
+		defer file.Close()
+
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&tokensMetadata)
+		if err != nil {
+			logs.Error("Failed to decode local CMS file: " + localPath + " - " + err.Error())
+			return make(map[common.Address]models.TTokenCmsMetadataSchema)
+		}
+		logs.Success("Load", len(tokensMetadata), "token metadata from local cms, chain", chainID)
+	}
+
+	// Convert array to map for easier lookup with normalized addresses
+	tokensMap := make(map[common.Address]models.TTokenCmsMetadataSchema)
+	for _, token := range tokensMetadata {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(token.Address.Hex())
+		tokensMap[normalizedAddress] = token
+	}
+
+	return tokensMap
+}
+
+/**************************************************************************************************
+** RefreshTokenMetadata will fetch the latest token metadata from CMS and apply it to all
+** currently loaded tokens. This function also adds new tokens that are present in CMS but
+** not in the current repo. This function is designed to be called periodically by the scheduler.
+**
+** @param chainID The blockchain network ID
+**************************************************************************************************/
+func RefreshTokenMetadata(chainID uint64) {
+	mutex := getTokenMutex(chainID)
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	meta := FetchCmsTokensMeta(chainID)
+
+	tokensMap, _ := ListERC20(chainID)
+
+	// First, update existing tokens with CMS metadata
+	for address, token := range tokensMap {
+		// Normalize address to ensure consistent lookup (case-insensitive)
+		normalizedAddress := common.HexToAddress(address.Hex())
+		tokenMeta, ok := meta[normalizedAddress]
+		if ok {
+			ApplyCmsTokenMeta(tokenMeta, &token)
+			StoreERC20(chainID, token)
+		}
+	}
 }

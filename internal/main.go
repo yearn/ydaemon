@@ -88,6 +88,7 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 			func() {
 				storage.RefreshVaultMetadata(chainID)
 				storage.RefreshStrategyMetadata(chainID)
+				storage.RefreshTokenMetadata(chainID)
 				storage.RefreshKongData(chainID)
 			},
 		),

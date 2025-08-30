@@ -34,7 +34,12 @@ type TGithubTreeResponse struct {
 /**************************************************************************************************
 ** fetchVaultsRiskScore will fetch the risk scores for a specific vault from a GitHub repository.
 ** The scores are stored in JSON files organized by chain ID and vault address.
-** If the risk scores are not found, it will return an empty TRiskScore structure.
+** This function tries multiple locations and address formats in order:
+** 1. strategy/ directory with checksummed address (legacy location)
+** 2. strategy/ directory with lowercase address (legacy location)
+** 3. vaults/ directory with checksummed address (new location)
+** 4. vaults/ directory with lowercase address (new location)
+** If the risk scores are not found in any location/format, it will return an error.
 **
 ** Arguments:
 ** - chainID: the chain ID of the network we are working on
@@ -44,29 +49,52 @@ type TGithubTreeResponse struct {
 ** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
 func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-    baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/strategy/"
-    
-    // Try checksummed first (matches our vault address format)
-    uriChecksummed := baseURL + strconv.FormatUint(chainID, 10) + "/" + vaultAddress.Hex() + ".json"
-    logs.Info("📡 Trying checksummed URL:", uriChecksummed)
-    riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](uriChecksummed)
-    if err == nil {
-        logs.Info("✅ Successfully fetched risk score using checksummed address")
-        return riskScores, nil
-    }
-    
-    // If checksummed fails, try lowercase address
-    uriLowercase := baseURL + strconv.FormatUint(chainID, 10) + "/" + strings.ToLower(vaultAddress.Hex()) + ".json"
-    logs.Info("📡 Checksummed failed, trying lowercase URL:", uriLowercase)
-    riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](uriLowercase)
-    if err == nil {
-        logs.Info("✅ Successfully fetched risk score using lowercase address")
-        return riskScores, nil
-    }
-    
-    // Both attempts failed
-    logs.Error("❌ Failed to fetch risk score with both checksummed and lowercase addresses:", err)
-    return TRiskScoreYsec{}, err
+	baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/"
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	vaultHex := vaultAddress.Hex()
+	vaultHexLower := strings.ToLower(vaultHex)
+	
+	// Try strategy directory first (legacy location)
+	// Try checksummed address first (matches our vault address format)
+	strategyURIChecksummed := baseURL + "strategy/" + chainIDStr + "/" + vaultHex + ".json"
+	logs.Info("📡 Trying checksummed URL:", strategyURIChecksummed)
+	riskScores, err := helpers.FetchJSONWithReject[TRiskScoreYsec](strategyURIChecksummed)
+	if err == nil {
+		logs.Info("✅ Successfully fetched risk score using checksummed address from strategy/")
+		return riskScores, nil
+	}
+	
+	// If checksummed fails, try lowercase address in strategy directory
+	strategyURILowercase := baseURL + "strategy/" + chainIDStr + "/" + vaultHexLower + ".json"
+	logs.Info("📡 Checksummed failed, trying lowercase URL:", strategyURILowercase)
+	riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](strategyURILowercase)
+	if err == nil {
+		logs.Info("✅ Successfully fetched risk score using lowercase address from strategy/")
+		return riskScores, nil
+	}
+	
+	// Fallback to vaults directory (new location)
+	// Try checksummed address first
+	vaultsURIChecksummed := baseURL + "vaults/" + chainIDStr + "/" + vaultHex + ".json"
+	logs.Info("📡 Strategy directory failed, trying vaults/ with checksummed URL:", vaultsURIChecksummed)
+	riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](vaultsURIChecksummed)
+	if err == nil {
+		logs.Info("✅ Successfully fetched risk score using checksummed address from vaults/")
+		return riskScores, nil
+	}
+	
+	// Finally, try lowercase address in vaults directory
+	vaultsURILowercase := baseURL + "vaults/" + chainIDStr + "/" + vaultHexLower + ".json"
+	logs.Info("📡 Vaults checksummed failed, trying vaults/ with lowercase URL:", vaultsURILowercase)
+	riskScores, err = helpers.FetchJSONWithReject[TRiskScoreYsec](vaultsURILowercase)
+	if err == nil {
+		logs.Info("✅ Successfully fetched risk score using lowercase address from vaults/")
+		return riskScores, nil
+	}
+	
+	// All attempts failed
+	logs.Error("❌ Failed to fetch risk score with both checksummed and lowercase addresses from both strategy/ and vaults/ directories:", err)
+	return TRiskScoreYsec{}, err
 }
 
 /**************************************************************************************************
@@ -123,12 +151,23 @@ func RetrieveAvailableRiskScores(chainID uint64) map[common.Address]bool {
 	// Fetch the GitHub tree
 	treeResponse := helpers.FetchJSON[TGithubTreeResponse]("https://api.github.com/repos/yearn/risk-score/git/trees/master?recursive=1")
 
-	// Parse the tree to find risk scores for this chain
-	prefix := fmt.Sprintf("strategy/%d/", chainID)
+	// Parse the tree to find risk scores for this chain in both directories
+	strategyPrefix := fmt.Sprintf("strategy/%d/", chainID)
+	vaultsPrefix := fmt.Sprintf("vaults/%d/", chainID)
+	
 	for _, item := range treeResponse.Tree {
-		if strings.HasPrefix(item.Path, prefix) && strings.HasSuffix(item.Path, ".json") {
-			// Extract address from path (remove prefix and .json suffix)
-			addressStr := strings.TrimSuffix(strings.TrimPrefix(item.Path, prefix), ".json")
+		var addressStr string
+		
+		// Check strategy directory (legacy location)
+		if strings.HasPrefix(item.Path, strategyPrefix) && strings.HasSuffix(item.Path, ".json") {
+			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, strategyPrefix), ".json")
+		}
+		// Check vaults directory (new location)
+		if strings.HasPrefix(item.Path, vaultsPrefix) && strings.HasSuffix(item.Path, ".json") {
+			addressStr = strings.TrimSuffix(strings.TrimPrefix(item.Path, vaultsPrefix), ".json")
+		}
+		
+		if addressStr != "" {
 			address := common.HexToAddress(addressStr)
 			availableRiskScores[chainID][address] = true
 		}

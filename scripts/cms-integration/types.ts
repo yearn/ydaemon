@@ -1,25 +1,28 @@
 import { getAddress } from 'viem'
 import { z } from 'zod'
 
-export const zhexstring = z.custom<`0x${string}`>((val: unknown) => 
-  typeof val === 'string' && /^0x[a-fA-F0-9]*$/.test(val)
-)
+export const zhexstring = z.string().regex(/^0x[a-fA-F0-9]*$/) as z.ZodType<`0x${string}`>
 
 export const HexStringSchema = zhexstring.transform(s => s)
 export type HexString = z.infer<typeof HexStringSchema>
 
-export const zevmaddressstring = z.custom<`0x${string}`>((val: unknown) => 
-  typeof val === 'string' && /^0x[a-fA-F0-9]{40}$/.test(val)
-)
+export const zevmaddressstring = z.string().regex(/^0x[a-fA-F0-9]{40}$/) as z.ZodType<`0x${string}`>
 
 export const EvmAddressSchema = zevmaddressstring.transform(s => getAddress(s))
 export type EvmAddress = z.infer<typeof EvmAddressSchema>
+
+declare module "zod" {
+  interface ZodString {
+    optionalString(): z.ZodUnion<[z.ZodNullable<this>, z.ZodLiteral<"">]>
+  }
+}
 
 z.ZodString.prototype.optionalString = function () {
   return this.nullish().or(z.literal(''))
 }
 
-const optionalString = (schema: z.ZodType<string>) => schema.nullish().or(z.literal(''))
+const optionalString = <T extends z.ZodTypeAny>(schema: T) =>
+  schema.nullish().or(z.literal(''))
 
 export const YDaemonVaultResponseSchema = z.object({
   chainID: z.number(),
@@ -39,7 +42,7 @@ export const YDaemonVaultResponseSchema = z.object({
     decimals: z.number(),
   }),
   tvl: z.object({
-    totalAssets: z.bigint({ coerce: true }),
+    totalAssets: z.coerce.bigint(),
     tvl: z.number(),
     price: z.number(),
   }),
@@ -94,7 +97,7 @@ export const YDaemonVaultResponseSchema = z.object({
     contract: EvmAddressSchema,
   }),
   featuringScore: z.number(),
-  pricePerShare: z.bigint({ coerce: true }),
+  pricePerShare: z.coerce.bigint(),
   info: z.object({
     riskLevel: z.number(),
     isRetired: z.boolean(),

@@ -39,15 +39,15 @@ func initVaults(chainID uint64) (
 ) {
 	/** 🔵 - Yearn *************************************************************************************
 	** InitializeV2 is only called on initialization. It's first job is to retrieve the initial data:
-	** - The registries vaults
-	** - The vaults
-	** - The strategies
+	** - The vaults (from Kong, complete replacement for registry discovery)
+	** - The strategies (from Kong, complete replacement for contract querying)
 	** - The tokens
 	**************************************************************************************************/
 	indexer.IndexYearnXPoolTogetherVaults(chainID)
 	indexer.IndexYearnXCoveVaults(chainID)
+	// Use Kong as complete replacement for registry discovery
 	registries := indexer.IndexNewVaults(chainID)
-	logs.Success(chainID, `-`, `InitRegistries ✅`, len(registries))
+	logs.Success(chainID, `-`, `InitVaults (Kong) ✅`, len(registries))
 	vaultMap, strategiesMap := indexer.ProcessNewVault(chainID, registries, fetcher.ProcessNewVaultMethodReplace)
 	logs.Success(chainID, `-`, `InitVaults ✅`, len(vaultMap))
 	tokenMap := fetcher.RetrieveAllTokens(chainID, vaultMap)
@@ -58,11 +58,11 @@ func initVaults(chainID uint64) (
 func initStrategies(chainID uint64, vaultMap map[common.Address]models.TVault) {
 	/** 🔵 - Yearn *************************************************************************************
 	** initStrategies is only called on initialization. It's first job is to retrieve the strategies
-	** and then to schedule the retrieval of the strategies every 3 hours
+	** from Kong (complete replacement for contract querying), then to schedule retrieval
 	**************************************************************************************************/
 	strategiesMap := indexer.IndexNewStrategies(chainID, vaultMap)
 	fetcher.RetrieveAllStrategies(chainID, strategiesMap)
-	logs.Success(chainID, `-`, `InitStrategies ✅`, len(strategiesMap))
+	logs.Success(chainID, `-`, `InitStrategies (Kong) ✅`, len(strategiesMap))
 }
 
 func InitializeV2(chainID uint64, wg *sync.WaitGroup) {

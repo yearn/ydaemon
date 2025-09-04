@@ -671,7 +671,7 @@ func indexStrategyWrapper(
 /** 🔵 - Yearn *************************************************************************************
 ** The function `IndexNewStrategies` is responsible for indexing new strategies for a given chain ID.
 **************************************************************************************************/
-func IndexNewStrategies(
+func IndexNewStrategiesFromContracts(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[string]models.TStrategy) {

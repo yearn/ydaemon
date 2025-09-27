@@ -1,0 +1,38 @@
+{
+	"lastUpdate": "2025-01-01T00:00:00.000000000Z",
+	"version": {
+		"major": 1,
+		"minor": 0,
+		"patch": 0
+	},
+	"shouldRefresh": false,
+	"strategies": {
+		"0xBaadd4b44929606178FcDBd2f4309282f39D9dA7_0xBF319dDC2Edc1Eb6FDf9910E39b37Be221C8805F": {
+			"address": "0xbaadd4b44929606178fcdbd2f4309282f39d9da7",
+			"vaultAddress": "0xbf319ddc2edc1eb6fdf9910e39b37be221c8805f",
+			"name": "Convex crvUSD-sreUSD Lender",
+			"vaultVersion": "3.0.2",
+			"displayName": "",
+			"description": "",
+			"activation": 23392354,
+			"chainID": 1,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": false,
+			"isRetired": false,
+			"status": "active",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "293438835517089465378725",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "500",
+			"lastReport": "1758227339",
+			"lastDebtRatio": "978",
+			"netAPR": 0.1586453989870673,
+			"aprType": "forward",
+			"protocols": null
+		}
+	}
+}

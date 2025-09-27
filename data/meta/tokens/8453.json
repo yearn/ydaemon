@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-08-07T09:15:55.804070803-04:00",
+	"lastUpdate": "2025-09-27T21:48:46.274624313Z",
 	"version": {
 		"major": 0,
-		"minor": 32,
+		"minor": 33,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -115,6 +115,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0x0de119f5790c4ecf6eed80aac7c25d2dcad10f0f": {
+			"address": "0x0de119f5790c4ecf6eed80aac7c25d2dcad10f0f",
+			"underlyingTokensAddresses": [
+				"0x60a3e35cc302bfa44cb288bc5a4f316fdb1adb42"
+			],
+			"type": "Yearn Vault",
+			"name": "EURC Fluid Lender",
+			"symbol": "ysEURC",
+			"displayName": "EURC Fluid Lender",
+			"displaySymbol": "ysEURC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x0dE119f5790c4EcF6eEd80Aac7c25D2dCAD10f0f/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x0fac819628a7f612abac1cad939768058cc0170c": {
 			"address": "0x0fac819628a7f612abac1cad939768058cc0170c",
 			"underlyingTokensAddresses": [],
@@ -175,6 +191,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x141719bd8A203839c291B6927d13B32710932B90/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x19f233b2953275196e6343f17b76da098c478e21": {
+			"address": "0x19f233b2953275196e6343f17b76da098c478e21",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Teller USDC",
+			"symbol": "tUSDC",
+			"displayName": "Teller USDC",
+			"displaySymbol": "tUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x19f233B2953275196e6343F17b76dA098c478E21/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x1b05e4e814b3431a48b8164c41eac834d9ce2da6": {
@@ -447,6 +479,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x385ad1a645acd91dafca552488ed3b9a3ebd7df6": {
+			"address": "0x385ad1a645acd91dafca552488ed3b9a3ebd7df6",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "swypeVault USDC",
+			"symbol": "swypeUSDC",
+			"displayName": "swypeVault USDC",
+			"displaySymbol": "swypeUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x385aD1A645ACd91dafca552488eD3B9a3ebd7df6/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x391e5dc227cdcf3cca012e5278798121236b1861": {
 			"address": "0x391e5dc227cdcf3cca012e5278798121236b1861",
 			"underlyingTokensAddresses": [
@@ -461,6 +509,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0x391E5dc227CDcf3cCA012E5278798121236b1861/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0x3ac14a89b4bf2a53f73cbb34aef9cade5c39b3fc": {
+			"address": "0x3ac14a89b4bf2a53f73cbb34aef9cade5c39b3fc",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Yest1",
+			"symbol": "y",
+			"displayName": "Yest1",
+			"displaySymbol": "y",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x3ac14a89b4BF2a53f73cBB34aef9cAdE5C39B3Fc/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0x3d0c3b02eb2788c97cdb0a23e369a49278e4b497": {
@@ -1055,6 +1119,22 @@
 			"decimals": 18,
 			"chainID": 8453
 		},
+		"0x70fffbacb53ef74903ac074aae769414a70970d1": {
+			"address": "0x70fffbacb53ef74903ac074aae769414a70970d1",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Fluid Lender",
+			"symbol": "ysUSDC",
+			"displayName": "USDC Fluid Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x70ffFbacB53EF74903ac074aAE769414a70970d1/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0x723aef6543aece026a15662be4d3fb3424d502a9": {
 			"address": "0x723aef6543aece026a15662be4d3fb3424d502a9",
 			"underlyingTokensAddresses": [],
@@ -1471,6 +1551,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0x95e226980e9df23a0db530c828619a23eeca4ba0": {
+			"address": "0x95e226980e9df23a0db530c828619a23eeca4ba0",
+			"underlyingTokensAddresses": [
+				"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+			],
+			"type": "Yearn Vault",
+			"name": "Chimi cbBTC Vault",
+			"symbol": "chimiCBBTC",
+			"displayName": "Chimi cbBTC Vault",
+			"displaySymbol": "chimiCBBTC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0x95e226980E9dF23A0Db530C828619A23EEca4BA0/logo-128.png",
+			"decimals": 8,
+			"chainID": 8453
+		},
 		"0x985cc9c306bfe075f7c67ec275fb0b80f0b21976": {
 			"address": "0x985cc9c306bfe075f7c67ec275fb0b80f0b21976",
 			"underlyingTokensAddresses": [
@@ -1735,6 +1831,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0xb37e5b6e05e463c8a7daf5969063d238c9dfb728": {
+			"address": "0xb37e5b6e05e463c8a7daf5969063d238c9dfb728",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "TESTV3VAULT",
+			"symbol": "TV3V",
+			"displayName": "TESTV3VAULT",
+			"displaySymbol": "TV3V",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xB37e5B6E05e463c8a7dAF5969063D238c9dFb728/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xb4885bc63399bf5518b994c1d0c153334ee579d0": {
 			"address": "0xb4885bc63399bf5518b994c1d0c153334ee579d0",
 			"underlyingTokensAddresses": [],
@@ -1889,6 +2001,22 @@
 			"decimals": 6,
 			"chainID": 8453
 		},
+		"0xcb2f26898c0893c0bdd5cf76417cf9b2258af0ed": {
+			"address": "0xcb2f26898c0893c0bdd5cf76417cf9b2258af0ed",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Chimi USDC Vault",
+			"symbol": "chimiUSDC",
+			"displayName": "Chimi USDC Vault",
+			"displaySymbol": "chimiUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xCb2f26898C0893c0bDd5cF76417CF9b2258AF0ed/logo-128.png",
+			"decimals": 6,
+			"chainID": 8453
+		},
 		"0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf": {
 			"address": "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
 			"underlyingTokensAddresses": [],
@@ -1931,6 +2059,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xD1468AF648565f11393e4033cb0Cd270b62495c9/logo-128.png",
 			"decimals": 6,
+			"chainID": 8453
+		},
+		"0xd46a69a4fd266d9e4abd3e8fde97d860de6c05e3": {
+			"address": "0xd46a69a4fd266d9e4abd3e8fde97d860de6c05e3",
+			"underlyingTokensAddresses": [
+				"0x4200000000000000000000000000000000000006"
+			],
+			"type": "Yearn Vault",
+			"name": "Chimi ETH Vault",
+			"symbol": "chimiETH",
+			"displayName": "Chimi ETH Vault",
+			"displaySymbol": "chimiETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xD46a69A4fD266D9e4aBd3E8fDE97d860dE6c05E3/logo-128.png",
+			"decimals": 18,
 			"chainID": 8453
 		},
 		"0xd5428b889621eee8060fc105aa0ab0fa2e344468": {
@@ -2177,6 +2321,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/8453/0xF8f36Ab972f6fE3ae1f594595aEe1284E270d034/logo-128.png",
 			"decimals": 18,
+			"chainID": 8453
+		},
+		"0xf9dd53508bac70d9fdca5af7688afce985d3f8bf": {
+			"address": "0xf9dd53508bac70d9fdca5af7688afce985d3f8bf",
+			"underlyingTokensAddresses": [
+				"0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+			],
+			"type": "Yearn Vault",
+			"name": "Test USDC",
+			"symbol": "tUSDC",
+			"displayName": "Test USDC",
+			"displaySymbol": "tUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/8453/0xF9DD53508bac70D9FDCA5Af7688afcE985d3F8BF/logo-128.png",
+			"decimals": 6,
 			"chainID": 8453
 		},
 		"0xfdb431e661372fa1146efb70bf120ecded944a78": {

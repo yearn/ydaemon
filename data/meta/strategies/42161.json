@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:57.132601046-04:00",
+	"lastUpdate": "2025-09-27T21:49:00.944223441Z",
 	"version": {
 		"major": 0,
-		"minor": 51,
-		"patch": 3
+		"minor": 55,
+		"patch": 12
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -28,11 +28,11 @@
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1752712836",
+			"lastReport": "1755023175",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.005662365368985789,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x034f12A217405D54bf2654b66A96fa74aD715951_0x2e48847FE29C3883c98125Cb2C44244d6602d549": {
 			"address": "0x034f12a217405d54bf2654b66a96fa74ad715951",
@@ -59,7 +59,7 @@
 			"lastDebtRatio": "5337",
 			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x0d350027AE6fa715f17ea413D053eab94432D730_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0x0d350027ae6fa715f17ea413d053eab94432d730",
@@ -84,9 +84,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1752712834",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.0028624916181163584,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x127A7F610cc704Be6122dfa76eb61E84C9cb0Efd_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0x127a7f610cc704be6122dfa76eb61e84c9cb0efd",
@@ -112,8 +112,8 @@
 			"lastReport": "0",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x15B89e3E1C19e76d6bBD39A7b7c1f2f83C9B3Afc_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0x15b89e3e1c19e76d6bbd39a7b7c1f2f83c9b3afc",
@@ -138,9 +138,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1752712841",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.008295769216237758,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x172dD6fd105B9Fda87a238d110c92bb0Ae30305D_0x02822b7B6dE0bf087DcEa626f6f19a838AeDB7be": {
 			"address": "0x172dd6fd105b9fda87a238d110c92bb0ae30305d",
@@ -167,7 +167,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x19e70E3195fEC1A33745D9260Bf26c3f915Bb0CC_0x239e14A19DFF93a17339DCC444f74406C17f8E67": {
 			"address": "0x19e70e3195fec1a33745d9260bf26c3f915bb0cc",
@@ -215,15 +215,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "548346782",
+			"lastTotalDebt": "550013710",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1754332864",
+			"lastReport": "1757966595",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.027645758997829617,
+			"netAPR": 0.03116238061420251,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x1bd173F9a1186A1AbE680071E0F57d4D83c18430_0xEa7DD7285350d1153510069Ac4b382a96E479683": {
 			"address": "0x1bd173f9a1186a1abe680071e0f57d4d83c18430",
@@ -248,9 +248,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1726237546",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.03116238064539978,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x24F16FD4309DeA35Ef5cE440fd42B6CEcb61AfFF_0x022061d81e42fcb59711193346Bab758D24D6c43": {
 			"address": "0x24f16fd4309dea35ef5ce440fd42b6cecb61afff",
@@ -277,7 +277,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x28bA44d8e8FD06C448497423b460129780527604_0x7fD798ED77368E787E216DfDb5Be5F6CAe4C5aD5": {
 			"address": "0x28ba44d8e8fd06c448497423b460129780527604",
@@ -303,8 +303,35 @@
 			"lastReport": "1719070395",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
+		},
+		"0x2c28c7d3B482E9BCEceff1a57F9ccEa490E9Daa1_0x6FAF8b7fFeE3306EfcFc2BA9Fec912b4d49834C1": {
+			"address": "0x2c28c7d3b482e9bceceff1a57f9ccea490e9daa1",
+			"vaultAddress": "0x6faf8b7ffee3306efcfc2ba9fec912b4d49834c1",
+			"name": "USDC Fluid Lender",
+			"vaultVersion": "3.0.1",
+			"displayName": "",
+			"description": "",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": true,
+			"isRetired": false,
+			"status": "unallocated",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "500",
+			"lastReport": "1755551648",
+			"lastDebtRatio": "0",
+			"netAPR": 0.06466553516375484,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x2d25Ce68AAd6Ffef1585ff05bC621db1F9F2E499_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0x2d25ce68aad6ffef1585ff05bc621db1f9f2e499",
@@ -330,8 +357,8 @@
 			"lastReport": "0",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x2e505E3Bc847895FF4Ae0021a1B0E739848A1a8f_0xD21E503d8aC357A7C8F8897BF84a4Bfd14fEc6E1": {
 			"address": "0x2e505e3bc847895ff4ae0021a1b0e739848a1a8f",
@@ -357,8 +384,35 @@
 			"lastReport": "1719070290",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
+		},
+		"0x2eF26b0e34Ea0dba2068BC8Df7c4c2a7a9620A80_0xc0ba9bfED28aB46Da48d2B69316A3838698EF3f5": {
+			"address": "0x2ef26b0e34ea0dba2068bc8df7c4c2a7a9620a80",
+			"vaultAddress": "0xc0ba9bfed28ab46da48d2b69316a3838698ef3f5",
+			"name": "USDT Fluid Lender",
+			"vaultVersion": "3.0.1",
+			"displayName": "",
+			"description": "",
+			"activation": 183112450,
+			"chainID": 42161,
+			"doHealthCheck": true,
+			"isActive": true,
+			"isInQueue": true,
+			"isRetired": false,
+			"status": "unallocated",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "0",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "500",
+			"lastReport": "1755551648",
+			"lastDebtRatio": "0",
+			"netAPR": 0.08220617814167497,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x3518fffF84e40229D9925afd57A6F4BdF1fA5879_0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544": {
 			"address": "0x3518ffff84e40229d9925afd57a6f4bdf1fa5879",
@@ -385,7 +439,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x3833Edd36492e29C53766282eC66500ae00C4789_0xC80e7eee121570F36c629378De42EB80dc22eCAd": {
 			"address": "0x3833edd36492e29c53766282ec66500ae00c4789",
@@ -411,8 +465,8 @@
 			"lastReport": "1740434733",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x38Bcb6856AD0f887Fe05DBE341B8FBd9bBb65cE9_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0x38bcb6856ad0f887fe05dbe341b8fbd9bbb65ce9",
@@ -427,19 +481,19 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "18165216496099952422619",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1752712839",
-			"lastDebtRatio": "0",
+			"lastReport": "1758142929",
+			"lastDebtRatio": "386",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x39Ce72aCE7722fe38A4AfF02bfbe7789B58c6905_0x7DEB119b92b76f78C212bc54FBBb34CEA75f4d4A": {
 			"address": "0x39ce72ace7722fe38a4aff02bfbe7789b58c6905",
@@ -458,15 +512,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "5843584193764894472717",
+			"lastTotalDebt": "4987738671737771577885",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1754345423",
+			"lastReport": "1757978130",
 			"lastDebtRatio": "10000",
-			"netAPR": 0.002332443806429829,
+			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x3FfA0C3fba4Adfe2b6e4D7E2f8E6e6324bE5305B_0x2e48847FE29C3883c98125Cb2C44244d6602d549": {
 			"address": "0x3ffa0c3fba4adfe2b6e4d7e2f8e6e6324be5305b",
@@ -492,8 +546,8 @@
 			"lastReport": "1712781436",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x3cE71021cCA8a2902764a43C60ff5F8A312245f9_0x044E75fCbF7BD3f8f4577FF317554e9c0037F145": {
 			"address": "0x3ce71021cca8a2902764a43c60ff5f8a312245f9",
@@ -520,7 +574,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x445300a0B0FCde8081F311c2991dE613299DF4D7_0x34a2b066AF16409648eF15d239E656edB8790ca0": {
 			"address": "0x445300a0b0fcde8081f311c2991de613299df4d7",
@@ -547,7 +601,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x45aCEAA535830C921316085E355E4a32385E53f2_0xc0ba9bfED28aB46Da48d2B69316A3838698EF3f5": {
 			"address": "0x45aceaa535830c921316085e355e4a32385e53f2",
@@ -566,15 +620,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "514244384",
+			"lastTotalDebt": "516928506",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1754068639",
-			"lastDebtRatio": "2369",
-			"netAPR": 0.04068825190823855,
+			"lastReport": "1757698951",
+			"lastDebtRatio": "2235",
+			"netAPR": 0.10322422471673587,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x48Bf6f6F1cccBf22D3DCB7cDA68Fa14ba55b78f2_0x0F2ae7531A83982F15ff1D26B165E2bF3D7566da": {
 			"address": "0x48bf6f6f1cccbf22d3dcb7cda68fa14ba55b78f2",
@@ -601,7 +655,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x4aE5CE819e7D678b07E8D0f483d351E2c8e8B8D3_0xFE7AebD759C6e251afa44aF17de4cc88F83FF6a4": {
 			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
@@ -626,9 +680,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1710374792",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.07007064547677189,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x4aE5CE819e7D678b07E8D0f483d351E2c8e8B8D3_0xc0ba9bfED28aB46Da48d2B69316A3838698EF3f5": {
 			"address": "0x4ae5ce819e7d678b07e8d0f483d351e2c8e8b8d3",
@@ -647,15 +701,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "1656375150",
+			"lastTotalDebt": "1641646682",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1754567873",
-			"lastDebtRatio": "7631",
-			"netAPR": 0.030340193442990326,
+			"lastReport": "1758198855",
+			"lastDebtRatio": "7098",
+			"netAPR": 0.07007064781907602,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x5108DB0852C0CAA2Df797DcF31f8A73bFb335452_0xFE7AebD759C6e251afa44aF17de4cc88F83FF6a4": {
 			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
@@ -681,8 +735,8 @@
 			"lastReport": "1709833309",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x5108DB0852C0CAA2Df797DcF31f8A73bFb335452_0xc0ba9bfED28aB46Da48d2B69316A3838698EF3f5": {
 			"address": "0x5108db0852c0caa2df797dcf31f8a73bfb335452",
@@ -708,8 +762,8 @@
 			"lastReport": "1736297050",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x533337c57dFA768F4B4827048b320aa78D909D30_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0x533337c57dfa768f4b4827048b320aa78d909d30",
@@ -724,19 +778,19 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "42692869226874507470421",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1752712826",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"lastReport": "1758142931",
+			"lastDebtRatio": "908",
+			"netAPR": 0.031643260226998926,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x54A77d0628e472643753ccb6CD929ac768F5f634_0x244F22Dd5F309506129513D0954787d52D80ba3D": {
 			"address": "0x54a77d0628e472643753ccb6cd929ac768f5f634",
@@ -762,8 +816,8 @@
 			"lastReport": "1740501971",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x571293fD9d9716D50ba48Aa1628840D7FA166B20_0xC40DA6a01Ac36F39736731ee50fb3b1B8204e2D3": {
 			"address": "0x571293fd9d9716d50ba48aa1628840d7fa166b20",
@@ -790,7 +844,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0.03801965733236656,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x62a6d4B860f43D1e52529e21C9C74dDfeAaFC168_0x1Dd930ADD968ff5913C3627dAA1e6e6FCC9dc544": {
 			"address": "0x62a6d4b860f43d1e52529e21c9c74ddfeaafc168",
@@ -817,7 +871,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0.05302367644155481,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x635E3b274b37175BCd67c94A5093387aFF96cf3d_0xE6Dbfb035B44E94D07F7B3e4f6bfBf1C6e68e3d0": {
 			"address": "0x635e3b274b37175bcd67c94a5093387aff96cf3d",
@@ -844,7 +898,7 @@
 			"lastDebtRatio": "4523",
 			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x637e74B654105a3646B20DCe34197D88f336AB1A_0x985c0271ad0bF0a45951b64EB6FC58010B050908": {
 			"address": "0x637e74b654105a3646b20dce34197d88f336ab1a",
@@ -871,7 +925,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x682026D39414eaa2fE081bc6A4105D2f92A39A7B_0x244F22Dd5F309506129513D0954787d52D80ba3D": {
 			"address": "0x682026d39414eaa2fe081bc6a4105d2f92a39a7b",
@@ -897,8 +951,8 @@
 			"lastReport": "1740502484",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x682026D39414eaa2fE081bc6A4105D2f92A39A7B_0x54A77d0628e472643753ccb6CD929ac768F5f634": {
 			"address": "0x682026d39414eaa2fe081bc6a4105d2f92a39a7b",
@@ -924,8 +978,8 @@
 			"lastReport": "1740505367",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x6aC368E13F893b14e2b4dc01EB83C89a06b9a039_0x08e3D13d50310aFbeA2da20A3DBD92aAcFc503Ac": {
 			"address": "0x6ac368e13f893b14e2b4dc01eb83c89a06b9a039",
@@ -952,6 +1006,33 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
+			"protocols": []
+		},
+		"0x84868a18f0C7602dbe9613D12d544B5F4c3Dff95_0xbE7d1b3cF19Eb05aC557bE14af24E093fadfD7c6": {
+			"address": "0x84868a18f0c7602dbe9613d12d544b5f4c3dff95",
+			"vaultAddress": "0xbe7d1b3cf19eb05ac557be14af24e093fadfd7c6",
+			"name": "USDC-APE shares",
+			"vaultVersion": "3.0.4",
+			"displayName": "",
+			"description": "",
+			"activation": 369780808,
+			"chainID": 42161,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"isRetired": false,
+			"status": "active",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "50001999999",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1758945614",
+			"lastDebtRatio": "10000",
+			"netAPR": 0,
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0x85968BF0f1f110C707fEF10a59f80118F349c058_0xDa3b69a45797DCA697Ff5bB2c10682f14373c063": {
@@ -977,9 +1058,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1732874228",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.023526077708013737,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x85968BF0f1f110C707fEF10a59f80118F349c058_0xEa7DD7285350d1153510069Ac4b382a96E479683": {
 			"address": "0x85968bf0f1f110c707fef10a59f80118f349c058",
@@ -1004,9 +1085,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1726237545",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.02352607766984427,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x8B25CFbAC2aC634071CbcCb20F298b176fd86007_0x08e3D13d50310aFbeA2da20A3DBD92aAcFc503Ac": {
 			"address": "0x8b25cfbac2ac634071cbccb20f298b176fd86007",
@@ -1033,7 +1114,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0.03781685338202223,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x952B1487195B976A0B4aDCbaE418402eF9830Fd7_0xC80e7eee121570F36c629378De42EB80dc22eCAd": {
 			"address": "0x952b1487195b976a0b4adcbae418402ef9830fd7",
@@ -1059,8 +1140,8 @@
 			"lastReport": "1740262894",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0x952B1487195B976A0B4aDCbaE418402eF9830Fd7_0xd49Afd20AFF04F86127C4b7b2eD893aAD82F8d9b": {
 			"address": "0x952b1487195b976a0b4adcbae418402ef9830fd7",
@@ -1087,7 +1168,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0x9a5eca1b228e47a15BD9fab07716a9FcE9Eebfb5_0x2e48847FE29C3883c98125Cb2C44244d6602d549": {
 			"address": "0x9a5eca1b228e47a15bd9fab07716a9fce9eebfb5",
@@ -1114,7 +1195,7 @@
 			"lastDebtRatio": "4663",
 			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xA4B8873B4629c20f2167c0A2bC33B6AF8699dDc1_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0xa4b8873b4629c20f2167c0a2bc33b6af8699ddc1",
@@ -1133,15 +1214,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "18229752337",
+			"lastTotalDebt": "7161825108",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1754334079",
-			"lastDebtRatio": "835",
-			"netAPR": 0.04270201961638076,
+			"lastReport": "1757967203",
+			"lastDebtRatio": "373",
+			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xAe55FbdC3Cce38464e6A7F23d19A143898451105_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0xae55fbdc3cce38464e6a7f23d19a143898451105",
@@ -1156,6 +1237,33 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
+			"status": "active",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "1063146599032545280096",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1758142928",
+			"lastDebtRatio": "23",
+			"netAPR": 0.016072150411572395,
+			"aprType": "forward",
+			"protocols": []
+		},
+		"0xC49746617cb9E78e64F93180A17a6E6Fc4055039_0xbE7d1b3cF19Eb05aC557bE14af24E093fadfD7c6": {
+			"address": "0xc49746617cb9e78e64f93180a17a6e6fc4055039",
+			"vaultAddress": "0xbe7d1b3cf19eb05ac557be14af24e093fadfd7c6",
+			"name": "USDC-WETH shares",
+			"vaultVersion": "3.0.4",
+			"displayName": "",
+			"description": "",
+			"activation": 369780808,
+			"chainID": 42161,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"isRetired": false,
 			"status": "unallocated",
 			"keepCRV": null,
 			"keepCRVPercent": null,
@@ -1164,10 +1272,10 @@
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1752712831",
+			"lastReport": "1758600010",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
+			"aprType": "forward",
 			"protocols": null
 		},
 		"0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b_0x12bF88C63bF060355A8d2E4C6eE960365a5E8335": {
@@ -1193,9 +1301,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1715035095",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.1032781365829738,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b_0x6FAF8b7fFeE3306EfcFc2BA9Fec912b4d49834C1": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
@@ -1214,15 +1322,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "8467500031",
+			"lastTotalDebt": "6247500447",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "500",
-			"lastReport": "1754317178",
-			"lastDebtRatio": "9850",
-			"netAPR": 0.06389078708601836,
+			"lastReport": "1757948392",
+			"lastDebtRatio": "10000",
+			"netAPR": 0.10327812677852766,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b_0xE6Dbfb035B44E94D07F7B3e4f6bfBf1C6e68e3d0": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
@@ -1247,9 +1355,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1731426121",
 			"lastDebtRatio": "3981",
-			"netAPR": 0.06389078801500858,
+			"netAPR": 0.10327812677852766,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b_0xEdC4949AdB7C6e7aeed4AE2545Cb4aeF82583Bd8": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
@@ -1274,9 +1382,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1710378303",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.1032781365829738,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xCACc53bAcCe744ac7b5C1eC7eb7e3Ab01330733b_0xeAdB712d95f347c3223261ef0f67505579eAC159": {
 			"address": "0xcacc53bacce744ac7b5c1ec7eb7e3ab01330733b",
@@ -1301,9 +1409,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1740262564",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.10327813519144247,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xCcFfF90a596fCC0B549a5f69a70DE0a9c5295352_0x630c9050E6b0014C6Fe4C214D4840909345aDB7D": {
 			"address": "0xccfff90a596fcc0b549a5f69a70de0a9c5295352",
@@ -1330,7 +1438,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0.13070868632730534,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xDA9889B85831aB8841EDd3618e1595a7FeF96fa8_0x2B0B6376083c6E1F376C7439F328436A673F333c": {
 			"address": "0xda9889b85831ab8841edd3618e1595a7fef96fa8",
@@ -1357,7 +1465,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xDAbdD3BD55d55927847510703C0fd7Eb0Af98f52_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0xdabdd3bd55d55927847510703c0fd7eb0af98f52",
@@ -1372,19 +1480,19 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "133344911614236328551419",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1752712829",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"lastReport": "1758169102",
+			"lastDebtRatio": "2836",
+			"netAPR": 0.07371495030554787,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xDF9640332bcfd3b16Cb80C1287Ed04B875D9A384_0x2B0B6376083c6E1F376C7439F328436A673F333c": {
 			"address": "0xdf9640332bcfd3b16cb80c1287ed04b875d9a384",
@@ -1411,7 +1519,7 @@
 			"lastDebtRatio": "7006",
 			"netAPR": 0,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xDa3b69a45797DCA697Ff5bB2c10682f14373c063_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0xda3b69a45797dca697ff5bb2c10682f14373c063",
@@ -1436,9 +1544,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1736061085",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.029604035438968168,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xE43C0bbbfC34575927798B8Ba9d58AE58F2Be3C6_0x044E75fCbF7BD3f8f4577FF317554e9c0037F145": {
 			"address": "0xe43c0bbbfc34575927798b8ba9d58ae58f2be3c6",
@@ -1465,7 +1573,7 @@
 			"lastDebtRatio": "9811",
 			"netAPR": 0.05903236025639469,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xE82D060687C014B280b65df24AcD94A77251C784_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0xe82d060687c014b280b65df24acd94a77251c784",
@@ -1480,19 +1588,19 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "active",
+			"status": "unallocated",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "55272686450",
+			"lastTotalDebt": "0",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1754334079",
-			"lastDebtRatio": "2530",
-			"netAPR": 0.06047559099475741,
+			"lastReport": "1757967203",
+			"lastDebtRatio": "0",
+			"netAPR": 0.2059407463132823,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xF1fD82C38F1cA1B256F54302FbAcC2448e5da143_0xAebA9F4a9293213e0E3ed18A2F688BDDd7f5FB0c": {
 			"address": "0xf1fd82c38f1ca1b256f54302fbacc2448e5da143",
@@ -1519,7 +1627,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xF992FCEF771dF908f9B09Bb2619092f70AB21957_0x49448d2B94fb9C4e41a30aD8315D32f46004A34b": {
 			"address": "0xf992fcef771df908f9b09bb2619092f70ab21957",
@@ -1544,9 +1652,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1726001935",
 			"lastDebtRatio": "10000",
-			"netAPR": 0,
+			"netAPR": 0.0000030678176997271787,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xa8f222b7fC14eDe5A7B0B085fb790791F98944E9_0x9eD00a5dc4b8e96ECDa1B863975A597917948C38": {
 			"address": "0xa8f222b7fc14ede5a7b0b085fb790791f98944e9",
@@ -1572,8 +1680,8 @@
 			"lastReport": "1719070314",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xaa4342C2693Ab5DE6D3663FE87d9a92Cf18CB9b6_0x34a2b066AF16409648eF15d239E656edB8790ca0": {
 			"address": "0xaa4342c2693ab5de6d3663fe87d9a92cf18cb9b6",
@@ -1600,7 +1708,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xb739AE19620f7ECB4fb84727f205453aa5bc1AD2_0x9FA306b1F4a6a83FEC98d8eBbaBEDfF78C407f6B": {
 			"address": "0xb739ae19620f7ecb4fb84727f205453aa5bc1ad2",
@@ -1619,15 +1727,15 @@
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "144923901628",
+			"lastTotalDebt": "184723075152",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "1000",
-			"lastReport": "1754334079",
-			"lastDebtRatio": "6635",
-			"netAPR": 0.06145190345148155,
+			"lastReport": "1757967203",
+			"lastDebtRatio": "9627",
+			"netAPR": 0.41549033699856963,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xc21A609C0fCe6C97332f5f63996525D15b7e0cf4_0x0F2ae7531A83982F15ff1D26B165E2bF3D7566da": {
 			"address": "0xc21a609c0fce6c97332f5f63996525d15b7e0cf4",
@@ -1654,7 +1762,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0xcDD989d84f9B63D2f0B1906A2d9B22355316dE31_0x239e14A19DFF93a17339DCC444f74406C17f8E67": {
 			"address": "0xcdd989d84f9b63d2f0b1906a2d9b22355316de31",
@@ -1708,9 +1816,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1715035044",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.05094667282319332,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xd89ee1E95f7728f6964CF321E2648cCd29a881f1_0x6FAF8b7fFeE3306EfcFc2BA9Fec912b4d49834C1": {
 			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
@@ -1735,9 +1843,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1745535796",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.050946672846285956,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xd89ee1E95f7728f6964CF321E2648cCd29a881f1_0xE6Dbfb035B44E94D07F7B3e4f6bfBf1C6e68e3d0": {
 			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
@@ -1762,9 +1870,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1731652802",
 			"lastDebtRatio": "1496",
-			"netAPR": 0,
+			"netAPR": 0.05094667279894605,
 			"aprType": "forward",
-			"protocols": null
+			"protocols": []
 		},
 		"0xd89ee1E95f7728f6964CF321E2648cCd29a881f1_0xEdC4949AdB7C6e7aeed4AE2545Cb4aeF82583Bd8": {
 			"address": "0xd89ee1e95f7728f6964cf321e2648ccd29a881f1",
@@ -1789,9 +1897,9 @@
 			"lastPerformanceFee": "500",
 			"lastReport": "1710378181",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"netAPR": 0.050946672965257456,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xe037A8F2Fa17293d94620c1846F84d047379660a_0x252b965400862d94BDa35FeCF7Ee0f204a53Cc36": {
 			"address": "0xe037a8f2fa17293d94620c1846f84d047379660a",
@@ -1806,19 +1914,19 @@
 			"isActive": true,
 			"isInQueue": true,
 			"isRetired": false,
-			"status": "unallocated",
+			"status": "active",
 			"keepCRV": null,
 			"keepCRVPercent": null,
 			"keepCVX": null,
-			"lastTotalDebt": "0",
+			"lastTotalDebt": "274998647904159782778530",
 			"lastTotalLoss": "0",
 			"lastTotalGain": "0",
 			"lastPerformanceFee": "0",
-			"lastReport": "1754539447",
-			"lastDebtRatio": "0",
-			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"lastReport": "1758158883",
+			"lastDebtRatio": "5848",
+			"netAPR": 0.02809847748563854,
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xe060f2200627dDdcEAfae1266385183681600A9e_0xa7FEa37aE7eb3fE0b26AB454399cf42Fe5E308A3": {
 			"address": "0xe060f2200627dddceafae1266385183681600a9e",
@@ -1844,8 +1952,8 @@
 			"lastReport": "1737508657",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xe27B0768cbf63c87918D5F7a64457111A5177863_0x244F22Dd5F309506129513D0954787d52D80ba3D": {
 			"address": "0xe27b0768cbf63c87918d5f7a64457111a5177863",
@@ -1871,8 +1979,8 @@
 			"lastReport": "1740502517",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xe27B0768cbf63c87918D5F7a64457111A5177863_0x54A77d0628e472643753ccb6CD929ac768F5f634": {
 			"address": "0xe27b0768cbf63c87918d5f7a64457111a5177863",
@@ -1898,8 +2006,8 @@
 			"lastReport": "1740505374",
 			"lastDebtRatio": "0",
 			"netAPR": 0,
-			"aprType": "current",
-			"protocols": null
+			"aprType": "forward",
+			"protocols": []
 		},
 		"0xf1C3047C6310806de1d25535BC50748815066a7b_0x1dBa7641dc69188D6086a73B972aC4bda29Ec35d": {
 			"address": "0xf1c3047c6310806de1d25535bc50748815066a7b",
@@ -1926,7 +2034,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		}
 	}
 }

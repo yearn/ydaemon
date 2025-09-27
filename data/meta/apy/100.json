@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:49.868686417-04:00",
+	"lastUpdate": "2025-09-27T21:48:41.863151614Z",
 	"version": {
 		"major": 0,
 		"minor": 1,
-		"patch": 0
+		"patch": 3
 	},
 	"shouldRefresh": false,
 	"apy": {
@@ -11,13 +11,13 @@
 			"type": "v3:averaged",
 			"netAPY": 0,
 			"fees": {
-				"performance": 0.1,
+				"performance": 0,
 				"management": 0
 			},
 			"points": {
 				"weekAgo": 0,
 				"monthAgo": 0,
-				"inception": 0.030821535002682178
+				"inception": 0.02791061225242886
 			},
 			"pricePerShare": {
 				"today": 1.041292412647429,
@@ -45,13 +45,13 @@
 			"type": "v3:averaged",
 			"netAPY": 0,
 			"fees": {
-				"performance": 0.1,
+				"performance": 0,
 				"management": 0
 			},
 			"points": {
 				"weekAgo": 0,
 				"monthAgo": 0,
-				"inception": 0.029109149184932105
+				"inception": 0.02651936722897729
 			},
 			"pricePerShare": {
 				"today": 1.0408325599525623,
@@ -79,13 +79,13 @@
 			"type": "v3:averaged",
 			"netAPY": 0,
 			"fees": {
-				"performance": 0.1,
+				"performance": 0,
 				"management": 0
 			},
 			"points": {
 				"weekAgo": 0,
 				"monthAgo": 0,
-				"inception": 0.21245586101248787
+				"inception": 0.19310720224170774
 			},
 			"pricePerShare": {
 				"today": 1.296274063713305,
@@ -98,14 +98,14 @@
 			},
 			"forwardAPY": {
 				"type": "crv",
-				"netAPY": 0.14387993347822922,
+				"netAPY": 0.15753844021389543,
 				"composite": {
 					"boost": 1,
 					"poolAPY": 0,
-					"boostedAPR": 0.15986659275358803,
+					"boostedAPR": 0.15753844021389543,
 					"baseAPR": 0,
 					"cvxAPR": 0,
-					"rewardsAPY": 0.15986659275358803,
+					"rewardsAPY": 0.15753844021389543,
 					"keepCRV": 0,
 					"keepVELO": 0
 				}

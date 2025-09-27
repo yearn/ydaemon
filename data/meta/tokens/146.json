@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-08-07T09:15:32.51047064-04:00",
+	"lastUpdate": "2025-09-27T21:48:32.884016073Z",
 	"version": {
 		"major": 0,
-		"minor": 1,
+		"minor": 3,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -51,6 +51,36 @@
 			"decimals": 6,
 			"chainID": 146
 		},
+		"0x50c42deacd8fc9773493ed674b675be577f2634b": {
+			"address": "0x50c42deacd8fc9773493ed674b675be577f2634b",
+			"underlyingTokensAddresses": [],
+			"type": "Curve LP",
+			"name": "Wrapped Ether on Sonic",
+			"symbol": "WETH",
+			"displayName": "Wrapped Ether on Sonic",
+			"displaySymbol": "WETH",
+			"description": "",
+			"category": "Curve",
+			"icon": "https://assets.smold.app/api/token/146/0x50c42dEAcD8Fc9773493ED674b675bE577f2634b/logo-128.png",
+			"decimals": 18,
+			"chainID": 146
+		},
+		"0x73b5c5919837f38581f09b82f14ffd0c0c4f5b37": {
+			"address": "0x73b5c5919837f38581f09b82f14ffd0c0c4f5b37",
+			"underlyingTokensAddresses": [
+				"0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38"
+			],
+			"type": "Yearn Vault",
+			"name": "wS-2 yVault",
+			"symbol": "yvwS-2",
+			"displayName": "wS-2 yVault",
+			"displaySymbol": "yvwS-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/146/0x73B5C5919837F38581f09B82f14FFd0C0C4f5B37/logo-128.png",
+			"decimals": 18,
+			"chainID": 146
+		},
 		"0x8db97437f8e28a11019128d7b2604a42e333025e": {
 			"address": "0x8db97437f8e28a11019128d7b2604a42e333025e",
 			"underlyingTokensAddresses": [
@@ -65,6 +95,38 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/146/0x8dB97437F8E28A11019128D7B2604A42e333025E/logo-128.png",
 			"decimals": 6,
+			"chainID": 146
+		},
+		"0xa19ebd8f9114519bf947671021c01d152c3777e4": {
+			"address": "0xa19ebd8f9114519bf947671021c01d152c3777e4",
+			"underlyingTokensAddresses": [
+				"0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae"
+			],
+			"type": "Yearn Vault",
+			"name": "ygami_scUSD",
+			"symbol": "ygami_scUSD",
+			"displayName": "ygami_scUSD",
+			"displaySymbol": "ygami_scUSD",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/146/0xA19ebd8f9114519bF947671021c01d152c3777E4/logo-128.png",
+			"decimals": 6,
+			"chainID": 146
+		},
+		"0xa355715145530fe4b0be8f79946f619f77c8fd65": {
+			"address": "0xa355715145530fe4b0be8f79946f619f77c8fd65",
+			"underlyingTokensAddresses": [
+				"0x50c42deacd8fc9773493ed674b675be577f2634b"
+			],
+			"type": "Yearn Vault",
+			"name": "WETH-2 yVault",
+			"symbol": "yvWETH-2",
+			"displayName": "WETH-2 yVault",
+			"displaySymbol": "yvWETH-2",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/146/0xa355715145530FE4b0Be8F79946F619F77c8FD65/logo-128.png",
+			"decimals": 18,
 			"chainID": 146
 		},
 		"0xa369c32fd1fa2cd265f0bdf76f39201ff333f6ac": {
@@ -112,6 +174,20 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/146/0xBe3E3Ca48525406063CB2CE9c7c848BCf24DC9fc/logo-128.png",
+			"decimals": 6,
+			"chainID": 146
+		},
+		"0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae": {
+			"address": "0xd3dce716f3ef535c5ff8d041c1a41c3bd89b97ae",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Sonic USD",
+			"symbol": "scUSD",
+			"displayName": "Sonic USD",
+			"displaySymbol": "scUSD",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/146/0xd3DCe716f3eF535C5Ff8d041c1A41C3bd89b97aE/logo-128.png",
 			"decimals": 6,
 			"chainID": 146
 		},

@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:34.343640692-04:00",
+	"lastUpdate": "2025-09-27T21:48:34.5349955Z",
 	"version": {
 		"major": 0,
-		"minor": 4,
-		"patch": 1
+		"minor": 5,
+		"patch": 18
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -32,7 +32,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x3FfA0C3fba4Adfe2b6e4D7E2f8E6e6324bE5305B_0xb9228370e2fa4908FC2Bf559a50bB77ba66fDD66": {
 			"address": "0x3ffa0c3fba4adfe2b6e4d7e2f8e6e6324be5305b",
@@ -59,7 +59,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x47D4412f1B0844aCf564cfCA1B340809bf700681_0xa355715145530FE4b0Be8F79946F619F77c8FD65": {
 			"address": "0x47d4412f1b0844acf564cfca1b340809bf700681",
@@ -86,6 +86,33 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
+			"protocols": []
+		},
+		"0x92ebF5A1fB4061B45222a6d76ACCF4698bdE4b95_0xA19ebd8f9114519bF947671021c01d152c3777E4": {
+			"address": "0x92ebf5a1fb4061b45222a6d76accf4698bde4b95",
+			"vaultAddress": "0xa19ebd8f9114519bf947671021c01d152c3777e4",
+			"name": "Gami Capital scUSD",
+			"vaultVersion": "3.0.4",
+			"displayName": "",
+			"description": "",
+			"activation": 47156970,
+			"chainID": 146,
+			"doHealthCheck": false,
+			"isActive": false,
+			"isInQueue": true,
+			"isRetired": false,
+			"status": "active",
+			"keepCRV": null,
+			"keepCRVPercent": null,
+			"keepCVX": null,
+			"lastTotalDebt": "1000138",
+			"lastTotalLoss": "0",
+			"lastTotalGain": "0",
+			"lastPerformanceFee": "0",
+			"lastReport": "1758994405",
+			"lastDebtRatio": "10000",
+			"netAPR": 0,
+			"aprType": "",
 			"protocols": null
 		},
 		"0xBe3E3Ca48525406063CB2CE9c7c848BCf24DC9fc_0x8dB97437F8E28A11019128D7B2604A42e333025E": {
@@ -113,7 +140,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xf1dF9a0390Fd65984F311f17230B9F6B85497C6e_0xb9228370e2fa4908FC2Bf559a50bB77ba66fDD66": {
 			"address": "0xf1df9a0390fd65984f311f17230b9f6b85497c6e",
@@ -140,7 +167,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		}
 	}
 }

@@ -1,8 +1,8 @@
 {
-	"lastUpdate": "2025-08-07T09:15:45.064532069-04:00",
+	"lastUpdate": "2025-09-27T21:48:39.944471854Z",
 	"version": {
 		"major": 0,
-		"minor": 4,
+		"minor": 5,
 		"patch": 0
 	},
 	"shouldRefresh": false,
@@ -81,6 +81,22 @@
 			"decimals": 6,
 			"chainID": 747474
 		},
+		"0x1769111aa8ea46fee3ba23ef9b57f3cbe1873408": {
+			"address": "0x1769111aa8ea46fee3ba23ef9b57f3cbe1873408",
+			"underlyingTokensAddresses": [
+				"0x7fb4d0f51544f24f385a421db6e7d4fc71ad8e5c"
+			],
+			"type": "Yearn Vault",
+			"name": "wstETH yVault",
+			"symbol": "yvwstETH",
+			"displayName": "wstETH yVault",
+			"displaySymbol": "yvwstETH",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x1769111aA8EA46fee3BA23EF9B57F3CBe1873408/logo-128.png",
+			"decimals": 18,
+			"chainID": 747474
+		},
 		"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36": {
 			"address": "0x203a662b0bd271a6ed5a60edfbd04bfce608fd36",
 			"underlyingTokensAddresses": [],
@@ -123,6 +139,22 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/747474/0x37a79Bfb9F645F8Ed0a9ead9c722710D8f47C431/logo-128.png",
 			"decimals": 18,
+			"chainID": 747474
+		},
+		"0x3aeee469b09fff37ab041a34cfaae971d84d44ef": {
+			"address": "0x3aeee469b09fff37ab041a34cfaae971d84d44ef",
+			"underlyingTokensAddresses": [
+				"0x203a662b0bd271a6ed5a60edfbd04bfce608fd36"
+			],
+			"type": "Yearn Vault",
+			"name": "Teller vbUSDC",
+			"symbol": "tvbUSDC",
+			"displayName": "Teller vbUSDC",
+			"displaySymbol": "tvbUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/747474/0x3AEee469B09Fff37aB041A34cfAAE971D84d44ef/logo-128.png",
+			"decimals": 6,
 			"chainID": 747474
 		},
 		"0x543cc24962b540430dd1121e83e8564770da6810": {
@@ -201,6 +233,20 @@
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/747474/0x78EC25FBa1bAf6b7dc097Ebb8115A390A2a4Ee12/logo-128.png",
 			"decimals": 6,
+			"chainID": 747474
+		},
+		"0x7fb4d0f51544f24f385a421db6e7d4fc71ad8e5c": {
+			"address": "0x7fb4d0f51544f24f385a421db6e7d4fc71ad8e5c",
+			"underlyingTokensAddresses": [],
+			"type": "",
+			"name": "Wrapped liquid staked Ether 2.0",
+			"symbol": "wstETH",
+			"displayName": "Wrapped liquid staked Ether 2.0",
+			"displaySymbol": "wstETH",
+			"description": "",
+			"category": "",
+			"icon": "https://assets.smold.app/api/token/747474/0x7Fb4D0f51544F24F385a421Db6e7D4fC71Ad8e5C/logo-128.png",
+			"decimals": 18,
 			"chainID": 747474
 		},
 		"0x80c34bd3a3569e126e7055831036aa7b212cb159": {

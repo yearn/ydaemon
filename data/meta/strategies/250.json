@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:37.400181712-04:00",
+	"lastUpdate": "2025-09-27T21:48:38.216419864Z",
 	"version": {
 		"major": 0,
 		"minor": 3,
-		"patch": 200
+		"patch": 206
 	},
 	"shouldRefresh": false,
 	"strategies": {
@@ -61,7 +61,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x04A67AdFF3D9E4b3F40915ea06aC797d490874E6_0x209667B173fE4E9559bdA7818e53Bd5F5E0f9acD": {
 			"address": "0x04a67adff3d9e4b3f40915ea06ac797d490874e6",
@@ -88,7 +88,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x0683B5B75bD0514B5604D3c79A61647d83A02A3f_0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9": {
 			"address": "0x0683b5b75bd0514b5604d3c79a61647d83a02a3f",
@@ -113,7 +113,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1683152180",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.0023595224011926787,
 			"aprType": "current",
 			"protocols": [
 				"Geist Finance"
@@ -173,7 +173,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x0F8201293Eb76eFb656fa43617eF6a5F0F523d89_0x148c05caf1Bb09B5670f00D511718f733C54bC4c": {
 			"address": "0x0f8201293eb76efb656fa43617ef6a5f0f523d89",
@@ -314,7 +314,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1649246391",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": -0.28620660706723694,
 			"aprType": "current",
 			"protocols": [
 				"SpookySwap"
@@ -544,7 +544,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652993679",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 1.0872232754680058,
 			"aprType": "current",
 			"protocols": [
 				"Sushi"
@@ -575,7 +575,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x28F2fB6730d5dbeFc4FF9eB375Bbf33BcB36e774_0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0": {
 			"address": "0x28f2fb6730d5dbefc4ff9eb375bbf33bcb36e774",
@@ -629,7 +629,7 @@
 			"lastDebtRatio": "3000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x2C64C89Bc373255Db29f0C53cfE3cCBf48C57467_0x1b48641D8251c3E84ecbe3f2bD76B3701401906D": {
 			"address": "0x2c64c89bc373255db29f0c53cfe3ccbf48c57467",
@@ -714,7 +714,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1683152237",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.08205765268481409,
 			"aprType": "current",
 			"protocols": [
 				"Geist Finance"
@@ -743,9 +743,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674570642",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.015599802782672707,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x32aC76a38027C95662d727aee9D9Bb3028197ba7_0xEF0210eB96c7EB36AF8ed1c20306462764935607": {
 			"address": "0x32ac76a38027c95662d727aee9d9bb3028197ba7",
@@ -797,7 +797,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652304091",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": -0.00667489996872577,
 			"aprType": "current",
 			"protocols": [
 				"SpookySwap"
@@ -828,7 +828,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0x364Af2812974358bBFb60D1Ac420CC53f584B669_0xEF0210eB96c7EB36AF8ed1c20306462764935607": {
 			"address": "0x364af2812974358bbfb60d1ac420cc53f584b669",
@@ -1143,7 +1143,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1654039138",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.4487704918032787,
 			"aprType": "current",
 			"protocols": [
 				"Scream"
@@ -1374,7 +1374,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1652795932",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.02859190401609911,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -1492,7 +1492,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x608eAA0d2dc7864E065930F09DDc541e0ABD9b60_0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0": {
 			"address": "0x608eaa0d2dc7864e065930f09ddc541e0abd9b60",
@@ -1663,7 +1663,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x6F1563CAA81004E87a7F3c476E19B355A11fc4eD_0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0": {
 			"address": "0x6f1563caa81004e87a7f3c476e19b355a11fc4ed",
@@ -1831,7 +1831,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648404115",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.027070753566501838,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -2036,7 +2036,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0x80332Ecdc7CcdB187b95C97d4b33A8E918F8dd70_0xEF0210eB96c7EB36AF8ed1c20306462764935607": {
 			"address": "0x80332ecdc7ccdb187b95c97d4b33a8e918f8dd70",
@@ -2146,7 +2146,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1652304091",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": -0.007043495060572181,
 			"aprType": "current",
 			"protocols": [
 				"SpookySwap"
@@ -2349,7 +2349,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1648164655",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.018613313104115015,
 			"aprType": "current",
 			"protocols": [
 				"Solidex Finance"
@@ -2582,7 +2582,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1649792037",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.05993159591159977,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -2758,7 +2758,7 @@
 			"lastDebtRatio": "10000",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xAA1C21F4Ab475b2E12bc7A56f7b60610E201dcF6_0x637eC617c86D24E421328e6CAEa1d92114892439": {
 			"address": "0xaa1c21f4ab475b2e12bc7a56f7b60610e201dcf6",
@@ -2959,7 +2959,7 @@
 			"lastDebtRatio": "5000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0xC395e256BDf89F2e9189dc67c9215e1949A22562_0x8853a6232e3DEBE12098Bf682898A92eC10C9921": {
 			"address": "0xc395e256bdf89f2e9189dc67c9215e1949a22562",
@@ -2986,7 +2986,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0xC7A117E4d9Adf7A099a04edC8A631e775fa2Dd84_0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9": {
 			"address": "0xc7a117e4d9adf7a099a04edc8a631e775fa2dd84",
@@ -3158,7 +3158,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1649246391",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": -0.2650525183814109,
 			"aprType": "current",
 			"protocols": [
 				"SpookySwap"
@@ -3301,7 +3301,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1647309985",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.010969375494519845,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -3415,7 +3415,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1656680050",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.010721866008530315,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -3531,9 +3531,9 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1674570642",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.0401587122967405,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xaf9D7B1732746f191662533ef36E3d2B569D7691_0x9e3922FCBb28F40026dA2E58926f0f249d8A138d": {
 			"address": "0xaf9d7b1732746f191662533ef36e3d2b569d7691",
@@ -3560,7 +3560,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xb851D31fF1c2dD4fa2f4b584e833202F500c90a7_0xf2d323621785A066E64282d2B407eAc79cC04966": {
 			"address": "0xb851d31ff1c2dd4fa2f4b584e833202f500c90a7",
@@ -3585,7 +3585,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1683153803",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.10049963859484976,
 			"aprType": "current",
 			"protocols": [
 				"Geist Finance"
@@ -3614,7 +3614,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1650503006",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.10519855588867309,
 			"aprType": "current",
 			"protocols": [
 				"Beethoven-X"
@@ -3730,7 +3730,7 @@
 			"lastPerformanceFee": "1000",
 			"lastReport": "1652304091",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": -0.008208920939288303,
 			"aprType": "current",
 			"protocols": [
 				"SpookySwap"
@@ -3819,7 +3819,7 @@
 			"lastDebtRatio": "0",
 			"netAPR": 0,
 			"aprType": "current",
-			"protocols": null
+			"protocols": []
 		},
 		"0xca25d703cD814E8f5cEF9aACEe0E7424BB4bCCC6_0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db": {
 			"address": "0xca25d703cd814e8f5cef9aacee0e7424bb4bccc6",
@@ -3931,7 +3931,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1664564656",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.09065764626256853,
 			"aprType": "current",
 			"protocols": [
 				"Geist Finance"
@@ -3987,7 +3987,7 @@
 			"lastPerformanceFee": "0",
 			"lastReport": "1665788919",
 			"lastDebtRatio": "0",
-			"netAPR": 0,
+			"netAPR": 0.08161661167968728,
 			"aprType": "current",
 			"protocols": [
 				"Geist Finance"
@@ -4018,7 +4018,7 @@
 			"lastDebtRatio": "9000",
 			"netAPR": 0,
 			"aprType": "",
-			"protocols": null
+			"protocols": []
 		},
 		"0xf6ee87BedC9fE2c99Fed5AF90794806F53cF9f11_0x0A0b23D9786963DE69CB2447dC125c49929419d8": {
 			"address": "0xf6ee87bedc9fe2c99fed5af90794806f53cf9f11",

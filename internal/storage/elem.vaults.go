@@ -152,7 +152,7 @@ func ApplyCmsVaultMeta(vaultMeta models.TVaultCmsMetadataSchema, vault *models.T
 	// Apply struct fields
 	vault.Metadata.Migration = vaultMeta.Migration
 	vault.Metadata.Stability = vaultMeta.Stability
-	
+
 	vault.Metadata.Inclusion.IsYearn = vaultMeta.Inclusion.IsYearn
 	vault.Metadata.Inclusion.IsYearnJuiced = vaultMeta.Inclusion.IsYearnJuiced
 	vault.Metadata.Inclusion.IsGimme = vaultMeta.Inclusion.IsGimme

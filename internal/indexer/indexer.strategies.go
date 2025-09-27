@@ -17,8 +17,7 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-// Track last indexed block per vault to avoid re-processing
-var _lastIndexedBlock = make(map[uint64]map[common.Address]uint64)
+// Note: Last indexed blocks are now persisted to disk via storage.GetLastIndexedBlock/SetLastIndexedBlock
 
 /**************************************************************************************************
 ** listStrategiesForVault reads current strategies directly from the vault contract
@@ -276,10 +275,8 @@ func IndexNewStrategies(
 	chainID uint64,
 	vaults map[common.Address]models.TVault,
 ) (historicalStrategiesMap map[string]models.TStrategy) {
-	// Initialize tracking map if needed
-	if _lastIndexedBlock[chainID] == nil {
-		_lastIndexedBlock[chainID] = make(map[common.Address]uint64)
-	}
+	// Initialize persisted storage for this chain
+	storage.InitializeIndexerStorage(chainID)
 
 	// Get RPC client for current block number
 	client := ethereum.GetRPC(chainID)
@@ -302,10 +299,10 @@ func IndexNewStrategies(
 		}
 
 		/** 🔵 - Yearn *************************************************************************************
-		** Determine the starting block for event filtering. Use cached position if available,
+		** Determine the starting block for event filtering. Use persisted position if available,
 		** otherwise find the highest strategy activation block.
 		**************************************************************************************************/
-		startBlock := _lastIndexedBlock[chainID][vault.Address]
+		startBlock := storage.GetLastIndexedBlock(chainID, vault.Address)
 		if startBlock == 0 {
 			// First run: use highest strategy activation
 			_, strategiesSlice := storage.ListStrategiesForVault(chainID, vault.Address)
@@ -325,7 +322,7 @@ func IndexNewStrategies(
 		**************************************************************************************************/
 		if startBlock < currentBlock {
 			filterNewStrategies(chainID, vault, startBlock, currentBlock)
-			_lastIndexedBlock[chainID][vault.Address] = currentBlock
+			storage.SetLastIndexedBlock(chainID, vault.Address, currentBlock)
 		}
 
 		/** 🔵 - Yearn *************************************************************************************

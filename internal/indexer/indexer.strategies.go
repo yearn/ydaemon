@@ -132,6 +132,7 @@ func filterNewStrategies(
 					}
 					newStrategy := handleV02Strategies(chainID, vault.Version, log.Event)
 					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						logs.Info(`Found new strategy ` + newStrategy.Address.Hex() + ` for vault ` + vault.Address.Hex() + ` at block ` + strconv.FormatUint(newStrategy.Activation, 10))
 						strategyKey := newStrategy.Address.Hex() + `_` + newStrategy.VaultAddress.Hex()
 						fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
 							strategyKey: newStrategy,
@@ -150,6 +151,7 @@ func filterNewStrategies(
 					}
 					newStrategy := handleV03Strategies(chainID, vault.Version, log.Event)
 					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						logs.Info(`Found new strategy ` + newStrategy.Address.Hex() + ` for vault ` + vault.Address.Hex() + ` at block ` + strconv.FormatUint(newStrategy.Activation, 10))
 						strategyKey := newStrategy.Address.Hex() + `_` + newStrategy.VaultAddress.Hex()
 						fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
 							strategyKey: newStrategy,
@@ -166,6 +168,7 @@ func filterNewStrategies(
 						continue
 					}
 					newMigratedStrategy := handleV03StrategiesMigration(chainID, log.Event)
+					logs.Info(`Found strategy migration from ` + newMigratedStrategy.OldStrategyAddress.Hex() + ` to ` + newMigratedStrategy.NewStrategyAddress.Hex() + ` for vault ` + vault.Address.Hex())
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
 					if newStrategy, ok := storage.GetStrategy(
@@ -191,6 +194,7 @@ func filterNewStrategies(
 					}
 					newStrategy := handleV04Strategies(chainID, vault.Version, log.Event)
 					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						logs.Info(`Found new strategy ` + newStrategy.Address.Hex() + ` for vault ` + vault.Address.Hex() + ` at block ` + strconv.FormatUint(newStrategy.Activation, 10))
 						strategyKey := newStrategy.Address.Hex() + `_` + newStrategy.VaultAddress.Hex()
 						fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
 							strategyKey: newStrategy,
@@ -207,6 +211,7 @@ func filterNewStrategies(
 						continue
 					}
 					newMigratedStrategy := handleV04StrategiesMigration(chainID, log.Event)
+					logs.Info(`Found strategy migration from ` + newMigratedStrategy.OldStrategyAddress.Hex() + ` to ` + newMigratedStrategy.NewStrategyAddress.Hex() + ` for vault ` + vault.Address.Hex())
 					storage.StoreStrategyMigrated(chainID, newMigratedStrategy)
 					processMigrations(chainID)
 					if newStrategy, ok := storage.GetStrategy(
@@ -233,6 +238,7 @@ func filterNewStrategies(
 					}
 					newStrategy := handleV300Strategies(chainID, vault.Version, log.Event)
 					if storage.StoreStrategyIfMissing(chainID, newStrategy) {
+						logs.Info(`Found strategy change for ` + newStrategy.Address.Hex() + ` on vault ` + vault.Address.Hex() + ` at block ` + strconv.FormatUint(newStrategy.Activation, 10))
 						strategyKey := newStrategy.Address.Hex() + `_` + newStrategy.VaultAddress.Hex()
 						fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
 							strategyKey: newStrategy,
@@ -286,6 +292,8 @@ func IndexNewStrategies(
 		historicalStrategiesMap, _ = storage.ListStrategies(chainID)
 		return historicalStrategiesMap
 	}
+	
+	logs.Info(`Starting strategy indexing for chain ` + strconv.FormatUint(chainID, 10) + ` at block ` + strconv.FormatUint(currentBlock, 10))
 
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known vaults for the specified chain ID.
@@ -315,22 +323,31 @@ func IndexNewStrategies(
 			if startBlock == 0 {
 				startBlock = vault.Activation
 			}
+			logs.Info(`First run for vault ` + vault.Address.Hex() + ` on chain ` + strconv.FormatUint(chainID, 10) + `, starting from block ` + strconv.FormatUint(startBlock, 10))
 		}
 
 		/** 🔵 - Yearn *************************************************************************************
 		** Filter new strategy events from startBlock to currentBlock
 		**************************************************************************************************/
 		if startBlock < currentBlock {
+			blockRange := currentBlock - startBlock
+			logs.Info(`Scanning blocks ` + strconv.FormatUint(startBlock, 10) + ` to ` + strconv.FormatUint(currentBlock, 10) + ` (` + strconv.FormatUint(blockRange, 10) + ` blocks) for vault ` + vault.Address.Hex() + ` v` + vault.Version)
 			filterNewStrategies(chainID, vault, startBlock, currentBlock)
 			storage.SetLastIndexedBlock(chainID, vault.Address, currentBlock)
+		} else {
+			logs.Info(`Vault ` + vault.Address.Hex() + ` already up to date at block ` + strconv.FormatUint(currentBlock, 10))
 		}
 
 		/** 🔵 - Yearn *************************************************************************************
 		** Also read current strategies directly from the vault contract
 		**************************************************************************************************/
 		strategies := listStrategiesForVault(chainID, vault)
+		if len(strategies) > 0 {
+			logs.Info(`Reading ` + strconv.Itoa(len(strategies)) + ` strategies directly from vault contract ` + vault.Address.Hex())
+		}
 		for _, strat := range strategies {
 			if storage.StoreStrategyIfMissing(chainID, strat) {
+				logs.Info(`Stored strategy ` + strat.Address.Hex() + ` from direct contract read`)
 				strategyKey := strat.Address.Hex() + `_` + strat.VaultAddress.Hex()
 				fetcher.RetrieveAllStrategies(chainID, map[string]models.TStrategy{
 					strategyKey: strat,
@@ -365,5 +382,7 @@ func IndexNewStrategies(
 	**********************************************************************************************/
 	processMigrations(chainID)
 	historicalStrategiesMap, _ = storage.ListStrategies(chainID)
+	
+	logs.Info(`Completed strategy indexing for chain ` + strconv.FormatUint(chainID, 10) + `, total strategies: ` + strconv.Itoa(len(historicalStrategiesMap)))
 	return historicalStrategiesMap
 }

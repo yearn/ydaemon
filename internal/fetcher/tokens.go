@@ -608,6 +608,9 @@ func RetrieveAllTokens(
 	if !ok {
 		return map[common.Address]models.TERC20Token{}
 	}
+	
+	vaultCount := len(vaults)
+	logs.Info(`Fetching token information for vaults (` + strconv.Itoa(vaultCount) + ` vaults) on chain ` + strconv.FormatUint(chainID, 10))
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of tokens from the database to exclude the one existing

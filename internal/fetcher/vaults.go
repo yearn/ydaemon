@@ -1,6 +1,7 @@
 package fetcher
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -47,7 +48,9 @@ func fetchVaultsBasicInformations(
 		chunks = append(chunks, vaultSlice[i:end])
 	}
 
-	for _, chunk := range chunks {
+	totalChunks := len(chunks)
+	for chunkIndex, chunk := range chunks {
+		logs.Info(`Processing vault chunk ` + strconv.Itoa(chunkIndex+1) + `/` + strconv.Itoa(totalChunks) + ` (` + strconv.Itoa(len(chunk)) + ` vaults)`)
 		/**********************************************************************************************
 		** The first step is to prepare the multicall, connecting to the multicall instance and
 		** preparing the array of calls to send. All calls for all vaults will be send in a single
@@ -121,6 +124,9 @@ func RetrieveAllVaults(
 		logs.Error(chainID, `-`, `RetrieveAllVaults`, `Chain not found`)
 		return nil
 	}
+	
+	vaultCount := len(vaults)
+	logs.Info(`Fetching details for ` + strconv.Itoa(vaultCount) + ` vaults on chain ` + strconv.FormatUint(chainID, 10))
 
 	/**********************************************************************************************
 	** First, try to retrieve the list of vaults from the database and populate our updatedVaultMap

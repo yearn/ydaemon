@@ -3,6 +3,7 @@ package fetcher
 import (
 	"errors"
 	"math"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -10,6 +11,7 @@ import (
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/bigNumber"
 	"github.com/yearn/ydaemon/common/ethereum"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
 	"github.com/yearn/ydaemon/internal/multicalls"
 	"github.com/yearn/ydaemon/internal/storage"
@@ -332,6 +334,8 @@ func RetrieveAllStrategies(
 	chainID uint64,
 	strategies map[string]models.TStrategy,
 ) map[string]models.TStrategy {
+	strategyCount := len(strategies)
+	logs.Info(`Fetching details for ` + strconv.Itoa(strategyCount) + ` strategies on chain ` + strconv.FormatUint(chainID, 10))
 	fetchStrategiesBasicInformations(chainID, strategies)
 
 	strategyMap, _ := storage.ListStrategies(chainID)

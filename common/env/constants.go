@@ -80,3 +80,11 @@ var CG_DEMO_KEYS = []string{}
 ** ../webops-sdk/packages/cms/cdn/content
 **************************************************************************************************/
 var CMS_ROOT_URL = ``
+
+/**************************************************************************************************
+** RISK_CDN_URL contains the base URL for the risk score CDN.
+** This endpoint is used to fetch vault risk scores from the Yearn risk assessment system.
+** The risk scores are stored as JSON files organized by chain ID and vault address.
+** Default value points to the production CDN, but can be overridden via RISK_CDN_URL env variable.
+**************************************************************************************************/
+var RISK_CDN_URL = `https://risk.yearn.fi/cdn/`

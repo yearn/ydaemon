@@ -435,13 +435,13 @@ func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) 
 
 	// Append manual strategies if they exist for this vault (avoid duplicates)
 	manualStrategies := storage.GetManualStrategiesForVault(vault.ChainID, vault.Address)
-	seen := make(map[common.Address]struct{})
-	for _, s := range vault.LastActiveStrategies {
-		seen[s] = struct{}{}
+	isInDefaultQueue := make(map[common.Address]bool)
+	for _, strategy := range vault.LastActiveStrategies {
+		isInDefaultQueue[strategy] = true
 	}
-	for _, s := range manualStrategies {
-		if _, exists := seen[s]; !exists {
-			vault.LastActiveStrategies = append(vault.LastActiveStrategies, s)
+	for _, manualStrategy := range manualStrategies {
+		if !isInDefaultQueue[manualStrategy] {
+			vault.LastActiveStrategies = append(vault.LastActiveStrategies, manualStrategy)
 		}
 	}
 

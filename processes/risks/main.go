@@ -8,6 +8,7 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/helpers"
 	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/models"
@@ -49,8 +50,7 @@ type TGithubTreeResponse struct {
 ** - a TRiskScoreYsec structure containing the risk scores for the vault
 **************************************************************************************************/
 func fetchVaultsRiskScore(chainID uint64, vaultAddress common.Address) (TRiskScoreYsec, error) {
-	// baseURL := "https://raw.githubusercontent.com/yearn/risk-score/refs/heads/master/"
-	baseURL := "https://risk.yearn.fi/cdn/"
+	baseURL := env.RISK_CDN_URL
 	chainIDStr := strconv.FormatUint(chainID, 10)
 	vaultHex := vaultAddress.Hex()
 	vaultHexLower := strings.ToLower(vaultHex)

@@ -49,6 +49,13 @@ func SetEnv() {
 	if cmsRoot, exists := os.LookupEnv("CMS_ROOT_URL"); exists {
 		CMS_ROOT_URL = cmsRoot
 	}
+
+	/**********************************************************************************************
+	** Risk score CDN URL configuration
+	**********************************************************************************************/
+	if riskCDN, exists := os.LookupEnv("RISK_CDN_URL"); exists {
+		RISK_CDN_URL = riskCDN
+	}
 }
 
 /**************************************************************************************************

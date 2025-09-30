@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:46.437282876-04:00",
+	"lastUpdate": "2025-09-27T21:48:43.879615728Z",
 	"version": {
 		"major": 0,
-		"minor": 1,
-		"patch": 0
+		"minor": 3,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"apy": {
@@ -41,11 +41,113 @@
 				}
 			}
 		},
+		"0x73b5c5919837f38581f09b82f14ffd0c0c4f5b37": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
 		"0x8db97437f8e28a11019128d7b2604a42e333025e": {
 			"type": "v3:averaged",
 			"netAPY": 0,
 			"fees": {
 				"performance": 0.1,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0,
+				"monthAgo": 0,
+				"inception": 0
+			},
+			"pricePerShare": {
+				"today": 1,
+				"weekAgo": 1,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xa19ebd8f9114519bf947671021c01d152c3777e4": {
+			"type": "v3:averaged",
+			"netAPY": 0.005036999999998959,
+			"fees": {
+				"performance": 0,
+				"management": 0
+			},
+			"points": {
+				"weekAgo": 0.004640486901856394,
+				"monthAgo": 0.005036999999998959,
+				"inception": 0.005036999999998959
+			},
+			"pricePerShare": {
+				"today": 1.000138,
+				"weekAgo": 1.000049,
+				"monthAgo": 1
+			},
+			"extra": {
+				"stakingRewardsAPY": null,
+				"gammaRewardAPY": null
+			},
+			"forwardAPY": {
+				"type": "",
+				"netAPY": null,
+				"composite": {
+					"boost": null,
+					"poolAPY": null,
+					"boostedAPR": null,
+					"baseAPR": null,
+					"cvxAPR": null,
+					"rewardsAPY": null
+				}
+			}
+		},
+		"0xa355715145530fe4b0be8f79946f619f77c8fd65": {
+			"type": "v3:averaged",
+			"netAPY": 0,
+			"fees": {
+				"performance": 0,
 				"management": 0
 			},
 			"points": {
@@ -119,7 +221,7 @@
 			"points": {
 				"weekAgo": 0,
 				"monthAgo": 0,
-				"inception": 0.0037202673796790727
+				"inception": 0.0033128095238094597
 			},
 			"pricePerShare": {
 				"today": 1.001906,

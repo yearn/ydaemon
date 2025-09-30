@@ -1,9 +1,9 @@
 {
-	"lastUpdate": "2025-08-07T09:15:47.306044612-04:00",
+	"lastUpdate": "2025-09-27T21:48:42.783581819Z",
 	"version": {
 		"major": 0,
-		"minor": 7,
-		"patch": 0
+		"minor": 8,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"tokens": {
@@ -1619,6 +1619,22 @@
 			"decimals": 18,
 			"chainID": 137
 		},
+		"0x5bfd56f9bcbdb2be985c64c620eca7f02fa7b439": {
+			"address": "0x5bfd56f9bcbdb2be985c64c620eca7f02fa7b439",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "Bankr USDC Vault",
+			"symbol": "ysUSDC",
+			"displayName": "Bankr USDC Vault",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0x5BFd56F9BcBDb2be985C64C620ECa7F02Fa7b439/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0x5c1fa2c9999d4fe0f6b13e95770ca406f79879c4": {
 			"address": "0x5c1fa2c9999d4fe0f6b13e95770ca406f79879c4",
 			"underlyingTokensAddresses": [],
@@ -3163,6 +3179,22 @@
 			"decimals": 6,
 			"chainID": 137
 		},
+		"0xd811a47cfd17355f47ac49be02c4744a926dd16b": {
+			"address": "0xd811a47cfd17355f47ac49be02c4744a926dd16b",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "USDC Fluid Lender",
+			"symbol": "ysUSDC",
+			"displayName": "USDC Fluid Lender",
+			"displaySymbol": "ysUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xD811a47cfD17355F47ac49Be02c4744A926dd16B/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
 		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
 			"address": "0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515",
 			"underlyingTokensAddresses": [
@@ -3176,6 +3208,22 @@
 			"description": "",
 			"category": "yVault",
 			"icon": "https://assets.smold.app/api/token/137/0xD92A3A0aD7FbE4b8f6382e0caDa87471ef800515/logo-128.png",
+			"decimals": 6,
+			"chainID": 137
+		},
+		"0xd9b961ddf601498251abb1ab9b926f7d7b8daa09": {
+			"address": "0xd9b961ddf601498251abb1ab9b926f7d7b8daa09",
+			"underlyingTokensAddresses": [
+				"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359"
+			],
+			"type": "Yearn Vault",
+			"name": "Teller USDC",
+			"symbol": "tUSDC",
+			"displayName": "Teller USDC",
+			"displaySymbol": "tUSDC",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xd9b961ddf601498251AbB1ab9b926f7d7B8DAA09/logo-128.png",
 			"decimals": 6,
 			"chainID": 137
 		},
@@ -3279,6 +3327,22 @@
 			"category": "",
 			"icon": "https://assets.smold.app/api/token/137/0xE238Ecb42C424E877652AD82d8A939183A04C35f/logo-128.png",
 			"decimals": 18,
+			"chainID": 137
+		},
+		"0xe30461f1270ba52d45df1e773aefe594c7e430dc": {
+			"address": "0xe30461f1270ba52d45df1e773aefe594c7e430dc",
+			"underlyingTokensAddresses": [
+				"0xc2132d05d31c914a87c6611c10748aeb04b58e8f"
+			],
+			"type": "Yearn Vault",
+			"name": "USDT Fluid Lender",
+			"symbol": "ysUSDT0",
+			"displayName": "USDT Fluid Lender",
+			"displaySymbol": "ysUSDT0",
+			"description": "",
+			"category": "yVault",
+			"icon": "https://assets.smold.app/api/token/137/0xE30461F1270BA52d45DF1e773AEfE594C7E430DC/logo-128.png",
+			"decimals": 6,
 			"chainID": 137
 		},
 		"0xe389d95e2e8c799fde5d37f245bdd7160bf50864": {

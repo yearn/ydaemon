@@ -1,262 +1,274 @@
 {
-	"lastUpdate": "2025-08-07T09:17:10.182702353-04:00",
+	"lastUpdate": "2025-09-27T21:50:02.996374698Z",
 	"version": {
 		"major": 0,
-		"minor": 1,
-		"patch": 0
+		"minor": 3,
+		"patch": 1
 	},
 	"shouldRefresh": false,
 	"prices": {
 		"0x0000000000000000000000000000000000001010": {
 			"address": "0x0000000000000000000000000000000000001010",
-			"price": "237783",
-			"humanizedPrice": 0.237783,
+			"price": "222018",
+			"humanizedPrice": 0.222018,
+			"source": "curveFactoryAPI"
+		},
+		"0x00000000efe302beaa2b3e6e1b18d08d69a9012a": {
+			"address": "0x00000000efe302beaa2b3e6e1b18d08d69a9012a",
+			"price": "966931",
+			"humanizedPrice": 0.966931,
+			"source": "curveFactoryAPI"
+		},
+		"0x0015c423804087f53c404503623763098b1e76eb": {
+			"address": "0x0015c423804087f53c404503623763098b1e76eb",
+			"price": "37984",
+			"humanizedPrice": 0.037984,
 			"source": "curveFactoryAPI"
 		},
 		"0x002ba5f8ad6dc69bb056ced3e6b5165ae1e1691b": {
 			"address": "0x002ba5f8ad6dc69bb056ced3e6b5165ae1e1691b",
-			"price": "753717162903788160",
-			"humanizedPrice": 753717162903.7882,
+			"price": "648691651797562112",
+			"humanizedPrice": 648691651797.5621,
 			"source": "gammaAPI"
 		},
 		"0x00c305003f24504161f30be355556b2dc5c586d2": {
 			"address": "0x00c305003f24504161f30be355556b2dc5c586d2",
-			"price": "2128485",
-			"humanizedPrice": 2.128485,
+			"price": "1930907",
+			"humanizedPrice": 1.930907,
 			"source": "curveFactoryAPI"
 		},
 		"0x00e5646f60ac6fb446f621d146b6e1886f002905": {
 			"address": "0x00e5646f60ac6fb446f621d146b6e1886f002905",
-			"price": "4390000",
-			"humanizedPrice": 4.39,
+			"price": "4460000",
+			"humanizedPrice": 4.46,
 			"source": "curveFactoryAPI"
 		},
 		"0x0128e1d15ed9f0c8572967825ef46309bda39836": {
 			"address": "0x0128e1d15ed9f0c8572967825ef46309bda39836",
-			"price": "999880",
-			"humanizedPrice": 0.99988,
+			"price": "999610",
+			"humanizedPrice": 0.99961,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x013f9c3fac3e2759d7e90aca4f9540f75194a0d7": {
 			"address": "0x013f9c3fac3e2759d7e90aca4f9540f75194a0d7",
-			"price": "29390",
-			"humanizedPrice": 0.02939,
+			"price": "28178",
+			"humanizedPrice": 0.028178,
 			"source": "curveFactoryAPI"
 		},
 		"0x018e7a8a99a71ebf7694c8a01b255d6d981b3c20": {
 			"address": "0x018e7a8a99a71ebf7694c8a01b255d6d981b3c20",
-			"price": "706",
-			"humanizedPrice": 0.000706,
+			"price": "639",
+			"humanizedPrice": 0.000639,
 			"source": "curveFactoryAPI"
 		},
 		"0x01e744407b357cad2a92e95ed1d52db0534b6a26": {
 			"address": "0x01e744407b357cad2a92e95ed1d52db0534b6a26",
-			"price": "125189",
-			"humanizedPrice": 0.125189,
+			"price": "123720",
+			"humanizedPrice": 0.12372,
 			"source": "curveFactoryAPI"
 		},
 		"0x01f876be20112970e12047b0ed0e46cdafc33dcd": {
 			"address": "0x01f876be20112970e12047b0ed0e46cdafc33dcd",
-			"price": "20837",
-			"humanizedPrice": 0.020837,
+			"price": "23985",
+			"humanizedPrice": 0.023985,
 			"source": "curveFactoryAPI"
 		},
 		"0x02203f2351e7ac6ab5051205172d3f772db7d814": {
 			"address": "0x02203f2351e7ac6ab5051205172d3f772db7d814",
-			"price": "228202050",
-			"humanizedPrice": 228.20205068954633,
+			"price": "220697218",
+			"humanizedPrice": 220.697218244724,
 			"source": "gammaAPI"
 		},
 		"0x0266f4f08d82372cf0fcbccc0ff74309089c74d1": {
 			"address": "0x0266f4f08d82372cf0fcbccc0ff74309089c74d1",
-			"price": "4375370000",
-			"humanizedPrice": 4375.37,
+			"price": "4588900000",
+			"humanizedPrice": 4588.9,
 			"source": "curveFactoryAPI"
 		},
 		"0x02d6121d32f1dbcb263a537dcef1841933c802a6": {
 			"address": "0x02d6121d32f1dbcb263a537dcef1841933c802a6",
-			"price": "4696162",
-			"humanizedPrice": 4.696162,
+			"price": "4895279",
+			"humanizedPrice": 4.895279,
 			"source": "curveFactoryAPI"
 		},
 		"0x03a97594aa5ece130e2e956fc0ced2fea8ed8989": {
 			"address": "0x03a97594aa5ece130e2e956fc0ced2fea8ed8989",
-			"price": "234250",
-			"humanizedPrice": 0.23425,
+			"price": "217266",
+			"humanizedPrice": 0.217266,
 			"source": "curveFactoryAPI"
 		},
 		"0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd": {
 			"address": "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
-			"price": "4646930000",
-			"humanizedPrice": 4646.93,
+			"price": "4880270000",
+			"humanizedPrice": 4880.27,
 			"source": "defillama"
 		},
 		"0x03e6010193c595ec168756af700479d1aff76895": {
 			"address": "0x03e6010193c595ec168756af700479d1aff76895",
-			"price": "1389332",
-			"humanizedPrice": 1.389332,
+			"price": "1391755",
+			"humanizedPrice": 1.391755,
 			"source": "ERC4626-convertToAssets"
+		},
+		"0x0413febf1a72d93eda1c94099313598b0caee26b": {
+			"address": "0x0413febf1a72d93eda1c94099313598b0caee26b",
+			"price": "118",
+			"humanizedPrice": 0.000118,
+			"source": "curveFactoryAPI"
 		},
 		"0x04d521e2c414e6d898c6f2599fdd863edf49e247": {
 			"address": "0x04d521e2c414e6d898c6f2599fdd863edf49e247",
-			"price": "22967195644279024",
-			"humanizedPrice": 22967195644.279022,
+			"price": "20528543248586228",
+			"humanizedPrice": 20528543248.586227,
 			"source": "gammaAPI"
 		},
 		"0x0527c8c43250279d6eb74da1078193f5316fc9a0": {
 			"address": "0x0527c8c43250279d6eb74da1078193f5316fc9a0",
-			"price": "32778",
-			"humanizedPrice": 0.032778,
+			"price": "32658",
+			"humanizedPrice": 0.032658,
 			"source": "curveFactoryAPI"
 		},
 		"0x0566e8e9bae925894d80d9e0a4fd9a72aea1a2f2": {
 			"address": "0x0566e8e9bae925894d80d9e0a4fd9a72aea1a2f2",
-			"price": "1267",
-			"humanizedPrice": 0.0012674811177788479,
+			"price": "1349",
+			"humanizedPrice": 0.0013493946932373537,
 			"source": "gammaAPI"
 		},
 		"0x056e8299b082d5f1016c846d93e71eadf4137851": {
 			"address": "0x056e8299b082d5f1016c846d93e71eadf4137851",
-			"price": "1400460213",
-			"humanizedPrice": 1400.460213415097,
+			"price": "1517150571",
+			"humanizedPrice": 1517.1505712422338,
 			"source": "gammaAPI"
 		},
 		"0x05c731f5f922835796c49412a30615c46cca4d9e": {
 			"address": "0x05c731f5f922835796c49412a30615c46cca4d9e",
-			"price": "291984",
-			"humanizedPrice": 0.2919843611814791,
+			"price": "298599",
+			"humanizedPrice": 0.2985999988136231,
 			"source": "gammaAPI"
 		},
 		"0x0668331b4606beb78a1c8314e08d8b07653fbd3c": {
 			"address": "0x0668331b4606beb78a1c8314e08d8b07653fbd3c",
-			"price": "13876382522",
-			"humanizedPrice": 13876.382522685304,
+			"price": "15522292605",
+			"humanizedPrice": 15522.292605260936,
 			"source": "gammaAPI"
 		},
 		"0x06ed7c67755344548fafe1822bee365c4208a57f": {
 			"address": "0x06ed7c67755344548fafe1822bee365c4208a57f",
-			"price": "1022819",
-			"humanizedPrice": 1.022819,
+			"price": "1022269",
+			"humanizedPrice": 1.022269,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x078f358208685046a11c85e8ad32895ded33a249": {
 			"address": "0x078f358208685046a11c85e8ad32895ded33a249",
-			"price": "116267000000",
-			"humanizedPrice": 116267,
+			"price": "109605000000",
+			"humanizedPrice": 109605,
 			"source": "curveFactoryAPI"
 		},
 		"0x0827841963cc8a0515b5baa59782b0a0870b5f88": {
 			"address": "0x0827841963cc8a0515b5baa59782b0a0870b5f88",
-			"price": "1344",
-			"humanizedPrice": 0.0013447955463422772,
+			"price": "1243",
+			"humanizedPrice": 0.0012437438732034616,
 			"source": "gammaAPI"
 		},
 		"0x08ad99fb3f9f262853b54613249b4064901bd358": {
 			"address": "0x08ad99fb3f9f262853b54613249b4064901bd358",
-			"price": "990281",
-			"humanizedPrice": 0.990281,
+			"price": "994081",
+			"humanizedPrice": 0.994081,
 			"source": "curveFactoryAPI"
 		},
 		"0x08f02173016278004c1951713091d9181b2dea81": {
 			"address": "0x08f02173016278004c1951713091d9181b2dea81",
-			"price": "269666670",
-			"humanizedPrice": 269.66667094984837,
+			"price": "269726098",
+			"humanizedPrice": 269.72609868242665,
 			"source": "gammaAPI"
 		},
 		"0x0a2f419ca3c24ffe6be0a7324a93b6f9a304e239": {
 			"address": "0x0a2f419ca3c24ffe6be0a7324a93b6f9a304e239",
-			"price": "1444990",
-			"humanizedPrice": 1.44499,
+			"price": "1192287",
+			"humanizedPrice": 1.192287,
 			"source": "curveFactoryAPI"
 		},
 		"0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a": {
 			"address": "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
-			"price": "809739",
-			"humanizedPrice": 0.809739,
+			"price": "663373",
+			"humanizedPrice": 0.663373,
 			"source": "curveFactoryAPI"
 		},
 		"0x0b88ef5d9e8d63a7c6b3b6a6d9b50601112a5c75": {
 			"address": "0x0b88ef5d9e8d63a7c6b3b6a6d9b50601112a5c75",
-			"price": "182430",
-			"humanizedPrice": 0.18243,
+			"price": "119779",
+			"humanizedPrice": 0.119779,
 			"source": "curveFactoryAPI"
 		},
 		"0x0bbcc9401e121bc6f8783002b8db28b757c31eb6": {
 			"address": "0x0bbcc9401e121bc6f8783002b8db28b757c31eb6",
-			"price": "17184",
-			"humanizedPrice": 0.017184,
+			"price": "15950",
+			"humanizedPrice": 0.01595,
 			"source": "curveFactoryAPI"
 		},
 		"0x0c9c7712c83b3c70e7c5e11100d33d9401bdf9dd": {
 			"address": "0x0c9c7712c83b3c70e7c5e11100d33d9401bdf9dd",
-			"price": "86",
-			"humanizedPrice": 0.00008627,
+			"price": "47",
+			"humanizedPrice": 0.00004744,
 			"source": "defillama"
 		},
 		"0x0d01a5920c76dbd53344c0f6a49ce066266c75e9": {
 			"address": "0x0d01a5920c76dbd53344c0f6a49ce066266c75e9",
-			"price": "181652",
-			"humanizedPrice": 0.181652,
+			"price": "185910",
+			"humanizedPrice": 0.18591,
 			"source": "curveFactoryAPI"
 		},
 		"0x0d149c9a4c51472a4dcfd9607ae70e7e426ceb3a": {
 			"address": "0x0d149c9a4c51472a4dcfd9607ae70e7e426ceb3a",
-			"price": "76067",
-			"humanizedPrice": 0.076067,
+			"price": "75617",
+			"humanizedPrice": 0.075617,
 			"source": "curveFactoryAPI"
 		},
 		"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270": {
 			"address": "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-			"price": "237798",
-			"humanizedPrice": 0.237798,
+			"price": "222771",
+			"humanizedPrice": 0.222771,
 			"source": "defillama"
 		},
 		"0x0d9447e16072b636b4a1e8f2b8c644e58f3eaa6a": {
 			"address": "0x0d9447e16072b636b4a1e8f2b8c644e58f3eaa6a",
-			"price": "24208",
-			"humanizedPrice": 0.024208,
+			"price": "30454",
+			"humanizedPrice": 0.030454,
 			"source": "curveFactoryAPI"
-		},
-		"0x0e9b89007eee9c958c0eda24ef70723c2c93dd58": {
-			"address": "0x0e9b89007eee9c958c0eda24ef70723c2c93dd58",
-			"price": "279565",
-			"humanizedPrice": 0.279565,
-			"source": "defillama"
 		},
 		"0x0f110c55efe62c16d553a3d3464b77e1853d0e97": {
 			"address": "0x0f110c55efe62c16d553a3d3464b77e1853d0e97",
-			"price": "793649",
-			"humanizedPrice": 0.793649,
+			"price": "485073",
+			"humanizedPrice": 0.485073,
 			"source": "curveFactoryAPI"
 		},
 		"0x0f7e4c66cebb5f5cabd435684946585a917b2f65": {
 			"address": "0x0f7e4c66cebb5f5cabd435684946585a917b2f65",
-			"price": "34961",
-			"humanizedPrice": 0.03496123958967989,
+			"price": "34975",
+			"humanizedPrice": 0.03497543780549655,
 			"source": "gammaAPI"
 		},
 		"0x0fefee13864c431717f5b2678607b6ce532a170c": {
 			"address": "0x0fefee13864c431717f5b2678607b6ce532a170c",
-			"price": "2421974",
-			"humanizedPrice": 2.421974889436933,
+			"price": "2437815",
+			"humanizedPrice": 2.437815393569477,
 			"source": "defillama"
 		},
 		"0x10f38a56720ff3a16bd04754e9b49e1f39d4aa4a": {
 			"address": "0x10f38a56720ff3a16bd04754e9b49e1f39d4aa4a",
-			"price": "122461",
-			"humanizedPrice": 0.122461,
+			"price": "110738",
+			"humanizedPrice": 0.110738,
 			"source": "curveFactoryAPI"
 		},
 		"0x11b1ad06c13f7da1d3fe2a31e2fa4ddbb637938f": {
 			"address": "0x11b1ad06c13f7da1d3fe2a31e2fa4ddbb637938f",
 			"price": "3",
-			"humanizedPrice": 0.000003051080881824676,
+			"humanizedPrice": 0.0000030464230245430233,
 			"source": "gammaAPI"
 		},
 		"0x11cd37bb86f65419713f30673a480ea33c826872": {
 			"address": "0x11cd37bb86f65419713f30673a480ea33c826872",
-			"price": "3847140000",
-			"humanizedPrice": 3847.14,
+			"price": "4004700000",
+			"humanizedPrice": 4004.7,
 			"source": "curveFactoryAPI"
 		},
 		"0x120fbbc9e6ae733f52ef57d775c05c3eff159c21": {
@@ -267,98 +279,92 @@
 		},
 		"0x1271a6bdc04cdec2c8863361b11f2c95f2dff3e4": {
 			"address": "0x1271a6bdc04cdec2c8863361b11f2c95f2dff3e4",
-			"price": "2211",
-			"humanizedPrice": 0.002211,
+			"price": "1999",
+			"humanizedPrice": 0.001999,
 			"source": "curveFactoryAPI"
 		},
 		"0x1298b1da33c1d091a2e1340ae1c7983ebe91da8d": {
 			"address": "0x1298b1da33c1d091a2e1340ae1c7983ebe91da8d",
-			"price": "4141654824413",
-			"humanizedPrice": 4141654.824413566,
+			"price": "4289747011557",
+			"humanizedPrice": 4289747.011557724,
 			"source": "gammaAPI"
 		},
 		"0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68": {
 			"address": "0x12c3ad898e8eb1c0ec0bb74f9748f36c46593f68",
-			"price": "243534",
-			"humanizedPrice": 0.243534,
+			"price": "228249",
+			"humanizedPrice": 0.228249,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x131333bb665cdf678d52cae1529925a735311087": {
 			"address": "0x131333bb665cdf678d52cae1529925a735311087",
-			"price": "103894",
-			"humanizedPrice": 0.103894,
+			"price": "96433",
+			"humanizedPrice": 0.096433,
 			"source": "curveFactoryAPI"
 		},
 		"0x14223bb48c8cf3ef49319be44a6e718e4dbf9486": {
 			"address": "0x14223bb48c8cf3ef49319be44a6e718e4dbf9486",
-			"price": "268507",
-			"humanizedPrice": 0.2685078994819674,
+			"price": "276196",
+			"humanizedPrice": 0.27619676401356286,
 			"source": "gammaAPI"
 		},
 		"0x1524ad1423b47221ed10ce3178ec7a507275ad98": {
 			"address": "0x1524ad1423b47221ed10ce3178ec7a507275ad98",
-			"price": "14368",
-			"humanizedPrice": 0.014368,
+			"price": "8292",
+			"humanizedPrice": 0.008292,
 			"source": "curveFactoryAPI"
 		},
 		"0x15f2e223000d392a8449a53a4b930f3c54926987": {
 			"address": "0x15f2e223000d392a8449a53a4b930f3c54926987",
-			"price": "4779234",
-			"humanizedPrice": 4.779234745566989,
+			"price": "4805871",
+			"humanizedPrice": 4.805871069825358,
 			"source": "gammaAPI"
-		},
-		"0x162539172b53e9a93b7d98fb6c41682de558a320": {
-			"address": "0x162539172b53e9a93b7d98fb6c41682de558a320",
-			"price": "1",
-			"humanizedPrice": 0.00000188,
-			"source": "defillama"
 		},
 		"0x162b21ba1a90dd9384c615192fa4053217d2a8db": {
 			"address": "0x162b21ba1a90dd9384c615192fa4053217d2a8db",
-			"price": "1045234",
-			"humanizedPrice": 1.045234,
+			"price": "1039281",
+			"humanizedPrice": 1.039281,
 			"source": "curveFactoryAPI"
 		},
 		"0x1690e444bea9e7849b3bfc3cdba2e6c66fe3b7c2": {
 			"address": "0x1690e444bea9e7849b3bfc3cdba2e6c66fe3b7c2",
-			"price": "152105",
-			"humanizedPrice": 0.152105,
+			"price": "144655",
+			"humanizedPrice": 0.144655,
 			"source": "curveFactoryAPI"
 		},
 		"0x172370d5cd63279efa6d502dab29171933a610af": {
 			"address": "0x172370d5cd63279efa6d502dab29171933a610af",
-			"price": "934710",
-			"humanizedPrice": 0.93471,
+			"price": "673295",
+			"humanizedPrice": 0.673295,
 			"source": "defillama"
 		},
 		"0x1798289afb8f55fe3782513df3bbb3ebba1e31dc": {
 			"address": "0x1798289afb8f55fe3782513df3bbb3ebba1e31dc",
-			"price": "728657",
-			"humanizedPrice": 0.728657,
+			"price": "719011",
+			"humanizedPrice": 0.719011,
 			"source": "curveFactoryAPI"
 		},
 		"0x1825c76ced3c1625250b8af6204bf4fc4e5b9fcf": {
 			"address": "0x1825c76ced3c1625250b8af6204bf4fc4e5b9fcf",
-			"price": "1447465848565339392",
-			"humanizedPrice": 1447465848565.3394,
+			"price": "1451777999281148160",
+			"humanizedPrice": 1451777999281.1482,
 			"source": "gammaAPI"
 		},
 		"0x18ac653b801a7f15e0ebb97ab8176832c38a6a5a": {
 			"address": "0x18ac653b801a7f15e0ebb97ab8176832c38a6a5a",
-			"price": "1572036",
-			"humanizedPrice": 1.572036,
+			"price": "1794384",
+			"humanizedPrice": 1.794384,
 			"source": "curveFactoryAPI"
 		},
 		"0x18e73a5333984549484348a94f4d219f4fab7b81": {
 			"address": "0x18e73a5333984549484348a94f4d219f4fab7b81",
-			"price": "2967",
-			"humanizedPrice": 0.00296787,
+			"price": "1900",
+			"humanizedPrice": 0.00190029,
 			"source": "defillama"
 		},
 		"0x18ec0a6e18e5bc3784fdd3a3634b31245ab704f6": {
 			"address": "0x18ec0a6e18e5bc3784fdd3a3634b31245ab704f6",
-			"price": "934407",
-			"humanizedPrice": 0.934407,
+			"price": "1170000",
+			"humanizedPrice": 1.17,
 			"source": "curveFactoryAPI"
 		},
 		"0x1a13f4ca1d028320a707d99520abfefca3998b7f": {
@@ -369,8 +375,8 @@
 		},
 		"0x1a3acf6d19267e2d3e7f898f42803e90c9219062": {
 			"address": "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
-			"price": "2810000",
-			"humanizedPrice": 2.81,
+			"price": "2120000",
+			"humanizedPrice": 2.12,
 			"source": "curveFactoryAPI"
 		},
 		"0x1b12bdef2d562e19dd3b8cb66f61f1e1b714d491": {
@@ -381,134 +387,146 @@
 		},
 		"0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6": {
 			"address": "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
-			"price": "116267000000",
-			"humanizedPrice": 116267,
+			"price": "109605000000",
+			"humanizedPrice": 109605,
 			"source": "defillama"
 		},
 		"0x1c1b4cf2a40810c49a8b42a9da857cb0b76d06e3": {
 			"address": "0x1c1b4cf2a40810c49a8b42a9da857cb0b76d06e3",
-			"price": "1890066",
-			"humanizedPrice": 1.8900669868913529,
+			"price": "1914334",
+			"humanizedPrice": 1.9143348589477172,
 			"source": "gammaAPI"
 		},
 		"0x1c5670f38a36c797d28abc3017ebc0746caaf576": {
 			"address": "0x1c5670f38a36c797d28abc3017ebc0746caaf576",
-			"price": "236",
-			"humanizedPrice": 0.000236,
+			"price": "219",
+			"humanizedPrice": 0.000219,
 			"source": "curveFactoryAPI"
 		},
 		"0x1c954e8fe737f99f68fa1ccda3e51ebdb291948c": {
 			"address": "0x1c954e8fe737f99f68fa1ccda3e51ebdb291948c",
-			"price": "425278",
-			"humanizedPrice": 0.425278,
+			"price": "332209",
+			"humanizedPrice": 0.332209,
 			"source": "curveFactoryAPI"
 		},
 		"0x1cf4293125913cb3dea4ad7f2bb4795b9e896ce9": {
 			"address": "0x1cf4293125913cb3dea4ad7f2bb4795b9e896ce9",
-			"price": "39089924321187104",
-			"humanizedPrice": 39089924321.1871,
+			"price": "35014921281760468",
+			"humanizedPrice": 35014921281.76047,
 			"source": "gammaAPI"
+		},
+		"0x1d0347c535c88cf6bb72df75aed34363edb4b2ae": {
+			"address": "0x1d0347c535c88cf6bb72df75aed34363edb4b2ae",
+			"price": "281977",
+			"humanizedPrice": 0.281977,
+			"source": "curveFactoryAPI"
 		},
 		"0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360": {
 			"address": "0x1d2a0e5ec8e5bbdca5cb219e649b565d8e5c3360",
-			"price": "275420000",
-			"humanizedPrice": 275.42,
+			"price": "267230000",
+			"humanizedPrice": 267.23,
 			"source": "curveFactoryAPI"
 		},
 		"0x1d734a02ef1e1f5886e66b0673b71af5b53ffa94": {
 			"address": "0x1d734a02ef1e1f5886e66b0673b71af5b53ffa94",
-			"price": "672435",
-			"humanizedPrice": 0.672435,
+			"price": "539667",
+			"humanizedPrice": 0.539667,
 			"source": "defillama"
 		},
 		"0x1ddae2e33c1d68211c5eae05948fd298e72c541a": {
 			"address": "0x1ddae2e33c1d68211c5eae05948fd298e72c541a",
-			"price": "535",
-			"humanizedPrice": 0.0005358829321781657,
+			"price": "345",
+			"humanizedPrice": 0.00034593388903058416,
 			"source": "gammaAPI"
 		},
 		"0x1ddcaa4ed761428ae348befc6718bcb12e63bfaa": {
 			"address": "0x1ddcaa4ed761428ae348befc6718bcb12e63bfaa",
-			"price": "999773",
-			"humanizedPrice": 0.999773,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "curveFactoryAPI"
 		},
 		"0x1e62ddffd262be930fefa1408bb4d9590df7295a": {
 			"address": "0x1e62ddffd262be930fefa1408bb4d9590df7295a",
-			"price": "85163",
-			"humanizedPrice": 0.085163,
+			"price": "79048",
+			"humanizedPrice": 0.079048,
 			"source": "curveFactoryAPI"
 		},
 		"0x1ed0855c93bb3eb531232d4350f49861b026d087": {
 			"address": "0x1ed0855c93bb3eb531232d4350f49861b026d087",
-			"price": "263",
-			"humanizedPrice": 0.000263,
+			"price": "238",
+			"humanizedPrice": 0.000238,
 			"source": "curveFactoryAPI"
 		},
 		"0x20103b6fcecaa94ddbf3d18ab9d99892003b1d80": {
 			"address": "0x20103b6fcecaa94ddbf3d18ab9d99892003b1d80",
-			"price": "1034158761139385728",
-			"humanizedPrice": 1034158761139.3857,
+			"price": "1034809738966378368",
+			"humanizedPrice": 1034809738966.3784,
 			"source": "gammaAPI"
 		},
 		"0x204820b6e6feae805e376d2c6837446186e57981": {
 			"address": "0x204820b6e6feae805e376d2c6837446186e57981",
-			"price": "873",
-			"humanizedPrice": 0.000873,
+			"price": "827",
+			"humanizedPrice": 0.000827,
 			"source": "curveFactoryAPI"
 		},
 		"0x20e3f345e229be9ce08488ae79e906955183ebab": {
 			"address": "0x20e3f345e229be9ce08488ae79e906955183ebab",
-			"price": "5728",
-			"humanizedPrice": 0.005728,
+			"price": "5179",
+			"humanizedPrice": 0.005179,
+			"source": "curveFactoryAPI"
+		},
+		"0x231878d973c09fbcc0ca2239fffb717795402cb4": {
+			"address": "0x231878d973c09fbcc0ca2239fffb717795402cb4",
+			"price": "846",
+			"humanizedPrice": 0.000846,
 			"source": "curveFactoryAPI"
 		},
 		"0x236aa50979d5f3de3bd1eeb40e81137f22ab794b": {
 			"address": "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
-			"price": "116223000000",
-			"humanizedPrice": 116223,
+			"price": "109178000000",
+			"humanizedPrice": 109178,
 			"source": "defillama"
 		},
 		"0x236eec6359fb44cce8f97e99387aa7f8cd5cde1f": {
 			"address": "0x236eec6359fb44cce8f97e99387aa7f8cd5cde1f",
-			"price": "999817",
-			"humanizedPrice": 0.999817,
+			"price": "999799",
+			"humanizedPrice": 0.999799,
 			"source": "curveFactoryAPI"
 		},
 		"0x2385cb5590413b2cd1fae63e68886b9f2ce43a9a": {
 			"address": "0x2385cb5590413b2cd1fae63e68886b9f2ce43a9a",
-			"price": "1486269",
-			"humanizedPrice": 1.486269384308848,
+			"price": "1485814",
+			"humanizedPrice": 1.4858145564024277,
 			"source": "gammaAPI"
 		},
 		"0x23ca0ed9240b2790364cee257bee87ad18ebb13f": {
 			"address": "0x23ca0ed9240b2790364cee257bee87ad18ebb13f",
-			"price": "4050668374277",
-			"humanizedPrice": 4050668.374277,
+			"price": "3759796849147",
+			"humanizedPrice": 3759796.849147,
 			"source": "curveFactoryAPI"
 		},
 		"0x23d29d30e35c5e8d321e1dc9a8a61bfd846d4c5c": {
 			"address": "0x23d29d30e35c5e8d321e1dc9a8a61bfd846d4c5c",
-			"price": "2066",
-			"humanizedPrice": 0.002066,
+			"price": "2247",
+			"humanizedPrice": 0.002247,
 			"source": "curveFactoryAPI"
 		},
 		"0x242d1d8bd3e600dc04c56f7817327fd750b61736": {
 			"address": "0x242d1d8bd3e600dc04c56f7817327fd750b61736",
-			"price": "5301200368",
-			"humanizedPrice": 5301.200368917015,
+			"price": "5561820916",
+			"humanizedPrice": 5561.820916134959,
 			"source": "gammaAPI"
 		},
 		"0x24834bbec7e39ef42f4a75eaf8e5b6486d3f0e57": {
 			"address": "0x24834bbec7e39ef42f4a75eaf8e5b6486d3f0e57",
-			"price": "11",
-			"humanizedPrice": 0.000011,
+			"price": "23",
+			"humanizedPrice": 0.000023,
 			"source": "curveFactoryAPI"
 		},
 		"0x2489101e71c0bfe1c70987e46895a19d2de09d3e": {
 			"address": "0x2489101e71c0bfe1c70987e46895a19d2de09d3e",
-			"price": "543189",
-			"humanizedPrice": 0.543189,
+			"price": "597231",
+			"humanizedPrice": 0.597231,
 			"source": "curveFactoryAPI"
 		},
 		"0x24bcb624082325eff357621a07353a0e38c054f0": {
@@ -519,362 +537,368 @@
 		},
 		"0x250032c48f99ae079a43b0dbcc1194bdd00ddf96": {
 			"address": "0x250032c48f99ae079a43b0dbcc1194bdd00ddf96",
-			"price": "226772743614995104",
-			"humanizedPrice": 226772743614.99512,
+			"price": "236621890594014848",
+			"humanizedPrice": 236621890594.01486,
 			"source": "gammaAPI"
 		},
 		"0x25b186eed64ca5fdd1bc33fc4cffd6d34069baec": {
 			"address": "0x25b186eed64ca5fdd1bc33fc4cffd6d34069baec",
-			"price": "4348969",
-			"humanizedPrice": 4.348969567874561,
+			"price": "4363001",
+			"humanizedPrice": 4.363001407889772,
 			"source": "gammaAPI"
 		},
 		"0x2752e822283c8baec3ad7ad18b09248a914930ff": {
 			"address": "0x2752e822283c8baec3ad7ad18b09248a914930ff",
-			"price": "2926287",
-			"humanizedPrice": 2.926287065822961,
+			"price": "2927510",
+			"humanizedPrice": 2.9275101116616886,
 			"source": "gammaAPI"
 		},
 		"0x27842334c55c01ddfe81bf687425f906816c5141": {
 			"address": "0x27842334c55c01ddfe81bf687425f906816c5141",
-			"price": "1832",
-			"humanizedPrice": 0.00183288,
+			"price": "2010",
+			"humanizedPrice": 0.00201066,
 			"source": "defillama"
 		},
 		"0x2791bca1f2de4661ed88a30c99a7a9449aa84174": {
 			"address": "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
-			"price": "999880",
-			"humanizedPrice": 0.99988,
+			"price": "999610",
+			"humanizedPrice": 0.99961,
 			"source": "defillama"
 		},
 		"0x27c23852ff93254cae7d5fd4183b331f700e09e8": {
 			"address": "0x27c23852ff93254cae7d5fd4183b331f700e09e8",
-			"price": "15008",
-			"humanizedPrice": 0.015008,
+			"price": "14939",
+			"humanizedPrice": 0.014939,
 			"source": "curveFactoryAPI"
 		},
 		"0x27f8d03b3a2196956ed754badc28d73be8830a6e": {
 			"address": "0x27f8d03b3a2196956ed754badc28d73be8830a6e",
-			"price": "1000095",
-			"humanizedPrice": 1.000095,
+			"price": "1037980",
+			"humanizedPrice": 1.03798,
 			"source": "curveFactoryAPI"
 		},
 		"0x27ffa4221a52b02ecc67c5b199007010b90e8660": {
 			"address": "0x27ffa4221a52b02ecc67c5b199007010b90e8660",
 			"price": "3",
-			"humanizedPrice": 0.0000039891645748829746,
+			"humanizedPrice": 0.0000039503633185319185,
 			"source": "gammaAPI"
 		},
 		"0x28424507fefb6f7f8e9d3860f56504e4e5f5f390": {
 			"address": "0x28424507fefb6f7f8e9d3860f56504e4e5f5f390",
-			"price": "3806524933",
-			"humanizedPrice": 3806.524933,
+			"price": "4381638510",
+			"humanizedPrice": 4381.63851,
 			"source": "curveFactoryAPI"
 		},
 		"0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36": {
 			"address": "0x28f53ba70e5c8ce8d03b1fad41e9df11bb646c36",
-			"price": "257810",
-			"humanizedPrice": 0.25781063624191886,
+			"price": "242269",
+			"humanizedPrice": 0.24226971230316163,
 			"source": "defillama"
 		},
 		"0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c": {
 			"address": "0x2a42a69f48efffdf2d4fb079af60d98d3e34d49c",
-			"price": "238297",
-			"humanizedPrice": 0.238297,
+			"price": "223238",
+			"humanizedPrice": 0.223238,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x2ba29fd4207c277ba74a5d1ef615cdc4d0b1deeb": {
 			"address": "0x2ba29fd4207c277ba74a5d1ef615cdc4d0b1deeb",
-			"price": "113645259",
-			"humanizedPrice": 113.64525973400208,
+			"price": "111355670",
+			"humanizedPrice": 111.35567032994322,
 			"source": "gammaAPI"
 		},
 		"0x2c04a1638643ed586268542bd05af7bae7096057": {
 			"address": "0x2c04a1638643ed586268542bd05af7bae7096057",
-			"price": "184890",
-			"humanizedPrice": 0.18489,
+			"price": "190213",
+			"humanizedPrice": 0.190213,
 			"source": "curveFactoryAPI"
 		},
 		"0x2c2d8a078b33bf7782a16acce2c5ba6653a90d5f": {
 			"address": "0x2c2d8a078b33bf7782a16acce2c5ba6653a90d5f",
-			"price": "1125238",
-			"humanizedPrice": 1.125238,
+			"price": "116383",
+			"humanizedPrice": 0.116383,
 			"source": "curveFactoryAPI"
 		},
 		"0x2c3cc8e698890271c8141be9f6fd6243d56b39f1": {
 			"address": "0x2c3cc8e698890271c8141be9f6fd6243d56b39f1",
-			"price": "784231",
-			"humanizedPrice": 0.784231,
+			"price": "475421",
+			"humanizedPrice": 0.475421,
 			"source": "curveFactoryAPI"
 		},
 		"0x2c53dfa65370b2d70975e40172b63210d477e470": {
 			"address": "0x2c53dfa65370b2d70975e40172b63210d477e470",
-			"price": "1062390",
-			"humanizedPrice": 1.0623907975058806,
+			"price": "1121700",
+			"humanizedPrice": 1.121700357361211,
 			"source": "gammaAPI"
 		},
 		"0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d": {
 			"address": "0x2c5d0c3db75d2f8a4957c74be09194a9271cf28d",
-			"price": "1066604",
-			"humanizedPrice": 1.066604,
+			"price": "1066773",
+			"humanizedPrice": 1.066773,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b": {
 			"address": "0x2c89bbc92bd86f8075d1decc58c7f4e0107f286b",
-			"price": "18910000",
-			"humanizedPrice": 18.91,
+			"price": "16710000",
+			"humanizedPrice": 16.71,
 			"source": "curveFactoryAPI"
 		},
 		"0x2d08b4b4c74d0b2f4144ae7bd86ee40fb654acef": {
 			"address": "0x2d08b4b4c74d0b2f4144ae7bd86ee40fb654acef",
-			"price": "100327043",
-			"humanizedPrice": 100.32704385110631,
+			"price": "69579261",
+			"humanizedPrice": 69.57926172442242,
 			"source": "gammaAPI"
 		},
 		"0x2d1352df75836a2681f8be063571c8391c04b0dc": {
 			"address": "0x2d1352df75836a2681f8be063571c8391c04b0dc",
-			"price": "3008106",
-			"humanizedPrice": 3.008106,
+			"price": "3011103",
+			"humanizedPrice": 3.011103,
 			"source": "curveFactoryAPI"
 		},
 		"0x2db05c5f36bf35d79fd611be29855ffec62ce85e": {
 			"address": "0x2db05c5f36bf35d79fd611be29855ffec62ce85e",
-			"price": "1",
-			"humanizedPrice": 0.000001,
+			"price": "11",
+			"humanizedPrice": 0.000011,
 			"source": "curveFactoryAPI"
 		},
 		"0x2dbdb379d9028421f4d74677529efb58dd28faa3": {
 			"address": "0x2dbdb379d9028421f4d74677529efb58dd28faa3",
-			"price": "1038722",
-			"humanizedPrice": 1.038722976442665,
+			"price": "1032956",
+			"humanizedPrice": 1.032956529495895,
 			"source": "gammaAPI"
 		},
 		"0x2e18b825b049c4994370b0db6c35d0100295b96c": {
 			"address": "0x2e18b825b049c4994370b0db6c35d0100295b96c",
-			"price": "88846",
-			"humanizedPrice": 0.08884680441465458,
+			"price": "87379",
+			"humanizedPrice": 0.08737933238026527,
 			"source": "gammaAPI"
 		},
 		"0x2e1ad108ff1d8c782fcbbb89aad783ac49586756": {
 			"address": "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
-			"price": "1000999",
-			"humanizedPrice": 1.000999,
+			"price": "994484",
+			"humanizedPrice": 0.994484,
 			"source": "curveFactoryAPI"
 		},
 		"0x2e9225276a8756f6983c6054d7a171dadb24a7b8": {
 			"address": "0x2e9225276a8756f6983c6054d7a171dadb24a7b8",
-			"price": "152242",
-			"humanizedPrice": 0.1522423576598445,
+			"price": "147717",
+			"humanizedPrice": 0.14771748228803325,
 			"source": "gammaAPI"
 		},
 		"0x2ef46196d7d25b5111ca1fcba206b248fee32d8d": {
 			"address": "0x2ef46196d7d25b5111ca1fcba206b248fee32d8d",
-			"price": "106541",
-			"humanizedPrice": 0.10654117771061386,
+			"price": "105019",
+			"humanizedPrice": 0.10501941717250272,
 			"source": "gammaAPI"
 		},
 		"0x2f1b1662a895c6ba01a99dcaf56778e7d77e5609": {
 			"address": "0x2f1b1662a895c6ba01a99dcaf56778e7d77e5609",
-			"price": "2585",
-			"humanizedPrice": 0.002585,
+			"price": "2165",
+			"humanizedPrice": 0.002165,
 			"source": "curveFactoryAPI"
 		},
 		"0x2f54543f9505ad01d5da6952b93956cbecaf4a0e": {
 			"address": "0x2f54543f9505ad01d5da6952b93956cbecaf4a0e",
-			"price": "805215",
-			"humanizedPrice": 0.805215,
+			"price": "803487",
+			"humanizedPrice": 0.803487,
 			"source": "curveFactoryAPI"
 		},
 		"0x2fb12da70a17802200a512de31dc0b1b2da03b4c": {
 			"address": "0x2fb12da70a17802200a512de31dc0b1b2da03b4c",
-			"price": "999985",
-			"humanizedPrice": 0.999985,
+			"price": "999882",
+			"humanizedPrice": 0.999882,
 			"source": "curveFactoryAPI"
 		},
 		"0x30499a5ac578b52e2cfd73e75967c884c2e58d91": {
 			"address": "0x30499a5ac578b52e2cfd73e75967c884c2e58d91",
-			"price": "116155",
-			"humanizedPrice": 0.116155,
+			"price": "107814",
+			"humanizedPrice": 0.107814,
 			"source": "curveFactoryAPI"
 		},
 		"0x305f25377d0a39091e99b975558b1bdfc3975654": {
 			"address": "0x305f25377d0a39091e99b975558b1bdfc3975654",
-			"price": "4127572787",
-			"humanizedPrice": 4127.572787,
+			"price": "4338229818",
+			"humanizedPrice": 4338.229818,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x3066818837c5e6ed6601bd5a91b0762877a6b731": {
 			"address": "0x3066818837c5e6ed6601bd5a91b0762877a6b731",
-			"price": "1270000",
-			"humanizedPrice": 1.27,
+			"price": "1190000",
+			"humanizedPrice": 1.19,
 			"source": "curveFactoryAPI"
 		},
 		"0x309be34adb7866cb3bde9770fbedc2cb3be2bd26": {
 			"address": "0x309be34adb7866cb3bde9770fbedc2cb3be2bd26",
-			"price": "1006130",
-			"humanizedPrice": 1.00613,
+			"price": "1011584",
+			"humanizedPrice": 1.011584,
 			"source": "curveFactoryAPI"
 		},
 		"0x31c1ae8f080fd194d979e2aa8b3051259baf79f2": {
 			"address": "0x31c1ae8f080fd194d979e2aa8b3051259baf79f2",
-			"price": "418494",
-			"humanizedPrice": 0.4184940595887347,
+			"price": "379907",
+			"humanizedPrice": 0.3799077896195929,
 			"source": "gammaAPI"
 		},
 		"0x3273c153ecc6891a68af60ee0b67c16dd7b2c7e5": {
 			"address": "0x3273c153ecc6891a68af60ee0b67c16dd7b2c7e5",
-			"price": "15571059",
-			"humanizedPrice": 15.571059001645713,
+			"price": "15631448",
+			"humanizedPrice": 15.6314487100943,
 			"source": "gammaAPI"
 		},
 		"0x32adfc6170344f848a8c0efe68dad93e5b6964aa": {
 			"address": "0x32adfc6170344f848a8c0efe68dad93e5b6964aa",
-			"price": "1961789010",
-			"humanizedPrice": 1961.78901,
+			"price": "2004818396",
+			"humanizedPrice": 2004.818396,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x32d14d697eaf6c254a08ddac1aa5e6ed89ab32b9": {
 			"address": "0x32d14d697eaf6c254a08ddac1aa5e6ed89ab32b9",
-			"price": "260197",
-			"humanizedPrice": 0.260197,
+			"price": "237364",
+			"humanizedPrice": 0.237364,
 			"source": "curveFactoryAPI"
 		},
 		"0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac": {
 			"address": "0x336f8b2cd78cd280116d2db68b7cd983ee3d53ac",
-			"price": "999880",
-			"humanizedPrice": 0.99988,
+			"price": "999610",
+			"humanizedPrice": 0.99961,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x33b0b883626c21ce5b3aad202bc435f876aee2c4": {
 			"address": "0x33b0b883626c21ce5b3aad202bc435f876aee2c4",
-			"price": "1280646",
-			"humanizedPrice": 1.2806467706472,
+			"price": "1280551",
+			"humanizedPrice": 1.2805515455857948,
 			"source": "gammaAPI"
 		},
 		"0x33eeafa7ef22cd4468d65819b2fe30f170db5b69": {
 			"address": "0x33eeafa7ef22cd4468d65819b2fe30f170db5b69",
-			"price": "294980",
-			"humanizedPrice": 0.29498073160626453,
+			"price": "241944",
+			"humanizedPrice": 0.2419443939919843,
 			"source": "gammaAPI"
 		},
 		"0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e": {
 			"address": "0x34b9421fe3d52191b64bc32ec1ab764dcbcdbf5e",
-			"price": "1107934",
-			"humanizedPrice": 1.107934,
+			"price": "1115052",
+			"humanizedPrice": 1.115052,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666": {
 			"address": "0x34ffbd9db6b9bd8b095a0d156de69a2ad2944666",
-			"price": "639069253127259648",
-			"humanizedPrice": 639069253127.2596,
+			"price": "642066941702709632",
+			"humanizedPrice": 642066941702.7096,
 			"source": "gammaAPI"
 		},
 		"0x3553f861dec0257bada9f8ed268bf0d74e45e89c": {
 			"address": "0x3553f861dec0257bada9f8ed268bf0d74e45e89c",
-			"price": "999774",
-			"humanizedPrice": 0.999774,
+			"price": "994646",
+			"humanizedPrice": 0.994646,
 			"source": "curveFactoryAPI"
 		},
 		"0x35e59075610320aa4c5868235a8284cebeffe522": {
 			"address": "0x35e59075610320aa4c5868235a8284cebeffe522",
-			"price": "160",
-			"humanizedPrice": 0.00016,
+			"price": "148",
+			"humanizedPrice": 0.000148,
 			"source": "curveFactoryAPI"
 		},
 		"0x361a5a4993493ce00f61c32d4ecca5512b82ce90": {
 			"address": "0x361a5a4993493ce00f61c32d4ecca5512b82ce90",
-			"price": "439547",
-			"humanizedPrice": 0.439547,
+			"price": "315692",
+			"humanizedPrice": 0.315692,
 			"source": "curveFactoryAPI"
 		},
 		"0x3647e5ad69cb38d23e751049bc03612ab70781eb": {
 			"address": "0x3647e5ad69cb38d23e751049bc03612ab70781eb",
-			"price": "112397537",
-			"humanizedPrice": 112.397537,
+			"price": "148900391",
+			"humanizedPrice": 148.900391,
 			"source": "curveFactoryAPI"
 		},
 		"0x3672d301778750c41a7864980a5ddbc2af99476e": {
 			"address": "0x3672d301778750c41a7864980a5ddbc2af99476e",
-			"price": "2230058736591049216",
-			"humanizedPrice": 2230058736591.0493,
+			"price": "2245088267683699200",
+			"humanizedPrice": 2245088267683.699,
 			"source": "gammaAPI"
 		},
 		"0x36a36eae690e1e138018b706567b0c2d9188b76a": {
 			"address": "0x36a36eae690e1e138018b706567b0c2d9188b76a",
-			"price": "23751",
-			"humanizedPrice": 0.023751,
+			"price": "22045",
+			"humanizedPrice": 0.022045,
 			"source": "curveFactoryAPI"
 		},
 		"0x36b511a006cac909dc56c2c24eb69ca304f74999": {
 			"address": "0x36b511a006cac909dc56c2c24eb69ca304f74999",
-			"price": "38624",
-			"humanizedPrice": 0.038624257455329686,
+			"price": "38785",
+			"humanizedPrice": 0.03878550122253664,
 			"source": "gammaAPI"
 		},
 		"0x37149a67a088848738a2427c2b1c42cbbef9e403": {
 			"address": "0x37149a67a088848738a2427c2b1c42cbbef9e403",
-			"price": "30478",
-			"humanizedPrice": 0.030478,
+			"price": "31838",
+			"humanizedPrice": 0.031838,
 			"source": "curveFactoryAPI"
 		},
 		"0x374c44443553d7eb86b5f77597cc67a507b19179": {
 			"address": "0x374c44443553d7eb86b5f77597cc67a507b19179",
-			"price": "1092061345151016704",
-			"humanizedPrice": 1092061345151.0167,
+			"price": "1092610142251124096",
+			"humanizedPrice": 1092610142251.1241,
 			"source": "gammaAPI"
+		},
+		"0x37f23e1e871e2ed9a3d96a612e44ec2370b5e461": {
+			"address": "0x37f23e1e871e2ed9a3d96a612e44ec2370b5e461",
+			"price": "2675",
+			"humanizedPrice": 0.002675,
+			"source": "curveFactoryAPI"
 		},
 		"0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7": {
 			"address": "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
-			"price": "429390",
-			"humanizedPrice": 0.42939,
+			"price": "400973",
+			"humanizedPrice": 0.400973,
 			"source": "defillama"
 		},
 		"0x38933682187fb0d3c944df19fac8d9860cea1d09": {
 			"address": "0x38933682187fb0d3c944df19fac8d9860cea1d09",
-			"price": "181540",
-			"humanizedPrice": 0.18154,
+			"price": "185795",
+			"humanizedPrice": 0.185795,
 			"source": "curveFactoryAPI"
 		},
 		"0x39416bea4ef71f8f9ce1735299a5ab43e14cee2d": {
 			"address": "0x39416bea4ef71f8f9ce1735299a5ab43e14cee2d",
-			"price": "297916",
-			"humanizedPrice": 0.297916,
+			"price": "245967",
+			"humanizedPrice": 0.245967,
 			"source": "curveFactoryAPI"
 		},
 		"0x3974fbdc22741a1632e024192111107b202f214f": {
 			"address": "0x3974fbdc22741a1632e024192111107b202f214f",
-			"price": "455368131",
-			"humanizedPrice": 455.3681317977721,
+			"price": "468023789",
+			"humanizedPrice": 468.02378921028134,
 			"source": "gammaAPI"
 		},
 		"0x39f223b2e0405fa62cec7dc476fc5a307b435069": {
 			"address": "0x39f223b2e0405fa62cec7dc476fc5a307b435069",
-			"price": "1533755",
-			"humanizedPrice": 1.533755131271742,
+			"price": "1538070",
+			"humanizedPrice": 1.5380703489121093,
 			"source": "gammaAPI"
 		},
 		"0x3a1fa27a824c9ede2eaf204f217d6a53ba553ec2": {
 			"address": "0x3a1fa27a824c9ede2eaf204f217d6a53ba553ec2",
-			"price": "311583",
-			"humanizedPrice": 0.311583,
+			"price": "308945",
+			"humanizedPrice": 0.308945,
 			"source": "curveFactoryAPI"
 		},
 		"0x3a2c3b02b6ed3e226f406d7e44067e68732c2ec5": {
 			"address": "0x3a2c3b02b6ed3e226f406d7e44067e68732c2ec5",
-			"price": "43752",
-			"humanizedPrice": 0.043752,
+			"price": "40611",
+			"humanizedPrice": 0.040611,
 			"source": "curveFactoryAPI"
 		},
 		"0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4": {
 			"address": "0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4",
-			"price": "271058",
-			"humanizedPrice": 0.271058,
+			"price": "255359",
+			"humanizedPrice": 0.25536,
 			"source": "defillama"
 		},
 		"0x3a58df70f9204bedcd6aee2b51582eb77fe30e02": {
 			"address": "0x3a58df70f9204bedcd6aee2b51582eb77fe30e02",
-			"price": "2533570208",
-			"humanizedPrice": 2533.570208,
+			"price": "2348063897",
+			"humanizedPrice": 2348.063897,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x3a7bde5452de219ad1e7cf1c30a4240a4b474201": {
@@ -885,62 +909,68 @@
 		},
 		"0x3a85c1b914fee13f0b29246d5fbe88538510f57e": {
 			"address": "0x3a85c1b914fee13f0b29246d5fbe88538510f57e",
-			"price": "366999",
-			"humanizedPrice": 0.366999,
+			"price": "340645",
+			"humanizedPrice": 0.340645,
 			"source": "curveFactoryAPI"
 		},
 		"0x3ae59be14da16183f0a36e23518506c386e63a96": {
 			"address": "0x3ae59be14da16183f0a36e23518506c386e63a96",
-			"price": "1424571",
-			"humanizedPrice": 1.4245716639160793,
+			"price": "1469759",
+			"humanizedPrice": 1.4697590782883212,
 			"source": "gammaAPI"
+		},
+		"0x3b2fd6cdeb0745d7a2870227f60e6d4dba342609": {
+			"address": "0x3b2fd6cdeb0745d7a2870227f60e6d4dba342609",
+			"price": "1017069",
+			"humanizedPrice": 1.017069,
+			"source": "curveFactoryAPI"
 		},
 		"0x3b7e1ce09afe2bb3a23919afb65a38e627cfbe97": {
 			"address": "0x3b7e1ce09afe2bb3a23919afb65a38e627cfbe97",
-			"price": "1178",
-			"humanizedPrice": 0.001178,
+			"price": "911",
+			"humanizedPrice": 0.000911,
 			"source": "curveFactoryAPI"
 		},
 		"0x3ba4c387f786bfee076a58914f5bd38d668b42c3": {
 			"address": "0x3ba4c387f786bfee076a58914f5bd38d668b42c3",
-			"price": "775970000",
-			"humanizedPrice": 775.97,
+			"price": "972510000",
+			"humanizedPrice": 972.51,
 			"source": "curveFactoryAPI"
 		},
 		"0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734": {
 			"address": "0x3bd8c987286d8ad00c05fdb2ae3e8c9a0f054734",
-			"price": "1107260",
-			"humanizedPrice": 1.10726,
+			"price": "1140900",
+			"humanizedPrice": 1.1409,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x3c499c542cef5e3811e1192ce70d8cc03d5c3359": {
 			"address": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "defillama"
 		},
 		"0x3cc20a6795c4b57d9817399f68e83e71c8626580": {
 			"address": "0x3cc20a6795c4b57d9817399f68e83e71c8626580",
-			"price": "328379552",
-			"humanizedPrice": 328.3795522185848,
+			"price": "292126809",
+			"humanizedPrice": 292.12680941349987,
 			"source": "gammaAPI"
 		},
 		"0x3d468ab2329f296e1b9d8476bb54dd77d8c2320f": {
 			"address": "0x3d468ab2329f296e1b9d8476bb54dd77d8c2320f",
-			"price": "5624513",
-			"humanizedPrice": 5.624513,
+			"price": "4863158",
+			"humanizedPrice": 4.863158,
 			"source": "curveFactoryAPI"
 		},
 		"0x3d966d7d6ae268ce4c45edcb82b2a694edc5924e": {
 			"address": "0x3d966d7d6ae268ce4c45edcb82b2a694edc5924e",
-			"price": "82",
-			"humanizedPrice": 0.000082,
+			"price": "74",
+			"humanizedPrice": 0.000074,
 			"source": "curveFactoryAPI"
 		},
 		"0x3da7e0320c04d88b71e0ada960aad3d21f10cadf": {
 			"address": "0x3da7e0320c04d88b71e0ada960aad3d21f10cadf",
-			"price": "639024606",
-			"humanizedPrice": 639.0246066763742,
+			"price": "790414139",
+			"humanizedPrice": 790.414139459342,
 			"source": "gammaAPI"
 		},
 		"0x3de21cca8f4e5fedce156f8bd4ed6e74fe85ab2f": {
@@ -951,164 +981,164 @@
 		},
 		"0x3de32b6949b0a000e831c98354e93261725a22f7": {
 			"address": "0x3de32b6949b0a000e831c98354e93261725a22f7",
-			"price": "106900",
-			"humanizedPrice": 0.1069,
+			"price": "96666",
+			"humanizedPrice": 0.096666,
 			"source": "curveFactoryAPI"
 		},
 		"0x3e1f3d078e9abb8a08de99958a69096b53dfa9b3": {
 			"address": "0x3e1f3d078e9abb8a08de99958a69096b53dfa9b3",
-			"price": "104294011",
-			"humanizedPrice": 104.294011,
+			"price": "105440433",
+			"humanizedPrice": 105.440433,
 			"source": "curveFactoryAPI"
 		},
 		"0x3e27a4a3af3bdf1289e673a353454e821c265523": {
 			"address": "0x3e27a4a3af3bdf1289e673a353454e821c265523",
-			"price": "5201",
-			"humanizedPrice": 0.005201,
+			"price": "4876",
+			"humanizedPrice": 0.004876,
 			"source": "curveFactoryAPI"
 		},
 		"0x3e99b86b16f36dcf3b987ebc8b754c54030403b5": {
 			"address": "0x3e99b86b16f36dcf3b987ebc8b754c54030403b5",
-			"price": "830019",
-			"humanizedPrice": 0.8300195619384798,
+			"price": "809649",
+			"humanizedPrice": 0.8096496504327141,
 			"source": "gammaAPI"
 		},
 		"0x3f35705479d9d77c619b2aac9dd7a64e57151506": {
 			"address": "0x3f35705479d9d77c619b2aac9dd7a64e57151506",
-			"price": "1139634373025881600",
-			"humanizedPrice": 1139634373025.8816,
+			"price": "1165547421720702976",
+			"humanizedPrice": 1165547421720.703,
 			"source": "gammaAPI"
 		},
 		"0x3fb73a554defa86b18f72e543aa2174a4d5f9621": {
 			"address": "0x3fb73a554defa86b18f72e543aa2174a4d5f9621",
-			"price": "935580",
-			"humanizedPrice": 0.9355801008733565,
+			"price": "915070",
+			"humanizedPrice": 0.9150705979714365,
 			"source": "gammaAPI"
 		},
 		"0x407eb8531f381cf2285ce45ef8ea3f190f33d1ea": {
 			"address": "0x407eb8531f381cf2285ce45ef8ea3f190f33d1ea",
-			"price": "12171",
-			"humanizedPrice": 0.012171031360018354,
+			"price": "11509",
+			"humanizedPrice": 0.011509370798945524,
 			"source": "gammaAPI"
 		},
 		"0x40ebabbbe831dcf812d77879b29d634950f09831": {
 			"address": "0x40ebabbbe831dcf812d77879b29d634950f09831",
-			"price": "14982",
-			"humanizedPrice": 0.014982,
+			"price": "13906",
+			"humanizedPrice": 0.013906,
 			"source": "curveFactoryAPI"
 		},
 		"0x41f63bd9180eaaa58185e1a88e2b22cea52634b9": {
 			"address": "0x41f63bd9180eaaa58185e1a88e2b22cea52634b9",
-			"price": "3841490000",
-			"humanizedPrice": 3841.49,
+			"price": "4017730000",
+			"humanizedPrice": 4017.73,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x4247d47842068e7ca84b97201033bf71ad8e7d2a": {
 			"address": "0x4247d47842068e7ca84b97201033bf71ad8e7d2a",
-			"price": "1084938",
-			"humanizedPrice": 1.084938,
+			"price": "981075",
+			"humanizedPrice": 0.981075,
 			"source": "curveFactoryAPI"
 		},
 		"0x4273d9ea06ea6ce8aafd7aca19c6c2fa8d5d0d4d": {
 			"address": "0x4273d9ea06ea6ce8aafd7aca19c6c2fa8d5d0d4d",
-			"price": "41308",
-			"humanizedPrice": 0.041308,
+			"price": "37353",
+			"humanizedPrice": 0.037353,
 			"source": "curveFactoryAPI"
 		},
 		"0x42908891cbc13301c910b4e71055431bf134aaa0": {
 			"address": "0x42908891cbc13301c910b4e71055431bf134aaa0",
-			"price": "51767550094919872",
-			"humanizedPrice": 51767550094.91987,
+			"price": "46270881628581904",
+			"humanizedPrice": 46270881628.5819,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x4318cb63a2b8edf2de971e2f17f77097e499459d": {
 			"address": "0x4318cb63a2b8edf2de971e2f17f77097e499459d",
-			"price": "999705",
-			"humanizedPrice": 0.999705,
+			"price": "999616",
+			"humanizedPrice": 0.999616,
 			"source": "curveFactoryAPI"
 		},
 		"0x431d5dff03120afa4bdf332c61a6e1766ef37bdb": {
 			"address": "0x431d5dff03120afa4bdf332c61a6e1766ef37bdb",
-			"price": "7577",
-			"humanizedPrice": 0.007577,
+			"price": "7394",
+			"humanizedPrice": 0.007394,
 			"source": "curveFactoryAPI"
 		},
 		"0x43910e07554312fc7a43e4b71d16a72ddcb5ec5f": {
 			"address": "0x43910e07554312fc7a43e4b71d16a72ddcb5ec5f",
-			"price": "323091",
-			"humanizedPrice": 0.323091,
+			"price": "283061",
+			"humanizedPrice": 0.283061,
 			"source": "curveFactoryAPI"
 		},
 		"0x440017a1b021006d556d7fc06a54c32e42eb745b": {
 			"address": "0x440017a1b021006d556d7fc06a54c32e42eb745b",
-			"price": "187870",
-			"humanizedPrice": 0.18787,
+			"price": "128717",
+			"humanizedPrice": 0.128717,
 			"source": "curveFactoryAPI"
 		},
 		"0x44899605e50d20d84f58b58c5958ed1c5ddc111d": {
 			"address": "0x44899605e50d20d84f58b58c5958ed1c5ddc111d",
-			"price": "3565500757",
-			"humanizedPrice": 3565.500757561416,
+			"price": "1191878025",
+			"humanizedPrice": 1191.878025619945,
 			"source": "gammaAPI"
 		},
 		"0x454ff7780a9a99ecb3462ab61ba06fe4a886862e": {
 			"address": "0x454ff7780a9a99ecb3462ab61ba06fe4a886862e",
-			"price": "87722",
-			"humanizedPrice": 0.08772266614005758,
+			"price": "90021",
+			"humanizedPrice": 0.09002114429268908,
 			"source": "gammaAPI"
 		},
 		"0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0": {
 			"address": "0x4572c3c8f2cfdd77d1dd7987bc46ca20d72f32b0",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999461",
+			"humanizedPrice": 0.999461,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x45a3a657b834699f5cc902e796c547f826703b79": {
 			"address": "0x45a3a657b834699f5cc902e796c547f826703b79",
-			"price": "56357913670788036165632",
-			"humanizedPrice": 56357913670788030,
+			"price": "56628115231566794326016",
+			"humanizedPrice": 56628115231566790,
 			"source": "gammaAPI"
 		},
 		"0x45a743cd8c58c96cbd566ece33c83698e2e49424": {
 			"address": "0x45a743cd8c58c96cbd566ece33c83698e2e49424",
-			"price": "590217033",
-			"humanizedPrice": 590.2170330183183,
+			"price": "444563566",
+			"humanizedPrice": 444.5635669108131,
 			"source": "gammaAPI"
 		},
 		"0x45c32fa6df82ead1e2ef74d17b76547eddfaff89": {
 			"address": "0x45c32fa6df82ead1e2ef74d17b76547eddfaff89",
-			"price": "987386",
-			"humanizedPrice": 0.987386,
+			"price": "999557",
+			"humanizedPrice": 0.999557,
 			"source": "curveFactoryAPI"
 		},
 		"0x46840e073376178b1e669693c021329b17fb22aa": {
 			"address": "0x46840e073376178b1e669693c021329b17fb22aa",
-			"price": "2825567",
-			"humanizedPrice": 2.825567839878934,
+			"price": "2844274",
+			"humanizedPrice": 2.8442747114925773,
 			"source": "gammaAPI"
 		},
 		"0x472de51a83e052d5d7aca104d4cf4c1f45394130": {
 			"address": "0x472de51a83e052d5d7aca104d4cf4c1f45394130",
-			"price": "1012573835148729984",
-			"humanizedPrice": 1012573835148.73,
+			"price": "1012915055081604480",
+			"humanizedPrice": 1012915055081.6045,
 			"source": "gammaAPI"
 		},
 		"0x481dbeadd9f055eec229ca64ad5da37de550c7dc": {
 			"address": "0x481dbeadd9f055eec229ca64ad5da37de550c7dc",
-			"price": "89035",
-			"humanizedPrice": 0.089035,
+			"price": "93008",
+			"humanizedPrice": 0.093008,
 			"source": "curveFactoryAPI"
 		},
 		"0x482bc619ee7662759cdc0685b4e78f464da39c73": {
 			"address": "0x482bc619ee7662759cdc0685b4e78f464da39c73",
-			"price": "5359",
-			"humanizedPrice": 0.005359,
+			"price": "5999",
+			"humanizedPrice": 0.005999,
 			"source": "curveFactoryAPI"
 		},
 		"0x486880fb16408b47f928f472f57bec55ac6089d1": {
 			"address": "0x486880fb16408b47f928f472f57bec55ac6089d1",
-			"price": "17475",
-			"humanizedPrice": 0.017475,
+			"price": "17196",
+			"humanizedPrice": 0.017196,
 			"source": "curveFactoryAPI"
 		},
 		"0x4903260dce0b56ea6f5c5d54cd77f517e8071fea": {
@@ -1119,92 +1149,98 @@
 		},
 		"0x4915c9bee38367d4f24e94950406d42e521fec68": {
 			"address": "0x4915c9bee38367d4f24e94950406d42e521fec68",
-			"price": "606538",
-			"humanizedPrice": 0.606538,
+			"price": "548473",
+			"humanizedPrice": 0.548473,
 			"source": "curveFactoryAPI"
 		},
 		"0x491a4eb4f1fc3bff8e1d2fc856a6a46663ad556f": {
 			"address": "0x491a4eb4f1fc3bff8e1d2fc856a6a46663ad556f",
-			"price": "181686",
-			"humanizedPrice": 0.181686,
+			"price": "185944",
+			"humanizedPrice": 0.185944,
 			"source": "curveFactoryAPI"
 		},
 		"0x4987d1856f93dff29e08aa605a805faf43dc3103": {
 			"address": "0x4987d1856f93dff29e08aa605a805faf43dc3103",
-			"price": "1096003",
-			"humanizedPrice": 1.096003,
-			"source": "ERC4626-convertToAssets"
+			"price": "1095707",
+			"humanizedPrice": 1.095707,
+			"source": "yVaultV2-pps-store"
 		},
 		"0x49dcc56354a5a4875fb5d8bd7e7073c4f8868618": {
 			"address": "0x49dcc56354a5a4875fb5d8bd7e7073c4f8868618",
-			"price": "102903",
-			"humanizedPrice": 0.10290335224547566,
+			"price": "102935",
+			"humanizedPrice": 0.10293508702209948,
 			"source": "gammaAPI"
 		},
 		"0x4a83253e88e77e8d518638974530d0cbbbf3b675": {
 			"address": "0x4a83253e88e77e8d518638974530d0cbbbf3b675",
-			"price": "288739313493993472",
-			"humanizedPrice": 288739313493.99347,
+			"price": "304882407870131008",
+			"humanizedPrice": 304882407870.131,
 			"source": "gammaAPI"
 		},
 		"0x4b3ef671ebb74fa057b77e2e3e1bed6e251d4b73": {
 			"address": "0x4b3ef671ebb74fa057b77e2e3e1bed6e251d4b73",
-			"price": "436486",
-			"humanizedPrice": 0.436486,
+			"price": "406232",
+			"humanizedPrice": 0.406232,
 			"source": "curveFactoryAPI"
 		},
 		"0x4b4327db1600b8b1440163f667e199cef35385f5": {
 			"address": "0x4b4327db1600b8b1440163f667e199cef35385f5",
-			"price": "4234439999",
-			"humanizedPrice": 4234.44,
+			"price": "4412830000",
+			"humanizedPrice": 4412.83,
 			"source": "defillama"
 		},
 		"0x4b9e26a02121a1c541403a611b542965bd4b68ce": {
 			"address": "0x4b9e26a02121a1c541403a611b542965bd4b68ce",
-			"price": "2471683760",
-			"humanizedPrice": 2471.6837601150055,
+			"price": "2290708733",
+			"humanizedPrice": 2290.708733223517,
 			"source": "gammaAPI"
 		},
 		"0x4cc9ea1a45c32a982c798e8c69e1aaacd224741f": {
 			"address": "0x4cc9ea1a45c32a982c798e8c69e1aaacd224741f",
-			"price": "1000732",
-			"humanizedPrice": 1.000732,
+			"price": "1000067",
+			"humanizedPrice": 1.000067,
 			"source": "curveFactoryAPI"
 		},
 		"0x4d0dd2a622e83345e3145255338f529d3922f471": {
 			"address": "0x4d0dd2a622e83345e3145255338f529d3922f471",
-			"price": "606436",
-			"humanizedPrice": 0.606436,
+			"price": "548381",
+			"humanizedPrice": 0.548381,
 			"source": "curveFactoryAPI"
 		},
 		"0x4d6bc60efb4949d28c3f5536e1719dd7877e71b7": {
 			"address": "0x4d6bc60efb4949d28c3f5536e1719dd7877e71b7",
-			"price": "2037037",
-			"humanizedPrice": 2.037037,
+			"price": "1643497",
+			"humanizedPrice": 1.643497,
 			"source": "curveFactoryAPI"
 		},
 		"0x4e3decbb3645551b8a19f0ea1678079fcb33fb4c": {
 			"address": "0x4e3decbb3645551b8a19f0ea1678079fcb33fb4c",
-			"price": "750476",
-			"humanizedPrice": 0.750476,
+			"price": "443371",
+			"humanizedPrice": 0.443371,
 			"source": "curveFactoryAPI"
 		},
 		"0x4ed141110f6eeeaba9a1df36d8c26f684d2475dc": {
 			"address": "0x4ed141110f6eeeaba9a1df36d8c26f684d2475dc",
-			"price": "181686",
-			"humanizedPrice": 0.181686,
+			"price": "185944",
+			"humanizedPrice": 0.185944,
+			"source": "curveFactoryAPI"
+		},
+		"0x4ed42471f9b971dd8333e0308c6b0b7e0f2d2b3d": {
+			"address": "0x4ed42471f9b971dd8333e0308c6b0b7e0f2d2b3d",
+			"price": "60",
+			"humanizedPrice": 0.00006,
 			"source": "curveFactoryAPI"
 		},
 		"0x4ee8e1287f3e6a6677b4b58160e8fe95bed5bb7d": {
 			"address": "0x4ee8e1287f3e6a6677b4b58160e8fe95bed5bb7d",
-			"price": "3574598",
-			"humanizedPrice": 3.574598,
+			"price": "3521200",
+			"humanizedPrice": 3.5212,
 			"source": "curveFactoryAPI"
 		},
 		"0x4f7e090fe185aac68fc58e7fa1b9d4314d357327": {
 			"address": "0x4f7e090fe185aac68fc58e7fa1b9d4314d357327",
-			"price": "39827",
-			"humanizedPrice": 0.039827899560831055,
+			"price": "39548",
+			"humanizedPrice": 0.039548007751701704,
 			"source": "gammaAPI"
 		},
 		"0x50b20884eaeccb4ee00872fa51c49e196f1f8ab5": {
@@ -1221,80 +1257,80 @@
 		},
 		"0x5136c2f7ab13e202ed42bc1ae82dd63475919653": {
 			"address": "0x5136c2f7ab13e202ed42bc1ae82dd63475919653",
-			"price": "18117611824",
-			"humanizedPrice": 18117.611824,
+			"price": "18948812194",
+			"humanizedPrice": 18948.812194,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff": {
 			"address": "0x513c7e3a9c69ca3e22550ef58ac1c0088e918fff",
-			"price": "934678",
-			"humanizedPrice": 0.934678,
+			"price": "673295",
+			"humanizedPrice": 0.673295,
 			"source": "curveFactoryAPI"
 		},
 		"0x51540d15957bdc0fdb87d32616c8d658d59f77c6": {
 			"address": "0x51540d15957bdc0fdb87d32616c8d658d59f77c6",
-			"price": "5131",
-			"humanizedPrice": 0.005131,
+			"price": "5123",
+			"humanizedPrice": 0.005123,
 			"source": "curveFactoryAPI"
 		},
 		"0x5225010a0ae133b357861782b0b865a48471b2c5": {
 			"address": "0x5225010a0ae133b357861782b0b865a48471b2c5",
-			"price": "1004209",
-			"humanizedPrice": 1.004209,
+			"price": "1003112",
+			"humanizedPrice": 1.003112,
 			"source": "curveFactoryAPI"
 		},
 		"0x52367c8e381edfb068e9fba1e7e9b2c847042897": {
 			"address": "0x52367c8e381edfb068e9fba1e7e9b2c847042897",
-			"price": "1072374",
-			"humanizedPrice": 1.072374,
+			"price": "1090625",
+			"humanizedPrice": 1.090625,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x524cf25d20e48ef27dd9b2fc1efa8eb5a6c4e783": {
 			"address": "0x524cf25d20e48ef27dd9b2fc1efa8eb5a6c4e783",
-			"price": "4663920",
-			"humanizedPrice": 4.66392,
+			"price": "4872039",
+			"humanizedPrice": 4.872039,
 			"source": "curveFactoryAPI"
 		},
 		"0x535206aaeca58c038ef28ce9924c7782bbb3d94d": {
 			"address": "0x535206aaeca58c038ef28ce9924c7782bbb3d94d",
-			"price": "421783",
-			"humanizedPrice": 0.42178313756349706,
+			"price": "415402",
+			"humanizedPrice": 0.41540242299510377,
 			"source": "gammaAPI"
 		},
 		"0x53c38755748745e2dd7d0a136fbcc9fb1a5b83b2": {
 			"address": "0x53c38755748745e2dd7d0a136fbcc9fb1a5b83b2",
-			"price": "1015406",
-			"humanizedPrice": 1.015406,
+			"price": "1022283",
+			"humanizedPrice": 1.022283,
 			"source": "curveFactoryAPI"
 		},
 		"0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39": {
 			"address": "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
-			"price": "17690000",
-			"humanizedPrice": 17.69,
+			"price": "20950000",
+			"humanizedPrice": 20.95,
 			"source": "defillama"
 		},
 		"0x54138e8b40df7c3639e6a044dc57173eb830b972": {
 			"address": "0x54138e8b40df7c3639e6a044dc57173eb830b972",
-			"price": "7208245",
-			"humanizedPrice": 7.208245,
+			"price": "7220238",
+			"humanizedPrice": 7.220238,
 			"source": "curveFactoryAPI"
 		},
 		"0x54303f18161d9870b0fc66b88b0b129e8e5ff505": {
 			"address": "0x54303f18161d9870b0fc66b88b0b129e8e5ff505",
-			"price": "1007219725",
-			"humanizedPrice": 1007.219725,
+			"price": "896023770",
+			"humanizedPrice": 896.02377,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x543403307bc9f9ec46fd9bc1048b263c9692a26a": {
 			"address": "0x543403307bc9f9ec46fd9bc1048b263c9692a26a",
-			"price": "18045",
-			"humanizedPrice": 0.01804524159124464,
+			"price": "18093",
+			"humanizedPrice": 0.018093156368760462,
 			"source": "gammaAPI"
 		},
 		"0x54693db0c8015c7cda2186e5005da99714ce57ff": {
 			"address": "0x54693db0c8015c7cda2186e5005da99714ce57ff",
-			"price": "8737",
-			"humanizedPrice": 0.008737,
+			"price": "8782",
+			"humanizedPrice": 0.008782,
 			"source": "curveFactoryAPI"
 		},
 		"0x54c02024a50e71c700b2f1b8d872956cd4ead4f0": {
@@ -1305,104 +1341,116 @@
 		},
 		"0x550fac19d0ff06725dcaf7721b2c97aba268e11f": {
 			"address": "0x550fac19d0ff06725dcaf7721b2c97aba268e11f",
-			"price": "445365046255504896",
-			"humanizedPrice": 445365046255.5049,
+			"price": "400009072804566592",
+			"humanizedPrice": 400009072804.5666,
 			"source": "gammaAPI"
 		},
 		"0x553d3d295e0f695b9228246232edf400ed3560b5": {
 			"address": "0x553d3d295e0f695b9228246232edf400ed3560b5",
-			"price": "3380720000",
-			"humanizedPrice": 3380.72,
+			"price": "3777750000",
+			"humanizedPrice": 3777.75,
 			"source": "curveFactoryAPI"
 		},
 		"0x556bd8f6e7a470e610d45f15aa642d8f557c434c": {
 			"address": "0x556bd8f6e7a470e610d45f15aa642d8f557c434c",
-			"price": "31854",
-			"humanizedPrice": 0.031854,
+			"price": "28804",
+			"humanizedPrice": 0.028804,
 			"source": "curveFactoryAPI"
 		},
 		"0x559a3e77f94b0055a4b7f1acaaed893308115dab": {
 			"address": "0x559a3e77f94b0055a4b7f1acaaed893308115dab",
-			"price": "5290136",
-			"humanizedPrice": 5.290136,
+			"price": "5073906",
+			"humanizedPrice": 5.073906,
 			"source": "curveFactoryAPI"
 		},
 		"0x566452e9d621a1902f9ccf2adaf029cf0f36ec67": {
 			"address": "0x566452e9d621a1902f9ccf2adaf029cf0f36ec67",
-			"price": "2056084",
-			"humanizedPrice": 2.0560848993873266,
+			"price": "2095527",
+			"humanizedPrice": 2.0955275090541137,
 			"source": "gammaAPI"
 		},
 		"0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb": {
 			"address": "0x56b33795c24b1c46049031ea9bb8466c5b6cb3fb",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x5744a08b7c9536204b224e3a65fd780430818b1c": {
 			"address": "0x5744a08b7c9536204b224e3a65fd780430818b1c",
-			"price": "626",
-			"humanizedPrice": 0.000626,
+			"price": "581",
+			"humanizedPrice": 0.000581,
 			"source": "curveFactoryAPI"
 		},
 		"0x5756bbddc03dab01a3900f01fb15641c3bfcc457": {
 			"address": "0x5756bbddc03dab01a3900f01fb15641c3bfcc457",
-			"price": "2168497",
-			"humanizedPrice": 2.168497,
+			"price": "2165955",
+			"humanizedPrice": 2.165955,
 			"source": "curveFactoryAPI"
 		},
 		"0x576cf361711cd940cd9c397bb98c4c896cbd38de": {
 			"address": "0x576cf361711cd940cd9c397bb98c4c896cbd38de",
-			"price": "992639",
-			"humanizedPrice": 0.992639,
+			"price": "1009431",
+			"humanizedPrice": 1.009431,
 			"source": "curveFactoryAPI"
 		},
 		"0x58001cc1a9e17a20935079ab40b1b8f4fc19efd1": {
 			"address": "0x58001cc1a9e17a20935079ab40b1b8f4fc19efd1",
-			"price": "40741",
-			"humanizedPrice": 0.04074192,
+			"price": "28154",
+			"humanizedPrice": 0.02815436,
 			"source": "defillama"
 		},
 		"0x580a84c73811e1839f75d86d75d88cca0c241ff4": {
 			"address": "0x580a84c73811e1839f75d86d75d88cca0c241ff4",
-			"price": "7222",
-			"humanizedPrice": 0.00722269,
+			"price": "7839",
+			"humanizedPrice": 0.00783959,
+			"source": "defillama"
+		},
+		"0x58c7b2828e7f2b2caa0cc7feef242fa3196d03df": {
+			"address": "0x58c7b2828e7f2b2caa0cc7feef242fa3196d03df",
+			"price": "168",
+			"humanizedPrice": 0.00016896,
 			"source": "defillama"
 		},
 		"0x5928f9f61902b139e1c40cba59077516734ff09f": {
 			"address": "0x5928f9f61902b139e1c40cba59077516734ff09f",
-			"price": "476988800551062016",
-			"humanizedPrice": 476988800551.062,
+			"price": "433929540870788672",
+			"humanizedPrice": 433929540870.7887,
 			"source": "gammaAPI"
 		},
 		"0x596ebe76e2db4470966ea395b0d063ac6197a8c5": {
 			"address": "0x596ebe76e2db4470966ea395b0d063ac6197a8c5",
-			"price": "3567",
-			"humanizedPrice": 0.003567,
+			"price": "2342",
+			"humanizedPrice": 0.002342,
 			"source": "curveFactoryAPI"
 		},
 		"0x597803b877deb663c1eb9eadfa125201bbf0e0e9": {
 			"address": "0x597803b877deb663c1eb9eadfa125201bbf0e0e9",
-			"price": "692",
-			"humanizedPrice": 0.000692,
+			"price": "364",
+			"humanizedPrice": 0.000364,
 			"source": "curveFactoryAPI"
 		},
 		"0x598ca33b7f5fab560ddc8e76d94a4b4aa52566d7": {
 			"address": "0x598ca33b7f5fab560ddc8e76d94a4b4aa52566d7",
-			"price": "27825780642715100",
-			"humanizedPrice": 27825780642.7151,
+			"price": "24878621150592652",
+			"humanizedPrice": 24878621150.59265,
 			"source": "gammaAPI"
 		},
 		"0x59c2ae41fe99f1588ad2634faf1f3131d22f262b": {
 			"address": "0x59c2ae41fe99f1588ad2634faf1f3131d22f262b",
-			"price": "344",
-			"humanizedPrice": 0.000344,
+			"price": "320",
+			"humanizedPrice": 0.00032,
 			"source": "curveFactoryAPI"
 		},
 		"0x59d9356e565ab3a36dd77763fc0d87feaf85508c": {
 			"address": "0x59d9356e565ab3a36dd77763fc0d87feaf85508c",
-			"price": "1000282",
-			"humanizedPrice": 1.000282,
+			"price": "996652",
+			"humanizedPrice": 0.996652,
+			"source": "curveFactoryAPI"
+		},
+		"0x5afbd90bd686bdf70a5c0b7b2c7ca90ac000ce72": {
+			"address": "0x5afbd90bd686bdf70a5c0b7b2c7ca90ac000ce72",
+			"price": "1006334",
+			"humanizedPrice": 1.006334,
 			"source": "curveFactoryAPI"
 		},
 		"0x5afc4dc942c52c2f78d9bacf788df7dc04e90a4f": {
@@ -1413,74 +1461,80 @@
 		},
 		"0x5ba383530db75a22e028239dbc777c7ee8ce4752": {
 			"address": "0x5ba383530db75a22e028239dbc777c7ee8ce4752",
-			"price": "149687270",
-			"humanizedPrice": 149.68727041498198,
+			"price": "161937760",
+			"humanizedPrice": 161.93776023845163,
 			"source": "gammaAPI"
+		},
+		"0x5bfd56f9bcbdb2be985c64c620eca7f02fa7b439": {
+			"address": "0x5bfd56f9bcbdb2be985c64c620eca7f02fa7b439",
+			"price": "1002229",
+			"humanizedPrice": 1.00222996575,
+			"source": "defillama"
 		},
 		"0x5c1fa2c9999d4fe0f6b13e95770ca406f79879c4": {
 			"address": "0x5c1fa2c9999d4fe0f6b13e95770ca406f79879c4",
-			"price": "46793",
-			"humanizedPrice": 0.04679314485437947,
+			"price": "46658",
+			"humanizedPrice": 0.0466588623730482,
 			"source": "gammaAPI"
 		},
 		"0x5c2ed810328349100a66b82b78a1791b101c9d61": {
 			"address": "0x5c2ed810328349100a66b82b78a1791b101c9d61",
-			"price": "143122183694",
-			"humanizedPrice": 143122.183694,
+			"price": "118073286991",
+			"humanizedPrice": 118073.286991,
 			"source": "curveFactoryAPI"
 		},
 		"0x5c4b7ccbf908e64f32e12c6650ec0c96d717f03f": {
 			"address": "0x5c4b7ccbf908e64f32e12c6650ec0c96d717f03f",
-			"price": "775970000",
-			"humanizedPrice": 775.97,
+			"price": "971920000",
+			"humanizedPrice": 971.92,
 			"source": "curveFactoryAPI"
 		},
 		"0x5ca313118358e3f5efe0c49f239b66c964f9aef0": {
 			"address": "0x5ca313118358e3f5efe0c49f239b66c964f9aef0",
-			"price": "2654458031",
-			"humanizedPrice": 2654.4580311293926,
+			"price": "2870010555",
+			"humanizedPrice": 2870.0105550130284,
 			"source": "gammaAPI"
 		},
 		"0x5cdc18b774c6cd6f1398faf19d4bd4f31bc53c57": {
 			"address": "0x5cdc18b774c6cd6f1398faf19d4bd4f31bc53c57",
-			"price": "8573492898916783104",
-			"humanizedPrice": 8573492898916.783,
+			"price": "8109917358647331840",
+			"humanizedPrice": 8109917358647.332,
 			"source": "gammaAPI"
 		},
 		"0x5d146d8b1dacb1ebba5cb005ae1059da8a1fbf57": {
 			"address": "0x5d146d8b1dacb1ebba5cb005ae1059da8a1fbf57",
-			"price": "728938",
-			"humanizedPrice": 0.728938,
+			"price": "718049",
+			"humanizedPrice": 0.718049,
 			"source": "curveFactoryAPI"
 		},
 		"0x5e25ba10b8ec6b81561a4d416724c455781b300b": {
 			"address": "0x5e25ba10b8ec6b81561a4d416724c455781b300b",
-			"price": "9167",
-			"humanizedPrice": 0.009167,
+			"price": "6019",
+			"humanizedPrice": 0.006019,
 			"source": "curveFactoryAPI"
 		},
 		"0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac": {
 			"address": "0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac",
-			"price": "1553241",
-			"humanizedPrice": 1.553241,
+			"price": "1554173",
+			"humanizedPrice": 1.554173,
 			"source": "curveFactoryAPI"
 		},
 		"0x5ec3511b49d4fe7798015a26a83abdc01261615b": {
 			"address": "0x5ec3511b49d4fe7798015a26a83abdc01261615b",
-			"price": "1525113",
-			"humanizedPrice": 1.52511336896257,
+			"price": "1512935",
+			"humanizedPrice": 1.5129357770307246,
 			"source": "gammaAPI"
 		},
 		"0x5f528db1129488083434e1b96e9808e3c4c6ed83": {
 			"address": "0x5f528db1129488083434e1b96e9808e3c4c6ed83",
-			"price": "318381",
-			"humanizedPrice": 0.31838113632617165,
+			"price": "293072",
+			"humanizedPrice": 0.2930729444444565,
 			"source": "gammaAPI"
 		},
 		"0x600743b1d8a96438bd46836fd34977a00293f6aa": {
 			"address": "0x600743b1d8a96438bd46836fd34977a00293f6aa",
-			"price": "2434180",
-			"humanizedPrice": 2.43418,
+			"price": "2337762",
+			"humanizedPrice": 2.337762,
 			"source": "curveFactoryAPI"
 		},
 		"0x600cd1aec3f8d3b1e8673f2d5ec569feadabf345": {
@@ -1491,62 +1545,56 @@
 		},
 		"0x6077177d4c41e114780d9901c9b5c784841c523f": {
 			"address": "0x6077177d4c41e114780d9901c9b5c784841c523f",
-			"price": "1961789010",
-			"humanizedPrice": 1961.7890101781504,
+			"price": "2004818396",
+			"humanizedPrice": 2004.818396255045,
 			"source": "gammaAPI"
 		},
 		"0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747": {
 			"address": "0x60d01ec2d5e98ac51c8b4cf84dfcce98d527c747",
-			"price": "580",
-			"humanizedPrice": 0.00058,
+			"price": "550",
+			"humanizedPrice": 0.00055,
 			"source": "curveFactoryAPI"
 		},
 		"0x60d55f02a771d515e077c9c2403a1ef324885cec": {
 			"address": "0x60d55f02a771d515e077c9c2403a1ef324885cec",
-			"price": "1232901",
-			"humanizedPrice": 1.232901,
-			"source": "curveFactoryAPI"
-		},
-		"0x60f7dd499956ec8fcea8ed80e9d7eade4ccdc417": {
-			"address": "0x60f7dd499956ec8fcea8ed80e9d7eade4ccdc417",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "1000219",
+			"humanizedPrice": 1.000219,
 			"source": "curveFactoryAPI"
 		},
 		"0x61299774020da444af134c82fa83e3810b309991": {
 			"address": "0x61299774020da444af134c82fa83e3810b309991",
-			"price": "3730000",
-			"humanizedPrice": 3.73,
+			"price": "3380000",
+			"humanizedPrice": 3.38,
 			"source": "defillama"
 		},
 		"0x61b0baa7188aff08f4e992849fc5d76f65417467": {
 			"address": "0x61b0baa7188aff08f4e992849fc5d76f65417467",
-			"price": "2307905",
-			"humanizedPrice": 2.307905,
+			"price": "2285055",
+			"humanizedPrice": 2.285055,
 			"source": "curveFactoryAPI"
 		},
 		"0x6229d78658305a301e177f9daea3a0799fd1528c": {
 			"address": "0x6229d78658305a301e177f9daea3a0799fd1528c",
-			"price": "999262",
-			"humanizedPrice": 0.999262,
+			"price": "998806",
+			"humanizedPrice": 0.998806,
 			"source": "curveFactoryAPI"
 		},
 		"0x62414d03084eeb269e18c970a21f45d2967f0170": {
 			"address": "0x62414d03084eeb269e18c970a21f45d2967f0170",
-			"price": "183164",
-			"humanizedPrice": 0.183164,
+			"price": "152580",
+			"humanizedPrice": 0.15258,
 			"source": "curveFactoryAPI"
 		},
 		"0x625e7708f30ca75bfd92586e17077590c60eb4cd": {
 			"address": "0x625e7708f30ca75bfd92586e17077590c60eb4cd",
-			"price": "999880",
-			"humanizedPrice": 0.99988,
+			"price": "999610",
+			"humanizedPrice": 0.99961,
 			"source": "curveFactoryAPI"
 		},
 		"0x62619f1091cd0261b7c16199c6c58da694248cff": {
 			"address": "0x62619f1091cd0261b7c16199c6c58da694248cff",
-			"price": "6370340",
-			"humanizedPrice": 6.37034,
+			"price": "6068186",
+			"humanizedPrice": 6.068186,
 			"source": "curveFactoryAPI"
 		},
 		"0x628350e16b665e0caa9bc8edbbbe0db31efb3bdc": {
@@ -1557,32 +1605,38 @@
 		},
 		"0x62c949ee985b125ff2d7ddcf4fe7aecb0a040e2a": {
 			"address": "0x62c949ee985b125ff2d7ddcf4fe7aecb0a040e2a",
-			"price": "3202309",
-			"humanizedPrice": 3.202309,
+			"price": "3203015",
+			"humanizedPrice": 3.203015,
 			"source": "curveFactoryAPI"
 		},
 		"0x62d5a59e0d67c0381aad53b201b4a1b8dcd2c833": {
 			"address": "0x62d5a59e0d67c0381aad53b201b4a1b8dcd2c833",
-			"price": "491158",
-			"humanizedPrice": 0.491158,
+			"price": "414572",
+			"humanizedPrice": 0.414572,
 			"source": "curveFactoryAPI"
 		},
 		"0x62f88fb208df717b035325d065c6919d7913b937": {
 			"address": "0x62f88fb208df717b035325d065c6919d7913b937",
-			"price": "197334",
-			"humanizedPrice": 0.19733453331717077,
+			"price": "201391",
+			"humanizedPrice": 0.20139135503417943,
 			"source": "gammaAPI"
 		},
 		"0x63e271a9a8b8eaa47c684732770592320b6cdd80": {
 			"address": "0x63e271a9a8b8eaa47c684732770592320b6cdd80",
-			"price": "14809",
-			"humanizedPrice": 0.014809,
+			"price": "13391",
+			"humanizedPrice": 0.013391,
+			"source": "curveFactoryAPI"
+		},
+		"0x64445f0aecc51e94ad52d8ac56b7190e764e561a": {
+			"address": "0x64445f0aecc51e94ad52d8ac56b7190e764e561a",
+			"price": "2120000",
+			"humanizedPrice": 2.12,
 			"source": "curveFactoryAPI"
 		},
 		"0x644a27753a970e82a6887a0ef28462430137b21a": {
 			"address": "0x644a27753a970e82a6887a0ef28462430137b21a",
-			"price": "11693",
-			"humanizedPrice": 0.011693,
+			"price": "10853",
+			"humanizedPrice": 0.010853,
 			"source": "curveFactoryAPI"
 		},
 		"0x656dc5d968b899476bee3445584cde5dd123305f": {
@@ -1593,68 +1647,68 @@
 		},
 		"0x6631ee651da438db2be611b5a44dfe2ca04590c5": {
 			"address": "0x6631ee651da438db2be611b5a44dfe2ca04590c5",
-			"price": "1632490",
-			"humanizedPrice": 1.63249,
+			"price": "1287353",
+			"humanizedPrice": 1.287353,
 			"source": "curveFactoryAPI"
 		},
 		"0x67582318647f923c69dd2dae82514e6360d6bae1": {
 			"address": "0x67582318647f923c69dd2dae82514e6360d6bae1",
-			"price": "2384",
-			"humanizedPrice": 0.002384,
+			"price": "2213",
+			"humanizedPrice": 0.002213,
 			"source": "curveFactoryAPI"
 		},
 		"0x67eb41a14c0fe5cd701fc9d5a3d6597a72f641a6": {
 			"address": "0x67eb41a14c0fe5cd701fc9d5a3d6597a72f641a6",
-			"price": "158",
-			"humanizedPrice": 0.00015836,
+			"price": "101",
+			"humanizedPrice": 0.00010155,
 			"source": "defillama"
 		},
 		"0x683292172e2175bd08e3927a5e72fc301b161300": {
 			"address": "0x683292172e2175bd08e3927a5e72fc301b161300",
-			"price": "259369",
-			"humanizedPrice": 0.2593694462467088,
+			"price": "222188",
+			"humanizedPrice": 0.22218851998492578,
 			"source": "gammaAPI"
 		},
 		"0x688cb9492bd2c72016f1765d813b2d713aa1f4c7": {
 			"address": "0x688cb9492bd2c72016f1765d813b2d713aa1f4c7",
-			"price": "707357",
-			"humanizedPrice": 0.7073575599728354,
+			"price": "739836",
+			"humanizedPrice": 0.7398367780451638,
 			"source": "gammaAPI"
 		},
 		"0x692597b009d13c4049a947cab2239b7d6517875f": {
 			"address": "0x692597b009d13c4049a947cab2239b7d6517875f",
-			"price": "15875",
-			"humanizedPrice": 0.015875,
+			"price": "11304",
+			"humanizedPrice": 0.011304,
 			"source": "curveFactoryAPI"
 		},
 		"0x693e5b552d55b3ed80c864b828b995461c47fe0a": {
 			"address": "0x693e5b552d55b3ed80c864b828b995461c47fe0a",
-			"price": "29692658",
-			"humanizedPrice": 29.692658,
+			"price": "27560480",
+			"humanizedPrice": 27.56048,
 			"source": "curveFactoryAPI"
 		},
 		"0x696dbfe3b5861120b2c4b7d5c28b1325e8b232f4": {
 			"address": "0x696dbfe3b5861120b2c4b7d5c28b1325e8b232f4",
-			"price": "14982694",
-			"humanizedPrice": 14.982694,
+			"price": "13906812",
+			"humanizedPrice": 13.906812,
 			"source": "curveFactoryAPI"
 		},
 		"0x69b2aaaf08ac9b04cd5b64a1d23ffcb40224fdaf": {
 			"address": "0x69b2aaaf08ac9b04cd5b64a1d23ffcb40224fdaf",
-			"price": "341481",
-			"humanizedPrice": 0.34148131216219074,
+			"price": "350995",
+			"humanizedPrice": 0.35099560495656906,
 			"source": "gammaAPI"
 		},
 		"0x69fc13493240c274a798e9dc9ce2219bfa1b1235": {
 			"address": "0x69fc13493240c274a798e9dc9ce2219bfa1b1235",
-			"price": "1002398",
-			"humanizedPrice": 1.002398,
+			"price": "906437",
+			"humanizedPrice": 0.906437,
 			"source": "curveFactoryAPI"
 		},
 		"0x6a0e61c757e384eb1e4a2b94f7e02e68e4b4515e": {
 			"address": "0x6a0e61c757e384eb1e4a2b94f7e02e68e4b4515e",
-			"price": "1000548",
-			"humanizedPrice": 1.000548,
+			"price": "1000739",
+			"humanizedPrice": 1.000739,
 			"source": "curveFactoryAPI"
 		},
 		"0x6a4f7e5dfa0ec6e130a8425d365b3a0cfebeacbb": {
@@ -1665,116 +1719,116 @@
 		},
 		"0x6a6d4d17c2e38d076264081676ffcdddf32c9715": {
 			"address": "0x6a6d4d17c2e38d076264081676ffcdddf32c9715",
-			"price": "24523340648",
-			"humanizedPrice": 24523.34064838191,
+			"price": "27450266419",
+			"humanizedPrice": 27450.266419198448,
 			"source": "gammaAPI"
 		},
 		"0x6ab707aca953edaefbc4fd23ba73294241490620": {
 			"address": "0x6ab707aca953edaefbc4fd23ba73294241490620",
-			"price": "998608",
-			"humanizedPrice": 0.998608,
+			"price": "998138",
+			"humanizedPrice": 0.998138,
 			"source": "curveFactoryAPI"
 		},
 		"0x6ae7dfc73e0dde2aa99ac063dcf7e8a63265108c": {
 			"address": "0x6ae7dfc73e0dde2aa99ac063dcf7e8a63265108c",
-			"price": "8364",
-			"humanizedPrice": 0.008364,
+			"price": "8568",
+			"humanizedPrice": 0.008568,
 			"source": "curveFactoryAPI"
 		},
 		"0x6b021b3f68491974be6d4009fee61a4e3c708fd6": {
 			"address": "0x6b021b3f68491974be6d4009fee61a4e3c708fd6",
-			"price": "10911",
-			"humanizedPrice": 0.0109117,
+			"price": "10246",
+			"humanizedPrice": 0.01024615,
 			"source": "defillama"
 		},
 		"0x6b2f1c1fcfa168a09007e8ae959f4de11bcfd722": {
 			"address": "0x6b2f1c1fcfa168a09007e8ae959f4de11bcfd722",
-			"price": "13496140",
-			"humanizedPrice": 13.49614,
+			"price": "12811514",
+			"humanizedPrice": 12.811514,
 			"source": "curveFactoryAPI"
 		},
 		"0x6b526daf03b4c47af2bcc5860b12151823ff70e0": {
 			"address": "0x6b526daf03b4c47af2bcc5860b12151823ff70e0",
-			"price": "595510",
-			"humanizedPrice": 0.59551,
+			"price": "581434",
+			"humanizedPrice": 0.581434,
 			"source": "curveFactoryAPI"
 		},
 		"0x6b90dcdb077e82dfe00bca96267d8573470d48ba": {
 			"address": "0x6b90dcdb077e82dfe00bca96267d8573470d48ba",
-			"price": "26847",
-			"humanizedPrice": 0.026847,
+			"price": "23945",
+			"humanizedPrice": 0.023945,
 			"source": "curveFactoryAPI"
 		},
 		"0x6c060ce95131427550201cb296fb09f3a52150d0": {
 			"address": "0x6c060ce95131427550201cb296fb09f3a52150d0",
-			"price": "185409",
-			"humanizedPrice": 0.185409,
+			"price": "190869",
+			"humanizedPrice": 0.190869,
 			"source": "curveFactoryAPI"
 		},
 		"0x6c0d3f0a94ac885c7ace7d600bf8fe9d31c1949f": {
 			"address": "0x6c0d3f0a94ac885c7ace7d600bf8fe9d31c1949f",
-			"price": "1000673",
-			"humanizedPrice": 1.000673,
+			"price": "998527",
+			"humanizedPrice": 0.998527,
 			"source": "curveFactoryAPI"
 		},
 		"0x6c77f928837ddb0546f3ba0159decda24a09a2e1": {
 			"address": "0x6c77f928837ddb0546f3ba0159decda24a09a2e1",
-			"price": "413534",
-			"humanizedPrice": 0.413534,
+			"price": "326268",
+			"humanizedPrice": 0.326268,
 			"source": "curveFactoryAPI"
 		},
 		"0x6c9578402a3ace046a12839f45f84aa5448e9c30": {
 			"address": "0x6c9578402a3ace046a12839f45f84aa5448e9c30",
-			"price": "377194092",
-			"humanizedPrice": 377.194092,
+			"price": "353279826",
+			"humanizedPrice": 353.279826,
 			"source": "curveFactoryAPI"
 		},
 		"0x6ccf63ac74b5533c456c3a68786629e7670293c0": {
 			"address": "0x6ccf63ac74b5533c456c3a68786629e7670293c0",
-			"price": "670744752440717184",
-			"humanizedPrice": 670744752440.7172,
+			"price": "680201715983936000",
+			"humanizedPrice": 680201715983.936,
 			"source": "gammaAPI"
 		},
 		"0x6cda7ae2ce3e6995e4f038bdcaa9f3319dc00f16": {
 			"address": "0x6cda7ae2ce3e6995e4f038bdcaa9f3319dc00f16",
-			"price": "25204",
-			"humanizedPrice": 0.025204,
+			"price": "22791",
+			"humanizedPrice": 0.022791,
 			"source": "curveFactoryAPI"
 		},
 		"0x6d1fdbb266fcc09a16a22016369210a15bb95761": {
 			"address": "0x6d1fdbb266fcc09a16a22016369210a15bb95761",
-			"price": "4331120000",
-			"humanizedPrice": 4331.12,
+			"price": "4540030000",
+			"humanizedPrice": 4540.03,
 			"source": "curveFactoryAPI"
 		},
 		"0x6d80113e533a2c0fe82eabd35f1875dcea89ea97": {
 			"address": "0x6d80113e533a2c0fe82eabd35f1875dcea89ea97",
-			"price": "237167",
-			"humanizedPrice": 0.237167,
+			"price": "222771",
+			"humanizedPrice": 0.222771,
 			"source": "curveFactoryAPI"
 		},
 		"0x6e4e624106cb12e168e6533f8ec7c82263358940": {
 			"address": "0x6e4e624106cb12e168e6533f8ec7c82263358940",
-			"price": "343589",
-			"humanizedPrice": 0.343589,
+			"price": "292075",
+			"humanizedPrice": 0.292075,
 			"source": "defillama"
 		},
 		"0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca": {
 			"address": "0x6e9ac188dbcc14632a253aa9ce2783cd712ab3ca",
-			"price": "1953092",
-			"humanizedPrice": 1.953092317228,
+			"price": "1973179",
+			"humanizedPrice": 1.973179260942,
 			"source": "defillama"
 		},
 		"0x6eb3605c2e7c5a53dc12ccbd5c3d3c633d2abe3a": {
 			"address": "0x6eb3605c2e7c5a53dc12ccbd5c3d3c633d2abe3a",
-			"price": "130279253550",
-			"humanizedPrice": 130279.25355,
+			"price": "122007684513",
+			"humanizedPrice": 122007.684513,
 			"source": "curveFactoryAPI"
 		},
 		"0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6": {
 			"address": "0x6ed737ef2ef74e04005dc9810366de5ad38cf7d6",
-			"price": "251004",
-			"humanizedPrice": 0.251004,
+			"price": "235377",
+			"humanizedPrice": 0.235377,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x6f57ec3c983a04c9bf9958c9e908c39a3cd0870d": {
@@ -1785,206 +1839,212 @@
 		},
 		"0x6f7c932e7684666c9fd1d44527765433e01ff61d": {
 			"address": "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
-			"price": "1985560000",
-			"humanizedPrice": 1985.56,
+			"price": "1558270000",
+			"humanizedPrice": 1558.27,
 			"source": "curveFactoryAPI"
 		},
 		"0x706bae8828c260d5e52ccfa96f1258a2d2f6fdda": {
 			"address": "0x706bae8828c260d5e52ccfa96f1258a2d2f6fdda",
-			"price": "40925",
-			"humanizedPrice": 0.04092512072172322,
+			"price": "35154",
+			"humanizedPrice": 0.03515432037412066,
 			"source": "gammaAPI"
 		},
 		"0x70d59baa5ab360b2723dd561415bdbcd4435e1c4": {
 			"address": "0x70d59baa5ab360b2723dd561415bdbcd4435e1c4",
-			"price": "5312",
-			"humanizedPrice": 0.005312,
+			"price": "5065",
+			"humanizedPrice": 0.005065,
 			"source": "curveFactoryAPI"
 		},
 		"0x7101308daf4e16c822083a458dc9395039c08f2d": {
 			"address": "0x7101308daf4e16c822083a458dc9395039c08f2d",
-			"price": "2019673",
-			"humanizedPrice": 2.019673,
+			"price": "1320816",
+			"humanizedPrice": 1.320816,
 			"source": "curveFactoryAPI"
 		},
 		"0x7168c51e6e37aaced3aa7a15a03f77ebc90197c0": {
 			"address": "0x7168c51e6e37aaced3aa7a15a03f77ebc90197c0",
-			"price": "36626",
-			"humanizedPrice": 0.036626,
+			"price": "31416",
+			"humanizedPrice": 0.031416,
 			"source": "curveFactoryAPI"
 		},
 		"0x718a554d9740ac9bf4092ec1692961f1c9d96f46": {
 			"address": "0x718a554d9740ac9bf4092ec1692961f1c9d96f46",
-			"price": "1320685231",
-			"humanizedPrice": 1320.6852319995546,
+			"price": "1431152738",
+			"humanizedPrice": 1431.1527384301999,
 			"source": "gammaAPI"
 		},
 		"0x72449578349b69544de5ff2fb70f0cfba18a6ad1": {
 			"address": "0x72449578349b69544de5ff2fb70f0cfba18a6ad1",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999461",
+			"humanizedPrice": 0.999461,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x72e102438957fe544c36852f4ba436de42eff4fa": {
 			"address": "0x72e102438957fe544c36852f4ba436de42eff4fa",
-			"price": "8",
-			"humanizedPrice": 0.000008673420768432425,
+			"price": "5",
+			"humanizedPrice": 0.000005680273884564698,
 			"source": "gammaAPI"
 		},
 		"0x730f482014cd69b52a02e49f8793cdf4ce50bc48": {
 			"address": "0x730f482014cd69b52a02e49f8793cdf4ce50bc48",
-			"price": "134007487",
-			"humanizedPrice": 134.007487,
+			"price": "114323017",
+			"humanizedPrice": 114.323017,
 			"source": "curveFactoryAPI"
 		},
 		"0x735fa792e731a2e8f83f32eb539841b7b72e6d8f": {
 			"address": "0x735fa792e731a2e8f83f32eb539841b7b72e6d8f",
-			"price": "1180000",
-			"humanizedPrice": 1.18,
+			"price": "1290000",
+			"humanizedPrice": 1.29,
 			"source": "curveFactoryAPI"
 		},
 		"0x747fa0042531095a4aa923930e5af356314bde05": {
 			"address": "0x747fa0042531095a4aa923930e5af356314bde05",
-			"price": "7700",
-			"humanizedPrice": 0.0077,
+			"price": "7147",
+			"humanizedPrice": 0.007147,
 			"source": "curveFactoryAPI"
 		},
 		"0x7486325a843590b84c98563c6962c58655569eca": {
 			"address": "0x7486325a843590b84c98563c6962c58655569eca",
-			"price": "4004458213",
-			"humanizedPrice": 4004.458213,
+			"price": "4191434336",
+			"humanizedPrice": 4191.434336,
 			"source": "ERC4626-convertToAssets"
+		},
+		"0x748b9786d4e5e438652ace2eb1ae6cafae7a32c3": {
+			"address": "0x748b9786d4e5e438652ace2eb1ae6cafae7a32c3",
+			"price": "199135",
+			"humanizedPrice": 0.199135,
+			"source": "curveFactoryAPI"
 		},
 		"0x750e4c4984a9e0f12978ea6742bc1c5d248f40ed": {
 			"address": "0x750e4c4984a9e0f12978ea6742bc1c5d248f40ed",
-			"price": "999951",
-			"humanizedPrice": 0.999951,
+			"price": "999675",
+			"humanizedPrice": 0.999675,
 			"source": "defillama"
 		},
 		"0x75289388d50364c3013583d97bd70ced0e183e32": {
 			"address": "0x75289388d50364c3013583d97bd70ced0e183e32",
-			"price": "996455",
-			"humanizedPrice": 0.996455,
+			"price": "706730",
+			"humanizedPrice": 0.70673,
 			"source": "curveFactoryAPI"
 		},
 		"0x7550cc64f5bcbcc40e8588ca5e4e1025433b5e3d": {
 			"address": "0x7550cc64f5bcbcc40e8588ca5e4e1025433b5e3d",
-			"price": "2612700",
-			"humanizedPrice": 2.6127,
+			"price": "2316777",
+			"humanizedPrice": 2.316777,
 			"source": "curveFactoryAPI"
 		},
 		"0x75b599a1bb53df2911b97c69614ae09bbc546c15": {
 			"address": "0x75b599a1bb53df2911b97c69614ae09bbc546c15",
-			"price": "23689",
-			"humanizedPrice": 0.023689,
+			"price": "21988",
+			"humanizedPrice": 0.021988,
 			"source": "curveFactoryAPI"
 		},
 		"0x767058f11800fba6a682e73a6e79ec5eb74fac8c": {
 			"address": "0x767058f11800fba6a682e73a6e79ec5eb74fac8c",
-			"price": "1342400",
-			"humanizedPrice": 1.3424,
+			"price": "1340210",
+			"humanizedPrice": 1.34021,
 			"source": "curveFactoryAPI"
 		},
 		"0x769434dca303597c8fc4997bf3dab233e961eda2": {
 			"address": "0x769434dca303597c8fc4997bf3dab233e961eda2",
-			"price": "777427",
-			"humanizedPrice": 0.777427,
+			"price": "773432",
+			"humanizedPrice": 0.773432,
 			"source": "curveFactoryAPI"
 		},
 		"0x7789a141e8e1201de01671140f57e56dd6af2654": {
 			"address": "0x7789a141e8e1201de01671140f57e56dd6af2654",
-			"price": "1009170",
-			"humanizedPrice": 1.00917,
+			"price": "1009401",
+			"humanizedPrice": 1.009401,
 			"source": "curveFactoryAPI"
 		},
 		"0x780d2bf755736ebea8215669c0b44a5c44224683": {
 			"address": "0x780d2bf755736ebea8215669c0b44a5c44224683",
-			"price": "726649940",
-			"humanizedPrice": 726.64994,
+			"price": "573820192",
+			"humanizedPrice": 573.820192,
 			"source": "curveFactoryAPI"
 		},
 		"0x785a9f42a4568914773be52008a10c4d62e5c63a": {
 			"address": "0x785a9f42a4568914773be52008a10c4d62e5c63a",
-			"price": "678144",
-			"humanizedPrice": 0.6781449211383599,
+			"price": "664229",
+			"humanizedPrice": 0.6642292699626046,
 			"source": "gammaAPI"
 		},
 		"0x7860c3ddd12014ce377dd8aa2b4c378e3ee0b72a": {
 			"address": "0x7860c3ddd12014ce377dd8aa2b4c378e3ee0b72a",
-			"price": "142127",
-			"humanizedPrice": 0.142127,
+			"price": "133500",
+			"humanizedPrice": 0.1335,
 			"source": "curveFactoryAPI"
 		},
 		"0x78a8cc2a24fcc5b358bb8a371072403ce092d599": {
 			"address": "0x78a8cc2a24fcc5b358bb8a371072403ce092d599",
-			"price": "5332535",
-			"humanizedPrice": 5.332535,
+			"price": "5017442",
+			"humanizedPrice": 5.017442,
 			"source": "curveFactoryAPI"
 		},
 		"0x7922591f6f9b047ebda320a12b6e3ca4d0f1435f": {
 			"address": "0x7922591f6f9b047ebda320a12b6e3ca4d0f1435f",
-			"price": "634309222254124544",
-			"humanizedPrice": 634309222254.1245,
+			"price": "645145447129152896",
+			"humanizedPrice": 645145447129.153,
 			"source": "gammaAPI"
 		},
 		"0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58": {
 			"address": "0x795f8c9b0a0da9cd8dea65fc10f9b57abc532e58",
-			"price": "31558955354778357760",
-			"humanizedPrice": 31558955354778.36,
+			"price": "31653359143109435392",
+			"humanizedPrice": 31653359143109.434,
 			"source": "gammaAPI"
 		},
 		"0x7ae5dece3903388281eff3a3d115ca00d4fafd4d": {
 			"address": "0x7ae5dece3903388281eff3a3d115ca00d4fafd4d",
-			"price": "1600329882",
-			"humanizedPrice": 1600.329882422048,
+			"price": "1657508000",
+			"humanizedPrice": 1657.508000762988,
 			"source": "gammaAPI"
 		},
 		"0x7ae7fb44c92b4d41abb6e28494f46a2eb3c2a690": {
 			"address": "0x7ae7fb44c92b4d41abb6e28494f46a2eb3c2a690",
-			"price": "2391921",
-			"humanizedPrice": 2.391921542332863,
+			"price": "2402569",
+			"humanizedPrice": 2.4025698249787606,
 			"source": "gammaAPI"
 		},
 		"0x7aebadd719cc110394f9d38087740ea5b00a3881": {
 			"address": "0x7aebadd719cc110394f9d38087740ea5b00a3881",
-			"price": "59598",
-			"humanizedPrice": 0.059598,
+			"price": "60471",
+			"humanizedPrice": 0.060471,
 			"source": "curveFactoryAPI"
 		},
 		"0x7b367a058f370c0057762280547d0b974cf3ac10": {
 			"address": "0x7b367a058f370c0057762280547d0b974cf3ac10",
-			"price": "1250000",
-			"humanizedPrice": 1.25,
+			"price": "1180000",
+			"humanizedPrice": 1.18,
 			"source": "curveFactoryAPI"
 		},
 		"0x7bb11e7f8b10e9e571e5d8eace04735fdfb2358a": {
 			"address": "0x7bb11e7f8b10e9e571e5d8eace04735fdfb2358a",
-			"price": "23020000",
-			"humanizedPrice": 23.02,
+			"price": "28250000",
+			"humanizedPrice": 28.25,
 			"source": "curveFactoryAPI"
 		},
 		"0x7bd9757fbac089d60daff1fa6bfe3bc99b0f5735": {
 			"address": "0x7bd9757fbac089d60daff1fa6bfe3bc99b0f5735",
-			"price": "2498600",
-			"humanizedPrice": 2.4986,
+			"price": "2381820",
+			"humanizedPrice": 2.38182,
 			"source": "curveFactoryAPI"
 		},
 		"0x7bdf330f423ea880ff95fc41a280fd5ecfd3d09f": {
 			"address": "0x7bdf330f423ea880ff95fc41a280fd5ecfd3d09f",
-			"price": "1137917",
-			"humanizedPrice": 1.137917,
+			"price": "1160740",
+			"humanizedPrice": 1.16074,
 			"source": "curveFactoryAPI"
 		},
 		"0x7c1aa4989df27970381196d3ef32a7410e3f2748": {
 			"address": "0x7c1aa4989df27970381196d3ef32a7410e3f2748",
-			"price": "606",
-			"humanizedPrice": 0.000606,
+			"price": "772",
+			"humanizedPrice": 0.000772,
 			"source": "curveFactoryAPI"
 		},
 		"0x7cc896c7169b4436e898cf7e91e2574caf995bc3": {
 			"address": "0x7cc896c7169b4436e898cf7e91e2574caf995bc3",
-			"price": "167",
-			"humanizedPrice": 0.000167,
+			"price": "155",
+			"humanizedPrice": 0.000155,
 			"source": "curveFactoryAPI"
 		},
 		"0x7cd017ca5ddb86861fa983a34b5f495c6f898c41": {
@@ -1995,68 +2055,68 @@
 		},
 		"0x7ceb23fd6bc0add59e62ac25578270cff1b9f619": {
 			"address": "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
-			"price": "3841490000",
-			"humanizedPrice": 3841.49,
+			"price": "4017730000",
+			"humanizedPrice": 4017.73,
 			"source": "defillama"
 		},
 		"0x7dff46370e9ea5f0bad3c4e29711ad50062ea7a4": {
 			"address": "0x7dff46370e9ea5f0bad3c4e29711ad50062ea7a4",
-			"price": "172815494",
-			"humanizedPrice": 172.815494,
+			"price": "201758873",
+			"humanizedPrice": 201.758873,
 			"source": "curveFactoryAPI"
 		},
 		"0x7ef3ec6375be0f5e4e368a5d6f7a56ecead1f3fb": {
 			"address": "0x7ef3ec6375be0f5e4e368a5d6f7a56ecead1f3fb",
-			"price": "1034",
-			"humanizedPrice": 0.001034,
+			"price": "954",
+			"humanizedPrice": 0.000954,
 			"source": "curveFactoryAPI"
 		},
 		"0x7f09bd2801a7b795df29c273c4afbb0ff15e2d63": {
 			"address": "0x7f09bd2801a7b795df29c273c4afbb0ff15e2d63",
-			"price": "15648",
-			"humanizedPrice": 0.015648090397139037,
+			"price": "15702",
+			"humanizedPrice": 0.015702255083207984,
 			"source": "gammaAPI"
 		},
 		"0x80487b4f8f70e793a81a42367c225ee0b94315df": {
 			"address": "0x80487b4f8f70e793a81a42367c225ee0b94315df",
-			"price": "1010000",
-			"humanizedPrice": 1.01,
+			"price": "934787",
+			"humanizedPrice": 0.934787,
 			"source": "curveFactoryAPI"
 		},
 		"0x80709a760ff54112bd3e0ce31c104d912ba51774": {
 			"address": "0x80709a760ff54112bd3e0ce31c104d912ba51774",
-			"price": "538476050728609216",
-			"humanizedPrice": 538476050728.6092,
+			"price": "367289471448144448",
+			"humanizedPrice": 367289471448.1445,
 			"source": "gammaAPI"
 		},
 		"0x8089f11dadbabf175aea2415194a6a3a0575539d": {
 			"address": "0x8089f11dadbabf175aea2415194a6a3a0575539d",
-			"price": "351677",
-			"humanizedPrice": 0.35167771527576197,
+			"price": "438435",
+			"humanizedPrice": 0.438435170279083,
 			"source": "gammaAPI"
 		},
 		"0x8096ac61db23291252574d49f036f0f9ed8ab390": {
 			"address": "0x8096ac61db23291252574d49f036f0f9ed8ab390",
-			"price": "2905978129",
-			"humanizedPrice": 2905.978129,
+			"price": "2758582844",
+			"humanizedPrice": 2758.582844,
 			"source": "curveFactoryAPI"
 		},
 		"0x81212149b983602474fcd0943e202f38b38d7484": {
 			"address": "0x81212149b983602474fcd0943e202f38b38d7484",
-			"price": "744631",
-			"humanizedPrice": 0.744631,
+			"price": "645869",
+			"humanizedPrice": 0.645869,
 			"source": "curveFactoryAPI"
 		},
 		"0x81c86081d533f280a8daae17f672fb84b6ed65e3": {
 			"address": "0x81c86081d533f280a8daae17f672fb84b6ed65e3",
-			"price": "257720",
-			"humanizedPrice": 0.25772,
+			"price": "245266",
+			"humanizedPrice": 0.245266,
 			"source": "curveFactoryAPI"
 		},
 		"0x81cec323bf8c4164c66ec066f53cc053a535f03d": {
 			"address": "0x81cec323bf8c4164c66ec066f53cc053a535f03d",
-			"price": "478847275",
-			"humanizedPrice": 478.84727500191195,
+			"price": "521692787",
+			"humanizedPrice": 521.6927872411641,
 			"source": "gammaAPI"
 		},
 		"0x8226ac9edb26ff16da19151042a8ba3bb2cc237f": {
@@ -2067,458 +2127,464 @@
 		},
 		"0x82489c785f8ede332c8f08fad841f58e35ff201f": {
 			"address": "0x82489c785f8ede332c8f08fad841f58e35ff201f",
-			"price": "235128",
-			"humanizedPrice": 0.235128,
+			"price": "235153",
+			"humanizedPrice": 0.235153,
 			"source": "curveFactoryAPI"
 		},
 		"0x82927c36ab62e504e24ab160afa5821b6c4a9265": {
 			"address": "0x82927c36ab62e504e24ab160afa5821b6c4a9265",
-			"price": "1982653531927582464",
-			"humanizedPrice": 1982653531927.5825,
+			"price": "1983090458758302720",
+			"humanizedPrice": 1983090458758.3027,
 			"source": "gammaAPI"
 		},
 		"0x829432679f69dbd8b2575f006ec0129894a39d86": {
 			"address": "0x829432679f69dbd8b2575f006ec0129894a39d86",
-			"price": "159237797409114272",
-			"humanizedPrice": 159237797409.11426,
+			"price": "151827934202672000",
+			"humanizedPrice": 151827934202.672,
 			"source": "gammaAPI"
 		},
 		"0x82e64f49ed5ec1bc6e43dad4fc8af9bb3a2312ee": {
 			"address": "0x82e64f49ed5ec1bc6e43dad4fc8af9bb3a2312ee",
-			"price": "998477",
-			"humanizedPrice": 0.998477,
+			"price": "997312",
+			"humanizedPrice": 0.997312,
 			"source": "curveFactoryAPI"
 		},
 		"0x833e4b9740b4c73cc4870d28492a296d005e2895": {
 			"address": "0x833e4b9740b4c73cc4870d28492a296d005e2895",
-			"price": "2975",
-			"humanizedPrice": 0.002975,
+			"price": "2691",
+			"humanizedPrice": 0.002691,
 			"source": "curveFactoryAPI"
 		},
 		"0x8343091f2499fd4b6174a46d067a920a3b851ff9": {
 			"address": "0x8343091f2499fd4b6174a46d067a920a3b851ff9",
-			"price": "7149",
-			"humanizedPrice": 0.007149,
+			"price": "6606",
+			"humanizedPrice": 0.006606,
 			"source": "curveFactoryAPI"
 		},
 		"0x84f168e646d31f6c33fdbf284d9037f59603aa28": {
 			"address": "0x84f168e646d31f6c33fdbf284d9037f59603aa28",
-			"price": "239460",
-			"humanizedPrice": 0.23946,
+			"price": "118882",
+			"humanizedPrice": 0.118882,
 			"source": "curveFactoryAPI"
 		},
 		"0x850e1b0b203f9b0ebfc9648ef8c7a6f211a200ae": {
 			"address": "0x850e1b0b203f9b0ebfc9648ef8c7a6f211a200ae",
-			"price": "11311",
-			"humanizedPrice": 0.011311,
+			"price": "10228",
+			"humanizedPrice": 0.010228,
 			"source": "curveFactoryAPI"
 		},
 		"0x8557dac2a7724712f12952de3dabeef54459bd97": {
 			"address": "0x8557dac2a7724712f12952de3dabeef54459bd97",
-			"price": "241978",
-			"humanizedPrice": 0.24197840629090642,
+			"price": "253327",
+			"humanizedPrice": 0.2533277225382033,
 			"source": "gammaAPI"
 		},
 		"0x85f41d286f833525878dfb00f69ba4be11a96988": {
 			"address": "0x85f41d286f833525878dfb00f69ba4be11a96988",
-			"price": "2250530",
-			"humanizedPrice": 2.25053,
+			"price": "2113923",
+			"humanizedPrice": 2.113923,
 			"source": "curveFactoryAPI"
 		},
 		"0x864490cf55dc2dee3f0ca4d06f5f80b2bb154a03": {
 			"address": "0x864490cf55dc2dee3f0ca4d06f5f80b2bb154a03",
-			"price": "1005074",
-			"humanizedPrice": 1.005074,
+			"price": "1005348",
+			"humanizedPrice": 1.005348,
 			"source": "curveFactoryAPI"
 		},
 		"0x8914b29f7bea602a183e89d6843ecb251d56d07e": {
 			"address": "0x8914b29f7bea602a183e89d6843ecb251d56d07e",
-			"price": "2",
-			"humanizedPrice": 0.000002,
+			"price": "1",
+			"humanizedPrice": 0.000001,
 			"source": "curveFactoryAPI"
 		},
 		"0x8939dc9174cc3533d0e90a22c9e1424145b496ba": {
 			"address": "0x8939dc9174cc3533d0e90a22c9e1424145b496ba",
-			"price": "1030570",
-			"humanizedPrice": 1.03057,
+			"price": "1076134",
+			"humanizedPrice": 1.076134,
 			"source": "curveFactoryAPI"
 		},
 		"0x8a037dbca8134ffc72c362e394e35e0cad618f85": {
 			"address": "0x8a037dbca8134ffc72c362e394e35e0cad618f85",
-			"price": "1160000",
-			"humanizedPrice": 1.16,
+			"price": "1170000",
+			"humanizedPrice": 1.17,
 			"source": "curveFactoryAPI"
 		},
 		"0x8aa1d5874e9cd918d66fdbe0d3caa65301995be0": {
 			"address": "0x8aa1d5874e9cd918d66fdbe0d3caa65301995be0",
-			"price": "23517",
-			"humanizedPrice": 0.023517,
+			"price": "21265",
+			"humanizedPrice": 0.021265,
 			"source": "curveFactoryAPI"
 		},
 		"0x8b3b2b4a7682486442ad681604e43ab74e35a651": {
 			"address": "0x8b3b2b4a7682486442ad681604e43ab74e35a651",
-			"price": "236897196",
-			"humanizedPrice": 236.897196,
+			"price": "219886016",
+			"humanizedPrice": 219.886016,
 			"source": "curveFactoryAPI"
 		},
 		"0x8bae3f5eb10f39663e57be19741fd9ccef0e113a": {
 			"address": "0x8bae3f5eb10f39663e57be19741fd9ccef0e113a",
-			"price": "10",
-			"humanizedPrice": 0.00001082,
+			"price": "9",
+			"humanizedPrice": 0.00000927,
 			"source": "defillama"
 		},
 		"0x8bb9247c8eff487f7a13ab7e704f50904e91430d": {
 			"address": "0x8bb9247c8eff487f7a13ab7e704f50904e91430d",
-			"price": "158520116652123968",
-			"humanizedPrice": 158520116652.12396,
+			"price": "157152344399608512",
+			"humanizedPrice": 157152344399.60852,
 			"source": "gammaAPI"
 		},
 		"0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a": {
 			"address": "0x8bba7afd0f9b1b664c161ec31d812a8ec15f7e1a",
-			"price": "2863759",
-			"humanizedPrice": 2.863759,
+			"price": "2862995",
+			"humanizedPrice": 2.862995,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0x8bfb6c979d6e58cb41f2d67a4632d975827b1b0c": {
 			"address": "0x8bfb6c979d6e58cb41f2d67a4632d975827b1b0c",
-			"price": "3",
-			"humanizedPrice": 0.000003,
-			"source": "curveFactoryAPI"
-		},
-		"0x8ca194a3b22077359b5732de53373d4afc11dee3": {
-			"address": "0x8ca194a3b22077359b5732de53373d4afc11dee3",
-			"price": "727630",
-			"humanizedPrice": 0.72763,
-			"source": "curveFactoryAPI"
-		},
-		"0x8d3cabd2492a764bddb6e1deed3dc77fd4166f4f": {
-			"address": "0x8d3cabd2492a764bddb6e1deed3dc77fd4166f4f",
-			"price": "19315700",
-			"humanizedPrice": 19.3157,
-			"source": "curveFactoryAPI"
-		},
-		"0x8dd3bf71ef18dd88869d128bde058c9d8c270176": {
-			"address": "0x8dd3bf71ef18dd88869d128bde058c9d8c270176",
-			"price": "1219045",
-			"humanizedPrice": 1.219045738625802,
-			"source": "gammaAPI"
-		},
-		"0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4": {
-			"address": "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4",
-			"price": "237167",
-			"humanizedPrice": 0.237167,
-			"source": "curveFactoryAPI"
-		},
-		"0x8df66d28914084f44c4046783810cbad662fa633": {
-			"address": "0x8df66d28914084f44c4046783810cbad662fa633",
-			"price": "1485531",
-			"humanizedPrice": 1.485531,
-			"source": "ERC4626-convertToAssets"
-		},
-		"0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d": {
-			"address": "0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d",
-			"price": "1000000",
-			"humanizedPrice": 1,
-			"source": "ERC4626-convertToAssets"
-		},
-		"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063": {
-			"address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
-			"price": "1000000",
-			"humanizedPrice": 1,
-			"source": "defillama"
-		},
-		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
-			"address": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
-			"price": "1180391",
-			"humanizedPrice": 1.180391,
-			"source": "ERC4626-convertToAssets"
-		},
-		"0x90eb82495b4a5e578fdfcb9fe3084cd1a83265d6": {
-			"address": "0x90eb82495b4a5e578fdfcb9fe3084cd1a83265d6",
-			"price": "5633",
-			"humanizedPrice": 0.005633170522191452,
-			"source": "gammaAPI"
-		},
-		"0x9134f456d33d1288de26271730047ae0c5cb6f71": {
-			"address": "0x9134f456d33d1288de26271730047ae0c5cb6f71",
-			"price": "312098625397458752",
-			"humanizedPrice": 312098625397.45874,
-			"source": "gammaAPI"
-		},
-		"0x91e646449a3105e9091e882c9a9a7a81950eebb8": {
-			"address": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
-			"price": "478847275",
-			"humanizedPrice": 478.847275,
-			"source": "ERC4626-convertToAssets"
-		},
-		"0x9417669fbf23357d2774e9d421307bd5ea1006d2": {
-			"address": "0x9417669fbf23357d2774e9d421307bd5ea1006d2",
-			"price": "994365",
-			"humanizedPrice": 0.994365,
-			"source": "curveFactoryAPI"
-		},
-		"0x953e523ea34e85ac55d40be1ff71d52aa62497b7": {
-			"address": "0x953e523ea34e85ac55d40be1ff71d52aa62497b7",
-			"price": "1408921053583632128",
-			"humanizedPrice": 1408921053583.632,
-			"source": "gammaAPI"
-		},
-		"0x95d25662d88247614c4b5fa751980060133d6885": {
-			"address": "0x95d25662d88247614c4b5fa751980060133d6885",
-			"price": "450",
-			"humanizedPrice": 0.00045,
-			"source": "curveFactoryAPI"
-		},
-		"0x9719d867a500ef117cc201206b8ab51e794d3f82": {
-			"address": "0x9719d867a500ef117cc201206b8ab51e794d3f82",
-			"price": "1180000",
-			"humanizedPrice": 1.18,
-			"source": "curveFactoryAPI"
-		},
-		"0x972a53e2ee68d5c2b1614f65061815e06b1cce68": {
-			"address": "0x972a53e2ee68d5c2b1614f65061815e06b1cce68",
-			"price": "354092",
-			"humanizedPrice": 0.3540927793200022,
-			"source": "gammaAPI"
-		},
-		"0x976a750168801f58e8aedbcff9328138d544cc09": {
-			"address": "0x976a750168801f58e8aedbcff9328138d544cc09",
-			"price": "316282",
-			"humanizedPrice": 0.316282,
-			"source": "curveFactoryAPI"
-		},
-		"0x9854aba3f857f19660f856bdb19718081ce6120a": {
-			"address": "0x9854aba3f857f19660f856bdb19718081ce6120a",
-			"price": "2516931",
-			"humanizedPrice": 2.516931609173209,
-			"source": "gammaAPI"
-		},
-		"0x993c86749c8fcddc243ee1798806da37ab03e339": {
-			"address": "0x993c86749c8fcddc243ee1798806da37ab03e339",
-			"price": "47379",
-			"humanizedPrice": 0.047379,
-			"source": "curveFactoryAPI"
-		},
-		"0x9a30e9a76afbdf52f44b8b8bc2dc3cd941282789": {
-			"address": "0x9a30e9a76afbdf52f44b8b8bc2dc3cd941282789",
-			"price": "50255",
-			"humanizedPrice": 0.050255,
-			"source": "curveFactoryAPI"
-		},
-		"0x9a439269c2779d5900ccfde02f2fdf8f839e5fd1": {
-			"address": "0x9a439269c2779d5900ccfde02f2fdf8f839e5fd1",
-			"price": "43396605199",
-			"humanizedPrice": 43396.605199,
-			"source": "curveFactoryAPI"
-		},
-		"0x9a4b458a5ae5d96565455d1e1882301fea5c076f": {
-			"address": "0x9a4b458a5ae5d96565455d1e1882301fea5c076f",
-			"price": "342124",
-			"humanizedPrice": 0.3421249434339568,
-			"source": "gammaAPI"
-		},
-		"0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3": {
-			"address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
-			"price": "1320000",
-			"humanizedPrice": 1.32,
-			"source": "curveFactoryAPI"
-		},
-		"0x9aab2fc6e8142e5deb706a4440390d4211a8d449": {
-			"address": "0x9aab2fc6e8142e5deb706a4440390d4211a8d449",
-			"price": "783433",
-			"humanizedPrice": 0.783433,
-			"source": "curveFactoryAPI"
-		},
-		"0x9afb362b515239bcacc27e06c71019f67658310c": {
-			"address": "0x9afb362b515239bcacc27e06c71019f67658310c",
-			"price": "6161",
-			"humanizedPrice": 0.006161,
-			"source": "curveFactoryAPI"
-		},
-		"0x9bb0af8f370e05815ee620ecbbb95800e13d71e8": {
-			"address": "0x9bb0af8f370e05815ee620ecbbb95800e13d71e8",
-			"price": "494141",
-			"humanizedPrice": 0.494141,
-			"source": "curveFactoryAPI"
-		},
-		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
-			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
-			"price": "1000000",
-			"humanizedPrice": 1,
-			"source": "ERC4626-convertToAssets"
-		},
-		"0x9c28da9cf42c5429e4b73c63637da9b00c62db0a": {
-			"address": "0x9c28da9cf42c5429e4b73c63637da9b00c62db0a",
-			"price": "39",
-			"humanizedPrice": 0.000039,
-			"source": "curveFactoryAPI"
-		},
-		"0x9c3e0445559e6de1fe6391e8e018dca02b480836": {
-			"address": "0x9c3e0445559e6de1fe6391e8e018dca02b480836",
-			"price": "842522",
-			"humanizedPrice": 0.8425227635991516,
-			"source": "gammaAPI"
-		},
-		"0x9cb74c8032b007466865f060ad2c46145d45553d": {
-			"address": "0x9cb74c8032b007466865f060ad2c46145d45553d",
-			"price": "28203",
-			"humanizedPrice": 0.028203,
-			"source": "curveFactoryAPI"
-		},
-		"0x9cd42aed7d44ee801c827a8e5dcf41df534e9e82": {
-			"address": "0x9cd42aed7d44ee801c827a8e5dcf41df534e9e82",
-			"price": "185",
-			"humanizedPrice": 0.000185,
-			"source": "curveFactoryAPI"
-		},
-		"0x9cd6746665d9557e1b9a775819625711d0693439": {
-			"address": "0x9cd6746665d9557e1b9a775819625711d0693439",
-			"price": "58",
-			"humanizedPrice": 0.000058,
-			"source": "curveFactoryAPI"
-		},
-		"0x9ce2e99f66b78b27ca0063042947c83349a7f1c7": {
-			"address": "0x9ce2e99f66b78b27ca0063042947c83349a7f1c7",
 			"price": "12",
 			"humanizedPrice": 0.000012,
 			"source": "curveFactoryAPI"
 		},
+		"0x8ca194a3b22077359b5732de53373d4afc11dee3": {
+			"address": "0x8ca194a3b22077359b5732de53373d4afc11dee3",
+			"price": "717216",
+			"humanizedPrice": 0.717216,
+			"source": "curveFactoryAPI"
+		},
+		"0x8d3cabd2492a764bddb6e1deed3dc77fd4166f4f": {
+			"address": "0x8d3cabd2492a764bddb6e1deed3dc77fd4166f4f",
+			"price": "22112970",
+			"humanizedPrice": 22.11297,
+			"source": "curveFactoryAPI"
+		},
+		"0x8dd3bf71ef18dd88869d128bde058c9d8c270176": {
+			"address": "0x8dd3bf71ef18dd88869d128bde058c9d8c270176",
+			"price": "1272006",
+			"humanizedPrice": 1.2720060311425962,
+			"source": "gammaAPI"
+		},
+		"0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4": {
+			"address": "0x8df3aad3a84da6b69a4da8aec3ea40d9091b2ac4",
+			"price": "222771",
+			"humanizedPrice": 0.222771,
+			"source": "curveFactoryAPI"
+		},
+		"0x8df66d28914084f44c4046783810cbad662fa633": {
+			"address": "0x8df66d28914084f44c4046783810cbad662fa633",
+			"price": "1550069",
+			"humanizedPrice": 1.550069,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d": {
+			"address": "0x8ee8898b3524470fa0cfd9c5af4be59cd7e9595d",
+			"price": "999461",
+			"humanizedPrice": 0.999461,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x8f3cf7ad23cd3cadbd9735aff958023239c6a063": {
+			"address": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+			"price": "999461",
+			"humanizedPrice": 0.999461,
+			"source": "defillama"
+		},
+		"0x90b2f54c6addad41b8f6c4fccd555197bc0f773b": {
+			"address": "0x90b2f54c6addad41b8f6c4fccd555197bc0f773b",
+			"price": "1186367",
+			"humanizedPrice": 1.186367,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x90eb82495b4a5e578fdfcb9fe3084cd1a83265d6": {
+			"address": "0x90eb82495b4a5e578fdfcb9fe3084cd1a83265d6",
+			"price": "3685",
+			"humanizedPrice": 0.0036856160562715548,
+			"source": "gammaAPI"
+		},
+		"0x9134f456d33d1288de26271730047ae0c5cb6f71": {
+			"address": "0x9134f456d33d1288de26271730047ae0c5cb6f71",
+			"price": "322602127906246208",
+			"humanizedPrice": 322602127906.2462,
+			"source": "gammaAPI"
+		},
+		"0x91e646449a3105e9091e882c9a9a7a81950eebb8": {
+			"address": "0x91e646449a3105e9091e882c9a9a7a81950eebb8",
+			"price": "521692787",
+			"humanizedPrice": 521.692787,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x92ae05ea747f34248dce6d73a63a772e7de6d269": {
+			"address": "0x92ae05ea747f34248dce6d73a63a772e7de6d269",
+			"price": "8",
+			"humanizedPrice": 0.000008,
+			"source": "curveFactoryAPI"
+		},
+		"0x9417669fbf23357d2774e9d421307bd5ea1006d2": {
+			"address": "0x9417669fbf23357d2774e9d421307bd5ea1006d2",
+			"price": "998665",
+			"humanizedPrice": 0.998665,
+			"source": "curveFactoryAPI"
+		},
+		"0x953e523ea34e85ac55d40be1ff71d52aa62497b7": {
+			"address": "0x953e523ea34e85ac55d40be1ff71d52aa62497b7",
+			"price": "1411026751404346624",
+			"humanizedPrice": 1411026751404.3467,
+			"source": "gammaAPI"
+		},
+		"0x9719d867a500ef117cc201206b8ab51e794d3f82": {
+			"address": "0x9719d867a500ef117cc201206b8ab51e794d3f82",
+			"price": "1110000",
+			"humanizedPrice": 1.11,
+			"source": "curveFactoryAPI"
+		},
+		"0x972a53e2ee68d5c2b1614f65061815e06b1cce68": {
+			"address": "0x972a53e2ee68d5c2b1614f65061815e06b1cce68",
+			"price": "371887",
+			"humanizedPrice": 0.37188767796468775,
+			"source": "gammaAPI"
+		},
+		"0x976a750168801f58e8aedbcff9328138d544cc09": {
+			"address": "0x976a750168801f58e8aedbcff9328138d544cc09",
+			"price": "308807",
+			"humanizedPrice": 0.308807,
+			"source": "curveFactoryAPI"
+		},
+		"0x9854aba3f857f19660f856bdb19718081ce6120a": {
+			"address": "0x9854aba3f857f19660f856bdb19718081ce6120a",
+			"price": "2443329",
+			"humanizedPrice": 2.4433297576097703,
+			"source": "gammaAPI"
+		},
+		"0x993c86749c8fcddc243ee1798806da37ab03e339": {
+			"address": "0x993c86749c8fcddc243ee1798806da37ab03e339",
+			"price": "43977",
+			"humanizedPrice": 0.043977,
+			"source": "curveFactoryAPI"
+		},
+		"0x9a30e9a76afbdf52f44b8b8bc2dc3cd941282789": {
+			"address": "0x9a30e9a76afbdf52f44b8b8bc2dc3cd941282789",
+			"price": "49620",
+			"humanizedPrice": 0.04962,
+			"source": "curveFactoryAPI"
+		},
+		"0x9a439269c2779d5900ccfde02f2fdf8f839e5fd1": {
+			"address": "0x9a439269c2779d5900ccfde02f2fdf8f839e5fd1",
+			"price": "42588203400",
+			"humanizedPrice": 42588.2034,
+			"source": "curveFactoryAPI"
+		},
+		"0x9a4b458a5ae5d96565455d1e1882301fea5c076f": {
+			"address": "0x9a4b458a5ae5d96565455d1e1882301fea5c076f",
+			"price": "349571",
+			"humanizedPrice": 0.3495716199822171,
+			"source": "gammaAPI"
+		},
+		"0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3": {
+			"address": "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+			"price": "1088000",
+			"humanizedPrice": 1.088,
+			"source": "curveFactoryAPI"
+		},
+		"0x9aab2fc6e8142e5deb706a4440390d4211a8d449": {
+			"address": "0x9aab2fc6e8142e5deb706a4440390d4211a8d449",
+			"price": "780115",
+			"humanizedPrice": 0.780115,
+			"source": "curveFactoryAPI"
+		},
+		"0x9afb362b515239bcacc27e06c71019f67658310c": {
+			"address": "0x9afb362b515239bcacc27e06c71019f67658310c",
+			"price": "5718",
+			"humanizedPrice": 0.005718,
+			"source": "curveFactoryAPI"
+		},
+		"0x9bb0af8f370e05815ee620ecbbb95800e13d71e8": {
+			"address": "0x9bb0af8f370e05815ee620ecbbb95800e13d71e8",
+			"price": "500190",
+			"humanizedPrice": 0.50019,
+			"source": "curveFactoryAPI"
+		},
+		"0x9bc04dabde16f559d9c8dde00325aad15f0b0a47": {
+			"address": "0x9bc04dabde16f559d9c8dde00325aad15f0b0a47",
+			"price": "999461",
+			"humanizedPrice": 0.999461,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0x9c28da9cf42c5429e4b73c63637da9b00c62db0a": {
+			"address": "0x9c28da9cf42c5429e4b73c63637da9b00c62db0a",
+			"price": "36",
+			"humanizedPrice": 0.000036,
+			"source": "curveFactoryAPI"
+		},
+		"0x9c3e0445559e6de1fe6391e8e018dca02b480836": {
+			"address": "0x9c3e0445559e6de1fe6391e8e018dca02b480836",
+			"price": "743616",
+			"humanizedPrice": 0.7436165100132972,
+			"source": "gammaAPI"
+		},
+		"0x9cb74c8032b007466865f060ad2c46145d45553d": {
+			"address": "0x9cb74c8032b007466865f060ad2c46145d45553d",
+			"price": "23916",
+			"humanizedPrice": 0.023916,
+			"source": "curveFactoryAPI"
+		},
+		"0x9cd42aed7d44ee801c827a8e5dcf41df534e9e82": {
+			"address": "0x9cd42aed7d44ee801c827a8e5dcf41df534e9e82",
+			"price": "329",
+			"humanizedPrice": 0.000329,
+			"source": "curveFactoryAPI"
+		},
+		"0x9cd6746665d9557e1b9a775819625711d0693439": {
+			"address": "0x9cd6746665d9557e1b9a775819625711d0693439",
+			"price": "51",
+			"humanizedPrice": 0.000051,
+			"source": "curveFactoryAPI"
+		},
+		"0x9ce2e99f66b78b27ca0063042947c83349a7f1c7": {
+			"address": "0x9ce2e99f66b78b27ca0063042947c83349a7f1c7",
+			"price": "9",
+			"humanizedPrice": 0.000009,
+			"source": "curveFactoryAPI"
+		},
 		"0x9d1046cecb0662037b13decf1cd125c4aa3fb65b": {
 			"address": "0x9d1046cecb0662037b13decf1cd125c4aa3fb65b",
-			"price": "1028511",
-			"humanizedPrice": 1.028511304924,
+			"price": "1072688",
+			"humanizedPrice": 1.072688,
 			"source": "defillama"
 		},
 		"0x9d5f024e1a83c783f47f38945654b13ecaa26a5c": {
 			"address": "0x9d5f024e1a83c783f47f38945654b13ecaa26a5c",
-			"price": "614187",
-			"humanizedPrice": 0.614187,
+			"price": "555390",
+			"humanizedPrice": 0.55539,
 			"source": "curveFactoryAPI"
 		},
 		"0x9de41aff9f55219d5bf4359f167d1d0c772a396d": {
 			"address": "0x9de41aff9f55219d5bf4359f167d1d0c772a396d",
-			"price": "728938",
-			"humanizedPrice": 0.728938,
+			"price": "718049",
+			"humanizedPrice": 0.718049,
 			"source": "curveFactoryAPI"
 		},
 		"0x9dfdf32ae82c7e8ebc156ea28e6637b120e00d12": {
 			"address": "0x9dfdf32ae82c7e8ebc156ea28e6637b120e00d12",
-			"price": "466359500",
-			"humanizedPrice": 466.3595000608685,
+			"price": "486019503",
+			"humanizedPrice": 486.0195034085301,
 			"source": "gammaAPI"
 		},
 		"0x9e2b9fbacd870d811d0f4a0841bfd2f0b06c8ed1": {
 			"address": "0x9e2b9fbacd870d811d0f4a0841bfd2f0b06c8ed1",
-			"price": "3",
-			"humanizedPrice": 0.000003,
+			"price": "2",
+			"humanizedPrice": 0.000002,
 			"source": "curveFactoryAPI"
 		},
 		"0x9e31214db6931727b7d63a0d2b6236db455c0965": {
 			"address": "0x9e31214db6931727b7d63a0d2b6236db455c0965",
-			"price": "1389333",
-			"humanizedPrice": 1.3893334857238164,
+			"price": "1391755",
+			"humanizedPrice": 1.3917555759572644,
 			"source": "gammaAPI"
 		},
 		"0x9ec22669c820b3b4303dca33e7d790f2f5b5ee86": {
 			"address": "0x9ec22669c820b3b4303dca33e7d790f2f5b5ee86",
-			"price": "789083",
-			"humanizedPrice": 0.789083,
+			"price": "482551",
+			"humanizedPrice": 0.482551,
 			"source": "curveFactoryAPI"
 		},
 		"0x9f19ad14cd941e29b0e7ed8f5a1003fae4993dcd": {
 			"address": "0x9f19ad14cd941e29b0e7ed8f5a1003fae4993dcd",
-			"price": "419907",
-			"humanizedPrice": 0.41990730669086046,
+			"price": "438678",
+			"humanizedPrice": 0.438678719641021,
 			"source": "gammaAPI"
 		},
 		"0x9f6268b5efb4329a9dac59beabc4cf2df0ad8798": {
 			"address": "0x9f6268b5efb4329a9dac59beabc4cf2df0ad8798",
-			"price": "201401",
-			"humanizedPrice": 0.201401,
+			"price": "208996",
+			"humanizedPrice": 0.208996,
 			"source": "curveFactoryAPI"
 		},
 		"0x9fffb2f49adfc231b44ddcff3ffcf0e81b06430a": {
 			"address": "0x9fffb2f49adfc231b44ddcff3ffcf0e81b06430a",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999445",
+			"humanizedPrice": 0.999445,
 			"source": "curveFactoryAPI"
 		},
 		"0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0": {
 			"address": "0xa013fbd4b711f9ded6fb09c1c0d358e2fbc2eaa0",
-			"price": "1192844",
-			"humanizedPrice": 1.192844,
+			"price": "1197913",
+			"humanizedPrice": 1.197913,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xa0158cd105075585650399cce17d686ab713e3b6": {
 			"address": "0xa0158cd105075585650399cce17d686ab713e3b6",
-			"price": "293781584",
-			"humanizedPrice": 293.781584,
+			"price": "266511023",
+			"humanizedPrice": 266.511023,
 			"source": "curveFactoryAPI"
 		},
 		"0xa1a2deedbacb43e01ada6a20c616c9d3033cdfcf": {
 			"address": "0xa1a2deedbacb43e01ada6a20c616c9d3033cdfcf",
-			"price": "211887",
-			"humanizedPrice": 0.211887,
+			"price": "196672",
+			"humanizedPrice": 0.196672,
 			"source": "curveFactoryAPI"
 		},
 		"0xa1c3e15b3307b04067e843d3bfaf3cead5b51cb7": {
 			"address": "0xa1c3e15b3307b04067e843d3bfaf3cead5b51cb7",
-			"price": "60409",
-			"humanizedPrice": 0.06040981017480947,
+			"price": "60584",
+			"humanizedPrice": 0.06058422748437456,
 			"source": "gammaAPI"
 		},
 		"0xa1eec03e4fceb83daf9eb138dc6741af80074eac": {
 			"address": "0xa1eec03e4fceb83daf9eb138dc6741af80074eac",
-			"price": "4082",
-			"humanizedPrice": 0.004082,
+			"price": "4052",
+			"humanizedPrice": 0.004052,
 			"source": "curveFactoryAPI"
 		},
 		"0xa3572a9081afd7a0ff78d992490614f258acccb2": {
 			"address": "0xa3572a9081afd7a0ff78d992490614f258acccb2",
-			"price": "13894151",
-			"humanizedPrice": 13.894151,
+			"price": "14514152",
+			"humanizedPrice": 14.514152,
 			"source": "curveFactoryAPI"
 		},
 		"0xa3c322ad15218fbfaed26ba7f616249f7705d945": {
 			"address": "0xa3c322ad15218fbfaed26ba7f616249f7705d945",
-			"price": "7733",
-			"humanizedPrice": 0.007733,
+			"price": "7680",
+			"humanizedPrice": 0.00768,
 			"source": "curveFactoryAPI"
 		},
 		"0xa3fa99a148fa48d14ed51d610c367c61876997f1": {
 			"address": "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
-			"price": "990281",
-			"humanizedPrice": 0.990281,
+			"price": "994081",
+			"humanizedPrice": 0.994081,
 			"source": "defillama"
 		},
 		"0xa411c9aa00e020e4f88bc19996d29c5b7adb4acf": {
 			"address": "0xa411c9aa00e020e4f88bc19996d29c5b7adb4acf",
-			"price": "53307",
-			"humanizedPrice": 0.053307,
+			"price": "65636",
+			"humanizedPrice": 0.065636,
 			"source": "curveFactoryAPI"
 		},
 		"0xa4335da338ec4c07c391fc1a9bf75f306adadc08": {
 			"address": "0xa4335da338ec4c07c391fc1a9bf75f306adadc08",
-			"price": "1130000",
-			"humanizedPrice": 1.13,
+			"price": "993846",
+			"humanizedPrice": 0.993846,
+			"source": "curveFactoryAPI"
+		},
+		"0xa46d9e1f24a677a9504b2576fb32b80fdc74d34e": {
+			"address": "0xa46d9e1f24a677a9504b2576fb32b80fdc74d34e",
+			"price": "2675",
+			"humanizedPrice": 0.002675,
 			"source": "curveFactoryAPI"
 		},
 		"0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb": {
 			"address": "0xa486c6bc102f409180ccb8a94ba045d39f8fc7cb",
-			"price": "116336",
-			"humanizedPrice": 0.116336,
+			"price": "162938",
+			"humanizedPrice": 0.162938,
 			"source": "curveFactoryAPI"
 		},
 		"0xa48e468fbf1b6ef0dc451250c46c4cce99fa361b": {
 			"address": "0xa48e468fbf1b6ef0dc451250c46c4cce99fa361b",
-			"price": "5878",
-			"humanizedPrice": 0.005878,
+			"price": "5456",
+			"humanizedPrice": 0.005456,
 			"source": "curveFactoryAPI"
 		},
 		"0xa4d94019934d8333ef880abffbf2fdd611c762bd": {
 			"address": "0xa4d94019934d8333ef880abffbf2fdd611c762bd",
-			"price": "998575",
-			"humanizedPrice": 0.998575,
+			"price": "997443",
+			"humanizedPrice": 0.997443,
 			"source": "curveFactoryAPI"
 		},
 		"0xa525e3434bb226c5abc92dd67d044168ec39b75c": {
@@ -2529,14 +2595,14 @@
 		},
 		"0xa691d34abf93c0a77998e53b564becfaf46dae27": {
 			"address": "0xa691d34abf93c0a77998e53b564becfaf46dae27",
-			"price": "1024814",
-			"humanizedPrice": 1.024814,
+			"price": "1036268",
+			"humanizedPrice": 1.036268,
 			"source": "curveFactoryAPI"
 		},
 		"0xa69b0d5c0c401bba2d5162138613b5e38584f63f": {
 			"address": "0xa69b0d5c0c401bba2d5162138613b5e38584f63f",
-			"price": "732970",
-			"humanizedPrice": 0.73297,
+			"price": "722023",
+			"humanizedPrice": 0.722023,
 			"source": "curveFactoryAPI"
 		},
 		"0xa6a8779e9bfa421c9416c423376fe8c51d2955b2": {
@@ -2547,92 +2613,92 @@
 		},
 		"0xa6e93d59e4265dad1e5d097c11eeacc6dd217d02": {
 			"address": "0xa6e93d59e4265dad1e5d097c11eeacc6dd217d02",
-			"price": "751017",
-			"humanizedPrice": 0.751017,
+			"price": "697088",
+			"humanizedPrice": 0.697088,
 			"source": "curveFactoryAPI"
 		},
 		"0xa70af99bff6b168327f9d1480e29173e757c7904": {
 			"address": "0xa70af99bff6b168327f9d1480e29173e757c7904",
-			"price": "1005070",
-			"humanizedPrice": 1.00507,
+			"price": "1005261",
+			"humanizedPrice": 1.005261,
 			"source": "curveFactoryAPI"
 		},
 		"0xa73edcf18421b56d9af1ce08a34e102e23b2c4b6": {
 			"address": "0xa73edcf18421b56d9af1ce08a34e102e23b2c4b6",
-			"price": "115512645",
-			"humanizedPrice": 115.512645,
+			"price": "89083260",
+			"humanizedPrice": 89.08326,
 			"source": "curveFactoryAPI"
 		},
 		"0xa7a3ea52937c8637b15b4f2b8a7cc8c7868fb6b8": {
 			"address": "0xa7a3ea52937c8637b15b4f2b8a7cc8c7868fb6b8",
-			"price": "311376",
-			"humanizedPrice": 0.311376,
+			"price": "308337",
+			"humanizedPrice": 0.308337,
 			"source": "curveFactoryAPI"
 		},
 		"0xa823ef7df6392800569946c6c1dec0e34356ef18": {
 			"address": "0xa823ef7df6392800569946c6c1dec0e34356ef18",
-			"price": "31558955354778357760",
-			"humanizedPrice": 31558955354778.36,
+			"price": "31653359143109435392",
+			"humanizedPrice": 31653359143109.434,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xa8d394fe7380b8ce6145d5f85e6ac22d4e91acde": {
 			"address": "0xa8d394fe7380b8ce6145d5f85e6ac22d4e91acde",
-			"price": "983221",
-			"humanizedPrice": 0.983221,
+			"price": "984343",
+			"humanizedPrice": 0.984343,
 			"source": "curveFactoryAPI"
 		},
 		"0xa8e2fd481342976a3259591fbc08999369a43c5a": {
 			"address": "0xa8e2fd481342976a3259591fbc08999369a43c5a",
-			"price": "4592624",
-			"humanizedPrice": 4.592624242920139,
+			"price": "5298457",
+			"humanizedPrice": 5.298457441193331,
 			"source": "gammaAPI"
 		},
 		"0xa926db7a4cc0cb1736d5ac60495ca8eb7214b503": {
 			"address": "0xa926db7a4cc0cb1736d5ac60495ca8eb7214b503",
-			"price": "778685",
-			"humanizedPrice": 0.778685,
+			"price": "775988",
+			"humanizedPrice": 0.775988,
 			"source": "curveFactoryAPI"
 		},
 		"0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954": {
 			"address": "0xa9c3b8f7ab9cc105ac4d27c1bf821ec0c6a9e954",
-			"price": "1139634373025881600",
-			"humanizedPrice": 1139634373025.8816,
+			"price": "1165547421720702976",
+			"humanizedPrice": 1165547421720.703,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xaa563ba5053f0b4eec8aa70a54b376d13af77464": {
 			"address": "0xaa563ba5053f0b4eec8aa70a54b376d13af77464",
-			"price": "2978",
-			"humanizedPrice": 0.002978,
+			"price": "1955",
+			"humanizedPrice": 0.001955,
 			"source": "curveFactoryAPI"
 		},
 		"0xaaf165e75b4c9370d22b971af08c630e76bfa70c": {
 			"address": "0xaaf165e75b4c9370d22b971af08c630e76bfa70c",
-			"price": "204",
-			"humanizedPrice": 0.000204,
+			"price": "364",
+			"humanizedPrice": 0.000364,
 			"source": "curveFactoryAPI"
 		},
 		"0xab9ad9089f23e6779a8727900709427719f753e1": {
 			"address": "0xab9ad9089f23e6779a8727900709427719f753e1",
-			"price": "415",
-			"humanizedPrice": 0.000415,
+			"price": "414",
+			"humanizedPrice": 0.000414,
 			"source": "curveFactoryAPI"
 		},
 		"0xac0f71f2492daf020f459bd163052b9dae28f159": {
 			"address": "0xac0f71f2492daf020f459bd163052b9dae28f159",
-			"price": "2392124122828642304",
-			"humanizedPrice": 2392124122828.642,
+			"price": "2377122839985405440",
+			"humanizedPrice": 2377122839985.4053,
 			"source": "gammaAPI"
 		},
 		"0xac15baba7bcc532f8727c1a42b23501f59630115": {
 			"address": "0xac15baba7bcc532f8727c1a42b23501f59630115",
-			"price": "527122",
-			"humanizedPrice": 0.52712277760371,
+			"price": "522715",
+			"humanizedPrice": 0.5227158861240426,
 			"source": "gammaAPI"
 		},
 		"0xac974e619888342dada8b50b3ad02f0d04cee6db": {
 			"address": "0xac974e619888342dada8b50b3ad02f0d04cee6db",
-			"price": "31844404",
-			"humanizedPrice": 31.844404,
+			"price": "32102792",
+			"humanizedPrice": 32.102792,
 			"source": "curveFactoryAPI"
 		},
 		"0xac97ed13191e90b284c804c83bfbb73cd37316ee": {
@@ -2643,176 +2709,170 @@
 		},
 		"0xacb6a2c03c8012c2817efc4d81e33cc0978e3abd": {
 			"address": "0xacb6a2c03c8012c2817efc4d81e33cc0978e3abd",
-			"price": "283",
-			"humanizedPrice": 0.0002833872490713061,
+			"price": "201",
+			"humanizedPrice": 0.00020120106146860324,
 			"source": "gammaAPI"
 		},
 		"0xad357277981239a83b69e816acef2329823583fa": {
 			"address": "0xad357277981239a83b69e816acef2329823583fa",
-			"price": "5273447",
-			"humanizedPrice": 5.273447,
+			"price": "4894770",
+			"humanizedPrice": 4.89477,
 			"source": "curveFactoryAPI"
 		},
 		"0xadc7b4096c3059ec578585df36e6e1286d345367": {
 			"address": "0xadc7b4096c3059ec578585df36e6e1286d345367",
-			"price": "3799748521",
-			"humanizedPrice": 3799.748521350464,
+			"price": "3679515762",
+			"humanizedPrice": 3679.515762548189,
 			"source": "gammaAPI"
 		},
 		"0xade7d1c3700c75656a617435d6c04f38f6a16f76": {
 			"address": "0xade7d1c3700c75656a617435d6c04f38f6a16f76",
-			"price": "58190000000",
-			"humanizedPrice": 58190,
+			"price": "54947000000",
+			"humanizedPrice": 54947,
 			"source": "curveFactoryAPI"
 		},
 		"0xadf577b69eeac9df325536cf1af106372f2da263": {
 			"address": "0xadf577b69eeac9df325536cf1af106372f2da263",
-			"price": "562815",
-			"humanizedPrice": 0.562815,
+			"price": "1044860",
+			"humanizedPrice": 1.04486,
 			"source": "curveFactoryAPI"
 		},
 		"0xadfc52d48d68b235b6b9453ef5130fc6dfd2513e": {
 			"address": "0xadfc52d48d68b235b6b9453ef5130fc6dfd2513e",
-			"price": "3572821338",
-			"humanizedPrice": 3572.8213381429614,
+			"price": "3461908897",
+			"humanizedPrice": 3461.908897316535,
 			"source": "gammaAPI"
 		},
 		"0xaed94544941ac4bed9c61ed31fa843c85a7daae5": {
 			"address": "0xaed94544941ac4bed9c61ed31fa843c85a7daae5",
-			"price": "52327",
-			"humanizedPrice": 0.052327,
+			"price": "46222",
+			"humanizedPrice": 0.046222,
 			"source": "curveFactoryAPI"
 		},
 		"0xafa403323fccad58cd4f2a38361389b1514fc790": {
 			"address": "0xafa403323fccad58cd4f2a38361389b1514fc790",
-			"price": "5970",
-			"humanizedPrice": 0.00597,
-			"source": "curveFactoryAPI"
-		},
-		"0xb05475d2a99ec4f7fa9ff1ffb0e65894d2a639f3": {
-			"address": "0xb05475d2a99ec4f7fa9ff1ffb0e65894d2a639f3",
-			"price": "160",
-			"humanizedPrice": 0.00016,
+			"price": "5541",
+			"humanizedPrice": 0.005541,
 			"source": "curveFactoryAPI"
 		},
 		"0xb0658482b405496c4ee9453cd0a463b134aef9d0": {
 			"address": "0xb0658482b405496c4ee9453cd0a463b134aef9d0",
-			"price": "55012157",
-			"humanizedPrice": 55.012157,
+			"price": "50404793",
+			"humanizedPrice": 50.404793,
 			"source": "curveFactoryAPI"
 		},
 		"0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b": {
 			"address": "0xb0b195aefa3650a6908f15cdac7d92f8a5791b0b",
-			"price": "999830",
-			"humanizedPrice": 0.99983,
+			"price": "999435",
+			"humanizedPrice": 0.999435,
 			"source": "defillama"
 		},
 		"0xb1403908f772e4374bb151f7c67e88761a0eb4f1": {
 			"address": "0xb1403908f772e4374bb151f7c67e88761a0eb4f1",
-			"price": "1274470",
-			"humanizedPrice": 1.27447,
+			"price": "1280751",
+			"humanizedPrice": 1.280751,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xb1b1f3ba475a7ccf6edf709e1b90a970f6b5fed6": {
 			"address": "0xb1b1f3ba475a7ccf6edf709e1b90a970f6b5fed6",
-			"price": "2044844",
-			"humanizedPrice": 2.044844,
+			"price": "1588393",
+			"humanizedPrice": 1.588393,
 			"source": "curveFactoryAPI"
 		},
 		"0xb23d7903ff0b467de64b606ba9887609aaa68193": {
 			"address": "0xb23d7903ff0b467de64b606ba9887609aaa68193",
-			"price": "440065",
-			"humanizedPrice": 0.440065,
+			"price": "408465",
+			"humanizedPrice": 0.408465,
 			"source": "curveFactoryAPI"
 		},
 		"0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762": {
 			"address": "0xb25e20de2f2ebb4cffd4d16a55c7b395e8a94762",
-			"price": "151792",
-			"humanizedPrice": 0.151792,
+			"price": "123697",
+			"humanizedPrice": 0.123697,
 			"source": "curveFactoryAPI"
 		},
 		"0xb2cc474ba8ff6f807aabab50dd9ea4e8c826c103": {
 			"address": "0xb2cc474ba8ff6f807aabab50dd9ea4e8c826c103",
-			"price": "573985",
-			"humanizedPrice": 0.573985,
+			"price": "532768",
+			"humanizedPrice": 0.532768,
 			"source": "curveFactoryAPI"
 		},
 		"0xb33eaad8d922b1083446dc23f610c2567fb5180f": {
 			"address": "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
-			"price": "10130000",
-			"humanizedPrice": 10.13,
+			"price": "7590000",
+			"humanizedPrice": 7.59,
 			"source": "curveFactoryAPI"
 		},
 		"0xb377861c7ef1fcf7240fadd20c02ebdff455d086": {
 			"address": "0xb377861c7ef1fcf7240fadd20c02ebdff455d086",
-			"price": "1000665111429334272",
-			"humanizedPrice": 1000665111429.3342,
+			"price": "1000664937846897792",
+			"humanizedPrice": 1000664937846.8978,
 			"source": "gammaAPI"
 		},
 		"0xb38e60e6283ed48f29c7c3800af6a8abf982868c": {
 			"address": "0xb38e60e6283ed48f29c7c3800af6a8abf982868c",
-			"price": "2208842606153",
-			"humanizedPrice": 2208842.606153,
+			"price": "3704086339172",
+			"humanizedPrice": 3704086.339172,
 			"source": "curveFactoryAPI"
 		},
 		"0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95": {
 			"address": "0xb40f69b0cc508dfbaa0c8c5fd34107e3a191ac95",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xb52cfbca305e13c4c6774846f8d42bb1f0ec51d0": {
 			"address": "0xb52cfbca305e13c4c6774846f8d42bb1f0ec51d0",
-			"price": "190",
-			"humanizedPrice": 0.00019,
+			"price": "340",
+			"humanizedPrice": 0.00034,
 			"source": "curveFactoryAPI"
 		},
 		"0xb5625f21a85700de688c5921a729e4cda935927d": {
 			"address": "0xb5625f21a85700de688c5921a729e4cda935927d",
-			"price": "32548",
-			"humanizedPrice": 0.032548,
+			"price": "30572",
+			"humanizedPrice": 0.030572,
 			"source": "curveFactoryAPI"
 		},
 		"0xb56ff8144e1d4ff94e8b2801bade11bee0d87397": {
 			"address": "0xb56ff8144e1d4ff94e8b2801bade11bee0d87397",
-			"price": "1221424",
-			"humanizedPrice": 1.2214240465013486,
+			"price": "1377429",
+			"humanizedPrice": 1.3774291291193357,
 			"source": "gammaAPI"
 		},
 		"0xb5c064f955d8e7f38fe0460c556a72987494ee17": {
 			"address": "0xb5c064f955d8e7f38fe0460c556a72987494ee17",
-			"price": "23376",
-			"humanizedPrice": 0.02337614,
+			"price": "20636",
+			"humanizedPrice": 0.02063632,
 			"source": "defillama"
 		},
 		"0xb5dfabd7ff7f83bab83995e72a52b97abb7bcf63": {
 			"address": "0xb5dfabd7ff7f83bab83995e72a52b97abb7bcf63",
-			"price": "335084",
-			"humanizedPrice": 0.335084,
+			"price": "317661",
+			"humanizedPrice": 0.317661,
 			"source": "curveFactoryAPI"
 		},
 		"0xb61ecec987a9529dba13a8dd10ea24446ccbb6ae": {
 			"address": "0xb61ecec987a9529dba13a8dd10ea24446ccbb6ae",
-			"price": "1142927",
-			"humanizedPrice": 1.142927,
+			"price": "134461",
+			"humanizedPrice": 0.134461,
 			"source": "curveFactoryAPI"
 		},
 		"0xb636ff5e5ef1acf4c9919c43e143be7c95b26c46": {
 			"address": "0xb636ff5e5ef1acf4c9919c43e143be7c95b26c46",
-			"price": "2089167",
-			"humanizedPrice": 2.089167,
+			"price": "1939147",
+			"humanizedPrice": 1.939147,
 			"source": "curveFactoryAPI"
 		},
 		"0xb64ce1c06af365424060e2720df46997a4fd3a0a": {
 			"address": "0xb64ce1c06af365424060e2720df46997a4fd3a0a",
-			"price": "228202049",
-			"humanizedPrice": 228.202049,
+			"price": "220697218",
+			"humanizedPrice": 220.697218,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xb6ac3e9f5b8fc6cca87ce221ff794f0253d4a4e7": {
 			"address": "0xb6ac3e9f5b8fc6cca87ce221ff794f0253d4a4e7",
-			"price": "1010121",
-			"humanizedPrice": 1.010121,
+			"price": "1017796",
+			"humanizedPrice": 1.017796,
 			"source": "curveFactoryAPI"
 		},
 		"0xb6c0f411f1b487f688a4a08b610047041c01e069": {
@@ -2823,74 +2883,74 @@
 		},
 		"0xb6f8e5ddf3b03e475e8eee609231397de23b87d9": {
 			"address": "0xb6f8e5ddf3b03e475e8eee609231397de23b87d9",
-			"price": "14",
-			"humanizedPrice": 0.000014,
+			"price": "13",
+			"humanizedPrice": 0.000013,
 			"source": "curveFactoryAPI"
 		},
 		"0xb731e7ced547a636f7cd3eee3972eb32b0402893": {
 			"address": "0xb731e7ced547a636f7cd3eee3972eb32b0402893",
-			"price": "42090",
-			"humanizedPrice": 0.04209,
+			"price": "30002",
+			"humanizedPrice": 0.030002,
 			"source": "curveFactoryAPI"
 		},
 		"0xb78f2fe5fde99727cd2388f8c4f682395f894c16": {
 			"address": "0xb78f2fe5fde99727cd2388f8c4f682395f894c16",
-			"price": "45331399251",
-			"humanizedPrice": 45331.399251,
+			"price": "44377056371",
+			"humanizedPrice": 44377.056371,
 			"source": "curveFactoryAPI"
 		},
 		"0xb81686295822b639b647d3b421cd5e09af700ada": {
 			"address": "0xb81686295822b639b647d3b421cd5e09af700ada",
-			"price": "4238896803",
-			"humanizedPrice": 4238.896803167941,
+			"price": "4581026833",
+			"humanizedPrice": 4581.02683348924,
 			"source": "gammaAPI"
 		},
 		"0xb82c97c5f0f54d4d32d810f430d4853c3bc77919": {
 			"address": "0xb82c97c5f0f54d4d32d810f430d4853c3bc77919",
-			"price": "2294407",
-			"humanizedPrice": 2.294407,
+			"price": "1791105",
+			"humanizedPrice": 1.791105,
 			"source": "curveFactoryAPI"
 		},
 		"0xb88a5ac00917a02d82c7cd6cebd73e2852d43574": {
 			"address": "0xb88a5ac00917a02d82c7cd6cebd73e2852d43574",
-			"price": "1154693",
-			"humanizedPrice": 1.154693,
+			"price": "1162469",
+			"humanizedPrice": 1.162469,
 			"source": "curveFactoryAPI"
 		},
 		"0xbb1b19495b8fe7c402427479b9ac14886cbbaaee": {
 			"address": "0xbb1b19495b8fe7c402427479b9ac14886cbbaaee",
-			"price": "2541318484",
-			"humanizedPrice": 2541.318484,
+			"price": "1110379887",
+			"humanizedPrice": 1110.379887,
 			"source": "curveFactoryAPI"
 		},
 		"0xbb287e6017d3deb0e2e65061e8684eab21060123": {
 			"address": "0xbb287e6017d3deb0e2e65061e8684eab21060123",
-			"price": "1200436",
-			"humanizedPrice": 1.200436,
+			"price": "1210280",
+			"humanizedPrice": 1.21028,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xbbba073c31bf03b8acf7c28ef0738decf3695683": {
 			"address": "0xbbba073c31bf03b8acf7c28ef0738decf3695683",
-			"price": "280354",
-			"humanizedPrice": 0.280354,
+			"price": "262510",
+			"humanizedPrice": 0.26251,
 			"source": "defillama"
 		},
 		"0xbbda65cfa2f90308da20572e391f03a0cc6b4a9c": {
 			"address": "0xbbda65cfa2f90308da20572e391f03a0cc6b4a9c",
-			"price": "986014",
-			"humanizedPrice": 0.986014,
+			"price": "891622",
+			"humanizedPrice": 0.891622,
 			"source": "curveFactoryAPI"
 		},
 		"0xbc2843f599fdd9cde760e4744e0b17a6c7154019": {
 			"address": "0xbc2843f599fdd9cde760e4744e0b17a6c7154019",
-			"price": "17830",
-			"humanizedPrice": 0.01783,
+			"price": "9581",
+			"humanizedPrice": 0.009581,
 			"source": "curveFactoryAPI"
 		},
 		"0xbc33c283a37d46aba17bc5f8c27b27242688dec6": {
 			"address": "0xbc33c283a37d46aba17bc5f8c27b27242688dec6",
-			"price": "1010160",
-			"humanizedPrice": 1.01016,
+			"price": "1026296",
+			"humanizedPrice": 1.026296,
 			"source": "curveFactoryAPI"
 		},
 		"0xbc94fd9e71d4162565b459093f53d95b22beab99": {
@@ -2901,14 +2961,14 @@
 		},
 		"0xbd1463f02f61676d53fd183c2b19282bff93d099": {
 			"address": "0xbd1463f02f61676d53fd183c2b19282bff93d099",
-			"price": "1237501",
-			"humanizedPrice": 1.237501,
+			"price": "1253211",
+			"humanizedPrice": 1.253211,
 			"source": "curveFactoryAPI"
 		},
 		"0xbd1fe73e1f12bd2bc237de9b626f056f21f86427": {
 			"address": "0xbd1fe73e1f12bd2bc237de9b626f056f21f86427",
-			"price": "53696",
-			"humanizedPrice": 0.053696,
+			"price": "54482",
+			"humanizedPrice": 0.054482,
 			"source": "curveFactoryAPI"
 		},
 		"0xbeb8d6270d445269febc07bf2e4dd56f8b71d3a2": {
@@ -2919,14 +2979,14 @@
 		},
 		"0xbed1d474dda97edceb7b9af13be4cbf1bb98a2d3": {
 			"address": "0xbed1d474dda97edceb7b9af13be4cbf1bb98a2d3",
-			"price": "652551",
-			"humanizedPrice": 0.652551,
+			"price": "428450",
+			"humanizedPrice": 0.42845,
 			"source": "curveFactoryAPI"
 		},
 		"0xbeda9a5300393e00229dc15cc54d5185e7646c56": {
 			"address": "0xbeda9a5300393e00229dc15cc54d5185e7646c56",
-			"price": "3908672457",
-			"humanizedPrice": 3908.672457,
+			"price": "4092312932",
+			"humanizedPrice": 4092.312932,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xbf122bab18cba38ce4161f3bae43e2a9d6ead395": {
@@ -2937,218 +2997,212 @@
 		},
 		"0xbfa35599c7aebb0dace9b5aa3ca5f2a79624d8eb": {
 			"address": "0xbfa35599c7aebb0dace9b5aa3ca5f2a79624d8eb",
-			"price": "1607",
-			"humanizedPrice": 0.001607,
+			"price": "932",
+			"humanizedPrice": 0.000932,
 			"source": "curveFactoryAPI"
 		},
 		"0xbfd47bfc332dda8f41db4230c13b9f7243adae2e": {
 			"address": "0xbfd47bfc332dda8f41db4230c13b9f7243adae2e",
-			"price": "3470671",
-			"humanizedPrice": 3.470671,
+			"price": "3221448",
+			"humanizedPrice": 3.221448,
 			"source": "curveFactoryAPI"
 		},
 		"0xc007b1ef592ddec342f377234e0b7a78cb915cc1": {
 			"address": "0xc007b1ef592ddec342f377234e0b7a78cb915cc1",
-			"price": "26583",
-			"humanizedPrice": 0.026583,
+			"price": "17869",
+			"humanizedPrice": 0.017869,
 			"source": "curveFactoryAPI"
 		},
 		"0xc041fe582fb9c88e3c6a71fbe961d9b3bae506e7": {
 			"address": "0xc041fe582fb9c88e3c6a71fbe961d9b3bae506e7",
-			"price": "1006098",
-			"humanizedPrice": 1.006098,
+			"price": "991974",
+			"humanizedPrice": 0.991974,
 			"source": "curveFactoryAPI"
 		},
 		"0xc12e821ff75b464702d2ad55a0f4504ca6441be5": {
 			"address": "0xc12e821ff75b464702d2ad55a0f4504ca6441be5",
 			"price": "1",
-			"humanizedPrice": 0.0000013831792903989858,
+			"humanizedPrice": 0.000001144025673537703,
 			"source": "gammaAPI"
 		},
 		"0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97": {
 			"address": "0xc168e40227e4ebd8c1cae80f7a55a4f0e6d66c97",
-			"price": "2909",
-			"humanizedPrice": 0.002909,
+			"price": "2747",
+			"humanizedPrice": 0.002747,
 			"source": "curveFactoryAPI"
 		},
 		"0xc187c4138e894fbce0917d29c2c02606cc5e8c8f": {
 			"address": "0xc187c4138e894fbce0917d29c2c02606cc5e8c8f",
-			"price": "1119714",
-			"humanizedPrice": 1.119714,
+			"price": "1039309",
+			"humanizedPrice": 1.039309,
 			"source": "curveFactoryAPI"
 		},
 		"0xc2132d05d31c914a87c6611c10748aeb04b58e8f": {
 			"address": "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-			"price": "999866",
-			"humanizedPrice": 0.999866,
+			"price": "1000000",
+			"humanizedPrice": 1,
 			"source": "defillama"
-		},
-		"0xc298812164bd558268f51cc6e3b8b5daaf0b6341": {
-			"address": "0xc298812164bd558268f51cc6e3b8b5daaf0b6341",
-			"price": "1",
-			"humanizedPrice": 0.000001,
-			"source": "curveFactoryAPI"
 		},
 		"0xc3c7d422809852031b44ab29eec9f1eff2a58756": {
 			"address": "0xc3c7d422809852031b44ab29eec9f1eff2a58756",
-			"price": "1008999",
-			"humanizedPrice": 1.009,
+			"price": "1092000",
+			"humanizedPrice": 1.092,
 			"source": "defillama"
 		},
 		"0xc3f1c093eb30d268b287de7b3f6f950da0472e2f": {
 			"address": "0xc3f1c093eb30d268b287de7b3f6f950da0472e2f",
-			"price": "2035604",
-			"humanizedPrice": 2.035604,
+			"price": "1648231",
+			"humanizedPrice": 1.648231,
 			"source": "curveFactoryAPI"
 		},
 		"0xc3fdbadc7c795ef1d6ba111e06ff8f16a20ea539": {
 			"address": "0xc3fdbadc7c795ef1d6ba111e06ff8f16a20ea539",
-			"price": "25532",
-			"humanizedPrice": 0.025532,
+			"price": "22138",
+			"humanizedPrice": 0.022138,
 			"source": "curveFactoryAPI"
 		},
 		"0xc491c1b173e932e97d9f739ccd9ae5b6d5fce4ce": {
 			"address": "0xc491c1b173e932e97d9f739ccd9ae5b6d5fce4ce",
-			"price": "43822",
-			"humanizedPrice": 0.04382257356046584,
+			"price": "41332",
+			"humanizedPrice": 0.041332371357620516,
 			"source": "gammaAPI"
 		},
 		"0xc4ce1d6f5d98d65ee25cf85e9f2e9dcfee6cb5d6": {
 			"address": "0xc4ce1d6f5d98d65ee25cf85e9f2e9dcfee6cb5d6",
-			"price": "999970",
-			"humanizedPrice": 0.99997,
+			"price": "999764",
+			"humanizedPrice": 0.999764,
 			"source": "curveFactoryAPI"
 		},
 		"0xc4fb41ac5286990fb30f0b898b355fdb66781a6d": {
 			"address": "0xc4fb41ac5286990fb30f0b898b355fdb66781a6d",
-			"price": "1199927",
-			"humanizedPrice": 1.199927,
+			"price": "1085057",
+			"humanizedPrice": 1.085057,
 			"source": "curveFactoryAPI"
 		},
 		"0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc": {
 			"address": "0xc5102fe9359fd9a28f877a67e36b0f050d81a3cc",
-			"price": "10626",
-			"humanizedPrice": 0.01062695,
+			"price": "6628",
+			"humanizedPrice": 0.00662886,
 			"source": "defillama"
 		},
 		"0xc5c4e73c9db82a28b3e42feb02bd36a3d81110e9": {
 			"address": "0xc5c4e73c9db82a28b3e42feb02bd36a3d81110e9",
-			"price": "47481",
-			"humanizedPrice": 0.047481,
+			"price": "44071",
+			"humanizedPrice": 0.044071,
 			"source": "curveFactoryAPI"
 		},
 		"0xc67238827da94b15f6ba10f3d35f690809919f75": {
 			"address": "0xc67238827da94b15f6ba10f3d35f690809919f75",
-			"price": "1250000",
-			"humanizedPrice": 1.25,
+			"price": "1220000",
+			"humanizedPrice": 1.22,
 			"source": "curveFactoryAPI"
 		},
 		"0xc6dd68b546d696d5a31837b05065a151d6b6f892": {
 			"address": "0xc6dd68b546d696d5a31837b05065a151d6b6f892",
-			"price": "340966",
-			"humanizedPrice": 0.34096696630117124,
+			"price": "366676",
+			"humanizedPrice": 0.3666767690937388,
 			"source": "gammaAPI"
 		},
 		"0xc729a8bfebb7f9089112c081565eb4a0031612ba": {
 			"address": "0xc729a8bfebb7f9089112c081565eb4a0031612ba",
-			"price": "2437794",
-			"humanizedPrice": 2.437794,
+			"price": "179267",
+			"humanizedPrice": 0.179267,
 			"source": "curveFactoryAPI"
 		},
 		"0xc798130644b8962a357dfbe8bb30b19b681aa7d4": {
 			"address": "0xc798130644b8962a357dfbe8bb30b19b681aa7d4",
-			"price": "532933840",
-			"humanizedPrice": 532.93384,
+			"price": "501091595",
+			"humanizedPrice": 501.091595,
 			"source": "curveFactoryAPI"
 		},
 		"0xc89004ce7becd2b39c44260327a603885da119b5": {
 			"address": "0xc89004ce7becd2b39c44260327a603885da119b5",
-			"price": "812",
-			"humanizedPrice": 0.0008129675102018011,
+			"price": "777",
+			"humanizedPrice": 0.0007770270654235126,
 			"source": "gammaAPI"
 		},
 		"0xc8bb8eda94931ca2f20ef43ea7dbd58e68400400": {
 			"address": "0xc8bb8eda94931ca2f20ef43ea7dbd58e68400400",
-			"price": "108700000",
-			"humanizedPrice": 108.7,
+			"price": "120350000",
+			"humanizedPrice": 120.35,
 			"source": "curveFactoryAPI"
 		},
 		"0xc8d95f04415c28ab7d5bb7cc402cfe80de6a3bfe": {
 			"address": "0xc8d95f04415c28ab7d5bb7cc402cfe80de6a3bfe",
-			"price": "901180",
-			"humanizedPrice": 0.90118,
+			"price": "1212942",
+			"humanizedPrice": 1.212942,
 			"source": "curveFactoryAPI"
 		},
 		"0xc9c1c1c20b3658f8787cc2fd702267791f224ce1": {
 			"address": "0xc9c1c1c20b3658f8787cc2fd702267791f224ce1",
-			"price": "297776",
-			"humanizedPrice": 0.297776,
+			"price": "246671",
+			"humanizedPrice": 0.246671,
 			"source": "curveFactoryAPI"
 		},
 		"0xca409f7c21e970411e9a5b163bbf82d21c175274": {
 			"address": "0xca409f7c21e970411e9a5b163bbf82d21c175274",
-			"price": "241562",
-			"humanizedPrice": 0.241562,
+			"price": "225430",
+			"humanizedPrice": 0.22543,
 			"source": "curveFactoryAPI"
 		},
 		"0xca782fdbff0c9c791a5997f60d978a6b1ad6c372": {
 			"address": "0xca782fdbff0c9c791a5997f60d978a6b1ad6c372",
-			"price": "1153",
-			"humanizedPrice": 0.001153,
+			"price": "1170",
+			"humanizedPrice": 0.00117,
 			"source": "curveFactoryAPI"
 		},
 		"0xcaaf554900e33ae5dbc66ae9f8adc3049b7d31db": {
 			"address": "0xcaaf554900e33ae5dbc66ae9f8adc3049b7d31db",
-			"price": "658",
-			"humanizedPrice": 0.000658,
+			"price": "346",
+			"humanizedPrice": 0.000346,
 			"source": "curveFactoryAPI"
 		},
 		"0xcb7f1ef7246d1497b985f7fc45a1a31f04346133": {
 			"address": "0xcb7f1ef7246d1497b985f7fc45a1a31f04346133",
-			"price": "652220",
-			"humanizedPrice": 0.65222,
+			"price": "658430",
+			"humanizedPrice": 0.65843,
 			"source": "curveFactoryAPI"
 		},
 		"0xcbb7fae80e4f5c0cbfe1af7bb1f19692f9532cfa": {
 			"address": "0xcbb7fae80e4f5c0cbfe1af7bb1f19692f9532cfa",
-			"price": "432",
-			"humanizedPrice": 0.00043215550675905923,
+			"price": "300",
+			"humanizedPrice": 0.0003008455401355074,
 			"source": "gammaAPI"
 		},
 		"0xcc3520a1ddb017740f1a7a267ffbed797adf9d49": {
 			"address": "0xcc3520a1ddb017740f1a7a267ffbed797adf9d49",
-			"price": "9488",
-			"humanizedPrice": 0.009488,
+			"price": "8580",
+			"humanizedPrice": 0.00858,
 			"source": "curveFactoryAPI"
 		},
 		"0xcc9841c942ec72e6ac74da8fb2fb45cf3b1a099c": {
 			"address": "0xcc9841c942ec72e6ac74da8fb2fb45cf3b1a099c",
-			"price": "510755",
-			"humanizedPrice": 0.510755,
+			"price": "474780",
+			"humanizedPrice": 0.47478,
 			"source": "curveFactoryAPI"
 		},
 		"0xccbbb572eb5edc973a90fdc57d07d7740bb027f5": {
 			"address": "0xccbbb572eb5edc973a90fdc57d07d7740bb027f5",
-			"price": "877963",
-			"humanizedPrice": 0.877963567865233,
+			"price": "883162",
+			"humanizedPrice": 0.883162722957771,
 			"source": "gammaAPI"
 		},
 		"0xccbcaf47e87f50a338fac9bf58e567ed1c87be2b": {
 			"address": "0xccbcaf47e87f50a338fac9bf58e567ed1c87be2b",
-			"price": "2268412",
-			"humanizedPrice": 2.2684125125137453,
+			"price": "2367304",
+			"humanizedPrice": 2.3673042393658705,
 			"source": "gammaAPI"
 		},
 		"0xccec9c16448f4d316e1468404a7e569a3f998846": {
 			"address": "0xccec9c16448f4d316e1468404a7e569a3f998846",
-			"price": "767",
-			"humanizedPrice": 0.000767,
+			"price": "712",
+			"humanizedPrice": 0.000712,
 			"source": "curveFactoryAPI"
 		},
 		"0xcd483d2ba34d24cada71639beb1215609860b911": {
 			"address": "0xcd483d2ba34d24cada71639beb1215609860b911",
-			"price": "467980",
-			"humanizedPrice": 0.46798016927437736,
+			"price": "411920",
+			"humanizedPrice": 0.41192031524123723,
 			"source": "gammaAPI"
 		},
 		"0xcd7930724db12634b9ce02ae123b5d8a723a276a": {
@@ -3159,80 +3213,80 @@
 		},
 		"0xcdcb8c87b3833f8eaa285625ed35cd11b694afcb": {
 			"address": "0xcdcb8c87b3833f8eaa285625ed35cd11b694afcb",
-			"price": "14304",
-			"humanizedPrice": 0.014304,
+			"price": "13277",
+			"humanizedPrice": 0.013277,
 			"source": "curveFactoryAPI"
 		},
 		"0xcde9c4a2b128268dcc46bd4e62c25adc9423490f": {
 			"address": "0xcde9c4a2b128268dcc46bd4e62c25adc9423490f",
-			"price": "265686",
-			"humanizedPrice": 0.265686,
+			"price": "248268",
+			"humanizedPrice": 0.248268,
 			"source": "curveFactoryAPI"
 		},
 		"0xce113ffc5b4c9f088bb0ad9459e10387f232c3e3": {
 			"address": "0xce113ffc5b4c9f088bb0ad9459e10387f232c3e3",
-			"price": "21226171",
-			"humanizedPrice": 21.226171,
+			"price": "21193840",
+			"humanizedPrice": 21.19384,
 			"source": "curveFactoryAPI"
 		},
 		"0xcf5186491739aac19db943d71a9b9b759f3afabf": {
 			"address": "0xcf5186491739aac19db943d71a9b9b759f3afabf",
-			"price": "4711",
-			"humanizedPrice": 0.004711,
+			"price": "3954",
+			"humanizedPrice": 0.003954,
 			"source": "curveFactoryAPI"
 		},
 		"0xcfd4a6a885c4404a2a5720918a9b4880600876a8": {
 			"address": "0xcfd4a6a885c4404a2a5720918a9b4880600876a8",
-			"price": "1228467",
-			"humanizedPrice": 1.2284674391405908,
+			"price": "1300421",
+			"humanizedPrice": 1.3004213069524073,
 			"source": "gammaAPI"
 		},
 		"0xcfde19f1a09206bb024f5c4bf61c40670fdff449": {
 			"address": "0xcfde19f1a09206bb024f5c4bf61c40670fdff449",
-			"price": "1066732",
-			"humanizedPrice": 1.066732,
+			"price": "1069489",
+			"humanizedPrice": 1.069489,
 			"source": "curveFactoryAPI"
 		},
 		"0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f": {
 			"address": "0xd0258a3fd00f38aa8090dfee343f10a9d4d30d3f",
-			"price": "55383",
-			"humanizedPrice": 0.055383,
+			"price": "49266",
+			"humanizedPrice": 0.04926647,
 			"source": "defillama"
 		},
 		"0xd125443f38a69d776177c2b9c041f462936f8218": {
 			"address": "0xd125443f38a69d776177c2b9c041f462936f8218",
-			"price": "564512",
-			"humanizedPrice": 0.564512,
+			"price": "399379",
+			"humanizedPrice": 0.399379,
 			"source": "defillama"
 		},
 		"0xd28fc769ac4af7862a6dd3abf9810b9c63973a29": {
 			"address": "0xd28fc769ac4af7862a6dd3abf9810b9c63973a29",
-			"price": "149826",
-			"humanizedPrice": 0.149826,
+			"price": "139068",
+			"humanizedPrice": 0.139068,
 			"source": "curveFactoryAPI"
 		},
 		"0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0": {
 			"address": "0xd2d0c98684050222ec9418b21e97e3f9a70d9fb0",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999461",
+			"humanizedPrice": 0.999461,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xd3bd62439c599739775df75cb33b888d437e23fe": {
 			"address": "0xd3bd62439c599739775df75cb33b888d437e23fe",
-			"price": "15422",
-			"humanizedPrice": 0.015422906441823725,
+			"price": "15459",
+			"humanizedPrice": 0.015459542561340814,
 			"source": "gammaAPI"
 		},
 		"0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259": {
 			"address": "0xd4a0aa006e0f70580aaa7ee1fd04fa447c36b259",
-			"price": "3915918755",
-			"humanizedPrice": 3915.9187550789143,
+			"price": "4101109719",
+			"humanizedPrice": 4101.109719569245,
 			"source": "defillama"
 		},
 		"0xd4f40efc04de53aea9e373b0fb5297b6d9b510ca": {
 			"address": "0xd4f40efc04de53aea9e373b0fb5297b6d9b510ca",
-			"price": "1020605",
-			"humanizedPrice": 1.020605,
+			"price": "983343",
+			"humanizedPrice": 0.983343,
 			"source": "curveFactoryAPI"
 		},
 		"0xd5b22b9189398583a0cf63e5d8ccaab663b8a0a5": {
@@ -3241,166 +3295,184 @@
 			"humanizedPrice": 0.01396,
 			"source": "curveFactoryAPI"
 		},
+		"0xd5d603eaa0f4696a2f55bd0850c00e6d4a248b9d": {
+			"address": "0xd5d603eaa0f4696a2f55bd0850c00e6d4a248b9d",
+			"price": "220014",
+			"humanizedPrice": 0.220014,
+			"source": "curveFactoryAPI"
+		},
 		"0xd5fac46705cd3455efcd71694258226c0e37038b": {
 			"address": "0xd5fac46705cd3455efcd71694258226c0e37038b",
-			"price": "82825256",
-			"humanizedPrice": 82.825256,
+			"price": "71724403",
+			"humanizedPrice": 71.724403,
 			"source": "curveFactoryAPI"
 		},
 		"0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea": {
 			"address": "0xd600d760477ffaed25bf2450e29ff6bd3c47c9ea",
-			"price": "3841490000",
-			"humanizedPrice": 3841.49,
+			"price": "4017730000",
+			"humanizedPrice": 4017.73,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xd687899675d24a2222579c624e5325f364a58eeb": {
 			"address": "0xd687899675d24a2222579c624e5325f364a58eeb",
-			"price": "68",
-			"humanizedPrice": 0.000068,
+			"price": "58",
+			"humanizedPrice": 0.000058,
 			"source": "curveFactoryAPI"
 		},
 		"0xd6df932a45c0f255f85145f286ea0b292b21c90b": {
 			"address": "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
-			"price": "275490000",
-			"humanizedPrice": 275.49,
+			"price": "267209999",
+			"humanizedPrice": 267.21,
 			"source": "defillama"
 		},
 		"0xd70cbe87f330f60651394b088dfb2c6f73a156d1": {
 			"address": "0xd70cbe87f330f60651394b088dfb2c6f73a156d1",
-			"price": "122751004",
-			"humanizedPrice": 122.751004,
+			"price": "132258775",
+			"humanizedPrice": 132.258775,
 			"source": "curveFactoryAPI"
 		},
 		"0xd711d7d893de57dc13ff465763218770bd42db1d": {
 			"address": "0xd711d7d893de57dc13ff465763218770bd42db1d",
-			"price": "1350000",
-			"humanizedPrice": 1.35,
+			"price": "2000000",
+			"humanizedPrice": 2,
 			"source": "curveFactoryAPI"
 		},
 		"0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1": {
 			"address": "0xd7be0ec4f6d7ec344311f8284b448f5bccfd0fd1",
-			"price": "999880",
-			"humanizedPrice": 0.99988,
+			"price": "999610",
+			"humanizedPrice": 0.99961,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xd8001ce95a13168aa4f7d70b5298962b7cadf6dd": {
 			"address": "0xd8001ce95a13168aa4f7d70b5298962b7cadf6dd",
-			"price": "6059293",
-			"humanizedPrice": 6.059293,
+			"price": "6042892",
+			"humanizedPrice": 6.042892,
 			"source": "curveFactoryAPI"
+		},
+		"0xd811a47cfd17355f47ac49be02c4744a926dd16b": {
+			"address": "0xd811a47cfd17355f47ac49be02c4744a926dd16b",
+			"price": "1003833",
+			"humanizedPrice": 1.003833333774,
+			"source": "defillama"
 		},
 		"0xd86b5923f3ad7b585ed81b448170ae026c65ae9a": {
 			"address": "0xd86b5923f3ad7b585ed81b448170ae026c65ae9a",
-			"price": "83",
-			"humanizedPrice": 0.000083,
+			"price": "802",
+			"humanizedPrice": 0.000802,
 			"source": "curveFactoryAPI"
 		},
 		"0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515": {
 			"address": "0xd92a3a0ad7fbe4b8f6382e0cada87471ef800515",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
+			"source": "ERC4626-convertToAssets"
+		},
+		"0xd9b961ddf601498251abb1ab9b926f7d7b8daa09": {
+			"address": "0xd9b961ddf601498251abb1ab9b926f7d7b8daa09",
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4": {
 			"address": "0xd9df4b212c9565a6281a2025b7ed87dd0f4a6cb4",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999461",
+			"humanizedPrice": 0.999461,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xd9e5f1d93b85c9629efd43a04f0e9806a69db90c": {
 			"address": "0xd9e5f1d93b85c9629efd43a04f0e9806a69db90c",
-			"price": "1267008",
-			"humanizedPrice": 1.267008,
+			"price": "1257986",
+			"humanizedPrice": 1.257986,
 			"source": "curveFactoryAPI"
 		},
 		"0xda10c3f360dc741e7359d561fb4b4e008c37b356": {
 			"address": "0xda10c3f360dc741e7359d561fb4b4e008c37b356",
-			"price": "921248",
-			"humanizedPrice": 0.921248,
+			"price": "833056",
+			"humanizedPrice": 0.833056,
 			"source": "curveFactoryAPI"
 		},
 		"0xda43bfd7ecc6835aa6f1761ced30b986a574c0d2": {
 			"address": "0xda43bfd7ecc6835aa6f1761ced30b986a574c0d2",
-			"price": "1257366",
-			"humanizedPrice": 1.257366,
+			"price": "1236411",
+			"humanizedPrice": 1.236411,
 			"source": "curveFactoryAPI"
 		},
 		"0xdab529f40e671a1d4bf91361c21bf9f0c9712ab7": {
 			"address": "0xdab529f40e671a1d4bf91361c21bf9f0c9712ab7",
-			"price": "1010000",
-			"humanizedPrice": 1.01,
+			"price": "999792",
+			"humanizedPrice": 0.999792,
 			"source": "curveFactoryAPI"
 		},
 		"0xdad97f7713ae9437fa9249920ec8507e5fbb23d3": {
 			"address": "0xdad97f7713ae9437fa9249920ec8507e5fbb23d3",
-			"price": "2974628641",
-			"humanizedPrice": 2974.628641,
+			"price": "2698505847",
+			"humanizedPrice": 2698.505847,
 			"source": "curveFactoryAPI"
 		},
 		"0xdb92b89ca415c0dab40dc96e99fc411c08f20780": {
 			"address": "0xdb92b89ca415c0dab40dc96e99fc411c08f20780",
-			"price": "1124575",
-			"humanizedPrice": 1.124575,
+			"price": "1128374",
+			"humanizedPrice": 1.128374,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xdb9f075bb2cd4d0683ac25bb0d8566a9b7fef774": {
 			"address": "0xdb9f075bb2cd4d0683ac25bb0d8566a9b7fef774",
-			"price": "1476",
-			"humanizedPrice": 0.0014767790407569615,
+			"price": "1316",
+			"humanizedPrice": 0.0013169173794390324,
 			"source": "gammaAPI"
 		},
 		"0xdbf31df14b66535af65aac99c32e9ea844e14501": {
 			"address": "0xdbf31df14b66535af65aac99c32e9ea844e14501",
-			"price": "142579760691",
-			"humanizedPrice": 142579.760691,
+			"price": "117784510991",
+			"humanizedPrice": 117784.510991,
 			"source": "curveFactoryAPI"
 		},
 		"0xdc3326e71d45186f113a2f448984ca0e8d201995": {
 			"address": "0xdc3326e71d45186f113a2f448984ca0e8d201995",
-			"price": "777427",
-			"humanizedPrice": 0.777427,
+			"price": "773432",
+			"humanizedPrice": 0.773432,
 			"source": "curveFactoryAPI"
 		},
 		"0xdc703c6aa358e172e885099453df6b1a595518ec": {
 			"address": "0xdc703c6aa358e172e885099453df6b1a595518ec",
-			"price": "142138",
-			"humanizedPrice": 0.142138,
+			"price": "131931",
+			"humanizedPrice": 0.131931,
 			"source": "curveFactoryAPI"
 		},
 		"0xdc9232e2df177d7a12fdff6ecbab114e2231198d": {
 			"address": "0xdc9232e2df177d7a12fdff6ecbab114e2231198d",
-			"price": "2291861905803670016",
-			"humanizedPrice": 2291861905803.67,
+			"price": "2280502287910134784",
+			"humanizedPrice": 2280502287910.135,
 			"source": "curveFactoryAPI"
 		},
 		"0xdcb72ae4d5dc6ae274461d57e65db8d50d0a33ad": {
 			"address": "0xdcb72ae4d5dc6ae274461d57e65db8d50d0a33ad",
 			"price": "1577",
-			"humanizedPrice": 0.00157766,
+			"humanizedPrice": 0.00157733,
 			"source": "defillama"
 		},
 		"0xdd28ec6b06983d01d37dbd9ab581d8d884d95264": {
 			"address": "0xdd28ec6b06983d01d37dbd9ab581d8d884d95264",
-			"price": "5229",
-			"humanizedPrice": 0.005229,
+			"price": "4392",
+			"humanizedPrice": 0.004392,
 			"source": "curveFactoryAPI"
 		},
 		"0xddc9e2891fa11a4cc5c223145e8d14b44f3077c9": {
 			"address": "0xddc9e2891fa11a4cc5c223145e8d14b44f3077c9",
-			"price": "1000000",
-			"humanizedPrice": 1,
+			"price": "999445",
+			"humanizedPrice": 0.999445,
 			"source": "curveFactoryAPI"
 		},
 		"0xdde5fdb48b2ec6bc26bb4487f8e3a4eb99b3d633": {
 			"address": "0xdde5fdb48b2ec6bc26bb4487f8e3a4eb99b3d633",
-			"price": "311917",
-			"humanizedPrice": 0.311917,
+			"price": "159979",
+			"humanizedPrice": 0.159979,
 			"source": "curveFactoryAPI"
 		},
 		"0xe0b52e49357fd4daf2c15e02058dce6bc0057db4": {
 			"address": "0xe0b52e49357fd4daf2c15e02058dce6bc0057db4",
-			"price": "918233",
-			"humanizedPrice": 0.918233,
+			"price": "1170000",
+			"humanizedPrice": 1.17,
 			"source": "curveFactoryAPI"
 		},
 		"0xe0eb3ca0b2759344477a7d4e0f8f1f3944da1ba7": {
@@ -3411,56 +3483,56 @@
 		},
 		"0xe0f0622f871d9597649062e9bbbe9bd65e918e34": {
 			"address": "0xe0f0622f871d9597649062e9bbbe9bd65e918e34",
-			"price": "8057",
-			"humanizedPrice": 0.008057768309536896,
+			"price": "8371",
+			"humanizedPrice": 0.00837161259390197,
 			"source": "gammaAPI"
 		},
 		"0xe0fb098af0544df0124dcd326b15c0df3ca62164": {
 			"address": "0xe0fb098af0544df0124dcd326b15c0df3ca62164",
-			"price": "2099167",
-			"humanizedPrice": 2.099167605177882,
+			"price": "2107706",
+			"humanizedPrice": 2.1077067713243314,
 			"source": "gammaAPI"
 		},
 		"0xe111178a87a3bff0c8d18decba5798827539ae99": {
 			"address": "0xe111178a87a3bff0c8d18decba5798827539ae99",
-			"price": "1161243",
-			"humanizedPrice": 1.161243,
+			"price": "1161512",
+			"humanizedPrice": 1.161512,
 			"source": "curveFactoryAPI"
 		},
 		"0xe14e624f5ac7661d417a1e33da47bf74254913da": {
 			"address": "0xe14e624f5ac7661d417a1e33da47bf74254913da",
-			"price": "16",
-			"humanizedPrice": 0.000016,
+			"price": "15",
+			"humanizedPrice": 0.000015,
 			"source": "curveFactoryAPI"
 		},
 		"0xe238ecb42c424e877652ad82d8a939183a04c35f": {
 			"address": "0xe238ecb42c424e877652ad82d8a939183a04c35f",
-			"price": "4051",
-			"humanizedPrice": 0.00405197,
+			"price": "3381",
+			"humanizedPrice": 0.00338172,
 			"source": "defillama"
-		},
-		"0xe23cb450722f6b5466e60d036981b4160721d146": {
-			"address": "0xe23cb450722f6b5466e60d036981b4160721d146",
-			"price": "59",
-			"humanizedPrice": 0.000059,
-			"source": "curveFactoryAPI"
 		},
 		"0xe2aa7db6da1dae97c5f5c6914d285fbfcc32a128": {
 			"address": "0xe2aa7db6da1dae97c5f5c6914d285fbfcc32a128",
-			"price": "1193890",
-			"humanizedPrice": 1.19389,
+			"price": "1192334",
+			"humanizedPrice": 1.192334,
 			"source": "curveFactoryAPI"
 		},
 		"0xe2bbbfc3a5bad237774f89148011e0762aeb1bac": {
 			"address": "0xe2bbbfc3a5bad237774f89148011e0762aeb1bac",
-			"price": "993002",
-			"humanizedPrice": 0.993002,
+			"price": "776856",
+			"humanizedPrice": 0.776856,
 			"source": "curveFactoryAPI"
+		},
+		"0xe30461f1270ba52d45df1e773aefe594c7e430dc": {
+			"address": "0xe30461f1270ba52d45df1e773aefe594c7e430dc",
+			"price": "1004610",
+			"humanizedPrice": 1.00461,
+			"source": "defillama"
 		},
 		"0xe3471f24b1dcf059c447367b405e35ab54c2e10e": {
 			"address": "0xe3471f24b1dcf059c447367b405e35ab54c2e10e",
-			"price": "20",
-			"humanizedPrice": 0.00002,
+			"price": "13",
+			"humanizedPrice": 0.000013,
 			"source": "curveFactoryAPI"
 		},
 		"0xe34b3a4cedb077b53cc813df6fe34a85749fcecc": {
@@ -3471,50 +3543,50 @@
 		},
 		"0xe389d95e2e8c799fde5d37f245bdd7160bf50864": {
 			"address": "0xe389d95e2e8c799fde5d37f245bdd7160bf50864",
-			"price": "418249",
-			"humanizedPrice": 0.4182495197156134,
+			"price": "436924",
+			"humanizedPrice": 0.4369244060520808,
 			"source": "gammaAPI"
 		},
 		"0xe40a5aa22cbccc8165aedd86f6d03fc5f551c3c6": {
 			"address": "0xe40a5aa22cbccc8165aedd86f6d03fc5f551c3c6",
-			"price": "1459341139550327808",
-			"humanizedPrice": 1459341139550.328,
+			"price": "1449609971373319680",
+			"humanizedPrice": 1449609971373.3196,
 			"source": "gammaAPI"
 		},
 		"0xe4244bf798f63881591113126b64493ac36ac525": {
 			"address": "0xe4244bf798f63881591113126b64493ac36ac525",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xe4ae3ee65bb687045e401827b404fee34be4ba53": {
 			"address": "0xe4ae3ee65bb687045e401827b404fee34be4ba53",
-			"price": "85895",
-			"humanizedPrice": 0.085895,
+			"price": "83681",
+			"humanizedPrice": 0.083681,
 			"source": "curveFactoryAPI"
 		},
 		"0xe4eb7e0ecb5099fce9505fa0dae72efaff73c4cb": {
 			"address": "0xe4eb7e0ecb5099fce9505fa0dae72efaff73c4cb",
-			"price": "248",
-			"humanizedPrice": 0.000248,
+			"price": "224",
+			"humanizedPrice": 0.000224,
 			"source": "curveFactoryAPI"
 		},
 		"0xe503c1dfd7012e72af4c415f4c5e8abf5b45c25f": {
 			"address": "0xe503c1dfd7012e72af4c415f4c5e8abf5b45c25f",
-			"price": "430171",
-			"humanizedPrice": 0.43017166791523215,
+			"price": "448790",
+			"humanizedPrice": 0.4487900568891495,
 			"source": "gammaAPI"
 		},
 		"0xe52509181feb30eb4979e29ec70d50fd5c44d590": {
 			"address": "0xe52509181feb30eb4979e29ec70d50fd5c44d590",
-			"price": "1713412",
-			"humanizedPrice": 1.713412,
+			"price": "1350268",
+			"humanizedPrice": 1.350268,
 			"source": "curveFactoryAPI"
 		},
 		"0xe5417af564e4bfda1c483642db72007871397896": {
 			"address": "0xe5417af564e4bfda1c483642db72007871397896",
-			"price": "1950000",
-			"humanizedPrice": 1.95,
+			"price": "1810000",
+			"humanizedPrice": 1.81,
 			"source": "defillama"
 		},
 		"0xe58c0a2c26fd644e02eef5c87904318b405be079": {
@@ -3525,50 +3597,50 @@
 		},
 		"0xe5b49820e5a1063f6f4ddf851327b5e8b2301048": {
 			"address": "0xe5b49820e5a1063f6f4ddf851327b5e8b2301048",
-			"price": "25",
-			"humanizedPrice": 0.000025,
+			"price": "19",
+			"humanizedPrice": 0.000019,
 			"source": "curveFactoryAPI"
 		},
 		"0xe5d2907164aed433b63087b7969c5454f4a37ed7": {
 			"address": "0xe5d2907164aed433b63087b7969c5454f4a37ed7",
-			"price": "692820309548556672",
-			"humanizedPrice": 692820309548.5566,
+			"price": "603442848576209408",
+			"humanizedPrice": 603442848576.2094,
 			"source": "gammaAPI"
 		},
 		"0xe6469ba6d2fd6130788e0ea9c0a0515900563b59": {
 			"address": "0xe6469ba6d2fd6130788e0ea9c0a0515900563b59",
-			"price": "13469",
-			"humanizedPrice": 0.013469,
+			"price": "11417",
+			"humanizedPrice": 0.011417,
 			"source": "curveFactoryAPI"
 		},
 		"0xe6a537a407488807f0bbeb0038b79004f19dddfb": {
 			"address": "0xe6a537a407488807f0bbeb0038b79004f19dddfb",
-			"price": "182494",
-			"humanizedPrice": 0.182494,
+			"price": "185812",
+			"humanizedPrice": 0.185812,
 			"source": "curveFactoryAPI"
 		},
 		"0xe6bce0647ed06d498219d42fe19b3d6d1726c659": {
 			"address": "0xe6bce0647ed06d498219d42fe19b3d6d1726c659",
-			"price": "841800",
-			"humanizedPrice": 0.8418,
+			"price": "829225",
+			"humanizedPrice": 0.829225,
 			"source": "curveFactoryAPI"
 		},
 		"0xe6dacc1aedb8f1d6a755afbc6bd35717f4d4b64e": {
 			"address": "0xe6dacc1aedb8f1d6a755afbc6bd35717f4d4b64e",
-			"price": "347681",
-			"humanizedPrice": 0.347681,
+			"price": "322715",
+			"humanizedPrice": 0.322715,
 			"source": "curveFactoryAPI"
 		},
 		"0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171": {
 			"address": "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171",
-			"price": "1288137",
-			"humanizedPrice": 1.288137,
+			"price": "1164822",
+			"humanizedPrice": 1.164822,
 			"source": "curveFactoryAPI"
 		},
 		"0xe7cea2f6d7b120174bf3a9bc98efaf1ff72c997d": {
 			"address": "0xe7cea2f6d7b120174bf3a9bc98efaf1ff72c997d",
-			"price": "494019",
-			"humanizedPrice": 0.494019,
+			"price": "458780",
+			"humanizedPrice": 0.45878,
 			"source": "curveFactoryAPI"
 		},
 		"0xe968dc04927e43fd3a93aabfd4f385c4dcd367ff": {
@@ -3579,218 +3651,224 @@
 		},
 		"0xe97c75e7c09f474a275e7caee4bdffd6f86eff20": {
 			"address": "0xe97c75e7c09f474a275e7caee4bdffd6f86eff20",
-			"price": "1273",
-			"humanizedPrice": 0.001273285011550037,
+			"price": "1280",
+			"humanizedPrice": 0.0012804371489461,
 			"source": "gammaAPI"
 		},
 		"0xea0941c6e067a4fb4399436ad3e2510eb36b419d": {
 			"address": "0xea0941c6e067a4fb4399436ad3e2510eb36b419d",
-			"price": "40986",
-			"humanizedPrice": 0.040986,
+			"price": "39013",
+			"humanizedPrice": 0.039013,
 			"source": "curveFactoryAPI"
 		},
 		"0xea10d0e0e02d4d74be5a699fe7bd3614738b1f78": {
 			"address": "0xea10d0e0e02d4d74be5a699fe7bd3614738b1f78",
-			"price": "44341126036",
-			"humanizedPrice": 44341.126036,
+			"price": "43428067374",
+			"humanizedPrice": 43428.067374,
 			"source": "curveFactoryAPI"
 		},
 		"0xeafe31cd9e8e01c8f0073a2c974f728fb80e9dce": {
 			"address": "0xeafe31cd9e8e01c8f0073a2c974f728fb80e9dce",
-			"price": "300117",
-			"humanizedPrice": 0.300117,
+			"price": "293024",
+			"humanizedPrice": 0.293024,
 			"source": "curveFactoryAPI"
 		},
 		"0xeb15170994a4b9df0d1cb2b877d89e5f70088632": {
 			"address": "0xeb15170994a4b9df0d1cb2b877d89e5f70088632",
-			"price": "194955",
-			"humanizedPrice": 0.194955,
+			"price": "176859",
+			"humanizedPrice": 0.176859,
+			"source": "curveFactoryAPI"
+		},
+		"0xeb51d9a39ad5eef215dc0bf39a8821ff804a0f01": {
+			"address": "0xeb51d9a39ad5eef215dc0bf39a8821ff804a0f01",
+			"price": "10870000",
+			"humanizedPrice": 10.87,
 			"source": "curveFactoryAPI"
 		},
 		"0xeb7d263db66aab4d5ee903a949a5a54c287bec87": {
 			"address": "0xeb7d263db66aab4d5ee903a949a5a54c287bec87",
-			"price": "319624",
-			"humanizedPrice": 0.31962471352541,
+			"price": "333471",
+			"humanizedPrice": 0.33347101206367696,
 			"source": "gammaAPI"
 		},
 		"0xeba559ec969bd2a6147ad76fccac5375121b4838": {
 			"address": "0xeba559ec969bd2a6147ad76fccac5375121b4838",
-			"price": "116571559401",
-			"humanizedPrice": 116571.55940137919,
+			"price": "112906458620",
+			"humanizedPrice": 112906.45862098431,
 			"source": "gammaAPI"
 		},
 		"0xec38621e72d86775a89c7422746de1f52bba5320": {
 			"address": "0xec38621e72d86775a89c7422746de1f52bba5320",
-			"price": "992683",
-			"humanizedPrice": 0.992683,
+			"price": "992410",
+			"humanizedPrice": 0.99241,
 			"source": "defillama"
 		},
 		"0xecdcb5b88f8e3c15f95c720c51c71c9e2080525d": {
 			"address": "0xecdcb5b88f8e3c15f95c720c51c71c9e2080525d",
-			"price": "775970000",
-			"humanizedPrice": 775.97,
+			"price": "972510000",
+			"humanizedPrice": 972.51,
 			"source": "curveFactoryAPI"
 		},
 		"0xeddc6ede8f3af9b4971e1fa9639314905458be87": {
 			"address": "0xeddc6ede8f3af9b4971e1fa9639314905458be87",
-			"price": "13445",
-			"humanizedPrice": 0.013445,
+			"price": "11190",
+			"humanizedPrice": 0.01119,
 			"source": "curveFactoryAPI"
 		},
 		"0xee2a89071654333703b3d6c9be9ab8f085f977de": {
 			"address": "0xee2a89071654333703b3d6c9be9ab8f085f977de",
-			"price": "216881",
-			"humanizedPrice": 0.2168814566694221,
+			"price": "207151",
+			"humanizedPrice": 0.2071519215286119,
 			"source": "gammaAPI"
 		},
 		"0xee33801cfe238e5f235f6b4a5c9e28fab2a5bed5": {
 			"address": "0xee33801cfe238e5f235f6b4a5c9e28fab2a5bed5",
-			"price": "459560",
-			"humanizedPrice": 0.45956,
+			"price": "420208",
+			"humanizedPrice": 0.420208,
 			"source": "curveFactoryAPI"
 		},
 		"0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
 			"address": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-			"price": "238134",
-			"humanizedPrice": 0.238134,
+			"price": "222210",
+			"humanizedPrice": 0.22221,
 			"source": "curveFactoryAPI"
 		},
 		"0xeef41df038a757ec7a999b3dbbd1c618e7d96fc7": {
 			"address": "0xeef41df038a757ec7a999b3dbbd1c618e7d96fc7",
-			"price": "311",
-			"humanizedPrice": 0.000311,
+			"price": "316",
+			"humanizedPrice": 0.000316,
 			"source": "curveFactoryAPI"
 		},
 		"0xef4f95d8c252d64308c04f711fb31892cc4c9965": {
 			"address": "0xef4f95d8c252d64308c04f711fb31892cc4c9965",
-			"price": "232204",
-			"humanizedPrice": 0.23220461783927546,
+			"price": "231286",
+			"humanizedPrice": 0.23128675439296612,
 			"source": "gammaAPI"
 		},
 		"0xef75e9c7097842acc5d0869e1db4e5fddf4bfdda": {
 			"address": "0xef75e9c7097842acc5d0869e1db4e5fddf4bfdda",
-			"price": "781666",
-			"humanizedPrice": 0.781666,
+			"price": "777581",
+			"humanizedPrice": 0.777581,
 			"source": "curveFactoryAPI"
 		},
 		"0xef978c32151f3fbdbca825a5de8011d29a84b7d9": {
 			"address": "0xef978c32151f3fbdbca825a5de8011d29a84b7d9",
-			"price": "694123",
-			"humanizedPrice": 0.694123,
+			"price": "627674",
+			"humanizedPrice": 0.627674,
 			"source": "curveFactoryAPI"
 		},
 		"0xf0e12cea6744425d0a04de57ae454cf71851f7c4": {
 			"address": "0xf0e12cea6744425d0a04de57ae454cf71851f7c4",
-			"price": "18078",
-			"humanizedPrice": 0.018078,
+			"price": "16780",
+			"humanizedPrice": 0.01678,
 			"source": "curveFactoryAPI"
 		},
 		"0xf221e7124d66184e52ae4e887eb49756b362d12b": {
 			"address": "0xf221e7124d66184e52ae4e887eb49756b362d12b",
-			"price": "203894",
-			"humanizedPrice": 0.203894,
+			"price": "189253",
+			"humanizedPrice": 0.189253,
 			"source": "curveFactoryAPI"
 		},
 		"0xf25645c4b5b1c040e9889e0fa4c252c2fc0b40be": {
 			"address": "0xf25645c4b5b1c040e9889e0fa4c252c2fc0b40be",
-			"price": "30253",
-			"humanizedPrice": 0.03025376672158218,
+			"price": "31579",
+			"humanizedPrice": 0.03157946366219109,
 			"source": "gammaAPI"
 		},
 		"0xf2f77fe7b8e66571e0fca7104c4d670bf1c8d722": {
 			"address": "0xf2f77fe7b8e66571e0fca7104c4d670bf1c8d722",
-			"price": "182778",
-			"humanizedPrice": 0.182778,
+			"price": "187128",
+			"humanizedPrice": 0.187128,
 			"source": "curveFactoryAPI"
 		},
 		"0xf33687811f3ad0cd6b48dd4b39f9f977bd7165a2": {
 			"address": "0xf33687811f3ad0cd6b48dd4b39f9f977bd7165a2",
-			"price": "258205",
-			"humanizedPrice": 0.258205,
+			"price": "243617",
+			"humanizedPrice": 0.243617,
 			"source": "curveFactoryAPI"
 		},
 		"0xf383ef2d31e1d4a19b3e04ca2937db6a8da9f229": {
 			"address": "0xf383ef2d31e1d4a19b3e04ca2937db6a8da9f229",
-			"price": "999740",
-			"humanizedPrice": 0.99974,
+			"price": "999538",
+			"humanizedPrice": 0.999538,
 			"source": "curveFactoryAPI"
 		},
 		"0xf462219aa7d7e7de1b1b5cb6c707288fd87d24bd": {
 			"address": "0xf462219aa7d7e7de1b1b5cb6c707288fd87d24bd",
-			"price": "2",
-			"humanizedPrice": 0.000002,
+			"price": "14",
+			"humanizedPrice": 0.000014,
 			"source": "curveFactoryAPI"
 		},
 		"0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f": {
 			"address": "0xf4f9d5697341b4c9b0cc8151413e05a90f7dc24f",
-			"price": "1111085",
-			"humanizedPrice": 1.111085,
+			"price": "1116928",
+			"humanizedPrice": 1.116928,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xf54a15f6da443041bb075959ea66ee47655ddfca": {
 			"address": "0xf54a15f6da443041bb075959ea66ee47655ddfca",
-			"price": "1015220",
-			"humanizedPrice": 1.01522,
+			"price": "1014946",
+			"humanizedPrice": 1.014946,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xf6be87ae8976f50dcd231d42580e430cf6133400": {
 			"address": "0xf6be87ae8976f50dcd231d42580e430cf6133400",
-			"price": "262822",
-			"humanizedPrice": 0.2628227772976486,
+			"price": "249979",
+			"humanizedPrice": 0.2499790749175996,
 			"source": "gammaAPI"
 		},
 		"0xf7464410c1ccf86b19711c9b6599336b00641c8f": {
 			"address": "0xf7464410c1ccf86b19711c9b6599336b00641c8f",
-			"price": "312363",
-			"humanizedPrice": 0.312363,
+			"price": "292624",
+			"humanizedPrice": 0.292624,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xf81ca96171ffb8418b213c056ebfafecb89a243d": {
 			"address": "0xf81ca96171ffb8418b213c056ebfafecb89a243d",
-			"price": "231",
-			"humanizedPrice": 0.000231,
+			"price": "215",
+			"humanizedPrice": 0.000215,
 			"source": "curveFactoryAPI"
 		},
 		"0xf82f3b57261f5b63ca7fd7159780f8e141cadea8": {
 			"address": "0xf82f3b57261f5b63ca7fd7159780f8e141cadea8",
-			"price": "5950552508",
-			"humanizedPrice": 5950.552508,
+			"price": "5523253573",
+			"humanizedPrice": 5523.253573,
 			"source": "curveFactoryAPI"
 		},
 		"0xf86d6151d03007b1906465b63e36d6f48136bc39": {
 			"address": "0xf86d6151d03007b1906465b63e36d6f48136bc39",
-			"price": "65023",
-			"humanizedPrice": 0.06502380525346337,
+			"price": "65960",
+			"humanizedPrice": 0.06596072773355896,
 			"source": "gammaAPI"
 		},
 		"0xf8a57c1d3b9629b77b6726a042ca48990a84fb49": {
 			"address": "0xf8a57c1d3b9629b77b6726a042ca48990a84fb49",
-			"price": "144411770561",
-			"humanizedPrice": 144411.770561,
+			"price": "119239205081",
+			"humanizedPrice": 119239.205081,
 			"source": "curveFactoryAPI"
 		},
 		"0xf8f9efc0db77d8881500bb06ff5d6abc3070e695": {
 			"address": "0xf8f9efc0db77d8881500bb06ff5d6abc3070e695",
-			"price": "138212",
-			"humanizedPrice": 0.138212,
+			"price": "108423",
+			"humanizedPrice": 0.108423,
 			"source": "curveFactoryAPI"
 		},
 		"0xf8fd29a8f95e96a125984c4e384534ace18cbfbd": {
 			"address": "0xf8fd29a8f95e96a125984c4e384534ace18cbfbd",
-			"price": "999866",
-			"humanizedPrice": 0.999866,
+			"price": "1000000",
+			"humanizedPrice": 1,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xf976c9bc0e16b250e0b1523cffaa9e4c07bc5c8a": {
 			"address": "0xf976c9bc0e16b250e0b1523cffaa9e4c07bc5c8a",
-			"price": "24094",
-			"humanizedPrice": 0.024094,
+			"price": "24125",
+			"humanizedPrice": 0.024125,
 			"source": "curveFactoryAPI"
 		},
 		"0xfa68fb4628dff1028cfec22b4162fccd0d45efb6": {
 			"address": "0xfa68fb4628dff1028cfec22b4162fccd0d45efb6",
-			"price": "275299",
-			"humanizedPrice": 0.275299,
+			"price": "259620",
+			"humanizedPrice": 0.25962,
 			"source": "defillama"
 		},
 		"0xfa8ae7f5589728d11756a7ecc7cb6b2a90621718": {
@@ -3801,32 +3879,32 @@
 		},
 		"0xfae9a0035ebb4766d451f25cc9c7007d3e57cdd9": {
 			"address": "0xfae9a0035ebb4766d451f25cc9c7007d3e57cdd9",
-			"price": "175",
-			"humanizedPrice": 0.000175,
+			"price": "162",
+			"humanizedPrice": 0.000162,
 			"source": "curveFactoryAPI"
 		},
 		"0xfb4f607dafe2f3b9f8e99a779d3e404aa703cb47": {
 			"address": "0xfb4f607dafe2f3b9f8e99a779d3e404aa703cb47",
-			"price": "774756052",
-			"humanizedPrice": 774.7560527822313,
+			"price": "858114725",
+			"humanizedPrice": 858.1147257086028,
 			"source": "gammaAPI"
 		},
 		"0xfba3b7bb043415035220b1c44fb4756434639392": {
 			"address": "0xfba3b7bb043415035220b1c44fb4756434639392",
-			"price": "3083010",
-			"humanizedPrice": 3.08301,
+			"price": "3083266",
+			"humanizedPrice": 3.083266,
 			"source": "curveFactoryAPI"
 		},
 		"0xfba4d30e964e40775c95b58acf6b5a621b929c0a": {
 			"address": "0xfba4d30e964e40775c95b58acf6b5a621b929c0a",
-			"price": "5095",
-			"humanizedPrice": 0.005095,
+			"price": "4540",
+			"humanizedPrice": 0.00454,
 			"source": "curveFactoryAPI"
 		},
 		"0xfbecfb7b87752aa28383a5ac1e9d9e05e0526017": {
 			"address": "0xfbecfb7b87752aa28383a5ac1e9d9e05e0526017",
-			"price": "73718",
-			"humanizedPrice": 0.073718,
+			"price": "89144",
+			"humanizedPrice": 0.089144,
 			"source": "curveFactoryAPI"
 		},
 		"0xfc47efc0baf8ee64b2d94ef2be400d90ceca0f47": {
@@ -3837,68 +3915,74 @@
 		},
 		"0xfc48484f10b47666a7f8ffca1be4558d3c38d98c": {
 			"address": "0xfc48484f10b47666a7f8ffca1be4558d3c38d98c",
-			"price": "1405003",
-			"humanizedPrice": 1.405003,
+			"price": "1060002",
+			"humanizedPrice": 1.060002,
 			"source": "curveFactoryAPI"
 		},
 		"0xfd179b9793b467fa3dd85edc715ae580b0240090": {
 			"address": "0xfd179b9793b467fa3dd85edc715ae580b0240090",
-			"price": "999866",
-			"humanizedPrice": 0.999866,
+			"price": "1000000",
+			"humanizedPrice": 1,
 			"source": "ERC4626-convertToAssets"
 		},
 		"0xfd73ce19d3842ad7b551bb184ac6c6256dc2c9ab": {
 			"address": "0xfd73ce19d3842ad7b551bb184ac6c6256dc2c9ab",
-			"price": "3220548",
-			"humanizedPrice": 3.2205484828170485,
+			"price": "3236275",
+			"humanizedPrice": 3.2362757142420193,
 			"source": "gammaAPI"
+		},
+		"0xfdcc3dd6671eab0709a4c0f3f53de9a333d80798": {
+			"address": "0xfdcc3dd6671eab0709a4c0f3f53de9a333d80798",
+			"price": "999805",
+			"humanizedPrice": 0.999805,
+			"source": "curveFactoryAPI"
 		},
 		"0xfe14df51b3087038edad2f0f78119a5da531941c": {
 			"address": "0xfe14df51b3087038edad2f0f78119a5da531941c",
-			"price": "22424",
-			"humanizedPrice": 0.022424,
+			"price": "22752",
+			"humanizedPrice": 0.022752,
 			"source": "curveFactoryAPI"
 		},
 		"0xfe4bb996926aca85c9747bbec886ec2a3f510c66": {
 			"address": "0xfe4bb996926aca85c9747bbec886ec2a3f510c66",
-			"price": "110124",
-			"humanizedPrice": 0.11012471031316776,
+			"price": "108070",
+			"humanizedPrice": 0.108070948835442,
 			"source": "gammaAPI"
 		},
 		"0xfe58138156dee3eaef5e6d113210dbf460b61df1": {
 			"address": "0xfe58138156dee3eaef5e6d113210dbf460b61df1",
-			"price": "30328",
-			"humanizedPrice": 0.030328,
+			"price": "31393",
+			"humanizedPrice": 0.031393,
 			"source": "curveFactoryAPI"
 		},
 		"0xfe712251173a2cd5f5be2b46bb528328ea3565e1": {
 			"address": "0xfe712251173a2cd5f5be2b46bb528328ea3565e1",
-			"price": "17610000",
-			"humanizedPrice": 17.61,
+			"price": "16640000",
+			"humanizedPrice": 16.64,
 			"source": "curveFactoryAPI"
 		},
 		"0xfea715ab7e1de3640cd0662f6af0f9b25934e753": {
 			"address": "0xfea715ab7e1de3640cd0662f6af0f9b25934e753",
-			"price": "6665",
-			"humanizedPrice": 0.006665859511175891,
+			"price": "6740",
+			"humanizedPrice": 0.0067407630404713054,
 			"source": "gammaAPI"
 		},
 		"0xff193b129cdf13300b182c12229f4a7d2a2b1d1f": {
 			"address": "0xff193b129cdf13300b182c12229f4a7d2a2b1d1f",
-			"price": "12874",
-			"humanizedPrice": 0.012874,
+			"price": "11950",
+			"humanizedPrice": 0.01195,
 			"source": "curveFactoryAPI"
 		},
 		"0xffa188493c15dfaf2c206c97d8633377847b6a52": {
 			"address": "0xffa188493c15dfaf2c206c97d8633377847b6a52",
-			"price": "19460",
-			"humanizedPrice": 0.01946041,
+			"price": "16204",
+			"humanizedPrice": 0.01620425,
 			"source": "defillama"
 		},
 		"0xffcf7fb615614b96f5730af9da3d7114c119aabe": {
 			"address": "0xffcf7fb615614b96f5730af9da3d7114c119aabe",
-			"price": "999757",
-			"humanizedPrice": 0.999757,
+			"price": "999605",
+			"humanizedPrice": 0.999605,
 			"source": "ERC4626-convertToAssets"
 		}
 	}

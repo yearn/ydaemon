@@ -256,6 +256,7 @@ func InitBlockTimeData() {
 		blocktimeSuccess(fmt.Sprintf("Chain %d - Loaded %d blocktime records", chainID, len(pairs)))
 
 		// Check if we need to update with newer data
+		logs.Info(`Chain ` + strconv.FormatUint(chainID, 10) + ` - Checking for blocktime data updates`)
 		updateBlocktimeUntilToday(chainID, pairs)
 	}
 
@@ -394,7 +395,9 @@ func updateBlocktimeUntilToday(chainID uint64, existingPairs []TimestampBlockPai
 
 	if len(existingPairs) == 0 {
 		blocktimeLog(fmt.Sprintf("Chain %d - No existing blocktime data, will populate from scratch", chainID))
+		logs.Info(`Chain ` + strconv.FormatUint(chainID, 10) + ` - Starting blocktime data population (this may take a while)`)
 		fetchBlocktimeForDateRange(chainID, nil, nil)
+		logs.Info(`Chain ` + strconv.FormatUint(chainID, 10) + ` - Completed blocktime data population`)
 		return
 	}
 
@@ -430,7 +433,9 @@ func updateBlocktimeUntilToday(chainID uint64, existingPairs []TimestampBlockPai
 		int(today.Sub(nextDay).Hours()/24)+1))
 
 	// Fetch data for the missing date range
+	logs.Info(`Chain ` + strconv.FormatUint(chainID, 10) + ` - Fetching missing blocktime data from ` + nextDay.Format("2006-01-02") + ` to ` + today.Format("2006-01-02"))
 	fetchBlocktimeForDateRange(chainID, &nextDay, &today)
+	logs.Info(`Chain ` + strconv.FormatUint(chainID, 10) + ` - Completed fetching missing blocktime data`)
 }
 
 /**************************************************************************************************

@@ -432,6 +432,19 @@ func handleV3VaultCalls(vault models.TVault, response map[string][]interface{}) 
 
 	vault.LastTotalAssets = helpers.DecodeBigInt(rawTotalAssets)
 	vault.LastActiveStrategies = helpers.DecodeAddresses(rawDefaultQueue)
+
+	// Append manual strategies if they exist for this vault (avoid duplicates)
+	manualStrategies := storage.GetManualStrategiesForVault(vault.ChainID, vault.Address)
+	isInDefaultQueue := make(map[common.Address]bool)
+	for _, strategy := range vault.LastActiveStrategies {
+		isInDefaultQueue[strategy] = true
+	}
+	for _, manualStrategy := range manualStrategies {
+		if !isInDefaultQueue[manualStrategy] {
+			vault.LastActiveStrategies = append(vault.LastActiveStrategies, manualStrategy)
+		}
+	}
+
 	if len(rawShutdown) > 0 {
 		vault.EmergencyShutdown = helpers.DecodeBool(rawShutdown)
 	}

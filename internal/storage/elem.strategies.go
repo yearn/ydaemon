@@ -73,6 +73,55 @@ func loadStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
 }
 
 /** 🔵 - Yearn *************************************************************************************
+** The function `loadManualStrategiesFromJson` is responsible for loading manual strategies from a JSON file.
+** This function handles optional manual strategy files gracefully, returning an empty structure if the file doesn't exist.
+**************************************************************************************************/
+func loadManualStrategiesFromJson(chainID uint64) TJsonStrategyStorage {
+	var strategyFile TJsonStrategyStorage
+	chainIDStr := strconv.FormatUint(chainID, 10)
+	filePath := env.BASE_DATA_PATH + "/meta/strategies/" + chainIDStr + ".manuals.json"
+
+	// Load the manual strategies JSON file
+	file, err := os.Open(filePath)
+	if err != nil {
+		// File doesn't exist or can't be opened - return empty structure
+		return TJsonStrategyStorage{
+			Strategies: make(map[string]models.TStrategy),
+		}
+	}
+	defer file.Close()
+
+	retry := 0
+	for {
+		// Reset file position for retries
+		file.Seek(0, 0)
+
+		// Decode the JSON file into the map
+		decoder := json.NewDecoder(file)
+		err = decoder.Decode(&strategyFile)
+		if err != nil {
+			logs.Error("Failed to decode manual strategies JSON file: " + err.Error())
+			time.Sleep(1 * time.Second)
+			retry++
+			if retry > 5 {
+				logs.Error("Giving up on manual strategies JSON decode after 5 retries")
+				return TJsonStrategyStorage{
+					Strategies: make(map[string]models.TStrategy),
+				}
+			}
+			continue
+		}
+		break
+	}
+
+	if strategyFile.Strategies == nil {
+		strategyFile.Strategies = make(map[string]models.TStrategy)
+	}
+
+	return strategyFile
+}
+
+/** 🔵 - Yearn *************************************************************************************
 ** The function `storedStrategiesToJson` is responsible for storing strategies to a JSON file.
 **************************************************************************************************/
 func StoreStrategiesToJson(chainID uint64, strategies map[string]models.TStrategy) {
@@ -225,6 +274,17 @@ func LoadStrategies(chainID uint64, wg *sync.WaitGroup) {
 		strategyKey := strategy.Address.Hex() + `_` + strategy.VaultAddress.Hex()
 		safeSyncMap(_strategiesSyncMap, chainID).Store(strategyKey, strategy)
 	}
+
+	// Load manual strategies and treat them as first-class citizens
+	manualStrategies := loadManualStrategiesFromJson(chainID)
+	for _, manualStrategy := range manualStrategies.Strategies {
+		strategyKey := manualStrategy.Address.Hex() + `_` + manualStrategy.VaultAddress.Hex()
+		// Only add if not already present (avoid duplicates with regular strategies)
+		if _, exists := safeSyncMap(_strategiesSyncMap, chainID).Load(strategyKey); !exists {
+			safeSyncMap(_strategiesSyncMap, chainID).Store(strategyKey, manualStrategy)
+			logs.Success("Loaded manual strategy into memory:", manualStrategy.Address.Hex(), "for vault:", manualStrategy.VaultAddress.Hex())
+		}
+	}
 }
 
 /**************************************************************************************************
@@ -364,6 +424,28 @@ func ListStrategiesForVault(chainID uint64, vaultAddress common.Address) (
 	})
 
 	return asMap, asSlice
+}
+
+/**************************************************************************************************
+** GetManualStrategiesForVault returns a list of manual strategies for a specific vault.
+** Manual strategies are human-curated strategies that should be added to a vault's active strategies
+** list in addition to those discovered automatically from the vault's default queue.
+**
+** @param chainID The blockchain network ID
+** @param vaultAddress The address of the vault to get manual strategies for
+** @return []common.Address A slice of strategy addresses to be added to lastActiveStrategies
+**************************************************************************************************/
+func GetManualStrategiesForVault(chainID uint64, vaultAddress common.Address) []common.Address {
+	manualStrategies := loadManualStrategiesFromJson(chainID)
+	var strategies []common.Address
+
+	for _, strategy := range manualStrategies.Strategies {
+		if addresses.Equals(strategy.VaultAddress, vaultAddress) {
+			strategies = append(strategies, strategy.Address)
+		}
+	}
+
+	return strategies
 }
 
 /**************************************************************************************************

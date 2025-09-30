@@ -50,6 +50,9 @@ func filterNewVault(
 		blockEnd, _ := client.BlockNumber(context.Background())
 		end = &blockEnd
 	}
+	
+	blockRange := *end - start
+	logs.Info(`Scanning registry ` + registry.Address.Hex() + ` from block ` + strconv.FormatUint(start, 10) + ` to ` + strconv.FormatUint(*end, 10) + ` (` + strconv.FormatUint(blockRange, 10) + ` blocks)`)
 
 	for chunkStart := start; chunkStart < *end; chunkStart += chain.MaxBlockRange {
 		chunkEnd := chunkStart + chain.MaxBlockRange
@@ -601,6 +604,9 @@ func IndexNewVaults(chainID uint64) (vaultsFromRegistry map[common.Address]model
 		vaultsFromRegistry, _ = storage.ListVaultsFromRegistries(chainID)
 		return vaultsFromRegistry
 	}
+	
+	registryCount := len(chain.Registries)
+	logs.Info(`Starting vault registry scan for ` + strconv.Itoa(registryCount) + ` registries on chain ` + strconv.FormatUint(chainID, 10))
 
 	/** 🔵 - Yearn *********************************************************************************
 	** Loop over all the known registries for the specified chain ID.

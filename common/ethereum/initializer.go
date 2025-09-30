@@ -48,11 +48,18 @@ func Initialize() {
 		)
 	}
 
-	// Initialize the internal block time data storage
-	InitBlockTimeData()
+	// Initialize the internal block time data storage in background
+	logs.Info(`Starting background blocktime data initialization`)
+	go func() {
+		InitBlockTimeData()
+		logs.Info(`Background blocktime data initialization completed`)
+	}()
 
-	// Initialize block timestamps for each supported chain
+	// Initialize block timestamps for each supported chain  
+	logs.Info(`Initializing block timestamps for all chains`)
 	for _, chain := range env.GetChains() {
+		logs.Info(`Initializing block timestamps for chain ` + strconv.FormatUint(chain.ID, 10))
 		InitBlockTimestamp(chain.ID)
 	}
+	logs.Info(`Completed blockchain initialization for all chains`)
 }

@@ -129,7 +129,7 @@ func ComputeChainAPY(chainID uint64) {
 		** We need to compute it and store it in our ForwardAPY structure.
 		**********************************************************************************************/
 		if isCurveVault(allStrategiesForVault) {
-			vaultAPY.ForwardAPY = computeCurveLikeForwardAPY(
+			forwardAPY := computeCurveLikeForwardAPY(
 				vault,
 				allStrategiesForVault,
 				gauges,
@@ -137,6 +137,9 @@ func ComputeChainAPY(chainID uint64) {
 				subgraphData,
 				fraxPools,
 			)
+			if forwardAPY.NetAPY != nil {
+				vaultAPY.ForwardAPY = forwardAPY
+			}
 		}
 
 		/**********************************************************************************************

@@ -318,6 +318,14 @@ func computeCurveLikeForwardAPY(
 	fraxPool := findFraxPoolForVault(vault.AssetAddress, fraxPools)
 	subgraphItem := findSubgraphItemForVault(common.HexToAddress(gauge.Swap), subgraphData)
 
+	/**********************************************************************************************
+	** If we can't resolve the gauge or pool for this vault, bail out so we don't clobber any
+	** previously computed forward APY (e.g. oracle based values).
+	**********************************************************************************************/
+	if gauge.Gauge == "" || pool.Address == "" {
+		return models.TForwardAPY{}
+	}
+
 	TypeOf := ``
 	netAPY := bigNumber.NewFloat(0)
 	boost := bigNumber.NewFloat(0)

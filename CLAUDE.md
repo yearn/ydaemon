@@ -34,6 +34,7 @@ RPC_URI_FOR_8453=   # Base
 RPC_URI_FOR_42161=  # Arbitrum
 
 # Optional
+KONG_API_URL=       # Kong GraphQL API (defaults to https://kong.yearn.farm/api/gql)
 WEBHOOK_SECRET=
 GRAPH_API_URI=
 SENTRY_DSN=

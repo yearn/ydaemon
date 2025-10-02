@@ -14,7 +14,6 @@ import (
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
-const KONG_API_URL = "https://kong.yearn.farm/api/gql"
 
 /**************************************************************************************************
 ** getKongStrategyReport retrieves the latest strategy report from Kong API
@@ -29,7 +28,7 @@ func getKongStrategyReport(strategyAddress string, chainID uint64) (models.TRepo
 	query := fmt.Sprintf(`{"query":"query Query {\n  strategy(address: \"%s\", chainId: %d) {\n    lastReportDetail {\n      apr {\n        net\n        gross\n      }\n      loss\n      lossUsd\n      profit\n      profitUsd\n      blockTime\n      blockNumber\n    }\n    address\n  }\n}","variables":{"chainId":%d,"address":"%s"},"operationName":"Query"}`,
 		strategyAddress, chainID, chainID, strategyAddress)
 
-	req, err := http.NewRequest("POST", KONG_API_URL, strings.NewReader(query))
+	req, err := http.NewRequest("POST", env.KONG_API_URL, strings.NewReader(query))
 	if err != nil {
 		return models.TReportsFromKong{}, err
 	}

@@ -88,3 +88,9 @@ var CMS_ROOT_URL = ``
 ** Default value points to the production CDN, but can be overridden via RISK_CDN_URL env variable.
 **************************************************************************************************/
 var RISK_CDN_URL = `https://risk.yearn.fi/cdn/`
+
+/**************************************************************************************************
+** KONG_API_URL contains the GraphQL endpoint for Kong, the single source of truth for vault
+** and strategy discovery. Defaults to https://kong.yearn.farm/api/gql
+**************************************************************************************************/
+var KONG_API_URL = `https://kong.yearn.farm/api/gql`

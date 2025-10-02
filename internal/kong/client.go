@@ -11,12 +11,12 @@ import (
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/yearn/ydaemon/common/env"
 	"github.com/yearn/ydaemon/common/logs"
 )
 
 const (
-	KongGraphQLEndpoint = "https://kong.yearn.farm/api/gql"
-	DefaultTimeout      = 30 * time.Second
+	DefaultTimeout = 30 * time.Second
 )
 
 type GraphQLRequest struct {
@@ -65,7 +65,7 @@ func NewClient() *Client {
 		httpClient: &http.Client{
 			Timeout: DefaultTimeout,
 		},
-		endpoint: KongGraphQLEndpoint,
+		endpoint: env.KONG_API_URL,
 	}
 }
 

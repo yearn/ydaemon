@@ -70,10 +70,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 	for i := 0; i < len(tokens); i += chunkSize {
 		time.Sleep(time.Duration(timeToSleep) * time.Millisecond)
 
-		end := i + chunkSize
-		if end > len(tokens) {
-			end = len(tokens)
-		}
+		end := min(i+chunkSize, len(tokens))
 
 		tokensFromChunk := tokens[i:end]
 		var tokenString []string

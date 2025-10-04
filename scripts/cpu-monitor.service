@@ -6,11 +6,17 @@ Requires=ydaemon.service
 [Service]
 Type=simple
 User=root
-ExecStart=/bin/bash /home/murdertxxth/git/ydaemon/scripts/cpu-monitor.sh
+ExecStart=/bin/bash /opt/ydaemon/scripts/cpu-monitor.sh
 Restart=always
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
+
+# Priority settings for system exhaustion scenarios
+Nice=-10
+CPUWeight=200
+IOWeight=200
+OOMScoreAdjust=-900
 
 [Install]
 WantedBy=multi-user.target

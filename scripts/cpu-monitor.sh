@@ -10,6 +10,12 @@ MAGENTA='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# Load Telegram configuration if available
+SCRIPT_DIR="$(dirname "$0")"
+if [ -f "$SCRIPT_DIR/cpu-monitor.env" ]; then
+    export $(grep -v '^#' "$SCRIPT_DIR/cpu-monitor.env" | sed 's/ *= */=/g' | xargs)
+fi
+
 # Configuration
 CPU_THRESHOLD=85
 CHECK_INTERVAL=3
@@ -93,13 +99,84 @@ get_cpu_usage() {
     top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}'
 }
 
+send_telegram_alert() {
+    local cpu=$1
+    local high_count=$2
+    local total_count=$3
+    local percentage=$4
+    local test_mode=$5
+
+    # Check if Telegram is configured
+    if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
+        return 0
+    fi
+
+    local alert_text="⚠️ High CPU usage detected - restarting service"
+    local action_text="<i>Service ydaemon.service is being restarted...</i>"
+
+    if [ "$test_mode" == "true" ]; then
+        alert_text="🧪 <b>THIS IS A TEST</b>"
+        action_text="<i>No action taken - test mode only</i>"
+    fi
+
+    local message="🚨 <b>yDaemon CPU Alert</b>
+
+${alert_text}
+
+<b>Server:</b> $(hostname)
+<b>CPU Usage:</b> ${cpu}%
+<b>Threshold:</b> ${CPU_THRESHOLD}%
+<b>High Readings:</b> ${high_count}/${total_count} (${percentage}%)
+<b>Time:</b> $(date '+%Y-%m-%d %H:%M:%S')
+
+${action_text}"
+
+    local api_url="https://api.telegram.org/bot${TG_TOKEN}/sendMessage"
+
+    # Build JSON payload
+    local json_payload
+    if [ -n "$TG_ALERT_MESSAGE_THREAD_ID" ]; then
+        json_payload=$(cat <<EOF
+{
+    "chat_id": "${TG_CHAT_ID}",
+    "message_thread_id": ${TG_ALERT_MESSAGE_THREAD_ID},
+    "text": "${message}",
+    "parse_mode": "HTML"
+}
+EOF
+)
+    else
+        json_payload=$(cat <<EOF
+{
+    "chat_id": "${TG_CHAT_ID}",
+    "text": "${message}",
+    "parse_mode": "HTML"
+}
+EOF
+)
+    fi
+
+    # Send message
+    curl -s -X POST "$api_url" \
+        -H "Content-Type: application/json" \
+        -d "$json_payload" > /dev/null 2>&1
+}
+
 restart_service() {
+    local cpu=$1
+    local high_count=$2
+    local total_count=$3
+    local percentage=$4
+
     show_restarting
+
+    # Send Telegram alert
+    send_telegram_alert "$cpu" "$high_count" "$total_count" "$percentage"
 
     systemctl stop ydaemon.service
     log_message "ydaemon.service stopped"
 
-    sleep 5
+    sleep 8
 
     systemctl start ydaemon.service
     log_message "ydaemon.service started"
@@ -109,6 +186,26 @@ restart_service() {
     # Clear readings array
     readings=()
 }
+
+# Handle command line arguments
+if [ "$1" == "--test-telegram-alert" ]; then
+    echo -e "${CYAN}Testing Telegram alert...${NC}"
+
+    if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT_ID" ]; then
+        echo -e "${RED}Error: Telegram not configured in cpu-monitor.env${NC}"
+        exit 1
+    fi
+
+    echo "Chat ID: $TG_CHAT_ID"
+    echo "Thread ID: ${TG_ALERT_MESSAGE_THREAD_ID:-none}"
+    echo ""
+
+    # Send test alert with sample data
+    send_telegram_alert "42.00" "69" "69" "69" "true"
+
+    echo -e "${GREEN}Test alert sent!${NC}"
+    exit 0
+fi
 
 # Main loop
 log_message "CPU Monitor starting..."
@@ -145,7 +242,7 @@ while true; do
     # Check if we should restart
     if [ $total_readings -eq $MAX_READINGS ] && [ $high_percentage -ge $TRIGGER_RATIO ]; then
         show_high_cpu_warning "$cpu_usage" "$high_count" "$total_readings" "$high_percentage"
-        restart_service
+        restart_service "$cpu_usage" "$high_count" "$total_readings" "$high_percentage"
     elif [ "$cpu_int" -gt "$CPU_THRESHOLD" ]; then
         show_high_cpu_warning "$cpu_usage" "$high_count" "$total_readings" "$high_percentage"
     else

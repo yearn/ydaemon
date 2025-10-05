@@ -1,7 +1,6 @@
 [Unit]
 Description=CPU Monitor for yDaemon Service
 After=network.target ydaemon.service
-Requires=ydaemon.service
 
 [Service]
 Type=simple

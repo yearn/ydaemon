@@ -64,6 +64,8 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 		for _, token := range tokensFromChunk {
 			tokenString = append(tokenString, strings.ToLower(token.Address.Hex()))
 		}
+		t0 := time.Now()
+		logs.Info("🦎 [GECKO CHUNK] start", "chain", chainID, "range", i, "-", end)
 		req, err := http.NewRequest("GET", env.GECKO_PRICE_URL+GECKO_CHAIN_NAMES[chainID], nil)
 		if err != nil {
 			logs.Warning("Error fetching prices from CoinGecko for chain", chainID)
@@ -136,6 +138,7 @@ func fetchPricesFromGecko(chainID uint64, tokens []models.TERC20Token) map[commo
 				}
 			}
 		}
+		logs.Success("🦎 [GECKO CHUNK] done", "chain", chainID, "took", time.Since(t0))
 	}
 	return priceMap
 }

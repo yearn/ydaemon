@@ -502,7 +502,8 @@ func RefreshKongData(chainID uint64) {
 	mutex.Lock()
 	defer mutex.Unlock()
 
-	logs.Info(fmt.Sprintf("Refreshing Kong vault data for chain %d", chainID))
+	t0 := time.Now()
+	logs.Info(fmt.Sprintf("🗄️ [KONG START] Refreshing Kong vault data for chain %d", chainID))
 
 	kongVaults := fetchKongVaultDataFromDB(chainID)
 	if len(kongVaults) == 0 {
@@ -515,5 +516,5 @@ func RefreshKongData(chainID uint64) {
 		StoreKongVaultData(chainID, address, kongData)
 	}
 
-	logs.Success(fmt.Sprintf("Refreshed %d Kong vault records for chain %d", len(kongVaults), chainID))
+	logs.Success(fmt.Sprintf("🗄️ [KONG DONE] Refreshed %d Kong vault records for chain %d took=%s", len(kongVaults), chainID, time.Since(t0)))
 }

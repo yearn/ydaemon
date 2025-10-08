@@ -2,10 +2,12 @@ package apr
 
 import (
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
 	"github.com/yearn/ydaemon/common/env"
+	"github.com/yearn/ydaemon/common/logs"
 	"github.com/yearn/ydaemon/internal/storage"
 )
 
@@ -49,6 +51,8 @@ func GetComputedAPY(chainID uint64, vaultAddress common.Address) (any, bool) {
 ** Function to calculate the APY for all the vaults in a chain.
 **************************************************************************/
 func ComputeChainAPY(chainID uint64) {
+	start := time.Now()
+	logs.Warning("📈 [APY START]", "chain", chainID)
 	allVaults, _ := storage.ListVaults(chainID)
 	gauges := storage.FetchCurveGauges(chainID)
 	pools := retrieveCurveGetPools(chainID)
@@ -190,4 +194,6 @@ func ComputeChainAPY(chainID uint64) {
 
 	// Save the computed APY data to disk
 	storage.StoreAPYToJson(chainID, computedAPYData)
+	logs.Success("📈 [APY DONE]", "chain", chainID, "took", time.Since(start))
+	logs.Success(chainID, `-`, `ComputeChainAPY ✅`) // Legacy format for deploy workflow detection
 }

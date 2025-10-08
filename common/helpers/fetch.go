@@ -5,6 +5,8 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"time"
 	"strings"
 
 	"github.com/yearn/ydaemon/common/logs"
@@ -34,6 +36,8 @@ import (
 func FetchJSON[T any](uri string) (data T) {
 	var resp *http.Response
 	var err error
+    start := time.Now()
+    u, _ := url.Parse(uri)
 
 	if strings.Contains(uri, `api.portals.fi`) ||
 		strings.Contains(uri, `api.1inch.io`) ||
@@ -46,24 +50,29 @@ func FetchJSON[T any](uri string) (data T) {
 	}
 	if err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] error host=", u.Host, " took=", time.Since(start))
 		return data
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] read_error host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data
 	}
 
 	if (resp.StatusCode < 200) || (resp.StatusCode > 299) {
 		logs.Error(`failed to fetch`, resp.StatusCode)
+		logs.Warning("🌐 [HTTP] non2xx host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data
 	}
 
 	if err := json.Unmarshal(body, &data); err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] json_error host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data
 	}
+	logs.Info("🌐 [HTTP] ok host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 	return data
 }
 
@@ -81,6 +90,8 @@ func FetchJSON[T any](uri string) (data T) {
 **************************************************************************************************/
 func FetchJSONWithReject[T any](uri string) (data T, err error) {
 	var resp *http.Response
+    start := time.Now()
+    u, _ := url.Parse(uri)
 
 	if strings.Contains(uri, `api.portals.fi`) ||
 		strings.Contains(uri, `api.1inch.io`) ||
@@ -93,23 +104,28 @@ func FetchJSONWithReject[T any](uri string) (data T, err error) {
 	}
 	if err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] error host=", u.Host, " took=", time.Since(start))
 		return data, err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] read_error host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data, err
 	}
 
 	if (resp.StatusCode < 200) || (resp.StatusCode > 299) {
 		logs.Error(`failed to fetch`, resp.StatusCode)
+		logs.Warning("🌐 [HTTP] non2xx host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data, errors.New(`failed to fetch`)
 	}
 
 	if err := json.Unmarshal(body, &data); err != nil {
 		logs.Error(err)
+		logs.Warning("🌐 [HTTP] json_error host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 		return data, err
 	}
+	logs.Info("🌐 [HTTP] ok host=", u.Host, " status=", resp.StatusCode, " took=", time.Since(start))
 	return data, nil
 }

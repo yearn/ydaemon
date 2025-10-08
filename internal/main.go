@@ -1,7 +1,9 @@
 package internal
 
 import (
+	"fmt"
 	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -17,6 +19,35 @@ import (
 )
 
 var STRATLIST = []models.TStrategy{}
+
+// ----- Scheduler visibility helpers -----
+var jobSeq uint64
+var jobInProgress sync.Map // key: fmt.Sprintf("%d:%s", chainID, jobName) -> time.Time
+
+func beginJob(chainID uint64, name string) (id uint64, started time.Time, overlapped bool) {
+	id = atomic.AddUint64(&jobSeq, 1)
+	key := fmt.Sprintf("%d:%s", chainID, name)
+	if prev, ok := jobInProgress.Load(key); ok {
+		overlapped = true
+		if t, ok2 := prev.(time.Time); ok2 {
+			age := time.Since(t)
+			logs.Warning(fmt.Sprintf("⛔️ [OVERLAP DETECTED] job=%s chain=%d prev_started_at=%s prev_age=%s", name, chainID, t.UTC().Format(time.RFC3339), age))
+		} else {
+			logs.Warning(fmt.Sprintf("⛔️ [OVERLAP DETECTED] job=%s chain=%d", name, chainID))
+		}
+	}
+	started = time.Now()
+	jobInProgress.Store(key, started)
+	logs.Warning(fmt.Sprintf("🚀 [JOB START] job=%s chain=%d jobID=%d", name, chainID, id))
+	return
+}
+
+func endJob(chainID uint64, name string, id uint64, started time.Time) {
+	key := fmt.Sprintf("%d:%s", chainID, name)
+	jobInProgress.Delete(key)
+	took := time.Since(started)
+	logs.Success(fmt.Sprintf("✅ [JOB DONE] job=%s chain=%d jobID=%d took=%s", name, chainID, id, took))
+}
 
 func initStakingPools(chainID uint64) {
 	/**********************************************************************************************
@@ -86,10 +117,23 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		),
 		gocron.NewTask(
 			func() {
+				id, started, _ := beginJob(chainID, "META5M")
+				defer endJob(chainID, "META5M", id, started)
+
+				logs.Warning(fmt.Sprintf("🧱 [META] Refresh start chain=%d", chainID))
+				t0 := time.Now()
 				storage.RefreshVaultMetadata(chainID)
+				logs.Info(fmt.Sprintf("🧱 [META] vaults done chain=%d took=%s", chainID, time.Since(t0)))
+				t1 := time.Now()
 				storage.RefreshStrategyMetadata(chainID)
+				logs.Info(fmt.Sprintf("🧱 [META] strategies done chain=%d took=%s", chainID, time.Since(t1)))
+				t2 := time.Now()
 				storage.RefreshTokenMetadata(chainID)
+				logs.Info(fmt.Sprintf("🧱 [META] tokens done chain=%d took=%s", chainID, time.Since(t2)))
+				t3 := time.Now()
 				storage.RefreshKongData(chainID)
+				logs.Info(fmt.Sprintf("🧱 [META] kong done chain=%d took=%s", chainID, time.Since(t3)))
+				logs.Success(fmt.Sprintf("🧱 [META] Refresh done chain=%d", chainID))
 			},
 		),
 		gocron.WithStartAt(gocron.WithStartImmediately()),
@@ -102,23 +146,39 @@ func InitializeV2(chainID uint64, wg *sync.WaitGroup) {
 		),
 		gocron.NewTask(
 			func() {
+				id, started, _ := beginJob(chainID, "SNAPSHOT30M")
+				defer endJob(chainID, "SNAPSHOT30M", id, started)
+
+				logs.Warning(fmt.Sprintf("🧩 [SNAPSHOT] initVaults start chain=%d", chainID))
 				_, _, vaultMap, tokenMap = initVaults(chainID)
+				logs.Success(fmt.Sprintf("🧩 [SNAPSHOT] initVaults done chain=%d vaults=%d tokens=%d", chainID, len(vaultMap), len(tokenMap)))
 
+				tRiskAvail := time.Now()
 				risks.RetrieveAvailableRiskScores(chainID)
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] risks availability chain=%d took=%s", chainID, time.Since(tRiskAvail)))
+				tRiskAll := time.Now()
 				risks.RetrieveAllRiskScores(chainID, vaultMap)
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] risks full chain=%d took=%s", chainID, time.Since(tRiskAll)))
 
+				tStake := time.Now()
 				initStakingPools(chainID)
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] staking init chain=%d took=%s", chainID, time.Since(tStake)))
+				tStrats := time.Now()
 				initStrategies(chainID, vaultMap)
+				logs.Info(fmt.Sprintf("🧩 [SNAPSHOT] strategies init chain=%d took=%s", chainID, time.Since(tStrats)))
 				/**********************************************************************************************
 				** Retrieving prices and strategies for all the given token and strategies on that chain.
 				** This is done in parallel to speed up the process and reduce the time it takes to complete.
 				** The scheduler is used to retrieve the strategies every 15 minutes.
 				** Computing APRS
 				**********************************************************************************************/
+				logs.Warning(fmt.Sprintf("💰 [PRICES] start chain=%d tokens=%d", chainID, len(tokenMap)))
 				prices.RetrieveAllPrices(chainID, tokenMap)
-				logs.Success(chainID, `-`, `RetrieveAllPrices ✅`)
+				logs.Success(fmt.Sprintf("💰 [PRICES] done chain=%d", chainID))
+
+				logs.Warning(fmt.Sprintf("📈 [APY] start chain=%d vaults=%d", chainID, len(vaultMap)))
 				apr.ComputeChainAPY(chainID)
-				logs.Success(chainID, `-`, `ComputeChainAPY ✅`)
+				logs.Success(fmt.Sprintf("📈 [APY] done chain=%d", chainID))
 			},
 		),
 		gocron.WithStartAt(gocron.WithStartImmediately()),

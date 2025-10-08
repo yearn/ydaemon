@@ -191,6 +191,7 @@ func (caller *TEthMultiCaller) ExecuteByBatch(
 				if isAssumingOutOfGas && SHOULD_LOG_WARNINGS {
 					logs.Error(`Multicall failed on chain ` + chainIDStr + `! See error: ` + err.Error())
 				}
+				logs.Warning("⚠️ [MULTICALL HALVE]", "chain", chainIDStr, "prev_batch", batchSize, "new_batch", batchSize/2)
 				batchSize = batchSize / 2
 				continue
 			} else {

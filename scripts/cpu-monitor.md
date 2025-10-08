@@ -1,10 +1,12 @@
 # CPU Monitor Service
 
+The CPU monitor is a systemd service that continuously monitors the yDaemon process CPU usage and automatically restarts the service when sustained high CPU is detected. It uses a sliding window strategy (60 second window with 3 second intervals) and triggers a restart when 70% or more of the readings exceed the 85% CPU threshold. This prevents temporary CPU spikes from causing unnecessary restarts while ensuring recovery from sustained performance issues.
+
 ## Installation
 
 1. Copy the service file to systemd:
    ```bash
-   sudo cp scripts/cpu-monitor.service /etc/systemd/system/
+   sudo cp cpu-monitor.service /etc/systemd/system/
    ```
 
 2. Reload systemd:

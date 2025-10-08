@@ -2,6 +2,7 @@ package prices
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"math"
 	"math/rand"
@@ -68,6 +69,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 	chunkSize := 100
 	timeToSleep := rand.Intn(600-100) + 100
 	for i := 0; i < len(tokens); i += chunkSize {
+		chunkStart := i
 		time.Sleep(time.Duration(timeToSleep) * time.Millisecond)
 
 		end := i + chunkSize
@@ -114,6 +116,8 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 		}
 
 		llamaRequest := env.LLAMA_PRICE_URL + strings.Join(tokenString, ",")
+		t0 := time.Now()
+		logs.Info("🦙 [LLAMA CHUNK] start", "chain", chainID, "range", fmt.Sprintf("%d-%d", chunkStart, end))
 		resp, err := http.Get(llamaRequest)
 		if err != nil {
 			logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
@@ -121,7 +125,7 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 			return priceMap
 		}
 		if resp.StatusCode != 200 {
-			logs.Warning("Error fetching prices from DeFiLlama for chain", chainID)
+			logs.Warning("🦙 [LLAMA] non-200", "chain", chainID, "status", resp.StatusCode)
 			logs.Error(resp.StatusCode, resp.Status)
 			return priceMap
 		}
@@ -183,6 +187,12 @@ func fetchPricesFromLlama(chainID uint64, tokens []models.TERC20Token) map[commo
 				}
 			}
 		}
+
+		took := time.Since(t0)
+		if took > 2*time.Second {
+			logs.Warning("🦙 [LLAMA CHUNK] slow", "chain", chainID, "took", took)
+		}
+		logs.Success("🦙 [LLAMA CHUNK] done", "chain", chainID, "took", took)
 	}
 
 	return priceMap

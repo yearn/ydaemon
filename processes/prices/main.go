@@ -5,6 +5,7 @@ import (
 	"os"
 	"strconv"
 	"sync"
+	"time"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/yearn/ydaemon/common/addresses"
@@ -318,6 +319,8 @@ func fetchPrices(
 ** - a map of tokenAddress -> USDC Price
 **************************************************************************************************/
 func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20Token) map[common.Address]models.TPrices {
+	start := time.Now()
+	logs.Warning("💰 [PRICES START]", "chain", chainID, "tokens", len(tokenMap))
 	/**********************************************************************************************
 	** Once we got out basic list, we will fetch the price for each of theses tokens, using lens
 	** as primary source, and multiple other sources as fallback.
@@ -327,6 +330,7 @@ func RetrieveAllPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 		fetchPrices(chainID, &currentBlockNumber, tokenMap)
 	}
 	priceMap, _ := storage.ListPrices(chainID)
+	logs.Success("💰 [PRICES DONE]", "chain", chainID, "took", time.Since(start))
 	return priceMap
 }
 

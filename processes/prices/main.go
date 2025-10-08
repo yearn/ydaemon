@@ -32,6 +32,24 @@ func listMissingPrices(chainID uint64, tokenMap map[common.Address]models.TERC20
 	return tokenSlice
 }
 
+func applyCandidatePrices(
+	target map[common.Address]models.TPrices,
+	candidates map[common.Address]models.TPrices,
+) {
+	for _, candidate := range candidates {
+		if candidate.Price == nil || candidate.Price.IsZero() {
+			continue
+		}
+
+		existing, ok := target[candidate.Address]
+		if ok && existing.Price != nil && !existing.Price.IsZero() {
+			continue
+		}
+
+		target[candidate.Address] = candidate
+	}
+}
+
 /**************************************************************************************************
 ** fetchPrices will, for a list of addresses, try to fetch all the prices from the lens price
 ** oracle. If the price is not available, it will try to fetch it from some external API. The
@@ -185,11 +203,7 @@ func fetchPrices(
 	**********************************************************************************************/
 	tokenSlice = listMissingPrices(chainID, tokenMap, newPriceMap)
 	priceMapLensOracle := fetchPricesFromLens(chainID, blockNumber, tokenSlice)
-	for _, price := range priceMapLensOracle {
-		if price, ok := newPriceMap[price.Address]; ok && price.Price.IsZero() {
-			newPriceMap[price.Address] = price
-		}
-	}
+	applyCandidatePrices(newPriceMap, priceMapLensOracle)
 
 	/**********************************************************************************************
 	** With the ERC-4626 standard, the `price per share` is no longer relevant. We can use the new
